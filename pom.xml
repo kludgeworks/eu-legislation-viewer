@@ -144,6 +144,62 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.15.3</version>
+				<executions>
+					<!-- First episode: Generate base classes -->
+					<execution>
+						<id>generate-base</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>src/main/resources/xsd</schemaDirectory>
+							<schemaIncludes>
+								<include>formex-05.51-20130501.xsd</include>
+							</schemaIncludes>
+							<episodeFile>${project.build.directory}/generated-sources/xjc/META-INF/base.episode</episodeFile>
+							<generateDirectory>${project.build.directory}/generated-sources/xjc/base</generateDirectory>
+							<generatePackage>com.example.base</generatePackage>
+						</configuration>
+					</execution>
+
+					<!-- Second episode: Generate dependent classes -->
+					<execution>
+						<id>generate-dependent</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>src/main/resources/xsd</schemaDirectory>
+							<schemaIncludes>
+								<include>formex-05.51-20130501.xsd</include>
+							</schemaIncludes>
+							<episodes>
+								<episode>${project.build.directory}/generated-sources/xjc/META-INF/base.episode</episode>
+							</episodes>
+							<generateDirectory>${project.build.directory}/generated-sources/xjc/dependent</generateDirectory>
+							<generatePackage>com.example.dependent</generatePackage>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.jvnet.jaxb</groupId>-->
+<!--				<artifactId>jaxb-maven-plugin</artifactId>-->
+<!--				<version>4.0.8</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>generate</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 <!--			<plugin>-->
 <!--				<groupId>org.codehaus.mojo</groupId>-->
 <!--				<artifactId>exec-maven-plugin</artifactId>-->

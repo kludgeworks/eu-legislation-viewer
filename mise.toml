@@ -1,2 +1,5 @@
 [tools]
+delta = "latest"
 java = "graalvm-community-23.0.2"
+jq = "latest"
+jx = "latest"

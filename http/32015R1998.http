@@ -1,0 +1,69 @@
+
+### Query for Information About a Work
+@CELEX_NUMBER = 32015R1998
+POST https://publications.europa.eu/webapi/rdf/sparql
+Accept: application/sparql-results+json
+Content-Type: application/x-www-form-urlencoded
+
+query = PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?expression ?language
+WHERE {
+  # Retrieve the work by its CELEX number
+  ?work cdm:resource_legal_id_celex "{{CELEX_NUMBER}}"^^xsd:string .
+
+  # Find all expressions that belong to this work
+  ?expression cdm:expression_belongs_to_work ?work ;
+              cdm:expression_uses_language ?language .
+}
+
+> {%
+    var bindings = response.body.results.bindings;
+
+    const result = bindings.filter(item =>
+        item.language.value.endsWith('language/ENG')
+    );
+    const expression = result[0].expression.value
+
+    console.log(expression)
+
+%}
+
+### 32015R1998: Doc 1 (TOC)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01000101.doc.xml
+
+### 32015R1998: Doc 2 (Regulation)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01000101.xml
+
+### 32015R1998: Doc 3 (Annex 3 - 67)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01000301.xml
+
+### 32015R1998: Doc 4 (Annex 68-84)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01006801.xml
+
+### 32015R1998: Doc 5 (Annex 85-100)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01008501.xml
+
+### 32015R1998: Doc 6 (Annex 101-142)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01010101.xml
+
+
+
+### 32015R2426: Doc 1 (TOC)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01000101.doc.xml
+
+### 32015R2426: Doc 2 (Regulation)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01000101.xml
+
+### 32015R2426: Doc 3 (Annex 3 - 67)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01000301.xml
+
+### 32015R2426: Doc 4 (Annex 68-84)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01006801.xml
+
+### 32015R2426: Doc 5 (Annex 85-100)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01008501.xml
+
+### 32015R2426: Doc 6 (Annex 101-142)
+GET http://publications.europa.eu/resource/immc/20151027-024%3AC%282015%297492%2F812657.ENG.fmx4.L_2015299EN.01010101.xml

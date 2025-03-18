@@ -18,6 +18,6 @@ public record ResourceLegalAmendment(
         LocalDate resourceLegalDateEntryIntoForce,
         LocalDate resourceLegalDateApplicability,
         URI workCreatedByAgent,
-        String amendmentType,
+        URI amendmentType,
         String subdivisionConcerned
 ) {}
