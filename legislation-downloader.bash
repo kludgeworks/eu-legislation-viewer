@@ -4,7 +4,7 @@
 # Example: ./legislation-downloader.bash 32015R1998
 # Author: Tim-Sparg_afklm
 # Date: 2025-03-19
-# Updated to also download amendments
+# Updated to also download amendments and consolidations
 
 # Constants
 ENDPOINT="https://publications.europa.eu/webapi/rdf/sparql"
@@ -163,6 +163,32 @@ ORDER BY ?date"
     echo "${amendments}"
 }
 
+# Get consolidations for the given amendment CELEX number
+get_consolidations() {
+    local amendment_celex="$1"
+
+    local query="PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?consolidation ?consDate ?celexId ?eli
+WHERE {
+  # Get the amendment regulation by its CELEX number
+  ?amendment cdm:resource_legal_id_celex \"${amendment_celex}\"^^xsd:string .
+
+  # Find consolidated versions that incorporate this amendment
+  ?consolidation cdm:act_consolidated_consolidates_resource_legal ?amendment ;
+                cdm:act_consolidated_date ?consDate ;
+                cdm:resource_legal_id_celex ?celexId .
+
+  # Optional ELI identifier
+  OPTIONAL { ?consolidation cdm:resource_legal_eli ?eli }
+}
+ORDER BY ?consDate"
+
+    local consolidations=$(execute_sparql_query "${query}")
+    echo "${consolidations}"
+}
+
 # Download content for each item
 download_content() {
     local celex="$1"
@@ -238,11 +264,68 @@ download_legislation() {
     echo "Legislation ${celex} downloaded successfully!"
 }
 
+    # Process consolidations for an amendment
+process_consolidations() {
+    local amendment_celex="$1"
+    local amendment_dir="$2"
+
+    echo "Finding consolidations that incorporate amendment ${amendment_celex}..."
+    local consolidations_data=$(get_consolidations "${amendment_celex}")
+
+    # Check if consolidations were found
+    if [ -z "${consolidations_data}" ] || [ "$(echo "${consolidations_data}" | jq '.results.bindings | length')" -eq 0 ]; then
+        echo "No consolidations found that incorporate amendment ${amendment_celex}"
+        return 0
+    fi
+
+    # Get number of consolidations
+    local consolidation_count=$(echo "${consolidations_data}" | jq '.results.bindings | length')
+    echo "Found ${consolidation_count} consolidations incorporating amendment ${amendment_celex}"
+
+    # Create a summary file
+    echo "Creating consolidations summary file..."
+    echo "# Consolidations incorporating amendment ${amendment_celex}" > "${amendment_dir}/consolidations_summary.md"
+    echo "Total consolidations found: ${consolidation_count}" >> "${amendment_dir}/consolidations_summary.md"
+    echo "" >> "${amendment_dir}/consolidations_summary.md"
+    echo "| # | CELEX | Date | ELI |" >> "${amendment_dir}/consolidations_summary.md"
+    echo "| --- | --- | --- | --- |" >> "${amendment_dir}/consolidations_summary.md"
+
+    # Extract indexes for consolidations
+    local indexes=$(echo "${consolidations_data}" | jq '.results.bindings | keys | .[]')
+
+    # Counter for consolidation progress
+    local counter=0
+
+    # Download each consolidation
+    for i in ${indexes}; do
+        # Increment counter for display
+        counter=$((counter + 1))
+
+        local consolidation_celex=$(echo "${consolidations_data}" | jq -r ".results.bindings[${i}].celexId.value")
+        local consolidation_date=$(echo "${consolidations_data}" | jq -r ".results.bindings[${i}].consDate.value // \"(No date)\"")
+        local consolidation_eli=$(echo "${consolidations_data}" | jq -r ".results.bindings[${i}].eli.value // \"(No ELI available)\"")
+
+        echo ""
+        echo "Processing consolidation ${counter}/${consolidation_count}: ${consolidation_celex}"
+        echo "Date: ${consolidation_date}"
+        echo "ELI: ${consolidation_eli}"
+
+        # Add to summary
+        echo "| ${counter} | ${consolidation_celex} | ${consolidation_date} | ${consolidation_eli} |" >> "${amendment_dir}/consolidations_summary.md"
+
+        # Download this consolidation (create a subdirectory for each)
+        download_legislation "${consolidation_celex}" "${amendment_dir}" "false"
+    done
+
+    echo "All consolidations processed successfully!"
+    return 0
+}
+
 # Process amendments for a legislation
 process_amendments() {
     local celex="$1"
     local base_dir="${2:-.}"
-    local amendments_dir="${base_dir}/${celex}"
+    local original_dir="${base_dir}/${celex}"
 
     echo "Finding amendments to ${celex}..."
     local amendments_data=$(get_amendments "${celex}")
@@ -259,11 +342,11 @@ process_amendments() {
 
     # Create a summary file
     echo "Creating amendments summary file..."
-    echo "# Amendments to ${celex}" > "${amendments_dir}/amendments_summary.md"
-    echo "Total amendments found: ${amendment_count}" >> "${amendments_dir}/amendments_summary.md"
-    echo "" >> "${amendments_dir}/amendments_summary.md"
-    echo "| # | CELEX | Date | Title |" >> "${amendments_dir}/amendments_summary.md"
-    echo "| --- | --- | --- | --- |" >> "${amendments_dir}/amendments_summary.md"
+    echo "# Amendments to ${celex}" > "${original_dir}/amendments_summary.md"
+    echo "Total amendments found: ${amendment_count}" >> "${original_dir}/amendments_summary.md"
+    echo "" >> "${original_dir}/amendments_summary.md"
+    echo "| # | CELEX | Date | Title | Consolidations |" >> "${original_dir}/amendments_summary.md"
+    echo "| --- | --- | --- | --- | --- |" >> "${original_dir}/amendments_summary.md"
 
     # Extract indexes for amendments
     local indexes=$(echo "${amendments_data}" | jq '.results.bindings | keys | .[]')
@@ -271,7 +354,7 @@ process_amendments() {
     # Counter for amendment progress
     local counter=0
 
-    # Download each amendment
+    # Process each amendment
     for i in ${indexes}; do
         # Increment counter for display
         counter=$((counter + 1))
@@ -285,11 +368,37 @@ process_amendments() {
         echo "Title: ${amendment_title}"
         echo "Date: ${amendment_date}"
 
-        # Add to summary
-        echo "| ${counter} | ${amendment_celex} | ${amendment_date} | ${amendment_title} |" >> "${amendments_dir}/amendments_summary.md"
+        # 1. Get amendment files data first
+        echo "Step 1: Finding English expression for amendment..."
+        local eng_expression=$(get_english_expression "${amendment_celex}")
+        echo "English expression URI: ${eng_expression}"
 
-        # Download this amendment
-        download_legislation "${amendment_celex}" "${amendments_dir}"
+        echo "Step 2: Finding Formex manifestation for amendment..."
+        local fmx4_manifestation=$(get_formex_manifestation "${eng_expression}")
+        echo "Formex manifestation URI: ${fmx4_manifestation}"
+
+        echo "Step 3: Finding content streams for amendment..."
+        local content_streams=$(get_content_streams "${fmx4_manifestation}")
+
+        # 2. Create proper directory structure
+        local amendment_dir="${original_dir}/${amendment_celex}"
+        mkdir -p "${amendment_dir}"
+
+        # 3. Download content directly to amendment directory
+        echo "Step 4: Downloading amendment content..."
+        download_content "${amendment_celex}" "${content_streams}" "${amendment_dir}"
+
+        # Process consolidations for this amendment
+        echo "Looking for consolidations that incorporate this amendment..."
+        process_consolidations "${amendment_celex}" "${amendment_dir}"
+
+        # Count consolidations for summary
+        local consolidations_count=0
+        # Count consolidation directories directly in the amendment directory
+        consolidations_count=$(find "${amendment_dir}" -maxdepth 1 -type d -name "0*" | wc -l)
+
+        # Add to summary with consolidation count
+        echo "| ${counter} | ${amendment_celex} | ${amendment_date} | ${amendment_title} | ${consolidations_count} |" >> "${original_dir}/amendments_summary.md"
     done
 
     echo "All amendments processed successfully!"
@@ -315,13 +424,13 @@ main() {
     # Download the original legislation
     download_legislation "${celex}" "${base_dir}"
 
-    # Process amendments as a separate function
+    # Process amendments with consolidations
     process_amendments "${celex}" "${base_dir}"
 
     echo ""
     echo "Process completed successfully!"
     echo "Original legislation: ${base_dir}/${celex}"
-    echo "Amendments: ${base_dir}/${celex}"
+    echo "Amendments and consolidations: ${base_dir}/${celex}"
 }
 
 # Execute main function with all arguments
