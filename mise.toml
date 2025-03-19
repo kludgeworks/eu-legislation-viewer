@@ -1,5 +1,5 @@
 [tools]
 delta = "latest"
-java = "graalvm-community-23.0.2"
+java = "liberica-23"
 jq = "latest"
 jx = "latest"
