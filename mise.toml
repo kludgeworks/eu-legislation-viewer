@@ -3,3 +3,11 @@ delta = "latest"
 java = "liberica-23"
 jq = "latest"
 shellcheck = "latest"
+
+[tasks.to-excel]
+description = "transform xml to excel"
+run = "xsltproc xslt/excel.xslt xslt/sample.xml"
+
+#[tasks.to-markdown]
+#description = "transform xml to markdown"
+#run = "cargo build"
