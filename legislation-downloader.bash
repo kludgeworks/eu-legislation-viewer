@@ -244,29 +244,94 @@ download_content() {
         manifestation_type=$(echo "${content_streams}" | jq -r ".[${i}].\"manifestation.type\"")
 
         echo "Downloading (${counter}/${item_count}): ${identifier_literal} (${manifestation_type})"
-        http --follow "${item_uri}" > "${output_dir}/${identifier_literal}.tmp"
+        local tmp_file="${output_dir}/${identifier_literal}.tmp"
+        http --stream --follow --download "${item_uri}" > "${tmp_file}"
 
         if [ $? -ne 0 ]; then
             echo "Warning: Failed to download ${item_uri}" >&2
-            # Remove temp file if download failed
-            rm -f "${output_dir}/${identifier_literal}.tmp"
+            rm -f "${tmp_file}"
+            continue
+        fi
+
+        # Check if file is a ZIP archive by examining the first 4 bytes (ZIP signature is PK\x03\x04)
+        local first_bytes
+        first_bytes=$(hexdump -n 4 -e '4/1 "%02x"' "${tmp_file}")
+
+        if [[ "${first_bytes}" == "504b0304" ]]; then
+            # Handle ZIP file
+            process_zip_file "${tmp_file}" "${output_dir}" "${identifier_literal}" "${manifestation_type}"
         else
-            # Process with xmllint after successful download if it's fmx4 format
-            if [ "${manifestation_type}" == "fmx4" ]; then
-                cat "${output_dir}/${identifier_literal}.tmp" | xmllint --format - > "${output_dir}/${identifier_literal}.xml"
-                rm -f "${output_dir}/${identifier_literal}.tmp"
-                echo "Successfully saved: ${output_dir}/${identifier_literal}.xml"
-            elif [ "${manifestation_type}" == "xhtml" ]; then
-                # For xhtml, just save as html without processing
-                mv "${output_dir}/${identifier_literal}.tmp" "${output_dir}/${identifier_literal}.html"
-                echo "Successfully saved: ${output_dir}/${identifier_literal}.html"
-            else
-                # For unknown types, try to guess from content or just save as txt
-                mv "${output_dir}/${identifier_literal}.tmp" "${output_dir}/${identifier_literal}.txt"
-                echo "Successfully saved: ${output_dir}/${identifier_literal}.txt (unknown format)"
-            fi
+            # Handle regular file
+            process_regular_file "${tmp_file}" "${output_dir}" "${identifier_literal}" "${manifestation_type}"
         fi
     done
+}
+
+# Process a ZIP file based on manifestation type
+process_zip_file() {
+    local zip_file="$1"
+    local output_dir="$2"
+    local identifier="$3"
+    local manifestation_type="$4"
+
+    echo "Detected ZIP file, extracting content..."
+    local extract_dir="${output_dir}/${identifier}_extracted"
+    mkdir -p "${extract_dir}"
+
+    if ! unzip -q "${zip_file}" -d "${extract_dir}"; then
+        echo "Warning: Failed to extract ZIP file" >&2
+        mv "${zip_file}" "${output_dir}/${identifier}.zip"
+        echo "Saved original ZIP as: ${output_dir}/${identifier}.zip"
+        return
+    fi
+
+    # Remove the temporary file after successful extraction
+    rm -f "${zip_file}"
+
+    # Process extracted files based on manifestation type
+    if [ "${manifestation_type}" == "fmx4" ]; then
+        # Find XML files in the extracted directory
+        find "${extract_dir}" -name "*.xml" -type f | while read -r xml_file; do
+            local xml_basename
+            xml_basename=$(basename "${xml_file}")
+            echo "Processing XML file: ${xml_basename}"
+            cat "${xml_file}" | xmllint --format - > "${output_dir}/${identifier}_${xml_basename}"
+            echo "Saved formatted XML: ${output_dir}/${identifier}_${xml_basename}"
+        done
+    elif [ "${manifestation_type}" == "xhtml" ]; then
+        # Find HTML files in the extracted directory
+        find "${extract_dir}" -name "*.html" -o -name "*.htm" -o -name "*.xhtml" -type f | while read -r html_file; do
+            local html_basename
+            html_basename=$(basename "${html_file}")
+            echo "Found HTML file: ${html_basename}"
+            cp "${html_file}" "${output_dir}/${identifier}_${html_basename}"
+            echo "Saved HTML: ${output_dir}/${identifier}_${html_basename}"
+        done
+    fi
+
+    echo "Extracted files available in: ${extract_dir}"
+}
+
+# Process a regular (non-ZIP) file based on manifestation type
+process_regular_file() {
+    local tmp_file="$1"
+    local output_dir="$2"
+    local identifier="$3"
+    local manifestation_type="$4"
+
+    if [ "${manifestation_type}" == "fmx4" ]; then
+        cat "${tmp_file}" | xmllint --format - > "${output_dir}/${identifier}.xml"
+        rm -f "${tmp_file}"
+        echo "Successfully saved: ${output_dir}/${identifier}.xml"
+    elif [ "${manifestation_type}" == "xhtml" ]; then
+        # For xhtml, just save as html without processing
+        mv "${tmp_file}" "${output_dir}/${identifier}.html"
+        echo "Successfully saved: ${output_dir}/${identifier}.html"
+    else
+        # For unknown types, just save as txt
+        mv "${tmp_file}" "${output_dir}/${identifier}.txt"
+        echo "Successfully saved: ${output_dir}/${identifier}.txt (unknown format)"
+    fi
 }
 
 # Download legislation by CELEX number
