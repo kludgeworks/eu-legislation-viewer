@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 # Script to query EU legal document expressions by CELEX number
 # Usage: ./legislation-downloader.bash <CELEX_NUMBER>
 # Example: ./legislation-downloader.bash 32015R1998
@@ -19,7 +21,7 @@ usage() {
 
 # Check if required dependencies are installed
 check_dependencies() {
-    for cmd in http jq xq; do
+    for cmd in http jq xmllint; do
         if ! command -v $cmd &> /dev/null; then
             echo "Error: Required command '$cmd' not found"
             echo "Please install the required dependencies"
@@ -232,9 +234,9 @@ download_content() {
             # Remove temp file if download failed
             rm -f "${output_dir}/${identifier_literal}.tmp"
         else
-            # Process with xq after successful download if it's fmx4 format
+            # Process with xmllint after successful download if it's fmx4 format
             if [ "${manifestation_type}" == "fmx4" ]; then
-                cat "${output_dir}/${identifier_literal}.tmp" | xq > "${output_dir}/${identifier_literal}.xml"
+                cat "${output_dir}/${identifier_literal}.tmp" | xmllint --format - > "${output_dir}/${identifier_literal}.xml"
                 rm -f "${output_dir}/${identifier_literal}.tmp"
                 echo "Successfully saved: ${output_dir}/${identifier_literal}.xml"
             elif [ "${manifestation_type}" == "xhtml" ]; then

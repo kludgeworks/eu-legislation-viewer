@@ -2,4 +2,4 @@
 delta = "latest"
 java = "liberica-23"
 jq = "latest"
-jx = "latest"
+shellcheck = "latest"
