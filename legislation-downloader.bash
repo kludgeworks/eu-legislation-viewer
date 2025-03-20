@@ -3,8 +3,9 @@
 # Usage: ./legislation-downloader.bash <CELEX_NUMBER>
 # Example: ./legislation-downloader.bash 32015R1998
 # Author: Tim-Sparg_afklm
-# Date: 2025-03-19
+# Date: 2025-03-20
 # Updated to also download amendments and consolidations
+# Updated: Added support for both xhtml and fmx4 manifestations
 
 # Constants
 ENDPOINT="https://publications.europa.eu/webapi/rdf/sparql"
@@ -67,8 +68,8 @@ WHERE {
     echo "${eng_expression}"
 }
 
-# Get the Formex manifestation URI for the given expression
-get_formex_manifestation() {
+# Get both fmx4 and xhtml manifestations for the given expression
+get_manifestations() {
     local expression_uri="$1"
 
     local query="PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
@@ -88,20 +89,22 @@ WHERE {
     # Save manifestations data for reference
     echo "${manifestations_data}" > manifestations.json
 
-    # Extract the manifestation with type 'fmx4'
-    local fmx4_manifestation=$(echo "${manifestations_data}" | jq -r '.results.bindings[] | select(.type.value == "fmx4") | .manifestation.value')
+    # Extract both fmx4 and xhtml manifestations
+    local manifestations_json=$(echo "${manifestations_data}" | jq '[.results.bindings[] | select(.type.value == "fmx4" or .type.value == "xhtml") | {uri: .manifestation.value, type: .type.value}]')
 
-    if [ -z "${fmx4_manifestation}" ]; then
-        echo "Error: Could not find Formex manifestation for expression ${expression_uri}" >&2
+    # Check if we found any manifestations
+    if [ "$(echo "${manifestations_json}" | jq 'length')" -eq 0 ]; then
+        echo "Error: Could not find fmx4 or xhtml manifestations for expression ${expression_uri}" >&2
         exit 4
     fi
 
-    echo "${fmx4_manifestation}"
+    echo "${manifestations_json}"
 }
 
 # Get content streams for the given manifestation
 get_content_streams() {
     local manifestation_uri="$1"
+    local manifestation_type="$2"
 
     local query="PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 
@@ -121,7 +124,8 @@ WHERE {
     local content_streams=$(echo "${content_streams_data}" | jq '[.results.bindings[] | select(.property.value == "http://publications.europa.eu/ontology/cdm/cmr#manifestationMimeType")
 | {
       "item.uri": .item.value,
-      "identifier.literal": .identifier.value
+      "identifier.literal": .identifier.value,
+      "manifestation.type": "'"${manifestation_type}"'"
     }]')
 
     if [ "$(echo "${content_streams}" | jq 'length')" -eq 0 ]; then
@@ -210,27 +214,38 @@ download_content() {
     # Counter for download progress
     local counter=0
 
-    # Iterate through indexes using jq style
+    # Iterate through indexes using jq
     for i in ${indexes}; do
         # Increment counter for display
         counter=$((counter + 1))
 
-        # Get item URI and identifier using index
+        # Get item URI, identifier, and manifestation type using index
         local item_uri=$(echo "${content_streams}" | jq -r ".[${i}].\"item.uri\"")
         local identifier_literal=$(echo "${content_streams}" | jq -r ".[${i}].\"identifier.literal\"")
+        local manifestation_type=$(echo "${content_streams}" | jq -r ".[${i}].\"manifestation.type\"")
 
-        echo "Downloading (${counter}/${item_count}): ${identifier_literal}"
-        http --follow "${item_uri}" > "${output_dir}/${identifier_literal}.xml.tmp"
+        echo "Downloading (${counter}/${item_count}): ${identifier_literal} (${manifestation_type})"
+        http --follow "${item_uri}" > "${output_dir}/${identifier_literal}.tmp"
 
         if [ $? -ne 0 ]; then
             echo "Warning: Failed to download ${item_uri}" >&2
             # Remove temp file if download failed
-            rm -f "${output_dir}/${identifier_literal}.xml.tmp"
+            rm -f "${output_dir}/${identifier_literal}.tmp"
         else
-            # Process with xq after successful download
-            cat "${output_dir}/${identifier_literal}.xml.tmp" | xq > "${output_dir}/${identifier_literal}.xml"
-            rm -f "${output_dir}/${identifier_literal}.xml.tmp"
-            echo "Successfully saved: ${output_dir}/${identifier_literal}.xml"
+            # Process with xq after successful download if it's fmx4 format
+            if [ "${manifestation_type}" == "fmx4" ]; then
+                cat "${output_dir}/${identifier_literal}.tmp" | xq > "${output_dir}/${identifier_literal}.xml"
+                rm -f "${output_dir}/${identifier_literal}.tmp"
+                echo "Successfully saved: ${output_dir}/${identifier_literal}.xml"
+            elif [ "${manifestation_type}" == "xhtml" ]; then
+                # For xhtml, just save as html without processing
+                mv "${output_dir}/${identifier_literal}.tmp" "${output_dir}/${identifier_literal}.html"
+                echo "Successfully saved: ${output_dir}/${identifier_literal}.html"
+            else
+                # For unknown types, try to guess from content or just save as txt
+                mv "${output_dir}/${identifier_literal}.tmp" "${output_dir}/${identifier_literal}.txt"
+                echo "Successfully saved: ${output_dir}/${identifier_literal}.txt (unknown format)"
+            fi
         fi
     done
 }
@@ -248,23 +263,36 @@ download_legislation() {
     local eng_expression=$(get_english_expression "${celex}")
     echo "English expression URI: ${eng_expression}"
 
-    # Step 2: Get Formex manifestation
-    echo "Step 2: Finding Formex manifestation..."
-    local fmx4_manifestation=$(get_formex_manifestation "${eng_expression}")
-    echo "Formex manifestation URI: ${fmx4_manifestation}"
+    # Step 2: Get manifestations (both fmx4 and xhtml if available)
+    echo "Step 2: Finding manifestations (fmx4 and xhtml)..."
+    local manifestations=$(get_manifestations "${eng_expression}")
+    
+    echo "Found manifestations:"
+    echo "${manifestations}" | jq -r '.[] | "- Type: \(.type), URI: \(.uri)"'
 
-    # Step 3: Get content streams
-    echo "Step 3: Finding content streams..."
-    local content_streams=$(get_content_streams "${fmx4_manifestation}")
+    # Step 3: Process each manifestation type
+    local all_content_streams="[]"
+    
+    local manifest_indexes=$(echo "${manifestations}" | jq 'keys | .[]')
+    for i in ${manifest_indexes}; do
+        local manifestation_uri=$(echo "${manifestations}" | jq -r ".[${i}].uri")
+        local manifestation_type=$(echo "${manifestations}" | jq -r ".[${i}].type")
+        
+        echo "Step 3: Finding content streams for ${manifestation_type} manifestation..."
+        local this_content_streams=$(get_content_streams "${manifestation_uri}" "${manifestation_type}")
+        
+        # Merge the content streams
+        all_content_streams=$(echo "${all_content_streams}" "${this_content_streams}" | jq -s '.[0] + .[1]')
+    done
 
     # Step 4: Download content
-    echo "Step 4: Downloading content..."
-    download_content "${celex}" "${content_streams}" "${output_dir}"
+    echo "Step 4: Downloading content from all manifestations..."
+    download_content "${celex}" "${all_content_streams}" "${output_dir}"
 
     echo "Legislation ${celex} downloaded successfully!"
 }
 
-    # Process consolidations for an amendment
+# Process consolidations for an amendment
 process_consolidations() {
     local amendment_celex="$1"
     local amendment_dir="$2"
@@ -368,25 +396,40 @@ process_amendments() {
         echo "Title: ${amendment_title}"
         echo "Date: ${amendment_date}"
 
-        # 1. Get amendment files data first
+        # 1. Get amendment English expression
         echo "Step 1: Finding English expression for amendment..."
         local eng_expression=$(get_english_expression "${amendment_celex}")
         echo "English expression URI: ${eng_expression}"
 
-        echo "Step 2: Finding Formex manifestation for amendment..."
-        local fmx4_manifestation=$(get_formex_manifestation "${eng_expression}")
-        echo "Formex manifestation URI: ${fmx4_manifestation}"
+        # 2. Get manifestations (both fmx4 and xhtml if available)
+        echo "Step 2: Finding manifestations (fmx4 and xhtml) for amendment..."
+        local manifestations=$(get_manifestations "${eng_expression}")
+        
+        echo "Found manifestations for amendment:"
+        echo "${manifestations}" | jq -r '.[] | "- Type: \(.type), URI: \(.uri)"'
 
-        echo "Step 3: Finding content streams for amendment..."
-        local content_streams=$(get_content_streams "${fmx4_manifestation}")
+        # 3. Process each manifestation type and collect content streams
+        local all_content_streams="[]"
+        
+        local manifest_indexes=$(echo "${manifestations}" | jq 'keys | .[]')
+        for j in ${manifest_indexes}; do
+            local manifestation_uri=$(echo "${manifestations}" | jq -r ".[${j}].uri")
+            local manifestation_type=$(echo "${manifestations}" | jq -r ".[${j}].type")
+            
+            echo "Step 3: Finding content streams for ${manifestation_type} manifestation..."
+            local this_content_streams=$(get_content_streams "${manifestation_uri}" "${manifestation_type}")
+            
+            # Merge the content streams
+            all_content_streams=$(echo "${all_content_streams}" "${this_content_streams}" | jq -s '.[0] + .[1]')
+        done
 
-        # 2. Create proper directory structure
+        # 4. Create proper directory structure
         local amendment_dir="${original_dir}/${amendment_celex}"
         mkdir -p "${amendment_dir}"
 
-        # 3. Download content directly to amendment directory
+        # 5. Download content directly to amendment directory
         echo "Step 4: Downloading amendment content..."
-        download_content "${amendment_celex}" "${content_streams}" "${amendment_dir}"
+        download_content "${amendment_celex}" "${all_content_streams}" "${amendment_dir}"
 
         # Process consolidations for this amendment
         echo "Looking for consolidations that incorporate this amendment..."
