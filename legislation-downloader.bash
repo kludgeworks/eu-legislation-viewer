@@ -57,10 +57,12 @@ WHERE {
               cdm:expression_uses_language ?language .
 }"
 
-    local expressions=$(execute_sparql_query "${query}")
+    local expressions
+    expressions=$(execute_sparql_query "${query}")
 
     # Extract the expression value where language value ends with ENG
-    local eng_expression=$(echo "${expressions}" | jq -r '.results.bindings[] | select(.language.value | endswith("/ENG")) | .expression.value')
+    local eng_expression
+    eng_expression=$(echo "${expressions}" | jq -r '.results.bindings[] | select(.language.value | endswith("/ENG")) | .expression.value')
 
     if [ -z "${eng_expression}" ]; then
         echo "Error: Could not find English expression for CELEX ${celex}" >&2
@@ -86,16 +88,20 @@ WHERE {
   OPTIONAL { ?manifestation cdm:manifestation_mime-type ?mimeType }
 }"
 
-    local manifestations_data=$(execute_sparql_query "${query}")
+    local manifestations_data
+    manifestations_data=$(execute_sparql_query "${query}")
 
     # Save manifestations data for reference
     echo "${manifestations_data}" > manifestations.json
 
     # Extract both fmx4 and xhtml manifestations
-    local manifestations_json=$(echo "${manifestations_data}" | jq '[.results.bindings[] | select(.type.value == "fmx4" or .type.value == "xhtml") | {uri: .manifestation.value, type: .type.value}]')
+    local manifestations_json
+    manifestations_json=$(echo "${manifestations_data}" | jq '[.results.bindings[] | select(.type.value == "fmx4" or .type.value == "xhtml") | {uri: .manifestation.value, type: .type.value}]')
 
     # Check if we found any manifestations
-    if [ "$(echo "${manifestations_json}" | jq 'length')" -eq 0 ]; then
+    local count
+    count=$(echo "${manifestations_json}" | jq 'length')
+    if [ "${count}" -eq 0 ]; then
         echo "Error: Could not find fmx4 or xhtml manifestations for expression ${expression_uri}" >&2
         exit 4
     fi
@@ -120,17 +126,21 @@ WHERE {
   OPTIONAL { ?item cdm:item_identifier ?identifier }
 }"
 
-    local content_streams_data=$(execute_sparql_query "${query}")
+    local content_streams_data
+    content_streams_data=$(execute_sparql_query "${query}")
 
     # Process and filter the content streams
-    local content_streams=$(echo "${content_streams_data}" | jq '[.results.bindings[] | select(.property.value == "http://publications.europa.eu/ontology/cdm/cmr#manifestationMimeType")
+    local content_streams
+    content_streams=$(echo "${content_streams_data}" | jq '[.results.bindings[] | select(.property.value == "http://publications.europa.eu/ontology/cdm/cmr#manifestationMimeType")
 | {
       "item.uri": .item.value,
       "identifier.literal": .identifier.value,
       "manifestation.type": "'"${manifestation_type}"'"
     }]')
 
-    if [ "$(echo "${content_streams}" | jq 'length')" -eq 0 ]; then
+    local count
+    count=$(echo "${content_streams}" | jq 'length')
+    if [ "${count}" -eq 0 ]; then
         echo "Warning: No content streams found for manifestation ${manifestation_uri}" >&2
     fi
 
@@ -165,7 +175,8 @@ WHERE {
 }
 ORDER BY ?date"
 
-    local amendments=$(execute_sparql_query "${query}")
+    local amendments
+    amendments=$(execute_sparql_query "${query}")
     echo "${amendments}"
 }
 
@@ -191,7 +202,8 @@ WHERE {
 }
 ORDER BY ?consDate"
 
-    local consolidations=$(execute_sparql_query "${query}")
+    local consolidations
+    consolidations=$(execute_sparql_query "${query}")
     echo "${consolidations}"
 }
 
@@ -207,11 +219,13 @@ download_content() {
     echo "Downloading content to ${output_dir}/ directory..."
 
     # Get total number of items to download
-    local item_count=$(echo "${content_streams}" | jq 'length')
+    local item_count
+    item_count=$(echo "${content_streams}" | jq 'length')
     echo "Found ${item_count} items to download."
 
     # Extract indexes to iterate over
-    local indexes=$(echo "${content_streams}" | jq 'keys | .[]')
+    local indexes
+    indexes=$(echo "${content_streams}" | jq 'keys | .[]')
 
     # Counter for download progress
     local counter=0
@@ -222,9 +236,13 @@ download_content() {
         counter=$((counter + 1))
 
         # Get item URI, identifier, and manifestation type using index
-        local item_uri=$(echo "${content_streams}" | jq -r ".[${i}].\"item.uri\"")
-        local identifier_literal=$(echo "${content_streams}" | jq -r ".[${i}].\"identifier.literal\"")
-        local manifestation_type=$(echo "${content_streams}" | jq -r ".[${i}].\"manifestation.type\"")
+        local item_uri
+        local identifier_literal
+        local manifestation_type
+
+        item_uri=$(echo "${content_streams}" | jq -r ".[${i}].\"item.uri\"")
+        identifier_literal=$(echo "${content_streams}" | jq -r ".[${i}].\"identifier.literal\"")
+        manifestation_type=$(echo "${content_streams}" | jq -r ".[${i}].\"manifestation.type\"")
 
         echo "Downloading (${counter}/${item_count}): ${identifier_literal} (${manifestation_type})"
         http --follow "${item_uri}" > "${output_dir}/${identifier_literal}.tmp"
@@ -262,27 +280,34 @@ download_legislation() {
 
     # Step 1: Get English expression
     echo "Step 1: Finding English expression..."
-    local eng_expression=$(get_english_expression "${celex}")
+    local eng_expression
+    eng_expression=$(get_english_expression "${celex}")
     echo "English expression URI: ${eng_expression}"
 
     # Step 2: Get manifestations (both fmx4 and xhtml if available)
     echo "Step 2: Finding manifestations (fmx4 and xhtml)..."
-    local manifestations=$(get_manifestations "${eng_expression}")
-    
+    local manifestations
+    manifestations=$(get_manifestations "${eng_expression}")
+
     echo "Found manifestations:"
     echo "${manifestations}" | jq -r '.[] | "- Type: \(.type), URI: \(.uri)"'
 
     # Step 3: Process each manifestation type
     local all_content_streams="[]"
-    
-    local manifest_indexes=$(echo "${manifestations}" | jq 'keys | .[]')
+
+    local manifest_indexes
+    manifest_indexes=$(echo "${manifestations}" | jq 'keys | .[]')
     for i in ${manifest_indexes}; do
-        local manifestation_uri=$(echo "${manifestations}" | jq -r ".[${i}].uri")
-        local manifestation_type=$(echo "${manifestations}" | jq -r ".[${i}].type")
-        
+        local manifestation_uri
+        local manifestation_type
+
+        manifestation_uri=$(echo "${manifestations}" | jq -r ".[${i}].uri")
+        manifestation_type=$(echo "${manifestations}" | jq -r ".[${i}].type")
+
         echo "Step 3: Finding content streams for ${manifestation_type} manifestation..."
-        local this_content_streams=$(get_content_streams "${manifestation_uri}" "${manifestation_type}")
-        
+        local this_content_streams
+        this_content_streams=$(get_content_streams "${manifestation_uri}" "${manifestation_type}")
+
         # Merge the content streams
         all_content_streams=$(echo "${all_content_streams}" "${this_content_streams}" | jq -s '.[0] + .[1]')
     done
@@ -300,28 +325,35 @@ process_consolidations() {
     local amendment_dir="$2"
 
     echo "Finding consolidations that incorporate amendment ${amendment_celex}..."
-    local consolidations_data=$(get_consolidations "${amendment_celex}")
+    local consolidations_data
+    consolidations_data=$(get_consolidations "${amendment_celex}")
 
     # Check if consolidations were found
-    if [ -z "${consolidations_data}" ] || [ "$(echo "${consolidations_data}" | jq '.results.bindings | length')" -eq 0 ]; then
+    local consolidation_count=0
+    if [ -n "${consolidations_data}" ]; then
+        consolidation_count=$(echo "${consolidations_data}" | jq '.results.bindings | length')
+    fi
+
+    if [ -z "${consolidations_data}" ] || [ "${consolidation_count}" -eq 0 ]; then
         echo "No consolidations found that incorporate amendment ${amendment_celex}"
         return 0
     fi
 
-    # Get number of consolidations
-    local consolidation_count=$(echo "${consolidations_data}" | jq '.results.bindings | length')
     echo "Found ${consolidation_count} consolidations incorporating amendment ${amendment_celex}"
 
     # Create a summary file
-    echo "Creating consolidations summary file..."
-    echo "# Consolidations incorporating amendment ${amendment_celex}" > "${amendment_dir}/consolidations_summary.md"
-    echo "Total consolidations found: ${consolidation_count}" >> "${amendment_dir}/consolidations_summary.md"
-    echo "" >> "${amendment_dir}/consolidations_summary.md"
-    echo "| # | CELEX | Date | ELI |" >> "${amendment_dir}/consolidations_summary.md"
-    echo "| --- | --- | --- | --- |" >> "${amendment_dir}/consolidations_summary.md"
+    {
+        echo "# Consolidations incorporating amendment ${amendment_celex}"
+        echo "Total consolidations found: ${consolidation_count}"
+        echo ""
+        echo "| # | CELEX | Date | ELI |"
+        echo "| --- | --- | --- | --- |"
+    } > "${amendment_dir}/consolidations_summary.md"
+
 
     # Extract indexes for consolidations
-    local indexes=$(echo "${consolidations_data}" | jq '.results.bindings | keys | .[]')
+    local indexes
+    indexes=$(echo "${consolidations_data}" | jq '.results.bindings | keys | .[]')
 
     # Counter for consolidation progress
     local counter=0
@@ -331,9 +363,13 @@ process_consolidations() {
         # Increment counter for display
         counter=$((counter + 1))
 
-        local consolidation_celex=$(echo "${consolidations_data}" | jq -r ".results.bindings[${i}].celexId.value")
-        local consolidation_date=$(echo "${consolidations_data}" | jq -r ".results.bindings[${i}].consDate.value // \"(No date)\"")
-        local consolidation_eli=$(echo "${consolidations_data}" | jq -r ".results.bindings[${i}].eli.value // \"(No ELI available)\"")
+        local consolidation_celex
+        local consolidation_date
+        local consolidation_eli
+
+        consolidation_celex=$(echo "${consolidations_data}" | jq -r ".results.bindings[${i}].celexId.value")
+        consolidation_date=$(echo "${consolidations_data}" | jq -r ".results.bindings[${i}].consDate.value // \"(No date)\"")
+        consolidation_eli=$(echo "${consolidations_data}" | jq -r ".results.bindings[${i}].eli.value // \"(No ELI available)\"")
 
         echo ""
         echo "Processing consolidation ${counter}/${consolidation_count}: ${consolidation_celex}"
@@ -358,28 +394,34 @@ process_amendments() {
     local original_dir="${base_dir}/${celex}"
 
     echo "Finding amendments to ${celex}..."
-    local amendments_data=$(get_amendments "${celex}")
+    local amendments_data
+    amendments_data=$(get_amendments "${celex}")
 
     # Check if amendments were found
-    if [ -z "${amendments_data}" ] || [ "$(echo "${amendments_data}" | jq '.results.bindings | length')" -eq 0 ]; then
+    local amendment_count=0
+    if [ -n "${amendments_data}" ]; then
+        amendment_count=$(echo "${amendments_data}" | jq '.results.bindings | length')
+    fi
+
+    if [ -z "${amendments_data}" ] || [ "${amendment_count}" -eq 0 ]; then
         echo "No amendments found for CELEX ${celex}"
         return 0
     fi
 
-    # Get number of amendments
-    local amendment_count=$(echo "${amendments_data}" | jq '.results.bindings | length')
     echo "Found ${amendment_count} amendments to ${celex}"
 
     # Create a summary file
-    echo "Creating amendments summary file..."
-    echo "# Amendments to ${celex}" > "${original_dir}/amendments_summary.md"
-    echo "Total amendments found: ${amendment_count}" >> "${original_dir}/amendments_summary.md"
-    echo "" >> "${original_dir}/amendments_summary.md"
-    echo "| # | CELEX | Date | Title | Consolidations |" >> "${original_dir}/amendments_summary.md"
-    echo "| --- | --- | --- | --- | --- |" >> "${original_dir}/amendments_summary.md"
+    {
+        echo "# Amendments to ${celex}"
+        echo "Total amendments found: ${amendment_count}"
+        echo ""
+        echo "| # | CELEX | Date | Title | Consolidations |"
+        echo "| --- | --- | --- | --- | --- |"
+    } > "${original_dir}/amendments_summary.md"
 
     # Extract indexes for amendments
-    local indexes=$(echo "${amendments_data}" | jq '.results.bindings | keys | .[]')
+    local indexes
+    indexes=$(echo "${amendments_data}" | jq '.results.bindings | keys | .[]')
 
     # Counter for amendment progress
     local counter=0
@@ -389,47 +431,54 @@ process_amendments() {
         # Increment counter for display
         counter=$((counter + 1))
 
-        local amendment_celex=$(echo "${amendments_data}" | jq -r ".results.bindings[${i}].amendmentCelex.value")
-        local amendment_title=$(echo "${amendments_data}" | jq -r ".results.bindings[${i}].title.value // \"(No title available)\"")
-        local amendment_date=$(echo "${amendments_data}" | jq -r ".results.bindings[${i}].date.value // \"(No date)\"")
+        local amendment_celex
+        local amendment_title
+        local amendment_date
+
+        amendment_celex=$(echo "${amendments_data}" | jq -r ".results.bindings[${i}].amendmentCelex.value")
+        amendment_title=$(echo "${amendments_data}" | jq -r ".results.bindings[${i}].title.value // \"(No title available)\"")
+        amendment_date=$(echo "${amendments_data}" | jq -r ".results.bindings[${i}].date.value // \"(No date)\"")
 
         echo ""
         echo "Processing amendment ${counter}/${amendment_count}: ${amendment_celex}"
         echo "Title: ${amendment_title}"
         echo "Date: ${amendment_date}"
 
-        # 1. Get amendment English expression
         echo "Step 1: Finding English expression for amendment..."
-        local eng_expression=$(get_english_expression "${amendment_celex}")
+        local eng_expression
+        eng_expression=$(get_english_expression "${amendment_celex}")
         echo "English expression URI: ${eng_expression}"
 
-        # 2. Get manifestations (both fmx4 and xhtml if available)
         echo "Step 2: Finding manifestations (fmx4 and xhtml) for amendment..."
-        local manifestations=$(get_manifestations "${eng_expression}")
-        
+        local manifestations
+        manifestations=$(get_manifestations "${eng_expression}")
+
         echo "Found manifestations for amendment:"
         echo "${manifestations}" | jq -r '.[] | "- Type: \(.type), URI: \(.uri)"'
 
         # 3. Process each manifestation type and collect content streams
         local all_content_streams="[]"
-        
-        local manifest_indexes=$(echo "${manifestations}" | jq 'keys | .[]')
+
+        local manifest_indexes
+        manifest_indexes=$(echo "${manifestations}" | jq 'keys | .[]')
         for j in ${manifest_indexes}; do
-            local manifestation_uri=$(echo "${manifestations}" | jq -r ".[${j}].uri")
-            local manifestation_type=$(echo "${manifestations}" | jq -r ".[${j}].type")
-            
+            local manifestation_uri
+            local manifestation_type
+
+            manifestation_uri=$(echo "${manifestations}" | jq -r ".[${j}].uri")
+            manifestation_type=$(echo "${manifestations}" | jq -r ".[${j}].type")
+
             echo "Step 3: Finding content streams for ${manifestation_type} manifestation..."
-            local this_content_streams=$(get_content_streams "${manifestation_uri}" "${manifestation_type}")
+            local this_content_streams
+            this_content_streams=$(get_content_streams "${manifestation_uri}" "${manifestation_type}")
             
             # Merge the content streams
             all_content_streams=$(echo "${all_content_streams}" "${this_content_streams}" | jq -s '.[0] + .[1]')
         done
 
-        # 4. Create proper directory structure
         local amendment_dir="${original_dir}/${amendment_celex}"
         mkdir -p "${amendment_dir}"
 
-        # 5. Download content directly to amendment directory
         echo "Step 4: Downloading amendment content..."
         download_content "${amendment_celex}" "${all_content_streams}" "${amendment_dir}"
 
