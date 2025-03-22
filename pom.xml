@@ -21,17 +21,19 @@
 		<spring-shell.version>3.4.0</spring-shell.version>
 		<jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
 		<jena-core.version>5.3.0</jena-core.version>
-		<record.builder.version>44</record.builder.version>
 		<jspecify.version>1.0.0</jspecify.version>
+		<mapstruct.version>1.6.3</mapstruct.version>
+		<spring-plugin-core.version>3.0.0</spring-plugin-core.version>
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-cache</artifactId>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.modulith</groupId>
@@ -42,10 +44,15 @@
 			<artifactId>spring-shell-starter</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.soabase.record-builder</groupId>
-			<artifactId>record-builder-core</artifactId>
-			<version>${record.builder.version}</version>
-			<scope>provided</scope>
+			<groupId>org.springframework.plugin</groupId>
+			<artifactId>spring-plugin-core</artifactId>
+			<version>${spring-plugin-core.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
 		</dependency>
 
 		<dependency>
@@ -87,22 +94,11 @@
 			<artifactId>spring-shell-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
-
-
 <!--		<dependency>-->
-<!--			<groupId>org.apache.jena</groupId>-->
-<!--			<artifactId>jena-cmds</artifactId>-->
+<!--			<groupId>org.apache.xmlbeans</groupId>-->
+<!--			<artifactId>xmlbeans</artifactId>-->
 <!--			<version>5.3.0</version>-->
-<!--			<scope>compile</scope>-->
 <!--		</dependency>-->
-
-		<dependency>
-			<groupId>org.apache.xmlbeans</groupId>
-			<artifactId>xmlbeans</artifactId>
-			<version>5.3.0</version>
-		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -136,6 +132,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -143,30 +147,34 @@
 				<configuration>
 					<annotationProcessorPaths>
 						<path>
-							<groupId>io.soabase.record-builder</groupId>
-							<artifactId>record-builder-processor</artifactId>
-							<version>${record.builder.version}</version>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${mapstruct.version}</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.18.36</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.xmlbeans</groupId>
-				<artifactId>xmlbeans</artifactId>
-				<version>5.3.0</version>
-				<executions><execution><goals><goal>compile</goal></goals></execution></executions>
-				<configuration>
-					<sourceDir>src/main/resources/xsd</sourceDir>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.logging.log4j</groupId>
-						<artifactId>log4j-core</artifactId>
-						<version>2.23.1</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.xmlbeans</groupId>-->
+<!--				<artifactId>xmlbeans</artifactId>-->
+<!--				<version>5.3.0</version>-->
+<!--				<executions><execution><goals><goal>compile</goal></goals></execution></executions>-->
+<!--				<configuration>-->
+<!--					<sourceDir>src/main/resources/xsd</sourceDir>-->
+<!--				</configuration>-->
+<!--				<dependencies>-->
+<!--					<dependency>-->
+<!--						<groupId>org.apache.logging.log4j</groupId>-->
+<!--						<artifactId>log4j-core</artifactId>-->
+<!--						<version>2.23.1</version>-->
+<!--					</dependency>-->
+<!--				</dependencies>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
-
 </project>
