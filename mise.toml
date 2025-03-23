@@ -11,7 +11,7 @@ run = "java -jar target/eu.legislation.cli-0.0.1-SNAPSHOT.jar download 32015R199
 [tasks.transform]
 description = "transform xml to html"
 run = """
-xsltproc --xinclude xslt/legislation/legislation.xslt - <<EOF > 32015R1998.html
+xsltproc --xinclude xslt/legislation.xslt - <<EOF > 32015R1998.html
 <root>
   <xi:include href="legislation/32015R1998/DOC_2.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="legislation/32015R1998/DOC_3.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
