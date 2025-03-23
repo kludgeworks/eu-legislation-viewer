@@ -24,25 +24,47 @@
         </xsl:for-each>
     </xsl:variable>
 
-    <xsl:variable name="source_date">2015-11-05</xsl:variable>
-    <xsl:variable name="valid_from">2016-02-01</xsl:variable>
+    <!-- Extract source date from the document -->
+    <xsl:variable name="source_date">
+        <xsl:value-of select="//ACT/TITLE/TI/P[2]/DATE/@ISO"/>
+    </xsl:variable>
+
+    <!-- Extract valid from date from the document -->
+    <xsl:variable name="valid_from">
+        <xsl:value-of select="//ACT/ENACTING.TERMS/ARTICLE[@IDENTIFIER='003']/ALINEA[2]/DATE/@ISO"/>
+    </xsl:variable>
 
     <!-- Main template -->
     <xsl:template match="/">
         <ss:Workbook>
+            <!-- Define styles -->
+            <ss:Styles>
+                <ss:Style ss:ID="Default" ss:Name="Normal">
+                    <ss:Alignment ss:Vertical="Bottom"/>
+                    <ss:Borders/>
+                    <ss:Font/>
+                    <ss:Interior/>
+                    <ss:NumberFormat/>
+                    <ss:Protection/>
+                </ss:Style>
+                <ss:Style ss:ID="Bold">
+                    <ss:Font ss:Bold="1"/>
+                </ss:Style>
+            </ss:Styles>
+
             <ss:Worksheet ss:Name="Requirements">
                 <ss:Table>
                     <!-- Header row -->
                     <ss:Row>
-                        <ss:Cell><ss:Data ss:Type="String">Number</ss:Data></ss:Cell>
-                        <ss:Cell><ss:Data ss:Type="String">Requirement</ss:Data></ss:Cell>
-                        <ss:Cell><ss:Data ss:Type="String">Guidance</ss:Data></ss:Cell>
-                        <ss:Cell><ss:Data ss:Type="String">Description</ss:Data></ss:Cell>
-                        <ss:Cell><ss:Data ss:Type="String">Source</ss:Data></ss:Cell>
-                        <ss:Cell><ss:Data ss:Type="String">Source Date</ss:Data></ss:Cell>
-                        <ss:Cell><ss:Data ss:Type="String">Valid from</ss:Data></ss:Cell>
-                        <ss:Cell><ss:Data ss:Type="String">Valid to</ss:Data></ss:Cell>
-                        <ss:Cell><ss:Data ss:Type="String">Changed</ss:Data></ss:Cell>
+                        <ss:Cell ss:StyleID="Bold"><ss:Data ss:Type="String">Number</ss:Data></ss:Cell>
+                        <ss:Cell ss:StyleID="Bold"><ss:Data ss:Type="String">Requirement</ss:Data></ss:Cell>
+                        <ss:Cell ss:StyleID="Bold"><ss:Data ss:Type="String">Guidance</ss:Data></ss:Cell>
+                        <ss:Cell ss:StyleID="Bold"><ss:Data ss:Type="String">Description</ss:Data></ss:Cell>
+                        <ss:Cell ss:StyleID="Bold"><ss:Data ss:Type="String">Source</ss:Data></ss:Cell>
+                        <ss:Cell ss:StyleID="Bold"><ss:Data ss:Type="String">Source Date</ss:Data></ss:Cell>
+                        <ss:Cell ss:StyleID="Bold"><ss:Data ss:Type="String">Valid from</ss:Data></ss:Cell>
+                        <ss:Cell ss:StyleID="Bold"><ss:Data ss:Type="String">Valid to</ss:Data></ss:Cell>
+                        <ss:Cell ss:StyleID="Bold"><ss:Data ss:Type="String">Changed</ss:Data></ss:Cell>
                     </ss:Row>
 
                     <!-- Some of the elements of the first row are hardcoded, so give it some special processing -->
