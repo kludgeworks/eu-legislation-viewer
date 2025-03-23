@@ -31,7 +31,8 @@ EOF
 description = "transform xml to html"
 run = """
 find xslt/legislation -name "*.xslt" | while read file; do
-  echo -e "\n## $file\n"
+  echo "\n## $file\n"
   cat "$file"
+  echo "\n"
 done
 """

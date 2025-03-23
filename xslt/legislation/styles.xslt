@@ -94,6 +94,10 @@
             text-indent: -20px;
             padding-left: 20px;
             }
+            .footnote-item p {
+            margin: 0;
+            display: inline;
+            }
             .footnote-number {
             vertical-align: super;
             font-size: smaller;
@@ -130,6 +134,10 @@
             text-indent: -15px;
             padding-left: 15px;
             }
+            .dash-list li p {
+            margin: 0;
+            display: inline;
+            }
             .dash-list li:before {
             content: "— ";
             }
@@ -153,6 +161,23 @@
             /* To handle nested lists better */
             .nested-content {
             margin-left: 20px;
+            }
+            /* Definition list styles */
+            .definition-list {
+            margin: 15px 0;
+            padding-left: 10px;
+            }
+            .definition-list dt {
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            }
+            .definition-list dd {
+            margin-left: 20px;
+            margin-bottom: 10px;
+            }
+            .prefix {
+            font-weight: normal;
             }
         </style>
     </xsl:template>

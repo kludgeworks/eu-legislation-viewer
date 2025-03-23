@@ -51,12 +51,47 @@
                             <xsl:apply-templates select="NP/P/LIST"/>
                         </div>
                     </xsl:if>
-
-                    <!-- Other processing logic... -->
                 </xsl:when>
-                <!-- Other cases... -->
+                <!-- Handle list items with direct P element -->
+                <xsl:when test="P">
+                    <xsl:apply-templates select="P"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:apply-templates/>
+                </xsl:otherwise>
             </xsl:choose>
         </li>
+    </xsl:template>
+
+    <!-- Handle DLIST (definition list) -->
+    <xsl:template match="DLIST">
+        <dl class="definition-list">
+            <xsl:apply-templates select="DLIST.ITEM"/>
+        </dl>
+    </xsl:template>
+
+    <!-- Handle DLIST.ITEM -->
+    <xsl:template match="DLIST.ITEM">
+        <dt>
+            <xsl:if test="PREFIX">
+                <span class="prefix"><xsl:value-of select="PREFIX"/></span>
+                <xsl:text> </xsl:text>
+            </xsl:if>
+            <xsl:apply-templates select="TERM"/>
+        </dt>
+        <dd>
+            <xsl:apply-templates select="DEFINITION"/>
+        </dd>
+    </xsl:template>
+
+    <!-- Handle TERM element -->
+    <xsl:template match="TERM">
+        <xsl:apply-templates/>
+    </xsl:template>
+
+    <!-- Handle DEFINITION element -->
+    <xsl:template match="DEFINITION">
+        <xsl:apply-templates/>
     </xsl:template>
 
 </xsl:stylesheet>
