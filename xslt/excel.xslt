@@ -67,7 +67,7 @@
                         <ss:Cell ss:StyleID="Bold"><ss:Data ss:Type="String">Changed</ss:Data></ss:Cell>
                     </ss:Row>
 
-                    <!-- Some of the elements of the first row are hardcoded, so give it some special processing -->
+                    <!-- Hard-coded first row as requested -->
                     <ss:Row>
                         <ss:Cell><ss:Data ss:Type="String">Article</ss:Data></ss:Cell>
                         <ss:Cell><ss:Data ss:Type="String">Intentionally left blank due to system design</ss:Data></ss:Cell>
@@ -80,11 +80,55 @@
                         <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
                     </ss:Row>
 
+                    <!-- Process all Articles from the Enacting Terms -->
+                    <xsl:apply-templates select="//ACT/ENACTING.TERMS/ARTICLE"/>
+
                     <!-- Process all regulation points with numbered identifiers -->
                     <xsl:apply-templates select="//ANNEX//GR.SEQ[NO.GR.SEQ]"/>
                 </ss:Table>
             </ss:Worksheet>
         </ss:Workbook>
+    </xsl:template>
+
+    <!-- Template for Articles in the Enacting Terms -->
+    <xsl:template match="ARTICLE">
+        <ss:Row>
+            <!-- Number - Article title -->
+            <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="TI.ART"/></ss:Data></ss:Cell>
+
+            <!-- Requirement - Combine all ALINEA content -->
+            <ss:Cell>
+                <ss:Data ss:Type="String">
+                    <xsl:for-each select="ALINEA">
+                        <xsl:value-of select="normalize-space(.)"/>
+                        <xsl:if test="position() != last()">
+                            <xsl:text>&#10;&#10;</xsl:text>
+                        </xsl:if>
+                    </xsl:for-each>
+                </ss:Data>
+            </ss:Cell>
+
+            <!-- Guidance - Empty for Articles -->
+            <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
+
+            <!-- Description -->
+            <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
+
+            <!-- Source -->
+            <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="normalize-space($source)"/></ss:Data></ss:Cell>
+
+            <!-- Source Date -->
+            <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="$source_date"/></ss:Data></ss:Cell>
+
+            <!-- Valid from -->
+            <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="$valid_from"/></ss:Data></ss:Cell>
+
+            <!-- Valid to - empty -->
+            <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
+
+            <!-- Changed - empty -->
+            <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
+        </ss:Row>
     </xsl:template>
 
     <!-- Template for requirement sections with numbered identifiers -->
