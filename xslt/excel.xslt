@@ -8,8 +8,22 @@
 
     <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
 
-    <!-- Constants -->
-    <xsl:variable name="source">Commission Implementing Regulation (EU) 2015/1998</xsl:variable>
+    <!-- Extract source from the document -->
+    <xsl:variable name="source">
+        <xsl:for-each select="//ACT/TITLE/TI/P[1]">
+            <xsl:for-each select="node()">
+                <xsl:choose>
+                    <xsl:when test="self::HT">
+                        <xsl:value-of select="."/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="."/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:for-each>
+        </xsl:for-each>
+    </xsl:variable>
+
     <xsl:variable name="source_date">2015-11-05</xsl:variable>
     <xsl:variable name="valid_from">2016-02-01</xsl:variable>
 
@@ -29,6 +43,19 @@
                         <ss:Cell><ss:Data ss:Type="String">Valid from</ss:Data></ss:Cell>
                         <ss:Cell><ss:Data ss:Type="String">Valid to</ss:Data></ss:Cell>
                         <ss:Cell><ss:Data ss:Type="String">Changed</ss:Data></ss:Cell>
+                    </ss:Row>
+
+                    <!-- Some of the elements of the first row are hardcoded, so give it some special processing -->
+                    <ss:Row>
+                        <ss:Cell><ss:Data ss:Type="String">Article</ss:Data></ss:Cell>
+                        <ss:Cell><ss:Data ss:Type="String">Intentionally left blank due to system design</ss:Data></ss:Cell>
+                        <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
+                        <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
+                        <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="normalize-space($source)"/></ss:Data></ss:Cell>
+                        <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="$source_date"/></ss:Data></ss:Cell>
+                        <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="$valid_from"/></ss:Data></ss:Cell>
+                        <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
+                        <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
                     </ss:Row>
 
                     <!-- Process all regulation points with numbered identifiers -->
@@ -124,7 +151,7 @@
             </ss:Cell>
 
             <!-- Source -->
-            <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="$source"/></ss:Data></ss:Cell>
+            <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="normalize-space($source)"/></ss:Data></ss:Cell>
 
             <!-- Source Date -->
             <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="$source_date"/></ss:Data></ss:Cell>
