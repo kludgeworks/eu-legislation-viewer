@@ -143,7 +143,6 @@
             }
             .attachment-heading {
             font-weight: bold;
-            text-align: center;
             margin-top: 30px;
             margin-bottom: 15px;
             }
