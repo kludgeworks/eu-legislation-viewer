@@ -202,6 +202,12 @@
             background-color: #eaeaea;
             font-weight: bold;
             }
+            .subtitle {
+            font-weight: bold;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            color: #333;
+            }
         </style>
     </xsl:template>
 

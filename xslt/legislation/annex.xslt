@@ -71,6 +71,13 @@
                         <xsl:apply-templates select="TITLE"/>
                     </xsl:otherwise>
                 </xsl:choose>
+
+                <!-- NEW CODE: Handle subtitle (STI) if present -->
+                <xsl:if test="TITLE/STI">
+                    <h5 class="subtitle">
+                        <xsl:apply-templates select="TITLE/STI/P"/>
+                    </h5>
+                </xsl:if>
             </xsl:if>
 
             <!-- Handle section numbering when NO.GR.SEQ is present -->
