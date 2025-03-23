@@ -23,6 +23,9 @@ xsltproc --xinclude xslt/legislation/main.xslt - <<EOF > 32015R1998.html
 <root>
   <xi:include href="legislation/32015R1998/DOC_2.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="legislation/32015R1998/DOC_3.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="legislation/32015R1998/DOC_4.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="legislation/32015R1998/DOC_5.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="legislation/32015R1998/DOC_6.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 </root>
 EOF
 """
