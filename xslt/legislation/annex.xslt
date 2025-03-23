@@ -101,8 +101,11 @@
             <!-- Process lists at this level -->
             <xsl:apply-templates select="LIST"/>
 
+            <!-- Process TBL elements at this level -->
+            <xsl:apply-templates select="TBL" />
+
             <!-- Process any other content at this level -->
-            <xsl:apply-templates select="*[not(self::TITLE) and not(self::NO.GR.SEQ) and not(self::P) and not(self::LIST) and not(self::GR.SEQ)]"/>
+            <xsl:apply-templates select="*[not(self::TITLE) and not(self::NO.GR.SEQ) and not(self::P) and not(self::LIST) and not(self::TBL) and not(self::GR.SEQ)]"/>
 
             <!-- Process nested GR.SEQ elements -->
             <xsl:apply-templates select="GR.SEQ"/>

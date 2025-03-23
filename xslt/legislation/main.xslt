@@ -5,6 +5,7 @@
 
     <!-- Import all module stylesheets -->
     <xsl:import href="styles.xslt"/>
+    <xsl:import href="tables.xslt"/>
     <xsl:import href="act.xslt"/>
     <xsl:import href="annex.xslt"/>
     <xsl:import href="lists.xslt"/>

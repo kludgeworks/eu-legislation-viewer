@@ -33,4 +33,14 @@
         </div>
     </xsl:template>
 
+    <!-- Debugging template to trace template application -->
+    <xsl:template match="TBL" mode="debug">
+        <div style="border: 2px dashed red; padding: 10px; margin: 10px;">
+            <h3>DEBUG: TBL found</h3>
+            <p>NO.SEQ: <xsl:value-of select="@NO.SEQ"/></p>
+            <p>COLS: <xsl:value-of select="@COLS"/></p>
+            <p>Template being applied from debug mode</p>
+        </div>
+    </xsl:template>
+
 </xsl:stylesheet>

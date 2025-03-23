@@ -178,6 +178,30 @@
             .prefix {
             font-weight: normal;
             }
+            .eu-legislation-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 0.9em;
+            }
+            .eu-legislation-table caption {
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+            }
+            .eu-legislation-table td, .eu-legislation-table th {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            vertical-align: top;
+            }
+            .eu-legislation-table tr:nth-child(even) {
+            background-color: #f7f7f7;
+            }
+            .eu-legislation-table tr:first-child {
+            background-color: #eaeaea;
+            font-weight: bold;
+            }
         </style>
     </xsl:template>
 
