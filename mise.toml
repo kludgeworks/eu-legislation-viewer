@@ -4,22 +4,14 @@ java = "liberica-23"
 jq = "latest"
 shellcheck = "latest"
 
-[tasks.to-excel]
-description = "transform xml to excel"
-run = "xsltproc xslt/excel.xslt xslt/sample.xml"
-
-#[tasks.to-markdown]
-#description = "transform xml to markdown"
-#run = "cargo build"
-
 [tasks.download]
-description = "transform xml to excel"
+description = "download legislation"
 run = "java -jar target/eu.legislation.cli-0.0.1-SNAPSHOT.jar download 32015R1998"
 
-[tasks.to-legislation]
+[tasks.transform]
 description = "transform xml to html"
 run = """
-xsltproc --xinclude xslt/legislation/main.xslt - <<EOF > 32015R1998.html
+xsltproc --xinclude xslt/legislation/legislation.xslt - <<EOF > 32015R1998.html
 <root>
   <xi:include href="legislation/32015R1998/DOC_2.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="legislation/32015R1998/DOC_3.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
@@ -31,9 +23,9 @@ EOF
 """
 
 [tasks.xslt-to-string]
-description = "transform xml to html"
+description = "transform stylesheets to string"
 run = """
-find xslt/legislation -name "*.xslt" | while read file; do
+find xslt/ -name "*.xslt" | while read file; do
   echo "\n## $file\n"
   cat "$file"
   echo "\n"
