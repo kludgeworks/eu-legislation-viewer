@@ -111,7 +111,7 @@
             <!-- Guidance - Empty for Articles -->
             <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
 
-            <!-- Description -->
+            <!-- Description - Empty as per requirement -->
             <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
 
             <!-- Source -->
@@ -134,8 +134,8 @@
     <!-- Template for requirement sections with numbered identifiers -->
     <xsl:template match="GR.SEQ[NO.GR.SEQ]">
         <ss:Row>
-            <!-- Number -->
-            <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="NO.GR.SEQ"/></ss:Data></ss:Cell>
+            <!-- Number with "Annex " prefix -->
+            <ss:Cell><ss:Data ss:Type="String">Annex <xsl:value-of select="NO.GR.SEQ"/></ss:Data></ss:Cell>
 
             <!-- Requirement - Use the first paragraph as the main requirement -->
             <ss:Cell>
@@ -193,28 +193,8 @@
                 </ss:Data>
             </ss:Cell>
 
-            <!-- Description - Use section title from parent or ancestor -->
-            <ss:Cell>
-                <ss:Data ss:Type="String">
-                    <xsl:choose>
-                        <xsl:when test="ancestor::GR.SEQ[TITLE]">
-                            <xsl:for-each select="ancestor::GR.SEQ[TITLE][1]/TITLE">
-                                <xsl:choose>
-                                    <xsl:when test="TI/NP/TXT">
-                                        <xsl:value-of select="normalize-space(TI/NP/TXT)"/>
-                                    </xsl:when>
-                                    <xsl:when test="TI/P">
-                                        <xsl:value-of select="normalize-space(TI/P)"/>
-                                    </xsl:when>
-                                </xsl:choose>
-                            </xsl:for-each>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:text>General requirement</xsl:text>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </ss:Data>
-            </ss:Cell>
+            <!-- Description - Empty as per requirement -->
+            <ss:Cell><ss:Data ss:Type="String"></ss:Data></ss:Cell>
 
             <!-- Source -->
             <ss:Cell><ss:Data ss:Type="String"><xsl:value-of select="normalize-space($source)"/></ss:Data></ss:Cell>
