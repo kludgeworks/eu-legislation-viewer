@@ -2,6 +2,7 @@ package com.kludgeworks.eu.legislation.cli.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.kludgeworks.eu.legislation.cli.domain.mapper.SparqlResultMapper;
 import org.apache.jena.query.QueryExecution;
@@ -26,42 +27,46 @@ public class LegislationService {
     }
 
     /**
-     * Find the English expression for a given CELEX number
+     * Find the expression for a given CELEX number in the specified language
      *
      * @param celexNumber The CELEX number
-     * @return The URI of the English expression, or null if not found
+     * @param language The language code (e.g., "eng" for English, "fra" for French)
+     * @return An Optional containing the URI of the expression in the specified language, or empty if not found
+     * @throws LegislationServiceException if an error occurs during query execution
      */
-    public String findEnglishExpression(String celexNumber) {
+    public Optional<String> findExpression(String celexNumber, String language) throws LegislationServiceException {
+        String languageUpperCase = language.toUpperCase();
         String queryString = String.format("""
-            PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-            
-            SELECT DISTINCT ?expression ?language
-            WHERE {
-              # Retrieve the work by its CELEX number
-              ?work cdm:resource_legal_id_celex "%s"^^xsd:string .
-            
-              # Find all expressions that belong to this work
-              ?expression cdm:expression_belongs_to_work ?work ;
-                          cdm:expression_uses_language ?language .
-            }""", celexNumber);
+        PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        
+        SELECT DISTINCT ?expression ?language
+        WHERE {
+          # Retrieve the work by its CELEX number
+          ?work cdm:resource_legal_id_celex "%s"^^xsd:string .
+        
+          # Find all expressions that belong to this work
+          ?expression cdm:expression_belongs_to_work ?work ;
+                      cdm:expression_uses_language ?language .
+        }""", celexNumber);
 
         try (QueryExecution qexec = QueryExecution.service(SPARQL_ENDPOINT).query(queryString).build()) {
             ResultSet results = qexec.execSelect();
 
             while (results.hasNext()) {
                 QuerySolution solution = results.nextSolution();
-                String language = mapper.getResourceUri(solution, "language");
+                String expressionLanguage = mapper.getResourceUri(solution, "language");
 
-                if (language != null && language.endsWith("/ENG")) {
-                    return mapper.getResourceUri(solution, "expression");
+                if (expressionLanguage != null && expressionLanguage.endsWith("/" + languageUpperCase)) {
+                    String expressionUri = mapper.getResourceUri(solution, "expression");
+                    return Optional.ofNullable(expressionUri);
                 }
             }
+            return Optional.empty();
         } catch (Exception e) {
-            logger.error("Error finding English expression for CELEX {}: {}", celexNumber, e.getMessage());
+            throw new LegislationServiceException(
+                String.format("Failed to find expression for CELEX %s in language %s", celexNumber, language), e);
         }
-
-        return null;
     }
 
     /**
@@ -89,12 +94,7 @@ public class LegislationService {
             while (results.hasNext()) {
                 QuerySolution solution = results.nextSolution();
                 Manifestation manifestation = mapper.toManifestation(solution);
-
-                // Only include fmx4 and xhtml manifestations
-                if (manifestation != null &&
-                    ("fmx4".equals(manifestation.type()) || "xhtml".equals(manifestation.type()))) {
-                    manifestations.add(manifestation);
-                }
+                manifestations.add(manifestation);
             }
         } catch (Exception e) {
             logger.error("Error getting manifestations for expression {}: {}", expressionUri, e.getMessage());

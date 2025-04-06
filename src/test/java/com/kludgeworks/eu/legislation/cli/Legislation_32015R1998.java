@@ -347,7 +347,11 @@ public class Legislation_32015R1998 {
         .uri( "http://publications.europa.eu/resource/cellar/c38f361d-8a99-11e5-b8b7-01aa75ed71a1.0006.02" )
         .type( "fmx4" )
         .build();
-    public static final List<Manifestation> MANIFESTATIONS = List.of( XHTML_MANIFESTATION, FMX4_MANIFESTATION
+    public static final Manifestation PDF_MANIFESTATION = Manifestation.builder()
+        .uri( "http://publications.europa.eu/resource/cellar/c38f361d-8a99-11e5-b8b7-01aa75ed71a1.0006.01" )
+        .type( "pdfa1a" )
+        .build();
+    public static final List<Manifestation> MANIFESTATIONS = List.of( PDF_MANIFESTATION, XHTML_MANIFESTATION, FMX4_MANIFESTATION
     );
     public static final List<ContentItem> CONTENT_ITEMS = List.of(
         DOC1_CONTENT_ITEM,

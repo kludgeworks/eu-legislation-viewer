@@ -4,6 +4,7 @@ import com.kludgeworks.eu.legislation.cli.domain.Amendment;
 import com.kludgeworks.eu.legislation.cli.domain.Consolidation;
 import com.kludgeworks.eu.legislation.cli.domain.ContentItem;
 import com.kludgeworks.eu.legislation.cli.domain.LegislationService;
+import com.kludgeworks.eu.legislation.cli.domain.LegislationServiceException;
 import com.kludgeworks.eu.legislation.cli.domain.Manifestation;
 import com.kludgeworks.eu.legislation.cli.local.ContentDownloadService;
 import com.kludgeworks.eu.legislation.cli.local.DownloadResult;
@@ -21,6 +22,7 @@ import java.nio.file.Paths;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Shell commands for downloading and managing EU legislation
@@ -64,17 +66,17 @@ class LegislationCommands {
 
             // Step 1: Get English expression
             logger.info("Step 1: Finding English expression...");
-            String engExpression = legislationService.findEnglishExpression(celexNumber);
+            Optional<String> engExpression = legislationService.findExpression(celexNumber, "ENG");
 
-            if (engExpression == null) {
+            if ( engExpression.isEmpty() ) {
                 return "Error: Could not find English expression for CELEX " + celexNumber;
             }
 
             logger.info("English expression URI: {}", engExpression);
 
-            // Step 2: Get manifestations (both fmx4 and xhtml if available)
-            logger.info("Step 2: Finding manifestations (fmx4 and xhtml)...");
-            List<Manifestation> manifestations = legislationService.getManifestations(engExpression);
+            // Step 2: Get manifestations
+            logger.info("Step 2: Finding manifestations");
+            List<Manifestation> manifestations = legislationService.getManifestations( engExpression.orElse( null ) );
 
             if (manifestations.isEmpty()) {
                 return "Error: No manifestations found for expression " + engExpression;
@@ -165,9 +167,9 @@ class LegislationCommands {
 
                 // Step 1: Finding English expression for amendment
                 logger.info("Step 1: Finding English expression for amendment...");
-                String engExpression = legislationService.findEnglishExpression(amendment.celexNumber());
+                Optional<String> engExpression = legislationService.findExpression(amendment.celexNumber(), "ENG");
 
-                if (engExpression == null) {
+                if ( engExpression.isEmpty() ) {
                     logger.warn("Could not find English expression for amendment CELEX {}", amendment.celexNumber());
                     continue;
                 }
@@ -176,7 +178,7 @@ class LegislationCommands {
 
                 // Step 2: Finding manifestations for amendment
                 logger.info("Step 2: Finding manifestations (fmx4 and xhtml) for amendment...");
-                List<Manifestation> manifestations = legislationService.getManifestations(engExpression);
+                List<Manifestation> manifestations = legislationService.getManifestations( engExpression.orElse( null ) );
 
                 if (manifestations.isEmpty()) {
                     logger.warn("No manifestations found for amendment expression {}", engExpression);
@@ -246,7 +248,8 @@ class LegislationCommands {
      * @param amendmentDir The amendment directory
      * @return Number of consolidations processed
      */
-    private int processConsolidations(String amendmentCelex, Path amendmentDir) throws IOException {
+    private int processConsolidations(String amendmentCelex, Path amendmentDir)
+        throws IOException, LegislationServiceException {
         logger.info("Finding consolidations that incorporate amendment {}...", amendmentCelex);
         List<Consolidation> consolidations = legislationService.getConsolidations(amendmentCelex);
 
@@ -287,11 +290,11 @@ class LegislationCommands {
             Files.createDirectories(consolidationDir);
 
             // Step 1: Get English expression
-            String engExpression = legislationService.findEnglishExpression(consolidation.celexNumber());
+            Optional<String> engExpression = legislationService.findExpression(consolidation.celexNumber(), "ENG");
 
-            if (engExpression != null) {
+            if ( engExpression.isPresent() ) {
                 // Step 2: Get manifestations
-                List<Manifestation> manifestations = legislationService.getManifestations(engExpression);
+                List<Manifestation> manifestations = legislationService.getManifestations( engExpression.orElse( null ) );
 
                 // Step 3: Process each manifestation type
                 List<ContentItem> allContentItems = new ArrayList<>();
