@@ -1,7 +1,9 @@
 [tools]
 delta = "latest"
-java = "liberica-23"
+gradle = "latest"
+java = "temurin-24"
 jq = "latest"
+ktlint = "latest"
 shellcheck = "latest"
 
 [tasks.download]

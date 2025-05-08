@@ -32,6 +32,11 @@ build/
 ### VS Code ###
 .vscode/
 
+### Gradle ###
+.gradle
+gradle/
+/build
 
-## bash ouput folder
+### Other ###
+*.log
 /legislation
