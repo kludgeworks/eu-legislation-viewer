@@ -2,12 +2,15 @@ package com.kludgeworks.eu.legislation
 
 import org.springframework.boot.Banner
 import org.springframework.boot.SpringApplication
-import org.springframework.boot.ExitCodeGenerator
-import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.WebApplicationType
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.event.ApplicationReadyEvent
+import org.springframework.context.event.EventListener
 import org.springframework.shell.command.annotation.CommandScan
-import org.springframework.context.ConfigurableApplicationContext
-import org.springframework.shell.standard.ShellOption
+import java.lang.management.ManagementFactory
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
 
 @SpringBootApplication
 @CommandScan
@@ -22,7 +25,7 @@ class Application {
         fun main(args: Array<String>) {
             val app = SpringApplication(Application::class.java)
             app.setBannerMode(Banner.Mode.OFF)
-            app.setWebApplicationType(WebApplicationType.NONE)
+            app.webApplicationType = WebApplicationType.NONE
             app.run(*args)
         }
     }

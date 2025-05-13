@@ -41,6 +41,7 @@ dependencies {
 
     // Other
     implementation("org.jspecify:jspecify:1.0.0")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 
     // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
