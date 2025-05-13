@@ -6,6 +6,7 @@ import com.kludgeworks.eu.legislation.shell.util.JsonFormatter
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.shell.command.CommandRegistration
 import org.springframework.shell.command.annotation.Command
 import org.springframework.shell.command.annotation.Option
 import org.springframework.stereotype.Component
@@ -43,7 +44,7 @@ class EuLegislationCommands @Autowired constructor(
         @Option(longNames = ["items"], description = "Include content items", defaultValue = "true") includeItems: Boolean,
         @Option(longNames = ["amendments"], description = "Include amendments", defaultValue = "true") includeAmendments: Boolean,
         @Option(longNames = ["consolidations"], description = "Include consolidations", defaultValue = "true") includeConsolidations: Boolean,
-        @Option(longNames = ["json"], shortNames = ['j'], description = "Output in JSON format", defaultValue = "false") json: Boolean
+        @Option(longNames = ["json"], shortNames = ['j'], description = "Output in JSON format", arity = CommandRegistration.OptionArity.ZERO ) json: Boolean
     ): String {
         try {
             logger.info("Getting complete legal document for CELEX {}", celex)

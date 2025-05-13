@@ -25,7 +25,6 @@ class EuLegislationService @Autowired constructor(
 ) {
     private val logger: Logger = LoggerFactory.getLogger(EuLegislationService::class.java)
     private val endpointUrl = "https://publications.europa.eu/webapi/rdf/sparql"
-    private val maxRetries = 3
 
     /**
      * Get legislation information by CELEX number
@@ -49,7 +48,7 @@ class EuLegislationService @Autowired constructor(
                 ?work cdm:resource_legal_id_celex ?celexNumber .
                 ?work cdm:work_id_document ?celex .
                 ?work cdm:work_date_document ?date .
-                
+
                 {
                     # Try path 1: Get title from work directly
                     ?work cdm:work_title ?title .
@@ -83,7 +82,7 @@ class EuLegislationService @Autowired constructor(
             throw LegislationServiceException("Error getting legislation information for CELEX $celexNumber: ${e.message}", e)
         }
     }
-    
+
     /**
      * Get legislation with expressions in a single query
      *
@@ -107,7 +106,7 @@ class EuLegislationService @Autowired constructor(
                 ?work cdm:resource_legal_id_celex ?celexNumber .
                 ?work cdm:work_id_document ?celex .
                 ?work cdm:work_date_document ?date .
-                
+
                 # Get title
                 {
                     # Try path 1: Get title from work directly
@@ -122,7 +121,7 @@ class EuLegislationService @Autowired constructor(
                     ?expression_title cdm:expression_title ?title .
                     FILTER(lang(?title) = "en" || lang(?title) = "")
                 }
-                
+
                 # Get expressions
                 OPTIONAL {
                     ?expression cdm:expression_belongs_to_work ?work .
@@ -133,71 +132,48 @@ class EuLegislationService @Autowired constructor(
         """.trimIndent()
 
         try {
-            // Use a retry approach for this complex query
-            var retryCount = 0
-            var lastException: Exception? = null
+            QueryExecution.service(endpointUrl).query(query).build().use { execution ->
+                val resultSet = execution.execSelect()
 
-            while (retryCount < maxRetries) {
-                try {
-                    QueryExecution.service(endpointUrl).query(query).build().use { execution ->
-                        val resultSet = execution.execSelect()
-                        
-                        if (!resultSet.hasNext()) {
-                            throw LegislationServiceException("No legislation found for CELEX $celexNumber", Exception("No results"))
-                        }
-                        
-                        // Process results to create document with expressions
-                        var document: LegalDocument? = null
-                        val expressionMap = mutableMapOf<String, Expression>()
-                        
-                        while (resultSet.hasNext()) {
-                            val solution = resultSet.next()
-                            
-                            // Create document on first row
-                            if (document == null) {
-                                document = mapper.mapToLegalDocument(solution)
-                            }
-                            
-                            // Process expression if present
-                            if (solution.contains("expression") && solution.contains("languageCode")) {
-                                val expressionUri = solution.getResource("expression").toString()
-                                val languageCode = solution.getLiteral("languageCode").string
-                                
-                                // Only add expression if not already in map
-                                if (!expressionMap.containsKey(expressionUri)) {
-                                    expressionMap[expressionUri] = Expression(
-                                        uri = expressionUri,
-                                        language = languageCode,
-                                        manifestations = emptyList()
-                                    )
-                                }
-                            }
-                        }
-                        
-                        // Set expressions on document
-                        document?.expressions = expressionMap.values.toList()
-                        return document ?: throw LegislationServiceException(
-                            "Failed to create document for CELEX $celexNumber", 
-                            Exception("Data mapping error")
-                        )
+                if (!resultSet.hasNext()) {
+                    throw LegislationServiceException("No legislation found for CELEX $celexNumber", Exception("No results"))
+                }
+
+                // Process results to create document with expressions
+                var document: LegalDocument? = null
+                val expressionMap = mutableMapOf<String, Expression>()
+
+                while (resultSet.hasNext()) {
+                    val solution = resultSet.next()
+
+                    // Create document on first row
+                    if (document == null) {
+                        document = mapper.mapToLegalDocument(solution)
                     }
-                } catch (e: Exception) {
-                    lastException = e
-                    logger.warn("Query failed (attempt {}): {}", retryCount + 1, e.message)
-                    retryCount++
-                    if (retryCount < maxRetries) {
-                        try {
-                            Thread.sleep((1000 * retryCount).toLong())
-                        } catch (ie: InterruptedException) {
-                            Thread.currentThread().interrupt()
-                            throw e
+
+                    // Process expression if present
+                    if (solution.contains("expression") && solution.contains("languageCode")) {
+                        val expressionUri = solution.getResource("expression").toString()
+                        val languageCode = solution.getLiteral("languageCode").string
+
+                        // Only add expression if not already in map
+                        if (!expressionMap.containsKey(expressionUri)) {
+                            expressionMap[expressionUri] = Expression(
+                                uri = expressionUri,
+                                language = languageCode,
+                                manifestations = emptyList()
+                            )
                         }
                     }
                 }
-            }
 
-            // If we get here, all retries failed
-            throw lastException ?: RuntimeException("Query failed after $maxRetries retries")
+                // Set expressions on document
+                document?.expressions = expressionMap.values.toList()
+                return document ?: throw LegislationServiceException(
+                    "Failed to create document for CELEX $celexNumber", 
+                    Exception("Data mapping error")
+                )
+            }
         } catch (e: Exception) {
             logger.error("Error getting legislation with expressions for CELEX {}: {}", celexNumber, e.message, e)
             throw LegislationServiceException("Error getting legislation with expressions for CELEX $celexNumber: ${e.message}", e)
@@ -300,43 +276,19 @@ class EuLegislationService @Autowired constructor(
         logger.debug("Query: {}", query)
 
         try {
-            // Add retry logic for this specific method
-            val maxRetries = 3
-            var retryCount = 0
-            var lastException: Exception? = null
-
-            while (retryCount < maxRetries) {
-                try {
-                    org.apache.jena.query.QueryExecution.service(endpointUrl).query(query).build().use { execution ->
-                        val resultSet = execution.execSelect()
-                        val manifestations = ArrayList<Manifestation>()
-                        while (resultSet.hasNext()) {
-                            val solution = resultSet.next()
-                            val manifestation = mapper.mapToManifestation(solution)
-                            val manifestationWithItems = manifestation.copy(
-                                items = getContentItems(manifestation.uri)
-                            )
-                            manifestations.add(manifestationWithItems)
-                        }
-                        return manifestations
-                    }
-                } catch (e: Exception) {
-                    lastException = e
-                    logger.warn("Query failed (attempt {}): {}", retryCount + 1, e.message)
-                    retryCount++
-                    if (retryCount < maxRetries) {
-                        try {
-                            Thread.sleep((1000 * retryCount).toLong())
-                        } catch (ie: InterruptedException) {
-                            Thread.currentThread().interrupt()
-                            throw e
-                        }
-                    }
+            org.apache.jena.query.QueryExecution.service(endpointUrl).query(query).build().use { execution ->
+                val resultSet = execution.execSelect()
+                val manifestations = ArrayList<Manifestation>()
+                while (resultSet.hasNext()) {
+                    val solution = resultSet.next()
+                    val manifestation = mapper.mapToManifestation(solution)
+                    val manifestationWithItems = manifestation.copy(
+                        items = getContentItems(manifestation.uri)
+                    )
+                    manifestations.add(manifestationWithItems)
                 }
+                return manifestations
             }
-
-            // If we get here, all retries failed
-            throw lastException ?: RuntimeException("Query failed after $maxRetries retries")
         } catch (e: Exception) {
             logger.error("Error getting manifestations for expression {}: {}", expressionUri, e.message, e)
             return emptyList()
@@ -376,40 +328,16 @@ class EuLegislationService @Autowired constructor(
         """.trimIndent()
 
         try {
-            // Add retry logic for this specific method
-            val maxRetries = 3
-            var retryCount = 0
-            var lastException: Exception? = null
-
-            while (retryCount < maxRetries) {
-                try {
-                    org.apache.jena.query.QueryExecution.service(endpointUrl).query(query).build().use { execution ->
-                        val resultSet = execution.execSelect()
-                        val items = ArrayList<ContentItem>()
-                        while (resultSet.hasNext()) {
-                            val solution = resultSet.next()
-                            val item = mapper.mapToContentItem(solution)
-                            items.add(item)
-                        }
-                        return items
-                    }
-                } catch (e: Exception) {
-                    lastException = e
-                    logger.warn("Query failed (attempt {}): {}", retryCount + 1, e.message)
-                    retryCount++
-                    if (retryCount < maxRetries) {
-                        try {
-                            Thread.sleep((1000 * retryCount).toLong())
-                        } catch (ie: InterruptedException) {
-                            Thread.currentThread().interrupt()
-                            throw e
-                        }
-                    }
+            org.apache.jena.query.QueryExecution.service(endpointUrl).query(query).build().use { execution ->
+                val resultSet = execution.execSelect()
+                val items = ArrayList<ContentItem>()
+                while (resultSet.hasNext()) {
+                    val solution = resultSet.next()
+                    val item = mapper.mapToContentItem(solution)
+                    items.add(item)
                 }
+                return items
             }
-
-            // If we get here, all retries failed
-            throw lastException ?: RuntimeException("Query failed after $maxRetries retries")
         } catch (e: Exception) {
             logger.error("Error getting content items for manifestation {}: {}", manifestationUri, e.message, e)
             return emptyList()
@@ -461,7 +389,7 @@ class EuLegislationService @Autowired constructor(
             return emptyList()
         }
     }
-    
+
     /**
      * Get amendments with consolidations in a single query
      *
@@ -490,7 +418,7 @@ class EuLegislationService @Autowired constructor(
                 ?amendment cdm:resource_legal_amends_resource_legal ?work .
                 ?amendment cdm:resource_legal_id_celex ?amendmentCelex .
                 ?amendment cdm:work_date_document ?amendmentDate .
-                
+
                 # Optional consolidations
                 OPTIONAL {
                     ?consolidation cdm:act_consolidated_consolidates_resource_legal ?amendment ;
@@ -503,80 +431,58 @@ class EuLegislationService @Autowired constructor(
         """.trimIndent()
 
         try {
-            var retryCount = 0
-            var lastException: Exception? = null
+            QueryExecution.service(endpointUrl).query(query).build().use { execution ->
+                val resultSet = execution.execSelect()
 
-            while (retryCount < maxRetries) {
-                try {
-                    QueryExecution.service(endpointUrl).query(query).build().use { execution ->
-                        val resultSet = execution.execSelect()
-                        
-                        // Using a map to group consolidations by amendment
-                        val amendmentMap = mutableMapOf<String, MutableList<Consolidation>>()
-                        val amendmentDetails = mutableMapOf<String, Pair<String, LocalDate>>()
-                        
-                        // Process results
-                        while (resultSet.hasNext()) {
-                            val solution = resultSet.next()
-                            
-                            // Get amendment details
-                            val amendmentUri = solution.getResource("amendment").toString()
-                            val amendmentCelex = solution.getLiteral("amendmentCelex").string
-                            val amendmentDate = mapper.parseDate(solution.getLiteral("amendmentDate").string)
-                            
-                            // Store amendment details
-                            amendmentDetails[amendmentUri] = Pair(amendmentCelex, amendmentDate)
-                            
-                            // Initialize empty list for this amendment if not exists
-                            if (!amendmentMap.containsKey(amendmentUri)) {
-                                amendmentMap[amendmentUri] = mutableListOf()
-                            }
-                            
-                            // Process consolidation if present
-                            if (solution.contains("consolidation")) {
-                                val consolidationUri = solution.getResource("consolidation").toString()
-                                val consolidationCelex = solution.getLiteral("consolidationCelex").string
-                                val consolidationDate = mapper.parseDate(solution.getLiteral("consolidationDate").string)
-                                val eli = if (solution.contains("eli")) solution.getLiteral("eli").string else ""
-                                
-                                val consolidation = Consolidation(
-                                    uri = consolidationUri,
-                                    celexNumber = consolidationCelex,
-                                    consolidationDate = consolidationDate,
-                                    eli = eli
-                                )
-                                
-                                amendmentMap[amendmentUri]?.add(consolidation)
-                            }
-                        }
-                        
-                        // Create amendments from the collected data
-                        return amendmentDetails.map { (uri, details) ->
-                            Amendment(
-                                uri = uri,
-                                celexNumber = details.first,
-                                date = details.second,
-                                consolidations = amendmentMap[uri] ?: emptyList()
-                            )
-                        }.sortedBy { it.date }
+                // Using a map to group consolidations by amendment
+                val amendmentMap = mutableMapOf<String, MutableList<Consolidation>>()
+                val amendmentDetails = mutableMapOf<String, Pair<String, LocalDate>>()
+
+                // Process results
+                while (resultSet.hasNext()) {
+                    val solution = resultSet.next()
+
+                    // Get amendment details
+                    val amendmentUri = solution.getResource("amendment").toString()
+                    val amendmentCelex = solution.getLiteral("amendmentCelex").string
+                    val amendmentDate = mapper.parseDate(solution.getLiteral("amendmentDate").string)
+
+                    // Store amendment details
+                    amendmentDetails[amendmentUri] = Pair(amendmentCelex, amendmentDate)
+
+                    // Initialize empty list for this amendment if not exists
+                    if (!amendmentMap.containsKey(amendmentUri)) {
+                        amendmentMap[amendmentUri] = mutableListOf()
                     }
-                } catch (e: Exception) {
-                    lastException = e
-                    logger.warn("Query failed (attempt {}): {}", retryCount + 1, e.message)
-                    retryCount++
-                    if (retryCount < maxRetries) {
-                        try {
-                            Thread.sleep((1000 * retryCount).toLong())
-                        } catch (ie: InterruptedException) {
-                            Thread.currentThread().interrupt()
-                            throw e
-                        }
+
+                    // Process consolidation if present
+                    if (solution.contains("consolidation")) {
+                        val consolidationUri = solution.getResource("consolidation").toString()
+                        val consolidationCelex = solution.getLiteral("consolidationCelex").string
+                        val consolidationDate = mapper.parseDate(solution.getLiteral("consolidationDate").string)
+                        val eli = if (solution.contains("eli")) solution.getLiteral("eli").string else ""
+
+                        val consolidation = Consolidation(
+                            uri = consolidationUri,
+                            celexNumber = consolidationCelex,
+                            consolidationDate = consolidationDate,
+                            eli = eli
+                        )
+
+                        amendmentMap[amendmentUri]?.add(consolidation)
                     }
                 }
-            }
 
-            // If we get here, all retries failed
-            throw lastException ?: RuntimeException("Query failed after $maxRetries retries")
+                // Create amendments from the collected data
+                return amendmentDetails.map { (uri, details) ->
+                    Amendment(
+                        uri = uri,
+                        celexNumber = details.first,
+                        date = details.second,
+                        consolidations = amendmentMap[uri] ?: emptyList()
+                    )
+                }.sortedBy { it.date }
+            }
         } catch (e: Exception) {
             logger.error("Error getting amendments with consolidations for CELEX {}: {}", celexNumber, e.message, e)
             return emptyList()
@@ -652,24 +558,24 @@ class EuLegislationService @Autowired constructor(
         includeConsolidations: Boolean = true
     ): LegalDocument {
         logger.info("Getting complete legal document for CELEX {}", celexNumber)
-        
+
         try {
             // Get base document with expressions
             val document = getLegislationWithExpressions(celexNumber)
-            
+
             // If we need manifestations and items, get them for each expression
             if (includeExpressions && includeManifestations) {
                 val updatedExpressions = document.expressions.map { expression ->
                     if (expression.manifestations.isEmpty()) {
                         val manifestations = getManifestations(expression.uri)
-                        
+
                         // If we don't need items, remove them from manifestations
                         val processedManifestations = if (!includeItems) {
                             manifestations.map { it.copy(items = emptyList()) }
                         } else {
                             manifestations
                         }
-                        
+
                         expression.copy(manifestations = processedManifestations)
                     } else {
                         expression
@@ -680,12 +586,12 @@ class EuLegislationService @Autowired constructor(
                 // If expressions not needed, clear them
                 document.expressions = emptyList()
             }
-            
+
             // Get amendments and consolidations if needed
             if (includeAmendments) {
                 document.amendments = getAmendmentsWithConsolidations(celexNumber, includeConsolidations)
             }
-            
+
             return document
         } catch (e: Exception) {
             logger.error("Error getting complete legal document for CELEX {}: {}", celexNumber, e.message, e)
