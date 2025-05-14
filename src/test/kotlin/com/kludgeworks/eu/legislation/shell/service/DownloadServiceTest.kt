@@ -1,6 +1,7 @@
 package com.kludgeworks.eu.legislation.shell.service
 
 import com.kludgeworks.eu.legislation.Legislation32015R1998.DOC1_CONTENT_ITEM
+import com.kludgeworks.eu.legislation.shell.util.XmlFormatter
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
@@ -9,6 +10,7 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import java.io.ByteArrayInputStream
+import java.io.File
 import java.io.IOException
 import java.io.InputStream
 import java.nio.file.Files
@@ -25,18 +27,22 @@ class DownloadServiceTest {
     @TempDir
     lateinit var tempDir: Path
 
+    private lateinit var mockXmlFormatter: XmlFormatter
+
     @BeforeEach
     fun setUp() {
-        downloadService = DownloadService()
+        mockXmlFormatter = mock()
+        whenever(mockXmlFormatter.formatXmlFile(any())).thenReturn(true)
+        downloadService = DownloadService(mockXmlFormatter)
     }
 
     @Test
     fun downloadContentShouldDownloadFile() {
         // Arrange
         val outputPath = tempDir.resolve("doc1.xml")
-        
+
         println("Starting download from ${DOC1_CONTENT_ITEM.uri}")
-        
+
         // Act - Use the actual EU Cellar URL
         val result = downloadService.downloadContent(DOC1_CONTENT_ITEM.uri, outputPath)
 
@@ -46,10 +52,29 @@ class DownloadServiceTest {
         val fileSize = Files.size(outputPath)
         println("Downloaded file size: $fileSize bytes")
         assertTrue(fileSize > 0, "Downloaded file should not be empty")
-        
+
         // Log the first 100 chars of content to verify it's XML content
         val content = Files.readString(outputPath)
         println("Content preview (first 100 chars): ${content.take(100).replace("\n", "\\n")}")
+    }
+
+    @Test
+    fun downloadContentShouldFormatXmlFile() {
+        // Arrange
+        val xmlContent = """<?xml version="1.0" encoding="UTF-8"?><root><child>value</child></root>"""
+        val xmlFilePath = tempDir.resolve("source.xml")
+        Files.writeString(xmlFilePath, xmlContent)
+
+        val outputPath = tempDir.resolve("formatted.xml")
+
+        // Act - Use file URL for the test
+        val result = downloadService.downloadContent(xmlFilePath.toUri().toString(), outputPath)
+
+        // Assert
+        assertEquals(outputPath, result)
+        assertTrue(Files.exists(outputPath))
+        // Verify that formatXmlFile was called on the mock
+        org.mockito.kotlin.verify(mockXmlFormatter).formatXmlFile(outputPath.toFile())
     }
 
     @Test
@@ -59,7 +84,7 @@ class DownloadServiceTest {
         val zipData = createZipData()
         val zipFilePath = tempDir.resolve("source.zip")
         Files.write(zipFilePath, zipData)
-        
+
         val outputPath = tempDir.resolve("test.zip")
 
         // Act - Use file URL for the test

@@ -1,5 +1,0 @@
-<xb:config xmlns:xb="http://xml.apache.org/xmlbeans/2004/02/xbean/config">
-  <xb:namespace uri="##any">
-    <xb:package>com.example.your.package111</xb:package>
-  </xb:namespace>
-</xb:config>

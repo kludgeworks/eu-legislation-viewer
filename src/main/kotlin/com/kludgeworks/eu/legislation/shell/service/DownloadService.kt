@@ -1,5 +1,6 @@
 package com.kludgeworks.eu.legislation.shell.service
 
+import com.kludgeworks.eu.legislation.shell.util.XmlFormatter
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.io.FileOutputStream
@@ -19,7 +20,7 @@ import java.util.zip.ZipInputStream
  * Service for downloading content from URLs and optionally unzipping it
  */
 @Service
-class DownloadService {
+class DownloadService(private val xmlFormatter: XmlFormatter) {
     private val logger = LoggerFactory.getLogger(DownloadService::class.java)
     private val httpClient = HttpClient.newBuilder()
         .connectTimeout(Duration.ofSeconds(30))
@@ -66,7 +67,7 @@ class DownloadService {
                     inputStream.copyTo(fileOutputStream)
                 }
             }
-            
+
             logger.info("Downloaded content to {}", outputPath)
         }
 
@@ -76,6 +77,15 @@ class DownloadService {
             unzip(outputPath, outputPath.parent).also {
                 logger.info("Unzipped content to {}", it)
             }
+        } else if (outputPath.toString().endsWith(".xml", ignoreCase = true)) {
+            // Format XML files
+            logger.info("Downloaded file is an XML file, formatting...")
+            if (xmlFormatter.formatXmlFile(outputPath.toFile())) {
+                logger.info("Formatted XML file {}", outputPath)
+            } else {
+                logger.warn("Failed to format XML file {}", outputPath)
+            }
+            outputPath
         } else {
             outputPath
         }
