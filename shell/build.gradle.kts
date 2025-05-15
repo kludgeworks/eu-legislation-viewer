@@ -4,8 +4,7 @@ plugins {
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dependency.management)
     alias(libs.plugins.graalvm.native)
-    // Temporarily disable CycloneDX plugin due to compatibility issues
-    // alias(libs.plugins.cyclonedx.bom)
+    alias(libs.plugins.cyclonedx.bom)
 }
 
 group = "com.kludgeworks"

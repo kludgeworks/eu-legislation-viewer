@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm")
     `java-library`
     alias(libs.plugins.intershop.jaxb)
+    alias(libs.plugins.cyclonedx.bom)
 }
 
 group = "com.kludgeworks"
