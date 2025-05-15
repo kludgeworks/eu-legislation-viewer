@@ -1,10 +1,10 @@
 plugins {
-    kotlin("jvm") version "1.9.25"
-    kotlin("plugin.spring") version "1.9.25"
-    id("org.springframework.boot") version "3.4.5"
-    id("io.spring.dependency-management") version "1.1.7"
-    id("org.graalvm.buildtools.native") version "0.10.6"
-    id("org.cyclonedx.bom") version "1.10.0"
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.spring)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
+    alias(libs.plugins.graalvm.native)
+    alias(libs.plugins.cyclonedx.bom)
 }
 
 group = "com.kludgeworks"
@@ -16,46 +16,50 @@ java {
     }
 }
 
-repositories {
-    mavenCentral()
-}
+apply(from = "gradle/formex-generation.gradle.kts")
 
 dependencies {
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+    implementation(libs.kotlin.reflect)
+    implementation(libs.kotlinx.datetime)
 
     // Spring
-    implementation("org.springframework.modulith:spring-modulith-starter-core")
-    implementation("org.springframework.shell:spring-shell-starter-jna")
+    implementation(libs.spring.modulith.starter.core)
+    implementation(libs.spring.shell.starter.jna)
 
     // Jackson
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation(libs.jackson.dataformat.xml)
+    implementation(libs.jackson.module.kotlin)
 
     // Apache Jena
-    implementation("org.apache.jena:jena-core:5.3.0")
-    implementation("org.apache.jena:jena-arq:5.3.0")
-    implementation("org.apache.jena:jena-rdfconnection:5.3.0")
+    implementation(libs.jena.core)
+    implementation(libs.jena.arq)
+    implementation(libs.jena.rdfconnection)
+
+    // JAXB dependencies
+    implementation(libs.jakarta.xml.bind.api)
+    implementation(libs.jaxb.runtime)
+    implementation(libs.jaxb.xjc)
+    implementation(libs.jaxb.xjc.sun)
+    implementation(libs.jaxb.impl)
 
     // Other
-    implementation("org.jspecify:jspecify:1.0.0")
-    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation(libs.jspecify)
+    implementation(libs.spring.boot.starter.thymeleaf)
 
     // Test
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.springframework.modulith:spring-modulith-starter-test")
-    testImplementation("org.springframework.shell:spring-shell-starter-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+    testImplementation(libs.spring.boot.starter.test)
+    testImplementation(libs.spring.modulith.starter.test)
+    testImplementation(libs.spring.shell.starter.test)
+    testImplementation(libs.kotlin.test)
+    testImplementation(libs.kotlin.test.junit5)
+    testImplementation(libs.mockito.kotlin)
 }
 
 dependencyManagement {
     imports {
-        mavenBom("org.springframework.shell:spring-shell-dependencies:3.4.0")
-        mavenBom("org.springframework.modulith:spring-modulith-bom:1.3.3")
+        mavenBom(libs.spring.shell.bom.get().toString())
+        mavenBom(libs.spring.modulith.bom.get().toString())
     }
 }
 
@@ -69,6 +73,7 @@ tasks.bootJar {
     manifest {
         attributes ("Enable-Native-Access" to "ALL-UNNAMED")
     }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 tasks.withType<Test> {

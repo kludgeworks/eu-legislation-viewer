@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="https://jakarta.ee/xml/ns/jaxb https://jakarta.ee/xml/ns/jaxb/bindingschema_3_0.xsd"
+               jaxb:version="3.0">
+
+    <!-- Global bindings -->
+    <jaxb:globalBindings generateElementProperty="false">
+        <jaxb:javaType name="java.util.Calendar" xmlType="xs:date"
+                      parseMethod="jakarta.xml.bind.DatatypeConverter.parseDate"
+                      printMethod="jakarta.xml.bind.DatatypeConverter.printDate" />
+        <jaxb:javaType name="java.util.Calendar" xmlType="xs:dateTime"
+                      parseMethod="jakarta.xml.bind.DatatypeConverter.parseDateTime"
+                      printMethod="jakarta.xml.bind.DatatypeConverter.printDateTime" />
+        <xjc:simple />
+    </jaxb:globalBindings>
+
+    <!-- Schema binding for formex-06.02.2-20241118.xd -->
+    <jaxb:bindings schemaLocation="formex-06.02.2-20241118.xd" node="/xs:schema">
+        <jaxb:bindings node="//xs:element[@name='EXPR'][1]">
+            <jaxb:class name="ExpressionElement"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='ALINEA'][1]">
+            <jaxb:class name="AlineaElement"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='PARAG'][1]">
+            <jaxb:class name="ParagElement"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='TOC'][1]">
+            <jaxb:class name="TableOfContentsElement"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='P'][1]">
+            <jaxb:class name="ParagraphElement"/>
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>
