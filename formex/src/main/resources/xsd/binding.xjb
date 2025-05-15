@@ -6,7 +6,7 @@
                xsi:schemaLocation="https://jakarta.ee/xml/ns/jaxb https://jakarta.ee/xml/ns/jaxb/bindingschema_3_0.xsd"
                jaxb:version="3.0">
 
-    <!-- Global bindings -->
+    <!-- Global bindings for all schema versions -->
     <jaxb:globalBindings generateElementProperty="false">
         <jaxb:javaType name="java.util.Calendar" xmlType="xs:date"
                       parseMethod="jakarta.xml.bind.DatatypeConverter.parseDate"
@@ -17,22 +17,6 @@
         <xjc:simple />
     </jaxb:globalBindings>
 
-    <!-- Schema binding for formex-05.51-20130501.xd -->
-    <jaxb:bindings schemaLocation="formex-05.51-20130501.xd" node="/xs:schema">
-        <jaxb:bindings node="//xs:element[@name='EXPR'][1]">
-            <jaxb:class name="ExpressionElement"/>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:element[@name='ALINEA'][1]">
-            <jaxb:class name="AlineaElement"/>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:element[@name='PARAG'][1]">
-            <jaxb:class name="ParagElement"/>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:element[@name='TOC'][1]">
-            <jaxb:class name="TableOfContentsElement"/>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:element[@name='P'][1]">
-            <jaxb:class name="ParagraphElement"/>
-        </jaxb:bindings>
-    </jaxb:bindings>
+    <!-- We're not using element-specific bindings here as we'll rely on autoNameResolution -->
+    <!-- This will let XJC automatically fix naming conflicts with unique class names -->
 </jaxb:bindings>

@@ -1,4 +1,7 @@
-rootProject.name = "eu.legislation.cli"
+rootProject.name = "eu-legislation"
+
+include("shell")
+include("formex")
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -12,4 +15,5 @@ dependencyResolutionManagement {
     }
 }
 
-// Note: We can't use TYPESAFE_PROJECT_ACCESSORS because the project name doesn't follow the naming convention
+// Enable type-safe project accessors
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
