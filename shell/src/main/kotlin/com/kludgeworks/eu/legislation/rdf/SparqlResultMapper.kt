@@ -1,10 +1,10 @@
-package com.kludgeworks.eu.legislation.rdf.mapper
+package com.kludgeworks.eu.legislation.rdf
 
-import com.kludgeworks.eu.legislation.rdf.Amendment
-import com.kludgeworks.eu.legislation.rdf.Consolidation
-import com.kludgeworks.eu.legislation.rdf.ContentItem
-import com.kludgeworks.eu.legislation.rdf.LegalDocument
-import com.kludgeworks.eu.legislation.rdf.Manifestation
+import com.kludgeworks.eu.legislation.rdf.model.Amendment
+import com.kludgeworks.eu.legislation.rdf.model.Consolidation
+import com.kludgeworks.eu.legislation.rdf.model.ContentItem
+import com.kludgeworks.eu.legislation.rdf.model.LegalDocument
+import com.kludgeworks.eu.legislation.rdf.model.Manifestation
 import com.kludgeworks.eu.legislation.util.DateUtils
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.Clock

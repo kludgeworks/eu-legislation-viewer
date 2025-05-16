@@ -1,8 +1,10 @@
 package com.kludgeworks.eu.legislation.shell.commands
 
-import com.kludgeworks.eu.legislation.shell.service.EuLegislationService
+import com.kludgeworks.eu.legislation.shell.service.LegalDocumentService
 import com.kludgeworks.eu.legislation.shell.service.TemplateService
 import com.kludgeworks.eu.legislation.shell.util.JsonFormatter
+import com.kludgeworks.eu.legislation.util.DomainError
+import kotlinx.coroutines.runBlocking
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +19,7 @@ import org.springframework.stereotype.Component
 @Component
 @Command
 class CompleteLegislationCommand @Autowired constructor(
-    private val legislationService: EuLegislationService,
+    private val legalDocumentService: LegalDocumentService,
     private val jsonFormatter: JsonFormatter,
     private val templateService: TemplateService
 ) {
@@ -35,27 +37,58 @@ class CompleteLegislationCommand @Autowired constructor(
     fun getCompleteLegalDocument(
         @Option(longNames = ["celex"], shortNames = ['c'], description = "CELEX number", required = true) celex: String,
         @Option(longNames = ["json"], shortNames = ['j'], description = "Output in JSON format", arity = CommandRegistration.OptionArity.ZERO ) json: Boolean
-    ): String {
-        try {
-            logger.info("Getting complete legal document for CELEX {}", celex)
+    ): String = runBlocking {
+        logger.info("Getting complete legal document for CELEX {}", celex)
 
-            val document = legislationService.getCompleteLegalDocument(celex)
-
-            if (json) {
-                return jsonFormatter.toPrettyJson(document)
-            }
-
-            // Create model for the template
-            val model = mapOf(
-                "document" to document,
-                "datePattern" to datePattern
+        legalDocumentService.getCompleteLegalDocument(celex)
+            .fold(
+                { error -> handleError(error, celex) },
+                { document ->
+                    if (json) {
+                        jsonFormatter.toPrettyJson(document)
+                    } else {
+                        // Create model for the template
+                        val model = mapOf(
+                            "document" to document,
+                            "datePattern" to datePattern
+                        )
+                        
+                        // Process the template
+                        templateService.processTemplate("legislation-document", model)
+                    }
+                }
             )
-
-            // Process the template
-            return templateService.processTemplate("legislation-document", model)
-        } catch (e: Exception) {
-            logger.error("Error getting complete legal document: {}", e.message, e)
-            return "Error: ${e.message}"
+    }
+    
+    /**
+     * Handle errors from the Result type and convert them to user-friendly messages
+     */
+    private fun handleError(error: DomainError, celex: String): String {
+        return when (error) {
+            is DomainError.NotFound -> {
+                logger.error("Document not found: {}", error.message)
+                "Error: Document not found for CELEX $celex"
+            }
+            is DomainError.QueryFailure -> {
+                logger.error("SPARQL query failed: {}", error.message)
+                "Error: Failed to query EU legislation database. Please try again later."
+            }
+            is DomainError.MappingFailure -> {
+                logger.error("Mapping failed: {}", error.message)
+                "Error: Failed to process document data. Please report this issue."
+            }
+            is DomainError.ConcurrentFailure -> {
+                logger.error("Concurrent operations failed: {}", error.message)
+                "Error: Failed to fetch all document components. Document may be incomplete."
+            }
+            is DomainError.Timeout -> {
+                logger.error("Operation timed out: {}", error.message)
+                "Error: Operation timed out. Please try again later."
+            }
+            is DomainError.UnexpectedError -> {
+                logger.error("Error getting complete legal document: {}", error.message, error.cause)
+                "Error: ${error.message}"
+            }
         }
     }
 }

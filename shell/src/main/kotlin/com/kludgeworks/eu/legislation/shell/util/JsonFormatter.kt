@@ -1,7 +1,6 @@
 package com.kludgeworks.eu.legislation.shell.util
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer
 import kotlinx.datetime.LocalDate
@@ -44,7 +43,7 @@ class JsonFormatter {
     /**
      * Format an object as pretty-printed JSON
      *
-     * @param object The object to format
+     * @param obj The object to format
      * @return The pretty-printed JSON string representation of the object
      */
     fun toPrettyJson(obj: Any): String {

@@ -23,10 +23,18 @@ dependencies {
     // Kotlin
     implementation(libs.kotlin.reflect)
     implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.reactive)
+    
+    // Arrow
+    implementation(libs.arrow.core)
+    implementation(libs.arrow.fx.coroutines)
+    implementation(libs.arrow.optics)
 
     // Spring
     implementation(libs.spring.modulith.starter.core)
     implementation(libs.spring.shell.starter.jna)
+    implementation(libs.spring.boot.starter.web)
 
     // Jackson
     implementation(libs.jackson.dataformat.xml)

@@ -1,8 +1,11 @@
 package com.kludgeworks.eu.legislation.shell.commands
 
-import com.kludgeworks.eu.legislation.rdf.ContentItem
+import com.kludgeworks.eu.legislation.rdf.model.ContentItem
+import com.kludgeworks.eu.legislation.rdf.model.Expression
+import com.kludgeworks.eu.legislation.rdf.model.Manifestation
 import com.kludgeworks.eu.legislation.shell.service.DownloadService
-import com.kludgeworks.eu.legislation.shell.service.EuLegislationService
+import com.kludgeworks.eu.legislation.shell.service.LegalDocumentService
+import kotlinx.coroutines.runBlocking
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,7 +21,7 @@ import java.nio.file.Paths
 @Component
 @Command
 class DownloadContentItemsCommand @Autowired constructor(
-    private val legislationService: EuLegislationService,
+    private val legalDocumentService: LegalDocumentService,
     private val downloadService: DownloadService
 ) {
     private val logger: Logger = LoggerFactory.getLogger(DownloadContentItemsCommand::class.java)
@@ -32,38 +35,46 @@ class DownloadContentItemsCommand @Autowired constructor(
      */
     @Command(command = ["download-content-items"], description = "Download content items for a manifestation")
     fun downloadContentItems(
-        @Option(longNames = ["celex"], shortNames = ['c'], description = "CELEX number", required = true ) celex: String,
+        @Option(longNames = ["celex"], shortNames = ['c'], description = "CELEX number", required = true) celex: String,
         @Option(longNames = ["language"], shortNames = ['l'], description = "Language code", defaultValue = "ENG") language: String
-    ): String {
+    ): String = runBlocking {
         try {
             logger.info("Downloading content items for CELEX {} in language {}", celex, language)
 
-            val downloadedFiles = legislationService.getExpressions(celex, language)
-                .ifEmpty {
-                    return "No expressions found for CELEX $celex in language $language"
+            // Get the complete document with all expressions
+            val document = legalDocumentService.getCompleteLegalDocumentOrThrow(celex)
+            
+            // Filter expressions by language if provided
+            val filteredExpressions = document.expressions.filter { expression: Expression -> 
+                language.isEmpty() || expression.language.equals(language, ignoreCase = true) 
+            }
+            
+            if (filteredExpressions.isEmpty()) {
+                return@runBlocking "No expressions found for CELEX $celex in language $language"
+            }
+            
+            // Process each expression's manifestations and content items
+            val downloadedFiles = filteredExpressions.flatMap { expression: Expression ->
+                // We already have manifestations in the expressions from our service
+                expression.manifestations.flatMap { manifestation: Manifestation ->
+                    manifestation.items.map { item: ContentItem ->
+                        val outputFile = determineOutputFilePath(celex, expression.language, item)
+                        logger.info("Downloading content item {} to {}", item.uri, outputFile)
+                        downloadService.downloadContent(item.uri, outputFile)
+                        outputFile.toString()
+                    }
                 }
-                .flatMap { expression ->
-                    legislationService.getManifestations(expression.uri)
-                        .flatMap { manifestation ->
-                            legislationService.getContentItems(manifestation.uri)
-                                .map { item ->
-                                    val outputFile = determineOutputFilePath(celex, language, item)
-                                    logger.info("Downloading content item {} to {}", item.uri, outputFile)
-                                    downloadService.downloadContent(item.uri, outputFile) // downloadContent should return the Path
-                                    outputFile.toString()
-                                }
-                        }
-                }
+            }
 
-            return if (downloadedFiles.isEmpty()) {
+            if (downloadedFiles.isEmpty()) {
                 "No content items found to download for CELEX $celex in language $language"
             } else {
                 "Successfully downloaded ${downloadedFiles.size} content items for CELEX $celex in language $language:\n" +
-                        downloadedFiles.joinToString("\n")
+                    downloadedFiles.joinToString("\n")
             }
         } catch (e: Exception) {
             logger.error("Error downloading content items: {}", e.message, e)
-            return "Error downloading content items: ${e.message}"
+            "Error downloading content items: ${e.message}"
         }
     }
 

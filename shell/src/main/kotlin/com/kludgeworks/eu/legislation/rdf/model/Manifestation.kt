@@ -1,4 +1,4 @@
-package com.kludgeworks.eu.legislation.rdf
+package com.kludgeworks.eu.legislation.rdf.model
 
 /**
  * Represents a manifestation of an expression (specific format)
