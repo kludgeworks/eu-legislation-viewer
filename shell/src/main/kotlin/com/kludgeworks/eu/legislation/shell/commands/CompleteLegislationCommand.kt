@@ -36,7 +36,7 @@ class CompleteLegislationCommand @Autowired constructor(
      * @param json Whether to output in JSON format
      * @return The complete legal document
      */
-    @Command(command = ["complete-legislation"])
+    @Command(command = ["complete-legislation"], description = "Get a complete legal document with all related entities" )
     fun getCompleteLegalDocument(
         @Option(longNames = ["celex"], shortNames = ['c'], description = "CELEX number", required = true) celex: String,
         @Option(longNames = ["expressions"], description = "Include expressions", defaultValue = "true") includeExpressions: Boolean,

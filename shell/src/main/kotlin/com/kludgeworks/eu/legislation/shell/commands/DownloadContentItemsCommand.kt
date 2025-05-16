@@ -30,7 +30,7 @@ class DownloadContentItemsCommand @Autowired constructor(
      * @param language The language code (defaults to ENG)
      * @return A message indicating the result of the download
      */
-    @Command(command = ["download-content-items"])
+    @Command(command = ["download-content-items"], description = "Download content items for a manifestation")
     fun downloadContentItems(
         @Option(longNames = ["celex"], shortNames = ['c'], description = "CELEX number", required = true ) celex: String,
         @Option(longNames = ["language"], shortNames = ['l'], description = "Language code", defaultValue = "ENG") language: String

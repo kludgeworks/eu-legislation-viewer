@@ -1,10 +1,13 @@
-spring.application.name=eu.legislation.cli
-
-# Shell configuration
-spring.shell.history.enabled=true
-spring.shell.command.script.enabled=true
-spring.shell.command.stacktrace.enabled=false
-spring.main.banner-mode=off
-
-logging.charset.console=
-logging.file.name=eu.legislation.cli.log
+spring:
+  application:
+    name: eu.legislation.cli
+  shell:
+    history:
+      enabled: 'true'
+  main:
+    banner-mode: 'off'
+logging:
+  file:
+    name: eu.legislation.cli.log
+  pattern:
+    console:
