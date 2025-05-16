@@ -1,4 +1,4 @@
-package com.kludgeworks.eu.legislation.domain
+package com.kludgeworks.eu.legislation.rdf
 
 /**
  * Represents a content item of a manifestation

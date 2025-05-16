@@ -1,23 +1,13 @@
 package com.kludgeworks.eu.legislation.shell.service
 
-import com.kludgeworks.eu.legislation.domain.Amendment
-import com.kludgeworks.eu.legislation.domain.Consolidation
-import com.kludgeworks.eu.legislation.domain.ContentItem
-import com.kludgeworks.eu.legislation.domain.Expression
-import com.kludgeworks.eu.legislation.domain.LegalDocument
-import com.kludgeworks.eu.legislation.domain.Manifestation
-import com.kludgeworks.eu.legislation.domain.LegislationServiceException
-import com.kludgeworks.eu.legislation.domain.mapper.SparqlResultMapper
+import com.kludgeworks.eu.legislation.rdf.*
+import com.kludgeworks.eu.legislation.rdf.mapper.SparqlResultMapper
 import kotlinx.datetime.LocalDate
 import org.apache.jena.query.QueryExecution
-import org.apache.jena.query.QuerySolution
-import org.apache.jena.query.ResultSet
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.util.ArrayList
-import java.util.Optional
 
 @Service
 class EuLegislationService @Autowired constructor(
@@ -276,7 +266,7 @@ class EuLegislationService @Autowired constructor(
         logger.debug("Query: {}", query)
 
         try {
-            org.apache.jena.query.QueryExecution.service(endpointUrl).query(query).build().use { execution ->
+            QueryExecution.service(endpointUrl).query(query).build().use { execution ->
                 val resultSet = execution.execSelect()
                 val manifestations = ArrayList<Manifestation>()
                 while (resultSet.hasNext()) {
@@ -328,7 +318,7 @@ class EuLegislationService @Autowired constructor(
         """.trimIndent()
 
         try {
-            org.apache.jena.query.QueryExecution.service(endpointUrl).query(query).build().use { execution ->
+            QueryExecution.service(endpointUrl).query(query).build().use { execution ->
                 val resultSet = execution.execSelect()
                 val items = ArrayList<ContentItem>()
                 while (resultSet.hasNext()) {
@@ -371,7 +361,7 @@ class EuLegislationService @Autowired constructor(
         """.trimIndent()
 
         try {
-            org.apache.jena.query.QueryExecution.service(endpointUrl).query(query).build().use { execution ->
+            QueryExecution.service(endpointUrl).query(query).build().use { execution ->
                 val resultSet = execution.execSelect()
                 val amendments = ArrayList<Amendment>()
                 while (resultSet.hasNext()) {

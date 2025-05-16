@@ -1,11 +1,10 @@
-package com.kludgeworks.eu.legislation.domain.mapper
+package com.kludgeworks.eu.legislation.rdf.mapper
 
-import com.kludgeworks.eu.legislation.domain.Amendment
-import com.kludgeworks.eu.legislation.domain.Consolidation
-import com.kludgeworks.eu.legislation.domain.ContentItem
-import com.kludgeworks.eu.legislation.domain.Expression
-import com.kludgeworks.eu.legislation.domain.LegalDocument
-import com.kludgeworks.eu.legislation.domain.Manifestation
+import com.kludgeworks.eu.legislation.rdf.Amendment
+import com.kludgeworks.eu.legislation.rdf.Consolidation
+import com.kludgeworks.eu.legislation.rdf.ContentItem
+import com.kludgeworks.eu.legislation.rdf.LegalDocument
+import com.kludgeworks.eu.legislation.rdf.Manifestation
 import com.kludgeworks.eu.legislation.util.DateUtils
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.Clock
@@ -39,14 +38,7 @@ private fun QuerySolution.getDate(name: String, pattern: String = "yyyy-MM-dd"):
 class SparqlResultMapper {
 
     private val datePattern = "yyyy-MM-dd"
-    
-    /**
-     * Parse a date string to LocalDate
-     */
-    fun parseDate(dateStr: String, pattern: String = datePattern): LocalDate {
-        return if (dateStr.isNotEmpty()) DateUtils.parse(dateStr, pattern) else Clock.System.todayIn(TimeZone.UTC)
-    }
-    
+
     /**
      * Parse a date string into a LocalDate
      *

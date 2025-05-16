@@ -1,11 +1,11 @@
 package com.kludgeworks.eu.legislation
 
-import com.kludgeworks.eu.legislation.domain.Amendment
-import com.kludgeworks.eu.legislation.domain.Consolidation
-import com.kludgeworks.eu.legislation.domain.ContentItem
-import com.kludgeworks.eu.legislation.domain.Expression
-import com.kludgeworks.eu.legislation.domain.LegalDocument
-import com.kludgeworks.eu.legislation.domain.Manifestation
+import com.kludgeworks.eu.legislation.rdf.Amendment
+import com.kludgeworks.eu.legislation.rdf.Consolidation
+import com.kludgeworks.eu.legislation.rdf.ContentItem
+import com.kludgeworks.eu.legislation.rdf.Expression
+import com.kludgeworks.eu.legislation.rdf.LegalDocument
+import com.kludgeworks.eu.legislation.rdf.Manifestation
 import com.kludgeworks.eu.legislation.util.DateUtils
 import kotlinx.datetime.LocalDate
 

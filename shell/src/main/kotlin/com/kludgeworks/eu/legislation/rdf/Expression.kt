@@ -1,4 +1,4 @@
-package com.kludgeworks.eu.legislation.domain
+package com.kludgeworks.eu.legislation.rdf
 
 /**
  * Represents a language expression of a legal document

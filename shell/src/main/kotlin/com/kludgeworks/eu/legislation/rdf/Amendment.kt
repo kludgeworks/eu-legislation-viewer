@@ -1,4 +1,4 @@
-package com.kludgeworks.eu.legislation.domain
+package com.kludgeworks.eu.legislation.rdf
 
 import kotlinx.datetime.LocalDate
 
