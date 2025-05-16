@@ -171,16 +171,6 @@ class EuLegislationService @Autowired constructor(
     }
 
     /**
-     * Get expressions for a CELEX number
-     *
-     * @param celexNumber The CELEX number
-     * @return The expressions
-     */
-    fun getExpressions(celexNumber: String): List<Expression> {
-        return getExpressions(celexNumber, null)
-    }
-
-    /**
      * Get expressions for a CELEX number and language
      *
      * @param celexNumber The CELEX number
@@ -193,7 +183,9 @@ class EuLegislationService @Autowired constructor(
         val languageFilter = if (language != null) {
             """FILTER(?language = <http://publications.europa.eu/resource/authority/language/${language.uppercase()}>)"""
         } else {
-            ""
+            """
+            # No Language filter
+            """
         }
 
         val query = """
@@ -219,7 +211,7 @@ class EuLegislationService @Autowired constructor(
         logger.debug("Query: {}", query)
 
         try {
-            org.apache.jena.query.QueryExecution.service(endpointUrl).query(query).build().use { execution ->
+            QueryExecution.service(endpointUrl).query(query).build().use { execution ->
                 val resultSet = execution.execSelect()
                 val expressions = ArrayList<Expression>()
                 while (resultSet.hasNext()) {
@@ -338,10 +330,24 @@ class EuLegislationService @Autowired constructor(
      * Get amendments for a CELEX number
      *
      * @param celexNumber The CELEX number
+     * @param language Optional language code to filter for amendments with expressions in a specific language
      * @return The amendments
      */
-    fun getAmendments(celexNumber: String): List<Amendment> {
-        logger.info("Getting amendments for CELEX {}", celexNumber)
+    fun getAmendments(celexNumber: String, language: String? = null): List<Amendment> {
+        logger.info("Getting amendments for CELEX {} with language filter {}", celexNumber, language ?: "none")
+
+        val languageFilter = if (language != null) {
+            """
+            # Get expressions of the amendments in specific language
+            ?expression cdm:expression_belongs_to_work ?amendment .
+            ?expression cdm:expression_uses_language ?language .
+            FILTER(?language = <http://publications.europa.eu/resource/authority/language/${language.uppercase()}>)
+            """
+        } else {
+            """
+            # No Language filter
+            """
+        }
 
         val query = """
             PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
@@ -356,6 +362,8 @@ class EuLegislationService @Autowired constructor(
                 ?amendment cdm:resource_legal_amends_resource_legal ?work .
                 ?amendment cdm:resource_legal_id_celex ?celex .
                 ?amendment cdm:work_date_document ?date .
+                
+                $languageFilter
             }
             ORDER BY ?date
         """.trimIndent()
@@ -385,13 +393,32 @@ class EuLegislationService @Autowired constructor(
      *
      * @param celexNumber The CELEX number
      * @param includeConsolidations Whether to include consolidations
+     * @param language Optional language code to filter for amendments with expressions in a specific language
      * @return The amendments with optional consolidations
      */
-    fun getAmendmentsWithConsolidations(celexNumber: String, includeConsolidations: Boolean = true): List<Amendment> {
-        logger.info("Getting amendments with consolidations for CELEX {}", celexNumber)
+    fun getAmendmentsWithConsolidations(
+        celexNumber: String, 
+        includeConsolidations: Boolean = true,
+        language: String? = null
+    ): List<Amendment> {
+        logger.info("Getting amendments with consolidations for CELEX {} with language filter {}", 
+            celexNumber, language ?: "none")
 
         if (!includeConsolidations) {
-            return getAmendments(celexNumber).map { it.copy(consolidations = emptyList()) }
+            return getAmendments(celexNumber, language).map { it.copy(consolidations = emptyList()) }
+        }
+
+        val languageFilter = if (language != null) {
+            """
+            # Get expressions of the amendments in specific language
+            ?expression cdm:expression_belongs_to_work ?amendment .
+            ?expression cdm:expression_uses_language ?language .
+            FILTER(?language = <http://publications.europa.eu/resource/authority/language/${language.uppercase()}>)
+            """
+        } else {
+            """
+            # No Language filter
+            """
         }
 
         val query = """
@@ -408,6 +435,8 @@ class EuLegislationService @Autowired constructor(
                 ?amendment cdm:resource_legal_amends_resource_legal ?work .
                 ?amendment cdm:resource_legal_id_celex ?amendmentCelex .
                 ?amendment cdm:work_date_document ?amendmentDate .
+                
+                $languageFilter
 
                 # Optional consolidations
                 OPTIONAL {
@@ -510,7 +539,7 @@ class EuLegislationService @Autowired constructor(
         """.trimIndent()
 
         try {
-            org.apache.jena.query.QueryExecution.service(endpointUrl).query(query).build().use { execution ->
+            QueryExecution.service(endpointUrl).query(query).build().use { execution ->
                 val resultSet = execution.execSelect()
                 val consolidations = ArrayList<Consolidation>()
                 while (resultSet.hasNext()) {
@@ -530,59 +559,33 @@ class EuLegislationService @Autowired constructor(
      * Get a complete legal document with all related entities
      *
      * @param celexNumber The CELEX number
-     * @param includeExpressions Whether to include expressions
-     * @param includeManifestations Whether to include manifestations
-     * @param includeItems Whether to include content items
-     * @param includeAmendments Whether to include amendments
-     * @param includeConsolidations Whether to include consolidations
      * @return The complete legal document
      * @throws LegislationServiceException If an error occurs
      */
     @Throws(LegislationServiceException::class)
     fun getCompleteLegalDocument(
-        celexNumber: String,
-        includeExpressions: Boolean = true,
-        includeManifestations: Boolean = true,
-        includeItems: Boolean = true,
-        includeAmendments: Boolean = true,
-        includeConsolidations: Boolean = true
+        celexNumber: String
     ): LegalDocument {
         logger.info("Getting complete legal document for CELEX {}", celexNumber)
 
         try {
             // Get base document with expressions
-            val document = getLegislationWithExpressions(celexNumber)
-
-            // If we need manifestations and items, get them for each expression
-            if (includeExpressions && includeManifestations) {
-                val updatedExpressions = document.expressions.map { expression ->
-                    if (expression.manifestations.isEmpty()) {
-                        val manifestations = getManifestations(expression.uri)
-
-                        // If we don't need items, remove them from manifestations
-                        val processedManifestations = if (!includeItems) {
-                            manifestations.map { it.copy(items = emptyList()) }
-                        } else {
-                            manifestations
-                        }
-
-                        expression.copy(manifestations = processedManifestations)
-                    } else {
-                        expression
+            return getLegislationWithExpressions(celexNumber)
+                .let { doc ->
+                    // Process expressions with manifestations and items
+                    val updatedExpressions = doc.expressions.map {
+                        it.copy(manifestations = getManifestations(it.uri))
                     }
+                    doc.copy(expressions = updatedExpressions)
                 }
-                document.expressions = updatedExpressions
-            } else if (!includeExpressions) {
-                // If expressions not needed, clear them
-                document.expressions = emptyList()
-            }
-
-            // Get amendments and consolidations if needed
-            if (includeAmendments) {
-                document.amendments = getAmendmentsWithConsolidations(celexNumber, includeConsolidations)
-            }
-
-            return document
+                .let { doc ->
+                    // Add amendments with consolidations
+                    val amendments = getAmendmentsWithConsolidations(
+                        celexNumber, 
+                        includeConsolidations = true
+                    )
+                    doc.copy(amendments = amendments)
+                }
         } catch (e: Exception) {
             logger.error("Error getting complete legal document for CELEX {}: {}", celexNumber, e.message, e)
             throw LegislationServiceException("Error getting complete legal document for CELEX $celexNumber: ${e.message}", e)

@@ -28,35 +28,18 @@ class CompleteLegislationCommand @Autowired constructor(
      * Get a complete legal document with all related entities
      *
      * @param celex The CELEX number
-     * @param includeExpressions Whether to include expressions
-     * @param includeManifestations Whether to include manifestations  
-     * @param includeItems Whether to include content items
-     * @param includeAmendments Whether to include amendments
-     * @param includeConsolidations Whether to include consolidations
      * @param json Whether to output in JSON format
      * @return The complete legal document
      */
     @Command(command = ["complete-legislation"], description = "Get a complete legal document with all related entities" )
     fun getCompleteLegalDocument(
         @Option(longNames = ["celex"], shortNames = ['c'], description = "CELEX number", required = true) celex: String,
-        @Option(longNames = ["expressions"], description = "Include expressions", defaultValue = "true") includeExpressions: Boolean,
-        @Option(longNames = ["manifestations"], description = "Include manifestations", defaultValue = "true") includeManifestations: Boolean,
-        @Option(longNames = ["items"], description = "Include content items", defaultValue = "true") includeItems: Boolean,
-        @Option(longNames = ["amendments"], description = "Include amendments", defaultValue = "true") includeAmendments: Boolean,
-        @Option(longNames = ["consolidations"], description = "Include consolidations", defaultValue = "true") includeConsolidations: Boolean,
         @Option(longNames = ["json"], shortNames = ['j'], description = "Output in JSON format", arity = CommandRegistration.OptionArity.ZERO ) json: Boolean
     ): String {
         try {
             logger.info("Getting complete legal document for CELEX {}", celex)
 
-            val document = legislationService.getCompleteLegalDocument(
-                celexNumber = celex,
-                includeExpressions = includeExpressions,
-                includeManifestations = includeManifestations,
-                includeItems = includeItems,
-                includeAmendments = includeAmendments,
-                includeConsolidations = includeConsolidations
-            )
+            val document = legislationService.getCompleteLegalDocument(celex)
 
             if (json) {
                 return jsonFormatter.toPrettyJson(document)
@@ -65,11 +48,6 @@ class CompleteLegislationCommand @Autowired constructor(
             // Create model for the template
             val model = mapOf(
                 "document" to document,
-                "includeExpressions" to includeExpressions,
-                "includeManifestations" to includeManifestations,
-                "includeItems" to includeItems,
-                "includeAmendments" to includeAmendments,
-                "includeConsolidations" to includeConsolidations,
                 "datePattern" to datePattern
             )
 

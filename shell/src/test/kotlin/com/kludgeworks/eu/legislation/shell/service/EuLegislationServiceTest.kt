@@ -77,14 +77,7 @@ class EuLegislationServiceTest {
     @Test
     fun testGetCompleteLegalDocument() {
         try {
-            val document = legislationService.getCompleteLegalDocument(
-                celexNumber = testCelexNumber,
-                includeExpressions = true,
-                includeManifestations = true,
-                includeItems = true,
-                includeAmendments = true,
-                includeConsolidations = true
-            )
+            val document = legislationService.getCompleteLegalDocument(testCelexNumber)
 
             // Verify the document was retrieved
             assertNotNull(document)
@@ -118,45 +111,6 @@ class EuLegislationServiceTest {
                 assertNotNull(amendment.date)
                 assertNotNull(amendment.uri)
                 assertFalse(amendment.uri.isEmpty())
-            }
-        } catch (e: Exception) {
-            fail("Test failed due to exception: ${e.message}", e)
-        }
-    }
-
-    @Test
-    fun testGetCompleteLegalDocumentWithPartialInclusions() {
-        try {
-            // Get document with expressions and amendments but without manifestations, items, or consolidations
-            val document = legislationService.getCompleteLegalDocument(
-                celexNumber = testCelexNumber,
-                includeExpressions = true,
-                includeManifestations = false,
-                includeItems = false,
-                includeAmendments = true,
-                includeConsolidations = false
-            )
-
-            // Verify the document was retrieved
-            assertNotNull(document)
-            assertEquals(testCelexNumber, document.celexNumber)
-
-            // Verify expressions were retrieved
-            assertNotNull(document.expressions)
-            assertFalse(document.expressions.isEmpty())
-
-            // Verify expressions have no manifestations
-            document.expressions.forEach { expression ->
-                assertTrue(expression.manifestations.isEmpty(), "Expression should not have manifestations")
-            }
-
-            // Verify amendments were retrieved
-            assertNotNull(document.amendments)
-            assertFalse(document.amendments.isEmpty(), "Regulation should have amendments")
-
-            // Verify amendments have no consolidations
-            document.amendments.forEach { amendment ->
-                assertTrue(amendment.consolidations.isEmpty(), "Amendment should not have consolidations")
             }
         } catch (e: Exception) {
             fail("Test failed due to exception: ${e.message}", e)

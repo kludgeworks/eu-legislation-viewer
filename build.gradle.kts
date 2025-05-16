@@ -1,11 +1,16 @@
 plugins {
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlin.spring) apply false
+    alias(libs.plugins.cyclonedx.bom)
 }
 
 allprojects {
     group = "com.kludgeworks"
     version = "0.0.1-SNAPSHOT"
+    
+    apply {
+        plugin("org.cyclonedx.bom")
+    }
 }
 
 tasks.register("build") {
