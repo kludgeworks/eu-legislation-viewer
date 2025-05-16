@@ -73,7 +73,10 @@ class DownloadContentItemsCommand @Autowired constructor(
             item.mimeType.contains("xml", ignoreCase = true) -> "xml"
             item.mimeType.contains("html", ignoreCase = true) -> "html"
             item.mimeType.contains("xhtml", ignoreCase = true) -> "xhtml"
-            else -> "bin" // Default binary extension
+            else -> {
+                logger.warn("Unknown MIME type: {}.", item.mimeType)
+                item.mimeType
+            }
         }
         val outputDir = Paths.get("legislation", celex, language)
         // Ensure item.identifier is safe for use as a filename, or sanitize it.
