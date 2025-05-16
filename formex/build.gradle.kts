@@ -48,28 +48,27 @@ class FormexVersion(val file: String, val version: String) {
 
 // Function to parse Formex version from filename
 fun parseFormexVersion(file: String): FormexVersion {
-    // Single regex pattern for both standard and special 'cj' formats
+    // Modified regex pattern to clearly separate major, minor, and patch versions
     // Group 1: major version
     // Group 2: minor version or "cj"
-    // Group 3: patch version (might be absent)
-    val versionRegex = "formex-(\\d+)\\.((\\d+)(?:\\.(\\d+))?|cj)(?:-\\d+)?".toRegex()
-    
-    val match = versionRegex.find(file) ?: 
-        throw IllegalArgumentException("Invalid Formex file format: $file. Cannot extract version information.")
-        
+    // Group 3: patch version (optional)
+    val versionRegex = """formex-(\d+)\.(\d+|cj)(?:\.(\d+))?(?:-\d+)?""".toRegex()
+
+    val match = versionRegex.find(file) ?:
+    throw IllegalArgumentException("Invalid Formex file format: $file. Cannot extract version information.")
+
     val major = match.groupValues[1]
     val minor = match.groupValues[2]
-    
+
     val version = if (minor == "cj") {
         // Special 'cj' format
         "v${major.padStart(2, '0')}_cj_0"
     } else {
         // Standard format
-        val minorVal = match.groupValues[3]
-        val patch = match.groupValues[4].takeIf { it.isNotEmpty() } ?: "0"
-        "v${major.padStart(2, '0')}_${minorVal.padStart(2, '0')}_$patch"
+        val patch = match.groupValues[3].takeIf { it.isNotEmpty() } ?: "0"
+        "v${major.padStart(2, '0')}_${minor.padStart(2, '0')}_$patch"
     }
-    
+
     return FormexVersion(file, version)
 }
 
