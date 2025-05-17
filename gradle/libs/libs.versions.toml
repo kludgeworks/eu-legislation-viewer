@@ -15,6 +15,7 @@ jspecify = "1.0.0"
 mockito-kotlin = "5.2.1"
 intershop-jaxb = "7.0.1"
 arrow = "2.1.2"
+ktor = "3.0.0-beta-1"
 
 [libraries]
 # Kotlin
@@ -54,6 +55,13 @@ jaxb-impl = { module = "com.sun.xml.bind:jaxb-impl", version.ref = "jaxb" }
 arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 arrow-fx-coroutines = { module = "io.arrow-kt:arrow-fx-coroutines", version.ref = "arrow" }
 arrow-optics = { module = "io.arrow-kt:arrow-optics", version.ref = "arrow" }
+
+# Ktor
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 
 # Other
 jspecify = { module = "org.jspecify:jspecify", version.ref = "jspecify" }

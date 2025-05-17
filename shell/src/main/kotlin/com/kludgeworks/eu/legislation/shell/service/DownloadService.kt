@@ -1,132 +1,79 @@
 package com.kludgeworks.eu.legislation.shell.service
 
+import arrow.core.raise.either
+import arrow.core.raise.ensure
 import com.kludgeworks.eu.legislation.shell.util.XmlFormatter
-import org.slf4j.LoggerFactory
+import com.kludgeworks.eu.legislation.util.DomainError
+import com.kludgeworks.eu.legislation.util.Result
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.springframework.stereotype.Service
 import java.io.FileOutputStream
 import java.io.IOException
 import java.net.URI
-import java.net.http.HttpClient
-import java.net.http.HttpRequest
-import java.net.http.HttpResponse
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
-import java.time.Duration
 import java.util.zip.ZipInputStream
 
-/**
- * Service for downloading content from URLs and optionally unzipping it
- */
 @Service
-class DownloadService(private val xmlFormatter: XmlFormatter) {
-    private val logger = LoggerFactory.getLogger(DownloadService::class.java)
-    private val httpClient = HttpClient.newBuilder()
-        .connectTimeout(Duration.ofSeconds(30))
-        .followRedirects(HttpClient.Redirect.NORMAL)
-        .build()
+class DownloadService(
+    private val xmlFormatter: XmlFormatter,
+    private val ktorClient: KtorClient
+) {
 
-    /**
-     * Download content from a URL to a file
-     *
-     * @param url The URL to download from
-     * @param outputPath The path to save the downloaded content to
-     * @return The path to the downloaded file
-     * @throws IOException If an error occurs during download
-     */
-    @Throws(IOException::class)
-    fun downloadContent(url: String, outputPath: Path): Path {
-        logger.info("Downloading content from {} to {}", url, outputPath)
-
-        // Create parent directories if they don't exist
-        Files.createDirectories(outputPath.parent)
-
-        // Check if it's a file URL, which is useful for testing
-        if (url.startsWith("file:")) {
-            // Use direct file operations for file URLs
-            val inputPath = Paths.get(URI.create(url))
-            Files.copy(inputPath, outputPath)
-            logger.info("Copied file content to {}", outputPath)
+suspend fun downloadContent(url: String, output: Path): Result<Path> = either {
+        val downloaded = if (url.startsWith("file:")) {
+            copyLocal(url, output).bind()
         } else {
-            // Download from web URL using Java's HttpClient
-            val request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .timeout(Duration.ofMinutes(2))
-                .header("Accept", "*/*")
-                .GET()
-                .build()
-
-            // Send request and save the response body to the output file
-            FileOutputStream(outputPath.toFile()).use { fileOutputStream ->
-                val response = httpClient.send(request, HttpResponse.BodyHandlers.ofInputStream())
-                if (response.statusCode() >= 400) {
-                    throw IOException("Failed to download content: HTTP ${response.statusCode()}")
-                }
-                response.body().use { inputStream ->
-                    inputStream.copyTo(fileOutputStream)
-                }
-            }
-
-            logger.info("Downloaded content to {}", outputPath)
+            ktorClient.download(url, output).bind()
         }
+        postProcess(downloaded).bind()
+    }
 
-        // Check if the downloaded file is a ZIP file and unzip if needed
-        return if (outputPath.toString().endsWith(".zip", ignoreCase = true)) {
-            logger.info("Downloaded file is a ZIP file, unzipping...")
-            unzip(outputPath, outputPath.parent).also {
-                logger.info("Unzipped content to {}", it)
+    private suspend fun copyLocal(url: String, output: Path): Result<Path> = either {
+        withContext(Dispatchers.IO) {
+            Files.createDirectories(output.parent)
+            Files.copy(Paths.get(URI(url)), output)
+        }
+        output
+    }
+
+    private suspend fun postProcess(path: Path): Result<Path> = either {
+        when {
+            path.toString().endsWith(".zip", true) ->
+                unzip(path, path.parent).bind()
+            path.toString().endsWith(".xml", true) -> {
+                ensure(xmlFormatter.formatXmlFile(path.toFile())) {
+                    DomainError.UnexpectedError("XML formatting failed for $path")
+                }
+                path
             }
-        } else if (outputPath.toString().endsWith(".xml", ignoreCase = true)) {
-            // Format XML files
-            logger.info("Downloaded file is an XML file, formatting...")
-            if (xmlFormatter.formatXmlFile(outputPath.toFile())) {
-                logger.info("Formatted XML file {}", outputPath)
-            } else {
-                logger.warn("Failed to format XML file {}", outputPath)
-            }
-            outputPath
-        } else {
-            outputPath
+            else -> path
         }
     }
 
-    /**
-     * Unzip a file to a directory
-     *
-     * @param zipFile The ZIP file to unzip
-     * @param outputDir The directory to unzip to
-     * @return The path to the unzipped directory
-     * @throws IOException If an error occurs during unzipping
-     */
-    @Throws(IOException::class)
-    private fun unzip(zipFile: Path, outputDir: Path): Path {
-        // Create a directory with the same name as the ZIP file (without the .zip extension)
-        val dirName = zipFile.fileName.toString().removeSuffix(".zip")
-        val unzipDir = outputDir.resolve(dirName).also {
-            Files.createDirectories(it)
-        }
-
-        // Unzip the file
-        ZipInputStream(Files.newInputStream(zipFile)).use { zipInputStream ->
-            // Keep reading entries until we get null
-            var entry = zipInputStream.nextEntry
-            while (entry != null) {
-                val entryPath = unzipDir.resolve(entry.name)
-
-                if (entry.isDirectory) {
-                    Files.createDirectories(entryPath)
-                } else {
-                    Files.createDirectories(entryPath.parent)
-                    FileOutputStream(entryPath.toFile()).use { out ->
-                        zipInputStream.copyTo(out)
+    private suspend fun unzip(zipFile: Path, outputDir: Path): Result<Path> = either {
+        try {
+            val destDir = outputDir.resolve(zipFile.fileName.toString().removeSuffix(".zip"))
+            withContext(Dispatchers.IO) {
+                Files.createDirectories(destDir)
+                ZipInputStream(Files.newInputStream(zipFile)).use { zis ->
+                    generateSequence { zis.nextEntry }.forEach { entry ->
+                        val outPath = destDir.resolve(entry.name)
+                        if (entry.isDirectory) {
+                            Files.createDirectories(outPath)
+                        } else {
+                            Files.createDirectories(outPath.parent)
+                            FileOutputStream(outPath.toFile()).use { out -> zis.copyTo(out) }
+                        }
+                        zis.closeEntry()
                     }
                 }
-
-                zipInputStream.closeEntry()
-                entry = zipInputStream.nextEntry
             }
+            destDir
+        } catch (e: IOException) {
+            raise(DomainError.UnexpectedError("Failed to unzip: ${e.message}", e))
         }
-
-        return unzipDir
     }
 }

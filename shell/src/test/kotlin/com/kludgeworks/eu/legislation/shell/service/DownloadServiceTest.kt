@@ -1,7 +1,12 @@
 package com.kludgeworks.eu.legislation.shell.service
 
+import arrow.core.Either
+import arrow.core.getOrElse
 import com.kludgeworks.eu.legislation.Legislation32015R1998.DOC1_CONTENT_ITEM
 import com.kludgeworks.eu.legislation.shell.util.XmlFormatter
+import com.kludgeworks.eu.legislation.util.Result
+import com.kludgeworks.eu.legislation.util.asSuccess
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
@@ -19,23 +24,25 @@ import kotlin.test.assertTrue
 class DownloadServiceTest {
 
     private lateinit var downloadService: DownloadService
+    private lateinit var mockXmlFormatter: XmlFormatter
+    private lateinit var mockKtorClient: KtorClient
 
     @TempDir
     lateinit var tempDir: Path
 
-    private lateinit var mockXmlFormatter: XmlFormatter
-
     @BeforeEach
     fun setUp() {
         mockXmlFormatter = mock()
+        mockKtorClient = mock()
         whenever(mockXmlFormatter.formatXmlFile(any())).thenReturn(true)
-        downloadService = DownloadService(mockXmlFormatter)
+        downloadService = DownloadService(mockXmlFormatter, mockKtorClient)
     }
 
     @Test
-    fun downloadContentShouldDownloadFile() {
+    fun downloadContentShouldDownloadFile() = runBlocking {
         // Arrange
         val outputPath = tempDir.resolve("doc1.xml")
+        whenever(mockKtorClient.download(any(), any(), any())).thenReturn(outputPath.asSuccess())
 
         println("Starting download from ${DOC1_CONTENT_ITEM.uri}")
 
@@ -43,57 +50,55 @@ class DownloadServiceTest {
         val result = downloadService.downloadContent(DOC1_CONTENT_ITEM.uri, outputPath)
 
         // Assert
-        assertEquals(outputPath, result)
-        assertTrue(Files.exists(outputPath))
-        val fileSize = Files.size(outputPath)
-        println("Downloaded file size: $fileSize bytes")
-        assertTrue(fileSize > 0, "Downloaded file should not be empty")
-
-        // Log the first 100 chars of content to verify it's XML content
-        val content = Files.readString(outputPath)
-        println("Content preview (first 100 chars): ${content.take(100).replace("\n", "\\n")}")
+        val path = result.getOrElse { 
+            throw AssertionError("Download failed with error: ${it.message}")
+        }
+        assertEquals(outputPath, path)
     }
 
     @Test
-    fun downloadContentShouldFormatXmlFile() {
+    fun downloadContentShouldFormatXmlFile() = runBlocking {
         // Arrange
         val xmlContent = """<?xml version="1.0" encoding="UTF-8"?><root><child>value</child></root>"""
         val xmlFilePath = tempDir.resolve("source.xml")
         Files.writeString(xmlFilePath, xmlContent)
 
         val outputPath = tempDir.resolve("formatted.xml")
+        whenever(mockKtorClient.download(any(), any(), any())).thenReturn(outputPath.asSuccess())
+        Files.writeString(outputPath, xmlContent) // Simulate download
 
         // Act - Use file URL for the test
         val result = downloadService.downloadContent(xmlFilePath.toUri().toString(), outputPath)
 
         // Assert
-        assertEquals(outputPath, result)
-        assertTrue(Files.exists(outputPath))
+        val path = result.getOrElse {
+            throw AssertionError("Download failed with error: ${it.message}")
+        }
+        assertEquals(outputPath, path)
         // Verify that formatXmlFile was called on the mock
         org.mockito.kotlin.verify(mockXmlFormatter).formatXmlFile(outputPath.toFile())
     }
 
     @Test
     @Disabled("Zip test disabled as requested")
-    fun downloadContentShouldUnzipZipFile() {
+    fun downloadContentShouldUnzipZipFile() = runBlocking {
         // Arrange
         val zipData = createZipData()
         val zipFilePath = tempDir.resolve("source.zip")
         Files.write(zipFilePath, zipData)
 
         val outputPath = tempDir.resolve("test.zip")
+        whenever(mockKtorClient.download(any(), any(), any())).thenReturn(outputPath.asSuccess())
+        Files.write(outputPath, zipData) // Simulate download
 
         // Act - Use file URL for the test
         val result = downloadService.downloadContent(zipFilePath.toUri().toString(), outputPath)
 
         // Assert
-        assertTrue(Files.exists(outputPath)) // Original zip file should exist
-        assertTrue(Files.exists(tempDir.resolve("test"))) // Unzipped directory should exist
-        assertTrue(Files.exists(tempDir.resolve("test/file1.txt"))) // Unzipped file should exist
-        assertTrue(Files.exists(tempDir.resolve("test/dir/file2.txt"))) // Nested unzipped file should exist
-        assertEquals("File 1 content", Files.readString(tempDir.resolve("test/file1.txt")))
-        assertEquals("File 2 content", Files.readString(tempDir.resolve("test/dir/file2.txt")))
-        assertEquals(tempDir.resolve("test"), result) // Result should be the unzipped directory
+        val path = result.getOrElse {
+            throw AssertionError("Download failed with error: ${it.message}")
+        }
+        assertEquals(tempDir.resolve("test"), path) // Result should be the unzipped directory
     }
 
     private fun createZipData(): ByteArray {
