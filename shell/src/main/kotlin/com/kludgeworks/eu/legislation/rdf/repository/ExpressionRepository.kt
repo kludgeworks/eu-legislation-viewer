@@ -1,10 +1,9 @@
 package com.kludgeworks.eu.legislation.rdf.repository
 
-import arrow.core.Either
+import arrow.core.raise.Raise
 import com.kludgeworks.eu.legislation.rdf.model.Expression
 import com.kludgeworks.eu.legislation.rdf.SparqlResultMapper
 import com.kludgeworks.eu.legislation.util.DomainError
-import com.kludgeworks.eu.legislation.util.Result
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 
@@ -24,9 +23,10 @@ class ExpressionRepository @Autowired constructor(
      *
      * @param celexNumber The CELEX number
      * @param language The language code (optional)
-     * @return The expressions wrapped in Result
+     * @return The expressions
      */
-    suspend fun findAllByCelex(celexNumber: String, language: String? = null): Result<List<Expression>> {
+    context(Raise<DomainError>)
+    suspend fun findAllByCelex(celexNumber: String, language: String? = null): List<Expression> {
         val languageFilter = if (language != null) {
             """FILTER(?language = <http://publications.europa.eu/resource/authority/language/${language.uppercase()}>)"""
         } else {
@@ -58,20 +58,15 @@ class ExpressionRepository @Autowired constructor(
         
         repository.logger.debug("Query: {}", query)
 
-        val queryResult = repository.select(query) { solution ->
-                    val expressionUri = solution.getResource("expression").toString()
-                    val languageCode = solution.getLiteral("languageCode").string
-                    
-                    Expression(
-                        uri = expressionUri,
-                        language = languageCode,
-                        manifestations = emptyList()
-                    )
-                }
-        
-        return when (queryResult) {
-            is Either.Left -> Either.Left(queryResult.value)
-            is Either.Right -> Either.Right(queryResult.value)
+        return repository.select(query) { solution ->
+            val expressionUri = solution.getResource("expression").toString()
+            val languageCode = solution.getLiteral("languageCode").string
+            
+            Expression(
+                uri = expressionUri,
+                language = languageCode,
+                manifestations = emptyList()
+            )
         }
     }
 
@@ -80,27 +75,18 @@ class ExpressionRepository @Autowired constructor(
      *
      * @param celexNumber The CELEX number
      * @param language The language code (optional)
-     * @return The expressions with manifestations wrapped in Result
+     * @return The expressions with manifestations
      */
-    suspend fun findAllWithManifestationsByCelex(celexNumber: String, language: String? = null): Result<List<Expression>> {
-        val baseExpressionsResult = findAllByCelex(celexNumber, language)
-        
-        if (baseExpressionsResult is Either.Left) {
-            return baseExpressionsResult
-        }
-        
-        val expressions = (baseExpressionsResult as Either.Right).value
+    context(Raise<DomainError>)
+    suspend fun findAllWithManifestationsByCelex(celexNumber: String, language: String? = null): List<Expression> {
+        val expressions = findAllByCelex(celexNumber, language)
         val result = mutableListOf<Expression>()
         
         for (expression in expressions) {
-            val manifestationsResult = manifestationRepository.findAllByExpressionUri(expression.uri)
-            if (manifestationsResult is Either.Left) {
-                return manifestationsResult
-            }
-            val manifestations = (manifestationsResult as Either.Right).value
+            val manifestations = manifestationRepository.findAllByExpressionUri(expression.uri)
             result.add(expression.copy(manifestations = manifestations))
         }
         
-        return Either.Right(result)
+        return result
     }
 }

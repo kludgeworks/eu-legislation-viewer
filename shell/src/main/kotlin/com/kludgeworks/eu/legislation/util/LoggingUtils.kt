@@ -1,5 +1,6 @@
 package com.kludgeworks.eu.legislation.util
 
+import arrow.core.Either
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
@@ -20,15 +21,15 @@ import kotlin.system.measureTimeMillis
 suspend fun <T, R> List<T>.processWithLogging(
     logger: Logger,
     errorMessage: String,
-    transform: suspend (T) -> Result<R>
+    transform: suspend (T) -> Either<DomainError, R>
 ): List<R> = withContext(Dispatchers.Default) {
     mapNotNull { item ->
         transform(item).fold(
-            ifLeft = { error ->
+            { error ->
                 logger.warn(errorMessage, item, error.message)
                 null
             },
-            ifRight = { it }
+            { it }
         )
     }
 }
@@ -46,16 +47,16 @@ suspend fun <T, R> List<T>.processWithLogging(
 fun <T, R : Any> Flow<T>.mapResults(
     logger: Logger,
     errorMessage: String,
-    transform: suspend (T) -> Result<R>
+    transform: suspend (T) -> Either<DomainError, R>
 ): Flow<R> {
     return this
         .map { item ->
             transform(item).fold(
-                ifLeft = { error ->
+                { error ->
                     logger.warn(errorMessage, item, error.message)
                     null
                 },
-                ifRight = { it }
+                { it }
             )
         }
         .filter { value -> value != null }

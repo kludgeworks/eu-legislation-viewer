@@ -2,6 +2,7 @@ package com.kludgeworks.eu.legislation.util
 
 import arrow.core.Either
 import arrow.core.raise.*
+import kotlin.contracts.ExperimentalContracts
 import com.kludgeworks.eu.legislation.rdf.ConcurrentOperationException
 import com.kludgeworks.eu.legislation.rdf.EntityNotFoundException
 import com.kludgeworks.eu.legislation.rdf.MappingException
@@ -56,19 +57,10 @@ sealed class DomainError {
 }
 
 /**
- * Type alias for Either<DomainError, T> to represent a result that can be a success (Right) or an error (Left)
+ * Create a NotFound domain error in a Raise context
  */
-typealias Result<T> = Either<DomainError, T>
-
-/**
- * Extension function to create a successful Result
- */
-fun <T> T.asSuccess(): Result<T> = Either.Right(this)
-
-/**
- * Extension function to create a not found error Result
- */
-fun notFound(entityType: String, identifier: String, cause: Throwable? = null): Result<Nothing> = either {
+context(Raise<DomainError>)
+fun notFoundError(entityType: String, identifier: String, cause: Throwable? = null): Nothing {
     raise(DomainError.NotFound(
         message = "$entityType not found with identifier: $identifier",
         cause = cause,
@@ -78,9 +70,10 @@ fun notFound(entityType: String, identifier: String, cause: Throwable? = null): 
 }
 
 /**
- * Extension function to create a query failure error Result
+ * Create a QueryFailure domain error in a Raise context
  */
-fun queryFailure(message: String, query: String? = null, cause: Throwable? = null): Result<Nothing> = either {
+context(Raise<DomainError>)
+fun queryFailureError(message: String, query: String? = null, cause: Throwable? = null): Nothing {
     raise(DomainError.QueryFailure(
         message = "SPARQL query execution failed: $message",
         cause = cause,
@@ -89,9 +82,10 @@ fun queryFailure(message: String, query: String? = null, cause: Throwable? = nul
 }
 
 /**
- * Extension function to create a mapping failure error Result
+ * Create a MappingFailure domain error in a Raise context
  */
-fun mappingFailure(entityType: String, property: String, cause: Throwable? = null): Result<Nothing> = either {
+context(Raise<DomainError>)
+fun mappingFailureError(entityType: String, property: String, cause: Throwable? = null): Nothing {
     raise(DomainError.MappingFailure(
         message = "Failed to map property '$property' for entity type '$entityType'",
         cause = cause, 
@@ -101,10 +95,11 @@ fun mappingFailure(entityType: String, property: String, cause: Throwable? = nul
 }
 
 /**
- * Extension function to run a block of code and convert exceptions to DomainError
+ * Extension function to handle exceptions in a suspending context
  */
-suspend fun <T> runCatching(block: suspend () -> T): Result<T> = either {
-    catch({
+context(Raise<DomainError>)
+suspend fun <T> raiseCatch(block: suspend () -> T): T {
+    return catch({
         block()
     }) { e ->
         when (e) {
@@ -117,17 +112,31 @@ suspend fun <T> runCatching(block: suspend () -> T): Result<T> = either {
                 ))
             }
             is SparqlQueryException -> {
-                raise(DomainError.QueryFailure(e.message ?: "", e, e.query))
+                raise(DomainError.QueryFailure(
+                    message = e.message ?: "", 
+                    cause = e, 
+                    query = e.query
+                ))
             }
             is MappingException -> {
                 val entityType = e.message?.substringAfter("entity type '")?.substringBefore("'") ?: "Unknown"
                 val property = e.message?.substringAfter("property '")?.substringBefore("'") ?: "Unknown"
-                raise(DomainError.MappingFailure(e.message ?: "", e, entityType, property))
+                raise(DomainError.MappingFailure(
+                    message = e.message ?: "", 
+                    cause = e, 
+                    entityType = entityType, 
+                    property = property
+                ))
             }
             is RequestTimeoutException -> {
                 val operation = e.message?.substringAfter("Operation '")?.substringBefore("'") ?: "Unknown"
                 val timeoutMs = e.message?.substringAfter("timed out after ")?.substringBefore(" ms")?.toLongOrNull() ?: 0L
-                raise(DomainError.Timeout(e.message ?: "", e, operation, timeoutMs))
+                raise(DomainError.Timeout(
+                    message = e.message ?: "", 
+                    cause = e, 
+                    operation = operation, 
+                    timeoutMs = timeoutMs
+                ))
             }
             is ConcurrentOperationException -> {
                 raise(DomainError.ConcurrentFailure(e.message ?: "", e))
@@ -145,20 +154,5 @@ suspend fun <T> runCatching(block: suspend () -> T): Result<T> = either {
     }
 }
 
-/**
- * Convert a Result to the corresponding exception
- */
-fun <T> Result<T>.getOrThrow(): T = fold(
-    ifLeft = { error ->
-        when (error) {
-            is DomainError.NotFound -> throw EntityNotFoundException(error.entityType, error.identifier, error.cause)
-            is DomainError.QueryFailure -> throw SparqlQueryException(error.message, error.query, error.cause)
-            is DomainError.MappingFailure -> throw MappingException(error.entityType, error.property, error.cause)
-            is DomainError.Timeout -> throw RequestTimeoutException(error.operation, error.timeoutMs, error.cause)
-            is DomainError.ConcurrentFailure -> throw ConcurrentOperationException(error.message, error.cause)
-            is DomainError.UnexpectedError -> throw LegislationServiceException(error.message, error.cause)
-        }
-    },
-    ifRight = { it }
-)
+// Moved helper functions to RaiseExtensions.kt
 

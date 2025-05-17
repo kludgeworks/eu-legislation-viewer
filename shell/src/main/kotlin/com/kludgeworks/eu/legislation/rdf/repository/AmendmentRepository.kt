@@ -1,11 +1,11 @@
 package com.kludgeworks.eu.legislation.rdf.repository
 
-import arrow.core.Either
+import arrow.core.raise.Raise
 import com.kludgeworks.eu.legislation.rdf.model.Amendment
 import com.kludgeworks.eu.legislation.rdf.model.Consolidation
 import com.kludgeworks.eu.legislation.rdf.SparqlResultMapper
 import com.kludgeworks.eu.legislation.util.DomainError
-import com.kludgeworks.eu.legislation.util.Result
+import com.kludgeworks.eu.legislation.util.catchingUnexpectedSuspend
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 
@@ -24,9 +24,10 @@ class AmendmentRepository @Autowired constructor(
      *
      * @param celexNumber The CELEX number
      * @param language Optional language code to filter for amendments with expressions in a specific language
-     * @return The amendments wrapped in Result
+     * @return The list of amendments
      */
-    suspend fun findAllByCelex(celexNumber: String, language: String? = null): Result<List<Amendment>> {
+    context(Raise<DomainError>)
+    suspend fun findAllByCelex(celexNumber: String, language: String? = null): List<Amendment> {
         val languageFilter = if (language != null) {
             """
             # Get expressions of the amendments in specific language
@@ -59,13 +60,8 @@ class AmendmentRepository @Autowired constructor(
             ORDER BY ?date
         """.trimIndent()
 
-        val queryResult = repository.select(query) { solution ->
-                    mapper.mapToAmendment(solution)
-        }
-        
-        return when (queryResult) {
-            is Either.Left -> Either.Left(queryResult.value)
-            is Either.Right -> Either.Right(queryResult.value)
+        return repository.select(query) { solution ->
+            mapper.mapToAmendment(solution)
         }
     }
     
@@ -75,17 +71,17 @@ class AmendmentRepository @Autowired constructor(
      * @param celexNumber The CELEX number
      * @param includeConsolidations Whether to include consolidations
      * @param language Optional language code to filter for amendments with expressions in a specific language
-     * @return The amendments with optional consolidations wrapped in Result
+     * @return The amendments with optional consolidations
      */
+    context(Raise<DomainError>)
     suspend fun findAllWithConsolidationsByCelex(
         celexNumber: String, 
         includeConsolidations: Boolean = true,
         language: String? = null
-    ): Result<List<Amendment>> {
+    ): List<Amendment> {
         if (!includeConsolidations) {
-            return findAllByCelex(celexNumber, language).map { amendments -> 
-                amendments.map { it.copy(consolidations = emptyList()) }
-            }
+            val amendments = findAllByCelex(celexNumber, language)
+            return amendments.map { it.copy(consolidations = emptyList()) }
         }
 
         val languageFilter = if (language != null) {
@@ -129,64 +125,55 @@ class AmendmentRepository @Autowired constructor(
             ORDER BY ?amendmentDate ?consolidationDate
         """.trimIndent()
 
-        try {
-            val queryResult = repository.select(query) { solution -> solution }
+        return catchingUnexpectedSuspend(message = "Error getting amendments with consolidations for CELEX $celexNumber") {
+            val solutions = repository.select(query) { solution -> solution }
             
-            return when (queryResult) {
-                is Either.Left -> Either.Left(queryResult.value)
-                is Either.Right -> {
-                    val results = queryResult.value
+            // Using a map to group consolidations by amendment
+            val amendmentMap = mutableMapOf<String, MutableList<Consolidation>>()
+            val amendmentDetails = mutableMapOf<String, Pair<String, String>>()
+            
+            // Process results
+            for (solution in solutions) {
+                // Get amendment details
+                val amendmentUri = solution.getResource("amendment").toString()
+                val amendmentCelex = solution.getLiteral("amendmentCelex").string
+                val amendmentDate = solution.getLiteral("amendmentDate").string
+                
+                // Store amendment details
+                amendmentDetails[amendmentUri] = Pair(amendmentCelex, amendmentDate)
+                
+                // Initialize empty list for this amendment if not exists
+                if (!amendmentMap.containsKey(amendmentUri)) {
+                    amendmentMap[amendmentUri] = mutableListOf()
+                }
+                
+                // Process consolidation if present
+                if (solution.contains("consolidation")) {
+                    val consolidationUri = solution.getResource("consolidation").toString()
+                    val consolidationCelex = solution.getLiteral("consolidationCelex").string
+                    val consolidationDate = solution.getLiteral("consolidationDate").string
+                    val eli = if (solution.contains("eli")) solution.getLiteral("eli").string else ""
                     
-                    // Using a map to group consolidations by amendment
-                    val amendmentMap = mutableMapOf<String, MutableList<Consolidation>>()
-                    val amendmentDetails = mutableMapOf<String, Pair<String, String>>()
+                    val consolidation = Consolidation(
+                        uri = consolidationUri,
+                        celexNumber = consolidationCelex,
+                        consolidationDate = mapper.parseDate(consolidationDate),
+                        eli = eli
+                    )
                     
-                    // Process results
-                    for (solution in results) {
-                        // Get amendment details
-                        val amendmentUri = solution.getResource("amendment").toString()
-                        val amendmentCelex = solution.getLiteral("amendmentCelex").string
-                        val amendmentDate = solution.getLiteral("amendmentDate").string
-                        
-                        // Store amendment details
-                        amendmentDetails[amendmentUri] = Pair(amendmentCelex, amendmentDate)
-                        
-                        // Initialize empty list for this amendment if not exists
-                        if (!amendmentMap.containsKey(amendmentUri)) {
-                            amendmentMap[amendmentUri] = mutableListOf()
-                        }
-                        
-                        // Process consolidation if present
-                        if (solution.contains("consolidation")) {
-                            val consolidationUri = solution.getResource("consolidation").toString()
-                            val consolidationCelex = solution.getLiteral("consolidationCelex").string
-                            val consolidationDate = solution.getLiteral("consolidationDate").string
-                            val eli = if (solution.contains("eli")) solution.getLiteral("eli").string else ""
-                            
-                            val consolidation = Consolidation(
-                                uri = consolidationUri,
-                                celexNumber = consolidationCelex,
-                                consolidationDate = mapper.parseDate(consolidationDate),
-                                eli = eli
-                            )
-                            
-                            amendmentMap[amendmentUri]?.add(consolidation)
-                        }
-                    }
-                    
-                    // Create amendments from the collected data
-                    Either.Right(amendmentDetails.map { (uri, details) ->
-                        Amendment(
-                            uri = uri,
-                            celexNumber = details.first,
-                            date = mapper.parseDate(details.second),
-                            consolidations = amendmentMap[uri] ?: emptyList()
-                        )
-                    }.sortedBy { it.date })
+                    amendmentMap[amendmentUri]?.add(consolidation)
                 }
             }
-        } catch (e: Exception) {
-            return Either.Left(DomainError.QueryFailure("Error getting amendments with consolidations for CELEX $celexNumber: ${e.message}", e, query))
+            
+            // Create amendments from the collected data
+            amendmentDetails.map { (uri, details) ->
+                Amendment(
+                    uri = uri,
+                    celexNumber = details.first,
+                    date = mapper.parseDate(details.second),
+                    consolidations = amendmentMap[uri] ?: emptyList()
+                )
+            }.sortedBy { it.date }
         }
     }
 }

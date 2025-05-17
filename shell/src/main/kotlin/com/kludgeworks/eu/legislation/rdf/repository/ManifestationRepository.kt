@@ -1,10 +1,10 @@
 package com.kludgeworks.eu.legislation.rdf.repository
 
-import arrow.core.Either
+import arrow.core.raise.Raise
 import com.kludgeworks.eu.legislation.rdf.model.Manifestation
 import com.kludgeworks.eu.legislation.rdf.SparqlResultMapper
 import com.kludgeworks.eu.legislation.util.DomainError
-import com.kludgeworks.eu.legislation.util.Result
+import com.kludgeworks.eu.legislation.util.catchingUnexpectedSuspend
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 
@@ -23,9 +23,10 @@ class ManifestationRepository @Autowired constructor(
      * Get manifestations for an expression URI
      *
      * @param expressionUri The expression URI
-     * @return The manifestations wrapped in Result
+     * @return The manifestations
      */
-    suspend fun findAllByExpressionUri(expressionUri: String): Result<List<Manifestation>> {
+    context(Raise<DomainError>)
+    suspend fun findAllByExpressionUri(expressionUri: String): List<Manifestation> {
         val query = """
             PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 
@@ -39,31 +40,21 @@ class ManifestationRepository @Autowired constructor(
         
         repository.logger.debug("Query: {}", query)
 
-        try {
-            val manifestationsResult = repository.select(query) { solution ->
+        return catchingUnexpectedSuspend(
+            message = "Error getting manifestations for expression $expressionUri"
+        ) {
+            val manifestations = repository.select(query) { solution ->
                 mapper.mapToManifestation(solution)
             }
-
-            return when (manifestationsResult) {
-                is Either.Left -> Either.Left(manifestationsResult.value)
-                is Either.Right -> {
-                    val manifestations = manifestationsResult.value
-                    
-                    // Fetch content items for each manifestation
-                    val result = mutableListOf<Manifestation>()
-                    for (manifestation in manifestations) {
-                        val itemsResult = contentItemRepository.findAllByManifestationUri(manifestation.uri)
-                        when (itemsResult) {
-                            is Either.Left -> return Either.Left(itemsResult.value)
-                            is Either.Right -> result.add(manifestation.copy(items = itemsResult.value))
-                        }
-                    }
-                    
-                    Either.Right(result)
-                }
+            
+            // Fetch content items for each manifestation
+            val result = mutableListOf<Manifestation>()
+            for (manifestation in manifestations) {
+                val items = contentItemRepository.findAllByManifestationUri(manifestation.uri)
+                result.add(manifestation.copy(items = items))
             }
-        } catch (e: Exception) {
-            return Either.Left(DomainError.QueryFailure("Error getting manifestations for expression $expressionUri: ${e.message}", e, query))
+            
+            result
         }
     }
 }

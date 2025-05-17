@@ -1,10 +1,8 @@
 package com.kludgeworks.eu.legislation.shell.service
 
-import arrow.core.raise.catch
-import arrow.core.raise.either
-import arrow.core.raise.ensure
+import arrow.core.raise.Raise
 import com.kludgeworks.eu.legislation.util.DomainError
-import com.kludgeworks.eu.legislation.util.Result
+import com.kludgeworks.eu.legislation.util.catchingUnexpectedSuspend
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.*
@@ -23,9 +21,10 @@ import java.io.Closeable
 import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.io.path.outputStream
+import arrow.core.raise.ensure
 
 /**
- * Thin wrapper around Ktor’s HttpClient with Arrow-powered error handling.
+ * Thin wrapper around Ktor's HttpClient with Raise API for error handling.
  *
  * This bean is a singleton (Spring @Component), so the expensive HttpClient
  * instance is reused application-wide.
@@ -47,20 +46,27 @@ class KtorClient : Closeable {
         install(HttpRequestRetry) {
             retryOnServerErrors(maxRetries = 3)
             exponentialDelay()
-        }                                          // :contentReference[oaicite:1]{index=1}
+        }
 
         install(Logging) { level = LogLevel.INFO }
     }
 
     /**
      * GET request that returns the body as text.
+     *
+     * @param url The URL to get content from
+     * @param headers Optional map of headers to include in the request
+     * @return The response body as text
      */
+    context(Raise<DomainError>)
     suspend fun get(url: String,
                     headers: Map<String, String> = emptyMap()
-    ): Result<String> = either {
-        catch({
+    ): String {
+        return catchingUnexpectedSuspend("HTTP GET failed") {
             val resp = client.get(url) {
-                headers { headers.forEach(::append) }
+                headers { 
+                    headers.forEach { (key, value) -> append(key, value) }
+                }
             }
             ensure(resp.status.isSuccess()) {
                 DomainError.UnexpectedError(
@@ -68,24 +74,29 @@ class KtorClient : Closeable {
                 )
             }
             resp.bodyAsText()
-        }) { e ->
-            logger.error("GET $url failed", e)
-            raise(DomainError.UnexpectedError("HTTP GET failed: ${e.message}", e))
         }
     }
 
     /**
      * Streams the response body to [outputPath].
+     *
+     * @param url The URL to download from
+     * @param outputPath The path to save the downloaded content to
+     * @param headers Optional map of headers to include in the request
+     * @return The path to the downloaded file
      */
+    context(Raise<DomainError>)
     suspend fun download(url: String,
                          outputPath: Path,
                          headers: Map<String, String> = emptyMap()
-    ): Result<Path> = either {
-        catch({
+    ): Path {
+        return catchingUnexpectedSuspend("Download failed for $url") {
             withContext(Dispatchers.IO) {
                 Files.createDirectories(outputPath.parent)
                 val resp = client.get(url) {
-                    headers { headers.forEach(::append) }
+                    headers { 
+                        headers.forEach { (key, value) -> append(key, value) }
+                    }
                 }
                 ensure(resp.status.isSuccess()) {
                     DomainError.UnexpectedError(
@@ -95,9 +106,6 @@ class KtorClient : Closeable {
                 save(resp, outputPath)
             }
             outputPath
-        }) { e ->
-            logger.error("Download $url → $outputPath failed", e)
-            raise(DomainError.UnexpectedError("Download failed: ${e.message}", e))
         }
     }
 

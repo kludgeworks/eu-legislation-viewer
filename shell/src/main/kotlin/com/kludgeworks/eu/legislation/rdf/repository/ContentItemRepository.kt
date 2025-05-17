@@ -1,10 +1,9 @@
 package com.kludgeworks.eu.legislation.rdf.repository
 
-import arrow.core.Either
+import arrow.core.raise.Raise
 import com.kludgeworks.eu.legislation.rdf.model.ContentItem
 import com.kludgeworks.eu.legislation.rdf.SparqlResultMapper
 import com.kludgeworks.eu.legislation.util.DomainError
-import com.kludgeworks.eu.legislation.util.Result
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 
@@ -22,9 +21,10 @@ class ContentItemRepository @Autowired constructor(
      * Get content items for a manifestation URI
      *
      * @param manifestationUri The manifestation URI
-     * @return The content items wrapped in Result
+     * @return The content items
      */
-    suspend fun findAllByManifestationUri(manifestationUri: String): Result<List<ContentItem>> {
+    context(Raise<DomainError>)
+    suspend fun findAllByManifestationUri(manifestationUri: String): List<ContentItem> {
         val query = """
             PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
             PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
@@ -48,13 +48,8 @@ class ContentItemRepository @Autowired constructor(
             ORDER BY ?identifier
         """.trimIndent()
 
-        val queryResult = repository.select(query) { solution ->
-                    mapper.mapToContentItem(solution)
-        }
-        
-        return when (queryResult) {
-            is Either.Left -> Either.Left(queryResult.value)
-            is Either.Right -> Either.Right(queryResult.value)
+        return repository.select(query) { solution ->
+            mapper.mapToContentItem(solution)
         }
     }
 }

@@ -3,13 +3,15 @@ package com.kludgeworks.eu.legislation.rdf.repository
 import arrow.core.None
 import arrow.core.Option
 import arrow.core.Some
-import arrow.core.Either
-import arrow.core.raise.*
+import arrow.core.raise.Raise
 import com.kludgeworks.eu.legislation.rdf.SparqlResultMapper
 import com.kludgeworks.eu.legislation.rdf.model.Expression
 import com.kludgeworks.eu.legislation.rdf.model.LegalDocument
 import com.kludgeworks.eu.legislation.util.DomainError
-import com.kludgeworks.eu.legislation.util.Result
+import com.kludgeworks.eu.legislation.util.catchingSuspend
+import com.kludgeworks.eu.legislation.util.catchingUnexpectedSuspend
+import com.kludgeworks.eu.legislation.util.mappingFailureError
+import com.kludgeworks.eu.legislation.util.notFoundError
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 
@@ -27,9 +29,10 @@ class LegalDocumentRepository @Autowired constructor(
      * Get a legal document by CELEX number
      *
      * @param celexNumber The CELEX number
-     * @return The legal document wrapped in Result and Option
+     * @return The legal document wrapped in Option
      */
-    suspend fun findByCelex(celexNumber: String): Result<Option<LegalDocument>> = either {
+    context(Raise<DomainError>)
+    suspend fun findByCelex(celexNumber: String): Option<LegalDocument> {
         val query = """
             PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
             PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -59,36 +62,29 @@ class LegalDocumentRepository @Autowired constructor(
             LIMIT 1
         """.trimIndent()
 
-        try {
-            val resultsEither = repository.select(query) { solution -> 
+        return catchingUnexpectedSuspend("Unexpected error in findByCelex") {
+            val results = repository.select(query) { solution -> 
+                // Not using catchingSuspend here as we're in a lambda function, not a suspend function
                 try {
                     mapper.mapToLegalDocument(solution)
                 } catch (e: Exception) {
-                    return@select Either.Left(DomainError.MappingFailure(
-                        "Failed to map LegalDocument", 
-                        e, 
-                        "LegalDocument", 
-                        "multiple properties"
-                    ))
+                    mappingFailureError("LegalDocument", "multiple properties", e)
                 }
             }
             
-            val results = resultsEither.bind()
             // Convert to Option
             if (results.isEmpty()) None else Some(results.first() as LegalDocument)
-        } catch (e: Exception) {
-            raise(DomainError.UnexpectedError("Unexpected error in findByCelex: ${e.message}", e))
         }
     }
-    
     
     /**
      * Get a legal document with expressions by CELEX number
      *
      * @param celexNumber The CELEX number
-     * @return The legal document with expressions wrapped in Result and Option
+     * @return The legal document with expressions wrapped in Option
      */
-    suspend fun findWithExpressionsByCelex(celexNumber: String): Result<Option<LegalDocument>> = either {
+    context(Raise<DomainError>)
+    suspend fun findWithExpressionsByCelex(celexNumber: String): Option<LegalDocument> {
         val query = """
             PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
             PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -126,12 +122,10 @@ class LegalDocumentRepository @Autowired constructor(
             }
         """.trimIndent()
 
-        try {
-            val resultsEither = repository.select(query) { solution -> solution }
+        return catchingUnexpectedSuspend("Unexpected error in findWithExpressionsByCelex") {
+            val solutions = repository.select(query) { solution -> solution }
             
-            val results = resultsEither.bind()
-            
-            if (results.isEmpty()) {
+            if (solutions.isEmpty()) {
                 None
             } else {
                 try {
@@ -139,7 +133,7 @@ class LegalDocumentRepository @Autowired constructor(
                     var document: LegalDocument? = null
                     val expressionMap = mutableMapOf<String, Expression>()
                     
-                    for (solution in results) {
+                    for (solution in solutions) {
                         // Create document on first row
                         if (document == null) {
                             document = mapper.mapToLegalDocument(solution)
@@ -165,39 +159,25 @@ class LegalDocumentRepository @Autowired constructor(
                     document?.expressions = expressionMap.values.toList()
                     document?.let { Some(it) } ?: None
                 } catch (e: Exception) {
-                    raise(DomainError.MappingFailure(
-                        "Failed to map LegalDocument or Expression", 
-                        e, 
-                        "LegalDocument or Expression", 
-                        "multiple properties"
-                    ))
+                    mappingFailureError("LegalDocument or Expression", "multiple properties", e)
                 }
             }
-        } catch (e: Exception) {
-            raise(DomainError.UnexpectedError("Unexpected error in findWithExpressionsByCelex: ${e.message}", e))
         }
     }
     
-    
     /**
-     * Get a legal document with expressions by CELEX number, throwing an exception if not found
+     * Get a legal document with expressions by CELEX number, raising an error if not found
      *
      * @param celexNumber The CELEX number
      * @return The legal document with expressions
      */
-    suspend fun findWithExpressionsByCelexOrNotFound(celexNumber: String): Result<LegalDocument> = either {
-        val documentEither = findWithExpressionsByCelex(celexNumber)
+    context(Raise<DomainError>)
+    suspend fun findWithExpressionsByCelexOrNotFound(celexNumber: String): LegalDocument {
+        val documentOption = findWithExpressionsByCelex(celexNumber)
         
-        val documentOption = documentEither.bind()
-        
-        when (documentOption) {
+        return when (documentOption) {
             is Some -> documentOption.value
-            is None -> raise(DomainError.NotFound(
-                message = "LegalDocument not found with identifier: $celexNumber",
-                cause = null,
-                entityType = "LegalDocument",
-                identifier = celexNumber
-            ))
+            is None -> notFoundError("LegalDocument", celexNumber)
         }
     }
 }

@@ -40,24 +40,30 @@ class CompleteLegislationCommand @Autowired constructor(
     ): String = runBlocking {
         logger.info("Getting complete legal document for CELEX {}", celex)
 
-        legalDocumentService.getCompleteLegalDocument(celex)
-            .fold(
-                { error -> handleError(error, celex) },
-                { document ->
-                    if (json) {
-                        jsonFormatter.toPrettyJson(document)
-                    } else {
-                        // Create model for the template
-                        val model = mapOf(
-                            "document" to document,
-                            "datePattern" to datePattern
-                        )
-                        
-                        // Process the template
-                        templateService.processTemplate("legislation-document", model)
-                    }
-                }
+        try {
+            val document = arrow.core.raise.either({
+                legalDocumentService.getCompleteLegalDocument(celex)
+            }).fold(
+                { error -> return@runBlocking handleError(error, celex) },
+                { it }
             )
+            
+            if (json) {
+                return@runBlocking jsonFormatter.toPrettyJson(document)
+            } else {
+                // Create model for the template
+                val model = mapOf(
+                    "document" to document,
+                    "datePattern" to datePattern
+                )
+                
+                // Process the template
+                return@runBlocking templateService.processTemplate("legislation-document", model)
+            }
+        } catch (e: Exception) {
+            logger.error("Unexpected error getting document: {}", e.message, e)
+            "Error: An unexpected error occurred: ${e.message}"
+        }
     }
     
     /**

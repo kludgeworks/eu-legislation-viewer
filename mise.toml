@@ -1,50 +1,10 @@
 [tools]
-delta = "latest"
 gradle = "latest"
 java = "temurin-24"
 jq = "latest"
 ktlint = "latest"
 shellcheck = "latest"
 
-[tasks.download]
-description = "download legislation"
-run = "java -jar target/eu.legislation.cli-0.0.1-SNAPSHOT.jar download 32015R1998"
-
-[tasks.transform-html]
-description = "transform xml to html"
-run = """
-xsltproc --xinclude xslt/legislation.xslt - <<EOF > 32015R1998.html
-<root>
-  <xi:include href="legislation/32015R1998/DOC_2.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  <xi:include href="legislation/32015R1998/DOC_3.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  <xi:include href="legislation/32015R1998/DOC_4.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  <xi:include href="legislation/32015R1998/DOC_5.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  <xi:include href="legislation/32015R1998/DOC_6.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-</root>
-EOF
-"""
-
-[tasks.transform-excel]
-description = "transform xml to html"
-run = """
-xsltproc --xinclude xslt/excel.xslt - <<EOF > 32015R1998.xml
-<root>
-  <xi:include href="legislation/32015R1998/DOC_2.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  <xi:include href="legislation/32015R1998/DOC_3.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  <xi:include href="legislation/32015R1998/DOC_4.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  <xi:include href="legislation/32015R1998/DOC_5.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  <xi:include href="legislation/32015R1998/DOC_6.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-</root>
-EOF
-"""
-
-
-[tasks.xslt-to-string]
-description = "transform stylesheets to string"
-run = """
-find xslt/ -name "*.xslt" | while read file; do
-  echo "\n## $file\n"
-  cat "$file"
-  echo "\n"
-done
-"""
+[tasks.complete-legislation]
+alias = "l"
+run = "java -jar shell/build/libs/shell-0.0.1-SNAPSHOT.jar complete-legislation --celex 32015R1998 --json"

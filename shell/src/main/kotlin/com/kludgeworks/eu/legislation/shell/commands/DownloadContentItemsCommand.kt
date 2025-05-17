@@ -1,5 +1,6 @@
 package com.kludgeworks.eu.legislation.shell.commands
 
+import arrow.core.raise.either
 import com.kludgeworks.eu.legislation.rdf.model.ContentItem
 import com.kludgeworks.eu.legislation.rdf.model.Expression
 import com.kludgeworks.eu.legislation.rdf.model.Manifestation
@@ -42,7 +43,17 @@ class DownloadContentItemsCommand @Autowired constructor(
             logger.info("Downloading content items for CELEX {} in language {}", celex, language)
 
             // Get the complete document with all expressions
-            val document = legalDocumentService.getCompleteLegalDocumentOrThrow(celex)
+            val documentResult = either {
+                legalDocumentService.getCompleteLegalDocument(celex)
+            }
+            
+            val document = documentResult.fold(
+                { error -> 
+                    logger.error("Error retrieving document: {}", error.message)
+                    return@runBlocking "Error: Could not retrieve document for CELEX $celex: ${error.message}"
+                },
+                { it }
+            )
             
             // Filter expressions by language if provided
             val filteredExpressions = document.expressions.filter { expression: Expression -> 
@@ -60,11 +71,22 @@ class DownloadContentItemsCommand @Autowired constructor(
                     manifestation.items.map { item: ContentItem ->
                         val outputFile = determineOutputFilePath(celex, expression.language, item)
                         logger.info("Downloading content item {} to {}", item.uri, outputFile)
-                        downloadService.downloadContent(item.uri, outputFile)
-                        outputFile.toString()
+                        
+                        // Use arrow.core.raise.either to provide Raise context
+                        val downloadResult = either {
+                            downloadService.downloadContent(item.uri, outputFile)
+                        }
+                        
+                        downloadResult.fold(
+                            { error ->
+                                logger.error("Error downloading content item: {}", error.message)
+                                null 
+                            },
+                            { it.toString() }
+                        )
                     }
                 }
-            }
+            }.filterNotNull()
 
             if (downloadedFiles.isEmpty()) {
                 "No content items found to download for CELEX $celex in language $language"
