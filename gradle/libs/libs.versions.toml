@@ -1,5 +1,5 @@
 [versions]
-kotlin = "1.9.25"
+kotlin = "2.1.20"
 spring-boot = "3.4.5"
 spring-dependency-management = "1.1.7"
 graalvm-native = "0.10.6"
@@ -45,6 +45,7 @@ jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-
 jena-core = { module = "org.apache.jena:jena-core", version.ref = "apache-jena" }
 jena-arq = { module = "org.apache.jena:jena-arq", version.ref = "apache-jena" }
 jena-rdfconnection = { module = "org.apache.jena:jena-rdfconnection", version.ref = "apache-jena" }
+jena-cmds = { module = "org.apache.jena:jena-cmds", version.ref = "apache-jena" }
 
 # JAXB
 jakarta-xml-bind-api = { module = "jakarta.xml.bind:jakarta.xml.bind-api", version.ref = "jakarta-xml-bind" }

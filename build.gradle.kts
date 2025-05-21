@@ -18,6 +18,7 @@ tasks.register("build") {
     // The actual build happens in the subprojects
     dependsOn(":shell:build")
     dependsOn(":formex:build")
+    dependsOn(":cdm:build")
 }
 
 tasks.register("test") {
@@ -25,4 +26,5 @@ tasks.register("test") {
     // The actual tests happen in the subprojects
     dependsOn(":shell:test")
     dependsOn(":formex:test")
+    dependsOn(":cdm:test")
 }

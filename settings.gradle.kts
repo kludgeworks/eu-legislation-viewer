@@ -2,6 +2,7 @@ rootProject.name = "eu-legislation"
 
 include("shell")
 include("formex")
+include("cdm")
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
