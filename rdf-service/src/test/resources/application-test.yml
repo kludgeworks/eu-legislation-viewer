@@ -1,0 +1,22 @@
+rdf:
+  endpoint:
+    url: https://publications.europa.eu/webapi/rdf/sparql
+  connection:
+    timeout: 10000
+    socketTimeout: 60000
+    pool:
+      maxTotal: 10
+      maxPerRoute: 5
+  query:
+    defaultTimeout: 30000
+    maxResults: 100
+
+logging:
+  level:
+    com.kludgeworks.eu.legislation.rdf: DEBUG
+    org.eclipse.rdf4j: INFO
+    org.springframework.web.client: DEBUG
+
+spring:
+  application:
+    name: rdf-service-test

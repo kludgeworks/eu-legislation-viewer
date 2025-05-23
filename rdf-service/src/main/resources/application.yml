@@ -1,0 +1,12 @@
+rdf:
+  endpoint:
+    url: https://publications.europa.eu/webapi/rdf/sparql
+  connection:
+    pool:
+      max-total: 50
+      max-per-route: 20
+    timeout: 5000
+    socket-timeout: 30000
+  query:
+    default-timeout: 30000
+    max-results: 1000

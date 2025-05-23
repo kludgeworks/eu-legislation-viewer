@@ -1,0 +1,45 @@
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX eli: <http://data.europa.eu/eli/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT
+    ?work
+    ?type
+    ?creationDate ?lastModificationDate
+    ?title ?version
+    ?dateCreation ?dateDocument ?embargo
+    ?createdBy
+    ?idDocument
+    ?celexNumber ?sectorId ?eli ?inForce ?numberCorrigendum
+    ?amendsLegalResource
+    ?amendedByLegalResource
+    ?consolidatedByAct
+WHERE {
+    BIND(?X-KW-WORK-URI AS ?work)
+
+    # Get the type(s)
+    OPTIONAL { ?work rdf:type ?type }
+
+    # All predicates made OPTIONAL
+    OPTIONAL { ?work cmr:creationDate ?creationDate }
+    OPTIONAL { ?work cmr:lastModificationDate ?lastModificationDate }
+    OPTIONAL { ?work cdm:work_title ?title }
+    OPTIONAL { ?work cdm:work_version ?version }
+    OPTIONAL { ?work cdm:work_date_creation ?dateCreation }
+    OPTIONAL { ?work cdm:work_date_document ?dateDocument }
+    OPTIONAL { ?work cdm:work_embargo ?embargo }
+    OPTIONAL { ?work cdm:work_created_by_agent ?createdBy }
+    OPTIONAL { ?work cdm:work_id_document ?idDocument }
+    OPTIONAL { ?work cdm:resource_legal_id_celex ?celexNumber }
+    OPTIONAL { ?work cdm:resource_legal_id_sector ?sectorId }
+    OPTIONAL { ?work cdm:resource_legal_eli ?eli }
+    OPTIONAL { ?work cdm:resource_legal_in_force ?inForce }
+    OPTIONAL { ?work cdm:resource_legal_number_corrigendum ?numberCorrigendum }
+    OPTIONAL { ?work cdm:resource_legal_amends_resource_legal ?amendsLegalResource }
+    OPTIONAL { ?work cdm:resource_legal_amended_by_resource_legal ?amendedByLegalResource }
+    OPTIONAL { ?work cdm:resource_legal_consolidated_by_act_consolidated ?consolidatedByAct }
+}

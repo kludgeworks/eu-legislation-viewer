@@ -1,0 +1,42 @@
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT
+  ?work
+  ?creationDate ?lastModificationDate
+  ?title ?version ?dateCreation ?dateDocument ?embargo ?createdBy ?idDocument
+  ?sectorId ?eli ?inForce ?numberCorrigendum
+WHERE {
+  {
+    ?work cdm:work_id_document ?docId .
+    FILTER(
+      ?docId = ?X-KW-ID ||
+      # Check if ID matches the end of the document ID (for prefixed IDs)
+      REGEX(STR(?docId), CONCAT(":", ?X-KW-ID, "$")) ||
+      # Check if parameter includes prefix but needs to match unprefixed value
+      REGEX(?X-KW-ID, "^(celex:|planjo:|immc:|oj:)(.+)$") && 
+      REGEX(STR(?docId), CONCAT(":", REPLACE(?X-KW-ID, "^(celex:|planjo:|immc:|oj:)", ""), "$"))
+    )
+  }
+
+  # CdmEntity properties (from base class)
+  OPTIONAL { ?work cmr:creationDate ?creationDate }
+  OPTIONAL { ?work cmr:lastModificationDate ?lastModificationDate }
+
+  # Work properties
+  OPTIONAL { ?work cdm:work_title ?title }
+  OPTIONAL { ?work cdm:work_version ?version }
+  OPTIONAL { ?work cdm:work_date_creation ?dateCreation }
+  OPTIONAL { ?work cdm:work_date_document ?dateDocument }
+  OPTIONAL { ?work cdm:work_embargo ?embargo }
+  OPTIONAL { ?work cdm:work_created_by_agent ?createdBy }
+  OPTIONAL { ?work cdm:work_id_document ?idDocument }
+
+  # Legal Resource properties
+  OPTIONAL { ?work cdm:resource_legal_id_celex ?celexNumber }
+  OPTIONAL { ?work cdm:resource_legal_id_sector ?sectorId }
+  OPTIONAL { ?work cdm:resource_legal_eli ?eli }
+  OPTIONAL { ?work cdm:resource_legal_in_force ?inForce }
+  OPTIONAL { ?work cdm:resource_legal_number_corrigendum ?numberCorrigendum }
+}

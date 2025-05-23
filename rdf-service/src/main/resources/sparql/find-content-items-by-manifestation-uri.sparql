@@ -1,0 +1,13 @@
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
+
+SELECT ?item ?identifier ?doi ?embargo ?mimeType
+WHERE {
+  ?item cdm:item_belongs_to_manifestation ?X-KW-MANIFESTATION-URI ;
+        cdm:item_identifier ?identifier .
+
+  OPTIONAL { ?item cdm:item_doi ?doi . }
+  OPTIONAL { ?item cdm:item_embargo ?embargo . }
+  OPTIONAL { ?item cmr:manifestationMimeType ?mimeType . }
+}
