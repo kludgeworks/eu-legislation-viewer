@@ -1,6 +1,7 @@
 package com.kludgeworks.eu.legislation.rdf.mapper
 
 import com.kludgeworks.eu.legislation.rdf.Manifestation
+import com.kludgeworks.eu.legislation.rdf.ProductForm
 import org.eclipse.rdf4j.query.BindingSet
 import org.springframework.stereotype.Component
 import java.net.URI
@@ -49,18 +50,22 @@ internal class ManifestationMapper {
             version = bindingSet.getBinding("version")?.value?.let {
                 TypeConverters.parseString(it)
             },
-            
+
             // References to other entities
             publishedByUri = bindingSet.getBinding("publishedByUri")?.value?.let {
                 URI.create(it.stringValue())
             },
-            manifestsExpressionUri = bindingSet.getBinding("manifestsExpressionUri")?.value?.let {
+            manifestsExpressionUri = bindingSet.getBinding("manifestsExpressionUri").value.let {
                 URI.create(it.stringValue())
+            },
+            productForm = bindingSet.getBinding("productForm")?.value?.let {
+                val productFormCode = TypeConverters.parseString(it) ?: ""
+                ProductForm.values().find { form -> form.code == productFormCode }
             },
             partOfManifestationUri = bindingSet.getBinding("partOfManifestationUri")?.value?.let {
                 URI.create(it.stringValue())
             },
-            
+
             // Items and contained manifestations will be loaded separately
             items = emptySet(),
             containsManifestations = emptySet()

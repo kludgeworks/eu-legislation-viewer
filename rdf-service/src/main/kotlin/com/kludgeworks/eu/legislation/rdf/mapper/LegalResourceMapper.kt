@@ -1,5 +1,7 @@
 package com.kludgeworks.eu.legislation.rdf.mapper
 
+import com.kludgeworks.eu.legislation.rdf.AmendmentRelation
+import com.kludgeworks.eu.legislation.rdf.ConsolidationRelation
 import com.kludgeworks.eu.legislation.rdf.LegalResource
 import com.kludgeworks.eu.legislation.rdf.Work
 import org.eclipse.rdf4j.query.BindingSet
@@ -49,9 +51,9 @@ internal class LegalResourceMapper(private val workMapper: WorkMapper) {
 
         return LegalResource(
             // LegalResource specific relations
-            amendsUris = amendsUris,
-            amendedByUris = amendedByUris,
-            consolidatedByUris = consolidatedByUris,
+            amends = amendsUris.map { AmendmentRelation(targetUri = it) }.toSet(),
+            amendedBy = amendedByUris.map { AmendmentRelation(targetUri = it) }.toSet(),
+            consolidatedBy = consolidatedByUris.map { ConsolidationRelation(targetUri = it) }.toSet(),
 
             // Work properties (pass through from baseWork, but update idDocuments)
             uri = baseWork.uri,

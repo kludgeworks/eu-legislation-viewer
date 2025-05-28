@@ -1,6 +1,8 @@
 package com.kludgeworks.eu.legislation.rdf.mapper
 
+import com.kludgeworks.eu.legislation.rdf.CorporateBody
 import com.kludgeworks.eu.legislation.rdf.Expression
+import com.kludgeworks.eu.legislation.rdf.LegalSector
 import com.kludgeworks.eu.legislation.rdf.Work
 import org.eclipse.rdf4j.query.BindingSet
 import org.springframework.stereotype.Component
@@ -51,8 +53,11 @@ internal class WorkMapper {
                 TypeConverters.parseDateTime(it)
             },
             createdBy = bindingSet.getBinding("createdBy")?.value?.let {
-                URI.create(it.stringValue())
-                // TODO throw better exception
+                val uri = URI.create(it.stringValue())
+                // Try to find a matching CorporateBody enum value
+                CorporateBody.values().find { body -> body.uri == uri }
+                    // TODO throw better exception
+                    ?: throw IllegalArgumentException("Unknown CorporateBody URI: $uri")
             } ?: throw IllegalArgumentException("Work createdBy is required"),
 
             // Document IDs - collect all idDocument values into a set
@@ -63,11 +68,15 @@ internal class WorkMapper {
                 TypeConverters.parseString(it)
             },
             sectorId = bindingSet.getBinding("sectorId")?.value?.let {
-                TypeConverters.parseString(it)
-            } ?: "",
+                val sectorIdStr = TypeConverters.parseString(it) ?: ""
+                // Find matching LegalSector enum by id
+                LegalSector.values().find { sector -> sector.id == sectorIdStr }
+                    ?: LegalSector.SECONDARY_LEGISLATION // Default to SECONDARY_LEGISLATION if not found
+            } ?: LegalSector.SECONDARY_LEGISLATION,
             eli = bindingSet.getBinding("eli")?.value?.let {
-                TypeConverters.parseString(it)
-            } ?: "",
+                val eliStr = TypeConverters.parseString(it)
+                if (eliStr.isNullOrBlank()) null else URI.create(eliStr)
+            },
             inForce = bindingSet.getBinding("inForce")?.value?.let {
                 TypeConverters.parseBoolean(it)
             },

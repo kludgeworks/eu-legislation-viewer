@@ -2,7 +2,6 @@ package com.kludgeworks.eu.legislation.rdf
 
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.test.context.SpringBootTest
@@ -159,8 +158,6 @@ class RdfModuleIntegrationTest {
                 },
                 ifRight = { legalResource ->
                     println("legalResource.expressions = ${legalResource?.expressions}")
-                    println("legalResource.amendsUris = ${legalResource?.amendsUris}")
-                    println("legalResource.consolidatedByUris = ${legalResource?.consolidatedByUris}")
                     assertNotNull(legalResource)
                 }
             )
