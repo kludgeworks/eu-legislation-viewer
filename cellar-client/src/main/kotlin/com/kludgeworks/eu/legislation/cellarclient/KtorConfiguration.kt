@@ -1,4 +1,4 @@
-package com.kludgeworks.eu.legislation.cellarclient2
+package com.kludgeworks.eu.legislation.cellarclient
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO

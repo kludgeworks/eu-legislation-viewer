@@ -1,6 +1,6 @@
-package com.kludgeworks.eu.legislation.cellarclient2
+package com.kludgeworks.eu.legislation.cellarclient
 
-import com.kludgeworks.eu.legislation.cellarclient2.models.Notice
+import com.kludgeworks.eu.legislation.cellarclient.models.Notice
 import kotlinx.coroutines.test.runTest
 import nl.adaptivity.xmlutil.serialization.XML
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -11,8 +11,8 @@ class SimpleXmlTest {
 
     @Test
     fun `test XML deserialization with local data`() = runTest {
-        val xmlString = javaClass.getResourceAsStream("/notice_sample.xml")?.bufferedReader()?.readText()
-            ?: throw IllegalStateException("Could not read notice_sample.xml from resources")
+        val xmlString = javaClass.getResourceAsStream("/32015R1998.xml")?.bufferedReader()?.readText()
+            ?: throw IllegalStateException("Could not read 32015R1998.xml from resources")
 
         val xml = XML {}
         val notice = xml.decodeFromString(Notice.serializer(), xmlString)

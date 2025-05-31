@@ -1,4 +1,4 @@
-package com.kludgeworks.eu.legislation.cellarclient2
+package com.kludgeworks.eu.legislation.cellarclient
 
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Assertions.*

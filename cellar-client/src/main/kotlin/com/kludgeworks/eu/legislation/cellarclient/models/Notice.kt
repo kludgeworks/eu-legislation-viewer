@@ -1,27 +1,27 @@
-package com.kludgeworks.eu.legislation.cellarclient2.models
+package com.kludgeworks.eu.legislation.cellarclient.models
 
 import kotlinx.serialization.Serializable
 import nl.adaptivity.xmlutil.serialization.XmlElement
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 /**
- * Represents a legal notice from the EU legislation system.
- * Contains the complete work, expression, and manifestation data.
+ * Root element representing a legal notice
+ * Contains the complete work, expression, and manifestation hierarchy
  */
 @Serializable
 @XmlSerialName("NOTICE")
 data class Notice(
-    /** The decoding format used */
+    @XmlSerialName("decoding")
     val decoding: String,
-    /** The type of notice */
+    @XmlSerialName("type")
     val type: String,
     @XmlElement
     @XmlSerialName("WORK")
     val work: Work,
     @XmlElement
     @XmlSerialName("EXPRESSION")
-    val expression: Expression,
+    val expression: List<Expression>,
     @XmlElement
     @XmlSerialName("MANIFESTATION")
-    val manifestation: Manifestation
+    val manifestation: List<Manifestation>,
 )
