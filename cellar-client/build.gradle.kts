@@ -1,5 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.gradle.api.artifacts.dsl.DependencyHandler
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
@@ -26,7 +26,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.core)
 
     // XML Serialization
-    implementation("io.github.pdvrieze.xmlutil:serialization-jvm:0.84.3")
+    implementation(libs.xmlutil.serialization.jvm)
 
     // Ktor Client
     implementation(libs.ktor.client.core)
@@ -34,41 +34,27 @@ dependencies {
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.xml)
 
-    // Jackson for XML
-    implementation(libs.jackson.module.kotlin)
-    implementation(libs.jackson.dataformat.xml)
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
-
     // Spring Boot
-    implementation("org.springframework.boot:spring-boot-starter") // Basic Spring Boot starter
-    // implementation(libs.spring.boot.starter.web) // Uncomment if exposing REST endpoints from this module
-
-    // Logging
-    // Spring Boot already includes logback by default through spring-boot-starter
+    implementation(libs.spring.boot.starter)
 
     // Testing
     testImplementation(libs.spring.boot.starter.test) {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
     testImplementation(libs.kotlin.test.junit5)
-    // Using direct dependency for ktor-client-mock as it's not in the version catalog
-    testImplementation("io.ktor:ktor-client-mock:${libs.versions.ktor.get()}")
-    testImplementation(libs.mockito.kotlin) // Using mockito-kotlin from the version catalog
-    // Add kotlinx-coroutines-test for runTest
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${libs.versions.kotlinx.coroutines.get()}")
+    testImplementation(libs.kotlinx.coroutines.test)
 }
 
 dependencyManagement {
     imports {
-        mavenBom("org.springframework.boot:spring-boot-dependencies:${libs.versions.spring.boot.get()}")
-        // Potentially other BOMs like Ktor if available and managed
+        mavenBom(libs.spring.boot.bom.get().toString())
     }
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "21"
+    compilerOptions {
+        freeCompilerArgs.set(listOf("-Xjsr305=strict"))
+        jvmTarget.set(JvmTarget.JVM_21)
     }
 }
 
@@ -76,11 +62,8 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-// This module is intended as a library, so a bootJar might not be needed
-// If it's a standalone service, keep bootJar enabled.
-// For now, assuming it's a library consumed by another Spring Boot app.
 tasks.bootJar {
-    enabled = false // Set to true if this module should be a runnable Spring Boot app
+    enabled = false
 }
 
 tasks.jar {
