@@ -125,4 +125,39 @@ class CellarApiClientTest {
         assertEquals(expectedIdentifiers.size, identifierValues.size, 
             "Number of identifiers should match expected count")
     }
+
+    @Test
+    @Timeout(value = 60)
+    fun `should fetch notice by CELEX number`() = runTest {
+        // Use a known CELEX number from the test data
+        val testCelexNumber = "32015R2426"
+
+        // Call fetchNoticeByCelex with the test CELEX number
+        val notice = cellarApiClient.fetchNoticeByCelex(testCelexNumber)
+
+        // Verify that the method returned a notice
+        assertNotNull(notice, "Should return a notice for a valid CELEX number")
+
+        // Verify that the notice contains the expected CELEX number
+        val celexIdentifier = notice!!.work.identifiers.find { it.value == testCelexNumber }
+        assertNotNull(celexIdentifier, "Notice should contain the requested CELEX number")
+
+        // Additional verification: check that the notice contains the expected CELEX number in the idCelex field
+        val celexWithPrefix = "celex:$testCelexNumber"
+        val celexPrefixIdentifier = notice.work.identifiers.find { it.value == celexWithPrefix }
+        assertNotNull(celexPrefixIdentifier, "Notice should contain the CELEX number with 'celex:' prefix")
+    }
+
+    @Test
+    @Timeout(value = 60)
+    fun `should return null for 404 not found when fetching by CELEX`() = runTest {
+        // Use a non-existent CELEX number that should return a 404
+        val nonExistentCelexNumber = "non-existent-celex"
+
+        // Call fetchNoticeByCelex with the non-existent CELEX number
+        val notice = cellarApiClient.fetchNoticeByCelex(nonExistentCelexNumber)
+
+        // Verify that the method returned null for a 404
+        assertNull(notice, "Should return null for a 404 Not Found response when fetching by CELEX")
+    }
 }

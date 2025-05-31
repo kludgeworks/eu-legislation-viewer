@@ -4,35 +4,36 @@ import com.kludgeworks.eu.legislation.cellarclient.models.Expression
 import com.kludgeworks.eu.legislation.cellarclient.models.Manifestation
 import com.kludgeworks.eu.legislation.cellarclient.models.Notice
 import io.ktor.client.*
-import io.ktor.client.call.body
-import io.ktor.client.plugins.ClientRequestException
+import io.ktor.client.call.*
+import io.ktor.client.plugins.*
+import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get
-import io.ktor.http.HttpHeaders
-import io.ktor.http.HttpStatusCode
+import io.ktor.client.request.url
+import io.ktor.http.*
 import io.ktor.http.headers
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
 class CellarApiClient(
-    private val httpClient: HttpClient)
-{
+    private val httpClient: HttpClient
+) {
     private val logger = LoggerFactory.getLogger(CellarApiClient::class.java)
 
     // Base URL for the Cellar API
-    private val baseUrl = "http://publications.europa.eu/resource/cellar/"
+    private val baseUrl = "http://publications.europa.eu/resource"
+    private val cellarPathSegment = "cellar"
+    private val celexPathSegment = "celex"
 
     /**
-     * Fetches a notice from the Cellar API for the given resource ID
-     * 
-     * @param resourceId The unique identifier of the resource to fetch
-     * @return The Notice object if found, or null if the resource doesn't exist (404)
-     * @throws CellarApiException If there's an error during the API call
+     * Common function to fetch a notice with error handling
      */
-    suspend fun fetchNotice(resourceId: String): Notice? {
+    private suspend fun fetchNoticeFromUrl(pathSegments: List<String>): Notice? {
         try {
-
-            val response = httpClient.get("$baseUrl$resourceId") {
+            val response = httpClient.get {
+                url {
+                    appendPathSegments(pathSegments)
+                }
                 headers {
                     append(HttpHeaders.Accept, "application/xml;notice=tree")
                 }
@@ -43,7 +44,7 @@ class CellarApiClient(
                 return null
             }
 
-            return response.body<Notice>();
+            return response.body<Notice>()
         } catch (e: ClientRequestException) {
             // If it's a 404 Not Found, return null as specified
             if (e.response.status == HttpStatusCode.NotFound) {
@@ -51,14 +52,37 @@ class CellarApiClient(
                 return null
             } else {
                 // For other client errors (4xx), throw a custom exception
-                logger.error("Client error fetching notice: ${e.message}", e)
-                throw CellarApiException("Error fetching notice: ${e.message}", e)
+                logger.error("Client error: ${e.message}", e)
+                throw CellarApiException("Error: ${e.message}", e)
             }
         } catch (e: Exception) {
             // For all other exceptions, throw a custom exception
-            logger.error("Error fetching notice: ${e.message}", e)
-            throw CellarApiException("Error fetching notice: ${e.message}", e)
+            logger.error("Error: ${e.message}", e)
+            throw CellarApiException("Error: ${e.message}", e)
         }
+    }
+
+    /**
+     * Fetches a notice from the Cellar API for the given resource ID
+     *
+     * @param resourceId The unique identifier of the resource to fetch
+     * @return The Notice object if found, or null if the resource doesn't exist (404)
+     * @throws CellarApiException If there's an error during the API call
+     */
+    suspend fun fetchNotice(resourceId: String): Notice? {
+        return fetchNoticeFromUrl(listOf(baseUrl, cellarPathSegment, resourceId))
+    }
+
+
+    /**
+     * Fetches a notice from the Cellar API for the given CELEX number
+     *
+     * @param celexNumber The CELEX number of the resource to fetch
+     * @return The Notice object if found, or null if the resource doesn't exist (404)
+     * @throws CellarApiException If there's an error during the API call
+     */
+    suspend fun fetchNoticeByCelex(celexNumber: String): Notice? {
+        return fetchNoticeFromUrl(listOf(baseUrl, celexPathSegment, celexNumber))
     }
 
     /**
