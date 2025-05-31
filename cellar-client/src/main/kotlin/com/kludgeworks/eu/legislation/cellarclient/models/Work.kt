@@ -12,7 +12,7 @@ data class Work(
     // === Identity ===
     @XmlElement
     @XmlSerialName("URI")
-    internal val _uri: URI,
+    internal val uri: URI,
     @XmlElement
     @XmlSerialName("SAMEAS")
     val sameAs: List<SameAs> = emptyList(),
@@ -165,7 +165,4 @@ data class Work(
     @XmlElement
     @XmlSerialName("RESOURCE_LEGAL_PUBLISHED_IN_OFFICIAL-JOURNAL")
     val publishedInOfficialJournal: EmbeddedNotice? = null
-) {
-    val uri: URI
-        get() = _uri
-}
+)

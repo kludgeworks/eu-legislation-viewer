@@ -1,0 +1,31 @@
+package com.kludgeworks.eu.legislation.shell
+
+import org.springframework.boot.CommandLineRunner
+import org.springframework.boot.ExitCodeGenerator
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+import org.springframework.context.annotation.ComponentScan
+import picocli.CommandLine
+import picocli.CommandLine.IFactory
+
+@SpringBootApplication
+@ComponentScan(basePackages = ["com.kludgeworks.eu.legislation"])
+class ShellApplication(
+    private val factory: IFactory,
+    private val workCommand: WorkCommand
+) : CommandLineRunner, ExitCodeGenerator {
+
+    private var exitCode = 0
+
+    override fun run(vararg args: String) {
+        exitCode = CommandLine(workCommand, factory).execute(*args)
+    }
+    
+    override fun getExitCode(): Int {
+        return exitCode
+    }
+}
+
+fun main(args: Array<String>) {
+    runApplication<ShellApplication>(*args)
+}

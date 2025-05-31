@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: eu-legislation-shell-test
+  main:
+    banner-mode: off
+    web-application-type: none
+
+logging:
+  level:
+    root: WARN
+    com.kludgeworks.eu.legislation: DEBUG

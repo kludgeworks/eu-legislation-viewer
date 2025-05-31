@@ -34,9 +34,6 @@ class CellarApiClientTest {
 
         // list english expressions
         val expressions = notice?.expression?.stream()?.filter { t -> t.language?.value == "eng" }
-        println("notice = $notice")
-
-        //
     }
 
     @Test
@@ -101,14 +98,31 @@ class CellarApiClientTest {
 
     @Test
     @Timeout(value = 60)
-    fun `should return null for invalid resource ID`() = runTest {
-        // Use an invalid resource ID that should return a 404
-        val invalidResourceId = "invalid-resource-format"
+    fun `list ids`() = runTest {
+        val notice = cellarApiClient.fetchNotice(defaultResourceId)
+        assertNotNull(notice)
 
-        // Call fetchNotice with the invalid resource ID
-        val notice = cellarApiClient.fetchNotice(invalidResourceId)
+        // Extract the identifier values
+        val identifierValues = notice!!.work.identifiers.map { it.value }
 
-        // Verify that the method returned null for the invalid resource ID
-        assertNull(notice, "Should return null for an invalid resource ID that returns 404")
+        // Assert that the identifiers list contains all expected values
+        val expectedIdentifiers = listOf(
+            "immc:20151215-121:C(2015)9523/834286",
+            "32015R2426",
+            "oj:JOL_2015_334_R_0002",
+            "http://data.europa.eu/eli/reg_impl/2015/2426/oj",
+            "planjo:20151215-121",
+            "celex:32015R2426"
+        )
+
+        // Check that all expected identifiers are present
+        expectedIdentifiers.forEach { expectedIdentifier ->
+            assertTrue(identifierValues.contains(expectedIdentifier), 
+                "Identifier list should contain: $expectedIdentifier")
+        }
+
+        // Check that the number of identifiers matches
+        assertEquals(expectedIdentifiers.size, identifierValues.size, 
+            "Number of identifiers should match expected count")
     }
 }
