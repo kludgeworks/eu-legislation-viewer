@@ -7,17 +7,18 @@ plugins {
 
 dependencies {
     implementation(project(":cellar-client"))
-    
+
     // Spring Boot
     implementation(libs.spring.boot.starter)
-    
+    implementation(libs.spring.boot.starter.cache)
+
     // Picocli
     implementation(libs.picocli.spring.boot.starter)
-    
+
     // Kotlin
     implementation(libs.kotlin.reflect)
     implementation(libs.kotlinx.coroutines.core)
-    
+
     // Testing
     testImplementation(libs.spring.boot.starter.test)
     testImplementation(libs.kotlin.test.junit5)

@@ -21,7 +21,7 @@ To build the CLI module:
 ### Using Gradle
 
 ```bash
-./gradlew :shell:bootRun --args="work 32015R1998"
+./gradlew :shell:bootRun -Dspring-boot.run.arguments="="work 32015R1998"
 ```
 
 ### Using the built JAR

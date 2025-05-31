@@ -33,6 +33,7 @@ dependencies {
     implementation(libs.ktor.client.cio)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.xml)
+    implementation(libs.ktor.client.logging)
 
     // Spring Boot
     implementation(libs.spring.boot.starter)

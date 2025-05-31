@@ -39,3 +39,4 @@ build/
 ### Other ###
 *.log
 /legislation
+mise.local.toml

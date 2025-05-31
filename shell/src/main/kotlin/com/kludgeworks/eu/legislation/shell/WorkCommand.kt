@@ -1,6 +1,5 @@
 package com.kludgeworks.eu.legislation.shell
 
-import com.kludgeworks.eu.legislation.cellarclient.CellarApiClient
 import com.kludgeworks.eu.legislation.cellarclient.models.Notice
 import com.kludgeworks.eu.legislation.cellarclient.models.Work
 import com.kludgeworks.eu.legislation.cellarclient.models.ResourceReference
@@ -18,31 +17,50 @@ import java.util.concurrent.Callable
     description = ["Retrieves and displays Work information from EU Cellar"]
 )
 class WorkCommand(
-    private val cellarApiClient: CellarApiClient
+    private val cellarService: CellarService
 ) : Callable<Int> {
 
-    @Parameters(
-        index = "0",
-        description = ["The resource ID (e.g., CELEX number) to retrieve"]
-    )
-    lateinit var resourceId: String
+    class IdentifierGroup {
+        @Option(
+            names = ["-r", "--resource-id"],
+            description = ["The resource ID to retrieve"]
+        )
+        var resourceId: String? = null
+
+        @Option(
+            names = ["-c", "--celex"],
+            description = ["The CELEX number to retrieve"]
+        )
+        var celexNumber: String? = null
+    }
+
+    @ArgGroup(exclusive = true, multiplicity = "1")
+    lateinit var identifierGroup: IdentifierGroup
 
     @Option(
         names = ["-l", "--language"],
-        description = ["Language code for the title (default: eng)"],
-        defaultValue = "eng"
+        description = ["Language code for the title (default: en)"],
+        defaultValue = "en"
     )
     var languageCode: String = "eng"
 
     override fun call(): Int {
         return runBlocking {
             try {
-                println("Fetching work information for: $resourceId")
+                val identifier = identifierGroup.resourceId ?: identifierGroup.celexNumber!!
+                val byResourceId = identifierGroup.resourceId != null
+
+                println("Fetching work information for ${if (byResourceId) "resource ID" else "CELEX number"}: $identifier")
                 println("=" * 60)
 
-                val notice = cellarApiClient.fetchNotice(resourceId)
+                val notice = if (byResourceId) {
+                    cellarService.fetchNotice(identifier)
+                } else {
+                    cellarService.fetchNoticeByCelex(identifier)
+                }
+
                 if (notice == null) {
-                    System.err.println("Error: Resource not found with ID: $resourceId")
+                    System.err.println("Error: Resource not found with ${if (byResourceId) "ID" else "CELEX number"}: $identifier")
                     return@runBlocking 1
                 }
 
@@ -109,40 +127,29 @@ class WorkCommand(
             println("  - None")
         } else {
             work.basisForActConsolidated.forEach { consolidation ->
-                val celex = extractCelexFromEmbedded(consolidation)
-                val date = extractDateFromEmbedded(consolidation)
-                println("  - ${formatAmendmentConsolidation(celex, date)}")
+                val celex = extractIdentifier(consolidation)
+                println("  - ${formatAmendmentConsolidation(celex, null)}")
             }
         }
     }
 
     private fun extractCelex(ref: ResourceReference): String? {
-        // Try to extract CELEX from URI or identifier
-        val uriValue = ref.uri?.value
-        return uriValue?.substringAfterLast('/')
-            ?: ref.identifier
+        return ref.sameAs.find { it.uri.type == "celex" }?.uri?.identifier
     }
 
-    private fun extractCelexFromEmbedded(notice: EmbeddedNotice): String? {
-        return notice.notice.work.idCelex?.value
-            ?: notice.notice.work.idCelexWork?.value
-            ?: notice.uri.value.substringAfterLast('/')
+    private fun extractIdentifier(notice: EmbeddedNotice): String? {
+        return notice.sameAs.find { it.uri.type == "consolidation" }?.uri?.identifier
     }
 
     private fun extractDate(ref: ResourceReference): String? {
-        // Date information might not be available in ResourceReference
-        // In a real implementation, you might need to fetch the referenced resource
-        return null
+        return ref.annotation?.startOfValidity
     }
 
-    private fun extractDateFromEmbedded(notice: EmbeddedNotice): String? {
-        return notice.notice.work.workDateDocument?.value
-    }
 
-    private fun formatAmendmentConsolidation(celex: String?, date: String?): String {
+    private fun formatAmendmentConsolidation(id: String?, date: String?): String {
         return when {
-            celex != null && date != null -> "$celex - ${formatDate(date)}"
-            celex != null -> celex
+            id != null && date != null -> "$id - ${formatDate(date)}"
+            id != null -> id
             else -> "Unknown"
         }
     }

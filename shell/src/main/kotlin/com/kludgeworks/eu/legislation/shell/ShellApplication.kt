@@ -2,11 +2,14 @@ package com.kludgeworks.eu.legislation.shell
 
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.ExitCodeGenerator
+import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.ComponentScan
 import picocli.CommandLine
 import picocli.CommandLine.IFactory
+import kotlin.system.exitProcess
+
 
 @SpringBootApplication
 @ComponentScan(basePackages = ["com.kludgeworks.eu.legislation"])
@@ -27,5 +30,5 @@ class ShellApplication(
 }
 
 fun main(args: Array<String>) {
-    runApplication<ShellApplication>(*args)
+    exitProcess(SpringApplication.exit(runApplication<ShellApplication>(*args)))
 }

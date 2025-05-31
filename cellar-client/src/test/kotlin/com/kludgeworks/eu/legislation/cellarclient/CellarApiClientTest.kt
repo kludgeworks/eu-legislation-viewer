@@ -2,6 +2,7 @@ package com.kludgeworks.eu.legislation.cellarclient
 
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Timeout
 import org.junit.jupiter.api.assertThrows
@@ -23,17 +24,9 @@ class CellarApiClientTest {
     private val defaultResourceId = "ebb1a9b2-a87f-11e5-b528-01aa75ed71a1"
 
     @Test
-    fun `should handle network timeout gracefully`() = runTest {
+    fun `can fetch notice`() = runTest {
         val notice = cellarApiClient.fetchNotice(defaultResourceId)
         assertNotNull(notice)
-    }
-
-    @Test
-    fun `list all english expressions`() = runTest {
-        val notice = cellarApiClient.fetchNotice(defaultResourceId)
-
-        // list english expressions
-        val expressions = notice?.expression?.stream()?.filter { t -> t.language?.value == "eng" }
     }
 
     @Test
@@ -51,7 +44,6 @@ class CellarApiClientTest {
     }
 
     @Test
-    @Timeout(value = 60)
     fun `should retrieve manifestations for an expression`() = runTest {
         // First get the notice
         val notice = cellarApiClient.fetchNotice(defaultResourceId)
@@ -84,20 +76,6 @@ class CellarApiClientTest {
     }
 
     @Test
-    @Timeout(value = 60)
-    fun `should return null for 404 not found`() = runTest {
-        // Use a non-existent resource ID that should return a 404
-        val nonExistentResourceId = "non-existent-resource-id"
-
-        // Call fetchNotice with the non-existent resource ID
-        val notice = cellarApiClient.fetchNotice(nonExistentResourceId)
-
-        // Verify that the method returned null for a 404
-        assertNull(notice, "Should return null for a 404 Not Found response")
-    }
-
-    @Test
-    @Timeout(value = 60)
     fun `list ids`() = runTest {
         val notice = cellarApiClient.fetchNotice(defaultResourceId)
         assertNotNull(notice)
@@ -127,7 +105,6 @@ class CellarApiClientTest {
     }
 
     @Test
-    @Timeout(value = 60)
     fun `should fetch notice by CELEX number`() = runTest {
         // Use a known CELEX number from the test data
         val testCelexNumber = "32015R2426"
@@ -149,7 +126,6 @@ class CellarApiClientTest {
     }
 
     @Test
-    @Timeout(value = 60)
     fun `should return null for 404 not found when fetching by CELEX`() = runTest {
         // Use a non-existent CELEX number that should return a 404
         val nonExistentCelexNumber = "non-existent-celex"

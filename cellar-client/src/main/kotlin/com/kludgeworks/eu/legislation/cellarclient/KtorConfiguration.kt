@@ -4,6 +4,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.HttpRedirect
+import io.ktor.client.plugins.logging.*
 import io.ktor.http.ContentType
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -17,6 +18,11 @@ class KtorConfiguration {
     @Bean
     fun ktorHttpClient(): HttpClient {
         return HttpClient(CIO) {
+            install(Logging) {
+                logger = Logger.DEFAULT
+                level = LogLevel.INFO
+            }
+
             install(ContentNegotiation) {
                 xml(format = XML {
                     // Configure XML parsing to be less strict
@@ -25,10 +31,6 @@ class KtorConfiguration {
                 xml(format = XML {
                     unknownChildHandler = UnknownChildHandler { _, _, _, _, _ -> emptyList() }
                 }, contentType = ContentType.parse("application/xml;notice=tree"))
-            }
-            install(HttpRedirect) {
-                // Configure to follow redirects (default is already true)
-                checkHttpMethod = true
             }
             engine {
                 requestTimeout = 30_000

@@ -1,7 +1,6 @@
 [tools]
 gradle = "latest"
-java = "temurin-24"
-jq = "latest"
+java = "temurin-21"
 ktlint = "latest"
 shellcheck = "latest"
 

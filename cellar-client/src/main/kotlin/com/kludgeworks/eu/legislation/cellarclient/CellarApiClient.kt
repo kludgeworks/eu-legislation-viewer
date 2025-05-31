@@ -28,35 +28,22 @@ class CellarApiClient(
     /**
      * Common function to fetch a notice with error handling
      */
-    private suspend fun fetchNoticeFromUrl(pathSegments: List<String>): Notice? {
+    private suspend fun fetchNoticeFromUrl(vararg pathSegments: String): Notice? {
         try {
-            val response = httpClient.get {
+            return httpClient.get {
+                expectSuccess = false
                 url {
-                    appendPathSegments(pathSegments)
+                    takeFrom(baseUrl)
+                    appendPathSegments(pathSegments.toList())
                 }
                 headers {
                     append(HttpHeaders.Accept, "application/xml;notice=tree")
                 }
-            }
-
-            if (response.status == HttpStatusCode.NotFound) {
-                logger.info("Resource not found (404)")
-                return null
-            }
-
-            return response.body<Notice>()
-        } catch (e: ClientRequestException) {
-            // If it's a 404 Not Found, return null as specified
-            if (e.response.status == HttpStatusCode.NotFound) {
-                logger.info("Resource not found (404): ${e.message}")
-                return null
-            } else {
-                // For other client errors (4xx), throw a custom exception
-                logger.error("Client error: ${e.message}", e)
-                throw CellarApiException("Error: ${e.message}", e)
+            }.let { response ->
+                if (response.status == HttpStatusCode.NotFound) null
+                else response.body<Notice>()
             }
         } catch (e: Exception) {
-            // For all other exceptions, throw a custom exception
             logger.error("Error: ${e.message}", e)
             throw CellarApiException("Error: ${e.message}", e)
         }
@@ -70,7 +57,7 @@ class CellarApiClient(
      * @throws CellarApiException If there's an error during the API call
      */
     suspend fun fetchNotice(resourceId: String): Notice? {
-        return fetchNoticeFromUrl(listOf(baseUrl, cellarPathSegment, resourceId))
+        return fetchNoticeFromUrl(cellarPathSegment, resourceId)
     }
 
 
@@ -82,7 +69,7 @@ class CellarApiClient(
      * @throws CellarApiException If there's an error during the API call
      */
     suspend fun fetchNoticeByCelex(celexNumber: String): Notice? {
-        return fetchNoticeFromUrl(listOf(baseUrl, celexPathSegment, celexNumber))
+        return fetchNoticeFromUrl(celexPathSegment, celexNumber)
     }
 
     /**
