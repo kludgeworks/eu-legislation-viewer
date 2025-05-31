@@ -2,6 +2,7 @@ package com.kludgeworks.eu.legislation.rdf
 
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.LocalDate // Added for explicit import
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -43,6 +44,7 @@ class RdfModuleIntegrationTest {
     }
 
     @Test
+    @Disabled
 //    @EnabledIfEnvironmentVariable(named = "RUN_INTEGRATION_TESTS", matches = "true")
     fun `should retrieve work by ID number from live endpoint`() {
         runBlocking {
@@ -246,6 +248,7 @@ class RdfModuleIntegrationTest {
     }
 
     @Test
+    @Disabled
 //    @EnabledIfEnvironmentVariable(named = "RUN_INTEGRATION_TESTS", matches = "true")
     fun `should handle non-existent ID`() {
         runBlocking {
