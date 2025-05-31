@@ -164,6 +164,7 @@
       <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">European Central Bank other act</rdfs:label>
       <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ECB other acts (5XB)</rdfs:comment>
       <rdfs:subClassOf rdf:resource="http://publications.europa.eu/ontology/cdm#act_preparatory_ecb"/>
+      
    </owl:Class>
    <owl:Class rdf:about="http://publications.europa.eu/ontology/cdm#act_other_eesc">
       <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">European Economic and Social Committee other act</rdfs:label>

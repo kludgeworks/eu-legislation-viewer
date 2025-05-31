@@ -1,3 +1,6 @@
 GET http://publications.europa.eu/resource/cellar/ebb1a9b2-a87f-11e5-b528-01aa75ed71a1?language=eng
 Accept: application/xml;notice=tree
 
+### what else can we do?
+GET http://publications.europa.eu/resource/cellar/c38f361d-8a99-11e5-b8b7-01aa75ed71a1
+Accept: application/xml;notice=tree

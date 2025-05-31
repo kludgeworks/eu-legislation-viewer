@@ -33,7 +33,7 @@ dependencies {
     implementation(libs.arrow.fx.coroutines)
     
     // CDM vocabulary
-    implementation(project(":cdm"))
+//    implementation(project(":cdm"))
     
     // Testing
     testImplementation(libs.spring.boot.starter.test)

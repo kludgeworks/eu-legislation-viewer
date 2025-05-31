@@ -254,6 +254,22 @@ open class Work(
     val eli: URI? = null, // cdm:resource_legal_eli - European Legislation Identifier (changed to URI and made nullable based on usage)
     val inForce: Boolean? = null, // cdm:resource_legal_in-force - Whether the legislation is in force
     val numberCorrigendum: String? = null, // cdm:resource_legal_number_corrigendum - Corrigendum number if applicable
+    val dateEntryIntoForce: LocalDate? = null, // cdm:resource_legal_date_entry-into-force - Date when the legislation enters into force
+    val dateEndOfValidity: LocalDate? = null, // cdm:resource_legal_date_end-of-validity - Date when the legislation ceases to be valid
+    val basedOnTreaty: URI? = null, // cdm:resource_legal_based_on_concept_treaty - Treaty this legislation is based on
+    val basedOnResource: URI? = null, // cdm:resource_legal_based_on_resource_legal - Legal resource this is based on
+    val signatory: String? = null, // cdm:resource_legal_signatory_name - Name of the signatory
+    val signatoryFunction: String? = null, // cdm:resource_legal_signatory_function - Function/role of the signatory
+    val legalType: String? = null, // cdm:resource_legal_type - Type of legal resource (R for Regulation, etc.)
+    val legalYear: Int? = null, // cdm:resource_legal_year - Year of the legal resource
+    val eea: Boolean? = null, // cdm:resource_legal_eea - Whether this is relevant to the European Economic Area
+    val repealsResource: Set<URI> = emptySet(), // cdm:resource_legal_repeals_resource_legal - Resources explicitly repealed
+    val implicitlyRepealsResource: Set<URI> = emptySet(), // cdm:resource_legal_implicitly_repeals_resource_legal - Resources implicitly repealed
+    val citesWork: Set<URI> = emptySet(), // cdm:work_cites_work - Works cited by this work
+    val citedByWork: Set<URI> = emptySet(), // Inverse of cdm:work_cites_work - Works that cite this work
+    val subjectMatters: Set<URI> = emptySet(), // cdm:resource_legal_is_about_subject-matter - Subject matter classifications
+    val eurovocConcepts: Set<URI> = emptySet(), // cdm:work_is_about_concept_eurovoc - EuroVoc thesaurus concepts
+    val directoryCodes: Set<URI> = emptySet(), // cdm:resource_legal_is_about_concept_directory-code - Directory classification codes
     // Representing complex relations as Sets of URIs still for simplicity,
     // but acknowledging that for deeper semantic needs, dedicated relationship classes would be used.
     val expressions: Set<URI> = emptySet(), // cdm:work_has_expression - Set of expression URIs
@@ -271,6 +287,8 @@ class LegalResource(
     val amendedBy: Set<AmendmentRelation> = emptySet(), // Inverse of cdm:resource_legal_amends_resource_legal
     val consolidates: Set<ConsolidationRelation> = emptySet(), // cdm:act_consolidated_consolidates_resource_legal
     val consolidatedBy: Set<ConsolidationRelation> = emptySet(), // Inverse of cdm:act_consolidated_consolidates_resource_legal
+    val corrections: Set<URI> = emptySet(), // cdm:resource_legal_corrects_resource_legal - Corrections made by this resource
+    val correctedBy: Set<URI> = emptySet(), // Inverse of cdm:resource_legal_corrects_resource_legal - Corrections to this resource
 
     // Work properties (passed to superclass)
     uri: URI,
@@ -288,6 +306,22 @@ class LegalResource(
     eli: URI? = null, // Now URI?
     inForce: Boolean? = null,
     numberCorrigendum: String? = null,
+    dateEntryIntoForce: LocalDate? = null,
+    dateEndOfValidity: LocalDate? = null,
+    basedOnTreaty: URI? = null,
+    basedOnResource: URI? = null,
+    signatory: String? = null,
+    signatoryFunction: String? = null,
+    legalType: String? = null,
+    legalYear: Int? = null,
+    eea: Boolean? = null,
+    repealsResource: Set<URI> = emptySet(),
+    implicitlyRepealsResource: Set<URI> = emptySet(),
+    citesWork: Set<URI> = emptySet(),
+    citedByWork: Set<URI> = emptySet(),
+    subjectMatters: Set<URI> = emptySet(),
+    eurovocConcepts: Set<URI> = emptySet(),
+    directoryCodes: Set<URI> = emptySet(),
     expressions: Set<URI> = emptySet(),
     subdivisions: Set<URI> = emptySet(),
     relatedWorks: Set<URI> = emptySet()
@@ -308,6 +342,22 @@ class LegalResource(
     eli = eli,
     inForce = inForce,
     numberCorrigendum = numberCorrigendum,
+    dateEntryIntoForce = dateEntryIntoForce,
+    dateEndOfValidity = dateEndOfValidity,
+    basedOnTreaty = basedOnTreaty,
+    basedOnResource = basedOnResource,
+    signatory = signatory,
+    signatoryFunction = signatoryFunction,
+    legalType = legalType,
+    legalYear = legalYear,
+    eea = eea,
+    repealsResource = repealsResource,
+    implicitlyRepealsResource = implicitlyRepealsResource,
+    citesWork = citesWork,
+    citedByWork = citedByWork,
+    subjectMatters = subjectMatters,
+    eurovocConcepts = eurovocConcepts,
+    directoryCodes = directoryCodes,
     expressions = expressions,
     subdivisions = subdivisions,
     relatedWorks = relatedWorks

@@ -39,4 +39,28 @@ internal class LegalResourceRepository(
             legalResourceMapper.mapToLegalResource(bindingSets)
         }
     }
+
+    /**
+     * Find LegalResource by its document ID
+     *
+     * @param id The document ID of the legal resource, which can be:
+     *           - A plain ID (e.g., "32015R1998")
+     *           - An ID with a prefix (e.g., "celex:32015R1998", "planjo:123", "immc:456", "oj:789")
+     *           - The query will match both exact IDs and IDs with recognized prefixes
+     * @return Either an error or the LegalResource if found, null if not found
+     */
+    suspend fun findById(id: String): Either<DomainError, LegalResource?> = either {
+        val query = loadQuery("find-legal-resource-by-id.sparql")
+        val bindingSets: List<BindingSet> = executeQuery(
+            query = query,
+            parameters = mapOf("X-KW-ID" to id),
+            mapper = { bindingSet -> bindingSet }
+        ).bind()
+
+        if (bindingSets.isEmpty()) {
+            null
+        } else {
+            legalResourceMapper.mapToLegalResource(bindingSets)
+        }
+    }
 }

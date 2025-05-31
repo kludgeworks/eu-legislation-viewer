@@ -8,16 +8,20 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 SELECT DISTINCT
     ?work
-    ?type
+    (GROUP_CONCAT(DISTINCT ?type; separator="|") AS ?types)
     ?creationDate ?lastModificationDate
     ?title ?version
     ?dateCreation ?dateDocument ?embargo
     ?createdBy
-    ?idDocument
+    (GROUP_CONCAT(DISTINCT ?idDocument; separator="|") AS ?idDocuments)
     ?celexNumber ?sectorId ?eli ?inForce ?numberCorrigendum
-    ?amendsLegalResource
-    ?amendedByLegalResource
-    ?consolidatedByAct
+    (GROUP_CONCAT(DISTINCT ?expression; separator="|") AS ?expressions)
+    (GROUP_CONCAT(DISTINCT ?subdivision; separator="|") AS ?subdivisions)
+    (GROUP_CONCAT(DISTINCT ?relatedWork; separator="|") AS ?relatedWorks)
+    (GROUP_CONCAT(DISTINCT ?amendsLegalResource; separator="|") AS ?amendedResources)
+    (GROUP_CONCAT(DISTINCT ?amendedByLegalResource; separator="|") AS ?amendingResources)
+    (GROUP_CONCAT(DISTINCT ?consolidatesResource; separator="|") AS ?consolidatedResources)
+    (GROUP_CONCAT(DISTINCT ?consolidatedByAct; separator="|") AS ?consolidatingResources)
 WHERE {
     BIND(?X-KW-WORK-URI AS ?work)
 
@@ -34,12 +38,26 @@ WHERE {
     OPTIONAL { ?work cdm:work_embargo ?embargo }
     OPTIONAL { ?work cdm:work_created_by_agent ?createdBy }
     OPTIONAL { ?work cdm:work_id_document ?idDocument }
+    
+    # Legal Resource properties
     OPTIONAL { ?work cdm:resource_legal_id_celex ?celexNumber }
     OPTIONAL { ?work cdm:resource_legal_id_sector ?sectorId }
     OPTIONAL { ?work cdm:resource_legal_eli ?eli }
-    OPTIONAL { ?work cdm:resource_legal_in_force ?inForce }
+    OPTIONAL { ?work cdm:resource_legal_in-force ?inForce }
     OPTIONAL { ?work cdm:resource_legal_number_corrigendum ?numberCorrigendum }
+    
+    # Related entities - using inverse relationships where needed
+    OPTIONAL { ?expression cdm:expression_belongs_to_work ?work }
+    OPTIONAL { ?subdivision cdm:work_part_of_work ?work }
+    OPTIONAL { ?work cdm:work_related_to_work ?relatedWork }
+    
+    # Amendment relationships
     OPTIONAL { ?work cdm:resource_legal_amends_resource_legal ?amendsLegalResource }
-    OPTIONAL { ?work cdm:resource_legal_amended_by_resource_legal ?amendedByLegalResource }
-    OPTIONAL { ?work cdm:resource_legal_consolidated_by_act_consolidated ?consolidatedByAct }
+    OPTIONAL { ?amendedByLegalResource cdm:resource_legal_amends_resource_legal ?work }
+    
+    # Consolidation relationships
+    OPTIONAL { ?work cdm:act_consolidated_consolidates_resource_legal ?consolidatesResource }
+    OPTIONAL { ?consolidatedByAct cdm:act_consolidated_consolidates_resource_legal ?work }
 }
+GROUP BY ?work ?creationDate ?lastModificationDate ?title ?version ?dateCreation 
+         ?dateDocument ?embargo ?createdBy ?celexNumber ?sectorId ?eli ?inForce ?numberCorrigendum

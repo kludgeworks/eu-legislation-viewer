@@ -18,7 +18,7 @@ java {
 
 dependencies {
     // Project dependencies
-    implementation(project(":formex"))
+//    implementation(project(":formex"))
     implementation(project(":cdm"))
 
     // Kotlin

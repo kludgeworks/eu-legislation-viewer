@@ -50,7 +50,7 @@ class WorkService internal constructor(
             )
         work
     }
-    
+
     /**
      * Get expressions for a work
      *
@@ -77,17 +77,38 @@ class WorkService internal constructor(
      * @param manifestationUri The URI of the manifestation
      * @return Either an error or a list of ContentItems
      */
-    suspend fun contentItemsForExpression(manifestationUri: URI): Either<DomainError, List<ContentItem>> = either {
+    suspend fun contentItemsForManifestation(manifestationUri: URI): Either<DomainError, List<ContentItem>> = either {
         contentItemRepository.findByManifestationUri(manifestationUri).bind()
     }
 
     /**
-     * Get expressions for a work
+     * Get legal resource for a work
      *
      * @param workUri The URI of the work
-     * @return Either an error or a list of expressions
+     * @return Either an error or the legal resource
      */
     suspend fun legalResourcesForWork(workUri: URI): Either<DomainError, LegalResource?> = either {
         legalResourceRepository.findByUri(workUri).bind()
+    }
+
+    /**
+     * Get a LegalResource by its document ID
+     *
+     * @param idNumber The document ID of the legal resource, which can be:
+     *                 - A plain ID (e.g., "32015R1998")
+     *                 - An ID with a prefix (e.g., "celex:32015R1998", "planjo:123", "immc:456", "oj:789")
+     * @return Either an error or the LegalResource if found
+     * @throws DomainError.NotFound if no legal resource is found with the given ID
+     */
+    suspend fun legalResourceById(idNumber: String): Either<DomainError, LegalResource> = either {
+        val legalResource = legalResourceRepository.findById(idNumber).bind()
+            ?: raise(
+                DomainError.NotFound(
+                    message = "LegalResource not found with document ID: $idNumber",
+                    entityType = "LegalResource",
+                    identifier = idNumber
+                )
+            )
+        legalResource
     }
 }

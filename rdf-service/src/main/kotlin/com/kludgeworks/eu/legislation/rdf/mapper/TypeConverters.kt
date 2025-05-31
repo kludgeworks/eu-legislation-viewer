@@ -104,4 +104,16 @@ object TypeConverters {
     fun parseStringList(values: List<Value>): List<String> {
         return values.mapNotNull { parseString(it) }
     }
+
+    /**
+     * Parse a raw date string to LocalDate
+     */
+    fun parseRawDate(dateStr: String): LocalDate? {
+        return try {
+            LocalDate.parse(dateStr)
+        } catch (e: Exception) {
+            // Handle parsing errors
+            null
+        }
+    }
 }
