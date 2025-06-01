@@ -4,18 +4,18 @@ import dev.dirs.ProjectDirectories
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.cache.*
-import io.ktor.client.plugins.cache.storage.FileStorage
+import io.ktor.client.plugins.cache.storage.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.http.*
+import io.ktor.serialization.kotlinx.json.*
 import io.ktor.serialization.kotlinx.xml.*
+import kotlinx.serialization.json.Json
 import nl.adaptivity.xmlutil.serialization.UnknownChildHandler
 import nl.adaptivity.xmlutil.serialization.XML
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import java.io.File
-import java.nio.file.Paths
-import kotlin.io.path.Path
 
 @Configuration
 class KtorConfiguration {
@@ -47,6 +47,12 @@ class KtorConfiguration {
                 xml(format = XML {
                     unknownChildHandler = UnknownChildHandler { _, _, _, _, _ -> emptyList() }
                 }, contentType = ContentType.parse("application/xml;notice=tree"))
+                json()
+                json(Json {
+                    ignoreUnknownKeys = true
+                    isLenient = true
+                    prettyPrint = true
+                }, contentType = ContentType.parse("application/sparql-results+json"))
             }
             engine {
                 requestTimeout = 30_000

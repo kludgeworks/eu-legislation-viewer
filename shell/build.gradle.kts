@@ -21,6 +21,7 @@ dependencies {
     // Kotlin
     implementation(libs.kotlin.reflect)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.datetime)
 
     // Testing
     testImplementation(libs.spring.boot.starter.test)

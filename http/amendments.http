@@ -1,0 +1,46 @@
+### Query for Information About a Work
+@CELEX_NUMBER = 32015R1998
+POST https://publications.europa.eu/webapi/rdf/sparql
+Accept: application/sparql-results+json
+Content-Type: application/x-www-form-urlencoded
+
+query =
+
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
+
+SELECT DISTINCT ?amendmentUri ?amendmentCelex ?documentDate ?entryForceDate ?title
+WHERE {
+  {
+    # Early amendments (2015-2021): Get titles from expression level
+    ?work cdm:resource_legal_id_celex "32015R1998"^^xsd:string .
+    ?amendmentUri cdm:resource_legal_amends_resource_legal ?work .
+    ?amendmentUri cdm:resource_legal_id_celex ?amendmentCelex .
+    ?amendmentUri cdm:work_date_document ?documentDate .
+    OPTIONAL { ?amendmentUri cdm:resource_legal_date_entry-into-force ?entryForceDate }
+
+    # Get English expression titles
+    ?expression cdm:expression_belongs_to_work ?amendmentUri .
+    ?expression cmr:lang "eng"^^xsd:language .
+    ?expression cdm:expression_title ?title .
+
+    FILTER(?documentDate < "2022-01-01"^^xsd:date)
+  }
+  UNION
+  {
+    # Later amendments (2022+): Get titles from work level
+    ?work cdm:resource_legal_id_celex "32015R1998"^^xsd:string .
+    ?amendmentUri cdm:resource_legal_amends_resource_legal ?work .
+    ?amendmentUri cdm:resource_legal_id_celex ?amendmentCelex .
+    ?amendmentUri cdm:work_date_document ?documentDate .
+    OPTIONAL { ?amendmentUri cdm:resource_legal_date_entry-into-force ?entryForceDate }
+
+    # Get work titles
+    ?amendmentUri cdm:work_title ?title .
+    FILTER(lang(?title) = "en" || lang(?title) = "")
+
+    FILTER(?documentDate >= "2022-01-01"^^xsd:date)
+  }
+}
+ORDER BY ?documentDate ?entryForceDate

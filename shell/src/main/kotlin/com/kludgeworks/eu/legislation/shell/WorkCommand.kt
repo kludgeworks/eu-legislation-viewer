@@ -5,6 +5,7 @@ import com.kludgeworks.eu.legislation.cellarclient.models.Notice
 import com.kludgeworks.eu.legislation.cellarclient.models.Work
 import com.kludgeworks.eu.legislation.cellarclient.models.ResourceReference
 import com.kludgeworks.eu.legislation.cellarclient.models.EmbeddedNotice
+import com.kludgeworks.eu.legislation.cellarclient.sparql.SparqlApiClient
 import kotlinx.coroutines.runBlocking
 import org.springframework.stereotype.Component
 import picocli.CommandLine.*
@@ -18,7 +19,8 @@ import java.util.concurrent.Callable
     description = ["Retrieves and displays Work information from EU Cellar"]
 )
 class WorkCommand(
-    private val cellarApiClient: CellarApiClient
+    private val cellarApiClient: CellarApiClient,
+    private val sparqlApiClient: SparqlApiClient
 ) : Callable<Int> {
 
     class IdentifierGroup {
@@ -65,6 +67,7 @@ class WorkCommand(
                     return@runBlocking 1
                 }
 
+                // Call the suspend function from within the runBlocking context
                 displayWorkInformation(notice)
                 0
             } catch (e: Exception) {
@@ -75,7 +78,7 @@ class WorkCommand(
         }
     }
 
-    private fun displayWorkInformation(notice: Notice) {
+    private suspend fun displayWorkInformation(notice: Notice) {
         val work = notice.work
 
         // Display title from expression
@@ -108,17 +111,41 @@ class WorkCommand(
             ?: notice.expression.firstOrNull()?.titleAlt?.value
     }
 
-    private fun displayAmendments(work: Work) {
+    private suspend fun displayAmendments(work: Work) {
         println("Amendments:")
-        if (work.amendedBy.isEmpty()) {
-            println("  - None")
-        } else {
-            work.amendedBy.forEach { amendment ->
-                val celex = extractCelex(amendment)
-                val date = extractDate(amendment)
-                println("  - ${formatAmendmentConsolidation(celex, date)}")
-            }
+
+        // Extract CELEX number from the work
+        val celexNumber = work.idCelex?.value ?: work.resourceLegalIdCelex?.value
+
+        if (celexNumber == null) {
+            println("  - Cannot fetch amendments: No CELEX number available")
+            println()
+            return
         }
+
+        try {
+            val amendments = sparqlApiClient.fetchAmendments(celexNumber)
+
+            if (amendments.isEmpty()) {
+                println("  - None")
+            } else {
+                amendments.forEach { amendment ->
+                    println("  - CELEX: ${amendment.celex}")
+                    println("    URI: ${amendment.uri}")
+                    println("    Adoption Date: ${amendment.adoptionDate}")
+                    println("    Entry Force Dates: ${amendment.entryForceDates
+                                                        .joinToString(", ")
+                                                        .ifBlank { "N/A" }
+                                                    }"
+                    )
+                    println()
+                }
+            }
+        } catch (e: Exception) {
+            println("  - Error fetching amendments: ${e.message}")
+            e.printStackTrace()
+        }
+
         println()
     }
 

@@ -1,8 +1,13 @@
 package com.kludgeworks.eu.legislation.shell
 
+import com.kludgeworks.eu.legislation.cellarclient.CellarApiClient
 import com.kludgeworks.eu.legislation.cellarclient.models.*
+import com.kludgeworks.eu.legislation.cellarclient.sparql.SparqlApiClient
+import com.kludgeworks.eu.legislation.cellarclient.sparql.AmendmentInfo
 import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.mockk
+import io.mockk.slot
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -10,14 +15,16 @@ import picocli.CommandLine
 
 class WorkCommandTest {
 
-    private lateinit var cellarService: CellarService
+    private lateinit var cellarApiClient: CellarApiClient
+    private lateinit var sparqlApiClient: SparqlApiClient
     private lateinit var workCommand: WorkCommand
     private lateinit var commandLine: CommandLine
 
     @BeforeEach
     fun setUp() {
-        cellarService = mockk()
-        workCommand = WorkCommand(cellarService)
+        cellarApiClient = mockk()
+        sparqlApiClient = mockk()
+        workCommand = WorkCommand(cellarApiClient, sparqlApiClient)
         commandLine = CommandLine(workCommand)
     }
 
@@ -27,7 +34,8 @@ class WorkCommandTest {
         val resourceId = "32015R1998"
         val mockNotice = createMockNotice()
 
-        coEvery { cellarService.fetchNotice(resourceId) } returns mockNotice
+        coEvery { cellarApiClient.fetchNotice(resourceId) } returns mockNotice
+        coEvery { sparqlApiClient.fetchAmendments("32015R1998") } returns emptyList()
 
         // When
         val exitCode = commandLine.execute("-r", resourceId)
@@ -42,7 +50,8 @@ class WorkCommandTest {
         val celexNumber = "32015R1998"
         val mockNotice = createMockNotice()
 
-        coEvery { cellarService.fetchNoticeByCelex(celexNumber) } returns mockNotice
+        coEvery { cellarApiClient.fetchNoticeByCelex(celexNumber) } returns mockNotice
+        coEvery { sparqlApiClient.fetchAmendments("32015R1998") } returns emptyList()
 
         // When
         val exitCode = commandLine.execute("-c", celexNumber)
@@ -56,7 +65,7 @@ class WorkCommandTest {
         // Given
         val resourceId = "INVALID"
 
-        coEvery { cellarService.fetchNotice(resourceId) } returns null
+        coEvery { cellarApiClient.fetchNotice(resourceId) } returns null
 
         // When
         val exitCode = commandLine.execute("-r", resourceId)
@@ -70,7 +79,7 @@ class WorkCommandTest {
         // Given
         val celexNumber = "INVALID"
 
-        coEvery { cellarService.fetchNoticeByCelex(celexNumber) } returns null
+        coEvery { cellarApiClient.fetchNoticeByCelex(celexNumber) } returns null
 
         // When
         val exitCode = commandLine.execute("-c", celexNumber)
@@ -85,7 +94,8 @@ class WorkCommandTest {
         val resourceId = "32015R1998"
         val mockNotice = createMockNotice()
 
-        coEvery { cellarService.fetchNotice(resourceId) } returns mockNotice
+        coEvery { cellarApiClient.fetchNotice(resourceId) } returns mockNotice
+        coEvery { sparqlApiClient.fetchAmendments("32015R1998") } returns emptyList()
 
         // When
         val exitCode = commandLine.execute("-r", resourceId, "-l", "fra")
@@ -100,7 +110,8 @@ class WorkCommandTest {
         val celexNumber = "32015R1998"
         val mockNotice = createMockNotice()
 
-        coEvery { cellarService.fetchNoticeByCelex(celexNumber) } returns mockNotice
+        coEvery { cellarApiClient.fetchNoticeByCelex(celexNumber) } returns mockNotice
+        coEvery { sparqlApiClient.fetchAmendments("32015R1998") } returns emptyList()
 
         // When
         val exitCode = commandLine.execute("-c", celexNumber, "-l", "fra")
