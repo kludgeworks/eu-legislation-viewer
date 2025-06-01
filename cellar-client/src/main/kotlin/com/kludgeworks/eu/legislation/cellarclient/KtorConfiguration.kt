@@ -1,16 +1,21 @@
 package com.kludgeworks.eu.legislation.cellarclient
 
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.client.plugins.HttpRedirect
+import dev.dirs.ProjectDirectories
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.plugins.cache.*
+import io.ktor.client.plugins.cache.storage.FileStorage
+import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
-import io.ktor.http.ContentType
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
+import io.ktor.http.*
 import io.ktor.serialization.kotlinx.xml.*
 import nl.adaptivity.xmlutil.serialization.UnknownChildHandler
 import nl.adaptivity.xmlutil.serialization.XML
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import java.io.File
+import java.nio.file.Paths
+import kotlin.io.path.Path
 
 @Configuration
 class KtorConfiguration {
@@ -23,9 +28,20 @@ class KtorConfiguration {
                 level = LogLevel.INFO
             }
 
+            install(HttpCache) {
+                val cacheDir = ProjectDirectories.from("", "kludgeworks", "EU Legislation Cache").configDir
+                publicStorage(FileStorage(File(cacheDir)))
+            }
+
             install(ContentNegotiation) {
                 xml(format = XML {
-                    // Configure XML parsing to be less strict
+                    /*
+                    TODO we should probably configure this to be less strict at runtime
+                    and then more strict during tests.
+
+                    At runtime we wouldn't want a new element in the model to cause an issue, but at test time
+                    it should fail so that we can update the model
+                     */
                     unknownChildHandler = UnknownChildHandler { _, _, _, _, _ -> emptyList() }
                 })
                 xml(format = XML {

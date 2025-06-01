@@ -12,6 +12,9 @@ dependencies {
     implementation(libs.spring.boot.starter)
     implementation(libs.spring.boot.starter.cache)
 
+    // Serialization
+    implementation(libs.kotlinx.serialization.json)
+
     // Picocli
     implementation(libs.picocli.spring.boot.starter)
 

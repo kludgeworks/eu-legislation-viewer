@@ -22,6 +22,9 @@ apache-http = "4.5.14"
 xmlutil = "0.84.3"
 picocli = "4.7.6"
 mockk = "1.13.12"
+kache = "2.1.1"
+dev-dirs = "26"
+okio = "3.12.0"
 
 [libraries]
 # Kotlin
@@ -30,6 +33,7 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test" }
 kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5" }
 
@@ -71,12 +75,17 @@ jspecify = { module = "org.jspecify:jspecify", version.ref = "jspecify" }
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
 apache-httpclient = { module = "org.apache.httpcomponents:httpclient", version.ref = "apache-http" }
 xmlutil-serialization-jvm = { module = "io.github.pdvrieze.xmlutil:serialization-jvm", version.ref = "xmlutil" }
+dev-dirs = { module = "dev.dirs:directories", version.ref = "dev-dirs" }
 
-# Picocli
+
 picocli-spring-boot-starter = { module = "info.picocli:picocli-spring-boot-starter", version.ref = "picocli" }
 
 # MockK
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+
+# Kache
+kache = { module = "com.mayakapps.kache:kache", version.ref = "kache" }
+kache-file = { module = "com.mayakapps.kache:file-kache", version.ref = "kache" }
 
 # RDF4J
 rdf4j-repository-sparql = { module = "org.eclipse.rdf4j:rdf4j-repository-sparql", version.ref = "rdf4j" }

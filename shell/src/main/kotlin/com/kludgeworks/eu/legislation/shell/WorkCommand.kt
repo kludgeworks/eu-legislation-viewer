@@ -1,5 +1,6 @@
 package com.kludgeworks.eu.legislation.shell
 
+import com.kludgeworks.eu.legislation.cellarclient.CellarApiClient
 import com.kludgeworks.eu.legislation.cellarclient.models.Notice
 import com.kludgeworks.eu.legislation.cellarclient.models.Work
 import com.kludgeworks.eu.legislation.cellarclient.models.ResourceReference
@@ -17,7 +18,7 @@ import java.util.concurrent.Callable
     description = ["Retrieves and displays Work information from EU Cellar"]
 )
 class WorkCommand(
-    private val cellarService: CellarService
+    private val cellarApiClient: CellarApiClient
 ) : Callable<Int> {
 
     class IdentifierGroup {
@@ -54,9 +55,9 @@ class WorkCommand(
                 println("=" * 60)
 
                 val notice = if (byResourceId) {
-                    cellarService.fetchNotice(identifier)
+                    cellarApiClient.fetchNotice(identifier)
                 } else {
-                    cellarService.fetchNoticeByCelex(identifier)
+                    cellarApiClient.fetchNoticeByCelex(identifier)
                 }
 
                 if (notice == null) {

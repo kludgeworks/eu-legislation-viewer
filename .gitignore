@@ -40,3 +40,6 @@ build/
 *.log
 /legislation
 mise.local.toml
+
+### Kache ###
+cache/

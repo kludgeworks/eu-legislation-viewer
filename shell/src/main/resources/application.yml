@@ -9,3 +9,5 @@ logging:
   level:
     root: WARN
     com.kludgeworks.eu.legislation: INFO
+    # Uncomment to see cache activity
+    # com.mayakapps.kache: DEBUG

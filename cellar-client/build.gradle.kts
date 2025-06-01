@@ -35,6 +35,9 @@ dependencies {
     implementation(libs.ktor.serialization.kotlinx.xml)
     implementation(libs.ktor.client.logging)
 
+    // dev-dirs
+    implementation(libs.dev.dirs)
+
     // Spring Boot
     implementation(libs.spring.boot.starter)
 
