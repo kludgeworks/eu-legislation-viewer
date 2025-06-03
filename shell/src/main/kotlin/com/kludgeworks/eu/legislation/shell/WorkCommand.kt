@@ -97,14 +97,12 @@ class WorkCommand(
             return
         }
 
-
         val consolidations = sparqlApiClient.fetchConsolidations(celexNumber)
+        // Display amendments
+        displayAmendments(celexNumber, consolidations)
+
         // Display consolidations
         displayConsolidations(consolidations)
-
-        // Display amendments
-        displayAmendments(celexNumber)
-
     }
 
     private fun findTitle(notice: Notice, languageCode: String): String? {
@@ -120,7 +118,7 @@ class WorkCommand(
             ?: notice.expression.firstOrNull()?.titleAlt?.value
     }
 
-    private suspend fun displayAmendments(celexNumber: String) {
+    private suspend fun displayAmendments(celexNumber: String, consolidations: List<ConsolidationInfo>) {
         println("Amendments:")
 
         try {
@@ -138,6 +136,19 @@ class WorkCommand(
                                                         .ifBlank { "N/A" }
                                                     }"
                     )
+
+                    // Find consolidations that include this amendment
+                    val relatedConsolidations = consolidations.filter { it.amendments.contains(amendment.uri) }
+                    if (relatedConsolidations.isNotEmpty()) {
+                        println("    Associated Consolidations:")
+                        relatedConsolidations.forEach { consolidation ->
+                            println("      - ID: ${consolidation.consolidationId}")
+                            println("        Date: ${formatDate(consolidation.consolidationDate.toString())}")
+                        }
+                    } else {
+                        println("    Associated Consolidations: None")
+                    }
+
                     println()
                 }
             }
