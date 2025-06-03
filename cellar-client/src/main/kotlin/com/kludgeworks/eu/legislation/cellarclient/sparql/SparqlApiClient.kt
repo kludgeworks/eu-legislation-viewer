@@ -24,12 +24,12 @@ class SparqlApiClient(
      * @param celexNumber The CELEX number of the legislation to find amendments for
      * @return List of SparqlAmendment objects representing the amendments
      */
-    suspend fun fetchAmendments(celexNumber: String): List<AmendmentInfo> {
+    suspend fun fetchAmendments(celexNumber: String, language: String = "eng"): List<AmendmentInfo> {
         val query = """
             PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
-            
+
             SELECT DISTINCT ?amendingWorkUri ?amendedWorkUri ?amendmentCelex ?documentDate 
                    (GROUP_CONCAT(DISTINCT ?entryForceDate; separator=", ") AS ?entryForceDates) 
                    (SAMPLE(?title) AS ?amendmentTitle)
@@ -41,12 +41,12 @@ class SparqlApiClient(
                 ?amendingWorkUri cdm:resource_legal_id_celex ?amendmentCelex .
                 ?amendingWorkUri cdm:work_date_document ?documentDate .
                 OPTIONAL { ?amendingWorkUri cdm:resource_legal_date_entry-into-force ?entryForceDate }
-                
-                # Get English expression titles
+
+                # Get English expression titles by default
                 ?expression cdm:expression_belongs_to_work ?amendingWorkUri .
-                ?expression cmr:lang "eng"^^xsd:language .
+                ?expression cmr:lang "$language"^^xsd:language .
                 ?expression cdm:expression_title ?title .
-                
+
                 FILTER(?documentDate < "2022-01-01"^^xsd:date)
               }
               UNION
@@ -57,11 +57,11 @@ class SparqlApiClient(
                 ?amendingWorkUri cdm:resource_legal_id_celex ?amendmentCelex .
                 ?amendingWorkUri cdm:work_date_document ?documentDate .
                 OPTIONAL { ?amendingWorkUri cdm:resource_legal_date_entry-into-force ?entryForceDate }
-                
+
                 # Get work titles
                 ?amendingWorkUri cdm:work_title ?title .
                 FILTER(lang(?title) = "en" || lang(?title) = "")
-                
+
                 FILTER(?documentDate >= "2022-01-01"^^xsd:date)
               }
             }
@@ -76,7 +76,7 @@ class SparqlApiClient(
         val query = """
             PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-            
+
             SELECT DISTINCT 
               ?consolidation as ?uri
               ?consolidationId 
@@ -89,19 +89,19 @@ class SparqlApiClient(
             WHERE {
               # Get the original work by CELEX number
               ?basedOnWork cdm:resource_legal_id_celex "$celexNumber"^^xsd:string .
-              
+
               # Find all consolidations of this work
               ?consolidation cdm:act_consolidated_based_on_resource_legal ?basedOnWork ;
                              cdm:work_id_document ?consolidationId ;
                              cdm:resource_legal_date_entry-into-force ?consolidationDate .
-              
+
               # Optional CELEX (only parent consolidations have this)
               OPTIONAL { ?consolidation cdm:resource_legal_id_celex ?celex }
-              
+
               # Optional layer and version
               OPTIONAL { ?consolidation cdm:act_consolidated_layer ?layer }
               OPTIONAL { ?consolidation cdm:act_consolidated_version ?version }
-              
+
               # Find all amendments incorporated into this consolidation
               # This is done by finding amendments that:
               # 1. Amend the base work
@@ -117,6 +117,38 @@ class SparqlApiClient(
         """.trimIndent()
 
         return httpClient.sparql(url, query, ConsolidationConverter)
+    }
+
+    suspend fun fetchContentItems(celexNumber: String, language: String = "eng"): List<ContentItem> {
+        val query = """
+        PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+        PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        
+        SELECT DISTINCT ?item AS ?itemUri ?identifier ?url ?language ?manifestationType
+        WHERE {
+          # Find the work by CELEX number
+          ?work cdm:resource_legal_id_celex "$celexNumber"^^xsd:string .
+        
+          # Filter for specific language using 3-letter code
+          ?expressionUri cmr:lang "$language"^^xsd:language .
+        
+          # Traverse hierarchy
+          ?expressionUri cdm:expression_belongs_to_work ?work .
+          ?manifestationUri cdm:manifestation_manifests_expression ?expressionUri .
+          ?item cdm:item_belongs_to_manifestation ?manifestationUri .
+        
+          OPTIONAL { ?item cdm:item_identifier ?identifier }
+          OPTIONAL { ?item cdm:item_url ?url }
+          OPTIONAL { ?manifestationUri cdm:manifestation_type ?manifestationType }
+          
+          # Return the known language code
+          BIND("$language" AS ?language)
+        }
+        ORDER BY ?manifestationType ?identifier
+        """.trimIndent()
+
+        return httpClient.sparql(url, query, ContentItemConverter)
     }
 }
 

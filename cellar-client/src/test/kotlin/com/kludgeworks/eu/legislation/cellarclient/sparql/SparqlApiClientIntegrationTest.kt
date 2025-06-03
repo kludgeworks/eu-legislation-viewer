@@ -129,4 +129,54 @@ class SparqlApiClientIntegrationTest {
         assertNotNull(consolidations, "Should return an empty list for a CELEX number with no consolidations")
         assertTrue(consolidations.isEmpty(), "Should return an empty list for CELEX number $testCelexNumber")
     }
+
+    /**
+     * Test that we can fetch content items for a known CELEX number.
+     * This test makes an actual call to the SPARQL endpoint.
+     */
+    @Test
+    fun `should fetch content items for a known CELEX number`() = runTest {
+        // Use a known CELEX number that has content items
+        val testCelexNumber = "32015R1998"
+        val language = "eng"
+
+        // Call fetchContentItems with the test CELEX number
+        val contentItems = sparqlApiClient.fetchContentItems(testCelexNumber, language)
+
+        // Verify that the method returned content items
+        assertNotNull(contentItems, "Should return content items for a valid CELEX number")
+        assertTrue(contentItems.isNotEmpty(), "Should return at least one content item for CELEX number $testCelexNumber")
+
+        // Verify that each content item has the expected properties
+        contentItems.forEach { contentItem ->
+            assertNotNull(contentItem.itemUri, "Content item URI should not be null")
+            assertNotNull(contentItem.identifier, "Content item identifier should not be null")
+            assertEquals(language, contentItem.language, "Content item language should not be null")
+            assertNotNull(contentItem.manifestationType, "Content item manifestation type should not be null")
+        }
+
+        // Print some information about the content items for debugging
+        println("Found ${contentItems.size} content items for CELEX number $testCelexNumber")
+        contentItems.forEach { contentItem ->
+            println(contentItem)
+        }
+    }
+
+    /**
+     * Test that we can handle a CELEX number with no content items.
+     * This test makes an actual call to the SPARQL endpoint.
+     */
+    @Test
+    fun `should handle CELEX number with no content items`() = runTest {
+        // Use a CELEX number that likely has no content items
+        val testCelexNumber = "32099R9999" // Non-existent CELEX number
+        val language = "eng"
+
+        // Call fetchContentItems with the test CELEX number
+        val contentItems = sparqlApiClient.fetchContentItems(testCelexNumber, language)
+
+        // Verify that the method returned an empty list
+        assertNotNull(contentItems, "Should return an empty list for a CELEX number with no content items")
+        assertTrue(contentItems.isEmpty(), "Should return an empty list for CELEX number $testCelexNumber")
+    }
 }

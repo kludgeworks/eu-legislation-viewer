@@ -51,6 +51,10 @@ class WorkCommand(
                 val identifier = identifierGroup.resourceId ?: identifierGroup.celexNumber!!
                 val byResourceId = identifierGroup.resourceId != null
 
+                println()
+                println()
+
+                println("=" * 60)
                 println("Fetching work information for ${if (byResourceId) "resource ID" else "CELEX number"}: $identifier")
                 println("=" * 60)
 
@@ -65,13 +69,12 @@ class WorkCommand(
                     return@runBlocking 1
                 }
 
-                // Call the suspend function from within the runBlocking context
                 displayWorkInformation(notice)
-                0
+                return@runBlocking 0
             } catch (e: Exception) {
                 System.err.println("Error fetching work information: ${e.message}")
                 e.printStackTrace()
-                1
+                return@runBlocking 1
             }
         }
     }
@@ -97,12 +100,14 @@ class WorkCommand(
             return
         }
 
+        displayContentItems(celexNumber, languageCode)
+
         val consolidations = sparqlApiClient.fetchConsolidations(celexNumber)
         // Display amendments
-        displayAmendments(celexNumber, consolidations)
+        displayAmendments(celexNumber, consolidations, languageCode)
 
         // Display consolidations
-        displayConsolidations(consolidations)
+        displayConsolidations(consolidations, languageCode)
     }
 
     private fun findTitle(notice: Notice, languageCode: String): String? {
@@ -118,7 +123,11 @@ class WorkCommand(
             ?: notice.expression.firstOrNull()?.titleAlt?.value
     }
 
-    private suspend fun displayAmendments(celexNumber: String, consolidations: List<ConsolidationInfo>) {
+    private suspend fun displayAmendments(
+        celexNumber: String,
+        consolidations: List<ConsolidationInfo>,
+        lang: String
+    ) {
         println("Amendments:")
 
         try {
@@ -148,7 +157,7 @@ class WorkCommand(
                     } else {
                         println("    Associated Consolidations: None")
                     }
-
+                    displayContentItems(amendment.celex, languageCode)
                     println()
                 }
             }
@@ -160,7 +169,7 @@ class WorkCommand(
         println()
     }
 
-    private suspend fun displayConsolidations(consolidations: List<ConsolidationInfo>) {
+    private suspend fun displayConsolidations(consolidations: List<ConsolidationInfo>, lang: String) {
         println("Consolidations:")
 
         if (consolidations.isEmpty()) {
@@ -171,6 +180,7 @@ class WorkCommand(
                 println("    Date: ${formatDate(consolidation.consolidationDate.toString())}")
                 if (consolidation.celex != null) {
                     println("    CELEX: ${consolidation.celex}")
+                    displayContentItems(consolidation.celex!!, lang)
                 }
                 if (consolidation.hasVersioning) {
                     println("    Layer: ${consolidation.layer ?: "N/A"}")
@@ -203,6 +213,27 @@ class WorkCommand(
         } catch (e: Exception) {
             dateString
         }
+    }
+
+    private suspend fun displayContentItems(celexNumber: String, languageCode: String) {
+        println("Content Items:")
+
+        try {
+            val contentItems = sparqlApiClient.fetchContentItems(celexNumber, languageCode)
+
+            if (contentItems.isEmpty()) {
+                println("  - None")
+            } else {
+                contentItems.forEach { item ->
+                    println("  - ${item.identifier}.${item.manifestationType}")
+                }
+            }
+        } catch (e: Exception) {
+            println("  - Error fetching content items: ${e.message}")
+            e.printStackTrace()
+        }
+
+        println()
     }
 }
 
