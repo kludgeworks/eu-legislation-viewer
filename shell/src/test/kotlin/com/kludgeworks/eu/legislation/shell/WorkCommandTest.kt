@@ -4,6 +4,8 @@ import com.kludgeworks.eu.legislation.cellarclient.CellarApiClient
 import com.kludgeworks.eu.legislation.cellarclient.models.*
 import com.kludgeworks.eu.legislation.cellarclient.sparql.SparqlApiClient
 import com.kludgeworks.eu.legislation.cellarclient.sparql.AmendmentInfo
+import com.kludgeworks.eu.legislation.cellarclient.sparql.ConsolidationInfo
+import kotlinx.datetime.LocalDate
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
@@ -36,6 +38,7 @@ class WorkCommandTest {
 
         coEvery { cellarApiClient.fetchNotice(resourceId) } returns mockNotice
         coEvery { sparqlApiClient.fetchAmendments("32015R1998") } returns emptyList()
+        coEvery { sparqlApiClient.fetchConsolidations("32015R1998") } returns emptyList()
 
         // When
         val exitCode = commandLine.execute("-r", resourceId)
@@ -52,6 +55,7 @@ class WorkCommandTest {
 
         coEvery { cellarApiClient.fetchNoticeByCelex(celexNumber) } returns mockNotice
         coEvery { sparqlApiClient.fetchAmendments("32015R1998") } returns emptyList()
+        coEvery { sparqlApiClient.fetchConsolidations("32015R1998") } returns emptyList()
 
         // When
         val exitCode = commandLine.execute("-c", celexNumber)
@@ -96,6 +100,7 @@ class WorkCommandTest {
 
         coEvery { cellarApiClient.fetchNotice(resourceId) } returns mockNotice
         coEvery { sparqlApiClient.fetchAmendments("32015R1998") } returns emptyList()
+        coEvery { sparqlApiClient.fetchConsolidations("32015R1998") } returns emptyList()
 
         // When
         val exitCode = commandLine.execute("-r", resourceId, "-l", "fra")
@@ -112,6 +117,7 @@ class WorkCommandTest {
 
         coEvery { cellarApiClient.fetchNoticeByCelex(celexNumber) } returns mockNotice
         coEvery { sparqlApiClient.fetchAmendments("32015R1998") } returns emptyList()
+        coEvery { sparqlApiClient.fetchConsolidations("32015R1998") } returns emptyList()
 
         // When
         val exitCode = commandLine.execute("-c", celexNumber, "-l", "fra")
@@ -136,6 +142,35 @@ class WorkCommandTest {
 
         // Then
         assertEquals(2, exitCode) // Picocli returns 2 for validation errors
+    }
+
+    @Test
+    fun `should display consolidations when they exist`() {
+        // Given
+        val celexNumber = "32015R1998"
+        val mockNotice = createMockNotice()
+        val mockConsolidations = listOf(
+            ConsolidationInfo(
+                uri = "http://publications.europa.eu/resource/celex/02015R1998-20160201",
+                consolidationId = "02015R1998-20160201",
+                celex = "02015R1998-20160201",
+                consolidationDate = LocalDate.parse("2016-02-01"),
+                basedOnWork = "http://publications.europa.eu/resource/celex/32015R1998",
+                amendments = emptyList(),
+                layer = null,
+                version = null
+            )
+        )
+
+        coEvery { cellarApiClient.fetchNoticeByCelex(celexNumber) } returns mockNotice
+        coEvery { sparqlApiClient.fetchAmendments("32015R1998") } returns emptyList()
+        coEvery { sparqlApiClient.fetchConsolidations("32015R1998") } returns mockConsolidations
+
+        // When
+        val exitCode = commandLine.execute("-c", celexNumber)
+
+        // Then
+        assertEquals(0, exitCode)
     }
 
     private fun createMockNotice(): Notice {

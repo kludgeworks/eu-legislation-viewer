@@ -2,6 +2,7 @@ package com.kludgeworks.eu.legislation.cellarclient.sparql
 
 import com.kludgeworks.eu.legislation.cellarclient.KtorConfiguration
 import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.LocalDate
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -44,7 +45,7 @@ class SparqlApiClientIntegrationTest {
             assertNotNull(amendment.celex, "Amendment CELEX should not be null")
             assertNotNull(amendment.adoptionDate, "Amendment adoption date should not be null")
             assertNotNull(amendment.title, "Amendment title should not be null")
-            
+
             // The CELEX number should follow the expected format (e.g., 32020R0910)
             assertTrue(amendment.celex.matches(Regex("^3\\d{4}[A-Z]\\d{4}$")), 
                 "Amendment CELEX number should match the expected format: ${amendment.celex}")
@@ -72,5 +73,60 @@ class SparqlApiClientIntegrationTest {
         // Verify that the method returned an empty list
         assertNotNull(amendments, "Should return an empty list for a CELEX number with no amendments")
         assertTrue(amendments.isEmpty(), "Should return an empty list for CELEX number $testCelexNumber")
+    }
+
+    /**
+     * Test that we can fetch consolidations for a known CELEX number.
+     * This test makes an actual call to the SPARQL endpoint.
+     */
+    @Test
+    fun `should fetch consolidations for a known CELEX number`() = runTest {
+        // Use a known CELEX number that has consolidations
+        val testCelexNumber = "32015R1998"
+
+        // Call fetchConsolidations with the test CELEX number
+        val consolidations = sparqlApiClient.fetchConsolidations(testCelexNumber)
+
+        // Verify that the method returned consolidations
+        assertNotNull(consolidations, "Should return consolidations for a valid CELEX number")
+        assertTrue(consolidations.isNotEmpty(), "Should return at least one consolidation for CELEX number $testCelexNumber")
+
+        // Verify that each consolidation has the expected properties
+        consolidations.forEach { consolidation ->
+            assertNotNull(consolidation.uri, "Consolidation URI should not be null")
+            assertNotNull(consolidation.consolidationId, "Consolidation ID should not be null")
+            assertNotNull(consolidation.consolidationDate, "Consolidation date should not be null")
+            assertNotNull(consolidation.basedOnWork, "Based on work URI should not be null")
+
+            // Check that the consolidation date is valid
+            assertTrue(consolidation.consolidationDate >= LocalDate(2015, 1, 1), 
+                "Consolidation date should be after 2015-01-01: ${consolidation.consolidationDate}")
+
+            // Check that the consolidation ID is not empty and contains some expected patterns
+            assertFalse(consolidation.consolidationId.isBlank(), "Consolidation ID should not be blank")
+
+            // The consolidation ID should contain either a recognizable prefix or the CELEX number
+            val containsExpectedPattern = consolidation.consolidationId.contains("2015") && 
+                                         consolidation.consolidationId.contains("1998")
+            assertTrue(containsExpectedPattern, 
+                "Consolidation ID should contain the CELEX number components: ${consolidation.consolidationId}")
+        }
+    }
+
+    /**
+     * Test that we can handle a CELEX number with no consolidations.
+     * This test makes an actual call to the SPARQL endpoint.
+     */
+    @Test
+    fun `should handle CELEX number with no consolidations`() = runTest {
+        // Use a CELEX number that likely has no consolidations
+        val testCelexNumber = "32099R9999" // Non-existent CELEX number
+
+        // Call fetchConsolidations with the test CELEX number
+        val consolidations = sparqlApiClient.fetchConsolidations(testCelexNumber)
+
+        // Verify that the method returned an empty list
+        assertNotNull(consolidations, "Should return an empty list for a CELEX number with no consolidations")
+        assertTrue(consolidations.isEmpty(), "Should return an empty list for CELEX number $testCelexNumber")
     }
 }

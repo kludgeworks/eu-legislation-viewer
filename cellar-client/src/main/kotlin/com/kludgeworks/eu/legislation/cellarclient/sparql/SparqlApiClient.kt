@@ -71,6 +71,53 @@ class SparqlApiClient(
 
         return httpClient.sparql(url, query, AmendmentConverter)
     }
+
+    suspend fun fetchConsolidations(celexNumber: String): List<ConsolidationInfo> {
+        val query = """
+            PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            
+            SELECT DISTINCT 
+              ?consolidation as ?uri
+              ?consolidationId 
+              ?celex 
+              ?consolidationDate 
+              ?basedOnWork 
+              (GROUP_CONCAT(DISTINCT ?amendment; separator=",") as ?amendments)
+              ?layer 
+              ?version
+            WHERE {
+              # Get the original work by CELEX number
+              ?basedOnWork cdm:resource_legal_id_celex "$celexNumber"^^xsd:string .
+              
+              # Find all consolidations of this work
+              ?consolidation cdm:act_consolidated_based_on_resource_legal ?basedOnWork ;
+                             cdm:work_id_document ?consolidationId ;
+                             cdm:resource_legal_date_entry-into-force ?consolidationDate .
+              
+              # Optional CELEX (only parent consolidations have this)
+              OPTIONAL { ?consolidation cdm:resource_legal_id_celex ?celex }
+              
+              # Optional layer and version
+              OPTIONAL { ?consolidation cdm:act_consolidated_layer ?layer }
+              OPTIONAL { ?consolidation cdm:act_consolidated_version ?version }
+              
+              # Find all amendments incorporated into this consolidation
+              # This is done by finding amendments that:
+              # 1. Amend the base work
+              # 2. Have entry into force date <= consolidation date
+              OPTIONAL {
+                ?amendment cdm:resource_legal_amends_resource_legal ?basedOnWork ;
+                           cdm:resource_legal_date_entry-into-force ?amendmentDate .
+                FILTER(?amendmentDate <= ?consolidationDate)
+              }
+            }
+            GROUP BY ?consolidation ?consolidationId ?celex ?consolidationDate ?basedOnWork ?layer ?version
+            ORDER BY DESC(?consolidationDate) ?layer ?version
+        """.trimIndent()
+
+        return httpClient.sparql(url, query, ConsolidationConverter)
+    }
 }
 
 suspend inline fun <reified T> HttpClient.sparql(

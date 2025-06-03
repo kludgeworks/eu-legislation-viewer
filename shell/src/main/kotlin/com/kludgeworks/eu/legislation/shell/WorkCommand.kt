@@ -2,9 +2,7 @@ package com.kludgeworks.eu.legislation.shell
 
 import com.kludgeworks.eu.legislation.cellarclient.CellarApiClient
 import com.kludgeworks.eu.legislation.cellarclient.models.Notice
-import com.kludgeworks.eu.legislation.cellarclient.models.Work
-import com.kludgeworks.eu.legislation.cellarclient.models.ResourceReference
-import com.kludgeworks.eu.legislation.cellarclient.models.EmbeddedNotice
+import com.kludgeworks.eu.legislation.cellarclient.sparql.ConsolidationInfo
 import com.kludgeworks.eu.legislation.cellarclient.sparql.SparqlApiClient
 import kotlinx.coroutines.runBlocking
 import org.springframework.stereotype.Component
@@ -91,11 +89,22 @@ class WorkCommand(
         println("Date came into force: ${formatDate(entryIntoForceDate) ?: "N/A"}")
         println()
 
-        // Display amendments
-        displayAmendments(work)
+        val celexNumber = work.idCelex?.value ?: work.resourceLegalIdCelex?.value
 
+        if (celexNumber == null) {
+            println("  - Cannot fetch amendments: No CELEX number available")
+            println()
+            return
+        }
+
+
+        val consolidations = sparqlApiClient.fetchConsolidations(celexNumber)
         // Display consolidations
-        displayConsolidations(work)
+        displayConsolidations(consolidations)
+
+        // Display amendments
+        displayAmendments(celexNumber)
+
     }
 
     private fun findTitle(notice: Notice, languageCode: String): String? {
@@ -111,17 +120,8 @@ class WorkCommand(
             ?: notice.expression.firstOrNull()?.titleAlt?.value
     }
 
-    private suspend fun displayAmendments(work: Work) {
+    private suspend fun displayAmendments(celexNumber: String) {
         println("Amendments:")
-
-        // Extract CELEX number from the work
-        val celexNumber = work.idCelex?.value ?: work.resourceLegalIdCelex?.value
-
-        if (celexNumber == null) {
-            println("  - Cannot fetch amendments: No CELEX number available")
-            println()
-            return
-        }
 
         try {
             val amendments = sparqlApiClient.fetchAmendments(celexNumber)
@@ -149,38 +149,34 @@ class WorkCommand(
         println()
     }
 
-    private fun displayConsolidations(work: Work) {
+    private suspend fun displayConsolidations(consolidations: List<ConsolidationInfo>) {
         println("Consolidations:")
-        if (work.basisForActConsolidated.isEmpty()) {
+
+        if (consolidations.isEmpty()) {
             println("  - None")
         } else {
-            work.basisForActConsolidated.forEach { consolidation ->
-                val celex = extractIdentifier(consolidation)
-                println("  - ${formatAmendmentConsolidation(celex, null)}")
+            consolidations.forEach { consolidation ->
+                println("  - ID: ${consolidation.consolidationId}")
+                println("    Date: ${formatDate(consolidation.consolidationDate.toString())}")
+                if (consolidation.celex != null) {
+                    println("    CELEX: ${consolidation.celex}")
+                }
+                if (consolidation.hasVersioning) {
+                    println("    Layer: ${consolidation.layer ?: "N/A"}")
+                    println("    Version: ${consolidation.version ?: "N/A"}")
+                }
+                println("    Amendments: ${consolidation.amendments
+                    .joinToString(", ")
+                    .ifBlank { "N/A" }
+                }"
+                )
+                println()
             }
         }
+
+        println()
     }
 
-    private fun extractCelex(ref: ResourceReference): String? {
-        return ref.sameAs.find { it.uri.type == "celex" }?.uri?.identifier
-    }
-
-    private fun extractIdentifier(notice: EmbeddedNotice): String? {
-        return notice.sameAs.find { it.uri.type == "consolidation" }?.uri?.identifier
-    }
-
-    private fun extractDate(ref: ResourceReference): String? {
-        return ref.annotation?.startOfValidity
-    }
-
-
-    private fun formatAmendmentConsolidation(id: String?, date: String?): String {
-        return when {
-            id != null && date != null -> "$id - ${formatDate(date)}"
-            id != null -> id
-            else -> "Unknown"
-        }
-    }
 
     private fun formatDate(dateString: String?): String? {
         if (dateString == null) return null
