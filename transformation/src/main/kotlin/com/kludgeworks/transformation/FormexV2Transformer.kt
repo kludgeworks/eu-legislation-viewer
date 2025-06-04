@@ -1,8 +1,17 @@
 package com.kludgeworks.transformation
 
-import com.kludgeworks.transformation.model.SimplifiedLegislationDoc
+import com.kludgeworks.transformation.model.*
+import kotlinx.serialization.decodeFromString
+import nl.adaptivity.xmlutil.serialization.XML
+import net.sf.saxon.s9api.Processor
+import net.sf.saxon.s9api.SaxonApiException
+import net.sf.saxon.s9api.Serializer
+import net.sf.saxon.s9api.XdmDestination
+import net.sf.saxon.s9api.XdmNode
+import org.slf4j.LoggerFactory
 import java.io.File
-import net.sf.saxon.s9api.*
+import java.io.StringWriter
+import javax.xml.transform.stream.StreamSource
 
 /**
  * FormexV2Transformer - Next generation Formex transformer that processes multiple DOC files
@@ -14,75 +23,131 @@ import net.sf.saxon.s9api.*
  * - DOC_3.xml to DOC_6.xml: ANNEX documents
  */
 class FormexV2Transformer {
+
+    private val processor: Processor = Processor(false)
+    private val logger = LoggerFactory.getLogger(FormexV2Transformer::class.java)
     
-    private val processor: Processor
-    private val xsltExecutable: XsltExecutable
-    
-    init {
-        processor = Processor(false)
-        val compiler = processor.newXsltCompiler()
-        
-        compiler.uriResolver = javax.xml.transform.URIResolver { href, base ->
-            val resourcePath = if (href.startsWith("./")) {
-                "xslt/${href.substring(2)}"
-            } else {
-                "xslt/$href"
-            }
-            val resourceStream = this@FormexV2Transformer::class.java.classLoader.getResourceAsStream(resourcePath)
-            resourceStream?.let { javax.xml.transform.stream.StreamSource(it) }
+    private val xml = XML {
+        indentString = "  "
+        autoPolymorphic = true
+        defaultPolicy {
+            ignoreUnknownChildren()
         }
-        
-        // Load the XSLT from classpath
-        val xsltResource = this::class.java.classLoader.getResourceAsStream("xslt/formex-transformer.xslt")
-            ?: throw IllegalStateException("XSLT file not found: xslt/formex-transformer.xslt")
-        
-        xsltExecutable = xsltResource.use { inputStream ->
-            compiler.compile(javax.xml.transform.stream.StreamSource(inputStream))
-        }
-    }
-    
-    /**
-     * Transform multiple DOC XML files into a unified SimplifiedLegislationDoc
-     * 
-     * @param docFiles Map of filename to XML content for all DOC files
-     * @return SimplifiedLegislationDoc containing combined data from all input files
-     */
-    fun transform(input: List<File>): SimplifiedLegislationDoc {
-        // TODO: Implement transformation logic
-        // This should:
-        // 1. Parse DOC_1.xml for document metadata and structure overview
-        // 2. Parse DOC_2.xml for main legislative content (articles, preamble, etc.)
-        // 3. Parse DOC_3.xml to DOC_6.xml for annex content
-        // 4. Combine all data into a single SimplifiedLegislationDoc
-        
-        throw NotImplementedError("FormexV2Transformer.transform not yet implemented")
     }
 
-    fun transformToXml(inputs: List<File>): String {
-        // Pass file paths as a semicolon-separated parameter
-        val filePaths = inputs.joinToString(";") { it.absolutePath }
+    fun transform(input: XdmNode): SimplifiedLegislationDoc {
+        logger.info("Starting XSLT import-based transformation of combined document to SimplifiedLegislationDoc")
+        logger.debug("Input document root element: {}", input.nodeKind)
         
-        val transformer = xsltExecutable.load()
-        
-        // Pass file paths parameter to XSLT
-        transformer.setParameter(
-            QName("filePaths"), 
-            XdmValue.makeValue(filePaths)
-        )
-        
-        // Use the first file as the main source document
-        val mainFile = inputs.firstOrNull() 
-            ?: throw IllegalArgumentException("At least one input file is required")
-        
-        transformer.setSource(javax.xml.transform.stream.StreamSource(mainFile))
-        
-        val writer = java.io.StringWriter()
-        val serializer = processor.newSerializer(writer).apply {
-            setOutputProperty(Serializer.Property.INDENT, "yes")
+        try {
+            // Load and compile the main XSLT stylesheet with imports
+            val xsltResource = this::class.java.getResource("/xslt/formex-v2-transformer.xslt")
+                ?: throw IllegalStateException("Could not find formex-v2-transformer.xslt stylesheet")
+            
+            logger.debug("Compiling main XSLT stylesheet with imports from: {}", xsltResource)
+            val compiler = processor.newXsltCompiler()
+            val xsltExecutable = compiler.compile(StreamSource(xsltResource.openStream(), xsltResource.toString()))
+            
+            // Transform using the main XSLT with imports
+            logger.info("Executing single XSLT transformation with imports")
+            val transformer = xsltExecutable.load()
+            transformer.initialContextNode = input
+            
+            val writer = StringWriter()
+            val serializer = processor.newSerializer(writer).apply {
+                setOutputProperty(Serializer.Property.INDENT, "yes")
+                setOutputProperty(Serializer.Property.ENCODING, "UTF-8")
+                setOutputProperty(Serializer.Property.OMIT_XML_DECLARATION, "no")
+            }
+            transformer.destination = serializer
+            
+            transformer.transform()
+            val xmlResult = writer.toString()
+            logger.info("Generated SimplifiedLegislationDoc XML (first 500 chars): {}", xmlResult.take(500))
+            logger.debug("Full generated XML: {}", xmlResult)
+            
+            // Write XML to temporary file for debugging
+            File("/tmp/generated-xml.xml").writeText(xmlResult)
+            logger.info("Full generated XML written to /tmp/generated-xml.xml")
+            
+            // Deserialize the complete result
+            logger.info("About to deserialize XML (length: ${xmlResult.length})")
+            logger.info("XML starts with: ${xmlResult.take(200)}")
+            logger.info("XML ends with: ${xmlResult.takeLast(200)}")
+            
+            val result = xml.decodeFromString<SimplifiedLegislationDoc>(xmlResult)
+            
+            logger.info("XSLT import-based transformation completed successfully")
+            return result
+            
+        } catch (e: Exception) {
+            logger.error("XSLT import-based transformation failed: {}", e.message, e)
+            throw RuntimeException("Failed to transform: ${e.message}", e)
         }
-        transformer.destination = serializer
-        transformer.transform()
-        
-        return writer.toString()
     }
+
+
+    fun combineDocuments(files: List<File>): XdmNode {
+        logger.info("Starting document combination process with {} files", files.size)
+        logger.debug("Input files: {}", files.map { it.name })
+        
+        val documentBuilder = processor.newDocumentBuilder()
+        
+        // Validate file existence
+        files.forEach { file ->
+            if (!file.exists()) {
+                logger.error("File does not exist: {}", file.absolutePath)
+                throw IllegalArgumentException("File does not exist: ${file.absolutePath}")
+            }
+            logger.debug("Validated file exists: {}", file.name)
+        }
+        
+        // Create XML structure with file paths for XSLT input
+        logger.debug("Creating file list XML structure for XSLT processing")
+        val fileListXml = buildString {
+            appendLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
+            appendLine("<file-list>")
+            append(files.joinToString("\n") { file ->
+                "  <file path=\"${file.absolutePath}\"/>"
+            })
+            if (files.isNotEmpty()) appendLine()
+            append("</file-list>")
+        }
+        logger.debug("Generated file list XML: {}", fileListXml)
+        
+        // Parse the file list as XdmNode
+        logger.debug("Parsing file list XML into XdmNode")
+        val fileListDoc = documentBuilder.build(StreamSource(fileListXml.reader()))
+        
+        // Load and compile the XSLT stylesheet
+        logger.debug("Loading XSLT stylesheet: /xslt/combine-documents.xslt")
+        val xsltResource = this::class.java.getResourceAsStream("/xslt/combine-documents.xslt")
+            ?: throw IllegalStateException("Could not find combine-documents.xslt stylesheet")
+        
+        logger.debug("Compiling XSLT stylesheet")
+        val compiler = processor.newXsltCompiler()
+        val xsltExecutable = xsltResource.use { inputStream ->
+            compiler.compile(StreamSource(inputStream))
+        }
+        
+        // Transform the file list using XSLT
+        logger.info("Executing XSLT transformation to combine documents")
+        val transformer = xsltExecutable.load()
+        transformer.initialContextNode = fileListDoc
+        
+        val destination = XdmDestination()
+        transformer.destination = destination
+        
+        try {
+            transformer.transform()
+            logger.info("Document combination completed successfully")
+            logger.debug("Combined document root element: {}", destination.xdmNode.nodeKind)
+            return destination.xdmNode
+        } catch (e: SaxonApiException) {
+            logger.error("XSLT transformation failed: {}", e.message, e)
+            throw RuntimeException("Failed to combine documents using XSLT transformation: ${e.message}", e)
+        }
+    }
+
+
 }

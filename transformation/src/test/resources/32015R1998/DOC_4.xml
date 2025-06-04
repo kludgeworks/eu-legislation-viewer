@@ -1,0 +1,2345 @@
+<?xml version="1.0" encoding="UTF-8"?><ANNEX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fmx="http://opoce" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.55-20141201.xd">
+    <BIB.INSTANCE>
+        <DOCUMENT.REF FILE="L_2015299EN.01000101.doc.xml">
+            <COLL>L</COLL>
+            <NO.OJ>299</NO.OJ>
+            <YEAR>2015</YEAR>
+            <LG.OJ>EN</LG.OJ>
+            <PAGE.FIRST>1</PAGE.FIRST>
+            <PAGE.SEQ>1</PAGE.SEQ>
+            <VOLUME.REF>01</VOLUME.REF>
+        </DOCUMENT.REF>
+        <DATE ISO="20151105">20151105</DATE>
+        <LG.DOC>EN</LG.DOC>
+        <NO.SEQ>0001.0002</NO.SEQ>
+        <PAGE.FIRST>68</PAGE.FIRST>
+        <PAGE.SEQ>1</PAGE.SEQ>
+        <PAGE.LAST>84</PAGE.LAST>
+        <PAGE.TOTAL>17</PAGE.TOTAL>
+    </BIB.INSTANCE>
+    <TITLE>
+        <TI>
+            <P>ANNEX</P>
+        </TI>
+    </TITLE>
+    <CONTENTS>
+        <GR.SEQ LEVEL="1">
+            <TITLE>
+                <TI>
+                    <P>
+                        <HT TYPE="BOLD">List of persons and entities visited and interviewed</HT>
+                    </P>
+                </TI>
+            </TITLE>
+            <P>Providing the name of the entity, the name of the contact person and the date of the visit or interview.</P>
+            <TBL COLS="3" NO.SEQ="0001">
+                <CORPUS>
+                    <ROW TYPE="HEADER">
+                        <CELL COL="1" TYPE="HEADER">Name of entity</CELL>
+                        <CELL COL="2" TYPE="HEADER">Name of contact person</CELL>
+                        <CELL COL="3" TYPE="HEADER">Date of visit/interview</CELL>
+                    </ROW>
+                    <ROW>
+                        <CELL COL="1">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="2">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="3">
+                            <IE/>
+                        </CELL>
+                    </ROW>
+                    <ROW>
+                        <CELL COL="1">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="2">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="3">
+                            <IE/>
+                        </CELL>
+                    </ROW>
+                    <ROW>
+                        <CELL COL="1">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="2">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="3">
+                            <IE/>
+                        </CELL>
+                    </ROW>
+                    <ROW>
+                        <CELL COL="1">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="2">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="3">
+                            <IE/>
+                        </CELL>
+                    </ROW>
+                    <ROW>
+                        <CELL COL="1">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="2">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="3">
+                            <IE/>
+                        </CELL>
+                    </ROW>
+                    <ROW>
+                        <CELL COL="1">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="2">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="3">
+                            <IE/>
+                        </CELL>
+                    </ROW>
+                    <ROW>
+                        <CELL COL="1">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="2">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="3">
+                            <IE/>
+                        </CELL>
+                    </ROW>
+                    <ROW>
+                        <CELL COL="1">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="2">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="3">
+                            <IE/>
+                        </CELL>
+                    </ROW>
+                    <ROW>
+                        <CELL COL="1">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="2">
+                            <IE/>
+                        </CELL>
+                        <CELL COL="3">
+                            <IE/>
+                        </CELL>
+                    </ROW>
+                </CORPUS>
+            </TBL>
+            <GR.SEQ LEVEL="2">
+                <TITLE>
+                    <TI>
+                        <P>
+                            <HT TYPE="BOLD">ATTACHMENT 6-C3</HT>
+                        </P>
+                    </TI>
+                </TITLE>
+                <GR.SEQ LEVEL="3">
+                    <TITLE>
+                        <TI>
+                            <P>VALIDATION CHECKLIST FOR ACC3</P>
+                        </TI>
+                    </TITLE>
+                    <P>
+                        ACC3 (
+                        <HT TYPE="ITALIC">Air cargo or mail carrier operating into the Union from a third country airport</HT>
+                        ) designation is the prerequisite for carrying air cargo or air mail into the European Union
+                        <NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                            <P>European Union Member States: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden and the United Kingdom.</P>
+                        </NOTE>
+                         (EU) or Iceland, Norway and Switzerland and is required by Implementing Regulation (EU) 2015/1998.
+                    </P>
+                    <P>
+                        ACC3 designation is in principle required for all flights carrying cargo or mail for transfer, transit or unloading at EU/EEA airports
+                        <NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                            <P>EU/EEA bound air cargo/air mail/aircraft in this validation checklist is equivalent to EU and Iceland, Norway and Switzerland bound air cargo/air mail/aircraft.</P>
+                        </NOTE>
+                        . The appropriate authorities of the Member States of the European Union, Iceland, Norway and Switzerland are each responsible for the designation of specific air carriers as ACC3. The designation is based on the security programme of an air carrier and on an on-site verification of the implementation in compliance with the objectives referred to in this validation checklist.
+                    </P>
+                    <P>The checklist is the instrument to be used by the EU aviation security validator for assessing the level of security applied to EU/EEA bound air cargo or air mail by or under the responsibility of the ACC3 or an air carrier applying for ACC3 designation.</P>
+                    <P>A validation report shall be delivered to the designating appropriate authority and to the validated entity within a maximum of one month after the on-site verification. Integral parts of the validation report shall be at least:</P>
+                    <LIST TYPE="DASH">
+                        <ITEM>
+                            <P>the completed checklist signed by the EU aviation security validator and where applicable commented by the validated entity,</P>
+                        </ITEM>
+                        <?PAGE NO="69"?>
+                        <ITEM>
+                            <P>the declaration of commitments (Attachment 6-H1 to Implementing Regulation (EU) 2015/1998) signed by the validated entity, and</P>
+                        </ITEM>
+                        <ITEM>
+                            <P>an independence declaration (Attachment 11-A to Implementing Regulation (EU) 2015/1998) in respect of the entity validated signed by the EU aviation security validator.</P>
+                        </ITEM>
+                    </LIST>
+                    <P>Page numbering, the date of the EU aviation security validation and initialling on each page by the validator and the validated entity shall be the proof of the validation report's integrity. By default the validation report shall be in English.</P>
+                    <P>Part 3 — Security programme of the air carrier, Part 6 — Database, Part 7 — Screening and Part 8 — High risk cargo or mail (HRCM) shall be assessed against the requirements of Chapters 6.7 and 6.8 of the Annex to Implementing Regulation (EU) 2015/1998. For the other parts, baseline standards are the Standards and Recommended Practices (SARPs) of Annex 17 to the Convention on International Civil Aviation and the guidance material contained in the ICAO Aviation Security Manual (Doc 8973-Restricted).</P>
+                    <ANNOTATION>
+                        <TITLE>
+                            <TI>
+                                <P>
+                                    <HT TYPE="BOLD">
+                                        <HT TYPE="ITALIC">Completion notes:</HT>
+                                    </HT>
+                                </P>
+                            </TI>
+                        </TITLE>
+                        <P>
+                            <LIST TYPE="DASH">
+                                <ITEM>
+                                    <P>All parts of the checklist must be completed. Where no information is available, this must be explained.</P>
+                                </ITEM>
+                                <ITEM>
+                                    <P>After each part, the EU aviation security validator shall conclude if and to what extent the objectives of this part are met.</P>
+                                </ITEM>
+                            </LIST>
+                        </P>
+                    </ANNOTATION>
+                    <GR.SEQ LEVEL="4">
+                        <TITLE>
+                            <TI>
+                                <P>PART 1</P>
+                            </TI>
+                            <STI>
+                                <P>
+                                    <HT TYPE="BOLD">Identification of the entity validated and the validator</HT>
+                                </P>
+                            </STI>
+                        </TITLE>
+                        <TBL COLS="2" NO.SEQ="0002">
+                            <CORPUS>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>1.1.</NO.P>
+                                            <TXT>Date(s) of validation</TXT>
+                                        </NP>
+                                        <P>
+                                            <HT TYPE="BOLD">
+                                                Use exact date format, such as 
+                                                <DATE ISO="20121001">01.10.2012</DATE>
+                                                 to 
+                                                <DATE ISO="20121002">02.10.2012</DATE>
+                                            </HT>
+                                        </P>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">dd/mm/yyyy</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>1.2.</NO.P>
+                                            <TXT>Date of previous validation and Unique Alphanumeric Identifier (UAI) of the ACC3 where available</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">dd/mm/yyyy</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">UAI</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>1.3.</NO.P>
+                                            <TXT>Aviation security validator information</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Name</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Company/Organisation/Authority</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">UAI</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Email address</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Telephone number — including international codes</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>1.4.</NO.P>
+                                            <TXT>Name of air carrier to be validated</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Name</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">AOC (Air Operators Certificate) issued in (name of State):</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <?PAGE NO="70"?>
+                                <ROW>
+                                    <CELL COL="1">IATA (International Air Transport Association) code or ICAO (International Civil Aviation Organisation) code if IATA code does not exist for the air carrier. Specify which code</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">State responsible for designating air carrier as ACC3</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>1.5.</NO.P>
+                                            <TXT>Details of third country airport location to be validated or cargo/mail facilities linked to it</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Name</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">IATA (or ICAO) code for the airport</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Country</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>1.6.</NO.P>
+                                            <TXT>Nature of air carrier's business — More than one business type may be applicable</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">
+                                        <LIST TYPE="alpha">
+                                            <ITEM>
+                                                <NP>
+                                                    <NO.P>(a)</NO.P>
+                                                    <TXT>Passenger and cargo/mail carrier</TXT>
+                                                </NP>
+                                            </ITEM>
+                                            <ITEM>
+                                                <NP>
+                                                    <NO.P>(b)</NO.P>
+                                                    <TXT>Cargo and mail only carrier</TXT>
+                                                </NP>
+                                            </ITEM>
+                                            <ITEM>
+                                                <NP>
+                                                    <NO.P>(c)</NO.P>
+                                                    <TXT>Cargo only carrier</TXT>
+                                                </NP>
+                                            </ITEM>
+                                            <ITEM>
+                                                <NP>
+                                                    <NO.P>(d)</NO.P>
+                                                    <TXT>Mail only carrier</TXT>
+                                                </NP>
+                                            </ITEM>
+                                            <ITEM>
+                                                <NP>
+                                                    <NO.P>(e)</NO.P>
+                                                    <TXT>Integrator</TXT>
+                                                </NP>
+                                            </ITEM>
+                                            <ITEM>
+                                                <NP>
+                                                    <NO.P>(f)</NO.P>
+                                                    <TXT>Charter</TXT>
+                                                </NP>
+                                            </ITEM>
+                                        </LIST>
+                                    </CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>1.7.</NO.P>
+                                            <TXT>Name and title of person responsible for third country air cargo/air mail security</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Name</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Job title</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Email address</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Telephone number — including international codes</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>1.8.</NO.P>
+                                            <TXT>Address of the air carrier's main office at the airport being visited</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Number/Unit/Building/Airport</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Street</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Town</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Postcode</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">State (where relevant)</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Country</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <?PAGE NO="71"?>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>1.9.</NO.P>
+                                            <TXT>Address of the air carrier's main office, e.g. the corporate headquarters</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Number/Unit/Building/Airport</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Street</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Town</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Postcode</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">State (where relevant)</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Country</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                            </CORPUS>
+                        </TBL>
+                    </GR.SEQ>
+                    <GR.SEQ LEVEL="4">
+                        <TITLE>
+                            <TI>
+                                <P>PART 2</P>
+                            </TI>
+                            <STI>
+                                <P>
+                                    <HT TYPE="BOLD">Organisation and responsibilities of the ACC3 at the airport</HT>
+                                </P>
+                            </STI>
+                        </TITLE>
+                        <P>Objective: No air cargo or mail shall be carried to the EU/EEA without being subject to security controls. Details of such controls are provided by the following Parts of this checklist. The ACC3 shall not accept cargo or mail for carriage on an EU-bound aircraft unless the application of screening or other security controls is confirmed and accounted for by an EU aviation security validated regulated agent, an EU aviation security validated known consignor or an account consignor of a EU aviation security validated regulated agent, or such consignments are subject to screening in accordance with Union legislation.</P>
+                        <P>The ACC3 shall have a process to ensure that appropriate security controls are applied to all EU/EEA bound air cargo and air mail unless it is exempted from screening in accordance with Union legislation and that cargo or mail is protected thereafter until loading onto aircraft. Security controls shall consist of:</P>
+                        <LIST TYPE="DASH">
+                            <ITEM>
+                                <P>physical screening which shall be of a standard sufficient to reasonably ensure that no prohibited articles are concealed in the consignment, or</P>
+                            </ITEM>
+                            <ITEM>
+                                <P>other security controls which are part of a Supply Chain Security process that reasonably ensure that no prohibited articles are concealed in the consignment applied by EU aviation security validated regulated agents or known consignors or by an account consignor of a EU aviation security validated regulated agent.</P>
+                            </ITEM>
+                        </LIST>
+                        <P>Reference: Point 6.8.3</P>
+                        <TBL COLS="2" NO.SEQ="0003">
+                            <CORPUS>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>2.1.</NO.P>
+                                            <TXT>Has the air carrier established a process to ensure that air cargo or air mail is submitted to appropriate security controls prior to being loaded onto an EU/EEA bound aircraft?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe the process</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>2.2.</NO.P>
+                                            <TXT>Are the security controls applied by the air carrier or on its behalf by an entity covered under the air carrier's security programme?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, provide details</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, which entities not covered by the air carrier's security programme apply security controls to air cargo or mail carried by this air carrier into the EU/EEA?</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <?PAGE NO="72"?>
+                                <ROW>
+                                    <CELL COL="1">
+                                        <P>Specify the nature of these entities and provide details</P>
+                                        <LIST TYPE="DASH">
+                                            <ITEM>
+                                                <P>Private handling company</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Government regulated company</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Government screening facility or body</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Other</P>
+                                            </ITEM>
+                                        </LIST>
+                                    </CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>2.3.</NO.P>
+                                            <TXT>By which instruments and instructions does the air carrier ensure that security controls are applied in the required manner?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>2.4.</NO.P>
+                                            <TXT>Is the air carrier able to request the appropriate security controls in case the screening is carried out by entities which are not covered by the air carrier's security programme, such as government facilities?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, provide details</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>2.5.</NO.P>
+                                            <TXT>Has a regulated agent/known consignor programme for air cargo and mail been put in place in accordance with ICAO standards in the State of the airport at which the validation visit takes place?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe the elements of the programme and how it has been put in place</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>2.6.</NO.P>
+                                            <TXT>Conclusions and general comments on the reliance, conclusiveness and robustness of the process.</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the air carrier</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the EU aviation security validator</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                            </CORPUS>
+                        </TBL>
+                    </GR.SEQ>
+                    <GR.SEQ LEVEL="4">
+                        <TITLE>
+                            <TI>
+                                <P>PART 3</P>
+                            </TI>
+                            <STI>
+                                <P>
+                                    <HT TYPE="BOLD">Security programme of the air carrier</HT>
+                                </P>
+                            </STI>
+                        </TITLE>
+                        <P>Objective: The ACC3 shall ensure that its security programme includes all the aviation security measures relevant and sufficient for air cargo and mail to be transported into the EU.</P>
+                        <P>The security programme and associated documentation of the air carrier shall be the basis of security controls applied in compliance with the objective of this checklist. The air carrier may wish to consider passing its documentation to the EU aviation security validator in advance of the site visit to help acquaint him with the details of the locations to be visited.</P>
+                        <P>Reference: Point 6.8.2.1 and Attachment 6-G</P>
+                        <ANNOTATION>
+                            <P>
+                                <HT TYPE="ITALIC">Note:</HT>
+                                 The following points listed in Attachment 6-G to Implementing Regulation (EU) 2015/1998 shall be appropriately covered:
+                            </P>
+                            <P>
+                                <LIST TYPE="alpha">
+                                    <ITEM>
+                                        <NP>
+                                            <NO.P>(a)</NO.P>
+                                            <TXT>description of measures for air cargo and mail;</TXT>
+                                        </NP>
+                                    </ITEM>
+                                    <ITEM>
+                                        <NP>
+                                            <NO.P>(b)</NO.P>
+                                            <TXT>procedures for acceptance;</TXT>
+                                        </NP>
+                                    </ITEM>
+                                    <ITEM>
+                                        <NP>
+                                            <NO.P>(c)</NO.P>
+                                            <TXT>regulated agent scheme and criteria;</TXT>
+                                        </NP>
+                                    </ITEM>
+                                    <ITEM>
+                                        <NP>
+                                            <NO.P>(d)</NO.P>
+                                            <TXT>known consignor scheme and criteria;</TXT>
+                                        </NP>
+                                    </ITEM>
+                                    <ITEM>
+                                        <NP>
+                                            <NO.P>(e)</NO.P>
+                                            <TXT>account consignor scheme and criteria;</TXT>
+                                        </NP>
+                                    </ITEM>
+                                    <ITEM>
+                                        <NP>
+                                            <NO.P>(f)</NO.P>
+                                            <TXT>standard of screening;</TXT>
+                                        </NP>
+                                    </ITEM>
+                                    <ITEM>
+                                        <NP>
+                                            <NO.P>(g)</NO.P>
+                                            <TXT>location of screening;</TXT>
+                                        </NP>
+                                    </ITEM>
+                                    <?PAGE NO="73"?>
+                                    <ITEM>
+                                        <NP>
+                                            <NO.P>(h)</NO.P>
+                                            <TXT>details of screening equipment;</TXT>
+                                        </NP>
+                                    </ITEM>
+                                    <ITEM>
+                                        <NP>
+                                            <NO.P>(i)</NO.P>
+                                            <TXT>details of operator or service provider;</TXT>
+                                        </NP>
+                                    </ITEM>
+                                    <ITEM>
+                                        <NP>
+                                            <NO.P>(j)</NO.P>
+                                            <TXT>list of exemptions from security screening;</TXT>
+                                        </NP>
+                                    </ITEM>
+                                    <ITEM>
+                                        <NP>
+                                            <NO.P>(k)</NO.P>
+                                            <TXT>treatment of high risk cargo and mail.</TXT>
+                                        </NP>
+                                    </ITEM>
+                                </LIST>
+                            </P>
+                        </ANNOTATION>
+                        <TBL COLS="2" NO.SEQ="0004">
+                            <CORPUS>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>3.1.</NO.P>
+                                            <TXT>Air carrier security programme</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Date — use exact date format dd/mm/yyyy</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Version</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Has the programme been submitted to an EU/EEA appropriate authority at an earlier stage? If YES was it for ACC3 designation? Other purposes?</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>3.2.</NO.P>
+                                            <TXT>Does the security programme cover sufficiently the elements of the list above?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, describe why detailing the reasons</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>3.3.</NO.P>
+                                            <TXT>Are the aviation security measures described by the security programme relevant and sufficient to secure EU/EEA bound air cargo/air mail according to the required standards?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, describe why detailing the reasons</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>3.4.</NO.P>
+                                            <TXT>Conclusion: Is the security programme conclusive, robust and complete?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, specify reasons</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the air carrier</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the EU aviation security validator</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                            </CORPUS>
+                        </TBL>
+                    </GR.SEQ>
+                    <GR.SEQ LEVEL="4">
+                        <TITLE>
+                            <TI>
+                                <P>PART 4</P>
+                            </TI>
+                            <STI>
+                                <P>
+                                    <HT TYPE="BOLD">Staff recruitment and training</HT>
+                                </P>
+                            </STI>
+                        </TITLE>
+                        <P>Objective: The ACC3 shall assign responsible and competent staff to work in the field of securing air cargo or air mail. Staff with access to secured air cargo possess all the competencies required to perform their duties and are appropriately trained.</P>
+                        <P>To fulfil that objective, the ACC3 shall have a procedure to ensure that all staff (permanent, temporary, agency staff, drivers, etc.) with direct and unescorted access to air cargo/air mail to which security controls are being or have been applied:</P>
+                        <LIST TYPE="DASH">
+                            <ITEM>
+                                <P>have been subject to initial and recurrent pre-employment checks and/or background checks, which are at least in accordance with the requirements of the local authorities of the airport validated, and</P>
+                            </ITEM>
+                            <ITEM>
+                                <P>have completed initial and recurrent security training to be aware of their security responsibilities in accordance with the requirements of the local authorities of the airport validated.</P>
+                            </ITEM>
+                        </LIST>
+                        <?PAGE NO="74"?>
+                        <P>Reference: Point 6.8.3.1</P>
+                        <ANNOTATION>
+                            <TITLE>
+                                <TI>
+                                    <P>
+                                        <HT TYPE="ITALIC">Note:</HT>
+                                    </P>
+                                </TI>
+                            </TITLE>
+                            <P>
+                                <LIST TYPE="DASH">
+                                    <ITEM>
+                                        <P>A background check means a check of a person's identity and previous experience, including where legally permissible, any criminal history as part of the assessment of an individual's suitability to implement a security control and/or for unescorted access to a security restricted area (ICAO Annex 17 definition).</P>
+                                    </ITEM>
+                                    <ITEM>
+                                        <P>A pre-employment check shall establish the person's identity on the basis of documentary evidence, cover employment, education and any gaps during at least the preceding five years, and require the person to sign a declaration detailing any criminal history in all states of residence during at least the preceding five years (Union definition).</P>
+                                    </ITEM>
+                                </LIST>
+                            </P>
+                        </ANNOTATION>
+                        <TBL COLS="2" NO.SEQ="0005">
+                            <CORPUS>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>4.1.</NO.P>
+                                            <TXT>Is there a procedure ensuring that all staff with direct and unescorted access to secured air cargo/air mail are subject to pre-employment checks that assesses background and competence?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, indicate the number of preceding years taken into account for the pre-employment check and state which entity carries it out.</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>4.2.</NO.P>
+                                            <TXT>Does this procedure include?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">
+                                        <LIST TYPE="DASH">
+                                            <ITEM>
+                                                <P>Background check</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Pre-employment check</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Check of criminal records</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Interviews</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Other (provide details)</P>
+                                            </ITEM>
+                                        </LIST>
+                                        <P>Explain the elements, indicate which entity carries this element out and where applicable, indicate the preceding timeframe that is taken into account.</P>
+                                    </CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>4.3.</NO.P>
+                                            <TXT>Is there a procedure ensuring that the person responsible for the application and supervision of the implementation of security controls at the site is subject to a pre-employment check that assesses background and competence?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, indicate the number of preceding years taken into account for the pre-employment check and state which entity carries it out.</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>4.4.</NO.P>
+                                            <TXT>Does this procedure include?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">
+                                        <LIST TYPE="DASH">
+                                            <ITEM>
+                                                <P>Background check</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Pre-employment check</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Check of criminal records</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Interviews</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Other (provide details)</P>
+                                            </ITEM>
+                                        </LIST>
+                                        <P>Explain the elements, indicate which entity carries this element out and where applicable, indicate the preceding timeframe that is taken into account.</P>
+                                    </CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <?PAGE NO="75"?>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>4.5.</NO.P>
+                                            <TXT>Do staff with direct and unescorted access to secured air cargo/air mail receive security training before being given access to secured air cargo/air mail?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe the elements and duration of the training</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>4.6.</NO.P>
+                                            <TXT>Do staff that accept, screen and/or protect air cargo/air mail receive specific job related training?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe the elements and durations of training courses.</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>4.7.</NO.P>
+                                            <TXT>Do staff referred to in points 4.5 and 4.6 receive recurrent training?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, specify the elements and the frequency of the recurrent training</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>4.8.</NO.P>
+                                            <TXT>Conclusion: do the measures concerning staff recruitment and training ensure that all staff with access to secured air cargo/air mail have been properly assigned and trained to a standard sufficient to be aware of their security responsibilities?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, specify reasons</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the air carrier</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the EU aviation security validator</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                            </CORPUS>
+                        </TBL>
+                    </GR.SEQ>
+                    <GR.SEQ LEVEL="4">
+                        <TITLE>
+                            <TI>
+                                <P>PART 5</P>
+                            </TI>
+                            <STI>
+                                <P>
+                                    <HT TYPE="BOLD">Acceptance procedures</HT>
+                                </P>
+                            </STI>
+                        </TITLE>
+                        <P>Objective: The ACC3 shall have a procedure in place in order to assess and verify upon acceptance the security status of a consignment in respect of previous controls.</P>
+                        <P>The procedure shall include the following elements:</P>
+                        <LIST TYPE="DASH">
+                            <ITEM>
+                                <P>verification of whether the consignment is delivered by a person nominated by the EU aviation security validated regulated agent or known consignor as listed in its database (Part 6) or an account consignor of such a regulated agent,</P>
+                            </ITEM>
+                            <ITEM>
+                                <P>verification of whether the consignment is presented with all the required security information (air waybill and security status information on paper or by electronic means) that corresponds to the air cargo and mail consignments being delivered,</P>
+                            </ITEM>
+                            <ITEM>
+                                <P>verification of whether the consignment is free from any signs of tampering, and</P>
+                            </ITEM>
+                            <ITEM>
+                                <P>verification of whether the consignment has to be treated as high risk cargo and mail (HRCM).</P>
+                            </ITEM>
+                        </LIST>
+                        <P>Reference: Point 6.8.3.1</P>
+                        <?PAGE NO="76"?>
+                        <ANNOTATION>
+                            <TITLE>
+                                <TI>
+                                    <P>
+                                        <HT TYPE="ITALIC">Note:</HT>
+                                    </P>
+                                </TI>
+                            </TITLE>
+                            <P>
+                                <LIST TYPE="DASH">
+                                    <ITEM>
+                                        <P>A regulated agent or a known consignor is an entity handling cargo which has been successfully validated by an EU aviation security validator or whose security measures have been included in the EU validated ACC3 security programme (in that case, the ACC3 is co-responsible for the security measures).</P>
+                                    </ITEM>
+                                    <ITEM>
+                                        <P>An account consignor is an entity handling cargo for its own account under the responsibility of an EU aviation security validated regulated agent. This regulated agent fully accounts for the security controls applied by the account consignor.</P>
+                                    </ITEM>
+                                    <ITEM>
+                                        <P>The person nominated corresponds to the person tasked to deliver the air cargo or air mail to the air carrier. The person delivering the consignment to the air carrier shall present an identity card, passport, driving license or other document, which includes his or her photograph and which has been issued or is recognised by the national authority.</P>
+                                    </ITEM>
+                                </LIST>
+                            </P>
+                        </ANNOTATION>
+                        <TBL COLS="2" NO.SEQ="0006">
+                            <CORPUS>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>5.1.</NO.P>
+                                            <TXT>When directly accepting a consignment, does the air carrier establish whether it comes from a regulated agent, a known consignor or an account consignor validated or recognised according to Union air cargo legislation and listed in the database kept by the air carrier?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe the procedure</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>5.2.</NO.P>
+                                            <TXT>When directly accepting a consignment, does the air carrier establish whether its destination is an EU/EEA airport?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO — explain</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>5.3.</NO.P>
+                                            <TXT>If YES — does the air carrier submit all cargo or mail to the same security controls when the destination is an EU/EEA airport?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe the procedure</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>5.4.</NO.P>
+                                            <TXT>When directly accepting a consignment, does the air carrier establish whether it is to be regarded as high risk cargo and mail (HRCM), including for consignments that are delivered by other modes of transport other than air?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">
+                                        <P>If YES, how?</P>
+                                        <P>Describe the procedure</P>
+                                    </CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>5.5.</NO.P>
+                                            <TXT>When accepting a secured consignment, does the air carrier establish whether it has been protected from unauthorised interference and/or tampering?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe (seals, locks, etc.).</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>5.6.</NO.P>
+                                            <TXT>If the air carrier accepts transit air cargo/air mail at this location (cargo/mail that departs on the same aircraft it arrived on), does the air carrier establish on the basis of the given data whether or not further security controls need to be applied?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <?PAGE NO="77"?>
+                                <ROW>
+                                    <CELL COL="1">If YES, how is it established?</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, what controls are applied to ensure security of EU/EEA bound cargo and mail?</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>5.7.</NO.P>
+                                            <TXT>If the air carrier accepts transfer air cargo/air mail at this location (cargo/mail that departs on a different aircraft to the one it arrived on), does the air carrier establish on the basis of the given data whether or not further security controls need to be applied?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, how is it established?</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, what controls are applied to ensure security of EU/EEA bound cargo and mail?</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>5.8.</NO.P>
+                                            <TXT>Is the person delivering secured known air cargo to the air carrier required to present an official identification document containing a photograph?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>5.9.</NO.P>
+                                            <TXT>Conclusion: Are the acceptance procedures sufficient to establish whether air cargo or air mail comes from a secure supply chain or that it needs to be subjected to screening?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, specify reasons</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the air carrier</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the EU aviation security validator</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                            </CORPUS>
+                        </TBL>
+                    </GR.SEQ>
+                    <GR.SEQ LEVEL="4">
+                        <TITLE>
+                            <TI>
+                                <P>PART 6</P>
+                            </TI>
+                            <STI>
+                                <P>
+                                    <HT TYPE="BOLD">Database</HT>
+                                </P>
+                            </STI>
+                        </TITLE>
+                        <P>Objective: Where the ACC3 is not obliged to apply 100 % screening to EU/EEA bound air cargo or air mail, the ACC3 shall ensure the cargo or mail comes from an EU aviation security validated regulated agent or known consignor or an account consignor of a regulated agent.</P>
+                        <P>For monitoring the security relevant audit trail the ACC3 shall maintain a database giving the following information for each entity or person from which it directly accepts cargo or mail:</P>
+                        <LIST TYPE="DASH">
+                            <ITEM>
+                                <P>the status of the involved entity (regulated agent or known consignor),</P>
+                            </ITEM>
+                            <ITEM>
+                                <P>the company details, including the bona fide business address,</P>
+                            </ITEM>
+                            <ITEM>
+                                <P>the nature of the business, excluding business sensitive information,</P>
+                            </ITEM>
+                            <ITEM>
+                                <P>contact details, including those of the person(s) responsible for security,</P>
+                            </ITEM>
+                            <ITEM>
+                                <P>the company registration number, if applicable.</P>
+                            </ITEM>
+                        </LIST>
+                        <?PAGE NO="78"?>
+                        <P>When receiving air cargo or mail the ACC3 has to check in the database whether the entity is listed. If the entity is not included in the database, the air cargo or air mail delivered by it will have to be screened before loading.</P>
+                        <P>Reference: Points 6.8.4.1 and 6.8.4.3</P>
+                        <TBL COLS="2" NO.SEQ="0007">
+                            <CORPUS>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>6.1.</NO.P>
+                                            <TXT>Does the air carrier maintain a database including, as appropriate, the details referred to above, of:</TXT>
+                                            <P>
+                                                <LIST TYPE="DASH">
+                                                    <ITEM>
+                                                        <P>EU aviation security validated regulated agents,</P>
+                                                    </ITEM>
+                                                    <ITEM>
+                                                        <P>EU aviation security validated known consignors,</P>
+                                                    </ITEM>
+                                                    <ITEM>
+                                                        <P>account consignors of a regulated agent (on voluntary basis)?</P>
+                                                    </ITEM>
+                                                </LIST>
+                                            </P>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe the database</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, explain why</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>6.2.</NO.P>
+                                            <TXT>Does staff accepting air cargo and air mail have easy access to the database?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe the process</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>6.3.</NO.P>
+                                            <TXT>Is the database updated in a regular manner as to provide reliable data to the staff accepting air cargo and air mail?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, explain</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>6.4.</NO.P>
+                                            <TXT>Conclusion: Does the air carrier maintain a database that ensures full transparency on its relation to entities from which it directly receives (screened or security controlled) cargo or mail for transport into the Union/EEA?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, specify reasons</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the air carrier</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the EU aviation security validator</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                            </CORPUS>
+                        </TBL>
+                    </GR.SEQ>
+                    <GR.SEQ LEVEL="4">
+                        <TITLE>
+                            <TI>
+                                <P>PART 7</P>
+                            </TI>
+                            <STI>
+                                <P>
+                                    <HT TYPE="BOLD">Screening</HT>
+                                </P>
+                            </STI>
+                        </TITLE>
+                        <P>Objective: Where the ACC3 accepts cargo and mail from an entity which is not an EU aviation security validated or the cargo received has not been protected from unauthorised interference from the time security controls were applied, the ACC3 shall ensure this air cargo or air mail is screened before being loaded onto an aircraft. The ACC3 shall have a process to ensure that EU/EEA bound air cargo and air mail for transfer, transit or unloading at an Union airport are screened by the means or methods referred to in Union legislation to a standard sufficient to reasonably ensure that it contains no prohibited articles.</P>
+                        <?PAGE NO="79"?>
+                        <P>Where the ACC3 does not screen air cargo or air mail itself, it shall ensure that the appropriate screening is carried out according to Union requirements. Screening procedures shall include where appropriate the treatment of transfer-/transit-cargo and -mail.</P>
+                        <P>Where screening of air cargo or mail is performed by or on behalf of the appropriate authority in the third country, the ACC3 receiving such air cargo or air mail from the entity shall declare this fact in its security programme, and specify the way adequate screening is ensured.</P>
+                        <P>Reference: Points 6.8.3.1, 6.8.3.2, 6.8.3.3</P>
+                        <TBL COLS="2" NO.SEQ="0008">
+                            <CORPUS>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>7.1.</NO.P>
+                                            <TXT>Is screening applied by the air carrier or on its behalf by an entity covered under the air carrier's security programme?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">
+                                        <P>If YES, provide details.</P>
+                                        <P>If applicable, provide details of the entity or entities covered under the air carrier's security programme:</P>
+                                        <LIST TYPE="DASH">
+                                            <ITEM>
+                                                <P>Name</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Site specific address</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Presence of AEO status, if applicable</P>
+                                            </ITEM>
+                                        </LIST>
+                                    </CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">
+                                        <P>If NO, which entities not covered by the air carrier's security programme apply screening to air cargo or mail carried by this air carrier into the EU/EEA?</P>
+                                        <P>Specify the nature of these entities and provide details</P>
+                                        <LIST TYPE="DASH">
+                                            <ITEM>
+                                                <P>Private handling company</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Government regulated company</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Government screening facility or body</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Other</P>
+                                            </ITEM>
+                                        </LIST>
+                                    </CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>7.2.</NO.P>
+                                            <TXT>What methods of screening are used for air cargo and air mail?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Specify, including details of equipment used for screening air cargo and air mail (manufacturer, type, software version, standard, serial number etc.) for all the methods deployed</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>7.3.</NO.P>
+                                            <TXT>Is the equipment or method (e.g. explosive detection dogs) used included in the most recent EU, European Civil Aviation Conference (ECAC) or the Transportation Security Administration (TSA) of the US compliance list?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, provide details</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, give details specifying the approval of the equipment and date thereof, as well as any indications that it complies with EU equipment standards</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>7.4.</NO.P>
+                                            <TXT>Is the equipment used in accordance with the manufacturers' CONOPS (concept of operations) and is the equipment regularly tested and maintained?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe the process</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <?PAGE NO="80"?>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>7.5.</NO.P>
+                                            <TXT>Is the nature of the consignment taken into consideration during screening?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe how it is ensured that the screening method selected is employed to a standard sufficient to reasonably ensure that no prohibited articles are concealed in the consignment</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>7.6.</NO.P>
+                                            <TXT>Is there a process for the resolution of the alarm generated by the screening equipment?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe the process of resolving alarms to reasonably ensure the absence of prohibited articles.</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, describe what happens to the consignment.</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>7.7.</NO.P>
+                                            <TXT>Are any consignments exempt from security screening?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>7.8.</NO.P>
+                                            <TXT>Are there any exemptions that do not comply with the Union list?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, detail</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>7.9.</NO.P>
+                                            <TXT>Is access to the screening area controlled to ensure that only authorised and trained staff is granted access?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>7.10.</NO.P>
+                                            <TXT>Is an established quality control and/or testing regime in place?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>7.11.</NO.P>
+                                            <TXT>Conclusion: Is air cargo/air mail screened by one of the means or methods listed in point 6.2.1 of Implementing Regulation (EU) 2015/1998 to a standard sufficient to reasonably ensure that it contains no prohibited articles?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, specify reason</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the air carrier</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the EU aviation security validator</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                            </CORPUS>
+                        </TBL>
+                    </GR.SEQ>
+                    <?PAGE NO="81"?>
+                    <GR.SEQ LEVEL="4">
+                        <TITLE>
+                            <TI>
+                                <P>PART 8</P>
+                            </TI>
+                            <STI>
+                                <P>
+                                    <HT TYPE="BOLD">High risk cargo or mail (HRCM)</HT>
+                                </P>
+                            </STI>
+                        </TITLE>
+                        <P>Objective: Consignments which originate from or transfer in locations identified as high risk by the EU or which appear to have been significantly tampered with are to be considered as high risk cargo and mail (HRCM). Such consignments have to be screened in line with specific instructions. High risk origins and screening instructions are provided by the appropriate EU/EEA authority having designated the ACC3. The ACC3 shall have a procedure to ensure that EU/EEA bound HRCM is identified and subject to appropriate controls as defined in the Union legislation.</P>
+                        <P>The ACC3 shall remain in contact with the appropriate authority responsible for the EU/EEA airports to which it carries cargo in order to have available the latest state of information on high risk origins.</P>
+                        <P>The ACC3 shall apply the same measures, irrespective of whether it receives high risk cargo and mail from another air carrier or through other modes of transportation.</P>
+                        <P>Reference: Points 6.7 and 6.8.3.4</P>
+                        <ANNOTATION>
+                            <P>
+                                <HT TYPE="ITALIC">Note:</HT>
+                                 HRCM cleared for carriage into the EU/EEA shall be issued the security status 
+                                <QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001"/>
+                                SHR
+                                <QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001"/>
+                                , meaning secure for passenger, all-cargo and all-mail aircraft in accordance with high risk requirements.
+                            </P>
+                        </ANNOTATION>
+                        <TBL COLS="2" NO.SEQ="0009">
+                            <CORPUS>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>8.1.</NO.P>
+                                            <TXT>Does the air carrier staff responsible for performing security controls know which air cargo and mail is to be treated as high risk cargo and mail (HRCM)?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>8.2.</NO.P>
+                                            <TXT>Does the air carrier have procedures in place for the identification of HRCM?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>8.3.</NO.P>
+                                            <TXT>Is HRCM subject to HRCM screening procedures according to EU legislation?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, indicate procedures applied</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>8.4.</NO.P>
+                                            <TXT>After screening, does the air carrier issue a security status declaration for SHR in the documentation accompanying the consignment?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe how security status is issued and in which document</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>8.5.</NO.P>
+                                            <TXT>Conclusion: Is the process put in place by the air carrier relevant and sufficient to ensure that all HRCM has been properly treated before loading?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, specify reason</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the air carrier</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from EU aviation security validator</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                            </CORPUS>
+                        </TBL>
+                    </GR.SEQ>
+                    <?PAGE NO="82"?>
+                    <GR.SEQ LEVEL="4">
+                        <TITLE>
+                            <TI>
+                                <P>PART 9</P>
+                            </TI>
+                            <STI>
+                                <P>
+                                    <HT TYPE="BOLD">Protection</HT>
+                                </P>
+                            </STI>
+                        </TITLE>
+                        <P>Objective: The ACC3 shall have processes in place to ensure EU/EEA bound air cargo and/or air mail is protected from unauthorised interference from the point where security screening or other security controls are applied or from the point of acceptance after screening or security controls have been applied, until loading.</P>
+                        <P>Protection can be provided by different means such as physical (barriers, locked rooms, etc.), human (patrols, trained staff, etc.) and technological (CCTV, intrusion alarm, etc.).</P>
+                        <P>EU/EEA bound secured air cargo or mail should be separated from air cargo or mail which is not secured.</P>
+                        <P>Reference: Point 6.8.3</P>
+                        <TBL COLS="2" NO.SEQ="0010">
+                            <CORPUS>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>9.1.</NO.P>
+                                            <TXT>Is protection of secured air cargo and air mail applied by the air carrier or on its behalf by an entity covered under the air carrier's security programme?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, provide details</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">
+                                        <P>If NO, which entities not covered by the air carrier's security programme apply protection measures to secured air cargo or mail carried by this air carrier into the EU/EEA?</P>
+                                        <P>Specify the nature of these entities and provide details</P>
+                                        <LIST TYPE="DASH">
+                                            <ITEM>
+                                                <P>Private handling company</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Government regulated company</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Government screening facility or body</P>
+                                            </ITEM>
+                                            <ITEM>
+                                                <P>Other</P>
+                                            </ITEM>
+                                        </LIST>
+                                    </CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>9.2.</NO.P>
+                                            <TXT>Are security controls and protection in place to prevent tampering during the screening process?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>9.3.</NO.P>
+                                            <TXT>Are there processes in place to ensure EU/EEA bound air cargo/air mail to which security controls have been applied are protected from unauthorised interference from the time it has been secured until its loading?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe how it is protected</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, specify reasons</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>9.4.</NO.P>
+                                            <TXT>Conclusions: Is the protection of consignments sufficiently robust to prevent unlawful interference?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO specify reason</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the air carrier</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from EU aviation security validator</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                            </CORPUS>
+                        </TBL>
+                    </GR.SEQ>
+                    <?PAGE NO="83"?>
+                    <GR.SEQ LEVEL="4">
+                        <TITLE>
+                            <TI>
+                                <P>PART 10</P>
+                            </TI>
+                            <STI>
+                                <P>
+                                    <HT TYPE="BOLD">Accompanying documentation</HT>
+                                </P>
+                            </STI>
+                        </TITLE>
+                        <P>Objective: The ACC3 shall ensure that:</P>
+                        <LIST TYPE="ARAB">
+                            <ITEM>
+                                <NP>
+                                    <NO.P>(1)</NO.P>
+                                    <TXT>the security status of the consignment is indicated in the accompanying documentation, either in the form of an air waybill, equivalent postal documentation or in a separate declaration and either in an electronic format or in writing; and</TXT>
+                                </NP>
+                            </ITEM>
+                            <ITEM>
+                                <NP>
+                                    <NO.P>(2)</NO.P>
+                                    <TXT>its unique alphanumeric identifier appears on documentation accompanying the consignments carried, either in electronic format or in writing.</TXT>
+                                </NP>
+                            </ITEM>
+                        </LIST>
+                        <P>Reference: Points 6.3.2.6 (d), 6.8.3.4 and 6.8.3.5</P>
+                        <ANNOTATION>
+                            <P>
+                                <HT TYPE="ITALIC">Note:</HT>
+                                 the following security statuses may be indicated:
+                            </P>
+                            <P>
+                                <LIST TYPE="DASH">
+                                    <ITEM>
+                                        <P>
+                                            <QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002"/>
+                                            SPX
+                                            <QUOT.END CODE="2019" ID="QE0002" REF.START="QS0002"/>
+                                            , meaning secure for passenger, all-cargo and all-mail aircraft, or
+                                        </P>
+                                    </ITEM>
+                                    <ITEM>
+                                        <P>
+                                            <QUOT.START CODE="2018" ID="QS0003" REF.END="QE0003"/>
+                                            SCO
+                                            <QUOT.END CODE="2019" ID="QE0003" REF.START="QS0003"/>
+                                            , meaning secure for all-cargo and all-mail aircraft only, or
+                                        </P>
+                                    </ITEM>
+                                    <ITEM>
+                                        <P>
+                                            <QUOT.START CODE="2018" ID="QS0004" REF.END="QE0004"/>
+                                            SHR
+                                            <QUOT.END CODE="2019" ID="QE0004" REF.START="QS0004"/>
+                                            , meaning secure for passenger, all-cargo and all-mail aircraft in accordance with high risk requirements.
+                                        </P>
+                                    </ITEM>
+                                </LIST>
+                            </P>
+                        </ANNOTATION>
+                        <P>In the absence of a regulated agent, the ACC3 or an air carrier arriving from a third country exempted from the ACC3 regime may issue the security status declaration.</P>
+                        <TBL COLS="2" NO.SEQ="0011">
+                            <CORPUS>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>10.1.</NO.P>
+                                            <TXT>Are consignments accompanied by documentation that confirms previous and current security controls?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If YES, describe the content of the documentation</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">
+                                        If NO, explain why and how the cargo or mail is treated as 
+                                        <QUOT.START CODE="2018" ID="QS0005" REF.END="QE0005"/>
+                                        secure
+                                        <QUOT.END CODE="2019" ID="QE0005" REF.START="QS0005"/>
+                                         by the air carrier if it is loaded onto an aircraft
+                                    </CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>10.2.</NO.P>
+                                            <TXT>Does the documentation include the air carrier's ACC3 unique alphanumeric identifier?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO, explain why</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>10.3.</NO.P>
+                                            <TXT>Does the documentation specify the security status of the cargo and how this status was achieved?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>10.4.</NO.P>
+                                            <TXT>Conclusion: Is the documentation process sufficient to ensure that cargo or mail is provided with proper accompanying documentation which specifies the correct security status?</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">YES or NO</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">If NO specify reason</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the air carrier</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from EU aviation security validator</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                            </CORPUS>
+                        </TBL>
+                    </GR.SEQ>
+                    <?PAGE NO="84"?>
+                    <GR.SEQ LEVEL="4">
+                        <TITLE>
+                            <TI>
+                                <P>PART 11</P>
+                            </TI>
+                            <STI>
+                                <P>
+                                    <HT TYPE="BOLD">Compliance</HT>
+                                </P>
+                            </STI>
+                        </TITLE>
+                        <P>Objective: After assessing the ten previous parts of this checklist, the EU aviation security validator has to conclude if its on-site verification corresponds with the content of the part of the air carrier security programme describing the measures for the EU/EEA bound air cargo/air mail and if the security controls sufficiently implements the objectives listed in this checklist.</P>
+                        <P>For your conclusions distinguish between four possible main cases:</P>
+                        <LIST TYPE="ARAB">
+                            <ITEM>
+                                <NP>
+                                    <NO.P>(1)</NO.P>
+                                    <TXT>the air carrier security programme is in compliance with Attachment 6-G to Implementing Regulation (EU) 2015/1998 and the on-site verification confirms compliance with the objective of the checklist; or</TXT>
+                                </NP>
+                            </ITEM>
+                            <ITEM>
+                                <NP>
+                                    <NO.P>(2)</NO.P>
+                                    <TXT>the air carrier security programme is in compliance with Attachment 6-G to Implementing Regulation (EU) 2015/1998 but the on-site verification does not confirm compliance with the objective of the checklist; or</TXT>
+                                </NP>
+                            </ITEM>
+                            <ITEM>
+                                <NP>
+                                    <NO.P>(3)</NO.P>
+                                    <TXT>the air carrier security programme is not in compliance with Attachment 6-G to Implementing Regulation (EU) 2015/1998 but the on-site verification confirms compliance with the objective of the checklist; or</TXT>
+                                </NP>
+                            </ITEM>
+                            <ITEM>
+                                <NP>
+                                    <NO.P>(4)</NO.P>
+                                    <TXT>the air carrier security programme is not in compliance with Attachment 6-G to Implementing Regulation (EU) 2015/1998 and the on-site verification does not confirm compliance with the objective of the checklist.</TXT>
+                                </NP>
+                            </ITEM>
+                        </LIST>
+                        <TBL COLS="2" NO.SEQ="0012">
+                            <CORPUS>
+                                <ROW>
+                                    <CELL COL="1" COLSPAN="2">
+                                        <NP>
+                                            <NO.P>11.1.</NO.P>
+                                            <TXT>General conclusion: Indicate the case closest to the situation validated</TXT>
+                                        </NP>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">1, 2, 3 or 4</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from EU aviation security validator</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                                <ROW>
+                                    <CELL COL="1">Comments from the air carrier</CELL>
+                                    <CELL COL="2">
+                                        <IE/>
+                                    </CELL>
+                                </ROW>
+                            </CORPUS>
+                        </TBL>
+                        <P>Name of the validator:</P>
+                        <P>Date:</P>
+                        <P>Signature:</P>
+                    </GR.SEQ>
+                </GR.SEQ>
+            </GR.SEQ>
+        </GR.SEQ>
+    </CONTENTS>
+</ANNEX>
