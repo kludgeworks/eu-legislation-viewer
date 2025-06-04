@@ -5,6 +5,7 @@ include("formex")
 include("cdm")
 include("rdf-service")
 include("cellar-client")
+include("transformation")
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)

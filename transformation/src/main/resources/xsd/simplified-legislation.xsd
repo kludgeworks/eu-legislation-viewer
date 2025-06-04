@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="simplifiedLegislationDoc">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="metadata" type="metadataType"/>
+                <xs:element name="body" type="bodyType"/>
+            </xs:sequence>
+            <xs:attribute name="sourceFile" type="xs:string" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="metadataType">
+        <xs:all>
+            <xs:element name="docIdString" type="xs:string" minOccurs="0"/>
+            <xs:element name="docNumberCurrent" type="xs:string" minOccurs="0"/>
+            <xs:element name="docYear" type="xs:gYear" minOccurs="0"/>
+            <xs:element name="docType" type="xs:string" minOccurs="0"/>
+            <xs:element name="title" type="formattedTextType" minOccurs="0"/>
+            <xs:element name="publicationDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="documentDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="author" type="xs:string" minOccurs="0"/>
+            <xs:element name="legalValue" type="xs:string" minOccurs="0"/>
+            <xs:element name="entryIntoForceDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="isEEARelevant" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="pageFirst" type="xs:string" minOccurs="0"/>
+            <xs:element name="pageLast" type="xs:string" minOccurs="0"/>
+            <xs:element name="pageTotal" type="xs:positiveInteger" minOccurs="0"/>
+            <xs:element name="sequenceNumber" type="xs:string" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="bodyType">
+        <xs:sequence>
+            <xs:element name="preamble" type="preambleType" minOccurs="0"/>
+            <xs:element name="articles" type="articlesType" minOccurs="0"/>
+            <xs:element name="sections" type="sectionsContainerType" minOccurs="0"/>
+            <xs:element name="attachments" type="attachmentsType" minOccurs="0"/>
+            <xs:element name="annexes" type="attachmentsType" minOccurs="0"/>
+            <xs:element name="finalProvisions" type="finalProvisionsType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="formattedTextType" mixed="true">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="strong" type="formattedTextType"/>
+            <xs:element name="em" type="formattedTextType"/>
+            <xs:element name="sub" type="formattedTextType"/>
+            <xs:element name="sup" type="formattedTextType"/>
+            <xs:element name="underline" type="formattedTextType"/>
+            <xs:element name="date">
+                <xs:complexType mixed="true">
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="iso" type="xs:date" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="footnote">
+                <xs:complexType mixed="true">
+                    <xs:complexContent>
+                        <xs:extension base="formattedTextType">
+                            <xs:attribute name="id" type="xs:string" use="optional"/>
+                            <xs:attribute name="number" type="xs:string" use="optional"/>
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="quote" type="formattedTextType"/>
+            <xs:element name="ref">
+                <xs:complexType mixed="true">
+                    <xs:complexContent>
+                        <xs:extension base="formattedTextType">
+                            <xs:attribute name="type" type="xs:string" use="optional"/>
+                            <xs:attribute name="target" type="xs:string" use="optional"/>
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="br"/>
+            <xs:element name="ie"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="preambleType">
+        <xs:sequence>
+            <xs:element name="initiator" type="formattedTextType" minOccurs="0"/>
+            <xs:element name="visa" type="formattedTextType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="consideration" type="numberedContentType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="finalStatement" type="formattedTextType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="articlesType">
+        <xs:sequence>
+            <xs:element name="article" type="articleType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="articleType">
+        <xs:sequence>
+            <xs:element name="title" type="formattedTextType" minOccurs="0"/>
+            <xs:element name="contentItem" type="contentType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="finalProvisionsType">
+        <xs:sequence>
+            <xs:element name="paragraph" type="formattedTextType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="signatureBlock" type="signatureBlockType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="signatureBlockType">
+        <xs:sequence>
+            <xs:element name="placeAndDate" type="formattedTextType" minOccurs="0"/>
+            <xs:element name="signatoryInfo" type="formattedTextType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="sectionsContainerType">
+        <xs:sequence>
+            <xs:element name="section" type="sectionType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="attachmentsType">
+        <xs:sequence>
+            <xs:element name="attachment" type="sectionType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="sectionType">
+        <xs:sequence>
+            <xs:element name="title" type="formattedTextType" minOccurs="0"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="contentItem" type="contentType"/>
+                <xs:element name="section" type="sectionType"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="optional"/>
+        <xs:attribute name="level" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="contentType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="paragraph" type="formattedTextType"/>
+            <xs:element name="numberedParagraph" type="numberedContentType"/>
+            <xs:element name="list" type="listType"/>
+            <xs:element name="table" type="tableType"/>
+            <xs:element name="section" type="sectionType"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="numberedContentType">
+        <xs:complexContent>
+            <xs:extension base="formattedTextType">
+                <xs:attribute name="number" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="listType">
+        <xs:sequence>
+            <xs:element name="item" type="listItemType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="listItemType">
+        <xs:sequence>
+            <xs:element name="itemPrefix" type="formattedTextType" minOccurs="0"/>
+            <xs:element name="itemContent" minOccurs="0">
+                <xs:complexType mixed="true">
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="strong" type="formattedTextType"/>
+                        <xs:element name="em" type="formattedTextType"/>
+                        <xs:element name="sub" type="formattedTextType"/>
+                        <xs:element name="sup" type="formattedTextType"/>
+                        <xs:element name="underline" type="formattedTextType"/>
+                        <xs:element name="date">
+                            <xs:complexType mixed="true">
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                        <xs:attribute name="iso" type="xs:date" use="required"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="footnote">
+                            <xs:complexType mixed="true">
+                                <xs:complexContent>
+                                    <xs:extension base="formattedTextType">
+                                        <xs:attribute name="id" type="xs:string" use="optional"/>
+                                        <xs:attribute name="number" type="xs:string" use="optional"/>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="quote" type="formattedTextType"/>
+                        <xs:element name="ref">
+                            <xs:complexType mixed="true">
+                                <xs:complexContent>
+                                    <xs:extension base="formattedTextType">
+                                        <xs:attribute name="type" type="xs:string" use="optional"/>
+                                        <xs:attribute name="target" type="xs:string" use="optional"/>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="br"/>
+                        <xs:element name="ie"/>
+                        <xs:element name="contentItem" type="contentType"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tableType">
+        <xs:sequence>
+            <xs:element name="title" type="formattedTextType" minOccurs="0"/>
+            <xs:element name="row" type="tableRowType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="numCols" type="xs:positiveInteger" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="tableRowType">
+        <xs:sequence>
+            <xs:element name="cell" type="tableCellType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="isHeader" type="xs:boolean" default="false"/>
+    </xs:complexType>
+
+    <xs:complexType name="tableCellType">
+        <xs:complexContent mixed="true">
+            <xs:extension base="formattedTextType">
+                <xs:attribute name="colspan" type="xs:positiveInteger" use="optional"/>
+                <xs:attribute name="rowspan" type="xs:positiveInteger" use="optional"/>
+                <xs:attribute name="isHeader" type="xs:boolean" default="false"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

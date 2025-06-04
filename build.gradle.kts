@@ -7,7 +7,7 @@ plugins {
 allprojects {
     group = "com.kludgeworks"
     version = "0.0.1-SNAPSHOT"
-    
+
 //    apply {
 //        plugin("org.cyclonedx.bom")
 //    }
@@ -21,6 +21,7 @@ tasks.register("build") {
 //    dependsOn(":cdm:build")
 //    dependsOn(":rdf-service:build")
     dependsOn(":cellar-client:build")
+    dependsOn(":transformation:build")
 }
 
 tasks.register("test") {
@@ -31,4 +32,5 @@ tasks.register("test") {
 //    dependsOn(":cdm:test")
 //    dependsOn(":rdf-service:test")
     dependsOn(":cellar-client:test")
+    dependsOn(":transformation:test")
 }
