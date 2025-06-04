@@ -1,6 +1,8 @@
 package com.kludgeworks.eu.legislation.cellarclient.sparql
 
 import kotlinx.datetime.LocalDate
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
@@ -17,6 +19,7 @@ import kotlinx.serialization.json.jsonPrimitive
  * @property layer The layer identifier (e.g., "001") - nullable
  * @property version The version identifier (e.g., "001") - nullable
  */
+@Serializable
 data class ConsolidationInfo(
     val uri: String,
     val consolidationId: String,
@@ -27,7 +30,10 @@ data class ConsolidationInfo(
     val layer: String?,
     val version: String?
 ) {
+    @Transient
     val isBaseConsolidation: Boolean = layer == null && version == null
+    
+    @Transient
     val hasVersioning: Boolean = layer != null || version != null
 }
 

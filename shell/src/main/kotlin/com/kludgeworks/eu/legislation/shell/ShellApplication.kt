@@ -31,7 +31,8 @@ class RootCommand : Callable<Int> {
 class ShellApplication(
     private val factory: IFactory,
     private val workCommand: WorkCommand,
-    private val downloadCommand: DownloadCommand
+    private val downloadCommand: DownloadCommand,
+    private val downloadAllCommand: DownloadAllCommand
 ) : CommandLineRunner, ExitCodeGenerator {
 
     private var exitCode = 0
@@ -40,9 +41,10 @@ class ShellApplication(
         // Create a parent command to hold all subcommands
         val parentCommand = CommandLine(RootCommand(), factory)
 
-        // Add work and download commands as peers
+        // Add all commands as peers
         parentCommand.addSubcommand("work", workCommand)
         parentCommand.addSubcommand("download", downloadCommand)
+        parentCommand.addSubcommand("download-all", downloadAllCommand)
 
         exitCode = parentCommand.execute(*args)
     }

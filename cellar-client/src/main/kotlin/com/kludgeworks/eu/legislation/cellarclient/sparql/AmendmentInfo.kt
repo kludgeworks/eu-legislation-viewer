@@ -1,6 +1,7 @@
 package com.kludgeworks.eu.legislation.cellarclient.sparql
 
 import kotlinx.datetime.LocalDate
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
@@ -14,6 +15,7 @@ import kotlinx.serialization.json.jsonPrimitive
  * @property entryForceDates The dates when the amendment entered into force
  * @property title The title of the amendment
  */
+@Serializable
 data class AmendmentInfo(
     val uri: String,
     val amendedWorkUri: String,
@@ -44,7 +46,7 @@ object AmendmentConverter : SparqlBindingConverter<AmendmentInfo> {
 
         return datesString.split(",")
             .map { it.trim() }
-            .map { LocalDate.parse(it) }
+            .mapNotNull { DateValidation.parseValidDate(it) }
     }
 
     private fun JsonObject.getValue(key: String): String {

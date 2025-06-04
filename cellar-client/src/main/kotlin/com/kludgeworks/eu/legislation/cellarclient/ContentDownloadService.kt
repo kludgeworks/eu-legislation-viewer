@@ -3,6 +3,7 @@ package com.kludgeworks.eu.legislation.cellarclient
 import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
+import io.ktor.http.*
 import io.ktor.utils.io.jvm.javaio.*
 import org.springframework.stereotype.Service
 import java.io.File
@@ -31,7 +32,11 @@ class ContentDownloadService(
         val outputFile = File.createTempFile("download-", "-temp")
 
         try {
-            val result = httpClient.prepareGet(uri).execute { response ->
+            val result = httpClient.prepareGet(uri) {
+                headers {
+                    append(HttpHeaders.Accept, "*/*")
+                }
+            }.execute { response ->
                 if (response.status.value in 200..299) {
                     val contentLength = response.headers["Content-Length"]?.toLongOrNull()
 
