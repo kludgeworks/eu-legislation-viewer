@@ -1,6 +1,3 @@
 [tools]
 curlie = "latest"
 java = "25"
-
-[tasks.fetch]
-run = "java --enable-preview fetch_english_fmx4_manifestations.java"
