@@ -1,5 +1,6 @@
 [tools]
 curlie = "latest"
+gum = "latest"
 java = "25"
 jbang = "latest"
 "ubi:nushell/nushell" = { version = "latest", exe = "nu" }

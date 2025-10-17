@@ -54,10 +54,12 @@ let results = (
     }
 )
 
-# Display results
+# Display results using gum
 if ($results | length) > 0 {
-    print $"Work: ($work_uri)"
-    print $"Title: ($results.0.title)"
+    gum style --foreground 212 --bold --margin "1 0" "Document Title"
+    gum style --foreground 240 $"Work: ($work_uri)"
+    gum style --foreground 86 --bold --margin "1 0" $results.0.title
 } else {
-    print $"No title found for: ($work_uri)"
+    gum style --foreground 196 --bold "No title found"
+    gum style --foreground 240 $"Work: ($work_uri)"
 }
