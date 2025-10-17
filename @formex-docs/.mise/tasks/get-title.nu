@@ -9,31 +9,24 @@ let uuid = $env.usage_uuid
 # Get endpoint (with default fallback)
 let endpoint = ($env.usage_endpoint? | default "https://publications.europa.eu/webapi/rdf/sparql")
 
-# Construct full item URI
-let item_uri = $"http://publications.europa.eu/resource/cellar/($uuid)"
+# The manifestation URI
+let manifestation_uri = $"http://publications.europa.eu/resource/cellar/($uuid)"
 
 # SPARQL query to get title
 let sparql_query = ([
   "PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>"
-  "PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>"
   ""
-  "SELECT ?item ?title"
+  "SELECT ?title"
   "WHERE {"
-  "  # Your item URI"
-  ("  BIND(<" + $item_uri + "> AS ?item)")
-  ""
-  "  # Traverse up to get title"
-  "  ?item cdm:item_belongs_to_manifestation ?manifestation ."
-  "  ?manifestation cdm:manifestation_manifests_expression ?expression ."
-  ""
-  "  # Try to get title from expression (preferred for language-specific titles)"
+  ("  <" + $manifestation_uri + ">")
+  "    cdm:manifestation_manifests_expression ?expression ."
+  "  "
+  "  ?expression cdm:expression_belongs_to_work ?work ."
+  "  "
   "  OPTIONAL { ?expression cdm:expression_title ?title }"
-  ""
-  "  # If no expression title, get from work"
-  "  OPTIONAL {"
-  "    ?expression cdm:expression_belongs_to_work ?work ."
-  "    ?work cdm:work_title ?title ."
-  "  }"
+  "  OPTIONAL { ?work cdm:work_title ?title }"
+  "  "
+  "  FILTER(lang(?title) = \"en\" || lang(?title) = \"\")"
   "}"
 ] | str join "\n")
 
@@ -54,13 +47,6 @@ let results = (
     | each { |result|
         let bindings = $result.content
 
-        let item = (
-            $bindings
-            | where tag == "binding" and attributes.name == "item"
-            | get content.0.content.0.content
-            | first
-        )
-
         let title = (
             $bindings
             | where tag == "binding" and attributes.name == "title"
@@ -68,14 +54,14 @@ let results = (
             | first
         )
 
-        { item: $item, title: $title }
+        { title: $title }
     }
 )
 
 # Display results
 if ($results | length) > 0 {
-    print $"Item: ($item_uri)"
+    print $"Manifestation: ($manifestation_uri)"
     print $"Title: ($results.0.title)"
 } else {
-    print $"No title found for: ($item_uri)"
+    print $"No title found for: ($manifestation_uri)"
 }
