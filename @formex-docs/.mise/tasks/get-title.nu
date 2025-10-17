@@ -9,24 +9,20 @@ let uuid = $env.usage_uuid
 # Get endpoint (with default fallback)
 let endpoint = ($env.usage_endpoint? | default "https://publications.europa.eu/webapi/rdf/sparql")
 
-# The manifestation URI
-let manifestation_uri = $"http://publications.europa.eu/resource/cellar/($uuid)"
+# The work URI
+let work_uri = $"http://publications.europa.eu/resource/cellar/($uuid)"
 
 # SPARQL query to get title
 let sparql_query = ([
   "PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>"
+  "PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>"
+  "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
   ""
   "SELECT ?title"
   "WHERE {"
-  ("  <" + $manifestation_uri + ">")
-  "    cdm:manifestation_manifests_expression ?expression ."
-  "  "
-  "  ?expression cdm:expression_belongs_to_work ?work ."
-  "  "
-  "  OPTIONAL { ?expression cdm:expression_title ?title }"
-  "  OPTIONAL { ?work cdm:work_title ?title }"
-  "  "
-  "  FILTER(lang(?title) = \"en\" || lang(?title) = \"\")"
+  ("  ?expression cdm:expression_belongs_to_work <" + $work_uri + "> ;")
+  "              cmr:lang \"eng\"^^xsd:language ;"
+  "              cdm:expression_title ?title ."
   "}"
 ] | str join "\n")
 
@@ -60,8 +56,8 @@ let results = (
 
 # Display results
 if ($results | length) > 0 {
-    print $"Manifestation: ($manifestation_uri)"
+    print $"Work: ($work_uri)"
     print $"Title: ($results.0.title)"
 } else {
-    print $"No title found for: ($manifestation_uri)"
+    print $"No title found for: ($work_uri)"
 }
