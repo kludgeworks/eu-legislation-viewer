@@ -1,8 +1,7 @@
 ///usr/bin/env jbang --quiet "$0" "$@" ; exit $?
 //JAVA 25
 //PREVIEW
-///// script
-///// summary: Fetch English FMX4 manifestations from Europa Publications RDF endpoint
+//MISE description="Fetch English FMX4 manifestations from Europa Publications RDF endpoint"
 
 import java.net.URI;
 import java.net.URLEncoder;

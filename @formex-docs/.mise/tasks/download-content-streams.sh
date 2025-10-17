@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-#/// script
-#/// summary: Download URLs from content-streams.txt, save as .xml, and pretty print when possible
+#MISE description="Download URLs from content-streams.txt, save as .xml, and pretty print when possible"
 
 set -euo pipefail
 
