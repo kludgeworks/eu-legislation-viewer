@@ -103,6 +103,12 @@ while IFS= read -r url || [[ -n "${url}" ]]; do
     continue
   fi
 
+  if [[ "${status_code}" == "500" ]]; then
+    rm -f "${tmp_path}"
+    printf 'Server error (500): %s\n' "${url}"
+    continue
+  fi
+
   if [[ "${status_code}" =~ ^[0-9]+$ ]] && (( status_code >= 400 )); then
     rm -f "${tmp_path}"
     printf 'Unexpected status %s for %s\n' "${status_code}" "${url}" >&2
