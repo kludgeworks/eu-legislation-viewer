@@ -5,6 +5,20 @@
 # Downloads URLs in parallel using Nushell's http client and formats responses as XML.
 # Defaults: input_file=content-streams.txt, output_dir=downloads-nu, threads=4.
 
+def emit-status [result] {
+  let status = ($result.status | default "unknown")
+  let url = ($result.url | default "")
+  let message = ($result.message? | default "")
+
+  if ($message | is-empty) {
+    print $"($status)\t($url)"
+  } else {
+    print $"($status)\t($url)\t($message)"
+  }
+
+  $result
+}
+
 def read-urls [file_path: string] {
   open --raw $file_path
     | lines
@@ -31,7 +45,14 @@ def download-entry [entry out_dir: string] {
   let target = ([ $target_dir, $file_name ] | path join)
 
   if ($target | path exists) {
-    return { index: $idx url: $url path: $target status: "skipped" code: null message: null }
+    return (emit-status {
+      index: $idx
+      url: $url
+      path: $target
+      status: "skipped"
+      code: null
+      message: "exists"
+    })
   }
 
   let target_dir = ($target | path dirname)
@@ -45,17 +66,38 @@ def download-entry [entry out_dir: string] {
 
   let err_msg = ($response | get err? | default null)
   if ($err_msg != null) {
-    return { index: $idx url: $url path: $target status: "error" code: null message: $err_msg }
+    return (emit-status {
+      index: $idx
+      url: $url
+      path: $target
+      status: "error"
+      code: null
+      message: $err_msg
+    })
   }
 
   let status = ($response.status | default 0)
 
   if ($status == 404 or $status == 500) {
-    return { index: $idx url: $url path: $target status: "skipped" code: $status message: null }
+    return (emit-status {
+      index: $idx
+      url: $url
+      path: $target
+      status: "skipped"
+      code: $status
+      message: $"http $status"
+    })
   }
 
   if ($status >= 400) {
-    return { index: $idx url: $url path: $target status: "error" code: $status message: $"HTTP ($status)" }
+    return (emit-status {
+      index: $idx
+      url: $url
+      path: $target
+      status: "error"
+      code: $status
+      message: $"http $status"
+    })
   }
 
   let body = ($response.body | default "")
@@ -66,10 +108,24 @@ def download-entry [entry out_dir: string] {
 
   if ($formatted == null) {
     $body | save --force --raw $target
-    { index: $idx url: $url path: $target status: "ok" code: $status message: "saved raw (formatting failed)" }
+    return (emit-status {
+      index: $idx
+      url: $url
+      path: $target
+      status: "ok"
+      code: $status
+      message: "raw"
+    })
   } else {
     $formatted | save --force --raw $target
-    { index: $idx url: $url path: $target status: "ok" code: $status message: null }
+    return (emit-status {
+      index: $idx
+      url: $url
+      path: $target
+      status: "ok"
+      code: $status
+      message: ""
+    })
   }
 }
 
@@ -82,10 +138,10 @@ def report-results [results manifest_path: string] {
   let errors = ($results | where status == "error")
 
   if ($errors | is-empty) {
-    print $"All downloads completed. Manifest: ($manifest_path)"
+    print -e $"All downloads completed. Manifest: ($manifest_path)"
   } else {
-    print "Some downloads failed:"
-    $errors | each { |row| print $"- ($row.url): ($row.message | default "error")" }
+    print -e "Some downloads failed:"
+    $errors | each { |row| print -e $"- ($row.url): ($row.message | default "error")" }
     exit 1
   }
 }
@@ -110,12 +166,21 @@ def main [
   let urls = (read-urls $input_path)
 
   if ($urls | is-empty) {
-    print "No URLs to download."
+    print -e "No URLs to download."
     return 0
   }
 
+  if (which pv | is-empty) {
+    print -e "Warning: pv not found in PATH. Install it (e.g. 'brew install pv') for progress bars."
+  }
+
+  let total = ($urls | length)
+
   let results = ($urls
-    | par-each --threads $jobs { |row| download-entry $row $out_dir_path }
+    | enumerate
+    | par-each --threads $jobs { |pair|
+        download-entry $pair.item $out_dir_path
+      }
     | collect)
 
   let manifest_path = ([$out_dir_path, "manifest.json"] | path join)
