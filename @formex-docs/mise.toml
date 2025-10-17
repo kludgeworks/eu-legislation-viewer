@@ -1,3 +1,4 @@
 [tools]
 curlie = "latest"
 java = "25"
+jbang = "latest"

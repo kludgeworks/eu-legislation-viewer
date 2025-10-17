@@ -1,3 +1,9 @@
+///usr/bin/env jbang --quiet "$0" "$@" ; exit $?
+//JAVA 25
+//PREVIEW
+///// script
+///// summary: Fetch English FMX4 manifestations from Europa Publications RDF endpoint
+
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -7,7 +13,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-void main(String[] args) throws Exception {
+public class fetch {
+    public static void main(String[] args) throws Exception {
     String sparqlQuery = """
         PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
         PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
@@ -70,5 +77,6 @@ void main(String[] args) throws Exception {
     // Output each item URI on a new line
     while (matcher.find()) {
         System.out.println(matcher.group(1));
+    }
     }
 }
