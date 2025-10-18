@@ -1,10 +1,9 @@
 #!/usr/bin/env -S nu
 #MISE description="Download content streams listed in a file using Nushell"
-##USAGE flag "-f --file" default="content-streams.txt"
-##USAGE flag "-o --output" default="downloads"
-##USAGE flag "-j --jobs" default="4"
+#USAGE flag "-i --input <input>" default="content-streams.txt"
+#USAGE flag "-o --output <output>" default="downloads"
+#USAGE flag "-j --jobs <jobs>" default="16"
 
-env
 # Downloads a single URL, saves it, and returns a status record.
 def "download-url" [
   url: string,      # The URL to download
@@ -61,13 +60,13 @@ def "download-url" [
 
 # Main entry point for the script
 def main [
-  --file(-f): string = "content-streams.txt"
-  --output(-o): string = "downloads"
-  --jobs(-j): int = 4
+  --input(-i): string = "$env.usage_input"  # Accepted but not used; actual value comes from $env.usage_input
+  --output(-o): string = "" # Accepted but not used; actual value comes from $env.usage_output
+  --jobs(-j): int = 0       # Accepted but not used; actual value comes from $env.usage_jobs
 ] {
-  let input = $file
-  let out_dir = $output
-  let jobs = $jobs
+  let input = $env.usage_input
+  let out_dir = $env.usage_output
+  let jobs = ($env.usage_jobs | into int)
 
   print $"jobs: ($jobs)"
   if not ($input | path exists) {
