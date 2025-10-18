@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 #MISE description="Get title for a document by UUID"
-#USAGE arg "<uuid>" help="UUID of the document (e.g., 649266ad-6b87-4a28-80ea-8f8c1aae32c4.0001.01/DOC_1)"
+#USAGE flag "--uuid <uuid>" help="UUID of the document to fetch the title for"
 #USAGE flag "-e --endpoint <url>" help="SPARQL endpoint URL" default="https://publications.europa.eu/webapi/rdf/sparql"
 
 # Get UUID from mise argument

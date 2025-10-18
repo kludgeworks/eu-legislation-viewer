@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 #MISE description="Fetch English FMX4 manifestations from Europa Publications RDF endpoint"
-#USAGE arg "[endpoint]" help="SPARQL endpoint URL" default="https://publications.europa.eu/webapi/rdf/sparql"
+#USAGE flag "--endpoint <url>" help="SPARQL endpoint URL" default="https://publications.europa.eu/webapi/rdf/sparql"
 
 # SPARQL query to find English FMX4 manifestations
 let sparql_query = "
@@ -30,20 +30,12 @@ let endpoint = ($env.usage_endpoint? | default "https://publications.europa.eu/w
 # Build URL with encoded query parameter
 let url = $"($endpoint)?query=($sparql_query | url encode --all)"
 
-# Fetch SPARQL results and parse XML
+# Fetch SPARQL results and parse JSON
 let response = (
-    http get --headers [Accept "application/sparql-results+xml"] $url
-    | from xml
+    http get --headers [Accept "application/sparql-results+json"] $url
+    | from json
 )
 
-# Navigate XML structure: sparql -> results -> result[] -> binding -> uri -> content
-$response.content
-| where tag == "results"
-| get content.0
-| each { |result|
-    $result.content
-    | where tag == "binding" and attributes.name == "item"
-    | get content.0.content.0.content
-}
-| flatten
-| each { print }
+# Navigate JSON structure
+$response.results.bindings
+| each { |binding| print $binding.item.value }
