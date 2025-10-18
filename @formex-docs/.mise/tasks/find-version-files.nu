@@ -1,8 +1,14 @@
 #!/usr/bin/env nu
 #MISE description="List downloaded XML files that reference a specific Formex schema version"
 #USAGE flag "--version <version>" help="Formex schema filename to match (e.g. formex-06.02.1-20231031.xd)"
+#USAGE flag "-l --limit <count>" help="Maximum number of matching files to return" default="100"
 
 let version = $env.usage_version?
+let limit = (
+    $env.usage_limit?
+    | default "100"
+    | into int
+)
 
 if $version == null or ($version | str trim) == "" {
     error make { msg: "Missing required --version argument (e.g. formex-06.02.1-20231031.xd)" }
@@ -42,6 +48,7 @@ let matches = (
     }
     | compact
     | sort-by file
+    | take $limit
 )
 
 if ($matches | is-empty) {
