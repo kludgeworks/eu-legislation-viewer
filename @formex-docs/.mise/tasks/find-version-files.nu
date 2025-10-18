@@ -1,12 +1,12 @@
 #!/usr/bin/env nu
 #MISE description="List downloaded XML files that reference a specific Formex schema version"
 #USAGE flag "--version <version>" help="Formex schema filename to match (e.g. formex-06.02.1-20231031.xd)"
-#USAGE flag "-l --limit <count>" help="Maximum number of matching files to return" default="100"
+#USAGE flag "-l --limit <count>" help="Maximum number of matching files to return"
 
 let version = $env.usage_version?
 let limit = (
     $env.usage_limit?
-    | default "100"
+    | default "-1"
     | into int
 )
 
@@ -36,7 +36,7 @@ let matches = (
     # Filter out the non-matches
     | compact
     # Take the first N items, short-circuiting the stream
-    | first $limit
+    | if $limit >= 0 { first $limit } else { each { |it| $it } }
     # Convert the paths to be relative for clean output
     | each { |file|
         let relative = if ($file | path type) == "relative" {
