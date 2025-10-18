@@ -16,39 +16,37 @@ if $version == null or ($version | str trim) == "" {
 
 let repo_root = (pwd)
 
+# Create a stream of all XML files
 let matches = (
     glob downloads/**/*.xml
-    | par-each { |file|
+    # Process each file in the stream
+    | each { |file|
         let schema = (try {
             open --raw $file
             | from xml
             | get attributes.noNamespaceSchemaLocation?
-            | if $in != null {
-                path basename
-            } else {
-                null
-            }
+            | if $in != null { path basename } else { null }
         } catch {
             null
         })
 
-        if $schema == $version { 
-            {
-                file: (
-                    if ($file | path type) == "relative" {
-                        $file
-                    } else {
-                        $file | path relative-to $repo_root
-                    }
-                )
-            }
-        } else {
-            null
-        }
+        # Output the file path if it's a match, otherwise output null
+        if $schema == $version { $file } else { null }
     }
+    # Filter out the non-matches
     | compact
+    # Take the first N items, short-circuiting the stream
+    | first $limit
+    # Convert the paths to be relative for clean output
+    | each { |file|
+        let relative = if ($file | path type) == "relative" {
+            $file
+        } else {
+            $file | path relative-to $repo_root
+        }
+        { file: $relative }
+    }
     | sort-by file
-    | take $limit
 )
 
 if ($matches | is-empty) {
