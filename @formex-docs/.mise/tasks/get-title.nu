@@ -39,7 +39,6 @@ let response = (
 # Navigate JSON structure to extract results
 let results = (
     $response.results.bindings
-    | where { |binding| $binding.title."xml:lang" == "en" }
     | each { |binding| { title: $binding.title.value } }
 )
 
