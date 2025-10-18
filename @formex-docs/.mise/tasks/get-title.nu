@@ -21,37 +21,26 @@ let sparql_query = ([
   "SELECT ?title"
   "WHERE {"
   ("  ?expression cdm:expression_belongs_to_work <" + $work_uri + "> ;")
-  "              cmr:lang \"eng\"^^xsd:language ;"
+  "              cmr:lang "eng"^^xsd:language ;"
   "              cdm:expression_title ?title ."
   "}"
-] | str join "\n")
+] | str join "
+")
 
 # Build URL with encoded query parameter
 let url = $"($endpoint)?query=($sparql_query | url encode --all)"
 
-# Fetch SPARQL results and parse XML
+# Fetch SPARQL results and parse JSON
 let response = (
-    http get --headers [Accept "application/sparql-results+xml"] $url
-    | from xml
+    http get --headers [Accept "application/sparql-results+json"] $url
+    | from json
 )
 
-# Navigate XML structure to extract results
+# Navigate JSON structure to extract results
 let results = (
-    $response.content
-    | where tag == "results"
-    | get content.0
-    | each { |result|
-        let bindings = $result.content
-
-        let title = (
-            $bindings
-            | where tag == "binding" and attributes.name == "title"
-            | get content.0.content.0.content
-            | first
-        )
-
-        { title: $title }
-    }
+    $response.results.bindings
+    | where { |binding| $binding.title."xml:lang" == "en" }
+    | each { |binding| { title: $binding.title.value } }
 )
 
 # Display results using gum
