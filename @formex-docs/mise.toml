@@ -3,4 +3,5 @@ curlie = "latest"
 gum = "latest"
 java = "25"
 jbang = "latest"
+ripgrep = "latest"
 "ubi:nushell/nushell" = { version = "latest", exe = "nu" }
