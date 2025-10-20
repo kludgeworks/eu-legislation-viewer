@@ -1,6 +1,5 @@
 #!/usr/bin/env nu
 #MISE description="Analyze formex schema versions across downloaded XML files"
-#MISE alias="a"
 #USAGE flag "-f --format <format>" help="Output format: table, json, csv, tsv, jsonl" default="table"
 
 # Parse all XML files and extract the noNamespaceSchemaLocation attribute
