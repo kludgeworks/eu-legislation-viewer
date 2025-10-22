@@ -1,18 +1,19 @@
 #!/usr/bin/env nu
 #MISE description="List downloaded XML files that reference a specific Formex schema version"
 #USAGE flag "-l --limit <count>" help="Total maximum number of matching files to return"
+#USAGE flag "-w --with-version" help="Include the version field in the output"
 #USAGE flag "-f --format <format>" help="Output format" default="table" {
 #USAGE   choices "table" "json" "csv" "tsv" "jsonl"
 #USAGE }
 #USAGE arg versions... "Formex schema filename(s) to match (e.g. formex-06.02.1-20231031.xd)"
 
-def main [...versions: string, --limit(-l): int = -1, --limit-per-version(-p): int = -1, --with-version(-w), --format(-f): string = "table"] {q
+def main [...versions: string, --limit(-l): int = -1, --with-version(-w), --format(-f): string = "table"] {
 
-    if ($versions | is-empty) {
-        error make { msg: "Missing required version argument(s) (e.g. formex-06.02.1-20231031.xd)" }
-    }
-    
-    let results = rg --files -g '*.xml' downloads
+  if ($versions | is-empty) {
+      error make { msg: "Missing required version argument(s) (e.g. formex-06.02.1-20231031.xd)" }
+  }  
+
+  let results = rg --files -g '*.xml' downloads
         | lines
         | each {|file|
             try {
@@ -32,6 +33,11 @@ def main [...versions: string, --limit(-l): int = -1, --limit-per-version(-p): i
         | enumerate
         | take until {|entry| $limit > 0 and $entry.index >= $limit }
         | each {|entry| $entry.item }
+        | if $with_version {
+            $in
+        } else {
+            each {|entry| $entry.file }
+        }
 
     match $format {
         "json" => { $results | to json }
@@ -40,7 +46,7 @@ def main [...versions: string, --limit(-l): int = -1, --limit-per-version(-p): i
         "jsonl" => { $results | each { to json } | str join (char newline) }
         "table" => { $results }
         _ => {
-            error make { msg: $"Unknown format: ($format). Use: table, json, csv, tsv, or jsonl" }
+            error make { msg: $"Unknown format: ($format)" }
         }
-    }        
+    }
 }
