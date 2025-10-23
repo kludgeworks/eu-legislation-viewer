@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.56-20160701.xd">
+    <BIB.DOC>
+        <PROD.ID>20170327003</PROD.ID>
+        <FIN.ID>106362</FIN.ID>
+        <NO.DOC FORMAT="YN" TYPE="OJ">
+            <NO.CURRENT>627</NO.CURRENT>
+            <YEAR>2017</YEAR>
+            <COM>EU</COM>
+        </NO.DOC>
+        <DURAB TYPE="DUR">
+        </DURAB>
+        <AUTHOR>COM</AUTHOR>
+        <EEA>
+        </EEA>
+    </BIB.DOC>
+    <PUBLICATION.REF FILE="L_2017096EN.toc.xml">
+        <COLL>L</COLL>
+        <NO.OJ>096</NO.OJ>
+        <DATE ISO="20170407">20170407</DATE>
+        <LG.OJ>EN</LG.OJ>
+        <VOLUME.REF>01</VOLUME.REF>
+    </PUBLICATION.REF>
+    <FMX>
+        <DOC.MAIN.PUB NO.SEQ="0002" SYNOPTISM="D0002">
+            <LG.DOC>EN</LG.DOC>
+            <LEGAL.VALUE>REG</LEGAL.VALUE>
+            <DATE ISO="20170403">20170403</DATE>
+            <PAGE.FIRST>44</PAGE.FIRST>
+            <PAGE.LAST>46</PAGE.LAST>
+            <PAGE.TOTAL>3</PAGE.TOTAL>
+            <PAGE.SEQ>1</PAGE.SEQ>
+            <REF.PHYS FILE="L_2017096EN.01004401.xml" TYPE="DOC.XML">
+            </REF.PHYS>
+        </DOC.MAIN.PUB>
+        <DOC.SUB.PUB IN.SUMMARY="NO" NO.SEQ="0002.0001" SYNOPTISM="D0002.0001" TYPE="ANNEX">
+            <PAGE.FIRST>47</PAGE.FIRST>
+            <PAGE.LAST>70</PAGE.LAST>
+            <PAGE.TOTAL>24</PAGE.TOTAL>
+            <PAGE.SEQ>1</PAGE.SEQ>
+            <REF.PHYS FILE="L_2017096EN.01004701.xml" TYPE="DOC.XML">
+            </REF.PHYS>
+        </DOC.SUB.PUB>
+    </FMX>
+    <PAPER>
+        <VOLUME.PAPER>
+            <ITEM.VOLUME REF.NO.SEQ="0002">
+                <TITLE ID.TITLE="T0001">
+                    <TI>
+                        <P>Commission Regulation (EU) 2017/627 of<DATE ISO="20170403">3 April 2017</DATE>amending Annexes II, III and V to Regulation (EC) No 396/2005 of the European Parliament and of the Council as regards maximum residue levels for fenpyroximate, triadimenol and triadimefon in or on certain products<NOTE NOTE.ID="E0001" NUMBERING="ARAB">
+                                <P>Text with EEA relevance.</P>
+                            </NOTE>
+                        </P>
+                    </TI>
+                </TITLE>
+                <ITEM.REF>44</ITEM.REF>
+            </ITEM.VOLUME>
+        </VOLUME.PAPER>
+    </PAPER>
+    <PDF>
+        <ITEM.VOLUME REF.NO.SEQ="0002">
+            <TITLE REF.TITLE="T0001">
+            </TITLE>
+            <ITEM.REF REF.PDF="l_09620170407en00440070.pdf">44</ITEM.REF>
+        </ITEM.VOLUME>
+    </PDF>
+</DOC>

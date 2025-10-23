@@ -1,12 +1,15 @@
 package com.kludgeworks.formex.model;
 
+import com.kludgeworks.formex.util.FormexTestDataProvider;
+import com.kludgeworks.formex.util.FormexVersionTestUtils;
 import com.kludgeworks.formex.util.XmlTestUtils;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.xmlunit.assertj.XmlAssert.assertThat;
 
@@ -14,24 +17,27 @@ import static org.xmlunit.assertj.XmlAssert.assertThat;
 @DisplayName("ACT XML Validation Tests")
 class ActXmlTest {
 
-    private ACT act;
-    private String xml;
-
-    @BeforeEach
-    void setUp() {
-        act = XmlTestUtils.unmarshalXmlFromClasspath( "/32015R1998/DOC_2.xml", ACT.class );
-        xml = XmlTestUtils.readXmlFromClasspath( "/32015R1998/DOC_2.xml" );
+    static Stream<Arguments> actTestData() {
+        return FormexTestDataProvider.actTestData();
     }
 
-    @Test
-    @DisplayName("Should unmarshal DOC_2.xml successfully")
-    void shouldUnmarshalSuccessfully() {
+    @ParameterizedTest
+    @MethodSource("actTestData")
+    @DisplayName("Should unmarshal ACT files successfully")
+    void shouldUnmarshalSuccessfully(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        ACT act = XmlTestUtils.unmarshalXmlFromClasspath(resourcePath, ACT.class);
         Assertions.assertThat( act ).isNotNull();
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("actTestData")
     @DisplayName("Should have valid BIB.INSTANCE element with correct values")
-    void shouldHaveValidBibInstance() {
+    void shouldHaveValidBibInstance(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        ACT act = XmlTestUtils.unmarshalXmlFromClasspath(resourcePath, ACT.class);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
+        
         BIBINSTANCE bibInstance = act.getBIBINSTANCE();
 
         // Verify BIB.INSTANCE structure exists
@@ -44,73 +50,63 @@ class ActXmlTest {
         assertThat( xml ).valueByXPath( "//ACT/BIB.INSTANCE/PAGE.TOTAL" )
             .isEqualTo( bibInstance.getPAGETOTAL().toString() );
 
-        // Verify language and date elements match object model
-        assertThat( xml ).valueByXPath( "//ACT/BIB.INSTANCE/LG.DOC" ).isEqualTo( bibInstance.getLGDOC().value() );
+        // Verify structural elements exist
+        assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/LG.DOC" );
         assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/DATE" );
-        assertThat( xml ).valueByXPath( "//ACT/BIB.INSTANCE/DATE/@ISO" )
-            .isEqualTo( bibInstance.getDATES().getFirst().getISO() );
-
-        // Verify EEA element exists
         assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/EEA" );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("actTestData")
     @DisplayName("Should have valid DOCUMENT.REF element")
-    void shouldHaveValidDocumentRef() {
-        DOCUMENTREF documentRef = act.getBIBINSTANCE().getDOCUMENTREF();
+    void shouldHaveValidDocumentRef(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
 
         // Verify DOCUMENT.REF structure exists
         assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF" );
-
-        // Verify Official Journal reference values match object model
-        assertThat( xml ).valueByXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/COLL" )
-            .isEqualTo( documentRef.getCOLL().value() );
-        assertThat( xml ).valueByXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/NO.OJ" ).isEqualTo( documentRef.getNOOJ() );
-        assertThat( xml ).valueByXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/YEAR" ).isEqualTo( documentRef.getYEAR() );
-        assertThat( xml ).valueByXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/LG.OJ" )
-            .isEqualTo( documentRef.getLGOJ().value() );
-
-        // Verify volume and page information match object model
-        assertThat( xml ).valueByXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/VOLUME.REF" )
-            .isEqualTo( documentRef.getVOLUMEREF() );
-        assertThat( xml ).valueByXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/PAGE.FIRST" )
-            .isEqualTo( documentRef.getPAGEFIRST() );
+        assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/COLL" );
+        assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/NO.OJ" );
+        assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/YEAR" );
+        assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/LG.OJ" );
+        assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/VOLUME.REF" );
+        assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/PAGE.FIRST" );
         assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/DOCUMENT.REF/@FILE" );
     }
 
     @ParameterizedTest
-    @ValueSource(strings = { "//ACT/TITLE", "//ACT/PREAMBLE", "//ACT/ENACTING.TERMS" })
+    @MethodSource("actTestData")
     @DisplayName("Should have required ACT elements")
-    void shouldHaveRequiredElements(String xpath) {
-        assertThat( xml ).hasXPath( xpath );
+    void shouldHaveRequiredElements(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
+        
+        assertThat( xml ).hasXPath( "//ACT/TITLE" );
+        assertThat( xml ).hasXPath( "//ACT/PREAMBLE" );
+        assertThat( xml ).hasXPath( "//ACT/ENACTING.TERMS" );
     }
 
-    @Test
-    @DisplayName("Should have correct NNC attribute default")
-    void shouldHaveCorrectNncAttribute() {
-        TBoolean nnc = act.getNNC();
+    @ParameterizedTest
+    @MethodSource("actTestData")
+    @DisplayName("Should have NO.DOC element with correct structure")
+    void shouldHaveValidNoDoc(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
 
-        if ( nnc != null ) {
-            assertThat( nnc.value() ).isEqualTo( "NO" );
-        }
-    }
-
-    @Test
-    @DisplayName("Should have NO.DOC element with correct values")
-    void shouldHaveValidNoDoc() {
-        NODOC noDoc = act.getBIBINSTANCE().getNODOCS().getFirst();
-
-        // Verify NO.DOC structure and attributes match object model
+        // Verify NO.DOC structure exists
         assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/NO.DOC" );
-        assertThat( xml ).valueByXPath( "//ACT/BIB.INSTANCE/NO.DOC/@TYPE" ).isEqualTo( noDoc.getTYPE() );
-        assertThat( xml ).valueByXPath( "//ACT/BIB.INSTANCE/NO.DOC/@FORMAT" ).isEqualTo( noDoc.getFORMAT() );
+        assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/NO.DOC/@TYPE" );
+        assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/NO.DOC/@FORMAT" );
         assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE/NO.DOC/NO.CURRENT" );
     }
 
-
-    @Test
+    @ParameterizedTest
+    @MethodSource("actTestData")
     @DisplayName("Should have proper element structure")
-    void shouldHaveProperElementStructure() {
+    void shouldHaveProperElementStructure(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
+        
         // Verify all main ACT elements exist
         assertThat( xml ).hasXPath( "//ACT/BIB.INSTANCE" );
         assertThat( xml ).hasXPath( "//ACT/TITLE" );

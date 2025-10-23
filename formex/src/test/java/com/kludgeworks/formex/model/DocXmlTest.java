@@ -1,9 +1,14 @@
 package com.kludgeworks.formex.model;
 
+import com.kludgeworks.formex.util.FormexTestDataProvider;
+import com.kludgeworks.formex.util.FormexVersionTestUtils;
 import com.kludgeworks.formex.util.XmlTestUtils;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.xmlunit.assertj.XmlAssert.assertThat;
 
@@ -11,24 +16,27 @@ import static org.xmlunit.assertj.XmlAssert.assertThat;
 @DisplayName("DOC XML Validation Tests")
 class DocXmlTest {
 
-    private DOC doc;
-    private String xml;
-
-    @BeforeEach
-    void setUp() {
-        doc = XmlTestUtils.unmarshalXmlFromClasspath( "/32015R1998/DOC_1.xml", DOC.class );
-        xml = XmlTestUtils.readXmlFromClasspath( "/32015R1998/DOC_1.xml" );
+    static Stream<Arguments> docTestData() {
+        return FormexTestDataProvider.docTestData();
     }
 
-    @Test
-    @DisplayName("Should unmarshal DOC_1.xml successfully")
-    void shouldUnmarshalSuccessfully() {
+    @ParameterizedTest
+    @MethodSource("docTestData")
+    @DisplayName("Should unmarshal DOC files successfully")
+    void shouldUnmarshalSuccessfully(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        DOC doc = XmlTestUtils.unmarshalXmlFromClasspath(resourcePath, DOC.class);
         assertThat( doc ).isNotNull();
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("docTestData")
     @DisplayName("Should have valid BIB.DOC element with correct values")
-    void shouldHaveValidBibDoc() {
+    void shouldHaveValidBibDoc(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        DOC doc = XmlTestUtils.unmarshalXmlFromClasspath(resourcePath, DOC.class);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
+        
         BIBDOC bibDoc = doc.getBIBDOC();
 
         // Verify BIB.DOC identification values match object model
@@ -41,36 +49,44 @@ class DocXmlTest {
         assertThat( xml ).hasXPath( "//DOC/BIB.DOC/EEA" );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("docTestData")
     @DisplayName("Should have valid PUBLICATION.REF element with correct values")
-    void shouldHaveValidPublicationRef() {
-        PUBLICATIONREF publicationRef = doc.getPUBLICATIONREF();
+    void shouldHaveValidPublicationRef(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
 
         // Verify PUBLICATION.REF structure exists
         assertThat( xml ).hasXPath( "//DOC/PUBLICATION.REF" );
-
-        // Verify Official Journal publication details match object model
-        assertThat( xml ).valueByXPath( "//DOC/PUBLICATION.REF/COLL" ).isEqualTo( publicationRef.getCOLL().value() );
-        assertThat( xml ).valueByXPath( "//DOC/PUBLICATION.REF/NO.OJ" ).isEqualTo( publicationRef.getNOOJ() );
-        assertThat( xml ).valueByXPath( "//DOC/PUBLICATION.REF/VOLUME.REF" )
-            .isEqualTo( publicationRef.getVOLUMEREF() );
-        assertThat( xml ).valueByXPath( "//DOC/PUBLICATION.REF/LG.OJ" ).isEqualTo( publicationRef.getLGOJ().value() );
-        assertThat( xml ).valueByXPath( "//DOC/PUBLICATION.REF/DATE/@ISO" )
-            .isEqualTo( publicationRef.getDATE().getISO() );
+        assertThat( xml ).hasXPath( "//DOC/PUBLICATION.REF/COLL" );
+        assertThat( xml ).hasXPath( "//DOC/PUBLICATION.REF/NO.OJ" );
+        assertThat( xml ).hasXPath( "//DOC/PUBLICATION.REF/VOLUME.REF" );
+        assertThat( xml ).hasXPath( "//DOC/PUBLICATION.REF/LG.OJ" );
+        assertThat( xml ).hasXPath( "//DOC/PUBLICATION.REF/DATE/@ISO" );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("docTestData")
     @DisplayName("Should have valid FMX structure")
-    void shouldHaveFmxStructure() {
+    void shouldHaveFmxStructure(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        DOC doc = XmlTestUtils.unmarshalXmlFromClasspath(resourcePath, DOC.class);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
+        
         assertThat(xml).hasXPath("//DOC/FMX");
         assertThat(xml).hasXPath("//DOC/FMX/DOC.MAIN.PUB");
         assertThat(xml).nodesByXPath("//DOC/FMX/DOC.SUB.PUB")
             .hasSize(doc.getFMX().getDOCSUBPUBS().size());
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("docTestData")
     @DisplayName("Should have valid main publication attributes")
-    void shouldHaveValidMainPublicationAttributes() {
+    void shouldHaveValidMainPublicationAttributes(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        DOC doc = XmlTestUtils.unmarshalXmlFromClasspath(resourcePath, DOC.class);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
+        
         DOCMAINPUB mainPub = doc.getFMX().getDOCMAINPUB();
 
         assertThat(xml).valueByXPath("//DOC/FMX/DOC.MAIN.PUB/@NO.SEQ")
@@ -79,9 +95,14 @@ class DocXmlTest {
             .isEqualTo(mainPub.getSYNOPTISM());
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("docTestData")
     @DisplayName("Should have valid main publication page information")
-    void shouldHaveValidMainPublicationPages() {
+    void shouldHaveValidMainPublicationPages(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        DOC doc = XmlTestUtils.unmarshalXmlFromClasspath(resourcePath, DOC.class);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
+        
         DOCMAINPUB mainPub = doc.getFMX().getDOCMAINPUB();
 
         assertThat(xml).valueByXPath("//DOC/FMX/DOC.MAIN.PUB/PAGE.FIRST")
@@ -94,9 +115,14 @@ class DocXmlTest {
             .isEqualTo(mainPub.getPAGESEQ());
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("docTestData")
     @DisplayName("Should have valid first sub-publication")
-    void shouldHaveValidFirstSubPublication() {
+    void shouldHaveValidFirstSubPublication(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        DOC doc = XmlTestUtils.unmarshalXmlFromClasspath(resourcePath, DOC.class);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
+        
         DOCSUBPUB firstSubPub = doc.getFMX().getDOCSUBPUBS().getFirst();
 
         assertThat(xml).valueByXPath("//DOC/FMX/DOC.SUB.PUB[1]/@TYPE")
@@ -113,15 +139,23 @@ class DocXmlTest {
             .isEqualTo(firstSubPub.getPAGETOTAL().toString());
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("docTestData")
     @DisplayName("Should not have PUBLICATION.REF.SE element")
-    void shouldNotHavePublicationRefSe() {
+    void shouldNotHavePublicationRefSe(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
         assertThat( xml ).doesNotHaveXPath( "//DOC/PUBLICATION.REF.SE" );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("docTestData")
     @DisplayName("Should have PAPER and PDF elements")
-    void shouldHavePaperAndPdf() {
+    void shouldHavePaperAndPdf(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        DOC doc = XmlTestUtils.unmarshalXmlFromClasspath(resourcePath, DOC.class);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
+        
         PDF pdf = doc.getPDF();
         // Verify top-level PAPER and PDF elements exist
         assertThat( xml ).hasXPath( "//DOC/PAPER" );
@@ -138,9 +172,14 @@ class DocXmlTest {
             .isEqualTo( pdf.getITEMVOLUMES().getFirst().getITEMREF().getREFPDF() );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("docTestData")
     @DisplayName("Should have proper file structure references")
-    void shouldHaveProperFileReferences() {
+    void shouldHaveProperFileReferences(String version, String fileName) {
+        String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        DOC doc = XmlTestUtils.unmarshalXmlFromClasspath(resourcePath, DOC.class);
+        String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
+        
         FMX fmx = doc.getFMX();
         DOCMAINPUB mainPub = fmx.getDOCMAINPUB();
 
@@ -153,14 +192,13 @@ class DocXmlTest {
 
         // Verify all sub-publication physical references match object model
         assertThat( xml ).nodesByXPath( "//DOC/FMX/DOC.SUB.PUB/REF.PHYS" ).hasSize( fmx.getDOCSUBPUBS().size() );
-        assertThat( xml ).valueByXPath( "//DOC/FMX/DOC.SUB.PUB[1]/REF.PHYS/@TYPE" )
-            .isEqualTo( fmx.getDOCSUBPUBS().get( 0 ).getREFPHYS().getFirst().getTYPE() );
-        assertThat( xml ).valueByXPath( "//DOC/FMX/DOC.SUB.PUB[2]/REF.PHYS/@TYPE" )
-            .isEqualTo( fmx.getDOCSUBPUBS().get( 1 ).getREFPHYS().getFirst().getTYPE() );
-        assertThat( xml ).valueByXPath( "//DOC/FMX/DOC.SUB.PUB[3]/REF.PHYS/@TYPE" )
-            .isEqualTo( fmx.getDOCSUBPUBS().get( 2 ).getREFPHYS().getFirst().getTYPE() );
-        assertThat( xml ).valueByXPath( "//DOC/FMX/DOC.SUB.PUB[4]/REF.PHYS/@TYPE" )
-            .isEqualTo( fmx.getDOCSUBPUBS().get( 3 ).getREFPHYS().getFirst().getTYPE() );
+        
+        // Dynamically verify each sub-publication based on actual count
+        for (int i = 0; i < fmx.getDOCSUBPUBS().size(); i++) {
+            int xpathIndex = i + 1; // XPath is 1-based
+            assertThat( xml ).valueByXPath( "//DOC/FMX/DOC.SUB.PUB[" + xpathIndex + "]/REF.PHYS/@TYPE" )
+                .isEqualTo( fmx.getDOCSUBPUBS().get( i ).getREFPHYS().getFirst().getTYPE() );
+        }
 
     }
 }

@@ -1,12 +1,15 @@
 package com.kludgeworks.formex.model;
 
+import com.kludgeworks.formex.util.FormexTestDataProvider;
+import com.kludgeworks.formex.util.FormexVersionTestUtils;
 import com.kludgeworks.formex.util.XmlTestUtils;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.xmlunit.assertj.XmlAssert;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.xmlunit.assertj.XmlAssert.assertThat;
@@ -14,10 +17,16 @@ import static org.xmlunit.assertj.XmlAssert.assertThat;
 @DisplayName("ANNEX XML Validation Tests")
 class AnnexXmlTest {
 
-    @Test
-    @DisplayName("Should unmarshal DOC_3.xml (first annex) successfully")
-    void shouldUnmarshalDoc3Successfully() {
-        ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( "/32015R1998/DOC_3.xml", ANNEX.class );
+    static Stream<Arguments> annexTestData() {
+        return FormexTestDataProvider.annexTestData();
+    }
+
+    @ParameterizedTest
+    @MethodSource("annexTestData")
+    @DisplayName("Should unmarshal annex files successfully")
+    void shouldUnmarshalAnnexSuccessfully(String version, String fileName) {
+        String path = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( path, ANNEX.class );
 
         assertThat( annex ).isNotNull();
         assertThat( annex.getBIBINSTANCE() ).isNotNull();
@@ -25,16 +34,12 @@ class AnnexXmlTest {
     }
 
     @ParameterizedTest
-    @CsvSource({
-        "DOC_3.xml",
-        "DOC_4.xml",
-        "DOC_5.xml",
-        "DOC_6.xml"
-    })
+    @MethodSource("annexTestData")
     @DisplayName("Should have correct ANNEX values for each document")
-    void shouldHaveCorrectAnnexValues(String fileName) {
-        ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( "/32015R1998/" + fileName, ANNEX.class );
-        String xml = XmlTestUtils.readXmlFromClasspath( "/32015R1998/" + fileName );
+    void shouldHaveCorrectAnnexValues(String version, String fileName) {
+        String path = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( path, ANNEX.class );
+        String xml = XmlTestUtils.readXmlFromClasspath( path );
         BIBINSTANCE bibInstance = annex.getBIBINSTANCE();
 
         assertThat( xml ).satisfies( x -> {
@@ -59,11 +64,13 @@ class AnnexXmlTest {
 
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("annexTestData")
     @DisplayName("Should have valid BIB.INSTANCE with common properties")
-    void shouldHaveValidBibInstanceCommonProperties() {
-        ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( "/32015R1998/DOC_3.xml", ANNEX.class );
-        String xml = XmlTestUtils.readXmlFromClasspath( "/32015R1998/DOC_3.xml" );
+    void shouldHaveValidBibInstanceCommonProperties(String version, String fileName) {
+        String path = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( path, ANNEX.class );
+        String xml = XmlTestUtils.readXmlFromClasspath( path );
         BIBINSTANCE bibInstance = annex.getBIBINSTANCE();
 
         assertThat( xml ).satisfies( x -> {
@@ -77,11 +84,13 @@ class AnnexXmlTest {
 
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("annexTestData")
     @DisplayName("Should have DOCUMENT.REF with correct OJ reference")
-    void shouldHaveValidDocumentRefOjReference() {
-        ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( "/32015R1998/DOC_3.xml", ANNEX.class );
-        String xml = XmlTestUtils.readXmlFromClasspath( "/32015R1998/DOC_3.xml" );
+    void shouldHaveValidDocumentRefOjReference(String version, String fileName) {
+        String path = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( path, ANNEX.class );
+        String xml = XmlTestUtils.readXmlFromClasspath( path );
         BIBINSTANCE bibInstance = annex.getBIBINSTANCE();
         DOCUMENTREF documentRef = bibInstance.getDOCUMENTREF();
 
@@ -110,18 +119,22 @@ class AnnexXmlTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = { "//ANNEX/TITLE", "//ANNEX/CONTENTS" })
+    @MethodSource("annexTestData")
     @DisplayName("Should have required ANNEX structural elements")
-    void shouldHaveRequiredStructuralElements(String xpath) {
-        String xml = XmlTestUtils.readXmlFromClasspath( "/32015R1998/DOC_3.xml" );
+    void shouldHaveRequiredStructuralElements(String version, String fileName) {
+        String path = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        String xml = XmlTestUtils.readXmlFromClasspath( path );
 
-        XmlAssert.assertThat( xml ).hasXPath( xpath );
+        XmlAssert.assertThat( xml ).hasXPath( "//ANNEX/TITLE" );
+        XmlAssert.assertThat( xml ).hasXPath( "//ANNEX/CONTENTS" );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("annexTestData")
     @DisplayName("Should have correct NNC attribute")
-    void shouldHaveCorrectNncAttribute() {
-        ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( "/32015R1998/DOC_3.xml", ANNEX.class );
+    void shouldHaveCorrectNncAttribute(String version, String fileName) {
+        String path = FormexVersionTestUtils.buildResourcePath(version, fileName);
+        ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( path, ANNEX.class );
 
         TBoolean nnc = annex.getNNC();
         if ( nnc != null ) {
@@ -130,16 +143,12 @@ class AnnexXmlTest {
     }
 
     @ParameterizedTest
-    @CsvSource({
-        "DOC_3.xml",
-        "DOC_4.xml",
-        "DOC_5.xml",
-        "DOC_6.xml"
-    })
+    @MethodSource("annexTestData")
     @DisplayName("Should handle all ANNEX files without errors")
-    void shouldHandleAllAnnexFilesWithoutErrors(String fileName) {
+    void shouldHandleAllAnnexFilesWithoutErrors(String version, String fileName) {
         assertThatCode( () -> {
-            ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( "/32015R1998/" + fileName, ANNEX.class );
+            String path = FormexVersionTestUtils.buildResourcePath(version, fileName);
+            ANNEX annex = XmlTestUtils.unmarshalXmlFromClasspath( path, ANNEX.class );
             assertThat( annex ).isNotNull();
             assertThat( annex.getBIBINSTANCE() ).isNotNull();
             assertThat( annex.getCONTENTS() ).isNotNull();
