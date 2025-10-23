@@ -35,6 +35,7 @@ build/
 ### Gradle ###
 .gradle
 /build
+bin
 
 ### Other ###
 *.log

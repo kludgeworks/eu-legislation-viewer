@@ -1,0 +1,63 @@
+plugins {
+    id 'java-library'
+    alias(libs.plugins.intershop.jaxb)
+    alias(libs.plugins.cyclonedx.bom)
+}
+
+group = 'com.kludgeworks'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+jaxb {
+    javaGen {
+        formex559 {
+            schema = file('src/main/resources/xsd/formex-05.59-20170418.xd')
+            binding = file('src/main/resources/xsd/binding.xjb')
+            packageName = 'com.kludgeworks.formex.model'
+            outputDir = file('build/generated/sources/formex')
+            args = [
+                '-nv',
+                '-extension',
+                '-XautoNameResolution',
+                '-Xinject-code',
+                '-disableXmlSecurity',
+                '-no-header',
+                '-XexplicitAnnotation'
+            ]
+        }
+    }
+}
+
+sourceSets {
+    main {
+        java.srcDir 'build/generated/sources/formex'
+    }
+}
+
+dependencies {
+    implementation libs.jakarta.xml.bind.api
+    implementation libs.jaxb.runtime
+    implementation libs.jaxb.impl
+    
+    testImplementation platform(libs.junit.bom)
+    testImplementation libs.junit.jupiter
+    testImplementation libs.assertj.core
+    testImplementation libs.xmlunit.assertj
+    testRuntimeOnly libs.junit.platform.launcher
+}
+
+compileJava.dependsOn jaxbJavaGenFormex559
+
+test {
+    useJUnitPlatform()
+    jvmArgs = [
+        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.lang.invoke=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.lang.reflect=ALL-UNNAMED'
+    ]
+}
