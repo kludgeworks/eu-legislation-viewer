@@ -1,0 +1,43 @@
+<ANNEX noNamespaceSchemaLocation="http://formex.publications.eu.int/schema/formex-02.00-20050101.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2002337EN.01004101.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>337</NO.OJ>
+      <YEAR>2002</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>41</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20021209">20021209</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>015.001</NO.SEQ>
+    <PAGE.FIRST>47</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>48</PAGE.LAST>
+    <PAGE.TOTAL>2</PAGE.TOTAL>
+    <INCLUSIONS>
+      <INCL.ELEMENT TYPE="TIFF" FILEREF="L_2002337EN.01004702.tif">
+      </INCL.ELEMENT>
+      <INCL.ELEMENT TYPE="TIFF" FILEREF="L_2002337EN.01004801.tif">
+      </INCL.ELEMENT>
+    </INCLUSIONS>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>ANNEX I</P>
+    </TI>
+  </TITLE>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <P>
+        <INCL.ELEMENT TYPE="TIFF" FILEREF="L_2002337EN.01004702.tif">
+        </INCL.ELEMENT>
+      </P>
+      <P>
+        <INCL.ELEMENT TYPE="TIFF" FILEREF="L_2002337EN.01004801.tif">
+        </INCL.ELEMENT>
+      </P>
+    </GR.SEQ>
+  </CONTENTS>
+</ANNEX>

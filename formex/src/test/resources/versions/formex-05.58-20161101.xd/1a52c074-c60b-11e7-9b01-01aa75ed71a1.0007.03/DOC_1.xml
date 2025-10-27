@@ -1,0 +1,100 @@
+<CASE noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.58-20161101.xd">
+  <BIB.CASE>
+    <REF.ECR FILE="n.a.">
+      <YEAR>2017</YEAR>
+      <VOLUME.ECR>n.a.</VOLUME.ECR>
+    </REF.ECR>
+    <LG.DOC>EN</LG.DOC>
+    <LG.CASE>IT</LG.CASE>
+    <DATE ISO="20171004">20171004</DATE>
+    <YEAR>2016</YEAR>
+    <NO.CASE>C-273/16</NO.CASE>
+    <TYPE.CASE>JUDGMENT-C</TYPE.CASE>
+    <NO.CELEX>62016CJ0273_SUM</NO.CELEX>
+    <NO.ECLI ECLI="ECLI:EU:C:2017:733">EU:C:2017:733</NO.ECLI>
+    <NO.SEQ>0001</NO.SEQ>
+    <PAGE.FIRST.ECR>1</PAGE.FIRST.ECR>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST.ECR>2</PAGE.LAST.ECR>
+    <PAGE.TOTAL>2</PAGE.TOTAL>
+    <AUTHOR>CJ</AUTHOR>
+  </BIB.CASE>
+  <CURR.TITLE>
+    <PAGE.HEADER>
+      <P>
+        <HT TYPE="SC">Summary — Case C‑273/16</HT>
+      </P>
+      <P>
+        <HT TYPE="SC">Federal Express Europe</HT>
+      </P>
+    </PAGE.HEADER>
+  </CURR.TITLE>
+  <TITLE>
+    <TI>
+      <P>Case C‑273/16</P>
+    </TI>
+  </TITLE>
+  <PARTIES>
+    <PLAINTIFS>
+      <P>Agenzia delle Entrate</P>
+    </PLAINTIFS>
+    <AGAINST>
+      <HT TYPE="BOLD">v</HT>
+    </AGAINST>
+    <DEFENDANTS>
+      <P>Federal Express Europe Inc.</P>
+    </DEFENDANTS>
+  </PARTIES>
+  <PRELIM.RULING>
+    <P>(Request for a preliminary ruling from the Corte suprema di cassazione)</P>
+  </PRELIM.RULING>
+  <INDEX IDX.CLOSE=")" SEPARATOR=" — " IDX.OPEN="(">
+    <KEYWORD>Reference for a preliminary ruling</KEYWORD>
+    <KEYWORD>Value added tax (VAT)</KEYWORD>
+    <KEYWORD>Sixth Directive 77/388/EEC</KEYWORD>
+    <KEYWORD>Directive 2006/112/EC</KEYWORD>
+    <KEYWORD>Exemption from VAT</KEYWORD>
+    <KEYWORD>Article 86(1)(b) and Article 144</KEYWORD>
+    <KEYWORD>Relief from import duties for goods of negligible value or of a non-commercial character</KEYWORD>
+    <KEYWORD>Exemption of the supply of services relating to the importation of goods</KEYWORD>
+    <KEYWORD>National legislation levying VAT on the transport costs of documents and goods of negligible value despite their being ancillary to non-taxable goods</KEYWORD>
+  </INDEX>
+  <SUMMARY>
+    <TITLE>
+      <TI>
+        <P>Summary — Judgment of the Court (First Chamber),<DATE ISO="20171004">4 October 2017</DATE>
+        </P>
+      </TI>
+    </TITLE>
+    <SUBJECTS>
+      <P>
+        <TXT>
+          <KEYWORD>Harmonisation of fiscal legislation</KEYWORD>
+          <KEYWORD>Common system of value added tax</KEYWORD>
+          <KEYWORD>Exemptions</KEYWORD>
+          <KEYWORD>Exemptions on importation</KEYWORD>
+          <KEYWORD>Exemption of the supply of services relating to the importation of goods</KEYWORD>
+          <KEYWORD>National legislation levying value added tax on the transport costs of documents and goods of negligible value despite their being ancillary to non-taxable goods</KEYWORD>
+          <KEYWORD>Not permissible</KEYWORD>
+        </TXT>
+      </P>
+      <P>(Council Directive 2006/112, Arts 144 and 86(1)(b))</P>
+    </SUBJECTS>
+    <ABSTRACT>
+      <P>Article 144 in conjunction with Article 86(1)(b) of Council Directive 2006/112/EC of<DATE ISO="20061128">28 November 2006</DATE>on the common system of value added tax must be interpreted as precluding national legislation such as that at issue in the main proceedings which requires, for the application of an exemption from value added tax for ancillary services, including transport services, not only that their value is included in the taxable amount, but also that value added tax has in fact been charged on those services at the customs stage at the time of importation.</P>
+      <P>In that regard, it should be noted that Article 86(1)(b) of the VAT Directive ensures that the taxation of the ancillary service follows the taxation of the primary service. According to Article 144 of that directive, first, the exempted primary service corresponds to that of the importation of goods and, second, the ancillary services are the services listed in Article 86(1)(b) of that directive, which should, as such, follow the tax treatment of the primary service, provided that their value is included in the taxable amount.</P>
+      <P>Accordingly, it follows from a combined reading of Article 86(1)(b) and Article 144 of the VAT Directive that, to the extent that the transport costs are included in the taxable amount of the exempted importation transaction, the supply of ancillary services must also be exempt from VAT.</P>
+      <P>The requirement that that supply of services has in fact been subjected to VAT at the customs stage, as provided for under the legislation at issue in the main proceedings, would negate the effectiveness of the exemption provided for in Article 144 of the VAT Directive, given that such a requirement would have the result that that exemption would never be applicable to the importation of consignments of goods of negligible value or of a non-commercial character, even where they should be exempt from VAT pursuant to Article 143(b) of that directive.</P>
+      <P>The Court has already acknowledged, as regards relief from import duty of goods of negligible value, that such relief aims at administrative simplification of customs procedures (see, to that effect, judgment of<REF.DOC.ECR>
+          <DATE ISO="20090702">2 July 2009</DATE>,<NAME.CASE>
+            <HT TYPE="ITALIC">Har Vaessen Douane Service</HT>
+          </NAME.CASE>,<NO.CASE>C‑7/08</NO.CASE>,<NO.ECLI ECLI="ECLI:EU:C:2009:417">EU:C:2009:417</NO.ECLI>, paragraph<REF.NP.ECR REF="NP0033">33</REF.NP.ECR>
+        </REF.DOC.ECR>).</P>
+      <P>It follows that transport costs related to the final importation of goods must be exempt from VAT, provided that their value is included in the taxable amount, even though they were not subjected to VAT at the customs stage at the time of importation.</P>
+      <P>(see paras 39-41, 44, 46, 47, operative part)</P>
+    </ABSTRACT>
+  </SUMMARY>
+  <PDF.ECR>
+    <REF.PDF.ECR TYPE="SUMMARY" PAGE.FIRST="0001" PAGE.LAST="0002">ECR_62016CJ0273_SUM_EN_01.pdf</REF.PDF.ECR>
+  </PDF.ECR>
+</CASE>

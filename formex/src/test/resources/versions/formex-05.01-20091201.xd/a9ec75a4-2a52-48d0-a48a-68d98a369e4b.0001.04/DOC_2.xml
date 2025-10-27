@@ -1,0 +1,62 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.01-20091201.xd">
+  <BIB.DOC>
+    <PROD.ID>20091217007</PROD.ID>
+    <FIN.ID>23127</FIN.ID>
+    <DURAB TYPE="DUR">
+    </DURAB>
+    <AUTHOR>COM</AUTHOR>
+    <DOC.CORR>
+      <COLL>L</COLL>
+      <NO.OJ>321</NO.OJ>
+      <DATE ISO="20091208">20091208</DATE>
+      <NO.DOC FORMAT="NY" TYPE="OJ">
+        <NO.CURRENT>1194</NO.CURRENT>
+        <YEAR>2009</YEAR>
+        <COM>EC</COM>
+      </NO.DOC>
+      <PAGE.FIRST>5</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+    </DOC.CORR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="L_2009336EN.toc.xml">
+    <COLL>L</COLL>
+    <NO.OJ>336</NO.OJ>
+    <DATE ISO="20091218">20091218</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0015" SYNOPTISM="D0015">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>REG</LEGAL.VALUE>
+      <DATE ISO="20091218">20091218</DATE>
+      <PAGE.FIRST>58</PAGE.FIRST>
+      <PAGE.LAST>58</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="L_2009336EN.01005801.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0015">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Corrigendum to Commission Regulation (EC) No 1194/2009 of<DATE ISO="20091130">30 November 2009</DATE>amending Regulation (EC) No 1702/2003 laying down implementing rules for the airworthiness and environmental certification of aircraft and related products, parts and appliances as well as for certification of design and production organisations (<HT TYPE="NORMAL">
+                <REF.DOC.OJ COLL="L" DATE.PUB="20091208" NO.OJ="321">OJ L 321, 8.12.2009</REF.DOC.OJ>
+              </HT>)</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>58</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0015">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="l_33620091218en00580058.pdf" DOI.DOC="doi:10.3001/L_2009.336.01005801.eng">58</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

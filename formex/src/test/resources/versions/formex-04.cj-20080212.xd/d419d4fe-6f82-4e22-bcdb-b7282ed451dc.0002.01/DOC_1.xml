@@ -1,0 +1,98 @@
+<CASE noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-04.cj-20080212.xd">
+  <BIB.CASE>
+    <REF.ECR FILE="ECRCJ1990ENA.03.xml">
+      <YEAR>1990</YEAR>
+      <VOLUME.ECR>03</VOLUME.ECR>
+    </REF.ECR>
+    <LG.DOC>EN</LG.DOC>
+    <LG.CASE>FR</LG.CASE>
+    <DATE ISO="19900327">19900327</DATE>
+    <YEAR>1989</YEAR>
+    <NO.CASE>C-113/89</NO.CASE>
+    <TYPE.CASE>JUDGMENT-C</TYPE.CASE>
+    <NO.CELEX>61989J0113</NO.CELEX>
+    <NO.SEQ>0030</NO.SEQ>
+    <PAGE.FIRST>1417</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>1446</PAGE.LAST>
+    <PAGE.TOTAL>30</PAGE.TOTAL>
+    <AUTHOR>CJ</AUTHOR>
+  </BIB.CASE>
+  <TITLE>
+    <TI>
+      <P>Case C-113/89</P>
+    </TI>
+  </TITLE>
+  <PARTIES>
+    <PLAINTIFS>
+      <P>Rush Portuguesa Lda</P>
+    </PLAINTIFS>
+    <AGAINST>v</AGAINST>
+    <DEFENDANTS>
+      <P>Office national d&apos;immigration</P>
+    </DEFENDANTS>
+  </PARTIES>
+  <PRELIM.RULING>
+    <P>reference for a preliminary ruling from the tribunal administratif, Versailles</P>
+  </PRELIM.RULING>
+  <INDEX>
+    <KEYWORD>Act of Accession</KEYWORD>
+    <KEYWORD>Transitional period</KEYWORD>
+    <KEYWORD>Freedom of movement for workers</KEYWORD>
+    <KEYWORD>Freedom to provide services</KEYWORD>
+  </INDEX>
+  <REF.REPORT.HEARING>
+    <TITLE>
+      <TI>
+        <P>Report for the Hearing</P>
+      </TI>
+    </TITLE>
+    <REF.ECR.DOC FILE="ECRCJ1990ENA.0300141801.xml" NO.SEQ="0030.0001">1418</REF.ECR.DOC>
+  </REF.REPORT.HEARING>
+  <REF.CONCLUSION>
+    <TITLE>
+      <TI>
+        <P>Opinion of Mr Advocate General Van Gerven delivered on<DATE ISO="19900307">7 March 1990</DATE>
+        </P>
+      </TI>
+    </TITLE>
+    <REF.ECR.DOC FILE="ECRCJ1990ENA.0300142501.xml" NO.SEQ="0030.0002">1425</REF.ECR.DOC>
+  </REF.CONCLUSION>
+  <REF.JUDGMENT>
+    <TITLE>
+      <TI>
+        <P>Judgment of the Court (Sixth Chamber),<DATE ISO="19900327">27 March 1990</DATE>
+        </P>
+      </TI>
+    </TITLE>
+    <REF.ECR.DOC FILE="ECRCJ1990ENA.0300143901.xml" NO.SEQ="0030.0003">1439</REF.ECR.DOC>
+  </REF.JUDGMENT>
+  <SUMMARY>
+    <TITLE>
+      <TI>
+        <P>Summary of the Judgment</P>
+      </TI>
+    </TITLE>
+    <SUBJECTS>
+      <P>
+        <KEYWORD>Accession of new Member States to the Communities</KEYWORD>
+        <KEYWORD>Portugal</KEYWORD>
+        <KEYWORD>Freedom to provide services</KEYWORD>
+        <KEYWORD>Portuguese undertaking operating in the construction and public works sector</KEYWORD>
+        <KEYWORD>Right to move with its labour force for the duration of the works</KEYWORD>
+        <KEYWORD>Application by the host Member State of its legislation relating to access to employment by foreign workers</KEYWORD>
+        <KEYWORD>Not permissible</KEYWORD>
+      </P>
+      <P>(EEC Treaty, Arts 59 and 60; Act of Accession of 1985, Arts 215 and 216)</P>
+    </SUBJECTS>
+    <ABSTRACT>
+      <P>Articles 59 and 60 of the EEC Treaty and Articles 215 and 216 of the Act of Accession of Portugal must be interpreted as meaning that an undertaking established in Portugal providing services in the construction and public works sector in another Member State may move with its labour force which it brings from Portugal for the duration of the works in question. In such a case, the authorities of the Member State in whose territory the works are to be carried out may not impose on the supplier of services conditions relating to the recruitment of manpower in situ or the obtaining of work permits for the Portuguese workforce. However, those authorities may check whether an undertaking is not circumventing the provisions of Article 216 of the Act of Accession under the cloak of a provision of services.</P>
+    </ABSTRACT>
+  </SUMMARY>
+  <PDF.ECR>
+    <REF.PDF.ECR TYPE="SUMMARY" PAGE.FIRST="01417" PAGE.LAST="01417">C_1989_0113_SOM_EN_1990_I_001417.pdf</REF.PDF.ECR>
+    <REF.PDF.ECR TYPE="HEARING" PAGE.FIRST="01418" PAGE.LAST="01424">C_1989_0113_RAPP_EN_1990_I_001418.pdf</REF.PDF.ECR>
+    <REF.PDF.ECR TYPE="CONCLUSION" PAGE.FIRST="01425" PAGE.LAST="01438">C_1989_0113_CONCL_EN_1990_I_001425.pdf</REF.PDF.ECR>
+    <REF.PDF.ECR TYPE="JUDGMENT" PAGE.FIRST="01439" PAGE.LAST="01446">C_1989_0113_ARRET_EN_1990_I_001439.pdf</REF.PDF.ECR>
+  </PDF.ECR>
+</CASE>

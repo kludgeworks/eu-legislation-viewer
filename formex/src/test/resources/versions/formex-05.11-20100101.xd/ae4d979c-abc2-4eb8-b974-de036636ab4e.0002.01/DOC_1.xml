@@ -1,0 +1,162 @@
+<CASE noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.11-20100101.xd">
+  <BIB.CASE>
+    <REF.ECR FILE="ECRF11996ENA1.01.xml">
+      <YEAR>1996</YEAR>
+      <VOLUME.ECR>1/2/3</VOLUME.ECR>
+    </REF.ECR>
+    <LG.DOC>EN</LG.DOC>
+    <LG.CASE>EL</LG.CASE>
+    <DATE ISO="19960228">19960228</DATE>
+    <YEAR>1994</YEAR>
+    <NO.CASE>T-294/94</NO.CASE>
+    <TYPE.CASE>JUDGMENT-F</TYPE.CASE>
+    <NO.CELEX>61994A0294</NO.CELEX>
+    <NO.SEQ>0007</NO.SEQ>
+    <PAGE.FIRST.ECR>I-A-51</PAGE.FIRST.ECR>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST.ECR>I-A-56</PAGE.LAST.ECR>
+    <PAGE.TOTAL>6</PAGE.TOTAL>
+    <AUTHOR>TFP</AUTHOR>
+  </BIB.CASE>
+  <CURR.TITLE>
+    <LEFT>ABSTRACT — CASE T-294/94</LEFT>
+    <RIGHT>DIMITRIADIS v COURT OF AUDITORS</RIGHT>
+  </CURR.TITLE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Judgement of the Court of First Instance</HT>(Third Chamber)</P>
+      <P>
+        <DATE ISO="19960228">28 February 1996</DATE>
+      </P>
+      <P>Case T-294/94</P>
+    </TI>
+  </TITLE>
+  <PARTIES>
+    <PLAINTIFS>
+      <P>Konstantinos Dimitriadis</P>
+    </PLAINTIFS>
+    <AGAINST>v</AGAINST>
+    <DEFENDANTS>
+      <P>Court of Auditors of the European Communities</P>
+    </DEFENDANTS>
+  </PARTIES>
+  <INDEX>
+    <KEYWORD>Official</KEYWORD>
+    <KEYWORD>Duty to provide assistance</KEYWORD>
+    <KEYWORD>Article 24 of the Staff Regulations</KEYWORD>
+  </INDEX>
+  <REF.JUDGMENT>
+    <TITLE>
+      <TI>
+        <P>Full text in Greek</P>
+      </TI>
+    </TITLE>
+    <REF.ECR.DOC FILE="ECRF21996ELA1.0100015101.xml" NO.SEQ="0007.0001" EXTERNAL="YES">II-151</REF.ECR.DOC>
+  </REF.JUDGMENT>
+  <OBJECT>
+    <TITLE>
+      <TI>
+        <P>Application for:</P>
+      </TI>
+    </TITLE>
+    <P>annulment of the decision of the Court of Auditors rejecting the request for assistance submitted by the applicant pursuant to the first paragraph of Article 24 of the Staff Regulations of Officials of the European Communities and for an order that the Court of Auditors make good the damage which the applicant claims to have suffered by reason, first, of the contested decision and, secondly, of the insults allegedly uttered by his immediate superior.</P>
+  </OBJECT>
+  <DECISION>
+    <TITLE>
+      <TI>
+        <P>Decision:</P>
+      </TI>
+    </TITLE>
+    <P>Application dismissed.</P>
+  </DECISION>
+  <SUMMARY>
+    <TITLE>
+      <TI>
+        <P>Abstract of the Judgment</P>
+      </TI>
+    </TITLE>
+    <SUBJECTS>
+      <P>On<DATE ISO="19931124">24 November 1993</DATE>Mr K, Head of the Greek Language Section and the applicant&apos;s immediate superior, left in the applicant&apos;s office and for his attention a text to be translated by 9 December. On<DATE ISO="19931125">25 November 1993</DATE>Mr K and the applicant discussed the translation of the text. The discussion became heated and Mr K used two terms which the applicant considered to be insulting.</P>
+      <P>On<DATE ISO="19931126">26 November 1993</DATE>the applicant lodged a complaint at the Principal Public Prosecuter&apos;s Office in Luxembourg and on<DATE ISO="19931209">9 December 1993</DATE>he submitted a request for assistance under the first paragraph of Article 24 of the Staff Regulations of Officials of the European Communities (<QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+        </QUOT.START>the Staff Regulations<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+        </QUOT.END>).</P>
+      <P>On<DATE ISO="19940114">14 January 1994</DATE>the appointing authority, acting in pursuance of the first paragraph of Article 24 of the Staff Regulations, instructed Mr F, Head of the Language Service, to conduct an inquiry. On<DATE ISO="19940119">19 January 1994</DATE>Mr F heard the two parties and the four witnesses whose examination the applicant had requested.</P>
+      <P>Taking the view that there was some evidence that Mr K and the applicant were both responsible, the appointing authority decided to hear these two officials in turn on<DATE ISO="19940128">28 January 1994</DATE>pursuant to the first paragraph of Article 87 of the Staff Regulations, a provision relating to disciplinary measures.</P>
+      <P>On<DATE ISO="19940308">8 March 1994</DATE>, on completion of its inquiry, the appointing authority decided to reject the applicant&apos;s request for assistance. It did so on the basis that there was<QUOT.START ID="QS0002" REF.END="QE0002" CODE="2018">
+        </QUOT.START>some evidence that both parties were responsible<QUOT.END ID="QE0002" REF.START="QS0002" CODE="2019">
+        </QUOT.END>and of the general context of the case (in particular the following facts: Mr K did not deny having used the terms in question; those terms were used in the course of a quarrel; at the hearing on<DATE ISO="19940119">19 January 1994</DATE>Mr K proposed that he should apologize).</P>
+      <P>On<DATE ISO="19940411">11 April 1994</DATE>the applicant submitted a complaint under Article 90(2) of the Staff Regulations against that decision. The complaint was expressly rejected by the appointing authority on<DATE ISO="19940701">1 July 1994</DATE>.</P>
+    </SUBJECTS>
+    <ABSTRACT>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>The application for annulment</P>
+          </TI>
+        </TITLE>
+        <P>The Communities&apos; duty of assistance under the first paragraph of Article 24 of the Staff Regulations also exists where the perpetrator of the acts envisaged by that provision is another official of the Communities (paragraph 38).</P>
+        <ANNOTATION>
+          <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="18/78" YEAR="1979" PAGE.ECR="2093">18/78<HT TYPE="ITALIC">Mrs V</HT>v<HT TYPE="ITALIC">Commission</HT>[1979] ECR 2093, para. 14</REF.DOC.ECR>
+          </P>
+        </ANNOTATION>
+        <P>When an institution is faced with an incident which is incompatible with the good order and tranquillity of the service, it must intervene with all the necessary vigour and respond with the rapidity and solicitude required by the circumstances of the case with a view to ascertaining the facts and, consequently, taking the appropriate action in full knowledge of the facts.</P>
+        <ANNOTATION>
+          <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="T-5/92" YEAR="1993" PAGE.ECR="II-477">T-5/92<HT TYPE="ITALIC">Tallarico</HT>v<HT TYPE="ITALIC">Parliament</HT>[1993] ECR II-477, para. 31</REF.DOC.ECR>
+          </P>
+        </ANNOTATION>
+        <P>The institution cannot, however, take disciplinary action against the official in question unless the preliminary measures ordered clearly establish that the official concerned has engaged in conduct detrimental to the proper functioning of the service or to the dignity and reputation of another official.</P>
+        <ANNOTATION>
+          <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="55/88" YEAR="1989" PAGE.ECR="3579">55/88<HT TYPE="ITALIC">Katsoufros</HT>v<HT TYPE="ITALIC">Court of Justice</HT>[1989] ECR 3579, para. 16</REF.DOC.ECR>
+          </P>
+        </ANNOTATION>
+        <P>In this case the Court finds, first, that the appointing authority took the appropriate steps. In so far as an inquiry carried out pursuant to the first paragraph of Article 24 of the Staff Regulations is intended,<HT TYPE="ITALIC">inter alia,</HT>to establish the facts, the appointing authority cannot be criticized for not having heard persons who were not present during the whole or part of the incident between the two officials and whose testimony could not, on any view, usefully contribute towards establishing the facts (paragraphs 41 and 42).</P>
+        <P>The Court further considers that no complaint of belated intervention amounting to infringement of the first paragraph of Article 24 of the Staff Regulations can lie against the appointing authority (paragraph 47).</P>
+        <P>The Court considers, finally, that, after completing its inquiry, the appointing authority, in knowledge of the facts, took the appropriate action, bearing in mind the discretion vested in it. Whilst it is not disputed that Mr K used the terms in question, it appears, however, that the inquiry did not enable the appointing authority to determine the respective responsibilities of each of the parties. The appointing authority was therefore entitled, without exceeding its discretion, to reject the applicant&apos;s request for assistance and to close, without imposing any penalty, the disciplinary proceedings initiated against Mr K specifically by reason of the quarrel in point (paragraph 49).</P>
+        <P>That being so, the appointing authority cannot be charged with having infringed the first paragraph of Article 24 of the Staff Regulations.</P>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>The application for compensation for the nonmaterial damage allegedly suffered by reason of the appointing authority&apos;s decisions and attitude</P>
+          </TI>
+        </TITLE>
+        <P>Since examination of the plea for annulment has not disclosed any breach of the duty to provide assistance imposed on the Court of Auditors by Article 24 of the Staff Regulations, the claim for compensation for damage allegedly suffered by the applicant by reason of the decision rejecting his request for assistance must be dismissed as unfounded (paragraph 61).</P>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>The claim for compensation under the second paragraph of Article 24 of the Staff Regulations</P>
+          </TI>
+        </TITLE>
+        <P>The admissibility of an action for compensation brought by an official in reliance on the joint and several obligation - of a secondary nature - laid down in the second paragraph of Article 24 of the Staff Regulations is subject to the exhaustion of domestic legal remedies in so far as these provide effective protection for the individuals concerned and can result in reparation of the damage alleged. Moreover, an official who claims to have been injured must at least put forward<HT TYPE="ITALIC">prima facie</HT>evidence of a nature such as to raise serious doubts as to the effectiveness of the protection provided by domestic legal remedies (paragraph 68).</P>
+        <ANNOTATION>
+          <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="T-59/92" YEAR="1993" PAGE.ECR="II-1129">T-59/92<HT TYPE="ITALIC">Carolina</HT>v<HT TYPE="ITALIC">Commission</HT>[1993] ECR II-1129</REF.DOC.ECR>
+          </P>
+        </ANNOTATION>
+        <P>In this case the Court finds that the applicant has neither shown that the domestic legal remedies have been exhausted nor put forward<HT TYPE="ITALIC">prima facie</HT>evidence of a nature such as to raise serious doubts as to the effectiveness of the protection provided by the Luxembourg legal remedies.</P>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>Costs</P>
+          </TI>
+        </TITLE>
+        <P>The Court considers, having regard to the circumstances of the case, and in particular to the significance of the incident which gave rise to it, to the course of the procedure and to the applicant&apos;s attitude, given that the appointing authority had not been able to establish the facts and responsibilities with any certainty, that Article 87(3) of the Rules of Procedure should be applied and that the applicant should be ordered to bear all the costs (paragraph 74).</P>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>Operative part:</P>
+          </TI>
+        </TITLE>
+        <P>The application is dismissed as inadmissible in so far as it concerns the claim for compensation based on the second paragraph of Article 24 of the Staff Regulations.</P>
+        <P>For the rest, the application is dismissed as unfounded.</P>
+        <P>The applicant is ordered to bear all the costs.</P>
+      </GR.SEQ>
+    </ABSTRACT>
+  </SUMMARY>
+  <PDF.ECR>
+    <REF.PDF.ECR TYPE="SUMMARY" PAGE.FIRST="00051" PAGE.LAST="00056">F_1994_0294_SOM_EN_1996_FPIA_000051.pdf</REF.PDF.ECR>
+  </PDF.ECR>
+</CASE>

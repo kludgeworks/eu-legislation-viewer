@@ -1,0 +1,53 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.56-20160701.xd">
+  <BIB.DOC>
+    <PROD.ID>20180220038</PROD.ID>
+    <FIN.ID>172615</FIN.ID>
+    <NO.DOC FORMAT="YN" TYPE="OJ">
+      <NO.CURRENT>279</NO.CURRENT>
+      <YEAR>2018</YEAR>
+      <COM>EU</COM>
+    </NO.DOC>
+    <DURAB TYPE="DUR">
+    </DURAB>
+    <AUTHOR>CS</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="L_2018054EN.toc.xml">
+    <COLL>L</COLL>
+    <NO.OJ>054</NO.OJ>
+    <DATE ISO="20180224">20180224</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0005" SYNOPTISM="D0005">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>DEC_IMPL</LEGAL.VALUE>
+      <DATE ISO="20180220">20180220</DATE>
+      <PAGE.FIRST>14</PAGE.FIRST>
+      <PAGE.LAST>15</PAGE.LAST>
+      <PAGE.TOTAL>2</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="L_2018054EN.01001401.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0005">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Council Implementing Decision (EU) 2018/279 of<DATE ISO="20180220">20 February 2018</DATE>authorising Malta to apply a special measure derogating from Article 287 of Directive 2006/112/EC on the common system of value added tax</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>14</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0005">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="l_05420180224en00140015.pdf">14</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

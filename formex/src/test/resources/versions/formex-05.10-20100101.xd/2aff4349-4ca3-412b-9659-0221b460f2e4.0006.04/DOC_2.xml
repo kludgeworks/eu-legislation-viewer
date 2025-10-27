@@ -1,0 +1,132 @@
+<CJT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.10-20100101.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2010113EN.01003502.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>113</NO.OJ>
+      <YEAR>2010</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>35</PAGE.FIRST>
+      <PAGE.SEQ>2</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20100308">20100308</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0055</NO.SEQ>
+    <PAGE.FIRST>35</PAGE.FIRST>
+    <PAGE.SEQ>2</PAGE.SEQ>
+    <PAGE.LAST>36</PAGE.LAST>
+    <PAGE.TOTAL>2</PAGE.TOTAL>
+    <NO.DOC TYPE="OJ">
+      <TXT>2010/C 113/55</TXT>
+    </NO.DOC>
+    <NO.DOC FORMAT="CNY" TYPE="INTERNAL">
+      <NO.CURRENT>122</NO.CURRENT>
+      <YEAR>2010</YEAR>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TI.CJT>
+    <TITLE>
+      <TI>
+        <P>Reference for a preliminary ruling from the Marknadsdomstolen (Sweden) lodged on<DATE ISO="20100308">8 March 2010</DATE>— Konsumentombudsmannen (KO) v Ving Sverige AB</P>
+      </TI>
+    </TITLE>
+    <INDEX>
+      <KEYWORD>Case C-122/10</KEYWORD>
+    </INDEX>
+    <NO.DOC.C>2010/C 113/55</NO.DOC.C>
+    <LG.PROC LG="SV">Language of the case: Swedish</LG.PROC>
+    <TRANS.REF>
+      <IE>
+      </IE>
+    </TRANS.REF>
+  </TI.CJT>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Referring court</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>Marknadsdomstolen</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Parties to the main proceedings</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>
+        <HT TYPE="ITALIC">Applicant:</HT>Konsumentombudsmannen (KO)</P>
+      <P>
+        <HT TYPE="ITALIC">Defendant:</HT>Ving Sverige AB</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Questions referred</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <LIST TYPE="ARAB">
+        <ITEM>
+          <NP>
+            <NO.P>1.</NO.P>
+            <TXT>Is the requirement<QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+              </QUOT.START>thereby enables the consumer to make a purchase<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+              </QUOT.END>in Article 2(i) of Directive 2005/29/EC of the European Parliament and of the Council of<DATE ISO="20050511">11 May 2005</DATE>concerning unfair business-to-consumer commercial practices in the internal market<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="ENDNOTE">
+                <P>
+                  <REF.DOC.OJ COLL="L" DATE.PUB="2005" NO.OJ="149" PAGE.FIRST="22">OJ 2005 L 149, p. 22</REF.DOC.OJ>.</P>
+              </NOTE>to be interpreted as meaning that an invitation to purchase exists as soon as information on the advertised product and its price is available so that the consumer may make a decision to purchase, or is it necessary that the commercial communication also offer an actual opportunity to purchase the product (e.g. an order form) or that there be access to such an opportunity (e.g. an advertisement outside a shop)?</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>2.</NO.P>
+            <TXT>If the answer to the above question is that it is necessary that there be an actual opportunity to purchase the product, is that to be regarded as existing if the commercial communication refers to a telephone number or website where the product can be ordered?</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>3.</NO.P>
+            <TXT>Is Article 2(i) of Directive 2005/29 to be interpreted as meaning that the requirement for a price is met if the commercial communication contains an entry-level price, that is to say, the lowest price for which the advertised product or category of products can be bought at the same time as the advertised product or category of products are available in other versions or with other content at prices which are not stated?</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>4.</NO.P>
+            <TXT>Is Article 2(i) of Directive 2005/29 to be interpreted as meaning that the requirement concerning a product’s characteristics is met as soon as there is a verbal or visual reference to the product,<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="ENDNOTE">
+                <P>Commission staff working document<QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002">
+                  </QUOT.START>
+                  <HT TYPE="ITALIC">Guidance on the implementation/application of directive 2005/29/EC on unfair commercial practices</HT>
+                  <QUOT.END CODE="2019" ID="QE0002" REF.START="QS0002">
+                  </QUOT.END>, p. 47f.</P>
+              </NOTE>that is to say, so that the product is identified but not further described?</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>5.</NO.P>
+            <TXT>If the answer to the above question is affirmative, does that also apply where the advertised product is offered in many versions, but the commercial communication refers to them only by a common designation?</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>6.</NO.P>
+            <TXT>If there is an invitation to purchase, is Article 7(4)(a) to be interpreted as meaning that it is sufficient for only certain of a product’s main characteristics to be given and for the trader to refer in addition to its website, on the condition that on that site there is essential information on the product’s main characteristics, price and other terms in accordance with the requirement in Article 7(4)?</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>7.</NO.P>
+            <TXT>Is Article 7(4)(c) to be interpreted as meaning that it is sufficient to give an entry-level price for the price requirement to be met?</TXT>
+          </NP>
+        </ITEM>
+      </LIST>
+    </GR.SEQ>
+  </CONTENTS>
+</CJT>

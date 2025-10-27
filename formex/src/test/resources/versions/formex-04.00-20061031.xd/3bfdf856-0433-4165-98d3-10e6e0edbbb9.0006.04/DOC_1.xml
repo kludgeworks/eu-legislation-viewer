@@ -1,0 +1,53 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-04.00-20061031.xd">
+  <BIB.DOC>
+    <NO.DOC TYPE="OJ">
+      <TXT>2007/C 155/09</TXT>
+    </NO.DOC>
+    <NO.DOC FORMAT="CNY" TYPE="INTERNAL">
+      <NO.CURRENT>375</NO.CURRENT>
+      <YEAR>2006</YEAR>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>CJ</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2007155EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>155</NO.OJ>
+    <DATE ISO="20070707">20070707</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0009" SYNOPTISM="D0009">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>JUDGMENT</LEGAL.VALUE>
+      <DATE ISO="20070524">20070524</DATE>
+      <PAGE.FIRST>6</PAGE.FIRST>
+      <PAGE.LAST>6</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="C_2007155EN.01000601.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0009">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Case C-375/06: Judgment of the Court (Sixth Chamber) of<DATE ISO="20070524">24 May 2007</DATE>— Commission of the European Communities v Portuguese Republic (Failure of Member State to fulfil obligations — Directive 2003/105/EC — Protection of workers — Control of major-accident hazards involving dangerous substances — Failure to transpose within the prescribed period)</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>6</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0009">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_15520070707en00060006.pdf">6</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

@@ -1,0 +1,65 @@
+<CORR noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.01-20091201.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2009336EN.01005801.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>336</NO.OJ>
+      <YEAR>2009</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>58</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20091218">20091218</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0015</NO.SEQ>
+    <PAGE.FIRST>58</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>58</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>Corrigendum to Commission Regulation (EC) No 1194/2009 of<DATE ISO="20091130">30 November 2009</DATE>amending Regulation (EC) No 1702/2003 laying down implementing rules for the airworthiness and environmental certification of aircraft and related products, parts and appliances as well as for certification of design and production organisations</P>
+      <P>(<REF.DOC.OJ COLL="L" DATE.PUB="20091208" NO.OJ="321">Official Journal of the European Union L 321 of 8 December 2009</REF.DOC.OJ>)</P>
+    </TI>
+  </TITLE>
+  <CONTENTS.CORR>
+    <CORRECTION>
+      <DESCRIPTION>On page 19, Annex, point 39(c):</DESCRIPTION>
+      <OLD.CORR FOR.READ="YES">
+        <P>for:</P>
+        <QUOT.S LEVEL="1">
+          <LIST TYPE="alpha">
+            <ITEM>
+              <NP>
+                <NO.P>
+                  <QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+                  </QUOT.START>(c)</NO.P>
+                <TXT>Action shall be taken by the competent authority to suspend the approval in whole or in part in case of failure to comply within the timescale granted by the competent authority.”;<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+                  </QUOT.END>
+                </TXT>
+              </NP>
+            </ITEM>
+          </LIST>
+        </QUOT.S>
+      </OLD.CORR>
+      <NEW.CORR FOR.READ="YES">
+        <P>read:</P>
+        <QUOT.S LEVEL="1">
+          <LIST TYPE="alpha">
+            <ITEM>
+              <NP>
+                <NO.P>
+                  <QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002">
+                  </QUOT.START>(c)</NO.P>
+                <TXT>For a new aircraft or used aircraft originating from a non-member State, in addition to the appropriate airworthiness certificate referred to in point (a) or (b), the competent authority of the Member State of registry shall issue an initial airworthiness review certificate (EASA Form 15a, see Appendix).”;<QUOT.END CODE="2019" ID="QE0002" REF.START="QS0002">
+                  </QUOT.END>
+                </TXT>
+              </NP>
+            </ITEM>
+          </LIST>
+        </QUOT.S>
+      </NEW.CORR>
+    </CORRECTION>
+  </CONTENTS.CORR>
+</CORR>

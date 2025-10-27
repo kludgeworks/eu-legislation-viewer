@@ -1,0 +1,1286 @@
+<CONS.ACT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.51-20130501.xd">
+  <INFO.CONSLEG CONSLEG.REF="2009D0563" CONSLEG.DATE="20160930" DATE.LAST.MOD="20160809" PROD.SEQ="004.001.0" START.DATE="20160809" END.DATE="99999999" END="REPEALED" SOURCE.END="32016D1349" LEG.VAL="DEC">
+  </INFO.CONSLEG>
+  <INFO.PROD PRODUCER="ES" PROD.SYSTEM="CONSLEG.NEW" PROD.DATE="20160930">
+  </INFO.PROD>
+  <CONS.DOC>
+    <BIB.INSTANCE>
+      <DOCUMENT.REF FILE="CL2009D0563EN0040010.0001.doc.xml">
+        <LG.OJ>EN</LG.OJ>
+        <PAGE.FIRST>1</PAGE.FIRST>
+      </DOCUMENT.REF>
+      <DATE ISO="20160809">20160809</DATE>
+      <LG.DOC>EN</LG.DOC>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <PAGE.LAST>1</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+    </BIB.INSTANCE>
+    <FAM.COMP LEG.VAL="DEC">
+      <BIB.DATA>
+        <BIB.INSTANCE.CONS>
+          <DOCUMENT.REF.CONS>
+            <COLL>L</COLL>
+            <NO.OJ>196</NO.OJ>
+            <YEAR>2009</YEAR>
+            <LG.OJ>EN</LG.OJ>
+            <PAGE.FIRST>27</PAGE.FIRST>
+            <PAGE.SEQ>1</PAGE.SEQ>
+            <VOLUME.REF>01</VOLUME.REF>
+          </DOCUMENT.REF.CONS>
+          <EEA>
+          </EEA>
+          <DATE ISO="20090728">20090728</DATE>
+          <LG.DOC>EN</LG.DOC>
+          <NO.SEQ>0010</NO.SEQ>
+          <PAGE.FIRST>27</PAGE.FIRST>
+          <PAGE.SEQ>1</PAGE.SEQ>
+          <PAGE.LAST>35</PAGE.LAST>
+          <PAGE.TOTAL>9</PAGE.TOTAL>
+          <NO.DOC FORMAT="YN" TYPE="OJ">
+            <NO.CURRENT>563</NO.CURRENT>
+            <YEAR>2009</YEAR>
+            <COM>EC</COM>
+          </NO.DOC>
+        </BIB.INSTANCE.CONS>
+        <NO.CELEX>32009D0563</NO.CELEX>
+        <DATE ISO="20090709">20090709</DATE>
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Commission Decision</HT>
+            </P>
+            <P>of<DATE ISO="20090709">9 July 2009</DATE>
+            </P>
+            <P>on establishing the ecological criteria for the award of the Community eco-label for footwear</P>
+            <P>(notified under document number C(2009) 5612)</P>
+            <P>(Text with EEA relevance)</P>
+            <P>(2009/563/EC)</P>
+          </TI>
+        </TITLE>
+      </BIB.DATA>
+      <GR.MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>167</NO.OJ>
+                <YEAR>2013</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>57</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="20130619">20130619</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>0014</NO.SEQ>
+              <PAGE.FIRST>57</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>59</PAGE.LAST>
+              <PAGE.TOTAL>3</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>295</NO.CURRENT>
+                <YEAR>2013</YEAR>
+                <COM>EU</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>32013D0295</NO.CELEX>
+            <DATE ISO="20130617">20130617</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Decision</HT>
+                </P>
+                <P>of<DATE ISO="20130617">17 June 2013</DATE>
+                </P>
+                <P>amending Decisions 2006/799/EC, 2007/64/EC, 2009/300/EC, 2009/543/EC, 2009/544/EC, 2009/563/EC, 2009/564/EC, 2009/567/EC, 2009/568/EC, 2009/578/EC, 2009/598/EC, 2009/607/EC, 2009/894/EC, 2009/967/EC, 2010/18/EC and 2011/331/EU in order to prolong the validity of the ecological criteria for the award of the EU Ecolabel to certain products</P>
+                <P>(notified under document C(2013) 3550)</P>
+                <P>(2013/295/EU)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>060</NO.OJ>
+                <YEAR>2015</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>39</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="20150304">20150304</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>0005</NO.SEQ>
+              <PAGE.FIRST>39</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>41</PAGE.LAST>
+              <PAGE.TOTAL>3</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>345</NO.CURRENT>
+                <YEAR>2015</YEAR>
+                <COM>EU</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>32015D0345</NO.CELEX>
+            <DATE ISO="20150302">20150302</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Decision</HT>(EU) 2015/345</P>
+                <P>of<DATE ISO="20150302">2 March 2015</DATE>
+                </P>
+                <P>amending Decisions 2009/563/EC, 2009/564/EC, 2009/578/EC, 2010/18/EC, 2011/263/EU, 2011/264/EU, 2011/382/EU and 2011/383/EU in order to prolong the validity of the ecological criteria for the award of the EU Ecolabel to certain products</P>
+                <P>
+                  <HT TYPE="NORMAL">
+                    <HT TYPE="ITALIC">(notified under document C(2015) 1286)</HT>
+                  </HT>
+                </P>
+                <P>(Text with EEA relevance)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>300</NO.OJ>
+                <YEAR>2015</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>41</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="20151117">20151117</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>0014</NO.SEQ>
+              <PAGE.FIRST>41</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>42</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>2056</NO.CURRENT>
+                <YEAR>2015</YEAR>
+                <COM>EU</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>32015D2056</NO.CELEX>
+            <DATE ISO="20151113">20151113</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Decision</HT>(EU) 2015/2056</P>
+                <P>of<DATE ISO="20151113">13 November 2015</DATE>
+                </P>
+                <P>amending Decisions 2009/300/EC, 2009/563/EC, 2009/894/EC, 2011/330/EU and 2011/337/EU in order to prolong the validity of the ecological criteria for the award of the EU Ecolabel to certain products</P>
+                <P>
+                  <HT TYPE="NORMAL">
+                    <HT TYPE="ITALIC">(notified under document C(2015) 7781)</HT>
+                  </HT>
+                </P>
+                <P>(Text with EEA relevance)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="REP" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>214</NO.OJ>
+                <YEAR>2016</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>16</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="20160809">20160809</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>0004</NO.SEQ>
+              <PAGE.FIRST>16</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>52</PAGE.LAST>
+              <PAGE.TOTAL>37</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>1349</NO.CURRENT>
+                <YEAR>2016</YEAR>
+                <COM>EU</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>32016D1349</NO.CELEX>
+            <DATE ISO="20160805">20160805</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Decision</HT>(EU) 2016/1349</P>
+                <P>of<DATE ISO="20160805">5 August 2016</DATE>
+                </P>
+                <P>establishing the ecological criteria for the award of the EU Ecolabel for footwear</P>
+                <P>
+                  <HT TYPE="NORMAL">
+                    <HT TYPE="ITALIC">(notified under document C(2016) 5028)</HT>
+                  </HT>
+                </P>
+                <P>(Text with EEA relevance)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+      </GR.MOD.ACT>
+    </FAM.COMP>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="UC">Commission Decision</HT>
+        </P>
+        <P>of<DATE ISO="20090709">9 July 2009</DATE>
+        </P>
+        <P>on establishing the ecological criteria for the award of the Community eco-label for footwear</P>
+        <P>(notified under document number C(2009) 5612)</P>
+        <P>(Text with EEA relevance)</P>
+        <P>(2009/563/EC)</P>
+      </TI>
+    </TITLE>
+    <PREAMBLE>
+      <PREAMBLE.INIT>
+      </PREAMBLE.INIT>
+      <PREAMBLE.FINAL>
+      </PREAMBLE.FINAL>
+    </PREAMBLE>
+    <ENACTING.TERMS>
+      <ARTICLE IDENTIFIER="001">
+        <TI.ART>Article 1</TI.ART>
+        <ALINEA>The product group<QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+          </QUOT.START>footwear<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+          </QUOT.END>shall comprise all articles of clothing designed to protect or cover the foot, with a fixed outer sole which comes into contact with the ground. Footwear shall not contain any electric or electronic components.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="002">
+        <TI.ART>Article 2</TI.ART>
+        <ALINEA>In order to be awarded the Community eco-label for products falling within the product group footwear under Regulation (EC) No 1980/2000 (hereinafter<QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002">
+          </QUOT.START>the eco-label<QUOT.END CODE="2019" ID="QE0002" REF.START="QS0002">
+          </QUOT.END>), footwear shall comply with the criteria set out in the Annex to this Decision.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="003">
+        <TI.ART>Article 3</TI.ART>
+        <ALINEA>The ecological criteria for the product group<QUOT.START CODE="2018" ID="QS0003" REF.END="QE0003">
+          </QUOT.START>footwear<QUOT.END CODE="2019" ID="QE0003" REF.START="QS0003">
+          </QUOT.END>and the related assessment and verification requirements, shall be valid until<DATE ISO="20161231">31 December 2016</DATE>.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="004">
+        <TI.ART>Article 4</TI.ART>
+        <ALINEA>For administrative purposes the code number assigned to the product group<QUOT.START CODE="2018" ID="QS0004" REF.END="QE0004">
+          </QUOT.START>footwear<QUOT.END CODE="2019" ID="QE0004" REF.START="QS0004">
+          </QUOT.END>shall be<QUOT.START CODE="2018" ID="QS0005" REF.END="QE0005">
+          </QUOT.START>017<QUOT.END CODE="2019" ID="QE0005" REF.START="QS0005">
+          </QUOT.END>.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="005">
+        <TI.ART>Article 5</TI.ART>
+        <ALINEA>Decision 2002/231/EC is repealed.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="006">
+        <TI.ART>Article 6</TI.ART>
+        <PARAG IDENTIFIER="006.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>Applications for the eco-label for products falling within the product group footwear submitted before the date of adoption of this Decision shall be evaluated in accordance with the conditions laid down in Decision 2002/231/EC.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="006.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Applications for the eco-label for products falling within the product group footwear submitted from the date of adoption of this Decision but by<DATE ISO="20100331">31 March 2010</DATE>at the latest may be based either on the criteria set out in Decision 2002/231/EC or on the criteria set out in this Decision.</ALINEA>
+          <ALINEA>Those applications shall be evaluated pursuant to the criteria on which they are based.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="006.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>Where the eco-label is awarded on the basis of an application evaluated according to the criteria set out in Decision 2002/231/EC, that eco-label may be used for twelve months from the date of adoption of this Decision.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="007">
+        <TI.ART>Article 7</TI.ART>
+        <ALINEA>This Decision is addressed to the Member States.</ALINEA>
+      </ARTICLE>
+    </ENACTING.TERMS>
+    <CONS.ANNEX>
+      <TITLE>
+        <TI>
+          <P>ANNEX</P>
+        </TI>
+      </TITLE>
+      <CONTENTS>
+        <GR.SEQ LEVEL="1">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="BOLD">FRAMEWORK</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="BOLD">The aims of the criteria</HT>
+                </P>
+              </TI>
+            </TITLE>
+            <P>These criteria aim in particular at:</P>
+            <LIST TYPE="DASH">
+              <ITEM>
+                <P>limiting the levels of toxic residues,</P>
+              </ITEM>
+              <ITEM>
+                <P>limiting the emissions of volatile organic compounds, and,</P>
+              </ITEM>
+              <ITEM>
+                <P>promoting a more durable product,</P>
+              </ITEM>
+            </LIST>
+            <P>The criteria are set at levels that promote the labelling of footwear which has a lower environmental impact.</P>
+          </GR.SEQ>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="BOLD">Assessment and verification requirements</HT>
+                </P>
+              </TI>
+            </TITLE>
+            <P>The specific assessment and verification requirements are indicated within each criterion.</P>
+            <P>Where appropriate, test methods other than those indicated for each criterion may be used if their equivalence is accepted by the competent body assessing the application.</P>
+            <P>The functional unit is one pair of shoes. Requirements are based on shoe size 40 Paris point. For children&apos;s shoes the requirements apply for a size 32 Paris point (or the largest size in the case of maximum sizes smaller than 32 Paris point).</P>
+            <P>Any upper shoe components weighing less than 3 % of the whole upper part shall not be taken into account for the application of the criteria. Any sole shoe components weighing less than 3 % of the whole outer sole shall not be taken into account for the application of the criteria.</P>
+            <P>Where appropriate, competent bodies may require supporting documentation and may carry out independent verifications.</P>
+            <P>The competent bodies are recommended to take into account the implementation of recognised environmental management schemes, such as EMAS or ISO 14001, when assessing applications and monitoring compliance with the criteria (<HT TYPE="ITALIC">note:</HT>it is not required to implement such management schemes).</P>
+          </GR.SEQ>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="1">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="BOLD">CRITERIA</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>1.</NO.P>
+                  <TXT>
+                    <HT TYPE="BOLD">Dangerous substances in the final product</HT>
+                  </TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <NP>
+              <NO.P>(a)</NO.P>
+              <TXT>For shoes made of leather, there shall be no Chromium VI in the final product.</TXT>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant and/or his supplier(s) shall provide a test report, using test method EN ISO 17075 (detection limit 3 ppm). The sample preparation must follow the indications of the EN ISO 4044.</P>
+              <P>
+                <ANNOTATION>
+                  <P>(<HT TYPE="ITALIC">Note:</HT>difficulties in measurement due to interferences may be encountered when analysing certain coloured leather)</P>
+                </ANNOTATION>
+              </P>
+            </NP>
+            <NP>
+              <NO.P>(b)</NO.P>
+              <TXT>There shall be no Arsenic, Cadmium and Lead in the materials used for the product assembly or in the final product.</TXT>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant and/or his supplier(s) shall provide a test report using one of the following EN 14602 test methods:</P>
+              <P>
+                <LIST TYPE="DASH">
+                  <ITEM>
+                    <P>testing the materials for the product assembly. The substances specified in the criterion shall not be detectable in any of the materials used for the manufacturing of the final product,</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>testing the final product. The substances specified in the criterion shall not be detectable in either the upper or lower components of the footwear following separation and complete grinding.</P>
+                  </ITEM>
+                </LIST>
+              </P>
+              <P>For leather products the sample preparation shall follow EN ISO 4044.</P>
+            </NP>
+            <NP>
+              <NO.P>(c)</NO.P>
+              <TXT>The amount of free and hydrolysed formaldehyde of the components of the footwear shall not exceed the following limits:</TXT>
+              <P>
+                <DLIST SEPARATOR=":">
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>textile</TERM>
+                    <DEFINITION>not detectable,</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>leather</TERM>
+                    <DEFINITION>150 ppm.</DEFINITION>
+                  </DLIST.ITEM>
+                </DLIST>
+              </P>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant and/or his supplier(s) shall provide a test report, using the following test methods: Textiles: EN ISO 14184-1 (detection limit: 20 ppm); Leather: EN ISO 17226-1 or 2.</P>
+            </NP>
+          </GR.SEQ>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>2.</NO.P>
+                  <TXT>
+                    <HT TYPE="BOLD">Reduction of water consumption (only for the tanning of hides and skins)</HT>
+                  </TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <P>The following limits to water consumption for the tanning of hide and skin<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>Hide is defined as<QUOT.START CODE="2018" ID="QS0006" REF.END="QE0006">
+                  </QUOT.START>the outer covering or a mature or fully-grown animal of the larger kind, e.g. cattle, horses, camels, elephants, etc. …<QUOT.END CODE="2019" ID="QE0006" REF.START="QS0006">
+                  </QUOT.END>. Skin is defined as<QUOT.START CODE="2018" ID="QS0007" REF.END="QE0007">
+                  </QUOT.START>the outer covering of an animal of the smaller kinds, e.g. sheep and goats, or of the immature animals of the larger species, e.g. calves. Pigs, reptiles, birds and fish are included under skins<QUOT.END CODE="2019" ID="QE0007" REF.START="QS0007">
+                  </QUOT.END>. (<HT TYPE="ITALIC">International Glossary of Leather Terms, ICT</HT>).</P>
+              </NOTE>shall not be exceeded:</P>
+            <DLIST SEPARATOR=":">
+              <DLIST.ITEM>
+                <PREFIX>—</PREFIX>
+                <TERM>Hides</TERM>
+                <DEFINITION>35 m3/t,</DEFINITION>
+              </DLIST.ITEM>
+              <DLIST.ITEM>
+                <PREFIX>—</PREFIX>
+                <TERM>Skins</TERM>
+                <DEFINITION>55 m3/t,</DEFINITION>
+              </DLIST.ITEM>
+            </DLIST>
+            <P>
+              <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant and/or his supplier(s) shall provide appropriate documentation that the mentioned limits have not been exceeded.</P>
+          </GR.SEQ>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>3.</NO.P>
+                  <TXT>
+                    <HT TYPE="BOLD">Emissions from the production of material</HT>
+                  </TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <NP>
+              <NO.P>(a)</NO.P>
+              <TXT>If the waste waters from leather tanning sites and from the textile industries are released directly into fresh waters the content of COD shall not exceed 250 mg COD/l of water discharged.</TXT>
+              <P>If the waste waters from leather tanning sites are released into a municipal waste water treatment plant/facility, then this criterion shall not apply, as long as it can be demonstrated:</P>
+              <P>
+                <LIST TYPE="DASH">
+                  <ITEM>
+                    <P>that the discharge of waste water from the tanning site into the municipal waste water supply is authorised and,</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>that the municipal waste water treatment facility is operational and that the subsequent discharge of treated water into the fresh water system is in line with minimum Community requirements according to Council Directive 91/271/EEC<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                        <P>
+                          <REF.DOC.OJ COLL="L" DATE.PUB="19910530" NO.OJ="135" PAGE.FIRST="40">OJ L 135, 30.5.1991, p. 40</REF.DOC.OJ>.</P>
+                      </NOTE>.</P>
+                  </ITEM>
+                </LIST>
+              </P>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant shall provide a test report and complementary data, using the following test method: COD: ISO 6060 — Water quality, determination of chemical oxygen demand.</P>
+              <P>Where the waste water is discharged into a municipal waste water treatment facility, documentation must be provided from the relevant authority showing that the discharge is authorised and that that municipal plant is operational and that it meets the minimum requirements of Directive 91/271/EEC.</P>
+            </NP>
+            <NP>
+              <NO.P>(b)</NO.P>
+              <TXT>Tannery waste water after treatment shall contain less than 1 mg Chromium (III)/l.</TXT>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant shall provide a test report and complementary data, using the following test methods: ISO 9174 or EN 1233 or EN ISO 11885 for Cr.</P>
+            </NP>
+          </GR.SEQ>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>4.</NO.P>
+                  <TXT>
+                    <HT TYPE="BOLD">Use of hazardous substances (up until purchase)</HT>
+                  </TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <NP>
+              <NO.P>(a)</NO.P>
+              <TXT>Pentachlorophenol (PCP) and Tetrachlorophenol (TCP) and its salts and esters shall not be used.</TXT>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant and/or his supplier(s) shall provide a declaration that the materials do not contain such chlorophenols along with a test report using the following test methods: Leather, EN ISO 17070 (limit of detection 0,1 ppm); Textile, XP G 08-015 (limit of detection 0,05 ppm)</P>
+            </NP>
+            <NP>
+              <NO.P>(b)</NO.P>
+              <TXT>No azo dyes shall be used that may cleave to any of the following aromatic amines:</TXT>
+              <P>
+                <DLIST TYPE="TBL">
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>4-aminodiphenyl</TERM>
+                    <DEFINITION>(92-67-1)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>benzidine</TERM>
+                    <DEFINITION>(92-87-5)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>4-chloro-o-toluidine</TERM>
+                    <DEFINITION>(95-69-2)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>2-naphthylamine</TERM>
+                    <DEFINITION>(91-59-8)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>o-amino-azotoluene</TERM>
+                    <DEFINITION>(97-56-3)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>2-amino-4-nitrotoluene</TERM>
+                    <DEFINITION>(99-55-8)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>p-chloroaniline</TERM>
+                    <DEFINITION>(106-47-8)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>2,4-diaminoanisol</TERM>
+                    <DEFINITION>(615-05-4)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>4,4′-diaminodiphenylmethane</TERM>
+                    <DEFINITION>(101-77-9)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>3,3′-dichlorobenzidine</TERM>
+                    <DEFINITION>(91-94-1)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>3,3′-dimethoxybenzidine</TERM>
+                    <DEFINITION>(119-90-4)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>3,3′-dimethylbenzidine</TERM>
+                    <DEFINITION>(119-93-7)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>3,3′-dimethyl-4,4_-diaminodiphenylmethane</TERM>
+                    <DEFINITION>(838-88-0)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>p-cresidine</TERM>
+                    <DEFINITION>(120-71-8)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>4,4′-methylene-bis-(2-chloraniline)</TERM>
+                    <DEFINITION>(101-14-4)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>4,4′-oxydianiline</TERM>
+                    <DEFINITION>(101-80-4)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>4,4′-thiodianiline</TERM>
+                    <DEFINITION>(139-65-1)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>o-toluidine</TERM>
+                    <DEFINITION>(95-53-4)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>2,4-diaminotoluene</TERM>
+                    <DEFINITION>(95-80-7)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>2.4,5-trimethylaniline</TERM>
+                    <DEFINITION>(137-17-7)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>4-aminoazobenzene</TERM>
+                    <DEFINITION>(60-09-3)</DEFINITION>
+                  </DLIST.ITEM>
+                  <DLIST.ITEM>
+                    <PREFIX>—</PREFIX>
+                    <TERM>o-anisidine</TERM>
+                    <DEFINITION>(90-04-0)</DEFINITION>
+                  </DLIST.ITEM>
+                </DLIST>
+              </P>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant and/or his supplier(s) shall provide a declaration that such azo dyes have not been used. Should a verification of this declaration be carried out, the following test methods shall be used: Leather — CEN ISO TS 17234; Textile — EN 14362 1 or 2.</P>
+              <P>Textiles limit 30 ppm (<HT TYPE="ITALIC">note:</HT>false positives are possible for 4-aminoazobenzene and confirmation is therefore recommended);</P>
+              <P>Leather limit 30 ppm (<HT TYPE="ITALIC">note:</HT>false positives are possible for 4-aminoazobenzene, 4-aminodiphenyl and 2-naphthylamine and confirmation is therefore recommended).</P>
+            </NP>
+            <NP>
+              <NO.P>(c)</NO.P>
+              <TXT>The following N-Nitrosamines shall not be detected in rubber:</TXT>
+              <P>
+                <LIST TYPE="DASH">
+                  <ITEM>
+                    <P>N-nitrosodimethylamine (NDMA)</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>N-nitrosodiethylamine (NDEA)</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>N-nitrosodipropylamine (NDPA)</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>N-nitrosodibutylamine (NDBA)</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>N-nitrosopiperidine (NPIP)</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>N-nitrosopyrrolidine (NPYR)</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>N-nitrosomorpholine (NMOR)</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>N-nitroso N-methyl N-phenylamine (NMPhA)</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>N-nitroso N-ethyl N-phenylamine (NEPhA)</P>
+                  </ITEM>
+                </LIST>
+              </P>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant shall provide a test report, using test method EN 12868 (1999-12) or EN 14602.</P>
+            </NP>
+            <NP>
+              <NO.P>(d)</NO.P>
+              <TXT>C10-C13 chloralkanes shall not be used in leather, rubber or textile components.</TXT>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant and/or his supplier(s) shall provide a declaration that such chloralkanes have not been used.</P>
+            </NP>
+            <NP>
+              <NO.P>(e)</NO.P>
+              <TXT>No dyes meeting the criteria for classification as carcinogenic, mutagenic toxic to reproduction, hazardous/dangerous to the environment with the following R-phrases: R40, R45, R49, R50, R51, R52, R53, R60, R61, R62, R63 or R68 (or any combination), shall be used. (Classification rules as according to Council Directive 67/548/EEC<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                  <P>
+                    <REF.DOC.OJ COLL="P" DATE.PUB="19670816" NO.OJ="196" PAGE.FIRST="1">OJ 196, 16.8.1967, p. 1</REF.DOC.OJ>.</P>
+                </NOTE>or Directive 1999/45/EC of the European Parliament and of the Council<NOTE NOTE.ID="E0004" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                  <P>
+                    <REF.DOC.OJ COLL="L" DATE.PUB="19990730" NO.OJ="200" PAGE.FIRST="1">OJ L 200, 30.7.1999, p. 1</REF.DOC.OJ>.</P>
+                </NOTE>.</TXT>
+              <P>Alternatively, classification may be considered according to Regulation (EC) No 1272/2008 of the European Parliament and of the Council<NOTE NOTE.ID="E0005" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                  <P>
+                    <REF.DOC.OJ COLL="L" DATE.PUB="20081231" NO.OJ="353" PAGE.FIRST="1">OJ L 353, 31.12.2008, p. 1</REF.DOC.OJ>.</P>
+                </NOTE>. In this case no substances or preparations may be added to the raw materials that are assigned, or may be assigned at the time of application, with the following hazard statements (or combinations thereof): H351, H350, H350i, H400, H410, H411, H412, H413, H360F, H360D, H361f, H361d H360FD, H361fd, H360Fd, H360Df, H341.</P>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant shall provide a declaration of non-use of such dyes.</P>
+            </NP>
+            <NP>
+              <NO.P>(f)</NO.P>
+              <TXT>Alkylphenol ethoxylate (APE), and Perfluorooctane sulfonate (PFOS) shall not be used.</TXT>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant shall provide a declaration of non-use of such substances.</P>
+            </NP>
+            <NP>
+              <NO.P>(g)</NO.P>
+              <TXT>No dyes meeting the criteria for classification as sensitising to skin (R43) shall be used. (Classification rules as according to Directive 67/548/EEC or Directive 1999/45/EC).</TXT>
+              <P>Alternatively, classification may be considered according to Regulation (EC) No 1272/2008. In this case no substances or preparations may be added to the raw materials that are assigned, or may be assigned at the time of application, with the following hazard statement: H317.</P>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>The applicant shall provide a declaration of non-use of these dyes.</P>
+            </NP>
+            <NP>
+              <NO.P>(h)</NO.P>
+              <TXT>Phthalates: Only phthalates that at the time of application have been risk assessed and have not been classified with the phrases (or combinations thereof): R60, R61, R62, R50, R51, R52, R53, R50/53, R51/53, R52/53, in accordance with Directive 67/548/EEC, may be used in the product (if applicable). Additionally DNOP (di-n-octyl phthalate), DINP (di-isononyl phthalate), DIDP (di-isodecyl phthalate) are not permitted in the product.</TXT>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>The applicant shall provide a declaration of compliance with this criterion.</P>
+            </NP>
+            <NP>
+              <NO.P>(i)</NO.P>
+              <TXT>Biocides: Only biocidal products containing biocidal active substances included in Annex IA of the Directive 98/8/EC of the European Parliament and of the Council<NOTE NOTE.ID="E0006" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                  <P>
+                    <REF.DOC.OJ COLL="L" DATE.PUB="19980424" NO.OJ="123" PAGE.FIRST="1">OJ L 123, 24.4.1998, p. 1</REF.DOC.OJ>.</P>
+                </NOTE>, and authorised for use in footwear, shall be allowed for use.</TXT>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>The applicant shall provide a declaration that the requirements of this criterion have been met along with a list of biocidal products used.</P>
+            </NP>
+          </GR.SEQ>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>5.</NO.P>
+                  <TXT>
+                    <HT TYPE="BOLD">Use of volatile organic compounds (VOCs) during final assembly of shoes</HT>
+                  </TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <P>VOCs are any organic compound having at 293,15 K a vapour pressure of 0,01 kPa or more, or having a corresponding volatility under the particular conditions of use.</P>
+            <P>The total use of VOCs during final footwear production shall not exceed, on average, 20 gram VOC/pair.</P>
+            <P>
+              <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant shall provide a calculation of the total use of VOCs during final shoe production, together with supporting data, test results and documentation as appropriate, with the calculation made using EN 14602. (Registration of purchased leather, adhesives, finishes and production of footwear during at least the last six months is required.)</P>
+          </GR.SEQ>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>6.</NO.P>
+                  <TXT>
+                    <HT TYPE="BOLD">Energy Consumption</HT>
+                  </TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <P>The energy consumption at the manufacturing stage shall be declared.</P>
+            <P>
+              <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant is requested to provide the relevant information according to the Technical appendix A1.</P>
+          </GR.SEQ>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>7.</NO.P>
+                  <TXT>
+                    <HT TYPE="BOLD">Packaging of the final product</HT>
+                  </TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <P>Where cardboard boxes are used for the final packaging of footwear, they shall be made of 100 % recycled material. Where plastic bags are used for the final packaging of footwear, they shall be made of, at least, 75 % recycled material or they shall be biodegradable or compostable, in agreement with the definitions provided by the EN 13432<NOTE NOTE.ID="E0007" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>EN 13432<QUOT.START CODE="2018" ID="QS0008" REF.END="QE0008">
+                  </QUOT.START>Requirements for packaging recoverable through composting and biodegradation — Testing scheme and evaluation criteria for the final acceptance of packaging<QUOT.END CODE="2019" ID="QE0008" REF.START="QS0008">
+                  </QUOT.END>.</P>
+              </NOTE>.</P>
+            <P>
+              <HT TYPE="ITALIC">Assessment and verification:</HT>a sample of the product packaging shall be provided on application, together with a corresponding declaration of compliance with this criterion. Only primary packaging, as defined in the Directive 94/62/EC of the European Parliament and the Council<NOTE NOTE.ID="E0008" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>
+                  <REF.DOC.OJ COLL="L" DATE.PUB="19941231" NO.OJ="365">OJ L 365, 31.12.1994</REF.DOC.OJ>, Article 3(1)(a), p. 10.:<QUOT.START CODE="2018" ID="QS0009" REF.END="QE0009">
+                  </QUOT.START>sales packaging or primary packaging, i.e. packaging conceived so as to constitute a sales unit to the final user or consumer at the point of purchase<QUOT.END CODE="2019" ID="QE0009" REF.START="QS0009">
+                  </QUOT.END>.</P>
+              </NOTE>, is subject to the criterion.</P>
+          </GR.SEQ>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>8.</NO.P>
+                  <TXT>
+                    <HT TYPE="BOLD">Information on the packaging</HT>
+                  </TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <GR.SEQ LEVEL="3">
+              <TITLE>
+                <TI>
+                  <NP>
+                    <NO.P>(a)</NO.P>
+                    <TXT>User Instructions</TXT>
+                  </NP>
+                </TI>
+              </TITLE>
+              <P>The following information (or equivalent text) shall be supplied with the product:</P>
+              <LIST TYPE="DASH">
+                <ITEM>
+                  <P>
+                    <QUOT.START CODE="2018" ID="QS0010" REF.END="QE0010">
+                    </QUOT.START>These shoes have been treated to improve their water resistance. They do not require further treatment.<QUOT.END CODE="2019" ID="QE0010" REF.START="QS0010">
+                    </QUOT.END>(This criterion is applicable only to footwear that has been water-resistant treated)</P>
+                </ITEM>
+                <ITEM>
+                  <P>
+                    <QUOT.START CODE="2018" ID="QS0011" REF.END="QE0011">
+                    </QUOT.START>Where possible, repair your footwear rather than throw them away. This is less damaging to the environment.<QUOT.END CODE="2019" ID="QE0011" REF.START="QS0011">
+                    </QUOT.END>
+                  </P>
+                </ITEM>
+                <ITEM>
+                  <P>
+                    <QUOT.START CODE="2018" ID="QS0012" REF.END="QE0012">
+                    </QUOT.START>When disposing of footwear, please use appropriate local recycling facilities where these are available.<QUOT.END CODE="2019" ID="QE0012" REF.START="QS0012">
+                    </QUOT.END>
+                  </P>
+                </ITEM>
+              </LIST>
+            </GR.SEQ>
+            <GR.SEQ LEVEL="3">
+              <TITLE>
+                <TI>
+                  <NP>
+                    <NO.P>(b)</NO.P>
+                    <TXT>Information about the eco-label</TXT>
+                  </NP>
+                </TI>
+              </TITLE>
+              <P>The following text (or equivalent text) shall appear on the packaging:</P>
+              <P>
+                <QUOT.START CODE="2018" ID="QS0013" REF.END="QE0013">
+                </QUOT.START>For more information visit the EU Ecolabel website: http://www.ecolabel.eu<QUOT.END CODE="2019" ID="QE0013" REF.START="QS0013">
+                </QUOT.END>
+              </P>
+            </GR.SEQ>
+            <GR.SEQ LEVEL="3">
+              <TITLE>
+                <TI>
+                  <NP>
+                    <NO.P>(c)</NO.P>
+                    <TXT>Information to consumers</TXT>
+                  </NP>
+                </TI>
+              </TITLE>
+              <P>An information box in which the applicant explains its approach to environmental sustainability should be put on the packaging.</P>
+              <P>
+                <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant shall provide a sample of the product packaging and of the information supplied with the product, together with a declaration of compliance with each part of this criterion.</P>
+            </GR.SEQ>
+          </GR.SEQ>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>9.</NO.P>
+                  <TXT>
+                    <HT TYPE="BOLD">Information appearing on the eco-label</HT>
+                  </TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <P>Box 2 of the eco-label shall contain the following text:</P>
+            <LIST TYPE="DASH">
+              <ITEM>
+                <P>low air and water pollution,</P>
+              </ITEM>
+              <ITEM>
+                <P>harmful substances reduced.</P>
+              </ITEM>
+            </LIST>
+            <P>
+              <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant shall provide a sample of the product packaging showing the label, together with a declaration of compliance with this criterion.</P>
+          </GR.SEQ>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>10.</NO.P>
+                  <TXT>
+                    <HT TYPE="BOLD">Parameters contributing to durability</HT>
+                  </TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <P>Occupational and safety footwear shall carry the EC mark (in accordance with Council Directive 89/686/EEC<NOTE NOTE.ID="E0009" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>
+                  <REF.DOC.OJ COLL="L" DATE.PUB="19891230" NO.OJ="399" PAGE.FIRST="18">OJ L 399, 30.12.1989, p. 18</REF.DOC.OJ>.</P>
+              </NOTE>).</P>
+            <P>All other footwear shall meet the requirements indicated in the table overleaf.</P>
+            <P>
+              <HT TYPE="ITALIC">Assessment and verification:</HT>the applicant shall provide a test report corresponding to the parameters indicated in the table overleaf, using the following test methods:</P>
+            <LIST TYPE="DASH">
+              <ITEM>
+                <P>EN 13512 — Upper — Flex resistance,</P>
+              </ITEM>
+              <ITEM>
+                <P>EN 13571 — Upper — Tear strength,</P>
+              </ITEM>
+              <ITEM>
+                <P>EN 17707 — Outsoles — Flex resistance,</P>
+              </ITEM>
+              <ITEM>
+                <P>EN 12770 — Outsoles — Abrasion resistance,</P>
+              </ITEM>
+              <ITEM>
+                <P>EN 17708 — Whole sole — Sole adhesion,</P>
+              </ITEM>
+              <ITEM>
+                <P>EN 12771 — Outsoles — Tear strength,</P>
+              </ITEM>
+              <ITEM>
+                <P>EN ISO 17700 — Test methods for uppers, linings and in socks — Colour fastness to rubbing.</P>
+              </ITEM>
+            </LIST>
+            <TBL COLS="10" NO.SEQ="0001">
+              <CORPUS>
+                <ROW TYPE="HEADER">
+                  <CELL COL="1" TYPE="HEADER">
+                    <IE>
+                    </IE>
+                  </CELL>
+                  <CELL COL="2" TYPE="HEADER">General sports</CELL>
+                  <CELL COL="3" TYPE="HEADER">School footwear</CELL>
+                  <CELL COL="4" TYPE="HEADER">Casual</CELL>
+                  <CELL COL="5" TYPE="HEADER">Men&apos;s town</CELL>
+                  <CELL COL="6" TYPE="HEADER">Cold weather footwear</CELL>
+                  <CELL COL="7" TYPE="HEADER">Women&apos;s town</CELL>
+                  <CELL COL="8" TYPE="HEADER">Fashion</CELL>
+                  <CELL COL="9" TYPE="HEADER">Infants</CELL>
+                  <CELL COL="10" TYPE="HEADER">Indoor</CELL>
+                </ROW>
+                <ROW>
+                  <CELL COL="1" TYPE="HEADER">
+                    <P>Uppers flex resistant:</P>
+                    <P>(kc without visible damage)</P>
+                  </CELL>
+                  <CELL COL="2">
+                    <P>Dry = 100</P>
+                    <P>Wet = 20</P>
+                  </CELL>
+                  <CELL COL="3">
+                    <P>Dry = 100</P>
+                    <P>Wet = 20</P>
+                  </CELL>
+                  <CELL COL="4">
+                    <P>Dry = 80</P>
+                    <P>Wet = 20</P>
+                  </CELL>
+                  <CELL COL="5">
+                    <P>Dry = 80</P>
+                    <P>Wet = 20</P>
+                  </CELL>
+                  <CELL COL="6">
+                    <P>Dry = 100</P>
+                    <P>Wet = 20</P>
+                    <P>– 20° = 30</P>
+                  </CELL>
+                  <CELL COL="7">
+                    <P>Dry = 50</P>
+                    <P>Wet = 10</P>
+                  </CELL>
+                  <CELL COL="8">Dry = 15</CELL>
+                  <CELL COL="9">Dry = 15</CELL>
+                  <CELL COL="10">Dry = 15</CELL>
+                </ROW>
+                <BLK>
+                  <TI.BLK COL.END="1" COL.START="1">
+                    <P>Uppers tear strength:</P>
+                    <P>(Average tear force, N)</P>
+                  </TI.BLK>
+                  <ROW>
+                    <CELL COL="1" TYPE="HEADER">Leather</CELL>
+                    <CELL COL="2">≥ 80</CELL>
+                    <CELL COL="3">≥ 60</CELL>
+                    <CELL COL="4">≥ 60</CELL>
+                    <CELL COL="5">≥ 60</CELL>
+                    <CELL COL="6">≥ 60</CELL>
+                    <CELL COL="7">≥ 40</CELL>
+                    <CELL COL="8">≥ 30</CELL>
+                    <CELL COL="9">≥ 30</CELL>
+                    <CELL COL="10">≥ 30</CELL>
+                  </ROW>
+                  <ROW>
+                    <CELL COL="1" TYPE="HEADER">Other materials</CELL>
+                    <CELL COL="2">≥ 40</CELL>
+                    <CELL COL="3">≥ 40</CELL>
+                    <CELL COL="4">≥ 40</CELL>
+                    <CELL COL="5">≥ 40</CELL>
+                    <CELL COL="6">≥ 40</CELL>
+                    <CELL COL="7">≥ 40</CELL>
+                    <CELL COL="8">≥ 30</CELL>
+                    <CELL COL="9">≥ 30</CELL>
+                    <CELL COL="10">≥ 30</CELL>
+                  </ROW>
+                </BLK>
+                <BLK>
+                  <TI.BLK COL.END="1" COL.START="1">Outsoles flex resistance:</TI.BLK>
+                  <ROW>
+                    <CELL COL="1" TYPE="HEADER">Cut growth (mm)</CELL>
+                    <CELL COL="2">≤ 4</CELL>
+                    <CELL COL="3">≤ 4</CELL>
+                    <CELL COL="4">≤ 4</CELL>
+                    <CELL COL="5">≤ 4</CELL>
+                    <CELL COL="6">≤ 4</CELL>
+                    <CELL COL="7">≤ 4</CELL>
+                    <CELL COL="8">
+                      <IE>
+                      </IE>
+                    </CELL>
+                    <CELL COL="9">
+                      <IE>
+                      </IE>
+                    </CELL>
+                    <CELL COL="10">
+                      <IE>
+                      </IE>
+                    </CELL>
+                  </ROW>
+                  <ROW>
+                    <CELL COL="1" TYPE="HEADER">Nsc = no spontaneous crack</CELL>
+                    <CELL COL="2">Nsc</CELL>
+                    <CELL COL="3">Nsc</CELL>
+                    <CELL COL="4">Nsc</CELL>
+                    <CELL COL="5">Nsc</CELL>
+                    <CELL COL="6">Nsc at – 10 °C</CELL>
+                    <CELL COL="7">Nsc</CELL>
+                    <CELL COL="8">
+                      <IE>
+                      </IE>
+                    </CELL>
+                    <CELL COL="9">
+                      <IE>
+                      </IE>
+                    </CELL>
+                    <CELL COL="10">
+                      <IE>
+                      </IE>
+                    </CELL>
+                  </ROW>
+                </BLK>
+                <BLK>
+                  <TI.BLK COL.END="1" COL.START="1">Outsoles abrasion resistance:</TI.BLK>
+                  <ROW>
+                    <CELL COL="1" TYPE="HEADER">D ≥ 0,9 g/cm<HT TYPE="SUP">3</HT>(mm<HT TYPE="SUP">3</HT>)</CELL>
+                    <CELL COL="2">≤ 200</CELL>
+                    <CELL COL="3">≤ 200</CELL>
+                    <CELL COL="4">≤ 250</CELL>
+                    <CELL COL="5">≤ 350</CELL>
+                    <CELL COL="6">≤ 200</CELL>
+                    <CELL COL="7">≤ 400</CELL>
+                    <CELL COL="8">
+                      <IE>
+                      </IE>
+                    </CELL>
+                    <CELL COL="9">
+                      <IE>
+                      </IE>
+                    </CELL>
+                    <CELL COL="10">≤ 450</CELL>
+                  </ROW>
+                  <ROW>
+                    <CELL COL="1" TYPE="HEADER">D &lt; 0,9 g/cm<HT TYPE="SUP">3</HT>(mg)</CELL>
+                    <CELL COL="2">≤ 150</CELL>
+                    <CELL COL="3">≤ 150</CELL>
+                    <CELL COL="4">≤ 170</CELL>
+                    <CELL COL="5">≤ 200</CELL>
+                    <CELL COL="6">≤ 150</CELL>
+                    <CELL COL="7">≤ 250</CELL>
+                    <CELL COL="8">
+                      <IE>
+                      </IE>
+                    </CELL>
+                    <CELL COL="9">
+                      <IE>
+                      </IE>
+                    </CELL>
+                    <CELL COL="10">≤ 300</CELL>
+                  </ROW>
+                </BLK>
+                <ROW>
+                  <CELL COL="1" TYPE="HEADER">Uppersole adhesion: (N/mm)</CELL>
+                  <CELL COL="2">≥ 4,0</CELL>
+                  <CELL COL="3">≥ 4,0</CELL>
+                  <CELL COL="4">≥ 3,0</CELL>
+                  <CELL COL="5">≥ 3,5</CELL>
+                  <CELL COL="6">≥ 3,5</CELL>
+                  <CELL COL="7">≥ 3,0</CELL>
+                  <CELL COL="8">≥ 2,5</CELL>
+                  <CELL COL="9">≥ 3,0</CELL>
+                  <CELL COL="10">≥ 2,5</CELL>
+                </ROW>
+                <BLK>
+                  <TI.BLK COL.END="1" COL.START="1">
+                    <P>Outsoles tear strength:</P>
+                    <P>(Average strength, N/mm)</P>
+                  </TI.BLK>
+                  <ROW>
+                    <CELL COL="1" TYPE="HEADER">D ≥ 0,9 g/cm<HT TYPE="SUP">3</HT>
+                    </CELL>
+                    <CELL COL="2">
+                      <FT TYPE="NUMBER">8</FT>
+                    </CELL>
+                    <CELL COL="3">
+                      <FT TYPE="NUMBER">8</FT>
+                    </CELL>
+                    <CELL COL="4">
+                      <FT TYPE="NUMBER">8</FT>
+                    </CELL>
+                    <CELL COL="5">
+                      <FT TYPE="NUMBER">6</FT>
+                    </CELL>
+                    <CELL COL="6">
+                      <FT TYPE="NUMBER">8</FT>
+                    </CELL>
+                    <CELL COL="7">
+                      <FT TYPE="NUMBER">6</FT>
+                    </CELL>
+                    <CELL COL="8">
+                      <FT TYPE="NUMBER">5</FT>
+                    </CELL>
+                    <CELL COL="9">
+                      <FT TYPE="NUMBER">6</FT>
+                    </CELL>
+                    <CELL COL="10">
+                      <FT TYPE="NUMBER">5</FT>
+                    </CELL>
+                  </ROW>
+                  <ROW>
+                    <CELL COL="1" TYPE="HEADER">D &lt; 0,9 g/cm<HT TYPE="SUP">3</HT>
+                    </CELL>
+                    <CELL COL="2">
+                      <FT TYPE="NUMBER">6</FT>
+                    </CELL>
+                    <CELL COL="3">
+                      <FT TYPE="NUMBER">6</FT>
+                    </CELL>
+                    <CELL COL="4">
+                      <FT TYPE="NUMBER">6</FT>
+                    </CELL>
+                    <CELL COL="5">
+                      <FT TYPE="NUMBER">4</FT>
+                    </CELL>
+                    <CELL COL="6">
+                      <FT TYPE="NUMBER">6</FT>
+                    </CELL>
+                    <CELL COL="7">
+                      <FT TYPE="NUMBER">4</FT>
+                    </CELL>
+                    <CELL COL="8">
+                      <FT TYPE="NUMBER">4</FT>
+                    </CELL>
+                    <CELL COL="9">
+                      <FT TYPE="NUMBER">5</FT>
+                    </CELL>
+                    <CELL COL="10">
+                      <FT TYPE="NUMBER">4</FT>
+                    </CELL>
+                  </ROW>
+                </BLK>
+                <ROW>
+                  <CELL COL="1" TYPE="HEADER">Colour fastness of the inside of the footwear (lining or inner face of the upper). Grey scale on the felt after 50 cycles wet</CELL>
+                  <CELL COL="2">≥ 2/3</CELL>
+                  <CELL COL="3">≥ 2/3</CELL>
+                  <CELL COL="4">≥ 2/3</CELL>
+                  <CELL COL="5">≥ 2/3</CELL>
+                  <CELL COL="6">≥ 2/3</CELL>
+                  <CELL COL="7">≥ 2/3</CELL>
+                  <CELL COL="8">
+                    <IE>
+                    </IE>
+                  </CELL>
+                  <CELL COL="9">≥ 2/3</CELL>
+                  <CELL COL="10">≥ 2/3</CELL>
+                </ROW>
+              </CORPUS>
+            </TBL>
+          </GR.SEQ>
+        </GR.SEQ>
+      </CONTENTS>
+      <CONS.ANNEX>
+        <TITLE>
+          <TI>
+            <P>Technical Appendix</P>
+          </TI>
+        </TITLE>
+        <CONTENTS>
+          <GR.SEQ LEVEL="1">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>A1.</NO.P>
+                  <TXT>
+                    <HT TYPE="BOLD">Energy consumption calculation</HT>
+                  </TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <P>The energy consumption calculation refers only to the assembly (manufacturing stage) of the final product.</P>
+            <P>The average electric consumption (AEC) for each pair of shoes can be calculated two ways:</P>
+            <LIST TYPE="NONE">
+              <ITEM>
+                <P>On the basis of the overall daily production of shoes of the plant:</P>
+                <P>
+                  <DLIST SEPARATOR="=">
+                    <DLIST.ITEM>
+                      <PREFIX>—</PREFIX>
+                      <TERM>MJ<HT TYPE="SUB">dp</HT>
+                      </TERM>
+                      <DEFINITION>average energy used per day in production of shoes [electricity + fossil fuels] (calculated on an annual basis),</DEFINITION>
+                    </DLIST.ITEM>
+                    <DLIST.ITEM>
+                      <PREFIX>—</PREFIX>
+                      <TERM>N</TERM>
+                      <DEFINITION>average number of pair of shoes produced per day (calculated on a annual basis),</DEFINITION>
+                    </DLIST.ITEM>
+                  </DLIST>
+                </P>
+                <P>
+                  <FORMULA TYPE="OUTLINE">
+                    <EXPR>AEC</EXPR>
+                    <OP.CMP TYPE="EQ">
+                    </OP.CMP>
+                    <EXPR>
+                      <FRACTION>
+                        <DIVIDEND>MJ<IND>dp</IND>
+                        </DIVIDEND>
+                        <DIVISOR>N</DIVISOR>
+                      </FRACTION>
+                    </EXPR>
+                  </FORMULA>
+                </P>
+              </ITEM>
+              <ITEM>
+                <P>On the basis of the production of eco-labelled shoes of the plant:</P>
+                <P>
+                  <DLIST SEPARATOR="=">
+                    <DLIST.ITEM>
+                      <PREFIX>—</PREFIX>
+                      <TERM>MJ<HT TYPE="SUB">ep</HT>
+                      </TERM>
+                      <DEFINITION>average energy used per day in production of eco-labelled shoes [electricity + fossil fuels] (calculated on an annual basis),</DEFINITION>
+                    </DLIST.ITEM>
+                    <DLIST.ITEM>
+                      <PREFIX>—</PREFIX>
+                      <TERM>N<HT TYPE="SUB">ep</HT>
+                      </TERM>
+                      <DEFINITION>average number of pairs of eco-labelled shoes produced per day (calculated on an annual basis),</DEFINITION>
+                    </DLIST.ITEM>
+                  </DLIST>
+                </P>
+                <P>
+                  <FORMULA TYPE="OUTLINE">
+                    <EXPR>AEC</EXPR>
+                    <OP.CMP TYPE="EQ">
+                    </OP.CMP>
+                    <EXPR>
+                      <FRACTION>
+                        <DIVIDEND>MJ<IND>ep</IND>
+                        </DIVIDEND>
+                        <DIVISOR>N<IND>ep</IND>
+                        </DIVISOR>
+                      </FRACTION>
+                    </EXPR>
+                  </FORMULA>
+                </P>
+              </ITEM>
+            </LIST>
+          </GR.SEQ>
+        </CONTENTS>
+      </CONS.ANNEX>
+    </CONS.ANNEX>
+  </CONS.DOC>
+</CONS.ACT>

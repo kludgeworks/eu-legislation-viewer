@@ -1,0 +1,51 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-02.00-20050101.xd">
+  <BIB.DOC>
+    <NO.DOC FORMAT="NY" TYPE="OJ">
+      <NO.CURRENT>599</NO.CURRENT>
+      <YEAR>2005</YEAR>
+      <COM>EC</COM>
+    </NO.DOC>
+    <DURAB TYPE="EPH">
+    </DURAB>
+    <AUTHOR>COM</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="L_2005099EN.toc.xml">
+    <COLL>L</COLL>
+    <NO.OJ>099</NO.OJ>
+    <DATE ISO="20050419">20050419</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="003" SYNOPTISM="D003">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>REG</LEGAL.VALUE>
+      <DATE ISO="20050418">20050418</DATE>
+      <PAGE.FIRST>4</PAGE.FIRST>
+      <PAGE.LAST>4</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="L_2005099EN.01000401.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="003">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Commission Regulation (EC) No 599/2005 of<DATE ISO="20050418">18 April 2005</DATE>concerning tenders submitted in response to the invitation to tender for the export to certain third countries of wholly milled and medium and long grain A rice issued in Regulation (EC) No 2031/2004</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>4</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="003">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="l_09920050419en00040004.pdf">4</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

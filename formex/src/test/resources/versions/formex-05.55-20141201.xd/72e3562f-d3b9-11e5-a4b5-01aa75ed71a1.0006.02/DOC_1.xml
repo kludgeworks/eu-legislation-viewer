@@ -1,0 +1,55 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.55-20141201.xd">
+  <BIB.DOC>
+    <PROD.ID>20160129004</PROD.ID>
+    <FIN.ID>66725</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2016/C 59/05</TXT>
+    </NO.DOC>
+    <NO.DOC TYPE="INTERNAL" FORMAT="CNY">
+      <NO.CURRENT>633</NO.CURRENT>
+      <YEAR>2015</YEAR>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>CJ</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2016059EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>059</NO.OJ>
+    <DATE ISO="20160215">20160215</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0005" SYNOPTISM="D0005">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>INFO_JUDICIAL</LEGAL.VALUE>
+      <DATE ISO="20151130">20151130</DATE>
+      <PAGE.FIRST>6</PAGE.FIRST>
+      <PAGE.LAST>7</PAGE.LAST>
+      <PAGE.TOTAL>2</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS TYPE="DOC.XML" FILE="C_2016059EN.01000601.xml">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0005">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Case C-633/15: Reference for a preliminary ruling from First-tier Tribunal (Tax Chamber) (United Kingdom) made on<DATE ISO="20151130">30 November 2015</DATE>— London Borough of Ealing v Commissioners for Her Majesty&apos;s Revenue and Customs</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>6</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0005">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_05920160215en00060007.pdf">6</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

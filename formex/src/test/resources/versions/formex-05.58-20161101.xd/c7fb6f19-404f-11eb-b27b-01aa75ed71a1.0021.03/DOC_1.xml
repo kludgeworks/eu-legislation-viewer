@@ -1,0 +1,843 @@
+<JUDGMENT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.58-20161101.xd">
+  <BIB.JUDGMENT>
+    <REF.CASE FILE="n.a.">
+      <NO.CASE>C-404/19 P</NO.CASE>
+    </REF.CASE>
+    <NO.CELEX>62019CJ0404</NO.CELEX>
+    <NO.ECLI ECLI="ECLI:EU:C:2020:1041">EU:C:2020:1041</NO.ECLI>
+    <NO.SEQ>0001</NO.SEQ>
+    <PAGE.FIRST.ECR>1</PAGE.FIRST.ECR>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST.ECR>15</PAGE.LAST.ECR>
+    <PAGE.TOTAL>15</PAGE.TOTAL>
+    <AUTHOR>CJ</AUTHOR>
+  </BIB.JUDGMENT>
+  <CURR.TITLE>
+    <PAGE.HEADER>
+      <P>
+        <HT TYPE="SC">Judgment of<DATE ISO="20201217">17. 12. 2020</DATE>– Case C‑404/19 P</HT>
+      </P>
+      <P>
+        <HT TYPE="SC">France v Commission</HT>
+      </P>
+    </PAGE.HEADER>
+  </CURR.TITLE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Judgment of the Court</HT>(Fourth Chamber)</P>
+      <P>
+        <DATE ISO="20201217">17 December 2020</DATE>
+        <NOTE TYPE="FOOTNOTE" NUMBERING="STAR" NOTE.ID="E0001">
+          <P>Language of the case: French.</P>
+        </NOTE>
+      </P>
+    </TI>
+  </TITLE>
+  <INTERMEDIATE>
+    <INDEX IDX.CLOSE=")" SEPARATOR=" – " IDX.OPEN="(">
+      <KEYWORD>Appeal</KEYWORD>
+      <KEYWORD>European Agricultural Guarantee Fund (EAGF) and European Agricultural Fund for Rural Development (EAFRD)</KEYWORD>
+      <KEYWORD>Implementing Decision (EU) 2017/2014</KEYWORD>
+      <KEYWORD>Expenditure excluded from EU financing</KEYWORD>
+      <KEYWORD>Expenditure incurred by the French Republic</KEYWORD>
+      <KEYWORD>100% flat-rate correction</KEYWORD>
+      <KEYWORD>Proportionality</KEYWORD>
+      <KEYWORD>European Commission Guidelines on the calculation of the financial corrections in the framework of the conformity and financial clearance of accounts procedures</KEYWORD>
+    </INDEX>
+  </INTERMEDIATE>
+  <JUDGMENT.INIT>
+    <P>In Case C‑404/19 P,</P>
+    <P>APPEAL under Article 56 of the Statute of the Court of Justice of the European Union, brought on<DATE ISO="20190523">23 May 2019</DATE>,</P>
+  </JUDGMENT.INIT>
+  <PARTIES>
+    <PLAINTIFS>
+      <P>
+        <HT TYPE="BOLD">French Republic</HT>, represented by A.-L. Desjonquères, C. Mosser and D. Colas, acting as Agents,</P>
+      <PARTY.STATUS>appellant,</PARTY.STATUS>
+    </PLAINTIFS>
+    <AGAINST>the other party to the proceedings being:</AGAINST>
+    <DEFENDANTS>
+      <P>
+        <HT TYPE="BOLD">European Commission</HT>, represented by X.A. Lewis, A. Sauka and J. Aquilina, acting as Agents,</P>
+      <PARTY.STATUS>defendant at first instance,</PARTY.STATUS>
+    </DEFENDANTS>
+  </PARTIES>
+  <PREAMBLE>
+    <PREAMBLE.INIT>
+      <P>THE COURT (Fourth Chamber),</P>
+      <P>composed of M. Vilaras, President of the Chamber, N. Piçarra, D. Šváby (Rapporteur), S. Rodin and K. Jürimäe, Judges,</P>
+      <P>Advocate General: H. Saugmandsgaard Øe,</P>
+      <P>Registrar: V. Giacobbo, Administrator,</P>
+    </PREAMBLE.INIT>
+    <GR.VISA>
+      <VISA>having regard to the written procedure and further to the hearing on<DATE ISO="20200227">27 February 2020</DATE>,</VISA>
+      <VISA>after hearing the Opinion of the Advocate General at the sitting on<DATE ISO="20200903">3 September 2020</DATE>,</VISA>
+    </GR.VISA>
+    <PREAMBLE.FINAL>gives the following</PREAMBLE.FINAL>
+  </PREAMBLE>
+  <CONTENTS.JUDGMENT>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Judgment</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <NP.ECR IDENTIFIER="NP0001">
+        <NO.P>1</NO.P>
+        <TXT>By its appeal, the French Republic asks the Court to set aside the judgment of the General Court of the European Union of<REF.DOC.ECR>
+            <DATE ISO="20190312">12 March 2019</DATE>,<NAME.CASE>
+              <HT TYPE="ITALIC">France</HT>v<HT TYPE="ITALIC">Commission</HT>
+            </NAME.CASE>(<NO.CASE>T‑26/18</NO.CASE>, not published,<NO.ECLI ECLI="ECLI:EU:T:2019:153">EU:T:2019:153</NO.ECLI>
+          </REF.DOC.ECR>) (<QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+          </QUOT.START>the judgment under appeal<QUOT.END REF.START="QS0001" CODE="2019" ID="QE0001">
+          </QUOT.END>), by which the General Court dismissed its action under Article 263 TFEU seeking the partial annulment of Commission Implementing Decision (EU) 2017/2014 of<DATE ISO="20171108">8 November 2017</DATE>excluding from European Union financing certain expenditure incurred by the Member States under the European Agricultural Guarantee Fund (EAGF) and under the European Agricultural Fund for Rural Development (EAFRD) (<REF.DOC.OJ COLL="L" NO.OJ="292" PAGE.FIRST="61" DATE.PUB="2017">OJ 2017 L 292, p. 61</REF.DOC.OJ>) (<QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002">
+          </QUOT.START>the decision at issue<QUOT.END REF.START="QS0002" CODE="2019" ID="QE0002">
+          </QUOT.END>).</TXT>
+      </NP.ECR>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Legal context</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">
+                <HT TYPE="ITALIC">Regulation (EC) No 1120/2009</HT>
+              </HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP.ECR IDENTIFIER="NP0002">
+          <NO.P>2</NO.P>
+          <TXT>Article 2(c) of Commission Regulation (EC) No 1120/2009 of<DATE ISO="20091029">29 October 2009</DATE>laying down detailed rules for the implementation of the single payment scheme provided for in Title III of Council Regulation (EC) No 73/2009 establishing common rules for direct support schemes for farmers under the common agricultural policy and establishing certain support schemes for farmers (<REF.DOC.OJ COLL="L" NO.OJ="316" PAGE.FIRST="1" DATE.PUB="2009">OJ 2009 L 316, p. 1</REF.DOC.OJ>) contained the following definition:</TXT>
+          <P>
+            <QUOT.S LEVEL="1">
+              <ALINEA>
+                <QUOT.START CODE="2018" ID="QS0003" REF.END="QE0003">
+                </QUOT.START>
+                <QUOT.START CODE="201C" ID="QS0004" REF.END="QE0004">
+                </QUOT.START>permanent pasture<QUOT.END REF.START="QS0004" CODE="201D" ID="QE0004">
+                </QUOT.END>means land used to grow grasses or other herbaceous forage naturally (self-seeded) or through cultivation (sown) and that has not been included in the crop rotation of the holding for five years or longer, excluding areas set aside in accordance with Council Regulation (EEC) No 2078/92 [of<DATE ISO="19920630">30 June 1992</DATE>on agricultural production methods compatible with the requirements of the protection of the environment and the maintenance of the countryside (<REF.DOC.OJ COLL="L" NO.OJ="215" PAGE.FIRST="85" DATE.PUB="1992">OJ 1992 L 215, p. 85</REF.DOC.OJ>)], areas set aside in accordance with Articles 22, 23 and 24 of Council Regulation (EC) No 1257/1999 [of<DATE ISO="19990517">17 May 1999</DATE>on support for rural development from the European Agricultural Guidance and Guarantee Fund (EAGGF) and amending and repealing certain Regulations (<REF.DOC.OJ COLL="L" NO.OJ="160" PAGE.FIRST="80" DATE.PUB="1999">OJ 1999 L 160, p. 80</REF.DOC.OJ>)] and areas set aside in accordance with Article 39 of Council Regulation (EC) No 1698/2005 [of<DATE ISO="20050920">20 September 2005</DATE>on support for rural development by the European Agricultural Fund for Rural Development (EAFRD) (<REF.DOC.OJ COLL="L" NO.OJ="277" PAGE.FIRST="1" DATE.PUB="2005">OJ 2005 L 277, p. 1</REF.DOC.OJ>)]; and to this end,<QUOT.START CODE="201C" ID="QS0005" REF.END="QE0005">
+                </QUOT.START>grasses or other herbaceous forage<QUOT.END REF.START="QS0005" CODE="201D" ID="QE0005">
+                </QUOT.END>means all herbaceous plants traditionally found in natural pastures or normally included in mixtures of seeds for pastures or meadows in the Member State (whether or not used for grazing animals). Member States may include arable crops listed in Annex I<QUOT.END REF.START="QS0003" CODE="2019" ID="QE0003">
+                </QUOT.END>.</ALINEA>
+            </QUOT.S>
+          </P>
+        </NP.ECR>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">
+                <HT TYPE="ITALIC">Regulation (EC) No 1122/2009</HT>
+              </HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP.ECR IDENTIFIER="NP0003">
+          <NO.P>3</NO.P>
+          <TXT>Part II of Commission Regulation (EC) No 1122/2009 of<DATE ISO="20091130">30 November 2009</DATE>laying down detailed rules for the implementation of Council Regulation (EC) No 73/2009 as regards cross-compliance, modulation and the integrated administration and control system, under the direct support schemes for farmers provided for by that Regulation, as well as for the implementation of Council Regulation (EC) No 1234/2007 as regards cross-compliance under the support scheme provided for the wine sector (<REF.DOC.OJ COLL="L" NO.OJ="316" PAGE.FIRST="65" DATE.PUB="2009">OJ 2009 L 316, p. 65</REF.DOC.OJ>) contained a Title III on<QUOT.START CODE="2018" ID="QS0006" REF.END="QE0006">
+            </QUOT.START>Controls<QUOT.END REF.START="QS0006" CODE="2019" ID="QE0006">
+            </QUOT.END>, which included Article 34 of that regulation relating to<QUOT.START CODE="2018" ID="QS0007" REF.END="QE0007">
+            </QUOT.START>Determination of areas<QUOT.END REF.START="QS0007" CODE="2019" ID="QE0007">
+            </QUOT.END>. Article 34(2) and (4) provided:</TXT>
+          <P>
+            <QUOT.S LEVEL="1">
+              <PARAG IDENTIFIER="034.002">
+                <NO.PARAG>
+                  <QUOT.START CODE="2018" ID="QS0008" REF.END="QE0008">
+                  </QUOT.START>2.</NO.PARAG>
+                <ALINEA>The total area of an agricultural parcel may be taken into account provided that it is fully utilised in accordance with the customary standards of the Member State or region concerned. In other cases the area actually utilised shall be taken into account.</ALINEA>
+                <ALINEA>In respect of the regions where certain features, in particular hedges, ditches and walls, are traditionally part of good agriculture cropping or utilisation practices, the Member States may decide that the corresponding area is to be considered part of the fully utilised area on condition that it does not exceed a total width to be determined by the Member States. That width must correspond to a traditional width in the region in question and shall not exceed 2 metres.</ALINEA>
+                <ALINEA>However, where Member States notified to the Commission, in conformity with the third subparagraph of Article 30(2) of [Commission Regulation (EC) No 796/2004 of<DATE ISO="20040421">21 April 2004</DATE>laying down detailed rules for the implementation of cross-compliance, modulation and the integrated administration and control system provided for in Council Regulation (EC) No 1782/2003 establishing common rules for direct support schemes under the common agricultural policy and establishing certain support schemes for farmers (<REF.DOC.OJ COLL="L" NO.OJ="141" PAGE.FIRST="18" DATE.PUB="2004">OJ 2004 L 141, p. 18</REF.DOC.OJ>)], prior to the entry into force of this Regulation, a width greater than 2 metres, this width may still be applied.</ALINEA>
+              </PARAG>
+              <P>…</P>
+              <PARAG IDENTIFIER="034.004">
+                <NO.PARAG>4.</NO.PARAG>
+                <ALINEA>Without prejudice to Article 34(2) of Council Regulation (EC) No 73/2009 [of<DATE ISO="20090119">19 January 2009</DATE>establishing common rules for direct support schemes for farmers under the common agricultural policy and establishing certain support schemes for farmers, amending Regulations (EC) No 1290/2005, (EC) No 247/2006, (EC) No 378/2007 and repealing Regulation (EC) No 1782/2003 (<REF.DOC.OJ COLL="L" NO.OJ="030" PAGE.FIRST="16" DATE.PUB="2009">OJ 2009 L 30, p. 16</REF.DOC.OJ>)], an agricultural parcel that contains trees shall be considered as an eligible area for the purposes of the area-related aid schemes provided that agricultural activities or, where applicable, the production envisaged can be carried out in a similar way as on parcels without trees in the same area.<QUOT.END REF.START="QS0008" CODE="2019" ID="QE0008">
+                  </QUOT.END>
+                </ALINEA>
+              </PARAG>
+            </QUOT.S>
+          </P>
+        </NP.ECR>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">
+                <HT TYPE="ITALIC">Regulation (EU) No 1306/2013</HT>
+              </HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP.ECR IDENTIFIER="NP0004">
+          <NO.P>4</NO.P>
+          <TXT>Title IV, under the heading<QUOT.START CODE="2018" ID="QS0009" REF.END="QE0009">
+            </QUOT.START>Financial Management of the Funds<QUOT.END REF.START="QS0009" CODE="2019" ID="QE0009">
+            </QUOT.END>, of Regulation (EU) No 1306/2013 of the European Parliament and of the Council of<DATE ISO="20131217">17 December 2013</DATE>on the financing, management and monitoring of the common agricultural policy and repealing Council Regulations (EEC) No 352/78, (EC) No 165/94, (EC) No 2799/98, (EC) No 814/2000, (EC) No 1290/2005 and (EC) No 485/2008 (<REF.DOC.OJ COLL="L" NO.OJ="347" PAGE.FIRST="549" DATE.PUB="2013">OJ 2013 L 347, p. 549</REF.DOC.OJ>and corrigendum<REF.DOC.OJ COLL="L" NO.OJ="130" PAGE.FIRST="6" DATE.PUB="2016">OJ 2016 L 130, p. 6</REF.DOC.OJ>), includes a Chapter IV, entitled<QUOT.START CODE="2018" ID="QS0010" REF.END="QE0010">
+            </QUOT.START>Clearance of accounts<QUOT.END REF.START="QS0010" CODE="2019" ID="QE0010">
+            </QUOT.END>, which contains a Section II, under the heading<QUOT.START CODE="2018" ID="QS0011" REF.END="QE0011">
+            </QUOT.START>Clearance<QUOT.END REF.START="QS0011" CODE="2019" ID="QE0011">
+            </QUOT.END>, which in turn contains Article 52 of that regulation, relating to<QUOT.START CODE="2018" ID="QS0012" REF.END="QE0012">
+            </QUOT.START>Conformity clearance<QUOT.END REF.START="QS0012" CODE="2019" ID="QE0012">
+            </QUOT.END>. Article 52(1) and (2) provides:</TXT>
+          <P>
+            <QUOT.S LEVEL="1">
+              <PARAG IDENTIFIER="052.001">
+                <NO.PARAG>
+                  <QUOT.START CODE="2018" ID="QS0013" REF.END="QE0013">
+                  </QUOT.START>1.</NO.PARAG>
+                <ALINEA>Where it finds that expenditure falling within the scope of Article 4(1) and Article 5 has not been effected in conformity with Union law and, in respect of the EAFRD, has not been effected in conformity with the applicable EU and national law referred to in Article 85 of Regulation (EU) No 1303/2013 [of the European Parliament and of the Council of<DATE ISO="20131217">17 December 2013</DATE>laying down common provisions on the European Regional Development Fund, the European Social Fund, the Cohesion Fund, the European Agricultural Fund for Rural Development and the European Maritime and Fisheries Fund and laying down general provisions on the European Regional Development Fund, the European Social Fund, the Cohesion Fund and the European Maritime and Fisheries Fund and repealing Council Regulation (EC) No 1083/2006 (<REF.DOC.OJ COLL="L" NO.OJ="347" PAGE.FIRST="320" DATE.PUB="2013">OJ 2013 L 347, p. 320</REF.DOC.OJ>)], the Commission shall adopt implementing acts determining the amounts to be excluded from Union financing. Those implementing acts shall be adopted in accordance with the advisory procedure referred to in Article 116(2).</ALINEA>
+              </PARAG>
+              <PARAG IDENTIFIER="052.002">
+                <NO.PARAG>2.</NO.PARAG>
+                <ALINEA>The Commission shall assess the amounts to be excluded on the basis of the gravity of the non-conformity recorded. It shall take due account of the nature of the infringement and of the financial damage caused to the Union. It shall base the exclusion on the identification of amounts unduly spent and, where these cannot be identified with proportionate effort, may apply extrapolated or flat-rate corrections. Flat-rate corrections shall only be applied where, due to the nature of the caseor because the Member State has not provided the Commission with the necessary information, it is not possible with proportionate effort to identify more precisely the financial damage caused to the Union.<QUOT.END REF.START="QS0013" CODE="2019" ID="QE0013">
+                  </QUOT.END>
+                </ALINEA>
+              </PARAG>
+            </QUOT.S>
+          </P>
+        </NP.ECR>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">
+                <HT TYPE="ITALIC">Delegated Regulation (EU) No 907/2014</HT>
+              </HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP.ECR IDENTIFIER="NP0005">
+          <NO.P>5</NO.P>
+          <TXT>Chapter III, under the heading<QUOT.START CODE="2018" ID="QS0014" REF.END="QE0014">
+            </QUOT.START>Clearance of Accounts and Other Checks<QUOT.END REF.START="QS0014" CODE="2019" ID="QE0014">
+            </QUOT.END>, of Commission Delegated Regulation (EU) No 907/2014 of<DATE ISO="20140311">11 March 2014</DATE>supplementing Regulation No 1306/2013 with regard to paying agencies and other bodies, financial management, clearance of accounts, securities and use of euro (<REF.DOC.OJ COLL="L" NO.OJ="255" PAGE.FIRST="18" DATE.PUB="2014">OJ 2014 L 255, p. 18</REF.DOC.OJ>) contains Article 12 of that regulation, entitled<QUOT.START CODE="2018" ID="QS0015" REF.END="QE0015">
+            </QUOT.START>Criteria and methodology for applying corrections in the framework of conformity clearance<QUOT.END REF.START="QS0015" CODE="2019" ID="QE0015">
+            </QUOT.END>. Article 12(7) provides:</TXT>
+          <P>
+            <QUOT.S LEVEL="1">
+              <ALINEA>
+                <P>
+                  <QUOT.START CODE="2018" ID="QS0016" REF.END="QE0016">
+                  </QUOT.START>When establishing the level of flat-rate corrections, the Commission shall specifically take into account the following circumstances demonstrating a higher gravity of the deficiencies revealing a greater risk of loss for the Union’s budget:</P>
+                <P>…</P>
+                <P>
+                  <LIST TYPE="alpha">
+                    <ITEM>
+                      <NP>
+                        <NO.P>(c)</NO.P>
+                        <TXT>the Member State’s application of a control system is found to be absent or gravely deficient, and there is evidence of widespread irregularity and negligence in countering irregular or fraudulent practices; or</TXT>
+                      </NP>
+                    </ITEM>
+                  </LIST>
+                </P>
+              </ALINEA>
+              <ALINEA>…<QUOT.END REF.START="QS0016" CODE="2019" ID="QE0016">
+                </QUOT.END>
+              </ALINEA>
+            </QUOT.S>
+          </P>
+        </NP.ECR>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">
+                <HT TYPE="ITALIC">Implementing Regulation (EU) No 908/2014</HT>
+              </HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP.ECR IDENTIFIER="NP0006">
+          <NO.P>6</NO.P>
+          <TXT>Article 34(2) of Commission Implementing Regulation (EU) No 908/2014 of<DATE ISO="20140806">6 August 2014</DATE>laying down rules for the application of Regulation (EU) No 1306/2013 of the European Parliament and of the Council with regard to paying agencies and other bodies, financial management, clearance of accounts, rules on checks, securities and transparency (<REF.DOC.OJ COLL="L" NO.OJ="255" PAGE.FIRST="59" DATE.PUB="2014">OJ 2014 L 255, p. 59</REF.DOC.OJ>) provides:</TXT>
+          <P>
+            <QUOT.S LEVEL="1">
+              <ALINEA>
+                <P>
+                  <QUOT.START CODE="2018" ID="QS0017" REF.END="QE0017">
+                  </QUOT.START>When, as a result of any inquiry, the Commission considers that expenditure was not effected in compliance with Union rules, it shall communicate its findings to the Member State concerned, specifying the corrective measures needed to ensure future compliance with those rules, and indicating the provisional level of financial correction which at that stage of the procedure it considers corresponds to its findings. That communication shall also schedule a bilateral meeting within four months after expiry of the period for reply by the Member State. The communication shall make reference to this Article.</P>
+                <P>The Member State shall reply within two months of receipt of the communication. In its reply the Member State shall have the opportunity, in particular, to:</P>
+                <LIST TYPE="alpha">
+                  <ITEM>
+                    <NP>
+                      <NO.P>(a)</NO.P>
+                      <TXT>demonstrate to the Commission that the actual extent of the non-compliance or the risk for the Funds is less than what was indicated by the Commission;</TXT>
+                    </NP>
+                  </ITEM>
+                  <ITEM>
+                    <NP>
+                      <NO.P>(b)</NO.P>
+                      <TXT>inform the Commission of the corrective measures it has undertaken to ensure compliance with Union rules and the effective date of their implementation.</TXT>
+                    </NP>
+                  </ITEM>
+                </LIST>
+                <P>In justified cases, the Commission may, upon reasoned request of the Member State, authorise an extension of the two-month period by a maximum of two months. The request shall be addressed to the Commission before the expiry of that period.</P>
+                <P>If the Member State considers that a bilateral meeting is not required, it shall inform the Commission accordingly in its reply to the communication mentioned above.<QUOT.END REF.START="QS0017" CODE="2019" ID="QE0017">
+                  </QUOT.END>
+                </P>
+              </ALINEA>
+            </QUOT.S>
+          </P>
+        </NP.ECR>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">
+                <HT TYPE="ITALIC">The 2015 Guidelines</HT>
+              </HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP.ECR IDENTIFIER="NP0007">
+          <NO.P>7</NO.P>
+          <TXT>The communication of the Commission of<DATE ISO="20150608">8 June 2015</DATE>, entitled<QUOT.START CODE="2018" ID="QS0018" REF.END="QE0018">
+            </QUOT.START>Guidelines on the calculation of the financial corrections in the framework of the conformity and financial clearance of accounts procedures<QUOT.END REF.START="QS0018" CODE="2019" ID="QE0018">
+            </QUOT.END>(C(2015) 3675 final) (<QUOT.START CODE="2018" ID="QS0019" REF.END="QE0019">
+            </QUOT.START>the 2015 Guidelines<QUOT.END REF.START="QS0019" CODE="2019" ID="QE0019">
+            </QUOT.END>), includes a Chapter 3, entitled<QUOT.START CODE="2018" ID="QS0020" REF.END="QE0020">
+            </QUOT.START>Flat rate financial corrections in relation to deficiencies in the management and control systems concerning the legality and regularity of expenditure<QUOT.END REF.START="QS0020" CODE="2019" ID="QE0020">
+            </QUOT.END>. That chapter includes points 3.1. to 3.5. thereof. Point 3.2., under the heading<QUOT.START CODE="2018" ID="QS0021" REF.END="QE0021">
+            </QUOT.START>Level of flat-rate correction<QUOT.END REF.START="QS0021" CODE="2019" ID="QE0021">
+            </QUOT.END>, provides:</TXT>
+          <QUOT.S LEVEL="1">
+            <P>
+              <QUOT.START CODE="2018" ID="QS0022" REF.END="QE0022">
+              </QUOT.START>…</P>
+            <P>According to Article 12(7) of Regulation [No 907/2014], the Commission services<QUOT.START CODE="201C" ID="QS0023" REF.END="QE0023">
+              </QUOT.START>shall specifically take into account the following circumstances demonstrating a higher gravity of the deficiencies revealing a greater risk of financial loss for the Union’s budget<QUOT.END REF.START="QS0023" CODE="201D" ID="QE0023">
+              </QUOT.END>therefore, justifying a higher level of the flat rate:</P>
+            <P>…</P>
+            <P>
+              <LIST TYPE="ARAB">
+                <ITEM>
+                  <NP>
+                    <NO.P>5.</NO.P>
+                    <TXT>
+                      <QUOT.START CODE="201C" ID="QS0024" REF.END="QE0024">
+                      </QUOT.START>The Member State’s application of a control system is found to be absent or gravely deficient, and there is evidence of widespread irregularity and negligence in countering irregular or fraudulent practices<QUOT.END REF.START="QS0024" CODE="201D" ID="QE0024">
+                      </QUOT.END>, then a correction of 25% is justified as it can reasonably be assumed that the freedom to submit irregular claims with impunity will occasion exceptionally high financial damages to the Union’s budget.</TXT>
+                    <P>The rate of correction may be fixed at an even higher rate when appropriate. This could be the case when, as a result of information provided by the Member State, the population at risk has been (heavily) confined. Or the entire expenditure may be disallowed, when the deficiencies are so serious as to constitute a complete failure to comply with Union rules, so rendering all the payments irregular.</P>
+                  </NP>
+                </ITEM>
+              </LIST>
+            </P>
+            <P>…<QUOT.END REF.START="QS0022" CODE="2019" ID="QE0022">
+              </QUOT.END>
+            </P>
+          </QUOT.S>
+        </NP.ECR>
+      </GR.SEQ>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">The background to the dispute</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <NP.ECR IDENTIFIER="NP0008">
+        <NO.P>8</NO.P>
+        <TXT>The background to the dispute was set out by the General Court in paragraphs 1 to 37 of the judgment under appeal and may, for the purposes of the present judgment, be summarised as follows.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0009">
+        <NO.P>9</NO.P>
+        <TXT>From<DATE ISO="20141124">24</DATE>to<DATE ISO="20141128">28 November 2014</DATE>, the European Commission carried out an investigation in France into the sector of area-related aid under the first pillar of the Common Agricultural Policy (CAP) requested for the 2013 and 2014 claim years.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0010">
+        <NO.P>10</NO.P>
+        <TXT>By letter of<DATE ISO="20150225">25 February 2015</DATE>, the Commission notified the French Republic of the outcomes of that investigation, pursuant to Article 34(2) of Implementing Regulation No 908/2014, and requested that Member State to provide it with additional information.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0011">
+        <NO.P>11</NO.P>
+        <TXT>On<DATE ISO="20150626">26 June 2015</DATE>, the French Republic forwarded to the Commission its observations and the additional information requested with regard to that investigation.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0012">
+        <NO.P>12</NO.P>
+        <TXT>On<DATE ISO="20150703">3 July 2015</DATE>, the Commission invited the French authorities to a bilateral meeting, which was held on<DATE ISO="20150707">7 July 2015</DATE>.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0013">
+        <NO.P>13</NO.P>
+        <TXT>By letters of<DATE ISO="20150922">22 September</DATE>and<DATE ISO="20151022">22 October 2015</DATE>, the French Republic provided the Commission with additional information.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0014">
+        <NO.P>14</NO.P>
+        <TXT>From<DATE ISO="20151130">30 November</DATE>to<DATE ISO="20151204">4 December 2015</DATE>, the Commission services carried out an additional investigation in France in order to verify the calculation proposed by the French authorities of the financial loss borne by the European Agricultural Guarantee Fund (EAGF) as a result of a number of irregularities.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0015">
+        <NO.P>15</NO.P>
+        <TXT>By letters of<DATE ISO="20151215">15 December 2015</DATE>,<DATE ISO="20151223">23 December 2015</DATE>and<DATE ISO="20160112">12 January 2016</DATE>, those authorities sent to the Commission additional information relating to the calculation of that financial loss.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0016">
+        <NO.P>16</NO.P>
+        <TXT>In response to a letter from the Commission of<DATE ISO="20160125">25 January 2016</DATE>, the French authorities, by letters of<DATE ISO="20160127">27 January</DATE>,<DATE ISO="20160212">12 February</DATE>,<DATE ISO="20160222">22 February</DATE>and<DATE ISO="20160226">26 February 2016</DATE>, submitted additional information to the Commission.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0017">
+        <NO.P>17</NO.P>
+        <TXT>By letter of<DATE ISO="20160520">20 May 2016</DATE>, sent on the basis of the third subparagraph of Article 34(3) of Implementing Regulation No 908/2014, the Commission officially notified the French authorities of its proposal to exclude from EU financing an amount of EUR<FT TYPE="NUMBER">117439</FT>017.55 because of non-compliance with the EU rules on implementation of the area-related aid scheme in France in the claim years 2013 and 2014 (<QUOT.START CODE="2018" ID="QS0025" REF.END="QE0025">
+          </QUOT.START>the official communication of<DATE ISO="20160520">20 May 2016</DATE>
+          <QUOT.END REF.START="QS0025" CODE="2019" ID="QE0025">
+          </QUOT.END>). That proposed correction was based on the finding of numerous deficiencies.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0018">
+        <NO.P>18</NO.P>
+        <TXT>In particular, a first deficiency was based on shortcomings in the system for identifying agricultural parcels – the geographic information system (SIPA – SIG), set up by the French authorities, known as the<QUOT.START CODE="2018" ID="QS0026" REF.END="QE0026">
+          </QUOT.START>Registre parcellaire géographique<QUOT.END REF.START="QS0026" CODE="2019" ID="QE0026">
+          </QUOT.END>(RPG) (Geographical Parcel Register).</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0019">
+        <NO.P>19</NO.P>
+        <TXT>A second deficiency concerned problems linked to the definition of areas eligible for aid resulting from an incorrect interpretation of Article 34 of Regulation No 1122/2009 which the French authorities had continued to use. That interpretation had led them not always to exclude ineligible areas under EU rules on<QUOT.START CODE="2018" ID="QS0027" REF.END="QE0027">
+          </QUOT.START>good agricultural and environmental conditions<QUOT.END REF.START="QS0027" CODE="2019" ID="QE0027">
+          </QUOT.END>.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0020">
+        <NO.P>20</NO.P>
+        <TXT>In that regard, the French authorities were in particular criticised on the ground that they had treated areas which were mainly wooded, with very low-grade grazing resources or inaccessible to animals, declared as<QUOT.START CODE="2018" ID="QS0028" REF.END="QE0028">
+          </QUOT.START>moors and trails<QUOT.END REF.START="QS0028" CODE="2019" ID="QE0028">
+          </QUOT.END>as being topographical features, and therefore as being eligible for aid, even though those areas did not meet the conditions laid down by French and EU rules, since they did not come within the scope of Article 34(3) of Regulation No 1122/2009 or within the concept of<QUOT.START CODE="2018" ID="QS0029" REF.END="QE0029">
+          </QUOT.START>permanent pasture<QUOT.END REF.START="QS0029" CODE="2019" ID="QE0029">
+          </QUOT.END>set out in Article 2(c) of Regulation No 1120/2009.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0021">
+        <NO.P>21</NO.P>
+        <TXT>A third deficiency concerned the non-conformity of the method used by the French authorities to calculate payments and penalties for the claim years 2013 and 2014, as well as the lack of retroactive recovery.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0022">
+        <NO.P>22</NO.P>
+        <TXT>A fourth deficiency related to certain problems linked to the two<HT TYPE="ITALIC">départements</HT>which comprise the territorial community of Corsica (France), namely the<HT TYPE="ITALIC">départements</HT>of Haute-Corse (Upper Corsica) and Corse-du-Sud (Southern Corsica). The Commission took the view that the first three findings of deficiencies mentioned above were valid for each of those two<HT TYPE="ITALIC">départements</HT>. With regard to the<HT TYPE="ITALIC">département</HT>of Upper Corsica, the Commission stated that, without changes in the approach followed hitherto, capable of having a real effect on the ground, the corrections concerning that<HT TYPE="ITALIC">département</HT>in the previous investigations would continue to apply for the 2013 and 2014 claim years. It also took the view that the flat-rate correction at a rate of 100% for the<HT TYPE="ITALIC">département</HT>of Upper Corsica would continue to be applied.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0023">
+        <NO.P>23</NO.P>
+        <TXT>Consequently, in accordance with the methodology set out in the 2015 Guidelines, the Commission proposed, in the official communication of<DATE ISO="20160520">20 May 2016</DATE>, to apply financial corrections divided into four groups. One of those groups included flat-rate corrections at a rate of 100% targeting area-related direct aid under the first pillar, granted in the territorial community of Corsica for the 2013 and 2014 claim years, on the basis of, inter alia, deficiencies found in the system for the control of area-related aid, in particular because areas ineligible for that aid had not always been excluded, and on the ground that those deficiencies had already been observed in the context of the conformity procedure covering the claim years 2008 to 2012, but the French authorities had not altered the approach taken in that regard.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0024">
+        <NO.P>24</NO.P>
+        <TXT>By letter of<DATE ISO="20160622">22 June 2016</DATE>, the French authorities referred the financial correction decided on by the Commission for the<HT TYPE="ITALIC">département</HT>of Upper Corsica to the Conciliation Body. They argued, in essence, that the Commission’s reasons for rejecting the figures which they had put forward in that connection were not sufficient in the light of the EU legislation and that the proposed flat-rate correction at a rate of 100% for that<HT TYPE="ITALIC">département</HT>was inconsistent with the procedures for quantifying the damage laid down in that legislation.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0025">
+        <NO.P>25</NO.P>
+        <TXT>On<DATE ISO="20161219">19 December 2016</DATE>, the Conciliation Body delivered its opinion. It found, essentially, that conciliation was not possible at that stage and took the view that a 100% correction would probably be disproportionate to the actual risk to the EAGF. Consequently, it invited the Commission services to consider a lower correction.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0026">
+        <NO.P>26</NO.P>
+        <TXT>On<DATE ISO="20170221">21 February 2017</DATE>, the Commission adopted its final position, by which it maintained its position as set out in the official communication of<DATE ISO="20160520">20 May 2016</DATE>. According to that institution, a 100% flat-rate correction was justified since the information available showed that the deficiencies in the monitoring of aid in the<HT TYPE="ITALIC">département</HT>of Upper Corsica were so serious as to constitute a complete failure to comply with EU rules and created a very substantial risk for the EAGF.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0027">
+        <NO.P>27</NO.P>
+        <TXT>On<DATE ISO="20171108">8 November 2017</DATE>, the Commission adopted the decision at issue, by which, under the heading<QUOT.START CODE="2018" ID="QS0030" REF.END="QE0030">
+          </QUOT.START>Control system gravely deficient, Corsica,<QUOT.END REF.START="QS0030" CODE="2019" ID="QE0030">
+          </QUOT.END>it inter alia imposed on the French Republic a financial correction of EUR<FT TYPE="NUMBER">28973</FT>945.46 concerning expenditure relating to area-related direct aid under the first pillar in respect of the territorial community of Corsica for the 2013 and 2014 claim years, because of serious deficiencies found in the system for the control of that aid.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0028">
+        <NO.P>28</NO.P>
+        <TXT>In the summary report annexed to the decision at issue, the Commission justified the imposition of that financial correction on grounds identical to those which it had set out in its official communication of<DATE ISO="20160520">20 May 2016</DATE>.</TXT>
+      </NP.ECR>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">The procedure before the General Court and the judgment under appeal</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <NP.ECR IDENTIFIER="NP0029">
+        <NO.P>29</NO.P>
+        <TXT>By application lodged at the Registry of the General Court on<DATE ISO="20180119">19 January 2018</DATE>, the French Republic brought an action seeking partial annulment of the decision at issue, relying, in essence, on five pleas in law.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0030">
+        <NO.P>30</NO.P>
+        <TXT>The third and fourth pleas in law concerned the part of the decision at issue by which, under the ground entitled<QUOT.START CODE="2018" ID="QS0031" REF.END="QE0031">
+          </QUOT.START>Control system gravely deficient, Corsica,<QUOT.END REF.START="QS0031" CODE="2019" ID="QE0031">
+          </QUOT.END>the Commission had imposed on the French Republic flat-rate corrections at the rate of 100% for the<HT TYPE="ITALIC">département</HT>of Upper Corsica for the 2013 and 2014 claim years (the<QUOT.START CODE="2018" ID="QS0032" REF.END="QE0032">
+          </QUOT.START>flat-rate corrections at issue<QUOT.END REF.START="QS0032" CODE="2019" ID="QE0032">
+          </QUOT.END>). The third plea in law alleged infringement of the principle of proportionality, while the fourth plea in law alleged infringement of Article 34(2) of Implementing Regulation No 908/2014 and of the obligation to state reasons.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0031">
+        <NO.P>31</NO.P>
+        <TXT>By the judgment under appeal, the General Court held that all of the pleas in law raised by that Member State in support of its action had to be rejected and it therefore dismissed that action in its entirety.</TXT>
+      </NP.ECR>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Forms of order sought by the parties before the Court of Justice</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <NP.ECR IDENTIFIER="NP0032">
+        <NO.P>32</NO.P>
+        <TXT>The French Republic claims that the Court should:</TXT>
+        <P>
+          <LIST TYPE="NDASH">
+            <ITEM>
+              <P>set aside the judgment under appeal in part;</P>
+            </ITEM>
+            <ITEM>
+              <P>give final judgment in the dispute by annulling the decision at issue in so far as it imposes on it flat-rate corrections at the rate of 100% on the basis of deficiencies in the system for the control of area-related aid in Upper Corsica, and</P>
+            </ITEM>
+            <ITEM>
+              <P>order the Commission to pay the costs.</P>
+            </ITEM>
+          </LIST>
+        </P>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0033">
+        <NO.P>33</NO.P>
+        <TXT>The Commission contends that the Court should dismiss the appeal and order the French Republic to pay the costs.</TXT>
+      </NP.ECR>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">The appeal</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">
+                <HT TYPE="ITALIC">Arguments of the parties</HT>
+              </HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP.ECR IDENTIFIER="NP0034">
+          <NO.P>34</NO.P>
+          <TXT>In support of its appeal, the French Republic raises a single ground of appeal, alleging that the General Court erred in law in holding that the Commission was justified in imposing on it flat-rate corrections at the rate of 100 % with respect to area-related direct aid paid in Upper Corsica for the 2013 and 2014 claim years because of deficiencies in the system for the control of area-related aid in that<HT TYPE="ITALIC">département</HT>.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0035">
+          <NO.P>35</NO.P>
+          <TXT>According to the French Republic, it follows from point 3.2. of the 2015 Guidelines that the application of a correction rate higher than 25%, namely one of 100%, is justified where the deficiencies affecting the control system are so serious as to constitute a complete failure to comply with EU rules, thus rendering all the payments irregular.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0036">
+          <NO.P>36</NO.P>
+          <TXT>Only the combination of several criteria, it submits, allows the Commission to set a correction rate higher than 25%. Thus, in order to justify the application of a correction rate of 100% on the basis of serious deficiencies in the control system, the onus is on that institution to demonstrate that that system bears no relation whatsoever to the relevant EU rules, ignores the substantive elements of the aid scheme in question and its objectives and, by its nature, does not make it possible to detect practices on the part of the operators concerned which circumvent or manipulate those substantive elements.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0037">
+          <NO.P>37</NO.P>
+          <TXT>According to the French Republic, in paragraph 118 of the judgment under appeal, the General Court erred in law in its interpretation of point 3.2. of the 2015 Guidelines in holding that it is not the deficiencies in the application of certain key controls so much as the non-compliance with the substantive elements of the aid scheme in question and its objectives that justifies the application of a flat-rate correction at the rate of 100%, since the failure to fulfil one or more of the substantive conditions for the grant of the aid justifies the exclusion of the expenditure in its entirety.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0038">
+          <NO.P>38</NO.P>
+          <TXT>That erroneous interpretation, it argues, led the General Court to err in law in paragraphs 134 to 136 of the judgment under appeal. Having held, in paragraph 134 of that judgment, that a flat-rate correction at the rate of 100% was justified, not on the basis of the payment of aid which had no legal basis in EU law or in direct breach of the rules of EU law, but on the basis of a sufficiently seriousdeficiency in the control system, the General Court erred in holding, in paragraphs 135 and 136 of that judgment, that the failure to fulfil the substantive conditions for the grant of the aid scheme in question justified the exclusion of the expenditure in its entirety.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0039">
+          <NO.P>39</NO.P>
+          <TXT>It follows, in its view, that the General Court confused, and placed on an equal footing regarding the consequences, a complete failure to fulfil the substantive conditions for the grant of the aid, which justifies the exclusion of the expenditure in its entirety, and the mere fact that the control system breaches a substantive element, although such deficiency constitutes only one of the three criteria capable of justifying a flat-rate correction at the rate of 100%, based on a serious deficiency of the control system.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0040">
+          <NO.P>40</NO.P>
+          <TXT>According to the French Republic, the fact that the control system breaches a substantive condition of the area-related aid scheme is not sufficient on its own to justify the application of a 100% flat-rate correction.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0041">
+          <NO.P>41</NO.P>
+          <TXT>Lastly, the French Republic alleges that a correct application of the 2015 Guidelines should have led the General Court to reject the application of a 100% flat-rate correction, since none of the criteria justifying the application of such a rate is present.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0042">
+          <NO.P>42</NO.P>
+          <TXT>The Commission refutes the French Republic’s arguments and contends that the ground of appeal should be rejected as unfounded.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0043">
+          <NO.P>43</NO.P>
+          <TXT>The Commission contends, in essence, that the General Court correctly interpreted and applied point 3.2. of the 2015 Guidelines in order to impose the flat-rate corrections at issue.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0044">
+          <NO.P>44</NO.P>
+          <TXT>That institution disputes, first, the French Republic’s contention, referring to paragraphs 118 and 134 to 136 of the judgment under appeal, that the application of a 100% flat-rate correction was based solely on a serious malfunctioning of the control system. On the contrary, the application of that rate is, the Commission argues, justified having regard not only to a serious malfunctioning of the control system but also to irregularities which affect one of the substantive conditions of the area-related aid scheme and which have not been disputed by the French Republic.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0045">
+          <NO.P>45</NO.P>
+          <TXT>Secondly, the Commission submits that the General Court correctly applied point 3.2. of the 2015 Guidelines in order to justify the imposition of the flat-rate corrections at issue. In particular, it follows from paragraphs 130 and 131 of the judgment under appeal that the General Court found that the deficiencies or instances of fraud were systematic, since it observed that the error in the definition of the eligible area affected the integrated administration and control system (IACS) and that that error had made it possible for farmers to declare ineligible areas in a number of instances.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0046">
+          <NO.P>46</NO.P>
+          <TXT>In addition, it argues, the system for the control of area-related aid is so deficient that it may be considered that it breaches the substantive conditions. The General Court has found on several occasions that the definition of eligible areas in the<HT TYPE="ITALIC">département</HT>of Upper Corsica breached an essential substantive condition of the area-related aid scheme, namely the precise determination of areas.</TXT>
+        </NP.ECR>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">
+                <HT TYPE="ITALIC">Findings of the Court</HT>
+              </HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP.ECR IDENTIFIER="NP0047">
+          <NO.P>47</NO.P>
+          <TXT>By its single ground of appeal, the French Republic argues, in essence, that the General Court erred in law in its interpretation of point 3.2. of the 2015 Guidelines in paragraph 118 of the judgment under appeal and that, therefore, it erroneously applied that point of the guidelines when examining the proportionality of the flat-rate corrections at issue in paragraphs 134 to 136 of the judgment under appeal.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0048">
+          <NO.P>48</NO.P>
+          <TXT>Having regard to the arguments put forward by the parties in that context, it is necessary to specify, first, the legal basis for the financial corrections, the conditions governing their application and the judicial review to which those corrections were made subject to by the General Court. Secondly, it will be necessary to examine whether the General Court was right to hold, in paragraphs 134 to 136 of the judgment under appeal, that the Commission had correctly justified the exclusion of the expenditure in its entirety relating to area-related aid in the<HT TYPE="ITALIC">département</HT>of Upper Corsica by merely finding that the substantive conditions governing the aid scheme in question had been disregarded.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0049">
+          <NO.P>49</NO.P>
+          <TXT>Under Article 52(1) of Regulation No 1306/2013, where the Commission takes the view that expenditure has not been effected in accordance with EU law, that institution is required to adopt a decision determining the amounts to be excluded from EU financing. Under Article 52(2) of that regulation, the Commission is required to assess the amounts to be excluded, having regard, in particular, to the gravity of the non-conformity recorded. To that end, it must take account of the nature of the infringement and of the financial damage caused to the European Union. In addition, it is required to base the exclusion on the identification of amounts unduly spent and, where those cannot be identified with proportionate effort, may apply, inter alia, flat-rate corrections. Flat-rate corrections are to be applied only where, due to the nature of the case or because the Member State has not provided the Commission with the necessary information, it is not possible with proportionate effort to identify more precisely the financial damage caused to the European Union.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0050">
+          <NO.P>50</NO.P>
+          <TXT>Thus, a distinction is drawn between one-off corrections of amounts unduly spent by Member States and flat-rate corrections. Consequently, it is necessary, including when the Commission decides, as in the present case, to exclude all of the aid paid from EU financing, to draw a distinction, as also observed by the Advocate General in point 34 of his Opinion, between the situation in which a Member State has paid that aid without any legal basis in EU law, thereby justifying the imposition of a one-off correction at a rate of 100%, and the situation in which, although there is a legal basis, the control system set up is seriously deficient and liable to render all the payments irregular and in which the Commission would impose a flat-rate correction at a rate of 100%.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0051">
+          <NO.P>51</NO.P>
+          <TXT>In this regard, in the first place, it follows from settled case-law of the Court that only intervention in accordance with the EU rules in the framework of the common organisation of agricultural markets is to be financed by the EAGF. Thus, only sums paid in accordance with the rules laid down in the context of that common organisation are borne by the EAGF. Accordingly, it is for the Member States to bear the burden of any other sum paid, and in particular any amounts which the national authorities wrongly believed themselves authorised to pay in the context of the common organisation of those markets (see, to that effect, judgment of<REF.DOC.ECR>
+              <DATE ISO="20020418">18 April 2002</DATE>,<NAME.CASE>
+                <HT TYPE="ITALIC">Belgium</HT>v<HT TYPE="ITALIC">Commission</HT>
+              </NAME.CASE>,<NO.CASE>C‑332/00</NO.CASE>,<NO.ECLI ECLI="ECLI:EU:C:2002:235">EU:C:2002:235</NO.ECLI>, paragraphs<REF.NP.ECR REF="NP0035">35</REF.NP.ECR>and<REF.NP.ECR REF="NP0044">44</REF.NP.ECR>
+            </REF.DOC.ECR>).</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0052">
+          <NO.P>52</NO.P>
+          <TXT>Thus, in a situation where all of the aid paid has been granted without any legal basis in EU law, that aid is excluded from EU financing, irrespective of whether or not there was any irregularity or negligence on the part of the national authorities (see, to that effect, judgment of<REF.DOC.ECR>
+              <DATE ISO="20020418">18 April 2002</DATE>,<NAME.CASE>
+                <HT TYPE="ITALIC">Belgium</HT>v<HT TYPE="ITALIC">Commission</HT>
+              </NAME.CASE>,<NO.CASE>C‑332/00</NO.CASE>,<NO.ECLI ECLI="ECLI:EU:C:2002:235">EU:C:2002:235</NO.ECLI>, paragraph<REF.NP.ECR REF="NP0036">36</REF.NP.ECR>
+            </REF.DOC.ECR>).</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0053">
+          <NO.P>53</NO.P>
+          <TXT>In such a situation, the Commission, which has no discretion to accept or reject expenditure of EU funding (see, to that effect, judgment of<REF.DOC.ECR>
+              <DATE ISO="20020418">18 April 2002</DATE>,<NAME.CASE>
+                <HT TYPE="ITALIC">Belgium</HT>v<HT TYPE="ITALIC">Commission</HT>
+              </NAME.CASE>,<NO.CASE>C‑332/00</NO.CASE>,<NO.ECLI ECLI="ECLI:EU:C:2002:235">EU:C:2002:235</NO.ECLI>, paragraphs<REF.NP.ECR REF="NP0036">36</REF.NP.ECR>and<REF.NP.ECR REF="NP0045">45</REF.NP.ECR>
+            </REF.DOC.ECR>), must establish that the excluded aid was in fact paid without any legal basis.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0054">
+          <NO.P>54</NO.P>
+          <TXT>In the event of an action seeking annulment of a decision imposing a one-off correction, the General Court must, as the Advocate General has essentially stated in point 44 of his Opinion, ascertain, having regard to the pleas in law put forward before it, whether the Commission has established that the aid paid by the Member State in question and excluded from EU financing actually breached the substantive conditions governing the aid scheme concerned, with the result that all of that aid was granted outside the scope of that scheme.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0055">
+          <NO.P>55</NO.P>
+          <TXT>In the second place, the Commission may justify the exclusion of all of the aid paid in the form of a flat-rate correction at a rate of 100% by reason of the implementation of a seriously deficient control system by the Member State concerned.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0056">
+          <NO.P>56</NO.P>
+          <TXT>As is apparent from paragraph 49 of this judgment, flat-rate corrections can be imposed only where, due to the nature of the case or because the Member State has not provided the Commission with the necessary information, it is not possible with proportionate effort to identify more precisely the financial damage caused to the European Union.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0057">
+          <NO.P>57</NO.P>
+          <TXT>In that regard, it is apparent from Article 12(7)(c) of Regulation No 907/2014 that, in establishing the level of a flat-rate correction, the Commission must specifically take into account circumstances demonstrating a higher gravity of the deficiencies found and therefore a greater risk of loss for the European Union’s budget, such as the application by the Member State of a control system found to be absent or gravely deficient and the existence of widespread irregularities and negligence in countering irregular or fraudulent practices.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0058">
+          <NO.P>58</NO.P>
+          <TXT>Under point 3.2. of the 2015 Guidelines, in such circumstances, the Commission is required to apply, in principle, a flat-rate correction of 25%. That being said, it may set a correction rate at an even higher level. Thus, a flat-rate correction at a rate of 100% is justified where the deficiencies in the control system are so serious as to constitute a complete failure to comply with EU rules, such as to make all the payments irregular.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0059">
+          <NO.P>59</NO.P>
+          <TXT>It follows that the application of a flat-rate correction at a rate of 100% constitutes the ultimate measure where, without it being possible to establish precisely the financial loss caused to the European Union, it can nevertheless be presumed, having regard to the extreme gravity of the deficiencies in the control system, that all the payments are irregular. It follows that the application of such a flat-rate correction rate must be subject to strict conditions.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0060">
+          <NO.P>60</NO.P>
+          <TXT>In the light of the foregoing, and in the light of the considerations set out by the Advocate General in points 52 to 58 of his Opinion, a flat-rate correction at a rate of 100% may be applied only if the deficiencies in a given control system have a degree of gravity such as to constitute a complete failure to comply with the rules of the European Union such as to render all the payments irregular, something which presupposes that (i) that control system bears no relation to the relevant EU rules, (ii) it ignores the substantive elements of the aid scheme in question and its objectives, and (iii), by its nature, it does not make it possible to detect practices on the part of the operators concerned which circumvent or manipulate those substantive elements. It is for the Commission to establish that those three conditions are met.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0061">
+          <NO.P>61</NO.P>
+          <TXT>In the event of an action seeking annulment of a decision imposing such a flat-rate correction, as the Advocate General has stated in point 45 of his Opinion, the General Court must ascertain, having regard to the pleas in law put forward before it, the merits of the Commission’s estimation as to the application of a given rate of flat-rate correction having regard to the risk of actual loss for the EU budget and, in particular, to the three criteria set out in the previous paragraph.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0062">
+          <NO.P>62</NO.P>
+          <TXT>In the present case, admittedly, as is apparent from paragraph 36 of the judgment under appeal and from the summary report annexed to the decision at issue, the Commission based the imposition of the flat-rate corrections at issue on the existence of a risk generated for the EAGF by a seriously deficient control system in the<HT TYPE="ITALIC">département</HT>of Upper Corsica for the 2013 and 2014 claim years.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0063">
+          <NO.P>63</NO.P>
+          <TXT>It follows that, in the context of its review of the proportionality of the flat-rate corrections at issue, it was, in the present case, for the General Court to ascertain whether the Commission had established that the three cumulative criteria justifying the imposition of a flat-rate correction at a rate of 100% set out in paragraph 60 of the present judgment were met.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0064">
+          <NO.P>64</NO.P>
+          <TXT>In the judgment under appeal, the General Court recalled those criteria in paragraph 117 of that judgment, before inferring, in paragraph 118 of that judgment, that it was not the deficiencies in the application of the key controls so much as the non-compliance with the substantive elements of the aid scheme in question and its objectives that justified the application of a flat-rate correction at a rate of 100%, since the failure to fulfil one or more of the substantive conditions for the grant of the aid justified the exclusion of the expenditure in its entirety.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0065">
+          <NO.P>65</NO.P>
+          <TXT>In so doing, the General Court erred in law by treating the justification relating to the imposition of a flat-rate correction at a rate of 100% as equivalent to that relating to a financial correction covering all of the aid granted without any legal basis.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0066">
+          <NO.P>66</NO.P>
+          <TXT>That error also vitiated the review by the General Court of the proportionality of the flat-rate corrections at issue.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0067">
+          <NO.P>67</NO.P>
+          <TXT>Thus, after recalling in paragraphs 130 to 133 of the judgment under appeal, the irregularities affecting the IACS set up in the<HT TYPE="ITALIC">département</HT>of Upper Corsica found by the Commission, and after holding that those irregularities pointed to the existence of a sufficiently serious malfunctioning of the control system, the General Court held, in paragraphs 134 to 136 of the judgment under appeal, that the flat-rate corrections at issue could be justified on the basis of the failure to fulfil the substantive conditions governing the area-related aid scheme. However, the General Court failed to examine whether the Commission had indeed demonstrated that the three cumulative criteria set out in paragraph 60 of the present judgment were met.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0068">
+          <NO.P>68</NO.P>
+          <TXT>In particular, it was for the General Court, in the examination of the first criterion, to ascertain whether the control system set up in the<HT TYPE="ITALIC">département</HT>of Upper Corsica bore no relation whatsoever to the conditions governing eligibility of the areas required for the purposes of the grant of area-related aid. By limiting itself, in paragraphs 130 to 133 of the judgment under appeal, to relying on erroneous and persistent interpretations of the concept of<QUOT.START CODE="2018" ID="QS0033" REF.END="QE0033">
+            </QUOT.START>permanent pasture<QUOT.END REF.START="QS0033" CODE="2019" ID="QE0033">
+            </QUOT.END>within the meaning of Article 2(c) of Regulation No 1120/2009 applied by the French authorities and on the taking into account of topographical features in order to infer that such a system was necessarily unsuitable for enabling the French authorities to detect errors relating to the determination of agricultural areas, the General Court failed to establish that the control system set up in the<HT TYPE="ITALIC">département</HT>of Upper Corsica bore no relation whatsoever to the conditions governing eligibility of the areas required for the purposes of the grant of area-related aid.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0069">
+          <NO.P>69</NO.P>
+          <TXT>With regard to the second criterion, it was for the General Court to ascertain whether the Commission had identified at least one deficiency in the control system set up in Upper Corsica that was liable to render all the payments irregular. In that regard, the assessment set out in paragraph 134 of the judgment under appeal that, on the basis of the IACS set up in Upper Corsica, ineligible areas were admitted almost systematically, cannot suffice to form the view that all of the payments were liable to be irregular.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0070">
+          <NO.P>70</NO.P>
+          <TXT>As the Advocate General observed in point 77 of his Opinion, the fact that a control system fails to comply with the substantive conditions of an aid scheme cannot in itself be sufficient to justify the imposition of a flat-rate correction at a rate of 100% since that breach is not capable on its own of rendering all the payments irregular.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0071">
+          <NO.P>71</NO.P>
+          <TXT>With regard to the third criterion, it was still for the General Court to examine whether there was any evidence capable of supporting the view that the control system set up in Upper Corsica pointed to significant negligence on the part of the supervisory authorities in countering irregular or fraudulent practices.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0072">
+          <NO.P>72</NO.P>
+          <TXT>Therefore, the General Court could not, without committing an error of law, have held that the Commission was justified in imposing a flat-rate correction at a rate of 100% on the basis of the fact that the deficiencies in the IACS disregarded the substantive conditions governing the aid scheme in question and, therefore, were so serious as to constitute a complete failure to comply with EU rules, such as to render all the payments irregular.</TXT>
+        </NP.ECR>
+        <NP.ECR IDENTIFIER="NP0073">
+          <NO.P>73</NO.P>
+          <TXT>Consequently, the single ground of appeal must be upheld and the judgment under appeal set aside, in that the General Court dismissed the action brought by the French Republic in respect of the decision at issue in so far as it imposed on it flat-rate corrections of 100% on the basis of deficiencies in the system for the control of area-related aid in the<HT TYPE="ITALIC">département</HT>of Upper Corsica for the 2013 and 2014 claim years.</TXT>
+        </NP.ECR>
+      </GR.SEQ>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">The action before the General Court</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <NP.ECR IDENTIFIER="NP0074">
+        <NO.P>74</NO.P>
+        <TXT>In accordance with the first paragraph of Article 61 of the Statute of the Court of Justice of the European Union, the Court may, after quashing a decision of the General Court, refer the case back to the General Court for judgment or, where the state of the proceedings so permits, itself give final judgment in the matter.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0075">
+        <NO.P>75</NO.P>
+        <TXT>In the present case, the Court considers that it has all the information necessary to give judgment itself on the action brought by the French Republic in respect of the decision at issue in so far as, under the ground entitled<QUOT.START CODE="2018" ID="QS0034" REF.END="QE0034">
+          </QUOT.START>Control system gravely deficient, Corsica<QUOT.END REF.START="QS0034" CODE="2019" ID="QE0034">
+          </QUOT.END>, that decision imposed on that Member State flat-rate corrections at a rate of 100% on area-related direct aid granted in Upper Corsica for the 2013 and 2014 claim years on the basis of serious deficiencies found in the system for the control of area-related aid in Upper Corsica.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0076">
+        <NO.P>76</NO.P>
+        <TXT>By its third plea in law raised before the General Court, the French Republic argued, in essence, that the application of flat-rate corrections at a rate of 100% to all aid under the first pillar granted in the<HT TYPE="ITALIC">département</HT>of Upper Corsica is disproportionate. It takes the view, in particular, that the conditions for the application of a 100% flat-rate correction provided for in the 2015 Guidelines are not met in the present case.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0077">
+        <NO.P>77</NO.P>
+        <TXT>The Commission disputes those arguments and contends that that plea should be rejected. It points out that the errors encountered during investigations prior to that which led to the adoption of the decision at issue continued after 2014, with the result that the imposition of a 100% flat-rate correction remained the most appropriate in the absence of any demonstration of changes by the French Republic. In addition, the Commission identified serious deficiencies and a persistent failure to comply with the substantive conditions governing the grant of area-related direct aid on the basis of an imprecise definition of low-grade forage areas, making it possible for farmers to declare ineligible areas and resulting in the non-exclusion of those areas. Such deficiencies, in the Commission’s view, justify the adoption of a 100% flat-rate correction.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0078">
+        <NO.P>78</NO.P>
+        <TXT>As is apparent from paragraph 60 of this judgment, a flat-rate correction at a rate of 100% adopted on the basis of deficiencies found in the system for the control of area-related aid is applicable, pursuant to point 3.2. of the 2015 Guidelines, where an existing control system bears no relation to the relevant EU rules, ignores the substantive elements of the aid scheme in question and its objectives and, by its nature, does not make it possible to detect practices on the part of the operators concerned which circumvent or manipulate those substantive elements.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0079">
+        <NO.P>79</NO.P>
+        <TXT>In that regard, it must be held that the Commission justified, in the summary report annexed to the decision at issue, the application of a 100% flat-rate correction having regard to the particular situation of the<HT TYPE="ITALIC">département</HT>of Upper Corsica, after having identified, in that report, major deficiencies linked to the definition of eligible areas which marred the system for the administrationand monitoring of area-related aid in that<HT TYPE="ITALIC">département</HT>. The Commission stated that those deficiencies had already been observed for the claim years 2008 to 2012 and that, without any changes in the approach followed by the French authorities, a flat-rate correction at a rate of 100% had to be applied also for the 2013 and 2014 claim years.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0080">
+        <NO.P>80</NO.P>
+        <TXT>It follows from the considerations set out in paragraphs 58 to 71 of the present judgment that the application of a 100% flat-rate correction presupposes that the Commission establishes that such a correction is justified having regard to the three cumulative criteria set out in paragraph 60 of this judgment, thereby making it possible to take the view that all of the applications are vitiated by irregularity. Consequently, that institution was not justified in imposing the flat-rate corrections at issue on the French Republic solely on the basis of deficiencies relating to the definition of eligible areas which vitiated the system of administration and monitoring of area-related aid in the<HT TYPE="ITALIC">département</HT>of Upper Corsica.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0081">
+        <NO.P>81</NO.P>
+        <TXT>It follows that the third plea in law in the action brought by the French Republic, alleging infringement of the principle of proportionality by the Commission in the application of the flat-rate corrections at issue, must be upheld and the decision at issue must consequently be annulled in so far as, under the ground entitled<QUOT.START CODE="2018" ID="QS0035" REF.END="QE0035">
+          </QUOT.START>Control system gravely deficient, Corsica,<QUOT.END REF.START="QS0035" CODE="2019" ID="QE0035">
+          </QUOT.END>it imposed those financial corrections on the French Republic.</TXT>
+      </NP.ECR>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Costs</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <NP.ECR IDENTIFIER="NP0082">
+        <NO.P>82</NO.P>
+        <TXT>Under Article 184(2) of the Rules of Procedure of the Court of Justice, where the appeal is well founded and the Court itself gives final judgment in the case, the Court is to make a decision as to costs.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0083">
+        <NO.P>83</NO.P>
+        <TXT>Under Article 138(1) of those rules, applicable to appeal proceedings by virtue of Article 184(1) thereof, the unsuccessful party is to be ordered to pay the costs if they have been applied for in the successful party’s pleadings. However, Article 138(3) of those rules provides that, where each party succeeds on some and fails on other heads, the Court may order that the costs be shared or that the parties bear their own costs.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0084">
+        <NO.P>84</NO.P>
+        <TXT>Since the French Republic has been successful in the present appeal and since that Member State has requested that the Commission be ordered to pay the costs, it is appropriate to order the Commission to bear its own costs and to pay those incurred by the French Republic in the appeal.</TXT>
+      </NP.ECR>
+      <NP.ECR IDENTIFIER="NP0085">
+        <NO.P>85</NO.P>
+        <TXT>Since the French Republic has been successful on one head of claim submitted at first instance, but has been unsuccessful on the other three heads, a fair assessment of the circumstances of the case will be made by deciding that the French Republic is to pay, in addition to three quarters of its own costs incurred at first instance, three quarters of those incurred by the Commission at first instance, while the Commission is to pay, in addition to one quarter of its own costs incurred at first instance, one quarter of those incurred by the French Republic.</TXT>
+      </NP.ECR>
+    </GR.SEQ>
+    <JURISDICTION>
+      <INTRO>On those grounds, the Court (Fourth Chamber) hereby:</INTRO>
+      <LIST TYPE="ARAB">
+        <ITEM>
+          <NP>
+            <NO.P>
+              <HT TYPE="BOLD">1.</HT>
+            </NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Sets aside the judgment of the General Court of the European Union of<REF.DOC.ECR>
+                  <DATE ISO="20190312">12 March 2019</DATE>,<NAME.CASE>
+                    <HT TYPE="ITALIC">France</HT>v<HT TYPE="ITALIC">Commission</HT>
+                  </NAME.CASE>(<NO.CASE>T‑26/18</NO.CASE>, not published,<NO.ECLI ECLI="ECLI:EU:T:2019:153">EU:T:2019:153</NO.ECLI>
+                </REF.DOC.ECR>), first, in so far as the General Court dismissed the action of the French Republic concerning Commission Implementing Decision (EU) 2017/2014 of<DATE ISO="20171108">8 November 2017</DATE>excluding from European Union financing certain expenditure incurred by the Member States under the European Agricultural Guarantee Fund (EAGF) and under the European Agricultural Fund for Rural Development (EAFRD) in so far as, under the ground entitled<QUOT.START CODE="2018" ID="QS0036" REF.END="QE0036">
+                </QUOT.START>Control system gravely deficient, Corsica<QUOT.END REF.START="QS0036" CODE="2019" ID="QE0036">
+                </QUOT.END>, it imposed on that Member State flat-rate corrections at a rate of 100% on area-related directaid granted in Upper Corsica for the 2013 and 2014 claim years on the basis of deficiencies in the system for the control of area-related aid in Upper Corsica, and, secondly, in so far as the General Court made a ruling as to the costs</HT>;</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>
+              <HT TYPE="BOLD">2.</HT>
+            </NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Annuls Implementing Decision 2017/2014 in so far as, under the ground entitled<QUOT.START CODE="2018" ID="QS0037" REF.END="QE0037">
+                </QUOT.START>Control system gravely deficient, Corsica<QUOT.END REF.START="QS0037" CODE="2019" ID="QE0037">
+                </QUOT.END>, it imposed on the French Republic flat-rate corrections at a rate of 100% on area-related direct aid granted in Upper Corsica for the 2013 and 2014 claim years on the basis of deficiencies in the system for the control of area-related aid in Upper Corsica;</HT>
+            </TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>
+              <HT TYPE="BOLD">3.</HT>
+            </NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Orders the European Commission to bear its own costs relating to the appeal proceedings and one quarter of those incurred at first instance, and to pay those incurred by the French Republic in the appeal proceedings and one quarter of the costs incurred by that Member State in the proceedings at first instance;</HT>
+            </TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>
+              <HT TYPE="BOLD">4.</HT>
+            </NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Orders the French Republic to pay, in addition to three quarters of its own costs incurred in the proceedings at first instance, three quarters of the costs incurred by the Commission in those same proceedings.</HT>
+            </TXT>
+          </NP>
+        </ITEM>
+      </LIST>
+    </JURISDICTION>
+  </CONTENTS.JUDGMENT>
+  <SIGNATURE.CASE>
+    <SIGNATORY>
+      <P>[Signatures]</P>
+    </SIGNATORY>
+  </SIGNATURE.CASE>
+</JUDGMENT>

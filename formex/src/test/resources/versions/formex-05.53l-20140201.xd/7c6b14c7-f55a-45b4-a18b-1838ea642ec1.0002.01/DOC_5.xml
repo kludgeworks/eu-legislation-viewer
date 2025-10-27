@@ -1,0 +1,134 @@
+<LSEU noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.53l-20140201.xd">
+  <BIB.LSEU>
+    <NO.DOC.LSEU>LSEU-L21120-2016-05-19-1053</NO.DOC.LSEU>
+    <LG.DOC>EN</LG.DOC>
+    <LAST.MODIFICATION>
+      <DATE ISO="20160412">12.04.2016</DATE>
+    </LAST.MODIFICATION>
+    <ARCHIVED VALUE="NO">
+    </ARCHIVED>
+  </BIB.LSEU>
+  <TITLE>
+    <TI>
+      <P>Genetically modified organisms — unique identifiers</P>
+    </TI>
+  </TITLE>
+  <CONTENTS.LSEU>
+    <HEADER.LSEU>
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="UC">Summary of:</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>
+        <REF.DOC URI="http://publications.europa.eu/resource/celex/32004R0065" CONTEXT="EUR-LEX">Commission Regulation (EC) No 65/2004 on unique identifiers for genetically modified organisms</REF.DOC>
+      </P>
+    </HEADER.LSEU>
+    <SUMMARY.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Summary</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">
+                  <HT TYPE="BOLD">What does the regulation do?</HT>
+                </HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>The regulation establishes a unique identifier*, similar to a barcode, specific to each genetically modified organism* (<REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/genetically_modified_organisms.html" CONTEXT="EUR-LEX">GMO</REF.DOC>) brought to market. This is a key element in the<REF.DOC URI="http://publications.europa.eu/resource/uriserv/l21170" CONTEXT="EUR-LEX">traceability* and labelling</REF.DOC>of<REF.DOC URI="http://publications.europa.eu/resource/uriserv/l21154" CONTEXT="EUR-LEX">food and animal feed derived from GMOs</REF.DOC>, aiming to improve consumer choice and provide safeguards to health and the environment.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Key points</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>For consistency with developments in international fora, a unique identifier format is used by the<REF.DOC URI="http://www.oecd.org/science/biotrack/" CONTEXT="EXTERNAL">Organisation for Economic Cooperation and Development BioTrack</REF.DOC>database and by the<REF.DOC URI="https://bch.cbd.int/" CONTEXT="EXTERNAL">Biosafety Clearing-House</REF.DOC>of the<REF.DOC URI="http://bch.cbd.int/protocol/" CONTEXT="EXTERNAL">Cartagena Protocol on Biosafety to the Convention on Biological Diversity</REF.DOC>.</P>
+          <P>For each new application for the<REF.DOC URI="http://publications.europa.eu/resource/uriserv/200705_1" CONTEXT="EUR-LEX">authorisation</REF.DOC>of a GMO to be put on the market, the applicant must check in the databases to make sure that an identifier has not already been assigned before creating a unique identifier in the prescribed format.</P>
+          <P>Where authorisation is granted for a GMO to be put on the market, the unique identifier is then communicated to the Biosafety Clearing-House by the<REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/european_commission.html" CONTEXT="EUR-LEX">European Commission</REF.DOC>and recorded in the<REF.DOC URI="http://ec.europa.eu/food/plants/genetically-modified-organisms/gmo-register_en" CONTEXT="EXTERNAL">EU register of authorised GMOs</REF.DOC>.</P>
+          <P>All GMOs authorised before the regulation came into force have been assigned unique identifiers under the regulation.</P>
+          <P>The format of the unique identifier is defined in the annex to the regulation, and consists of nine alphanumeric digits. The first two or three digits represent the company or organisation name. The second component of five or six digits represents the transformation event* and the final component is a single verification digit, all separated by a dash, for example: MON-00603-1.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">From when does the regulation apply?</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>It applies from<DATE ISO="20040116">16 January 2004</DATE>.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Background</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>For more information, see<REF.DOC URI="http://ec.europa.eu/food/plants/genetically-modified-organisms/traceability-and-labelling_en" CONTEXT="EXTERNAL">
+              <QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+              </QUOT.START>Traceability and labelling<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+              </QUOT.END>
+            </REF.DOC>on the European Commission’s website.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Key terms</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>
+            <HT TYPE="BOLD">* Unique identifier</HT>: a 9-digit alphanumeric code specific to a GMO enabling it to be readily identified on a product’s labelling.</P>
+          <P>
+            <HT TYPE="BOLD">* Genetically modified organisms</HT>: plants or animals bred to give higher yield or resist disease, through modification of their cellular and genetic make-up.</P>
+          <P>
+            <HT TYPE="BOLD">* Traceability</HT>: the ability to track GMOs, and products produced from GMOs, at all stages of the production and distribution chain, facilitating accurate labelling.</P>
+          <P>
+            <HT TYPE="BOLD">* Transformation event</HT>: a term used to differentiate genetically engineered (transformed) crop varieties and other organisms.</P>
+        </GR.SEQ>
+      </GR.SEQ>
+    </SUMMARY.LSEU>
+    <REFERENCES.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Act</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <P>Commission Regulation (EC) No<REF.DOC URI="http://publications.europa.eu/resource/celex/32004R0065" CONTEXT="EUR-LEX">65/2004</REF.DOC>of<DATE ISO="20040114">14 January 2004</DATE>establishing a system for the development and assignment of unique identifiers for genetically modified organisms (OJ L 10,<DATE ISO="20040116">16.1.2004</DATE>, pp. 5-10)</P>
+      </GR.SEQ>
+    </REFERENCES.LSEU>
+    <REFERRED.DOCS.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Related acts</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <P>Commission Regulation (EC) No<REF.DOC URI="http://publications.europa.eu/resource/celex/32004R0641" CONTEXT="EUR-LEX">641/2004</REF.DOC>of<DATE ISO="20040406">6 April 2004</DATE>on detailed rules for the implementation of Regulation (EC) No 1829/2003 of the European Parliament and of the Council as regards the application for the authorisation of new genetically modified food and feed, the notification of existing products and adventitious or technically unavoidable presence of genetically modified material which has benefited from a favourable risk evaluation (OJ L 102,<DATE ISO="20040407">7.4.2004</DATE>, pp. 14-25).</P>
+        <P>Successive amendments to Commission Regulation (EC) No 641/2004 have been incorporated into the original text. This<REF.DOC URI="http://publications.europa.eu/resource/celex/02004R0641-20130628" CONTEXT="EUR-LEX">consolidated version</REF.DOC>is of documentary value only.</P>
+        <P>Regulation (EC) No<REF.DOC URI="http://publications.europa.eu/resource/celex/32003R1830" CONTEXT="EUR-LEX">1830/2003</REF.DOC>of the European Parliament and of the Council of<DATE ISO="20030922">22 September 2003</DATE>concerning the traceability and labelling of genetically modified organisms and the traceability of food and feed products produced from genetically modified organisms and amending Directive 2001/18/EC (OJ L 268,<DATE ISO="20031018">18.10.2003</DATE>, pp. 24-28). See<REF.DOC URI="http://publications.europa.eu/resource/celex/02003R1830-20081211" CONTEXT="EUR-LEX">consolidated version</REF.DOC>.</P>
+      </GR.SEQ>
+    </REFERRED.DOCS.LSEU>
+  </CONTENTS.LSEU>
+</LSEU>

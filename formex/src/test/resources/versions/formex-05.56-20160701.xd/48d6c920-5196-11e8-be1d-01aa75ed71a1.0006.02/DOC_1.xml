@@ -1,0 +1,55 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.56-20160701.xd">
+  <BIB.DOC>
+    <PROD.ID>20180420058</PROD.ID>
+    <FIN.ID>182928</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2018/C 161/33</TXT>
+    </NO.DOC>
+    <NO.DOC TYPE="INTERNAL" FORMAT="CNY">
+      <NO.CURRENT>110</NO.CURRENT>
+      <YEAR>2018</YEAR>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>CJ</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2018161EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>161</NO.OJ>
+    <DATE ISO="20180507">20180507</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0033" SYNOPTISM="D0033">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>INFO_JUDICIAL</LEGAL.VALUE>
+      <DATE ISO="20180213">20180213</DATE>
+      <PAGE.FIRST>30</PAGE.FIRST>
+      <PAGE.LAST>30</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS TYPE="DOC.XML" FILE="C_2018161EN.01003001.xml">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0033">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Case C-110/18: Request for a preliminary ruling from the Tribunal Supremo (Spain) lodged on<DATE ISO="20180213">13 February 2018</DATE>— José Manuel Burgos Pérez and María del Amor Guinea Bueno v Administración General del Estado</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>30</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0033">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_16120180507en00300030.pdf">30</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

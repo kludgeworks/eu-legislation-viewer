@@ -1,0 +1,97 @@
+<CJT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.59-20170418.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2019187EN.01002401.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>187</NO.OJ>
+      <YEAR>2019</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>24</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20190328">20190328</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0027</NO.SEQ>
+    <PAGE.FIRST>24</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>24</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+    <NO.DOC TYPE="OJ">
+      <TXT>2019/C 187/27</TXT>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TI.CJT>
+    <TITLE>
+      <TI>
+        <P>Judgment of the Court (Second Chamber) of<DATE ISO="20190328">28 March 2019</DATE>(request for a preliminary ruling from the Tallinna Ringkonnakohus — Estonia) — Tallinna Vesi AS v Keskkonnaamet</P>
+        <P>(Case C-60/18)<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="ENDNOTE">
+            <P>
+              <REF.DOC.OJ COLL="C" DATE.PUB="20180423" NO.OJ="142">OJ C 142, 23.4.2018</REF.DOC.OJ>.</P>
+          </NOTE>
+        </P>
+      </TI>
+    </TITLE>
+    <INDEX SEPARATOR="–" IDX.OPEN="(" IDX.CLOSE=")">
+      <KEYWORD>Reference for a preliminary ruling</KEYWORD>
+      <KEYWORD>Environment</KEYWORD>
+      <KEYWORD>Waste</KEYWORD>
+      <KEYWORD>Directive 2008/98/EC</KEYWORD>
+      <KEYWORD>Re-use and recovery of waste</KEYWORD>
+      <KEYWORD>Specific end-of-waste criteria for sewage sludge which has undergone recovery treatment</KEYWORD>
+      <KEYWORD>No defined criteria at European Union or national level</KEYWORD>
+    </INDEX>
+    <NO.DOC.C>2019/C 187/27</NO.DOC.C>
+    <LG.PROC LG="ET">Language of the case: Estonian</LG.PROC>
+    <TRANS.REF>
+      <IE>
+      </IE>
+    </TRANS.REF>
+  </TI.CJT>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Referring court</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>Tallinna Ringkonnakohus</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Parties to the main proceedings</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>
+        <HT TYPE="ITALIC">Applicant:</HT>Tallinna Vesi AS</P>
+      <P>
+        <HT TYPE="ITALIC">Defendant:</HT>Keskkonnaamet</P>
+      <P>
+        <HT TYPE="ITALIC">intervener</HT>: Keskkonnaministeerium</P>
+    </GR.SEQ>
+  </CONTENTS>
+  <ENACTING.TERMS.CJT>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Operative part of the judgment</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>Article 6(4) of Directive 2008/98/EC of the European Parliament and of the Council of<DATE ISO="20081119">19 November 2008</DATE>on waste and repealing certain Directives must be interpreted as meaning that:</P>
+      <LIST TYPE="DASH">
+        <ITEM>
+          <P>it does not preclude national legislation, such as that at issue in the main proceedings, under which, where criteria have not been set at European Union level for determining end-of-waste status as regards a specific type of waste, such end status depends on the existence of criteria laid down in a generally applicable national legal act concerning that type of waste, and</P>
+        </ITEM>
+        <ITEM>
+          <P>it does not allow a waste holder, in circumstances such as those in the main proceedings, to demand the recognition of end of waste status by the competent authority of the Member State or by a court of that Member State.</P>
+        </ITEM>
+      </LIST>
+    </GR.SEQ>
+  </ENACTING.TERMS.CJT>
+</CJT>

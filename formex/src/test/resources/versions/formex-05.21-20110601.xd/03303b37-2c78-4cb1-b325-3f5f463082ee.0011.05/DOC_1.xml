@@ -1,0 +1,51 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.21-20110601.xd">
+  <BIB.DOC>
+    <PROD.ID>20111012024</PROD.ID>
+    <FIN.ID>33691</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2011/C 306/02</TXT>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>OTHER</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2011306EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>306</NO.OJ>
+    <DATE ISO="20111018">20111018</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0002" SYNOPTISM="D0002">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>INFO</LEGAL.VALUE>
+      <DATE ISO="20111018">20111018</DATE>
+      <PAGE.FIRST>2</PAGE.FIRST>
+      <PAGE.LAST>3</PAGE.LAST>
+      <PAGE.TOTAL>2</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="C_2011306EN.01000201.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0002">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Information communicated by Member States regarding State aid granted under Commission Regulation (EC) No 1857/2006 on the application of Articles 87 and 88 of the Treaty to State aid to small and medium-sized enterprises active in the production of agricultural products and amending Regulation (EC) No 70/2001</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>2</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0002">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_30620111018en00020003.pdf" DOI.DOC="doi:10.3001/C_2011.306.01000201.eng">2</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

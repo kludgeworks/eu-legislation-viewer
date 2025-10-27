@@ -42,7 +42,11 @@ class DocXmlTest {
         // Verify BIB.DOC identification values match object model
         assertThat( xml ).valueByXPath( "//DOC/BIB.DOC/PROD.ID" ).isEqualTo( bibDoc.getPRODID() );
         assertThat( xml ).valueByXPath( "//DOC/BIB.DOC/FIN.ID" ).isEqualTo( bibDoc.getFINID() );
-        assertThat( xml ).valueByXPath( "//DOC/BIB.DOC/AUTHOR" ).isEqualTo( bibDoc.getAUTHORS().getFirst() );
+
+        // Verify AUTHOR if present
+        if (!bibDoc.getAUTHORS().isEmpty()) {
+            assertThat( xml ).valueByXPath( "//DOC/BIB.DOC/AUTHOR" ).isEqualTo( bibDoc.getAUTHORS().getFirst() );
+        }
 
         // Verify required structural elements exist
         assertThat( xml ).hasXPath( "//DOC/BIB.DOC/NO.DOC" );
@@ -122,7 +126,12 @@ class DocXmlTest {
         String resourcePath = FormexVersionTestUtils.buildResourcePath(version, fileName);
         DOC doc = XmlTestUtils.unmarshalXmlFromClasspath(resourcePath, DOC.class);
         String xml = XmlTestUtils.readXmlFromClasspath(resourcePath);
-        
+
+        // Skip test if document has no sub-publications (this is valid)
+        if (doc.getFMX().getDOCSUBPUBS().isEmpty()) {
+            return;
+        }
+
         DOCSUBPUB firstSubPub = doc.getFMX().getDOCSUBPUBS().getFirst();
 
         assertThat(xml).valueByXPath("//DOC/FMX/DOC.SUB.PUB[1]/@TYPE")

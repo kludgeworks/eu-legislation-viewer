@@ -1,0 +1,49 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+  <BIB.DOC>
+    <NO.DOC TYPE="OJ">
+      <TXT>2009/C 16 A/02</TXT>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>EPSO</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="CA2009016EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>016A</NO.OJ>
+    <DATE ISO="20090122">20090122</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0002" SYNOPTISM="D0002" IN.SUMMARY="YES">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>OTHER</LEGAL.VALUE>
+      <DATE ISO="20090122">20090122</DATE>
+      <PAGE.FIRST>3</PAGE.FIRST>
+      <PAGE.LAST>3</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS TYPE="DOC.XML" FILE="CA2009016EN.01000301.xml">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0002">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Reserve list — Open competition EPSO/AD/95/07 — Administrators (AD 5) in the field of Information Sciences (Library/Documentation)</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>3</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0002">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="ca01620090122en00030003.pdf">3</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

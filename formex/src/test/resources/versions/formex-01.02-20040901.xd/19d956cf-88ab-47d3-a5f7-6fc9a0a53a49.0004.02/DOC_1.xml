@@ -1,0 +1,1968 @@
+<CONS.ACT noNamespaceSchemaLocation="http://formex.publications.eu.int/schema/formex-01.02-20040901.xd">
+  <INFO.CONSLEG CONSLEG.REF="1971R2358" DATE.LAST.MOD="20040714" PROD.SEQ="004.002.0" START.DATE="20020701" END.DATE="20050630" END="NEW.MOD" SOURCE.END="303R1782" LEG.VAL="REG">
+  </INFO.CONSLEG>
+  <INFO.PROD PRODUCER="IC" PROD.SYSTEM="CONSLEG.NEW" PROD.DATE="20041028">
+  </INFO.PROD>
+  <CONS.DOC>
+    <BIB.INSTANCE>
+      <DOCUMENT.REF FILE="CL1971R2358EN0040020.0001.doc.xml">
+      </DOCUMENT.REF>
+      <DATE ISO="20020701">20020701</DATE>
+      <LG.DOC>EN</LG.DOC>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <PAGE.LAST>5</PAGE.LAST>
+      <PAGE.TOTAL>5</PAGE.TOTAL>
+    </BIB.INSTANCE>
+    <FAM.COMP LEG.VAL="REG">
+      <BIB.DATA>
+        <BIB.INSTANCE.CONS>
+          <DOCUMENT.REF.CONS>
+            <COLL>L</COLL>
+            <NO.OJ>246</NO.OJ>
+            <YEAR>1971</YEAR>
+            <LG.OJ>EN</LG.OJ>
+            <PAGE.FIRST>1</PAGE.FIRST>
+            <PAGE.SEQ>1</PAGE.SEQ>
+            <VOLUME.REF>01</VOLUME.REF>
+          </DOCUMENT.REF.CONS>
+          <SPEC.ED>
+            <CHAP.SE>SER1</CHAP.SE>
+            <TOME.SE>71(III)</TOME.SE>
+            <LG.PUB>EN</LG.PUB>
+            <PAGE.FIRST>894</PAGE.FIRST>
+            <PAGE.LAST>898</PAGE.LAST>
+            <PAGE.TOTAL>5</PAGE.TOTAL>
+          </SPEC.ED>
+          <DATE ISO="19711105">19711105</DATE>
+          <LG.DOC>EN</LG.DOC>
+          <PAGE.FIRST>1</PAGE.FIRST>
+          <PAGE.SEQ>1</PAGE.SEQ>
+          <PAGE.LAST>5</PAGE.LAST>
+          <PAGE.TOTAL>5</PAGE.TOTAL>
+          <NO.DOC FORMAT="NY" TYPE="OJ">
+            <NO.CURRENT>2358</NO.CURRENT>
+            <YEAR>1971</YEAR>
+            <COM>EEC</COM>
+          </NO.DOC>
+        </BIB.INSTANCE.CONS>
+        <NO.CELEX>371R2358</NO.CELEX>
+        <DATE ISO="19711026">19711026</DATE>
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Regulation</HT>(EEC) No 2358/71<HT TYPE="UC">of the Council</HT>
+            </P>
+            <P>of<DATE ISO="19711026">26 October 1971</DATE>
+            </P>
+            <P>on the common organisation of the market in seeds</P>
+          </TI>
+        </TITLE>
+      </BIB.DATA>
+      <GR.MOD.ACT>
+        <MOD.ACT TYPE="ADH" LEG.VAL="TREATY" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>073</NO.OJ>
+                <YEAR>1972</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>14</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19720327">19720327</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>14</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>127</PAGE.LAST>
+              <PAGE.TOTAL>114</PAGE.TOTAL>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>172B</NO.CELEX>
+            <DATE ISO="19720122">19720122</DATE>
+            <TITLE>
+              <TI>
+                <P>Act of Accession of Denmark, Ireland and the United Kingdom of Great Britain and Northern Ireland</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+          <GR.MOD.ACT>
+            <MOD.ACT TYPE="NORWAY" LEG.VAL="DEC" EXISTS="YES">
+              <BIB.DATA>
+                <BIB.INSTANCE.CONS>
+                  <DOCUMENT.REF.CONS>
+                    <COLL>L</COLL>
+                    <NO.OJ>002</NO.OJ>
+                    <YEAR>1973</YEAR>
+                    <LG.OJ>EN</LG.OJ>
+                    <PAGE.FIRST>1</PAGE.FIRST>
+                    <PAGE.SEQ>1</PAGE.SEQ>
+                    <VOLUME.REF>01</VOLUME.REF>
+                  </DOCUMENT.REF.CONS>
+                  <DATE ISO="19730101">19730101</DATE>
+                  <LG.DOC>EN</LG.DOC>
+                  <PAGE.FIRST>1</PAGE.FIRST>
+                  <PAGE.SEQ>1</PAGE.SEQ>
+                  <PAGE.LAST>27</PAGE.LAST>
+                  <PAGE.TOTAL>27</PAGE.TOTAL>
+                </BIB.INSTANCE.CONS>
+                <NO.CELEX>373D0101(01)</NO.CELEX>
+                <DATE ISO="19730101">19730101</DATE>
+                <TITLE>
+                  <TI>
+                    <P>(adapted by Council Decision of<DATE ISO="19730101">1 January 1973</DATE>)</P>
+                  </TI>
+                </TITLE>
+              </BIB.DATA>
+            </MOD.ACT>
+          </GR.MOD.ACT>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>057</NO.OJ>
+                <YEAR>1973</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>3</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19730302">19730302</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>3</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>4</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>597</NO.CURRENT>
+                <YEAR>1973</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>373R0597</NO.CELEX>
+            <DATE ISO="19730226">19730226</DATE>
+            <TITLE>
+              <TI>
+                <P>Regulation (EEC) No 597/73 of the Council of<DATE ISO="19730226">26 February 1973</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>106</NO.OJ>
+                <YEAR>1973</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>1</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19730420">19730420</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>1</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>6</PAGE.LAST>
+              <PAGE.TOTAL>6</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1014</NO.CURRENT>
+                <YEAR>1973</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>373R1014</NO.CELEX>
+            <DATE ISO="19730327">19730327</DATE>
+            <TITLE>
+              <TI>
+                <P>Regulation (EEC) No 1014/73 of the Council of<DATE ISO="19730327">27 March 1973</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>175</NO.OJ>
+                <YEAR>1973</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>5</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19730629">19730629</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>5</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>6</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1707</NO.CURRENT>
+                <YEAR>1973</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>373R1707</NO.CELEX>
+            <DATE ISO="19730626">19730626</DATE>
+            <TITLE>
+              <TI>
+                <P>Regulation (EEC) No 1707/73 of the Council of<DATE ISO="19730626">26 June 1973</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>128</NO.OJ>
+                <YEAR>1974</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>3</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19740510">19740510</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>3</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>4</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1119</NO.CURRENT>
+                <YEAR>1974</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>374R1119</NO.CELEX>
+            <DATE ISO="19740429">19740429</DATE>
+            <TITLE>
+              <TI>
+                <P>Regulation (EEC) No 1119/74 of the Council of<DATE ISO="19740429">29 April 1974</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>072</NO.OJ>
+                <YEAR>1975</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>21</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19750320">19750320</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>21</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>22</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>671</NO.CURRENT>
+                <YEAR>1975</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>375R0671</NO.CELEX>
+            <DATE ISO="19750304">19750304</DATE>
+            <TITLE>
+              <TI>
+                <P>Regulation (EEC) No 671/75 of the Council of<DATE ISO="19750304">4 March 1975</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>137</NO.OJ>
+                <YEAR>1977</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>1</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19770603">19770603</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>1</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>1</PAGE.LAST>
+              <PAGE.TOTAL>1</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1167</NO.CURRENT>
+                <YEAR>1977</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>377R1167</NO.CELEX>
+            <DATE ISO="19970517">19970517</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EEC) No 1167/77 of<DATE ISO="19770517">17 May 1977</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>165</NO.OJ>
+                <YEAR>1978</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>1</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19780622">19780622</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>1</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>2</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1346</NO.CURRENT>
+                <YEAR>1978</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>378R1346</NO.CELEX>
+            <DATE ISO="19780619">19780619</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EEC) No 1346/78 of<DATE ISO="19780619">19 June 1978</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>034</NO.OJ>
+                <YEAR>1979</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>2</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19790209">19790209</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>2</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>3</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>234</NO.CURRENT>
+                <YEAR>1979</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>379R0234</NO.CELEX>
+            <DATE ISO="19790205">19790205</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EEC) No 234/79 of<DATE ISO="19790205">5 February 1979</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>325</NO.OJ>
+                <YEAR>1979</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>1</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19791221">19791221</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>1</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>4</PAGE.LAST>
+              <PAGE.TOTAL>4</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>2878</NO.CURRENT>
+                <YEAR>1979</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>379R2878</NO.CELEX>
+            <DATE ISO="19791217">19791217</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EEC) No 2878/79 of<DATE ISO="19791217">17 December 1979</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>192</NO.OJ>
+                <YEAR>1980</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>1</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19800726">19800726</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>1</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>3</PAGE.LAST>
+              <PAGE.TOTAL>3</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1968</NO.CURRENT>
+                <YEAR>1980</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>380R1968</NO.CELEX>
+            <DATE ISO="19800722">19800722</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EEC) No 1968/80 of<DATE ISO="19800722">22 July 1980</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="ADH" LEG.VAL="TREATY" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>291</NO.OJ>
+                <YEAR>1979</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>17</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19791119">19791119</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>17</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>113</PAGE.LAST>
+              <PAGE.TOTAL>97</PAGE.TOTAL>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>179H</NO.CELEX>
+            <DATE ISO="19790528">19790528</DATE>
+            <TITLE>
+              <TI>
+                <P>Act of Accession of Greece</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>382</NO.OJ>
+                <YEAR>1981</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>37</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19811231">19811231</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>37</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>40</PAGE.LAST>
+              <PAGE.TOTAL>4</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>3808</NO.CURRENT>
+                <YEAR>1981</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>381R3808</NO.CELEX>
+            <DATE ISO="19811221">19811221</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EEC) No 3808/81 of<DATE ISO="19811221">21 December 1981</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>163</NO.OJ>
+                <YEAR>1983</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>23</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19830622">19830622</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>23</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>24</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1581</NO.CURRENT>
+                <YEAR>1983</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>383R1581</NO.CELEX>
+            <DATE ISO="19830614">19830614</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EEC) No 1581/83 of<DATE ISO="19830614">14 June 1983</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>362</NO.OJ>
+                <YEAR>1985</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>8</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19851231">19851231</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>8</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>16</PAGE.LAST>
+              <PAGE.TOTAL>9</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>3768</NO.CURRENT>
+                <YEAR>1985</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>385R3768</NO.CELEX>
+            <DATE ISO="19851220">19851220</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EEC) No 3768/85 of<DATE ISO="19851220">20 December 1985</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>118</NO.OJ>
+                <YEAR>1986</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>1</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19860507">19860507</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>1</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>4</PAGE.LAST>
+              <PAGE.TOTAL>4</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1355</NO.CURRENT>
+                <YEAR>1986</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>386R1355</NO.CELEX>
+            <DATE ISO="19860324">19860324</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EEC) No 1355/86 of<DATE ISO="19860324">24 March 1986</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>377</NO.OJ>
+                <YEAR>1987</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>37</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19871231">19871231</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>37</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>39</PAGE.LAST>
+              <PAGE.TOTAL>3</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>3997</NO.CURRENT>
+                <YEAR>1987</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>387R3997</NO.CELEX>
+            <DATE ISO="19871223">19871223</DATE>
+            <TITLE>
+              <TI>
+                <P>Commission Regulation (EEC) No 3997/87 of<DATE ISO="19871223">23 December 1987</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+          <GR.CORRIG>
+            <CORRIG RELEVANT="YES">
+              <BIB.DATA>
+                <BIB.INSTANCE.CONS>
+                  <DOCUMENT.REF.CONS>
+                    <COLL>L</COLL>
+                    <NO.OJ>229</NO.OJ>
+                    <YEAR>1988</YEAR>
+                    <LG.OJ>EN</LG.OJ>
+                    <PAGE.FIRST>46</PAGE.FIRST>
+                    <PAGE.SEQ>2</PAGE.SEQ>
+                    <VOLUME.REF>01</VOLUME.REF>
+                  </DOCUMENT.REF.CONS>
+                  <DATE ISO="19880818">19880818</DATE>
+                  <LG.DOC>EN</LG.DOC>
+                  <PAGE.FIRST>46</PAGE.FIRST>
+                  <PAGE.SEQ>2</PAGE.SEQ>
+                  <PAGE.LAST>46</PAGE.LAST>
+                  <PAGE.TOTAL>1</PAGE.TOTAL>
+                </BIB.INSTANCE.CONS>
+                <NO.CELEX>387R3997R(02)</NO.CELEX>
+                <TITLE>
+                  <TI>
+                    <P>Corrigendum,<REF.DOC.OJ COLL="L" NO.OJ="229" DATE.PUB="19880818" PAGE.FIRST="46">OJ No L 229, 18. 8. 1988, p. 46</REF.DOC.OJ>(3997/87)</P>
+                  </TI>
+                </TITLE>
+              </BIB.DATA>
+            </CORRIG>
+          </GR.CORRIG>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>128</NO.OJ>
+                <YEAR>1989</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>35</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19890511">19890511</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>35</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>35</PAGE.LAST>
+              <PAGE.TOTAL>1</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1239</NO.CURRENT>
+                <YEAR>1989</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>389R1239</NO.CELEX>
+            <DATE ISO="19890503">19890503</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EEC) No 1239/89 of<DATE ISO="19890503">3 May 1989</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>163</NO.OJ>
+                <YEAR>1991</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>39</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19910626">19910626</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>39</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>40</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1740</NO.CURRENT>
+                <YEAR>1991</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>391R1740</NO.CELEX>
+            <DATE ISO="19910613">19910613</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EEC) No 1740/91 of<DATE ISO="19910613">13 June 1991</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>374</NO.OJ>
+                <YEAR>1992</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>40</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19921222">19921222</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>40</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>41</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>3695</NO.CURRENT>
+                <YEAR>1992</YEAR>
+                <COM>EEC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>392R3695</NO.CELEX>
+            <DATE ISO="19921221">19921221</DATE>
+            <TITLE>
+              <TI>
+                <P>Commission Regulation (EEC) No 3695/92 of<DATE ISO="19921221">21 December 1992</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>303</NO.OJ>
+                <YEAR>1993</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>9</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19931210">19931210</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>9</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>10</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>3375</NO.CURRENT>
+                <YEAR>1993</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>393R3375</NO.CELEX>
+            <DATE ISO="19931209">19931209</DATE>
+            <TITLE>
+              <TI>
+                <P>Commission Regulation (EC) No 3375/93 of<DATE ISO="19931209">9 December 1993</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>349</NO.OJ>
+                <YEAR>1994</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>105</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19941231">19941231</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>105</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>200</PAGE.LAST>
+              <PAGE.TOTAL>96</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>3290</NO.CURRENT>
+                <YEAR>1994</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>394R3290</NO.CELEX>
+            <DATE ISO="19941222">19941222</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EC) No 3290/94 of<DATE ISO="19941222">22 December 1994</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="ADH" LEG.VAL="TREATY" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>C</COLL>
+                <NO.OJ>241</NO.OJ>
+                <YEAR>1994</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>21</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19940829">19940829</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>21</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>51</PAGE.LAST>
+              <PAGE.TOTAL>31</PAGE.TOTAL>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>194N</NO.CELEX>
+            <DATE ISO="19940624">19940624</DATE>
+            <TITLE>
+              <TI>
+                <P>Act of Accession of Austria, Sweden and Finland</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+          <GR.MOD.ACT>
+            <MOD.ACT TYPE="NORWAY" LEG.VAL="DEC" EXISTS="YES">
+              <BIB.DATA>
+                <BIB.INSTANCE.CONS>
+                  <DOCUMENT.REF.CONS>
+                    <COLL>L</COLL>
+                    <NO.OJ>001</NO.OJ>
+                    <YEAR>1995</YEAR>
+                    <LG.OJ>EN</LG.OJ>
+                    <PAGE.FIRST>1</PAGE.FIRST>
+                    <PAGE.SEQ>1</PAGE.SEQ>
+                    <VOLUME.REF>01</VOLUME.REF>
+                  </DOCUMENT.REF.CONS>
+                  <DATE ISO="19950101">19950101</DATE>
+                  <LG.DOC>EN</LG.DOC>
+                  <PAGE.FIRST>1</PAGE.FIRST>
+                  <PAGE.SEQ>1</PAGE.SEQ>
+                  <PAGE.LAST>219</PAGE.LAST>
+                  <PAGE.TOTAL>219</PAGE.TOTAL>
+                  <NO.DOC FORMAT="YN" TYPE="OJ">
+                    <NO.CURRENT>1</NO.CURRENT>
+                    <YEAR>1995</YEAR>
+                    <COM>EC;EURATOM;ECSC</COM>
+                  </NO.DOC>
+                </BIB.INSTANCE.CONS>
+                <NO.CELEX>395D0001</NO.CELEX>
+                <DATE ISO="19950101">19950101</DATE>
+                <TITLE>
+                  <TI>
+                    <P>(adapted by Council Decision 95/1/EC, Euratom, ECSC)</P>
+                  </TI>
+                </TITLE>
+              </BIB.DATA>
+            </MOD.ACT>
+          </GR.MOD.ACT>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>020</NO.OJ>
+                <YEAR>1998</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>16</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19980127">19980127</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>16</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>17</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>192</NO.CURRENT>
+                <YEAR>1998</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>398R0192</NO.CELEX>
+            <DATE ISO="19980120">19980120</DATE>
+            <TITLE>
+              <TI>
+                <P>Council Regulation (EC) No 192/98 of<DATE ISO="19980120">20 January 1998</DATE>
+                </P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="EURO" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>162</NO.OJ>
+                <YEAR>1997</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>1</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19970619">19970619</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>1</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>3</PAGE.LAST>
+              <PAGE.TOTAL>3</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1103</NO.CURRENT>
+                <YEAR>1997</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>397R1103</NO.CELEX>
+            <DATE ISO="19970617">19970617</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Council Regulation</HT>(EC) No 1103/97</P>
+                <P>of<DATE ISO="19970617">17 June 1997</DATE>
+                </P>
+                <P>on certain provisions relating to the introduction of the euro</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>164</NO.OJ>
+                <YEAR>1999</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>17</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19990630">19990630</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>17</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>22</PAGE.LAST>
+              <PAGE.TOTAL>6</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1405</NO.CURRENT>
+                <YEAR>1999</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>399R1405</NO.CELEX>
+            <DATE ISO="19990624">19990624</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Council Regulation</HT>(EC) No 1405/1999</P>
+                <P>of<DATE ISO="19990624">24 June 1999</DATE>
+                </P>
+                <P>amending Regulation (EEC) No 2358/71 on the common organisation of the market in seeds and fixing the aid granted in the seeds sector for the 2000/2001 and 2001/2002 marketing years</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>275</NO.OJ>
+                <YEAR>2000</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>1</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="20001027">20001027</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>1</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>1</PAGE.LAST>
+              <PAGE.TOTAL>1</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>2371</NO.CURRENT>
+                <YEAR>2000</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>300R2371</NO.CELEX>
+            <DATE ISO="20001023">20001023</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Council Regulation</HT>(EC) No 2371/2000</P>
+                <P>of<DATE ISO="20001023">23 October 2000</DATE>
+                </P>
+                <P>amending Regulation (EEC) No 2358/71 on the common organisation of the market in seeds</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="REG" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>025</NO.OJ>
+                <YEAR>2002</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>18</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="20020129">20020129</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>18</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>21</PAGE.LAST>
+              <PAGE.TOTAL>4</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>154</NO.CURRENT>
+                <YEAR>2002</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>302R0154</NO.CELEX>
+            <DATE ISO="20020121">20020121</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Council Regulation (EC)</HT>No 154/2002</P>
+                <P>of<DATE ISO="20020121">21 January 2002</DATE>
+                </P>
+                <P>amending Regulation (EEC) No 2358/71 on the common organisation of the market in seeds and fixing the aid granted in the seeds sector for the 2002/2003 and 2003/2004 marketing years</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+          <GR.CORRIG>
+            <CORRIG>
+              <BIB.DATA>
+                <BIB.INSTANCE.CONS>
+                  <DOCUMENT.REF.CONS>
+                    <COLL>L</COLL>
+                    <NO.OJ>242</NO.OJ>
+                    <YEAR>2004</YEAR>
+                    <LG.OJ>EN</LG.OJ>
+                    <PAGE.FIRST>6</PAGE.FIRST>
+                    <PAGE.SEQ>2</PAGE.SEQ>
+                    <VOLUME.REF>01</VOLUME.REF>
+                  </DOCUMENT.REF.CONS>
+                  <DATE ISO="20040714">20040714</DATE>
+                  <LG.DOC>EN</LG.DOC>
+                  <NO.SEQ>005</NO.SEQ>
+                  <PAGE.FIRST>6</PAGE.FIRST>
+                  <PAGE.SEQ>2</PAGE.SEQ>
+                  <PAGE.LAST>6</PAGE.LAST>
+                  <PAGE.TOTAL>1</PAGE.TOTAL>
+                </BIB.INSTANCE.CONS>
+                <NO.CELEX>302R0154R(01)</NO.CELEX>
+                <TITLE>
+                  <TI>
+                    <P>Corrigendum to Council Regulation (EC) No 154/2002 of<DATE ISO="20020121">21 January 2002</DATE>amending Regulation (EEC) No 2358/71 on the common organisation of the market in seeds and fixing the aid granted in the seeds sector for the 2002/03 and 2003/04 marketing years</P>
+                    <P>
+                      <HT TYPE="ITALIC">(<REF.DOC.OJ COLL="L" NO.OJ="025" DATE.PUB="20020129">Official Journal of the European Communities L 25 of 29 January 2002</REF.DOC.OJ>)</HT>
+                    </P>
+                  </TI>
+                </TITLE>
+              </BIB.DATA>
+            </CORRIG>
+          </GR.CORRIG>
+        </MOD.ACT>
+      </GR.MOD.ACT>
+    </FAM.COMP>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="UC">Regulation</HT>(EEC) No 2358/71<HT TYPE="UC">of the Council</HT>
+        </P>
+        <P>of<DATE ISO="19711026">26 October 1971</DATE>
+        </P>
+        <P>on the common organisation of the market in seeds</P>
+      </TI>
+    </TITLE>
+    <PREAMBLE>
+      <PREAMBLE.INIT>THE COUNCIL OF THE EUROPEAN COMMUNITIES,</PREAMBLE.INIT>
+      <GR.VISA>
+        <VISA>Having regard to the Treaty establishing the European Economic Community, and in particular Articles 42 and 43 thereof;</VISA>
+        <VISA>Having regard to the proposal from the Commission;</VISA>
+        <VISA>Having regard to the Opinion of the European Parliament<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+            <P>
+              <REF.DOC.OJ COLL="C" NO.OJ="011" DATE.PUB="19710205" PAGE.FIRST="30">OJ No C 11, 5. 2. 1971, p. 30</REF.DOC.OJ>.</P>
+          </NOTE>;</VISA>
+        <VISA>Having regard to the Opinion of the Economic and Social Committee<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE">
+            <P>
+              <REF.DOC.OJ COLL="C" NO.OJ="036" DATE.PUB="19710419" PAGE.FIRST="38">OJ No C 36, 19. 4. 1971, p. 38</REF.DOC.OJ>.</P>
+          </NOTE>;</VISA>
+      </GR.VISA>
+      <GR.CONSID>
+        <CONSID>
+          <P>Whereas the operation and development of the common market in agricultural products must be accompanied by the establishment of a common agricultural policy to include in particular a common organisation of agricultural markets, which may take various forms, depending on the product concerned;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas the situation of the market in seeds is characterised by the need to keep prices competitive with world prices for these products; whereas appropriate measures should therefore be taken to stabilise the market and to ensure a fair income to the producers concerned;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas provision should therefore be made for granting a production aid for certain seeds; whereas, in view of the way in which they are produced, provision should be made for a system fixing a standard rate of aid per quintal of seeds produced;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas the common organisation of the market in seeds involves the introduction of a single trading system at the external frontiers of the Community; whereas the Common Customs Tariff automatically applies from<DATE ISO="19700101">1 January 1970</DATE>in pursuance of the Treaty, and this system makes it possible to dispense with all other protective measures; whereas, however, the Community should be enabled to take all necessary measures without delay so as not to leave the Community market without defence against disturbances which may arise due to imports or exports;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas the competent authorities must be in a position constantly to follow trade movements in order to assess market trends and to apply the measures laid down in this Regulation as necessary; whereas, to that end, provision should be made for the issue of import and export licences accompanied by the lodging of a deposit guaranteeing that the transactions for which such licences are requested are effected; whereas, however, imports following duly registered growing contracts should be exempt from this deposit;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas, in respect of hybrid maize for sowing, it is necessary to avoid disturbances on the Community market caused by offers made on the world market at abnormally low prices; whereas to this end reference prices should be fixed for this product and a countervailing charge should be added to the customs duties when free-at-frontier offer prices plus customs duties are lower than the reference prices;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas in the internal trade of the Community the levying of any customs duty or any charge having equivalent effect and the application of any quantitative restriction or any measure having equivalent effect are automatically prohibited from January<FT TYPE="NUMBER">1970</FT>under the provisions of the Treaty;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas the provisions of the Treaty which allow the assessment of aids granted by Member States and the prohibition of those which are incompatible with the common market should be made to apply to seeds;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas, in order to facilitate implementation of the proposed measures, a procedure should be provided for establishing close co-operation between Member States and the Commission within a Management Committee;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas the transition from the system in force in the Member States to that established by this Regulation should be effected as smoothly as possible; whereas, therefore, transitional measures may prove to be necessary;</P>
+        </CONSID>
+      </GR.CONSID>
+      <PREAMBLE.FINAL>HAS ADOPTED THIS REGULATION:</PREAMBLE.FINAL>
+    </PREAMBLE>
+    <ENACTING.TERMS>
+      <ARTICLE IDENTIFIER="001">
+        <TI.ART>Article 1</TI.ART>
+        <ALINEA>
+          <P>A common organization of the market in seeds shall be established and shall cover the following products:</P>
+          <TBL NO.SEQ="001" CLASS="GEN" COLS="2">
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">CN code</CELL>
+                <CELL COL="2" TYPE="HEADER">Description</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">07129011</FT>
+                </CELL>
+                <CELL COL="2">Hybrid sweet corn for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">07131010</FT>
+                </CELL>
+                <CELL COL="2">Peas<HT TYPE="ITALIC">(Pisum sativum)</HT>for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">07132010</FT>
+                </CELL>
+                <CELL COL="2">Chickpeas (garbanzos) for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">07133110</FT>
+                </CELL>
+                <CELL COL="2">Beans of the species<HT TYPE="ITALIC">Vigna mungo</HT>(L.) Hepper or<HT TYPE="ITALIC">Vigna radiata</HT>(L.) Wilczek for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">07133210</FT>
+                </CELL>
+                <CELL COL="2">Small red (Adzuki) beans<HT TYPE="ITALIC">(Phaseolus</HT>or<HT TYPE="ITALIC">Vigna angularis)</HT>for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">07133310</FT>
+                </CELL>
+                <CELL COL="2">Kidney beans, including white pea beans<HT TYPE="ITALIC">(Phaseolus vulgaris)</HT>, for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">07133910</FT>
+                </CELL>
+                <CELL COL="2">Other beans for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">07134010</FT>
+                </CELL>
+                <CELL COL="2">Lentils for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">07135010</FT>
+                </CELL>
+                <CELL COL="2">Broad beans<HT TYPE="ITALIC">(Vicia faba</HT>var.<HT TYPE="ITALIC">major)</HT>and horse beans<HT TYPE="ITALIC">(Vicia faba</HT>var.<HT TYPE="ITALIC">equina, Vicia faba</HT>var.<HT TYPE="ITALIC">minor)</HT>for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">07139010</FT>
+                </CELL>
+                <CELL COL="2">Other dried leguminous vegetables, for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">10019010</FT>
+                </CELL>
+                <CELL COL="2">Spelt for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex100510</FT>
+                </CELL>
+                <CELL COL="2">Hybrid maize for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">10061010</FT>
+                </CELL>
+                <CELL COL="2">Rice in the husk (paddy or rough) for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">10070010</FT>
+                </CELL>
+                <CELL COL="2">Hybrid grain sorghum for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12010010</FT>
+                </CELL>
+                <CELL COL="2">Soya beans, whether or not broken, for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12021010</FT>
+                </CELL>
+                <CELL COL="2">Ground-nuts, not roasted or otherwise cooked, in shell, for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12040010</FT>
+                </CELL>
+                <CELL COL="2">Linseed, whether or not broken, for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12050010</FT>
+                </CELL>
+                <CELL COL="2">Rape or colza seeds, whether or not broken, for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12060010</FT>
+                </CELL>
+                <CELL COL="2">Sunflower seeds, whether or not broken, for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex1207</FT>
+                </CELL>
+                <CELL COL="2">Other oil seeds and oleaginous fruits, whether or not broken, for sowing</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">1209</FT>
+                </CELL>
+                <CELL COL="2">Seeds, fruit and spores, of a kind used for sowing</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="002">
+        <TI.ART>Article 2</TI.ART>
+        <ALINEA>The marketing year for seeds shall begin on 1 July of each year and end on 30 June of the following year.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="003">
+        <TI.ART>Article 3</TI.ART>
+        <PARAG IDENTIFIER="003.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>Where the situation on the Community market for one or more of the products listed in the Annex and its foreseeable development do not ensure producers a fair income, aid may be granted for the production of basic seed or certified seed.</ALINEA>
+          <ALINEA>This aid, which shall be uniform throughout the Community for each species or group of varieties, shall be fixed every two years before 1 August for the marketing year beginning in the following year and for the subsequent marketing year. However, the aid for the 1978/79 and 1979/80 marketing years shall be fixed before<DATE ISO="19780701">1 July 1978</DATE>. If, for the two-year period for which aid has been fixed, the stability of the market in the Community appears to be seriously threatened, the Council, acting by a qualified majority on a proposal from the Commission, may order the aid for the second year of the period in question to be modified.This modification must be made before the start of the marketing year concerned and in good time to allow action as regards production.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>
+            <P>The amount of aid shall be fixed per quintal of seeds produced, taking into account:</P>
+            <LIST TYPE="alpha">
+              <ITEM>
+                <NP>
+                  <NO.P>(a)</NO.P>
+                  <TXT>the need to ensure a balance between the volume of production required in the Community and the amount that can be marketed;</TXT>
+                </NP>
+              </ITEM>
+              <ITEM>
+                <NP>
+                  <NO.P>(b)</NO.P>
+                  <TXT>prices for these products on third-country markets.</TXT>
+                </NP>
+              </ITEM>
+            </LIST>
+          </ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>The amount of aid shall be fixed in accordance with the procedure laid down in Article 43 (2) of the Treaty.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003.004">
+          <NO.PARAG>4.</NO.PARAG>
+          <ALINEA>The Council, acting in accordance with the voting procedure laid down in Article 43 (2) of the Treaty on a proposal from the Commission, shall adopt general rules for the granting of aid and decide, where appropriate, on amendments to the Annex.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003.004A">
+          <NO.PARAG>4a.</NO.PARAG>
+          <ALINEA>The maximum quantity of seed on which the aid is payable in the Community shall be fixed in accordance with the procedure referred to in paragraph 5. That quantity shall be apportioned among the producer Member States.</ALINEA>
+          <ALINEA>The maximum quantity of seed other than rice seed on which the aid is payable shall be equal to the sum of the quantities relating to each Member State which are established on the basis of the average of the harvested quantities taken into account for the 1996/97 to 2000/01 marketing years, excluding the two extremes, plus 5 %.</ALINEA>
+          <ALINEA>Where the quantity established for a Member State pursuant to the second subparagraph does not exceed 800 tonnes, an additional quantity of 300 tonnes shall be granted to that Member State.</ALINEA>
+          <ALINEA>If, for seed other than rice seed, the sum total of the quantities for which aid is applied for in producer Member States exceeds the maximum quantity set for the Community, the aid shall be reduced for the following marketing year in each Member State concerned in proportion to the overrun of its national quantity taking into account the quantities not used by Member States. In this case the Commission shall set the reduction percentages applicable for each producer Member State.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003.005">
+          <NO.PARAG>5.</NO.PARAG>
+          <ALINEA>Detailed rules for the application of this Article shall be adopted in accordance with the procedure laid down in Article 11.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003.006">
+          <NO.PARAG>6.</NO.PARAG>
+          <ALINEA>The varieties of<HT TYPE="ITALIC">Cannabis sativa</HT>L. on which the aid provided for in this Articles is payable shall be determined in accordance with the procedure laid down in Article 11.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="003A">
+        <TI.ART>Article 3a</TI.ART>
+        <PARAG IDENTIFIER="003A.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>For certain species, with effect from<DATE ISO="19790201">1 February 1979</DATE>all seed multiplication contracts concluded between a seed undertaking or grower in the Community and a seed producer established in a third country may be made subject to compulsory registration with the bodies appointed for that purpose by each Member State.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003A.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Member States shall communicate periodically to the Commission statistical data concerning the registration of multiplication contracts.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003A.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>The data relating to the registration of multiplication contracts may be utilized only for the purposes of application of this Regulation.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003A.004">
+          <NO.PARAG>4.</NO.PARAG>
+          <ALINEA>The detailed rules of application for this Article, and in particular the definition of the seed multiplication contract and the list of species referred to in paragraph 1, shall be adopted in accordance with the procedure laid down in Article 11</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="004">
+        <TI.ART>Article 4</TI.ART>
+        <PARAG IDENTIFIER="004.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>Imports into the Community of any of the products listed in Article 1 may be made conditional on the submission of an import licence issued by Member States to any applicant irrespective of the place of his establishment in the Community.</ALINEA>
+          <ALINEA>This licence shall be valid for imports effected within the Community.</ALINEA>
+          <ALINEA>With the exception of imports effected under duly registered contracts for growing in third countries, the issue of such licences shall be conditional on the lodging of a deposit guaranteeing that importation is effected during the period of validity of the licence; the deposit shall be forfeited in whole or in part if the transaction is not effected, or is only partially effected, within that period.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="004.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>The list of products for which import licences are required shall be determined in accordance with the procedure laid down in Article 11.</ALINEA>
+          <ALINEA>The period of validity of licences and other detailed rules for the application of this Article shall be determined in accordance with the same procedure.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="005">
+        <TI.ART>Article 5</TI.ART>
+        <PARAG IDENTIFIER="005.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>Unless this Regulation provides otherwise, the rates of duty in the Common Customs Tariff shall apply to the products listed in Article 1.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="005.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>The general rules for the interpretation of the combined nomenclature and the special rules for its application shall apply to the classification of products covered by this Regulation; the tariff nomenclature resulting from the application of this Regulation shall be incorporated in the Common Customs Tariff.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="006">
+        <TI.ART>Article 6</TI.ART>
+        <ALINEA>
+          <P>Save as otherwise provided for in this Regulation or in provisions adopted pursuant thereto, the following shall be prohibited in trade with third countries:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>the levying of any charge having equivalent effect to a customs duty,</P>
+            </ITEM>
+            <ITEM>
+              <P>the application of any quantitative restriction or measure having equivalent effect.</P>
+            </ITEM>
+          </LIST>
+        </ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="007">
+        <TI.ART>Article 7</TI.ART>
+        <PARAG IDENTIFIER="007.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>If, by reason of imports or exports, the Community market in one or more of the products listed in Article 1 is affected by, or is threatened with, serious disturbance likely to jeopardize the achievement of the objectives set out in Article 39 of the Treaty, appropriate measures may be applied in trade with third countries until such disturbance or threat of disturbance has ceased.</ALINEA>
+          <ALINEA>The Council, acting on a proposal from the Commission in accordance with the voting procedure laid down in Article 43 (2) of the Treaty, shall adopt the general rules for the application of this paragraph and shall define in what cases and within what limits Member States may take protective measures.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="007.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>If the situation referred to in paragraph 1 arises, the Commission shall, at the request of a Member State or on its own initiative, decide upon the necessary measures; the Member States shall be notified of such measures, which shall be immediately applicable. If the Commission receives a request from a Member State, is (SIC! it) shall take a decision thereon within three working days following receipt of the request.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="007.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>Measures decided upon by the Commission may be referred to the Council by any Member State within three working days of the day on which they were notified. The Council shall meet without delay. It may, acting by a qualified majority, amend or annul the measure in question.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="007.004">
+          <NO.PARAG>4.</NO.PARAG>
+          <ALINEA>This Article shall be applied having regard to the obligations arising from agreements concluded in accordance with Article 228 (2) of the Treaty.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="008">
+        <TI.ART>Article 8</TI.ART>
+        <ALINEA>Save as otherwise provided in this Regulation, Articles 92, 93 and 94 of the Treaty shall apply to the production of and trade in the products referred to in Article 1.</ALINEA>
+        <ALINEA>
+          <P>However, subject to authorization by the Commission, Finland may grant aid respectively:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>for certain quantities of seeds</P>
+            </ITEM>
+            <ITEM>
+              <P>for certain quantities of cereal seed</P>
+            </ITEM>
+          </LIST>
+          <P>produced solely in this country, because of its specific climatic conditions.</P>
+        </ALINEA>
+        <ALINEA>Before<DATE ISO="20060101">1 January 2006</DATE>the Commission shall, on the basis of information supplied in good time by Finland, forward to the Council a report on the results of the aid authorised, together with any necessary proposals.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="008A">
+        <TI.ART>Article 8a</TI.ART>
+        <ALINEA>
+        </ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="009">
+        <TI.ART>Article 9</TI.ART>
+        <ALINEA>Member States and the Commission shall communicate to each other the information necessary for implementing this Regulation. Rules for the communication and distribution of such information shall be adopted in accordance with the procedure laid down in Article 11.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="010">
+        <TI.ART>Article 10</TI.ART>
+        <PARAG IDENTIFIER="010.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>A Management Committee for Seeds (hereinafter called the<QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+            </QUOT.START>Committee<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+            </QUOT.END>) shall be established, consisting of representatives of Member States with a representative of the Commission as Chairman.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="010.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Within the Committee the votes of Member States shall be weighted in accordance with Article 148 (2) of the Treaty. The Chairman shall not vote.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="011">
+        <TI.ART>Article 11</TI.ART>
+        <PARAG IDENTIFIER="011.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>The Commission shall be assisted by a Management Committee for Seeds (hereinafter referred to as<QUOT.START ID="QS0002" REF.END="QE0002" CODE="2018">
+            </QUOT.START>the Committee<QUOT.END ID="QE0002" REF.START="QS0002" CODE="2019">
+            </QUOT.END>).</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="011.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Where reference is made to this paragraph, Articles 4 and 7 of Decision 1999/468/EC shall apply.</ALINEA>
+          <ALINEA>The period laid down in Article 4(3) of Decision 1999/468/EC shall be set at one month.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="011.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>The Committee shall adopt its rules of procedure.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="012">
+        <TI.ART>Article 12</TI.ART>
+        <ALINEA>The Committee may consider any other question referred to it by its Chairman either on his own initiative or at the request of the representative of a Member State.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="013">
+        <TI.ART>Article 13</TI.ART>
+        <ALINEA>This Regulation shall be so applied that appropriate account is taken, at the same time, of the objectives set out in Articles 39 and 110 of the Treaty.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="014">
+        <TI.ART>Article 14</TI.ART>
+        <ALINEA>The provisions governing the financing of the common agricultural policy shall apply to the market in the products listed in Article 1 from the date on which this Regulation enters into force.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="015">
+        <TI.ART>Article 15</TI.ART>
+        <ALINEA>In Article 1 (a) of Regulation No 120/67/EEC,<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE">
+            <P>
+              <REF.DOC.OJ COLL="P" NO.OJ="117" DATE.PUB="19670619" PAGE.FIRST="2269">OJ No 117, 19. 6. 1967, p. 2269/67</REF.DOC.OJ>.</P>
+          </NOTE>the heading<QUOT.START ID="QS0003" REF.END="QE0003" CODE="2018">
+          </QUOT.START>10.05 B: Maize, other than hybrid maize for sowing<QUOT.END ID="QE0003" REF.START="QS0003" CODE="2019">
+          </QUOT.END>shall be substituted for the heading<QUOT.START ID="QS0004" REF.END="QE0004" CODE="2018">
+          </QUOT.START>10.05: Maize<QUOT.END ID="QE0004" REF.START="QS0004" CODE="2019">
+          </QUOT.END>.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="016">
+        <TI.ART>Article 16</TI.ART>
+        <ALINEA>Should transitional measures be necessary to facilitate the transition from the system in force in Member States or, in respect of hybrid maize for sowing, from the system introduced by Regulation No 120/67/EEC to that established by this Regulation, in particular if the introduction of that system gives rise to substantial difficulties for some products, such measures shall be adopted in accordance with the procedure laid down in Article 11. They shall be applicable until<DATE ISO="19730630">30 June 1973</DATE>at the latest.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="017">
+        <TI.ART>Article 17</TI.ART>
+        <ALINEA>This Regulation shall enter into force on<DATE ISO="19720501">1 May 1972</DATE>.</ALINEA>
+        <ALINEA>It shall apply from<DATE ISO="19720701">1 July 1972</DATE>.</ALINEA>
+      </ARTICLE>
+    </ENACTING.TERMS>
+    <FINAL>
+      <P>This Regulation shall be binding in its entirety and directly applicable in all Member States.</P>
+    </FINAL>
+    <CONS.ANNEX>
+      <TITLE>
+        <TI>
+          <P>ANNEX</P>
+        </TI>
+      </TITLE>
+      <CONTENTS>
+        <TBL NO.SEQ="001" CLASS="GEN" COLS="2">
+          <GR.NOTES>
+            <NOTE NOTE.ID="E1001" NUMBERING="ARAB" TYPE="TABLE">
+              <P>
+                <P>Grain measurements are taken on wholly milled rice by the following method:</P>
+                <P>
+                  <LIST TYPE="roman">
+                    <ITEM>
+                      <NP>
+                        <NO.P>(i)</NO.P>
+                        <TXT>take a sample representative of the batch;</TXT>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(ii)</NO.P>
+                        <TXT>sieve the sample so as to retain only whole grains, including immature grains;</TXT>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(iii)</NO.P>
+                        <TXT>carry out two measurements of 100 grains each and work out the average;</TXT>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(iv)</NO.P>
+                        <TXT>express the results in millimetres, rounded off to one decimal place.</TXT>
+                      </NP>
+                    </ITEM>
+                  </LIST>
+                </P>
+              </P>
+            </NOTE>
+            <NOTE NOTE.ID="E1002" NUMBERING="ARAB" TYPE="TABLE">
+              <P>The tetrahydrocannabinol (THC) content of a variety is determined by analysing a sample maintained at constant weight. The weight of THC in relation to the weight of the sample must — for the purposes of granting the aid for the 1998/99 to 2000/01 marketing years — not be greater than 0,3 % and — for the purposes of granting the aid for subsequent marketing years — not be greater than 0,2 %. The sample is to consist of the upper third of a representative number of plants selected at random at the end of their flowering period and with stalks and seeds removed.</P>
+            </NOTE>
+            <NOTE NOTE.ID="E1003" NUMBERING="ARAB" TYPE="TABLE">
+              <P>
+                <P>The aid for Lolium perenne for the 2000/2001 and 2001/2002 marketing years is set on a transitional basis for the following three groups of varieties:</P>
+                <P>
+                  <LIST TYPE="DASH">
+                    <ITEM>
+                      <P>of high persistence, late or medium late,</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>new varieties and others,</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>of low persistence, medium late, medium early or early.</P>
+                    </ITEM>
+                  </LIST>
+                </P>
+              </P>
+            </NOTE>
+          </GR.NOTES>
+          <CORPUS>
+            <ROW TYPE="HEADER">
+              <CELL COL="1" TYPE="HEADER">CN code</CELL>
+              <CELL COL="2" TYPE="HEADER">Description</CELL>
+            </ROW>
+            <BLK>
+              <TI.BLK COL.START="2" COL.END="2">
+                <NP>
+                  <NO.P>1.</NO.P>
+                  <TXT>CERES</TXT>
+                </NP>
+              </TI.BLK>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">10019010</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Triticum spelta</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">10061010</FT>
+                </CELL>
+                <CELL COL="2">
+                  <P>
+                    <HT TYPE="ITALIC">Oryza sativa</HT>L.<NOTE NOTE.REF="E1001" TYPE="TABLE">
+                    </NOTE>
+                  </P>
+                  <P>
+                    <LIST TYPE="DASH">
+                      <ITEM>
+                        <P>long-grain varieties the grains of which are of a length exceeding 6,0 millimetres and of a length/width ratio of more than or equal to 3</P>
+                      </ITEM>
+                      <ITEM>
+                        <P>other varieties the grains of which are of a length exceeding or not exceeding 6,0 millimetres and of a length/width ratio of less than 3</P>
+                      </ITEM>
+                    </LIST>
+                  </P>
+                </CELL>
+              </ROW>
+            </BLK>
+            <BLK>
+              <TI.BLK COL.START="2" COL.END="2">
+                <NP>
+                  <NO.P>2.</NO.P>
+                  <TXT>OLEAGINEAE</TXT>
+                </NP>
+              </TI.BLK>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12040010</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Linum usitatissimum</HT>L. (fibre flax)</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12040010</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Linum usitatissimum</HT>L. (linseed)</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12079910</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Cannabis sativa</HT>L.<NOTE NOTE.REF="E1002" TYPE="TABLE">
+                  </NOTE>(varieties with a tetrahydrocannabinol content not exceeding 0,3 % for the 2000/2001 marketing year and 0,2 % for subsequent marketing years)</CELL>
+              </ROW>
+            </BLK>
+            <BLK>
+              <TI.BLK COL.START="2" COL.END="2">
+                <NP>
+                  <NO.P>3.</NO.P>
+                  <TXT>GRAMINEAE</TXT>
+                </NP>
+              </TI.BLK>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092910</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Agrostis canina</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092910</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Agrostis gigantea</HT>Roth.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092910</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Agrostis stolonifera</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092910</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Agrostis capillaris</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092980</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Arrhenatherum elatius</HT>(L.) P. Beauv. ex J.S. and K.B. Prest.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092910</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Dactylis glomerata</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092380</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Festuca arundinacea</HT>Schreb.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092380</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Festuca ovina</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12092311</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Festuca pratensis</HT>Huds.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12092315</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Festuca rubra</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092980</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Festulolium</HT>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12092510</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Lolium multiflorum</HT>Lam.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12092590</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Lolium perenne</HT>L.<NOTE NOTE.REF="E1003" TYPE="TABLE">
+                  </NOTE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092980</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Lolium x boucheanum</HT>Kunth</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092980</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Phleum Bertolinii</HT>(DC)</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12092600</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Phleum pratense</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092980</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Poa nemoralis</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12092400</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Poa pratensis</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092910</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Poa palustris</HT>and<HT TYPE="ITALIC">Poa trivialis</HT>L.</CELL>
+              </ROW>
+            </BLK>
+            <BLK>
+              <TI.BLK COL.START="2" COL.END="2">
+                <NP>
+                  <NO.P>4.</NO.P>
+                  <TXT>LEGUMINOSAE</TXT>
+                </NP>
+              </TI.BLK>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092980</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Hedysarum coronarium</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092980</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Medicago lupulina</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092100</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Medicago sativa</HT>L. (ecotypes)</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092100</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Medicago sativa</HT>L. (varieties)</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092980</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Onobrichis viciifolia</HT>Scop.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex07131010</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Pisum sativum</HT>L. (partim) (field peas)</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092280</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Trifolium alexandrinum</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092280</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Trifolium hybridum</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092280</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Trifolium incarnatum</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">12092210</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Trifolium pratense</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092280</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Trifolium repens</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092280</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Trifolium repens</HT>L. var.<HT TYPE="ITALIC">giganteum</HT>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092280</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Trifolium resupinatum</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex07135010</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Vicia faba</HT>L. (partim) (field beans)</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092910</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Vicia sativa</HT>L.</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <FT TYPE="CN">ex12092910</FT>
+                </CELL>
+                <CELL COL="2">
+                  <HT TYPE="ITALIC">Vicia villosa</HT>Roth.</CELL>
+              </ROW>
+            </BLK>
+          </CORPUS>
+        </TBL>
+      </CONTENTS>
+    </CONS.ANNEX>
+  </CONS.DOC>
+</CONS.ACT>

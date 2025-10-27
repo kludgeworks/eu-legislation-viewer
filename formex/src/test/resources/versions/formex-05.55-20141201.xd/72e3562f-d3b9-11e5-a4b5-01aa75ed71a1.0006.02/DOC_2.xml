@@ -1,0 +1,90 @@
+<CJT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.55-20141201.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2016059EN.01000601.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>059</NO.OJ>
+      <YEAR>2016</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>6</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20151130">20151130</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0005</NO.SEQ>
+    <PAGE.FIRST>6</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>7</PAGE.LAST>
+    <PAGE.TOTAL>2</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <TI.CJT>
+    <TITLE>
+      <TI>
+        <P>Reference for a preliminary ruling from First-tier Tribunal (Tax Chamber) (United Kingdom) made on<DATE ISO="20151130">30 November 2015</DATE>— London Borough of Ealing v Commissioners for Her Majesty&apos;s Revenue and Customs</P>
+        <P>(Case C-633/15)</P>
+      </TI>
+    </TITLE>
+    <NO.DOC.C>2016/C 059/05</NO.DOC.C>
+    <LG.PROC LG="EN">Language of the case: English</LG.PROC>
+    <TRANS.REF>
+      <IE>
+      </IE>
+    </TRANS.REF>
+  </TI.CJT>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Referring court</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>First-tier Tribunal (Tax Chamber)</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Parties to the main proceedings</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>
+        <HT TYPE="ITALIC">Applicant:</HT>London Borough of Ealing</P>
+      <P>
+        <HT TYPE="ITALIC">Defendant:</HT>Commissioners for Her Majesty&apos;s Revenue and Customs</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Questions referred</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <LIST TYPE="ARAB">
+        <ITEM>
+          <NP>
+            <NO.P>1.</NO.P>
+            <TXT>Is the United Kingdom entitled, pursuant to the final paragraph of article 133 PVD<NOTE NOTE.ID="E0001" TYPE="ENDNOTE">
+                <P>Council Directive 2006/112/EC of<DATE ISO="20061128">28 November 2006</DATE>on the common system of value added tax<REF.DOC.OJ COLL="L" DATE.PUB="2006" NO.OJ="347" PAGE.FIRST="1">OJ L 347, p. 1</REF.DOC.OJ>.</P>
+              </NOTE>, to impose the condition contained in paragraph (d) of that article on bodies governed by public law, (i) in circumstances where the relevant transactions were treated by the United Kingdom as taxable on<DATE ISO="19890101">1st January 1989</DATE>, but other Sporting Services were subject to exemption on that date and (ii) in circumstances where the relevant transactions had not first been granted exemption under national law before the United Kingdom sought to impose the condition contained in Article 133(d)?</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>2.</NO.P>
+            <TXT>If the answer to (1) above is in the affirmative, is the United Kingdom entitled to impose the condition contained in paragraph (d) of article 133 PVD on non-profit making bodies governed by public law without also applying that condition to non-profit making bodies which are not governed by public law?</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>3.</NO.P>
+            <TXT>If the answer to (2) above is in the affirmative, is the United Kingdom permitted to exclude all public non-profit making bodies from the benefit of the exemption contained in article 132(1)(m) without having considered in each individual case whether the granting of exemption would be likely to cause distortion of competition to the disadvantage of commercial enterprises subject to VAT?</TXT>
+          </NP>
+        </ITEM>
+      </LIST>
+    </GR.SEQ>
+  </CONTENTS>
+</CJT>

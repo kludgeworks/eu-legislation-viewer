@@ -1,0 +1,251 @@
+<REPORT.HEARING noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-04.cj-20080212.xd">
+  <BIB.REPORT.HEARING>
+    <REF.CASE FILE="ECRCJ1987ENA.1100473701.case.xml">
+      <NO.CASE>194/84</NO.CASE>
+    </REF.CASE>
+    <NO.CELEX>61984J0194</NO.CELEX>
+    <NO.SEQ>0001.0001</NO.SEQ>
+    <PAGE.FIRST>4738</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>4743</PAGE.LAST>
+    <PAGE.TOTAL>6</PAGE.TOTAL>
+  </BIB.REPORT.HEARING>
+  <CURR.TITLE>
+    <LEFT>REPORT FOR THE HEARING — CASE 194/84</LEFT>
+    <RIGHT>COMMISSION v GREECE</RIGHT>
+  </CURR.TITLE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Report for the Hearing</HT>
+      </P>
+      <P>delivered in Case 194/84<NOTE NOTE.ID="E0001" NUMBERING="STAR">
+          <P>Language of the Case: Greek.</P>
+        </NOTE>
+      </P>
+    </TI>
+  </TITLE>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>I —</NO.P>
+            <TXT>Facts and written procedure</TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <NP>
+        <NO.P>1.</NO.P>
+        <TXT>Article 52 of the Act concerning the conditions of accession of the Hellenic Republic and the adjustments to the Treaties is worded as follows:</TXT>
+        <P>
+          <QUOT.S LEVEL="1">
+            <P>
+              <QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+              </QUOT.START>Funds blocked in Greece belonging to persons resident in the present Member States shall be progressively released by equal annual instalments starting from accession until<DATE ISO="19851231">31 December 1985</DATE>, in six stages, the first of which shall begin on<DATE ISO="19810101">1 January 1981</DATE>.</P>
+            <P>Capital on deposit in each blocked fund on<DATE ISO="19810101">1 January 1981</DATE>or which may be paid into blocked funds between this date and<DATE ISO="19851231">31 December 1985</DATE>shall be released, at the beginning of each stage, successively by one-sixth, one-fifth, a quarter, a third and a half of the amount on deposit at the beginning of each of these stages.</P>
+            <P>On<DATE ISO="19860101">1 January 1986</DATE>blocked funds belonging to persons resident in the present Member States shall be abolished.<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+              </QUOT.END>
+            </P>
+          </QUOT.S>
+        </P>
+        <P>Article 49 (1) of the same Act provides that:</P>
+        <P>
+          <QUOT.S LEVEL="1">
+            <ALINEA>
+              <QUOT.START ID="QS0002" REF.END="QE0002" CODE="2018">
+              </QUOT.START>The Hellenic Republic may, under the conditions and within the time-limits set out in Articles 50 to 53, defer the liberalization of capital movements provided for in the First Council Directive of<DATE ISO="19600511">11 May 1960</DATE>for the implementation of Article 67 of the EEC Treaty and in the Second Council Directive of<DATE ISO="19621218">18 December 1962</DATE>adding to and amending the First Directive for the implementation of Article 67 of the EEC Treaty.<QUOT.END ID="QE0002" REF.START="QS0002" CODE="2019">
+              </QUOT.END>
+            </ALINEA>
+          </QUOT.S>
+        </P>
+      </NP>
+      <NP>
+        <NO.P>2.</NO.P>
+        <TXT>The Greek legislation, more specifically Article 13 of Emergency Law No 1704 of 4/<DATE ISO="19390414">14 April 1939</DATE>amending and supplementing Emergency Law No 33 of 1936 and the other laws concerning the protection of the national currency (Greek Official Journal, Part I, p. 149), provides as follows :</TXT>
+        <P>
+          <QUOT.S LEVEL="1">
+            <LIST TYPE="ARAB">
+              <ITEM>
+                <NP>
+                  <NO.P>‘(1)</NO.P>
+                  <TXT>All debts owed to persons permanently resident abroad which must be paid in Greece and which do not arise from free exchange transfers made after<DATE ISO="19320426">26 April 1932</DATE>with regard to companies, banks and natural and legal persons shall be considered to be blocked.</TXT>
+                  <P>Greek bonds and shares located in Greece and belonging to persons permanently resident abroad shall also be considered to be blocked.</P>
+                </NP>
+              </ITEM>
+            </LIST>
+            <LIST TYPE="ARAB">
+              <ITEM>
+                <NP>
+                  <NO.P>(3)</NO.P>
+                  <TXT>The authorization of the Bank of Greece shall be required for the unblocking and use of the aforesaid blocked debts and securities, but the Bank of Greece shall incur no liability for having refused or refusing to grant such authorization.</TXT>
+                </NP>
+              </ITEM>
+            </LIST>
+          </QUOT.S>
+        </P>
+      </NP>
+      <NP>
+        <NO.P>3.</NO.P>
+        <TXT>Since it considered that the Greek legislation cited above did not comply with Article 52 of the Act of Accession, theCommission, by a letter of<DATE ISO="19830315">15 March 1983</DATE>, requested the Greek Government to submit observations within a period of two months in respect of the infringement of Community law complained of.</TXT>
+        <P>When no reply to that letter was received, on<DATE ISO="19840131">31 January 1984</DATE>the Commission delivered a reasoned opinion in accordance with Article 169 of the EEC Treaty calling upon the Hellenic Republic to adopt the measures needed to comply with the opinion within a period of one month from its notification.</P>
+        <P>Since no measure had been adopted within the prescribed period, the Commission brought this action by an application of<DATE ISO="19840710">10 July 1984</DATE>.</P>
+      </NP>
+      <NP>
+        <NO.P>4.</NO.P>
+        <TXT>The application was received at the Court Registry on<DATE ISO="19840724">24 July 1984</DATE>.</TXT>
+        <P>Upon hearing the report of the Judge-Rapporteur and the views of the Advocate General, the Court decided to open the oral procedure without any preparatory inquiry.</P>
+      </NP>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>II —</NO.P>
+            <TXT>Conclusions of the parties</TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>The<HT TYPE="ITALIC">Commission</HT>claims that the Court should:</P>
+      <LIST TYPE="ARAB">
+        <ITEM>
+          <NP>
+            <NO.P>(1)</NO.P>
+            <TXT>Declare that by failing progressively to release accounts blocked in Greece belonging to persons resident in the Member States in accordance with the timetable laid down in Article 52 of the Act of Accession of Greece to the European Communities, the Hellenic Republic has failed to fulfil its obligations under that provision;</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>(2)</NO.P>
+            <TXT>Order the Hellenic Republic to pay the costs.</TXT>
+          </NP>
+        </ITEM>
+      </LIST>
+      <P>The<HT TYPE="ITALIC">Hellenic Republic</HT>contends that the Court should:</P>
+      <LIST TYPE="ARAB">
+        <ITEM>
+          <NP>
+            <NO.P>(1)</NO.P>
+            <TXT>Declare that in unblocking the accounts blocked in Greece belonging to persons resident in the Member States in accordance with the timetable laid down in Article 52 of the Act of Accession of the Hellenic Republic to the European Communities, so that the holders of those accounts may use freely in Greece the amounts in drachmas in the accounts thus unblocked, the Hellenic Republic has not failed to fulfil its obligations under that provision;</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>(2)</NO.P>
+            <TXT>Order the Commission to pay the costs.</TXT>
+          </NP>
+        </ITEM>
+      </LIST>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>III —</NO.P>
+            <TXT>Submissions and arguments of the parties</TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <NP>
+        <NO.P>1.</NO.P>
+        <TXT>According to the<HT TYPE="ITALIC">Commission,</HT>it follows from Article 13 of Emergency Law No 1704/1939, which is still in force in the Hellenic Republic, that the Hellenic Republic, in breach of it obligations under Article 52 of the Act of Accession, has not progressively released funds blocked in Greece belonging to persons resident in the present Member States of the Community.</TXT>
+        <P>As regards the interpretation of Article 52 of the Act of Accession, the Commission first of all considers the term<QUOT.START ID="QS0003" REF.END="QE0003" CODE="2018">
+          </QUOT.START>blocked funds<QUOT.END ID="QE0003" REF.START="QS0003" CODE="2019">
+          </QUOT.END>. Since that expression is not defined in any Community act, reference must be made to the usual features of such funds in the monetary sphere and in the sphere of exchange control. The generally accepted definition is that blocked funds comprise deposits of money belonging to nonresidents which:</P>
+        <P>
+          <LIST TYPE="roman">
+            <ITEM>
+              <NP>
+                <NO.P>(i)</NO.P>
+                <TXT>may not freely be transferred out of the country, and</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>(ii)</NO.P>
+                <TXT>may not be used within the country except for certain limited uses and subject to the prior authorization of the central banking authorities.</TXT>
+              </NP>
+            </ITEM>
+          </LIST>
+        </P>
+        <P>Of those two restrictions, the non-transferability abroad of the funds is the most important because once funds may be freely transferred there is generally no real problem in practice.</P>
+        <P>The Commission therefore believes that Article 52 of the Act of Accession should be interpreted as requiring the Hellenic Republic not just to release the funds in question for use in Greece but also to render them completely convertible so that they may be freely repatriated, according to the timetable laid down and in any case before<DATE ISO="19860101">1 January 1986</DATE>.</P>
+        <P>That argument is supported by Article 49 of the Act of Accession, according to which the Hellenic Republic may, under certain conditions, defer the liberalization of capital movements provided for in the directives of<DATE ISO="19600511">11 May 1960</DATE>and<DATE ISO="19621218">18 December 1962</DATE>for the implementation of Article 67 of the EEC Treaty.</P>
+        <P>Articles 49 and 52 both appear in a title and chapter of the Act of Accession<HT TYPE="ITALIC">entitled</HT>respectively<QUOT.START ID="QS0004" REF.END="QE0004" CODE="2018">
+          </QUOT.START>Free movement of persons, services and capital<QUOT.END ID="QE0004" REF.START="QS0004" CODE="2019">
+          </QUOT.END>and<QUOT.START ID="QS0005" REF.END="QE0005" CODE="2018">
+          </QUOT.START>Capital movements and invisible transactions<QUOT.END ID="QE0005" REF.START="QS0005" CODE="2019">
+          </QUOT.END>. If Article 52 imposed merely a duty to authorize the free use in Greece of the blocked funds, the provision would not be found under that<HT TYPE="ITALIC">title,</HT>since the possibility of disposing of money freely in the country where the funds are deposited does not imply any movement of capital.</P>
+        <P>Moreover, it follows from the directives implementing Article 67 of the EEC Treaty, to which Article 49 of the Act of Accession refers, that the purpose of the directives is to resolve the problem of the mandatory granting of exchange-control authorization for movements of capital and not that of freeing funds for normal use within the country when they are deposited on blocked accounts.</P>
+        <P>In that respect it should be pointed out that in List A of Annex I to the Second Council Directive of<DATE ISO="19621218">18 December 1962</DATE>(Directive 63/21/EEC), adding to and amending the First Directive for the implementation of Article 67 of the Treaty (Official Journal, English Special Edition 1963-64, p. 5), the operations to be liberalized unconditionally include<QUOT.START ID="QS0006" REF.END="QE0006" CODE="2018">
+          </QUOT.START>transfers by instalment of blocked funds belonging to nonresidents by the holders of such funds in case of special hardship<QUOT.END ID="QE0006" REF.START="QS0006" CODE="2019">
+          </QUOT.END>and<QUOT.START ID="QS0007" REF.END="QE0007" CODE="2018">
+          </QUOT.START>annual transfers of blocked funds to another Member State by a nonresident accountholder...<QUOT.END ID="QE0007" REF.START="QS0007" CODE="2019">
+          </QUOT.END>. It would thus appear that blocked accounts must be abolished by all Member States. Each Member State which accedes to the Community and has such accounts on the date of accession assumes the same obligations if no special rules are provided for in the Accession Treaty. It follows that the purpose of Article 52 of the Act of Accession is to place the Hellenic Republic in the same position as the other Member States. That would not be the case if it was only bound to release such accounts internally.</P>
+      </NP>
+      <NP>
+        <NO.P>2.</NO.P>
+        <TXT>The<HT TYPE="ITALIC">Hellenic Republic</HT>first considers the scope of Article 13 of Emergency Law No 1704/1939. Under that provision, all debts owed to persons resident abroad which must be paid in Greece and which do not arise from free exchange are considered blocked and payment by the debtor of the sum owedmay be effected only by placing that sum in a blocked account.</TXT>
+        <P>It follows that for a blocked account to be opened, the following conditions must be satisfied:</P>
+        <P>
+          <LIST TYPE="roman">
+            <ITEM>
+              <NP>
+                <NO.P>(i)</NO.P>
+                <TXT>the holder (whatever his nationality, who might therefore have Greek nationality) must be permanently resident outside Greece;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>(ii)</NO.P>
+                <TXT>the debt must not have arisen from free exchange, that is to say, from currency imported into Greece and voluntarily converted into drachmas (in other words, without there being an obligation to convert it into drachmas and integrate it into the Greek banking system). That would be the case, for example, in the following cases: funds arising from the sale of real estate situated in Greece; revenue from assets not acquired by means of foreign exchange converted into drachmas on the free market; compensation for expropriation of real estate; sums awarded by a judgment of a court of law; refunds of unduly paid taxes and amounts relating to inherited property, provided that such taxes were not paid or such amounts acquired by means of foreign exchange converted into drachmas on the free market.</TXT>
+              </NP>
+            </ITEM>
+          </LIST>
+        </P>
+        <P>From that analysis it is clear that the main criterion for the application of the legislation in question is the place of permanent residence of the person concerned. It follows also that accounts blocked under the abovementioned provision are opened only in respect of drachmas which have not been obtained from the importation of foreign currency through the free market. On the other hand, if a person resident abroad is the holder of an account denominated in drachmas, the deposits into which are derived from the importation of foreign exchange through the free market, the debtor is not obliged or entitled to lodge funds in a blocked account in order to repay his debt, and secondly the lender has the right to receive the funds directly from the debtor and need not even deposit the funds with a bank. If he does so, the amount in drachmas thus obtained is not credited to a blocked account and may be freely withdrawn to be used in Greece without prior authorization from the Bank of Greece.</P>
+        <P>There therefore exist in Greece two types of accounts for persons who are not resident in Greece, blocked accounts and non-blocked accounts, the only difference residing in the origin of the funds deposited: accounts bearing funds imported through the free market are not blocked and funds deposited on such an account merely cannot be exported without authorization from the Bank of Greece.</P>
+        <P>As far as the concept of<QUOT.START ID="QS0008" REF.END="QE0008" CODE="2018">
+          </QUOT.START>blocked accounts<QUOT.END ID="QE0008" REF.START="QS0008" CODE="2019">
+          </QUOT.END>is concerned, the Greek Government maintains that in the absence of a Community definition, recourse should be had to the Greek legislation, in particular Article 13 of Emergency Law No 1704/1939. Article 52 of the Act of Accession is in fact specifically aimed at the abolition of<QUOT.START ID="QS0009" REF.END="QE0009" CODE="2018">
+          </QUOT.START>blocked accounts<QUOT.END ID="QE0009" REF.START="QS0009" CODE="2019">
+          </QUOT.END>within the meaning of that provision and does not concern other funds which, while subject to a prohibition on exportation, are not blocked under the Emergency Law. Consequently, Article 52 ought to be interpreted as having for its purpose the abrogation in stages of Article 13 of the emergency law as far as Community residents are concerned and not the possibility of transferringabroad the funds released. Those funds may only be transferred under the conditions laid down by the two directives adopted for the implementation of Article 67 of the EEC Treaty when the directives have been transposed into national law.</P>
+        <P>The contrary argument put forward by the Commission would mean that the Hellenic Republic would be in a less favourable position in comparison with the other Member States because from<DATE ISO="19860101">1 January 1986</DATE>Greece would be obliged to allow the export of capital covered by the Emergency Law but not transactions which had been liberalized pursuant to the two directives on the movement of capital.</P>
+        <P>The Greek Government states that from<DATE ISO="19810101">1 January 1981</DATE>it began, in accordance with the timetable laid down in Article 52 of the Act of Accession, progressively to release blocked debts at the request of the persons concerned and after checking their permanent residence. On<DATE ISO="19860101">1 January 1986</DATE>Article 13 of Emergency Law No 1704/1939 would cease to be applicable with regard to persons who proved that they had their permanent residence in the territory of the Community.</P>
+      </NP>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>IV —</NO.P>
+            <TXT>Replies to questions put by the Court</TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <NP>
+        <NO.P>1.</NO.P>
+        <TXT>In reply to a question put by the Court, the<HT TYPE="ITALIC">Commission</HT>explained that Articles 49 to 53 of the Act of Accession (Section 1 of Chapter 2 entitled<QUOT.START ID="QS0010" REF.END="QE0010" CODE="2018">
+          </QUOT.START>Capital movements<QUOT.END ID="QE0010" REF.START="QS0010" CODE="2019">
+          </QUOT.END>) contained provisions authorizing the Hellenic Republic to defer the liberalization of capital movements until<DATE ISO="19851231">31 December 1985</DATE>at the latest, by way of derogation from the provisions of the first and second directives for the implementation of Article 67 of the Treaty. The purpose of Article 52 was therefore to lay down the conditions under which the provisions concerning blocked funds would be applied during the transition period expiring on<DATE ISO="19851231">31 December 1985</DATE>.</TXT>
+        <P>The Commission explains in this regard that the use in one Member State of liquid assets belonging to residents of other Member States is governed, as regards current payments, by Article 106 of the EEC Treaty and, as regards capital operations, by the abovementioned directives which are intended to ensure the progressive liberalization of the transfer (repatriation) of all liquid assets belonging to nonresidents.</P>
+        <P>An interpretation according to which Article 52 of the Act of Accession is aimed at the liberalization of the transfer and use of blocked funds (accounts) for capital operations liberalized in accordance with Community law is supported by all the provisions in Section 1 of Chapter 2 and, in particular, Article 51 (2) concerning the repatriation of the proceeds from the liquidation of real-estate investments situated in Greece. That provision would have no basis if the object of Article 52 was to release blocked funds (accounts) solely for use in Greece.</P>
+        <P>Consequently, the Commission believes that the release of the blocked accounts which existed in Greece is governed by Article 52 of the Act of Accession, so that from<DATE ISO="19860101">1 January 1986</DATE>the Hellenic Republic — like the other Member States — is no longer authorized to maintain or create blocked accounts arising from the proceeds of the liquidation of the operations mentioned in lists A, B and C of the directives.</P>
+      </NP>
+      <NP>
+        <NO.P>2.</NO.P>
+        <TXT>In reply to questions put by the Court, the<HT TYPE="ITALIC">Greek Government</HT>explained that in Greece the only type of account blocked is that governed by Article 13 of Emergency Law No 1704/1939, as amended by Article 7 of Law No 128/1975. In order for the provision at issue to be applicable it was necessary for there to be a debt which did not arise from a transfer through the free market (that is to say, without an obligation of integration into the Greek banking system) and, secondly, for the holder to be permanently resident abroad (irrespective of his nationality). No distinction was made in that respect between blocked accounts belonging to Community residents and such accounts belonging to residents of nonmember countries.</TXT>
+        <P>The Greek Government also stated that, by Administrative Act No 692 of the Bank of Greece of<DATE ISO="19860211">11 February 1986</DATE>, blocked accounts belonging to residents of the EEC were released for foreign exchange purposes in accordance with the timetable laid down in Article 52 of the Act of Accession in so far as personal capital was involved, that is to say capital arising from gifts and endowments of any kind, dowries and inheritances. In addition, by Presidential Decree No 170 of<DATE ISO="19860519">19 May 1986</DATE>, movements of capital between Greece and the other Member States were liberalized, subject to the decision of the Commission of the European Communities of<DATE ISO="19851122">22 November 1985</DATE>authorizing the Hellenic Republic to take certain protective measures pursuant to Article 108 (3) of the EEC Treaty.</P>
+        <P>In consequence, the provisions of Emergency Law No 1704/1939 would in the future no longer be applicable to residents of the Member States of the EEC, provided that the sums owed to them related to a movement of capital liberalized pursuant to Community law or involved personal capital.</P>
+      </NP>
+    </GR.SEQ>
+    <FINAL>
+      <SIGNATURE>
+        <SIGNATORY>
+          <P>U. Everling</P>
+          <P>Judge-Rapporteur</P>
+        </SIGNATORY>
+      </SIGNATURE>
+    </FINAL>
+  </CONTENTS>
+</REPORT.HEARING>

@@ -1,0 +1,448 @@
+<GENERAL NNC="YES" noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.59-20170418.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2019325EN.01001001.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>325</NO.OJ>
+      <YEAR>2019</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>10</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20190930">20190930</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0007</NO.SEQ>
+    <PAGE.FIRST>10</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>14</PAGE.LAST>
+    <PAGE.TOTAL>5</PAGE.TOTAL>
+    <NO.DOC TYPE="OJ">
+      <TXT>2019/C 325/07</TXT>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>Publication of an application for registration of a name pursuant to Article 50(2)(a) of Regulation (EU) No 1151/2012 of the European Parliament and of the Council on quality schemes for agricultural products and foodstuffs</P>
+      <NO.DOC.C>2019/C 325/07</NO.DOC.C>
+    </TI>
+  </TITLE>
+  <CONTENTS>
+    <P>This publication confers the right to oppose the amendment application pursuant to Article 51 of Regulation (EU) No 1151/2012 of the European Parliament and of the Council<NOTE NOTE.ID="E0001" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE">
+        <P>
+          <REF.DOC.OJ COLL="L" DATE.PUB="20121214" NO.OJ="343" PAGE.FIRST="1">OJ L 343, 14.12.2012, p. 1</REF.DOC.OJ>.</P>
+      </NOTE>within three months of the date of this publication.</P>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>SINGLE DOCUMENT</P>
+          <P>
+            <HT TYPE="BOLD">
+              <QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+              </QUOT.START>HUILE D’OLIVE DE PROVENCE<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+              </QUOT.END>
+            </HT>
+          </P>
+          <P>
+            <HT TYPE="BOLD">EU No: PDO-FR-02421 –<DATE ISO="20180528">28.5.2018</DATE>
+            </HT>
+          </P>
+          <P>
+            <HT TYPE="BOLD">PDO ( X ) PGI ( )</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <NP>
+              <NO.P>1.</NO.P>
+              <TXT>
+                <HT TYPE="BOLD">Name(s)</HT>
+              </TXT>
+            </NP>
+          </TI>
+        </TITLE>
+        <P>
+          <QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002">
+          </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0002" REF.START="QS0002">
+          </QUOT.END>
+        </P>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <NP>
+              <NO.P>2.</NO.P>
+              <TXT>
+                <HT TYPE="BOLD">Member State or Third Country</HT>
+              </TXT>
+            </NP>
+          </TI>
+        </TITLE>
+        <P>France</P>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <NP>
+              <NO.P>3.</NO.P>
+              <TXT>
+                <HT TYPE="BOLD">Description of the agricultural product or foodstuff</HT>
+              </TXT>
+            </NP>
+          </TI>
+        </TITLE>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>3.1.</NO.P>
+                <TXT>
+                  <HT TYPE="ITALIC">Type of product</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>Class 1.5. Oils and fats (butter, margarine, oil, etc.)</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>3.2.</NO.P>
+                <TXT>
+                  <HT TYPE="ITALIC">Description of the product to which the name in (1) applies</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>
+            <QUOT.START CODE="2018" ID="QS0003" REF.END="QE0003">
+            </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0003" REF.START="QS0003">
+            </QUOT.END>is a virgin or extra virgin olive oil, obtained solely by mechanical means, which has the following physical and chemical characteristics:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>Peroxide value: ≤ 15 mEqO2/kg when first placed on the market;</P>
+            </ITEM>
+            <ITEM>
+              <P>Fatty acid composition (as a percentage):</P>
+              <P>
+                <TBL COLS="3" NO.SEQ="0001">
+                  <CORPUS>
+                    <ROW TYPE="HEADER">
+                      <CELL COL="1" TYPE="HEADER">Fatty acids</CELL>
+                      <CELL COL="2" TYPE="HEADER">Minimum</CELL>
+                      <CELL COL="3" TYPE="HEADER">maximum</CELL>
+                    </ROW>
+                    <ROW>
+                      <CELL COL="1">
+                        <P>C16:1ω7</P>
+                        <P>(palmitoleic acid)</P>
+                      </CELL>
+                      <CELL COL="2">
+                        <FT TYPE="DECIMAL">0,40</FT>
+                      </CELL>
+                      <CELL COL="3">
+                        <FT TYPE="DECIMAL">1,50</FT>
+                      </CELL>
+                    </ROW>
+                    <ROW>
+                      <CELL COL="1">
+                        <P>C17:1ω8</P>
+                        <P>(margaroleic acid)</P>
+                      </CELL>
+                      <CELL COL="2">
+                        <FT TYPE="DECIMAL">0,09</FT>
+                      </CELL>
+                      <CELL COL="3">
+                        <FT TYPE="DECIMAL">0,45</FT>
+                      </CELL>
+                    </ROW>
+                    <ROW>
+                      <CELL COL="1">
+                        <P>C18:1ω7</P>
+                        <P>(vaccenic acid)</P>
+                      </CELL>
+                      <CELL COL="2">
+                        <FT TYPE="DECIMAL">1,25</FT>
+                      </CELL>
+                      <CELL COL="3">
+                        <FT TYPE="DECIMAL">3,30</FT>
+                      </CELL>
+                    </ROW>
+                    <ROW>
+                      <CELL COL="1">
+                        <P>C18:2ω6</P>
+                        <P>(linoleic acid)</P>
+                      </CELL>
+                      <CELL COL="2">
+                        <FT TYPE="DECIMAL">5,50</FT>
+                      </CELL>
+                      <CELL COL="3">
+                        <FT TYPE="DECIMAL">14,00</FT>
+                      </CELL>
+                    </ROW>
+                  </CORPUS>
+                </TBL>
+              </P>
+            </ITEM>
+          </LIST>
+          <P>
+            <QUOT.START CODE="2018" ID="QS0004" REF.END="QE0004">
+            </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0004" REF.START="QS0004">
+            </QUOT.END>obtained from olives milled within a short time (less than four days) after being harvested, has the following additional chemical and organoleptic characteristics:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>acidity: ≤<FT TYPE="DECIMAL">0,5</FT>% oleic acid content</P>
+            </ITEM>
+            <ITEM>
+              <P>median bitterness: between<FT TYPE="DECIMAL">1,5</FT>and<FT TYPE="DECIMAL">3,5</FT>
+              </P>
+            </ITEM>
+            <ITEM>
+              <P>median pungency: between<FT TYPE="DECIMAL">1,5</FT>and<FT TYPE="DECIMAL">3,5</FT>
+              </P>
+            </ITEM>
+            <ITEM>
+              <P>aromas perceptible to the nose and palate: fresh grass and/or raw artichoke</P>
+            </ITEM>
+          </LIST>
+          <P>
+            <QUOT.START CODE="2018" ID="QS0005" REF.END="QE0005">
+            </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0005" REF.START="QS0005">
+            </QUOT.END>followed by the words<QUOT.START CODE="2018" ID="QS0006" REF.END="QE0006">
+            </QUOT.START>matured olives<QUOT.END CODE="2019" ID="QE0006" REF.START="QS0006">
+            </QUOT.END>, obtained by milling matured olives (milled 4-10 days after harvesting), has the following additional chemical and organoleptic characteristics:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>acidity: between<FT TYPE="DECIMAL">0,4</FT>% and<FT TYPE="DECIMAL">1,5</FT>% oleic acid content</P>
+            </ITEM>
+            <ITEM>
+              <P>median bitterness: ≤ 1</P>
+            </ITEM>
+            <ITEM>
+              <P>median pungency: ≤ 1</P>
+            </ITEM>
+            <ITEM>
+              <P>aromas perceptible to the nose and palate: black olives, candied fruit, forest and/or toast.</P>
+            </ITEM>
+          </LIST>
+          <P>The values for the<QUOT.START CODE="2018" ID="QS0007" REF.END="QE0007">
+            </QUOT.START>bitter<QUOT.END CODE="2019" ID="QE0007" REF.START="QS0007">
+            </QUOT.END>and<QUOT.START CODE="2018" ID="QS0008" REF.END="QE0008">
+            </QUOT.START>pungent<QUOT.END CODE="2019" ID="QE0008" REF.START="QS0008">
+            </QUOT.END>attributes refer to the IOC method (International Olive Council).</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>3.3.</NO.P>
+                <TXT>
+                  <HT TYPE="ITALIC">Feed (for products of animal origin only) and raw materials (for processed products only)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>
+            <QUOT.START CODE="2018" ID="QS0009" REF.END="QE0009">
+            </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0009" REF.START="QS0009">
+            </QUOT.END>is produced from olives or olive oils of the following varieties:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>Aglandau, Bouteillan, Cayon and Salonenque, accounting for at least 80 % in the groves covered by the designation of origin, with at least 30 % Aglandau;</P>
+            </ITEM>
+            <ITEM>
+              <P>Picholine, Grossanne, Tanche, Brun, Cayets, Ribiers, Cayanne, Verdale des Bouches-du-Rhône and old local varieties (trees planted before the frost of 1956, of which there are many within the geographical area), accounting for no more than 20 % in groves covered by the designation of origin.</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>3.4.</NO.P>
+                <TXT>
+                  <HT TYPE="ITALIC">Specific steps in production that must take place in the defined geographical area</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>All operations, from olive growing to olive oil production, take place within the geographical area.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>3.5.</NO.P>
+                <TXT>
+                  <HT TYPE="ITALIC">Specific rules concerning slicing, grating, packaging, etc. of the product to which the registered name refers</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>—</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>3.6.</NO.P>
+                <TXT>
+                  <HT TYPE="ITALIC">Specific rules concerning labelling of the product to which the registered name refers</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>In addition to the compulsory information required by the rules on the labelling and presentation of foodstuffs, the labelling of oils bearing the designation of origin<QUOT.START CODE="2018" ID="QS0010" REF.END="QE0010">
+            </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0010" REF.START="QS0010">
+            </QUOT.END>must include the following:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>the name (i.e. the designation of origin)<QUOT.START CODE="2018" ID="QS0011" REF.END="QE0011">
+                </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0011" REF.START="QS0011">
+                </QUOT.END>, immediately followed, where applicable, by the words<QUOT.START CODE="2018" ID="QS0012" REF.END="QE0012">
+                </QUOT.START>matured olives<QUOT.END CODE="2019" ID="QE0012" REF.START="QS0012">
+                </QUOT.END>, written in characters that are at least half the size of the characters in which the name appears,</P>
+            </ITEM>
+            <ITEM>
+              <P>the words<QUOT.START CODE="2018" ID="QS0013" REF.END="QE0013">
+                </QUOT.START>appellation d’origine protégée<QUOT.END CODE="2019" ID="QE0013" REF.START="QS0013">
+                </QUOT.END>[protected designation of origin] or<QUOT.START CODE="2018" ID="QS0014" REF.END="QE0014">
+                </QUOT.START>A.O.P.<QUOT.END CODE="2019" ID="QE0014" REF.START="QS0014">
+                </QUOT.END>[PDO]</P>
+            </ITEM>
+          </LIST>
+          <P>These details must all be in the same visual field and on the same label. They must be in lettering which is clear, legible, indelible and sufficiently large to stand out clearly against the background on which it is printed, so as to be clearly distinguishable from all other written or graphic information.</P>
+        </GR.SEQ>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <NP>
+              <NO.P>4.</NO.P>
+              <TXT>
+                <HT TYPE="BOLD">Concise definition of the geographical area</HT>
+              </TXT>
+            </NP>
+          </TI>
+        </TITLE>
+        <P>The geographical area defined for the production of<QUOT.START CODE="2018" ID="QS0015" REF.END="QE0015">
+          </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0015" REF.START="QS0015">
+          </QUOT.END>extends across seven departments and comprises 464 communes (two of them partially). It covers the territory of:</P>
+        <LIST TYPE="DASH">
+          <ITEM>
+            <P>All communes in the department of Alpes de Haute-Provence, except the following: Annot, Banonf, Barras, Barrême, Bayons, Bellafaire, Bevons, Bras-d’Asse, Braux, La Bréole, Le Brusquet, Le Caire, Castellane, Val-de-Chalvagne, Châteaufort, Châteauneuf-Miravail, Chaudon-Norante, Clamensane, Claret, La Condamine-Châtelard Curbans, Curel, Draix, Entrages, Faucon-du-Caire, Faucon-de-Barcelonnette, Le Fugeret, La Garde, Hautes-Duyes L’Hospitalet, Lardiers, Le Lauzet-Ubaye, Marcoux, Melve, Mison, Montclar, Montsalier, Nibles, Noyers-sur-Jabron, Les Ormergues, Piégut, Pontis, Revest-du-Bion, La Robine-sur-Galabre, La Rochegiron, La Rochette, Saint-André-les-Alpes, Saint-Benoît, Saint-Etienne-les-Orgues, Saint-Jacques, Saint-Julien-du-Verdon, Saint-Vincent-les-Forts, Saint-Vincent-sur-Jabon, Saumane, Sausses, Seyne, Sigoyer, Thèze, Thoard, Turriers, Valbelle, Valernes, Vaumeilh and Venterol.</P>
+          </ITEM>
+          <ITEM>
+            <P>The following communes in the department of Alpes-Maritimes: Auvare, La Croix-sur-Roudoule, Puget-Rostan, Puget-Théniers, Rigaud and Touët-sur-Var.</P>
+          </ITEM>
+          <ITEM>
+            <P>All communes in the department of Bouches-du-Rhône, except the following communes or parts thereof: Arles (in part), Cabannes, Carnoux-en-Provence, Fos-sur-Mer, Maillane, Marignane, Mollégès, Port-Saint-Louis-du-Rhône, Rognonas, Saint-Andiol, Saint-Pierre-de-Mézoarques, Saint-Victoret, Saintes-Maries-de-la-Mer and Verquières.</P>
+          </ITEM>
+          <ITEM>
+            <P>The following commune in the department of Drôme: Rochegude.</P>
+          </ITEM>
+          <ITEM>
+            <P>The following communes in the department of Gard: Les Angles, Pujaut, Roquemaure, Sauveterre, Villeneuve-Les-Avignon, Tavel, Lirac, Saint-Laurent-des-Arbres and Saint-Geniès-de-Comolas.</P>
+          </ITEM>
+          <ITEM>
+            <P>All communes in the department of Var, except the following: Bargème, La Bastide, Le Bourguet, Brovès, Châteauvieux, Comps-sur-Artuby, La Martre, Plan-d’Aups-Sainte-Baume, La Roque-Esclapon, Trigance and Vérignon.</P>
+          </ITEM>
+          <ITEM>
+            <P>All communes in the department of Vaucluse, except the following communes or parts thereof: Althen-des-Paluds, Aurel, Auribeau, Brantes, Buisson, Buoux, Caderousse, Cairanne, Castellet, Crestet, Entraigues-sur-la-Sorgue, Entrechaux, Faucon, Grillon, Lagarde-d’Apt, Lamotte-du-Rhône, Lapalud, Malaucene (in part), Montfavet, Monieux, Le Pontet, Puymeras, Rasteau, Richerenches, Roaix, Saint-Christol, Saint-Marcellin-lès-Vaison, Saint-Romain-en-Viennois, Saint-Roman-de-Malegarde, Saint-Trinit, Sault, Savoillan, Seguret, Sivergues, Vaison-la-Romaine, Valreas, Villedieu and Visan.</P>
+          </ITEM>
+        </LIST>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <NP>
+              <NO.P>5.</NO.P>
+              <TXT>
+                <HT TYPE="BOLD">Link with the geographical area</HT>
+              </TXT>
+            </NP>
+          </TI>
+        </TITLE>
+        <P>The chemical and organoleptic characteristics of<QUOT.START CODE="2018" ID="QS0016" REF.END="QE0016">
+          </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0016" REF.START="QS0016">
+          </QUOT.END>are essentially due to the varietal composition of the oil, which is determined by natural factors in the geographical area and the local production know-how.</P>
+        <P>The geographical area covers all the main areas of relief in the Provence region, excluding the High and Middle Alps, where the environmental conditions are not suitable for olive growing. The area is bordered by the Mediterranean sea to the south, by the Rhône to the west, and by the Vaucluse plateaux,<HT TYPE="ITALIC">montagne de Lure</HT>,<HT TYPE="ITALIC">Préalpes de Dignes</HT>and<HT TYPE="ITALIC">Plans de Provence</HT>to the north, while its eastern boundary is marked by the Signe Valley and the Esterel Massif.</P>
+        <P>The landscape is rugged, featuring ridges topped with formidable limestone formations and sites located on sunward-facing slopes that are suitable for olive growing, though they are sometimes quite small.</P>
+        <P>The Provençal olive groves are planted on soils that are mostly neutral or carbonated, with a high gravel content. They are either loamy sand or sandy loam, or else gravelly, reddish-brown, well-drained sandy clay soils.</P>
+        <P>
+          <QUOT.START CODE="2018" ID="QS0017" REF.END="QE0017">
+          </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0017" REF.START="QS0017">
+          </QUOT.END>has the following specific characteristics:</P>
+        <LIST TYPE="DASH">
+          <ITEM>
+            <P>It is chiefly composed of the Aglandau (at least 20 %), Bouteillan, Cayon and Salonenque varieties. This is what distinguishes it from olive oils produced in neighbouring regions, where these varieties are either not grown (the Nice, Nyons, Nîmes and Languedoc basins) or blended in different proportions (the basins of the Baux de Provence Valley, Aix-en-Provence and Haute-Provence).</P>
+          </ITEM>
+          <ITEM>
+            <P>It has a specific fatty acid composition, as shown in point 3.2.</P>
+          </ITEM>
+          <ITEM>
+            <P>It has the following organoleptic characteristics:</P>
+            <P>
+              <LIST TYPE="DASH">
+                <ITEM>
+                  <P>either a distinct yet moderate bitterness and pungency and aromas of fresh grass and/or raw artichoke;</P>
+                </ITEM>
+                <ITEM>
+                  <P>or a near lack of bitterness and pungency, with aromas of black olive, candied fruit, forest and/or toast;</P>
+                </ITEM>
+                <ITEM>
+                  <P>its acidity, expressed as oleic acid, is either below<FT TYPE="DECIMAL">0,5</FT>% or between<FT TYPE="DECIMAL">0,4</FT>% and<FT TYPE="DECIMAL">1,5</FT>%.</P>
+                </ITEM>
+              </LIST>
+            </P>
+          </ITEM>
+        </LIST>
+        <P>The characteristics of the geographical area determine the varietal composition of the oil. The production area, except for its coastal fringe, is a peripheral olive-growing belt. This region, which lies at the northernmost limit for olive growing (up to an altitude of 750-800 m) has a<QUOT.START CODE="2018" ID="QS0018" REF.END="QE0018">
+          </QUOT.START>Provençal<QUOT.END CODE="2019" ID="QE0018" REF.START="QS0018">
+          </QUOT.END>Mediterranean climate (a dry summer season sandwiched between two rainy seasons, with high annual sunshine). Additional features of the climate are the periods of heavy frost that mark the history of olive growing in Provence, and the strong, dominant<QUOT.START CODE="2018" ID="QS0019" REF.END="QE0019">
+          </QUOT.START>mistral<QUOT.END CODE="2019" ID="QE0019" REF.START="QS0019">
+          </QUOT.END>wind, which cools and purifies the air, making the conditions healthier and more suitable for olive growing. These conditions also oblige the growers to select the best-adapted varieties. The Provençal olive groves are thus planted with four main varieties: Aglandau, whose maximum range lies within the geographical area, but also Salonenque, Bouteillan and Cayon. These varieties, due to the timing of their flowering periods (from relatively to very late) and their natural resistance to cold (which ranges from moderate to high) are especially well adapted to the cool temperatures found in the production area. The olive groves are located in the hills and foothills, where exposure, soil and natural drainage conditions are good. Due to the strong wind, the olive trees are planted in pedestrian orchards, so they are better protected. The soils, which are chiefly limestone and gravelly, are well aerated while ensuring a sufficient water supply in periods of dry weather.</P>
+        <P>The northerly location of the geographical area, with its heightened risk of frost, is also the reason why the olives are harvested as soon as they start turning colour (from bright green to yellow) and before they are completely ripe.</P>
+        <P>The production methods are based on an age-old practice whereby the olives are milled either shortly after harvesting or after being matured for several days in anaerobic conditions.</P>
+        <P>Thus:</P>
+        <LIST TYPE="DASH">
+          <ITEM>
+            <P>The specific fatty acid composition of this olive oil, defined in point 3.2, is determined by its varietal composition. It is a blend of four varieties: Aglandau, Bouteillan, Cayon and Salonenque, in proportions that vary depending on the area and the grower’s preference, with at least 20 % Aglandau.</P>
+          </ITEM>
+          <ITEM>
+            <P>Its bitterness and pungency levels are determined by its varietal composition but also the stage at which the olives are harvested (when they are turning colour). However, when the grower chooses to let the olives mature for several days before milling, the oil loses almost all its bitterness and pungency.</P>
+          </ITEM>
+          <ITEM>
+            <P>The oil’s principal fresh grass and/or raw artichoke aromas also come from its varietal composition. However, when the olives are matured for several days before milling, the oil acquires specific black olive, candied fruit, forest and/or toast aromas, as indicated in point 3.2.</P>
+          </ITEM>
+          <ITEM>
+            <P>
+              <QUOT.START CODE="2018" ID="QS0020" REF.END="QE0020">
+              </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0020" REF.START="QS0020">
+              </QUOT.END>followed by the words<QUOT.START CODE="2018" ID="QS0021" REF.END="QE0021">
+              </QUOT.START>matured olives<QUOT.END CODE="2019" ID="QE0021" REF.START="QS0021">
+              </QUOT.END>has minimal acidity due to the temperature increase the olives undergo when they are matured before milling;</P>
+          </ITEM>
+          <ITEM>
+            <P>Furthermore, the traditional oil extraction techniques, involving only mechanical centrifugal extraction or pressing, at temperatures that are below 30 °C throughout the process, preserve the original aromas of the varieties used, as indicated in point 3.2, and prevent the breakdown of the fatty acids that are specific to<QUOT.START CODE="2018" ID="QS0022" REF.END="QE0022">
+              </QUOT.START>Huile d’olive de Provence<QUOT.END CODE="2019" ID="QE0022" REF.START="QS0022">
+              </QUOT.END>.</P>
+          </ITEM>
+        </LIST>
+      </GR.SEQ>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Publication reference of the specification</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>(the second subparagraph of Article 6(1) of the Regulation)</P>
+      <P>https://extranet.inao.gouv.fr/fichier/CDC-HOProvence.pdf</P>
+    </GR.SEQ>
+  </CONTENTS>
+</GENERAL>

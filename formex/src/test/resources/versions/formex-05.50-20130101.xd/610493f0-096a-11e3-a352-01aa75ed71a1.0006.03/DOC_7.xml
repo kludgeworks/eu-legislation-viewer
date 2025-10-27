@@ -1,0 +1,474 @@
+<GENERAL noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.50-20130101.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="CA2013239EN.01005301.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>239A</NO.OJ>
+      <YEAR>2013</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>53</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20130820">20130820</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0002</NO.SEQ>
+    <PAGE.FIRST>53</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>55</PAGE.LAST>
+    <PAGE.TOTAL>3</PAGE.TOTAL>
+    <NO.DOC TYPE="OJ">
+      <TXT>2013/C 239 A/02</TXT>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Common catalogue of varieties of vegetable species</HT>
+      </P>
+      <P>sixth supplement to the 31st complete edition</P>
+      <NO.DOC.C>2013/C 239 A/02</NO.DOC.C>
+    </TI>
+  </TITLE>
+  <CONTENTS>
+    <TOC>
+      <TOC.HD>
+        <TOC.HD.CONT>
+          <P>
+            <HT TYPE="BOLD">CONTENTS</HT>
+          </P>
+        </TOC.HD.CONT>
+        <TOC.HD.REF>Page</TOC.HD.REF>
+      </TOC.HD>
+      <TOC.BLK>
+        <TOC.ITEM>
+          <ITEM.CONT>Legend</ITEM.CONT>
+          <ITEM.REF>56</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <ITEM.CONT>List of vegetable species</ITEM.CONT>
+          <ITEM.REF>57</ITEM.REF>
+        </TOC.ITEM>
+      </TOC.BLK>
+      <TOC.BLK>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>1.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Allium cepa</HT>L.</ITEM.CONT>
+            <ITEM.REF>57</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Allium cepa L.</HT>Aggregatum group - Shallot</ITEM.CONT>
+            <ITEM.REF>57</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Allium cepa L.</HT>Cepa group - Onion, Echalion</ITEM.CONT>
+            <ITEM.REF>57</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.ITEM>
+          <NO.ITEM>3.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Allium porrum</HT>L. Leek</ITEM.CONT>
+          <ITEM.REF>58</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>5.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Allium schoenoprasum</HT>L. Chives</ITEM.CONT>
+          <ITEM.REF>58</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>7.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Apium graveolens</HT>L. Celery</ITEM.CONT>
+            <ITEM.REF>58</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Apium graveolens L.</HT>Celery</ITEM.CONT>
+            <ITEM.REF>58</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Apium graveolens L.</HT>Celeriac</ITEM.CONT>
+            <ITEM.REF>58</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.ITEM>
+          <NO.ITEM>8.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Asparagus officinalis</HT>L. Asparagus</ITEM.CONT>
+          <ITEM.REF>58</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>9.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Beta vulgaris</HT>L.</ITEM.CONT>
+            <ITEM.REF>58</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Beta vulgaris L.</HT>Beetroot, including Cheltenham beet</ITEM.CONT>
+            <ITEM.REF>58</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Beta vulgaris L.</HT>Spinach beet or Chard</ITEM.CONT>
+            <ITEM.REF>59</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>10.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica oleracea</HT>L.</ITEM.CONT>
+            <ITEM.REF>59</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica oleracea L.</HT>Curly kale</ITEM.CONT>
+            <ITEM.REF>59</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica oleracea L.</HT>Cauliflower</ITEM.CONT>
+            <ITEM.REF>59</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>3</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica oleracea L.</HT>Sprouting broccoli / Calabrese</ITEM.CONT>
+            <ITEM.REF>59</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>4</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica oleracea L.</HT>Brussels sprouts</ITEM.CONT>
+            <ITEM.REF>60</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>5</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica oleracea L.</HT>Savoy cabbage</ITEM.CONT>
+            <ITEM.REF>60</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>6</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica oleracea L.</HT>White cabbage</ITEM.CONT>
+            <ITEM.REF>60</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>7</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica oleracea L.</HT>Red cabbage</ITEM.CONT>
+            <ITEM.REF>61</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>8</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica oleracea L.</HT>Kohlrabi</ITEM.CONT>
+            <ITEM.REF>61</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>11.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica rapa</HT>L.</ITEM.CONT>
+            <ITEM.REF>62</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica rapa L.</HT>Chinese cabbage</ITEM.CONT>
+            <ITEM.REF>62</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Brassica rapa L.</HT>Turnip</ITEM.CONT>
+            <ITEM.REF>62</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.ITEM>
+          <NO.ITEM>12.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Capsicum annuum</HT>L. Chili, Pepper</ITEM.CONT>
+          <ITEM.REF>62</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>13.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cichorium endivia</HT>L. Endive</ITEM.CONT>
+            <ITEM.REF>63</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cichorium endivia L.</HT>Curled-leaved endive</ITEM.CONT>
+            <ITEM.REF>63</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cichorium endivia L.</HT>Plain-leaved endive</ITEM.CONT>
+            <ITEM.REF>63</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>14.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cichorium intybus</HT>L. Chicory</ITEM.CONT>
+            <ITEM.REF>64</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cichorium intybus L.</HT>Witloof chicory</ITEM.CONT>
+            <ITEM.REF>64</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cichorium intybus L.</HT>Large-leaved chicory / Italian chicory</ITEM.CONT>
+            <ITEM.REF>64</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>3</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cichorium intybus L.</HT>Industrial chicory</ITEM.CONT>
+            <ITEM.REF>64</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.ITEM>
+          <NO.ITEM>15.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Citrullus lanatus (Thunb.) Matsum. et Nakai</HT>Watermelon</ITEM.CONT>
+          <ITEM.REF>64</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>16.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Cucumis melo</HT>L. Melon</ITEM.CONT>
+          <ITEM.REF>65</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>17.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cucumis sativus</HT>L. Cucumber/Gherkin</ITEM.CONT>
+            <ITEM.REF>66</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cucumis sativus L.</HT>Cucumber</ITEM.CONT>
+            <ITEM.REF>66</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cucumis sativus L.</HT>Gherkin</ITEM.CONT>
+            <ITEM.REF>66</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.ITEM>
+          <NO.ITEM>18.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Cucurbita Maxima Duchesne</HT>Gourd</ITEM.CONT>
+          <ITEM.REF>67</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>19.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Cucurbita pepo</HT>L. Marrow or Courgette</ITEM.CONT>
+          <ITEM.REF>67</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>20.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cynara cardunculus</HT>L.</ITEM.CONT>
+            <ITEM.REF>68</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cynara cardunculus L.</HT>Globe artichoke</ITEM.CONT>
+            <ITEM.REF>68</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Cynara cardunculus L.</HT>Cardoon</ITEM.CONT>
+            <ITEM.REF>68</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>21.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Daucus carota</HT>L. Carrot</ITEM.CONT>
+            <ITEM.REF>68</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Daucus carota L.</HT>Carrot</ITEM.CONT>
+            <ITEM.REF>68</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Daucus carota L.</HT>Fodder carrot</ITEM.CONT>
+            <ITEM.REF>68</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.ITEM>
+          <NO.ITEM>22.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Foeniculum vulgare</HT>Mill. Fennel</ITEM.CONT>
+          <ITEM.REF>69</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>23.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Lactuca sativa</HT>L. Lettuce</ITEM.CONT>
+          <ITEM.REF>69</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>24.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Lycopersicon esculentum</HT>Mill. Tomato</ITEM.CONT>
+          <ITEM.REF>70</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>25.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Petroselinum crispum</HT>(Mill.) Nyman ex A. W. Hill Parsley</ITEM.CONT>
+          <ITEM.REF>73</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>27.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Phaseolus vulgaris</HT>L. French bean</ITEM.CONT>
+            <ITEM.REF>74</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Phaseolus vulgaris L.</HT>Dwarf French bean</ITEM.CONT>
+            <ITEM.REF>74</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Phaseolus vulgaris L.</HT>Climbing French bean</ITEM.CONT>
+            <ITEM.REF>74</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>28.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Pisum sativum</HT>L. (partim) Pea</ITEM.CONT>
+            <ITEM.REF>75</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Pisum sativum L. (partim)</HT>Wrinkled pea</ITEM.CONT>
+            <ITEM.REF>75</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Pisum sativum L. (partim)</HT>Round pea</ITEM.CONT>
+            <ITEM.REF>76</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>3</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Pisum sativum L. (partim)</HT>Sugar pea</ITEM.CONT>
+            <ITEM.REF>76</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>29.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Raphanus sativus</HT>L.</ITEM.CONT>
+            <ITEM.REF>76</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Raphanus sativus L.</HT>Radish</ITEM.CONT>
+            <ITEM.REF>76</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Raphanus sativus L.</HT>Black radish</ITEM.CONT>
+            <ITEM.REF>77</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+        <TOC.ITEM>
+          <NO.ITEM>32.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Solanum melongena</HT>L. Aubergine / Egg plant</ITEM.CONT>
+          <ITEM.REF>77</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>33.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Spinacia oleracea</HT>L. Spinach</ITEM.CONT>
+          <ITEM.REF>77</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>35.</NO.ITEM>
+          <ITEM.CONT>
+            <HT TYPE="ITALIC">Vicia faba</HT>L. (partim) Broad bean</ITEM.CONT>
+          <ITEM.REF>77</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.BLK>
+          <TOC.ITEM>
+            <NO.ITEM>36.</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Zea mays</HT>L. (partim)</ITEM.CONT>
+            <ITEM.REF>78</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>1</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Zea mays L.</HT>Sweet corn</ITEM.CONT>
+            <ITEM.REF>78</ITEM.REF>
+          </TOC.ITEM>
+          <TOC.ITEM>
+            <NO.ITEM>2</NO.ITEM>
+            <ITEM.CONT>
+              <HT TYPE="ITALIC">Zea mays L.</HT>Popcorn</ITEM.CONT>
+            <ITEM.REF>78</ITEM.REF>
+          </TOC.ITEM>
+        </TOC.BLK>
+      </TOC.BLK>
+    </TOC>
+  </CONTENTS>
+</GENERAL>

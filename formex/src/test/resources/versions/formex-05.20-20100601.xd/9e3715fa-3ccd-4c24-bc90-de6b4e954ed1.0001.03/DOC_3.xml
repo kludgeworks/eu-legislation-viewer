@@ -1,0 +1,520 @@
+<ANNEX noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.20-20100601.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2004160EN.01013801.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>160</NO.OJ>
+      <YEAR>2004</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>138</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20040428">20040428</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0001.0001.0001.0001</NO.SEQ>
+    <PAGE.FIRST>142</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>147</PAGE.LAST>
+    <PAGE.TOTAL>6</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <QUOT.START ID="QS0001" REF.END="QE0001" CODE="0022">
+        </QUOT.START>ANNEX 1</P>
+    </TI>
+    <STI>
+      <P>to the Agreement between the European Community and the United Mexican States on the mutual recognition and protection of designations for spirit drinks</P>
+    </STI>
+  </TITLE>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>1.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Rum</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Rhum de la Martinique / Rhum de la Martinique traditionnel</P>
+      <P>Rhum de la Guadeloupe / Rhum de la Guadeloupe traditionnel</P>
+      <P>Rhum de la Réunion / Rhum de la Réunion traditionnel</P>
+      <P>Rhum de la Guyane / Rhum de la Guyane traditionnel</P>
+      <P>Ron de Malaga</P>
+      <P>Ron de Granada</P>
+      <P>Rum da Madeira</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>2. (a)</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Whisky</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Scotch Whisky</P>
+      <P>Irish Whisky</P>
+      <P>Whisky español</P>
+      <P>(These designations may be supplemented by the terms<QUOT.START ID="QS0002" REF.END="QE0002" CODE="0022">
+        </QUOT.START>malt<QUOT.END ID="QE0002" REF.START="QS0002" CODE="0022">
+        </QUOT.END>or<QUOT.START ID="QS0003" REF.END="QE0003" CODE="0022">
+        </QUOT.START>grain<QUOT.END ID="QE0003" REF.START="QS0003" CODE="0022">
+        </QUOT.END>)</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>2. (b)</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Whiskey</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Irish Whiskey</P>
+      <P>Uisce Beatha Eireannach /Irish Whiskey</P>
+      <P>(These designations may be supplemented by the terms<QUOT.START ID="QS0004" REF.END="QE0004" CODE="0022">
+        </QUOT.START>Pot Still<QUOT.END ID="QE0004" REF.START="QS0004" CODE="0022">
+        </QUOT.END>)</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>3.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Grain spirit</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Eau-de-vie de seigle de marque nationale luxembourgeoise</P>
+      <P>Korn</P>
+      <P>Kornbrand</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>4.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Wine spirit</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Eau-de-vie de Cognac</P>
+      <P>Eau-de-vie des Charentes</P>
+      <P>Cognac</P>
+      <P>(The designation<QUOT.START ID="QS0005" REF.END="QE0005" CODE="0022">
+        </QUOT.START>Cognac<QUOT.END ID="QE0005" REF.START="QS0005" CODE="0022">
+        </QUOT.END>may be supplemented by the following terms:</P>
+      <LIST TYPE="DASH">
+        <ITEM>
+          <P>Fine</P>
+        </ITEM>
+        <ITEM>
+          <P>Grande Fine Champagne</P>
+        </ITEM>
+        <ITEM>
+          <P>Grande Champagne</P>
+        </ITEM>
+        <ITEM>
+          <P>Petite Champagne</P>
+        </ITEM>
+        <ITEM>
+          <P>Petite Fine Champagne</P>
+        </ITEM>
+        <ITEM>
+          <P>Fine Champagne</P>
+        </ITEM>
+        <ITEM>
+          <P>Borderies</P>
+        </ITEM>
+        <ITEM>
+          <P>Fins Bois</P>
+        </ITEM>
+        <ITEM>
+          <P>Bons Bois)</P>
+        </ITEM>
+      </LIST>
+      <P>Fine Bordeaux</P>
+      <P>Armagnac</P>
+      <P>Bas-Armagnac</P>
+      <P>Haut-Armagnac</P>
+      <P>Ténarèse</P>
+      <P>Eau-de-vie de vin de la Marne</P>
+      <P>Eau-de-vie de vin originaire d&apos;Aquitaine</P>
+      <P>Eau-de-vie de vin de Bourgogne</P>
+      <P>Eau-de-vie de vin originaire du Centre-Est</P>
+      <P>Eau-de-vie de vin originaire de Franche-Comté</P>
+      <P>Eau-de-vie de vin originaire du Bugey</P>
+      <P>Eau-de-vie de vin de Savoie</P>
+      <P>Eau-de-vie de vin originaire des Coteaux de la Loire</P>
+      <P>Eau-de-vie de vin des Côtes-du-Rhône</P>
+      <P>Eau-de-vie de vin originaire de Provence</P>
+      <P>Eau-de-vie de Faugères / Faugères</P>
+      <P>Eau-de-vie de vin originaire du Languedoc</P>
+      <P>Aguardente do Minho</P>
+      <P>Aguardente do Douro</P>
+      <P>Aguardente da Beira Interior</P>
+      <P>Aguardente da Bairrada</P>
+      <P>Aguardente do Oeste</P>
+      <P>Aguardente do Ribatejo</P>
+      <P>Aguardente do Alentejo</P>
+      <P>Aguardente do Algarve</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>5.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Brandy</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Brandy de Jerez</P>
+      <P>Brandy del Penedés</P>
+      <P>Brandy italiano</P>
+      <P>Brandy Αττικής / Brandy of Attica</P>
+      <P>Brandy Πελλοπονήσου / Brandy of the Peloponnese</P>
+      <P>Brandy Κεντρικής Ελλάδας / Brandy of Central Greece</P>
+      <P>Deutscher Weinbrand</P>
+      <P>Wachauer Weinbrand</P>
+      <P>Weinbrand Dürnstein</P>
+      <P>Karpatské brandy špeciál</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>6.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Grape marc spirit</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Eau-de-vie de marc de Champagne or</P>
+      <P>Marc de Champagne</P>
+      <P>Eau-de-vie de marc originaire d&apos;Aquitaine</P>
+      <P>Eau-de-vie de marc de Bourgogne</P>
+      <P>Eau-de-vie de marc originaire du Centre-Est</P>
+      <P>Eau-de-vie de marc originaire de Franche-Comté</P>
+      <P>Eau-de-vie de marc originaire de Bugey</P>
+      <P>Eau-de-vie de marc originaire de Savoie</P>
+      <P>Marc de Bourgogne</P>
+      <P>Marc de Savoie</P>
+      <P>Marc d&apos;Auvergne</P>
+      <P>Eau-de-vie de marc originaire des Coteaux de la Loire</P>
+      <P>Eau-de-vie de marc des Côtes du Rhône</P>
+      <P>Eau-de-vie de marc originaire de Provence</P>
+      <P>Eau-de-vie de marc originaire du Languedoc</P>
+      <P>Marc d&apos;Alsace Gewürztraminer</P>
+      <P>Marc de Lorraine</P>
+      <P>Bagaceira do Minho</P>
+      <P>Bagaceira do Douro</P>
+      <P>Bagaceira da Beira Interior</P>
+      <P>Bagaceira da Bairrada</P>
+      <P>Bagaceira do Oeste</P>
+      <P>Bagaceira do Ribatejo</P>
+      <P>Bagaceiro do Alentejo</P>
+      <P>Bagaceira do Algarve</P>
+      <P>Orujo gallego</P>
+      <P>Grappa</P>
+      <P>Grappa di Barolo</P>
+      <P>Grappa piemontese / Grappa del Piemonte</P>
+      <P>Grappa lombarda / Grappa di Lombardia</P>
+      <P>Grappa trentina / Grappa del Trentino</P>
+      <P>Grappa friulana / Grappa del Friuli</P>
+      <P>Grappa veneta / Grappa del Veneto</P>
+      <P>Südtiroler Grappa / Grappa dell&apos;Alto Adige</P>
+      <P>Τσικουδιά Κρήτης / Tsikoudia of Crete</P>
+      <P>Τσίπουρο Μακεδονίας / Tsipouro of Macedonia</P>
+      <P>Τσίπουρο Θεσσαλίας / Tsipouro of Thessaly</P>
+      <P>Τσίπουρο Τυρνάβου / Tsipouro of Tyrnavos</P>
+      <P>Τσιπουρο Τυρναβου / Tsipouro of Tyrnavos</P>
+      <P>Eau-de-vie de marc de marque nationale luxembourgeoise</P>
+      <P>Zivania</P>
+      <P>Pálinka</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>7.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Fruit spirit</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Schwarzwälder Kirschwasser</P>
+      <P>Schwarzwälder Himbeergeist</P>
+      <P>Schwarzwälder Mirabellenwasser</P>
+      <P>Schwarzwälder Williamsbirne</P>
+      <P>Schwarzwälder Zwetschgenwasser</P>
+      <P>Fränkisches Zwetschgenwasser</P>
+      <P>Fränkisches Kirschwasser</P>
+      <P>Fränkischer Obstler</P>
+      <P>Mirabelle de Lorraine</P>
+      <P>Kirsch d&apos;Alsace</P>
+      <P>Quetsch d&apos;Alsace</P>
+      <P>Framboise d&apos;Alsace</P>
+      <P>Mirabelle d&apos;Alsace</P>
+      <P>Kirsch de Fougerolles</P>
+      <P>Südtiroler Williams / Williams dell&apos;Alto Adige</P>
+      <P>Südtiroler Aprikot / Südtiroler</P>
+      <P>Marille / Aprikot dell&apos;Alto Adige /Marille dell&apos;Alto Adige</P>
+      <P>Südtiroler Kirsch / Kirsch dell&apos;Alto Adige</P>
+      <P>Südtiroler Zwetschgeler / Zwetschgeler dell&apos;Alto Adige</P>
+      <P>Südtiroler Obstler / Obstler dell&apos;Alto Adige</P>
+      <P>Südtiroler Gravensteiner / Gravensteiner dell&apos;Alto Adige</P>
+      <P>Südtiroler Golden Delicious / Golden Delicious dell&apos;Alto Adige</P>
+      <P>Williams friulano / Williams del Friuli</P>
+      <P>Sliwovitz del Veneto</P>
+      <P>Sliwovitz del Friuli-Venezia Giulia</P>
+      <P>Sliwovitz del Trentino-Alto Adige</P>
+      <P>Distillato di mele trentino / Distillato di mele del Trentino</P>
+      <P>Williams trentino / Williams del Trentino</P>
+      <P>Sliwovitz trentino / Sliwovitz del Trentino</P>
+      <P>Aprikot trentino / Aprikot del Trentino</P>
+      <P>Medronheira do Algarve</P>
+      <P>Medronheira do Buçaco</P>
+      <P>Kirsch Friulano / Kirschwasser Friulano</P>
+      <P>Kirsch Trentino / Kirschwasser Trentino</P>
+      <P>Kirsch Veneto / Kirschwasser Veneto</P>
+      <P>Aguardente de pêra da Lousã</P>
+      <P>Eau-de-vie de pommes de marque nationale luxembourgeoise</P>
+      <P>Eau-de-vie de poires de marque nationale luxembourgeoise</P>
+      <P>Eau-de-vie de kirsch de marque nationale luxembourgeoise</P>
+      <P>Eau-de-vie de quetsch de marque nationale luxembourgeoise</P>
+      <P>Eau-de-vie de mirabelle de marque nationale luxembourgeoise</P>
+      <P>Eau-de-vie de prunelles de marque nationale luxembourgeoise</P>
+      <P>Wachauer Marillenbrand</P>
+      <P>Bošácka Slivovica</P>
+      <P>Szatmári Szilvapálinka</P>
+      <P>Kecskeméti Barackpálinka</P>
+      <P>Békési Szilvapálinka</P>
+      <P>Szabolcsi Almapálinka</P>
+      <P>Slivovice</P>
+      <P>Pálinka</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>8.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Cider spirit and perry spirit</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Calvados</P>
+      <P>Calvados du Pays d&apos;Auge</P>
+      <P>Eau-de-vie de cidre de Bretagne</P>
+      <P>Eau-de-vie de poiré de Bretagne</P>
+      <P>Eau-de-vie de cidre de Normandie</P>
+      <P>Eau-de-vie de poiré de Normandie</P>
+      <P>Eau-de-vie de cidre du Maine</P>
+      <P>Aguardiente de sidra de Asturias</P>
+      <P>Eau-de-vie de poiré du Maine</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>9.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Gentian spirit</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Bayerischer Gebirgsenzian</P>
+      <P>Südtiroler Enzian /Genzians dell&apos;Alto Adige</P>
+      <P>Genziana trentina /Genziana del Trentino</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>10.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Fruit spirit drinks</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Pacharán</P>
+      <P>Pacharán navarro</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>11.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Juniper-flavoured spirit drinks</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Ostriesischer Korngenever</P>
+      <P>Genièvre Flandres Artois</P>
+      <P>Hasseltse jenever</P>
+      <P>Balegemse jenever</P>
+      <P>Péket de Wallonie</P>
+      <P>Steinhäger</P>
+      <P>Plymouth Gin</P>
+      <P>Gin de Mahón</P>
+      <P>Vilniaus Džinas</P>
+      <P>Spišská Borovička</P>
+      <P>Slovenská Borovička Juniperus</P>
+      <P>Slovenská Borovička</P>
+      <P>Inovecká Borovička</P>
+      <P>Liptovská Borovička</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>12.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Caraway-flavoured spirit drinks</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Dansk Akvavit / Dansk Aquavit</P>
+      <P>Svensk Aquavit / Svensk Akvavit /Swedish Aquavit</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>13.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Aniseed-flavoured spirit drinks</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Anis español</P>
+      <P>Evoca anisada</P>
+      <P>Cazalla</P>
+      <P>Chinchón</P>
+      <P>Ojén</P>
+      <P>Rute</P>
+      <P>Ούζο / Ouzo</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>14.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Liqueur</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Berliner Kümmel</P>
+      <P>Hamburger Kümmel</P>
+      <P>Münchener Kümmel</P>
+      <P>Chiemseer Klosterlikör</P>
+      <P>Bayerischer Kräuterlikör</P>
+      <P>Cassis de Dijon</P>
+      <P>Cassis de Beaufort</P>
+      <P>Irish Cream</P>
+      <P>Palo de Mallorca</P>
+      <P>Ginjinha portuguesa</P>
+      <P>Licor de Singeverga</P>
+      <P>Benediktbeurer Klosterlikör</P>
+      <P>Ettaler Klosterlikör</P>
+      <P>Ratafia de Champagne</P>
+      <P>Ratafia catalana</P>
+      <P>Anis português</P>
+      <P>Finnish berry / Finnish fruit liqueur</P>
+      <P>Grossglockner Alpenbitter</P>
+      <P>Mariazeller Magenlikör</P>
+      <P>Mariazeiler Jagasaftl</P>
+      <P>Puchheimer Bitter</P>
+      <P>Puchheimer Schlossgeist</P>
+      <P>Steinfelder Magenbitter</P>
+      <P>Wachauer Marillenlikör</P>
+      <P>Jägertee /Jagertee /Jagatee</P>
+      <P>Allažu Ķimelis</P>
+      <P>Čepkeliu</P>
+      <P>Demänovka Bylinný Likér</P>
+      <P>Polish Cherry</P>
+      <P>Karlovarská Hořká</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>15.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Spirit drinks</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Pommeau de Bretagne</P>
+      <P>Pommeau du Maine</P>
+      <P>Pommeau de Normandie</P>
+      <P>Svensk Punsch / Swedish Punch</P>
+      <P>Slivovice</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>16.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Vodka</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Svensk Vodka / Swedish Vodka</P>
+      <P>Suomalainen Vodka / Finsk Vodka /Vodka of Finland</P>
+      <P>Polska Wódka / Polish Vodka</P>
+      <P>Laugarício Vodka</P>
+      <P>Originali Lietuviška degtiné</P>
+      <P>Wódka zioowa z Niziny Pónocnopodlaskiej aromatyzowana ekstraktem z trawy żubrowej /</P>
+      <P>Herbal Vodka from the North Podlasie Lowland aromatised with an extract of bison grass</P>
+      <P>Latvijas Dzidrais</P>
+      <P>Rīgas Degvīns</P>
+      <P>LB Degvīns</P>
+      <P>LB Vodka</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <NP>
+            <NO.P>17.</NO.P>
+            <TXT>
+              <HT TYPE="BOLD">Bitter-tasting spirit drinks</HT>
+            </TXT>
+          </NP>
+        </TI>
+      </TITLE>
+      <P>Rīgas melnais Balzāms / Riga Black Balsam</P>
+      <P>Demänovka bylinná horká<QUOT.END ID="QE0001" REF.START="QS0001" CODE="0022">
+        </QUOT.END>
+      </P>
+    </GR.SEQ>
+  </CONTENTS>
+</ANNEX>

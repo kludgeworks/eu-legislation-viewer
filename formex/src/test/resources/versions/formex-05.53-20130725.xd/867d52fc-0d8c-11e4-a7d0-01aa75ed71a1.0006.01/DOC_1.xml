@@ -1,0 +1,134 @@
+<PUBLICATION noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.53-20130725.xd">
+  <OJ>
+    <BIB.OJ>
+      <COLL>C</COLL>
+      <TITLE>
+        <TI>
+          <P>Official Journal</P>
+          <P>of the European Union</P>
+        </TI>
+      </TITLE>
+      <NO.OJ>230</NO.OJ>
+      <AGE.OJ>57</AGE.OJ>
+      <DATE ISO="20140717">20140717</DATE>
+      <LG.OJ>EN</LG.OJ>
+      <PRINTER>PE</PRINTER>
+    </BIB.OJ>
+    <VOLUME>
+      <BIB.VOLUME>
+        <VOLUME.ID>1</VOLUME.ID>
+        <NO.CAT>FXAC14230ENC</NO.CAT>
+        <NO.ISSN.PRINT>17252423</NO.ISSN.PRINT>
+        <NO.ISSN.ELECTRONIC>1977091X</NO.ISSN.ELECTRONIC>
+        <PAGE.TOTAL>315</PAGE.TOTAL>
+        <PAGE.SUMMARY>
+          <PAGE.FIRST>s1</PAGE.FIRST>
+          <PAGE.LAST>s2</PAGE.LAST>
+          <PAGE.TOTAL>2</PAGE.TOTAL>
+        </PAGE.SUMMARY>
+        <PAGE.CONTENTS>
+          <PAGE.FIRST>1</PAGE.FIRST>
+          <PAGE.LAST>313</PAGE.LAST>
+          <PAGE.TOTAL>313</PAGE.TOTAL>
+        </PAGE.CONTENTS>
+      </BIB.VOLUME>
+      <SECTION TYPE="C4">
+        <TITLE>
+          <TI>
+            <NP>
+              <NO.P>IV</NO.P>
+              <TXT>Notices</TXT>
+            </NP>
+          </TI>
+        </TITLE>
+        <SUBSECTION>
+          <TITLE>
+            <TI>
+              <P>NOTICES FROM EUROPEAN UNION INSTITUTIONS, BODIES, OFFICES AND AGENCIES</P>
+            </TI>
+          </TITLE>
+          <SUBSECTION>
+            <TITLE>
+              <TI>
+                <P>European Parliament</P>
+              </TI>
+            </TITLE>
+            <SUBSECTION>
+              <TITLE>
+                <TI>
+                  <P>WRITTEN QUESTIONS WITH ANSWER</P>
+                </TI>
+              </TITLE>
+              <ITEM.PUB DOC.INSTANCE="C_2014230EN.01000101.doc.xml">
+              </ITEM.PUB>
+            </SUBSECTION>
+          </SUBSECTION>
+        </SUBSECTION>
+      </SECTION>
+      <NOTICE>
+        <GR.SEQ LEVEL="1" BOX="YES">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="ITALIC">Notice to reader</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>This publication contains written questions by Members of the European Parliament and their answers given by a European Union institution.</P>
+          <P>For each question and answer, the original language version is presented before a possible translation.</P>
+          <P>In some cases, it is possible that the answer is given in a language other than the question. This depends on the working language of the committee requested to provide the answer.</P>
+          <P>These questions and answers are published in accordance with Rules 117 and 118 of the Rules of Procedure of the European Parliament.</P>
+          <P>All questions and answers can be accessed via the website of the European Parliament (Europarl) under the heading<QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+            </QUOT.START>Parliamentary questions<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+            </QUOT.END>:</P>
+          <P>
+            <HT TYPE="ITALIC">http://www.europarl.europa.eu/plenary/en/parliamentary-questions.html</HT>
+          </P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="1" BOX="YES">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="ITALIC">ABBREVIATIONS USED FOR POLITICAL GROUPS</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <DLIST TYPE="TBL">
+            <DLIST.ITEM>
+              <TERM>PPE</TERM>
+              <DEFINITION>Group of the European People’s Party (Christian Democrats)</DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>S&amp;D</TERM>
+              <DEFINITION>Group of the Progressive Alliance of Socialists and Democrats in the European Parliament</DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>ALDE</TERM>
+              <DEFINITION>Group of the Alliance of Liberals and Democrats for Europe</DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>Verts/ALE</TERM>
+              <DEFINITION>Group of the Greens/European Free Alliance</DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>ECR</TERM>
+              <DEFINITION>European Conservatives and Reformists Group</DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>GUE/NGL</TERM>
+              <DEFINITION>Confederal Group of the European United Left – Nordic Green Left</DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>EFD</TERM>
+              <DEFINITION>Europe of Freedom and Democracy Group</DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>NI</TERM>
+              <DEFINITION>Non-attached Members</DEFINITION>
+            </DLIST.ITEM>
+          </DLIST>
+        </GR.SEQ>
+      </NOTICE>
+    </VOLUME>
+  </OJ>
+</PUBLICATION>

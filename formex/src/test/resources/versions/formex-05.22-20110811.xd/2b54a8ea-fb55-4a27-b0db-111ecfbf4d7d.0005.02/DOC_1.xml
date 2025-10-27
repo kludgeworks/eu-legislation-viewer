@@ -1,0 +1,335 @@
+<CONS.ACT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.22-20110811.xd">
+  <INFO.CONSLEG CONSLEG.DATE="20120119" CONSLEG.REF="1995D0411" DATE.LAST.MOD="20051015" END="REPEALED" END.DATE="99999999" LEG.VAL="DEC" PROD.SEQ="002.001.0" SOURCE.END="32005R1688" START.DATE="20060101">
+  </INFO.CONSLEG>
+  <INFO.PROD PROD.DATE="20120119" PROD.SYSTEM="CONSLEG.NEW" PRODUCER="ES">
+  </INFO.PROD>
+  <CONS.DOC>
+    <BIB.INSTANCE>
+      <DOCUMENT.REF FILE="CL1995D0411EN0020010.0001.doc.xml">
+        <LG.OJ>EN</LG.OJ>
+        <PAGE.FIRST>1</PAGE.FIRST>
+      </DOCUMENT.REF>
+      <DATE ISO="20060101">20060101</DATE>
+      <LG.DOC>EN</LG.DOC>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <PAGE.LAST>1</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+    </BIB.INSTANCE>
+    <FAM.COMP LEG.VAL="DEC">
+      <BIB.DATA>
+        <BIB.INSTANCE.CONS>
+          <DOCUMENT.REF.CONS>
+            <COLL>L</COLL>
+            <NO.OJ>243</NO.OJ>
+            <YEAR>1995</YEAR>
+            <LG.OJ>EN</LG.OJ>
+            <PAGE.FIRST>29</PAGE.FIRST>
+            <PAGE.SEQ>1</PAGE.SEQ>
+          </DOCUMENT.REF.CONS>
+          <DATE ISO="19951011">19951011</DATE>
+          <LG.DOC>EN</LG.DOC>
+          <PAGE.FIRST>29</PAGE.FIRST>
+          <PAGE.SEQ>1</PAGE.SEQ>
+          <PAGE.LAST>32</PAGE.LAST>
+          <PAGE.TOTAL>4</PAGE.TOTAL>
+        </BIB.INSTANCE.CONS>
+        <NO.CELEX>31995D0411</NO.CELEX>
+        <DATE ISO="19950622">19950622</DATE>
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Council Decision</HT>
+            </P>
+            <P>of 22 June 1995</P>
+            <P>laying down the rules for the microbiological testing for salmonella by sampling of fresh poultrymeat intended for Finland and Sweden</P>
+            <P>(95/411/EC)</P>
+          </TI>
+        </TITLE>
+      </BIB.DATA>
+      <GR.MOD.ACT>
+        <MOD.ACT EXISTS="YES" LEG.VAL="DEC" TYPE="MOD">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>087</NO.OJ>
+                <YEAR>1998</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>14</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19980321">19980321</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>14</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>16</PAGE.LAST>
+              <PAGE.TOTAL>3</PAGE.TOTAL>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>31998D0227</NO.CELEX>
+            <DATE ISO="19980316">19980316</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Council Decision</HT>
+                </P>
+                <P>of 16 March 1998</P>
+                <P>amending Decisions 95/409/EC, 95/410/EC and 95/411/EC concerning the methods to be used for microbiological testing to be undertaken on meat intended for Finland and Sweden</P>
+                <P>(98/227/EC)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT EXISTS="YES" LEG.VAL="REG" TYPE="REP">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>271</NO.OJ>
+                <YEAR>2005</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>17</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="20051015">20051015</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>0010</NO.SEQ>
+              <PAGE.FIRST>17</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>28</PAGE.LAST>
+              <PAGE.TOTAL>12</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1688</NO.CURRENT>
+                <YEAR>2005</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>32005R1688</NO.CELEX>
+            <DATE ISO="20051014">20051014</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Regulation</HT>(EC) No 1688/2005</P>
+                <P>of<DATE ISO="20051014">14 October 2005</DATE>
+                </P>
+                <P>implementing Regulation (EC) No 853/2004 of the European Parliament and of the Council as regards special guarantees concerning salmonella for consignments to Finland and Sweden of certain meat and eggs</P>
+                <P>(Text with EEA relevance)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+      </GR.MOD.ACT>
+    </FAM.COMP>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="UC">Council Decision</HT>
+        </P>
+        <P>of 22 June 1995</P>
+        <P>laying down the rules for the microbiological testing for salmonella by sampling of fresh poultrymeat intended for Finland and Sweden</P>
+        <P>(95/411/EC)</P>
+      </TI>
+    </TITLE>
+    <PREAMBLE>
+      <PREAMBLE.INIT>THE COUNCIL OF THE EUROPEAN UNION,</PREAMBLE.INIT>
+      <GR.VISA>
+        <VISA>Having regard to the Treaty establishing the European Community,</VISA>
+        <VISA>Having regard to Council Directive 71/118/EEC of 15 February 1971 on health problems affecting trade in fresh poultrymeat<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+            <P>
+              <REF.DOC.OJ COLL="L" DATE.PUB="19710901" NO.OJ="055" PAGE.FIRST="23">OJ No L 55, 8. 3. 1971, p. 23</REF.DOC.OJ>. Directive as last amended by Decision 91/1/EC, Euratom, ECSC (<REF.DOC.OJ COLL="L" DATE.PUB="19950901" NO.OJ="001" PAGE.FIRST="1">OJ No L 1, 1. 1. 1995, p. 1</REF.DOC.OJ>).</P>
+          </NOTE>, and in particular Article 5 (3) (a) thereof,</VISA>
+      </GR.VISA>
+      <GR.CONSID>
+        <CONSID>
+          <P>Whereas the Commission has approved the operational programmes submitted by Finland and Sweden regarding salmonella controls; whereas those programmes comprise specific measures for fresh poultrymeat;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas the implementation of microbiological tests by an establishment constitutes one of the additional guarantees to be given to Finland and Sweden and provides equivalent guarantees to those obtained under the Finnish and Swedish operational programmes as recognized by the relevant Commission decisions;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas Finland and Sweden must apply to consignments of fresh poultrymeat from third countries import requirements as least as stringent as those laid down in this Decision;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas rules for the microbiological testing by sampling should be laid down by determining the sampling method, the number of samples to be taken and the microbiological method for the examination of the samples;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas as far as the sampling methods to be applied are concerned, it is appropriate to make a distinction between whole carcases, on the one hand, and parts of carcases and offal on the other;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas, it is appropriate to take into account international methods for the microbiological examination of samples;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas microbiological tests are not to be required for fresh poultrymeat from an establishment which is subject to a programme recognized as equivalent to that implemented by Finland or Sweden;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas the provisions of this Decision are without prejudice to amendments to the Annexes to Directive 71/118/EEC which might be adopted pursuant to Article 19 of that Directive,</P>
+        </CONSID>
+      </GR.CONSID>
+      <PREAMBLE.FINAL>HAS ADOPTED THIS DECISION:</PREAMBLE.FINAL>
+    </PREAMBLE>
+    <ENACTING.TERMS>
+      <ARTICLE IDENTIFIER="001">
+        <TI.ART>Article 1</TI.ART>
+        <ALINEA>Pursuant to Article 5 (3) (a) of Directive 71/118/EEC, consignments of fresh poultrymeat intended for Finland and Sweden shall be subject to the rules laid down in Articles 2 and 3.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="002">
+        <TI.ART>Article 2</TI.ART>
+        <ALINEA>Fresh poultrymeat intended for Finland and Sweden shall be subject to microbiological testing for salmonella by sampling carried out in accordance with the Annex at the establishment of origin of such meat.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="003">
+        <TI.ART>Article 3</TI.ART>
+        <ALINEA>Poultrymeat from an establishment subject to a programme recognized, in accordance with the procedure laid down in Article 21 of Directive 71/118/EEC, as equivalent to that implemented by Finland or Sweden, shall not be subject to the microbiological testing provided for in this Decision.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="004">
+        <TI.ART>Article 4</TI.ART>
+        <ALINEA>The Council, acting on a Commission proposal drawn up in the light of a report established on the basis of theresults of the operational programmes implemented by Finland and Sweden and the experience gained in applying this Decision, shall review this Decision before 1 July 1998.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="005">
+        <TI.ART>Article 5</TI.ART>
+        <ALINEA>This Decision shall apply from 1 July 1995.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="006">
+        <TI.ART>Article 6</TI.ART>
+        <ALINEA>This Decision is addressed to the Member States.</ALINEA>
+      </ARTICLE>
+    </ENACTING.TERMS>
+    <CONS.ANNEX>
+      <TITLE>
+        <TI>
+          <P>ANNEX</P>
+        </TI>
+      </TITLE>
+      <CONTENTS>
+        <GR.SEQ LEVEL="1">
+          <TITLE>
+            <TI>
+              <P>SECTION A</P>
+            </TI>
+            <STI>
+              <P>SAMPLING METHOD</P>
+            </STI>
+          </TITLE>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>1.</NO.P>
+                  <TXT>Carcases (with the neck skin still attached)</TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <P>Random samples are evenly distributed through the whole consignment. Sampling consists of pieces of about 10 g of neck skin to be removed aseptically with a sterile scalpel and tweezers. Samples should be kept refrigerated at 4 °C until examination. For examination the samples are diluted 10-fold in buffered peptone water (BPW) and incubated at 37 °C for 16 to 20 hours. Subsequently the pre-enrichment broths are tested for the presence of salmonella according to the method described in Section C. Portions of the pre-enrichment broths may be pooled to a maximum of 10 for enrichment.</P>
+            <P>Samples are duly marked and identified.</P>
+          </GR.SEQ>
+          <GR.SEQ LEVEL="2">
+            <TITLE>
+              <TI>
+                <NP>
+                  <NO.P>2.</NO.P>
+                  <TXT>Carcases without neck skin, carcase parts and offal</TXT>
+                </NP>
+              </TI>
+            </TITLE>
+            <P>Pieces of tissue of about 25 g are obtained by punching a sterile cork borer into the meat surface or cutting a slice of tissue with sterile instruments. Samples should be kept refrigerated at 4 °C until examination. For examination the samples are diluted 10-fold in buffered peptone water (BPW) and incubated at 37 °C for 16 to 20 hours. Subsequently the pre-enrichment broths are tested for the presence of salmonella according to the method described in Section C. Portions of the pre-enrichment broths may be pooled to a maximum of 10 for enrichment.</P>
+            <P>Samples are duly marked and identified.</P>
+          </GR.SEQ>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="1">
+          <TITLE>
+            <TI>
+              <P>SECTION B</P>
+            </TI>
+            <STI>
+              <P>NUMBER OF SAMPLES TO BE TAKEN</P>
+            </STI>
+          </TITLE>
+          <P>
+            <TBL CLASS="GEN" COLS="2" NO.SEQ="0001">
+              <GR.SEQ LEVEL="2">
+                <P>The number of packing units in the consignment of which separate random samples are to be taken is as follows:</P>
+              </GR.SEQ>
+              <CORPUS>
+                <ROW TYPE="HEADER">
+                  <CELL COL="1" TYPE="HEADER">Consignment (number of packing units)</CELL>
+                  <CELL COL="2" TYPE="HEADER">Number of packing units to be sampled</CELL>
+                </ROW>
+                <ROW>
+                  <CELL COL="1">1—24</CELL>
+                  <CELL COL="2">Number equal to the number of packing units, with a maximum of 20</CELL>
+                </ROW>
+                <ROW>
+                  <CELL COL="1">25—29</CELL>
+                  <CELL COL="2">20</CELL>
+                </ROW>
+                <ROW>
+                  <CELL COL="1">30—39</CELL>
+                  <CELL COL="2">25</CELL>
+                </ROW>
+                <ROW>
+                  <CELL COL="1">40—49</CELL>
+                  <CELL COL="2">30</CELL>
+                </ROW>
+                <ROW>
+                  <CELL COL="1">50—59</CELL>
+                  <CELL COL="2">35</CELL>
+                </ROW>
+                <ROW>
+                  <CELL COL="1">60—89</CELL>
+                  <CELL COL="2">40</CELL>
+                </ROW>
+                <ROW>
+                  <CELL COL="1">90—199</CELL>
+                  <CELL COL="2">50</CELL>
+                </ROW>
+                <ROW>
+                  <CELL COL="1">200—499</CELL>
+                  <CELL COL="2">55</CELL>
+                </ROW>
+                <ROW>
+                  <CELL COL="1">500 or more</CELL>
+                  <CELL COL="2">60</CELL>
+                </ROW>
+              </CORPUS>
+            </TBL>
+          </P>
+          <P>
+            <TBL CLASS="GEN" COLS="4" NO.SEQ="0002">
+              <GR.SEQ LEVEL="2">
+                <P>Depending on the weight of the packing units, the number of samples can be reduced by using the following multiplication factors:</P>
+              </GR.SEQ>
+              <CORPUS>
+                <ROW TYPE="HEADER">
+                  <CELL COL="1" TYPE="HEADER">Weight of packing units</CELL>
+                  <CELL COL="2" TYPE="HEADER">&gt; 20 kg</CELL>
+                  <CELL COL="3" TYPE="HEADER">10—20 kg</CELL>
+                  <CELL COL="4" TYPE="HEADER">&lt; 10 kg</CELL>
+                </ROW>
+                <ROW>
+                  <CELL COL="1">Multiplication factors</CELL>
+                  <CELL COL="2">× 1</CELL>
+                  <CELL COL="3">× ¾</CELL>
+                  <CELL COL="4">× ½</CELL>
+                </ROW>
+              </CORPUS>
+            </TBL>
+          </P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="1">
+          <TITLE>
+            <TI>
+              <P>SECTION C</P>
+            </TI>
+            <STI>
+              <P>MICROBIOLOGICAL METHOD FOR THE EXAMINATION OF THE SAMPLES</P>
+            </STI>
+          </TITLE>
+          <P>Microbiological testing of the samples for salmonella should be carried out to the standard of the International Organisation for Standardisation ISO 6579: 1993 or revised editions, or by the method described by the Nordic Committee on Food Analysis (NMKL method No 71, fourth edition, 1991) or revised editions. However, methods offering equivalent guarantees may be authorised in accordance with the procedure laid down in Article 21 of Directive 71/118/EEC.</P>
+          <P>Where the results of analysis are contested between Member States, the standard of the International Organisation for Standardisation ISO 6579: 1993 or revised editions should be regarded as the reference method.</P>
+        </GR.SEQ>
+      </CONTENTS>
+    </CONS.ANNEX>
+  </CONS.DOC>
+</CONS.ACT>

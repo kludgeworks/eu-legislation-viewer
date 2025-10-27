@@ -1,0 +1,117 @@
+<JUDGMENT.NP noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.58-20161101.xd">
+  <BIB.JUDGMENT>
+    <REF.CASE FILE="n.a.">
+      <NO.CASE>T-285/16</NO.CASE>
+    </REF.CASE>
+    <NO.CELEX>62016TO0285_INF</NO.CELEX>
+    <NO.ECLI ECLI="ECLI:EU:T:2017:342">EU:T:2017:342</NO.ECLI>
+    <NO.SEQ>0001</NO.SEQ>
+    <PAGE.FIRST.ECR>1</PAGE.FIRST.ECR>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST.ECR>2</PAGE.LAST.ECR>
+    <PAGE.TOTAL>2</PAGE.TOTAL>
+    <AUTHOR>T</AUTHOR>
+  </BIB.JUDGMENT>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="BOLD">Order of the General Court (First Chamber) of<DATE ISO="20170515">15 May 2017</DATE>—<BR>
+          </BR>Dominator International v EUIPO (DREAMLINE)</HT>
+      </P>
+      <P>
+        <HT TYPE="BOLD">(Case T‑285/16)</HT>
+      </P>
+    </TI>
+  </TITLE>
+  <INDEX IDX.CLOSE=")" SEPARATOR=" — " IDX.OPEN="(">
+    <KEYWORD>EU trade mark</KEYWORD>
+    <KEYWORD>International registration designating the European Union</KEYWORD>
+    <KEYWORD>Word mark DREAMLINE</KEYWORD>
+    <KEYWORD>Absolute grounds for refusal</KEYWORD>
+    <KEYWORD>Not distinctive</KEYWORD>
+    <KEYWORD>Article 7(1)(b) of Regulation (EC) No 207/2009</KEYWORD>
+    <KEYWORD>Descriptive character</KEYWORD>
+    <KEYWORD>Article 7(1)(c) of Regulation No 207/2009</KEYWORD>
+    <KEYWORD>Action in part manifestly inadmissible and in part manifestly lacking any foundation in law</KEYWORD>
+    <KEYWORD>Article 126 of the Rules of Procedure</KEYWORD>
+  </INDEX>
+  <SUMMARY.NP SEPARATOR="—">
+    <NP>
+      <NO.P>1.</NO.P>
+      <TXT>
+        <KEYWORD>Judicial proceedings</KEYWORD>
+        <KEYWORD>Application initiating proceedings</KEYWORD>
+        <KEYWORD>Formal requirements</KEYWORD>
+        <KEYWORD>Identification of the subject-matter of the dispute</KEYWORD>
+        <KEYWORD>Brief summary of the pleas in law on which the application is based</KEYWORD>
+        <KEYWORD>Similar requirements for submissions made in support of a plea</KEYWORD>
+      </TXT>
+      <P>
+        <HT TYPE="ITALIC">(Rules of Procedure of the General Court, Art. 76(d))</HT>
+      </P>
+      <P>
+        <HT TYPE="ITALIC">(see paras 43, 44)</HT>
+      </P>
+    </NP>
+    <NP>
+      <NO.P>2.</NO.P>
+      <TXT>
+        <KEYWORD>EU trade mark</KEYWORD>
+        <KEYWORD>Definition and acquisition of the EU trade mark</KEYWORD>
+        <KEYWORD>Absolute grounds for refusal</KEYWORD>
+        <KEYWORD>Separate examination of the various grounds for refusal</KEYWORD>
+        <KEYWORD>Interpretation of the grounds for refusal in the light of the public interest underlying each of them</KEYWORD>
+      </TXT>
+      <P>
+        <HT TYPE="ITALIC">(Council Regulation No 207/2009, Art. 7(1))</HT>
+      </P>
+      <P>
+        <HT TYPE="ITALIC">(see para. 49)</HT>
+      </P>
+    </NP>
+    <NP>
+      <NO.P>3.</NO.P>
+      <TXT>
+        <KEYWORD>EU trade mark</KEYWORD>
+        <KEYWORD>Definition and acquisition of the EU trade mark</KEYWORD>
+        <KEYWORD>Absolute grounds for refusal</KEYWORD>
+        <KEYWORD>Marks composed exclusively of signs or indications capable of designating the characteristics of a product or service</KEYWORD>
+        <KEYWORD>Aim</KEYWORD>
+        <KEYWORD>Need to preserve availability</KEYWORD>
+      </TXT>
+      <P>
+        <HT TYPE="ITALIC">(Council Regulation No 207/2009, Art. 7(1)(c))</HT>
+      </P>
+      <P>
+        <HT TYPE="ITALIC">(see paras 56, 57)</HT>
+      </P>
+    </NP>
+  </SUMMARY.NP>
+  <SUBJECT>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="BOLD">Re:</HT>
+        </P>
+      </TI>
+    </TITLE>
+    <P>ACTION brought against the decision of the Second Board of Appeal of EUIPO of<DATE ISO="20160304">4 March 2016</DATE>(Case R 1669/2015-2) concerning the international registration designating the European Union of word mark DREAMLINE.</P>
+  </SUBJECT>
+  <ENACTING.TERMS.CJT>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="BOLD">Operative part</HT>
+        </P>
+      </TI>
+    </TITLE>
+    <NP>
+      <NO.P>1.</NO.P>
+      <TXT>The action is dismissed.</TXT>
+    </NP>
+    <NP>
+      <NO.P>2.</NO.P>
+      <TXT>Dominator International GmbH is ordered to pay the costs.</TXT>
+    </NP>
+  </ENACTING.TERMS.CJT>
+</JUDGMENT.NP>

@@ -1,0 +1,51 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-01.01-20040501.xd">
+  <BIB.DOC>
+    <NO.DOC TYPE="OJ">
+      <TXT>2004/C 174/20</TXT>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>COM</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2004174EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>174</NO.OJ>
+    <DATE ISO="20040706">20040706</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="020" SYNOPTISM="D020">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>OTHER</LEGAL.VALUE>
+      <DATE ISO="20040706">20040706</DATE>
+      <PAGE.FIRST>20</PAGE.FIRST>
+      <PAGE.LAST>20</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="C_2004174EN.01002001.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="020">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Call for proposals — DG EAC No 40/04<QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+              </QUOT.START>Preparatory actions for cooperation on cultural matters<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+              </QUOT.END>— Implementation of budget heading 15 04 02 03 for 2004</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>20</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="020">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_17420040706en00200020.pdf">20</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

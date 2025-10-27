@@ -1,0 +1,131 @@
+<ACT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.55-20141201.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2015355EN.01000601.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>355</NO.OJ>
+      <YEAR>2015</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>6</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20151026">20151026</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0005</NO.SEQ>
+    <PAGE.FIRST>6</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>7</PAGE.LAST>
+    <PAGE.TOTAL>2</PAGE.TOTAL>
+    <NO.DOC TYPE="OJ">
+      <TXT>2015/C 355/05</TXT>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Commission Decision</HT>
+      </P>
+      <P>of<DATE ISO="20151026">26 October 2015</DATE>
+      </P>
+      <P>recognising the Greenland Department of Fisheries, Hunting and Agriculture (APNN) in accordance with Article 3 of Commission Implementing Regulation (EU) 2015/1850 laying down detailed rules for the implementation of Regulation (EC) No 1007/2009 of the European Parliament and of the Council on trade in seal products</P>
+      <NO.DOC.C>2015/C 355/05</NO.DOC.C>
+    </TI>
+  </TITLE>
+  <PREAMBLE>
+    <PREAMBLE.INIT>THE EUROPEAN COMMISSION,</PREAMBLE.INIT>
+    <GR.VISA>
+      <VISA>Having regard to the Treaty on the Functioning of the European Union,</VISA>
+      <VISA>Having regard to Commission Implementing Regulation (EU) 2015/1850 of<DATE ISO="20151013">13 October 2015</DATE>laying down detailed rules for the implementation of Regulation (EC) No 1007/2009 of the European Parliament and of the Council on trade in seal products<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+          <P>
+            <REF.DOC.OJ COLL="L" DATE.PUB="20151016" NO.OJ="271" PAGE.FIRST="1">OJ L 271, 16.10.2015, p. 1</REF.DOC.OJ>.</P>
+        </NOTE>, and in particular Article 3(1) thereof,</VISA>
+    </GR.VISA>
+    <GR.CONSID>
+      <GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+      <CONSID>
+        <NP>
+          <NO.P>(1)</NO.P>
+          <TXT>Commission Regulation (EU) No 737/2010<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>Commission Regulation (EU) No 737/2010 of<DATE ISO="20100810">10 August 2010</DATE>laying down detailed rules for the implementation of Regulation (EC) No 1007/2009 of the European Parliament and of the Council on trade in seal products (<REF.DOC.OJ COLL="L" DATE.PUB="20100817" NO.OJ="216" PAGE.FIRST="1">OJ L 216, 17.8.2010, p. 1</REF.DOC.OJ>).</P>
+            </NOTE>sets out the conditions under which seal products resulting from hunts by Inuit or other indigenous communities and seal products from marine resources management may be placed on the Union market.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(2)</NO.P>
+          <TXT>Any placing on the market of such products has to be accompanied by a document from a recognised body attesting that the conditions set out in Regulation (EU) No 737/2010 have been met.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(3)</NO.P>
+          <TXT>On<DATE ISO="20130425">25 April 2013</DATE>the Commission adopted a Decision<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>http://ec.europa.eu/environment/biodiversity/animal_welfare/seals/pdf/2013_2277_en.pdf</P>
+            </NOTE>recognising the Greenland Department of Fisheries, Hunting and Agriculture (APNN) in accordance with Article 6 of Regulation (EU) No 737/2010.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(4)</NO.P>
+          <TXT>Regulation (EU) 2015/1775 of the European Parliament and of the Council<NOTE NOTE.ID="E0004" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>Regulation (EU) 2015/1775 of the European Parliament and of the Council of<DATE ISO="20151006">6 October 2015</DATE>amending Regulation (EC) No 1007/2009 on trade in seal products and repealing Commission Regulation (EU) No 737/2010 (<REF.DOC.OJ COLL="L" DATE.PUB="20151007" NO.OJ="262" PAGE.FIRST="1">OJ L 262, 7.10.2015, p. 1</REF.DOC.OJ>).</P>
+            </NOTE>amended Article 3 of Regulation (EC) No 1007/2009 of the European Parliament and of the Council<NOTE NOTE.ID="E0005" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>Regulation (EC) No 1007/2009 of the European Parliament and of the Council of<DATE ISO="20090916">16 September 2009</DATE>on trade in seal products (<REF.DOC.OJ COLL="L" DATE.PUB="20091031" NO.OJ="286" PAGE.FIRST="36">OJ L 286, 31.10.2009, p. 36</REF.DOC.OJ>).</P>
+            </NOTE>, which sets out the conditions under which seal products resulting from hunts by Inuit or other indigenous communities may be placed on the Union market.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(5)</NO.P>
+          <TXT>Regulation (EU) 2015/1775 repealed Regulation (EU) No 737/2010 with effect from the date of application of Implementing Regulation (EU) 2015/1850.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(6)</NO.P>
+          <TXT>On<DATE ISO="20150928">28 September 2015</DATE>the Commission received a request, accompanied by documentary evidence, from the Greenland Department of Fisheries, Hunting and Agriculture (APNN), dated 24 September to be re-authorised as a recognised body in light of the amendments to Article 3 of Regulation (EC) No 1007/2009.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(7)</NO.P>
+          <TXT>The Commission, having carried out an assessment of the accompanying documentary evidence submitted to determine whether the requirements for recognising bodies under Implementing Regulation (EU) 2015/1850 in light of the amendments to Article 3 of Regulation (EC) No 1007/2009 have been met, is satisfied that the Greenland Department of Fisheries, Hunting and Agriculture (APNN) fulfils requirements under Article 3(1)(b) and (e) of Implementing Regulation (EU) 2015/1850.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(8)</NO.P>
+          <TXT>The Greenland Department of Fisheries, Hunting and Agriculture (APNN) should therefore be granted the requested recognition,</TXT>
+        </NP>
+      </CONSID>
+    </GR.CONSID>
+    <PREAMBLE.FINAL>HAS DECIDED AS FOLLOWS:</PREAMBLE.FINAL>
+  </PREAMBLE>
+  <ENACTING.TERMS>
+    <ARTICLE IDENTIFIER="001">
+      <TI.ART>Article 1</TI.ART>
+      <ALINEA>The Greenland Department of Fisheries, Hunting and Agriculture (APNN) is recognised in accordance with Article 3 of Implementing Regulation (EU) 2015/1850.</ALINEA>
+    </ARTICLE>
+    <ARTICLE IDENTIFIER="002">
+      <TI.ART>Article 2</TI.ART>
+      <ALINEA>The Director-General of the Directorate-General for Environment is instructed to ensure that the applicant is notified of this Decision and that the content of this Decision is published on the Commission’s website without delay.</ALINEA>
+    </ARTICLE>
+  </ENACTING.TERMS>
+  <FINAL>
+    <SIGNATURE>
+      <PL.DATE>
+        <P>Done at Brussels,<DATE ISO="20151026">26 October 2015</DATE>.</P>
+      </PL.DATE>
+      <SIGNATORY>
+        <P>
+          <HT TYPE="ITALIC">For the Commission</HT>
+        </P>
+        <P>Karmenu<HT TYPE="UC">Vella</HT>
+        </P>
+        <P>
+          <HT TYPE="ITALIC">Member of the Commission</HT>
+        </P>
+      </SIGNATORY>
+    </SIGNATURE>
+  </FINAL>
+</ACT>

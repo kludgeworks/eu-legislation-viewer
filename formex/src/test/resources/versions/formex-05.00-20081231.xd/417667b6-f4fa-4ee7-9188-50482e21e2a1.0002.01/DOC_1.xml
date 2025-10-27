@@ -1,0 +1,94 @@
+<CASE noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.00-20081231.xd">
+  <BIB.CASE>
+    <REF.ECR FILE="ECRT12005ENA.01.xml">
+      <YEAR>2005</YEAR>
+      <VOLUME.ECR>01</VOLUME.ECR>
+    </REF.ECR>
+    <LG.DOC>EN</LG.DOC>
+    <LG.CASE>EN</LG.CASE>
+    <DATE ISO="20050131">20050131</DATE>
+    <YEAR>2004</YEAR>
+    <NO.CASE>T-447/04 R</NO.CASE>
+    <TYPE.CASE>ORDER-T</TYPE.CASE>
+    <NO.CELEX>62004B0447</NO.CELEX>
+    <NO.SEQ>0010</NO.SEQ>
+    <PAGE.FIRST.ECR>257</PAGE.FIRST.ECR>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST.ECR>286</PAGE.LAST.ECR>
+    <PAGE.TOTAL>30</PAGE.TOTAL>
+    <AUTHOR>T</AUTHOR>
+  </BIB.CASE>
+  <TITLE>
+    <TI>
+      <P>Case T-447/04 R</P>
+    </TI>
+  </TITLE>
+  <PARTIES>
+    <PLAINTIFS>
+      <P>Capgemini Nederland BV</P>
+    </PLAINTIFS>
+    <AGAINST>v</AGAINST>
+    <DEFENDANTS>
+      <P>Commission of the European Communities</P>
+    </DEFENDANTS>
+  </PARTIES>
+  <INDEX>
+    <KEYWORD>Public contracts for services</KEYWORD>
+    <KEYWORD>Community tendering procedure</KEYWORD>
+    <KEYWORD>Interim proceedings</KEYWORD>
+    <KEYWORD>Prima facie case</KEYWORD>
+    <KEYWORD>Urgency</KEYWORD>
+  </INDEX>
+  <REF.ORDER>
+    <TITLE>
+      <TI>
+        <P>Order of the President of the Court of First Instance,<DATE ISO="20050131">31 January 2005</DATE>
+        </P>
+      </TI>
+    </TITLE>
+    <REF.ECR.DOC FILE="ECRT12005ENA.0100025801.xml" NO.SEQ="0010.0001">II-258</REF.ECR.DOC>
+  </REF.ORDER>
+  <SUMMARY>
+    <TITLE>
+      <TI>
+        <P>Summary of the order</P>
+      </TI>
+    </TITLE>
+    <SUBJECTS>
+      <NP>
+        <NO.P>1.</NO.P>
+        <TXT>
+          <KEYWORD>Applications for interim measures</KEYWORD>
+          <KEYWORD>Suspension of operation of a measure</KEYWORD>
+          <KEYWORD>Interim measures</KEYWORD>
+          <KEYWORD>Conditions for granting</KEYWORD>
+          <KEYWORD>Prima facie case</KEYWORD>
+          <KEYWORD>Conclusion of a contract following a call for tenders</KEYWORD>
+          <KEYWORD>Financial evaluation system for tenders</KEYWORD>
+          <KEYWORD>Failure to comply with the administrative instructions of the tender documentation</KEYWORD>
+        </TXT>
+        <P>(Arts 242 EC and 243 EC; Rules of Procedure of the Court of First Instance, Art. 104(2))</P>
+      </NP>
+      <NP>
+        <NO.P>2.</NO.P>
+        <TXT>
+          <KEYWORD>Applications for interim measures</KEYWORD>
+          <KEYWORD>Suspension of operation of a measure</KEYWORD>
+          <KEYWORD>Interim measures</KEYWORD>
+          <KEYWORD>Conditions for granting</KEYWORD>
+          <KEYWORD>Urgency</KEYWORD>
+          <KEYWORD>Serious and irreparable damage</KEYWORD>
+          <KEYWORD>Decision to reject a bid in a tendering procedure</KEYWORD>
+          <KEYWORD>Financial loss and loss of prestige</KEYWORD>
+          <KEYWORD>Damage not capable of being considered irreparable</KEYWORD>
+          <KEYWORD>Lack of urgency</KEYWORD>
+        </TXT>
+        <P>(Arts 242 EC and 243 EC; Rules of Procedure of the Court of First Instance, Art. 104(2))</P>
+      </NP>
+    </SUBJECTS>
+  </SUMMARY>
+  <PDF.ECR>
+    <REF.PDF.ECR TYPE="SUMMARY" PAGE.FIRST="00257" PAGE.LAST="00257">T_2004_0447_SOM_EN_2005_II_000257.pdf</REF.PDF.ECR>
+    <REF.PDF.ECR TYPE="ORDER" PAGE.FIRST="00258" PAGE.LAST="00286">T_2004_0447_ORD_EN_2005_II_000258.pdf</REF.PDF.ECR>
+  </PDF.ECR>
+</CASE>

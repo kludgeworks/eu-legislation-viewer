@@ -1,0 +1,4071 @@
+<CONS.ACT noNamespaceSchemaLocation="http://formex.publications.eu.int/schema/formex-01.02-20040901.xd">
+  <INFO.CONSLEG CONSLEG.REF="1997D0365" DATE.LAST.MOD="20040607" PROD.SEQ="008.001.0" START.DATE="20040507" END.DATE="99999999" END="NONE" LEG.VAL="DEC">
+  </INFO.CONSLEG>
+  <INFO.PROD PRODUCER="IC" PROD.SYSTEM="CONSLEG.NEW" PROD.DATE="20050118">
+  </INFO.PROD>
+  <CONS.DOC>
+    <BIB.INSTANCE>
+      <DOCUMENT.REF FILE="CL1997D0365EN0080010.0001.doc.xml">
+      </DOCUMENT.REF>
+      <DATE ISO="20040507">20040507</DATE>
+      <LG.DOC>EN</LG.DOC>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <PAGE.LAST>9</PAGE.LAST>
+      <PAGE.TOTAL>9</PAGE.TOTAL>
+    </BIB.INSTANCE>
+    <FAM.COMP LEG.VAL="DEC">
+      <BIB.DATA>
+        <BIB.INSTANCE.CONS>
+          <DOCUMENT.REF.CONS>
+            <COLL>L</COLL>
+            <NO.OJ>154</NO.OJ>
+            <YEAR>1997</YEAR>
+            <LG.OJ>EN</LG.OJ>
+            <PAGE.FIRST>41</PAGE.FIRST>
+            <PAGE.SEQ>1</PAGE.SEQ>
+            <VOLUME.REF>01</VOLUME.REF>
+          </DOCUMENT.REF.CONS>
+          <EEA>
+          </EEA>
+          <DATE ISO="19970612">19970612</DATE>
+          <LG.DOC>EN</LG.DOC>
+          <PAGE.FIRST>41</PAGE.FIRST>
+          <PAGE.SEQ>1</PAGE.SEQ>
+          <PAGE.LAST>49</PAGE.LAST>
+          <PAGE.TOTAL>9</PAGE.TOTAL>
+          <NO.DOC FORMAT="YN" TYPE="OJ">
+            <NO.CURRENT>365</NO.CURRENT>
+            <YEAR>1997</YEAR>
+            <COM>EC</COM>
+          </NO.DOC>
+        </BIB.INSTANCE.CONS>
+        <NO.CELEX>397D0365</NO.CELEX>
+        <DATE ISO="19970326">19970326</DATE>
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Commission Decision</HT>
+            </P>
+            <P>of<DATE ISO="19970326">26 March 1997</DATE>
+            </P>
+            <P>drawing up provisional lists of third country establishments from which the Member States authorize imports of products prepared from meat of bovine animals, swine, equidae and sheep and goats</P>
+            <P>(Text with EEA relevance)</P>
+            <P>(97/365/EC)</P>
+          </TI>
+        </TITLE>
+      </BIB.DATA>
+      <GR.MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>234</NO.OJ>
+                <YEAR>1997</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>16</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="19970826">19970826</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>16</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>24</PAGE.LAST>
+              <PAGE.TOTAL>9</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>569</NO.CURRENT>
+                <YEAR>1997</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>397D0569</NO.CELEX>
+            <DATE ISO="19970716">19970716</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Decision</HT>
+                </P>
+                <P>of<DATE ISO="19970716">16 July 1997</DATE>
+                </P>
+                <P>drawing up provisional lists of third country establishments from which the Member States authorize imports of meat products</P>
+                <P>(Text with EEA relevance)</P>
+                <P>(97/569/EC)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>314</NO.OJ>
+                <YEAR>1998</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>19</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="19981124">19981124</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>19</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>20</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>662</NO.CURRENT>
+                <YEAR>1998</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>398D0662</NO.CELEX>
+            <DATE ISO="19981116">19981116</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Decision</HT>
+                </P>
+                <P>of<DATE ISO="19981116">16 November 1998</DATE>
+                </P>
+                <P>amending Decision 97/365/EC on the drawing up of provisional lists of third country establishments from which the Member States authorise imports of products prepared from meat of bovine animals, swine, equidae and sheep and goats</P>
+                <P>(notified under document number C(1998) 3504)</P>
+                <P>(Text with EEA relevance)</P>
+                <P>(98/662/EC)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>131</NO.OJ>
+                <YEAR>1999</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>72</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="19990527">19990527</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>72</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>73</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>344</NO.CURRENT>
+                <YEAR>1999</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>399D0344</NO.CELEX>
+            <DATE ISO="19990525">19990525</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Decision</HT>
+                </P>
+                <P>of<DATE ISO="19990525">25 May 1999</DATE>
+                </P>
+                <P>amending Decision 97/365/EC on drawing up provisional lists of third country establishments from which the Member States authorise imports of products prepared from meat of bovine animals, swine,<HT TYPE="ITALIC">equidae</HT>and sheep and goats</P>
+                <P>(notified under document number C(1999) 1374)</P>
+                <P>(Text with EEA relevance)</P>
+                <P>(1999/344/EC)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>030</NO.OJ>
+                <YEAR>2000</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>37</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="20000204">20000204</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>37</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>38</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>78</NO.CURRENT>
+                <YEAR>2000</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>300D0078</NO.CELEX>
+            <DATE ISO="19991217">19991217</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Decision</HT>
+                </P>
+                <P>of<DATE ISO="19991217">17 December 1999</DATE>
+                </P>
+                <P>amending Decision 97/365/EC on drawing up provisional lists of third country establishments from which the Member States authorise imports of products prepared from meat of bovine animals, swine, equidae and sheep and goats</P>
+                <P>(notified under document number C(1999) 4688)</P>
+                <P>(Text with EEA relevance)</P>
+                <P>(2000/78/EC)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>170</NO.OJ>
+                <YEAR>2000</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>12</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="20000711">20000711</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>12</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>13</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>429</NO.CURRENT>
+                <YEAR>2000</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>300D0429</NO.CELEX>
+            <DATE ISO="20000706">20000706</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Decision</HT>
+                </P>
+                <P>of<DATE ISO="20000706">6 July 2000</DATE>
+                </P>
+                <P>amending Decision 97/365/EC on drawing up provisional lists of third country establishments from which the Member States authorise imports of products prepared from meat of bovine animals, swine, equidae and sheep and goats</P>
+                <P>(notified under document number C(2000) 1844)</P>
+                <P>(Text with EEA relevance)</P>
+                <P>(2000/429/EC)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>308</NO.OJ>
+                <YEAR>2001</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>37</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="20011127">20011127</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>37</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>38</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>826</NO.CURRENT>
+                <YEAR>2001</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>301D0826</NO.CELEX>
+            <DATE ISO="20011123">20011123</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Decision</HT>
+                </P>
+                <P>of<DATE ISO="20011123">23 November 2001</DATE>
+                </P>
+                <P>amending Decision 97/365/EC drawing up provisional lists of third country establishments from which Member States authorise imports of meat products</P>
+                <P>(notified under document number C(2001) 3701)</P>
+                <P>(Text with EEA relevance)</P>
+                <P>(2001/826/EC)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="ADH" LEG.VAL="TREATY" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>236</NO.OJ>
+                <YEAR>2003</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>33</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="20030923">20030923</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>33</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>930</PAGE.LAST>
+              <PAGE.TOTAL>898</PAGE.TOTAL>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>103T</NO.CELEX>
+            <DATE ISO="20030416">20030416</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Act</HT>
+                </P>
+                <P>concerning the conditions of accession of the Czech Republic, the Republic of Estonia, the Republic of Cyprus, the Republic of Latvia, the Republic of Lithuania, the Republic of Hungary, the Republic of Malta, the Republic of Poland, the Republic of Slovenia and the Slovak Republic and the adjustments to the Treaties on which the European Union is founded</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>199</NO.OJ>
+                <YEAR>2004</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>3</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="20040607">20040607</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>002</NO.SEQ>
+              <PAGE.FIRST>3</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>4</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>380</NO.CURRENT>
+                <YEAR>2004</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>304D0380</NO.CELEX>
+            <DATE ISO="20040426">20040426</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Decision</HT>
+                </P>
+                <P>of<DATE ISO="20040426">26 April 2004</DATE>
+                </P>
+                <P>amending Decision 97/365/EC as regards the inclusion of establishments in Iceland in provisional lists of third-country establishments from which Member States authorise imports of meat products</P>
+                <P>(notified under document number C(2004) 1520)</P>
+                <P>(Text with EEA relevance)</P>
+                <P>(2004/380/EC)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+      </GR.MOD.ACT>
+    </FAM.COMP>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="UC">Commission Decision</HT>
+        </P>
+        <P>of<DATE ISO="19970326">26 March 1997</DATE>
+        </P>
+        <P>drawing up provisional lists of third country establishments from which the Member States authorize imports of products prepared from meat of bovine animals, swine, equidae and sheep and goats</P>
+        <P>(Text with EEA relevance)</P>
+        <P>(97/365/EC)</P>
+      </TI>
+    </TITLE>
+    <PREAMBLE>
+      <PREAMBLE.INIT>THE COMMISSION OF THE EUROPEAN COMMUNITIES,</PREAMBLE.INIT>
+      <GR.VISA>
+        <VISA>Having regard to the Treaty establishing the European Community,</VISA>
+        <VISA>Having regard to Council Decision 95/408/EC of<DATE ISO="19950622">22 June 1995</DATE>on the conditions for drawing up, for an interim period, provisional lists of third country establishments from which Member States are authorized to import certain products of animal origin, fishery products or live bivalve molluscs<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+            <P>
+              <REF.DOC.OJ COLL="L" NO.OJ="243" DATE.PUB="19951011" PAGE.FIRST="17">OJ No L 243, 11. 10. 1995, p. 17</REF.DOC.OJ>.</P>
+          </NOTE>, as amended by Decision 97/34/EC<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE">
+            <P>
+              <REF.DOC.OJ COLL="L" NO.OJ="013" DATE.PUB="19970116" PAGE.FIRST="33">OJ No L 13, 16. 1. 1997, p. 33</REF.DOC.OJ>.</P>
+          </NOTE>, and in particular Article 2 (1) thereof,</VISA>
+      </GR.VISA>
+      <GR.CONSID>
+        <CONSID>
+          <P>Whereas Council Decision 79/542/EEC<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" NO.OJ="146" DATE.PUB="19790614" PAGE.FIRST="15">OJ No L 146, 14. 6. 1979, p. 15</REF.DOC.OJ>.</P>
+            </NOTE>, as last amended by Commission Decision 97/160/EC<NOTE NOTE.ID="E0004" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" NO.OJ="062" DATE.PUB="19970304" PAGE.FIRST="39">OJ No L 62, 4. 3. 1997, p. 39</REF.DOC.OJ>.</P>
+            </NOTE>, draws up a list of third countries from which the Member States authorize imports of meat products;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas, for many of the countries on that list the animal health and veterinary certification requirements for importation of meat products have been laid down in Commission Decision 91/449/EEC<NOTE NOTE.ID="E0005" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" NO.OJ="240" DATE.PUB="19910829" PAGE.FIRST="28">OJ No L 240, 29. 8. 1991, p. 28</REF.DOC.OJ>.</P>
+            </NOTE>, as last amended by Decision 96/92/EC<NOTE NOTE.ID="E0006" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" NO.OJ="021" DATE.PUB="19960127" PAGE.FIRST="71">OJ No L 21, 27. 1. 1996, p. 71</REF.DOC.OJ>.</P>
+            </NOTE>;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas the Commission has received from certain third countries lists of establishments, with guarantees that they fully meet the appropriate Community health requirements and that should an establishment fail to do so its export activities to the European Community will be suspended;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas the Commission has been unable to ascertain in all the third countries concerned the compliance of their establishments with the Community requirements and the validity of the guarantees provided by the competent authorities;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas, to prevent the interruption of trade in meat products from those countries, it is necessary to grant them a further period during which Member States will be able to continue to import meat products from the establishments they have recognized; whereas during that further period the Commission will collect from those countries the guarantees needed in order to be able to add them to the list in accordance with the procedure laid down in Decision 95/408/EC;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas on the expiry of that period third countries which have not transmitted their lists of establishments in accordance with the Community rules will no longer be permitted to export meat products to the Community;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas Member States will be responsible therefore for satisfying themselves that the establishments from which they import meat products meet requirements for production and placing on the market which are no less stringent than the Community requirements;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas provisional lists of establishments producing meat products can thus be drawn up in respect of certain countries;</P>
+        </CONSID>
+        <CONSID>
+          <P>Whereas the measures provided for in this Decision are in accordance with the opinion of the Standing Veterinary Committee,</P>
+        </CONSID>
+      </GR.CONSID>
+      <PREAMBLE.FINAL>HAS ADOPTED THIS DECISION:</PREAMBLE.FINAL>
+    </PREAMBLE>
+    <ENACTING.TERMS>
+      <ARTICLE IDENTIFIER="001">
+        <TI.ART>Article 1</TI.ART>
+        <PARAG IDENTIFIER="001.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>The Member States shall authorize imports of products prepared from meat of bovine animals, swine, equidae and sheep and goats from the establishments listed in the Annex hereto.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="001.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Up to<DATE ISO="19970731">31 July 1997</DATE>the Member States may authorize imports of products prepared from meat of bovine animals, swine, equidae and sheep and goats from establishments in third countries other than those listed in the Annex hereto.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="001.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>Imports of meat products shall remain subject to the Community veterinary provisions adopted elsewhere.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="002">
+        <TI.ART>Article 2</TI.ART>
+        <ALINEA>This Decision shall apply with effect from<DATE ISO="19970401">1 April 1997</DATE>.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="003">
+        <TI.ART>Article 3</TI.ART>
+        <ALINEA>This Decision is addressed to the Member States.</ALINEA>
+      </ARTICLE>
+    </ENACTING.TERMS>
+    <CONS.ANNEX>
+      <TITLE>
+        <TI>
+          <P>
+            <LV LG="ES">
+              <TXT>ANEXO</TXT>
+            </LV>
+            <LV LG="CS">
+              <TXT>PŘÍLOHA</TXT>
+            </LV>
+            <LV LG="DA">
+              <TXT>BILAG</TXT>
+            </LV>
+            <LV LG="DE">
+              <TXT>ANHANG</TXT>
+            </LV>
+            <LV LG="ET">
+              <TXT>LISA</TXT>
+            </LV>
+            <LV LG="EL">
+              <TXT>ΠΑΡΑΡΤΗΜΑ</TXT>
+            </LV>
+            <LV LG="EN">
+              <TXT>ANNEX</TXT>
+            </LV>
+            <LV LG="FR">
+              <TXT>ANNEXE</TXT>
+            </LV>
+            <LV LG="IT">
+              <TXT>ALLEGATO</TXT>
+            </LV>
+            <LV LG="LV">
+              <TXT>PIELIKUMS</TXT>
+            </LV>
+            <LV LG="LT">
+              <TXT>PRIEDAS</TXT>
+            </LV>
+            <LV LG="HU">
+              <TXT>MELLÉKLET</TXT>
+            </LV>
+            <LV LG="MT">
+              <TXT>ANNESS</TXT>
+            </LV>
+            <LV LG="NL">
+              <TXT>BILAGE</TXT>
+            </LV>
+            <LV LG="PL">
+              <TXT>ZAŁĄCZNIK</TXT>
+            </LV>
+            <LV LG="PT">
+              <TXT>ANEXO</TXT>
+            </LV>
+            <LV LG="SK">
+              <TXT>PRÍLOHA</TXT>
+            </LV>
+            <LV LG="SL">
+              <TXT>PRILOGA</TXT>
+            </LV>
+            <LV LG="FI">
+              <TXT>LITTE</TXT>
+            </LV>
+            <LV LG="SV">
+              <TXT>BILAGA</TXT>
+            </LV>
+          </P>
+        </TI>
+        <STI>
+          <P>
+            <LV LG="ES">
+              <TXT>LISTA DE LOS ESTABLECIMIENTOS</TXT>
+            </LV>
+            <LV LG="CS">
+              <TXT>SEZNAM ZAŘÍZENÍ</TXT>
+            </LV>
+            <LV LG="DA">
+              <TXT>LISTE OVER VIRKSOMHEDER</TXT>
+            </LV>
+            <LV LG="DE">
+              <TXT>VERZEICHNIS DER BETRIEBE</TXT>
+            </LV>
+            <LV LG="ET">
+              <TXT>ETTEVÕTETE LOETELU</TXT>
+            </LV>
+            <LV LG="EL">
+              <TXT>ΠΙΝΑΚΑΣ ΤΩΝ ΕΓΚΑΤΑΣΤΑΣΕΩΝ</TXT>
+            </LV>
+            <LV LG="EN">
+              <TXT>LIST OF ESTABLISHMENTS</TXT>
+            </LV>
+            <LV LG="FR">
+              <TXT>LISTE DES ÉTABLISSEMENTS</TXT>
+            </LV>
+            <LV LG="IT">
+              <TXT>ELENCO DEGLI STABILIMENTI</TXT>
+            </LV>
+            <LV LG="LV">
+              <TXT>UZŅĒMUMU SARAKSTS</TXT>
+            </LV>
+            <LV LG="LT">
+              <TXT>ĮMONIŲ SĄRAŠAS</TXT>
+            </LV>
+            <LV LG="HU">
+              <TXT>LÉTESÍTMÉNYLISTA</TXT>
+            </LV>
+            <LV LG="MT">
+              <TXT>LISTA TA&apos; L-ISTABILIMENTI</TXT>
+            </LV>
+            <LV LG="NL">
+              <TXT>LIJST VAN BEDRIJVEN</TXT>
+            </LV>
+            <LV LG="PL">
+              <TXT>LISTA ZAKŁADÓW</TXT>
+            </LV>
+            <LV LG="PT">
+              <TXT>LISTA DOS ESTABELECIMENTOS</TXT>
+            </LV>
+            <LV LG="SK">
+              <TXT>ZOZNAM PREVÁDZKARNÍ</TXT>
+            </LV>
+            <LV LG="SL">
+              <TXT>SEZNAM OBRATOV</TXT>
+            </LV>
+            <LV LG="FI">
+              <TXT>LUETTELO LAITOKSISTA</TXT>
+            </LV>
+            <LV LG="SV">
+              <TXT>FÖRTECKNING ÖVER ANLÄGGNINGAR</TXT>
+            </LV>
+          </P>
+          <P>
+            <LV LG="ES">
+              <TXT>Producto: productos cárnicos</TXT>
+            </LV>
+            <LV LG="CS">
+              <TXT>Výrobky: masné výrobky</TXT>
+            </LV>
+            <LV LG="DA">
+              <TXT>Produkt: kødprodukter</TXT>
+            </LV>
+            <LV LG="DE">
+              <TXT>Erzeugnis: Fleischerzeugnisse</TXT>
+            </LV>
+            <LV LG="ET">
+              <TXT>Toode: lihatooted</TXT>
+            </LV>
+            <LV LG="EL">
+              <TXT>Προϊόν: Προϊόντα με βάση το κρέας</TXT>
+            </LV>
+            <LV LG="EN">
+              <TXT>Product: meat products</TXT>
+            </LV>
+            <LV LG="FR">
+              <TXT>Produit: à base de viandes</TXT>
+            </LV>
+            <LV LG="IT">
+              <TXT>Prodotto: prodotti a base di carne</TXT>
+            </LV>
+            <LV LG="LV">
+              <TXT>Produkts: gaļas produkti</TXT>
+            </LV>
+            <LV LG="LT">
+              <TXT>Produktas: mėsos produktai</TXT>
+            </LV>
+            <LV LG="HU">
+              <TXT>Termék: húskészítmények</TXT>
+            </LV>
+            <LV LG="MT">
+              <TXT>Prodott: Prodotti tal-laħam</TXT>
+            </LV>
+            <LV LG="NL">
+              <TXT>Product: vleesproducten</TXT>
+            </LV>
+            <LV LG="PL">
+              <TXT>Produkt: przetwory mięsne</TXT>
+            </LV>
+            <LV LG="PT">
+              <TXT>Produto: produtos à base de carne</TXT>
+            </LV>
+            <LV LG="SK">
+              <TXT>Produkt: mäsové výrobky</TXT>
+            </LV>
+            <LV LG="SL">
+              <TXT>Proizvod: mesni izdelki</TXT>
+            </LV>
+            <LV LG="FI">
+              <TXT>Tuote: lihatuotteet</TXT>
+            </LV>
+            <LV LG="SV">
+              <TXT>Varuslag: köttvaror</TXT>
+            </LV>
+          </P>
+        </STI>
+      </TITLE>
+      <CONTENTS>
+        <P>
+          <DLIST TYPE="TBL" SEPARATOR="=">
+            <DLIST.ITEM>
+              <TERM>1</TERM>
+              <DEFINITION>
+                <LV LG="ES">
+                  <TXT>Referencia nacional</TXT>
+                </LV>
+                <LV LG="CS">
+                  <TXT>Národní kód</TXT>
+                </LV>
+                <LV LG="DA">
+                  <TXT>National reference</TXT>
+                </LV>
+                <LV LG="DE">
+                  <TXT>Nationaler Code</TXT>
+                </LV>
+                <LV LG="ET">
+                  <TXT>Rahvuslik viide</TXT>
+                </LV>
+                <LV LG="EL">
+                  <TXT>Εθνικός αριθμός έγκρισης</TXT>
+                </LV>
+                <LV LG="EN">
+                  <TXT>National reference</TXT>
+                </LV>
+                <LV LG="FR">
+                  <TXT>Référence nationale</TXT>
+                </LV>
+                <LV LG="IT">
+                  <TXT>Riferimento nazionale</TXT>
+                </LV>
+                <LV LG="LV">
+                  <TXT>Nacionālā norāde</TXT>
+                </LV>
+                <LV LG="LT">
+                  <TXT>Nacionalinė nuoroda</TXT>
+                </LV>
+                <LV LG="HU">
+                  <TXT>Nemzeti referenciaszám</TXT>
+                </LV>
+                <LV LG="MT">
+                  <TXT>Referenza nazzjonali</TXT>
+                </LV>
+                <LV LG="NL">
+                  <TXT>Nationale code</TXT>
+                </LV>
+                <LV LG="PL">
+                  <TXT>Kod krajowy</TXT>
+                </LV>
+                <LV LG="PT">
+                  <TXT>Referência nacional</TXT>
+                </LV>
+                <LV LG="SK">
+                  <TXT>Národný odkaz</TXT>
+                </LV>
+                <LV LG="SL">
+                  <TXT>Nacionalna referenca</TXT>
+                </LV>
+                <LV LG="FI">
+                  <TXT>Kansallinen referenssi</TXT>
+                </LV>
+                <LV LG="SV">
+                  <TXT>Nationell referens</TXT>
+                </LV>
+              </DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>2</TERM>
+              <DEFINITION>
+                <LV LG="ES">
+                  <TXT>Nombre</TXT>
+                </LV>
+                <LV LG="CS">
+                  <TXT>Název</TXT>
+                </LV>
+                <LV LG="DA">
+                  <TXT>Navn</TXT>
+                </LV>
+                <LV LG="DE">
+                  <TXT>Name</TXT>
+                </LV>
+                <LV LG="ET">
+                  <TXT>Nimi</TXT>
+                </LV>
+                <LV LG="EL">
+                  <TXT>Όνομα εγκατάστασης</TXT>
+                </LV>
+                <LV LG="EN">
+                  <TXT>Name</TXT>
+                </LV>
+                <LV LG="FR">
+                  <TXT>Nom</TXT>
+                </LV>
+                <LV LG="IT">
+                  <TXT>Nome</TXT>
+                </LV>
+                <LV LG="LV">
+                  <TXT>Nosaukums</TXT>
+                </LV>
+                <LV LG="LT">
+                  <TXT>Pavadinimas</TXT>
+                </LV>
+                <LV LG="HU">
+                  <TXT>Név</TXT>
+                </LV>
+                <LV LG="MT">
+                  <TXT>Isem</TXT>
+                </LV>
+                <LV LG="NL">
+                  <TXT>Naam</TXT>
+                </LV>
+                <LV LG="PL">
+                  <TXT>Nazwa</TXT>
+                </LV>
+                <LV LG="PT">
+                  <TXT>Nome</TXT>
+                </LV>
+                <LV LG="SK">
+                  <TXT>Názov</TXT>
+                </LV>
+                <LV LG="SL">
+                  <TXT>Ime</TXT>
+                </LV>
+                <LV LG="FI">
+                  <TXT>Nimi</TXT>
+                </LV>
+                <LV LG="SV">
+                  <TXT>Namn</TXT>
+                </LV>
+              </DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>3</TERM>
+              <DEFINITION>
+                <LV LG="ES">
+                  <TXT>Ciudad</TXT>
+                </LV>
+                <LV LG="CS">
+                  <TXT>Město</TXT>
+                </LV>
+                <LV LG="DA">
+                  <TXT>By</TXT>
+                </LV>
+                <LV LG="DE">
+                  <TXT>Stadt</TXT>
+                </LV>
+                <LV LG="ET">
+                  <TXT>Linn</TXT>
+                </LV>
+                <LV LG="EL">
+                  <TXT>Πόλη</TXT>
+                </LV>
+                <LV LG="EN">
+                  <TXT>Town</TXT>
+                </LV>
+                <LV LG="FR">
+                  <TXT>Ville</TXT>
+                </LV>
+                <LV LG="IT">
+                  <TXT>Città</TXT>
+                </LV>
+                <LV LG="LV">
+                  <TXT>Pilsēta</TXT>
+                </LV>
+                <LV LG="LT">
+                  <TXT>Miestas</TXT>
+                </LV>
+                <LV LG="HU">
+                  <TXT>Város</TXT>
+                </LV>
+                <LV LG="MT">
+                  <TXT>Belt</TXT>
+                </LV>
+                <LV LG="NL">
+                  <TXT>Stad</TXT>
+                </LV>
+                <LV LG="PL">
+                  <TXT>Miasto</TXT>
+                </LV>
+                <LV LG="PT">
+                  <TXT>Cidade</TXT>
+                </LV>
+                <LV LG="SK">
+                  <TXT>Mesto</TXT>
+                </LV>
+                <LV LG="SL">
+                  <TXT>Kraj</TXT>
+                </LV>
+                <LV LG="FI">
+                  <TXT>Kaupunki</TXT>
+                </LV>
+                <LV LG="SV">
+                  <TXT>Stad</TXT>
+                </LV>
+              </DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>4</TERM>
+              <DEFINITION>
+                <LV LG="ES">
+                  <TXT>Región</TXT>
+                </LV>
+                <LV LG="CS">
+                  <TXT>Oblast</TXT>
+                </LV>
+                <LV LG="DA">
+                  <TXT>Region</TXT>
+                </LV>
+                <LV LG="DE">
+                  <TXT>Region</TXT>
+                </LV>
+                <LV LG="ET">
+                  <TXT>Piirkond</TXT>
+                </LV>
+                <LV LG="EL">
+                  <TXT>Περιοχή</TXT>
+                </LV>
+                <LV LG="EN">
+                  <TXT>Region</TXT>
+                </LV>
+                <LV LG="FR">
+                  <TXT>Région</TXT>
+                </LV>
+                <LV LG="IT">
+                  <TXT>Regione</TXT>
+                </LV>
+                <LV LG="LV">
+                  <TXT>Reģions</TXT>
+                </LV>
+                <LV LG="LT">
+                  <TXT>Regionas</TXT>
+                </LV>
+                <LV LG="HU">
+                  <TXT>Régió</TXT>
+                </LV>
+                <LV LG="MT">
+                  <TXT>Reġjun</TXT>
+                </LV>
+                <LV LG="NL">
+                  <TXT>Regio</TXT>
+                </LV>
+                <LV LG="PL">
+                  <TXT>Region</TXT>
+                </LV>
+                <LV LG="PT">
+                  <TXT>Região</TXT>
+                </LV>
+                <LV LG="SK">
+                  <TXT>Kraj</TXT>
+                </LV>
+                <LV LG="SL">
+                  <TXT>Regija</TXT>
+                </LV>
+                <LV LG="FI">
+                  <TXT>Alue</TXT>
+                </LV>
+                <LV LG="SV">
+                  <TXT>Region</TXT>
+                </LV>
+              </DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>5</TERM>
+              <DEFINITION>
+                <LV LG="ES">
+                  <TXT>Menciones especiales</TXT>
+                </LV>
+                <LV LG="CS">
+                  <TXT>Zvláštní poznámky</TXT>
+                </LV>
+                <LV LG="DA">
+                  <TXT>Særlige bemærkninger</TXT>
+                </LV>
+                <LV LG="DE">
+                  <TXT>Besondere Bemerkungen</TXT>
+                </LV>
+                <LV LG="ET">
+                  <TXT>Erimärkused</TXT>
+                </LV>
+                <LV LG="EL">
+                  <TXT>Ειδικές παρατηρήσεις</TXT>
+                </LV>
+                <LV LG="EN">
+                  <TXT>Special remarks</TXT>
+                </LV>
+                <LV LG="FR">
+                  <TXT>Mentions spéciales</TXT>
+                </LV>
+                <LV LG="IT">
+                  <TXT>Note particolari</TXT>
+                </LV>
+                <LV LG="LV">
+                  <TXT>Īpašas atzīmes</TXT>
+                </LV>
+                <LV LG="LT">
+                  <TXT>Specialios pastabos</TXT>
+                </LV>
+                <LV LG="HU">
+                  <TXT>Különleges megjegyzések</TXT>
+                </LV>
+                <LV LG="MT">
+                  <TXT>Rimarki speċjali</TXT>
+                </LV>
+                <LV LG="NL">
+                  <TXT>Bijzondere opmerkingen</TXT>
+                </LV>
+                <LV LG="PL">
+                  <TXT>Uwagi szczególne</TXT>
+                </LV>
+                <LV LG="PT">
+                  <TXT>Menções especiais</TXT>
+                </LV>
+                <LV LG="SK">
+                  <TXT>Osobitné poznámky</TXT>
+                </LV>
+                <LV LG="SL">
+                  <TXT>Posebne opombe</TXT>
+                </LV>
+                <LV LG="FI">
+                  <TXT>Erikoismainintoja</TXT>
+                </LV>
+                <LV LG="SV">
+                  <TXT>Anmärkningar</TXT>
+                </LV>
+              </DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>6</TERM>
+              <DEFINITION>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="ES">
+                      <TXT>Países y establecimientos que cumplen todos los requisitos del apartado 1 del artículo 2 de la Decisión 95/408/CE del Consejo.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="CS">
+                      <TXT>Země a zařízení, které splňují všechny požadavky čl. 2 odst. 1 rozhodnutí Rady 95/408/ES.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="DA">
+                      <TXT>Lande og virksomheder, der opfylder alle betingelserne i artikel 2, stk. 1, i Rådets beslutning 95/408/EF.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="DE">
+                      <TXT>Länder und Betriebe, die alle Anforderungen des Artikels 2 Absatz 1 der Entscheidung 95/408/EG des Rates erfüllen.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="ET">
+                      <TXT>Nõukogu otsuse 95/408/EÜ artikli 2 lõike 1 kõikidele nõuetele vastavad riigid ja ettevõtted.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="EL">
+                      <TXT>Χώρες και εγκαταστάσεις που πληρούν τις προϋποθέσεις του άρθρου 2 παράγραφος 1 της απόφασης 95/408/ΕΚ του Συμβουλίου.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="EN">
+                      <TXT>Countries and establishments complying with all requirements of Article 2(1) of Council Decision 95/408/EC.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="FR">
+                      <TXT>Pays et établissements remplissant l&apos;ensemble des dispositions de l&apos;article 2 paragraphe 1 de la décision 95/408/CE du Conseil.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="IT">
+                      <TXT>Paese e stabilimenti che ottemperano a tutte le disposizioni dell&apos;articolo 2, paragrafo 1 della decisione 95/408/CE del Consiglio.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="LV">
+                      <TXT>Valstis un uzņēmumi, kuri atbilst Padomes Lēmuma 95/408/EK 2. panta 1. punkta prasībām.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="LT">
+                      <TXT>Šalys ir įmonės, atitinkančios visus Tarybos sprendimo 95/408/EB 2 straipsnio 1 dalies reikalavimus.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="HU">
+                      <TXT>Azok az országok és létesítmények, amelyek teljes mértékben megfelelnek a 95/408/EK tanácsi határozat 2. cikkének (1) bekezdésében foglalt követelményeknek.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="MT">
+                      <TXT>Pajjiżi u stabilimenti li jissodisfaw il-kundizzjonijiet ta&apos; l-Artiklu 2(1) tad-Deċiżjoni tal-Kunsill 95/408/KE.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="NL">
+                      <TXT>Landen en inrichtingen die voldoen aan al de voorwaarden van artikel 2, lid 1, van Beschikking 95/408/EG van de Raad.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="PL">
+                      <TXT>Państwa i zakłady spełniające wszystkie wymagania artykułu 2 ust. 1 decyzji Rady 95/408/WE.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="PT">
+                      <TXT>Países e estabelecimentos que respeitam todas as exigências do n.<HT TYPE="SUP">o</HT>1 do artigo 2.<HT TYPE="SUP">o</HT>da Decisão 95/408/CE do Conselho.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="SK">
+                      <TXT>Krajiny a prevádzkarne v súlade so všetkými požiadavkami článku 2 (1) rozhodnutia Rady 95/408/ES.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="SL">
+                      <TXT>Države in obrati, ki izpolnjujejo vse zahteve iz člena 2 (1) Odločbe Sveta 95/408/ES.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="FI">
+                      <TXT>Neuvoston päätöksen 95/408/EY 2 artiklan 1 kohdan kaikki vaatimukset täyttävät maat ja laitokset.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+                <NP>
+                  <NO.P>*</NO.P>
+                  <TXT>
+                    <LV LG="SV">
+                      <TXT>Länder och anläggningar som uppfyller alla krav i artikel 2.1 i rådets beslut 95/408/EG.</TXT>
+                    </LV>
+                  </TXT>
+                </NP>
+              </DEFINITION>
+            </DLIST.ITEM>
+            <DLIST.ITEM>
+              <TERM>7</TERM>
+              <DEFINITION>Products of this establishment must be prepared from fresh meat which was produced according to Directive 64/433/EEC<NOTE NOTE.ID="E1001" TYPE="FOOTNOTE">
+                  <P>
+                    <REF.DOC.OJ COLL="P" NO.OJ="021" DATE.PUB="19640729" PAGE.FIRST="2012">OJ 21, 29.7.1964, p. 2012/64</REF.DOC.OJ>.</P>
+                </NOTE>in approved slaughterhouses of the European Union or which satisfies the requirements of Article 21(a) of Directive 72/462/EEC<NOTE NOTE.ID="E1002" TYPE="FOOTNOTE">
+                  <P>
+                    <REF.DOC.OJ COLL="X" NO.OJ="302" DATE.PUB="19721231" PAGE.FIRST="28">OJ 302, 31.12.1972, p. 28</REF.DOC.OJ>.</P>
+                </NOTE>.</DEFINITION>
+            </DLIST.ITEM>
+          </DLIST>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="001">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: AUSTRALIA</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: AUSTRÁLIE</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: AUSTRALIEN</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: AUSTRALIEN</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: AUSTRAALIA</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΑΥΣΤΡΑΛΙΑ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: AUSTRALIA</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: AUSTRALIE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: AUSTRALIA</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: AUSTRĀLIJA</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: AUSTRALIJA</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország: AUSZTRÁLIA</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: AWSTRALJA</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: AUSTRALIË</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: AUSTRALIA</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: AUSTRÁLIA</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: AUSTRÁLIA</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: AVSTRALIJA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: AUSTRALIA</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: AUSTRALIEN</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">39</CELL>
+                <CELL COL="2">Southern Country Foods Pty Ltd</CELL>
+                <CELL COL="3">WAGGA WAGGA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">85</CELL>
+                <CELL COL="2">Nestlé Australia Ltd</CELL>
+                <CELL COL="3">PAKENHAM</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="002">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: BULGARIA</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: BULHARSKO</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: BULGARIEN</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: BULGARIEN</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: BULGAARIA</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΒΟΥΛΓΑΡΙΑ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: BULGARIA</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: BULGARIE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: BULGARIA</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: BULGĀRIJA</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: BULGARIJA</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország: BULGÁRIA</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: BULGARIJA</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: BULGARIJE</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: BUŁGARIA</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: BULGÁRIA</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: BULHARSKO</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: BOLGARIJA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: BULGARIA</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: BULGARIEN</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">21</CELL>
+                <CELL COL="2">Mecom Ltd</CELL>
+                <CELL COL="3">Silistra</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="003">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: CANADÁ</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: KANADA</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: CANADA</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: KANADA</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: KANADA</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΚΑΝΑΔΑΣ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: CANADA</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: CANADA</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: CANADA</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: KANĀDA</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: KANADA</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország: KANADA</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: KANADA</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: CANADA</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: KANADA</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: CANADÁ</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: KANADA</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: KANADA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: KANADA</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: KANADA</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">1</CELL>
+                <CELL COL="2">Maple Leaf Meats Inc./Les viandes Maple Leaf Inc.</CELL>
+                <CELL COL="3">WINNIPEG</CELL>
+                <CELL COL="4">MANITOBA</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">32</CELL>
+                <CELL COL="2">Lest Foods Canada (1991) Inc. Bovril Canada Inc.</CELL>
+                <CELL COL="3">MONTRÉAL</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">35</CELL>
+                <CELL COL="2">J. M. Schneider Inc.</CELL>
+                <CELL COL="3">KITCHENER</CELL>
+                <CELL COL="4">ONTARIO</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">55</CELL>
+                <CELL COL="2">Campbell Soup Company Ltd/Les Soupes Campbell Ltée</CELL>
+                <CELL COL="3">TORONTO</CELL>
+                <CELL COL="4">ONTARIO</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">63</CELL>
+                <CELL COL="2">Northern Goose Processors Ltd</CELL>
+                <CELL COL="3">TEULON</CELL>
+                <CELL COL="4">MANITOBA</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">170</CELL>
+                <CELL COL="2">Wing Wing Company Limited</CELL>
+                <CELL COL="3">VANCOUVER</CELL>
+                <CELL COL="4">BRITISH COLUMBIA</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">233</CELL>
+                <CELL COL="2">Starmax Foods Inc./Aliments Starmax Inc.</CELL>
+                <CELL COL="3">MONTRÉAL</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">246</CELL>
+                <CELL COL="2">Salaison G. Lauzon Inc.</CELL>
+                <CELL COL="3">MONTRÉAL</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">265</CELL>
+                <CELL COL="2">J.R. Ouimet Inc.</CELL>
+                <CELL COL="3">VILLE D&apos;ANJOU</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">268</CELL>
+                <CELL COL="2">Les produits d&apos;alimentation Bologna Ltée/Bologna Food Products Co. Ltd</CELL>
+                <CELL COL="3">MONTRÉAL</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">298</CELL>
+                <CELL COL="2">Les Produits de Viande Kasher Glatt Ltée/ Glatt&apos;s Kosher Meat Products Limited</CELL>
+                <CELL COL="3">MONTRÉAL</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">334</CELL>
+                <CELL COL="2">Continental Casing (1976) Inc.</CELL>
+                <CELL COL="3">SAINTE-MADELEINE</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">375</CELL>
+                <CELL COL="2">171047 Canada Inc.</CELL>
+                <CELL COL="3">SAINT-LEONARD</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">449</CELL>
+                <CELL COL="2">Le Naturel Foods Skoulakis Inc./Aliments Le Naturel Skpoulakis Inc.</CELL>
+                <CELL COL="3">SAINT-EUSTACHE</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">457</CELL>
+                <CELL COL="2">Salaison Levesque Inc.</CELL>
+                <CELL COL="3">MONTRÉAL</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">459</CELL>
+                <CELL COL="2">Maple Leaf Foods Inc./Les Aliments Maple Leaf Inc.</CELL>
+                <CELL COL="3">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">495</CELL>
+                <CELL COL="2">Olymel Société en commandite</CELL>
+                <CELL COL="3">GRANBY</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">501</CELL>
+                <CELL COL="2">155635 Canada Ltée</CELL>
+                <CELL COL="3">SAINT-LOUIS-DE-TERREBONNE</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">508</CELL>
+                <CELL COL="2">Viandes Seflico Inc.</CELL>
+                <CELL COL="3">VILLE DE RECANCOURT</CELL>
+                <CELL COL="4">QUÉBEC</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1" TYPE="NORMAL">55B</CELL>
+                <CELL COL="2">Campbell Soup Company Ltd/ Les Soupes Campbell Ltée</CELL>
+                <CELL COL="3">LISTOWEL</CELL>
+                <CELL COL="4">ONTARIO</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="004">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: SUIZA</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: ŠVÝCARSKO</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: SCHWEIZ</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: SCHWEIZ</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: ŠVEITS</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΕΛΒΕΤΙΑ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: SWITZERLAND</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: SUISSE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: SVIZZERA</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: ŠVEICE</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: ŠVEICARIJA</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország: SVÁJC</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: SVIZZERA</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: ZWITZERLAND</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: SZWAJCARIA</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: SUIÇA</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: ŠVAJČIARSKO</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: ŠVICA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: SVEITSI</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: SCHWEIZ</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">25</CELL>
+                <CELL COL="2">Hero Konserven</CELL>
+                <CELL COL="3">LENZBURG</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">38</CELL>
+                <CELL COL="2">Frisco-Findus AG</CELL>
+                <CELL COL="3">RORSCHACH</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">49</CELL>
+                <CELL COL="2">Dyna SA</CELL>
+                <CELL COL="3">FRIBOURG</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">61</CELL>
+                <CELL COL="2">Knorr AG</CELL>
+                <CELL COL="3">THAYNGEN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">201</CELL>
+                <CELL COL="2">Gurtner AG</CELL>
+                <CELL COL="3">TRIN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">202</CELL>
+                <CELL COL="2">Bündner Fleisch Mani AG</CELL>
+                <CELL COL="3">CHURWALDEN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">205</CELL>
+                <CELL COL="2">Albert Spiess AG</CELL>
+                <CELL COL="3">FRAUENKIRCH</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">213</CELL>
+                <CELL COL="2">Lucul SA</CELL>
+                <CELL COL="3">PAYERNE</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">214</CELL>
+                <CELL COL="2">Maggi AG</CELL>
+                <CELL COL="3">KEMPTTHAL</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">215</CELL>
+                <CELL COL="2">Fleischtrocknerei Churwalden AG</CELL>
+                <CELL COL="3">CHURWALDEN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">216</CELL>
+                <CELL COL="2">Hugli SA</CELL>
+                <CELL COL="3">STEINACH</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">224</CELL>
+                <CELL COL="2">Hilcona AG</CELL>
+                <CELL COL="3">SCHAAN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">225</CELL>
+                <CELL COL="2">Haco AG</CELL>
+                <CELL COL="3">GUMLIGEN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">227</CELL>
+                <CELL COL="2">Gustav Spiess AG</CELL>
+                <CELL COL="3">BERNECK</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">228</CELL>
+                <CELL COL="2">E. Sutter AG</CELL>
+                <CELL COL="3">GOSSAU</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">229</CELL>
+                <CELL COL="2">Kocherhans &amp; Schar AG</CELL>
+                <CELL COL="3">CHURWALDEN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">239</CELL>
+                <CELL COL="2">Gehrig AG</CELL>
+                <CELL COL="3">KLUS</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">242</CELL>
+                <CELL COL="2">Sirpig SA</CELL>
+                <CELL COL="3">BRUSIO</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">254</CELL>
+                <CELL COL="2">Herbert Ospelt Anstalt</CELL>
+                <CELL COL="3">BENDERN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">275</CELL>
+                <CELL COL="2">Albert Spiess AG</CELL>
+                <CELL COL="3">SCHIERS</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">288</CELL>
+                <CELL COL="2">Frigemo Produktion Chur, J. Caprez-Danuser AG</CELL>
+                <CELL COL="3">CHUR</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">293</CELL>
+                <CELL COL="2">Salumi San Pietro SA</CELL>
+                <CELL COL="3">STABIO</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">294</CELL>
+                <CELL COL="2">Natura Fleischtrocknerei</CELL>
+                <CELL COL="3">TINIZONG</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">299</CELL>
+                <CELL COL="2">F + B. Meinen</CELL>
+                <CELL COL="3">BERN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">301</CELL>
+                <CELL COL="2">Pizoler AG</CELL>
+                <CELL COL="3">SARGANS</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">302</CELL>
+                <CELL COL="2">Gautschi AG</CELL>
+                <CELL COL="3">UTZENSTORF</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">303</CELL>
+                <CELL COL="2">Oswald AG</CELL>
+                <CELL COL="3">STEINHAUSEN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">304</CELL>
+                <CELL COL="2">Cambio Fleischwaren AG</CELL>
+                <CELL COL="3">ST. GALLEN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">305</CELL>
+                <CELL COL="2">Morgia AG</CELL>
+                <CELL COL="3">LYSS</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">306</CELL>
+                <CELL COL="2">Fleischtrocknerei Churwalden AG</CELL>
+                <CELL COL="3">CHUR</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">309</CELL>
+                <CELL COL="2">Gemperli AG</CELL>
+                <CELL COL="3">ST. GALLEN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">311</CELL>
+                <CELL COL="2">Fredag AG</CELL>
+                <CELL COL="3">ROOT</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">312</CELL>
+                <CELL COL="2">Konservenfabrik Bischofszell AG</CELL>
+                <CELL COL="3">BISCHOFSZELL</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="005">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: HUNGRÍA</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: UNGARN</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: UNGARN</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΟΥΓΓΑΡΙΑ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: HUNGARY</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: HONGRIE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: UNGHERIA</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: HONGARIJE</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: HUNGRIA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: UNKARI</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: UNGERN</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">2</CELL>
+                <CELL COL="2">Herz Szalamigyar</CELL>
+                <CELL COL="3">BUDAPEST</CELL>
+                <CELL COL="4">FOVAROS</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">5</CELL>
+                <CELL COL="2">Gyulai Huscombinat Rt</CELL>
+                <CELL COL="3">GYULA</CELL>
+                <CELL COL="4">CSONGRAD MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">6</CELL>
+                <CELL COL="2">Papai Hus Rt</CELL>
+                <CELL COL="3">PAPA</CELL>
+                <CELL COL="4">VESZPRÉM MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">7</CELL>
+                <CELL COL="2">Pick Szeged Rt Szalamigyar és Husuzem</CELL>
+                <CELL COL="3">SZEGED</CELL>
+                <CELL COL="4">CSONGRAD MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">10</CELL>
+                <CELL COL="2">Ringa Husipari RT Kapuvari Gyara</CELL>
+                <CELL COL="3">KAPUVAR</CELL>
+                <CELL COL="4">GYOR SOPRON MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">56</CELL>
+                <CELL COL="2">Landhof-Budapest Hus Kfft</CELL>
+                <CELL COL="3">BUDAPEST</CELL>
+                <CELL COL="4">FOVAROS</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">61</CELL>
+                <CELL COL="2">Delhus Rt Bajai Gyara</CELL>
+                <CELL COL="3">BAJA</CELL>
+                <CELL COL="4">BACS-KISKUN MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">62</CELL>
+                <CELL COL="2">Pini Hungary</CELL>
+                <CELL COL="3">KAPOSVAR</CELL>
+                <CELL COL="4">SOMOGY MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">64</CELL>
+                <CELL COL="2">Szekzardi Husipari Rt</CELL>
+                <CELL COL="3">SZEKSZARD</CELL>
+                <CELL COL="4">TOLNA MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">67</CELL>
+                <CELL COL="2">Andreoli Kft Gastrofol Uzeme</CELL>
+                <CELL COL="3">MISKOLC</CELL>
+                <CELL COL="4">BORSOD MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">86</CELL>
+                <CELL COL="2">Delhus Rt Alsomocsoladi Gyaregysege Husuzem</CELL>
+                <CELL COL="3">ALSOMOCSOLAD</CELL>
+                <CELL COL="4">BARANYA MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">88</CELL>
+                <CELL COL="2">Solami Husipari Rt Husfeldolgozo Uzem</CELL>
+                <CELL COL="3">SZOLNOK</CELL>
+                <CELL COL="4">SZOLNOK MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">135</CELL>
+                <CELL COL="2">D-Back Kft</CELL>
+                <CELL COL="3">NAGYATAD</CELL>
+                <CELL COL="4">SOMOGY MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">137</CELL>
+                <CELL COL="2">Korcsork Bt. Husdarabolo Uzeme</CELL>
+                <CELL COL="3">UJKIGYOS</CELL>
+                <CELL COL="4">BEKES MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">147</CELL>
+                <CELL COL="2">2 B.Kereskedelmi és Szolgaltato Kft Ceglédhus</CELL>
+                <CELL COL="3">CEGLED</CELL>
+                <CELL COL="4">PEST MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">159</CELL>
+                <CELL COL="2">Gool-Roll Puskas Kft</CELL>
+                <CELL COL="3">SZENTENDRE</CELL>
+                <CELL COL="4">PEST MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">169</CELL>
+                <CELL COL="2">Mirelite Budapest Hutoipari Rt. Pizza gyara</CELL>
+                <CELL COL="3">BUDAPEST</CELL>
+                <CELL COL="4">FOVAROS</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">171</CELL>
+                <CELL COL="2">C.P.C Hungary Magyarorszoag Kft Huusgranulalo Uzeme</CELL>
+                <CELL COL="3">ROSZKE</CELL>
+                <CELL COL="4">CSONGRAD MEGYE</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="" NO.SEQ="006">
+            <TITLE>
+              <TI>
+                <P>País: Islandia/Land: Island/Land: Island/Χώρα: Iσλάνδια/Country: Iceland/Pays: Islande/Paese: Islanda/Land: IJsland/País: Islandia/Maa: Islanti/Land: Island</P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">22</CELL>
+                <CELL COL="2">Kaupfelag V –Hunvetninga</CELL>
+                <CELL COL="3">Hvammstangi</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">23</CELL>
+                <CELL COL="2">Sölufélag A –Hunvetninga</CELL>
+                <CELL COL="3">Blonduos</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">31</CELL>
+                <CELL COL="2">Nordlenska</CELL>
+                <CELL COL="3">Husavik</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">50</CELL>
+                <CELL COL="2">Kaupfelag Skagfirdinga</CELL>
+                <CELL COL="3">Saudarkrokur</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="007">
+            <TITLE>
+              <TI>
+                <P>LITUANIE</P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">55-<FT TYPE="CODE">03</FT>
+                </CELL>
+                <CELL COL="2">1.1. JSC<QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+                  </QUOT.START>SKINJA<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+                  </QUOT.END>
+                </CELL>
+                <CELL COL="3">Vezaiciai/Klaipeda</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">88-24</CELL>
+                <CELL COL="2">JSC<QUOT.START ID="QS0002" REF.END="QE0002" CODE="2018">
+                  </QUOT.START>VILKE<QUOT.END ID="QE0002" REF.START="QS0002" CODE="2019">
+                  </QUOT.END>
+                </CELL>
+                <CELL COL="3">Silgaliai/Taurage</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">61-<FT TYPE="CODE">01</FT>
+                </CELL>
+                <CELL COL="2">JSC<QUOT.START ID="QS0003" REF.END="QE0003" CODE="2018">
+                  </QUOT.START>MAZEIKIU MESINE<QUOT.END ID="QE0003" REF.START="QS0003" CODE="2019">
+                  </QUOT.END>
+                </CELL>
+                <CELL COL="3">Mazeikiai/Telsiai</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="008">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: MAURICIO</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: MAURICIUS</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: MAURITIUS</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: MAURITIUS</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: MAURITIUS</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΜΑΥΡΙΚΙΟΣ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: MAURITIUS</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: MAURICE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: MAURIZIO</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: MAURĪCIJA</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: MAURICIJUS</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország: MAURITIUS</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: MAURITIUS</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: MAURITIUS</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: MAURITIUS</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: MAURÍCIA</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: MAURÍCIUS</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: MAURITIUS</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: MAURITIUS</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: MAURITIUS</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">M3</CELL>
+                <CELL COL="2">Associated Meat Canners Ltd</CELL>
+                <CELL COL="3">COROMANDEL</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="009">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: MÉXICO</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: MEXIKO</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: MEXICO</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: MEXIKO</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: MEHHIKO</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΜΕΞΙΚΟ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: MEXICO</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: MEXIQUE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: MESSICO</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: MEKSIKA</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: MEKSIKA</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország: MEXIKÓ</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: MESSIKU</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: MEXICO</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: MEKSYK</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: MÉXICO</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: MEXIKO</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: MEHIKA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: MEKSIKO</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: MEXIKO</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">TIF 86</CELL>
+                <CELL COL="2">Sana International S. de R.L. de C.V.</CELL>
+                <CELL COL="3">San Luis Río Colorado</CELL>
+                <CELL COL="4">Sonora</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">TIF 150</CELL>
+                <CELL COL="2">Delimex Mexicana SA de C.V.</CELL>
+                <CELL COL="3">San Nicolás de los Garza</CELL>
+                <CELL COL="4">Nuevo León</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">TIF 209</CELL>
+                <CELL COL="2">SIGMA Alimentos Congelados SA de C.V.</CELL>
+                <CELL COL="3">Linares</CELL>
+                <CELL COL="4">Nuevo León</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="010">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: NUEVA ZELANDA</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: NOVÝ ZÉLAND</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: NEW ZEALAND</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: NEUSEELAND</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: UUS-MEREMAA</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΝΕΑ ΖΗΛΑΝΔΙΑ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: NEW ZEALAND</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: NOUVELLE-ZÉLANDE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: NUOVA ZELANDA</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: JAUNZĒLANDE</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: NAUJOJI ZELANDIJA</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország: ÚJ-ZÉLAND</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: NEW ZEALAND</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: NIEUW-ZEELAND</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: NOWA ZELANDIA</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: NOVA ZELÂNDIA</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: NOVÝ ZÉLAND</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: NOVA ZELANDIJA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: UUSI-SEELANTI</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: NYA ZEELAND</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 3</CELL>
+                <CELL COL="2">Waitaki Biosciences International Ltd</CELL>
+                <CELL COL="3">CHRISTCHURCH</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 5</CELL>
+                <CELL COL="2">Healtheries of New Zealand Ltd</CELL>
+                <CELL COL="3">AUCKLAND</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 14</CELL>
+                <CELL COL="2">Richmond Limited</CELL>
+                <CELL COL="3">HASTINGS</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 16</CELL>
+                <CELL COL="2">Prepared Foods Processing Ltd</CELL>
+                <CELL COL="3">PALMERSTON NORTH</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 23</CELL>
+                <CELL COL="2">Mair Venison - Rotorua</CELL>
+                <CELL COL="3">ROTORUA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 26</CELL>
+                <CELL COL="2">McFarlane Laboratories, New Zealand Limited</CELL>
+                <CELL COL="3">AUCKLAND</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 31</CELL>
+                <CELL COL="2">Advanced Foods of New Zealand Ltd</CELL>
+                <CELL COL="3">WAIPUKURAU</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 58</CELL>
+                <CELL COL="2">PPCS Mossburn</CELL>
+                <CELL COL="3">MOSSBURN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 68</CELL>
+                <CELL COL="2">Primex Meats (NZ) Ltd</CELL>
+                <CELL COL="3">TAWA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 88</CELL>
+                <CELL COL="2">Auckland Casing Co</CELL>
+                <CELL COL="3">TE PAPAPA</CELL>
+                <CELL COL="4">AUCKLAND</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 108</CELL>
+                <CELL COL="2">Fendalton Fish Supply</CELL>
+                <CELL COL="3">CHRISTCHURCH</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 109</CELL>
+                <CELL COL="2">Independent Casing Company Limited</CELL>
+                <CELL COL="3">STOKE</CELL>
+                <CELL COL="4">NELSON</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 114</CELL>
+                <CELL COL="2">Southland Casing Company Limited</CELL>
+                <CELL COL="3">INVERCARGILL</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 134</CELL>
+                <CELL COL="2">McCallum Industries Limited</CELL>
+                <CELL COL="3">AUCKLAND</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 149</CELL>
+                <CELL COL="2">Waikiwi Casing Company Limited</CELL>
+                <CELL COL="3">WAIKIWI</CELL>
+                <CELL COL="4">INVERCARGILL</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 170</CELL>
+                <CELL COL="2">AFFCO Shortland Cannery Ltd</CELL>
+                <CELL COL="3">AUCKLAND</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 173</CELL>
+                <CELL COL="2">Asian New Zealand Meat Co Ltd</CELL>
+                <CELL COL="3">DUNEDIN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 213</CELL>
+                <CELL COL="2">Rapa Casings Ltd</CELL>
+                <CELL COL="3">AUCKLAND</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 214</CELL>
+                <CELL COL="2">Garret International Meats Ltd</CELL>
+                <CELL COL="3">AUCKLAND</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 261</CELL>
+                <CELL COL="2">Levin Casing Co Ltd</CELL>
+                <CELL COL="3">LEVIN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">PH 416</CELL>
+                <CELL COL="2">Bakels Edible Oils (NZ) Ltd</CELL>
+                <CELL COL="3">MT MAUNGANUI</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">ME 50</CELL>
+                <CELL COL="2">Alliance Group Ltd Lorneville</CELL>
+                <CELL COL="3">SOUTHLAND</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="011">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: POLONIA</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: POLEN</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: POLEN</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΠΟΛΩΝΙΑ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: POLAND</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: POLOGNE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: POLONIA</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: POLEN</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: POLÓNIA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: PUOLA</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: POLEN</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">3</CELL>
+                <CELL COL="2">Zaklady Miesne Pamso</CELL>
+                <CELL COL="3">PABIANICE</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">7</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">GRUDZIADZ</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">8</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">POZNAN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">26</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">SOPOT</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">30</CELL>
+                <CELL COL="2">KRP Igloopol</CELL>
+                <CELL COL="3">DEBICA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">33</CELL>
+                <CELL COL="2">Constar Spolka Akcyjna</CELL>
+                <CELL COL="3">STARACHOWICE</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">45</CELL>
+                <CELL COL="2">Zaklady Miesne Farm Food</CELL>
+                <CELL COL="3">CZYZEW</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">46</CELL>
+                <CELL COL="2">Zaklady Miesne Polish Farm Meat</CELL>
+                <CELL COL="3">MALSZEWICZE</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">58</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">SZCZECIN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">65</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">NISKO</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">67</CELL>
+                <CELL COL="2">Zaklady Miesne w KOLE S.A</CELL>
+                <CELL COL="3">KOLO</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">73</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">DEBICA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">86</CELL>
+                <CELL COL="2">Alima-Gerber</CELL>
+                <CELL COL="3">RZESZOW</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">101</CELL>
+                <CELL COL="2">Przedsiebiorstwo Przemyslu Miesnego</CELL>
+                <CELL COL="3">JAROSLAW</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">104</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">RZESZOW</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">106</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">TARNOWSKIE GORY</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">131</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">OSTRODA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">139</CELL>
+                <CELL COL="2">Zaklady Miesne ELK S.A</CELL>
+                <CELL COL="3">ELK</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">140</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">BIALYSTOK</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">145</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">PIN ZAMOSC</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">161</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">KALISZ</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">201</CELL>
+                <CELL COL="2">Przedsiebiorstwo Przemyslu Miesnego</CELL>
+                <CELL COL="3">TARNOW</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">258</CELL>
+                <CELL COL="2">Zaklad Przetworstwa Miesnego Lange</CELL>
+                <CELL COL="3">KOSZALIN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">267</CELL>
+                <CELL COL="2">Zaklady Miesne</CELL>
+                <CELL COL="3">RAWA MAZOWIECKA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">268</CELL>
+                <CELL COL="2">Sokolowskie Zaklady Miesne S.A</CELL>
+                <CELL COL="3">SOKOLOW PODLASKI</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="012">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: RUMANÍA</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: RUMUNSKO</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: RUMÆNIEN</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: RUMÄNIEN</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: RUMEENIA</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: POYMANIA</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: ROMANIA</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: ROUMANIE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: ROMANIA</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: RUMĀNIJA</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: RUMUNIJA</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország: ROMÁNIA</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: RUMANIJA</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: ROEMENIË</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: RUMUNIA</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: ROMÉNIA</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: RUMUNSKO</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: ROMUNIJA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: ROMANIA</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: RUMÄNIEN</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">A1</CELL>
+                <CELL COL="2">S.C Carne SA</CELL>
+                <CELL COL="3">ARAD</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">A2</CELL>
+                <CELL COL="2">SC Agricola International S.A</CELL>
+                <CELL COL="3">BACAU</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">A8</CELL>
+                <CELL COL="2">S.C Comtom S.A</CELL>
+                <CELL COL="3">IASI</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">A12</CELL>
+                <CELL COL="2">SC Salcrud SA</CELL>
+                <CELL COL="3">SALONTA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">A13</CELL>
+                <CELL COL="2">SC Facos SA</CELL>
+                <CELL COL="3">SUCEAVA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">A32</CELL>
+                <CELL COL="2">SC Scandia SA</CELL>
+                <CELL COL="3">SIBIU</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">A33</CELL>
+                <CELL COL="2">S.C Carial S.A</CELL>
+                <CELL COL="3">SLOBOZIA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">A37</CELL>
+                <CELL COL="2">S.C Galco S.A</CELL>
+                <CELL COL="3">GALATI</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">A60</CELL>
+                <CELL COL="2">S.C Cicalex SA</CELL>
+                <CELL COL="3">ALEXANDRIA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">A68</CELL>
+                <CELL COL="2">S.C Comtim Carnex S.A</CELL>
+                <CELL COL="3">TIMISOARA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="013">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: SINGAPUR</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: SINGAPUR</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: SINGAPORE</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: SINGAPUR</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: SINGAPUR</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΣΙΓΚΑΠΟΥΡΗ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: SINGAPORE</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: SINGAPOUR</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: SINGAPORE</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: SINGAPŪRA</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: SINGAPŪRAS</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország: SZINGAPÚR</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: SINGAPOR</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: SINGAPORE</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: SINGAPUR</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: SINGAPURA</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: SINGAPUR</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: SINGAPUR</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: SINGAPORE</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: SINGAPORE</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">VPH-ME-001</CELL>
+                <CELL COL="2">Effort Holdings Pte Ltd</CELL>
+                <CELL COL="3">SINGAPORE</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">VPH-ME-002</CELL>
+                <CELL COL="2">Yeo Hiap Seng Ltd</CELL>
+                <CELL COL="3">SINGAPORE</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">VPH-ME-003</CELL>
+                <CELL COL="2">Amoy Canning Corporation (Singapore) Ltd</CELL>
+                <CELL COL="3">SINGAPORE</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="014">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: ESLOVENIA</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: SLOVENIEN</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: SLOWENIEN</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΣΛΟΒΕΝΙΑ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: SLOVENIA</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: SLOVÉNIE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: SLOVENIA</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: SLOVENIË</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: ESLOVÉNIA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: SLOVENIA</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: SLOVENIEN</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">22</CELL>
+                <CELL COL="2">Pomurka, Mesna industrija</CELL>
+                <CELL COL="3">MURSKA SOBOTA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">31</CELL>
+                <CELL COL="2">MIP Salami</CELL>
+                <CELL COL="3">TOLMIN</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">35</CELL>
+                <CELL COL="2">Alcisa - Kras</CELL>
+                <CELL COL="3">SEPULJE</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">45</CELL>
+                <CELL COL="2">Kolinska</CELL>
+                <CELL COL="3">LJUBLJANA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">47</CELL>
+                <CELL COL="2">Droga PC Argo</CELL>
+                <CELL COL="3">IZOLA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">86</CELL>
+                <CELL COL="2">Emona, Mesna industrija Zalog</CELL>
+                <CELL COL="3">LJUBLJANA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">119</CELL>
+                <CELL COL="2">Emona</CELL>
+                <CELL COL="3">LOKEV</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">126</CELL>
+                <CELL COL="2">MIP</CELL>
+                <CELL COL="3">NOVA GORICA</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">194</CELL>
+                <CELL COL="2">Kras Sezana</CELL>
+                <CELL COL="3">SECOVLJE</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">208</CELL>
+                <CELL COL="2">Kras Sezana</CELL>
+                <CELL COL="3">SEPULJE</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">224</CELL>
+                <CELL COL="2">Mercator, ETA</CELL>
+                <CELL COL="3">KAMNIK</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="015">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: REPÚBLICA ESLOVACA</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: SLOVAKIET</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: SLOWAKISCHE REPUBLIK</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΣΛΟΒΑΚΙΚΗ ΔΗΜΟΚΡΑΤΙΑ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: SLOVAK REPUBLIC</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: SLOVAQUIE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: REPUBBLICA SLOVACCA</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: SLOWAAKSE REPUBLIEK</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: REPÚBLICA ESLOVACA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: SLOVAKIA</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: SLOVAKIEN</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">SK 13</CELL>
+                <CELL COL="2">Nestle Food s.r.o.</CELL>
+                <CELL COL="3">Prievidza</CELL>
+                <CELL COL="4">Prievidza</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">SK 15</CELL>
+                <CELL COL="2">Tauris Nitra s.r.o.</CELL>
+                <CELL COL="3">Mojmirovce</CELL>
+                <CELL COL="4">Nitra</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">SK 16</CELL>
+                <CELL COL="2">Lumas M a M a.s.</CELL>
+                <CELL COL="3">Nitra</CELL>
+                <CELL COL="4">Nitra</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">SK 19</CELL>
+                <CELL COL="2">Kabát s.r.o.</CELL>
+                <CELL COL="3">Madunice</CELL>
+                <CELL COL="4">Hlohovec</CELL>
+                <CELL COL="5">6</CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="016">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: TÚNEZ</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: TUNISKO</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: TUNESIEN</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: TUNESIEN</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: TUNEESIA</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΤΥΝΗΣΙΑ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: TUNISIA</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: TUNISIE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: TUNISIA</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: TUNISIJA</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: TUNISAS</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország: TUNÉZIA</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: TUNEŻIJA</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: TUNESIË</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: TUNEZJA</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: TUNÍSIA</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: TUNISKO</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: TUNIZIJA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: TUNISIA</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: TUNISIEN</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">P.V. 101</CELL>
+                <CELL COL="2">Sovia</CELL>
+                <CELL COL="3">Khélidia</CELL>
+                <CELL COL="4">Tunis</CELL>
+                <CELL COL="5">
+                  <FT TYPE="DECIMAL">6,7</FT>
+                </CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="017">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: ESTADOS UNIDOS DE AMÉRICA</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: SPOJENÉ STÁTY AMERICKÉ</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: AMERIKAS FORENEDE STATER</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: VEREINIGTE STAATEN VON AMERIKA</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: AMEERIKA ÜHENDRIIGID</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΗΝΩΜΕΝΕΣ ΠΟΛΙΤΕΙΕΣ ΤΗΣ ΑΜΕΡΙΚΗΣ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: UNITED STATES OF AMERICA</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: ÉTATS-UNIS D&apos;AMÉRIQUE</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: STATI UNITI</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: AMERIKAS SAVIENOTĀS VALSTIS</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: JUNGTINĖS AMERIKOS VALSTIJOS</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország AMERIKAI EGYESÜLT ÁLLAMOK</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: STATI UNITI TA&apos; L-AMERIKA</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: VERENIGDE STATEN VAN AMERIKA</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: STANY ZJEDNOCZONE AMERYKI</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: ESTADOS UNIDOS DA AMÉRICA</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: SPOJENÉ ŠTÁTY AMERICKÉ</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: ZDRUŽENE DRŽAVE AMERIKE</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: AMERIKAN YHDYSVALLAT</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: FÖRENTA STATERNA</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">511</CELL>
+                <CELL COL="2">Rocco Further Processing</CELL>
+                <CELL COL="3">TIMBERVILLE</CELL>
+                <CELL COL="4">VA</CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">1554</CELL>
+                <CELL COL="2">Henningsen Foods</CELL>
+                <CELL COL="3">NORFOLK</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">4058</CELL>
+                <CELL COL="2">Fiorucci Foods Inc.</CELL>
+                <CELL COL="3">COLONIAL HGT.</CELL>
+                <CELL COL="4">VA</CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">5850</CELL>
+                <CELL COL="2">Ora Corporation</CELL>
+                <CELL COL="3">SAN DIEGO</CELL>
+                <CELL COL="4">CA</CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">6899</CELL>
+                <CELL COL="2">AMPC Inc.</CELL>
+                <CELL COL="3">LYTTON</CELL>
+                <CELL COL="4">IA</CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">6911</CELL>
+                <CELL COL="2">Bill-Mar Foods</CELL>
+                <CELL COL="3">ZEELAND</CELL>
+                <CELL COL="4">MI</CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">7211</CELL>
+                <CELL COL="2">Tyson Foods</CELL>
+                <CELL COL="3">BARRYVILLE</CELL>
+                <CELL COL="4">AR</CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">7827</CELL>
+                <CELL COL="2">Wampler-Longacre Inc.</CELL>
+                <CELL COL="3">FRANCONIA</CELL>
+                <CELL COL="4">PA</CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">8984</CELL>
+                <CELL COL="2">Provimi Veal Corp.</CELL>
+                <CELL COL="3">SEYMOUR</CELL>
+                <CELL COL="4">WI</CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">18297</CELL>
+                <CELL COL="2">Luigino&apos;s Inc.</CELL>
+                <CELL COL="3">JACKSON</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">18638</CELL>
+                <CELL COL="2">Van Den Berg Foods</CELL>
+                <CELL COL="3">OWENSBORO</CELL>
+                <CELL COL="4">KY</CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">18806</CELL>
+                <CELL COL="2">Rocking JC SW Foods</CELL>
+                <CELL COL="3">SCOTTSDALE</CELL>
+                <CELL COL="4">AZ</CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+        <P>
+          <TBL COLS="5" CLASS="GEN" NO.SEQ="018">
+            <TITLE>
+              <TI>
+                <P>
+                  <LV LG="ES">
+                    <TXT>País: SUDÁFRICA</TXT>
+                  </LV>
+                  <LV LG="CS">
+                    <TXT>Země: JIŽNÍ AFRIKA</TXT>
+                  </LV>
+                  <LV LG="DA">
+                    <TXT>Land: SYDAFRIKA</TXT>
+                  </LV>
+                  <LV LG="DE">
+                    <TXT>Land: SÜDAFRIKA</TXT>
+                  </LV>
+                  <LV LG="ET">
+                    <TXT>Riik: LÕUNA-AAFRIKA</TXT>
+                  </LV>
+                  <LV LG="EL">
+                    <TXT>Χώρα: ΝΟΤΙΑ ΑΦΡΙΚΗ</TXT>
+                  </LV>
+                  <LV LG="EN">
+                    <TXT>Country: SOUTH AFRICA</TXT>
+                  </LV>
+                  <LV LG="FR">
+                    <TXT>Pays: AFRIQUE DU SUD</TXT>
+                  </LV>
+                  <LV LG="IT">
+                    <TXT>Paese: SUDAFRICA</TXT>
+                  </LV>
+                  <LV LG="LV">
+                    <TXT>Valsts: DIENVIDĀFRIKA</TXT>
+                  </LV>
+                  <LV LG="LT">
+                    <TXT>Šalis: PIETŲ AFRIKA</TXT>
+                  </LV>
+                  <LV LG="HU">
+                    <TXT>Ország: DÉL-AFRIKAI KÖZTÁRSASÁG</TXT>
+                  </LV>
+                  <LV LG="MT">
+                    <TXT>Pajjiż: L-AFRIKA T&apos;ISFEL</TXT>
+                  </LV>
+                  <LV LG="NL">
+                    <TXT>Land: ZUID-AFRIKA</TXT>
+                  </LV>
+                  <LV LG="PL">
+                    <TXT>Państwo: REPUBLIKA POŁUDNIOWEJ AFRYKI</TXT>
+                  </LV>
+                  <LV LG="PT">
+                    <TXT>País: ÁFRICA DO SUL</TXT>
+                  </LV>
+                  <LV LG="SK">
+                    <TXT>Krajina: JUHOAFRICKÁ REPUBLIKA</TXT>
+                  </LV>
+                  <LV LG="SL">
+                    <TXT>Država: JUŽNA AFRIKA</TXT>
+                  </LV>
+                  <LV LG="FI">
+                    <TXT>Maa: ETELÄ-AFRIKKA</TXT>
+                  </LV>
+                  <LV LG="SV">
+                    <TXT>Land: SYDAFRIKA</TXT>
+                  </LV>
+                </P>
+              </TI>
+            </TITLE>
+            <CORPUS>
+              <ROW TYPE="HEADER">
+                <CELL COL="1" TYPE="HEADER">1</CELL>
+                <CELL COL="2" TYPE="HEADER">2</CELL>
+                <CELL COL="3" TYPE="HEADER">3</CELL>
+                <CELL COL="4" TYPE="HEADER">4</CELL>
+                <CELL COL="5" TYPE="HEADER">5</CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">ZA21</CELL>
+                <CELL COL="2">Finlar Foods</CELL>
+                <CELL COL="3">STICKLAND</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">ZA23</CELL>
+                <CELL COL="2">Finlar Foods</CELL>
+                <CELL COL="3">JOHANNESBURG</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">ZA43</CELL>
+                <CELL COL="2">Eskort Bacon Co</CELL>
+                <CELL COL="3">ESTCOURT</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">ZA47</CELL>
+                <CELL COL="2">Bull Brand Foods</CELL>
+                <CELL COL="3">KRUGERSDORP</CELL>
+                <CELL COL="4">
+                  <IE>
+                  </IE>
+                </CELL>
+                <CELL COL="5">
+                  <IE>
+                  </IE>
+                </CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </P>
+      </CONTENTS>
+    </CONS.ANNEX>
+  </CONS.DOC>
+</CONS.ACT>

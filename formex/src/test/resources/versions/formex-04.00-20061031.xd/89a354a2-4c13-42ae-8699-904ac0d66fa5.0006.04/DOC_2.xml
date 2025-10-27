@@ -1,0 +1,52 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-04.00-20061031.xd">
+  <BIB.DOC>
+    <NO.DOC TYPE="OJ">
+      <TXT>2009/C 44/132</TXT>
+    </NO.DOC>
+    <NO.DOC TYPE="INTERNAL">
+      <TXT>F-89/08</TXT>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>TFP</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2009044EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>044</NO.OJ>
+    <DATE ISO="20090221">20090221</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0132" SYNOPTISM="D0132">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>CASE</LEGAL.VALUE>
+      <DATE ISO="20081103">20081103</DATE>
+      <PAGE.FIRST>74</PAGE.FIRST>
+      <PAGE.LAST>75</PAGE.LAST>
+      <PAGE.TOTAL>2</PAGE.TOTAL>
+      <PAGE.SEQ>3</PAGE.SEQ>
+      <REF.PHYS FILE="C_2009044EN.01007403.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0132">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Case F-89/08: Action brought on<DATE ISO="20081103">3 November 2008</DATE>— P v Parliament</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>74</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0132">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_04420090221en00740075.pdf">74</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

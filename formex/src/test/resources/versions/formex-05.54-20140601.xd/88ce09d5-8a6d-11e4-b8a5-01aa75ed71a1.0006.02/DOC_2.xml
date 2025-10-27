@@ -1,0 +1,1127 @@
+<GENERAL noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.54-20140601.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2014464EN.01000101.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>464</NO.OJ>
+      <YEAR>2014</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>57</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20141223">20141223</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0001</NO.SEQ>
+    <PAGE.FIRST>1</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>19</PAGE.LAST>
+    <PAGE.TOTAL>19</PAGE.TOTAL>
+    <NO.DOC TYPE="OJ">
+      <TXT>2014/C 464/01</TXT>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <MARGIN>13 January 2014</MARGIN>
+        <HT TYPE="UC">Minutes of the sitting of<DATE ISO="20140113">13 January 2014</DATE>
+        </HT>
+      </P>
+      <NO.DOC.C>2014/C 464/01</NO.DOC.C>
+    </TI>
+  </TITLE>
+  <TOC>
+    <TOC.HD>
+      <TOC.HD.CONT>Contents</TOC.HD.CONT>
+      <TOC.HD.REF>Page</TOC.HD.REF>
+    </TOC.HD>
+    <TOC.BLK>
+      <TOC.BLK>
+        <TOC.ITEM>
+          <NO.ITEM>1.</NO.ITEM>
+          <ITEM.CONT>Resumption of the session</ITEM.CONT>
+          <ITEM.REF>3</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>2.</NO.ITEM>
+          <ITEM.CONT>Approval of the minutes of the previous sitting</ITEM.CONT>
+          <ITEM.REF>3</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>3.</NO.ITEM>
+          <ITEM.CONT>Statements by the President</ITEM.CONT>
+          <ITEM.REF>3</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>4.</NO.ITEM>
+          <ITEM.CONT>Calendar of European Parliament part-sessions — 2015</ITEM.CONT>
+          <ITEM.REF>3</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>5.</NO.ITEM>
+          <ITEM.CONT>Composition of Parliament</ITEM.CONT>
+          <ITEM.REF>4</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>6.</NO.ITEM>
+          <ITEM.CONT>Composition of political groups</ITEM.CONT>
+          <ITEM.REF>4</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>7.</NO.ITEM>
+          <ITEM.CONT>Composition of committees and delegations</ITEM.CONT>
+          <ITEM.REF>4</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>8.</NO.ITEM>
+          <ITEM.CONT>Corrigendum (Rule 216)</ITEM.CONT>
+          <ITEM.REF>5</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>9.</NO.ITEM>
+          <ITEM.CONT>Signature of acts adopted under the ordinary legislative procedure (Rule 74)</ITEM.CONT>
+          <ITEM.REF>5</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>10.</NO.ITEM>
+          <ITEM.CONT>Documents received</ITEM.CONT>
+          <ITEM.REF>7</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>11.</NO.ITEM>
+          <ITEM.CONT>Delegated acts (Rule 87a)</ITEM.CONT>
+          <ITEM.REF>12</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>12.</NO.ITEM>
+          <ITEM.CONT>Action taken on Parliament&apos;s resolutions</ITEM.CONT>
+          <ITEM.REF>12</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>13.</NO.ITEM>
+          <ITEM.CONT>Questions for oral answer (submission)</ITEM.CONT>
+          <ITEM.REF>12</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>14.</NO.ITEM>
+          <ITEM.CONT>Petitions</ITEM.CONT>
+          <ITEM.REF>13</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>15.</NO.ITEM>
+          <ITEM.CONT>Order of business</ITEM.CONT>
+          <ITEM.REF>15</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>16.</NO.ITEM>
+          <ITEM.CONT>CO<HT TYPE="SUB">2</HT>emissions from new light commercial vehicles ***I (debate)</ITEM.CONT>
+          <ITEM.REF>15</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>17.</NO.ITEM>
+          <ITEM.CONT>Carbon capture and storage technology (debate)</ITEM.CONT>
+          <ITEM.REF>16</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>18.</NO.ITEM>
+          <ITEM.CONT>Combating wildlife crime (debate)</ITEM.CONT>
+          <ITEM.REF>16</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>19.</NO.ITEM>
+          <ITEM.CONT>One-minute speeches on matters of political importance</ITEM.CONT>
+          <ITEM.REF>17</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>20.</NO.ITEM>
+          <ITEM.CONT>Smart specialisation: networking excellence for a sound Cohesion Policy (short presentation)</ITEM.CONT>
+          <ITEM.REF>17</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>21.</NO.ITEM>
+          <ITEM.CONT>eHealth Action Plan 2012-2020 (short presentation)</ITEM.CONT>
+          <ITEM.REF>18</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>22.</NO.ITEM>
+          <ITEM.CONT>Food crisis, fraud in the food chain and the control thereof (short presentation)</ITEM.CONT>
+          <ITEM.REF>18</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>23.</NO.ITEM>
+          <ITEM.CONT>Effective labour inspections as a strategy to improve working conditions (short presentation)</ITEM.CONT>
+          <ITEM.REF>18</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>24.</NO.ITEM>
+          <ITEM.CONT>Financial participation of employees in companies&apos; proceeds (short presentation)</ITEM.CONT>
+          <ITEM.REF>19</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>25.</NO.ITEM>
+          <ITEM.CONT>Social protection for all, including self-employed workers (short presentation)</ITEM.CONT>
+          <ITEM.REF>19</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>26.</NO.ITEM>
+          <ITEM.CONT>Agenda of the next sitting</ITEM.CONT>
+          <ITEM.REF>19</ITEM.REF>
+        </TOC.ITEM>
+        <TOC.ITEM>
+          <NO.ITEM>27.</NO.ITEM>
+          <ITEM.CONT>Closure of the sitting</ITEM.CONT>
+          <ITEM.REF>19</ITEM.REF>
+        </TOC.ITEM>
+      </TOC.BLK>
+      <TOC.BLK>
+        <TOC.ITEM>
+          <ITEM.CONT>ATTENDANCE REGISTER</ITEM.CONT>
+          <ITEM.REF>20</ITEM.REF>
+        </TOC.ITEM>
+      </TOC.BLK>
+    </TOC.BLK>
+  </TOC>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Minutes of the sitting of<DATE ISO="20140113">13 January 2014</DATE>
+            </HT>
+          </P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>IN THE CHAIR: Martin SCHULZ</P>
+          </TI>
+          <STI>
+            <P>
+              <HT TYPE="ITALIC">President</HT>
+            </P>
+          </STI>
+        </TITLE>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>1.</NO.P>
+                <TXT>Resumption of the session</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The sitting opened at 17.05.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>2.</NO.P>
+                <TXT>Approval of the minutes of the previous sitting</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The minutes of the previous sitting were approved.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>3.</NO.P>
+                <TXT>Statements by the President</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>ThePresident welcomed the adoption of the euro by Latvia on<DATE ISO="20140101">1 January 2014</DATE>.</P>
+          <P>The President spoke of the numerous storms in Europe in recent weeks and said there would be a debate on the subject during one of the February part-sessions. He expressed Parliament&apos;s solidarity with the victims of the storms.</P>
+          <P>The President spoke of the UN conference on the future of Syria would open in Geneva on<DATE ISO="20140122">22 January 2014</DATE>. He stressed the importance of this conference.</P>
+          <P>The President commented on press reports of accusations made by the Romanian Prime Minister, Victor Ponta, against Elmar Brok. He said that, if these accusations had indeed been made, they were deplorable.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>4.</NO.P>
+                <TXT>Calendar of European Parliament part-sessions — 2015</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>At its meeting of<DATE ISO="20131212">12 December 2013</DATE>the Conference of Presidents had adopted the following draft calendar of part-sessions for the parliamentary year 2015:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>12 to 15 January</P>
+            </ITEM>
+            <ITEM>
+              <P>28 January</P>
+            </ITEM>
+            <ITEM>
+              <P>9 to 12 February</P>
+            </ITEM>
+            <ITEM>
+              <P>25 February</P>
+            </ITEM>
+            <ITEM>
+              <P>9 to 12 March</P>
+            </ITEM>
+            <ITEM>
+              <P>25 March</P>
+            </ITEM>
+            <ITEM>
+              <P>15 April</P>
+            </ITEM>
+            <ITEM>
+              <P>27 to 30 April</P>
+            </ITEM>
+            <ITEM>
+              <P>18 to 21 May</P>
+            </ITEM>
+            <ITEM>
+              <P>27 May</P>
+            </ITEM>
+            <ITEM>
+              <P>8 to 11 June</P>
+            </ITEM>
+            <ITEM>
+              <P>24 June</P>
+            </ITEM>
+            <ITEM>
+              <P>6 to 9 July</P>
+            </ITEM>
+            <ITEM>
+              <P>7 to 10 September</P>
+            </ITEM>
+            <ITEM>
+              <P>16 September</P>
+            </ITEM>
+            <ITEM>
+              <P>5 to 8 October</P>
+            </ITEM>
+            <ITEM>
+              <P>14 October</P>
+            </ITEM>
+            <ITEM>
+              <P>26 to 29 October</P>
+            </ITEM>
+            <ITEM>
+              <P>11 November</P>
+            </ITEM>
+            <ITEM>
+              <P>23 to 26 November</P>
+            </ITEM>
+            <ITEM>
+              <P>2 December</P>
+            </ITEM>
+            <ITEM>
+              <P>14 to 17 December.</P>
+            </ITEM>
+          </LIST>
+          <P>The deadline for tabling amendments was set for Tuesday<DATE ISO="20140114">14 January 2014</DATE>at 12 noon.</P>
+          <P>The vote would be held on Wednesday<DATE ISO="20140115">15 January 2014</DATE>at 12 noon.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>5.</NO.P>
+                <TXT>Composition of Parliament</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The Danish authorities had given notice of the election of Claus Larsen-Jensen to replace Dan Jørgensen as Member of Parliament with effect from<DATE ISO="20131213">13 December 2013</DATE>.</P>
+          <P>The Polish authorities responsible had given notice of the election of Zbigniew Zaleski and Tadeusz Edward Ross to replace Lena Kolarska-Bobińska and Rafał Trzaskowski with effect from<DATE ISO="20131217">17 December 2013</DATE>.</P>
+          <P>In accordance with Article 7(1) of the Act concerning the election of the members of the European Parliament by direct universal suffrage and Rule 4(1) and (4), Parliament took note of the election of Claus Larsen-Jensen with effect from<DATE ISO="20131213">13 December 2013</DATE>, and of Zbigniew Zaleski and Tadeusz Edward Ross with effect from<DATE ISO="20131217">17 December 2013</DATE>.</P>
+          <P>Under Rule 3(2), until such time as their credentials had been verified or a ruling had been given on any dispute, and provided that they had previously made a written declaration stating that they did not hold any office incompatible with that of Member of the European Parliament, Claus Larsen-Jensen, Zbigniew Zaleski et Tadeusz Edward Ross would take their seats in Parliament and on its bodies and would enjoy all the rights attaching thereto.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>6.</NO.P>
+                <TXT>Composition of political groups</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>Godfrey Bloom was no longer a member of the EFD Group and was sitting with the non-attached Members with effect from<DATE ISO="20140109">9 January 2014</DATE>.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>7.</NO.P>
+                <TXT>Composition of committees and delegations</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The President had received the following requests for appointments from the PPE, S&amp;D and Verts/ALE Groups:</P>
+          <P>AFCO Committee: Tadeusz Ross</P>
+          <P>ITRE Committee: Zbigniew Zaleski</P>
+          <P>PETI Committee: Zbigniew Zaleski</P>
+          <P>Delegation for relations with the United States: Tadeusz Ross</P>
+          <P>Delegation for relations with India: Zbigniew Zaleski</P>
+          <P>ENVI Committee: Claus Larsen-Jensen</P>
+          <P>Delegation for relations with Iran: Claus Larsen-Jensen</P>
+          <P>Delegation for relations with Afghanistan: Keith Taylor was no longer a member.</P>
+          <P>The appointments would be deemed ratified if there were no objections before the approval of these minutes.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>8.</NO.P>
+                <TXT>Corrigendum<HT TYPE="NORMAL">(Rule 216)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The committee responsible had forwarded the following corrigendum to a text adopted by Parliament:</P>
+          <P>Corrigendum<HT TYPE="ITALIC">P7_TA(2010)0431(COR02)</HT>to Directive 2011/65/EU of the European Parliament and of the Council of<DATE ISO="20110608">8 June 2011</DATE>on the restriction of the use of certain hazardous substances in electrical and electronic equipment (<REF.DOC.OJ COLL="L" NO.OJ="174" PAGE.FIRST="88" DATE.PUB="20110701">OJ L 174, 1.7.2011, p. 88</REF.DOC.OJ>) — (position of the European Parliament adopted at first reading on<DATE ISO="20101124">24 November 2010</DATE>with a view to the adoption of the above directive P7_TA(2010)0431 (<REF.DOC.OJ COLL="C" NO.OJ="099E" PAGE.FIRST="207" DATE.PUB="20120403">OJ C 99 E, 3.4.2012, p. 207</REF.DOC.OJ>) — (COM(2008)0809 — C6-0471/2008 — 2008/0240(COD)) — ENVI Committee)</P>
+          <P>Pursuant to Rule 216(4), this corrigendum would be deemed approved unless, within 24 hours, a request was made by a political group or at least 40 Members that it be put to the vote.</P>
+          <P>The corrigendum would be available on the<HT TYPE="ITALIC">Séance en direct</HT>website during the current part-session.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>9.</NO.P>
+                <TXT>Signature of acts adopted under the ordinary legislative procedure<HT TYPE="NORMAL">(Rule 74)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The President announced that since the adjournment of the session in December 2013, he had together with the President of the Council signed eighteen acts adopted under the ordinary legislative procedure, and that he would sign a further two acts that Wednesday:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council laying down certain transitional provisions on support for rural development by the European Agricultural Fund for Rural Development (EAFRD), amending Regulation (EU) No …/2013 of the European Parliament and of the Council as regards resources and their distribution in respect of the year 2014 and amending Council Regulation (EC) No 73/2009 and Regulations (EU) No …/2013, (EU) No …/2013 and (EU) No …/2013 of the European Parliament and of the Council as regards their application in the year 2014 (00103/2013/LEX — C7-0483/2013 — 2013/0117(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council establishing a common organisation of the markets in agricultural products and repealing Council Regulations (EEC) No 922/72, (EEC) No 234/79, (EC) No 1037/2001 and (EC) No 1234/2007 (00096/2013/LEX — C7-0482/2013 — 2011/0281(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council establishing rules for direct payments to farmers under support schemes within the framework of the common agricultural policy and repealing Council Regulation (EC) No 637/2008 and Council Regulation (EC) No 73/2009 (00095/2013/LEX — C7-0481/2013 — 2011/0280(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council on the financing, management and monitoring of the common agricultural policy and repealing Council Regulations (EEC) No 352/78, (EC) No 165/94, (EC) No 2799/98, (EC) No 814/2000, (EC) No 1290/2005 and (EC) No 485/2008 (00094/2013/LEX — C7-0480/2013 — 2011/0288(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council on support for rural development by the European Agricultural Fund for Rural Development (EAFRD) and repealing Council Regulation (EC) No 1698/2005 (00093/2013/LEX — C7-0479/2013 — 2011/0282(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council on the European Globalisation Adjustment Fund (2014 2020) and repealing Regulation (EC) No 1927/2006 (00099/2013/LEX — C7-0478/2013 — 2011/0269(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council on the European Social Fund and repealing Council Regulation (EC) No 1081/2006 (00087/2013/LEX — C7-0477/2013 — 2011/0268(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council laying down common provisions on the European Regional Development Fund, the European Social Fund, the Cohesion Fund, the European Agricultural Fund for Rural Development and the European Maritime and Fisheries Fund and laying down general provisions on the European Regional Development Fund, the European Social Fund, the Cohesion Fund and the European Maritime and Fisheries Fund and repealing Council Regulation (EC) No 1083/2006 (00085/2013/LEX — C7-0476/2013 — 2011/0276(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council amending Regulation (EC) No 1082/2006 on a European grouping of territorial cooperation (EGTC) as regards the clarification, simplification and improvement of the establishment and functioning of such groupings (00084/2013/LEX — C7-0475/2013 — 2011/0272(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council on the European Regional Development Fund and on specific provisions concerning the Investment for growth and jobs goal and repealing Regulation (EC) No 1080/2006 (00083/2013/LEX — C7-0474/2013 — 2011/0275(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council amending Regulation (EU) No 99/2013 on the European statistical programme 2013-17 (00108/2013/LEX — C7-0473/2013 — 2013/0249(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council on the Cohesion Fund and repealing Council Regulation (EC) No 1084/2006 (00082/2013/LEX — C7-0472/2013 — 2011/0274(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council on specific provisions for the support from the European Regional Development Fund to the European territorial cooperation goal (00081/2013/LEX — C7-0471/2013 — 2011/0273(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council establishing a Justice Programme for the period 2014 to 2020 (00090/2013/LEX — C7-0470/2013 — 2011/0369(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council establishing a Rights, Equality and Citizenship Programme for the period 2014 to 2020 (00089/2013/LEX — C7-0469/2013 — 2011/0344(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Decision of the European Parliament and of the Council on a Union Civil Protection Mechanism (00097/2013/LEX — C7-0468/2013 — 2011/0461(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Decision of the European Parliament and of the Council amending Directive 2003/87/EC clarifying provisions on the timing of auctions of greenhouse gas allowances (00114/2013/LEX — C7-0467/2013 — 2012/0202(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council amending Council Regulation (EC) No 55/2008 introducing autonomous trade preferences for the Republic of Moldova (00111/2013/LEX — C7-0466/2013 — 2013/0325(COD))</P>
+            </ITEM>
+          </LIST>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council amending certain regulations relating to the common commercial policy as regards the granting of delegated and implementing powers for the adoption of certain measures (00146/2013/LEX — C7-0013/2014 — 2011/0153(COD))</P>
+            </ITEM>
+            <ITEM>
+              <P>Regulation of the European Parliament and of the Council amending certain regulations relating to the common commercial policy as regards the procedures for the adoption of certain measures (00145/2013/LEX — C7-0012/2014 — 2011/0039(COD))</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>10.</NO.P>
+                <TXT>Documents received</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The following documents had been received:</P>
+          <LIST TYPE="ARAB">
+            <ITEM>
+              <NP>
+                <NO.P>1)</NO.P>
+                <TXT>
+                  <HT TYPE="ITALIC">from the Council and Commission</HT>
+                </TXT>
+                <P>
+                  <LIST TYPE="DASH">
+                    <ITEM>
+                      <P>Proposal for transfer of appropriations DEC 45/2013 — Section III — Commission (N7-0001/2014 — C7-0001/2014 — 2014/2000(GBD))</P>
+                      <P>referred to responsible: BUDG</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a directive of the European Parliament and of the Council on the limitation of emissions of certain pollutants into the air from medium combustion plants (COM(2013)0919 — C7-0003/2014 — 2013/0442(COD))</P>
+                      <P>The President would consult the European Economic and Social Committee and the Committee of the Regions on this proposal, in accordance with Rule 124(1) and Rule 125(1).</P>
+                      <P>referred to responsible: ENVI opinion: ITRE</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a directive of the European Parliament and of the Council on the reduction of national emissions of certain atmospheric pollutants and amending Directive 2003/35/EC (COM(2013)0920 — C7-0004/2014 — 2013/0443(COD))</P>
+                      <P>The President would consult the European Economic and Social Committee and the Committee of the Regions on this proposal, in accordance with Rule 124(1) and Rule 125(1).</P>
+                      <P>referred to responsible: ENVI opinion: AGRI, ITRE, TRAN, REGI</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a Council decision on the conclusion, on behalf of the European Union, of the Nagoya Protocol on Access to Genetic Resources and the Fair and Equitable Sharing of Benefits Arising from their Utilisation to the Convention on Biological Diversity (06852/2013 — C7-0005/2014 — 2012/0279(NLE))</P>
+                      <P>referred to responsible: ENVI opinion: DEVE, PECH, AGRI, ITRE, REGI</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Amended proposal for a directive of the European Parliament and of the Council laying down a procedure for the provision of information in the field of technical regulations and of rules on Information Society services (codification) (COM(2013)0932 — C7-0006/2014 — 2010/0095(COD))</P>
+                      <P>The President would consult the European Economic and Social Committee on this proposal, in accordance with Rule 124(1).</P>
+                      <P>referred to responsible: JURI</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a Council decision on the conclusion on behalf of the European Union and its Member States of the Protocol to the Stabilisation and Association Agreement between the European Communities and their Member States, of the one part, and the Republic of Montenegro, of the other part, to take account of the accession of the Republic of Croatia to the European Union (14187/2013 — C7-0007/2014 — 2013/0262(NLE))</P>
+                      <P>referred to responsible: AFET</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Partial renewal of members of the Court of Auditors — Oskar HERICS (AT) (05077/2014 — C7-0009/2014 — 2014/0802(NLE))</P>
+                      <P>referred to responsible: CONT</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Council Recommendation on the appointment of a member of the Executive Board of the European Central Bank (N7-0002/2014 — C7-0010/2014 — 2014/0801(NLE))</P>
+                      <P>referred to responsible: ECON</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for directive of the European Parliament and of the Council on the strengthening of certain aspects of the presumption of innocence and of the right to be present at trial in criminal proceedings (COM(2013)0821 — C7-0427/2013 — 2013/0407(COD))</P>
+                      <P>In accordance with Articles 304 and 307 of the Treaty, the President would consult the European Economic and Social Committee and the Committee of the Regions on this proposal</P>
+                      <P>referred to responsible: LIBE opinion: JURI</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a directive of the European Parliament and of the Council on procedural safeguards for children suspected or accused in criminal proceedings (COM(2013)0822 — C7-0428/2013 — 2013/0408(COD))</P>
+                      <P>In accordance with Articles 304 and 307 of the Treaty, the President would consult the European Economic and Social Committee and the Committee of the Regions on this proposal</P>
+                      <P>referred to responsible: LIBE opinion: JURI</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a directive of the European Parliament and of the Council on provisional legal aid for suspects or accused persons deprived of liberty and legal aid in European arrest warrant proceedings (COM(2013)0824 — C7-0429/2013 — 2013/0409(COD))</P>
+                      <P>In accordance with Articles 304 and 307 of the Treaty, the President would consult the European Economic and Social Committee and the Committee of the Regions on this proposal</P>
+                      <P>referred to responsible: LIBE opinion: JURI</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a Regulation of the European Parliament and of the Council amending Regulation (EC) No 539/2001 listing the third countries whose nationals must be in possession of visas when crossing the external borders and those whose nationals are exempt from that requirement (COM(2013)0853 — C7-0430/2013 — 2013/0415(COD))</P>
+                      <P>referred to responsible: LIBE opinion: AFET</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a Decision of the European Parliament and of the Council providing macro-financial assistance to the Republic of Tunisia (COM(2013)0860 — C7-0437/2013 — 2013/0416(COD))</P>
+                      <P>referred to responsible: INTA opinion: AFET, BUDG</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a directive of the European Parliament and of the Council on the Union legal framework for customs infringements and sanctions (COM(2013)0884 — C7-0461/2013 — 2013/0432(COD))</P>
+                      <P>referred to responsible: IMCO opinion: JURI, ECON, CONT, INTA</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a Council decision concerning the extension of the Agreement for scientific and technological cooperation between the European Community and the Government of the United States of America (15854/2013 — C7-0462/2013 — 2013/0351(NLE))</P>
+                      <P>referred to responsible: ITRE</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a Council regulation extending to the non-participating Member States the application of Regulation (EU) No …/2012 establishing an exchange, assistance and training programme for the protection of the euro against counterfeiting (the<QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+                        </QUOT.START>Pericles 2020<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+                        </QUOT.END>programme) (16616/2013 — C7-0463/2013 — 2011/0446(APP))</P>
+                      <P>referred to responsible: LIBE opinion: BUDG, ECON</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a Council directive amending Directive 2011/96/EU on the common system of taxation applicable in the case of parent companies and subsidiaries of different Member States (COM(2013)0814 — C7-0464/2013 — 2013/0400(CNS))</P>
+                      <P>referred to responsible: ECON opinion: JURI</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a regulation of the European Parliament and of the Council amending Council Regulations (EC) No 850/98, (EC) No 2187/2005, (EC) No 1967/2006, (EC) No 1098/2007, No 254/2002, (EC) No 2347/2002 and (EC) No 1224/2009 and repealing (EC) No 1434/98 as regards the landing obligation (COM(2013)0889 — C7-0465/2013 — 2013/0436(COD))</P>
+                      <P>The President would consult the European Economic and Social Committee on this proposal, in accordance with Rule 124(1).</P>
+                      <P>referred to responsible: PECH opinion: ENVI</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a Council decision on the conclusion, on behalf of the European Union, of the Protocol setting out fishing opportunities and the financial contribution provided for in the Fisheries Partnership Agreement between the European Union and the Gabonese Republic (11871/2013 — C7-0484/2013 — 2013/0216(NLE))</P>
+                      <P>referred to responsible: PECH opinion: DEVE, BUDG</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a Council decision concerning the ratification of, or the accession to, the Hong Kong International Convention for the Safe and Environmentally Sound Recycling of Ships, 2009, by the Member States in the interests of the European Union (15902/2013 — C7-0485/2013 — 2012/0056(NLE))</P>
+                      <P>referred to responsible: ENVI opinion: ITRE, JURI, TRAN</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a Council decision on the conclusion of the Protocol to the Partnership and Cooperation Agreement between the European Communities and their Member States, of the one part, and Georgia of the other part, on a Framework Agreement between the European Union and Georgia on the general principles for the participation of Georgia in Union programmes (16612/2013 — C7-0486/2013 — 2013/0257(NLE))</P>
+                      <P>referred to responsible: AFET</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>Proposal for a Council Decision authorising France to apply a reduced rate of certain indirect taxes on<QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002">
+                        </QUOT.START>traditional<QUOT.END CODE="2019" ID="QE0002" REF.START="QS0002">
+                        </QUOT.END>rum produced in Guadeloupe, French Guiana, Martinique and Réunion and amending Decision 2007/659/EC (COM(2013)0839 — C7-0488/2013 — 2013/0413(CNS))</P>
+                      <P>referred to responsible: REGI opinion: AGRI, ECON</P>
+                    </ITEM>
+                  </LIST>
+                </P>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>2)</NO.P>
+                <TXT>
+                  <HT TYPE="ITALIC">from committees</HT>
+                </TXT>
+                <P>
+                  <LIST TYPE="ARAB">
+                    <ITEM>
+                      <NP>
+                        <NO.P>2.1)</NO.P>
+                        <TXT>
+                          <HT TYPE="ITALIC">reports</HT>
+                        </TXT>
+                        <P>
+                          <LIST TYPE="DASH">
+                            <ITEM>
+                              <P>Report on EU Member States preparedness to an effective and timely start of the new Cohesion Policy Programming period (2013/2095(INI)) — REGI Committee — Rapporteur: Derek Vaughan (A7-0007/2014)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a directive of the European Parliament and of the Council on the award of concession contracts (COM(2011)0897 — C7-0004/2012 — 2011/0437(COD)) — IMCO Committee — Rapporteur: Philippe Juvin (A7-0030/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a directive of the European Parliament and of the Council on procurement by entities operating in the water, energy, transport and postal services sectors (COM(2011)0895 — C7-0007/2012 — 2011/0439(COD)) — IMCO Committee — Rapporteur: Marc Tarabella (A7-0034/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a regulation of the European Parliament and of the Council amending Regulation (EU) No 528/2012 concerning the making available on the market and use of biocidal products with regard to certain conditions for access to the market (COM(2013)0288 — C7-0141/2013 — 2013/0150(COD)) — ENVI Committee — Rapporteur: Matthias Groote (A7-0354/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a regulation of the European Parliament and of the Council amending Regulation (EU) No 912/2010 setting up the European GNSS Agency (COM(2013)0040 — C7-0031/2013 — 2013/0022(COD)) — ITRE Committee — Rapporteur: Amalia Sartori (A7-0364/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a directive of the European Parliament and of the Council on the conditions of entry and residence of third-country nationals for the purposes of research, studies, pupil exchange, remunerated and unremunerated training, voluntary service and au pairing(recast) (COM(2013)0151 — C7-0080/2013 — 2013/0081(COD)) — LIBE Committee — Rapporteur: Cecilia Wikström (A7-0377/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a decision of the European Parliament and of the Council on the European Year of Development (2015) (COM(2013)0509 — C7-0229/2013 — 2013/0238(COD)) — DEVE Committee — Rapporteur: Charles Goerens (A7-0384/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a directive of the European Parliament and of the Council on measures facilitating the exercise of rights conferred on workers in the context of freedom of movement for workers (COM(2013)0236 — C7-0114/2013 — 2013/0124(COD)) — EMPL Committee — Rapporteur: Edit Bauer (A7-0386/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a regulation of the European Parliament and of the Council on the protection of individuals with regard to the processing of personal data and on the free movement of such data (General Data Protection Regulation) (COM(2012)0011 — C7-0025/2012 — 2012/0011(COD)) — LIBE Committee — Rapporteur: Jan Philipp Albrecht (A7-0402/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a directive of the European Parliament and of the Council on the protection of individuals with regard to the processing of personal data by competent authorities for the purposes of prevention, investigation, detection or prosecution of criminal offences or the execution of criminal penalties, and the free movement of such data (COM(2012)0010 — C7-0024/2012 — 2012/0010(COD)) — LIBE Committee — Rapporteur: Dimitrios Droutsas (A7-0403/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on amendment of Rule 81 of Parliament&apos;s Rules of Procedure on the consent procedure (2012/2124(REG)) — AFCO Committee — Rapporteur: Rafał Trzaskowski (A7-0412/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a Regulation of the European Parliament and of the Council laying down provisions for the management of expenditure relating to the food chain, animal health and animal welfare, and relating to plant health and plant reproductive material, amending Council Directives 98/56/EC, 2000/29/EC and 2008/90/EC, Regulations (EC) No 178/2002, (EC) No 882/2004 and (EC) No 396/2005, Directive 2009/128/EC and Regulation (EC) No 1107/2009 and repealing Council Decisions 66/399/EEC, 76/894/EEC and 2009/470/EC (COM(2013)0327 — C7-0167/2013 — 2013/0169(COD)) — AGRI Committee — Rapporteur: Agnès Le Brun (A7-0424/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on implementation report 2013: developing and applying carbon capture and storage technology in Europe (2013/2079(INI)) — ENVI Committee — Rapporteur: Chris Davies (A7-0430/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Recommendation on the draft Council decision repealing Decision 2007/124/EC, Euratom establishing for the period 2007 to 2013, as part of General Programme on Security and Safeguarding Liberties, the Specific Programme<QUOT.START CODE="2018" ID="QS0003" REF.END="QE0003">
+                                </QUOT.START>Prevention, Preparedness and Consequence Management of Terrorism and other Security related risks<QUOT.END CODE="2019" ID="QE0003" REF.START="QS0003">
+                                </QUOT.END>(15187/2013 — C7-0418/2013 — 2013/0281(APP)) — LIBE Committee — Rapporteur: Juan Fernando López Aguilar (A7-0432/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on the food crisis, fraud in the food chain and the control thereof (2013/2091(INI)) — ENVI Committee — Rapporteur: Esther de Lange (A7-0434/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on follow-up on the delegation of legislative powers and control by Member States of the Commission&apos;s exercise of implementing powers (2012/2323(INI)) — JURI Committee — Rapporteur: József Szájer (A7-0435/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a directive of the European Parliament and of the Council amending Council Directive 2001/110/EC relating to honey (COM(2012)0530 — C7-0304/2012 — 2012/0260(COD)) — ENVI Committee — Rapporteur: Julie Girling (A7-0440/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on the future of EU-ASEAN relations (2013/2148(INI)) — AFET Committee — Rapporteur: Reinhard Bütikofer (A7-0441/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on the EU Justice Scoreboard — civil and administrative justice in the Member States (2013/2117(INI)) — JURI Committee — Rapporteur: Tadeusz Zwiefka (A7-0442/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on the eHealth Action Plan 2012-2020 — Innovative healthcare for the 21st century (2013/2061(INI)) — ENVI Committee — Rapporteur: Pilar Ayuso (A7-0443/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on a European strategy on plastic waste in the environment (2013/2113(INI)) — ENVI Committee — Rapporteur: Vittorio Prodi (A7-0453/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a regulation of the European Parliament and of the Council on the access of third-country goods and services to the Union&apos;s internal market in public procurement and procedures supporting negotiations on access of Union goods and services to the public procurement markets of third countries (COM(2012)0124 — C7-0084/2012 — 2012/0060(COD)) — INTA Committee — Rapporteur: Daniel Caspary (A7-0454/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on regional branding: towards best practice in rural economies (2013/2098(INI)) — AGRI Committee — Rapporteur: Eric Andrieu (A7-0456/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a regulation of the European Parliament and of the Council amending Regulation (EC) No 638/2004 on Community statistics relating to trading of goods between Member States as regards conferring of delegated and implementing powers upon the Commission for the adoption of certain measures, the communication of information by the customs administration, the exchange of confidential data between Member States and the definition of statistical value (COM(2013)0578 — C7-0242/2013 — 2013/0278(COD)) — ECON Committee — Rapporteur: Hans-Peter Martin (A7-0457/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on effective labour inspections as a strategy to improve working conditions in Europe (2013/2112(INI)) — EMPL Committee — Rapporteur: Jutta Steinruck (A7-0458/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on social protection for all, including self-employed workers (2013/2111(INI)) — EMPL Committee — Rapporteur: Vilija Blinkevičiūtė (A7-0459/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on smart specialisation: networking excellence for a sound Cohesion Policy (2013/2094(INI)) — REGI Committee — Rapporteur: Hermann Winkler (A7-0462/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>*** Recommendation on the draft Council decision on the conclusion on behalf of the European Union of the Political Dialogue and Cooperation Agreement between the European Community and its Members States, of the one part, and the Republics of Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua and Panama, of the other part, with the exception of Article 49(3) thereof (12399/2013 — C7-0425/2013 — 2012/0219A(NLE)) — AFET Committee — Rapporteur: José Ignacio Salafranca Sánchez-Neyra (A7-0463/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on reindustrialising Europe to promote competitiveness and sustainability (2013/2006(INI)) — ITRE Committee — Rapporteur: Reinhard Bütikofer (A7-0464/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on financial participation of employees in companies&apos; proceeds (2013/2127(INI)) — EMPL Committee — Rapporteur: Phil Bennion (A7-0465/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>* Report on the proposal for a Council decision laying down rules and procedures to enable the participation of Greenland in the Kimberley Process certification scheme (COM(2013)0429 — C7-0232/2013 — 2013/0201(CNS)) — INTA Committee — Rapporteur: Vital Moreira (A7-0466/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>***I Report on the proposal for a Regulation of the European Parliament and of the Council amending Council Regulation (EC) No 1224/2009 establishing a Community control system for ensuring compliance with the rules of the Common Fisheries Policy (COM(2013)0009 — C7-0019/2013 — 2013/0007(COD)) — PECH Committee — Rapporteur: Isabelle Thomas (A7-0468/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Report on the request for defence of the immunity and privileges of Lara Comi (2013/2190(IMM)) — JURI Committee — Rapporteur: Eva Lichtenberger (A7-0469/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>*** Recommendation on the draft Council decision concerning the renewal of the Agreement on cooperation in science and technology between the European Community and the Government of the Russian Federation (13152/2013 — C7-0370/2013 — 2013/0282(NLE)) — ITRE Committee — Rapporteur: Amalia Sartori (A7-0473/2013)</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>* Report on the proposal for a Council regulation on denominations and technical specifications of euro coins intended for circulation (recast) (COM(2013)0184 — C7-0132/2013 — 2013/0096(NLE)) — ECON Committee — Rapporteur: Jean-Paul Gauzès (A7-0479/2013)</P>
+                            </ITEM>
+                          </LIST>
+                        </P>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>2.2)</NO.P>
+                        <TXT>
+                          <HT TYPE="ITALIC">recommendations for second reading</HT>
+                        </TXT>
+                        <P>
+                          <LIST TYPE="DASH">
+                            <ITEM>
+                              <P>***II Recommendation for second reading on the Council position at first reading with a view to the adoption of a Regulation of the European Parliament and of the Council on tachographs in road transport, repealing Council Regulation (EEC) No 3821/85 on recording equipment in road transport and amending Regulation (EC) No 561/2006 of the European Parliament and the Council on the harmonisation of certain social legislation relating to road transport (11532/4/2013 — C7-0410/2013 — 2011/0196(COD)) — TRAN Committee — Rapporteur: Silvia-Adriana Țicău (A7-0471/2013)</P>
+                            </ITEM>
+                          </LIST>
+                        </P>
+                      </NP>
+                    </ITEM>
+                  </LIST>
+                </P>
+              </NP>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>11.</NO.P>
+                <TXT>Delegated acts<HT TYPE="NORMAL">(Rule 87a)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The following draft delegated act had been forwarded to Parliament:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>Commission Delegated Regulation (EU) supplementing Regulation (EU) No 575/2013 of the European Parliament and of the Council on prudential requirements for credit institutions and investment firms, with regard to regulatory technical standards for specifying the calculation of specific and general credit risk adjustments (C(2013)09338 — 2014/2501(DEA))</P>
+              <P>Period for lodging objections: one month, starting from the date of reception:<DATE ISO="20131220">20 December 2013</DATE>.</P>
+              <P>referred back to committee responsible ECON</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>12.</NO.P>
+                <TXT>Action taken on Parliament&apos;s resolutions</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The Commission communication on the action taken on the resolutions adopted by Parliament during the September 2013 part-session was available on the<HT TYPE="ITALIC">Séance en direct</HT>site.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>13.</NO.P>
+                <TXT>Questions for oral answer<HT TYPE="NORMAL">(submission)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The following questions for oral answer had been submitted by Members (Rule 115):</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>(O-0000123/2013) by Matthias Groote, on behalf of the Committee on the Environment, Public Health and Food Safety, to the Commission: Combating wildlife crime (2013/2747(RSP)) (B7-0529/2013);</P>
+            </ITEM>
+            <ITEM>
+              <P>(O-0000115/2013) by Vital Moreira and George Sabin Cutaș, on behalf of the Committee on International Trade, to the Commission: Modernisation of the trade title of the EU-Mexico Economic Partnership, Political Coordination and Cooperation Agreement (2013/2818(RSP)) (B7-0101/2014);</P>
+            </ITEM>
+            <ITEM>
+              <P>(O-0000127/2013) by Matthias Groote and Corinne Lepage, on behalf of the Committee on the Environment, Public Health and Food Safety, Gesine Meissner, on behalf of the Committee on Transport and Tourism, and Gabriel Mato Adrover on behalf of the Committee on Fisheries, to the Commission: Recognising ecological damage in EU and international law (2013/2878(RSP)) (B7-0102/2014);</P>
+            </ITEM>
+            <ITEM>
+              <P>(O-0000148/2013) by Vital Moreira and María Auxiliadora Correa Zamora, on behalf of the Committee on International Trade, to the Commission: EU-Chile: Trade and Trade-Related Matters of the Agreement establishing an association between the EC and its Member States, of the one part, and the Republic of Chile, of the other part (2013/2988(RSP)) (B7-0103/2014).</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>14.</NO.P>
+                <TXT>Petitions</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The following petitions, which had been entered in the register on the dates shown below, had been forwarded to the committee responsible under Rule 201(6):</P>
+          <P>
+            <DATE ISO="20131218">18 December 2013</DATE>
+          </P>
+          <P>Joana Roque Lino (No 2501/2013); Lorraine Cleaver (No 2502/2013); (name confidential) (No 2503/2013); Dr. Waltraud Wahler-Brenk (No 2504/2013); Susanne Ascherl (No 2505/2013); (name confidential) (No 2506/2013); James Wilson (No 2507/2013); Daphne Mears (No 2508/2013); Gianfranco Sinha (No 2509/2013); (name confidential) (No 2510/2013); (name confidential) (No 2511/2013); Ante Spahić (No 2512/2013); (name confidential) (No 2513/2013); (name confidential) (No 2514/2013); Gareth Bowen (No 2515/2013); (name confidential) (No 2516/2013); Michaela Schlathölter (No 2517/2013); (name confidential) (No 2518/2013); Christiana Kotsovou (No 2519/2013); (name confidential) (No 2520/2013); Mario Serena (No 2521/2013); Carolin Janker (No 2522/2013); (name confidential) (No 2523/2013); (name confidential) (No 2524/2013); (name confidential) (No 2525/2013); (name confidential) (No 2526/2013); Gеоrgi Dukоv (No 2527/2013); Lena Nicolaou (No 2528/2013); Strahil Kerelov (No 2529/2013); Rolf Klein (No 2530/2013); Emma Thomson (No 2531/2013); Natalia Martín De Pozuelo Martínez (No 2532/2013); (name confidential) (No 2533/2013); Fiet Sylwester (No 2534/2013); José Antonio Torres Espino (No 2535/2013); Thomas Nielsen (No 2536/2013); Carlos Geppi (No 2537/2013); Josef Ruckgaber (No 2538/2013); Iker Aramendia Landa (No 2539/2013); (name confidential) (No 2540/2013); Alberto Ruiz González (No 2541/2013); (name confidential) (No 2542/2013); Safia Deriche (No 2543/2013); (name confidential) (No 2544/2013); John Hildebrand (No 2545/2013); Audronė Barkauskienė (No 2546/2013); (name confidential) (No 2547/2013); (name confidential) (No 2548/2013); Gerd Litzenburger (No 2549/2013); Alberto Ruiz i González (No 2550/2013); José Amorim de Sousa (No 2551/2013); Barbro Grebacken (No 2552/2013); Tuija Hanhisalo (No 2553/2013); Albin Iñaki Díaz (No 2554/2013); Natalja Igumnova (No 2555/2013); (name confidential) (No 2556/2013); (name confidential) (No 2557/2013); José Manuel Martín Álvarez (No 2558/2013); Beata Loskot (No 2559/2013); (name confidential) (No 2560/2013); (name confidential) (No 2561/2013); Carlos Benlloch Juan (No 2562/2013); José Lacalle Márquez (No 2563/2013); Jacqueline Wilson (No 2564/2013); (name confidential) (No 2565/2013); (name confidential) (No 2566/2013); (name confidential) (No 2567/2013); Jerzy Bobrowski (No 2568/2013); (name confidential) (No 2569/2013); (name confidential) (No 2570/2013); (name confidential) (No 2571/2013); Kosta Ivanov Avgusto (No 2572/2013); (name confidential) (No 2573/2013); (name confidential) (No 2574/2013); Ulrich Neef (No 2575/2013); Sonja Scheitler (No 2576/2013); (name confidential) (No 2577/2013); Flavio Miccono (No 2578/2013); Asta Ignatavičiūtė (No 2579/2013); Tarmo Mutli (No 2580/2013); Edouard Meyer (No 2581/2013); Albano de Alonso Paz (No 2582/2013); Giorgios Ioannidis (No 2583/2013); Kai Schwarzer (No 2584/2013); (name confidential) (No 2585/2013); Jos Aalders (No 2586/2013); (name confidential) (No 2587/2013); René Schöttke (No 2588/2013); Richard Niney (No 2589/2013); Aseem Mehrotra (No 2590/2013); Nawa Diakite (No 2591/2013); (name confidential) (No 2592/2013); (name confidential) (No 2593/2013); Matthias Heuer (No 2594/2013); Dimitris Bourdos (No 2595/2013); Luis Miguel García Zurro (No 2596/2013); BassamThat&apos;s Alkari (No 2597/2013); (name confidential) (No 2598/2013); Mariyus Noko Ngele (No 2599/2013); Claus Dott (No 2600/2013); Daphne Mears (No 2601/2013); (name confidential) (No 2602/2013); Ιoannis Κontos (No 2603/2013); Eelze Hof (No 2604/2013); Paola Verdina (No 2605/2013); (name confidential) (No 2606/2013); (name confidential) (No 2607/2013); Eelze Hof (No 2608/2013); (name confidential) (No 2609/2013); Amparo Yoldi (No 2610/2013); (name confidential) (No 2611/2013); (name confidential) (No 2612/2013); (name confidential) (No 2613/2013); (name confidential) (No 2614/2013); Valerie King (No 2615/2013); (name confidential) (No 2616/2013); John Porro (No 2617/2013); Natacha Duvernois (No 2618/2013); Marie Helene Henocq (No 2619/2013); Sibylle Scheffknecht-MacDonald (No 2620/2013); Iolanda Marques (No 2621/2013); Renato Lelli (No 2622/2013); (name confidential) (No 2623/2013); Artur Knappik (No 2624/2013); (nameconfidential) (No 2625/2013); (name confidential) (No 2626/2013); Krisztián Varga (No 2627/2013); Yaroslav Gerbut (No 2628/2013); Olga Kmyta (No 2629/2013); (name confidential) (No 2630/2013); Dominique Dubosc (No 2631/2013); Richard Daly (No 2632/2013); Luc Mission (SPRL Mission Bureau d&apos;Avocats) (No 2633/2013); Sergy Alpin (No 2634/2013); Kyriakos Nkikas (No 2635/2013); Trine Rud Andresen (No 2636/2013); (name confidential) (No 2637/2013); (name confidential) (No 2638/2013); (name confidential) (No 2639/2013); (name confidential) (No 2640/2013); Detlef Zöllner (No 2641/2013); (name confidential) (No 2642/2013); (name confidential) (No 2643/2013); Hieronim Tonder (No 2644/2013); (name confidential) (No 2645/2013); Gertrud Persson (No 2646/2013); (name confidential) (No 2647/2013); (name confidential) (No 2648/2013); Alexandru Firicel (No 2649/2013); Flavio Miccono (No 2650/2013); John McHardy (No 2651/2013); (name confidential) (No 2652/2013); (name confidential) (No 2653/2013); André Prescher (No 2654/2013); (name confidential) (No 2655/2013); Silvio Basileo (No 2656/2013); Denis Dugré (No 2657/2013); (name confidential) (No 2658/2013); Marc Aznar Martínez (No 2659/2013).</P>
+          <P>
+            <DATE ISO="20131220">20 December 2013</DATE>
+          </P>
+          <P>José Ortega Ortega (No 2660/2013); (name confidential) (No 2661/2013); (name confidential) (No 2662/2013); (name confidential) (No 2663/2013); (name confidential) (No 2664/2013); Ronald Horstmann (No 2665/2013); (name confidential) (No 2666/2013); (name confidential) (No 2667/2013); (name confidential) (No 2668/2013); Karl L. Meyer (No 2669/2013); (name confidential) (No 2670/2013); (name confidential) (No 2671/2013); (name confidential) (No 2672/2013); (name confidential) (No 2673/2013); (name confidential) (No 2674/2013); (name confidential) (No 2675/2013); (name confidential) (No 2676/2013); (name confidential) (No 2677/2013); Liliane Senoyer (No 2678/2013); Adeline Swolfs (No 2679/2013); Ernevaza Kopačin (No 2680/2013); Anton Venter (No 2681/2013); Isabella Caruana (No 2682/2013); Francesco Era (No 2683/2013); Flavio Miccono (No 2684/2013); Andrei Taga (No 2685/2013); (name confidential) (No 2686/2013); (name confidential) (No 2687/2013); Paolo Del Bene (No 2688/2013); Kenneth Kattenberg (No 2689/2013); (name confidential) (No 2690/2013); (name confidential) (No 2691/2013); Karl Heinz Kleemann (No 2692/2013); Christian Frener (No 2693/2013); (name confidential) (No 2694/2013); Annij Prisjolkova Bottiglieri (No 2695/2013); Olga Sayago Solano (No 2696/2013); (name confidential) (No 2697/2013); (name confidential) (No 2698/2013); Georgios Foutsitzis (No 2699/2013); Carmen Pereira Pache (No 2700/2013); Béla Géza Kerekes (No 2701/2013); (name confidential) (No 2702/2013); (name confidential) (No 2703/2013); (name confidential) (No 2704/2013); Maria de Jesus Prego Lopes Filipe (No 2705/2013); Francesco Era (No 2706/2013); (name confidential) (No 2707/2013); (name confidential) (No 2708/2013); (name confidential) (No 2709/2013); (name confidential) (No 2710/2013); Zhivko Zhekov (No 2711/2013); Maria Montserrat Castrillo Mestre (No 2712/2013); (name confidential) (No 2713/2013); (name confidential) (No 2714/2013); (name confidential) (No 2715/2013); Britta Schlötcke (No 2716/2013); Mario Lonbardozzi (No 2717/2013); (name confidential) (No 2718/2013); (name confidential) (No 2719/2013).</P>
+          <P>
+            <DATE ISO="20140109">9 January 2014</DATE>
+          </P>
+          <P>Lars Mikkelsen (No 2720/2013); Bruno Kramm (No 2721/2013); (name confidential) (No 2722/2013); (name confidential) (No 2723/2013); (name confidential) (No 2724/2013); (name confidential) (No 2725/2013); Ismael Lloréns Santamaría (No 2726/2013); Izabela Genoveva Pulpan (No 2727/2013); (name confidential) (No 2728/2013); Michael McDermott (No 2729/2013); Malcolm McCandless (No 2730/2013); (name confidential) (No 2731/2013); Félix García Martínez (No 2732/2013); (name confidential) (No 2733/2013); Estera Neagoe (No 2734/2013); (name confidential) (No 2735/2013); Mihaela Profir (No 2736/2013); (name confidential) (No 2737/2013); Stefano Casabianca (No 2738/2013); (name confidential) (No 2739/2013); Ivan Enchev (No 2740/2013); Indra Dombrovska (No 2741/2013); (name confidential) (No 2742/2013); Antonio Francisco Sánchez-Migallón León (No 2743/2013); (name confidential) (No 2744/2013); Ioannis Chatzisavvas (No 2745/2013); (name confidential) (No 2746/2013); Matteo La Cara (No 2747/2013); (name confidential) (No 2748/2013); (name confidential) (No 2749/2013); Radojka Jovičić (No 2750/2013); (name confidential) (No 2751/2013); (name confidential) (No 2752/2013); Elmaati Hlibat (No 2753/2013); Sorin Nica (No 2754/2013); (name confidential) (No 2755/2013); (name confidential) (No 2756/2013); Ursula Eysel-Stange (No 2757/2013); Janina Dębowska (No 2758/2013); Olivier Janssens (No 2759/2013); (name confidential) (No 2760/2013); (name confidential) (No 2761/2013); (name confidential) (No 2762/2013); (name confidential) (No 2763/2013); (name confidential) (No 2764/2013); (name confidential) (No 2765/2013); (name confidential) (No 2766/2013); (name confidential) (No 2767/2013); Paolo Pelini (No 2768/2013); Eugen Polák (No 2769/2013); Guiberto Claudio Boccolari (No 2770/2013); Steve Rawlings (No 2771/2013); Giovanni Giuliari (No 2772/2013); Ivan Ribičić (No 2773/2013); (name confidential) (No 2774/2013); (name confidential) (No 2775/2013); (name confidential) (No 2776/2013); Flavio Miccono (No 2777/2013); Flavio Miccono (No 2778/2013); Flavio Miccono (No 2779/2013); Dirk Scherer (No 2780/2013); Dirk Scherer (No 2781/2013); Mohamad Sahelieh (No 2782/2013); Andre Strauß (No 2783/2013); Robert Martínez Correcher (No 2784/2013); (name confidential) (No 2785/2013); (name confidential) (No 2786/2013);Fructuoso Pontigo Concha (No 2787/2013); (name confidential) (No 2788/2013); Hartmut Decker (No 2789/2013); Bent Hansen (No 2790/2013); Małgorzata Szafran (No 2791/2013); Khristo Spasov (No 2792/2013); Dirk Emmermann (No 2793/2013); (name confidential) (No 2794/2013); (name confidential) (No 2795/2013); Tilman Kluge (No 2796/2013); Heiko Rehse (No 2797/2013); Heiko Rehse (No 2798/2013); Peter Trumpfheller (No 2799/2013).</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>15.</NO.P>
+                <TXT>Order of business</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The next item was the order of business.</P>
+          <P>The final draft agenda for the January 2014 part-session (PE 526.046/PDOJ) had been distributed. No changes had been proposed.</P>
+          <P>The order of business was thus established.</P>
+          <P>The following spoke:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>Jean-Pierre Audy, who regretted that once again the President of the Council, Herman Van Rompuy, had not appeared to report to Parliament, as provided for in Article 15 of the Treaty, on the outcome of the European Council meeting on<DATE ISO="20131219">19</DATE>and<DATE ISO="20131220">20 December 2013</DATE>(the President said he would discuss the matter with the political group chairs);</P>
+            </ITEM>
+            <ITEM>
+              <P>Astrid Lulling, who asked whether the Commission statement on non-discrimination in the framework of sexual and reproductive health and rights<HT TYPE="ITALIC">(Item 192 of the final draft agenda)</HT>could be withdrawn from the agenda as the subject had been debated at the previous part-session. The President said that any request to modify the agenda had to be presented at least one hour before the sitting opened);</P>
+            </ITEM>
+            <ITEM>
+              <P>Nikolaos Chountis on the formal role to be played by Parliament at the opening ceremony of the Greek Presidency in Athens (the President said that Parliament had been represented by Vice-President Anni Podimata);</P>
+            </ITEM>
+            <ITEM>
+              <P>Laurence J.A.J. Stassen, asking that Parliament should observe a minute&apos;s silence in commemoration of the former Israeli Prime Minister Ariel Sharon;</P>
+            </ITEM>
+            <ITEM>
+              <P>Victor Boștinaru, with reference to comments by Elmar Brok on Bulgarian and Romanian citizens, which had been reported in the European press;</P>
+            </ITEM>
+            <ITEM>
+              <P>Richard Falbr, opposing the request to hold a minute&apos;s silence in commemoration of Ariel Sharon.</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>16.</NO.P>
+                <TXT>CO<HT TYPE="SUB">2</HT>emissions from new light commercial vehicles ***I<HT TYPE="NORMAL">(debate)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>Report on the proposal for a regulation of the European Parliament and of the Council amending Regulation (EU) No 510/2011 to define the modalities for reaching the 2020 target to reduce CO<HT TYPE="SUB">2</HT>emissions from new light commercial vehicles [COM(2012)0394 — C7-0185/2012 — 2012/0191(COD)] — Committee on the Environment, Public Health and Food Safety. Rapporteur: Holger Krahmer (A7-0168/2013)</P>
+          <P>Holger Krahmer introduced the report.</P>
+        </GR.SEQ>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>IN THE CHAIR: Anni PODIMATA</P>
+          </TI>
+          <STI>
+            <P>
+              <HT TYPE="ITALIC">Vice-President</HT>
+            </P>
+          </STI>
+        </TITLE>
+        <P>The following spoke: Connie Hedegaard (Member of the Commission).</P>
+        <P>The following spoke: Markus Pieper (rapporteur for the opinion of the ITRE Committee), Silvia-Adriana Țicău (rapporteur for the opinion of the TRAN Committee), Salvatore Tatarella, on behalf of the PPE Group, who also replied to a blue-card question by Silvia-Adriana Țicău, Marita Ulvskog, on behalf of the S&amp;D Group, Chris Davies, on behalf of the ALDE Group, Carl Schlyter, on behalf of the Verts/ALE Group, Mikael Gustafsson, on behalf of the GUE/NGL Group, Richard Seeber, Matthias Groote, Dubravka Šuica, Adam Gierek, Werner Langen, who also replied to a blue-card question by Carl Schlyter, Tonino Picula and Theodor Dumitru Stolojan.</P>
+        <P>The following spoke: Connie Hedegaard and Holger Krahmer, who also replied to a blue-card question by Carl Schlyter.</P>
+        <P>The debate closed.</P>
+        <P>Vote:<HT TYPE="ITALIC">minutes of<DATE ISO="20140114">14.1.2014</DATE>, item 5.4</HT>.</P>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>17.</NO.P>
+                <TXT>Carbon capture and storage technology<HT TYPE="NORMAL">(debate)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>Report on implementation report 2013: developing and applying carbon capture and storage technology in Europe [2013/2079(INI)] — Committee on the Environment, Public Health and Food Safety. Rapporteur: Chris Davies (A7-0430/2013)</P>
+          <P>Chris Davies introduced the report.</P>
+          <P>The following spoke: Connie Hedegaard (Member of the Commission).</P>
+          <P>The following spoke: Elisabetta Gardini, on behalf of the PPE Group, Andrés Perelló Rodríguez, on behalf of the S&amp;D Group, Bart Staes, on behalf of the Verts/ALE Group, Sabine Wils, on behalf of the GUE/NGL Group, John Stuart Agnew, on behalf of the EFD Group, Christa Klaß, Matthias Groote, who also replied to a blue-card question by Chris Davies, Romana Jordan and Judith A. Merkies.</P>
+        </GR.SEQ>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>IN THE CHAIR: Alexander ALVARO</P>
+          </TI>
+          <STI>
+            <P>
+              <HT TYPE="ITALIC">Vice-President</HT>
+            </P>
+          </STI>
+        </TITLE>
+        <P>The following spoke: Silvia-Adriana Țicău, Marusya Lyubcheva and María Muñiz De Urquiza.</P>
+        <P>The following spoke under the<QUOT.START CODE="2018" ID="QS0004" REF.END="QE0004">
+          </QUOT.START>catch-the-eye<QUOT.END CODE="2019" ID="QE0004" REF.START="QS0004">
+          </QUOT.END>procedure: Dubravka Šuica, Tonino Picula, Andreas Mölzer and Bogdan Kazimierz Marcinkiewicz.</P>
+        <P>The following spoke: Connie Hedegaard and Chris Davies.</P>
+        <P>The debate closed.</P>
+        <P>Vote:<HT TYPE="ITALIC">minutes of<DATE ISO="20140114">14.1.2014</DATE>, item 5.9</HT>.</P>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>18.</NO.P>
+                <TXT>Combating wildlife crime<HT TYPE="NORMAL">(debate)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>Question for oral answer (O-0000123/2013) by Matthias Groote, on behalf of the Committee on the Environment, Public Health and Food Safety, to the Commission: Combating wildlife crime (2013/2747(RSP)) (B7-0529/2013);</P>
+          <P>Gerben-Jan Gerbrandy (deputising for the author) moved the question.</P>
+          <P>Janez Potočnik (Member of the Commission) answered the question.</P>
+          <P>The following spoke: Romana Jordan, on behalf of the PPE Group, Pavel Poc, on behalf of the S&amp;D Group, Gerben-Jan Gerbrandy, on behalf of the ALDE Group, Sandrine Bélier, on behalf of the Verts/ALE Group, Julie Girling, on behalf of the ECR Group, João Ferreira, on behalf of the GUE/NGL Group, Giancarlo Scottà, on behalf of the EFD Group, who also replied to a blue-card question by Andrea Zanoni, Andreas Mölzer, Non-attached Member, Jolanta Emilia Hibner, Marita Ulvskog, Andrea Zanoni, James Nicholson, Phil Bennion and Struan Stevenson.</P>
+          <P>The following spoke under the<QUOT.START CODE="2018" ID="QS0005" REF.END="QE0005">
+            </QUOT.START>catch-the-eye<QUOT.END CODE="2019" ID="QE0005" REF.START="QS0005">
+            </QUOT.END>procedure: Tonino Picula.</P>
+          <P>The following spoke: Janez Potočnik.</P>
+          <P>Motion for a resolution to wind up the debate tabled under Rule 115(5):</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>Romana Jordan, on behalf of the PPE Group, Pavel Poc, on behalf of the S&amp;D Group, Gerben-Jan Gerbrandy, on behalf of the ALDE Group, Sandrine Bélier, on behalf of the Verts/ALE Group, Anna Rosbach, on behalf of the ECR Group, and Kartika Tamara Liotard, on behalf of the GUE/NGL Group, on wildlife crime (2013/2747(RSP)) (B7-0013/2014).</P>
+            </ITEM>
+          </LIST>
+          <P>The debate closed.</P>
+          <P>Vote:<HT TYPE="ITALIC">minutes of<DATE ISO="20140115">15.1.2014</DATE>, item 10.15</HT>.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>19.</NO.P>
+                <TXT>One-minute speeches on matters of political importance</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>In accordance with Rule 150, the following Members who wished to draw the attention of Parliament to matters of political importance spoke for one minute:</P>
+          <P>Iuliu Winkler, Vasilica Viorica Dăncilă, Pat the Cope Gallagher, Nikos Chrysogelos, Martina Anderson, Jacek Włosowicz, Martin Ehrenhauser, Radvilė Morkūnaitė-Mikulėnienė, Ioan Enciu, Izaskun Bilbao Barandica, Mark Demesmaeker, Kyriacos Triantaphyllides, Graham Watson, Davor Ivo Stier, Marusya Lyubcheva, Angelika Werthmann, Willy Meyer, Andrzej Grzyb, María Muñiz De Urquiza, Charalampos Angourakis, László Tőkés and George Sabin Cutaș.</P>
+        </GR.SEQ>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>IN THE CHAIR: Edward McMILLAN-SCOTT</P>
+          </TI>
+          <STI>
+            <P>
+              <HT TYPE="ITALIC">Vice-President</HT>
+            </P>
+          </STI>
+        </TITLE>
+        <P>The following spoke: Romana Jordan, Sandra Petrović Jakovina and Alexander Mirsky.</P>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>20.</NO.P>
+                <TXT>Smart specialisation: networking excellence for a sound Cohesion Policy<HT TYPE="NORMAL">(short presentation)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>Report on smart specialisation: networking excellence for a sound Cohesion Policy [2013/2094(INI)] — Committee on Regional Development. Rapporteur: Hermann Winkler (A7-0462/2013)</P>
+          <P>Hermann Winkler made the presentation.</P>
+          <P>The following spoke under the<QUOT.START CODE="2018" ID="QS0006" REF.END="QE0006">
+            </QUOT.START>catch-the-eye<QUOT.END CODE="2019" ID="QE0006" REF.START="QS0006">
+            </QUOT.END>procedure: Andrej Plenković, Vasilica Viorica Dăncilă, Izaskun Bilbao Barandica, Nikos Chrysogelos, Ruža Tomašić, Petru Constantin Luhan, Davor Ivo Stier, Silvia-Adriana Țicău, Miroslav Mikolášik, María Irigoyen Pérez, Ivana Maletić and Seán Kelly.</P>
+          <P>The following spoke: Janez Potočnik (Member of the Commission).</P>
+          <P>The item closed.</P>
+          <P>Vote:<HT TYPE="ITALIC">minutes of<DATE ISO="20140114">14.1.2014</DATE>, item 5.2</HT>.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>21.</NO.P>
+                <TXT>eHealth Action Plan 2012-2020<HT TYPE="NORMAL">(short presentation)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>Report on the eHealth Action Plan 2012-2020 — Innovative healthcare for the 21st century [2013/2061(INI)] — Committee on the Environment, Public Health and Food Safety. Rapporteur: Pilar Ayuso (A7-0443/2013)</P>
+          <P>Pilar Ayuso made the presentation.</P>
+          <P>The following spoke under the<QUOT.START CODE="2018" ID="QS0007" REF.END="QE0007">
+            </QUOT.START>catch-the-eye<QUOT.END CODE="2019" ID="QE0007" REF.START="QS0007">
+            </QUOT.END>procedure: Petru Constantin Luhan, Biljana Borzan, Izaskun Bilbao Barandica, Ruža Tomašić, Nikola Vuljanić, Davor Ivo Stier, Silvia-Adriana Țicău, Diane Dodds, Ivana Maletić, María Irigoyen Pérez and Seán Kelly.</P>
+          <P>The following spoke: Janez Potočnik (Member of the Commission).</P>
+          <P>The item closed.</P>
+          <P>Vote:<HT TYPE="ITALIC">minutes of<DATE ISO="20140114">14.1.2014</DATE>, item 5.10</HT>.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>22.</NO.P>
+                <TXT>Food crisis, fraud in the food chain and the control thereof<HT TYPE="NORMAL">(short presentation)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>Report on the food crisis, fraud in the food chain and the control thereof [2013/2091(INI)] — Committee on the Environment, Public Health and Food Safety. Rapporteur: Esther de Lange (A7-0434/2013)</P>
+          <P>Esther de Lange made the presentation.</P>
+          <P>The following spoke under the<QUOT.START CODE="2018" ID="QS0008" REF.END="QE0008">
+            </QUOT.START>catch-the-eye<QUOT.END CODE="2019" ID="QE0008" REF.START="QS0008">
+            </QUOT.END>procedure: Sari Essayah, Tonino Picula, Ruža Tomašić, Seán Kelly and Olga Sehnalová.</P>
+        </GR.SEQ>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>IN THE CHAIR: Gianni PITTELLA</P>
+          </TI>
+          <STI>
+            <P>
+              <HT TYPE="ITALIC">Vice-President</HT>
+            </P>
+          </STI>
+        </TITLE>
+        <P>The following spoke: João Ferreira, Krisztina Morvai, Sandra Petrović Jakovina and Biljana Borzan.</P>
+        <P>The following spoke: Janez Potočnik (Member of the Commission).</P>
+        <P>The item closed.</P>
+        <P>Vote:<HT TYPE="ITALIC">minutes of<DATE ISO="20140114">14.1.2014</DATE>, item 5.11</HT>.</P>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>23.</NO.P>
+                <TXT>Effective labour inspections as a strategy to improve working conditions<HT TYPE="NORMAL">(short presentation)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>Report on effective labour inspections as a strategy to improve working conditions in Europe [2013/2112(INI)] — Committee on Employment and Social Affairs. Rapporteur: Jutta Steinruck (A7-0458/2013)</P>
+          <P>Jutta Steinruck made the presentation.</P>
+          <P>The following spoke under the<QUOT.START CODE="2018" ID="QS0009" REF.END="QE0009">
+            </QUOT.START>catch-the-eye<QUOT.END CODE="2019" ID="QE0009" REF.START="QS0009">
+            </QUOT.END>procedure: Joanna Katarzyna Skrzydlewska, Evelyn Regner, Karima Delli, Claudio Morganti, Krisztina Morvai, Ivana Maletić, Tonino Picula, Malika Benarab-Attou, Ruža Tomašić, Sari Essayah, Vilija Blinkevičiūtė, Sandra Petrović Jakovina and Marino Baldini.</P>
+          <P>The following spoke: Janez Potočnik (Member of the Commission).</P>
+          <P>The item closed.</P>
+          <P>Vote:<HT TYPE="ITALIC">minutes of<DATE ISO="20140114">14.1.2014</DATE>, item 5.12</HT>.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>24.</NO.P>
+                <TXT>Financial participation of employees in companies&apos; proceeds<HT TYPE="NORMAL">(short presentation)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>Report on financial participation of employees in companies&apos; proceeds [2013/2127(INI)] — Committee on Employment and Social Affairs. Rapporteur: Phil Bennion (A7-0465/2013)</P>
+          <P>Phil Bennion made the presentation.</P>
+          <P>The following spoke under the<QUOT.START CODE="2018" ID="QS0010" REF.END="QE0010">
+            </QUOT.START>catch-the-eye<QUOT.END CODE="2019" ID="QE0010" REF.START="QS0010">
+            </QUOT.END>procedure: Sari Essayah, Evelyn Regner, Ruža Tomašić, Vilija Blinkevičiūtė and Krisztina Morvai.</P>
+          <P>The following spoke: Janez Potočnik (Member of the Commission).</P>
+          <P>The item closed.</P>
+          <P>Vote:<HT TYPE="ITALIC">minutes of<DATE ISO="20140114">14.1.2014</DATE>, item 5.13</HT>.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>25.</NO.P>
+                <TXT>Social protection for all, including self-employed workers<HT TYPE="NORMAL">(short presentation)</HT>
+                </TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>Report on social protection for all, including self-employed workers [2013/2111(INI)] — Committee on Employment and Social Affairs. Rapporteur: Vilija Blinkevičiūtė (A7-0459/2013)</P>
+          <P>Vilija Blinkevičiūtė made the presentation.</P>
+          <P>The following spoke under the<QUOT.START CODE="2018" ID="QS0011" REF.END="QE0011">
+            </QUOT.START>catch-the-eye<QUOT.END CODE="2019" ID="QE0011" REF.START="QS0011">
+            </QUOT.END>procedure: Joanna Katarzyna Skrzydlewska, Tonino Picula, Ruža Tomašić, Inês Cristina Zuber, Krisztina Morvai, Csaba Sógor, Sari Essayah and Marino Baldini.</P>
+          <P>The following spoke: Janez Potočnik (Member of the Commission).</P>
+          <P>The item closed.</P>
+          <P>Vote:<HT TYPE="ITALIC">minutes of<DATE ISO="20140114">14.1.2014</DATE>, item 5.14</HT>.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>26.</NO.P>
+                <TXT>Agenda of the next sitting</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The agenda of the next day&apos;s sitting had been established (<QUOT.START CODE="2018" ID="QS0012" REF.END="QE0012">
+            </QUOT.START>Agenda<QUOT.END CODE="2019" ID="QE0012" REF.START="QS0012">
+            </QUOT.END>PE 526.046/OJMA).</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="3">
+          <TITLE>
+            <TI>
+              <NP>
+                <NO.P>27.</NO.P>
+                <TXT>Closure of the sitting</TXT>
+              </NP>
+            </TI>
+          </TITLE>
+          <P>The sitting closed at 22.40.</P>
+        </GR.SEQ>
+      </GR.SEQ>
+    </GR.SEQ>
+  </CONTENTS>
+  <FINAL>
+    <SIGNATURE>
+      <SIGNATORY>
+        <P>Klaus Welle</P>
+        <P>
+          <HT TYPE="ITALIC">Secretary-General</HT>
+        </P>
+      </SIGNATORY>
+      <SIGNATORY>
+        <P>Alejo Vidal-Quadras</P>
+        <P>
+          <HT TYPE="ITALIC">Vice-President</HT>
+        </P>
+      </SIGNATORY>
+    </SIGNATURE>
+  </FINAL>
+</GENERAL>

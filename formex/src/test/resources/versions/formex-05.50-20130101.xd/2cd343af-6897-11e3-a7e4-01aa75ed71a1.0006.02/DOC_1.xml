@@ -1,0 +1,49 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.50-20130101.xd">
+  <BIB.DOC>
+    <NO.DOC TYPE="OJ">
+      <TXT>2013/C 372 E/01</TXT>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>PE</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="CE2013372EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>372E</NO.OJ>
+    <DATE ISO="20131219">20131219</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0001" SYNOPTISM="D0001">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>WQA</LEGAL.VALUE>
+      <DATE ISO="20131219">20131219</DATE>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.LAST>633</PAGE.LAST>
+      <PAGE.TOTAL>633</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="CE2013372EN.01000101.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0001">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Written questions by Members of the European Parliament and their answers given by a European Union institution</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>1</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0001">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="ce37220131219en00010633.pdf" DOI.DOC="doi:10.3001/CE2013.372.01000101.eng">1</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

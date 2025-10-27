@@ -1,0 +1,54 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-01.01-20040501.xd">
+  <BIB.DOC>
+    <NO.DOC TYPE="OJ">
+      <TXT>2004/C 242/03</TXT>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>COM</AUTHOR>
+    <EEA>
+    </EEA>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2004242EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>242</NO.OJ>
+    <DATE ISO="20040929">20040929</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="003" SYNOPTISM="D003">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>OTHER</LEGAL.VALUE>
+      <DATE ISO="20040929">20040929</DATE>
+      <PAGE.FIRST>3</PAGE.FIRST>
+      <PAGE.LAST>7</PAGE.LAST>
+      <PAGE.TOTAL>5</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="C_2004242EN.01000301.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="003">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Information procedure — Technical rules<NOTE NOTE.ID="E0001">
+                <P>Text with EEA relevance</P>
+              </NOTE>
+            </P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>3</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="003">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_24220040929en00030007.pdf">3</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

@@ -1,0 +1,95 @@
+<CJT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.56-20160701.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2018161EN.01003001.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>161</NO.OJ>
+      <YEAR>2018</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>30</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20180213">20180213</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0033</NO.SEQ>
+    <PAGE.FIRST>30</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>30</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <TI.CJT>
+    <TITLE>
+      <TI>
+        <P>Request for a preliminary ruling from the Tribunal Supremo (Spain) lodged on<DATE ISO="20180213">13 February 2018</DATE>— José Manuel Burgos Pérez and María del Amor Guinea Bueno v Administración General del Estado</P>
+        <P>(Case C-110/18)</P>
+      </TI>
+    </TITLE>
+    <NO.DOC.C>2018/C 161/33</NO.DOC.C>
+    <LG.PROC LG="ES">Language of the case: Spanish</LG.PROC>
+    <TRANS.REF>
+      <IE>
+      </IE>
+    </TRANS.REF>
+  </TI.CJT>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Referring court</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>Tribunal Supremo</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Parties to the main proceedings</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>
+        <HT TYPE="ITALIC">Applicants:</HT>José Manuel Burgos Pérez and María del Amor Guinea Bueno</P>
+      <P>
+        <HT TYPE="ITALIC">Defendant:</HT>Administración General del Estado</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Questions referred</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <LIST TYPE="ARAB">
+        <ITEM>
+          <NP>
+            <NO.P>1.</NO.P>
+            <TXT>Must the<QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+              </QUOT.START>the polluter pays<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+              </QUOT.END>environmental principle, provided for in Article 191(2) TFEU, and Article 9(1) of Directive 2000/60/EC of the European Parliament and of the Council of<DATE ISO="20001023">23 October 2000</DATE>,<NOTE NOTE.ID="E0001" TYPE="ENDNOTE">
+                <P>Directive 2000/60/EC of the European Parliament and of the Council of<DATE ISO="20001023">23 October 2000</DATE>establishing a framework for Community action in the field of water policy (<REF.DOC.OJ COLL="L" DATE.PUB="2000" NO.OJ="327" PAGE.FIRST="1">OJ 2000 L 327, p. 1</REF.DOC.OJ>).</P>
+              </NOTE>which lays down the principle of the recovery of costs for water services and also the appropriate economic balancing of water uses, be interpreted as precluding the introduction of a tax on the use of inland waters to produce energy, such as the tax at issue in the proceedings, which does not incentivise the efficient use of water, nor establish mechanisms for the preservation and protection of public water resources, the quantification of that tax being totally unconnected to the capacity to cause damage to the public water resources, as it is focused solely and exclusively on the income-generating capacity of producers?</TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>2.</NO.P>
+            <TXT>Is a tax such as the hydraulic tax the subject of the proceedings, which exclusively affects hydroelectricity generators operating in river basins encompassing more than one autonomous community, but not concession-holding producers in river basins encompassing a single autonomous community, and also producers using hydroelectric technology, but not energy producers using other technologies, compatible with the principle of non-discrimination between operators provided for in Article 3(1) of Directive 2009/72/EC of<DATE ISO="20090713">13 July 2009</DATE>concerning common rules for the internal market in electricity?<NOTE NOTE.ID="E0002" TYPE="ENDNOTE">
+                <P>Directive 2009/72/EC of the European Parliament and of the Council of<DATE ISO="20090713">13 July 2009</DATE>concerning common rules for the internal market in electricity and repealing Directive 2003/54/EC (<REF.DOC.OJ COLL="L" DATE.PUB="2009" NO.OJ="211" PAGE.FIRST="55">OJ 2009 L 211, p. 55</REF.DOC.OJ>).</P>
+              </NOTE>
+            </TXT>
+          </NP>
+        </ITEM>
+        <ITEM>
+          <NP>
+            <NO.P>3.</NO.P>
+            <TXT>Must Article 107(1) TFEU be interpreted as meaning that the levying of a hydraulic tax such as that at issue to the detriment of hydroelectricity producers operating within river basins encompassing more than one autonomous community constitutes prohibited State aid, in that it introduces an asymmetrical system of taxation within the same area of technology, depending on the plant’s location, and the tax is not levied on producers of energy from other sources?</TXT>
+          </NP>
+        </ITEM>
+      </LIST>
+    </GR.SEQ>
+  </CONTENTS>
+</CJT>

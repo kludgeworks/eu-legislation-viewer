@@ -1,0 +1,84 @@
+<CJT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-04.00-20061031.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2009044EN.01007403.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>044</NO.OJ>
+      <YEAR>2009</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>74</PAGE.FIRST>
+      <PAGE.SEQ>3</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20081103">20081103</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0132</NO.SEQ>
+    <PAGE.FIRST>74</PAGE.FIRST>
+    <PAGE.SEQ>3</PAGE.SEQ>
+    <PAGE.LAST>75</PAGE.LAST>
+    <PAGE.TOTAL>2</PAGE.TOTAL>
+    <NO.DOC TYPE="OJ">
+      <TXT>2009/C 44/132</TXT>
+    </NO.DOC>
+    <NO.DOC TYPE="INTERNAL">
+      <TXT>F-89/08</TXT>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TI.CJT>
+    <TITLE>
+      <TI>
+        <P>Action brought on<DATE ISO="20081103">3 November 2008</DATE>— P v Parliament</P>
+      </TI>
+    </TITLE>
+    <INDEX>
+      <KEYWORD>Case F-89/08</KEYWORD>
+    </INDEX>
+    <NO.DOC.C>(2009/C 44/132)</NO.DOC.C>
+    <LG.PROC LG="FR">Language of the case: French</LG.PROC>
+    <TRANS.REF>
+      <IE>
+      </IE>
+    </TRANS.REF>
+  </TI.CJT>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>Parties</P>
+        </TI>
+      </TITLE>
+      <P>
+        <HT TYPE="ITALIC">Applicant:</HT>P (Brussels, Belgium) (represented by E. Boigelot, lawyer)</P>
+      <P>
+        <HT TYPE="ITALIC">Defendant:</HT>European Parliament</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>Subject-matter and description of the proceedings</P>
+        </TI>
+      </TITLE>
+      <P>Annulment of the Parliament&apos;s decision to dismiss the applicant with three months&apos; notice and also a claim for damages.</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>Form of order sought</P>
+        </TI>
+      </TITLE>
+      <LIST TYPE="DASH">
+        <ITEM>
+          <P>Annulment of the Parliament&apos;s decision of<DATE ISO="20080415">15 April 2008</DATE>to dismiss the applicant with three months&apos; notice and immediately to deny him access to the Parliament, ordering him to return his office keys as soon as possible;</P>
+        </ITEM>
+        <ITEM>
+          <P>in consequence, reinstatement of the applicant forthwith in his duties, in the post and at the grade that were his at the time of the decision of<DATE ISO="20080415">15 April 2008</DATE>, with retroactive effect, and payment of his salary from<DATE ISO="20080715">15 July 2008</DATE>until the date of his actual reinstatement, with default interest at the rate of 7 % per annum;</P>
+        </ITEM>
+        <ITEM>
+          <P>an order that the defendant should pay, by way of compensation for non-material damage and prejudice to his career, the sum of EUR<FT TYPE="NUMBER">10000</FT>, subject to any increase and/or decrease during the proceedings;</P>
+        </ITEM>
+        <ITEM>
+          <P>an order that the European Parliament should pay the costs.</P>
+        </ITEM>
+      </LIST>
+    </GR.SEQ>
+  </CONTENTS>
+</CJT>

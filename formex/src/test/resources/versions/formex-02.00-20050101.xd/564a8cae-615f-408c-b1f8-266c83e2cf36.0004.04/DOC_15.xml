@@ -1,0 +1,84 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.eu.int/schema/formex-02.00-20050101.xd">
+  <BIB.DOC>
+    <NO.DOC TYPE="OJ" FORMAT="YN">
+      <NO.CURRENT>94</NO.CURRENT>
+      <YEAR>2002</YEAR>
+      <COM>EC</COM>
+    </NO.DOC>
+    <DURAB TYPE="DUR">
+    </DURAB>
+    <AUTHOR>COM</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="L_2002337EN.toc.xml">
+    <COLL>L</COLL>
+    <NO.OJ>337</NO.OJ>
+    <DATE ISO="20021213">20021213</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="015" SYNOPTISM="D015">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>DIR</LEGAL.VALUE>
+      <NO.CELEX>302L0094</NO.CELEX>
+      <DATE ISO="20021209">20021209</DATE>
+      <PAGE.FIRST>41</PAGE.FIRST>
+      <PAGE.LAST>46</PAGE.LAST>
+      <PAGE.TOTAL>6</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="L_2002337EN.01004101.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+    <DOC.SUB.PUB NO.SEQ="015.001" SYNOPTISM="D015.001" TYPE="ANNEX">
+      <PAGE.FIRST>47</PAGE.FIRST>
+      <PAGE.LAST>48</PAGE.LAST>
+      <PAGE.TOTAL>2</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="L_2002337EN.01004701.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.SUB.PUB>
+    <DOC.SUB.PUB NO.SEQ="015.002" SYNOPTISM="D015.002" TYPE="ANNEX">
+      <PAGE.FIRST>49</PAGE.FIRST>
+      <PAGE.LAST>50</PAGE.LAST>
+      <PAGE.TOTAL>2</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="L_2002337EN.01004901.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.SUB.PUB>
+    <DOC.SUB.PUB NO.SEQ="015.003" SYNOPTISM="D015.003" TYPE="ANNEX">
+      <PAGE.FIRST>51</PAGE.FIRST>
+      <PAGE.LAST>53</PAGE.LAST>
+      <PAGE.TOTAL>3</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="L_2002337EN.01005101.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.SUB.PUB>
+    <DOC.SUB.PUB NO.SEQ="015.004" SYNOPTISM="D015.004" TYPE="ANNEX">
+      <PAGE.FIRST>54</PAGE.FIRST>
+      <PAGE.LAST>54</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="L_2002337EN.01005401.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.SUB.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="015">
+        <TITLE ID.TITLE="T0015">
+          <TI>
+            <P>Commission Directive 2002/94/EC of<DATE ISO="20021209">9 December 2002</DATE>laying down detailed rules for implementing certain provisions of Council Directive 76/308/EEC on mutual assistance for the recovery of claims relating to certain levies, duties, taxes and other measures</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>41</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="015">
+      <TITLE REF.TITLE="T0015">
+      </TITLE>
+      <ITEM.REF REF.PDF="l_33720021213en00410054.pdf">41</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

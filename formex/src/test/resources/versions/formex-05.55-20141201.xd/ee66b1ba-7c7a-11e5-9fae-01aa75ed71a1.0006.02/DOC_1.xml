@@ -1,0 +1,51 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.55-20141201.xd">
+  <BIB.DOC>
+    <PROD.ID>20151022011</PROD.ID>
+    <FIN.ID>63860</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2015/C 355/05</TXT>
+    </NO.DOC>
+    <DURAB TYPE="DUR">
+    </DURAB>
+    <AUTHOR>COM</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2015355EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>355</NO.OJ>
+    <DATE ISO="20151027">20151027</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0005" SYNOPTISM="D0005">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>DEC</LEGAL.VALUE>
+      <DATE ISO="20151026">20151026</DATE>
+      <PAGE.FIRST>6</PAGE.FIRST>
+      <PAGE.LAST>7</PAGE.LAST>
+      <PAGE.TOTAL>2</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="C_2015355EN.01000601.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0005">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Commission Decision of<DATE ISO="20151026">26 October 2015</DATE>recognising the Greenland Department of Fisheries, Hunting and Agriculture (APNN) in accordance with Article 3 of Commission Implementing Regulation (EU) 2015/1850 laying down detailed rules for the implementation of Regulation (EC) No 1007/2009 of the European Parliament and of the Council on trade in seal products</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>6</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0005">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_35520151027en00060007.pdf">6</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

@@ -1,0 +1,536 @@
+<CONS.ACT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.22-20110811.xd">
+  <INFO.CONSLEG CONSLEG.DATE="20130529" CONSLEG.REF="2006O0004" DATE.LAST.MOD="20130524" END="NONE" END.DATE="99999999" LEG.VAL="OTHER" PROD.SEQ="002.001.0" START.DATE="20130524">
+  </INFO.CONSLEG>
+  <INFO.PROD PROD.DATE="20130529" PROD.SYSTEM="CONSLEG.NEW" PRODUCER="ES">
+  </INFO.PROD>
+  <CONS.DOC>
+    <BIB.INSTANCE>
+      <DOCUMENT.REF FILE="CL2006O0004EN0020010.0001.doc.xml">
+        <LG.OJ>EN</LG.OJ>
+        <PAGE.FIRST>1</PAGE.FIRST>
+      </DOCUMENT.REF>
+      <DATE ISO="20130524">20130524</DATE>
+      <LG.DOC>EN</LG.DOC>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <PAGE.LAST>7</PAGE.LAST>
+      <PAGE.TOTAL>7</PAGE.TOTAL>
+    </BIB.INSTANCE>
+    <FAM.COMP LEG.VAL="OTHER">
+      <BIB.DATA>
+        <BIB.INSTANCE.CONS>
+          <DOCUMENT.REF.CONS>
+            <COLL>L</COLL>
+            <NO.OJ>107</NO.OJ>
+            <YEAR>2006</YEAR>
+            <LG.OJ>EN</LG.OJ>
+            <PAGE.FIRST>54</PAGE.FIRST>
+            <PAGE.SEQ>1</PAGE.SEQ>
+            <VOLUME.REF>01</VOLUME.REF>
+          </DOCUMENT.REF.CONS>
+          <DATE ISO="20060420">20060420</DATE>
+          <LG.DOC>EN</LG.DOC>
+          <NO.SEQ>0013</NO.SEQ>
+          <PAGE.FIRST>54</PAGE.FIRST>
+          <PAGE.SEQ>1</PAGE.SEQ>
+          <PAGE.LAST>57</PAGE.LAST>
+          <PAGE.TOTAL>4</PAGE.TOTAL>
+          <NO.DOC FORMAT="YN" TYPE="OJ">
+            <NO.CURRENT>294</NO.CURRENT>
+            <YEAR>2006</YEAR>
+            <COM>EC</COM>
+          </NO.DOC>
+        </BIB.INSTANCE.CONS>
+        <NO.CELEX>32006O0004</NO.CELEX>
+        <DATE ISO="20060407">20060407</DATE>
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Guideline of the European Central Bank</HT>
+            </P>
+            <P>of<DATE ISO="20060407">7 April 2006</DATE>
+            </P>
+            <P>on the Eurosystem’s provision of reserve management services in euro to central banks and countries located outside the euro area and to international organisations</P>
+            <P>(ECB/2006/4)</P>
+            <P>(2006/294/EC)</P>
+          </TI>
+        </TITLE>
+      </BIB.DATA>
+      <GR.MOD.ACT>
+        <MOD.ACT EXISTS="YES" LEG.VAL="OTHER" TYPE="MOD">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>139</NO.OJ>
+                <YEAR>2009</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>34</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="20090605">20090605</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>0013</NO.SEQ>
+              <PAGE.FIRST>34</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>34</PAGE.LAST>
+              <PAGE.TOTAL>1</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>429</NO.CURRENT>
+                <YEAR>2009</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>32009O0011</NO.CELEX>
+            <DATE ISO="20090528">20090528</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Guideline of the European Central Bank</HT>
+                </P>
+                <P>of<DATE ISO="20090528">28 May 2009</DATE>
+                </P>
+                <P>amending Guideline ECB/2006/4 on the Eurosystem’s provision of reserve management services in euro to central banks and countries located outside the euro area and to international organisations</P>
+                <P>(ECB/2009/11)</P>
+                <P>(2009/429/EC)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT EXISTS="YES" LEG.VAL="OTHER" TYPE="MOD">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>138</NO.OJ>
+                <YEAR>2013</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>19</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="20130524">20130524</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>0011</NO.SEQ>
+              <PAGE.FIRST>19</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>19</PAGE.LAST>
+              <PAGE.TOTAL>1</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>234</NO.CURRENT>
+                <YEAR>2013</YEAR>
+                <COM>EU</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>32013O0014</NO.CELEX>
+            <DATE ISO="20130515">20130515</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Guideline of the European Central Bank</HT>
+                </P>
+                <P>of<DATE ISO="20130515">15 May 2013</DATE>
+                </P>
+                <P>amending Guideline ECB/2006/4 on the Eurosystem’s provision of reserve management services in euro to central banks and countries located outside the euro area and to international organisations</P>
+                <P>(ECB/2013/14)</P>
+                <P>(2013/234/EU)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+      </GR.MOD.ACT>
+    </FAM.COMP>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="UC">Guideline of the European Central Bank</HT>
+        </P>
+        <P>of<DATE ISO="20060407">7 April 2006</DATE>
+        </P>
+        <P>on the Eurosystem’s provision of reserve management services in euro to central banks and countries located outside the euro area and to international organisations</P>
+        <P>(ECB/2006/4)</P>
+        <P>(2006/294/EC)</P>
+      </TI>
+    </TITLE>
+    <PREAMBLE>
+      <PREAMBLE.INIT>THE GOVERNING COUNCIL OF THE EUROPEAN CENTRAL BANK,</PREAMBLE.INIT>
+      <GR.VISA>
+        <VISA>Having regard to the Statute of the European System of Central Banks and of the European Central Bank, and in particular Article 12.1, Article 14.3 and Article 23 thereof,</VISA>
+      </GR.VISA>
+      <GR.CONSID>
+        <GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+        <CONSID>
+          <NP>
+            <NO.P>(1)</NO.P>
+            <TXT>Guideline ECB/2004/13 of<DATE ISO="20040701">1 July 2004</DATE>on the Eurosystem’s provision of reserve management services in euro to central banks and countries located outside the euro area and to international organisations<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>
+                  <REF.DOC.OJ COLL="L" DATE.PUB="20040713" NO.OJ="241" PAGE.FIRST="68">OJ L 241, 13.7.2004, p. 68</REF.DOC.OJ>. Guideline as amended by Guideline ECB/2004/20 (<REF.DOC.OJ COLL="L" DATE.PUB="20041229" NO.OJ="385" PAGE.FIRST="85">OJ L 385, 29.12.2004, p. 85</REF.DOC.OJ>).</P>
+              </NOTE>requires amendment to accommodate changes to the definition of<QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+              </QUOT.START>reserves<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+              </QUOT.END>and the removal of the threshold below which no remuneration is offered on overnight credit balances held as a cash/investment service. Guideline ECB/2004/13 has already been amended once and should therefore be recast in the interests of clarity and transparency.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(2)</NO.P>
+            <TXT>Pursuant to Article 23 in conjunction with Article 43.4 of the Statute, the European Central Bank (ECB) and the national central banks of the Member States that have adopted the euro (hereinafter the<QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002">
+              </QUOT.START>participating NCBs<QUOT.END CODE="2019" ID="QE0002" REF.START="QS0002">
+              </QUOT.END>) may establish relations with central banks in other countries and, where appropriate, with international organisations, and conduct all types of banking transactions in their relations with third countries and international organisations.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(3)</NO.P>
+            <TXT>The Governing Council considers that the Eurosystem should act as a single system when providing Eurosystem reserve management services to such customers, irrespective of the Eurosystem member through which such services are provided. To this end, the Governing Council considers it necessary to adopt this Guideline to ensure,<HT TYPE="ITALIC">inter alia</HT>, that Eurosystem reserve management services are provided on a standardised basis under harmonised terms and conditions, that the ECB receives adequate information regarding these services, and that minimum common features required in contractual arrangements with customers are identified.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(4)</NO.P>
+            <TXT>The Governing Council considers it necessary to confirm that all information, data and documents drafted by and/or exchanged between Eurosystem members in the context of Eurosystem reserve management services are of a confidential nature and are subject to Article 38 of the Statute.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(5)</NO.P>
+            <TXT>In accordance with Article 12.1 and Article 14.3 of the Statute, ECB guidelines form an integral part of Community law,</TXT>
+          </NP>
+        </CONSID>
+      </GR.CONSID>
+      <PREAMBLE.FINAL>HAS ADOPTED THIS GUIDELINE:</PREAMBLE.FINAL>
+    </PREAMBLE>
+    <ENACTING.TERMS>
+      <ARTICLE IDENTIFIER="001">
+        <TI.ART>Article 1</TI.ART>
+        <STI.ART>Definitions</STI.ART>
+        <ALINEA>
+          <P>For the purposes of this Guideline:</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>
+                <QUOT.START CODE="2018" ID="QS0003" REF.END="QE0003">
+                </QUOT.START>all types of banking transactions<QUOT.END CODE="2019" ID="QE0003" REF.START="QS0003">
+                </QUOT.END>shall include the provision of Eurosystem reserve management services to central banks and countries located outside the euro area and to international organisations in connection with the management of the reserves of such central banks, countries and international organisations,</P>
+            </ITEM>
+            <ITEM>
+              <P>
+                <QUOT.START CODE="2018" ID="QS0004" REF.END="QE0004">
+                </QUOT.START>authorised ECB personnel<QUOT.END CODE="2019" ID="QE0004" REF.START="QS0004">
+                </QUOT.END>shall mean such persons at the ECB as shall be identified by the Executive Board, from time to time, as the authorised senders and recipients of the information to be provided within the framework of Eurosystem reserve management services,</P>
+            </ITEM>
+            <ITEM>
+              <P>
+                <QUOT.START CODE="2018" ID="QS0005" REF.END="QE0005">
+                </QUOT.START>central banks<QUOT.END CODE="2019" ID="QE0005" REF.START="QS0005">
+                </QUOT.END>shall include monetary authorities,</P>
+            </ITEM>
+            <ITEM>
+              <P>
+                <QUOT.START CODE="2018" ID="QS0006" REF.END="QE0006">
+                </QUOT.START>customer<QUOT.END CODE="2019" ID="QE0006" REF.START="QS0006">
+                </QUOT.END>shall mean any country (including any public authority or government agency), any central bank or monetary authority located outside the euro area, or any international organisation to which Eurosystem reserve management services are provided by a Eurosystem member,</P>
+            </ITEM>
+            <ITEM>
+              <P>
+                <QUOT.START CODE="2018" ID="QS0007" REF.END="QE0007">
+                </QUOT.START>Eurosystem reserve management services<QUOT.END CODE="2019" ID="QE0007" REF.START="QS0007">
+                </QUOT.END>shall mean the reserve management services listed in Article 2 that may be provided by Eurosystem members to customers and that allow customers to comprehensively manage their reserves through a single Eurosystem member,</P>
+            </ITEM>
+            <ITEM>
+              <P>
+                <QUOT.START CODE="2018" ID="QS0008" REF.END="QE0008">
+                </QUOT.START>Eurosystem Service Provider<QUOT.END CODE="2019" ID="QE0008" REF.START="QS0008">
+                </QUOT.END>(ESP) shall mean a Eurosystem member which undertakes to provide the complete set of Eurosystem reserve management services,</P>
+            </ITEM>
+            <ITEM>
+              <P>
+                <QUOT.START CODE="2018" ID="QS0009" REF.END="QE0009">
+                </QUOT.START>Individual Service Provider<QUOT.END CODE="2019" ID="QE0009" REF.START="QS0009">
+                </QUOT.END>(ISP) shall mean a Eurosystem member which does not undertake to provide the complete set of Eurosystem reserve management services,</P>
+            </ITEM>
+            <ITEM>
+              <P>
+                <QUOT.START CODE="2018" ID="QS0010" REF.END="QE0010">
+                </QUOT.START>international organisation<QUOT.END CODE="2019" ID="QE0010" REF.START="QS0010">
+                </QUOT.END>shall mean any organisation, other than Community institutions and bodies, established by or under the authority of an international treaty,</P>
+            </ITEM>
+            <ITEM>
+              <P>
+                <QUOT.START CODE="2018" ID="QS0011" REF.END="QE0011">
+                </QUOT.START>reserves<QUOT.END CODE="2019" ID="QE0011" REF.START="QS0011">
+                </QUOT.END>shall mean the customer’s eligible euro-denominated assets, i.e. cash and all securities that are included in the single framework set out in the Eurosystem eligible assets database, which contains the assets that are eligible for Eurosystem credit operations and is published and updated daily on the ECB’s website, with the exception of all of the following: (i) both the securities falling under<QUOT.START CODE="2018" ID="QS0012" REF.END="QE0012">
+                </QUOT.START>issuer group 3<QUOT.END CODE="2019" ID="QE0012" REF.START="QS0012">
+                </QUOT.END>(i.e. corporate and other issuers) and, for the remaining issuer groups, the securities falling under<QUOT.START CODE="2018" ID="QS0013" REF.END="QE0013">
+                </QUOT.START>liquidity category V<QUOT.END CODE="2019" ID="QE0013" REF.START="QS0013">
+                </QUOT.END>(asset-backed securities); (ii) assets exclusively held for the purpose of meeting the pension and related obligations of the customer vis-à-vis its former or existing staff; (iii) dedicated accounts opened with a Eurosystem member by a customer for public debt rescheduling purposes within the framework of international agreements; (iv) such other categories of euro-denominated assets as decided from time to time by the Governing Council.</P>
+            </ITEM>
+          </LIST>
+        </ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="002">
+        <TI.ART>Article 2</TI.ART>
+        <STI.ART>List of Eurosystem reserve management services</STI.ART>
+        <ALINEA>
+          <P>Eurosystem reserve management services shall consist of the following:</P>
+          <LIST TYPE="ARAB">
+            <ITEM>
+              <NP>
+                <NO.P>1.</NO.P>
+                <TXT>Custody (safe keeping) accounts for the reserves;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>2.</NO.P>
+                <TXT>Custodian (safe keeping) services:</TXT>
+                <P>
+                  <LIST TYPE="alpha">
+                    <ITEM>
+                      <NP>
+                        <NO.P>(a)</NO.P>
+                        <TXT>end-of-month custody statements, with the possibility of also providing statements at other dates at the customer’s request;</TXT>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(b)</NO.P>
+                        <TXT>transmission of statements via SWIFT to all customers capable of receiving statements via SWIFT, and via other means as appropriate for non-SWIFT customers;</TXT>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(c)</NO.P>
+                        <TXT>notification of corporate actions (e.g. coupon payments and redemptions) in relation to customers’ securities holdings;</TXT>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(d)</NO.P>
+                        <TXT>processing corporate actions on behalf of customers;</TXT>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(e)</NO.P>
+                        <TXT>facilitating arrangements between customers and third party agents, under certain restrictions, in connection with the operation of automatic securities lending programmes;</TXT>
+                      </NP>
+                    </ITEM>
+                  </LIST>
+                </P>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>3.</NO.P>
+                <TXT>Settlement services:</TXT>
+                <P>
+                  <LIST TYPE="alpha">
+                    <ITEM>
+                      <NP>
+                        <NO.P>(a)</NO.P>
+                        <TXT>free of payment/delivery versus payment settlement services for all euro-denominated securities for which custody accounts are provided;</TXT>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(b)</NO.P>
+                        <TXT>confirmation of settlement of all operations via SWIFT (or other means as appropriate for non-SWIFT customers);</TXT>
+                      </NP>
+                    </ITEM>
+                  </LIST>
+                </P>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>4.</NO.P>
+                <TXT>Cash/investment services:</TXT>
+                <P>
+                  <LIST TYPE="alpha">
+                    <ITEM>
+                      <NP>
+                        <NO.P>(a)</NO.P>
+                        <TXT>purchase/sale of foreign exchange for customers’ accounts on a principal basis, covering the spot purchase/sale of euro against non-euro area G10 currencies as a minimum;</TXT>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(b)</NO.P>
+                        <TXT>fixed-term deposit services:</TXT>
+                        <P>
+                          <LIST TYPE="DASH">
+                            <ITEM>
+                              <P>on an agency basis, or</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>on a principal basis;</P>
+                            </ITEM>
+                          </LIST>
+                        </P>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(c)</NO.P>
+                        <TXT>overnight credit balances:</TXT>
+                        <P>
+                          <LIST TYPE="DASH">
+                            <ITEM>
+                              <P>Tier 1 — automatic investment of a limited fixed amount per customer on a principal basis,</P>
+                            </ITEM>
+                            <ITEM>
+                              <P>Tier 2 — possibility of investing funds with market participants on an agency basis;</P>
+                            </ITEM>
+                          </LIST>
+                        </P>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(d)</NO.P>
+                        <TXT>execution of investments for customers according to their standing instructions and in accordance with the set of Eurosystem reserve management services;</TXT>
+                      </NP>
+                    </ITEM>
+                    <ITEM>
+                      <NP>
+                        <NO.P>(e)</NO.P>
+                        <TXT>execution of customers’ orders for securities purchases/sales in the secondary market.</TXT>
+                      </NP>
+                    </ITEM>
+                  </LIST>
+                </P>
+              </NP>
+            </ITEM>
+          </LIST>
+        </ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="003">
+        <TI.ART>Article 3</TI.ART>
+        <STI.ART>Provision of services by ESPs and ISPs</STI.ART>
+        <PARAG IDENTIFIER="003.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>Within the framework of the Eurosystem reserve management services, a distinction is made between Eurosystem members as being either an ESP or an ISP.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>In addition to the services indicated in Article 2, each ESP may also offer other reserve management services to customers. An ESP shall determine such services on an individual basis and such services shall not be subject to this Guideline.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>An ISP shall be subject to this Guideline and the requirements of Eurosystem reserve management services as regards one or more Eurosystem reserve management services, or part of such service, which such an ISP provides and which form(s) part of the complete set of Eurosystem reserve management services. Furthermore, each ISP may also offer other reserve management services to customers and shall determine such services on an individual basis. Such services shall not be subject to this Guideline.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="004">
+        <TI.ART>Article 4</TI.ART>
+        <STI.ART>Information regarding Eurosystem reserve management services</STI.ART>
+        <PARAG IDENTIFIER="004.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>Eurosystem members shall provide the authorised ECB personnel with any relevant information on the provision of Eurosystem reserve management services to new and existing customers and inform the authorised ECB personnel when a potential customer approaches them.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="004.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Before Eurosystem members disclose the identity of an existing, new or potential customer, they shall endeavour to obtain the customer’s consent to the disclosure.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="004.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>If consent is not obtained, the Eurosystem member concerned shall provide the authorised ECB personnel with the required information without revealing the identity of the customer.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="005">
+        <TI.ART>Article 5</TI.ART>
+        <STI.ART>Prohibition and suspension of Eurosystem reserve management services</STI.ART>
+        <PARAG IDENTIFIER="005.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>The ECB will maintain for consultation by the Eurosystem members a list of existing, new or potential customers whose reserves are affected by a freezing order or similar measure imposed either by one of the EU Member States on the basis of a United Nations Security Council resolution or by the European Union.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="005.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>If on the basis of a measure or decision, other than those referred to in paragraph 1, adopted for national policy or national interest reasons by a Eurosystem member or by the Member State in which the Eurosystem member is located, the Eurosystem member suspends the provision of Eurosystem reserve management services to an existing customer or refuses to provide such services to a new or potential customer, this member shall promptly notify the authorised ECB personnel thereof. The authorised ECB personnel shall promptly inform the other Eurosystem members thereof. Any such measure or decision shall not prevent the other Eurosystem members from providing Eurosystem reserve management services to such customers.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="005.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>Article 4(2) and (3) shall apply to any disclosure of the identity of an existing, new or potential customer made pursuant to paragraph 2.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="006">
+        <TI.ART>Article 6</TI.ART>
+        <STI.ART>Responsibility for Eurosystem reserve management services</STI.ART>
+        <PARAG IDENTIFIER="006.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>Each Eurosystem member shall be responsible for the execution of any contractual arrangements with its customers that it considers appropriate for the provision of Eurosystem reserve management services.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="006.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Subject to any specific provisions applicable to, or agreed upon by a Eurosystem member, each Eurosystem member that provides Eurosystem reserve management services or any part thereof to its customers, shall be liable for any such services that it provides.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="007">
+        <TI.ART>Article 7</TI.ART>
+        <STI.ART>Additional minimum common features in contractual arrangements with customers</STI.ART>
+        <ALINEA>
+          <P>Eurosystem members shall ensure that their contractual arrangements with customers are consistent with this Guideline and with the following additional minimum common features. The contractual arrangements shall:</P>
+          <LIST TYPE="alpha">
+            <ITEM>
+              <NP>
+                <NO.P>(a)</NO.P>
+                <TXT>state that the counterparty of the customer is the Eurosystem member with whom that customer has concluded an arrangement for the provision of Eurosystem reserve management services or any part thereof, and that such arrangement does not in itself create customer rights or entitlements vis-à-vis any other Eurosystem members. This provision does not prevent a customer from having an arrangement with several Eurosystem members;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>(b)</NO.P>
+                <TXT>refer to the links that may be used for the settlement of securities held by customers’ counterparties and the relevant risks of using links not eligible for monetary policy operations;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>(c)</NO.P>
+                <TXT>refer to the fact that certain transactions within the framework of Eurosystem reserve management services shall be carried out on a best effort basis;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>(d)</NO.P>
+                <TXT>refer to the fact that the Eurosystem member may make suggestions to customers as to the timing and execution of a transaction to avoid conflicts with the Eurosystem’s monetary and exchange rate policy, and that such member shall not be liable for any consequences that such suggestions may have for the customer;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>(e)</NO.P>
+                <TXT>refer to the fact that the fees that Eurosystem members charge to their customers for the provision of Eurosystem reserve management services are subject to reviews by the Eurosystem and that the customers shall, in accordance with applicable law, be bound by the fee revisions that might result from such reviews;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>(f)</NO.P>
+                <TXT>state that the customer shall confirm to the Eurosystem member that it complies with all Union and national laws for the prevention of money laundering and terrorist financing, insofar as and to the extent applicable to it, including instructions given by competent authorities, and that it is not involved with any form of money laundering or terrorist financing.</TXT>
+              </NP>
+            </ITEM>
+          </LIST>
+        </ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="008">
+        <TI.ART>Article 8</TI.ART>
+        <STI.ART>Role of the ECB</STI.ART>
+        <ALINEA>The ECB will coordinate the general provision of Eurosystem reserve management services and the related information framework. Any Eurosystem member that becomes an ESP or that terminates its status as an ESP shall inform the ECB thereof.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="009">
+        <TI.ART>Article 9</TI.ART>
+        <STI.ART>Final provisions</STI.ART>
+        <PARAG IDENTIFIER="009.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>This Guideline is addressed to the participating NCBs.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="009.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Guideline ECB/2004/13 is repealed. References to the repealed Guideline shall be construed as references to this Guideline.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="009.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>This Guideline shall enter into force on<DATE ISO="20060412">12 April 2006</DATE>. It shall apply from<DATE ISO="20060701">1 July 2006</DATE>.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+    </ENACTING.TERMS>
+  </CONS.DOC>
+</CONS.ACT>

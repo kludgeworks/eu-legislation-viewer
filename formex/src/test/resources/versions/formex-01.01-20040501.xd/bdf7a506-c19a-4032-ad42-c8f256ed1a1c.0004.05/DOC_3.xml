@@ -1,0 +1,44 @@
+<ANNEX noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-01.01-20040501.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2004188EN.01001001.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>188</NO.OJ>
+      <YEAR>2004</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>10</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20040526">20040526</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>005.001</NO.SEQ>
+    <PAGE.FIRST>11</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>11</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>ANNEX I</P>
+    </TI>
+  </TITLE>
+  <CONTENTS>
+    <TBL NO.SEQ="001" COLS="2">
+      <CORPUS>
+        <ROW TYPE="HEADER">
+          <CELL COL="1" TYPE="HEADER">Group No</CELL>
+          <CELL COL="2" TYPE="HEADER">Percentage of acceptance of import licences submitted for the period<DATE ISO="20040501">1 May</DATE>to<DATE ISO="20040630">30 June 2004</DATE>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <FT TYPE="NUMBER">1</FT>
+          </CELL>
+          <CELL COL="2">
+            <FT TYPE="DECIMAL">100,00</FT>
+          </CELL>
+        </ROW>
+      </CORPUS>
+    </TBL>
+  </CONTENTS>
+</ANNEX>

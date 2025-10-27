@@ -1,0 +1,536 @@
+<ACT noNamespaceSchemaLocation="http://formex.publications.eu.int/schema/formex-02.00-20050101.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2002337EN.01004101.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>337</NO.OJ>
+      <YEAR>2002</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>41</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20021209">20021209</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>015</NO.SEQ>
+    <PAGE.FIRST>41</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>46</PAGE.LAST>
+    <PAGE.TOTAL>6</PAGE.TOTAL>
+    <NO.DOC FORMAT="YN" TYPE="OJ">
+      <NO.CURRENT>94</NO.CURRENT>
+      <YEAR>2002</YEAR>
+      <COM>EC</COM>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Commission Directive 2002/94/EC</HT>
+      </P>
+      <P>of<DATE ISO="20021209">9 December 2002</DATE>
+      </P>
+      <P>laying down detailed rules for implementing certain provisions of Council Directive 76/308/EEC on mutual assistance for the recovery of claims relating to certain levies, duties, taxes and other measures</P>
+    </TI>
+  </TITLE>
+  <PREAMBLE>
+    <PREAMBLE.INIT>THE COMMISSION OF THE EUROPEAN COMMUNITIES,</PREAMBLE.INIT>
+    <GR.VISA>
+      <VISA>Having regard to the Treaty establishing the European Community,</VISA>
+      <VISA>Having regard to Council Directive 76/308/EEC of<DATE ISO="19760315">15 March 1976</DATE>on mutual assistance for the recovery of claims relating to certain levies, duties, taxes and other measures<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+          <P>
+            <REF.DOC.OJ COLL="L" NO.OJ="073" DATE.PUB="19760319" PAGE.FIRST="18">OJ L 73, 19.3.1976, p. 18</REF.DOC.OJ>.</P>
+        </NOTE>, as last amended by Directive 2001/44/EC<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE">
+          <P>
+            <REF.DOC.OJ COLL="L" NO.OJ="175" DATE.PUB="20010628" PAGE.FIRST="17">OJ L 175, 28.6.2001, p. 17</REF.DOC.OJ>.</P>
+        </NOTE>, and in particular Article 22 thereof,</VISA>
+    </GR.VISA>
+    <GR.CONSID>
+      <GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+      <CONSID>
+        <NP>
+          <NO.P>(1)</NO.P>
+          <TXT>The system of mutual assistance between the competent authorities of Member States, as set out in Directive 76/308/EEC, has been amended as regards the information to be supplied to the applicant authority, the notification of the addressee concerning the applicable instruments and decisions, the adoption of precautionary measures, and the recovery by the requested authority of claims on behalf of the applicant authority.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(2)</NO.P>
+          <TXT>As regards each of those aspects, therefore, Commission Directive 77/794/EEC of<DATE ISO="19771104">4 November 1977</DATE>laying down detailed rules for implementing certain provisions of Directive 76/308/EEC on mutual assistance for the recovery of claims resulting from operations forming part of the system of financing the European Agricultural Guidance and Guarantee Fund, and of agricultural levies and customs duties, and in respect of value added tax<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" NO.OJ="333" DATE.PUB="19771224" PAGE.FIRST="11">OJ L 333, 24.12.1977, p. 11</REF.DOC.OJ>.</P>
+            </NOTE>, as last amended by Directive 86/489/EEC<NOTE NOTE.ID="E0004" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" NO.OJ="283" DATE.PUB="19861004" PAGE.FIRST="23">OJ L 283, 4.10.1986, p. 23</REF.DOC.OJ>.</P>
+            </NOTE>, should be amended accordingly.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(3)</NO.P>
+          <TXT>Furthermore, detailed rules should be laid down concerning the means by which communications between authorities may be transmitted.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(4)</NO.P>
+          <TXT>In the interests of clarity, Directive 77/794/EEC should be replaced.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(5)</NO.P>
+          <TXT>The measures provided for in this Directive are in accordance with the opinion of the Committee on Recovery,</TXT>
+        </NP>
+      </CONSID>
+    </GR.CONSID>
+    <PREAMBLE.FINAL>HAS ADOPTED THIS DIRECTIVE:</PREAMBLE.FINAL>
+  </PREAMBLE>
+  <ENACTING.TERMS>
+    <DIVISION>
+      <TITLE>
+        <TI>
+          <P>CHAPTER I</P>
+        </TI>
+        <STI>
+          <P>GENERAL PROVISIONS</P>
+        </STI>
+      </TITLE>
+      <ARTICLE IDENTIFIER="001">
+        <TI.ART>Article 1</TI.ART>
+        <ALINEA>This Directive lays down the detailed rules for implementing Article 4(2) and (4), Article 5(2) and (3), Article 7, Article 8, Article 9, Article 11, Article 12(1) and (2), Article 14, Article 18(3) and Article 25 of Directive 76/308/EEC.</ALINEA>
+        <ALINEA>It also lays down the detailed rules on conversion, transfer of sums recovered, the fixing of a minimum amount for claims which may give rise to a request for assistance, as well as the means by which communications between authorities may be transmitted.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="002">
+        <TI.ART>Article 2</TI.ART>
+        <ALINEA>
+          <P>For the purposes of this Directive:</P>
+          <LIST TYPE="ARAB">
+            <ITEM>
+              <NP>
+                <NO.P>1.</NO.P>
+                <TXT>transmission<QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+                  </QUOT.START>by electronic means<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+                  </QUOT.END>shall mean transmission using electronic equipment for processing (including digital compression) of data and employing wires, radio transmission, optical technologies or other electromagnetic means;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>2.</NO.P>
+                <TXT>
+                  <QUOT.START ID="QS0002" REF.END="QE0002" CODE="2018">
+                  </QUOT.START>CCN/CSI<QUOT.END ID="QE0002" REF.START="QS0002" CODE="2019">
+                  </QUOT.END>network shall mean the common platform based on the Common Communication Network (CCN) and Common System Interface (CSI), developed by the Community to ensure all transmissions by electronic means between competent authorities in the area of Customs and Taxation.</TXT>
+              </NP>
+            </ITEM>
+          </LIST>
+        </ALINEA>
+      </ARTICLE>
+    </DIVISION>
+    <DIVISION>
+      <TITLE>
+        <TI>
+          <P>CHAPTER II</P>
+        </TI>
+        <STI>
+          <P>REQUESTS FOR INFORMATION</P>
+        </STI>
+      </TITLE>
+      <ARTICLE IDENTIFIER="003">
+        <TI.ART>Article 3</TI.ART>
+        <ALINEA>The request for information referred to in Article 4 of Directive 76/308/EEC shall be made out in writing in accordance with the model in Annex I to this Directive. If the request cannot be transmitted by electronic means, it shall bear the official stamp of the applicant authority and shall be signed by an official thereof duly authorised to make such a request.</ALINEA>
+        <ALINEA>Where a similar request has been addressed to any other authority, the applicant authority shall indicate in its request for information the name of that authority.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="004">
+        <TI.ART>Article 4</TI.ART>
+        <ALINEA>
+          <P>The request for information may relate to:</P>
+          <LIST TYPE="ARAB">
+            <ITEM>
+              <NP>
+                <NO.P>1.</NO.P>
+                <TXT>the debtor;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>2.</NO.P>
+                <TXT>any person liable for settlement of the claim under the law in force in the Member State in which the applicant authority is situated (hereinafter<QUOT.START ID="QS0003" REF.END="QE0003" CODE="2018">
+                  </QUOT.START>the Member State of the applicant authority<QUOT.END ID="QE0003" REF.START="QS0003" CODE="2019">
+                  </QUOT.END>);</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>3.</NO.P>
+                <TXT>any third party holding assets belonging to one of the persons mentioned under point 1 or 2.</TXT>
+              </NP>
+            </ITEM>
+          </LIST>
+        </ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="005">
+        <TI.ART>Article 5</TI.ART>
+        <PARAG IDENTIFIER="005.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>The requested authority shall acknowledge receipt of the request for information in writing as soon as possible and in any event within seven days of such receipt.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="005.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Immediately upon receipt of the request the requested authority shall, where appropriate, ask the applicant authority to provide any additional information necessary. The applicant authority shall provide all additional necessary information to which it normally has access.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="006">
+        <TI.ART>Article 6</TI.ART>
+        <PARAG IDENTIFIER="006.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>The requested authority shall transmit each item of requested information to the applicant authority as and when it is obtained.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="006.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Where all or some of the requested information cannot be obtained within a reasonable time, having regard to the particular case, the requested authority shall so inform the applicant authority, indicating the reasons therefor.</ALINEA>
+          <ALINEA>In any event, at the end of six months from the date of acknowledgement of receipt of the request, the requested authority shall inform the applicant authority of the outcome of the investigations which it has conducted in order to obtain the information requested.</ALINEA>
+          <ALINEA>In the light of the information received from the requested authority, the applicant authority may request the latter to continue its investigations. That request shall be made in writing within two months of the receipt of the notification of the outcome of the investigations carried out by the requested authority, and shall be treated by the requested authority in accordance with the provisions applying to the initial request.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="007">
+        <TI.ART>Article 7</TI.ART>
+        <ALINEA>If the requested authority decides not to comply with the request for information, it shall notify the applicant authority in writing of the reasons for the refusal to comply with the request, specifying the provisions of Article 4 of Directive 76/308/EEC on which it relies. Such notification shall be given by the requested authority as soon as it has taken its decision and in any event within three months of the date of the acknowledgement of the receipt of the request.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="008">
+        <TI.ART>Article 8</TI.ART>
+        <ALINEA>The applicant authority may at any time withdraw the request for information which it has sent to the requested authority. The decision to withdraw shall be transmitted to the requested authority in writing.</ALINEA>
+      </ARTICLE>
+    </DIVISION>
+    <DIVISION>
+      <TITLE>
+        <TI>
+          <P>CHAPTER III</P>
+        </TI>
+        <STI>
+          <P>REQUESTS FOR NOTIFICATION</P>
+        </STI>
+      </TITLE>
+      <ARTICLE IDENTIFIER="009">
+        <TI.ART>Article 9</TI.ART>
+        <ALINEA>The request for notification referred to in Article 5 of Directive 76/308/EEC shall be made out in writing in duplicate in accordance with the model in Annex II to this Directive. The said request shall bear the official stamp of the applicant authority and shall be signed by an official thereof duly authorised to make such a request.</ALINEA>
+        <ALINEA>Two copies of the instrument or decision, notification of which is requested, shall be attached to the request.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="010">
+        <TI.ART>Article 10</TI.ART>
+        <ALINEA>The request for notification may relate to any natural or legal person who, in accordance with the law in force in the Member State of the applicant authority, is required to be informed of any instrument or decision which concerns that person.</ALINEA>
+        <ALINEA>In so far as such is not indicated in the instrument or decision of which notification is requested, the request for notification shall refer to the rules in force in the Member State of the applicant authority governing the procedure for contestation of the claim or for its recovery.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="011">
+        <TI.ART>Article 11</TI.ART>
+        <PARAG IDENTIFIER="011.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>The requested authority shall acknowledge receipt of the request for notification in writing as soon as possible and in any event within seven days of such receipt.</ALINEA>
+          <ALINEA>Immediately upon receipt of the request for notification, the requested authority shall take the necessary measures to effect notification in accordance with the law in force in the Member State in which it is situated.</ALINEA>
+          <ALINEA>If necessary, but without jeopardising the final date for notification indicated in the request for notification, the requested authority shall ask the applicant authority to provide additional information.</ALINEA>
+          <ALINEA>The applicant authority shall provide all additional information to which it normally has access.</ALINEA>
+          <ALINEA>The requested authority shall in any event not question the validity of the instrument or decision of which notification is requested.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="011.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>The requested authority shall inform the applicant authority of the date of notification as soon as this has been effected, by returning to it one of the copies of the request with the certificate on the reverse side duly completed.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+    </DIVISION>
+    <DIVISION>
+      <TITLE>
+        <TI>
+          <P>CHAPTER IV</P>
+        </TI>
+        <STI>
+          <P>REQUESTS FOR RECOVERY OR FOR PRECAUTIONARY MEASURES</P>
+        </STI>
+      </TITLE>
+      <ARTICLE IDENTIFIER="012">
+        <TI.ART>Article 12</TI.ART>
+        <PARAG IDENTIFIER="012.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>Requests for recovery or for precautionary measures referred to in Articles 6 and 13 respectively of Directive 76/308/EEC shall be made out in writing in accordance with the model in Annex III to this Directive.</ALINEA>
+          <ALINEA>Such requests, which shall include a declaration that the conditions laid down in Directive 76/308/EEC for initiating the mutual assistance procedure have been fulfilled, shall bear the official stamp of the applicant authority and shall be signed by an official thereof duly authorised to make such a request.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="012.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>The instrument permitting enforcement shall accompany the request for recovery or for precautionary measures. A single instrument may be issued in respect of several claims where they concern one and the same person.</ALINEA>
+          <ALINEA>For the purposes of Articles 13 to 20 of this Directive, all claims covered by the same instrument permitting enforcement shall be deemed to constitute a single claim.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="013">
+        <TI.ART>Article 13</TI.ART>
+        <ALINEA>Requests for recovery or for precautionary measures may relate to any person referred to in Article 4.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="014">
+        <TI.ART>Article 14</TI.ART>
+        <PARAG IDENTIFIER="014.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>If the currency of the Member State of the requested authority is different from the currency of the Member State of the applicant authority, the applicant authority shall express the amount of the claim to be recovered in both currencies.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="014.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>The rate of exchange to be used for the purposes of paragraph 1 shall be the latest selling rate recorded on the most representative exchange market or markets of the Member State of the applicant authority on the date when the request for recovery is signed.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="015">
+        <TI.ART>Article 15</TI.ART>
+        <PARAG IDENTIFIER="015.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>
+            <P>The requested authority shall, in writing, as soon as possible and in any event within seven days of receipt of the request for recovery or for precautionary measures:</P>
+            <LIST TYPE="alpha">
+              <ITEM>
+                <NP>
+                  <NO.P>(a)</NO.P>
+                  <TXT>acknowledge receipt of the request;</TXT>
+                </NP>
+              </ITEM>
+              <ITEM>
+                <NP>
+                  <NO.P>(b)</NO.P>
+                  <TXT>ask the applicant authority to complete the request if it does not contain the information or other particulars mentioned in Article 7 of Directive 76/308/EEC.</TXT>
+                </NP>
+              </ITEM>
+            </LIST>
+          </ALINEA>
+          <ALINEA>The applicant authority shall provide all information to which it has access.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="015.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>If the requested authority does not take the requisite action within the three-month period laid down in Article 8 of Directive 76/308/EEC, it shall, as soon as possible and in any event within seven days of the expiry of that period, inform the applicant authority in writing of the grounds for its failure to comply with the time limit.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="016">
+        <TI.ART>Article 16</TI.ART>
+        <ALINEA>Where, within a reasonable time having regard to the particular case, all or part of the claim cannot be recovered or precautionary measures cannot be taken, the requested authority shall so inform the applicant authority, indicating the reasons therefor.</ALINEA>
+        <ALINEA>No later than at the end of each six-month period following the date of acknowledgement of the receipt of the request, the requested authority shall inform the applicant authority of the state of progress or the outcome of the procedure for recovery or for precautionary measures.</ALINEA>
+        <ALINEA>In the light of the information received from the requested authority, the applicant authority may request the latter to re-open the procedure for recovery or for precautionary measures. That request shall be made in writing within two months of the receipt of the notification of the outcome of that procedure, and shall be treated by the requested authority in accordance with the provisions applying to the initial request.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="017">
+        <TI.ART>Article 17</TI.ART>
+        <PARAG IDENTIFIER="017.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>Any action contesting the claim or the instrument permitting its enforcement which is taken in the Member State of the applicant authority shall be notified to the requested authority in writing by the applicant authority immediately after the latter has been informed of such action.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="017.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>If the laws, regulations and administrative practices in force in the Member State of the requested authority do not permit precautionary measures or the recovery requested under the second subparagraph of Article 12(2) of Directive 76/308/EEC, the requested authority shall notify the applicant authority to that effect as soon as possible and in any event within one month of the receipt of the notification referred to in paragraph 1.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="017.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>Any action which is taken in the Member State of the requested authority for reimbursement of sums recovered or for compensation in relation to recovery of contested claims under the second subparagraph of Article 12(2) of Directive 76/308/EEC shall be notified to the applicant authority in writing by the requested authority immediately after the latter has been informed of such action.</ALINEA>
+          <ALINEA>The requested authority shall as far as possible involve the applicant authority in the procedures for settling the amount to be reimbursed and the compensation due. Upon a reasoned request from the requested authority, the applicant authority shall transfer the sums reimbursed and the compensation paid within two months of the receipt of that request.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="018">
+        <TI.ART>Article 18</TI.ART>
+        <PARAG IDENTIFIER="018.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>If the request for recovery or for precautionary measures becomes devoid of purpose as a result of payment of the claim or of its cancellation or for any other reason, the applicant authority shall immediately inform the requested authority in writing so that the latter may stop any action which it has undertaken.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="018.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Where the amount of the claim which is the subject of the request for recovery or for precautionary measures is adjusted for any reason, the applicant authority shall immediately inform the requested authority in writing, and if necessary issue a new instrument permitting enforcement.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="018.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>If the adjustment entails a reduction in the amount of the claim, the requested authority shall continue the action which it has undertaken with a view to recovery or to the taking of precautionary measures, but that action shall be limited to the amount still outstanding.</ALINEA>
+          <ALINEA>If, at the time when the requested authority is informed of the reduction in the amount of the claim, an amount exceeding the amount still outstanding has already been recovered by it but the transfer procedure referred to in Article 19 has not yet been initiated, the requested authority shall repay the amount overpaid to the person entitled thereto.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="018.004">
+          <NO.PARAG>4.</NO.PARAG>
+          <ALINEA>If the adjustment entails an increase in the amount of the claim, the applicant authority shall as soon as possible address to the requested authority an additional request for recovery or for precautionary measures.</ALINEA>
+          <ALINEA>That additional request shall, as far as possible, be dealt with by the requested authority at the same time as the original request from the applicant authority. Where, in view of the state of progress of the existing procedure, consolidation of the additional request with the original request is not possible, the requested authority shall be required to comply with the additional request only if it concerns an amount not less than that referred to in Article 25(2).</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="018.005">
+          <NO.PARAG>5.</NO.PARAG>
+          <ALINEA>In order to convert the adjusted amount of the claim into the currency of the Member State of the requested authority, the applicant authority shall use the exchange rate used in its original request.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="019">
+        <TI.ART>Article 19</TI.ART>
+        <ALINEA>Any sum recovered by the requested authority, including, where applicable, the interest referred to in Article 9(2) of Directive 76/308/EEC, shall be transferred to the applicant authority in the currency of the Member State of the requested authority. The transfer shall take place within one month of the date on which recovery was effected.</ALINEA>
+        <ALINEA>The competent authorities of the Member States may agree different arrangements for the transfer of amounts below the threshold referred to in Article 25(2) of this Directive.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="020">
+        <TI.ART>Article 20</TI.ART>
+        <ALINEA>Irrespective of any amounts collected by the requested authority by way of the interest referred to in Article 9(2) of Directive 76/308/EEC, the claim shall be deemed to have been recovered in proportion to the recovery of the amount expressed in the national currency of the Member State of the requested authority, on the basis of the exchange rate referred to in Article 14(2) of this Directive.</ALINEA>
+      </ARTICLE>
+    </DIVISION>
+    <DIVISION>
+      <TITLE>
+        <TI>
+          <P>CHAPTER V</P>
+        </TI>
+        <STI>
+          <P>TRANSMISSION OF COMMUNICATIONS</P>
+        </STI>
+      </TITLE>
+      <ARTICLE IDENTIFIER="021">
+        <TI.ART>Article 21</TI.ART>
+        <PARAG IDENTIFIER="021.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>
+            <P>All information communicated in writing pursuant to this Directive shall, as far as possible, be transmitted only by electronic means, except for:</P>
+            <LIST TYPE="alpha">
+              <ITEM>
+                <NP>
+                  <NO.P>(a)</NO.P>
+                  <TXT>the request for notification referred to in Article 5 of Directive 76/308/EEC and the instrument or decision of which notification is requested;</TXT>
+                </NP>
+              </ITEM>
+              <ITEM>
+                <NP>
+                  <NO.P>(b)</NO.P>
+                  <TXT>requests for recovery or for precautionary measures referred to in Articles 6 and 13 respectively of Directive 76/308/EEC, and the instrument permitting enforcement.</TXT>
+                </NP>
+              </ITEM>
+            </LIST>
+          </ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="021.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>The competent authorities of the Member States may agree to waive the communication on paper of the requests and instruments specified in paragraph 1.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="022">
+        <TI.ART>Article 22</TI.ART>
+        <ALINEA>Each Member State shall designate a central office with principal responsibility for communication by electronic means with other Member States. That office shall be connected to the CCN/CSI network.</ALINEA>
+        <ALINEA>Where several authorities are appointed in a Member State for the purpose of applying this Directive, the central office shall be responsible for the forwarding of all communication by electronic means between those authorities and the central offices of other Member States.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="023">
+        <TI.ART>Article 23</TI.ART>
+        <PARAG IDENTIFIER="023.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>Where the competent authorities of the Member States store information in electronic data bases and exchange such information by electronic means, they shall take all measures necessary to ensure that any information communicated in whatever form pursuant to this Directive is treated as confidential.</ALINEA>
+          <ALINEA>It shall be covered by the obligation of professional secrecy and shall enjoy the protection extended to similar information under the national law of the Member State which received it.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="023.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>The information referred to in paragraph 1 may be made available only to the persons and authorities referred to in Article 16 of Directive 76/308/EEC.</ALINEA>
+          <ALINEA>Such information may be used in connection with judicial or administrative proceedings initiated for the recovery of levies, duties, taxes and other measures referred to in Article 2 of Directive 76/308/EEC.</ALINEA>
+          <ALINEA>Persons duly accredited by the Security Accreditation Authority of the European Commission may have access to this information only in so far as is necessary for the care, maintenance and development of the CCN/CSI network.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="023.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>Where the competent authorities of the Member States communicate by electronic means, they shall take all measures necessary to ensure that all communications are duly authorised.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="024">
+        <TI.ART>Article 24</TI.ART>
+        <ALINEA>Information and other particulars communicated by the requested authority to the applicant authority shall be conveyed in the official language or one of the official languages of the Member State of the requested authority or in another language agreed between the applicant and requested authorities.</ALINEA>
+      </ARTICLE>
+    </DIVISION>
+    <DIVISION>
+      <TITLE>
+        <TI>
+          <P>CHAPTER VI</P>
+        </TI>
+        <STI>
+          <P>ELIGIBILITY AND REFUSAL OF REQUESTS FOR ASSISTANCE</P>
+        </STI>
+      </TITLE>
+      <ARTICLE IDENTIFIER="025">
+        <TI.ART>Article 25</TI.ART>
+        <PARAG IDENTIFIER="025.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>A request for assistance may be made by the applicant authority in respect of either a single claim or several claims where those are recoverable from one and the same person.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="025.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>No request for assistance may be made if the total amount of the relevant claim or claims listed in Article 2 of Directive 76/308/EEC is less than EUR<FT TYPE="NUMBER">1500</FT>.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="026">
+        <TI.ART>Article 26</TI.ART>
+        <ALINEA>If the requested authority decides, pursuant to the first paragraph of Article 14 of Directive 76/308/EEC, to refuse a request for assistance, it shall notify the applicant authority in writing of the reasons for the refusal. Such notification shall be given by the requested authority as soon as it has taken its decision and in any event within three months of the date of receipt of the request for assistance.</ALINEA>
+      </ARTICLE>
+    </DIVISION>
+    <DIVISION>
+      <TITLE>
+        <TI>
+          <P>CHAPTER VII</P>
+        </TI>
+        <STI>
+          <P>REIMBURSEMENT ARRANGEMENTS</P>
+        </STI>
+      </TITLE>
+      <ARTICLE IDENTIFIER="027">
+        <TI.ART>Article 27</TI.ART>
+        <ALINEA>Each Member State shall appoint at least one official duly authorised to agree reimbursement arrangements under Article 18(3) of Directive 76/308/EEC.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="028">
+        <TI.ART>Article 28</TI.ART>
+        <PARAG IDENTIFIER="028.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>If the requested authority decides to request reimbursement arrangements it shall notify the applicant authority in writing of the reasons for its view that recovery of the claim poses a specific problem, entails very high costs or relates to the fight against organised crime.</ALINEA>
+          <ALINEA>The requested authority shall append a detailed estimate of the costs for which it requests reimbursement by the applicant authority.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="028.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>The applicant authority shall acknowledge receipt of the request for reimbursement arrangements in writing as soon as possible and in any event within seven days of receipt.</ALINEA>
+          <ALINEA>Within two months of the date of acknowledgement of receipt of the said request, the applicant authority shall inform the requested authority whether and to what extent it agrees with the proposed reimbursement arrangements.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="028.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>If no agreement is reached between the applicant and requested authority with respect to reimbursement arrangements, the requested authority shall continue recovery procedures in the normal way.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+    </DIVISION>
+    <DIVISION>
+      <TITLE>
+        <TI>
+          <P>CHAPTER VIII</P>
+        </TI>
+        <STI>
+          <P>FINAL PROVISIONS</P>
+        </STI>
+      </TITLE>
+      <ARTICLE IDENTIFIER="029">
+        <TI.ART>Article 29</TI.ART>
+        <ALINEA>Each Member State shall inform the Commission before 15 March each year, as far as possible by electronic means, of the use made of the procedures laid down in Directive 76/308/EEC and of the results achieved in the previous calendar year, in accordance with the model in Annex IV to this Directive.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="030">
+        <TI.ART>Article 30</TI.ART>
+        <ALINEA>The Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with this Directive by<DATE ISO="20030430">30 April 2003</DATE>at the latest. They shall forthwith inform the Commission thereof.</ALINEA>
+        <ALINEA>When Member States adopt those provisions, they shall contain a reference to this Directive or be accompanied by such a reference on the occasion of their official publication. Member States shall determine how such reference is to be made.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="031">
+        <TI.ART>Article 31</TI.ART>
+        <ALINEA>The Commission shall communicate to the other Member States the measures which each Member State takes for implementing this Directive.</ALINEA>
+        <ALINEA>Each Member State shall notify the other Member States and the Commission of the name and address of the competent authorities for the purpose of applying this Directive, as well as of the officials authorised to agree arrangements under Article 18(3) of Directive 76/308/EEC.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="032">
+        <TI.ART>Article 32</TI.ART>
+        <ALINEA>Directive 77/794/EEC is hereby repealed.</ALINEA>
+        <ALINEA>References to the repealed Directive shall be construed as references to this Directive.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="033">
+        <TI.ART>Article 33</TI.ART>
+        <ALINEA>This Directive shall enter into force on the 20th day following that of its publication in the<HT TYPE="ITALIC">Official Journal of the European Communities</HT>.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="034">
+        <TI.ART>Article 34</TI.ART>
+        <ALINEA>This Directive is addressed to the Member States.</ALINEA>
+      </ARTICLE>
+    </DIVISION>
+  </ENACTING.TERMS>
+  <FINAL>
+    <SIGNATURE>
+      <PL.DATE>
+        <P>Done at Brussels,<DATE ISO="20021209">9 December 2002</DATE>.</P>
+      </PL.DATE>
+      <SIGNATORY>
+        <P>
+          <HT TYPE="ITALIC">For the Commission</HT>
+        </P>
+        <P>Frederik<HT TYPE="UC">Bolkestein</HT>
+        </P>
+        <P>
+          <HT TYPE="ITALIC">Member of the Commission</HT>
+        </P>
+      </SIGNATORY>
+    </SIGNATURE>
+  </FINAL>
+</ACT>

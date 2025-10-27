@@ -1,0 +1,32 @@
+<CASE noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.11-20100101.xd">
+  <BIB.CASE>
+    <REF.ECR FILE="ECRF22000XMA1.01.xml">
+      <YEAR>2000</YEAR>
+      <VOLUME.ECR>01</VOLUME.ECR>
+    </REF.ECR>
+    <LG.DOC>EN</LG.DOC>
+    <LG.CASE>EN</LG.CASE>
+    <DATE ISO="20001024">20001024</DATE>
+    <YEAR>2000</YEAR>
+    <NO.CASE>T-27/00</NO.CASE>
+    <TYPE.CASE>ORDER-F</TYPE.CASE>
+    <NO.CELEX>62000B0027</NO.CELEX>
+    <NO.SEQ>0055</NO.SEQ>
+    <PAGE.FIRST.ECR>987</PAGE.FIRST.ECR>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST.ECR>999</PAGE.LAST.ECR>
+    <PAGE.TOTAL>13</PAGE.TOTAL>
+    <AUTHOR>TFP</AUTHOR>
+  </BIB.CASE>
+  <REF.ORDER>
+    <TITLE>
+      <TI>
+        <P>Members of staff of the European Central Bank - Administrative circular -Time-limit for bringing an action - Inadmissibility (ORDER OF<DATE ISO="20001024">24. 10. 2000</DATE>— CASE T-27/00 - STAFF COMMITTEE OF THE EUROPEAN CENTRAL BANK AND OTHERS v EUROPEAN CENTRAL BANK)</P>
+      </TI>
+    </TITLE>
+    <REF.ECR.DOC FILE="ECRF22000ENA1.0100098701.xml" NO.SEQ="0055.0001">II-987</REF.ECR.DOC>
+  </REF.ORDER>
+  <PDF.ECR>
+    <REF.PDF.ECR TYPE="ORDER" PAGE.FIRST="00987" PAGE.LAST="00999">F_2000_0027_ORD_MX_2000_FPII_000987.pdf</REF.PDF.ECR>
+  </PDF.ECR>
+</CASE>

@@ -1,0 +1,48 @@
+<PUBLICATION noNamespaceSchemaLocation="http://formex.publications.eu.int/schema/formex-02.00-20050101.xd">
+  <OJ>
+    <BIB.OJ>
+      <COLL>L</COLL>
+      <TITLE>
+        <TI>
+          <P>Official Journal</P>
+          <P>of the European Communities</P>
+        </TI>
+      </TITLE>
+      <NO.OJ>337</NO.OJ>
+      <AGE.OJ>45</AGE.OJ>
+      <DATE ISO="20021213">20021213</DATE>
+      <LG.OJ>EN</LG.OJ>
+      <PRINTER>IC</PRINTER>
+    </BIB.OJ>
+    <VOLUME>
+      <BIB.VOLUME>
+        <VOLUME.ID>1</VOLUME.ID>
+        <NO.CAT>FXAL02337ENC</NO.CAT>
+        <NO.ISSN>03786978</NO.ISSN>
+        <PAGE.TOTAL>17</PAGE.TOTAL>
+        <PAGE.SUMMARY>
+          <PAGE.FIRST>s1</PAGE.FIRST>
+          <PAGE.LAST>s3</PAGE.LAST>
+          <PAGE.TOTAL>3</PAGE.TOTAL>
+        </PAGE.SUMMARY>
+        <PAGE.CONTENTS>
+          <PAGE.FIRST>41</PAGE.FIRST>
+          <PAGE.LAST>54</PAGE.LAST>
+          <PAGE.TOTAL>14</PAGE.TOTAL>
+        </PAGE.CONTENTS>
+      </BIB.VOLUME>
+      <SECTION TYPE="L1">
+        <TITLE>
+          <TI>
+            <NP>
+              <NO.P>I</NO.P>
+              <TXT>Acts whose publication is obligatory</TXT>
+            </NP>
+          </TI>
+        </TITLE>
+        <ITEM.PUB DOC.INSTANCE="L_2002337EN.01004101.doc.xml">
+        </ITEM.PUB>
+      </SECTION>
+    </VOLUME>
+  </OJ>
+</PUBLICATION>

@@ -1,0 +1,43 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.eu.int/schema/formex-01.02-20040901.xd">
+  <PUBLICATION.REF FILE="NA">
+    <COLL>L</COLL>
+    <NO.OJ>154</NO.OJ>
+    <LG.OJ>EN</LG.OJ>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="001" SYNOPTISM="D001">
+      <LG.DOC>EN</LG.DOC>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.LAST>9</PAGE.LAST>
+      <PAGE.TOTAL>9</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS TYPE="DOC.XML" FILE="CL1997D0365EN0080010.0001.xml">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="001">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>
+              <HT TYPE="UC">Commission Decision</HT>
+            </P>
+            <P>of<DATE ISO="19970326">26 March 1997</DATE>
+            </P>
+            <P>drawing up provisional lists of third country establishments from which the Member States authorize imports of products prepared from meat of bovine animals, swine, equidae and sheep and goats</P>
+            <P>(Text with EEA relevance)</P>
+            <P>(97/365/EC)</P>
+          </TI>
+        </TITLE>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="001">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="CL1997D0365EN0080010.0001.pdf">41</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

@@ -1,0 +1,106 @@
+<ACT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-02.00-20050101.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2005099EN.01000301.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>099</NO.OJ>
+      <YEAR>2005</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>3</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20050418">20050418</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>002</NO.SEQ>
+    <PAGE.FIRST>3</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>3</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+    <NO.DOC FORMAT="NY" TYPE="OJ">
+      <NO.CURRENT>598</NO.CURRENT>
+      <YEAR>2005</YEAR>
+      <COM>EC</COM>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Commission Regulation</HT>(EC) No 598/2005</P>
+      <P>of<DATE ISO="20050418">18 April 2005</DATE>
+      </P>
+      <P>concerning tenders submitted in response to the invitation to tender for the export to certain third countries of wholly milled and parboiled long grain rice B issued in Regulation (EC) No 2032/2004</P>
+    </TI>
+  </TITLE>
+  <PREAMBLE>
+    <PREAMBLE.INIT>THE COMMISSION OF THE EUROPEAN COMMUNITIES,</PREAMBLE.INIT>
+    <GR.VISA>
+      <VISA>Having regard to the Treaty establishing the European Community,</VISA>
+      <VISA>Having regard to Council Regulation (EC) No 1785/2003 of<DATE ISO="20030929">29 September 2003</DATE>on the common organisation of the market in rice<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+          <P>
+            <REF.DOC.OJ COLL="L" NO.OJ="270" DATE.PUB="20031021" PAGE.FIRST="96">OJ L 270, 21.10.2003, p. 96</REF.DOC.OJ>.</P>
+        </NOTE>, and in particular Article 14(3) thereof,</VISA>
+    </GR.VISA>
+    <GR.CONSID>
+      <GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+      <CONSID>
+        <NP>
+          <NO.P>(1)</NO.P>
+          <TXT>An invitation to tender for the export refund on rice was issued pursuant to Commission Regulation (EC) No 2032/2004<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" NO.OJ="353" DATE.PUB="20041127" PAGE.FIRST="6">OJ L 353, 27.11.2004, p. 6</REF.DOC.OJ>.</P>
+            </NOTE>.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(2)</NO.P>
+          <TXT>Article 5 of Commission Regulation (EEC) No 584/75<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" NO.OJ="061" DATE.PUB="19750307" PAGE.FIRST="25">OJ L 61, 7.3.1975, p. 25</REF.DOC.OJ>. Regulation as last amended by Regulation (EC) No 1948/2002 (<REF.DOC.OJ COLL="L" NO.OJ="299" DATE.PUB="20021101" PAGE.FIRST="18">OJ L 299, 1.11.2002, p. 18</REF.DOC.OJ>).</P>
+            </NOTE>, allows the Commission to decide, in accordance with the procedure laid down in Article 26 of Regulation (EC) No 1785/2003 and on the basis of the tenders submitted, to make no award.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(3)</NO.P>
+          <TXT>On the basis of the criteria laid down in Article 14(4) of Regulation (EC) No 1785/2003 a maximum refund should not be fixed.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(4)</NO.P>
+          <TXT>The measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Cereals,</TXT>
+        </NP>
+      </CONSID>
+    </GR.CONSID>
+    <PREAMBLE.FINAL>HAS ADOPTED THIS REGULATION:</PREAMBLE.FINAL>
+  </PREAMBLE>
+  <ENACTING.TERMS>
+    <ARTICLE IDENTIFIER="001">
+      <TI.ART>Article 1</TI.ART>
+      <ALINEA>No action shall be taken on the tenders submitted from<DATE ISO="20050411">11</DATE>to<DATE ISO="20050414">14 April 2005</DATE>in response to the invitation to tender for the export refund on wholly milled and parboiled long grain rice B to certain third countries issued in Regulation (EC) No 2032/2004.</ALINEA>
+    </ARTICLE>
+    <ARTICLE IDENTIFIER="002">
+      <TI.ART>Article 2</TI.ART>
+      <ALINEA>This Regulation shall enter into force on<DATE ISO="20050419">19 April 2005</DATE>.</ALINEA>
+    </ARTICLE>
+  </ENACTING.TERMS>
+  <FINAL>
+    <P>This Regulation shall be binding in its entirety and directly applicable in all Member States.</P>
+    <SIGNATURE>
+      <PL.DATE>
+        <P>Done at Brussels,<DATE ISO="20050418">18 April 2005</DATE>.</P>
+      </PL.DATE>
+      <SIGNATORY>
+        <P>
+          <HT TYPE="ITALIC">For the Commission</HT>
+        </P>
+        <P>Mariann<HT TYPE="UC">Fischer Boel</HT>
+        </P>
+        <P>
+          <HT TYPE="ITALIC">Member of the Commission</HT>
+        </P>
+      </SIGNATORY>
+    </SIGNATURE>
+  </FINAL>
+</ACT>

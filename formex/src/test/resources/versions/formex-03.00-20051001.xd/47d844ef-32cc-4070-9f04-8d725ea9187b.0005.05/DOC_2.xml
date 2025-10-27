@@ -1,0 +1,78 @@
+<ANNEX noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-03.00-20051001.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2005320EN.01003401.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>320</NO.OJ>
+      <YEAR>2005</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>34</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20051207">20051207</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>009.001.001</NO.SEQ>
+    <PAGE.FIRST>36</PAGE.FIRST>
+    <PAGE.SEQ>2</PAGE.SEQ>
+    <PAGE.LAST>36</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+        </QUOT.START>ANNEX I</P>
+    </TI>
+  </TITLE>
+  <CONTENTS>
+    <TBL COLS="3" NO.SEQ="001">
+      <GR.NOTES>
+        <NOTE NOTE.ID="E0001" NUMBERING="STAR" TYPE="TABLE">
+          <P>As from<DATE ISO="20060101">1 January 2006</DATE>, the allocation for Bulgaria shall be increased by 275 tonnes each year.<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+            </QUOT.END>
+          </P>
+        </NOTE>
+      </GR.NOTES>
+      <CORPUS>
+        <ROW TYPE="HEADER">
+          <CELL COL="1" COLSPAN="3" TYPE="HEADER">Volume, order number and period of application of tariff quotas referred to in Article 1(1) in tonnes (drained net weight)</CELL>
+        </ROW>
+        <ROW TYPE="HEADER">
+          <CELL COL="1" TYPE="HEADER">Country of origin</CELL>
+          <CELL COL="2" TYPE="HEADER">Order No</CELL>
+          <CELL COL="3" TYPE="HEADER">1 January to 31 December of each year</CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">Bulgaria</CELL>
+          <CELL COL="2">09.4725</CELL>
+          <CELL COL="3">
+            <FT TYPE="DECIMAL">2887,5</FT>
+            <NOTE NOTE.REF="E0001">
+            </NOTE>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">Romania</CELL>
+          <CELL COL="2">09.4726</CELL>
+          <CELL COL="3">
+            <FT TYPE="NUMBER">500</FT>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">China</CELL>
+          <CELL COL="2">09.4157</CELL>
+          <CELL COL="3">
+            <FT TYPE="NUMBER">23750</FT>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">Other countries</CELL>
+          <CELL COL="2">09.4158</CELL>
+          <CELL COL="3">
+            <FT TYPE="NUMBER">3290</FT>
+          </CELL>
+        </ROW>
+      </CORPUS>
+    </TBL>
+  </CONTENTS>
+</ANNEX>

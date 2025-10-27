@@ -1,0 +1,101 @@
+<ACT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.20-20100601.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2004160EN.01013801.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>160</NO.OJ>
+      <YEAR>2004</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>138</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20040428">20040428</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0001</NO.SEQ>
+    <PAGE.FIRST>138</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>139</PAGE.LAST>
+    <PAGE.TOTAL>2</PAGE.TOTAL>
+    <NO.DOC FORMAT="YN" TYPE="OJ">
+      <NO.CURRENT>483</NO.CURRENT>
+      <YEAR>2004</YEAR>
+      <COM>EC</COM>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Commission Decision</HT>
+      </P>
+      <P>of<DATE ISO="20040428">28 April 2004</DATE>
+      </P>
+      <P>on the conclusion of an Agreement in the form of an exchange of letters between the European Community and the United Mexican States concerning amendments to Annex I of the Agreement between the European Community and the United Mexican States on the mutual recognition and protection of designations for spirit drinks, taking into account the enlargement</P>
+      <P>(notified under document number C(2004) 1566)</P>
+      <P>(2004/483/EC)</P>
+    </TI>
+  </TITLE>
+  <PREAMBLE>
+    <PREAMBLE.INIT>
+      <P>THE COMMISSION OF THE EUROPEAN COMMUNITIES,</P>
+    </PREAMBLE.INIT>
+    <GR.VISA>
+      <VISA>Having regard to the Treaty establishing the European Community,</VISA>
+      <VISA>Having regard to Council Decision 97/361/EC of<DATE ISO="19970527">27 May 1997</DATE>concerning the conclusion of an Agreement between the European Community and the United Mexican States on mutual recognition and protection of designations for spirit drinks<NOTE NOTE.ID="E0001">
+          <P>
+            <REF.DOC.OJ COLL="L" NO.OJ="152" DATE.PUB="19970611" PAGE.FIRST="15">OJ L 152, 11.6.1997, p. 15</REF.DOC.OJ>.</P>
+        </NOTE>, and in particular Article 4 thereof,</VISA>
+    </GR.VISA>
+    <GR.CONSID>
+      <GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+      <CONSID>
+        <NP>
+          <NO.P>(1)</NO.P>
+          <TXT>Taking account of the enlargement, it is necessary to amend Annex I of the Agreement between European Community and the United Mexican States on the mutual. recognition and protection for spirit drinks in order to protect the new spirit terms of the new Member States with effect from<DATE ISO="20040501">1 May 2004</DATE>.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(2)</NO.P>
+          <TXT>Therefore, the Community and the United Mexican States have negotiated, in accordance with Article 18 of the above mentioned Agreement, an agreement in the form of an exchange of letters to amend its Annex I. This exchange of letters should therefore be approved.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(3)</NO.P>
+          <TXT>The measures provided for in this Decision are in accordance with the opinion of the Implementation Committee for Spirit Drinks,</TXT>
+        </NP>
+      </CONSID>
+    </GR.CONSID>
+    <PREAMBLE.FINAL>
+      <P>HAS DECIDED AS FOLLOWS:</P>
+    </PREAMBLE.FINAL>
+  </PREAMBLE>
+  <ENACTING.TERMS>
+    <ARTICLE IDENTIFIER="001">
+      <TI.ART>Article 1</TI.ART>
+      <ALINEA>The Agreement in the form of an exchange of letters between the European Community and the United Mexican States amending Annex I of the Agreement between the European Community and the United Mexican States on mutual recognition and protection of designations for spirit drinks is hereby approved on behalf of the Community.</ALINEA>
+      <ALINEA>The text of the Agreement is attached to this Decision.</ALINEA>
+    </ARTICLE>
+    <ARTICLE IDENTIFIER="002">
+      <TI.ART>Article 2</TI.ART>
+      <ALINEA>The Commissioner of Agriculture is hereby empowered to sign the exchange of letters in order to bind the Community.</ALINEA>
+    </ARTICLE>
+  </ENACTING.TERMS>
+  <FINAL>
+    <SIGNATURE>
+      <PL.DATE>
+        <P>Done at Brussels,<DATE ISO="20040428">28 April 2004</DATE>.</P>
+      </PL.DATE>
+      <SIGNATORY>
+        <P>
+          <HT TYPE="ITALIC">For the Commission</HT>
+        </P>
+        <P>Franz<HT TYPE="UC">Fischler</HT>
+        </P>
+        <P>
+          <HT TYPE="ITALIC">Member of the Commission</HT>
+        </P>
+      </SIGNATORY>
+    </SIGNATURE>
+  </FINAL>
+</ACT>

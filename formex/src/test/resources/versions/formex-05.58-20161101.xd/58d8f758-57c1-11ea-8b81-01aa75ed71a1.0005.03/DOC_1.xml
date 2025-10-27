@@ -1,0 +1,68 @@
+<JUDGMENT.NP noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.58-20161101.xd">
+  <BIB.JUDGMENT>
+    <REF.CASE FILE="n.a.">
+      <NO.CASE>T-394/18</NO.CASE>
+    </REF.CASE>
+    <NO.CELEX>62018TO0394_INF</NO.CELEX>
+    <NO.ECLI ECLI="ECLI:EU:T:2019:863">EU:T:2019:863</NO.ECLI>
+    <NO.SEQ>0001</NO.SEQ>
+    <PAGE.FIRST.ECR>1</PAGE.FIRST.ECR>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST.ECR>1</PAGE.LAST.ECR>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+    <AUTHOR>T</AUTHOR>
+  </BIB.JUDGMENT>
+  <TITLE>
+    <TI>
+      <P>Order of the General Court (Sixth Chamber) of<DATE ISO="20191216">16 December 2019</DATE>–<BR>
+        </BR>Kipper v Commission</P>
+      <P>(Case T‑394/18)</P>
+    </TI>
+  </TITLE>
+  <INDEX IDX.CLOSE=")" SEPARATOR=" — " IDX.OPEN="(">
+    <KEYWORD>Independent service provider for the Commission (free-lance)</KEYWORD>
+    <KEYWORD>Application for social benefits granted to officials in category B</KEYWORD>
+    <KEYWORD>Lack of jurisdiction</KEYWORD>
+  </INDEX>
+  <SUMMARY.NP SEPARATOR=" — ">
+    <P>
+      <TXT>
+        <KEYWORD>General Court</KEYWORD>
+        <KEYWORD>Jurisdiction</KEYWORD>
+        <KEYWORD>Dispute arising from contracts of employment concluded outside the scope of the Staff Regulations and the Conditions of Employment of Other Servants and not containing an arbitration clause</KEYWORD>
+        <KEYWORD>Lack of jurisdiction of the General Court</KEYWORD>
+      </TXT>
+    </P>
+    <P>
+      <TXT>
+        <KEYWORD>(Arts 268 and 270 TFEU)</KEYWORD>
+      </TXT>
+    </P>
+    <P>(see paras 17, 18, 20)</P>
+  </SUMMARY.NP>
+  <SUBJECT>
+    <TITLE>
+      <TI>
+        <P>Re:</P>
+      </TI>
+    </TITLE>
+    <P>Application for various social benefits granted to officials in category B.</P>
+  </SUBJECT>
+  <ENACTING.TERMS.CJT>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="BOLD">Operative part</HT>
+        </P>
+      </TI>
+    </TITLE>
+    <NP>
+      <NO.P>1.</NO.P>
+      <TXT>The action is dismissed for having been brought before a court that has no jurisdiction to hear it.</TXT>
+    </NP>
+    <NP>
+      <NO.P>2.</NO.P>
+      <TXT>Mr Michael Kipper is ordered to pay the costs.</TXT>
+    </NP>
+  </ENACTING.TERMS.CJT>
+</JUDGMENT.NP>

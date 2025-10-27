@@ -1,0 +1,133 @@
+<LSEU noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.53l-20140201.xd">
+  <BIB.LSEU>
+    <NO.DOC.LSEU>LSEU-070203_4-2017-03-01-1542</NO.DOC.LSEU>
+    <LG.DOC>EN</LG.DOC>
+    <LAST.MODIFICATION>
+      <DATE ISO="20170213">13.02.2017</DATE>
+    </LAST.MODIFICATION>
+    <ARCHIVED VALUE="NO">
+    </ARCHIVED>
+  </BIB.LSEU>
+  <TITLE>
+    <TI>
+      <P>Adapting EU trade defence measures following a WTO ruling</P>
+    </TI>
+  </TITLE>
+  <CONTENTS.LSEU>
+    <HEADER.LSEU>
+      <P>
+        <IE>
+        </IE>
+      </P>
+    </HEADER.LSEU>
+    <SUMMARY.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Summary of:</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <P>
+          <REF.DOC URI="http://publications.europa.eu/resource/celex/32015R0476" CONTEXT="EUR-LEX">Regulation (EU) 2015/476 on the measures that the EU may take following a report adopted by the WTO Dispute Settlement Body concerning anti-dumping and anti-subsidy matters</REF.DOC>
+        </P>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">What is the aim of the regulation?</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <LIST TYPE="BULLET">
+            <ITEM>
+              <P>It repeals Regulation (EC) No<REF.DOC URI="http://publications.europa.eu/resource/celex/32001R1515" CONTEXT="EUR-LEX">1515/2001</REF.DOC>on the measures that may be taken by the European Union (EU) following a report adopted by the<REF.DOC URI="https://www.wto.org/index.htm" CONTEXT="EXTERNAL">World Trade Organization</REF.DOC>(WTO)<REF.DOC URI="https://www.wto.org/english/tratop_e/dispu_e/dispu_e.htm" CONTEXT="EXTERNAL">Dispute Settlement Body</REF.DOC>(DSB) concerning anti-dumping and anti-subsidy matters.</P>
+            </ITEM>
+            <ITEM>
+              <P>It permits the EU, where appropriate, to bring a measure taken under<REF.DOC URI="http://publications.europa.eu/resource/uriserv/r11005" CONTEXT="EUR-LEX">Regulation (EC) No 1225/2009</REF.DOC>(anti-dumping measures<NOTE NOTE.ID="E0001" TYPE="MANUAL" NUMBERING="STAR">
+                  <P>
+                    <HT TYPE="BOLD">Anti-dumping measures:</HT>measures, e.g. specific duties, applied to imports into the EU of<QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+                    </QUOT.START>dumped products<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+                    </QUOT.END>, i.e. products exported to the EU at a lower price than the domestic price.</P>
+                </NOTE>) or<REF.DOC URI="http://publications.europa.eu/resource/uriserv/r11006" CONTEXT="EUR-LEX">Regulation (EC) No 597/2009</REF.DOC>(anti-subsidy measures<NOTE NOTE.ID="E0002" TYPE="MANUAL" NUMBERING="STAR">
+                  <P>
+                    <HT TYPE="BOLD">Anti-subsidy measures:</HT>measures, e.g. countervailing duties (that neutralise the negative effects of subsidies), imposed by the EU on imports that are subsidised and thus injure EU industry producing the same product.</P>
+                </NOTE>) into line with a report by the WTO’s DSB.</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Key points</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>Specifically, the<REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/european_commission.html" CONTEXT="EUR-LEX">European Commission</REF.DOC>may:</P>
+          <LIST TYPE="BULLET">
+            <ITEM>
+              <P>
+                <HT TYPE="BOLD">repeal or amend</HT>the disputed measure, or</P>
+            </ITEM>
+            <ITEM>
+              <P>adopt any other<HT TYPE="BOLD">special implementing measure</HT>deemed to be appropriate in the circumstances in order to comply with the WTO report,</P>
+            </ITEM>
+            <ITEM>
+              <P>where appropriate,<HT TYPE="BOLD">suspend or review</HT>such measures.</P>
+            </ITEM>
+          </LIST>
+          <P>Measures adopted under this regulation generally take effect from the date of their entry into force.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">From when does this regulation apply?</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>It has applied since<DATE ISO="20150416">16 April 2015</DATE>.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Background</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>Where the government of a WTO member believes that another WTO member is violating an agreement or a commitment it has made in the WTO, the dispute is referred to the WTO’s DSB.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">* Key terms</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <LOC.NOTES>
+            <REF.NOTE REF="E0001">
+            </REF.NOTE>
+            <REF.NOTE REF="E0002">
+            </REF.NOTE>
+          </LOC.NOTES>
+        </GR.SEQ>
+      </GR.SEQ>
+    </SUMMARY.LSEU>
+    <REFERENCES.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Main document</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <P>Regulation (EU)<REF.DOC URI="http://publications.europa.eu/resource/celex/32015R0476" CONTEXT="EUR-LEX">2015/476</REF.DOC>of the European Parliament and of the Council of<DATE ISO="20150311">11 March 2015</DATE>on the measures that the Union may take following a report adopted by the WTO Dispute Settlement Body concerning anti-dumping and anti-subsidy matters (OJ L 83,<DATE ISO="20150327">27.3.2015</DATE>, pp. 6-10)</P>
+      </GR.SEQ>
+    </REFERENCES.LSEU>
+  </CONTENTS.LSEU>
+</LSEU>

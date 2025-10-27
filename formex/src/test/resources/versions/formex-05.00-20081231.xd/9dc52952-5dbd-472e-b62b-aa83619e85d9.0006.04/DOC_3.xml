@@ -1,0 +1,57 @@
+<ANNEX noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.00-20081231.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2009275EN.01000701.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>275</NO.OJ>
+      <YEAR>2009</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>7</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20091019">20091019</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0004.0001</NO.SEQ>
+    <PAGE.FIRST>8</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>8</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>ANNEX</P>
+    </TI>
+  </TITLE>
+  <CONTENTS>
+    <TBL COLS="2" NO.SEQ="001">
+      <CORPUS>
+        <ROW>
+          <CELL COL="1">No</CELL>
+          <CELL COL="2">E2/SE/BS/001</CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">Member State</CELL>
+          <CELL COL="2">Sweden</CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">Stock</CELL>
+          <CELL COL="2">SOL/3A/BCD</CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">Species</CELL>
+          <CELL COL="2">SOL — Common sole (<HT TYPE="ITALIC">Solea solea</HT>)</CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">Zone</CELL>
+          <CELL COL="2">IIIa, EC waters of IIIb, IIIc and IIId</CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">Date</CELL>
+          <CELL COL="2">
+            <DATE ISO="20090924">24 September 2009</DATE>
+          </CELL>
+        </ROW>
+      </CORPUS>
+    </TBL>
+  </CONTENTS>
+</ANNEX>

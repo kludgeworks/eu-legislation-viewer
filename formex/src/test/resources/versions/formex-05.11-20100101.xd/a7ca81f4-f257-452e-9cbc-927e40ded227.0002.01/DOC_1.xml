@@ -1,0 +1,251 @@
+<CASE noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.11-20100101.xd">
+  <BIB.CASE>
+    <REF.ECR FILE="ECRF11998ENA1.01.xml">
+      <YEAR>1998</YEAR>
+      <VOLUME.ECR>7/8/9</VOLUME.ECR>
+    </REF.ECR>
+    <LG.DOC>EN</LG.DOC>
+    <LG.CASE>FR</LG.CASE>
+    <DATE ISO="19980930">19980930</DATE>
+    <YEAR>1997</YEAR>
+    <NO.CASE>T-13/97</NO.CASE>
+    <TYPE.CASE>JUDGMENT-F</TYPE.CASE>
+    <NO.CELEX>61997A0013</NO.CELEX>
+    <NO.SEQ>0072</NO.SEQ>
+    <PAGE.FIRST.ECR>I-A-543</PAGE.FIRST.ECR>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST.ECR>I-A-556</PAGE.LAST.ECR>
+    <PAGE.TOTAL>14</PAGE.TOTAL>
+    <AUTHOR>TFP</AUTHOR>
+  </BIB.CASE>
+  <CURR.TITLE>
+    <LEFT>ABSTRACT — CASE T-13/97</LEFT>
+    <RIGHT>LOSCH v COURT OF JUSTICE</RIGHT>
+  </CURR.TITLE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Judgment of the Court of First Instance</HT>(Fifth Chamber)</P>
+      <P>
+        <DATE ISO="19980930">30 September 1998</DATE>
+      </P>
+      <P>Case T-13/97</P>
+    </TI>
+  </TITLE>
+  <PARTIES>
+    <PLAINTIFS>
+      <P>Antoinette Losch</P>
+    </PLAINTIFS>
+    <AGAINST>v</AGAINST>
+    <DEFENDANTS>
+      <P>Court of Justice of the European Communities</P>
+    </DEFENDANTS>
+  </PARTIES>
+  <INDEX>
+    <KEYWORD>Officials</KEYWORD>
+    <KEYWORD>Termination of service as a result of the accession of new Member States</KEYWORD>
+    <KEYWORD>Act adversely affecting an official</KEYWORD>
+    <KEYWORD>Objection of illegality</KEYWORD>
+    <KEYWORD>Legality of Regulation (EC, Euratom, ECSC) No 2688/95</KEYWORD>
+    <KEYWORD>Equal treatment</KEYWORD>
+    <KEYWORD>Infringement of essential procedural requirements</KEYWORD>
+    <KEYWORD>Prior consultation of the institutions and of the Staff Regulations Committee</KEYWORD>
+  </INDEX>
+  <REF.JUDGMENT>
+    <TITLE>
+      <TI>
+        <P>Full text in French</P>
+      </TI>
+    </TITLE>
+    <REF.ECR.DOC FILE="ECRF21998FRA1.0100163301.xml" NO.SEQ="0072.0001" EXTERNAL="YES">II-1633</REF.ECR.DOC>
+  </REF.JUDGMENT>
+  <OBJECT>
+    <TITLE>
+      <TI>
+        <P>Application for:</P>
+      </TI>
+    </TITLE>
+    <P>annulment of the decision of the Court of Justice of<DATE ISO="19960722">22 July 1996</DATE>rejecting the applicant&apos;s request that her name be entered on the list of persons having manifested their interest in being the subject of a decision terminating their service as a result of the accession of Austria, Finland and Sweden, and for a declaration that Council Regulation (EC, Euratom, ECSC) No 2688/95 of<DATE ISO="19951117">17 November 1995</DATE>introducing special measures to terminate the service of officials of the European Communities as a result of the accession of Austria, Finland and Sweden (<REF.DOC.OJ COLL="L" NO.OJ="280" DATE.PUB="1999" PAGE.FIRST="1">OJ 1995 L 280, p. 1</REF.DOC.OJ>) is unlawful inasmuch as it applies only to officials of the European Parliament.</P>
+  </OBJECT>
+  <DECISION>
+    <TITLE>
+      <TI>
+        <P>Decision:</P>
+      </TI>
+    </TITLE>
+    <P>Annulment.</P>
+  </DECISION>
+  <SUMMARY>
+    <TITLE>
+      <TI>
+        <P>Abstract of the Judgment</P>
+      </TI>
+    </TITLE>
+    <SUBJECTS>
+      <P>On<DATE ISO="19950707">7 July 1995</DATE>the Commission, having on<DATE ISO="19950621">21 June 1995</DATE>obtained a favourable opinion from the Staff Regulations Committee in accordance with the second paragraph of Article 10 of the Staff Regulations of officials of the European Communities (<QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+        </QUOT.START>the Staff Regulations<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+        </QUOT.END>), presented a proposal for a Council Regulation (EC, Euratom, ECSC) introducing special measures to terminate the service of officials of the European Communities as a result of the accession of Austria, Sweden and Finland (COM (95) 327 final,<REF.DOC.OJ COLL="C" NO.OJ="246" DATE.PUB="1995" PAGE.FIRST="23">OJ 1995 C 246, p. 23</REF.DOC.OJ>, hereinafter<QUOT.START ID="QS0002" REF.END="QE0002" CODE="2018">
+        </QUOT.START>the initial proposal<QUOT.END ID="QE0002" REF.START="QS0002" CODE="2019">
+        </QUOT.END>)</P>
+      <P>According to Article 1 thereof, the object of the initial proposal is to authorise the European Parliament, the Council, the Commission, the Court of Justice, the Court of Auditors and the Economic and Social Committee, in the interests of the service and in order to take account of requirements resulting from the accession of Austria, Sweden and Finland to the European Communities, to adopt, until<DATE ISO="20000630">30 June 2000</DATE>, measures terminating the service of officials who have reached the age of 55, with the exception of those in grades A 1 and A 2.</P>
+      <P>According to Article 3 of the initial proposal, the officials to whom those termination of service measures apply are to be selected by the institution concerned on the basis of the interests of the service in connection with enlargement, after the staff have been given the opportunity to express their interest and after the Joint Committee has been consulted. It is required to take into consideration the age, ability, efficiency, conduct in the service, family situation and seniority of the officials concerned, whose length of service must be a minimum of 10 years. Underno circumstances may termination of service take place without the consent of the person concerned.</P>
+      <P>According to Article 4 of the initial proposal, an official whose service is terminated is to be entitled to a monthly allowance equal to 70% of the basic salary referable to his grade and step at the time of his departure from the service. Entitlement to the allowance is to cease not later than the last day of the month in which the former official attains the age of 65 and in any event as soon as the person concerned, before reaching that age, is eligible for the maximum retirement pension. At that point the former official is automatically to receive a retirement pension.</P>
+      <P>The initial proposal provides that the defendant is to be authorised to decide to terminate the service of 25 officials.</P>
+      <P>The initial proposal was submitted to the institutions concerned for their opinion, in accordance with Article 24 of the Treaty establishing a Single Council and a Single Commission of the European Communities (<QUOT.START ID="QS0003" REF.END="QE0003" CODE="2018">
+        </QUOT.START>the Merger Treaty<QUOT.END ID="QE0003" REF.START="QS0003" CODE="2019">
+        </QUOT.END>).</P>
+      <P>The Parliament, the defendant and the Court of Auditors issued favourable opinions on<DATE ISO="19950925">25 September</DATE>,<DATE ISO="19951012">12 October</DATE>and<DATE ISO="19951026">26 October 1995</DATE>respectively.</P>
+      <P>During the course of the legislative procedure, the Commission indicated its willingness, with a view to facilitating the decision-making process within the Council, to split the initial proposal and to agree to priority treatment being given by the Council to measures for termination of service in respect of the Parliament alone (Council document No 11098/95 of<DATE ISO="19951031">31 October 1995</DATE>, reproduced in Annex 111(d) to the Council&apos;s statement in intervention).</P>
+      <P>On<DATE ISO="19951117">17 November 1995</DATE>the Council consequently adopted Regulation (EC, Euratom, ECSC) No 2688/95 introducing special measures to terminate the service of officials of the European Communities as a result of the accession of Austria, Finland and Sweden (<REF.DOC.OJ COLL="L" NO.OJ="280" DATE.PUB="1995" PAGE.FIRST="1">OJ 1995 L 280, p. 1</REF.DOC.OJ>), authorising the Parliament alone to proceed to terminate the service of certain of its officials.</P>
+      <P>The applicant is a grade B 2 official of the Court of Justice.</P>
+      <P>On<DATE ISO="19960716">16 July 1996</DATE>she submitted a request under Article 90(1) of the Staff Regulations, worded as follows:</P>
+      <QUOT.S LEVEL="1">
+        <P>
+          <QUOT.START ID="QS0004" REF.END="QE0004" CODE="2018">
+          </QUOT.START>...</P>
+        <P>I hereby manifest my interest in the adoption of a decision terminating my service as a result of the accession of Austria, Finland and Sweden, as provided for by the proposal ..., already implemented by the Regulation, concerning part of the complement of officials of the European Communities.</P>
+        <P>Consequently, I should be grateful if you would enter my name on the list of persons who have manifested such an interest and from amongst whom the appointing authority is to make its selection.<QUOT.END ID="QE0004" REF.START="QS0004" CODE="2019">
+          </QUOT.END>
+        </P>
+      </QUOT.S>
+      <P>The Registrar of the Court, in his capacity as appointing authority, sent to the applicant on<DATE ISO="19960722">22 July 1996</DATE>a reply in the following terms:</P>
+      <QUOT.S LEVEL="1">
+        <P>
+          <QUOT.START ID="QS0005" REF.END="QE0005" CODE="2018">
+          </QUOT.START>Your request has had my full attention ...</P>
+        <P>However, I regret to inform you that, as matters currently stand, I am unable to react favourably to it.</P>
+        <P>The Regulation ... is applicable only to officials of the European Parliament. Consequently, as the rules presently stand, it is not possible for the other institutions - including the Court of Justice - to adopt measures for the termination of service of their staff.</P>
+        <P>Nevertheless, the Commission has not withdrawn its proposal ... in relation to officials of the other institutions. In the event that the Council is disposed at some future time to accept that proposal, the interest shown by you will certainly be taken into consideration.<QUOT.END ID="QE0005" REF.START="QS0005" CODE="2019">
+          </QUOT.END>
+        </P>
+      </QUOT.S>
+      <P>On<DATE ISO="19960924">24 September 1996</DATE>the applicant lodged a complaint against that decision pursuant to Article 90(2) of the Staff Regulations.</P>
+      <P>She complained that the refusal of her request by the appointing authority was based on the fact that the personal scope of Regulation No 2688/95 was limited to officials of the Parliament.</P>
+      <P>The complaint was rejected by decision of the defendant&apos;s Complaints Committee, which was adopted on<DATE ISO="19961015">15 October 1996</DATE>and notified to the applicant on<DATE ISO="19961023">23 October 1996</DATE>.</P>
+    </SUBJECTS>
+    <ABSTRACT>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>Admissibility</P>
+          </TI>
+        </TITLE>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>The admissibility of the action generally</P>
+            </TI>
+          </TITLE>
+          <P>Article 90(1) of the Staff Regulations provides, without restriction, that any person to whom the Staff Regulations apply may submit to the appointing authority a request that it take a decision relating to him. The exercise of that right is not conditional on the existence of any legal basis permitting the administration to adopt the decision requested; nor is it hindered by the fact that the administration has no margin of discretion as regards its adoption (paragraph 51).</P>
+          <ANNOTATION>
+            <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="147/79" YEAR="1980" PAGE.ECR="3005">147/79<HT TYPE="ITALIC">Hochstrass</HT>v<HT TYPE="ITALIC">Court of Justice</HT>[1980] ECR 3005, paras 2 to 4</REF.DOC.ECR>
+            </P>
+          </ANNOTATION>
+          <P>Consequently, the argument that the applicant was not entitled to submit a request pursuant to Article 90(1) of the Staff Regulations, manifesting her interest in the possible termination of her service, is unfounded (paragraph 52).</P>
+          <P>A decision of the appointing authority rejecting a request for entry on the list of officials interested in having their service terminated, on the ground that Regulation No 2688/95 is not applicable in the institution concerned, directly and immediately affects the legal situation of the officials concerned and consequently prejudices them, inasmuch as they can no longer claim the benefit of the measures in question, whether by participating in another procedure or by any other means, and inasmuch as the institution concerned has not taken any final decision rejecting those requests which those officials can challenge (paragraph 57).</P>
+          <ANNOTATION>
+            <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="204/85" YEAR="1987" PAGE.ECR="389">204/85<HT TYPE="ITALIC">Stroghili</HT>v<HT TYPE="ITALIC">Cowl of Auditors</HT>(1987) ECR 389, para. 6</REF.DOC.ECR>;<REF.DOC.ECR EDITION="GEN" NO.CASE="T-82/89" YEAR="1990" PAGE.ECR="II-735">T-82/89<HT TYPE="ITALIC">Marcato</HT>v<HT TYPE="ITALIC">Commission</HT>[1990] ECR II-735, paras 49 and 52</REF.DOC.ECR>;<REF.DOC.ECR EDITION="CST" NO.CASE="T-157/96" YEAR="1998" PAGE.ECR="II-97">T-157/96<HT TYPE="ITALIC">Affatalo</HT>v<HT TYPE="ITALIC">Commission</HT>[1998] ECRSC II-97, para. 21</REF.DOC.ECR>
+            </P>
+          </ANNOTATION>
+          <P>The various objections raised by the defendant and the interveners are unfounded (paragraphs 59 to 64).</P>
+          <P>Furthermore, although entry on the list in question constitutes merely a preparatory act which does not mean that the measures requested will definitely be granted, a refusal on the aforementioned ground to take into consideration a manifestation by an official of interest in having his or her service terminated clearly and definitively operates, in the absence of adoption by the Council of the Commission&apos;s proposal for a similar regulation applicable to the official in question, to deprive that official of the benefit of that measure, and therefore adversely affects him or her (paragraph 65).</P>
+          <P>It follows that the action is admissible (paragraph 67).</P>
+        </GR.SEQ>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>Substance</P>
+          </TI>
+        </TITLE>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>The admissibility of the objection of illegality</P>
+            </TI>
+          </TITLE>
+          <P>The objection of illegality provided for in Article 184 of the Treaty gives expression to a general principle conferring upon any party to proceedings the right to challenge incidentally, with a view to obtaining the annulment of a decision addressed to him, the validity of the regulation forming the direct legal basis ofthat decision and, more broadly, the validity of any provision of a regulation which may in the circumstances be relevant to the adoption of that decision (paragraph 83).</P>
+          <ANNOTATION>
+            <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="262/80" YEAR="1984" PAGE.ECR="195">262/80<HT TYPE="ITALIC">Andersenand Others</HT>v<HT TYPE="ITALIC">Parliament</HT>[1984] ECR 195, para. 6</REF.DOC.ECR>;<REF.DOC.ECR EDITION="GEN" NO.CASE="87/77+130/77+22/83+9/84+10/84" YEAR="1985" PAGE.ECR="2523">87/77,130/77,22/83, 9/84 and 10/84<HT TYPE="ITALIC">Salerno and Others</HT>v<HT TYPE="ITALIC">Commission and Council</HT>[1985] ECR 2523, para. 36</REF.DOC.ECR>;<REF.DOC.ECR EDITION="GEN" NO.CASE="T-6/92+T-52/92" YEAR="1993" PAGE.ECR="II-1047">T-6/92 and T-52/92<HT TYPE="ITALIC">Reinan</HT>v<HT TYPE="ITALIC">Commission</HT>[1993] ECR II-1047, para. 56</REF.DOC.ECR>;<REF.DOC.ECR EDITION="CST" NO.CASE="T-64/92" YEAR="1994" PAGE.ECR="II-723">T-64/92<HT TYPE="ITALIC">Chavanede Dalmassy and Others</HT>v<HT TYPE="ITALIC">Commission</HT>[1994] ECRSC II-723, para. 41</REF.DOC.ECR>;<REF.DOC.ECR EDITION="CST" NO.CASE="T-262/94" YEAR="1996" PAGE.ECR="II-739">T-262/94<HT TYPE="ITALIC">Baiwir</HT>v<HT TYPE="ITALIC">Commission</HT>[1996] ECRSC II-739, para. 32</REF.DOC.ECR>;<REF.DOC.ECR EDITION="CST" NO.CASE="T-146/96" YEAR="1998" PAGE.ECR="II-281">T-146/96<HT TYPE="ITALIC">De Abreu</HT>v<HT TYPE="ITALIC">Court of Justice</HT>[1998] ECRSC II-281, para. 27</REF.DOC.ECR>
+            </P>
+          </ANNOTATION>
+          <P>In the present case, the contested decision is based on the fact that, unlike the initial proposal, Regulation No 2688/95 applies only to officials of the Parliament, and that, by necessary implication, it does not therefore cover officials of other Community institutions such as the defendant. Consequently, the decision is based on the implicit exclusion by Regulation No 2688/95 of a specific class of persons. Where the illegality of a regulation is capable of being pleaded in support of an objection, that illegality may result from the fact that a specific class of persons is excluded from its scope. It follows that the objection of illegality raised against Regulation No 2688/95, inasmuch as it brings about such an exclusion, falls within the scope of Article 184 of the Treaty (paragraph 84).</P>
+          <ANNOTATION>
+            <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="T-177/94+T-377/94" YEAR="1996" PAGE.ECR="II-2041">T-177/94 and T-377/94<HT TYPE="ITALIC">Altmann and Others</HT>v<HT TYPE="ITALIC">Commission</HT>[1996] ECR II-2041, paras 5 and 141</REF.DOC.ECR>
+            </P>
+          </ANNOTATION>
+          <P>The arguments advanced by the defendant and the interveners in support of their contention that the objection of illegality is inadmissible are based, in essence, on three considerations. They maintain, in the first place, that it is premature and, second, that it involves an abuse of procedure. Those two arguments are unfounded (paragraphs 85 to 97).</P>
+          <P>Third, they state that the appointing authority had no choice but to apply Regulation No 2688/95 and therefore to reject the requests. That argument cannot be accepted either. The appointing authority may have been legally bound to apply Regulation No 2688/95, but that does not prevent the applicant from exercising her right under Article 184 of the Treaty to bring before the Community judicature a claim for a declaration that that regulation is inapplicable (paragraphs 85 and 99).</P>
+          <ANNOTATION>
+            <P>See :<REF.DOC.ECR EDITION="GEN" NO.CASE="101/78" YEAR="1979" PAGE.ECR="623">101 /78<HT TYPE="ITALIC">Granaria</HT>v<HT TYPE="ITALIC">Hoofdproditktschap voor Akkerbouwprodukten</HT>[1979] ECR 623, para. 5</REF.DOC.ECR>;<REF.DOC.ECR EDITION="CST" NO.CASE="T-536/93" YEAR="1994" PAGE.ECR="II-777">T-536/93<HT TYPE="ITALIC">Benzler</HT>v<HT TYPE="ITALIC">Commission</HT>[1994] ECRSC II-777, paras 40 and 41</REF.DOC.ECR>;<HT TYPE="ITALIC">Altmann and Others</HT>v<HT TYPE="ITALIC">Commission,</HT>cited above, para. 123</P>
+          </ANNOTATION>
+          <P>It follows from the foregoing that the objection of illegality raised in the present case against the implicit exclusion of officials in the service of the defendant from the scope of Regulation No 2688/95 must be declared admissible (paragraph 100).</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>The merits of the objection of illegality</P>
+            </TI>
+          </TITLE>
+          <P>The applicant relies, in support of her objection of illegality, on three main pleas in law, alleging (1) lack of competence and breach of the principle of equaltreatment, (2) infringement of essential procedural requirements and (3) misuse of powers (paragraph 102).</P>
+          <P>In the Court&apos;s view, it is appropriate to examine first the plea alleging breach of the principle of equal treatment (paragraph 103).</P>
+        </GR.SEQ>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>Breach of the principle of equal treatment</P>
+          </TI>
+        </TITLE>
+        <P>The general principle of equal treatment requires that comparable situations should not be treated differently unless such differentiation is objectively justified. In a matter involving the exercise of discretion, that principle is disregarded where the institution makes a differentiation which is arbitrary or manifestly inappropriate in relation to the objective pursued (paragraph 113).</P>
+        <ANNOTATION>
+          <P>See:<HT TYPE="ITALIC">Hochstrass</HT>v<HT TYPE="ITALIC">Court of Justice,</HT>cited above, para. 7;<REF.DOC.ECR EDITION="CST" NO.CASE="T-109/92" YEAR="1994" PAGE.ECR="II-105">T-109/92<HT TYPE="ITALIC">Lacruz Bassols</HT>v<HT TYPE="ITALIC">Court of Justice</HT>[1994] ECRSC II-105, para. 87</REF.DOC.ECR>;<REF.DOC.ECR EDITION="CST" NO.CASE="T-142/95" YEAR="1997" PAGE.ECR="II-1247">T-142/95<HT TYPE="ITALIC">Delvaux</HT>v<HT TYPE="ITALIC">Commission</HT>[1997] ECRSC II-1247, para. 95</REF.DOC.ECR>
+          </P>
+        </ANNOTATION>
+        <P>By restricting the scope of Regulation No 2688/95 to the Parliament alone, despite the fact that other institutions have indicated their intention, like the institution to which that regulation applies, to adopt measures for the termination of service of officials and have undergone a comparable change in their complement of staff, the Council has differentiated between the situations of those institutions in a manner which is arbitrary or, at the very least, manifestly inappropriate (paragraphs 121 and 122).</P>
+        <P>The plea alleging breach of the principle of nondiscrimination is consequently well founded (paragraph 124).</P>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>Infringement of essential procedural requirements</P>
+          </TI>
+        </TITLE>
+        <P>It is necessary, first of all, to examine the merits of the argument that (1) the Parliament and (2) the Staff Regulations Committee should have been consulted a second time (paragraph 140).</P>
+        <P>In the first place, the second subparagraph of Article 24( 1 ) of the Merger Treaty provides that amendments of the Staff Regulations are to be adopted<QUOT.START ID="QS0006" REF.END="QE0006" CODE="2018">
+          </QUOT.START>on a proposal from the Commission and after consulting the other institutions concerned<QUOT.END ID="QE0006" REF.START="QS0006" CODE="2019">
+          </QUOT.END>(paragraph 141).</P>
+        <P>Consultation of the Parliament under Article 24 of the Merger Treaty, which enables it, in particular, to participate effectively in the Community&apos;s legislative process, is an essential feature of the institutional balance which the Treaties seek to achieve. Regular consultation with the Parliament pursuant to that provision therefore constitutes an essential procedural requirement noncompliance with which renders the act in question void (paragraph 142).</P>
+        <ANNOTATION>
+          <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="817/79" YEAR="1982" PAGE.ECR="245">817/79<HT TYPE="ITALIC">Buyl and Others</HT>v<HT TYPE="ITALIC">Commission</HT>[1982] ECR 245, para. 16</REF.DOC.ECR>;<REF.DOC.ECR EDITION="GEN" NO.CASE="828/79" YEAR="1982" PAGE.ECR="269">828/79<HT TYPE="ITALIC">Adam</HT>v<HT TYPE="ITALIC">Commission</HT>[1982] ECR 269, para. 17</REF.DOC.ECR>;<REF.DOC.ECR EDITION="GEN" NO.CASE="1253/79" YEAR="1982" PAGE.ECR="297">1253/79<HT TYPE="ITALIC">Battaglia</HT>v<HT TYPE="ITALIC">Commission</HT>[1982] ECR 297, para. 17</REF.DOC.ECR>
+          </P>
+        </ANNOTATION>
+        <P>The Parliament must be consulted again whenever the text finally adopted, taken as a whole, differs in essence from the text on which the Parliament has already been consulted, except in cases in which the amendments substantially correspond to the wishes of the Parliament itself. The amendment of a proposal does not concern the essence of the text, taken as a whole, if, first, it forms part of the objective pursued by the text in question and, second, it does not affect the fundamental scheme of that text (paragraphs 143 and 145).</P>
+        <ANNOTATION>
+          <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="C-408/95" YEAR="1997" PAGE.ECR="I-6315">C-408/95<HT TYPE="ITALIC">Eurotunnel and Others</HT>v<HT TYPE="ITALIC">SeaFrance</HT>[1997] ECR I-6315, para. 46</REF.DOC.ECR>;<REF.DOC.ECR EDITION="GEN" NO.CASE="C-280/93" YEAR="1994" PAGE.ECR="I-4973">C-280/93<HT TYPE="ITALIC">Germany</HT>v<HT TYPE="ITALIC">Council</HT>[1994] ECR I-4973, paras 40 and 41</REF.DOC.ECR>
+          </P>
+        </ANNOTATION>
+        <P>The amendment made to the initial proposal goes to its essence. Furthermore, it does not correspond to the wish expressed by the Parliament. That institution had approved the initial proposal in its opinion. Its wish was therefore that all the institutions should be able to have recourse to measures to terminate the service of their officials. Moreover, it expressly asked to be reconsulted in the event of any substantial amendment (paragraphs 148 and 149).</P>
+        <P>It follows that the Parliament should have been consulted again before the Council adopted the amended version of the initial proposal (paragraph 150).</P>
+        <P>Second, it must be observed that the second sentence of the second paragraph of Article 10 of the Staff Regulations requires the Staff Regulations Committee to be consulted by the Commission on any proposal for revision of the Staff Regulations (paragraph 151).</P>
+        <P>That provision imposes on the Commission a consultation obligation which extends not only to formal proposals but also to the introduction by it of substantial amendments to proposals which have already been considered, unless, in the latter case, the amendments correspond, in essence, to those proposed by the Staff Regulations Committee (paragraph 152).</P>
+        <P>First, that way of proceeding is justified by the wide scope which the provision in question attaches to the obligation laid down by it and, second, that interpretation is dictated by the role assumed by the Staff Regulations Committee, which, as a joint body composed both of representatives of the administrative authorities and of democratically elected representatives of the staff of all the institutions, is called upon to take into consideration and express the interests of the Community civil service as a whole (paragraphs 153 to 155).</P>
+        <P>The arguments advanced by the interveners against that reconsultation obligation are unfounded (paragraphs 156 to 172).</P>
+        <P>In the present case, the Staff Regulations Committee issued an opinion in favour of the initial proposal on<DATE ISO="19950621">21 June 1995</DATE>. However, the amendment made to the initial proposal by the Commission in the course of the legislative procedure was substantial. Moreover, it did not correspond to any amendment proposed by the Staff Regulations Committee. It follows, applying the above principles, that the Staff Regulations Committee should have been consulted again on the amendment of the initial proposal (paragraphs 171 and 172).</P>
+        <P>The plea alleging infringement of essential procedural requirements is therefore well founded as regards consultation of the Parliament and of the Staff Regulations Committee (paragraph 173).</P>
+        <P>The contested decision must therefore be annulled, without there being any need to examine the other complaints alleging failure to consult the defendant and the Court of Auditors and failure to provide a statement of reasons, or any of the other pleas advanced in support of the objection of illegality (paragraph 174).</P>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>Operative part:</P>
+          </TI>
+        </TITLE>
+        <P>The decision of the Court of Justice of<DATE ISO="19960722">22 July 1996</DATE>rejecting the request made by Antoinette Losch on<DATE ISO="19960716">16 July 1996</DATE>that her name be entered on the Ust of persons having manifested their interest in being the subject of a decision terminating their service, as provided for by Council Regulation (EC, Euratom, ECSC) No 2688/95 of<DATE ISO="19951117">17 November 1995</DATE>introducing special measures to terminate the service of officials of the European Communities as a result of the accession of Austria, Finland and Sweden, is annulled.</P>
+      </GR.SEQ>
+    </ABSTRACT>
+  </SUMMARY>
+  <PDF.ECR>
+    <REF.PDF.ECR TYPE="SUMMARY" PAGE.FIRST="00543" PAGE.LAST="00556">F_1997_0013_SOM_EN_1998_FPIA_000543.pdf</REF.PDF.ECR>
+  </PDF.ECR>
+</CASE>

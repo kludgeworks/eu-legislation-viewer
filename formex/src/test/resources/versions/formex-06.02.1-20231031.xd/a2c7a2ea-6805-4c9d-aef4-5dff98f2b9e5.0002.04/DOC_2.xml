@@ -1,0 +1,172 @@
+<COMPETITION noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="CA2009016EN.01000401.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>016A</NO.OJ>
+      <YEAR>2009</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>4</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20090122">20090122</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0003</NO.SEQ>
+    <PAGE.FIRST>4</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>4</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Reserve lists</HT>
+        <HT TYPE="NORMAL">
+          <NOTE NOTE.ID="E0001">
+            <P>A successful candidate may explicitly request her/his name not be published.</P>
+          </NOTE>
+        </HT>
+      </P>
+      <P>
+        <HT TYPE="UC">Open competitions</HT>
+      </P>
+      <NO.DOC.C>(2009/C 16 A/03)</NO.DOC.C>
+    </TI>
+  </TITLE>
+  <COMPETITION.INIT>
+    <P>
+      <IE>
+      </IE>
+    </P>
+  </COMPETITION.INIT>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>EPSO/AD/90/07 — CONFERENCE INTERPRETERS (AD 5) HAVING SLOVAK (SK) AS MAIN LANGUAGE</P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Option 1</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0001" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">KRAJČÍROVÁ</CELL>
+              <CELL COL="2">Kristina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">NERÁD</CELL>
+              <CELL COL="2">Juraj</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PLULÍKOVÁ</CELL>
+              <CELL COL="2">Jana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">REGNEROVÁ</CELL>
+              <CELL COL="2">Zuzana</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Option 2</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0002" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">PSICOVÁ</CELL>
+              <CELL COL="2">Katarina</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Option 3</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0003" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">SOROLLA SERRANO</CELL>
+              <CELL COL="2">Maria Teresa</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>EPSO/AD91/07 — CONFERENCE INTERPRETERS (AD 7) HAVING SLOVAK (SK) AS MAIN LANGUAGE</P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Option 1</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0004" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">CABADAJOVÁ</CELL>
+              <CELL COL="2">Ivana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MATUŠKOVÁ</CELL>
+              <CELL COL="2">Katarina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PETROVSKÁ</CELL>
+              <CELL COL="2">Miroslava</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">RUSIŇÁKOVÁ</CELL>
+              <CELL COL="2">Eva</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Option 2</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0005" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">MAKAROVÁ</CELL>
+              <CELL COL="2">Viera</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TOMÁŠEKOVÁ</CELL>
+              <CELL COL="2">Zdenka</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Option 3</P>
+          </TI>
+        </TITLE>
+        <P>NO SUCCESSFUL CANDIDATE</P>
+      </GR.SEQ>
+    </GR.SEQ>
+    <P>The reserve lists will be valid until<HT TYPE="BOLD">
+        <DATE ISO="20101231">31 December 2010</DATE>
+      </HT>and may be extended.</P>
+  </CONTENTS>
+</COMPETITION>

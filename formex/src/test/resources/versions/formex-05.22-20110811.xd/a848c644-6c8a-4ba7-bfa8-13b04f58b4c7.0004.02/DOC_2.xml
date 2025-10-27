@@ -1,0 +1,172 @@
+<CONS.ACT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.22-20110811.xd">
+  <INFO.CONSLEG CONSLEG.DATE="20120705" CONSLEG.REF="1994R1981" DATE.LAST.MOD="20010419" END="REPEALED" END.DATE="99999999" LEG.VAL="REG" PROD.SEQ="002.001.0" SOURCE.END="32001R0747" START.DATE="20010420">
+  </INFO.CONSLEG>
+  <INFO.PROD PROD.DATE="20120705" PROD.SYSTEM="CONSLEG.NEW" PRODUCER="ES">
+  </INFO.PROD>
+  <CONS.DOC NNC="NO">
+    <BIB.INSTANCE>
+      <DOCUMENT.REF FILE="CL1994R1981EN0020010.0001.doc.xml">
+        <LG.OJ>EN</LG.OJ>
+        <PAGE.FIRST>1</PAGE.FIRST>
+      </DOCUMENT.REF>
+      <DATE ISO="20010420">20010420</DATE>
+      <LG.DOC>EN</LG.DOC>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <PAGE.LAST>1</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+    </BIB.INSTANCE>
+    <FAM.COMP LEG.VAL="REG">
+      <BIB.DATA>
+        <BIB.INSTANCE.CONS>
+          <DOCUMENT.REF.CONS>
+            <COLL>L</COLL>
+            <NO.OJ>199</NO.OJ>
+            <YEAR>1994</YEAR>
+            <LG.OJ>EN</LG.OJ>
+            <PAGE.FIRST>1</PAGE.FIRST>
+            <PAGE.SEQ>1</PAGE.SEQ>
+          </DOCUMENT.REF.CONS>
+          <DATE ISO="19940802">19940802</DATE>
+          <LG.DOC>EN</LG.DOC>
+          <PAGE.FIRST>1</PAGE.FIRST>
+          <PAGE.SEQ>1</PAGE.SEQ>
+          <PAGE.LAST>26</PAGE.LAST>
+          <PAGE.TOTAL>26</PAGE.TOTAL>
+        </BIB.INSTANCE.CONS>
+        <NO.CELEX>31994R1981</NO.CELEX>
+        <DATE ISO="19940725">19940725</DATE>
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Council Regulation</HT>(EC) No 1981/94</P>
+            <P>of 25 July 1994</P>
+            <P>opening and providing for the administration of Community tariff quotas for certain products originating in Algeria, Cyprus, Egypt, Israel, Jordan, Malta, Morocco,West Bank and the Gaza Strip, Tunisia and Turkey, and providing detailed rules for extending and adapting these tariff quotas</P>
+          </TI>
+        </TITLE>
+      </BIB.DATA>
+      <GR.MOD.ACT>
+        <MOD.ACT EXISTS="YES" LEG.VAL="REG" TYPE="MOD">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>146</NO.OJ>
+                <YEAR>1996</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>8</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19960620">19960620</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>8</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>27</PAGE.LAST>
+              <PAGE.TOTAL>20</PAGE.TOTAL>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>31996R1099</NO.CELEX>
+            <DATE ISO="19960619">19960619</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Regulation</HT>(EC) No 1099/96</P>
+                <P>of 19 June 1996</P>
+                <P>amending Council Regulation (EC) No 1981/94 opening and providing for the administration of Community tariff quotas for certain products originating in Algeria, Cyprus, Egypt, Israel, Jordan, Malta, Morocco, the Occupied Territories, Tunisia and Turkey, and providing detailed rules for extending and adapting these tariff quotas</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT EXISTS="YES" LEG.VAL="REG" TYPE="MOD">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>088</NO.OJ>
+                <YEAR>1998</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>8</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="19980324">19980324</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>8</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>30</PAGE.LAST>
+              <PAGE.TOTAL>23</PAGE.TOTAL>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>31998R0650</NO.CELEX>
+            <DATE ISO="19980323">19980323</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Regulation</HT>(EC) No 650/98</P>
+                <P>of 23 March 1998</P>
+                <P>amending Council Regulation (EC) No 1981/94 opening and providing for the administration of Community tariff quotas for certain products originating in Algeria, Cyprus, Egypt, Israel, Jordan, Malta, Morocco, the West Bank and the Gaza Strip, Tunisia and Turkey, and providing detailed rules for extending and adapting these tariff quotas</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT EXISTS="YES" LEG.VAL="REG" TYPE="REP">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>109</NO.OJ>
+                <YEAR>2001</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>2</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="20010419">20010419</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>0002</NO.SEQ>
+              <PAGE.FIRST>2</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>29</PAGE.LAST>
+              <PAGE.TOTAL>28</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>747</NO.CURRENT>
+                <YEAR>2001</YEAR>
+                <COM>EC</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>32001R0747</NO.CELEX>
+            <DATE ISO="20010409">20010409</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Council Regulation (EC) N</HT>o 747/2001</P>
+                <P>of 9 April 2001</P>
+                <P>providing for the management of Community tariff quotas and of reference quantities for products eligible for preferences by virtue of agreements with certain Mediterranean countries and repealing Regulations (EC) No 1981/94 and (EC) No 934/95</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+      </GR.MOD.ACT>
+    </FAM.COMP>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="UC">Council Regulation</HT>(EC) No 1981/94</P>
+        <P>of 25 July 1994</P>
+        <P>opening and providing for the administration of Community tariff quotas for certain products originating in Algeria, Cyprus, Egypt, Israel, Jordan, Malta, Morocco,West Bank and the Gaza Strip, Tunisia and Turkey, and providing detailed rules for extending and adapting these tariff quotas</P>
+      </TI>
+    </TITLE>
+    <PREAMBLE>
+      <PREAMBLE.INIT>XXX</PREAMBLE.INIT>
+      <P>This act has been trimmed due to parser errors since it has been repealed.</P>
+      <PREAMBLE.FINAL>XXX</PREAMBLE.FINAL>
+    </PREAMBLE>
+    <ENACTING.TERMS>
+      <ARTICLE IDENTIFIER="001">
+        <TI.ART>Article 1</TI.ART>
+        <STI.ART>XXXX</STI.ART>
+        <PARAG IDENTIFIER="001.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>XXXX</ALINEA>
+        </PARAG>
+      </ARTICLE>
+    </ENACTING.TERMS>
+  </CONS.DOC>
+</CONS.ACT>

@@ -1,0 +1,903 @@
+<COMPETITION noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="CA2009016EN.01000801.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>016A</NO.OJ>
+      <YEAR>2009</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>8</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20090122">20090122</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0005</NO.SEQ>
+    <PAGE.FIRST>8</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>12</PAGE.LAST>
+    <PAGE.TOTAL>5</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Reserve lists</HT>
+        <HT TYPE="NORMAL">
+          <NOTE NOTE.ID="E0001">
+            <P>A successful candidate may explicitly request her/his name not be published.</P>
+          </NOTE>
+        </HT>
+      </P>
+      <P>
+        <HT TYPE="UC">Open competitions</HT>
+      </P>
+      <NO.DOC.C>(2009/C 16 A/05)</NO.DOC.C>
+    </TI>
+  </TITLE>
+  <COMPETITION.INIT>
+    <P>
+      <IE>
+      </IE>
+    </P>
+  </COMPETITION.INIT>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>EPSO/AST/43/07 — Assistants (AST 3) of Bulgarian citizenship in the field of European Public Administration/Human Resources</P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Merit Group 1</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0001" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">ANGELOVA</CELL>
+              <CELL COL="2">Yana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BOJINOVA</CELL>
+              <CELL COL="2">Silvia</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BORISSOVA</CELL>
+              <CELL COL="2">Katerina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">DIMITROVA</CELL>
+              <CELL COL="2">Anna</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">DIMOV</CELL>
+              <CELL COL="2">Yasen</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">DOBREVA</CELL>
+              <CELL COL="2">Slavitza</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">KOLEVA</CELL>
+              <CELL COL="2">Snejana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">KOMITSKA</CELL>
+              <CELL COL="2">Vesselina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">KOVACHEV</CELL>
+              <CELL COL="2">Petar</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">KUKOVA</CELL>
+              <CELL COL="2">Totka</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MILEVA</CELL>
+              <CELL COL="2">Kremena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MIRAZCHIYSKA</CELL>
+              <CELL COL="2">Maria</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">NACHEVA</CELL>
+              <CELL COL="2">Mariyana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">NESHEVA</CELL>
+              <CELL COL="2">Lyubomira</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PALAZOVA</CELL>
+              <CELL COL="2">Kameliya</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">REZESSY</CELL>
+              <CELL COL="2">Silvia</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">SAVOVA</CELL>
+              <CELL COL="2">Stela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">SERTOVA</CELL>
+              <CELL COL="2">Nadezhda</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">SHULGA</CELL>
+              <CELL COL="2">Svetla</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">SOUMROVA</CELL>
+              <CELL COL="2">Pavlina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">STANCHEVA</CELL>
+              <CELL COL="2">Petya</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">STOYANOV</CELL>
+              <CELL COL="2">Dimo</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TODOROVA</CELL>
+              <CELL COL="2">Marieta</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TYULEKOVA</CELL>
+              <CELL COL="2">Antoaneta</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">VELIKOV</CELL>
+              <CELL COL="2">Tsvyatko</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">YOUGOVA</CELL>
+              <CELL COL="2">Dessislava</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">YURUKOVA</CELL>
+              <CELL COL="2">Svetlana</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Merit Group 2</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0002" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">ARMENKOVA-HRISTOVA</CELL>
+              <CELL COL="2">Nadezhda</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">AVRAMOVA</CELL>
+              <CELL COL="2">Iliyana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BALABANOVA</CELL>
+              <CELL COL="2">Lyubomira</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">DELIYSKA</CELL>
+              <CELL COL="2">Mariyana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">DIMITROVA</CELL>
+              <CELL COL="2">Zdravka</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">GOLEMINOVA</CELL>
+              <CELL COL="2">Veselina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">HADJINENKOV</CELL>
+              <CELL COL="2">Alexandar</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">HAELG</CELL>
+              <CELL COL="2">Albena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">HRISTOVA</CELL>
+              <CELL COL="2">Desislava</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">IVANOVA</CELL>
+              <CELL COL="2">Vania</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">KENDIMENOVA</CELL>
+              <CELL COL="2">Ralitsa</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">NIKOLCHOV</CELL>
+              <CELL COL="2">Vladimir</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">NOEV</CELL>
+              <CELL COL="2">Nivelin</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PODVARZACHOVA</CELL>
+              <CELL COL="2">Elitza</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">ROUSSEVA</CELL>
+              <CELL COL="2">Albena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">RUSSEVA</CELL>
+              <CELL COL="2">Stanka</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">STOIANOVA-DIMITROVA</CELL>
+              <CELL COL="2">Iveta</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">STOIMENOVA</CELL>
+              <CELL COL="2">Milena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TOPALOV</CELL>
+              <CELL COL="2">Martin</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">YOVCHEVA</CELL>
+              <CELL COL="2">Sabina</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>EPSO/AST/43/07 — Assistants (AST 3) of Bulgarian citizenship in the field of Financial Management</P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Merit Group 1</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0003" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">ANDREEVA</CELL>
+              <CELL COL="2">Ludmila Lozanova</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">CHANEVA</CELL>
+              <CELL COL="2">Svetlana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">DIMOVA</CELL>
+              <CELL COL="2">Dobrinka</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">DOROSIEVA</CELL>
+              <CELL COL="2">Irena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">GEORGIEVA</CELL>
+              <CELL COL="2">Rumjana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">HARALAMBIEVA</CELL>
+              <CELL COL="2">Hristina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">ILIEVA</CELL>
+              <CELL COL="2">Silvina Alekseeva</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">ILIEVA</CELL>
+              <CELL COL="2">Iliyana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MARINOVA</CELL>
+              <CELL COL="2">Yanita</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MITREVA</CELL>
+              <CELL COL="2">Evelina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PANAYOTOVA</CELL>
+              <CELL COL="2">Albena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PETROV</CELL>
+              <CELL COL="2">Ivan</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">RANGELOVA</CELL>
+              <CELL COL="2">Vesela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">STOYANOV</CELL>
+              <CELL COL="2">Yavor</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TANEVA</CELL>
+              <CELL COL="2">Albena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TANKOVA</CELL>
+              <CELL COL="2">Marina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TOLEVA</CELL>
+              <CELL COL="2">Svetla</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TZARNORETCHKA</CELL>
+              <CELL COL="2">Biliana</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Merit Group 2</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0004" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">ALEKSIEVA</CELL>
+              <CELL COL="2">Stanislava</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BALAREV</CELL>
+              <CELL COL="2">Ivan</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BALTADZHIEV</CELL>
+              <CELL COL="2">Svetoslav</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BOLASHIKOVA</CELL>
+              <CELL COL="2">Bilyana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BOTEVA</CELL>
+              <CELL COL="2">Milena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">HRISTOZOV</CELL>
+              <CELL COL="2">Martin</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">LALOVA</CELL>
+              <CELL COL="2">Constantina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MIHAYLOVA</CELL>
+              <CELL COL="2">Iva</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PETROV</CELL>
+              <CELL COL="2">Dinko Simeonov</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PETROV</CELL>
+              <CELL COL="2">Ventsislav</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">POMAKOV</CELL>
+              <CELL COL="2">Anton Lyubenov</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">RADOUNTCHEVA</CELL>
+              <CELL COL="2">Roumiana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">STOILOVA</CELL>
+              <CELL COL="2">Desislava</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TOPOUZOV</CELL>
+              <CELL COL="2">Petar</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TRIFONOVA</CELL>
+              <CELL COL="2">Gergana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">WOODFORD</CELL>
+              <CELL COL="2">Borislava</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>EPSO/AST/44/07 — Assistants (AST 3) of Romanian citizenship in the field of European Public Administration/Human Resources</P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Merit Group 1</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0005" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">ACHIM</CELL>
+              <CELL COL="2">Elisabeta</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BOGDAN</CELL>
+              <CELL COL="2">Cristina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BRATIANU</CELL>
+              <CELL COL="2">Anca</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BUCHIU</CELL>
+              <CELL COL="2">Adriana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BURGHIU</CELL>
+              <CELL COL="2">Luminita</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">CHITU</CELL>
+              <CELL COL="2">Daniela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">DANCIU</CELL>
+              <CELL COL="2">Raluca Elena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">GHERMAN</CELL>
+              <CELL COL="2">Catalin</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">IUSCO</CELL>
+              <CELL COL="2">Maria</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MANEA</CELL>
+              <CELL COL="2">Alin George</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">OLTEANU</CELL>
+              <CELL COL="2">Anca Dora</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">REINECKE</CELL>
+              <CELL COL="2">Petronela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">ROMAN ENESCU</CELL>
+              <CELL COL="2">Ruxandra</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">SANDU</CELL>
+              <CELL COL="2">Luciana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">STATU</CELL>
+              <CELL COL="2">Ioana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">STOICESCU</CELL>
+              <CELL COL="2">Irina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">VADUVA</CELL>
+              <CELL COL="2">Augustin</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">VADUVA</CELL>
+              <CELL COL="2">Livia</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Merit Group 2</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0006" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">AGAFITEI</CELL>
+              <CELL COL="2">Lucian</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">ARGYROU</CELL>
+              <CELL COL="2">Andreea Odette</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BLESNEAG</CELL>
+              <CELL COL="2">Mariana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BOICIUC</CELL>
+              <CELL COL="2">Alina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">CHIOREAN</CELL>
+              <CELL COL="2">Cristina Maria</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">CHIRA-PASCANUT</CELL>
+              <CELL COL="2">Constantin</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">CIUREA</CELL>
+              <CELL COL="2">Oana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">COSTIUC IRINA</CELL>
+              <CELL COL="2">Irina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">ENACHE</CELL>
+              <CELL COL="2">Gabriela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">FARCAS</CELL>
+              <CELL COL="2">Cosmina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">GEANA</CELL>
+              <CELL COL="2">Elena-Zenovia</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">GHEORGHE</CELL>
+              <CELL COL="2">Anca</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">GIRBEA</CELL>
+              <CELL COL="2">Roxana Paula</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">GRIVEI</CELL>
+              <CELL COL="2">Giorgiana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">GUSA</CELL>
+              <CELL COL="2">Cornelia Marina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">JUSCA</CELL>
+              <CELL COL="2">Mihaela Monica</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">LACATUS</CELL>
+              <CELL COL="2">Daniela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">LASCU</CELL>
+              <CELL COL="2">Eugen-Ionut</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MIHORDEA</CELL>
+              <CELL COL="2">Magdalena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MIRITESCU</CELL>
+              <CELL COL="2">Ileana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MITREA</CELL>
+              <CELL COL="2">Alina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MOROIANU</CELL>
+              <CELL COL="2">Simona Daniela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">NEACSU</CELL>
+              <CELL COL="2">Amelia</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">NEDA</CELL>
+              <CELL COL="2">Sorina Maria</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">NEGREANU</CELL>
+              <CELL COL="2">Daniela Cristina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">NICOLESCU</CELL>
+              <CELL COL="2">Andrei</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PINTEA</CELL>
+              <CELL COL="2">Anca Mihaela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PISCOI</CELL>
+              <CELL COL="2">Paul Sebastian</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PREDA</CELL>
+              <CELL COL="2">Raluca Emanuela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PROTOCSIL</CELL>
+              <CELL COL="2">Hertha-Helene</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">ROSIANU</CELL>
+              <CELL COL="2">Crina Magdalena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">STOIAN</CELL>
+              <CELL COL="2">Geanina Maria</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">SUCIU</CELL>
+              <CELL COL="2">Serban Corneliu</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TALABAN</CELL>
+              <CELL COL="2">Magdalena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TANASA</CELL>
+              <CELL COL="2">Paula</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">VALITA</CELL>
+              <CELL COL="2">Daniel-Nicolae</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Merit Group 3</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0007" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">BALESCU</CELL>
+              <CELL COL="2">Oana Elena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BARBULESCU</CELL>
+              <CELL COL="2">Simona-Daniela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">DENCA</CELL>
+              <CELL COL="2">Sorin Stefan</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">DRAGOMAN</CELL>
+              <CELL COL="2">Adriana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">DUMITRESCU</CELL>
+              <CELL COL="2">Constantin-Ovidiu</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">FILIP</CELL>
+              <CELL COL="2">Cristina Laura</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MICU</CELL>
+              <CELL COL="2">Lucian</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MUNTEAN</CELL>
+              <CELL COL="2">Petru Ciprian</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">NEGURA</CELL>
+              <CELL COL="2">Luminita-Roxana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">OPREA</CELL>
+              <CELL COL="2">Ecaterina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">OPREA</CELL>
+              <CELL COL="2">Patricia Elena</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">OVEDENIE</CELL>
+              <CELL COL="2">Dragos</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">SERAFIM</CELL>
+              <CELL COL="2">Marian</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">SIEA</CELL>
+              <CELL COL="2">Laetitia Arleziana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">SORESCU</CELL>
+              <CELL COL="2">Mihaita Sorinel</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">SZASZ</CELL>
+              <CELL COL="2">Daniela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">VALCU</CELL>
+              <CELL COL="2">Ioana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">VASCAN</CELL>
+              <CELL COL="2">Nicoleta</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">VOINEA</CELL>
+              <CELL COL="2">Flori-Narcis</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>EPSO/AST/44/07 — Assistants (AST 3) of Romanian citizenship in the field of Financial Management</P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Merit Group 1</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0008" COLS="2">
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">ANTAL</CELL>
+              <CELL COL="2">Adriana Ildiko</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">ANTONESCU</CELL>
+              <CELL COL="2">Viorel Adrian</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">CARBUNARU</CELL>
+              <CELL COL="2">Nicoleta</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">CIANGA</CELL>
+              <CELL COL="2">Liliana-Florina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">ENESCU</CELL>
+              <CELL COL="2">Ana-Maria</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">GALIE</CELL>
+              <CELL COL="2">Carmen Lucia</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">IGNAT</CELL>
+              <CELL COL="2">Tatiana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">ILIE</CELL>
+              <CELL COL="2">Ioan-Alexandru</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">IORDACHE</CELL>
+              <CELL COL="2">Anca Ramona</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">MORARU</CELL>
+              <CELL COL="2">Dana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TATU-CARAVAN</CELL>
+              <CELL COL="2">Cristina Emilia</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">TAUTU</CELL>
+              <CELL COL="2">Florentina</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">VLAD</CELL>
+              <CELL COL="2">Marcelica Daniela</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">VLADISLAV</CELL>
+              <CELL COL="2">Liana-Janetta</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Merit Group 2</P>
+          </TI>
+        </TITLE>
+        <TBL NO.SEQ="0009" COLS="2">
+          <GR.NOTES>
+            <NOTE NOTE.ID="E0002" NUMBERING="STAR">
+              <P>Information erased or replaced within the framework of protection of personal data and/or confidentiality.</P>
+            </NOTE>
+          </GR.NOTES>
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">ACHIM</CELL>
+              <CELL COL="2">Nelutu</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BOSCA</CELL>
+              <CELL COL="2">Dorina Oana Maria</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">BRAD</CELL>
+              <CELL COL="2">Eugenia</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">COPUR</CELL>
+              <CELL COL="2">Anamaria</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">
+                <ANONYMOUS>
+                  <NOTE NOTE.REF="E0002" NUMBERING="STAR">
+                  </NOTE>
+                </ANONYMOUS>
+              </CELL>
+              <CELL COL="2">
+                <IE>
+                </IE>
+              </CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">FEHER</CELL>
+              <CELL COL="2">Andras Augustin</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">ICONARU</CELL>
+              <CELL COL="2">Ion Danut</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">NISTORESCU</CELL>
+              <CELL COL="2">Cristian Cosmin</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">PANCEA</CELL>
+              <CELL COL="2">Paul</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">POP</CELL>
+              <CELL COL="2">Cecilia Mariana</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">POPESCU</CELL>
+              <CELL COL="2">Constantin-Alin</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+    </GR.SEQ>
+    <P>The reserve lists will be valid until<HT TYPE="BOLD">
+        <DATE ISO="20101231">31 December 2010</DATE>
+      </HT>and may be extended.</P>
+  </CONTENTS>
+</COMPETITION>

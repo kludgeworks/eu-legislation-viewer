@@ -1,0 +1,93 @@
+<ANNEX noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.00-20081231.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2009256EN.01000301.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>256</NO.OJ>
+      <YEAR>2009</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>3</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20090923">20090923</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0002.0001</NO.SEQ>
+    <PAGE.FIRST>4</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>5</PAGE.LAST>
+    <PAGE.TOTAL>2</PAGE.TOTAL>
+    <INCLUSIONS>
+      <INCL.ELEMENT CONTENT="OTHER" FILEREF="L_2009256EN.01000501.tif" TYPE="TIFF">
+      </INCL.ELEMENT>
+      <INCL.ELEMENT CONTENT="OTHER" FILEREF="L_2009256EN.01000502.tif" TYPE="TIFF">
+      </INCL.ELEMENT>
+      <INCL.ELEMENT CONTENT="OTHER" FILEREF="L_2009256EN.01000503.tif" TYPE="TIFF">
+      </INCL.ELEMENT>
+    </INCLUSIONS>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>ANNEX</P>
+    </TI>
+  </TITLE>
+  <CONTENTS>
+    <TBL COLS="3" NO.SEQ="001">
+      <GR.NOTES>
+        <NOTE NOTE.ID="E0001" NUMBERING="STAR" TYPE="TABLE">
+          <P>The photographs are purely for information.</P>
+        </NOTE>
+      </GR.NOTES>
+      <CORPUS>
+        <ROW TYPE="HEADER">
+          <CELL COL="1" TYPE="HEADER">Description of the goods</CELL>
+          <CELL COL="2" TYPE="HEADER">
+            <P>Classification</P>
+            <P>(CN code)</P>
+          </CELL>
+          <CELL COL="3" TYPE="HEADER">Reasons</CELL>
+        </ROW>
+        <ROW TYPE="HEADER">
+          <CELL COL="1" TYPE="HEADER">(1)</CELL>
+          <CELL COL="2" TYPE="HEADER">(2)</CELL>
+          <CELL COL="3" TYPE="HEADER">(3)</CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <P>Boot which covers the ankle. The sole of the boot is made of rubber, yet the majority of the outer sole is cut away and allows inserts holding different outer soles to be inserted into the hollowed out area of the sole.</P>
+            <P>The boots are put up in a set for retail sale together with two pairs of inserts, each holding different outer soles, and a metal tool needed to attach the inserts. One pair of inserts holds outer soles of rubber which have a deeply carved sole typical for trekking boot soles. The other pair of inserts holds outer soles of textile material (approximately 8 mm of felt), which can be used when walking in shallow water according to the importer’s documentation.</P>
+            <P>The sole of the boot retains a small part of the outer sole, an almost continuous rim around the edge of the sole. This small part of the outer sole is of rubber matching the trekking sole insert.</P>
+            <P>The footwear cannot be used without the inserts.</P>
+            <P>The insoles have a length of more than 24 cm.</P>
+            <P>The upper of the boot is made up of different leather pieces sewn together leaving<QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+              </QUOT.START>windows<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+              </QUOT.END>into which nine metallic-mesh pieces and four textile pieces are sewn. The leather makes up the greater part of the external surface area of the upper. The inside of the boot is lined with textile material.</P>
+            <P>The boot is neither waterproof nor water resistant.</P>
+            <P>The footwear can be used by men and women.</P>
+            <P>(trekking boot)</P>
+            <P>(See photographs Nos 650 A, 650 B and 650 C)<NOTE NOTE.REF="E0001">
+              </NOTE>
+            </P>
+          </CELL>
+          <CELL COL="2">
+            <FT TYPE="CN">64039113</FT>
+          </CELL>
+          <CELL COL="3">
+            <P>Classification is determined by General Rules 1, 2(a), 3(b) and 6 for the interpretation of the Combined Nomenclature, note 4(a) and (b) to Chapter 64 and the wording of CN codes<FT TYPE="CN">6403</FT>,<FT TYPE="CN">640391</FT>and<FT TYPE="CN">64039113</FT>.</P>
+            <P>Since the typical trekking boot rubber outer sole inserts match the boot uppers, this footwear is intended to be used and assembled essentially as a trekking boot. Moreover, the small part of the outer soles retained around the edges of the soles of the boots, matches exactly the trekking sole inserts. Whereas, the indented use of the textile outer sole inserts is not obvious. Their use in water can only be very limited, because the upper of the boot is neither waterproof nor water resistant. Consequently, the textile sole inserts are accessories meant to be used in specific situations only and, thus, enhancing the use of the product.</P>
+            <P>The boots and the rubber sole inserts have therefore to be classified as complete but unassembled footwear within the meaning of GIR (General rules for the interpretation of the Combined Nomenclature) 2(a), second sentence.</P>
+            <P>The part of the sole of the assembled footwear in contact with the ground is of rubber within the meaning of note 4(b) to Chapter 64 and, thus, the footwear has outer soles of rubber.</P>
+            <P>Given that the leather material makes up the greatest external surface area of the upper of the footwear, the material of the upper of the boots is leather within the meaning of note 4(a) to Chapter 64.</P>
+            <P>The textile sole inserts are put up in a set for retail sale together with the unassembled trekking boot and the metal tool needed for assembling the footwear. That set is to be classified as if it consisted of the trekking boots only, because the trekking boots give the set its essential character within the meaning of GIR 3(b). The textile sole inserts and the metal tool are only accessories to the footwear.</P>
+            <P>Thus, the set is to be classified as footwear with outer soles of rubber and uppers of leather.</P>
+          </CELL>
+        </ROW>
+      </CORPUS>
+    </TBL>
+    <INCL.ELEMENT CONTENT="OTHER" FILEREF="L_2009256EN.01000501.tif" TYPE="TIFF">
+    </INCL.ELEMENT>
+    <INCL.ELEMENT CONTENT="OTHER" FILEREF="L_2009256EN.01000502.tif" TYPE="TIFF">
+    </INCL.ELEMENT>
+    <INCL.ELEMENT CONTENT="OTHER" FILEREF="L_2009256EN.01000503.tif" TYPE="TIFF">
+    </INCL.ELEMENT>
+  </CONTENTS>
+</ANNEX>

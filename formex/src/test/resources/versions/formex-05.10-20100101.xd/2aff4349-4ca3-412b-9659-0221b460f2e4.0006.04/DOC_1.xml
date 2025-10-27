@@ -1,0 +1,55 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.10-20100101.xd">
+  <BIB.DOC>
+    <PROD.ID>20100416009</PROD.ID>
+    <FIN.ID>24931</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2010/C 113/55</TXT>
+    </NO.DOC>
+    <NO.DOC FORMAT="CNY" TYPE="INTERNAL">
+      <NO.CURRENT>122</NO.CURRENT>
+      <YEAR>2010</YEAR>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>CJ</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2010113EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>113</NO.OJ>
+    <DATE ISO="20100501">20100501</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0055" SYNOPTISM="D0055">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>CASE</LEGAL.VALUE>
+      <DATE ISO="20100308">20100308</DATE>
+      <PAGE.FIRST>35</PAGE.FIRST>
+      <PAGE.LAST>36</PAGE.LAST>
+      <PAGE.TOTAL>2</PAGE.TOTAL>
+      <PAGE.SEQ>2</PAGE.SEQ>
+      <REF.PHYS FILE="C_2010113EN.01003502.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0055">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Case C-122/10: Reference for a preliminary ruling from the Marknadsdomstolen (Sweden) lodged on<DATE ISO="20100308">8 March 2010</DATE>— Konsumentombudsmannen (KO) v Ving Sverige AB</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>35</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0055">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_11320100501en00350036.pdf" DOI.DOC="doi:10.3001/C_2010.113.01003502.eng">35</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

@@ -1,0 +1,60 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.54-20140601.xd">
+  <BIB.DOC>
+    <PROD.ID>00000000000</PROD.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2014/C 464/01</TXT>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>PE</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2014464EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>464</NO.OJ>
+    <DATE ISO="20141223">20141223</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>57</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0001" SYNOPTISM="D0001">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>MP.EP</LEGAL.VALUE>
+      <DATE ISO="20140113">20140113</DATE>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.LAST>19</PAGE.LAST>
+      <PAGE.TOTAL>19</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS TYPE="DOC.XML" FILE="C_2014464EN.01000101.xml">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+    <DOC.SUB.PUB TYPE="ASSOCIATION" NO.SEQ="0001.0001" SYNOPTISM="D0001.0001">
+      <LEGAL.VALUE>OTHER</LEGAL.VALUE>
+      <PAGE.FIRST>20</PAGE.FIRST>
+      <PAGE.LAST>20</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS TYPE="DOC.XML" FILE="C_2014464EN.01002001.xml">
+      </REF.PHYS>
+    </DOC.SUB.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0001">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Minutes of the sitting of<DATE ISO="20140113">13 January 2014</DATE>(2014/C 464/01)</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>1</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0001">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_46420141223en00010020.pdf">
+      </ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

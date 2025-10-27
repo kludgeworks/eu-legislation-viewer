@@ -1,0 +1,161 @@
+<ACT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.10-20100101.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2010250EN.01000501.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>250</NO.OJ>
+      <YEAR>2010</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>5</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <EEA>
+    </EEA>
+    <DATE ISO="20100923">20100923</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0002</NO.SEQ>
+    <PAGE.FIRST>5</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>6</PAGE.LAST>
+    <PAGE.TOTAL>2</PAGE.TOTAL>
+    <NO.DOC FORMAT="NY" TYPE="OJ">
+      <NO.CURRENT>838</NO.CURRENT>
+      <YEAR>2010</YEAR>
+      <COM>EU</COM>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Commission Regulation</HT>(EU) No 838/2010</P>
+      <P>of<DATE ISO="20100923">23 September 2010</DATE>
+      </P>
+      <P>on laying down guidelines relating to the inter-transmission system operator compensation mechanism and a common regulatory approach to transmission charging</P>
+      <P>(Text with EEA relevance)</P>
+    </TI>
+  </TITLE>
+  <PREAMBLE>
+    <PREAMBLE.INIT>THE EUROPEAN COMMISSION,</PREAMBLE.INIT>
+    <GR.VISA>
+      <VISA>Having regard to the Treaty on the Functioning of the European Union,</VISA>
+      <VISA>Having regard to Regulation (EC) No 714/2009 of the European Parliament and of the Council on conditions for access to the network for cross-border exchanges in electricity and repealing Regulation (EC) No 1228/2003<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+          <P>
+            <REF.DOC.OJ COLL="L" DATE.PUB="20030715" NO.OJ="176" PAGE.FIRST="1">OJ L 176, 15.7.2003, p. 1</REF.DOC.OJ>.</P>
+        </NOTE>, and in particular the first sentence of Article 18 (5) thereof,</VISA>
+    </GR.VISA>
+    <GR.CONSID>
+      <GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+      <CONSID>
+        <NP>
+          <NO.P>(1)</NO.P>
+          <TXT>Commission Regulation (EU) No 774/2010 of<DATE ISO="20100902">2 September 2010</DATE>on laying down guidelines relating to inter-transmission system operator compensation and a common regulatory approach to transmission charging<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" DATE.PUB="20100903" NO.OJ="233" PAGE.FIRST="1">OJ L 233, 3.9.2010, p. 1</REF.DOC.OJ>.</P>
+            </NOTE>establishes a mechanism for the compensation of transmission system operators for the costs of hosting cross-border flows of electricity and a common regulatory approach to transmission charging. However, that Regulation will expire on<DATE ISO="20110302">2 March 2011</DATE>.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(2)</NO.P>
+          <TXT>In order to ensure the continuity of implementation the inter-transmission system operator compensation mechanism, new guidelines specified in Article 18(1) and (2) of Regulation (EC) No 714/2009 of<DATE ISO="20090713">13 July 2009</DATE>should be adopted which reflect the institutional framework established by that Regulation. In particular, the Agency for the Co-operation of Energy Regulators (hereinafter<QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+            </QUOT.START>the Agency<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+            </QUOT.END>), established by Regulation (EC) No 713/2009 of the European Parliament and of the Council<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" DATE.PUB="20090814" NO.OJ="211" PAGE.FIRST="1">OJ L 211, 14.8.2009, p. 1</REF.DOC.OJ>.</P>
+            </NOTE>should be responsible for monitoring the implementation of the inter-transmission system operator compensation mechanism.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(3)</NO.P>
+          <TXT>Binding guidelines establishing an inter-transmission system operator compensation mechanism should establish a stable basis for the operation of the inter-transmission system operator compensation mechanism and fair compensation to transmission system operators for the costs of hosting cross-border flows of electricity.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(4)</NO.P>
+          <TXT>Transmission system operators from third countries or from territories which have concluded agreements with the Union whereby they have adopted and are applying Union law in the field of electricity should be entitled to participate in the inter-transmission system compensation Mechanism on an equivalent basis to transmission system operators from Member States.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(5)</NO.P>
+          <TXT>It is appropriate to allow transmission system operators in third countries which have not concluded agreements with the Union whereby they have adopted and are applying Union law in the field of electricity to enter into multi-party agreements with the transmission system operators in the Member States which enable all parties to be compensated for the costs of hosting cross-border flows of electricity on a fair and equitable basis.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(6)</NO.P>
+          <TXT>Transmission system operators should be compensated for energy losses resulting from hosting cross-border flows of electricity. Such compensation should be based on an estimate of what losses would have been incurred in the absence of transits of electricity.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(7)</NO.P>
+          <TXT>A fund should be established to compensate transmission system operators for the costs of making infrastructure available to host cross-border flows of electricity. The value of this fund should be based on a Union-wide assessment of the long run average incremental costs of making infrastructure available to host cross-border flows of electricity.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(8)</NO.P>
+          <TXT>The Union-wide assessment of electricity transmission infrastructure associated with facilitating cross-border flows of electricity should be carried out by the Agency as the body responsible for coordinating the activities of regulatory authorities who must carry out a similar function at a national level.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(9)</NO.P>
+          <TXT>Transmission system operators in third countries should face the same costs for using the Union transmission system as transmission system operators in Member States.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(10)</NO.P>
+          <TXT>Variations in charges faced by producers of electricity for access to the transmission system should not undermine the internal market. For this reason average charges for access to the network in Member States should be kept within a range which helps to ensure that the benefits of harmonisation are realised.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(11)</NO.P>
+          <TXT>The measures provided for in this Regulation are in accordance with the opinion of the Committee set up by Article 46 of Directive 2009/72/EC of the European Parliament and of the Council<NOTE NOTE.ID="E0004" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" DATE.PUB="20090814" NO.OJ="211" PAGE.FIRST="55">OJ L 211, 14.8.2009, p. 55</REF.DOC.OJ>.</P>
+            </NOTE>,</TXT>
+        </NP>
+      </CONSID>
+    </GR.CONSID>
+    <PREAMBLE.FINAL>HAS ADOPTED THIS REGULATION:</PREAMBLE.FINAL>
+  </PREAMBLE>
+  <ENACTING.TERMS>
+    <ARTICLE IDENTIFIER="001">
+      <TI.ART>Article 1</TI.ART>
+      <ALINEA>Transmission system operators shall receive compensation for costs incurred as a result of hosting cross-border flows of electricity on their networks on the basis of the guidelines set out in Part A of the Annex.</ALINEA>
+    </ARTICLE>
+    <ARTICLE IDENTIFIER="002">
+      <TI.ART>Article 2</TI.ART>
+      <ALINEA>Charges applied by network operators for access to the transmission system shall be in accordance with guidelines set out in Part B of the Annex.</ALINEA>
+    </ARTICLE>
+    <ARTICLE IDENTIFIER="003">
+      <TI.ART>Article 3</TI.ART>
+      <ALINEA>This Regulation shall enter into force on the 20th day following its publication in the<HT TYPE="ITALIC">Official Journal of the European Union</HT>.</ALINEA>
+      <ALINEA>It shall apply from<DATE ISO="20110303">3 March 2011</DATE>.</ALINEA>
+    </ARTICLE>
+  </ENACTING.TERMS>
+  <FINAL>
+    <P>This Regulation shall be binding in its entirety and directly applicable in all Member States.</P>
+    <SIGNATURE>
+      <PL.DATE>
+        <P>Done at Brussels,<DATE ISO="20100923">23 September 2010</DATE>.</P>
+      </PL.DATE>
+      <SIGNATORY>
+        <P>
+          <HT TYPE="ITALIC">For the Commission</HT>
+        </P>
+        <P>
+          <HT TYPE="ITALIC">The President</HT>
+        </P>
+        <P>José Manuel<HT TYPE="UC">Barroso</HT>
+        </P>
+      </SIGNATORY>
+    </SIGNATURE>
+  </FINAL>
+</ACT>

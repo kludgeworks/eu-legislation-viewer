@@ -1,0 +1,187 @@
+<CASE noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.11-20100101.xd">
+  <BIB.CASE>
+    <REF.ECR FILE="ECRF11996ENA1.01.xml">
+      <YEAR>1996</YEAR>
+      <VOLUME.ECR>10/11/12</VOLUME.ECR>
+    </REF.ECR>
+    <LG.DOC>EN</LG.DOC>
+    <LG.CASE>FR</LG.CASE>
+    <DATE ISO="19961212">19961212</DATE>
+    <YEAR>1995</YEAR>
+    <NO.CASE>T-74/95</NO.CASE>
+    <TYPE.CASE>JUDGMENT-F</TYPE.CASE>
+    <NO.CELEX>61995A0074</NO.CELEX>
+    <NO.SEQ>0071</NO.SEQ>
+    <PAGE.FIRST.ECR>I-A-583</PAGE.FIRST.ECR>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST.ECR>I-A-590</PAGE.LAST.ECR>
+    <PAGE.TOTAL>8</PAGE.TOTAL>
+    <AUTHOR>TFP</AUTHOR>
+  </BIB.CASE>
+  <CURR.TITLE>
+    <LEFT>ABSTRACT — CASE T-74/95</LEFT>
+    <RIGHT>MONTERÒ DA SILVA v COMMISSION</RIGHT>
+  </CURR.TITLE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Judgment of the Court of First Instance</HT>(Second Chamber)</P>
+      <P>
+        <DATE ISO="19961212">12 December 1996</DATE>
+      </P>
+      <P>Case T-74/95</P>
+    </TI>
+  </TITLE>
+  <PARTIES>
+    <PLAINTIFS>
+      <P>Viriato Monteiro da Silva</P>
+    </PLAINTIFS>
+    <AGAINST>v</AGAINST>
+    <DEFENDANTS>
+      <P>Commission of the European Communities</P>
+    </DEFENDANTS>
+  </PARTIES>
+  <INDEX>
+    <KEYWORD>Officials</KEYWORD>
+    <KEYWORD>Former national expert on secondment</KEYWORD>
+    <KEYWORD>Daily subsistence allowance</KEYWORD>
+    <KEYWORD>Installation allowance</KEYWORD>
+    <KEYWORD>Place of recruitment</KEYWORD>
+  </INDEX>
+  <REF.JUDGMENT>
+    <TITLE>
+      <TI>
+        <P>Full text in French</P>
+      </TI>
+    </TITLE>
+    <REF.ECR.DOC FILE="ECRF21996FRA1.0100155901.xml" NO.SEQ="0071.0001" EXTERNAL="YES">II-1559</REF.ECR.DOC>
+  </REF.JUDGMENT>
+  <OBJECT>
+    <TITLE>
+      <TI>
+        <P>Application for:</P>
+      </TI>
+    </TITLE>
+    <P>annulment of the Commission&apos;s decision of<DATE ISO="19940406">6 April 1994</DATE>determining the applicant&apos;s place of recruitment as Brussels and refusing to grant him the installation allowance and the daily subsistence allowance.</P>
+  </OBJECT>
+  <DECISION>
+    <TITLE>
+      <TI>
+        <P>Decision:</P>
+      </TI>
+    </TITLE>
+    <P>Annulment.</P>
+  </DECISION>
+  <SUMMARY>
+    <TITLE>
+      <TI>
+        <P>Abstract of the Judgment</P>
+      </TI>
+    </TITLE>
+    <SUBJECTS>
+      <P>The applicant, formerly an official at the Portuguese Ministry of Finance placed at the disposal of the Commission in Brussels as a national expert on secondment, was appointed as a probationary official at the Commission and posted to Brussels.</P>
+      <P>While on secondment the applicant, who, pursuant to the rales applicable to national experts on secondment, was required to reside at his place of employment or at no greater distance therefrom than was compatible with the proper performance of his duties, lived in Brussels.</P>
+      <P>The applicant has a residence in Portugal, in Valadares, where he lived with his wife and their two children prior to being seconded. His wife and children continued to reside there during the applicant&apos;s secondment.</P>
+      <P>Upon taking up his duties on<DATE ISO="19940406">6 April 1994</DATE>the applicant was informed that his place of recruitment was determined as Brussels and that he would not receive an installation allowance, reimbursement of his travel expenses, reimbursement of his removal expenses or the daily subsistence allowance.</P>
+      <P>The applicant lodged a complaint in which he asked for his place of recruitment to be determined as Valadares and requested that, as a result, he be granted the installation allowance, reimbursement of the travel expenses on talcing up his appointment and annually thereafter, reimbursement of his removal expenses and the daily subsistence allowance.</P>
+      <P>The Commission rejected the applicant&apos;s complaint but, by way of exception, granted him reimbursement of his removal expenses and subsequently determined his place of origin as Valadares.</P>
+    </SUBJECTS>
+    <ABSTRACT>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>Substance</P>
+          </TI>
+        </TITLE>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>Daily subsistence allowance</P>
+            </TI>
+          </TITLE>
+          <P>In order to determine whether an official had to<QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+            </QUOT.START>change his place of residence<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+            </QUOT.END>within the meaning of Article 10 of Annex VII to the Staff Regulations of Officials of the European Communities (Annex VII and Staff Regulations), the place of residence to be taken into account is the one where the official concerned has his centre of interests. To be entitled to the daily subsistence allowance, it is sufficient that he should be unable to continue to live at that former place of residence. That interpretation is dictated by the fact that the purpose of the daily subsistence allowance is to make up for the inconvenience resulting from the precarious nature of the employment relationship of the person concerned (paragraph 47).</P>
+          <ANNOTATION>
+            <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="C-43/94 P" YEAR="1995" PAGE.ECR="I-2441">C-43/94 P<HT TYPE="ITALIC">Parliament</HT>v<HT TYPE="ITALIC">Vienne</HT>[1995] ECR I-2441, para. 21</REF.DOC.ECR>
+            </P>
+          </ANNOTATION>
+          <P>In order to determine the place where the official concerned has established, with the intention that it should be of a lasting character, die permanent or habitual centre of his interests, it is necessary to take account of all the circumstances which constitute diat centre of interests. The place to be taken into account is therefore not necessarily the one in which the official resided immediately prior to being appointed (paragraph 48).</P>
+          <ANNOTATION>
+            <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="C-452/93 P" YEAR="1994" PAGE.ECR="I-4295">C-452/93 P<HT TYPE="ITALIC">Magdalena Fernández</HT>v<HT TYPE="ITALIC">Commission</HT>[1994] ECR I-4295, paras 22 and 23</REF.DOC.ECR>; Opinion of Advocate General Léger in<HT TYPE="ITALIC">Parliament</HT>v<HT TYPE="ITALIC">Vienne,</HT>cited above, at I-2443, para. 25</P>
+          </ANNOTATION>
+          <P>When he was recruited as a probationary official the applicant had a residence in Valadares, where he lived on a permanent basis prior to being seconded as a national expert and where his wife and his two children continued to reside, still on a permanent basis, following his secondment. The applicant remained in permanentemployment in Valadares with the Ministry of Finance and maintained stable social links in the same place. Lastly, the applicant frequently returned to Valadares while on secondment, thus demonstrating his intention to maintain permanent family and social links there (paragraph 49).</P>
+          <P>In contrast, he occupied his Brussels residence solely for the purpose of performing his duties as a national expert on secondment (paragraph 51).</P>
+          <ANNOTATION>
+            <P>See: Opinion of Advocate General Mancini in<REF.DOC.ECR EDITION="GEN" NO.CASE="188/83" YEAR="1984" PAGE.ECR="3465">188/83<HT TYPE="ITALIC">Witte</HT>v<HT TYPE="ITALIC">Parliament</HT>[1984] ECR 3465, at 3476</REF.DOC.ECR>; Opinion of Advocate General Léger in<HT TYPE="ITALIC">Parliament</HT>v<HT TYPE="ITALIC">Vienne,</HT>cited above, para. 25</P>
+          </ANNOTATION>
+          <P>It follows that the residence that must be taken into account for the purposes of Article 10(1) of Annex VII is the applicant&apos;s residence in Valadares. Following his appointment as a probationary official and having regard to his obligations under Article 20 of the Staff Regulations, the applicant was required to change his place of residence within the meaning of Article 10 of Annex VII (paragraph 52).</P>
+          <P>That finding is consistent with the purpose of Article 10 of Annex VII, which is intended to make up for the expense and inconvenience occasioned to an official by his precarious situation, in particular where he is required to establish provisional residence at his place of employment while maintaining, also on a provisional basis, his previous residence (paragraph 53).</P>
+          <ANNOTATION>
+            <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="280/85" YEAR="1987" PAGE.ECR="589">280/85<HT TYPE="ITALIC">Mouzourakis</HT>v<HT TYPE="ITALIC">Parliament</HT>[1987] ECR 589, para. 9</REF.DOC.ECR>;<REF.DOC.ECR EDITION="GEN" NO.CASE="T-63/91" YEAR="1992" PAGE.ECR="II-2095">T-63/91<HT TYPE="ITALIC">Benzler</HT>v<HT TYPE="ITALIC">Commission</HT>[1992] ECR II-2095, para. 20</REF.DOC.ECR>
+            </P>
+          </ANNOTATION>
+          <P>An official&apos;s situation remains precarious until he is established at the end of his probationary period (paragraph 53).</P>
+          <ANNOTATION>
+            <P>See:<HT TYPE="ITALIC">Parliament</HT>v<HT TYPE="ITALIC">Vienne,</HT>cited above, para. 27</P>
+          </ANNOTATION>
+          <P>Moreover, before the applicant was established he was not entitled under Article 9 of Annex VII to reimbursement of the expenses incurred in moving from Valadares to Brussels (paragraph 54).</P>
+          <ANNOTATION>
+            <P>See: Opinion of Advocate General Léger in<HT TYPE="ITALIC">Parliament</HT>v<HT TYPE="ITALIC">Vienne,</HT>cited above, para. 31</P>
+          </ANNOTATION>
+          <P>In order to be entitled to the payment in question the person concerned must establish (a) that his residence at his place of employment was provisional, in that he occupied it only in order to perform the duties associated with his secondment, for a specific period, by his employer in his country of origin; (b) that he maintained his former residence at the place where he has his centre of interests in his country of origin; and (c) that owing to his appointment he is no longer able to live in that former residence (paragraph 55).</P>
+          <P>The contested decision is annulled in so far as it refuses to grant the applicant the daily subsistence allowance referred to in Article 10 of Annex VII to the Staff Regulations (paragraph 56).</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>Installation allowance</P>
+            </TI>
+          </TITLE>
+          <P>The first subparagraph of Article 5(1) of Annex VII provides that to be entitled to an installation allowance an official must meet one of the two alternative conditions set out therein, that is to say he must qualify for the expatriation allowance or he must furnish evidence of having been obliged to change his place of residence in order to comply with Article 20 of the Staff Regulations (paragraphs 57 and 58).</P>
+          <P>The applicant receives the expatriation allowance, which was granted by a decision of the Commission which has become final. He is therefore entitled to the installation allowance (paragraphs 60 and 61).</P>
+          <P>In order to be so entitled an official is not additionally required to show that he has had to change his residence (paragraph 61).</P>
+          <P>Nor is the official concerned required to show the existence of actual expenses.</P>
+          <ANNOTATION>
+            <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="140/77" YEAR="1978" PAGE.ECR="2117">140/77<HT TYPE="ITALIC">Verhaafv Commission</HT>[1978] ECR 2117</REF.DOC.ECR>; Opinion of Advocate General Sir Gordon Slynn in<REF.DOC.ECR EDITION="GEN" NO.CASE="90/81" YEAR="1982" PAGE.ECR="983">90/81<HT TYPE="ITALIC">Burg</HT>v<HT TYPE="ITALIC">Court of Justice</HT>[1982] ECR 983, at 995</REF.DOC.ECR>;<REF.DOC.ECR EDITION="GEN" NO.CASE="T-42/89" YEAR="1990" PAGE.ECR="II-31">T-42/89<HT TYPE="ITALIC">Yorck von Wartenburg</HT>v<HT TYPE="ITALIC">Parliament</HT>[1990] ECR II-31, paras 21 to 23</REF.DOC.ECR>
+            </P>
+          </ANNOTATION>
+          <P>The installation allowance is awarded to an established official but not to a probationary official. It follows that in the most frequently occurring case, that of a probationary official who is subsequently established, he is already<QUOT.START ID="QS0002" REF.END="QE0002" CODE="2018">
+            </QUOT.START>installed<QUOT.END ID="QE0002" REF.START="QS0002" CODE="2019">
+            </QUOT.END>, at least on a provisional basis, at his place of employment in order to comply with Article 20 of the Staff Regulations. The installation allowance is intended to makeup for the expenses associated with the situation of a duly established official who passes from a precarious status to a permanent status and must therefore enable himself to live in and become integrated into his place of employment in a permanent and lasting manner for an indeterminate but substantial period of time. It is reasonable to assume that an official who is thus to establish stable residence in such circumstances will incur certain additional expenditure, in particular in arranging appropriate accommodation for a long-term stay, which he did not have to incur while his situation remained precarious (paragraph 63).</P>
+          <ANNOTATION>
+            <P>See:<HT TYPE="ITALIC">Verhaafv Commission,</HT>cited above, para. 18</P>
+          </ANNOTATION>
+          <P>In any event, the Court considers that the applicant must be regarded as having been obliged to change his place of residence in order to satisfy the requirements of Article 20 of the Staff Regulations within the meaning of Article 10(1) of Annex VII. It follows that the applicant also satisfied the second alternative condition laid down in Article 5(1) of Annex VII. He is therefore also entitled to the installation allowance on that basis (paragraph 64).</P>
+          <P>The contested decision is annulled in so far as it refused to grant him the installation allowance (paragraph 66).</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>Place of recruitment</P>
+            </TI>
+          </TITLE>
+          <P>The Court considers that the applicant&apos;s place of recruitment must be regarded as being Valadares, where he maintained his habitual residence, while his residence in Brussels, which he occupied purely for the purpose of performing the duties associated with his secondment, for relatively brief periods, must be treated as a provisional residence (paragraph 70).</P>
+          <P>The concept of<QUOT.START ID="QS0003" REF.END="QE0003" CODE="2018">
+            </QUOT.START>centre of interests<QUOT.END ID="QE0003" REF.START="QS0003" CODE="2019">
+            </QUOT.END>for the purpose of determining the place of origin within the meaning of Article 7(3) of Annex VII has a broad meaning and refers to the place where the official maintains his principal family links, his economic links or his civic interests, without necessarily having his residence there. On the other hand, the place of recruitment is the place where the official has his habitual residence when he is recruited (paragraph 71).</P>
+          <ANNOTATION>
+            <P>See:<HT TYPE="ITALIC">Benzler</HT>v<HT TYPE="ITALIC">Commission,</HT>cited above</P>
+          </ANNOTATION>
+          <P>The contested decision is annulled in so far as it determines that Brussels was the applicant&apos;s place of recruitment (paragraph 73).</P>
+        </GR.SEQ>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>Operative part:</P>
+          </TI>
+        </TITLE>
+        <P>The Commission&apos;s decision of<DATE ISO="19940406">6 April 1994</DATE>is annulled in so far as it determines that Brussels was the applicant&apos;s place of recruitment and refuses to grant him the installation allowance provided for in Artide 5(1) of Annex VII to the Staff Regulations and the daily subsistence allowance provided for in Article 10(1) of that Annex.</P>
+      </GR.SEQ>
+    </ABSTRACT>
+  </SUMMARY>
+  <PDF.ECR>
+    <REF.PDF.ECR TYPE="SUMMARY" PAGE.FIRST="00583" PAGE.LAST="00590">F_1995_0074_SOM_EN_1996_FPIA_000583.pdf</REF.PDF.ECR>
+  </PDF.ECR>
+</CASE>

@@ -1,0 +1,51 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.01-20091201.xd">
+  <BIB.DOC>
+    <PROD.ID>20091109027</PROD.ID>
+    <FIN.ID>22453</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2009/C 304/16</TXT>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>CC</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2009304EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>304</NO.OJ>
+    <DATE ISO="20091215">20091215</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0016" SYNOPTISM="D0016">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>OTHER</LEGAL.VALUE>
+      <DATE ISO="20091008">20091008</DATE>
+      <PAGE.FIRST>83</PAGE.FIRST>
+      <PAGE.LAST>88</PAGE.LAST>
+      <PAGE.TOTAL>6</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="C_2009304EN.01008301.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0016">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Report on the annual accounts of the Executive Agency for Health and Consumers for the financial year 2008, together with the Agency’s replies</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>83</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0016">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_30420091215en00830088.pdf" DOI.DOC="doi:10.3001/C_2009.304.01008301.eng">83</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

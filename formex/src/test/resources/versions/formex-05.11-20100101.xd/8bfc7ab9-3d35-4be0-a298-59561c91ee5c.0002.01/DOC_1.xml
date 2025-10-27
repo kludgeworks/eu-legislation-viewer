@@ -1,0 +1,161 @@
+<CASE noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.11-20100101.xd">
+  <BIB.CASE>
+    <REF.ECR FILE="ECRF12002ENA1.01.xml">
+      <YEAR>2002</YEAR>
+      <VOLUME.ECR>1/2/3</VOLUME.ECR>
+    </REF.ECR>
+    <LG.DOC>EN</LG.DOC>
+    <LG.CASE>FR</LG.CASE>
+    <DATE ISO="20020313">20020313</DATE>
+    <YEAR>2000</YEAR>
+    <NO.CASE>T-139/00</NO.CASE>
+    <TYPE.CASE>JUDGMENT-F</TYPE.CASE>
+    <NO.CELEX>62000A0139</NO.CELEX>
+    <NO.SEQ>0008</NO.SEQ>
+    <PAGE.FIRST.ECR>I-A-33</PAGE.FIRST.ECR>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST.ECR>I-A-36</PAGE.LAST.ECR>
+    <PAGE.TOTAL>4</PAGE.TOTAL>
+    <AUTHOR>TFP</AUTHOR>
+  </BIB.CASE>
+  <CURR.TITLE>
+    <LEFT>SUMMARY — CASE T-139/00</LEFT>
+    <RIGHT>BAL v COMMISSION</RIGHT>
+  </CURR.TITLE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Judgment of the Court of First Instance</HT>(Second Chamber)</P>
+      <P>
+        <DATE ISO="20020313">13 March 2002</DATE>
+      </P>
+      <P>Case T-139/00</P>
+    </TI>
+  </TITLE>
+  <PARTIES>
+    <PLAINTIFS>
+      <P>Laurent Bal</P>
+    </PLAINTIFS>
+    <AGAINST>v</AGAINST>
+    <DEFENDANTS>
+      <P>Commission of the European Communities</P>
+    </DEFENDANTS>
+  </PARTIES>
+  <INDEX>
+    <KEYWORD>Officials</KEYWORD>
+    <KEYWORD>Internal competition</KEYWORD>
+    <KEYWORD>Non-admission to competition</KEYWORD>
+    <KEYWORD>Professional experience required</KEYWORD>
+  </INDEX>
+  <REF.JUDGMENT>
+    <TITLE>
+      <TI>
+        <P>Full text in French</P>
+      </TI>
+    </TITLE>
+    <REF.ECR.DOC FILE="ECRF22002FRA1.0100013901.xml" NO.SEQ="0008.0001" EXTERNAL="YES">II-139</REF.ECR.DOC>
+  </REF.JUDGMENT>
+  <OBJECT>
+    <TITLE>
+      <TI>
+        <P>Application for:</P>
+      </TI>
+    </TITLE>
+    <P>inter alia for annulment of the decision rejecting the applicant&apos;s candidature for internal competition COM/TB/99.</P>
+  </OBJECT>
+  <DECISION>
+    <TITLE>
+      <TI>
+        <P>Held:</P>
+      </TI>
+    </TITLE>
+    <P>The decision of the selection board of<DATE ISO="20000224">24 February 2000</DATE>not to admit the applicant to the tests of internal competition COM/TB/99 is annulled. The remainder of the application is dismissed. The Commission is ordered to pay the costs.</P>
+  </DECISION>
+  <SUMMARY>
+    <TITLE>
+      <TI>
+        <P>Summary</P>
+      </TI>
+    </TITLE>
+    <SUBJECTS>
+      <NP>
+        <NO.P>1.</NO.P>
+        <TXT>
+          <KEYWORD>Officials</KEYWORD>
+          <KEYWORD>Competitions</KEYWORD>
+          <KEYWORD>Competition based on qualifications and tests</KEYWORD>
+          <KEYWORD>Conditions of admission</KEYWORD>
+          <KEYWORD>Laid down in notice of competition</KEYWORD>
+          <KEYWORD>Assessment by the selection board of the professional experience of the candidates</KEYWORD>
+          <KEYWORD>Limits</KEYWORD>
+        </TXT>
+        <P>(Staff Regulations, Annex III, Art. 1)</P>
+      </NP>
+      <NP>
+        <NO.P>2.</NO.P>
+        <TXT>
+          <KEYWORD>Officials</KEYWORD>
+          <KEYWORD>Competitions</KEYWORD>
+          <KEYWORD>Competition based on qualifications and tests</KEYWORD>
+          <KEYWORD>Conditions of admission</KEYWORD>
+          <KEYWORD>Professional experience</KEYWORD>
+          <KEYWORD>Selection board&apos;s discretion</KEYWORD>
+          <KEYWORD>Judicial review</KEYWORD>
+          <KEYWORD>Scope</KEYWORD>
+        </TXT>
+        <P>(Staff Regulations, Annex III, Art. 2)</P>
+      </NP>
+      <NP>
+        <NO.P>3.</NO.P>
+        <TXT>
+          <KEYWORD>Officials</KEYWORD>
+          <KEYWORD>Actions</KEYWORD>
+          <KEYWORD>Action for annulment and damages</KEYWORD>
+          <KEYWORD>Annulment of an irregular competition procedure</KEYWORD>
+          <KEYWORD>Interests to be taken into consideration</KEYWORD>
+          <KEYWORD>Annulment only of the decision rejecting the applicant&apos;s candidature</KEYWORD>
+          <KEYWORD>Sufficient reparation</KEYWORD>
+          <KEYWORD>Conditions</KEYWORD>
+        </TXT>
+        <P>(Staff Regulations, Art. 91)</P>
+      </NP>
+    </SUBJECTS>
+    <ABSTRACT>
+      <NP>
+        <NO.P>1.</NO.P>
+        <TXT>Notwithstanding its discretion with regard to the procedures for and content of the tests in a competition, the selection board is bound by the wording of the notice of competition as published. The tesic function of a notice of competition is to give those interested the most accurate information possible about the conditions of eligibility for the post, in order to enable them to judge, first, whether they should apply for it and, second, what supporting documents are important for the proceedings of the selection board and must therefore be enclosed with the application.</TXT>
+        <P>With regard, in particular, to the conditions for admission to the competition relating to professional experience, the actual assessment of the level of that experience must take place within the framework established by the wording of the notice of competition and cannot in any way allow the selection board to add any condition which does not actually appear in the notice.</P>
+        <P>(see paras 35-36)</P>
+        <P>
+          <ANNOTATION>
+            <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="225/87" YEAR="1989" PAGE.ECR="2353">225/87<HT TYPE="ITALIC">Belardinelii</HT>v<HT TYPE="ITALIC">Court of Justice</HT>[1989] ECR 2353, para. 13</REF.DOC.ECR>;<REF.DOC.ECR EDITION="CST" NO.CASE="T-214/99" YEAR="2000" PAGE.ECR="II-1169" PAGE.SUM="I-A-257">T-214/99<HT TYPE="ITALIC">Carrasco Beultet</HT>v<HT TYPE="ITALIC">Commission</HT>[2000] ECRSCI-A-257 and II-1169, para. 69</REF.DOC.ECR>;<REF.DOC.ECR EDITION="CST" NO.CASE="T-95/00+T-96/00" YEAR="2001" PAGE.ECR="II-379" PAGE.SUM="I-A-79">T-95/00 and T-96/00<HT TYPE="ITALIC">Zaur-Gora and Dubigh</HT>v<HT TYPE="ITALIC">Commission</HT>[2001] ECRSC I-A-79 and II-379, para. 47</REF.DOC.ECR>, and the case-law cited</P>
+          </ANNOTATION>
+        </P>
+      </NP>
+      <NP>
+        <NO.P>2.</NO.P>
+        <TXT>The selection board enjoys, in principle, a discretion when assessing the previous professional experience of candidates, both as regards its nature and duration and as regards its relevance to the post to be filled. In the light of that discretion, it is for the Community judicature to examine whether the selection board made a manifest error in assessing the duration and level of the professional experience of the candidates not admitted to the competition.</TXT>
+        <P>(see para. 55)</P>
+        <P>
+          <ANNOTATION>
+            <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="9/76" YEAR="1976" PAGE.ECR="1415">9/76<HT TYPE="ITALIC">Morello</HT>v<HT TYPE="ITALIC">Commission</HT>[1976] ECR 1415, paras 8 and 9</REF.DOC.ECR>;<REF.DOC.ECR EDITION="GEN" NO.CASE="417/85" YEAR="1987" PAGE.ECR="551">417/85<HT TYPE="ITALIC">Maurissen</HT>v<HT TYPE="ITALIC">Court of Auditors</HT>[1987] ECR 551, paras 14 and 15</REF.DOC.ECR>;<HT TYPE="ITALIC">Carrasco Benltez</HT>v<HT TYPE="ITALIC">Commission,</HT>cited above, para. 70</P>
+          </ANNOTATION>
+        </P>
+      </NP>
+      <NP>
+        <NO.P>3.</NO.P>
+        <TXT>When a competition procedure has been vitiated by an irregularity in respect of a particular candidate, it is necessary to take into account not only the interests of that candidate who was the victim of the unlawful act but also the interests of third parties whose legitimate expectations might be injured if the application for annulment of the competition procedure were granted. Where calling in question the entire results of the competition or annulling the appointments would constitute an excessive penalty for the irregularity, annulment of the decision rejecting thatcandidate&apos;s candidature for admission to the competition will in itself constitute sufficient reparation.</TXT>
+        <P>(see paras 68, 70)</P>
+        <P>
+          <ANNOTATION>
+            <P>See:<REF.DOC.ECR EDITION="GEN" NO.CASE="24/79" YEAR="1980" PAGE.ECR="1743">24/79<HT TYPE="ITALIC">Oberthürv Commission</HT>[1980] ECR 1743, paras 11 and 13</REF.DOC.ECR>;<REF.DOC.ECR EDITION="GEN" NO.CASE="67/81" YEAR="1982" PAGE.ECR="661">67/81<HT TYPE="ITALIC">Ruske</HT>v<HT TYPE="ITALIC">Commission</HT>[1982] ECR 661, para. 13</REF.DOC.ECR>;<REF.DOC.ECR EDITION="GEN" NO.CASE="C-242/90 P" YEAR="1993" PAGE.ECR="I-3839">C-242/90 P<HT TYPE="ITALIC">Commission</HT>v<HT TYPE="ITALIC">Albani and Others</HT>[1993] ECR I-3839, paras 13 and 14</REF.DOC.ECR>;<REF.DOC.ECR EDITION="CST" NO.CASE="T-95/98" YEAR="2000" PAGE.ECR="II-219" PAGE.SUM="I-A-51">T-95/98<HT TYPE="ITALIC">Gogos</HT>v<HT TYPE="ITALIC">Commission</HT>[2000] ECRSC I-A-51 and II-219, para. 57</REF.DOC.ECR>
+            </P>
+          </ANNOTATION>
+        </P>
+      </NP>
+    </ABSTRACT>
+  </SUMMARY>
+  <PDF.ECR>
+    <REF.PDF.ECR TYPE="SUMMARY" PAGE.FIRST="00033" PAGE.LAST="00036">F_2000_0139_SOM_EN_2002_FPIA_000033.pdf</REF.PDF.ECR>
+  </PDF.ECR>
+</CASE>

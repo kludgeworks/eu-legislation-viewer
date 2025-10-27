@@ -1,0 +1,323 @@
+<CONS.ACT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.22-20110811.xd">
+  <INFO.CONSLEG CONSLEG.DATE="20121112" CONSLEG.REF="2009R1096" DATE.LAST.MOD="20121107" END="NONE" END.DATE="99999999" LEG.VAL="REG" PROD.SEQ="001.001.0" START.DATE="20121127">
+  </INFO.CONSLEG>
+  <INFO.PROD PROD.DATE="20121112" PROD.SYSTEM="CONSLEG.NEW" PRODUCER="ES">
+  </INFO.PROD>
+  <CONS.DOC>
+    <BIB.INSTANCE>
+      <DOCUMENT.REF FILE="CL2009R1096EN0010010.0001.doc.xml">
+        <LG.OJ>EN</LG.OJ>
+        <PAGE.FIRST>1</PAGE.FIRST>
+      </DOCUMENT.REF>
+      <DATE ISO="20121127">20121127</DATE>
+      <LG.DOC>EN</LG.DOC>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <PAGE.LAST>4</PAGE.LAST>
+      <PAGE.TOTAL>4</PAGE.TOTAL>
+    </BIB.INSTANCE>
+    <FAM.COMP LEG.VAL="REG">
+      <BIB.DATA>
+        <BIB.INSTANCE.CONS>
+          <DOCUMENT.REF.CONS>
+            <COLL>L</COLL>
+            <NO.OJ>301</NO.OJ>
+            <YEAR>2009</YEAR>
+            <LG.OJ>EN</LG.OJ>
+            <PAGE.FIRST>3</PAGE.FIRST>
+            <PAGE.SEQ>1</PAGE.SEQ>
+            <VOLUME.REF>01</VOLUME.REF>
+          </DOCUMENT.REF.CONS>
+          <EEA>
+          </EEA>
+          <DATE ISO="20091117">20091117</DATE>
+          <LG.DOC>EN</LG.DOC>
+          <NO.SEQ>0002</NO.SEQ>
+          <PAGE.FIRST>3</PAGE.FIRST>
+          <PAGE.SEQ>1</PAGE.SEQ>
+          <PAGE.LAST>5</PAGE.LAST>
+          <PAGE.TOTAL>3</PAGE.TOTAL>
+          <NO.DOC FORMAT="NY" TYPE="OJ">
+            <NO.CURRENT>1096</NO.CURRENT>
+            <YEAR>2009</YEAR>
+            <COM>EC</COM>
+          </NO.DOC>
+        </BIB.INSTANCE.CONS>
+        <NO.CELEX>32009R1096</NO.CELEX>
+        <DATE ISO="20091116">20091116</DATE>
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Commission Regulation</HT>(EC) No 1096/2009</P>
+            <P>of<DATE ISO="20091116">16 November 2009</DATE>
+            </P>
+            <P>concerning the authorisation of an enzyme preparation of endo-1,4-beta-xylanase produced by<HT TYPE="ITALIC">Aspergillus niger</HT>(CBS 109.713) as a feed additive for chickens for fattening and the authorisation of a new use of this preparation as a feed additive for ducks (holder of authorisation BASF SE) and amending Regulation (EC) No 1458/2005</P>
+            <P>(Text with EEA relevance)</P>
+          </TI>
+        </TITLE>
+      </BIB.DATA>
+      <GR.MOD.ACT>
+        <MOD.ACT EXISTS="YES" LEG.VAL="REG" TYPE="MOD">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>307</NO.OJ>
+                <YEAR>2012</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>60</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <EEA>
+              </EEA>
+              <DATE ISO="20121107">20121107</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>0006</NO.SEQ>
+              <PAGE.FIRST>60</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>61</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+              <NO.DOC FORMAT="NY" TYPE="OJ">
+                <NO.CURRENT>1019</NO.CURRENT>
+                <YEAR>2012</YEAR>
+                <COM>EU</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>32012R1019</NO.CELEX>
+            <DATE ISO="20121106">20121106</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Implementing Regulation</HT>(EU) No 1019/2012</P>
+                <P>of<DATE ISO="20121106">6 November 2012</DATE>
+                </P>
+                <P>amending Commission Regulation (EC) No 1096/2009 as regards the minimum content of endo-1,4-beta-xylanase produced by<HT TYPE="ITALIC">Aspergillus niger</HT>(CBS 109.713) as a feed additive in feed for chickens for fattening and for ducks (holder of authorisation BASF SE)</P>
+                <P>(Text with EEA relevance)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+      </GR.MOD.ACT>
+    </FAM.COMP>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="UC">Commission Regulation</HT>(EC) No 1096/2009</P>
+        <P>of<DATE ISO="20091116">16 November 2009</DATE>
+        </P>
+        <P>concerning the authorisation of an enzyme preparation of endo-1,4-beta-xylanase produced by<HT TYPE="ITALIC">Aspergillus niger</HT>(CBS 109.713) as a feed additive for chickens for fattening and the authorisation of a new use of this preparation as a feed additive for ducks (holder of authorisation BASF SE) and amending Regulation (EC) No 1458/2005</P>
+        <P>(Text with EEA relevance)</P>
+      </TI>
+    </TITLE>
+    <PREAMBLE>
+      <PREAMBLE.INIT>THE COMMISSION OF THE EUROPEAN COMMUNITIES,</PREAMBLE.INIT>
+      <GR.VISA>
+        <VISA>Having regard to the Treaty establishing the European Community,</VISA>
+        <VISA>Having regard to Regulation (EC) No 1831/2003 of the European Parliament and of the Council of<DATE ISO="20030922">22 September 2003</DATE>on additives for use in animal nutrition<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+            <P>
+              <REF.DOC.OJ COLL="L" DATE.PUB="20031018" NO.OJ="268" PAGE.FIRST="29">OJ L 268, 18.10.2003, p. 29</REF.DOC.OJ>.</P>
+          </NOTE>and in particular Article 9(2) thereof,</VISA>
+      </GR.VISA>
+      <GR.CONSID>
+        <GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+        <CONSID>
+          <NP>
+            <NO.P>(1)</NO.P>
+            <TXT>Regulation (EC) No 1831/2003 provides for the authorisation of additives for use in animal nutrition and for the grounds and procedures for granting such authorisation. Article 10 of that Regulation provides for the re-evaluation of additives authorised pursuant to Council Directive 70/524/EEC<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>
+                  <REF.DOC.OJ COLL="L" DATE.PUB="19701214" NO.OJ="270" PAGE.FIRST="1">OJ L 270, 14.12.1970, p. 1</REF.DOC.OJ>.</P>
+              </NOTE>.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(2)</NO.P>
+            <TXT>An enzyme preparation of endo-1,4-beta-xylanase produced by<HT TYPE="ITALIC">Aspergillus niger</HT>(CBS 109.713) was provisionally authorised in accordance with Directive 70/524/EEC as a feed additive for use on chickens for fattening by Commission Regulation (EC) No 1458/2005<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>
+                  <REF.DOC.OJ COLL="L" DATE.PUB="20050909" NO.OJ="233" PAGE.FIRST="3">OJ L 233, 9.9.2005, p. 3</REF.DOC.OJ>.</P>
+              </NOTE>. That additive was subsequently entered in the Community Register of feed additives as an existing product, in accordance with Article 10(1) of Regulation (EC) No 1831/2003.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(3)</NO.P>
+            <TXT>In accordance with Article 10(2) of Regulation (EC) No 1831/2003 in conjunction with Article 7 of that Regulation, an application was submitted for the re-evaluation of that additive and, in accordance with Article 7 of that Regulation, for a new use on ducks, requesting that additive to be classified in the additive category<QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+              </QUOT.START>zootechnical additives<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+              </QUOT.END>. That application was accompanied by the particulars and documents required under Article 7(3) of Regulation (EC) No 1831/2003.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(4)</NO.P>
+            <TXT>The use of that preparation was authorised for ten years by Commission Regulation (EC) No 1380/2007<NOTE NOTE.ID="E0004" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>
+                  <REF.DOC.OJ COLL="L" DATE.PUB="20071127" NO.OJ="309" PAGE.FIRST="21">OJ L 309, 27.11.2007, p. 21</REF.DOC.OJ>.</P>
+              </NOTE>for turkeys for fattening.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(5)</NO.P>
+            <TXT>From the opinion of the European Food Safety Authority (the Authority) of<DATE ISO="20090617">17 June 2009</DATE>
+              <NOTE NOTE.ID="E0005" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>
+                  <HT TYPE="ITALIC">The EFSA Journal</HT>(2009) 1155, p. 1.</P>
+              </NOTE>it results that the enzyme preparation of endo-1,4-beta-xylanase produced by<HT TYPE="ITALIC">Aspergillus niger</HT>(CBS 109.713) does not have an adverse effect on animal health, human health or the environment. The Authority concluded that the use of that preparation is safe for chickens for fattening and ducks and can significantly improve their weight gain and/or feed to gain ratio. The Authority does not consider that there is a need for specific requirements of post market monitoring. It also verified the report on the method of analysis of the feed additive in feed submitted by the Community Reference Laboratory set up by Regulation (EC) No 1831/2003.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(6)</NO.P>
+            <TXT>The assessment of that preparation shows that the conditions for authorisation, provided for in Article 5 of Regulation (EC) No 1831/2003, are satisfied. Accordingly, the use of that preparation should be authorised, as specified in the Annex to this Regulation.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(7)</NO.P>
+            <TXT>As a consequence of the granting of a new authorisation under Regulation (EC) No 1831/2003, the provisions on that preparation in Regulation (EC) No 1458/2005 should be deleted.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(8)</NO.P>
+            <TXT>The measures provided for in this Regulation are in accordance with the opinion of the Standing Committee on the Food Chain and Animal Health,</TXT>
+          </NP>
+        </CONSID>
+      </GR.CONSID>
+      <PREAMBLE.FINAL>HAS ADOPTED THIS REGULATION:</PREAMBLE.FINAL>
+    </PREAMBLE>
+    <ENACTING.TERMS>
+      <ARTICLE IDENTIFIER="001">
+        <TI.ART>Article 1</TI.ART>
+        <ALINEA>The preparation specified in the Annex, belonging to the additive category<QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002">
+          </QUOT.START>zootechnical additives<QUOT.END CODE="2019" ID="QE0002" REF.START="QS0002">
+          </QUOT.END>and to the functional group<QUOT.START CODE="2018" ID="QS0003" REF.END="QE0003">
+          </QUOT.START>digestibility enhancers<QUOT.END CODE="2019" ID="QE0003" REF.START="QS0003">
+          </QUOT.END>, is authorised as an additive in animal nutrition subject to the conditions laid down in that Annex.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="002">
+        <TI.ART>Article 2</TI.ART>
+        <ALINEA>In Annex II to Regulation (EC) No 1458/2005, the row concerning enzyme No 62, endo-1,4-beta-xylanase EC 3.2.1.8, is deleted.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="003">
+        <TI.ART>Article 3</TI.ART>
+        <ALINEA>This Regulation shall enter into force on the 20th day following its publication in the<HT TYPE="ITALIC">Official Journal of the European Union</HT>.</ALINEA>
+      </ARTICLE>
+    </ENACTING.TERMS>
+    <FINAL>
+      <P>This Regulation shall be binding in its entirety and directly applicable in all Member States.</P>
+    </FINAL>
+    <CONS.ANNEX>
+      <TITLE>
+        <TI>
+          <P>ANNEX</P>
+        </TI>
+      </TITLE>
+      <CONTENTS>
+        <TBL COLS="10" NO.SEQ="0001">
+          <GR.NOTES>
+            <NOTE NOTE.ID="E0006" NUMBERING="ARAB" TYPE="TABLE">
+              <P>1 TXU is the amount of enzyme which liberates 5 micromole of reducing sugars (xylose equivalents) from wheat arabinoxylan per minute at pH 3,5 and 55 °C.</P>
+            </NOTE>
+            <NOTE NOTE.ID="E0007" NUMBERING="ARAB" TYPE="TABLE">
+              <P>Details of the analytical methods are available at the following address of the Reference Laboratory: http://irmm.jrc.ec.europa.eu/EURLs/EURL_feed_additives/Pages/index.aspx</P>
+            </NOTE>
+          </GR.NOTES>
+          <CORPUS>
+            <ROW TYPE="HEADER">
+              <CELL COL="1" ROWSPAN="2" TYPE="HEADER">Identification number of the additive</CELL>
+              <CELL COL="2" ROWSPAN="2" TYPE="HEADER">Name of the holder of authorisation</CELL>
+              <CELL COL="3" ROWSPAN="2" TYPE="HEADER">Additive</CELL>
+              <CELL COL="4" ROWSPAN="2" TYPE="HEADER">Composition, chemical formula, description, analytical method</CELL>
+              <CELL COL="5" ROWSPAN="2" TYPE="HEADER">Species or category of animal</CELL>
+              <CELL COL="6" ROWSPAN="2" TYPE="HEADER">Maximum age</CELL>
+              <CELL COL="7" TYPE="HEADER">Minimum content</CELL>
+              <CELL COL="8" TYPE="HEADER">Maximum content</CELL>
+              <CELL COL="9" ROWSPAN="2" TYPE="HEADER">Other provisions</CELL>
+              <CELL COL="10" ROWSPAN="2" TYPE="HEADER">End of period of authorisation</CELL>
+            </ROW>
+            <ROW TYPE="HEADER">
+              <CELL COL="7" COLSPAN="2" TYPE="HEADER">Units of activity/kg of complete feedingstuff with a moisture content of 12 %</CELL>
+            </ROW>
+            <BLK>
+              <TI.BLK COL.END="10" COL.START="1">
+                <HT TYPE="BOLD">Category of zootechnical additives. Functional group: digestibility enhancers.</HT>
+              </TI.BLK>
+              <ROW>
+                <CELL COL="1" ROWSPAN="2">4a62</CELL>
+                <CELL COL="2" ROWSPAN="2">BASF SE</CELL>
+                <CELL COL="3" ROWSPAN="2">
+                  <P>Endo-1,4-beta-xylanase</P>
+                  <P>EC 3.2.1.8</P>
+                </CELL>
+                <CELL COL="4" ROWSPAN="2">
+                  <LIST TYPE="NONE">
+                    <ITEM>
+                      <P>
+                        <HT TYPE="ITALIC">Additive composition</HT>
+                      </P>
+                      <P>Preparation of endo-1,4-beta-xylanase produced by<HT TYPE="ITALIC">Aspergillus niger</HT>(CBS 109.713) having a minimum activity of:</P>
+                      <P>
+                        <LIST TYPE="NONE">
+                          <ITEM>
+                            <P>solid form:<FT TYPE="NUMBER">5600</FT>TXU<NOTE NOTE.REF="E0006">
+                              </NOTE>/g</P>
+                          </ITEM>
+                          <ITEM>
+                            <P>liquid form:<FT TYPE="NUMBER">5600</FT>TXU/ml</P>
+                          </ITEM>
+                        </LIST>
+                      </P>
+                    </ITEM>
+                    <ITEM>
+                      <P>
+                        <HT TYPE="ITALIC">Characterisation of the active substance</HT>
+                      </P>
+                      <P>Endo-1,4-beta-xylanase produced by<HT TYPE="ITALIC">Aspergillus niger</HT>(CBS 109.713)</P>
+                    </ITEM>
+                    <ITEM>
+                      <P>
+                        <HT TYPE="ITALIC">Analytical method</HT>
+                        <NOTE NOTE.REF="E0007">
+                        </NOTE>
+                      </P>
+                      <P>Viscosimetric method based on decrease of viscosity produced by action of endo-1,4-beta-xylanase on the xylan-containing substrate (wheat arabinoxylan) at pH 3,5 and 55 °C</P>
+                    </ITEM>
+                  </LIST>
+                </CELL>
+                <CELL COL="5">Chickens for fattening</CELL>
+                <CELL COL="6" ROWSPAN="2">—</CELL>
+                <CELL COL="7">
+                  <FT TYPE="NUMBER">280</FT>TXU</CELL>
+                <CELL COL="8" ROWSPAN="2">—</CELL>
+                <CELL COL="9" ROWSPAN="2">
+                  <NP>
+                    <NO.P>1.</NO.P>
+                    <TXT>In the directions for use of the additive and premixture, indicate the storage temperature, storage life and stability to pelleting.</TXT>
+                  </NP>
+                  <NP>
+                    <NO.P>2.</NO.P>
+                    <TXT>Recommended maximum dose per kilogram of complete feedingstuff for chickens for fattening and ducks: 800 TXU.</TXT>
+                  </NP>
+                  <NP>
+                    <NO.P>3.</NO.P>
+                    <TXT>For use in feed rich in starch and non-starch polysaccharides (mainly beta-glucans and arabinoxylans).</TXT>
+                  </NP>
+                </CELL>
+                <CELL COL="10" ROWSPAN="2">
+                  <DATE ISO="20191207">7.12.2019</DATE>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="5">Ducks</CELL>
+                <CELL COL="7">
+                  <FT TYPE="NUMBER">280</FT>TXU</CELL>
+              </ROW>
+            </BLK>
+          </CORPUS>
+        </TBL>
+      </CONTENTS>
+    </CONS.ANNEX>
+  </CONS.DOC>
+</CONS.ACT>

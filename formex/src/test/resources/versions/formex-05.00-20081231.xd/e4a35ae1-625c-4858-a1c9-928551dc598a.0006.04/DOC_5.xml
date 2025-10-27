@@ -1,0 +1,113 @@
+<ACT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.00-20081231.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2009256EN.01000301.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>256</NO.OJ>
+      <YEAR>2009</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>3</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20090923">20090923</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0002</NO.SEQ>
+    <PAGE.FIRST>3</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>3</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+    <NO.DOC FORMAT="NY" TYPE="OJ">
+      <NO.CURRENT>895</NO.CURRENT>
+      <YEAR>2009</YEAR>
+      <COM>EC</COM>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Commission Regulation</HT>(EC) No 895/2009</P>
+      <P>of<DATE ISO="20090923">23 September 2009</DATE>
+      </P>
+      <P>concerning the classification of certain goods in the Combined Nomenclature</P>
+    </TI>
+  </TITLE>
+  <PREAMBLE>
+    <PREAMBLE.INIT>THE COMMISSION OF THE EUROPEAN COMMUNITIES,</PREAMBLE.INIT>
+    <GR.VISA>
+      <VISA>Having regard to the Treaty establishing the European Community,</VISA>
+      <VISA>Having regard to Council Regulation (EEC) No 2658/87 of<DATE ISO="19870723">23 July 1987</DATE>on the tariff and statistical nomenclature and on the Common Customs Tariff<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+          <P>
+            <REF.DOC.OJ COLL="L" DATE.PUB="19870907" NO.OJ="256" PAGE.FIRST="1">OJ L 256, 7.9.1987, p. 1</REF.DOC.OJ>.</P>
+        </NOTE>, and in particular Article 9(1)(a) thereof,</VISA>
+    </GR.VISA>
+    <GR.CONSID>
+      <GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+      <CONSID>
+        <NP>
+          <NO.P>(1)</NO.P>
+          <TXT>In order to ensure uniform application of the Combined Nomenclature annexed to Regulation (EEC) No 2658/87, it is necessary to adopt measures concerning the classification of the goods referred to in the Annex to this Regulation.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(2)</NO.P>
+          <TXT>Regulation (EEC) No 2658/87 has laid down the general rules for the interpretation of the Combined Nomenclature. Those rules apply also to any other nomenclature which is wholly or partly based thereon or which adds any additional subdivision thereto and which is established by specific Community provisions, with a view to the application of tariff and other measures relating to trade in goods.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(3)</NO.P>
+          <TXT>Pursuant to those general rules, the goods described in column 1 of the table set out in the Annex should be classified under the CN code indicated in column 2, by virtue of the reasons set out in column 3 of that table.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(4)</NO.P>
+          <TXT>It is appropriate to provide that binding tariff information which has been issued by the customs authorities of Member States in respect of the classification of goods in the Combined Nomenclature but which is not in accordance with this Regulation may, for a period of three months, continue to be relied on by the holder, under Article 12(6) of Council Regulation (EEC) No 2913/92 of<DATE ISO="19921012">12 October 1992</DATE>establishing the Community Customs Code<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" DATE.PUB="19921019" NO.OJ="302" PAGE.FIRST="1">OJ L 302, 19.10.1992, p. 1</REF.DOC.OJ>.</P>
+            </NOTE>.</TXT>
+        </NP>
+      </CONSID>
+      <CONSID>
+        <NP>
+          <NO.P>(5)</NO.P>
+          <TXT>The Customs Code Committee has not issued an opinion within the time limit set by its Chairman,</TXT>
+        </NP>
+      </CONSID>
+    </GR.CONSID>
+    <PREAMBLE.FINAL>HAS ADOPTED THIS REGULATION:</PREAMBLE.FINAL>
+  </PREAMBLE>
+  <ENACTING.TERMS>
+    <ARTICLE IDENTIFIER="001">
+      <TI.ART>Article 1</TI.ART>
+      <ALINEA>The goods described in column 1 of the table set out in the Annex shall be classified within the Combined Nomenclature under the CN code indicated in column 2 of that table.</ALINEA>
+    </ARTICLE>
+    <ARTICLE IDENTIFIER="002">
+      <TI.ART>Article 2</TI.ART>
+      <ALINEA>Binding tariff information issued by the customs authorities of Member States, which is not in accordance with this Regulation, may continue to be relied on for a period of three months under Article 12(6) of Regulation (EEC) No 2913/92.</ALINEA>
+    </ARTICLE>
+    <ARTICLE IDENTIFIER="003">
+      <TI.ART>Article 3</TI.ART>
+      <ALINEA>This Regulation shall enter into force on the 20th day following its publication in the<HT TYPE="ITALIC">Official Journal of the European Union</HT>.</ALINEA>
+    </ARTICLE>
+  </ENACTING.TERMS>
+  <FINAL>
+    <P>This Regulation shall be binding in its entirety and directly applicable in all Member States.</P>
+    <SIGNATURE>
+      <PL.DATE>
+        <P>Done at Brussels,<DATE ISO="20090923">23 September 2009</DATE>.</P>
+      </PL.DATE>
+      <SIGNATORY>
+        <P>
+          <HT TYPE="ITALIC">For the Commission</HT>
+        </P>
+        <P>László<HT TYPE="UC">Kovács</HT>
+        </P>
+        <P>
+          <HT TYPE="ITALIC">Member of the Commission</HT>
+        </P>
+      </SIGNATORY>
+    </SIGNATURE>
+  </FINAL>
+</ACT>

@@ -1,0 +1,56 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.20-20100601.xd">
+  <BIB.DOC>
+    <PROD.ID>20110916021</PROD.ID>
+    <FIN.ID>33290</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2011/C 278/02</TXT>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>COM</AUTHOR>
+    <EEA>
+    </EEA>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2011278EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>278</NO.OJ>
+    <DATE ISO="20110922">20110922</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0002" SYNOPTISM="D0002">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>OTHER</LEGAL.VALUE>
+      <DATE ISO="20110922">20110922</DATE>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.LAST>1</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>2</PAGE.SEQ>
+      <REF.PHYS FILE="C_2011278EN.01000102.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0002">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Non-opposition to a notified concentration (Case COMP/M.6185 — Flabeg Holding/Schott Solar CPS)<NOTE NOTE.ID="E0001" NUMBERING="ARAB">
+                <P>Text with EEA relevance</P>
+              </NOTE>
+            </P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>1</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0002">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF DOI.DOC="doi:10.3001/C_2011.278.01000102.eng" REF.PDF="c_27820110922en00010001.pdf">1</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

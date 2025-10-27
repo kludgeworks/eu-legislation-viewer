@@ -1,0 +1,47 @@
+<GENERAL noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.56-20160701.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2018444EN.01000902.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>444</NO.OJ>
+      <YEAR>2018</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>9</PAGE.FIRST>
+      <PAGE.SEQ>2</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <EEA>
+    </EEA>
+    <DATE ISO="20181210">20181210</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0003</NO.SEQ>
+    <PAGE.FIRST>9</PAGE.FIRST>
+    <PAGE.SEQ>2</PAGE.SEQ>
+    <PAGE.LAST>9</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+    <NO.DOC TYPE="OJ">
+      <TXT>2018/C 444/03</TXT>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>Non-opposition to a notified concentration</P>
+      <P>(Case M.9137 — Rehau/MB Barter &amp; Trading)</P>
+      <P>(Text with EEA relevance)</P>
+      <NO.DOC.C>2018/C 444/03</NO.DOC.C>
+    </TI>
+  </TITLE>
+  <CONTENTS>
+    <P>On<DATE ISO="20181127">27 November 2018</DATE>, the Commission decided not to oppose the above notified concentration and to declare it compatible with the internal market. This decision is based on Article 6(1)(b) of Council Regulation (EC) No 139/2004<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+        <P>
+          <REF.DOC.OJ COLL="L" DATE.PUB="20040129" NO.OJ="024" PAGE.FIRST="1">OJ L 24, 29.1.2004, p. 1</REF.DOC.OJ>.</P>
+      </NOTE>. The full text of the decision is available only in German language and will be made public after it is cleared of any business secrets it may contain. It will be available:</P>
+    <LIST TYPE="DASH">
+      <ITEM>
+        <P>in the merger section of the Competition website of the Commission (http://ec.europa.eu/competition/mergers/cases/). This website provides various facilities to help locate individual merger decisions, including company, case number, date and sectoral indexes,</P>
+      </ITEM>
+      <ITEM>
+        <P>in electronic form on the EUR-Lex website (http://eur-lex.europa.eu/homepage.html?locale=en) under document number 32018M9137. EUR-Lex is the online access to European law.</P>
+      </ITEM>
+    </LIST>
+  </CONTENTS>
+</GENERAL>

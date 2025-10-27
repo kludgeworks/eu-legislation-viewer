@@ -1,0 +1,122 @@
+<CONCLUSION NNC="YES" noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-04.cj-20080212.xd">
+  <BIB.CONCLUSION>
+    <REF.CASE FILE="ECRCJ1992ENA.0500303301.case.xml">
+      <NO.CASE>C-327/90</NO.CASE>
+    </REF.CASE>
+    <NO.CELEX>61990C0327</NO.CELEX>
+    <NO.SEQ>0007.0002</NO.SEQ>
+    <PAGE.FIRST>3045</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>3050</PAGE.LAST>
+    <PAGE.TOTAL>6</PAGE.TOTAL>
+  </BIB.CONCLUSION>
+  <CURR.TITLE>
+    <LEFT>OPINION OF MR TESAURO — CASE C-327/90</LEFT>
+    <RIGHT>COMMISSION v GREECE</RIGHT>
+  </CURR.TITLE>
+  <CONTENTS.CONCLUSION>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="UC">Opinion of Advocate General Tesauro</HT>
+        </P>
+        <P>delivered on<DATE ISO="19920128">28 January 1992</DATE>
+          <NOTE NOTE.ID="E0001" NUMBERING="STAR">
+            <P>Original language: Italian.</P>
+          </NOTE>
+        </P>
+      </TI>
+    </TITLE>
+    <P>Mr President,</P>
+    <P>Members of the Court,</P>
+    <NP>
+      <NO.P>1.</NO.P>
+      <TXT>In these proceedings the Commission seeks a declaration from the Court that, by applying differentiated tax rules to motor vehicles, and in particular by using different rules to calculate the basis of assessment for the special consumption tax, so that imported vehicles are more heavily taxed than those assembled in Greece, the Hellenic Republic has failed to fulfil its obligations under Article 95 of the EEC Treaty.</TXT>
+    </NP>
+    <NP>
+      <NO.P>2.</NO.P>
+      <TXT>Law No 363/1976, as supplemented and amended by Laws Nos 1003/1979 and 1591/1986, introduced in Greece a special consumption tax on passenger vehicles which are imported or manufactured (assembled) in Greece (hereinafter<QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+        </QUOT.START>the tax<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+        </QUOT.END>).</TXT>
+      <P>Pursuant to Article 1(3) of that Law, the basis of assessment for the tax on imported motor vehicles is the sum of the net ex-factory wholesale price of the vehicle (which may not differ by more than 25% from the retail list price in the country of manufacture) and the price of any accessories; to that sum is then added 21% if the vehicles are bought direct from the manufacturer and 23.2% in other cases, and a further 7% to take account of the costs of insurance and transport of the vehicle (in the case of vehicles from overseas, 25% is added).</P>
+      <P>Law No 1573/1985 makes the Greek automobile industry subject to a system of customs supervision, providing<HT TYPE="ITALIC">inter alia</HT>that the tax on motor vehicles made in Greece is to be collected by the customs authority upon clearance through customs.</P>
+      <P>In particular, Article 4(2) provides that the basis of assessment of the tax is to be calculated, for such cars, by reference to the ex-factory price shown on the list lodged by the automobile industry with the Price Control Committee; it also states that fiscal charges of any kind included in the cost price of the motor vehicle do not constitute a component of the price.</P>
+      <P>Finally, by virtue of Article 3(1) of the same Law, raw materials imported from abroad or purchased by the automobile industry within national territory are exempt from any fiscal charge accruing to the State or to third parties, with the exception of the customs dutiesprovided for by Community legislation for raw materials from nonmember countries.</P>
+    </NP>
+    <NP>
+      <NO.P>3.</NO.P>
+      <TXT>The Commission, in its criticism of the legislation described above, states in particular that such a differentiated system for calculation of the taxable basis favours motor vehicles assembled in Greece, at the expense of those imported from other Member States, thus infringing the prohibition of discriminatory taxation laid down by Article 95 of the EEC Treaty.</TXT>
+      <P>The discrimination of which the Commission complains is, in its view, mainly attributable to the fact that imported motor vehicles are subject to a flat-rate increase of the basis of assessment of the tax, whilst those assembled in Greece are taxed on the basis of actual data, in other words on the basis of the ex-factory price.</P>
+      <P>The Commission also emphasizes that that distinction is not based on objective grounds and cannot be justified by the need to offset nondeductible charges included in the overall cost of motor vehicles assembled in Greece; the Greek law in fact grants an exemption for imports of components intended for the production of motor vehicles.</P>
+    </NP>
+    <NP>
+      <NO.P>4.</NO.P>
+      <TXT>The Greek Government contends, on the other hand, that its taxation system does not favour Greek products to the detriment of those imported from other Member States.</TXT>
+      <P>It emphasizes that in Greece, because of the limited development of the automobile industry, manufacturers are in the habit of selling motor vehicles direct to the final consumer, without using intermediaries; accordingly, in Greece the manufacturer&apos;s selling price, which is used as the basis for calculation of the tax, is equivalent to the retail selling price and includes marketing expenses.</P>
+      <P>In the case of imported motor vehicles, the supplement of 21% or 23.2% represents the difference between the wholesale selling price and the normal distribution price and is intended to cover the expenses of marketing, such as those of promotion, advertising or after-sales service, borne by the importing concessionaire and also the commission taken by the sole importer.</P>
+      <P>Furthermore, the Greek Government maintains that that differentiated method for calculation of the tax basis is intended to prevent fraud in the form of under-declaration of the invoice price, such fraud occurring frequently because of the very high rates of consumption tax (up to 400%). Lorries, which are subject to a lower tax and are therefore less exposed to fraud of that kind, are taxed, without distinction as to origin, on the basis of the transaction price.</P>
+      <P>Finally, at the hearing the defendant stated that in any event the risks of discrimination adversely affecting imported motor vehicles are eliminated by Article 4(3) of Law No 1573/1985, pursuant to which the tax basis for motor vehicles produced in Greece may not be lower than the minimum value determined for imported vehicles of the same or similar cylinder capacity.</P>
+    </NP>
+    <NP>
+      <NO.P>5.</NO.P>
+      <TXT>Let me point out immediately that the Court of Justice has consistently held that within the system of the Treaty, Article 93(1) and (2) supplement the provisions on the abolition of customs duties and charges having equivalent effect. The aim of those provisions is to ensure the free movement of goods between the Member States under normal conditions of competition by the elimination of all forms of protection which may result from the imposition of internal taxation which discriminates against products from other Member States. Article 95 is intended to guarantee the absolute neutrality of internal taxation as regards competition between domestic and imported products.<NOTE NOTE.ID="E0002" NUMBERING.CONTINUED="YES">
+          <P>See in particular the judgments in Case<REF.DOC.ECR EDITION="GEN" NO.CASE="168/78" YEAR="1980" PAGE.ECR="347">168/78 Commission v France [1980] ECR 347, paragraph 4</REF.DOC.ECR>, Case<REF.DOC.ECR EDITION="GEN" NO.CASE="169/78" YEAR="1980" PAGE.ECR="385">169/78 Commission v Italy [1980] ECR 385, paragraph 4</REF.DOC.ECR>, and Case<REF.DOC.ECR EDITION="GEN" NO.CASE="171/78" YEAR="1980" PAGE.ECR="447">171/78 Commission v Denmark [1980] ECR 447, paragraph 4</REF.DOC.ECR>.</P>
+        </NOTE>
+      </TXT>
+      <P>Furthermore, as the Court has pointed out on several occasions, in order to apply the prohibition of discrimination contained in Article 95 of the Treaty, it is necessary to take account not only of the rate of taxation but also of the various provisions concerning the basis of assessment and the detailed rules for levying taxes. The decisive comparative criterion for the application of Article 95 is the actual impact of each tax on the domestic product, on the one hand, and on the imported product, on the other; indeed, even where the rate of the tax is the same, its impact may vary according to the provisions regarding basis of assessment and collection applied to domestic and imported products respectively.<NOTE NOTE.ID="E0003" NUMBERING.CONTINUED="YES">
+          <P>Judgments in Case<REF.DOC.ECR EDITION="GEN" NO.CASE="C-47/88" YEAR="1990" PAGE.ECR="I-4509">C-47/88 Commission v Denmark [1990] ECR I-4509, paragraph 18</REF.DOC.ECR>, Case<REF.DOC.ECR EDITION="GEN" NO.CASE="55/79" YEAR="1980" PAGE.ECR="481">55/79 Commission v Ireland [1980] ECR 481, paragraph 8</REF.DOC.ECR>, and Case<REF.DOC.ECR EDITION="GEN" NO.CASE="74/76" YEAR="1977" PAGE.ECR="557">74/76 lannelli &amp; Volpi v Meroni [1977] ECR 557, paragraph 21</REF.DOC.ECR>.</P>
+        </NOTE>
+      </P>
+      <P>As is also apparent from the case-law of the Court, the first paragraph of Article 95 prohibits taxation of imported goods under a calculation method or rules which are different from those used for the taxation of similar domestic products and result in a greater burden for the imported goods, regardless of any difference of impact of the taxes on the prices of the two products<NOTE NOTE.ID="E0004" NUMBERING.CONTINUED="YES">
+          <P>Judgment in Case<REF.DOC.ECR EDITION="GEN" NO.CASE="45/64" YEAR="1965" PAGE.ECR="1057">45/75 REWE v Hauptzoüamt Landau [1976] ECR 181, paragraph 16</REF.DOC.ECR>.</P>
+        </NOTE>and of the fact that the obstacle created by the national tax may be minor and incidental.<NOTE NOTE.ID="E0005" NUMBERING.CONTINUED="YES">
+          <P>Judgment in Case<REF.DOC.ECR EDITION="GEN" NO.CASE="20/76" YEAR="1977" PAGE.ECR="247">20/76 Schüttle v Finanzamt Freudenstadt [1977] ECR 247, paragraph 22</REF.DOC.ECR>.</P>
+        </NOTE>
+      </P>
+      <P>In particular, as the Court has made clear, the first paragraph of Article 95 is infringed where the two taxes are calculated in a different manner on the basis of different criteria, which lead, if only in certain cases, to higher taxation being imposed on the imported product.<NOTE NOTE.ID="E0006" NUMBERING.CONTINUED="YES">
+          <P>Judgments in Case<REF.DOC.ECR EDITION="GEN" NO.CASE="C-152/89" YEAR="1991" PAGE.ECR="I-3141">C-152/89 Commission v Luxembourg [1991] ECR I-3141</REF.DOC.ECR>, Case<REF.DOC.ECR EDITION="GEN" NO.CASE="C-153/89" YEAR="1991" PAGE.ECR="I-3171">C-153/89 Commission v Belgium [1991] ECR I-3171</REF.DOC.ECR>, and Case 45/75, cited above, paragraph 15.</P>
+        </NOTE>
+      </P>
+      <P>In Cases C-151/89<NOTE NOTE.ID="E0007" NUMBERING.CONTINUED="YES">
+          <P>Cited above, paragraphs 24 and 25.</P>
+        </NOTE>and C-152/89<NOTE NOTE.ID="E0008" NUMBERING.CONTINUED="YES">
+          <P>Cited above, paragraphs 15 and 16. See also, with reference to Article 96 of the Treaty, the judgment in Case<REF.DOC.ECR EDITION="GEN" NO.CASE="45/64" YEAR="1965" PAGE.ECR="857">45/64 Commission v Italy [1965] ECR 857</REF.DOC.ECR>.</P>
+        </NOTE>just referred to, concerning Luxembourg and Belgian legislation which took the hot wort as the basis for duty to be levied on beer produced locally but, for beer imported from other Member States, took the volume of the finished product, plus a flat-rate adjustment of 5%, the Court, having found that the legislationin question was not arranged so as to exclude any possibility of imported beer being taxed more heavily than domestic beer, concluded that, in view of the lack of transparency of that taxation system, the onus was on the defendant governments to prove that the system in question did not engender any discriminatory effects.</P>
+    </NP>
+    <NP>
+      <NO.P>6.</NO.P>
+      <TXT>The foregoing principles must therefore be applied in considering whether the legislation at issue is compatible with Article 95 of the Treaty.</TXT>
+      <P>Legislation of the kind just described, which applies to imported products a system for calculation of the basis of assessment which is largely based on flat-rate factors, whereas the corresponding domestic product is taxed on the basis of actual data, gives rise, by its very nature in my view, to a serious risk of discrimination since flat-rate calculations are in general based on average values and when they are used it is difficult to ensure, as required by the case-law of the Court, that imported products will not under any circumstances be taxed more heavily than similar domestic products.</P>
+      <P>If the Greek legislation is analysed in greater detail, various factors render inevitable the conclusion that the special consumption tax ultimately has a greater impact on imported cars.</P>
+      <P>In the first place, the second subparagraph of Article 4(2) of Law No 1573/1985 provides that, for cars produced in Greece, all charges of a fiscal nature included in the cost of manufacture are to be deducted from the ex-factory price, whereas no corresponding deduction is envisaged for imported cars.</P>
+      <P>In the second place, Article 1(3) of Law No 363/1976 provides that, in calculating the basis of assessment for imported cars, the net wholesale ex-factory price is to have the price of any accessories added to it, whilst the same legislation does not indicate that any such addition is made to the price of locally manufactured cars which also have accessories.</P>
+      <P>As regards the further flat-rate addition of 21% or 23.2% which the Commission considers arbitrary and excessive,<NOTE NOTE.ID="E0009" NUMBERING.CONTINUED="YES">
+          <P>The Commission points out that until 1986 the addition in question was only 10%.</P>
+        </NOTE>pointing out that the Greek legislation does not allow the persons concerned to adduce any counterevidence, I would observe that it appears from the very balance sheets appended to the Greek Government&apos;s pleadings that — regardless of the extent to which they are typical — that addition was calculated on the basis of an average. From that standpoint as well, the prescribed system of calculation of the basis of assessment is not therefore capable of ensuring that the imported product is not in any circumstances made to bear a greater tax burden than the corresponding domestic product.</P>
+      <P>It must also be observed, firstly, that the defendant&apos;s statement — contested by the Commission — that in Greece the ex-factoryprice is equivalent to the retail selling price and that there is no intermediary between the manufacturer and the final consumer appears, at the very least, hardly plausible, and, secondly, that marketing expenses are, at least in part, also included in the ex-factory selling price of imported cars.</P>
+      <P>The same applies to the further addition of 7%, which is likewise calculated on the basis of an average and is intended to cover transport and insurance costs. Its effect is to penalize those cars for which the transport and insurance costs are lower; suffice it to say in that regard that transport costs vary not so much according to the value of the product as according to its weight, its dimensions and the distance over which it is carried.</P>
+    </NP>
+    <NP>
+      <NO.P>7.</NO.P>
+      <TXT>The foregoing considerations seem to me to show with sufficient clarity that the different systems of calculating the basis of assessment used in Greece for domestic products and imported products mean that the latter are taxed more heavily than similar domestic products and that in any event the system is so devised that discriminatory effects on imported products cannot be ruled out.</TXT>
+      <P>In that connection, no decisive importance can be attached to the assertion of the Greek Government at the hearing that the risks of discrimination against imported cars are eliminated by Article 4(3) of Law No 1573/1985, pursuant to which the basis of assessment for motor vehicles produced in Greece may not fall below the minimum determined for imported vehicles of the same or similar cylinder capacity.</P>
+      <P>Let me say in the first place that, since the Greek Government claimed to be surprised at the fact that the Commission, when examining the legislation in question, did not discover that that provision existed, I, for my part, am just as surprised, if not more so, that a Member State, which is criticized for introducing discriminatory legislation and considers that it has adopted an appropriate measure which obviates any risk of discrimination, did not draw attention to that fact in the pre-litigation stage or in the exchange of pleadings but waited until the hearing before putting forward an argument which it nevertheless claims to regard as decisive.</P>
+      <P>In any case, it does not seem to me that the provision in question has the effect that the defendant attributes to it. On a literal reading of the provision — about the operation of which it would have been useful if the Greek Government had provided further information — the basis of assessment for a car produced in Greece should in fact be aligned with the minimum basis of assessment determined for similar vehicles; in other words, where, as usually happens, several models of various makes are imported, having similar cylinder capacities, the provision requires Greek cars to be taxed by reference not to imported cars which are subjectto a high basis of assessment but to those which enjoy more favourable treatment, that is to say, specifically, the more economical cars — which probably have no accessories. That provision, therefore, whilst reducing the risks of discrimination against imported products, does not eliminate them.</P>
+    </NP>
+    <NP>
+      <NO.P>8.</NO.P>
+      <TXT>As regards the defendant&apos;s further contention that the detailed rules for calculation of the basis of assessment which I have described are needed in order to obviate the risk of fraud by traders, which is particularly serious because of the high rates of consumption tax, I would point out in the first place that, as laid down in the case-law of the Court, disparate treatment as between the imported product, which is taxed at a flat rate, and products produced locally, on which the tax is levied according to a sliding scale, cannot be justified on the ground that the investigations which would be necessary in the former case cannot be carried out;<NOTE NOTE.ID="E0010" NUMBERING.CONTINUED="YES">
+          <P>Case 45/75, cited above, paragraph 15.</P>
+        </NOTE>secondly, Article 95 of the Treaty is applicable even if, in order to eliminate the obstacle created by the internal tax, that tax would have to be abolished.<NOTE NOTE.ID="E0011" NUMBERING.CONTINUED="YES">
+          <P>Case 20/76, cited above, paragraph 22.</P>
+        </NOTE>
+      </TXT>
+      <P>Furthermore, as rightly observed by the Commission, it is not entirely clear why it should not be possible to avoid the risk of under-declared invoice prices by using nondiscriminatory systems for calculation of the basis of assessment, based for example on catalogue prices, as is the practice in other countries which have similar special consumption taxes.</P>
+      <P>Finally, the fact that the tax in question is particularly high is an aggravating factor and exacerbates the effects of the discrimination since even a minimal difference in the calculation of the basis of assessment may have significant repercussions on the tax payable on the product.</P>
+    </NP>
+    <NP>
+      <NO.P>9.</NO.P>
+      <TXT>In view of the foregoing considerations, therefore, I suggest that the Court uphold the Commission&apos;s application and order the defendant to pay the costs.</TXT>
+    </NP>
+  </CONTENTS.CONCLUSION>
+</CONCLUSION>

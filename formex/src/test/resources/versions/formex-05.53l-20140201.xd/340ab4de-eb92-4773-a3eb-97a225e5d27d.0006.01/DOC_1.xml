@@ -1,0 +1,177 @@
+<LSEU noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.53l-20140201.xd">
+  <BIB.LSEU>
+    <NO.DOC.LSEU>LSEU-09030202_3-2015-06-16-1440</NO.DOC.LSEU>
+    <LG.DOC>EN</LG.DOC>
+    <LAST.MODIFICATION>
+      <DATE ISO="20150217">17.02.2015</DATE>
+    </LAST.MODIFICATION>
+    <ARCHIVED VALUE="NO">
+    </ARCHIVED>
+  </BIB.LSEU>
+  <TITLE>
+    <TI>
+      <P>Safety of simple pressure vessels in the EU</P>
+    </TI>
+  </TITLE>
+  <CONTENTS.LSEU>
+    <HEADER.LSEU>
+      <P>European Union (EU) law on the placing on the market and putting into service of simple pressure vessels (diving cylinders, for example) has two key aims: (i) to ensure the protection of persons, domestic animals and property with regard to the hazards resulting from leakage or bursting; and (ii) to have the same rules governing their sale throughout the EU.</P>
+    </HEADER.LSEU>
+    <REFERENCES.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Act</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <P>Directive<REF.DOC URI="http://publications.europa.eu/resource/celex/32014L0029" CONTEXT="EUR-LEX">2014/29/EU</REF.DOC>of the European Parliament and of the Council of 26 February 2014 on the harmonisation of the laws of the Member States relating to the making available on the market of simple pressure vessels.</P>
+      </GR.SEQ>
+    </REFERENCES.LSEU>
+    <SUMMARY.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Summary</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">What does this directive do?</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>It lays down uniform rules on the placing on the market and putting into service of simple pressure vessels.</P>
+          <P>It applies to vessels manufactured in series, such as any welded vessel subjected to an internal gauge pressure greater than 0.5 bar, which is intended to contain air or nitrogen and which is not intended to be fired, as well as to the parts and assemblies contributing to the strength of the vessel under pressure made of certain qualities of steel or aluminium.</P>
+          <P>It does not apply to: (i) vessels specifically designed for nuclear use; (ii) vessels installed on ships and aircraft; and (iii) fire extinguishers.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Key points</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>The directive defines the responsibilities of manufacturers, importers and distributors of simple pressure vessels.</P>
+          <LIST TYPE="ARAB">
+            <ITEM>
+              <NP>
+                <NO.P>1.</NO.P>
+                <TXT>Most of the simple pressure vessels within the scope of the directive must bear the CE conformity marking to show that they meet all the essential safety requirements of EU legislation.</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>2.</NO.P>
+                <TXT>The manufacturer must conduct a conformity assessment and establish detailed technical documentation for its vessels.</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>3.</NO.P>
+                <TXT>Importers must check whether manufacturers have carried out conformity assessments correctly and inform the authority monitoring the safety if they consider that the vessel does not conform to the essential safety requirements.</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>4.</NO.P>
+                <TXT>All necessary documentation must be recorded and kept for 10 years.</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>5.</NO.P>
+                <TXT>Instructions and safety information must be written in a language easily understood by end-users.</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>6.</NO.P>
+                <TXT>Manufacturers and importers must indicate their name, registered trade name or registered trade mark and the postal address at which they can be contacted on their vessels.</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>7.</NO.P>
+                <TXT>The directive specifies what national market surveillance authorities must do to identify non-compliant products and prevent the placing on the market or putting into service of such products on the EU market.</TXT>
+              </NP>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">When does the directive apply?</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>It enters into force on 18 April 2014 and applies from 20 April 2016. It repeals Directive<REF.DOC URI="http://publications.europa.eu/resource/uriserv/co0015" CONTEXT="LSEU">2009/105/EC</REF.DOC>with effect from 20 April 2016.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Background</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>The directive updates the existing EU rules on the placing on the market and putting into service of simple pressure vessels. This is part of the effort to modernise European law in a wide range of industrial sectors so as to simplify the rules, reduce administrative burdens and establish clearer and more consistent rules.</P>
+          <P>For more information, see the European Commission’s<REF.DOC URI="http://ec.europa.eu/growth/single-market/european-standards/harmonised-standards/simple-pressure-vessels/index_en.htm" CONTEXT="EXTERNAL">simple pressure vessels</REF.DOC>website.</P>
+        </GR.SEQ>
+      </GR.SEQ>
+    </SUMMARY.LSEU>
+    <REFERENCE.TABLE>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">References</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <TBL COLS="4" NO.SEQ="0001">
+          <CORPUS>
+            <ROW TYPE="HEADER">
+              <CELL TYPE="HEADER" COL="1">
+                <P>Act</P>
+              </CELL>
+              <CELL TYPE="HEADER" COL="2">
+                <P>Entry into force</P>
+              </CELL>
+              <CELL TYPE="HEADER" COL="3">
+                <P>Deadline for transposition in the Member States</P>
+              </CELL>
+              <CELL TYPE="HEADER" COL="4">
+                <P>Official Journal</P>
+              </CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">
+                <P>Directive<REF.DOC URI="http://publications.europa.eu/resource/celex/32014L0029" CONTEXT="EUR-LEX">2014/29/EU</REF.DOC>
+                </P>
+              </CELL>
+              <CELL COL="2">
+                <P>18.4.2014.</P>
+                <P>Articles 1, 3, 4 and 5 and Annexes I and III apply from 20.4.2016</P>
+              </CELL>
+              <CELL COL="3">
+                <P>19.4.2016</P>
+              </CELL>
+              <CELL COL="4">
+                <P>
+                  <REF.DOC URI="http://publications.europa.eu/resource/uriserv/OJ.L_.2014.096.01.0045.01.ENG" CONTEXT="EUR-LEX">OJ L 96, 29.3.2014, pp. 45-78</REF.DOC>.</P>
+              </CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </GR.SEQ>
+    </REFERENCE.TABLE>
+  </CONTENTS.LSEU>
+</LSEU>

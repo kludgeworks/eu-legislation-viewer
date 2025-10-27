@@ -1,0 +1,55 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.55-20141201.xd">
+  <BIB.DOC>
+    <PROD.ID>20150220042</PROD.ID>
+    <FIN.ID>57582</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2015/C 81/36</TXT>
+    </NO.DOC>
+    <NO.DOC TYPE="INTERNAL" FORMAT="TNY">
+      <NO.CURRENT>29</NO.CURRENT>
+      <YEAR>2015</YEAR>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>T</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2015081EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>081</NO.OJ>
+    <DATE ISO="20150309">20150309</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0036" SYNOPTISM="D0036">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>COMMUNIC</LEGAL.VALUE>
+      <DATE ISO="20150121">20150121</DATE>
+      <PAGE.FIRST>28</PAGE.FIRST>
+      <PAGE.LAST>29</PAGE.LAST>
+      <PAGE.TOTAL>2</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS TYPE="DOC.XML" FILE="C_2015081EN.01002801.xml">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0036">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Case T-29/15: Action brought on<DATE ISO="20150121">21 January 2015</DATE>— International Management Group v Commission</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>28</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0036">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_08120150309en00280029.pdf">28</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

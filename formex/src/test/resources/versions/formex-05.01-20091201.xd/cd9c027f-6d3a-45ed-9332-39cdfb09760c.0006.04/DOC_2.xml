@@ -1,0 +1,55 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.01-20091201.xd">
+  <BIB.DOC>
+    <PROD.ID>20091120015</PROD.ID>
+    <FIN.ID>22533</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2009/C 297/10</TXT>
+    </NO.DOC>
+    <NO.DOC FORMAT="CNY" TYPE="INTERNAL">
+      <NO.CURRENT>255</NO.CURRENT>
+      <YEAR>2008</YEAR>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>CJ</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2009297EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>297</NO.OJ>
+    <DATE ISO="20091205">20091205</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0010" SYNOPTISM="D0010">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>JUDGMENT</LEGAL.VALUE>
+      <DATE ISO="20091015">20091015</DATE>
+      <PAGE.FIRST>11</PAGE.FIRST>
+      <PAGE.LAST>11</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="C_2009297EN.01001101.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0010">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Case C-255/08: Judgment of the Court (Sixth Chamber) of<DATE ISO="20091015">15 October 2009</DATE>— Commission of the European Communities v Kingdom of the Netherlands (Failure of a Member State to fulfil obligations — Directive 85/337/EEC — Assessment of the effects of certain public and private projects on the environment — Determination of thresholds — Size of the project — Incomplete transposition)</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>11</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0010">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_29720091205en00110011.pdf" DOI.DOC="doi:10.3001/C_2009.297.01001101.eng">11</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

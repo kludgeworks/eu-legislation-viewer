@@ -1,0 +1,318 @@
+<CONS.ACT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.51-20130501.xd">
+  <INFO.CONSLEG CONSLEG.DATE="20140124" CONSLEG.REF="2010D0372" DATE.LAST.MOD="20140111" END="NONE" END.DATE="99999999" LEG.VAL="DEC" PROD.SEQ="001.001.0" START.DATE="20140111">
+  </INFO.CONSLEG>
+  <INFO.PROD PROD.DATE="20140124" PROD.SYSTEM="CONSLEG.NEW" PRODUCER="ES">
+  </INFO.PROD>
+  <CONS.DOC>
+    <BIB.INSTANCE>
+      <DOCUMENT.REF FILE="CL2010D0372EN0010010.0001.doc.xml">
+        <LG.OJ>EN</LG.OJ>
+        <PAGE.FIRST>1</PAGE.FIRST>
+      </DOCUMENT.REF>
+      <DATE ISO="20140111">20140111</DATE>
+      <LG.DOC>EN</LG.DOC>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <PAGE.LAST>5</PAGE.LAST>
+      <PAGE.TOTAL>5</PAGE.TOTAL>
+    </BIB.INSTANCE>
+    <FAM.COMP LEG.VAL="DEC">
+      <BIB.DATA>
+        <BIB.INSTANCE.CONS>
+          <DOCUMENT.REF.CONS>
+            <COLL>L</COLL>
+            <NO.OJ>169</NO.OJ>
+            <YEAR>2010</YEAR>
+            <LG.OJ>EN</LG.OJ>
+            <PAGE.FIRST>17</PAGE.FIRST>
+            <PAGE.SEQ>1</PAGE.SEQ>
+            <VOLUME.REF>01</VOLUME.REF>
+          </DOCUMENT.REF.CONS>
+          <DATE ISO="20100703">20100703</DATE>
+          <LG.DOC>EN</LG.DOC>
+          <NO.SEQ>0006</NO.SEQ>
+          <PAGE.FIRST>17</PAGE.FIRST>
+          <PAGE.SEQ>1</PAGE.SEQ>
+          <PAGE.LAST>18</PAGE.LAST>
+          <PAGE.TOTAL>2</PAGE.TOTAL>
+          <NO.DOC FORMAT="NY" TYPE="OJ">
+            <NO.CURRENT>372</NO.CURRENT>
+            <YEAR>2010</YEAR>
+            <COM>EU</COM>
+          </NO.DOC>
+        </BIB.INSTANCE.CONS>
+        <NO.CELEX>32010D0372</NO.CELEX>
+        <DATE ISO="20100618">20100618</DATE>
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Commission Decision</HT>
+            </P>
+            <P>of<DATE ISO="20100618">18 June 2010</DATE>
+            </P>
+            <P>on the use of controlled substances as process agents under Article 8(4) of Regulation (EC) No 1005/2009 of the European Parliament and of the Council</P>
+            <P>(notified under document C(2010) 3847)</P>
+            <P>(Only the Dutch, French, German, Italian, Polish and Portuguese texts are authentic)</P>
+            <P>(2010/372/EU)</P>
+          </TI>
+        </TITLE>
+      </BIB.DATA>
+      <GR.MOD.ACT>
+        <MOD.ACT EXISTS="YES" LEG.VAL="DEC" TYPE="MOD">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>008</NO.OJ>
+                <YEAR>2014</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>27</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+                <VOLUME.REF>01</VOLUME.REF>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="20140111">20140111</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>0015</NO.SEQ>
+              <PAGE.FIRST>27</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>29</PAGE.LAST>
+              <PAGE.TOTAL>3</PAGE.TOTAL>
+              <NO.DOC FORMAT="YN" TYPE="OJ">
+                <NO.CURRENT>8</NO.CURRENT>
+                <YEAR>2014</YEAR>
+                <COM>EU</COM>
+              </NO.DOC>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>32014D0008</NO.CELEX>
+            <DATE ISO="20131010">20131010</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Commission Implementing Decision</HT>
+                </P>
+                <P>of<DATE ISO="20131010">10 October 2013</DATE>
+                </P>
+                <P>amending Decision 2010/372/EU on the use of controlled substances as process agents under Article 8(4) of Regulation (EC) No 1005/2009 of the European Parliament and of the Council</P>
+                <P>(notified under document C(2013) 6517)</P>
+                <P>(Only the Dutch, French, German, Italian, Polish and Portuguese texts are authentic)</P>
+                <P>(2014/8/EU)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+      </GR.MOD.ACT>
+    </FAM.COMP>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="UC">Commission Decision</HT>
+        </P>
+        <P>of<DATE ISO="20100618">18 June 2010</DATE>
+        </P>
+        <P>on the use of controlled substances as process agents under Article 8(4) of Regulation (EC) No 1005/2009 of the European Parliament and of the Council</P>
+        <P>(notified under document C(2010) 3847)</P>
+        <P>(Only the Dutch, French, German, Italian, Polish and Portuguese texts are authentic)</P>
+        <P>(2010/372/EU)</P>
+      </TI>
+    </TITLE>
+    <PREAMBLE>
+      <PREAMBLE.INIT>THE EUROPEAN COMMISSION,</PREAMBLE.INIT>
+      <GR.VISA>
+        <VISA>Having regard to the Treaty on the Functioning of the European Union,</VISA>
+        <VISA>Having regard to Regulation (EC) No 1005/2009 of the European Parliament and of the Council of<DATE ISO="20090916">16 September 2009</DATE>on substances that deplete the ozone layer<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+            <P>
+              <REF.DOC.OJ COLL="L" DATE.PUB="20091031" NO.OJ="286" PAGE.FIRST="1">OJ L 286, 31.10.2009, p. 1</REF.DOC.OJ>.</P>
+          </NOTE>, and in particular Article 8(4) thereof,</VISA>
+      </GR.VISA>
+      <GR.CONSID>
+        <GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+        <CONSID>
+          <NP>
+            <NO.P>(1)</NO.P>
+            <TXT>The use of ozone depleting substances as process agents is one of the few remaining emissive uses still allowed under Regulation (EC) No 1005/2009. The emission of ozone depleting substances causes potentially significant damage to the ozone layer. It is therefore necessary to ensure that the emissions resulting from process agent uses of ozone depleting substances remain insignificant.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(2)</NO.P>
+            <TXT>Furthermore, in view of the responsibilities of the Union under Decision X/14 of the Parties to the Montreal Protocol on Substances that Deplete the Ozone Layer, Article 8(4) of Regulation (EC) No 1005/2009 limits the use of controlled substances as process agents to<FT TYPE="NUMBER">1083</FT>metric tonnes per year and limits the emissions from process agent uses to 17 metric tonnes per year.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(3)</NO.P>
+            <TXT>An unexpected increase in the use of controlled substances as process agents in recent years has threatened the compliance of the Union with Decision X/14 and has made a stricter management of the uses necessary.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(4)</NO.P>
+            <TXT>Pursuant to Article 8 of Regulation (EC) No 1005/2009 a list of undertakings for which the use of controlled substances as process agents shall be permitted should be established, laying down maximum quantities that may be used for make-up and emitted for each of the undertakings concerned.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(5)</NO.P>
+            <TXT>The list of undertakings and associated quantities of substances should be based upon reports submitted by Member States and adjusted to ensure that the Union stays within the limits laid down in Article 8(4). The allocation of the make-up quota should be based on the average needs in the years 2005 to 2008. The calculation of the individual average demand should not consider years during which the respective undertaking did not use controlled substances as process agent. The thresholds are fixed at 124 % of the individual average in order to accommodate fluctuations of the yearly demand, whilst ensuring that the overall limit for the Union is respected.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(6)</NO.P>
+            <TXT>It is appropriate to allow for the transfer of quota between undertakings listed in the Annex to increase the flexibility for undertakings to respond to changing market needs. The quota should, however, cease with the decommissioning of the installation for which it was granted. The undertaking should therefore notify the decommissioning of installations concerned to the Commission and the Member State concerned.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(7)</NO.P>
+            <TXT>The measures provided for in this Decision are in accordance with the opinion of the Committee established by Article 25(1) of Regulation (EC) No 1005/2009,</TXT>
+          </NP>
+        </CONSID>
+      </GR.CONSID>
+      <PREAMBLE.FINAL>HAS ADOPTED THIS DECISION:</PREAMBLE.FINAL>
+    </PREAMBLE>
+    <ENACTING.TERMS>
+      <ARTICLE IDENTIFIER="001">
+        <TI.ART>Article 1</TI.ART>
+        <STI.ART>Definitions</STI.ART>
+        <PARAG IDENTIFIER="001.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>
+            <QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001">
+            </QUOT.START>Make-up<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001">
+            </QUOT.END>means the total quantity of a controlled substance in metric tonnes, whether virgin, recovered or reclaimed, that has not been used in the process cycle before and that is fed newly into the process cycle.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="001.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>
+            <QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002">
+            </QUOT.START>Emission<QUOT.END CODE="2019" ID="QE0002" REF.START="QS0002">
+            </QUOT.END>means the total quantity of a controlled substance in metric tonnes released into the atmosphere, water or soil during the process agent use and related storage and handling on the site of the installation.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="002">
+        <TI.ART>Article 2</TI.ART>
+        <STI.ART>Permitted process agent uses and threshold for emissions and quantities</STI.ART>
+        <PARAG IDENTIFIER="002.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>The Annex to this Decision establishes the list of undertakings for which the use of controlled substance as process agents shall be permitted as of<DATE ISO="20100101">1 January 2010</DATE>.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="002.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>Each undertaking shall only use the substance and the process set out in the Annex.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="002.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>The quantities, set out in the Annex, that may be used annually as make-up and that may be emitted annually by each undertaking shall not be exceeded. The allocated quota shall loose its validity at the end of the year in which the installation for which the quota was granted is definitely decommissioned.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="003">
+        <TI.ART>Article 3</TI.ART>
+        <STI.ART>Transfer of allocated quota</STI.ART>
+        <ALINEA>An undertaking may fully or partially transfer its make-up quota allocated for an existing installation outlined in the Annex, regardless of the substance or use the quantity was allocated for, to another undertaking listed in the Annex or within the same undertaking to another substance and use listed in the Annex for that undertaking.The beneficiary may use the quantity transferred for the substance and use allocated to the beneficiary in the Annex. The transfer shall only take effect after its notification to the Commission and the competent authorities of the Member States concerned and confirmation from the Commission of its receipt.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="004">
+        <TI.ART>Article 4</TI.ART>
+        <STI.ART>Notification of decommissioning</STI.ART>
+        <ALINEA>In case of decommissioning of the installations concerned, undertakings listed in the Annex shall, within three month, notify the Commission and the competent authority of the Member State in which the installation was located thereof.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="005">
+        <TI.ART>Article 5</TI.ART>
+        <STI.ART>Date of application</STI.ART>
+        <ALINEA>This Decision shall apply from<DATE ISO="20100101">1 January 2010</DATE>.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="006">
+        <TI.ART>Article 6</TI.ART>
+        <ALINEA>
+          <P>This Decision is addressed to the following undertakings:</P>
+          <TBL COLS="2" NO.SEQ="0001">
+            <CORPUS>
+              <ROW>
+                <CELL COL="1">
+                  <ADDR.S>
+                    <P>Anwil SA</P>
+                    <P>Ul. Torunska 222</P>
+                    <P>87-805 Wloclawek</P>
+                    <P>POLAND</P>
+                  </ADDR.S>
+                </CELL>
+                <CELL COL="2">
+                  <ADDR.S>
+                    <P>Arkema France SA</P>
+                    <P>420 rue d&apos;Estienne D’Orves</P>
+                    <P>92705 Colombes Cedex</P>
+                    <P>FRANCE</P>
+                  </ADDR.S>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <ADDR.S>
+                    <P>Bayer Material Science AG</P>
+                    <P>CAS-PR-CKD, Gebäude B669</P>
+                    <P>41538 Dormhagen</P>
+                    <P>GERMANY</P>
+                  </ADDR.S>
+                </CELL>
+                <CELL COL="2">
+                  <ADDR.S>
+                    <P>CUF Quimicos Industriais SA</P>
+                    <P>Quinta da Industria Beduidu</P>
+                    <P>3860-680 Estarreja</P>
+                    <P>PORTUGAL</P>
+                  </ADDR.S>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <ADDR.S>
+                    <P>Potasse et Produits Chimiques SA</P>
+                    <P>95 rue du General de Gaulle</P>
+                    <P>68802 Thann Cedex</P>
+                    <P>FRANCE</P>
+                  </ADDR.S>
+                </CELL>
+                <CELL COL="2">
+                  <ADDR.S>
+                    <P>Perstorp France SAS</P>
+                    <P>Rue Lavoisier BP 21</P>
+                    <P>38801 Le Pont de Claix</P>
+                    <P>FRANCE</P>
+                  </ADDR.S>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <ADDR.S>
+                    <P>Solvay Solexis SPA</P>
+                    <P>Viale Lombardia 20</P>
+                    <P>20021 Bollate (MI)</P>
+                    <P>ITALY</P>
+                  </ADDR.S>
+                </CELL>
+                <CELL COL="2">
+                  <ADDR.S>
+                    <P>Teijin Twaron BV</P>
+                    <P>Oosterhorn 6</P>
+                    <P>9936 AD Farmsum</P>
+                    <P>NETHERLANDS</P>
+                  </ADDR.S>
+                </CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+        </ALINEA>
+      </ARTICLE>
+    </ENACTING.TERMS>
+    <CONS.ANNEX>
+      <TITLE>
+        <TI>
+          <P>ANNEX</P>
+        </TI>
+      </TITLE>
+      <CONTENTS>
+        <P>(This Annex is not published because it contains confidential commercial information.)</P>
+      </CONTENTS>
+    </CONS.ANNEX>
+  </CONS.DOC>
+</CONS.ACT>

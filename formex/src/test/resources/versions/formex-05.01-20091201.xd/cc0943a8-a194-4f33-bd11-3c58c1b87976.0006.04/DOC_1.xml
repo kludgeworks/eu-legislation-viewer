@@ -1,0 +1,93 @@
+<CJT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.01-20091201.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2009312EN.01001602.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>312</NO.OJ>
+      <YEAR>2009</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>16</PAGE.FIRST>
+      <PAGE.SEQ>2</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20090925">20090925</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0026</NO.SEQ>
+    <PAGE.FIRST>16</PAGE.FIRST>
+    <PAGE.SEQ>2</PAGE.SEQ>
+    <PAGE.LAST>17</PAGE.LAST>
+    <PAGE.TOTAL>2</PAGE.TOTAL>
+    <NO.DOC TYPE="OJ">
+      <TXT>2009/C 312/26</TXT>
+    </NO.DOC>
+    <NO.DOC FORMAT="CNY" TYPE="INTERNAL">
+      <NO.CURRENT>383</NO.CURRENT>
+      <YEAR>2009</YEAR>
+    </NO.DOC>
+  </BIB.INSTANCE>
+  <TI.CJT>
+    <TITLE>
+      <TI>
+        <P>Action brought on<DATE ISO="20090925">25 September 2009</DATE>— Commission of the European Communities v French Republic</P>
+      </TI>
+    </TITLE>
+    <INDEX>
+      <KEYWORD>Case C-383/09</KEYWORD>
+    </INDEX>
+    <NO.DOC.C>2009/C 312/26</NO.DOC.C>
+    <LG.PROC LG="FR">Language of the case: French</LG.PROC>
+    <TRANS.REF>
+      <IE>
+      </IE>
+    </TRANS.REF>
+  </TI.CJT>
+  <CONTENTS>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Parties</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>
+        <HT TYPE="ITALIC">Applicant:</HT>Commission of the European Communities (represented by: O. Beynet and D. Recchia, acting as Agents)</P>
+      <P>
+        <HT TYPE="ITALIC">Defendant:</HT>French Republic</P>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Form of order sought</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <LIST TYPE="DASH">
+        <ITEM>
+          <P>Declare that, by not establishing a programme of measures to ensure strict protection of the species<HT TYPE="ITALIC">Cricetus cricetus</HT>(the European Hamster), the French Republic has failed to fulfil its obligations under Article 12(1)(d) of Directive 92/43/EEC of<DATE ISO="19920521">21 May 1992</DATE>on the conservation of natural habitats and of wild fauna and flora<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="ENDNOTE">
+              <P>
+                <REF.DOC.OJ COLL="L" DATE.PUB="1992" NO.OJ="206" PAGE.FIRST="7">OJ 1992 L 206, p. 7</REF.DOC.OJ>
+              </P>
+            </NOTE>;</P>
+        </ITEM>
+        <ITEM>
+          <P>order the French Republic to pay the costs.</P>
+        </ITEM>
+      </LIST>
+    </GR.SEQ>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="BOLD">Pleas in law and main arguments</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>By its action, the Commission of the European Communities claims that the French Republic has failed to establish, as required by Article 12 of Directive 92/43/EEC, a system of strict protection for the species Cricetus cricetus (the European Hamster) in Alsace, which is the area in France where this species is naturally distributed.</P>
+      <P>According to the applicant, a survey of the number of the animal’s burrows showed a significant fall in their numbers in recent years, since the number of burrows has gone from 1167 in 2001 to only 161 in 2007. That being the case, threatened both by unfavourable farming practices and by the pressure of urban development, the species is threatened with complete extinction in the very near future.</P>
+      <P>In its application, the Commission recognises that the defendant has taken those problems into account by adopting measures relating both to town planning and farming practices, but those measures are entirely inadequate.</P>
+      <P>First, the three priority action areas, which are the areas where the bulk of efforts to protect the species are concentrated, cover only a very small part of the territory which is the animal’s natural habitat since two thirds of the existing burrows are located outside those areas, which themselves represent no more than 2 % of the land which is favourable to the European Hamster. However, if the territory to be covered by the measures for the protection of this species is to be sufficient, it is necessary to take as the minimum point of reference the presence of the European Hamster in 1990, not in 2000.</P>
+      <P>Secondly, the protection measures are themselves greatly lacking. The Commission is particularly concerned by the lack of clarity in the legislation in relation to areas which can be re-occupied by the hamster. The national authority has much too great a discretion in the granting of derogations for urban development projects in territories which are the habitat of the hamsters and great uncertainty prevails as regards compensatory measures to be taken for the protection of this species.</P>
+    </GR.SEQ>
+  </CONTENTS>
+</CJT>

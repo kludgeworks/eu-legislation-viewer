@@ -1,0 +1,200 @@
+<LSEU noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.53l-20140201.xd">
+  <BIB.LSEU>
+    <NO.DOC.LSEU>LSEU-DH0001-2017-03-07-1548</NO.DOC.LSEU>
+    <LG.DOC>EN</LG.DOC>
+    <LAST.MODIFICATION>
+      <DATE ISO="20170112">12.01.2017</DATE>
+    </LAST.MODIFICATION>
+    <ARCHIVED VALUE="NO">
+    </ARCHIVED>
+  </BIB.LSEU>
+  <TITLE>
+    <TI>
+      <P>Non-discrimination and equal opportunities in the European Union</P>
+    </TI>
+  </TITLE>
+  <CONTENTS.LSEU>
+    <HEADER.LSEU>
+      <P>
+        <IE>
+        </IE>
+      </P>
+    </HEADER.LSEU>
+    <SUMMARY.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Summary of:</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <P>
+          <REF.DOC URI="http://publications.europa.eu/resource/celex/52008DC0420" CONTEXT="EUR-LEX">Communication (COM(2008) 420) — Non-discrimination and equal opportunities: A renewed commitment</REF.DOC>
+        </P>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">What is the aim of the communication?</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <LIST TYPE="BULLET">
+            <ITEM>
+              <P>It presents the approach of the European Union (EU) to</P>
+              <P>
+                <LIST TYPE="BULLET">
+                  <ITEM>
+                    <P>
+                      <HT TYPE="BOLD">fighting</HT>
+                      <REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/nondiscrimination_principle.html" CONTEXT="EUR-LEX">discrimination</REF.DOC>on the grounds of<REF.DOC URI="http://publications.europa.eu/resource/uriserv/l33114" CONTEXT="EUR-LEX">race or ethnicity</REF.DOC>, religion or belief, disability, age,<REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/equal_treatment.html" CONTEXT="EUR-LEX">gender</REF.DOC>or sexual orientation and</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>
+                      <HT TYPE="BOLD">promoting</HT>
+                      <REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/equal_opportunities.html" CONTEXT="EUR-LEX">equal opportunities</REF.DOC>.</P>
+                  </ITEM>
+                </LIST>
+              </P>
+            </ITEM>
+            <ITEM>
+              <P>It seeks to ensure that everyone is given a<HT TYPE="BOLD">fair chance</HT>to realise their potential.</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Key points</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>
+            <HT TYPE="BOLD">Strengthening the fight against discrimination</HT>
+          </P>
+          <LIST TYPE="BULLET">
+            <ITEM>
+              <P>This<REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/european_commission.html" CONTEXT="EUR-LEX">European Commission</REF.DOC>communication points out that fight against discrimination cannot be won by legislation alone. Nevertheless, effective and properly-enforced laws can play an important role in delivering changes in people’s attitudes and behaviour.</P>
+            </ITEM>
+            <ITEM>
+              <P>Here, the Commission has 2 important tasks to perform:</P>
+              <P>
+                <LIST TYPE="BULLET">
+                  <ITEM>
+                    <P>ensuring that existing EU laws are implemented (examples include the directives on equal treatment in<REF.DOC URI="http://publications.europa.eu/resource/uriserv/c10823" CONTEXT="EUR-LEX">employment and occupation</REF.DOC>, on equal treatment irrespective of racial or ethnic origin and on<REF.DOC URI="http://publications.europa.eu/resource/uriserv/c10935" CONTEXT="EUR-LEX">equal treatment of men and women outside the employment market</REF.DOC>),</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>proposing new laws to extend the scope of legal protection to all forms of discrimination in all areas of life (for example, the<REF.DOC URI="http://publications.europa.eu/resource/celex/52008PC0426" CONTEXT="EUR-LEX">proposal for a directive on equal treatment of persons</REF.DOC>irrespective of religion or belief, disability, age or sexual orientation.</P>
+                  </ITEM>
+                </LIST>
+              </P>
+            </ITEM>
+          </LIST>
+          <P>
+            <HT TYPE="BOLD">Strengthening policy tools for active promotion of equal opportunities</HT>
+          </P>
+          <P>Complementing legal measures, the communication highlights the role of certain policy tools.</P>
+          <LIST TYPE="BULLET">
+            <ITEM>
+              <P>
+                <HT TYPE="BOLD">Stronger policy tools</HT>are needed if equal opportunities are to be promoted effectively. They include:</P>
+              <P>
+                <LIST TYPE="BULLET">
+                  <ITEM>
+                    <P>
+                      <HT TYPE="BOLD">mainstreaming non-discrimination into all EU policies</HT>— including in particular employment, social inclusion, education and training policies. A<REF.DOC URI="http://ec.europa.eu/social/BlobServlet?docId=6457&amp;langId=en" CONTEXT="EXTERNAL">guide</REF.DOC>has been published on socially responsible public procurement to raise awareness in EU countries of how to promote non-discrimination and equal opportunities through procurement policy and practice;</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>
+                      <HT TYPE="BOLD">measuring discrimination and evaluating progress</HT>— the Commission is to explore whether the regular collection of statistics with EU countries on the extent and impact of discrimination and the creation of an EU-survey module on discrimination are feasible. It is also working with<REF.DOC URI="http://www.equineteurope.org/" CONTEXT="EXTERNAL">Equinet, the European network of equality bodies</REF.DOC>to develop a system for gathering information on complaints handled by these bodies;</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>
+                      <HT TYPE="BOLD">positive action</HT>— EU law does not prevent EU countries from maintaining or adopting specific measures to prevent, or compensate for, disadvantages linked to discrimination on grounds where there is provision for protection. EU countries are urged to make use of all possibilities for positive action, in particular in access to education, employment, housing and health care;</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>
+                      <HT TYPE="BOLD">awareness-raising and training activities for stakeholders</HT>— such as information campaigns to ensure employers, service providers and administrations are aware of their duties;</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>
+                      <HT TYPE="BOLD">promoting the benefits of diversity at the workplace</HT>— legislation is more effective when coupled with progressive and innovative strategies implemented by employers to manage an increasingly diverse workforce. Initiatives include voluntary charters and cooperation between business, business schools and universities on diversity-related topics.</P>
+                  </ITEM>
+                </LIST>
+              </P>
+            </ITEM>
+            <ITEM>
+              <P>
+                <HT TYPE="BOLD">Dialogue on non-discrimination and equal opportunities</HT>involving all stakeholders and<REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/civil_society_organisation.html" CONTEXT="EUR-LEX">civil society</REF.DOC>is needed. Examples include the equality summits have been held on a regular basis to share knowledge and experiences.</P>
+            </ITEM>
+            <ITEM>
+              <P>
+                <HT TYPE="BOLD">Advancing the<REF.DOC URI="http://publications.europa.eu/resource/uriserv/171202_6" CONTEXT="EUR-LEX">social inclusion of the Roma</REF.DOC>
+                </HT>, Europe’s largest ethnic minority, is a policy priority that is receiving attention both at EU level and in EU countries. Each EU country has prepared a national Roma integration strategy and efforts are under way to fight discrimination and anti-Gypsyism. This is with a view to developing effective and inclusive cooperation mechanisms in the medium term involving civil society and national, regional and local authorities.</P>
+            </ITEM>
+          </LIST>
+          <P>
+            <HT TYPE="BOLD">Funding</HT>
+          </P>
+          <LIST TYPE="BULLET">
+            <ITEM>
+              <P>Currently,<REF.DOC URI="http://publications.europa.eu/resource/uriserv/2602_6" CONTEXT="EUR-LEX">European Social Fund</REF.DOC>finance is available to support the above activities in EU countries. The<REF.DOC URI="http://publications.europa.eu/resource/uriserv/2603_2" CONTEXT="EUR-LEX">Instrument for Pre-accession Assistance</REF.DOC>provides financial aid to candidate and potential<REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/applicant_countries.html" CONTEXT="EUR-LEX">candidate countries</REF.DOC>to meet future EU membership obligations in areas such as respect for<REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/human_rights.html" CONTEXT="EUR-LEX">fundamental rights</REF.DOC>, gender equality, tolerance and social inclusion.</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Background</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>Respect for the shared values of liberty, democracy, respect for human rights and fundamental freedoms is enshrined in the EU’s founding<REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/treaties.html" CONTEXT="EUR-LEX">treaties</REF.DOC>. The treaties recognise that every individual is of equal worth and thus should have fair access to the opportunities that life presents.</P>
+          <P>For more information, see:</P>
+          <LIST TYPE="BULLET">
+            <ITEM>
+              <P>
+                <REF.DOC URI="http://ec.europa.eu/justice/discrimination/index_en.htm" CONTEXT="EXTERNAL">
+                  <QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+                  </QUOT.START>Tackling discrimination<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+                  </QUOT.END>
+                </REF.DOC>on the European Commission&apos;s website.</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+      </GR.SEQ>
+    </SUMMARY.LSEU>
+    <REFERENCES.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Main document</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <P>Communication from the Commission to the European Parliament, the Council, the European Economic and Social Committee and the Committee of the Regions — Non-discrimination and equal opportunities: A renewed commitment (<REF.DOC URI="http://publications.europa.eu/resource/celex/52008DC0420" CONTEXT="EUR-LEX">COM(2008) 420 final</REF.DOC>,<DATE ISO="20080702">2.7.2008</DATE>)</P>
+      </GR.SEQ>
+    </REFERENCES.LSEU>
+    <REFERRED.DOCS.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Related acts</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <P>Council Directive<REF.DOC URI="http://publications.europa.eu/resource/celex/32000L0043" CONTEXT="EUR-LEX">2000/43/EC</REF.DOC>of<DATE ISO="20000629">29 June 2000</DATE>implementing the principle of equal treatment between persons irrespective of racial or ethnic origin (OJ L 180,<DATE ISO="20000719">19.7.2000</DATE>, pp. 22-26)</P>
+        <P>Council Directive<REF.DOC URI="http://publications.europa.eu/resource/celex/32000L0078" CONTEXT="EUR-LEX">2000/78/EC</REF.DOC>of<DATE ISO="20001127">27 November 2000</DATE>establishing a general framework for equal treatment in employment and occupation (OJ L 303,<DATE ISO="20001202">2.12.2000</DATE>, pp. 16-22)</P>
+        <P>Council Directive<REF.DOC URI="http://publications.europa.eu/resource/celex/32004L0113" CONTEXT="EUR-LEX">2004/113/EC</REF.DOC>of<DATE ISO="20041213">13 December 2004</DATE>implementing the principle of equal treatment between men and women in the access to and supply of goods and services (OJ L 373,<DATE ISO="20041221">21.12.2004</DATE>, pp. 37-43)</P>
+        <P>Council Framework Decision<REF.DOC URI="http://publications.europa.eu/resource/celex/32008F0913" CONTEXT="EUR-LEX">2008/913/JHA</REF.DOC>of<DATE ISO="20081128">28 November 2008</DATE>on combating certain forms and expressions of racism and xenophobia by means of criminal law (OJ L 328,<DATE ISO="20081206">6.12.2008</DATE>, pp. 55-58)</P>
+        <P>Council<REF.DOC URI="http://publications.europa.eu/resource/celex/32013H1224(01)" CONTEXT="EUR-LEX">Recommendation</REF.DOC>of<DATE ISO="20131209">9 December 2013</DATE>on effective Roma integration measures in the Member States (OJ C 378,<DATE ISO="20131224">24 December 2013</DATE>, pp. 1-7)</P>
+        <P>Proposal for a Council Directive on implementing the principle of equal treatment between persons irrespective of religion or belief, disability, age or sexual orientation (<REF.DOC URI="http://publications.europa.eu/resource/celex/52008PC0426" CONTEXT="EUR-LEX">COM(2008) 426 final</REF.DOC>,<DATE ISO="20080702">2.7.2008</DATE>)</P>
+      </GR.SEQ>
+    </REFERRED.DOCS.LSEU>
+  </CONTENTS.LSEU>
+</LSEU>

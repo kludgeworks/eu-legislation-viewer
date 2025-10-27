@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 
 public class FormexVersionTestUtils {
     
-    private static final String VERSIONS_BASE_PATH = "/formex/versions";
+    private static final String VERSIONS_BASE_PATH = "/versions";
     
     /**
      * Generic method to list resource contents with a custom filter predicate.
@@ -61,9 +61,32 @@ public class FormexVersionTestUtils {
     
     public static List<String> getXmlFilesForVersion(String version) {
         String versionPath = VERSIONS_BASE_PATH + "/" + version;
-        Predicate<Path> xmlFilter = path -> Files.isRegularFile(path) && 
-                                           path.toString().toLowerCase().endsWith(".xml");
-        return listResourceContents(versionPath, xmlFilter, "Failed to get XML files for version: " + version);
+        try {
+            URI uri = Objects.requireNonNull(FormexVersionTestUtils.class.getResource(versionPath)).toURI();
+            Path path;
+
+            if (uri.getScheme().equals("jar")) {
+                FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.emptyMap());
+                path = fileSystem.getPath(versionPath);
+            } else {
+                path = Paths.get(uri);
+            }
+
+            List<String> results = new ArrayList<>();
+            try (Stream<Path> stream = Files.walk(path)) {
+                stream.filter(p -> Files.isRegularFile(p) && p.toString().toLowerCase().endsWith(".xml"))
+                      .forEach(p -> {
+                          // Get relative path from version directory
+                          Path relativePath = path.relativize(p);
+                          results.add(relativePath.toString());
+                      });
+            }
+
+            Collections.sort(results);
+            return results;
+        } catch (IOException | URISyntaxException e) {
+            throw new RuntimeException("Failed to get XML files for version: " + version, e);
+        }
     }
     
     public static String buildResourcePath(String version, String fileName) {
@@ -91,7 +114,7 @@ public class FormexVersionTestUtils {
             .filter(fileName -> hasRootElement(version, fileName, rootElementName))
             .toList();
     }
-    
+
     private static boolean hasRootElement(String version, String fileName, String rootElementName) {
         try {
             String path = buildResourcePath(version, fileName);
@@ -101,19 +124,19 @@ public class FormexVersionTestUtils {
             return false;
         }
     }
-    
+
     private static String extractRootElementName(String resourcePath) {
         try (InputStream inputStream = FormexVersionTestUtils.class.getResourceAsStream(resourcePath)) {
-            assert inputStream != null;
+            if (inputStream == null) {
+                throw new RuntimeException("Resource not found: " + resourcePath);
+            }
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-
                 String content = reader.lines().collect(Collectors.joining());
                 Pattern rootElementPattern = Pattern.compile("<([A-Z]+)(?:\\s|>)");
                 Matcher matcher = rootElementPattern.matcher(content);
                 return matcher.find() ? matcher.group(1) : "";
             }
-        }
-        catch ( IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException("Failed to read resource: " + resourcePath, e);
         }
     }

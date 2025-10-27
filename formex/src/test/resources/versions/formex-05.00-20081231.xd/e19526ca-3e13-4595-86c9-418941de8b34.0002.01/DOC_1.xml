@@ -1,0 +1,417 @@
+<JUDGMENT noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.00-20081231.xd">
+  <BIB.JUDGMENT>
+    <REF.CASE FILE="ECRCJ2002ENB.1101079701.case.xml">
+      <NO.CASE>C-356/00</NO.CASE>
+    </REF.CASE>
+    <NO.CELEX>62000J0356</NO.CELEX>
+    <NO.SEQ>0009.0002</NO.SEQ>
+    <PAGE.FIRST.ECR>10811</PAGE.FIRST.ECR>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST.ECR>10827</PAGE.LAST.ECR>
+    <PAGE.TOTAL>17</PAGE.TOTAL>
+    <AUTHOR>CJ</AUTHOR>
+  </BIB.JUDGMENT>
+  <CURR.TITLE>
+    <LEFT>JUDGMENT OF<DATE ISO="20021121">21. 11. 2002</DATE>— CASE C-356/00</LEFT>
+    <RIGHT>TESTA AND LAZZERI</RIGHT>
+  </CURR.TITLE>
+  <TITLE>
+    <TI>
+      <P>
+        <HT TYPE="UC">Judgment of the Court</HT>(Fifth Chamber)</P>
+      <P>
+        <DATE ISO="20021121">21 November 2002</DATE>
+        <NOTE NOTE.ID="E0001" NUMBERING="STAR">
+          <P>Language of the case: Italian.</P>
+        </NOTE>
+      </P>
+    </TI>
+  </TITLE>
+  <JUDGMENT.INIT>
+    <P>In Case C-356/00,</P>
+    <P>REFERENCE to the Court under Article 234 EC by the Tribunale amministrativo regionale per la Toscana (Italy) for a preliminary ruling in the proceedings pending before that court between</P>
+  </JUDGMENT.INIT>
+  <PARTIES>
+    <PLAINTIFS>
+      <P>Antonio Testa,</P>
+      <P>Lido Lazzeri</P>
+    </PLAINTIFS>
+    <AGAINST>and</AGAINST>
+    <DEFENDANTS>
+      <P>Commissione Nazionale per le Società e la Borsa (Consob),</P>
+    </DEFENDANTS>
+    <INTERVENERS>
+      <P>intervener:</P>
+      <P>Banca Fideuram SpA,</P>
+    </INTERVENERS>
+  </PARTIES>
+  <P>on the interpretation of Point 3 of Section A of the Annex to Council Directive 93/22/EEC of<DATE ISO="19930510">10 May 1993</DATE>on investment services in the securities field (<REF.DOC.OJ COLL="L" NO.OJ="141" DATE.PUB="1993" PAGE.FIRST="27">OJ 1993 L 141, p. 27</REF.DOC.OJ>),</P>
+  <PREAMBLE>
+    <PREAMBLE.INIT>
+      <P>THE COURT (Fifth Chamber),</P>
+      <P>composed of: M. Wathelet, President of the Chamber, C.W.A. Timmermans, A. La Pergola, P. Jann and S. von Bahr (Rapporteur), Judges,</P>
+      <P>Advocate General: L.A. Geelhoed,</P>
+      <P>Registrar: L. Hewlett, Principal Administrator,</P>
+    </PREAMBLE.INIT>
+    <GR.CONSID>
+      <CONSID>
+        <P>after considering the written observations submitted on behalf of:</P>
+      </CONSID>
+      <CONSID>
+        <LIST TYPE="DASH">
+          <ITEM>
+            <P>Mr Testa, Mr Lazzeri and Banca Fideuram SpA, by G. de Nova, R. Ristuccia and F. Barbieri, avvocati,</P>
+          </ITEM>
+          <ITEM>
+            <P>Commissione Nazionale per le Società e la Borsa (Consob) and the Italian Government, by U. Leanza, acting as Agent, assisted by F. Quadri, avvocato dello Stato,</P>
+          </ITEM>
+          <ITEM>
+            <P>the Commission of the European Communities, by C. Tufvesson and A. Aresu, acting as Agents,</P>
+          </ITEM>
+        </LIST>
+      </CONSID>
+    </GR.CONSID>
+    <GR.VISA>
+      <VISA>having regard to the Report for the Hearing,</VISA>
+      <VISA>after hearing the oral observations of Mr Testa, Mr Lazzeri and Banca Fideuram SpA, represented by R. Ristuccia and F. Barbieri, Commissione Nazionale per le Società e la Borso (Consob) and the Italian Government, represented by G. deBellis, avvocato dello Stato, and the Commission, represented by C. Tufvesson and A. Aresu, at the hearing on<DATE ISO="20011108">8 November 2001</DATE>,</VISA>
+      <VISA>after hearing the Opinion of the Advocate General at the sitting on<DATE ISO="20020207">7 February 2002</DATE>,</VISA>
+    </GR.VISA>
+    <PREAMBLE.FINAL>
+      <P>gives the following</P>
+    </PREAMBLE.FINAL>
+  </PREAMBLE>
+  <CONTENTS.JUDGMENT>
+    <GR.SEQ LEVEL="1">
+      <TITLE>
+        <TI>
+          <P>Judgment</P>
+        </TI>
+      </TITLE>
+      <NP>
+        <NO.P>1</NO.P>
+        <TXT>By order of<DATE ISO="20000118">18 January 2000</DATE>, received at the Court on<DATE ISO="20000925">25 September 2000</DATE>, the Tribunale amministrativo regionale per la Toscana (Regional Administrative Court, Tuscany) referred to the Court for a preliminary ruling under Article 234 EC two questions on the interpretation of Point 3 of Section A of the Annex to Council Directive 93/22/EEC of<DATE ISO="19930510">10 May 1993</DATE>on investment services in the securities field (<REF.DOC.OJ COLL="L" NO.OJ="141" DATE.PUB="1993" PAGE.FIRST="27">OJ 1993 L 141, p. 27</REF.DOC.OJ>).</TXT>
+      </NP>
+      <NP>
+        <NO.P>2</NO.P>
+        <TXT>Those questions were raised in proceedings between Mr Testa and Mr Lazzeri, supported by Banca Fideuram SpA (hereinafter<QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+          </QUOT.START>Fideuram<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+          </QUOT.END>), and Commissione Nazionale per le Società e la Borsa (hereinafter<QUOT.START ID="QS0002" REF.END="QE0002" CODE="2018">
+          </QUOT.START>Consob<QUOT.END ID="QE0002" REF.START="QS0002" CODE="2019">
+          </QUOT.END>) concerning the removal of Mr Testa and the suspension of Mr Lazzeri from the professional register of financial promoters.</TXT>
+      </NP>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>The Community legislation</P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>3</NO.P>
+          <TXT>According to the third recital in the preamble to Directive 93/22, the approach adopted by the directive is to effect only the essential harmonisation necessary and sufficient to secure the mutual recognition of authorisation and of prudential supervision systems, making possible the grant to firms providing investment services of a single authorisation valid throughout the Community and the application of the principle of home Member State supervision of such firms.</TXT>
+        </NP>
+        <NP>
+          <NO.P>4</NO.P>
+          <TXT>Under Article 14(1) of Directive 93/22, investment firms duly authorised in one Member State may provide the investment services covered by their authorisation in any other Member State either by the establishment of a branch or under the freedom to provide services.</TXT>
+        </NP>
+        <NP>
+          <NO.P>5</NO.P>
+          <TXT>Article 1(2) of Directive 93/22 defines an<QUOT.START ID="QS0003" REF.END="QE0003" CODE="2018">
+            </QUOT.START>investment firm<QUOT.END ID="QE0003" REF.START="QS0003" CODE="2019">
+            </QUOT.END>for the purposes of the directive as any legal person or, subject to certain conditions, natural person whose regular occupation or business is the provision of investment services for third parties on a professional basis.</TXT>
+        </NP>
+        <NP>
+          <NO.P>6</NO.P>
+          <TXT>Article 1(1) of Directive 93/22 defines<QUOT.START ID="QS0004" REF.END="QE0004" CODE="2018">
+            </QUOT.START>investment service<QUOT.END ID="QE0004" REF.START="QS0004" CODE="2019">
+            </QUOT.END>as<QUOT.START ID="QS0005" REF.END="QE0005" CODE="2018">
+            </QUOT.START>any of the services listed in Section A of the Annex relating to any of the instruments listed in Section B of the Annex that are provided for a third party<QUOT.END ID="QE0005" REF.START="QS0005" CODE="2019">
+            </QUOT.END>.</TXT>
+        </NP>
+        <NP>
+          <NO.P>7</NO.P>
+          <TXT>Section A of the Annex to Directive 93/22 refers in Point 1(a) to the<QUOT.START ID="QS0006" REF.END="QE0006" CODE="2018">
+            </QUOT.START>[r]eception and transmission, on behalf of investors, of orders in relation to one or more ofthe instruments listed in Section B<QUOT.END ID="QE0006" REF.START="QS0006" CODE="2019">
+            </QUOT.END>. It refers in Point 3 to<QUOT.START ID="QS0007" REF.END="QE0007" CODE="2018">
+            </QUOT.START>[m]anaging portfolios of investments in accordance with mandates given by investors on a discriminatory, client-by-client basis where such portfolios include one or more of the instruments listed in Section B<QUOT.END ID="QE0007" REF.START="QS0007" CODE="2019">
+            </QUOT.END>.</TXT>
+        </NP>
+        <NP>
+          <NO.P>8</NO.P>
+          <TXT>Section B of the Annex to Directive 93/22 lists various financial instruments including, in Point 1(a),<QUOT.START ID="QS0008" REF.END="QE0008" CODE="2018">
+            </QUOT.START>[t]ransferable securities<QUOT.END ID="QE0008" REF.START="QS0008" CODE="2019">
+            </QUOT.END>.</TXT>
+        </NP>
+        <NP>
+          <NO.P>9</NO.P>
+          <TXT>Under the fifth subparagraph of Article 1(2) of Directive 93/22, where a person provides one of the services referred to in Section A(1)(a) of the Annex to that directive and where that activity is carried on solely for the account of and under the full and unconditional responsibility of an investment firm, that activity is regarded as the activity, not of that person, but of the investment firm itself.</TXT>
+        </NP>
+        <NP>
+          <NO.P>10</NO.P>
+          <TXT>Article 2(1) of Directive 93/22 provides that the latter is to apply to all investment firms. However, under that provision,<QUOT.START ID="QS0009" REF.END="QE0009" CODE="2018">
+            </QUOT.START>only paragraph 4 of this article and Articles 8(2), 10, 11,12, first paragraph, 14(3) and (4), 15, 19 and 20... shall apply to credit institutions the authorisation of which, under Directives 77/780/EEC and 89/646/EEC, covers one or more of the investment services listed in Section A of the Annex to this Directive<QUOT.END ID="QE0009" REF.START="QS0009" CODE="2019">
+            </QUOT.END>.</TXT>
+        </NP>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>The national legislation</P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>11</NO.P>
+          <TXT>Decreto legislativo No 415/1996, Recepimento della direttiva 93/22/CEE del<DATE ISO="19930510">10 maggio 1993</DATE>relativa ai servizi di investimento del settore dei valori mobiliari edella direttiva 93/6/CEE del<DATE ISO="19930315">15 marzo 1993</DATE>relativa all&apos;adeguatezza patrimoniale delle imprese di investimento e degli enti creditizi (Legislative Decree No 415/1996 transposing Directive 93/22 and Directive 93/6/EEC of<DATE ISO="19930315">15 March 1993</DATE>on the capital adequacy of investments firms and credit institutions), of<DATE ISO="19960723">23 July 1996</DATE>
+            <HT TYPE="ITALIC">(GURI</HT>No 186 of<DATE ISO="19960809">9 August 1996</DATE>, ordinary supplement No 133, p. 3, hereinafter<QUOT.START ID="QS0010" REF.END="QE0010" CODE="2018">
+            </QUOT.START>Legislative Decree No 415/1996<QUOT.END ID="QE0010" REF.START="QS0010" CODE="2019">
+            </QUOT.END>), contains a set of rules governing investment services and firms.</TXT>
+        </NP>
+        <NP>
+          <NO.P>12</NO.P>
+          <TXT>The investment services covered by Legislative Decree No 415/1996 include, in particular, under Article 1(3)(d) thereof,<QUOT.START ID="QS0011" REF.END="QE0011" CODE="2018">
+            </QUOT.START>managing on an individual basis investment portfolios on behalf of third parties<QUOT.END ID="QE0011" REF.START="QS0011" CODE="2019">
+            </QUOT.END>.</TXT>
+        </NP>
+        <NP>
+          <NO.P>13</NO.P>
+          <TXT>Article 2(1) of Legislative Decree No 415/1996 allows not only stockbroking firms but also banks to offer investment services to the public on a professional basis.</TXT>
+        </NP>
+        <NP>
+          <NO.P>14</NO.P>
+          <TXT>Under Article 4(1) of the same legislative decree, the purpose of the supervision exercised in this field by Consob and the Banca d&apos;Italia is to ensure the transparency and lawfulness of the conduct as well as the sound and prudent management of the persons supervised, guaranteeing the protection of investors and the stability, competitiveness and proper functioning of the financial system.</TXT>
+        </NP>
+        <NP>
+          <NO.P>15</NO.P>
+          <TXT>Article 17(2) of Legislative Decree No 415/1996 provides that,<QUOT.START ID="QS0012" REF.END="QE0012" CODE="2018">
+            </QUOT.START>in performing services, investment firms and banks may, subject to prior written consent, act in their own name and on behalf of their client<QUOT.END ID="QE0012" REF.START="QS0012" CODE="2019">
+            </QUOT.END>.</TXT>
+        </NP>
+        <NP>
+          <NO.P>16</NO.P>
+          <TXT>Article 18(1) of the same legislative decree provides that<QUOT.START ID="QS0013" REF.END="QE0013" CODE="2018">
+            </QUOT.START>contracts for the services covered by this Decree shall be drawn up in writing and the client shall be provided with a copy thereof<QUOT.END ID="QE0013" REF.START="QS0013" CODE="2019">
+            </QUOT.END>.</TXT>
+        </NP>
+        <NP>
+          <NO.P>17</NO.P>
+          <TXT>Article 20(1)(a) of Legislative Decree No 415/1996 provides that a portfolio management contract must be drawn up in writing.</TXT>
+        </NP>
+        <NP>
+          <NO.P>18</NO.P>
+          <TXT>Article 22(1) of that legislative decree states that<QUOT.START ID="QS0014" REF.END="QE0014" CODE="2018">
+            </QUOT.START>out-of-office canvassing<QUOT.END ID="QE0014" REF.START="QS0014" CODE="2019">
+            </QUOT.END>means the promotion and sale to the public of financial instruments and investment services away from the premises of the firm issuing those instruments or providing those services.</TXT>
+        </NP>
+        <NP>
+          <NO.P>19</NO.P>
+          <TXT>Article 23 of Legislative Decree No 415/1996 contains a set of special rules for the profession of financial promoter. A financial promoter is defined in Article 23(2) as a natural person who, acting as an employee, agent or authorised representative, engages in out-of-office canvassing on a professional basis. The activities of a financial promoter may be exercised only for one authorised firm.</TXT>
+        </NP>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>The dispute i n the main proceedings and the questions referred</P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>20</NO.P>
+          <TXT>Mr Testa and Mr Lazzeri acted as financial promoters on behalf of Fideuram. They offered for sale to the public, away from the premises of the Fideuram bank, various financial instruments and investment services, including units in the<QUOT.START ID="QS0015" REF.END="QE0015" CODE="2018">
+            </QUOT.START>Fondoitalia<QUOT.END ID="QE0015" REF.START="QS0015" CODE="2019">
+            </QUOT.END>investment trust, governed by Luxembourg law, marketed by Fideuram. That trust consists of a number of sub-funds, each of which is invested in securities of a specific market and involves a more or less high degree of risk. Subscribers may apply to switch from the sub-fund originally chosen to another sub-fund, according to their particular requirements.</TXT>
+        </NP>
+        <NP>
+          <NO.P>21</NO.P>
+          <TXT>By two decisions of<DATE ISO="19980603">3 June 1998</DATE>, Consob removed Mr Testa from the professional register of financial promoters and suspended Mr Lazzeri from the same register for four months. In its decision, Consob found that Mr Testa and Mr Lazzeri had carried out, on behalf of a considerable proportion of their clients, a large number of similar<QUOT.START ID="QS0016" REF.END="QE0016" CODE="2018">
+            </QUOT.START>switch<QUOT.END ID="QE0016" REF.START="QS0016" CODE="2019">
+            </QUOT.END>transfers between different sub-funds of the same trust within a limited period of time. Although Mr Testa&apos;s and Mr Lazzeri&apos;s clients had signed the appropriate switching contracts and provided handwritten declarations that they had never intended to relinquish their power to take decisions, Consob maintained that those transfer operations had in fact been decided upon by those financial promoters. According to Consob, a transfer between sub-funds of the same trust constituted a disinvestment from the financial instrument originally acquired and an investment in a new financial instrument. Consob therefore held that the operations carried out by Mr Testa and Mr Lazzeri were such as to suggest that they were engaging in covert asset management. In so far as the Italian legislation reserves the activity of managing investment portfolios on an individual basis on behalf of third parties to persons duly authorised for that purpose, Consob concluded that Mr Testa and Mr Lazzeri had committed a serious breach of their professional duties.</TXT>
+        </NP>
+        <NP>
+          <NO.P>22</NO.P>
+          <TXT>Mr Testa and Mr Lazzeri brought actions for annulment of those Consob decisions of<DATE ISO="19980603">3 June 1998</DATE>before the Tribunale amministrativo regionale per la Toscana. In their applications, they argue<HT TYPE="ITALIC">inter alia</HT>that those decisions are contrary to Directive 93/22. According to Mr Testa and Mr Lazzeri, the definition of managing investment portfolios laid down by Legislative Decree No 415/1996 and adopted by Consob is different from that contained inDirective 93/22. Unlike the latter, the former makes no reference either to the discretionary nature of the manager&apos;s activity or to mandates conferred by investors. Mr Testa and Mr Lazzeri argue that their conduct cannot be regarded as managing portfolios of investments for the purposes of Directive 93/22 in so far as they had obtained, in each individual case, in addition to the standard switching contracts signed by the clients, declarations by which the clients confirmed their agreement.</TXT>
+        </NP>
+        <NP>
+          <NO.P>23</NO.P>
+          <TXT>In its defence lodged before the court making the reference, Consob maintains<HT TYPE="ITALIC">inter alia</HT>that the Italian legislature was entitled to depart from the Community definition of managing investment portfolios and to adopt a broader definition at national level since Directive 93/22, the only objective of which is to effect the essential harmonisation necessary to secure the mutual recognition of authorisations and of prudential supervision systems, allows the Member States a certain latitude when drawing up national legislation transposing the directive.</TXT>
+        </NP>
+        <NP>
+          <NO.P>24</NO.P>
+          <TXT>The Tribunale amministrativo regionale per la Toscana considers that it is necessary to determine the scope of Directive 93/22 in order to settle the dispute in the main proceedings. It is of the opinion that the definition of managing investment portfolios laid down by Legislative Decree No 415/1996 is different from that in Directive 93/22. It states that, if the Italian Republic was not entitled to lay down a definition of that concept which was different from that given in the directive, Consob&apos;s decisions penalising the conduct of Mr Testa and Mr Lazzeri are illegal. It therefore seeks to ascertain whether, and if so to what extent, the Italian Republic is permitted to depart from the definition of managing investment portfolios laid down by Directive 93/22 for the purpose of implementing that directive.</TXT>
+        </NP>
+        <NP>
+          <NO.P>25</NO.P>
+          <TXT>In those circumstances, the Tribunale amministrativo regionale per la Toscana decided to stay proceedings and to refer the following questions to the Court for a preliminary ruling:</TXT>
+          <P>
+            <QUOT.S LEVEL="1">
+              <NP>
+                <NO.P>
+                  <QUOT.START ID="QS0017" REF.END="QE0017" CODE="2018">
+                  </QUOT.START>1.</NO.P>
+                <TXT>Must Point 3 of Section A of the Annex to Council Directive 93/22/EEC of<DATE ISO="19930510">10 May 1993</DATE>on investment services in the securities field, which contains the definition<QUOT.START ID="QS0018" REF.END="QE0018" CODE="201C">
+                  </QUOT.START>[m] anaging portfolios of investments in accordance with mandates given by investors on a discriminatory, client-by-client basis<QUOT.END ID="QE0018" REF.START="QS0018" CODE="201D">
+                  </QUOT.END>, be interpreted as meaning that that Community provision is infringed by a national provision which departs from it and which, in this case, does not require that the management of portfolios of investments should be on<QUOT.START ID="QS0019" REF.END="QE0019" CODE="201C">
+                  </QUOT.START>a discriminatory, client-by-client basis<QUOT.END ID="QE0019" REF.START="QS0019" CODE="201D">
+                  </QUOT.END>and<QUOT.START ID="QS0020" REF.END="QE0020" CODE="201C">
+                  </QUOT.START>in accordance with mandates given by investors<QUOT.END ID="QE0020" REF.START="QS0020" CODE="201D">
+                  </QUOT.END>?</TXT>
+              </NP>
+              <NP>
+                <NO.P>2.</NO.P>
+                <TXT>Conversely, does a national provision which, in implementing a<QUOT.START ID="QS0021" REF.END="QE0021" CODE="201C">
+                  </QUOT.START>harmonising<QUOT.END ID="QE0021" REF.START="QS0021" CODE="201D">
+                  </QUOT.END>directive, omits the abovementioned requirements, comply with Community law?<QUOT.END ID="QE0017" REF.START="QS0017" CODE="2019">
+                  </QUOT.END>
+                </TXT>
+              </NP>
+            </QUOT.S>
+          </P>
+        </NP>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Admissibility</P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>26</NO.P>
+          <TXT>Consob and the Italian Government argue that the reference for a preliminary ruling is inadmissible. In their view, Directive 93/22 does not apply to the case at issue in the main proceedings. The activities of financial promoters are expressly excluded from that directive and are not covered by the harmonisation pursued by it. That is to be inferred both from Article 2 of Directive 93/22, which provides that it is to apply exclusively to investment firms, and from the eighth recital in the preamble thereto, which states that the door-to-door selling oftransferable securities should not be covered by that directive and that the regulation thereof should remain a matter for national provisions.</TXT>
+        </NP>
+        <NP>
+          <NO.P>27</NO.P>
+          <TXT>First, it should be remembered that it is settled law that in the context of the cooperation between the Court of Justice and the national courts provided for by Article 234 EC it is solely for the national court before which the dispute has been brought, and which must assume responsibility for the subsequent judicial decision, to determine in the light of the particular circumstances of the case both the need for a preliminary ruling in order to enable it to deliver judgment and the relevance of the questions which it submits to the Court. Consequently, where the questions submitted by the national court concern the interpretation of Community law, the Court of Justice is, in principle, bound to give a ruling. The latter may decline a reference from a national court only where it is quite obvious that the interpretation of Community law that is sought bears no relation to the actual facts of the main action or its purpose (see, in particular, Case<REF.DOC.ECR EDITION="GEN" NO.CASE="C-281/98" YEAR="2000" PAGE.ECR="I-4139">C-281/98<HT TYPE="ITALIC">Angonese</HT>[2000] ECR I-4139, paragraph 18</REF.DOC.ECR>, and Case<REF.DOC.ECR EDITION="GEN" NO.CASE="C-379/98" YEAR="2001" PAGE.ECR="I-2099">C-379/98<HT TYPE="ITALIC">PreussenElektra</HT>[2001] ECR I-2099, paragraph 38</REF.DOC.ECR>).</TXT>
+        </NP>
+        <NP>
+          <NO.P>28</NO.P>
+          <TXT>In so far as Consob expressly linked the penalties imposed on Mr Testa and Mr Lazzeri to the exercise by them of the activity of managing investment portfolios within the meaning of Article 1(3)(d) of Legislative Decree No 415/1996 and the latter transposes Directive 93/22, the court making the reference was entitled to take the view that the interpretation of the phrase<QUOT.START ID="QS0022" REF.END="QE0022" CODE="2018">
+            </QUOT.START>[m]anaging portfolios of investments in accordance with mandates given by investors on a discriminatory, client-by-client basis<QUOT.END ID="QE0022" REF.START="QS0022" CODE="2019">
+            </QUOT.END>used in Point 3 of Section A of the Annex to that directive was decisive to the outcome of the proceedings pending before it.</TXT>
+        </NP>
+        <NP>
+          <NO.P>29</NO.P>
+          <TXT>The questions referred for a preliminary ruling must therefore be answered.</TXT>
+        </NP>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Substance</P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>30</NO.P>
+          <TXT>By its two questions referred for a preliminary ruling, the national court seeks in essence to ascertain whether Point 3 of Section A of the Annex to Directive 93/22, which defines managing portfolios of investments, precludes national legislation which departs from that definition by not requiring, for the purposes of the implementation of that directive, that the management of investment portfolios should be<QUOT.START ID="QS0023" REF.END="QE0023" CODE="2018">
+            </QUOT.START>on a discriminatory, client-by-client basis<QUOT.END ID="QE0023" REF.START="QS0023" CODE="2019">
+            </QUOT.END>and<QUOT.START ID="QS0024" REF.END="QE0024" CODE="2018">
+            </QUOT.START>in accordance with mandates given by investors<QUOT.END ID="QE0024" REF.START="QS0024" CODE="2019">
+            </QUOT.END>.</TXT>
+        </NP>
+        <NP>
+          <NO.P>31</NO.P>
+          <TXT>However, the national court has neither requested clarification of the personal scope of Directive 93/22 nor provided the Court with sufficient information to enable it to consider whether, in circumstances such as those of the case at issue in the main proceedings, the activities in question can be regarded as being exercised by an investment firm within the meaning of Article 1(2) of that directive.</TXT>
+        </NP>
+        <NP>
+          <NO.P>32</NO.P>
+          <TXT>It follows that the interpretation of the provisions of Directive 93/22 which define the activities covered by it can be relevant to the dispute in the main proceedings only if those activities are exercised by an investment firm to which that directive applies.</TXT>
+        </NP>
+        <NP>
+          <NO.P>33</NO.P>
+          <TXT>In order to answer the questions referred for a preliminary ruling, the scope of which has been thus delimited, it should be remembered that the purpose of Directive 93/22 is to effect the essential harmonisation necessary and sufficient to secure the mutual recognition of authorisations and of prudential supervision systems, making possible the grant of a single authorisation valid throughout the Community and the application of the principle of home Member State supervision of those firms.</TXT>
+        </NP>
+        <NP>
+          <NO.P>34</NO.P>
+          <TXT>By virtue of that mutual recognition, investment firms authorised in their home Member States may carry on any or all of the services covered by Directive 93/22 for which they have received authorisation throughout the Community by establishing branches or under the freedom to provide services.</TXT>
+        </NP>
+        <NP>
+          <NO.P>35</NO.P>
+          <TXT>It follows from those considerations that compliance with the definitions of the activities covered by Directive 93/22 is necessary in order to ensure its uniform application in all Member States. The mutual recognition provided for by that directive must apply only to the services covered by it, as is clear from the third recital in the preamble thereto.</TXT>
+        </NP>
+        <NP>
+          <NO.P>36</NO.P>
+          <TXT>That being the case, the home Member State is in principle free to extend to activities not covered by Directive 93/22 any or all of the rules therein, in particular as regards authorisation conditions, prudential requirements and the rules of reporting and transparency, provided that it is clear that such legislation does not constitute the transposition of that directive and that it does not create confusion as regards recognition in the other Member States of the authorisation granted to the activities and operators governed by it.</TXT>
+        </NP>
+        <NP>
+          <NO.P>37</NO.P>
+          <TXT>With regard, in particular, to the definition of managing portfolios of investments contained in Point 3 of Annex A of the Annex to Directive 93/22, it comprises three elements.</TXT>
+        </NP>
+        <NP>
+          <NO.P>38</NO.P>
+          <TXT>Firstly, portfolio management must be carried out in accordance with a mandate by which an investor authorises an investment firm to take investment decisions on his behalf. Secondly, the portfolios managed must include one or more of theinstruments listed in Section B of the Annex to Directive 93/22, such as transferable securities. Finally, portfolio management must be carried out on a discriminatory, client-by-client basis. This last element implies, as the Commission states, that the investment firm may take discretionary decisions while respecting the investor&apos;s strategic choices.</TXT>
+        </NP>
+        <NP>
+          <NO.P>39</NO.P>
+          <TXT>Those three constituent elements of managing investment portfolios as defined by Directive 93/22 must be adopted in the legal orders of the Member States for the purposes of implementing the directive.</TXT>
+        </NP>
+        <NP>
+          <NO.P>40</NO.P>
+          <TXT>The definition of managing investment portfolios contained in Article 1(3)(d) of Legislative Decree No 415/1996 does not correspond literally to the definition of that concept laid down in Point 3 of Section A of the Annex to Directive 93/22. That national provision makes no reference either to the discretionary nature of such management or to the need for a mandate.</TXT>
+        </NP>
+        <NP>
+          <NO.P>41</NO.P>
+          <TXT>In that connection, however, Consob, the Italian Government and the Commission take the view that the Italian legislation complies with the definition laid down by Directive 93/22. They argue that the definition in Article 1(3)(d) of Legislative Decree No 415/1996 must be read in the light of the other provisions of that legislative decree. On the one hand, they maintain that the need for discretionary powers on the part of the investment firm is implicit in that provision. On the other, they argue that the requirement that managing investment portfolios should be in accordance with a mandate arises fromArticles 17, 18 and 20 of Legislative Decree No 415/1996, which provide<HT TYPE="ITALIC">inter alia</HT>that such management must be on the basis of a written contract.</TXT>
+        </NP>
+        <NP>
+          <NO.P>42</NO.P>
+          <TXT>It is for the Tribunale amministrativo regionale per la Toscana to determine, in the light of the foregoing considerations, whether the definition of managing investment portfolios laid down by the Italian legislation complies with Directive 93/22.</TXT>
+        </NP>
+        <NP>
+          <NO.P>43</NO.P>
+          <TXT>If that examination by the court making the reference raises doubt as to the compliance of the Italian legislation with Directive 93/22, it must be noted that it is settled case-law that, when applying national law, whether adopted before or after that directive, the national court called upon to interpret that law must do so, as far as possible, in the light of the wording and purpose of that directive so as to achieve the result pursued by the directive and thereby comply with the third paragraph of Article 249 EC (Case<REF.DOC.ECR EDITION="GEN" NO.CASE="C-106/89" YEAR="1990" PAGE.ECR="I-4135">C-106/89<HT TYPE="ITALIC">Marleasing</HT>[1990] ECR I-4135, paragraph 8</REF.DOC.ECR>, Case<REF.DOC.ECR EDITION="GEN" NO.CASE="C-334/92" YEAR="1993" PAGE.ECR="I-6911">C-334/92<HT TYPE="ITALIC">Wagner Miret</HT>[1993] ECR I-6911, paragraph 20</REF.DOC.ECR>, Case<REF.DOC.ECR EDITION="GEN" NO.CASE="C-91/92" YEAR="1994" PAGE.ECR="I-3325">C-91/92<HT TYPE="ITALIC">Faccini Dori</HT>[1994] ECR I-3325, paragraph 26</REF.DOC.ECR>, and Joined Cases<REF.DOC.ECR EDITION="GEN" NO.CASE="C-240/98—C-244/98" YEAR="2000" PAGE.ECR="I-4941">C-240/98 to C-244/98<HT TYPE="ITALIC">Ocèano Grupo Editorial and Salvat Editores</HT>[2000] ECR I-4941, paragraph 30</REF.DOC.ECR>).</TXT>
+        </NP>
+        <NP>
+          <NO.P>44</NO.P>
+          <TXT>It should be added, if the Tribunale amministrativo regionale per la Toscana concludes that the activities in question cannot be considered to be exercised by an investment firm within the meaning of Article 1(2) of Directive 93/22, that there is nothing to prevent a Member State from providing for a definition of managing investment portfolios which extends to a wider field of activities than that provided for in Point 3 of Section A of the Annex to that directive.</TXT>
+        </NP>
+        <NP>
+          <NO.P>45</NO.P>
+          <TXT>A Member State is free to extend by national legislation the applicability of the provisions of Directive 93/22 to operations not covered by that directive, provided that it is made clear that the national legislation in question does not constitute the transposition of the directive, but arises from the independent will of the legislature.</TXT>
+        </NP>
+        <NP>
+          <NO.P>46</NO.P>
+          <TXT>In view of the foregoing considerations, the answer to the questions referred for a preliminary ruling must be that Point 3 of Section A of the Annex to Directive 93/22, which defines managing portfolios of investments, precludes national legislation which departs from that definition by not requiring, for the purposes of the implementation of that directive, that the management of portfolios of investments should be<QUOT.START ID="QS0025" REF.END="QE0025" CODE="2018">
+            </QUOT.START>on a discriminatory, client-by-client basis<QUOT.END ID="QE0025" REF.START="QS0025" CODE="2019">
+            </QUOT.END>and<QUOT.START ID="QS0026" REF.END="QE0026" CODE="2018">
+            </QUOT.START>in accordance with mandates given by investors<QUOT.END ID="QE0026" REF.START="QS0026" CODE="2019">
+            </QUOT.END>. However, there is nothing to prevent a Member State from extending by national legislation the applicability of the provisions of that directive to operations not covered by it, provided that it is made clear that the national legislation in question does not constitute the transposition of the directive, but arises from the independent will of the legislature.</TXT>
+        </NP>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="2">
+        <TITLE>
+          <TI>
+            <P>Costs</P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>47</NO.P>
+          <TXT>The costs incurred by the Italian Government and by the Commission, which have submitted observations to the Court, are not recoverable. Since these proceedings are, for the parties to the main proceedings, a step in the action pending before the national court, the decision on costs is a matter for that court.</TXT>
+        </NP>
+      </GR.SEQ>
+    </GR.SEQ>
+    <JURISDICTION>
+      <INTRO>
+        <P>On those grounds,</P>
+        <P>THE COURT (Fifth Chamber),</P>
+        <P>in answer to the questions referred to it by the Tribunale amministrativo regionale per la Toscana by order of<DATE ISO="20000118">18 January 2000</DATE>, hereby rules:</P>
+      </INTRO>
+      <P>Point 3 of Section A of the Annex to Council Directive 93/22/EEC of<DATE ISO="19930510">10 May 1993</DATE>on investment services in the securities field, which defines managing portfolios of investments, precludes national legislation which departs from that definition by not requiring, for the purposes of the implementation of that directive, that the management of portfolios of investments should be<QUOT.START ID="QS0027" REF.END="QE0027" CODE="2018">
+        </QUOT.START>on a discriminatory, client-by-client basis<QUOT.END ID="QE0027" REF.START="QS0027" CODE="2019">
+        </QUOT.END>and<QUOT.START ID="QS0028" REF.END="QE0028" CODE="2018">
+        </QUOT.START>in accordance with mandates given by investors<QUOT.END ID="QE0028" REF.START="QS0028" CODE="2019">
+        </QUOT.END>. However, there is nothing to prevent a Member State from extending by national legislation the applicability of the provisions of that directive to operations not covered by it, provided that it is made clear that the national legislation in question does not constitute the transposition of the directive, but arises from the independent will of the legislature.</P>
+    </JURISDICTION>
+  </CONTENTS.JUDGMENT>
+  <SIGNATURE.CASE>
+    <P>Wathelet</P>
+    <P>Timmermans</P>
+    <P>La Pergola</P>
+    <P>Jann</P>
+    <P>von Bahr</P>
+    <P>Delivered in open court in Luxembourg on<DATE ISO="20021121">21 November 2002</DATE>.</P>
+    <SIGNATORY>
+      <P>R. Grass</P>
+      <P>Registrar</P>
+    </SIGNATORY>
+    <SIGNATORY>
+      <P>M. Wathelet</P>
+      <P>President of the Fifth Chamber</P>
+    </SIGNATORY>
+  </SIGNATURE.CASE>
+</JUDGMENT>

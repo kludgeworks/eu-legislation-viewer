@@ -1,0 +1,31 @@
+<ANNEX noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.20-20100601.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="L_2004160EN.01013801.doc.xml">
+      <COLL>L</COLL>
+      <NO.OJ>160</NO.OJ>
+      <YEAR>2004</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>138</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20040428">20040428</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0001.0001</NO.SEQ>
+    <PAGE.FIRST>140</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>140</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>ANNEX</P>
+    </TI>
+  </TITLE>
+  <CONTENTS>
+    <P>
+      <IE>
+      </IE>
+    </P>
+  </CONTENTS>
+</ANNEX>

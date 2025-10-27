@@ -1,0 +1,67 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-01.01-20040501.xd">
+  <BIB.DOC>
+    <NO.DOC FORMAT="NY" TYPE="OJ">
+      <NO.CURRENT>1023</NO.CURRENT>
+      <YEAR>2004</YEAR>
+      <COM>EC</COM>
+    </NO.DOC>
+    <DURAB TYPE="EPH">
+    </DURAB>
+    <AUTHOR>COM</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="L_2004188EN.toc.xml">
+    <COLL>L</COLL>
+    <NO.OJ>188</NO.OJ>
+    <DATE ISO="20040527">20040527</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="005" SYNOPTISM="D005">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>REG</LEGAL.VALUE>
+      <DATE ISO="20040526">20040526</DATE>
+      <PAGE.FIRST>10</PAGE.FIRST>
+      <PAGE.LAST>10</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="L_2004188EN.01001001.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+    <DOC.SUB.PUB NO.SEQ="005.001" SYNOPTISM="D005.001" TYPE="ANNEX">
+      <PAGE.FIRST>11</PAGE.FIRST>
+      <PAGE.LAST>11</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="L_2004188EN.01001101.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.SUB.PUB>
+    <DOC.SUB.PUB NO.SEQ="005.002" SYNOPTISM="D005.002" TYPE="ANNEX">
+      <PAGE.FIRST>11</PAGE.FIRST>
+      <PAGE.LAST>11</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>2</PAGE.SEQ>
+      <REF.PHYS FILE="L_2004188EN.01001102.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.SUB.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="005">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Commission Regulation (EC) No 1023/2004 du<DATE ISO="20040526">26 May 2004</DATE>determining the extent to which applications lodged in May 2004 for import licences for certain pigmeat sector products under the regime provided for by Council Regulation (EC) No 774/94 opening and providing for the administration of certain Community tariff quotas for pigmeat and certain other agricultural products can be accepted</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>10</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="005">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="l_18820040527en00100011.pdf">10</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

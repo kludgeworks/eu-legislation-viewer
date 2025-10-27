@@ -1,0 +1,32 @@
+<GENERAL noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.01-20091201.xd">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2009304EN.01008301.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>304</NO.OJ>
+      <YEAR>2009</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>83</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20091215">20091215</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0016.0002</NO.SEQ>
+    <PAGE.FIRST>88</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>88</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <TITLE>
+    <TI>
+      <P>THE AGENCY’S REPLIES</P>
+    </TI>
+  </TITLE>
+  <CONTENTS>
+    <NP>
+      <NO.P>13.</NO.P>
+      <TXT>Both cases relate to the acquisition of standard software licences or packages for which only the tenderers’ retail prices were requested. For both cases, the award decision was only taken after all price quotations from the tenderers were received.</TXT>
+      <P>In 2009 the procurement procedures have been improved and EAHC has established a revised planning for its IT expenditure execution.</P>
+    </NP>
+  </CONTENTS>
+</GENERAL>

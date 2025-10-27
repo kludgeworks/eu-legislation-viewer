@@ -1,0 +1,122 @@
+<LSEU noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.53l-20140201.xd">
+  <BIB.LSEU>
+    <NO.DOC.LSEU>LSEU-1701_4-2016-01-20-1221</NO.DOC.LSEU>
+    <LG.DOC>EN</LG.DOC>
+    <LAST.MODIFICATION>
+      <DATE ISO="20151110">10.11.2015</DATE>
+    </LAST.MODIFICATION>
+    <ARCHIVED VALUE="NO">
+    </ARCHIVED>
+  </BIB.LSEU>
+  <TITLE>
+    <TI>
+      <P>National promotional banks and the investment plan for Europe</P>
+    </TI>
+  </TITLE>
+  <CONTENTS.LSEU>
+    <HEADER.LSEU>
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="UC">Summary of:</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>
+        <REF.DOC URI="http://publications.europa.eu/resource/celex/52015DC0361" CONTEXT="EUR-LEX">Commission Communication COM(2015) 361 final — The role of national promotional banks in the investment plan for Europe</REF.DOC>
+      </P>
+    </HEADER.LSEU>
+    <SUMMARY.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Summary</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">What does this communication do?</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>It explains the role of the national promotional banks (NPBs) and investment platforms in supporting the EU’s<REF.DOC URI="http://publications.europa.eu/resource/uriserv/1703_4" CONTEXT="EUR-LEX">investment plan for Europe</REF.DOC>(IPE). The IPE aims to kick-start growth in the European economy.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Key points</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>The<HT TYPE="BOLD">IPE</HT>is a package of measures to unlock public and private investment in the EU economy. The key funding instrument for this investment is the new<REF.DOC URI="http://publications.europa.eu/resource/uriserv/1701_3" CONTEXT="EUR-LEX">European Fund for Strategic Investment</REF.DOC>(EFSI), which is made up of contributions from public and private sectors. Contributions to the EFSI from EU countries are mainly through the NPBs.</P>
+          <P>NPBs are<HT TYPE="BOLD">defined</HT>as legal bodies carrying out financial activities which are given a mandate by an EU country to undertake development or promotional activities. NPBs can take different forms and individual EU countries can decide on whether an NPB should be established, as well as on its shape and form.</P>
+          <P>The communication does the following.</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>It provides clarity and guiding principles on<HT TYPE="BOLD">how to set up a new NPB,</HT>such as key elements to include in an NPB’s statutes.</P>
+            </ITEM>
+            <ITEM>
+              <P>It gives guidance on<HT TYPE="BOLD">compatibility with EU</HT>
+                <REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/state_aid.html" CONTEXT="EUR-LEX">state aid</REF.DOC>
+                <HT TYPE="BOLD">rules</HT>. Since NPBs are mainly financed by the state, they should focus primarily on remedying market failures to avoid having a competitive advantage over private market participants.</P>
+            </ITEM>
+            <ITEM>
+              <P>It sets out how NPBs from different EU countries can join forces and work with the<REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/european_investment_bank.html" CONTEXT="EUR-LEX">European Investment Bank</REF.DOC>(EIB) to set up<HT TYPE="BOLD">investment platforms.</HT>These platforms pool funds and facilitate co-investment, particularly by private investors, in specific regions or sectors (e.g. infrastructure or energy efficiency).</P>
+            </ITEM>
+            <ITEM>
+              <P>It explains how NPB funding could<HT TYPE="BOLD">synergise with EIB and other EU funds</HT>, for example by expanding the role of NPBs in the implementation of centrally managed EU programmes and of EFSI.</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Background</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>
+                <REF.DOC URI="http://ec.europa.eu/priorities/jobs-growth-investment/plan/index_en.htm" CONTEXT="EXTERNAL">Investment plan</REF.DOC>(European Commission)</P>
+            </ITEM>
+            <ITEM>
+              <P>
+                <REF.DOC URI="http://www.eib.org/infocentre/publications/all/investment-plan-for-europe.htm" CONTEXT="EXTERNAL">Investment plan for Europe</REF.DOC>(European Investment Bank)</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+      </GR.SEQ>
+    </SUMMARY.LSEU>
+    <REFERENCES.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Act</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <P>Communication from the Commission to the European Parliament and the Council — Working together for jobs and growth: the role of national promotional banks (NPBs) in supporting the investment plan for Europe (<REF.DOC URI="http://publications.europa.eu/resource/celex/52015DC0361" CONTEXT="EUR-LEX">COM(2015) 361 final</REF.DOC>,<DATE ISO="20150722">22.7.2015</DATE>)</P>
+      </GR.SEQ>
+    </REFERENCES.LSEU>
+    <REFERRED.DOCS.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Related acts</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <P>Regulation (EU)<REF.DOC URI="http://publications.europa.eu/resource/celex/32015R1017" CONTEXT="EUR-LEX">2015/1017</REF.DOC>of the European Parliament and of the Council of<DATE ISO="20150625">25 June 2015</DATE>on the European Fund for Strategic Investments, the European Investment Advisory Hub and the European Investment Project Portal and amending Regulations (EU) No 1291/2013 and (EU) No 1316/2013 — the European Fund for Strategic Investments (<REF.DOC URI="http://publications.europa.eu/resource/uriserv/OJ.L_.2015.169.01.0001.01.ENG" CONTEXT="EUR-LEX">OJ L 169, 1.7.2015, pp. 1-38</REF.DOC>)</P>
+      </GR.SEQ>
+    </REFERRED.DOCS.LSEU>
+  </CONTENTS.LSEU>
+</LSEU>

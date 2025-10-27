@@ -1,0 +1,424 @@
+<CONS.ACT noNamespaceSchemaLocation="http://formex.publications.eu.int/schema/formex-01.02-20040901.xd">
+  <INFO.CONSLEG CONSLEG.REF="2001D0913" DATE.LAST.MOD="20040609" PROD.SEQ="002.001.0" START.DATE="20040501" END.DATE="99999999" END="NONE" LEG.VAL="DEC">
+  </INFO.CONSLEG>
+  <INFO.PROD PRODUCER="IC" PROD.SYSTEM="CONSLEG.NEW" PROD.DATE="20041112">
+  </INFO.PROD>
+  <CONS.DOC>
+    <BIB.INSTANCE>
+      <DOCUMENT.REF FILE="CL2001D0913EN0020010.0001.doc.xml">
+      </DOCUMENT.REF>
+      <DATE ISO="20040501">20040501</DATE>
+      <LG.DOC>EN</LG.DOC>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <PAGE.LAST>3</PAGE.LAST>
+      <PAGE.TOTAL>3</PAGE.TOTAL>
+    </BIB.INSTANCE>
+    <FAM.COMP LEG.VAL="DEC">
+      <BIB.DATA>
+        <BIB.INSTANCE.CONS>
+          <DOCUMENT.REF.CONS>
+            <COLL>L</COLL>
+            <NO.OJ>337</NO.OJ>
+            <YEAR>2001</YEAR>
+            <LG.OJ>EN</LG.OJ>
+            <PAGE.FIRST>52</PAGE.FIRST>
+            <PAGE.SEQ>1</PAGE.SEQ>
+          </DOCUMENT.REF.CONS>
+          <DATE ISO="20011220">20011220</DATE>
+          <LG.DOC>EN</LG.DOC>
+          <PAGE.FIRST>52</PAGE.FIRST>
+          <PAGE.SEQ>1</PAGE.SEQ>
+          <PAGE.LAST>54</PAGE.LAST>
+          <PAGE.TOTAL>3</PAGE.TOTAL>
+          <NO.DOC FORMAT="YN" TYPE="OJ">
+            <NO.CURRENT>913</NO.CURRENT>
+            <YEAR>2001</YEAR>
+            <COM>EC</COM>
+          </NO.DOC>
+        </BIB.INSTANCE.CONS>
+        <NO.CELEX>301D0913</NO.CELEX>
+        <DATE ISO="20011206">20011206</DATE>
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Decision of the European Central Bank</HT>
+            </P>
+            <P>of<DATE ISO="20011206">6 December 2001</DATE>
+            </P>
+            <P>on the issue of euro banknotes</P>
+            <P>(ECB/2001/15)</P>
+            <P>(2001/913/EC)</P>
+          </TI>
+        </TITLE>
+      </BIB.DATA>
+      <GR.MOD.ACT>
+        <MOD.ACT TYPE="MOD" LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>009</NO.OJ>
+                <YEAR>2004</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>40</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="20040115">20040115</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <PAGE.FIRST>40</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>41</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>303D0023(01)</NO.CELEX>
+            <DATE ISO="20031218">20031218</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Decision of the European Central Bank</HT>
+                </P>
+                <P>of<DATE ISO="20031218">18 December 2003</DATE>
+                </P>
+                <P>amending Decision ECB/2001/15 of<DATE ISO="20011206">6 December 2001</DATE>on the issue of euro banknotes</P>
+                <P>(ECB/2003/23)</P>
+                <P>(2004/49/EC)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+        <MOD.ACT LEG.VAL="DEC" EXISTS="YES">
+          <BIB.DATA>
+            <BIB.INSTANCE.CONS>
+              <DOCUMENT.REF.CONS>
+                <COLL>L</COLL>
+                <NO.OJ>205</NO.OJ>
+                <YEAR>2004</YEAR>
+                <LG.OJ>EN</LG.OJ>
+                <PAGE.FIRST>17</PAGE.FIRST>
+                <PAGE.SEQ>1</PAGE.SEQ>
+              </DOCUMENT.REF.CONS>
+              <DATE ISO="20040609">20040609</DATE>
+              <LG.DOC>EN</LG.DOC>
+              <NO.SEQ>006</NO.SEQ>
+              <PAGE.FIRST>17</PAGE.FIRST>
+              <PAGE.SEQ>1</PAGE.SEQ>
+              <PAGE.LAST>18</PAGE.LAST>
+              <PAGE.TOTAL>2</PAGE.TOTAL>
+            </BIB.INSTANCE.CONS>
+            <NO.CELEX>304D0009(01)</NO.CELEX>
+            <DATE ISO="20040422">20040422</DATE>
+            <TITLE>
+              <TI>
+                <P>
+                  <HT TYPE="UC">Decision of the European Central Bank</HT>
+                </P>
+                <P>of<DATE ISO="20040422">22 April 2004</DATE>
+                </P>
+                <P>amending Decision ECB/2001/15 of<DATE ISO="20011206">6 December 2001</DATE>on the issue of euro banknotes</P>
+                <P>(ECB/2004/9)</P>
+                <P>(2004/506/EC)</P>
+              </TI>
+            </TITLE>
+          </BIB.DATA>
+        </MOD.ACT>
+      </GR.MOD.ACT>
+    </FAM.COMP>
+    <TITLE>
+      <TI>
+        <P>
+          <HT TYPE="UC">Decision of the European Central Bank</HT>
+        </P>
+        <P>of<DATE ISO="20011206">6 December 2001</DATE>
+        </P>
+        <P>on the issue of euro banknotes</P>
+        <P>(ECB/2001/15)</P>
+        <P>(2001/913/EC)</P>
+      </TI>
+    </TITLE>
+    <PREAMBLE>
+      <PREAMBLE.INIT>THE GOVERNING COUNCIL OF THE EUROPEAN CENTRAL BANK,</PREAMBLE.INIT>
+      <GR.VISA>
+        <VISA>Having regard to the Treaty establishing the European Community (hereinafter referred to as the<QUOT.START ID="QS0001" REF.END="QE0001" CODE="2018">
+          </QUOT.START>Treaty<QUOT.END ID="QE0001" REF.START="QS0001" CODE="2019">
+          </QUOT.END>), in particular to Article 106(1) thereof, and to the Statute of the European System of Central Banks and of the European Central Bank (hereinafter referred to as the<QUOT.START ID="QS0002" REF.END="QE0002" CODE="2018">
+          </QUOT.START>Statute<QUOT.END ID="QE0002" REF.START="QS0002" CODE="2019">
+          </QUOT.END>), in particular to Article 16 thereof,</VISA>
+      </GR.VISA>
+      <GR.CONSID>
+        <GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+        <CONSID>
+          <NP>
+            <NO.P>(1)</NO.P>
+            <TXT>Under Article 106(1) of the Treaty and Article 16 of the Statute, the Governing Council of the European Central Bank (ECB) has the exclusive right to authorise the issue of banknotes within the Community; under these provisions, the ECB and the national central banks (NCBs) may issue banknotes which are the only banknotes to have the status of legal tender within the participating Member States. Community law has foreseen a system of a plurality of issuers of banknotes. The ECB and the NCBs shall issue euro banknotes.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(2)</NO.P>
+            <TXT>Pursuant to Article 10 of Council Regulation (EC) No 974/98 of<DATE ISO="19980503">3 May 1998</DATE>on the introduction of the euro<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>
+                  <REF.DOC.OJ COLL="L" NO.OJ="139" DATE.PUB="19980511" PAGE.FIRST="1">OJ L 139, 11.5.1998, p. 1</REF.DOC.OJ>.</P>
+              </NOTE>, from<DATE ISO="20020101">1 January 2002</DATE>, the ECB and the NCBs (hereinafter referred to as the<QUOT.START ID="QS0003" REF.END="QE0003" CODE="2018">
+              </QUOT.START>Eurosystem<QUOT.END ID="QE0003" REF.START="QS0003" CODE="2019">
+              </QUOT.END>) will put into circulation banknotes denominated in euro. Euro banknotes are expressions of the same and single currency, and subject to a single legal regime.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(3)</NO.P>
+            <TXT>The issue of euro banknotes need not be subject to quantitative or other limits, since putting banknotes into circulation is a demand driven process.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(4)</NO.P>
+            <TXT>Decision ECB/2001/7 of<DATE ISO="20010830">30 August 2001</DATE>on the denominations, specifications, reproduction, exchange and withdrawal of euro banknotes<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>
+                  <REF.DOC.OJ COLL="L" NO.OJ="233" DATE.PUB="20010831" PAGE.FIRST="55">OJ L 233, 31.8.2001, p. 55</REF.DOC.OJ>.</P>
+              </NOTE>, as amended by Decision ECB/2001/14<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>Not yet published in the Official Journal.</P>
+              </NOTE>, contains common rules on euro banknotes. The ECB has established common technical specifications for euro banknotes and quality control measures to ensure that the euro banknotes comply with such specifications. As a consequence all euro banknotes have the same physical appearance and level of quality and no distinction is to be made between banknotes of the same denomination.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(5)</NO.P>
+            <TXT>All euro banknotes should be subject to identical acceptance and processing requirements by the Eurosystem members irrespective of which put them into circulation. The current practice of repatriation of banknotes denominated in national currency units to the issuing central bank will therefore not apply to euro banknotes. The regime for the issue of the euro banknotes is based on the principle of non-repatriation of euro banknotes.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(6)</NO.P>
+            <TXT>Pursuant to Article 29.1 of the Statute, each of the members of the European System of Central Banks is assigned a weighting in the key for subscription to the ECB&apos;s capital, as laid down by Decision ECB/1998/13 of<DATE ISO="19981201">1 December 1998</DATE>on the national central banks&apos; percentage shares in the key for the capital of the ECB<NOTE NOTE.ID="E0004" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>
+                  <REF.DOC.OJ COLL="L" NO.OJ="125" DATE.PUB="19990519" PAGE.FIRST="33">OJ L 125, 19.5.1999, p. 33</REF.DOC.OJ>.</P>
+              </NOTE>; this weighting is based on the population and gross domestic product of each Member State and governs the contributions to the ECB&apos;s capital, the transfers of the NCB&apos;s foreign reserve assets to the ECB, the monetary income allocation of the NCBs, and the distribution of profits and sharing of losses of the ECB.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(7)</NO.P>
+            <TXT>Euro banknotes are legal tender in all participating Member States, will freely circulate within the euro area, be reissued by the members of the Eurosystem, and may also be stored or used outside the euro zone. The liabilities in respect of the issue of the total value of euro banknotes in circulation should therefore be allocated to the members of the Eurosystem in accordance with an objective criterion. An appropriate criterion is the share of each NCB in the paid-up capital of the ECB. This share results from a proportional application of the capital key referred to in Article 29.1 of the Statute to NCBs. This criterion not being applicable to the ECB, the percentage share of euro banknotes to be issued by the ECB is to be determined by the Governing Council.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(8)</NO.P>
+            <TXT>Under Article 9.2 and Article 12.1 of the Statute, establishing the principle of decentralisation for Eurosystem operations, the NCBs are to be entrusted with putting into and withdrawing from circulation all euro banknotes including those issued by the ECB. Consistent with this principle of decentralisation, the physical handling of euro banknotes is also to be carried out by the NCBs.</TXT>
+          </NP>
+        </CONSID>
+        <CONSID>
+          <NP>
+            <NO.P>(9)</NO.P>
+            <TXT>The difference between the value of euro banknotes allocated to each NCB in accordance with the banknote allocation key and the value of the euro banknotes that such NCB puts into circulation should give rise to intra-Eurosystem balances. The ECB not putting euro banknotes into circulation, it should hold intra-Eurosystem claims on NCBs for a value equivalent to the share of euro banknotes that it issues. The remuneration of these intra-Eurosystem balances has an effect on the income positions of NCBs and is therefore the subject of Decision ECB/2001/16 of<DATE ISO="20011206">6 December 2001</DATE>on the allocation of monetary income of the national central banks of participating Member States from the financial year 2002<NOTE NOTE.ID="E0005" NUMBERING="ARAB" TYPE="FOOTNOTE">
+                <P>See page 55 of this Official Journal.</P>
+              </NOTE>, based on Article 32 of the Statute,</TXT>
+          </NP>
+        </CONSID>
+      </GR.CONSID>
+      <PREAMBLE.FINAL>HAS DECIDED AS FOLLOWS:</PREAMBLE.FINAL>
+    </PREAMBLE>
+    <ENACTING.TERMS>
+      <ARTICLE IDENTIFIER="001">
+        <TI.ART>Article 1</TI.ART>
+        <STI.ART>Definitions</STI.ART>
+        <ALINEA>
+          <P>For the purposes of this Decision:</P>
+          <LIST TYPE="alpha">
+            <ITEM>
+              <NP>
+                <NO.P>(a)</NO.P>
+                <TXT>
+                  <QUOT.START ID="QS0004" REF.END="QE0004" CODE="2018">
+                  </QUOT.START>NCBs<QUOT.END ID="QE0004" REF.START="QS0004" CODE="2019">
+                  </QUOT.END>shall mean the national central banks of the Member States that have adopted the single currency in accordance with the Treaty establishing the European Community;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>(b)</NO.P>
+                <TXT>
+                  <QUOT.START ID="QS0005" REF.END="QE0005" CODE="2018">
+                  </QUOT.START>euro banknotes<QUOT.END ID="QE0005" REF.START="QS0005" CODE="2019">
+                  </QUOT.END>shall mean those banknotes complying with the requirements of Decision ECB/2001/7, and with the technical specifications laid down by the Governing Council;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>(c)</NO.P>
+                <TXT>
+                  <QUOT.START ID="QS0006" REF.END="QE0006" CODE="2018">
+                  </QUOT.START>subscribed capital key<QUOT.END ID="QE0006" REF.START="QS0006" CODE="2019">
+                  </QUOT.END>shall mean the NCBs&apos; shares (expressed as percentages) in the ECB&apos;s subscribed capital that result from applying to the NCBs the weightings in the key referred to in Article 29.1 of the Statute and as applicable for the relevant financial year;</TXT>
+              </NP>
+            </ITEM>
+            <ITEM>
+              <NP>
+                <NO.P>(d)</NO.P>
+                <TXT>
+                  <QUOT.START ID="QS0007" REF.END="QE0007" CODE="2018">
+                  </QUOT.START>banknote allocation key<QUOT.END ID="QE0007" REF.START="QS0007" CODE="2019">
+                  </QUOT.END>shall mean the percentages that result from taking into account the ECB&apos;s share in the total euro banknote issue and applying the subscribed capital key (rounded to the nearest multiple of 0,0005 percentage point) to the NCBs&apos; share in such total. Where the resulting percentages do not total 100 %, the difference shall be compensated for: (i) if the total is below 100 %, by adding 0,0005 of a percentage point to the smallest share(s) in ascending order until exactly 100 % is reached, or (ii) if the total is above 100 %, by subtracting 0,0005 of a percentage point in descending order from the largest share(s) until exactly 100 % is reached.The Annex to this Decision specifies the banknote allocation key applying from<DATE ISO="20040501">1 May 2004</DATE>.</TXT>
+              </NP>
+            </ITEM>
+          </LIST>
+        </ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="002">
+        <TI.ART>Article 2</TI.ART>
+        <STI.ART>Issue of euro banknotes</STI.ART>
+        <ALINEA>The ECB and the NCBs shall issue euro banknotes.</ALINEA>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="003">
+        <TI.ART>Article 3</TI.ART>
+        <STI.ART>Obligations of issuers</STI.ART>
+        <PARAG IDENTIFIER="003.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>NCBs shall put into and withdraw from circulation euro banknotes, and perform any physical handling in relation to all euro banknotes, including those issued by the ECB.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>NCBs shall accept all euro banknotes on the request of the holder for exchange against euro banknotes of the same value or, in the case of account holders, to be credited to accounts held at the recipient NCB.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003.003">
+          <NO.PARAG>3.</NO.PARAG>
+          <ALINEA>NCBs shall treat all euro banknotes accepted by them as liabilities and process them in an identical manner.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="003.004">
+          <NO.PARAG>4.</NO.PARAG>
+          <ALINEA>
+            <P>NCBs shall not transfer euro banknotes accepted by them to other NCBs and shall keep such euro banknotes available for reissue. As an exception, and in accordance with any rules laid down by the Governing Council of the ECB:</P>
+            <LIST TYPE="alpha">
+              <ITEM>
+                <NP>
+                  <NO.P>(a)</NO.P>
+                  <TXT>mutilated, damaged, worn or withdrawn euro banknotes may be destroyed by the recipient NCB;</TXT>
+                </NP>
+              </ITEM>
+              <ITEM>
+                <NP>
+                  <NO.P>(b)</NO.P>
+                  <TXT>euro banknotes held by NCBs may, for logistical reasons, be redistributed in bulk within the Eurosystem.</TXT>
+                </NP>
+              </ITEM>
+            </LIST>
+          </ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="004">
+        <TI.ART>Article 4</TI.ART>
+        <STI.ART>Allocation of euro banknotes within the Eurosystem</STI.ART>
+        <PARAG IDENTIFIER="004.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>The total value of euro banknotes in circulation shall be allocated to the Eurosystem members by application of the banknote allocation key.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="004.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>The difference between the value of euro banknotes allocated to each NCB in accordance with the banknote allocation key and the value of the euro banknotes that such NCB puts into circulation shall give rise to intra-Eurosystem balances. The ECB shall hold intra-Eurosystem claims on NCBs in proportion to their shares in the subscribed capital key, for a value equivalent to the value of euro banknotes that it issues.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+      <ARTICLE IDENTIFIER="005">
+        <TI.ART>Article 5</TI.ART>
+        <STI.ART>Final provisions</STI.ART>
+        <PARAG IDENTIFIER="005.001">
+          <NO.PARAG>1.</NO.PARAG>
+          <ALINEA>This Decision shall enter into force on<DATE ISO="20020101">1 January 2002</DATE>.</ALINEA>
+        </PARAG>
+        <PARAG IDENTIFIER="005.002">
+          <NO.PARAG>2.</NO.PARAG>
+          <ALINEA>This Decision shall be published in the<HT TYPE="ITALIC">Official Journal of the European Communities</HT>.</ALINEA>
+        </PARAG>
+      </ARTICLE>
+    </ENACTING.TERMS>
+    <CONS.ANNEX>
+      <TITLE>
+        <TI>
+          <P>ANNEX</P>
+        </TI>
+      </TITLE>
+      <CONTENTS>
+        <TBL COLS="2" NO.SEQ="001">
+          <TITLE>
+            <TI>
+              <P>Banknote allocation key from<DATE ISO="20040501">1 May 2004</DATE>
+              </P>
+            </TI>
+          </TITLE>
+          <CORPUS>
+            <ROW>
+              <CELL COL="1">European Central Bank</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">8,0000</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">Nationale Bank van België/Banque Nationale de Belgique</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">3,2820</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">Deutsche Bundesbank</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">27,2000</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">Bank of Greece</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">2,4415</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">Banco de España</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">10,0065</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">Banque de France</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">19,1375</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">Central Bank and Financial Services Authority of Ireland</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">1,1865</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">Banca d’Italia</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">16,7960</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">Banque centrale du Luxembourg</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">0,2020</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">De Nederlandsche Bank</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">5,1415</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">Oesterreichische Nationalbank</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">2,6765</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">Banco de Portugal</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">2,2715</FT>%</CELL>
+            </ROW>
+            <ROW>
+              <CELL COL="1">Suomen Pankki</CELL>
+              <CELL COL="2">
+                <FT TYPE="DECIMAL">1,6585</FT>%</CELL>
+            </ROW>
+            <ROW TYPE="TOTAL">
+              <CELL COL="1" TYPE="TOTAL">TOTAL</CELL>
+              <CELL COL="2" TYPE="TOTAL">
+                <FT TYPE="DECIMAL">100,0000</FT>%</CELL>
+            </ROW>
+          </CORPUS>
+        </TBL>
+      </CONTENTS>
+    </CONS.ANNEX>
+  </CONS.DOC>
+</CONS.ACT>

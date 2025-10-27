@@ -1,0 +1,56 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.56-20160701.xd">
+  <BIB.DOC>
+    <PROD.ID>20181204007</PROD.ID>
+    <FIN.ID>224199</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2018/C 444/03</TXT>
+    </NO.DOC>
+    <DURAB TYPE="DUR">
+    </DURAB>
+    <AUTHOR>COM</AUTHOR>
+    <EEA>
+    </EEA>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2018444EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>444</NO.OJ>
+    <DATE ISO="20181210">20181210</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0003" SYNOPTISM="D0003">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>OTHER</LEGAL.VALUE>
+      <DATE ISO="20181210">20181210</DATE>
+      <PAGE.FIRST>9</PAGE.FIRST>
+      <PAGE.LAST>9</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>2</PAGE.SEQ>
+      <REF.PHYS FILE="C_2018444EN.01000902.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0003">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Non-opposition to a notified concentration (Case M.9137 — Rehau/MB Barter &amp; Trading)<NOTE NOTE.ID="E0001" NUMBERING="ARAB">
+                <P>Text with EEA relevance.</P>
+              </NOTE>
+            </P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>9</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0003">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_44420181210en00090009.pdf">9</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

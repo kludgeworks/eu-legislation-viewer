@@ -1,0 +1,140 @@
+<LSEU noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.53l-20140201.xd">
+  <BIB.LSEU>
+    <NO.DOC.LSEU>LSEU-L21172-2016-03-31-1449</NO.DOC.LSEU>
+    <LG.DOC>EN</LG.DOC>
+    <LAST.MODIFICATION>
+      <DATE ISO="20160216">16.02.2016</DATE>
+    </LAST.MODIFICATION>
+    <ARCHIVED VALUE="NO">
+    </ARCHIVED>
+  </BIB.LSEU>
+  <TITLE>
+    <TI>
+      <P>Export of generic medicines to developing countries: compulsory licences</P>
+    </TI>
+  </TITLE>
+  <CONTENTS.LSEU>
+    <HEADER.LSEU>
+      <TITLE>
+        <TI>
+          <P>
+            <HT TYPE="UC">Summary of:</HT>
+          </P>
+        </TI>
+      </TITLE>
+      <P>
+        <REF.DOC URI="http://publications.europa.eu/resource/celex/32006R0816" CONTEXT="EUR-LEX">Regulation (EC) No 816/2006 – compulsory licensing of patents relating to the manufacture of pharmaceuticals for export to countries with public health problems</REF.DOC>
+      </P>
+    </HEADER.LSEU>
+    <SUMMARY.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Summary</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">What does this regulation do?</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>It establishes a procedure for companies in the EU wishing to manufacture generic medicines for use in the developing world to apply for a compulsory licence from a patent holder, which allows their manufacture.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Key points</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>The importing countries eligible to benefit from the scheme are:</P>
+              <P>
+                <LIST TYPE="DASH">
+                  <ITEM>
+                    <P>the world&apos;s least developed countries;</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>those which have informed the<REF.DOC URI="https://www.wto.org/" CONTEXT="EXTERNAL">World Trade Organization</REF.DOC>of their intention to do so;</P>
+                  </ITEM>
+                  <ITEM>
+                    <P>those listed in the<REF.DOC URI="http://www.oecd.org/dac/stats/49483614.pdf" CONTEXT="EXTERNAL">OECD development assistance committee list</REF.DOC>of low-income countries.</P>
+                  </ITEM>
+                </LIST>
+              </P>
+            </ITEM>
+            <ITEM>
+              <P>The importing countries must confirm they will use the scheme for public-health purposes, not for industrial or commercial objectives.</P>
+            </ITEM>
+            <ITEM>
+              <P>Any person who has failed to secure authorisation from the patent holder may submit a request for a compulsory licence to the relevant national authority.</P>
+            </ITEM>
+            <ITEM>
+              <P>They must provide personal details, information on the product, the amount they intend to produce and the destination countries.</P>
+            </ITEM>
+            <ITEM>
+              <P>This must be backed by a specific request from the country concerned, a non-governmental organisation or a<REF.DOC URI="http://www.un.org/en/index.html" CONTEXT="EXTERNAL">United Nations</REF.DOC>body.</P>
+            </ITEM>
+            <ITEM>
+              <P>The relevant national authority in the EU informs the rights-holder and verifies the validity of the request before taking a decision.</P>
+            </ITEM>
+            <ITEM>
+              <P>Conditions attached to the compulsory licence determine the quantities involved and duration of the concession. Products made under licence must be clearly identifiable by specific labelling or marking.</P>
+            </ITEM>
+            <ITEM>
+              <P>Products manufactured under a compulsory licence may not be reimported and sold in the EU. Any suspected of breaking the law may, initially, be detained for 10 days and ultimately seized.</P>
+            </ITEM>
+            <ITEM>
+              <P>A licensee failing to respect the conditions of a compulsory licence may find it reviewed and even terminated.</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">From when does the regulation apply?</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>It entered into force on<DATE ISO="20060629">29 June 2006</DATE>.</P>
+        </GR.SEQ>
+        <GR.SEQ LEVEL="2">
+          <TITLE>
+            <TI>
+              <P>
+                <HT TYPE="UC">Background</HT>
+              </P>
+            </TI>
+          </TITLE>
+          <P>The legislation is part of wider EU action to tackle public-health concerns that the world’s least developed and developing countries face, in particular access to safe, effective and affordable medicines.</P>
+          <LIST TYPE="DASH">
+            <ITEM>
+              <P>
+                <REF.DOC URI="http://ec.europa.eu/trade/policy/accessing-markets/intellectual-property/access-to-medicines/" CONTEXT="EXTERNAL">Access to medicines</REF.DOC>on the European Commission’s website</P>
+            </ITEM>
+          </LIST>
+        </GR.SEQ>
+      </GR.SEQ>
+    </SUMMARY.LSEU>
+    <REFERENCES.LSEU>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="UC">Act</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <P>Regulation (EC) No<REF.DOC URI="http://publications.europa.eu/resource/celex/32006R0816" CONTEXT="EUR-LEX">816/2006</REF.DOC>of the European Parliament and of the Council of<DATE ISO="20060517">17 May 2006</DATE>on compulsory licensing of patents relating to the manufacture of pharmaceutical products for export to countries with public health problems (OJ L 157,<DATE ISO="20060609">9.6.2006</DATE>, pp. 1-7)</P>
+      </GR.SEQ>
+    </REFERENCES.LSEU>
+  </CONTENTS.LSEU>
+</LSEU>

@@ -1,0 +1,55 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.01-20091201.xd">
+  <BIB.DOC>
+    <PROD.ID>20091204006</PROD.ID>
+    <FIN.ID>22840</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2009/C 312/26</TXT>
+    </NO.DOC>
+    <NO.DOC FORMAT="CNY" TYPE="INTERNAL">
+      <NO.CURRENT>383</NO.CURRENT>
+      <YEAR>2009</YEAR>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>CJ</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2009312EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>312</NO.OJ>
+    <DATE ISO="20091219">20091219</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0026" SYNOPTISM="D0026">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>CASE</LEGAL.VALUE>
+      <DATE ISO="20090925">20090925</DATE>
+      <PAGE.FIRST>16</PAGE.FIRST>
+      <PAGE.LAST>17</PAGE.LAST>
+      <PAGE.TOTAL>2</PAGE.TOTAL>
+      <PAGE.SEQ>2</PAGE.SEQ>
+      <REF.PHYS FILE="C_2009312EN.01001602.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0026">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Case C-383/09: Action brought on<DATE ISO="20090925">25 September 2009</DATE>— Commission of the European Communities v French Republic</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>16</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0026">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_31220091219en00160017.pdf" DOI.DOC="doi:10.3001/C_2009.312.01001602.eng">16</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

@@ -1,0 +1,56 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.20-20100601.xd">
+  <BIB.DOC>
+    <PROD.ID>20110218003</PROD.ID>
+    <FIN.ID>29919</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2011/C 87/03</TXT>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>OTHER</AUTHOR>
+    <EEA>
+    </EEA>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2011087EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>087</NO.OJ>
+    <DATE ISO="20110318">20110318</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0003" SYNOPTISM="D0003">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>INFO</LEGAL.VALUE>
+      <DATE ISO="20110318">20110318</DATE>
+      <PAGE.FIRST>98</PAGE.FIRST>
+      <PAGE.LAST>102</PAGE.LAST>
+      <PAGE.TOTAL>5</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="C_2011087EN.01009801.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0003">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Information communicated by Member States regarding State aid granted under Commission Regulation (EC) No 800/2008 declaring certain categories of aid compatible with the common market in application of Articles 87 and 88 of the Treaty (General Block Exemption Regulation)<NOTE NOTE.ID="E0001" NUMBERING="ARAB">
+                <P>Text with EEA relevance</P>
+              </NOTE>
+            </P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>98</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0003">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF REF.PDF="c_08720110318en00980102.pdf" DOI.DOC="doi:10.3001/C_2011.087.01009801.eng">98</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>

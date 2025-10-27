@@ -1,0 +1,51 @@
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.21-20110601.xd">
+  <BIB.DOC>
+    <PROD.ID>20110930011</PROD.ID>
+    <FIN.ID>33483</FIN.ID>
+    <NO.DOC TYPE="OJ">
+      <TXT>2011/C 294/06</TXT>
+    </NO.DOC>
+    <DURAB TYPE="NA">
+    </DURAB>
+    <AUTHOR>COM</AUTHOR>
+  </BIB.DOC>
+  <PUBLICATION.REF FILE="C_2011294EN.toc.xml">
+    <COLL>C</COLL>
+    <NO.OJ>294</NO.OJ>
+    <DATE ISO="20111006">20111006</DATE>
+    <LG.OJ>EN</LG.OJ>
+    <VOLUME.REF>01</VOLUME.REF>
+  </PUBLICATION.REF>
+  <FMX>
+    <DOC.MAIN.PUB NO.SEQ="0006" SYNOPTISM="D0006">
+      <LG.DOC>EN</LG.DOC>
+      <LEGAL.VALUE>ECU.D</LEGAL.VALUE>
+      <DATE ISO="20111005">20111005</DATE>
+      <PAGE.FIRST>6</PAGE.FIRST>
+      <PAGE.LAST>6</PAGE.LAST>
+      <PAGE.TOTAL>1</PAGE.TOTAL>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <REF.PHYS FILE="C_2011294EN.01000601.xml" TYPE="DOC.XML">
+      </REF.PHYS>
+    </DOC.MAIN.PUB>
+  </FMX>
+  <PAPER>
+    <VOLUME.PAPER>
+      <ITEM.VOLUME REF.NO.SEQ="0006">
+        <TITLE ID.TITLE="T0001">
+          <TI>
+            <P>Euro exchange rates</P>
+          </TI>
+        </TITLE>
+        <ITEM.REF>6</ITEM.REF>
+      </ITEM.VOLUME>
+    </VOLUME.PAPER>
+  </PAPER>
+  <PDF>
+    <ITEM.VOLUME REF.NO.SEQ="0006">
+      <TITLE REF.TITLE="T0001">
+      </TITLE>
+      <ITEM.REF DOI.DOC="doi:10.3001/C_2011.294.01000601.eng" REF.PDF="c_29420111006en00060006.pdf">6</ITEM.REF>
+    </ITEM.VOLUME>
+  </PDF>
+</DOC>
