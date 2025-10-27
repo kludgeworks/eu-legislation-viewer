@@ -5,8 +5,8 @@
 #USAGE flag "-j --jobs <jobs>" default="16"
 
 # Downloads a single URL, saves it, and returns a status record.
-def "download-url" [
-  url: string,      # The URL to download
+def download-url [
+  url: string       # The URL to download
   out_dir: string   # The root directory for downloads
 ] {
   # 1. Determine the output path based on the URL structure
@@ -22,12 +22,30 @@ def "download-url" [
   let file_name = $"($file_stem).xml"
 
   let path_prefix = if ($path_parts | length) > 1 { $path_parts | take (($path_parts | length) - 1) } else { [] }
-  let target_dir = ([$out_dir, $host] ++ $path_prefix) | path join
-  let target_path = [$target_dir, $file_name] | path join
+  let target_dir = (
+    [
+      $out_dir
+      $host
+      ...$path_prefix
+    ]
+    | path join
+  )
+  let target_path = (
+    [
+      $target_dir
+      $file_name
+    ]
+    | path join
+  )
 
   # 2. Skip if the file already exists
   if ($target_path | path exists) {
-    return { url: $url, path: $target_path, status: "skipped", message: "file exists" }
+    return {
+      url: $url,
+      path: $target_path,
+      status: "skipped",
+      message: "file exists"
+    }
   }
 
   # 3. Ensure the target directory exists
@@ -36,14 +54,24 @@ def "download-url" [
   # 4. Perform the download
   let response = try {
     http get --max-time 120sec --full --raw $url
-  } catch { |err|
+  } catch {|err|
     let msg = $err.msg? | default "Unknown network error"
-    return { url: $url, path: $target_path, status: "error", message: $msg }
+    return {
+      url: $url,
+      path: $target_path,
+      status: "error",
+      message: $msg
+    }
   }
 
   # 5. Handle HTTP errors
   if $response.status >= 400 {
-    return { url: $url, path: $target_path, status: "error", message: $"HTTP ($response.status)" }
+    return {
+      url: $url,
+      path: $target_path,
+      status: "error",
+      message: $"HTTP ($response.status)"
+    }
   }
 
   # 6. Try to format as XML, otherwise save the raw body
@@ -55,7 +83,12 @@ def "download-url" [
 
   $content_to_save | save --force --raw $target_path
 
-  { url: $url, path: $target_path, status: "ok", message: "downloaded" }
+  {
+    url: $url,
+    path: $target_path,
+    status: "ok",
+    message: "downloaded"
+  }
 }
 
 # Main entry point for the script
@@ -94,33 +127,54 @@ let chunk_size = (
   | into int
 )
 
-mut completed = 0
-mut results = []
+let aggregation = (
+  $urls
+  | chunks $chunk_size
+  | reduce -f {
+      completed: 0
+      results: []
+    } {|chunk, acc|
+      let chunk_results = (
+        $chunk
+        | par-each --threads $jobs {|url| download-url $url $out_dir }
+        | collect
+      )
 
-for chunk in ($urls | chunks $chunk_size) {
-  let chunk_results = (
-    $chunk
-    | par-each --threads $jobs {|url| download-url $url $out_dir }
-    | collect
-  )
+      let chunk_count = ($chunk_results | length)
+      let completed_total = $acc.completed + $chunk_count
 
-  let chunk_count = ($chunk_results | length)
-  $completed += $chunk_count
+      let percent = (
+        ((completed_total | into float) / ($total | into float)) * 100
+        | math round --precision 1
+      )
 
-  let percent = (
-    (($completed | into float) / ($total | into float)) * 100
-    | math round --precision 1
-  )
+      print $"($completed_total) / ($total) \\(($percent)%\\) completed"
 
-  print $"($completed) / ($total) \\(($percent)%\\) completed"
+      {
+        completed: $completed_total,
+        results: (
+          $acc.results ++ $chunk_results
+        )
+      }
+    }
+)
 
-  mut results = ($results | append $chunk_results)
+let results = $aggregation.results
+
+$results
+| each {|res|
+    print $"[($res.status | str upcase)] ($res.url)"
 }
 
-$results | each {|res| print $"[($res.status | str upcase)] ($res.url)" }
-
 # Save a manifest of all operations
-let manifest_path = [$out_dir, "manifest.json"] | path join
+let manifest_path = (
+  [
+    $out_dir
+    "manifest.json"
+  ]
+  | path join
+)
+
 $results | to json --indent 2 | save --force $manifest_path
 
 # Final report based on collected results
@@ -129,7 +183,8 @@ if ($errors | is-empty) {
   print -e $"\n✅ All downloads completed successfully."
 } else {
   print -e $"\n❌ Encountered ($errors | length) errors:"
-  $errors | each {|err| print -e $"- ($err.url): ($err.message)" }
+  $errors
+  | each {|err| print -e $"- ($err.url): ($err.message)" }
   exit 1
 }
 print $"Manifest written to ($manifest_path)"

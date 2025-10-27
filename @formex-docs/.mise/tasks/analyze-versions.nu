@@ -5,11 +5,12 @@
 # Parse all XML files and extract the noNamespaceSchemaLocation attribute
 # from the root element, then group and count distinct versions
 
-def main [--format(-f): string] {
+# Command: summarize schema version usage across the downloaded dataset
+def main [--format(-f): string = "table"] {
 
     let results = (
         glob downloads/**/*.xml
-        | par-each { |file|
+        | par-each {|file|
             # Parse XML and extract the noNamespaceSchemaLocation attribute
             # from the root element, then get just the filename
             # Use try/catch to handle files with encoding issues
@@ -26,11 +27,11 @@ def main [--format(-f): string] {
                 # Skip files with encoding errors
                 null
             }
-        }   
+        }
         | compact  # Remove null values
         | group-by  # Group by the version string itself
         | transpose name files
-        | insert count { |row| $row.files | length }
+        | insert count {|row| $row.files | length }
         | select name count
         | sort-by count --reverse
     )
@@ -42,7 +43,9 @@ def main [--format(-f): string] {
         "jsonl" => { $results | each { to json } | str join (char newline) }
         "table" => { $results }
         _ => {
-            error make { msg: $"Unknown format: ($format). Use: table, json, csv, tsv, or jsonl" }
+            error make {
+                msg: $"Unknown format: ($format). Use: table, json, csv, tsv, or jsonl"
+            }
         }
     }
 }

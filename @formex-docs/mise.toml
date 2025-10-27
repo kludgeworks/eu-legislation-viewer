@@ -4,3 +4,5 @@ ripgrep = "latest"
 rust = "latest"
 "ubi:nushell/nushell" = { version = "latest", exe = "nu" }
 "cargo:nu_plugin_query" = { version = "latest", postinstall = "nu -c 'plugin add ($env.MISE_TOOL_INSTALL_PATH | path join \"bin\" \"nu_plugin_query\")'" }
+"cargo:nu-lint" = "latest"
+htmlq = "latest"

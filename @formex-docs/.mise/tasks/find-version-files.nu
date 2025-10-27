@@ -7,11 +7,19 @@
 #USAGE }
 #USAGE arg versions... "Formex schema filename(s) to match (e.g. formex-06.02.1-20231031.xd)"
 
-def main [...versions: string, --limit(-l): int = -1, --with-version(-w), --format(-f): string = "table"] {
+# Command: locate downloaded files referencing the requested schema version(s)
+def main [
+    ...versions: string
+    --limit(-l): int = -1
+    --with-version(-w)
+    --format(-f): string = "table"
+] {
 
   if ($versions | is-empty) {
-      error make { msg: "Missing required version argument(s) (e.g. formex-06.02.1-20231031.xd)" }
-  }  
+      error make {
+          msg: "Missing required version argument(s) (e.g. formex-06.02.1-20231031.xd)"
+      }
+  }
 
   let results = rg --files -g '*.xml' downloads
         | lines

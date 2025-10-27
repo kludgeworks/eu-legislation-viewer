@@ -32,10 +32,14 @@ let url = $"($endpoint)?query=($sparql_query | url encode --all)"
 
 # Fetch SPARQL results and parse JSON
 let response = (
-    http get --headers [Accept "application/sparql-results+json"] $url
+    http get --headers [
+        Accept
+        "application/sparql-results+json"
+    ] $url
     | from json
 )
 
 # Navigate JSON structure
 $response.results.bindings
-| each { |binding| print $binding.item.value }
+| get item.value
+| str join "\n"

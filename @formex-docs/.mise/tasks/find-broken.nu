@@ -6,12 +6,12 @@
 
 let broken_files = (
     glob downloads/**/*.xml
-    | par-each { |file|
+    | par-each {|file|
         let result = (try {
             # Attempt to open and parse the file
             open --raw $file | from xml
             null  # Success - return null to filter out
-        } catch { |err|
+        } catch {|err|
             # Capture error details
             let error_type = if ($err.debug | str contains "NonUtf8") {
                 "encoding_error"
@@ -40,7 +40,7 @@ print $"Found ($broken_files | length) broken files\n"
 # Group by error type and print counts
 $broken_files
 | group-by error_type
-| items { |type, files|
+| items {|type, files|
     print $"($type): ($files | length) files"
 }
 
