@@ -87,24 +87,26 @@ def format-details [selection: record, has_filters: bool, results: list<record>]
 
 # Main - everything is a pipeline
 def main [identifier?: string] {
-    # Parse and validate identifier in one flow
-    let parsed = (
+    # Parse identifier by splitting on dots and slash
+    let id_parts = (
         $identifier
         | default ($env.usage_identifier? | default "")
         | if $in == "" {
             error make { msg: "Provide an identifier argument in the form uuid[.expr-id[.man-id]][/CS_ID]." }
         } else { $in }
         | str trim
-        | parse --regex '(?P<prefix>.*?)(?P<work>[0-9a-fA-F-]{36})(?:\.(?P<expr>[0-9A-Za-z]+))?(?:\.(?P<man>[0-9A-Za-z]+))?(?:/(?P<cs>[^/]+?))?(?:\.xml)?$'
-        | if ($in | is-empty) {
-            error make { msg: "Could not parse identifier" }
-        } else {
-            get 0
-            | if $in.work == "" {
-                error make { msg: "Missing work identifier" }
-            } else { $in }
-        }
+        | str replace --regex '\.xml$' ''  # Remove .xml suffix if present
+        | split row '/'
     )
+
+    let dot_parts = ($id_parts.0 | split row '.')
+
+    let parsed = {
+        work: ($dot_parts | first)
+        expr: ($dot_parts | get --optional 1)
+        man: ($dot_parts | get --optional 2)
+        cs: ($id_parts | get --optional 1)
+    }
 
     # Build filters in one transformation
     let filters = (
@@ -201,10 +203,10 @@ def main [identifier?: string] {
         exit 1
     }
 
-    # Filter and select in one flow
+    # Pure data transformation: find the selection or determine failure
     let has_filters = ($filters.expr != null) or ($filters.man != null) or ($filters.cs != null)
 
-    let selection = (
+    let selection_info = (
         $results
         | if $has_filters {
             where {|r|
@@ -213,43 +215,47 @@ def main [identifier?: string] {
                 and (if $filters.cs != null { $r.content_stream_id == $filters.cs } else { true }))
             }
             | if ($in | is-empty) {
-                # Format no matches error
-                let available = (
-                    $results
-                    | each {|r| $"($r.expression_id) / ($r.manifestation_id) / ($r.content_stream_id)" }
-                    | uniq
-                    | take 6
-                    | str join "\n"
-                )
-
-                [
-                    (^gum style --foreground 196 --bold "No matching resources")
-                    (^gum style --foreground 244 --bold "Requested")
-                    (
-                        [
-                            (if $filters.expr != null { $"Expression: ($filters.expr)" } else { "" })
-                            (if $filters.man != null { $"Manifestation: ($filters.man)" } else { "" })
-                            (if $filters.cs != null { $"Content Stream: ($filters.cs)" } else { "" })
-                        ]
-                        | where {|it| $it != "" }
-                        | str join " • "
-                        | if $in != "" { ^gum style --faint $in } else { "" }
-                    )
-                    (^gum style --foreground 244 --bold "Available expr/man/cs")
-                    (^gum style --faint $available)
-                ]
-                | where {|it| $it != "" }
-                | ^gum style --border-foreground 196 --border double --align center --width 80 --margin "1 2" --padding "1 4" ...$in
-
-                exit 1
+                { status: "no_match" }
             } else {
-                first
+                { status: "ok", item: ($in | first) }
             }
         } else {
-            first
+            { status: "ok", item: ($in | first) }
         }
     )
 
-    # Display formatted output
-    format-details $selection $has_filters $results
+    # Handle error case: no matching resources
+    if $selection_info.status == "no_match" {
+        let available = (
+            $results
+            | each {|r| $"($r.expression_id) / ($r.manifestation_id) / ($r.content_stream_id)" }
+            | uniq
+            | take 6
+            | str join "\n"
+        )
+
+        [
+            (^gum style --foreground 196 --bold "No matching resources")
+            (^gum style --foreground 244 --bold "Requested")
+            (
+                [
+                    (if $filters.expr != null { $"Expression: ($filters.expr)" } else { "" })
+                    (if $filters.man != null { $"Manifestation: ($filters.man)" } else { "" })
+                    (if $filters.cs != null { $"Content Stream: ($filters.cs)" } else { "" })
+                ]
+                | where {|it| $it != "" }
+                | str join " • "
+                | if $in != "" { ^gum style --faint $in } else { "" }
+            )
+            (^gum style --foreground 244 --bold "Available expr/man/cs")
+            (^gum style --faint $available)
+        ]
+        | where {|it| $it != "" }
+        | ^gum style --border-foreground 196 --border double --align center --width 80 --margin "1 2" --padding "1 4" ...$in
+
+        exit 1
+    }
+
+    # Success path: display formatted output
+    format-details $selection_info.item $has_filters $results
 }
