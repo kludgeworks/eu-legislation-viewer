@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema">
+	<xd:element name="catalog">
+		<xd:complexType>
+			<xd:sequence>
+				<xd:element ref="entry" minOccurs="1" maxOccurs="unbounded"/>
+			</xd:sequence>
+		</xd:complexType>
+	</xd:element>
+	<xd:element name="entry">
+		<xd:complexType>
+			<xd:attribute name="file" type="xd:string" use="required"/>
+			<xd:attribute name="version" use="required">
+				<xd:simpleType>
+					<xd:restriction base="xd:string">
+						<xd:pattern value="\d{1,3}\..{2}[a-z]?"/>
+					</xd:restriction>
+				</xd:simpleType>
+			</xd:attribute>
+			<xd:attribute name="date" use="required">
+				<xd:simpleType>
+					<xd:restriction base="xd:string">
+						<xd:pattern value="\d{8}"/>
+					</xd:restriction>
+				</xd:simpleType>
+			</xd:attribute>
+			<xd:attribute name="comment" type="xd:string"/>
+		</xd:complexType>
+	</xd:element>
+</xd:schema>

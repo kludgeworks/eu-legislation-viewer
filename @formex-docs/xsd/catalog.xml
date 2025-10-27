@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="catalog.xd">
+	<entry file="formex4-0.99-20040301.xd" version="0.99" date="20040301" comment="for test reasons only"/>
+	<entry file="formex-01.00-20040501.xd" version="1.00" date="20040501" comment="version for production"/>
+	<entry file="formex-01.01-20040501.xd" version="1.01" date="20040501" comment="version for production, replaces 1.00"/>
+	<entry file="formex-01.02-20040901.xd" version="1.02" date="20040901" comment="version for limited production, partially replaces 1.01"/>
+	<entry file="formex-02.00-20050101.xd" version="1.02" date="20050101" comment="version for production, replaces 1.01 and 1.02"/>
+	<entry file="formex-04.00-20061031.xd" version="4.00" date="20061031" comment="version for production, replaces 2"/>
+	<entry file="formex-04.cj-20080212.xd" version="4.cj" date="20080212" comment="version for production of European court Reports"/>
+	<entry file="formex-05.01-20081231.xd" version="5.00" date="20081231" comment="temporary version entring into fore on December 1, 2009"/>
+	<entry file="formex-05.10-20100101.xd" version="5.10" date="20081231" comment="version replaces 5.00 and 5.01"/>
+	<entry file="formex-05.20-20100601.xd" version="5.20" date="20100909" comment="version replaces 5.10 and 5.11"/>
+	<entry file="formex-05.21-20110601.xd" version="5.21" date="20110601" comment="version replaces 5.20"/>
+	<entry file="formex-05.22-20110811.xd" version="5.22" date="20110811" comment="addition for consolidation, replaces 5.21"/>
+	<entry file="formex-05.23-20111201.xd" version="5.23" date="20111201" comment="addition for DD HR, replaces 5.22"/>
+	<entry file="formex-05.24-20121231.xd" version="5.24" date="20121231" comment="version for production, replaces 5.23"/>
+	<entry file="formex-05.30-20130101.xd" version="5.30" date="20130101" comment="integration of LSEU document"/>
+	<entry file="formex-05.50-20130101.xd" version="5.50" date="20130101" comment="integration with IMMC (OJ), for general production, replaces 5.23 and 5.30"/>
+	<entry file="formex-05.51-20130501.xd" version="5.51" date="20130501" comment="integration with IMMC (case law), replaces 5.50"/>
+	<entry file="formex-05.52-20130701.xd" version="5.52" date="20130701" comment="integration with IMMC (general), added element to FORMULA, replaces 5.51"/>
+	<entry file="formex-05.53-20130725.xd" version="5.53" date="20130725" comment="LSEU and case law documents reviewed, replaces 5.52"/>
+	<entry file="formex-05.53l-20140201.xd" version="5.53l" date="20140201" comment="NO.ECLI, LSEU update, special version for case law and LSEU"/>
+	<entry file="formex-05.54-20140601.xd" version="5.54" date="20140601" comment="updates for case law documents"/>
+	<entry file="formex-05.55-20141201.xd" version="5.55" date="20141201" comment="LI, CI series, NO.ECLI in t_btx_seq"/>
+	<entry file="formex-05.56-20160701.xd" version="5.56" date="20160701" comment="anonymisation, replaces all previous versions"/>
+	<entry file="formex-05.57-20161001.xd" version="5.57" date="20161001" comment="changes to CJ models due to new Vademecum"/>
+	<entry file="formex-05.58-20161001.xd" version="5.58" date="20161101" comment="changes to INDEX and LIST models due to new Vademecum"/>
+	<entry file="formex-05.59-20170418.xd" version="5.59" date="20161101" comment="LSEU modifications due to new document type"/>
+	<entry file="formex-06.00-20210715.xd" version="6.00" date="20210715" comment="Changes to ABA production"/>
+	<entry file="formex-06.01-20220520.xd" version="6.01" date="20220520" comment="NO.DOC and NO.ELI added in DOCUMENT.REF.CONS, REF.DOC.SE and LINK added as new elements"/>
+	<entry file="formex-06.02-20230206.xd" version="6.02" date="20230206" comment="added a new unicode character “25A1” for checkboxes"/>
+	<entry file="formex-06.02.1-20231031.xd" version="6.02.1" date="20231031" comment="introduction of new type of document, SUMMARY and RESUME"/>
+	<entry file="formex-06.02.2-20241118.xd" version="6.02.2" date="20241118" comment="New element DEC.TITLE added as optional in CASE; added support for new character U-202F."/>
+	<entry file="formex-06.02.3-20250123.xd" version="6.02.3" date="20250123" comment="NO.CASE element can be used in BIB.INSTANCE element"/>
+</catalog>
