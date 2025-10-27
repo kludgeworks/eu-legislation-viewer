@@ -84,56 +84,65 @@ def format-details [selection: record, has_filters: bool, results: list<record>]
     | ^gum style --border-foreground 212 --border double --align center --width 90 --margin "1 2" --padding "1 4" ...$in
 }
 
+# Format error panel when no results found
+def format-no-results [work_uri: string] {
+    [
+        (^gum style --foreground 196 --bold "No metadata found")
+        ([(^gum style --foreground 244 --bold "Work:") (^gum style --faint $work_uri)] | str join " ")
+    ]
+    | ^gum style --border-foreground 196 --border double --align center --width 60 --margin "1 2" --padding "1 4" ...$in
+}
+
+# Format error panel when filters don't match
+def format-no-matches [expr_filter, man_filter, cs_filter, results: list<record>] {
+    let available = (
+        $results
+        | each {|r| $"($r.expression_id) / ($r.manifestation_id) / ($r.content_stream_id)" }
+        | uniq
+        | take 6
+        | str join "\n"
+    )
+
+    [
+        (^gum style --foreground 196 --bold "No matching resources")
+        (^gum style --foreground 244 --bold "Requested")
+        (
+            [
+                (if $expr_filter != null { $"Expression: ($expr_filter)" } else { "" })
+                (if $man_filter != null { $"Manifestation: ($man_filter)" } else { "" })
+                (if $cs_filter != null { $"Content Stream: ($cs_filter)" } else { "" })
+            ]
+            | where {|it| $it != "" }
+            | str join " • "
+            | if $in != "" { ^gum style --faint $in } else { "" }
+        )
+        (^gum style --foreground 244 --bold "Available expr/man/cs")
+        (^gum style --faint $available)
+    ]
+    | where {|it| $it != "" }
+    | ^gum style --border-foreground 196 --border double --align center --width 80 --margin "1 2" --padding "1 4" ...$in
+}
+
 
 # Main - everything is a pipeline
 def main [identifier?: string] {
-    # Parse identifier by splitting on dots and slash
-    let id_parts = (
+    # Parse and normalize identifier in one pipeline
+    let id = (
         $identifier
         | default ($env.usage_identifier? | default "")
         | if $in == "" {
             error make { msg: "Provide an identifier argument in the form uuid[.expr-id[.man-id]][/CS_ID]." }
         } else { $in }
         | str trim
-        | str replace --regex '\.xml$' ''  # Remove .xml suffix if present
+        | str replace --regex '\.xml$' ''
         | split row '/'
-    )
-
-    let dot_parts = ($id_parts.0 | split row '.')
-
-    let parsed = {
-        work: ($dot_parts | first)
-        expr: ($dot_parts | get --optional 1)
-        man: ($dot_parts | get --optional 2)
-        cs: ($id_parts | get --optional 1)
-    }
-
-    # Build filters in one transformation
-    let filters = (
-        {
-            expr: $parsed.expr
-            man: $parsed.man
-            cs: $parsed.cs
+        | {
+            parts: ($in.0 | split row '.')
+            work: ($in.0 | split row '.' | first)
+            expr: ($in.0 | split row '.' | get --optional 1 | if $in != null { str upcase } else { null })
+            man: ($in.0 | split row '.' | get --optional 2 | if $in != null { str upcase } else { null })
+            cs: ($in | get --optional 1 | if $in != null { str upcase } else { null })
         }
-        | transpose key value
-        | each {|row|
-            {
-                key: $row.key
-                value: (
-                    $row.value
-                    | if $row.key == "cs" and $in != null {
-                        str replace --regex '(?i)\.xml$' ""
-                    } else { $in }
-                    | if $in == null or $in == "" {
-                        null
-                    } else {
-                        str trim | if $in == "" { null } else { str upcase }
-                    }
-                )
-            }
-        }
-        | transpose -r -d
-        | into record
     )
 
     # Fetch and transform metadata in one pipeline
@@ -154,7 +163,7 @@ def main [identifier?: string] {
             ""
             "  ?item cdm:item_belongs_to_manifestation ?manifestation ."
             ""
-            $"  FILTER\(?work = <http://publications.europa.eu/resource/cellar/($parsed.work)>\)"
+            $"  FILTER\(?work = <http://publications.europa.eu/resource/cellar/($id.work)>\)"
             "}"
         ]
         | str join "\n"
@@ -167,52 +176,33 @@ def main [identifier?: string] {
             {
                 title: ($b.title.value | decode-html)
                 celex: $b.celex.value
-                work_uri: $"http://publications.europa.eu/resource/cellar/($parsed.work)"
+                work_uri: $"http://publications.europa.eu/resource/cellar/($id.work)"
                 expression_uri: $b.expression.value
                 manifestation_uri: $b.manifestation.value
                 item_uri: $b.item.value
-                expression_id: (
-                    $b.expression.value
-                    | if ($in | str contains '.') {
-                        str replace --regex '^.*\.' '' | str upcase
-                    } else { null }
-                )
-                manifestation_id: (
-                    $b.manifestation.value
-                    | if ($in | str contains '.') {
-                        str replace --regex '^.*\.' '' | str upcase
-                    } else { null }
-                )
-                content_stream_id: (
-                    $b.item.value
-                    | if ($in | str contains '/') {
-                        str replace --regex '^.*/' '' | str upcase
-                    } else { null }
-                )
+                expression_id: ($b.expression.value | split row '.' | last | str upcase)
+                manifestation_id: ($b.manifestation.value | split row '.' | last | str upcase)
+                content_stream_id: ($b.item.value | split row '/' | last | str upcase)
             }
         }
     )
 
     # Early exit if no results
     if ($results | is-empty) {
-        [
-            (^gum style --foreground 196 --bold "No metadata found")
-            ([(^gum style --foreground 244 --bold "Work:") (^gum style --faint $"http://publications.europa.eu/resource/cellar/($parsed.work)")] | str join " ")
-        ]
-        | ^gum style --border-foreground 196 --border double --align center --width 60 --margin "1 2" --padding "1 4" ...$in
+        format-no-results $"http://publications.europa.eu/resource/cellar/($id.work)"
         exit 1
     }
 
     # Pure data transformation: find the selection or determine failure
-    let has_filters = ($filters.expr != null) or ($filters.man != null) or ($filters.cs != null)
+    let has_filters = ($id.expr != null) or ($id.man != null) or ($id.cs != null)
 
     let selection_info = (
         $results
         | if $has_filters {
             where {|r|
-                ((if $filters.expr != null { $r.expression_id == $filters.expr } else { true })
-                and (if $filters.man != null { $r.manifestation_id == $filters.man } else { true })
-                and (if $filters.cs != null { $r.content_stream_id == $filters.cs } else { true }))
+                ((if $id.expr != null { $r.expression_id == $id.expr } else { true })
+                and (if $id.man != null { $r.manifestation_id == $id.man } else { true })
+                and (if $id.cs != null { $r.content_stream_id == $id.cs } else { true }))
             }
             | if ($in | is-empty) {
                 { status: "no_match" }
@@ -226,33 +216,7 @@ def main [identifier?: string] {
 
     # Handle error case: no matching resources
     if $selection_info.status == "no_match" {
-        let available = (
-            $results
-            | each {|r| $"($r.expression_id) / ($r.manifestation_id) / ($r.content_stream_id)" }
-            | uniq
-            | take 6
-            | str join "\n"
-        )
-
-        [
-            (^gum style --foreground 196 --bold "No matching resources")
-            (^gum style --foreground 244 --bold "Requested")
-            (
-                [
-                    (if $filters.expr != null { $"Expression: ($filters.expr)" } else { "" })
-                    (if $filters.man != null { $"Manifestation: ($filters.man)" } else { "" })
-                    (if $filters.cs != null { $"Content Stream: ($filters.cs)" } else { "" })
-                ]
-                | where {|it| $it != "" }
-                | str join " • "
-                | if $in != "" { ^gum style --faint $in } else { "" }
-            )
-            (^gum style --foreground 244 --bold "Available expr/man/cs")
-            (^gum style --faint $available)
-        ]
-        | where {|it| $it != "" }
-        | ^gum style --border-foreground 196 --border double --align center --width 80 --margin "1 2" --padding "1 4" ...$in
-
+        format-no-matches $id.expr $id.man $id.cs $results
         exit 1
     }
 
