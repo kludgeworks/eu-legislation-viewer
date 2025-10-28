@@ -1,0 +1,405 @@
+--- xsd/formex-05.24-20121231.xd	2025-10-28 18:26:57
++++ xsd/formex-05.30-20130101.xd	2025-10-28 18:26:57
+@@ -2,7 +2,7 @@
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce">
+ 	<xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Current version 5.24</fmx:version>
++			<fmx:version>Current version 5.30</fmx:version>
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history>
+ 				<fmx:line.history>
+@@ -649,11 +649,9 @@
+ 					<!-- version 5.23 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
+ 					<fmx:line.history>
+ 						<fmx:date>20111121</fmx:date>extension of DOI pattern for documents in the context of secondary legislation (HB)</fmx:line.history>
+-					<!-- version 5.24 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
++					<!-- version 5.30 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
+ 					<fmx:line.history>
+-						<fmx:date>20120810</fmx:date>new country list for CRIT/@COUNTRY (HB)</fmx:line.history>
+-					<fmx:line.history>ISSN.PRINT optional (HB/XC)</fmx:line.history>
+-					<fmx:line.hisotry>New simple types t_charcode, t_quotation.end, t_quotation.start for encoding of quotation marks in QUOT.START and QUOT.END (HB)</fmx:line.hisotry>
++						<fmx:date>20120627</fmx:date>new document type LSEU (Legislative Summary EU), new elements BIB.LSEU, LAST.MODIFICATION, CONTENTS.LSEU, HEADER.LSEU, REFERENCES.LSEU, MENU.LSEU, SUMMARY.LSEU, REFERRED.DOCS.LSEU, ARCHIVED; REF.DOC added to t_btx and t_btx.seq, NO.DOC.LSEU, ARCHIVED, t_no.doc.lseu (HB)</fmx:line.history>
+ 					<!-- -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>AR</fmx:symbol>
+@@ -676,10 +674,6 @@
+ 						<fmx:meaning>Laurent Mercier</fmx:meaning>
+ 					</fmx:history.symbol>
+ 					<fmx:history.symbol>
+-						<fmx:symbol>MK</fmx:symbol>
+-						<fmx:meaning>Maria Kardami</fmx:meaning>
+-					</fmx:history.symbol>
+-					<fmx:history.symbol>
+ 						<fmx:symbol>NR</fmx:symbol>
+ 						<fmx:meaning>Nary Ramahatra</fmx:meaning>
+ 					</fmx:history.symbol>
+@@ -780,6 +774,7 @@
+ 				<xd:element ref="QUOT.END"/>
+ 				<xd:element ref="QUOT.S"/>
+ 				<xd:element ref="QUOT.START"/>
++				<xd:element ref="REF.DOC"/>
+ 				<xd:element ref="REF.DOC.ECR"/>
+ 				<xd:element ref="REF.DOC.OJ"/>
+ 				<xd:element ref="STI.ART"/>
+@@ -829,6 +824,7 @@
+ 				<xd:element ref="LIST"/>
+ 				<xd:element ref="LV"/>
+ 				<xd:element ref="NOTE"/>
++				<xd:element ref="REF.DOC"/>
+ 				<xd:element ref="REF.DOC.ECR"/>
+ 				<xd:element ref="REF.DOC.OJ"/>
+ 				<xd:element ref="QUOT.END"/>
+@@ -912,11 +908,6 @@
+ 			<xd:element ref="P"/>
+ 		</xd:choice>
+ 	</xd:complexType>
+-	<xd:simpleType name="t_charcode">
+-		<xd:restriction base="xd:hexBinary">
+-			<xd:pattern value="[0-9A-F]{4}"/>
+-		</xd:restriction>
+-	</xd:simpleType>
+ 	<xd:simpleType name="t_collection">
+ 		<xd:restriction base="xd:string">
+ 			<xd:enumeration value="A"/>
+@@ -1047,6 +1038,11 @@
+ 			<!-- other language: not ISO -->
+ 		</xd:restriction>
+ 	</xd:simpleType>
++	<xd:simpleType name="t_no.doc.lseu">
++		<xd:restriction base="xd:string">
++			<xd:pattern value="LSEU\-(([A-Z]([A-Z]|\d)\d{4}[A-Z]?)|(\d{4}(\d{2}(\d{2})?)?))\-\d{4}\-\d{2}\-\d{2}\-\d{4}"/>
++		</xd:restriction>
++	</xd:simpleType>
+ 	<xd:simpleType name="t_no.oj">
+ 		<xd:restriction base="xd:string">
+ 			<xd:pattern value="\d{3}[AEM]?"/>
+@@ -1072,28 +1068,6 @@
+ 			<xd:pattern value="\d{11}"/>
+ 		</xd:restriction>
+ 	</xd:simpleType>
+-	<xd:simpleType name="t_quotation.end">
+-		<xd:restriction base="t_charcode">
+-			<xd:enumeration value="00AB"/>
+-			<xd:enumeration value="00BB"/>
+-			<xd:enumeration value="2018"/>
+-			<xd:enumeration value="2019"/>
+-			<xd:enumeration value="201C"/>
+-			<xd:enumeration value="201D"/>
+-		</xd:restriction>
+-	</xd:simpleType>
+-	<xd:simpleType name="t_quotation.start">
+-		<xd:restriction base="t_charcode">
+-			<xd:enumeration value="00AB"/>
+-			<xd:enumeration value="00BB"/>
+-			<xd:enumeration value="2018"/>
+-			<xd:enumeration value="2019"/>
+-			<xd:enumeration value="201A"/>
+-			<xd:enumeration value="201C"/>
+-			<xd:enumeration value="201D"/>
+-			<xd:enumeration value="201E"/>
+-		</xd:restriction>
+-	</xd:simpleType>
+ 	<xd:simpleType name="t_sectiontype">
+ 		<xd:restriction base="xd:string">
+ 			<xd:enumeration value="C0"/>
+@@ -1244,6 +1218,18 @@
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="APPLICANT" type="t_btx"/>
++	<xd:element name="ARCHIVED">
++		<xd:complexType>
++			<xd:attribute name="VALUE" default="NO">
++				<xd:simpleType>
++					<xd:restriction base="xd:string">
++						<xd:enumeration value="NO"/>
++						<xd:enumeration value="YES"/>
++					</xd:restriction>
++				</xd:simpleType>
++			</xd:attribute>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="ARGUMENTS" type="t_btx.struct"/>
+ 	<xd:element name="ARTICLE">
+ 		<xd:complexType>
+@@ -1406,6 +1392,7 @@
+ 				<xd:element ref="PAGE.SEQ"/>
+ 				<xd:element ref="PAGE.LAST.ECR"/>
+ 				<xd:element ref="PAGE.TOTAL"/>
++
+ 				<xd:element ref="AUTHOR"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+@@ -1519,6 +1506,18 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="BIB.LSEU">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="NO.DOC.LSEU"/>
++				<xd:element ref="LG.DOC"/>
++				<xd:element ref="EEA" minOccurs="0"/>
++				<xd:element ref="LAST.MODIFICATION" minOccurs="0"/>
++				<xd:element ref="ARCHIVED"/>
++				<xd:element ref="INCLUSIONS" minOccurs="0"/>
++			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="BIB.OJ">
+ 		<xd:complexType>
+ 			<xd:sequence>
+@@ -1607,7 +1606,7 @@
+ 				<xd:choice>
+ 					<xd:element ref="NO.ISSN"/>
+ 					<xd:sequence>
+-						<xd:element ref="NO.ISSN.PRINT" minOccurs="0"/>
++						<xd:element ref="NO.ISSN.PRINT"/>
+ 						<xd:element ref="NO.ISSN.ELECTRONIC"/>
+ 					</xd:sequence>
+ 				</xd:choice>
+@@ -1639,7 +1638,7 @@
+ 				<xd:choice>
+ 					<xd:element ref="NO.ISSN" minOccurs="0"/>
+ 					<xd:sequence>
+-						<xd:element ref="NO.ISSN.PRINT" minOccurs="0"/>
++						<xd:element ref="NO.ISSN.PRINT"/>
+ 						<xd:element ref="NO.ISSN.ELECTRONIC"/>
+ 					</xd:sequence>
+ 				</xd:choice>
+@@ -2112,6 +2111,21 @@
+ 			<xd:sequence>
+ 				<xd:element ref="GR.SEQ" maxOccurs="unbounded"/>
+ 				<xd:element ref="JURISDICTION"/>
++			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
++	<xd:element name="CONTENTS.LSEU">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="HEADER.LSEU" minOccurs="0"/>
++				<xd:choice>
++					<xd:sequence>
++						<xd:element ref="REFERENCES.LSEU" minOccurs="0"/>
++						<xd:element ref="SUMMARY.LSEU"/>
++						<xd:element ref="REFERRED.DOCS.LSEU" minOccurs="0"/>
++					</xd:sequence>
++					<xd:element ref="MENU.LSEU" minOccurs="0"/>
++				</xd:choice>
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
+@@ -2301,36 +2315,34 @@
+ 				<xd:simpleType>
+ 					<xd:restriction base="xd:string">
+ 						<xd:enumeration value="AT"/>
+-						<xd:enumeration value="BE"/>
++						<xd:enumeration value="B"/>
+ 						<xd:enumeration value="BG"/>
+ 						<xd:enumeration value="CH"/>
+ 						<xd:enumeration value="CY"/>
+ 						<xd:enumeration value="CZ"/>
+-						<xd:enumeration value="DE"/>
++						<xd:enumeration value="D"/>
+ 						<xd:enumeration value="DK"/>
++						<xd:enumeration value="E"/>
+ 						<xd:enumeration value="EE"/>
+-						<xd:enumeration value="EL"/>
+-						<xd:enumeration value="ES"/>
++						<xd:enumeration value="F"/>
+ 						<xd:enumeration value="FI"/>
+-						<xd:enumeration value="FR"/>
+-						<xd:enumeration value="HR"/>
+-						<xd:enumeration value="HU"/>
+-						<xd:enumeration value="IE"/>
++						<xd:enumeration value="GR"/>
++						<xd:enumeration value="H"/>
++						<xd:enumeration value="I"/>
++						<xd:enumeration value="IRL"/>
+ 						<xd:enumeration value="IS"/>
+-						<xd:enumeration value="IT"/>
++						<xd:enumeration value="L"/>
+ 						<xd:enumeration value="LI"/>
+ 						<xd:enumeration value="LT"/>
+-						<xd:enumeration value="LU"/>
+-						<xd:enumeration value="LV"/>
+ 						<xd:enumeration value="MT"/>
+ 						<xd:enumeration value="NL"/>
+ 						<xd:enumeration value="NO"/>
++						<xd:enumeration value="P"/>
+ 						<xd:enumeration value="PL"/>
+-						<xd:enumeration value="PT"/>
+ 						<xd:enumeration value="RO"/>
+ 						<xd:enumeration value="SE"/>
+-						<xd:enumeration value="SI"/>
+ 						<xd:enumeration value="SK"/>
++						<xd:enumeration value="SL"/>
+ 						<xd:enumeration value="UK"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+@@ -2908,6 +2920,7 @@
+ 		<xd:complexType>
+ 			<xd:sequence>
+ 				<xd:element ref="BIB.DATA"/>
++
+ 				<xd:element ref="GR.CORRIG" minOccurs="0"/>
+ 				<xd:element ref="GR.MOD.ACT" minOccurs="0"/>
+ 			</xd:sequence>
+@@ -3171,6 +3184,7 @@
+ 					<xd:element ref="ADDR.S"/>
+ 					<xd:element ref="ALINEA"/>
+ 					<xd:element ref="ANNOTATION"/>
++
+ 					<xd:element ref="ARTICLE"/>
+ 					<xd:element ref="CAT.PLANT"/>
+ 					<xd:element ref="CAT.VEGET"/>
+@@ -3271,6 +3285,7 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="HEADER.LSEU" type="t_btx.struct"/>
+ 	<xd:element name="HEADER.NEW" type="t_btx.seq"/>
+ 	<xd:element name="HEADER.OLD" type="t_btx.seq"/>
+ 	<xd:element name="HEADER.SUMMARY">
+@@ -3281,7 +3296,7 @@
+ 				<xd:choice minOccurs="0">
+ 					<xd:element ref="NO.ISSN"/>
+ 					<xd:sequence>
+-						<xd:element ref="NO.ISSN.PRINT" minOccurs="0"/>
++						<xd:element ref="NO.ISSN.PRINT"/>
+ 						<xd:element ref="NO.ISSN.ELECTRONIC"/>
+ 					</xd:sequence>
+ 				</xd:choice>
+@@ -3302,7 +3317,7 @@
+ 				<xd:choice minOccurs="0">
+ 					<xd:element ref="NO.ISSN"/>
+ 					<xd:sequence>
+-						<xd:element ref="NO.ISSN.PRINT" minOccurs="0"/>
++						<xd:element ref="NO.ISSN.PRINT"/>
+ 						<xd:element ref="NO.ISSN.ELECTRONIC"/>
+ 					</xd:sequence>
+ 				</xd:choice>
+@@ -3384,6 +3399,7 @@
+ 					<xd:restriction base="xd:string">
+ 						<xd:enumeration value="FORMEX.DOC"/>
+ 						<xd:enumeration value="FORMEX.FRAGMENT"/>
++						<xd:enumeration value="GIF"/>
+ 						<xd:enumeration value="TIFF"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+@@ -3841,6 +3857,13 @@
+ 				<xd:element ref="QUOT.END"/>
+ 				<xd:element ref="QUOT.START"/>
+ 			</xd:choice>
++		</xd:complexType>
++	</xd:element>
++	<xd:element name="LAST.MODIFICATION">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="DATE"/>
++			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="LAST.OJ" type="t_boolean" default="YES"/>
+@@ -3922,6 +3945,15 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="LSEU">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="BIB.LSEU"/>
++				<xd:element ref="TITLE"/>
++				<xd:element ref="CONTENTS.LSEU"/>
++			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="LV">
+ 		<xd:complexType mixed="true">
+ 			<xd:complexContent>
+@@ -3932,6 +3964,7 @@
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="MARGIN" type="xd:string"/>
++	<xd:element name="MENU.LSEU" type="t_btx.struct"/>
+ 	<xd:element name="MOD.ACT">
+ 		<xd:complexType>
+ 			<xd:sequence>
+@@ -4078,6 +4111,7 @@
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="NO.DOC.C" type="xd:string"/>
++	<xd:element name="NO.DOC.LSEU" type="t_no.doc.lseu"/>
+ 	<xd:element name="NO.DOC.SUMMARY" type="t_btx.seq"/>
+ 	<xd:element name="NO.DOC.TXT" type="t_btx.seq"/>
+ 	<xd:element name="NO.DOI" type="t_doi.gen"/>
+@@ -4545,7 +4579,7 @@
+ 		<xd:complexType>
+ 			<xd:attribute name="ID" type="xd:ID" use="required"/>
+ 			<xd:attribute name="REF.START" type="xd:IDREF" use="required"/>
+-			<xd:attribute name="CODE" type="t_quotation.end" use="required"/>
++			<xd:attribute name="CODE" type="xd:hexBinary" use="required"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="QUOT.S">
+@@ -4622,7 +4656,7 @@
+ 		<xd:complexType>
+ 			<xd:attribute name="ID" type="xd:ID" use="required"/>
+ 			<xd:attribute name="REF.END" type="xd:IDREF" use="required"/>
+-			<xd:attribute name="CODE" type="t_quotation.start" use="required"/>
++			<xd:attribute name="CODE" type="xd:hexBinary" use="required"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="REF.APPEAL.TABLE">
+@@ -4688,6 +4722,25 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="REF.DOC">
++		<xd:complexType mixed="true">
++			<xd:complexContent>
++				<xd:extension base="t_btx.seq">
++					<xd:attribute name="URI" type="xd:anyURI" use="required"/>
++					<xd:attribute name="CONTEXT" use="required">
++						<xd:simpleType>
++							<xd:restriction base="xd:string">
++								<xd:enumeration value="EUR-LEX"/>
++								<xd:enumeration value="EXTERNAL"/>
++								<xd:enumeration value="LSEU"/>
++							</xd:restriction>
++						</xd:simpleType>
++					</xd:attribute>
++					<xd:attribute name="TITLE" type="xd:string" use="optional"/>
++				</xd:extension>
++			</xd:complexContent>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="REF.DOC.ECR">
+ 		<xd:complexType mixed="true">
+ 			<xd:complexContent mixed="true">
+@@ -4883,7 +4936,6 @@
+ 			</xd:attribute>
+ 		</xd:complexType>
+ 	</xd:element>
+-	<xd:element name="RELATED.MATERIAL" type="t_btx.struct"/>
+ 	<xd:element name="REF.REPORT.HEARING">
+ 		<xd:complexType>
+ 			<xd:sequence>
+@@ -4908,6 +4960,9 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="REFERENCES.LSEU" type="t_btx.struct"/>
++	<xd:element name="REFERRED.DOCS.LSEU" type="t_btx.struct"/>
++	<xd:element name="RELATED.MATERIAL" type="t_btx.struct"/>
+ 	<xd:element name="REPORT.HEARING">
+ 		<xd:complexType>
+ 			<xd:sequence>
+@@ -5155,6 +5210,7 @@
+ 			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="SUMMARY.LSEU" type="t_btx.struct"/>
+ 	<xd:element name="SUMMARY.NP" type="t_btx.struct"/>
+ 	<xd:element name="SUMMARY.PDF">
+ 		<xd:complexType>

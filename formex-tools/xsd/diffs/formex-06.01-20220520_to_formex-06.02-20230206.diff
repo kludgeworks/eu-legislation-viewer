@@ -1,0 +1,21 @@
+--- xsd/formex-06.01-20220520.xd	2025-10-28 18:26:57
++++ xsd/formex-06.02-20230206.xd	2025-10-28 18:26:57
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce" xml:space="preserve"><xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Current version 6.01</fmx:version>
++			<fmx:version>Current version 6.02</fmx:version>
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history>
+ 				<fmx:line.history><fmx:line.date>20020117</fmx:line.date> 
+@@ -902,6 +902,9 @@
+ 					<fmx:line.history>new pattern of type t_volume, needed for element REF.DOC.SE (FF)</fmx:line.history>
+ 					<fmx:line.history>added new elements LINK and REF.DOC.SE inside type t_btx (FF)</fmx:line.history>
+ 					<fmx:line.history>added new elements LINK and REF.DOC.SE inside type t_btx.seq (FF)</fmx:line.history>
++					<!-- version 6.02 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. -->
++					<fmx:line.history><fmx:date>20230206</fmx:date>new character added in allowed character ranges: unicode 25A1 for white square (FF, requested by B1)
++					</fmx:line.history>
+ 					<!-- -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. -->
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>AR</fmx:symbol>

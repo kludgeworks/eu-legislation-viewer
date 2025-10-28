@@ -1,0 +1,50 @@
+--- xsd/formex-05.00-20081231.xd	2025-10-28 18:26:57
++++ xsd/formex-05.01-20091201.xd	2025-10-28 18:26:57
+@@ -607,6 +607,11 @@
+ 					<fmx:line.history>redefinition of the element INTERVENERS (HB/XC/KL (HB/XC)</fmx:line.history>
+ 					<fmx:line.history>
+ 						<fmx:date>20090130</fmx:date>attribute value T1 suppressed from EDITION, GR.SEQ allowed after SIGNATURE.CASE in JUDGMENT (HB/XC)</fmx:line.history>
++					<!-- version 5.01 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->	
++					<fmx:line.history>
++						<fmx:date>20091103</fmx:date>element DOI for general publication (to be used for General Report (HB/XC)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:date>20091201</fmx:date>revision of t_sectiontype (HB/AR/XC/KL)</fmx:line.history>
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>AR</fmx:symbol>
+ 						<fmx:meaning>Agnès Regnier</fmx:meaning>
+@@ -879,6 +884,11 @@
+ 			<xd:pattern value="doi:10\.\d{4}/[CL][_AEGM]\d{4}\.\d{3}\.\d{2}(\d|c|e|s)\d{3}\d{2}\.[a-z]{3}"/>
+ 		</xd:restriction>
+ 	</xd:simpleType>
++	<xd:simpleType name="t_doi.gen">
++		<xd:restriction base="xd:string">
++			<xd:pattern value="doi:10\.\d{4}/.+"/>
++		</xd:restriction>
++	</xd:simpleType>
+ 	<xd:simpleType name="t_doi.oj">
+ 		<xd:restriction base="xd:string">
+ 			<xd:pattern value="doi:10\.\d{4}/\d{7}(\d|X)\.[CL][_AEGM]\d{4}\.\d{3}\.[a-z]{3}"/>
+@@ -1020,6 +1030,7 @@
+ 			<xd:enumeration value="L2"/>
+ 			<xd:enumeration value="L3"/>
+ 			<xd:enumeration value="L4"/>
++			<xd:enumeration value="L5"/>
+ 			<xd:enumeration value="LC"/>
+ 			<xd:enumeration value="LI"/>
+ 		</xd:restriction>
+@@ -1333,6 +1344,7 @@
+ 				<xd:element ref="PUBLISHER" minOccurs="0"/>
+ 				<xd:element ref="SIZE" minOccurs="0"/>
+ 				<xd:element ref="NO.CAT" minOccurs="0"/>
++				<xd:element ref="NO.DOI" minOccurs="0"/>
+ 				<xd:choice minOccurs="0">
+ 					<xd:element ref="NO.ISBN"/>
+ 					<xd:element ref="NO.ISSN"/>
+@@ -3804,6 +3816,7 @@
+ 	<xd:element name="NO.DOC.C" type="xd:string"/>
+ 	<xd:element name="NO.DOC.SUMMARY" type="t_btx.seq"/>
+ 	<xd:element name="NO.DOC.TXT" type="t_btx.seq"/>
++	<xd:element name="NO.DOI" type="t_doi.gen"/>
+ 	<xd:element name="NO.FASCICLE" type="xd:string"/>
+ 	<xd:element name="NO.GR.SEQ" type="t_btx.seq"/>
+ 	<xd:element name="NO.ISBN">

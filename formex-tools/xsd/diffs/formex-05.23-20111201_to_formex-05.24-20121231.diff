@@ -1,0 +1,196 @@
+--- xsd/formex-05.23-20111201.xd	2025-10-28 18:26:57
++++ xsd/formex-05.24-20121231.xd	2025-10-28 18:26:57
+@@ -2,7 +2,7 @@
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce">
+ 	<xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Current version 5.23</fmx:version>
++			<fmx:version>Current version 5.24</fmx:version>
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history>
+ 				<fmx:line.history>
+@@ -649,6 +649,11 @@
+ 					<!-- version 5.23 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
+ 					<fmx:line.history>
+ 						<fmx:date>20111121</fmx:date>extension of DOI pattern for documents in the context of secondary legislation (HB)</fmx:line.history>
++					<!-- version 5.24 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
++					<fmx:line.history>
++						<fmx:date>20120810</fmx:date>new country list for CRIT/@COUNTRY (HB)</fmx:line.history>
++					<fmx:line.history>ISSN.PRINT optional (HB/XC)</fmx:line.history>
++					<fmx:line.hisotry>New simple types t_charcode, t_quotation.end, t_quotation.start for encoding of quotation marks in QUOT.START and QUOT.END (HB)</fmx:line.hisotry>
+ 					<!-- -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>AR</fmx:symbol>
+@@ -669,6 +674,10 @@
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>LM</fmx:symbol>
+ 						<fmx:meaning>Laurent Mercier</fmx:meaning>
++					</fmx:history.symbol>
++					<fmx:history.symbol>
++						<fmx:symbol>MK</fmx:symbol>
++						<fmx:meaning>Maria Kardami</fmx:meaning>
+ 					</fmx:history.symbol>
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>NR</fmx:symbol>
+@@ -903,6 +912,11 @@
+ 			<xd:element ref="P"/>
+ 		</xd:choice>
+ 	</xd:complexType>
++	<xd:simpleType name="t_charcode">
++		<xd:restriction base="xd:hexBinary">
++			<xd:pattern value="[0-9A-F]{4}"/>
++		</xd:restriction>
++	</xd:simpleType>
+ 	<xd:simpleType name="t_collection">
+ 		<xd:restriction base="xd:string">
+ 			<xd:enumeration value="A"/>
+@@ -992,7 +1006,7 @@
+ 			<xd:enumeration value="GA"/>
+ 			<!-- gle -->
+ 			<xd:enumeration value="GL"/>
+-			<!-- gle -->
++			<!-- glg -->
+ 			<xd:enumeration value="HR"/>
+ 			<!-- hrv -->
+ 			<xd:enumeration value="HU"/>
+@@ -1040,9 +1054,6 @@
+ 	</xd:simpleType>
+ 	<xd:simpleType name="t_page">
+ 		<xd:restriction base="xd:string">
+-			<!--
+-			<xd:pattern value="([ces]{0,1}\d{1,5}[a-z]?(/\d{2})?)|((l((x((x((x((vi{0,3})|(i(x|v|i{1,2})?))?)|(vi{0,3})|(i(x|v|i{1,2})?))?)|(vi{0,3})|(i(x|v|i{1,2})?))?)|(vi{0,3})|(i(x|v|i{1,2})?))?)|(x((l((vi{0,3})|(i(x|v|i{1,2})?))?)|(x((x((vi{0,3})|(i(x|v|i{1,2})?))?)|(vi{0,3})|(i(x|v|i{1,2})?))?)|(vi{0,3})|(i(x|v|i{1,2})?))?)|(vi{0,3})|(i(x|v|i{1,2})?))"/>
+--->
+ 			<xd:pattern value="([ces]{0,1}\-{0,1}\d{1,5}[a-z*]?(/\d{2})?)|([cdilvxCDILVX]+)"/>
+ 		</xd:restriction>
+ 	</xd:simpleType>
+@@ -1061,6 +1072,28 @@
+ 			<xd:pattern value="\d{11}"/>
+ 		</xd:restriction>
+ 	</xd:simpleType>
++	<xd:simpleType name="t_quotation.end">
++		<xd:restriction base="t_charcode">
++			<xd:enumeration value="00AB"/>
++			<xd:enumeration value="00BB"/>
++			<xd:enumeration value="2018"/>
++			<xd:enumeration value="2019"/>
++			<xd:enumeration value="201C"/>
++			<xd:enumeration value="201D"/>
++		</xd:restriction>
++	</xd:simpleType>
++	<xd:simpleType name="t_quotation.start">
++		<xd:restriction base="t_charcode">
++			<xd:enumeration value="00AB"/>
++			<xd:enumeration value="00BB"/>
++			<xd:enumeration value="2018"/>
++			<xd:enumeration value="2019"/>
++			<xd:enumeration value="201A"/>
++			<xd:enumeration value="201C"/>
++			<xd:enumeration value="201D"/>
++			<xd:enumeration value="201E"/>
++		</xd:restriction>
++	</xd:simpleType>
+ 	<xd:simpleType name="t_sectiontype">
+ 		<xd:restriction base="xd:string">
+ 			<xd:enumeration value="C0"/>
+@@ -1574,7 +1607,7 @@
+ 				<xd:choice>
+ 					<xd:element ref="NO.ISSN"/>
+ 					<xd:sequence>
+-						<xd:element ref="NO.ISSN.PRINT"/>
++						<xd:element ref="NO.ISSN.PRINT" minOccurs="0"/>
+ 						<xd:element ref="NO.ISSN.ELECTRONIC"/>
+ 					</xd:sequence>
+ 				</xd:choice>
+@@ -1606,7 +1639,7 @@
+ 				<xd:choice>
+ 					<xd:element ref="NO.ISSN" minOccurs="0"/>
+ 					<xd:sequence>
+-						<xd:element ref="NO.ISSN.PRINT"/>
++						<xd:element ref="NO.ISSN.PRINT" minOccurs="0"/>
+ 						<xd:element ref="NO.ISSN.ELECTRONIC"/>
+ 					</xd:sequence>
+ 				</xd:choice>
+@@ -2268,34 +2301,36 @@
+ 				<xd:simpleType>
+ 					<xd:restriction base="xd:string">
+ 						<xd:enumeration value="AT"/>
+-						<xd:enumeration value="B"/>
++						<xd:enumeration value="BE"/>
+ 						<xd:enumeration value="BG"/>
+ 						<xd:enumeration value="CH"/>
+ 						<xd:enumeration value="CY"/>
+ 						<xd:enumeration value="CZ"/>
+-						<xd:enumeration value="D"/>
++						<xd:enumeration value="DE"/>
+ 						<xd:enumeration value="DK"/>
+-						<xd:enumeration value="E"/>
+ 						<xd:enumeration value="EE"/>
+-						<xd:enumeration value="F"/>
++						<xd:enumeration value="EL"/>
++						<xd:enumeration value="ES"/>
+ 						<xd:enumeration value="FI"/>
+-						<xd:enumeration value="GR"/>
+-						<xd:enumeration value="H"/>
+-						<xd:enumeration value="I"/>
+-						<xd:enumeration value="IRL"/>
++						<xd:enumeration value="FR"/>
++						<xd:enumeration value="HR"/>
++						<xd:enumeration value="HU"/>
++						<xd:enumeration value="IE"/>
+ 						<xd:enumeration value="IS"/>
+-						<xd:enumeration value="L"/>
++						<xd:enumeration value="IT"/>
+ 						<xd:enumeration value="LI"/>
+ 						<xd:enumeration value="LT"/>
++						<xd:enumeration value="LU"/>
++						<xd:enumeration value="LV"/>
+ 						<xd:enumeration value="MT"/>
+ 						<xd:enumeration value="NL"/>
+ 						<xd:enumeration value="NO"/>
+-						<xd:enumeration value="P"/>
+ 						<xd:enumeration value="PL"/>
++						<xd:enumeration value="PT"/>
+ 						<xd:enumeration value="RO"/>
+ 						<xd:enumeration value="SE"/>
++						<xd:enumeration value="SI"/>
+ 						<xd:enumeration value="SK"/>
+-						<xd:enumeration value="SL"/>
+ 						<xd:enumeration value="UK"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+@@ -3246,7 +3281,7 @@
+ 				<xd:choice minOccurs="0">
+ 					<xd:element ref="NO.ISSN"/>
+ 					<xd:sequence>
+-						<xd:element ref="NO.ISSN.PRINT"/>
++						<xd:element ref="NO.ISSN.PRINT" minOccurs="0"/>
+ 						<xd:element ref="NO.ISSN.ELECTRONIC"/>
+ 					</xd:sequence>
+ 				</xd:choice>
+@@ -3267,7 +3302,7 @@
+ 				<xd:choice minOccurs="0">
+ 					<xd:element ref="NO.ISSN"/>
+ 					<xd:sequence>
+-						<xd:element ref="NO.ISSN.PRINT"/>
++						<xd:element ref="NO.ISSN.PRINT" minOccurs="0"/>
+ 						<xd:element ref="NO.ISSN.ELECTRONIC"/>
+ 					</xd:sequence>
+ 				</xd:choice>
+@@ -4510,7 +4545,7 @@
+ 		<xd:complexType>
+ 			<xd:attribute name="ID" type="xd:ID" use="required"/>
+ 			<xd:attribute name="REF.START" type="xd:IDREF" use="required"/>
+-			<xd:attribute name="CODE" type="xd:hexBinary" use="required"/>
++			<xd:attribute name="CODE" type="t_quotation.end" use="required"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="QUOT.S">
+@@ -4587,7 +4622,7 @@
+ 		<xd:complexType>
+ 			<xd:attribute name="ID" type="xd:ID" use="required"/>
+ 			<xd:attribute name="REF.END" type="xd:IDREF" use="required"/>
+-			<xd:attribute name="CODE" type="xd:hexBinary" use="required"/>
++			<xd:attribute name="CODE" type="t_quotation.start" use="required"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="REF.APPEAL.TABLE">

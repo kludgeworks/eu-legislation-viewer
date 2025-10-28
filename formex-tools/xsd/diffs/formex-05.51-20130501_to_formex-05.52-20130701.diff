@@ -1,0 +1,81 @@
+--- xsd/formex-05.51-20130501.xd	2025-10-28 18:26:57
++++ xsd/formex-05.52-20130701.xd	2025-10-28 18:26:57
+@@ -2,7 +2,7 @@
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce">
+ 	<xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Current version 5.51</fmx:version> 
++			<fmx:version>Current version 5.52</fmx:version> 
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history> 
+ 				<fmx:line.history>
+@@ -1038,11 +1038,16 @@
+ 						<fmx:date>20130218</fmx:date>correction: REF.BIB.RECORD and REF.CORE.METADATA added to BIB.DOC and BIB.GEN.PUB, removed from BIB.OPINION (HB) </fmx:line.history>
+ 					<!-- version 5.51 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. --> 
+ 					<fmx:line.history>
+-						<fmx:date>20130227</fmx:date>t_ref.ecr and t_ref.case: acceptance of value "n.a.", references from CASE to documents optional; integration of LSEU elements from 5.30 (HB) </fmx:line.history>
++						<fmx:date>20130227</fmx:date>t_ref.ecr and t_ref.case: acceptance of value "n.a.", references from CASE to documents optional (HB) </fmx:line.history>
+ 					<fmx:line.history>
+ 						<fmx:date>20130228</fmx:date>REF.BIB.RECORD and REF.CORE.METADATA added to BIB.APPEAL.TABLE, BIB.CASE, BIB.CONCLUSION, BIB.CORRIG.ECR, BIB.DECISION, BIB.JUDGMENT, BIB.OPINION, BIB.ORDER, BIB.REPORT.HEARING, BIB.RULING (HB) </fmx:line.history>
+ 					<fmx:line.history>
+-						<fmx:date>20130412</fmx:date>element DATE added to BIB.SE (HB) </fmx:line.history>
++						<fmx:date>20130412</fmx:date>element DATE added to BIB.SE; integration of LSEU elements from 5.30  (HB) </fmx:line.history>
++					<!-- version 5.52 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. --> 
++					<fmx:line.history>
++						<fmx:date>20130508</fmx:date>NO.DOC prepared for unique identifier (documentation), REF.CORE.METADATA and REF.BIB.RECORD added to BIB.OJ and HEADER.SUMMARY; TYPE.CASE prepared for accepting DECISION (documentation) (HB) </fmx:line.history>
++					<fmx:line.history>
++						<fmx:date>20130516</fmx:date>FORMULA completed by generic element MATH.SYMBOL (HB) </fmx:line.history>
+ 					<!-- -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. --> 
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>AR</fmx:symbol> 
+@@ -1196,6 +1201,7 @@
+ 				<xd:element ref="IE" /> 
+ 				<xd:element ref="IND"/>
+ 				<xd:element ref="INTEGRAL"/>
++				<xd:element ref="MATH.SYMBOL"/>
+ 				<xd:element ref="NOTE" /> 
+ 				<xd:element ref="OP.CMP"/>
+ 				<xd:element ref="OP.MATH"/>
+@@ -1348,7 +1354,7 @@
+ 	</xd:simpleType>
+ 	<xd:simpleType name="t_ecr.case">
+ 		<xd:restriction base="xd:string">
+-			<xd:pattern value="(ECR(CJ|T1|F1|F2)\d{4}[A-Z]{2}[ABC][12]?\.\d{2}[ars\d]\d{5}\d{2}\.case\.xml)|(n\.a\.)|(ECR_\d{5}[A-Z]{2}\d{4}_SUM_[A-Z]{2}_\d{2}\.xml)" /> 
++			<xd:pattern value="(ECR(CJ|T1|F1|F2)\d{4}[A-Z]{2}[ABC][12]?\.\d{2}[ars\d]\d{5}\d{2}\.case\.xml)|(n\.a\.)" /> 
+ 		</xd:restriction>
+ 	</xd:simpleType>
+ 	<xd:simpleType name="t_ecr.doc">
+@@ -2019,6 +2025,8 @@
+ 				<xd:element ref="LAST.OJ" minOccurs="0" /> 
+ 				<xd:element ref="LG.OJ" /> 
+ 				<xd:element ref="PRINTER" /> 
++				<xd:element ref="REF.CORE.METADATA" minOccurs="0"/>
++				<xd:element ref="REF.BIB.RECORD" minOccurs="0"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
+@@ -3867,6 +3875,8 @@
+ 				<xd:element ref="NO.OJ.SUMMARY" /> 
+ 				<xd:element ref="AGE.OJ.SUMMARY" /> 
+ 				<xd:element ref="DATE" /> 
++				<xd:element ref="REF.CORE.METADATA" minOccurs="0"/>
++				<xd:element ref="REF.BIB.RECORD" minOccurs="0"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
+@@ -4516,6 +4526,15 @@
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="MARGIN" type="xd:string" /> 
++	<xd:element name="MATH.SYMBOL">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="OVER" minOccurs="0"/>
++				<xd:element ref="UNDER" minOccurs="0"/>
++			</xd:sequence>
++			<xd:attribute name="value" type="xd:string" use="required"/>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="MENU.LSEU" type="t_btx.struct"/>
+ 	<xd:element name="MOD.ACT">
+ 		<xd:complexType>

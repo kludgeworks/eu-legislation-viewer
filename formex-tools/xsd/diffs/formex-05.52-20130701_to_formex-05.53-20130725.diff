@@ -1,0 +1,228 @@
+--- xsd/formex-05.52-20130701.xd	2025-10-28 18:26:57
++++ xsd/formex-05.53-20130725.xd	2025-10-28 18:26:57
+@@ -2,7 +2,7 @@
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce">
+ 	<xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Current version 5.52</fmx:version> 
++			<fmx:version>Current version 5.53</fmx:version> 
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history> 
+ 				<fmx:line.history>
+@@ -1038,16 +1038,23 @@
+ 						<fmx:date>20130218</fmx:date>correction: REF.BIB.RECORD and REF.CORE.METADATA added to BIB.DOC and BIB.GEN.PUB, removed from BIB.OPINION (HB) </fmx:line.history>
+ 					<!-- version 5.51 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. --> 
+ 					<fmx:line.history>
+-						<fmx:date>20130227</fmx:date>t_ref.ecr and t_ref.case: acceptance of value "n.a.", references from CASE to documents optional (HB) </fmx:line.history>
++						<fmx:date>20130227</fmx:date>t_ref.ecr and t_ref.case: acceptance of value "n.a.", references from CASE to documents optional; integration of LSEU elements from 5.30 (HB) </fmx:line.history>
+ 					<fmx:line.history>
+ 						<fmx:date>20130228</fmx:date>REF.BIB.RECORD and REF.CORE.METADATA added to BIB.APPEAL.TABLE, BIB.CASE, BIB.CONCLUSION, BIB.CORRIG.ECR, BIB.DECISION, BIB.JUDGMENT, BIB.OPINION, BIB.ORDER, BIB.REPORT.HEARING, BIB.RULING (HB) </fmx:line.history>
+ 					<fmx:line.history>
+-						<fmx:date>20130412</fmx:date>element DATE added to BIB.SE; integration of LSEU elements from 5.30  (HB) </fmx:line.history>
++						<fmx:date>20130412</fmx:date>element DATE added to BIB.SE (HB) </fmx:line.history>
+ 					<!-- version 5.52 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. --> 
+ 					<fmx:line.history>
+ 						<fmx:date>20130508</fmx:date>NO.DOC prepared for unique identifier (documentation), REF.CORE.METADATA and REF.BIB.RECORD added to BIB.OJ and HEADER.SUMMARY; TYPE.CASE prepared for accepting DECISION (documentation) (HB) </fmx:line.history>
+ 					<fmx:line.history>
+ 						<fmx:date>20130516</fmx:date>FORMULA completed by generic element MATH.SYMBOL (HB) </fmx:line.history>
++					<!-- version 5.53 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. -->
++					<fmx:line.history>
++						<fmx:date>20130725</fmx:date>update of LSEU models due to legacy data (HB) </fmx:line.history>
++					<fmx:line.history>LEFT/RIGHT in jurisdiction instances completed by a common page header (PAGE.HEADER) (see e-mail Cyril Boyer 2013-07-25-11:37) (HB)</fmx:line.history>					
++					<fmx:line.history>update of LSEU content model (HB)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:date>20130819</fmx:date>NO.ECLI added to all document types relevant for CJ (HB) </fmx:line.history>
+ 					<!-- -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. --> 
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>AR</fmx:symbol> 
+@@ -1201,7 +1208,6 @@
+ 				<xd:element ref="IE" /> 
+ 				<xd:element ref="IND"/>
+ 				<xd:element ref="INTEGRAL"/>
+-				<xd:element ref="MATH.SYMBOL"/>
+ 				<xd:element ref="NOTE" /> 
+ 				<xd:element ref="OP.CMP"/>
+ 				<xd:element ref="OP.MATH"/>
+@@ -1299,6 +1305,7 @@
+ 			<xd:element ref="PREAMBLE.GEN" /> 
+ 			<xd:element ref="PREAMBLE.INIT" /> 
+ 			<xd:element ref="QUOT.S" /> 
++			<xd:element ref="REFERRED.DOCS.LSEU"/>
+ 			<xd:element ref="STI.ART" /> 
+ 			<xd:element ref="TARIC" /> 
+ 			<xd:element ref="TBL" /> 
+@@ -1354,7 +1361,7 @@
+ 	</xd:simpleType>
+ 	<xd:simpleType name="t_ecr.case">
+ 		<xd:restriction base="xd:string">
+-			<xd:pattern value="(ECR(CJ|T1|F1|F2)\d{4}[A-Z]{2}[ABC][12]?\.\d{2}[ars\d]\d{5}\d{2}\.case\.xml)|(n\.a\.)" /> 
++			<xd:pattern value="(ECR(CJ|T1|F1|F2)\d{4}[A-Z]{2}[ABC][12]?\.\d{2}[ars\d]\d{5}\d{2}\.case\.xml)|(n\.a\.)|(ECR_\d{5}[A-Z]{2}\d{4}_SUM_[A-Z]{2}_\d{2}\.xml)" /> 
+ 		</xd:restriction>
+ 	</xd:simpleType>
+ 	<xd:simpleType name="t_ecr.doc">
+@@ -1585,6 +1592,7 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="ADDITIONAL.DOCS.LSEU" type="t_btx.struct"/>
+ 	<xd:element name="ADDR" type="t_btx.seq" /> 
+ 	<xd:element name="ADDR.S">
+ 		<xd:complexType>
+@@ -1760,6 +1768,7 @@
+ 				<xd:element ref="NO.CASE" minOccurs="0" maxOccurs="unbounded" /> 
+ 				<xd:element ref="TYPE.CASE" /> 
+ 				<xd:element ref="NO.CELEX" minOccurs="0" /> 
++				<xd:element ref="NO.ECLI" minOccurs="0"/>
+ 				<xd:element ref="NO.SEQ" /> 
+ 				<xd:element ref="PAGE.FIRST.ECR" /> 
+ 				<xd:element ref="PAGE.SEQ" /> 
+@@ -2036,6 +2045,7 @@
+ 				<xd:element ref="REF.CASE.F1" minOccurs="0" /> 
+ 				<xd:element ref="REF.CASE" /> 
+ 				<xd:element ref="NO.CELEX" minOccurs="0" /> 
++				<xd:element ref="NO.ECLI" minOccurs="0"/>
+ 				<xd:element ref="NO.SEQ" /> 
+ 				<xd:element ref="PAGE.FIRST.ECR" /> 
+ 				<xd:element ref="PAGE.SEQ" /> 
+@@ -2053,6 +2063,7 @@
+ 				<xd:element ref="REF.CASE.F1" minOccurs="0" /> 
+ 				<xd:element ref="REF.CASE" /> 
+ 				<xd:element ref="NO.CELEX" minOccurs="0" /> 
++				<xd:element ref="NO.ECLI" minOccurs="0"/>
+ 				<xd:element ref="NO.SEQ" /> 
+ 				<xd:element ref="PAGE.FIRST.ECR" /> 
+ 				<xd:element ref="PAGE.SEQ" /> 
+@@ -2070,6 +2081,7 @@
+ 				<xd:element ref="REF.CASE.F1" minOccurs="0" /> 
+ 				<xd:element ref="REF.CASE" /> 
+ 				<xd:element ref="NO.CELEX" minOccurs="0" /> 
++				<xd:element ref="NO.ECLI" minOccurs="0"/>
+ 				<xd:element ref="NO.SEQ" /> 
+ 				<xd:element ref="PAGE.FIRST.ECR" /> 
+ 				<xd:element ref="PAGE.SEQ" /> 
+@@ -2086,6 +2098,7 @@
+ 				<xd:element ref="REF.CASE.F1" minOccurs="0" /> 
+ 				<xd:element ref="REF.CASE" /> 
+ 				<xd:element ref="NO.CELEX" minOccurs="0" /> 
++				<xd:element ref="NO.ECLI" minOccurs="0"/>
+ 				<xd:element ref="NO.SEQ" /> 
+ 				<xd:element ref="PAGE.FIRST.ECR" /> 
+ 				<xd:element ref="PAGE.SEQ" /> 
+@@ -2124,6 +2137,7 @@
+ 				<xd:element ref="REF.CASE.F1" minOccurs="0" /> 
+ 				<xd:element ref="REF.CASE" /> 
+ 				<xd:element ref="NO.CELEX" minOccurs="0" /> 
++				<xd:element ref="NO.ECLI" minOccurs="0"/>
+ 				<xd:element ref="NO.SEQ" /> 
+ 				<xd:element ref="PAGE.FIRST" /> 
+ 				<xd:element ref="PAGE.SEQ" /> 
+@@ -2433,6 +2447,7 @@
+ 				<xd:element ref="BIB.CONCLUSION" /> 
+ 				<xd:element ref="CURR.TITLE" /> 
+ 				<xd:element ref="TITLE" minOccurs="0" /> 
++				<xd:element ref="INDEX" minOccurs="0" /> 
+ 				<xd:choice minOccurs="0" maxOccurs="unbounded">
+ 					<xd:element ref="GR.ANNOTATION" /> 
+ 					<xd:element ref="TOC" /> 
+@@ -2621,14 +2636,13 @@
+ 	<xd:element name="CONTENTS.LSEU">
+ 		<xd:complexType>
+ 			<xd:sequence>
+-				<xd:element ref="HEADER.LSEU" minOccurs="0"/>
+-				<xd:choice>
+-					<xd:sequence>
+-						<xd:element ref="REFERENCES.LSEU" minOccurs="0"/>
+-						<xd:element ref="SUMMARY.LSEU"/>
+-						<xd:element ref="REFERENCE.TABLE" minOccurs="0"/>
+-						<xd:element ref="REFERRED.DOCS.LSEU" minOccurs="0"/>
+-					</xd:sequence>
++				<xd:element ref="HEADER.LSEU" minOccurs="0" maxOccurs="unbounded"/>
++				<xd:choice minOccurs="0" maxOccurs="unbounded">
++					<xd:element ref="ADDITIONAL.DOCS.LSEU"/>
++					<xd:element ref="REFERENCE.TABLE"/>
++					<xd:element ref="REFERENCES.LSEU"/>
++					<xd:element ref="REFERRED.DOCS.LSEU"/>
++					<xd:element ref="SUMMARY.LSEU"/>
+ 					<xd:element ref="MENU.LSEU" minOccurs="0"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+@@ -2860,10 +2874,13 @@
+ 	</xd:element>
+ 	<xd:element name="CURR.TITLE">
+ 		<xd:complexType>
+-			<xd:sequence>
+-				<xd:element ref="LEFT" /> 
+-				<xd:element ref="RIGHT" /> 
+-			</xd:sequence>
++			<xd:choice>
++				<xd:sequence>
++					<xd:element ref="LEFT" /> 
++					<xd:element ref="RIGHT" /> 
++				</xd:sequence>
++				<xd:element ref="PAGE.HEADER"/>
++			</xd:choice>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="DATE">
+@@ -2890,6 +2907,7 @@
+ 				<xd:element ref="BIB.DECISION.ECR" /> 
+ 				<xd:element ref="CURR.TITLE" /> 
+ 				<xd:element ref="TITLE" /> 
++				<xd:element ref="INDEX" minOccurs="0" /> 
+ 				<xd:choice minOccurs="0" maxOccurs="unbounded">
+ 					<xd:element ref="GR.ANNOTATION" /> 
+ 					<xd:element ref="TOC" /> 
+@@ -4359,6 +4377,7 @@
+ 				<xd:element ref="BIB.JUDGMENT" /> 
+ 				<xd:element ref="CURR.TITLE" /> 
+ 				<xd:element ref="TITLE" /> 
++				<xd:element ref="INDEX" minOccurs="0" /> 
+ 				<xd:choice minOccurs="0" maxOccurs="unbounded">
+ 					<xd:element ref="GR.ANNOTATION" /> 
+ 					<xd:element ref="TOC" /> 
+@@ -4526,15 +4545,6 @@
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="MARGIN" type="xd:string" /> 
+-	<xd:element name="MATH.SYMBOL">
+-		<xd:complexType>
+-			<xd:sequence>
+-				<xd:element ref="OVER" minOccurs="0"/>
+-				<xd:element ref="UNDER" minOccurs="0"/>
+-			</xd:sequence>
+-			<xd:attribute name="value" type="xd:string" use="required"/>
+-		</xd:complexType>
+-	</xd:element>
+ 	<xd:element name="MENU.LSEU" type="t_btx.struct"/>
+ 	<xd:element name="MOD.ACT">
+ 		<xd:complexType>
+@@ -4895,6 +4905,7 @@
+ 				<xd:element ref="BIB.OPINION" /> 
+ 				<xd:element ref="CURR.TITLE" /> 
+ 				<xd:element ref="TITLE" /> 
++				<xd:element ref="INDEX" minOccurs="0" /> 
+ 				<xd:choice minOccurs="0" maxOccurs="unbounded">
+ 					<xd:element ref="GR.ANNOTATION" /> 
+ 					<xd:element ref="TOC" /> 
+@@ -4923,6 +4934,7 @@
+ 				<xd:element ref="BIB.ORDER" /> 
+ 				<xd:element ref="CURR.TITLE" /> 
+ 				<xd:element ref="TITLE" /> 
++				<xd:element ref="INDEX" minOccurs="0" /> 
+ 				<xd:choice minOccurs="0" maxOccurs="unbounded">
+ 					<xd:element ref="GR.ANNOTATION" /> 
+ 					<xd:element ref="TOC" /> 
+@@ -5011,6 +5023,13 @@
+ 	</xd:element>
+ 	<xd:element name="PAGE.FIRST" type="t_page" /> 
+ 	<xd:element name="PAGE.FIRST.ECR" type="t_page.ecr" /> 
++	<xd:element name="PAGE.HEADER">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="P" minOccurs="2" maxOccurs="unbounded"/>
++			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="PAGE.LAST" type="t_page" /> 
+ 	<xd:element name="PAGE.LAST.ECR" type="t_page.ecr" /> 
+ 	<xd:element name="PAGE.SEQ" type="t_page.sequence" /> 

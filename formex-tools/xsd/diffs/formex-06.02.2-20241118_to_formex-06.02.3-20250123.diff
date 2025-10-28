@@ -1,0 +1,28 @@
+--- xsd/formex-06.02.2-20241118.xd	2025-10-28 18:26:57
++++ xsd/formex-06.02.3-20250123.xd	2025-10-28 18:26:57
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce" xml:space="preserve"><xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Current version 6.02.2</fmx:version>
++			<fmx:version>Current version 6.02.3</fmx:version>
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history>
+ 				<fmx:line.history><fmx:line.date>20020117</fmx:line.date> 
+@@ -913,6 +913,8 @@
+ 				<!-- version 6.02.2 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. -->
+ 				<fmx:line.history><fmx:date>20241118</fmx:date>Introduction of new element DEC.TITLE added as optional in CASE</fmx:line.history>
+ 				<fmx:line.history>new character added in allowed character ranges: unicode 202F for thin non-breaking space</fmx:line.history>
++				<!-- version 6.02.3 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. -->
++				<fmx:line.history><fmx:date>20250123</fmx:date>NO.CASE element can be used in BIB.INSTANCE element</fmx:line.history>
+ 			</fmx:history>
+ 		</xd:documentation>
+ 	</xd:annotation><!-- -.-.-.-. Type definitions -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. --><xd:simpleType name="t_area">
+@@ -1809,6 +1811,7 @@
+ 				<xd:element ref="PAGE.TOTAL"/>
+ 				<xd:element ref="INCLUSIONS" minOccurs="0"/>
+ 				<xd:element ref="NO.DOC" minOccurs="0" maxOccurs="unbounded"/>
++				<xd:element ref="NO.CASE" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element><xd:element name="BIB.INSTANCE.CONS">

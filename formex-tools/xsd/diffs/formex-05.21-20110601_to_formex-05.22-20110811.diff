@@ -1,0 +1,45 @@
+--- xsd/formex-05.21-20110601.xd	2025-10-28 18:26:57
++++ xsd/formex-05.22-20110811.xd	2025-10-28 18:26:57
+@@ -2,7 +2,7 @@
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce">
+ 	<xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Current version 5.21</fmx:version>
++			<fmx:version>Current version 5.22</fmx:version>
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history>
+ 				<fmx:line.history>
+@@ -643,6 +643,9 @@
+ 						<fmx:date>20110407</fmx:date>harmonisation of ISSN type (t_ISSN); integration of NO.ISSN.ELECTRONIC and NO.ISSN.PRINT; updated elements: BIB.SE, BIB.VOLUME, HEADER.SUMMARY, HEADER.SUMMARY.SE (HB; note A/PRODCOR - op.a.2(2011)412721)</fmx:line.history>
+ 					<fmx:line.history>
+ 						<fmx:date>20110519</fmx:date>element COMMENT added to ARTICLE, PARAG, SUBDIV, t_btx, t_btx.struct (HB)</fmx:line.history>
++					<!-- version 5.22 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
++					<fmx:line.history>
++						<fmx:date>20110810</fmx:date>new attribute values for MOD.ACT/@TYPE, MOD.ACT.CL/@TYPE and INFO.MOD/@ACTION (HB; email from Z. Bubnys (20110805)</fmx:line.history>
+ 					<!-- -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>AR</fmx:symbol>
+@@ -3517,6 +3520,7 @@
+ 						<xd:enumeration value="DELETED"/>
+ 						<xd:enumeration value="INSERTED"/>
+ 						<xd:enumeration value="RENUMBERED"/>
++						<xd:enumeration value="REPEALED"/>
+ 						<xd:enumeration value="REPLACED"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+@@ -3905,6 +3909,7 @@
+ 						<xd:enumeration value="MOD"/>
+ 						<xd:enumeration value="NORWAY"/>
+ 						<xd:enumeration value="OTH.TYPE"/>
++						<xd:enumeration value="REP"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+@@ -3957,6 +3962,7 @@
+ 						<xd:enumeration value="MOD"/>
+ 						<xd:enumeration value="NORWAY"/>
+ 						<xd:enumeration value="OTHER"/>
++						<xd:enumeration value="REP"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>

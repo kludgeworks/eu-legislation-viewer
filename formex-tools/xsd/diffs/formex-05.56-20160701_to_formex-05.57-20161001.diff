@@ -1,0 +1,132 @@
+--- xsd/formex-05.56-20160701.xd	2025-10-28 18:26:57
++++ xsd/formex-05.57-20161001.xd	2025-10-28 18:26:57
+@@ -2,7 +2,7 @@
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce">
+ 	<xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Current version 5.56</fmx:version>
++			<fmx:version>Current version 5.57</fmx:version>
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history>
+ 				<fmx:line.history>
+@@ -1081,6 +1081,9 @@
+ 						<fmx:date>20160602</fmx:date>added attribute REPUBLICATION (type t_boolean) to element BIB.OJ (HB)</fmx:line.history>
+ 					<fmx:line.history>
+ 						<fmx:date>20160606</fmx:date>added attribute TYPE (GLOSSARY|SUMMARY) to BIB.LSEU (HB, TS)</fmx:line.history>
++					<!-- version 5.57 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. -->
++					<fmx:line.history>
++						<fmx:date>20160914</fmx:date>following the entering into force of the new version of the vademecum of CJ: integration of new element INTERMEDIATE, modification, through integration of INTERMEDIATE, of elements JUDGMENT, OPINION, ORDER, CONCLUSION, added optional TOC to JUDGMENT.NP (HB)</fmx:line.history>
+ 					<!-- -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. -->
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>AR</fmx:symbol>
+@@ -1564,10 +1567,6 @@
+ 	</xd:simpleType>
+ 	<xd:simpleType name="t_no.doc.lseu">
+ 		<xd:restriction base="xd:string">
+-			<!-- original pattern as aggreed
+-		<xd:pattern value="LSEU\-(([A-Z]([A-Z]|\d)\d{4}[A-Z]?)|(\d{2}(\d{2}){0,5}_[1-9]\d{0,3}))\-[A-Z]{2}\-\d{4}\-\d{2}\-\d{2}\-\d{4}"/> -->
+-			<!-- pattern corresponding to realtity 
+-			<xd:pattern value="LSEU\-(([A-Z]([A-Z]|\d)\d{4}[A-Z]?)|(\d{2}(\d{2}){0,5}_[1-9]\d{0,3}))\-\d{4}\-\d{2}\-\d{2}\-\d{4}"/>-->
+ 			<!-- including GLOSSARY -->
+ 			<xd:pattern value="LSEU\-((GLOSSARY\-[A-Z_]+)|([A-Z]([A-Z]|\d)\d{4}[A-Z]?)|(\d{2}(\d{2}){0,5}_[1-9]\d{0,3}))\-\d{4}\-\d{2}\-\d{2}\-\d{4}"/>
+ 		</xd:restriction>
+@@ -2573,12 +2572,9 @@
+ 			<xd:sequence>
+ 				<xd:element ref="BIB.CONCLUSION"/>
+ 				<xd:element ref="CURR.TITLE"/>
++				<xd:element ref="TITLE"/>
++				<xd:element ref="INTERMEDIATE" minOccurs="0"/>
+ 				<xd:element ref="TITLE" minOccurs="0"/>
+-				<xd:element ref="INDEX" minOccurs="0"/>
+-				<xd:choice minOccurs="0" maxOccurs="unbounded">
+-					<xd:element ref="GR.ANNOTATION"/>
+-					<xd:element ref="TOC"/>
+-				</xd:choice>
+ 				<xd:element ref="CONTENTS.CONCLUSION"/>
+ 			</xd:sequence>
+ 			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+@@ -2778,11 +2774,16 @@
+ 	<xd:element name="CONTENTS.OPINION">
+ 		<xd:complexType>
+ 			<xd:sequence>
+-				<xd:element ref="TITLE"/>
+-				<xd:element ref="SUMMARY"/>
+-				<xd:element ref="ARGUMENTS" minOccurs="0"/>
+-				<xd:element ref="PREAMBLE.GEN"/>
+-				<xd:element ref="ENACTING.TERMS.CJT"/>
++				<xd:choice>
++					<xd:sequence>
++						<xd:element ref="TITLE"/>
++						<xd:element ref="SUMMARY"/>
++						<xd:element ref="ARGUMENTS" minOccurs="0"/>
++						<xd:element ref="PREAMBLE.GEN"/>
++						<xd:element ref="ENACTING.TERMS.CJT"/>
++					</xd:sequence>
++					<xd:element ref="GR.SEQ"/>
++				</xd:choice>
+ 				<xd:element ref="FINAL"/>
+ 				<xd:element ref="INTERNAL.ANNEX" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+@@ -4379,6 +4380,15 @@
+ 				<xd:element ref="OVER" minOccurs="0"/>
+ 				<xd:element ref="UNDER" minOccurs="0"/>
+ 			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
++	<xd:element name="INTERMEDIATE">
++		<xd:complexType>
++			<xd:all>
++				<xd:element ref="GR.ANNOTATION" minOccurs="0"/>
++				<xd:element ref="INDEX" minOccurs="0"/>
++				<xd:element ref="TOC" minOccurs="0"/>
++			</xd:all>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="INTERNAL.ANNEX">
+@@ -4505,11 +4515,7 @@
+ 				<xd:element ref="BIB.JUDGMENT"/>
+ 				<xd:element ref="CURR.TITLE"/>
+ 				<xd:element ref="TITLE"/>
+-				<xd:element ref="INDEX" minOccurs="0"/>
+-				<xd:choice minOccurs="0" maxOccurs="unbounded">
+-					<xd:element ref="GR.ANNOTATION"/>
+-					<xd:element ref="TOC"/>
+-				</xd:choice>
++				<xd:element ref="INTERMEDIATE" minOccurs="0"/>
+ 				<xd:element ref="JUDGMENT.INIT"/>
+ 				<xd:element ref="PARTIES"/>
+ 				<xd:choice minOccurs="0" maxOccurs="unbounded">
+@@ -4535,6 +4541,7 @@
+ 			<xd:sequence>
+ 				<xd:element ref="BIB.JUDGMENT"/>
+ 				<xd:element ref="TITLE"/>
++				<xd:element ref="TOC" minOccurs="0"/>
+ 				<xd:element ref="INDEX"/>
+ 				<xd:element ref="SUMMARY.NP"/>
+ 				<xd:element ref="SUBJECT"/>
+@@ -5069,11 +5076,7 @@
+ 				<xd:element ref="BIB.OPINION"/>
+ 				<xd:element ref="CURR.TITLE"/>
+ 				<xd:element ref="TITLE"/>
+-				<xd:element ref="INDEX" minOccurs="0"/>
+-				<xd:choice minOccurs="0" maxOccurs="unbounded">
+-					<xd:element ref="GR.ANNOTATION"/>
+-					<xd:element ref="TOC"/>
+-				</xd:choice>
++				<xd:element ref="INTERMEDIATE" minOccurs="0"/>
+ 				<xd:element ref="OPINION.INIT" minOccurs="0"/>
+ 				<xd:element ref="CONTENTS.OPINION"/>
+ 			</xd:sequence>
+@@ -5098,11 +5101,7 @@
+ 				<xd:element ref="BIB.ORDER"/>
+ 				<xd:element ref="CURR.TITLE"/>
+ 				<xd:element ref="TITLE"/>
+-				<xd:element ref="INDEX" minOccurs="0"/>
+-				<xd:choice minOccurs="0" maxOccurs="unbounded">
+-					<xd:element ref="GR.ANNOTATION"/>
+-					<xd:element ref="TOC"/>
+-				</xd:choice>
++				<xd:element ref="INTERMEDIATE" minOccurs="0"/>
+ 				<xd:choice minOccurs="0" maxOccurs="unbounded">
+ 					<xd:element ref="ORDER.INIT"/>
+ 					<xd:element ref="P"/>

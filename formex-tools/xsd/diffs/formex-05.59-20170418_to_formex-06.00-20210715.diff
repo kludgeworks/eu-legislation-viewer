@@ -1,0 +1,131 @@
+--- xsd/formex-05.59-20170418.xd	2025-10-28 18:26:57
++++ xsd/formex-06.00-20210715.xd	2025-10-28 18:26:57
+@@ -2,7 +2,7 @@
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce" xml:space="preserve">
+ 	<xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Current version 5.59</fmx:version>
++			<fmx:version>Current version 6.00</fmx:version>
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history>
+ 				<fmx:line.history>
+@@ -1103,6 +1103,10 @@
+ 					</fmx:line.history>
+ 					<fmx:line.history>
+ 						<fmx:date>20190401</fmx:date>new attribute value "0022" added to simpleType "t_quotation.end" and "t_quotation.start", for new character of quotation mark used in Dutch (FF, requested by Style Guide)
++					</fmx:line.history>
++					<!-- version 6.00 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. -->
++					<fmx:line.history>
++						<fmx:date>20210715</fmx:date>new schema for the production AbA (FF, requested by AbA)
+ 					</fmx:line.history>
+ 					<!-- -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. -->
+ 					<fmx:history.symbol>
+@@ -2043,6 +2047,7 @@
+ 				<xd:element ref="DOC.CORR" minOccurs="0" maxOccurs="unbounded"/>
+ 				<xd:element ref="DOC.CORR.SE" minOccurs="0" maxOccurs="unbounded"/>
+ 				<xd:element ref="EEA" minOccurs="0"/>
++				<xd:element ref="NO.ELI" minOccurs="0"/>
+ 				<xd:element ref="REF.CORE.METADATA" minOccurs="0"/>
+ 				<xd:element ref="REF.BIB.RECORD" minOccurs="0"/>
+ 			</xd:sequence>
+@@ -2184,6 +2189,7 @@
+ 				<xd:element ref="COLL" minOccurs="0"/>
+ 				<xd:element ref="TITLE" minOccurs="0"/>
+ 				<xd:choice minOccurs="0">
++					<xd:element ref="NO.DOC"/>
+ 					<xd:element ref="NO.OJ"/>
+ 					<xd:element ref="SPECIAL"/>
+ 				</xd:choice>
+@@ -2191,7 +2197,7 @@
+ 				<xd:element ref="DATE" minOccurs="0"/>
+ 				<xd:element ref="LAST.OJ" minOccurs="0"/>
+ 				<xd:element ref="LG.OJ"/>
+-				<xd:element ref="PRINTER"/>
++				<xd:element ref="PRINTER" minOccurs="0"/>
+ 				<xd:element ref="REF.CORE.METADATA" minOccurs="0"/>
+ 				<xd:element ref="REF.BIB.RECORD" minOccurs="0"/>
+ 			</xd:sequence>
+@@ -2322,7 +2328,7 @@
+ 				<xd:element ref="DOI.OJ" minOccurs="0"/>
+ 				<xd:element ref="GR.ANNOTATION" minOccurs="0"/>
+ 				<xd:element ref="PAGE.TOTAL"/>
+-				<xd:element ref="PAGE.SUMMARY"/>
++				<xd:element ref="PAGE.SUMMARY" minOccurs="0"/>
+ 				<xd:element ref="PAGE.CONTENTS"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+@@ -3362,7 +3368,7 @@
+ 		<xd:complexType>
+ 			<xd:sequence>
+ 				<xd:element ref="COLL"/>
+-				<xd:element ref="NO.OJ"/>
++				<xd:element ref="NO.OJ" minOccurs="0"/>
+ 				<xd:element ref="DATE"/>
+ 				<xd:element ref="NO.DOC" maxOccurs="unbounded"/>
+ 				<xd:element ref="PAGE.FIRST"/>
+@@ -3488,8 +3494,13 @@
+ 		<xd:complexType>
+ 			<xd:sequence>
+ 				<xd:element ref="COLL" minOccurs="0"/>
+-				<xd:element ref="NO.OJ" minOccurs="0"/>
+-				<xd:element ref="YEAR" minOccurs="0"/>
++				<xd:choice minOccurs="0">
++					<xd:element ref="NO.DOC" minOccurs="0"/>
++					<xd:sequence>
++						<xd:element ref="NO.OJ" minOccurs="0"/>
++						<xd:element ref="YEAR" minOccurs="0"/>
++					</xd:sequence>
++				</xd:choice>
+ 				<xd:element ref="LG.OJ" minOccurs="0"/>
+ 				<xd:element ref="PAGE.FIRST" minOccurs="0"/>
+ 				<xd:element ref="PAGE.SEQ" minOccurs="0"/>
+@@ -4888,6 +4899,15 @@
+ 			</xd:complexContent>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="NO.ELI">
++		<xd:complexType>
++			<xd:complexContent>
++				<xd:extension base="t_btx.seq">
++					<xd:attribute name="ID" type="xd:anyURI" use="required"/>
++				</xd:extension>
++			</xd:complexContent>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="NO.FASCICLE" type="xd:string"/>
+ 	<xd:element name="NO.GR.SEQ" type="t_btx.seq"/>
+ 	<xd:element name="NO.ISBN">
+@@ -5432,6 +5452,7 @@
+ 			<xd:sequence>
+ 				<xd:element ref="COLL" minOccurs="0"/>
+ 				<xd:choice minOccurs="0">
++					<xd:element ref="NO.DOC"/>
+ 					<xd:element ref="NO.OJ"/>
+ 					<xd:element ref="SPECIAL"/>
+ 				</xd:choice>
+@@ -5617,6 +5638,9 @@
+ 		<xd:complexType mixed="true">
+ 			<xd:complexContent>
+ 				<xd:extension base="t_btx.seq">
++					<xd:attribute name="COLL" type="t_collection"/>
++					<xd:attribute name="NO.DOC" type="xd:string"/>
++					<xd:attribute name="DATE.PUB" type="t_date"/>
+ 					<xd:attribute name="URI" type="xd:anyURI" use="required"/>
+ 					<xd:attribute name="CONTEXT" use="required">
+ 						<xd:simpleType>
+@@ -5760,8 +5784,13 @@
+ 		<xd:complexType>
+ 			<xd:sequence>
+ 				<xd:element ref="COLL"/>
+-				<xd:element ref="NO.OJ"/>
+-				<xd:element ref="YEAR"/>
++				<xd:choice>
++					<xd:element ref="NO.DOC"/>
++					<xd:sequence>
++						<xd:element ref="NO.OJ"/>
++						<xd:element ref="YEAR"/>
++					</xd:sequence>
++				</xd:choice>
+ 				<xd:element ref="LG.OJ"/>
+ 				<xd:sequence minOccurs="0">
+ 					<xd:element ref="PAGE.FIRST"/>

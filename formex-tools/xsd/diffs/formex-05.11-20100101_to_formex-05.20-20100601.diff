@@ -1,0 +1,207 @@
+--- xsd/formex-05.11-20100101.xd	2025-10-28 18:26:57
++++ xsd/formex-05.20-20100601.xd	2025-10-28 18:26:57
+@@ -2,7 +2,7 @@
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce">
+ 	<xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Version 5.00</fmx:version>
++			<fmx:version>Current version 5.20</fmx:version>
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history>
+ 				<fmx:line.history>
+@@ -624,6 +624,16 @@
+ 						<fmx:date>20100128</fmx:date>redefinition of t_date; redefinition of HEADER.SUMARY.SE; definition of SERIES.SE and SUBSERIES.SE (HB/XC)</fmx:line.history>
+ 					<fmx:line.history>
+ 						<fmx:date>20100129</fmx:date>redefinition of t_ecr...; new element REF.CASE.F1 (HB/XC/AR/ON/KL)</fmx:line.history>
++						<!-- version 5.20 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
++					<fmx:line.history>
++						<fmx:date>20100526</fmx:date>integration of Croatian and Icelandic, ISSN and DOI in HEADER.SUMMARY.SE optional; DOI in SUMMARY.PDF; filenaming with U (urgent) OJ publications (HB/XC/AR)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:date>20100826</fmx:date>integration of new elements for the handlng of Court decisions (DECISION.ECR) (HB)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:date>20101027</fmx:date>integration of NO.DOI in BIB.SE for secondary legislation (HB)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:date>20110125</fmx:date>suppression of U in filenames (HB)</fmx:line.history>
++						<!-- -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>AR</fmx:symbol>
+ 						<fmx:meaning>Agnès Regnier</fmx:meaning>
+@@ -959,7 +969,9 @@
+ 			<xd:enumeration value="GA"/>
+ 			<!-- gle -->
+ 			<xd:enumeration value="GL"/>
+-			<!-- glg -->
++			<!-- gle -->
++			<xd:enumeration value="HR"/>
++			<!-- hrv -->
+ 			<xd:enumeration value="HU"/>
+ 			<!-- hun -->
+ 			<xd:enumeration value="IS"/>
+@@ -1310,6 +1322,21 @@
+ 				<xd:element ref="TITLE" minOccurs="0"/>
+ 			</xd:sequence>
+ 			<xd:attribute name="FILENAME" type="xd:string"/>
++		</xd:complexType>
++	</xd:element>
++	<xd:element name="BIB.DECISION.ECR">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="REF.CASE.F1" minOccurs="0"/>
++				<xd:element ref="REF.CASE"/>
++				<xd:element ref="NO.CELEX" minOccurs="0"/>
++				<xd:element ref="NO.SEQ"/>
++				<xd:element ref="PAGE.FIRST.ECR"/>
++				<xd:element ref="PAGE.SEQ"/>
++				<xd:element ref="PAGE.LAST.ECR"/>
++				<xd:element ref="PAGE.TOTAL"/>
++				<xd:element ref="AUTHOR"/>
++			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="BIB.DOC">
+@@ -1507,6 +1534,7 @@
+ 				<xd:element ref="PRINTER"/>
+ 				<xd:element ref="NO.CAT"/>
+ 				<xd:element ref="NO.ISSN"/>
++				<xd:element ref="NO.DOI" minOccurs="0"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
+@@ -1572,6 +1600,7 @@
+ 					<xd:element ref="OBJECT"/>
+ 					<xd:element ref="REF.CONCLUSION"/>
+ 					<xd:element ref="REF.CORRIG.ECR"/>
++					<xd:element ref="REF.DECISION.ECR"/>
+ 					<xd:element ref="REF.JUDGMENT"/>
+ 					<xd:element ref="REF.JUDGMENT.NP"/>
+ 					<xd:element ref="REF.OPINION"/>
+@@ -1984,6 +2013,14 @@
+ 				<xd:element ref="CORRECTION" maxOccurs="unbounded"/>
+ 				<xd:element ref="GR.CORRECTION" maxOccurs="unbounded"/>
+ 			</xd:choice>
++		</xd:complexType>
++	</xd:element>
++	<xd:element name="CONTENTS.DECISION.ECR">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="GR.SEQ" maxOccurs="unbounded"/>
++				<xd:element ref="JURISDICTION"/>
++			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CONTENTS.JUDGMENT">
+@@ -2048,6 +2085,7 @@
+ 				<xd:element ref="TI.INFO.NO" minOccurs="0"/>
+ 				<xd:element ref="TI.CONTENTS"/>
+ 				<xd:element ref="TI.PAGE"/>
++				<xd:element ref="GR.ANNOTATION" minOccurs="0"/>
+ 				<xd:element ref="SECTION.SUMMARY" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+@@ -2239,6 +2277,35 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="DECISION.ECR">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="BIB.DECISION.ECR"/>
++				<xd:element ref="CURR.TITLE"/>
++				<xd:element ref="TITLE"/>
++				<xd:choice minOccurs="0" maxOccurs="unbounded">
++					<xd:element ref="GR.ANNOTATION"/>
++					<xd:element ref="TOC"/>
++				</xd:choice>
++				<xd:element ref="DECISION.ECR.INIT"/>
++				<xd:choice minOccurs="0" maxOccurs="unbounded">
++					<xd:element ref="LIST"/>
++					<xd:element ref="NP"/>
++					<xd:element ref="P"/>
++				</xd:choice>
++				<xd:element ref="PREAMBLE"/>
++				<xd:element ref="CONTENTS.DECISION.ECR"/>
++				<xd:element ref="SIGNATURE.CASE"/>
++				<xd:choice minOccurs="0" maxOccurs="unbounded">
++					<xd:element ref="GR.SEQ"/>
++					<xd:element ref="P"/>
++					<xd:element ref="TOC"/>
++				</xd:choice>
++			</xd:sequence>
++			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
++		</xd:complexType>
++	</xd:element>
++	<xd:element name="DECISION.ECR.INIT" type="t_btx"/>
+ 	<xd:element name="DEF.AREA">
+ 		<xd:complexType>
+ 			<xd:sequence>
+@@ -2932,9 +2999,9 @@
+ 		<xd:complexType>
+ 			<xd:sequence>
+ 				<xd:element ref="DESCRIPTION"/>
+-				<xd:choice>
+-					<xd:element ref="CORRECTION" maxOccurs="unbounded"/>
+-					<xd:element ref="GR.CORRECTION" maxOccurs="unbounded"/>
++				<xd:choice maxOccurs="unbounded">
++					<xd:element ref="CORRECTION"/>
++					<xd:element ref="GR.CORRECTION"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+ 		</xd:complexType>
+@@ -3125,7 +3192,8 @@
+ 			<xd:sequence>
+ 				<xd:element ref="TITLE"/>
+ 				<xd:element ref="LG.OJ"/>
+-				<xd:element ref="NO.ISSN"/>
++				<xd:element ref="NO.ISSN" minOccurs="0"/>
++				<xd:element ref="NO.DOI.OJ" minOccurs="0"/>
+ 				<xd:element ref="COLL"/>
+ 				<xd:element ref="NO.OJ.SUMMARY"/>
+ 				<xd:element ref="AGE.OJ.SUMMARY"/>
+@@ -3140,6 +3208,7 @@
+ 				<xd:element ref="LG.PUB"/>
+ 				<xd:element ref="DATE" minOccurs="0"/>
+ 				<xd:element ref="NO.ISSN" minOccurs="0"/>
++				<xd:element ref="NO.DOI" minOccurs="0"/>
+ 				<xd:choice>
+ 					<xd:sequence>
+ 						<xd:element ref="SERIES.SE"/>
+@@ -3911,6 +3980,7 @@
+ 	<xd:element name="NO.DOC.SUMMARY" type="t_btx.seq"/>
+ 	<xd:element name="NO.DOC.TXT" type="t_btx.seq"/>
+ 	<xd:element name="NO.DOI" type="t_doi.gen"/>
++	<xd:element name="NO.DOI.OJ" type="t_doi.oj"/>
+ 	<xd:element name="NO.FASCICLE" type="xd:string"/>
+ 	<xd:element name="NO.GR.SEQ" type="t_btx.seq"/>
+ 	<xd:element name="NO.ISBN">
+@@ -4511,6 +4581,14 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="REF.DECISION.ECR">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="TITLE"/>
++				<xd:element ref="REF.ECR.DOC"/>
++			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="REF.DOC.ECR">
+ 		<xd:complexType mixed="true">
+ 			<xd:complexContent mixed="true">
+@@ -4655,6 +4733,7 @@
+ 						<xd:enumeration value="CHRON.TABLE.NP"/>
+ 						<xd:enumeration value="CONCLUSION"/>
+ 						<xd:enumeration value="CORRIGENDUM"/>
++						<xd:enumeration value="DECISION.ECR"/>
+ 						<xd:enumeration value="HEARING"/>
+ 						<xd:enumeration value="JUDGMENT"/>
+ 						<xd:enumeration value="NOTICE"/>
+@@ -5045,7 +5124,7 @@
+ 		<xd:complexType>
+ 			<xd:sequence>
+ 				<xd:element ref="TITLE"/>
+-				<xd:element ref="INDEX"/>
++				<xd:element ref="INDEX" minOccurs="0"/>
+ 				<xd:element ref="NO.DOC.C"/>
+ 				<xd:element ref="LG.PROC"/>
+ 				<xd:element ref="TRANS.REF"/>

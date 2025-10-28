@@ -1,0 +1,75 @@
+--- xsd/formex-05.58-20161101.xd	2025-10-28 18:26:57
++++ xsd/formex-05.59-20170418.xd	2025-10-28 18:26:57
+@@ -2,7 +2,7 @@
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce" xml:space="preserve">
+ 	<xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Current version 5.58</fmx:version>
++			<fmx:version>Current version 5.59</fmx:version>
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history>
+ 				<fmx:line.history>
+@@ -1097,6 +1097,13 @@
+ 					<fmx:line.history>
+ 						<fmx:date>20170314</fmx:date>new value for TYPE attribute of HT: "SC" (small-caps) necessary in case law documents (HB)
+ 					</fmx:line.history>
++					<!-- version 5.59 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. -->
++					<fmx:line.history>
++						<fmx:date>20170418</fmx:date>attribute value "INTRO" added to BIB.LSEU@TYPE, modification of pattern for element NO.DOC.LSEU (HB, requested by LSEU)
++					</fmx:line.history>
++					<fmx:line.history>
++						<fmx:date>20190401</fmx:date>new attribute value "0022" added to simpleType "t_quotation.end" and "t_quotation.start", for new character of quotation mark used in Dutch (FF, requested by Style Guide)
++					</fmx:line.history>
+ 					<!-- -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. -->
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>AR</fmx:symbol>
+@@ -1591,8 +1598,7 @@
+ 	</xd:simpleType>
+ 	<xd:simpleType name="t_no.doc.lseu">
+ 		<xd:restriction base="xd:string">
+-			<!-- including GLOSSARY -->
+-			<xd:pattern value="LSEU\-((GLOSSARY\-[A-Z_]+)|([A-Z]([A-Z]|\d)\d{4}[A-Z]?)|(\d{2}(\d{2}){0,5}_[1-9]\d{0,3}))\-\d{4}\-\d{2}\-\d{2}\-\d{4}"/>
++			<xd:pattern value="LSEU\-((GLOSSARY\-[A-Z0-9_]+)|(INTRO\-(\d{2})+)|([A-Z]([A-Z]|\d)\d{4}[A-Z]?)|(\d{2}(\d{2}){0,5}_[1-9]\d{0,3})|([4-9](\d{4}|\d{6})))\-\d{4}\-\d{2}\-\d{2}\-\d{4}"/>
+ 		</xd:restriction>
+ 	</xd:simpleType>
+ 	<xd:simpleType name="t_no.oj">
+@@ -1622,6 +1628,7 @@
+ 	</xd:simpleType>
+ 	<xd:simpleType name="t_quotation.end">
+ 		<xd:restriction base="t_charcode">
++			<xd:enumeration value="0022"/>
+ 			<xd:enumeration value="00AB"/>
+ 			<xd:enumeration value="00BB"/>
+ 			<xd:enumeration value="2018"/>
+@@ -1632,6 +1639,7 @@
+ 	</xd:simpleType>
+ 	<xd:simpleType name="t_quotation.start">
+ 		<xd:restriction base="t_charcode">
++			<xd:enumeration value="0022"/>
+ 			<xd:enumeration value="00AB"/>
+ 			<xd:enumeration value="00BB"/>
+ 			<xd:enumeration value="2018"/>
+@@ -2159,14 +2167,15 @@
+ 				<xd:element ref="LAST.MODIFICATION" minOccurs="0"/>
+ 				<xd:element ref="ARCHIVED"/>
+ 			</xd:sequence>
+-			 <xd:attribute name="TYPE" default="SUMMARY">
+-				   <xd:simpleType>
+-						  <xd:restriction base="xd:string">
+-								 <xd:enumeration value="GLOSSARY"/>
+-								 <xd:enumeration value="SUMMARY"/>
+-						  </xd:restriction>
+-				   </xd:simpleType>
+-			 </xd:attribute>
++			<xd:attribute name="TYPE" default="SUMMARY">
++				<xd:simpleType>
++					<xd:restriction base="xd:string">
++						<xd:enumeration value="GLOSSARY"/>
++						<xd:enumeration value="INTRO"/>
++						<xd:enumeration value="SUMMARY"/>
++					</xd:restriction>
++				</xd:simpleType>
++			</xd:attribute>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="BIB.OJ">

@@ -1,0 +1,737 @@
+--- xsd/formex-01.00-20040501.xd	2025-10-28 18:26:57
++++ xsd/formex-01.01-20040501.xd	2025-10-28 18:26:57
+@@ -2,7 +2,7 @@
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce">
+ 	<xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Version 1.00</fmx:version>
++			<fmx:version>Version 1.01</fmx:version>
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history>
+ 				<fmx:line.history>
+@@ -479,6 +479,13 @@
+ 					<fmx:line.history>
+ 						<fmx:line.date>20040413</fmx:line.date>correction of ambiguous model SUBDIV (HB)</fmx:line.history>
+ 					<fmx:line.history>GR.TBL added to t_btx.seq (HB)</fmx:line.history>
++					<!-- version 1.01 -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
++					<fmx:line.history>
++						<fmx:line.date>20040421</fmx:line.date>TITLE deleted from VOLUME.PAPER (HB)</fmx:line.history>
++					<fmx:line.history>type of AGE.OJ.SUMMARY modified to t_btx (HB)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:line.date>20040422</fmx:line.date>gr.styles, attribute STYLE, attribute TEMPLATE deleted (HB / decision from OJLC)</fmx:line.history>
++					<fmx:line.history>NO.DOC in BIB.DOC repeatable (HB/STT)</fmx:line.history>
+ 					<fmx:history.symbol>
+ 						<fmx:symbol>EH</fmx:symbol>
+ 						<fmx:meaning>Emmanuel Hartwich</fmx:meaning>
+@@ -589,7 +596,6 @@
+ 				<xd:element ref="VISA"/>
+ 			</xd:choice>
+ 		</xd:sequence>
+-		<xd:attributeGroup ref="gr.styles"/>
+ 	</xd:complexType>
+ 	<xd:complexType name="t_btx.form" mixed="true">
+ 		<xd:sequence>
+@@ -603,7 +609,6 @@
+ 				<xd:element ref="ROOT"/>
+ 			</xd:choice>
+ 		</xd:sequence>
+-		<xd:attributeGroup ref="gr.styles"/>
+ 	</xd:complexType>
+ 	<xd:complexType name="t_btx.seq" mixed="true">
+ 		<xd:sequence>
+@@ -632,7 +637,6 @@
+ 				<xd:element ref="TXT"/>
+ 			</xd:choice>
+ 		</xd:sequence>
+-		<xd:attributeGroup ref="gr.styles"/>
+ 	</xd:complexType>
+ 	<xd:complexType name="t_btx.struct">
+ 		<xd:choice minOccurs="0" maxOccurs="unbounded">
+@@ -695,7 +699,6 @@
+ 			<xd:element ref="TOC"/>
+ 			<xd:element ref="VISA"/>
+ 		</xd:choice>
+-		<xd:attributeGroup ref="gr.styles"/>
+ 	</xd:complexType>
+ 	<xd:complexType name="t_btx.title">
+ 		<xd:choice minOccurs="0" maxOccurs="unbounded">
+@@ -704,7 +707,6 @@
+ 			<xd:element ref="NP"/>
+ 			<xd:element ref="P"/>
+ 		</xd:choice>
+-		<xd:attributeGroup ref="gr.styles"/>
+ 	</xd:complexType>
+ 	<xd:simpleType name="t_collection">
+ 		<xd:restriction base="xd:string">
+@@ -813,10 +815,6 @@
+ 			<xd:enumeration value="LO"/>
+ 		</xd:restriction>
+ 	</xd:simpleType>
+-	<!-- -.-.-.-. Attribute groups .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
+-	<xd:attributeGroup name="gr.styles">
+-		<xd:attribute name="STYLE" type="xd:string"/>
+-	</xd:attributeGroup>
+ 	<!-- -.-.-.-. Element definitions .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
+ 	<xd:element name="ACT">
+ 		<xd:complexType>
+@@ -832,8 +830,6 @@
+ 				<xd:element ref="ENACTING.TERMS"/>
+ 				<xd:element ref="FINAL" minOccurs="0"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+-			<xd:attribute name="TEMPLATE" type="xd:anyURI"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ACT.GEN">
+@@ -847,7 +843,6 @@
+ 				<xd:element ref="ENACTING.TERMS"/>
+ 				<xd:element ref="FINAL" minOccurs="0"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ADDR" type="t_btx.seq"/>
+@@ -856,7 +851,6 @@
+ 			<xd:sequence>
+ 				<xd:element ref="P" minOccurs="2" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="AGE.OJ">
+@@ -866,7 +860,7 @@
+ 			</xd:restriction>
+ 		</xd:simpleType>
+ 	</xd:element>
+-	<xd:element name="AGE.OJ.SUMMARY" type="xd:string"/>
++	<xd:element name="AGE.OJ.SUMMARY" type="t_btx"/>
+ 	<xd:element name="AGR">
+ 		<xd:complexType>
+ 			<xd:sequence>
+@@ -885,8 +879,6 @@
+ 					<xd:element ref="COLL.LETTERS"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+-			<xd:attribute name="TEMPLATE" type="xd:anyURI"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ALINEA" type="t_btx"/>
+@@ -897,7 +889,6 @@
+ 				<xd:element ref="OLD" minOccurs="0"/>
+ 				<xd:element ref="NEW" minOccurs="0"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ANNEX">
+@@ -911,8 +902,6 @@
+ 				</xd:choice>
+ 				<xd:element ref="CONTENTS"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+-			<xd:attribute name="TEMPLATE" type="xd:anyURI"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ANNOTATION">
+@@ -924,7 +913,6 @@
+ 					<xd:element ref="P" maxOccurs="unbounded"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ARTICLE">
+@@ -949,7 +937,6 @@
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="AUTHOR" type="xd:string"/>
+@@ -986,7 +973,7 @@
+ 	<xd:element name="BIB.DOC">
+ 		<xd:complexType>
+ 			<xd:sequence>
+-				<xd:element ref="NO.DOC" minOccurs="0"/>
++				<xd:element ref="NO.DOC" minOccurs="0" maxOccurs="unbounded"/>
+ 				<xd:element ref="DURAB"/>
+ 				<xd:element ref="AUTHOR" minOccurs="0" maxOccurs="unbounded"/>
+ 				<xd:element ref="COM" minOccurs="0"/>
+@@ -1073,7 +1060,6 @@
+ 					<xd:element ref="BLK"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CAPTION" type="t_btx.struct"/>
+@@ -1083,7 +1069,6 @@
+ 				<xd:element ref="GR.NOTES" minOccurs="0"/>
+ 				<xd:element ref="GR.PLANT" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CAT.VEGET">
+@@ -1092,7 +1077,6 @@
+ 				<xd:element ref="GR.NOTES" minOccurs="0"/>
+ 				<xd:element ref="SPECIE" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CELL">
+@@ -1147,8 +1131,6 @@
+ 				<xd:element ref="CONTENTS"/>
+ 				<xd:element ref="ENACTING.TERMS.CJT" minOccurs="0"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+-			<xd:attribute name="TEMPLATE" type="xd:anyURI"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CN">
+@@ -1269,7 +1251,6 @@
+ 			<xd:sequence>
+ 				<xd:element ref="LETTER" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="COM" type="xd:string"/>
+@@ -1282,8 +1263,6 @@
+ 				<xd:element ref="TOC" minOccurs="0"/>
+ 				<xd:element ref="CONTENTS"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+-			<xd:attribute name="TEMPLATE" type="xd:anyURI"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="COMPETITION.INIT" type="t_btx.struct"/>
+@@ -1294,8 +1273,6 @@
+ 				<xd:element ref="INFO.PROD"/>
+ 				<xd:element ref="CONS.DOC"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+-			<xd:attribute name="TEMPLATE" type="xd:anyURI"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CONS.ANNEX">
+@@ -1310,7 +1287,6 @@
+ 				<xd:element ref="CONTENTS" minOccurs="0"/>
+ 				<xd:element ref="CONS.ANNEX" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CONS.DOC">
+@@ -1323,7 +1299,6 @@
+ 				<xd:element ref="FINAL" minOccurs="0"/>
+ 				<xd:element ref="CONS.ANNEX" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CONS.DOC.GEN">
+@@ -1354,7 +1329,6 @@
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CONS.LIST">
+@@ -1396,8 +1370,6 @@
+ 				<xd:element ref="INFO.PROD"/>
+ 				<xd:element ref="CONS.OTH.DOC"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+-			<xd:attribute name="TEMPLATE" type="xd:anyURI"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CONS.OTH.DOC">
+@@ -1406,7 +1378,6 @@
+ 				<xd:element ref="FAM.COMP"/>
+ 				<xd:element ref="CONS.DOC.GEN"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CONSID" type="t_btx"/>
+@@ -1431,7 +1402,6 @@
+ 			<xd:sequence>
+ 				<xd:element ref="CORRECTION" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CONTENTS.SUMMARY">
+@@ -1453,7 +1423,6 @@
+ 				<xd:element ref="ROW"/>
+ 				<xd:element ref="BLK"/>
+ 			</xd:choice>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CORR">
+@@ -1463,8 +1432,6 @@
+ 				<xd:element ref="TITLE"/>
+ 				<xd:element ref="CONTENTS.CORR"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+-			<xd:attribute name="TEMPLATE" type="xd:anyURI"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CORRECTION">
+@@ -1476,7 +1443,6 @@
+ 					<xd:element ref="NEW.CORR" minOccurs="0"/>
+ 				</xd:sequence>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CORRIG">
+@@ -1493,7 +1459,6 @@
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CORRIG.CL">
+@@ -1551,7 +1516,6 @@
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="DATE">
+@@ -1572,7 +1536,6 @@
+ 			</xd:sequence>
+ 			<xd:attribute name="ALIAS" type="xd:positiveInteger" use="optional"/>
+ 			<xd:attribute name="AREA" type="t_area" use="required"/>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="DEF.AREA.HD" type="t_btx.seq"/>
+@@ -1630,7 +1593,6 @@
+ 					<xd:element ref="DEF.OBS.VARX"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="DEF.IMPORT">
+@@ -1661,7 +1623,6 @@
+ 				<xd:element ref="DEF.GEN.OBS"/>
+ 			</xd:sequence>
+ 			<xd:attribute name="ALIAS" type="xd:positiveInteger" use="optional"/>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="DEF.OBS.VARX.HD" type="t_btx.seq"/>
+@@ -1764,7 +1725,6 @@
+ 				<xd:element ref="CONSID" minOccurs="0" maxOccurs="unbounded"/>
+ 				<xd:element ref="DIV.CONSID" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="DIVISION">
+@@ -1774,7 +1734,6 @@
+ 				<xd:element ref="ARTICLE" minOccurs="0" maxOccurs="unbounded"/>
+ 				<xd:element ref="DIVISION" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="DLIST">
+@@ -1791,7 +1750,6 @@
+ 				</xd:simpleType>
+ 			</xd:attribute>
+ 			<xd:attribute name="SEPARATOR" type="xd:string"/>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="DLIST.ITEM">
+@@ -1802,7 +1760,6 @@
+ 				<xd:element ref="TERM"/>
+ 				<xd:element ref="DEFINITION" minOccurs="0"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="DOC">
+@@ -1955,7 +1912,6 @@
+ 					<xd:element ref="GR.SEQ" maxOccurs="unbounded"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ENACTING.TERMS.CJT" type="t_btx.struct"/>
+@@ -2046,7 +2002,6 @@
+ 				<xd:element ref="P" minOccurs="0" maxOccurs="unbounded"/>
+ 				<xd:element ref="SIGNATURE" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="FINAL.SUMMARY">
+@@ -2104,7 +2059,6 @@
+ 				<xd:element ref="PLENIPOTENTIARY" maxOccurs="unbounded"/>
+ 				<xd:element ref="FULL.POWER.FINAL"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="FULL.POWER.FINAL" type="t_btx.seq"/>
+@@ -2128,8 +2082,6 @@
+ 				<xd:element ref="CONTENTS"/>
+ 				<xd:element ref="FINAL" minOccurs="0"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+-			<xd:attribute name="TEMPLATE" type="xd:anyURI"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.AMEND">
+@@ -2138,7 +2090,6 @@
+ 				<xd:element ref="TITLE" minOccurs="0"/>
+ 				<xd:element ref="AMEND" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.ANNOTATION">
+@@ -2156,7 +2107,6 @@
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.CN.UNIT">
+@@ -2174,7 +2124,6 @@
+ 				<xd:element ref="CONSID" minOccurs="0" maxOccurs="unbounded"/>
+ 				<xd:element ref="DIV.CONSID" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.CONSID.INIT" type="t_btx.seq"/>
+@@ -2183,7 +2132,6 @@
+ 			<xd:sequence>
+ 				<xd:element ref="CORRIG" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.CORRIG.CL">
+@@ -2227,7 +2175,6 @@
+ 					<xd:element ref="TBL"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.PLANT">
+@@ -2237,7 +2184,6 @@
+ 				<xd:element ref="TI.GR.PLANT"/>
+ 				<xd:element ref="SPECIE" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.SEQ">
+@@ -2307,7 +2253,6 @@
+ 				<xd:element ref="LOC.NOTES" minOccurs="0"/>
+ 			</xd:sequence>
+ 			<xd:attribute name="LEVEL" type="xd:positiveInteger" default="1"/>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.TBL">
+@@ -2318,7 +2263,6 @@
+ 				<xd:element ref="GR.NOTES" minOccurs="0"/>
+ 				<xd:element ref="TBL" minOccurs="2" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.UNIT.VI">
+@@ -2327,7 +2271,6 @@
+ 				<xd:element ref="TI.GR.UNIT.VI"/>
+ 				<xd:element ref="UNIT.VI" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.VISA">
+@@ -2336,7 +2279,6 @@
+ 				<xd:element ref="GR.VISA.INIT" minOccurs="0"/>
+ 				<xd:element ref="VISA" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.VISA.INIT" type="t_btx.seq"/>
+@@ -2346,7 +2288,6 @@
+ 				<xd:element ref="HEADER.OLD"/>
+ 				<xd:element ref="HEADER.NEW" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="HEADER.NEW" type="t_btx.seq"/>
+@@ -2473,7 +2414,6 @@
+ 			<xd:sequence>
+ 				<xd:element ref="KEYWORD" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="INDEX.MAT" type="t_btx.seq"/>
+@@ -2697,7 +2637,6 @@
+ 					<xd:element ref="P" maxOccurs="unbounded"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ITEM.CONT" type="t_btx"/>
+@@ -2778,7 +2717,6 @@
+ 				<xd:element ref="INCL.ELEMENT" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+ 			<xd:attribute name="NO.SEQ" type="xd:positiveInteger" use="required"/>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="LG" type="t_language"/>
+@@ -2832,7 +2770,6 @@
+ 				<xd:element ref="HEADER.LIST.AMEND"/>
+ 				<xd:element ref="GR.AMEND" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="LOC.NOTES">
+@@ -2974,15 +2911,7 @@
+ 			</xd:attribute>
+ 		</xd:complexType>
+ 	</xd:element>
+-	<xd:element name="NO.DOC.C">
+-		<xd:complexType>
+-			<xd:simpleContent>
+-				<xd:extension base="xd:string">
+-					<xd:attributeGroup ref="gr.styles"/>
+-				</xd:extension>
+-			</xd:simpleContent>
+-		</xd:complexType>
+-	</xd:element>
++	<xd:element name="NO.DOC.C" type="xd:string"/>
+ 	<xd:element name="NO.DOC.SUMMARY" type="t_btx.seq"/>
+ 	<xd:element name="NO.GR.SEQ" type="t_btx.seq"/>
+ 	<xd:element name="NO.ISBN">
+@@ -3050,7 +2979,6 @@
+ 				<xd:element ref="TXT"/>
+ 				<xd:element ref="P" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="OBS.VAR" type="t_btx"/>
+@@ -3061,7 +2989,6 @@
+ 				<xd:element ref="FORMA.H" minOccurs="0"/>
+ 				<xd:element ref="GEN.OBS" minOccurs="0"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="OJ">
+@@ -3118,7 +3045,6 @@
+ 				<xd:element ref="PAGE.LAST"/>
+ 				<xd:element ref="PAGE.TOTAL"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="OTH.PUB.CL">
+@@ -3193,7 +3119,6 @@
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="PDF">
+@@ -3217,7 +3142,6 @@
+ 			<xd:sequence>
+ 				<xd:element ref="P" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="PLENIPOTENTIARY">
+@@ -3225,7 +3149,6 @@
+ 			<xd:sequence>
+ 				<xd:element ref="P" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="POS.TARIC" type="t_btx.seq"/>
+@@ -3248,7 +3171,6 @@
+ 				<xd:element ref="FULL.POWER" minOccurs="0"/>
+ 				<xd:element ref="PREAMBLE.FINAL"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="PREAMBLE.FINAL" type="t_btx"/>
+@@ -3266,7 +3188,6 @@
+ 				</xd:choice>
+ 				<xd:element ref="PREAMBLE.FINAL" minOccurs="0"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="PREAMBLE.INIT" type="t_btx"/>
+@@ -3400,7 +3321,6 @@
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="SECTION">
+@@ -3433,7 +3353,6 @@
+ 			<xd:sequence>
+ 				<xd:element ref="P" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="SIGNATURE">
+@@ -3442,7 +3361,6 @@
+ 				<xd:element ref="PL.DATE" minOccurs="0"/>
+ 				<xd:element ref="SIGNATORY" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="SIZE" type="t_btx.seq"/>
+@@ -3496,7 +3414,6 @@
+ 					<xd:element ref="SUBDIV" maxOccurs="unbounded"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="SUBITEM.SUMMARY">
+@@ -3570,7 +3487,6 @@
+ 			</xd:attribute>
+ 			<xd:attribute name="CLASS" type="xd:string"/>
+ 			<xd:attribute name="COLS" type="xd:positiveInteger" use="required"/>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="TERM" type="t_btx.seq"/>
+@@ -3596,7 +3512,6 @@
+ 				<xd:element ref="LG.PROC"/>
+ 				<xd:element ref="TRANS.REF"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="TI.COLL" type="t_btx.seq"/>
+@@ -3611,7 +3526,6 @@
+ 					<xd:element ref="P" maxOccurs="unbounded"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="TI.GR.UNIT.VI">
+@@ -3623,7 +3537,6 @@
+ 					<xd:element ref="P" maxOccurs="unbounded"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="TI.INFO.NO" type="t_btx.seq"/>
+@@ -3635,7 +3548,6 @@
+ 				<xd:element ref="NAME.SCIENT"/>
+ 				<xd:element ref="NAME.COMMON"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="TITLE">
+@@ -3646,7 +3558,6 @@
+ 			</xd:sequence>
+ 			<xd:attribute name="ID.TITLE" type="xd:ID"/>
+ 			<xd:attribute name="REF.TITLE" type="xd:IDREF"/>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="TOC">
+@@ -3656,7 +3567,6 @@
+ 				<xd:element ref="TOC.HD" minOccurs="0"/>
+ 				<xd:element ref="TOC.BLK" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="TOC.BLK">
+@@ -3669,7 +3579,6 @@
+ 					<xd:element ref="TOC.BLK"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="TOC.HD">
+@@ -3679,7 +3588,6 @@
+ 				<xd:element ref="TOC.HD.CONT"/>
+ 				<xd:element ref="TOC.HD.REF" minOccurs="0"/>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="TOC.HD.CONT" type="t_btx"/>
+@@ -3709,7 +3617,6 @@
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="TOME.SE" type="xd:string"/>
+@@ -3774,7 +3681,6 @@
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="VAR.INFO">
+@@ -3786,7 +3692,6 @@
+ 					<xd:element ref="UNIT.VI" maxOccurs="unbounded"/>
+ 				</xd:choice>
+ 			</xd:sequence>
+-			<xd:attributeGroup ref="gr.styles"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="VISA" type="t_btx.seq"/>
+@@ -3805,7 +3710,7 @@
+ 	<xd:element name="VOLUME.PAPER">
+ 		<xd:complexType>
+ 			<xd:sequence>
+-				<xd:element ref="TITLE" minOccurs="0"/>
++				<!--				<xd:element ref="TITLE" minOccurs="0"/> -->
+ 				<xd:element ref="ITEM.VOLUME" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+ 		</xd:complexType>

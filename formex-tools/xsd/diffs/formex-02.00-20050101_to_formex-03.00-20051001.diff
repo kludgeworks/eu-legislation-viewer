@@ -1,0 +1,541 @@
+--- xsd/formex-02.00-20050101.xd	2025-10-28 18:26:57
++++ xsd/formex-03.00-20051001.xd	2025-10-28 18:26:57
+@@ -2,7 +2,7 @@
+ <xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema" xmlns:fmx="http://opoce">
+ 	<xd:annotation>
+ 		<xd:documentation>
+-			<fmx:version>Version 2.00</fmx:version>
++			<fmx:version>Version 3.00</fmx:version>
+ 			<fmx:history>
+ 				<fmx:ti.history>History</fmx:ti.history>
+ 				<fmx:line.history>
+@@ -521,9 +521,41 @@
+ 						<fmx:line.date>20040929</fmx:line.date>modification of rules of usage of attribute NO.SEQ for DOC.MAIN.PUB (HB)</fmx:line.history>
+ 					<fmx:line.history>
+ 						<fmx:line.date>20041021</fmx:line.date>values CH and IS added to element CRIT (HB)</fmx:line.history>
+-						<fmx:line.history>
+-							<fmx.line.date>20041206</fmx.line.date>correction of a bug in the model of subdiv (HB/XC)	</fmx:line.history>
++					<!-- version 3.00 .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
++					<fmx:line.history>
++						<fmx:line.date>20050103</fmx:line.date>modification of IDENTIFIER attribute of ARTICLE and PARAG (HB/XC)</fmx:line.history>
++					<fmx:line.history>elements NOTE, QUOT.END, QUOT.START added to type t_btx.form (HB/XC)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:line.date>20050321</fmx:line.date>attribute values ROMAN/roman added to NOTE numbering scheme (HB/XC)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:line.date>20050412</fmx:line.date>suppression of INCLUSIONS from BIB.INSTANCE.CONS (HB)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:line.date>20050414</fmx:line.date>TOC, ANNOTATION and GR.ANNOTATION added to CONS.DOC (HB/XC)</fmx:line.history>
++					<fmx:line.history>optional attribute ITEM.ID added to ITEM (HB)</fmx:line.history>
++					<fmx:line.history>values BG/RO added to element CRIT (HB)</fmx:line.history>
++					<fmx:line.history>specific elements for secondary legislation added (SE) (HB/XC) </fmx:line.history>
++					<fmx:line.history>
++						<fmx:line.date>20050427</fmx:line.date>attribute IN.SUMMARY added to ITEM.REF (HB/XC)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:line.date>20050525</fmx:line.date>attribute NNC added to root elements and CONS.DOC, CONS.OTH.DOC, CONS.ANNEX (HB/XC)</fmx:line.history>
++					<fmx:line.history>attribute NCFOD added to element NOTE (HB/XC)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:line.date>20050627</fmx:line.date>language attributes added for Basque (EU), Catalan (CA), and Galician (GL) (HB)</fmx:line.history>
++					<fmx:line.history>attribute NUMBERING.CONTINUED added to element NOTE (HB)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:line.date>20051010</fmx:line.date>correction of element SE (HB)</fmx:line.history>
++					<fmx:line.history>
++						<fmx:line.date>20051024</fmx:line.date>correction of model SUBDIV (HB)</fmx:line.history>
++					<!-- Corrigendum .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- -->
++					<fmx:line.history>
++						<fmx:line.date>20060420</fmx:line.date>attribute value for NO.SEQ and SYNOPTISM of DOC.MAIN.PUB and DOC.SUB.PUB modified to D\d{3,4} (HB/XC)</fmx:line.history>	
++					<fmx:line.history>
++						<fmx:line.date>20060626</fmx:line.date>definition of empty element models revised (EEA, IE, OVER) (HB/AR/XC)</fmx:line.history>
+ 					<fmx:history.symbol>
++						<fmx:symbol>AR</fmx:symbol>
++						<fmx:meaning>Agnès Regnier</fmx:meaning>
++					</fmx:history.symbol>
++					<fmx:history.symbol>
+ 						<fmx:symbol>EH</fmx:symbol>
+ 						<fmx:meaning>Emmanuel Hartwich</fmx:meaning>
+ 					</fmx:history.symbol>
+@@ -647,6 +679,9 @@
+ 				<xd:element ref="HT"/>
+ 				<xd:element ref="IND"/>
+ 				<xd:element ref="OVER"/>
++				<xd:element ref="NOTE"/>
++				<xd:element ref="QUOT.END"/>
++				<xd:element ref="QUOT.START"/>
+ 				<xd:element ref="ROOT"/>
+ 			</xd:choice>
+ 		</xd:sequence>
+@@ -792,6 +827,7 @@
+ 		</xd:annotation>
+ 		<xd:restriction base="xd:string">
+ 			<xd:enumeration value="BG"/>
++			<xd:enumeration value="CA"/>
+ 			<xd:enumeration value="CS"/>
+ 			<xd:enumeration value="DA"/>
+ 			<xd:enumeration value="DE"/>
+@@ -799,9 +835,11 @@
+ 			<xd:enumeration value="EN"/>
+ 			<xd:enumeration value="ES"/>
+ 			<xd:enumeration value="ET"/>
++			<xd:enumeration value="EU"/>
+ 			<xd:enumeration value="FI"/>
+ 			<xd:enumeration value="FR"/>
+ 			<xd:enumeration value="GA"/>
++			<xd:enumeration value="GL"/>
+ 			<xd:enumeration value="HU"/>
+ 			<xd:enumeration value="IS"/>
+ 			<xd:enumeration value="IT"/>
+@@ -872,6 +910,7 @@
+ 				<xd:element ref="ENACTING.TERMS"/>
+ 				<xd:element ref="FINAL" minOccurs="0"/>
+ 			</xd:sequence>
++			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ACT.GEN">
+@@ -921,6 +960,7 @@
+ 					<xd:element ref="COLL.LETTERS"/>
+ 				</xd:choice>
+ 			</xd:sequence>
++			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ALINEA" type="t_btx"/>
+@@ -944,6 +984,7 @@
+ 				</xd:choice>
+ 				<xd:element ref="CONTENTS"/>
+ 			</xd:sequence>
++			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ANNOTATION">
+@@ -975,7 +1016,7 @@
+ 			<xd:attribute name="IDENTIFIER" use="required">
+ 				<xd:simpleType>
+ 					<xd:restriction base="xd:string">
+-						<xd:pattern value="\d{3}(\-\d{3})?[A-Z]?"/>
++						<xd:pattern value="\d{3}(\-\d{3})?[A-Z]*"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+@@ -1020,6 +1061,7 @@
+ 				<xd:element ref="AUTHOR" minOccurs="0" maxOccurs="unbounded"/>
+ 				<xd:element ref="COM" minOccurs="0"/>
+ 				<xd:element ref="DOC.CORR" minOccurs="0" maxOccurs="unbounded"/>
++				<xd:element ref="DOC.CORR.SE" minOccurs="0" maxOccurs="unbounded"/>
+ 				<xd:element ref="EEA" minOccurs="0"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+@@ -1075,7 +1117,6 @@
+ 				<xd:element ref="PAGE.SEQ"/>
+ 				<xd:element ref="PAGE.LAST"/>
+ 				<xd:element ref="PAGE.TOTAL"/>
+-				<xd:element ref="INCLUSIONS" minOccurs="0"/>
+ 				<xd:element ref="NO.DOC" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+@@ -1093,7 +1134,20 @@
+ 				<xd:element ref="DATE" minOccurs="0"/>
+ 				<xd:element ref="LAST.OJ" minOccurs="0"/>
+ 				<xd:element ref="LG.OJ"/>
++				<xd:element ref="PRINTER"/>
++			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
++	<xd:element name="BIB.SE">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="LG.PUB"/>
++				<xd:element ref="YEAR"/>
++				<xd:element ref="CHAP.SE"/>
++				<xd:element ref="TOME.SE"/>
+ 				<xd:element ref="PRINTER"/>
++				<xd:element ref="NO.CAT"/>
++				<xd:element ref="NO.ISSN"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
+@@ -1194,6 +1248,7 @@
+ 				<xd:element ref="CONTENTS"/>
+ 				<xd:element ref="ENACTING.TERMS.CJT" minOccurs="0"/>
+ 			</xd:sequence>
++			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CN">
+@@ -1326,6 +1381,7 @@
+ 				<xd:element ref="TOC" minOccurs="0"/>
+ 				<xd:element ref="CONTENTS"/>
+ 			</xd:sequence>
++			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="COMPETITION.INIT" type="t_btx.struct"/>
+@@ -1350,6 +1406,7 @@
+ 				<xd:element ref="CONTENTS" minOccurs="0"/>
+ 				<xd:element ref="CONS.ANNEX" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
++			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CONS.DOC">
+@@ -1357,12 +1414,19 @@
+ 			<xd:sequence>
+ 				<xd:element ref="BIB.INSTANCE"/>
+ 				<xd:element ref="FAM.COMP"/>
++				<xd:element ref="TOC" minOccurs="0"/>
+ 				<xd:element ref="TITLE"/>
++				<xd:choice minOccurs="0" maxOccurs="unbounded">
++					<xd:element ref="TOC"/>
++					<xd:element ref="GR.ANNOTATION"/>
++					<xd:element ref="ANNOTATION"/>
++				</xd:choice>
+ 				<xd:element ref="PREAMBLE"/>
+ 				<xd:element ref="ENACTING.TERMS"/>
+ 				<xd:element ref="FINAL" minOccurs="0"/>
+ 				<xd:element ref="CONS.ANNEX" minOccurs="0" maxOccurs="unbounded"/>
+ 			</xd:sequence>
++			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CONS.DOC.GEN">
+@@ -1443,6 +1507,7 @@
+ 				<xd:element ref="FAM.COMP"/>
+ 				<xd:element ref="CONS.DOC.GEN"/>
+ 			</xd:sequence>
++			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CONSID" type="t_btx.struct"/>
+@@ -1469,6 +1534,18 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="CONTENTS.SE">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="TITLE"/>
++				<xd:element ref="GR.ANNOTATION" minOccurs="0"/>
++				<xd:element ref="PAGE.TOTAL"/>
++				<xd:element ref="PAGE.SUMMARY"/>
++				<xd:element ref="PAGE.CONTENTS"/>
++				<xd:element ref="ITEM.PUB" maxOccurs="unbounded"/>
++			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="CONTENTS.SUMMARY">
+ 		<xd:complexType>
+ 			<xd:sequence>
+@@ -1481,6 +1558,15 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="CONTENTS.SUMMARY.SE">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="EDITION"/>
++				<xd:element ref="TI.COLL"/>
++				<xd:element ref="ITEM.SUMMARY" maxOccurs="unbounded"/>
++			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="COPYRIGHT" type="t_btx.seq"/>
+ 	<xd:element name="CORPUS">
+ 		<xd:complexType>
+@@ -1497,6 +1583,7 @@
+ 				<xd:element ref="TITLE"/>
+ 				<xd:element ref="CONTENTS.CORR"/>
+ 			</xd:sequence>
++			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="CORRECTION">
+@@ -1554,6 +1641,7 @@
+ 					<xd:restriction base="xd:string">
+ 						<xd:enumeration value="AT"/>
+ 						<xd:enumeration value="B"/>
++						<xd:enumeration value="BG"/>
+ 						<xd:enumeration value="CH"/>
+ 						<xd:enumeration value="CY"/>
+ 						<xd:enumeration value="CZ"/>
+@@ -1576,6 +1664,7 @@
+ 						<xd:enumeration value="NO"/>
+ 						<xd:enumeration value="P"/>
+ 						<xd:enumeration value="PL"/>
++						<xd:enumeration value="RO"/>
+ 						<xd:enumeration value="SE"/>
+ 						<xd:enumeration value="SK"/>
+ 						<xd:enumeration value="SL"/>
+@@ -1833,7 +1922,10 @@
+ 		<xd:complexType>
+ 			<xd:sequence>
+ 				<xd:element ref="BIB.DOC" minOccurs="0"/>
+-				<xd:element ref="PUBLICATION.REF"/>
++				<xd:choice>
++					<xd:element ref="PUBLICATION.REF"/>
++					<xd:element ref="PUBLICATION.REF.SE"/>
++				</xd:choice>
+ 				<xd:element ref="FMX"/>
+ 				<xd:element ref="PAPER" minOccurs="0"/>
+ 				<xd:element ref="PDF" minOccurs="0"/>
+@@ -1852,6 +1944,18 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="DOC.CORR.SE">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="CHAP.SE"/>
++				<xd:element ref="TOME.SE"/>
++				<xd:element ref="YEAR"/>
++				<xd:element ref="NO.DOC" minOccurs="0"/>
++				<xd:element ref="PAGE.FIRST"/>
++				<xd:element ref="PAGE.SEQ"/>
++			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="DOC.MAIN.PUB">
+ 		<xd:complexType>
+ 			<xd:sequence>
+@@ -1869,14 +1973,14 @@
+ 			<xd:attribute name="NO.SEQ" use="required">
+ 				<xd:simpleType>
+ 					<xd:restriction base="xd:string">
+-						<xd:pattern value="\d{3}"/>
++						<xd:pattern value="\d{3,4}"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+ 			<xd:attribute name="SYNOPTISM" use="required">
+ 				<xd:simpleType>
+ 					<xd:restriction base="xd:string">
+-						<xd:pattern value="D\d{3}"/>
++						<xd:pattern value="D\d{3,4}"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+@@ -1915,14 +2019,14 @@
+ 			<xd:attribute name="NO.SEQ" use="required">
+ 				<xd:simpleType>
+ 					<xd:restriction base="xd:string">
+-						<xd:pattern value="\d{3}(\.\d{3})+"/>
++						<xd:pattern value="\d{3,4}(\.\d{3,4})+"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+ 			<xd:attribute name="SYNOPTISM" use="required">
+ 				<xd:simpleType>
+ 					<xd:restriction base="xd:string">
+-						<xd:pattern value="D\d{3}(\.\d{3})+"/>
++						<xd:pattern value="D\d{3,4}(\.\d{3,4})+"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+@@ -1985,7 +2089,9 @@
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="EDITION" type="t_btx.seq"/>
+-	<xd:element name="EEA"/>
++	<xd:element name="EEA">
++		<xd:complexType/>
++	</xd:element>
+ 	<xd:element name="ENACTING.TERMS">
+ 		<xd:complexType>
+ 			<xd:sequence>
+@@ -2170,6 +2276,7 @@
+ 				<xd:element ref="CONTENTS"/>
+ 				<xd:element ref="FINAL" minOccurs="0"/>
+ 			</xd:sequence>
++			<xd:attribute name="NNC" type="t_boolean" default="NO"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="GR.AMEND">
+@@ -2390,6 +2497,17 @@
+ 				<xd:element ref="NO.OJ.SUMMARY"/>
+ 				<xd:element ref="AGE.OJ.SUMMARY"/>
+ 				<xd:element ref="DATE"/>
++			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
++	<xd:element name="HEADER.SUMMARY.SE">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="TITLE"/>
++				<xd:element ref="LG.PUB"/>
++				<xd:element ref="NO.ISSN"/>
++				<xd:element ref="CHAP.SE"/>
++				<xd:element ref="TOME.SE"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
+@@ -2434,7 +2552,9 @@
+ 			</xd:complexContent>
+ 		</xd:complexType>
+ 	</xd:element>
+-	<xd:element name="IE"/>
++	<xd:element name="IE">
++		<xd:complexType/>
++	</xd:element>
+ 	<xd:element name="IMG.CNT">
+ 		<xd:complexType>
+ 			<xd:choice minOccurs="1" maxOccurs="unbounded">
+@@ -2727,6 +2847,7 @@
+ 					<xd:element ref="P" maxOccurs="unbounded"/>
+ 				</xd:choice>
+ 			</xd:sequence>
++			<xd:attribute name="ITEM.ID" type="xd:string" use="optional"/>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="ITEM.CONT" type="t_btx"/>
+@@ -2741,6 +2862,14 @@
+ 				<xd:extension base="t_btx.seq">
+ 					<xd:attribute name="REF.PDF" type="xd:anyURI"/>
+ 					<xd:attribute name="REF.XML" type="xd:anyURI"/>
++					<xd:attribute name="IN.SUMMARY" default="NO">
++						<xd:simpleType>
++							<xd:restriction base="xd:string">
++								<xd:enumeration value="NO"/>
++								<xd:enumeration value="YES"/>
++							</xd:restriction>
++						</xd:simpleType>
++					</xd:attribute>
+ 				</xd:extension>
+ 			</xd:complexContent>
+ 		</xd:complexType>
+@@ -2749,6 +2878,8 @@
+ 		<xd:complexType>
+ 			<xd:sequence>
+ 				<xd:element ref="DURAB"/>
++				<xd:element ref="NO.CELEX" minOccurs="0"/>
++				<xd:element ref="LINK.OJ" minOccurs="0"/>
+ 				<xd:element ref="NO.DOC.SUMMARY" minOccurs="0"/>
+ 				<xd:element ref="TITLE"/>
+ 				<xd:element ref="ITEM.REF"/>
+@@ -3041,6 +3172,8 @@
+ 								<xd:enumeration value="ALPHA"/>
+ 								<xd:enumeration value="ARAB"/>
+ 								<xd:enumeration value="OTHER"/>
++								<xd:enumeration value="roman"/>
++								<xd:enumeration value="ROMAN"/>
+ 								<xd:enumeration value="STAR"/>
+ 							</xd:restriction>
+ 						</xd:simpleType>
+@@ -3059,6 +3192,8 @@
+ 							</xd:restriction>
+ 						</xd:simpleType>
+ 					</xd:attribute>
++					<xd:attribute name="NCFOD" type="t_boolean" default="NO"/>
++					<xd:attribute name="NUMBERING.CONTINUED" type="t_boolean" default="NO"/>
+ 				</xd:extension>
+ 			</xd:complexContent>
+ 		</xd:complexType>
+@@ -3155,7 +3290,9 @@
+ 			</xd:sequence>
+ 		</xd:complexType>
+ 	</xd:element>
+-	<xd:element name="OVER"/>
++	<xd:element name="OVER">
++		<xd:complexType/>
++	</xd:element>
+ 	<xd:element name="P" type="t_btx"/>
+ 	<xd:element name="PAGE.CONTENTS">
+ 		<xd:complexType>
+@@ -3207,7 +3344,7 @@
+ 			<xd:attribute name="IDENTIFIER" use="required">
+ 				<xd:simpleType>
+ 					<xd:restriction base="xd:string">
+-						<xd:pattern value="\d{3}(\-\d{3})?[A-Z]?\.\d{3}[A-Z]?"/>
++						<xd:pattern value="\d{3}(\-\d{3})?[A-Z]*\.\d{3}[A-Z]*"/>
+ 					</xd:restriction>
+ 				</xd:simpleType>
+ 			</xd:attribute>
+@@ -3291,6 +3428,7 @@
+ 			<xd:choice>
+ 				<xd:element ref="OJ"/>
+ 				<xd:element ref="BIB.GEN.PUB"/>
++				<xd:element ref="SE"/>
+ 			</xd:choice>
+ 		</xd:complexType>
+ 	</xd:element>
+@@ -3309,6 +3447,17 @@
+ 			<xd:attribute name="FILE" type="xd:anyURI" use="required"/>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="PUBLICATION.REF.SE">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="CHAP.SE"/>
++				<xd:element ref="TOME.SE"/>
++				<xd:element ref="YEAR"/>
++				<xd:element ref="LG.PUB"/>
++			</xd:sequence>
++			<xd:attribute name="FILE" type="xd:anyURI" use="required"/>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="PUBLISHER" type="t_btx.seq"/>
+ 	<xd:element name="QUALIF">
+ 		<xd:simpleType>
+@@ -3479,6 +3628,14 @@
+ 			</xd:attribute>
+ 		</xd:complexType>
+ 	</xd:element>
++	<xd:element name="SE">
++		<xd:complexType>
++			<xd:sequence>
++				<xd:element ref="BIB.SE"/>
++				<xd:element ref="CONTENTS.SE"/>
++			</xd:sequence>
++		</xd:complexType>
++	</xd:element>
+ 	<xd:element name="SECTION">
+ 		<xd:complexType>
+ 			<xd:sequence>
+@@ -3589,6 +3746,8 @@
+ 		<xd:complexType>
+ 			<xd:sequence>
+ 				<xd:element ref="DURAB"/>
++				<xd:element ref="NO.CELEX" minOccurs="0"/>
++				<xd:element ref="LINK.OJ" minOccurs="0"/>
+ 				<xd:element ref="NO.DOC.SUMMARY" minOccurs="0"/>
+ 				<xd:element ref="TITLE"/>
+ 				<xd:element ref="ITEM.REF"/>
+@@ -3622,8 +3781,16 @@
+ 	<xd:element name="SUMMARY.PDF">
+ 		<xd:complexType>
+ 			<xd:sequence>
+-				<xd:element ref="HEADER.SUMMARY"/>
+-				<xd:element ref="CONTENTS.SUMMARY"/>
++				<xd:choice>
++					<xd:sequence>
++						<xd:element ref="HEADER.SUMMARY"/>
++						<xd:element ref="CONTENTS.SUMMARY"/>
++					</xd:sequence>
++					<xd:sequence>
++						<xd:element ref="HEADER.SUMMARY.SE"/>
++						<xd:element ref="CONTENTS.SUMMARY.SE"/>
++					</xd:sequence>
++				</xd:choice>
+ 				<xd:element ref="FINAL.SUMMARY" minOccurs="0"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
+@@ -3656,6 +3823,14 @@
+ 			</xd:attribute>
+ 			<xd:attribute name="CLASS" type="xd:string"/>
+ 			<xd:attribute name="COLS" type="xd:positiveInteger" use="required"/>
++			<xd:attribute name="PAGE.SIZE" default="A4">
++				<xd:simpleType>
++					<xd:restriction base="xd:string">
++						<xd:enumeration value="A3"/>
++						<xd:enumeration value="A4"/>
++					</xd:restriction>
++				</xd:simpleType>
++			</xd:attribute>
+ 		</xd:complexType>
+ 	</xd:element>
+ 	<xd:element name="TERM" type="t_btx.seq"/>
+@@ -3879,7 +4054,6 @@
+ 	<xd:element name="VOLUME.PAPER">
+ 		<xd:complexType>
+ 			<xd:sequence>
+-				<!--				<xd:element ref="TITLE" minOccurs="0"/> -->
+ 				<xd:element ref="ITEM.VOLUME" maxOccurs="unbounded"/>
+ 			</xd:sequence>
+ 		</xd:complexType>
