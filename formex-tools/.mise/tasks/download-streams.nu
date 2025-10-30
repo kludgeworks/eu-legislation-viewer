@@ -164,7 +164,11 @@ def calculate-jobs [total_urls: int] {
 
 # Progress bar wrapper using pv for visual feedback
 def download-progress [total: int]: any -> any {
-    tee { to text | pv --bar-style granular -l -s $total -N "Chunks" | ignore }
+    tee {
+        each {|_| "chunk"}
+        | pv --bar-style shaded -l -s $total -N "Chunks"
+        | ignore
+    }
 }
 
 
