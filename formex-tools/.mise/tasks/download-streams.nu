@@ -202,7 +202,7 @@ def main [
     let results = (
         $urls
         | chunks $chunk_size
-        | enumerate  
+        | enumerate
         | download-progress $total_chunks
         | each {|chunk_info|
             # Process each chunk in parallel
