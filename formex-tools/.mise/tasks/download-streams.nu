@@ -164,9 +164,7 @@ def calculate-jobs [total_urls: int] {
 
 # Progress bar wrapper using pv for visual feedback
 def download-progress [total: int]: any -> any {
-    tee {
-        each {|_| "." } | to text | pv -l -s $total -N "Downloads" | do -i { null }
-    }
+    tee { to text | pv --bar-style granular -l -s $total -N "Chunks" | ignore }
 }
 
 
@@ -197,16 +195,22 @@ def main [
 
     # Calculate optimal number of jobs based on system and workload
     let jobs = (calculate-jobs $total)
+    let chunk_size = $jobs
+    let total_chunks = ($total / $chunk_size | math ceil)
 
-    # Process URLs in parallel with pv progress bar
+    # Process URLs in chunks with pv progress bar
     let results = (
         $urls
-        | enumerate
-        | download-progress $total
-        | par-each --threads $jobs {|item|
-            let url = $item.item
-            download-url $url $output
+        | chunks $chunk_size
+        | enumerate  
+        | download-progress $total_chunks
+        | each {|chunk_info|
+            # Process each chunk in parallel
+            $chunk_info.item | par-each --threads $jobs {|url|
+                download-url $url $output
+            }
         }
+        | flatten
     )
 
     # Output errors as JSONL to stdout
