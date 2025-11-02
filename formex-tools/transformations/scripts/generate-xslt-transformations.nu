@@ -69,7 +69,13 @@ def main [
 
 # Extract short version identifier for filenames
 def extract_version_short [version: string] {
-    $version | str replace "formex-" "" | str replace -a "-" ""
+    # Convert formex-XX.XX-YYYYMMDD to XX.XX format
+    # Example: formex-01.01-20040501 -> 01.01
+    # Example: formex-06.02.1-20231031 -> 06.02.1
+    let without_prefix = ($version | str replace "formex-" "")
+    let len = ($without_prefix | str length)
+    # Remove the last 9 characters (hyphen + 8 digit date: -YYYYMMDD)
+    $without_prefix | str substring 0..<($len - 9)
 }
 
 # Generate XSLT content for a version transition

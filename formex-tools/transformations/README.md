@@ -1,6 +1,6 @@
 # Formex Meta-Transformation System
 
-> **Current Status**: This system supports **DOC and GENERAL elements**. Support for other element types (ANNEX, ACT, etc.) is planned for future development phases.
+> **Current Status**: This system supports **DOC, GENERAL, and ANNEX elements**. Support for other element types (ACT, etc.) is planned for future development phases.
 
 ## Overview
 
@@ -9,10 +9,10 @@ The Formex Meta-Transformation System provides a unified interface for transform
 ## Features
 
 - **Automatic Version Detection**: Detects source version from XML schema location attributes
-- **Element Type Detection**: Automatically identifies the root element type (DOC and GENERAL currently)
+- **Element Type Detection**: Automatically identifies the root element type (DOC, GENERAL, and ANNEX currently)
 - **Sequential Transformation**: Applies transformations step-by-step from source to target version
 - **Support for All Versions**: Handles all 33 Formex schema versions from 01.00 to 06.02.3 (2004-2025)
-- **Multi-Element Support**: Optimized for DOC and GENERAL documents with planned expansion to other element types
+- **Multi-Element Support**: Optimized for DOC, GENERAL, and ANNEX documents with planned expansion to other element types
 - **Cross-Platform**: Works on Linux, macOS, and Windows with proper dependencies
 
 ## Installation
@@ -57,7 +57,7 @@ The Formex Meta-Transformation System provides a unified interface for transform
 
 | Option | Description |
 |--------|-------------|
-| `-e, --element ELEMENT` | Target element type (currently: doc, general) |
+| `-e, --element ELEMENT` | Target element type (currently: doc, general, annex) |
 | `-t, --target VERSION` | Target version (e.g., 06.02.3, v06.02.3, latest) |
 | `-s, --source VERSION` | Source version (optional, auto-detected) |
 | `-v, --verbose` | Enable verbose output |
@@ -70,7 +70,7 @@ The Formex Meta-Transformation System provides a unified interface for transform
 ./transformations/bin/formex-transform input.xml output.xml
 ```
 - Auto-detects source version from input XML
-- Auto-detects element type from root element (DOC or GENERAL documents)
+- Auto-detects element type from root element (DOC, GENERAL, or ANNEX documents)
 - Transforms to latest version (06.02.3)
 
 #### 2. Transform to Specific Version
@@ -127,6 +127,7 @@ The system supports transformation between any of these 33 Formex schema version
 The system currently supports:
 - `doc` - DOC documents (fully implemented with all 32 version transformations)
 - `general` - GENERAL documents (fully implemented with all 32 version transformations)
+- `annex` - ANNEX documents (fully implemented with all 32 version transformations)
 
 ### Planned Support (Future Phases)
 The following element types are planned for future implementation:
