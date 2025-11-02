@@ -1,7 +1,8 @@
 #!/usr/bin/env nu
-#MISE description="List downloaded XML files that reference a specific Formex schema version"
+#MISE description="List downloaded XML files that reference a specific Formex schema version and optionally filter by root element"
 #USAGE flag "-l --limit <count>" help="Total maximum number of matching files to return"
 #USAGE flag "-w --with-version" help="Include the version field in the output"
+#USAGE flag "-r --root-tag <tag>" help="Filter by XML root element tag name"
 #USAGE flag "-f --format <format>" help="Output format" default="table" {
 #USAGE   choices "table" "json" "csv" "tsv" "jsonl"
 #USAGE }
@@ -12,6 +13,7 @@ def main [
     ...versions: string
     --limit(-l): int = -1
     --with-version(-w)
+    --root-tag(-r): string
     --format(-f): string = "table"
 ] {
 
@@ -25,19 +27,27 @@ def main [
         | lines
         | each {|file|
             try {
+                let xml_data = (open --raw $file | from xml)
                 let schema = (
-                    open --raw $file
-                    | from xml
+                    $xml_data
                     | get attributes.noNamespaceSchemaLocation?
                     | path basename
                 )
-                { file: $file, version: $schema }
+                let root_element = ($xml_data | get tag)
+                { file: $file, version: $schema, root_tag: $root_element }
             } catch {
                 null
             }
         }
         | compact
         | where {|entry| $versions | any {|candidate| $candidate == $entry.version }}
+        | where {|entry| 
+            if ($root_tag | is-empty) {
+                true
+            } else {
+                $entry.root_tag == $root_tag
+            }
+        }
         | enumerate
         | take until {|entry| $limit > 0 and $entry.index >= $limit }
         | each {|entry| $entry.item }

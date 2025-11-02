@@ -1,0 +1,950 @@
+[
+  {
+    "version_name": "formex-05.59-20170418.xd",
+    "total_count": 108454,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 50629
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 13755
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 11762
+      },
+      {
+        "root_element": "ACT",
+        "count": 10878
+      },
+      {
+        "root_element": "CJT",
+        "count": 9391
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 4887
+      },
+      {
+        "root_element": "CONS.ACT",
+        "count": 3859
+      },
+      {
+        "root_element": "LSEU",
+        "count": 1892
+      },
+      {
+        "root_element": "CORR",
+        "count": 726
+      },
+      {
+        "root_element": "COMPETITION",
+        "count": 310
+      },
+      {
+        "root_element": "AGR",
+        "count": 190
+      },
+      {
+        "root_element": "CONS.OTH",
+        "count": 175
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.56-20160701.xd",
+    "total_count": 82279,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 39199
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 10435
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 8672
+      },
+      {
+        "root_element": "ACT",
+        "count": 8524
+      },
+      {
+        "root_element": "CJT",
+        "count": 7185
+      },
+      {
+        "root_element": "CONS.ACT",
+        "count": 4370
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 2828
+      },
+      {
+        "root_element": "CORR",
+        "count": 567
+      },
+      {
+        "root_element": "COMPETITION",
+        "count": 216
+      },
+      {
+        "root_element": "CONS.OTH",
+        "count": 161
+      },
+      {
+        "root_element": "AGR",
+        "count": 122
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.55-20141201.xd",
+    "total_count": 57768,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 23017
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 6634
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 5781
+      },
+      {
+        "root_element": "ACT",
+        "count": 5439
+      },
+      {
+        "root_element": "CJT",
+        "count": 4518
+      },
+      {
+        "root_element": "CASE",
+        "count": 2896
+      },
+      {
+        "root_element": "JUDGMENT",
+        "count": 2762
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 1904
+      },
+      {
+        "root_element": "JUDGMENT.NP",
+        "count": 1833
+      },
+      {
+        "root_element": "CONCLUSION",
+        "count": 1306
+      },
+      {
+        "root_element": "ORDER.NP",
+        "count": 701
+      },
+      {
+        "root_element": "CORR",
+        "count": 427
+      },
+      {
+        "root_element": "ORDER",
+        "count": 234
+      },
+      {
+        "root_element": "COMPETITION",
+        "count": 201
+      },
+      {
+        "root_element": "AGR",
+        "count": 79
+      },
+      {
+        "root_element": "DECISION.ECR",
+        "count": 30
+      },
+      {
+        "root_element": "OPINION",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "version_name": "formex-04.00-20061031.xd",
+    "total_count": 57758,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 23208
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 9091
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 8745
+      },
+      {
+        "root_element": "ACT",
+        "count": 7941
+      },
+      {
+        "root_element": "CJT",
+        "count": 4328
+      },
+      {
+        "root_element": "CONS.ACT",
+        "count": 2461
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 698
+      },
+      {
+        "root_element": "CORR",
+        "count": 600
+      },
+      {
+        "root_element": "COMPETITION",
+        "count": 386
+      },
+      {
+        "root_element": "AGR",
+        "count": 297
+      },
+      {
+        "root_element": "CONS.OTH",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.21-20110601.xd",
+    "total_count": 45449,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 17014
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 7317
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 7116
+      },
+      {
+        "root_element": "ACT",
+        "count": 6125
+      },
+      {
+        "root_element": "CJT",
+        "count": 4209
+      },
+      {
+        "root_element": "CASE",
+        "count": 1110
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 717
+      },
+      {
+        "root_element": "JUDGMENT",
+        "count": 655
+      },
+      {
+        "root_element": "CONCLUSION",
+        "count": 317
+      },
+      {
+        "root_element": "CORR",
+        "count": 308
+      },
+      {
+        "root_element": "JUDGMENT.NP",
+        "count": 292
+      },
+      {
+        "root_element": "ORDER.NP",
+        "count": 134
+      },
+      {
+        "root_element": "AGR",
+        "count": 99
+      },
+      {
+        "root_element": "ORDER",
+        "count": 34
+      },
+      {
+        "root_element": "DECISION.ECR",
+        "count": 1
+      },
+      {
+        "root_element": "OPINION",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "version_name": "formex-03.00-20051001.xd",
+    "total_count": 37352,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 14931
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 6891
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 6188
+      },
+      {
+        "root_element": "ACT",
+        "count": 5458
+      },
+      {
+        "root_element": "CJT",
+        "count": 2035
+      },
+      {
+        "root_element": "CONS.ACT",
+        "count": 694
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 445
+      },
+      {
+        "root_element": "COMPETITION",
+        "count": 270
+      },
+      {
+        "root_element": "CORR",
+        "count": 221
+      },
+      {
+        "root_element": "AGR",
+        "count": 202
+      },
+      {
+        "root_element": "CONS.OTH",
+        "count": 10
+      },
+      {
+        "root_element": "SUMMARY.PDF",
+        "count": 7
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.10-20100101.xd",
+    "total_count": 33649,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 12339
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 5592
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 5358
+      },
+      {
+        "root_element": "ACT",
+        "count": 4915
+      },
+      {
+        "root_element": "CJT",
+        "count": 2220
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 1921
+      },
+      {
+        "root_element": "CONS.ACT",
+        "count": 557
+      },
+      {
+        "root_element": "AGR",
+        "count": 549
+      },
+      {
+        "root_element": "CORR",
+        "count": 196
+      },
+      {
+        "root_element": "CONS.OTH",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.00-20081231.xd",
+    "total_count": 21890,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 5997
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 2748
+      },
+      {
+        "root_element": "JUDGMENT",
+        "count": 2724
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 2668
+      },
+      {
+        "root_element": "ACT",
+        "count": 2270
+      },
+      {
+        "root_element": "CONCLUSION",
+        "count": 1662
+      },
+      {
+        "root_element": "CASE",
+        "count": 1524
+      },
+      {
+        "root_element": "CJT",
+        "count": 1220
+      },
+      {
+        "root_element": "ORDER",
+        "count": 452
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 217
+      },
+      {
+        "root_element": "JUDGMENT.NP",
+        "count": 139
+      },
+      {
+        "root_element": "ORDER.NP",
+        "count": 115
+      },
+      {
+        "root_element": "CORR",
+        "count": 109
+      },
+      {
+        "root_element": "AGR",
+        "count": 43
+      },
+      {
+        "root_element": "OPINION",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.53-20130725.xd",
+    "total_count": 21398,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 10384
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 2721
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 2625
+      },
+      {
+        "root_element": "ACT",
+        "count": 2522
+      },
+      {
+        "root_element": "CJT",
+        "count": 1906
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 892
+      },
+      {
+        "root_element": "CORR",
+        "count": 157
+      },
+      {
+        "root_element": "COMPETITION",
+        "count": 122
+      },
+      {
+        "root_element": "AGR",
+        "count": 45
+      },
+      {
+        "root_element": "LSEU",
+        "count": 13
+      },
+      {
+        "root_element": "CASE",
+        "count": 8
+      },
+      {
+        "root_element": "JUDGMENT",
+        "count": 2
+      },
+      {
+        "root_element": "ORDER",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "version_name": "formex-01.01-20040501.xd",
+    "total_count": 20720,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 8012
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 3902
+      },
+      {
+        "root_element": "ACT",
+        "count": 3827
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 2715
+      },
+      {
+        "root_element": "CJT",
+        "count": 1068
+      },
+      {
+        "root_element": "CORR",
+        "count": 401
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 378
+      },
+      {
+        "root_element": "COMPETITION",
+        "count": 292
+      },
+      {
+        "root_element": "AGR",
+        "count": 125
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.50-20130101.xd",
+    "total_count": 18647,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 7470
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 3486
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 2866
+      },
+      {
+        "root_element": "ACT",
+        "count": 2447
+      },
+      {
+        "root_element": "CJT",
+        "count": 1897
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 311
+      },
+      {
+        "root_element": "CORR",
+        "count": 144
+      },
+      {
+        "root_element": "AGR",
+        "count": 26
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.20-20100601.xd",
+    "total_count": 18274,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 7096
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 3196
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 2721
+      },
+      {
+        "root_element": "ACT",
+        "count": 2419
+      },
+      {
+        "root_element": "CJT",
+        "count": 1722
+      },
+      {
+        "root_element": "CONS.ACT",
+        "count": 433
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 376
+      },
+      {
+        "root_element": "AGR",
+        "count": 185
+      },
+      {
+        "root_element": "CORR",
+        "count": 125
+      },
+      {
+        "root_element": "CONS.OTH",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "version_name": "formex-04.cj-20080212.xd",
+    "total_count": 17757,
+    "root_elements": [
+      {
+        "root_element": "JUDGMENT",
+        "count": 5401
+      },
+      {
+        "root_element": "CASE",
+        "count": 5138
+      },
+      {
+        "root_element": "CONCLUSION",
+        "count": 4744
+      },
+      {
+        "root_element": "REPORT.HEARING",
+        "count": 1424
+      },
+      {
+        "root_element": "ORDER",
+        "count": 924
+      },
+      {
+        "root_element": "SUMMARY.JUDGMENT",
+        "count": 106
+      },
+      {
+        "root_element": "OPINION",
+        "count": 19
+      },
+      {
+        "root_element": "RULING",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "version_name": "formex-02.00-20050101.xd",
+    "total_count": 15992,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 6290
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 2700
+      },
+      {
+        "root_element": "ACT",
+        "count": 2677
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 1939
+      },
+      {
+        "root_element": "CJT",
+        "count": 1013
+      },
+      {
+        "root_element": "CONS.ACT",
+        "count": 707
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 305
+      },
+      {
+        "root_element": "CORR",
+        "count": 152
+      },
+      {
+        "root_element": "AGR",
+        "count": 105
+      },
+      {
+        "root_element": "COMPETITION",
+        "count": 98
+      },
+      {
+        "root_element": "CONS.OTH",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.58-20161101.xd",
+    "total_count": 10108,
+    "root_elements": [
+      {
+        "root_element": "JUDGMENT.NP",
+        "count": 3488
+      },
+      {
+        "root_element": "JUDGMENT",
+        "count": 3318
+      },
+      {
+        "root_element": "CONCLUSION",
+        "count": 1644
+      },
+      {
+        "root_element": "CASE",
+        "count": 1302
+      },
+      {
+        "root_element": "ORDER",
+        "count": 292
+      },
+      {
+        "root_element": "LSEU",
+        "count": 60
+      },
+      {
+        "root_element": "OPINION",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.51-20130501.xd",
+    "total_count": 5164,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 2582
+      },
+      {
+        "root_element": "CONS.ACT",
+        "count": 2542
+      },
+      {
+        "root_element": "CONS.OTH",
+        "count": 40
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.22-20110811.xd",
+    "total_count": 4884,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 2442
+      },
+      {
+        "root_element": "CONS.ACT",
+        "count": 2433
+      },
+      {
+        "root_element": "CONS.OTH",
+        "count": 9
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.01-20091201.xd",
+    "total_count": 2304,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 920
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 526
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 361
+      },
+      {
+        "root_element": "ACT",
+        "count": 335
+      },
+      {
+        "root_element": "CJT",
+        "count": 129
+      },
+      {
+        "root_element": "CORR",
+        "count": 17
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 12
+      },
+      {
+        "root_element": "AGR",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.11-20100101.xd",
+    "total_count": 628,
+    "root_elements": [
+      {
+        "root_element": "CASE",
+        "count": 604
+      },
+      {
+        "root_element": "JUDGMENT",
+        "count": 16
+      },
+      {
+        "root_element": "ORDER",
+        "count": 6
+      },
+      {
+        "root_element": "SUMMARY.PDF",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "version_name": "formex-01.02-20040901.xd",
+    "total_count": 423,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 208
+      },
+      {
+        "root_element": "CONS.ACT",
+        "count": 200
+      },
+      {
+        "root_element": "PUBLICATION",
+        "count": 7
+      },
+      {
+        "root_element": "ACT",
+        "count": 7
+      },
+      {
+        "root_element": "CONS.OTH",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.53l-20140201.xd",
+    "total_count": 383,
+    "root_elements": [
+      {
+        "root_element": "LSEU",
+        "count": 383
+      }
+    ]
+  },
+  {
+    "version_name": "formex-05.54-20140601.xd",
+    "total_count": 19,
+    "root_elements": [
+      {
+        "root_element": "GENERAL",
+        "count": 9
+      },
+      {
+        "root_element": "ANNEX",
+        "count": 6
+      },
+      {
+        "root_element": "DOC",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "version_name": "formex-06.02.1-20231031.xd",
+    "total_count": 10,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 5
+      },
+      {
+        "root_element": "COMPETITION",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "version_name": "formex-01.00-20040501.xd",
+    "total_count": 2,
+    "root_elements": [
+      {
+        "root_element": "DOC",
+        "count": 1
+      },
+      {
+        "root_element": "GENERAL",
+        "count": 1
+      }
+    ]
+  }
+]

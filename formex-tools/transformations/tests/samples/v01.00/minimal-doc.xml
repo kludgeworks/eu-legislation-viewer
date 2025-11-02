@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DOC noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-01.00-20040501.xd">
+    <BIB.DOC>
+        <PROD.ID>20040501001</PROD.ID>
+        <FIN.ID>123456</FIN.ID>
+        <NO.DOC FORMAT="YN" TYPE="OJ">
+            <NO.CURRENT>1</NO.CURRENT>
+            <YEAR>2004</YEAR>
+            <COM>EU</COM>
+        </NO.DOC>
+        <DURAB TYPE="DUR"/>
+        <AUTHOR>COM</AUTHOR>
+    </BIB.DOC>
+    <PUBLICATION.REF FILE="L_2004001EN.toc.xml">
+        <COLL>L</COLL>
+        <NO.OJ>1</NO.OJ>
+        <DATE ISO="20040501">20040501</DATE>
+        <LG.OJ>EN</LG.OJ>
+        <VOLUME.REF>01</VOLUME.REF>
+    </PUBLICATION.REF>
+    <FMX>
+        <DOC.MAIN.PUB NO.SEQ="0001" SYNOPTISM="D0001">
+            <LG.DOC>EN</LG.DOC>
+            <LEGAL.VALUE>REG</LEGAL.VALUE>
+            <DATE ISO="20040430">20040430</DATE>
+            <PAGE.FIRST>1</PAGE.FIRST>
+            <PAGE.LAST>10</PAGE.LAST>
+            <PAGE.TOTAL>10</PAGE.TOTAL>
+            <PAGE.SEQ>1</PAGE.SEQ>
+            <REF.PHYS FILE="L_2004001EN.01000101.xml" TYPE="DOC.XML"/>
+        </DOC.MAIN.PUB>
+    </FMX>
+</DOC>

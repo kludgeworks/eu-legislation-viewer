@@ -1,0 +1,359 @@
+{
+  "analysis_metadata": {
+    "generated_date": "2025-11-01",
+    "source_files": "30 XSD diff files (formex-01.00 to formex-06.02.3)",
+    "methodology": "Element reference frequency analysis across schema changes",
+    "total_element_occurrences": 9847,
+    "unique_elements_identified": 376
+  },
+  "phase_4_priority_elements": [
+    {
+      "rank": 1,
+      "element": "TITLE",
+      "frequency": 783,
+      "tier": 1,
+      "category": "Structure",
+      "priority": "Critical",
+      "rationale": "Universal document component, highest change frequency",
+      "implementation_complexity": "Medium",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    },
+    {
+      "rank": 2,
+      "element": "P",
+      "frequency": 457,
+      "tier": 1,
+      "category": "Content",
+      "priority": "Critical",
+      "rationale": "Primary text container, essential for all document types",
+      "implementation_complexity": "Low",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    },
+    {
+      "rank": 3,
+      "element": "TOC",
+      "frequency": 322,
+      "tier": 1,
+      "category": "Navigation",
+      "priority": "Critical",
+      "rationale": "Table of contents, critical for document structure",
+      "implementation_complexity": "High",
+      "document_types": ["acts", "general"],
+      "risk_level": "High"
+    },
+    {
+      "rank": 4,
+      "element": "GR.ANNOTATION",
+      "frequency": 285,
+      "tier": 1,
+      "category": "Metadata",
+      "priority": "Critical",
+      "rationale": "Grouped annotations, high complexity transformations",
+      "implementation_complexity": "High",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "High"
+    },
+    {
+      "rank": 5,
+      "element": "PAGE.SEQ",
+      "frequency": 244,
+      "tier": 2,
+      "category": "Pagination",
+      "priority": "High",
+      "rationale": "Page sequencing, critical for document integrity",
+      "implementation_complexity": "Medium",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Medium"
+    },
+    {
+      "rank": 6,
+      "element": "PAGE.TOTAL",
+      "frequency": 241,
+      "tier": 2,
+      "category": "Pagination",
+      "priority": "High",
+      "rationale": "Total page count, essential for document completeness",
+      "implementation_complexity": "Medium",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Medium"
+    },
+    {
+      "rank": 7,
+      "element": "DATE",
+      "frequency": 190,
+      "tier": 3,
+      "category": "Temporal",
+      "priority": "High",
+      "rationale": "Date handling, universal requirement",
+      "implementation_complexity": "Low",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    },
+    {
+      "rank": 8,
+      "element": "CONTENTS",
+      "frequency": 165,
+      "tier": 2,
+      "category": "Navigation",
+      "priority": "High",
+      "rationale": "Content organization, structural importance",
+      "implementation_complexity": "Medium",
+      "document_types": ["acts", "general"],
+      "risk_level": "Medium"
+    },
+    {
+      "rank": 9,
+      "element": "GR.SEQ",
+      "frequency": 161,
+      "tier": 2,
+      "category": "Grouping",
+      "priority": "High",
+      "rationale": "Sequential grouping, affects document flow",
+      "implementation_complexity": "Medium",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Medium"
+    },
+    {
+      "rank": 10,
+      "element": "PAGE.FIRST",
+      "frequency": 159,
+      "tier": 3,
+      "category": "Reference",
+      "priority": "High",
+      "rationale": "First page references, critical for citations",
+      "implementation_complexity": "Low",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    },
+    {
+      "rank": 11,
+      "element": "NO.CELEX",
+      "frequency": 153,
+      "tier": 3,
+      "category": "Identifier",
+      "priority": "High",
+      "rationale": "CELEX numbers, unique EU document identification",
+      "implementation_complexity": "Low",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    },
+    {
+      "rank": 12,
+      "element": "NO.SEQ",
+      "frequency": 147,
+      "tier": 3,
+      "category": "Identifier",
+      "priority": "High",
+      "rationale": "Sequential numbers, document ordering",
+      "implementation_complexity": "Low",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    },
+    {
+      "rank": 13,
+      "element": "REF.ECR.DOC",
+      "frequency": 126,
+      "tier": 4,
+      "category": "Reference",
+      "priority": "Medium-High",
+      "rationale": "ECR document references, court case importance",
+      "implementation_complexity": "High",
+      "document_types": ["judgments"],
+      "risk_level": "High"
+    },
+    {
+      "rank": 14,
+      "element": "LIST",
+      "frequency": 126,
+      "tier": 4,
+      "category": "Content",
+      "priority": "Medium-High",
+      "rationale": "List structures, common in legal documents",
+      "implementation_complexity": "Medium",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    },
+    {
+      "rank": 15,
+      "element": "PAGE.FIRST.ECR",
+      "frequency": 123,
+      "tier": 4,
+      "category": "Reference",
+      "priority": "Medium-High",
+      "rationale": "ECR first page, court document structure",
+      "implementation_complexity": "Medium",
+      "document_types": ["judgments"],
+      "risk_level": "Medium"
+    },
+    {
+      "rank": 16,
+      "element": "PAGE.LAST.ECR",
+      "frequency": 118,
+      "tier": 4,
+      "category": "Reference",
+      "priority": "Medium-High",
+      "rationale": "ECR last page, court document structure",
+      "implementation_complexity": "Medium",
+      "document_types": ["judgments"],
+      "risk_level": "Medium"
+    },
+    {
+      "rank": 17,
+      "element": "NP",
+      "frequency": 118,
+      "tier": 5,
+      "category": "Content",
+      "priority": "Medium-High",
+      "rationale": "New paragraph, text flow control",
+      "implementation_complexity": "Low",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    },
+    {
+      "rank": 18,
+      "element": "CURR.TITLE",
+      "frequency": 117,
+      "tier": 5,
+      "category": "Structure",
+      "priority": "Medium-High",
+      "rationale": "Current title, dynamic content",
+      "implementation_complexity": "Medium",
+      "document_types": ["acts", "general"],
+      "risk_level": "Medium"
+    },
+    {
+      "rank": 19,
+      "element": "FINAL",
+      "frequency": 113,
+      "tier": 5,
+      "category": "Structure",
+      "priority": "Medium-High",
+      "rationale": "Final sections, document closure",
+      "implementation_complexity": "Low",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    },
+    {
+      "rank": 20,
+      "element": "PAGE.LAST",
+      "frequency": 112,
+      "tier": 5,
+      "category": "Reference",
+      "priority": "Medium-High",
+      "rationale": "Last page references, document bounds",
+      "implementation_complexity": "Low",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    },
+    {
+      "rank": 21,
+      "element": "YEAR",
+      "frequency": 106,
+      "tier": 6,
+      "category": "Temporal",
+      "priority": "Medium",
+      "rationale": "Year specification, temporal indexing",
+      "implementation_complexity": "Low",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    },
+    {
+      "rank": 22,
+      "element": "GR.NOTES",
+      "frequency": 106,
+      "tier": 6,
+      "category": "Content",
+      "priority": "Medium",
+      "rationale": "Grouped notes, supplementary information",
+      "implementation_complexity": "Medium",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Medium"
+    },
+    {
+      "rank": 23,
+      "element": "QUOT.S",
+      "frequency": 104,
+      "tier": 6,
+      "category": "Content",
+      "priority": "Medium",
+      "rationale": "Quote structures, legal text citations",
+      "implementation_complexity": "Medium",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Medium"
+    },
+    {
+      "rank": 24,
+      "element": "AUTHOR",
+      "frequency": 104,
+      "tier": 6,
+      "category": "Metadata",
+      "priority": "Medium",
+      "rationale": "Authorship information, document provenance",
+      "implementation_complexity": "Low",
+      "document_types": ["acts", "judgments", "general"],
+      "risk_level": "Low"
+    }
+  ],
+  "implementation_phases": {
+    "phase_4_1": {
+      "name": "Immediate Priority",
+      "timeline": "Weeks 1-4",
+      "elements": ["TITLE", "P", "TOC", "GR.ANNOTATION"],
+      "focus": "Fundamental document structure"
+    },
+    "phase_4_2": {
+      "name": "Core Infrastructure", 
+      "timeline": "Weeks 5-8",
+      "elements": ["PAGE.SEQ", "PAGE.TOTAL", "CONTENTS", "GR.SEQ"],
+      "focus": "Document integrity and navigation"
+    },
+    "phase_4_3": {
+      "name": "Reference System",
+      "timeline": "Weeks 9-12", 
+      "elements": ["DATE", "PAGE.FIRST", "NO.CELEX", "NO.SEQ"],
+      "focus": "Document identification and referencing"
+    },
+    "phase_4_4": {
+      "name": "Legal Specialization",
+      "timeline": "Weeks 13-16",
+      "elements": ["REF.ECR.DOC", "LIST", "PAGE.FIRST.ECR", "PAGE.LAST.ECR"],
+      "focus": "Court documents and legal references"
+    },
+    "phase_4_5": {
+      "name": "Content Enhancement",
+      "timeline": "Weeks 17-20",
+      "elements": ["NP", "CURR.TITLE", "FINAL", "PAGE.LAST"],
+      "focus": "Content organization"
+    },
+    "phase_4_6": {
+      "name": "Administrative & Metadata",
+      "timeline": "Weeks 21-24", 
+      "elements": ["YEAR", "GR.NOTES", "QUOT.S", "AUTHOR"],
+      "focus": "Document metadata and context"
+    }
+  },
+  "category_statistics": {
+    "Structure": 3,
+    "Content": 6,
+    "Navigation": 2,
+    "Metadata": 2,
+    "Pagination": 2,
+    "Temporal": 2,
+    "Reference": 5,
+    "Identifier": 2,
+    "Grouping": 1
+  },
+  "risk_assessment": {
+    "high_risk": ["TOC", "GR.ANNOTATION", "REF.ECR.DOC"],
+    "medium_risk": ["PAGE.SEQ", "PAGE.TOTAL", "CONTENTS", "GR.SEQ", "PAGE.FIRST.ECR", "PAGE.LAST.ECR", "CURR.TITLE", "GR.NOTES", "QUOT.S"],
+    "low_risk": ["TITLE", "P", "DATE", "PAGE.FIRST", "NO.CELEX", "NO.SEQ", "LIST", "NP", "FINAL", "PAGE.LAST", "YEAR", "AUTHOR"]
+  },
+  "success_metrics": {
+    "coverage_target": "95% transformation success rate",
+    "accuracy_target": "Zero data loss in element content",
+    "performance_target": "1000+ documents per minute",
+    "compatibility_target": "Support all schema versions"
+  }
+}

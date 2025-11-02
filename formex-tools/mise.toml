@@ -6,3 +6,4 @@ rust = "latest"
 "cargo:nu_plugin_query" = { version = "latest", postinstall = "nu -c 'plugin add ($env.MISE_TOOL_INSTALL_PATH | path join \"bin\" \"nu_plugin_query\")'" }
 "cargo:nu-lint" = "latest"
 htmlq = "latest"
+xspec = "latest"

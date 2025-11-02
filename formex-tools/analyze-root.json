@@ -1,0 +1,950 @@
+[
+  {
+    "root_element_name": "DOC",
+    "total_count": 231748,
+    "versions": [
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 50629
+      },
+      {
+        "version": "formex-05.56-20160701.xd",
+        "count": 39199
+      },
+      {
+        "version": "formex-04.00-20061031.xd",
+        "count": 23208
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 23017
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 17014
+      },
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 14931
+      },
+      {
+        "version": "formex-05.10-20100101.xd",
+        "count": 12339
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 10384
+      },
+      {
+        "version": "formex-01.01-20040501.xd",
+        "count": 8012
+      },
+      {
+        "version": "formex-05.50-20130101.xd",
+        "count": 7470
+      },
+      {
+        "version": "formex-05.20-20100601.xd",
+        "count": 7096
+      },
+      {
+        "version": "formex-02.00-20050101.xd",
+        "count": 6290
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 5997
+      },
+      {
+        "version": "formex-05.51-20130501.xd",
+        "count": 2582
+      },
+      {
+        "version": "formex-05.22-20110811.xd",
+        "count": 2442
+      },
+      {
+        "version": "formex-05.01-20091201.xd",
+        "count": 920
+      },
+      {
+        "version": "formex-01.02-20040901.xd",
+        "count": 208
+      },
+      {
+        "version": "formex-06.02.1-20231031.xd",
+        "count": 5
+      },
+      {
+        "version": "formex-05.54-20140601.xd",
+        "count": 4
+      },
+      {
+        "version": "formex-01.00-20040501.xd",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "root_element_name": "GENERAL",
+    "total_count": 75921,
+    "versions": [
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 13755
+      },
+      {
+        "version": "formex-05.56-20160701.xd",
+        "count": 10435
+      },
+      {
+        "version": "formex-04.00-20061031.xd",
+        "count": 8745
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 7317
+      },
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 6891
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 6634
+      },
+      {
+        "version": "formex-05.10-20100101.xd",
+        "count": 5358
+      },
+      {
+        "version": "formex-05.50-20130101.xd",
+        "count": 3486
+      },
+      {
+        "version": "formex-05.20-20100601.xd",
+        "count": 2721
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 2721
+      },
+      {
+        "version": "formex-01.01-20040501.xd",
+        "count": 2715
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 2668
+      },
+      {
+        "version": "formex-02.00-20050101.xd",
+        "count": 1939
+      },
+      {
+        "version": "formex-05.01-20091201.xd",
+        "count": 526
+      },
+      {
+        "version": "formex-05.54-20140601.xd",
+        "count": 9
+      },
+      {
+        "version": "formex-01.00-20040501.xd",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "root_element_name": "ANNEX",
+    "total_count": 72606,
+    "versions": [
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 11762
+      },
+      {
+        "version": "formex-04.00-20061031.xd",
+        "count": 9091
+      },
+      {
+        "version": "formex-05.56-20160701.xd",
+        "count": 8672
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 7116
+      },
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 6188
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 5781
+      },
+      {
+        "version": "formex-05.10-20100101.xd",
+        "count": 5592
+      },
+      {
+        "version": "formex-01.01-20040501.xd",
+        "count": 3902
+      },
+      {
+        "version": "formex-05.20-20100601.xd",
+        "count": 3196
+      },
+      {
+        "version": "formex-05.50-20130101.xd",
+        "count": 2866
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 2748
+      },
+      {
+        "version": "formex-02.00-20050101.xd",
+        "count": 2700
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 2625
+      },
+      {
+        "version": "formex-05.01-20091201.xd",
+        "count": 361
+      },
+      {
+        "version": "formex-05.54-20140601.xd",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "root_element_name": "ACT",
+    "total_count": 65784,
+    "versions": [
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 10878
+      },
+      {
+        "version": "formex-05.56-20160701.xd",
+        "count": 8524
+      },
+      {
+        "version": "formex-04.00-20061031.xd",
+        "count": 7941
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 6125
+      },
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 5458
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 5439
+      },
+      {
+        "version": "formex-05.10-20100101.xd",
+        "count": 4915
+      },
+      {
+        "version": "formex-01.01-20040501.xd",
+        "count": 3827
+      },
+      {
+        "version": "formex-02.00-20050101.xd",
+        "count": 2677
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 2522
+      },
+      {
+        "version": "formex-05.50-20130101.xd",
+        "count": 2447
+      },
+      {
+        "version": "formex-05.20-20100601.xd",
+        "count": 2419
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 2270
+      },
+      {
+        "version": "formex-05.01-20091201.xd",
+        "count": 335
+      },
+      {
+        "version": "formex-01.02-20040901.xd",
+        "count": 7
+      }
+    ]
+  },
+  {
+    "root_element_name": "CJT",
+    "total_count": 42841,
+    "versions": [
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 9391
+      },
+      {
+        "version": "formex-05.56-20160701.xd",
+        "count": 7185
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 4518
+      },
+      {
+        "version": "formex-04.00-20061031.xd",
+        "count": 4328
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 4209
+      },
+      {
+        "version": "formex-05.10-20100101.xd",
+        "count": 2220
+      },
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 2035
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 1906
+      },
+      {
+        "version": "formex-05.50-20130101.xd",
+        "count": 1897
+      },
+      {
+        "version": "formex-05.20-20100601.xd",
+        "count": 1722
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 1220
+      },
+      {
+        "version": "formex-01.01-20040501.xd",
+        "count": 1068
+      },
+      {
+        "version": "formex-02.00-20050101.xd",
+        "count": 1013
+      },
+      {
+        "version": "formex-05.01-20091201.xd",
+        "count": 129
+      }
+    ]
+  },
+  {
+    "root_element_name": "CONS.ACT",
+    "total_count": 18256,
+    "versions": [
+      {
+        "version": "formex-05.56-20160701.xd",
+        "count": 4370
+      },
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 3859
+      },
+      {
+        "version": "formex-05.51-20130501.xd",
+        "count": 2542
+      },
+      {
+        "version": "formex-04.00-20061031.xd",
+        "count": 2461
+      },
+      {
+        "version": "formex-05.22-20110811.xd",
+        "count": 2433
+      },
+      {
+        "version": "formex-02.00-20050101.xd",
+        "count": 707
+      },
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 694
+      },
+      {
+        "version": "formex-05.10-20100101.xd",
+        "count": 557
+      },
+      {
+        "version": "formex-05.20-20100601.xd",
+        "count": 433
+      },
+      {
+        "version": "formex-01.02-20040901.xd",
+        "count": 200
+      }
+    ]
+  },
+  {
+    "root_element_name": "PUBLICATION",
+    "total_count": 15898,
+    "versions": [
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 4887
+      },
+      {
+        "version": "formex-05.56-20160701.xd",
+        "count": 2828
+      },
+      {
+        "version": "formex-05.10-20100101.xd",
+        "count": 1921
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 1904
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 892
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 717
+      },
+      {
+        "version": "formex-04.00-20061031.xd",
+        "count": 698
+      },
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 445
+      },
+      {
+        "version": "formex-01.01-20040501.xd",
+        "count": 378
+      },
+      {
+        "version": "formex-05.20-20100601.xd",
+        "count": 376
+      },
+      {
+        "version": "formex-05.50-20130101.xd",
+        "count": 311
+      },
+      {
+        "version": "formex-02.00-20050101.xd",
+        "count": 305
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 217
+      },
+      {
+        "version": "formex-05.01-20091201.xd",
+        "count": 12
+      },
+      {
+        "version": "formex-01.02-20040901.xd",
+        "count": 7
+      }
+    ]
+  },
+  {
+    "root_element_name": "JUDGMENT",
+    "total_count": 14878,
+    "versions": [
+      {
+        "version": "formex-04.cj-20080212.xd",
+        "count": 5401
+      },
+      {
+        "version": "formex-05.58-20161101.xd",
+        "count": 3318
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 2762
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 2724
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 655
+      },
+      {
+        "version": "formex-05.11-20100101.xd",
+        "count": 16
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "root_element_name": "CASE",
+    "total_count": 12582,
+    "versions": [
+      {
+        "version": "formex-04.cj-20080212.xd",
+        "count": 5138
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 2896
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 1524
+      },
+      {
+        "version": "formex-05.58-20161101.xd",
+        "count": 1302
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 1110
+      },
+      {
+        "version": "formex-05.11-20100101.xd",
+        "count": 604
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "root_element_name": "CONCLUSION",
+    "total_count": 9673,
+    "versions": [
+      {
+        "version": "formex-04.cj-20080212.xd",
+        "count": 4744
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 1662
+      },
+      {
+        "version": "formex-05.58-20161101.xd",
+        "count": 1644
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 1306
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 317
+      }
+    ]
+  },
+  {
+    "root_element_name": "JUDGMENT.NP",
+    "total_count": 5752,
+    "versions": [
+      {
+        "version": "formex-05.58-20161101.xd",
+        "count": 3488
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 1833
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 292
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 139
+      }
+    ]
+  },
+  {
+    "root_element_name": "CORR",
+    "total_count": 4150,
+    "versions": [
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 726
+      },
+      {
+        "version": "formex-04.00-20061031.xd",
+        "count": 600
+      },
+      {
+        "version": "formex-05.56-20160701.xd",
+        "count": 567
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 427
+      },
+      {
+        "version": "formex-01.01-20040501.xd",
+        "count": 401
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 308
+      },
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 221
+      },
+      {
+        "version": "formex-05.10-20100101.xd",
+        "count": 196
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 157
+      },
+      {
+        "version": "formex-02.00-20050101.xd",
+        "count": 152
+      },
+      {
+        "version": "formex-05.50-20130101.xd",
+        "count": 144
+      },
+      {
+        "version": "formex-05.20-20100601.xd",
+        "count": 125
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 109
+      },
+      {
+        "version": "formex-05.01-20091201.xd",
+        "count": 17
+      }
+    ]
+  },
+  {
+    "root_element_name": "LSEU",
+    "total_count": 2348,
+    "versions": [
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 1892
+      },
+      {
+        "version": "formex-05.53l-20140201.xd",
+        "count": 383
+      },
+      {
+        "version": "formex-05.58-20161101.xd",
+        "count": 60
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 13
+      }
+    ]
+  },
+  {
+    "root_element_name": "AGR",
+    "total_count": 2071,
+    "versions": [
+      {
+        "version": "formex-05.10-20100101.xd",
+        "count": 549
+      },
+      {
+        "version": "formex-04.00-20061031.xd",
+        "count": 297
+      },
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 202
+      },
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 190
+      },
+      {
+        "version": "formex-05.20-20100601.xd",
+        "count": 185
+      },
+      {
+        "version": "formex-01.01-20040501.xd",
+        "count": 125
+      },
+      {
+        "version": "formex-05.56-20160701.xd",
+        "count": 122
+      },
+      {
+        "version": "formex-02.00-20050101.xd",
+        "count": 105
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 99
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 79
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 45
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 43
+      },
+      {
+        "version": "formex-05.50-20130101.xd",
+        "count": 26
+      },
+      {
+        "version": "formex-05.01-20091201.xd",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "root_element_name": "ORDER",
+    "total_count": 1943,
+    "versions": [
+      {
+        "version": "formex-04.cj-20080212.xd",
+        "count": 924
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 452
+      },
+      {
+        "version": "formex-05.58-20161101.xd",
+        "count": 292
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 234
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 34
+      },
+      {
+        "version": "formex-05.11-20100101.xd",
+        "count": 6
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "root_element_name": "COMPETITION",
+    "total_count": 1900,
+    "versions": [
+      {
+        "version": "formex-04.00-20061031.xd",
+        "count": 386
+      },
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 310
+      },
+      {
+        "version": "formex-01.01-20040501.xd",
+        "count": 292
+      },
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 270
+      },
+      {
+        "version": "formex-05.56-20160701.xd",
+        "count": 216
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 201
+      },
+      {
+        "version": "formex-05.53-20130725.xd",
+        "count": 122
+      },
+      {
+        "version": "formex-02.00-20050101.xd",
+        "count": 98
+      },
+      {
+        "version": "formex-06.02.1-20231031.xd",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "root_element_name": "REPORT.HEARING",
+    "total_count": 1424,
+    "versions": [
+      {
+        "version": "formex-04.cj-20080212.xd",
+        "count": 1424
+      }
+    ]
+  },
+  {
+    "root_element_name": "ORDER.NP",
+    "total_count": 950,
+    "versions": [
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 701
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 134
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 115
+      }
+    ]
+  },
+  {
+    "root_element_name": "CONS.OTH",
+    "total_count": 408,
+    "versions": [
+      {
+        "version": "formex-05.59-20170418.xd",
+        "count": 175
+      },
+      {
+        "version": "formex-05.56-20160701.xd",
+        "count": 161
+      },
+      {
+        "version": "formex-05.51-20130501.xd",
+        "count": 40
+      },
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 10
+      },
+      {
+        "version": "formex-05.22-20110811.xd",
+        "count": 9
+      },
+      {
+        "version": "formex-02.00-20050101.xd",
+        "count": 6
+      },
+      {
+        "version": "formex-04.00-20061031.xd",
+        "count": 3
+      },
+      {
+        "version": "formex-05.10-20100101.xd",
+        "count": 2
+      },
+      {
+        "version": "formex-01.02-20040901.xd",
+        "count": 1
+      },
+      {
+        "version": "formex-05.20-20100601.xd",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "root_element_name": "SUMMARY.JUDGMENT",
+    "total_count": 106,
+    "versions": [
+      {
+        "version": "formex-04.cj-20080212.xd",
+        "count": 106
+      }
+    ]
+  },
+  {
+    "root_element_name": "OPINION",
+    "total_count": 32,
+    "versions": [
+      {
+        "version": "formex-04.cj-20080212.xd",
+        "count": 19
+      },
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 6
+      },
+      {
+        "version": "formex-05.58-20161101.xd",
+        "count": 4
+      },
+      {
+        "version": "formex-05.00-20081231.xd",
+        "count": 2
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "root_element_name": "DECISION.ECR",
+    "total_count": 31,
+    "versions": [
+      {
+        "version": "formex-05.55-20141201.xd",
+        "count": 30
+      },
+      {
+        "version": "formex-05.21-20110601.xd",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "root_element_name": "SUMMARY.PDF",
+    "total_count": 9,
+    "versions": [
+      {
+        "version": "formex-03.00-20051001.xd",
+        "count": 7
+      },
+      {
+        "version": "formex-05.11-20100101.xd",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "root_element_name": "RULING",
+    "total_count": 1,
+    "versions": [
+      {
+        "version": "formex-04.cj-20080212.xd",
+        "count": 1
+      }
+    ]
+  }
+]
