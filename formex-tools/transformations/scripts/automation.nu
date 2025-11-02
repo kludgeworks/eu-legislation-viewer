@@ -1,69 +1,91 @@
 #!/usr/bin/env nu
 
-# Master automation script for Formex DOC transformations
-# This script orchestrates the complete transformation generation process
+# Master automation script for Formex element transformations
+# This script orchestrates the complete transformation generation process for any root element
+# Supports: DOC, GENERAL, ACT, ANNEX, and other Formex root elements
 
 def main [
-    --regenerate(-r)  # Regenerate all files from scratch
-    --test(-t)        # Run tests after generation
-    --verbose(-v)     # Verbose output
+    element_type: string     # Root element to generate transformations for (e.g., DOC, GENERAL, ACT)
+    --regenerate(-r)         # Regenerate all files from scratch
+    --test(-t)               # Run tests after generation
+    --verbose(-v)            # Verbose output
 ] {
-    print "🚀 Formex DOC Transformation Automation"
-    print "========================================="
+    # Validate element type
+    if ($element_type | str length) == 0 {
+        print "❌ Error: element_type is required"
+        print "Usage: automation.nu <element_type> [--regenerate] [--test] [--verbose]"
+        print "Example: automation.nu DOC --regenerate --test"
+        print "Example: automation.nu GENERAL --test"
+        exit 1
+    }
+    
+    let elem_upper = ($element_type | str upcase)
+    
+    print "🚀 Formex ($elem_upper) Element Transformation Automation"
+    print "=========================================================="
     
     if $regenerate {
         print "⚠️  Regeneration mode: All files will be recreated"
-        clean_generated_files
+        clean_generated_files $elem_upper
     }
     
     # Step 1: Analyze diffs
-    print "\n📊 Step 1: Analyzing DOC changes from diff files..."
-    run_diff_analysis $verbose
+    print "\n📊 Step 1: Analyzing ($elem_upper) changes from diff files..."
+    run_diff_analysis $elem_upper $verbose
     
     # Step 2: Generate XSLT transformations
     print "\n🔧 Step 2: Generating XSLT transformations..."
-    run_xslt_generation $verbose
+    run_xslt_generation $elem_upper $verbose
     
     # Step 3: Generate XSpec tests
     print "\n🧪 Step 3: Generating XSpec test files..."
-    run_xspec_generation $verbose
+    run_xspec_generation $elem_upper $verbose
     
     # Step 4: Generate documentation
     print "\n📚 Step 4: Updating documentation..."
-    update_documentation $verbose
+    update_documentation $elem_upper $verbose
     
     # Step 5: Run tests (if requested)
     if $test {
         print "\n✅ Step 5: Running tests..."
-        run_tests $verbose
+        run_tests $elem_upper $verbose
     }
     
     # Summary
     print "\n🎉 Automation Complete!"
-    print "========================"
-    print_summary
+    print "======================="
+    print_summary $elem_upper
 }
 
-def clean_generated_files [] {
-    print "🧹 Cleaning previously generated files..."
+def clean_generated_files [element_type: string] {
+    let elem_lower = ($element_type | str downcase)
+    let elem_upper = ($element_type | str upcase)
+    
+    print "🧹 Cleaning previously generated files for ($elem_upper)..."
     
     # Clean XSLT files
-    rm -rf ../xslt/step-by-step/*.xsl
+    try {
+        rm -rf $"../xslt/($elem_lower)/*.xsl"
+    } catch { }
     
     # Clean XSpec files
-    rm -rf ../tests/xspec/*.xspec
+    try {
+        rm -rf $"../tests/xspec/($elem_lower)/*.xspec"
+    } catch { }
     
     # Clean analysis files
-    rm -rf doc-changes-analysis.json
+    try {
+        rm -rf $"($elem_lower)-changes-analysis.json"
+    } catch { }
     
     print "✅ Cleanup complete"
 }
 
-def run_diff_analysis [verbose: bool] {
+def run_diff_analysis [element_type: string, verbose: bool] {
     if $verbose { print "   Running diff analysis script..." }
     
     try {
-        nu analyze-doc-changes.nu
+        nu analyze-element-changes.nu $element_type
         print "✅ Diff analysis complete"
     } catch {
         print "❌ Diff analysis failed"
@@ -71,11 +93,11 @@ def run_diff_analysis [verbose: bool] {
     }
 }
 
-def run_xslt_generation [verbose: bool] {
+def run_xslt_generation [element_type: string, verbose: bool] {
     if $verbose { print "   Running XSLT generation script..." }
     
     try {
-        nu generate-xslt-transformations.nu
+        nu generate-xslt-transformations.nu $element_type
         print "✅ XSLT generation complete"
     } catch {
         print "❌ XSLT generation failed"
@@ -83,11 +105,11 @@ def run_xslt_generation [verbose: bool] {
     }
 }
 
-def run_xspec_generation [verbose: bool] {
+def run_xspec_generation [element_type: string, verbose: bool] {
     if $verbose { print "   Running XSpec generation script..." }
     
     try {
-        nu generate-xspec-tests.nu
+        nu generate-xspec-tests.nu $element_type
         print "✅ XSpec generation complete"
     } catch {
         print "❌ XSpec generation failed"
@@ -95,11 +117,21 @@ def run_xspec_generation [verbose: bool] {
     }
 }
 
-def update_documentation [verbose: bool] {
+def update_documentation [element_type: string, verbose: bool] {
     if $verbose { print "   Updating version changes documentation..." }
     
+    let elem_lower = ($element_type | str downcase)
+    let elem_upper = ($element_type | str upcase)
+    let analysis_file = $"($elem_lower)-changes-analysis.json"
+    
+    # Check if analysis file exists
+    if not ($analysis_file | path exists) {
+        print "⚠️  Analysis file not found: ($analysis_file)"
+        return
+    }
+    
     # Update the version changes documentation with analysis results
-    let analysis_data = (open doc-changes-analysis.json)
+    let analysis_data = (open $analysis_file)
     
     # Create summary of changes
     let change_summary = ($analysis_data | each { |version|
@@ -107,7 +139,7 @@ def update_documentation [verbose: bool] {
         let to_v = $version.to_version
         let change_count = ($version.changes | length)
         
-        $"- **($from_v) → ($to_v)**: ($change_count) DOC-related changes"
+        $"- **($from_v) → ($to_v)**: ($change_count) ($elem_upper)-related changes"
     } | str join "\n")
     
     # Update version-changes.md
@@ -117,9 +149,9 @@ def update_documentation [verbose: bool] {
     
     # Create template parts to avoid interpolation issues
     let doc_template = [
-        "# Formex DOC Version Changes"
+        $"# Formex ($elem_upper) Version Changes"
         ""
-        "This document summarizes the DOC-related changes across all Formex schema versions."
+        $"This document summarizes the ($elem_upper)-related changes across all Formex schema versions."
         ""
         "## Generated Analysis Summary"
         ""
@@ -134,60 +166,75 @@ def update_documentation [verbose: bool] {
         $"- **Generated XSLT Files**: ($total_versions)"
         $"- **Generated XSpec Tests**: ($total_versions)"
         ""
-        "## Change Patterns Identified"
-        ""
-        "1. **Schema Location Updates**: All versions require schema URL updates"
-        "2. **NO.DOC Cardinality**: Version 01.00→01.01 changed NO.DOC from single to unbounded"
-        "3. **Style Attribute Removal**: Early versions removed gr.styles attribute groups"
-        "4. **Element Type Simplification**: Some elements simplified"
-        "5. **New Document Types**: Later versions added support for new document types"
-        ""
         "## Automation"
         ""
         "This analysis and all transformations are automatically generated using:"
         ""
         "```bash"
         "cd transformations/scripts"
-        "nu automation.nu --regenerate --test"
+        "nu automation.nu ($element_type) --regenerate --test"
         "```"
         ""
         $"Generated on: ($current_date)"
     ]
     
     let updated_doc = ($doc_template | str join "\n")
+    let docs_file = $"../docs/version-changes-($elem_lower).md"
     
-    $updated_doc | save -f ../docs/version-changes.md
+    $updated_doc | save -f $docs_file
     
-    print "✅ Documentation updated"
+    print "✅ Documentation updated: ($docs_file)"
 }
 
-def run_tests [verbose: bool] {
+def run_tests [element_type: string, verbose: bool] {
+    let elem_upper = ($element_type | str upcase)
+    
     print "   Running XSpec tests (if XSpec processor is available)..."
     
     # Check if Saxon or XSpec is available
     try {
         # This is a placeholder - actual test running would depend on XSpec setup
         print "   XSpec testing requires Saxon HE/PE/EE with XSpec"
-        print "   Tests are available in: transformations/tests/xspec/"
+        print $"   Tests are available in: transformations/tests/xspec/($element_type | str downcase)/"
         print "✅ Test files ready (manual test execution required)"
     } catch {
         print "⚠️  XSpec processor not found - tests generated but not executed"
     }
 }
 
-def print_summary [] {
-    let xslt_count = (ls ../xslt/step-by-step/ | where name ends-with ".xsl" | length)
-    let xspec_count = (ls ../tests/xspec/ | where name ends-with ".xspec" | length)
-    let analysis_file_info = (ls doc-changes-analysis.json | first)
-    let analysis_size = $analysis_file_info.size
+def print_summary [element_type: string] {
+    let elem_lower = ($element_type | str downcase)
+    let elem_upper = ($element_type | str upcase)
     
-    print $"📊 Generated Files:"
+    let xslt_dir = $"../xslt/($elem_lower)/"
+    let xspec_dir = $"../tests/xspec/($elem_lower)/"
+    
+    let xslt_count = if ($xslt_dir | path exists) {
+        (ls $xslt_dir | where name ends-with ".xsl" | length)
+    } else {
+        0
+    }
+    
+    let xspec_count = if ($xspec_dir | path exists) {
+        (ls $xspec_dir | where name ends-with ".xspec" | length)
+    } else {
+        0
+    }
+    
+    let analysis_file = $"($elem_lower)-changes-analysis.json"
+    let analysis_size = if ($analysis_file | path exists) {
+        (ls $analysis_file | first | get size)
+    } else {
+        0
+    }
+    
+    print $"📊 Generated Files for ($elem_upper):"
     print $"   • XSLT Transformations: ($xslt_count)"
     print $"   • XSpec Test Files: ($xspec_count)"
     print $"   • Analysis Data: ($analysis_size) bytes"
     print ""
     print $"🎯 Ready for use:"
-    print $"   • Apply transformations: transformations/xslt/step-by-step/"
-    print $"   • Run tests: transformations/tests/xspec/"
-    print $"   • View analysis: transformations/scripts/doc-changes-analysis.json"
+    print $"   • Apply transformations: transformations/xslt/($elem_lower)/"
+    print $"   • Run tests: transformations/tests/xspec/($elem_lower)/"
+    print $"   • View analysis: transformations/scripts/($analysis_file)"
 }

@@ -1,6 +1,6 @@
 # Formex Meta-Transformation System
 
-> **Current Status**: This system currently supports **DOC elements only**. Support for other element types (GENERAL, ANNEX, ACT, etc.) is planned for future development phases.
+> **Current Status**: This system supports **DOC and GENERAL elements**. Support for other element types (ANNEX, ACT, etc.) is planned for future development phases.
 
 ## Overview
 
@@ -9,10 +9,10 @@ The Formex Meta-Transformation System provides a unified interface for transform
 ## Features
 
 - **Automatic Version Detection**: Detects source version from XML schema location attributes
-- **Element Type Detection**: Automatically identifies the root element type (currently DOC elements only)
+- **Element Type Detection**: Automatically identifies the root element type (DOC and GENERAL currently)
 - **Sequential Transformation**: Applies transformations step-by-step from source to target version
 - **Support for All Versions**: Handles all 33 Formex schema versions from 01.00 to 06.02.3 (2004-2025)
-- **DOC Element Focus**: Currently optimized for DOC documents with planned expansion to other element types
+- **Multi-Element Support**: Optimized for DOC and GENERAL documents with planned expansion to other element types
 - **Cross-Platform**: Works on Linux, macOS, and Windows with proper dependencies
 
 ## Installation
@@ -57,7 +57,7 @@ The Formex Meta-Transformation System provides a unified interface for transform
 
 | Option | Description |
 |--------|-------------|
-| `-e, --element ELEMENT` | Target element type (currently: doc only) |
+| `-e, --element ELEMENT` | Target element type (currently: doc, general) |
 | `-t, --target VERSION` | Target version (e.g., 06.02.3, v06.02.3, latest) |
 | `-s, --source VERSION` | Source version (optional, auto-detected) |
 | `-v, --verbose` | Enable verbose output |
@@ -70,7 +70,7 @@ The Formex Meta-Transformation System provides a unified interface for transform
 ./transformations/bin/formex-transform input.xml output.xml
 ```
 - Auto-detects source version from input XML
-- Auto-detects element type from root element (DOC documents only)
+- Auto-detects element type from root element (DOC or GENERAL documents)
 - Transforms to latest version (06.02.3)
 
 #### 2. Transform to Specific Version
@@ -126,10 +126,10 @@ The system supports transformation between any of these 33 Formex schema version
 ### Currently Supported
 The system currently supports:
 - `doc` - DOC documents (fully implemented with all 32 version transformations)
+- `general` - GENERAL documents (fully implemented with all 32 version transformations)
 
 ### Planned Support (Future Phases)
 The following element types are planned for future implementation:
-- `general` - GENERAL documents  
 - `annex` - ANNEX documents
 - `act` - ACT documents
 - `cjt` - CJT documents
@@ -153,7 +153,7 @@ The following element types are planned for future implementation:
 - `summary-pdf` - SUMMARY.PDF documents
 - `ruling` - RULING documents
 
-> **Note**: While the directory structure exists for all element types, only DOC transformations are currently implemented and tested. Other element types will be added in future development phases.
+> **Note**: While the directory structure exists for all element types, DOC and GENERAL transformations are currently implemented and tested. Other element types will be added in future development phases.
 
 ## How It Works
 
@@ -192,8 +192,8 @@ v01.01.xsl → v01.02.xsl → Final Output
    - Cause: Missing or malformed schema location in XML
 
 2. **"Could not auto-detect element type"**
-   - Solution: Specify element type with `-e doc` parameter (currently only DOC is supported)
-   - Cause: Non-DOC root element or unrecognized element structure
+    - Solution: Specify element type with `-e doc` or `-e general` parameter (currently only DOC and GENERAL are supported)
+    - Cause: Non-DOC/GENERAL root element or unrecognized element structure
 
 3. **"Transformation stylesheet not found"**
    - Solution: Ensure all XSLT files are present in the correct directories
@@ -238,7 +238,10 @@ transformations/
 │   │   ├── v01.01.xsl              # Version-specific stylesheets
 │   │   ├── v01.02.xsl
 │   │   └── ...
-│   ├── general/                     # GENERAL element transformations (planned)
+│   ├── general/                     # GENERAL element transformations (implemented)
+│   │   ├── v01.01.xsl
+│   │   ├── v01.02.xsl
+│   │   └── ...
 │   ├── [22 other element directories]/ # Other element types (planned)
 │   ├── shared/                      # Shared utilities
 │   │   ├── identity.xsl            # Identity transformation
@@ -249,8 +252,13 @@ transformations/
 │   └── meta-transform.xsl          # Meta-stylesheet (XSLT approach)
 ├── tests/
 │   ├── samples/                    # Test XML files
-│   │   ├── v01.00/
-│   │   └── v06.02.3/
+│   │   ├── v01.00/                # DOC sample files
+│   │   ├── v06.02.3/              # DOC sample files
+│   │   ├── v01.00-general/        # GENERAL sample files
+│   │   └── v06.02.3-general/      # GENERAL sample files
+│   ├── xspec/                      # XSpec test files
+│   │   ├── doc/                    # DOC element tests (32 files)
+│   │   └── general/                # GENERAL element tests (32 files)
 │   └── test-meta-transform.sh     # Test suite
 └── README.md                      # This documentation
 ```
