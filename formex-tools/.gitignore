@@ -2,3 +2,4 @@ downloads/
 content-streams.txt
 .mcp.json
 mappings/
+*.db
