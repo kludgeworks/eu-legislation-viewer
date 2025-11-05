@@ -108,9 +108,6 @@ defmodule XmlIngest.MetadataExtractor do
             {:ok, result} ->
               validate_xml_metadata(result)
 
-            {:halt, result} ->
-              validate_xml_metadata(result)
-
             {:error, reason} ->
               {:error, "Failed to parse XML: #{inspect(reason)}"}
           end

@@ -38,17 +38,18 @@ defmodule XmlIngest.XmlFileRepositoryTest do
       on_exit(fn -> TestHelper.cleanup_test_file(xml_path) end)
 
       metadata = %{
-        id: "test-id-1",
+        id: UUID.uuid1(),
         file_path: xml_path,
         uri: uri,
         root_element: "ACT",
         version: "formex-05.56-20160701",
         file_size: File.stat!(xml_path).size,
-        work_id: "16783d19-3ee7-4e8b-a2aa-e71d2ef88616",
+        work_id: UUID.uuid1(),
         expr_id: "0001",
         man_id: "03",
         cs_id: "DOC_1"
       }
+
       {:ok, _count} = XmlFileRepository.insert_metadata_batch(db_path, [metadata])
 
       # Query with the same URI
@@ -64,17 +65,18 @@ defmodule XmlIngest.XmlFileRepositoryTest do
       on_exit(fn -> TestHelper.cleanup_test_file(xml_path) end)
 
       metadata = %{
-        id: "test-id-2",
+        id: UUID.uuid1(),
         file_path: xml_path,
         uri: existing_uri,
         root_element: "ACT",
         version: "formex-05.56-20160701",
         file_size: File.stat!(xml_path).size,
-        work_id: "16783d19-3ee7-4e8b-a2aa-e71d2ef88616",
+        work_id: UUID.uuid1(),
         expr_id: "0001",
         man_id: "03",
         cs_id: "DOC_1"
       }
+
       {:ok, _count} = XmlFileRepository.insert_metadata_batch(db_path, [metadata])
 
       # Query with mix of existing and new URIs
@@ -114,13 +116,13 @@ defmodule XmlIngest.XmlFileRepositoryTest do
 
       # Create metadata map
       metadata = %{
-        id: "test-id-123",
+        id: UUID.uuid1(),
         file_path: xml_path,
         uri: uri,
         root_element: "ACT",
         version: "formex-05.56-20160701",
         file_size: File.stat!(xml_path).size,
-        work_id: "16783d19-3ee7-4e8b-a2aa-e71d2ef88616",
+        work_id: UUID.uuid1(),
         expr_id: "0001",
         man_id: "03",
         cs_id: "DOC_1"
@@ -137,7 +139,7 @@ defmodule XmlIngest.XmlFileRepositoryTest do
       Duckdbex.release(result)
       Duckdbex.release(conn)
       Duckdbex.release(db)
-      
+
       assert uri_count == 1
     end
 
@@ -145,18 +147,27 @@ defmodule XmlIngest.XmlFileRepositoryTest do
       # Create 3 test files with unique content
       files_with_metadata =
         Enum.map(1..3, fn i ->
-          xml_content = String.replace(TestHelper.sample_formex_xml(), "Test Document", "Test Document #{i}")
+          xml_content =
+            String.replace(TestHelper.sample_formex_xml(), "Test Document", "Test Document #{i}")
+
           xml_path = TestHelper.create_test_xml_file(xml_content, filename: "test_#{i}.xml")
-          uri = TestHelper.cellar_uri("16783d19-3ee7-4e8b-a2aa-e71d2ef8861#{i}", "0001", "03", "DOC_#{i}")
+
+          work_id = UUID.uuid1()
 
           metadata = %{
-            id: "test-id-#{i}",
+            id: UUID.uuid1(),
             file_path: xml_path,
-            uri: uri,
+            uri:
+              TestHelper.cellar_uri(
+                work_id,
+                "0001",
+                "03",
+                "DOC_#{i}"
+              ),
             root_element: "ACT",
             version: "formex-05.56-20160701",
             file_size: File.stat!(xml_path).size,
-            work_id: "16783d19-3ee7-4e8b-a2aa-e71d2ef8861#{i}",
+            work_id: work_id,
             expr_id: "0001",
             man_id: "03",
             cs_id: "DOC_#{i}"
@@ -166,7 +177,9 @@ defmodule XmlIngest.XmlFileRepositoryTest do
         end)
 
       on_exit(fn ->
-        Enum.each(files_with_metadata, fn {path, _metadata} -> TestHelper.cleanup_test_file(path) end)
+        Enum.each(files_with_metadata, fn {path, _metadata} ->
+          TestHelper.cleanup_test_file(path)
+        end)
       end)
 
       metadata_list = Enum.map(files_with_metadata, fn {_path, metadata} -> metadata end)
@@ -176,14 +189,16 @@ defmodule XmlIngest.XmlFileRepositoryTest do
       # Verify all files were inserted
       {:ok, db} = Duckdbex.open(db_path)
       {:ok, conn} = Duckdbex.connection(db)
-      
+
       Enum.each(metadata_list, fn metadata ->
-        {:ok, result} = Duckdbex.query(conn, "SELECT COUNT(*) FROM xml_files WHERE uri = $1", [metadata.uri])
+        {:ok, result} =
+          Duckdbex.query(conn, "SELECT COUNT(*) FROM xml_files WHERE uri = $1", [metadata.uri])
+
         [[uri_count]] = Duckdbex.fetch_all(result)
         Duckdbex.release(result)
         assert uri_count == 1
       end)
-      
+
       Duckdbex.release(conn)
       Duckdbex.release(db)
     end
@@ -196,13 +211,13 @@ defmodule XmlIngest.XmlFileRepositoryTest do
       on_exit(fn -> TestHelper.cleanup_test_file(xml_path) end)
 
       metadata = %{
-        id: "test-id-456",
+        id: UUID.uuid1(),
         file_path: xml_path,
         uri: uri,
         root_element: "DOC",
         version: "formex-06.00-20210715",
         file_size: File.stat!(xml_path).size,
-        work_id: "16783d19-3ee7-4e8b-a2aa-e71d2ef88616",
+        work_id: UUID.uuid1(),
         expr_id: "0001",
         man_id: "03",
         cs_id: "DOC_1"
@@ -213,7 +228,10 @@ defmodule XmlIngest.XmlFileRepositoryTest do
       # Query the database to verify content was stored
       {:ok, db} = Duckdbex.open(db_path)
       {:ok, conn} = Duckdbex.connection(db)
-      {:ok, result} = Duckdbex.query(conn, "SELECT xml_content FROM xml_files WHERE uri = $1", [uri])
+
+      {:ok, result} =
+        Duckdbex.query(conn, "SELECT xml_content FROM xml_files WHERE uri = $1", [uri])
+
       rows = Duckdbex.fetch_all(result)
       Duckdbex.release(result)
       Duckdbex.release(conn)
@@ -232,13 +250,13 @@ defmodule XmlIngest.XmlFileRepositoryTest do
       on_exit(fn -> TestHelper.cleanup_test_file(xml_path) end)
 
       metadata = %{
-        id: "test-id-789",
+        id: UUID.uuid1(),
         file_path: xml_path,
         uri: uri,
         root_element: "ACT",
         version: "formex-05.56-20160701",
         file_size: File.stat!(xml_path).size,
-        work_id: "16783d19-3ee7-4e8b-a2aa-e71d2ef88616",
+        work_id: UUID.uuid1(),
         expr_id: "0001",
         man_id: "03",
         cs_id: "DOC_1"
@@ -270,17 +288,27 @@ defmodule XmlIngest.XmlFileRepositoryTest do
       # Create 5 test files with unique content
       files_with_metadata =
         Enum.map(1..5, fn i ->
-          xml_content = String.replace(TestHelper.sample_formex_xml(), "Test Document", "Test Document #{i}")
+          xml_content =
+            String.replace(TestHelper.sample_formex_xml(), "Test Document", "Test Document #{i}")
+
           xml_path = TestHelper.create_test_xml_file(xml_content, filename: "batch_test_#{i}.xml")
 
+          work_id = UUID.uuid1()
+
           metadata = %{
-            id: "batch-test-id-#{i}",
+            id: UUID.uuid1(),
             file_path: xml_path,
-            uri: TestHelper.cellar_uri("16783d19-3ee7-4e8b-a2aa-e71d2ef8861#{i}", "0001", "03", "DOC_#{i}"),
+            uri:
+              TestHelper.cellar_uri(
+                work_id,
+                "0001",
+                "03",
+                "DOC_#{i}"
+              ),
             root_element: "ACT",
             version: "formex-05.56-20160701",
             file_size: File.stat!(xml_path).size,
-            work_id: "16783d19-3ee7-4e8b-a2aa-e71d2ef8861#{i}",
+            work_id: work_id,
             expr_id: "0001",
             man_id: "03",
             cs_id: "DOC_#{i}"
@@ -290,13 +318,17 @@ defmodule XmlIngest.XmlFileRepositoryTest do
         end)
 
       on_exit(fn ->
-        Enum.each(files_with_metadata, fn {path, _metadata} -> TestHelper.cleanup_test_file(path) end)
+        Enum.each(files_with_metadata, fn {path, _metadata} ->
+          TestHelper.cleanup_test_file(path)
+        end)
       end)
 
       metadata_list = Enum.map(files_with_metadata, fn {_path, metadata} -> metadata end)
 
       # Use batch size of 2
-      assert {:ok, count} = XmlFileRepository.insert_metadata_batch(db_path, metadata_list, batch_size: 2)
+      assert {:ok, count} =
+               XmlFileRepository.insert_metadata_batch(db_path, metadata_list, batch_size: 2)
+
       assert count == 5
     end
   end
