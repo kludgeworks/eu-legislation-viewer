@@ -58,6 +58,21 @@ defmodule FormexV4.Ingest.UriProducer do
     {:noreply, messages, new_state}
   end
 
+  @doc """
+  Broadway acknowledger callback.
+  Called when messages are successfully processed or failed.
+  Since we're using a simple producer that doesn't need to track acks,
+  this is a no-op implementation.
+  """
+  def ack(_ack_ref, successful, failed) do
+    # Log failures for debugging
+    if length(failed) > 0 do
+      Logger.debug("Producer ack: #{length(successful)} successful, #{length(failed)} failed")
+    end
+
+    :ok
+  end
+
   # Private: Fetch URIs from SPARQL and compute diff with database
   defp fetch_and_diff(db_path, sparql_opts) do
     Logger.info("🔄 Starting sync process...")
