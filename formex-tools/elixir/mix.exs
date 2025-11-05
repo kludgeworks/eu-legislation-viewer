@@ -22,9 +22,10 @@ defmodule XmlIngest.MixProject do
     [
       {:broadway, "~> 1.0"},
       {:req, "~> 0.4"},
-      {:exqlite, "~> 0.18"},
+      {:duckdbex, "~> 0.3"},
       {:saxy, "~> 1.5"},
-      {:jason, "~> 1.4"}
+      {:jason, "~> 1.4"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 end
