@@ -12,7 +12,7 @@ defmodule FormexV4.Ingest.Pipeline do
   require Logger
 
   alias Broadway.Message
-  alias FormexV4.{Repository, Cache}
+  alias FormexV4.{Cache, Repository}
   alias FormexV4.Ingest.Downloader
   alias FormexV4.Metadata.Extractor
 
@@ -29,6 +29,7 @@ defmodule FormexV4.Ingest.Pipeline do
     - `:sparql_limit` - Optional SPARQL LIMIT for testing
     - `:download_concurrency` - Number of concurrent downloads (default: 12)
     - `:batch_size` - Database batch insert size (default: 500)
+    - `:progress` - Enable progress bars (default: true if TTY)
 
   ## Pipeline Stages
     1. Producer: Fetches URIs from SPARQL, computes diff with database
@@ -40,6 +41,12 @@ defmodule FormexV4.Ingest.Pipeline do
     sparql_opts = Keyword.take(opts, [:endpoint, :limit])
     download_concurrency = Keyword.get(opts, :download_concurrency, @default_concurrency)
     batch_size = Keyword.get(opts, :batch_size, @default_batch_size)
+    progress = Keyword.get(opts, :progress, IO.ANSI.enabled?())
+
+    # Start telemetry reporter if progress enabled
+    if progress do
+      FormexV4.Telemetry.ProgressReporter.start_link(enabled: true)
+    end
 
     Broadway.start_link(__MODULE__,
       name: __MODULE__,

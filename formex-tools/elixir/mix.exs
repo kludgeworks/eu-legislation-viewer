@@ -25,6 +25,7 @@ defmodule FormexV4.MixProject do
       {:saxy, "~> 1.5"},
       {:jason, "~> 1.4"},
       {:uuid, "~> 1.1"},
+      {:progress_bar, "~> 3.0"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end

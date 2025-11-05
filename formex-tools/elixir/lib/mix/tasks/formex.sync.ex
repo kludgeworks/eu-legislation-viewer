@@ -13,6 +13,8 @@ defmodule Mix.Tasks.Formex.Sync do
     * `--limit N` - Limit SPARQL results (for testing)
     * `--concurrency N` - Number of concurrent downloads (default: 12)
     * `--batch-size N` - Database batch insert size (default: 500)
+    * `--progress` - Enable progress bars (default: true if TTY)
+    * `--no-progress` - Disable progress bars
 
   ## Examples
 
@@ -29,8 +31,8 @@ defmodule Mix.Tasks.Formex.Sync do
   use Mix.Task
   require Logger
 
-  alias FormexV4.Ingest.Pipeline
   alias FormexV4.Cache
+  alias FormexV4.Ingest.Pipeline
 
   @shortdoc "Syncs Formex V4 files from Europa to DuckDB"
 
@@ -49,7 +51,8 @@ defmodule Mix.Tasks.Formex.Sync do
           endpoint: :string,
           limit: :integer,
           concurrency: :integer,
-          batch_size: :integer
+          batch_size: :integer,
+          progress: :boolean
         ]
       )
 
@@ -59,6 +62,7 @@ defmodule Mix.Tasks.Formex.Sync do
     limit = Keyword.get(opts, :limit)
     concurrency = Keyword.get(opts, :concurrency, @default_concurrency)
     batch_size = Keyword.get(opts, :batch_size, @default_batch_size)
+    progress = Keyword.get(opts, :progress, IO.ANSI.enabled?())
 
     # Start required applications
     {:ok, _} = Application.ensure_all_started(:req)
@@ -83,7 +87,8 @@ defmodule Mix.Tasks.Formex.Sync do
       endpoint: endpoint,
       limit: limit,
       download_concurrency: concurrency,
-      batch_size: batch_size
+      batch_size: batch_size,
+      progress: progress
     ]
 
     {:ok, _pid} = Pipeline.start_link(pipeline_opts)
@@ -94,6 +99,9 @@ defmodule Mix.Tasks.Formex.Sync do
 
     receive do
       {:DOWN, ^ref, :process, _pid, reason} ->
+        # Stop telemetry reporter if running
+        FormexV4.Telemetry.ProgressReporter.stop()
+
         case reason do
           :normal ->
             Logger.info("✅ Sync completed successfully")

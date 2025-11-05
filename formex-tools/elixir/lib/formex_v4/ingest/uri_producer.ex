@@ -7,8 +7,8 @@ defmodule FormexV4.Ingest.UriProducer do
   use GenStage
   require Logger
 
-  alias FormexV4.Sparql.Client
   alias FormexV4.Repository
+  alias FormexV4.Sparql.Client
 
   @doc """
   Starts the producer.
@@ -62,14 +62,31 @@ defmodule FormexV4.Ingest.UriProducer do
   defp fetch_and_diff(db_path, sparql_opts) do
     Logger.info("🔄 Starting sync process...")
 
+    # Emit telemetry: producer start
+    :telemetry.execute([:formex_v4, :producer, :start], %{}, %{total: 0})
+
     # Fetch from SPARQL
     {:ok, sparql_uris} = Client.fetch_uris(sparql_opts)
+
+    # Emit telemetry: SPARQL complete
+    :telemetry.execute(
+      [:formex_v4, :producer, :sparql_complete],
+      %{},
+      %{count: length(sparql_uris)}
+    )
 
     # Compute diff with database
     Logger.info("🗄️  Computing diff using database...")
     {:ok, new_uris} = Repository.compute_new_uris(db_path, sparql_uris)
 
     Logger.info("📊 Diff: #{length(new_uris)} new files to process")
+
+    # Emit telemetry: diff complete
+    :telemetry.execute(
+      [:formex_v4, :producer, :diff_complete],
+      %{},
+      %{new_count: length(new_uris)}
+    )
 
     %{
       pending_uris: new_uris,
