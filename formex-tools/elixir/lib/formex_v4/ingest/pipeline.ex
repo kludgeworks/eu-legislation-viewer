@@ -27,6 +27,7 @@ defmodule FormexV4.Ingest.Pipeline do
     - `:db_path` - Path to DuckDB database (default: "formex.db")
     - `:sparql_endpoint` - SPARQL endpoint URL
     - `:sparql_limit` - Optional SPARQL LIMIT for testing
+    - `:chunk_size` - SPARQL pagination chunk size (default: 5000)
     - `:download_concurrency` - Number of concurrent downloads (default: 12)
     - `:batch_size` - Database batch insert size (default: 500)
     - `:progress` - Enable progress bars (default: true if TTY)
@@ -38,14 +39,20 @@ defmodule FormexV4.Ingest.Pipeline do
   """
   def start_link(opts) do
     db_path = Keyword.get(opts, :db_path, @default_db_path)
-    sparql_opts = Keyword.take(opts, [:endpoint, :limit])
+    sparql_opts = Keyword.take(opts, [:endpoint, :limit, :chunk_size])
     download_concurrency = Keyword.get(opts, :download_concurrency, @default_concurrency)
     batch_size = Keyword.get(opts, :batch_size, @default_batch_size)
     progress = Keyword.get(opts, :progress, IO.ANSI.enabled?())
 
     # Start telemetry reporter if progress enabled
     if progress do
-      FormexV4.Telemetry.ProgressReporter.start_link(enabled: true)
+      case FormexV4.Telemetry.ProgressReporter.start_link(enabled: true) do
+        {:ok, _pid} ->
+          Logger.debug("Progress reporter started")
+
+        {:error, reason} ->
+          Logger.warning("Failed to start progress reporter: #{inspect(reason)}")
+      end
     end
 
     Broadway.start_link(__MODULE__,

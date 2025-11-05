@@ -46,7 +46,12 @@ defmodule FormexV4.Telemetry.MultiBarRenderer do
   """
   def initialize do
     if IO.ANSI.enabled?() do
-      IO.puts(String.duplicate("\n", @num_bars - 1))
+      require Logger
+      Logger.debug("Initializing progress bars (ANSI enabled)")
+      IO.puts(String.duplicate("\n", @num_bars))
+    else
+      require Logger
+      Logger.debug("Progress bars disabled (ANSI not enabled)")
     end
   end
 
