@@ -3,3 +3,4 @@ content-streams.txt
 .mcp.json
 mappings/
 *.db
+.cache/
