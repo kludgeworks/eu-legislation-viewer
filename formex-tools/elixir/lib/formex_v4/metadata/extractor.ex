@@ -108,6 +108,10 @@ defmodule FormexV4.Metadata.Extractor do
             {:ok, result} ->
               validate_xml_metadata(result)
 
+            {:halt, result, _rest} ->
+              # Handler intentionally halted parsing after extracting root element
+              validate_xml_metadata(result)
+
             {:error, reason} ->
               {:error, "Failed to parse XML: #{inspect(reason)}"}
           end
