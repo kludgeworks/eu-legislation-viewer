@@ -24,6 +24,7 @@ defmodule XmlIngest.MixProject do
       {:duckdbex, "~> 0.3"},
       {:saxy, "~> 1.5"},
       {:jason, "~> 1.4"},
+      {:uuid, "~> 1.1"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
