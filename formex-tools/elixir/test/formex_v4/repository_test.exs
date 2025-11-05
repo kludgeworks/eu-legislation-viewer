@@ -1,8 +1,8 @@
-defmodule XmlIngest.XmlFileRepositoryTest do
+defmodule FormexV4.RepositoryTest do
   use ExUnit.Case, async: true
 
-  alias XmlIngest.XmlFileRepository
-  alias XmlIngest.TestHelper
+  alias FormexV4.Repository
+  alias FormexV4.TestHelper
 
   setup do
     # Create test database
@@ -24,7 +24,7 @@ defmodule XmlIngest.XmlFileRepositoryTest do
         "http://example.com/doc3"
       ]
 
-      assert {:ok, new_uris} = XmlFileRepository.compute_new_uris(db_path, sparql_uris)
+      assert {:ok, new_uris} = Repository.compute_new_uris(db_path, sparql_uris)
       assert length(new_uris) == 3
       assert Enum.sort(new_uris) == Enum.sort(sparql_uris)
     end
@@ -50,59 +50,32 @@ defmodule XmlIngest.XmlFileRepositoryTest do
         cs_id: "DOC_1"
       }
 
-      {:ok, _count} = XmlFileRepository.insert_metadata_batch(db_path, [metadata])
-
-      # Query with the same URI
-      assert {:ok, []} = XmlFileRepository.compute_new_uris(db_path, [uri])
-    end
-
-    test "returns only new URIs when some exist", %{db_path: db_path} do
-      # Insert one file
-      xml_content = TestHelper.sample_formex_xml()
-      xml_path = TestHelper.create_test_xml_file(xml_content)
-      existing_uri = "http://example.com/existing"
-
-      on_exit(fn -> TestHelper.cleanup_test_file(xml_path) end)
-
-      metadata = %{
-        id: UUID.uuid1(),
-        file_path: xml_path,
-        uri: existing_uri,
-        root_element: "ACT",
-        version: "formex-05.56-20160701",
-        file_size: File.stat!(xml_path).size,
-        work_id: UUID.uuid1(),
-        expr_id: "0001",
-        man_id: "03",
-        cs_id: "DOC_1"
-      }
-
-      {:ok, _count} = XmlFileRepository.insert_metadata_batch(db_path, [metadata])
+      {:ok, _count} = Repository.insert_metadata_batch(db_path, [metadata])
 
       # Query with mix of existing and new URIs
       sparql_uris = [
-        existing_uri,
+        uri,
         "http://example.com/new1",
         "http://example.com/new2"
       ]
 
-      assert {:ok, new_uris} = XmlFileRepository.compute_new_uris(db_path, sparql_uris)
+      assert {:ok, new_uris} = Repository.compute_new_uris(db_path, sparql_uris)
       assert length(new_uris) == 2
       assert "http://example.com/new1" in new_uris
       assert "http://example.com/new2" in new_uris
-      refute existing_uri in new_uris
+      refute uri in new_uris
     end
 
     test "handles large lists efficiently", %{db_path: db_path} do
       # Create 2000 URIs
       sparql_uris = Enum.map(1..2000, fn i -> "http://example.com/doc#{i}" end)
 
-      assert {:ok, new_uris} = XmlFileRepository.compute_new_uris(db_path, sparql_uris)
+      assert {:ok, new_uris} = Repository.compute_new_uris(db_path, sparql_uris)
       assert length(new_uris) == 2000
     end
 
     test "handles empty list", %{db_path: db_path} do
-      assert {:ok, []} = XmlFileRepository.compute_new_uris(db_path, [])
+      assert {:ok, []} = Repository.compute_new_uris(db_path, [])
     end
   end
 
@@ -128,7 +101,7 @@ defmodule XmlIngest.XmlFileRepositoryTest do
         cs_id: "DOC_1"
       }
 
-      assert {:ok, count} = XmlFileRepository.insert_metadata_batch(db_path, [metadata])
+      assert {:ok, count} = Repository.insert_metadata_batch(db_path, [metadata])
       assert count == 1
 
       # Verify the file was inserted
@@ -183,7 +156,7 @@ defmodule XmlIngest.XmlFileRepositoryTest do
       end)
 
       metadata_list = Enum.map(files_with_metadata, fn {_path, metadata} -> metadata end)
-      assert {:ok, count} = XmlFileRepository.insert_metadata_batch(db_path, metadata_list)
+      assert {:ok, count} = Repository.insert_metadata_batch(db_path, metadata_list)
       assert count == 3
 
       # Verify all files were inserted
@@ -223,7 +196,7 @@ defmodule XmlIngest.XmlFileRepositoryTest do
         cs_id: "DOC_1"
       }
 
-      assert {:ok, 1} = XmlFileRepository.insert_metadata_batch(db_path, [metadata])
+      assert {:ok, 1} = Repository.insert_metadata_batch(db_path, [metadata])
 
       # Query the database to verify content was stored
       {:ok, db} = Duckdbex.open(db_path)
@@ -263,10 +236,10 @@ defmodule XmlIngest.XmlFileRepositoryTest do
       }
 
       # Insert first time
-      assert {:ok, 1} = XmlFileRepository.insert_metadata_batch(db_path, [metadata])
+      assert {:ok, 1} = Repository.insert_metadata_batch(db_path, [metadata])
 
       # Insert second time - should not error, but count should be 0 due to ON CONFLICT DO NOTHING
-      assert {:ok, 0} = XmlFileRepository.insert_metadata_batch(db_path, [metadata])
+      assert {:ok, 0} = Repository.insert_metadata_batch(db_path, [metadata])
 
       # Verify only one record exists
       {:ok, db} = Duckdbex.open(db_path)
@@ -281,7 +254,7 @@ defmodule XmlIngest.XmlFileRepositoryTest do
     end
 
     test "handles empty list", %{db_path: db_path} do
-      assert {:ok, 0} = XmlFileRepository.insert_metadata_batch(db_path, [])
+      assert {:ok, 0} = Repository.insert_metadata_batch(db_path, [])
     end
 
     test "uses custom batch size", %{db_path: db_path} do
@@ -327,7 +300,7 @@ defmodule XmlIngest.XmlFileRepositoryTest do
 
       # Use batch size of 2
       assert {:ok, count} =
-               XmlFileRepository.insert_metadata_batch(db_path, metadata_list, batch_size: 2)
+               Repository.insert_metadata_batch(db_path, metadata_list, batch_size: 2)
 
       assert count == 5
     end

@@ -1,4 +1,4 @@
-defmodule XmlIngest.XmlFileRepository do
+defmodule FormexV4.Repository do
   @moduledoc """
   Repository for XML file database operations.
   Encapsulates all database interactions with the xml_files table.
@@ -128,31 +128,36 @@ defmodule XmlIngest.XmlFileRepository do
     end
   end
 
-  # Private helper: builds INSERT SQL for metadata
+  # Private helper: builds INSERT SQL for metadata with proper SQL escaping
+  # Uses string interpolation with escaping since DuckDB doesn't support
+  # parameter binding with INSERT...SELECT...FROM table functions like read_text()
   defp build_insert_sql(metadata) do
+    # Escape single quotes for SQL string literals
+    escape = fn str -> if str, do: String.replace(str, "'", "''"), else: "NULL" end
+
     """
     INSERT INTO xml_files
         (id, xml_content, version, root_element, file_size, uri, work_id, expr_id, man_id, cs_id)
     SELECT
-        #{format_uuid(metadata.id)},
+        '#{escape.(metadata.id)}'::UUID,
         content,
-        #{escape_sql(metadata.version)},
-        #{escape_sql(metadata.root_element)},
+        '#{escape.(metadata.version)}',
+        '#{escape.(metadata.root_element)}',
         #{metadata.file_size},
-        #{escape_sql(metadata.uri)},
-        #{format_uuid(metadata.work_id)},
-        #{escape_sql(metadata.expr_id)},
-        #{escape_sql(metadata.man_id)},
-        #{escape_sql(metadata.cs_id)}
-    FROM read_text(#{escape_sql(metadata.file_path)})
+        '#{escape.(metadata.uri)}',
+        '#{escape.(metadata.work_id)}'::UUID,
+        '#{escape.(metadata.expr_id)}',
+        '#{escape.(metadata.man_id)}',
+        '#{escape.(metadata.cs_id)}'
+    FROM read_text('#{escape.(metadata.file_path)}')
     ON CONFLICT (id) DO NOTHING
     """
   end
 
-  # Private helper: checks if ID exists in database
+  # Private helper: checks if ID exists in database using parameter binding
   defp check_id_exists(conn, id) do
-    check_sql = "SELECT COUNT(*) FROM xml_files WHERE id = #{format_uuid(id)}"
-    {:ok, check_result} = Duckdbex.query(conn, check_sql)
+    check_sql = "SELECT COUNT(*) FROM xml_files WHERE id = $1"
+    {:ok, check_result} = Duckdbex.query(conn, check_sql, [id])
     [[exists_count]] = Duckdbex.fetch_all(check_result)
     Duckdbex.release(check_result)
     exists_count
@@ -172,22 +177,5 @@ defmodule XmlIngest.XmlFileRepository do
     end
 
     {new_count, errors}
-  end
-
-  # Private helper: escapes single quotes in SQL string literals
-  defp escape_sql(nil), do: "NULL"
-  defp escape_sql(val), do: "'#{String.replace(to_string(val), "'", "''")}'"
-
-  # Private helper: formats UUID values - checks if it's a valid UUID format
-  defp format_uuid(nil), do: "NULL"
-
-  defp format_uuid(val) do
-    val_str = to_string(val)
-    # Check if it looks like a UUID (8-4-4-4-12 format)
-    if Regex.match?(~r/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i, val_str) do
-      "#{escape_sql(val_str)}::UUID"
-    else
-      escape_sql(val_str)
-    end
   end
 end

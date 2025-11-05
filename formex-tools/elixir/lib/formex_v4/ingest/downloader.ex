@@ -1,12 +1,12 @@
-defmodule XmlIngest.Downloader do
+defmodule FormexV4.Ingest.Downloader do
   @moduledoc """
   HTTP downloader for XML files from Europa Publications.
-  Integrates with FileCache for persistent storage and deduplication.
+  Integrates with Cache for persistent storage and deduplication.
   """
 
   require Logger
 
-  alias XmlIngest.FileCache
+  alias FormexV4.Cache
 
   @default_timeout 120_000
   @default_max_retries 3
@@ -31,9 +31,9 @@ defmodule XmlIngest.Downloader do
     timeout = Keyword.get(opts, :timeout, @default_timeout)
     max_retries = Keyword.get(opts, :max_retries, @default_max_retries)
 
-    if FileCache.cached?(uri) do
+    if Cache.cached?(uri) do
       Logger.debug("Using cached content for: #{uri}")
-      FileCache.get(uri)
+      Cache.get(uri)
     else
       download_and_cache(uri, timeout, max_retries)
     end
@@ -55,7 +55,7 @@ defmodule XmlIngest.Downloader do
     case Req.request(request_opts) do
       {:ok, %{status: 200, body: body}} when is_binary(body) ->
         # Cache the content
-        case FileCache.put(uri, body) do
+        case Cache.put(uri, body) do
           :ok ->
             {:ok, body}
 

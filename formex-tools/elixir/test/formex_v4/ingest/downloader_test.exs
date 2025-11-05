@@ -1,7 +1,8 @@
-defmodule XmlIngest.DownloaderTest do
+defmodule FormexV4.Ingest.DownloaderTest do
   use ExUnit.Case, async: false
 
-  alias XmlIngest.{Downloader, FileCache}
+  alias FormexV4.Ingest.Downloader
+  alias FormexV4.Cache
 
   @test_cache_dir ".cache/test-downloader"
   @test_uri "http://example.com/test.xml"
@@ -17,14 +18,14 @@ defmodule XmlIngest.DownloaderTest do
       System.delete_env("CACHE_DIR")
     end)
 
-    FileCache.init()
+    Cache.init()
     :ok
   end
 
   describe "download/2 with cache" do
     test "uses cached content when available" do
       # Pre-cache content
-      FileCache.put(@test_uri, @test_content)
+      Cache.put(@test_uri, @test_content)
 
       # Download should return cached content without network call
       assert Downloader.download(@test_uri) == {:ok, @test_content}

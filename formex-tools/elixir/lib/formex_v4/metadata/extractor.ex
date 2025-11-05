@@ -1,4 +1,4 @@
-defmodule XmlIngest.MetadataExtractor do
+defmodule FormexV4.Metadata.Extractor do
   @moduledoc """
   Extracts metadata from XML files for database ingestion.
 
@@ -104,7 +104,7 @@ defmodule XmlIngest.MetadataExtractor do
           chunk = IO.read(file, 8192)
           File.close(file)
 
-          case Saxy.parse_string(chunk, XmlIngest.XmlMetadataHandler, %{}) do
+          case Saxy.parse_string(chunk, FormexV4.Metadata.Handler, %{}) do
             {:ok, result} ->
               validate_xml_metadata(result)
 

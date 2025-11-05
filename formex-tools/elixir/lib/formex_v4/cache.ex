@@ -1,4 +1,4 @@
-defmodule XmlIngest.FileCache do
+defmodule FormexV4.Cache do
   @moduledoc """
   File-based cache for downloaded XML documents.
   Uses SHA-256 hashing of URIs for filesystem-safe cache keys.
@@ -6,7 +6,7 @@ defmodule XmlIngest.FileCache do
 
   require Logger
 
-  @default_cache_dir ".cache/formex-sync"
+  @default_cache_dir ".cache/formex-v4"
 
   @doc """
   Gets the cache directory path.

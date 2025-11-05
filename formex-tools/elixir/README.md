@@ -1,6 +1,6 @@
-# XML Ingest - Elixir Implementation
+# FormexV4 - Elixir Implementation
 
-Sync XML files from Europa Publications SPARQL endpoint into DuckDB.
+Sync Formex v4 XML files from Europa Publications SPARQL endpoint into DuckDB.
 
 ## Configuration
 
@@ -13,7 +13,7 @@ Configuration is done via environment variables:
 
 ### Optional
 
-- `CACHE_DIR` - File cache directory (default: `.cache/formex-sync`)
+- `CACHE_DIR` - File cache directory (default: `.cache/formex-v4`)
 - `DOWNLOAD_CONCURRENCY` - Number of parallel downloads (default: `12`)
 - `BATCH_SIZE` - Database batch insert size (default: `500`)
 - `SPARQL_LIMIT` - Limit SPARQL results for testing (default: no limit)
@@ -25,10 +25,10 @@ Configuration is done via environment variables:
 mix deps.get
 
 # Run the sync
-mix run
+mix formex.sync
 
 # Run with custom settings
-FORMEX_DB_PATH=custom.db DOWNLOAD_CONCURRENCY=20 mix run
+FORMEX_DB_PATH=custom.db DOWNLOAD_CONCURRENCY=20 mix formex.sync
 
 # Lint the code
 mix credo

@@ -1,4 +1,4 @@
-defmodule XmlIngest.TestHelper do
+defmodule FormexV4.TestHelper do
   @moduledoc """
   Test helper utilities for setting up test databases and fixtures.
   """
@@ -7,6 +7,7 @@ defmodule XmlIngest.TestHelper do
   Creates a temporary test database with the xml_files schema.
   Returns the path to the database file.
   Database is created in the system temp directory.
+
   """
   def setup_test_db do
     db_path = generate_temp_db_path()
@@ -15,19 +16,18 @@ defmodule XmlIngest.TestHelper do
 
     # Create xml_files table with same schema as production
     sql = """
-    CREATE TABLE xml_files (
-      id VARCHAR PRIMARY KEY,
-      xml_content VARCHAR,
-      version VARCHAR,
-      root_element VARCHAR NOT NULL,
-      file_size BIGINT NOT NULL,
-      uri VARCHAR NOT NULL UNIQUE,
-      work_id VARCHAR,
-      expr_id VARCHAR,
-      man_id VARCHAR,
-      cs_id VARCHAR,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
+    CREATE TABLE IF NOT EXISTS xml_files (
+        id UUID PRIMARY KEY,
+        xml_content VARCHAR,
+        version VARCHAR,
+        root_element VARCHAR,
+        file_size BIGINT,
+        uri VARCHAR,
+        work_id UUID,
+        expr_id VARCHAR,
+        man_id VARCHAR,
+        cs_id VARCHAR
+    );
     """
 
     {:ok, _} = Duckdbex.query(conn, sql)

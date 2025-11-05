@@ -1,4 +1,4 @@
-defmodule XmlIngest.XmlMetadataHandler do
+defmodule FormexV4.Metadata.Handler do
   @moduledoc """
   Saxy handler for extracting XML metadata from the root element.
   Only processes the first element and then halts parsing.

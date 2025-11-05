@@ -1,4 +1,4 @@
-defmodule XmlIngest.SparqlClientTest do
+defmodule FormexV4.Sparql.ClientTest do
   use ExUnit.Case, async: true
 
   # Note: fetch_uris/1 is not tested here as it requires network access

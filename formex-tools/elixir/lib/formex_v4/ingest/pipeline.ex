@@ -1,7 +1,7 @@
-defmodule XmlIngest.Pipeline do
+defmodule FormexV4.Ingest.Pipeline do
   @moduledoc """
   Broadway pipeline for XML ingestion.
-  
+
   Pipeline stages:
   1. Producer: Fetches URIs from SPARQL, computes diff with database
   2. Processor: Downloads XML files (with caching)
@@ -12,7 +12,9 @@ defmodule XmlIngest.Pipeline do
   require Logger
 
   alias Broadway.Message
-  alias XmlIngest.{XmlFileRepository, Downloader, FileCache, MetadataExtractor}
+  alias FormexV4.{Repository, Cache}
+  alias FormexV4.Ingest.Downloader
+  alias FormexV4.Metadata.Extractor
 
   @default_db_path "formex.db"
   @default_concurrency 12
@@ -20,14 +22,14 @@ defmodule XmlIngest.Pipeline do
 
   @doc """
   Starts the Broadway pipeline.
-  
+
   ## Options
     - `:db_path` - Path to DuckDB database (default: "formex.db")
     - `:sparql_endpoint` - SPARQL endpoint URL
     - `:sparql_limit` - Optional SPARQL LIMIT for testing
     - `:download_concurrency` - Number of concurrent downloads (default: 12)
     - `:batch_size` - Database batch insert size (default: 500)
-  
+
   ## Pipeline Stages
     1. Producer: Fetches URIs from SPARQL, computes diff with database
     2. Processor: Downloads XML files and extracts metadata (parallel)
@@ -53,9 +55,8 @@ defmodule XmlIngest.Pipeline do
       },
       producer: [
         module: {
-          XmlIngest.UriProducer,
-          db_path: db_path,
-          sparql_opts: sparql_opts
+          FormexV4.Ingest.UriProducer,
+          db_path: db_path, sparql_opts: sparql_opts
         },
         concurrency: 1
       ],
@@ -78,10 +79,10 @@ defmodule XmlIngest.Pipeline do
   @impl true
   def handle_message(:default, %Message{data: uri} = message, _context) do
     # Check if cached before downloading
-    was_cached? = FileCache.cached?(uri)
-    
+    was_cached? = Cache.cached?(uri)
+
     with {:ok, file_path} <- download_file(uri),
-         {:ok, metadata} <- MetadataExtractor.extract(file_path, uri) do
+         {:ok, metadata} <- Extractor.extract(file_path, uri) do
       # Success: forward metadata to batcher
       message
       |> Message.update_data(fn _ -> metadata end)
@@ -104,16 +105,16 @@ defmodule XmlIngest.Pipeline do
   def handle_batch(:duckdb, messages, _batch_info, context) do
     # Extract metadata maps from messages
     metadata_list = Enum.map(messages, & &1.data)
-    
+
     case insert_batch(metadata_list, context.db_path) do
       {:ok, inserted_count} ->
         Logger.info("💾 Committed #{inserted_count} files")
-        
+
         # Clean up cache files after successful insert
         Enum.each(metadata_list, fn metadata ->
-          FileCache.delete(metadata.uri)
+          Cache.delete(metadata.uri)
         end)
-        
+
         messages
 
       {:error, reason} ->
@@ -127,7 +128,7 @@ defmodule XmlIngest.Pipeline do
     Enum.each(messages, fn message ->
       Logger.error("Failed message: #{inspect(message.data)}")
     end)
-    
+
     messages
   end
 
@@ -135,7 +136,7 @@ defmodule XmlIngest.Pipeline do
   defp download_file(uri) do
     case Downloader.download(uri) do
       {:ok, _content} ->
-        file_path = FileCache.cache_path(uri)
+        file_path = Cache.cache_path(uri)
         {:ok, file_path}
 
       {:error, reason} ->
@@ -145,6 +146,6 @@ defmodule XmlIngest.Pipeline do
 
   # Private: Batch insert metadata into DuckDB
   defp insert_batch(metadata_list, db_path) do
-    XmlFileRepository.insert_metadata_batch(db_path, metadata_list)
+    Repository.insert_metadata_batch(db_path, metadata_list)
   end
 end

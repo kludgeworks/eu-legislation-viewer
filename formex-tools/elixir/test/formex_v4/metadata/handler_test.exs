@@ -1,7 +1,7 @@
-defmodule XmlIngest.XmlMetadataHandlerTest do
+defmodule FormexV4.Metadata.HandlerTest do
   use ExUnit.Case, async: true
 
-  alias XmlIngest.XmlMetadataHandler
+  alias FormexV4.Metadata.Handler
 
   describe "handle_event/3" do
     test "extracts root element name" do
@@ -13,7 +13,7 @@ defmodule XmlIngest.XmlMetadataHandlerTest do
       """
 
       state = %{root_element: nil, version: nil}
-      {:halt, result, _remaining} = Saxy.parse_string(xml, XmlMetadataHandler, state)
+      {:halt, result, _remaining} = Saxy.parse_string(xml, Handler, state)
 
       assert result.root_element == "ACT"
     end
@@ -28,7 +28,7 @@ defmodule XmlIngest.XmlMetadataHandlerTest do
       """
 
       state = %{root_element: nil, version: nil}
-      {:halt, result, _remaining} = Saxy.parse_string(xml, XmlMetadataHandler, state)
+      {:halt, result, _remaining} = Saxy.parse_string(xml, Handler, state)
 
       assert result.root_element == "DOC"
       assert result.version == "formex-05.56-20160701"
@@ -43,7 +43,7 @@ defmodule XmlIngest.XmlMetadataHandlerTest do
       """
 
       state = %{root_element: nil, version: nil}
-      {:halt, result, _remaining} = Saxy.parse_string(xml, XmlMetadataHandler, state)
+      {:halt, result, _remaining} = Saxy.parse_string(xml, Handler, state)
 
       assert result.root_element == "ANNEX"
       assert result.version == "formex-06.00-20210715"
@@ -59,7 +59,7 @@ defmodule XmlIngest.XmlMetadataHandlerTest do
       """
 
       state = %{root_element: nil, version: nil}
-      {:halt, result, _remaining} = Saxy.parse_string(xml, XmlMetadataHandler, state)
+      {:halt, result, _remaining} = Saxy.parse_string(xml, Handler, state)
 
       assert result.root_element == "ACT"
       assert result.version == "formex-05.56-20160701"
@@ -74,7 +74,7 @@ defmodule XmlIngest.XmlMetadataHandlerTest do
       """
 
       state = %{root_element: nil, version: nil}
-      {:halt, result, _remaining} = Saxy.parse_string(xml, XmlMetadataHandler, state)
+      {:halt, result, _remaining} = Saxy.parse_string(xml, Handler, state)
 
       assert result.root_element == "ACT"
       assert result.version == nil
@@ -92,7 +92,7 @@ defmodule XmlIngest.XmlMetadataHandlerTest do
       """
 
       state = %{root_element: nil, version: nil}
-      {:halt, result, _remaining} = Saxy.parse_string(xml, XmlMetadataHandler, state)
+      {:halt, result, _remaining} = Saxy.parse_string(xml, Handler, state)
 
       # Should only extract root element metadata
       assert result.root_element == "ACT"

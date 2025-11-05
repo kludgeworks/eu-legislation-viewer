@@ -1,4 +1,4 @@
-defmodule XmlIngest.SparqlClient do
+defmodule FormexV4.Sparql.Client do
   @moduledoc """
   Client for querying the Europa Publications SPARQL endpoint.
   Fetches content stream URIs for XML documents with type=fmx4.
