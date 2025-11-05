@@ -4,17 +4,9 @@ defmodule XmlIngest.XmlFileRepository do
   Encapsulates all database interactions with the xml_files table.
   """
 
-  import Bitwise
   require Logger
 
   @default_batch_size 500
-
-  # Pattern to extract cellar identifier components from URI
-  @cellar_pattern ~r/([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})\.(\d{4})\.(\d{2})\/([A-Z0-9_]+)/i
-
-  # Namespace UUID for deterministic UUID v5 generation
-  # SHA-1 hash of "http://publications.europa.eu/resource/cellar" using URL namespace
-  @namespace_uuid "9073926b-929f-5cc3-8115-ca15e6b37a6f"
 
   @doc """
   Computes new URIs by comparing SPARQL results against existing database URIs.
@@ -72,12 +64,12 @@ defmodule XmlIngest.XmlFileRepository do
   end
 
   @doc """
-  Inserts files with explicit URIs into the database.
-  Useful when URIs come from external sources (e.g., SPARQL queries).
+  Inserts a batch of metadata records into the database.
+  Accepts pre-extracted metadata maps from MetadataExtractor.
 
   ## Parameters
     - db_path: Path to DuckDB database file
-    - path_uri_map: Map of file paths to their URIs
+    - metadata_list: List of metadata maps with all required fields
     - opts: Keyword list of options
       - batch_size: Number of records per batch (default: 500)
 
@@ -85,152 +77,18 @@ defmodule XmlIngest.XmlFileRepository do
     - {:ok, count} on success where count is number of files ingested
     - {:error, reason} on failure
   """
-  def insert_files_with_uris(db_path, path_uri_map, opts \\ []) when is_map(path_uri_map) do
+  def insert_metadata_batch(db_path, metadata_list, opts \\ []) when is_list(metadata_list) do
     batch_size = Keyword.get(opts, :batch_size, @default_batch_size)
-    entries = Enum.map(path_uri_map, fn {path, uri} -> {path, uri} end)
-    insert_files_internal(db_path, entries, batch_size)
-  end
 
-  @doc """
-  Checks if a URI already exists in the database.
-
-  ## Parameters
-    - db_path: Path to DuckDB database file
-    - uri: URI to check
-
-  ## Returns
-    - {:ok, true} if URI exists
-    - {:ok, false} if URI does not exist
-    - {:error, reason} on failure
-  """
-  def uri_exists?(db_path, uri) do
     {:ok, db} = Duckdbex.open(db_path)
     {:ok, conn} = Duckdbex.connection(db)
-
-    try do
-      sql = "SELECT COUNT(*) FROM xml_files WHERE uri = $1"
-
-      case Duckdbex.query(conn, sql, [uri]) do
-        {:ok, result} ->
-          [[count]] = Duckdbex.fetch_all(result)
-          Duckdbex.release(result)
-          {:ok, count > 0}
-
-        {:error, reason} ->
-          {:error, reason}
-      end
-    after
-      Duckdbex.release(conn)
-      Duckdbex.release(db)
-    end
-  end
-
-  @doc """
-  Gets all URIs from the database.
-
-  ## Parameters
-    - db_path: Path to DuckDB database file
-
-  ## Returns
-    - {:ok, list_of_uris} on success
-    - {:error, reason} on failure
-  """
-  def get_all_uris(db_path) do
-    {:ok, db} = Duckdbex.open(db_path)
-    {:ok, conn} = Duckdbex.connection(db)
-
-    try do
-      case Duckdbex.query(conn, "SELECT uri FROM xml_files") do
-        {:ok, result} ->
-          rows = Duckdbex.fetch_all(result)
-          uris = Enum.map(rows, fn [uri] -> uri end)
-          Duckdbex.release(result)
-          {:ok, uris}
-
-        {:error, reason} ->
-          {:error, reason}
-      end
-    after
-      Duckdbex.release(conn)
-      Duckdbex.release(db)
-    end
-  end
-
-  # ==================== Private Helper Methods ====================
-
-  defp insert_files_internal(db_path, entries, batch_size) when is_list(entries) do
-    {:ok, db} = Duckdbex.open(db_path)
-    {:ok, conn} = Duckdbex.connection(db)
-
-    sql = """
-    INSERT INTO xml_files
-        (id, xml_content, version, root_element, file_size, uri, work_id, expr_id, man_id, cs_id)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-    ON CONFLICT (id) DO NOTHING
-    """
 
     try do
       {:ok, _} = Duckdbex.query(conn, "BEGIN TRANSACTION")
 
       {count, _errors} =
-        Enum.reduce(entries, {0, 0}, fn {path, uri}, {count, errors} ->
-          try do
-            # Get file size
-            %{size: size} = File.stat!(path)
-
-            # Read file content
-            xml_content = File.read!(path)
-
-            # Parse XML metadata
-            %{root_element: root, version: version} = parse_xml_metadata(path)
-
-            # Extract cellar identifiers from URI
-            %{work_id: work_id, expr_id: expr_id, man_id: man_id, cs_id: cs_id} =
-              extract_cellar_ids(uri)
-
-            # Generate deterministic UUID based on content
-            content_id = generate_file_id(path)
-
-            # Execute insert
-            params = [
-              content_id,
-              xml_content,
-              version || "",
-              root,
-              size,
-              uri,
-              work_id,
-              expr_id,
-              man_id,
-              cs_id
-            ]
-
-            case Duckdbex.query(conn, sql, params) do
-              {:ok, result} ->
-                # Get the number of rows inserted (0 if ON CONFLICT)
-                [[rows_inserted]] = Duckdbex.fetch_all(result)
-                Duckdbex.release(result)
-                
-                new_count = count + rows_inserted
-
-                # Commit batch periodically
-                if rem(new_count, batch_size) == 0 do
-                  {:ok, _} = Duckdbex.query(conn, "COMMIT")
-                  Logger.info("💾 Committed #{new_count} files")
-                  {:ok, _} = Duckdbex.query(conn, "BEGIN TRANSACTION")
-                end
-
-                {new_count, errors}
-
-              {:error, reason} ->
-                Logger.warning("⚠️  Error ingesting #{path}: #{inspect(reason)}")
-                {count, errors + 1}
-            end
-          rescue
-            e ->
-              Logger.warning("⚠️  Error ingesting #{path}: #{Exception.message(e)}")
-              {count, errors + 1}
-          end
+        Enum.reduce(metadata_list, {0, 0}, fn metadata, {count, errors} ->
+          insert_single_metadata(conn, metadata, count, errors, batch_size)
         end)
 
       # Commit remaining
@@ -247,91 +105,89 @@ defmodule XmlIngest.XmlFileRepository do
     end
   end
 
-  defp parse_xml_metadata(path) do
-    File.stream!(path, [], 8192)
-    |> Enum.reduce_while(%{root_element: "unknown", version: nil}, fn chunk, acc ->
-      case Saxy.parse_string(chunk, XmlIngest.XmlMetadataHandler, acc) do
-        {:ok, result} ->
-          {:halt, result}
+  # Private helper: inserts a single metadata record
+  defp insert_single_metadata(conn, metadata, count, errors, batch_size) do
+    try do
+      sql = build_insert_sql(metadata)
 
-        {:halt, result, _remaining} ->
-          {:halt, result}
+      # Check if ID already exists before insert to get accurate count
+      exists_count = check_id_exists(conn, metadata.id)
 
-        {:error, _} ->
-          {:cont, acc}
+      case Duckdbex.query(conn, sql) do
+        {:ok, _result} ->
+          handle_successful_insert(conn, exists_count, count, errors, batch_size)
+
+        {:error, reason} ->
+          Logger.warning("⚠️  Error inserting #{metadata.file_path}: #{inspect(reason)}")
+          {count, errors + 1}
       end
-    end)
-  end
-
-  defp extract_cellar_ids(uri_or_path) do
-    case Regex.run(@cellar_pattern, uri_or_path) do
-      [_, work_id, expr_id, man_id, cs_id] ->
-        %{
-          work_id: work_id,
-          expr_id: expr_id,
-          man_id: man_id,
-          cs_id: cs_id
-        }
-
-      nil ->
-        %{work_id: nil, expr_id: nil, man_id: nil, cs_id: nil}
+    rescue
+      e ->
+        Logger.warning("⚠️  Error inserting #{metadata.file_path}: #{Exception.message(e)}")
+        {count, errors + 1}
     end
   end
 
-  defp generate_file_id(path) do
-    content_hash = hash_content(path)
-    # Generate UUID v5 using namespace and content hash
-    generate_uuid_v5(@namespace_uuid, content_hash)
+  # Private helper: builds INSERT SQL for metadata
+  defp build_insert_sql(metadata) do
+    """
+    INSERT INTO xml_files
+        (id, xml_content, version, root_element, file_size, uri, work_id, expr_id, man_id, cs_id)
+    SELECT
+        #{format_uuid(metadata.id)},
+        content,
+        #{escape_sql(metadata.version)},
+        #{escape_sql(metadata.root_element)},
+        #{metadata.file_size},
+        #{escape_sql(metadata.uri)},
+        #{format_uuid(metadata.work_id)},
+        #{escape_sql(metadata.expr_id)},
+        #{escape_sql(metadata.man_id)},
+        #{escape_sql(metadata.cs_id)}
+    FROM read_text(#{escape_sql(metadata.file_path)})
+    ON CONFLICT (id) DO NOTHING
+    """
   end
 
-  defp hash_content(path) do
-    File.stream!(path, [], 2048)
-    |> Enum.reduce(:crypto.hash_init(:sha256), fn chunk, acc ->
-      :crypto.hash_update(acc, chunk)
-    end)
-    |> :crypto.hash_final()
-    |> Base.encode16(case: :lower)
+  # Private helper: checks if ID exists in database
+  defp check_id_exists(conn, id) do
+    check_sql = "SELECT COUNT(*) FROM xml_files WHERE id = #{format_uuid(id)}"
+    {:ok, check_result} = Duckdbex.query(conn, check_sql)
+    [[exists_count]] = Duckdbex.fetch_all(check_result)
+    Duckdbex.release(check_result)
+    exists_count
   end
 
-  defp generate_uuid_v5(namespace_uuid, name) do
-    # Parse namespace UUID
-    namespace_binary = parse_uuid(namespace_uuid)
+  # Private helper: handles successful insert and batch commits
+  defp handle_successful_insert(conn, exists_count, count, errors, batch_size) do
+    # Only count if the ID didn't already exist (exists_count == 0)
+    increment = if exists_count == 0, do: 1, else: 0
+    new_count = count + increment
 
-    # Create UUID v5: SHA-1 hash of namespace + name
-    hash =
-      :crypto.hash(:sha, namespace_binary <> name)
-      |> :binary.bin_to_list()
+    # Commit batch periodically (only count actual inserts)
+    if rem(count, batch_size) == batch_size - 1 and increment == 1 do
+      {:ok, _} = Duckdbex.query(conn, "COMMIT")
+      Logger.info("💾 Committed #{new_count} files")
+      {:ok, _} = Duckdbex.query(conn, "BEGIN TRANSACTION")
+    end
 
-    # Format as UUID v5 (version 5, variant 1)
-    <<a::32, b::16, c::16, d::16, e::48>> =
-      <<
-        Enum.at(hash, 0)::8,
-        Enum.at(hash, 1)::8,
-        Enum.at(hash, 2)::8,
-        Enum.at(hash, 3)::8,
-        Enum.at(hash, 4)::8,
-        Enum.at(hash, 5)::8,
-        # Set version to 5
-        bor(band(Enum.at(hash, 6), 0x0F), 0x50)::8,
-        Enum.at(hash, 7)::8,
-        # Set variant to 1
-        bor(band(Enum.at(hash, 8), 0x3F), 0x80)::8,
-        Enum.at(hash, 9)::8,
-        Enum.at(hash, 10)::8,
-        Enum.at(hash, 11)::8,
-        Enum.at(hash, 12)::8,
-        Enum.at(hash, 13)::8,
-        Enum.at(hash, 14)::8,
-        Enum.at(hash, 15)::8
-      >>
-
-    # Format as UUID string
-    "#{Integer.to_string(a, 16) |> String.downcase() |> String.pad_leading(8, "0")}-#{Integer.to_string(b, 16) |> String.downcase() |> String.pad_leading(4, "0")}-#{Integer.to_string(c, 16) |> String.downcase() |> String.pad_leading(4, "0")}-#{Integer.to_string(d, 16) |> String.downcase() |> String.pad_leading(4, "0")}-#{Integer.to_string(e, 16) |> String.downcase() |> String.pad_leading(12, "0")}"
+    {new_count, errors}
   end
 
-  defp parse_uuid(uuid_string) do
-    uuid_string
-    |> String.replace("-", "")
-    |> Base.decode16!(case: :mixed)
+  # Private helper: escapes single quotes in SQL string literals
+  defp escape_sql(nil), do: "NULL"
+  defp escape_sql(val), do: "'#{String.replace(to_string(val), "'", "''")}'"
+
+  # Private helper: formats UUID values - checks if it's a valid UUID format
+  defp format_uuid(nil), do: "NULL"
+
+  defp format_uuid(val) do
+    val_str = to_string(val)
+    # Check if it looks like a UUID (8-4-4-4-12 format)
+    if Regex.match?(~r/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i, val_str) do
+      "#{escape_sql(val_str)}::UUID"
+    else
+      escape_sql(val_str)
+    end
   end
 end

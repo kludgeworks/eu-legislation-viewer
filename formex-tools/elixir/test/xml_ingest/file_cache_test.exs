@@ -36,34 +36,11 @@ defmodule XmlIngest.FileCacheTest do
     end
   end
 
-  describe "cache_key/1" do
-    test "generates consistent hash for same URI" do
-      key1 = FileCache.cache_key(@test_uri)
-      key2 = FileCache.cache_key(@test_uri)
-
-      assert key1 == key2
-      assert is_binary(key1)
-      assert String.length(key1) == 64  # SHA-256 hex = 64 chars
-    end
-
-    test "generates different hashes for different URIs" do
-      key1 = FileCache.cache_key("http://example.com/file1.xml")
-      key2 = FileCache.cache_key("http://example.com/file2.xml")
-
-      assert key1 != key2
-    end
-
-    test "generates filesystem-safe keys" do
-      key = FileCache.cache_key(@test_uri)
-      assert String.match?(key, ~r/^[a-f0-9]+$/)
-    end
-  end
-
   describe "cache_path/1" do
     test "returns full path to cache file" do
       path = FileCache.cache_path(@test_uri)
       assert String.starts_with?(path, @test_cache_dir)
-      assert String.ends_with?(path, FileCache.cache_key(@test_uri))
+      assert String.match?(path, ~r/[a-f0-9]{64}$/)
     end
   end
 
@@ -107,48 +84,6 @@ defmodule XmlIngest.FileCacheTest do
 
     test "succeeds even if file doesn't exist" do
       assert FileCache.delete(@test_uri) == :ok
-    end
-  end
-
-  describe "clear/0" do
-    test "removes all cached files" do
-      FileCache.put("http://example.com/file1.xml", "content1")
-      FileCache.put("http://example.com/file2.xml", "content2")
-      FileCache.put("http://example.com/file3.xml", "content3")
-
-      assert FileCache.clear() == :ok
-
-      refute FileCache.cached?("http://example.com/file1.xml")
-      refute FileCache.cached?("http://example.com/file2.xml")
-      refute FileCache.cached?("http://example.com/file3.xml")
-    end
-
-    test "recreates cache directory after clearing" do
-      FileCache.clear()
-      assert File.exists?(@test_cache_dir)
-    end
-  end
-
-  describe "stats/0" do
-    test "returns zero stats for empty cache" do
-      assert {:ok, %{count: 0, size_bytes: 0}} = FileCache.stats()
-    end
-
-    test "returns correct file count" do
-      FileCache.put("http://example.com/file1.xml", "content1")
-      FileCache.put("http://example.com/file2.xml", "content2")
-      FileCache.put("http://example.com/file3.xml", "content3")
-
-      assert {:ok, %{count: 3, size_bytes: size}} = FileCache.stats()
-      assert size > 0
-    end
-
-    test "returns correct total size" do
-      content = String.duplicate("x", 1000)
-      FileCache.put(@test_uri, content)
-
-      assert {:ok, %{count: 1, size_bytes: size}} = FileCache.stats()
-      assert size == 1000
     end
   end
 end

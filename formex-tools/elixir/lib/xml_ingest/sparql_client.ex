@@ -81,38 +81,25 @@ defmodule XmlIngest.SparqlClient do
     end
   end
 
-  @doc """
-  Builds the SPARQL query with optional LIMIT clause.
-  """
-  def build_query(nil), do: @sparql_query
-  def build_query(limit) when is_integer(limit) and limit > 0 do
+  # Builds the SPARQL query with optional LIMIT clause.
+  defp build_query(nil), do: @sparql_query
+
+  defp build_query(limit) when is_integer(limit) and limit > 0 do
     String.trim(@sparql_query) <> "\nLIMIT #{limit}"
   end
 
-  @doc """
-  Parses SPARQL JSON results format and extracts URIs.
-
-  ## Examples
-
-      iex> SparqlClient.parse_sparql_response(%{
-      ...>   "results" => %{
-      ...>     "bindings" => [
-      ...>       %{"item" => %{"value" => "http://example.com/1"}},
-      ...>       %{"item" => %{"value" => "http://example.com/2"}}
-      ...>     ]
-      ...>   }
-      ...> })
-      ["http://example.com/1", "http://example.com/2"]
-  """
-  def parse_sparql_response(body) when is_map(body) do
+  # Parses SPARQL JSON results format and extracts URIs.
+  defp parse_sparql_response(body) when is_map(body) do
     case get_in(body, ["results", "bindings"]) do
       bindings when is_list(bindings) ->
         bindings
         |> Enum.map(fn binding -> get_in(binding, ["item", "value"]) end)
         |> Enum.filter(&is_binary/1)
+
       _ ->
         []
     end
   end
-  def parse_sparql_response(_), do: []
+
+  defp parse_sparql_response(_), do: []
 end

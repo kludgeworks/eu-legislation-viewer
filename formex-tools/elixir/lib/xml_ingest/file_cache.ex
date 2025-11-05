@@ -27,16 +27,9 @@ defmodule XmlIngest.FileCache do
     :ok
   end
 
-  @doc """
-  Generates a cache key (filename) for a given URI.
-  Uses SHA-256 hash of the URI for filesystem-safe keys.
-
-  ## Examples
-
-      iex> FileCache.cache_key("http://example.com/file.xml")
-      "a1b2c3d4e5f6..."
-  """
-  def cache_key(uri) when is_binary(uri) do
+  # Generates a cache key (filename) for a given URI.
+  # Uses SHA-256 hash of the URI for filesystem-safe keys.
+  defp cache_key(uri) when is_binary(uri) do
     :crypto.hash(:sha256, uri)
     |> Base.encode16(case: :lower)
   end
@@ -141,63 +134,6 @@ defmodule XmlIngest.FileCache do
       {:error, reason} = error ->
         Logger.error("Cache delete error for #{uri}: #{inspect(reason)}")
         error
-    end
-  end
-
-  @doc """
-  Clears the entire cache directory.
-
-  ## Examples
-
-      iex> FileCache.clear()
-      :ok
-  """
-  def clear do
-    dir = cache_dir()
-
-    case File.rm_rf(dir) do
-      {:ok, _} ->
-        Logger.info("Cleared cache directory: #{dir}")
-        init()
-
-      {:error, reason, _} = error ->
-        Logger.error("Failed to clear cache: #{inspect(reason)}")
-        error
-    end
-  end
-
-  @doc """
-  Gets cache statistics.
-
-  ## Returns
-    - `{:ok, %{count: integer, size_bytes: integer}}`
-
-  ## Examples
-
-      iex> FileCache.stats()
-      {:ok, %{count: 42, size_bytes: 1_234_567}}
-  """
-  def stats do
-    dir = cache_dir()
-
-    if File.exists?(dir) do
-      files = File.ls!(dir)
-      count = length(files)
-
-      size_bytes =
-        files
-        |> Enum.map(fn file -> Path.join(dir, file) end)
-        |> Enum.map(fn path ->
-          case File.stat(path) do
-            {:ok, %{size: size}} -> size
-            _ -> 0
-          end
-        end)
-        |> Enum.sum()
-
-      {:ok, %{count: count, size_bytes: size_bytes}}
-    else
-      {:ok, %{count: 0, size_bytes: 0}}
     end
   end
 end

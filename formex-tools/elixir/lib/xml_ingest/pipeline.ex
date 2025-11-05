@@ -108,6 +108,12 @@ defmodule XmlIngest.Pipeline do
     case insert_batch(metadata_list, context.db_path) do
       {:ok, inserted_count} ->
         Logger.info("💾 Committed #{inserted_count} files")
+        
+        # Clean up cache files after successful insert
+        Enum.each(metadata_list, fn metadata ->
+          FileCache.delete(metadata.uri)
+        end)
+        
         messages
 
       {:error, reason} ->
