@@ -13,8 +13,7 @@ defmodule XmlIngest.MixProject do
   
   def application do
     [
-      extra_applications: [:logger, :crypto],
-      mod: {XmlIngest.Application, []}
+      extra_applications: [:logger, :crypto]
     ]
   end
   
