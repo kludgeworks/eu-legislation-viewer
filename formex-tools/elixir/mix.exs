@@ -26,6 +26,7 @@ defmodule FormexV4.MixProject do
       {:jason, "~> 1.4"},
       {:uuid, "~> 1.1"},
       {:progress_bar, "~> 3.0"},
+      {:bypass, "~> 2.1", only: :test},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end

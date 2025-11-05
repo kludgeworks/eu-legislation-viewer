@@ -87,6 +87,10 @@ defmodule FormexV4.Telemetry.ProgressReporter do
   defp attach_telemetry_handlers do
     events = [
       [:formex_v4, :producer, :start],
+      [:formex_v4, :sparql, :count_start],
+      [:formex_v4, :sparql, :count_complete],
+      [:formex_v4, :sparql, :chunk_start],
+      [:formex_v4, :sparql, :chunk_complete],
       [:formex_v4, :producer, :sparql_complete],
       [:formex_v4, :producer, :diff_complete],
       [:formex_v4, :downloader, :start],
@@ -110,6 +114,10 @@ defmodule FormexV4.Telemetry.ProgressReporter do
   defp detach_telemetry_handlers do
     events = [
       [:formex_v4, :producer, :start],
+      [:formex_v4, :sparql, :count_start],
+      [:formex_v4, :sparql, :count_complete],
+      [:formex_v4, :sparql, :chunk_start],
+      [:formex_v4, :sparql, :chunk_complete],
       [:formex_v4, :producer, :sparql_complete],
       [:formex_v4, :producer, :diff_complete],
       [:formex_v4, :downloader, :start],
@@ -135,6 +143,32 @@ defmodule FormexV4.Telemetry.ProgressReporter do
   defp handle_telemetry([:formex_v4, :producer, :start], _measurements, metadata, state) do
     total = Map.get(metadata, :total, 0)
     update_in(state, [:producer], fn p -> %{p | total: total, label: "Starting..."} end)
+  end
+
+  defp handle_telemetry([:formex_v4, :sparql, :count_start], _measurements, _metadata, state) do
+    update_in(state, [:producer], fn p -> %{p | label: "Counting URIs..."} end)
+  end
+
+  defp handle_telemetry([:formex_v4, :sparql, :count_complete], _measurements, metadata, state) do
+    total = Map.get(metadata, :total, 0)
+    update_in(state, [:producer], fn p -> %{p | total: total, label: "Found #{total} URIs"} end)
+  end
+
+  defp handle_telemetry([:formex_v4, :sparql, :chunk_start], _measurements, metadata, state) do
+    offset = Map.get(metadata, :offset, 0)
+    _total = Map.get(metadata, :total, 0)
+    update_in(state, [:producer], fn p -> %{p | current: offset, label: "Fetching chunk..."} end)
+  end
+
+  defp handle_telemetry([:formex_v4, :sparql, :chunk_complete], _measurements, metadata, state) do
+    offset = Map.get(metadata, :offset, 0)
+    count = Map.get(metadata, :count, 0)
+    total = Map.get(metadata, :total, 0)
+    fetched = offset + count
+
+    update_in(state, [:producer], fn p ->
+      %{p | current: fetched, label: "Fetching... (#{fetched}/#{total})"}
+    end)
   end
 
   defp handle_telemetry([:formex_v4, :producer, :sparql_complete], _measurements, metadata, state) do

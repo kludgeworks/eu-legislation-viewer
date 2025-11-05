@@ -17,6 +17,7 @@ Configuration is done via environment variables:
 - `DOWNLOAD_CONCURRENCY` - Number of parallel downloads (default: `12`)
 - `BATCH_SIZE` - Database batch insert size (default: `500`)
 - `SPARQL_LIMIT` - Limit SPARQL results for testing (default: no limit)
+- `SPARQL_CHUNK_SIZE` - Chunk size for cursor-based SPARQL pagination (default: `5000`)
 
 ## Usage
 

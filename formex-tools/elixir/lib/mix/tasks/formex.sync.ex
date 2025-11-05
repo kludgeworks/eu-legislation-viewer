@@ -11,6 +11,7 @@ defmodule Mix.Tasks.Formex.Sync do
     * `--db PATH` - Path to DuckDB database (default: formex.db)
     * `--endpoint URL` - SPARQL endpoint URL (default: https://publications.europa.eu/webapi/rdf/sparql)
     * `--limit N` - Limit SPARQL results (for testing)
+    * `--chunk-size N` - SPARQL pagination chunk size (default: 5000)
     * `--concurrency N` - Number of concurrent downloads (default: 12)
     * `--batch-size N` - Database batch insert size (default: 500)
     * `--progress` - Enable progress bars (default: true if TTY)
@@ -20,10 +21,10 @@ defmodule Mix.Tasks.Formex.Sync do
 
       # Sync with defaults
       mix formex.sync
-      
+
       # Test with 100 files
       mix formex.sync --limit 100
-      
+
       # Custom database and concurrency
       mix formex.sync --db mydb.db --concurrency 20
   """
@@ -38,6 +39,7 @@ defmodule Mix.Tasks.Formex.Sync do
 
   @default_db_path "formex.db"
   @default_endpoint "https://publications.europa.eu/webapi/rdf/sparql"
+  @default_chunk_size 5000
   @default_concurrency 12
   @default_batch_size 500
 
@@ -50,6 +52,7 @@ defmodule Mix.Tasks.Formex.Sync do
           db: :string,
           endpoint: :string,
           limit: :integer,
+          chunk_size: :integer,
           concurrency: :integer,
           batch_size: :integer,
           progress: :boolean
@@ -60,6 +63,7 @@ defmodule Mix.Tasks.Formex.Sync do
     db_path = Keyword.get(opts, :db, @default_db_path)
     endpoint = Keyword.get(opts, :endpoint, @default_endpoint)
     limit = Keyword.get(opts, :limit)
+    chunk_size = Keyword.get(opts, :chunk_size, @default_chunk_size)
     concurrency = Keyword.get(opts, :concurrency, @default_concurrency)
     batch_size = Keyword.get(opts, :batch_size, @default_batch_size)
     progress = Keyword.get(opts, :progress, IO.ANSI.enabled?())
@@ -78,6 +82,7 @@ defmodule Mix.Tasks.Formex.Sync do
     Logger.info("📁 Database: #{db_path}")
     Logger.info("🔗 Endpoint: #{endpoint}")
     if limit, do: Logger.info("🔢 Limit: #{limit}")
+    Logger.info("📊 Chunk size: #{chunk_size}")
     Logger.info("⚡ Concurrency: #{concurrency}")
     Logger.info("📦 Batch size: #{batch_size}")
 
@@ -86,6 +91,7 @@ defmodule Mix.Tasks.Formex.Sync do
       db_path: db_path,
       endpoint: endpoint,
       limit: limit,
+      chunk_size: chunk_size,
       download_concurrency: concurrency,
       batch_size: batch_size,
       progress: progress
