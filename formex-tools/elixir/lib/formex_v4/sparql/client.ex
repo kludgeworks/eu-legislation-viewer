@@ -77,8 +77,6 @@ defmodule FormexV4.Sparql.Client do
       Logger.info("   Using LIMIT #{limit}")
     end
 
-    :telemetry.execute([:formex_v4, :sparql, :fetch_start], %{}, %{})
-
     request_opts = [
       method: :post,
       url: endpoint,
@@ -96,12 +94,6 @@ defmodule FormexV4.Sparql.Client do
       {:ok, %{status: 200, body: body}} ->
         uris = parse_sparql_response(body)
         Logger.info("✅ Found #{length(uris)} content streams from SPARQL")
-
-        :telemetry.execute(
-          [:formex_v4, :sparql, :fetch_complete],
-          %{},
-          %{count: length(uris)}
-        )
 
         {:ok, uris}
 
@@ -132,8 +124,6 @@ defmodule FormexV4.Sparql.Client do
 
     Logger.info("🔍 Counting URIs from SPARQL endpoint...")
 
-    :telemetry.execute([:formex_v4, :sparql, :count_start], %{}, %{})
-
     request_opts = [
       method: :post,
       url: endpoint,
@@ -151,12 +141,6 @@ defmodule FormexV4.Sparql.Client do
       {:ok, %{status: 200, body: body}} ->
         count = parse_count_response(body)
         Logger.info("📊 Total URIs available: #{count}")
-
-        :telemetry.execute(
-          [:formex_v4, :sparql, :count_complete],
-          %{},
-          %{total: count}
-        )
 
         {:ok, count}
 

@@ -31,29 +31,12 @@ defmodule FormexV4.Ingest.Downloader do
     timeout = Keyword.get(opts, :timeout, @default_timeout)
     max_retries = Keyword.get(opts, :max_retries, @default_max_retries)
 
-    # Emit telemetry: download start
-    :telemetry.execute([:formex_v4, :downloader, :start], %{}, %{uri: uri})
-
-    result =
-      if Cache.cached?(uri) do
-        Logger.debug("Using cached content for: #{uri}")
-
-        # Emit telemetry: cache hit
-        :telemetry.execute([:formex_v4, :downloader, :cache_hit], %{}, %{uri: uri})
-
-        Cache.get(uri)
-      else
-        download_and_cache(uri, timeout, max_retries)
-      end
-
-    # Emit telemetry: download complete
-    :telemetry.execute(
-      [:formex_v4, :downloader, :complete],
-      %{},
-      %{uri: uri, cached: Cache.cached?(uri)}
-    )
-
-    result
+    if Cache.cached?(uri) do
+      Logger.debug("Using cached content for: #{uri}")
+      Cache.get(uri)
+    else
+      download_and_cache(uri, timeout, max_retries)
+    end
   end
 
   # Private helper: downloads and caches content

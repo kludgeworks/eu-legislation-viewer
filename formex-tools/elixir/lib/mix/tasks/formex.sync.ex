@@ -11,11 +11,9 @@ defmodule Mix.Tasks.Formex.Sync do
     * `--db PATH` - Path to DuckDB database (default: formex.db)
     * `--endpoint URL` - SPARQL endpoint URL (default: https://publications.europa.eu/webapi/rdf/sparql)
     * `--limit N` - Limit SPARQL results (for testing)
-    * `--chunk-size N` - SPARQL pagination chunk size (default: 5000)
-    * `--concurrency N` - Number of concurrent downloads (default: 12)
-    * `--batch-size N` - Database batch insert size (default: 500)
-    * `--progress` - Enable progress bars (default: true if TTY)
-    * `--no-progress` - Disable progress bars
+     * `--chunk-size N` - SPARQL pagination chunk size (default: 5000)
+     * `--concurrency N` - Number of concurrent downloads (default: 12)
+     * `--batch-size N` - Database batch insert size (default: 500)
 
   ## Examples
 
@@ -55,8 +53,7 @@ defmodule Mix.Tasks.Formex.Sync do
           limit: :integer,
           chunk_size: :integer,
           concurrency: :integer,
-          batch_size: :integer,
-          progress: :boolean
+          batch_size: :integer
         ]
       )
 
@@ -67,7 +64,6 @@ defmodule Mix.Tasks.Formex.Sync do
     chunk_size = Keyword.get(opts, :chunk_size, @default_chunk_size)
     concurrency = Keyword.get(opts, :concurrency, @default_concurrency)
     batch_size = Keyword.get(opts, :batch_size, @default_batch_size)
-    progress = Keyword.get(opts, :progress, IO.ANSI.enabled?())
 
     # Start required applications
     {:ok, _} = Application.ensure_all_started(:req)
@@ -113,8 +109,7 @@ defmodule Mix.Tasks.Formex.Sync do
       limit: limit,
       chunk_size: chunk_size,
       download_concurrency: concurrency,
-      batch_size: batch_size,
-      progress: progress
+      batch_size: batch_size
     ]
 
     {:ok, pipeline_pid} = Pipeline.start_link(pipeline_opts)
@@ -137,14 +132,12 @@ defmodule Mix.Tasks.Formex.Sync do
 
         # Cleanup
         :telemetry.detach("mix-task-producer-complete")
-        FormexV4.Telemetry.ProgressReporter.stop()
 
         Logger.info("✅ Sync completed successfully")
 
       {:DOWN, ^ref, :process, _pid, reason} ->
         # Pipeline crashed before completion
         :telemetry.detach("mix-task-producer-complete")
-        FormexV4.Telemetry.ProgressReporter.stop()
 
         case reason do
           :normal ->
@@ -158,7 +151,6 @@ defmodule Mix.Tasks.Formex.Sync do
       @max_wait_time ->
         Logger.error("❌ Sync timed out after #{@max_wait_time}ms")
         :telemetry.detach("mix-task-producer-complete")
-        FormexV4.Telemetry.ProgressReporter.stop()
         Broadway.stop(pipeline_pid, :shutdown, 5_000)
         System.halt(1)
     end

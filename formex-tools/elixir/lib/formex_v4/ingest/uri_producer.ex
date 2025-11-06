@@ -58,17 +58,9 @@ defmodule FormexV4.Ingest.UriProducer do
     # Fetch and filter URIs synchronously at startup
     Logger.info("🔄 Starting sync process...")
 
-    :telemetry.execute([:formex_v4, :producer, :start], %{}, %{})
-
     case fetch_and_filter_uris(db_path, sparql_opts) do
       {:ok, uris} ->
         Logger.info("📊 Ready to process #{length(uris)} new URIs")
-
-        :telemetry.execute(
-          [:formex_v4, :producer, :ready],
-          %{},
-          %{count: length(uris)}
-        )
 
         initial_state = %{
           pending_uris: uris,

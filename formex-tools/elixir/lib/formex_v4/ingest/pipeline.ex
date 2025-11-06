@@ -71,7 +71,6 @@ defmodule FormexV4.Ingest.Pipeline do
     - `:sparql_limit` - Optional SPARQL LIMIT for testing
     - `:download_concurrency` - Number of concurrent downloads (default: 12)
     - `:batch_size` - Database batch insert size (default: 500)
-    - `:progress` - Enable progress bars (default: true if TTY)
 
   ## Pipeline Stages
     1. Producer: Fetches all URIs from SPARQL and filters against database at startup
@@ -83,18 +82,6 @@ defmodule FormexV4.Ingest.Pipeline do
     sparql_opts = Keyword.take(opts, [:endpoint, :limit])
     download_concurrency = Keyword.get(opts, :download_concurrency, @default_concurrency)
     batch_size = Keyword.get(opts, :batch_size, @default_batch_size)
-    progress = Keyword.get(opts, :progress, IO.ANSI.enabled?())
-
-    # Start telemetry reporter if progress enabled
-    if progress do
-      case FormexV4.Telemetry.ProgressReporter.start_link(enabled: true) do
-        {:ok, _pid} ->
-          Logger.debug("Progress reporter started")
-
-        {:error, reason} ->
-          Logger.warning("Failed to start progress reporter: #{inspect(reason)}")
-      end
-    end
 
     Broadway.start_link(__MODULE__,
       name: __MODULE__,
