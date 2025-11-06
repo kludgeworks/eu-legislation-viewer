@@ -38,7 +38,7 @@ mix credo
 ## Requirements
 
 - Elixir ~> 1.15
-- DuckDB database with `xml_files` table (see `../db/schema.sql`)
+- DuckDB database with `formex_documents` table (see `../.mise/tasks/db/schema.sql`)
 
 ## Dependencies
 

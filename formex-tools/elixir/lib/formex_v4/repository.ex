@@ -1,7 +1,7 @@
 defmodule FormexV4.Repository do
   @moduledoc """
-  Repository for XML file database operations.
-  Encapsulates all database interactions with the xml_files table.
+  Repository for Formex document database operations.
+  Encapsulates all database interactions with the formex_documents table.
   """
 
   require Logger
@@ -9,55 +9,93 @@ defmodule FormexV4.Repository do
   @default_batch_size 500
 
   @doc """
-  Computes new URIs by comparing SPARQL results against existing database URIs.
-  Uses a temporary table for efficient database-level comparison.
+  Filters a list of URIs to only include those not already in the database.
+  Uses database-side filtering for efficiency with small chunks.
 
   ## Parameters
     - db_path: Path to DuckDB database file
-    - sparql_uris: List of URIs from SPARQL query
+    - uris: List of URIs to filter
 
   ## Returns
     - {:ok, list_of_new_uris} on success
     - {:error, reason} on failure
+
+  ## Examples
+
+      iex> Repository.filter_new_uris("formex.db", ["http://new.uri", "http://existing.uri"])
+      {:ok, ["http://new.uri"]}
   """
-  def compute_new_uris(db_path, sparql_uris) when is_list(sparql_uris) do
+  def filter_new_uris(db_path, uris) when is_list(uris) do
+    if Enum.empty?(uris) do
+      {:ok, []}
+    else
+      {:ok, db} = Duckdbex.open(db_path)
+      {:ok, conn} = Duckdbex.connection(db)
+
+      try do
+        # Use temporary table approach to avoid parameter binding issues with array literals
+        {:ok, _} = Duckdbex.query(conn, "CREATE TEMP TABLE candidate_uris (uri VARCHAR)")
+
+        # Insert candidate URIs into temp table
+        placeholders = Enum.map_join(1..length(uris), ", ", fn i -> "($#{i})" end)
+        insert_sql = "INSERT INTO candidate_uris VALUES #{placeholders}"
+        {:ok, _} = Duckdbex.query(conn, insert_sql, uris)
+
+        # Query for URIs that don't exist in formex_documents
+        sql = """
+        SELECT uri FROM candidate_uris
+        WHERE uri NOT IN (SELECT uri FROM formex_documents)
+        """
+
+        case Duckdbex.query(conn, sql) do
+          {:ok, result} ->
+            rows = Duckdbex.fetch_all(result)
+            new_uris = Enum.map(rows, fn [uri] -> uri end)
+            Duckdbex.release(result)
+            {:ok, new_uris}
+
+          {:error, reason} ->
+            {:error, reason}
+        end
+      after
+        # Clean up temp table and connection
+        Duckdbex.query(conn, "DROP TABLE IF EXISTS candidate_uris")
+        Duckdbex.release(conn)
+        Duckdbex.release(db)
+      end
+    end
+  end
+
+  @doc """
+  Returns the total count of documents in the formex_documents table.
+
+  ## Parameters
+    - db_path: Path to DuckDB database file
+
+  ## Returns
+    - {:ok, count} on success
+    - {:error, reason} on failure
+
+  ## Examples
+
+      iex> Repository.count_files("formex.db")
+      {:ok, 586432}
+  """
+  def count_files(db_path) do
     {:ok, db} = Duckdbex.open(db_path)
     {:ok, conn} = Duckdbex.connection(db)
 
     try do
-      # Create temporary table
-      {:ok, _} = Duckdbex.query(conn, "CREATE TEMP TABLE sparql_results (uri VARCHAR)")
-
-      # Insert SPARQL URIs into temp table in batches
-      batch_size = 1000
-
-      Enum.chunk_every(sparql_uris, batch_size)
-      |> Enum.each(fn batch ->
-        placeholders = Enum.map_join(1..length(batch), ", ", fn i -> "($#{i})" end)
-        sql = "INSERT INTO sparql_results VALUES #{placeholders}"
-
-        {:ok, _} = Duckdbex.query(conn, sql, batch)
-      end)
-
-      # Query for URIs that don't exist in xml_files
-      sql = """
-      SELECT uri FROM sparql_results
-      WHERE uri NOT IN (SELECT uri FROM xml_files)
-      """
-
-      case Duckdbex.query(conn, sql) do
+      case Duckdbex.query(conn, "SELECT COUNT(*) FROM formex_documents") do
         {:ok, result} ->
-          rows = Duckdbex.fetch_all(result)
-          new_uris = Enum.map(rows, fn [uri] -> uri end)
+          [[count]] = Duckdbex.fetch_all(result)
           Duckdbex.release(result)
-          {:ok, new_uris}
+          {:ok, count}
 
         {:error, reason} ->
           {:error, reason}
       end
     after
-      # Clean up temp table and connection
-      Duckdbex.query(conn, "DROP TABLE IF EXISTS sparql_results")
       Duckdbex.release(conn)
       Duckdbex.release(db)
     end
@@ -136,7 +174,7 @@ defmodule FormexV4.Repository do
     escape = fn str -> if str, do: String.replace(str, "'", "''"), else: "NULL" end
 
     """
-    INSERT INTO xml_files
+    INSERT INTO formex_documents
         (id, xml_content, version, root_element, file_size, uri, work_id, expr_id, man_id, cs_id)
     SELECT
         '#{escape.(metadata.id)}'::UUID,
@@ -156,7 +194,7 @@ defmodule FormexV4.Repository do
 
   # Private helper: checks if ID exists in database using parameter binding
   defp check_id_exists(conn, id) do
-    check_sql = "SELECT COUNT(*) FROM xml_files WHERE id = $1"
+    check_sql = "SELECT COUNT(*) FROM formex_documents WHERE id = $1"
     {:ok, check_result} = Duckdbex.query(conn, check_sql, [id])
     [[exists_count]] = Duckdbex.fetch_all(check_result)
     Duckdbex.release(check_result)

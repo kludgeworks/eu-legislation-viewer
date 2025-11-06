@@ -4,7 +4,7 @@ defmodule FormexV4.TestHelper do
   """
 
   @doc """
-  Creates a temporary test database with the xml_files schema.
+  Creates a temporary test database with the formex_documents schema.
   Returns the path to the database file.
   Database is created in the system temp directory.
 
@@ -14,9 +14,9 @@ defmodule FormexV4.TestHelper do
     {:ok, db} = Duckdbex.open(db_path)
     {:ok, conn} = Duckdbex.connection(db)
 
-    # Create xml_files table with same schema as production
+    # Create formex_documents table with same schema as production
     sql = """
-    CREATE TABLE IF NOT EXISTS xml_files (
+    CREATE TABLE IF NOT EXISTS formex_documents (
         id UUID PRIMARY KEY,
         xml_content VARCHAR,
         version VARCHAR,
@@ -116,3 +116,7 @@ defmodule FormexV4.TestHelper do
     Path.join(System.tmp_dir!(), filename)
   end
 end
+
+# Start ExUnit with integration tests excluded by default
+# Run with: mix test --include integration
+ExUnit.start(exclude: [:integration])

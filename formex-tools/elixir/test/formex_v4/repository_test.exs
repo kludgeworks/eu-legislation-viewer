@@ -16,21 +16,83 @@ defmodule FormexV4.RepositoryTest do
     {:ok, db_path: db_path}
   end
 
-  describe "compute_new_uris/2" do
+  describe "filter_new_uris/2" do
     test "returns all URIs when database is empty", %{db_path: db_path} do
-      sparql_uris = [
+      test_uris = [
         "http://example.com/doc1",
         "http://example.com/doc2",
         "http://example.com/doc3"
       ]
 
-      assert {:ok, new_uris} = Repository.compute_new_uris(db_path, sparql_uris)
+      assert {:ok, new_uris} = Repository.filter_new_uris(db_path, test_uris)
       assert length(new_uris) == 3
-      assert Enum.sort(new_uris) == Enum.sort(sparql_uris)
+      assert Enum.sort(new_uris) == Enum.sort(test_uris)
+    end
+
+    test "filters out existing URIs from database", %{db_path: db_path} do
+      # Insert test files
+      files_with_metadata =
+        Enum.map(1..3, fn i ->
+          xml_content =
+            String.replace(TestHelper.sample_formex_xml(), "Test Document", "Test Document #{i}")
+
+          xml_path = TestHelper.create_test_xml_file(xml_content, filename: "test_#{i}.xml")
+
+          work_id = UUID.uuid1()
+
+          metadata = %{
+            id: UUID.uuid1(),
+            file_path: xml_path,
+            uri:
+              TestHelper.cellar_uri(
+                work_id,
+                "0001",
+                "03",
+                "DOC_#{i}"
+              ),
+            root_element: "ACT",
+            version: "formex-05.56-20160701",
+            file_size: File.stat!(xml_path).size,
+            work_id: work_id,
+            expr_id: "0001",
+            man_id: "03",
+            cs_id: "DOC_#{i}"
+          }
+
+          {xml_path, metadata}
+        end)
+
+      on_exit(fn ->
+        Enum.each(files_with_metadata, fn {path, _metadata} ->
+          TestHelper.cleanup_test_file(path)
+        end)
+      end)
+
+      metadata_list = Enum.map(files_with_metadata, fn {_path, metadata} -> metadata end)
+      existing_uris = Enum.map(metadata_list, & &1.uri)
+
+      {:ok, _count} = Repository.insert_metadata_batch(db_path, metadata_list)
+
+      # Test with mix of existing and new URIs
+      test_uris =
+        existing_uris ++
+          [
+            "http://example.com/new1",
+            "http://example.com/new2"
+          ]
+
+      assert {:ok, new_uris} = Repository.filter_new_uris(db_path, test_uris)
+      assert length(new_uris) == 2
+      assert "http://example.com/new1" in new_uris
+      assert "http://example.com/new2" in new_uris
+      refute Enum.any?(existing_uris, fn uri -> uri in new_uris end)
+    end
+
+    test "returns empty list for empty input", %{db_path: db_path} do
+      assert {:ok, []} = Repository.filter_new_uris(db_path, [])
     end
 
     test "returns empty list when all URIs exist", %{db_path: db_path} do
-      # Insert a test file
       xml_content = TestHelper.sample_formex_xml()
       xml_path = TestHelper.create_test_xml_file(xml_content)
       uri = TestHelper.sample_cellar_uri()
@@ -52,30 +114,7 @@ defmodule FormexV4.RepositoryTest do
 
       {:ok, _count} = Repository.insert_metadata_batch(db_path, [metadata])
 
-      # Query with mix of existing and new URIs
-      sparql_uris = [
-        uri,
-        "http://example.com/new1",
-        "http://example.com/new2"
-      ]
-
-      assert {:ok, new_uris} = Repository.compute_new_uris(db_path, sparql_uris)
-      assert length(new_uris) == 2
-      assert "http://example.com/new1" in new_uris
-      assert "http://example.com/new2" in new_uris
-      refute uri in new_uris
-    end
-
-    test "handles large lists efficiently", %{db_path: db_path} do
-      # Create 2000 URIs
-      sparql_uris = Enum.map(1..2000, fn i -> "http://example.com/doc#{i}" end)
-
-      assert {:ok, new_uris} = Repository.compute_new_uris(db_path, sparql_uris)
-      assert length(new_uris) == 2000
-    end
-
-    test "handles empty list", %{db_path: db_path} do
-      assert {:ok, []} = Repository.compute_new_uris(db_path, [])
+      assert {:ok, []} = Repository.filter_new_uris(db_path, [uri])
     end
   end
 
@@ -107,7 +146,7 @@ defmodule FormexV4.RepositoryTest do
       # Verify the file was inserted
       {:ok, db} = Duckdbex.open(db_path)
       {:ok, conn} = Duckdbex.connection(db)
-      {:ok, result} = Duckdbex.query(conn, "SELECT COUNT(*) FROM xml_files WHERE uri = $1", [uri])
+      {:ok, result} = Duckdbex.query(conn, "SELECT COUNT(*) FROM formex_documents WHERE uri = $1", [uri])
       [[uri_count]] = Duckdbex.fetch_all(result)
       Duckdbex.release(result)
       Duckdbex.release(conn)
@@ -165,7 +204,7 @@ defmodule FormexV4.RepositoryTest do
 
       Enum.each(metadata_list, fn metadata ->
         {:ok, result} =
-          Duckdbex.query(conn, "SELECT COUNT(*) FROM xml_files WHERE uri = $1", [metadata.uri])
+          Duckdbex.query(conn, "SELECT COUNT(*) FROM formex_documents WHERE uri = $1", [metadata.uri])
 
         [[uri_count]] = Duckdbex.fetch_all(result)
         Duckdbex.release(result)
@@ -203,7 +242,7 @@ defmodule FormexV4.RepositoryTest do
       {:ok, conn} = Duckdbex.connection(db)
 
       {:ok, result} =
-        Duckdbex.query(conn, "SELECT xml_content FROM xml_files WHERE uri = $1", [uri])
+        Duckdbex.query(conn, "SELECT xml_content FROM formex_documents WHERE uri = $1", [uri])
 
       rows = Duckdbex.fetch_all(result)
       Duckdbex.release(result)
@@ -244,7 +283,7 @@ defmodule FormexV4.RepositoryTest do
       # Verify only one record exists
       {:ok, db} = Duckdbex.open(db_path)
       {:ok, conn} = Duckdbex.connection(db)
-      {:ok, result} = Duckdbex.query(conn, "SELECT COUNT(*) FROM xml_files WHERE uri = $1", [uri])
+      {:ok, result} = Duckdbex.query(conn, "SELECT COUNT(*) FROM formex_documents WHERE uri = $1", [uri])
       [[count]] = Duckdbex.fetch_all(result)
       Duckdbex.release(result)
       Duckdbex.release(conn)
