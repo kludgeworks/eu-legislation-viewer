@@ -19,7 +19,7 @@ defmodule FormexV4.MixProject do
 
   defp deps do
     [
-      {:broadway, "~> 1.0"},
+      {:broadway, "~> 1.2.1"},
       {:req, "~> 0.4"},
       {:duckdbex, "~> 0.3"},
       {:saxy, "~> 1.5"},

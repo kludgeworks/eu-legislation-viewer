@@ -42,6 +42,7 @@ defmodule Mix.Tasks.Formex.Sync do
   @default_chunk_size 5000
   @default_concurrency 12
   @default_batch_size 500
+  @max_wait_time 3_600_000  # 1 hour timeout for very large syncs
 
   @impl Mix.Task
   def run(args) do
@@ -86,7 +87,26 @@ defmodule Mix.Tasks.Formex.Sync do
     Logger.info("⚡ Concurrency: #{concurrency}")
     Logger.info("📦 Batch size: #{batch_size}")
 
-    # Start pipeline
+    # Attach telemetry handler BEFORE starting pipeline to avoid race condition
+    # Broadway is designed for long-lived pipelines, so we need to explicitly
+    # detect completion and stop the pipeline for batch job use cases.
+    task_pid = self()
+
+    # Suppress "local function" performance warning for anonymous telemetry handler
+    Logger.configure(level: :warning)
+    :telemetry.attach(
+      "mix-task-producer-complete",
+      [:formex_v4, :producer, :complete],
+      fn _name, measurements, _metadata, _config ->
+        total = Map.get(measurements, :total, 0)
+        Logger.info("📨 Producer finished dispatching #{total} URIs, waiting for batches to flush...")
+        send(task_pid, :producer_complete)
+      end,
+      nil
+    )
+    Logger.configure(level: :info)
+
+    # Start pipeline AFTER attaching telemetry handler
     pipeline_opts = [
       db_path: db_path,
       endpoint: endpoint,
@@ -97,15 +117,33 @@ defmodule Mix.Tasks.Formex.Sync do
       progress: progress
     ]
 
-    {:ok, _pid} = Pipeline.start_link(pipeline_opts)
+    {:ok, pipeline_pid} = Pipeline.start_link(pipeline_opts)
 
-    # Keep running until pipeline completes
-    # Broadway will automatically stop when producer runs out of messages
-    ref = Process.monitor(Pipeline)
+    # Monitor the pipeline process
+    ref = Process.monitor(pipeline_pid)
 
+    # Wait for producer to finish dispatching all URIs
     receive do
+      :producer_complete ->
+        # Give Broadway time to process remaining messages and flush batches
+        # This accounts for batch_timeout plus buffer for processing
+        flush_wait_time = Pipeline.batch_flush_wait_time()
+        Logger.debug("Waiting #{flush_wait_time}ms for batch flush...")
+        Process.sleep(flush_wait_time)
+
+        # Now stop the pipeline gracefully
+        Logger.info("🛑 Stopping pipeline...")
+        Broadway.stop(pipeline_pid, :normal, 10_000)
+
+        # Cleanup
+        :telemetry.detach("mix-task-producer-complete")
+        FormexV4.Telemetry.ProgressReporter.stop()
+
+        Logger.info("✅ Sync completed successfully")
+
       {:DOWN, ^ref, :process, _pid, reason} ->
-        # Stop telemetry reporter if running
+        # Pipeline crashed before completion
+        :telemetry.detach("mix-task-producer-complete")
         FormexV4.Telemetry.ProgressReporter.stop()
 
         case reason do
@@ -116,6 +154,13 @@ defmodule Mix.Tasks.Formex.Sync do
             Logger.error("❌ Sync failed: #{inspect(other)}")
             System.halt(1)
         end
+    after
+      @max_wait_time ->
+        Logger.error("❌ Sync timed out after #{@max_wait_time}ms")
+        :telemetry.detach("mix-task-producer-complete")
+        FormexV4.Telemetry.ProgressReporter.stop()
+        Broadway.stop(pipeline_pid, :shutdown, 5_000)
+        System.halt(1)
     end
   end
 end
