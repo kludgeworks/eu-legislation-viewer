@@ -10,6 +10,7 @@ versions = ['formex-06.02.3-20250123.xd']
 root_elements = ['GENERAL']
 with_version = false
 limit = null
+uri = 'http://publications.europa.eu/resource/cellar/example.0001.01/DOC_1'
 
 [sqlfluff:rules:capitalisation.keywords]
 # Capitalization style for keywords (formerly L010)

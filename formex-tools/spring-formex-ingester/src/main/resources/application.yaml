@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: formex-ingester
+
+  datasource:
+    url: jdbc:duckdb:./formex.db
+    driver-class-name: org.duckdb.DuckDBDriver
+    hikari:
+      maximum-pool-size: 1  # DuckDB works best with single connection
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+
+  batch:
+    jdbc:
+      initialize-schema: never  # We manage our own schema via schema.sql
+      platform: hsql  # DuckDB is most compatible with HSQL dialect for Spring Batch
+    job:
+      enabled: false  # Manual trigger via REST endpoint or CommandLineRunner
+
+sparql:
+  endpoint: https://publications.europa.eu/webapi/rdf/sparql
+
+temp:
+  dir: ${java.io.tmpdir}/formex-ingester/xml
+
