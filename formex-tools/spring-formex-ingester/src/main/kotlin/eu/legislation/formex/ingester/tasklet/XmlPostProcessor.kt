@@ -1,6 +1,6 @@
 package eu.legislation.formex.ingester.tasklet
 
-import org.slf4j.LoggerFactory
+import eu.legislation.formex.ingester.util.logger
 import org.springframework.batch.core.scope.context.ChunkContext
 import org.springframework.batch.core.step.StepContribution
 import org.springframework.batch.core.step.tasklet.Tasklet
@@ -29,10 +29,7 @@ class XmlPostProcessor(
         isNamespaceAware = true
     }
     private val versionPattern = Pattern.compile("([^/]+\\.xd)$")
-
-    companion object {
-        private val log = LoggerFactory.getLogger(XmlPostProcessor::class.java)
-    }
+    private val logger = logger()
 
     override fun execute(contribution: StepContribution, chunkContext: ChunkContext): RepeatStatus? {
         // Fetch all records that need post-processing
@@ -65,13 +62,13 @@ class XmlPostProcessor(
                 jdbcTemplate.update(updateSql, version, rootElementName, id)
                 updated++
             }.onFailure { e ->
-                log.warn("Failed to parse XML for record $id: ${e.message}")
+                logger.warn { "Failed to parse XML for record $id: ${e.message}" }
                 // Continue processing other records
             }
         }
 
         contribution.incrementWriteCount(updated.toLong())
-        log.info("Post-processing complete: $updated records updated with version and root_element")
+        logger.info { "Post-processing complete: $updated records updated with version and root_element" }
 
         return RepeatStatus.FINISHED
     }

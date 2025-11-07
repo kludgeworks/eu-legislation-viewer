@@ -1,6 +1,6 @@
 package eu.legislation.formex.ingester.processor
 
-import eu.legislation.formex.ingester.model.SparqlUri
+import eu.legislation.formex.ingester.model.CellarData
 import jakarta.annotation.PreDestroy
 import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.jdbc.core.JdbcTemplate
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 @Component
 class UriFilterProcessor(
     private val jdbcTemplate: JdbcTemplate
-) : ItemProcessor<SparqlUri, SparqlUri> {
+) : ItemProcessor<CellarData, CellarData> {
 
     private val existingUris = mutableSetOf<String>()
     private val batchBuffer = mutableListOf<String>()
@@ -18,8 +18,8 @@ class UriFilterProcessor(
         private const val BATCH_SIZE = 1000
     }
 
-    override fun process(item: SparqlUri): SparqlUri? {
-        batchBuffer.add(item.uri)
+    override fun process(item: CellarData): CellarData? {
+        batchBuffer.add(item.item)
 
         // When buffer reaches batch size, check database
         if (batchBuffer.size >= BATCH_SIZE) {
@@ -27,7 +27,7 @@ class UriFilterProcessor(
         }
 
         // Return null if URI already exists (filters it out)
-        return item.takeUnless { existingUris.contains(it.uri) }
+        return item.takeUnless { existingUris.contains(it.item) }
     }
 
     private fun checkBatchInDatabase() {

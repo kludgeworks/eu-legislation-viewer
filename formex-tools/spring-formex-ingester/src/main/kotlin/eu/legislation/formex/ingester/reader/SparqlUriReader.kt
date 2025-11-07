@@ -1,62 +1,73 @@
 package eu.legislation.formex.ingester.reader
 
-import com.jayway.jsonpath.JsonPath
-import eu.legislation.formex.ingester.model.SparqlUri
-import org.springframework.batch.infrastructure.item.ExecutionContext
-import org.springframework.batch.infrastructure.item.support.AbstractItemStreamItemReader
-import org.springframework.beans.factory.annotation.Value
-import org.springframework.http.HttpEntity
-import org.springframework.http.HttpHeaders
+import eu.legislation.formex.ingester.config.properties.SparqlProperties
+import eu.legislation.formex.ingester.model.CellarData
+import eu.legislation.formex.ingester.model.SparqlResponse
+import org.springframework.batch.infrastructure.item.ItemReader
+import org.springframework.batch.infrastructure.item.support.IteratorItemReader
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.util.LinkedMultiValueMap
-import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.RestClient
 
+/**
+ * Factory for creating ItemReader that fetches structured XML metadata from SPARQL endpoint.
+ *
+ * Queries the EU Publications Office SPARQL endpoint to retrieve complete metadata
+ * for XML documents including work ID, expression ID, manifestation ID, content stream ID,
+ * language, and MIME type. This eliminates the need for URI parsing downstream.
+ *
+ * Uses IteratorItemReader since the HTTP endpoint doesn't support streaming and returns
+ * all results in a single response.
+ */
 @Component
 class SparqlUriReader(
-    private val restTemplate: RestTemplate,
-    @Value("\${sparql.endpoint}") private val sparqlEndpoint: String
-) : AbstractItemStreamItemReader<SparqlUri>() {
+    private val restClient: RestClient,
+    private val sparqlProperties: SparqlProperties
+) {
 
-    private var uriIterator: Iterator<String>? = null
-    // Removed the extra closing brace here!
+    /**
+     * Creates an ItemReader with all SPARQL results fetched and loaded into memory.
+     *
+     * @return IteratorItemReader containing all fetched CellarData items
+     */
+    fun createReader(): ItemReader<CellarData> {
+        val items = fetchSparqlData()
+        return IteratorItemReader(items)
+    }
 
-    override fun open(executionContext: ExecutionContext) {
+    private fun fetchSparqlData(): List<CellarData> {
         val query = """
-            SELECT ?item
+            PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+            PREFIX annot: <http://publications.europa.eu/ontology/annotation#>
+            
+            SELECT ?item ?workId ?expressionId ?manifestationId ?contentStreamId ?language ?mimeType
             WHERE {
-              # Your SPARQL query here
+              ?work cdm:work_id_document ?workId .
+              ?expression cdm:expression_belongs_to_work ?work ;
+                          cdm:expression_uses_language <http://publications.europa.eu/resource/authority/language/${sparqlProperties.language}> ;
+                          cdm:expression_id_document ?expressionId .
+              ?manifestation cdm:manifestation_manifests_expression ?expression ;
+                             cdm:manifestation_id_document ?manifestationId .
+              ?item cdm:manifestation_manifests_expression ?expression ;
+                    cdm:content_stream_id ?contentStreamId ;
+                    cdm:content_stream_type <http://publications.europa.eu/resource/authority/content-stream-type/FORMEX> ;
+                    cdm:content_stream_mime_type ?mimeType .
+              BIND(LCASE(STR(?language)) AS ?language)
             }
             """.trimIndent()
 
-        val headers = HttpHeaders().apply {
-            contentType = MediaType.APPLICATION_FORM_URLENCODED
-            accept = listOf(MediaType.parseMediaType("application/sparql-results+json"))
-        }
+        val params = LinkedMultiValueMap<String, String>()
+        params.add("query", query)
+        
+        val sparqlResponse = restClient.post()
+            .uri(sparqlProperties.endpoint)
+            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+            .accept(MediaType.parseMediaType("application/sparql-results+json"))
+            .body(params)
+            .retrieve()
+            .body(SparqlResponse::class.java) ?: throw IllegalStateException("SPARQL endpoint returned null response")
 
-        val body = LinkedMultiValueMap<String, String>().apply {
-            add("query", query)
-        }
-
-        val request = HttpEntity(body, headers)
-
-        val jsonResponse = restTemplate.postForObject(
-            sparqlEndpoint,
-            request,
-            String::class.java
-        )
-
-        // Extract URIs using JsonPath: $.results.bindings[*].item.value
-        val uris: List<String> = JsonPath.read(jsonResponse, "$.results.bindings[*].item.value")
-        this.uriIterator = uris.iterator()
-
-        // Save count to execution context for monitoring
-        executionContext.putLong("totalUris", uris.size.toLong())
-    }
-
-    override fun read(): SparqlUri? {
-        return uriIterator?.takeIf { it.hasNext() }?.let {
-            SparqlUri(it.next())
-        }
+        return sparqlResponse.results.bindings.map { it.toCellarData() }
     }
 }

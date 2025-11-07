@@ -15,16 +15,12 @@ spring:
     job:
       enabled: false
 
+  main:
+    allow-bean-definition-overriding: true
+
 sparql:
   endpoint: http://localhost:9999/sparql
-  query: |
-    SELECT ?item
-    WHERE {
-      ?item a <http://example.org/TestItem> .
-    }
-
-temp:
-  dir: ${java.io.tmpdir}/formex-ingester-test/xml
+  language: eng
 
 sql:
   post-process:

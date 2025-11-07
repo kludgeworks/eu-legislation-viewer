@@ -1,6 +1,6 @@
 package eu.legislation.formex.ingester.listener
 
-import org.slf4j.LoggerFactory
+import eu.legislation.formex.ingester.util.logger
 import org.springframework.batch.core.BatchStatus
 import org.springframework.batch.core.ExitStatus
 import org.springframework.batch.core.listener.StepExecutionListener
@@ -19,10 +19,7 @@ import java.util.concurrent.ConcurrentHashMap
 class TempFileCleanupListener : StepExecutionListener {
 
     private val tempFiles = ConcurrentHashMap.newKeySet<String>()
-
-    companion object {
-        private val log = LoggerFactory.getLogger(TempFileCleanupListener::class.java)
-    }
+    private val logger = logger()
 
     /**
      * Adds a temporary file path to the cleanup tracking set.
@@ -48,16 +45,16 @@ class TempFileCleanupListener : StepExecutionListener {
                     deletedCount++
                 }.onFailure { e ->
                     // Log but don't fail the step
-                    log.warn("Failed to delete temp file: $path - ${e.message}")
+                    logger.warn { "Failed to delete temp file: $path - ${e.message}" }
                     failedCount++
                 }
             }
 
-            log.info("Temp file cleanup: $deletedCount deleted, $failedCount failed")
+            logger.info { "Temp file cleanup: $deletedCount deleted, $failedCount failed" }
             tempFiles.clear()
         } else {
             // On failure, keep files for debugging/retry
-            log.info("Step failed. ${tempFiles.size} temp files retained for debugging")
+            logger.info { "Step failed. ${tempFiles.size} temp files retained for debugging" }
         }
 
         return stepExecution.exitStatus

@@ -1,7 +1,7 @@
 package eu.legislation.formex.ingester.config
 
 import eu.legislation.formex.ingester.listener.TempFileCleanupListener
-import eu.legislation.formex.ingester.model.SparqlUri
+import eu.legislation.formex.ingester.model.CellarData
 import eu.legislation.formex.ingester.model.XmlMetadata
 import eu.legislation.formex.ingester.processor.StreamingXmlDownloadProcessor
 import eu.legislation.formex.ingester.processor.UriFilterProcessor
@@ -21,7 +21,8 @@ import org.springframework.core.task.AsyncTaskExecutor
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 import org.springframework.transaction.PlatformTransactionManager
-import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.RestClient
+import java.time.Duration
 
 /**
  * Spring Batch job configuration for processing Formex XML documents.
@@ -62,7 +63,7 @@ class FormexXmlBatchJob {
      *
      * @param jobRepository Spring Batch job repository
      * @param transactionManager Transaction manager for chunk commits
-     * @param reader SPARQL URI reader
+     * @param sparqlReader Factory for creating SPARQL URI reader
      * @param filterProcessor Filters out existing URIs
      * @param downloadProcessor Downloads XML and calculates metadata
      * @param writer Inserts records into database
@@ -73,21 +74,21 @@ class FormexXmlBatchJob {
     fun downloadXmlStep(
         jobRepository: JobRepository,
         transactionManager: PlatformTransactionManager,
-        reader: SparqlUriReader,
+        sparqlReader: SparqlUriReader,
         filterProcessor: UriFilterProcessor,
         downloadProcessor: StreamingXmlDownloadProcessor,
         writer: XmlDatabaseWriter,
         cleanupListener: TempFileCleanupListener
     ): Step {
         // Chain filter and download processors
-        val compositeProcessor = CompositeItemProcessor<SparqlUri, XmlMetadata>().apply {
+        val compositeProcessor = CompositeItemProcessor<CellarData, XmlMetadata>().apply {
             setDelegates(listOf<ItemProcessor<*, *>>(filterProcessor, downloadProcessor))
         }
 
         return StepBuilder("downloadXml", jobRepository)
-            .chunk<SparqlUri, XmlMetadata>(10)
+            .chunk<CellarData, XmlMetadata>(10)
             .transactionManager(transactionManager)
-            .reader(reader)
+            .reader(sparqlReader.createReader())
             .processor(compositeProcessor)
             .writer(writer)
             .listener(cleanupListener)
@@ -137,20 +138,23 @@ class FormexXmlBatchJob {
     }
 
     /**
-     * RestTemplate configured for large file downloads.
+     * RestClient configured for large file downloads.
      *
      * Timeouts:
      * - Connect timeout: 30 seconds
      * - Read timeout: 300 seconds (5 minutes for large files)
      *
-     * @return The configured RestTemplate
+     * @return The configured RestClient
      */
     @Bean
-    fun restTemplate(): RestTemplate = RestTemplate().apply {
-        // Configure for large file downloads
-        requestFactory = HttpComponentsClientHttpRequestFactory().apply {
-            setConnectTimeout(30000)
-            setReadTimeout(300000) // 5 minutes for large files
+    fun restClient(): RestClient {
+        val requestFactory = HttpComponentsClientHttpRequestFactory().apply {
+            setConnectTimeout(Duration.ofSeconds(30))
+            setReadTimeout(Duration.ofMinutes(5))
         }
+        
+        return RestClient.builder()
+            .requestFactory(requestFactory)
+            .build()
     }
 }
