@@ -18,7 +18,6 @@ import org.springframework.batch.infrastructure.item.support.CompositeItemProces
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.task.AsyncTaskExecutor
-import org.springframework.core.task.TaskExecutor
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 import org.springframework.transaction.PlatformTransactionManager
@@ -29,7 +28,7 @@ import org.springframework.web.client.RestTemplate
  *
  * Job flow:
  * 1. downloadXmlStep: Fetch URIs from SPARQL, filter existing, download XML files in parallel
- * 2. postProcessStep: Extract version and root_element using DuckDB webbed extension
+ * 2. postProcessStep: Extract version and root_element from XML documents
  */
 @Configuration
 class FormexXmlBatchJob {
@@ -58,7 +57,7 @@ class FormexXmlBatchJob {
      * - Reads URIs from SPARQL endpoint (single HTTP request)
      * - Filters out existing URIs (batch database checks)
      * - Downloads XML files in parallel (streaming, no memory loading)
-     * - Inserts records into DuckDB
+     * - Inserts records into H2 database
      * - Cleans up temp files after successful completion
      *
      * @param jobRepository Spring Batch job repository
@@ -87,6 +86,7 @@ class FormexXmlBatchJob {
 
         return StepBuilder("downloadXml", jobRepository)
             .chunk<SparqlUri, XmlMetadata>(10)
+            .transactionManager(transactionManager)
             .reader(reader)
             .processor(compositeProcessor)
             .writer(writer)
@@ -98,7 +98,6 @@ class FormexXmlBatchJob {
     /**
      * Step 2: Post-process XML documents to extract metadata.
      *
-     * - Installs DuckDB webbed extension
      * - Extracts version from noNamespaceSchemaLocation attribute
      * - Extracts root element name
      * - Updates only new records (WHERE version IS NULL)

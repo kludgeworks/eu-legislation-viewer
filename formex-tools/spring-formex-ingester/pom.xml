@@ -12,7 +12,7 @@
 	<artifactId>formex-ingester</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>formex-ingester</name>
-	<description>Spring Batch application for ingesting Formex XML documents from SPARQL endpoint into DuckDB</description>
+	<description>Spring Batch application for ingesting Formex XML documents from SPARQL endpoint into H2 database</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -89,28 +89,7 @@
 		<!-- Test Dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-batch-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webmvc-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
