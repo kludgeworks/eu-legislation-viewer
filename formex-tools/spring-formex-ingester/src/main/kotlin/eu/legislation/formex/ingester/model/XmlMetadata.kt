@@ -13,5 +13,5 @@ data class XmlMetadata(
     val exprId: String?,
     val manId: String?,
     val csId: String?,
-    val tempFilePath: String  // Path to downloaded file
+    val tempFilePath: String
 )

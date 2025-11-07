@@ -8,14 +8,16 @@ import eu.legislation.formex.ingester.processor.UriFilterProcessor
 import eu.legislation.formex.ingester.reader.SparqlUriReader
 import eu.legislation.formex.ingester.tasklet.XmlPostProcessor
 import eu.legislation.formex.ingester.writer.XmlDatabaseWriter
-import org.springframework.batch.core.Job
-import org.springframework.batch.core.Step
+import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.repository.JobRepository
+import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
-import org.springframework.batch.item.support.CompositeItemProcessor
+import org.springframework.batch.infrastructure.item.ItemProcessor
+import org.springframework.batch.infrastructure.item.support.CompositeItemProcessor
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.task.AsyncTaskExecutor
 import org.springframework.core.task.TaskExecutor
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
@@ -80,19 +82,16 @@ class FormexXmlBatchJob {
     ): Step {
         // Chain filter and download processors
         val compositeProcessor = CompositeItemProcessor<SparqlUri, XmlMetadata>().apply {
-            setDelegates(listOf(filterProcessor, downloadProcessor))
+            setDelegates(listOf<ItemProcessor<*, *>>(filterProcessor, downloadProcessor))
         }
 
         return StepBuilder("downloadXml", jobRepository)
-            .chunk<SparqlUri, XmlMetadata>(10, transactionManager) // Smaller chunks for large files
+            .chunk<SparqlUri, XmlMetadata>(10)
             .reader(reader)
             .processor(compositeProcessor)
             .writer(writer)
-            .listener(cleanupListener)  // Cleanup temp files after step completes
-            .taskExecutor(taskExecutor()) // Parallel processing
-            // Note: throttleLimit() is deprecated in Spring Batch 5.x but safe to use until 6.0
-            // There's currently no direct replacement (see: https://github.com/spring-projects/spring-batch/issues/4389)
-            .throttleLimit(10) // Max 10 concurrent downloads
+            .listener(cleanupListener)
+            .taskExecutor(taskExecutor())
             .build()
     }
 
@@ -130,7 +129,7 @@ class FormexXmlBatchJob {
      * @return The configured task executor
      */
     @Bean
-    fun taskExecutor(): TaskExecutor = ThreadPoolTaskExecutor().apply {
+    fun taskExecutor(): AsyncTaskExecutor = ThreadPoolTaskExecutor().apply {
         corePoolSize = 10
         maxPoolSize = 20
         queueCapacity = 100

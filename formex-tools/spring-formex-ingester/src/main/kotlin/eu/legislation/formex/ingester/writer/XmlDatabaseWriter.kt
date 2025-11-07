@@ -2,8 +2,8 @@ package eu.legislation.formex.ingester.writer
 
 import eu.legislation.formex.ingester.listener.TempFileCleanupListener
 import eu.legislation.formex.ingester.model.XmlMetadata
-import org.springframework.batch.item.Chunk
-import org.springframework.batch.item.ItemWriter
+import org.springframework.batch.infrastructure.item.Chunk
+import org.springframework.batch.infrastructure.item.ItemWriter
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 import java.io.UncheckedIOException
@@ -27,7 +27,12 @@ class XmlDatabaseWriter(
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL)
             """.trimIndent()
 
-        jdbcTemplate.batchUpdate(sql, chunk.items, chunk.size()) { ps, metadata ->
+        val itemsList = chunk.items
+        jdbcTemplate.batchUpdate(sql, itemsList, itemsList.size) { ps, metadata ->
+            // Spring Batch filters out null items, but the compiler requires a null check.
+            // If a null is received here, it's an unexpected error state.
+            metadata ?: throw IllegalStateException("Received a null item in the writer, which should have been filtered out.")
+
             try {
                 ps.setObject(1, metadata.id)
 

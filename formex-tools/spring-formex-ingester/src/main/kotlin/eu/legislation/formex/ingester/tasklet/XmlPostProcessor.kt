@@ -1,13 +1,12 @@
 package eu.legislation.formex.ingester.tasklet
 
 import org.slf4j.LoggerFactory
-import org.springframework.batch.core.StepContribution
 import org.springframework.batch.core.scope.context.ChunkContext
+import org.springframework.batch.core.step.StepContribution
 import org.springframework.batch.core.step.tasklet.Tasklet
-import org.springframework.batch.repeat.RepeatStatus
+import org.springframework.batch.infrastructure.repeat.RepeatStatus
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
-import org.w3c.dom.Element
 import org.xml.sax.InputSource
 import java.io.StringReader
 import java.util.UUID
@@ -35,7 +34,7 @@ class XmlPostProcessor(
         private val log = LoggerFactory.getLogger(XmlPostProcessor::class.java)
     }
 
-    override fun execute(contribution: StepContribution, chunkContext: ChunkContext): RepeatStatus {
+    override fun execute(contribution: StepContribution, chunkContext: ChunkContext): RepeatStatus? {
         // Fetch all records that need post-processing
         val selectSql = "SELECT id, xml_content FROM formex_documents WHERE version IS NULL"
         val records = jdbcTemplate.queryForList(selectSql)

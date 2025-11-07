@@ -2,7 +2,7 @@ package eu.legislation.formex.ingester.processor
 
 import eu.legislation.formex.ingester.model.SparqlUri
 import jakarta.annotation.PreDestroy
-import org.springframework.batch.item.ItemProcessor
+import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 
@@ -38,7 +38,7 @@ class UriFilterProcessor(
         val sql = "SELECT uri FROM formex_documents WHERE uri IN ($placeholders)"
 
         val found = jdbcTemplate.queryForList(sql, String::class.java, *batchBuffer.toTypedArray())
-        existingUris.addAll(found)
+        existingUris.addAll(found.filterNotNull())
 
         batchBuffer.clear()
     }

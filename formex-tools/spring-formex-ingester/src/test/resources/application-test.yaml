@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+
+  batch:
+    jdbc:
+      initialize-schema: always
+      platform: h2
+    job:
+      enabled: false
+
+sparql:
+  endpoint: http://localhost:9999/sparql
+  query: |
+    SELECT ?item
+    WHERE {
+      ?item a <http://example.org/TestItem> .
+    }
+
+temp:
+  dir: ${java.io.tmpdir}/formex-ingester-test/xml
+
+sql:
+  post-process:
+    select: "SELECT id, xml_content FROM formex_documents WHERE version IS NULL"
+    update: "UPDATE formex_documents SET version = ?, root_element = ? WHERE id = ?"

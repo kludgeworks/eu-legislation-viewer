@@ -2,9 +2,8 @@ package eu.legislation.formex.ingester.reader
 
 import com.jayway.jsonpath.JsonPath
 import eu.legislation.formex.ingester.model.SparqlUri
-import org.springframework.batch.item.ExecutionContext
-import org.springframework.batch.item.ItemStreamException
-import org.springframework.batch.item.support.AbstractItemStreamItemReader
+import org.springframework.batch.infrastructure.item.ExecutionContext
+import org.springframework.batch.infrastructure.item.support.AbstractItemStreamItemReader
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
@@ -20,10 +19,7 @@ class SparqlUriReader(
 ) : AbstractItemStreamItemReader<SparqlUri>() {
 
     private var uriIterator: Iterator<String>? = null
-
-    init {
-        setName("sparqlUriReader")
-    }
+    // Removed the extra closing brace here!
 
     override fun open(executionContext: ExecutionContext) {
         val query = """
@@ -59,8 +55,8 @@ class SparqlUriReader(
     }
 
     override fun read(): SparqlUri? {
-        return uriIterator?.takeIf { it.hasNext() }?.let { 
-            SparqlUri(it.next()) 
+        return uriIterator?.takeIf { it.hasNext() }?.let {
+            SparqlUri(it.next())
         }
     }
 }

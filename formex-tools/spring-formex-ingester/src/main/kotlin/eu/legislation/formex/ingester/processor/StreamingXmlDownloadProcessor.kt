@@ -3,7 +3,7 @@ package eu.legislation.formex.ingester.processor
 import com.github.f4b6a3.uuid.UuidCreator
 import eu.legislation.formex.ingester.model.SparqlUri
 import eu.legislation.formex.ingester.model.XmlMetadata
-import org.springframework.batch.item.ItemProcessor
+import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpMethod
 import org.springframework.stereotype.Component

@@ -3,8 +3,8 @@ package eu.legislation.formex.ingester.listener
 import org.slf4j.LoggerFactory
 import org.springframework.batch.core.BatchStatus
 import org.springframework.batch.core.ExitStatus
-import org.springframework.batch.core.StepExecution
-import org.springframework.batch.core.StepExecutionListener
+import org.springframework.batch.core.listener.StepExecutionListener
+import org.springframework.batch.core.step.StepExecution
 import org.springframework.stereotype.Component
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -36,7 +36,7 @@ class TempFileCleanupListener : StepExecutionListener {
      * Called after step completes. Only deletes temp files if the step was successful.
      * On failure, files are retained for debugging and potential retry.
      */
-    override fun afterStep(stepExecution: StepExecution): ExitStatus {
+    override fun afterStep(stepExecution: StepExecution): ExitStatus? {
         if (stepExecution.status == BatchStatus.COMPLETED) {
             // Only cleanup on successful completion
             var deletedCount = 0
