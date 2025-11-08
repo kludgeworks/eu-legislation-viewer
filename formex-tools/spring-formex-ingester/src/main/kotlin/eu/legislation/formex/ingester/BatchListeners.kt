@@ -1,7 +1,4 @@
 package eu.legislation.formex.ingester
-
-import eu.legislation.formex.ingester.model.CellarData
-import eu.legislation.formex.ingester.model.XmlMetadata
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.core.BatchStatus
 import org.springframework.batch.core.ExitStatus

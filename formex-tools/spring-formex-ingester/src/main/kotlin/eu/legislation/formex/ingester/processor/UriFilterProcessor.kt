@@ -1,6 +1,6 @@
 package eu.legislation.formex.ingester.processor
 
-import eu.legislation.formex.ingester.model.CellarData
+import eu.legislation.formex.ingester.CellarData
 import jakarta.annotation.PreDestroy
 import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.jdbc.core.JdbcTemplate

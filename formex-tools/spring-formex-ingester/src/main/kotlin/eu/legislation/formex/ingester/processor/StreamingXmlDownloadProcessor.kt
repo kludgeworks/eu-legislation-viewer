@@ -1,8 +1,8 @@
 package eu.legislation.formex.ingester.processor
 
 import com.github.f4b6a3.uuid.UuidCreator
-import eu.legislation.formex.ingester.model.CellarData
-import eu.legislation.formex.ingester.model.XmlMetadata
+import eu.legislation.formex.ingester.CellarData
+import eu.legislation.formex.ingester.XmlMetadata
 import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient

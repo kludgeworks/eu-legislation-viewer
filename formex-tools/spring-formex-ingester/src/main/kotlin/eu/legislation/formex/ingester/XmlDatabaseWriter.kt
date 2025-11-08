@@ -1,7 +1,4 @@
 package eu.legislation.formex.ingester
-
-import eu.legislation.formex.ingester.TempFileCleanupListener
-import eu.legislation.formex.ingester.model.XmlMetadata
 import org.springframework.batch.infrastructure.item.Chunk
 import org.springframework.batch.infrastructure.item.ItemWriter
 import org.springframework.jdbc.core.JdbcTemplate

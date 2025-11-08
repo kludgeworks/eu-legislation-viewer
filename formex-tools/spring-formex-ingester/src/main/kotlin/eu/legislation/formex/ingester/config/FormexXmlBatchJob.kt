@@ -1,13 +1,13 @@
 package eu.legislation.formex.ingester.config
 
+import eu.legislation.formex.ingester.CellarData
+import eu.legislation.formex.ingester.SparqlUriReader
 import eu.legislation.formex.ingester.TempFileCleanupListener
-import eu.legislation.formex.ingester.model.CellarData
-import eu.legislation.formex.ingester.model.XmlMetadata
+import eu.legislation.formex.ingester.XmlDatabaseWriter
+import eu.legislation.formex.ingester.XmlMetadata
+import eu.legislation.formex.ingester.XmlPostProcessor
 import eu.legislation.formex.ingester.processor.StreamingXmlDownloadProcessor
 import eu.legislation.formex.ingester.processor.UriFilterProcessor
-import eu.legislation.formex.ingester.SparqlUriReader
-import eu.legislation.formex.ingester.XmlPostProcessor
-import eu.legislation.formex.ingester.XmlDatabaseWriter
 import org.springframework.batch.core.configuration.annotation.StepScope
 import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.job.builder.JobBuilder

@@ -1,6 +1,6 @@
 package eu.legislation.formex.ingester.processor
 
-import eu.legislation.formex.ingester.model.CellarData
+import eu.legislation.formex.ingester.CellarData
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.jdbc.core.JdbcTemplate
