@@ -8,12 +8,14 @@ import eu.legislation.formex.ingester.processor.UriFilterProcessor
 import eu.legislation.formex.ingester.reader.SparqlUriReader
 import eu.legislation.formex.ingester.tasklet.XmlPostProcessor
 import eu.legislation.formex.ingester.writer.XmlDatabaseWriter
+import org.springframework.batch.core.configuration.annotation.StepScope
 import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
 import org.springframework.batch.infrastructure.item.ItemProcessor
+import org.springframework.batch.infrastructure.item.ItemStreamReader
 import org.springframework.batch.infrastructure.item.support.CompositeItemProcessor
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -53,6 +55,23 @@ class FormexXmlBatchJob {
         .build()
 
     /**
+     * SPARQL CSV reader bean with @StepScope.
+     * 
+     * @StepScope ensures the reader is created per step execution, not during
+     * application context loading. This defers the HTTP call to the SPARQL endpoint
+     * until the step actually runs, allowing the application to start without
+     * requiring the SPARQL endpoint to be available.
+     *
+     * @param sparqlReader Factory for creating the reader
+     * @return Step-scoped ItemStreamReader for CellarData
+     */
+    @Bean
+    @StepScope
+    fun sparqlCsvReader(sparqlReader: SparqlUriReader): ItemStreamReader<CellarData> {
+        return sparqlReader.createReader()
+    }
+
+    /**
      * Step 1: Download XML files and insert into database.
      *
      * - Reads URIs from SPARQL endpoint (single HTTP request)
@@ -63,7 +82,7 @@ class FormexXmlBatchJob {
      *
      * @param jobRepository Spring Batch job repository
      * @param transactionManager Transaction manager for chunk commits
-     * @param sparqlReader Factory for creating SPARQL URI reader
+     * @param reader Step-scoped SPARQL CSV reader
      * @param filterProcessor Filters out existing URIs
      * @param downloadProcessor Downloads XML and calculates metadata
      * @param writer Inserts records into database
@@ -74,7 +93,7 @@ class FormexXmlBatchJob {
     fun downloadXmlStep(
         jobRepository: JobRepository,
         transactionManager: PlatformTransactionManager,
-        sparqlReader: SparqlUriReader,
+        reader: ItemStreamReader<CellarData>,
         filterProcessor: UriFilterProcessor,
         downloadProcessor: StreamingXmlDownloadProcessor,
         writer: XmlDatabaseWriter,
@@ -88,7 +107,7 @@ class FormexXmlBatchJob {
         return StepBuilder("downloadXml", jobRepository)
             .chunk<CellarData, XmlMetadata>(10)
             .transactionManager(transactionManager)
-            .reader(sparqlReader.createReader())
+            .reader(reader)
             .processor(compositeProcessor)
             .writer(writer)
             .listener(cleanupListener)

@@ -1,27 +1,22 @@
 package eu.legislation.formex.ingester
 
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito.mock
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.context.TestConfiguration
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Primary
 import org.springframework.test.context.ActiveProfiles
-import org.springframework.web.client.RestClient
 
+/**
+ * Spring Boot context loading test.
+ * 
+ * Verifies that the application context starts successfully with test configuration.
+ * The lazy-initialized SparqlUriReader prevents HTTP calls during context loading,
+ * deferring them until step execution begins.
+ */
 @SpringBootTest
 @ActiveProfiles("test")
 class FormexIngesterApplicationTests {
 
-    @TestConfiguration
-    class TestConfig {
-        @Bean
-        @Primary
-        fun restClient(): RestClient = mock(RestClient::class.java)
-    }
-
     @Test
     fun contextLoads() {
-        // Verify that the Spring context loads successfully
+        // Verify that the Spring context loads successfully with all beans configured.
     }
 }
