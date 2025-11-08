@@ -51,7 +51,7 @@ class XmlPostProcessor(
 
                 // Extract version from noNamespaceSchemaLocation attribute
                 val schemaLocation = rootElement.getAttribute("noNamespaceSchemaLocation")
-                val version = if (!schemaLocation.isNullOrEmpty()) {
+                val version = if (schemaLocation.isNotEmpty()) {
                     versionPattern.matcher(schemaLocation).let { matcher ->
                         if (matcher.find()) matcher.group(1) else null
                     }

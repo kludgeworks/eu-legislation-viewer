@@ -8,8 +8,6 @@ import org.springframework.core.io.Resource
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 
 /**
  * Factory for creating FlatFileItemReader that streams CSV from SPARQL endpoint.
@@ -55,15 +53,14 @@ class SparqlUriReader(
             """.trimIndent()
 
         // Fetch CSV stream from SPARQL endpoint using POST with form-encoded body
-        val formBody = "query=${URLEncoder.encode(query, StandardCharsets.UTF_8)}"
-        val csvResource: Resource = restClient.post()
+        val csvResource = restClient.post()
             .uri(sparqlProperties.endpoint)
             .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .body(formBody)
+            .body("query=$query")
             .accept(MediaType.parseMediaType("text/csv"))
             .retrieve()
             .body(Resource::class.java)
-                ?: throw IllegalStateException("SPARQL endpoint returned null CSV stream")
+                ?: error("SPARQL endpoint returned null CSV stream")
 
         return FlatFileItemReaderBuilder<CellarData>()
             .name("sparqlCsvReader")

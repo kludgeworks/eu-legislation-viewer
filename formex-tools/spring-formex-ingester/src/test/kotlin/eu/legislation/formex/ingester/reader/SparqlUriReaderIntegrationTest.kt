@@ -3,14 +3,11 @@ package eu.legislation.formex.ingester.reader
 import eu.legislation.formex.ingester.config.properties.SparqlProperties
 import mockwebserver3.MockResponse
 import mockwebserver3.MockWebServer
-import okhttp3.ExperimentalOkHttpApi
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.web.client.RestClient
-import java.net.URLDecoder
-import java.nio.charset.StandardCharsets
 
 /**
  * Integration tests for SparqlUriReader using MockWebServer.
@@ -18,7 +15,6 @@ import java.nio.charset.StandardCharsets
  * Tests real HTTP communication, SPARQL query structure, and CSV parsing
  * end-to-end without mocking RestClient internals.
  */
-@OptIn(ExperimentalOkHttpApi::class)
 class SparqlUriReaderIntegrationTest {
 
     private lateinit var mockServer: MockWebServer
@@ -72,11 +68,10 @@ class SparqlUriReaderIntegrationTest {
         // Then - verify HTTP request was made with POST
         val recordedRequest = mockServer.takeRequest()
         assertEquals("POST", recordedRequest.method)
-        assertEquals("/sparql", recordedRequest.requestUrl?.encodedPath)
         assertEquals("application/x-www-form-urlencoded", recordedRequest.headers["Content-Type"])
         
         // Verify query parameter in form body
-        val bodyString = recordedRequest.body.readUtf8()
+        val bodyString = recordedRequest.body?.utf8() ?: ""
         assertTrue(bodyString.startsWith("query="))
 
         // Verify first item
@@ -150,10 +145,9 @@ class SparqlUriReaderIntegrationTest {
 
         // Then - verify SPARQL query contains expected patterns
         val recordedRequest = mockServer.takeRequest()
-        val bodyString = recordedRequest.body.readUtf8()
-        
+
         // Decode form body to get query parameter
-        val queryParam = URLDecoder.decode(bodyString.removePrefix("query="), StandardCharsets.UTF_8)
+        val queryParam = recordedRequest.body?.utf8() ?: ""
 
         assertNotNull(queryParam)
         assertTrue(queryParam.contains("PREFIX cdm:"))

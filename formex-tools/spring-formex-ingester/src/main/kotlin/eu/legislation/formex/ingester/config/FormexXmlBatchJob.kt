@@ -101,7 +101,7 @@ class FormexXmlBatchJob {
     ): Step {
         // Chain filter and download processors
         val compositeProcessor = CompositeItemProcessor<CellarData, XmlMetadata>().apply {
-            setDelegates(listOf<ItemProcessor<*, *>>(filterProcessor, downloadProcessor))
+            setDelegates(listOf(filterProcessor, downloadProcessor))
         }
 
         return StepBuilder("downloadXml", jobRepository)

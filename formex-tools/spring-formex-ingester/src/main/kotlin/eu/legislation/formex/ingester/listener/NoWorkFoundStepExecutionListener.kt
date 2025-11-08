@@ -8,10 +8,7 @@ import org.springframework.stereotype.Component
 @Component
 class NoWorkFoundStepExecutionListener : StepExecutionListener {
 
-    override fun afterStep(stepExecution: StepExecution): ExitStatus? {
-        if (stepExecution.readCount == 0L) {
-            return ExitStatus.FAILED
-        }
-        return stepExecution.exitStatus
-    }
+    override fun afterStep(stepExecution: StepExecution) =
+        if (stepExecution.readCount == 0L) ExitStatus.FAILED
+        else stepExecution.exitStatus
 }

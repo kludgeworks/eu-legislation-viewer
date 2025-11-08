@@ -27,7 +27,7 @@ class UriFilterProcessor(
         }
 
         // Return null if URI already exists (filters it out)
-        return item.takeUnless { existingUris.contains(it.item) }
+        return if (item.item in existingUris) null else item
     }
 
     private fun checkBatchInDatabase() {
@@ -38,7 +38,7 @@ class UriFilterProcessor(
         val sql = "SELECT uri FROM formex_documents WHERE uri IN ($placeholders)"
 
         val found = jdbcTemplate.queryForList(sql, String::class.java, *batchBuffer.toTypedArray())
-        existingUris.addAll(found.filterNotNull())
+        existingUris.addAll(found)
 
         batchBuffer.clear()
     }

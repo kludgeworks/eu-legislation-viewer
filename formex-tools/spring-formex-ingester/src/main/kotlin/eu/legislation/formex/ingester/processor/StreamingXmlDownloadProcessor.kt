@@ -61,10 +61,11 @@ class StreamingXmlDownloadProcessor(
                     DigestInputStream(input, digest).use { digestInput ->
                         Files.newOutputStream(destination).use { output ->
                             val buffer = ByteArray(BUFFER_SIZE)
-                            var bytesRead: Int
-                            while (digestInput.read(buffer).also { bytesRead = it } != -1) {
+                            var bytesRead = digestInput.read(buffer)
+                            while (bytesRead != -1) {
                                 output.write(buffer, 0, bytesRead)
                                 size += bytesRead
+                                bytesRead = digestInput.read(buffer)
                             }
                         }
                     }
