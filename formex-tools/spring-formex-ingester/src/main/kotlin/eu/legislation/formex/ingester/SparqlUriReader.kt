@@ -1,4 +1,4 @@
-package eu.legislation.formex.ingester.reader
+package eu.legislation.formex.ingester
 
 import eu.legislation.formex.ingester.config.properties.SparqlProperties
 import eu.legislation.formex.ingester.model.CellarData
@@ -15,7 +15,7 @@ import org.springframework.web.client.RestClient
  * Retrieves complete metadata for XML documents including work ID, expression ID,
  * manifestation ID, content stream ID, language, and MIME type, eliminating the
  * need for URI parsing downstream.
- * 
+ *
  * This component is meant to be used with @StepScope to ensure the HTTP call
  * happens during step execution, not during application context loading.
  */
@@ -27,7 +27,7 @@ class SparqlUriReader(
 
     /**
      * Creates a FlatFileItemReader that streams CSV results from SPARQL endpoint.
-     * 
+     *
      * This method should be called from a @StepScope bean to ensure the HTTP call
      * happens during step execution, not during bean creation.
      *
@@ -71,13 +71,20 @@ class SparqlUriReader(
             .linesToSkip(1)
             .fieldSetMapper { fieldSet ->
                 CellarData(
-                    item = fieldSet.readString("item") ?: throw IllegalArgumentException("Missing required field: item"),
-                    workId = fieldSet.readString("workId") ?: throw IllegalArgumentException("Missing required field: workId"),
-                    expressionId = fieldSet.readString("expressionId") ?: throw IllegalArgumentException("Missing required field: expressionId"),
-                    manifestationId = fieldSet.readString("manifestationId") ?: throw IllegalArgumentException("Missing required field: manifestationId"),
-                    contentStreamId = fieldSet.readString("contentStreamId") ?: throw IllegalArgumentException("Missing required field: contentStreamId"),
-                    language = fieldSet.readString("language") ?: throw IllegalArgumentException("Missing required field: language"),
-                    mimeType = fieldSet.readString("mimeType") ?: throw IllegalArgumentException("Missing required field: mimeType")
+                    item = fieldSet.readString("item")
+                        ?: throw IllegalArgumentException("Missing required field: item"),
+                    workId = fieldSet.readString("workId")
+                        ?: throw IllegalArgumentException("Missing required field: workId"),
+                    expressionId = fieldSet.readString("expressionId")
+                        ?: throw IllegalArgumentException("Missing required field: expressionId"),
+                    manifestationId = fieldSet.readString("manifestationId")
+                        ?: throw IllegalArgumentException("Missing required field: manifestationId"),
+                    contentStreamId = fieldSet.readString("contentStreamId")
+                        ?: throw IllegalArgumentException("Missing required field: contentStreamId"),
+                    language = fieldSet.readString("language")
+                        ?: throw IllegalArgumentException("Missing required field: language"),
+                    mimeType = fieldSet.readString("mimeType")
+                        ?: throw IllegalArgumentException("Missing required field: mimeType")
                 )
             }
             .build()

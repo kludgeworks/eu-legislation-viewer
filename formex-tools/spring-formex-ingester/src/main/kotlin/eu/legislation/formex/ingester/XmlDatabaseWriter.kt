@@ -1,11 +1,12 @@
-package eu.legislation.formex.ingester.writer
+package eu.legislation.formex.ingester
 
-import eu.legislation.formex.ingester.listener.TempFileCleanupListener
+import eu.legislation.formex.ingester.TempFileCleanupListener
 import eu.legislation.formex.ingester.model.XmlMetadata
 import org.springframework.batch.infrastructure.item.Chunk
 import org.springframework.batch.infrastructure.item.ItemWriter
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
+import java.io.IOException
 import java.io.UncheckedIOException
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -49,7 +50,7 @@ class XmlDatabaseWriter(
 
                 // Track temp file for cleanup after successful step completion
                 cleanupListener.addTempFile(metadata.tempFilePath)
-            } catch (e: java.io.IOException) {
+            } catch (e: IOException) {
                 throw UncheckedIOException("Failed to read XML file: ${metadata.tempFilePath}", e)
             }
         }

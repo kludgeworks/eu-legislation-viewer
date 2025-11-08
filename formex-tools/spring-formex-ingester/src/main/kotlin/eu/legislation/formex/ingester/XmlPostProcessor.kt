@@ -1,4 +1,4 @@
-package eu.legislation.formex.ingester.tasklet
+package eu.legislation.formex.ingester
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.core.scope.context.ChunkContext
