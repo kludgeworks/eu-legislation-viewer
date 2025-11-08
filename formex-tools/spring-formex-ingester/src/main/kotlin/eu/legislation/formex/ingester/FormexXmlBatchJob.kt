@@ -1,11 +1,5 @@
-package eu.legislation.formex.ingester.config
+package eu.legislation.formex.ingester
 
-import eu.legislation.formex.ingester.CellarData
-import eu.legislation.formex.ingester.SparqlUriReader
-import eu.legislation.formex.ingester.TempFileCleanupListener
-import eu.legislation.formex.ingester.XmlDatabaseWriter
-import eu.legislation.formex.ingester.XmlMetadata
-import eu.legislation.formex.ingester.XmlPostProcessor
 import eu.legislation.formex.ingester.processor.StreamingXmlDownloadProcessor
 import eu.legislation.formex.ingester.processor.UriFilterProcessor
 import org.springframework.batch.core.configuration.annotation.StepScope
@@ -55,7 +49,7 @@ class FormexXmlBatchJob {
 
     /**
      * SPARQL CSV reader bean with @StepScope.
-     * 
+     *
      * @StepScope ensures the reader is created per step execution, not during
      * application context loading. This defers the HTTP call to the SPARQL endpoint
      * until the step actually runs, allowing the application to start without
@@ -170,7 +164,7 @@ class FormexXmlBatchJob {
             setConnectTimeout(Duration.ofSeconds(30))
             setReadTimeout(Duration.ofMinutes(5))
         }
-        
+
         return RestClient.builder()
             .requestFactory(requestFactory)
             .build()

@@ -1,7 +1,7 @@
 package eu.legislation.formex.ingester.reader
 
+import eu.legislation.formex.ingester.SparqlProperties
 import eu.legislation.formex.ingester.SparqlUriReader
-import eu.legislation.formex.ingester.config.properties.SparqlProperties
 import mockwebserver3.MockResponse
 import mockwebserver3.MockWebServer
 import org.junit.jupiter.api.AfterEach

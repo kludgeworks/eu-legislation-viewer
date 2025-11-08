@@ -1,6 +1,5 @@
 package eu.legislation.formex.ingester
 
-import eu.legislation.formex.ingester.config.properties.SparqlProperties
 import org.springframework.batch.infrastructure.item.file.FlatFileItemReader
 import org.springframework.batch.infrastructure.item.file.builder.FlatFileItemReaderBuilder
 import org.springframework.core.io.Resource

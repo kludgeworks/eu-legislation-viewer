@@ -1,6 +1,5 @@
 package eu.legislation.formex.ingester
 
-import eu.legislation.formex.ingester.config.properties.SparqlProperties
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing
 import org.springframework.batch.core.configuration.annotation.EnableJdbcJobRepository
 import org.springframework.boot.autoconfigure.SpringBootApplication

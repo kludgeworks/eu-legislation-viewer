@@ -1,11 +1,24 @@
-package eu.legislation.formex.ingester.config
+package eu.legislation.formex.ingester
 
 import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.observation.DefaultMeterObservationHandler
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry
 import io.micrometer.observation.ObservationRegistry
+import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+
+/**
+ * Configuration properties for SPARQL endpoint.
+ *
+ * @property endpoint SPARQL endpoint URL
+ * @property language ISO language code for filtering (default: eng)
+ */
+@ConfigurationProperties(prefix = "sparql")
+data class SparqlProperties(
+    val endpoint: String,
+    val language: String = "eng"
+)
 
 /**
  * Configuration for Spring Batch 6.0 observability and metrics collection.
