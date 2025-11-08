@@ -1,6 +1,6 @@
 package eu.legislation.formex.ingester.tasklet
 
-import eu.legislation.formex.ingester.util.logger
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.core.scope.context.ChunkContext
 import org.springframework.batch.core.step.StepContribution
 import org.springframework.batch.core.step.tasklet.Tasklet
@@ -29,7 +29,7 @@ class XmlPostProcessor(
         isNamespaceAware = true
     }
     private val versionPattern = Pattern.compile("([^/]+\\.xd)$")
-    private val logger = logger()
+    private val logger = KotlinLogging.logger {}
 
     override fun execute(contribution: StepContribution, chunkContext: ChunkContext): RepeatStatus? {
         // Fetch all records that need post-processing

@@ -1,6 +1,6 @@
 package eu.legislation.formex.ingester.listener
 
-import eu.legislation.formex.ingester.util.logger
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.core.BatchStatus
 import org.springframework.batch.core.ExitStatus
 import org.springframework.batch.core.listener.StepExecutionListener
@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap
 class TempFileCleanupListener : StepExecutionListener {
 
     private val tempFiles = ConcurrentHashMap.newKeySet<String>()
-    private val logger = logger()
+    private val logger = KotlinLogging.logger {}
 
     /**
      * Adds a temporary file path to the cleanup tracking set.
