@@ -12,7 +12,7 @@
 	<artifactId>formex-ingester</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>formex-ingester</name>
-	<description>Spring Batch application for ingesting Formex XML documents from SPARQL endpoint into H2 database</description>
+	<description>Spring Batch application for ingesting Formex XML documents from SPARQL endpoint into DuckDB database</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -56,10 +56,11 @@
 		<version>7.0.13</version>
 	</dependency>
 
-	<!-- H2 Database -->
+	<!-- DuckDB Database -->
 	<dependency>
-		<groupId>com.h2database</groupId>
-		<artifactId>h2</artifactId>
+		<groupId>org.duckdb</groupId>
+		<artifactId>duckdb_jdbc</artifactId>
+		<version>1.4.1.0</version>
 	</dependency>
 
 	<!-- Flyway for Database Migrations -->
