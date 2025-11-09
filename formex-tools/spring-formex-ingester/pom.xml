@@ -56,11 +56,17 @@
 		<version>7.0.13</version>
 	</dependency>
 
-		<!-- H2 Database -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-		</dependency>
+	<!-- H2 Database -->
+	<dependency>
+		<groupId>com.h2database</groupId>
+		<artifactId>h2</artifactId>
+	</dependency>
+
+	<!-- Flyway for Database Migrations -->
+	<dependency>
+		<groupId>org.flywaydb</groupId>
+		<artifactId>flyway-core</artifactId>
+	</dependency>
 
 		<!-- UUID Creator for UUIDv5 generation -->
 		<dependency>

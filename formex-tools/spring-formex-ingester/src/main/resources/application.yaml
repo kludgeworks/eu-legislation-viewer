@@ -6,14 +6,15 @@ spring:
     url: jdbc:h2:file:./formex;MODE=PostgreSQL;AUTO_SERVER=TRUE
     driver-class-name: org.h2.Driver
 
-  sql:
-    init:
-      mode: always
-      schema-locations: classpath:schema.sql
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baseline-version: 0
 
   batch:
     jdbc:
-      initialize-schema: always
+      initialize-schema: never
       platform: h2
     job:
       enabled: false
