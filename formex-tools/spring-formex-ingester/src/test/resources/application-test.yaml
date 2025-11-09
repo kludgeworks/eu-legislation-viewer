@@ -5,18 +5,16 @@ spring:
     hikari:
       maximum-pool-size: 1
 
-  flyway:
-    enabled: true
-    locations: classpath:db/migration
-    baseline-on-migrate: true
-    baseline-version: 0
-    clean-disabled: false
-
   batch:
     jdbc:
-      initialize-schema: never
+      initialize-schema: always
     job:
       enabled: false
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema-formex.sql
 
   main:
     allow-bean-definition-overriding: true

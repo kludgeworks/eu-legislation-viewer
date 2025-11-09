@@ -8,17 +8,16 @@ spring:
     hikari:
       maximum-pool-size: 1
 
-  flyway:
-    enabled: true
-    locations: classpath:db/migration
-    baseline-on-migrate: true
-    baseline-version: 0
-
   batch:
     jdbc:
-      initialize-schema: never
+      initialize-schema: always
     job:
       enabled: false
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema-formex.sql
 
   lifecycle:
     timeout-per-shutdown-phase: 30s

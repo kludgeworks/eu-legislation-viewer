@@ -1,5 +1,4 @@
 -- Formex documents table with metadata
--- This migration creates the main application table for storing Formex XML documents
 
 -- Main table for storing Formex documents with metadata
 -- Note: XML type will be available once webbed extension is loaded

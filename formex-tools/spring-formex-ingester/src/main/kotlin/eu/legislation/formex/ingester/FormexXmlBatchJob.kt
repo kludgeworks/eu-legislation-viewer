@@ -23,8 +23,7 @@ import java.time.Duration
  * Spring Batch job configuration for processing Formex XML documents.
  *
  * Job flow:
- * 1. downloadXmlStep: Fetch URIs from SPARQL, filter existing, download XML files in parallel
- * 2. postProcessStep: Extract version and root_element from XML documents
+ * 1. downloadXmlStep: Fetch URIs from SPARQL, filter existing, download XML files, extract metadata, and insert
  */
 @Configuration
 class FormexXmlBatchJob {
@@ -33,18 +32,15 @@ class FormexXmlBatchJob {
      * Main job bean that orchestrates the entire process.
      *
      * @param jobRepository Spring Batch job repository
-     * @param downloadXmlStep Step 1 - downloads and inserts XML documents
-     * @param postProcessStep Step 2 - extracts metadata from XML
+     * @param downloadXmlStep Step 1 - downloads, parses, and inserts XML documents with metadata
      * @return The configured job
      */
     @Bean
     fun processFormexXml(
         jobRepository: JobRepository,
-        downloadXmlStep: Step,
-        postProcessStep: Step
+        downloadXmlStep: Step
     ): Job = JobBuilder("processFormexXml", jobRepository)
         .start(downloadXmlStep)
-        .next(postProcessStep)
         .build()
 
     /**
@@ -65,12 +61,13 @@ class FormexXmlBatchJob {
     }
 
     /**
-     * Step 1: Download XML files and insert into database.
+     * Step 1: Download XML files, extract metadata, and insert into database.
      *
      * - Reads URIs from SPARQL endpoint (single HTTP request)
      * - Filters out existing URIs (batch database checks)
      * - Downloads XML files in parallel (streaming, no memory loading)
-     * - Inserts records into H2 database
+     * - Extracts version and root_element from XML documents
+     * - Inserts complete records into database
      * - Cleans up temp files after successful completion
      *
      * @param jobRepository Spring Batch job repository
@@ -78,6 +75,7 @@ class FormexXmlBatchJob {
      * @param reader Step-scoped SPARQL CSV reader
      * @param filterProcessor Filters out existing URIs
      * @param downloadProcessor Downloads XML and calculates metadata
+     * @param postProcessor Extracts version and root_element from XML
      * @param writer Inserts records into database
      * @param cleanupListener Cleans up temp files after step completion
      * @return The configured download step
@@ -89,12 +87,13 @@ class FormexXmlBatchJob {
         reader: ItemStreamReader<CellarData>,
         filterProcessor: UriFilterProcessor,
         downloadProcessor: StreamingXmlDownloadProcessor,
+        postProcessor: XmlPostProcessor,
         writer: XmlDatabaseWriter,
         cleanupListener: TempFileCleanupListener
     ): Step {
-        // Chain filter and download processors
+        // Chain filter, download, and post-processing processors
         val compositeProcessor = CompositeItemProcessor<CellarData, XmlMetadata>().apply {
-            setDelegates(listOf(filterProcessor, downloadProcessor))
+            setDelegates(listOf(filterProcessor, downloadProcessor, postProcessor))
         }
 
         return StepBuilder("downloadXml", jobRepository)
@@ -107,27 +106,6 @@ class FormexXmlBatchJob {
             .taskExecutor(taskExecutor())
             .build()
     }
-
-    /**
-     * Step 2: Post-process XML documents to extract metadata.
-     *
-     * - Extracts version from noNamespaceSchemaLocation attribute
-     * - Extracts root element name
-     * - Updates only new records (WHERE version IS NULL)
-     *
-     * @param jobRepository Spring Batch job repository
-     * @param transactionManager Transaction manager
-     * @param postProcessor Tasklet that extracts metadata
-     * @return The configured post-process step
-     */
-    @Bean
-    fun postProcessStep(
-        jobRepository: JobRepository,
-        transactionManager: PlatformTransactionManager,
-        postProcessor: XmlPostProcessor
-    ): Step = StepBuilder("postProcess", jobRepository)
-        .tasklet(postProcessor, transactionManager)
-        .build()
 
     /**
      * Task executor for parallel XML downloads.

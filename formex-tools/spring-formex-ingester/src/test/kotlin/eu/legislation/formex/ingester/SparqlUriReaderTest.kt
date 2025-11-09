@@ -1,7 +1,4 @@
-package eu.legislation.formex.ingester.reader
-
-import eu.legislation.formex.ingester.SparqlProperties
-import eu.legislation.formex.ingester.SparqlUriReader
+package eu.legislation.formex.ingester
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

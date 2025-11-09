@@ -3,14 +3,17 @@ import org.springframework.batch.infrastructure.item.Chunk
 import org.springframework.batch.infrastructure.item.ItemWriter
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
+import java.io.BufferedReader
 import java.io.IOException
 import java.io.UncheckedIOException
 import java.nio.file.Files
 import java.nio.file.Paths
+import kotlin.io.path.bufferedReader
 
 /**
  * Batch inserts XML metadata and content into DuckDB database.
- * Reads XML content from temporary files and tracks them for later cleanup.
+ * Streams XML content from temporary files using JDBC character streams to avoid loading large files into memory.
+ * Tracks temp files for later cleanup.
  */
 @Component
 class XmlDatabaseWriter(
@@ -22,7 +25,7 @@ class XmlDatabaseWriter(
         val sql = """
             INSERT INTO formex_documents 
             (id, xml_content, file_size, uri, work_id, expr_id, man_id, cs_id, version, root_element)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """.trimIndent()
 
         val itemsList = chunk.items
@@ -34,9 +37,12 @@ class XmlDatabaseWriter(
             try {
                 ps.setObject(1, metadata.id)
 
-                // Read XML content from temp file
-                val xmlContent = Files.readString(Paths.get(metadata.tempFilePath))
-                ps.setString(2, xmlContent)
+                // Stream XML content from temp file without loading entire file into memory
+                // Uses JDBC setCharacterStream with BufferedReader for efficient streaming
+                val path = Paths.get(metadata.tempFilePath)
+                path.bufferedReader().use { reader ->
+                    ps.setCharacterStream(2, reader, metadata.fileSize)
+                }
 
                 ps.setLong(3, metadata.fileSize)
                 ps.setString(4, metadata.uri)
@@ -44,6 +50,8 @@ class XmlDatabaseWriter(
                 ps.setString(6, metadata.exprId)
                 ps.setString(7, metadata.manId)
                 ps.setString(8, metadata.csId)
+                ps.setString(9, metadata.version)
+                ps.setString(10, metadata.rootElement)
 
                 // Track temp file for cleanup after successful step completion
                 cleanupListener.addTempFile(metadata.tempFilePath)
