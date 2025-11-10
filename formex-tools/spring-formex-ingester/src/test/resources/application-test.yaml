@@ -1,28 +1,18 @@
+# Test configuration - inherits from application.yaml
+# Overrides: in-memory DB, mock SPARQL, Maven target directory for test artifacts
+
 spring:
   datasource:
     url: "jdbc:sqlite::memory:"
-    driver-class-name: org.sqlite.JDBC
-    hikari:
-      maximum-pool-size: 1
-
-  batch:
-    jdbc:
-      initialize-schema: always
-    job:
-      enabled: false
-
-  sql:
-    init:
-      mode: always
-      schema-locations: classpath:schema-formex.sql
 
   main:
+    # Allow test doubles to override production beans
     allow-bean-definition-overriding: true
 
 formex:
   storage:
-    directory: ./build/test-xml-files
+    directory: ${maven.build.directory:target}/test-xml-files
 
 sparql:
+  # Mock SPARQL endpoint for tests (use MockWebServer at this URL)
   endpoint: http://localhost:9999/sparql
-  language: eng
