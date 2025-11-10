@@ -1,5 +1,11 @@
 package eu.legislation.formex.ingester
 
+import java.nio.file.Files
+import java.nio.file.Paths
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.deleteAll
+import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
@@ -7,24 +13,11 @@ import org.junit.jupiter.api.Test
 import org.springframework.batch.core.BatchStatus
 import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.launch.JobLauncher
-import org.springframework.batch.infrastructure.item.file.FlatFileItemReader
-import org.springframework.batch.infrastructure.item.file.builder.FlatFileItemReaderBuilder
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 import org.springframework.batch.test.JobOperatorTestUtils
 import org.springframework.batch.test.context.SpringBatchTest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.context.TestConfiguration
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Primary
-import org.springframework.core.io.Resource
-import org.springframework.http.MediaType
-import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.test.context.ActiveProfiles
-import org.springframework.web.client.RestClient
-import java.nio.file.Files
-import java.nio.file.Paths
 
 /**
  * End-to-end integration test for the complete Formex XML batch job.
@@ -45,10 +38,10 @@ import java.nio.file.Paths
  * The test is disabled by default to avoid network dependencies in CI/CD.
  * Enable manually when testing against real infrastructure.
  *
- * NOTE: Uses JobOperatorTestUtils (Spring Batch 6.0+) instead of the deprecated
- * JobLauncherTestUtils which is scheduled for removal in 6.2.
+ * NOTE: Uses JobOperatorTestUtils (Spring Batch 6.0+) with TaskExecutorJobLauncher
+ * instead of the deprecated JobLauncher interface which is scheduled for removal in 6.2.
  */
-@SpringBootTest(classes = [FormexIngesterApplication::class, FormexXmlBatchJobEndToEndTest.TestConfig::class])
+@SpringBootTest(classes = [FormexIngesterApplication::class])
 @SpringBatchTest
 @ActiveProfiles("e2e")
 // @Disabled("Manual E2E test - requires network access to EU SPARQL endpoint and download servers")
@@ -58,7 +51,7 @@ class FormexXmlBatchJobEndToEndTest {
     private lateinit var jobOperatorTestUtils: JobOperatorTestUtils
 
     @Autowired
-    private lateinit var jdbcTemplate: JdbcTemplate
+    private lateinit var database: Database
 
     @Autowired
     private lateinit var job: Job
@@ -74,8 +67,10 @@ class FormexXmlBatchJobEndToEndTest {
         jobOperatorTestUtils.job = job
         jobOperatorTestUtils.jobLauncher = jobLauncher
         
-        // Clear database before test
-        jdbcTemplate.execute("DELETE FROM formex_documents")
+        // Clear database before test using Exposed
+        transaction(database) {
+            FormexDocuments.deleteAll()
+        }
     }
 
     /**
@@ -113,22 +108,30 @@ class FormexXmlBatchJobEndToEndTest {
             println("  Exit status: ${stepExecution.exitStatus}")
         }
 
-        // Verify exactly 2 records were inserted
-        val recordCount = jdbcTemplate.queryForObject(
-            "SELECT COUNT(*) FROM formex_documents",
-            Int::class.java
-        )
+        // Verify exactly 2 records were inserted using Exposed
+        val recordCount = transaction(database) {
+            FormexDocuments.selectAll().count()
+        }
         assertEquals(2, recordCount, 
             "Should have exactly 2 records from limited SPARQL query")
 
-        // Verify all records have required metadata populated
-        val recordsWithMetadata = jdbcTemplate.queryForList(
-            """
-            SELECT id, uri, file_size, work_id, expr_id, man_id, cs_id, 
-                   version, root_element, file_path
-            FROM formex_documents
-            """.trimIndent()
-        )
+        // Verify all records have required metadata populated using Exposed
+        val recordsWithMetadata = transaction(database) {
+            FormexDocuments.selectAll().map { row ->
+                mapOf(
+                    "id" to row[FormexDocuments.id],
+                    "uri" to row[FormexDocuments.uri],
+                    "file_size" to row[FormexDocuments.fileSize],
+                    "work_id" to row[FormexDocuments.workId],
+                    "expr_id" to row[FormexDocuments.exprId],
+                    "man_id" to row[FormexDocuments.manId],
+                    "cs_id" to row[FormexDocuments.csId],
+                    "version" to row[FormexDocuments.version],
+                    "root_element" to row[FormexDocuments.rootElement],
+                    "file_path" to row[FormexDocuments.filePath]
+                )
+            }
+        }
 
         assertEquals(2, recordsWithMetadata.size, "Should retrieve 2 records")
 
@@ -156,17 +159,16 @@ class FormexXmlBatchJobEndToEndTest {
             
             // Verify file size matches actual file size
             val actualFileSize = Files.size(file)
-            val storedFileSize = (record["file_size"] as Number).toLong()
+            val storedFileSize = (record["file_size"] as Int).toLong()
             assertEquals(storedFileSize, actualFileSize, 
                 "Stored file size should match actual file size")
         }
 
-        // Verify URIs are from EU SPARQL endpoint (should contain europa.eu)
-        val uris = jdbcTemplate.queryForList(
-            "SELECT uri FROM formex_documents",
-            String::class.java
-        )
-        assertTrue(uris.all { it.contains("europa.eu") || it.contains("cellar") },
+        // Verify URIs are from EU SPARQL endpoint (should contain europa.eu) using Exposed
+        val uris = transaction(database) {
+            FormexDocuments.selectAll().map { it[FormexDocuments.uri] }
+        }
+        assertTrue(uris.all { it?.contains("europa.eu") == true || it?.contains("cellar") == true },
             "URIs should be from EU SPARQL endpoint")
 
         // Verify step execution metrics
@@ -185,97 +187,5 @@ class FormexXmlBatchJobEndToEndTest {
         println("Test completed successfully!")
         println("Downloaded and processed ${recordCount} records from EU SPARQL endpoint")
         println("Sample URIs: ${uris.take(2)}")
-    }
-
-    /**
-     * Test configuration that overrides SparqlUriReader to add LIMIT 2 to the query.
-     *
-     * This ensures the E2E test only downloads 2 records instead of all available records,
-     * keeping the test fast and reducing load on EU servers.
-     */
-    @TestConfiguration
-    class TestConfig {
-
-        /**
-         * Overrides the production SparqlUriReader with a version that limits results to 2.
-         *
-         * Uses @Primary to ensure this bean is used instead of the production bean.
-         * The query is identical to production except for the added LIMIT 2 clause.
-         */
-        @Bean
-        @Primary
-        fun testSparqlUriReader(
-            restClient: RestClient,
-            sparqlProperties: SparqlProperties
-        ): SparqlUriReader {
-            return object : SparqlUriReader(restClient, sparqlProperties) {
-                override fun createReader(): FlatFileItemReader<CellarData> {
-                    // Same query as production, but with LIMIT 2 added
-                    val query = """
-                        PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
-                        PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
-                        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-                        
-                        SELECT DISTINCT
-                          ?item
-                          (STRAFTER(STR(?work), "cellar/") AS ?workId)
-                          (STRAFTER(STR(?expression), CONCAT(STR(?work), ".")) AS ?expressionId)
-                          (STRAFTER(STR(?manifestation), CONCAT(STR(?expression), ".")) AS ?manifestationId)
-                          (STRAFTER(STR(?item), CONCAT(STR(?manifestation), "/")) AS ?contentStreamId)
-                          ?language
-                          ?mimeType
-                        WHERE {
-                          ?expression cmr:lang ?language .
-                          FILTER(?language = "${sparqlProperties.language}"^^xsd:language)
-                        
-                          ?expression cdm:expression_belongs_to_work ?work .
-                          ?manifestation cdm:manifestation_manifests_expression ?expression .
-                          ?item cdm:item_belongs_to_manifestation ?manifestation .
-                          ?item cmr:manifestationMimeType ?mimeType .
-                          FILTER(?mimeType = "application/xml;type=fmx4")
-                        }
-                        LIMIT 2
-                        """.trimIndent()
-
-                    // Fetch CSV stream from SPARQL endpoint using POST with form-encoded body
-                    val encodedQuery = "query=" + URLEncoder.encode(query, StandardCharsets.UTF_8)
-                    val csvResource = restClient.post()
-                        .uri(sparqlProperties.endpoint)
-                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                        .body(encodedQuery)
-                        .accept(MediaType.parseMediaType("text/csv"))
-                        .retrieve()
-                        .body(Resource::class.java)
-                            ?: error("SPARQL endpoint returned null CSV stream")
-
-                    return FlatFileItemReaderBuilder<CellarData>()
-                        .name("sparqlCsvReader")
-                        .resource(csvResource)
-                        .delimited()
-                        .names("item", "workId", "expressionId", "manifestationId",
-                               "contentStreamId", "language", "mimeType")
-                        .linesToSkip(1)
-                        .fieldSetMapper { fieldSet ->
-                            CellarData(
-                                item = fieldSet.readString("item")
-                                    ?: throw IllegalArgumentException("Missing required field: item"),
-                                workId = fieldSet.readString("workId")
-                                    ?: throw IllegalArgumentException("Missing required field: workId"),
-                                expressionId = fieldSet.readString("expressionId")
-                                    ?: throw IllegalArgumentException("Missing required field: expressionId"),
-                                manifestationId = fieldSet.readString("manifestationId")
-                                    ?: throw IllegalArgumentException("Missing required field: manifestationId"),
-                                contentStreamId = fieldSet.readString("contentStreamId")
-                                    ?: throw IllegalArgumentException("Missing required field: contentStreamId"),
-                                language = fieldSet.readString("language")
-                                    ?: throw IllegalArgumentException("Missing required field: language"),
-                                mimeType = fieldSet.readString("mimeType")
-                                    ?: throw IllegalArgumentException("Missing required field: mimeType")
-                            )
-                        }
-                        .build()
-                }
-            }
-        }
     }
 }

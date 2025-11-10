@@ -1,13 +1,17 @@
 package eu.legislation.formex.ingester
 
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.deleteAll
+import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import org.springframework.batch.infrastructure.item.Chunk
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.test.context.ActiveProfiles
 import java.nio.file.Files
 import java.nio.file.Path
@@ -22,15 +26,25 @@ class XmlDatabaseWriterTest {
     private lateinit var xmlDatabaseWriter: XmlDatabaseWriter
 
     @Autowired
-    private lateinit var jdbcTemplate: JdbcTemplate
+    private lateinit var database: Database
 
     @TempDir
     lateinit var tempDir: Path
 
+    @BeforeEach
+    fun setup() {
+        // Clear test data from database before each test using Exposed
+        transaction(database) {
+            FormexDocuments.deleteAll()
+        }
+    }
+
     @AfterEach
     fun cleanup() {
-        // Clear test data from database
-        jdbcTemplate.execute("DELETE FROM formex_documents")
+        // Clear test data from database after each test using Exposed
+        transaction(database) {
+            FormexDocuments.deleteAll()
+        }
     }
 
     @Test
@@ -61,37 +75,41 @@ class XmlDatabaseWriterTest {
         // When: Write batch to database
         xmlDatabaseWriter.write(chunk)
 
-        // Then: Verify both records exist in database
-        val count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM formex_documents", Int::class.java)
+        // Then: Verify both records exist in database using Exposed
+        val count = transaction(database) {
+            FormexDocuments.selectAll().count()
+        }
         Assertions.assertEquals(2, count, "Should have 2 records in database")
 
-        // Verify first record
-        val record1 = jdbcTemplate.queryForMap(
-            "SELECT * FROM formex_documents WHERE id = ?",
-            metadata1.id.toString()
-        )
-        Assertions.assertEquals(metadata1.id.toString(), record1["id"].toString())
-        Assertions.assertEquals(metadata1.filePath, record1["file_path"])
-        Assertions.assertEquals(100L, (record1["file_size"] as Number).toLong())
-        Assertions.assertEquals("http://example.org/doc1", record1["uri"])
-        Assertions.assertEquals(metadata1.workId.toString(), record1["work_id"].toString())
-        Assertions.assertEquals("expr-1", record1["expr_id"])
-        Assertions.assertEquals("man-1", record1["man_id"])
-        Assertions.assertEquals("cs-1", record1["cs_id"])
+        // Verify first record using Exposed
+        val record1 = transaction(database) {
+            FormexDocuments.selectAll()
+                .where { FormexDocuments.id eq metadata1.id.toString() }
+                .single()
+        }
+        Assertions.assertEquals(metadata1.id.toString(), record1[FormexDocuments.id])
+        Assertions.assertEquals(metadata1.filePath, record1[FormexDocuments.filePath])
+        Assertions.assertEquals(100, record1[FormexDocuments.fileSize])
+        Assertions.assertEquals("http://example.org/doc1", record1[FormexDocuments.uri])
+        Assertions.assertEquals(metadata1.workId.toString(), record1[FormexDocuments.workId])
+        Assertions.assertEquals("expr-1", record1[FormexDocuments.exprId])
+        Assertions.assertEquals("man-1", record1[FormexDocuments.manId])
+        Assertions.assertEquals("cs-1", record1[FormexDocuments.csId])
 
-        // Verify second record
-        val record2 = jdbcTemplate.queryForMap(
-            "SELECT * FROM formex_documents WHERE id = ?",
-            metadata2.id.toString()
-        )
-        Assertions.assertEquals(metadata2.id.toString(), record2["id"].toString())
-        Assertions.assertEquals(metadata2.filePath, record2["file_path"])
-        Assertions.assertEquals(200L, (record2["file_size"] as Number).toLong())
-        Assertions.assertEquals("http://example.org/doc2", record2["uri"])
-        Assertions.assertEquals(metadata2.workId.toString(), record2["work_id"].toString())
-        Assertions.assertEquals("expr-2", record2["expr_id"])
-        Assertions.assertEquals("man-2", record2["man_id"])
-        Assertions.assertEquals("cs-2", record2["cs_id"])
+        // Verify second record using Exposed
+        val record2 = transaction(database) {
+            FormexDocuments.selectAll()
+                .where { FormexDocuments.id eq metadata2.id.toString() }
+                .single()
+        }
+        Assertions.assertEquals(metadata2.id.toString(), record2[FormexDocuments.id])
+        Assertions.assertEquals(metadata2.filePath, record2[FormexDocuments.filePath])
+        Assertions.assertEquals(200, record2[FormexDocuments.fileSize])
+        Assertions.assertEquals("http://example.org/doc2", record2[FormexDocuments.uri])
+        Assertions.assertEquals(metadata2.workId.toString(), record2[FormexDocuments.workId])
+        Assertions.assertEquals("expr-2", record2[FormexDocuments.exprId])
+        Assertions.assertEquals("man-2", record2[FormexDocuments.manId])
+        Assertions.assertEquals("cs-2", record2[FormexDocuments.csId])
     }
 
     @Test
@@ -122,12 +140,12 @@ class XmlDatabaseWriterTest {
         // When: Write to database
         xmlDatabaseWriter.write(chunk)
 
-        // Then: Verify file path is stored in database
-        val storedFilePath = jdbcTemplate.queryForObject(
-            "SELECT file_path FROM formex_documents WHERE id = ?",
-            String::class.java,
-            metadata.id.toString()
-        )
+        // Then: Verify file path is stored in database using Exposed
+        val storedFilePath = transaction(database) {
+            FormexDocuments.selectAll()
+                .where { FormexDocuments.id eq metadata.id.toString() }
+                .single()[FormexDocuments.filePath]
+        }
 
         Assertions.assertEquals(metadata.filePath, storedFilePath, "File path should be stored")
         
@@ -135,14 +153,14 @@ class XmlDatabaseWriterTest {
         val fileContent = Files.readString(Paths.get(storedFilePath))
         Assertions.assertEquals(expectedXmlContent, fileContent, "File content should match")
 
-        // Verify file size matches
-        val actualFileSize = jdbcTemplate.queryForObject(
-            "SELECT file_size FROM formex_documents WHERE id = ?",
-            Long::class.java,
-            metadata.id.toString()
-        )
+        // Verify file size matches using Exposed
+        val actualFileSize = transaction(database) {
+            FormexDocuments.selectAll()
+                .where { FormexDocuments.id eq metadata.id.toString() }
+                .single()[FormexDocuments.fileSize]
+        }
         Assertions.assertEquals(
-            expectedXmlContent.length.toLong(),
+            expectedXmlContent.length,
             actualFileSize,
             "File size should match XML content length"
         )

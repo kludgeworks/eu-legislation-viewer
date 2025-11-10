@@ -19,3 +19,6 @@ spring:
 formex:
   storage:
     directory: ${maven.build.directory:target}/e2e-xml-files
+
+sparql:
+  limit: 2

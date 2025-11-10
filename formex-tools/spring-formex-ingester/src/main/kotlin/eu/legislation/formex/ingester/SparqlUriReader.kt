@@ -57,6 +57,7 @@ class SparqlUriReader(
               ?item cmr:manifestationMimeType ?mimeType .
               FILTER(?mimeType = "application/xml;type=fmx4")
             }
+            ${sparqlProperties.limit?.let { "LIMIT $it" } ?: ""}
             """.trimIndent()
 
         // Encode query as form-urlencoded body

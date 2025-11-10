@@ -22,11 +22,13 @@ import javax.sql.DataSource
  *
  * @property endpoint SPARQL endpoint URL
  * @property language ISO language code for filtering (default: eng)
+ * @property limit Optional LIMIT clause for SPARQL query (null = no limit)
  */
 @ConfigurationProperties(prefix = "sparql")
 data class SparqlProperties(
     val endpoint: String,
-    val language: String = "eng"
+    val language: String = "eng",
+    val limit: Int? = null
 )
 
 /**
