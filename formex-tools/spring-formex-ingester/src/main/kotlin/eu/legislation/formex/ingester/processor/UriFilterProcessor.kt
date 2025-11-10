@@ -1,30 +1,36 @@
 package eu.legislation.formex.ingester.processor
 
 import eu.legislation.formex.ingester.CellarData
+import eu.legislation.formex.ingester.FormexDocuments
+import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.batch.infrastructure.item.ItemProcessor
-import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 
 /**
  * Filters out URIs that already exist in the database.
+ *
+ * Uses Exposed SQL DSL for database queries within Spring-managed transactions.
  */
 @Component
-class UriFilterProcessor(
-    private val jdbcTemplate: JdbcTemplate
-) : ItemProcessor<CellarData, CellarData> {
+class UriFilterProcessor : ItemProcessor<CellarData, CellarData> {
 
     /**
      * Processes a CellarData item, filtering it out if the URI already exists in the database.
+     *
+     * The query runs within an Exposed transaction block, which participates in
+     * Spring's transaction management via SpringTransactionManager.
      *
      * @param item The CellarData item to process
      * @return null if URI exists (filtered out by Spring Batch), otherwise the original item
      */
     override fun process(item: CellarData): CellarData? {
-        val exists = jdbcTemplate.queryForObject(
-            "SELECT EXISTS(SELECT 1 FROM formex_documents WHERE uri = ? LIMIT 1)",
-            Boolean::class.java,
-            item.item
-        ) ?: false
+        val exists = transaction {
+            FormexDocuments.selectAll()
+                .where { FormexDocuments.uri eq item.item }
+                .limit(1)
+                .count() > 0
+        }
         
         return if (exists) null else item
     }

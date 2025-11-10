@@ -1,19 +1,41 @@
 package eu.legislation.formex.ingester.processor
 
 import eu.legislation.formex.ingester.CellarData
+import eu.legislation.formex.ingester.FormexDocuments
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.deleteAll
+import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.springframework.jdbc.core.JdbcTemplate
-import org.mockito.Mockito.*
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
 
+/**
+ * Integration tests for UriFilterProcessor using real database transactions.
+ * 
+ * Since the processor uses Exposed transaction blocks, we test with the actual
+ * database setup rather than mocking.
+ */
+@SpringBootTest
+@ActiveProfiles("test")
 class UriFilterProcessorTest {
+
+    @Autowired
+    private lateinit var processor: UriFilterProcessor
+
+    @BeforeEach
+    fun setUp() {
+        // Clean the table before each test
+        transaction {
+            FormexDocuments.deleteAll()
+        }
+    }
 
     @Test
     fun `process should return null for URI that exists in database`() {
         // Given
-        val jdbcTemplate = mock(JdbcTemplate::class.java)
-        val processor = UriFilterProcessor(jdbcTemplate)
-        
         val existingUri = "http://example.org/existing"
         val testCellarData = CellarData(
             item = existingUri,
@@ -25,33 +47,32 @@ class UriFilterProcessorTest {
             mimeType = "application/xml"
         )
         
-        // Mock the EXISTS query to return true (URI exists)
-        `when`(jdbcTemplate.queryForObject(
-            eq("SELECT EXISTS(SELECT 1 FROM formex_documents WHERE uri = ? LIMIT 1)"),
-            eq(Boolean::class.java),
-            eq(existingUri)
-        )).thenReturn(true)
+        // Insert existing URI into database
+        transaction {
+            FormexDocuments.insert {
+                it[id] = "test-id-1"
+                it[uri] = existingUri
+                it[workId] = "existing-work"
+                it[exprId] = "existing-expr"
+                it[manId] = "existing-man"
+                it[csId] = "existing-cs"
+                it[version] = "1.0"
+                it[rootElement] = "test"
+                it[filePath] = "/tmp/test.xml"
+                it[fileSize] = 1000
+            }
+        }
         
         // When
         val result = processor.process(testCellarData)
         
         // Then
         assertNull(result, "Processor should return null for existing URI")
-        
-        // Verify the database was queried exactly once
-        verify(jdbcTemplate, times(1)).queryForObject(
-            eq("SELECT EXISTS(SELECT 1 FROM formex_documents WHERE uri = ? LIMIT 1)"),
-            eq(Boolean::class.java),
-            eq(existingUri)
-        )
     }
 
     @Test
     fun `process should return item for URI that does not exist in database`() {
         // Given
-        val jdbcTemplate = mock(JdbcTemplate::class.java)
-        val processor = UriFilterProcessor(jdbcTemplate)
-        
         val newUri = "http://example.org/new"
         val testCellarData = CellarData(
             item = newUri,
@@ -63,53 +84,39 @@ class UriFilterProcessorTest {
             mimeType = "application/xml"
         )
         
-        // Mock the EXISTS query to return false (URI does not exist)
-        `when`(jdbcTemplate.queryForObject(
-            eq("SELECT EXISTS(SELECT 1 FROM formex_documents WHERE uri = ? LIMIT 1)"),
-            eq(Boolean::class.java),
-            eq(newUri)
-        )).thenReturn(false)
-        
-        // When
+        // When (no data inserted - URI does not exist)
         val result = processor.process(testCellarData)
         
         // Then
         assertNotNull(result, "Processor should return item for new URI")
         assertEquals(newUri, result?.item)
         assertEquals(testCellarData, result, "Processor should return the original item unchanged")
-        
-        // Verify the database was queried exactly once
-        verify(jdbcTemplate, times(1)).queryForObject(
-            eq("SELECT EXISTS(SELECT 1 FROM formex_documents WHERE uri = ? LIMIT 1)"),
-            eq(Boolean::class.java),
-            eq(newUri)
-        )
     }
 
     @Test
     fun `process should be thread-safe with no shared state`() {
         // Given
-        val jdbcTemplate = mock(JdbcTemplate::class.java)
-        val processor = UriFilterProcessor(jdbcTemplate)
-        
         val uri1 = "http://example.org/uri1"
         val uri2 = "http://example.org/uri2"
         
         val item1 = CellarData(uri1, "w1", "e1", "m1", "c1", "eng", "application/xml")
         val item2 = CellarData(uri2, "w2", "e2", "m2", "c2", "eng", "application/xml")
         
-        // Mock: uri1 exists, uri2 does not
-        `when`(jdbcTemplate.queryForObject(
-            anyString(),
-            eq(Boolean::class.java),
-            eq(uri1)
-        )).thenReturn(true)
-        
-        `when`(jdbcTemplate.queryForObject(
-            anyString(),
-            eq(Boolean::class.java),
-            eq(uri2)
-        )).thenReturn(false)
+        // Insert only uri1 (uri2 does not exist)
+        transaction {
+            FormexDocuments.insert {
+                it[id] = "test-id-thread-1"
+                it[uri] = uri1
+                it[workId] = "w1"
+                it[exprId] = "e1"
+                it[manId] = "m1"
+                it[csId] = "c1"
+                it[version] = "1.0"
+                it[rootElement] = "test"
+                it[filePath] = "/tmp/test1.xml"
+                it[fileSize] = 1000
+            }
+        }
         
         // When: Process multiple items (simulating concurrent access)
         val result1 = processor.process(item1)
@@ -120,9 +127,5 @@ class UriFilterProcessorTest {
         assertNull(result1, "First URI should be filtered")
         assertNotNull(result2, "Second URI should pass through")
         assertNull(result1Again, "First URI should still be filtered on second call")
-        
-        // Verify each item queried the database independently (no caching/buffering)
-        verify(jdbcTemplate, times(2)).queryForObject(anyString(), eq(Boolean::class.java), eq(uri1))
-        verify(jdbcTemplate, times(1)).queryForObject(anyString(), eq(Boolean::class.java), eq(uri2))
     }
 }

@@ -16,9 +16,7 @@ spring:
 
   sql:
     init:
-      mode: always
-      schema-locations:
-        - classpath:schema-formex.sql
+      mode: never  # Disabled: Exposed will manage formex_documents schema
 
   lifecycle:
     timeout-per-shutdown-phase: 30s
