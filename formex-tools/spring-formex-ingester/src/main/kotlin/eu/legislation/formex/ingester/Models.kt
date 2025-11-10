@@ -33,7 +33,7 @@ data class CellarData(
  * @property exprId Expression identifier
  * @property manId Manifestation identifier
  * @property csId Content stream identifier
- * @property tempFilePath Path to temporary file containing XML content
+ * @property filePath Path to permanent file containing XML content
  * @property version Schema version extracted from noNamespaceSchemaLocation (e.g., "4.3.xd")
  * @property rootElement Local name of the root XML element
  */
@@ -41,11 +41,11 @@ data class XmlMetadata(
     val id: UUID,
     val uri: String,
     val fileSize: Long,
-    val workId: UUID?,
-    val exprId: String?,
-    val manId: String?,
-    val csId: String?,
-    val tempFilePath: String,
+    val workId: UUID,
+    val exprId: String,
+    val manId: String,
+    val csId: String,
+    val filePath: String,
     val version: String? = null,
     val rootElement: String? = null
 )

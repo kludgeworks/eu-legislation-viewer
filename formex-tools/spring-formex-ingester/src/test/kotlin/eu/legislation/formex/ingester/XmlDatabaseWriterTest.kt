@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.test.context.ActiveProfiles
 import java.nio.file.Files
 import java.nio.file.Path
+import java.nio.file.Paths
 import java.util.UUID
 
 @SpringBootTest
@@ -34,7 +35,7 @@ class XmlDatabaseWriterTest {
 
     @Test
     fun `should write multiple items in batch and verify all records`() {
-        // Given: Create 3 test items with temp XML files
+        // Given: Create 2 test items with XML files
         val metadata1 = createTestXmlMetadata(
             xmlContent = "<doc1>Content 1</doc1>",
             uri = "http://example.org/doc1",
@@ -55,33 +56,23 @@ class XmlDatabaseWriterTest {
             csId = "cs-2"
         )
 
-        val metadata3 = createTestXmlMetadata(
-            xmlContent = "<doc3>Content 3</doc3>",
-            uri = "http://example.org/doc3",
-            fileSize = 300L,
-            workId = null,
-            exprId = null,
-            manId = null,
-            csId = null
-        )
-
-        val chunk = Chunk(listOf(metadata1, metadata2, metadata3))
+        val chunk = Chunk(listOf(metadata1, metadata2))
 
         // When: Write batch to database
         xmlDatabaseWriter.write(chunk)
 
-        // Then: Verify all 3 records exist in database
+        // Then: Verify both records exist in database
         val count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM formex_documents", Int::class.java)
-        Assertions.assertEquals(3, count, "Should have 3 records in database")
+        Assertions.assertEquals(2, count, "Should have 2 records in database")
 
         // Verify first record
         val record1 = jdbcTemplate.queryForMap(
             "SELECT * FROM formex_documents WHERE id = ?",
-            metadata1.id
+            metadata1.id.toString()
         )
         Assertions.assertEquals(metadata1.id.toString(), record1["id"].toString())
-        Assertions.assertEquals("<doc1>Content 1</doc1>", record1["xml_content"])
-        Assertions.assertEquals(100L, record1["file_size"])
+        Assertions.assertEquals(metadata1.filePath, record1["file_path"])
+        Assertions.assertEquals(100L, (record1["file_size"] as Number).toLong())
         Assertions.assertEquals("http://example.org/doc1", record1["uri"])
         Assertions.assertEquals(metadata1.workId.toString(), record1["work_id"].toString())
         Assertions.assertEquals("expr-1", record1["expr_id"])
@@ -91,26 +82,21 @@ class XmlDatabaseWriterTest {
         // Verify second record
         val record2 = jdbcTemplate.queryForMap(
             "SELECT * FROM formex_documents WHERE id = ?",
-            metadata2.id
+            metadata2.id.toString()
         )
         Assertions.assertEquals(metadata2.id.toString(), record2["id"].toString())
-        Assertions.assertEquals("<doc2>Content 2</doc2>", record2["xml_content"])
-
-        // Verify third record with null fields
-        val record3 = jdbcTemplate.queryForMap(
-            "SELECT * FROM formex_documents WHERE id = ?",
-            metadata3.id
-        )
-        Assertions.assertEquals(metadata3.id.toString(), record3["id"].toString())
-        Assertions.assertNull(record3["work_id"])
-        Assertions.assertNull(record3["expr_id"])
-        Assertions.assertNull(record3["man_id"])
-        Assertions.assertNull(record3["cs_id"])
+        Assertions.assertEquals(metadata2.filePath, record2["file_path"])
+        Assertions.assertEquals(200L, (record2["file_size"] as Number).toLong())
+        Assertions.assertEquals("http://example.org/doc2", record2["uri"])
+        Assertions.assertEquals(metadata2.workId.toString(), record2["work_id"].toString())
+        Assertions.assertEquals("expr-2", record2["expr_id"])
+        Assertions.assertEquals("man-2", record2["man_id"])
+        Assertions.assertEquals("cs-2", record2["cs_id"])
     }
 
     @Test
-    fun `should read XML content from temp file and store in database`() {
-        // Given: Create temp file with specific XML content
+    fun `should store file path in database`() {
+        // Given: Create file with specific XML content
         val expectedXmlContent = """
             <?xml version="1.0" encoding="UTF-8"?>
             <FORMEX_PLUS>
@@ -136,20 +122,24 @@ class XmlDatabaseWriterTest {
         // When: Write to database
         xmlDatabaseWriter.write(chunk)
 
-        // Then: Verify XML content is correctly stored in database
-        val actualXmlContent = jdbcTemplate.queryForObject(
-            "SELECT xml_content FROM formex_documents WHERE id = ?",
+        // Then: Verify file path is stored in database
+        val storedFilePath = jdbcTemplate.queryForObject(
+            "SELECT file_path FROM formex_documents WHERE id = ?",
             String::class.java,
-            metadata.id
+            metadata.id.toString()
         )
 
-        Assertions.assertEquals(expectedXmlContent, actualXmlContent, "XML content should match exactly")
+        Assertions.assertEquals(metadata.filePath, storedFilePath, "File path should be stored")
+        
+        // Verify file exists and content matches
+        val fileContent = Files.readString(Paths.get(storedFilePath))
+        Assertions.assertEquals(expectedXmlContent, fileContent, "File content should match")
 
         // Verify file size matches
         val actualFileSize = jdbcTemplate.queryForObject(
             "SELECT file_size FROM formex_documents WHERE id = ?",
             Long::class.java,
-            metadata.id
+            metadata.id.toString()
         )
         Assertions.assertEquals(
             expectedXmlContent.length.toLong(),
@@ -159,30 +149,30 @@ class XmlDatabaseWriterTest {
     }
 
     /**
-     * Helper method to create test XmlMetadata with a temporary XML file.
+     * Helper method to create test XmlMetadata with an XML file.
      * Uses JUnit's @TempDir for automatic cleanup.
      *
-     * @param xmlContent The XML content to write to the temp file
+     * @param xmlContent The XML content to write to the file
      * @param uri The URI for the metadata
      * @param fileSize The file size
-     * @param workId Work UUID (nullable)
-     * @param exprId Expression ID (nullable)
-     * @param manId Manifestation ID (nullable)
-     * @param csId Content Stream ID (nullable)
-     * @return XmlMetadata with tempFilePath pointing to created temp file
+     * @param workId Work UUID (required)
+     * @param exprId Expression ID (required)
+     * @param manId Manifestation ID (required)
+     * @param csId Content Stream ID (required)
+     * @return XmlMetadata with filePath pointing to created file
      */
     private fun createTestXmlMetadata(
         xmlContent: String,
         uri: String,
         fileSize: Long,
-        workId: UUID?,
-        exprId: String?,
-        manId: String?,
-        csId: String?
+        workId: UUID,
+        exprId: String,
+        manId: String,
+        csId: String
     ): XmlMetadata {
-        // Create temp file with XML content in JUnit's managed temp directory
-        val tempFile = Files.createTempFile(tempDir, "test-xml-", ".xml")
-        Files.writeString(tempFile, xmlContent)
+        // Create file with XML content in JUnit's managed temp directory
+        val file = Files.createTempFile(tempDir, "test-xml-", ".xml")
+        Files.writeString(file, xmlContent)
 
         return XmlMetadata(
             id = UUID.randomUUID(),
@@ -192,7 +182,7 @@ class XmlDatabaseWriterTest {
             exprId = exprId,
             manId = manId,
             csId = csId,
-            tempFilePath = tempFile.toString()
+            filePath = file.toString()
         )
     }
 }

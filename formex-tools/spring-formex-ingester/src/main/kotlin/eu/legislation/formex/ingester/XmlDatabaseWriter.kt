@@ -3,28 +3,22 @@ import org.springframework.batch.infrastructure.item.Chunk
 import org.springframework.batch.infrastructure.item.ItemWriter
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.UncheckedIOException
-import java.nio.file.Files
-import java.nio.file.Paths
-import kotlin.io.path.bufferedReader
 
 /**
- * Batch inserts XML metadata and content into DuckDB database.
- * Streams XML content from temporary files using JDBC character streams to avoid loading large files into memory.
- * Tracks temp files for later cleanup.
+ * Batch inserts XML metadata into SQLite database.
+ * 
+ * Stores file paths instead of XML content - the actual XML files are 
+ * stored permanently in the configured storage directory.
  */
 @Component
 class XmlDatabaseWriter(
-    private val jdbcTemplate: JdbcTemplate,
-    private val cleanupListener: TempFileCleanupListener
+    private val jdbcTemplate: JdbcTemplate
 ) : ItemWriter<XmlMetadata> {
 
     override fun write(chunk: Chunk<out XmlMetadata>) {
         val sql = """
             INSERT INTO formex_documents 
-            (id, xml_content, file_size, uri, work_id, expr_id, man_id, cs_id, version, root_element)
+            (id, file_path, file_size, uri, work_id, expr_id, man_id, cs_id, version, root_element)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """.trimIndent()
 
@@ -34,30 +28,16 @@ class XmlDatabaseWriter(
             // If a null is received here, it's an unexpected error state.
             metadata ?: throw IllegalStateException("Received a null item in the writer, which should have been filtered out.")
 
-            try {
-                ps.setObject(1, metadata.id)
-
-                // Stream XML content from temp file without loading entire file into memory
-                // Uses JDBC setCharacterStream with BufferedReader for efficient streaming
-                val path = Paths.get(metadata.tempFilePath)
-                path.bufferedReader().use { reader ->
-                    ps.setCharacterStream(2, reader, metadata.fileSize)
-                }
-
-                ps.setLong(3, metadata.fileSize)
-                ps.setString(4, metadata.uri)
-                ps.setObject(5, metadata.workId)
-                ps.setString(6, metadata.exprId)
-                ps.setString(7, metadata.manId)
-                ps.setString(8, metadata.csId)
-                ps.setString(9, metadata.version)
-                ps.setString(10, metadata.rootElement)
-
-                // Track temp file for cleanup after successful step completion
-                cleanupListener.addTempFile(metadata.tempFilePath)
-            } catch (e: IOException) {
-                throw UncheckedIOException("Failed to read XML file: ${metadata.tempFilePath}", e)
-            }
+            ps.setString(1, metadata.id.toString())
+            ps.setString(2, metadata.filePath)
+            ps.setLong(3, metadata.fileSize)
+            ps.setString(4, metadata.uri)
+            ps.setString(5, metadata.workId.toString())
+            ps.setString(6, metadata.exprId)
+            ps.setString(7, metadata.manId)
+            ps.setString(8, metadata.csId)
+            ps.setString(9, metadata.version)
+            ps.setString(10, metadata.rootElement)
         }
     }
 }

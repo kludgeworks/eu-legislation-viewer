@@ -66,9 +66,9 @@ class FormexXmlBatchJob {
      * - Reads URIs from SPARQL endpoint (single HTTP request)
      * - Filters out existing URIs (batch database checks)
      * - Downloads XML files in parallel (streaming, no memory loading)
+     * - Stores files permanently in configured storage directory
      * - Extracts version and root_element from XML documents
      * - Inserts complete records into database
-     * - Cleans up temp files after successful completion
      *
      * @param jobRepository Spring Batch job repository
      * @param transactionManager Transaction manager for chunk commits
@@ -77,7 +77,6 @@ class FormexXmlBatchJob {
      * @param downloadProcessor Downloads XML and calculates metadata
      * @param postProcessor Extracts version and root_element from XML
      * @param writer Inserts records into database
-     * @param cleanupListener Cleans up temp files after step completion
      * @return The configured download step
      */
     @Bean
@@ -88,8 +87,7 @@ class FormexXmlBatchJob {
         filterProcessor: UriFilterProcessor,
         downloadProcessor: StreamingXmlDownloadProcessor,
         postProcessor: XmlPostProcessor,
-        writer: XmlDatabaseWriter,
-        cleanupListener: TempFileCleanupListener
+        writer: XmlDatabaseWriter
     ): Step {
         // Chain filter, download, and post-processing processors
         val compositeProcessor = CompositeItemProcessor<CellarData, XmlMetadata>().apply {
@@ -102,7 +100,6 @@ class FormexXmlBatchJob {
             .reader(reader)
             .processor(compositeProcessor)
             .writer(writer)
-            .listener(cleanupListener)
             .taskExecutor(taskExecutor())
             .build()
     }

@@ -6,6 +6,8 @@ import org.springframework.core.io.Resource
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 /**
  * Factory for creating FlatFileItemReader that streams CSV from SPARQL endpoint.
@@ -34,27 +36,36 @@ class SparqlUriReader(
     fun createReader(): FlatFileItemReader<CellarData> {
         val query = """
             PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+            PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             
-            SELECT ?item ?workId ?expressionId ?manifestationId ?contentStreamId ?language ?mimeType
+            SELECT DISTINCT
+              ?item
+              (STRAFTER(STR(?work), "cellar/") AS ?workId)
+              (STRAFTER(STR(?expression), CONCAT(STR(?work), ".")) AS ?expressionId)
+              (STRAFTER(STR(?manifestation), CONCAT(STR(?expression), ".")) AS ?manifestationId)
+              (STRAFTER(STR(?item), CONCAT(STR(?manifestation), "/")) AS ?contentStreamId)
+              ?language
+              ?mimeType
             WHERE {
-              ?work cdm:work_id_document ?workId .
-              ?expression cdm:expression_belongs_to_work ?work ;
-                          cdm:expression_uses_language <http://publications.europa.eu/resource/authority/language/${sparqlProperties.language}> ;
-                          cdm:expression_id_document ?expressionId .
-              ?manifestation cdm:manifestation_manifests_expression ?expression ;
-                             cdm:manifestation_id_document ?manifestationId .
-              ?item cdm:manifestation_manifests_expression ?expression ;
-                    cdm:content_stream_id ?contentStreamId ;
-                    cdm:content_stream_type <http://publications.europa.eu/resource/authority/content-stream-type/FORMEX> ;
-                    cdm:content_stream_mime_type ?mimeType .
+              ?expression cmr:lang ?language .
+              FILTER(?language = "${sparqlProperties.language}"^^xsd:language)
+            
+              ?expression cdm:expression_belongs_to_work ?work .
+              ?manifestation cdm:manifestation_manifests_expression ?expression .
+              ?item cdm:item_belongs_to_manifestation ?manifestation .
+              ?item cmr:manifestationMimeType ?mimeType .
+              FILTER(?mimeType = "application/xml;type=fmx4")
             }
             """.trimIndent()
 
-        // Fetch CSV stream from SPARQL endpoint using POST with form-encoded body
+        // Encode query as form-urlencoded body
+        val formBody = "query=" + URLEncoder.encode(query, StandardCharsets.UTF_8)
+
         val csvResource = restClient.post()
             .uri(sparqlProperties.endpoint)
             .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .body("query=$query")
+            .body(formBody)
             .accept(MediaType.parseMediaType("text/csv"))
             .retrieve()
             .body(Resource::class.java)

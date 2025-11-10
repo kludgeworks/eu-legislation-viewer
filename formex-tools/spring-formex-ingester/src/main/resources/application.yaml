@@ -3,13 +3,14 @@ spring:
     name: formex-ingester
 
   datasource:
-    url: jdbc:duckdb:./formex.db
-    driver-class-name: org.duckdb.DuckDBDriver
+    url: jdbc:sqlite:./formex.db
+    driver-class-name: org.sqlite.JDBC
     hikari:
       maximum-pool-size: 1
 
   batch:
     jdbc:
+      # SQLite is natively supported by Spring Batch
       initialize-schema: always
     job:
       enabled: false
@@ -17,10 +18,15 @@ spring:
   sql:
     init:
       mode: always
-      schema-locations: classpath:schema-formex.sql
+      schema-locations:
+        - classpath:schema-formex.sql
 
   lifecycle:
     timeout-per-shutdown-phase: 30s
+
+formex:
+  storage:
+    directory: ./formex-xml-files
 
 sparql:
   endpoint: https://publications.europa.eu/webapi/rdf/sparql

@@ -4,14 +4,9 @@ import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.observation.DefaultMeterObservationHandler
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry
 import io.micrometer.observation.ObservationRegistry
-import org.springframework.batch.core.repository.JobRepository
-import org.springframework.batch.core.repository.support.JdbcJobRepositoryFactoryBean
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.jdbc.support.JdbcTransactionManager
-import org.springframework.transaction.PlatformTransactionManager
-import javax.sql.DataSource
 
 /**
  * Configuration properties for SPARQL endpoint.
@@ -26,49 +21,14 @@ data class SparqlProperties(
 )
 
 /**
- * Configuration for DuckDB support in Spring Batch.
+ * Configuration properties for XML file storage.
  *
- * DuckDB is not natively supported by Spring Batch's DatabaseType enum.
- * This configuration manually creates a JobRepository with PostgreSQL
- * database type, which is compatible with DuckDB's SQL dialect.
+ * @property directory Directory path for permanent XML file storage
  */
-@Configuration
-class BatchDatabaseConfig {
-
-    /**
-     * Custom JobRepository configured to work with DuckDB.
-     *
-     * Sets the database type to PostgreSQL since DuckDB supports
-     * PostgreSQL-compatible SQL syntax for batch metadata tables.
-     *
-     * @param dataSource The application's datasource
-     * @param transactionManager The transaction manager
-     * @return Configured JobRepository for DuckDB
-     */
-    @Bean
-    fun jobRepository(
-        dataSource: DataSource,
-        transactionManager: PlatformTransactionManager
-    ): JobRepository {
-        val factory = JdbcJobRepositoryFactoryBean().apply {
-            setDataSource(dataSource)
-            setTransactionManager(transactionManager)
-            setDatabaseType("POSTGRES") // DuckDB uses PostgreSQL-compatible SQL
-        }
-        factory.afterPropertiesSet()
-        return factory.`object`!!
-    }
-
-    /**
-     * Transaction manager for Spring Batch operations.
-     *
-     * @param dataSource The application's datasource
-     * @return JDBC transaction manager
-     */
-    @Bean
-    fun transactionManager(dataSource: DataSource): PlatformTransactionManager =
-        JdbcTransactionManager(dataSource)
-}
+@ConfigurationProperties(prefix = "formex.storage")
+data class StorageProperties(
+    val directory: String = "./formex-xml-files"
+)
 
 /**
  * Configuration for Spring Batch 6.0 observability and metrics collection.

@@ -12,12 +12,12 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 /**
  * Post-processing item processor that parses XML documents to extract metadata
- * (version and root_element) from temporary XML files.
+ * (version and root_element) from stored XML files.
  *
  * Enriches XmlMetadata with version and root_element before database insertion,
  * allowing the writer to insert complete records in a single operation.
  *
- * This processor reads the XML content from the temporary file, parses it,
+ * This processor reads the XML content from the permanent storage file, parses it,
  * and extracts:
  * - version: from the noNamespaceSchemaLocation attribute (e.g., "4.3.xd")
  * - root_element: the local name of the root XML element
@@ -33,8 +33,8 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
 
     override fun process(item: XmlMetadata): XmlMetadata {
         return runCatching {
-            // Read XML content from temp file
-            val xmlContent = Files.readString(Paths.get(item.tempFilePath))
+            // Read XML content from file
+            val xmlContent = Files.readString(Paths.get(item.filePath))
 
             // Parse XML to extract version and root element
             val builder = documentBuilderFactory.newDocumentBuilder()
@@ -44,12 +44,27 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
             val rootElementName = rootElement.localName ?: rootElement.nodeName
 
             // Extract version from noNamespaceSchemaLocation attribute
+            // Try without namespace prefix first
             val schemaLocation = rootElement.getAttribute("noNamespaceSchemaLocation")
+            
             val version = if (schemaLocation.isNotEmpty()) {
                 versionPattern.matcher(schemaLocation).let { matcher ->
                     if (matcher.find()) matcher.group(1) else null
                 }
-            } else null
+            } else {
+                // Try with xsi namespace prefix (most common in Formex documents)
+                val xsiSchemaLocation = rootElement.getAttributeNS(
+                    "http://www.w3.org/2001/XMLSchema-instance", 
+                    "noNamespaceSchemaLocation"
+                )
+                if (xsiSchemaLocation.isNotEmpty()) {
+                    versionPattern.matcher(xsiSchemaLocation).let { matcher ->
+                        if (matcher.find()) matcher.group(1) else null
+                    }
+                } else {
+                    null
+                }
+            }
 
             // Return enriched metadata
             item.copy(
@@ -57,7 +72,7 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
                 rootElement = rootElementName
             )
         }.getOrElse { e ->
-            logger.warn { "Failed to parse XML for ${item.uri}: ${e.message}" }
+            logger.warn(e) { "Failed to parse XML for ${item.uri}: ${e.message}" }
             // Return original item without version/rootElement on parse failure
             item
         }

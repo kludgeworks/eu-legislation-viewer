@@ -145,16 +145,22 @@ class SparqlUriReaderIntegrationTest {
         val recordedRequest = mockServer.takeRequest()
 
         // Decode form body to get query parameter
-        val queryParam = recordedRequest.body?.utf8() ?: ""
-
-        assertNotNull(queryParam)
+        val formBody = recordedRequest.body?.utf8() ?: ""
+        
+        assertNotNull(formBody)
+        assertTrue(formBody.startsWith("query="), "Form body should start with 'query='")
+        
+        // Extract and decode the query parameter
+        val queryParam = java.net.URLDecoder.decode(formBody.substringAfter("query="), "UTF-8")
+        
         assertTrue(queryParam.contains("PREFIX cdm:"))
-        assertTrue(queryParam.contains("SELECT ?item ?workId ?expressionId"))
-        assertTrue(queryParam.contains("cdm:work_id_document ?workId"))
-        assertTrue(queryParam.contains("cdm:expression_uses_language"))
-        assertTrue(queryParam.contains("language/eng")) // Verify language parameter injection
-        assertTrue(queryParam.contains("cdm:content_stream_type"))
-        assertTrue(queryParam.contains("FORMEX"))
+        assertTrue(queryParam.contains("SELECT"))
+        assertTrue(queryParam.contains("?item"))
+        assertTrue(queryParam.contains("?workId"))
+        assertTrue(queryParam.contains("?expressionId"))
+        assertTrue(queryParam.contains("cmr:lang"))
+        assertTrue(queryParam.contains("language = \"eng\"")) // Verify language parameter injection
+        assertTrue(queryParam.contains("cmr:manifestationMimeType"))
 
         itemReader.close()
     }

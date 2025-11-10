@@ -40,7 +40,7 @@ class XmlPostProcessorTest {
             exprId = "expr-001",
             manId = "man-001",
             csId = "cs-001",
-            tempFilePath = tempFile.toString()
+            filePath = tempFile.toString()
         )
 
         // When
@@ -73,7 +73,7 @@ class XmlPostProcessorTest {
             exprId = "expr-001",
             manId = "man-001",
             csId = "cs-001",
-            tempFilePath = tempFile.toString()
+            filePath = tempFile.toString()
         )
 
         // When
@@ -106,7 +106,7 @@ class XmlPostProcessorTest {
             exprId = "expr-001",
             manId = "man-001",
             csId = "cs-001",
-            tempFilePath = tempFile.toString()
+            filePath = tempFile.toString()
         )
 
         // When
@@ -134,7 +134,7 @@ class XmlPostProcessorTest {
             exprId = "expr-001",
             manId = "man-001",
             csId = "cs-001",
-            tempFilePath = tempFile.toString()
+            filePath = tempFile.toString()
         )
 
         // When
@@ -169,7 +169,7 @@ class XmlPostProcessorTest {
             exprId = "expr-001",
             manId = "man-001",
             csId = "cs-001",
-            tempFilePath = tempFile.toString()
+            filePath = tempFile.toString()
         )
 
         // When

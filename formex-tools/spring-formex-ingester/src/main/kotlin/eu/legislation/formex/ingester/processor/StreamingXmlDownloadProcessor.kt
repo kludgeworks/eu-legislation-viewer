@@ -2,6 +2,7 @@ package eu.legislation.formex.ingester.processor
 
 import com.github.f4b6a3.uuid.UuidCreator
 import eu.legislation.formex.ingester.CellarData
+import eu.legislation.formex.ingester.StorageProperties
 import eu.legislation.formex.ingester.XmlMetadata
 import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.stereotype.Component
@@ -9,6 +10,7 @@ import org.springframework.web.client.RestClient
 import java.io.InputStream
 import java.nio.file.Files
 import java.nio.file.Path
+import java.nio.file.Paths
 import java.security.DigestInputStream
 import java.security.MessageDigest
 import java.util.UUID
@@ -20,23 +22,36 @@ import java.util.UUID
  * computes SHA-1 hash during download (single-pass), and generates UUIDv5 identifiers.
  * All ID components (workId, expressionId, etc.) are now provided directly by the
  * CellarData from the SPARQL query, eliminating regex parsing.
+ *
+ * Files are stored permanently in the configured storage directory.
  */
 @Component
 class StreamingXmlDownloadProcessor(
-    private val restClient: RestClient
+    private val restClient: RestClient,
+    private val storageProperties: StorageProperties
 ) : ItemProcessor<CellarData, XmlMetadata> {
 
-    private val tempDir: Path = Files.createTempDirectory("formex-xml-")
+    private val storageDir: Path = Paths.get(storageProperties.directory).also { 
+        Files.createDirectories(it) 
+    }
 
     companion object {
-        private const val CELLAR_NAMESPACE = "http://publications.europa.eu/resource/cellar"
+        // Create a UUID namespace for Cellar using UUIDv5 based on the URL namespace
+        private val CELLAR_NAMESPACE = UuidCreator.getNameBasedSha1(
+            UuidCreator.NAMESPACE_URL,
+            "http://publications.europa.eu/resource/cellar"
+        )
         private const val BUFFER_SIZE = 65536 // 64KB buffer for large files
     }
 
     override fun process(item: CellarData): XmlMetadata {
-        // Download and hash in single pass
-        val tempFile = tempDir.resolve("${UUID.randomUUID()}.xml")
+        // Download and hash in single pass, generate ID based on content
+        val tempFile = storageDir.resolve("${UUID.randomUUID()}.xml")
         val metrics = downloadWithMetrics(item.item, tempFile)
+        
+        // Rename file to use content-based ID for deduplication
+        val permanentFile = storageDir.resolve("${metrics.id}.xml")
+        Files.move(tempFile, permanentFile, java.nio.file.StandardCopyOption.REPLACE_EXISTING)
 
         return XmlMetadata(
             id = metrics.id,
@@ -46,7 +61,7 @@ class StreamingXmlDownloadProcessor(
             exprId = item.expressionId,
             manId = item.manifestationId,
             csId = item.contentStreamId,
-            tempFilePath = tempFile.toString()
+            filePath = permanentFile.toString()
         )
     }
 

@@ -1,0 +1,36 @@
+# End-to-end test configuration
+# Uses in-memory SQLite and real EU SPARQL endpoint
+
+spring:
+  datasource:
+    # In-memory database for test isolation
+    url: "jdbc:sqlite::memory:"
+    driver-class-name: org.sqlite.JDBC
+    hikari:
+      maximum-pool-size: 1
+      auto-commit: false
+
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false
+
+  sql:
+    init:
+      mode: always
+      schema-locations:
+        - classpath:schema-formex.sql
+      continue-on-error: false
+
+  main:
+    allow-bean-definition-overriding: true
+
+formex:
+  storage:
+    directory: ./build/e2e-xml-files
+
+# Real EU SPARQL endpoint for end-to-end testing
+sparql:
+  endpoint: https://publications.europa.eu/webapi/rdf/sparql
+  language: eng

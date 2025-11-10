@@ -1,7 +1,7 @@
 spring:
   datasource:
-    url: "jdbc:duckdb:"
-    driver-class-name: org.duckdb.DuckDBDriver
+    url: "jdbc:sqlite::memory:"
+    driver-class-name: org.sqlite.JDBC
     hikari:
       maximum-pool-size: 1
 
@@ -19,11 +19,10 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
+formex:
+  storage:
+    directory: ./build/test-xml-files
+
 sparql:
   endpoint: http://localhost:9999/sparql
   language: eng
-
-sql:
-  post-process:
-    select: "SELECT id, xml_content FROM formex_documents WHERE version IS NULL"
-    update: "UPDATE formex_documents SET version = ?, root_element = ? WHERE id = ?"
