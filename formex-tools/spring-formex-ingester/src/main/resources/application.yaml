@@ -3,10 +3,10 @@ spring:
     name: formex-ingester
 
   datasource:
-    url: jdbc:sqlite:./formex.db
+    url: jdbc:sqlite:./formex.db?journal_mode=WAL
     driver-class-name: org.sqlite.JDBC
     hikari:
-      maximum-pool-size: 1
+      maximum-pool-size: 10
 
   batch:
     jdbc:

@@ -4,6 +4,8 @@
 spring:
   datasource:
     url: "jdbc:sqlite::memory:"
+    hikari:
+      maximum-pool-size: 1
 
   main:
     # Allow test doubles to override production beans

@@ -4,8 +4,9 @@
 
 spring:
   datasource:
-    url: "jdbc:sqlite::memory:"
+    url: "jdbc:sqlite:file:e2e-test.db?mode=memory&cache=shared"
     hikari:
+      maximum-pool-size: 10
       auto-commit: false
 
   sql:

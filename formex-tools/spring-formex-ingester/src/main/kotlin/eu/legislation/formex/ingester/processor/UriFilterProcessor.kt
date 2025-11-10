@@ -1,51 +1,31 @@
 package eu.legislation.formex.ingester.processor
 
 import eu.legislation.formex.ingester.CellarData
-import jakarta.annotation.PreDestroy
 import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 
+/**
+ * Filters out URIs that already exist in the database.
+ */
 @Component
 class UriFilterProcessor(
     private val jdbcTemplate: JdbcTemplate
 ) : ItemProcessor<CellarData, CellarData> {
 
-    private val existingUris = mutableSetOf<String>()
-    private val batchBuffer = mutableListOf<String>()
-
-    companion object {
-        private const val BATCH_SIZE = 1000
-    }
-
+    /**
+     * Processes a CellarData item, filtering it out if the URI already exists in the database.
+     *
+     * @param item The CellarData item to process
+     * @return null if URI exists (filtered out by Spring Batch), otherwise the original item
+     */
     override fun process(item: CellarData): CellarData? {
-        batchBuffer.add(item.item)
-
-        // When buffer reaches batch size, check database
-        if (batchBuffer.size >= BATCH_SIZE) {
-            checkBatchInDatabase()
-        }
-
-        // Return null if URI already exists (filters it out)
-        return if (item.item in existingUris) null else item
-    }
-
-    private fun checkBatchInDatabase() {
-        if (batchBuffer.isEmpty()) return
-
-        // Create parameterized query with IN clause
-        val placeholders = List(batchBuffer.size) { "?" }.joinToString(",")
-        val sql = "SELECT uri FROM formex_documents WHERE uri IN ($placeholders)"
-
-        val found = jdbcTemplate.queryForList(sql, String::class.java, *batchBuffer.toTypedArray())
-        existingUris.addAll(found)
-
-        batchBuffer.clear()
-    }
-
-    // Call at end of processing to check remaining items
-    @PreDestroy
-    fun cleanup() {
-        checkBatchInDatabase()
+        val exists = jdbcTemplate.queryForObject(
+            "SELECT EXISTS(SELECT 1 FROM formex_documents WHERE uri = ? LIMIT 1)",
+            Boolean::class.java,
+            item.item
+        ) ?: false
+        
+        return if (exists) null else item
     }
 }
