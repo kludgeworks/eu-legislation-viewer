@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.batch.core.BatchStatus
 import org.springframework.batch.core.job.Job
-import org.springframework.batch.core.launch.JobLauncher
+import org.springframework.batch.core.launch.JobOperator
 import org.springframework.batch.test.JobOperatorTestUtils
 import org.springframework.batch.test.context.SpringBatchTest
 import org.springframework.beans.factory.annotation.Autowired
@@ -40,9 +40,9 @@ import java.nio.file.Paths
  * The test is disabled by default to avoid network dependencies in CI/CD.
  * Enable manually when testing against real infrastructure.
  *
- * NOTE: Uses JobOperatorTestUtils (Spring Batch 6.0+), which is the recommended test utility.
- * While JobLauncher is deprecated for production use (scheduled for removal in 6.2),
- * it's still required for test configuration as JobOperatorTestUtils internally uses it.
+ * NOTE: Uses JobOperatorTestUtils and JobOperator (Spring Batch 6.0+) for job testing.
+ * This is the modern approach that replaces the deprecated JobLauncher and JobLauncherTestUtils.
+ * The test requires a JobOperator bean configured in the application context.
  */
 @Disabled("Manual E2E test - requires network access to EU SPARQL endpoint and download servers")
 @SpringBootTest(classes = [FormexIngesterApplication::class])
@@ -59,12 +59,12 @@ class FormexXmlBatchJobEndToEndTest {
     private lateinit var job: Job
 
     @Autowired
-    private lateinit var jobLauncher: JobLauncher
+    private lateinit var jobOperator: JobOperator
 
     @BeforeEach
     fun setup() {
         jobOperatorTestUtils.job = job
-        jobOperatorTestUtils.jobLauncher = jobLauncher
+        jobOperatorTestUtils.setJobOperator(jobOperator)
 
         // Clear database before test using Exposed
         transaction(database) {
@@ -87,9 +87,9 @@ class FormexXmlBatchJobEndToEndTest {
     @Test
     fun `end to end test with real EU datastore limited to 2 records`() {
         // When: Launch the complete job
-        // JobOperatorTestUtils.launchJob() generates unique job parameters automatically
-        // to allow multiple test runs (inherited from JobLauncherTestUtils)
-        val jobExecution = jobOperatorTestUtils.launchJob()
+        // JobOperatorTestUtils.startJob() generates unique job parameters automatically
+        // to allow multiple test runs, using the JobOperator to execute the batch job
+        val jobExecution = jobOperatorTestUtils.startJob()
 
         // Then: Job should complete successfully
         assertEquals(
