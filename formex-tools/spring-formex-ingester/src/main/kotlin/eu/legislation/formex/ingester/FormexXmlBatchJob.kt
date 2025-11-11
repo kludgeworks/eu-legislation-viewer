@@ -27,7 +27,6 @@ import java.time.Duration
  */
 @Configuration
 class FormexXmlBatchJob {
-
     /**
      * Main job bean that orchestrates the entire process.
      *
@@ -38,10 +37,11 @@ class FormexXmlBatchJob {
     @Bean
     fun processFormexXml(
         jobRepository: JobRepository,
-        downloadXmlStep: Step
-    ): Job = JobBuilder("processFormexXml", jobRepository)
-        .start(downloadXmlStep)
-        .build()
+        downloadXmlStep: Step,
+    ): Job =
+        JobBuilder("processFormexXml", jobRepository)
+            .start(downloadXmlStep)
+            .build()
 
     /**
      * SPARQL CSV reader bean with @StepScope.
@@ -56,9 +56,7 @@ class FormexXmlBatchJob {
      */
     @Bean
     @StepScope
-    fun sparqlCsvReader(sparqlReader: SparqlUriReader): ItemStreamReader<CellarData> {
-        return sparqlReader.createReader()
-    }
+    fun sparqlCsvReader(sparqlReader: SparqlUriReader): ItemStreamReader<CellarData> = sparqlReader.createReader()
 
     /**
      * Step 1: Download XML files, extract metadata, and insert into database.
@@ -87,12 +85,13 @@ class FormexXmlBatchJob {
         filterProcessor: UriFilterProcessor,
         downloadProcessor: StreamingXmlDownloadProcessor,
         postProcessor: XmlPostProcessor,
-        writer: XmlDatabaseWriter
+        writer: XmlDatabaseWriter,
     ): Step {
         // Chain filter, download, and post-processing processors
-        val compositeProcessor = CompositeItemProcessor<CellarData, XmlMetadata>().apply {
-            setDelegates(listOf(filterProcessor, downloadProcessor, postProcessor))
-        }
+        val compositeProcessor =
+            CompositeItemProcessor<CellarData, XmlMetadata>().apply {
+                setDelegates(listOf(filterProcessor, downloadProcessor, postProcessor))
+            }
 
         return StepBuilder("downloadXml", jobRepository)
             .chunk<CellarData, XmlMetadata>(10)
@@ -116,13 +115,14 @@ class FormexXmlBatchJob {
      * @return The configured task executor
      */
     @Bean
-    fun taskExecutor(): AsyncTaskExecutor = ThreadPoolTaskExecutor().apply {
-        corePoolSize = 10
-        maxPoolSize = 20
-        queueCapacity = 100
-        setThreadNamePrefix("xml-download-")
-        initialize()
-    }
+    fun taskExecutor(): AsyncTaskExecutor =
+        ThreadPoolTaskExecutor().apply {
+            corePoolSize = 10
+            maxPoolSize = 20
+            queueCapacity = 100
+            setThreadNamePrefix("xml-download-")
+            initialize()
+        }
 
     /**
      * RestClient configured for large file downloads.
@@ -135,12 +135,14 @@ class FormexXmlBatchJob {
      */
     @Bean
     fun restClient(): RestClient {
-        val requestFactory = HttpComponentsClientHttpRequestFactory().apply {
-            setConnectTimeout(Duration.ofSeconds(30))
-            setReadTimeout(Duration.ofMinutes(5))
-        }
+        val requestFactory =
+            HttpComponentsClientHttpRequestFactory().apply {
+                setConnectTimeout(Duration.ofSeconds(30))
+                setReadTimeout(Duration.ofMinutes(5))
+            }
 
-        return RestClient.builder()
+        return RestClient
+            .builder()
             .requestFactory(requestFactory)
             .build()
     }

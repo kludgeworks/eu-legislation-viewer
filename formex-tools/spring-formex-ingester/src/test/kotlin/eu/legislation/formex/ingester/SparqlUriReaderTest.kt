@@ -1,5 +1,8 @@
 package eu.legislation.formex.ingester
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.ArgumentMatchers
@@ -12,11 +15,10 @@ import org.springframework.web.client.RestClient
 
 /**
  * Unit tests for SparqlUriReader using Mockito.
- * 
+ *
  * Tests the basic functionality of creating readers with mocked RestClient responses.
  */
 class SparqlUriReaderTest {
-
     private lateinit var restClient: RestClient
     private lateinit var sparqlProperties: SparqlProperties
     private lateinit var reader: SparqlUriReader
@@ -24,27 +26,32 @@ class SparqlUriReaderTest {
     @BeforeEach
     fun setup() {
         restClient = mock(RestClient::class.java)
-        sparqlProperties = SparqlProperties(
-            endpoint = "http://test.example.org/sparql",
-            language = "eng"
-        )
+        sparqlProperties =
+            SparqlProperties(
+                endpoint = "http://test.example.org/sparql",
+                language = "eng",
+            )
         reader = SparqlUriReader(restClient, sparqlProperties)
     }
 
     @Test
     fun `createReader should parse CSV response and return FlatFileItemReader`() {
         // Given - mock CSV response with two rows
-        val csvContent = """
+        val csvContent =
+            """
             "item","workId","expressionId","manifestationId","contentStreamId","language","mimeType"
             "http://example.org/doc1.xml","550e8400-e29b-41d4-a716-446655440000","expr-001","man-001","cs-001","eng","application/xml"
             "http://example.org/doc2.xml","550e8400-e29b-41d4-a716-446655440001","expr-002","man-002","cs-002","eng","application/xml"
-        """.trimIndent()
+            """.trimIndent()
 
         mockRestClientCsvResponse(csvContent)
 
         // When
         val itemReader = reader.createReader()
-        itemReader.open(org.springframework.batch.infrastructure.item.ExecutionContext())
+        itemReader.open(
+            org.springframework.batch.infrastructure.item
+                .ExecutionContext(),
+        )
 
         // Then - should read first item
         val firstItem = itemReader.read()
@@ -73,15 +80,19 @@ class SparqlUriReaderTest {
     @Test
     fun `createReader should handle empty CSV results`() {
         // Given - CSV with only header
-        val csvContent = """
+        val csvContent =
+            """
             "item","workId","expressionId","manifestationId","contentStreamId","language","mimeType"
-        """.trimIndent()
+            """.trimIndent()
 
         mockRestClientCsvResponse(csvContent)
 
         // When
         val itemReader = reader.createReader()
-        itemReader.open(org.springframework.batch.infrastructure.item.ExecutionContext())
+        itemReader.open(
+            org.springframework.batch.infrastructure.item
+                .ExecutionContext(),
+        )
 
         // Then
         val item = itemReader.read()
@@ -96,9 +107,10 @@ class SparqlUriReaderTest {
         mockRestClientCsvResponse(null)
 
         // When/Then - exception is thrown immediately during createReader()
-        val exception = assertThrows(IllegalStateException::class.java) {
-            reader.createReader()
-        }
+        val exception =
+            assertThrows(IllegalStateException::class.java) {
+                reader.createReader()
+            }
         assertEquals("SPARQL endpoint returned null CSV stream", exception.message)
     }
 
@@ -115,7 +127,7 @@ class SparqlUriReaderTest {
         `when`(requestBodySpec.body(ArgumentMatchers.anyString())).thenReturn(requestBodySpec)
         `when`(requestBodySpec.accept(ArgumentMatchers.any(MediaType::class.java))).thenReturn(requestBodySpec)
         `when`(requestBodySpec.retrieve()).thenReturn(responseSpec)
-        
+
         // Mock body() to return Resource
         val resource: Resource? = csvContent?.let { ByteArrayResource(it.toByteArray()) }
         `when`(responseSpec.body(Resource::class.java)).thenReturn(resource)

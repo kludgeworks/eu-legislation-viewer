@@ -22,9 +22,8 @@ import java.nio.charset.StandardCharsets
 @Component
 class SparqlUriReader(
     private val restClient: RestClient,
-    private val sparqlProperties: SparqlProperties
+    private val sparqlProperties: SparqlProperties,
 ) {
-
     /**
      * Creates a FlatFileItemReader that streams CSV results from SPARQL endpoint.
      *
@@ -34,7 +33,8 @@ class SparqlUriReader(
      * @return FlatFileItemReader configured to parse CSV into CellarData objects
      */
     fun createReader(): FlatFileItemReader<CellarData> {
-        val query = """
+        val query =
+            """
             PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
             PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -63,40 +63,54 @@ class SparqlUriReader(
         // Encode query as form-urlencoded body
         val formBody = "query=" + URLEncoder.encode(query, StandardCharsets.UTF_8)
 
-        val csvResource = restClient.post()
-            .uri(sparqlProperties.endpoint)
-            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .body(formBody)
-            .accept(MediaType.parseMediaType("text/csv"))
-            .retrieve()
-            .body(Resource::class.java)
+        val csvResource =
+            restClient
+                .post()
+                .uri(sparqlProperties.endpoint)
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .body(formBody)
+                .accept(MediaType.parseMediaType("text/csv"))
+                .retrieve()
+                .body(Resource::class.java)
                 ?: error("SPARQL endpoint returned null CSV stream")
 
         return FlatFileItemReaderBuilder<CellarData>()
             .name("sparqlCsvReader")
             .resource(csvResource)
             .delimited()
-            .names("item", "workId", "expressionId", "manifestationId",
-                   "contentStreamId", "language", "mimeType")
-            .linesToSkip(1)
+            .names(
+                "item",
+                "workId",
+                "expressionId",
+                "manifestationId",
+                "contentStreamId",
+                "language",
+                "mimeType",
+            ).linesToSkip(1)
             .fieldSetMapper { fieldSet ->
                 CellarData(
-                    item = fieldSet.readString("item")
-                        ?: throw IllegalArgumentException("Missing required field: item"),
-                    workId = fieldSet.readString("workId")
-                        ?: throw IllegalArgumentException("Missing required field: workId"),
-                    expressionId = fieldSet.readString("expressionId")
-                        ?: throw IllegalArgumentException("Missing required field: expressionId"),
-                    manifestationId = fieldSet.readString("manifestationId")
-                        ?: throw IllegalArgumentException("Missing required field: manifestationId"),
-                    contentStreamId = fieldSet.readString("contentStreamId")
-                        ?: throw IllegalArgumentException("Missing required field: contentStreamId"),
-                    language = fieldSet.readString("language")
-                        ?: throw IllegalArgumentException("Missing required field: language"),
-                    mimeType = fieldSet.readString("mimeType")
-                        ?: throw IllegalArgumentException("Missing required field: mimeType")
+                    item =
+                        fieldSet.readString("item")
+                            ?: throw IllegalArgumentException("Missing required field: item"),
+                    workId =
+                        fieldSet.readString("workId")
+                            ?: throw IllegalArgumentException("Missing required field: workId"),
+                    expressionId =
+                        fieldSet.readString("expressionId")
+                            ?: throw IllegalArgumentException("Missing required field: expressionId"),
+                    manifestationId =
+                        fieldSet.readString("manifestationId")
+                            ?: throw IllegalArgumentException("Missing required field: manifestationId"),
+                    contentStreamId =
+                        fieldSet.readString("contentStreamId")
+                            ?: throw IllegalArgumentException("Missing required field: contentStreamId"),
+                    language =
+                        fieldSet.readString("language")
+                            ?: throw IllegalArgumentException("Missing required field: language"),
+                    mimeType =
+                        fieldSet.readString("mimeType")
+                            ?: throw IllegalArgumentException("Missing required field: mimeType"),
                 )
-            }
-            .build()
+            }.build()
     }
 }

@@ -44,11 +44,11 @@ object FormexDocuments : Table("formex_documents") {
 
     // Indexes for performance optimization
     init {
-        index(isUnique = false, version)              // idx_formex_documents_version
-        index(isUnique = false, rootElement)          // idx_formex_documents_root_element
-        index(isUnique = false, workId)               // idx_formex_documents_work_id
-        index(isUnique = false, exprId)               // idx_formex_documents_expr_id
-        index(isUnique = false, manId)                // idx_formex_documents_man_id
-        index(isUnique = false, csId)                 // idx_formex_documents_cs_id
+        index(isUnique = false, version) // idx_formex_documents_version
+        index(isUnique = false, rootElement) // idx_formex_documents_root_element
+        index(isUnique = false, workId) // idx_formex_documents_work_id
+        index(isUnique = false, exprId) // idx_formex_documents_expr_id
+        index(isUnique = false, manId) // idx_formex_documents_man_id
+        index(isUnique = false, csId) // idx_formex_documents_cs_id
     }
 }

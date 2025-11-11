@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component
  */
 @Component
 class UriFilterProcessor : ItemProcessor<CellarData, CellarData> {
-
     /**
      * Processes a CellarData item, filtering it out if the URI already exists in the database.
      *
@@ -25,13 +24,15 @@ class UriFilterProcessor : ItemProcessor<CellarData, CellarData> {
      * @return null if URI exists (filtered out by Spring Batch), otherwise the original item
      */
     override fun process(item: CellarData): CellarData? {
-        val exists = transaction {
-            FormexDocuments.selectAll()
-                .where { FormexDocuments.uri eq item.item }
-                .limit(1)
-                .count() > 0
-        }
-        
+        val exists =
+            transaction {
+                FormexDocuments
+                    .selectAll()
+                    .where { FormexDocuments.uri eq item.item }
+                    .limit(1)
+                    .count() > 0
+            }
+
         return if (exists) null else item
     }
 }

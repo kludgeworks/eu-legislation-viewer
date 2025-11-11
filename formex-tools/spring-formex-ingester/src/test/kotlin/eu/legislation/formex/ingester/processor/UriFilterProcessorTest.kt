@@ -2,10 +2,12 @@ package eu.legislation.formex.ingester.processor
 
 import eu.legislation.formex.ingester.CellarData
 import eu.legislation.formex.ingester.FormexDocuments
-import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.deleteAll
+import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,14 +16,13 @@ import org.springframework.test.context.ActiveProfiles
 
 /**
  * Integration tests for UriFilterProcessor using real database transactions.
- * 
+ *
  * Since the processor uses Exposed transaction blocks, we test with the actual
  * database setup rather than mocking.
  */
 @SpringBootTest
 @ActiveProfiles("test")
 class UriFilterProcessorTest {
-
     @Autowired
     private lateinit var processor: UriFilterProcessor
 
@@ -37,16 +38,17 @@ class UriFilterProcessorTest {
     fun `process should return null for URI that exists in database`() {
         // Given
         val existingUri = "http://example.org/existing"
-        val testCellarData = CellarData(
-            item = existingUri,
-            workId = "test-work-id",
-            expressionId = "test-expr-id",
-            manifestationId = "test-man-id",
-            contentStreamId = "test-cs-id",
-            language = "eng",
-            mimeType = "application/xml"
-        )
-        
+        val testCellarData =
+            CellarData(
+                item = existingUri,
+                workId = "test-work-id",
+                expressionId = "test-expr-id",
+                manifestationId = "test-man-id",
+                contentStreamId = "test-cs-id",
+                language = "eng",
+                mimeType = "application/xml",
+            )
+
         // Insert existing URI into database
         transaction {
             FormexDocuments.insert {
@@ -62,10 +64,10 @@ class UriFilterProcessorTest {
                 it[fileSize] = 1000
             }
         }
-        
+
         // When
         val result = processor.process(testCellarData)
-        
+
         // Then
         assertNull(result, "Processor should return null for existing URI")
     }
@@ -74,19 +76,20 @@ class UriFilterProcessorTest {
     fun `process should return item for URI that does not exist in database`() {
         // Given
         val newUri = "http://example.org/new"
-        val testCellarData = CellarData(
-            item = newUri,
-            workId = "test-work-id",
-            expressionId = "test-expr-id",
-            manifestationId = "test-man-id",
-            contentStreamId = "test-cs-id",
-            language = "eng",
-            mimeType = "application/xml"
-        )
-        
+        val testCellarData =
+            CellarData(
+                item = newUri,
+                workId = "test-work-id",
+                expressionId = "test-expr-id",
+                manifestationId = "test-man-id",
+                contentStreamId = "test-cs-id",
+                language = "eng",
+                mimeType = "application/xml",
+            )
+
         // When (no data inserted - URI does not exist)
         val result = processor.process(testCellarData)
-        
+
         // Then
         assertNotNull(result, "Processor should return item for new URI")
         assertEquals(newUri, result?.item)
@@ -98,10 +101,10 @@ class UriFilterProcessorTest {
         // Given
         val uri1 = "http://example.org/uri1"
         val uri2 = "http://example.org/uri2"
-        
+
         val item1 = CellarData(uri1, "w1", "e1", "m1", "c1", "eng", "application/xml")
         val item2 = CellarData(uri2, "w2", "e2", "m2", "c2", "eng", "application/xml")
-        
+
         // Insert only uri1 (uri2 does not exist)
         transaction {
             FormexDocuments.insert {
@@ -117,12 +120,12 @@ class UriFilterProcessorTest {
                 it[fileSize] = 1000
             }
         }
-        
+
         // When: Process multiple items (simulating concurrent access)
         val result1 = processor.process(item1)
         val result2 = processor.process(item2)
         val result1Again = processor.process(item1)
-        
+
         // Then: Each call queries independently with no side effects
         assertNull(result1, "First URI should be filtered")
         assertNotNull(result2, "Second URI should pass through")

@@ -24,15 +24,15 @@ import javax.xml.parsers.DocumentBuilderFactory
  */
 @Component
 class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
-
-    private val documentBuilderFactory = DocumentBuilderFactory.newInstance().apply {
-        isNamespaceAware = true
-    }
+    private val documentBuilderFactory =
+        DocumentBuilderFactory.newInstance().apply {
+            isNamespaceAware = true
+        }
     private val versionPattern = Pattern.compile("([^/]+\\.xd)$")
     private val logger = KotlinLogging.logger {}
 
-    override fun process(item: XmlMetadata): XmlMetadata {
-        return runCatching {
+    override fun process(item: XmlMetadata): XmlMetadata =
+        runCatching {
             // Read XML content from file
             val xmlContent = Files.readString(Paths.get(item.filePath))
 
@@ -46,35 +46,36 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
             // Extract version from noNamespaceSchemaLocation attribute
             // Try without namespace prefix first
             val schemaLocation = rootElement.getAttribute("noNamespaceSchemaLocation")
-            
-            val version = if (schemaLocation.isNotEmpty()) {
-                versionPattern.matcher(schemaLocation).let { matcher ->
-                    if (matcher.find()) matcher.group(1) else null
-                }
-            } else {
-                // Try with xsi namespace prefix (most common in Formex documents)
-                val xsiSchemaLocation = rootElement.getAttributeNS(
-                    "http://www.w3.org/2001/XMLSchema-instance", 
-                    "noNamespaceSchemaLocation"
-                )
-                if (xsiSchemaLocation.isNotEmpty()) {
-                    versionPattern.matcher(xsiSchemaLocation).let { matcher ->
+
+            val version =
+                if (schemaLocation.isNotEmpty()) {
+                    versionPattern.matcher(schemaLocation).let { matcher ->
                         if (matcher.find()) matcher.group(1) else null
                     }
                 } else {
-                    null
+                    // Try with xsi namespace prefix (most common in Formex documents)
+                    val xsiSchemaLocation =
+                        rootElement.getAttributeNS(
+                            "http://www.w3.org/2001/XMLSchema-instance",
+                            "noNamespaceSchemaLocation",
+                        )
+                    if (xsiSchemaLocation.isNotEmpty()) {
+                        versionPattern.matcher(xsiSchemaLocation).let { matcher ->
+                            if (matcher.find()) matcher.group(1) else null
+                        }
+                    } else {
+                        null
+                    }
                 }
-            }
 
             // Return enriched metadata
             item.copy(
                 version = version,
-                rootElement = rootElementName
+                rootElement = rootElementName,
             )
         }.getOrElse { e ->
             logger.warn(e) { "Failed to parse XML for ${item.uri}: ${e.message}" }
             // Return original item without version/rootElement on parse failure
             item
         }
-    }
 }

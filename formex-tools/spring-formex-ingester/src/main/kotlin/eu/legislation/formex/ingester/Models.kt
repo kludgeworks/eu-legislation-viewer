@@ -20,7 +20,7 @@ data class CellarData(
     val manifestationId: String,
     val contentStreamId: String,
     val language: String,
-    val mimeType: String
+    val mimeType: String,
 )
 
 /**
@@ -47,5 +47,5 @@ data class XmlMetadata(
     val csId: String,
     val filePath: String,
     val version: String? = null,
-    val rootElement: String? = null
+    val rootElement: String? = null,
 )

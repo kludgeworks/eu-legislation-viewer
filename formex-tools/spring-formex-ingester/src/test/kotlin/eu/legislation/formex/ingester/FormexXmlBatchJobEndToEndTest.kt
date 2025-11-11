@@ -1,12 +1,12 @@
 package eu.legislation.formex.ingester
 
-import java.nio.file.Files
-import java.nio.file.Paths
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
@@ -18,6 +18,8 @@ import org.springframework.batch.test.context.SpringBatchTest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
+import java.nio.file.Files
+import java.nio.file.Paths
 
 /**
  * End-to-end integration test for the complete Formex XML batch job.
@@ -38,15 +40,15 @@ import org.springframework.test.context.ActiveProfiles
  * The test is disabled by default to avoid network dependencies in CI/CD.
  * Enable manually when testing against real infrastructure.
  *
- * NOTE: Uses JobOperatorTestUtils (Spring Batch 6.0+) with TaskExecutorJobLauncher
- * instead of the deprecated JobLauncher interface which is scheduled for removal in 6.2.
+ * NOTE: Uses JobOperatorTestUtils (Spring Batch 6.0+), which is the recommended test utility.
+ * While JobLauncher is deprecated for production use (scheduled for removal in 6.2),
+ * it's still required for test configuration as JobOperatorTestUtils internally uses it.
  */
+@Disabled("Manual E2E test - requires network access to EU SPARQL endpoint and download servers")
 @SpringBootTest(classes = [FormexIngesterApplication::class])
 @SpringBatchTest
 @ActiveProfiles("e2e")
-// @Disabled("Manual E2E test - requires network access to EU SPARQL endpoint and download servers")
 class FormexXmlBatchJobEndToEndTest {
-
     @Autowired
     private lateinit var jobOperatorTestUtils: JobOperatorTestUtils
 
@@ -61,12 +63,9 @@ class FormexXmlBatchJobEndToEndTest {
 
     @BeforeEach
     fun setup() {
-        // Configure JobOperatorTestUtils (replacement for deprecated JobLauncherTestUtils)
-        // JobOperatorTestUtils extends JobLauncherTestUtils and provides the same API
-        // but is designed for use with JobOperator in Spring Batch 6.0+
         jobOperatorTestUtils.job = job
         jobOperatorTestUtils.jobLauncher = jobLauncher
-        
+
         // Clear database before test using Exposed
         transaction(database) {
             FormexDocuments.deleteAll()
@@ -93,10 +92,16 @@ class FormexXmlBatchJobEndToEndTest {
         val jobExecution = jobOperatorTestUtils.launchJob()
 
         // Then: Job should complete successfully
-        assertEquals(BatchStatus.COMPLETED, jobExecution.status, 
-            "Job should complete successfully")
-        assertEquals("COMPLETED", jobExecution.exitStatus.exitCode,
-            "Job exit status should be COMPLETED")
+        assertEquals(
+            BatchStatus.COMPLETED,
+            jobExecution.status,
+            "Job should complete successfully",
+        )
+        assertEquals(
+            "COMPLETED",
+            jobExecution.exitStatus.exitCode,
+            "Job exit status should be COMPLETED",
+        )
 
         // Debug: Print step execution details
         jobExecution.stepExecutions.forEach { stepExecution ->
@@ -109,29 +114,34 @@ class FormexXmlBatchJobEndToEndTest {
         }
 
         // Verify exactly 2 records were inserted using Exposed
-        val recordCount = transaction(database) {
-            FormexDocuments.selectAll().count()
-        }
-        assertEquals(2, recordCount, 
-            "Should have exactly 2 records from limited SPARQL query")
+        val recordCount =
+            transaction(database) {
+                FormexDocuments.selectAll().count()
+            }
+        assertEquals(
+            2,
+            recordCount,
+            "Should have exactly 2 records from limited SPARQL query",
+        )
 
         // Verify all records have required metadata populated using Exposed
-        val recordsWithMetadata = transaction(database) {
-            FormexDocuments.selectAll().map { row ->
-                mapOf(
-                    "id" to row[FormexDocuments.id],
-                    "uri" to row[FormexDocuments.uri],
-                    "file_size" to row[FormexDocuments.fileSize],
-                    "work_id" to row[FormexDocuments.workId],
-                    "expr_id" to row[FormexDocuments.exprId],
-                    "man_id" to row[FormexDocuments.manId],
-                    "cs_id" to row[FormexDocuments.csId],
-                    "version" to row[FormexDocuments.version],
-                    "root_element" to row[FormexDocuments.rootElement],
-                    "file_path" to row[FormexDocuments.filePath]
-                )
+        val recordsWithMetadata =
+            transaction(database) {
+                FormexDocuments.selectAll().map { row ->
+                    mapOf(
+                        "id" to row[FormexDocuments.id],
+                        "uri" to row[FormexDocuments.uri],
+                        "file_size" to row[FormexDocuments.fileSize],
+                        "work_id" to row[FormexDocuments.workId],
+                        "expr_id" to row[FormexDocuments.exprId],
+                        "man_id" to row[FormexDocuments.manId],
+                        "cs_id" to row[FormexDocuments.csId],
+                        "version" to row[FormexDocuments.version],
+                        "root_element" to row[FormexDocuments.rootElement],
+                        "file_path" to row[FormexDocuments.filePath],
+                    )
+                }
             }
-        }
 
         assertEquals(2, recordsWithMetadata.size, "Should retrieve 2 records")
 
@@ -144,48 +154,72 @@ class FormexXmlBatchJobEndToEndTest {
             assertNotNull(record["expr_id"], "Expression ID should not be null")
             assertNotNull(record["man_id"], "Manifestation ID should not be null")
             assertNotNull(record["cs_id"], "Content Stream ID should not be null")
-            
+
             // Verify metadata extraction worked (version and root_element populated)
-            assertNotNull(record["version"], 
-                "Version should be extracted from XML (e.g., '4.3.xd')")
-            assertNotNull(record["root_element"], 
-                "Root element should be extracted from XML")
-            
+            assertNotNull(
+                record["version"],
+                "Version should be extracted from XML (e.g., '4.3.xd')",
+            )
+            assertNotNull(
+                record["root_element"],
+                "Root element should be extracted from XML",
+            )
+
             // Verify file path is stored and file exists
             val filePath = record["file_path"] as String
             assertNotNull(filePath, "File path should be stored")
             val file = Paths.get(filePath)
             assertTrue(Files.exists(file), "XML file should exist at stored path")
-            
+
             // Verify file size matches actual file size
             val actualFileSize = Files.size(file)
             val storedFileSize = (record["file_size"] as Int).toLong()
-            assertEquals(storedFileSize, actualFileSize, 
-                "Stored file size should match actual file size")
+            assertEquals(
+                storedFileSize,
+                actualFileSize,
+                "Stored file size should match actual file size",
+            )
         }
 
         // Verify URIs are from EU SPARQL endpoint (should contain europa.eu) using Exposed
-        val uris = transaction(database) {
-            FormexDocuments.selectAll().map { it[FormexDocuments.uri] }
-        }
-        assertTrue(uris.all { it?.contains("europa.eu") == true || it?.contains("cellar") == true },
-            "URIs should be from EU SPARQL endpoint")
+        val uris =
+            transaction(database) {
+                FormexDocuments.selectAll().map { it[FormexDocuments.uri] }
+            }
+        assertTrue(
+            uris.all { it?.contains("europa.eu") == true || it?.contains("cellar") == true },
+            "URIs should be from EU SPARQL endpoint",
+        )
 
         // Verify step execution metrics
         val stepExecution = jobExecution.stepExecutions.first()
-        assertEquals("downloadXml", stepExecution.stepName, 
-            "Should have downloadXml step")
-        assertTrue(stepExecution.readCount >= 2, 
-            "Should have read at least 2 items from SPARQL")
-        assertEquals(2, stepExecution.writeCount, 
-            "Should have written exactly 2 items to database")
-        assertEquals(0, stepExecution.skipCount, 
-            "Should have no skips in successful run")
-        assertEquals(0, stepExecution.rollbackCount, 
-            "Should have no rollbacks in successful run")
+        assertEquals(
+            "downloadXml",
+            stepExecution.stepName,
+            "Should have downloadXml step",
+        )
+        assertTrue(
+            stepExecution.readCount >= 2,
+            "Should have read at least 2 items from SPARQL",
+        )
+        assertEquals(
+            2,
+            stepExecution.writeCount,
+            "Should have written exactly 2 items to database",
+        )
+        assertEquals(
+            0,
+            stepExecution.skipCount,
+            "Should have no skips in successful run",
+        )
+        assertEquals(
+            0,
+            stepExecution.rollbackCount,
+            "Should have no rollbacks in successful run",
+        )
 
         println("Test completed successfully!")
-        println("Downloaded and processed ${recordCount} records from EU SPARQL endpoint")
+        println("Downloaded and processed $recordCount records from EU SPARQL endpoint")
         println("Sample URIs: ${uris.take(2)}")
     }
 }

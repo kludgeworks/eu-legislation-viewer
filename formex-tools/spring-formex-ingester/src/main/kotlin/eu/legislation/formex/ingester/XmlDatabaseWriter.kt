@@ -8,16 +8,15 @@ import org.springframework.stereotype.Component
 
 /**
  * Batch inserts XML metadata into SQLite database using Exposed SQL DSL.
- * 
- * Stores file paths instead of XML content - the actual XML files are 
+ *
+ * Stores file paths instead of XML content - the actual XML files are
  * stored permanently in the configured storage directory.
- * 
+ *
  * Uses Exposed's batchInsert for efficient bulk inserts. The transaction block
  * participates in Spring's transaction management via SpringTransactionManager.
  */
 @Component
 class XmlDatabaseWriter : ItemWriter<XmlMetadata> {
-
     override fun write(chunk: Chunk<out XmlMetadata>) {
         transaction {
             FormexDocuments.batchInsert(chunk.items) { metadata ->

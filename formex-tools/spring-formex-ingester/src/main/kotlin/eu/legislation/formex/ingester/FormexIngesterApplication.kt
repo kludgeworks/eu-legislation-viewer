@@ -18,5 +18,5 @@ import org.springframework.boot.runApplication
 class FormexIngesterApplication
 
 fun main(args: Array<String>) {
-	runApplication<FormexIngesterApplication>(*args)
+    runApplication<FormexIngesterApplication>(*args)
 }

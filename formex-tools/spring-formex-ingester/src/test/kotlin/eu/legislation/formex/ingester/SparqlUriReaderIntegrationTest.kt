@@ -2,19 +2,22 @@ package eu.legislation.formex.ingester
 import mockwebserver3.MockResponse
 import mockwebserver3.MockWebServer
 import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.assertThrows
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.web.client.RestClient
 
 /**
  * Integration tests for SparqlUriReader using MockWebServer.
- * 
+ *
  * Tests real HTTP communication, SPARQL query structure, and CSV parsing
  * end-to-end without mocking RestClient internals.
  */
 class SparqlUriReaderIntegrationTest {
-
     private lateinit var mockServer: MockWebServer
     private lateinit var reader: SparqlUriReader
 
@@ -25,14 +28,17 @@ class SparqlUriReaderIntegrationTest {
 
         // Create real RestClient pointing to mock server
         val baseUrl = mockServer.url("/").toString().removeSuffix("/")
-        val restClient = RestClient.builder()
-            .baseUrl(baseUrl)
-            .build()
+        val restClient =
+            RestClient
+                .builder()
+                .baseUrl(baseUrl)
+                .build()
 
-        val sparqlProperties = SparqlProperties(
-            endpoint = "/sparql",
-            language = "eng"
-        )
+        val sparqlProperties =
+            SparqlProperties(
+                endpoint = "/sparql",
+                language = "eng",
+            )
 
         reader = SparqlUriReader(restClient, sparqlProperties)
     }
@@ -45,29 +51,34 @@ class SparqlUriReaderIntegrationTest {
     @Test
     fun `createReader should parse CSV response and return FlatFileItemReader`() {
         // Given - mock CSV response with two rows
-        val csvContent = """
+        val csvContent =
+            """
             "item","workId","expressionId","manifestationId","contentStreamId","language","mimeType"
             "http://example.org/doc1.xml","550e8400-e29b-41d4-a716-446655440000","expr-001","man-001","cs-001","eng","application/xml"
             "http://example.org/doc2.xml","550e8400-e29b-41d4-a716-446655440001","expr-002","man-002","cs-002","eng","application/xml"
-        """.trimIndent()
+            """.trimIndent()
 
         mockServer.enqueue(
-            MockResponse.Builder()
+            MockResponse
+                .Builder()
                 .code(200)
                 .addHeader("Content-Type", "text/csv")
                 .body(csvContent)
-                .build()
+                .build(),
         )
 
         // When
         val itemReader = reader.createReader()
-        itemReader.open(org.springframework.batch.infrastructure.item.ExecutionContext())
+        itemReader.open(
+            org.springframework.batch.infrastructure.item
+                .ExecutionContext(),
+        )
 
         // Then - verify HTTP request was made with POST
         val recordedRequest = mockServer.takeRequest()
         assertEquals("POST", recordedRequest.method)
         assertEquals("application/x-www-form-urlencoded", recordedRequest.headers["Content-Type"])
-        
+
         // Verify query parameter in form body
         val bodyString = recordedRequest.body?.utf8() ?: ""
         assertTrue(bodyString.startsWith("query="))
@@ -99,21 +110,26 @@ class SparqlUriReaderIntegrationTest {
     @Test
     fun `createReader should handle empty CSV results`() {
         // Given - CSV with only header
-        val csvContent = """
+        val csvContent =
+            """
             "item","workId","expressionId","manifestationId","contentStreamId","language","mimeType"
-        """.trimIndent()
+            """.trimIndent()
 
         mockServer.enqueue(
-            MockResponse.Builder()
+            MockResponse
+                .Builder()
                 .code(200)
                 .addHeader("Content-Type", "text/csv")
                 .body(csvContent)
-                .build()
+                .build(),
         )
 
         // When
         val itemReader = reader.createReader()
-        itemReader.open(org.springframework.batch.infrastructure.item.ExecutionContext())
+        itemReader.open(
+            org.springframework.batch.infrastructure.item
+                .ExecutionContext(),
+        )
 
         // Then
         val item = itemReader.read()
@@ -125,34 +141,39 @@ class SparqlUriReaderIntegrationTest {
     @Test
     fun `createReader should validate SPARQL query structure`() {
         // Given
-        val csvContent = """
+        val csvContent =
+            """
             "item","workId","expressionId","manifestationId","contentStreamId","language","mimeType"
-        """.trimIndent()
+            """.trimIndent()
 
         mockServer.enqueue(
-            MockResponse.Builder()
+            MockResponse
+                .Builder()
                 .code(200)
                 .addHeader("Content-Type", "text/csv")
                 .body(csvContent)
-                .build()
+                .build(),
         )
 
         // When
         val itemReader = reader.createReader()
-        itemReader.open(org.springframework.batch.infrastructure.item.ExecutionContext())
+        itemReader.open(
+            org.springframework.batch.infrastructure.item
+                .ExecutionContext(),
+        )
 
         // Then - verify SPARQL query contains expected patterns
         val recordedRequest = mockServer.takeRequest()
 
         // Decode form body to get query parameter
         val formBody = recordedRequest.body?.utf8() ?: ""
-        
+
         assertNotNull(formBody)
         assertTrue(formBody.startsWith("query="), "Form body should start with 'query='")
-        
+
         // Extract and decode the query parameter
         val queryParam = java.net.URLDecoder.decode(formBody.substringAfter("query="), "UTF-8")
-        
+
         assertTrue(queryParam.contains("PREFIX cdm:"))
         assertTrue(queryParam.contains("SELECT"))
         assertTrue(queryParam.contains("?item"))
@@ -168,20 +189,25 @@ class SparqlUriReaderIntegrationTest {
     @Test
     fun `createReader should handle special characters in CSV`() {
         // Given - CSV with quotes and commas in values
-        val csvContent = "\"item\",\"workId\",\"expressionId\",\"manifestationId\",\"contentStreamId\",\"language\",\"mimeType\"\n" +
+        val csvContent =
+            "\"item\",\"workId\",\"expressionId\",\"manifestationId\",\"contentStreamId\",\"language\",\"mimeType\"\n" +
                 "\"http://example.org/doc,special.xml\",\"550e8400-e29b-41d4-a716-446655440000\",\"expr-\\\"quoted\\\"\",\"man-001\",\"cs-001\",\"eng\",\"application/xml\""
 
         mockServer.enqueue(
-            MockResponse.Builder()
+            MockResponse
+                .Builder()
                 .code(200)
                 .addHeader("Content-Type", "text/csv")
                 .body(csvContent)
-                .build()
+                .build(),
         )
 
         // When
         val itemReader = reader.createReader()
-        itemReader.open(org.springframework.batch.infrastructure.item.ExecutionContext())
+        itemReader.open(
+            org.springframework.batch.infrastructure.item
+                .ExecutionContext(),
+        )
 
         // Then
         val item = itemReader.read()
@@ -195,22 +221,27 @@ class SparqlUriReaderIntegrationTest {
     fun `createReader should handle large dataset`() {
         // Given - CSV with 100 rows
         val header = "\"item\",\"workId\",\"expressionId\",\"manifestationId\",\"contentStreamId\",\"language\",\"mimeType\"\n"
-        val rows = (1..100).joinToString("\n") { index ->
-            "\"http://example.org/doc$index.xml\",\"work-$index\",\"expr-$index\",\"man-$index\",\"cs-$index\",\"eng\",\"application/xml\""
-        }
+        val rows =
+            (1..100).joinToString("\n") { index ->
+                "\"http://example.org/doc$index.xml\",\"work-$index\",\"expr-$index\",\"man-$index\",\"cs-$index\",\"eng\",\"application/xml\""
+            }
         val csvContent = header + rows
 
         mockServer.enqueue(
-            MockResponse.Builder()
+            MockResponse
+                .Builder()
                 .code(200)
                 .addHeader("Content-Type", "text/csv")
                 .body(csvContent)
-                .build()
+                .build(),
         )
 
         // When
         val itemReader = reader.createReader()
-        itemReader.open(org.springframework.batch.infrastructure.item.ExecutionContext())
+        itemReader.open(
+            org.springframework.batch.infrastructure.item
+                .ExecutionContext(),
+        )
 
         // Then - read all 100 items
         var count = 0
@@ -226,16 +257,20 @@ class SparqlUriReaderIntegrationTest {
     fun `createReader should throw exception when server returns 404`() {
         // Given
         mockServer.enqueue(
-            MockResponse.Builder()
+            MockResponse
+                .Builder()
                 .code(404)
                 .body("Not Found")
-                .build()
+                .build(),
         )
 
         // When/Then
         assertThrows(Exception::class.java) {
             val itemReader = reader.createReader()
-            itemReader.open(org.springframework.batch.infrastructure.item.ExecutionContext())
+            itemReader.open(
+                org.springframework.batch.infrastructure.item
+                    .ExecutionContext(),
+            )
         }
     }
 
@@ -243,16 +278,20 @@ class SparqlUriReaderIntegrationTest {
     fun `createReader should throw exception when server returns 500`() {
         // Given
         mockServer.enqueue(
-            MockResponse.Builder()
+            MockResponse
+                .Builder()
                 .code(500)
                 .body("Internal Server Error")
-                .build()
+                .build(),
         )
 
         // When/Then
         assertThrows(Exception::class.java) {
             val itemReader = reader.createReader()
-            itemReader.open(org.springframework.batch.infrastructure.item.ExecutionContext())
+            itemReader.open(
+                org.springframework.batch.infrastructure.item
+                    .ExecutionContext(),
+            )
         }
     }
 }

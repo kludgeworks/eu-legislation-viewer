@@ -1,6 +1,8 @@
 package eu.legislation.formex.ingester
 
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import java.nio.file.Files
@@ -13,7 +15,6 @@ import java.util.UUID
  * Tests XML parsing to extract version and root_element metadata.
  */
 class XmlPostProcessorTest {
-
     private val processor = XmlPostProcessor()
 
     @TempDir
@@ -22,26 +23,28 @@ class XmlPostProcessorTest {
     @Test
     fun `process should extract version and root element from valid XML`() {
         // Given - XML with noNamespaceSchemaLocation and root element
-        val xmlContent = """
+        val xmlContent =
+            """
             <?xml version="1.0" encoding="UTF-8"?>
             <REGULATION noNamespaceSchemaLocation="https://example.org/schema/4.3.xd">
                 <TITLE>Test Regulation</TITLE>
             </REGULATION>
-        """.trimIndent()
+            """.trimIndent()
 
         val tempFile = Files.createTempFile(tempDir, "test", ".xml")
         Files.writeString(tempFile, xmlContent)
 
-        val metadata = XmlMetadata(
-            id = UUID.randomUUID(),
-            uri = "http://example.org/test.xml",
-            fileSize = xmlContent.length.toLong(),
-            workId = UUID.randomUUID(),
-            exprId = "expr-001",
-            manId = "man-001",
-            csId = "cs-001",
-            filePath = tempFile.toString()
-        )
+        val metadata =
+            XmlMetadata(
+                id = UUID.randomUUID(),
+                uri = "http://example.org/test.xml",
+                fileSize = xmlContent.length.toLong(),
+                workId = UUID.randomUUID(),
+                exprId = "expr-001",
+                manId = "man-001",
+                csId = "cs-001",
+                filePath = tempFile.toString(),
+            )
 
         // When
         val result = processor.process(metadata)
@@ -55,26 +58,28 @@ class XmlPostProcessorTest {
     @Test
     fun `process should extract root element when no schema location present`() {
         // Given - XML without noNamespaceSchemaLocation
-        val xmlContent = """
+        val xmlContent =
+            """
             <?xml version="1.0" encoding="UTF-8"?>
             <DECISION>
                 <TITLE>Test Decision</TITLE>
             </DECISION>
-        """.trimIndent()
+            """.trimIndent()
 
         val tempFile = Files.createTempFile(tempDir, "test", ".xml")
         Files.writeString(tempFile, xmlContent)
 
-        val metadata = XmlMetadata(
-            id = UUID.randomUUID(),
-            uri = "http://example.org/test.xml",
-            fileSize = xmlContent.length.toLong(),
-            workId = UUID.randomUUID(),
-            exprId = "expr-001",
-            manId = "man-001",
-            csId = "cs-001",
-            filePath = tempFile.toString()
-        )
+        val metadata =
+            XmlMetadata(
+                id = UUID.randomUUID(),
+                uri = "http://example.org/test.xml",
+                fileSize = xmlContent.length.toLong(),
+                workId = UUID.randomUUID(),
+                exprId = "expr-001",
+                manId = "man-001",
+                csId = "cs-001",
+                filePath = tempFile.toString(),
+            )
 
         // When
         val result = processor.process(metadata)
@@ -88,26 +93,28 @@ class XmlPostProcessorTest {
     @Test
     fun `process should handle XML with namespace`() {
         // Given - XML with namespace
-        val xmlContent = """
+        val xmlContent =
+            """
             <?xml version="1.0" encoding="UTF-8"?>
             <ns:DIRECTIVE xmlns:ns="http://example.org/ns" noNamespaceSchemaLocation="https://example.org/schema/5.0.xd">
                 <ns:TITLE>Test Directive</ns:TITLE>
             </ns:DIRECTIVE>
-        """.trimIndent()
+            """.trimIndent()
 
         val tempFile = Files.createTempFile(tempDir, "test", ".xml")
         Files.writeString(tempFile, xmlContent)
 
-        val metadata = XmlMetadata(
-            id = UUID.randomUUID(),
-            uri = "http://example.org/test.xml",
-            fileSize = xmlContent.length.toLong(),
-            workId = UUID.randomUUID(),
-            exprId = "expr-001",
-            manId = "man-001",
-            csId = "cs-001",
-            filePath = tempFile.toString()
-        )
+        val metadata =
+            XmlMetadata(
+                id = UUID.randomUUID(),
+                uri = "http://example.org/test.xml",
+                fileSize = xmlContent.length.toLong(),
+                workId = UUID.randomUUID(),
+                exprId = "expr-001",
+                manId = "man-001",
+                csId = "cs-001",
+                filePath = tempFile.toString(),
+            )
 
         // When
         val result = processor.process(metadata)
@@ -126,16 +133,17 @@ class XmlPostProcessorTest {
         val tempFile = Files.createTempFile(tempDir, "test", ".xml")
         Files.writeString(tempFile, xmlContent)
 
-        val metadata = XmlMetadata(
-            id = UUID.randomUUID(),
-            uri = "http://example.org/test.xml",
-            fileSize = xmlContent.length.toLong(),
-            workId = UUID.randomUUID(),
-            exprId = "expr-001",
-            manId = "man-001",
-            csId = "cs-001",
-            filePath = tempFile.toString()
-        )
+        val metadata =
+            XmlMetadata(
+                id = UUID.randomUUID(),
+                uri = "http://example.org/test.xml",
+                fileSize = xmlContent.length.toLong(),
+                workId = UUID.randomUUID(),
+                exprId = "expr-001",
+                manId = "man-001",
+                csId = "cs-001",
+                filePath = tempFile.toString(),
+            )
 
         // When
         val result = processor.process(metadata)
@@ -151,26 +159,28 @@ class XmlPostProcessorTest {
     @Test
     fun `process should extract version from complex schema location path`() {
         // Given - XML with full path in schema location
-        val xmlContent = """
+        val xmlContent =
+            """
             <?xml version="1.0" encoding="UTF-8"?>
             <REGULATION noNamespaceSchemaLocation="http://publications.europa.eu/resource/schema/formex/formex-05.56-20210701.xd">
                 <TITLE>Test Regulation</TITLE>
             </REGULATION>
-        """.trimIndent()
+            """.trimIndent()
 
         val tempFile = Files.createTempFile(tempDir, "test", ".xml")
         Files.writeString(tempFile, xmlContent)
 
-        val metadata = XmlMetadata(
-            id = UUID.randomUUID(),
-            uri = "http://example.org/test.xml",
-            fileSize = xmlContent.length.toLong(),
-            workId = UUID.randomUUID(),
-            exprId = "expr-001",
-            manId = "man-001",
-            csId = "cs-001",
-            filePath = tempFile.toString()
-        )
+        val metadata =
+            XmlMetadata(
+                id = UUID.randomUUID(),
+                uri = "http://example.org/test.xml",
+                fileSize = xmlContent.length.toLong(),
+                workId = UUID.randomUUID(),
+                exprId = "expr-001",
+                manId = "man-001",
+                csId = "cs-001",
+                filePath = tempFile.toString(),
+            )
 
         // When
         val result = processor.process(metadata)

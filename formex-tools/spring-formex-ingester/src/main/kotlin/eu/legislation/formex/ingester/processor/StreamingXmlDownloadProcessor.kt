@@ -29,26 +29,27 @@ import java.util.UUID
 @Component
 class StreamingXmlDownloadProcessor(
     private val restClient: RestClient,
-    private val storageProperties: StorageProperties
+    private val storageProperties: StorageProperties,
 ) : ItemProcessor<CellarData, XmlMetadata> {
-
-    private val storageDir: Path = Paths.get(storageProperties.directory).also { 
-        Files.createDirectories(it) 
-    }
+    private val storageDir: Path =
+        Paths.get(storageProperties.directory).also {
+            Files.createDirectories(it)
+        }
 
     companion object {
         // Create a UUID namespace for Cellar using UUIDv5 based on the URL namespace
-        private val CELLAR_NAMESPACE = UuidCreator.getNameBasedSha1(
-            UuidCreator.NAMESPACE_URL,
-            "http://publications.europa.eu/resource/cellar"
-        )
+        private val CELLAR_NAMESPACE =
+            UuidCreator.getNameBasedSha1(
+                UuidCreator.NAMESPACE_URL,
+                "http://publications.europa.eu/resource/cellar",
+            )
     }
 
     override fun process(item: CellarData): XmlMetadata {
         // Download and hash in single pass, generate ID based on content
         val tempFile = storageDir.resolve("${UUID.randomUUID()}.xml")
         val metrics = downloadWithMetrics(item.item, tempFile)
-        
+
         // Rename file to use content-based ID for deduplication
         val permanentFile = storageDir.resolve("${metrics.id}.xml")
         Files.move(tempFile, permanentFile, java.nio.file.StandardCopyOption.REPLACE_EXISTING)
@@ -61,15 +62,19 @@ class StreamingXmlDownloadProcessor(
             exprId = item.expressionId,
             manId = item.manifestationId,
             csId = item.contentStreamId,
-            filePath = permanentFile.toString()
+            filePath = permanentFile.toString(),
         )
     }
 
-    private fun downloadWithMetrics(uri: String, destination: Path): FileMetrics {
+    private fun downloadWithMetrics(
+        uri: String,
+        destination: Path,
+    ): FileMetrics {
         val digest = MessageDigest.getInstance("SHA-1")
         var size = 0L
 
-        restClient.get()
+        restClient
+            .get()
             .uri(uri)
             .exchange { _, response ->
                 response.body.use { input: InputStream ->
@@ -89,5 +94,8 @@ class StreamingXmlDownloadProcessor(
         return FileMetrics(id, size)
     }
 
-    private data class FileMetrics(val id: UUID, val size: Long)
+    private data class FileMetrics(
+        val id: UUID,
+        val size: Long,
+    )
 }

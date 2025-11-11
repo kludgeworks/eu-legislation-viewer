@@ -12,10 +12,12 @@ import org.springframework.stereotype.Component
  */
 @Component
 class ItemProcessingErrorListener : ItemProcessListener<CellarData, XmlMetadata> {
-
     private val logger = KotlinLogging.logger {}
 
-    override fun onProcessError(item: CellarData, e: Exception) {
+    override fun onProcessError(
+        item: CellarData,
+        e: Exception,
+    ) {
         logger.warn(e) { "Error processing item with URI ${item.item}: ${e.message}" }
     }
 }
@@ -26,8 +28,10 @@ class ItemProcessingErrorListener : ItemProcessListener<CellarData, XmlMetadata>
  */
 @Component
 class NoWorkFoundStepExecutionListener : StepExecutionListener {
-
     override fun afterStep(stepExecution: StepExecution) =
-        if (stepExecution.readCount == 0L) ExitStatus.FAILED
-        else stepExecution.exitStatus
+        if (stepExecution.readCount == 0L) {
+            ExitStatus.FAILED
+        } else {
+            stepExecution.exitStatus
+        }
 }

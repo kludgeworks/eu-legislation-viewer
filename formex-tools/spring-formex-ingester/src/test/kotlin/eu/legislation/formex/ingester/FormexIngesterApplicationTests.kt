@@ -6,7 +6,7 @@ import org.springframework.test.context.ActiveProfiles
 
 /**
  * Spring Boot context loading test.
- * 
+ *
  * Verifies that the application context starts successfully with test configuration.
  * The lazy-initialized SparqlUriReader prevents HTTP calls during context loading,
  * deferring them until step execution begins.
@@ -14,7 +14,6 @@ import org.springframework.test.context.ActiveProfiles
 @SpringBootTest
 @ActiveProfiles("test")
 class FormexIngesterApplicationTests {
-
     @Test
     fun contextLoads() {
         // Verify that the Spring context loads successfully with all beans configured.

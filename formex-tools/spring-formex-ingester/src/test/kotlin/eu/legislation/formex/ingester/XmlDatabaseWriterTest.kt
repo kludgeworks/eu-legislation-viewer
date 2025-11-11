@@ -21,7 +21,6 @@ import java.util.UUID
 @SpringBootTest
 @ActiveProfiles("test")
 class XmlDatabaseWriterTest {
-
     @Autowired
     private lateinit var xmlDatabaseWriter: XmlDatabaseWriter
 
@@ -50,25 +49,27 @@ class XmlDatabaseWriterTest {
     @Test
     fun `should write multiple items in batch and verify all records`() {
         // Given: Create 2 test items with XML files
-        val metadata1 = createTestXmlMetadata(
-            xmlContent = "<doc1>Content 1</doc1>",
-            uri = "http://example.org/doc1",
-            fileSize = 100L,
-            workId = UUID.randomUUID(),
-            exprId = "expr-1",
-            manId = "man-1",
-            csId = "cs-1"
-        )
+        val metadata1 =
+            createTestXmlMetadata(
+                xmlContent = "<doc1>Content 1</doc1>",
+                uri = "http://example.org/doc1",
+                fileSize = 100L,
+                workId = UUID.randomUUID(),
+                exprId = "expr-1",
+                manId = "man-1",
+                csId = "cs-1",
+            )
 
-        val metadata2 = createTestXmlMetadata(
-            xmlContent = "<doc2>Content 2</doc2>",
-            uri = "http://example.org/doc2",
-            fileSize = 200L,
-            workId = UUID.randomUUID(),
-            exprId = "expr-2",
-            manId = "man-2",
-            csId = "cs-2"
-        )
+        val metadata2 =
+            createTestXmlMetadata(
+                xmlContent = "<doc2>Content 2</doc2>",
+                uri = "http://example.org/doc2",
+                fileSize = 200L,
+                workId = UUID.randomUUID(),
+                exprId = "expr-2",
+                manId = "man-2",
+                csId = "cs-2",
+            )
 
         val chunk = Chunk(listOf(metadata1, metadata2))
 
@@ -76,17 +77,20 @@ class XmlDatabaseWriterTest {
         xmlDatabaseWriter.write(chunk)
 
         // Then: Verify both records exist in database using Exposed
-        val count = transaction(database) {
-            FormexDocuments.selectAll().count()
-        }
+        val count =
+            transaction(database) {
+                FormexDocuments.selectAll().count()
+            }
         Assertions.assertEquals(2, count, "Should have 2 records in database")
 
         // Verify first record using Exposed
-        val record1 = transaction(database) {
-            FormexDocuments.selectAll()
-                .where { FormexDocuments.id eq metadata1.id.toString() }
-                .single()
-        }
+        val record1 =
+            transaction(database) {
+                FormexDocuments
+                    .selectAll()
+                    .where { FormexDocuments.id eq metadata1.id.toString() }
+                    .single()
+            }
         Assertions.assertEquals(metadata1.id.toString(), record1[FormexDocuments.id])
         Assertions.assertEquals(metadata1.filePath, record1[FormexDocuments.filePath])
         Assertions.assertEquals(100, record1[FormexDocuments.fileSize])
@@ -97,11 +101,13 @@ class XmlDatabaseWriterTest {
         Assertions.assertEquals("cs-1", record1[FormexDocuments.csId])
 
         // Verify second record using Exposed
-        val record2 = transaction(database) {
-            FormexDocuments.selectAll()
-                .where { FormexDocuments.id eq metadata2.id.toString() }
-                .single()
-        }
+        val record2 =
+            transaction(database) {
+                FormexDocuments
+                    .selectAll()
+                    .where { FormexDocuments.id eq metadata2.id.toString() }
+                    .single()
+            }
         Assertions.assertEquals(metadata2.id.toString(), record2[FormexDocuments.id])
         Assertions.assertEquals(metadata2.filePath, record2[FormexDocuments.filePath])
         Assertions.assertEquals(200, record2[FormexDocuments.fileSize])
@@ -115,7 +121,8 @@ class XmlDatabaseWriterTest {
     @Test
     fun `should store file path in database`() {
         // Given: Create file with specific XML content
-        val expectedXmlContent = """
+        val expectedXmlContent =
+            """
             <?xml version="1.0" encoding="UTF-8"?>
             <FORMEX_PLUS>
                 <HEADER>Test Header</HEADER>
@@ -123,17 +130,18 @@ class XmlDatabaseWriterTest {
                     <SECTION>Test Section Content</SECTION>
                 </BODY>
             </FORMEX_PLUS>
-        """.trimIndent()
+            """.trimIndent()
 
-        val metadata = createTestXmlMetadata(
-            xmlContent = expectedXmlContent,
-            uri = "http://example.org/test-xml",
-            fileSize = expectedXmlContent.length.toLong(),
-            workId = UUID.randomUUID(),
-            exprId = "test-expr",
-            manId = "test-man",
-            csId = "test-cs"
-        )
+        val metadata =
+            createTestXmlMetadata(
+                xmlContent = expectedXmlContent,
+                uri = "http://example.org/test-xml",
+                fileSize = expectedXmlContent.length.toLong(),
+                workId = UUID.randomUUID(),
+                exprId = "test-expr",
+                manId = "test-man",
+                csId = "test-cs",
+            )
 
         val chunk = Chunk(listOf(metadata))
 
@@ -141,28 +149,32 @@ class XmlDatabaseWriterTest {
         xmlDatabaseWriter.write(chunk)
 
         // Then: Verify file path is stored in database using Exposed
-        val storedFilePath = transaction(database) {
-            FormexDocuments.selectAll()
-                .where { FormexDocuments.id eq metadata.id.toString() }
-                .single()[FormexDocuments.filePath]
-        }
+        val storedFilePath =
+            transaction(database) {
+                FormexDocuments
+                    .selectAll()
+                    .where { FormexDocuments.id eq metadata.id.toString() }
+                    .single()[FormexDocuments.filePath]
+            }
 
         Assertions.assertEquals(metadata.filePath, storedFilePath, "File path should be stored")
-        
+
         // Verify file exists and content matches
         val fileContent = Files.readString(Paths.get(storedFilePath))
         Assertions.assertEquals(expectedXmlContent, fileContent, "File content should match")
 
         // Verify file size matches using Exposed
-        val actualFileSize = transaction(database) {
-            FormexDocuments.selectAll()
-                .where { FormexDocuments.id eq metadata.id.toString() }
-                .single()[FormexDocuments.fileSize]
-        }
+        val actualFileSize =
+            transaction(database) {
+                FormexDocuments
+                    .selectAll()
+                    .where { FormexDocuments.id eq metadata.id.toString() }
+                    .single()[FormexDocuments.fileSize]
+            }
         Assertions.assertEquals(
             expectedXmlContent.length,
             actualFileSize,
-            "File size should match XML content length"
+            "File size should match XML content length",
         )
     }
 
@@ -186,7 +198,7 @@ class XmlDatabaseWriterTest {
         workId: UUID,
         exprId: String,
         manId: String,
-        csId: String
+        csId: String,
     ): XmlMetadata {
         // Create file with XML content in JUnit's managed temp directory
         val file = Files.createTempFile(tempDir, "test-xml-", ".xml")
@@ -200,7 +212,7 @@ class XmlDatabaseWriterTest {
             exprId = exprId,
             manId = manId,
             csId = csId,
-            filePath = file.toString()
+            filePath = file.toString(),
         )
     }
 }

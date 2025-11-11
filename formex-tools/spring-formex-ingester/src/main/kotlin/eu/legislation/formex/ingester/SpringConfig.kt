@@ -4,11 +4,11 @@ import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.observation.DefaultMeterObservationHandler
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry
 import io.micrometer.observation.ObservationRegistry
+import org.jetbrains.exposed.spring.SpringTransactionManager
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.DatabaseConfig
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
-import org.jetbrains.exposed.spring.SpringTransactionManager
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -28,7 +28,7 @@ import javax.sql.DataSource
 data class SparqlProperties(
     val endpoint: String,
     val language: String = "eng",
-    val limit: Int? = null
+    val limit: Int? = null,
 )
 
 /**
@@ -38,7 +38,7 @@ data class SparqlProperties(
  */
 @ConfigurationProperties(prefix = "formex.storage")
 data class StorageProperties(
-    val directory: String = "./formex-xml-files"
+    val directory: String = "./formex-xml-files",
 )
 
 /**
@@ -52,7 +52,6 @@ data class StorageProperties(
  */
 @Configuration
 class ObservabilityConfig {
-
     /**
      * Configures the observation registry for Spring Batch metrics.
      *
@@ -65,7 +64,8 @@ class ObservabilityConfig {
     @Bean
     fun observationRegistry(meterRegistry: MeterRegistry): ObservationRegistry {
         val observationRegistry = ObservationRegistry.create()
-        observationRegistry.observationConfig()
+        observationRegistry
+            .observationConfig()
             .observationHandler(DefaultMeterObservationHandler(meterRegistry))
         return observationRegistry
     }
@@ -98,7 +98,6 @@ class ObservabilityConfig {
  */
 @Configuration
 class ExposedConfig {
-
     /**
      * Creates the DatabaseConfig for Exposed.
      *
@@ -108,11 +107,10 @@ class ExposedConfig {
      * @return Configured DatabaseConfig instance
      */
     @Bean
-    fun databaseConfig(): DatabaseConfig {
-        return DatabaseConfig {
-            useNestedTransactions = false  // SQLite limitation
+    fun databaseConfig(): DatabaseConfig =
+        DatabaseConfig {
+            useNestedTransactions = false // SQLite limitation
         }
-    }
 
     /**
      * Creates and configures the Exposed database instance.
@@ -124,9 +122,10 @@ class ExposedConfig {
      * @return Configured Exposed Database instance
      */
     @Bean
-    fun exposedDatabase(dataSource: DataSource, databaseConfig: DatabaseConfig): Database {
-        return Database.connect(dataSource, databaseConfig = databaseConfig)
-    }
+    fun exposedDatabase(
+        dataSource: DataSource,
+        databaseConfig: DatabaseConfig,
+    ): Database = Database.connect(dataSource, databaseConfig = databaseConfig)
 
     /**
      * Creates the primary transaction manager for Spring Batch operations.
@@ -141,9 +140,7 @@ class ExposedConfig {
      */
     @Bean
     @Primary
-    fun batchTransactionManager(dataSource: DataSource): PlatformTransactionManager {
-        return DataSourceTransactionManager(dataSource)
-    }
+    fun batchTransactionManager(dataSource: DataSource): PlatformTransactionManager = DataSourceTransactionManager(dataSource)
 
     /**
      * Creates the Spring-compatible transaction manager for Exposed.
@@ -162,10 +159,8 @@ class ExposedConfig {
     @Bean
     fun exposedTransactionManager(
         dataSource: DataSource,
-        databaseConfig: DatabaseConfig
-    ): PlatformTransactionManager {
-        return SpringTransactionManager(dataSource, databaseConfig)
-    }
+        databaseConfig: DatabaseConfig,
+    ): PlatformTransactionManager = SpringTransactionManager(dataSource, databaseConfig)
 
     /**
      * Initializes the database schema on application startup.

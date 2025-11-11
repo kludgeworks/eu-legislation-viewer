@@ -1,0 +1,2 @@
+[tools]
+"ubi:pinterest/ktlint" = { version = "latest", extract_all = true, bin_path = "bin" }
