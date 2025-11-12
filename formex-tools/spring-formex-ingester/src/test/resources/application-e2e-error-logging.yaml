@@ -1,0 +1,24 @@
+# End-to-end test configuration for error logging - inherits from application.yaml
+# Uses in-memory SQLite and real EU SPARQL endpoint
+# Overrides: in-memory DB, strict error handling, Maven target directory, 10 records for error testing
+
+spring:
+  datasource:
+    url: "jdbc:sqlite:file:e2e-error-logging-test.db?mode=memory&cache=shared"
+    hikari:
+      maximum-pool-size: 10
+      auto-commit: false
+
+  sql:
+    init:
+      continue-on-error: false
+
+  main:
+    allow-bean-definition-overriding: true
+
+formex:
+  storage:
+    directory: ${maven.build.directory:target}/e2e-error-logging-xml-files
+
+sparql:
+  limit: 10

@@ -42,13 +42,44 @@ object FormexDocuments : Table("formex_documents") {
 
     override val primaryKey = PrimaryKey(id)
 
-    // Indexes for performance optimization
     init {
-        index(isUnique = false, version) // idx_formex_documents_version
-        index(isUnique = false, rootElement) // idx_formex_documents_root_element
-        index(isUnique = false, workId) // idx_formex_documents_work_id
-        index(isUnique = false, exprId) // idx_formex_documents_expr_id
-        index(isUnique = false, manId) // idx_formex_documents_man_id
-        index(isUnique = false, csId) // idx_formex_documents_cs_id
+        index(isUnique = false, version)
+        index(isUnique = false, rootElement)
+    }
+}
+
+/**
+ * Exposed table definition for processing_errors.
+ *
+ * This table persists processing errors that occur during batch job execution.
+ * Errors are logged in a separate transaction to survive chunk rollbacks.
+ *
+ * Used by Spring Batch skip listeners to capture and store item processing failures.
+ *
+ * Schema mapping:
+ * - id: Auto-incrementing primary key (INTEGER)
+ * - timestamp: Unix epoch milliseconds when error occurred (NOT NULL)
+ * - uri: The source URI that failed processing (NOT NULL)
+ * - error_message: Human-readable error message (NOT NULL)
+ * - error_type: Exception class name (NOT NULL)
+ * - stack_trace: Full stack trace for debugging (nullable TEXT)
+ *
+ * Indexes:
+ * - idx_processing_errors_timestamp: On timestamp for chronological queries
+ * - idx_processing_errors_uri: On uri to find all errors for a specific item
+ */
+object ProcessingErrors : Table("processing_errors") {
+    val id = long("id").autoIncrement()
+    val timestamp = long("timestamp")
+    val uri = text("uri")
+    val errorMessage = text("error_message")
+    val errorType = text("error_type")
+    val stackTrace = text("stack_trace").nullable()
+
+    override val primaryKey = PrimaryKey(id)
+
+    init {
+        index(isUnique = false, timestamp)
+        index(isUnique = false, uri)
     }
 }

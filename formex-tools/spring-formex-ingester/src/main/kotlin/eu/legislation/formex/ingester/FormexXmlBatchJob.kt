@@ -68,6 +68,11 @@ class FormexXmlBatchJob {
      * - Extracts version and root_element from XML documents
      * - Inserts complete records into database
      *
+     * Fault tolerance:
+     * - Skip policy allows up to 1000 items to fail without stopping the job
+     * - Skipped items are logged to processing_errors table via ErrorLoggingSkipListener
+     * - Error records persist in a separate transaction even when chunk rolls back
+     *
      * @param jobRepository Spring Batch job repository
      * @param transactionManager Transaction manager for chunk commits
      * @param reader Step-scoped SPARQL CSV reader
@@ -75,6 +80,7 @@ class FormexXmlBatchJob {
      * @param downloadProcessor Downloads XML and calculates metadata
      * @param postProcessor Extracts version and root_element from XML
      * @param writer Inserts records into database
+     * @param errorLoggingSkipListener Logs skipped items to database
      * @return The configured download step
      */
     @Bean
@@ -86,6 +92,7 @@ class FormexXmlBatchJob {
         downloadProcessor: StreamingXmlDownloadProcessor,
         postProcessor: XmlPostProcessor,
         writer: XmlDatabaseWriter,
+        errorLoggingSkipListener: ErrorLoggingSkipListener,
     ): Step {
         // Chain filter, download, and post-processing processors
         val compositeProcessor =
@@ -99,6 +106,10 @@ class FormexXmlBatchJob {
             .reader(reader)
             .processor(compositeProcessor)
             .writer(writer)
+            .faultTolerant()
+            .skip(Exception::class.java)
+            .skipLimit(1000)
+            .listener(errorLoggingSkipListener)
             .taskExecutor(taskExecutor())
             .build()
     }

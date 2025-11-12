@@ -1,24 +1,89 @@
 package eu.legislation.formex.ingester
 import io.github.oshai.kotlinlogging.KotlinLogging
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.batch.core.ExitStatus
-import org.springframework.batch.core.listener.ItemProcessListener
+import org.springframework.batch.core.listener.SkipListener
 import org.springframework.batch.core.listener.StepExecutionListener
 import org.springframework.batch.core.step.StepExecution
 import org.springframework.stereotype.Component
 
 /**
- * Item processing listener that logs errors during batch item processing.
- * Allows the batch job to continue processing other items when individual items fail.
+ * Skip listener that persists processing errors to database in a separate transaction.
+ *
+ * This listener is invoked by Spring Batch when an item is skipped due to an exception.
+ * The error is logged to the processing_errors table in a separate transaction using
+ * Dispatchers.IO to ensure the error record survives even if the main chunk transaction
+ * rolls back.
+ *
+ * Transaction isolation strategy:
+ * - Uses runBlocking(Dispatchers.IO) to execute on a separate thread
+ * - Gets a new database connection from HikariCP connection pool
+ * - Creates an independent transaction that cannot be rolled back by the main chunk
+ *
+ * This pattern allows comprehensive error tracking in Spring Batch chunk-oriented
+ * processing where failed items cause the entire chunk to rollback.
  */
 @Component
-class ItemProcessingErrorListener : ItemProcessListener<CellarData, XmlMetadata> {
+class ErrorLoggingSkipListener(
+    private val database: Database,
+) : SkipListener<CellarData, XmlMetadata> {
     private val logger = KotlinLogging.logger {}
 
-    override fun onProcessError(
+    override fun onSkipInProcess(
         item: CellarData,
-        e: Exception,
+        throwable: Throwable,
     ) {
-        logger.warn(e) { "Error processing item with URI ${item.item}: ${e.message}" }
+        logError(item.item, throwable)
+    }
+
+    override fun onSkipInWrite(
+        item: XmlMetadata,
+        throwable: Throwable,
+    ) {
+        logError(item.uri, throwable)
+    }
+
+    override fun onSkipInRead(throwable: Throwable) {
+        logger.warn(throwable) { "Skipped item during read: ${throwable.message}" }
+    }
+
+    /**
+     * Logs error to the database in a separate transaction.
+     *
+     * Uses runBlocking(Dispatchers.IO) to ensure the error record persists
+     * even if the main chunk transaction rolls back.
+     *
+     * @param uri The URI of the item that failed
+     * @param throwable The exception that caused the failure
+     */
+    private fun logError(
+        uri: String,
+        throwable: Throwable,
+    ) {
+        logger.warn(throwable) { "Skipped item with URI $uri: ${throwable.message}" }
+
+        // Execute error logging in a separate transaction on IO dispatcher
+        // This ensures the error record persists even if the chunk transaction rolls back
+        runBlocking(Dispatchers.IO) {
+            try {
+                transaction(database) {
+                    ProcessingErrors.insert {
+                        it[timestamp] = System.currentTimeMillis()
+                        it[ProcessingErrors.uri] = uri
+                        it[errorMessage] = throwable.message ?: "Unknown error"
+                        it[errorType] = throwable::class.simpleName ?: "Exception"
+                        it[stackTrace] = throwable.stackTraceToString()
+                    }
+                }
+            } catch (e: Exception) {
+                // If error logging fails, log to console but don't fail the job
+                logger.error(e) { "Failed to persist error record for URI $uri" }
+            }
+        }
     }
 }
 

@@ -56,6 +56,11 @@
 		<artifactId>kotlin-logging-jvm</artifactId>
 		<version>7.0.13</version>
 	</dependency>
+	<dependency>
+		<groupId>org.jetbrains.kotlinx</groupId>
+		<artifactId>kotlinx-coroutines-core</artifactId>
+		<version>1.10.2</version>
+	</dependency>
 
 	<!-- SQLite Database -->
 	<dependency>

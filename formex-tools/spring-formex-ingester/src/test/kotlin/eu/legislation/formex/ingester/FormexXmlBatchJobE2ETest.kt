@@ -43,12 +43,15 @@ import java.nio.file.Paths
  * NOTE: Uses JobOperatorTestUtils and JobOperator (Spring Batch 6.0+) for job testing.
  * This is the modern approach that replaces the deprecated JobLauncher and JobLauncherTestUtils.
  * The test requires a JobOperator bean configured in the application context.
+ *
+ * SSL Configuration: Uses TestRestClientConfig to trust all certificates, allowing
+ * tests to work in corporate environments with SSL inspection proxies.
  */
 @Disabled("Manual E2E test - requires network access to EU SPARQL endpoint and download servers")
-@SpringBootTest(classes = [FormexIngesterApplication::class])
+@SpringBootTest(classes = [FormexIngesterApplication::class, TestRestClientConfig::class])
 @SpringBatchTest
 @ActiveProfiles("e2e")
-class FormexXmlBatchJobEndToEndTest {
+class FormexXmlBatchJobE2ETest {
     @Autowired
     private lateinit var jobOperatorTestUtils: JobOperatorTestUtils
 

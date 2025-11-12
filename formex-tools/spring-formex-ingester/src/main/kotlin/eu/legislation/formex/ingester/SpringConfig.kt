@@ -165,7 +165,7 @@ class ExposedConfig {
     /**
      * Initializes the database schema on application startup.
      *
-     * This bean creates the formex_documents table and its indexes if they don't exist.
+     * This bean creates the formex_documents and processing_errors tables and their indexes if they don't exist.
      * Uses Exposed's SchemaUtils.createMissingTablesAndColumns which is idempotent.
      *
      * The initialization runs within a transaction to ensure atomicity.
@@ -175,7 +175,7 @@ class ExposedConfig {
     @Bean
     fun schemaInitializer(exposedDatabase: Database): String {
         transaction(exposedDatabase) {
-            SchemaUtils.createMissingTablesAndColumns(FormexDocuments)
+            SchemaUtils.createMissingTablesAndColumns(FormexDocuments, ProcessingErrors)
         }
         return "Schema initialized"
     }
