@@ -19,7 +19,7 @@ import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
 import org.springframework.batch.infrastructure.item.ItemProcessor
-import org.springframework.batch.infrastructure.item.ItemStreamReader
+import org.springframework.batch.infrastructure.item.ItemReader
 import org.springframework.batch.infrastructure.item.support.CompositeItemProcessor
 import org.springframework.batch.test.JobOperatorTestUtils
 import org.springframework.batch.test.context.SpringBatchTest
@@ -29,6 +29,7 @@ import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Primary
 import org.springframework.test.context.ActiveProfiles
+import org.springframework.test.context.TestPropertySource
 import org.springframework.transaction.PlatformTransactionManager
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -60,7 +61,8 @@ import java.util.concurrent.atomic.AtomicInteger
     ],
 )
 @SpringBatchTest
-@ActiveProfiles("e2e-error-logging")
+@ActiveProfiles("e2e")
+@TestPropertySource(properties = ["sparql.limit=10"])
 class FormexXmlBatchJobErrorLoggingE2ETest {
     @Autowired
     private lateinit var jobOperatorTestUtils: JobOperatorTestUtils
@@ -234,7 +236,7 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
         fun downloadXmlStep(
             jobRepository: JobRepository,
             transactionManager: PlatformTransactionManager,
-            @Autowired reader: ItemStreamReader<CellarData>,
+            @Autowired reader: org.springframework.batch.infrastructure.item.support.ListItemReader<CellarData>,
             @Autowired filterProcessor: UriFilterProcessor,
             @Autowired downloadProcessor: StreamingXmlDownloadProcessor,
             @Autowired postProcessor: XmlPostProcessor,

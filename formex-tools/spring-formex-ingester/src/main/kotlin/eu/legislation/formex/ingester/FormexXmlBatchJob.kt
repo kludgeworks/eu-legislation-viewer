@@ -8,8 +8,8 @@ import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
-import org.springframework.batch.infrastructure.item.ItemStreamReader
 import org.springframework.batch.infrastructure.item.support.CompositeItemProcessor
+import org.springframework.batch.infrastructure.item.support.ListItemReader
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.task.AsyncTaskExecutor
@@ -51,12 +51,16 @@ class FormexXmlBatchJob {
      * until the step actually runs, allowing the application to start without
      * requiring the SPARQL endpoint to be available.
      *
+     * Returns the concrete FlatFileItemReader type (not the interface) to allow
+     * Spring Batch to detect listener annotations on the implementation class.
+     *
      * @param sparqlReader Factory for creating the reader
-     * @return Step-scoped ItemStreamReader for CellarData
+     * @return Step-scoped FlatFileItemReader for CellarData
      */
     @Bean
     @StepScope
-    fun sparqlCsvReader(sparqlReader: SparqlUriReader): ItemStreamReader<CellarData> = sparqlReader.createReader()
+    fun sparqlCsvReader(sparqlReader: SparqlUriReader): ListItemReader<CellarData> =
+        sparqlReader.createReader() as ListItemReader<CellarData>
 
     /**
      * Step 1: Download XML files, extract metadata, and insert into database.
@@ -75,7 +79,7 @@ class FormexXmlBatchJob {
      *
      * @param jobRepository Spring Batch job repository
      * @param transactionManager Transaction manager for chunk commits
-     * @param reader Step-scoped SPARQL CSV reader
+     * @param reader Step-scoped SPARQL CSV reader (concrete ListItemReader type)
      * @param filterProcessor Filters out existing URIs
      * @param downloadProcessor Downloads XML and calculates metadata
      * @param postProcessor Extracts version and root_element from XML
@@ -91,12 +95,13 @@ class FormexXmlBatchJob {
     fun downloadXmlStep(
         jobRepository: JobRepository,
         transactionManager: PlatformTransactionManager,
-        reader: ItemStreamReader<CellarData>,
+        reader: ListItemReader<CellarData>,
         filterProcessor: UriFilterProcessor,
         downloadProcessor: StreamingXmlDownloadProcessor,
         postProcessor: XmlPostProcessor,
         writer: XmlDatabaseWriter,
         errorLoggingSkipListener: ErrorLoggingSkipListener,
+        taskExecutor: AsyncTaskExecutor,
     ): Step {
         // Chain filter, download, and post-processing processors
         val compositeProcessor =
@@ -113,7 +118,7 @@ class FormexXmlBatchJob {
             .skip(Exception::class.java)
             .skipLimit(1000)
             .listener(errorLoggingSkipListener)
-            .taskExecutor(taskExecutor())
+            .taskExecutor(taskExecutor)
             .build()
     }
 
