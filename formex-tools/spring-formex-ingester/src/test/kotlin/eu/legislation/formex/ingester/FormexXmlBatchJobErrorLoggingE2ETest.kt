@@ -236,7 +236,7 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
         fun downloadXmlStep(
             jobRepository: JobRepository,
             transactionManager: PlatformTransactionManager,
-            @Autowired reader: org.springframework.batch.infrastructure.item.support.ListItemReader<CellarData>,
+            @Autowired reader: org.springframework.batch.infrastructure.item.ItemReader<CellarData>,
             @Autowired filterProcessor: UriFilterProcessor,
             @Autowired downloadProcessor: StreamingXmlDownloadProcessor,
             @Autowired postProcessor: XmlPostProcessor,

@@ -45,7 +45,7 @@ import java.nio.file.Paths
  * The test requires a JobOperator bean configured in the application context.
  *
  */
-@Disabled("Manual E2E test - requires network access to EU SPARQL endpoint and download servers")
+//@Disabled("Manual E2E test - requires network access to EU SPARQL endpoint and download servers")
 @SpringBootTest(classes = [FormexIngesterApplication::class])
 @SpringBatchTest
 @ActiveProfiles("e2e")

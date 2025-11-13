@@ -4,7 +4,6 @@ import com.github.f4b6a3.uuid.UuidCreator
 import eu.legislation.formex.ingester.CellarData
 import eu.legislation.formex.ingester.StorageProperties
 import eu.legislation.formex.ingester.XmlMetadata
-import org.apache.commons.io.IOUtils
 import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
@@ -80,7 +79,12 @@ class StreamingXmlDownloadProcessor(
                 response.body.use { input: InputStream ->
                     DigestInputStream(input, digest).use { digestInput ->
                         Files.newOutputStream(destination).use { output ->
-                            size = IOUtils.copyLarge(digestInput, output)
+                            val buffer = ByteArray(8192)
+                            var bytesRead: Int
+                            while (digestInput.read(buffer).also { bytesRead = it } != -1) {
+                                output.write(buffer, 0, bytesRead)
+                                size += bytesRead
+                            }
                         }
                     }
                 }

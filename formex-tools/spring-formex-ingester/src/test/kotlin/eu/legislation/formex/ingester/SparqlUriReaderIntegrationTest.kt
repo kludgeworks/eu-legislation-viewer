@@ -15,32 +15,28 @@ import org.springframework.web.client.RestClient
  * Integration tests for SparqlUriReader using MockWebServer.
  *
  * Tests real HTTP communication, SPARQL query structure, and CSV parsing
- * end-to-end without mocking RestClient internals.
+ * end-to-end without mocking HttpClient internals.
  */
 class SparqlUriReaderIntegrationTest {
     private lateinit var mockServer: MockWebServer
     private lateinit var reader: SparqlUriReader
+    private lateinit var restClient: RestClient
 
     @BeforeEach
     fun setup() {
         mockServer = MockWebServer()
         mockServer.start()
 
-        // Create real RestClient pointing to mock server
         val baseUrl = mockServer.url("/").toString().removeSuffix("/")
-        val restClient =
-            RestClient
-                .builder()
-                .baseUrl(baseUrl)
-                .build()
-
         val sparqlProperties =
             SparqlProperties(
-                endpoint = "/sparql",
+                endpoint = "$baseUrl/sparql",
                 language = "eng",
             )
 
-        reader = SparqlUriReader(restClient, sparqlProperties)
+        // Create a RestClient configured for the mock server
+        restClient = RestClient.builder().baseUrl(baseUrl).build()
+        reader = SparqlUriReader(sparqlProperties, restClient)
     }
 
     @AfterEach
@@ -49,7 +45,7 @@ class SparqlUriReaderIntegrationTest {
     }
 
     @Test
-    fun `createReader should parse CSV response and return FlatFileItemReader`() {
+    fun `createReader should parse CSV response and return populated ItemReader`() {
         // Given - mock CSV response with two rows
         val csvContent =
             """
@@ -73,7 +69,7 @@ class SparqlUriReaderIntegrationTest {
         // Then - verify HTTP request was made with POST
         val recordedRequest = mockServer.takeRequest()
         assertEquals("POST", recordedRequest.method)
-        assertEquals("application/x-www-form-urlencoded", recordedRequest.headers["Content-Type"])
+        assertTrue((recordedRequest.headers["Content-Type"] ?: "").startsWith("application/x-www-form-urlencoded"))
 
         // Verify query parameter in form body
         val bodyString = recordedRequest.body?.utf8() ?: ""
@@ -234,7 +230,7 @@ class SparqlUriReaderIntegrationTest {
                 .build(),
         )
 
-        // When/Then - HTTP errors will cause CSV parsing to fail
+        // When/Then - HTTP errors will cause exception during createReader
         assertThrows(Exception::class.java) {
             reader.createReader()
         }
@@ -251,7 +247,7 @@ class SparqlUriReaderIntegrationTest {
                 .build(),
         )
 
-        // When/Then - HTTP errors will cause CSV parsing to fail
+        // When/Then - HTTP errors will cause exception during createReader
         assertThrows(Exception::class.java) {
             reader.createReader()
         }

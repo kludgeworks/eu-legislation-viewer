@@ -8,16 +8,14 @@ import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
+import org.springframework.batch.infrastructure.item.ItemReader
 import org.springframework.batch.infrastructure.item.support.CompositeItemProcessor
-import org.springframework.batch.infrastructure.item.support.ListItemReader
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.task.AsyncTaskExecutor
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 import org.springframework.transaction.PlatformTransactionManager
 import org.springframework.web.client.RestClient
-import java.time.Duration
 
 /**
  * Spring Batch job configuration for processing Formex XML documents.
@@ -59,8 +57,7 @@ class FormexXmlBatchJob {
      */
     @Bean
     @StepScope
-    fun sparqlCsvReader(sparqlReader: SparqlUriReader): ListItemReader<CellarData> =
-        sparqlReader.createReader() as ListItemReader<CellarData>
+    fun sparqlCsvReader(sparqlReader: SparqlUriReader): ItemReader<CellarData> = sparqlReader.createReader()
 
     /**
      * Step 1: Download XML files, extract metadata, and insert into database.
@@ -95,13 +92,12 @@ class FormexXmlBatchJob {
     fun downloadXmlStep(
         jobRepository: JobRepository,
         transactionManager: PlatformTransactionManager,
-        reader: ListItemReader<CellarData>,
+        reader: ItemReader<CellarData>,
         filterProcessor: UriFilterProcessor,
         downloadProcessor: StreamingXmlDownloadProcessor,
         postProcessor: XmlPostProcessor,
         writer: XmlDatabaseWriter,
         errorLoggingSkipListener: ErrorLoggingSkipListener,
-        taskExecutor: AsyncTaskExecutor,
     ): Step {
         // Chain filter, download, and post-processing processors
         val compositeProcessor =
@@ -118,7 +114,6 @@ class FormexXmlBatchJob {
             .skip(Exception::class.java)
             .skipLimit(1000)
             .listener(errorLoggingSkipListener)
-            .taskExecutor(taskExecutor)
             .build()
     }
 
@@ -146,23 +141,11 @@ class FormexXmlBatchJob {
     /**
      * RestClient configured for large file downloads.
      *
-     * Timeouts:
-     * - Connect timeout: 30 seconds
-     * - Read timeout: 300 seconds (5 minutes for large files)
+     * Uses JDK HttpClient (no external dependencies).
+     * Default timeouts apply.
      *
      * @return The configured RestClient
      */
     @Bean
-    fun restClient(): RestClient {
-        val requestFactory =
-            HttpComponentsClientHttpRequestFactory().apply {
-                setConnectTimeout(Duration.ofSeconds(30))
-                setReadTimeout(Duration.ofMinutes(5))
-            }
-
-        return RestClient
-            .builder()
-            .requestFactory(requestFactory)
-            .build()
-    }
+    fun restClient(): RestClient = RestClient.create()
 }
