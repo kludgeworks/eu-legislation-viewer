@@ -83,6 +83,10 @@ class FormexXmlBatchJob {
      * @param errorLoggingSkipListener Logs skipped items to database
      * @return The configured download step
      */
+    @Suppress(
+        "kotlin:S107", // Spring Batch step definitions require many parameters
+        "DEPRECATION", // See: https://github.com/spring-projects/spring-batch/issues/5084
+    )
     @Bean
     fun downloadXmlStep(
         jobRepository: JobRepository,
@@ -101,8 +105,7 @@ class FormexXmlBatchJob {
             }
 
         return StepBuilder("downloadXml", jobRepository)
-            .chunk<CellarData, XmlMetadata>(10)
-            .transactionManager(transactionManager)
+            .chunk<CellarData, XmlMetadata>(10, transactionManager)
             .reader(reader)
             .processor(compositeProcessor)
             .writer(writer)

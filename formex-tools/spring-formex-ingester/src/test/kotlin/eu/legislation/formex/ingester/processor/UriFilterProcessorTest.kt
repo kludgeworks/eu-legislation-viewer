@@ -2,6 +2,7 @@ package eu.legislation.formex.ingester.processor
 
 import eu.legislation.formex.ingester.CellarData
 import eu.legislation.formex.ingester.FormexDocuments
+import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -26,10 +27,13 @@ class UriFilterProcessorTest {
     @Autowired
     private lateinit var processor: UriFilterProcessor
 
+    @Autowired
+    private lateinit var database: Database
+
     @BeforeEach
     fun setUp() {
         // Clean the table before each test
-        transaction {
+        transaction(database) {
             FormexDocuments.deleteAll()
         }
     }
@@ -50,7 +54,7 @@ class UriFilterProcessorTest {
             )
 
         // Insert existing URI into database
-        transaction {
+        transaction(database) {
             FormexDocuments.insert {
                 it[id] = "test-id-1"
                 it[uri] = existingUri
@@ -106,7 +110,7 @@ class UriFilterProcessorTest {
         val item2 = CellarData(uri2, "w2", "e2", "m2", "c2", "eng", "application/xml")
 
         // Insert only uri1 (uri2 does not exist)
-        transaction {
+        transaction(database) {
             FormexDocuments.insert {
                 it[id] = "test-id-thread-1"
                 it[uri] = uri1

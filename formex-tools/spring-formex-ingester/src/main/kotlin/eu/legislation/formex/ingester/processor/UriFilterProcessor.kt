@@ -2,6 +2,7 @@ package eu.legislation.formex.ingester.processor
 
 import eu.legislation.formex.ingester.CellarData
 import eu.legislation.formex.ingester.FormexDocuments
+import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.batch.infrastructure.item.ItemProcessor
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Component
  * Uses Exposed SQL DSL for database queries within Spring-managed transactions.
  */
 @Component
-class UriFilterProcessor : ItemProcessor<CellarData, CellarData> {
+class UriFilterProcessor(
+    private val database: Database,
+) : ItemProcessor<CellarData, CellarData> {
     /**
      * Processes a CellarData item, filtering it out if the URI already exists in the database.
      *
@@ -25,7 +28,7 @@ class UriFilterProcessor : ItemProcessor<CellarData, CellarData> {
      */
     override fun process(item: CellarData): CellarData? {
         val exists =
-            transaction {
+            transaction(database) {
                 FormexDocuments
                     .selectAll()
                     .where { FormexDocuments.uri eq item.item }

@@ -51,12 +51,14 @@ import java.util.concurrent.atomic.AtomicInteger
  *
  * The test is disabled by default to avoid network dependencies in CI/CD.
  * Enable manually when testing error logging behavior.
- *
- * SSL Configuration: Uses TestRestClientConfig to trust all certificates, allowing
- * tests to work in corporate environments with SSL inspection proxies.
  */
 @Disabled("Manual E2E test - requires network access and intentionally injects failures")
-@SpringBootTest(classes = [FormexIngesterApplication::class, FormexXmlBatchJobErrorLoggingE2ETest.PoisonedProcessorConfig::class, TestRestClientConfig::class])
+@SpringBootTest(
+    classes = [
+        FormexIngesterApplication::class,
+        FormexXmlBatchJobErrorLoggingE2ETest.PoisonedProcessorConfig::class,
+    ],
+)
 @SpringBatchTest
 @ActiveProfiles("e2e-error-logging")
 class FormexXmlBatchJobErrorLoggingE2ETest {
@@ -198,7 +200,7 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
 
         // Verify the math: read = write + skip
         assertEquals(
-            stepExecution.readCount.toInt(),
+            stepExecution.readCount,
             stepExecution.writeCount + stepExecution.skipCount,
             "Read count should equal write count plus skip count",
         )
@@ -224,6 +226,7 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
      * This configuration replaces the normal downloadXmlStep with one that uses
      * a poisoned processor that fails every 3rd item.
      */
+    @Suppress("DEPRECATION") // See: https://github.com/spring-projects/spring-batch/issues/5084
     @TestConfiguration
     class PoisonedProcessorConfig {
         @Bean
@@ -248,8 +251,7 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
                 }
 
             return StepBuilder("downloadXml", jobRepository)
-                .chunk<CellarData, XmlMetadata>(10)
-                .transactionManager(transactionManager)
+                .chunk<CellarData, XmlMetadata>(10, transactionManager)
                 .reader(reader)
                 .processor(compositeProcessor)
                 .writer(writer)

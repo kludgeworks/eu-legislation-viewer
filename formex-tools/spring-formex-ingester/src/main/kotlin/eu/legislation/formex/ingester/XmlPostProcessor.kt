@@ -33,49 +33,47 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
 
     override fun process(item: XmlMetadata): XmlMetadata =
         runCatching {
-            // Read XML content from file
             val xmlContent = Files.readString(Paths.get(item.filePath))
-
-            // Parse XML to extract version and root element
-            val builder = documentBuilderFactory.newDocumentBuilder()
-            val doc = builder.parse(InputSource(StringReader(xmlContent)))
-            val rootElement = doc.documentElement
-
+            val rootElement = parseXmlDocument(xmlContent)
             val rootElementName = rootElement.localName ?: rootElement.nodeName
+            val version = extractVersion(rootElement)
 
-            // Extract version from noNamespaceSchemaLocation attribute
-            // Try without namespace prefix first
-            val schemaLocation = rootElement.getAttribute("noNamespaceSchemaLocation")
-
-            val version =
-                if (schemaLocation.isNotEmpty()) {
-                    versionPattern.matcher(schemaLocation).let { matcher ->
-                        if (matcher.find()) matcher.group(1) else null
-                    }
-                } else {
-                    // Try with xsi namespace prefix (most common in Formex documents)
-                    val xsiSchemaLocation =
-                        rootElement.getAttributeNS(
-                            "http://www.w3.org/2001/XMLSchema-instance",
-                            "noNamespaceSchemaLocation",
-                        )
-                    if (xsiSchemaLocation.isNotEmpty()) {
-                        versionPattern.matcher(xsiSchemaLocation).let { matcher ->
-                            if (matcher.find()) matcher.group(1) else null
-                        }
-                    } else {
-                        null
-                    }
-                }
-
-            // Return enriched metadata
             item.copy(
                 version = version,
                 rootElement = rootElementName,
             )
         }.getOrElse { e ->
             logger.warn(e) { "Failed to parse XML for ${item.uri}: ${e.message}" }
-            // Return original item without version/rootElement on parse failure
             item
         }
+
+    private fun parseXmlDocument(xmlContent: String) =
+        documentBuilderFactory
+            .newDocumentBuilder()
+            .parse(InputSource(StringReader(xmlContent)))
+            .documentElement
+
+    private fun extractVersion(rootElement: org.w3c.dom.Element): String? {
+        val schemaLocation = rootElement.getAttribute("noNamespaceSchemaLocation")
+        return extractVersionFromSchemaLocation(schemaLocation)
+            ?: extractVersionFromXsiNamespace(rootElement)
+    }
+
+    private fun extractVersionFromSchemaLocation(schemaLocation: String): String? =
+        if (schemaLocation.isNotEmpty()) {
+            versionPattern.matcher(schemaLocation).let { matcher ->
+                if (matcher.find()) matcher.group(1) else null
+            }
+        } else {
+            null
+        }
+
+    private fun extractVersionFromXsiNamespace(rootElement: org.w3c.dom.Element): String? {
+        val xsiSchemaLocation =
+            rootElement.getAttributeNS(
+                "http://www.w3.org/2001/XMLSchema-instance",
+                "noNamespaceSchemaLocation",
+            )
+        return extractVersionFromSchemaLocation(xsiSchemaLocation)
+    }
 }

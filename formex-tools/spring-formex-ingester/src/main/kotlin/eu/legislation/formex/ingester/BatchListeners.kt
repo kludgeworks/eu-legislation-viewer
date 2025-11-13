@@ -30,21 +30,32 @@ import org.springframework.stereotype.Component
 @Component
 class ErrorLoggingSkipListener(
     private val database: Database,
-) : SkipListener<CellarData, XmlMetadata> {
+) : SkipListener<Any, Any> {
     private val logger = KotlinLogging.logger {}
 
     override fun onSkipInProcess(
-        item: CellarData,
+        item: Any,
         throwable: Throwable,
     ) {
-        logError(item.item, throwable)
+        val uri =
+            when (item) {
+                is CellarData -> item.item
+                is XmlMetadata -> item.uri
+                else -> item.toString()
+            }
+        logError(uri, throwable)
     }
 
     override fun onSkipInWrite(
-        item: XmlMetadata,
+        item: Any,
         throwable: Throwable,
     ) {
-        logError(item.uri, throwable)
+        val uri =
+            when (item) {
+                is XmlMetadata -> item.uri
+                else -> item.toString()
+            }
+        logError(uri, throwable)
     }
 
     override fun onSkipInRead(throwable: Throwable) {
@@ -75,7 +86,7 @@ class ErrorLoggingSkipListener(
                         it[timestamp] = System.currentTimeMillis()
                         it[ProcessingErrors.uri] = uri
                         it[errorMessage] = throwable.message ?: "Unknown error"
-                        it[errorType] = throwable::class.simpleName ?: "Exception"
+                        it[errorType] = throwable::class.qualifiedName ?: "Exception"
                         it[stackTrace] = throwable.stackTraceToString()
                     }
                 }

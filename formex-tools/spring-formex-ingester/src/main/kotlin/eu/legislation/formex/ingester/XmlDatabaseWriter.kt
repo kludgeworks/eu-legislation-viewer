@@ -1,5 +1,6 @@
 package eu.legislation.formex.ingester
 
+import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.batchInsert
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.batch.infrastructure.item.Chunk
@@ -16,13 +17,12 @@ import org.springframework.stereotype.Component
  * participates in Spring's transaction management via SpringTransactionManager.
  */
 @Component
-class XmlDatabaseWriter : ItemWriter<XmlMetadata> {
+class XmlDatabaseWriter(
+    private val database: Database,
+) : ItemWriter<XmlMetadata> {
     override fun write(chunk: Chunk<out XmlMetadata>) {
-        transaction {
+        transaction(database) {
             FormexDocuments.batchInsert(chunk.items) { metadata ->
-                // Spring Batch filters out null items, but the compiler requires a null check.
-                // If a null is received here, it's an unexpected error state.
-                metadata ?: throw IllegalStateException("Received a null item in the writer, which should have been filtered out.")
 
                 this[FormexDocuments.id] = metadata.id.toString()
                 this[FormexDocuments.filePath] = metadata.filePath
