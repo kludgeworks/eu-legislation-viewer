@@ -23,7 +23,12 @@ import java.util.UUID
  * All ID components (workId, expressionId, etc.) are now provided directly by the
  * CellarData from the SPARQL query, eliminating regex parsing.
  *
- * Files are stored permanently in the configured storage directory.
+ * Files are stored in a hierarchical directory structure based on the URI path:
+ *   {storageDir}/publications.europa.eu/resource/cellar/{manifestation}/{docId}.xml
+ *
+ * Example:
+ *   Input:  http://publications.europa.eu/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_1
+ *   Stored: ./formex-xml-files/publications.europa.eu/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_1.xml
  */
 @Component
 class StreamingXmlDownloadProcessor(
@@ -45,12 +50,20 @@ class StreamingXmlDownloadProcessor(
     }
 
     override fun process(item: CellarData): XmlMetadata {
+        // Parse URI to extract path structure for organized file storage
+        val parsedUri = CellarUriParser.parse(item.item)
+        val relativePath = parsedUri.toRelativePath()
+
+        // Create directory structure based on URI path
+        val permanentFile = storageDir.resolve(relativePath)
+        val parentDir = permanentFile.parent
+        Files.createDirectories(parentDir)
+
         // Download and hash in single pass, generate ID based on content
-        val tempFile = storageDir.resolve("${UUID.randomUUID()}.xml")
+        val tempFile = permanentFile.parent.resolve("${UUID.randomUUID()}.xml")
         val metrics = downloadWithMetrics(item.item, tempFile)
 
-        // Rename file to use content-based ID for deduplication
-        val permanentFile = storageDir.resolve("${metrics.id}.xml")
+        // Move temp file to final location with URI-based path
         Files.move(tempFile, permanentFile, java.nio.file.StandardCopyOption.REPLACE_EXISTING)
 
         return XmlMetadata(
