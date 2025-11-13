@@ -12,7 +12,7 @@ import org.jetbrains.exposed.sql.Table
  * - id: Primary key (TEXT), unique identifier for the document
  * - file_path: Local filesystem path where the XML file is stored (NOT NULL)
  * - file_size: Size of the XML file in bytes (nullable INTEGER)
- * - uri: Unique URI from Cellar (nullable TEXT with UNIQUE constraint)
+ * - uri: Unique URI from Cellar (nullable TEXT with UNIQUE constraint for restart idempotency)
  * - work_id: FRBR Work identifier (NOT NULL)
  * - expr_id: FRBR Expression identifier (NOT NULL)
  * - man_id: FRBR Manifestation identifier (NOT NULL)
@@ -20,7 +20,13 @@ import org.jetbrains.exposed.sql.Table
  * - version: Formex version (nullable TEXT)
  * - root_element: Root XML element name (nullable TEXT)
  *
+ * Unique constraint on 'uri':
+ * - Ensures URIs are never processed twice
+ * - Critical for restart idempotency: if a chunk partially completes and is restarted,
+ *   duplicate URIs will be rejected by the database, preventing data duplication
+ *
  * Indexes:
+ * - idx_formex_documents_uri: UNIQUE on uri - prevents duplicates and speeds lookups (uniqueIndex())
  * - idx_formex_documents_version: On version for quick version lookups
  * - idx_formex_documents_root_element: On root_element for filtering by element type
  * - idx_formex_documents_work_id: On work_id for Cellar identifier filtering
@@ -45,6 +51,10 @@ object FormexDocuments : Table("formex_documents") {
     init {
         index(isUnique = false, version)
         index(isUnique = false, rootElement)
+        index(isUnique = false, workId)
+        index(isUnique = false, exprId)
+        index(isUnique = false, manId)
+        index(isUnique = false, csId)
     }
 }
 

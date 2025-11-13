@@ -106,7 +106,8 @@ class FormexXmlBatchJob {
             }
 
         return StepBuilder("downloadXml", jobRepository)
-            .chunk<CellarData, XmlMetadata>(10, transactionManager)
+            .chunk<CellarData, XmlMetadata>(10)
+            .transactionManager(transactionManager)
             .reader(reader)
             .processor(compositeProcessor)
             .writer(writer)

@@ -1,2 +1,0 @@
-org.springframework.boot.env.EnvironmentPostProcessor=\
-  eu.legislation.formex.ingester.RunIdEnvironmentPostProcessor
