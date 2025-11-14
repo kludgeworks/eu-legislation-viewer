@@ -63,6 +63,12 @@
 			<artifactId>univocity-parsers</artifactId>
 			<version>2.9.1</version>
 		</dependency>
+		<!-- Mordant: Terminal rendering library for colored text, progress bars, tables -->
+		<dependency>
+			<groupId>com.github.ajalt.mordant</groupId>
+			<artifactId>mordant</artifactId>
+			<version>2.7.2</version>
+		</dependency>
 	<dependency>
 		<groupId>org.jetbrains.kotlinx</groupId>
 		<artifactId>kotlinx-coroutines-core</artifactId>
