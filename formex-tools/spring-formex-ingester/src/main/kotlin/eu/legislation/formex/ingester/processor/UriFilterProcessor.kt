@@ -2,11 +2,14 @@ package eu.legislation.formex.ingester.processor
 
 import eu.legislation.formex.ingester.CellarData
 import eu.legislation.formex.ingester.FormexDocuments
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.stereotype.Component
+
+private val logger = KotlinLogging.logger {}
 
 /**
  * Filters out URIs that already exist in the database.
@@ -36,6 +39,12 @@ class UriFilterProcessor(
                     .count() > 0
             }
 
-        return if (exists) null else item
+        return if (exists) {
+            logger.debug { "Filter: URI already exists, skipping: ${item.item}" }
+            null
+        } else {
+            logger.debug { "Filter: URI is new, allowing: ${item.item}" }
+            item
+        }
     }
 }

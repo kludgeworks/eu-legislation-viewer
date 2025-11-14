@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Console appender with colored output -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File appender with daily rolling policy -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/formex-ingester.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Daily rollover -->
+            <fileNamePattern>logs/formex-ingester.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- Keep 30 days of history -->
+            <maxHistory>30</maxHistory>
+            <!-- Total size cap of 1GB -->
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger - writes to both console and file -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <!-- Application loggers -->
+    <logger name="eu.legislation.formex.ingester" level="DEBUG"/>
+    
+    <!-- Spring Batch loggers -->
+    <logger name="org.springframework.batch" level="INFO"/>
+    
+    <!-- Reduce noise from Spring framework -->
+    <logger name="org.springframework.web" level="WARN"/>
+    <logger name="org.springframework.jdbc" level="WARN"/>
+    <logger name="org.springframework.transaction" level="WARN"/>
+    <logger name="org.jetbrains.exposed" level="WARN"/>
+    <logger name="Exposed" level="WARN"/>
+</configuration>

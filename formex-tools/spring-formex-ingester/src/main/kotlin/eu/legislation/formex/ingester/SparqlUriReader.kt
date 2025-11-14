@@ -4,11 +4,14 @@ import com.univocity.parsers.csv.CsvParser
 import com.univocity.parsers.csv.CsvParserSettings
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.core.configuration.annotation.StepScope
-import org.springframework.batch.core.step.StepExecution
+import org.springframework.batch.core.scope.context.ChunkContext
+import org.springframework.batch.core.step.StepContribution
+import org.springframework.batch.core.step.tasklet.Tasklet
 import org.springframework.batch.infrastructure.item.ExecutionContext
 import org.springframework.batch.infrastructure.item.ItemReader
 import org.springframework.batch.infrastructure.item.ItemStream
-import org.springframework.batch.infrastructure.item.support.ListItemReader
+import org.springframework.batch.infrastructure.repeat.RepeatStatus
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
 import java.io.BufferedReader
@@ -20,31 +23,47 @@ import java.nio.charset.StandardCharsets
 private val logger = KotlinLogging.logger {}
 
 /**
- * Factory for creating SPARQL CSV readers with restart support.
+ * Tasklet that fetches URIs from SPARQL endpoint and stores them in StepExecutionContext.
  *
- * Fetches URIs from SPARQL endpoint, parses CSV with Univocity, and returns a reader
- * that implements ItemStream for restart capability.
+ * This is the idiomatic Spring Batch approach for expensive data fetching:
+ * - Runs once at the beginning of the job
+ * - Stores fetched data list in StepExecutionContext
+ * - Downstream readers access data via ExecutionContext
  *
- * Uses @StepScope to defer HTTP call to step execution time (not application startup).
- * This allows tests to load the application context without requiring SPARQL endpoint availability.
+ * Error Handling:
+ * - If SPARQL fetch fails (timeout, network error), step fails
+ * - Job status becomes FAILED
+ * - On restart, SPARQL fetch re-runs (~4 minutes)
  *
- * Implements ItemStream to track read position across job restarts:
- * - On restart with same job parameters, reads from the execution context to restore position
- * - Saves current index before each chunk commit
- * - Allows jobs to resume from failure point instead of reprocessing entire dataset
+ * Timeout Configuration:
+ * - RestClient configured with 4-minute read timeout (see FormexXmlBatchJob.restClient)
+ * - EU SPARQL endpoint can take 3-4 minutes for large queries
  *
  * @param properties SPARQL endpoint configuration
- * @param restClient Spring RestClient for HTTP communication
+ * @param restClient Spring RestClient for HTTP communication (with 4-minute timeout)
  */
 @Component
-@StepScope
-class SparqlUriReader(
+class SparqlUriFetchTasklet(
     private val properties: SparqlProperties,
     private val restClient: RestClient,
-) {
-    fun createReader(): ItemReader<CellarData> {
+) : Tasklet {
+    override fun execute(
+        contribution: StepContribution,
+        chunkContext: ChunkContext,
+    ): RepeatStatus {
+        logger.info { "Fetching URIs from SPARQL endpoint: ${properties.endpoint}" }
         val records = fetchAndParseFromSparql()
-        return RestartableSparqlListItemReader(records)
+
+        // Store in step execution context for downstream reader
+        chunkContext.stepContext.stepExecution.executionContext
+            .put(SPARQL_DATA_KEY, records)
+        logger.info { "Stored ${records.size} URIs in ExecutionContext for downstream processing" }
+
+        return RepeatStatus.FINISHED
+    }
+
+    companion object {
+        const val SPARQL_DATA_KEY = "sparql.data"
     }
 
     private fun fetchAndParseFromSparql(): List<CellarData> {
@@ -76,8 +95,6 @@ class SparqlUriReader(
             """.trimIndent()
 
         val formBody = "query=" + URLEncoder.encode(query, StandardCharsets.UTF_8)
-
-        logger.info { "Fetching URIs from SPARQL endpoint: ${properties.endpoint}" }
 
         val csvContent =
             restClient
@@ -125,45 +142,57 @@ class SparqlUriReader(
 }
 
 /**
- * Custom ItemReader implementation that wraps ListItemReader with ItemStream support.
+ * ItemReader that reads from SPARQL data stored in ExecutionContext with restart support.
  *
- * This enables Spring Batch's restart capability by tracking the current read position
- * in the ExecutionContext. When a job is restarted with the same parameters, this reader
- * will restore its position and resume reading from where it left off.
+ * Reads data from ExecutionContext (populated by SparqlUriFetchTasklet).
  *
- * Execution flow:
- * 1. open(ExecutionContext): Restore saved index on restart, or start from 0
- * 2. read(): Return next item, increment index
- * 3. update(ExecutionContext): Save current index before chunk commit
- * 4. close(): Cleanup (no-op for in-memory list)
+ * Implements ItemStream to track read position across job restarts:
+ * - On restart, restores position from ExecutionContext
+ * - Saves current index before each chunk commit
+ * - Allows jobs to resume from failure point
  *
- * @property items The list of all items to read
+ * Note: Requires @StepScope for proper Spring Batch lifecycle management.
  */
-private class RestartableSparqlListItemReader(
-    private val items: List<CellarData>,
-) : ItemReader<CellarData>,
+@Component
+@StepScope
+class CachedSparqlUriReader :
+    ItemReader<CellarData>,
     ItemStream {
     private var currentIndex = 0
     private val logger = KotlinLogging.logger {}
     private val executionContextKey = "sparql.reader.index"
+    private lateinit var cachedData: List<CellarData>
 
     override fun read(): CellarData? =
-        if (currentIndex < items.size) {
-            items[currentIndex].also { currentIndex++ }
+        if (currentIndex < cachedData.size) {
+            cachedData[currentIndex].also {
+                logger.debug { "Reader: Read index=$currentIndex URI=${it.item}" }
+                currentIndex++
+            }
         } else {
+            logger.debug { "Reader: Exhausted at index=$currentIndex (total=${cachedData.size})" }
             null
         }
 
     override fun open(executionContext: ExecutionContext) {
+        // Get data from execution context
+        @Suppress("UNCHECKED_CAST")
+        cachedData = (executionContext.get(SparqlUriFetchTasklet.SPARQL_DATA_KEY) as? List<CellarData>) ?: emptyList()
+
+        if (cachedData.isEmpty()) {
+            logger.warn { "No SPARQL data found in ExecutionContext - step 1 may have failed" }
+            return
+        }
+
         // On first run: currentIndex starts at 0
         // On restart: restore saved index from previous execution
         if (executionContext.containsKey(executionContextKey)) {
             val savedIndex = executionContext.getInt(executionContextKey)
             currentIndex = savedIndex
-            logger.info { "SPARQL reader resuming from index $savedIndex (restarted job)" }
+            logger.info { "SPARQL reader resuming from index $savedIndex of ${cachedData.size} URIs (restarted job)" }
         } else {
             currentIndex = 0
-            logger.info { "SPARQL reader starting from beginning (new job execution)" }
+            logger.info { "SPARQL reader starting from beginning with ${cachedData.size} URIs (new job execution)" }
         }
     }
 
@@ -171,11 +200,11 @@ private class RestartableSparqlListItemReader(
         // Save current index before chunk commit
         // This ensures we can resume from this point if the job fails after this commit
         executionContext.putInt(executionContextKey, currentIndex)
-        logger.debug { "SPARQL reader saved position at index $currentIndex" }
+        logger.info { "Reader: Saved checkpoint at index=$currentIndex (will resume from here if job restarts)" }
     }
 
     override fun close() {
         // No resources to cleanup for in-memory list
-        logger.debug { "SPARQL reader closed at index $currentIndex" }
+        logger.debug { "SPARQL reader closed at index $currentIndex of ${cachedData.size}" }
     }
 }

@@ -4,6 +4,7 @@ import com.github.f4b6a3.uuid.UuidCreator
 import eu.legislation.formex.ingester.CellarData
 import eu.legislation.formex.ingester.StorageProperties
 import eu.legislation.formex.ingester.XmlMetadata
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
@@ -14,6 +15,8 @@ import java.nio.file.Paths
 import java.security.DigestInputStream
 import java.security.MessageDigest
 import java.util.UUID
+
+private val logger = KotlinLogging.logger {}
 
 /**
  * Spring Batch ItemProcessor that downloads XML files from URIs and creates metadata records.
@@ -66,16 +69,20 @@ class StreamingXmlDownloadProcessor(
         // Move temp file to final location with URI-based path
         Files.move(tempFile, permanentFile, java.nio.file.StandardCopyOption.REPLACE_EXISTING)
 
-        return XmlMetadata(
-            id = metrics.id,
-            uri = item.item,
-            fileSize = metrics.size,
-            workId = UUID.fromString(item.workId),
-            exprId = item.expressionId,
-            manId = item.manifestationId,
-            csId = item.contentStreamId,
-            filePath = permanentFile.toString(),
-        )
+        val metadata =
+            XmlMetadata(
+                id = metrics.id,
+                uri = item.item,
+                fileSize = metrics.size,
+                workId = UUID.fromString(item.workId),
+                exprId = item.expressionId,
+                manId = item.manifestationId,
+                csId = item.contentStreamId,
+                filePath = permanentFile.toString(),
+            )
+
+        logger.debug { "Download: Generated ID=${metadata.id} for URI=${item.item}" }
+        return metadata
     }
 
     private fun downloadWithMetrics(

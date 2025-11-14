@@ -38,12 +38,15 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
             val rootElementName = rootElement.localName ?: rootElement.nodeName
             val version = extractVersion(rootElement)
 
-            item.copy(
-                version = version,
-                rootElement = rootElementName,
-            )
+            val enriched =
+                item.copy(
+                    version = version,
+                    rootElement = rootElementName,
+                )
+            logger.debug { "PostProcess: Enriched ID=${enriched.id} URI=${enriched.uri} version=$version rootElement=$rootElementName" }
+            enriched
         }.getOrElse { e ->
-            logger.warn(e) { "Failed to parse XML for ${item.uri}: ${e.message}" }
+            logger.warn(e) { "PostProcess: Failed to parse XML for ID=${item.id} URI=${item.uri}: ${e.message}" }
             item
         }
 

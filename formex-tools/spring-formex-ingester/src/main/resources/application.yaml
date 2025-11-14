@@ -12,7 +12,7 @@ spring:
     jdbc:
       initialize-schema: always
     job:
-      enabled: true
+      enabled: false  # Disabled: JobLauncherEntrypoint handles all job launches
 
   sql:
     init:
