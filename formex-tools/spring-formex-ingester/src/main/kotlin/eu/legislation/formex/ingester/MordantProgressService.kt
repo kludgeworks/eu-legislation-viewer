@@ -95,6 +95,11 @@ class MordantProgressService {
         terminal.println(TextColors.yellow("▶ Step: $stepName".padStart((width + 9 + stepName.length) / 2)))
         terminal.println(TextColors.gray("Expected: $countStr".padStart((width + 11 + countStr.length) / 2)))
         terminal.println()
+
+        // Hide cursor for chunk-based steps with progress bars
+        if (expectedCount != null && expectedCount > 0) {
+            terminal.cursor.hide(showOnExit = true)
+        }
     }
 
     /**
@@ -154,6 +159,9 @@ class MordantProgressService {
         status: BatchStatus,
         durationMs: Long,
     ) {
+        // Show cursor again after step completes
+        terminal.cursor.show()
+
         val statusColor =
             when (status) {
                 BatchStatus.COMPLETED -> TextColors.green
