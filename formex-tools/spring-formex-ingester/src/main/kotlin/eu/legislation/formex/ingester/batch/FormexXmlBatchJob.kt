@@ -131,10 +131,15 @@ class FormexXmlBatchJob {
      *
      * Reads from cached SPARQL data (injected via late binding from JobExecutionContext):
      * - Filters out existing URIs (batch database checks)
-     * - Downloads XML files in parallel (streaming, no memory loading)
+     * - Downloads XML files in parallel with 10-20 concurrent threads (streaming, no memory loading)
      * - Stores files permanently in configured storage directory
      * - Extracts version and root_element from XML documents
      * - Inserts complete records into database
+     *
+     * Parallelism:
+     * - Chunk size: 10 items per chunk
+     * - Thread pool: 10 core threads, 20 max threads
+     * - Up to 10-20 concurrent downloads depending on load
      *
      * Restart behavior:
      * - CachedSparqlUriReader restores position from StepExecutionContext
@@ -187,6 +192,7 @@ class FormexXmlBatchJob {
                 .reader(reader)
                 .processor(compositeProcessor)
                 .writer(writer)
+                .taskExecutor(taskExecutor())
                 .faultTolerant()
                 .skip(Exception::class.java)
                 .skipLimit(1000)
