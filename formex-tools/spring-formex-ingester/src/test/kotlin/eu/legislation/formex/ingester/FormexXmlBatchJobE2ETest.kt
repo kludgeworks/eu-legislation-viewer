@@ -1,5 +1,6 @@
 package eu.legislation.formex.ingester
 
+import eu.legislation.formex.ingester.domain.table.FormexDocuments
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.selectAll

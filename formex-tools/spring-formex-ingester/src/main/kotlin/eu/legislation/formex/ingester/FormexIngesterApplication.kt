@@ -1,17 +1,16 @@
 package eu.legislation.formex.ingester
 
+import eu.legislation.formex.ingester.config.SparqlProperties
+import eu.legislation.formex.ingester.config.StorageProperties
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
 
 /**
- * Main Spring Boot application with Spring Batch 6.0.
+ * Spring Boot application entry point for Formex XML ingester.
  *
- * Spring Boot auto-configures all batch infrastructure when spring-boot-starter-batch
- * is on the classpath, including DataSource, JobRepository, TransactionManager,
- * and JobLauncher. No @EnableBatchProcessing annotation is needed.
- *
- * @EnableConfigurationProperties enables type-safe configuration properties
+ * This application uses Spring Batch to download and process Formex XML documents
+ * from the EU SPARQL endpoint.
  */
 @SpringBootApplication
 @EnableConfigurationProperties(SparqlProperties::class, StorageProperties::class)
