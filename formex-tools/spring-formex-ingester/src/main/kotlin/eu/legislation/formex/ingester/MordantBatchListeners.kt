@@ -48,11 +48,11 @@ class MordantJobListener(
                     .toMillis()
 
             // Aggregate metrics across all steps
-            val readCount = jobExecution.stepExecutions.sumOf { it.readCount.toLong() }
-            val writeCount = jobExecution.stepExecutions.sumOf { it.writeCount.toLong() }
+            val readCount = jobExecution.stepExecutions.sumOf { it.readCount }
+            val writeCount = jobExecution.stepExecutions.sumOf { it.writeCount }
             val skipCount =
                 jobExecution.stepExecutions.sumOf {
-                    it.readSkipCount.toLong() + it.processSkipCount.toLong() + it.writeSkipCount.toLong()
+                    it.readSkipCount + it.processSkipCount + it.writeSkipCount
                 }
 
             progressService.printJobSummary(
@@ -95,6 +95,22 @@ class MordantStepListener(
                 stepName = stepExecution.stepName,
                 expectedCount = expectedCount,
             )
+
+            // For downloadXml step with known count, start animated progress
+            if (expectedCount != null && stepExecution.stepName == "downloadXml"
+            ) {
+                val startTimeMs =
+                    stepExecution.startTime
+                        ?.atZone(java.time.ZoneId.systemDefault())
+                        ?.toInstant()
+                        ?.toEpochMilli() ?: System.currentTimeMillis()
+
+                progressService.startBatchProgressLayout(
+                    stepName = stepExecution.stepName,
+                    totalItems = expectedCount,
+                    startTimeMs = startTimeMs,
+                )
+            }
         } catch (e: Exception) {
             logger.warn(e) { "Failed to print step header via Mordant" }
         }
@@ -102,6 +118,9 @@ class MordantStepListener(
 
     override fun afterStep(stepExecution: StepExecution): ExitStatus? {
         try {
+            // Stop progress animation
+            progressService.stopBatchProgressLayout()
+
             val durationMs =
                 java.time.Duration
                     .between(stepExecution.startTime, stepExecution.endTime)
@@ -109,10 +128,10 @@ class MordantStepListener(
 
             progressService.printStepSummary(
                 stepName = stepExecution.stepName,
-                readCount = stepExecution.readCount.toLong(),
-                writeCount = stepExecution.writeCount.toLong(),
+                readCount = stepExecution.readCount,
+                writeCount = stepExecution.writeCount,
                 skipCount =
-                    stepExecution.readSkipCount.toLong() + stepExecution.processSkipCount.toLong() + stepExecution.writeSkipCount.toLong(),
+                    stepExecution.readSkipCount + stepExecution.processSkipCount + stepExecution.writeSkipCount,
                 status = stepExecution.status,
                 durationMs = durationMs,
             )
@@ -144,16 +163,35 @@ class MordantChunkListener(
     override fun afterChunk(context: ChunkContext) {
         try {
             val stepExecution = context.stepContext.stepExecution
+
+            // Only for downloadXml step
+            if (stepExecution.stepName != "downloadXml") return
+
             val expectedCount =
                 stepExecution.jobExecution.executionContext
                     .getLong("sparql.uriCount", -1L)
                     .takeIf { it > 0 } ?: return
 
-            // Print progress update after each chunk
-            progressService.printChunkProgress(
-                itemsRead = stepExecution.readCount.toLong(),
-                totalItems = expectedCount,
-            )
+            val startTimeMs =
+                stepExecution.startTime
+                    ?.atZone(java.time.ZoneId.systemDefault())
+                    ?.toInstant()
+                    ?.toEpochMilli() ?: System.currentTimeMillis()
+
+            val state =
+                BatchProgressState(
+                    stepName = stepExecution.stepName,
+                    itemsRead = stepExecution.readCount,
+                    itemsWritten = stepExecution.writeCount,
+                    itemsSkipped =
+                        stepExecution.readSkipCount +
+                            stepExecution.processSkipCount +
+                            stepExecution.writeSkipCount,
+                    totalItems = expectedCount,
+                    startTimeMs = startTimeMs,
+                )
+
+            progressService.updateBatchProgress(state)
         } catch (e: Exception) {
             logger.warn(e) { "Failed to update chunk progress via Mordant" }
         }

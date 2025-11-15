@@ -5,6 +5,11 @@
 - **Run all tests**: `./mvnw test`
 - **Run single test**: `./mvnw test -Dtest=ClassName` or `./mvnw test -Dtest=ClassName#methodName`
 - **Run application**: `./mvnw spring-boot:run`
+- **Run packaged JAR**: `java --enable-native-access=ALL-UNNAMED -jar target/formex-ingester-0.0.1-SNAPSHOT.jar`
+
+### JVM Configuration
+- Native access enabled for SQLite JDBC via `.mvn/jvm.config` and plugin configurations
+- Suppresses "restricted method" warnings from `sqlite-jdbc` native library loading
 
 ## Language & Framework
 - **Kotlin 2.2.21** with Java 21, Spring Boot 4.0.0-RC2, Spring Batch 6.0

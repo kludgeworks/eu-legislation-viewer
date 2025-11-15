@@ -1,9 +1,16 @@
 package eu.legislation.formex.ingester
 
-import com.github.ajalt.mordant.rendering.TextAlign
 import com.github.ajalt.mordant.rendering.TextColors
 import com.github.ajalt.mordant.terminal.Terminal
 import io.github.oshai.kotlinlogging.KotlinLogging
+import jakarta.annotation.PreDestroy
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import org.springframework.batch.core.BatchStatus
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
@@ -12,6 +19,76 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.ConcurrentHashMap
+
+/**
+ * Formats milliseconds into human-readable duration string (e.g., "1h 23m 45s", "5m 12s", "42s").
+ */
+private fun formatDuration(milliseconds: Long): String {
+    val seconds = milliseconds / 1000
+    val minutes = seconds / 60
+    val hours = minutes / 60
+
+    return when {
+        hours > 0 -> "%dh %dm %ds".format(hours, minutes % 60, seconds % 60)
+        minutes > 0 -> "%dm %ds".format(minutes, seconds % 60)
+        else -> "%ds".format(seconds)
+    }
+}
+
+/**
+ * Returns the appropriate color for a batch status.
+ */
+private fun getStatusColor(status: BatchStatus) =
+    when (status) {
+        BatchStatus.COMPLETED -> TextColors.green
+        BatchStatus.FAILED -> TextColors.red
+        else -> TextColors.yellow
+    }
+
+/**
+ * Represents the current state of batch processing for progress visualization.
+ *
+ * @param smoothedItemsPerSec Exponentially smoothed speed for stable ETA calculations
+ */
+data class BatchProgressState(
+    val stepName: String,
+    val itemsRead: Long,
+    val itemsWritten: Long,
+    val itemsSkipped: Long,
+    val totalItems: Long,
+    val startTimeMs: Long,
+    val smoothedItemsPerSec: Double = 0.0,
+) {
+    val percentage: Int
+        get() = if (totalItems > 0) (itemsRead * 100 / totalItems).toInt() else 0
+
+    val elapsedMs: Long
+        get() = System.currentTimeMillis() - startTimeMs
+
+    /**
+     * Instantaneous speed (items/second) based on total progress.
+     * Used for display but not for ETA calculation to avoid wild fluctuations.
+     */
+    val itemsPerSec: Double
+        get() = if (elapsedMs > 0) itemsRead.toDouble() / (elapsedMs / 1000.0) else 0.0
+
+    val estimatedRemainingMs: Long
+        get() {
+            if (smoothedItemsPerSec <= 0) return 0L
+            val remaining = totalItems - itemsRead
+            return (remaining / smoothedItemsPerSec * 1000).toLong()
+        }
+
+    /**
+     * Formats elapsed time as "44m 51s"
+     */
+    fun formatElapsed(): String = formatDuration(elapsedMs)
+
+    /**
+     * Formats remaining time as "~32m 15s"
+     */
+    fun formatRemaining(): String = "~" + formatDuration(estimatedRemainingMs)
+}
 
 /**
  * Service for rendering CLI progress using Mordant.
@@ -40,9 +117,49 @@ import java.util.concurrent.ConcurrentHashMap
 class MordantProgressService {
     private val terminal = Terminal()
     private val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.systemDefault())
+    private val logger = KotlinLogging.logger {}
 
     // Thread-safe state for current execution
     private val executionState = ConcurrentHashMap<String, Any>()
+
+    // Progress rendering support
+    private val progressScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+
+    @Volatile
+    private var currentProgressState: BatchProgressState? = null
+
+    @Volatile
+    private var isProgressActive: Boolean = false
+
+    @Volatile
+    private var progressRenderedOnce: Boolean = false
+
+    // EMA smoothing for speed calculations
+    // Alpha = 0.15 provides good balance between responsiveness and stability
+    private val speedSmoothingAlpha = 0.15
+
+    @Volatile
+    private var smoothedSpeed: Double = 0.0
+
+    @Volatile
+    private var lastUpdateTimeMs: Long = 0L
+
+    @Volatile
+    private var lastItemsRead: Long = 0L
+
+    // Check if terminal supports interactive features
+    private val supportsInteractiveUpdates: Boolean =
+        terminal.terminalInfo.interactive
+
+    // Number of lines used by the progress display (for clearing)
+    private val progressDisplayLines = 9
+
+    init {
+        logger.debug {
+            "Terminal capabilities: interactive=${terminal.terminalInfo.interactive}, " +
+                "ansiLevel=${terminal.terminalInfo.ansiLevel}"
+        }
+    }
 
     /**
      * Prints the application header banner.
@@ -162,13 +279,7 @@ class MordantProgressService {
         // Show cursor again after step completes
         terminal.cursor.show()
 
-        val statusColor =
-            when (status) {
-                BatchStatus.COMPLETED -> TextColors.green
-                BatchStatus.FAILED -> TextColors.red
-                else -> TextColors.yellow
-            }
-
+        val statusColor = getStatusColor(status)
         val statusStr = statusColor(status.toString())
         val durationStr = formatDuration(durationMs)
         val width = 70
@@ -195,13 +306,7 @@ class MordantProgressService {
         skipCount: Long,
         exitMessage: String? = null,
     ) {
-        val statusColor =
-            when (status) {
-                BatchStatus.COMPLETED -> TextColors.green
-                BatchStatus.FAILED -> TextColors.red
-                else -> TextColors.yellow
-            }
-
+        val statusColor = getStatusColor(status)
         val statusStr = statusColor(status.toString())
         val durationStr = formatDuration(durationMs)
         val width = 70
@@ -227,18 +332,213 @@ class MordantProgressService {
     }
 
     /**
-     * Formats milliseconds into human-readable duration string.
+     * Starts a rich progress display for batch processing.
+     * Falls back to simple progress if terminal doesn't support animations.
      */
-    private fun formatDuration(milliseconds: Long): String {
-        val seconds = milliseconds / 1000
-        val minutes = seconds / 60
-        val hours = minutes / 60
+    fun startBatchProgressLayout(
+        stepName: String,
+        totalItems: Long,
+        startTimeMs: Long,
+    ) {
+        try {
+            // Stop any existing progress
+            stopBatchProgressLayout()
 
-        return when {
-            hours > 0 -> "%dh %dm %ds".format(hours, minutes % 60, seconds % 60)
-            minutes > 0 -> "%dm %ds".format(minutes, seconds % 60)
-            else -> "%ds".format(seconds)
+            // Initialize state
+            currentProgressState =
+                BatchProgressState(
+                    stepName = stepName,
+                    itemsRead = 0L,
+                    itemsWritten = 0L,
+                    itemsSkipped = 0L,
+                    totalItems = totalItems,
+                    startTimeMs = startTimeMs,
+                )
+
+            // Check if we can use rich progress display
+            if (!supportsInteractiveUpdates) {
+                logger.debug { "Terminal doesn't support interactive updates, using fallback" }
+                return // Will use fallback in updateBatchProgress
+            }
+
+            // Mark progress as active
+            isProgressActive = true
+
+            // Start background coroutine to render progress display
+            progressScope.launch {
+                try {
+                    while (isActive && isProgressActive) {
+                        renderProgressDisplay()
+                        delay(100) // Update every 100ms
+                    }
+                } catch (e: Exception) {
+                    logger.warn(e) { "Progress rendering failed" }
+                }
+            }
+
+            logger.debug { "Started rich progress display for $stepName with $totalItems items" }
+        } catch (e: Exception) {
+            logger.warn(e) { "Failed to start progress display, falling back to simple progress" }
+            // Will use fallback in updateBatchProgress
         }
+    }
+
+    /**
+     * Renders the rich progress display in a vertical definition list format.
+     * Called periodically by the background coroutine.
+     */
+    private fun renderProgressDisplay() {
+        val state = currentProgressState ?: return
+
+        // Build the progress bar with gradient colors
+        val barWidth = 40
+        val filled =
+            if (state.totalItems > 0) {
+                (state.itemsRead * barWidth / state.totalItems).toInt()
+            } else {
+                0
+            }
+
+        // Use gradient progress bar for modern terminals, solid color for older ones
+        val progressBar =
+            if (terminal.terminalInfo.ansiLevel >= com.github.ajalt.mordant.rendering.AnsiLevel.TRUECOLOR) {
+                // Gradient from cyan to green for terminals with true color support
+                (0 until filled).joinToString("") { i ->
+                    val hue = 180 - (i * 60.0 / barWidth).toInt() // Cyan (180°) to Green (120°)
+                    TextColors.hsv(hue, 0.8, 1.0)("█")
+                } + TextColors.gray("░".repeat(barWidth - filled))
+            } else {
+                // Fallback: simple bright green for older terminals
+                TextColors.brightGreen("█".repeat(filled)) + TextColors.gray("░".repeat(barWidth - filled))
+            }
+
+        // Build the display content with tasteful color highlighting
+        val lines =
+            listOf(
+                "${TextColors.cyan("Step:")}        ${TextColors.white(state.stepName)}",
+                "${TextColors.cyan(
+                    "Progress:",
+                )}    ${TextColors.brightGreen(
+                    "[",
+                )}$progressBar${TextColors.brightGreen("]")} ${TextColors.brightWhite("${state.percentage}%")}",
+                "${TextColors.cyan("Items:")}       ${TextColors.white("${state.itemsRead}")}/${TextColors.gray("${state.totalItems}")}",
+                "${TextColors.cyan("Written:")}     ${TextColors.green("${state.itemsWritten}")}",
+                "${TextColors.cyan(
+                    "Skipped:",
+                )}     ${if (state.itemsSkipped > 0) {
+                    TextColors.yellow(
+                        "${state.itemsSkipped}",
+                    )
+                } else {
+                    TextColors.gray("${state.itemsSkipped}")
+                }}",
+                "${TextColors.cyan(
+                    "Speed:",
+                )}       ${TextColors.brightCyan("%.1f".format(state.smoothedItemsPerSec))} ${TextColors.gray("items/s")}",
+                "${TextColors.cyan("Elapsed:")}     ${TextColors.white(state.formatElapsed())}",
+                "${TextColors.cyan("Remaining:")}   ${TextColors.brightBlue(state.formatRemaining())}",
+                TextColors.green("●"),
+            )
+
+        // Clear previous display and render new one
+        synchronized(terminal) {
+            // Move cursor up to overwrite previous display (if this isn't the first render)
+            if (progressRenderedOnce) {
+                terminal.cursor.move {
+                    up(progressDisplayLines)
+                }
+            }
+
+            // Print all lines
+            lines.forEach { line ->
+                terminal.cursor.move {
+                    startOfLine()
+                    clearLineAfterCursor()
+                }
+                terminal.println(line)
+            }
+
+            // Mark that we've rendered at least once
+            progressRenderedOnce = true
+        }
+    }
+
+    /**
+     * Updates the progress state with current batch information.
+     * Calculates smoothed speed using Exponential Moving Average (EMA) for stable ETA.
+     * The background coroutine will pick up the new state and render it.
+     */
+    fun updateBatchProgress(state: BatchProgressState) {
+        try {
+            val currentTimeMs = System.currentTimeMillis()
+
+            // Calculate instantaneous speed for this update
+            val currentSpeed =
+                if (lastUpdateTimeMs in 1..<currentTimeMs) {
+                    val timeDeltaSeconds = (currentTimeMs - lastUpdateTimeMs) / 1000.0
+                    val itemsDelta = state.itemsRead - lastItemsRead
+                    if (timeDeltaSeconds > 0) itemsDelta / timeDeltaSeconds else 0.0
+                } else {
+                    // First update - use overall average as initial estimate
+                    state.itemsPerSec
+                }
+
+            // Apply Exponential Moving Average (EMA) smoothing
+            // Formula: smoothed = alpha × current + (1 - alpha) × previous
+            // Alpha = 0.15 balances responsiveness with stability
+            smoothedSpeed =
+                if (smoothedSpeed == 0.0) {
+                    // First update - use current speed as initial value
+                    currentSpeed
+                } else {
+                    speedSmoothingAlpha * currentSpeed + (1 - speedSmoothingAlpha) * smoothedSpeed
+                }
+
+            // Update state with smoothed speed
+            val smoothedState = state.copy(smoothedItemsPerSec = smoothedSpeed)
+            currentProgressState = smoothedState
+
+            // Track for next update
+            lastUpdateTimeMs = currentTimeMs
+            lastItemsRead = state.itemsRead
+
+            if (!isProgressActive) {
+                // Fallback: use existing simple progress bar
+                printChunkProgress(state.itemsRead, state.totalItems)
+            }
+            // Otherwise, the background coroutine will render the rich display
+        } catch (e: Exception) {
+            logger.warn(e) { "Failed to update progress" }
+        }
+    }
+
+    /**
+     * Stops the progress display and cleans up resources.
+     */
+    fun stopBatchProgressLayout() {
+        try {
+            isProgressActive = false
+            currentProgressState = null
+            progressRenderedOnce = false
+            smoothedSpeed = 0.0
+            lastUpdateTimeMs = 0L
+            lastItemsRead = 0L
+            // Small delay to allow last render to complete
+            Thread.sleep(150)
+        } catch (e: Exception) {
+            logger.warn(e) { "Failed to stop progress display cleanly" }
+        }
+    }
+
+    /**
+     * Cleanup method called when service is destroyed.
+     */
+    @PreDestroy
+    fun cleanup() {
+        stopBatchProgressLayout()
+        progressScope.cancel()
+        terminal.cursor.show() // Ensure cursor is visible on exit
+        logger.debug { "MordantProgressService cleanup complete" }
     }
 
     /**
