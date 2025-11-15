@@ -1,4 +1,4 @@
-package eu.legislation.formex.ingester.batch.job
+package eu.legislation.formex.ingester.batch
 
 import eu.legislation.formex.ingester.batch.listener.ErrorLoggingSkipListener
 import eu.legislation.formex.ingester.batch.listener.MordantChunkListener
@@ -7,15 +7,13 @@ import eu.legislation.formex.ingester.batch.listener.MordantStepListener
 import eu.legislation.formex.ingester.batch.processor.StreamingXmlDownloadProcessor
 import eu.legislation.formex.ingester.batch.processor.UriFilterProcessor
 import eu.legislation.formex.ingester.batch.processor.XmlPostProcessor
-import eu.legislation.formex.ingester.batch.reader.CachedSparqlUriReader
-import eu.legislation.formex.ingester.batch.reader.SparqlUriFetchTasklet
-import eu.legislation.formex.ingester.batch.writer.XmlDatabaseWriter
 import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
 import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.job.parameters.JobParametersBuilder
 import org.springframework.batch.core.job.parameters.JobParametersIncrementer
+import org.springframework.batch.core.listener.ExecutionContextPromotionListener
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
@@ -23,9 +21,11 @@ import org.springframework.batch.infrastructure.item.support.CompositeItemProces
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.task.AsyncTaskExecutor
+import org.springframework.http.client.JdkClientHttpRequestFactory
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 import org.springframework.transaction.PlatformTransactionManager
 import org.springframework.web.client.RestClient
+import java.time.Duration
 
 /**
  * Spring Batch job configuration for processing Formex XML documents.
@@ -121,9 +121,9 @@ class FormexXmlBatchJob {
      * This allows subsequent steps to access the cached data.
      */
     @Bean
-    fun executionContextPromotionListener(): org.springframework.batch.core.listener.ExecutionContextPromotionListener =
-        org.springframework.batch.core.listener.ExecutionContextPromotionListener().apply {
-            setKeys(arrayOf(SparqlUriFetchTasklet.SPARQL_DATA_KEY))
+    fun executionContextPromotionListener(): ExecutionContextPromotionListener =
+        ExecutionContextPromotionListener().apply {
+            setKeys(arrayOf(SparqlUriFetchTasklet.Companion.SPARQL_DATA_KEY))
         }
 
     /**
@@ -233,8 +233,8 @@ class FormexXmlBatchJob {
         RestClient
             .builder()
             .requestFactory(
-                org.springframework.http.client.JdkClientHttpRequestFactory().apply {
-                    setReadTimeout(java.time.Duration.ofMinutes(4))
+                JdkClientHttpRequestFactory().apply {
+                    setReadTimeout(Duration.ofMinutes(4))
                 },
             ).build()
 }

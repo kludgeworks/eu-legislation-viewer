@@ -1,8 +1,8 @@
 package eu.legislation.formex.ingester.batch.processor
 
 import com.github.f4b6a3.uuid.UuidCreator
-import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.config.StorageProperties
+import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.infrastructure.item.ItemProcessor

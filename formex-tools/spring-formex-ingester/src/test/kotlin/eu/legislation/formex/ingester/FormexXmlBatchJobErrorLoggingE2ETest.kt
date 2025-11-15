@@ -1,10 +1,10 @@
 package eu.legislation.formex.ingester
 
+import eu.legislation.formex.ingester.batch.XmlDatabaseWriter
 import eu.legislation.formex.ingester.batch.listener.ErrorLoggingSkipListener
 import eu.legislation.formex.ingester.batch.processor.StreamingXmlDownloadProcessor
 import eu.legislation.formex.ingester.batch.processor.UriFilterProcessor
 import eu.legislation.formex.ingester.batch.processor.XmlPostProcessor
-import eu.legislation.formex.ingester.batch.writer.XmlDatabaseWriter
 import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
 import eu.legislation.formex.ingester.domain.table.FormexDocuments
@@ -26,7 +26,6 @@ import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
 import org.springframework.batch.infrastructure.item.ItemProcessor
-import org.springframework.batch.infrastructure.item.ItemReader
 import org.springframework.batch.infrastructure.item.support.CompositeItemProcessor
 import org.springframework.batch.test.JobOperatorTestUtils
 import org.springframework.batch.test.context.SpringBatchTest

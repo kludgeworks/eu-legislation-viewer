@@ -1,4 +1,4 @@
-package eu.legislation.formex.ingester.batch.writer
+package eu.legislation.formex.ingester.batch
 
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
 import eu.legislation.formex.ingester.domain.table.FormexDocuments

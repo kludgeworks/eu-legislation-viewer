@@ -1,4 +1,4 @@
-package eu.legislation.formex.ingester.batch.reader
+package eu.legislation.formex.ingester.batch
 
 import com.univocity.parsers.csv.CsvParser
 import com.univocity.parsers.csv.CsvParserSettings
@@ -6,9 +6,11 @@ import eu.legislation.formex.ingester.config.SparqlProperties
 import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.progress.MordantProgressService
 import io.github.oshai.kotlinlogging.KotlinLogging
+import org.springframework.batch.core.annotation.BeforeStep
 import org.springframework.batch.core.configuration.annotation.StepScope
 import org.springframework.batch.core.scope.context.ChunkContext
 import org.springframework.batch.core.step.StepContribution
+import org.springframework.batch.core.step.StepExecution
 import org.springframework.batch.core.step.tasklet.Tasklet
 import org.springframework.batch.infrastructure.item.ExecutionContext
 import org.springframework.batch.infrastructure.item.ItemReader
@@ -181,8 +183,8 @@ class CachedSparqlUriReader :
     private lateinit var cachedData: List<CellarData>
     private var jobExecutionContext: ExecutionContext? = null
 
-    @org.springframework.batch.core.annotation.BeforeStep
-    fun beforeStep(stepExecution: org.springframework.batch.core.step.StepExecution) {
+    @BeforeStep
+    fun beforeStep(stepExecution: StepExecution) {
         // Get job execution context which contains the promoted SPARQL data
         jobExecutionContext = stepExecution.jobExecution.executionContext
     }

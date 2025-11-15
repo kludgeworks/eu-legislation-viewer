@@ -1,5 +1,6 @@
 package eu.legislation.formex.ingester.batch.reader
 
+import eu.legislation.formex.ingester.batch.SparqlUriFetchTasklet
 import eu.legislation.formex.ingester.config.SparqlProperties
 import eu.legislation.formex.ingester.domain.model.CellarData
 import mockwebserver3.MockResponse

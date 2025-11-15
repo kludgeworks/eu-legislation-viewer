@@ -1,5 +1,6 @@
 package eu.legislation.formex.ingester.batch.writer
 
+import eu.legislation.formex.ingester.batch.XmlDatabaseWriter
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
 import eu.legislation.formex.ingester.domain.table.FormexDocuments
 import org.jetbrains.exposed.sql.Database
