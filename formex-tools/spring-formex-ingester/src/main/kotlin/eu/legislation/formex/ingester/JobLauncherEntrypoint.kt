@@ -2,8 +2,11 @@ package eu.legislation.formex.ingester
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import jakarta.annotation.PostConstruct
-import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.SortOrder
+import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.sql.update
 import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.launch.JobOperator
 import org.springframework.context.annotation.DependsOn

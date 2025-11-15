@@ -1,5 +1,6 @@
 package eu.legislation.formex.ingester
 
+import java.io.Serializable
 import java.util.UUID
 
 /**
@@ -21,7 +22,7 @@ data class CellarData(
     val contentStreamId: String,
     val language: String,
     val mimeType: String,
-)
+) : Serializable
 
 /**
  * Data class representing XML metadata extracted from downloaded files
@@ -48,4 +49,4 @@ data class XmlMetadata(
     val filePath: String,
     val version: String? = null,
     val rootElement: String? = null,
-)
+) : Serializable

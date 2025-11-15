@@ -24,6 +24,8 @@ spring:
 formex:
   storage:
     directory: ./formex-xml-files
+  features:
+    cli-progress: true  # Enable Mordant CLI progress bars (disable for CI/non-interactive environments)
 
 sparql:
   endpoint: https://publications.europa.eu/webapi/rdf/sparql

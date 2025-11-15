@@ -80,7 +80,7 @@ class SparqlUriReaderIntegrationTest {
                     .ExecutionContext(),
             )
 
-        tasklet = SparqlUriFetchTasklet(sparqlProperties, restClient)
+        tasklet = SparqlUriFetchTasklet(sparqlProperties, restClient, null)
     }
 
     @AfterEach

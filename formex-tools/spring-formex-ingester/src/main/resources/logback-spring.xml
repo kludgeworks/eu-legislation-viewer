@@ -23,11 +23,21 @@
         </encoder>
     </appender>
 
-    <!-- Root logger - writes to both console and file -->
-    <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE"/>
-    </root>
+    <!-- Root logger configuration based on profile -->
+    <!-- Default: FILE ONLY (Mordant owns the console) -->
+    <springProfile name="!debug-console">
+        <root level="INFO">
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+    
+    <!-- debug-console profile: FILE + CONSOLE for debugging -->
+    <springProfile name="debug-console">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
 
     <!-- Application loggers -->
     <logger name="eu.legislation.formex.ingester" level="DEBUG"/>

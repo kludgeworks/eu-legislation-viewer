@@ -12,13 +12,6 @@ import org.jetbrains.exposed.sql.javatime.timestamp
  * Note: We only define the columns we need to query. Spring Batch manages
  * the full schema including indexes and constraints.
  */
-
-/**
- * Spring Batch job instance table.
- *
- * A job instance represents a logical run of a job (e.g., "daily import for 2024-01-15").
- * Multiple job executions can belong to the same instance (if job is restarted).
- */
 object BatchJobInstance : Table("BATCH_JOB_INSTANCE") {
     val jobInstanceId = long("JOB_INSTANCE_ID")
     val jobName = varchar("JOB_NAME", 100)

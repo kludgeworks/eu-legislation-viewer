@@ -41,22 +41,37 @@ private val logger = KotlinLogging.logger {}
  *
  * @param properties SPARQL endpoint configuration
  * @param restClient Spring RestClient for HTTP communication (with 4-minute timeout)
+ * @param progressService Optional Mordant progress service for CLI feedback (feature-flagged)
  */
 @Component
 class SparqlUriFetchTasklet(
     private val properties: SparqlProperties,
     private val restClient: RestClient,
+    private val progressService: MordantProgressService?,
 ) : Tasklet {
     override fun execute(
         contribution: StepContribution,
         chunkContext: ChunkContext,
     ): RepeatStatus {
         logger.info { "Fetching URIs from SPARQL endpoint: ${properties.endpoint}" }
+
+        // Show waiting message for long SPARQL fetch
+        progressService?.printTaskletWaiting("Fetching URIs from SPARQL endpoint (this may take 3-4 minutes)")
+
         val records = fetchAndParseFromSparql()
+
+        // Show completion message
+        progressService?.printTaskletComplete("Fetched ${records.size} URIs from SPARQL endpoint")
 
         // Store in step execution context for downstream reader
         chunkContext.stepContext.stepExecution.executionContext
             .put(SPARQL_DATA_KEY, records)
+
+        // Also store count in job execution context for progress tracking (if available)
+        chunkContext.stepContext.stepExecution.jobExecution
+            ?.executionContext
+            ?.putLong("sparql.uriCount", records.size.toLong())
+
         logger.info { "Stored ${records.size} URIs in ExecutionContext for downstream processing" }
 
         return RepeatStatus.FINISHED
@@ -142,9 +157,9 @@ class SparqlUriFetchTasklet(
 }
 
 /**
- * ItemReader that reads from SPARQL data stored in ExecutionContext with restart support.
+ * ItemReader that reads from SPARQL data stored in JobExecutionContext with restart support.
  *
- * Reads data from ExecutionContext (populated by SparqlUriFetchTasklet).
+ * Reads data from JobExecutionContext (populated by SparqlUriFetchTasklet and promoted by ExecutionContextPromotionListener).
  *
  * Implements ItemStream to track read position across job restarts:
  * - On restart, restores position from ExecutionContext
@@ -162,6 +177,13 @@ class CachedSparqlUriReader :
     private val logger = KotlinLogging.logger {}
     private val executionContextKey = "sparql.reader.index"
     private lateinit var cachedData: List<CellarData>
+    private var jobExecutionContext: ExecutionContext? = null
+
+    @org.springframework.batch.core.annotation.BeforeStep
+    fun beforeStep(stepExecution: org.springframework.batch.core.step.StepExecution) {
+        // Get job execution context which contains the promoted SPARQL data
+        jobExecutionContext = stepExecution.jobExecution.executionContext
+    }
 
     override fun read(): CellarData? =
         if (currentIndex < cachedData.size) {
@@ -175,12 +197,12 @@ class CachedSparqlUriReader :
         }
 
     override fun open(executionContext: ExecutionContext) {
-        // Get data from execution context
+        // Get data from job execution context (promoted from step 1)
         @Suppress("UNCHECKED_CAST")
-        cachedData = (executionContext.get(SparqlUriFetchTasklet.SPARQL_DATA_KEY) as? List<CellarData>) ?: emptyList()
+        cachedData = (jobExecutionContext?.get(SparqlUriFetchTasklet.SPARQL_DATA_KEY) as? List<CellarData>) ?: emptyList()
 
         if (cachedData.isEmpty()) {
-            logger.warn { "No SPARQL data found in ExecutionContext - step 1 may have failed" }
+            logger.warn { "No SPARQL data found in JobExecutionContext - step 1 may have failed" }
             return
         }
 

@@ -36,6 +36,7 @@ class FormexXmlBatchJob {
      * @param jobRepository Spring Batch job repository
      * @param fetchSparqlUrisStep Step 1 - fetches URIs from SPARQL endpoint (runs once)
      * @param downloadXmlStep Step 2 - downloads, parses, and inserts XML documents with metadata
+     * @param mordantJobListener Optional job listener for CLI progress (feature flag controlled)
      * @return The configured job
      */
     @Bean
@@ -43,12 +44,19 @@ class FormexXmlBatchJob {
         jobRepository: JobRepository,
         fetchSparqlUrisStep: Step,
         downloadXmlStep: Step,
-    ): Job =
-        JobBuilder("processFormexXml", jobRepository)
-            .incrementer(timestampIncrementer())
-            .start(fetchSparqlUrisStep)
-            .next(downloadXmlStep)
-            .build()
+        mordantJobListener: MordantJobListener?,
+    ): Job {
+        val jobBuilder =
+            JobBuilder("processFormexXml", jobRepository)
+                .incrementer(timestampIncrementer())
+                .start(fetchSparqlUrisStep)
+                .next(downloadXmlStep)
+
+        // Add Mordant listener if available (controlled by feature flag)
+        mordantJobListener?.let { jobBuilder.listener(it) }
+
+        return jobBuilder.build()
+    }
 
     /**
      * Job parameters incrementer that adds a timestamp to make each run unique.
@@ -77,6 +85,7 @@ class FormexXmlBatchJob {
      * @param jobRepository Spring Batch job repository
      * @param transactionManager Transaction manager for step
      * @param sparqlFetchTasklet Tasklet that performs SPARQL fetch
+     * @param mordantStepListener Optional step listener for CLI progress (feature flag controlled)
      * @return The configured fetch step
      */
     @Bean
@@ -84,10 +93,28 @@ class FormexXmlBatchJob {
         jobRepository: JobRepository,
         transactionManager: PlatformTransactionManager,
         sparqlFetchTasklet: SparqlUriFetchTasklet,
-    ): Step =
-        StepBuilder("fetchSparqlUris", jobRepository)
-            .tasklet(sparqlFetchTasklet, transactionManager)
-            .build()
+        mordantStepListener: MordantStepListener?,
+    ): Step {
+        val stepBuilder =
+            StepBuilder("fetchSparqlUris", jobRepository)
+                .tasklet(sparqlFetchTasklet, transactionManager)
+                .listener(executionContextPromotionListener())
+
+        // Add Mordant listener if available (controlled by feature flag)
+        mordantStepListener?.let { stepBuilder.listener(it) }
+
+        return stepBuilder.build()
+    }
+
+    /**
+     * Promotes SPARQL data from step execution context to job execution context.
+     * This allows subsequent steps to access the cached data.
+     */
+    @Bean
+    fun executionContextPromotionListener(): org.springframework.batch.core.listener.ExecutionContextPromotionListener =
+        org.springframework.batch.core.listener.ExecutionContextPromotionListener().apply {
+            setKeys(arrayOf(SparqlUriFetchTasklet.SPARQL_DATA_KEY))
+        }
 
     /**
      * Step 2: Download XML files, extract metadata, and insert into database.
@@ -117,6 +144,8 @@ class FormexXmlBatchJob {
      * @param postProcessor Extracts version and root_element from XML
      * @param writer Inserts records into database
      * @param errorLoggingSkipListener Logs skipped items to database
+     * @param mordantStepListener Optional step listener for CLI progress (feature flag controlled)
+     * @param mordantChunkListener Optional chunk listener for CLI progress (feature flag controlled)
      * @return The configured download step
      */
     @Suppress(
@@ -133,6 +162,8 @@ class FormexXmlBatchJob {
         postProcessor: XmlPostProcessor,
         writer: XmlDatabaseWriter,
         errorLoggingSkipListener: ErrorLoggingSkipListener,
+        mordantStepListener: MordantStepListener?,
+        mordantChunkListener: MordantChunkListener?,
     ): Step {
         // Chain filter, download, and post-processing processors
         val compositeProcessor =
@@ -140,16 +171,22 @@ class FormexXmlBatchJob {
                 setDelegates(listOf(filterProcessor, downloadProcessor, postProcessor))
             }
 
-        return StepBuilder("downloadXml", jobRepository)
-            .chunk<CellarData, XmlMetadata>(10, transactionManager)
-            .reader(reader)
-            .processor(compositeProcessor)
-            .writer(writer)
-            .faultTolerant()
-            .skip(Exception::class.java)
-            .skipLimit(1000)
-            .listener(errorLoggingSkipListener)
-            .build()
+        val stepBuilder =
+            StepBuilder("downloadXml", jobRepository)
+                .chunk<CellarData, XmlMetadata>(10, transactionManager)
+                .reader(reader)
+                .processor(compositeProcessor)
+                .writer(writer)
+                .faultTolerant()
+                .skip(Exception::class.java)
+                .skipLimit(1000)
+                .listener(errorLoggingSkipListener)
+
+        // Add Mordant listeners if available (controlled by feature flag)
+        mordantStepListener?.let { stepBuilder.listener(it) }
+        mordantChunkListener?.let { stepBuilder.listener(it) }
+
+        return stepBuilder.build()
     }
 
     /**
