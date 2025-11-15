@@ -159,6 +159,7 @@ class FormexXmlBatchJob {
      * @param postProcessor Extracts version and root_element from XML
      * @param writer Inserts records into database
      * @param errorLoggingSkipListener Logs skipped items to database
+     * @param taskExecutor Task executor for parallel chunk processing
      * @param mordantStepListener Optional step listener for CLI progress (feature flag controlled)
      * @param mordantChunkListener Optional chunk listener for CLI progress (feature flag controlled)
      * @return The configured download step
@@ -177,6 +178,7 @@ class FormexXmlBatchJob {
         postProcessor: XmlPostProcessor,
         writer: XmlDatabaseWriter,
         errorLoggingSkipListener: ErrorLoggingSkipListener,
+        taskExecutor: AsyncTaskExecutor,
         mordantStepListener: MordantStepListener?,
         mordantChunkListener: MordantChunkListener?,
     ): Step {
@@ -192,7 +194,7 @@ class FormexXmlBatchJob {
                 .reader(reader)
                 .processor(compositeProcessor)
                 .writer(writer)
-                .taskExecutor(taskExecutor())
+                .taskExecutor(taskExecutor)
                 .faultTolerant()
                 .skip(Exception::class.java)
                 .skipLimit(1000)
