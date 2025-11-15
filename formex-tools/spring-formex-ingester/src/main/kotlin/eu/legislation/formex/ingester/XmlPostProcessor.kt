@@ -3,7 +3,9 @@ package eu.legislation.formex.ingester
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.stereotype.Component
+import org.xml.sax.ErrorHandler
 import org.xml.sax.InputSource
+import org.xml.sax.SAXParseException
 import java.io.StringReader
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -31,6 +33,26 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
     private val versionPattern = Pattern.compile("([^/]+\\.xd)$")
     private val logger = KotlinLogging.logger {}
 
+    /**
+     * Custom error handler that suppresses XML parsing errors from System.err
+     * to prevent console pollution during CLI progress bar display.
+     * Errors are handled by the outer runCatching block and logged appropriately.
+     */
+    private val silentErrorHandler =
+        object : ErrorHandler {
+            override fun warning(exception: SAXParseException) {
+                // Suppress warnings - handled by outer exception handling
+            }
+
+            override fun error(exception: SAXParseException) {
+                throw exception // Rethrow to be caught by runCatching
+            }
+
+            override fun fatalError(exception: SAXParseException) {
+                throw exception // Rethrow to be caught by runCatching
+            }
+        }
+
     override fun process(item: XmlMetadata): XmlMetadata =
         runCatching {
             val xmlContent = Files.readString(Paths.get(item.filePath))
@@ -53,6 +75,7 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
     private fun parseXmlDocument(xmlContent: String) =
         documentBuilderFactory
             .newDocumentBuilder()
+            .apply { setErrorHandler(silentErrorHandler) }
             .parse(InputSource(StringReader(xmlContent)))
             .documentElement
 
