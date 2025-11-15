@@ -217,9 +217,15 @@ class MordantProgressService {
         terminal.println()
         val stepHeader = "▸ Step: $stepName - $status"
         terminal.println(TextColors.yellow(stepHeader.padStart((width + stepHeader.length) / 2)))
-        terminal.println("${TextColors.cyan("Read:")} $readCount".padStart((width + 7 + readCount.toString().length) / 2))
-        terminal.println("${TextColors.cyan("Write:")} $writeCount".padStart((width + 8 + writeCount.toString().length) / 2))
-        terminal.println("${TextColors.yellow("Skip:")} $skipCount".padStart((width + 7 + skipCount.toString().length) / 2))
+
+        // Only show read/write/skip counts if at least one is non-zero (chunk-oriented step)
+        val hasMetrics = readCount > 0 || writeCount > 0 || skipCount > 0
+        if (hasMetrics) {
+            terminal.println("${TextColors.cyan("Read:")} $readCount".padStart((width + 7 + readCount.toString().length) / 2))
+            terminal.println("${TextColors.cyan("Write:")} $writeCount".padStart((width + 8 + writeCount.toString().length) / 2))
+            terminal.println("${TextColors.yellow("Skip:")} $skipCount".padStart((width + 7 + skipCount.toString().length) / 2))
+        }
+
         terminal.println("${TextColors.cyan("Duration:")} $durationStr".padStart((width + 11 + durationStr.length) / 2))
         terminal.println()
     }
