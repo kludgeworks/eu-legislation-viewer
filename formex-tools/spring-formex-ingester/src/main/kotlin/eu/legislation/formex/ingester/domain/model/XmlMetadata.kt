@@ -28,4 +28,8 @@ data class XmlMetadata(
     val filePath: String,
     val version: String? = null,
     val rootElement: String? = null,
-) : Serializable
+) : Serializable {
+    companion object {
+        private const val serialVersionUID = 1L
+    }
+}

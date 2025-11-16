@@ -21,4 +21,8 @@ data class CellarData(
     val contentStreamId: String,
     val language: String,
     val mimeType: String,
-) : Serializable
+) : Serializable {
+    companion object {
+        private const val serialVersionUID = 1L
+    }
+}

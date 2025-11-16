@@ -1,3 +1,5 @@
+@file:Suppress("LongMethod") // E2E tests are inherently lengthy with setup and assertions
+
 package eu.legislation.formex.ingester
 
 import eu.legislation.formex.ingester.domain.table.FormexDocuments

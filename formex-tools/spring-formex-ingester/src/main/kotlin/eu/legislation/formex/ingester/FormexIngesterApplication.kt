@@ -16,6 +16,7 @@ import org.springframework.boot.runApplication
 @EnableConfigurationProperties(SparqlProperties::class, StorageProperties::class)
 class FormexIngesterApplication
 
+@Suppress("SpreadOperator") // Required by Spring Boot runApplication API
 fun main(args: Array<String>) {
     runApplication<FormexIngesterApplication>(*args)
 }

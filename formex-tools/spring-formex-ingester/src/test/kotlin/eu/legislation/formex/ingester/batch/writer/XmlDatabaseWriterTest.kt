@@ -182,18 +182,9 @@ class XmlDatabaseWriterTest {
     }
 
     /**
-     * Helper method to create test XmlMetadata with an XML file.
-     * Uses JUnit's @TempDir for automatic cleanup.
-     *
-     * @param xmlContent The XML content to write to the file
-     * @param uri The URI for the metadata
-     * @param fileSize The file size
-     * @param workId Work UUID (required)
-     * @param exprId Expression ID (required)
-     * @param manId Manifestation ID (required)
-     * @param csId Content Stream ID (required)
-     * @return XmlMetadata with filePath pointing to created file
+     * Helper method to create test XmlMetadata with actual file.
      */
+    @Suppress("LongParameterList") // Test helper function with all required metadata fields
     private fun createTestXmlMetadata(
         xmlContent: String,
         uri: String,

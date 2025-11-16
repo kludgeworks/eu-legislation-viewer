@@ -94,9 +94,8 @@ class ErrorLoggingSkipListener(
                         it[stackTrace] = throwable.stackTraceToString()
                     }
                 }
-            } catch (e: Exception) {
-                // If error logging fails, log to console but don't fail the job
-                logger.error(e) { "Failed to persist error record for URI $uri" }
+            } catch (e: java.sql.SQLException) {
+                logger.error(e) { "Failed to persist error record for URI $uri due to SQL error" }
             }
         }
     }

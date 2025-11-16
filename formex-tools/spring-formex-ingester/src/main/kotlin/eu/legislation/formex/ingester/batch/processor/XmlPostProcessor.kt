@@ -66,7 +66,10 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
                     version = version,
                     rootElement = rootElementName,
                 )
-            logger.debug { "PostProcess: Enriched ID=${enriched.id} URI=${enriched.uri} version=$version rootElement=$rootElementName" }
+            logger.debug {
+                "PostProcess: Enriched ID=${enriched.id} URI=${enriched.uri} " +
+                    "version=$version rootElement=$rootElementName"
+            }
             enriched
         }.getOrElse { e ->
             logger.warn(e) { "PostProcess: Failed to parse XML for ID=${item.id} URI=${item.uri}: ${e.message}" }

@@ -1,3 +1,5 @@
+@file:Suppress("LongMethod") // E2E tests are inherently lengthy with setup and assertions
+
 package eu.legislation.formex.ingester
 
 import eu.legislation.formex.ingester.batch.XmlDatabaseWriter
@@ -234,7 +236,10 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
      * This configuration replaces the normal downloadXmlStep with one that uses
      * a poisoned processor that fails every 3rd item.
      */
-    @Suppress("DEPRECATION") // See: https://github.com/spring-projects/spring-batch/issues/5084
+    @Suppress(
+        "LongParameterList", // Spring Batch DI requires many parameters
+        "DEPRECATION", // See: https://github.com/spring-projects/spring-batch/issues/5084
+    )
     @TestConfiguration
     class PoisonedProcessorConfig {
         @Bean
@@ -291,7 +296,7 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
             val count = counter.incrementAndGet()
             // Fail every 3rd item
             if (count % 3 == 0) {
-                throw IllegalStateException("Intentionally poisoned item #$count: ${item.item}")
+                error("Intentionally poisoned item #$count: ${item.item}")
             }
             // Process normally for other items
             return realProcessor.process(item)

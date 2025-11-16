@@ -37,7 +37,12 @@ class MordantJobListener(
                 executionId = jobExecution.id,
                 startTime = startTime,
             )
-        } catch (e: Exception) {
+        } catch (
+            @Suppress("TooGenericExceptionCaught") // Defensive: UI display must not block batch execution
+            e: RuntimeException,
+        ) {
+            // Catch all runtime exceptions from terminal I/O, time calculations, or state access
+            // Progress display must not block batch job execution
             logger.warn(e) { "Failed to print job header via Mordant" }
         }
     }
@@ -68,7 +73,12 @@ class MordantJobListener(
             )
 
             progressService.clearState()
-        } catch (e: Exception) {
+        } catch (
+            @Suppress("TooGenericExceptionCaught") // Defensive: UI display must not block batch execution
+            e: RuntimeException,
+        ) {
+            // Catch all runtime exceptions from terminal I/O, time calculations, or state access
+            // Progress display must not block batch job execution
             logger.warn(e) { "Failed to print job summary via Mordant" }
         }
     }
@@ -112,7 +122,12 @@ class MordantStepListener(
                     startTimeMs = startTimeMs,
                 )
             }
-        } catch (e: Exception) {
+        } catch (
+            @Suppress("TooGenericExceptionCaught") // Defensive: UI display must not block batch execution
+            e: RuntimeException,
+        ) {
+            // Catch all runtime exceptions from terminal I/O, time calculations, or state access
+            // Progress display must not block batch job execution
             logger.warn(e) { "Failed to print step header via Mordant" }
         }
     }
@@ -136,7 +151,12 @@ class MordantStepListener(
                 status = stepExecution.status,
                 durationMs = durationMs,
             )
-        } catch (e: Exception) {
+        } catch (
+            @Suppress("TooGenericExceptionCaught") // Defensive: UI display must not block batch execution
+            e: RuntimeException,
+        ) {
+            // Catch all runtime exceptions from terminal I/O, time calculations, or state access
+            // Progress display must not block batch job execution
             logger.warn(e) { "Failed to print step summary via Mordant" }
         }
 
@@ -193,7 +213,12 @@ class MordantChunkListener(
                 )
 
             progressService.updateBatchProgress(state)
-        } catch (e: Exception) {
+        } catch (
+            @Suppress("TooGenericExceptionCaught") // Defensive: UI display must not block batch execution
+            e: RuntimeException,
+        ) {
+            // Catch all runtime exceptions from terminal I/O, time calculations, or state access
+            // Progress display must not block batch job execution
             logger.warn(e) { "Failed to update chunk progress via Mordant" }
         }
     }

@@ -85,6 +85,7 @@ class SparqlUriFetchTasklet(
         const val SPARQL_DATA_KEY = "sparql.data"
     }
 
+    @Suppress("LongMethod") // SPARQL query and CSV parsing logic are inherently lengthy
     private fun fetchAndParseFromSparql(): List<CellarData> {
         val query =
             """
@@ -202,8 +203,21 @@ class CachedSparqlUriReader :
 
     override fun open(executionContext: ExecutionContext) {
         // Get data from job execution context (promoted from step 1)
-        @Suppress("UNCHECKED_CAST")
-        cachedData = (jobExecutionContext?.get(SparqlUriFetchTasklet.SPARQL_DATA_KEY) as? List<CellarData>) ?: emptyList()
+        // Using Spring Batch 5.1+ type-safe API with defensive null/type checking
+        cachedData =
+            try {
+                // Suppression justified: Java type erasure prevents List<CellarData>::class from existing.
+                // ExecutionContext.get() returns List (raw type), requiring unchecked cast to List<CellarData>.
+                // Runtime safety ensured via ClassCastException handling and safe cast operator.
+                @Suppress("UNCHECKED_CAST")
+                jobExecutionContext
+                    ?.get(SparqlUriFetchTasklet.SPARQL_DATA_KEY, List::class.java)
+                    ?.let { it as? List<CellarData> }
+                    ?: emptyList()
+            } catch (e: ClassCastException) {
+                logger.warn { "Unexpected type in ExecutionContext for key ${SparqlUriFetchTasklet.SPARQL_DATA_KEY}" }
+                emptyList()
+            }
 
         if (cachedData.isEmpty()) {
             logger.warn { "No SPARQL data found in JobExecutionContext - step 1 may have failed" }

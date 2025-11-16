@@ -25,7 +25,10 @@ class CellarUriParserTest {
         assertEquals("publications.europa.eu", parsed.host)
         assertEquals("16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02", parsed.manifestationId)
         assertEquals("DOC_1", parsed.docId)
-        assertEquals(listOf("resource", "cellar", "16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02"), parsed.pathComponents)
+        assertEquals(
+            listOf("resource", "cellar", "16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02"),
+            parsed.pathComponents,
+        )
     }
 
     @Test

@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber") // Column lengths match Spring Batch's official schema definition
+
 package eu.legislation.formex.ingester.domain.table
 
 import org.jetbrains.exposed.sql.Table

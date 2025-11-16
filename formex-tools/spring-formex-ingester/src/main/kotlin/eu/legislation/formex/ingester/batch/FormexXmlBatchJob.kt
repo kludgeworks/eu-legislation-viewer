@@ -40,6 +40,20 @@ import java.time.Duration
  */
 @Configuration
 class FormexXmlBatchJob {
+    companion object {
+        // Chunk processing configuration
+        private const val CHUNK_SIZE = 10
+        private const val MAX_SKIP_LIMIT = 1000
+
+        // Thread pool configuration for parallel downloads
+        private const val CORE_POOL_SIZE = 10
+        private const val MAX_POOL_SIZE = 20
+        private const val QUEUE_CAPACITY = 100
+
+        // HTTP timeout configuration (SPARQL queries can take 3-4 minutes)
+        private const val READ_TIMEOUT_MINUTES = 4L
+    }
+
     /**
      * Main job bean that orchestrates the entire process.
      *
@@ -166,6 +180,7 @@ class FormexXmlBatchJob {
      */
     @Suppress(
         "kotlin:S107", // Spring Batch step definitions require many parameters
+        "LongParameterList", // Spring Batch DI requires many parameters
         "DEPRECATION", // See: https://github.com/spring-projects/spring-batch/issues/5084
     )
     @Bean
@@ -190,14 +205,14 @@ class FormexXmlBatchJob {
 
         val stepBuilder =
             StepBuilder("downloadXml", jobRepository)
-                .chunk<CellarData, XmlMetadata>(10, transactionManager)
+                .chunk<CellarData, XmlMetadata>(CHUNK_SIZE, transactionManager)
                 .reader(reader)
                 .processor(compositeProcessor)
                 .writer(writer)
                 .taskExecutor(taskExecutor)
                 .faultTolerant()
                 .skip(Exception::class.java)
-                .skipLimit(1000)
+                .skipLimit(MAX_SKIP_LIMIT)
                 .listener(errorLoggingSkipListener)
 
         // Add Mordant listeners if available (controlled by feature flag)
@@ -221,9 +236,9 @@ class FormexXmlBatchJob {
     @Bean
     fun taskExecutor(): AsyncTaskExecutor =
         ThreadPoolTaskExecutor().apply {
-            corePoolSize = 10
-            maxPoolSize = 20
-            queueCapacity = 100
+            corePoolSize = CORE_POOL_SIZE
+            maxPoolSize = MAX_POOL_SIZE
+            queueCapacity = QUEUE_CAPACITY
             setThreadNamePrefix("xml-download-")
             initialize()
         }
@@ -242,7 +257,7 @@ class FormexXmlBatchJob {
             .builder()
             .requestFactory(
                 JdkClientHttpRequestFactory().apply {
-                    setReadTimeout(Duration.ofMinutes(4))
+                    setReadTimeout(Duration.ofMinutes(READ_TIMEOUT_MINUTES))
                 },
             ).build()
 }

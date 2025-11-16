@@ -34,3 +34,5 @@ build/
 
 formex-xml-files/
 logs
+*.db*
+bin/

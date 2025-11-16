@@ -58,8 +58,16 @@ class XmlDatabaseWriter(
                 }
             }
             logger.info { "Writer: Successfully inserted ${chunk.items.size} items" }
-        } catch (e: Exception) {
-            logger.error(e) { "Writer: Failed to insert chunk of ${chunk.items.size} items" }
+        } catch (e: org.jetbrains.exposed.exceptions.ExposedSQLException) {
+            // Database errors during write - log diagnostics before rethrowing to trigger Spring Batch retry/skip
+            logger.error(e) { "Writer: Failed to insert chunk of ${chunk.items.size} items due to database error" }
+            chunk.items.forEachIndexed { index, metadata ->
+                logger.error { "Writer: Failed chunk[$index] ID=${metadata.id} URI=${metadata.uri}" }
+            }
+            throw e
+        } catch (e: java.sql.SQLException) {
+            // SQL errors during write - log diagnostics before rethrowing to trigger Spring Batch retry/skip
+            logger.error(e) { "Writer: Failed to insert chunk of ${chunk.items.size} items due to SQL error" }
             chunk.items.forEachIndexed { index, metadata ->
                 logger.error { "Writer: Failed chunk[$index] ID=${metadata.id} URI=${metadata.uri}" }
             }

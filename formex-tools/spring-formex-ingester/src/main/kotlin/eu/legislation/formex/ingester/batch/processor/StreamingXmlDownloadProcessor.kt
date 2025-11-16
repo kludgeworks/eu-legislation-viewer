@@ -50,6 +50,9 @@ class StreamingXmlDownloadProcessor(
                 UuidCreator.NAMESPACE_URL,
                 "http://publications.europa.eu/resource/cellar",
             )
+
+        // Standard buffer size for I/O operations (8KB)
+        private const val BUFFER_SIZE = 8192
     }
 
     override fun process(item: CellarData): XmlMetadata {
@@ -99,7 +102,7 @@ class StreamingXmlDownloadProcessor(
                 response.body.use { input: InputStream ->
                     DigestInputStream(input, digest).use { digestInput ->
                         Files.newOutputStream(destination).use { output ->
-                            val buffer = ByteArray(8192)
+                            val buffer = ByteArray(BUFFER_SIZE)
                             var bytesRead: Int
                             while (digestInput.read(buffer).also { bytesRead = it } != -1) {
                                 output.write(buffer, 0, bytesRead)

@@ -70,7 +70,8 @@ class DatabaseConfig {
      */
     @Bean
     @Primary
-    fun batchTransactionManager(dataSource: DataSource): PlatformTransactionManager = DataSourceTransactionManager(dataSource)
+    fun batchTransactionManager(dataSource: DataSource): PlatformTransactionManager =
+        DataSourceTransactionManager(dataSource)
 
     /**
      * Creates the Spring-compatible transaction manager for Exposed.

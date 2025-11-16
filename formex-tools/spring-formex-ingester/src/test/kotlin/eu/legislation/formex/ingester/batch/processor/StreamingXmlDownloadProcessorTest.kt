@@ -1,6 +1,5 @@
 package eu.legislation.formex.ingester.batch.processor
 
-import com.github.f4b6a3.uuid.UuidCreator
 import eu.legislation.formex.ingester.config.StorageProperties
 import eu.legislation.formex.ingester.domain.model.CellarData
 import mockwebserver3.MockResponse
@@ -27,6 +26,15 @@ class StreamingXmlDownloadProcessorTest {
 
     @TempDir
     lateinit var tempDir: Path
+
+    companion object {
+        private const val CELLAR_PATH_1 =
+            "/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02"
+        private const val CELLAR_PATH_2 =
+            "/resource/cellar/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee.0001.01"
+        private const val CELLAR_PATH_3 =
+            "/resource/cellar/99999999-9999-9999-9999-999999999999.0099.99"
+    }
 
     @BeforeEach
     fun setup() {
@@ -68,7 +76,7 @@ class StreamingXmlDownloadProcessorTest {
 
         val cellarData =
             CellarData(
-                item = "http://localhost:${mockServer.port}/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_1",
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1",
                 workId = "550e8400-e29b-41d4-a716-446655440000",
                 expressionId = "expr-001",
                 manifestationId = "man-001",
@@ -82,9 +90,7 @@ class StreamingXmlDownloadProcessorTest {
 
         // Then - verify file structure
         val expectedPath =
-            tempDir.resolve(
-                "localhost:${mockServer.port}/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_1.xml",
-            )
+            tempDir.resolve("localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1.xml")
         assertTrue(Files.exists(expectedPath), "File should exist at URI-based path: $expectedPath")
         assertEquals(expectedPath.toString(), result.filePath)
 
@@ -116,7 +122,7 @@ class StreamingXmlDownloadProcessorTest {
 
         val cellarData1 =
             CellarData(
-                item = "http://localhost:${mockServer.port}/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_1",
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1",
                 workId = "550e8400-e29b-41d4-a716-446655440000",
                 expressionId = "expr-001",
                 manifestationId = "man-001",
@@ -127,7 +133,7 @@ class StreamingXmlDownloadProcessorTest {
 
         val cellarData2 =
             CellarData(
-                item = "http://localhost:${mockServer.port}/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_2",
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_1/DOC_2",
                 workId = "550e8400-e29b-41d4-a716-446655440000",
                 expressionId = "expr-001",
                 manifestationId = "man-001",
@@ -141,14 +147,8 @@ class StreamingXmlDownloadProcessorTest {
         val result2 = processor.process(cellarData2)
 
         // Then - both files should exist in same manifestation directory
-        val file1 =
-            tempDir.resolve(
-                "localhost:${mockServer.port}/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_1.xml",
-            )
-        val file2 =
-            tempDir.resolve(
-                "localhost:${mockServer.port}/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_2.xml",
-            )
+        val file1 = tempDir.resolve("localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1.xml")
+        val file2 = tempDir.resolve("localhost:${mockServer.port}$CELLAR_PATH_1/DOC_2.xml")
 
         assertTrue(Files.exists(file1))
         assertTrue(Files.exists(file2))
@@ -171,7 +171,7 @@ class StreamingXmlDownloadProcessorTest {
 
         val cellarData =
             CellarData(
-                item = "http://localhost:${mockServer.port}/resource/cellar/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee.0001.01/DOC_1",
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_2/DOC_1",
                 workId = "550e8400-e29b-41d4-a716-446655440000",
                 expressionId = "expr-002",
                 manifestationId = "man-002",
@@ -205,7 +205,7 @@ class StreamingXmlDownloadProcessorTest {
 
         val cellarData =
             CellarData(
-                item = "http://localhost:${mockServer.port}/resource/cellar/99999999-9999-9999-9999-999999999999.0099.99/DOC_99",
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_3/DOC_99",
                 workId = "550e8400-e29b-41d4-a716-446655440000",
                 expressionId = "expr-099",
                 manifestationId = "man-099",
@@ -219,9 +219,7 @@ class StreamingXmlDownloadProcessorTest {
 
         // Then - verify all parent directories were created
         val expectedPath =
-            tempDir.resolve(
-                "localhost:${mockServer.port}/resource/cellar/99999999-9999-9999-9999-999999999999.0099.99/DOC_99.xml",
-            )
+            tempDir.resolve("localhost:${mockServer.port}$CELLAR_PATH_3/DOC_99.xml")
         assertTrue(Files.exists(expectedPath))
         assertTrue(Files.exists(expectedPath.parent))
         assertTrue(Files.exists(expectedPath.parent.parent))
@@ -248,7 +246,7 @@ class StreamingXmlDownloadProcessorTest {
 
         val cellarData1 =
             CellarData(
-                item = "http://localhost:${mockServer.port}/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_A",
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_1/DOC_A",
                 workId = "550e8400-e29b-41d4-a716-446655440000",
                 expressionId = "expr-001",
                 manifestationId = "man-001",
@@ -259,7 +257,7 @@ class StreamingXmlDownloadProcessorTest {
 
         val cellarData2 =
             CellarData(
-                item = "http://localhost:${mockServer.port}/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_B",
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_1/DOC_B",
                 workId = "550e8400-e29b-41d4-a716-446655440000",
                 expressionId = "expr-001",
                 manifestationId = "man-001",
@@ -299,7 +297,7 @@ class StreamingXmlDownloadProcessorTest {
 
         val cellarData1 =
             CellarData(
-                item = "http://localhost:${mockServer.port}/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_1",
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1",
                 workId = "550e8400-e29b-41d4-a716-446655440000",
                 expressionId = "expr-001",
                 manifestationId = "man-001",
@@ -310,7 +308,7 @@ class StreamingXmlDownloadProcessorTest {
 
         val cellarData2 =
             CellarData(
-                item = "http://localhost:${mockServer.port}/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_2",
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_1/DOC_2",
                 workId = "550e8400-e29b-41d4-a716-446655440000",
                 expressionId = "expr-001",
                 manifestationId = "man-001",

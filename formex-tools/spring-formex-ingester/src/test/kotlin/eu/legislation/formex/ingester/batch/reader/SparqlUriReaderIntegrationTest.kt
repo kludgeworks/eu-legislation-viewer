@@ -95,11 +95,10 @@ class SparqlUriReaderIntegrationTest {
     fun `tasklet should parse CSV response and cache data in JobExecutionContext`() {
         // Given - mock CSV response with two rows
         val csvContent =
-            """
-            "item","workId","expressionId","manifestationId","contentStreamId","language","mimeType"
-            "http://example.org/doc1.xml","550e8400-e29b-41d4-a716-446655440000","expr-001","man-001","cs-001","eng","application/xml"
-            "http://example.org/doc2.xml","550e8400-e29b-41d4-a716-446655440001","expr-002","man-002","cs-002","eng","application/xml"
-            """.trimIndent()
+            javaClass
+                .getResourceAsStream("/csv/two-rows.csv")!!
+                .bufferedReader()
+                .use { it.readText() }
 
         mockServer.enqueue(
             MockResponse
@@ -128,8 +127,14 @@ class SparqlUriReaderIntegrationTest {
         // Verify data was stored in ExecutionContext
         assertTrue(stepExecution.executionContext.containsKey(SparqlUriFetchTasklet.SPARQL_DATA_KEY))
 
+        // Suppression justified: Java type erasure prevents List<CellarData>::class from existing.
+        // ExecutionContext.get() returns List (raw type), requiring unchecked cast to List<CellarData>.
         @Suppress("UNCHECKED_CAST")
-        val cachedData = stepExecution.executionContext.get(SparqlUriFetchTasklet.SPARQL_DATA_KEY) as List<CellarData>
+        val cachedData =
+            stepExecution.executionContext.get(
+                SparqlUriFetchTasklet.SPARQL_DATA_KEY,
+                List::class.java,
+            ) as List<CellarData>
         assertEquals(2, cachedData.size)
 
         // Verify first item
@@ -152,9 +157,10 @@ class SparqlUriReaderIntegrationTest {
     fun `tasklet should handle empty CSV results`() {
         // Given - CSV with only header
         val csvContent =
-            """
-            "item","workId","expressionId","manifestationId","contentStreamId","language","mimeType"
-            """.trimIndent()
+            javaClass
+                .getResourceAsStream("/csv/empty.csv")!!
+                .bufferedReader()
+                .use { it.readText() }
 
         mockServer.enqueue(
             MockResponse
@@ -172,8 +178,13 @@ class SparqlUriReaderIntegrationTest {
         assertEquals(RepeatStatus.FINISHED, result)
 
         // Verify empty list was stored in ExecutionContext
+        // Suppression justified: Java type erasure prevents List<CellarData>::class from existing.
         @Suppress("UNCHECKED_CAST")
-        val cachedData = stepExecution.executionContext.get(SparqlUriFetchTasklet.SPARQL_DATA_KEY) as List<CellarData>
+        val cachedData =
+            stepExecution.executionContext.get(
+                SparqlUriFetchTasklet.SPARQL_DATA_KEY,
+                List::class.java,
+            ) as List<CellarData>
         assertEquals(0, cachedData.size)
     }
 
@@ -181,9 +192,10 @@ class SparqlUriReaderIntegrationTest {
     fun `tasklet should send correct SPARQL query structure`() {
         // Given
         val csvContent =
-            """
-            "item","workId","expressionId","manifestationId","contentStreamId","language","mimeType"
-            """.trimIndent()
+            javaClass
+                .getResourceAsStream("/csv/empty.csv")!!
+                .bufferedReader()
+                .use { it.readText() }
 
         mockServer.enqueue(
             MockResponse
@@ -223,8 +235,10 @@ class SparqlUriReaderIntegrationTest {
     fun `tasklet should handle special characters in CSV`() {
         // Given - CSV with commas in values (inside quotes)
         val csvContent =
-            "\"item\",\"workId\",\"expressionId\",\"manifestationId\",\"contentStreamId\",\"language\",\"mimeType\"\n" +
-                "\"http://example.org/doc,special.xml\",\"550e8400-e29b-41d4-a716-446655440000\",\"expr-001\",\"man-001\",\"cs-001\",\"eng\",\"application/xml\""
+            javaClass
+                .getResourceAsStream("/csv/special-chars.csv")!!
+                .bufferedReader()
+                .use { it.readText() }
 
         mockServer.enqueue(
             MockResponse
@@ -239,8 +253,13 @@ class SparqlUriReaderIntegrationTest {
         tasklet.execute(stepContribution, chunkContext)
 
         // Then - verify data with special characters was parsed
+        // Suppression justified: Java type erasure prevents List<CellarData>::class from existing.
         @Suppress("UNCHECKED_CAST")
-        val cachedData = stepExecution.executionContext.get(SparqlUriFetchTasklet.SPARQL_DATA_KEY) as List<CellarData>
+        val cachedData =
+            stepExecution.executionContext.get(
+                SparqlUriFetchTasklet.SPARQL_DATA_KEY,
+                List::class.java,
+            ) as List<CellarData>
 
         assertEquals(1, cachedData.size)
         assertEquals("http://example.org/doc,special.xml", cachedData[0].item)
@@ -249,10 +268,13 @@ class SparqlUriReaderIntegrationTest {
     @Test
     fun `tasklet should handle large dataset`() {
         // Given - CSV with 100 rows
-        val header = "\"item\",\"workId\",\"expressionId\",\"manifestationId\",\"contentStreamId\",\"language\",\"mimeType\"\n"
+        val header =
+            "\"item\",\"workId\",\"expressionId\",\"manifestationId\"," +
+                "\"contentStreamId\",\"language\",\"mimeType\"\n"
         val rows =
             (1..100).joinToString("\n") { index ->
-                "\"http://example.org/doc$index.xml\",\"work-$index\",\"expr-$index\",\"man-$index\",\"cs-$index\",\"eng\",\"application/xml\""
+                "\"http://example.org/doc$index.xml\",\"work-$index\"," +
+                    "\"expr-$index\",\"man-$index\",\"cs-$index\",\"eng\",\"application/xml\""
             }
         val csvContent = header + rows
 
@@ -269,8 +291,13 @@ class SparqlUriReaderIntegrationTest {
         tasklet.execute(stepContribution, chunkContext)
 
         // Then - verify all 100 items were stored in ExecutionContext
+        // Suppression justified: Java type erasure prevents List<CellarData>::class from existing.
         @Suppress("UNCHECKED_CAST")
-        val cachedData = stepExecution.executionContext.get(SparqlUriFetchTasklet.SPARQL_DATA_KEY) as List<CellarData>
+        val cachedData =
+            stepExecution.executionContext.get(
+                SparqlUriFetchTasklet.SPARQL_DATA_KEY,
+                List::class.java,
+            ) as List<CellarData>
         assertEquals(100, cachedData.size)
     }
 

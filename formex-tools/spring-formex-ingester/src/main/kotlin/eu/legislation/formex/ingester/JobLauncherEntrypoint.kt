@@ -59,7 +59,10 @@ class JobLauncherEntrypoint(
             val lastExecution = queryLastJobExecution(jobName)
 
             if (lastExecution?.status == "STARTED") {
-                logger.warn { "Found job execution in STARTED status (ID: ${lastExecution.id}) - marking as FAILED and restarting" }
+                logger.warn {
+                    "Found job execution in STARTED status (ID: ${lastExecution.id}) - " +
+                        "marking as FAILED and restarting"
+                }
                 markExecutionAsFailed(lastExecution.id)
                 restartJobExecution(lastExecution.id)
             } else {
@@ -73,11 +76,18 @@ class JobLauncherEntrypoint(
                         logger.info {
                             "Last job execution COMPLETED (ID: ${lastExecution.id}) - starting new job execution"
                         }
-                    else -> logger.warn { "Last job execution has unexpected status: ${lastExecution.status} - starting new job execution" }
+                    else ->
+                        logger.warn {
+                            "Last job execution has unexpected status: ${lastExecution.status} - " +
+                                "starting new job execution"
+                        }
                 }
                 startNewJobExecution()
             }
-        } catch (e: Exception) {
+        } catch (
+            @Suppress("TooGenericExceptionCaught") // Catch all job launch failures to log before rethrowing
+            e: Exception,
+        ) {
             logger.error(e) { "Failed to launch job: ${job.name}" }
             throw e // Rethrow to prevent app startup if job launch fails
         }

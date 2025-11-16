@@ -15,6 +15,13 @@ import java.net.URI
  *   publications.europa.eu/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_1
  */
 object CellarUriParser {
+    private const val MIN_PATH_SEGMENTS = 4
+    private const val RESOURCE_INDEX = 0
+    private const val CELLAR_INDEX = 1
+    private const val MANIFESTATION_INDEX = 2
+    private const val DOC_ID_INDEX = 3
+    private const val PATH_COMPONENTS_END_INDEX = 3
+
     /**
      * Represents the parsed components of a Cellar URI.
      *
@@ -78,17 +85,22 @@ object CellarUriParser {
         val pathSegments = path.split("/").filter { it.isNotBlank() }
 
         // Cellar URIs should have at least: resource, cellar, manifestation, doc_id
-        require(pathSegments.size >= 4) { "URI path must have at least 4 segments [resource, cellar, manifestation, doc_id]: $uriString" }
+        require(pathSegments.size >= MIN_PATH_SEGMENTS) {
+            "URI path must have at least $MIN_PATH_SEGMENTS segments " +
+                "[resource, cellar, manifestation, doc_id]: $uriString"
+        }
 
         // Verify "resource" and "cellar" are in the path
-        require(pathSegments[0] == "resource" && pathSegments[1] == "cellar") { "URI path must start with /resource/cellar: $uriString" }
+        require(pathSegments[RESOURCE_INDEX] == "resource" && pathSegments[CELLAR_INDEX] == "cellar") {
+            "URI path must start with /resource/cellar: $uriString"
+        }
 
-        // Extract manifestation (third segment) and doc_id (last segment)
-        val manifestationId = pathSegments[2]
-        val docId = pathSegments[3]
+        // Extract manifestation (third segment) and doc_id (fourth segment)
+        val manifestationId = pathSegments[MANIFESTATION_INDEX]
+        val docId = pathSegments[DOC_ID_INDEX]
 
         // Build list of path components to preserve in storage
-        val pathComponents = pathSegments.subList(0, 3) // resource/cellar/{manifestation}
+        val pathComponents = pathSegments.subList(RESOURCE_INDEX, PATH_COMPONENTS_END_INDEX)
 
         return ParsedCellarUri(
             host = host,

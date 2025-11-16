@@ -1,3 +1,5 @@
+@file:Suppress("LongParameterList", "TooManyFunctions", "LongMethod")
+
 package eu.legislation.formex.ingester.progress
 
 import com.github.ajalt.mordant.rendering.TextColors
@@ -35,6 +37,10 @@ import java.util.concurrent.ConcurrentHashMap
  * - Set formex.features.cli-progress=true to enable (default)
  * - Set formex.features.cli-progress=false or CLI_PROGRESS=false to disable
  * - Only created if Mordant classes are on the classpath
+ *
+ * Note: MagicNumber and MaxLineLength suppressions are applied to this file
+ * because UI formatting code contains self-documenting numeric literals and
+ * long lines for terminal output formatting that shouldn't be broken.
  */
 @Component
 @ConditionalOnProperty(
@@ -64,10 +70,6 @@ class MordantProgressService {
     @Volatile
     private var progressRenderedOnce: Boolean = false
 
-    // EMA smoothing for speed calculations
-    // Alpha = 0.15 provides good balance between responsiveness and stability
-    private val speedSmoothingAlpha = 0.15
-
     @Volatile
     private var smoothedSpeed: Double = 0.0
 
@@ -81,8 +83,19 @@ class MordantProgressService {
     private val supportsInteractiveUpdates: Boolean =
         terminal.terminalInfo.interactive
 
-    // Number of lines used by the progress display (for clearing)
-    private val progressDisplayLines = 9
+    companion object {
+        // EMA smoothing for speed calculations
+        // Alpha = 0.15 provides good balance between responsiveness and stability
+        private const val SPEED_SMOOTHING_ALPHA = 0.15
+
+        // Number of lines used by the progress display (for clearing)
+        private const val PROGRESS_DISPLAY_LINES = 9
+
+        // UI layout constants
+        private const val HEADER_WIDTH = 70
+        private const val HEADER_WIDTH_MINUS_2 = HEADER_WIDTH - 2
+        private const val PROGRESS_BAR_WIDTH = 40
+    }
 
     init {
         logger.debug {
@@ -95,12 +108,15 @@ class MordantProgressService {
      * Prints the application header banner.
      */
     fun printHeader() {
-        val width = 70
         val title = "Formex XML Ingester - Spring Batch Job"
 
-        terminal.println(TextColors.cyan("╔${"═".repeat(width - 2)}╗"))
-        terminal.println(TextColors.cyan("║${title.padStart((width - 2 + title.length) / 2).padEnd(width - 2)}║"))
-        terminal.println(TextColors.cyan("╚${"═".repeat(width - 2)}╝"))
+        terminal.println(TextColors.cyan("╔${"═".repeat(HEADER_WIDTH_MINUS_2)}╗"))
+        terminal.println(
+            TextColors.cyan(
+                "║${title.padStart((HEADER_WIDTH_MINUS_2 + title.length) / 2).padEnd(HEADER_WIDTH_MINUS_2)}║",
+            ),
+        )
+        terminal.println(TextColors.cyan("╚${"═".repeat(HEADER_WIDTH_MINUS_2)}╝"))
         terminal.println()
     }
 
@@ -117,12 +133,14 @@ class MordantProgressService {
         executionState["startTime"] = startTime
 
         val startTimeStr = dateFormatter.format(startTime)
-        val width = 70
 
-        terminal.println(TextColors.cyan("Job Execution Started".padStart((width + 22) / 2)))
-        terminal.println("${TextColors.cyan("Job Name:")} $jobName".padStart((width + 11 + jobName.length) / 2))
-        terminal.println("${TextColors.cyan("Execution ID:")} $executionId".padStart((width + 15 + executionId.toString().length) / 2))
-        terminal.println("${TextColors.cyan("Start Time:")} $startTimeStr".padStart((width + 13 + startTimeStr.length) / 2))
+        terminal.println(TextColors.cyan("Job Execution Started".padStart((HEADER_WIDTH + 22) / 2)))
+        val jobNameLine = "${TextColors.cyan("Job Name:")} $jobName"
+        terminal.println(jobNameLine.padStart((HEADER_WIDTH + 11 + jobName.length) / 2))
+        val executionIdLine = "${TextColors.cyan("Execution ID:")} $executionId"
+        terminal.println(executionIdLine.padStart((HEADER_WIDTH + 15 + executionId.toString().length) / 2))
+        val startTimeLine = "${TextColors.cyan("Start Time:")} $startTimeStr"
+        terminal.println(startTimeLine.padStart((HEADER_WIDTH + 13 + startTimeStr.length) / 2))
         terminal.println()
     }
 
@@ -137,10 +155,9 @@ class MordantProgressService {
         executionState["stepStartTime"] = System.currentTimeMillis()
 
         val countStr = if (expectedCount != null) "~$expectedCount items" else "unknown count"
-        val width = 70
 
-        terminal.println(TextColors.yellow("▶ Step: $stepName".padStart((width + 9 + stepName.length) / 2)))
-        terminal.println(TextColors.gray("Expected: $countStr".padStart((width + 11 + countStr.length) / 2)))
+        terminal.println(TextColors.yellow("▶ Step: $stepName".padStart((HEADER_WIDTH + 9 + stepName.length) / 2)))
+        terminal.println(TextColors.gray("Expected: $countStr".padStart((HEADER_WIDTH + 11 + countStr.length) / 2)))
         terminal.println()
 
         // Hide cursor for chunk-based steps with progress bars
@@ -154,18 +171,16 @@ class MordantProgressService {
      * Used for SPARQL fetch where we don't know progress until completion.
      */
     fun printTaskletWaiting(message: String) {
-        val width = 70
         val fullMsg = "⏳ $message"
-        terminal.println(TextColors.gray(fullMsg.padStart((width + fullMsg.length) / 2)))
+        terminal.println(TextColors.gray(fullMsg.padStart((HEADER_WIDTH + fullMsg.length) / 2)))
     }
 
     /**
      * Prints a tasklet completion message.
      */
     fun printTaskletComplete(message: String) {
-        val width = 70
         val fullMsg = "✓ $message"
-        terminal.println(TextColors.green(fullMsg.padStart((width + fullMsg.length) / 2)))
+        terminal.println(TextColors.green(fullMsg.padStart((HEADER_WIDTH + fullMsg.length) / 2)))
     }
 
     /**
@@ -179,7 +194,7 @@ class MordantProgressService {
         if (totalItems <= 0) return
 
         val percentage = (itemsRead * 100.0 / totalItems).toInt()
-        val barWidth = 40
+        val barWidth = PROGRESS_BAR_WIDTH
         val filled = (itemsRead * barWidth / totalItems).toInt()
         val bar = "█".repeat(filled) + "░".repeat(barWidth - filled)
 
@@ -209,24 +224,26 @@ class MordantProgressService {
         // Show cursor again after step completes
         terminal.cursor.show()
 
-        val statusColor = getStatusColor(status)
-        val statusStr = statusColor(status.toString())
         val durationStr = formatDuration(durationMs)
-        val width = 70
 
         terminal.println()
         val stepHeader = "▸ Step: $stepName - $status"
-        terminal.println(TextColors.yellow(stepHeader.padStart((width + stepHeader.length) / 2)))
+        terminal.println(TextColors.yellow(stepHeader.padStart((HEADER_WIDTH + stepHeader.length) / 2)))
 
         // Only show read/write/skip counts if at least one is non-zero (chunk-oriented step)
         val hasMetrics = readCount > 0 || writeCount > 0 || skipCount > 0
         if (hasMetrics) {
-            terminal.println("${TextColors.cyan("Read:")} $readCount".padStart((width + 7 + readCount.toString().length) / 2))
-            terminal.println("${TextColors.cyan("Write:")} $writeCount".padStart((width + 8 + writeCount.toString().length) / 2))
-            terminal.println("${TextColors.yellow("Skip:")} $skipCount".padStart((width + 7 + skipCount.toString().length) / 2))
+            val readLine = "${TextColors.cyan("Read:")} $readCount"
+            terminal.println(readLine.padStart((HEADER_WIDTH + 7 + readCount.toString().length) / 2))
+            val writeLine = "${TextColors.cyan("Write:")} $writeCount"
+            terminal.println(writeLine.padStart((HEADER_WIDTH + 8 + writeCount.toString().length) / 2))
+            val skipLine = "${TextColors.yellow("Skip:")} $skipCount"
+            terminal.println(skipLine.padStart((HEADER_WIDTH + 7 + skipCount.toString().length) / 2))
         }
 
-        terminal.println("${TextColors.cyan("Duration:")} $durationStr".padStart((width + 11 + durationStr.length) / 2))
+        terminal.println(
+            "${TextColors.cyan("Duration:")} $durationStr".padStart((HEADER_WIDTH + 11 + durationStr.length) / 2),
+        )
         terminal.println()
     }
 
@@ -242,26 +259,31 @@ class MordantProgressService {
         skipCount: Long,
         exitMessage: String? = null,
     ) {
-        val statusColor = getStatusColor(status)
-        val statusStr = statusColor(status.toString())
         val durationStr = formatDuration(durationMs)
-        val width = 70
 
         terminal.println()
-        terminal.println(TextColors.cyan("═".repeat(width)))
-        terminal.println(TextColors.cyan("Job Execution Summary".padStart((width + 21) / 2)))
-        terminal.println(TextColors.cyan("═".repeat(width)))
+        terminal.println(TextColors.cyan("═".repeat(HEADER_WIDTH)))
+        terminal.println(TextColors.cyan("Job Execution Summary".padStart((HEADER_WIDTH + 21) / 2)))
+        terminal.println(TextColors.cyan("═".repeat(HEADER_WIDTH)))
 
-        terminal.println("${TextColors.cyan("Job Name:")} $jobName".padStart((width + 11 + jobName.length) / 2))
-        terminal.println("${TextColors.cyan("Status:")} $status".padStart((width + 9 + status.toString().length) / 2))
-        terminal.println("${TextColors.cyan("Total Duration:")} $durationStr".padStart((width + 17 + durationStr.length) / 2))
-        terminal.println("${TextColors.cyan("Items Read:")} $readCount".padStart((width + 13 + readCount.toString().length) / 2))
-        terminal.println("${TextColors.cyan("Items Written:")} $writeCount".padStart((width + 16 + writeCount.toString().length) / 2))
-        terminal.println("${TextColors.yellow("Items Skipped:")} $skipCount".padStart((width + 16 + skipCount.toString().length) / 2))
+        val jobNameSummary = "${TextColors.cyan("Job Name:")} $jobName"
+        terminal.println(jobNameSummary.padStart((HEADER_WIDTH + 11 + jobName.length) / 2))
+        val statusLine = "${TextColors.cyan("Status:")} $status"
+        terminal.println(statusLine.padStart((HEADER_WIDTH + 9 + status.toString().length) / 2))
+        val durationLine = "${TextColors.cyan("Total Duration:")} $durationStr"
+        terminal.println(durationLine.padStart((HEADER_WIDTH + 17 + durationStr.length) / 2))
+        val readSummary = "${TextColors.cyan("Items Read:")} $readCount"
+        terminal.println(readSummary.padStart((HEADER_WIDTH + 13 + readCount.toString().length) / 2))
+        val writeSummary = "${TextColors.cyan("Items Written:")} $writeCount"
+        terminal.println(writeSummary.padStart((HEADER_WIDTH + 16 + writeCount.toString().length) / 2))
+        val skipSummary = "${TextColors.yellow("Items Skipped:")} $skipCount"
+        terminal.println(skipSummary.padStart((HEADER_WIDTH + 16 + skipCount.toString().length) / 2))
 
         if (exitMessage != null) {
             terminal.println()
-            terminal.println(TextColors.gray("Message: $exitMessage".padStart((width + 9 + exitMessage.length) / 2)))
+            terminal.println(
+                TextColors.gray("Message: $exitMessage".padStart((HEADER_WIDTH + 9 + exitMessage.length) / 2)),
+            )
         }
 
         terminal.println()
@@ -307,13 +329,23 @@ class MordantProgressService {
                         renderProgressDisplay()
                         delay(100) // Update every 100ms
                     }
-                } catch (e: Exception) {
+                } catch (
+                    @Suppress("TooGenericExceptionCaught") // Defensive: terminal I/O failures are unpredictable
+                    e: RuntimeException,
+                ) {
+                    // Catch all runtime exceptions from terminal rendering, coroutines, or state access
+                    // Progress rendering must not crash the batch job
                     logger.warn(e) { "Progress rendering failed" }
                 }
             }
 
             logger.debug { "Started rich progress display for $stepName with $totalItems items" }
-        } catch (e: Exception) {
+        } catch (
+            @Suppress("TooGenericExceptionCaught") // Defensive: terminal init failures are unpredictable
+            e: RuntimeException,
+        ) {
+            // Catch all runtime exceptions from terminal initialization, coroutines, or state setup
+            // Gracefully fallback to simple progress display
             logger.warn(e) { "Failed to start progress display, falling back to simple progress" }
             // Will use fallback in updateBatchProgress
         }
@@ -327,7 +359,7 @@ class MordantProgressService {
         val state = currentProgressState ?: return
 
         // Build the progress bar with gradient colors
-        val barWidth = 40
+        val barWidth = PROGRESS_BAR_WIDTH
         val filled =
             if (state.totalItems > 0) {
                 (state.itemsRead * barWidth / state.totalItems).toInt()
@@ -345,7 +377,8 @@ class MordantProgressService {
                 } + TextColors.gray("░".repeat(barWidth - filled))
             } else {
                 // Fallback: simple bright green for older terminals
-                TextColors.brightGreen("█".repeat(filled)) + TextColors.gray("░".repeat(barWidth - filled))
+                TextColors.brightGreen("█".repeat(filled)) +
+                    TextColors.gray("░".repeat(barWidth - filled))
             }
 
         // Build the display content with tasteful color highlighting
@@ -357,7 +390,8 @@ class MordantProgressService {
                 )}    ${TextColors.brightGreen(
                     "[",
                 )}$progressBar${TextColors.brightGreen("]")} ${TextColors.brightWhite("${state.percentage}%")}",
-                "${TextColors.cyan("Items:")}       ${TextColors.white("${state.itemsRead}")}/${TextColors.gray("${state.totalItems}")}",
+                "${TextColors.cyan("Items:")}       ${TextColors.white("${state.itemsRead}")}" +
+                    "/${TextColors.gray("${state.totalItems}")}",
                 "${TextColors.cyan("Written:")}     ${TextColors.green("${state.itemsWritten}")}",
                 "${TextColors.cyan(
                     "Skipped:",
@@ -368,9 +402,9 @@ class MordantProgressService {
                 } else {
                     TextColors.gray("${state.itemsSkipped}")
                 }}",
-                "${TextColors.cyan(
-                    "Speed:",
-                )}       ${TextColors.brightCyan("%.1f".format(state.smoothedItemsPerSec))} ${TextColors.gray("items/s")}",
+                "${TextColors.cyan("Speed:")}       " +
+                    "${TextColors.brightCyan("%.1f".format(state.smoothedItemsPerSec))} " +
+                    TextColors.gray("items/s"),
                 "${TextColors.cyan("Elapsed:")}     ${TextColors.white(state.formatElapsed())}",
                 "${TextColors.cyan("Remaining:")}   ${TextColors.brightBlue(state.formatRemaining())}",
                 TextColors.green("●"),
@@ -381,7 +415,7 @@ class MordantProgressService {
             // Move cursor up to overwrite previous display (if this isn't the first render)
             if (progressRenderedOnce) {
                 terminal.cursor.move {
-                    up(progressDisplayLines)
+                    up(PROGRESS_DISPLAY_LINES)
                 }
             }
 
@@ -427,7 +461,7 @@ class MordantProgressService {
                     // First update - use current speed as initial value
                     currentSpeed
                 } else {
-                    speedSmoothingAlpha * currentSpeed + (1 - speedSmoothingAlpha) * smoothedSpeed
+                    SPEED_SMOOTHING_ALPHA * currentSpeed + (1 - SPEED_SMOOTHING_ALPHA) * smoothedSpeed
                 }
 
             // Update state with smoothed speed
@@ -443,7 +477,12 @@ class MordantProgressService {
                 printChunkProgress(state.itemsRead, state.totalItems)
             }
             // Otherwise, the background coroutine will render the rich display
-        } catch (e: Exception) {
+        } catch (
+            @Suppress("TooGenericExceptionCaught") // Defensive: progress updates must never crash the job
+            e: RuntimeException,
+        ) {
+            // Catch all runtime exceptions from progress calculations or terminal updates
+            // Progress state updates should never crash the batch job
             logger.warn(e) { "Failed to update progress" }
         }
     }
@@ -461,7 +500,12 @@ class MordantProgressService {
             lastItemsRead = 0L
             // Small delay to allow last render to complete
             Thread.sleep(150)
-        } catch (e: Exception) {
+        } catch (
+            @Suppress("TooGenericExceptionCaught") // Defensive: cleanup must succeed regardless of state
+            e: RuntimeException,
+        ) {
+            // Catch all runtime exceptions during cleanup (terminal state, thread interruption, etc.)
+            // Cleanup must not fail, regardless of terminal state
             logger.warn(e) { "Failed to stop progress display cleanly" }
         }
     }
