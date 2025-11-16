@@ -85,48 +85,82 @@ class SparqlUriFetchTasklet(
         const val SPARQL_DATA_KEY = "sparql.data"
     }
 
-    @Suppress("LongMethod") // SPARQL query and CSV parsing logic are inherently lengthy
     private fun fetchAndParseFromSparql(): List<CellarData> {
-        val query =
-            """
-            PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
-            PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        val query = buildSparqlQuery()
+        val csvContent = fetchCsvFromEndpoint(query)
+        return parseCsvToCellarData(csvContent)
+    }
 
-            SELECT DISTINCT
-              ?item
-              (STRAFTER(STR(?work), "cellar/") AS ?workId)
-              (STRAFTER(STR(?expression), CONCAT(STR(?work), ".")) AS ?expressionId)
-              (STRAFTER(STR(?manifestation), CONCAT(STR(?expression), ".")) AS ?manifestationId)
-              (STRAFTER(STR(?item), CONCAT(STR(?manifestation), "/")) AS ?contentStreamId)
-              ?language
-              ?mimeType
-            WHERE {
-              ?expression cmr:lang ?language .
-              FILTER(?language = "${properties.language}"^^xsd:language)
+    /**
+     * Builds the SPARQL query for fetching Formex XML document metadata.
+     *
+     * Query retrieves:
+     * - Document URI and IDs (work, expression, manifestation, content stream)
+     * - Language and MIME type metadata
+     *
+     * Filters applied:
+     * - Language matches configured language (e.g., "eng")
+     * - MIME type is "application/xml;type=fmx4" (Formex 4 XML)
+     */
+    private fun buildSparqlQuery(): String =
+        """
+        PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+        PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-              ?expression cdm:expression_belongs_to_work ?work .
-              ?manifestation cdm:manifestation_manifests_expression ?expression .
-              ?item cdm:item_belongs_to_manifestation ?manifestation .
-              ?item cmr:manifestationMimeType ?mimeType .
-              FILTER(?mimeType = "application/xml;type=fmx4")
-            }
-            ${properties.limit?.let { "LIMIT $it" } ?: ""}
-            """.trimIndent()
+        SELECT DISTINCT
+          ?item
+          (STRAFTER(STR(?work), "cellar/") AS ?workId)
+          (STRAFTER(STR(?expression), CONCAT(STR(?work), ".")) AS ?expressionId)
+          (STRAFTER(STR(?manifestation), CONCAT(STR(?expression), ".")) AS ?manifestationId)
+          (STRAFTER(STR(?item), CONCAT(STR(?manifestation), "/")) AS ?contentStreamId)
+          ?language
+          ?mimeType
+        WHERE {
+          ?expression cmr:lang ?language .
+          FILTER(?language = "${properties.language}"^^xsd:language)
 
+          ?expression cdm:expression_belongs_to_work ?work .
+          ?manifestation cdm:manifestation_manifests_expression ?expression .
+          ?item cdm:item_belongs_to_manifestation ?manifestation .
+          ?item cmr:manifestationMimeType ?mimeType .
+          FILTER(?mimeType = "application/xml;type=fmx4")
+        }
+        ${properties.limit?.let { "LIMIT $it" } ?: ""}
+        """.trimIndent()
+
+    /**
+     * Executes SPARQL query against configured endpoint and returns CSV response.
+     *
+     * @param query The SPARQL query to execute
+     * @return CSV content as string
+     * @throws IllegalStateException if response is empty
+     */
+    private fun fetchCsvFromEndpoint(query: String): String {
         val formBody = "query=" + URLEncoder.encode(query, StandardCharsets.UTF_8)
 
-        val csvContent =
-            restClient
-                .post()
-                .uri(properties.endpoint)
-                .header("Accept", "text/csv")
-                .header("Content-Type", "application/x-www-form-urlencoded")
-                .body(formBody)
-                .retrieve()
-                .body(String::class.java) ?: error("Empty response from SPARQL endpoint")
+        return restClient
+            .post()
+            .uri(properties.endpoint)
+            .header("Accept", "text/csv")
+            .header("Content-Type", "application/x-www-form-urlencoded")
+            .body(formBody)
+            .retrieve()
+            .body(String::class.java) ?: error("Empty response from SPARQL endpoint")
+    }
 
-        // Parse CSV with Univocity
+    /**
+     * Parses CSV content into list of CellarData objects.
+     *
+     * Uses Univocity CSV parser with following settings:
+     * - Header extraction enabled (first row contains column names)
+     * - Quote character: " (double quote)
+     * - Delimiter: , (comma)
+     *
+     * @param csvContent CSV string content to parse
+     * @return List of parsed CellarData records
+     */
+    private fun parseCsvToCellarData(csvContent: String): List<CellarData> {
         val bufferedInputStream = ByteArrayInputStream(csvContent.toByteArray(StandardCharsets.UTF_8))
         val settings =
             CsvParserSettings().apply {
