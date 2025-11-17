@@ -56,6 +56,8 @@ class StreamingXmlDownloadProcessor(
     }
 
     override fun process(item: CellarData): XmlMetadata {
+        logger.info { "Download: Starting download in thread ${Thread.currentThread().name} for URI: ${item.item}" }
+
         // Parse URI to extract path structure for organized file storage
         val parsedUri = CellarUriParser.parse(item.item)
         val relativePath = parsedUri.toRelativePath()
@@ -68,6 +70,11 @@ class StreamingXmlDownloadProcessor(
         // Download and hash in single pass, generate ID based on content
         val tempFile = permanentFile.parent.resolve("${UUID.randomUUID()}.xml")
         val metrics = downloadWithMetrics(item.item, tempFile)
+
+        logger.info {
+            "Download: Completed download - ID=${metrics.id}, URI=${item.item}, " +
+                "Size=${metrics.size}, TempFile=$tempFile"
+        }
 
         // Move temp file to final location with URI-based path
         Files.move(tempFile, permanentFile, java.nio.file.StandardCopyOption.REPLACE_EXISTING)
@@ -84,7 +91,10 @@ class StreamingXmlDownloadProcessor(
                 filePath = permanentFile.toString(),
             )
 
-        logger.debug { "Download: Generated ID=${metadata.id} for URI=${item.item}" }
+        logger.info {
+            "Download: Created metadata - ID=${metadata.id}, URI=${metadata.uri}, " +
+                "FilePath=${metadata.filePath}, Thread=${Thread.currentThread().name}"
+        }
         return metadata
     }
 

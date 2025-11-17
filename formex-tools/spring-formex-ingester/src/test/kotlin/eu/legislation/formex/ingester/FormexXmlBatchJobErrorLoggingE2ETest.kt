@@ -253,6 +253,7 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
             @Autowired postProcessor: XmlPostProcessor,
             @Autowired writer: XmlDatabaseWriter,
             @Autowired errorLoggingSkipListener: ErrorLoggingSkipListener,
+            @Autowired percentageBasedSkipPolicy: eu.legislation.formex.ingester.batch.PercentageBasedSkipPolicy,
         ): Step {
             // Create poisoned wrapper for download processor
             val poisonedDownloadProcessor = PoisonedDownloadProcessor(downloadProcessor)
@@ -269,8 +270,7 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
                 .processor(compositeProcessor)
                 .writer(writer)
                 .faultTolerant()
-                .skip(Exception::class.java)
-                .skipLimit(1000)
+                .skipPolicy(percentageBasedSkipPolicy)
                 .listener(errorLoggingSkipListener)
                 .build()
         }

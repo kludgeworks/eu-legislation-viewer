@@ -8,7 +8,6 @@ import jakarta.annotation.PostConstruct
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.and
-import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
 import org.springframework.batch.core.job.Job
@@ -28,9 +27,15 @@ private val logger = KotlinLogging.logger {}
  * Strategy:
  * 1. Query the most recent job execution for the configured job
  * 2. STARTED status → Mark as FAILED and restart from checkpoint (handles crashed jobs)
- * 3. FAILED status → Start new job execution (retry failed job)
+ * 3. FAILED status → Restart from checkpoint (resume failed job, reuse JMS messages)
  * 4. COMPLETED status → Start new job execution (run job again)
  * 5. No previous execution → Start new job execution
+ *
+ * JMS Queue Handling:
+ * - FAILED jobs are restarted (not re-run), so unprocessed JMS messages are consumed
+ * - Step 1 (fetchSparqlUris) checks "sparql.publishingCompleted" flag and skips if already done
+ * - Step 2 (downloadXml) continues reading from existing JMS queue messages
+ * - No duplicate messages are published on restart
  *
  * Configuration:
  * - Requires spring.batch.job.enabled=false in application.yaml to disable Spring Boot's auto-launch
@@ -65,13 +70,14 @@ class JobLauncherEntrypoint(
                 }
                 markExecutionAsFailed(lastExecution.id)
                 restartJobExecution(lastExecution.id)
+            } else if (lastExecution?.status == "FAILED") {
+                logger.info {
+                    "Last job execution FAILED (ID: ${lastExecution.id}) - restarting from checkpoint"
+                }
+                restartJobExecution(lastExecution.id)
             } else {
                 when {
                     lastExecution == null -> logger.info { "No previous job execution found - starting new job" }
-                    lastExecution.status == "FAILED" ->
-                        logger.info {
-                            "Last job execution FAILED (ID: ${lastExecution.id}) - starting new job execution"
-                        }
                     lastExecution.status == "COMPLETED" ->
                         logger.info {
                             "Last job execution COMPLETED (ID: ${lastExecution.id}) - starting new job execution"

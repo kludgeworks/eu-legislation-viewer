@@ -13,7 +13,6 @@ import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.job.parameters.JobParametersBuilder
 import org.springframework.batch.core.job.parameters.JobParametersIncrementer
-import org.springframework.batch.core.listener.ExecutionContextPromotionListener
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
@@ -43,7 +42,6 @@ class FormexXmlBatchJob {
     companion object {
         // Chunk processing configuration
         private const val CHUNK_SIZE = 10
-        private const val MAX_SKIP_LIMIT = 1000
 
         // Thread pool configuration for parallel downloads
         private const val CORE_POOL_SIZE = 10
@@ -94,21 +92,27 @@ class FormexXmlBatchJob {
         }
 
     /**
-     * Step 1: Fetch URIs from SPARQL endpoint and cache in JobExecutionContext.
+     * Step 1: Fetch URIs from SPARQL endpoint and publish to JMS queue.
      *
      * This step runs a Tasklet that:
      * - Queries the EU SPARQL endpoint (can take 3-4 minutes)
      * - Parses CSV response into List<CellarData>
-     * - Stores result in JobExecutionContext (persisted to database)
+     * - Publishes each CellarData to persistent JMS queue
      *
-     * On restart:
-     * - Tasklet detects cached data in JobExecutionContext
-     * - Skips SPARQL fetch (fast restart)
-     * - Downstream steps access cached data via late binding
+     * Benefits over execution context storage:
+     * - Zero execution context bloat (stores only count vs 154 MB list)
+     * - Fast restart (messages remain in queue)
+     * - Automatic message persistence
+     *
+     * On restart (idempotent):
+     * - Checks "sparql.publishingCompleted" flag in execution context
+     * - If flag exists, skips SPARQL fetch and publishing (messages already in queue)
+     * - If flag missing, re-runs SPARQL fetch and publishes messages
+     * - Prevents duplicate message publishing on restart
      *
      * @param jobRepository Spring Batch job repository
      * @param transactionManager Transaction manager for step
-     * @param sparqlFetchTasklet Tasklet that performs SPARQL fetch
+     * @param sparqlUriJmsPublisher Tasklet that performs SPARQL fetch and JMS publishing
      * @param mordantStepListener Optional step listener for CLI progress (feature flag controlled)
      * @return The configured fetch step
      */
@@ -116,13 +120,12 @@ class FormexXmlBatchJob {
     fun fetchSparqlUrisStep(
         jobRepository: JobRepository,
         transactionManager: PlatformTransactionManager,
-        sparqlFetchTasklet: SparqlUriFetchTasklet,
+        sparqlUriJmsPublisher: SparqlUriJmsPublisher,
         mordantStepListener: MordantStepListener?,
     ): Step {
         val stepBuilder =
             StepBuilder("fetchSparqlUris", jobRepository)
-                .tasklet(sparqlFetchTasklet, transactionManager)
-                .listener(executionContextPromotionListener())
+                .tasklet(sparqlUriJmsPublisher, transactionManager)
 
         // Add Mordant listener if available (controlled by feature flag)
         mordantStepListener?.let { stepBuilder.listener(it) }
@@ -131,19 +134,9 @@ class FormexXmlBatchJob {
     }
 
     /**
-     * Promotes SPARQL data from step execution context to job execution context.
-     * This allows subsequent steps to access the cached data.
-     */
-    @Bean
-    fun executionContextPromotionListener(): ExecutionContextPromotionListener =
-        ExecutionContextPromotionListener().apply {
-            setKeys(arrayOf(SparqlUriFetchTasklet.Companion.SPARQL_DATA_KEY))
-        }
-
-    /**
      * Step 2: Download XML files, extract metadata, and insert into database.
      *
-     * Reads from cached SPARQL data (injected via late binding from JobExecutionContext):
+     * Reads from JMS queue (populated by step 1):
      * - Filters out existing URIs (batch database checks)
      * - Downloads XML files in parallel with 10-20 concurrent threads (streaming, no memory loading)
      * - Stores files permanently in configured storage directory
@@ -156,24 +149,26 @@ class FormexXmlBatchJob {
      * - Up to 10-20 concurrent downloads depending on load
      *
      * Restart behavior:
-     * - CachedSparqlUriReader restores position from StepExecutionContext
-     * - Chunks already committed are skipped (no duplicate processing)
-     * - Failed chunk is retried from checkpoint
+     * - JMS automatically redelivers unacknowledged messages
+     * - Chunks already committed are acknowledged (no duplicate processing)
+     * - Failed chunk messages remain in queue for retry
      *
      * Fault tolerance:
-     * - Skip policy allows up to 1000 items to fail without stopping the job
+     * - Skip limit calculated dynamically as percentage of total URIs (default: 0.5%)
+     * - Minimum skip limit of 10 to prevent overly aggressive failure on small datasets
      * - Skipped items are logged to processing_errors table via ErrorLoggingSkipListener
      * - Error records persist in a separate transaction even when chunk rolls back
      *
      * @param jobRepository Spring Batch job repository
      * @param transactionManager Transaction manager for chunk commits
-     * @param reader Step-scoped reader with cached SPARQL data (returns concrete type for ItemStream detection)
+     * @param reader JMS-based reader consuming from queue (no ItemStream needed - JMS manages state)
      * @param filterProcessor Filters out existing URIs
      * @param downloadProcessor Downloads XML and calculates metadata
      * @param postProcessor Extracts version and root_element from XML
      * @param writer Inserts records into database
      * @param errorLoggingSkipListener Logs skipped items to database
      * @param taskExecutor Task executor for parallel chunk processing
+     * @param percentageBasedSkipPolicy Custom skip policy that enforces percentage-based skip limit
      * @param mordantStepListener Optional step listener for CLI progress (feature flag controlled)
      * @param mordantChunkListener Optional chunk listener for CLI progress (feature flag controlled)
      * @return The configured download step
@@ -187,13 +182,14 @@ class FormexXmlBatchJob {
     fun downloadXmlStep(
         jobRepository: JobRepository,
         transactionManager: PlatformTransactionManager,
-        reader: CachedSparqlUriReader,
+        reader: JmsCellarDataReader,
         filterProcessor: UriFilterProcessor,
         downloadProcessor: StreamingXmlDownloadProcessor,
         postProcessor: XmlPostProcessor,
         writer: XmlDatabaseWriter,
         errorLoggingSkipListener: ErrorLoggingSkipListener,
         taskExecutor: AsyncTaskExecutor,
+        percentageBasedSkipPolicy: PercentageBasedSkipPolicy,
         mordantStepListener: MordantStepListener?,
         mordantChunkListener: MordantChunkListener?,
     ): Step {
@@ -211,8 +207,7 @@ class FormexXmlBatchJob {
                 .writer(writer)
                 .taskExecutor(taskExecutor)
                 .faultTolerant()
-                .skip(Exception::class.java)
-                .skipLimit(MAX_SKIP_LIMIT)
+                .skipPolicy(percentageBasedSkipPolicy)
                 .listener(errorLoggingSkipListener)
 
         // Add Mordant listeners if available (controlled by feature flag)

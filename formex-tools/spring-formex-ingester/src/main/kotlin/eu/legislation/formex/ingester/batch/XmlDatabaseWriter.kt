@@ -3,12 +3,14 @@ package eu.legislation.formex.ingester.batch
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
 import eu.legislation.formex.ingester.domain.table.FormexDocuments
 import io.github.oshai.kotlinlogging.KotlinLogging
+import org.jetbrains.exposed.exceptions.ExposedSQLException
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.batchInsert
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.batch.infrastructure.item.Chunk
 import org.springframework.batch.infrastructure.item.ItemWriter
 import org.springframework.stereotype.Component
+import java.sql.SQLException
 
 private val logger = KotlinLogging.logger {}
 
@@ -58,14 +60,14 @@ class XmlDatabaseWriter(
                 }
             }
             logger.info { "Writer: Successfully inserted ${chunk.items.size} items" }
-        } catch (e: org.jetbrains.exposed.exceptions.ExposedSQLException) {
+        } catch (e: ExposedSQLException) {
             // Database errors during write - log diagnostics before rethrowing to trigger Spring Batch retry/skip
             logger.error(e) { "Writer: Failed to insert chunk of ${chunk.items.size} items due to database error" }
             chunk.items.forEachIndexed { index, metadata ->
                 logger.error { "Writer: Failed chunk[$index] ID=${metadata.id} URI=${metadata.uri}" }
             }
             throw e
-        } catch (e: java.sql.SQLException) {
+        } catch (e: SQLException) {
             // SQL errors during write - log diagnostics before rethrowing to trigger Spring Batch retry/skip
             logger.error(e) { "Writer: Failed to insert chunk of ${chunk.items.size} items due to SQL error" }
             chunk.items.forEachIndexed { index, metadata ->

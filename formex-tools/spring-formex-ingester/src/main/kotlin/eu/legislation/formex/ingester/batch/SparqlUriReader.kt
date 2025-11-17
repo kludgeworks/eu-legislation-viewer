@@ -2,20 +2,20 @@ package eu.legislation.formex.ingester.batch
 
 import com.univocity.parsers.csv.CsvParser
 import com.univocity.parsers.csv.CsvParserSettings
+import eu.legislation.formex.ingester.config.JmsProperties
 import eu.legislation.formex.ingester.config.SparqlProperties
 import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.progress.MordantProgressService
 import io.github.oshai.kotlinlogging.KotlinLogging
-import org.springframework.batch.core.annotation.BeforeStep
-import org.springframework.batch.core.configuration.annotation.StepScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.runBlocking
 import org.springframework.batch.core.scope.context.ChunkContext
 import org.springframework.batch.core.step.StepContribution
-import org.springframework.batch.core.step.StepExecution
 import org.springframework.batch.core.step.tasklet.Tasklet
-import org.springframework.batch.infrastructure.item.ExecutionContext
-import org.springframework.batch.infrastructure.item.ItemReader
-import org.springframework.batch.infrastructure.item.ItemStream
 import org.springframework.batch.infrastructure.repeat.RepeatStatus
+import org.springframework.jms.core.JmsTemplate
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
 import java.io.BufferedReader
@@ -23,41 +23,75 @@ import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+import java.util.concurrent.atomic.AtomicInteger
 
 private val logger = KotlinLogging.logger {}
 
 /**
- * Tasklet that fetches URIs from SPARQL endpoint and stores them in StepExecutionContext.
+ * Tasklet that fetches URIs from SPARQL endpoint and publishes them to JMS queue in parallel.
  *
- * This is the idiomatic Spring Batch approach for expensive data fetching:
- * - Runs once at the beginning of the job
- * - Stores fetched data list in StepExecutionContext
- * - Downstream readers access data via ExecutionContext
+ * Replaces execution context storage with JMS queue distribution to solve execution context bloat:
+ * - Before: Stored 154 MB List<CellarData> in database execution context
+ * - After: Publishes messages to persistent JMS queue (zero execution context storage)
+ *
+ * Benefits:
+ * - Zero execution context storage (only stores count)
+ * - Fast restart (messages remain in queue, no 3-4 minute SPARQL re-fetch)
+ * - Automatic message persistence (survives application restart)
+ * - Parallel publishing using coroutines (10 concurrent threads by default)
+ * - Future-proof for horizontal scaling (remote chunking)
+ *
+ * Restart Behavior (Idempotent):
+ * - Stores "sparql.publishingCompleted" flag in execution context when done
+ * - On restart, checks flag and skips SPARQL fetch + publishing if already completed
+ * - Prevents duplicate messages in queue on restart
+ * - If publishing completes, messages remain in queue for downstream processing
  *
  * Error Handling:
- * - If SPARQL fetch fails (timeout, network error), step fails
+ * - If SPARQL fetch fails (timeout, network error), step fails without setting flag
  * - Job status becomes FAILED
- * - On restart, SPARQL fetch re-runs (~4 minutes)
+ * - On restart, SPARQL fetch re-runs (~4 minutes) and re-publishes messages
+ * - If publishing fails mid-way, some duplicate messages may exist in queue (JMS handles this)
  *
  * Timeout Configuration:
  * - RestClient configured with 4-minute read timeout (see FormexXmlBatchJob.restClient)
  * - EU SPARQL endpoint can take 3-4 minutes for large queries
  *
  * @param properties SPARQL endpoint configuration
+ * @param jmsProperties JMS queue configuration
  * @param restClient Spring RestClient for HTTP communication (with 4-minute timeout)
+ * @param jmsTemplate Spring Boot auto-configured JmsTemplate for message publishing
  * @param progressService Optional Mordant progress service for CLI feedback (feature-flagged)
  */
 @Component
-class SparqlUriFetchTasklet(
+class SparqlUriJmsPublisher(
     private val properties: SparqlProperties,
+    private val jmsProperties: JmsProperties,
     private val restClient: RestClient,
+    private val jmsTemplate: JmsTemplate,
     private val progressService: MordantProgressService?,
 ) : Tasklet {
     override fun execute(
         contribution: StepContribution,
         chunkContext: ChunkContext,
     ): RepeatStatus {
+        val executionContext =
+            chunkContext.stepContext.stepExecution
+                ?.jobExecution
+                ?.executionContext
+
+        // Check if publishing already completed (restart scenario)
+        val alreadyPublished = executionContext?.containsKey("sparql.publishingCompleted") == true
+        if (alreadyPublished) {
+            val uriCount = executionContext?.getLong("sparql.uriCount") ?: 0
+            logger.info { "Publishing already completed in previous run ($uriCount URIs) - skipping SPARQL fetch and publishing" }
+            progressService?.printTaskletComplete("Publishing already completed in previous run ($uriCount URIs) - resuming job")
+            return RepeatStatus.FINISHED
+        }
+
         logger.info { "Fetching URIs from SPARQL endpoint: ${properties.endpoint}" }
+
+        //TODO it feels odd to have the progress service this tightly coupled
 
         // Show waiting message for long SPARQL fetch
         progressService?.printTaskletWaiting("Fetching URIs from SPARQL endpoint (this may take 3-4 minutes)")
@@ -67,22 +101,55 @@ class SparqlUriFetchTasklet(
         // Show completion message
         progressService?.printTaskletComplete("Fetched ${records.size} URIs from SPARQL endpoint")
 
-        // Store in step execution context for downstream reader
-        chunkContext.stepContext.stepExecution.executionContext
-            .put(SPARQL_DATA_KEY, records)
+        // Publish to JMS queue in parallel (replaces execution context storage)
+        val parallelism = 10 // Number of concurrent publishing threads
+        logger.info { "Publishing ${records.size} URIs to JMS queue with $parallelism parallel threads: ${jmsProperties.cellarDataQueue}" }
+        progressService?.printTaskletWaiting("Publishing ${records.size} URIs to JMS queue with $parallelism parallel threads...")
 
-        // Also store count in job execution context for progress tracking (if available)
-        chunkContext.stepContext.stepExecution.jobExecution
-            ?.executionContext
-            ?.putLong("sparql.uriCount", records.size.toLong())
+        // Hide cursor for progress bar updates
+        progressService?.hideCursor()
 
-        logger.info { "Stored ${records.size} URIs in ExecutionContext for downstream processing" }
+        // Publish messages in parallel using coroutines with limited parallelism
+        val publishedCount = AtomicInteger(0)
+        val progressUpdateInterval = 1_000 // Update progress every 1000 messages
+        val batchSize = 1_000 // Batch records into chunks for parallel processing
+
+        runBlocking(Dispatchers.IO.limitedParallelism(parallelism)) {
+            records
+                .chunked(batchSize)
+                .map { batch ->
+                    async {
+                        batch.forEach { cellarData ->
+                            jmsTemplate.convertAndSend(jmsProperties.cellarDataQueue, cellarData)
+                            val count = publishedCount.incrementAndGet()
+
+                            // Update progress bar every 1000 messages (thread-safe)
+                            if (count % progressUpdateInterval == 0) {
+                                logger.debug { "Published $count / ${records.size} messages..." }
+                                progressService?.printChunkProgress(count.toLong(), records.size.toLong())
+                            }
+                        }
+                    }
+                }.awaitAll()
+        }
+
+        // Final progress update to show 100% completion
+        progressService?.printChunkProgress(records.size.toLong(), records.size.toLong())
+
+        // Show cursor again and move to next line
+        progressService?.showCursor()
+        progressService?.printNewline()
+
+        logger.info { "Successfully published ${records.size} messages using $parallelism parallel threads" }
+
+        // Store completion flag and count (prevents re-publishing on restart)
+        executionContext?.putLong("sparql.uriCount", records.size.toLong())
+        executionContext?.putString("sparql.publishingCompleted", "true")
+
+        logger.info { "Successfully published ${records.size} URIs to JMS queue" }
+        progressService?.printTaskletComplete("Successfully published ${records.size} URIs to JMS queue")
 
         return RepeatStatus.FINISHED
-    }
-
-    companion object {
-        const val SPARQL_DATA_KEY = "sparql.data"
     }
 
     private fun fetchAndParseFromSparql(): List<CellarData> {
@@ -175,8 +242,13 @@ class SparqlUriFetchTasklet(
         parser.beginParsing(reader)
         while (true) {
             val row = parser.parseNextRecord() ?: break
+            val correlationId =
+                java.util.UUID
+                    .randomUUID()
+                    .toString()
             records.add(
                 CellarData(
+                    correlationId = correlationId,
                     item = row.getString("item"),
                     workId = row.getString("workId"),
                     expressionId = row.getString("expressionId"),
@@ -190,95 +262,7 @@ class SparqlUriFetchTasklet(
         parser.stopParsing()
         reader.close()
 
-        logger.info { "Parsed ${records.size} records from SPARQL endpoint" }
+        logger.info { "Parsed ${records.size} records from SPARQL endpoint with correlation IDs" }
         return records
-    }
-}
-
-/**
- * ItemReader that reads from SPARQL data stored in JobExecutionContext with restart support.
- *
- * Reads data from JobExecutionContext (populated by SparqlUriFetchTasklet and promoted by ExecutionContextPromotionListener).
- *
- * Implements ItemStream to track read position across job restarts:
- * - On restart, restores position from ExecutionContext
- * - Saves current index before each chunk commit
- * - Allows jobs to resume from failure point
- *
- * Note: Requires @StepScope for proper Spring Batch lifecycle management.
- */
-@Component
-@StepScope
-class CachedSparqlUriReader :
-    ItemReader<CellarData>,
-    ItemStream {
-    private var currentIndex = 0
-    private val logger = KotlinLogging.logger {}
-    private val executionContextKey = "sparql.reader.index"
-    private lateinit var cachedData: List<CellarData>
-    private var jobExecutionContext: ExecutionContext? = null
-
-    @BeforeStep
-    fun beforeStep(stepExecution: StepExecution) {
-        // Get job execution context which contains the promoted SPARQL data
-        jobExecutionContext = stepExecution.jobExecution.executionContext
-    }
-
-    override fun read(): CellarData? =
-        if (currentIndex < cachedData.size) {
-            cachedData[currentIndex].also {
-                logger.debug { "Reader: Read index=$currentIndex URI=${it.item}" }
-                currentIndex++
-            }
-        } else {
-            logger.debug { "Reader: Exhausted at index=$currentIndex (total=${cachedData.size})" }
-            null
-        }
-
-    override fun open(executionContext: ExecutionContext) {
-        // Get data from job execution context (promoted from step 1)
-        // Using Spring Batch 5.1+ type-safe API with defensive null/type checking
-        cachedData =
-            try {
-                // Suppression justified: Java type erasure prevents List<CellarData>::class from existing.
-                // ExecutionContext.get() returns List (raw type), requiring unchecked cast to List<CellarData>.
-                // Runtime safety ensured via ClassCastException handling and safe cast operator.
-                @Suppress("UNCHECKED_CAST")
-                jobExecutionContext
-                    ?.get(SparqlUriFetchTasklet.SPARQL_DATA_KEY, List::class.java)
-                    ?.let { it as? List<CellarData> }
-                    ?: emptyList()
-            } catch (e: ClassCastException) {
-                logger.warn { "Unexpected type in ExecutionContext for key ${SparqlUriFetchTasklet.SPARQL_DATA_KEY}" }
-                emptyList()
-            }
-
-        if (cachedData.isEmpty()) {
-            logger.warn { "No SPARQL data found in JobExecutionContext - step 1 may have failed" }
-            return
-        }
-
-        // On first run: currentIndex starts at 0
-        // On restart: restore saved index from previous execution
-        if (executionContext.containsKey(executionContextKey)) {
-            val savedIndex = executionContext.getInt(executionContextKey)
-            currentIndex = savedIndex
-            logger.info { "SPARQL reader resuming from index $savedIndex of ${cachedData.size} URIs (restarted job)" }
-        } else {
-            currentIndex = 0
-            logger.info { "SPARQL reader starting from beginning with ${cachedData.size} URIs (new job execution)" }
-        }
-    }
-
-    override fun update(executionContext: ExecutionContext) {
-        // Save current index before chunk commit
-        // This ensures we can resume from this point if the job fails after this commit
-        executionContext.putInt(executionContextKey, currentIndex)
-        logger.info { "Reader: Saved checkpoint at index=$currentIndex (will resume from here if job restarts)" }
-    }
-
-    override fun close() {
-        // No resources to cleanup for in-memory list
-        logger.debug { "SPARQL reader closed at index $currentIndex of ${cachedData.size}" }
     }
 }

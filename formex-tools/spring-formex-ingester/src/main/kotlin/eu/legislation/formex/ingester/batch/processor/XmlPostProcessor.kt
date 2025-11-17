@@ -14,6 +14,15 @@ import java.util.regex.Pattern
 import javax.xml.parsers.DocumentBuilderFactory
 
 /**
+ * Exception thrown when XML post-processing fails.
+ * Used to signal Spring Batch to skip the item and log to processing_errors table.
+ */
+class XmlPostProcessingException(
+    message: String,
+    cause: Throwable,
+) : Exception(message, cause)
+
+/**
  * Post-processing item processor that parses XML documents to extract metadata
  * (version and root_element) from stored XML files.
  *
@@ -24,6 +33,13 @@ import javax.xml.parsers.DocumentBuilderFactory
  * and extracts:
  * - version: from the noNamespaceSchemaLocation attribute (e.g., "4.3.xd")
  * - root_element: the local name of the root XML element
+ *
+ * Error Handling:
+ * - If XML parsing fails, throws XmlPostProcessingException
+ * - Spring Batch skip handling catches the exception
+ * - Item is skipped (not written to database)
+ * - Error logged to processing_errors table via ErrorLoggingSkipListener
+ * - XML file remains on disk for manual inspection
  */
 @Component
 class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
@@ -54,8 +70,13 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
             }
         }
 
-    override fun process(item: XmlMetadata): XmlMetadata =
-        runCatching {
+    override fun process(item: XmlMetadata): XmlMetadata {
+        logger.info {
+            "PostProcess: Starting XML parsing in thread ${Thread.currentThread().name} - " +
+                "ID=${item.id}, URI=${item.uri}, FilePath=${item.filePath}"
+        }
+
+        return runCatching {
             val xmlContent = Files.readString(Paths.get(item.filePath))
             val rootElement = parseXmlDocument(xmlContent)
             val rootElementName = rootElement.localName ?: rootElement.nodeName
@@ -66,15 +87,21 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
                     version = version,
                     rootElement = rootElementName,
                 )
-            logger.debug {
-                "PostProcess: Enriched ID=${enriched.id} URI=${enriched.uri} " +
-                    "version=$version rootElement=$rootElementName"
+            logger.info {
+                "PostProcess: Successfully enriched - ID=${enriched.id}, URI=${enriched.uri}, " +
+                    "Version=$version, RootElement=$rootElementName, Thread=${Thread.currentThread().name}"
             }
             enriched
         }.getOrElse { e ->
-            logger.warn(e) { "PostProcess: Failed to parse XML for ID=${item.id} URI=${item.uri}: ${e.message}" }
-            item
+            // Log and rethrow to trigger Spring Batch skip handling
+            // This ensures the error is properly tracked in processing_errors table
+            logger.warn(e) {
+                "PostProcess: Failed to parse XML - ID=${item.id}, URI=${item.uri}, " +
+                    "FilePath=${item.filePath}, Error=${e.message}"
+            }
+            throw XmlPostProcessingException("Failed to parse XML for URI ${item.uri}: ${e.message}", e)
         }
+    }
 
     private fun parseXmlDocument(xmlContent: String) =
         documentBuilderFactory

@@ -25,3 +25,23 @@ data class SparqlProperties(
 data class StorageProperties(
     val directory: String = "./formex-xml-files",
 )
+
+/**
+ * Configuration properties for JMS queue names.
+ *
+ * @property cellarDataQueue Queue name for CellarData messages from SPARQL fetch
+ */
+@ConfigurationProperties(prefix = "formex.jms")
+data class JmsProperties(
+    val cellarDataQueue: String = "cellar.data.queue",
+)
+
+/**
+ * Configuration properties for Spring Batch processing.
+ *
+ * @property skipPercentage Percentage of total URIs allowed to fail before job fails (default: 0.5%)
+ */
+@ConfigurationProperties(prefix = "formex.batch")
+data class BatchProperties(
+    val skipPercentage: Double = 0.5,
+)

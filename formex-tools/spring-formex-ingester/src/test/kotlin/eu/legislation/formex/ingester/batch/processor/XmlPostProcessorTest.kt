@@ -127,7 +127,7 @@ class XmlPostProcessorTest {
     }
 
     @Test
-    fun `process should return original metadata when XML parsing fails`() {
+    fun `process should throw exception when XML parsing fails`() {
         // Given - Invalid XML
         val xmlContent = "This is not valid XML"
 
@@ -146,15 +146,14 @@ class XmlPostProcessorTest {
                 filePath = tempFile.toString(),
             )
 
-        // When
-        val result = processor.process(metadata)
+        // When/Then - should throw XmlPostProcessingException
+        val exception =
+            org.junit.jupiter.api.assertThrows<XmlPostProcessingException> {
+                processor.process(metadata)
+            }
 
-        // Then - should return original metadata without version/rootElement
-        assertNotNull(result)
-        assertNull(result?.version)
-        assertNull(result?.rootElement)
-        assertEquals(metadata.id, result?.id)
-        assertEquals(metadata.uri, result?.uri)
+        // Verify exception message contains URI
+        assert(exception.message?.contains("http://example.org/test.xml") == true)
     }
 
     @Test

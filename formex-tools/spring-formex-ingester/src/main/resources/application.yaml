@@ -21,11 +21,29 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 30s
 
+  artemis:
+    mode: embedded
+    embedded:
+      enabled: true
+      persistent: true
+      data-directory: ./data/artemis
+      queues:
+        - cellar.data.queue
+
+  jms:
+    template:
+      # Receive timeout for JmsTemplate.receiveAndConvert()
+      # Reader signals end-of-queue after this timeout (null = wait indefinitely)
+      # Set to 1 second - fast signal when queue is empty
+      receive-timeout: 1000
+
 formex:
   storage:
     directory: ./formex-xml-files
   features:
     cli-progress: true  # Enable Mordant CLI progress bars (disable for CI/non-interactive environments)
+  batch:
+    skip-percentage: 0.5  # Allow up to 0.5% of total URIs to be skipped (errors) before failing the job
 
 sparql:
   endpoint: https://publications.europa.eu/webapi/rdf/sparql

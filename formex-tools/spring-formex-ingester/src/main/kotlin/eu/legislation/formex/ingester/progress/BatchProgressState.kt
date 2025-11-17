@@ -23,16 +23,6 @@ private const val MINUTES_PER_HOUR = 60L
 private const val SECONDS_PER_MINUTE = 60L
 
 /**
- * Returns the appropriate color for a batch status.
- */
-fun getStatusColor(status: BatchStatus) =
-    when (status) {
-        BatchStatus.COMPLETED -> com.github.ajalt.mordant.rendering.TextColors.green
-        BatchStatus.FAILED -> com.github.ajalt.mordant.rendering.TextColors.red
-        else -> com.github.ajalt.mordant.rendering.TextColors.yellow
-    }
-
-/**
  * Represents the current state of batch processing for progress visualization.
  *
  * @param smoothedItemsPerSec Exponentially smoothed speed for stable ETA calculations

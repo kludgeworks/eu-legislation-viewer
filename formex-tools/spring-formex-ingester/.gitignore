@@ -36,3 +36,4 @@ formex-xml-files/
 logs
 *.db*
 bin/
+*.log

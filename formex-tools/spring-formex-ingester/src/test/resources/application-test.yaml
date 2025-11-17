@@ -13,6 +13,14 @@ spring:
     # Allow test doubles to override production beans
     allow-bean-definition-overriding: true
 
+  artemis:
+    mode: embedded
+    embedded:
+      enabled: true
+      persistent: false  # In-memory for tests (faster, no cleanup needed)
+      queues:
+        - cellar.data.queue
+
 formex:
   storage:
     directory: ${maven.build.directory:target}/test-xml-files

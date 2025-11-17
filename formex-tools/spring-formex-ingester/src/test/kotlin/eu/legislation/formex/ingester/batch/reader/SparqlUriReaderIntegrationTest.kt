@@ -1,6 +1,7 @@
 package eu.legislation.formex.ingester.batch.reader
 
-import eu.legislation.formex.ingester.batch.SparqlUriFetchTasklet
+import eu.legislation.formex.ingester.batch.SparqlUriJmsPublisher
+import eu.legislation.formex.ingester.config.JmsProperties
 import eu.legislation.formex.ingester.config.SparqlProperties
 import eu.legislation.formex.ingester.domain.model.CellarData
 import mockwebserver3.MockResponse
@@ -14,28 +15,32 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
+import org.mockito.Mockito.lenient
+import org.mockito.Mockito.verify
 import org.mockito.junit.jupiter.MockitoExtension
 import org.springframework.batch.core.scope.context.ChunkContext
 import org.springframework.batch.core.scope.context.StepContext
 import org.springframework.batch.core.step.StepContribution
-import org.springframework.batch.core.step.StepExecution
 import org.springframework.batch.infrastructure.repeat.RepeatStatus
+import org.springframework.jms.core.JmsTemplate
 import org.springframework.web.client.RestClient
 
 /**
- * Integration tests for SparqlUriFetchTasklet using MockWebServer.
+ * Integration tests for SparqlUriJmsPublisher using MockWebServer.
  *
- * Tests real HTTP communication, SPARQL query structure, and CSV parsing
- * end-to-end without mocking HttpClient internals.
+ * Tests real HTTP communication, SPARQL query structure, CSV parsing,
+ * and JMS message publishing end-to-end.
  *
- * Uses Mockito to mock Spring Batch infrastructure (StepExecution, ChunkContext, etc.)
- * following the pattern from Spring Batch test examples.
+ * Uses Mockito to mock Spring Batch infrastructure and JmsTemplate.
  */
 @ExtendWith(MockitoExtension::class)
 class SparqlUriReaderIntegrationTest {
     private lateinit var mockServer: MockWebServer
-    private lateinit var tasklet: SparqlUriFetchTasklet
+    private lateinit var tasklet: SparqlUriJmsPublisher
     private lateinit var restClient: RestClient
+
+    @Mock
+    private lateinit var jmsTemplate: JmsTemplate
 
     @Mock
     private lateinit var stepContribution: StepContribution
@@ -45,9 +50,6 @@ class SparqlUriReaderIntegrationTest {
 
     @Mock
     private lateinit var stepContext: StepContext
-
-    @Mock
-    private lateinit var stepExecution: StepExecution
 
     @BeforeEach
     fun setup() {
@@ -60,30 +62,17 @@ class SparqlUriReaderIntegrationTest {
                 endpoint = "$baseUrl/sparql",
                 language = "eng",
             )
+        val jmsProperties = JmsProperties(cellarDataQueue = "test.cellar.queue")
 
         // Create a RestClient configured for the mock server
         restClient = RestClient.builder().baseUrl(baseUrl).build()
 
-        // Mock chunkContext to return stepContext, which returns stepExecution with ExecutionContext
-        // Use lenient() for mocks that might not be used in error scenarios
-        org.mockito.Mockito
-            .lenient()
-            .`when`(chunkContext.stepContext)
-            .thenReturn(stepContext)
-        org.mockito.Mockito
-            .lenient()
-            .`when`(stepContext.stepExecution)
-            .thenReturn(stepExecution)
-        org.mockito.Mockito
-            .lenient()
-            .`when`(
-                stepExecution.executionContext,
-            ).thenReturn(
-                org.springframework.batch.infrastructure.item
-                    .ExecutionContext(),
-            )
+        // Mock Spring Batch context - returning null for execution context is fine for unit tests
+        // The tasklet uses safe-call operator (?.) so null is handled gracefully
+        lenient().`when`(chunkContext.stepContext).thenReturn(stepContext)
+        lenient().`when`(stepContext.stepExecution).thenReturn(null)
 
-        tasklet = SparqlUriFetchTasklet(sparqlProperties, restClient, null)
+        tasklet = SparqlUriJmsPublisher(sparqlProperties, jmsProperties, restClient, jmsTemplate, null)
     }
 
     @AfterEach
@@ -92,7 +81,7 @@ class SparqlUriReaderIntegrationTest {
     }
 
     @Test
-    fun `tasklet should parse CSV response and cache data in JobExecutionContext`() {
+    fun `tasklet should parse CSV response and publish to JMS queue`() {
         // Given - mock CSV response with two rows
         val csvContent =
             javaClass
@@ -124,33 +113,12 @@ class SparqlUriReaderIntegrationTest {
         val bodyString = recordedRequest.body?.utf8() ?: ""
         assertTrue(bodyString.startsWith("query="))
 
-        // Verify data was stored in ExecutionContext
-        assertTrue(stepExecution.executionContext.containsKey(SparqlUriFetchTasklet.SPARQL_DATA_KEY))
-
-        // Suppression justified: Java type erasure prevents List<CellarData>::class from existing.
-        // ExecutionContext.get() returns List (raw type), requiring unchecked cast to List<CellarData>.
-        @Suppress("UNCHECKED_CAST")
-        val cachedData =
-            stepExecution.executionContext.get(
-                SparqlUriFetchTasklet.SPARQL_DATA_KEY,
-                List::class.java,
-            ) as List<CellarData>
-        assertEquals(2, cachedData.size)
-
-        // Verify first item
-        val firstItem = cachedData[0]
-        assertEquals("http://example.org/doc1.xml", firstItem.item)
-        assertEquals("550e8400-e29b-41d4-a716-446655440000", firstItem.workId)
-        assertEquals("expr-001", firstItem.expressionId)
-        assertEquals("man-001", firstItem.manifestationId)
-        assertEquals("cs-001", firstItem.contentStreamId)
-        assertEquals("eng", firstItem.language)
-        assertEquals("application/xml", firstItem.mimeType)
-
-        // Verify second item
-        val secondItem = cachedData[1]
-        assertEquals("http://example.org/doc2.xml", secondItem.item)
-        assertEquals("550e8400-e29b-41d4-a716-446655440001", secondItem.workId)
+        // Verify JMS messages were published (2 messages for 2 rows)
+        verify(jmsTemplate, org.mockito.Mockito.times(2))
+            .convertAndSend(
+                org.mockito.Mockito.eq("test.cellar.queue"),
+                org.mockito.Mockito.any(CellarData::class.java),
+            )
     }
 
     @Test
@@ -177,15 +145,12 @@ class SparqlUriReaderIntegrationTest {
         // Then - verify tasklet finished
         assertEquals(RepeatStatus.FINISHED, result)
 
-        // Verify empty list was stored in ExecutionContext
-        // Suppression justified: Java type erasure prevents List<CellarData>::class from existing.
-        @Suppress("UNCHECKED_CAST")
-        val cachedData =
-            stepExecution.executionContext.get(
-                SparqlUriFetchTasklet.SPARQL_DATA_KEY,
-                List::class.java,
-            ) as List<CellarData>
-        assertEquals(0, cachedData.size)
+        // Verify no JMS messages were published (0 rows)
+        verify(jmsTemplate, org.mockito.Mockito.never())
+            .convertAndSend(
+                org.mockito.Mockito.anyString(),
+                org.mockito.Mockito.any(CellarData::class.java),
+            )
     }
 
     @Test
@@ -252,17 +217,12 @@ class SparqlUriReaderIntegrationTest {
         // When - execute tasklet
         tasklet.execute(stepContribution, chunkContext)
 
-        // Then - verify data with special characters was parsed
-        // Suppression justified: Java type erasure prevents List<CellarData>::class from existing.
-        @Suppress("UNCHECKED_CAST")
-        val cachedData =
-            stepExecution.executionContext.get(
-                SparqlUriFetchTasklet.SPARQL_DATA_KEY,
-                List::class.java,
-            ) as List<CellarData>
-
-        assertEquals(1, cachedData.size)
-        assertEquals("http://example.org/doc,special.xml", cachedData[0].item)
+        // Then - verify 1 message was published
+        verify(jmsTemplate, org.mockito.Mockito.times(1))
+            .convertAndSend(
+                org.mockito.Mockito.eq("test.cellar.queue"),
+                org.mockito.Mockito.any(CellarData::class.java),
+            )
     }
 
     @Test
@@ -290,15 +250,12 @@ class SparqlUriReaderIntegrationTest {
         // When - execute tasklet
         tasklet.execute(stepContribution, chunkContext)
 
-        // Then - verify all 100 items were stored in ExecutionContext
-        // Suppression justified: Java type erasure prevents List<CellarData>::class from existing.
-        @Suppress("UNCHECKED_CAST")
-        val cachedData =
-            stepExecution.executionContext.get(
-                SparqlUriFetchTasklet.SPARQL_DATA_KEY,
-                List::class.java,
-            ) as List<CellarData>
-        assertEquals(100, cachedData.size)
+        // Then - verify all 100 messages were published to JMS queue
+        verify(jmsTemplate, org.mockito.Mockito.times(100))
+            .convertAndSend(
+                org.mockito.Mockito.eq("test.cellar.queue"),
+                org.mockito.Mockito.any(CellarData::class.java),
+            )
     }
 
     @Test

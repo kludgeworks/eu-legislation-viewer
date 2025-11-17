@@ -33,15 +33,28 @@
 	</properties>
 
 	<dependencies>
-		<!-- Spring Boot Starters -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-batch-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-restclient</artifactId>
-		</dependency>
+	<!-- Spring Boot Starters -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-batch-jdbc</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-restclient</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-artemis</artifactId>
+	</dependency>
+	<!-- Artemis embedded broker for JMS messaging (auto-managed version by Spring Boot) -->
+	<dependency>
+		<groupId>org.apache.activemq</groupId>
+		<artifactId>artemis-jakarta-server</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.batch</groupId>
+		<artifactId>spring-batch-integration</artifactId>
+	</dependency>
 
 	<!-- Kotlin Dependencies -->
 	<dependency>
@@ -125,6 +138,11 @@
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-restclient-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-artemis-test</artifactId>
 		<scope>test</scope>
 	</dependency>
 	<dependency>

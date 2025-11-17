@@ -137,6 +137,30 @@ class MordantProgressService {
     }
 
     /**
+     * Hides the terminal cursor for progress display operations.
+     * Call this before starting a progress display that updates in place.
+     */
+    fun hideCursor() {
+        terminal.cursor.hide(showOnExit = true)
+    }
+
+    /**
+     * Shows the terminal cursor after progress display completes.
+     * Call this when progress display is finished.
+     */
+    fun showCursor() {
+        terminal.cursor.show()
+    }
+
+    /**
+     * Prints a newline to move cursor to next line.
+     * Useful after progress bar completion.
+     */
+    fun printNewline() {
+        terminal.println()
+    }
+
+    /**
      * Prints step completion statistics.
      */
     fun printStepSummary(
