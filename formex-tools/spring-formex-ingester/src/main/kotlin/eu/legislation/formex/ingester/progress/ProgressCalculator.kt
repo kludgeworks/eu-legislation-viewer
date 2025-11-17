@@ -11,8 +11,10 @@ package eu.legislation.formex.ingester.progress
 internal class ProgressCalculator {
     companion object {
         // EMA smoothing for speed calculations
-        // Alpha = 0.15 provides good balance between responsiveness and stability
-        private const val SPEED_SMOOTHING_ALPHA = 0.15
+        // Alpha = 0.3 provides good balance between responsiveness and stability
+        // Higher alpha (vs 0.15) makes progress bar more responsive to speed changes
+        // while still smoothing out chunk-to-chunk variance
+        private const val SPEED_SMOOTHING_ALPHA = 0.3
     }
 
     @Volatile
@@ -29,7 +31,8 @@ internal class ProgressCalculator {
      *
      * Uses Exponential Moving Average (EMA) to smooth speed calculations:
      * - Formula: smoothed = alpha × current + (1 - alpha) × previous
-     * - Alpha = 0.15 balances responsiveness with stability
+     * - Alpha = 0.3 balances responsiveness with stability
+     * - Higher alpha makes progress bar more responsive to real speed changes
      *
      * @param state Current progress state
      * @return Updated state with smoothed speed

@@ -6,7 +6,6 @@ import java.util.UUID
 /**
  * Data class representing XML metadata extracted from downloaded files
  *
- * @property correlationId Unique identifier for tracing this item through the pipeline
  * @property id Unique identifier for the document
  * @property uri Source URI of the XML document
  * @property fileSize Size of the XML file in bytes
@@ -19,7 +18,6 @@ import java.util.UUID
  * @property rootElement Local name of the root XML element
  */
 data class XmlMetadata(
-    val correlationId: String,
     val id: UUID,
     val uri: String,
     val fileSize: Long,
@@ -32,6 +30,6 @@ data class XmlMetadata(
     val rootElement: String? = null,
 ) : Serializable {
     companion object {
-        private const val serialVersionUID = 2L // Incremented due to schema change
+        private const val serialVersionUID = 1L
     }
 }

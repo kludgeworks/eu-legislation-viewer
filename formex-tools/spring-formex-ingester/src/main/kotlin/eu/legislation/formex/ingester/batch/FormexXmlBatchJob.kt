@@ -13,6 +13,7 @@ import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.job.parameters.JobParametersBuilder
 import org.springframework.batch.core.job.parameters.JobParametersIncrementer
+import org.springframework.batch.core.listener.StepExecutionListener
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
@@ -41,7 +42,8 @@ import java.time.Duration
 class FormexXmlBatchJob {
     companion object {
         // Chunk processing configuration
-        private const val CHUNK_SIZE = 10
+        // Larger chunk size (50) reduces variance in speed calculations for smoother progress display
+        private const val CHUNK_SIZE = 50
 
         // Thread pool configuration for parallel downloads
         private const val CORE_POOL_SIZE = 10
@@ -209,6 +211,7 @@ class FormexXmlBatchJob {
                 .faultTolerant()
                 .skipPolicy(percentageBasedSkipPolicy)
                 .listener(errorLoggingSkipListener)
+                .listener(percentageBasedSkipPolicy as StepExecutionListener)
 
         // Add Mordant listeners if available (controlled by feature flag)
         mordantStepListener?.let { stepBuilder.listener(it) }

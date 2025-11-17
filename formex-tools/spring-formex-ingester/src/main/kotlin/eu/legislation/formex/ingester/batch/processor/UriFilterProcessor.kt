@@ -30,7 +30,7 @@ class UriFilterProcessor(
      * @return null if URI exists (filtered out by Spring Batch), otherwise the original item
      */
     override fun process(item: CellarData): CellarData? {
-        logger.info { "Filter: [CID=${item.correlationId}] Checking URI in thread ${Thread.currentThread().name}: ${item.item}" }
+        logger.info { "Filter: Checking URI in thread ${Thread.currentThread().name}: ${item.item}" }
 
         val exists =
             transaction(database) {
@@ -42,10 +42,10 @@ class UriFilterProcessor(
             }
 
         return if (exists) {
-            logger.info { "Filter: [CID=${item.correlationId}] URI already exists, skipping: ${item.item}" }
+            logger.info { "Filter: URI already exists, skipping: ${item.item}" }
             null
         } else {
-            logger.info { "Filter: [CID=${item.correlationId}] URI is new, allowing through: ${item.item}" }
+            logger.info { "Filter: URI is new, allowing through: ${item.item}" }
             item
         }
     }

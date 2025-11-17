@@ -40,11 +40,9 @@ class JmsCellarDataReader(
         try {
             // Blocking receive with configured timeout (1000ms from application.yaml)
             // Returns null when queue is empty after timeout
-            val message = jmsTemplate.receiveAndConvert(jmsProperties.cellarDataQueue)
-
-            when (message) {
+            when (val message = jmsTemplate.receiveAndConvert(jmsProperties.cellarDataQueue)) {
                 is CellarData -> {
-                    logger.info { "Reader: Received message [CID=${message.correlationId}] URI=${message.item}" }
+                    logger.debug { "Reader: Received message URI=${message.item} in thread ${Thread.currentThread().name}" }
                     message
                 }
                 null -> {

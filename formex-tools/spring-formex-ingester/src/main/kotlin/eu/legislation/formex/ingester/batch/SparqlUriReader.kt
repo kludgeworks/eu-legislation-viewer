@@ -91,7 +91,7 @@ class SparqlUriJmsPublisher(
 
         logger.info { "Fetching URIs from SPARQL endpoint: ${properties.endpoint}" }
 
-        //TODO it feels odd to have the progress service this tightly coupled
+        // TODO it feels odd to have the progress service this tightly coupled
 
         // Show waiting message for long SPARQL fetch
         progressService?.printTaskletWaiting("Fetching URIs from SPARQL endpoint (this may take 3-4 minutes)")
@@ -242,13 +242,8 @@ class SparqlUriJmsPublisher(
         parser.beginParsing(reader)
         while (true) {
             val row = parser.parseNextRecord() ?: break
-            val correlationId =
-                java.util.UUID
-                    .randomUUID()
-                    .toString()
             records.add(
                 CellarData(
-                    correlationId = correlationId,
                     item = row.getString("item"),
                     workId = row.getString("workId"),
                     expressionId = row.getString("expressionId"),
@@ -262,7 +257,7 @@ class SparqlUriJmsPublisher(
         parser.stopParsing()
         reader.close()
 
-        logger.info { "Parsed ${records.size} records from SPARQL endpoint with correlation IDs" }
+        logger.info { "Parsed ${records.size} records from SPARQL endpoint" }
         return records
     }
 }

@@ -37,6 +37,12 @@ spring:
       # Set to 1 second - fast signal when queue is empty
       receive-timeout: 1000
 
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0  # Sample 100% of requests for debugging (use 0.1 in production for 10%)
+
 formex:
   storage:
     directory: ./formex-xml-files
