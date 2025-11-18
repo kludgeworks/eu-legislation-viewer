@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <!-- File appender with daily rolling policy -->
+    <!-- File appender with size-based rolling policy -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/formex-ingester.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- Daily rollover -->
-            <fileNamePattern>logs/formex-ingester.%d{yyyy-MM-dd}.log</fileNamePattern>
-            <!-- Keep 30 days of history -->
+        <file>${LOG_PATH:-logs}/formex-ingester.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH:-logs}/formex-ingester.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>20MB</maxFileSize>
             <maxHistory>30</maxHistory>
-            <!-- Total size cap of 1GB -->
-            <totalSizeCap>1GB</totalSizeCap>
+            <totalSizeCap>500MB</totalSizeCap>
         </rollingPolicy>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{traceId}-%X{spanId}] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- Root logger configuration based on profile -->
-    <!-- Default: FILE ONLY (Mordant owns the console) -->
-    <springProfile name="!debug-console">
+    <!-- Console appender (conditionally attached based on profile) -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] [%X{traceId}-%X{spanId}] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--
+        Profile-based appender configuration:
+        
+        When formex.features.cli-progress=true (default):
+        - FILE only - console owned by terminal progress bars
+        - Activated via cli-progress profile (set by CliProgressProfileActivator)
+        
+        When formex.features.cli-progress=false:
+        - FILE + CONSOLE - no progress bars, standard console logging
+        - Activated when cli-progress profile is NOT active
+    -->
+    <springProfile name="cli-progress">
         <root level="INFO">
             <appender-ref ref="FILE"/>
         </root>
     </springProfile>
     
-    <!-- debug-console profile: FILE + CONSOLE for debugging -->
-    <springProfile name="debug-console">
-        <!-- Console appender with colored output (only used in debug-console profile) -->
-        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-            <encoder>
-                <pattern>%d{HH:mm:ss.SSS} [%thread] [%X{traceId}-%X{spanId}] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
-            </encoder>
-        </appender>
-        
+    <springProfile name="!cli-progress">
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="FILE"/>

@@ -15,6 +15,10 @@ internal class ProgressCalculator {
         // Higher alpha (vs 0.15) makes progress bar more responsive to speed changes
         // while still smoothing out chunk-to-chunk variance
         private const val SPEED_SMOOTHING_ALPHA = 0.3
+
+        // Minimum time window for speed calculation (5 seconds)
+        // Prevents speed from dropping to zero during short processing pauses
+        private const val MIN_SPEED_CALCULATION_WINDOW_MS = 5000L
     }
 
     @Volatile
@@ -33,6 +37,7 @@ internal class ProgressCalculator {
      * - Formula: smoothed = alpha × current + (1 - alpha) × previous
      * - Alpha = 0.3 balances responsiveness with stability
      * - Higher alpha makes progress bar more responsive to real speed changes
+     * - Uses minimum 5-second window to prevent speed from dropping during short pauses
      *
      * @param state Current progress state
      * @return Updated state with smoothed speed
@@ -43,9 +48,18 @@ internal class ProgressCalculator {
         // Calculate instantaneous speed for this update
         val currentSpeed =
             if (lastUpdateTimeMs in 1..<currentTimeMs) {
-                val timeDeltaSeconds = (currentTimeMs - lastUpdateTimeMs) / 1000.0
-                val itemsDelta = state.itemsRead - lastItemsRead
-                if (timeDeltaSeconds > 0) itemsDelta / timeDeltaSeconds else 0.0
+                val timeDeltaMs = currentTimeMs - lastUpdateTimeMs
+
+                // Use instantaneous speed if enough time has passed (reduces noise from short pauses)
+                // Otherwise fall back to overall average speed for stability
+                if (timeDeltaMs >= MIN_SPEED_CALCULATION_WINDOW_MS) {
+                    val timeDeltaSeconds = timeDeltaMs / 1000.0
+                    val itemsDelta = state.itemsRead - lastItemsRead
+                    if (timeDeltaSeconds > 0) itemsDelta / timeDeltaSeconds else 0.0
+                } else {
+                    // Not enough time has passed - use overall average to avoid wild fluctuations
+                    state.itemsPerSec
+                }
             } else {
                 // First update - use overall average as initial estimate
                 state.itemsPerSec

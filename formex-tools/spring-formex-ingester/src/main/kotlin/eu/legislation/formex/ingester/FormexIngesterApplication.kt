@@ -20,5 +20,16 @@ class FormexIngesterApplication
 
 @Suppress("SpreadOperator") // Required by Spring Boot runApplication API
 fun main(args: Array<String>) {
-    runApplication<FormexIngesterApplication>(*args)
+    runApplication<FormexIngesterApplication>(*args) {
+        // Disable Spring banner when CLI progress bars are enabled (default)
+        // The banner interferes with rich terminal progress display
+        // Check command-line args and system properties since environment isn't available yet
+        val cliProgressDisabled =
+            args.contains("--formex.features.cli-progress=false") ||
+                System.getProperty("formex.features.cli-progress") == "false"
+
+        if (!cliProgressDisabled) {
+            setBannerMode(org.springframework.boot.Banner.Mode.OFF)
+        }
+    }
 }

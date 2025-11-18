@@ -19,21 +19,24 @@ data class SparqlProperties(
 /**
  * Configuration properties for XML file storage.
  *
- * @property directory Directory path for permanent XML file storage
+ * @property directory Directory path for permanent XML file storage (resolved from platform-appropriate data directory)
  */
 @ConfigurationProperties(prefix = "formex.storage")
 data class StorageProperties(
-    val directory: String = "./formex-xml-files",
+    val directory: String,
 )
 
 /**
  * Configuration properties for JMS queue names.
  *
+ * Single source of truth defined in application.yaml (formex.jms.cellar-data-queue),
+ * also referenced by spring.artemis.embedded.queues via property placeholder.
+ *
  * @property cellarDataQueue Queue name for CellarData messages from SPARQL fetch
  */
 @ConfigurationProperties(prefix = "formex.jms")
 data class JmsProperties(
-    val cellarDataQueue: String = "cellar.data.queue",
+    val cellarDataQueue: String,
 )
 
 /**
@@ -43,5 +46,5 @@ data class JmsProperties(
  */
 @ConfigurationProperties(prefix = "formex.batch")
 data class BatchProperties(
-    val skipPercentage: Double = 0.5,
+    val skipPercentage: Double,
 )

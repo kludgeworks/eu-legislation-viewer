@@ -1,9 +1,13 @@
+logging:
+  file:
+    path: ${app.stateDir}/logs
+
 spring:
   application:
     name: formex-ingester
 
   datasource:
-    url: jdbc:sqlite:./formex.db?journal_mode=WAL
+    url: jdbc:sqlite:${app.dataDir}/formex.db?journal_mode=WAL
     driver-class-name: org.sqlite.JDBC
     hikari:
       maximum-pool-size: 10
@@ -26,9 +30,9 @@ spring:
     embedded:
       enabled: true
       persistent: true
-      data-directory: ./data/artemis
+      data-directory: ${app.stateDir}/artemis
       queues:
-        - cellar.data.queue
+        - ${formex.jms.cellar-data-queue}
 
   jms:
     template:
@@ -44,10 +48,18 @@ management:
       probability: 1.0  # Sample 100% of requests for debugging (use 0.1 in production for 10%)
 
 formex:
+  jms:
+    # Single source of truth for JMS queue name
+    # Referenced by: spring.artemis.embedded.queues and JmsProperties
+    cellar-data-queue: cellar.data.queue
   storage:
-    directory: ./formex-xml-files
+    directory: ${app.dataDir}/xml-files
   features:
-    cli-progress: true  # Enable Mordant CLI progress bars (disable for CI/non-interactive environments)
+    # CLI Progress Bars (default: true)
+    # - When true: Rich progress bars displayed, logs to file only
+    # - When false: No progress bars, logs to both console and file
+    # - Set via CLI: --formex.features.cli-progress=false
+    cli-progress: true
   batch:
     skip-percentage: 0.5  # Allow up to 0.5% of total URIs to be skipped (errors) before failing the job
 

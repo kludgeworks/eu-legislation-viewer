@@ -1,0 +1,7 @@
+# Spring Boot Environment Post Processors (runs very early, before property resolution)
+org.springframework.boot.env.EnvironmentPostProcessor=\
+eu.legislation.formex.ingester.config.DirectoriesEnvironmentPostProcessor
+
+# Spring Boot Application Listeners
+org.springframework.context.ApplicationListener=\
+eu.legislation.formex.ingester.config.CliProgressProfileActivator

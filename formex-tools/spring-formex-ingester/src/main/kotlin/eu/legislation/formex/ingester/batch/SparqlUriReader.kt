@@ -5,7 +5,7 @@ import com.univocity.parsers.csv.CsvParserSettings
 import eu.legislation.formex.ingester.config.JmsProperties
 import eu.legislation.formex.ingester.config.SparqlProperties
 import eu.legislation.formex.ingester.domain.model.CellarData
-import eu.legislation.formex.ingester.progress.MordantProgressService
+import eu.legislation.formex.ingester.progress.TerminalProgressService
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -61,7 +61,7 @@ private val logger = KotlinLogging.logger {}
  * @param jmsProperties JMS queue configuration
  * @param restClient Spring RestClient for HTTP communication (with 4-minute timeout)
  * @param jmsTemplate Spring Boot auto-configured JmsTemplate for message publishing
- * @param progressService Optional Mordant progress service for CLI feedback (feature-flagged)
+ * @param progressService Optional terminal progress service for CLI feedback (feature-flagged)
  */
 @Component
 class SparqlUriJmsPublisher(
@@ -69,7 +69,7 @@ class SparqlUriJmsPublisher(
     private val jmsProperties: JmsProperties,
     private val restClient: RestClient,
     private val jmsTemplate: JmsTemplate,
-    private val progressService: MordantProgressService?,
+    private val progressService: TerminalProgressService?,
 ) : Tasklet {
     override fun execute(
         contribution: StepContribution,
@@ -103,7 +103,7 @@ class SparqlUriJmsPublisher(
 
         // Publish to JMS queue in parallel (replaces execution context storage)
         val parallelism = 10 // Number of concurrent publishing threads
-        logger.info { "Publishing ${records.size} URIs to JMS queue with $parallelism parallel threads: ${jmsProperties.cellarDataQueue}" }
+        logger.info { "Publishing ${records.size} URIs to JMS queue" }
         progressService?.printTaskletWaiting("Publishing ${records.size} URIs to JMS queue with $parallelism parallel threads...")
 
         // Hide cursor for progress bar updates

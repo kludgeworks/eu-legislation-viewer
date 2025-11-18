@@ -81,10 +81,68 @@ internal class ProgressBarRenderer(
     }
 
     /**
+     * Builds a skip limit progress bar that transitions from green to red.
+     */
+    private fun buildSkipProgressBar(
+        itemsSkipped: Long,
+        skipLimit: Long,
+    ): String {
+        val barWidth = 10 // Smaller bar for skip indicator
+        val filled =
+            if (skipLimit > 0) {
+                ((itemsSkipped.toDouble() / skipLimit) * barWidth).toInt().coerceIn(0, barWidth)
+            } else {
+                0
+            }
+
+        // Calculate color based on skip percentage
+        // Green (120°) at 0% -> Yellow (60°) at 50% -> Red (0°) at 100%
+        val skipPercentage = if (skipLimit > 0) itemsSkipped.toDouble() / skipLimit else 0.0
+
+        return if (terminal.terminalInfo.ansiLevel >= AnsiLevel.TRUECOLOR) {
+            // Gradient from green to red for terminals with true color support
+            (0 until filled).joinToString("") { i ->
+                val hue = 120 - ((i.toDouble() / barWidth) * 120).toInt() // Green (120°) to Red (0°)
+                TextColors.hsv(hue, 0.8, 1.0)("█")
+            } + TextColors.gray("░".repeat(barWidth - filled))
+        } else {
+            // Fallback: color based on overall percentage
+            val color =
+                when {
+                    skipPercentage < 0.5 -> TextColors.green
+                    skipPercentage < 0.8 -> TextColors.yellow
+                    else -> TextColors.red
+                }
+            color("█".repeat(filled)) + TextColors.gray("░".repeat(barWidth - filled))
+        }
+    }
+
+    /**
      * Renders the rich progress display in a vertical definition list format.
      */
     fun renderRichProgressDisplay(state: BatchProgressState) {
         val progressBar = buildProgressBar(state.itemsRead, state.totalItems)
+
+        // Build skip line with optional progress bar
+        val skippedLine =
+            if (state.skipLimit != null && state.skipLimit > 0) {
+                val skipBar = buildSkipProgressBar(state.itemsSkipped, state.skipLimit)
+                val skipColor =
+                    when {
+                        state.itemsSkipped == 0L -> TextColors.gray
+                        (state.skipPercentage ?: 0.0) < 0.5 -> TextColors.green
+                        (state.skipPercentage ?: 0.0) < 0.8 -> TextColors.yellow
+                        else -> TextColors.red
+                    }
+                "${TextColors.cyan("Skipped:")}     ${skipColor("${state.itemsSkipped}")}/" +
+                    "${TextColors.gray("${state.skipLimit}")} [$skipBar]"
+            } else {
+                "${TextColors.cyan("Skipped:")}     ${if (state.itemsSkipped > 0) {
+                    TextColors.yellow("${state.itemsSkipped}")
+                } else {
+                    TextColors.gray("${state.itemsSkipped}")
+                }}"
+            }
 
         // Build the display content with tasteful color highlighting
         val lines =
@@ -98,15 +156,7 @@ internal class ProgressBarRenderer(
                 "${TextColors.cyan("Items:")}       ${TextColors.white("${state.itemsRead}")}" +
                     "/${TextColors.gray("${state.totalItems}")}",
                 "${TextColors.cyan("Written:")}     ${TextColors.green("${state.itemsWritten}")}",
-                "${TextColors.cyan(
-                    "Skipped:",
-                )}     ${if (state.itemsSkipped > 0) {
-                    TextColors.yellow(
-                        "${state.itemsSkipped}",
-                    )
-                } else {
-                    TextColors.gray("${state.itemsSkipped}")
-                }}",
+                skippedLine,
                 "${TextColors.cyan("Speed:")}       " +
                     "${TextColors.brightCyan("%.1f".format(state.smoothedItemsPerSec))} " +
                     TextColors.gray("items/s"),

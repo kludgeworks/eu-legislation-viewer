@@ -1,6 +1,5 @@
 package eu.legislation.formex.ingester.progress
 
-import org.springframework.batch.core.BatchStatus
 import kotlin.time.Duration.Companion.milliseconds
 
 /**
@@ -26,6 +25,7 @@ private const val SECONDS_PER_MINUTE = 60L
  * Represents the current state of batch processing for progress visualization.
  *
  * @param smoothedItemsPerSec Exponentially smoothed speed for stable ETA calculations
+ * @param skipLimit Maximum allowed skips before job fails (null if unknown)
  */
 data class BatchProgressState(
     val stepName: String,
@@ -35,6 +35,7 @@ data class BatchProgressState(
     val totalItems: Long,
     val startTimeMs: Long,
     val smoothedItemsPerSec: Double = 0.0,
+    val skipLimit: Long? = null,
 ) {
     val percentage: Int
         get() =
@@ -65,6 +66,16 @@ data class BatchProgressState(
             val remaining = totalItems - itemsRead
             return (remaining / smoothedItemsPerSec).milliseconds.inWholeMilliseconds
         }
+
+    /**
+     * Skip percentage (0.0 to 1.0) relative to skip limit.
+     * Returns null if skip limit is unknown.
+     */
+    val skipPercentage: Double?
+        get() =
+            skipLimit?.let { limit ->
+                if (limit > 0) itemsSkipped.toDouble() / limit else 0.0
+            }
 
     companion object {
         private const val PERCENT_MULTIPLIER = 100

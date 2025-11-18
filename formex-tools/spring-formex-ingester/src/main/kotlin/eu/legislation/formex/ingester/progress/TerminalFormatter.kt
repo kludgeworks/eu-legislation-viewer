@@ -27,10 +27,16 @@ internal class TerminalFormatter(
     }
 
     /**
-     * Prints the application header banner.
+     * Prints the application header banner with directory information.
+     *
+     * @param dataDir Path to data directory (for database and XML files)
+     * @param stateDir Path to state directory (for logs and JMS data)
      */
-    fun printHeader() {
-        val title = "Formex XML Ingester - Spring Batch Job"
+    fun printHeader(
+        dataDir: String,
+        stateDir: String,
+    ) {
+        val title = "Formex XML Ingester - Batch Job"
 
         terminal.println(TextColors.cyan("╔${"═".repeat(HEADER_WIDTH_MINUS_2)}╗"))
         terminal.println(
@@ -39,6 +45,13 @@ internal class TerminalFormatter(
             ),
         )
         terminal.println(TextColors.cyan("╚${"═".repeat(HEADER_WIDTH_MINUS_2)}╝"))
+        terminal.println()
+
+        // Display application directories
+        terminal.println(TextColors.gray("Application Directories:"))
+        terminal.println(TextColors.gray("  Database:  $dataDir/formex.db"))
+        terminal.println(TextColors.gray("  XML Files: $dataDir/xml-files"))
+        terminal.println(TextColors.gray("  Logs:      $stateDir/logs"))
         terminal.println()
     }
 
@@ -69,10 +82,14 @@ internal class TerminalFormatter(
         stepName: String,
         expectedCount: Long?,
     ) {
-        val countStr = if (expectedCount != null) "~$expectedCount items" else "unknown count"
-
         terminal.println(TextColors.yellow("▶ Step: $stepName".padStart((HEADER_WIDTH + 9 + stepName.length) / 2)))
-        terminal.println(TextColors.gray("Expected: $countStr".padStart((HEADER_WIDTH + 11 + countStr.length) / 2)))
+
+        // Only show expected count if we have a meaningful value
+        if (expectedCount != null) {
+            val countStr = "~$expectedCount items"
+            terminal.println(TextColors.gray("Expected: $countStr".padStart((HEADER_WIDTH + 11 + countStr.length) / 2)))
+        }
+
         terminal.println()
     }
 

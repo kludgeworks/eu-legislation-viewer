@@ -18,7 +18,7 @@ import java.time.Instant
 import java.util.concurrent.ConcurrentHashMap
 
 /**
- * Service for rendering CLI progress using Mordant.
+ * Service for rendering CLI progress to the terminal.
  *
  * This component orchestrates terminal output for the Spring Batch job, delegating to:
  * - [TerminalFormatter] for headers and summaries
@@ -27,9 +27,11 @@ import java.util.concurrent.ConcurrentHashMap
  *
  * Thread-safe: All state updates are protected by concurrent collections.
  *
+ * Implementation: Uses Mordant library for terminal rendering with rich ANSI support.
+ *
  * Feature Flag: Controlled by formex.features.cli-progress property
  * - Set formex.features.cli-progress=true to enable (default)
- * - Set formex.features.cli-progress=false or CLI_PROGRESS=false to disable
+ * - Set formex.features.cli-progress=false to disable
  * - Only created if Mordant classes are on the classpath
  */
 @Component
@@ -40,7 +42,9 @@ import java.util.concurrent.ConcurrentHashMap
     matchIfMissing = true,
 )
 @ConditionalOnClass(name = ["com.github.ajalt.mordant.terminal.Terminal"])
-class MordantProgressService {
+class TerminalProgressService(
+    private val environment: org.springframework.core.env.Environment,
+) {
     private val terminal = Terminal()
     private val logger = KotlinLogging.logger {}
 
@@ -48,6 +52,10 @@ class MordantProgressService {
     private val formatter = TerminalFormatter(terminal)
     private val renderer = ProgressBarRenderer(terminal)
     private val calculator = ProgressCalculator()
+
+    // Application directories from Spring Environment
+    private val dataDir: String = environment.getRequiredProperty("app.dataDir")
+    private val stateDir: String = environment.getRequiredProperty("app.stateDir")
 
     // Thread-safe state for current execution
     private val executionState = ConcurrentHashMap<String, Any>()
@@ -73,10 +81,10 @@ class MordantProgressService {
     }
 
     /**
-     * Prints the application header banner.
+     * Prints the application header banner with directory information.
      */
     fun printHeader() {
-        formatter.printHeader()
+        formatter.printHeader(dataDir, stateDir)
     }
 
     /**
@@ -304,7 +312,7 @@ class MordantProgressService {
         stopBatchProgressLayout()
         progressScope.cancel()
         terminal.cursor.show() // Ensure cursor is visible on exit
-        logger.debug { "MordantProgressService cleanup complete" }
+        logger.debug { "TerminalProgressService cleanup complete" }
     }
 
     /**

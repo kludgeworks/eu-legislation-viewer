@@ -46,6 +46,12 @@ class PercentageBasedSkipPolicy(
     private var calculatedSkipLimit: Int = MINIMUM_SKIP_LIMIT
 
     /**
+     * Gets the currently calculated skip limit.
+     * Exposed for progress display purposes.
+     */
+    fun getSkipLimit(): Long = calculatedSkipLimit.toLong()
+
+    /**
      * Called before step starts. Retrieves total URI count from job execution context.
      */
     override fun beforeStep(stepExecution: StepExecution) {

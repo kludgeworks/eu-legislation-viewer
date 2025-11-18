@@ -1,9 +1,9 @@
 package eu.legislation.formex.ingester.batch
 
 import eu.legislation.formex.ingester.batch.listener.ErrorLoggingSkipListener
-import eu.legislation.formex.ingester.batch.listener.MordantChunkListener
-import eu.legislation.formex.ingester.batch.listener.MordantJobListener
-import eu.legislation.formex.ingester.batch.listener.MordantStepListener
+import eu.legislation.formex.ingester.batch.listener.TerminalProgressChunkListener
+import eu.legislation.formex.ingester.batch.listener.TerminalProgressJobListener
+import eu.legislation.formex.ingester.batch.listener.TerminalProgressStepListener
 import eu.legislation.formex.ingester.batch.processor.StreamingXmlDownloadProcessor
 import eu.legislation.formex.ingester.batch.processor.UriFilterProcessor
 import eu.legislation.formex.ingester.batch.processor.XmlPostProcessor
@@ -60,7 +60,7 @@ class FormexXmlBatchJob {
      * @param jobRepository Spring Batch job repository
      * @param fetchSparqlUrisStep Step 1 - fetches URIs from SPARQL endpoint (runs once)
      * @param downloadXmlStep Step 2 - downloads, parses, and inserts XML documents with metadata
-     * @param mordantJobListener Optional job listener for CLI progress (feature flag controlled)
+     * @param terminalProgressJobListener Optional job listener for CLI progress (feature flag controlled)
      * @return The configured job
      */
     @Bean
@@ -68,7 +68,7 @@ class FormexXmlBatchJob {
         jobRepository: JobRepository,
         fetchSparqlUrisStep: Step,
         downloadXmlStep: Step,
-        mordantJobListener: MordantJobListener?,
+        terminalProgressJobListener: TerminalProgressJobListener?,
     ): Job {
         val jobBuilder =
             JobBuilder("processFormexXml", jobRepository)
@@ -76,8 +76,8 @@ class FormexXmlBatchJob {
                 .start(fetchSparqlUrisStep)
                 .next(downloadXmlStep)
 
-        // Add Mordant listener if available (controlled by feature flag)
-        mordantJobListener?.let { jobBuilder.listener(it) }
+        // Add terminal progress listener if available (controlled by feature flag)
+        terminalProgressJobListener?.let { jobBuilder.listener(it) }
 
         return jobBuilder.build()
     }
@@ -115,7 +115,7 @@ class FormexXmlBatchJob {
      * @param jobRepository Spring Batch job repository
      * @param transactionManager Transaction manager for step
      * @param sparqlUriJmsPublisher Tasklet that performs SPARQL fetch and JMS publishing
-     * @param mordantStepListener Optional step listener for CLI progress (feature flag controlled)
+     * @param terminalProgressStepListener Optional step listener for CLI progress (feature flag controlled)
      * @return The configured fetch step
      */
     @Bean
@@ -123,14 +123,14 @@ class FormexXmlBatchJob {
         jobRepository: JobRepository,
         transactionManager: PlatformTransactionManager,
         sparqlUriJmsPublisher: SparqlUriJmsPublisher,
-        mordantStepListener: MordantStepListener?,
+        terminalProgressStepListener: TerminalProgressStepListener?,
     ): Step {
         val stepBuilder =
             StepBuilder("fetchSparqlUris", jobRepository)
                 .tasklet(sparqlUriJmsPublisher, transactionManager)
 
-        // Add Mordant listener if available (controlled by feature flag)
-        mordantStepListener?.let { stepBuilder.listener(it) }
+        // Add terminal progress listener if available (controlled by feature flag)
+        terminalProgressStepListener?.let { stepBuilder.listener(it) }
 
         return stepBuilder.build()
     }
@@ -171,8 +171,8 @@ class FormexXmlBatchJob {
      * @param errorLoggingSkipListener Logs skipped items to database
      * @param taskExecutor Task executor for parallel chunk processing
      * @param percentageBasedSkipPolicy Custom skip policy that enforces percentage-based skip limit
-     * @param mordantStepListener Optional step listener for CLI progress (feature flag controlled)
-     * @param mordantChunkListener Optional chunk listener for CLI progress (feature flag controlled)
+     * @param terminalProgressStepListener Optional step listener for CLI progress (feature flag controlled)
+     * @param terminalProgressChunkListener Optional chunk listener for CLI progress (feature flag controlled)
      * @return The configured download step
      */
     @Suppress(
@@ -192,8 +192,8 @@ class FormexXmlBatchJob {
         errorLoggingSkipListener: ErrorLoggingSkipListener,
         taskExecutor: AsyncTaskExecutor,
         percentageBasedSkipPolicy: PercentageBasedSkipPolicy,
-        mordantStepListener: MordantStepListener?,
-        mordantChunkListener: MordantChunkListener?,
+        terminalProgressStepListener: TerminalProgressStepListener?,
+        terminalProgressChunkListener: TerminalProgressChunkListener?,
     ): Step {
         // Chain filter, download, and post-processing processors
         val compositeProcessor =
@@ -213,9 +213,9 @@ class FormexXmlBatchJob {
                 .listener(errorLoggingSkipListener)
                 .listener(percentageBasedSkipPolicy as StepExecutionListener)
 
-        // Add Mordant listeners if available (controlled by feature flag)
-        mordantStepListener?.let { stepBuilder.listener(it) }
-        mordantChunkListener?.let { stepBuilder.listener(it) }
+        // Add terminal progress listeners if available (controlled by feature flag)
+        terminalProgressStepListener?.let { stepBuilder.listener(it) }
+        terminalProgressChunkListener?.let { stepBuilder.listener(it) }
 
         return stepBuilder.build()
     }

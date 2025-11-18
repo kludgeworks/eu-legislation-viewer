@@ -1,7 +1,7 @@
 package eu.legislation.formex.ingester.batch.listener
 
 import eu.legislation.formex.ingester.progress.BatchProgressState
-import eu.legislation.formex.ingester.progress.MordantProgressService
+import eu.legislation.formex.ingester.progress.TerminalProgressService
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.core.ExitStatus
 import org.springframework.batch.core.job.JobExecution
@@ -16,15 +16,15 @@ import org.springframework.stereotype.Component
 private val logger = KotlinLogging.logger {}
 
 /**
- * Job-level listener that integrates Spring Batch lifecycle events with MordantProgressService.
+ * Job-level listener that integrates Spring Batch lifecycle events with terminal progress display.
  *
  * This listener prints the application header and job-level start/completion information.
- * Only activated when MordantProgressService is available (controlled by feature flag).
+ * Only activated when TerminalProgressService is available (controlled by feature flag).
  */
 @Component
-@ConditionalOnBean(MordantProgressService::class)
-class MordantJobListener(
-    private val progressService: MordantProgressService,
+@ConditionalOnBean(TerminalProgressService::class)
+class TerminalProgressJobListener(
+    private val progressService: TerminalProgressService,
 ) : JobExecutionListener {
     override fun beforeJob(jobExecution: JobExecution) {
         try {
@@ -43,7 +43,7 @@ class MordantJobListener(
         ) {
             // Catch all runtime exceptions from terminal I/O, time calculations, or state access
             // Progress display must not block batch job execution
-            logger.warn(e) { "Failed to print job header via Mordant" }
+            logger.warn(e) { "Failed to print job header" }
         }
     }
 
@@ -79,21 +79,21 @@ class MordantJobListener(
         ) {
             // Catch all runtime exceptions from terminal I/O, time calculations, or state access
             // Progress display must not block batch job execution
-            logger.warn(e) { "Failed to print job summary via Mordant" }
+            logger.warn(e) { "Failed to print job summary" }
         }
     }
 }
 
 /**
- * Step-level listener that integrates Spring Batch step lifecycle events with MordantProgressService.
+ * Step-level listener that integrates Spring Batch step lifecycle events with terminal progress display.
  *
  * This listener prints step-level start/completion information and handles progress tracking.
- * Only activated when MordantProgressService is available (controlled by feature flag).
+ * Only activated when TerminalProgressService is available (controlled by feature flag).
  */
 @Component
-@ConditionalOnBean(MordantProgressService::class)
-class MordantStepListener(
-    private val progressService: MordantProgressService,
+@ConditionalOnBean(TerminalProgressService::class)
+class TerminalProgressStepListener(
+    private val progressService: TerminalProgressService,
 ) : StepExecutionListener {
     override fun beforeStep(stepExecution: StepExecution) {
         try {
@@ -128,7 +128,7 @@ class MordantStepListener(
         ) {
             // Catch all runtime exceptions from terminal I/O, time calculations, or state access
             // Progress display must not block batch job execution
-            logger.warn(e) { "Failed to print step header via Mordant" }
+            logger.warn(e) { "Failed to print step header" }
         }
     }
 
@@ -157,7 +157,7 @@ class MordantStepListener(
         ) {
             // Catch all runtime exceptions from terminal I/O, time calculations, or state access
             // Progress display must not block batch job execution
-            logger.warn(e) { "Failed to print step summary via Mordant" }
+            logger.warn(e) { "Failed to print step summary" }
         }
 
         return null // Don't modify exit status
@@ -168,12 +168,13 @@ class MordantStepListener(
  * Chunk-level listener that updates progress bars during chunk processing.
  *
  * This listener provides real-time progress updates as chunks are processed.
- * Only activated when MordantProgressService is available (controlled by feature flag).
+ * Only activated when TerminalProgressService is available (controlled by feature flag).
  */
 @Component
-@ConditionalOnBean(MordantProgressService::class)
-class MordantChunkListener(
-    private val progressService: MordantProgressService,
+@ConditionalOnBean(TerminalProgressService::class)
+class TerminalProgressChunkListener(
+    private val progressService: TerminalProgressService,
+    private val skipPolicy: eu.legislation.formex.ingester.batch.PercentageBasedSkipPolicy,
 ) : ChunkListener<Any, Any> {
     @Deprecated("Deprecated in Spring Batch")
     override fun beforeChunk(context: ChunkContext) {
@@ -210,6 +211,7 @@ class MordantChunkListener(
                             stepExecution.writeSkipCount,
                     totalItems = expectedCount,
                     startTimeMs = startTimeMs,
+                    skipLimit = skipPolicy.getSkipLimit(),
                 )
 
             progressService.updateBatchProgress(state)
@@ -219,7 +221,7 @@ class MordantChunkListener(
         ) {
             // Catch all runtime exceptions from terminal I/O, time calculations, or state access
             // Progress display must not block batch job execution
-            logger.warn(e) { "Failed to update chunk progress via Mordant" }
+            logger.warn(e) { "Failed to update chunk progress" }
         }
     }
 

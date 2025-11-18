@@ -124,6 +124,13 @@
 		<version>5.3.7</version>
 	</dependency>
 
+	<!-- Platform-appropriate directory paths (XDG Base Directory specification) -->
+	<dependency>
+		<groupId>dev.dirs</groupId>
+		<artifactId>directories</artifactId>
+		<version>26</version>
+	</dependency>
+
 	<!-- Micrometer Tracing for automatic trace/span ID injection -->
 	<dependency>
 		<groupId>io.micrometer</groupId>
