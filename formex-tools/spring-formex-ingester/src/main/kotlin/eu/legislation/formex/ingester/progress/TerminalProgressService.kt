@@ -29,15 +29,15 @@ import java.util.concurrent.ConcurrentHashMap
  *
  * Implementation: Uses Mordant library for terminal rendering with rich ANSI support.
  *
- * Feature Flag: Controlled by formex.features.cli-progress property
- * - Set formex.features.cli-progress=true to enable (default)
- * - Set formex.features.cli-progress=false to disable
+ * Feature Flag: Controlled by formex.features.progressbar property
+ * - Set formex.features.progressbar=true to enable (default)
+ * - Set formex.features.progressbar=false to disable
  * - Only created if Mordant classes are on the classpath
  */
 @Component
 @ConditionalOnProperty(
     prefix = "formex.features",
-    name = ["cli-progress"],
+    name = ["progressbar"],
     havingValue = "true",
     matchIfMissing = true,
 )

@@ -41,6 +41,9 @@ spring:
       # Set to 1 second - fast signal when queue is empty
       receive-timeout: 1000
 
+  main:
+    banner-mode: off
+
 management:
   tracing:
     enabled: true
@@ -55,11 +58,7 @@ formex:
   storage:
     directory: ${app.dataDir}/xml-files
   features:
-    # CLI Progress Bars (default: true)
-    # - When true: Rich progress bars displayed, logs to file only
-    # - When false: No progress bars, logs to both console and file
-    # - Set via CLI: --formex.features.cli-progress=false
-    cli-progress: true
+    progressbar: true
   batch:
     skip-percentage: 0.5  # Allow up to 0.5% of total URIs to be skipped (errors) before failing the job
 

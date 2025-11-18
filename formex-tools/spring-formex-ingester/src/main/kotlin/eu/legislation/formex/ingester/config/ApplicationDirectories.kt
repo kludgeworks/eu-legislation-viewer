@@ -3,9 +3,7 @@ package eu.legislation.formex.ingester.config
 import dev.dirs.ProjectDirectories
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.boot.SpringApplication
-import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent
 import org.springframework.boot.env.EnvironmentPostProcessor
-import org.springframework.context.ApplicationListener
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.env.ConfigurableEnvironment
@@ -120,13 +118,3 @@ class DirectoriesEnvironmentPostProcessor : EnvironmentPostProcessor {
  * ApplicationListener that activates the cli-progress profile when
  * formex.features.cli-progress is set to true (default).
  */
-class CliProgressProfileActivator : ApplicationListener<ApplicationEnvironmentPreparedEvent> {
-    override fun onApplicationEvent(event: ApplicationEnvironmentPreparedEvent) {
-        val environment = event.environment
-        val cliProgressEnabled = environment.getProperty("formex.features.cli-progress", Boolean::class.java, true)
-
-        if (cliProgressEnabled) {
-            environment.addActiveProfile("cli-progress")
-        }
-    }
-}
