@@ -3,3 +3,4 @@
 "ubi:pinterest/ktlint" = { version = "latest", extract_all = true, bin_path = "bin" }
 "ubi:detekt/detekt" = { version = "latest", extract_all = true, bin_path = "bin" }
 java = "21"
+shellcheck = "latest"

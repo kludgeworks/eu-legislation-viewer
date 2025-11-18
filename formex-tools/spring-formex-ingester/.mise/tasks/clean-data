@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+#MISE description="Clean application data and state directories (database, XML files, logs, JMS queues)"
+#MISE confirm="Are you sure you want to delete all application data (database, XML files, logs, JMS queues)?"
+set -euo pipefail
+
+# Resolve platform-appropriate directories using the same logic as the application
+# Based on directories-jvm library (https://codeberg.org/dirs/directories-jvm)
+
+case "$(uname -s)" in
+  Darwin)
+    # macOS: ~/Library/Application Support/eu.legislation.formex-ingester
+    DATA_DIR="$HOME/Library/Application Support/eu.legislation.formex-ingester"
+    STATE_DIR="$DATA_DIR/state"
+    ;;
+  Linux)
+    # Linux: XDG Base Directory specification
+    DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/eu.legislation.formex-ingester"
+    # Use XDG_STATE_HOME if set, otherwise fallback to data/state
+    if [ -n "${XDG_STATE_HOME:-}" ]; then
+      STATE_DIR="$XDG_STATE_HOME/eu.legislation.formex-ingester"
+    else
+      STATE_DIR="$DATA_DIR/state"
+    fi
+    ;;
+  MINGW*|MSYS*|CYGWIN*)
+    # Windows: LOCALAPPDATA/eu/legislation/formex-ingester/data
+    DATA_DIR="${LOCALAPPDATA}/eu/legislation/formex-ingester/data"
+    STATE_DIR="$DATA_DIR/state"
+    ;;
+  *)
+    echo "Unsupported platform: $(uname -s)"
+    exit 1
+    ;;
+esac
+
+# Remove directories if they exist
+if [ -d "$DATA_DIR" ]; then
+  echo "Removing data directory: $DATA_DIR"
+  rm -rf "$DATA_DIR"
+fi
+
+if [ -d "$STATE_DIR" ] && [ "$STATE_DIR" != "$DATA_DIR/state" ]; then
+  # Only remove STATE_DIR separately if it's not a subdirectory of DATA_DIR
+  echo "Removing state directory: $STATE_DIR"
+  rm -rf "$STATE_DIR"
+fi
+
+echo ""
+echo "✓ All application data cleaned successfully"
