@@ -9,19 +9,20 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.io.TempDir
 import org.springframework.web.client.RestClient
 import java.nio.file.Files
 import java.nio.file.Path
 
 /**
- * Integration tests for StreamingXmlDownloadProcessor with URI-based path storage.
+ * Integration tests for XmlDownloadProcessor with URI-based path storage.
  *
  * Tests real HTTP communication and file storage with proper directory structure.
  */
-class StreamingXmlDownloadProcessorTest {
+class XmlDownloadProcessorTest {
     private lateinit var mockServer: MockWebServer
-    private lateinit var processor: StreamingXmlDownloadProcessor
+    private lateinit var processor: XmlDownloadProcessor
     private lateinit var restClient: RestClient
 
     @TempDir
@@ -45,7 +46,7 @@ class StreamingXmlDownloadProcessorTest {
         restClient = RestClient.builder().baseUrl(baseUrl).build()
 
         val storageProperties = StorageProperties(directory = tempDir.toString())
-        processor = StreamingXmlDownloadProcessor(restClient, storageProperties)
+        processor = XmlDownloadProcessor(restClient, storageProperties)
     }
 
     @AfterEach
@@ -323,5 +324,113 @@ class StreamingXmlDownloadProcessorTest {
 
         // Then - different content should produce different IDs
         assertTrue(result1.id != result2.id, "Different content should produce different IDs")
+    }
+
+    @Test
+    fun `process should throw EmptyFileDownloadException when server returns empty response`() {
+        // Given - server returns empty response
+        mockServer.enqueue(
+            MockResponse
+                .Builder()
+                .code(200)
+                .body("") // Empty response
+                .build(),
+        )
+
+        val cellarData =
+            CellarData(
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1",
+                workId = "550e8400-e29b-41d4-a716-446655440000",
+                expressionId = "expr-001",
+                manifestationId = "man-001",
+                contentStreamId = "cs-001",
+                language = "eng",
+                mimeType = "application/xml",
+            )
+
+        // When / Then - should throw EmptyFileDownloadException
+        val exception =
+            assertThrows<EmptyFileDownloadException> {
+                processor.process(cellarData)
+            }
+
+        assertTrue(exception.message!!.contains("empty (0 bytes)"))
+        assertTrue(exception.message!!.contains(cellarData.item))
+
+        // Verify that no permanent file was created
+        val expectedPath =
+            tempDir.resolve("localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1.xml")
+        assertTrue(!Files.exists(expectedPath), "Empty file should not be saved")
+    }
+
+    @Test
+    fun `process should throw HttpDownloadException when server returns 404`() {
+        // Given - server returns 404 Not Found
+        mockServer.enqueue(
+            MockResponse
+                .Builder()
+                .code(404)
+                .body("Resource not found")
+                .build(),
+        )
+
+        val cellarData =
+            CellarData(
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1",
+                workId = "550e8400-e29b-41d4-a716-446655440000",
+                expressionId = "expr-001",
+                manifestationId = "man-001",
+                contentStreamId = "cs-001",
+                language = "eng",
+                mimeType = "application/xml",
+            )
+
+        // When / Then - should throw HttpDownloadException
+        val exception =
+            assertThrows<HttpDownloadException> {
+                processor.process(cellarData)
+            }
+
+        assertEquals(404, exception.statusCode)
+        assertTrue(exception.message!!.contains("HTTP 404"))
+        assertTrue(exception.message!!.contains(cellarData.item))
+
+        // Verify that no permanent file was created
+        val expectedPath =
+            tempDir.resolve("localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1.xml")
+        assertTrue(!Files.exists(expectedPath), "File should not be saved for 404 errors")
+    }
+
+    @Test
+    fun `process should throw HttpDownloadException when server returns 500`() {
+        // Given - server returns 500 Internal Server Error
+        mockServer.enqueue(
+            MockResponse
+                .Builder()
+                .code(500)
+                .body("Internal server error")
+                .build(),
+        )
+
+        val cellarData =
+            CellarData(
+                item = "http://localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1",
+                workId = "550e8400-e29b-41d4-a716-446655440000",
+                expressionId = "expr-001",
+                manifestationId = "man-001",
+                contentStreamId = "cs-001",
+                language = "eng",
+                mimeType = "application/xml",
+            )
+
+        // When / Then - should throw HttpDownloadException
+        val exception =
+            assertThrows<HttpDownloadException> {
+                processor.process(cellarData)
+            }
+
+        assertEquals(500, exception.statusCode)
+        assertTrue(exception.message!!.contains("HTTP 500"))
+        assertTrue(exception.message!!.contains(cellarData.item))
     }
 }

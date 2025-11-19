@@ -68,6 +68,7 @@ object FormexDocuments : Table("formex_documents") {
  *
  * Schema mapping:
  * - id: Auto-incrementing primary key (INTEGER)
+ * - job_execution_id: Spring Batch job execution identifier (NOT NULL)
  * - timestamp: Unix epoch milliseconds when error occurred (NOT NULL)
  * - uri: The source URI that failed processing (NOT NULL)
  * - error_message: Human-readable error message (NOT NULL)
@@ -77,9 +78,11 @@ object FormexDocuments : Table("formex_documents") {
  * Indexes:
  * - idx_processing_errors_timestamp: On timestamp for chronological queries
  * - idx_processing_errors_uri: On uri to find all errors for a specific item
+ * - idx_processing_errors_job_execution_id: On job_execution_id to find all errors for a specific job run
  */
 object ProcessingErrors : Table("processing_errors") {
     val id = long("id").autoIncrement()
+    val jobExecutionId = long("job_execution_id")
     val timestamp = long("timestamp")
     val uri = text("uri")
     val errorMessage = text("error_message")
@@ -91,5 +94,6 @@ object ProcessingErrors : Table("processing_errors") {
     init {
         index(isUnique = false, timestamp)
         index(isUnique = false, uri)
+        index(isUnique = false, jobExecutionId)
     }
 }

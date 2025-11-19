@@ -4,15 +4,18 @@ import eu.legislation.formex.ingester.batch.listener.ErrorLoggingSkipListener
 import eu.legislation.formex.ingester.batch.listener.TerminalProgressChunkListener
 import eu.legislation.formex.ingester.batch.listener.TerminalProgressJobListener
 import eu.legislation.formex.ingester.batch.listener.TerminalProgressStepListener
-import eu.legislation.formex.ingester.batch.processor.StreamingXmlDownloadProcessor
+import eu.legislation.formex.ingester.batch.processor.HttpDownloadException
 import eu.legislation.formex.ingester.batch.processor.UriFilterProcessor
+import eu.legislation.formex.ingester.batch.processor.XmlDownloadProcessor
 import eu.legislation.formex.ingester.batch.processor.XmlPostProcessor
 import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
+import org.jetbrains.exposed.exceptions.ExposedSQLException
 import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.job.parameters.JobParametersBuilder
 import org.springframework.batch.core.job.parameters.JobParametersIncrementer
+import org.springframework.batch.core.listener.SkipListener
 import org.springframework.batch.core.listener.StepExecutionListener
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
@@ -186,7 +189,7 @@ class FormexXmlBatchJob {
         transactionManager: PlatformTransactionManager,
         reader: JmsCellarDataReader,
         filterProcessor: UriFilterProcessor,
-        downloadProcessor: StreamingXmlDownloadProcessor,
+        downloadProcessor: XmlDownloadProcessor,
         postProcessor: XmlPostProcessor,
         writer: XmlDatabaseWriter,
         errorLoggingSkipListener: ErrorLoggingSkipListener,
@@ -201,7 +204,7 @@ class FormexXmlBatchJob {
                 setDelegates(listOf(filterProcessor, downloadProcessor, postProcessor))
             }
 
-        val stepBuilder =
+        val faultTolerantBuilder =
             StepBuilder("downloadXml", jobRepository)
                 .chunk<CellarData, XmlMetadata>(CHUNK_SIZE, transactionManager)
                 .reader(reader)
@@ -209,15 +212,22 @@ class FormexXmlBatchJob {
                 .writer(writer)
                 .taskExecutor(taskExecutor)
                 .faultTolerant()
+                .retry(Exception::class.java)
+                .retryLimit(3)
+                .noRetry(ExposedSQLException::class.java)
+                .noRetry(HttpDownloadException::class.java)
                 .skipPolicy(percentageBasedSkipPolicy)
-                .listener(errorLoggingSkipListener)
-                .listener(percentageBasedSkipPolicy as StepExecutionListener)
+
+        // Register error logging listener as both SkipListener and StepExecutionListener
+        faultTolerantBuilder.listener(errorLoggingSkipListener as SkipListener<Any, Any>)
+        val simpleBuilder = faultTolerantBuilder.listener(errorLoggingSkipListener as StepExecutionListener)
+        simpleBuilder.listener(percentageBasedSkipPolicy as StepExecutionListener)
 
         // Add terminal progress listeners if available (controlled by feature flag)
-        terminalProgressStepListener?.let { stepBuilder.listener(it) }
-        terminalProgressChunkListener?.let { stepBuilder.listener(it) }
+        terminalProgressStepListener?.let { simpleBuilder.listener(it) }
+        terminalProgressChunkListener?.let { simpleBuilder.listener(it) }
 
-        return stepBuilder.build()
+        return simpleBuilder.build()
     }
 
     /**

@@ -19,6 +19,22 @@ import java.util.UUID
 private val logger = KotlinLogging.logger {}
 
 /**
+ * Exception thrown when a downloaded file is empty (0 bytes).
+ * This exception is retryable by Spring Batch, allowing the download to be attempted again.
+ */
+class EmptyFileDownloadException(message: String) : Exception(message)
+
+/**
+ * Exception thrown when HTTP request fails with non-success status code.
+ * This exception is retryable by Spring Batch for transient errors (5xx),
+ * but not for permanent errors (4xx) which should be skipped immediately.
+ */
+class HttpDownloadException(
+    val statusCode: Int,
+    message: String,
+) : Exception(message)
+
+/**
  * Spring Batch ItemProcessor that downloads XML files from URIs and creates metadata records.
  *
  * Downloads XML files using streaming to handle large files efficiently,
@@ -34,7 +50,7 @@ private val logger = KotlinLogging.logger {}
  *   Stored: ./formex-xml-files/publications.europa.eu/resource/cellar/16783d19-1b58-11e7-aeb3-01aa75ed71a1.0006.02/DOC_1.xml
  */
 @Component
-class StreamingXmlDownloadProcessor(
+class XmlDownloadProcessor(
     private val restClient: RestClient,
     private val storageProperties: StorageProperties,
 ) : ItemProcessor<CellarData, XmlMetadata> {
@@ -70,6 +86,12 @@ class StreamingXmlDownloadProcessor(
         // Download and hash in single pass, generate ID based on content
         val tempFile = permanentFile.parent.resolve("${UUID.randomUUID()}.xml")
         val metrics = downloadWithMetrics(item.item, tempFile)
+
+        // Validate that the downloaded file is not empty
+        if (metrics.size == 0L) {
+            Files.deleteIfExists(tempFile)
+            throw EmptyFileDownloadException("Downloaded file is empty (0 bytes) for URI: ${item.item}")
+        }
 
         logger.info {
             "Download: Completed download - ID=${metrics.id}, URI=${item.item}, " +
@@ -109,6 +131,15 @@ class StreamingXmlDownloadProcessor(
             .get()
             .uri(uri)
             .exchange { _, response ->
+                // Check HTTP status code before processing response
+                val statusCode = response.statusCode.value()
+                if (statusCode !in 200..299) {
+                    throw HttpDownloadException(
+                        statusCode,
+                        "HTTP $statusCode error for URI: $uri",
+                    )
+                }
+
                 response.body.use { input: InputStream ->
                     DigestInputStream(input, digest).use { digestInput ->
                         Files.newOutputStream(destination).use { output ->

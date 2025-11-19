@@ -4,8 +4,8 @@ package eu.legislation.formex.ingester
 
 import eu.legislation.formex.ingester.batch.XmlDatabaseWriter
 import eu.legislation.formex.ingester.batch.listener.ErrorLoggingSkipListener
-import eu.legislation.formex.ingester.batch.processor.StreamingXmlDownloadProcessor
 import eu.legislation.formex.ingester.batch.processor.UriFilterProcessor
+import eu.legislation.formex.ingester.batch.processor.XmlDownloadProcessor
 import eu.legislation.formex.ingester.batch.processor.XmlPostProcessor
 import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
@@ -249,7 +249,7 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
             transactionManager: PlatformTransactionManager,
             @Autowired reader: org.springframework.batch.infrastructure.item.ItemReader<CellarData>,
             @Autowired filterProcessor: UriFilterProcessor,
-            @Autowired downloadProcessor: StreamingXmlDownloadProcessor,
+            @Autowired downloadProcessor: XmlDownloadProcessor,
             @Autowired postProcessor: XmlPostProcessor,
             @Autowired writer: XmlDatabaseWriter,
             @Autowired errorLoggingSkipListener: ErrorLoggingSkipListener,
@@ -264,15 +264,20 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
                     setDelegates(listOf(filterProcessor, poisonedDownloadProcessor, postProcessor))
                 }
 
-            return StepBuilder("downloadXml", jobRepository)
-                .chunk<CellarData, XmlMetadata>(10, transactionManager)
-                .reader(reader)
-                .processor(compositeProcessor)
-                .writer(writer)
-                .faultTolerant()
-                .skipPolicy(percentageBasedSkipPolicy)
-                .listener(errorLoggingSkipListener)
-                .build()
+            val faultTolerantBuilder =
+                StepBuilder("downloadXml", jobRepository)
+                    .chunk<CellarData, XmlMetadata>(10, transactionManager)
+                    .reader(reader)
+                    .processor(compositeProcessor)
+                    .writer(writer)
+                    .faultTolerant()
+                    .skipPolicy(percentageBasedSkipPolicy)
+
+            // Register error logging listener as both SkipListener and StepExecutionListener
+            faultTolerantBuilder.listener(errorLoggingSkipListener as org.springframework.batch.core.listener.SkipListener<Any, Any>)
+            val simpleBuilder = faultTolerantBuilder.listener(errorLoggingSkipListener as org.springframework.batch.core.listener.StepExecutionListener)
+
+            return simpleBuilder.build()
         }
     }
 
@@ -282,7 +287,7 @@ class FormexXmlBatchJobErrorLoggingE2ETest {
      * Implements ItemProcessor to delegate to the real processor but inject failures.
      */
     class PoisonedDownloadProcessor(
-        private val realProcessor: StreamingXmlDownloadProcessor,
+        private val realProcessor: XmlDownloadProcessor,
     ) : ItemProcessor<CellarData, XmlMetadata> {
         companion object {
             private val counter = AtomicInteger(0)

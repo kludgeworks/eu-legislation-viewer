@@ -34,8 +34,16 @@ import org.springframework.stereotype.Component
 @Component
 class ErrorLoggingSkipListener(
     private val database: Database,
-) : SkipListener<Any, Any> {
+) : SkipListener<Any, Any>,
+    StepExecutionListener {
     private val logger = KotlinLogging.logger {}
+
+    @Volatile
+    private var jobExecutionId: Long = -1L
+
+    override fun beforeStep(stepExecution: StepExecution) {
+        jobExecutionId = stepExecution.jobExecutionId
+    }
 
     override fun onSkipInProcess(
         item: Any,
@@ -87,6 +95,7 @@ class ErrorLoggingSkipListener(
             try {
                 transaction(database) {
                     ProcessingErrors.insert {
+                        it[ProcessingErrors.jobExecutionId] = jobExecutionId
                         it[timestamp] = System.currentTimeMillis()
                         it[ProcessingErrors.uri] = uri
                         it[errorMessage] = throwable.message ?: "Unknown error"
