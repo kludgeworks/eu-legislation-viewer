@@ -82,7 +82,8 @@ object FormexDocuments : Table("formex_documents") {
  */
 object ProcessingErrors : Table("processing_errors") {
     val id = long("id").autoIncrement()
-    val jobExecutionId = long("job_execution_id")
+    // Provide a default for legacy rows so SchemaUtils can backfill column on existing SQLite DBs
+    val jobExecutionId = long("job_execution_id").default(-1)
     val timestamp = long("timestamp")
     val uri = text("uri")
     val errorMessage = text("error_message")
