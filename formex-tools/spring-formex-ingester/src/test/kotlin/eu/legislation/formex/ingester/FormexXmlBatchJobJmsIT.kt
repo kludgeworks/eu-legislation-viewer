@@ -58,7 +58,7 @@ private val logger = KotlinLogging.logger {}
     "Embedded Artemis broker does not start in Spring Boot 4.0-RC2 test context. " +
         "Core JMS functionality verified in unit tests. Consider Testcontainers for E2E testing.",
 )
-class FormexXmlBatchJobJmsIntegrationTest {
+class FormexXmlBatchJobJmsIT {
     @Autowired
     private lateinit var jobOperatorTestUtils: JobOperatorTestUtils
 

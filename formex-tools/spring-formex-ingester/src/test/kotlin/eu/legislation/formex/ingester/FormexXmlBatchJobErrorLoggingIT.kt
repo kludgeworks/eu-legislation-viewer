@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.springframework.batch.core.BatchStatus
 import org.springframework.batch.core.job.Job
@@ -57,21 +58,17 @@ import java.util.concurrent.atomic.AtomicInteger
  * IMPORTANT: This test makes real HTTP calls to:
  * - https://publications.europa.eu/webapi/rdf/sparql (SPARQL query limited to 10 records)
  * - EU XML download servers (up to 10 file downloads, some may fail intentionally)
- *
- * The test is disabled by default to avoid network dependencies in CI/CD.
- * Enable manually when testing error logging behavior.
  */
-@Disabled("Manual E2E test - requires network access and intentionally injects failures")
 @SpringBootTest(
     classes = [
         FormexIngesterApplication::class,
-        FormexXmlBatchJobErrorLoggingE2ETest.PoisonedProcessorConfig::class,
+        FormexXmlBatchJobErrorLoggingIT.PoisonedProcessorConfig::class,
     ],
 )
 @SpringBatchTest
 @ActiveProfiles("e2e")
 @TestPropertySource(properties = ["sparql.limit=10"])
-class FormexXmlBatchJobErrorLoggingE2ETest {
+class FormexXmlBatchJobErrorLoggingIT {
     @Autowired
     private lateinit var jobOperatorTestUtils: JobOperatorTestUtils
 

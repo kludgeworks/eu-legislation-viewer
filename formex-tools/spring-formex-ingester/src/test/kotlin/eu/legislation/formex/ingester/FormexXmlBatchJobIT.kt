@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.springframework.batch.core.BatchStatus
 import org.springframework.batch.core.job.Job
@@ -39,20 +40,16 @@ import java.nio.file.Paths
  * IMPORTANT: This test makes real HTTP calls to:
  * - https://publications.europa.eu/webapi/rdf/sparql (SPARQL query)
  * - EU XML download servers (2 file downloads)
- *
- * The test is disabled by default to avoid network dependencies in CI/CD.
- * Enable manually when testing against real infrastructure.
- *
+
  * NOTE: Uses JobOperatorTestUtils and JobOperator (Spring Batch 6.0+) for job testing.
  * This is the modern approach that replaces the deprecated JobLauncher and JobLauncherTestUtils.
  * The test requires a JobOperator bean configured in the application context.
  *
  */
-@Disabled("Manual E2E test - requires network access to EU SPARQL endpoint and download servers")
 @SpringBootTest(classes = [FormexIngesterApplication::class])
 @SpringBatchTest
 @ActiveProfiles("e2e")
-class FormexXmlBatchJobE2ETest {
+class FormexXmlBatchJobIT {
     @Autowired
     private lateinit var jobOperatorTestUtils: JobOperatorTestUtils
 

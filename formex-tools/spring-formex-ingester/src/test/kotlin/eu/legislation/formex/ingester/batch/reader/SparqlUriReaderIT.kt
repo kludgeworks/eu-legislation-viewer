@@ -34,7 +34,7 @@ import org.springframework.web.client.RestClient
  * Uses Mockito to mock Spring Batch infrastructure and JmsTemplate.
  */
 @ExtendWith(MockitoExtension::class)
-class SparqlUriReaderIntegrationTest {
+class SparqlUriReaderIT {
     private lateinit var mockServer: MockWebServer
     private lateinit var tasklet: SparqlUriJmsPublisher
     private lateinit var restClient: RestClient
