@@ -2,6 +2,8 @@ package eu.legislation.formex.ingester.batch.processor
 
 import eu.legislation.formex.ingester.config.StorageProperties
 import eu.legislation.formex.ingester.domain.model.CellarData
+import eu.legislation.formex.ingester.observability.ItemObservationTracker
+import io.micrometer.observation.ObservationRegistry
 import mockwebserver3.MockResponse
 import mockwebserver3.MockWebServer
 import org.junit.jupiter.api.AfterEach
@@ -24,6 +26,7 @@ class XmlDownloadProcessorTest {
     private lateinit var mockServer: MockWebServer
     private lateinit var processor: XmlDownloadProcessor
     private lateinit var restClient: RestClient
+    private lateinit var itemObservationTracker: ItemObservationTracker
 
     @TempDir
     lateinit var tempDir: Path
@@ -44,9 +47,10 @@ class XmlDownloadProcessorTest {
 
         val baseUrl = mockServer.url("/").toString().removeSuffix("/")
         restClient = RestClient.builder().baseUrl(baseUrl).build()
+        itemObservationTracker = ItemObservationTracker(ObservationRegistry.create())
 
         val storageProperties = StorageProperties(directory = tempDir.toString())
-        processor = XmlDownloadProcessor(restClient, storageProperties)
+        processor = XmlDownloadProcessor(restClient, storageProperties, itemObservationTracker)
     }
 
     @AfterEach

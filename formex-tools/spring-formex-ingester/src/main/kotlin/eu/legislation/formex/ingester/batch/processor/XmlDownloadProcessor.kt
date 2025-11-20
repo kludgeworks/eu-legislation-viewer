@@ -4,6 +4,7 @@ import com.github.f4b6a3.uuid.UuidCreator
 import eu.legislation.formex.ingester.config.StorageProperties
 import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
+import eu.legislation.formex.ingester.observability.ItemObservationTracker
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.stereotype.Component
@@ -53,6 +54,7 @@ class HttpDownloadException(
 class XmlDownloadProcessor(
     private val restClient: RestClient,
     private val storageProperties: StorageProperties,
+    private val itemObservationTracker: ItemObservationTracker,
 ) : ItemProcessor<CellarData, XmlMetadata> {
     private val storageDir: Path =
         Paths.get(storageProperties.directory).also {
@@ -71,54 +73,55 @@ class XmlDownloadProcessor(
         private const val BUFFER_SIZE = 8192
     }
 
-    override fun process(item: CellarData): XmlMetadata {
-        logger.info { "Download: Starting download in thread ${Thread.currentThread().name} for URI: ${item.item}" }
+    override fun process(item: CellarData): XmlMetadata =
+        itemObservationTracker.observeStage(item.item, "download") {
+            logger.info { "Download: Starting download in thread ${Thread.currentThread().name} for URI: ${item.item}" }
 
-        // Parse URI to extract path structure for organized file storage
-        val parsedUri = CellarUriParser.parse(item.item)
-        val relativePath = parsedUri.toRelativePath()
+            // Parse URI to extract path structure for organized file storage
+            val parsedUri = CellarUriParser.parse(item.item)
+            val relativePath = parsedUri.toRelativePath()
 
-        // Create directory structure based on URI path
-        val permanentFile = storageDir.resolve(relativePath)
-        val parentDir = permanentFile.parent
-        Files.createDirectories(parentDir)
+            // Create directory structure based on URI path
+            val permanentFile = storageDir.resolve(relativePath)
+            val parentDir = permanentFile.parent
+            Files.createDirectories(parentDir)
 
-        // Download and hash in single pass, generate ID based on content
-        val tempFile = permanentFile.parent.resolve("${UUID.randomUUID()}.xml")
-        val metrics = downloadWithMetrics(item.item, tempFile)
+            // Download and hash in single pass, generate ID based on content
+            val tempFile = permanentFile.parent.resolve("${UUID.randomUUID()}.xml")
+            val metrics = downloadWithMetrics(item.item, tempFile)
 
-        // Validate that the downloaded file is not empty
-        if (metrics.size == 0L) {
-            Files.deleteIfExists(tempFile)
-            throw EmptyFileDownloadException("Downloaded file is empty (0 bytes) for URI: ${item.item}")
+            // Validate that the downloaded file is not empty
+            if (metrics.size == 0L) {
+                Files.deleteIfExists(tempFile)
+                throw EmptyFileDownloadException("Downloaded file is empty (0 bytes) for URI: ${item.item}")
+            }
+
+            logger.info {
+                "Download: Completed download - ID=${metrics.id}, URI=${item.item}, " +
+                    "Size=${metrics.size}, TempFile=$tempFile"
+            }
+
+            // Move temp file to final location with URI-based path
+            Files.move(tempFile, permanentFile, java.nio.file.StandardCopyOption.REPLACE_EXISTING)
+
+            val metadata =
+                XmlMetadata(
+                    id = metrics.id,
+                    uri = item.item,
+                    fileSize = metrics.size,
+                    workId = UUID.fromString(item.workId),
+                    exprId = item.expressionId,
+                    manId = item.manifestationId,
+                    csId = item.contentStreamId,
+                    filePath = permanentFile.toString(),
+                )
+
+            logger.info {
+                "Download: Created metadata - ID=${metadata.id}, URI=${metadata.uri}, " +
+                    "FilePath=${metadata.filePath}, Thread=${Thread.currentThread().name}"
+            }
+            metadata
         }
-
-        logger.info {
-            "Download: Completed download - ID=${metrics.id}, URI=${item.item}, " +
-                "Size=${metrics.size}, TempFile=$tempFile"
-        }
-
-        // Move temp file to final location with URI-based path
-        Files.move(tempFile, permanentFile, java.nio.file.StandardCopyOption.REPLACE_EXISTING)
-
-        val metadata =
-            XmlMetadata(
-                id = metrics.id,
-                uri = item.item,
-                fileSize = metrics.size,
-                workId = UUID.fromString(item.workId),
-                exprId = item.expressionId,
-                manId = item.manifestationId,
-                csId = item.contentStreamId,
-                filePath = permanentFile.toString(),
-            )
-
-        logger.info {
-            "Download: Created metadata - ID=${metadata.id}, URI=${metadata.uri}, " +
-                "FilePath=${metadata.filePath}, Thread=${Thread.currentThread().name}"
-        }
-        return metadata
-    }
 
     private fun downloadWithMetrics(
         uri: String,

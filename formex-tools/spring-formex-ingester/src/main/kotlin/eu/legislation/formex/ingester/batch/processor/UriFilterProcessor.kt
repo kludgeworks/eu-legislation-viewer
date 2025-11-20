@@ -2,6 +2,7 @@ package eu.legislation.formex.ingester.batch.processor
 
 import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.domain.table.FormexDocuments
+import eu.legislation.formex.ingester.observability.ItemObservationTracker
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.selectAll
@@ -19,6 +20,7 @@ private val logger = KotlinLogging.logger {}
 @Component
 class UriFilterProcessor(
     private val database: Database,
+    private val itemObservationTracker: ItemObservationTracker,
 ) : ItemProcessor<CellarData, CellarData> {
     /**
      * Processes a CellarData item, filtering it out if the URI already exists in the database.
@@ -32,21 +34,24 @@ class UriFilterProcessor(
     override fun process(item: CellarData): CellarData? {
         logger.info { "Filter: Checking URI in thread ${Thread.currentThread().name}: ${item.item}" }
 
-        val exists =
-            transaction(database) {
-                FormexDocuments
-                    .selectAll()
-                    .where { FormexDocuments.uri eq item.item }
-                    .limit(1)
-                    .count() > 0
-            }
+        return itemObservationTracker.observeStage(item.item, "filter") {
+            val exists =
+                transaction(database) {
+                    FormexDocuments
+                        .selectAll()
+                        .where { FormexDocuments.uri eq item.item }
+                        .limit(1)
+                        .count() > 0
+                }
 
-        return if (exists) {
-            logger.info { "Filter: URI already exists, skipping: ${item.item}" }
-            null
-        } else {
-            logger.info { "Filter: URI is new, allowing through: ${item.item}" }
-            item
+            if (exists) {
+                logger.info { "Filter: URI already exists, skipping: ${item.item}" }
+                itemObservationTracker.complete(item.item)
+                null
+            } else {
+                logger.info { "Filter: URI is new, allowing through: ${item.item}" }
+                item
+            }
         }
     }
 }

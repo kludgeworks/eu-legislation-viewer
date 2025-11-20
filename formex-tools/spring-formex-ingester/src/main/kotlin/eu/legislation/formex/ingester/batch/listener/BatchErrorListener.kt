@@ -3,6 +3,7 @@ package eu.legislation.formex.ingester.batch.listener
 import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
 import eu.legislation.formex.ingester.domain.table.ProcessingErrors
+import eu.legislation.formex.ingester.observability.ItemObservationTracker
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -34,6 +35,7 @@ import org.springframework.stereotype.Component
 @Component
 class ErrorLoggingSkipListener(
     private val database: Database,
+    private val itemObservationTracker: ItemObservationTracker,
 ) : SkipListener<Any, Any>,
     StepExecutionListener {
     private val logger = KotlinLogging.logger {}
@@ -103,6 +105,7 @@ class ErrorLoggingSkipListener(
                         it[stackTrace] = throwable.stackTraceToString()
                     }
                 }
+                itemObservationTracker.fail(uri, throwable)
             } catch (e: java.sql.SQLException) {
                 logger.error(e) { "Failed to persist error record for URI $uri due to SQL error" }
             }

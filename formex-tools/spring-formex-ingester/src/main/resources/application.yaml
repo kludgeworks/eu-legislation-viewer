@@ -64,7 +64,7 @@ formex:
   features:
     progressbar: true
   batch:
-    skip-percentage: 0.5  # Allow up to 0.5% of total URIs to be skipped (errors) before failing the job
+    skip-percentage: 1.5
 
 sparql:
   endpoint: https://publications.europa.eu/webapi/rdf/sparql

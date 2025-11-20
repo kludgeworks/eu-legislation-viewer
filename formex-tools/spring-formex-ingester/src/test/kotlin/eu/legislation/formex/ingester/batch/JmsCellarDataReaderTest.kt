@@ -2,6 +2,8 @@ package eu.legislation.formex.ingester.batch
 
 import eu.legislation.formex.ingester.config.JmsProperties
 import eu.legislation.formex.ingester.domain.model.CellarData
+import eu.legislation.formex.ingester.observability.ItemObservationTracker
+import io.micrometer.observation.ObservationRegistry
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.BeforeEach
@@ -27,12 +29,14 @@ class JmsCellarDataReaderTest {
     private lateinit var jmsTemplate: JmsTemplate
 
     private lateinit var jmsProperties: JmsProperties
+    private lateinit var itemObservationTracker: ItemObservationTracker
     private lateinit var reader: JmsCellarDataReader
 
     @BeforeEach
     fun setup() {
         jmsProperties = JmsProperties(cellarDataQueue = "test.cellar.queue")
-        reader = JmsCellarDataReader(jmsTemplate, jmsProperties)
+        itemObservationTracker = ItemObservationTracker(ObservationRegistry.create())
+        reader = JmsCellarDataReader(jmsTemplate, jmsProperties, itemObservationTracker)
     }
 
     @Test

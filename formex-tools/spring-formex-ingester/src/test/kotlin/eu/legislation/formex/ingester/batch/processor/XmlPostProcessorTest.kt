@@ -1,6 +1,8 @@
 package eu.legislation.formex.ingester.batch.processor
 
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
+import eu.legislation.formex.ingester.observability.ItemObservationTracker
+import io.micrometer.observation.ObservationRegistry
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
@@ -16,7 +18,7 @@ import java.util.UUID
  * Tests XML parsing to extract version and root_element metadata.
  */
 class XmlPostProcessorTest {
-    private val processor = XmlPostProcessor()
+    private val processor = XmlPostProcessor(ItemObservationTracker(ObservationRegistry.create()))
 
     @TempDir
     lateinit var tempDir: Path

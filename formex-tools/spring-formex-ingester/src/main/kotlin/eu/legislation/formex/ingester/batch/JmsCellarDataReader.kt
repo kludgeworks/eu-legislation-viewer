@@ -2,6 +2,7 @@ package eu.legislation.formex.ingester.batch
 
 import eu.legislation.formex.ingester.config.JmsProperties
 import eu.legislation.formex.ingester.domain.model.CellarData
+import eu.legislation.formex.ingester.observability.ItemObservationTracker
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.infrastructure.item.ItemReader
 import org.springframework.jms.core.JmsTemplate
@@ -35,6 +36,7 @@ private val logger = KotlinLogging.logger {}
 class JmsCellarDataReader(
     private val jmsTemplate: JmsTemplate,
     private val jmsProperties: JmsProperties,
+    private val itemObservationTracker: ItemObservationTracker,
 ) : ItemReader<CellarData> {
     override fun read(): CellarData? =
         try {
@@ -43,7 +45,7 @@ class JmsCellarDataReader(
             when (val message = jmsTemplate.receiveAndConvert(jmsProperties.cellarDataQueue)) {
                 is CellarData -> {
                     logger.debug { "Reader: Received message URI=${message.item} in thread ${Thread.currentThread().name}" }
-                    message
+                    itemObservationTracker.observeStage(message.item, "jms.receive") { message }
                 }
                 null -> {
                     logger.info { "Queue exhausted - no more messages" }

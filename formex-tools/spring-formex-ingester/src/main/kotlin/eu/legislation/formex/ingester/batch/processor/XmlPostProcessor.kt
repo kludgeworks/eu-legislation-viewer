@@ -1,6 +1,7 @@
 package eu.legislation.formex.ingester.batch.processor
 
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
+import eu.legislation.formex.ingester.observability.ItemObservationTracker
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.batch.infrastructure.item.ItemProcessor
 import org.springframework.stereotype.Component
@@ -42,7 +43,9 @@ class XmlPostProcessingException(
  * - XML file remains on disk for manual inspection
  */
 @Component
-class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
+class XmlPostProcessor(
+    private val itemObservationTracker: ItemObservationTracker,
+) : ItemProcessor<XmlMetadata, XmlMetadata> {
     private val documentBuilderFactory =
         DocumentBuilderFactory.newInstance().apply {
             isNamespaceAware = true
@@ -70,38 +73,37 @@ class XmlPostProcessor : ItemProcessor<XmlMetadata, XmlMetadata> {
             }
         }
 
-    override fun process(item: XmlMetadata): XmlMetadata {
-        logger.info {
-            "PostProcess: Starting XML parsing in thread ${Thread.currentThread().name} - " +
-                "ID=${item.id}, URI=${item.uri}, FilePath=${item.filePath}"
-        }
-
-        return runCatching {
-            val xmlContent = Files.readString(Paths.get(item.filePath))
-            val rootElement = parseXmlDocument(xmlContent)
-            val rootElementName = rootElement.localName ?: rootElement.nodeName
-            val version = extractVersion(rootElement)
-
-            val enriched =
-                item.copy(
-                    version = version,
-                    rootElement = rootElementName,
-                )
+    override fun process(item: XmlMetadata): XmlMetadata =
+        itemObservationTracker.observeStage(item.uri, "postprocess") {
             logger.info {
-                "PostProcess: Successfully enriched - ID=${enriched.id}, URI=${enriched.uri}, " +
-                    "Version=$version, RootElement=$rootElementName, Thread=${Thread.currentThread().name}"
+                "PostProcess: Starting XML parsing in thread ${Thread.currentThread().name} - " +
+                    "ID=${item.id}, URI=${item.uri}, FilePath=${item.filePath}"
             }
-            enriched
-        }.getOrElse { e ->
-            // Log and rethrow to trigger Spring Batch skip handling
-            // This ensures the error is properly tracked in processing_errors table
-            logger.warn(e) {
-                "PostProcess: Failed to parse XML - ID=${item.id}, URI=${item.uri}, " +
-                    "FilePath=${item.filePath}, Error=${e.message}"
+
+            runCatching {
+                val xmlContent = Files.readString(Paths.get(item.filePath))
+                val rootElement = parseXmlDocument(xmlContent)
+                val rootElementName = rootElement.localName ?: rootElement.nodeName
+                val version = extractVersion(rootElement)
+
+                val enriched =
+                    item.copy(
+                        version = version,
+                        rootElement = rootElementName,
+                    )
+                logger.info {
+                    "PostProcess: Successfully enriched - ID=${enriched.id}, URI=${enriched.uri}, " +
+                        "Version=$version, RootElement=$rootElementName, Thread=${Thread.currentThread().name}"
+                }
+                enriched
+            }.getOrElse { e ->
+                logger.warn(e) {
+                    "PostProcess: Failed to parse XML - ID=${item.id}, URI=${item.uri}, " +
+                        "FilePath=${item.filePath}, Error=${e.message}"
+                }
+                throw XmlPostProcessingException("Failed to parse XML for URI ${item.uri}: ${e.message}", e)
             }
-            throw XmlPostProcessingException("Failed to parse XML for URI ${item.uri}: ${e.message}", e)
         }
-    }
 
     private fun parseXmlDocument(xmlContent: String) =
         documentBuilderFactory
