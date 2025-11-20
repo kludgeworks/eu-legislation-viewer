@@ -39,10 +39,10 @@ class ErrorLoggingSkipListener(
     private val logger = KotlinLogging.logger {}
 
     @Volatile
-    private var jobExecutionId: Long = -1L
+    private var currentJobExecutionId: Long = -1L
 
     override fun beforeStep(stepExecution: StepExecution) {
-        jobExecutionId = stepExecution.jobExecutionId
+        currentJobExecutionId = stepExecution.jobExecutionId
     }
 
     override fun onSkipInProcess(
@@ -95,7 +95,7 @@ class ErrorLoggingSkipListener(
             try {
                 transaction(database) {
                     ProcessingErrors.insert {
-                        it[ProcessingErrors.jobExecutionId] = jobExecutionId
+                        it[ProcessingErrors.jobExecutionId] = this@ErrorLoggingSkipListener.currentJobExecutionId
                         it[timestamp] = System.currentTimeMillis()
                         it[ProcessingErrors.uri] = uri
                         it[errorMessage] = throwable.message ?: "Unknown error"

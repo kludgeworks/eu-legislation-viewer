@@ -1,6 +1,7 @@
 package eu.legislation.formex.ingester.progress
 
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
 /**
  * Formats milliseconds into human-readable duration string (e.g., "1h 23m 45s", "5m 12s", "42s").
@@ -63,8 +64,9 @@ data class BatchProgressState(
     val estimatedRemainingMs: Long
         get() {
             if (smoothedItemsPerSec <= 0) return 0L
-            val remaining = totalItems - itemsRead
-            return (remaining / smoothedItemsPerSec).milliseconds.inWholeMilliseconds
+            val remaining = (totalItems - itemsRead).coerceAtLeast(0)
+            val remainingSeconds = remaining / smoothedItemsPerSec
+            return remainingSeconds.seconds.inWholeMilliseconds
         }
 
     /**
