@@ -7,6 +7,7 @@ import jakarta.annotation.PostConstruct
 import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.launch.JobOperator
 import org.springframework.batch.core.repository.JobRepository
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.DependsOn
 import org.springframework.stereotype.Component
 
@@ -43,6 +44,7 @@ private val logger = KotlinLogging.logger {}
  */
 @Component
 @DependsOn("schemaInitializer")
+@ConditionalOnProperty(value = ["formex.job.autostart"], havingValue = "true", matchIfMissing = true)
 class JobLauncherEntrypoint(
     private val jobStateService: BatchJobStateService,
     private val recoveryService: BatchJobRecoveryService,

@@ -24,6 +24,8 @@ spring:
 formex:
   storage:
     directory: ${maven.build.directory:target}/test-xml-files
+  job:
+    autostart: false
 
 sparql:
   # Mock SPARQL endpoint for tests (use MockWebServer at this URL)
