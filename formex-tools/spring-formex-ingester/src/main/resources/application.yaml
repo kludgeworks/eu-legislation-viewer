@@ -33,13 +33,17 @@ spring:
       data-directory: ${app.stateDir}/artemis
       queues:
         - ${formex.jms.cellar-data-queue}
+    pool:
+      enabled: true
+      max-connections: 10
+      idle-timeout: 30000
+      block-if-full: true
+      block-if-full-timeout: 5000
 
   jms:
     template:
-      # Receive timeout for JmsTemplate.receiveAndConvert()
-      # Reader signals end-of-queue after this timeout (null = wait indefinitely)
-      # Set to 1 second - fast signal when queue is empty
       receive-timeout: 1000
+      session-transacted: true
 
   main:
     banner-mode: off

@@ -94,40 +94,53 @@ class SparqlUriJmsPublisher(
         // TODO it feels odd to have the progress service this tightly coupled
 
         // Show waiting message for long SPARQL fetch
-        progressService?.printTaskletWaiting("Fetching URIs from SPARQL endpoint (this may take 3-4 minutes)")
+        progressService?.printTaskletWaiting("Fetching URIs from SPARQL endpoint (this will take a few minutes)")
 
         val records = fetchAndParseFromSparql()
 
         // Show completion message
         progressService?.printTaskletComplete("Fetched ${records.size} URIs from SPARQL endpoint")
 
-        // Publish to JMS queue in parallel (replaces execution context storage)
-        val parallelism = 10 // Number of concurrent publishing threads
-        logger.info { "Publishing ${records.size} URIs to JMS queue" }
-        progressService?.printTaskletWaiting("Publishing ${records.size} URIs to JMS queue with $parallelism parallel threads...")
+        // TODO extract these to config
+        val parallelism = 10
+        val txBatchSize = 1_000
+        logger.info { "Publishing ${records.size} URIs to JMS queue with transactional batching (batch size: $txBatchSize)" }
+        progressService?.printTaskletWaiting("Publishing ${records.size} URIs to JMS queue with $parallelism parallel threads and transactional batching...")
 
         // Hide cursor for progress bar updates
         progressService?.hideCursor()
 
-        // Publish messages in parallel using coroutines with limited parallelism
+        // Publish messages in parallel using coroutines with limited parallelism and transactional batching
         val publishedCount = AtomicInteger(0)
-        val progressUpdateInterval = 1_000 // Update progress every 1000 messages
-        val batchSize = 1_000 // Batch records into chunks for parallel processing
+        // TODO extract these to config
+        val progressUpdateInterval = 1_000
+        val batchSize = 1_000
 
         runBlocking(Dispatchers.IO.limitedParallelism(parallelism)) {
             records
                 .chunked(batchSize)
                 .map { batch ->
                     async {
-                        batch.forEach { cellarData ->
-                            jmsTemplate.convertAndSend(jmsProperties.cellarDataQueue, cellarData)
-                            val count = publishedCount.incrementAndGet()
+                        // Use sessionTransacted=true for transactional batching
+                        jmsTemplate.execute { session, _ ->
+                            batch.forEachIndexed { index, cellarData ->
+                                jmsTemplate.convertAndSend(jmsProperties.cellarDataQueue, cellarData)
+                                val count = publishedCount.incrementAndGet()
 
-                            // Update progress bar every 1000 messages (thread-safe)
-                            if (count % progressUpdateInterval == 0) {
-                                logger.debug { "Published $count / ${records.size} messages..." }
-                                progressService?.printChunkProgress(count.toLong(), records.size.toLong())
+                                // Commit transaction every txBatchSize messages to reduce network round trips
+                                if ((index + 1) % txBatchSize == 0) {
+                                    session.commit()
+                                }
+
+                                // Update progress bar every 1000 messages (thread-safe)
+                                if (count % progressUpdateInterval == 0) {
+                                    logger.debug { "Published $count / ${records.size} messages..." }
+                                    progressService?.printChunkProgress(count.toLong(), records.size.toLong())
+                                }
                             }
+                            // Final commit for any remaining messages in this batch
+                            session.commit()
+                            null // Return null to satisfy execute() signature
                         }
                     }
                 }.awaitAll()
