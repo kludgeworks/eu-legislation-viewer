@@ -34,11 +34,7 @@ spring:
       queues:
         - ${formex.jms.cellar-data-queue}
     pool:
-      enabled: true
-      max-connections: 10
-      idle-timeout: 30000
-      block-if-full: true
-      block-if-full-timeout: 5000
+      enabled: false
 
   jms:
     template:
@@ -64,7 +60,7 @@ formex:
   features:
     progressbar: true
   batch:
-    skip-percentage: 1.5
+    skip-percentage: 5
 
 sparql:
   endpoint: https://publications.europa.eu/webapi/rdf/sparql

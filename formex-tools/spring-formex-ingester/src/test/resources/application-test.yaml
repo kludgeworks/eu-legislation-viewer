@@ -20,6 +20,8 @@ spring:
       persistent: false  # In-memory for tests (faster, no cleanup needed)
       queues:
         - cellar.data.queue
+    pool:
+      enabled: false
 
 formex:
   storage:

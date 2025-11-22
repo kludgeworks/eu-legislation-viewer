@@ -121,10 +121,13 @@ class SparqlUriJmsPublisher(
                 .chunked(batchSize)
                 .map { batch ->
                     async {
-                        // Use sessionTransacted=true for transactional batching
+                        // Use provided JMS session for transactional batching; avoid nested template calls
                         jmsTemplate.execute { session, _ ->
+                            val destination = session.createQueue(jmsProperties.cellarDataQueue)
+                            val producer = session.createProducer(destination)
                             batch.forEachIndexed { index, cellarData ->
-                                jmsTemplate.convertAndSend(jmsProperties.cellarDataQueue, cellarData)
+                                val message = session.createObjectMessage(cellarData)
+                                producer.send(message)
                                 val count = publishedCount.incrementAndGet()
 
                                 // Commit transaction every txBatchSize messages to reduce network round trips
@@ -140,6 +143,7 @@ class SparqlUriJmsPublisher(
                             }
                             // Final commit for any remaining messages in this batch
                             session.commit()
+                            producer.close()
                             null // Return null to satisfy execute() signature
                         }
                     }
