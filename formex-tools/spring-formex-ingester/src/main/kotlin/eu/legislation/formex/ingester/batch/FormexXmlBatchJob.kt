@@ -15,14 +15,13 @@ import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.job.parameters.JobParametersBuilder
 import org.springframework.batch.core.job.parameters.JobParametersIncrementer
-import org.springframework.batch.core.listener.SkipListener
-import org.springframework.batch.core.listener.StepExecutionListener
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
 import org.springframework.batch.infrastructure.item.support.CompositeItemProcessor
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.retry.RetryPolicy
 import org.springframework.core.task.AsyncTaskExecutor
 import org.springframework.http.client.JdkClientHttpRequestFactory
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
@@ -181,7 +180,6 @@ class FormexXmlBatchJob {
     @Suppress(
         "kotlin:S107", // Spring Batch step definitions require many parameters
         "LongParameterList", // Spring Batch DI requires many parameters
-        "DEPRECATION", // See: https://github.com/spring-projects/spring-batch/issues/5084
     )
     @Bean
     fun downloadXmlStep(
@@ -204,30 +202,33 @@ class FormexXmlBatchJob {
                 setDelegates(listOf(filterProcessor, downloadProcessor, postProcessor))
             }
 
-        val faultTolerantBuilder =
+        val retryPolicy =
+            RetryPolicy
+                .builder()
+                .maxRetries(3)
+                .includes(Exception::class.java)
+                .excludes(ExposedSQLException::class.java, HttpDownloadException::class.java)
+                .build()
+
+        val chunkBuilder =
             StepBuilder("downloadXml", jobRepository)
-                .chunk<CellarData, XmlMetadata>(CHUNK_SIZE, transactionManager)
+                .chunk<CellarData, XmlMetadata>(CHUNK_SIZE)
+                .transactionManager(transactionManager)
                 .reader(reader)
                 .processor(compositeProcessor)
                 .writer(writer)
                 .taskExecutor(taskExecutor)
                 .faultTolerant()
-                .retry(Exception::class.java)
-                .retryLimit(3)
-                .noRetry(ExposedSQLException::class.java)
-                .noRetry(HttpDownloadException::class.java)
+                .retryPolicy(retryPolicy)
                 .skipPolicy(percentageBasedSkipPolicy)
-
-        // Register error logging listener as both SkipListener and StepExecutionListener
-        faultTolerantBuilder.listener(errorLoggingSkipListener as SkipListener<Any, Any>)
-        val simpleBuilder = faultTolerantBuilder.listener(errorLoggingSkipListener as StepExecutionListener)
-        simpleBuilder.listener(percentageBasedSkipPolicy as StepExecutionListener)
+                .listener(errorLoggingSkipListener)
+                .listener(percentageBasedSkipPolicy)
 
         // Add terminal progress listeners if available (controlled by feature flag)
-        terminalProgressStepListener?.let { simpleBuilder.listener(it) }
-        terminalProgressChunkListener?.let { simpleBuilder.listener(it) }
+        terminalProgressStepListener?.let { chunkBuilder.listener(it) }
+        terminalProgressChunkListener?.let { chunkBuilder.listener(it) }
 
-        return simpleBuilder.build()
+        return chunkBuilder.build()
     }
 
     /**
