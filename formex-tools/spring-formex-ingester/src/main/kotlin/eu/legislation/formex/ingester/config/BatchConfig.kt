@@ -3,7 +3,10 @@ package eu.legislation.formex.ingester.config
 import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.observation.DefaultMeterObservationHandler
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry
+import io.micrometer.observation.Observation
+import io.micrometer.observation.ObservationHandler
 import io.micrometer.observation.ObservationRegistry
+import org.springframework.beans.factory.ObjectProvider
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -28,11 +31,17 @@ class BatchConfig {
      * @return Configured observation registry
      */
     @Bean
-    fun observationRegistry(meterRegistry: MeterRegistry): ObservationRegistry {
+    fun observationRegistry(
+        meterRegistry: MeterRegistry,
+        tracingObservationHandlerProvider: ObjectProvider<ObservationHandler<out Observation.Context>>,
+    ): ObservationRegistry {
         val observationRegistry = ObservationRegistry.create()
-        observationRegistry
-            .observationConfig()
-            .observationHandler(DefaultMeterObservationHandler(meterRegistry))
+        val observationConfig = observationRegistry.observationConfig()
+        observationConfig.observationHandler(DefaultMeterObservationHandler(meterRegistry))
+        tracingObservationHandlerProvider.ifAvailable { handler ->
+            @Suppress("UNCHECKED_CAST")
+            observationConfig.observationHandler(handler as ObservationHandler<Observation.Context>)
+        }
         return observationRegistry
     }
 

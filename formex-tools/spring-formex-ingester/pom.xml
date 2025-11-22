@@ -140,6 +140,11 @@
 		<groupId>io.zipkin.reporter2</groupId>
 		<artifactId>zipkin-reporter-brave</artifactId>
 	</dependency>
+	<dependency>
+		<groupId>io.zipkin.brave</groupId>
+		<artifactId>brave-context-slf4j</artifactId>
+		<version>6.3.0</version>
+	</dependency>
 
 	<!-- Test Dependencies -->
 	<dependency>
