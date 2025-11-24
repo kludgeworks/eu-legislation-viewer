@@ -65,14 +65,20 @@ internal class TerminalFormatter(
     ) {
         val startTimeStr = dateFormatter.format(startTime)
 
-        terminal.println(TextColors.cyan("Job Execution Started".padStart((HEADER_WIDTH + 22) / 2)))
-        val jobNameLine = "${TextColors.cyan("Job Name:")} $jobName"
-        terminal.println(jobNameLine.padStart((HEADER_WIDTH + 11 + jobName.length) / 2))
-        val executionIdLine = "${TextColors.cyan("Execution ID:")} $executionId"
-        terminal.println(executionIdLine.padStart((HEADER_WIDTH + 15 + executionId.toString().length) / 2))
-        val startTimeLine = "${TextColors.cyan("Start Time:")} $startTimeStr"
-        terminal.println(startTimeLine.padStart((HEADER_WIDTH + 13 + startTimeStr.length) / 2))
+        terminal.println(centerLine("Job Execution Started", TextColors.cyan("Job Execution Started")))
+        terminal.println(centerLine("Job Name: $jobName", "${TextColors.cyan("Job Name:")} $jobName"))
+        terminal.println(centerLine("Execution ID: $executionId", "${TextColors.cyan("Execution ID:")} $executionId"))
+        terminal.println(centerLine("Start Time: $startTimeStr", "${TextColors.cyan("Start Time:")} $startTimeStr"))
         terminal.println()
+    }
+
+    private fun centerLine(
+        plainText: String,
+        coloredText: String = plainText,
+    ): String {
+        val totalPadding = (HEADER_WIDTH - plainText.length).coerceAtLeast(0)
+        val leftPadding = totalPadding / 2
+        return " ".repeat(leftPadding) + coloredText
     }
 
     /**

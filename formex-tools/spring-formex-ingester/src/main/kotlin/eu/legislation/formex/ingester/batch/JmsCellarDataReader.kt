@@ -20,14 +20,16 @@ private val logger = KotlinLogging.logger {}
  * - Zero execution context storage (vs 154 MB list)
  * - Automatic message acknowledgment (fault tolerance)
  * - Fast restart (unprocessed messages remain in queue)
- * - No ItemStream needed (JMS manages state)
+ * - No ItemStream needed (incompatible with multithreaded steps + JMS manages state)
  *
  * Fault Tolerance:
  * - Spring Batch transaction commit = JMS message acknowledged
  * - On job failure, unacknowledged messages automatically redelivered
- * - No manual checkpoint tracking required
+ * - No manual checkpoint tracking required (JMS manages message state)
  *
- * Note: @StepScope not needed as reader has no step-specific dependencies.
+ * Note: Does not implement ItemStream because JMS readers in multithreaded steps
+ * cannot maintain step execution state correctly. Spring Batch's readCount/writeCount
+ * tracking may not work reliably with JMS + taskExecutor combination.
  *
  * @param jmsTemplate Spring Boot auto-configured JmsTemplate
  * @param jmsProperties JMS queue configuration
@@ -38,6 +40,7 @@ class JmsCellarDataReader(
     private val jmsProperties: JmsProperties,
     private val itemObservationTracker: ItemObservationTracker,
 ) : ItemReader<CellarData> {
+
     override fun read(): CellarData? =
         try {
             // Blocking receive with configured timeout (1000ms from application.yaml)

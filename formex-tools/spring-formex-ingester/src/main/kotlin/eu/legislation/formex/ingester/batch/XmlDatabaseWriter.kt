@@ -30,15 +30,21 @@ class XmlDatabaseWriter(
     private val itemObservationTracker: ItemObservationTracker,
 ) : ItemWriter<XmlMetadata> {
     override fun write(chunk: Chunk<out XmlMetadata>) {
-        // Check for duplicate IDs within the chunk
-        val ids = chunk.items.map { it.id }
-        val duplicateIds = ids.groupingBy { it }.eachCount().filter { it.value > 1 }
+        // Check for duplicate URIs within the chunk - this should NOT happen!
+        // Different URIs with same content ID are allowed (upstream data quality issue)
+        val uris = chunk.items.map { it.uri }
+        val duplicateUris = uris.groupingBy { it }.eachCount().filter { it.value > 1 }
 
-        if (duplicateIds.isNotEmpty()) {
-            logger.error { "Writer: DUPLICATE IDs DETECTED IN CHUNK: $duplicateIds" }
+        if (duplicateUris.isNotEmpty()) {
+            logger.error { "Writer: DUPLICATE URIs DETECTED IN CHUNK - THIS SHOULD NOT HAPPEN!" }
+            logger.error { "Writer: Duplicate URIs: $duplicateUris" }
             chunk.items.forEachIndexed { index, metadata ->
-                logger.error { "Writer: Chunk[$index] ID=${metadata.id} URI=${metadata.uri}" }
+                logger.error { "Writer: Chunk[$index] ID=${metadata.id} URI=${metadata.uri} FilePath=${metadata.filePath}" }
             }
+            throw IllegalStateException(
+                "Duplicate URIs detected in chunk. " +
+                    "Each URI should only be processed once. Duplicate URIs: $duplicateUris",
+            )
         }
 
         logger.info { "Writer: Starting batch insert of ${chunk.items.size} items" }

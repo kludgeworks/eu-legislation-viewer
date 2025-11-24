@@ -54,12 +54,12 @@ private val logger = KotlinLogging.logger {}
  * - If publishing fails mid-way, some duplicate messages may exist in queue (JMS handles this)
  *
  * Timeout Configuration:
- * - RestClient configured with 4-minute read timeout (see FormexXmlBatchJob.restClient)
+ * - RestClient configured with 4-minute read timeout (see FormexXmlBatchJob.sparqlRestClient)
  * - EU SPARQL endpoint can take 3-4 minutes for large queries
  *
  * @param properties SPARQL endpoint configuration
  * @param jmsProperties JMS queue configuration
- * @param restClient Spring RestClient for HTTP communication (with 4-minute timeout)
+ * @param sparqlRestClient Spring RestClient for HTTP communication (with 4-minute timeout)
  * @param jmsTemplate Spring Boot auto-configured JmsTemplate for message publishing
  * @param progressService Optional terminal progress service for CLI feedback (feature-flagged)
  */
@@ -67,7 +67,7 @@ private val logger = KotlinLogging.logger {}
 class SparqlUriJmsPublisher(
     private val properties: SparqlProperties,
     private val jmsProperties: JmsProperties,
-    private val restClient: RestClient,
+    private val sparqlRestClient: RestClient,
     private val jmsTemplate: JmsTemplate,
     private val progressService: TerminalProgressService?,
 ) : Tasklet {
@@ -223,7 +223,7 @@ class SparqlUriJmsPublisher(
     private fun fetchCsvFromEndpoint(query: String): String {
         val formBody = "query=" + URLEncoder.encode(query, StandardCharsets.UTF_8)
 
-        return restClient
+        return sparqlRestClient
             .post()
             .uri(properties.endpoint)
             .header("Accept", "text/csv")

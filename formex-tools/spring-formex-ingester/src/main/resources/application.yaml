@@ -6,11 +6,15 @@ spring:
   application:
     name: formex-ingester
 
+  threads:
+    virtual:
+      enabled: true  # Use virtual threads for all async operations
+
   datasource:
     url: jdbc:sqlite:${app.dataDir}/formex.db?journal_mode=WAL
     driver-class-name: org.sqlite.JDBC
     hikari:
-      maximum-pool-size: 10
+      maximum-pool-size: 25
 
   batch:
     jdbc:
@@ -34,12 +38,13 @@ spring:
       queues:
         - ${formex.jms.cellar-data-queue}
     pool:
-      enabled: false
+      enabled: false  # Keep disabled for embedded mode - pooling is for remote brokers
 
   jms:
     template:
       receive-timeout: 1000
-      session-transacted: true
+      session:
+        transacted: true
 
   main:
     banner-mode: off

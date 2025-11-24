@@ -1,5 +1,6 @@
 package eu.legislation.formex.ingester.batch.listener
 
+import eu.legislation.formex.ingester.batch.PercentageBasedSkipPolicy
 import eu.legislation.formex.ingester.progress.BatchProgressState
 import eu.legislation.formex.ingester.progress.TerminalProgressService
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -8,8 +9,9 @@ import org.springframework.batch.core.job.JobExecution
 import org.springframework.batch.core.listener.ChunkListener
 import org.springframework.batch.core.listener.JobExecutionListener
 import org.springframework.batch.core.listener.StepExecutionListener
-import org.springframework.batch.core.scope.context.ChunkContext
+import org.springframework.batch.core.scope.context.StepSynchronizationManager
 import org.springframework.batch.core.step.StepExecution
+import org.springframework.batch.infrastructure.item.Chunk
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean
 import org.springframework.stereotype.Component
 
@@ -95,13 +97,21 @@ class TerminalProgressJobListener(
 class TerminalProgressStepListener(
     private val progressService: TerminalProgressService,
 ) : StepExecutionListener {
+
+    init {
+        logger.info { "✓ TerminalProgressStepListener bean created successfully" }
+    }
+
     override fun beforeStep(stepExecution: StepExecution) {
         try {
+            logger.info { "TerminalProgressStepListener.beforeStep called for step: ${stepExecution.stepName}" }
             // For downloadXml step, we can estimate count from cached SPARQL data
             val expectedCount =
                 stepExecution.jobExecution.executionContext
                     .getLong("sparql.uriCount", -1L)
                     .takeIf { it > 0 }
+
+            logger.info { "Expected count for step ${stepExecution.stepName}: $expectedCount" }
 
             progressService.printStepHeader(
                 stepName = stepExecution.stepName,
@@ -116,6 +126,7 @@ class TerminalProgressStepListener(
                         ?.toInstant()
                         ?.toEpochMilli() ?: System.currentTimeMillis()
 
+                logger.info { "Starting batch progress layout for downloadXml step with $expectedCount items" }
                 progressService.startBatchProgressLayout(
                     stepName = stepExecution.stepName,
                     totalItems = expectedCount,
@@ -169,52 +180,105 @@ class TerminalProgressStepListener(
  *
  * This listener provides real-time progress updates as chunks are processed.
  * Only activated when TerminalProgressService is available (controlled by feature flag).
+ *
+ * Note: JMS readers combined with multithreaded steps may report slightly stale
+ * read/write counts because Spring Batch updates those values asynchronously. We
+ * still surface the StepExecution counters rather than issuing custom database
+ * queries so progress reporting remains lightweight.
  */
 @Component
-@ConditionalOnBean(TerminalProgressService::class)
 class TerminalProgressChunkListener(
-    private val progressService: TerminalProgressService,
-    private val skipPolicy: eu.legislation.formex.ingester.batch.PercentageBasedSkipPolicy,
-) : ChunkListener<Any, Any> {
-    @Deprecated("Deprecated in Spring Batch")
-    override fun beforeChunk(context: ChunkContext) {
-        // No-op: chunk hasn't started yet
+    private val progressService: TerminalProgressService?,
+    private val skipPolicy: PercentageBasedSkipPolicy,
+) : ChunkListener<Any, Any>, StepExecutionListener {
+
+    init {
+        logger.info { "✓ TerminalProgressChunkListener bean created (progressService=${progressService != null})" }
     }
 
-    @Deprecated("Deprecated in Spring Batch")
-    override fun afterChunk(context: ChunkContext) {
+    @Volatile
+    private var currentStepExecution: StepExecution? = null
+
+    override fun beforeStep(stepExecution: StepExecution) {
+        logger.info { "TerminalProgressChunkListener.beforeStep called for step: ${stepExecution.stepName}" }
+        currentStepExecution = stepExecution
+    }
+
+    override fun afterStep(stepExecution: StepExecution): ExitStatus? {
+        logger.info { "TerminalProgressChunkListener.afterStep called" }
+        currentStepExecution = null
+        return null
+    }
+
+    override fun afterChunk(chunk: Chunk<Any>) {
+        logger.info { "TerminalProgressChunkListener.afterChunk(Chunk) called - NEW API - chunk size: ${chunk.items.size}" }
+        currentStepExecution?.let { updateProgress(it) }
+    }
+
+    override fun onChunkError(
+        exception: Exception,
+        chunk: Chunk<Any>,
+    ) {
+        logger.info { "TerminalProgressChunkListener.onChunkError(Exception,Chunk) called - NEW API" }
+        currentStepExecution?.let { updateProgress(it) }
+    }
+
+    private fun updateProgress(stepExecution: StepExecution?) {
         try {
-            val stepExecution = context.stepContext.stepExecution
+            logger.debug { "updateProgress() called" }
+
+            // Skip if progress service not available
+            if (progressService == null) {
+                logger.debug { "progressService is null, skipping update" }
+                return
+            }
+
+            val activeExecution = stepExecution ?: StepSynchronizationManager.getContext()?.stepExecution ?: run {
+                logger.debug { "No active execution found" }
+                return
+            }
 
             // Only for downloadXml step
-            if (stepExecution.stepName != "downloadXml") return
+            if (activeExecution.stepName != "downloadXml") {
+                logger.debug { "Not downloadXml step (${activeExecution.stepName}), skipping" }
+                return
+            }
 
             val expectedCount =
-                stepExecution.jobExecution.executionContext
+                activeExecution.jobExecution.executionContext
                     .getLong("sparql.uriCount", -1L)
-                    .takeIf { it > 0 } ?: return
+                    .takeIf { it > 0 } ?: run {
+                logger.debug { "No expected count in execution context" }
+                return
+            }
 
             val startTimeMs =
-                stepExecution.startTime
+                activeExecution.startTime
                     ?.atZone(java.time.ZoneId.systemDefault())
                     ?.toInstant()
                     ?.toEpochMilli() ?: System.currentTimeMillis()
 
+            val readCount = activeExecution.readCount
+            val writeCount = activeExecution.writeCount
+
+            logger.info { "Progress update: read=$readCount, written=$writeCount, total=$expectedCount" }
+
             val state =
                 BatchProgressState(
-                    stepName = stepExecution.stepName,
-                    itemsRead = stepExecution.readCount,
-                    itemsWritten = stepExecution.writeCount,
+                    stepName = activeExecution.stepName,
+                    itemsRead = readCount,
+                    itemsWritten = writeCount,
                     itemsSkipped =
-                        stepExecution.readSkipCount +
-                            stepExecution.processSkipCount +
-                            stepExecution.writeSkipCount,
+                        activeExecution.readSkipCount +
+                            activeExecution.processSkipCount +
+                            activeExecution.writeSkipCount,
                     totalItems = expectedCount,
                     startTimeMs = startTimeMs,
                     skipLimit = skipPolicy.getSkipLimit(),
                 )
 
             progressService.updateBatchProgress(state)
+            logger.debug { "Successfully updated progress" }
         } catch (
             @Suppress("TooGenericExceptionCaught") // Defensive: UI display must not block batch execution
             e: RuntimeException,
@@ -223,10 +287,5 @@ class TerminalProgressChunkListener(
             // Progress display must not block batch job execution
             logger.warn(e) { "Failed to update chunk progress" }
         }
-    }
-
-    @Deprecated("Deprecated in Spring Batch")
-    override fun afterChunkError(context: ChunkContext) {
-        // No-op: error handling done by skip listener
     }
 }

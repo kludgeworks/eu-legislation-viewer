@@ -9,10 +9,10 @@ import org.jetbrains.exposed.sql.Table
  * The actual XML content is stored in the filesystem; this table stores only metadata and file paths.
  *
  * Schema mapping:
- * - id: Primary key (TEXT), unique identifier for the document
+ * - uri: Cellar URI (TEXT, part of composite primary key)
+ * - id: Content-based identifier (TEXT, part of composite primary key)
  * - file_path: Local filesystem path where the XML file is stored (NOT NULL)
  * - file_size: Size of the XML file in bytes (nullable INTEGER)
- * - uri: Unique URI from Cellar (nullable TEXT with UNIQUE constraint for restart idempotency)
  * - work_id: FRBR Work identifier (NOT NULL)
  * - expr_id: FRBR Expression identifier (NOT NULL)
  * - man_id: FRBR Manifestation identifier (NOT NULL)
@@ -20,13 +20,13 @@ import org.jetbrains.exposed.sql.Table
  * - version: Formex version (nullable TEXT)
  * - root_element: Root XML element name (nullable TEXT)
  *
- * Unique constraint on 'uri':
- * - Ensures URIs are never processed twice
- * - Critical for restart idempotency: if a chunk partially completes and is restarted,
- *   duplicate URIs will be rejected by the database, preventing data duplication
+ * Composite primary key (uri, id):
+ * - Ensures each URI can only be inserted once (restart idempotency)
+ * - Allows multiple URIs to reference the same content (same id)
+ * - Handles upstream data quality issues where different URIs serve identical content
  *
  * Indexes:
- * - idx_formex_documents_uri: UNIQUE on uri - prevents duplicates and speeds lookups (uniqueIndex())
+ * - idx_formex_documents_id: On id for finding duplicate content across URIs
  * - idx_formex_documents_version: On version for quick version lookups
  * - idx_formex_documents_root_element: On root_element for filtering by element type
  * - idx_formex_documents_work_id: On work_id for Cellar identifier filtering
@@ -35,10 +35,10 @@ import org.jetbrains.exposed.sql.Table
  * - idx_formex_documents_cs_id: On cs_id for Cellar identifier filtering
  */
 object FormexDocuments : Table("formex_documents") {
+    val uri = text("uri")
     val id = text("id")
     val filePath = text("file_path")
     val fileSize = integer("file_size").nullable()
-    val uri = text("uri").nullable().uniqueIndex()
     val workId = text("work_id")
     val exprId = text("expr_id")
     val manId = text("man_id")
@@ -46,9 +46,10 @@ object FormexDocuments : Table("formex_documents") {
     val version = text("version").nullable()
     val rootElement = text("root_element").nullable()
 
-    override val primaryKey = PrimaryKey(id)
+    override val primaryKey = PrimaryKey(uri, id)
 
     init {
+        index(isUnique = false, id)
         index(isUnique = false, version)
         index(isUnique = false, rootElement)
         index(isUnique = false, workId)

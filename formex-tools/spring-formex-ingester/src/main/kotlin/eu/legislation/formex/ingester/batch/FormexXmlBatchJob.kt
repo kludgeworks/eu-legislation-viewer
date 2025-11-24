@@ -10,11 +10,13 @@ import eu.legislation.formex.ingester.batch.processor.XmlDownloadProcessor
 import eu.legislation.formex.ingester.batch.processor.XmlPostProcessor
 import eu.legislation.formex.ingester.domain.model.CellarData
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.jetbrains.exposed.exceptions.ExposedSQLException
 import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.job.parameters.JobParametersBuilder
 import org.springframework.batch.core.job.parameters.JobParametersIncrementer
+import org.springframework.batch.core.listener.ChunkListener
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
@@ -23,11 +25,12 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.retry.RetryPolicy
 import org.springframework.core.task.AsyncTaskExecutor
+import org.springframework.core.task.support.TaskExecutorAdapter
 import org.springframework.http.client.JdkClientHttpRequestFactory
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 import org.springframework.transaction.PlatformTransactionManager
 import org.springframework.web.client.RestClient
 import java.time.Duration
+import java.util.concurrent.Executors
 
 /**
  * Spring Batch job configuration for processing Formex XML documents.
@@ -44,16 +47,14 @@ import java.time.Duration
 class FormexXmlBatchJob {
     companion object {
         // Chunk processing configuration
-        // Larger chunk size (50) reduces variance in speed calculations for smoother progress display
-        private const val CHUNK_SIZE = 50
-
-        // Thread pool configuration for parallel downloads
-        private const val CORE_POOL_SIZE = 10
-        private const val MAX_POOL_SIZE = 20
-        private const val QUEUE_CAPACITY = 100
+        // Larger chunk size (200) reduces database transaction overhead and improves throughput
+        private const val CHUNK_SIZE = 200
 
         // HTTP timeout configuration (SPARQL queries can take 3-4 minutes)
         private const val READ_TIMEOUT_MINUTES = 4L
+
+        // HTTP timeout for XML downloads (shorter than SPARQL)
+        private const val XML_READ_TIMEOUT_SECONDS = 30L
     }
 
     /**
@@ -210,6 +211,12 @@ class FormexXmlBatchJob {
                 .excludes(ExposedSQLException::class.java, HttpDownloadException::class.java)
                 .build()
 
+        // Log listener availability
+        KotlinLogging.logger {}.info {
+            "downloadXmlStep: terminalProgressStepListener=${terminalProgressStepListener != null}, " +
+            "terminalProgressChunkListener=${terminalProgressChunkListener != null}"
+        }
+
         val chunkBuilder =
             StepBuilder("downloadXml", jobRepository)
                 .chunk<CellarData, XmlMetadata>(CHUNK_SIZE)
@@ -217,6 +224,16 @@ class FormexXmlBatchJob {
                 .reader(reader)
                 .processor(compositeProcessor)
                 .writer(writer)
+
+        // Register ChunkListener before taskExecutor and faultTolerant configuration
+        terminalProgressChunkListener?.let {
+            KotlinLogging.logger {}.info {
+                "Registering TerminalProgressChunkListener with step BEFORE taskExecutor"
+            }
+            chunkBuilder.listener(it as ChunkListener<in CellarData, out XmlMetadata>)
+        }
+
+        chunkBuilder
                 .taskExecutor(taskExecutor)
                 .faultTolerant()
                 .retryPolicy(retryPolicy)
@@ -224,49 +241,63 @@ class FormexXmlBatchJob {
                 .listener(errorLoggingSkipListener)
                 .listener(percentageBasedSkipPolicy)
 
-        // Add terminal progress listeners if available (controlled by feature flag)
-        terminalProgressStepListener?.let { chunkBuilder.listener(it) }
-        terminalProgressChunkListener?.let { chunkBuilder.listener(it) }
+        // Register StepExecutionListener
+        chunkBuilder.listener(terminalProgressChunkListener)
 
         return chunkBuilder.build()
     }
 
     /**
-     * Task executor for parallel XML downloads.
+     * Task executor for parallel XML downloads using virtual threads.
      *
-     * Configuration:
-     * - Core pool: 10 threads
-     * - Max pool: 20 threads
-     * - Queue capacity: 100 items
-     * - Thread name prefix: "xml-download-"
+     * Virtual threads (Project Loom) provide:
+     * - Massive scalability: Can handle thousands of concurrent downloads
+     * - Near-zero memory overhead: ~1KB per thread vs ~2MB for platform threads
+     * - No queue capacity limits: No rejected execution exceptions
+     * - Simplified configuration: No need to tune pool sizes
      *
-     * @return The configured task executor
+     * Perfect for I/O-bound workloads like HTTP downloads.
+     *
+     * @return Virtual thread executor
      */
     @Bean
     fun taskExecutor(): AsyncTaskExecutor =
-        ThreadPoolTaskExecutor().apply {
-            corePoolSize = CORE_POOL_SIZE
-            maxPoolSize = MAX_POOL_SIZE
-            queueCapacity = QUEUE_CAPACITY
-            setThreadNamePrefix("xml-download-")
-            initialize()
-        }
+        TaskExecutorAdapter(Executors.newVirtualThreadPerTaskExecutor())
 
     /**
-     * RestClient configured for large file downloads and SPARQL queries.
+     * RestClient configured for SPARQL queries.
      *
      * Uses JDK HttpClient (no external dependencies).
      * Timeouts configured for EU SPARQL endpoint (can take 3-4 minutes for large queries).
      *
-     * @return The configured RestClient
+     * @return The configured RestClient for SPARQL queries
      */
     @Bean
-    fun restClient(): RestClient =
+    fun sparqlRestClient(): RestClient =
         RestClient
             .builder()
             .requestFactory(
                 JdkClientHttpRequestFactory().apply {
                     setReadTimeout(Duration.ofMinutes(READ_TIMEOUT_MINUTES))
+                },
+            ).build()
+
+    /**
+     * RestClient configured for XML file downloads.
+     *
+     * Uses JDK HttpClient (no external dependencies).
+     * Shorter read timeout than SPARQL client since XML downloads should be fast.
+     * Note: JdkClientHttpRequestFactory uses JDK HttpClient's default connect timeout.
+     *
+     * @return The configured RestClient for XML downloads
+     */
+    @Bean
+    fun xmlDownloadRestClient(): RestClient =
+        RestClient
+            .builder()
+            .requestFactory(
+                JdkClientHttpRequestFactory().apply {
+                    setReadTimeout(Duration.ofSeconds(XML_READ_TIMEOUT_SECONDS))
                 },
             ).build()
 }

@@ -52,7 +52,7 @@ class HttpDownloadException(
  */
 @Component
 class XmlDownloadProcessor(
-    private val restClient: RestClient,
+    private val xmlDownloadRestClient: RestClient,
     private val storageProperties: StorageProperties,
     private val itemObservationTracker: ItemObservationTracker,
 ) : ItemProcessor<CellarData, XmlMetadata> {
@@ -130,7 +130,7 @@ class XmlDownloadProcessor(
         val digest = MessageDigest.getInstance("SHA-1")
         var size = 0L
 
-        restClient
+        xmlDownloadRestClient
             .get()
             .uri(uri)
             .exchange { _, response ->
