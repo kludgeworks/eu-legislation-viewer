@@ -1,11 +1,13 @@
 package eu.legislation.formex.ingester.batch.processor
 
+import eu.legislation.formex.ingester.config.StorageProperties
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
 import eu.legislation.formex.ingester.observability.ItemObservationTracker
 import io.micrometer.observation.ObservationRegistry
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import java.nio.file.Files
@@ -18,10 +20,21 @@ import java.util.UUID
  * Tests XML parsing to extract version and root_element metadata.
  */
 class XmlPostProcessorTest {
-    private val processor = XmlPostProcessor(ItemObservationTracker(ObservationRegistry.create()))
+    private lateinit var processor: XmlPostProcessor
+    private lateinit var storageProperties: StorageProperties
 
     @TempDir
     lateinit var tempDir: Path
+
+    @BeforeEach
+    fun setup() {
+        storageProperties = StorageProperties(directory = tempDir.toString())
+        processor =
+            XmlPostProcessor(
+                storageProperties,
+                ItemObservationTracker(ObservationRegistry.create()),
+            )
+    }
 
     @Test
     fun `process should extract version and root element from valid XML`() {
@@ -34,20 +47,7 @@ class XmlPostProcessorTest {
             </REGULATION>
             """.trimIndent()
 
-        val tempFile = Files.createTempFile(tempDir, "test", ".xml")
-        Files.writeString(tempFile, xmlContent)
-
-        val metadata =
-            XmlMetadata(
-                id = UUID.randomUUID(),
-                uri = "http://example.org/test.xml",
-                fileSize = xmlContent.length.toLong(),
-                workId = UUID.randomUUID(),
-                exprId = "expr-001",
-                manId = "man-001",
-                csId = "cs-001",
-                filePath = tempFile.toString(),
-            )
+        val metadata = createMetadata(xmlContent)
 
         // When
         val result = processor.process(metadata)
@@ -69,20 +69,7 @@ class XmlPostProcessorTest {
             </DECISION>
             """.trimIndent()
 
-        val tempFile = Files.createTempFile(tempDir, "test", ".xml")
-        Files.writeString(tempFile, xmlContent)
-
-        val metadata =
-            XmlMetadata(
-                id = UUID.randomUUID(),
-                uri = "http://example.org/test.xml",
-                fileSize = xmlContent.length.toLong(),
-                workId = UUID.randomUUID(),
-                exprId = "expr-001",
-                manId = "man-001",
-                csId = "cs-001",
-                filePath = tempFile.toString(),
-            )
+        val metadata = createMetadata(xmlContent)
 
         // When
         val result = processor.process(metadata)
@@ -104,20 +91,7 @@ class XmlPostProcessorTest {
             </ns:DIRECTIVE>
             """.trimIndent()
 
-        val tempFile = Files.createTempFile(tempDir, "test", ".xml")
-        Files.writeString(tempFile, xmlContent)
-
-        val metadata =
-            XmlMetadata(
-                id = UUID.randomUUID(),
-                uri = "http://example.org/test.xml",
-                fileSize = xmlContent.length.toLong(),
-                workId = UUID.randomUUID(),
-                exprId = "expr-001",
-                manId = "man-001",
-                csId = "cs-001",
-                filePath = tempFile.toString(),
-            )
+        val metadata = createMetadata(xmlContent)
 
         // When
         val result = processor.process(metadata)
@@ -133,20 +107,7 @@ class XmlPostProcessorTest {
         // Given - Invalid XML
         val xmlContent = "This is not valid XML"
 
-        val tempFile = Files.createTempFile(tempDir, "test", ".xml")
-        Files.writeString(tempFile, xmlContent)
-
-        val metadata =
-            XmlMetadata(
-                id = UUID.randomUUID(),
-                uri = "http://example.org/test.xml",
-                fileSize = xmlContent.length.toLong(),
-                workId = UUID.randomUUID(),
-                exprId = "expr-001",
-                manId = "man-001",
-                csId = "cs-001",
-                filePath = tempFile.toString(),
-            )
+        val metadata = createMetadata(xmlContent)
 
         // When/Then - should throw XmlPostProcessingException
         val exception =
@@ -169,20 +130,7 @@ class XmlPostProcessorTest {
             </REGULATION>
             """.trimIndent()
 
-        val tempFile = Files.createTempFile(tempDir, "test", ".xml")
-        Files.writeString(tempFile, xmlContent)
-
-        val metadata =
-            XmlMetadata(
-                id = UUID.randomUUID(),
-                uri = "http://example.org/test.xml",
-                fileSize = xmlContent.length.toLong(),
-                workId = UUID.randomUUID(),
-                exprId = "expr-001",
-                manId = "man-001",
-                csId = "cs-001",
-                filePath = tempFile.toString(),
-            )
+        val metadata = createMetadata(xmlContent)
 
         // When
         val result = processor.process(metadata)
@@ -191,5 +139,22 @@ class XmlPostProcessorTest {
         assertNotNull(result)
         assertEquals("formex-05.56-20210701.xd", result?.version)
         assertEquals("REGULATION", result?.rootElement)
+    }
+
+    private fun createMetadata(xmlContent: String): XmlMetadata {
+        val tempFile = Files.createTempFile(tempDir, "test", ".xml")
+        Files.writeString(tempFile, xmlContent)
+        val relativePath = tempDir.relativize(tempFile).toString()
+
+        return XmlMetadata(
+            id = UUID.randomUUID(),
+            uri = "http://example.org/test.xml",
+            fileSize = xmlContent.length.toLong(),
+            workId = UUID.randomUUID(),
+            exprId = "expr-001",
+            manId = "man-001",
+            csId = "cs-001",
+            filePath = relativePath,
+        )
     }
 }

@@ -113,7 +113,7 @@ class XmlDownloadProcessor(
                     exprId = item.expressionId,
                     manId = item.manifestationId,
                     csId = item.contentStreamId,
-                    filePath = permanentFile.toString(),
+                    filePath = relativePath,
                 )
 
             logger.info {

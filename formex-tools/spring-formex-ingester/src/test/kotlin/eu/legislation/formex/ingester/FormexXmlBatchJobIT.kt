@@ -2,6 +2,7 @@
 
 package eu.legislation.formex.ingester
 
+import eu.legislation.formex.ingester.config.StorageProperties
 import eu.legislation.formex.ingester.domain.table.FormexDocuments
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.deleteAll
@@ -55,6 +56,9 @@ class FormexXmlBatchJobIT {
 
     @Autowired
     private lateinit var database: Database
+
+    @Autowired
+    private lateinit var storageProperties: StorageProperties
 
     @Autowired
     private lateinit var job: Job
@@ -169,7 +173,7 @@ class FormexXmlBatchJobIT {
             // Verify file path is stored and file exists
             val filePath = record["file_path"] as String
             assertNotNull(filePath, "File path should be stored")
-            val file = Paths.get(filePath)
+            val file = Paths.get(storageProperties.directory).resolve(filePath)
             assertTrue(Files.exists(file), "XML file should exist at stored path")
 
             // Verify file size matches actual file size

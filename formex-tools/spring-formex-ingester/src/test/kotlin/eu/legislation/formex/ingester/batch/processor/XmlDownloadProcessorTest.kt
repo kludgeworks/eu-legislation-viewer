@@ -94,10 +94,10 @@ class XmlDownloadProcessorTest {
         val result = processor.process(cellarData)
 
         // Then - verify file structure
-        val expectedPath =
-            tempDir.resolve("localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1.xml")
+        val expectedRelativePath = "localhost:${mockServer.port}$CELLAR_PATH_1/DOC_1.xml"
+        val expectedPath = tempDir.resolve(expectedRelativePath)
         assertTrue(Files.exists(expectedPath), "File should exist at URI-based path: $expectedPath")
-        assertEquals(expectedPath.toString(), result.filePath)
+        assertEquals(expectedRelativePath, result.filePath)
 
         // Verify file content
         val fileContent = Files.readString(expectedPath)

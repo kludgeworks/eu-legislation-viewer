@@ -1,5 +1,6 @@
 package eu.legislation.formex.ingester.batch.processor
 
+import eu.legislation.formex.ingester.config.StorageProperties
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
 import eu.legislation.formex.ingester.observability.ItemObservationTracker
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -10,7 +11,7 @@ import org.xml.sax.InputSource
 import org.xml.sax.SAXParseException
 import java.io.StringReader
 import java.nio.file.Files
-import java.nio.file.Paths
+import java.nio.file.Path
 import java.util.regex.Pattern
 import javax.xml.parsers.DocumentBuilderFactory
 
@@ -44,6 +45,7 @@ class XmlPostProcessingException(
  */
 @Component
 class XmlPostProcessor(
+    storageProperties: StorageProperties,
     private val itemObservationTracker: ItemObservationTracker,
 ) : ItemProcessor<XmlMetadata, XmlMetadata> {
     private val documentBuilderFactory =
@@ -52,6 +54,7 @@ class XmlPostProcessor(
         }
     private val versionPattern = Pattern.compile("([^/]+\\.xd)$")
     private val logger = KotlinLogging.logger {}
+    private val storageDirectory: Path = Path.of(storageProperties.directory)
 
     /**
      * Custom error handler that suppresses XML parsing errors from System.err
@@ -79,9 +82,10 @@ class XmlPostProcessor(
                 "PostProcess: Starting XML parsing in thread ${Thread.currentThread().name} - " +
                     "ID=${item.id}, URI=${item.uri}, FilePath=${item.filePath}"
             }
+            val absolutePath = storageDirectory.resolve(item.filePath)
 
             runCatching {
-                val xmlContent = Files.readString(Paths.get(item.filePath))
+                val xmlContent = Files.readString(absolutePath)
                 val rootElement = parseXmlDocument(xmlContent)
                 val rootElementName = rootElement.localName ?: rootElement.nodeName
                 val version = extractVersion(rootElement)
@@ -99,7 +103,7 @@ class XmlPostProcessor(
             }.getOrElse { e ->
                 logger.warn(e) {
                     "PostProcess: Failed to parse XML - ID=${item.id}, URI=${item.uri}, " +
-                        "FilePath=${item.filePath}, Error=${e.message}"
+                        "FilePath=${item.filePath}, ResolvedPath=$absolutePath, Error=${e.message}"
                 }
                 throw XmlPostProcessingException("Failed to parse XML for URI ${item.uri}: ${e.message}", e)
             }

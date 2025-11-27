@@ -13,7 +13,7 @@ import java.util.UUID
  * @property exprId Expression identifier
  * @property manId Manifestation identifier
  * @property csId Content stream identifier
- * @property filePath Path to permanent file containing XML content
+ * @property filePath Path (relative to storage root) to permanent file containing XML content
  * @property version Schema version extracted from noNamespaceSchemaLocation (e.g., "4.3.xd")
  * @property rootElement Local name of the root XML element
  */

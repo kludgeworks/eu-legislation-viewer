@@ -1,6 +1,7 @@
 package eu.legislation.formex.ingester.batch.writer
 
 import eu.legislation.formex.ingester.batch.XmlDatabaseWriter
+import eu.legislation.formex.ingester.config.StorageProperties
 import eu.legislation.formex.ingester.domain.model.XmlMetadata
 import eu.legislation.formex.ingester.domain.table.FormexDocuments
 import org.jetbrains.exposed.sql.Database
@@ -11,13 +12,11 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.io.TempDir
 import org.springframework.batch.infrastructure.item.Chunk
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
 import java.nio.file.Files
-import java.nio.file.Path
 import java.nio.file.Paths
 import java.util.UUID
 
@@ -30,8 +29,8 @@ class XmlDatabaseWriterTest {
     @Autowired
     private lateinit var database: Database
 
-    @TempDir
-    lateinit var tempDir: Path
+    @Autowired
+    private lateinit var storageProperties: StorageProperties
 
     @BeforeEach
     fun setup() {
@@ -147,6 +146,7 @@ class XmlDatabaseWriterTest {
             )
 
         val chunk = Chunk(listOf(metadata))
+        val storageDir = Paths.get(storageProperties.directory)
 
         // When: Write to database
         xmlDatabaseWriter.write(chunk)
@@ -163,7 +163,7 @@ class XmlDatabaseWriterTest {
         Assertions.assertEquals(metadata.filePath, storedFilePath, "File path should be stored")
 
         // Verify file exists and content matches
-        val fileContent = Files.readString(Paths.get(storedFilePath))
+        val fileContent = Files.readString(storageDir.resolve(storedFilePath))
         Assertions.assertEquals(expectedXmlContent, fileContent, "File content should match")
 
         // Verify file size matches using Exposed
@@ -194,8 +194,10 @@ class XmlDatabaseWriterTest {
         manId: String,
         csId: String,
     ): XmlMetadata {
-        // Create file with XML content in JUnit's managed temp directory
-        val file = Files.createTempFile(tempDir, "test-xml-", ".xml")
+        val storageDir = Paths.get(storageProperties.directory)
+        Files.createDirectories(storageDir)
+        val relativePath = "test-xml-${UUID.randomUUID()}.xml"
+        val file = storageDir.resolve(relativePath)
         Files.writeString(file, xmlContent)
 
         return XmlMetadata(
@@ -206,7 +208,7 @@ class XmlDatabaseWriterTest {
             exprId = exprId,
             manId = manId,
             csId = csId,
-            filePath = file.toString(),
+            filePath = relativePath,
         )
     }
 }

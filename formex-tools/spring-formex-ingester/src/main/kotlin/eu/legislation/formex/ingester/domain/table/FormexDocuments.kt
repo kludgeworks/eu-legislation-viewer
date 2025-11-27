@@ -11,7 +11,7 @@ import org.jetbrains.exposed.sql.Table
  * Schema mapping:
  * - uri: Cellar URI (TEXT, part of composite primary key)
  * - id: Content-based identifier (TEXT, part of composite primary key)
- * - file_path: Local filesystem path where the XML file is stored (NOT NULL)
+ * - file_path: Relative path (from storage root) where the XML file is stored (NOT NULL)
  * - file_size: Size of the XML file in bytes (nullable INTEGER)
  * - work_id: FRBR Work identifier (NOT NULL)
  * - expr_id: FRBR Expression identifier (NOT NULL)
