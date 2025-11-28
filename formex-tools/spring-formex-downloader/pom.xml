@@ -30,6 +30,7 @@
 		<java.version>21</java.version>
 		<kotlin.version>2.2.21</kotlin.version>
 		<exposed.version>0.57.0</exposed.version>
+		<mockito.version>5.20.0</mockito.version>
 	</properties>
 
 	<dependencies>
@@ -214,7 +215,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<argLine>--enable-native-access=ALL-UNNAMED</argLine>
+					<argLine>-javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar --enable-native-access=ALL-UNNAMED</argLine>
 				</configuration>
 			</plugin>
 			<plugin>

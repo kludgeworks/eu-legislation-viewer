@@ -4,6 +4,7 @@ package eu.legislation.formex.downloader
 
 import eu.legislation.formex.downloader.config.StorageProperties
 import eu.legislation.formex.downloader.domain.table.FormexDocuments
+import eu.legislation.formex.downloader.support.TempDirsPropertySupport
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.selectAll
@@ -50,7 +51,7 @@ import java.nio.file.Paths
 @SpringBootTest(classes = [FormexDownloaderApplication::class])
 @SpringBatchTest
 @ActiveProfiles("e2e")
-class FormexXmlBatchJobIT {
+class FormexXmlBatchJobIT : TempDirsPropertySupport() {
     @Autowired
     private lateinit var jobOperatorTestUtils: JobOperatorTestUtils
 

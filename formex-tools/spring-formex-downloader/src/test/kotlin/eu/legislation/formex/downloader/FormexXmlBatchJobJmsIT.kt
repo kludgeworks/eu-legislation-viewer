@@ -1,6 +1,7 @@
 package eu.legislation.formex.downloader
 
 import io.github.oshai.kotlinlogging.KotlinLogging
+import eu.legislation.formex.downloader.support.TempDirsPropertySupport
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
@@ -58,7 +59,7 @@ private val logger = KotlinLogging.logger {}
     "Embedded Artemis broker does not start in Spring Boot 4.0-RC2 test context. " +
         "Core JMS functionality verified in unit tests. Consider Testcontainers for E2E testing.",
 )
-class FormexXmlBatchJobJmsIT {
+class FormexXmlBatchJobJmsIT : TempDirsPropertySupport() {
     @Autowired
     private lateinit var jobOperatorTestUtils: JobOperatorTestUtils
 

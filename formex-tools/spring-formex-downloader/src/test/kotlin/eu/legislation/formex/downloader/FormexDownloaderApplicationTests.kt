@@ -1,5 +1,6 @@
 package eu.legislation.formex.downloader
 
+import eu.legislation.formex.downloader.support.TempDirsPropertySupport
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
@@ -13,7 +14,7 @@ import org.springframework.test.context.ActiveProfiles
  */
 @SpringBootTest
 @ActiveProfiles("test")
-class FormexDownloaderApplicationTests {
+class FormexDownloaderApplicationTests : TempDirsPropertySupport() {
     @Test
     fun contextLoads() {
         // Verify that the Spring context loads successfully with all beans configured.
