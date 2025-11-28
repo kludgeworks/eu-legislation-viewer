@@ -104,7 +104,7 @@ class SparqlUriJmsPublisher(
         // TODO extract these to config
         val parallelism = 10
         val txBatchSize = 1_000
-        logger.info { "Publishing ${records.size} URIs to JMS queue with transactional batching (batch size: $txBatchSize)" }
+        logger.info { "Publishing ${records.size} URIs to queue" }
         progressService?.printTaskletWaiting("Publishing ${records.size} URIs to JMS queue with $parallelism parallel threads and transactional batching...")
 
         // Hide cursor for progress bar updates
