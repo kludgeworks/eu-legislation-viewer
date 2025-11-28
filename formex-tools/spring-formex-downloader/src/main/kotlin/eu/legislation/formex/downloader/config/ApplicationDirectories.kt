@@ -94,9 +94,13 @@ class DirectoriesEnvironmentPostProcessor : EnvironmentPostProcessor {
         environment: ConfigurableEnvironment,
         application: SpringApplication,
     ) {
+        // Allow overrides set by higher-order post-processors or system properties
+        val overrideDataDir = environment.getProperty("app.dataDir")
+        val overrideStateDir = environment.getProperty("app.stateDir")
+
         val projectDirs = ProjectDirectories.from("eu", "legislation", "formex-downloader")
-        val dataDir = projectDirs.dataDir
-        val stateDir = projectDirs.dataLocalDir?.let { "$it/state" } ?: "${projectDirs.dataDir}/state"
+        val dataDir = overrideDataDir ?: projectDirs.dataDir
+        val stateDir = overrideStateDir ?: projectDirs.dataLocalDir?.let { "$it/state" } ?: "${projectDirs.dataDir}/state"
 
         // Create directories immediately (prevents database/logging failures at startup)
         Path.of(dataDir).createDirectories()

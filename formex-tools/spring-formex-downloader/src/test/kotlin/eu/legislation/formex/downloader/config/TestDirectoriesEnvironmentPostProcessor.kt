@@ -1,7 +1,8 @@
 package eu.legislation.formex.downloader.config
 
-import org.springframework.boot.env.EnvironmentPostProcessor
 import org.springframework.boot.SpringApplication
+import org.springframework.boot.env.EnvironmentPostProcessor
+import org.springframework.core.Ordered
 import org.springframework.core.env.ConfigurableEnvironment
 import org.springframework.core.env.MapPropertySource
 import java.nio.file.Paths
@@ -11,7 +12,7 @@ import kotlin.io.path.createDirectories
  * Test-only post processor that redirects data/state/log paths to the build directory
  * so tests do not write under the user's home directory.
  */
-class TestDirectoriesEnvironmentPostProcessor : EnvironmentPostProcessor {
+class TestDirectoriesEnvironmentPostProcessor : EnvironmentPostProcessor, Ordered {
     override fun postProcessEnvironment(environment: ConfigurableEnvironment, application: SpringApplication) {
         // Only activate for test/e2e profiles
         val isTestProfile = environment.activeProfiles.any { it.equals("test", true) || it.equals("e2e", true) }
@@ -37,4 +38,6 @@ class TestDirectoriesEnvironmentPostProcessor : EnvironmentPostProcessor {
             ),
         )
     }
+
+    override fun getOrder(): Int = Ordered.HIGHEST_PRECEDENCE
 }
