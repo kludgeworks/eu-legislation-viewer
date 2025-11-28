@@ -1,6 +1,8 @@
 package eu.legislation.formex.ingester.batch.listener
 
 import eu.legislation.formex.ingester.batch.PercentageBasedSkipPolicy
+import eu.legislation.formex.ingester.domain.model.CellarData
+import eu.legislation.formex.ingester.domain.model.XmlMetadata
 import eu.legislation.formex.ingester.progress.BatchProgressState
 import eu.legislation.formex.ingester.progress.TerminalProgressService
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -9,6 +11,7 @@ import org.springframework.batch.core.job.JobExecution
 import org.springframework.batch.core.listener.ChunkListener
 import org.springframework.batch.core.listener.JobExecutionListener
 import org.springframework.batch.core.listener.StepExecutionListener
+import org.springframework.batch.core.listener.ItemWriteListener
 import org.springframework.batch.core.scope.context.StepSynchronizationManager
 import org.springframework.batch.core.step.StepExecution
 import org.springframework.batch.infrastructure.item.Chunk
@@ -190,7 +193,7 @@ class TerminalProgressStepListener(
 class TerminalProgressChunkListener(
     private val progressService: TerminalProgressService?,
     private val skipPolicy: PercentageBasedSkipPolicy,
-) : ChunkListener<Any, Any>, StepExecutionListener {
+) : ChunkListener<CellarData, XmlMetadata>, StepExecutionListener, ItemWriteListener<XmlMetadata> {
 
     init {
         logger.info { "✓ TerminalProgressChunkListener bean created (progressService=${progressService != null})" }
@@ -199,28 +202,72 @@ class TerminalProgressChunkListener(
     @Volatile
     private var currentStepExecution: StepExecution? = null
 
+    @Volatile
+    private var monitorThread: Thread? = null
+
+    @Volatile
+    private var monitorActive = false
+
     override fun beforeStep(stepExecution: StepExecution) {
         logger.info { "TerminalProgressChunkListener.beforeStep called for step: ${stepExecution.stepName}" }
         currentStepExecution = stepExecution
+        startProgressMonitor(stepExecution)
     }
 
     override fun afterStep(stepExecution: StepExecution): ExitStatus? {
         logger.info { "TerminalProgressChunkListener.afterStep called" }
-        currentStepExecution = null
+        stopProgressMonitor()
         return null
     }
 
-    override fun afterChunk(chunk: Chunk<Any>) {
+    override fun afterChunk(chunk: Chunk<XmlMetadata>) {
         logger.info { "TerminalProgressChunkListener.afterChunk(Chunk) called - NEW API - chunk size: ${chunk.items.size}" }
         currentStepExecution?.let { updateProgress(it) }
     }
 
     override fun onChunkError(
         exception: Exception,
-        chunk: Chunk<Any>,
+        chunk: Chunk<XmlMetadata>,
     ) {
         logger.info { "TerminalProgressChunkListener.onChunkError(Exception,Chunk) called - NEW API" }
         currentStepExecution?.let { updateProgress(it) }
+    }
+
+    override fun afterWrite(items: Chunk<out XmlMetadata>) {
+        logger.debug { "TerminalProgressChunkListener.afterWrite called with ${items.items.size} items" }
+        currentStepExecution?.let { updateProgress(it) }
+    }
+
+    override fun beforeWrite(items: Chunk<out XmlMetadata>) {
+        // no-op
+    }
+
+    override fun onWriteError(exception: Exception, items: Chunk<out XmlMetadata>) {
+        logger.warn(exception) { "TerminalProgressChunkListener.onWriteError called" }
+        currentStepExecution?.let { updateProgress(it) }
+    }
+
+    private fun startProgressMonitor(stepExecution: StepExecution) {
+        // Chunk listeners are not invoked for concurrent steps; poll counts periodically
+        monitorActive = true
+        monitorThread =
+            Thread.ofVirtual().start {
+                while (monitorActive && stepExecution.status.isRunning) {
+                    updateProgress(stepExecution)
+                    try {
+                        Thread.sleep(500)
+                    } catch (ignored: InterruptedException) {
+                        Thread.currentThread().interrupt()
+                    }
+                }
+            }
+    }
+
+    private fun stopProgressMonitor() {
+        monitorActive = false
+        currentStepExecution = null
+        monitorThread?.interrupt()
+        monitorThread = null
     }
 
     private fun updateProgress(stepExecution: StepExecution?) {

@@ -16,7 +16,6 @@ import org.springframework.batch.core.job.Job
 import org.springframework.batch.core.job.builder.JobBuilder
 import org.springframework.batch.core.job.parameters.JobParametersBuilder
 import org.springframework.batch.core.job.parameters.JobParametersIncrementer
-import org.springframework.batch.core.listener.ChunkListener
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.Step
 import org.springframework.batch.core.step.builder.StepBuilder
@@ -230,7 +229,7 @@ class FormexXmlBatchJob {
             KotlinLogging.logger {}.info {
                 "Registering TerminalProgressChunkListener with step BEFORE taskExecutor"
             }
-            chunkBuilder.listener(it as ChunkListener<in CellarData, out XmlMetadata>)
+            chunkBuilder.listener(it)
         }
 
         chunkBuilder

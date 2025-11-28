@@ -4,9 +4,7 @@ import eu.legislation.formex.ingester.batch.PercentageBasedSkipPolicy
 import eu.legislation.formex.ingester.config.BatchProperties
 import eu.legislation.formex.ingester.progress.TerminalProgressService
 import org.mockito.Mockito
-import org.springframework.batch.core.launch.JobLauncher
 import org.springframework.batch.core.launch.JobOperator
-import org.springframework.batch.core.launch.support.TaskExecutorJobLauncher
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.repository.support.ResourcelessJobRepository
 import org.springframework.batch.infrastructure.support.transaction.ResourcelessTransactionManager
@@ -28,13 +26,6 @@ class TerminalProgressTestApplication {
 
     @Bean
     fun jobRepository(): JobRepository = ResourcelessJobRepository()
-
-    @Bean
-    fun jobLauncher(jobRepository: JobRepository): JobLauncher =
-        TaskExecutorJobLauncher().apply {
-            setJobRepository(jobRepository)
-            afterPropertiesSet()
-        }
 
     @Bean
     fun jobOperator(): JobOperator = Mockito.mock(JobOperator::class.java)
