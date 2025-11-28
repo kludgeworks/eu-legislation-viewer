@@ -1,0 +1,2 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  eu.legislation.formex.downloader.config.TestDirectoriesEnvironmentPostProcessor

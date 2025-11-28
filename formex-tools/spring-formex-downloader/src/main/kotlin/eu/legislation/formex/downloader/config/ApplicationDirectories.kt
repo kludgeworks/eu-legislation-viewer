@@ -94,10 +94,13 @@ class DirectoriesEnvironmentPostProcessor : EnvironmentPostProcessor {
         environment: ConfigurableEnvironment,
         application: SpringApplication,
     ) {
-        // Resolve platform-appropriate directories using directories-jvm library
+        // Respect pre-set overrides (e.g., test-only post processors) before falling back
+        val overrideDataDir = environment.getProperty("app.dataDir")
+        val overrideStateDir = environment.getProperty("app.stateDir")
+
         val projectDirs = ProjectDirectories.from("eu", "legislation", "formex-downloader")
-        val dataDir = projectDirs.dataDir
-        val stateDir = projectDirs.dataLocalDir?.let { "$it/state" } ?: "${projectDirs.dataDir}/state"
+        val dataDir = overrideDataDir ?: projectDirs.dataDir
+        val stateDir = overrideStateDir ?: projectDirs.dataLocalDir?.let { "$it/state" } ?: "${projectDirs.dataDir}/state"
 
         // Create directories immediately (prevents database/logging failures at startup)
         Path.of(dataDir).createDirectories()
@@ -113,8 +116,3 @@ class DirectoriesEnvironmentPostProcessor : EnvironmentPostProcessor {
         )
     }
 }
-
-/**
- * ApplicationListener that activates the cli-progress profile when
- * formex.features.cli-progress is set to true (default).
- */
