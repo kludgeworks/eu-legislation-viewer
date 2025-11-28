@@ -2,7 +2,6 @@ package eu.legislation.formex.downloader.batch.processor
 
 import eu.legislation.formex.downloader.domain.model.CellarData
 import eu.legislation.formex.downloader.domain.table.FormexDocuments
-import eu.legislation.formex.downloader.support.TempDirsPropertySupport
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.insert
@@ -24,7 +23,7 @@ import org.springframework.test.context.ActiveProfiles
  */
 @SpringBootTest
 @ActiveProfiles("test")
-class UriFilterProcessorTest : TempDirsPropertySupport() {
+class UriFilterProcessorTest  {
     @Autowired
     private lateinit var processor: UriFilterProcessor
 

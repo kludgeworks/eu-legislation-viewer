@@ -1,6 +1,15 @@
 # Test configuration - inherits from application.yaml
 # Overrides: in-memory DB, mock SPARQL, Maven target directory for test artifacts
 
+# Test directories - write to target instead of user's home directory
+app:
+  dataDir: ${maven.build.directory:target}/formex-downloader-test/data
+  stateDir: ${maven.build.directory:target}/formex-downloader-test/state
+
+logging:
+  file:
+    path: ${maven.build.directory:target}/formex-downloader-test/logs
+
 spring:
   datasource:
     # Use file-based shared cache for multi-connection tests

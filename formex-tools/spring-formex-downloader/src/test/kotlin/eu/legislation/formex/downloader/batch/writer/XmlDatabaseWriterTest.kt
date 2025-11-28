@@ -4,7 +4,6 @@ import eu.legislation.formex.downloader.batch.XmlDatabaseWriter
 import eu.legislation.formex.downloader.config.StorageProperties
 import eu.legislation.formex.downloader.domain.model.XmlMetadata
 import eu.legislation.formex.downloader.domain.table.FormexDocuments
-import eu.legislation.formex.downloader.support.TempDirsPropertySupport
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.selectAll
@@ -23,7 +22,7 @@ import java.util.UUID
 
 @SpringBootTest
 @ActiveProfiles("test")
-class XmlDatabaseWriterTest : TempDirsPropertySupport() {
+class XmlDatabaseWriterTest  {
     @Autowired
     private lateinit var xmlDatabaseWriter: XmlDatabaseWriter
 

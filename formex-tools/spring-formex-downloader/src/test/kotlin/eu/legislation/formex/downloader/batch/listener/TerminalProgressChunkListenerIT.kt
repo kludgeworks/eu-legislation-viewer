@@ -5,7 +5,6 @@ import eu.legislation.formex.downloader.domain.model.CellarData
 import eu.legislation.formex.downloader.domain.model.XmlMetadata
 import eu.legislation.formex.downloader.progress.BatchProgressState
 import eu.legislation.formex.downloader.progress.TerminalProgressService
-import eu.legislation.formex.downloader.support.TempDirsPropertySupport
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.mockito.ArgumentMatchers
@@ -44,7 +43,7 @@ import java.util.UUID
 @SpringBootTest(classes = [TerminalProgressTestApplication::class, TerminalProgressChunkListenerIT.TestJobConfig::class])
 @SpringBatchTest
 @TestPropertySource(properties = ["formex.job.autostart=false"])
-class TerminalProgressChunkListenerIT : TempDirsPropertySupport() {
+class TerminalProgressChunkListenerIT  {
 
     @Autowired @Qualifier("testJob") private lateinit var job: Job
     @Autowired private lateinit var jobRepository: JobRepository

@@ -11,7 +11,6 @@ import eu.legislation.formex.downloader.domain.model.CellarData
 import eu.legislation.formex.downloader.domain.model.XmlMetadata
 import eu.legislation.formex.downloader.domain.table.FormexDocuments
 import eu.legislation.formex.downloader.domain.table.ProcessingErrors
-import eu.legislation.formex.downloader.support.TempDirsPropertySupport
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.selectAll
@@ -69,7 +68,7 @@ import java.util.concurrent.atomic.AtomicInteger
 @SpringBatchTest
 @ActiveProfiles("e2e")
 @TestPropertySource(properties = ["sparql.limit=10"])
-class FormexXmlBatchJobErrorLoggingIT : TempDirsPropertySupport() {
+class FormexXmlBatchJobErrorLoggingIT  {
     @Autowired
     private lateinit var jobOperatorTestUtils: JobOperatorTestUtils
 
