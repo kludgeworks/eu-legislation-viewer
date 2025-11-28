@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.0.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.kludgeworks</groupId>
+	<artifactId>formex-downloader</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>formex-downloader</name>
+	<description>Spring Batch application for ingesting Formex XML documents from SPARQL endpoint into SQLite database</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>21</java.version>
+		<kotlin.version>2.2.21</kotlin.version>
+		<exposed.version>0.57.0</exposed.version>
+	</properties>
+
+	<dependencies>
+	<!-- Spring Boot Starters -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-batch-jdbc</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-restclient</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-artemis</artifactId>
+	</dependency>
+	<!-- Artemis embedded broker for JMS messaging (auto-managed version by Spring Boot) -->
+	<dependency>
+		<groupId>org.apache.activemq</groupId>
+		<artifactId>artemis-jakarta-server</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.batch</groupId>
+		<artifactId>spring-batch-integration</artifactId>
+	</dependency>
+
+	<!-- Kotlin Dependencies -->
+	<dependency>
+		<groupId>org.jetbrains.kotlin</groupId>
+		<artifactId>kotlin-reflect</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.jetbrains.kotlin</groupId>
+		<artifactId>kotlin-stdlib</artifactId>
+	</dependency>
+		<dependency>
+			<groupId>io.github.oshai</groupId>
+			<artifactId>kotlin-logging-jvm</artifactId>
+			<version>7.0.13</version>
+		</dependency>
+		<!-- CSV parsing library for robust quoted field handling -->
+		<dependency>
+			<groupId>com.univocity</groupId>
+			<artifactId>univocity-parsers</artifactId>
+			<version>2.9.1</version>
+		</dependency>
+		<!-- Mordant: Terminal rendering library for colored text, progress bars, tables -->
+		<dependency>
+			<groupId>com.github.ajalt.mordant</groupId>
+			<artifactId>mordant-jvm</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+	<dependency>
+		<groupId>org.jetbrains.kotlinx</groupId>
+		<artifactId>kotlinx-coroutines-core</artifactId>
+		<version>1.10.2</version>
+	</dependency>
+
+	<!-- SQLite Database -->
+	<dependency>
+		<groupId>org.xerial</groupId>
+		<artifactId>sqlite-jdbc</artifactId>
+		<version>3.48.0.0</version>
+	</dependency>
+
+	<!-- Exposed ORM Framework -->
+	<dependency>
+		<groupId>org.jetbrains.exposed</groupId>
+		<artifactId>exposed-core</artifactId>
+		<version>${exposed.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jetbrains.exposed</groupId>
+		<artifactId>exposed-jdbc</artifactId>
+		<version>${exposed.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jetbrains.exposed</groupId>
+		<artifactId>spring-transaction</artifactId>
+		<version>${exposed.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jetbrains.exposed</groupId>
+		<artifactId>exposed-java-time</artifactId>
+		<version>${exposed.version}</version>
+	</dependency>
+
+	<!-- UUID Creator for UUIDv5 generation -->
+	<dependency>
+		<groupId>com.github.f4b6a3</groupId>
+		<artifactId>uuid-creator</artifactId>
+		<version>5.3.7</version>
+	</dependency>
+
+	<!-- Platform-appropriate directory paths (XDG Base Directory specification) -->
+	<dependency>
+		<groupId>dev.dirs</groupId>
+		<artifactId>directories</artifactId>
+		<version>26</version>
+	</dependency>
+
+	<!-- Micrometer Tracing for automatic trace/span ID injection -->
+	<dependency>
+		<groupId>io.micrometer</groupId>
+		<artifactId>micrometer-tracing-bridge-brave</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>io.zipkin.reporter2</groupId>
+		<artifactId>zipkin-reporter-brave</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>io.zipkin.brave</groupId>
+		<artifactId>brave-context-slf4j</artifactId>
+		<version>6.3.0</version>
+	</dependency>
+
+	<!-- Test Dependencies -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-batch-jdbc-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-restclient-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-artemis-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.jetbrains.kotlin</groupId>
+		<artifactId>kotlin-test-junit5</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>com.squareup.okhttp3</groupId>
+		<artifactId>okhttp</artifactId>
+		<version>5.3.0</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>com.squareup.okhttp3</groupId>
+		<artifactId>mockwebserver3</artifactId>
+		<version>5.3.0</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>com.squareup.okio</groupId>
+		<artifactId>okio-jvm</artifactId>
+		<version>3.16.2</version>
+		<scope>test</scope>
+	</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<release>21</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<jvmArguments>--enable-native-access=ALL-UNNAMED</jvmArguments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>--enable-native-access=ALL-UNNAMED</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jetbrains.kotlin</groupId>
+				<artifactId>kotlin-maven-plugin</artifactId>
+				<configuration>
+					<args>
+						<arg>-Xjsr305=strict</arg>
+					</args>
+					<compilerPlugins>
+						<plugin>spring</plugin>
+					</compilerPlugins>
+					<jvmTarget>21</jvmTarget>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.jetbrains.kotlin</groupId>
+						<artifactId>kotlin-maven-allopen</artifactId>
+						<version>${kotlin.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>compile</id>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test-compile</id>
+						<goals>
+							<goal>test-compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

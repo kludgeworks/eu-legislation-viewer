@@ -1,0 +1,72 @@
+logging:
+  file:
+    path: ${app.stateDir}/logs
+
+spring:
+  application:
+    name: formex-downloader
+
+  threads:
+    virtual:
+      enabled: true  # Use virtual threads for all async operations
+
+  datasource:
+    url: jdbc:sqlite:${app.dataDir}/formex.db?journal_mode=WAL
+    driver-class-name: org.sqlite.JDBC
+    hikari:
+      maximum-pool-size: 25
+
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false  # Disabled: JobLauncherEntrypoint handles all job launches
+
+  sql:
+    init:
+      mode: never  # Disabled: Exposed will manage formex_documents schema
+
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
+  artemis:
+    mode: embedded
+    embedded:
+      enabled: true
+      persistent: true
+      data-directory: ${app.stateDir}/artemis
+      queues:
+        - ${formex.jms.cellar-data-queue}
+    pool:
+      enabled: false  # Keep disabled for embedded mode - pooling is for remote brokers
+
+  jms:
+    template:
+      receive-timeout: 1000
+      session:
+        transacted: true
+
+  main:
+    banner-mode: off
+
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0  # Sample 100% of requests for debugging (use 0.1 in production for 10%)
+
+formex:
+  jms:
+    # Single source of truth for JMS queue name
+    # Referenced by: spring.artemis.embedded.queues and JmsProperties
+    cellar-data-queue: cellar.data.queue
+  storage:
+    directory: ${app.dataDir}/xml-files
+  features:
+    progressbar: true
+  batch:
+    skip-percentage: 5
+
+sparql:
+  endpoint: https://publications.europa.eu/webapi/rdf/sparql
+  language: eng
