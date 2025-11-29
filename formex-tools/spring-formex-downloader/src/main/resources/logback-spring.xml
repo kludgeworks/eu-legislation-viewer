@@ -25,7 +25,7 @@
     </root>
 
     <!-- Application loggers -->
-    <logger name="eu.legislation.formex.downloader" level="DEBUG"/>
+    <logger name="com.kludgeworks.eu.legislation.formex.downloader" level="DEBUG"/>
 
     <!-- Spring Batch loggers -->
     <logger name="org.springframework.batch" level="INFO"/>
