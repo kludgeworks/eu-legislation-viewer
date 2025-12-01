@@ -224,14 +224,6 @@ class FormexXmlBatchJob {
                 .processor(compositeProcessor)
                 .writer(writer)
 
-        // Register ChunkListener before taskExecutor and faultTolerant configuration
-        terminalProgressChunkListener?.let {
-            KotlinLogging.logger {}.info {
-                "Registering TerminalProgressChunkListener with step BEFORE taskExecutor"
-            }
-            chunkBuilder.listener(it)
-        }
-
         chunkBuilder
                 .taskExecutor(taskExecutor)
                 .faultTolerant()
@@ -241,7 +233,8 @@ class FormexXmlBatchJob {
                 .listener(percentageBasedSkipPolicy)
 
         // Register StepExecutionListener
-        chunkBuilder.listener(terminalProgressChunkListener)
+        terminalProgressStepListener?.let { chunkBuilder.listener(it) }
+        terminalProgressChunkListener?.let { chunkBuilder.listener(it) }
 
         return chunkBuilder.build()
     }

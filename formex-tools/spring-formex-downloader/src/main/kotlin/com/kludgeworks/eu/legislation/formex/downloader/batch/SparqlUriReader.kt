@@ -107,9 +107,6 @@ class SparqlUriJmsPublisher(
         logger.info { "Publishing ${records.size} URIs to queue" }
         progressService?.printTaskletWaiting("Publishing ${records.size} URIs to JMS queue with $parallelism parallel threads and transactional batching...")
 
-        // Hide cursor for progress bar updates
-        progressService?.hideCursor()
-
         // Publish messages in parallel using coroutines with limited parallelism and transactional batching
         val publishedCount = AtomicInteger(0)
         // TODO extract these to config
@@ -153,8 +150,7 @@ class SparqlUriJmsPublisher(
         // Final progress update to show 100% completion
         progressService?.printChunkProgress(records.size.toLong(), records.size.toLong())
 
-        // Show cursor again and move to next line
-        progressService?.showCursor()
+        // Move to next line
         progressService?.printNewline()
 
         logger.info { "Successfully published ${records.size} messages using $parallelism parallel threads" }
