@@ -28,5 +28,4 @@ data class BatchProgressState(
     val itemsSkipped: Long,
     val totalItems: Long,
     val startTimeMs: Long,
-    val skipLimit: Long? = null,
 )

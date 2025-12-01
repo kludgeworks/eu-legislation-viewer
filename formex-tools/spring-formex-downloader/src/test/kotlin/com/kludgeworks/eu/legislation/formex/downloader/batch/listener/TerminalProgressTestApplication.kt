@@ -42,7 +42,6 @@ class TerminalProgressTestApplication {
     @Bean
     fun terminalProgressChunkListener(
         terminalProgressService: TerminalProgressService?,
-        percentageBasedSkipPolicy: PercentageBasedSkipPolicy,
     ): TerminalProgressChunkListener =
-        TerminalProgressChunkListener(terminalProgressService, percentageBasedSkipPolicy)
+        TerminalProgressChunkListener(terminalProgressService)
 }

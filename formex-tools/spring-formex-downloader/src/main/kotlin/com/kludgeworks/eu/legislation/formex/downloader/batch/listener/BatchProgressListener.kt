@@ -192,7 +192,6 @@ class TerminalProgressStepListener(
 @Component
 class TerminalProgressChunkListener(
     private val progressService: TerminalProgressService?,
-    private val skipPolicy: PercentageBasedSkipPolicy,
 ) : ChunkListener<CellarData, XmlMetadata>, StepExecutionListener, ItemWriteListener<XmlMetadata> {
 
     init {
@@ -321,7 +320,6 @@ class TerminalProgressChunkListener(
                             activeExecution.writeSkipCount,
                     totalItems = expectedCount,
                     startTimeMs = startTimeMs,
-                    skipLimit = skipPolicy.getSkipLimit(),
                 )
 
             progressService.updateBatchProgress(state)
