@@ -30,12 +30,12 @@ class FormexRoutes(
                 progressTracker.start(records.size.toLong())
                 exchange.message.body = records
             }
-            .split(body())
-                .to("seda:cellarData")
+            .split(body()).streaming().parallelProcessing()
+                .threads(10, 20)
+                .to("direct:processItem")
 
-        from("seda:cellarData")
+        from("direct:processItem")
             .routeId("xml-download")
-            .threads(10, 20)
             .process(uriFilterProcessor)
             .filter(header("skip").isNotEqualTo(true))
                 .process(xmlDownloadProcessor)
