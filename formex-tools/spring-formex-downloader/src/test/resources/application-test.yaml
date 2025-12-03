@@ -6,6 +6,11 @@ app:
   dataDir: ${maven.build.directory:target}/formex-downloader-test/data
   stateDir: ${maven.build.directory:target}/formex-downloader-test/state
 
+# Prevent Camel timer routes from auto-executing during tests
+camel:
+  springboot:
+    main-run-controller: false
+
 logging:
   file:
     path: ${maven.build.directory:target}/formex-downloader-test/logs
@@ -22,21 +27,9 @@ spring:
     # Allow test doubles to override production beans
     allow-bean-definition-overriding: true
 
-  artemis:
-    mode: embedded
-    embedded:
-      enabled: true
-      persistent: false  # In-memory for tests (faster, no cleanup needed)
-      queues:
-        - cellar.data.queue
-    pool:
-      enabled: false
-
 formex:
   storage:
     directory: ${maven.build.directory:target}/test-xml-files
-  job:
-    autostart: false
 
 sparql:
   # Mock SPARQL endpoint for tests (use MockWebServer at this URL)

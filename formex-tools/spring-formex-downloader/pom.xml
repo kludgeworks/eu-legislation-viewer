@@ -12,7 +12,7 @@
 	<artifactId>formex-downloader</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>formex-downloader</name>
-	<description>Spring Batch application for ingesting Formex XML documents from SPARQL endpoint into SQLite database</description>
+	<description>Apache Camel (Spring Boot) application for ingesting Formex XML documents from SPARQL endpoint into SQLite database</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -31,13 +31,14 @@
 		<kotlin.version>2.2.21</kotlin.version>
 		<exposed.version>0.57.0</exposed.version>
 		<mockito.version>5.20.0</mockito.version>
+		<camel.version>4.6.0</camel.version>
 	</properties>
 
 	<dependencies>
 	<!-- Spring Boot Starters -->
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-batch-jdbc</artifactId>
+		<artifactId>spring-boot-starter-jdbc</artifactId>
 	</dependency>
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
@@ -45,16 +46,24 @@
 	</dependency>
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-artemis</artifactId>
+		<artifactId>spring-boot-starter-actuator</artifactId>
 	</dependency>
-	<!-- Artemis embedded broker for JMS messaging (auto-managed version by Spring Boot) -->
+
+	<!-- Apache Camel (Spring Boot) -->
 	<dependency>
-		<groupId>org.apache.activemq</groupId>
-		<artifactId>artemis-jakarta-server</artifactId>
+		<groupId>org.apache.camel.springboot</groupId>
+		<artifactId>camel-spring-boot-starter</artifactId>
+		<version>${camel.version}</version>
 	</dependency>
 	<dependency>
-		<groupId>org.springframework.batch</groupId>
-		<artifactId>spring-batch-integration</artifactId>
+		<groupId>org.apache.camel</groupId>
+		<artifactId>camel-direct</artifactId>
+		<version>${camel.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.camel</groupId>
+		<artifactId>camel-seda</artifactId>
+		<version>${camel.version}</version>
 	</dependency>
 
 	<!-- Kotlin Dependencies -->
@@ -149,17 +158,7 @@
 	</dependency>
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-batch-jdbc-test</artifactId>
-		<scope>test</scope>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-restclient-test</artifactId>
-		<scope>test</scope>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-artemis-test</artifactId>
 		<scope>test</scope>
 	</dependency>
 	<dependency>
@@ -183,6 +182,18 @@
 		<groupId>com.squareup.okio</groupId>
 		<artifactId>okio-jvm</artifactId>
 		<version>3.16.2</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.camel</groupId>
+		<artifactId>camel-test-spring-junit5</artifactId>
+		<version>${camel.version}</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.mockito.kotlin</groupId>
+		<artifactId>mockito-kotlin</artifactId>
+		<version>5.4.0</version>
 		<scope>test</scope>
 	</dependency>
 	</dependencies>

@@ -27,21 +27,10 @@
     <!-- Application loggers -->
     <logger name="com.kludgeworks.eu.legislation.formex.downloader" level="DEBUG"/>
 
-    <!-- Spring Batch loggers -->
-    <logger name="org.springframework.batch" level="INFO"/>
-
     <!-- Reduce noise from Spring framework -->
     <logger name="org.springframework.web" level="WARN"/>
     <logger name="org.springframework.jdbc" level="WARN"/>
     <logger name="org.springframework.transaction" level="WARN"/>
     <logger name="org.jetbrains.exposed" level="WARN"/>
     <logger name="Exposed" level="WARN"/>
-
-    <!-- Suppress verbose Artemis audit logging (per-message logging) -->
-    <!-- INFO level audit logs generate one log entry per message sent/received -->
-    <logger name="org.apache.activemq.audit.base" level="WARN"/>
-    <logger name="org.apache.activemq.audit.message" level="WARN"/>
-
-    <!-- Keep Artemis server startup/shutdown logs at INFO -->
-    <logger name="org.apache.activemq.artemis.core.server" level="INFO"/>
 </configuration>

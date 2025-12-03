@@ -1,7 +1,7 @@
 package com.kludgeworks.eu.legislation.formex.downloader.config
 
-import com.kludgeworks.eu.legislation.formex.downloader.domain.table.FormexDocuments
-import com.kludgeworks.eu.legislation.formex.downloader.domain.table.ProcessingErrors
+import com.kludgeworks.eu.legislation.formex.downloader.domain.FormexDocuments
+import com.kludgeworks.eu.legislation.formex.downloader.domain.ProcessingErrors
 import org.jetbrains.exposed.spring.SpringTransactionManager
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.DatabaseConfig
@@ -57,20 +57,9 @@ class DatabaseConfig {
         exposedDatabaseConfig: DatabaseConfig,
     ): Database = Database.connect(dataSource, databaseConfig = exposedDatabaseConfig)
 
-    /**
-     * Creates the primary transaction manager for Spring Batch operations.
-     *
-     * This DataSourceTransactionManager is used by Spring Batch for its internal
-     * job repository metadata operations (BATCH_JOB_EXECUTION, etc.).
-     *
-     * Marked as @Primary to ensure Spring Batch uses this for job repository.
-     *
-     * @param dataSource The Spring-managed DataSource
-     * @return Primary transaction manager for Spring Batch
-     */
     @Bean
     @Primary
-    fun batchTransactionManager(dataSource: DataSource): PlatformTransactionManager =
+    fun transactionManager(dataSource: DataSource): PlatformTransactionManager =
         DataSourceTransactionManager(dataSource)
 
     /**
@@ -80,8 +69,7 @@ class DatabaseConfig {
      * operations to participate in Spring-managed transactions. Exposed's
      * transaction {} blocks will automatically use this manager when available.
      *
-     * Named "exposedTransactionManager" to avoid conflicts with the primary
-     * batch transaction manager.
+     * Named "exposedTransactionManager" to avoid conflicts with the primary manager.
      *
      * @param dataSource The Spring-managed DataSource
      * @param exposedDatabaseConfig The DatabaseConfig instance
