@@ -4,6 +4,10 @@ import com.kludgeworks.eu.legislation.formex.downloader.processor.XmlDatabaseWri
 import com.kludgeworks.eu.legislation.formex.downloader.processor.UriFilterProcessor
 import com.kludgeworks.eu.legislation.formex.downloader.processor.XmlDownloadProcessor
 import com.kludgeworks.eu.legislation.formex.downloader.processor.XmlPostProcessor
+import com.kludgeworks.eu.legislation.formex.downloader.processor.ProcessingErrorLogger
+import com.kludgeworks.eu.legislation.formex.downloader.processor.EmptyFileDownloadException
+import com.kludgeworks.eu.legislation.formex.downloader.processor.HttpDownloadException
+import com.kludgeworks.eu.legislation.formex.downloader.processor.XmlPostProcessingException
 import com.kludgeworks.eu.legislation.formex.downloader.util.ProgressTracker
 import com.kludgeworks.eu.legislation.formex.downloader.SparqlFetcher
 import org.apache.camel.builder.RouteBuilder
@@ -17,8 +21,19 @@ class FormexRoutes(
     private val xmlPostProcessor: XmlPostProcessor,
     private val xmlDatabaseWriter: XmlDatabaseWriter,
     private val progressTracker: ProgressTracker,
+    private val processingErrorLogger: ProcessingErrorLogger,
 ) : RouteBuilder() {
     override fun configure() {
+        onException(
+            HttpDownloadException::class.java,
+            EmptyFileDownloadException::class.java,
+            XmlPostProcessingException::class.java,
+            Exception::class.java,
+        )
+            .process(processingErrorLogger)
+            .handled(true)
+            .log("Recorded processing error: \${exception.message}")
+
         errorHandler(defaultErrorHandler().maximumRedeliveries(0))
 
         // Timer-based one-time execution at startup (idiomatic Camel pattern)
