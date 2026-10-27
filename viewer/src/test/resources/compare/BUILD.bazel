@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: MIT
+package(default_visibility = ["//visibility:public"])
+
+# The text-conservation check: Formex and legal text reduced to the same list of values
+filegroup(
+    name = "compare",
+    srcs = ["formex-values.xsl", "legal-text-values.xsl"],
+)

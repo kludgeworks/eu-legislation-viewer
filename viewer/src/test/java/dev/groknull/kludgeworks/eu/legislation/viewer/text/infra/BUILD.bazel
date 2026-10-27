@@ -9,6 +9,7 @@ java_junit5_test(
     data = [
         "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:legal-text.xsd",
         "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt",
+        "//src/test/resources/compare",
         "//src/test/resources/fixtures",
     ],
     deps = [

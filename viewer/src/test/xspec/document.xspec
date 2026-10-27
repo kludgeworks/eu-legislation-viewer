@@ -100,4 +100,15 @@
         and $x:result/*:notes/*:note/*:p/*:ref/@number = '72'"/>
   </x:scenario>
 
+  <x:scenario label="A long title whose number line has emphasis and a subtitle">
+    <x:context xmlns="">
+      <ACT><BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <TITLE><TI><P><HT TYPE="UC">Decision</HT> (EU) 2019/1798 <HT TYPE="ITALIC">of the European Parliament</HT></P><P>of <DATE ISO="20191023">23 October 2019</DATE> <NOTE NOTE.ID="E0001"><P>a note</P></NOTE></P></TI><STI><P>on products excluded from the scope</P></STI></TITLE>
+        <ENACTING.TERMS/></ACT>
+    </x:context>
+    <x:expect label="keeps the emphasis in the number line" test="$x:result/*:preface/*:longTitle/*:p[1]/*:docNumber/*:emphasis[@kind = 'i']/*:t/@v = 'of the European Parliament'"/>
+    <x:expect label="keeps a note on the date line" test="exists($x:result/*:preface/*:longTitle/*:p[2]/*:noteRef)"/>
+    <x:expect label="keeps the subtitle" test="$x:result/*:preface/*:longTitle/*:p[3]/*:t/@v = 'on products excluded from the scope'"/>
+  </x:scenario>
+
 </x:description>

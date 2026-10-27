@@ -108,15 +108,16 @@
           <xsl:when test="$consolidated">
             <xsl:variable name="bib" select="$doc/FAM.COMP/BIB.DATA/BIB.INSTANCE.CONS"/>
             <xsl:sequence select="f:publication($bib/DOCUMENT.REF.CONS/COLL, $bib/DOCUMENT.REF.CONS/NO.OJ,
-                                                $bib/DATE/@ISO, $bib/DOCUMENT.REF.CONS/PAGE.FIRST)"/>
+                                                $bib/DATE/@ISO, $bib/DOCUMENT.REF.CONS/PAGE.FIRST, $content/TITLE/TI/NO.DOC.C)"/>
           </xsl:when>
           <xsl:when test="$package">
             <xsl:sequence select="f:publication($package/PUBLICATION.REF/COLL, $package/PUBLICATION.REF/NO.OJ,
-                                                $package/PUBLICATION.REF/DATE/@ISO, $package/FMX/DOC.MAIN.PUB/PAGE.FIRST)"/>
+                                                $package/PUBLICATION.REF/DATE/@ISO, $package/FMX/DOC.MAIN.PUB/PAGE.FIRST,
+                                                $content/TITLE/TI/NO.DOC.C)"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:variable name="ref" select="$doc/BIB.INSTANCE/DOCUMENT.REF"/>
-            <xsl:sequence select="f:publication($ref/COLL, $ref/NO.OJ, (), $ref/PAGE.FIRST)"/>
+            <xsl:sequence select="f:publication($ref/COLL, $ref/NO.OJ, (), $ref/PAGE.FIRST, $content/TITLE/TI/NO.DOC.C)"/>
           </xsl:otherwise>
         </xsl:choose>
       </source>
@@ -148,8 +149,9 @@
 
       <body>
         <xsl:call-template name="f:blocks">
+          <!-- ACT.GEN: the whole of an act consolidated with a non-regular structure (CONS.DOC.GEN TYPE="OTH.ACT") -->
           <xsl:with-param name="nodes" select="$content/ENACTING.TERMS/node(), $content/CONTENTS/(node() except CONS.ANNEX),
-                                               $content/CONTENTS.CORR/CORRECTION"/>
+                                               $content/CONTENTS.CORR/CORRECTION, $content/ACT.GEN"/>
           <xsl:with-param name="ctx" select="()" tunnel="yes"/>
           <xsl:with-param name="pending" select="()" tunnel="yes"/>
           <xsl:with-param name="base" select="()" tunnel="yes"/>
@@ -158,7 +160,9 @@
 
       <xsl:apply-templates select="$content/FINAL"/>
 
-      <xsl:variable name="groups" select="f:annex-groups(($content/CONS.ANNEX, $content/CONTENTS/CONS.ANNEX, $annexes))"/>
+      <!-- a consolidation's annexes: CONS.ANNEX, or for a non-regular structure CONS.DOC.GEN TYPE="ANNEX" -->
+      <xsl:variable name="groups" select="f:annex-groups(($content/CONS.ANNEX, $content/CONTENTS/CONS.ANNEX,
+                                                          $content/self::CONS.DOC.GEN/CONS.DOC.GEN[@TYPE = 'ANNEX'], $annexes))"/>
       <xsl:variable name="annex-units" as="element()*">
         <xsl:for-each select="$groups">
           <xsl:variable name="fragments" select="?*"/>
@@ -182,20 +186,47 @@
           <xsl:with-param name="base" select="()" tunnel="yes"/>
         </xsl:apply-templates>
       </xsl:variable>
-      <xsl:if test="$annex-units or $letters">
+      <!-- attached documents: a consolidation's related documents, a package's entries other than annexes -->
+      <xsl:variable name="attachments" as="element()*">
+        <xsl:for-each select="$content/self::CONS.DOC.GEN/CONS.DOC.GEN[not(@TYPE = 'ANNEX')],
+                              $package/FMX/DOC.SUB.PUB[not(@TYPE = 'ANNEX')]">
+          <xsl:apply-templates select="." mode="attachment">
+            <xsl:with-param name="eid" select="'att_' || position()"/>
+          </xsl:apply-templates>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:if test="$annex-units or $letters or $attachments">
         <annexes>
-          <xsl:sequence select="$annex-units, $letters"/>
+          <xsl:sequence select="$annex-units, $letters, $attachments"/>
         </annexes>
       </xsl:if>
 
-      <xsl:variable name="notes" select="($act, $annexes)//NOTE[@NOTE.ID]"/>
-      <xsl:if test="$notes">
+      <!-- the notes of the act, its annexes and the documents they include -->
+      <xsl:variable name="notes" select="f:with-included(($act, $annexes))//NOTE[@NOTE.ID]"/>
+      <!-- and those of attached documents from other files, whose eIds carry the file: note_att0301-1 -->
+      <xsl:variable name="attached-notes" as="element()*">
+        <xsl:for-each select="$package/FMX//DOC.SUB.PUB[not(@TYPE = 'ANNEX')]">
+          <xsl:variable name="docs" select="(REF.PHYS, DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS)/doc(resolve-uri(@FILE, base-uri(.)))/*"/>
+          <xsl:apply-templates select="f:with-included($docs)//NOTE[@NOTE.ID]" mode="note">
+            <xsl:with-param name="notePrefix" select="f:attachment-note-prefix(.)" tunnel="yes"/>
+          </xsl:apply-templates>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:if test="$notes or $attached-notes">
         <notes>
           <xsl:apply-templates select="$notes" mode="note"/>
+          <xsl:sequence select="$attached-notes"/>
         </notes>
       </xsl:if>
     </legalText>
   </xsl:template>
+
+  <!-- documents and, recursively, the Formex documents they include (INCL.ELEMENT TYPE="FORMEX.DOC") -->
+  <xsl:function name="f:with-included" as="element()*">
+    <xsl:param name="docs" as="element()*"/>
+    <xsl:variable name="included" select="$docs//INCL.ELEMENT[@TYPE = 'FORMEX.DOC']/doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
+    <xsl:sequence select="$docs, if (exists($included)) then f:with-included($included) else ()"/>
+  </xsl:function>
 
   <xsl:function name="f:formex-version" as="xs:string">
     <xsl:param name="e" as="element()"/>
@@ -207,6 +238,8 @@
     <xsl:param name="number" as="xs:string?"/>
     <xsl:param name="date" as="xs:string?"/>
     <xsl:param name="page" as="xs:string?"/>
+    <!-- a C-series document's number, printed above its title: (2004/C 88 E/0748) -->
+    <xsl:param name="document" as="xs:string?"/>
     <xsl:if test="normalize-space($series)">
       <publication series="{normalize-space($series)}">
         <xsl:if test="normalize-space($number)">
@@ -217,6 +250,9 @@
         </xsl:if>
         <xsl:if test="normalize-space($page)">
           <xsl:attribute name="page" select="normalize-space($page)"/>
+        </xsl:if>
+        <xsl:if test="normalize-space($document)">
+          <xsl:attribute name="document" select="replace(normalize-space($document), '^\((.*)\)$', '$1')"/>
         </xsl:if>
       </publication>
     </xsl:if>
@@ -241,21 +277,29 @@
                 <xsl:if test="matches(string-join($rest ! string()), '^\s')">
                   <t v=" "/>
                 </xsl:if>
+                <!-- the number and what follows on the line, with its emphasis -->
+                <xsl:variable name="number" as="element()*">
+                  <xsl:call-template name="f:inlines">
+                    <xsl:with-param name="nodes" select="$rest"/>
+                  </xsl:call-template>
+                </xsl:variable>
                 <docNumber>
-                  <t v="{normalize-space(string-join($rest ! string()))}"/>
+                  <xsl:sequence select="f:trim-start($number)"/>
                 </docNumber>
               </xsl:when>
               <xsl:when test="position() = 2 and count(DATE) = 1">
-                <xsl:for-each select="node()">
+                <xsl:for-each-group select="node()" group-adjacent="exists(self::DATE)">
                   <xsl:choose>
-                    <xsl:when test="self::DATE">
+                    <xsl:when test="current-grouping-key()">
                       <docDate date="{f:date(@ISO)}" asWritten="{string(.)}"/>
                     </xsl:when>
-                    <xsl:when test="self::text()">
-                      <t v="{.}"/>
-                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:call-template name="f:inlines">
+                        <xsl:with-param name="nodes" select="current-group()"/>
+                      </xsl:call-template>
+                    </xsl:otherwise>
                   </xsl:choose>
-                </xsl:for-each>
+                </xsl:for-each-group>
               </xsl:when>
               <xsl:when test="position() = 3">
                 <docPurpose>
@@ -270,6 +314,14 @@
                 </xsl:call-template>
               </xsl:otherwise>
             </xsl:choose>
+          </p>
+        </xsl:for-each>
+        <!-- a subtitle ("on products excluded from the scope of the Agreement …") -->
+        <xsl:for-each select="STI/P">
+          <p>
+            <xsl:call-template name="f:inlines">
+              <xsl:with-param name="nodes" select="node()"/>
+            </xsl:call-template>
           </p>
         </xsl:for-each>
       </longTitle>
@@ -415,15 +467,32 @@
     </signatory>
   </xsl:template>
 
+  <!-- inline content without the whitespace it starts with -->
+  <xsl:function name="f:trim-start" as="element()*">
+    <xsl:param name="inlines" as="element()*"/>
+    <xsl:variable name="first" select="$inlines[1]"/>
+    <xsl:choose>
+      <xsl:when test="$first/self::*:t">
+        <xsl:variable name="v" select="replace($first/@v, '^\s+', '')"/>
+        <xsl:if test="$v != ''"><t v="{$v}"/></xsl:if>
+        <xsl:sequence select="$inlines[position() gt 1]"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:sequence select="$inlines"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:function>
+
   <!-- ============================================================ notes -->
 
   <xsl:template match="NOTE" mode="note">
-    <note eId="{f:note-eid(.)}" marker="{f:note-marker(.)}" kind="{lower-case((@TYPE, 'FOOTNOTE')[1])}">
+    <xsl:param name="notePrefix" as="xs:string?" tunnel="yes"/>
+    <note eId="{f:note-eid(., $notePrefix)}" marker="{f:note-marker(.)}" kind="{lower-case((@TYPE, 'FOOTNOTE')[1])}">
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" select="node()"/>
         <xsl:with-param name="ctx" select="f:ids(let $v := accumulator-before('f:open') return map:keys($v) ! $v(.))" tunnel="yes"/>
         <xsl:with-param name="pending" select="()" tunnel="yes"/>
-        <xsl:with-param name="base" select="f:note-eid(.)" tunnel="yes"/>
+        <xsl:with-param name="base" select="f:note-eid(., $notePrefix)" tunnel="yes"/>
       </xsl:call-template>
     </note>
   </xsl:template>

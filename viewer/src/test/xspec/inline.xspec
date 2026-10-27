@@ -18,10 +18,10 @@
 
   <x:scenario label="Emphasis">
     <x:context mode="block" xmlns="">
-      <P><HT TYPE="BOLD">b</HT><HT TYPE="ITALIC">i</HT><HT TYPE="UNDERLINE">u</HT><HT TYPE="SUP">sup</HT><HT TYPE="SUB">sub</HT><HT TYPE="UC">uc</HT><HT TYPE="SC">sc</HT><HT TYPE="EXPANDED">x</HT></P>
+      <P><HT TYPE="BOLD">b</HT><HT TYPE="ITALIC">i</HT><HT TYPE="UNDERLINE">u</HT><HT TYPE="SUP">sup</HT><HT TYPE="SUB">sub</HT><HT TYPE="UC">uc</HT><HT TYPE="SC">sc</HT><HT TYPE="EXPANDED">x</HT><HT TYPE="STROKE">s</HT><HT TYPE="BOX">bx</HT></P>
     </x:context>
     <x:expect label="maps each HT type to a kind">
-      <p><emphasis kind="b"><t v="b"/></emphasis><emphasis kind="i"><t v="i"/></emphasis><emphasis kind="u"><t v="u"/></emphasis><emphasis kind="sup"><t v="sup"/></emphasis><emphasis kind="sub"><t v="sub"/></emphasis><emphasis kind="uc"><t v="uc"/></emphasis><emphasis kind="sc"><t v="sc"/></emphasis><emphasis kind="expanded"><t v="x"/></emphasis></p>
+      <p><emphasis kind="b"><t v="b"/></emphasis><emphasis kind="i"><t v="i"/></emphasis><emphasis kind="u"><t v="u"/></emphasis><emphasis kind="sup"><t v="sup"/></emphasis><emphasis kind="sub"><t v="sub"/></emphasis><emphasis kind="uc"><t v="uc"/></emphasis><emphasis kind="sc"><t v="sc"/></emphasis><emphasis kind="expanded"><t v="x"/></emphasis><emphasis kind="strike"><t v="s"/></emphasis><emphasis kind="box"><t v="bx"/></emphasis></p>
     </x:expect>
   </x:scenario>
 

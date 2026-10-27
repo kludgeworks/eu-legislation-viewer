@@ -147,6 +147,9 @@
     <xs:attribute name="page" type="xs:string">
       <xs:annotation><xs:documentation>The first page.</xs:documentation></xs:annotation>
     </xs:attribute>
+    <xs:attribute name="document" type="xs:string">
+      <xs:annotation><xs:documentation>A C-series document's number, as printed above its title, without brackets: 2022/C 155/03 (Formex NO.DOC.C).</xs:documentation></xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="Lifecycle">
@@ -319,14 +322,15 @@
   <xs:complexType name="Annexes">
     <xs:annotation>
       <xs:documentation>
-        The annexes. Fragments of one annex that Formex splits across files or around embedded annexes,
-        each titled just ANNEX, are joined into one.
+        The annexes, then the letters of an exchange of letters, then the attached documents (AKN's attachments,
+        of which annexes are one kind). Fragments of one annex that Formex splits across files or around embedded
+        annexes, each titled just ANNEX, are joined into one.
       </xs:documentation>
     </xs:annotation>
     <xs:choice maxOccurs="unbounded">
       <xs:element name="unit" type="Unit">
         <xs:annotation>
-          <xs:documentation>One annex (kind annex; eId anx for a single annex, else anx_ and its label), or a letter of an exchange of letters (kind letter).</xs:documentation>
+          <xs:documentation>One annex (kind annex; eId anx for a single annex, else anx_ and its label), a letter of an exchange of letters (kind letter), or an attached document (kind attachment, eId att_N).</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="deleted" type="DeletedBlock">
@@ -532,6 +536,17 @@
           </xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="attachment">
+        <xs:annotation>
+          <xs:documentation>
+            A document attached to the act that is not one of its annexes: the agreement a decision concludes, a
+            protocol, a draft decision (Formex package entries DOC.SUB.PUB other than ANNEX), or a related document of a
+            consolidation (nested CONS.DOC.GEN of TYPE ACT, GENERAL or OTH.ACT). As AKN's attachment: eId att_N by
+            position, its title as heading, its own text, articles (att_1/art_1), annexes (att_1/anx) and attachments
+            under it.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="letter">
         <xs:annotation><xs:documentation>A letter of an exchange of letters attached to an agreement; eId let_N by position.</xs:documentation></xs:annotation>
       </xs:enumeration>
@@ -686,13 +701,13 @@
   </xs:complexType>
 
   <xs:complexType name="Caption">
-    <xs:annotation><xs:documentation>The title of a table.</xs:documentation></xs:annotation>
+    <xs:annotation><xs:documentation>The title of a table, or the caption of a figure.</xs:documentation></xs:annotation>
     <xs:group ref="blocks"/>
   </xs:complexType>
 
   <xs:complexType name="RowGroup">
     <xs:annotation>
-      <xs:documentation>A group of rows with a heading row (Formex BLK and TI.BLK, used in checklists). No AKN equivalent.</xs:documentation>
+      <xs:documentation>A group of rows with a heading row (Formex BLK with TI.BLK and STI.BLK, used in checklists and budgets). No AKN equivalent.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="num" type="InlineContent" minOccurs="0">
@@ -700,6 +715,9 @@
       </xs:element>
       <xs:element name="heading" type="InlineContent" minOccurs="0">
         <xs:annotation><xs:documentation>The heading row's text.</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="subheading" type="InlineContent" minOccurs="0">
+        <xs:annotation><xs:documentation>The heading row's subtitle (Formex STI.BLK).</xs:documentation></xs:annotation>
       </xs:element>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="tr" type="Row">
@@ -779,12 +797,40 @@
     <xs:annotation><xs:documentation>An image (Formex INCL.ELEMENT TYPE="TIFF").</xs:documentation></xs:annotation>
     <xs:complexContent>
       <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="caption" type="Caption" minOccurs="0">
+            <xs:annotation><xs:documentation>The text printed with the image, usually under it (Formex CAPTION).</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="description" type="Caption" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+                A transcription of the text inside the image, such as the fields of a form (Formex IMG.CNT): the
+                image's alternative text, and what makes a form searchable.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="content" type="ImageContent">
+          <xs:annotation><xs:documentation>What the image shows (Formex INCL.ELEMENT CONTENT).</xs:documentation></xs:annotation>
+        </xs:attribute>
         <xs:attribute name="src" type="xs:string" use="required">
           <xs:annotation><xs:documentation>The image file in the act's Cellar manifestation.</xs:documentation></xs:annotation>
         </xs:attribute>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+
+  <xs:simpleType name="ImageContent">
+    <xs:annotation><xs:documentation>What an image shows, as Formex classifies it.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="character"><xs:annotation><xs:documentation>Text.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="form"><xs:annotation><xs:documentation>A scanned form.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="formula"><xs:annotation><xs:documentation>A mathematical or chemical expression Formex can't mark up.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="signature"><xs:annotation><xs:documentation>A handwritten signature.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="tech-design"><xs:annotation><xs:documentation>A technical drawing.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="other"><xs:annotation><xs:documentation>Anything else.</xs:documentation></xs:annotation></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
 
   <xs:complexType name="MathBlock">
     <xs:annotation>
@@ -951,6 +997,8 @@
       <xs:enumeration value="uc"><xs:annotation><xs:documentation>Upper case; surnames in signatures.</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="sc"><xs:annotation><xs:documentation>Small capitals (Formex 05.59 and later).</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="expanded"><xs:annotation><xs:documentation>Letter-spaced.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="strike"><xs:annotation><xs:documentation>Struck through.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="box"><xs:annotation><xs:documentation>Enclosed in a box.</xs:documentation></xs:annotation></xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
 
@@ -1080,6 +1128,9 @@
       <xs:extension base="InlineNode">
         <xs:attribute name="src" type="xs:string" use="required">
           <xs:annotation><xs:documentation>The image file in the act's Cellar manifestation.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="content" type="ImageContent">
+          <xs:annotation><xs:documentation>What the image shows (Formex INCL.ELEMENT CONTENT).</xs:documentation></xs:annotation>
         </xs:attribute>
       </xs:extension>
     </xs:complexContent>

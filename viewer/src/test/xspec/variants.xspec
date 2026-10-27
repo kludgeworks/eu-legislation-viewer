@@ -88,9 +88,11 @@
         and $x:result//m:mover[1]/m:mo = '¯' and $x:result//m:mover[2]/m:mo = '→'"/>
   </x:scenario>
 
-  <x:scenario label="A FUNCTION, which says nothing of what function it is" catch="yes">
-    <x:context mode="block" xmlns=""><P><FORMULA TYPE="INLINE"><EXPR>a<FUNCTION/>b</EXPR></FORMULA></P></x:context>
-    <x:expect label="stops the transformation" test="exists($x:result?err)"/>
+  <x:scenario label="A function sign, a vertical bar and the operators">
+    <x:context mode="block" xmlns=""><P><FORMULA TYPE="INLINE"><EXPR><FUNCTION><UNDER>x</UNDER></FUNCTION>a<BAR/>b<OP.MATH TYPE="MULT"/>c<OP.MATH TYPE="DIV"/>d<OP.MATH TYPE="CARTPROD"/>e</EXPR></FORMULA></P></x:context>
+    <x:expect label="take the signs the Formex manual gives" test="
+        $x:result//m:munder/m:mi = 'ƒ' and $x:result//m:munder/m:mrow/m:mi = 'x'
+        and $x:result//m:mo ! string() = ('|', '∙', '/', '×')"/>
   </x:scenario>
 
   <!-- ============================================================ tables -->
@@ -162,6 +164,57 @@
         <CONTENTS><ENACTING.TERMS><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>text</ALINEA></ARTICLE></ENACTING.TERMS></CONTENTS></GENERAL>
     </x:context>
     <x:expect label="is its title and its text" test="$x:result[1]/self::*:p/*:t/@v = 'PROTOCOL 38d' and $x:result/self::*:unit/@eId = 'art_1'"/>
+  </x:scenario>
+
+  <x:scenario label="A lettered letter (A. Letter from the Union)">
+    <x:context mode="block" xmlns="">
+      <LETTER><TITLE><TI><NP><NO.P>A.</NO.P><TXT>Letter from the Union</TXT></NP></TI></TITLE><CONTENTS><P>Sir,</P></CONTENTS></LETTER>
+    </x:context>
+    <x:expect label="keeps the letter's label as num" test="$x:result/*:num/*:t/@v = 'A.' and $x:result/*:heading/*:t/@v = 'Letter from the Union'"/>
+  </x:scenario>
+
+  <x:scenario label="A table's notes group with an annotation (EASA Form 138)">
+    <x:context mode="block" xmlns="">
+      <TBL COLS="1"><GR.NOTES><NOTE NOTE.ID="E0001" TYPE="TABLE"><P>a note</P></NOTE><GR.ANNOTATION><ANNOTATION><P>EASA Form 138 – Issue 3</P></ANNOTATION></GR.ANNOTATION></GR.NOTES><CORPUS><ROW><CELL COL="1">x</CELL></ROW></CORPUS></TBL>
+    </x:context>
+    <x:expect label="keeps the annotation after the table, not the note" test="
+        $x:result[1]/self::*:table and $x:result[2]/self::*:annotation//*:t/@v = 'EASA Form 138 – Issue 3' and count($x:result) = 2"/>
+  </x:scenario>
+
+  <x:scenario label="A figure with a caption">
+    <x:context mode="block" xmlns=""><INCL.ELEMENT TYPE="TIFF" FILEREF="fig1.tif"><CAPTION><P>Figure 1: Filling of the column</P></CAPTION></INCL.ELEMENT></x:context>
+    <x:expect label="keeps the caption"><figure src="fig1.tif"><caption><p><t v="Figure 1: Filling of the column"/></p></caption></figure></x:expect>
+  </x:scenario>
+
+  <!-- ============================================================ attachments -->
+
+  <x:scenario label="A decision concluding an agreement (2009/1023, a package)">
+    <x:context href="../resources/fixtures/formex/05.01/32009D1023/L_2009353EN.01000101.doc.xml"/>
+    <x:expect label="attaches the agreement, and the document attached to it, under it"
+              test="$x:result//*:unit[@kind = 'attachment']/@eId = ('att_1', 'att_1/att_1')"/>
+    <x:expect label="numbers the agreement's articles under it" test="$x:result//*:unit[@eId = 'att_1/art_1']/*:num/*:t/@v = 'Article 1'"/>
+    <x:expect label="gives the agreement's notes their own eIds" test="$x:result/*:notes/*:note/@eId = 'note_att01000301-1'"/>
+  </x:scenario>
+
+  <x:scenario label="A consolidated agreement with annexes and related documents (1994/604, CONS.OTH)">
+    <x:context href="../resources/fixtures/formex/01.02/01994D0604-20040601/CL1994D0604EN0050010.0001.xml"/>
+    <x:expect label="keeps the act's own text (ACT.GEN)" test="exists($x:result/*:body/*:p)"/>
+    <x:expect label="makes the annex (CONS.DOC.GEN TYPE=ANNEX) an annex" test="$x:result/*:annexes/*:unit[@kind = 'annex']/@eId = 'anx'"/>
+  </x:scenario>
+
+  <x:scenario label="A form as an image, with a transcription of its text">
+    <x:context mode="block" xmlns=""><INCL.ELEMENT TYPE="TIFF" FILEREF="form.tif" CONTENT="FORM"><IMG.CNT><P>ATTESTATION OF ACTIVITIES</P></IMG.CNT></INCL.ELEMENT></x:context>
+    <x:expect label="keeps the transcription as its description">
+      <figure src="form.tif" content="form"><description><p><t v="ATTESTATION OF ACTIVITIES"/></p></description></figure>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A C-series document's number above its title">
+    <x:context xmlns="">
+      <ACT><BIB.INSTANCE><DOCUMENT.REF><COLL>C</COLL><NO.OJ>155</NO.OJ></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <TITLE><TI><NO.DOC.C>(2022/C 155/03)</NO.DOC.C><P>Commission notice</P></TI></TITLE><ENACTING.TERMS/></ACT>
+    </x:context>
+    <x:expect label="goes into the publication data, without brackets" test="$x:result/*:source/*:publication/@document = '2022/C 155/03'"/>
   </x:scenario>
 
   <x:scenario label="Text in another language">

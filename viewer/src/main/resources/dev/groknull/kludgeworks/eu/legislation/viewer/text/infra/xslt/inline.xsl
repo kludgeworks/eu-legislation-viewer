@@ -112,7 +112,7 @@
   <xsl:template match="HT" mode="inline">
     <xsl:variable name="kind" select="map{
         'BOLD': 'b', 'ITALIC': 'i', 'UNDERLINE': 'u', 'SUP': 'sup', 'SUB': 'sub',
-        'UC': 'uc', 'SC': 'sc', 'EXPANDED': 'expanded'}(string(@TYPE))"/>
+        'UC': 'uc', 'SC': 'sc', 'EXPANDED': 'expanded', 'STROKE': 'strike', 'BOX': 'box'}(string(@TYPE))"/>
     <xsl:choose>
       <xsl:when test="@TYPE = 'NORMAL'">
         <xsl:call-template name="f:inlines">
@@ -144,12 +144,14 @@
   </xsl:template>
 
   <xsl:template match="NOTE[@NOTE.ID]" mode="inline">
-    <xsl:sequence select="f:note-ref(.)"/>
+    <xsl:param name="notePrefix" as="xs:string?" tunnel="yes"/>
+    <xsl:sequence select="f:note-ref(., $notePrefix)"/>
   </xsl:template>
 
   <xsl:template match="NOTE[@NOTE.REF]" mode="inline">
+    <xsl:param name="notePrefix" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="target" select="root(.)//NOTE[@NOTE.ID = current()/@NOTE.REF][1]"/>
-    <xsl:sequence select="if ($target) then f:note-ref($target) else f:unknown(., 'NOTE.REF without its note')"/>
+    <xsl:sequence select="if ($target) then f:note-ref($target, $notePrefix) else f:unknown(., 'NOTE.REF without its note')"/>
   </xsl:template>
 
   <xsl:template match="REF.DOC.OJ" mode="inline">
@@ -219,7 +221,9 @@
 
   <!-- an image inside running text or a heading -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'TIFF']" mode="inline">
-    <img src="{@FILEREF}"/>
+    <img src="{@FILEREF}">
+      <xsl:sequence select="f:image-content(.)"/>
+    </img>
   </xsl:template>
 
   <!-- an empty table cell -->
@@ -240,20 +244,30 @@
 
   <xsl:function name="f:note-ref" as="element()">
     <xsl:param name="note" as="element(NOTE)"/>
-    <noteRef href="#{f:note-eid($note)}" marker="{f:note-marker($note)}"/>
+    <xsl:param name="prefix" as="xs:string?"/>
+    <noteRef href="#{f:note-eid($note, $prefix)}" marker="{f:note-marker($note)}"/>
   </xsl:function>
 
-  <!-- note_3 in the main document; note_anx2-1 in the second annex file of an OJ act -->
+  <!-- note_3 in the main document; note_anx2-1 in the second annex file of an OJ act; in another
+       file, the file's own sequence number, unique in the package: note_inc000402-1 in an included
+       protocol, note_att0301-1 in an attached document ($prefix) -->
   <xsl:function name="f:note-eid" as="xs:string">
     <xsl:param name="note" as="element(NOTE)"/>
+    <xsl:param name="prefix" as="xs:string?"/>
     <xsl:variable name="root" select="root($note)/*"/>
-    <!-- the annex file's own sequence number, unique in the package also for included files -->
+    <xsl:variable name="seq" select="f:file-seq(base-uri($root))"/>
     <xsl:variable name="file" select="
-        if ($root/self::ANNEX)
-        then 'anx' || replace(tokenize(base-uri($root), '/')[last()], '^.*?\.(\d+)\.(fmx\.)?xml$', '$1') || '-'
-        else ''"/>
+        if ($root/self::ANNEX) then 'anx' || $seq || '-'
+        else if ($root/self::GENERAL) then 'inc' || $seq || '-'
+        else string($prefix)"/>
     <!-- ancestors count too: a note can sit inside another note -->
     <xsl:sequence select="'note_' || $file || (count($note/(preceding::NOTE | ancestor::NOTE)[@NOTE.ID]) + 1)"/>
+  </xsl:function>
+
+  <!-- a package file's own sequence number: L_2009353EN.01000301.xml → 01000301 -->
+  <xsl:function name="f:file-seq" as="xs:string">
+    <xsl:param name="uri" as="xs:string?"/>
+    <xsl:sequence select="replace(tokenize($uri, '/')[last()], '^.*?\.(\d+)\.(fmx\.)?xml$', '$1')"/>
   </xsl:function>
 
   <!-- the marker as printed: NUMBER.ORG if given, * for star numbering, else the running number

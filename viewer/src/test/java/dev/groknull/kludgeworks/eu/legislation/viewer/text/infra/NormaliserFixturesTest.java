@@ -13,9 +13,12 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,7 +34,10 @@ import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.QName;
 import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.s9api.XdmAtomicValue;
+import net.sf.saxon.s9api.XdmDestination;
+import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XsltExecutable;
+import net.sf.saxon.s9api.streams.Steps;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -42,8 +48,10 @@ import org.xml.sax.SAXParseException;
  * Normalises every fixture: raw Formex as Cellar serves it, one folder per document under the
  * Formex version it uses (fixtures/formex/&lt;version&gt;/&lt;CELEX&gt;), covering every Formex 4 version
  * and every document type in scope. Each result validates against legal-text.xsd, unmarshals into
- * the classes generated from it, and has unique eIds among live units. Documents out of scope
- * (fixtures/refused) must be refused, not half-converted.
+ * the classes generated from it, has unique eIds among live units, and keeps the text of its source:
+ * compare/formex-values.xsl and compare/legal-text-values.xsl reduce both to the same list of values,
+ * and every source value must be in the output. Documents out of scope (fixtures/refused) must be
+ * refused, not half-converted.
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class NormaliserFixturesTest {
@@ -57,16 +65,22 @@ class NormaliserFixturesTest {
       ROOT.resolve(
           "src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml/legal-text.xsd");
   static final Path FIXTURES = ROOT.resolve("src/test/resources/fixtures");
+  static final Path COMPARE = ROOT.resolve("src/test/resources/compare");
   static final Pattern ROOT_ELEMENT = Pattern.compile("<([A-Z][A-Z0-9.]*)[\\s>/]");
 
   final Processor saxon = new Processor(false);
   XsltExecutable normalise;
+  XsltExecutable formexValues;
+  XsltExecutable legalTextValues;
   Schema schema;
   JAXBContext jaxb;
 
   @BeforeAll
   void compile() throws Exception {
     normalise = saxon.newXsltCompiler().compile(new StreamSource(XSLT.toFile()));
+    formexValues = saxon.newXsltCompiler().compile(new StreamSource(COMPARE.resolve("formex-values.xsl").toFile()));
+    legalTextValues =
+        saxon.newXsltCompiler().compile(new StreamSource(COMPARE.resolve("legal-text-values.xsl").toFile()));
     schema = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema(XSD.toFile());
     jaxb = JAXBContext.newInstance(LegalText.class.getPackageName(), LegalText.class.getClassLoader());
   }
@@ -126,6 +140,53 @@ class NormaliserFixturesTest {
             .map(Object::toString)
             .toList();
     assertEquals(List.of(), duplicates, "eIds of live units must be unique");
+    checkText(folder, saxon.newDocumentBuilder().wrap(dom));
+  }
+
+  /**
+   * Every value of the source text must occur in the output as often as in the source (a value of
+   * kind "once" at least once). Extra output values are allowed: the normaliser makes some up, such
+   * as quotation marks whose partner sits in another element.
+   */
+  void checkText(Path folder, XdmNode output) throws SaxonApiException, IOException {
+    var source = values(formexValues, new StreamSource(input(folder).toFile()));
+    var result = values(legalTextValues, output.asSource());
+    Map<String, Long> have = result.stream().collect(Collectors.groupingBy(v -> v.text, Collectors.counting()));
+    Map<String, List<Value>> occurrences = new LinkedHashMap<>();
+    source.forEach(v -> occurrences.computeIfAbsent(v.text, k -> new ArrayList<>()).add(v));
+    var report = new StringBuilder();
+    var missing = 0L;
+    for (var e : occurrences.entrySet()) {
+      var once = e.getValue().stream().anyMatch(v -> "once".equals(v.kind));
+      var shortfall = (once ? 1 : e.getValue().size()) - have.getOrDefault(e.getKey(), 0L);
+      if (shortfall > 0) {
+        missing += shortfall;
+        if (report.length() < 3000) {
+          report.append(String.format("%n  %d × \"%s\"  at %s", shortfall, abbreviate(e.getKey()), e.getValue().getFirst().where()));
+        }
+      }
+    }
+    if (missing > 0) {
+      fail(String.format("%d source values missing from the output:%s", missing, report));
+    }
+  }
+
+  record Value(String text, String kind, String file, String path) {
+    String where() {
+      return file + " " + path.replaceAll("Q\\{}", "");
+    }
+  }
+
+  List<Value> values(XsltExecutable xslt, javax.xml.transform.Source source) throws SaxonApiException {
+    var destination = new XdmDestination();
+    xslt.load30().applyTemplates(source, destination);
+    return destination.getXdmNode().select(Steps.path("values", "v")).map(
+            v -> new Value(v.getStringValue(), v.attribute("kind"), v.attribute("file"), Objects.toString(v.attribute("path"), "")))
+        .toList();
+  }
+
+  static String abbreviate(String s) {
+    return s.length() > 80 ? s.substring(0, 77) + "…" : s;
   }
 
   static String name(Path folder) {

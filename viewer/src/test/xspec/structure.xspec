@@ -115,6 +115,14 @@
               test="$x:result/*:rowGroup/*:num/*:t/@v = '1.1.' and $x:result/*:rowGroup/*:heading/*:t/@v = 'Date(s) of validation' and $x:result/*:rowGroup/*:tr"/>
   </x:scenario>
 
+  <x:scenario label="A group of rows with a plain title and a subtitle (budget)">
+    <x:context mode="block" xmlns="">
+      <TBL COLS="2"><CORPUS><BLK><TI.BLK COL.END="1" COL.START="1"><HT TYPE="BOLD">2</HT></TI.BLK><STI.BLK COL.END="2" COL.START="2"><HT TYPE="BOLD">PAYMENTS</HT></STI.BLK><ROW><CELL COL="1">2 0</CELL><CELL COL="2">PAYMENTS</CELL></ROW></BLK></CORPUS></TBL>
+    </x:context>
+    <x:expect label="keeps both" test="
+        $x:result/*:rowGroup/*:heading/*:emphasis/*:t/@v = '2' and $x:result/*:rowGroup/*:subheading/*:emphasis/*:t/@v = 'PAYMENTS'"/>
+  </x:scenario>
+
   <x:scenario label="A quoted structure in an amending act">
     <x:context mode="block" xmlns="">
       <ITEM><NP><NO.P>(1)</NO.P><TXT>in point 1.2.2.2, point (b) is replaced by the following:</TXT><P><QUOT.S LEVEL="1"><LIST TYPE="alpha"><ITEM><NP><NO.P>(b)</NO.P><TXT>a valid crew identification card;</TXT></NP></ITEM></LIST></QUOT.S></P></NP></ITEM>
@@ -133,7 +141,7 @@
 
   <x:scenario label="An image">
     <x:context mode="block" xmlns=""><INCL.ELEMENT TYPE="TIFF" FILEREF="L_2013227EN.01003401.tif" CONTENT="TECH.DESIGN"/></x:context>
-    <x:expect label="becomes a figure"><figure src="L_2013227EN.01003401.tif"/></x:expect>
+    <x:expect label="becomes a figure that says what it shows"><figure src="L_2013227EN.01003401.tif" content="tech-design"/></x:expect>
   </x:scenario>
 
   <x:scenario label="Transclusion of another Formex file (06.02.3)" catch="yes">

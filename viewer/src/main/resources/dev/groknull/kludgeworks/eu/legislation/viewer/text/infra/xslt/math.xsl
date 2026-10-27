@@ -10,8 +10,8 @@
     FRACTION             DIVIDEND over DIVISOR
     SUM, PRODUCT, INTEGRAL  the sign, with OVER and UNDER as its limits
     ROOT, OVERLINE, VECTOR  root (DEGREE for an nth root), bar, arrow
-  FUNCTION and BAR (05.50+) carry no name or meaning the schema states and no document uses them
-  yet: they stop the normaliser like any unknown element.
+    FUNCTION             the function sign ƒ, with OVER and UNDER as its limits
+    BAR                  a single vertical bar
     FMT.VALUE            a formatted number
   Text is split into numbers (mn), names (mi) and other characters (mo).
 -->
@@ -171,8 +171,9 @@
     <m:mn>{normalize-space(.)}</m:mn>
   </xsl:template>
 
+  <!-- the signs the Formex manual gives for each TYPE -->
   <xsl:variable name="f:operators" select="map{
-      'PLUS': '+', 'MINUS': '−', 'MULT': '×', 'DIV': '÷', 'PLUSMINUS': '±', 'CARTPROD': '×',
+      'PLUS': '+', 'MINUS': '−', 'MULT': '∙', 'DIV': '/', 'PLUSMINUS': '±', 'CARTPROD': '×',
       'EQ': '=', 'NE': '≠', 'LT': '&lt;', 'GT': '&gt;', 'LE': '≤', 'GE': '≥', 'AP': '≈', 'EQV': '≡'}"/>
 
   <xsl:template match="OP.MATH | OP.CMP" mode="math">
@@ -236,8 +237,17 @@
   </xsl:template>
 
   <!-- ∑ ∏ ∫ with their limits -->
-  <xsl:template match="SUM | PRODUCT | INTEGRAL" mode="math">
-    <xsl:variable name="sign" as="element()"><m:mo largeop="true">{map{'SUM': '∑', 'PRODUCT': '∏', 'INTEGRAL': '∫'}(local-name())}</m:mo></xsl:variable>
+  <!-- a single vertical bar (absolute values are EXPR TYPE="BAR") -->
+  <xsl:template match="BAR" mode="math">
+    <m:mo>|</m:mo>
+  </xsl:template>
+
+  <!-- ∑ ∏ ∫ and the function sign ƒ, with their limits -->
+  <xsl:template match="SUM | PRODUCT | INTEGRAL | FUNCTION" mode="math">
+    <xsl:variable name="sign" as="element()"><xsl:choose>
+      <xsl:when test="self::FUNCTION"><m:mi>ƒ</m:mi></xsl:when>
+      <xsl:otherwise><m:mo largeop="true">{map{'SUM': '∑', 'PRODUCT': '∏', 'INTEGRAL': '∫'}(local-name())}</m:mo></xsl:otherwise>
+    </xsl:choose></xsl:variable>
     <xsl:variable name="under" as="element()"><m:mrow><xsl:sequence select="f:math(UNDER/node())"/></m:mrow></xsl:variable>
     <xsl:variable name="over" as="element()"><m:mrow><xsl:sequence select="f:math(OVER/node())"/></m:mrow></xsl:variable>
     <xsl:choose>

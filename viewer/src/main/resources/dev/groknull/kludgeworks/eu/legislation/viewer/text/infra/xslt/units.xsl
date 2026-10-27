@@ -37,7 +37,7 @@
         or self::PREAMBLE.INIT or self::PREAMBLE.FINAL or self::GR.CONSID.INIT or self::ENACTING.TERMS or self::FINAL
         or self::TITLE or self::TOC or self::OLD.CORR or self::NEW.CORR or self::DESCRIPTION
         or self::SIGNATURE or self::PL.DATE or self::SIGNATORY or self::DLIST.ITEM or self::ADDR.S or self::LOC.NOTES
-        or self::AGR or self::ACT or self::GR.VISA.INIT or self::SUBDIV or self::GENERAL])"/>
+        or self::AGR or self::ACT or self::GR.VISA.INIT or self::SUBDIV or self::GENERAL or self::PREAMBLE.GEN or self::CONS.DOC.GEN])"/>
   </xsl:function>
 
   <xsl:template name="f:blocks">
@@ -72,9 +72,17 @@
   <!-- inline content of several lines (a heading of two P), joined by <eol/> -->
   <xsl:template name="f:lines">
     <xsl:param name="lines" as="element()*"/>
+    <!-- keep an NP line's number; f:title doesn't, having made it the num -->
+    <xsl:param name="numbers" as="xs:boolean" select="false()"/>
     <xsl:for-each select="$lines">
       <xsl:if test="position() gt 1">
         <eol/>
+      </xsl:if>
+      <xsl:if test="$numbers and self::NP">
+        <xsl:call-template name="f:inlines">
+          <xsl:with-param name="nodes" select="NO.P/node()"/>
+        </xsl:call-template>
+        <t v=" "/>
       </xsl:if>
       <xsl:call-template name="f:inlines">
         <xsl:with-param name="nodes" select="if (self::NP) then TXT/node() else node()"/>
@@ -209,12 +217,13 @@
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="division" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="inAttachment" as="xs:boolean" select="false()" tunnel="yes"/>
     <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="line" select="TITLE/TI/*[1]"/>
     <xsl:variable name="label" select="((if ($line/self::NP) then f:label($line/NO.P) else f:label-after-word($line))[. != ''],
                                         string(count(preceding-sibling::DIVISION) + 1))[1]"/>
     <!-- in an annex or a quoted structure, articles and divisions hang off the enclosing unit -->
-    <xsl:variable name="outer" select="if (ancestor::*[self::CONS.ANNEX or self::ANNEX or self::QUOT.S]) then $base else ()"/>
+    <xsl:variable name="outer" select="if ($inAttachment or ancestor::*[self::CONS.ANNEX or self::ANNEX or self::QUOT.S]) then $base else ()"/>
     <xsl:variable name="eid" select="f:eid(($division, $outer)[1], 'dvs', $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="division">
@@ -327,7 +336,7 @@
     <xsl:sequence select="$e/ancestor::*[self::ITEM or self::ARTICLE or self::PARAG or self::ALINEA or self::GR.SEQ
         or self::DLIST.ITEM or self::CONS.ANNEX or self::ANNEX or self::QUOT.S or self::TBL or self::CONSID
         or self::VISA or self::NOTE or self::DIVISION or self::CORRECTION or self::OLD.CORR or self::NEW.CORR
-        or self::LETTER or self::SUBDIV][1]"/>
+        or self::CONS.DOC.GEN[parent::CONS.DOC.GEN] or self::LETTER or self::SUBDIV][1]"/>
   </xsl:function>
 
   <!-- points of a list hang off the enclosing unit; when it holds several lists (6.5.2 has two,
@@ -495,22 +504,24 @@
   </xsl:function>
 
   <!-- one annex, from one or more fragments ($fragments; a nested annex is its own fragment) -->
-  <xsl:template match="CONS.ANNEX | ANNEX" mode="block">
+  <xsl:template match="CONS.ANNEX | ANNEX | CONS.DOC.GEN[@TYPE = 'ANNEX'][parent::CONS.DOC.GEN]" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
+    <!-- the attachment whose annex this is: att_1/anx -->
+    <xsl:param name="annexBase" as="xs:string?" tunnel="yes"/>
     <xsl:param name="fragments" as="element()*" select="."/>
     <!-- top level: how many annexes the act has, this one's position, its first EUR-Lex anchor -->
     <xsl:param name="annexCount" as="xs:integer?"/>
     <xsl:param name="annexPosition" as="xs:integer?"/>
     <xsl:param name="anchor" as="xs:integer?"/>
     <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="nested" select="exists(parent::CONS.ANNEX)"/>
-    <xsl:variable name="position" select="($annexPosition, count(preceding-sibling::CONS.ANNEX) + 1)[1]"/>
+    <xsl:variable name="nested" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
+    <xsl:variable name="position" select="($annexPosition, count(preceding-sibling::*[self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) + 1)[1]"/>
     <xsl:variable name="label" select="(f:annex-label(.)[. != ''], string($position))[1]"/>
     <xsl:variable name="eid" select="
-        if (not($nested) and $annexCount = 1) then 'anx'
-        else f:eid(if ($nested) then $base else (), 'anx', $label)"/>
+        if (not($nested) and $annexCount = 1) then f:eid($annexBase, 'anx', ())
+        else f:eid(if ($nested) then $base else $annexBase, 'anx', $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="annex" eurlexAnchor="{($anchor, count(preceding::CONS.ANNEX | ancestor::CONS.ANNEX) + 1)[1]}">
         <xsl:sequence select="f:provenance($m)"/>
@@ -522,7 +533,7 @@
           <xsl:variable name="i" select="position()"/>
           <xsl:variable name="own" select="if (position() = 1) then () else f:new-markers(., ($ctx, f:ids($m)))"/>
           <xsl:call-template name="f:blocks">
-            <xsl:with-param name="nodes" select="CONTENTS/node(), CONS.ANNEX"/>
+            <xsl:with-param name="nodes" select="CONTENTS/node(), CONS.ANNEX, CONS.DOC.GEN"/>
             <xsl:with-param name="ctx" select="($ctx, f:ids(($m, $own)))" tunnel="yes"/>
             <xsl:with-param name="pending" select="$own" tunnel="yes"/>
             <xsl:with-param name="base" select="$eid" tunnel="yes"/>
@@ -592,7 +603,7 @@
   <xsl:function name="f:level-parent" as="element()?">
     <xsl:param name="seq" as="element(GR.SEQ)"/>
     <xsl:sequence select="$seq/ancestor::*[self::GR.SEQ or self::QUOT.S
-                                           or self::CONTENTS[parent::CONS.ANNEX or parent::ANNEX]][1]"/>
+                                           or self::CONTENTS[parent::CONS.ANNEX or parent::ANNEX or parent::CONS.DOC.GEN[parent::CONS.DOC.GEN]]][1]"/>
   </xsl:function>
 
   <xsl:function name="f:level-ordinal" as="xs:integer">
@@ -607,7 +618,8 @@
   <!-- the annex (group of fragments) or quoted structure a level's number belongs to -->
   <xsl:function name="f:level-scope" as="element()?">
     <xsl:param name="seq" as="element(GR.SEQ)"/>
-    <xsl:sequence select="$seq/ancestor::*[self::QUOT.S or self::CONS.ANNEX or self::ANNEX or self::TBL][1]"/>
+    <xsl:sequence select="$seq/ancestor::*[self::QUOT.S or self::CONS.ANNEX or self::ANNEX or self::TBL
+                                           or self::CONS.DOC.GEN[parent::CONS.DOC.GEN]][1]"/>
   </xsl:function>
 
   <!-- Numbered levels hang off the annex (anx/pnt_12.6.2), except
@@ -756,7 +768,9 @@
       </table>
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $table)"/>
-    <xsl:apply-templates select="GR.SEQ" mode="block"/>
+    <!-- what follows the rows: text blocks (GR.SEQ), the table's notes group (its notes are collected,
+         its annotations stay here); anything else fails -->
+    <xsl:apply-templates select="* except (TITLE, CORPUS)" mode="block"/>
   </xsl:template>
 
   <!-- tables that belong together under one title -->
@@ -828,19 +842,39 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:variable name="m" select="f:new-markers(., $ctx)"/>
     <rowGroup>
-      <xsl:for-each select="TI.BLK/NP">
-        <num>
-          <xsl:call-template name="f:inlines">
-            <xsl:with-param name="nodes" select="NO.P/node()"/>
-          </xsl:call-template>
-        </num>
-        <heading>
-          <xsl:call-template name="f:inlines">
-            <xsl:with-param name="nodes" select="TXT/node()"/>
-          </xsl:call-template>
-        </heading>
+      <!-- the title: a numbered paragraph gives num and heading, anything else the heading -->
+      <xsl:for-each select="TI.BLK">
+        <xsl:choose>
+          <xsl:when test="NP">
+            <num>
+              <xsl:call-template name="f:inlines">
+                <xsl:with-param name="nodes" select="NP/NO.P/node()"/>
+              </xsl:call-template>
+            </num>
+            <heading>
+              <xsl:call-template name="f:inlines">
+                <xsl:with-param name="nodes" select="NP/TXT/node()"/>
+              </xsl:call-template>
+            </heading>
+          </xsl:when>
+          <xsl:otherwise>
+            <heading>
+              <xsl:call-template name="f:inlines">
+                <xsl:with-param name="nodes" select="node()"/>
+              </xsl:call-template>
+            </heading>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:for-each>
-      <xsl:apply-templates select="ROW | BLK" mode="block">
+      <xsl:for-each select="STI.BLK">
+        <subheading>
+          <xsl:call-template name="f:inlines">
+            <xsl:with-param name="nodes" select="node()"/>
+          </xsl:call-template>
+        </subheading>
+      </xsl:for-each>
+      <!-- everything else: rows and nested groups; anything unexpected fails -->
+      <xsl:apply-templates select="* except (TI.BLK, STI.BLK)" mode="block">
         <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
         <xsl:with-param name="pending" select="$m" tunnel="yes"/>
       </xsl:apply-templates>
@@ -882,6 +916,7 @@
           <heading>
             <xsl:call-template name="f:lines">
               <xsl:with-param name="lines" select="TITLE/TI/*, TITLE/STI/*"/>
+              <xsl:with-param name="numbers" select="true()"/>
               <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
             </xsl:call-template>
           </heading>
@@ -896,17 +931,43 @@
     <xsl:sequence select="f:wrap-deleted($m, $annotation)"/>
   </xsl:template>
 
+  <!-- an image with its caption, and the transcription of its text (IMG.CNT) as its description -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'TIFF']" mode="block">
-    <figure src="{@FILEREF}"/>
+    <figure src="{@FILEREF}">
+      <xsl:sequence select="f:image-content(.)"/>
+      <xsl:if test="CAPTION">
+        <caption>
+          <xsl:call-template name="f:blocks">
+            <xsl:with-param name="nodes" select="CAPTION/node()"/>
+          </xsl:call-template>
+        </caption>
+      </xsl:if>
+      <xsl:if test="IMG.CNT">
+        <description>
+          <xsl:call-template name="f:blocks">
+            <xsl:with-param name="nodes" select="IMG.CNT/node()"/>
+          </xsl:call-template>
+        </description>
+      </xsl:if>
+    </figure>
   </xsl:template>
+
+  <!-- CONTENT="TECH.DESIGN" → content="tech-design" -->
+  <xsl:function name="f:image-content" as="attribute()?">
+    <xsl:param name="incl" as="element(INCL.ELEMENT)"/>
+    <xsl:if test="$incl/@CONTENT">
+      <xsl:attribute name="content" select="lower-case(replace($incl/@CONTENT, '\.', '-'))"/>
+    </xsl:if>
+  </xsl:function>
 
   <!-- another Formex file of the same package, included here: its content, in place -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'FORMEX.DOC']" mode="block">
     <xsl:variable name="included" select="doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
     <xsl:choose>
       <xsl:when test="$included/self::ANNEX">
+        <!-- its title ("ANNEX I") as paragraphs, then its content -->
         <xsl:call-template name="f:blocks">
-          <xsl:with-param name="nodes" select="$included/CONTENTS/node()"/>
+          <xsl:with-param name="nodes" select="$included/TITLE, $included/CONTENTS/node()"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
@@ -934,6 +995,98 @@
     <xsl:call-template name="f:blocks">
       <xsl:with-param name="nodes" select="node()"/>
     </xsl:call-template>
+  </xsl:template>
+
+  <!-- ============================================================ attachments -->
+
+  <xsl:mode name="attachment" on-no-match="fail"/>
+
+  <!-- a package entry other than an annex (DOC.SUB.PUB TYPE="ASSOCIATION": the agreement a decision
+       concludes, a protocol, a draft decision); its own annexes and attachments are its sub-entries -->
+  <xsl:template match="DOC.SUB.PUB" mode="attachment">
+    <xsl:param name="eid" as="xs:string"/>
+    <xsl:call-template name="f:attachment">
+      <xsl:with-param name="doc" select="REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/*"/>
+      <xsl:with-param name="eid" select="$eid"/>
+      <xsl:with-param name="annexes" select="DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/ANNEX"/>
+      <xsl:with-param name="attachments" select="DOC.SUB.PUB[not(@TYPE = 'ANNEX')]"/>
+      <xsl:with-param name="notePrefix" select="f:attachment-note-prefix(.)" tunnel="yes"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- a consolidation's related document (CONS.DOC.GEN TYPE ACT, GENERAL or OTH.ACT inside another);
+       its own annexes and attachments are the CONS.DOC.GEN inside it -->
+  <xsl:template match="CONS.DOC.GEN" mode="attachment">
+    <xsl:param name="eid" as="xs:string"/>
+    <xsl:call-template name="f:attachment">
+      <xsl:with-param name="doc" select="."/>
+      <xsl:with-param name="eid" select="$eid"/>
+      <xsl:with-param name="annexes" select="CONS.DOC.GEN[@TYPE = 'ANNEX']"/>
+      <xsl:with-param name="attachments" select="CONS.DOC.GEN[not(@TYPE = 'ANNEX')]"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- a related document met inside an annex of a consolidation -->
+  <xsl:template match="CONS.DOC.GEN" mode="block">
+    <xsl:param name="base" as="xs:string?" tunnel="yes"/>
+    <xsl:apply-templates select="." mode="attachment">
+      <xsl:with-param name="eid" select="f:eid($base, 'att', string(count(preceding-sibling::CONS.DOC.GEN[not(@TYPE = 'ANNEX')]) + 1))"/>
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <!-- note eIds of an attached document in a file of its own: note_att01000301-1 -->
+  <xsl:function name="f:attachment-note-prefix" as="xs:string">
+    <xsl:param name="entry" as="element(DOC.SUB.PUB)"/>
+    <xsl:sequence select="'att' || f:file-seq($entry/REF.PHYS/@FILE) || '-'"/>
+  </xsl:function>
+
+  <!-- an attached document: unit kind="attachment" (AKN's attachment), its title as heading, then
+       its text, with its articles, annexes and attachments under it (att_1/art_1, att_1/anx) -->
+  <xsl:template name="f:attachment">
+    <xsl:param name="doc" as="element()"/>
+    <xsl:param name="eid" as="xs:string"/>
+    <xsl:param name="annexes" as="element()*"/>
+    <xsl:param name="attachments" as="element()*"/>
+    <unit eId="{$eid}" kind="attachment">
+      <xsl:if test="$doc/TITLE">
+        <heading>
+          <xsl:call-template name="f:lines">
+            <xsl:with-param name="lines" select="$doc/TITLE/TI/*, $doc/TITLE/STI/*"/>
+            <xsl:with-param name="numbers" select="true()"/>
+          </xsl:call-template>
+        </heading>
+      </xsl:if>
+      <xsl:call-template name="f:blocks">
+        <xsl:with-param name="nodes" select="$doc/(node() except (BIB.INSTANCE | TITLE | TOC | CONS.DOC.GEN))"/>
+        <xsl:with-param name="ctx" select="()" tunnel="yes"/>
+        <xsl:with-param name="pending" select="()" tunnel="yes"/>
+        <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+        <xsl:with-param name="division" select="()" tunnel="yes"/>
+        <xsl:with-param name="inAttachment" select="true()" tunnel="yes"/>
+        <xsl:with-param name="levelBase" select="$eid" tunnel="yes"/>
+        <xsl:with-param name="levelCtx" select="()" tunnel="yes"/>
+        <xsl:with-param name="parentLevel" select="()" tunnel="yes"/>
+      </xsl:call-template>
+      <xsl:variable name="groups" select="f:annex-groups($annexes)"/>
+      <xsl:for-each select="$groups">
+        <xsl:variable name="fragments" select="?*"/>
+        <xsl:apply-templates select="$fragments[1]" mode="block">
+          <xsl:with-param name="fragments" select="$fragments"/>
+          <xsl:with-param name="annexCount" select="count($groups)"/>
+          <xsl:with-param name="annexPosition" select="position()"/>
+          <xsl:with-param name="ctx" select="()" tunnel="yes"/>
+          <xsl:with-param name="pending" select="()" tunnel="yes"/>
+          <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="annexBase" select="$eid" tunnel="yes"/>
+        </xsl:apply-templates>
+      </xsl:for-each>
+      <xsl:for-each select="$attachments">
+        <xsl:apply-templates select="." mode="attachment">
+          <xsl:with-param name="eid" select="f:eid($eid, 'att', string(position()))"/>
+          <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+        </xsl:apply-templates>
+      </xsl:for-each>
+    </unit>
   </xsl:template>
 
   <!-- ============================================================ corrigenda, letters, embedded documents -->
@@ -975,13 +1128,11 @@
   <xsl:template match="LETTER" mode="block">
     <xsl:variable name="eid" select="'let_' || (count(preceding-sibling::LETTER) + 1)"/>
     <unit eId="{$eid}" kind="letter">
-      <xsl:if test="TITLE">
-        <heading>
-          <xsl:call-template name="f:lines">
-            <xsl:with-param name="lines" select="TITLE/TI/*, TITLE/STI/*"/>
-          </xsl:call-template>
-        </heading>
-      </xsl:if>
+      <!-- "A. Letter from the European Union": A. is the num -->
+      <xsl:call-template name="f:title">
+        <xsl:with-param name="title" select="TITLE"/>
+        <xsl:with-param name="num-first-line" select="false()"/>
+      </xsl:call-template>
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" select="node() except TITLE"/>
         <xsl:with-param name="base" select="$eid" tunnel="yes"/>
@@ -991,7 +1142,7 @@
 
   <!-- the parts of an act met inside another document's content (CONS.OTH, letters): their text,
        in order, as blocks -->
-  <xsl:template match="ACT.GEN | PREAMBLE | GR.VISA | GR.CONSID | CONSID | VISA | PREAMBLE.INIT | PREAMBLE.FINAL
+  <xsl:template match="ACT.GEN | PREAMBLE | PREAMBLE.GEN | GR.VISA | GR.CONSID | CONSID | VISA | PREAMBLE.INIT | PREAMBLE.FINAL
                        | GR.CONSID.INIT | GR.VISA.INIT | ENACTING.TERMS | FINAL | SIGNATURE | PL.DATE | SIGNATORY" mode="block">
     <xsl:call-template name="f:blocks">
       <xsl:with-param name="nodes" select="node()"/>
@@ -1016,8 +1167,13 @@
   <!-- a table of contents is navigation the reader builds from the units; not text -->
   <xsl:template match="TOC" mode="block"/>
 
-  <!-- notes are collected at the end of the document -->
-  <xsl:template match="GR.NOTES" mode="block"/>
+  <!-- notes are collected at the end of the document; what else a group of notes holds (a title,
+       annotations such as "EASA Form 138 – Issue 3") stays here -->
+  <xsl:template match="GR.NOTES" mode="block">
+    <xsl:call-template name="f:blocks">
+      <xsl:with-param name="nodes" select="node() except NOTE"/>
+    </xsl:call-template>
+  </xsl:template>
 
   <xsl:template match="processing-instruction() | comment()" mode="block"/>
 
