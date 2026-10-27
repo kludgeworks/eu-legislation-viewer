@@ -1,0 +1,2 @@
+# Raw Formex as Cellar serves it: never convert line endings
+src/test/resources/fixtures/** -text

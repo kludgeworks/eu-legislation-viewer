@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!--
+  legal-text 1.0: the normalised form of an EU legal text, produced from Formex by normalise.xsl.
+
+  Rules, so that xjc generates clean classes:
+  - one named type per element; families share an abstract base (Block, InlineNode);
+  - a choice only ever offers elements of one family, each with its own type;
+  - no character data mixed with elements: text is always <t v="…"/>;
+  - names come from AKN4EU (unit kinds, eIds), but this is not AKN.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           targetNamespace="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           elementFormDefault="qualified" version="1.0">
+
+  <!-- ============================================================ document -->
+
+  <!-- eIds are unique among live units; a deleted placeholder keeps the eId it had, which a later
+       insertion may reuse (2015/1998: point 6.1.3 deleted by 2019/103, a new 6.1.3 inserted by
+       2022/1174). XSD 1.0 can't exclude the placeholders, so the tests check uniqueness. -->
+  <xs:element name="legalText" type="LegalText"/>
+
+  <xs:complexType name="LegalText">
+    <xs:sequence>
+      <xs:element name="source" type="Source"/>
+      <xs:element name="lifecycle" type="Lifecycle" minOccurs="0"/>
+      <xs:element name="preface" type="Preface" minOccurs="0"/>
+      <xs:element name="preamble" type="Preamble" minOccurs="0"/>
+      <xs:element name="body" type="Body"/>
+      <xs:element name="conclusions" type="Conclusions" minOccurs="0"/>
+      <xs:element name="annexes" type="Annexes" minOccurs="0"/>
+      <xs:element name="notes" type="Notes" minOccurs="0"/>
+    </xs:sequence>
+    <!-- the act's CELEX number, e.g. 32015R1998 -->
+    <xs:attribute name="act" type="Celex" use="required"/>
+    <xs:attribute name="kind" type="DocumentKind" use="required"/>
+    <!-- a consolidated version's start date; absent for the original OJ text -->
+    <xs:attribute name="version" type="xs:date"/>
+    <xs:attribute name="lang" type="xs:language" use="required"/>
+    <xs:attribute name="formexVersion" type="xs:string" use="required"/>
+    <xs:attribute name="normaliser" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:simpleType name="DocumentKind">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="original"/>
+      <xs:enumeration value="consolidated"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Celex">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]+(-[0-9]{8})?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================================ metadata -->
+
+  <xs:complexType name="Source">
+    <xs:sequence>
+      <xs:element name="publication" type="Publication" minOccurs="0"/>
+    </xs:sequence>
+    <!-- the CELEX number of this document: 02015R1998-20260322, or 32015R1998 for the original -->
+    <xs:attribute name="celex" type="Celex" use="required"/>
+    <xs:attribute name="eli" type="xs:anyURI"/>
+  </xs:complexType>
+
+  <!-- where the act was published in the Official Journal -->
+  <xs:complexType name="Publication">
+    <xs:attribute name="series" type="xs:string" use="required"/>
+    <xs:attribute name="number" type="xs:string"/>
+    <xs:attribute name="date" type="xs:date"/>
+    <xs:attribute name="page" type="xs:string"/>
+  </xs:complexType>
+
+  <!-- consolidation information (INFO.CONSLEG) and the acts it integrates (GR.MOD.ACT, GR.CORRIG) -->
+  <xs:complexType name="Lifecycle">
+    <xs:sequence>
+      <xs:element name="eventRef" type="EventRef" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="start" type="xs:date"/>
+    <xs:attribute name="end" type="xs:date"/>
+    <xs:attribute name="produced" type="xs:date"/>
+    <xs:attribute name="sequence" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="EventRef">
+    <xs:attribute name="type" type="EventType" use="required"/>
+    <xs:attribute name="act" type="Celex" use="required"/>
+    <xs:attribute name="date" type="xs:date"/>
+  </xs:complexType>
+
+  <xs:simpleType name="EventType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="amendment"/>
+      <xs:enumeration value="corrigendum"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================================ preface, preamble, conclusions -->
+
+  <xs:complexType name="Preface">
+    <xs:sequence>
+      <xs:element name="longTitle" type="LongTitle"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LongTitle">
+    <xs:sequence>
+      <xs:element name="p" type="Paragraph" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Preamble">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="formula" type="Formula"/>
+      <xs:element name="citations" type="Citations"/>
+      <xs:element name="recitals" type="Recitals"/>
+    </xs:choice>
+    <xs:attribute name="eId" type="EId" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="Formula">
+    <xs:sequence>
+      <xs:element name="p" type="Paragraph" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="FormulaName" use="required"/>
+  </xs:complexType>
+
+  <xs:simpleType name="FormulaName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="actingEntity"/>
+      <xs:enumeration value="enactingFormula"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Citations">
+    <xs:sequence>
+      <xs:element name="unit" type="Unit" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Recitals">
+    <xs:sequence>
+      <xs:element name="intro" type="Intro" minOccurs="0"/>
+      <xs:element name="unit" type="Unit" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Intro">
+    <xs:sequence>
+      <xs:element name="p" type="Paragraph" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Body">
+    <xs:sequence>
+      <xs:element name="unit" type="Unit" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Annexes">
+    <xs:sequence>
+      <xs:element name="unit" type="Unit" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Conclusions">
+    <xs:sequence>
+      <xs:element name="p" type="Paragraph" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="signature" type="Signature" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Signature">
+    <xs:sequence>
+      <!-- "Done at Brussels, 5 November 2015.": the date is typed, the place stays text -->
+      <xs:element name="placeAndDate" type="InlineContent" minOccurs="0"/>
+      <xs:element name="signatory" type="Signatory" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Signatory">
+    <xs:sequence>
+      <xs:element name="organization" type="InlineContent" minOccurs="0"/>
+      <xs:element name="role" type="InlineContent" minOccurs="0"/>
+      <xs:element name="person" type="InlineContent" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Notes">
+    <xs:sequence>
+      <xs:element name="note" type="Note" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Note">
+    <xs:group ref="blocks"/>
+    <xs:attribute name="eId" type="EId" use="required"/>
+    <!-- as printed: "2", "*" -->
+    <xs:attribute name="marker" type="xs:string" use="required"/>
+    <xs:attribute name="kind" type="NoteKind" use="required"/>
+  </xs:complexType>
+
+  <xs:simpleType name="NoteKind">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="footnote"/>
+      <xs:enumeration value="table"/>
+      <xs:enumeration value="quotation"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================================ units -->
+
+  <!-- one element for every level of the hierarchy; what it is comes from kind -->
+  <xs:complexType name="Unit">
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="num" type="InlineContent" minOccurs="0"/>
+          <xs:element name="heading" type="InlineContent" minOccurs="0"/>
+          <xs:element name="subheading" type="InlineContent" minOccurs="0"/>
+          <xs:group ref="blocks"/>
+        </xs:sequence>
+        <xs:attribute name="eId" type="EId" use="required"/>
+        <xs:attribute name="kind" type="UnitKind" use="required"/>
+        <!-- annex levels are flat (1.2.2.6 is a sibling of 1.2.2); depth keeps Formex's LEVEL -->
+        <xs:attribute name="depth" type="xs:positiveInteger"/>
+        <!-- boxed text (GR.SEQ BOX="YES") -->
+        <xs:attribute name="box" type="xs:boolean"/>
+        <!-- annexes only: position among all annexes in document order, EUR-Lex's #anx_N anchor -->
+        <xs:attribute name="eurlexAnchor" type="xs:positiveInteger"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="UnitKind">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="article"/>
+      <xs:enumeration value="paragraph"/>
+      <xs:enumeration value="subparagraph"/>
+      <xs:enumeration value="point"/>
+      <xs:enumeration value="indent"/>
+      <xs:enumeration value="definition"/>
+      <xs:enumeration value="level"/>
+      <xs:enumeration value="annex"/>
+      <xs:enumeration value="citation"/>
+      <xs:enumeration value="recital"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- AKN4EU-style identifier: segments joined by "/" (art_3/par_2/pnt_a, anx/pnt_1.2.2.6) -->
+  <xs:simpleType name="EId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-z]+(_[A-Za-z0-9._\-]+)?(/[a-z]+(_[A-Za-z0-9._\-]+)?)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================================ blocks -->
+
+  <xs:complexType name="Block" abstract="true"/>
+
+  <xs:group name="blocks">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="p" type="Paragraph"/>
+        <xs:element name="list" type="ListBlock"/>
+        <xs:element name="table" type="Table"/>
+        <xs:element name="unit" type="Unit"/>
+        <xs:element name="quotedStructure" type="QuotedStructure"/>
+        <xs:element name="annotation" type="Annotation"/>
+        <xs:element name="figure" type="Figure"/>
+        <xs:element name="deleted" type="DeletedBlock"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="Paragraph">
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded"/>
+          <!-- a numbered paragraph outside the hierarchy, e.g. in a table cell -->
+          <xs:element name="num" type="InlineContent" minOccurs="0"/>
+          <xs:group ref="inline"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ListBlock">
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element name="unit" type="Unit"/>
+            <xs:element name="deleted" type="DeletedBlock"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="kind" type="ListKind" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="ListKind">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="arabic"/>
+      <xs:enumeration value="alpha"/>
+      <xs:enumeration value="alpha-upper"/>
+      <xs:enumeration value="roman"/>
+      <xs:enumeration value="roman-upper"/>
+      <xs:enumeration value="dash"/>
+      <xs:enumeration value="ndash"/>
+      <xs:enumeration value="bullet"/>
+      <xs:enumeration value="none"/>
+      <xs:enumeration value="other"/>
+      <xs:enumeration value="definition"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Table">
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="caption" type="Caption" minOccurs="0"/>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element name="tr" type="Row"/>
+            <xs:element name="rowGroup" type="RowGroup"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="cols" type="xs:positiveInteger"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Caption">
+    <xs:sequence>
+      <xs:element name="p" type="Paragraph" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- a group of rows under a heading row (Formex BLK / TI.BLK); no AKN equivalent -->
+  <xs:complexType name="RowGroup">
+    <xs:sequence>
+      <xs:element name="num" type="InlineContent" minOccurs="0"/>
+      <xs:element name="heading" type="InlineContent" minOccurs="0"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tr" type="Row"/>
+        <xs:element name="rowGroup" type="RowGroup"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Row">
+    <xs:sequence>
+      <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="td" type="Cell" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="header" type="xs:boolean" default="false"/>
+  </xs:complexType>
+
+  <xs:complexType name="Cell">
+    <xs:group ref="blocks"/>
+    <xs:attribute name="colspan" type="xs:positiveInteger"/>
+    <xs:attribute name="rowspan" type="xs:positiveInteger"/>
+    <xs:attribute name="header" type="xs:boolean" default="false"/>
+  </xs:complexType>
+
+  <!-- the units an amending act inserts or substitutes (Formex QUOT.S) -->
+  <xs:complexType name="QuotedStructure">
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:group ref="blocks"/>
+        <xs:attribute name="eId" type="EId" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- "NOTES:" boxes and form captions (Formex ANNOTATION, GR.ANNOTATION) -->
+  <xs:complexType name="Annotation">
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="heading" type="InlineContent" minOccurs="0"/>
+          <xs:group ref="blocks"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Figure">
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:attribute name="src" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- content a consolidation keeps although an amendment deleted it: never live text -->
+  <xs:complexType name="DeletedBlock">
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" maxOccurs="unbounded"/>
+          <xs:group ref="blocks"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- ============================================================ provenance -->
+
+  <!-- which amending act put this unit or block in its current form (Formex CLG.MDFO) -->
+  <xs:complexType name="Provenance">
+    <xs:attributeGroup ref="amendment"/>
+  </xs:complexType>
+
+  <xs:attributeGroup name="amendment">
+    <xs:attribute name="amendingAct" type="Celex" use="required"/>
+    <xs:attribute name="action" type="Action" use="required"/>
+    <!-- where in the amending act, as Formex writes it: "AR:1 .AND. AX:0;PT:27" -->
+    <xs:attribute name="location" type="xs:string"/>
+    <!-- the Formex marker id; pieces of one marker split at element boundaries share it -->
+    <xs:attribute name="marker" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:simpleType name="Action">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="replaced"/>
+      <xs:enumeration value="inserted"/>
+      <xs:enumeration value="deleted"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================================ inline -->
+
+  <xs:complexType name="InlineContent">
+    <xs:group ref="inline"/>
+  </xs:complexType>
+
+  <xs:group name="inline">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="t" type="Text"/>
+        <xs:element name="emphasis" type="Emphasis"/>
+        <xs:element name="date" type="DateRef"/>
+        <xs:element name="quote" type="Quote"/>
+        <xs:element name="noteRef" type="NoteRef"/>
+        <xs:element name="ref" type="Ref"/>
+        <xs:element name="eol" type="Eol"/>
+        <xs:element name="changed" type="Changed"/>
+        <xs:element name="deleted" type="DeletedInline"/>
+        <xs:element name="docType" type="DocType"/>
+        <xs:element name="docNumber" type="DocNumber"/>
+        <xs:element name="docDate" type="DocDate"/>
+        <xs:element name="docPurpose" type="DocPurpose"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="InlineNode" abstract="true"/>
+
+  <xs:complexType name="Text">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:attribute name="v" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Emphasis">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+        <xs:attribute name="kind" type="EmphasisKind" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="EmphasisKind">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="b"/>
+      <xs:enumeration value="i"/>
+      <xs:enumeration value="u"/>
+      <xs:enumeration value="sup"/>
+      <xs:enumeration value="sub"/>
+      <xs:enumeration value="uc"/>
+      <xs:enumeration value="sc"/>
+      <xs:enumeration value="expanded"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="DateRef">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:attributeGroup ref="date"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:attributeGroup name="date">
+    <xs:attribute name="date" type="xs:date" use="required"/>
+    <xs:attribute name="asWritten" type="xs:string" use="required"/>
+    <!-- set only by joining with Cellar's dates, never from the wording -->
+    <xs:attribute name="role" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="Quote">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+        <xs:attribute name="startQuote" type="xs:string" use="required"/>
+        <xs:attribute name="endQuote" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="NoteRef">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:attribute name="href" type="xs:string" use="required"/>
+        <xs:attribute name="marker" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Ref">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+        <xs:attribute name="kind" type="RefKind" use="required"/>
+        <xs:attribute name="href" type="xs:anyURI"/>
+        <!-- an Official Journal reference: series, number, date, first page -->
+        <xs:attribute name="series" type="xs:string"/>
+        <xs:attribute name="number" type="xs:string"/>
+        <xs:attribute name="date" type="xs:date"/>
+        <xs:attribute name="page" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="RefKind">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="oj"/>
+      <xs:enumeration value="uri"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Eol">
+    <xs:complexContent>
+      <xs:extension base="InlineNode"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- a text-level amendment (Formex CLG.MDFO LEVEL="TEXT") -->
+  <xs:complexType name="Changed">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+        <xs:attributeGroup ref="amendment"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DeletedInline">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+        <xs:attributeGroup ref="amendment"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- parts of the long title -->
+  <xs:complexType name="DocType">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DocNumber">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DocDate">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:attributeGroup ref="date"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DocPurpose">
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:schema>

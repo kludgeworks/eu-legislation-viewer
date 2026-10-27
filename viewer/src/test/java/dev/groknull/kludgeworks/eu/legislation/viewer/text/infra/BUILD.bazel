@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
+
+java_junit5_test(
+    name = "NormaliserFixturesTest",
+    size = "medium",
+    srcs = ["NormaliserFixturesTest.java"],
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.NormaliserFixturesTest",
+    data = [
+        "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:legal-text.xsd",
+        "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt",
+        "//src/test/resources/fixtures/formex",
+    ],
+    deps = [
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+)

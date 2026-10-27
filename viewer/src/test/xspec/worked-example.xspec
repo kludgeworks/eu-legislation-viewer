@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!-- The worked example (Notion: "Worked example: 2015/1998 source to target"), on the real files:
+     the consolidated version of 22 March 2026 and the original OJ act. -->
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/normalise.xsl">
+
+  <!-- for the OJ act; the consolidation carries its own -->
+  <x:param name="celex" select="'32015R1998'"/>
+
+  <x:scenario label="02015R1998-20260322 (Formex 06.02.1)">
+    <x:context href="../resources/fixtures/formex/06.02.1/02015R1998-20260322/CL2015R1998EN0230010.0001.xml"/>
+
+    <x:expect label="1. header" test="
+        $x:result/@act = '32015R1998' and $x:result/@version = '2026-03-22' and $x:result/@formexVersion = '06.02.1'
+        and $x:result/*:source/@celex = '02015R1998-20260322'
+        and $x:result/*:source/*:publication/@number = '299'
+        and $x:result/*:lifecycle/*:eventRef[1]/@act = '32015R2426'
+        and $x:result/*:lifecycle/*:eventRef[last()]/@act = '32026R0449'"/>
+
+    <x:expect label="3. Article 3: two unnumbered paragraphs, the second with its date" test="
+        $x:result//*:unit[@eId = 'art_3']/*:unit/@eId = ('art_3/unp_1', 'art_3/unp_2')
+        and $x:result//*:unit[@eId = 'art_3/unp_2']/*:p/*:date/@date = '2016-02-01'"/>
+
+    <x:expect label="4. point 1.0.2: a quote" test="
+        $x:result//*:unit[@eId = 'anx/pnt_1.0.2']/*:p[2]/*:quote[@startQuote = '‘']/*:t/@v = 'secured baggage'"/>
+
+    <x:expect label="4. point 1.0.3: replaced by 2017/815" test="
+        $x:result//*:unit[@eId = 'anx/pnt_1.0.3']/*:provenance/@amendingAct = '32017R0815'"/>
+
+    <!-- the source writes dates with a non-breaking space after the day -->
+    <x:expect label="5. point 12.6.2: three acts, at three levels" test="$x:result//*:unit[@eId = 'anx/pnt_12.6.2']">
+      <unit eId="anx/pnt_12.6.2" kind="level" depth="4">
+        <provenance amendingAct="32023R0566" action="replaced" location="AR:1 .AND. AX:0;PT:19" marker="O018001M025000"/>
+        <num><t v="12.6.2"/></num>
+        <p><t v="The standard for ETD equipment for the detection of explosives, that uses particulate sampling, shall apply to ETD equipment deployed from "/><date date="2014-09-01" asWritten="1&#160;September 2014"/><t v="."/></p>
+        <p><provenance amendingAct="32024R1255" action="replaced" location="AR:1 .AND. AX:0;PT:19" marker="O019001M019000"/><t v="The standard for ETD equipment for the detection of chemicals, that uses particulate sampling, shall apply as of "/><changed amendingAct="32026R0449" action="replaced" location="AR:1 .AND. AX:0;PT:27" marker="O023001M025000"><date date="2026-12-31" asWritten="31&#160;December 2026"/></changed><t v=" to ETD equipment deployed from "/><date date="2014-09-01" asWritten="1&#160;September 2014"/><t v="."/></p>
+      </unit>
+    </x:expect>
+
+    <x:expect label="6. point 11.1.1: outer markers first, the deleted paragraph kept" test="
+        let $u := $x:result//*:unit[@eId = 'anx/pnt_11.1.1'][not(ancestor::*:deleted)]
+        return $u/*:provenance/@amendingAct = ('32019R0103', '32022R1174')
+           and $u/*:provenance[1]/@amendingAct = '32019R0103'
+           and $u/*:list/*:unit/@eId = ('anx/pnt_11.1.1/pnt_a', 'anx/pnt_11.1.1/pnt_d')
+           and $u/*:deleted/*:provenance/@amendingAct = '32026R0449'
+           and $u/*:deleted/*:p/*:date/@date = '2023-01-01'"/>
+
+    <x:expect label="7. a consolidation has no signature" test="empty($x:result/*:conclusions/*:signature)"/>
+
+    <x:expect label="the annex fragments are one annex" test="count($x:result/*:annexes/*:unit) = 1 and $x:result/*:annexes/*:unit/@eId = 'anx'"/>
+  </x:scenario>
+
+  <x:scenario label="32015R1998, the original OJ act (Formex 05.55, a package of six files)">
+    <x:context href="../resources/fixtures/formex/05.55/32015R1998/L_2015299EN.01000101.doc.xml"/>
+
+    <x:expect label="is the original text" test="$x:result/@kind = 'original' and $x:result/@formexVersion = '05.55'"/>
+    <x:expect label="1. publication from the package" test="
+        $x:result/*:source/*:publication/@series = 'L' and $x:result/*:source/*:publication/@number = '299'
+        and $x:result/*:source/*:publication/@date = '2015-11-14'"/>
+    <x:expect label="2. title" test="
+        $x:result/*:preface/*:longTitle/*:p[1]/*:docNumber/*:t/@v = '(EU) 2015/1998'
+        and $x:result/*:preface/*:longTitle/*:p[2]/*:docDate/@date = '2015-11-05'"/>
+    <x:expect label="2. recital (2) refers to footnote 2, as EUR-Lex prints it" test="
+        $x:result//*:unit[@eId = 'pbl_1/rct_2']//*:noteRef/@marker = '2'"/>
+    <x:expect label="2. footnote 2 keeps its OJ reference" test="
+        let $href := substring($x:result//*:unit[@eId = 'pbl_1/rct_2']//*:noteRef/@href, 2)
+        return $x:result/*:notes/*:note[@eId = $href]//*:ref[@kind = 'oj']/@date = '2015-03-17'"/>
+    <x:expect label="7. the closing block" test="$x:result/*:conclusions">
+      <conclusions>
+        <p><t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/></p>
+        <signature>
+          <placeAndDate><t v="Done at Brussels, "/><date date="2015-11-05" asWritten="5 November 2015"/><t v="."/></placeAndDate>
+          <signatory>
+            <organization><emphasis kind="i"><t v="For the Commission"/></emphasis></organization>
+            <role><emphasis kind="i"><t v="The President"/></emphasis></role>
+            <person><t v="Jean-Claude "/><emphasis kind="uc"><t v="Juncker"/></emphasis></person>
+          </signatory>
+        </signature>
+      </conclusions>
+    </x:expect>
+    <x:expect label="the four annex files are one annex" test="count($x:result/*:annexes/*:unit) = 1 and $x:result//*:unit/@eId = 'anx/pnt_12.6.2'"/>
+  </x:scenario>
+
+</x:description>

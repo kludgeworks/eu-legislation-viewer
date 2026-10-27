@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!-- Amendment markers (<?CLG.MDFO?> … <?CLG.MDFC?>) → provenance, changed and deleted -->
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/normalise.xsl">
+
+  <x:scenario label="A marker around a paragraph">
+    <x:context mode="block" xmlns="">
+      <GR.SEQ LEVEL="3"><NO.GR.SEQ>1.0.3</NO.GR.SEQ><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" LEVEL="STRUCTURE" ACTIVE.DOC="32017R0815" ACTIVE.LOC="AR:1 .AND. AX:0;PT:1"?><P>new text</P><?CLG.MDFC ID="C1" IDREF="O1"?><P>old text</P></GR.SEQ>
+    </x:context>
+    <x:expect label="becomes provenance on that paragraph only">
+      <unit eId="pnt_1.0.3" kind="level" depth="3"><num><t v="1.0.3"/></num>
+        <p><provenance amendingAct="32017R0815" action="replaced" location="AR:1 .AND. AX:0;PT:1" marker="O1"/><t v="new text"/></p>
+        <p><t v="old text"/></p>
+      </unit>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A marker before a unit">
+    <x:context mode="block" xmlns="">
+      <LIST TYPE="alpha"><?CLG.MDFO ID="O1" IDREF="C1" ACTION="INSERTED" ACTIVE.DOC="32026R0449" ACTIVE.LOC="AR:1"?><ITEM><NP><NO.P>(a)</NO.P><TXT>staff and crew;</TXT></NP></ITEM><?CLG.MDFC ID="C1" IDREF="O1"?></LIST>
+    </x:context>
+    <x:expect label="is the unit's provenance, and its text has none"
+              test="$x:result/*:unit/*:provenance/@action = 'inserted' and empty($x:result/*:unit/*:p/*:provenance)"/>
+  </x:scenario>
+
+  <x:scenario label="Markers nested three deep (point 12.6.2)">
+    <x:context mode="block" xmlns="">
+      <CONTENTS>
+        <?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" ACTIVE.DOC="32023R0566" ACTIVE.LOC="PT:19"?><GR.SEQ LEVEL="4"><NO.GR.SEQ>12.6.2</NO.GR.SEQ><P>The standard for explosives applies.</P><?CLG.MDFO ID="O2" IDREF="C2" ACTION="REPLACED" ACTIVE.DOC="32024R1255" ACTIVE.LOC="PT:19"?><P>It shall apply as of <?CLG.MDFO ID="O3" IDREF="C3" ACTION="REPLACED" LEVEL="TEXT" ACTIVE.DOC="32026R0449" ACTIVE.LOC="PT:27"?><DATE ISO="20261231">31 December 2026</DATE><?CLG.MDFC ID="C3" IDREF="O3"?> to equipment.</P><?CLG.MDFC ID="C2" IDREF="O2"?></GR.SEQ><?CLG.MDFC ID="C1" IDREF="O1"?>
+      </CONTENTS>
+    </x:context>
+    <x:expect label="unit: the act that replaced the point" test="$x:result/self::*:unit/*:provenance/@amendingAct = '32023R0566'"/>
+    <x:expect label="block: the act that replaced the paragraph" test="$x:result/self::*:unit/*:p[2]/*:provenance/@amendingAct = '32024R1255'"/>
+    <x:expect label="inline: the act that replaced the date"
+              test="$x:result/self::*:unit/*:p[2]/*:changed[@amendingAct = '32026R0449']/*:date/@date = '2026-12-31'"/>
+    <x:expect label="the first paragraph carries no provenance of its own" test="empty($x:result/self::*:unit/*:p[1]/*:provenance)"/>
+  </x:scenario>
+
+  <x:scenario label="A marker around all the text of a paragraph">
+    <x:context mode="block" xmlns=""><P><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" LEVEL="TEXT" ACTIVE.DOC="32022R1174" ACTIVE.LOC="PT:30"?>Airport supplies shall be screened<?CLG.MDFC ID="C1" IDREF="O1"?></P></x:context>
+    <x:expect label="is the paragraph's provenance, not a span">
+      <p><provenance amendingAct="32022R1174" action="replaced" location="PT:30" marker="O1"/><t v="Airport supplies shall be screened"/></p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A marker across element boundaries">
+    <x:context mode="block" xmlns="">
+      <GR.SEQ LEVEL="3"><NO.GR.SEQ>1.1</NO.GR.SEQ><P>keep <?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" LEVEL="TEXT" ACTIVE.DOC="32019R0103" ACTIVE.LOC="PT:2"?>end of one</P><P>start of next<?CLG.MDFC ID="C1" IDREF="O1"?> keep</P></GR.SEQ>
+    </x:context>
+    <x:expect label="is split into pieces with the same marker id"
+              test="count($x:result//*:changed[@marker = 'O1']) = 2"/>
+    <x:expect label="the first piece is the end of the first paragraph" test="$x:result/*:p[1]/*:changed/*:t/@v = 'end of one'"/>
+    <x:expect label="the second piece is the start of the next" test="$x:result/*:p[2]/*:changed/*:t/@v = 'start of next'"/>
+  </x:scenario>
+
+  <x:scenario label="A deleted paragraph (point 11.1.1)">
+    <x:context mode="block" xmlns="">
+      <GR.SEQ LEVEL="4"><NO.GR.SEQ>11.1.1</NO.GR.SEQ><P>The following personnel</P><?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" LEVEL="STRUCTURE" ACTIVE.DOC="32026R0449" ACTIVE.LOC="PT:23"?><P>Point (b) shall apply from <DATE ISO="20230101">1 January 2023</DATE>.</P><?CLG.MDFC ID="C1" IDREF="O1"?></GR.SEQ>
+    </x:context>
+    <x:expect label="is kept inside deleted, with the deleting act">
+      <unit eId="pnt_11.1.1" kind="level" depth="4"><num><t v="11.1.1"/></num>
+        <p><t v="The following personnel"/></p>
+        <deleted><provenance amendingAct="32026R0449" action="deleted" location="PT:23" marker="O1"/>
+          <p><t v="Point (b) shall apply from "/><date date="2023-01-01" asWritten="1 January 2023"/><t v="."/></p></deleted>
+      </unit>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="Deleted words">
+    <x:context mode="block" xmlns=""><P>points (a), <?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" LEVEL="TEXT" ACTIVE.DOC="32019R0103" ACTIVE.LOC="PT:5"?>and <?CLG.MDFC ID="C1" IDREF="O1"?>(b)</P></x:context>
+    <x:expect label="become an inline deleted span">
+      <p><t v="points (a), "/><deleted amendingAct="32019R0103" action="deleted" location="PT:5" marker="O1"><t v="and "/></deleted><t v="(b)"/></p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A renumbered point">
+    <x:context mode="block" xmlns="">
+      <LIST TYPE="alpha"><ITEM><NP><NO.P><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" LEVEL="TEXT" ACTIVE.DOC="32026R0449" ACTIVE.LOC="PT:16"?>(c)<?CLG.MDFC ID="C1" IDREF="O1"?></NO.P><TXT>known supplier</TXT></NP></ITEM></LIST>
+    </x:context>
+    <x:expect label="has the change in its num, where the renumbering shows"
+              test="$x:result/*:unit/*:num/*:changed/*:t/@v = '(c)' and empty($x:result/*:unit/*:provenance)"/>
+  </x:scenario>
+
+</x:description>

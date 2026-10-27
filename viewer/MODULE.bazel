@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: MIT
+module(name = "kludgeworks_viewer", version = "0.0.0")
+
+bazel_dep(name = "rules_java", version = "9.9.0")
+bazel_dep(name = "rules_jvm_external", version = "7.2")
+bazel_dep(name = "contrib_rules_jvm", version = "0.34.0")
+bazel_dep(name = "bazel_skylib", version = "1.9.2")
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        # XSLT and its tests
+        "net.sf.saxon:Saxon-HE:13.1",
+        "io.xspec:xspec:4.1.2",
+        # tests
+        "org.junit.jupiter:junit-jupiter-api:5.14.4",
+        "org.junit.jupiter:junit-jupiter-engine:5.14.4",
+        "org.junit.platform:junit-platform-launcher:1.14.4",
+        "org.junit.platform:junit-platform-reporting:1.14.4",
+    ],
+    repositories = ["https://repo1.maven.org/maven2"],
+)
+use_repo(maven, "maven")

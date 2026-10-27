@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: MIT
+common --java_language_version=25 --tool_java_language_version=25
+common --java_runtime_version=remotejdk_25 --tool_java_runtime_version=remotejdk_25
+test --test_output=errors

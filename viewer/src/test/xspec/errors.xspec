@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!-- Inputs the normaliser refuses: it fails loudly rather than produce a partial text -->
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/normalise.xsl">
+
+  <x:scenario label="An OJ act without its CELEX number" catch="yes">
+    <x:context><ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/></ACT></x:context>
+    <x:expect label="is refused" test="exists($x:result?err)"/>
+  </x:scenario>
+
+  <x:scenario label="A document that is not a Formex act" catch="yes">
+    <x:context><NOTICE/></x:context>
+    <x:expect label="is refused" test="exists($x:result?err)"/>
+  </x:scenario>
+
+  <x:scenario label="An element the normaliser doesn't know" catch="yes">
+    <x:context mode="block"><DIVISION><TI><P>TITLE I</P></TI></DIVISION></x:context>
+    <x:expect label="stops the transformation" test="exists($x:result?err)"/>
+  </x:scenario>
+
+</x:description>

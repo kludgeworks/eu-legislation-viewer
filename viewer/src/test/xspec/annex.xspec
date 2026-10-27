@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!-- Annexes, flat levels and their eIds. Inputs are whole (minimal) consolidations, because the
+     annex rules look across the document. -->
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/normalise.xsl">
+
+  <x:scenario label="A single annex with numbered points">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R1998" START.DATE="20260322" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX</P></TI></TITLE><CONTENTS>
+            <GR.SEQ LEVEL="1"><TITLE><TI><NP><NO.P>1.</NO.P><TXT>AIRPORT SECURITY</TXT></NP></TI></TITLE>
+              <GR.SEQ LEVEL="2"><TITLE><TI><NP><NO.P>1.0</NO.P><TXT>GENERAL PROVISIONS</TXT></NP></TI></TITLE>
+                <GR.SEQ LEVEL="3"><NO.GR.SEQ>1.0.1</NO.GR.SEQ><P>first</P></GR.SEQ>
+                <GR.SEQ LEVEL="3"><NO.GR.SEQ>1.0.2</NO.GR.SEQ><P>second</P></GR.SEQ>
+              </GR.SEQ>
+            </GR.SEQ>
+          </CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="is anx" test="$x:result/*:annexes/*:unit/@eId = 'anx'"/>
+    <x:expect label="its num is the title" test="$x:result/*:annexes/*:unit/*:num/*:t/@v = 'ANNEX'"/>
+    <x:expect label="levels are flat siblings, in document order"
+              test="$x:result/*:annexes/*:unit/*:unit/@eId = ('anx/pnt_1', 'anx/pnt_1.0', 'anx/pnt_1.0.1', 'anx/pnt_1.0.2')"/>
+    <x:expect label="a numbered title gives num and heading"
+              test="$x:result//*:unit[@eId = 'anx/pnt_1.0']/*:num/*:t/@v = '1.0' and $x:result//*:unit[@eId = 'anx/pnt_1.0']/*:heading/*:t/@v = 'GENERAL PROVISIONS'"/>
+    <x:expect label="depth keeps Formex's LEVEL" test="$x:result//*:unit[@eId = 'anx/pnt_1.0.2']/@depth = '3'"/>
+  </x:scenario>
+
+  <x:scenario label="An annex split into fragments titled ANNEX">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R1998" START.DATE="20260322" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX</P></TI></TITLE><CONTENTS><GR.SEQ LEVEL="1"><NO.GR.SEQ>6.1</NO.GR.SEQ><P>a</P></GR.SEQ></CONTENTS></CONS.ANNEX>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX</P></TI></TITLE><CONTENTS><GR.SEQ LEVEL="1"><TITLE><TI><P>List of persons and entities visited</P></TI></TITLE><P>b</P></GR.SEQ></CONTENTS></CONS.ANNEX>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX</P></TI></TITLE><CONTENTS><GR.SEQ LEVEL="1"><TITLE><TI><P>List of persons and entities visited</P></TI></TITLE>
+            <GR.SEQ LEVEL="2"><NO.GR.SEQ>12.6.2</NO.GR.SEQ><P>c</P></GR.SEQ></GR.SEQ></CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="is one annex" test="count($x:result/*:annexes/*:unit) = 1 and $x:result/*:annexes/*:unit/@eId = 'anx'"/>
+    <x:expect label="whose points keep annex-wide eIds" test="$x:result//*:unit/@eId = ('anx/pnt_6.1', 'anx/pnt_12.6.2')"/>
+    <x:expect label="unnumbered levels are numbered through all fragments" test="$x:result//*:unit/@eId = ('anx/lvl_1', 'anx/lvl_2')"/>
+  </x:scenario>
+
+  <x:scenario label="Annexes with labels">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2012R0965" START.DATE="20260525" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX I</P><P>Definitions</P></TI></TITLE><CONTENTS><P>x</P></CONTENTS></CONS.ANNEX>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX II</P></TI></TITLE><CONTENTS><P>y</P></CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="get anx_I, anx_II" test="$x:result/*:annexes/*:unit/@eId = ('anx_I', 'anx_II')"/>
+    <x:expect label="and their EUR-Lex anchors by position" test="$x:result/*:annexes/*:unit/@eurlexAnchor = ('1', '2')"/>
+    <x:expect label="the second title line is the heading" test="$x:result/*:annexes/*:unit[1]/*:heading/*:t/@v = 'Definitions'"/>
+  </x:scenario>
+
+  <x:scenario label="Sections inside the annex">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R1998" START.DATE="20260322" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX</P></TI></TITLE><CONTENTS>
+            <GR.SEQ LEVEL="1"><TITLE><TI><NP><NO.P>2.</NO.P><TXT>DEMARCATED AREAS</TXT></NP></TI></TITLE>
+              <GR.SEQ LEVEL="2"><TITLE><TI><NP><NO.P>2.1</NO.P><TXT>main 2.1</TXT></NP></TI></TITLE></GR.SEQ></GR.SEQ>
+            <GR.SEQ LEVEL="1"><TITLE><TI><P>ATTACHMENT 6-A</P><P>DECLARATION</P></TI></TITLE>
+              <GR.SEQ LEVEL="2"><TITLE><TI><P>PART 2</P></TI></TITLE>
+                <GR.SEQ LEVEL="3"><NP><NO.P>2.1</NO.P><TXT>a checklist question</TXT></NP></GR.SEQ></GR.SEQ>
+              <GR.SEQ LEVEL="2"><TITLE><TI><P>Introductory notes</P></TI></TITLE><P>text</P></GR.SEQ></GR.SEQ>
+          </CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="a title line that reads as a label is the num, and names the eId"
+              test="$x:result//*:unit[@eId = 'anx/lvl_ATTACHMENT-6-A']/*:num/*:t/@v = 'ATTACHMENT 6-A' and $x:result//*:unit[@eId = 'anx/lvl_ATTACHMENT-6-A']/*:heading/*:t/@v = 'DECLARATION'"/>
+    <x:expect label="labelled sections inside are annex-wide while their label is free" test="$x:result//*:unit/@eId = 'anx/lvl_PART-2'"/>
+    <x:expect label="a number the annex already has hangs off its section" test="$x:result//*:unit/@eId = ('anx/pnt_2.1', 'anx/lvl_PART-2/pnt_2.1')"/>
+    <x:expect label="a heading that is no label gets a position" test="$x:result//*:unit/@eId = 'anx/lvl_ATTACHMENT-6-A/lvl_1'"/>
+  </x:scenario>
+
+  <x:scenario label="Points written as levels (Air Ops rules)">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2012R0965" START.DATE="20260525" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX IV</P></TI></TITLE><CONTENTS>
+            <GR.SEQ LEVEL="3"><TITLE><TI><NP><NO.P>CAT.GEN.100</NO.P><TXT>Competent authority</TXT></NP></TI></TITLE>
+              <GR.SEQ LEVEL="4"><NP><NO.P>(a)</NO.P><TXT>first</TXT></NP></GR.SEQ></GR.SEQ>
+            <GR.SEQ LEVEL="3"><TITLE><TI><NP><NO.P>CAT.GEN.105</NO.P><TXT>Motor-powered aircraft</TXT></NP></TI></TITLE>
+              <GR.SEQ LEVEL="4"><NP><NO.P>(a)</NO.P><TXT>second</TXT></NP></GR.SEQ></GR.SEQ>
+          </CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="rules are annex-wide" test="$x:result//*:unit/@eId = ('anx/pnt_CAT.GEN.100', 'anx/pnt_CAT.GEN.105')"/>
+    <x:expect label="local enumerators hang off their rule"
+              test="$x:result//*:unit/@eId = ('anx/pnt_CAT.GEN.100/pnt_a', 'anx/pnt_CAT.GEN.105/pnt_a')"/>
+  </x:scenario>
+
+  <x:scenario label="A deleted point and its replacement with the same number (6.1.3)">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R1998" START.DATE="20260322" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX</P></TI></TITLE><CONTENTS>
+            <GR.SEQ LEVEL="2"><TITLE><TI><NP><NO.P>6.1</NO.P><TXT>GENERAL</TXT></NP></TI></TITLE>
+              <?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" ACTIVE.DOC="32019R0103" ACTIVE.LOC="PT:20"?><GR.SEQ LEVEL="3"><NO.GR.SEQ>6.1.3</NO.GR.SEQ><P>old</P></GR.SEQ><?CLG.MDFC ID="C1" IDREF="O1"?>
+              <?CLG.MDFO ID="O2" IDREF="C2" ACTION="INSERTED" ACTIVE.DOC="32022R1174" ACTIVE.LOC="PT:9"?><GR.SEQ LEVEL="3"><NO.GR.SEQ>6.1.3</NO.GR.SEQ><P>new</P></GR.SEQ><?CLG.MDFC ID="C2" IDREF="O2"?></GR.SEQ>
+          </CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="the placeholder keeps its eId inside deleted"
+              test="$x:result//*:deleted/*:unit/@eId = 'anx/pnt_6.1.3' and $x:result//*:deleted/*:provenance/@amendingAct = '32019R0103'"/>
+    <x:expect label="the new point gets the same eId: the placeholder doesn't hold on to it"
+              test="$x:result//*:unit[not(ancestor::*:deleted)][@eId = 'anx/pnt_6.1.3']/*:provenance/@amendingAct = '32022R1174'"/>
+  </x:scenario>
+
+</x:description>
