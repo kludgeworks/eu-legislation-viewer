@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!-- Constructs found by normalising one document of every Formex version and type: divisions,
+     formulas, table groups, corrigenda, agreements, and what older Formex writes differently -->
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+    xmlns:m="http://www.w3.org/1998/Math/MathML"
+    xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/normalise.xsl">
+
+  <x:param name="celex" select="'32026R0449'"/>
+
+  <!-- ============================================================ divisions -->
+
+  <x:scenario label="Chapters with articles">
+    <x:context mode="block" xmlns="">
+      <DIVISION><TITLE><TI><P>CHAPTER I</P></TI><STI><P>General provisions</P></STI></TITLE>
+        <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>a</ALINEA></ARTICLE>
+        <DIVISION><TITLE><TI><P>SECTION 1</P></TI></TITLE>
+          <ARTICLE IDENTIFIER="002"><TI.ART>Article 2</TI.ART><ALINEA>b</ALINEA></ARTICLE>
+        </DIVISION>
+      </DIVISION>
+    </x:context>
+    <x:expect label="is a division unit with its title line as num" test="
+        $x:result/@eId = 'dvs_I' and $x:result/@kind = 'division'
+        and $x:result/*:num/*:t/@v = 'CHAPTER I' and $x:result/*:subheading/*:t/@v = 'General provisions'"/>
+    <x:expect label="nests divisions" test="$x:result/*:unit[@kind = 'division']/@eId = 'dvs_I/dvs_1'"/>
+    <x:expect label="keeps act-wide article eIds" test="$x:result//*:unit[@kind = 'article']/@eId = ('art_1', 'art_2')"/>
+  </x:scenario>
+
+  <x:scenario label="A division numbered as a numbered paragraph">
+    <x:context mode="block" xmlns="">
+      <DIVISION><TITLE><TI><NP><NO.P>A.</NO.P><TXT>Scope</TXT></NP></TI></TITLE><P>text</P></DIVISION>
+    </x:context>
+    <x:expect label="takes its label from NO.P" test="$x:result/@eId = 'dvs_A'"/>
+  </x:scenario>
+
+  <x:scenario label="Articles that restart their numbers in each division">
+    <x:context xmlns="">
+      <ACT><BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <TITLE><TI><P>Agreement</P></TI></TITLE>
+        <ENACTING.TERMS>
+          <DIVISION><TITLE><TI><P>PART ONE</P></TI></TITLE><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>a</ALINEA></ARTICLE></DIVISION>
+          <DIVISION><TITLE><TI><P>PART TWO</P></TI></TITLE><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>b</ALINEA></ARTICLE></DIVISION>
+        </ENACTING.TERMS>
+      </ACT>
+    </x:context>
+    <x:expect label="keep the first act-wide and the repeat under its division"
+              test="$x:result//*:unit[@kind = 'article']/@eId = ('art_1', 'dvs_TWO/art_1')"/>
+  </x:scenario>
+
+  <!-- ============================================================ formulas -->
+
+  <x:scenario label="A formula in running text">
+    <x:context mode="block" xmlns=""><P>where <FORMULA TYPE="INLINE"><EXPR>x<IND>i</IND><EXPONENT>2</EXPONENT><OP.MATH TYPE="PLUS"/>1</EXPR></FORMULA> applies</P></x:context>
+    <x:expect label="becomes inline MathML with a subscript and superscript">
+      <p><t v="where "/><math><m:math display="inline"><m:mrow><m:mrow>
+        <m:msubsup><m:mi>x</m:mi><m:mrow><m:mi>i</m:mi></m:mrow><m:mrow><m:mn>2</m:mn></m:mrow></m:msubsup>
+        <m:mo>+</m:mo><m:mn>1</m:mn>
+      </m:mrow></m:mrow></m:math></math><t v=" applies"/></p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A displayed formula with a fraction, a sum and brackets (05.50+)">
+    <x:context mode="block" xmlns="">
+      <P><FORMULA TYPE="OUTLINE"><EXPR>E</EXPR><OP.CMP TYPE="EQ"/><EXPR><FRACTION><DIVIDEND><SUM><UNDER>i</UNDER><OVER>n</OVER></SUM>m<IND>i</IND></DIVIDEND><DIVISOR><EXPR TYPE="BRACKET">n<OP.MATH TYPE="MINUS"/>1</EXPR></DIVISOR></FRACTION></EXPR></FORMULA></P>
+    </x:context>
+    <x:expect label="is display MathML" test="$x:result/*:math/m:math/@display = 'block'"/>
+    <x:expect label="maps the comparison" test="$x:result//m:mo = '='"/>
+    <x:expect label="has the fraction" test="exists($x:result//m:mfrac/m:mrow[2]/m:mrow[m:mo[@fence] = '(' and m:mo = '−'])"/>
+    <x:expect label="has the sum with both limits" test="$x:result//m:munderover/m:mo = '∑' and $x:result//m:munderover/m:mrow[1]/m:mi = 'i' and $x:result//m:munderover/m:mrow[2]/m:mi = 'n'"/>
+  </x:scenario>
+
+  <x:scenario label="A displayed formula before Formex 05.50">
+    <x:context mode="block" xmlns="">
+      <FORMULA.S>X = <EXPR>x</EXPR><OVER/><EXPR>y</EXPR> + Σ<IND LOC="UNDER">i</IND><IND LOC="OVER">n</IND>a<IND LOC="SUP">2</IND></FORMULA.S>
+    </x:context>
+    <x:expect label="is display MathML" test="$x:result/self::*:math/m:math/@display = 'block'"/>
+    <x:expect label="reads an empty OVER as a fraction bar" test="$x:result//m:mfrac/m:mrow[1]/m:mi = 'x' and $x:result//m:mfrac/m:mrow[2]/m:mi = 'y'"/>
+    <x:expect label="places IND by its LOC" test="
+        $x:result//m:munderover/m:mi = 'Σ' and $x:result//m:munderover/m:mrow[1]/m:mi = 'i' and $x:result//m:munderover/m:mrow[2]/m:mi = 'n' and $x:result//m:msup/m:mi = 'a'"/>
+  </x:scenario>
+
+  <x:scenario label="A root, a bar and a vector">
+    <x:context mode="block" xmlns=""><P><FORMULA TYPE="INLINE"><EXPR><ROOT><EXPR>2</EXPR></ROOT><ROOT><DEGREE>3</DEGREE><EXPR>8</EXPR></ROOT><OVERLINE>x</OVERLINE><VECTOR>v</VECTOR></EXPR></FORMULA></P></x:context>
+    <x:expect label="become msqrt, mroot and accented mover" test="
+        $x:result//m:msqrt//m:mn = '2' and $x:result//m:mroot/m:mrow[2]/m:mn = '3'
+        and $x:result//m:mover[1]/m:mo = '¯' and $x:result//m:mover[2]/m:mo = '→'"/>
+  </x:scenario>
+
+  <x:scenario label="A FUNCTION, which says nothing of what function it is" catch="yes">
+    <x:context mode="block" xmlns=""><P><FORMULA TYPE="INLINE"><EXPR>a<FUNCTION/>b</EXPR></FORMULA></P></x:context>
+    <x:expect label="stops the transformation" test="exists($x:result?err)"/>
+  </x:scenario>
+
+  <!-- ============================================================ tables -->
+
+  <x:scenario label="Tables grouped under one title">
+    <x:context mode="block" xmlns="">
+      <GR.TBL><TITLE><TI><P>Table 2</P></TI></TITLE>
+        <TBL COLS="1"><CORPUS><ROW><CELL COL="1">a</CELL></ROW></CORPUS></TBL>
+        <TBL COLS="1"><CORPUS><ROW><CELL COL="1">b</CELL></ROW></CORPUS></TBL>
+      </GR.TBL>
+    </x:context>
+    <x:expect label="become a tableGroup with a caption" test="$x:result/self::*:tableGroup/*:caption/*:p/*:t/@v = 'Table 2' and count($x:result/*:table) = 2"/>
+  </x:scenario>
+
+  <!-- ============================================================ corrigenda -->
+
+  <x:scenario label="A corrigendum">
+    <x:context xmlns="">
+      <CORR><BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <TITLE><TI><P>Corrigendum to Commission Regulation (EU) 2026/449</P></TI></TITLE>
+        <CONTENTS.CORR>
+          <CORRECTION><DESCRIPTION><P>On page 3, Article 2, point (b):</P></DESCRIPTION>
+            <OLD.CORR><P>for:</P><QUOT.S LEVEL="1"><LIST TYPE="alpha"><ITEM><NP><NO.P>(b)</NO.P><TXT>old</TXT></NP></ITEM></LIST></QUOT.S></OLD.CORR>
+            <NEW.CORR><P>read:</P><QUOT.S LEVEL="1"><LIST TYPE="alpha"><ITEM><NP><NO.P>(b)</NO.P><TXT>new</TXT></NP></ITEM></LIST></QUOT.S></NEW.CORR>
+          </CORRECTION>
+          <CORRECTION><DESCRIPTION><P>On page 4:</P></DESCRIPTION></CORRECTION>
+        </CONTENTS.CORR>
+      </CORR>
+    </x:context>
+    <x:expect label="is a corrigendum" test="$x:result/@kind = 'corrigendum'"/>
+    <x:expect label="has one unit per correction" test="$x:result/*:body/*:unit/@eId = ('cor_1', 'cor_2') and $x:result/*:body/*:unit/@kind = 'correction'"/>
+    <x:expect label="keeps the old and the new wording apart" test="
+        $x:result//*:old//*:unit/@eId = 'cor_1/old/qst_1/pnt_b' and $x:result//*:new//*:unit/@eId = 'cor_1/new/qst_1/pnt_b'"/>
+  </x:scenario>
+
+  <!-- ============================================================ agreements -->
+
+  <x:scenario label="An exchange of letters">
+    <x:context xmlns="">
+      <AGR><BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <TITLE><TI><P>Agreement in the form of an Exchange of Letters</P></TI></TITLE>
+        <COLL.LETTERS>
+          <LETTER><TITLE><TI><P>A. Letter from the Union</P></TI></TITLE><CONTENTS><P>Sir,</P></CONTENTS></LETTER>
+          <LETTER><TITLE><TI><P>B. Letter from Norway</P></TI></TITLE><CONTENTS><P>Madam,</P></CONTENTS></LETTER>
+        </COLL.LETTERS>
+      </AGR>
+    </x:context>
+    <x:expect label="has one letter unit each" test="$x:result//*:unit[@kind = 'letter']/@eId = ('let_1', 'let_2')"/>
+    <x:expect label="keeps the letter's title" test="($x:result//*:unit[@kind = 'letter'])[1]/*:heading/*:t/@v = 'A. Letter from the Union'"/>
+  </x:scenario>
+
+  <x:scenario label="Titled parts of an article (SUBDIV)">
+    <x:context mode="block" xmlns="">
+      <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART>
+        <SUBDIV><TITLE><TI><NP><NO.P>(1)</NO.P><TXT>Objectives</TXT></NP></TI></TITLE><ALINEA>one</ALINEA></SUBDIV>
+        <SUBDIV><TITLE><TI><NP><NO.P>(2)</NO.P><TXT>Values</TXT></NP></TI></TITLE><ALINEA>two</ALINEA><ALINEA>three</ALINEA></SUBDIV>
+      </ARTICLE>
+    </x:context>
+    <x:expect label="are subdivisions numbered by their title" test="
+        $x:result/*:unit/@eId = ('art_1/subdvs_1', 'art_1/subdvs_2') and $x:result/*:unit/@kind = 'subdivision'
+        and $x:result/*:unit[1]/*:num/*:t/@v = '(1)' and $x:result/*:unit[1]/*:heading/*:t/@v = 'Objectives'"/>
+    <x:expect label="hold one ALINEA as their content, several as subparagraphs" test="
+        $x:result/*:unit[1]/*:p/*:t/@v = 'one' and $x:result/*:unit[2]/*:unit/@eId = ('art_1/subdvs_2/sub_1', 'art_1/subdvs_2/sub_2')"/>
+  </x:scenario>
+
+  <x:scenario label="A protocol an agreement's annex includes (GENERAL)">
+    <x:context mode="block" xmlns="">
+      <GENERAL><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><TITLE><TI><P>PROTOCOL 38d</P></TI></TITLE>
+        <CONTENTS><ENACTING.TERMS><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>text</ALINEA></ARTICLE></ENACTING.TERMS></CONTENTS></GENERAL>
+    </x:context>
+    <x:expect label="is its title and its text" test="$x:result[1]/self::*:p/*:t/@v = 'PROTOCOL 38d' and $x:result/self::*:unit/@eId = 'art_1'"/>
+  </x:scenario>
+
+  <x:scenario label="Text in another language">
+    <x:context mode="block" xmlns=""><P><LV LG="FR"><TXT>Fait à Bruxelles</TXT></LV></P></x:context>
+    <x:expect label="becomes a span with its language"><p><span lang="fr"><t v="Fait à Bruxelles"/></span></p></x:expect>
+  </x:scenario>
+
+  <x:scenario label="Where the source prints its notes">
+    <x:context mode="block" xmlns=""><LOC.NOTES/></x:context>
+    <x:expect label="is dropped" select="()"/>
+  </x:scenario>
+
+  <!-- ============================================================ older Formex -->
+
+  <x:scenario label="A two-digit year in an amending act">
+    <x:call function="f:celex"><x:param select="'398D0441'"/></x:call>
+    <x:expect label="is expanded to 19xx" select="'31998D0441'"/>
+  </x:scenario>
+
+  <x:scenario label="A two-digit year after 2000">
+    <x:call function="f:celex"><x:param select="'302R1534'"/></x:call>
+    <x:expect label="is expanded to 20xx" select="'32002R1534'"/>
+  </x:scenario>
+
+  <x:scenario label="A full CELEX number">
+    <x:call function="f:celex"><x:param select="' 32015R1998 '"/></x:call>
+    <x:expect label="is kept" select="'32015R1998'"/>
+  </x:scenario>
+
+  <x:scenario label="A label with a non-breaking space">
+    <x:call function="f:label-after-word"><x:param select="'Article&#160;12'"/></x:call>
+    <x:expect label="splits like a space" select="'12'"/>
+  </x:scenario>
+
+  <x:scenario label="A REPEALED marker">
+    <x:context mode="block" xmlns=""><P><?CLG.MDFO ID="O1" ACTION="REPEALED" ACTIVE.DOC="398D0441"?>gone<?CLG.MDFC IDREF="O1"?></P></x:context>
+    <x:expect label="is a deletion, with the amending act's CELEX expanded"
+              test="$x:result/self::*:deleted/*:provenance/@action = 'deleted' and $x:result/self::*:deleted/*:provenance/@amendingAct = '31998D0441'"/>
+  </x:scenario>
+
+  <x:scenario label="An ADDED marker">
+    <x:context mode="block" xmlns=""><P>keep <?CLG.MDFO ID="O1" ACTION="ADDED" ACTIVE.DOC="32002R1534"?>new<?CLG.MDFC IDREF="O1"?></P></x:context>
+    <x:expect label="is an insertion" test="$x:result//*:changed/@action = 'inserted'"/>
+  </x:scenario>
+
+  <!-- ============================================================ out of scope -->
+
+  <x:scenario label="A judgment" catch="yes">
+    <x:context xmlns=""><JUDGMENT/></x:context>
+    <x:expect label="is refused as out of scope" test="$x:result?err?code = xs:QName('f:out-of-scope')" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
+
+  <x:scenario label="A package whose main document is out of scope" catch="yes">
+    <x:context xmlns=""><DOC><FMX><DOC.MAIN.PUB><REF.PHYS FILE="x.xml" TYPE="DOC.XML"/></DOC.MAIN.PUB></FMX></DOC></x:context>
+    <x:expect label="is refused" test="exists($x:result?err)"/>
+  </x:scenario>
+
+</x:description>

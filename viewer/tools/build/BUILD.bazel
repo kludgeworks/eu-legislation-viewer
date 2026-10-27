@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_binary", "java_library")
+
+package(default_visibility = ["//visibility:public"])
+
+exports_files(["defs.bzl"])
+
+java_library(
+    name = "xspec_runner",
+    testonly = True,
+    srcs = ["src/dev/groknull/kludgeworks/build/XSpecTests.java"],
+    deps = [
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+    runtime_deps = ["@maven//:io_xspec_xspec"],
+)
+
+java_library(
+    name = "srcjars",
+    srcs = ["src/dev/groknull/kludgeworks/build/Srcjars.java"],
+)
+
+# xjc, run in-process into a srcjar
+java_binary(
+    name = "xjc",
+    srcs = ["src/dev/groknull/kludgeworks/build/XjcSrcjar.java"],
+    main_class = "dev.groknull.kludgeworks.build.XjcSrcjar",
+    deps = [
+        ":srcjars",
+        "@maven//:org_glassfish_jaxb_jaxb_xjc",
+    ],
+    runtime_deps = ["@maven//:org_glassfish_jaxb_jaxb_runtime"],
+)

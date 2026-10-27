@@ -6,6 +6,6 @@ xspec_test(
     specs = glob(["*.xspec"]),
     data = [
         "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt",
-        "//src/test/resources/fixtures/formex",
+        "//src/test/resources/fixtures:formex",
     ],
 )

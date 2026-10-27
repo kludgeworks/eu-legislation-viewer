@@ -1,8 +1,0 @@
-# SPDX-License-Identifier: MIT
-package(default_visibility = ["//visibility:public"])
-
-# Raw Formex as Cellar serves it, one folder per Formex version, never edited or reformatted
-filegroup(
-    name = "formex",
-    srcs = glob(["**/*.xml"]),
-)

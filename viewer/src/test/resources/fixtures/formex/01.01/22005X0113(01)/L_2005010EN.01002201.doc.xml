@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DOC xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-01.01-20040501.xd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<BIB.DOC>
+<DURAB TYPE="DUR"/>
+<AUTHOR>CS</AUTHOR>
+</BIB.DOC>
+<PUBLICATION.REF FILE="L_2005010EN.toc.xml">
+<COLL>L</COLL>
+<NO.OJ>010</NO.OJ>
+<DATE ISO="20050113">20050113</DATE>
+<LG.OJ>EN</LG.OJ>
+<VOLUME.REF>01</VOLUME.REF>
+</PUBLICATION.REF>
+<FMX>
+<DOC.MAIN.PUB NO.SEQ="006" SYNOPTISM="D006">
+<LG.DOC>EN</LG.DOC>
+<LEGAL.VALUE>INFO</LEGAL.VALUE>
+<DATE ISO="20050113">20050113</DATE>
+<PAGE.FIRST>22</PAGE.FIRST>
+<PAGE.LAST>22</PAGE.LAST>
+<PAGE.TOTAL>1</PAGE.TOTAL>
+<PAGE.SEQ>1</PAGE.SEQ>
+<REF.PHYS FILE="L_2005010EN.01002201.xml" TYPE="DOC.XML"/>
+</DOC.MAIN.PUB>
+</FMX>
+<PAPER>
+<VOLUME.PAPER>
+<ITEM.VOLUME REF.NO.SEQ="006">
+<TITLE ID.TITLE="T0001">
+<TI>
+<P>Information relating to the entry into force of the Agreement between the European Community and Canada on trade in wines and spirit drinks</P>
+</TI>
+</TITLE>
+<ITEM.REF>22</ITEM.REF>
+</ITEM.VOLUME>
+</VOLUME.PAPER>
+</PAPER>
+<PDF>
+<ITEM.VOLUME REF.NO.SEQ="006">
+<TITLE REF.TITLE="T0001"/>
+<ITEM.REF REF.PDF="l_01020050113en00220022.pdf">22</ITEM.REF>
+</ITEM.VOLUME>
+</PDF>
+</DOC>

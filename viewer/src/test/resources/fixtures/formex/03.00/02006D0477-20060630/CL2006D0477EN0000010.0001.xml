@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-03.00-20051001.xd">
+<INFO.CONSLEG CONSLEG.DATE="20061108" CONSLEG.REF="2006D0477" DATE.LAST.MOD="20060726" END="NONE" LEG.VAL="DEC" PROD.SEQ="000.001.0" START.DATE="20060630"/>
+<INFO.PROD PROD.DATE="20061108" PROD.SYSTEM="CONSLEG.NEW" PRODUCER="ES"/>
+<CONS.DOC><BIB.INSTANCE>
+<DOCUMENT.REF FILE="CL2006D0477EN0000010.0001.doc.xml"></DOCUMENT.REF>
+<DATE ISO="20060630">20060630</DATE>
+<LG.DOC>EN</LG.DOC>
+<PAGE.FIRST>1</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>3</PAGE.LAST>
+<PAGE.TOTAL>3</PAGE.TOTAL></BIB.INSTANCE>
+<FAM.COMP LEG.VAL="DEC"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>188</NO.OJ>
+<YEAR>2006</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>9</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<VOLUME.REF>01</VOLUME.REF></DOCUMENT.REF.CONS><DATE ISO="20060711">20060711</DATE>
+<LG.DOC>EN</LG.DOC>
+<PAGE.FIRST>9</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>9</PAGE.LAST>
+<PAGE.TOTAL>1</PAGE.TOTAL>
+<NO.DOC FORMAT="YN" TYPE="OJ"><NO.CURRENT>477</NO.CURRENT>
+<YEAR>2006</YEAR>
+<COM>CFSP</COM></NO.DOC></BIB.INSTANCE.CONS>
+<NO.CELEX>306D0477</NO.CELEX>
+<DATE ISO="20060630">20060630</DATE>
+<?CLG.MDFO ID="O000001M001001" IDREF="C000001M001001" ACTION="REPLACED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="306D0477R(01)" ACTIVE.LOC="TO" MOD.LEVEL="1"?>
+<TITLE><TI>
+<P><HT TYPE="UC">Council Decision</HT> 2006/477/CFSP</P><P>of <DATE ISO="20060630">30 June 2006</DATE></P><P>concerning the conclusion of the Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA)</P></TI></TITLE>
+<?CLG.MDFC ID="C000001M001001" IDREF="O000001M001001"?></BIB.DATA>
+<GR.CORRIG><CORRIG RELEVANT="YES">
+<BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>203</NO.OJ>
+<YEAR>2006</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>11</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<VOLUME.REF>01</VOLUME.REF></DOCUMENT.REF.CONS><DATE ISO="20060726">20060726</DATE>
+<LG.DOC>EN</LG.DOC>
+<NO.SEQ>006</NO.SEQ>
+<PAGE.FIRST>11</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>11</PAGE.LAST>
+<PAGE.TOTAL>1</PAGE.TOTAL></BIB.INSTANCE.CONS>
+<NO.CELEX>306D0477R(01)</NO.CELEX>
+<TITLE><TI>
+<P>Corrigendum to Council Decision 2006/477/CFSP of <DATE ISO="20060630">30 June 2006</DATE> concerning the conclusion of the Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA)</P><P>and to the</P><P>Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA)</P><P>(This text annuls and replaces that published in <REF.DOC.OJ COLL="L" DATE.PUB="20060711" NO.OJ="188" PAGE.FIRST="9" PAGE.LAST="13">Official Journal L 188 of 11 July 2006, pp. 9-13</REF.DOC.OJ>)</P></TI></TITLE></BIB.DATA></CORRIG></GR.CORRIG></FAM.COMP>
+<?CLG.MDFO ID="O000001M001002" IDREF="C000001M001002" ACTION="REPLACED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="306D0477R(01)" ACTIVE.LOC="TO" MOD.LEVEL="1"?>
+<TITLE><TI>
+<P><HT TYPE="UC">Council Decision</HT> 2006/477/CFSP</P><P>of <DATE ISO="20060630">30 June 2006</DATE></P><P>concerning the conclusion of the Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA)</P></TI></TITLE>
+<?CLG.MDFC ID="C000001M001002" IDREF="O000001M001002"?>
+<?CLG.MDFO ID="O000001M002000" IDREF="C000001M002000" ACTION="REPLACED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="306D0477R(01)" ACTIVE.LOC="TO" MOD.LEVEL="1"?>
+<PREAMBLE><PREAMBLE.INIT>THE COUNCIL OF THE EUROPEAN UNION,</PREAMBLE.INIT>
+<GR.VISA><VISA>Having regard to the Treaty on European Union, and in particular Article 24 thereof,</VISA>
+<VISA>Having regard to the recommendation from the Presidency,</VISA></GR.VISA>
+<GR.CONSID><GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+<CONSID><NP>
+<NO.P>(1)</NO.P><TXT>On <DATE ISO="20040712">12 July 2004</DATE>, the Council adopted Joint Action 2004/570/CFSP on the European Union military operation in Bosnia and Herzegovina<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="20040728" NO.OJ="252" PAGE.FIRST="10">OJ L 252, 28.7.2004, p. 10</REF.DOC.OJ>.</P></NOTE>.</TXT></NP></CONSID>
+<CONSID><NP>
+<NO.P>(2)</NO.P><TXT>Article 11(3) of that Joint Action provides that detailed arrangements regarding the participation of third States are to be the subject of an agreement, in accordance with Article 24 of the Treaty.</TXT></NP></CONSID>
+<CONSID><NP>
+<NO.P>(3)</NO.P><TXT>Following authorisation by the Council on <DATE ISO="20040913">13 September 2004</DATE>, the Presidency, assisted by the Secretary-General/High Representative, negotiated an Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA).</TXT></NP></CONSID>
+<CONSID><NP>
+<NO.P>(4)</NO.P><TXT>The Agreement should be approved,</TXT></NP></CONSID></GR.CONSID>
+<PREAMBLE.FINAL>HAS DECIDED AS FOLLOWS:</PREAMBLE.FINAL></PREAMBLE>
+<ENACTING.TERMS><ARTICLE IDENTIFIER="001">
+<TI.ART>Article 1</TI.ART>
+<ALINEA>The Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA) is hereby approved on behalf of the European Union.</ALINEA>
+<ALINEA>The text of the Agreement is attached to this Decision.</ALINEA></ARTICLE>
+<ARTICLE IDENTIFIER="002"><TI.ART>Article 2</TI.ART>
+<ALINEA>The President of the Council is hereby authorised to designate the person(s) empowered to sign the Agreement in order to bind the European Union.</ALINEA></ARTICLE>
+<ARTICLE IDENTIFIER="003"><TI.ART>Article 3</TI.ART>
+<ALINEA>This Decision shall take effect on the day of its adoption.</ALINEA></ARTICLE>
+<ARTICLE IDENTIFIER="004"><TI.ART>Article 4</TI.ART>
+<ALINEA>This Decision shall be published in the <HT TYPE="ITALIC">Official Journal of the European Union</HT>.</ALINEA></ARTICLE></ENACTING.TERMS>
+<?CLG.MDFC ID="C000001M002000" IDREF="O000001M002000"?></CONS.DOC></CONS.ACT>

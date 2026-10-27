@@ -75,13 +75,33 @@
 
   <xsl:function name="f:is-deletion" as="xs:boolean">
     <xsl:param name="marker" as="processing-instruction()"/>
-    <xsl:sequence select="f:pi-attr($marker, 'ACTION') = 'DELETED'"/>
+    <xsl:sequence select="f:action($marker) = 'deleted'"/>
+  </xsl:function>
+
+  <!-- REPLACED, INSERTED, DELETED; older consolidations also write REPEALED (a deletion) and ADDED -->
+  <xsl:function name="f:action" as="xs:string">
+    <xsl:param name="marker" as="processing-instruction()"/>
+    <xsl:variable name="action" select="f:pi-attr($marker, 'ACTION')"/>
+    <xsl:sequence select="(map{'REPLACED': 'replaced', 'INSERTED': 'inserted', 'ADDED': 'inserted',
+                               'DELETED': 'deleted', 'REPEALED': 'deleted'}($action),
+                           error(xs:QName('f:unknown'), 'Unsupported Formex: amendment marker ACTION=' || $action))[1]"/>
+  </xsl:function>
+
+  <!-- a CELEX number; consolidations made with Formex 01.02 to 04.00 write the year with two
+       digits (398D0441 for 31998D0441, 302R1534 for 32002R1534) -->
+  <xsl:function name="f:celex" as="xs:string">
+    <xsl:param name="celex" as="xs:string?"/>
+    <xsl:variable name="c" select="normalize-space($celex)"/>
+    <xsl:sequence select="
+        if (matches($c, '^[0-9][0-9]{2}[A-Z]'))
+        then substring($c, 1, 1) || (if (xs:integer(substring($c, 2, 2)) gt 50) then '19' else '20') || substring($c, 2)
+        else $c"/>
   </xsl:function>
 
   <xsl:function name="f:amendment-attributes" as="attribute()*">
     <xsl:param name="marker" as="processing-instruction()"/>
-    <xsl:attribute name="amendingAct" select="f:pi-attr($marker, 'ACTIVE.DOC')"/>
-    <xsl:attribute name="action" select="lower-case(f:pi-attr($marker, 'ACTION'))"/>
+    <xsl:attribute name="amendingAct" select="f:celex(f:pi-attr($marker, 'ACTIVE.DOC'))"/>
+    <xsl:attribute name="action" select="f:action($marker)"/>
     <xsl:if test="f:pi-attr($marker, 'ACTIVE.LOC')">
       <xsl:attribute name="location" select="f:pi-attr($marker, 'ACTIVE.LOC')"/>
     </xsl:if>

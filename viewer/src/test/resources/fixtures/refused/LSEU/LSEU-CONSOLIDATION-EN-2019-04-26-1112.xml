@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><LSEU xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.58-20161101.xd">
+   <BIB.LSEU TYPE="GLOSSARY">
+      <NO.DOC.LSEU>LSEU-GLOSSARY-CONSOLIDATION-2019-04-26-1112</NO.DOC.LSEU>
+      <LG.DOC>EN</LG.DOC>
+      <ARCHIVED/>
+   </BIB.LSEU>
+   <TITLE>
+      <TI>
+         <P>Consolidation</P>
+      </TI>
+   </TITLE>
+   <CONTENTS.LSEU>
+      <SUMMARY.LSEU>
+         <P>When an EU legal act is consolidated, it means that the original act and all its subsequent amendments and corrections are combined in a single easy-to-read document. This document shows the legal rules which are applicable at a certain  point in time. Consolidation strictly follows instructions stated in the amending act and does not alter the content in any way. There is no change to the act’s form or content.</P>
+         <P>Unlike the case of <HT TYPE="BOLD">codification</HT>, consolidation does not involve adopting a new legal act. Consolidated text is meant purely as a documentation tool and has no legal effect.</P>
+         <P>Consolidation is thus an unofficial simplification of the legislation in the interests of clarity and may then be used as a basis for codification.</P>
+      </SUMMARY.LSEU>
+      <REFERENCES.LSEU>
+         <TITLE>
+            <TI>
+               <P>See also</P>
+            </TI>
+         </TITLE>
+         <LIST TYPE="NONE">
+            <ITEM>
+               <P>
+                  <REF.DOC URI="http://eur-lex.europa.eu/summary/glossary/codification.html" CONTEXT="LSEU">Codification</REF.DOC>
+               </P>
+            </ITEM>
+         </LIST>
+      </REFERENCES.LSEU>
+   </CONTENTS.LSEU>
+</LSEU>

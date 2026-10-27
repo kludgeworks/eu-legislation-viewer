@@ -28,6 +28,8 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
+!/viewer/tools/build/
+!/viewer/tools/build/**/build/
 
 ### VS Code ###
 .vscode/

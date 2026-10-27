@@ -4,9 +4,11 @@
   Formex 4 (any schema version, 05.51 to 06.02.3) → legal-text 1.0.
 
   Input, one of:
-  - a consolidated version: the CONS.ACT file;
-  - an OJ act: its package descriptor (DOC, *.doc.xml), which lists the main file and the annex
-    files in order; or the ACT file alone.
+  - a consolidated version: the CONS.ACT file, or CONS.OTH for consolidated documents other than acts;
+  - an OJ act, agreement or corrigendum: its package descriptor (DOC, *.doc.xml), which lists the
+    main file and the annex files in order; or the ACT, AGR or CORR file alone.
+  Other Formex documents (notices, case law, the OJ's tables of contents) are not legal acts: they
+  are refused with f:out-of-scope.
 
   The output validates against legal-text.xsd. An element the normaliser doesn't know stops the
   transformation (f:unknown), so a new Formex construct shows up as a failing test, not as lost text.
@@ -24,6 +26,7 @@
   <xsl:include href="eid.xsl"/>
   <xsl:include href="inline.xsl"/>
   <xsl:include href="units.xsl"/>
+  <xsl:include href="math.xsl"/>
 
   <xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
@@ -42,7 +45,7 @@
   </xsl:template>
 
   <!-- the same, when the root element itself is the input -->
-  <xsl:template match="/DOC | /ACT | /CONS.ACT">
+  <xsl:template match="/DOC | /ACT | /AGR | /CORR | /CONS.ACT | /CONS.OTH | /*">
     <xsl:apply-templates select="." mode="document"/>
   </xsl:template>
 
@@ -52,6 +55,10 @@
   <xsl:template match="DOC" mode="document">
     <xsl:variable name="main" select="doc(resolve-uri(FMX/DOC.MAIN.PUB/REF.PHYS/@FILE, base-uri(.)))/*"/>
     <xsl:variable name="annexes" select="FMX/DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/ANNEX"/>
+    <!-- a package of something other than a legal act is refused like the document itself -->
+    <xsl:if test="not($main/(self::ACT | self::AGR | self::CORR | self::CONS.ACT | self::CONS.OTH))">
+      <xsl:apply-templates select="$main" mode="document"/>
+    </xsl:if>
     <xsl:call-template name="f:legal-text">
       <xsl:with-param name="act" select="$main"/>
       <xsl:with-param name="annexes" select="$annexes"/>
@@ -59,14 +66,15 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="ACT | CONS.ACT" mode="document">
+  <xsl:template match="ACT | AGR | CORR | CONS.ACT | CONS.OTH" mode="document">
     <xsl:call-template name="f:legal-text">
       <xsl:with-param name="act" select="."/>
     </xsl:call-template>
   </xsl:template>
 
+  <!-- notices (GENERAL), case law, the OJ's tables of contents (PUBLICATION) and the like -->
   <xsl:template match="*" mode="document">
-    <xsl:sequence select="f:unknown(., 'not a Formex act, consolidation or package')"/>
+    <xsl:message terminate="yes" error-code="f:out-of-scope">Not a legal act: Formex {local-name()} is out of scope</xsl:message>
   </xsl:template>
 
   <!-- ============================================================ document -->
@@ -75,18 +83,20 @@
     <xsl:param name="act" as="element()"/>
     <xsl:param name="annexes" as="element(ANNEX)*" select="()"/>
     <xsl:param name="package" as="element(DOC)?" select="()"/>
-    <xsl:variable name="consolidated" select="exists($act/self::CONS.ACT)"/>
-    <xsl:variable name="doc" select="if ($consolidated) then $act/CONS.DOC else $act"/>
+    <xsl:variable name="consolidated" select="exists($act/(self::CONS.ACT | self::CONS.OTH))"/>
+    <!-- where the bibliographic data is, and where the text is -->
+    <xsl:variable name="doc" select="($act/CONS.DOC, $act/CONS.OTH.DOC, $act)[1]"/>
+    <xsl:variable name="content" select="($doc/CONS.DOC.GEN, $doc)[1]"/>
     <xsl:variable name="info" select="$act/INFO.CONSLEG"/>
     <xsl:variable name="act-celex" select="
         if ($consolidated) then '3' || $info/@CONSLEG.REF
-        else ($celex, error(xs:QName('f:celex'), 'An OJ act needs the $celex parameter'))[1]"/>
-    <legalText act="{$act-celex}" kind="{if ($consolidated) then 'consolidated' else 'original'}">
+        else ($celex[normalize-space()], error(xs:QName('f:celex'), 'An OJ act needs the $celex parameter'))[1]"/>
+    <legalText act="{$act-celex}" kind="{if ($consolidated) then 'consolidated' else if ($act/self::CORR) then 'corrigendum' else 'original'}">
       <xsl:attribute name="xsi:schemaLocation" select="$f:namespace || ' ' || $f:schema"/>
       <xsl:if test="$consolidated">
         <xsl:attribute name="version" select="f:date($info/@START.DATE)"/>
       </xsl:if>
-      <xsl:attribute name="lang" select="lower-case(($doc/BIB.INSTANCE/LG.DOC)[1])"/>
+      <xsl:attribute name="lang" select="lower-case(($doc/BIB.INSTANCE/LG.DOC, $content/BIB.INSTANCE/LG.DOC)[1])"/>
       <xsl:attribute name="formexVersion" select="f:formex-version($act)"/>
       <xsl:attribute name="normaliser" select="$normaliser"/>
 
@@ -124,7 +134,7 @@
             <xsl:attribute name="sequence" select="$info/@PROD.SEQ"/>
           </xsl:if>
           <xsl:for-each-group select="$doc/FAM.COMP//(MOD.ACT | CORRIG)/BIB.DATA" group-by="normalize-space(NO.CELEX)">
-            <eventRef type="{if (parent::CORRIG) then 'corrigendum' else 'amendment'}" act="{current-grouping-key()}">
+            <eventRef type="{if (parent::CORRIG) then 'corrigendum' else 'amendment'}" act="{f:celex(current-grouping-key())}">
               <xsl:if test="DATE/@ISO">
                 <xsl:attribute name="date" select="f:date(DATE/@ISO)"/>
               </xsl:if>
@@ -133,21 +143,22 @@
         </lifecycle>
       </xsl:if>
 
-      <xsl:apply-templates select="$doc/TITLE"/>
-      <xsl:apply-templates select="$doc/PREAMBLE"/>
+      <xsl:apply-templates select="$content/TITLE"/>
+      <xsl:apply-templates select="$content/PREAMBLE"/>
 
       <body>
         <xsl:call-template name="f:blocks">
-          <xsl:with-param name="nodes" select="$doc/ENACTING.TERMS/node()"/>
+          <xsl:with-param name="nodes" select="$content/ENACTING.TERMS/node(), $content/CONTENTS/(node() except CONS.ANNEX),
+                                               $content/CONTENTS.CORR/CORRECTION"/>
           <xsl:with-param name="ctx" select="()" tunnel="yes"/>
           <xsl:with-param name="pending" select="()" tunnel="yes"/>
           <xsl:with-param name="base" select="()" tunnel="yes"/>
         </xsl:call-template>
       </body>
 
-      <xsl:apply-templates select="$doc/FINAL"/>
+      <xsl:apply-templates select="$content/FINAL"/>
 
-      <xsl:variable name="groups" select="f:annex-groups(($doc/CONS.ANNEX, $annexes))"/>
+      <xsl:variable name="groups" select="f:annex-groups(($content/CONS.ANNEX, $content/CONTENTS/CONS.ANNEX, $annexes))"/>
       <xsl:variable name="annex-units" as="element()*">
         <xsl:for-each select="$groups">
           <xsl:variable name="fragments" select="?*"/>
@@ -164,9 +175,16 @@
           </xsl:apply-templates>
         </xsl:for-each>
       </xsl:variable>
-      <xsl:if test="$annex-units">
+      <xsl:variable name="letters" as="element()*">
+        <xsl:apply-templates select="$content/COLL.LETTERS/LETTER" mode="block">
+          <xsl:with-param name="ctx" select="()" tunnel="yes"/>
+          <xsl:with-param name="pending" select="()" tunnel="yes"/>
+          <xsl:with-param name="base" select="()" tunnel="yes"/>
+        </xsl:apply-templates>
+      </xsl:variable>
+      <xsl:if test="$annex-units or $letters">
         <annexes>
-          <xsl:sequence select="$annex-units"/>
+          <xsl:sequence select="$annex-units, $letters"/>
         </annexes>
       </xsl:if>
 
@@ -268,6 +286,13 @@
     </xsl:if>
   </xsl:template>
 
+  <!-- text of a preamble outside formulas, citations and recitals -->
+  <xsl:template match="PREAMBLE/(P | NP | LIST | TBL)">
+    <xsl:call-template name="f:blocks">
+      <xsl:with-param name="nodes" select="."/>
+    </xsl:call-template>
+  </xsl:template>
+
   <xsl:template match="PREAMBLE.INIT | PREAMBLE.FINAL">
     <xsl:if test="normalize-space()">
       <formula name="{if (self::PREAMBLE.INIT) then 'actingEntity' else 'enactingFormula'}">
@@ -280,13 +305,26 @@
 
   <xsl:template match="GR.VISA">
     <citations>
-      <xsl:for-each select="VISA">
-        <unit eId="pbl_1/cit_{position()}" kind="citation">
+      <xsl:if test="GR.VISA.INIT">
+        <intro>
           <xsl:call-template name="f:blocks">
-            <xsl:with-param name="nodes" select="node()"/>
-            <xsl:with-param name="base" select="'pbl_1/cit_' || position()" tunnel="yes"/>
+            <xsl:with-param name="nodes" select="GR.VISA.INIT/node()"/>
           </xsl:call-template>
-        </unit>
+        </intro>
+      </xsl:if>
+      <xsl:for-each select="VISA">
+        <xsl:variable name="m" select="f:new-markers(., ())"/>
+        <xsl:variable name="unit" as="element()">
+          <unit eId="pbl_1/cit_{position()}" kind="citation">
+            <xsl:sequence select="f:provenance($m)"/>
+            <xsl:call-template name="f:blocks">
+              <xsl:with-param name="nodes" select="node()"/>
+              <xsl:with-param name="base" select="'pbl_1/cit_' || position()" tunnel="yes"/>
+              <xsl:with-param name="ctx" select="f:ids($m)" tunnel="yes"/>
+            </xsl:call-template>
+          </unit>
+        </xsl:variable>
+        <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
       </xsl:for-each>
     </citations>
   </xsl:template>
@@ -302,7 +340,10 @@
       </xsl:if>
       <xsl:for-each select="CONSID">
         <xsl:variable name="eid" select="'pbl_1/rct_' || (f:label(NP/NO.P)[. != ''], string(position()))[1]"/>
+        <xsl:variable name="m" select="f:new-markers(., ())"/>
+        <xsl:variable name="unit" as="element()">
         <unit eId="{$eid}" kind="recital">
+          <xsl:sequence select="f:provenance($m)"/>
           <xsl:if test="NP/NO.P">
             <num>
               <xsl:call-template name="f:inlines">
@@ -313,8 +354,11 @@
           <xsl:call-template name="f:blocks">
             <xsl:with-param name="nodes" select="NP/TXT/node(), NP/(node() except (NO.P, TXT)), node() except NP"/>
             <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+            <xsl:with-param name="ctx" select="f:ids($m)" tunnel="yes"/>
           </xsl:call-template>
         </unit>
+        </xsl:variable>
+        <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
       </xsl:for-each>
     </recitals>
   </xsl:template>

@@ -192,6 +192,21 @@
     </ref>
   </xsl:template>
 
+  <!-- text in another language (LV): a quoted term, an agreement's multilingual formula -->
+  <xsl:template match="LV" mode="inline">
+    <span lang="{lower-case(@LG)}">
+      <xsl:call-template name="f:inlines">
+        <xsl:with-param name="nodes" select="if (TXT) then TXT/node() else node()"/>
+      </xsl:call-template>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="ADDR" mode="inline">
+    <xsl:call-template name="f:inlines">
+      <xsl:with-param name="nodes" select="node()"/>
+    </xsl:call-template>
+  </xsl:template>
+
   <!-- 05.59+ -->
   <xsl:template match="BR" mode="inline">
     <eol/>
@@ -200,6 +215,11 @@
   <!-- a quotation mark whose partner sits in another element -->
   <xsl:template match="QUOT.START | QUOT.END" mode="inline">
     <t v="{f:quote-char(.)}"/>
+  </xsl:template>
+
+  <!-- an image inside running text or a heading -->
+  <xsl:template match="INCL.ELEMENT[@TYPE = 'TIFF']" mode="inline">
+    <img src="{@FILEREF}"/>
   </xsl:template>
 
   <!-- an empty table cell -->
@@ -227,11 +247,13 @@
   <xsl:function name="f:note-eid" as="xs:string">
     <xsl:param name="note" as="element(NOTE)"/>
     <xsl:variable name="root" select="root($note)/*"/>
+    <!-- the annex file's own sequence number, unique in the package also for included files -->
     <xsl:variable name="file" select="
         if ($root/self::ANNEX)
-        then 'anx' || xs:integer(tokenize($root/BIB.INSTANCE/NO.SEQ, '\.')[last()]) || '-'
+        then 'anx' || replace(tokenize(base-uri($root), '/')[last()], '^.*?\.(\d+)\.(fmx\.)?xml$', '$1') || '-'
         else ''"/>
-    <xsl:sequence select="'note_' || $file || (count($note/preceding::NOTE[@NOTE.ID]) + 1)"/>
+    <!-- ancestors count too: a note can sit inside another note -->
+    <xsl:sequence select="'note_' || $file || (count($note/(preceding::NOTE | ancestor::NOTE)[@NOTE.ID]) + 1)"/>
   </xsl:function>
 
   <!-- the marker as printed: NUMBER.ORG if given, * for star numbering, else the running number

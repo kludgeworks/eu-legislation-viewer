@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.22-20110811.xd">
+<INFO.CONSLEG CONSLEG.DATE="20120530" CONSLEG.REF="1968R0821" DATE.LAST.MOD="20080607" END="REPEALED" END.DATE="99999999" LEG.VAL="REG" PROD.SEQ="002.001.0" SOURCE.END="32008R0508" START.DATE="20080701"/>
+<INFO.PROD PROD.DATE="20120530" PROD.SYSTEM="CONSLEG.NEW" PRODUCER="ES"/>
+<CONS.DOC><BIB.INSTANCE>
+<DOCUMENT.REF FILE="CL1968R0821EN0020010.0001.doc.xml"><LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>1</PAGE.FIRST></DOCUMENT.REF>
+<DATE ISO="20080701">20080701</DATE>
+<LG.DOC>EN</LG.DOC>
+<PAGE.FIRST>1</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>1</PAGE.LAST>
+<PAGE.TOTAL>1</PAGE.TOTAL></BIB.INSTANCE>
+<FAM.COMP LEG.VAL="REG"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>149</NO.OJ>
+<YEAR>1968</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>46</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ></DOCUMENT.REF.CONS>
+<SPEC.ED><CHAP.SE>SER1</CHAP.SE>
+<TOME.SE>68(I)</TOME.SE>
+<LG.PUB>EN</LG.PUB>
+<PAGE.FIRST>197</PAGE.FIRST>
+<PAGE.LAST>198</PAGE.LAST>
+<PAGE.TOTAL>2</PAGE.TOTAL></SPEC.ED>
+<DATE ISO="19680629">19680629</DATE>
+<LG.DOC>EN</LG.DOC>
+<PAGE.FIRST>46</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>47</PAGE.LAST>
+<PAGE.TOTAL>2</PAGE.TOTAL></BIB.INSTANCE.CONS>
+<NO.CELEX>31968R0821</NO.CELEX>
+<DATE ISO="19680628">19680628</DATE>
+<TITLE><TI>
+<P><HT TYPE="UC">Regulation</HT> (EEC) No 821/68 <HT TYPE="UC">of the Commission</HT></P><P>of 28 June 1968</P><P>on the definition, applicable to the granting of export refunds, of hulled grains and pearled grains of cereals</P></TI></TITLE></BIB.DATA>
+<GR.MOD.ACT><MOD.ACT EXISTS="YES" LEG.VAL="REG" TYPE="MOD">
+<BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>170</NO.OJ>
+<YEAR>1971</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>13</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ></DOCUMENT.REF.CONS>
+<SPEC.ED><CHAP.SE>SER1</CHAP.SE>
+<TOME.SE>71(II)</TOME.SE>
+<LG.PUB>EN</LG.PUB>
+<PAGE.FIRST>606</PAGE.FIRST>
+<PAGE.LAST>607</PAGE.LAST>
+<PAGE.TOTAL>2</PAGE.TOTAL></SPEC.ED>
+<DATE ISO="19710729">19710729</DATE>
+<LG.DOC>EN</LG.DOC>
+<PAGE.FIRST>13</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>14</PAGE.LAST>
+<PAGE.TOTAL>2</PAGE.TOTAL></BIB.INSTANCE.CONS>
+<NO.CELEX>31971R1634</NO.CELEX>
+<DATE ISO="19710727">19710727</DATE>
+<TITLE><TI>
+<P><HT TYPE="UC">Regulation</HT> (EEC) No 1634/71 <HT TYPE="UC">of the Commission</HT></P><P>of 27 July 1971</P><P>amending Commission Regulation (EEC) No 821/68 of 28 June 1968 on the definition, applicable to the granting of export refunds, of hulled grains and pearled grains of cereals</P></TI></TITLE></BIB.DATA></MOD.ACT>
+<MOD.ACT EXISTS="YES" LEG.VAL="REG" TYPE="REP"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>149</NO.OJ>
+<YEAR>2008</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>55</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<VOLUME.REF>01</VOLUME.REF></DOCUMENT.REF.CONS><DATE ISO="20080607">20080607</DATE>
+<LG.DOC>EN</LG.DOC>
+<NO.SEQ>0006</NO.SEQ>
+<PAGE.FIRST>55</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>58</PAGE.LAST>
+<PAGE.TOTAL>4</PAGE.TOTAL>
+<NO.DOC FORMAT="NY" TYPE="OJ"><NO.CURRENT>508</NO.CURRENT>
+<YEAR>2008</YEAR>
+<COM>EC</COM></NO.DOC></BIB.INSTANCE.CONS>
+<NO.CELEX>32008R0508</NO.CELEX>
+<DATE ISO="20080606">20080606</DATE>
+<TITLE><TI>
+<P><HT TYPE="UC">Commission Regulation</HT> (EC) No 508/2008</P><P>of <DATE ISO="20080606">6 June 2008</DATE></P><P>on the definition, applicable to the granting of export refunds, of hulled grains and pearled grains of cereals</P><P>(Codified version)</P></TI></TITLE></BIB.DATA></MOD.ACT></GR.MOD.ACT></FAM.COMP>
+<?CLG.MDFO ID="O002001M001000" IDREF="C002001M001000" ACTION="REPEALED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="32008R0508" ACTIVE.LOC="AR:2" MOD.LEVEL="1" ?>
+<TITLE><TI>
+<P><HT TYPE="UC">Regulation</HT> (EEC) No 821/68 <HT TYPE="UC">of the Commission</HT></P><P>of 28 June 1968</P><P>on the definition, applicable to the granting of export refunds, of hulled grains and pearled grains of cereals</P></TI></TITLE>
+<PREAMBLE><PREAMBLE.INIT>THE COMMISSION OF THE EUROPEAN COMMUNITIES,</PREAMBLE.INIT>
+<GR.VISA><VISA>Having regard to the Treaty establishing the European Economic Community;</VISA>
+<VISA>Having regard to Council Regulation No 120/67/EEC<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>OJ No 117, <DATE ISO="19670613">13.6.1967</DATE>, p. 2269/67.</P></NOTE>. of 13 June 1967 on the common organisation of the market in cereals, and in particular Article 16 (4) thereof:</VISA></GR.VISA>
+<GR.CONSID><CONSID><P>
+<P>Whereas the export refund should take into account the quality of the product processed from cereals which qualifies for it lest public funds contribute to the export of goods of inferior quality; whereas it is therefore necessary to establish a precise definition, applicable in each Member State, of cereal grains qualifying for the refund on <QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001"/>hulled grains<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001"/> and <QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002"/>pearled grains<QUOT.END CODE="2019" ID="QE0002" REF.START="QS0002"/>;</P></P></CONSID>
+<CONSID><P>Whereas the measures provided for in this Regulation are in accordance with the Opinion of the Management Committee for Cereals;</P></CONSID></GR.CONSID>
+<PREAMBLE.FINAL>HAS ADOPTED THIS REGULATION:</PREAMBLE.FINAL></PREAMBLE>
+<ENACTING.TERMS><ARTICLE IDENTIFIER="001">
+<TI.ART>Article 1</TI.ART>
+<ALINEA>For the granting of export refunds pearled grains and hulled grains of cereals shall be those which possess the characteristics listed in the Annex.</ALINEA></ARTICLE>
+<ARTICLE IDENTIFIER="002"><TI.ART>Article 2</TI.ART>
+<ALINEA>This Regulation shall enter into force on 1 July 1968.</ALINEA></ARTICLE></ENACTING.TERMS>
+<FINAL><P>This Regulation shall be binding in its entirety and directly applicable in all Member States.</P></FINAL>
+<CONS.ANNEX><TITLE>
+<TI><P>ANNEX</P></TI>
+<STI><P>DEFINITION OF <QUOT.START CODE="2018" ID="QS0003" REF.END="QE0003"/>HULLED GRAINS<QUOT.END CODE="2019" ID="QE0003" REF.START="QS0003"/> (SHELLED OR HUSKED) AND <QUOT.START CODE="2018" ID="QS0004" REF.END="QE0004"/>PEARLED GRAINS<QUOT.END CODE="2019" ID="QE0004" REF.START="QS0004"/></P></STI></TITLE>
+<CONTENTS><GR.SEQ LEVEL="1">
+<NO.GR.SEQ>A.</NO.GR.SEQ>
+<P><QUOT.START CODE="2018" ID="QS0005" REF.END="QE0005"/>Hulled grains<QUOT.END CODE="2019" ID="QE0005" REF.START="QS0005"/> includes shelled and husked grains:</P>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>1.</NO.P><TXT>Shelled grains:</TXT></NP></TI></TITLE>
+<P>are cereal grains with the pericarp removed or bracted cereal grains (see explanatory notes to tariff heading No 10.03: grains) with the bracts removed with cling to the pericarp (as for example with bearded barley) or which enclose the grains so firmly that the bracts cannot be detached by threshing etc. (as with oats).</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.</NO.P><TXT>Husked grains:</TXT></NP></TI></TITLE>
+<P>are grains (in the case of barley, with the bracts removed) which have the major part of the pericarp and tegument testa) removed.</P></GR.SEQ></GR.SEQ>
+<?CLG.MDFO ID="O001001M008000" IDREF="C001001M008000" ACTION="REPLACED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="31971R1634" ACTIVE.LOC="AR:1 .AND. AX:0" MOD.LEVEL="1"?>
+<GR.SEQ LEVEL="1"><NO.GR.SEQ>B.</NO.GR.SEQ>
+<P><QUOT.START CODE="2018" ID="QS0006" REF.END="QE0006"/>Pearled grains<QUOT.END CODE="2019" ID="QE0006" REF.START="QS0006"/> include:</P>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>I.</NO.P><TXT>First class grains:</TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="3"><NO.GR.SEQ>1.</NO.GR.SEQ>
+<P>grains which correspond to the following definition:</P><P>pearled cereal grains, principally barley, which have the whole of the tegument, pericarp, germ and the major part of the outer layer and aleuronic layer removed, and which are of uniform size and rounded form;</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><NO.GR.SEQ>2.</NO.GR.SEQ>
+<P>and which in addition meet the following requirements:</P><P>regularity of the grains:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>75 % of the grains must not exceed 20 % of the dm;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>94 % of the grains added progressively between 3 % and 97 % must not exceed 30 % of the dm;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>100 % of the grains must not exceed 50 % of the dm;</TXT></NP></ITEM></LIST>
+<P>Determination of regularity by sieve analysis using sieves with round holes.</P>
+<DLIST SEPARATOR=":"><DLIST.ITEM>
+<TERM>dm</TERM><DEFINITION>the median value obtained from the graph of the results of sieve analysis at the point at which 50 % of the product has passed through the sieve.</DEFINITION></DLIST.ITEM></DLIST></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>II.</NO.P><TXT>Second class grains:</TXT></NP></TI></TITLE>
+<P>grains which correspond to the definition under B I (1).</P></GR.SEQ>
+<?CLG.MDFC ID="C001001M008000" IDREF="O001001M008000"?>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><P>Sieve analysis</P></TI></TITLE>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><P>Apparatus:</P></TI></TITLE>
+<LIST TYPE="DASH"><ITEM>
+<P>Set of sieves with round hole (diameter 200 mm, diameter of holes 4·0 to 1·0 mm, at 0·25 mm intervals);</P></ITEM>
+<ITEM><P>Sieving apparatus — sieving should be done by hand; sieving aids (rubber cubes of 20 mm side);</P></ITEM>
+<ITEM><P>Precision scales.</P></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><P>Method:</P></TI></TITLE>
+<P>Normally the pearled barley is passed through six different sieves; the set of sieves is closed at the top and bottom with the sieve with the largest holes placed at the top; the top and bottom sieves should be empty after sieving.</P><P>Two samples of pearled barley of a checked weight of between 50 and 100 grammes are sifted by hand for at least five minutes, with the aid of the rubber cubes.</P><P>Sieving consists of taking hold of the set of sieves with the hand and shaking it, more or less horizontally, 120 times per minute, each shake travelling about 70 mm. This to-and-fro movement is interrupted every minute by a triple circular movement. The sieved residues are weighed to the nearest 0·1 g and expressed as a percentage of the sieved product which shall be weighed to the nearest whole number, and the average calculated.</P><P>The average of the percentages of the sieved residues should be added progressively, starting with the value 0 % in respect of the residue from the empty sieve with the largest holes. The added percentages &#x2208; (%) and the sizes of the holes in the corresponding sieves are plotted in co-ordinated axes on millimetric paper, the &#x2208; (%) in ordinates and the diameters of the holes, in mm, in abscissae.</P><P>The median value (dm) is the hole width expressed in hundreths of mm for &#x2208; (%) = 50, and is read off the graph obtained by joining the points by straight lines.</P></GR.SEQ></GR.SEQ></GR.SEQ></CONTENTS></CONS.ANNEX>
+<?CLG.MDFC ID="C002001M001000" IDREF="O002001M001000"?></CONS.DOC></CONS.ACT>

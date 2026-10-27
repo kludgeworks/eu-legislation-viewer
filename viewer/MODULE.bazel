@@ -12,6 +12,10 @@ maven.install(
         # XSLT and its tests
         "net.sf.saxon:Saxon-HE:13.1",
         "io.xspec:xspec:4.1.2",
+        # JAXB: code generation (tool classpath) and runtime
+        "org.glassfish.jaxb:jaxb-xjc:4.0.9",
+        "org.glassfish.jaxb:jaxb-runtime:4.0.9",
+        "jakarta.xml.bind:jakarta.xml.bind-api:4.0.5",
         # tests
         "org.junit.jupiter:junit-jupiter-api:5.14.4",
         "org.junit.jupiter:junit-jupiter-engine:5.14.4",

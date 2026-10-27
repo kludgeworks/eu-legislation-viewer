@@ -32,7 +32,12 @@
     <xsl:sequence select="exists($n[self::P or self::LIST or self::DLIST or self::TBL or self::QUOT.S
         or self::INCL.ELEMENT or self::GR.SEQ or self::NP or self::ANNOTATION or self::GR.ANNOTATION
         or self::GR.NOTES or self::PARAG or self::ALINEA or self::ITEM or self::CONS.ANNEX or self::ARTICLE
-        or self::CONTENTS])"/>
+        or self::CONTENTS or self::DIVISION or self::GR.TBL or self::FORMULA.S or self::CORRECTION or self::LETTER
+        or self::ACT.GEN or self::PREAMBLE or self::GR.VISA or self::GR.CONSID or self::CONSID or self::VISA
+        or self::PREAMBLE.INIT or self::PREAMBLE.FINAL or self::GR.CONSID.INIT or self::ENACTING.TERMS or self::FINAL
+        or self::TITLE or self::TOC or self::OLD.CORR or self::NEW.CORR or self::DESCRIPTION
+        or self::SIGNATURE or self::PL.DATE or self::SIGNATORY or self::DLIST.ITEM or self::ADDR.S or self::LOC.NOTES
+        or self::AGR or self::ACT or self::GR.VISA.INIT or self::SUBDIV or self::GENERAL])"/>
   </xsl:function>
 
   <xsl:template name="f:blocks">
@@ -79,13 +84,21 @@
 
   <!-- ============================================================ enacting terms -->
 
+  <xsl:key name="f:article-by-label" match="ARTICLE" use="f:label-after-word(TI.ART)"/>
+
+  <!-- articles are act-wide (art_14); when an act restarts its numbering in each title (2002/2370),
+       a number already taken hangs off its division instead. Deleted placeholders don't count. -->
   <xsl:template match="ARTICLE" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="division" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="label" select="f:label-after-word(TI.ART)"/>
-    <xsl:variable name="eid" select="f:eid($base, 'art', ($label[. != ''], string(count(preceding-sibling::ARTICLE) + 1))[1])"/>
+    <xsl:variable name="value" select="($label[. != ''], string(count(preceding-sibling::ARTICLE) + 1))[1]"/>
+    <xsl:variable name="taken" select="$label != '' and exists(key('f:article-by-label', $label, root(.))[. &lt;&lt; current()]
+        [not(f:covering(.)[f:is-deletion(.)])][deep-equal(ancestor::QUOT.S, current()/ancestor::QUOT.S)])"/>
+    <xsl:variable name="eid" select="f:eid(if ($taken and $division) then $division else $base, 'art', $value)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="article">
         <xsl:sequence select="f:provenance($m)"/>
@@ -134,9 +147,18 @@
     </xsl:if>
     <xsl:if test="$heading">
       <heading>
-        <xsl:call-template name="f:inlines">
-          <xsl:with-param name="nodes" select="$heading/node()"/>
-        </xsl:call-template>
+        <xsl:choose>
+          <xsl:when test="$heading/P">
+            <xsl:call-template name="f:lines">
+              <xsl:with-param name="lines" select="$heading/P"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="f:inlines">
+              <xsl:with-param name="nodes" select="$heading/node()"/>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
       </heading>
     </xsl:if>
     <xsl:variable name="body" select="* except ($num, $heading)"/>
@@ -178,6 +200,80 @@
     <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
   </xsl:template>
 
+  <!-- Parts, titles, chapters and sections (Formex DIVISION): unit kind="division", its title line as
+       num (CHAPTER III). The eId is dvs_ and the label after the type word, nested under the enclosing
+       division; the kind of grouping isn't classified, since that would mean reading each language's
+       wording. Articles inside keep act-wide eIds (art_14), as in AKN4EU and ELI. -->
+  <xsl:template match="DIVISION" mode="block">
+    <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
+    <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
+    <xsl:param name="base" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="division" as="xs:string?" tunnel="yes"/>
+    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="line" select="TITLE/TI/*[1]"/>
+    <xsl:variable name="label" select="((if ($line/self::NP) then f:label($line/NO.P) else f:label-after-word($line))[. != ''],
+                                        string(count(preceding-sibling::DIVISION) + 1))[1]"/>
+    <!-- in an annex or a quoted structure, articles and divisions hang off the enclosing unit -->
+    <xsl:variable name="outer" select="if (ancestor::*[self::CONS.ANNEX or self::ANNEX or self::QUOT.S]) then $base else ()"/>
+    <xsl:variable name="eid" select="f:eid(($division, $outer)[1], 'dvs', $label)"/>
+    <xsl:variable name="unit" as="element()">
+      <unit eId="{$eid}" kind="division">
+        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:call-template name="f:title">
+          <xsl:with-param name="title" select="TITLE"/>
+          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
+        </xsl:call-template>
+        <xsl:call-template name="f:blocks">
+          <xsl:with-param name="nodes" select="node() except TITLE"/>
+          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
+          <xsl:with-param name="pending" select="()" tunnel="yes"/>
+          <xsl:with-param name="base" select="$outer" tunnel="yes"/>
+          <xsl:with-param name="division" select="$eid" tunnel="yes"/>
+        </xsl:call-template>
+      </unit>
+    </xsl:variable>
+    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+  </xsl:template>
+
+  <!-- a titled part of an article in an agreement (SUBDIV, "(1) Objectives"): unit kind="subdivision",
+       eId subdvs_ and its number, as AKN's subdivision; its paragraphs and subparagraphs hang off it -->
+  <xsl:template match="SUBDIV" mode="block">
+    <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
+    <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
+    <xsl:param name="base" as="xs:string?" tunnel="yes"/>
+    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="eid" select="f:eid($base, 'subdvs', (f:label(TITLE/TI/NP[1]/NO.P)[. != ''], string(count(preceding-sibling::SUBDIV) + 1))[1])"/>
+    <xsl:variable name="body" select="* except TITLE"/>
+    <xsl:variable name="unit" as="element()">
+      <unit eId="{$eid}" kind="subdivision">
+        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:call-template name="f:title">
+          <xsl:with-param name="title" select="TITLE"/>
+          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
+        </xsl:call-template>
+        <xsl:choose>
+          <xsl:when test="count($body) = 1 and $body/self::ALINEA">
+            <xsl:variable name="own" select="f:new-markers($body, ($ctx, f:ids($m)))"/>
+            <xsl:call-template name="f:blocks">
+              <xsl:with-param name="nodes" select="$body/node()"/>
+              <xsl:with-param name="ctx" select="($ctx, f:ids($m), f:ids($own))" tunnel="yes"/>
+              <xsl:with-param name="pending" select="$own" tunnel="yes"/>
+              <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select="$body" mode="block">
+              <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
+              <xsl:with-param name="pending" select="()" tunnel="yes"/>
+              <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+            </xsl:apply-templates>
+          </xsl:otherwise>
+        </xsl:choose>
+      </unit>
+    </xsl:variable>
+    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+  </xsl:template>
+
   <!-- ============================================================ paragraphs and lists -->
 
   <!-- a P is no block of its own: it becomes as many blocks as it holds (text, a list, a table) -->
@@ -197,6 +293,7 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="first-block" select="TXT/node()[f:is-block(.)][1]"/>
     <xsl:variable name="p" as="element()">
       <p>
         <xsl:sequence select="f:provenance($m)"/>
@@ -207,14 +304,14 @@
           </xsl:call-template>
         </num>
         <xsl:call-template name="f:inlines">
-          <xsl:with-param name="nodes" select="TXT/node()"/>
+          <xsl:with-param name="nodes" select="TXT/node()[empty($first-block) or . &lt;&lt; $first-block]"/>
           <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
       </p>
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $p)"/>
     <xsl:call-template name="f:blocks">
-      <xsl:with-param name="nodes" select="node() except (NO.P, TXT)"/>
+      <xsl:with-param name="nodes" select="TXT/node()[exists($first-block) and not(. &lt;&lt; $first-block)], node() except (NO.P, TXT)"/>
       <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
       <xsl:with-param name="pending" select="()" tunnel="yes"/>
     </xsl:call-template>
@@ -229,7 +326,8 @@
     <xsl:param name="e" as="element()"/>
     <xsl:sequence select="$e/ancestor::*[self::ITEM or self::ARTICLE or self::PARAG or self::ALINEA or self::GR.SEQ
         or self::DLIST.ITEM or self::CONS.ANNEX or self::ANNEX or self::QUOT.S or self::TBL or self::CONSID
-        or self::VISA or self::NOTE][1]"/>
+        or self::VISA or self::NOTE or self::DIVISION or self::CORRECTION or self::OLD.CORR or self::NEW.CORR
+        or self::LETTER or self::SUBDIV][1]"/>
   </xsl:function>
 
   <!-- points of a list hang off the enclosing unit; when it holds several lists (6.5.2 has two,
@@ -239,7 +337,9 @@
     <xsl:param name="list" as="element()"/>
     <xsl:param name="base" as="xs:string?"/>
     <xsl:variable name="scope" select="f:scope($list)"/>
-    <xsl:variable name="siblings" select="$scope//(LIST | DLIST)[f:scope(.) is $scope]"/>
+    <xsl:variable name="siblings" select="
+        if ($scope) then $scope//(LIST | DLIST)[f:scope(.) is $scope]
+        else root($list)//(LIST | DLIST)[empty(f:scope(.))]"/>
     <xsl:sequence select="
         if ($siblings[. &lt;&lt; $list])
         then f:eid($base, 'lst', string(count($siblings[. &lt;&lt; $list]) + 1))
@@ -268,6 +368,12 @@
     <xsl:sequence select="f:wrap-deleted($m, $list)"/>
   </xsl:template>
 
+  <!-- an item a deletion marker covers, itself or its NP -->
+  <xsl:function name="f:is-deleted-item" as="xs:boolean">
+    <xsl:param name="item" as="element(ITEM)"/>
+    <xsl:sequence select="exists(($item, $item/NP) ! f:covering(.)[f:is-deletion(.)])"/>
+  </xsl:function>
+
   <xsl:template match="ITEM" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
@@ -277,8 +383,14 @@
     <xsl:variable name="np" select="if (count(*) = 1 and NP) then f:new-markers(NP, ($ctx, f:ids($own))) else ()"/>
     <xsl:variable name="m" select="($pending, $own, $np)"/>
     <xsl:variable name="label" select="f:label(NP/NO.P)"/>
+    <!-- a label an earlier live point of the same list already has (2025/24 nests (2), (3) of one
+         point in the outer list, next to its own (2), (3)): the repeat is numbered, pnt_2-2. A
+         deleted placeholder doesn't count, nor is it numbered: a replacement may reuse its label. -->
+    <xsl:variable name="repeat" select="
+        if ($label = '' or f:is-deleted-item(.)) then 0
+        else count(preceding-sibling::ITEM[f:label(NP/NO.P) = $label][not(f:is-deleted-item(.))])"/>
     <xsl:variable name="eid" select="
-        if ($label != '') then f:eid($base, 'pnt', $label)
+        if ($label != '') then f:eid($base, 'pnt', $label || (if ($repeat gt 0) then '-' || ($repeat + 1) else ''))
         else f:eid($base, 'idt', string(count(preceding-sibling::ITEM) + 1))"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="{if (NP/NO.P) then 'point' else 'indent'}">
@@ -362,13 +474,24 @@
        don't depend on where the Publications Office cut the file. -->
   <xsl:function name="f:annex-groups" as="array(element())*">
     <xsl:param name="annexes" as="element()*"/>
-    <xsl:for-each-group select="$annexes" group-starting-with="*[
-        f:annex-label(.) != ''
-        or not(preceding-sibling::*[1][self::CONS.ANNEX] or self::ANNEX)
-        or normalize-space(TITLE) != normalize-space((preceding-sibling::CONS.ANNEX[1], .)[1]/TITLE)
-        or f:annex-label((preceding-sibling::CONS.ANNEX[1], .)[1]) != '']">
-      <xsl:sequence select="array{current-group()}"/>
-    </xsl:for-each-group>
+    <xsl:iterate select="$annexes">
+      <xsl:param name="group" as="element()*" select="()"/>
+      <xsl:on-completion>
+        <xsl:sequence select="if (exists($group)) then array{$group} else ()"/>
+      </xsl:on-completion>
+      <xsl:variable name="previous" select="$group[last()]"/>
+      <xsl:variable name="continues" select="exists($previous) and f:annex-label(.) = '' and f:annex-label($previous) = ''
+                                             and normalize-space(TITLE) = normalize-space($previous/TITLE)"/>
+      <xsl:choose>
+        <xsl:when test="$continues">
+          <xsl:next-iteration><xsl:with-param name="group" select="$group, ."/></xsl:next-iteration>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:sequence select="if (exists($group)) then array{$group} else ()"/>
+          <xsl:next-iteration><xsl:with-param name="group" select="."/></xsl:next-iteration>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:iterate>
   </xsl:function>
 
   <!-- one annex, from one or more fragments ($fragments; a nested annex is its own fragment) -->
@@ -516,6 +639,7 @@
         [not(f:covering(.)[f:is-deletion(.)])]
         [let $s := f:level-scope(.) return
            if ($scope/self::CONS.ANNEX and $s/self::CONS.ANNEX) then empty($s/parent::CONS.ANNEX) = empty($scope/parent::CONS.ANNEX)
+           else if (empty($scope)) then empty($s)
            else $s is $scope])"/>
   </xsl:function>
 
@@ -635,6 +759,33 @@
     <xsl:apply-templates select="GR.SEQ" mode="block"/>
   </xsl:template>
 
+  <!-- tables that belong together under one title -->
+  <xsl:template match="GR.TBL" mode="block">
+    <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
+    <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
+    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="group" as="element()">
+      <tableGroup>
+        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:if test="TITLE">
+          <caption>
+            <xsl:call-template name="f:blocks">
+              <xsl:with-param name="nodes" select="TITLE/TI/node(), TITLE/STI/node()"/>
+              <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
+              <xsl:with-param name="pending" select="()" tunnel="yes"/>
+            </xsl:call-template>
+          </caption>
+        </xsl:if>
+        <xsl:call-template name="f:blocks">
+          <xsl:with-param name="nodes" select="node() except TITLE"/>
+          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
+          <xsl:with-param name="pending" select="()" tunnel="yes"/>
+        </xsl:call-template>
+      </tableGroup>
+    </xsl:variable>
+    <xsl:sequence select="f:wrap-deleted($m, $group)"/>
+  </xsl:template>
+
   <xsl:template match="ROW" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
@@ -703,7 +854,9 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="unit" select="ancestor::*[self::ITEM or self::ARTICLE or self::PARAG or self::ALINEA
-                                                  or self::GR.SEQ or self::DLIST.ITEM or self::ANNEX][1]"/>
+                                                  or self::GR.SEQ or self::DLIST.ITEM or self::ANNEX or self::CONS.ANNEX
+                                                  or self::OLD.CORR or self::NEW.CORR or self::DIVISION or self::LETTER
+                                                  or self::CONSID or self::VISA or self::NOTE][1]"/>
     <xsl:variable name="eid" select="f:eid($base, 'qst', string(count($unit//QUOT.S[. &lt;&lt; current()]) + 1))"/>
     <quotedStructure eId="{$eid}">
       <xsl:call-template name="f:blocks">
@@ -747,9 +900,34 @@
     <figure src="{@FILEREF}"/>
   </xsl:template>
 
-  <xsl:template match="INCL.ELEMENT" mode="block">
-    <xsl:sequence select="f:unknown(., 'INCL.ELEMENT TYPE=' || @TYPE || ' (transclusion is not supported yet)')"/>
+  <!-- another Formex file of the same package, included here: its content, in place -->
+  <xsl:template match="INCL.ELEMENT[@TYPE = 'FORMEX.DOC']" mode="block">
+    <xsl:variable name="included" select="doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
+    <xsl:choose>
+      <xsl:when test="$included/self::ANNEX">
+        <xsl:call-template name="f:blocks">
+          <xsl:with-param name="nodes" select="$included/CONTENTS/node()"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="$included" mode="block"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
+
+  <xsl:template match="INCL.ELEMENT" mode="block">
+    <xsl:sequence select="f:unknown(., 'INCL.ELEMENT TYPE=' || @TYPE)"/>
+  </xsl:template>
+
+  <!-- an address: its lines as paragraphs -->
+  <xsl:template match="ADDR.S | ADDR" mode="block">
+    <xsl:call-template name="f:blocks">
+      <xsl:with-param name="nodes" select="node()"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- where the source prints its notes; notes are collected at the end anyway -->
+  <xsl:template match="LOC.NOTES" mode="block"/>
 
   <!-- a CONTENTS inside a level (05.56): transparent -->
   <xsl:template match="CONTENTS" mode="block">
@@ -757,6 +935,86 @@
       <xsl:with-param name="nodes" select="node()"/>
     </xsl:call-template>
   </xsl:template>
+
+  <!-- ============================================================ corrigenda, letters, embedded documents -->
+
+  <!-- one correction of a corrigendum: where, then the old and the new wording -->
+  <xsl:template match="CORRECTION" mode="block">
+    <xsl:variable name="eid" select="'cor_' || (count(preceding::CORRECTION) + 1)"/>
+    <unit eId="{$eid}" kind="correction">
+      <xsl:call-template name="f:blocks">
+        <xsl:with-param name="nodes" select="node()"/>
+        <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+      </xsl:call-template>
+    </unit>
+  </xsl:template>
+
+  <xsl:template match="DESCRIPTION" mode="block">
+    <xsl:call-template name="f:blocks">
+      <xsl:with-param name="nodes" select="node()"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- the wording as published (old) and as corrected (new); both quote the same structure, so
+       each has its own eId segment: cor_1/old/…, cor_1/new/… -->
+  <xsl:template match="OLD.CORR | NEW.CORR" mode="block">
+    <xsl:param name="base" as="xs:string?" tunnel="yes"/>
+    <xsl:variable name="side" select="if (self::OLD.CORR) then 'old' else 'new'"/>
+    <xsl:element name="{$side}">
+      <xsl:call-template name="f:blocks">
+        <xsl:with-param name="nodes" select="node()"/>
+        <xsl:with-param name="base" select="f:eid($base, $side, ())" tunnel="yes"/>
+        <xsl:with-param name="levelBase" select="f:eid($base, $side, ())" tunnel="yes"/>
+        <xsl:with-param name="levelCtx" select="()" tunnel="yes"/>
+        <xsl:with-param name="parentLevel" select="()" tunnel="yes"/>
+      </xsl:call-template>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- a letter of an exchange of letters attached to an agreement -->
+  <xsl:template match="LETTER" mode="block">
+    <xsl:variable name="eid" select="'let_' || (count(preceding-sibling::LETTER) + 1)"/>
+    <unit eId="{$eid}" kind="letter">
+      <xsl:if test="TITLE">
+        <heading>
+          <xsl:call-template name="f:lines">
+            <xsl:with-param name="lines" select="TITLE/TI/*, TITLE/STI/*"/>
+          </xsl:call-template>
+        </heading>
+      </xsl:if>
+      <xsl:call-template name="f:blocks">
+        <xsl:with-param name="nodes" select="node() except TITLE"/>
+        <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+      </xsl:call-template>
+    </unit>
+  </xsl:template>
+
+  <!-- the parts of an act met inside another document's content (CONS.OTH, letters): their text,
+       in order, as blocks -->
+  <xsl:template match="ACT.GEN | PREAMBLE | GR.VISA | GR.CONSID | CONSID | VISA | PREAMBLE.INIT | PREAMBLE.FINAL
+                       | GR.CONSID.INIT | GR.VISA.INIT | ENACTING.TERMS | FINAL | SIGNATURE | PL.DATE | SIGNATORY" mode="block">
+    <xsl:call-template name="f:blocks">
+      <xsl:with-param name="nodes" select="node()"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- a title met inside content: its lines as paragraphs -->
+  <xsl:template match="TITLE" mode="block">
+    <xsl:call-template name="f:blocks">
+      <xsl:with-param name="nodes" select="TI/node(), STI/node()"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- an agreement quoted whole, e.g. in a corrigendum that replaces its text; a protocol an
+       agreement's annex includes (written as GENERAL, 06.02.1) -->
+  <xsl:template match="AGR | ACT | GENERAL" mode="block">
+    <xsl:call-template name="f:blocks">
+      <xsl:with-param name="nodes" select="node() except BIB.INSTANCE"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- a table of contents is navigation the reader builds from the units; not text -->
+  <xsl:template match="TOC" mode="block"/>
 
   <!-- notes are collected at the end of the document -->
   <xsl:template match="GR.NOTES" mode="block"/>

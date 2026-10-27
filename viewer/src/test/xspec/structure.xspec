@@ -69,6 +69,20 @@
               test="$x:result//*:list/*:unit/@eId = ('pnt_6.5.2/pnt_a', 'pnt_6.5.2/lst_2/pnt_a')"/>
   </x:scenario>
 
+  <x:scenario label="A label repeated in one list (2025/24)">
+    <x:context mode="block" xmlns="">
+      <LIST TYPE="ARAB"><ITEM><NP><NO.P>(2)</NO.P><TXT>Annex III</TXT></NP></ITEM><ITEM><NP><NO.P>(3)</NO.P><TXT>Annex IV</TXT></NP></ITEM><ITEM><NP><NO.P>(2)</NO.P><TXT>point (b)(1)</TXT></NP></ITEM></LIST>
+    </x:context>
+    <x:expect label="numbers the repeat" test="$x:result/*:unit/@eId = ('pnt_2', 'pnt_3', 'pnt_2-2')"/>
+  </x:scenario>
+
+  <x:scenario label="A deleted point and a new one with its label">
+    <x:context mode="block" xmlns="">
+      <LIST TYPE="ARAB"><?CLG.MDFO ID="O1" ACTION="DELETED" ACTIVE.DOC="32026R0449"?><ITEM><NP><NO.P>(2)</NO.P><TXT>old</TXT></NP></ITEM><?CLG.MDFC IDREF="O1"?><ITEM><NP><NO.P>(2)</NO.P><TXT>new</TXT></NP></ITEM></LIST>
+    </x:context>
+    <x:expect label="keep the plain label" test="$x:result//*:unit/@eId = ('pnt_2', 'pnt_2')"/>
+  </x:scenario>
+
   <x:scenario label="A definition list">
     <x:context mode="block" xmlns="">
       <DLIST><DLIST.ITEM><PREFIX>(1)</PREFIX><TERM>'cargo'</TERM><DEFINITION>means any property</DEFINITION></DLIST.ITEM></DLIST>

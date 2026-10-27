@@ -1,4 +1,7 @@
 # SPDX-License-Identifier: MIT
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["legal-text.xsd"])
+exports_files([
+    "legal-text.xsd",
+    "bindings.xjb",
+])

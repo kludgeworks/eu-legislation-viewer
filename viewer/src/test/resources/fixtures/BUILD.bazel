@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: MIT
+package(default_visibility = ["//visibility:public"])
+
+# Raw Formex as Cellar serves it, never edited or reformatted:
+#   formex/<Formex version>/<CELEX>/  documents in scope, one or more per version and document type
+#   refused/<root element>/          documents out of scope (notices, case law, OJ tables of contents)
+filegroup(
+    name = "fixtures",
+    srcs = glob(["formex/**", "refused/**"], exclude = ["**/BUILD.bazel"]),
+)
+
+# the subset the XSpec suites read
+filegroup(
+    name = "formex",
+    srcs = glob(["formex/**/*.xml"]),
+)

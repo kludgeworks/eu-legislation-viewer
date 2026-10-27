@@ -9,9 +9,11 @@ java_junit5_test(
     data = [
         "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:legal-text.xsd",
         "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt",
-        "//src/test/resources/fixtures/formex",
+        "//src/test/resources/fixtures",
     ],
     deps = [
+        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml",
+        "@maven//:jakarta_xml_bind_jakarta_xml_bind_api",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
     ],

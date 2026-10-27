@@ -1,0 +1,1491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CONS.OTH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.20-20100601.xd">
+<INFO.CONSLEG CONSLEG.DATE="20110729" CONSLEG.REF="2003X0217" DATE.LAST.MOD="20110715" END="NONE" END.DATE="99999999" LEG.VAL="OTHER" PROD.SEQ="002.001.0" START.DATE="20110715"/>
+<INFO.PROD PROD.DATE="20110729" PROD.SYSTEM="CONSLEG.NEW" PRODUCER="ES"/>
+<CONS.OTH.DOC><BIB.INSTANCE>
+<DOCUMENT.REF FILE="CL2003X0217EN0020010.0001.doc.xml"><LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>1</PAGE.FIRST></DOCUMENT.REF>
+<DATE ISO="20110715">20110715</DATE>
+<LG.DOC>EN</LG.DOC>
+<PAGE.FIRST>1</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>54</PAGE.LAST>
+<PAGE.TOTAL>54</PAGE.TOTAL></BIB.INSTANCE>
+<FAM.COMP LEG.VAL="OTHER"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>C</COLL>
+<NO.OJ>038</NO.OJ>
+<YEAR>2003</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>1</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<VOLUME.REF>01</VOLUME.REF></DOCUMENT.REF.CONS><DATE ISO="20030217">20030217</DATE>
+<LG.DOC>EN</LG.DOC>
+<NO.SEQ>0001</NO.SEQ>
+<PAGE.FIRST>1</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>24</PAGE.LAST>
+<PAGE.TOTAL>24</PAGE.TOTAL>
+<NO.DOC FORMAT="YN" TYPE="OJ"><NO.CURRENT>19</NO.CURRENT>
+<YEAR>2003</YEAR>
+<COM>EC</COM></NO.DOC></BIB.INSTANCE.CONS>
+<NO.CELEX>32003X0217(01)</NO.CELEX>
+<DATE ISO="20021014">20021014</DATE>
+<?CLG.MDFO ID="O002001M001001" IDREF="C002001M001001" ACTION="REPLACED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="32011D0406" ACTIVE.LOC="AR:1 .AND. AX:0" MOD.LEVEL="1" ?>
+<TITLE><TI>
+<P>SIRENE MANUAL</P></TI></TITLE>
+<?CLG.MDFC ID="C002001M001001" IDREF="O002001M001001"?></BIB.DATA>
+<GR.MOD.ACT><MOD.ACT EXISTS="YES" LEG.VAL="DEC" TYPE="MOD">
+<BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>317</NO.OJ>
+<YEAR>2006</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>1</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<VOLUME.REF>01</VOLUME.REF></DOCUMENT.REF.CONS><DATE ISO="20061116">20061116</DATE>
+<LG.DOC>EN</LG.DOC>
+<NO.SEQ>0001</NO.SEQ>
+<PAGE.FIRST>1</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>40</PAGE.LAST>
+<PAGE.TOTAL>40</PAGE.TOTAL>
+<NO.DOC FORMAT="YN" TYPE="OJ"><NO.CURRENT>757</NO.CURRENT>
+<YEAR>2006</YEAR>
+<COM>EC</COM></NO.DOC></BIB.INSTANCE.CONS>
+<NO.CELEX>32006D0757</NO.CELEX>
+<DATE ISO="20060922">20060922</DATE>
+<TITLE><TI>
+<P><HT TYPE="UC">Commission Decision</HT></P><P>of <DATE ISO="20060922">22 September 2006</DATE></P><P>on amending the Sirene Manual</P><P>(notified under document number C(2006) 4094)</P><P>(Only the Czech, Dutch, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Maltese, Polish, Portuguese, Slovak, Slovenian, Spanish, and Swedish texts are authentic)</P><P>(2006/757/EC)</P></TI></TITLE></BIB.DATA></MOD.ACT>
+<MOD.ACT EXISTS="YES" LEG.VAL="DEC" TYPE="MOD"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>317</NO.OJ>
+<YEAR>2006</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>41</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<VOLUME.REF>01</VOLUME.REF></DOCUMENT.REF.CONS><DATE ISO="20061116">20061116</DATE>
+<LG.DOC>EN</LG.DOC>
+<NO.SEQ>0002</NO.SEQ>
+<PAGE.FIRST>41</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>80</PAGE.LAST>
+<PAGE.TOTAL>40</PAGE.TOTAL>
+<NO.DOC FORMAT="YN" TYPE="OJ"><NO.CURRENT>758</NO.CURRENT>
+<YEAR>2006</YEAR>
+<COM>EC</COM></NO.DOC></BIB.INSTANCE.CONS>
+<NO.CELEX>32006D0758</NO.CELEX>
+<DATE ISO="20060922">20060922</DATE>
+<TITLE><TI>
+<P><HT TYPE="UC">Commission Decision</HT></P><P>of <DATE ISO="20060922">22 September 2006</DATE></P><P>on amending the Sirene Manual</P><P>(2006/758/EC)</P></TI></TITLE></BIB.DATA></MOD.ACT>
+<MOD.ACT EXISTS="YES" LEG.VAL="DEC" TYPE="MOD"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>186</NO.OJ>
+<YEAR>2011</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>1</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<VOLUME.REF>01</VOLUME.REF></DOCUMENT.REF.CONS><DATE ISO="20110715">20110715</DATE>
+<LG.DOC>EN</LG.DOC>
+<NO.SEQ>0001</NO.SEQ>
+<PAGE.FIRST>1</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>37</PAGE.LAST>
+<PAGE.TOTAL>37</PAGE.TOTAL>
+<NO.DOC FORMAT="YN" TYPE="OJ"><NO.CURRENT>406</NO.CURRENT>
+<YEAR>2011</YEAR>
+<COM>EU</COM></NO.DOC></BIB.INSTANCE.CONS>
+<NO.CELEX>32011D0406</NO.CELEX>
+<DATE ISO="20110701">20110701</DATE>
+<TITLE><TI>
+<P><HT TYPE="UC">Commission Implementing Decision</HT></P><P>of <DATE ISO="20110701">1 July 2011</DATE></P><P>amending the SIRENE Manual</P><P>(notified under document C(2011) 4574)</P><P>(Only the Bulgarian, Czech, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Maltese, Polish, Portuguese, Romanian, Slovak, Slovenian, Spanish and Swedish texts are authentic)</P><P>(2011/406/EU)</P></TI></TITLE></BIB.DATA></MOD.ACT></GR.MOD.ACT></FAM.COMP><?PAGE NO='2'?>
+<CONS.DOC.GEN TYPE="ANNEX"><?CLG.MDFO ID="O002001M001002" IDREF="C002001M001002" ACTION="REPLACED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="32011D0406" ACTIVE.LOC="AR:1 .AND. AX:0" MOD.LEVEL="1" ?>
+<TITLE><TI>
+<P>SIRENE MANUAL</P></TI></TITLE>
+<?CLG.MDFC ID="C002001M001002" IDREF="O002001M001002"?>
+<?CLG.MDFO ID="O002001M002000" IDREF="C002001M002000" ACTION="REPLACED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="32011D0406" ACTIVE.LOC="AR:1 .AND. AX:0" MOD.LEVEL="1" ?>
+<TOC><TITLE>
+<TI><P>TABLE OF CONTENTS</P></TI></TITLE>
+<TOC.BLK><TOC.ITEM>
+<ITEM.CONT>INTRODUCTION</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>1.</NO.ITEM>
+<ITEM.CONT>THE SCHENGEN INFORMATION SYSTEM (SIS) AND THE NATIONAL SIRENE BUREAUX</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.1.</NO.ITEM>
+<ITEM.CONT>The SIRENE bureaux</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.2.</NO.ITEM>
+<ITEM.CONT>SIRENE Manual</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>1.3.</NO.ITEM>
+<ITEM.CONT>Standards</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.3.1.</NO.ITEM>
+<ITEM.CONT>Availability</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.3.2.</NO.ITEM>
+<ITEM.CONT>Continuity</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.3.3.</NO.ITEM>
+<ITEM.CONT>Security</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.3.4.</NO.ITEM>
+<ITEM.CONT>Accessibility</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.3.5.</NO.ITEM>
+<ITEM.CONT>Communications</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.3.6.</NO.ITEM>
+<ITEM.CONT>Transliteration rules</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.3.7.</NO.ITEM>
+<ITEM.CONT>Data quality</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.3.8.</NO.ITEM>
+<ITEM.CONT>Structures</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.3.9.</NO.ITEM>
+<ITEM.CONT>Archiving</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>1.4.</NO.ITEM>
+<ITEM.CONT>Staff</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.4.1.</NO.ITEM>
+<ITEM.CONT>Knowledge</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.4.2.</NO.ITEM>
+<ITEM.CONT>Training</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.4.3.</NO.ITEM>
+<ITEM.CONT>Exchange of staff</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>1.5.</NO.ITEM>
+<ITEM.CONT>Technical infrastructure</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.5.1.</NO.ITEM>
+<ITEM.CONT>SIRENE work-flow system</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.5.2.</NO.ITEM>
+<ITEM.CONT>Automatic introduction of data</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.5.3.</NO.ITEM>
+<ITEM.CONT>Automatic deletion of data</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.5.4.</NO.ITEM>
+<ITEM.CONT>Data Exchange between SIRENE bureaux</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>1.5.5.</NO.ITEM>
+<ITEM.CONT>Data quality in the SIS</ITEM.CONT></TOC.ITEM></TOC.BLK></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>2.</NO.ITEM>
+<ITEM.CONT>GENERAL PROCEDURES</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>2.1.</NO.ITEM>
+<ITEM.CONT>Multiple alerts (Article 107)</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.1.1.</NO.ITEM>
+<ITEM.CONT>Compatibility of alerts and order of priority</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.1.2.</NO.ITEM>
+<ITEM.CONT>Checking for multiple alerts on a person</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.1.3.</NO.ITEM>
+<ITEM.CONT>Negotiating the entry of a new alert if this is incompatible with an existing alert</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<?PAGE NO='3'?>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>2.2.</NO.ITEM>
+<ITEM.CONT>The exchange of information after a hit</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.2.1.</NO.ITEM>
+<ITEM.CONT>Procedures following a hit</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.2.2.</NO.ITEM>
+<ITEM.CONT>Communicating further information</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.ITEM><NO.ITEM>2.3.</NO.ITEM>
+<ITEM.CONT>When the procedures following a hit cannot be followed (Article 104(3))</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.4.</NO.ITEM>
+<ITEM.CONT>If the original purpose of the alert is altered (Article 102(3))</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.5.</NO.ITEM>
+<ITEM.CONT>Data found to be legally or factually inaccurate (Article 106)</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>2.6.</NO.ITEM>
+<ITEM.CONT>The right to access and rectify data (Articles 109 and 110)</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.6.1.</NO.ITEM>
+<ITEM.CONT>The exchange of information regarding the right to access or rectify data</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.6.2.</NO.ITEM>
+<ITEM.CONT>Information on requests for access to, or correction or deletion of alerts issued by other Member States</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.6.3.</NO.ITEM>
+<ITEM.CONT>Information on access and rectification procedures</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.ITEM><NO.ITEM>2.7.</NO.ITEM>
+<ITEM.CONT>Deletion of an alert when the conditions for maintaining it cease to be met</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.8.</NO.ITEM>
+<ITEM.CONT>Misused Identity</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.9.</NO.ITEM>
+<ITEM.CONT>Entering an alias</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>2.10.</NO.ITEM>
+<ITEM.CONT>SIRPIT (SIRENE Picture Transfer)</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.10.1.</NO.ITEM>
+<ITEM.CONT>Development and background of SIRPIT (SIRENE Picture Transfer)</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.10.2.</NO.ITEM>
+<ITEM.CONT>Use of the data exchanged, including archiving</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.10.3.</NO.ITEM>
+<ITEM.CONT>Technical requirements</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.10.4.</NO.ITEM>
+<ITEM.CONT>The national identification service</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.10.5.</NO.ITEM>
+<ITEM.CONT>Use of the SIRENE <HT TYPE="BOLD">L form</HT></ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>2.10.6.</NO.ITEM>
+<ITEM.CONT>SIRPIT procedure</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.10.6.1.</NO.ITEM>
+<ITEM.CONT>The discovering SIRENE bureau makes the comparison</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.10.6.2.</NO.ITEM>
+<ITEM.CONT>The providing SIRENE bureau makes the comparison</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.10.6.3.</NO.ITEM>
+<ITEM.CONT>Input screen</ITEM.CONT></TOC.ITEM></TOC.BLK></TOC.BLK>
+<TOC.ITEM><NO.ITEM>2.11.</NO.ITEM>
+<ITEM.CONT>Role of the SIRENE bureaux in police cooperation in the European Union</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>2.12.</NO.ITEM>
+<ITEM.CONT>Relations between SIRENE and Interpol</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.12.1.</NO.ITEM>
+<ITEM.CONT>Priority of SIS alerts over Interpol alerts</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.12.2.</NO.ITEM>
+<ITEM.CONT>Choice of communication channel</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.12.3.</NO.ITEM>
+<ITEM.CONT>Use and distribution of Interpol diffusions and notices in Schengen states</ITEM.CONT></TOC.ITEM>
+<?PAGE NO='4'?>
+<TOC.ITEM><NO.ITEM>2.12.4.</NO.ITEM>
+<ITEM.CONT>Sending information to third countries</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.12.5.</NO.ITEM>
+<ITEM.CONT>Hit and deletion of an alert</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.12.6.</NO.ITEM>
+<ITEM.CONT>Improvement of cooperation between the SIRENE bureaux and the Interpol NCBs</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.ITEM><NO.ITEM>2.13.</NO.ITEM>
+<ITEM.CONT>Cooperation with EUROPOL and EUROJUST</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>2.14.</NO.ITEM>
+<ITEM.CONT>Special types of search</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.14.1.</NO.ITEM>
+<ITEM.CONT>Geographically targeted search</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.14.2.</NO.ITEM>
+<ITEM.CONT>Search with participation of special police units for targeted search (FAST)</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>2.15.</NO.ITEM>
+<ITEM.CONT>Flagging</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.15.1.</NO.ITEM>
+<ITEM.CONT>Consulting the Member States with a view to adding a flag</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>2.15.2.</NO.ITEM>
+<ITEM.CONT>A request for deletion of a flag</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.ITEM><NO.ITEM>2.16.</NO.ITEM>
+<ITEM.CONT>Indication of urgency in SIRENE forms</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>3.</NO.ITEM>
+<ITEM.CONT>ALERTS PURSUANT TO ARTICLE 95</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.1.</NO.ITEM>
+<ITEM.CONT>Member State checks prior to issuing the alert</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.2.</NO.ITEM>
+<ITEM.CONT>Checking whether the national law of the Member States authorises arrest with a view to surrender or extradition</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>3.3.</NO.ITEM>
+<ITEM.CONT>Multiple alerts</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.3.1.</NO.ITEM>
+<ITEM.CONT>Check for multiple alerts (Article 107)</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.3.2.</NO.ITEM>
+<ITEM.CONT>Exchange of information</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>3.4.</NO.ITEM>
+<ITEM.CONT>Supplementary information to be sent to Member States</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.4.1.</NO.ITEM>
+<ITEM.CONT>Supplementary information to be sent with regards to an EAW</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.4.2.</NO.ITEM>
+<ITEM.CONT>Supplementary Information to be sent with regards to provisional arrest</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.4.3.</NO.ITEM>
+<ITEM.CONT>Entering an alias</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.4.4.</NO.ITEM>
+<ITEM.CONT>Further Information to establish a person’s identity</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.4.5.</NO.ITEM>
+<ITEM.CONT>Sending the <HT TYPE="BOLD">A</HT> and <HT TYPE="BOLD">M forms</HT></ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>3.5.</NO.ITEM>
+<ITEM.CONT>Flagging</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.5.1.</NO.ITEM>
+<ITEM.CONT>Systematic request for a flag to be added to alerts on persons wanted for arrest for extradition purposes where Council Framework Decision 2002/584/JHA on the European arrest warrant and the surrender procedures between Member States does not apply</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.ITEM><NO.ITEM>3.6.</NO.ITEM>
+<ITEM.CONT>Action by SIRENE bureaux upon receipt of an Article 95 alert</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>3.7.</NO.ITEM>
+<ITEM.CONT>The exchange of information after a hit</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.7.1.</NO.ITEM>
+<ITEM.CONT>Informing the Member States if an alert is matched</ITEM.CONT></TOC.ITEM>
+<?PAGE NO='5'?>
+<TOC.ITEM><NO.ITEM>3.7.2.</NO.ITEM>
+<ITEM.CONT>Communicating further information</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.7.3.</NO.ITEM>
+<ITEM.CONT>Following a hit</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.7.4.</NO.ITEM>
+<ITEM.CONT>Supplementary information exchange about surrender or extradition</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>3.8.</NO.ITEM>
+<ITEM.CONT>Deletion of an alert</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>3.8.1.</NO.ITEM>
+<ITEM.CONT>Deleting when the conditions for maintaining the alert cease to be met</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.ITEM><NO.ITEM>3.9.</NO.ITEM>
+<ITEM.CONT>Misused identity</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>4.</NO.ITEM>
+<ITEM.CONT>ALERTS PURSUANT TO ARTICLE 96</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.1.</NO.ITEM>
+<ITEM.CONT>Introduction</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.2.</NO.ITEM>
+<ITEM.CONT>Entry of alerts pursuant to Article 96</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.3.</NO.ITEM>
+<ITEM.CONT>Entering an alias</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.4.</NO.ITEM>
+<ITEM.CONT>Misused Identity</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.5.</NO.ITEM>
+<ITEM.CONT>Types of SIRENE procedures to be followed</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>4.6.</NO.ITEM>
+<ITEM.CONT>Exchange of information following a hit</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.6.1.</NO.ITEM>
+<ITEM.CONT>Exchange of information when refusing entry or expelling from the Schengen territory</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.6.2.</NO.ITEM>
+<ITEM.CONT>Exchange of information when issuing residence permits or visas</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>4.6.3.</NO.ITEM>
+<ITEM.CONT>Special procedures as provided for in Article 25 of the Schengen Convention</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.6.3.1.</NO.ITEM>
+<ITEM.CONT>Procedure under Article 25(1) of the Schengen Convention</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.6.3.2.</NO.ITEM>
+<ITEM.CONT>Procedure under Article 25(2) of the Schengen Convention</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>4.6.4.</NO.ITEM>
+<ITEM.CONT>Special procedures as provided for in Article 5(4) of the Schengen Borders Code</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.6.4.1.</NO.ITEM>
+<ITEM.CONT>Procedure in cases falling under Article 5(4)(a) of the Schengen Borders Code</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.6.4.2.</NO.ITEM>
+<ITEM.CONT>Procedure in cases falling under Article 5(4)(c) of the Schengen Borders Code</ITEM.CONT></TOC.ITEM></TOC.BLK></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>4.7.</NO.ITEM>
+<ITEM.CONT>Exchange of information on a third-country national who is a beneficiary of the right of free movement</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.7.1.</NO.ITEM>
+<ITEM.CONT>Exchange of information following a hit</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.7.2.</NO.ITEM>
+<ITEM.CONT>Exchange of information if, in the absence of a hit, a Member State discovers that there is an alert for refusal of entry for a third-country national who is a beneficiary of the right of free movement</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.ITEM><NO.ITEM>4.8.</NO.ITEM>
+<ITEM.CONT>Deletion of alerts entered for EU citizens</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>4.9.</NO.ITEM>
+<ITEM.CONT>Informing the Schengen Member States if an alert is matched</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>5.</NO.ITEM>
+<ITEM.CONT>ALERTS PURSUANT TO ARTICLE 97</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>5.1.</NO.ITEM>
+<ITEM.CONT>Flagging</ITEM.CONT></TOC.ITEM>
+<?PAGE NO='6'?>
+<TOC.ITEM><NO.ITEM>5.2.</NO.ITEM>
+<ITEM.CONT>Provision of descriptive detail on missing minors and other persons assessed as being at risk</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>5.3.</NO.ITEM>
+<ITEM.CONT>After a hit</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>6.</NO.ITEM>
+<ITEM.CONT>ALERTS PURSUANT TO ARTICLE 98</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>6.1.</NO.ITEM>
+<ITEM.CONT>After a hit</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>7.</NO.ITEM>
+<ITEM.CONT>ALERTS PURSUANT TO ARTICLE 99</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>7.1.</NO.ITEM>
+<ITEM.CONT>Entering an alias</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>7.2.</NO.ITEM>
+<ITEM.CONT>Informing other Member States when issuing alerts requested by authorities responsible for national security</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>7.3.</NO.ITEM>
+<ITEM.CONT>Flagging</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>7.4.</NO.ITEM>
+<ITEM.CONT>Communicating further information following a hit</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>8.</NO.ITEM>
+<ITEM.CONT>ALERTS PURSUANT TO ARTICLE 100</ITEM.CONT></TOC.ITEM>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>8.1.</NO.ITEM>
+<ITEM.CONT>Vehicle alerts pursuant to Article 100</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>8.1.1.</NO.ITEM>
+<ITEM.CONT>Checking for multiple alerts on a vehicle</ITEM.CONT></TOC.ITEM>
+<TOC.ITEM><NO.ITEM>8.1.2.</NO.ITEM>
+<ITEM.CONT>VIN Twins</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.ITEM><NO.ITEM>8.2.</NO.ITEM>
+<ITEM.CONT>Communicating further information following a hit</ITEM.CONT></TOC.ITEM></TOC.BLK>
+<TOC.BLK><TOC.ITEM>
+<NO.ITEM>9.</NO.ITEM>
+<ITEM.CONT>STATISTICS</ITEM.CONT></TOC.ITEM></TOC.BLK></TOC.BLK></TOC>
+<?PAGE NO='7'?>
+<CONTENTS><GR.SEQ LEVEL="1">
+<TITLE><TI>
+<P>INTRODUCTION</P></TI></TITLE>
+<P>On <DATE ISO="19850614">14 June 1985</DATE>, the Governments of the Kingdom of Belgium, the Federal Republic of Germany, the French Republic, the Grand Duchy of Luxembourg and the Kingdom of the Netherlands signed an agreement at Schengen, a small town in Luxembourg, with a view to enabling <QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001"/>(…) all nationals of the Member States to cross internal borders freely (…)<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001"/> and to enable the <QUOT.START CODE="2018" ID="QS0002" REF.END="QE0002"/>free circulation of goods and services<QUOT.END CODE="2019" ID="QE0002" REF.START="QS0002"/>.</P><P>The five founding countries signed the Convention implementing the Schengen Agreement<NOTE NOTE.ID="E0001" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="20000922" NO.OJ="239" PAGE.FIRST="19">OJ L 239, 22.9.2000, p. 19</REF.DOC.OJ>.</P></NOTE> on <DATE ISO="19900619">19 June 1990</DATE>, and were later joined by the Italian Republic on <DATE ISO="19901127">27 November 1990</DATE>, the Kingdom of Spain and the Portuguese Republic on <DATE ISO="19910625">25 June 1991</DATE>, the Hellenic Republic on <DATE ISO="19921106">6 November 1992</DATE>, the Republic of Austria on <DATE ISO="19950428">28 April 1995</DATE> and by the Kingdom of Denmark, the Kingdom of Sweden and the Republic of Finland on <DATE ISO="19961219">19 December 1996</DATE>.</P><P>The Kingdom of Norway and the Republic of Iceland also concluded a Cooperation Agreement with the Member States on <DATE ISO="19961219">19 December 1996</DATE>, in order to join this Convention.</P><P>Subsequently, as of <DATE ISO="19950326">26 March 1995</DATE>, the Schengen <HT TYPE="ITALIC">acquis</HT> was fully applied in Belgium, Germany, France, Luxembourg, Netherlands, Spain and Portugal<NOTE NOTE.ID="E0002" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Decision of the Executive Committee of <DATE ISO="19941222">22 December 1994</DATE> on bringing into force the Implementing Convention (SCH/Com-ex (94)29 rev. 2. (<REF.DOC.OJ COLL="L" DATE.PUB="20000922" NO.OJ="239" PAGE.FIRST="130">OJ L 239, 22.9.2000, p. 130</REF.DOC.OJ>).</P></NOTE>. As of <DATE ISO="19980331">31 of March 1998</DATE>, in Austria and Italy<NOTE NOTE.ID="E0003" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Decisions of the Executive Committee of <DATE ISO="19971007">7 October 1997</DATE> (SCH/com-ex 97(27) rev. 4) for Italy and (SCH/com-ex 97(28) rev. 4) for Austria.</P></NOTE>; as of <DATE ISO="20000326">26 of March 2000</DATE> in Greece<NOTE NOTE.ID="E0004" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Council Decision 1999/848/EC of <DATE ISO="19991213">13 December 1999</DATE> on the full application of the Schengen <HT TYPE="ITALIC">acquis</HT> in Greece (<REF.DOC.OJ COLL="L" DATE.PUB="19991221" NO.OJ="327" PAGE.FIRST="58">OJ L 327, 21.12.1999, p. 58</REF.DOC.OJ>).</P></NOTE> and finally, as of <DATE ISO="20010325">25 March 2001</DATE>, the Schengen <HT TYPE="ITALIC">acquis</HT> was applicable in full in Norway, Iceland, Sweden, Denmark and Finland<NOTE NOTE.ID="E0005" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Council Decision 2000/777/EC of <DATE ISO="20001201">1 December 2000</DATE> on the application of the Schengen <HT TYPE="ITALIC">acquis</HT> in Denmark, Finland and Sweden, and in Iceland and Norway (<REF.DOC.OJ COLL="L" DATE.PUB="20001209" NO.OJ="309" PAGE.FIRST="24">OJ L 309, 9.12.2000, p. 24</REF.DOC.OJ>).</P></NOTE>.</P><P>The United Kingdom (UK) and Ireland only take part in some of the provisions of the Schengen Acquis, in accordance with Council Decision 2000/365/EC<NOTE NOTE.ID="E0006" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Council Decision 2000/365/EC of <DATE ISO="20000529">29 May 2000</DATE> concerning the request of the United Kingdom of Great Britain and Northern Ireland to take part in some of the provision of the Schengen <HT TYPE="ITALIC">Acquis</HT> (<REF.DOC.OJ COLL="L" DATE.PUB="20000601" NO.OJ="131" PAGE.FIRST="43">OJ L 131, 1.6.2000, p. 43</REF.DOC.OJ>).</P></NOTE> and Council Decision 2002/192/EC<NOTE NOTE.ID="E0007" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Council Decision 2002/192/EC of <DATE ISO="20020228">28 February 2002</DATE> concerning Ireland’s request to take part in some of the provision of the Schengen <HT TYPE="ITALIC">Acquis</HT> (<REF.DOC.OJ COLL="L" DATE.PUB="20020307" NO.OJ="064" PAGE.FIRST="20">OJ L 64, 7.3.2002, p. 20</REF.DOC.OJ>).</P></NOTE> respectively.</P><P>In the case of the UK, the provisions of the Schengen <HT TYPE="ITALIC">acquis</HT> in which the United Kingdom takes part are applicable as of the <DATE ISO="20050101">1 January 2005</DATE><NOTE NOTE.ID="E0008" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Council Decision 2004/926/EC of <DATE ISO="20041222">22 December 2004</DATE> on putting into effect of parts of the Schengen <HT TYPE="ITALIC">acquis</HT> by the United Kingdom of Great Britain and Northern Ireland (<REF.DOC.OJ COLL="L" DATE.PUB="20041231" NO.OJ="395" PAGE.FIRST="70">OJ L 395, 31.12.2004, p. 70</REF.DOC.OJ>).</P></NOTE>, with the exception of the provisions on the Schengen Information System.</P>
+<?PAGE NO='8'?>
+<P>The Schengen <HT TYPE="ITALIC">acquis</HT> was incorporated into the legal framework of the European Union by means of protocols attached to the Treaty of Amsterdam<NOTE NOTE.ID="E0009" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="C" DATE.PUB="19971110" NO.OJ="340" PAGE.FIRST="92">OJ C 340, 10.11.1997, p. 92</REF.DOC.OJ>.</P></NOTE> in 1999. A Council Decision was adopted on <DATE ISO="19990512">12 May 1999</DATE>, determining the legal basis for each of the provisions or decisions which constitute the Schengen <HT TYPE="ITALIC">acquis</HT>, in conformity with the relevant provisions of the Treaty establishing the European Community and the Treaty on European Union.</P><P>From <DATE ISO="20040501">1 May 2004</DATE>, the Schengen <HT TYPE="ITALIC">acquis</HT>, as integrated into the framework of the European Union by the Protocol annexed to the Treaty on European Union and to the Treaty establishing the European Community (hereinafter referred to as the <QUOT.START CODE="2018" ID="QS0003" REF.END="QE0003"/>Schengen Protocol<QUOT.END CODE="2019" ID="QE0003" REF.START="QS0003"/>), as well as the acts building upon it or otherwise related to it are binding on the Czech Republic, the Republic of Estonia, the Republic of Cyprus, the Republic of Latvia, the Republic of Lithuania, the Republic of Hungary, the Republic of Malta, the Republic of Poland, the Republic of Slovenia and the Slovak Republic. As of <DATE ISO="20070101">1 January 2007</DATE>, this also applies to the Republic of Bulgaria and to Romania.</P><P>In December 2007, the Council adopted a Decision on the full application of the provisions of the Schengen <HT TYPE="ITALIC">acquis</HT> in the Czech Republic, the Republic of Estonia, the Republic of Latvia, the Republic of Lithuania, the Republic of Hungary, the Republic of Malta, the Republic of Poland, the Republic of Slovenia and the Slovak Republic<NOTE NOTE.ID="E0010" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="20071208" NO.OJ="323" PAGE.FIRST="34">OJ L 323, 8.12.2007, p. 34</REF.DOC.OJ>.</P></NOTE>. Accordingly, controls at internal land and sea borders of these Member States were lifted in December 2007 and at internal air borders in March 2008.</P><P>As regards the Republic of Bulgaria and Romania, Council Decision 2010/365/EU<NOTE NOTE.ID="E0011" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="20100701" NO.OJ="166" PAGE.FIRST="17">OJ L 166, 1.7.2010, p. 17</REF.DOC.OJ>.</P></NOTE> allows for real SIS data to be transferred to the Member States concerned. The concrete use of this data allows the Council, through the applicable Schengen evaluation procedures, as set out in SCH/Com-ex (98) 26 def., to verify the correct application of the provisions of the Schengen <HT TYPE="ITALIC">acquis</HT> relating to the SIS in the Member States concerned. Once these evaluations have been carried out, the Council should decide on the lifting of checks at the internal borders with those Member States.</P><P>As regards Switzerland, an Agreement was concluded by the European Union, the European Community and the Swiss Confederation on the latter’s association with the implementation, application and development of the Schengen <HT TYPE="ITALIC">acquis</HT><NOTE NOTE.ID="E0012" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="20080227" NO.OJ="053" PAGE.FIRST="52">OJ L 53, 27.2.2008, p. 52</REF.DOC.OJ>.</P></NOTE>. Controls at internal land borders of Switzerland were lifted in December 2008 and at internal air borders in March 2009, in accordance with the relevant decision of the Council<NOTE NOTE.ID="E0013" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="20081205" NO.OJ="327" PAGE.FIRST="15">OJ L 327, 5.12.2008, p. 15</REF.DOC.OJ>.</P></NOTE>.</P><P>As regards Liechtenstein, a Protocol was signed between the European Union, the European Community, the Swiss Confederation and the Principality of Liechtenstein on the accession of the Principality of Liechtenstein to the Agreement between the European Union, the European Community and the Swiss Confederation on the Swiss Confederation’s association with the implementation, application and development of the Schengen <HT TYPE="ITALIC">acquis</HT><NOTE NOTE.ID="E0014" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="20080326" NO.OJ="083" PAGE.FIRST="3">OJ L 83, 26.3.2008, p. 3</REF.DOC.OJ>.</P></NOTE>.</P></GR.SEQ>
+<?PAGE NO='9'?>
+<GR.SEQ LEVEL="1"><TITLE>
+<TI><NP>
+<NO.P>1.</NO.P><TXT>THE SCHENGEN INFORMATION SYSTEM (SIS) AND THE NATIONAL SIRENE BUREAUX</TXT></NP></TI></TITLE>
+<P>The SIS, together with the cooperation of the SIRENE bureaux, set up pursuant to the provisions of Title IV of the Convention implementing the Schengen Agreement of <DATE ISO="19850614">14 June 1985</DATE> on the gradual abolition of checks at common borders (Schengen Convention)<NOTE NOTE.ID="E0015" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>See footnote 1.</P></NOTE> constitutes an essential tool for the application of the provisions of the Schengen <HT TYPE="ITALIC">acquis</HT> as integrated into the framework of the European Union.</P><P>The Schengen Information System (SIS) shall provide access to alerts on persons and objects to the following authorities:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>authorities responsible for border checks;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>authorities carrying out and coordinating other police and customs checks within the country;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>national judicial authorities, inter alia, those responsible for the initiation of public prosecutions in criminal proceedings and judicial inquiries prior to indictment, in the performance of their tasks, as set out in national legislation;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(d)</NO.P><TXT>authorities responsible for issuing visas, the central authorities responsible for examining visa applications, authorities responsible for issuing residence permits and for the administration of legislation on third-country nationals in the context of the application of the Union <HT TYPE="ITALIC">acquis</HT> relating to the movement of persons;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(e)</NO.P><TXT>authorities responsible for issuing vehicle registration certificates.</TXT></NP></ITEM></LIST>
+<P>Europol and Eurojust also have access to certain categories of alerts<NOTE NOTE.ID="E0016" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>As set out in Articles 101A and 101B of the Schengen Convention.</P></NOTE>. Europol may access data entered in accordance with Article 95 (alerts for arrest), Article 99 (alerts for discreet surveillance or specific check) and Article 100 (alerts on objects for seizure or use as evidence in criminal proceedings). Eurojust may access data entered in accordance with Article 95 (alerts for arrest) and Article 98 (alerts for a judicial procedure).</P><P>The SIS is made up of separate components: the technical support function (C.SIS) and the national sections (N.SIS, one for each Member State), connected by a network (SISNET). The SIS operates on the principle that the national systems cannot exchange computerised data directly between themselves, but instead only via the central system (C.SIS).</P><P>However, it is necessary for the Member States to be able to exchange supplementary information, either on a bilateral or multilateral basis, as required for implementing certain provisions of the Schengen Convention, and to ensure full application of Title IV of the Schengen Convention for the SIS as a whole.</P>
+<?PAGE NO='10'?>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>1.1.</NO.P><TXT><HT TYPE="BOLD">The SIRENE bureaux</HT><NOTE NOTE.ID="E0017" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Unless otherwise stipulated, all articles referred to are to be understood as articles of the Convention of 1990, implementing the Schengen Agreement of <DATE ISO="19850614">14 June 1985</DATE> on the gradual abolition of checks at common borders (Schengen Convention). Article 92(4) took effect according to Article 1(1) of Council Decision 2005/451/JHA (<REF.DOC.OJ COLL="L" DATE.PUB="20050621" NO.OJ="158" PAGE.FIRST="26">OJ L 158, 21.6.2005, p. 26</REF.DOC.OJ>) and Article 2(1) of Council Decision 2005/211/JHA (<REF.DOC.OJ COLL="L" DATE.PUB="20050315" NO.OJ="068" PAGE.FIRST="44">OJ L 68, 15.3.2005, p. 44</REF.DOC.OJ>).</P></NOTE></TXT></NP></TI></TITLE>
+<P>Article 92(4) of the Schengen Convention provides that Member States shall, in accordance with national legislation, exchange through the authorities designated for that purpose (SIRENE), all information necessary in connection with the entry of alerts and for allowing the appropriate action to be taken in cases where persons in respect of whom, and objects in respect of which, data have been entered in the Schengen Information System, are found as a result of searches made in this System.</P><P>To meet the operating constraints set out in the Schengen Convention, every Member State shall establish a central authority as a single contact point for exchanging supplementary information related to SIS data. This contact point, which is referred to as the SIRENE bureau, shall be fully operational on a 24/7 basis.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>1.2.</NO.P><TXT><HT TYPE="BOLD">SIRENE Manual</HT></TXT></NP></TI></TITLE>
+<P>The SIRENE Manual is a set of instructions for SIRENE bureaux, which describes in detail the rules and procedures governing the bilateral or multilateral exchange of the supplementary information.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>1.3.</NO.P><TXT><HT TYPE="BOLD">Standards</HT></TXT></NP></TI></TITLE>
+<P>The following fundamental standards that underpin the cooperation via SIRENE shall be met:</P>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.3.1.</NO.P><TXT><HT TYPE="ITALIC">Availability</HT></TXT></NP></TI></TITLE>
+<P>A National SIRENE bureau shall be set up by each of the Member States to serve as a single contact point for the Member States applying the SIS-related provisions of the Schengen Convention. It shall be fully operational with sufficient capacity 24 hours a day, 7 days a week. Availability for technical analysis, support and solutions shall also be provided with sufficient capacity 24 hours a day, 7 days a week.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.3.2.</NO.P><TXT><HT TYPE="ITALIC">Continuity</HT></TXT></NP></TI></TITLE>
+<P>Each SIRENE bureau shall build an internal structure, which guarantees the continuity of management, staff and technical infrastructure. Member States shall take appropriate measures to avoid loss of qualification and experience caused by staff turnover.</P><P>The Heads of each SIRENE bureau shall meet at least twice a year to assess the quality of the cooperation between their services, to adopt necessary technical or organisational measures in the event of any difficulties and to adjust procedures where required.</P></GR.SEQ>
+<?PAGE NO='11'?>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.3.3.</NO.P><TXT><HT TYPE="ITALIC">Security</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><P><HT TYPE="EXPANDED">Security on premises</HT></P></TI></TITLE>
+<P>Physical and organisational security features are necessary to protect the SIRENE bureau premises. The specific measures will be determined by and be dependant on the results of threat assessments that shall be carried out by each Schengen State. Recommendations and best practices laid down in the EU Schengen Catalogue: Schengen Information System, SIRENE, should be reflected in practice<NOTE NOTE.ID="E0018" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Detailed guidance on IT security measures is provided in Section 5 of the revised EU Schengen Catalogue: Schengen Information System, SIRENE.</P></NOTE>.</P><P>The specific features may differ as they shall answer to threats in the immediate surroundings and exact location of the SIRENE bureau. They may include, in particular:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>external windows fitted with security glass,</P></ITEM>
+<ITEM><P>secured and closed doors,</P></ITEM>
+<ITEM><P>brick/concrete walls enclosing the SIRENE bureau,</P></ITEM>
+<ITEM><P>closed-circuit television (CCTV), intrusion alarms, including logging of entries, exits and any unusual event,</P></ITEM>
+<ITEM><P>security guards on site or rapidly available,</P></ITEM>
+<ITEM><P>fire extinction system and/or direct link to fire brigade,</P></ITEM>
+<ITEM><P>dedicated premises to avoid staff who are not involved in international police cooperation measures, or who do not have requisite access to documents from having to enter or to pass the SIRENE bureau offices, and/or</P></ITEM>
+<ITEM><P>sufficient back-up power and communication supply.</P></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><P><HT TYPE="EXPANDED">Security of the system</HT></P></TI></TITLE>
+<P>The principles underlying the security of the system are set out in Article 118 of the Schengen Convention.</P><P>The SIRENE bureau system should have a back-up computer and data base system at a secondary site in case of a serious emergency at the SIRENE bureau.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.3.4.</NO.P><TXT><HT TYPE="ITALIC">Accessibility</HT></TXT></NP></TI></TITLE>
+<P>In order to fulfil the requirement to provide supplementary information, the SIRENE staff shall have direct or indirect access to all relevant national information and expert advice.</P></GR.SEQ>
+<?PAGE NO='12'?>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.3.5.</NO.P><TXT><HT TYPE="ITALIC">Communications</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><P><HT TYPE="EXPANDED">Operational</HT></P></TI></TITLE>
+<P>The specific channel to use for SIRENE communications is the communication infrastructure for the Schengen environment (SISNET)<NOTE NOTE.ID="E0019" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>See Council Decision 2000/265/EC of <DATE ISO="20000327">27 March 2000</DATE> on the establishment of a financial regulation governing the budgetary aspects of the management by the Deputy Secretary-General of the Council, of contracts concluded in his name, on behalf of certain Member States, relating to the installation and the functioning of the communication infrastructure for the Schengen environment, <QUOT.START CODE="2018" ID="QS0004" REF.END="QE0004"/>SISNET<QUOT.END CODE="2019" ID="QE0004" REF.START="QS0004"/> (<REF.DOC.OJ COLL="L" DATE.PUB="20000406" NO.OJ="085" PAGE.FIRST="12">OJ L 85, 6.4.2000, p. 12</REF.DOC.OJ>).</P></NOTE>. Only if this channel is not available, shall another, and given the circumstances the most appropriate, means of communication be determined on a case-by-case basis, according to technical possibilities and the security and quality requirements that the communication has to meet.</P><P>Written messages are divided into two categories: free text and standard forms. The latter shall respect the instructions set out in Annex 5. The B<NOTE NOTE.ID="E0020" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Information further to an alert regarding national security.</P></NOTE>, C<NOTE NOTE.ID="E0021" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Checking for a double alert on the same person.</P></NOTE> and D<NOTE NOTE.ID="E0022" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Checking for a double alert on the same vehicle.</P></NOTE> forms shall not be used any longer and are removed from Annex 5.</P><P>In order to achieve utmost efficiency in bilateral communication between SIRENE staff, a language familiar to both parties shall be used.</P><P>The SIRENE bureau shall answer all requests for information made by the other Member States via their SIRENE bureaux as soon as possible. In any event, a response shall be given within 12 hours. See also Section 2.16 on indication of urgency in SIRENE forms.</P><P>Priorities in daily work shall be based on the type of the alert and the importance of the case.</P></GR.SEQ>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><P><HT TYPE="EXPANDED">Non-operational</HT></P></TI></TITLE>
+<P>The SIRENE bureau should use the dedicated SISNET e-mail address for the exchange of non-operational information.</P></GR.SEQ>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><P><HT TYPE="EXPANDED">SIRENE Address Book (SAB)</HT></P></TI></TITLE>
+<P>The contact details of the SIRENE bureaux and relevant information for mutual communication and cooperation are collected and provided in the SIRENE Address Book (SAB). Each SIRENE bureau shall ensure that:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>information from the SAB is not disclosed to third parties;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>the SAB is known and used by the SIRENE operators;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>any update of the information listed in the SAB is provided without delay to the administrator of the SAB.</TXT></NP></ITEM></LIST></GR.SEQ></GR.SEQ>
+<?PAGE NO='13'?>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.3.6.</NO.P><TXT><HT TYPE="ITALIC">Transliteration rules</HT></TXT></NP></TI></TITLE>
+<P>Transliteration rules, which can be found in Annex 2, shall be followed in the communication between SIRENE bureaux via SISNET.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.3.7.</NO.P><TXT><HT TYPE="ITALIC">Data quality</HT></TXT></NP></TI></TITLE>
+<P>It is the responsibility of each SIRENE bureau to perform the role of data quality assurance coordinator for the information that is introduced in the SIS. To this end SIRENE bureaux shall have the necessary national competence and capacity to perform this role, for which they are responsible pursuant to Article 92(4) and Article 108. It is therefore necessary to have a national data quality audit, including a review of the rate of alerts/hits and of data content.</P><P>National standards for training of end-users on data quality principles and practice should be established in cooperation with the national SIRENE bureau. It is recommended that SIRENE bureaux be involved in the training of all authorities entering alerts, stressing data quality and maximisation of the use of the SIS.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.3.8.</NO.P><TXT><HT TYPE="ITALIC">Structures</HT></TXT></NP></TI></TITLE>
+<P>All national agencies, including SIRENE bureaux, responsible for international police cooperation shall be organised in a structured fashion so as to prevent conflicts of competence and duplication of work.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.3.9.</NO.P><TXT><HT TYPE="ITALIC">Archiving</HT></TXT></NP></TI></TITLE>
+<NP><NO.P>(a)</NO.P><TXT>Each Member State shall determine the provisions for storing information.</TXT></NP>
+<NP><NO.P>(b)</NO.P><TXT>The SIRENE bureau of the Member State issuing the alert shall keep all the information on its own alerts available to the other Member States.</TXT></NP>
+<NP><NO.P>(c)</NO.P><TXT>The archives of each SIRENE bureau shall allow swift access to the relevant information to meet the very short deadlines for transmitting information.</TXT></NP>
+<NP><NO.P>(d)</NO.P><TXT>In accordance with Article 112A of the Schengen Convention, personal data, held in files by the SIRENE Bureau as a result of exchanging information, shall be kept only for such time as may be required to achieve the purposes for which they were supplied. They shall in any event be deleted at the latest 1 year after the alert or alerts regarding the person or object concerned have been deleted from the SIS. However, data relating to a particular alert which a Member State has issued or to an alert in connection with which action has been taken on its territory may be stored for longer in accordance with national law.</TXT></NP>
+<?PAGE NO='14'?>
+<NP><NO.P>(e)</NO.P><TXT>Supplementary information sent by the other Member States shall be stored according to national data protection legislation in the recipient Member State. The provisions of Title VI of the Schengen Convention, Framework Decision 2008/977/JHA and Directive 95/46/ECshall also apply, as appropriate.</TXT></NP>
+<NP><NO.P>(f)</NO.P><TXT>Information on misused identity shall be deleted after the deletion of the relevant alert.</TXT></NP></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>1.4.</NO.P><TXT><HT TYPE="BOLD">Staff</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.4.1.</NO.P><TXT><HT TYPE="ITALIC">Knowledge</HT></TXT></NP></TI></TITLE>
+<P>SIRENE bureau staff shall have the linguistic skills covering as wide a range of languages as possible and on-duty staff shall able to communicate with all SIRENE bureaux.</P><P>They shall have the necessary knowledge on:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>national and European legal aspects,</P></ITEM>
+<ITEM><P>their national law enforcement agencies, and</P></ITEM>
+<ITEM><P>national and European judiciary and immigration administration systems.</P></ITEM></LIST>
+<P>They need to have the authority to deal independently with any incoming case.</P><P>In case of special requests or (legal) expert advice, they should have the possibility to call upon the assistance of their superiors and/or experts.</P><P>Operators on duty outside office hours shall have the same competence, knowledge and authority and have the possibility to refer to experts available on-call.</P><P>Legal expertise to cover both normal and exceptional cases is required. Depending on the cases, this expertise can be provided by any personnel with the necessary legal background or experts from the judicial authorities.</P><P>The responsible national recruiting authorities shall take all the above skills and knowledge into consideration when recruiting new staff and, shall consequently, organise in-service training courses or sessions both at national and European level.</P><P>A high level of experience of staff leads to a workforce able to function on their own initiative and thereby able to handle cases efficiently. A low turnover of personnel is therefore propitious, which requires the unambiguous support of management to enable this devolved responsibility.</P></GR.SEQ>
+<?PAGE NO='15'?>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.4.2.</NO.P><TXT><HT TYPE="ITALIC">Training</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><P><HT TYPE="EXPANDED">National level</HT></P></TI></TITLE>
+<P>At national level, sufficient training shall ensure that staff meet the required standards laid down in this Manual<NOTE NOTE.ID="E0023" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Staff shall receive, among other subjects, appropriate training about data security and data protection rules and shall be informed of any relevant criminal penalties. Staff shall also be aware of the relevant national rules of professional secrecy or other equivalent obligations of confidentiality which shall apply to all SIRENE personnel.</P></NOTE>.</P></GR.SEQ>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><P><HT TYPE="EXPANDED">European level</HT></P></TI></TITLE>
+<P>Common training courses shall be organised at least once a year, to enhance cooperation between SIRENE bureaux by allowing staff to meet colleagues from other SIRENE bureaux, to share information on national working methods and to create a consistent and equivalent level of knowledge. Furthermore, these will make staff aware of the importance of their work and the need for mutual solidarity in view of the common security of Member States.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.4.3.</NO.P><TXT><HT TYPE="ITALIC">Exchange of staff</HT></TXT></NP></TI></TITLE>
+<P>SIRENE bureaux may also consider the possibility of setting up staff exchanges with other SIRENE bureaux. These exchanges are intended to help improve staff knowledge of working methods, to show how other SIRENE bureaux are organised and to establish personal contacts with colleagues in other Member States.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>1.5.</NO.P><TXT><HT TYPE="BOLD">Technical infrastructure</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.5.1.</NO.P><TXT><HT TYPE="ITALIC">SIRENE work-flow system</HT></TXT></NP></TI></TITLE>
+<P>Each SIRENE bureau shall have a computerised management system (work-flow system), which allows a great deal of automation in the management of the daily work-flow.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.5.2.</NO.P><TXT><HT TYPE="ITALIC">Automatic introduction of data</HT></TXT></NP></TI></TITLE>
+<P>Automatic transfer to N.SIS of the national alerts that fulfil the criteria for introduction into the SIS shall be the preferred way to introduce SIS alerts. This automatic transfer, including data quality checks, should also be transparent and not require additional action from the authority entering the alert.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.5.3.</NO.P><TXT><HT TYPE="ITALIC">Automatic deletion of data</HT></TXT></NP></TI></TITLE>
+<P>Where the national system enables the automatic transfer of national alerts to SIS, as set out in the previous paragraph, the deletion of a SIS-related alert in the national database should also lead to an automatic deletion of its SIS equivalent.</P><P>Since multiple alerts are not allowed, it is recommended that wherever possible and necessary, second and subsequent alerts on the same person are kept available at national level so that they can be introduced when the first alert on this person expires.</P></GR.SEQ>
+<?PAGE NO='16'?>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.5.4.</NO.P><TXT><HT TYPE="ITALIC">Data Exchange between SIRENE bureaux</HT></TXT></NP></TI></TITLE>
+<P>The instructions laid down for data exchange between SIRENE bureaux shall be respected<NOTE NOTE.ID="E0024" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Council Document 5076/07, version 5.6</P></NOTE>.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>1.5.5.</NO.P><TXT><HT TYPE="ITALIC">Data quality in the SIS</HT></TXT></NP></TI></TITLE>
+<P>In order to allow each SIRENE bureau to perform its role of data quality assurance coordinator (see paragraph 1.3.7 above), the necessary IT support should be available.</P></GR.SEQ></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="1"><TITLE>
+<TI><NP>
+<NO.P>2.</NO.P><TXT>GENERAL PROCEDURES</TXT></NP></TI></TITLE>
+<P>The procedures described below are applicable to alerts issued under Articles 95 to 100 and the procedures specific for each Article can be found in the relevant specific section.</P>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.1.</NO.P><TXT><HT TYPE="BOLD">Multiple alerts (Article 107)</HT></TXT></NP></TI></TITLE>
+<P>Several alerts may be issued by different Member States for the same subjects. It is essential that this does not cause confusion to end-users, and that they are clear as to the measures to be taken when seeking to enter an alert. Various procedures shall therefore be established for detecting multiple alerts and a priority mechanism shall also be established for entering them into the SIS.</P><P>This calls for:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>checks before entering an alert in order to determine whether the subject is already in the SIS,</P></ITEM>
+<ITEM><P>consultation with the other Member States when the entry of an alert will cause multiple alerts that are incompatible.</P></ITEM></LIST>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.1.1.</NO.P><TXT><HT TYPE="ITALIC">Compatibility of alerts and order of priority</HT></TXT></NP></TI></TITLE>
+<P>Only one alert per Member State may be entered into the SIS for any one person or object.</P><P>Therefore, wherever possible and necessary, second and subsequent alerts on the same person or object shall be kept available at national level, so that they can be introduced when the first alert expires or is deleted.</P><P>Several Member States may enter an alert on the same person or object if the alerts are compatible.</P><P><HT TYPE="BOLD">Alerts for arrest</HT> (Article 95) are compatible with alerts for refusal of entry (Article 96), alerts on missing persons (Article 97) and alerts for a judicial procedure (Article 98). They are not compatible with alerts for discreet surveillance or specific checks (Article 99). In case of a hit on a person for whom an alert for arrest and an alert for refusal of entry have been entered, the procedures for arrest shall have priority over those for refusal of entry.</P>
+<?PAGE NO='17'?>
+<P><HT TYPE="BOLD">Alerts for refusal of entry</HT> are compatible with alerts for arrest. They are not compatible with alerts on missing persons, alerts for a judicial procedure or alerts for discreet surveillance or specific checks.</P><P><HT TYPE="BOLD">Alerts on missing persons</HT> are compatible with alerts for arrest and alerts for a judicial procedure. They are not compatible with alerts for refusal of entry and alerts for discreet surveillance or specific checks.</P><P><HT TYPE="BOLD">Alerts for a judicial procedure</HT> are compatible with alerts for arrest and alerts for missing persons. They are not compatible with alerts for refusal of entry and alerts for discreet surveillance or specific checks.</P><P><HT TYPE="BOLD">Alerts for discreet surveillance or specific checks</HT> are not compatible with alerts for arrest, alerts for refusal of entry, alerts on missing persons or alerts for a judicial procedure.</P><P>Within Article 99, alerts issued for <HT TYPE="BOLD">discreet surveillance</HT> are incompatible with those for <HT TYPE="BOLD">specific checks</HT>.</P><P>Different categories of alerts on objects are not compatible with each other (see the table on compatibility below).</P><P>The order of priority for alerts on persons shall be as follows:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>arrest with a view to surrender or extradition (Article 95),</P></ITEM>
+<ITEM><P>refusal of entry or stay in the Schengen territory (Article 96),</P></ITEM>
+<ITEM><P>placing under protection (Article 97),</P></ITEM>
+<ITEM><P>discreet surveillance (Article 99),</P></ITEM>
+<ITEM><P>specific checks (Article 99),</P></ITEM>
+<ITEM><P>communicating whereabouts (Articles 97 and 98).</P></ITEM></LIST>
+<P>The order of priority for alerts on objects shall be as follows:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>discreet surveillance (Article 99),</P></ITEM>
+<ITEM><P>specific check (Article 99),</P></ITEM>
+<ITEM><P>seizure or use as evidence (Article 100),</P></ITEM></LIST>
+<P>Departures from this order of priority may be made after consultation between the Member States, if essential national interests are at stake.</P>
+<?PAGE NO='18'?>
+<TBL COLS="8" NO.SEQ="0001"><TITLE>
+<TI><P><HT TYPE="BOLD">Table of compatibility of alerts on persons</HT></P></TI></TITLE>
+<CORPUS><ROW TYPE="HEADER">
+<CELL COL="1" TYPE="HEADER">Order of importance</CELL>
+<CELL COL="2" TYPE="HEADER">Alert for arrest</CELL>
+<CELL COL="3" TYPE="HEADER">Alert for refusal of entry</CELL>
+<CELL COL="4" TYPE="HEADER">Alert on missing person (protection)</CELL>
+<CELL COL="5" TYPE="HEADER">Alert for discreet surveillance</CELL>
+<CELL COL="6" TYPE="HEADER">Alert for specific check</CELL>
+<CELL COL="7" TYPE="HEADER">Alert on missing person (whereabouts)</CELL>
+<CELL COL="8" TYPE="HEADER">Alert for judicial procedure</CELL></ROW>
+<ROW><CELL COL="1">Alert for arrest</CELL>
+<CELL COL="2">yes</CELL>
+<CELL COL="3">yes</CELL>
+<CELL COL="4">yes</CELL>
+<CELL COL="5">no</CELL>
+<CELL COL="6">no</CELL>
+<CELL COL="7">yes</CELL>
+<CELL COL="8">yes</CELL></ROW>
+<ROW><CELL COL="1">Alert for refusal of entry</CELL>
+<CELL COL="2">yes</CELL>
+<CELL COL="3">yes</CELL>
+<CELL COL="4">no</CELL>
+<CELL COL="5">no</CELL>
+<CELL COL="6">no</CELL>
+<CELL COL="7">no</CELL>
+<CELL COL="8">no</CELL></ROW>
+<ROW><CELL COL="1">Alert on missing person — protection</CELL>
+<CELL COL="2">yes</CELL>
+<CELL COL="3">no</CELL>
+<CELL COL="4">yes</CELL>
+<CELL COL="5">no</CELL>
+<CELL COL="6">no</CELL>
+<CELL COL="7">yes</CELL>
+<CELL COL="8">yes</CELL></ROW>
+<ROW><CELL COL="1">Alert for discreet surveillance</CELL>
+<CELL COL="2">no</CELL>
+<CELL COL="3">no</CELL>
+<CELL COL="4">no</CELL>
+<CELL COL="5">yes</CELL>
+<CELL COL="6">no</CELL>
+<CELL COL="7">no</CELL>
+<CELL COL="8">no</CELL></ROW>
+<ROW><CELL COL="1">Alert for specific check</CELL>
+<CELL COL="2">no</CELL>
+<CELL COL="3">no</CELL>
+<CELL COL="4">no</CELL>
+<CELL COL="5">no</CELL>
+<CELL COL="6">yes</CELL>
+<CELL COL="7">no</CELL>
+<CELL COL="8">no</CELL></ROW>
+<ROW><CELL COL="1">Alert on missing person — whereabouts</CELL>
+<CELL COL="2">yes</CELL>
+<CELL COL="3">no</CELL>
+<CELL COL="4">yes</CELL>
+<CELL COL="5">no</CELL>
+<CELL COL="6">no</CELL>
+<CELL COL="7">yes</CELL>
+<CELL COL="8">yes</CELL></ROW>
+<ROW><CELL COL="1">Alert for judicial procedure</CELL>
+<CELL COL="2">yes</CELL>
+<CELL COL="3">no</CELL>
+<CELL COL="4">yes</CELL>
+<CELL COL="5">no</CELL>
+<CELL COL="6">no</CELL>
+<CELL COL="7">yes</CELL>
+<CELL COL="8">yes</CELL></ROW></CORPUS></TBL>
+<TBL COLS="4" NO.SEQ="0002"><TITLE>
+<TI><P><HT TYPE="BOLD">Table of compatibility of alerts on objects</HT></P></TI></TITLE>
+<CORPUS><ROW TYPE="HEADER">
+<CELL COL="1" TYPE="HEADER">Order of importance</CELL>
+<CELL COL="2" TYPE="HEADER">Alert for discreet surveillance</CELL>
+<CELL COL="3" TYPE="HEADER">Alert for specific check</CELL>
+<CELL COL="4" TYPE="HEADER">Alert for seizure or use as evidence</CELL></ROW>
+<ROW><CELL COL="1">Alert for discreet surveillance</CELL>
+<CELL COL="2">yes</CELL>
+<CELL COL="3">no</CELL>
+<CELL COL="4">no</CELL></ROW>
+<ROW><CELL COL="1">Alert for specific check</CELL>
+<CELL COL="2">no</CELL>
+<CELL COL="3">yes</CELL>
+<CELL COL="4">no</CELL></ROW>
+<ROW><CELL COL="1">Alert for seizure or use as evidence</CELL>
+<CELL COL="2">no</CELL>
+<CELL COL="3">no</CELL>
+<CELL COL="4">yes</CELL></ROW></CORPUS></TBL></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.1.2.</NO.P><TXT><HT TYPE="ITALIC">Checking for multiple alerts on a person</HT></TXT></NP></TI></TITLE>
+<P>To avoid entering incompatible multiple alerts, care shall be taken to distinguish accurately between individuals who have similar characteristics. Consultation and cooperation between the SIRENE bureaux is therefore essential and each Member State shall establish appropriate technical procedures to detect such cases before an entry is made.</P><P>The elements used for establishing whether two identities may be identical are detailed in Annex 6 to this Manual.</P><P>The following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>if the processing of a request for entering a new alert reveals that there is already a person in the SIS with the same mandatory identity description elements (surname, given name, date of birth) a check must be run before the new alert is approved;</TXT></NP></ITEM>
+<?PAGE NO='19'?>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>the SIRENE bureau which intends to enter a new alert shall contact the issuing SIRENE bureau to clarify whether the alert relates to the same person by means of an <HT TYPE="BOLD">L form</HT>;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>if the check reveals that the details are identical and could relate to the same person, the SIRENE bureau which intends to enter a new alert shall apply the procedure for entering multiple alerts. If the outcome of the check is that the details relate to two different people, the SIRENE bureau shall approve the request for entering the new alert.</TXT></NP></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.1.3.</NO.P><TXT><HT TYPE="ITALIC">Negotiating the entry of a new alert if this is incompatible with an existing alert</HT></TXT></NP></TI></TITLE>
+<P>If a request for an alert conflicts with an alert issued by the same Member State, the national SIRENE bureau shall ensure that only one alert exists in the SIS. Each Member State may choose the procedure to be applied.</P><P>If the alert requested is incompatible with an alert already issued by one or several other Member States, their agreement is required.</P><P>The following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>if the alerts are compatible, the SIRENE bureaux do not need to consult each other; if the alerts are independent of each other, the Member State that wishes to enter a new alert shall decide whether to consult;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>if the alerts are not compatible, or if there is any doubt as to their compatibility, the SIRENE bureaux shall consult one another using an <HT TYPE="BOLD">E form</HT> so that ultimately only one alert is entered;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>alerts for arrest shall be entered immediately without awaiting the result of any consultation with other Member States;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(d)</NO.P><TXT>if an alert that is incompatible with existing alerts is given priority as the outcome of consultation, the Member States that entered the other alerts shall withdraw them when the new alert is entered; any disputes shall be settled by negotiations between the SIRENE bureaux. If agreement cannot be reached on the basis of the list of priorities established, the oldest alert is left in the SIS;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(e)</NO.P><TXT>if an alert is deleted, Member States who were not able to enter an alert are informed by the C.SIS. The SIRENE bureau should then be notified automatically by a message from N.SIS that an alert put on hold can be entered. The SIRENE bureau shall apply the entire procedure for entering an alert in the appropriate alert category.</TXT></NP></ITEM></LIST></GR.SEQ></GR.SEQ>
+<?PAGE NO='20'?>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.2.</NO.P><TXT><HT TYPE="BOLD">The exchange of information after a hit</HT></TXT></NP></TI></TITLE>
+<P>When an end-user conducts a search of the SIS and finds that an alert exists which matches the details entered by him/her, this is called a <QUOT.START CODE="2018" ID="QS0005" REF.END="QE0005"/>hit<QUOT.END CODE="2019" ID="QE0005" REF.START="QS0005"/>.</P><P>The end-user may require the SIRENE bureau to supply supplementary information in order to allow effective implementation of the procedures laid down in SIS tables 4, 10 or 16 as set out in Annex 4 (action to be taken).</P><P>Unless stated otherwise, the issuing Member State shall be informed of the hit and its outcome.</P>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.2.1.</NO.P><TXT><HT TYPE="ITALIC">Procedures following a hit</HT></TXT></NP></TI></TITLE>
+<P>The following procedures shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>one <QUOT.START CODE="2018" ID="QS0006" REF.END="QE0006"/>hit<QUOT.END CODE="2019" ID="QE0006" REF.START="QS0006"/> on an individual or an object on which an alert has been issued shall usually be communicated by means of one <HT TYPE="BOLD">G form</HT> to the SIRENE bureau of the issuing Member State;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>when notifying the issuing Member State of a hit, the applicable Article of the Schengen Convention shall, as appropriate, be indicated in field 090 of the <HT TYPE="BOLD">G form</HT>, including additional information if necessary (e.g. <QUOT.START CODE="2018" ID="QS0007" REF.END="QE0007"/>MINOR<QUOT.END CODE="2019" ID="QE0007" REF.START="QS0007"/>).</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>the <HT TYPE="BOLD">G form</HT> shall provide as much as possible information on the hit, including on the action taken in field 088. Provision of supplementary information may be requested from the issuing Member State in field 089.</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(d)</NO.P><TXT>if necessary the SIRENE bureau of the issuing Member State shall, following the hit, send any relevant specific information;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(e)</NO.P><TXT>the particular measures should be taken by the SIRENE bureau of the Member State that matched the alert to support the effective execution of the requested measures (action to be taken);</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(f)</NO.P><TXT>if the SIRENE bureau of the Member State that achieved a hit intends to provide further information after a <HT TYPE="BOLD">G form</HT> has been sent, it shall use an <HT TYPE="BOLD">M form</HT>;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(g)</NO.P><TXT>if the hit concerns a person who is the subject of an alert under Article 95 or a minor who is the subject of an alert under Article 97, the SIRENE bureau of the Member State that matched the alert shall, where appropriate, inform the SIRENE bureau of the issuing Member State of the hit by telephone after sending a <HT TYPE="BOLD">G form</HT>;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(h)</NO.P><TXT>the SIRENE bureaux of Member States that have issued alerts under Article 96 shall not necessarily be informed of any hits as a matter of course, but shall be informed in exceptional circumstances if supplementary information is required. For special procedures see Section 4.</TXT></NP></ITEM></LIST></GR.SEQ>
+<?PAGE NO='21'?>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.2.2.</NO.P><TXT><HT TYPE="ITALIC">Communicating further information</HT></TXT></NP></TI></TITLE>
+<P>The following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>the SIRENE bureaux may transmit further information on Article 95 to Article 100 alerts, and in doing so may act on behalf of judicial authorities if this information falls within the scope of mutual judicial assistance;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>to the extent possible, and in accordance with the applicable rules of data protection, the SIRENE bureaux shall communicate medical details on the individuals on whom an alert has been issued pursuant to Article 97, if measures have to be taken for their protection. The medical information transmitted shall be kept only as long as is strictly necessary and shall be used exclusively for the purposes of medical treatment given to the person concerned.</TXT></NP></ITEM></LIST></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.3.</NO.P><TXT><HT TYPE="BOLD">When the procedures following a hit cannot be followed (Article 104(3))</HT></TXT></NP></TI></TITLE>
+<P>If, following a hit, normal procedures cannot be executed, the exchange of data shall take place according to the following rules:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>the discovering Member State shall immediately inform the Member State that issued the alert via its SIRENE bureau, that it is not able to follow procedures, and give the reasons by using an <HT TYPE="BOLD">H form</HT>;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>the Member States concerned may then agree on the procedure to follow, in accordance with their national legislation and the provisions of the Schengen Convention.</TXT></NP></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.4.</NO.P><TXT><HT TYPE="BOLD">If the original purpose of the alert is altered (Article 102(3))</HT></TXT></NP></TI></TITLE>
+<P>Under Article 102(3), the data may be used for a purpose other than that for which the alert was entered, but only following a hit, in order to prevent an imminent serious threat to public order and safety, for serious reasons of national security or for the purposes of preventing a serious criminal offence.</P><P>The purpose of the alert may only be altered if prior authorisation has been obtained from the issuing Member State.</P><P>If the purpose of the alert is changed, the exchange of information shall take place according to the following rules:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>through its SIRENE bureau, the discovering Member State shall explain to the Member State that issued the alert the grounds for asking for the original objective to be changed (<HT TYPE="BOLD">I form</HT>);</TXT></NP></ITEM>
+<?PAGE NO='22'?>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>as soon as possible, the issuing Member State shall study whether this wish can be met and advise the discovering Member State, through its SIRENE bureau, of its decision;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>If need be, the Member State that issued the alert can grant authorisation subject to certain conditions on how the data is to be used.</TXT></NP></ITEM></LIST>
+<P>Once the Member State that issued the alert has agreed, the discovering Member State shall use the data for the reason it sought and obtained authorisation. It shall take account of any conditions set.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.5.</NO.P><TXT><HT TYPE="BOLD">Data found to be legally or factually inaccurate (Article 106)</HT></TXT></NP></TI></TITLE>
+<P>Articles 106(2) and 106(3) provide for legal or factual errors to be rectified.</P><P>If data is found to be legally or factually incorrect or inadmissible, then the exchange of information shall take place according to the following rule:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>the Member State which establishes that data contains an error shall advise the issuing Member State via its SIRENE bureau by using the <HT TYPE="BOLD">J form</HT>;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>if the Member States are in agreement, the issuing Member State shall follow its national procedures for correcting the error;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>if there is no agreement, the SIRENE bureau of the Member State that identified the error shall advise the authority responsible within its own country to refer the matter to the Joint Supervisory Authority.</TXT></NP></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.6.</NO.P><TXT><HT TYPE="BOLD">The right to access and rectify data (Articles 109 and 110)</HT></TXT></NP></TI></TITLE>
+<P>Anyone is entitled to have access to data concerning him/herself and to request the correction of any errors. Such access shall be in accordance with the national law of the country in which the request is made.</P><P>A Member State may not authorise access to an alert issued by another Member State without first consulting the issuing Member State by means of a <HT TYPE="BOLD">K form</HT>.</P>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.6.1.</NO.P><TXT><HT TYPE="ITALIC">The exchange of information regarding the right to access or rectify data</HT></TXT></NP></TI></TITLE>
+<P>If the national authorities are to be informed of a request to access or verify data, then the exchange of information will take place according to the following rules:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>each SIRENE bureau must apply its national legislation on the right to access to this data. Depending on the circumstances of the case, the SIRENE bureaux shall<?PAGE NO='23'?> either forward the national authorities responsible any requests they receive for access or for rectifying data, or they shall adjudicate upon these requests within the limits of their remit;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>if the national authorities responsible so ask, the SIRENE bureaux of the Member States concerned shall forward information on exercising this right to access.</TXT></NP></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.6.2.</NO.P><TXT><HT TYPE="ITALIC">Information on requests for access to, or correction or deletion of alerts issued by other Member States</HT></TXT></NP></TI></TITLE>
+<P>As far as is possible, information on alerts entered into the SIS by another Member State shall be exchanged via the national SIRENE bureaux.</P><P>The following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>the request for access, correction or deletion shall be forwarded to the Member State that issued the alert as soon as possible, so that it can take a position on the question;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>the issuing Member State shall inform the Member State that received the request of its position by providing all the necessary information to answer the request;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>it shall take account of any legal deadlines set for processing the request;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(d)</NO.P><TXT>the Member State receiving an enquiry from an individual for access, correction or deletion shall take all the necessary measures to ensure a timely response.</TXT></NP></ITEM></LIST>
+<P>If the Member State that issued the alert sends its position to the SIRENE bureau of the Member State that received the request for access, correction or deletion, the SIRENE bureau shall ensure that the position is forwarded to the authority responsible for adjudication on the request as soon as possible.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.6.3.</NO.P><TXT><HT TYPE="ITALIC">Information on access and rectification procedures</HT></TXT></NP></TI></TITLE>
+<P>The following procedure shall apply:</P><P>The SIRENE bureaux shall keep one another informed of any national legislation adopted on access and rectification procedures for personal data, as well as of any amendments made thereafter.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.7.</NO.P><TXT><HT TYPE="BOLD">Deletion of an alert when the conditions for maintaining it cease to be met</HT></TXT></NP></TI></TITLE>
+<P>The SIRENE bureau shall inform the Member States who had been unable to enter their alert that a hit has been made and that the alert has been deleted. The information from the <HT TYPE="BOLD">G form</HT> provided by the SIRENE bureau of the Member State that has achieved a hit shall be provided by means of an <HT TYPE="BOLD">M form</HT>.</P>
+<?PAGE NO='24'?>
+<P>Excluding the cases after a hit, an alert may be deleted either directly by the C.SIS (once the expiry date is passed) or indirectly by the service that entered the alert in the SIS (once the conditions for maintaining the alert no longer apply).</P><P>In both instances the C.SIS deletion message should be processed automatically by the N.SIS.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.8.</NO.P><TXT><HT TYPE="BOLD">Misused Identity</HT></TXT></NP></TI></TITLE>
+<P>A misused identity (name, first name, date of birth) occurs if an offender uses the identity of a real person. This can happen, in particular, when a document is used to the detriment of the real owner.</P><P>The Member State issuing the code 3 in the field of <QUOT.START CODE="2018" ID="QS0008" REF.END="QE0008"/>category of identity<QUOT.END CODE="2019" ID="QE0008" REF.START="QS0008"/> shall send the <HT TYPE="BOLD">Q form</HT> at the same time as entering the alert into the SIS or modifying it.</P><P>If the code 3 is found in the field of <QUOT.START CODE="2018" ID="QS0009" REF.END="QE0009"/>category of identity<QUOT.END CODE="2019" ID="QE0009" REF.START="QS0009"/> when the SIS is consulted, the official conducting the check shall contact the national SIRENE bureau and obtain additional information in order to clarify whether the person being checked is the person sought or the person whose identity is misused.</P><P>As soon as it is clear that a person’s identity is misused a code <QUOT.START CODE="2018" ID="QS0010" REF.END="QE0010"/>3<QUOT.END CODE="2019" ID="QE0010" REF.START="QS0010"/> shall be set in the alert.</P><P>Supplementary information on the person whose identity is misused may only be processed with his free and explicit consent for all items of information.</P><P>The person whose identity is misused shall, subject to his explicit consent and according to national procedures, provide the national SIRENE bureau of the issuing Member State with the information required to avoid the negative consequences of misidentification, such as genuine particulars, details of identity papers and/or by filling out the <HT TYPE="BOLD">Q form</HT>.</P><P>Subject to the condition mentioned below, the photograph and the fingerprints of the person whose identity is misused may also be kept on file at the SIRENE bureau of the issuing Member State.</P><P>On the <HT TYPE="BOLD">Q form</HT>, only the Schengen number refers to the data of the person sought by the SIS alert and all the other information relates to the victim of the misuse of identity. The information in heading 052 (Date document was issued) is compulsory. Heading 083 (Particular information concerning the alert) shall provide, as appropriate, further information on the case of misused identity (for example further distinguishing features) and shall always indicate the contact service which has further information on the alert.</P>
+<?PAGE NO='25'?>
+<P>Furthermore, on becoming aware that a person alerted in the SIS is misusing someone else’s identity, the issuing State shall check whether it is necessary to maintain the misused identity in the SIS alert (to find the person sought).</P><P>The data of the person whose identity is misused, including any fingerprints and photographs, shall only be available for the purpose of establishing the identity of the person being checked and shall in no way be used for any other purpose. Information on misused identity shall be deleted during the process of deleting the related alert.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.9.</NO.P><TXT><HT TYPE="BOLD">Entering an alias</HT></TXT></NP></TI></TITLE>
+<P>In order to avoid incompatible alerts of any category due to an alias to be entered, or to avoid problems for innocent victims, the SIRENE bureaux shall, if this information is available to them, inform each other about aliases and transmit all relevant information about the real identity of the subject sought. The Member State that entered the original alert is responsible for adding any aliases. If another Member State discovers an alias, it shall pass the matter on to the Member State that originally entered the alert.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.10.</NO.P><TXT><HT TYPE="BOLD">SIRPIT (SIRENE Picture Transfer)</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.10.1.</NO.P><TXT><HT TYPE="ITALIC">Development and background of SIRPIT (SIRENE Picture Transfer)</HT></TXT></NP></TI></TITLE>
+<P>SIRENE bureaux should be able to exchange fingerprints and pictures for identification purposes.</P><P>The SIRPIT Procedure makes it possible, when there is some doubt about the identity of a discovered person, to exchange pictures and fingerprints quickly and electronically between SIRENE bureaux, so that a comparison can be made between the fingerprints and pictures of the discovered person and those of the person regarding whom an alert was issued.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.10.2.</NO.P><TXT><HT TYPE="ITALIC">Use of the data exchanged, including archiving</HT></TXT></NP></TI></TITLE>
+<P>Limitations on the use of data provided for in Articles 95 to 100 are set out in the Schengen Convention. Any use of pictures and fingerprints exchanged via SIRPIT, including archiving, shall comply with the relevant provisions of the Schengen Convention, applicable national provisions on data protection, in accordance with Directive 95/46/EC, Framework Decision 2008/977/JHA and the Convention 108 of the Council of Europe as appropriate.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.10.3.</NO.P><TXT><HT TYPE="ITALIC">Technical requirements</HT></TXT></NP></TI></TITLE>
+<P>Every SIRENE bureau should fulfil the SIRPIT technical requirements.</P>
+<?PAGE NO='26'?>
+<P>The SIRENE bureau shall be able to, on the one hand, electronically exchange requests for comparison or verification and the results thereof and, on the other hand, send their requests electronically (without changes) to and receive results from their national identification service.</P><P>In SIRPIT, fingerprints and pictures are sent in an attachment on an input screen specially designed for this purpose.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.10.4.</NO.P><TXT><HT TYPE="ITALIC">The national identification service</HT></TXT></NP></TI></TITLE>
+<P>The national identification service only receives requests from and sends results to its own national SIRENE bureau.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.10.5.</NO.P><TXT><HT TYPE="ITALIC">Use of the SIRENE <HT TYPE="BOLD">L form</HT></HT></TXT></NP></TI></TITLE>
+<P>The transmission (request for and result of a comparison) via SIRPIT shall be announced by sending an <HT TYPE="BOLD">L form</HT> through the usual channel used for all SIRENE forms. <HT TYPE="BOLD">L forms</HT> shall be sent at the same time as fingerprints and/or pictures.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.10.6.</NO.P><TXT><HT TYPE="ITALIC">SIRPIT procedure</HT></TXT></NP></TI></TITLE>
+<P>The SIRENE bureau of the country in which the person was discovered is known hereafter as <QUOT.START CODE="2018" ID="QS0011" REF.END="QE0011"/>the discovering SIRENE<QUOT.END CODE="2019" ID="QE0011" REF.START="QS0011"/>.</P><P>The SIRENE bureau of the country, which has introduced the alert into the SIS, is known hereafter as <QUOT.START CODE="2018" ID="QS0012" REF.END="QE0012"/>the providing SIRENE bureau<QUOT.END CODE="2019" ID="QE0012" REF.START="QS0012"/>.</P><P>The procedure allows for two possibilities:</P>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><NP>
+<NO.P>2.10.6.1.</NO.P><TXT>The discovering SIRENE bureau makes the comparison</TXT></NP></TI></TITLE>
+<NP><NO.P>(a)</NO.P><TXT>The discovering SIRENE bureau sends a <HT TYPE="BOLD">G form</HT> through the usual electronic path and asks, in field 089, the providing SIRENE bureau to send an <HT TYPE="BOLD">L form</HT> as soon as possible, as well as the fingerprints and pictures, if these are available.</TXT></NP>
+<NP><NO.P>(b)</NO.P><TXT>The providing SIRENE bureau replies in an <HT TYPE="BOLD">L form</HT>. If the fingerprints and pictures are available, the providing SIRENE bureau mentions in field 083 that fingerprints and/or pictures are sent in order to make the comparison.</TXT></NP>
+<NP><NO.P>(c)</NO.P><TXT>The discovering SIRENE bureau sends the fingerprints and pictures to its national identification service for comparison, and asks for the result through the same path.</TXT></NP>
+<NP><NO.P>(d)</NO.P><TXT>The discovering SIRENE bureau provides the result in an <HT TYPE="BOLD">L form</HT> (in field 083) to the providing SIRENE bureau.</TXT></NP></GR.SEQ>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><NP>
+<NO.P>2.10.6.2.</NO.P><TXT>The providing SIRENE bureau makes the comparison</TXT></NP></TI></TITLE>
+<NP><NO.P>(a)</NO.P><TXT>The discovering SIRENE bureau sends a <HT TYPE="BOLD">G form</HT> and an <HT TYPE="BOLD">L form</HT> through the usual electronic path and mentions in field 083 of the <HT TYPE="BOLD">L form</HT> that the fingerprints and pictures are being sent for comparison.</TXT></NP>
+<?PAGE NO='27'?>
+<NP><NO.P>(b)</NO.P><TXT>The providing SIRENE bureau sends the fingerprints and pictures that it has received to its national identification service for comparison and asks for the result through the same path.</TXT></NP>
+<NP><NO.P>(c)</NO.P><TXT>The providing SIRENE bureau provides the result in an <HT TYPE="BOLD">L form</HT> (in field 083) to the discovering SIRENE bureau.</TXT></NP>
+<P>After comparison, the fingerprints and pictures of a reported person may be kept in the file by the discovering SIRENE bureau in case further comparisons are required, in accordance with Article 112A of the Schengen Convention.</P><P>The fingerprints and pictures of a person not matching the data of the reported person which have been exchanged via SIRPIT shall be processed in accordance with the provisions of the Schengen Convention applicable national provisions on data protection in accordance with Directive 95/46/EC, Framework Decision 2008/977/JHA and Convention 108 of the Council of Europe, as appropriate.</P></GR.SEQ>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><NP>
+<NO.P>2.10.6.3.</NO.P><TXT>Input screen</TXT></NP></TI></TITLE>
+<P>The input mask shall be developed with reference to the existing Interpol input mask (ANSI/NIST standard).</P><P>The input mask shall have the following data:</P>
+<LIST TYPE="ARAB"><ITEM>
+<NP><NO.P>(1)</NO.P><TXT>Schengen ID number<NOTE NOTE.ID="E0025" NUMBERING="STAR" TYPE="MANUAL"><P>Mandatory</P></NOTE> (see note 1 below)</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(2)</NO.P><TXT>Reference number<NOTE NOTE.REF="E0025" NUMBERING="STAR" TYPE="MANUAL"><P>Mandatory</P></NOTE> (see note 1 below)</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(3)</NO.P><TXT>Date of fingerprints</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(4)</NO.P><TXT>Place where fingerprints were taken</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(5)</NO.P><TXT>Date of picture</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(6)</NO.P><TXT>Reason for fingerprints (reason for the alert underlying the transmission of the fingerprints)</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(7)</NO.P><TXT>Family name<NOTE NOTE.REF="E0025" NUMBERING="STAR" TYPE="MANUAL"><P>Mandatory</P></NOTE> (see note 2 below)</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(8)</NO.P><TXT>First name<NOTE NOTE.REF="E0025" NUMBERING="STAR" TYPE="MANUAL"><P>Mandatory</P></NOTE> (see note 2 below)</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(9)</NO.P><TXT>Maiden name</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(10)</NO.P><TXT>Identity ascertained?</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(11)</NO.P><TXT>Date of birth<NOTE NOTE.REF="E0025" NUMBERING="STAR" TYPE="MANUAL"><P>Mandatory</P></NOTE></TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(12)</NO.P><TXT>Place of Birth</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(13)</NO.P><TXT>Nationality</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(14)</NO.P><TXT>Gender<NOTE NOTE.REF="E0025" NUMBERING="STAR" TYPE="MANUAL"><P>Mandatory</P></NOTE></TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(15)</NO.P><TXT>Supplementary information</TXT></NP></ITEM></LIST>
+<GR.SEQ LEVEL="5"><TITLE>
+<TI><P><HT TYPE="ITALIC">Remarks:</HT></P></TI></TITLE>
+<GR.SEQ LEVEL="6"><LOC.NOTES>
+<REF.NOTE REF="E0025"/></LOC.NOTES></GR.SEQ></GR.SEQ>
+<?PAGE NO='28'?>
+<GR.SEQ LEVEL="5"><GR.ANNOTATION>
+<TITLE><TI>
+<P><HT TYPE="ITALIC">Notes:</HT></P></TI></TITLE>
+<ANNOTATION><NP>
+<NO.P>(1)</NO.P><TXT>an entry shall be made in <HT TYPE="BOLD">either</HT> Field 1 <HT TYPE="BOLD">or</HT> Field 2</TXT></NP></ANNOTATION>
+<ANNOTATION><NP>
+<NO.P>(2)</NO.P><TXT>the option <QUOT.START CODE="2018" ID="QS0013" REF.END="QE0013"/><HT TYPE="BOLD">unknown</HT><QUOT.END CODE="2019" ID="QE0013" REF.START="QS0013"/> may be entered</TXT></NP></ANNOTATION></GR.ANNOTATION></GR.SEQ>
+<P>When available, the place where and date on which the fingerprints were taken shall be entered.</P></GR.SEQ></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.11.</NO.P><TXT><HT TYPE="BOLD">Role of the SIRENE bureaux in police cooperation in the European Union</HT></TXT></NP></TI></TITLE>
+<P>The exchange of supplementary information under the Schengen Convention shall not prejudice the tasks entrusted to the SIRENE bureaux in the area of international police cooperation by national law implementing other legal instruments of the European Union.</P><P>Additional tasks may be entrusted to the SIRENE bureaux, in particular, by the national law implementing Council Framework Decision 2006/960/JHA<NOTE NOTE.ID="E0026" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Council Framework Decision 2006/960/JHA of <DATE ISO="20061218">18 December 2006</DATE> on simplifying the exchange of information and intelligence between law enforcement authorities of the Member States of the European Union (<REF.DOC.OJ COLL="L" DATE.PUB="20061229" NO.OJ="386" PAGE.FIRST="89">OJ L 386, 29.12.2006, p. 89</REF.DOC.OJ>).</P></NOTE>, Articles 39 and 46 of the Schengen Convention, in as far as they are not replaced by Framework Decision 2006/960/JHA, Articles 40 or 41 of the Schengen Convention or if the information falls within the scope of the mutual legal assistance.</P><P>If a SIRENE bureau receives a request falling outside its competence under national law, from another SIRENE bureau, it shall immediately forward it to the competent authority and inform the requesting SIRENE bureau about this action. If necessary, it shall provide support to the requesting SIRENE bureau to facilitate communication.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.12.</NO.P><TXT><HT TYPE="BOLD">Relations between SIRENE and Interpol</HT></TXT></NP></TI></TITLE>
+<P>The role of the SIS is neither to replace nor to replicate the role of Interpol. Although tasks may overlap, the governing principles for action and cooperation between the Member States under Schengen differ substantially from those under Interpol. It is therefore necessary to establish rules for cooperation between the SIRENE bureaux and the NCBs (National Central Bureaux) at national level.</P><P>The following principles have been agreed:</P>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.12.1.</NO.P><TXT><HT TYPE="ITALIC">Priority of SIS alerts over Interpol alerts</HT></TXT></NP></TI></TITLE>
+<P>SIS alerts and the exchange of all information on these alerts shall always have priority over alerts and information exchanged via Interpol. This is of particular importance if the alerts conflict.</P></GR.SEQ>
+<?PAGE NO='29'?>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.12.2.</NO.P><TXT><HT TYPE="ITALIC">Choice of communication channel</HT></TXT></NP></TI></TITLE>
+<P>The principle of Schengen alerts taking precedence over Interpol alerts shall be respected and it shall be ensured that the NCBs of Member States also comply with this. Once the Schengen alert is created, all communication related to the alert and the purpose for its creation, shall be provided by SIRENE bureaux. If a Member State wants to change channels of communication, the other parties shall be consulted in advance. Such a change of channel is possible only in special cases.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.12.3.</NO.P><TXT><HT TYPE="ITALIC">Use and distribution of Interpol diffusions and notices in Schengen states</HT></TXT></NP></TI></TITLE>
+<P>Given the priority of SIS over Interpol alerts, Interpol alerts shall be restricted to exceptional cases (i.e. where there is no provision, either in the Convention or in technical terms, to enter the alert in the SIS, or where insufficient information is available to enter an alert into the SIS). Parallel alerts in the SIS and via Interpol within the Schengen area are inadmissible. alerts which are distributed via Interpol channels and which also cover the Schengen area or parts thereof (Interpol diffusion zone 2) should bear the following indication: <QUOT.START CODE="2018" ID="QS0014" REF.END="QE0014"/><HT TYPE="BOLD">Zone 2 except for the Schengen States</HT><QUOT.END CODE="2019" ID="QE0014" REF.START="QS0014"/>.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.12.4.</NO.P><TXT><HT TYPE="ITALIC">Sending information to third countries</HT></TXT></NP></TI></TITLE>
+<P>As a general rule, data entered in the SIS shall not be made available to third countries. However, where a Member State has issued an alert, only the SIRENE bureau of that issuing Member State may decide whether to make available information to third countries (authorisation, diffusion means and channel). In so doing the SIRENE bureau shall observe the personal data protection provisions laid down in the Schengen Convention, Framework Decision 2008/977/JHA and Directive 95/46/EC, as appropriate. Use of the Interpol channel will depend on national provisions or procedures.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.12.5.</NO.P><TXT><HT TYPE="ITALIC">Hit and deletion of an alert</HT></TXT></NP></TI></TITLE>
+<P>The Schengen States shall ensure at national level that the SIRENE bureaux and the NCBs inform each other of hits.</P><P>The deletion of an alert shall be undertaken only by the authority, which issued the alert.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.12.6.</NO.P><TXT><HT TYPE="ITALIC">Improvement of cooperation between the SIRENE bureaux and the Interpol NCBs</HT></TXT></NP></TI></TITLE>
+<P>Each Member State shall take all appropriate measures to provide for effective exchange of information at national level between its SIRENE bureau and the NCBs.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.13.</NO.P><TXT><HT TYPE="BOLD">Cooperation with EUROPOL and EUROJUST</HT></TXT></NP></TI></TITLE>
+<P>In order to streamline cooperation between SIRENE bureaux, appropriate national procedures shall be established, in particular for cases where EUROPOL or EUROJUST accesses the SIS and achieves a hit.</P></GR.SEQ>
+<?PAGE NO='30'?>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.14.</NO.P><TXT><HT TYPE="BOLD">Special types of search</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.14.1.</NO.P><TXT><HT TYPE="ITALIC">Geographically targeted search</HT></TXT></NP></TI></TITLE>
+<P>A geographically targeted search is a search carried out when the requesting country has firm evidence of the whereabouts of the wanted person or object within a restricted geographical area. In such circumstances a request from the judicial authority may be executed immediately on receipt.</P><P>Geographically targeted searches in the Schengen area shall take place on the basis of the alert in the SIS. The relevant <HT TYPE="BOLD">M form</HT>, which shall be sent at time of creation of the alert or the obtaining of the information on whereabouts, shall include information on the whereabouts of the wanted person or object. An alert for the wanted person shall be entered in the SIS to ensure that a request for provisional arrest is immediately enforceable (Article 64 in the Convention and Article 9(3) of the Framework Decision on EAW).</P><P>Such an alert increases the chances of success, if the person or object moves unexpectedly from one place to another within the Schengen area. Cases where no alert is created shall be restricted to special circumstances, in particular if there is no sufficient information available to create an alert.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.14.2.</NO.P><TXT><HT TYPE="ITALIC">Search with participation of special police units for targeted search (FAST)</HT></TXT></NP></TI></TITLE>
+<P>The services provided by special units that conduct targeted searches (FAST) shall also be used in suitable cases by SIRENE bureaux in the requested Member States. The alert in SIS cannot be replaced by international cooperation of the above mentioned police units. Such cooperation shall not overlap the SIRENE bureau’s role as a focal point for searches using the SIS.</P><P>Cooperation, as appropriate, shall be established to ensure that the SIRENE bureau of the issuing Member State is informed by their national FAST about any ongoing operation relating to an alert entered in the SIS. Where appropriate this SIRENE bureau shall provide this information to other SIRENE bureaux.</P><P>The SIRENE bureaux shall ensure fast flow of supplementary information, including information on a hit, to the national FAST if the latter is involved in the search.</P></GR.SEQ></GR.SEQ>
+<?PAGE NO='31'?>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.15.</NO.P><TXT><HT TYPE="BOLD">Flagging</HT></TXT></NP></TI></TITLE>
+<P>A flag shall be added at the request of another Member State.</P><P>Articles 94(4), 95(3), 97 and 99(6) of the Schengen Convention allow a Member State to refuse to perform a requested action on its territory at any time by requesting that a flag be added to the alerts in accordance with Articles 95, 97 or 99 where it considers that an alert is incompatible with its national law, its international obligations or essential national interests. The reasons for the request shall be provided simultaneously.</P><P>When a flag is added to Articles 97 and 99 alerts the alert does not appear on the screen when the end user consults the system. An alternative procedure exists only for Article 95 alerts. Each Member State shall detect the alerts likely to require a flag as swiftly as possible.</P>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.15.1.</NO.P><TXT><HT TYPE="ITALIC">Consulting the Member States with a view to adding a flag</HT></TXT></NP></TI></TITLE>
+<P>The following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>if a Member State requires a flag to be added it shall request, via its SIRENE Bureau, the flag from the issuing Member State by means of an <HT TYPE="BOLD">F form</HT>, using fields 071-074<NOTE NOTE.ID="E0027" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>For the technical implementation see the Data Exchange between SIRENEs document referred to in Section 1.5.4.</P></NOTE>. For more details concerning the national law field 080 and, where appropriate, for supplementary information explaining the reason for the flag and other supplementary information concerning the alert, field 083 shall be used;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>the Member State that issued the alert shall add the requested flag immediately;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>once information has been exchanged, based on the information provided for in the consultation process by the Member State requesting the flag, the alert may need to be amended or deleted or the request may be withdrawn.</TXT></NP></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>2.15.2.</NO.P><TXT><HT TYPE="ITALIC">A request for deletion of a flag</HT></TXT></NP></TI></TITLE>
+<P>Member States shall request the deletion of the previously requested flag as soon as the reason for the flag is no longer valid. This may be the case, in particular, if the national legislation has changed or if further information exchange about the case revealed that the circumstances mentioned in Articles 94(4), 95(3), 97 and 99(6) of the Schengen Convention no longer exist.</P>
+<?PAGE NO='32'?>
+<P>The following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>the SIRENE bureau which previously requested the flag to be added shall request the SIRENE bureau of the Member State that issued the alert to delete the flag. This request shall be made by means of an <HT TYPE="BOLD">F form</HT>. Field 075 shall be used for this purpose<NOTE NOTE.ID="E0028" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>See footnote 26.</P></NOTE>. For more details concerning the national law field 080 shall be used and, where appropriate, for supplementary information explaining the reason for the deletion of the flag and for other supplementary information concerning the alert field, 083 shall be used;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>the SIRENE bureau of the Member State that issued the alert shall delete the flag immediately.</TXT></NP></ITEM></LIST></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>2.16.</NO.P><TXT><HT TYPE="BOLD">Indication of urgency in SIRENE forms</HT></TXT></NP></TI></TITLE>
+<P>SIRENE forms to be dealt with by the requested SIRENE bureau with highest priority may be marked <QUOT.START CODE="2018" ID="QS0015" REF.END="QE0015"/>URGENT<QUOT.END CODE="2019" ID="QE0015" REF.START="QS0015"/>, followed by the reason for urgency. Field 083 in the SIRENE forms shall include this information as the first piece of information, where appropriate.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="1"><TITLE>
+<TI><NP>
+<NO.P>3.</NO.P><TXT>ALERTS PURSUANT TO ARTICLE 95<NOTE NOTE.ID="E0029" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P><QUOT.START CODE="2018" ID="QS0016" REF.END="QE0016"/>Persons wanted for arrest for surrender/extradition<QUOT.END CODE="2019" ID="QE0016" REF.START="QS0016"/></P></NOTE></TXT></NP></TI></TITLE>
+<P>The following steps shall be followed:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>Member State checks prior to issuing the alert,</P></ITEM>
+<ITEM><P>multiple alerts,</P></ITEM>
+<ITEM><P>supplementary Information to be sent to Member States,</P></ITEM>
+<ITEM><P>at the request of another Member State add a flag,</P></ITEM>
+<ITEM><P>action by SIRENE bureau upon receipt of an Article 95 alert,</P></ITEM>
+<ITEM><P>the exchange of information after a hit,</P></ITEM>
+<ITEM><P>deletion of an alert,</P></ITEM>
+<ITEM><P>misused identity.</P></ITEM></LIST>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>3.1.</NO.P><TXT><HT TYPE="BOLD">Member State checks prior to issuing the alert</HT></TXT></NP></TI></TITLE>
+<P>Most newly issued Article 95 alerts will be based on a European Arrest Warrant (EAW). However, under an Article 95 alert it is also possible for provisional arrest prior to obtaining an extradition request. The checks required before each of these cases are as follows:</P><P>The EAW/extradition request shall be issued by a judicial authority authorised to carry out this function in the issuing Member State.</P>
+<?PAGE NO='33'?>
+<P>Sufficient detail to enable other SIRENE bureaux to verify the alert should be contained in the EAW/extradition request and in the <HT TYPE="BOLD">A form</HT> (in particular, EAW section (e): <QUOT.START CODE="2018" ID="QS0017" REF.END="QE0017"/>description of the circumstances in which the offence(s) was (were) committed, including the time and place<QUOT.END CODE="2019" ID="QE0017" REF.START="QS0017"/> and <HT TYPE="BOLD">A form</HT>, field 044: <QUOT.START CODE="2018" ID="QS0018" REF.END="QE0018"/>description of the deeds<QUOT.END CODE="2019" ID="QE0018" REF.START="QS0018"/>).</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>3.2.</NO.P><TXT><HT TYPE="BOLD">Checking whether the national law of the Member States authorises arrest with a view to surrender or extradition</HT></TXT></NP></TI></TITLE>
+<P>The Member State issuing an alert shall check whether the arrest that is to be requested is authorised by the national law of the other Member States.</P><P>The following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>check that all Member States are able to follow up the alert;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>if there is any doubt, consult the SIRENE bureau concerned and transmit or exchange the information necessary for the check.</TXT></NP></ITEM></LIST>
+<P>Each Member State shall take appropriate technical or organisational measures to ensure that alerts under Article 95(2), second sentence, are only entered into the SIS after the SIRENE bureau of the Member State in question has been informed.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>3.3.</NO.P><TXT><HT TYPE="BOLD">Multiple alerts</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.3.1.</NO.P><TXT><HT TYPE="ITALIC">Check for multiple alerts (Article 107)</HT></TXT></NP></TI></TITLE>
+<P>Each Member State can only enter one alert in the system per wanted person. A check is therefore required to identify multiple requests for an alert from one Member State. In the event of multiple requests by one Member State, a national procedure is required to agree which EAW will be shown on the Article 95 alert. On the basis of this alert, only one <HT TYPE="BOLD">A form</HT> shall be sent to Member States in accordance with the procedure referred to in Section 3.4. Alternatively, a single EAW could be issued to cover all offences.</P><P>For general procedures on checking multiple alerts see Section 2.1.2.</P><P>The SIRENE bureau of the Member State issuing an alert shall maintain a record of any requests to enter a further alert which, after consultation, have been rejected by virtue of the provisions given above, until the alert is deleted.</P><P>Whenever a hit occurs in a Member State, the SIRENE bureau of the Member State that issued the alert may send as many EAW as have been issued by their competent judicial authorities.</P>
+<?PAGE NO='34'?>
+<P>Several Member States may enter an alert for an EAW on the same person. If two or more Member States have issued an EAW for the same person, the decision on which warrant shall be executed in the event of an arrest shall be taken by the executing judicial authority in the Member State where the arrest occurs. If the alerts are compatible, <HT TYPE="BOLD">G forms</HT> shall be sent, in the event of a hit, in response to all requests.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.3.2.</NO.P><TXT><HT TYPE="ITALIC">Exchange of information</HT></TXT></NP></TI></TITLE>
+<P>See general procedures in Section 2.1.2 and 2.1.3.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>3.4.</NO.P><TXT><HT TYPE="BOLD">Supplementary information to be sent to Member States</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.4.1.</NO.P><TXT><HT TYPE="ITALIC">Supplementary information to be sent with regards to an EAW</HT></TXT></NP></TI></TITLE>
+<P>The <HT TYPE="BOLD">A</HT> and <HT TYPE="BOLD">M forms</HT>, which are uniform for all Member States, shall be used and the information contained in these forms shall be the same as that in the EAW.</P><P>In an <HT TYPE="BOLD">A form</HT>:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>006-013: The relevant information inserted in the SIS and corresponding to Section (a) of the EAW should be entered,</P></ITEM>
+<ITEM><P>030: Information that this <HT TYPE="BOLD">A form</HT> is specific to an EAW should be entered along with details of the magistrate or court ordering the arrest warrant, taken from Section (i) of the EAW,</P></ITEM>
+<ITEM><P>031: The relevant information contained in the EAW section (b) concerning the decision on which the warrant is based should be entered,</P></ITEM>
+<ITEM><P>032: The date of the arrest warrant should be entered,</P></ITEM>
+<ITEM><P>033: The capacity of the judicial authority which issued the warrant should be entered, taken from Section (i) of the EAW,</P></ITEM>
+<ITEM><P>034: The relevant information from the EAW section (c, 1) plus, where applicable:</P><P><LIST TYPE="DASH"><ITEM>
+<P>the offence(s) on the basis of which the warrant has been issued is (are) punishable by a custodial life sentence or lifetime detention order,</P></ITEM>
+<ITEM><P>the legal system of the issuing Member State allows for a review of the penalty or measure imposed, on request or at least after 20 years, aiming at the non-execution of such a penalty or measure, and/or</P></ITEM>
+<ITEM><P>the legal system of the issuing Member State allows for the application of measures of clemency to which the person is entitled under the law or practice of the issuing Member State, aiming at the non-execution of such a penalty or measure,</P></ITEM></LIST></P></ITEM>
+<ITEM><P>035-037: The relevant information from the EAW section (b) should be entered,</P></ITEM>
+<ITEM><P>038: The relevant information from the EAW section (c, 2) plus, where applicable:</P><P><LIST TYPE="DASH"><ITEM>
+<P>the offence(s) on the basis of which the warrant has been issued is (are) punishable by a custodial life sentence or lifetime detention order,</P></ITEM>
+<?PAGE NO='35'?>
+<ITEM><P>the legal system of the issuing Member State allows for a review of the penalty or measure imposed, on request or at least after 20 years, aiming at the non-execution of such a penalty or measure, and/or</P></ITEM>
+<ITEM><P>the legal system of the issuing Member State allows for the application of measures of clemency to which the person is entitled under the law or practice of the issuing Member State, aiming at the non-execution of such a penalty or measure,</P></ITEM></LIST></P></ITEM>
+<ITEM><P>039: Information from EAW section (c, 2) should be entered,</P></ITEM>
+<ITEM><P>040: Information from EAW section (e) on the applicable statutory provision/code,</P></ITEM>
+<ITEM><P>041: Information from EAW section (e) on the nature and legal classification of the offence(s),</P></ITEM>
+<ITEM><P>042: Information from EAW section (e) on the time the offence(s) was (were) committed,</P></ITEM>
+<ITEM><P>043: Information from EAW section (e) on the place in which the offence(s) was (were) committed,</P></ITEM>
+<ITEM><P>044: Information from EAW section (e) on the circumstances of the offence(s),</P></ITEM>
+<ITEM><P>045: Information from EAW section (e) on the degree of participation by the requested person,</P></ITEM>
+<ITEM><P>058: Information from the EAW section (a) on distinctive marks/description of the person.</P></ITEM></LIST>
+<P>In field 083 of an <HT TYPE="BOLD">M form</HT>:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>where the text <QUOT.START CODE="2018" ID="QS0019" REF.END="QE0019"/><HT TYPE="ITALIC">Information on decision rendered in absentia according to EAW Section (d)</HT><QUOT.END CODE="2019" ID="QE0019" REF.START="QS0019"/> appears, it is requested, where applicable:</P><P><LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>to indicate if the decision was pronounced in absentia;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>if so, to specify whether the person concerned was personally summoned or informed of the date and place of the hearing where the decision was rendered in absentia. If this is not the case, mention the legal safeguards. From the date of application of Framework Decision 2009/299/JHA<NOTE NOTE.ID="E0030" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Council Framework Decision 2009/299/JHA of <DATE ISO="20090226">26 February 2009</DATE> amending Framework Decisions 2002/584/JHA, 2005/214/JHA, 2006/783/JHA, 2008/909/JHA and 2008/947/JHA, thereby enhancing the procedural rights of persons and fostering the application of the principle of mutual recognition to decisions rendered in the absence of the person concerned at the trial (<REF.DOC.OJ COLL="L" DATE.PUB="20090327" NO.OJ="081" PAGE.FIRST="24">OJ L 81, 27.3.2009, p. 24</REF.DOC.OJ>).</P></NOTE>, the conditions of the decision rendered in absentia shall be indicated in field 083 as specified in the EAW. Codes 2, 3.1a, 3.1b, 3.2, 3.3 (decision not contested), 3.3 (no request for retrial or appeal) and 3.4 shall be referred to and, where applicable, information shall be provided about how the relevant condition has been met,</TXT></NP></ITEM></LIST></P></ITEM>
+<?PAGE NO='36'?>
+<ITEM><P>where the text <QUOT.START CODE="2018" ID="QS0020" REF.END="QE0020"/>Punishable offence(s) according to EAW Section (e, I and II)<QUOT.END CODE="2019" ID="QE0020" REF.START="QS0020"/> appears, one or more of the offences punishable in the issuing Member State by a custodial sentence or detention order of a maximum of at least 3 years, as defined by the laws of the issuing Member State, according to Article 2(2) of the Framework decision (or Section [(e)I] of the EAW) has to be filled in, if applicable,</P></ITEM>
+<ITEM><P>if the offence(s) does (do) fall within the list given in Article 2(2) of the framework decision concerning the EAW, the offence(s) shall be entered in full into the <HT TYPE="BOLD">M form</HT>, according to the wording used in the list,</P></ITEM>
+<ITEM><P>if the offences do not fall within the list mentioned above, the following information is required:</P><P><LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>either that the warrant has been issued for acts punishable by the law of the issuing Member State by a custodial sentence or a detention order for a maximum period of at least 12 months;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>or, where a sentence has been passed or a detention order has been made, that the sentence is of at least 4 months.</TXT></NP></ITEM></LIST></P></ITEM>
+<ITEM><P>If the information to be inserted into field 083 of the <HT TYPE="BOLD">M forms</HT> exceeds <FT TYPE="NUMBER">1024</FT> characters, one or more supplementary <HT TYPE="BOLD">M forms</HT> have to be sent.</P></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.4.2.</NO.P><TXT><HT TYPE="ITALIC">Supplementary Information to be sent with regards to provisional arrest</HT></TXT></NP></TI></TITLE>
+<P>The file provided with regard to persons wanted for arrest for extradition purposes, shall be prepared before the alert is entered. A check should be made to ensure that the information is complete and correctly presented. The following information is to be provided: the details for prosecution or the enforcement of criminal sentences shall, in principle, be provided as an alternative:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>006: Surname: The surname used for the main data in the SIS alert is entered under heading 006,</P></ITEM>
+<ITEM><P>007: Given name,</P></ITEM>
+<ITEM><P>009: Date of birth,</P></ITEM>
+<ITEM><P>010: Place of birth,</P></ITEM>
+<ITEM><P>011: Alias: The first alias name is written out in full and the total number of aliases found is indicated. An <HT TYPE="BOLD">M form</HT> may be used to send the complete list of alias names,</P></ITEM>
+<ITEM><P>012: Gender,</P></ITEM>
+<ITEM><P>013: Nationality: Heading 013 <QUOT.START CODE="2018" ID="QS0021" REF.END="QE0021"/>Nationality<QUOT.END CODE="2019" ID="QE0021" REF.START="QS0021"/> must be filled in as completely as possible on the basis of the available information. If there are any doubts as to the information, code <QUOT.START CODE="2018" ID="QS0022" REF.END="QE0022"/>1W<QUOT.END CODE="2019" ID="QE0022" REF.START="QS0022"/> and the word <QUOT.START CODE="2018" ID="QS0023" REF.END="QE0023"/>supposed<QUOT.END CODE="2019" ID="QE0023" REF.START="QS0023"/> should be added to the word <QUOT.START CODE="2018" ID="QS0024" REF.END="QE0024"/>nationality<QUOT.END CODE="2019" ID="QE0024" REF.START="QS0024"/>,</P></ITEM>
+<?PAGE NO='37'?>
+<ITEM><P>030: Authority issuing the arrest warrant or decision (name and position of the magistrate or public prosecutor or name of the court),</P></ITEM>
+<ITEM><P>031: Reference No. of arrest warrant or decision (037). See also comments below,</P></ITEM>
+<ITEM><P>032: Date of arrest warrant or decision (036). Requests for criminal prosecution and enforcement can be summarised in an accompanying document,</P></ITEM>
+<ITEM><P>033: Name of requesting authority,</P></ITEM>
+<ITEM><P>034: Maximum penalty/maximum penalty foreseen,</P></ITEM>
+<ITEM><P>035: Magistrate or court issuing the decision,</P></ITEM>
+<ITEM><P>036: Date of decision,</P></ITEM>
+<ITEM><P>037: Decision ref. no,</P></ITEM>
+<ITEM><P>038: Sentence given,</P></ITEM>
+<ITEM><P>039: Indication of sentence remaining to be served,</P></ITEM>
+<ITEM><P>040: Legal texts applicable,</P></ITEM>
+<ITEM><P>041: Legal description of the deed,</P></ITEM>
+<ITEM><P>042: Date/period the offence was committed,</P></ITEM>
+<ITEM><P>044: Description of the facts of the case (including their consequences),</P></ITEM>
+<ITEM><P>045: Degree of involvement (principal — accessory — aider — abetter).</P></ITEM></LIST>
+<P>Each country may use its own legal terminology to describe the degree of participation.</P><P>The information given must be in sufficient detail for the other SIRENE bureaux to verify the alert, but not in so much detail as to overload the message system.</P><P>If the SIRENE bureaux are unable to receive the message because the number of spaces fixed for the relevant form, for technical reasons, is insufficient, an <HT TYPE="BOLD">M form</HT> can be sent with supplementary information. The end of the transmission is indicated by the phrase <QUOT.START CODE="2018" ID="QS0025" REF.END="QE0025"/>End of Message<QUOT.END CODE="2019" ID="QE0025" REF.START="QS0025"/> in the last form (heading 044 of <HT TYPE="BOLD">A form</HT> or heading 083 of <HT TYPE="BOLD">M form</HT>).</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.4.3.</NO.P><TXT><HT TYPE="ITALIC">Entering an alias</HT></TXT></NP></TI></TITLE>
+<P>See general procedures in Section 2.9.</P><P>In case of alerts for arrest, the SIRENE Bureau shall use field 011 of the <HT TYPE="BOLD">A form</HT><NOTE NOTE.ID="E0031" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>See footnote 26.</P></NOTE> (at the time of entry of the alert) or subsequently the <HT TYPE="BOLD">M form</HT>, when informing the other Member States of aliases regarding an alert issued pursuant to Article 95, if this information is available to the SIRENE bureau.</P></GR.SEQ>
+<?PAGE NO='38'?>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.4.4.</NO.P><TXT><HT TYPE="ITALIC">Further Information to establish a person’s identity</HT></TXT></NP></TI></TITLE>
+<P>The SIRENE bureau of the issuing Member State may also, if necessary, provide further information, after consultation and/or at the request of another Member State, to help establish a person’s identity. This information shall cover the following, in particular:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>the origin of the passport or identity document in the possession of the person sought,</P></ITEM>
+<ITEM><P>the reference number, issuing date, place and authority as well as the expiry date of the passport or identity document,</P></ITEM>
+<ITEM><P>description of the person sought,</P></ITEM>
+<ITEM><P>surname and given name of the wanted person’s mother and father,</P></ITEM>
+<ITEM><P>to check whether a photo and/or finger prints are available,</P></ITEM>
+<ITEM><P>last known address.</P></ITEM></LIST>
+<P>As far as is possible, this information, including any photographs and fingerprints, shall be available in the SIRENE bureaux, or immediately and permanently accessible to them for speedy transmission.</P><P>The common objective is to minimise the risk of wrongly detaining a person whose details are similar to those of the person on whom an alert has been issued.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.4.5.</NO.P><TXT><HT TYPE="ITALIC">Sending the <HT TYPE="BOLD">A</HT> and <HT TYPE="BOLD">M forms</HT></HT></TXT></NP></TI></TITLE>
+<P>The information mentioned in 3.3.1 and 3.3.2 shall be sent by the swiftest means available. The issuing Member State shall send the A and M forms at the same time as entering the Article 95(2) alert into the SIS. Any further information required for identification purposes shall be sent after consultation and/or at the request of another Member State. Multiple <HT TYPE="BOLD">M forms</HT> describing different EAWs (or extradition requests) can be sent if necessary. The <HT TYPE="BOLD">M form</HT> shall contain information in particular on the type of offence on which the EAW is based, the date of the commission of the offence and the statute of limitations. If the issue of a new EAW concerning a person already subject of a EAW requires the replacement of an existing <HT TYPE="BOLD">A form</HT>, the fact that the new <HT TYPE="BOLD">A form</HT> is a replacement shall be indicated on the new form in field 030.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>3.5.</NO.P><TXT><HT TYPE="BOLD">Flagging</HT></TXT></NP></TI></TITLE>
+<P>For general procedures see Section 2.15.</P><P>A flagged alert shall be regarded as being issued for the purposes of communicating the place of residence of the person concerned.</P>
+<?PAGE NO='39'?>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.5.1.</NO.P><TXT><HT TYPE="ITALIC">Systematic request for a flag to be added to alerts on persons wanted for arrest for extradition purposes where Council Framework Decision 2002/584/JHA of <DATE ISO="20020613">13 June 2002</DATE> on the European arrest warrant and the surrender procedures between Member States</HT><NOTE NOTE.ID="E0032" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="20020718" NO.OJ="190" PAGE.FIRST="1">OJ L 190, 18.7.2002, p. 1</REF.DOC.OJ>.</P></NOTE><HT TYPE="ITALIC">does not apply</HT></TXT></NP></TI></TITLE>
+<P>The following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>in the case of alerts on persons wanted for arrest for extradition purposes, where Framework Decision 2002/584/JHA on the European arrest warrant and the surrender procedures between Member States does not apply, a SIRENE bureau may ask other SIRENE bureaux to add a flag systematically to Article 95 alerts issued on its nationals;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>any SIRENE bureau wishing to do so shall send a written request to other SIRENE bureaux;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>any SIRENE bureaux to whom such a request is addressed shall add a flag for the Member State in question immediately after the alert is issued;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(d)</NO.P><TXT>the flag shall remain until the requesting SIRENE bureau asks for its cancellation.</TXT></NP></ITEM></LIST>
+<P>If the circumstances mentioned in Article 94(4) of the Schengen Convention no longer exist, the Member State that requested the flag shall ask as soon as possible for the flag to be revoked.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>3.6.</NO.P><TXT><HT TYPE="BOLD">Action by SIRENE bureaux upon receipt of an Article 95 alert</HT></TXT></NP></TI></TITLE>
+<P>When a SIRENE bureau receives the <HT TYPE="BOLD">A</HT> and <HT TYPE="BOLD">M forms</HT>, the bureau or associated unit should, as soon as practicable, search all available sources to try and locate the subject. If the information provided by the requesting Member State is not sufficient for acceptance by the receiving Member State, this should not prevent the searches being carried out.</P><P>If the Article 95 alert is validated and the subject is located or arrested in the Member State, then the EAW and/or <HT TYPE="BOLD">A</HT> and <HT TYPE="BOLD">M forms</HT> shall be forwarded to the authority of the Member State which executes the EAW. If the original EAW is requested, it shall be sent by the issuing judicial authority directly to the executing judicial authority (unless otherwise directed).</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>3.7.</NO.P><TXT><HT TYPE="BOLD">The exchange of information after a hit</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.7.1.</NO.P><TXT><HT TYPE="ITALIC">Informing the Member States if an alert is matched</HT></TXT></NP></TI></TITLE>
+<P>For the general procedure see Section 2.2.1.</P>
+<?PAGE NO='40'?>
+<P>In addition, the following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>a hit on an individual on which an Article 95 alert has been issued shall always be communicated to the SIRENE bureau of the issuing Member State. Moreover, after sending the <HT TYPE="BOLD">G form</HT>, the hit shall also be communicated, where appropriate, by telephone;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>the authority competent for receiving the EAW or extradition request, its full communication contacts (postal address, phone and, if available, fax and e-mail), reference number (if available), competent person (if available), requested language, time limit for and form of delivery shall be provided in field 091 of the <HT TYPE="BOLD">G form</HT>;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>a Member State which had previously indicated a wish to issue an alert on a person already the subject of an alert shall be informed of any hits on the original alert by the Member State that actually issued that alert;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(d)</NO.P><TXT>C.SIS automatically communicates the deletion of an alert to all Member States. It is therefore possible for a Member State to consider entering an alert, which was previously considered incompatible with an alert which has now been deleted.</TXT></NP></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.7.2.</NO.P><TXT><HT TYPE="ITALIC">Communicating further information</HT></TXT></NP></TI></TITLE>
+<P>The SIRENE bureaux may transmit further information on Article 95 alerts, and in so doing may act on behalf of judicial authorities if this information falls within the scope of mutual judicial assistance.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.7.3.</NO.P><TXT><HT TYPE="ITALIC">Following a hit</HT></TXT></NP></TI></TITLE>
+<P>The end user may require the SIRENE bureau to supply supplementary information to allow effective implementation of the procedures laid down in SIS tables 4, 10 or 16 as set out in Annex 4.</P><P>Unless stated otherwise, the issuing Member State shall be informed of the hit and its outcome.</P><P>This procedure has technical implications as the alert may need to be deleted and another alert which had previously been excluded from the SIS can now be entered.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.7.4.</NO.P><TXT><HT TYPE="ITALIC">Supplementary information exchange about surrender or extradition</HT></TXT></NP></TI></TITLE>
+<P>Information, when provided by the competent judicial authorities to the SIRENE bureau on whether the surrender or extradition may take place of a person for whom an alert for arrest has been issued, shall immediately be provided to the SIRENE bureau of the Member State issuing the alert by means of an <HT TYPE="BOLD">M form</HT>, marked in field 083 with the word <QUOT.START CODE="2018" ID="QS0026" REF.END="QE0026"/>SURRENDER<QUOT.END CODE="2019" ID="QE0026" REF.START="QS0026"/> or <QUOT.START CODE="2018" ID="QS0027" REF.END="QE0027"/>EXTRADITION<QUOT.END CODE="2019" ID="QE0027" REF.START="QS0027"/><NOTE NOTE.ID="E0033" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>See also Section 2.16. on indication of urgency in SIRENE forms.</P></NOTE>. The modalities of the surrender or extradition should be communicated via the SIRENE bureaux as soon as possible.</P>
+<?PAGE NO='41'?>
+<P>If the transit of a wanted person is necessary, the SIRENE bureau of the Member State to be transited shall provide the necessary support and assistance, in response to a request by the SIRENE bureau or the competent judicial authority of the issuing Member State, sent by the SIRENE bureau, by means of an <HT TYPE="BOLD">M form</HT>.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>3.8.</NO.P><TXT><HT TYPE="BOLD">Deletion of an alert</HT></TXT></NP></TI></TITLE>
+<P>Inform the Member States who had been unable to enter their alert that a hit has been made and that the alert has been deleted.</P>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>3.8.1.</NO.P><TXT><HT TYPE="ITALIC">Deleting when the conditions for maintaining the alert cease to be met</HT></TXT></NP></TI></TITLE>
+<P>Excluding the cases after a hit, an alert may be deleted either by the C.SIS (once the expiry date has passed) or by the service that entered the alert in the SIS (once the conditions for maintaining the alert no longer apply).</P><P>In both instances the C.SIS <QUOT.START CODE="2018" ID="QS0028" REF.END="QE0028"/>delete message<QUOT.END CODE="2019" ID="QE0028" REF.START="QS0028"/> should be processed automatically by the N.SIS so that an alert kept pending can be entered in its place.</P><P>The SIRENE bureau is notified automatically by a message from its N.SIS that an alert put on hold can be entered.</P><P>The SIRENE bureau shall apply the entire procedure for entering an alert in the appropriate alert category.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>3.9.</NO.P><TXT><HT TYPE="BOLD">Misused identity</HT></TXT></NP></TI></TITLE>
+<P>See general procedure in Section 2.8.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="1"><TITLE>
+<TI><NP>
+<NO.P>4.</NO.P><TXT>ALERTS PURSUANT TO ARTICLE 96<NOTE NOTE.ID="E0034" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Third-country nationals for whom an alert has been issued for the purposes of refusing entry (Articles 25 and 96 of the Schengen Convention).</P></NOTE></TXT></NP></TI></TITLE>
+<P>The following steps shall be followed:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>entry of the alert,</P></ITEM>
+<ITEM><P>check for multiple alerts, reference is made to General Procedures in Section 2.1,</P></ITEM>
+<ITEM><P>entering an alias, reference is made to General Procedures in Section 2.9,</P></ITEM>
+<ITEM><P>misused identity, reference is made to General Procedures in Section 2.8,</P></ITEM>
+<ITEM><P>SIRPIT procedure, reference is made to General Procedures in Section 2.10,</P></ITEM>
+<ITEM><P>general and special procedures to be followed.</P></ITEM></LIST>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>4.1.</NO.P><TXT><HT TYPE="BOLD">Introduction</HT></TXT></NP></TI></TITLE>
+<P>The exchange of information on third-country nationals on whom an alert has been issued under Article 96 allows Member States to decide in the case of entry or visa application. If the individual is already on the territory of the Member State, it allows national authorities to take the appropriate action for issuing residence permits, long-stay visas or expulsion.</P>
+<?PAGE NO='42'?>
+<P>Carrying out the information procedures laid down under Article 5(4) of the Schengen Borders Code and the consultation procedures laid down under Article 25 of the Schengen Convention, falls within the competences of the authorities responsible for border controls and issuing residence permits or visas. In principle, the SIRENE bureaux shall be involved in these procedures only in order to transmit supplementary information directly related to the alerts (e.g. notification of a hit, clarification of identity) or to erase alerts.</P><P>However, the SIRENE bureaux may also be involved in transmitting supplementary information necessary for the expulsion of, or for refusing entry to, a third-country national; and, may be involved in transmitting any supplementary information further generated by these actions.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>4.2.</NO.P><TXT><HT TYPE="BOLD">Entry of alerts pursuant to Article 96</HT></TXT></NP></TI></TITLE>
+<P>Enter the alert into the SIS, if the SIRENE bureau is the authority designated for such entries.</P><P>In the exceptional case of entry of an alert on a third-country national enjoying the right of free movement, the SIRENE bureau of the Member State issuing the alert shall send an <HT TYPE="BOLD">M form</HT> to all the other Member States, based on the information provided by the authority that has entered the alert<NOTE NOTE.ID="E0035" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>According to Directive 2004/38/EC, a person benefiting from the right of free movement may only be refused entry or stay on the grounds of public policy or public security when their personal conduct represents a genuine, immediate, and sufficiently serious threat affecting one of the fundamental interests of society and when the other criteria laid down in Article 27(2) of this Directive are respected. Article 27(2) stipulates: <QUOT.START CODE="2018" ID="QS0029" REF.END="QE0029"/>Measures taken on grounds of public policy or public security shall comply with the principle of proportionality and shall be based exclusively on the personal conduct of the individual concerned. Previous criminal convictions shall not in themselves constitute grounds for taking such measures. The personal conduct of the individual concerned must represent a genuine, present and sufficiently serious threat affecting one of the fundamental interests of society. Justifications that are isolated from the particulars of the case or that rely on considerations of general prevention shall not be accepted.<QUOT.END CODE="2019" ID="QE0029" REF.START="QS0029"/> Moreover, there are additional limitations for persons enjoying the right of permanent residence who can only be refused entry or stay on <HT TYPE="BOLD">serious</HT> grounds of public policy or public security as stated in Article 28(2) of the Directive.</P></NOTE>.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>4.3.</NO.P><TXT><HT TYPE="BOLD">Entering an alias</HT></TXT></NP></TI></TITLE>
+<P>See general procedure in Section 2.9.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>4.4.</NO.P><TXT><HT TYPE="BOLD">Misused Identity</HT></TXT></NP></TI></TITLE>
+<P>If code 3 is found in the field of <QUOT.START CODE="2018" ID="QS0030" REF.END="QE0030"/>category of identity<QUOT.END CODE="2019" ID="QE0030" REF.START="QS0030"/> when the SIS is consulted, the official conducting the check should contact the national SIRENE bureau and obtain additional information in order to clarify whether the person being checked is the person sought or the person whose identity is misused.</P>
+<?PAGE NO='43'?>
+<P>For gathering and communicating information on a person whose identity is misused, see general procedure in Section 2.8.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>4.5.</NO.P><TXT><HT TYPE="BOLD">Types of SIRENE procedures to be followed</HT></TXT></NP></TI></TITLE>
+<P>The following <HT TYPE="ITALIC">general procedures</HT> shall apply, to the SIRENE bureaux, to the extent that they forward supplementary information:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>exchange of information when refusing entry or expelling from the Schengen territory;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>exchange of information when issuing residence permits or long-stay visas.</TXT></NP></ITEM></LIST>
+<P>The following <HT TYPE="ITALIC">special procedures</HT> shall apply to the SIRENE bureaux to the extent that they forward supplementary information:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>special procedures as provided for in Article 25 of the Schengen Convention;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>special procedures as provided for Article 5(4) of the Schengen Borders Code;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>exchange of information on a third-country national who is a beneficiary of the right of free movement;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(d)</NO.P><TXT>deletion of alerts entered for EU citizens.</TXT></NP></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>4.6.</NO.P><TXT><HT TYPE="BOLD">Exchange of information following a hit</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>4.6.1.</NO.P><TXT><HT TYPE="ITALIC">Exchange of information when refusing entry or expelling from the Schengen territory</HT></TXT></NP></TI></TITLE>
+<P>The following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>a Member State may ask to be informed of any hits on alerts for refusal of entry or stay that it has issued. Any Member State that wishes to take up this option shall ask the other Member States in writing;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>the executing Member State may take the initiative and inform the issuing Member State that the alert has been matched and that the third-country national has not been granted entry or has been expelled from the Schengen territory;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>If, on its territory, a Member State intercepts a third-country national for whom an alert has been issued, the issuing Member State, upon request, shall forward the information required to return the person concerned. Depending on the needs of the executing Member State and, if available at the issuing Member State, this information, given in an <HT TYPE="BOLD">M form</HT>, shall include the following:</TXT>
+<P><LIST TYPE="DASH"><ITEM>
+<P>the type and reason for the decision,</P></ITEM>
+<?PAGE NO='44'?>
+<ITEM><P>the authority issuing the decision,</P></ITEM>
+<ITEM><P>the date of the decision,</P></ITEM>
+<ITEM><P>the date of service (the date on which the decision was served),</P></ITEM>
+<ITEM><P>the date of enforcement,</P></ITEM>
+<ITEM><P>the date on which the decision expires or the length of validity.</P></ITEM></LIST></P></NP></ITEM></LIST>
+<P>If a person on whom an alert has been issued is intercepted at the border, the procedures set out in the Schengen Borders Code, and by the issuing Member State, shall be followed.</P><P>There might also be an urgent need for supplementary information to be exchanged via the SIRENE bureaux in specific cases in order to identify an individual with certainty.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>4.6.2.</NO.P><TXT><HT TYPE="ITALIC">Exchange of information when issuing residence permits or visas</HT></TXT></NP></TI></TITLE>
+<P>The following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>the executing Member State may inform the Member State which issued an alert for refusal of entry or stay that the alert has been matched in the course of the procedure for issuing a residence permit or a long-stay visa;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>the Member State that issued the alert may then inform other Member States using an <HT TYPE="BOLD">M form</HT>, if appropriate;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>if so requested, in accordance with national legislation, the SIRENE bureaux of the Member States concerned may assist in transmitting the necessary information to the appropriate authorities responsible for issuing residence permits and visas.</TXT></NP></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>4.6.3.</NO.P><TXT><HT TYPE="ITALIC">Special procedures as provided for in Article 25 of the Schengen Convention</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><NP>
+<NO.P>4.6.3.1.</NO.P><TXT>Procedure under Article 25(1) of the Schengen Convention</TXT></NP></TI></TITLE>
+<P>If a Member State that is considering granting a residence permit or long-stay visa discovers that the applicant concerned is the subject of an alert for refusal of entry or stay issued by another Member State, it shall consult with the Member State that issued the alert via the SIRENE bureaux. An <HT TYPE="BOLD">N form</HT> shall be used for that purpose. The alert shall be deleted if, after consultation, the Member State maintains its decision to issue the residence permit. The person can, nevertheless, be put on a Member State’s national list of alerts for refusal of entry.</P></GR.SEQ>
+<?PAGE NO='45'?>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><NP>
+<NO.P>4.6.3.2.</NO.P><TXT>Procedure under Article 25(2) of the Schengen Convention</TXT></NP></TI></TITLE>
+<P>If a Member State that entered an alert for refusal of entry or stay finds out that the person who is the subject of the alert has been issued a residence permit or long-stay visa, it shall instigate a consultation procedure with the Member State that issued the residence permit or long-stay visa, via the SIRENE Bureaux using an <HT TYPE="BOLD">O form</HT>. The consultation via SIRENE bureaux using an <HT TYPE="BOLD">O form</HT> shall also take place if the Member State that issued the residence permit or long-stay visa discovers later that there is an alert for refusal of entry or stay in the SIS on that person<NOTE NOTE.ID="E0036" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>In the case of alerts for refusal of entry issued for the family members of EU citizens, it is necessary to recall that it is not possible as a matter of routine to consult SIS prior to issuing a residence card for such a person. Article 10 of the Directive 2004/38/EC lists the necessary conditions for acquiring right of residence for more than 3 months in a host Member State by family members of Union citizens who are third-country nationals. This list, which is exhaustive, does not allow for routine consultation of the SIS prior to the issuing of residence cards. Article 27(3) of this Directive specifies that Member States may request, should they consider it essential, information from other MS only regarding any previous police record (so, i.e. not all of the SIS data). Such enquiries shall not be made as a matter of routine.</P></NOTE>.</P><P>If a third Member State (i.e. neither the one which granted the residence permit or long-stay visa nor the one which issued the alert) discovers that there is an alert on a third-country national that holds a residence permit or long-stay visa from one of the Member States, it shall notify both the Member State which granted the permit or long-stay visa and the Member State which issued the alert, via SIRENE bureaux using an <HT TYPE="BOLD">H form</HT>.</P><P>If the procedure foreseen under Article 25 of the Schengen Convention entails deleting an alert for refusal of entry or stay, the SIRENE bureaux shall, whilst respecting their national legislation, offer their support if so requested.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>4.6.4.</NO.P><TXT><HT TYPE="ITALIC">Special procedures as provided for in Article 5(4) of the Schengen Borders Code</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><NP>
+<NO.P>4.6.4.1.</NO.P><TXT>Procedure in cases falling under Article 5(4)(a) of the Schengen Borders Code</TXT></NP></TI></TITLE>
+<P>According to Article 5(4)(a) of the Schengen Borders Code, a third-country national who is subject to an alert for refusal of entry or stay and, at the same time, has a <HT TYPE="BOLD">residence permit, long-stay visa</HT> or a <HT TYPE="BOLD">re-entry visa</HT> issued by one of the Member States, shall be allowed entry for transit purposes to the Member State which issued the residence permit, long-stay visa or re-entry visa, when crossing a border in another Member State. The entry may be refused if this Member State has issued a national alert for refusal of entry.</P>
+<?PAGE NO='46'?>
+<P>If the third-country national concerned tries to enter the Member State which has entered the alert into the SIS, his/her entry may be refused by this Member State. However, at the request of the competent authority, the SIRENE bureau of that Member State shall consult the SIRENE bureau of the Member State that issued the residence permit using an <HT TYPE="BOLD">O form</HT> in order to allow the competent authority to determine whether there are sufficient reasons for withdrawing the residence permit. If the residence permit is not withdrawn, the alert in the SIS shall be deleted but the person concerned may nevertheless be put on the national list of alerts for refusal of entry.</P><P>If this person tries to enter the Member State that issued the residence permit, he/she shall be allowed entry into the territory but the SIRENE bureau of that Member State, at the request of the competent authority, shall send an <HT TYPE="BOLD">O form</HT> to the SIRENE bureau of the Member State that issued the alert in order to enable the competent authorities concerned to decide on withdrawal of the residence permit or long-stay visa or deletion of the alert.</P><P>If the third-country national concerned tries to enter a third Member State, which is neither the State that issued the alert nor the one which granted the residence permit or long-stay visa, and the third Member State finds out that there is an alert in the SIS on that person, although he/she has a residence permit or long-stay visa issued by one of the Member States, it shall allow transit towards the Member State that issued the residence permit or long-stay visa. The entry may be refused if this third Member State has put the person concerned on its national list of alerts. In both cases, at the request of the competent authority, its SIRENE bureau shall send the SIRENE Bureaux of the two Member States in question an <HT TYPE="BOLD">H form</HT> informing them of the contradiction and requesting that they consult each other in order to either delete the alert in the SIS or to withdraw the residence permit or long-stay visa. It may also request to be informed of the result of any consultation.</P></GR.SEQ>
+<GR.SEQ LEVEL="4"><TITLE>
+<TI><NP>
+<NO.P>4.6.4.2.</NO.P><TXT>Procedure in cases falling under Article 5(4)(c) of the Schengen Borders Code</TXT></NP></TI></TITLE>
+<P>According to Article 5(4)(c) a Member State may derogate from the principle that a person for whom an alert for refusal of entry was issued shall be refused entry on humanitarian grounds, on grounds of national interest or because of international obligations. At the request of the competent authority, the SIRENE bureau of the Member State that allowed entry shall inform the SIRENE bureau of the issuing Member State thereof using an <HT TYPE="BOLD">H form</HT>.</P></GR.SEQ></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>4.7.</NO.P><TXT><HT TYPE="BOLD">Exchange of information on a third-country national who is a beneficiary of the right of free movement</HT></TXT></NP></TI></TITLE>
+<P>Concerning a third-country national who is a beneficiary of the right of free movement within the meaning of Directive 2004/38/EC of the European Parliament and of the Council of<?PAGE NO='47'?> <DATE ISO="20040429">29 April 2004</DATE> on the right of citizens of the Union and their family members to move and reside freely within the territory of the Member States, special rules shall apply<NOTE NOTE.ID="E0037" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>See footnote 34.</P></NOTE>.</P>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>4.7.1.</NO.P><TXT><HT TYPE="ITALIC">Exchange of information following a hit</HT></TXT></NP></TI></TITLE>
+<P>If there is a hit on a third-country national who is a beneficiary of the right of free movement, the following procedure shall be followed:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>at the request of the competent authority, the SIRENE bureau of the executing Member State shall immediately contact the SIRENE bureau of the issuing Member State using a <HT TYPE="BOLD">G form</HT>, in order to obtain the information necessary to decide without delay on the action to be taken;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>upon receipt of a request for information, the SIRENE bureau of the issuing Member State shall immediately start gathering the required information and send it as soon as possible to the SIRENE bureau of the executing Member State;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>the SIRENE bureau of the issuing Member State shall check with the competent authority, if this information is not yet available, whether the alert may be kept in accordance with Directive 2004/38/EC. If the competent authority decides to keep the alert, the SIRENE Bureau of the Member State issuing the alert shall inform all the other SIRENE bureaux thereof, by means of an <HT TYPE="BOLD">M form</HT>;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(d)</NO.P><TXT>the executing Member State shall inform via its SIRENE bureau the SIRENE bureau of the issuing Member State whether the requested action was carried out (confirming this by using an <HT TYPE="BOLD">M form</HT>) or not (using an <HT TYPE="BOLD">H form</HT>).</TXT></NP></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>4.7.2.</NO.P><TXT><HT TYPE="ITALIC">Exchange of information if, in the absence of a hit, a Member State discovers that there is an alert for refusal of entry for a third-country national who is a beneficiary of the right of free movement</HT></TXT></NP></TI></TITLE>
+<P>If, in the absence a hit, a Member State discovers that there is an alert for refusal of entry for a third-country national who is a beneficiary of the right of free movement, the SIRENE bureau of this Member State shall, at the request of the competent authority, send an <HT TYPE="BOLD">M form</HT> to the SIRENE bureau of the issuing Member State informing it about this.</P><P>The SIRENE bureau of the issuing Member State shall check with the competent authority, if this information is not yet available, whether the alert may be kept in accordance with Directive 2004/38/EC. If the competent authority decides to keep the alert, the SIRENE Bureau of the Member State issuing the alert shall inform all the other SIRENE bureaux thereof, by means of an <HT TYPE="BOLD">M form</HT>.</P></GR.SEQ></GR.SEQ>
+<?PAGE NO='48'?>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>4.8.</NO.P><TXT><HT TYPE="BOLD">Deletion of alerts entered for EU citizens</HT></TXT></NP></TI></TITLE>
+<P>When a third-country national for whom an alert for refusal of entry or stay has been issued, acquires citizenship of one of the Member States<NOTE NOTE.ID="E0038" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Citizens of Iceland, Liechtenstein, Norway and Switzerland enjoy the right of free movement equivalent to those of citizens of the European Union under agreements between the Community and its Member States, on the one hand, and these countries, on the other.</P></NOTE>, the alert shall be deleted. If the change of citizenship comes to the attention of a SIRENE bureau of a country other than the issuing one, the former shall send the SIRENE bureau of the issuing Member State a <HT TYPE="BOLD">J form</HT>, in accordance with the procedure for rectification and deletion of data found to be legally or factually inaccurate (see Section 2.5).</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>4.9.</NO.P><TXT><HT TYPE="BOLD">Informing the Schengen Member States if an alert is matched</HT></TXT></NP></TI></TITLE>
+<P>The SIRENE bureaux of Member States that have issued alerts under Article 96 shall not necessarily be informed of any hits as a matter of course but shall be informed in exceptional circumstances if supplementary information is required in accordance with Sections 4.6 to 4.8. (See also Section 2.2.1 (g)).</P><P>However, SIRENE bureaux shall provide statistics on those hits.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="1"><TITLE>
+<TI><NP>
+<NO.P>5.</NO.P><TXT>ALERTS PURSUANT TO ARTICLE 97<NOTE NOTE.ID="E0039" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Missing persons or persons who, for their own protection or in order to prevent threats, need temporarily to be placed under police protection.</P></NOTE></TXT></NP></TI></TITLE>
+<P>The following steps have to be considered:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>check for multiple alerts, reference is made to General Procedures Section 2.1,</P></ITEM>
+<ITEM><P>at the request of another Member State add a Flag,</P></ITEM>
+<ITEM><P>the exchange of information after a hit,</P></ITEM>
+<ITEM><P>misused identity, reference is made to General Procedures Section 2.8,</P></ITEM>
+<ITEM><P>SIRPIT procedure, reference is made to the General Procedures Section 2.10,</P></ITEM></LIST>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>5.1.</NO.P><TXT><HT TYPE="BOLD">Flagging</HT></TXT></NP></TI></TITLE>
+<P>See general procedures in Section 2.15.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>5.2.</NO.P><TXT><HT TYPE="BOLD">Provision of descriptive detail on missing minors and other persons assessed as being at risk</HT></TXT></NP></TI></TITLE>
+<P>SIRENE bureaux shall have ready access to all relevant supplementary information at national level regarding missing person alerts in order for the SIRENE bureaux to be able to play a full role in reaching a successful outcome to cases, facilitating identification of the person and providing supplementary information promptly on matters linked to the case. Relevant supplementary information may cover, in particular, national decisions on the custody of a child or vulnerable person or requests for the use of <QUOT.START CODE="2018" ID="QS0031" REF.END="QE0031"/>Child Alert<QUOT.END CODE="2019" ID="QE0031" REF.START="QS0031"/> mechanisms.</P>
+<?PAGE NO='49'?>
+<P>In the case of a high-risk missing person, field 083 of the <HT TYPE="BOLD">M form</HT> should begin with the word <QUOT.START CODE="2018" ID="QS0032" REF.END="QE0032"/>urgent<QUOT.END CODE="2019" ID="QE0032" REF.START="QS0032"/>. This urgency should be reinforced by a telephone call highlighting the importance of the <HT TYPE="BOLD">M form</HT> and its urgent nature.</P><P>As field 083 of the <HT TYPE="BOLD">M form</HT> has limited technical capacity for holding information, a common method for entering structured supplementary information and the order of that information shall be used<NOTE NOTE.ID="E0040" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Data of disappearance:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>Place, date and time of the disappearance.</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>Circumstances of disappearance.</TXT></NP></ITEM></LIST>
+<P>Details of the missing person:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(c)</NO.P><TXT>Apparent age.</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(d)</NO.P><TXT>Height.</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(e)</NO.P><TXT>Skin colour.</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(f)</NO.P><TXT>Colour and shape of hair.</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(g)</NO.P><TXT>Colour of eyes.</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(h)</NO.P><TXT>Other physical details (i.e. piercings, deformations, amputations, tattoos, marks, scars, etc.).</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(i)</NO.P><TXT>Psychological particulars: at risk of suicide, mental illness, aggressive behaviour, etc.</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(j)</NO.P><TXT>Other details: necessary medical treatment, etc.</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(k)</NO.P><TXT>Clothes worn at the time of the disappearance.</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(l)</NO.P><TXT>Photograph: available or not.</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(m)</NO.P><TXT>Ante-mortem form: available or not.</TXT></NP></ITEM></LIST>
+<P>Related information:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(n)</NO.P><TXT>Person/s who could accompany him or her (and Schengen ID if available).</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(o)</NO.P><TXT>Vehicle/s relating to the case (and Schengen ID if available).</TXT></NP></ITEM></LIST>
+<P>The titles of the different sub fields themselves are not to be included as part of field 83, but just the reference letter.</P></NOTE>.</P><P>As not all vulnerable missing persons will cross national borders, decisions on the provision of supplementary information (on descriptive detail) and its recipients shall be taken on a case-by-case basis, covering the entire range of circumstances. Following a decision at national level on the extent of forwarding required for such supplementary information, the SIRENE bureau shall, as far as is appropriate, take one of the following measures:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>retain the information in order to be able to forward supplementary information upon the request of another Member State;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>forward the <HT TYPE="BOLD">M form</HT> to the competent SIRENE bureau if enquiries indicate a likely destination for the missing person;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>forward the <HT TYPE="BOLD">M form</HT> to all the competent SIRENE bureaux, based on the disappearance circumstances for the purpose of supplying all data concerning the person in a short period of time.</TXT></NP></ITEM></LIST>
+<P>Once information has been received by a SIRENE bureau, it shall, in order to maximise the opportunities for locating the person in a targeted and reasoned fashion, be communicated, as far as is appropriate, to:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>relevant border posts;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>the competent administrative and police authorities for the location and protection of persons;</TXT></NP></ITEM>
+<?PAGE NO='50'?>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>the relevant consular authorities of the Member State which has entered the alert, after a hit is found in the SIS.</TXT></NP></ITEM></LIST></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>5.3.</NO.P><TXT><HT TYPE="BOLD">After a hit</HT></TXT></NP></TI></TITLE>
+<P>For general procedures see Section 2.2.</P><P>When a hit is achieved on a missing person who is of age, the SIRENE bureau of the Member State achieving a hit shall advise the end-user that the communication of data on a missing person who is of age shall be subject to the person’s consent<NOTE NOTE.ID="E0041" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>For clarity on consent in matters of on the protection of individuals with regard to the processing of personal data and on the free movement of such data see Article 2(h) Directive 95/46/EC of the European Parliament and of the Council (<REF.DOC.OJ COLL="L" DATE.PUB="19951122" NO.OJ="281" PAGE.FIRST="31">OJ L 281, 22.11.1995, p. 31</REF.DOC.OJ>).</P></NOTE>. The consent shall be in writing or at least a written record shall be available. In cases where consent is refused, this shall be in writing or recorded officially. For communicating further information see procedure in Section 2.2.2.</P></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="1"><TITLE>
+<TI><NP>
+<NO.P>6.</NO.P><TXT>ALERTS PURSUANT TO ARTICLE 98<NOTE NOTE.ID="E0042" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Data on witnesses, persons summoned to appear before the judicial authorities in connection with criminal proceedings.</P></NOTE></TXT></NP></TI></TITLE>
+<P>The following steps have to be considered:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>Check for multiple alerts, reference is made to General Procedures Section 2.1,</P></ITEM>
+<ITEM><P>enter the alert into the SIS,</P></ITEM>
+<ITEM><P>the exchange of information after a hit,</P></ITEM>
+<ITEM><P>misused identity, reference is made to General Procedures Section 2.8,</P></ITEM>
+<ITEM><P>SIRPIT procedure, reference is made to the General Procedures Section 2.10,</P></ITEM></LIST>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>6.1.</NO.P><TXT><HT TYPE="BOLD">After a hit</HT></TXT></NP></TI></TITLE>
+<P>For general procedures see Section 2.2.</P><P>In addition, the following rules shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>the place of residence or domicile shall be obtained using all measures allowed by the national legislation of the Member State where the person was located;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>national procedures shall be in place, as appropriate, to ensure that alerts are only kept in the SIS for the time required to meet the purposes for which they were supplied.</TXT></NP></ITEM></LIST>
+<P>The SIRENE bureaux may transmit further information on Article 98 alerts, and in so doing may act on behalf of judicial authorities if this information falls within the scope of mutual judicial assistance.</P></GR.SEQ></GR.SEQ>
+<?PAGE NO='51'?>
+<GR.SEQ LEVEL="1"><TITLE>
+<TI><NP>
+<NO.P>7.</NO.P><TXT>ALERTS PURSUANT TO ARTICLE 99<NOTE NOTE.ID="E0043" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Persons or vehicles for the purpose of discreet surveillance or of other specific checks.</P></NOTE></TXT></NP></TI></TITLE>
+<P>The following steps have to be considered:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>check for multiple alerts, reference is made to General Procedures Section 2.1,</P></ITEM>
+<ITEM><P>at the request of another Member State add a Flag,</P></ITEM>
+<ITEM><P>the exchange of information after a hit,</P></ITEM>
+<ITEM><P>SIRPIT procedure, reference is made to General Procedures Section 2.10.</P></ITEM></LIST>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>7.1.</NO.P><TXT><HT TYPE="BOLD">Entering an alias</HT></TXT></NP></TI></TITLE>
+<P>See general procedure in Section 2.9.</P><P>Inform the other Member States of aliases regarding an alert issued pursuant to Article 99 by means of an <HT TYPE="BOLD">M form</HT>. Whenever needed, the SIRENE bureaux shall transmit this information to their national authorities responsible for each category of alert.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>7.2.</NO.P><TXT><HT TYPE="BOLD">Informing other Member States when issuing alerts requested by authorities responsible for national security</HT></TXT></NP></TI></TITLE>
+<P>When entering an alert at the request of an authority responsible for national security, the SIRENE bureau of the issuing Member State shall inform all the other SIRENE bureaux about it by using an <HT TYPE="BOLD">M form</HT> and indicating Article 99(3) in field 083.</P><P>The confidentiality of certain information shall be safeguarded in accordance with national law, including keeping contact between the SIRENE bureaux separate from any contact between the services responsible for national security.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>7.3.</NO.P><TXT><HT TYPE="BOLD">Flagging</HT></TXT></NP></TI></TITLE>
+<P>See general procedure in Section 2.15.</P></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>7.4.</NO.P><TXT><HT TYPE="BOLD">Communicating further information following a hit</HT></TXT></NP></TI></TITLE>
+<P>For Article 99(2) alerts see general procedure in Section 2.2.</P><P>In addition, the following procedure shall apply:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>when a positive hit occurs on an Article 99(3) alert, the discovering SIRENE bureau shall inform the requesting SIRENE bureau of the results (discreet surveillance or specific check) via the <HT TYPE="BOLD">G form</HT>. At the same time the discovering SIRENE bureau shall inform its own competent service responsible for national security;</TXT></NP></ITEM>
+<?PAGE NO='52'?>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>if the national security service in the discovering Member State decides that the alert requires a validity flag, it shall contact its national SIRENE bureau in order to create the flag with the requesting SIRENE bureau (via the <HT TYPE="BOLD">F form</HT>). It shall not be required to explain the reasons for the flag, but the request shall be made through SIRENE channels;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>a specific procedure is required to safeguard the confidentiality of information. Therefore, any contact between the services responsible for national security shall be kept separate from the contact between the SIRENE bureaux. Consequently, the reasons for requesting a flag shall be discussed directly between national security services and not through SIRENE bureaux.</TXT></NP></ITEM></LIST></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="1"><TITLE>
+<TI><NP>
+<NO.P>8.</NO.P><TXT>ALERTS PURSUANT TO ARTICLE 100<NOTE NOTE.ID="E0044" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Objects sought for the purpose of seizure or use as evidence in criminal proceedings.</P></NOTE></TXT></NP></TI></TITLE>
+<P>The following steps shall be considered:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>check for multiple alerts,</P></ITEM>
+<ITEM><P>the exchange of information after a hit,</P></ITEM>
+<ITEM><P>SIRPIT procedure, reference is made to General Procedures Section 2.10.</P></ITEM></LIST>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>8.1.</NO.P><TXT><HT TYPE="BOLD">Vehicle alerts pursuant to Article 100</HT></TXT></NP></TI></TITLE>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>8.1.1.</NO.P><TXT><HT TYPE="ITALIC">Checking for multiple alerts on a vehicle</HT></TXT></NP></TI></TITLE>
+<P>The mandatory identity description elements for alerts on a vehicle are:</P>
+<LIST TYPE="DASH"><ITEM>
+<P>the registration/number plate, and/or</P></ITEM>
+<ITEM><P>the vehicle identification number (VIN).</P></ITEM></LIST>
+<P>Both numbers may feature in the SIS.</P><P>Checks for multiple alerts are made by comparing numbers. If, when entering a new alert, it is found that the same serial number and/or registration plate number already exist in the SIS, it is assumed that the new alert will result in multiple alerts on the same vehicle. However, this method of verification is effective only where the description elements used are the same. Comparison is therefore not always possible.</P><P>The SIRENE bureau shall draw the national users’ attention to the problems which may arise where only one of the numbers has been compared. A positive response does not mean automatically that there is a hit, and a negative response does not mean that there is no alert on the vehicle.</P><P>The identity description elements used for establishing whether two vehicle entries are identical are detailed in Annex 6 to this Manual.</P>
+<?PAGE NO='53'?>
+<P>The consultation procedures to be applied by the SIRENE bureaux for vehicles shall be the same as for persons. For general procedures see Section 2.1.</P><P>The SIRENE bureau of the Member State issuing an alert shall maintain a record of any requests to enter a further alert which, after consultation, have been rejected by virtue of the provisions given above, until the alert is deleted.</P></GR.SEQ>
+<GR.SEQ LEVEL="3"><TITLE>
+<TI><NP>
+<NO.P>8.1.2.</NO.P><TXT><HT TYPE="ITALIC">VIN Twins</HT></TXT></NP></TI></TITLE>
+<P>VIN twin refers to a vehicle of the same type with the same vehicle identification number (VIN) as a vehicle entered in the SIS (e.g. a tractor and a motorcycle with the same VIN do not fall into this category). The following specific rules shall apply to avoid the negative consequences of a repeated seizure of the legally registered vehicle with the same VIN.</P><P>The following procedure shall apply:</P>
+<LIST TYPE="ARAB"><ITEM>
+<NP><NO.P>(1)</NO.P><TXT>where the possibility of a VIN twin is established, the SIRENE bureau shall, as appropriate:</TXT>
+<P><LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>ensure that there is no error in the SIS alert and the alert information is as complete as possible;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>check the circumstances of the case giving rise to an alert in the SIS;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>find out the history of both vehicles from their production;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(d)</NO.P><TXT>request a thorough check of the seized vehicle, in particular its VIN, to verify whether it is the legally registered vehicle.</TXT></NP></ITEM></LIST></P><P>The SIRENE bureaux involved shall closely cooperate in taking such measures.</P></NP></ITEM>
+<ITEM><NP>
+<NO.P>(2)</NO.P><TXT>where the existence of a VIN twin is confirmed, supplementary information provided by the Member State creating the original alert, by means of the <HT TYPE="BOLD">M form</HT>, shall include, as appropriate, the marks describing the legally registered vehicle and distinguishing it from the vehicle entered in the SIS<NOTE NOTE.ID="E0045" NUMBERING="ARAB" NUMBERING.CONTINUED="YES" TYPE="FOOTNOTE"><P>Such supplementary may include:</P>
+<LIST TYPE="alpha"><ITEM>
+<NP><NO.P>(a)</NO.P><TXT>Vehicle number plate details</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(b)</NO.P><TXT>Category of vehicle, make of vehicle, model of vehicle, colour</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(c)</NO.P><TXT>Other easily recognisable distinguishing features or details</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(d)</NO.P><TXT>Full details of the owner</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(e)</NO.P><TXT>Serial number of vehicle registration document.</TXT></NP></ITEM></LIST></NOTE>;</TXT></NP></ITEM>
+<ITEM><NP>
+<NO.P>(3)</NO.P><TXT>furthermore, on becoming aware of a case of a VIN twin, the issuing Member State shall check whether it is necessary to maintain the alert in the SIS.</TXT></NP></ITEM></LIST></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="2"><TITLE>
+<TI><NP>
+<NO.P>8.2.</NO.P><TXT><HT TYPE="BOLD">Communicating further information following a hit</HT></TXT></NP></TI></TITLE>
+<P>The SIRENE bureaux may transmit further information on alerts entered under Article 100, and in so doing may act on behalf of judicial authorities, if this information falls within the scope of mutual judicial assistance.</P>
+<?PAGE NO='54'?>
+<P>The SIRENE bureau of the issuing Member State shall send the requested further information as quickly and comprehensively as possible via a <HT TYPE="BOLD">P form</HT>, in response to a <HT TYPE="BOLD">G form</HT> when a hit is obtained on an alert issued on a vehicle pursuant to Article 100 of the Schengen Convention.</P>
+<ANNOTATION><P>(NB: Given that the request is urgent and that it will therefore not be possible to collate all the information immediately, it is agreed that certain headings will be optional rather than obligatory, and that efforts will be made to collate the information relating to the main headings, e.g.: 041, 042, 043, 162, 164, 165, 166 and 167).</P></ANNOTATION></GR.SEQ></GR.SEQ>
+<GR.SEQ LEVEL="1"><TITLE>
+<TI><NP>
+<NO.P>9.</NO.P><TXT>STATISTICS</TXT></NP></TI></TITLE>
+<P>Once a year the SIRENE bureaux shall provide hit, communication and workload statistics. The statistics shall cover all the Articles and all types of alerts. The statistics report shall be sent electronically to the General Secretariat of the Council.</P></GR.SEQ></CONTENTS>
+<?CLG.MDFC ID="C002001M002000" IDREF="O002001M002000"?></CONS.DOC.GEN></CONS.OTH.DOC></CONS.OTH>

@@ -16,7 +16,7 @@
   <xsl:function name="f:label" as="xs:string">
     <xsl:param name="label" as="xs:string?"/>
     <xsl:sequence select="
-        normalize-space($label)
+        f:spaces($label)
         => replace('^[\(\[]+|[\)\]]+$', '')
         => replace('\.+$', '')
         => replace('\s+', '-')
@@ -26,7 +26,13 @@
   <!-- the label after a leading type word: "Article 3" → "3", "ANNEX II" → "II", "ANNEX" → "" -->
   <xsl:function name="f:label-after-word" as="xs:string">
     <xsl:param name="label" as="xs:string?"/>
-    <xsl:sequence select="f:label(substring-after(normalize-space($label), ' '))"/>
+    <xsl:sequence select="f:label(substring-after(f:spaces($label), ' '))"/>
+  </xsl:function>
+
+  <!-- whitespace normalised, non-breaking spaces included ("Article&#160;1") -->
+  <xsl:function name="f:spaces" as="xs:string">
+    <xsl:param name="s" as="xs:string?"/>
+    <xsl:sequence select="normalize-space(replace($s, '\p{Zs}', ' '))"/>
   </xsl:function>
 
   <!-- base/abbr_value; without a base the segment stands alone -->

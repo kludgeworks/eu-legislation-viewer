@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.10-20100101.xd">
+<INFO.CONSLEG CONSLEG.DATE="20101027" CONSLEG.REF="2010D0609" DATE.LAST.MOD="20101016" END="NONE" END.DATE="99999999" LEG.VAL="DEC" PROD.SEQ="000.001.0" START.DATE="20101001"/>
+<INFO.PROD PROD.DATE="20101027" PROD.SYSTEM="CONSLEG.NEW" PRODUCER="ES"/>
+<CONS.DOC><BIB.INSTANCE>
+<DOCUMENT.REF FILE="CL2010D0609EN0000010.0001.doc.xml"><LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>1</PAGE.FIRST></DOCUMENT.REF>
+<DATE ISO="20101001">20101001</DATE>
+<LG.DOC>EN</LG.DOC>
+<PAGE.FIRST>1</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>2</PAGE.LAST>
+<PAGE.TOTAL>2</PAGE.TOTAL></BIB.INSTANCE>
+<FAM.COMP LEG.VAL="DEC"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>266</NO.OJ>
+<YEAR>2010</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>60</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<VOLUME.REF>01</VOLUME.REF></DOCUMENT.REF.CONS><DATE ISO="20101009">20101009</DATE>
+<LG.DOC>EN</LG.DOC>
+<NO.SEQ>0015</NO.SEQ>
+<PAGE.FIRST>60</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>60</PAGE.LAST>
+<PAGE.TOTAL>1</PAGE.TOTAL>
+<NO.DOC FORMAT="YN" TYPE="OJ"><NO.CURRENT>609</NO.CURRENT>
+<YEAR>2010</YEAR>
+<COM>CFSP</COM></NO.DOC></BIB.INSTANCE.CONS>
+<NO.CELEX>32010D0609</NO.CELEX>
+<DATE ISO="20101008">20101008</DATE>
+<TITLE><TI>
+<P><HT TYPE="UC">Political and Security Committee Decision</HT> EUPOL RD <HT TYPE="UC">Congo</HT>/1/2010</P><P>of <DATE ISO="20101008">8 October 2010</DATE></P><P>concerning the appointment of the Head of Mission of EUPOL RD Congo</P><P>(2010/609/CFSP)</P></TI></TITLE></BIB.DATA>
+<GR.CORRIG><CORRIG RELEVANT="YES">
+<BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>272</NO.OJ>
+<YEAR>2010</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>20</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<VOLUME.REF>01</VOLUME.REF></DOCUMENT.REF.CONS><DATE ISO="20101016">20101016</DATE>
+<LG.DOC>EN</LG.DOC>
+<NO.SEQ>0006</NO.SEQ>
+<PAGE.FIRST>20</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>20</PAGE.LAST>
+<PAGE.TOTAL>1</PAGE.TOTAL></BIB.INSTANCE.CONS>
+<NO.CELEX>32010D0609R(01)</NO.CELEX>
+<TITLE><TI>
+<P>Corrigendum to Political and Security Committee Decision EUPOL RD Congo/1/2010 (2010/609/CFSP) of <DATE ISO="20101008">8 October 2010</DATE> concerning the appointment of the Head of Mission of EUPOL RD Congo</P><P>(<REF.DOC.OJ COLL="L" DATE.PUB="20101009" NO.OJ="266">Official Journal of the European Union L 266 of 9 October 2010</REF.DOC.OJ>)</P></TI></TITLE></BIB.DATA></CORRIG></GR.CORRIG></FAM.COMP><?PAGE NO='2'?>
+<TITLE><TI>
+<P><HT TYPE="UC">Political and Security Committee Decision</HT> EUPOL RD <HT TYPE="UC">Congo</HT>/1/2010</P><P>of <DATE ISO="20101008">8 October 2010</DATE></P><P>concerning the appointment of the Head of Mission of EUPOL RD Congo</P><P>(2010/609/CFSP)</P></TI></TITLE>
+<PREAMBLE><PREAMBLE.INIT>THE POLITICAL AND SECURITY COMMITTEE,</PREAMBLE.INIT>
+<GR.VISA><VISA>Having regard to the Treaty on European Union, and in particular the third paragraph of Article 38 thereof,</VISA>
+<VISA>Having regard to Council Decision 2010/576/CFSP of <DATE ISO="20100923">23 September 2010</DATE> on the European Union police mission undertaken in the framework of reform of the security sector (SSR) and its interface with the system of justice in the Democratic Republic of the Congo (EUPOL RD Congo)<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="20100929" NO.OJ="254" PAGE.FIRST="33">OJ L 254, 29.9.2010, p. 33</REF.DOC.OJ>.</P></NOTE>, and in particular Article 10(1) thereof,</VISA></GR.VISA>
+<GR.CONSID><GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+<CONSID><NP>
+<NO.P>(1)</NO.P><TXT>Pursuant to Article 10(1) of Decision 2010/576/CFSP, the Political and Security Committee is authorised, in accordance with Article 38 of the Treaty, to take the relevant decisions for the purpose of exercising the political control and strategic direction of EUPOL RD Congo, including in particular the decision to appoint a Head of Mission.</TXT></NP></CONSID>
+<CONSID><NP>
+<NO.P>(2)</NO.P><TXT>The High Representative of the Union for Foreign Affairs and Security Policy has proposed the appointment of Chief Superintendent Jean-Paul RIKIR as Head of Mission with effect from <DATE ISO="20101001">1 October 2010</DATE>,</TXT></NP></CONSID></GR.CONSID>
+<PREAMBLE.FINAL>HAS ADOPTED THIS DECISION:</PREAMBLE.FINAL></PREAMBLE>
+<ENACTING.TERMS><ARTICLE IDENTIFIER="001">
+<TI.ART>Article 1</TI.ART>
+<ALINEA>Chief Superintendent Jean-Paul RIKIR is hereby appointed Head of the European Union police mission undertaken in the framework of reform of the security sector (SSR) and its interface with the system of justice in the Democratic Republic of the Congo (EUPOL RD Congo) with effect from <DATE ISO="20101001">1 October 2010</DATE>.</ALINEA></ARTICLE>
+<ARTICLE IDENTIFIER="002"><TI.ART>Article 2</TI.ART>
+<?CLG.MDFO ID="O000001M001000" IDREF="C000001M001000" ACTION="REPLACED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="32010D0609R(01)" ACTIVE.LOC="TO" MOD.LEVEL="1" ?>
+<ALINEA>This Decision shall enter into force on <DATE ISO="20101001">1 October 2010</DATE>.</ALINEA>
+<?CLG.MDFC ID="C000001M001000" IDREF="O000001M001000"?>
+<ALINEA>It shall apply until the end of EUPOL RD Congo mandate.</ALINEA></ARTICLE></ENACTING.TERMS></CONS.DOC></CONS.ACT>

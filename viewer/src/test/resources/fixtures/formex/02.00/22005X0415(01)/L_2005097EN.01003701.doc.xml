@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DOC xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-02.00-20050101.xd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<BIB.DOC>
+<DURAB TYPE="DUR"/>
+<AUTHOR>CS</AUTHOR>
+</BIB.DOC>
+<PUBLICATION.REF FILE="L_2005097EN.toc.xml">
+<COLL>L</COLL>
+<NO.OJ>097</NO.OJ>
+<DATE ISO="20050415">20050415</DATE>
+<LG.OJ>EN</LG.OJ>
+<VOLUME.REF>01</VOLUME.REF>
+</PUBLICATION.REF>
+<FMX>
+<DOC.MAIN.PUB NO.SEQ="020" SYNOPTISM="D020">
+<LG.DOC>EN</LG.DOC>
+<LEGAL.VALUE>INFO</LEGAL.VALUE>
+<DATE ISO="20050415">20050415</DATE>
+<PAGE.FIRST>37</PAGE.FIRST>
+<PAGE.LAST>37</PAGE.LAST>
+<PAGE.TOTAL>1</PAGE.TOTAL>
+<PAGE.SEQ>1</PAGE.SEQ>
+<REF.PHYS FILE="L_2005097EN.01003701.xml" TYPE="DOC.XML"/>
+</DOC.MAIN.PUB>
+</FMX>
+<PAPER>
+<VOLUME.PAPER>
+<ITEM.VOLUME REF.NO.SEQ="020">
+<TITLE ID.TITLE="T0001">
+<TI>
+<P>Information relating to the entry into force of the Agreement between the European Community and the Swiss Confederation amending the Agreement between the European Economic Community and the Swiss Confederation of <DATE ISO="19720722">22 July 1972</DATE> as regards the provisions applicable to processed agricultural products</P>
+</TI>
+</TITLE>
+<ITEM.REF>37</ITEM.REF>
+</ITEM.VOLUME>
+</VOLUME.PAPER>
+</PAPER>
+<PDF>
+<ITEM.VOLUME REF.NO.SEQ="020">
+<TITLE REF.TITLE="T0001"/>
+<ITEM.REF REF.PDF="l_09720050415en00370037.pdf">37</ITEM.REF>
+</ITEM.VOLUME>
+</PDF>
+</DOC>

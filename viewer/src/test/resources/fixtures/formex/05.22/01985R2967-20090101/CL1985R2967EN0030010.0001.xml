@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-05.22-20110811.xd">
+<INFO.CONSLEG CONSLEG.DATE="20120118" CONSLEG.REF="1985R2967" DATE.LAST.MOD="20081216" END="REPEALED" END.DATE="99999999" LEG.VAL="REG" PROD.SEQ="003.001.0" SOURCE.END="32008R1249" START.DATE="20090101"/>
+<INFO.PROD PROD.DATE="20120118" PROD.SYSTEM="CONSLEG.NEW" PRODUCER="ES"/>
+<CONS.DOC><BIB.INSTANCE><DOCUMENT.REF FILE="CL1985R2967EN0030010.0001.doc.xml"><LG.OJ>EN</LG.OJ><PAGE.FIRST>1</PAGE.FIRST></DOCUMENT.REF><DATE ISO="20090101">20090101</DATE><LG.DOC>EN</LG.DOC><PAGE.FIRST>1</PAGE.FIRST><PAGE.SEQ>1</PAGE.SEQ><PAGE.LAST>1</PAGE.LAST><PAGE.TOTAL>1</PAGE.TOTAL></BIB.INSTANCE>
+<FAM.COMP LEG.VAL="REG"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>285</NO.OJ>
+<YEAR>1985</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>39</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ></DOCUMENT.REF.CONS><DATE ISO="19851025">19851025</DATE>
+<LG.DOC>EN</LG.DOC>
+<PAGE.FIRST>39</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>40</PAGE.LAST>
+<PAGE.TOTAL>2</PAGE.TOTAL>
+<NO.DOC FORMAT="NY" TYPE="OJ"><NO.CURRENT>2967</NO.CURRENT>
+<YEAR>1985</YEAR>
+<COM>EEC</COM></NO.DOC></BIB.INSTANCE.CONS>
+<NO.CELEX>31985R2967</NO.CELEX>
+<DATE ISO="19851024">19851024</DATE>
+<TITLE><TI>
+<P><HT TYPE="UC">Commission Regulation</HT> (EEC) No 2967/85</P><P>of 24 October 1985</P><P>laying down detailed rules for the application of the Community scale for grading pig carcases</P></TI></TITLE></BIB.DATA><GR.MOD.ACT><MOD.ACT EXISTS="YES" LEG.VAL="REG" TYPE="MOD"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>330</NO.OJ>
+<YEAR>1994</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>43</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ></DOCUMENT.REF.CONS><DATE ISO="19941221">19941221</DATE>
+<LG.DOC>EN</LG.DOC>
+<PAGE.FIRST>43</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>44</PAGE.LAST>
+<PAGE.TOTAL>2</PAGE.TOTAL></BIB.INSTANCE.CONS>
+<NO.CELEX>31994R3127</NO.CELEX>
+<DATE ISO="19941220">19941220</DATE>
+<TITLE><TI>
+<P>Commission Regulation (EC) No 3127/94 of 20 December 1994</P></TI></TITLE></BIB.DATA></MOD.ACT><MOD.ACT EXISTS="YES" LEG.VAL="REG" TYPE="MOD"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL>
+<NO.OJ>217</NO.OJ>
+<YEAR>2006</YEAR>
+<LG.OJ>EN</LG.OJ>
+<PAGE.FIRST>6</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ></DOCUMENT.REF.CONS><DATE ISO="20060808">20060808</DATE>
+<LG.DOC>EN</LG.DOC>
+<PAGE.FIRST>6</PAGE.FIRST>
+<PAGE.SEQ>1</PAGE.SEQ>
+<PAGE.LAST>7</PAGE.LAST>
+<PAGE.TOTAL>2</PAGE.TOTAL></BIB.INSTANCE.CONS>
+<NO.CELEX>32006R1197</NO.CELEX>
+<DATE ISO="20060807">20060807</DATE>
+<TITLE><TI>
+<P><HT TYPE="UC">Commission Regulation</HT> (EC) No 1197/2006</P><P>of <DATE ISO="20060807">7 August 2006</DATE></P><P>amending Regulation (EEC) No 2967/85 laying down detailed rules for the application of the Community scale for grading pig carcases</P></TI></TITLE></BIB.DATA></MOD.ACT><MOD.ACT EXISTS="YES" LEG.VAL="REG" TYPE="REP"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL><NO.OJ>337</NO.OJ><YEAR>2008</YEAR><LG.OJ>EN</LG.OJ><PAGE.FIRST>3</PAGE.FIRST><PAGE.SEQ>1</PAGE.SEQ><VOLUME.REF>01</VOLUME.REF></DOCUMENT.REF.CONS><DATE ISO="20081216">20081216</DATE><LG.DOC>EN</LG.DOC><NO.SEQ>0002</NO.SEQ><PAGE.FIRST>3</PAGE.FIRST><PAGE.SEQ>1</PAGE.SEQ><PAGE.LAST>30</PAGE.LAST><PAGE.TOTAL>28</PAGE.TOTAL><NO.DOC FORMAT="NY" TYPE="OJ"><NO.CURRENT>1249</NO.CURRENT><YEAR>2008</YEAR><COM>EC</COM></NO.DOC></BIB.INSTANCE.CONS><NO.CELEX>32008R1249</NO.CELEX><DATE ISO="20081210">20081210</DATE><TITLE><TI><P><HT TYPE="UC">Commission Regulation</HT> (EC) No 1249/2008</P><P>of <DATE ISO="20081210">10 December 2008</DATE></P><P>laying down detailed rules on the implementation of the Community scales for the classification of beef, pig and sheep carcases and the reporting of prices thereof</P></TI></TITLE></BIB.DATA></MOD.ACT></GR.MOD.ACT></FAM.COMP><?CLG.MDFO ID="O003001M001000" IDREF="C003001M001000" ACTION="REPEALED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="32008R1249" ACTIVE.LOC="AR:40" MOD.LEVEL="1" ?>
+<TITLE><TI>
+<P><HT TYPE="UC">Commission Regulation</HT> (EEC) No 2967/85</P><P>of 24 October 1985</P><P>laying down detailed rules for the application of the Community scale for grading pig carcases</P></TI></TITLE>
+<PREAMBLE><PREAMBLE.INIT>THE COMMISSION OF THE EUROPEAN COMMUNITIES,</PREAMBLE.INIT>
+<GR.VISA><VISA>Having regard to the Treaty establishing the European Economic Community,</VISA>
+<VISA>Having regard to Council Regulation (EEC) No 2759/75 of 29 October 1975 on the common organization of the market in pigmeat<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="19750901" NO.OJ="282" PAGE.FIRST="1">OJ No L 282, 1. 11. 1975, p. 1</REF.DOC.OJ>.</P></NOTE>, as last amended by Regulation (EEC) No 2966/80<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="19800901" NO.OJ="307" PAGE.FIRST="5">OJ No L 307, 18. 11. 1980, p. 5</REF.DOC.OJ>.</P></NOTE>, and in particular Articles 2 and 4 (6) thereof,</VISA>
+<VISA>Having regard to Council Regulation (EEC) No 3220/84 of 13 November 1984 determining the Community scale for grading pig carcases<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE"><P><REF.DOC.OJ COLL="L" DATE.PUB="19840901" NO.OJ="301" PAGE.FIRST="1">OJ No L 301, 20. 11. 1984, p. 1</REF.DOC.OJ>.</P></NOTE>, and in particular Article 5 (1) thereof,</VISA></GR.VISA>
+<GR.CONSID><CONSID><P>
+<P>Whereas detailed rules should be laid down for the application of Regulation (EEC) No 3220/84, in particular, measures designed to ensure that it is applied on a uniform basis;</P></P></CONSID>
+<CONSID><P>Whereas <QUOT.START CODE="2018" ID="QS0001" REF.END="QE0001"/>weight<QUOT.END CODE="2019" ID="QE0001" REF.START="QS0001"/> is taken to mean the weight of the cold carcase; whereas this is calculated by applying to the result of the weighing a conversion coefficient to be determined; whereas that coefficient may vary depending on the time between the weighing and the sticking of the pig; whereas an adjustment of the coefficient should therefore be allowed;</P></CONSID>
+<CONSID><P>Whereas the lean-meat content of carcases is assessed by means of authorized grading methods; whereas only statistically proven assessment methods may be authorized; whereas authorization of grading methods is subject to compliance with a maximum tolerance for statistical error in assessment which should be specified;</P></CONSID>
+<CONSID><P>Whereas the marking of carcases is, without prejudice to Article 4 (2) of Regulation (EEC) No 3220/84, compulsory; whereas, in order to make the market more transparent, detailed rules should be laid down as regards marking and identification of the carcases whilst providing for derogations in certain circumstances;</P></CONSID>
+<CONSID><P>Whereas the measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Pigmeat,</P></CONSID></GR.CONSID>
+<PREAMBLE.FINAL>HAS ADOPTED THIS REGULATION:</PREAMBLE.FINAL></PREAMBLE>
+<ENACTING.TERMS><ARTICLE IDENTIFIER="001">
+<TI.ART>Article 1</TI.ART>
+<ALINEA>This Regulation lays down detailed rules implementing Regulation (EEC) No 3220/84 determining the Community scale for grading pig carcases.</ALINEA></ARTICLE>
+<ARTICLE IDENTIFIER="002"><TI.ART>Article 2</TI.ART>
+<PARAG IDENTIFIER="002.001"><NO.PARAG>1.</NO.PARAG>
+<ALINEA>The weight of the cold carcase as referred to in the first subparagraph of Article 2 (2) of Regulation (EEC) No 3220/84 shall be obtained by deducting 2,0 % from the warm weight recorded not more than 45 minutes after the pig has been stuck.</ALINEA></PARAG>
+<PARAG IDENTIFIER="002.002"><NO.PARAG>2.</NO.PARAG>
+<ALINEA>If, in a given slaughterhouse, the 45-minute period between the sticking and the weighing of the pig cannot generally be observed, the competent authority of the Member State concerned may allow this period to be exceeded provided that the deduction of 2,0 % specified in paragraph 1 shall be reduced by 0,1 point for every additional quarter of an hour or part thereof that has elapsed.</ALINEA></PARAG>
+<PARAG IDENTIFIER="002.003"><NO.PARAG>3.</NO.PARAG>
+<ALINEA>By way of derogation from paragraphs 1 and 2, the weight of the cold carcase may be calculated by reference to predetermined scales of absolute weight reductions established by Member States in accordance with the characteristics of their pig herds and notified to the Commission. The use of such scales shall be authorized in accordance with the procedure provided for in Article 24 of Regulation (EEC) No 2759/75, if the reductions for individual weight classes correspond, as far as possible, to the reductions resulting from paragraphs 1 and 2.</ALINEA></PARAG></ARTICLE>
+<?CLG.MDFO ID="O001001M001000" IDREF="C001001M001000" ACTION="INSERTED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="31994R3127" ACTIVE.LOC="TO" MOD.LEVEL="1"?>
+<ARTICLE IDENTIFIER="003"><TI.ART>Article 3</TI.ART>
+<?CLG.MDFO ID="O002001M001000" IDREF="C002001M001000" ACTION="REPLACED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="32006R1197" ACTIVE.LOC="AR:1;PT:1" MOD.LEVEL="1"?>
+<PARAG IDENTIFIER="003.001"><NO.PARAG>1.</NO.PARAG>
+<ALINEA>The standard statistical method for assessing the lean meat content of pig carcases authorised as a grading method within the meaning of Article 2(3) of Regulation (EEC) No 3220/84 shall be either ordinary least squares or rank reduced methods, but other statistically proven methods may be used.</ALINEA>
+<ALINEA>The method shall be based on a representative sample of the national or regional pigmeat production concerned, consisting of at least 120 carcases whose lean meat content has been ascertained in accordance with the dissection method laid down in Annex I to this Regulation. If multiple sampling methods are used, the reference shall be measured on at least 50 carcases and the precision shall be at least equal to that obtained using the standard statistical method on 120 carcases using the method in Annex I.</ALINEA></PARAG>
+<PARAG IDENTIFIER="003.002"><NO.PARAG>2.</NO.PARAG>
+<ALINEA>Grading methods shall be authorised only if the root mean squared error of prediction (RMSEP), computed by a full cross-validation technique, is less than 2,5. In addition, any outliers shall be included in the calculation of RMSEP.</ALINEA></PARAG>
+<?CLG.MDFC ID="C002001M001000" IDREF="O002001M001000"?>
+<PARAG IDENTIFIER="003.003"><NO.PARAG>3.</NO.PARAG>
+<ALINEA>Member States shall inform the Commission, by way of a protocol, of the grading methods they wish to have authorized for application in their territory, describing the dissection trial and indicating the principles on which these methods are based and the equations used for assessing the percentage of lean meat. The protocol should have two parts and should include the elements provided for in Annex II. Part one of the protocol is presented to the Commission prior to the start of the dissection trial.</ALINEA>
+<ALINEA>Application of grading methods in the territory of a Member State shall be authorized in accordance with the procedure provided for in Article 24 of Regulation (EEC) No 2759/75 on the basis of the protocol.</ALINEA></PARAG>
+<PARAG IDENTIFIER="003.004"><NO.PARAG>4.</NO.PARAG>
+<ALINEA>The application of grading methods must correspond in all particulars to the description given in the Community Decision authorizing them.</ALINEA></PARAG></ARTICLE>
+<?CLG.MDFC ID="C001001M001000" IDREF="O001001M001000"?>
+<ARTICLE IDENTIFIER="004"><TI.ART>Article 4</TI.ART>
+<PARAG IDENTIFIER="004.001"><NO.PARAG>1.</NO.PARAG>
+<ALINEA>Without prejudice to Article 4 (2) of Regulation (EEC) No 3220/84, pig carcases shall be marked with the capital letter denoting the grade of the carcase on the scale given in Article 3 (2) and (3) thereof or with the percentage of estimated lean meat pursuant to Article 4 (1) thereof and, should the need arise, with any other particulars which are considered appropriate. The letters or numerals must be at least two centimetres high. Any non-toxic, indelible and heatresistant ink may be used for marking as well as any other form of permanent marking authorized in advance by the competent national authorities.</ALINEA></PARAG>
+<PARAG IDENTIFIER="004.002"><NO.PARAG>2.</NO.PARAG>
+<ALINEA>Half-carcases shall be marked on the skin of the hind shank or the ham.</ALINEA></PARAG>
+<PARAG IDENTIFIER="004.003"><NO.PARAG>3.</NO.PARAG>
+<ALINEA>A label affixed in such a manner that it cannot be removed without being damaged shall also be an acceptable form of marking.</ALINEA></PARAG></ARTICLE>
+<ARTICLE IDENTIFIER="005"><TI.ART>Article 5</TI.ART>
+<ALINEA>In the case specified in Article 4 (2) of Regulation (EEC) No 3220/84, pig carcases shall be individually identified by any unalterable means.</ALINEA></ARTICLE>
+<ARTICLE IDENTIFIER="006"><TI.ART>Article 6</TI.ART>
+<ALINEA>Member States shall adopt the measures they consider necessary to guarantee the application of this Regulation in their territory, and shall inform the Commission of such measures as soon as possible.</ALINEA></ARTICLE>
+<ARTICLE IDENTIFIER="007"><TI.ART>Article 7</TI.ART>
+<ALINEA>This Regulation shall enter into force on 1 November 1985.</ALINEA></ARTICLE></ENACTING.TERMS>
+<FINAL><P>This Regulation shall be binding in its entirety and directly applicable in all Member States.</P></FINAL>
+<?CLG.MDFO ID="O001001M002000" IDREF="C001001M002000" ACTION="INSERTED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="31994R3127" ACTIVE.LOC="TO" MOD.LEVEL="1"?>
+<CONS.ANNEX><TITLE>
+<TI><P>ANNEX I</P></TI></TITLE>
+<CONTENTS><P><LIST TYPE="ARAB"><ITEM>
+<NP><NO.P>1.</NO.P><TXT>The prediction of the lean meat percentage is based on the dissection of the four major cuts. The dissection is executed in accordance with the reference method.</TXT></NP></ITEM>
+<?CLG.MDFO ID="O002001M002000" IDREF="C002001M002000" ACTION="REPLACED" LEVEL="STRUCTURE" COMMAND="EXPLICIT" ACTIVE.DOC="32006R1197" ACTIVE.LOC="AR:1;PT:2" MOD.LEVEL="1"?>
+<ITEM><NP>
+<NO.P>2.</NO.P><TXT>The reference lean meat percentage is calculated as follows:</TXT>
+<P><FORMULA.S>y = 0,89 × 100 × <EXPR>Weight of tender loin + weight of lean (fascia included) in shoulder, loin, ham and belly</EXPR><EXPR>Weight of tender loin + weight of dissected cuts</EXPR></FORMULA.S></P><P>The weight of the lean in those four cuts will be calculated by subtracting the total of the non-lean elements of the four cuts from the total weight of the cuts before dissection.</P></NP></ITEM>
+<?CLG.MDFC ID="C002001M002000" IDREF="O002001M002000"?></LIST></P></CONTENTS></CONS.ANNEX>
+<CONS.ANNEX><TITLE>
+<TI><P>ANNEX II</P></TI></TITLE>
+<CONTENTS><P><LIST TYPE="ARAB"><ITEM>
+<NP><NO.P>1.</NO.P><TXT>Part one of the protocol should give a detailed description of the dissection trial and include in particular:</TXT>
+<P><LIST TYPE="DASH"><ITEM>
+<P>the trial period and time schedule for the whole authorization procedure,</P></ITEM>
+<ITEM><P>the number and location of the abattoirs,</P></ITEM>
+<ITEM><P>the description of the pig population concerned by the assessment method,</P></ITEM>
+<ITEM><P>a presentation of the statistical methods used in relation to the sampling method chosen,</P></ITEM>
+<ITEM><P>the description of the national quick method,</P></ITEM>
+<ITEM><P>the exact presentation of the carcases to be used.</P></ITEM></LIST></P></NP></ITEM>
+<ITEM><NP>
+<NO.P>2.</NO.P><TXT>Part two of the protocol should give a detailed description of the results of the dissection trial and include in particular:</TXT>
+<P><LIST TYPE="DASH"><ITEM>
+<P>a presentation of the statistical methods used in relation to the sampling method chosen,</P></ITEM>
+<ITEM><P>the equation which will be introduced or amended,</P></ITEM>
+<ITEM><P>a numerical and a graphic description of the results,</P></ITEM>
+<ITEM><P>a description of the new apparatus,</P></ITEM>
+<ITEM><P>the weight limit of the pigs for which the new method may be used and any other limitation in relation to the practical use of the method.</P></ITEM></LIST></P></NP></ITEM></LIST></P></CONTENTS></CONS.ANNEX>
+<?CLG.MDFC ID="C001001M002000" IDREF="O001001M002000"?>
+<?CLG.MDFC ID="C003001M001000" IDREF="O003001M001000"?></CONS.DOC></CONS.ACT>

@@ -104,7 +104,7 @@
   </x:scenario>
 
   <x:scenario label="An unknown inline element" catch="yes">
-    <x:context mode="block" xmlns=""><P>a <FORMULA>x</FORMULA></P></x:context>
+    <x:context mode="block" xmlns=""><P>a <NOT.FORMEX>x</NOT.FORMEX></P></x:context>
     <x:expect label="stops the transformation" test="$x:result?err?code = xs:QName('f:unknown')"
               xmlns:f="https://kludgeworks.groknull.dev/ns/normalise" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
   </x:scenario>
