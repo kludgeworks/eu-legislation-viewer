@@ -14,7 +14,6 @@ jakarta-xml-bind = "4.0.1"
 jaxb = "4.0.3"
 jspecify = "1.0.0"
 mockito-kotlin = "5.2.1"
-intershop-jaxb = "8.0.0"
 arrow = "2.1.2"
 ktor = "3.1.3"
 rdf4j = "4.3.8"
@@ -112,4 +111,3 @@ spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
 graalvm-native = { id = "org.graalvm.buildtools.native", version.ref = "graalvm-native" }
 cyclonedx-bom = { id = "org.cyclonedx.bom", version.ref = "cyclonedx-bom" }
-intershop-jaxb = { id = "com.intershop.gradle.jaxb", version.ref = "intershop-jaxb" }

@@ -1,7 +1,6 @@
 rootProject.name = "eu-legislation"
 
 include("shell")
-include("formex")
 include("cdm")
 include("rdf-service")
 include("cellar-client")
