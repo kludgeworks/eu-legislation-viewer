@@ -9,7 +9,6 @@
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
@@ -26,7 +25,7 @@
       <xsl:choose>
         <xsl:when test="current-grouping-key() = ''">
           <xsl:call-template name="f:quotes">
-            <xsl:with-param name="nodes" select="current-group()"/>
+            <xsl:with-param name="nodes" as="node()*" select="current-group()"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>
@@ -34,8 +33,8 @@
           <xsl:element name="{if (f:is-deletion($marker)) then 'deleted' else 'changed'}">
             <xsl:sequence select="f:amendment-attributes($marker)"/>
             <xsl:call-template name="f:inlines">
-              <xsl:with-param name="nodes" select="current-group()"/>
-              <xsl:with-param name="ctx" select="($ctx, current-grouping-key())" tunnel="yes"/>
+              <xsl:with-param name="nodes" as="node()*" select="current-group()"/>
+              <xsl:with-param name="ctx" as="xs:string*" select="($ctx, current-grouping-key())" tunnel="yes"/>
             </xsl:call-template>
           </xsl:element>
         </xsl:otherwise>
@@ -59,20 +58,20 @@
       <xsl:when test="$start">
         <xsl:variable name="end" as="element(QUOT.END)?" select="$nodes[self::QUOT.END][@ID = $start/@REF.END][1]"/>
         <xsl:call-template name="f:text-runs">
-          <xsl:with-param name="nodes" select="$nodes[. &lt;&lt; $start]"/>
+          <xsl:with-param name="nodes" as="node()*" select="$nodes[. &lt;&lt; $start]"/>
         </xsl:call-template>
         <quote startQuote="{f:quote-char($start)}" endQuote="{f:quote-char($end)}">
           <xsl:call-template name="f:inlines">
-            <xsl:with-param name="nodes" select="$nodes[. &gt;&gt; $start and . &lt;&lt; $end]"/>
+            <xsl:with-param name="nodes" as="node()*" select="$nodes[. &gt;&gt; $start and . &lt;&lt; $end]"/>
           </xsl:call-template>
         </quote>
         <xsl:call-template name="f:quotes">
-          <xsl:with-param name="nodes" select="$nodes[. &gt;&gt; $end]"/>
+          <xsl:with-param name="nodes" as="node()*" select="$nodes[. &gt;&gt; $end]"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
         <xsl:call-template name="f:text-runs">
-          <xsl:with-param name="nodes" select="$nodes"/>
+          <xsl:with-param name="nodes" as="node()*" select="$nodes"/>
         </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
@@ -98,7 +97,10 @@
 
   <xsl:function name="f:quote-char" as="xs:string">
     <xsl:param name="mark" as="element()"/>
-    <xsl:sequence select="codepoints-to-string(f:hex(($mark/@CODE, if ($mark/self::QUOT.START) then '2018' else '2019')[1]))"/>
+    <!-- a CODE that is no XML character (0000, 0018: it happens) means the default -->
+    <xsl:variable name="code" as="xs:integer" select="f:hex(($mark/@CODE[f:hex(.) ge 32 and not(f:hex(.) = (65534, 65535)) and not(f:hex(.) ge 55296 and f:hex(.) le 57343)],
+                                                             if ($mark/self::QUOT.START) then '2018' else '2019')[1])"/>
+    <xsl:sequence select="codepoints-to-string($code)"/>
   </xsl:function>
 
   <xsl:function name="f:hex" as="xs:integer">
@@ -116,13 +118,13 @@
     <xsl:choose>
       <xsl:when test="@TYPE = 'NORMAL'">
         <xsl:call-template name="f:inlines">
-          <xsl:with-param name="nodes" select="node()"/>
+          <xsl:with-param name="nodes" as="node()*" select="node()"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:when test="$kind">
         <emphasis kind="{$kind}">
           <xsl:call-template name="f:inlines">
-            <xsl:with-param name="nodes" select="node()"/>
+            <xsl:with-param name="nodes" as="node()*" select="node()"/>
           </xsl:call-template>
         </emphasis>
       </xsl:when>
@@ -135,22 +137,37 @@
   <!-- a number set apart typographically (FT TYPE="NUMBER"): plain text -->
   <xsl:template match="FT" mode="inline">
     <xsl:call-template name="f:inlines">
-      <xsl:with-param name="nodes" select="node()"/>
+      <xsl:with-param name="nodes" as="node()*" select="node()"/>
     </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="DATE" mode="inline">
-    <date date="{f:date(@ISO)}" asWritten="{string(.)}"/>
+    <date asWritten="{string(.)}">
+      <xsl:sequence select="f:date-attribute('date', @ISO)"/>
+    </date>
   </xsl:template>
 
-  <xsl:template match="NOTE[@NOTE.ID]" mode="inline">
+  <!-- a note: every NOTE but a reference to one (NOTE.REF); older budgets give their notes no NOTE.ID -->
+  <xsl:template match="NOTE[not(@NOTE.REF)]" mode="inline">
     <xsl:param name="notePrefix" as="xs:string?" tunnel="yes"/>
     <xsl:sequence select="f:note-ref(., $notePrefix)"/>
   </xsl:template>
 
+  <!-- notes by id, for references to a note printed elsewhere (NOTE.REF): a Combined Nomenclature
+       table refers to the same note hundreds of times -->
+  <xsl:key name="f:note-by-id" match="NOTE[@NOTE.ID]" use="@NOTE.ID"/>
+
+  <!-- every Formex document of the input: an OJ package's files and what they include, or the
+       document alone -->
+  <xsl:variable name="f:documents" as="element()*" select="
+      f:with-included(if (/DOC) then /DOC/FMX//REF.PHYS[ends-with(@FILE, '.xml')]/doc(resolve-uri(@FILE, base-uri(.)))/* else /*)"/>
+
   <xsl:template match="NOTE[@NOTE.REF]" mode="inline">
     <xsl:param name="notePrefix" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="target" as="element(NOTE)?" select="root(.)//NOTE[@NOTE.ID = current()/@NOTE.REF][1]"/>
+    <xsl:variable name="ref" as="xs:string" select="@NOTE.REF"/>
+    <!-- in the same file, else in another file of the package (a table in an included file refers to
+         a note of the act) -->
+    <xsl:variable name="target" as="element(NOTE)?" select="(key('f:note-by-id', $ref, root(.)), $f:documents ! key('f:note-by-id', $ref, root(.)))[1]"/>
     <xsl:sequence select="if ($target) then f:note-ref($target, $notePrefix) else f:unknown(., 'NOTE.REF without its note')"/>
   </xsl:template>
 
@@ -159,14 +176,12 @@
       <xsl:if test="@NO.OJ">
         <xsl:attribute name="number" select="replace(@NO.OJ, '^0+', '')"/>
       </xsl:if>
-      <xsl:if test="@DATE.PUB">
-        <xsl:attribute name="date" select="f:date(@DATE.PUB)"/>
-      </xsl:if>
+      <xsl:sequence select="f:date-attribute('date', @DATE.PUB)"/>
       <xsl:if test="@PAGE.FIRST">
         <xsl:attribute name="page" select="@PAGE.FIRST"/>
       </xsl:if>
       <xsl:call-template name="f:inlines">
-        <xsl:with-param name="nodes" select="node()"/>
+        <xsl:with-param name="nodes" as="node()*" select="node()"/>
       </xsl:call-template>
     </ref>
   </xsl:template>
@@ -175,7 +190,7 @@
   <xsl:template match="REF.DOC[@URI] | LINK" mode="inline">
     <ref kind="uri" href="{@URI}">
       <xsl:call-template name="f:inlines">
-        <xsl:with-param name="nodes" select="node()"/>
+        <xsl:with-param name="nodes" as="node()*" select="node()"/>
       </xsl:call-template>
     </ref>
   </xsl:template>
@@ -185,11 +200,9 @@
       <xsl:if test="@NO.DOC">
         <xsl:attribute name="number" select="@NO.DOC"/>
       </xsl:if>
-      <xsl:if test="@DATE.PUB">
-        <xsl:attribute name="date" select="f:date(@DATE.PUB)"/>
-      </xsl:if>
+      <xsl:sequence select="f:date-attribute('date', @DATE.PUB)"/>
       <xsl:call-template name="f:inlines">
-        <xsl:with-param name="nodes" select="node()"/>
+        <xsl:with-param name="nodes" as="node()*" select="node()"/>
       </xsl:call-template>
     </ref>
   </xsl:template>
@@ -198,15 +211,41 @@
   <xsl:template match="LV" mode="inline">
     <span lang="{lower-case(@LG)}">
       <xsl:call-template name="f:inlines">
-        <xsl:with-param name="nodes" select="if (TXT) then TXT/node() else node()"/>
+        <xsl:with-param name="nodes" as="node()*" select="if (TXT) then TXT/node() else node()"/>
       </xsl:call-template>
       <xsl:apply-templates select="TXT/../(node() except TXT)" mode="unexpected"/>
     </span>
   </xsl:template>
 
+  <!-- wrappers whose text is running text where they occur: TXT outside a numbered paragraph, a
+       definition, a marginal heading (MARGIN, "CHAPTER 9 0 —" before a budget heading), a C-series
+       number in a title met inside content -->
+  <xsl:template match="TXT | DEFINITION | MARGIN | NO.DOC.C" mode="inline">
+    <xsl:call-template name="f:inlines">
+      <xsl:with-param name="nodes" as="node()*" select="node()"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- anonymised text: the placeholder as printed (██████), and what it holds (a note reference) -->
+  <xsl:template match="ANONYMOUS" mode="inline">
+    <xsl:if test="@PLACEHOLDER">
+      <t v="{@PLACEHOLDER}"/>
+    </xsl:if>
+    <xsl:call-template name="f:inlines">
+      <xsl:with-param name="nodes" as="node()*" select="node()"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- a reference to the European Court Reports (C-280/00 … [2003] ECR I-7747): its text -->
+  <xsl:template match="REF.DOC.ECR" mode="inline">
+    <xsl:call-template name="f:inlines">
+      <xsl:with-param name="nodes" as="node()*" select="node()"/>
+    </xsl:call-template>
+  </xsl:template>
+
   <xsl:template match="ADDR" mode="inline">
     <xsl:call-template name="f:inlines">
-      <xsl:with-param name="nodes" select="node()"/>
+      <xsl:with-param name="nodes" as="node()*" select="node()"/>
     </xsl:call-template>
   </xsl:template>
 
@@ -243,11 +282,34 @@
     <xsl:sequence select="if ($d castable as xs:date) then $d else error(xs:QName('f:date'), 'Not a date: ' || $iso)"/>
   </xsl:function>
 
+  <!-- a date in the text or a reference, as an attribute; none when the source's value is not a
+       date (19931911, 20230931, 1981: they happen), so the text keeps its wording without it -->
+  <xsl:function name="f:date-attribute" as="attribute()?">
+    <xsl:param name="name" as="xs:string"/>
+    <xsl:param name="iso" as="xs:string?"/>
+    <xsl:variable name="d" as="xs:string" select="replace(normalize-space($iso), '^(\d{4})(\d{2})(\d{2})$', '$1-$2-$3')"/>
+    <xsl:if test="$d castable as xs:date">
+      <xsl:attribute name="{$name}" select="$d"/>
+    </xsl:if>
+  </xsl:function>
+
   <xsl:function name="f:note-ref" as="element()">
     <xsl:param name="note" as="element(NOTE)"/>
     <xsl:param name="prefix" as="xs:string?"/>
     <noteRef href="#{f:note-eid($note, $prefix)}" marker="{f:note-marker($note)}"/>
   </xsl:function>
+
+  <!-- Note numbers in one pass: counting preceding::NOTE for every note is quadratic, minutes for a
+       55 MB consolidation. f:notes-started at a note counts the notes before it and around it (a
+       note can sit inside another); f:footnotes-ended the running-numbered ones before it. -->
+  <xsl:accumulator name="f:notes-started" as="xs:integer" initial-value="0">
+    <xsl:accumulator-rule match="NOTE[not(@NOTE.REF)]" phase="start" select="$value + 1"/>
+  </xsl:accumulator>
+
+  <xsl:accumulator name="f:footnotes-ended" as="xs:integer" initial-value="0">
+    <xsl:accumulator-rule match="NOTE[not(@NOTE.REF)][not(@TYPE = ('TABLE', 'QUOTATION'))][not(@NUMBER.ORG or @NUMBERING = 'STAR')]"
+                          phase="end" select="$value + 1"/>
+  </xsl:accumulator>
 
   <!-- note_3 in the main document; note_anx2-1 in the second annex file of an OJ act; in another
        file, the file's own sequence number, unique in the package: note_inc000402-1 in an included
@@ -261,8 +323,8 @@
         if ($root/self::ANNEX) then 'anx' || $seq || '-'
         else if ($root/self::GENERAL) then 'inc' || $seq || '-'
         else string($prefix)"/>
-    <!-- ancestors count too: a note can sit inside another note -->
-    <xsl:sequence select="'note_' || $file || (count($note/(preceding::NOTE | ancestor::NOTE)[@NOTE.ID]) + 1)"/>
+    <!-- the value before a node includes the node's own start rule -->
+    <xsl:sequence select="'note_' || $file || ($note ! accumulator-before('f:notes-started'))"/>
   </xsl:function>
 
   <!-- a package file's own sequence number: L_2009353EN.01000301.xml → 01000301 -->
@@ -279,10 +341,10 @@
         if ($note/@NUMBER.ORG) then string($note/@NUMBER.ORG)
         else if ($note/@NUMBERING = 'STAR') then '*'
         else if ($note/@TYPE = 'TABLE')
-        then string(count($note/preceding::NOTE[@NOTE.ID][@TYPE = 'TABLE'][not(@NUMBERING = 'STAR')]
+        then string(count($note/ancestor::TBL[1]//NOTE[not(@NOTE.REF)][@TYPE = 'TABLE'][not(@NUMBERING = 'STAR')]
+                     [. &lt;&lt; $note][empty(. intersect $note/ancestor::NOTE)]
                      [ancestor::TBL[1] is $note/ancestor::TBL[1]]) + 1)
-        else string(count($note/preceding::NOTE[@NOTE.ID][not(@TYPE = ('TABLE', 'QUOTATION'))]
-                     [not(@NUMBER.ORG or @NUMBERING = 'STAR')]) + 1)"/>
+        else string(($note ! accumulator-before('f:footnotes-ended')) + 1)"/>
   </xsl:function>
 
   <!-- an element the normaliser doesn't know: fails in strict mode, so new Formex shows up in tests -->

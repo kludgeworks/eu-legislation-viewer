@@ -7,7 +7,6 @@
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
@@ -33,10 +32,10 @@
       <unit eId="{$eid}" kind="article">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:unit-content">
-          <xsl:with-param name="num" select="TI.ART"/>
-          <xsl:with-param name="heading" select="STI.ART"/>
-          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
-          <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="num" as="element()?" select="TI.ART"/>
+          <xsl:with-param name="heading" as="element()?" select="STI.ART"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+          <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>
@@ -53,9 +52,9 @@
       <unit eId="{$eid}" kind="paragraph">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:unit-content">
-          <xsl:with-param name="num" select="NO.PARAG"/>
-          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
-          <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="num" as="element()?" select="NO.PARAG"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+          <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>
@@ -71,7 +70,7 @@
     <xsl:if test="$num">
       <num>
         <xsl:call-template name="f:inlines">
-          <xsl:with-param name="nodes" select="$num/node()"/>
+          <xsl:with-param name="nodes" as="node()*" select="$num/node()"/>
         </xsl:call-template>
       </num>
     </xsl:if>
@@ -80,12 +79,12 @@
         <xsl:choose>
           <xsl:when test="$heading/P">
             <xsl:call-template name="f:lines">
-              <xsl:with-param name="lines" select="$heading/P"/>
+              <xsl:with-param name="lines" as="element()*" select="$heading/P"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:call-template name="f:inlines">
-              <xsl:with-param name="nodes" select="$heading/node()"/>
+            <xsl:call-template name="f:flat">
+              <xsl:with-param name="nodes" as="node()*" select="$heading/node()"/>
             </xsl:call-template>
           </xsl:otherwise>
         </xsl:choose>
@@ -96,14 +95,14 @@
       <xsl:when test="count($body) = 1 and $body/self::ALINEA">
         <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers($body, $ctx)"/>
         <xsl:call-template name="f:blocks">
-          <xsl:with-param name="nodes" select="$body/node()"/>
-          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
-          <xsl:with-param name="pending" select="$m" tunnel="yes"/>
+          <xsl:with-param name="nodes" as="node()*" select="$body/node()"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+          <xsl:with-param name="pending" as="processing-instruction()*" select="$m" tunnel="yes"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates select="$body" mode="block">
-          <xsl:with-param name="pending" select="()" tunnel="yes"/>
+          <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
         </xsl:apply-templates>
       </xsl:otherwise>
     </xsl:choose>
@@ -120,10 +119,10 @@
       <unit eId="{$eid}" kind="{if ($in-article) then 'paragraph' else 'subparagraph'}">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:blocks">
-          <xsl:with-param name="nodes" select="node()"/>
-          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
-          <xsl:with-param name="pending" select="()" tunnel="yes"/>
-          <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="nodes" as="node()*" select="node()"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+          <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+          <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>
@@ -151,15 +150,15 @@
       <unit eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:title">
-          <xsl:with-param name="title" select="TITLE"/>
-          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
+          <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
         <xsl:call-template name="f:blocks">
-          <xsl:with-param name="nodes" select="node() except TITLE"/>
-          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
-          <xsl:with-param name="pending" select="()" tunnel="yes"/>
-          <xsl:with-param name="base" select="$outer" tunnel="yes"/>
-          <xsl:with-param name="division" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="nodes" as="node()*" select="node() except TITLE"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+          <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+          <xsl:with-param name="base" as="xs:string?" select="$outer" tunnel="yes"/>
+          <xsl:with-param name="division" as="xs:string?" select="$eid" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>
@@ -179,24 +178,24 @@
       <unit eId="{$eid}" kind="subdivision">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:title">
-          <xsl:with-param name="title" select="TITLE"/>
-          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
+          <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
         <xsl:choose>
           <xsl:when test="count($body) = 1 and $body/self::ALINEA">
             <xsl:variable name="own" as="processing-instruction()*" select="f:new-markers($body, ($ctx, f:ids($m)))"/>
             <xsl:call-template name="f:blocks">
-              <xsl:with-param name="nodes" select="$body/node()"/>
-              <xsl:with-param name="ctx" select="($ctx, f:ids($m), f:ids($own))" tunnel="yes"/>
-              <xsl:with-param name="pending" select="$own" tunnel="yes"/>
-              <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+              <xsl:with-param name="nodes" as="node()*" select="$body/node()"/>
+              <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m), f:ids($own))" tunnel="yes"/>
+              <xsl:with-param name="pending" as="processing-instruction()*" select="$own" tunnel="yes"/>
+              <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:otherwise>
             <xsl:apply-templates select="$body" mode="block">
-              <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
-              <xsl:with-param name="pending" select="()" tunnel="yes"/>
-              <xsl:with-param name="base" select="$eid" tunnel="yes"/>
+              <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+              <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+              <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
             </xsl:apply-templates>
           </xsl:otherwise>
         </xsl:choose>

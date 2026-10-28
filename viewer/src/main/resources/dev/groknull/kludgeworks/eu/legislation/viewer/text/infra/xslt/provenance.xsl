@@ -15,6 +15,7 @@
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
@@ -32,7 +33,7 @@
     <xsl:param name="pi" as="processing-instruction()"/>
     <xsl:param name="name" as="xs:string"/>
     <xsl:variable name="m" as="element()" select="analyze-string(string($pi), '(^|\s)' || replace($name, '\.', '\\.') || '=([&quot;''])([^&quot;'']*)\2')"/>
-    <xsl:sequence select="($m//*:group[@nr = 3])[1] ! string()"/>
+    <xsl:sequence select="($m//fn:group[@nr = 3])[1] ! string()"/>
   </xsl:function>
 
   <!-- markers covering $e (open before it starts, still open after it ends), outermost first -->

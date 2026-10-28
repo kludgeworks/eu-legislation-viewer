@@ -18,7 +18,6 @@
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
     xmlns:m="http://www.w3.org/1998/Math/MathML"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
@@ -76,8 +75,8 @@
       <xsl:choose>
         <xsl:when test="self::OVER[not(node())]">
           <xsl:next-iteration>
-            <xsl:with-param name="acc" select="$acc[position() lt last()]"/>
-            <xsl:with-param name="dividend" select="($acc[last()], f:empty-row())[1]"/>
+            <xsl:with-param name="acc" as="element()*" select="$acc[position() lt last()]"/>
+            <xsl:with-param name="dividend" as="element()?" select="($acc[last()], f:empty-row())[1]"/>
           </xsl:next-iteration>
         </xsl:when>
         <xsl:when test="self::text()[not(normalize-space())] and $dividend">
@@ -91,7 +90,7 @@
             </m:mrow>
           </xsl:variable>
           <xsl:next-iteration>
-            <xsl:with-param name="acc" select="$acc[position() lt last()], f:attach($base, $script, $script-row)"/>
+            <xsl:with-param name="acc" as="element()*" select="$acc[position() lt last()], f:attach($base, $script, $script-row)"/>
           </xsl:next-iteration>
         </xsl:when>
         <xsl:otherwise>
@@ -111,7 +110,7 @@
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:with-param>
-            <xsl:with-param name="dividend" select="if (exists($items)) then () else $dividend"/>
+            <xsl:with-param name="dividend" as="element()?" select="if (exists($items)) then () else $dividend"/>
           </xsl:next-iteration>
         </xsl:otherwise>
       </xsl:choose>
@@ -160,7 +159,7 @@
         <xsl:choose>
           <xsl:when test="regex-group(1)"><m:mn>{.}</m:mn></xsl:when>
           <xsl:when test="regex-group(2)"><m:mi>{.}</m:mi></xsl:when>
-          <xsl:when test="regex-group(3)"/>
+          <xsl:when test="regex-group(3)"><!-- whitespace only separates tokens --></xsl:when>
           <xsl:otherwise><m:mo>{.}</m:mo></xsl:otherwise>
         </xsl:choose>
       </xsl:matching-substring>
@@ -212,7 +211,7 @@
 
   <!-- a footnote reference inside a formula: kept as text, the note itself is collected as usual -->
   <xsl:template match="NOTE" mode="math">
-    <m:msup><m:mrow/><m:mtext>({f:note-marker(if (@NOTE.REF) then root(.)//NOTE[@NOTE.ID = current()/@NOTE.REF][1] else .)})</m:mtext></m:msup>
+    <m:msup><m:mrow/><m:mtext>({f:note-marker(if (@NOTE.REF) then key('f:note-by-id', @NOTE.REF, root(.))[1] else .)})</m:mtext></m:msup>
   </xsl:template>
 
   <!-- ============================================================ structures -->
@@ -236,7 +235,6 @@
     </m:mfrac>
   </xsl:template>
 
-  <!-- ∑ ∏ ∫ with their limits -->
   <!-- a single vertical bar (absolute values are EXPR TYPE="BAR") -->
   <xsl:template match="BAR" mode="math">
     <m:mo>|</m:mo>

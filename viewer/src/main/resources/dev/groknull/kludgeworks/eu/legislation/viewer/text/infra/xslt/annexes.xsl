@@ -7,17 +7,17 @@
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 
   <!-- ============================================================ annexes and levels -->
 
-  <!-- the label of an annex: "ANNEX II" → "II"; "" for an annex titled just ANNEX -->
+  <!-- the label of an annex: "ANNEX II" → "II"; "" for an annex titled just ANNEX, and for an annex
+       file written as GENERAL, whose title is a heading, not a label -->
   <xsl:function name="f:annex-label" as="xs:string">
     <xsl:param name="annex" as="element()"/>
-    <xsl:sequence select="f:label-after-word(string($annex/TITLE/TI/*[1]))"/>
+    <xsl:sequence select="if ($annex/self::GENERAL) then '' else f:label-after-word(string($annex/TITLE[1]/TI/*[1]))"/>
   </xsl:function>
 
   <!-- Top-level annexes, grouped into the annexes of the act. Formex splits a single annex into
@@ -34,21 +34,28 @@
       </xsl:on-completion>
       <xsl:variable name="previous" as="element()?" select="$group[last()]"/>
       <xsl:variable name="continues" as="xs:boolean" select="exists($previous) and f:annex-label(.) = '' and f:annex-label($previous) = ''
-                                             and normalize-space(TITLE) = normalize-space($previous/TITLE)"/>
+                                             and normalize-space(string-join(TITLE, ' ')) = normalize-space(string-join($previous/TITLE, ' '))"/>
       <xsl:choose>
         <xsl:when test="$continues">
-          <xsl:next-iteration><xsl:with-param name="group" select="$group, ."/></xsl:next-iteration>
+          <xsl:next-iteration><xsl:with-param name="group" as="element()*" select="$group, ."/></xsl:next-iteration>
         </xsl:when>
         <xsl:otherwise>
           <xsl:sequence select="if (exists($group)) then array{$group} else ()"/>
-          <xsl:next-iteration><xsl:with-param name="group" select="."/></xsl:next-iteration>
+          <xsl:next-iteration><xsl:with-param name="group" as="element()*" select="."/></xsl:next-iteration>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:iterate>
   </xsl:function>
 
-  <!-- one annex, from one or more fragments ($fragments; a nested annex is its own fragment) -->
+  <xsl:mode name="annex" on-no-match="fail" on-multiple-match="fail"/>
+
+  <!-- an annex met inside content: a nested annex, its own fragment -->
   <xsl:template match="CONS.ANNEX | ANNEX | CONS.DOC.GEN[@TYPE = 'ANNEX'][parent::CONS.DOC.GEN]" mode="block">
+    <xsl:apply-templates select="." mode="annex"/>
+  </xsl:template>
+
+  <!-- one annex, from one or more fragments ($fragments); an OJ act's annex file can be GENERAL -->
+  <xsl:template match="CONS.ANNEX | ANNEX | CONS.DOC.GEN[@TYPE = 'ANNEX'][parent::CONS.DOC.GEN] | GENERAL" mode="annex">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
@@ -69,9 +76,10 @@
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="annex" eurlexAnchor="{($anchor, count(preceding::CONS.ANNEX | ancestor::CONS.ANNEX) + 1)[1]}">
         <xsl:sequence select="f:provenance($m)"/>
+        <!-- the first title; a second (a consolidation's annex can have two) is text of the annex -->
         <xsl:call-template name="f:title">
-          <xsl:with-param name="title" select="TITLE"/>
-          <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
+          <xsl:with-param name="title" as="element(TITLE)?" select="TITLE[1]"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
         <xsl:for-each select="$fragments">
           <xsl:variable name="i" as="xs:integer" select="position()"/>
@@ -79,17 +87,17 @@
           <xsl:call-template name="f:blocks">
             <!-- the content, nested annexes and related documents, and whatever else the fragment
                  holds besides its title and (in an OJ annex file) its bibliographic data -->
-            <xsl:with-param name="nodes" select="CONTENTS/node() | (* except (TITLE | CONTENTS | BIB.INSTANCE))"/>
-            <xsl:with-param name="ctx" select="($ctx, f:ids(($m, $own)))" tunnel="yes"/>
-            <xsl:with-param name="pending" select="$own" tunnel="yes"/>
-            <xsl:with-param name="base" select="$eid" tunnel="yes"/>
-            <xsl:with-param name="levelBase" select="$eid" tunnel="yes"/>
-            <xsl:with-param name="levelCtx" select="($ctx, f:ids($m))" tunnel="yes"/>
-            <xsl:with-param name="parentLevel" select="()" tunnel="yes"/>
-            <xsl:with-param name="earlier" select="($fragments[position() lt $i] ! root(.)) except root(.)" tunnel="yes"/>
-            <xsl:with-param name="labelledParent" select="()" tunnel="yes"/>
+            <xsl:with-param name="nodes" as="node()*" select="CONTENTS/node() | (* except (TITLE[1] | CONTENTS | BIB.INSTANCE))"/>
+            <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids(($m, $own)))" tunnel="yes"/>
+            <xsl:with-param name="pending" as="processing-instruction()*" select="$own" tunnel="yes"/>
+            <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+            <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
+            <xsl:with-param name="levelCtx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+            <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+            <xsl:with-param name="earlier" as="document-node()*" select="($fragments[position() lt $i] ! root(.)) except root(.)" tunnel="yes"/>
+            <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
             <!-- unnumbered top levels are numbered through all fragments -->
-            <xsl:with-param name="levelOffset" select="count($fragments[position() lt $i]/CONTENTS/GR.SEQ[f:label((f:level-num(.), f:level-label-line(.))[1]) = ''])" tunnel="yes"/>
+            <xsl:with-param name="levelOffset" as="xs:integer?" select="count($fragments[position() lt $i]/CONTENTS/GR.SEQ[f:label((f:level-num(.), f:level-label-line(.))[1]) = ''])" tunnel="yes"/>
           </xsl:call-template>
         </xsl:for-each>
       </unit>
@@ -109,21 +117,21 @@
     <xsl:if test="$num">
       <num>
         <xsl:call-template name="f:inlines">
-          <xsl:with-param name="nodes" select="$num/node()"/>
+          <xsl:with-param name="nodes" as="node()*" select="$num/node()"/>
         </xsl:call-template>
       </num>
     </xsl:if>
     <xsl:if test="$heading">
       <heading>
         <xsl:call-template name="f:lines">
-          <xsl:with-param name="lines" select="$heading"/>
+          <xsl:with-param name="lines" as="element()*" select="$heading"/>
         </xsl:call-template>
       </heading>
     </xsl:if>
     <xsl:if test="$title/STI">
       <subheading>
         <xsl:call-template name="f:lines">
-          <xsl:with-param name="lines" select="$title/STI/*"/>
+          <xsl:with-param name="lines" as="element()*" select="$title/STI/*"/>
         </xsl:call-template>
       </subheading>
     </xsl:if>
@@ -241,43 +249,43 @@
           <xsl:when test="NO.GR.SEQ or $direct-np">
             <num>
               <xsl:call-template name="f:inlines">
-                <xsl:with-param name="nodes" select="$num/node()"/>
-                <xsl:with-param name="ctx" select="$inner" tunnel="yes"/>
+                <xsl:with-param name="nodes" as="node()*" select="$num/node()"/>
+                <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
               </xsl:call-template>
             </num>
             <xsl:call-template name="f:title">
-              <xsl:with-param name="title" select="TITLE"/>
-              <xsl:with-param name="num-first-line" select="false()"/>
-              <xsl:with-param name="ctx" select="$inner" tunnel="yes"/>
+              <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>
+              <xsl:with-param name="num-first-line" as="xs:boolean" select="false()"/>
+              <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:otherwise>
             <xsl:call-template name="f:title">
-              <xsl:with-param name="title" select="TITLE"/>
-              <xsl:with-param name="num-first-line" select="exists($label-line)"/>
-              <xsl:with-param name="ctx" select="$inner" tunnel="yes"/>
+              <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>
+              <xsl:with-param name="num-first-line" as="xs:boolean" select="exists($label-line)"/>
+              <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
             </xsl:call-template>
           </xsl:otherwise>
         </xsl:choose>
         <xsl:call-template name="f:blocks">
-          <xsl:with-param name="nodes" select="$direct-np/TXT/node(), $direct-np/(node() except (NO.P, TXT)),
+          <xsl:with-param name="nodes" as="node()*" select="$direct-np/TXT/node(), $direct-np/(node() except (NO.P, TXT)),
                                                node() except (TITLE, NO.GR.SEQ, GR.SEQ, $direct-np)"/>
-          <xsl:with-param name="ctx" select="$inner" tunnel="yes"/>
-          <xsl:with-param name="pending" select="()" tunnel="yes"/>
-          <xsl:with-param name="base" select="$eid" tunnel="yes"/>
-          <xsl:with-param name="parentLevel" select="$eid" tunnel="yes"/>
-          <xsl:with-param name="levelOffset" select="0" tunnel="yes"/>
-          <xsl:with-param name="labelledParent" select="if ($label != '' or $label-line) then $eid else $labelledParent" tunnel="yes"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
+          <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+          <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="parentLevel" as="xs:string?" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="levelOffset" as="xs:integer?" select="0" tunnel="yes"/>
+          <xsl:with-param name="labelledParent" as="xs:string?" select="if ($label != '' or $label-line) then $eid else $labelledParent" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
     <xsl:apply-templates select="GR.SEQ" mode="block">
-      <xsl:with-param name="ctx" select="$inner" tunnel="yes"/>
-      <xsl:with-param name="pending" select="()" tunnel="yes"/>
-      <xsl:with-param name="parentLevel" select="$eid" tunnel="yes"/>
-      <xsl:with-param name="levelOffset" select="0" tunnel="yes"/>
-      <xsl:with-param name="labelledParent" select="if ($label != '' or $label-line) then $eid else $labelledParent" tunnel="yes"/>
+      <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
+      <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+      <xsl:with-param name="parentLevel" as="xs:string?" select="$eid" tunnel="yes"/>
+      <xsl:with-param name="levelOffset" as="xs:integer?" select="0" tunnel="yes"/>
+      <xsl:with-param name="labelledParent" as="xs:string?" select="if ($label != '' or $label-line) then $eid else $labelledParent" tunnel="yes"/>
     </xsl:apply-templates>
   </xsl:template>
 

@@ -109,12 +109,13 @@
   <xs:simpleType name="Celex">
     <xs:annotation>
       <xs:documentation>
-        A CELEX number: an act (32015R1998), a consolidated version (02015R1998-20260322) or a corrigendum
-        (32015R1998R(01)).
+        A CELEX number: an act (32015R1998), a consolidated version (02015R1998-20260322), a corrigendum
+        (32015R1998R(01)), or a treaty or a part of one, written with slashes (12003T/ACT, the 2003 Act of
+        Accession; 12010A/PRO/06, a protocol).
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:pattern value="[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]+(-[0-9]{8})?"/>
+      <xs:pattern value="[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*(-[0-9]{8})?"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -242,12 +243,14 @@
       <xs:element name="recitals" type="Recitals">
         <xs:annotation><xs:documentation>The recitals ("Whereas: (1) …").</xs:documentation></xs:annotation>
       </xs:element>
-      <xs:element name="p" type="Paragraph">
-        <xs:annotation><xs:documentation>Other text of the preamble, in documents that are not structured as acts.</xs:documentation></xs:annotation>
-      </xs:element>
-      <xs:element name="deleted" type="DeletedBlock">
-        <xs:annotation><xs:documentation>Part of the preamble an amendment deleted.</xs:documentation></xs:annotation>
-      </xs:element>
+      <xs:group ref="blocks">
+        <xs:annotation>
+          <xs:documentation>
+            Other text of the preamble: in documents that are not structured as acts, an agreement's full powers, a
+            list or a table between the citations; and parts an amendment deleted.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:group>
     </xs:choice>
     <xs:attribute name="eId" type="EId" use="required">
       <xs:annotation><xs:documentation>Always pbl_1.</xs:documentation></xs:annotation>
@@ -299,7 +302,12 @@
       </xs:element>
       <xs:choice maxOccurs="unbounded">
         <xs:element name="unit" type="Unit">
-          <xs:annotation><xs:documentation>One recital (kind recital, eId pbl_1/rct_N by its number).</xs:documentation></xs:annotation>
+          <xs:annotation>
+            <xs:documentation>
+              One recital (kind recital, eId pbl_1/rct_N by its number), or a group of recitals under a heading (kind
+              division, Formex DIV.CONSID: "A. PROCEDURE"), which holds recitals and further groups.
+            </xs:documentation>
+          </xs:annotation>
         </xs:element>
         <xs:element name="deleted" type="DeletedBlock">
           <xs:annotation><xs:documentation>A recital an amendment deleted.</xs:documentation></xs:annotation>
@@ -349,8 +357,8 @@
       <xs:group ref="blocks">
         <xs:annotation><xs:documentation>The final formula: "This Regulation shall be binding in its entirety …".</xs:documentation></xs:annotation>
       </xs:group>
-      <xs:element name="signature" type="Signature" minOccurs="0">
-        <xs:annotation><xs:documentation>The signature; consolidated versions have none.</xs:documentation></xs:annotation>
+      <xs:element name="signature" type="Signature" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation><xs:documentation>The signatures: one, one per party to an agreement, or none (consolidated versions).</xs:documentation></xs:annotation>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
@@ -432,6 +440,12 @@
       <xs:enumeration value="manual">
         <xs:annotation><xs:documentation>A note whose marker the source sets by hand.</xs:documentation></xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="title">
+        <xs:annotation><xs:documentation>A note to a title (Formex TYPE TITLE).</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="chapter">
+        <xs:annotation><xs:documentation>A note that belongs to a chapter of the document (Formex TYPE CHAPTER, 05.00 and later).</xs:documentation></xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
 
@@ -492,6 +506,8 @@
             A grouping of articles: part, title, chapter or section (Formex DIVISION). Its num is the label line
             ("CHAPTER III"); its eId is dvs_ and the label after the type word, nested under the enclosing division.
             The kind of grouping is not classified, because that would mean reading the wording of each language.
+            Recitals are grouped the same way (Formex DIV.CONSID, "A. PROCEDURE"): eId pbl_1/dvs_A; the recitals inside
+            keep preamble-wide eIds (pbl_1/rct_12), as articles keep act-wide ones.
           </xs:documentation>
         </xs:annotation>
       </xs:enumeration>
@@ -1036,8 +1052,13 @@
 
   <xs:attributeGroup name="date">
     <xs:annotation><xs:documentation>A date's value, its wording, and what it means.</xs:documentation></xs:annotation>
-    <xs:attribute name="date" type="xs:date" use="required">
-      <xs:annotation><xs:documentation>The date.</xs:documentation></xs:annotation>
+    <xs:attribute name="date" type="xs:date">
+      <xs:annotation>
+        <xs:documentation>
+          The date; absent when the source's value is not a date (Formex DATE ISO="19931911"): the wording is all
+          there is.
+        </xs:documentation>
+      </xs:annotation>
     </xs:attribute>
     <xs:attribute name="asWritten" type="xs:string" use="required">
       <xs:annotation><xs:documentation>The date as printed: "5 November 2015".</xs:documentation></xs:annotation>
