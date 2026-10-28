@@ -12,23 +12,15 @@ import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 
 /**
- * Checks each stylesheet with xslt-quality, one dynamic test each: any finding fails it. Set by
- * xslt_quality_test:
- *
- * <ul>
- *   <li>{@code xslt-quality.files}: the stylesheets, separated by spaces;
- *   <li>{@code xslt-quality.schema}: xslt-quality's src/main/sch/xslt-quality.sch, in the
- *       repository that holds the sources to build;
- *   <li>{@code xslt-quality.rejected}: the rules switched off, each with its reason.
- * </ul>
+ * Checks each stylesheet in {@code xslt-quality.files} (set by xslt_quality_test, separated by
+ * spaces) with xslt-quality, one dynamic test each: any finding fails it. The validator is built
+ * once, by the xslt_quality_validator genrule; this only runs it.
  */
 public class XsltQualityTests {
 
   @TestFactory
   Stream<DynamicTest> stylesheets() throws Exception {
-    // src/main/sch/xslt-quality.sch → the repository
-    var sources = path("xslt-quality.schema").getParent().getParent().getParent().getParent();
-    var quality = XsltQuality.build(new Processor(false), sources, path("xslt-quality.rejected"));
+    var quality = XsltQuality.load(new Processor(false));
     return Arrays.stream(System.getProperty("xslt-quality.files").trim().split("\\s+"))
         .map(Path::of)
         .map(
@@ -47,9 +39,5 @@ public class XsltQualityTests {
                                         "\n  ", findings.size() + " findings:\n  ", "")));
                       }
                     }));
-  }
-
-  private static Path path(String property) {
-    return Path.of(System.getProperty(property)).toAbsolutePath().normalize();
   }
 }

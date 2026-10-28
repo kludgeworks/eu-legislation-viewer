@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
+import net.sf.saxon.s9api.Destination;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.QName;
 import net.sf.saxon.s9api.SaxonApiException;
@@ -46,16 +47,30 @@ public final class Schematron {
    * stylesheets the schema includes resolve from where the schema is.
    */
   public static Schematron compile(Processor saxon, String uri) throws SaxonApiException {
-    var transpiler = saxon.newXsltCompiler().compile(new StreamSource(resource(TRANSPILER)));
     var validator = new StringWriter();
-    transpiler.load30().transform(new StreamSource(uri), saxon.newSerializer(validator));
+    transpile(saxon, uri, saxon.newSerializer(validator));
+    return validator(saxon, new StreamSource(new StringReader(validator.toString()), uri));
+  }
+
+  /** A validator transpiled earlier (see {@link #transpile}), at {@code uri}. */
+  public static Schematron load(Processor saxon, String uri) throws SaxonApiException {
+    return validator(saxon, new StreamSource(uri));
+  }
+
+  /** Transpiles the schema at {@code uri} into its XSLT validator. */
+  public static void transpile(Processor saxon, String uri, Destination validator)
+      throws SaxonApiException {
+    saxon
+        .newXsltCompiler()
+        .compile(new StreamSource(resource(TRANSPILER)))
+        .load30()
+        .transform(new StreamSource(uri), validator);
+  }
+
+  private static Schematron validator(Processor saxon, Source validator) throws SaxonApiException {
     var svrl = saxon.newXPathCompiler();
     svrl.declareNamespace("svrl", SVRL);
-    return new Schematron(
-        saxon
-            .newXsltCompiler()
-            .compile(new StreamSource(new StringReader(validator.toString()), uri)),
-        svrl);
+    return new Schematron(saxon.newXsltCompiler().compile(validator), svrl);
   }
 
   /** The findings for {@code document}, in document order; empty when it follows every rule. */

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@rules_java//java:defs.bzl", "java_binary", "java_library")
+load("@rules_java//java:defs.bzl", "java_binary", "java_import", "java_library")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -22,10 +22,51 @@ java_library(
 # a Schematron schema compiled with SchXslt 2, and its findings
 java_library(
     name = "schematron",
-    testonly = True,
     srcs = ["src/dev/groknull/kludgeworks/build/Schematron.java"],
     runtime_deps = ["@maven//:name_dmaus_schxslt_schxslt2"],
     deps = ["@maven//:net_sf_saxon_Saxon_HE"],
+)
+
+# xslt-quality's validator, built once: the way its pom builds it, then transpiled with SchXslt 2,
+# with the rules xslt-quality.conf.xml rejects switched off. A jar, so it is on the test classpath.
+java_binary(
+    name = "xslt_quality_build",
+    srcs = ["src/dev/groknull/kludgeworks/build/XsltQualityBuild.java"],
+    main_class = "dev.groknull.kludgeworks.build.XsltQualityBuild",
+    deps = [
+        ":schematron",
+        "@maven//:net_sf_saxon_Saxon_HE",
+    ],
+)
+
+genrule(
+    name = "xslt_quality_validator",
+    srcs = [
+        "xslt-quality.conf.xml",
+        "@xslt_quality//:sources",
+        "@xslt_quality//:src/main/sch/xslt-quality.sch",
+    ],
+    outs = ["xslt-quality-validator.jar"],
+    cmd = " && ".join([
+        "zipper=$$PWD/$(execpath @bazel_tools//tools/zip:zipper)",
+        "jar=$$PWD/$@",
+        # the repository root, from its main schema: src/main/sch/xslt-quality.sch
+        "sources=$$(dirname $(execpath @xslt_quality//:src/main/sch/xslt-quality.sch))/../../..",
+        "out=$$(mktemp -d)",
+        "$(execpath :xslt_quality_build) $$out/xslt-quality $$sources $(execpath xslt-quality.conf.xml)",
+        "cd $$out",
+        "$$zipper c $$jar $$(find xslt-quality -type f | LC_ALL=C sort)",
+        "rm -rf $$out",
+    ]),
+    tools = [
+        ":xslt_quality_build",
+        "@bazel_tools//tools/zip:zipper",
+    ],
+)
+
+java_import(
+    name = "xslt_quality_validator_jar",
+    jars = [":xslt_quality_validator"],
 )
 
 java_library(
@@ -35,6 +76,7 @@ java_library(
         "src/dev/groknull/kludgeworks/build/XsltQuality.java",
         "src/dev/groknull/kludgeworks/build/XsltQualityTests.java",
     ],
+    runtime_deps = [":xslt_quality_validator_jar"],
     deps = [
         ":schematron",
         "@maven//:net_sf_saxon_Saxon_HE",
