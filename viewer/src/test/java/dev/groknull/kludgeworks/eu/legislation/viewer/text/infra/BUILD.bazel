@@ -1,24 +1,28 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 
-java_junit5_test(
-    name = "NormaliserFixturesTest",
+# One test target per *Test.java; Fixture, Fixtures and TextConservation become a shared library
+java_test_suite(
+    name = "infra",
     size = "medium",
-    srcs = ["NormaliserFixturesTest.java"],
-    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.NormaliserFixturesTest",
-    data = [
-        "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:legal-text.xsd",
-        "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt",
-        "//src/test/resources/compare",
-        "//src/test/resources/fixtures",
-    ],
+    srcs = glob(["*.java"]),
+    runner = "junit5",
+    data = ["//src/test/resources/fixtures"],
     deps = [
+        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra",
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml",
         "@maven//:jakarta_xml_bind_jakarta_xml_bind_api",
         "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_params",
+        "@maven//:org_xmlunit_xmlunit_assertj3",
+        "@maven//:org_xmlunit_xmlunit_core",
+        "@rules_java//java/runfiles",
     ],
     runtime_deps = [
+        "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:resources",
+        "//src/test/resources/compare:resources",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",

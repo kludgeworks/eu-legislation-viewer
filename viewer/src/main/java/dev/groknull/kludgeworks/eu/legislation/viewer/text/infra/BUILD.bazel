@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_library")
+
+# The normaliser: Formex 4 → legal-text XML
+java_library(
+    name = "infra",
+    srcs = glob(["*.java"]),
+    visibility = ["//visibility:public"],
+    deps = ["@maven//:net_sf_saxon_Saxon_HE"],
+    runtime_deps = ["//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt:resources"],
+)

@@ -1,8 +1,16 @@
 # SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_library")
 package(default_visibility = ["//visibility:public"])
 
 # normalise.xsl and the modules it includes: Formex → legal-text
 filegroup(
     name = "xslt",
     srcs = glob(["*.xsl"]),
+)
+
+# the same, on the classpath at /dev/groknull/…/text/infra/xslt/
+java_library(
+    name = "resources",
+    resources = [":xslt"],
+    resource_strip_prefix = "src/main/resources",
 )
