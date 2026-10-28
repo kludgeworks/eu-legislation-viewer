@@ -19,12 +19,24 @@ java_library(
     ],
 )
 
+# a Schematron schema compiled with SchXslt 2, and its findings
+java_library(
+    name = "schematron",
+    testonly = True,
+    srcs = ["src/dev/groknull/kludgeworks/build/Schematron.java"],
+    runtime_deps = ["@maven//:name_dmaus_schxslt_schxslt2"],
+    deps = ["@maven//:net_sf_saxon_Saxon_HE"],
+)
+
 java_library(
     name = "xslt_quality_runner",
     testonly = True,
-    srcs = ["src/dev/groknull/kludgeworks/build/XsltQualityTests.java"],
-    runtime_deps = ["@maven//:name_dmaus_schxslt_schxslt2"],
+    srcs = [
+        "src/dev/groknull/kludgeworks/build/XsltQuality.java",
+        "src/dev/groknull/kludgeworks/build/XsltQualityTests.java",
+    ],
     deps = [
+        ":schematron",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
     ],

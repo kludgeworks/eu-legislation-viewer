@@ -95,7 +95,7 @@ def xslt_quality_test(name, srcs, conf = "//tools/build:xslt-quality.conf.xml", 
         jvm_flags = [
             "-Dxslt-quality.files='%s'" % " ".join(["$(rootpaths %s)" % s for s in srcs]),
             "-Dxslt-quality.schema=$(rootpath @xslt_quality//:src/main/sch/xslt-quality.sch)",
-            "-Dxslt-quality.conf=$(rootpath %s)" % conf,
+            "-Dxslt-quality.rejected=$(rootpath %s)" % conf,
         ],
         data = srcs + [conf, "@xslt_quality//:sources", "@xslt_quality//:src/main/sch/xslt-quality.sch"],
         runtime_deps = [

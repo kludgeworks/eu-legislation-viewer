@@ -12,7 +12,6 @@ java_test_suite(
         "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:resources",
         "//src/test/resources/compare:resources",
         "//src/test/resources/mathml3:resources",
-        "@maven//:name_dmaus_schxslt_schxslt2",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",
@@ -20,6 +19,7 @@ java_test_suite(
     deps = [
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra",
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml",
+        "//tools/build:schematron",
         "@maven//:jakarta_xml_bind_jakarta_xml_bind_api",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",

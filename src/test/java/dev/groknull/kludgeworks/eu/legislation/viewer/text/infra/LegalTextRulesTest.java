@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import dev.groknull.kludgeworks.build.Schematron;
 import java.io.StringReader;
 import javax.xml.transform.stream.StreamSource;
 import net.sf.saxon.s9api.Processor;
@@ -35,7 +36,7 @@ class LegalTextRulesTest {
             "<body><unit eId=\"art_1\" kind=\"article\"/><unit eId=\"art_1\""
                 + " kind=\"article\"/></body>");
     assertThat(RULES.violations(text))
-        .extracting(LegalTextRules.Violation::rule)
+        .extracting(Schematron.Finding::id)
         .containsExactly("unique-live-eid", "unique-live-eid");
   }
 
@@ -55,7 +56,7 @@ class LegalTextRulesTest {
   void rejectsANoteReferenceToNoNote() throws SaxonApiException {
     var text = legalText("<body><p><noteRef href=\"#note_9\" marker=\"9\"/></p></body>");
     assertThat(RULES.violations(text))
-        .extracting(LegalTextRules.Violation::rule)
+        .extracting(Schematron.Finding::id)
         .containsExactly("note-exists");
   }
 
@@ -68,7 +69,7 @@ class LegalTextRulesTest {
                   <p><changed amendingAct="32019R0103" action="replaced" marker="O1"><t v="b"/></changed></p></body>\
             """);
     assertThat(RULES.violations(text))
-        .extracting(LegalTextRules.Violation::rule)
+        .extracting(Schematron.Finding::id)
         .contains("marker-consistent");
   }
 
