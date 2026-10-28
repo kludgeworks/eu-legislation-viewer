@@ -8,7 +8,15 @@ def xjc_library(name, schema, bindings = None, xjc_args = [], srcs = [], deps = 
     """Generate JAXB classes from an XSD (and its bindings) into a reproducible srcjar, and compile them.
 
     xjc turns the schema's xs:documentation into the classes' and properties' Javadoc.
-    `srcs` adds hand-written helpers the bindings name, such as an XmlAdapter.
+
+    Args:
+      name: the java_library; the srcjar is `name`.srcjar.
+      schema: the XSD.
+      bindings: the JAXB bindings file (.xjb), if any.
+      xjc_args: further xjc arguments, such as plugin switches.
+      srcs: hand-written helpers the bindings name, such as an XmlAdapter.
+      deps: further dependencies of the generated code.
+      visibility: the java_library's visibility.
     """
     inputs = [schema] + ([bindings] if bindings else [])
     args = list(xjc_args) + ["-extension"]
@@ -30,7 +38,14 @@ def xjc_library(name, schema, bindings = None, xjc_args = [], srcs = [], deps = 
     )
 
 def xspec_test(name, specs, data = [], **kwargs):
-    """One cached JUnit 5 test per .xspec file (run by XSpecTests), plus a test_suite named `name`."""
+    """One cached JUnit 5 test per .xspec file (run by XSpecTests), plus a test_suite named `name`.
+
+    Args:
+      name: the test_suite; each test is `name`_ and the spec's file name.
+      specs: the .xspec files.
+      data: what the specs read: the stylesheets, fixtures.
+      **kwargs: passed to each java_junit5_test.
+    """
     tests = []
     for spec in specs:
         test_name = name + "_" + spec.rsplit("/", 1)[-1].replace(".xspec", "").replace("-", "_")
@@ -49,3 +64,32 @@ def xspec_test(name, specs, data = [], **kwargs):
         )
         tests.append(":" + test_name)
     native.test_suite(name = name, tests = tests)
+
+def xslt_quality_test(name, srcs, conf = "//tools/build:xslt-quality.conf.xml", **kwargs):
+    """Check stylesheets with xslt-quality: one JUnit 5 test with a dynamic test per stylesheet.
+
+    Every finding fails, whatever its level, except those of the rules `conf` switches off.
+
+    Args:
+      name: the test.
+      srcs: the stylesheets, or filegroups of them.
+      conf: the rules switched off, each with its reason.
+      **kwargs: passed to java_junit5_test.
+    """
+    java_junit5_test(
+        name = name,
+        test_class = "dev.groknull.kludgeworks.build.XsltQualityTests",
+        jvm_flags = [
+            "-Dxslt-quality.files='%s'" % " ".join(["$(rootpaths %s)" % s for s in srcs]),
+            "-Dxslt-quality.schema=$(rootpath @xslt_quality//:src/main/sch/xslt-quality.sch)",
+            "-Dxslt-quality.conf=$(rootpath %s)" % conf,
+        ],
+        data = srcs + [conf, "@xslt_quality//:sources", "@xslt_quality//:src/main/sch/xslt-quality.sch"],
+        runtime_deps = [
+            "//tools/build:xslt_quality_runner",
+            "@maven//:org_junit_jupiter_junit_jupiter_engine",
+            "@maven//:org_junit_platform_junit_platform_launcher",
+            "@maven//:org_junit_platform_junit_platform_reporting",
+        ],
+        **kwargs
+    )

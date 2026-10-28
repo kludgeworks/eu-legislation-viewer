@@ -7,7 +7,10 @@ import net.sf.saxon.s9api.Processor;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-/** Documents that aren't legal acts are refused, not half-converted (see {@link Fixtures#refused()}). */
+/**
+ * Documents that aren't legal acts are refused, not half-converted (see {@link
+ * Fixtures#refused()}).
+ */
 class RefusedDocumentsTest {
 
   static final Normaliser NORMALISER = new Normaliser(new Processor(false));

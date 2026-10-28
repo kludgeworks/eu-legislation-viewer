@@ -4,8 +4,8 @@ load("//tools/build:defs.bzl", "xjc_library")
 # JAXB classes for legal-text.xsd; their Javadoc comes from the schema's xs:documentation
 xjc_library(
     name = "xml",
-    schema = "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:legal-text.xsd",
-    bindings = "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:bindings.xjb",
     srcs = ["LocalDateAdapter.java"],
+    bindings = "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:bindings.xjb",
+    schema = "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:legal-text.xsd",
     visibility = ["//visibility:public"],
 )

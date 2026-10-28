@@ -6,7 +6,13 @@ package(default_visibility = ["//visibility:public"])
 #   refused/<root element>/          documents out of scope (notices, case law, OJ tables of contents)
 filegroup(
     name = "fixtures",
-    srcs = glob(["formex/**", "refused/**"], exclude = ["**/BUILD.bazel"]),
+    srcs = glob(
+        [
+            "formex/**",
+            "refused/**",
+        ],
+        exclude = ["**/BUILD.bazel"],
+    ),
 )
 
 # the subset the XSpec suites read

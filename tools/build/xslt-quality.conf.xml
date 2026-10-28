@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!--
+  The xslt-quality rules this project switches off, each with its reason. Every other rule is on,
+  and any finding of it, whatever its level, fails the test. Ids as xslt-quality reports them.
+-->
+<rejected>
+  <rule id="xslt-quality_ns-mode-statements-need-prefix">Mode names (block, inline, note) stay unprefixed: the prefix avoids clashes with stylesheets that import ours, and none does.</rule>
+  <rule id="xslt-quality_ns-global-statements-need-prefix">The global parameters celex and normaliser are the stylesheet's public interface, set by name from Java.</rule>
+  <rule id="xslt-quality_documentation-stylesheet">Stylesheets are documented in comments, not Oxygen's xd:doc.</rule>
+  <rule id="xslqual-UnusedFunction">Each module is checked on its own, so a function another module calls looks unused.</rule>
+  <rule id="xslqual-RedundantNamespaceDeclarations">The rule doesn't read prefixes used in XPath (map:, fn:, lt:), so it reports used declarations.</rule>
+  <rule id="xslqual-DontUseDoubleSlashOperator">// is used where a construct can occur at any depth (notes, included documents, quotations); keys index the hot lookups.</rule>
+  <rule id="xslt-quality_avoid-for-each">for-each is used over computed sequences (annex groups, lines, markers), where there is no node to match.</rule>
+  <rule id="xslqual-TooManySmallTemplates">Push style: one small template per Formex element is the design.</rule>
+  <rule id="xslqual-UsingNameOrLocalNameFunction">name() and local-name() are used for error messages and Formex element names, deliberately.</rule>
+  <rule id="xslqual-TemplateComplexity">f:legal-text is the document's outline: one template that lays out the parts in order.</rule>
+</rejected>

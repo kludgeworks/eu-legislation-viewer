@@ -44,8 +44,8 @@ record Fixture(String name, Path folder) {
   }
 
   /**
-   * The CELEX number to pass for an OJ act, which the folder is named after; consolidations
-   * (CELEX 0…) carry their own, and refused documents have none.
+   * The CELEX number to pass for an OJ act, which the folder is named after; consolidations (CELEX
+   * 0…) carry their own, and refused documents have none.
    */
   Optional<String> celex() {
     var folderName = folder.getFileName().toString();

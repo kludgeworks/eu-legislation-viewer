@@ -1,0 +1,73 @@
+// SPDX-License-Identifier: MIT
+// Fast file-level checks on changed files (pre-commit) and on everything (`hk check --all`, CI).
+// Checks that need a build or the real schema are Bazel tests.
+amends "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Config.pkl"
+
+import "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Builtins.pkl"
+
+// raw Formex as Cellar serves it: byte-identical, excluded from every fixer
+local raw = List("src/test/resources/fixtures/**")
+// vendored W3C schemas, under the W3C licence; patches, whose context lines must match exactly
+local vendored = List("src/test/resources/mathml3/**", "**/*.patch")
+local xml = List("**/*.xml", "**/*.xsl", "**/*.xsd", "**/*.xspec", "**/*.xjb", "**/*.sch")
+
+local linters = new Mapping<String, Step> {
+  ["google_java_format"] = (Builtins.google_java_format) { batch = true }
+  ["addlicense"] = new Step {
+    required = List("LICENSE_HOLDER", "LICENSE_TYPE")
+    glob =
+      List(
+        "**/*.java",
+        "**/*.bzl",
+        "**/BUILD.bazel",
+        "MODULE.bazel",
+        "**/*.toml",
+        "**/*.pkl",
+        "**/*.sh",
+      )
+    exclude = raw + vendored
+    batch = true
+    check = "addlicense -s=only -c \"$LICENSE_HOLDER\" -l \"$LICENSE_TYPE\" -check {{files}}"
+    fix = "addlicense -s=only -c \"$LICENSE_HOLDER\" -l \"$LICENSE_TYPE\" {{files}}"
+  }
+  // the XML family, which addlicense doesn't know
+  ["spdx_header"] = new Step {
+    glob = xml
+    exclude = raw + vendored
+    batch = true
+    check = "! grep -L 'SPDX-License-Identifier' {{files}} | grep ."
+  }
+  // well-formedness only: XML is never reformatted, whitespace is significant in legal text
+  ["xmllint"] = (Builtins.xmllint) { glob = xml; exclude = raw; batch = true }
+  ["buildifier_format"] = Builtins.buildifier_format
+  ["buildifier_lint"] = Builtins.buildifier_lint
+  ["taplo_format"] = Builtins.taplo_format
+  ["pkl_format"] = Builtins.pkl_format
+  ["shellcheck"] = Builtins.shellcheck
+  ["shfmt"] = (Builtins.shfmt) { batch = true }
+  ["actionlint"] = Builtins.actionlint
+  ["typos"] = (Builtins.typos) { exclude = raw + vendored }
+  ["trailing_whitespace"] = (Builtins.trailing_whitespace) { exclude = raw + vendored }
+  ["newlines"] = (Builtins.newlines) { exclude = raw + vendored }
+  ["mixed_line_ending"] = (Builtins.mixed_line_ending) { exclude = raw + vendored }
+  ["check_merge_conflict"] = Builtins.check_merge_conflict
+  ["check_case_conflict"] = Builtins.check_case_conflict
+  ["check_added_large_files"] = (Builtins.check_added_large_files) { exclude = raw }
+  ["detect_private_key"] = Builtins.detect_private_key
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true
+    stash = "git"
+    steps { ...linters }
+  }
+  ["commit-msg"] {
+    steps { ["conventional"] = Builtins.check_conventional_commit }
+  }
+  ["check"] { steps { ...linters } }
+  ["fix"] {
+    fix = true
+    steps { ...linters }
+  }
+}

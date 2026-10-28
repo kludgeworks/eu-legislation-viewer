@@ -70,7 +70,7 @@
   </xsl:template>
 
   <xsl:template match="FORMULA[not(ancestor::FORMULA | ancestor::FORMULA.S)] | FORMULA.S">
-    <xsl:variable name="text" select="f:letters(string-join(.//text()[not(ancestor::NOTE)]))"/>
+    <xsl:variable name="text" as="xs:string" select="f:letters(string-join(.//text()[not(ancestor::NOTE)]))"/>
     <xsl:if test="$text">
       <v kind="formula" file="{tokenize(base-uri(.), '/')[last()]}" path="{path()}">{$text}</v>
     </xsl:if>
@@ -82,7 +82,7 @@
     <xsl:for-each-group select="node()" group-adjacent="f:in-run(.)">
       <xsl:choose>
         <xsl:when test="current-grouping-key()">
-          <xsl:variable name="run" select="normalize-space(string-join(current-group()[self::text()]))"/>
+          <xsl:variable name="run" as="xs:string" select="normalize-space(string-join(current-group()[self::text()]))"/>
           <xsl:if test="$run">
             <v file="{tokenize(base-uri(..), '/')[last()]}" path="{path(..)}">{$run}</v>
           </xsl:if>

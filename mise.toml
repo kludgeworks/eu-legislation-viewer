@@ -1,0 +1,56 @@
+# SPDX-License-Identifier: MIT
+#:schema https://mise.jdx.dev/schema/mise.json
+
+# The tools on the developer's PATH and the commands people and CI run. Bazel stays responsible for
+# everything hermetic: its own version (.bazelversion, read by bazelisk), the JDK that builds and
+# tests (remotejdk_25), Maven dependencies, code generation and tests.
+
+[settings]
+lockfile = true # mise.lock adds the checksums; versions are pinned below, upgraded on purpose
+
+[env]
+HK_MISE = 1
+LICENSE_TYPE = "mit"
+LICENSE_HOLDER = "The Project Contributors"
+
+[tools]
+bazelisk = "1.30.0"
+buildifier = "10.1.0"
+"aqua:bazelbuild/buildtools/buildozer" = "10.1.0"
+java = "temurin-25.0.5+8.0.LTS"                   # for the IDE and jshell; Bazel uses its own remotejdk_25
+hk = "2.9.0"                                      # the version in hk.pkl's amends URL
+pkl = "0.32.2"                                    # hk's configuration language
+google-java-format = "1.37.0"
+"github:google/addlicense" = "1.2.0"
+taplo = "0.10.0"
+typos = "1.51.1"
+shellcheck = "0.11.0"
+shfmt = "3.14.1"
+actionlint = "1.7.12"
+
+[hooks]
+postinstall = "hk install --mise"
+
+[tasks.build]
+description = "Build everything"
+run = "bazel build //..."
+
+[tasks.test]
+description = "Run every test"
+run = "bazel test //..."
+
+[tasks."test:xspec"]
+description = "Run the XSpec suites"
+run = "bazel test //src/test/xspec/..."
+
+[tasks.pin]
+description = "Pin the Maven dependencies after changing them in MODULE.bazel"
+run = "bazel run @maven//:pin"
+
+[tasks.check]
+description = "Run every hk check on every file"
+run = "hk check --all"
+
+[tasks.fix]
+description = "Run every hk fixer on every file"
+run = "hk fix --all"

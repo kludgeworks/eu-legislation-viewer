@@ -1,16 +1,20 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
+
 package(default_visibility = ["//visibility:public"])
 
 # The text-conservation check: Formex and legal text reduced to the same list of values
 filegroup(
     name = "compare",
-    srcs = ["formex-values.xsl", "legal-text-values.xsl"],
+    srcs = [
+        "formex-values.xsl",
+        "legal-text-values.xsl",
+    ],
 )
 
 # the same, on the classpath at /compare/
 java_library(
     name = "resources",
-    resources = [":compare"],
     resource_strip_prefix = "src/test/resources",
+    resources = [":compare"],
 )

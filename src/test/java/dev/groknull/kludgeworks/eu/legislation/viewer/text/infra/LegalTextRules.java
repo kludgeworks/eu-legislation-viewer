@@ -12,12 +12,13 @@ import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XsltExecutable;
 
 /**
- * legal-text.sch, the rules legal-text.xsd can't express, compiled with SchXslt 2 (its
- * transpiler turns the Schematron into an XSLT validator that reports in SVRL).
+ * legal-text.sch, the rules legal-text.xsd can't express, compiled with SchXslt 2 (its transpiler
+ * turns the Schematron into an XSLT validator that reports in SVRL).
  */
 final class LegalTextRules {
 
-  static final String SCHEMATRON = "/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml/legal-text.sch";
+  static final String SCHEMATRON =
+      "/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml/legal-text.sch";
   private static final String TRANSPILER = "/content/transpile.xsl";
 
   /** A rule a legal text breaks: the assertion's id, where, and its message. */
@@ -49,7 +50,9 @@ final class LegalTextRules {
     try {
       var report = new XdmDestination();
       validator.load30().applyTemplates(legalText, report);
-      return svrl.evaluate("//(svrl:failed-assert | svrl:successful-report)", report.getXdmNode()).stream()
+      return svrl
+          .evaluate("//(svrl:failed-assert | svrl:successful-report)", report.getXdmNode())
+          .stream()
           .map(XdmNode.class::cast)
           .map(v -> new Violation(v.attribute("id"), v.attribute("location"), text(v)))
           .toList();

@@ -6,6 +6,6 @@ java_library(
     name = "infra",
     srcs = glob(["*.java"]),
     visibility = ["//visibility:public"],
-    deps = ["@maven//:net_sf_saxon_Saxon_HE"],
     runtime_deps = ["//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt:resources"],
+    deps = ["@maven//:net_sf_saxon_Saxon_HE"],
 )

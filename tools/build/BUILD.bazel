@@ -3,17 +3,31 @@ load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["defs.bzl"])
+exports_files([
+    "defs.bzl",
+    "xslt-quality.conf.xml",
+])
 
 java_library(
     name = "xspec_runner",
     testonly = True,
     srcs = ["src/dev/groknull/kludgeworks/build/XSpecTests.java"],
+    runtime_deps = ["@maven//:io_xspec_xspec"],
     deps = [
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
     ],
-    runtime_deps = ["@maven//:io_xspec_xspec"],
+)
+
+java_library(
+    name = "xslt_quality_runner",
+    testonly = True,
+    srcs = ["src/dev/groknull/kludgeworks/build/XsltQualityTests.java"],
+    runtime_deps = ["@maven//:name_dmaus_schxslt_schxslt2"],
+    deps = [
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
 )
 
 java_library(
@@ -26,9 +40,9 @@ java_binary(
     name = "xjc",
     srcs = ["src/dev/groknull/kludgeworks/build/XjcSrcjar.java"],
     main_class = "dev.groknull.kludgeworks.build.XjcSrcjar",
+    runtime_deps = ["@maven//:org_glassfish_jaxb_jaxb_runtime"],
     deps = [
         ":srcjars",
         "@maven//:org_glassfish_jaxb_jaxb_xjc",
     ],
-    runtime_deps = ["@maven//:org_glassfish_jaxb_jaxb_runtime"],
 )

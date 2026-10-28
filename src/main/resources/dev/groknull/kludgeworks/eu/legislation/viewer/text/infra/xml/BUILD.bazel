@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
+
 package(default_visibility = ["//visibility:public"])
 
 exports_files([
@@ -12,6 +13,9 @@ exports_files([
 # /dev/groknull/…/text/infra/xml/
 java_library(
     name = "resources",
-    resources = ["legal-text.xsd", "legal-text.sch"],
     resource_strip_prefix = "src/main/resources",
+    resources = [
+        "legal-text.sch",
+        "legal-text.xsd",
+    ],
 )

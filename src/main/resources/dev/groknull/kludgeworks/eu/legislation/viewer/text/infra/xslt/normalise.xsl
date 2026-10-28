@@ -19,6 +19,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
+    xmlns:lt="https://kludgeworks.groknull.dev/ns/legal-text/1"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 
@@ -617,7 +618,7 @@
     <xsl:param name="inlines" as="element()*"/>
     <xsl:variable name="first" as="element()?" select="$inlines[1]"/>
     <xsl:choose>
-      <xsl:when test="$first/self::*:t">
+      <xsl:when test="$first/self::lt:t">
         <xsl:variable name="v" as="xs:string" select="replace($first/@v, '^\s+', '')"/>
         <xsl:if test="$v != ''"><t v="{$v}"/></xsl:if>
         <xsl:sequence select="$inlines[position() gt 1]"/>

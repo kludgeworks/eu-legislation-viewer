@@ -1,5 +1,8 @@
 # SPDX-License-Identifier: MIT
-module(name = "kludgeworks_viewer", version = "0.0.0")
+module(
+    name = "kludgeworks_viewer",
+    version = "0.0.0",
+)
 
 bazel_dep(name = "rules_java", version = "9.9.0")
 bazel_dep(name = "rules_jvm_external", version = "7.2")
@@ -30,3 +33,17 @@ maven.install(
     repositories = ["https://repo1.maven.org/maven2"],
 )
 use_repo(maven, "maven")
+
+# xslt-quality: Schematron rules for XSLT (github.com/mricaud/xslt-quality, Apache-2.0). It has no
+# releases; this is master as of 2024-11-13. The patch makes its schema work with SchXslt 2.
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "xslt_quality",
+    build_file = "//tools/build:xslt-quality.BUILD",
+    patch_args = ["-p1"],
+    patches = ["//tools/build:xslt-quality.patch"],
+    sha256 = "9b42ba86c3c034468bbce2f9f5fbd9c2ec5b5fb1b32a10b575bd1722b2d2f03b",
+    strip_prefix = "xslt-quality-9faf4484318c6e02b5a88a27b121b731c7fc3aaf",
+    urls = ["https://github.com/mricaud/xslt-quality/archive/9faf4484318c6e02b5a88a27b121b731c7fc3aaf.tar.gz"],
+)

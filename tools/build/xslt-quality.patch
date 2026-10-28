@@ -1,0 +1,14 @@
+SPDX-License-Identifier: MIT
+SchXslt 2 drops a top-level xsl:variable in a schema; a Schematron let declares the same variable.
+
+--- a/src/main/sch/xslt-quality.sch	2024-11-13 11:19:16
++++ b/src/main/sch/xslt-quality.sch	2026-10-28 22:57:29
+@@ -31,7 +31,7 @@
+     <xsl:variable name="guess-xslt-is-a-library" select="count(//xsl:template[@match][(@mode, '#default')[1] = '#default']) = 0" as="xs:boolean"/>-->
+   <!--<let name="xslt-is-a-library" value="xslq:get-param-value('xslt-is-a-library', $guess-xslt-is-a-library, 'xs:boolean')"/>-->
+   
+-  <xsl:variable name="xslt-quality_xslt-is-a-library" select="xslq:get-param-value('xslt-quality_xslt-is-a-library', '0', 'xs:boolean')" as="item()?"/>
++  <let name="xslt-quality_xslt-is-a-library" value="xslq:get-param-value('xslt-quality_xslt-is-a-library', '0', 'xs:boolean')"/>
+   
+   <!--====================================-->
+   <!--           INCLUSIONS               -->

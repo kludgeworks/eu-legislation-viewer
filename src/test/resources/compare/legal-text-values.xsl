@@ -42,7 +42,7 @@
 
   <!-- letters and digits, without the function sign the normaliser adds for FUNCTION -->
   <xsl:template match="m:math">
-    <xsl:variable name="text" select="f:letters(string-join(.//(m:mi | m:mn | m:mo)[. != 'ƒ']))"/>
+    <xsl:variable name="text" as="xs:string" select="f:letters(string-join(.//(m:mi | m:mn | m:mo)[. != 'ƒ']))"/>
     <xsl:if test="$text">
       <v kind="formula">{$text}</v>
     </xsl:if>

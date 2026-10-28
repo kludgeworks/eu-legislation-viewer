@@ -20,7 +20,10 @@ final class Fixtures {
 
   private Fixtures() {}
 
-  /** Documents in scope: one folder per document under its Formex version, formex/&lt;version&gt;/&lt;CELEX&gt;. */
+  /**
+   * Documents in scope: one folder per document under its Formex version,
+   * formex/&lt;version&gt;/&lt;CELEX&gt;.
+   */
   static Stream<Fixture> inScope() {
     return folders("formex", 2);
   }
@@ -34,7 +37,11 @@ final class Fixtures {
     var base = ROOT.resolve(kind);
     try (var paths = Files.walk(base, depth)) {
       return paths
-          .filter(p -> !p.equals(base) && base.relativize(p).getNameCount() == depth && Files.isDirectory(p))
+          .filter(
+              p ->
+                  !p.equals(base)
+                      && base.relativize(p).getNameCount() == depth
+                      && Files.isDirectory(p))
           .sorted()
           .map(p -> new Fixture(ROOT.relativize(p).toString(), p))
           .toList()

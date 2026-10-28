@@ -30,6 +30,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
+    xmlns:lt="https://kludgeworks.groknull.dev/ns/legal-text/1"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 
@@ -99,7 +100,7 @@
     </xsl:variable>
     <!-- no line break at the start or end, nor two in a row -->
     <xsl:sequence select="for $i in 1 to count($out) return
-        $out[$i][not(self::*:eol and ($i = 1 or $i = count($out) or $out[$i + 1][self::*:eol]))]"/>
+        $out[$i][not(self::lt:eol and ($i = 1 or $i = count($out) or $out[$i + 1][self::lt:eol]))]"/>
   </xsl:template>
 
   <!-- what holds lines without being a block itself: a title and its lines, a table's rows and cells -->
