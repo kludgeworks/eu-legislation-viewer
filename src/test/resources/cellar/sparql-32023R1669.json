@@ -1,0 +1,4 @@
+
+{ "head": { "link": [], "vars": ["manifestation", "item", "mime", "file", "sha1", "modified"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "manifestation": { "type": "uri", "value": "http://publications.europa.eu/resource/cellar/80cad8d3-47c9-11ee-bbdc-01aa75ed71a1.0006.02" }	, "item": { "type": "uri", "value": "http://publications.europa.eu/resource/cellar/80cad8d3-47c9-11ee-bbdc-01aa75ed71a1.0006.02/DOC_1" }	, "mime": { "type": "literal", "value": "application/zip" }	, "file": { "type": "literal", "value": "JOL_2023_214_R_0002_ENG.fmx4.zip" }	, "modified": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#dateTime", "value": "2023-08-31T09:11:31.129+02:00" }} ] } }

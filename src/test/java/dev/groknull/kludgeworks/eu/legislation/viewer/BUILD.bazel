@@ -1,0 +1,25 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+
+# Spring Modulith's verification of the module structure
+java_test_suite(
+    name = "viewer",
+    size = "small",
+    srcs = glob(["*.java"]),
+    runner = "junit5",
+    # Spring's naming for whole-application checks
+    test_suffixes = ["Tests.java"],
+    runtime_deps = [
+        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
+        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text",
+        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_springframework_modulith_spring_modulith_core",
+    ],
+)

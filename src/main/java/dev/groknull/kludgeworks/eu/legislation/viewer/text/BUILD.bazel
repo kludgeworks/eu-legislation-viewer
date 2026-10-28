@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_library")
+
+# the module's API package: for now only its declaration
+java_library(
+    name = "text",
+    srcs = glob(["*.java"]),
+    visibility = ["//visibility:public"],
+    deps = [
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_springframework_modulith_spring_modulith_api",
+    ],
+)

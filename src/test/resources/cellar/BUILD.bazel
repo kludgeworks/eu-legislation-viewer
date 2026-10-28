@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_library")
+
+package(default_visibility = ["//visibility:public"])
+
+# Cellar's responses, recorded byte for byte (see SOURCE), on the classpath at /cellar/
+java_library(
+    name = "resources",
+    resource_strip_prefix = "src/test/resources",
+    resources = glob(
+        ["**"],
+        exclude = ["BUILD.bazel"],
+    ),
+)

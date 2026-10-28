@@ -1,0 +1,174 @@
+// SPDX-License-Identifier: MIT
+package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
+
+import java.io.ByteArrayInputStream;
+import java.net.URI;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.regex.Pattern;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
+
+/**
+ * The Formex files of a version, found from Cellar's RDF: work (CELEX) → expression (language) →
+ * manifestation (fmx4) → items. Two layouts:
+ *
+ * <ul>
+ *   <li>one item per file (older OJ acts): each item is a file, named by tdm:stream_name or, where
+ *       the technical metadata is missing, by the suffix of its owl:sameAs after ".fmx4.";
+ *   <li>one zip item (OJ acts and consolidations from 2023): the RDF says nothing about its
+ *       entries, so they come from Cellar's content-stream list, and each is fetched on its own at
+ *       {@code …/DOC_1/{entry}}.
+ * </ul>
+ */
+@Component
+public class FormexFiles {
+  private static final Pattern CELEX =
+      Pattern.compile("[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*(-[0-9]{8})?");
+  private static final Pattern LANGUAGE = Pattern.compile("[A-Z]{3}");
+
+  private static final String QUERY =
+      """
+      PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+      PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
+      PREFIX tdm: <http://publications.europa.eu/ontology/tdm#>
+      PREFIX owl: <http://www.w3.org/2002/07/owl#>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+      SELECT ?manifestation ?item ?mime (SAMPLE(COALESCE(?streamName, STRAFTER(STR(?same), ".fmx4."))) AS ?file)
+             (SAMPLE(?sha1) AS ?sha1) ?modified
+      WHERE {
+        VALUES (?celex ?language) { ("%s"^^xsd:string <http://publications.europa.eu/resource/authority/language/%s>) }
+        ?work cdm:resource_legal_id_celex ?celex .
+        ?expr cdm:expression_belongs_to_work ?work ;
+              cdm:expression_uses_language ?language .
+        ?manifestation cdm:manifestation_manifests_expression ?expr ;
+             cdm:manifestation_type "fmx4"^^xsd:string ;
+             cmr:lastModificationDate ?modified .
+        ?item cdm:item_belongs_to_manifestation ?manifestation ;
+              cmr:manifestationMimeType ?mime .
+        OPTIONAL { ?item tdm:stream_name ?streamName }
+        OPTIONAL { ?item owl:sameAs ?same }
+        OPTIONAL { ?item tdm:stream_fixity/tdm:fixity_message_digest ?sha1 }
+      }
+      GROUP BY ?manifestation ?item ?mime ?modified
+      ORDER BY ?item
+      """;
+
+  private final Sparql sparql;
+  private final CellarHttp http;
+
+  FormexFiles(Sparql sparql, CellarHttp http) {
+    this.sparql = sparql;
+    this.http = http;
+  }
+
+  /**
+   * The Formex files of the version {@code celex} names (an OJ act, 32015R1998, or a consolidated
+   * version, 02015R1998-20260322) in {@code language} (an EU authority code: ENG). Where Cellar has
+   * more than one Formex manifestation, the latest modified.
+   */
+  public Optional<FormexManifestation> manifestation(String celex, String language) {
+    if (!CELEX.matcher(celex).matches() || !LANGUAGE.matcher(language).matches()) {
+      throw new IllegalArgumentException(
+          "Not a CELEX number and language code: " + celex + ", " + language);
+    }
+    var rows = sparql.select(QUERY.formatted(celex, language)).rows();
+    var latest = rows.stream().max(Comparator.comparing(r -> modified(r.get("modified"))));
+    if (latest.isEmpty()) {
+      return Optional.empty();
+    }
+    var uri = latest.get().get("manifestation");
+    var items = rows.stream().filter(r -> r.get("manifestation").equals(uri)).toList();
+    var modified = modified(latest.get().get("modified"));
+    if (items.size() == 1 && items.getFirst().get("mime").startsWith("application/zip")) {
+      var zip = URI.create(items.getFirst().get("item"));
+      return Optional.of(
+          new FormexManifestation(URI.create(uri), modified, true, entries(celex, language, zip)));
+    }
+    var files =
+        items.stream()
+            .map(
+                r ->
+                    new FormexManifestation.File(
+                        r.find("file")
+                            .orElseThrow(
+                                () -> new CellarException("No file name for " + r.get("item"))),
+                        URI.create(r.get("item")),
+                        r.get("mime"),
+                        r.find("sha1")))
+            .toList();
+    return Optional.of(new FormexManifestation(URI.create(uri), modified, false, files));
+  }
+
+  /**
+   * A zip item's entries, from the content-stream list (Accept: application/list;mtype=fmx4 on the
+   * CELEX URI): an XHTML page linking each entry at {@code {zip item}/{entry name}}.
+   */
+  private List<FormexManifestation.File> entries(String celex, String language, URI zip) {
+    var page =
+        http.call(
+            () ->
+                http.client()
+                    .get()
+                    .uri(http.properties().resources().resolve("celex/" + celex))
+                    .accept(MediaType.parseMediaType("application/list;mtype=fmx4"))
+                    .header("Accept-Language", language.toLowerCase(Locale.ROOT))
+                    .retrieve()
+                    .body(byte[].class));
+    if (page == null) {
+      throw new CellarException("Empty content-stream list for " + celex);
+    }
+    return entries(page, zip);
+  }
+
+  static List<FormexManifestation.File> entries(byte[] page, URI zip) {
+    var prefix = zip + "/";
+    var files = new ArrayList<FormexManifestation.File>();
+    try {
+      var factory = XMLInputFactory.newFactory();
+      factory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
+      var reader = factory.createXMLStreamReader(new ByteArrayInputStream(page));
+      while (reader.hasNext()) {
+        if (reader.next() == XMLStreamConstants.START_ELEMENT
+            && reader.getLocalName().equals("a")) {
+          var href = reader.getAttributeValue(null, "href");
+          if (href != null && href.startsWith(prefix)) {
+            var name = URLDecoder.decode(href.substring(prefix.length()), StandardCharsets.UTF_8);
+            files.add(
+                new FormexManifestation.File(
+                    name, URI.create(href), mediaType(name), Optional.empty()));
+          }
+        }
+      }
+    } catch (XMLStreamException e) {
+      throw new CellarException("Unreadable content-stream list for " + zip, e);
+    }
+    return files;
+  }
+
+  /** A zip entry's type, from its name: Cellar labels every entry application/zip. */
+  private static String mediaType(String name) {
+    var lower = name.toLowerCase(Locale.ROOT);
+    if (lower.endsWith(".xml")) {
+      return "application/xml;type=fmx4";
+    }
+    if (lower.endsWith(".tif") || lower.endsWith(".tiff")) {
+      return "image/tiff";
+    }
+    return "application/octet-stream";
+  }
+
+  private static java.time.Instant modified(String value) {
+    return OffsetDateTime.parse(value).toInstant();
+  }
+}
