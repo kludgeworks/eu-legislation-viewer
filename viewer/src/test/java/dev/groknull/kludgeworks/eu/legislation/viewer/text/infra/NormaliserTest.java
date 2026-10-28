@@ -22,6 +22,14 @@ class NormaliserTest {
   }
 
   @Test
+  void readsADocumentWithMoreEntityReferencesThanTheJdkAllows() {
+    // a 104 MB annex has over 100,000 &amp;; the JDK's parser stops at 100,000 since JDK 24
+    var text = "a&amp;b ".repeat(100_500);
+    var legalText = NORMALISER.normalise(formex(act("<ENACTING.TERMS><ARTICLE><TI.ART>Article 1</TI.ART><ALINEA>" + text + "</ALINEA></ARTICLE></ENACTING.TERMS>")), Optional.of("32026R0449"));
+    assertThat(legalText.toString()).contains("a&amp;b");
+  }
+
+  @Test
   void refusesADocumentThatIsNotALegalAct() {
     assertThatExceptionOfType(OutOfScopeException.class)
         .isThrownBy(() -> NORMALISER.normalise(formex("<JUDGMENT/>"), Optional.empty()))

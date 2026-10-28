@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
+import net.sf.saxon.lib.FeatureKeys;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.QName;
 import net.sf.saxon.s9api.SaxonApiException;
@@ -18,6 +19,12 @@ import net.sf.saxon.s9api.XsltExecutable;
 /**
  * Turns Formex 4 into legal-text XML with {@code normalise.xsl}. The stylesheet is compiled once;
  * each call gets its own transformer, so one instance serves concurrent calls.
+ *
+ * <p>Formex files can be large: an annex of 104 MB with over 100,000 entity references (&amp;amp;).
+ * Since JDK 24 the JDK's XML parser stops at 100,000 ({@code jdk.xml.maxGeneralEntitySizeLimit}), so
+ * the constructor lifts that limit on the processor it is given, for the documents Saxon parses: the
+ * input when it is a stream, and the files the stylesheet reads. Formex has no DTD, so there are no
+ * entities to expand beyond the predefined ones.
  */
 public final class Normaliser {
 
@@ -29,6 +36,8 @@ public final class Normaliser {
   private final XsltExecutable stylesheet;
 
   public Normaliser(Processor processor) {
+    processor.setConfigurationProperty(FeatureKeys.XML_PARSER_PROPERTY + "jdk.xml.maxGeneralEntitySizeLimit", "0");
+    processor.setConfigurationProperty(FeatureKeys.XML_PARSER_PROPERTY + "jdk.xml.totalEntitySizeLimit", "0");
     var url = Objects.requireNonNull(Normaliser.class.getResource(STYLESHEET), STYLESHEET);
     try {
       stylesheet = processor.newXsltCompiler().compile(new StreamSource(url.toExternalForm()));
