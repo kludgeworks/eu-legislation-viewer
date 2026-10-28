@@ -9,7 +9,7 @@
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
+    xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
     exclude-result-prefixes="#all">
 
   <!-- a visible label as an eId value: "(a)" → "a", "1.0.6." → "1.0.6", "10 a" → "10-a" -->

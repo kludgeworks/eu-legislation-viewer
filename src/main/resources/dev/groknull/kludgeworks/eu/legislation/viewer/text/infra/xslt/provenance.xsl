@@ -17,7 +17,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
-    xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
+    xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all">
 

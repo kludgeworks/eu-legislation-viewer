@@ -2,12 +2,12 @@
 <!-- SPDX-License-Identifier: MIT -->
 <!--
   Documents within documents: attachments (related documents), corrigenda (CORRECTION, OLD.CORR,
-  NEW.CORR), letters of an exchange of letters, and included Formex files. Part of normalise.xsl.
+  NEW.CORR), letters of an exchange of letters, and included Formex files. Part of formex-to-legal-text.xsl.
 -->
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
+    xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 

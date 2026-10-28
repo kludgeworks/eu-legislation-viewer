@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
-<!-- Inputs the normaliser refuses: it fails loudly rather than produce a partial text -->
+<!-- Inputs the converter refuses: it fails loudly rather than produce a partial text -->
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
-    xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
-    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/normalise.xsl">
+    xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/formex-to-legal-text.xsl">
 
   <!-- a blank CELEX number counts as none -->
   <x:param name="celex" select="' '"/>
@@ -18,7 +18,7 @@
     <x:expect label="is refused" test="exists($x:result?err)"/>
   </x:scenario>
 
-  <x:scenario label="An element the normaliser doesn't know" catch="yes">
+  <x:scenario label="An element the converter doesn't know" catch="yes">
     <x:context mode="block"><NOT.FORMEX/></x:context>
     <x:expect label="stops the transformation" test="exists($x:result?err)"/>
   </x:scenario>

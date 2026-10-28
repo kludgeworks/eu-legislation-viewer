@@ -6,7 +6,7 @@
 -->
 <rejected>
   <rule id="xslt-quality_ns-mode-statements-need-prefix">Mode names (block, inline, note) stay unprefixed: the prefix avoids clashes with stylesheets that import ours, and none does.</rule>
-  <rule id="xslt-quality_ns-global-statements-need-prefix">The global parameters celex and normaliser are the stylesheet's public interface, set by name from Java.</rule>
+  <rule id="xslt-quality_ns-global-statements-need-prefix">The global parameters celex and converter are the stylesheet's public interface, set by name from Java.</rule>
   <rule id="xslt-quality_documentation-stylesheet">Stylesheets are documented in comments, not Oxygen's xd:doc.</rule>
   <rule id="xslqual-UnusedFunction">Each module is checked on its own, so a function another module calls looks unused.</rule>
   <rule id="xslqual-RedundantNamespaceDeclarations">The rule doesn't read prefixes used in XPath (map:, fn:, lt:), so it reports used declarations.</rule>

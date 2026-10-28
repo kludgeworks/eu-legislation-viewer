@@ -18,11 +18,11 @@ import net.sf.saxon.s9api.XsltExecutable;
 import net.sf.saxon.s9api.streams.Steps;
 
 /**
- * Whether normalisation kept all the text of its source. /compare/formex-values.xsl and
+ * Whether conversion kept all the text of its source. /compare/formex-values.xsl and
  * /compare/legal-text-values.xsl reduce the Formex and the legal text to the same list of values,
- * written independently of the normaliser. Every source value must occur in the output as often as
- * in the source (a value of kind "once" at least once); extra output values are fine, the
- * normaliser makes some up (quotation marks whose partner sits in another element).
+ * written independently of the converter. Every source value must occur in the output as often as
+ * in the source (a value of kind "once" at least once); extra output values are fine, the converter
+ * makes some up (quotation marks whose partner sits in another element).
  */
 final class TextConservation {
 

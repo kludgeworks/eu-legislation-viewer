@@ -29,17 +29,17 @@ import org.xml.sax.SAXException;
 import org.xmlunit.assertj3.XmlAssert;
 
 /**
- * Normalises every fixture in scope (one document per Formex version and document type, see {@link
+ * Converts every fixture in scope (one document per Formex version and document type, see {@link
  * Fixtures#inScope()}) once, then checks what every legal text must be. Assertions name the
  * fixture, because Bazel's XML report names a test only by its method.
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ParameterizedClass(name = "{0}")
 @MethodSource("dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.Fixtures#inScope")
-class NormaliserFixturesTest {
+class FormexConverterFixturesTest {
 
   static final Processor SAXON = new Processor(false);
-  static final Normaliser NORMALISER = new Normaliser(SAXON);
+  static final FormexConverter CONVERTER = new FormexConverter(SAXON);
   static final TextConservation TEXT = new TextConservation(SAXON);
   static final LegalTextRules RULES = new LegalTextRules(SAXON);
   static final Schema MATHML = mathml();
@@ -52,8 +52,8 @@ class NormaliserFixturesTest {
   String xml;
 
   @BeforeParameterizedClassInvocation
-  void normalise(Fixture fixture) throws SaxonApiException {
-    legalText = NORMALISER.normalise(fixture.source(), fixture.celex());
+  void convert(Fixture fixture) throws SaxonApiException {
+    legalText = CONVERTER.convert(fixture.source(), fixture.celex());
     xml = SAXON.newSerializer().serializeNodeToString(legalText);
   }
 
@@ -116,6 +116,6 @@ class NormaliserFixturesTest {
   }
 
   private static URL resource(String name) {
-    return Objects.requireNonNull(NormaliserFixturesTest.class.getResource(name), name);
+    return Objects.requireNonNull(FormexConverterFixturesTest.class.getResource(name), name);
   }
 }

@@ -10,7 +10,7 @@
   Other Formex documents (notices, case law, the OJ's tables of contents) are not legal acts: they
   are refused with f:out-of-scope.
 
-  The output validates against legal-text.xsd. An element the normaliser doesn't know stops the
+  The output validates against legal-text.xsd. An element the converter doesn't know stops the
   transformation (f:unknown), so a new Formex construct shows up as a failing test, not as lost text.
 -->
 <xsl:stylesheet version="3.0"
@@ -18,7 +18,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
-    xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
+    xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
     xmlns:lt="https://kludgeworks.groknull.dev/ns/legal-text/1"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
@@ -38,7 +38,7 @@
 
   <!-- the CELEX number of an OJ act; Formex doesn't carry it (consolidations do) -->
   <xsl:param name="celex" as="xs:string?"/>
-  <xsl:param name="normaliser" as="xs:string" select="'1.0.0'"/>
+  <xsl:param name="converter" as="xs:string" select="'1.0.0'"/>
 
   <xsl:variable name="f:namespace" as="xs:string" select="'https://kludgeworks.groknull.dev/ns/legal-text/1'"/>
   <xsl:variable name="f:schema" as="xs:string" select="'https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd'"/>
@@ -125,7 +125,7 @@
       </xsl:if>
       <xsl:attribute name="lang" select="lower-case(($doc/BIB.INSTANCE/LG.DOC, $content/BIB.INSTANCE/LG.DOC)[1])"/>
       <xsl:attribute name="formexVersion" select="f:formex-version($act)"/>
-      <xsl:attribute name="normaliser" select="$normaliser"/>
+      <xsl:attribute name="converter" select="$converter"/>
 
       <source celex="{if ($consolidated) then '0' || $info/@CONSLEG.REF || '-' || $info/@START.DATE else $act-celex}">
         <xsl:if test="$doc/BIB.INSTANCE/NO.ELI">

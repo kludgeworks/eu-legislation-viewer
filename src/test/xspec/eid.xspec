@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
-    xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
-    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/normalise.xsl">
+    xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/formex-to-legal-text.xsl">
 
   <x:scenario label="A label as an eId value">
     <x:scenario label="drops brackets">

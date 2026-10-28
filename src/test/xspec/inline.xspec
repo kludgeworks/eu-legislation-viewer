@@ -2,7 +2,7 @@
 <!-- SPDX-License-Identifier: MIT -->
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
-    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/normalise.xsl">
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/formex-to-legal-text.xsl">
 
   <!-- inline content is tested through the P that holds it: a P becomes a <p> -->
 
@@ -106,7 +106,7 @@
   <x:scenario label="An unknown inline element" catch="yes">
     <x:context mode="block" xmlns=""><P>a <NOT.FORMEX>x</NOT.FORMEX></P></x:context>
     <x:expect label="stops the transformation" test="$x:result?err?code = xs:QName('f:unknown')"
-              xmlns:f="https://kludgeworks.groknull.dev/ns/normalise" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+              xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
   </x:scenario>
 
 </x:description>

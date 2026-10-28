@@ -3,7 +3,7 @@ load("@rules_java//java:defs.bzl", "java_library")
 
 package(default_visibility = ["//visibility:public"])
 
-# normalise.xsl and the modules it includes: Formex → legal-text
+# formex-to-legal-text.xsl and the modules it includes: Formex → legal-text
 filegroup(
     name = "xslt",
     srcs = glob(["*.xsl"]),

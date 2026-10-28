@@ -2,7 +2,7 @@
 <!-- SPDX-License-Identifier: MIT -->
 <!--
   The text of a legal text as a list of values, the counterpart of formex-values.xsl: each t, each
-  date's wording, and each formula as its letters and digits. Values the normaliser makes up
+  date's wording, and each formula as its letters and digits. Values the converter makes up
   (a quotation mark whose partner sits in another element, a note marker) come out as extra values,
   which the check allows; only values missing from this list are losses.
 -->
@@ -24,7 +24,7 @@
     </values>
   </xsl:template>
 
-  <!-- a run of text; the normaliser splits runs where the source does (elements, amendment markers) -->
+  <!-- a run of text; the converter splits runs where the source does (elements, amendment markers) -->
   <xsl:template match="lt:t[normalize-space(@v)]">
     <v>{normalize-space(@v)}</v>
   </xsl:template>
@@ -40,7 +40,7 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- letters and digits, without the function sign the normaliser adds for FUNCTION -->
+  <!-- letters and digits, without the function sign the converter adds for FUNCTION -->
   <xsl:template match="m:math">
     <xsl:variable name="text" as="xs:string" select="f:letters(string-join(.//(m:mi | m:mn | m:mo)[. != 'ƒ']))"/>
     <xsl:if test="$text">

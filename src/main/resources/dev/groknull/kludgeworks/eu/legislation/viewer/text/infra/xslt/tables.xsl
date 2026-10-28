@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
 <!--
-  Tables (TBL, GR.TBL), rows, cells and groups of rows (BLK). Part of normalise.xsl.
+  Tables (TBL, GR.TBL), rows, cells and groups of rows (BLK). Part of formex-to-legal-text.xsl.
 -->
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
+    xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 

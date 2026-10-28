@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
 <!--
-  The text of a Formex document as a list of values, for checking that normalisation loses none.
-  Written independently of normalise.xsl, so the check doesn't test that code against itself.
+  The text of a Formex document as a list of values, for checking that conversion loses none.
+  Written independently of formex-to-legal-text.xsl, so the check doesn't test that code against itself.
 
-  Input: what the normaliser reads, i.e. a consolidation (CONS.ACT, CONS.OTH), an OJ act or its
+  Input: what the converter reads, i.e. a consolidation (CONS.ACT, CONS.OTH), an OJ act or its
   package (DOC). A package brings in every file it lists, and an INCL.ELEMENT TYPE="FORMEX.DOC"
   the file it includes.
 
   Each value is one run of text, whitespace normalised: the text between two element boundaries.
-  Page-break processing instructions don't break a run (the normaliser joins it); amendment
-  markers do (the normaliser marks the change there). A formula is one value: its letters and
+  Page-break processing instructions don't break a run (the converter joins it); amendment
+  markers do (the converter marks the change there). A formula is one value: its letters and
   digits, since operators and fences become MathML of their own.
 
   A value with kind="once" only needs to occur once in the output, however often the source
   repeats it.
 
-  What the normaliser leaves out on purpose is left out here too, each with its reason below
+  What the converter leaves out on purpose is left out here too, each with its reason below
   (the "dropped" rows of the Formex to legal-text mapping).
 -->
 <xsl:stylesheet version="3.0"
@@ -42,12 +42,12 @@
   <xsl:template match="PUBLICATION"/>
 
   <!-- the title of an annex: Formex may split one annex into fragments that repeat its title, and
-       the normaliser joins them, so the title counts once (kind="once") -->
+       the converter joins them, so the title counts once (kind="once") -->
   <xsl:template match="(ANNEX | CONS.ANNEX)/TITLE/TI/P[text()[normalize-space()]][not(*)]" priority="1">
     <v kind="once" file="{tokenize(base-uri(.), '/')[last()]}" path="{path()}">{normalize-space(.)}</v>
   </xsl:template>
 
-  <!-- a C-series document's number: the normaliser keeps it without its brackets -->
+  <!-- a C-series document's number: the converter keeps it without its brackets -->
   <xsl:template match="NO.DOC.C" priority="1">
     <v file="{tokenize(base-uri(.), '/')[last()]}" path="{path()}">{replace(normalize-space(.), '^\((.*)\)$', '$1')}</v>
   </xsl:template>

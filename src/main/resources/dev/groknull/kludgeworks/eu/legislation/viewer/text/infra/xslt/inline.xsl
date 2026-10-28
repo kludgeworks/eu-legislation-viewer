@@ -9,7 +9,7 @@
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
+    xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 
@@ -347,7 +347,7 @@
         else string(($note ! accumulator-before('f:footnotes-ended')) + 1)"/>
   </xsl:function>
 
-  <!-- an element the normaliser doesn't know: fails in strict mode, so new Formex shows up in tests -->
+  <!-- an element the converter doesn't know: fails in strict mode, so new Formex shows up in tests -->
   <xsl:function name="f:unknown" as="empty-sequence()">
     <xsl:param name="e" as="node()"/>
     <xsl:param name="detail" as="xs:string?"/>

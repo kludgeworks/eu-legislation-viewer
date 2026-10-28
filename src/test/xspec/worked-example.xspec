@@ -4,7 +4,7 @@
      the consolidated version of 22 March 2026 and the original OJ act. -->
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
-    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/normalise.xsl">
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/formex-to-legal-text.xsl">
 
   <!-- for the OJ act; the consolidation carries its own -->
   <x:param name="celex" select="'32015R1998'"/>

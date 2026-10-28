@@ -10,15 +10,14 @@ import javax.xml.transform.stream.StreamSource;
 import net.sf.saxon.s9api.Processor;
 import org.junit.jupiter.api.Test;
 
-/** How {@link Normaliser} reports what the stylesheet can't or won't normalise. */
-class NormaliserTest {
+/** How {@link FormexConverter} reports what the stylesheet can't or won't convert. */
+class FormexConverterTest {
 
-  static final Normaliser NORMALISER = new Normaliser(new Processor(false));
+  static final FormexConverter CONVERTER = new FormexConverter(new Processor(false));
 
   @Test
-  void normalisesAnOjActWithItsCelex() {
-    var legalText =
-        NORMALISER.normalise(formex(act("<ENACTING.TERMS/>")), Optional.of("32026R0449"));
+  void convertsAnOjActWithItsCelex() {
+    var legalText = CONVERTER.convert(formex(act("<ENACTING.TERMS/>")), Optional.of("32026R0449"));
     assertThat(legalText.toString()).contains("act=\"32026R0449\"");
   }
 
@@ -27,7 +26,7 @@ class NormaliserTest {
     // a 104 MB annex has over 100,000 &amp;; the JDK's parser stops at 100,000 since JDK 24
     var text = "a&amp;b ".repeat(100_500);
     var legalText =
-        NORMALISER.normalise(
+        CONVERTER.convert(
             formex(
                 act(
                     "<ENACTING.TERMS><ARTICLE><TI.ART>Article 1</TI.ART><ALINEA>"
@@ -40,7 +39,7 @@ class NormaliserTest {
   @Test
   void refusesADocumentThatIsNotALegalAct() {
     assertThatExceptionOfType(OutOfScopeException.class)
-        .isThrownBy(() -> NORMALISER.normalise(formex("<JUDGMENT/>"), Optional.empty()))
+        .isThrownBy(() -> CONVERTER.convert(formex("<JUDGMENT/>"), Optional.empty()))
         .withMessageContaining("JUDGMENT");
   }
 
@@ -49,7 +48,7 @@ class NormaliserTest {
     assertThatExceptionOfType(UnsupportedFormexException.class)
         .isThrownBy(
             () ->
-                NORMALISER.normalise(
+                CONVERTER.convert(
                     formex(act("<ENACTING.TERMS><NOT.FORMEX/></ENACTING.TERMS>")),
                     Optional.of("32026R0449")))
         .withMessageContaining("NOT.FORMEX");
@@ -57,9 +56,9 @@ class NormaliserTest {
 
   @Test
   void needsTheCelexOfAnOjAct() {
-    assertThatExceptionOfType(NormalisationException.class)
-        .isThrownBy(() -> NORMALISER.normalise(formex(act("<ENACTING.TERMS/>")), Optional.empty()))
-        .isExactlyInstanceOf(NormalisationException.class)
+    assertThatExceptionOfType(ConversionException.class)
+        .isThrownBy(() -> CONVERTER.convert(formex(act("<ENACTING.TERMS/>")), Optional.empty()))
+        .isExactlyInstanceOf(ConversionException.class)
         .withMessageContaining("celex");
   }
 

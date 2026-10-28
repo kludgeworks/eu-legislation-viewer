@@ -13,12 +13,12 @@ import org.junit.jupiter.params.provider.MethodSource;
  */
 class RefusedDocumentsTest {
 
-  static final Normaliser NORMALISER = new Normaliser(new Processor(false));
+  static final FormexConverter CONVERTER = new FormexConverter(new Processor(false));
 
   @ParameterizedTest(name = "{0}")
   @MethodSource("dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.Fixtures#refused")
   void isRefusedAsOutOfScope(Fixture fixture) {
     assertThatExceptionOfType(OutOfScopeException.class)
-        .isThrownBy(() -> NORMALISER.normalise(fixture.source(), fixture.celex()));
+        .isThrownBy(() -> CONVERTER.convert(fixture.source(), fixture.celex()));
   }
 }
