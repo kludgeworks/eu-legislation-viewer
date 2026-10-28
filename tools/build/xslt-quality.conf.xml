@@ -9,6 +9,7 @@
   <rule id="xslt-quality_ns-global-statements-need-prefix">The global parameters celex and converter are the stylesheet's public interface, set by name from Java.</rule>
   <rule id="xslt-quality_documentation-stylesheet">Stylesheets are documented in comments, not Oxygen's xd:doc.</rule>
   <rule id="xslqual-UnusedFunction">Each module is checked on its own, so a function another module calls looks unused.</rule>
+  <rule id="xslqual-UnusedNamedTemplate">The same for named templates (f:heading is defined in units.xsl, called from tables.xsl).</rule>
   <rule id="xslqual-RedundantNamespaceDeclarations">The rule doesn't read prefixes used in XPath (map:, fn:, lt:), so it reports used declarations.</rule>
   <rule id="xslqual-DontUseDoubleSlashOperator">// is used where a construct can occur at any depth (notes, included documents, quotations); keys index the hot lookups.</rule>
   <rule id="xslt-quality_avoid-for-each">for-each is used over computed sequences (annex groups, lines, markers), where there is no node to match.</rule>

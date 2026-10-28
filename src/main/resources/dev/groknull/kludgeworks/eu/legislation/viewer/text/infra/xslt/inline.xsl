@@ -111,10 +111,13 @@
 
   <!-- ============================================================ elements -->
 
+  <!-- typefaces, HT/@TYPE → legal-text's emphasis kinds (inline emphasis, a blockContainer) -->
+  <xsl:variable name="f:emphasis-kinds" as="map(xs:string, xs:string)" select="map{
+      'BOLD': 'b', 'ITALIC': 'i', 'UNDERLINE': 'u', 'SUP': 'sup', 'SUB': 'sub',
+      'UC': 'uc', 'SC': 'sc', 'EXPANDED': 'expanded', 'STROKE': 'strike', 'BOX': 'box'}"/>
+
   <xsl:template match="HT" mode="inline">
-    <xsl:variable name="kind" as="xs:string?" select="map{
-        'BOLD': 'b', 'ITALIC': 'i', 'UNDERLINE': 'u', 'SUP': 'sup', 'SUB': 'sub',
-        'UC': 'uc', 'SC': 'sc', 'EXPANDED': 'expanded', 'STROKE': 'strike', 'BOX': 'box'}(string(@TYPE))"/>
+    <xsl:variable name="kind" as="xs:string?" select="$f:emphasis-kinds(string(@TYPE))"/>
     <xsl:choose>
       <xsl:when test="@TYPE = 'NORMAL'">
         <xsl:call-template name="f:inlines">

@@ -30,7 +30,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
-    xmlns:lt="https://kludgeworks.groknull.dev/ns/legal-text/1"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 
@@ -79,81 +79,72 @@
     <xsl:sequence select="exists($n[self::HT or self::TXT or self::LV or self::FT][node()[f:is-block(.)]])"/>
   </xsl:function>
 
-  <!-- … become those blocks: the emphasis and the language are not kept, a block has neither -->
-  <xsl:template match="HT | TXT | LV | FT" mode="block">
+  <!-- … become a blockContainer, as AKN's, set in the typeface (a box, italics) or in the language -->
+  <xsl:template match="HT[map:contains($f:emphasis-kinds, string(@TYPE))] | LV" mode="block">
+    <blockContainer>
+      <xsl:if test="self::HT">
+        <xsl:attribute name="emphasis" select="$f:emphasis-kinds(string(@TYPE))"/>
+      </xsl:if>
+      <xsl:if test="self::LV">
+        <xsl:attribute name="lang" select="lower-case(@LG)"/>
+      </xsl:if>
+      <xsl:call-template name="f:blocks">
+        <xsl:with-param name="nodes" as="node()*" select="if (self::LV and TXT) then TXT/node() else node()"/>
+      </xsl:call-template>
+      <xsl:apply-templates select="self::LV[TXT]/(node() except TXT)" mode="unexpected"/>
+    </blockContainer>
+  </xsl:template>
+
+  <!-- TXT, FT and plain HT around blocks carry nothing to keep: the blocks -->
+  <xsl:template match="HT[@TYPE = 'NORMAL'] | TXT | FT" mode="block">
     <xsl:call-template name="f:blocks">
       <xsl:with-param name="nodes" as="node()*" select="node()"/>
     </xsl:call-template>
   </xsl:template>
 
-  <!-- ============================================================ flattening -->
+  <!-- ============================================================ headings -->
 
-  <!-- content for where only inline content fits (a heading line), which holds blocks: a title line
-       that is a numbered paragraph with a second paragraph, a definition list, a list. Each block
-       goes on a line of its own; a numbered paragraph's number is kept, followed by a space. -->
-  <xsl:template name="f:flat">
+  <!-- whether content holds blocks (a table, a list, a second paragraph): a heading made of it
+       needs <content>. An image without caption or transcription (a signature) and a displayed
+       formula are inline there, as img and math. -->
+  <xsl:function name="f:has-blocks" as="xs:boolean">
     <xsl:param name="nodes" as="node()*"/>
-    <xsl:variable name="out" as="element()*">
-      <xsl:call-template name="f:flat-lines">
-        <xsl:with-param name="nodes" as="node()*" select="$nodes"/>
-      </xsl:call-template>
-    </xsl:variable>
-    <!-- no line break at the start or end, nor two in a row -->
-    <xsl:sequence select="for $i in 1 to count($out) return
-        $out[$i][not(self::lt:eol and ($i = 1 or $i = count($out) or $out[$i + 1][self::lt:eol]))]"/>
-  </xsl:template>
-
-  <!-- what holds lines without being a block itself: a title and its lines, a table's rows and cells -->
-  <xsl:function name="f:holds-lines" as="xs:boolean">
-    <xsl:param name="n" as="node()"/>
-    <xsl:sequence select="exists($n[self::TITLE or self::TI or self::STI or self::CORPUS or self::ROW or self::CELL
-                                    or self::BLK or self::TI.BLK or self::STI.BLK or self::CAPTION or self::IMG.CNT or self::DEFINITION])"/>
+    <xsl:sequence select="exists($nodes[f:is-block(.)]
+        [not(self::INCL.ELEMENT[@TYPE = 'TIFF'][not(CAPTION | IMG.CNT)] or self::FORMULA.S)])"/>
   </xsl:function>
 
-  <xsl:template name="f:flat-lines">
+  <!-- what a heading line says: an NP's text and what follows it (its number is the num), else all -->
+  <xsl:function name="f:line-content" as="node()*">
+    <xsl:param name="line" as="element()"/>
+    <xsl:sequence select="if ($line/self::NP) then ($line/TXT/node(), $line/(node() except (NO.P | TXT))) else $line/node()"/>
+  </xsl:function>
+
+  <!-- a heading of no fixed shape (STI.ART, TI.BLK, a CN group's title): its lines (P, NP) as
+       f:lines takes them, else inline content, or its blocks in <content> where it holds any -->
+  <xsl:template name="f:heading">
     <xsl:param name="nodes" as="node()*"/>
-    <xsl:for-each-group select="$nodes" group-adjacent="f:is-block(.) or f:holds-lines(.)">
-      <xsl:choose>
-        <xsl:when test="current-grouping-key()">
-          <xsl:for-each select="current-group()">
-            <eol/>
-            <xsl:choose>
-              <!-- a displayed formula is inline maths here; an image an inline image, its caption and
-                   transcription the lines after it -->
-              <xsl:when test="self::FORMULA.S">
-                <xsl:call-template name="f:inlines">
-                  <xsl:with-param name="nodes" as="node()*" select="."/>
-                </xsl:call-template>
-              </xsl:when>
-              <xsl:when test="self::INCL.ELEMENT[@TYPE = 'TIFF']">
-                <xsl:apply-templates select="." mode="inline"/>
-                <xsl:call-template name="f:flat-lines">
-                  <xsl:with-param name="nodes" as="node()*" select="CAPTION, IMG.CNT"/>
-                </xsl:call-template>
-                <xsl:apply-templates select="node() except (CAPTION | IMG.CNT)" mode="unexpected"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:if test="self::NP or self::DLIST.ITEM">
-                  <xsl:call-template name="f:inlines">
-                    <xsl:with-param name="nodes" as="node()*" select="(NO.P | PREFIX | TERM)/node()"/>
-                  </xsl:call-template>
-                  <t v=" "/>
-                </xsl:if>
-                <xsl:call-template name="f:flat-lines">
-                  <xsl:with-param name="nodes" as="node()*" select="node() except (self::NP/NO.P | self::DLIST.ITEM/(PREFIX | TERM))"/>
-                </xsl:call-template>
-              </xsl:otherwise>
-            </xsl:choose>
-            <eol/>
-          </xsl:for-each>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:call-template name="f:inlines">
-            <xsl:with-param name="nodes" as="node()*" select="current-group()"/>
+    <xsl:variable name="elements" as="element()*" select="$nodes[self::*]"/>
+    <xsl:choose>
+      <xsl:when test="exists($elements) and empty($elements[not(self::P or self::NP)])
+                      and empty($nodes[self::text()[normalize-space()]])">
+        <xsl:call-template name="f:lines">
+          <xsl:with-param name="lines" as="element()*" select="$elements"/>
+          <xsl:with-param name="numbers" as="xs:boolean" select="true()"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="f:has-blocks($nodes)">
+        <content>
+          <xsl:call-template name="f:blocks">
+            <xsl:with-param name="nodes" as="node()*" select="$nodes"/>
           </xsl:call-template>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:for-each-group>
+        </content>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="f:inlines">
+          <xsl:with-param name="nodes" as="node()*" select="$nodes"/>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="f:blocks">
@@ -185,25 +176,40 @@
     </xsl:for-each-group>
   </xsl:template>
 
-  <!-- inline content of several lines (a heading of two P), joined by <eol/> -->
+  <!-- the lines of a heading (a TITLE's TI or STI, a heading of P): inline content joined by <eol/>;
+       where a line holds blocks (a numbered paragraph with a second paragraph, a table, a list, an
+       image with its caption), the lines as blocks in <content> -->
   <xsl:template name="f:lines">
     <xsl:param name="lines" as="element()*"/>
     <!-- keep an NP line's number; f:title doesn't, having made it the num -->
     <xsl:param name="numbers" as="xs:boolean" select="false()"/>
-    <xsl:for-each select="$lines">
-      <xsl:if test="position() gt 1">
-        <eol/>
-      </xsl:if>
-      <xsl:if test="$numbers and self::NP">
-        <xsl:call-template name="f:inlines">
-          <xsl:with-param name="nodes" as="node()*" select="NO.P/node()"/>
-        </xsl:call-template>
-        <t v=" "/>
-      </xsl:if>
-      <xsl:call-template name="f:flat">
-        <xsl:with-param name="nodes" as="node()*" select="if (self::NP) then (TXT/node(), node() except (NO.P | TXT)) else node()"/>
-      </xsl:call-template>
-    </xsl:for-each>
+    <xsl:choose>
+      <xsl:when test="some $line in $lines satisfies f:has-blocks(f:line-content($line))">
+        <content>
+          <xsl:for-each select="$lines">
+            <xsl:call-template name="f:blocks">
+              <xsl:with-param name="nodes" as="node()*" select="if (self::NP and not($numbers)) then f:line-content(.) else ."/>
+            </xsl:call-template>
+          </xsl:for-each>
+        </content>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:for-each select="$lines">
+          <xsl:if test="position() gt 1">
+            <eol/>
+          </xsl:if>
+          <xsl:if test="$numbers and self::NP">
+            <xsl:call-template name="f:inlines">
+              <xsl:with-param name="nodes" as="node()*" select="NO.P/node()"/>
+            </xsl:call-template>
+            <t v=" "/>
+          </xsl:if>
+          <xsl:call-template name="f:inlines">
+            <xsl:with-param name="nodes" as="node()*" select="f:line-content(.)"/>
+          </xsl:call-template>
+        </xsl:for-each>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- ============================================================ other blocks -->

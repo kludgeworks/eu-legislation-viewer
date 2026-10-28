@@ -83,7 +83,7 @@
             </xsl:call-template>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:call-template name="f:flat">
+            <xsl:call-template name="f:heading">
               <xsl:with-param name="nodes" as="node()*" select="$heading/node()"/>
             </xsl:call-template>
           </xsl:otherwise>

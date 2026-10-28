@@ -77,24 +77,27 @@
     <x:context mode="block" xmlns="">
       <P><HT TYPE="BOX"><P>NB</P><LIST TYPE="DASH"><ITEM><P>confirm</P></ITEM></LIST></HT></P>
     </x:context>
-    <x:expect label="becomes those blocks" test="$x:result[1]/self::*:p/*:t/@v = 'NB' and exists($x:result[2]/self::*:list)"/>
+    <x:expect label="is a box holding those blocks" test="
+        $x:result/self::*:blockContainer/@emphasis = 'box'
+        and $x:result/*:p/*:t/@v = 'NB' and exists($x:result/*:list)"/>
   </x:scenario>
 
   <x:scenario label="A level inside a box">
     <x:context mode="block" xmlns="">
       <GR.SEQ><TITLE><TI><P>1. Producers</P></TI></TITLE><P><HT TYPE="BOX"><GR.SEQ LEVEL="2"><TITLE><TI><P>Producer</P></TI></TITLE><P>Arkema</P></GR.SEQ></HT></P></GR.SEQ>
     </x:context>
-    <x:expect label="is a level" test="$x:result//*:unit[@kind = 'level'][*:heading/*:t/@v = 'Producer']/*:p/*:t/@v = 'Arkema'"/>
+    <x:expect label="is a level in a box" test="
+        $x:result//*:blockContainer[@emphasis = 'box']/*:unit[@kind = 'level'][*:heading/*:t/@v = 'Producer']/*:p/*:t/@v = 'Arkema'"/>
   </x:scenario>
 
   <x:scenario label="A heading whose numbered paragraph holds a second paragraph">
     <x:context mode="block" xmlns="">
       <GR.SEQ><TITLE><TI><NP><NO.P>1.</NO.P><TXT>Redfish</TXT><P>(<HT TYPE="ITALIC">Sebastes</HT> spp.)</P></NP></TI></TITLE><P>text</P></GR.SEQ>
     </x:context>
-    <x:expect label="puts it on a line of its own" test="
+    <x:expect label="keeps both paragraphs in the heading's content" test="
         $x:result/*:num/*:t/@v = '1.'
-        and $x:result/*:heading/*:t[1]/@v = 'Redfish' and exists($x:result/*:heading/*:eol)
-        and $x:result/*:heading/*:emphasis/*:t/@v = 'Sebastes'"/>
+        and $x:result/*:heading/*:content/*:p[1]/*:t/@v = 'Redfish'
+        and $x:result/*:heading/*:content/*:p[2]/*:emphasis/*:t/@v = 'Sebastes'"/>
   </x:scenario>
 
   <x:scenario label="A row group's title of several lines">
@@ -109,6 +112,30 @@
       <TBL COLS="1"><CORPUS><ROW TYPE="HEADER"><CELL COL="1" TYPE="HEADER"><TXT.COL><P>Product</P></TXT.COL><TXT.ROW><P>Country</P></TXT.ROW></CELL></ROW></CORPUS></TBL>
     </x:context>
     <x:expect label="holds the column's heading, then the row's" test="$x:result//*:td/*:p/*:t/@v = ('Product', 'Country')"/>
+  </x:scenario>
+
+  <x:scenario label="A passage in another language">
+    <x:context mode="block" xmlns=""><P><LV LG="FR"><P>Fait à Bruxelles</P><P>le 5 novembre</P></LV></P></x:context>
+    <x:expect label="is a container in that language" test="$x:result/self::*:blockContainer/@lang = 'fr' and count($x:result/*:p) = 2"/>
+  </x:scenario>
+
+  <x:scenario label="A signature line that is an image">
+    <x:context xmlns=""><ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/><FINAL><SIGNATURE><SIGNATORY><P>For the Committee</P><P><INCL.ELEMENT TYPE="TIFF" FILEREF="sig.tif" CONTENT="SIGNATURE"/></P></SIGNATORY></SIGNATURE></FINAL></ACT></x:context>
+    <x:expect label="keeps the image inline" test="exists(($x:result//*:person)[1]/*:img[@src = 'sig.tif'])"/>
+  </x:scenario>
+
+  <x:scenario label="A signatory's line in each language">
+    <x:context xmlns=""><ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/><FINAL><SIGNATURE><SIGNATORY><P><HT TYPE="ITALIC"><P><LV LG="EN">For the European Community</LV></P><P><LV LG="FR">Pour la Communauté européenne</LV></P></HT></P><P>J. Smith</P></SIGNATORY></SIGNATURE></FINAL></ACT></x:context>
+    <x:expect label="keeps each language's line, in italics, in the organization's content" test="
+        ($x:result//*:organization)[1]/*:content/*:blockContainer[@emphasis = 'i']//@lang = ('en', 'fr')"/>
+  </x:scenario>
+
+  <x:scenario label="A heading with a table">
+    <x:context mode="block" xmlns="">
+      <GR.SEQ><TITLE><TI><P>Rates<TBL COLS="1"><CORPUS><ROW><CELL COL="1">5 %</CELL></ROW></CORPUS></TBL></P></TI></TITLE><P>text</P></GR.SEQ>
+    </x:context>
+    <x:expect label="keeps the table in the heading's content" test="
+        $x:result/*:heading/*:content/*:p/*:t/@v = 'Rates' and exists($x:result/*:heading/*:content/*:table)"/>
   </x:scenario>
 
   <x:scenario label="A marginal heading">
@@ -187,8 +214,9 @@
         <CONTENTS.CORR/>
       </CORR>
     </x:context>
-    <x:expect label="has the list as a line of its items" test="
-        $x:result//*:longTitle/*:p[2]/*:t/@v = ('Regulation (EU) No 1', 'Regulation (EU) No 2') and exists($x:result//*:longTitle/*:p[2]/*:eol)"/>
+    <x:expect label="keeps the list" test="
+        $x:result//*:longTitle/*:p/*:t/@v = 'Corrigendum to:'
+        and $x:result//*:longTitle/*:list/*:unit/*:p/*:t/@v = ('Regulation (EU) No 1', 'Regulation (EU) No 2')"/>
   </x:scenario>
 
   <x:scenario label="A corrigendum whose text is in an included file">

@@ -171,7 +171,7 @@
       </xsl:call-template>
       <xsl:if test="TI.GR.CN.UNIT[not(TITLE)][normalize-space()]">
         <heading>
-          <xsl:call-template name="f:flat">
+          <xsl:call-template name="f:heading">
             <xsl:with-param name="nodes" as="node()*" select="TI.GR.CN.UNIT/node()"/>
           </xsl:call-template>
         </heading>
@@ -206,7 +206,7 @@
               </xsl:call-template>
             </num>
             <heading>
-              <xsl:call-template name="f:flat">
+              <xsl:call-template name="f:heading">
                 <xsl:with-param name="nodes" as="node()*" select="NP/TXT/node(), NP/(node() except (NO.P | TXT)), node() except NP"/>
               </xsl:call-template>
             </heading>
@@ -214,7 +214,7 @@
           <xsl:otherwise>
             <!-- its lines (P), or inline content -->
             <heading>
-              <xsl:call-template name="f:flat">
+              <xsl:call-template name="f:heading">
                 <xsl:with-param name="nodes" as="node()*" select="node()"/>
               </xsl:call-template>
             </heading>
@@ -223,7 +223,7 @@
       </xsl:for-each>
       <xsl:for-each select="STI.BLK">
         <subheading>
-          <xsl:call-template name="f:flat">
+          <xsl:call-template name="f:heading">
             <xsl:with-param name="nodes" as="node()*" select="node()"/>
           </xsl:call-template>
         </subheading>

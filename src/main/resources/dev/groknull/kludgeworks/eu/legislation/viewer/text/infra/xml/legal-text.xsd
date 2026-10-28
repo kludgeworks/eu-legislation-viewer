@@ -384,13 +384,13 @@
   <xs:complexType name="Signatory">
     <xs:annotation><xs:documentation>A signatory, its lines split by position.</xs:documentation></xs:annotation>
     <xs:sequence>
-      <xs:element name="organization" type="InlineContent" minOccurs="0">
+      <xs:element name="organization" type="Lines" minOccurs="0">
         <xs:annotation><xs:documentation>The first line: "For the Commission".</xs:documentation></xs:annotation>
       </xs:element>
-      <xs:element name="role" type="InlineContent" minOccurs="0">
+      <xs:element name="role" type="Lines" minOccurs="0">
         <xs:annotation><xs:documentation>The lines in between: "The President".</xs:documentation></xs:annotation>
       </xs:element>
-      <xs:element name="person" type="InlineContent" minOccurs="0">
+      <xs:element name="person" type="Lines" minOccurs="0">
         <xs:annotation><xs:documentation>The last line: the name.</xs:documentation></xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -469,10 +469,10 @@
           <xs:element name="num" type="InlineContent" minOccurs="0">
             <xs:annotation><xs:documentation>The label as printed: "Article 3", "(a)", "1.2.2.6", "ANNEX II".</xs:documentation></xs:annotation>
           </xs:element>
-          <xs:element name="heading" type="InlineContent" minOccurs="0">
+          <xs:element name="heading" type="Lines" minOccurs="0">
             <xs:annotation><xs:documentation>The heading; several lines are joined by eol.</xs:documentation></xs:annotation>
           </xs:element>
-          <xs:element name="subheading" type="InlineContent" minOccurs="0">
+          <xs:element name="subheading" type="Lines" minOccurs="0">
             <xs:annotation><xs:documentation>A second heading under the first.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:group ref="blocks"/>
@@ -642,10 +642,48 @@
         <xs:element name="math" type="MathBlock"/>
         <xs:element name="deleted" type="DeletedBlock"/>
         <xs:element name="old" type="CorrectionText"/>
+        <xs:element name="blockContainer" type="BlockContainer"/>
         <xs:element name="new" type="CorrectionText"/>
       </xs:choice>
     </xs:sequence>
   </xs:group>
+
+  <xs:complexType name="BlockContainer">
+    <xs:annotation>
+      <xs:documentation>
+        Blocks set together in a typeface or a box, or in another language (Formex HT or LV around whole
+        paragraphs, lists or levels: a boxed notice, a level inside a box), as AKN's blockContainer. Inline emphasis
+        stays emphasis; this is for what wraps blocks.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:group ref="blocks"/>
+        <xs:attribute name="emphasis" type="EmphasisKind">
+          <xs:annotation><xs:documentation>The typeface or the box (Formex HT/@TYPE), as for inline emphasis.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="lang" type="xs:language">
+          <xs:annotation><xs:documentation>The language of the blocks, when not the document's (Formex LV/@LG).</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Lines">
+    <xs:annotation>
+      <xs:documentation>
+        A heading, a subheading or a signatory's line: inline content, several lines joined by eol. Where the
+        source's lines hold blocks (a numbered paragraph with a second paragraph, a list, a table, an image with
+        its caption, a signature in each language: about 50 documents in 74,000), the blocks instead, in content.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="inline"/>
+      <xs:element name="content" type="Caption">
+        <xs:annotation><xs:documentation>The blocks, as the source has them.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
 
   <xs:complexType name="Paragraph">
     <xs:annotation><xs:documentation>A paragraph of running text.</xs:documentation></xs:annotation>
@@ -762,10 +800,10 @@
       <xs:element name="num" type="InlineContent" minOccurs="0">
         <xs:annotation><xs:documentation>The heading row's number, e.g. "1.1.".</xs:documentation></xs:annotation>
       </xs:element>
-      <xs:element name="heading" type="InlineContent" minOccurs="0">
+      <xs:element name="heading" type="Lines" minOccurs="0">
         <xs:annotation><xs:documentation>The heading row's text.</xs:documentation></xs:annotation>
       </xs:element>
-      <xs:element name="subheading" type="InlineContent" minOccurs="0">
+      <xs:element name="subheading" type="Lines" minOccurs="0">
         <xs:annotation><xs:documentation>The heading row's subtitle (Formex STI.BLK).</xs:documentation></xs:annotation>
       </xs:element>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -833,7 +871,7 @@
           <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The amending acts that put this annotation in its current form.</xs:documentation></xs:annotation>
           </xs:element>
-          <xs:element name="heading" type="InlineContent" minOccurs="0">
+          <xs:element name="heading" type="Lines" minOccurs="0">
             <xs:annotation><xs:documentation>Its heading, e.g. "NOTES:".</xs:documentation></xs:annotation>
           </xs:element>
           <xs:group ref="blocks"/>

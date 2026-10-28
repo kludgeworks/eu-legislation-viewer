@@ -305,13 +305,17 @@
     <preface>
       <longTitle>
         <xsl:for-each select="TI/(P | LIST | NP)">
+          <xsl:choose>
+            <!-- a line that is a list or a numbered paragraph, or holds a table (a corrigendum's
+                 title): its blocks -->
+            <xsl:when test="self::LIST or self::NP or f:has-blocks(node())">
+              <xsl:call-template name="f:blocks">
+                <xsl:with-param name="nodes" as="node()*" select="."/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
           <p>
             <xsl:choose>
-              <xsl:when test="self::LIST or self::NP">
-                <xsl:call-template name="f:flat">
-                  <xsl:with-param name="nodes" as="node()*" select="."/>
-                </xsl:call-template>
-              </xsl:when>
               <xsl:when test="position() = 1 and node()[1][self::HT]">
                 <docType>
                   <xsl:call-template name="f:inlines">
@@ -350,19 +354,20 @@
               </xsl:when>
               <xsl:when test="position() = 3">
                 <docPurpose>
-                  <xsl:call-template name="f:flat">
+                  <xsl:call-template name="f:inlines">
                     <xsl:with-param name="nodes" as="node()*" select="node()"/>
                   </xsl:call-template>
                 </docPurpose>
               </xsl:when>
               <xsl:otherwise>
-                <!-- a list in the title (2015/C 101/…: the acts it amends) is flattened into lines -->
-                <xsl:call-template name="f:flat">
+                <xsl:call-template name="f:inlines">
                   <xsl:with-param name="nodes" as="node()*" select="node()"/>
                 </xsl:call-template>
               </xsl:otherwise>
             </xsl:choose>
           </p>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:for-each>
         <!-- a subtitle ("on products excluded from the scope of the Agreement …") -->
         <xsl:for-each select="STI/P">
