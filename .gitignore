@@ -1,48 +1,12 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# SPDX-License-Identifier: MIT
+/bazel-*
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+# IDEs
+.idea/
 *.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-!/viewer/tools/build/
-!/viewer/tools/build/**/build/
-
-### VS Code ###
 .vscode/
 
-### Gradle ###
-.gradle
-/build
-bin
-
-### Other ###
-*.log
-/legislation
+# local tool configuration and output
 mise.local.toml
-
-### Kache ###
-cache/
+.playwright-mcp/
+.DS_Store
