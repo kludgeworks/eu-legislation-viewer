@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<GENERAL noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-01.00-20040501.xd">
-    <BIB.INSTANCE>
-        <PROD.ID>20040501001</PROD.ID>
-        <FIN.ID>123456</FIN.ID>
-        <AUTHOR>COM</AUTHOR>
-    </BIB.INSTANCE>
-    <CONTENTS/>
-</GENERAL>

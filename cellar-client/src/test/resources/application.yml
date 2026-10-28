@@ -1,3 +1,0 @@
-logging:
-  level:
-    com.kludgeworks.eu.legislation.cellarclient.CellarApiClient: DEBUG

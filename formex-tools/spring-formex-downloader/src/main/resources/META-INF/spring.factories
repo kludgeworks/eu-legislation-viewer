@@ -1,3 +1,0 @@
-# Spring Boot Environment Post Processors (runs very early, before property resolution)
-org.springframework.boot.EnvironmentPostProcessor=\
- com.kludgeworks.eu.legislation.formex.downloader.config.DirectoriesEnvironmentPostProcessor

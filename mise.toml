@@ -1,9 +1,0 @@
-[tools]
-gradle = "latest"
-java = "temurin-21"
-ktlint = "latest"
-shellcheck = "latest"
-
-[tasks.complete-legislation]
-alias = "l"
-run = "java -jar shell/build/libs/shell-0.0.1-SNAPSHOT.jar complete-legislation --celex 32015R1998 --json"
