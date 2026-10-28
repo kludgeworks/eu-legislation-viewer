@@ -7,7 +7,14 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.LegalText;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.JAXBException;
+import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
+import javax.xml.XMLConstants;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import org.xml.sax.SAXException;
 import java.net.URL;
 import java.util.Objects;
 import net.sf.saxon.s9api.Processor;
@@ -36,6 +43,7 @@ class NormaliserFixturesTest {
   static final Normaliser NORMALISER = new Normaliser(SAXON);
   static final TextConservation TEXT = new TextConservation(SAXON);
   static final LegalTextRules RULES = new LegalTextRules(SAXON);
+  static final Schema MATHML = mathml();
   static final URL SCHEMA = resource("/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml/legal-text.xsd");
   static final JAXBContext JAXB = jaxb();
   @Parameter Fixture fixture;
@@ -66,9 +74,33 @@ class NormaliserFixturesTest {
     assertThat(RULES.violations(legalText)).as("%s: breaks legal-text.sch", fixture).isEmpty();
   }
 
+  /** Formulas are MathML 3, valid against W3C's schema (legal-text.xsd takes them as they are). */
+  @Test
+  void writesValidMathML() throws SaxonApiException {
+    var xpath = SAXON.newXPathCompiler();
+    xpath.declareNamespace("m", "http://www.w3.org/1998/Math/MathML");
+    var problems = new ArrayList<String>();
+    for (var formula : xpath.evaluate("//m:math", legalText)) {
+      try {
+        MATHML.newValidator().validate(new StreamSource(new StringReader(formula.toString())));
+      } catch (SAXException | IOException e) {
+        problems.add(e.getMessage() + " in " + formula);
+      }
+    }
+    assertThat(problems).as("%s: formulas that aren't valid MathML 3", fixture).isEmpty();
+  }
+
   @Test
   void keepsAllSourceText() {
     assertThat(TEXT.missing(fixture.source(), legalText)).as("%s: source text missing from the output", fixture).isEmpty();
+  }
+
+  private static Schema mathml() {
+    try {
+      return SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema(resource("/mathml3/mathml3.xsd"));
+    } catch (SAXException e) {
+      throw new IllegalStateException(e);
+    }
   }
 
   private static JAXBContext jaxb() {

@@ -1,0 +1,8 @@
+W3C's XML Schema for MathML 3, unchanged:
+https://www.w3.org/Math/XMLSchema/mathml3/mathml3.xsd and the four files it includes
+(mathml3-common.xsd, mathml3-content.xsd, mathml3-presentation.xsd, mathml3-strict-content.xsd).
+
+Copyright © World Wide Web Consortium. Used under the W3C Software and Document License:
+https://www.w3.org/copyright/software-license-2023/
+
+The tests validate the MathML that math.xsl writes against it.
