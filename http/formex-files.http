@@ -1,0 +1,73 @@
+### The Formex files of one version, from the RDF
+# Work (CELEX) → expression (language) → manifestation (fmx4) → items.
+# Two layouts:
+#  - one item per file (older OJ acts): each item is a file (XML or image/tiff); its name comes from
+#    tdm:stream_name or, where the technical metadata is missing, from the owl:sameAs suffix after ".fmx4.".
+#    tdm:stream_fixity gives a SHA-1 of the file where the technical metadata exists.
+#  - a single zip item (OJ acts from 2023, consolidations from 2023): DOC_1 is application/zip and the RDF
+#    describes nothing inside it; list its entries with the content-stream list below.
+# Try 32015R1998 or 32009D0959 (one item per file) and 32023R1669 or 02015R1998-20260322 (zip).
+@CELEX_NUMBER = 32009D0959
+POST https://publications.europa.eu/webapi/rdf/sparql
+Accept: application/sparql-results+json
+Content-Type: application/x-www-form-urlencoded
+
+query = PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
+PREFIX tdm: <http://publications.europa.eu/ontology/tdm#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?item ?mime (SAMPLE(COALESCE(?streamName, STRAFTER(STR(?same), ".fmx4."))) AS ?file)
+       (SAMPLE(?sha1) AS ?sha1) ?modified
+WHERE {
+  ?work cdm:resource_legal_id_celex "{{CELEX_NUMBER}}"^^xsd:string .
+  ?expr cdm:expression_belongs_to_work ?work ;
+        cdm:expression_uses_language <http://publications.europa.eu/resource/authority/language/ENG> .
+  ?man cdm:manifestation_manifests_expression ?expr ;
+       cdm:manifestation_type "fmx4"^^xsd:string ;
+       cmr:lastModificationDate ?modified .
+  ?item cdm:item_belongs_to_manifestation ?man ;
+        cmr:manifestationMimeType ?mime .
+  OPTIONAL { ?item tdm:stream_name ?streamName }
+  OPTIONAL { ?item owl:sameAs ?same }
+  OPTIONAL { ?item tdm:stream_fixity/tdm:fixity_message_digest ?sha1 }
+}
+GROUP BY ?item ?mime ?modified
+ORDER BY ?item
+
+> {%
+    for (const b of response.body.results.bindings) {
+        console.log(b.item.value + "  " + b.mime.value + "  " + (b.file ? b.file.value : ""));
+    }
+%}
+
+### One item per file: the package descriptor of 2009/959
+GET http://publications.europa.eu/resource/cellar/8f145680-d086-4e3d-b6a0-a8b83cdc04b9.0006.01/DOC_1
+
+### One item per file: an image (image/tiff); its SHA-1 is in the RDF (0e2f1dcaa096a07478cfb6a82a4b74d4e832f621)
+GET http://publications.europa.eu/resource/cellar/8f145680-d086-4e3d-b6a0-a8b83cdc04b9.0006.01/DOC_4
+
+### One item per file: conditional GET; Cellar answers 304 while the ETag still matches
+GET http://publications.europa.eu/resource/cellar/c38f361d-8a99-11e5-b8b7-01aa75ed71a1.0006.02/DOC_2
+If-None-Match: "{{ETAG}}"
+
+### Zip item: the names of its entries (content-stream list, an XHTML page of links)
+# Cellar end-user manual, "Retrieve content stream collections" (list format).
+GET http://publications.europa.eu/resource/celex/32023R1669
+Accept: application/list;mtype=fmx4
+Accept-Language: eng
+
+### Zip item: one entry, without downloading the zip
+# Cellar end-user manual, "Retrieve a compressed content stream's entry": {manifestation}/DOC_1/{entry-name},
+# 200 or 404. The Content-Type is mislabelled application/zip: go by the entry's extension. No Range support.
+GET http://publications.europa.eu/resource/cellar/80cad8d3-47c9-11ee-bbdc-01aa75ed71a1.0006.02/DOC_1/L_2023214EN.01000901.doc.xml
+
+### Zip item: an image entry (a 23 MB TIFF at 400 dpi)
+GET http://publications.europa.eu/resource/cellar/80cad8d3-47c9-11ee-bbdc-01aa75ed71a1.0006.02/DOC_1/L_2023214EN.01002102.tif
+
+### Zip item: a consolidation's package descriptor and its CONS.ACT
+GET http://publications.europa.eu/resource/cellar/4e232fe7-5ebb-11f1-aa6d-01aa75ed71a1.0004.01/DOC_1/CL2015R1998EN0230010.0001.doc.xml
+
+###
+GET http://publications.europa.eu/resource/cellar/4e232fe7-5ebb-11f1-aa6d-01aa75ed71a1.0004.01/DOC_1/CL2015R1998EN0230010.0001.xml
