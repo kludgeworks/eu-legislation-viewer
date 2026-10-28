@@ -26,6 +26,11 @@
   <xsl:include href="eid.xsl"/>
   <xsl:include href="inline.xsl"/>
   <xsl:include href="units.xsl"/>
+  <xsl:include href="articles.xsl"/>
+  <xsl:include href="lists.xsl"/>
+  <xsl:include href="annexes.xsl"/>
+  <xsl:include href="tables.xsl"/>
+  <xsl:include href="documents.xsl"/>
   <xsl:include href="math.xsl"/>
 
   <xsl:output method="xml" encoding="UTF-8" indent="no"/>
