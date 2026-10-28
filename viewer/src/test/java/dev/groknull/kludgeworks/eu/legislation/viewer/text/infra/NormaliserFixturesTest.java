@@ -13,9 +13,7 @@ import java.util.Objects;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.s9api.Serializer;
-import net.sf.saxon.s9api.XdmItem;
 import net.sf.saxon.s9api.XdmNode;
-import net.sf.saxon.s9api.XPathCompiler;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.BeforeParameterizedClassInvocation;
@@ -37,14 +35,9 @@ class NormaliserFixturesTest {
   static final Processor SAXON = new Processor(false);
   static final Normaliser NORMALISER = new Normaliser(SAXON);
   static final TextConservation TEXT = new TextConservation(SAXON);
+  static final LegalTextRules RULES = new LegalTextRules(SAXON);
   static final URL SCHEMA = resource("/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml/legal-text.xsd");
   static final JAXBContext JAXB = jaxb();
-  static final String LIVE_DUPLICATE_EIDS =
-      """
-      let $ids := //(lt:unit | lt:quotedStructure | lt:note)[not(ancestor::lt:deleted)]/@eId/string()
-      return distinct-values($ids[index-of($ids, .)[2]])
-      """;
-
   @Parameter Fixture fixture;
 
   XdmNode legalText;
@@ -67,25 +60,15 @@ class NormaliserFixturesTest {
     assertThat(unmarshalled.getValue()).as("%s", fixture).isInstanceOf(LegalText.class);
   }
 
-  /** Deleted placeholders keep their old eIds, which a later insertion may reuse; live units may not. */
+  /** Unique live eIds, resolved note references, consistent amendment markers (legal-text.sch). */
   @Test
-  void givesLiveUnitsUniqueEIds() throws SaxonApiException {
-    var duplicates =
-        xpath().evaluate(LIVE_DUPLICATE_EIDS, legalText).stream()
-            .map(XdmItem::getStringValue)
-            .toList();
-    assertThat(duplicates).as("%s: eIds of more than one live unit", fixture).isEmpty();
+  void followsTheSchematronRules() {
+    assertThat(RULES.violations(legalText)).as("%s: breaks legal-text.sch", fixture).isEmpty();
   }
 
   @Test
   void keepsAllSourceText() {
     assertThat(TEXT.missing(fixture.source(), legalText)).as("%s: source text missing from the output", fixture).isEmpty();
-  }
-
-  private static XPathCompiler xpath() {
-    var xpath = SAXON.newXPathCompiler();
-    xpath.declareNamespace("lt", "https://kludgeworks.groknull.dev/ns/legal-text/1");
-    return xpath;
   }
 
   private static JAXBContext jaxb() {

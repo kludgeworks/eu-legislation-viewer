@@ -4,12 +4,14 @@ package(default_visibility = ["//visibility:public"])
 
 exports_files([
     "legal-text.xsd",
+    "legal-text.sch",
     "bindings.xjb",
 ])
 
-# legal-text.xsd on the classpath at /dev/groknull/…/text/infra/xml/
+# legal-text.xsd and the rules it can't express (legal-text.sch), on the classpath at
+# /dev/groknull/…/text/infra/xml/
 java_library(
     name = "resources",
-    resources = ["legal-text.xsd"],
+    resources = ["legal-text.xsd", "legal-text.sch"],
     resource_strip_prefix = "src/main/resources",
 )

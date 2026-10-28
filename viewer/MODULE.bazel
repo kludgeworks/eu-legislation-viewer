@@ -12,6 +12,8 @@ maven.install(
         # XSLT and its tests
         "net.sf.saxon:Saxon-HE:13.1",
         "io.xspec:xspec:4.1.2",
+        # Schematron (legal-text.sch) with the XSLT 3.0 binding
+        "name.dmaus.schxslt:schxslt2:1.11.2",
         # JAXB: code generation (tool classpath) and runtime
         "org.glassfish.jaxb:jaxb-xjc:4.0.9",
         "org.glassfish.jaxb:jaxb-runtime:4.0.9",

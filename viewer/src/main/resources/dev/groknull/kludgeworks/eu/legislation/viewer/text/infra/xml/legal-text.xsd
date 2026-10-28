@@ -14,6 +14,10 @@
       paragraphs, points, annexes), its inline meaning (dates, references, quotations, footnotes) and
       where each part comes from (the amending act that inserted, replaced or deleted it).
 
+      This schema checks the structure. The rules it can't express (eIds unique among the units in
+      force, note references that resolve, consistent amendment markers) are in legal-text.sch, an
+      ISO Schematron file with the XSLT 3.0 binding: a legal text is valid against both.
+
       Design rules, so that code generation gives clean classes:
       one named type per element; families of elements share an abstract base type (Block, InlineNode);
       a choice only offers elements of one family, each with its own type; character data is never mixed
