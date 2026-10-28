@@ -397,10 +397,10 @@
     <xs:group ref="blocks"/>
     <xs:attribute name="eId" type="EId" use="required">
       <xs:annotation>
-        <xs:documentation>note_N by position in the document; note_anxK-N in the K-th annex file of an OJ act.</xs:documentation>
+        <xs:documentation>note_N by position in the document; in another file of an OJ act's package, that file's sequence number: note_anx01000301-1 in an annex, note_inc000402-1 in an included document, note_att01000301-1 in an attached document.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="marker" type="xs:string" use="required">
+    <xs:attribute name="marker" type="NoteMarker" use="required">
       <xs:annotation>
         <xs:documentation>The marker as printed: the source's own number if it gives one, * for star numbering, else the running number.</xs:documentation>
       </xs:annotation>
@@ -569,6 +569,34 @@
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="[a-z]+(_[A-Za-z0-9._\-]+)?(/[a-z]+(_[A-Za-z0-9._\-]+)?)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="EIdRef">
+    <xs:annotation><xs:documentation>A reference to a unit or note of the same document: # and its eId, e.g. #note_3.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="#[a-z]+(_[A-Za-z0-9._\-]+)?(/[a-z]+(_[A-Za-z0-9._\-]+)?)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="NoteMarker">
+    <xs:annotation><xs:documentation>A note's marker as printed: 1, *, ** or the source's own (Formex NUMBER.ORG).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\S+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AmendmentMarker">
+    <xs:annotation><xs:documentation>The id of a consolidation's amendment marker (Formex CLG.MDFO ID), e.g. O000001M001002.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="FileName">
+    <xs:annotation><xs:documentation>A file of the act's Formex manifestation, by name, without a path: L_2023214EN.01002102.tif.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9_\-]+(\.[A-Za-z0-9_\-]+)+"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -813,7 +841,7 @@
         <xs:attribute name="content" type="ImageContent">
           <xs:annotation><xs:documentation>What the image shows (Formex INCL.ELEMENT CONTENT).</xs:documentation></xs:annotation>
         </xs:attribute>
-        <xs:attribute name="src" type="xs:string" use="required">
+        <xs:attribute name="src" type="FileName" use="required">
           <xs:annotation><xs:documentation>The image file in the act's Cellar manifestation.</xs:documentation></xs:annotation>
         </xs:attribute>
       </xs:extension>
@@ -907,7 +935,7 @@
     <xs:attribute name="location" type="xs:string">
       <xs:annotation><xs:documentation>Where in the amending act, as Formex writes it: "AR:1 .AND. AX:0;PT:27".</xs:documentation></xs:annotation>
     </xs:attribute>
-    <xs:attribute name="marker" type="xs:string">
+    <xs:attribute name="marker" type="AmendmentMarker">
       <xs:annotation><xs:documentation>The Formex marker id; pieces of one marker split at element boundaries share it.</xs:documentation></xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -1053,10 +1081,10 @@
     <xs:annotation><xs:documentation>Where a footnote is referred to; the note itself is in notes.</xs:documentation></xs:annotation>
     <xs:complexContent>
       <xs:extension base="InlineNode">
-        <xs:attribute name="href" type="xs:string" use="required">
+        <xs:attribute name="href" type="EIdRef" use="required">
           <xs:annotation><xs:documentation>#note_N: the eId of the note.</xs:documentation></xs:annotation>
         </xs:attribute>
-        <xs:attribute name="marker" type="xs:string" use="required">
+        <xs:attribute name="marker" type="NoteMarker" use="required">
           <xs:annotation><xs:documentation>The marker as printed.</xs:documentation></xs:annotation>
         </xs:attribute>
       </xs:extension>
@@ -1126,7 +1154,7 @@
     <xs:annotation><xs:documentation>An image inside running text or a heading (Formex INCL.ELEMENT TYPE="TIFF" there).</xs:documentation></xs:annotation>
     <xs:complexContent>
       <xs:extension base="InlineNode">
-        <xs:attribute name="src" type="xs:string" use="required">
+        <xs:attribute name="src" type="FileName" use="required">
           <xs:annotation><xs:documentation>The image file in the act's Cellar manifestation.</xs:documentation></xs:annotation>
         </xs:attribute>
         <xs:attribute name="content" type="ImageContent">

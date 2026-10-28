@@ -31,23 +31,23 @@
   <xsl:function name="f:pi-attr" as="xs:string?">
     <xsl:param name="pi" as="processing-instruction()"/>
     <xsl:param name="name" as="xs:string"/>
-    <xsl:variable name="m" select="analyze-string(string($pi), '(^|\s)' || replace($name, '\.', '\\.') || '=([&quot;''])([^&quot;'']*)\2')"/>
+    <xsl:variable name="m" as="element()" select="analyze-string(string($pi), '(^|\s)' || replace($name, '\.', '\\.') || '=([&quot;''])([^&quot;'']*)\2')"/>
     <xsl:sequence select="($m//*:group[@nr = 3])[1] ! string()"/>
   </xsl:function>
 
   <!-- markers covering $e (open before it starts, still open after it ends), outermost first -->
   <xsl:function name="f:covering" as="processing-instruction()*">
     <xsl:param name="e" as="node()"/>
-    <xsl:variable name="before" select="$e ! accumulator-before('f:open')"/>
-    <xsl:variable name="after" select="$e ! accumulator-after('f:open')"/>
+    <xsl:variable name="before" as="map(xs:string, processing-instruction())" select="$e ! accumulator-before('f:open')"/>
+    <xsl:variable name="after" as="map(xs:string, processing-instruction())" select="$e ! accumulator-after('f:open')"/>
     <xsl:sequence select="(map:keys($before)[map:contains($after, .)] ! $before(.))/self::node()"/>
   </xsl:function>
 
   <!-- markers covering the whole of a run of sibling nodes -->
   <xsl:function name="f:covering-run" as="processing-instruction()*">
     <xsl:param name="nodes" as="node()+"/>
-    <xsl:variable name="before" select="$nodes[1] ! accumulator-before('f:open')"/>
-    <xsl:variable name="after" select="$nodes[last()] ! accumulator-after('f:open')"/>
+    <xsl:variable name="before" as="map(xs:string, processing-instruction())" select="$nodes[1] ! accumulator-before('f:open')"/>
+    <xsl:variable name="after" as="map(xs:string, processing-instruction())" select="$nodes[last()] ! accumulator-after('f:open')"/>
     <xsl:sequence select="(map:keys($before)[map:contains($after, .)] ! $before(.))/self::node()"/>
   </xsl:function>
 
@@ -81,7 +81,7 @@
   <!-- REPLACED, INSERTED, DELETED; older consolidations also write REPEALED (a deletion) and ADDED -->
   <xsl:function name="f:action" as="xs:string">
     <xsl:param name="marker" as="processing-instruction()"/>
-    <xsl:variable name="action" select="f:pi-attr($marker, 'ACTION')"/>
+    <xsl:variable name="action" as="xs:string?" select="f:pi-attr($marker, 'ACTION')"/>
     <xsl:sequence select="(map{'REPLACED': 'replaced', 'INSERTED': 'inserted', 'ADDED': 'inserted',
                                'DELETED': 'deleted', 'REPEALED': 'deleted'}($action),
                            error(xs:QName('f:unknown'), 'Unsupported Formex: amendment marker ACTION=' || $action))[1]"/>
@@ -91,7 +91,7 @@
        digits (398D0441 for 31998D0441, 302R1534 for 32002R1534) -->
   <xsl:function name="f:celex" as="xs:string">
     <xsl:param name="celex" as="xs:string?"/>
-    <xsl:variable name="c" select="normalize-space($celex)"/>
+    <xsl:variable name="c" as="xs:string" select="normalize-space($celex)"/>
     <xsl:sequence select="
         if (matches($c, '^[0-9][0-9]{2}[A-Z]'))
         then substring($c, 1, 1) || (if (xs:integer(substring($c, 2, 2)) gt 50) then '19' else '20') || substring($c, 2)

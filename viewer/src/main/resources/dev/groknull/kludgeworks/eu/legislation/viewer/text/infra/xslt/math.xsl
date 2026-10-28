@@ -24,7 +24,7 @@
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 
-  <xsl:mode name="math" on-no-match="fail"/>
+  <xsl:mode name="math" on-no-match="fail" on-multiple-match="fail"/>
 
   <!-- a formula in running text; TYPE="OUTLINE" is displayed on its own line -->
   <xsl:template match="FORMULA" mode="inline">
@@ -66,7 +66,7 @@
       <xsl:param name="acc" as="element()*" select="()"/>
       <xsl:param name="dividend" as="element()?" select="()"/>
       <xsl:on-completion select="$acc, $dividend"/>
-      <xsl:variable name="script" select="
+      <xsl:variable name="script" as="xs:string" select="
           if (self::IND) then (map{'SUP': 'sup', 'OVER': 'over', 'UNDER': 'under'}(string(@LOC)), 'sub')[1]
           else if (self::HT[@TYPE = 'SUB']) then 'sub'
           else if (self::EXPONENT or self::HT[@TYPE = 'SUP']) then 'sup'
@@ -84,7 +84,7 @@
           <xsl:next-iteration/>
         </xsl:when>
         <xsl:when test="$script != ''">
-          <xsl:variable name="base" select="($acc[last()], f:empty-row())[1]"/>
+          <xsl:variable name="base" as="element()" select="($acc[last()], f:empty-row())[1]"/>
           <xsl:variable name="script-row" as="element()">
             <m:mrow>
               <xsl:sequence select="f:math(node())"/>
@@ -172,12 +172,12 @@
   </xsl:template>
 
   <!-- the signs the Formex manual gives for each TYPE -->
-  <xsl:variable name="f:operators" select="map{
+  <xsl:variable name="f:operators" as="map(xs:string, xs:string)" select="map{
       'PLUS': '+', 'MINUS': '−', 'MULT': '∙', 'DIV': '/', 'PLUSMINUS': '±', 'CARTPROD': '×',
       'EQ': '=', 'NE': '≠', 'LT': '&lt;', 'GT': '&gt;', 'LE': '≤', 'GE': '≥', 'AP': '≈', 'EQV': '≡'}"/>
 
   <xsl:template match="OP.MATH | OP.CMP" mode="math">
-    <xsl:variable name="op" select="$f:operators(string(@TYPE))"/>
+    <xsl:variable name="op" as="xs:string?" select="$f:operators(string(@TYPE))"/>
     <xsl:choose>
       <xsl:when test="$op"><m:mo>{$op}</m:mo></xsl:when>
       <xsl:otherwise><xsl:sequence select="f:unknown(., local-name() || ' TYPE=' || @TYPE)"/></xsl:otherwise>
@@ -186,7 +186,7 @@
 
   <!-- typefaces inside a formula: bold and italic as mathvariant on the tokens -->
   <xsl:template match="HT" mode="math">
-    <xsl:variable name="variant" select="map{'BOLD': 'bold', 'ITALIC': 'italic'}(string(@TYPE))"/>
+    <xsl:variable name="variant" as="xs:string?" select="map{'BOLD': 'bold', 'ITALIC': 'italic'}(string(@TYPE))"/>
     <xsl:for-each select="f:math(node())">
       <xsl:choose>
         <xsl:when test="$variant and (self::m:mi or self::m:mn or self::m:mo)">
@@ -217,11 +217,11 @@
 
   <!-- ============================================================ structures -->
 
-  <xsl:variable name="f:fences" select="map{
+  <xsl:variable name="f:fences" as="map(xs:string, xs:string+)" select="map{
       'BRACKET': ('(', ')'), 'SQBRACKET': ('[', ']'), 'BRACE': ('{', '}'), 'BAR': ('|', '|')}"/>
 
   <xsl:template match="EXPR" mode="math">
-    <xsl:variable name="fence" select="$f:fences(string(@TYPE))"/>
+    <xsl:variable name="fence" as="xs:string*" select="$f:fences(string(@TYPE))"/>
     <m:mrow>
       <xsl:if test="exists($fence)"><m:mo fence="true">{$fence[1]}</m:mo></xsl:if>
       <xsl:sequence select="f:math(node())"/>

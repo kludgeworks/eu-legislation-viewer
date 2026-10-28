@@ -40,7 +40,7 @@
     <xsl:param name="base" as="xs:string?"/>
     <xsl:param name="abbr" as="xs:string"/>
     <xsl:param name="value" as="xs:string?"/>
-    <xsl:variable name="segment" select="if ($value) then $abbr || '_' || $value else $abbr"/>
+    <xsl:variable name="segment" as="xs:string" select="if ($value) then $abbr || '_' || $value else $abbr"/>
     <xsl:sequence select="if ($base) then $base || '/' || $segment else $segment"/>
   </xsl:function>
 

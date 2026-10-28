@@ -23,7 +23,7 @@
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 
-  <xsl:mode name="block" on-no-match="fail"/>
+  <xsl:mode name="block" on-no-match="fail" on-multiple-match="fail"/>
 
   <!-- ============================================================ mixed content -->
 
@@ -50,9 +50,9 @@
           <xsl:apply-templates select="current-group()" mode="block"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:variable name="run" select="current-group()[not(self::processing-instruction() or self::comment())]"/>
+          <xsl:variable name="run" as="node()*" select="current-group()[not(self::processing-instruction() or self::comment())]"/>
           <xsl:if test="$run[self::*[not(self::IE)] or self::text()[normalize-space()]]">
-            <xsl:variable name="m" select="($pending, f:covering-run($run)[not(f:pi-attr(., 'ID') = $ctx)])"/>
+            <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:covering-run($run)[not(f:pi-attr(., 'ID') = $ctx)])"/>
             <xsl:variable name="p" as="element()">
               <p>
                 <xsl:sequence select="f:provenance($m)"/>
@@ -101,12 +101,12 @@
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="division" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="label" select="f:label-after-word(TI.ART)"/>
-    <xsl:variable name="value" select="($label[. != ''], string(count(preceding-sibling::ARTICLE) + 1))[1]"/>
-    <xsl:variable name="taken" select="$label != '' and exists(key('f:article-by-label', $label, root(.))[. &lt;&lt; current()]
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="label" as="xs:string" select="f:label-after-word(TI.ART)"/>
+    <xsl:variable name="value" as="xs:string" select="($label[. != ''], string(count(preceding-sibling::ARTICLE) + 1))[1]"/>
+    <xsl:variable name="taken" as="xs:boolean" select="$label != '' and exists(key('f:article-by-label', $label, root(.))[. &lt;&lt; current()]
         [not(f:covering(.)[f:is-deletion(.)])][deep-equal(ancestor::QUOT.S, current()/ancestor::QUOT.S)])"/>
-    <xsl:variable name="eid" select="f:eid(if ($taken and $division) then $division else $base, 'art', $value)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid(if ($taken and $division) then $division else $base, 'art', $value)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="article">
         <xsl:sequence select="f:provenance($m)"/>
@@ -125,8 +125,8 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="eid" select="f:eid($base, 'par', (f:label(NO.PARAG)[. != ''], string(count(preceding-sibling::PARAG) + 1))[1])"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'par', (f:label(NO.PARAG)[. != ''], string(count(preceding-sibling::PARAG) + 1))[1])"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="paragraph">
         <xsl:sequence select="f:provenance($m)"/>
@@ -169,10 +169,10 @@
         </xsl:choose>
       </heading>
     </xsl:if>
-    <xsl:variable name="body" select="* except ($num, $heading)"/>
+    <xsl:variable name="body" as="element()*" select="* except ($num, $heading)"/>
     <xsl:choose>
       <xsl:when test="count($body) = 1 and $body/self::ALINEA">
-        <xsl:variable name="m" select="f:new-markers($body, $ctx)"/>
+        <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers($body, $ctx)"/>
         <xsl:call-template name="f:blocks">
           <xsl:with-param name="nodes" select="$body/node()"/>
           <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
@@ -191,9 +191,9 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="in-article" select="exists(parent::ARTICLE)"/>
-    <xsl:variable name="eid" select="f:eid($base, if ($in-article) then 'unp' else 'sub', string(count(preceding-sibling::ALINEA) + 1))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="in-article" as="xs:boolean" select="exists(parent::ARTICLE)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid($base, if ($in-article) then 'unp' else 'sub', string(count(preceding-sibling::ALINEA) + 1))"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="{if ($in-article) then 'paragraph' else 'subparagraph'}">
         <xsl:sequence select="f:provenance($m)"/>
@@ -218,13 +218,13 @@
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="division" as="xs:string?" tunnel="yes"/>
     <xsl:param name="inAttachment" as="xs:boolean" select="false()" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="line" select="TITLE/TI/*[1]"/>
-    <xsl:variable name="label" select="((if ($line/self::NP) then f:label($line/NO.P) else f:label-after-word($line))[. != ''],
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="line" as="element()?" select="TITLE/TI/*[1]"/>
+    <xsl:variable name="label" as="xs:string" select="((if ($line/self::NP) then f:label($line/NO.P) else f:label-after-word($line))[. != ''],
                                         string(count(preceding-sibling::DIVISION) + 1))[1]"/>
     <!-- in an annex or a quoted structure, articles and divisions hang off the enclosing unit -->
-    <xsl:variable name="outer" select="if ($inAttachment or ancestor::*[self::CONS.ANNEX or self::ANNEX or self::QUOT.S]) then $base else ()"/>
-    <xsl:variable name="eid" select="f:eid(($division, $outer)[1], 'dvs', $label)"/>
+    <xsl:variable name="outer" as="xs:string?" select="if ($inAttachment or ancestor::*[self::CONS.ANNEX or self::ANNEX or self::QUOT.S]) then $base else ()"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid(($division, $outer)[1], 'dvs', $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>
@@ -250,9 +250,9 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="eid" select="f:eid($base, 'subdvs', (f:label(TITLE/TI/NP[1]/NO.P)[. != ''], string(count(preceding-sibling::SUBDIV) + 1))[1])"/>
-    <xsl:variable name="body" select="* except TITLE"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'subdvs', (f:label(TITLE/TI/NP[1]/NO.P)[. != ''], string(count(preceding-sibling::SUBDIV) + 1))[1])"/>
+    <xsl:variable name="body" as="element()*" select="* except TITLE"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="subdivision">
         <xsl:sequence select="f:provenance($m)"/>
@@ -262,7 +262,7 @@
         </xsl:call-template>
         <xsl:choose>
           <xsl:when test="count($body) = 1 and $body/self::ALINEA">
-            <xsl:variable name="own" select="f:new-markers($body, ($ctx, f:ids($m)))"/>
+            <xsl:variable name="own" as="processing-instruction()*" select="f:new-markers($body, ($ctx, f:ids($m)))"/>
             <xsl:call-template name="f:blocks">
               <xsl:with-param name="nodes" select="$body/node()"/>
               <xsl:with-param name="ctx" select="($ctx, f:ids($m), f:ids($own))" tunnel="yes"/>
@@ -289,7 +289,7 @@
   <xsl:template match="P" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:call-template name="f:blocks">
       <xsl:with-param name="nodes" select="node()"/>
       <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
@@ -301,8 +301,8 @@
   <xsl:template match="NP" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="first-block" select="TXT/node()[f:is-block(.)][1]"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="first-block" as="node()?" select="TXT/node()[f:is-block(.)][1]"/>
     <xsl:variable name="p" as="element()">
       <p>
         <xsl:sequence select="f:provenance($m)"/>
@@ -326,7 +326,7 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:variable name="f:list-kinds" select="map{
+  <xsl:variable name="f:list-kinds" as="map(xs:string, xs:string)" select="map{
       'ARAB': 'arabic', 'alpha': 'alpha', 'ALPHA': 'alpha-upper', 'roman': 'roman', 'ROMAN': 'roman-upper',
       'DASH': 'dash', 'NDASH': 'ndash', 'BULLET': 'bullet', 'NONE': 'none', 'OTHER': 'other'}"/>
 
@@ -345,8 +345,8 @@
   <xsl:function name="f:list-base" as="xs:string?">
     <xsl:param name="list" as="element()"/>
     <xsl:param name="base" as="xs:string?"/>
-    <xsl:variable name="scope" select="f:scope($list)"/>
-    <xsl:variable name="siblings" select="
+    <xsl:variable name="scope" as="element()?" select="f:scope($list)"/>
+    <xsl:variable name="siblings" as="element()*" select="
         if ($scope) then $scope//(LIST | DLIST)[f:scope(.) is $scope]
         else root($list)//(LIST | DLIST)[empty(f:scope(.))]"/>
     <xsl:sequence select="
@@ -359,8 +359,8 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="kind" select="($f:list-kinds(string(@TYPE)), 'none'[not(current()/@TYPE)])[1]"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="kind" as="xs:string" select="($f:list-kinds(string(@TYPE)), 'none'[not(current()/@TYPE)])[1]"/>
     <xsl:if test="empty($kind)">
       <xsl:sequence select="f:unknown(., 'LIST TYPE=' || @TYPE)"/>
     </xsl:if>
@@ -387,18 +387,18 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="own" select="f:new-markers(., $ctx)"/>
+    <xsl:variable name="own" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
     <!-- an ITEM that is just its NP: markers around the NP belong to the item -->
-    <xsl:variable name="np" select="if (count(*) = 1 and NP) then f:new-markers(NP, ($ctx, f:ids($own))) else ()"/>
-    <xsl:variable name="m" select="($pending, $own, $np)"/>
-    <xsl:variable name="label" select="f:label(NP/NO.P)"/>
+    <xsl:variable name="np" as="processing-instruction()*" select="if (count(*) = 1 and NP) then f:new-markers(NP, ($ctx, f:ids($own))) else ()"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, $own, $np)"/>
+    <xsl:variable name="label" as="xs:string" select="f:label(NP/NO.P)"/>
     <!-- a label an earlier live point of the same list already has (2025/24 nests (2), (3) of one
          point in the outer list, next to its own (2), (3)): the repeat is numbered, pnt_2-2. A
          deleted placeholder doesn't count, nor is it numbered: a replacement may reuse its label. -->
-    <xsl:variable name="repeat" select="
+    <xsl:variable name="repeat" as="xs:integer" select="
         if ($label = '' or f:is-deleted-item(.)) then 0
         else count(preceding-sibling::ITEM[f:label(NP/NO.P) = $label][not(f:is-deleted-item(.))])"/>
-    <xsl:variable name="eid" select="
+    <xsl:variable name="eid" as="xs:string" select="
         if ($label != '') then f:eid($base, 'pnt', $label || (if ($repeat gt 0) then '-' || ($repeat + 1) else ''))
         else f:eid($base, 'idt', string(count(preceding-sibling::ITEM) + 1))"/>
     <xsl:variable name="unit" as="element()">
@@ -428,7 +428,7 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="list" as="element()">
       <list kind="definition">
         <xsl:sequence select="f:provenance($m)"/>
@@ -445,9 +445,9 @@
   <xsl:template match="DLIST.ITEM" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" select="f:new-markers(., $ctx)"/>
-    <xsl:variable name="label" select="f:label(PREFIX)"/>
-    <xsl:variable name="eid" select="f:eid($base, 'pnt', ($label[. != ''], string(count(preceding-sibling::DLIST.ITEM) + 1))[1])"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
+    <xsl:variable name="label" as="xs:string" select="f:label(PREFIX)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'pnt', ($label[. != ''], string(count(preceding-sibling::DLIST.ITEM) + 1))[1])"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="definition">
         <xsl:sequence select="f:provenance($m)"/>
@@ -488,8 +488,8 @@
       <xsl:on-completion>
         <xsl:sequence select="if (exists($group)) then array{$group} else ()"/>
       </xsl:on-completion>
-      <xsl:variable name="previous" select="$group[last()]"/>
-      <xsl:variable name="continues" select="exists($previous) and f:annex-label(.) = '' and f:annex-label($previous) = ''
+      <xsl:variable name="previous" as="element()?" select="$group[last()]"/>
+      <xsl:variable name="continues" as="xs:boolean" select="exists($previous) and f:annex-label(.) = '' and f:annex-label($previous) = ''
                                              and normalize-space(TITLE) = normalize-space($previous/TITLE)"/>
       <xsl:choose>
         <xsl:when test="$continues">
@@ -515,11 +515,11 @@
     <xsl:param name="annexCount" as="xs:integer?"/>
     <xsl:param name="annexPosition" as="xs:integer?"/>
     <xsl:param name="anchor" as="xs:integer?"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="nested" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
-    <xsl:variable name="position" select="($annexPosition, count(preceding-sibling::*[self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) + 1)[1]"/>
-    <xsl:variable name="label" select="(f:annex-label(.)[. != ''], string($position))[1]"/>
-    <xsl:variable name="eid" select="
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="nested" as="xs:boolean" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
+    <xsl:variable name="position" as="xs:integer" select="($annexPosition, count(preceding-sibling::*[self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) + 1)[1]"/>
+    <xsl:variable name="label" as="xs:string" select="(f:annex-label(.)[. != ''], string($position))[1]"/>
+    <xsl:variable name="eid" as="xs:string" select="
         if (not($nested) and $annexCount = 1) then f:eid($annexBase, 'anx', ())
         else f:eid(if ($nested) then $base else $annexBase, 'anx', $label)"/>
     <xsl:variable name="unit" as="element()">
@@ -530,8 +530,8 @@
           <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
         <xsl:for-each select="$fragments">
-          <xsl:variable name="i" select="position()"/>
-          <xsl:variable name="own" select="if (position() = 1) then () else f:new-markers(., ($ctx, f:ids($m)))"/>
+          <xsl:variable name="i" as="xs:integer" select="position()"/>
+          <xsl:variable name="own" as="processing-instruction()*" select="if (position() = 1) then () else f:new-markers(., ($ctx, f:ids($m)))"/>
           <xsl:call-template name="f:blocks">
             <xsl:with-param name="nodes" select="CONTENTS/node(), CONS.ANNEX, CONS.DOC.GEN"/>
             <xsl:with-param name="ctx" select="($ctx, f:ids(($m, $own)))" tunnel="yes"/>
@@ -556,10 +556,10 @@
   <xsl:template name="f:title">
     <xsl:param name="title" as="element(TITLE)?"/>
     <xsl:param name="num-first-line" as="xs:boolean" select="true()"/>
-    <xsl:variable name="lines" select="$title/TI/*"/>
-    <xsl:variable name="np" select="$lines[1][self::NP]"/>
-    <xsl:variable name="num" select="if ($np) then $np/NO.P else if ($num-first-line) then $lines[1] else ()"/>
-    <xsl:variable name="heading" select="if ($np) then $lines else $lines except $num"/>
+    <xsl:variable name="lines" as="element()*" select="$title/TI/*"/>
+    <xsl:variable name="np" as="element(NP)?" select="$lines[1][self::NP]"/>
+    <xsl:variable name="num" as="element()?" select="if ($np) then $np/NO.P else if ($num-first-line) then $lines[1] else ()"/>
+    <xsl:variable name="heading" as="element()*" select="if ($np) then $lines else $lines except $num"/>
     <xsl:if test="$num">
       <num>
         <xsl:call-template name="f:inlines">
@@ -594,7 +594,7 @@
        (lvl_ATTACHMENT-6-A), which survives renesting where a position would not -->
   <xsl:function name="f:level-label-line" as="element()?">
     <xsl:param name="seq" as="element(GR.SEQ)"/>
-    <xsl:variable name="first" select="$seq[empty(f:level-num($seq))]/TITLE/TI/*[1][self::P]"/>
+    <xsl:variable name="first" as="element(P)?" select="$seq[empty(f:level-num($seq))]/TITLE/TI/*[1][self::P]"/>
     <xsl:sequence select="$first[matches(normalize-space(.), '^\p{L}+ (\S*\d\S*|\p{Lu}{1,3})$')]"/>
   </xsl:function>
 
@@ -608,7 +608,7 @@
 
   <xsl:function name="f:level-ordinal" as="xs:integer">
     <xsl:param name="seq" as="element(GR.SEQ)"/>
-    <xsl:variable name="parent" select="f:level-parent($seq)"/>
+    <xsl:variable name="parent" as="element()?" select="f:level-parent($seq)"/>
     <xsl:sequence select="count($parent//GR.SEQ[. &lt;&lt; $seq][f:label((f:level-num(.), f:level-label-line(.))[1]) = '']
                                 [f:level-parent(.) is $parent]) + 1"/>
   </xsl:function>
@@ -637,7 +637,7 @@
     <xsl:param name="label" as="xs:string"/>
     <!-- earlier fragments of the same annex that are separate files (an OJ act's annex files) -->
     <xsl:param name="earlier" as="document-node()*"/>
-    <xsl:variable name="scope" select="f:level-scope($seq)"/>
+    <xsl:variable name="scope" as="element()?" select="f:level-scope($seq)"/>
     <xsl:sequence select="exists($earlier ! key('f:level-by-label', $label, .)[not(ancestor::QUOT.S)][not(f:covering(.)[f:is-deletion(.)])])
         or f:label-taken-here($seq, $label, $scope)"/>
   </xsl:function>
@@ -667,11 +667,11 @@
     <!-- the nearest enclosing level with a number or label: labelled levels hang off it, skipping
          unnumbered levels in between, whose positional eIds shift when Formex renests them -->
     <xsl:param name="labelledParent" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="label-line" select="f:level-label-line(.)"/>
-    <xsl:variable name="num" select="f:level-num(.)"/>
-    <xsl:variable name="direct-np" select="if ($num/parent::NP/parent::GR.SEQ) then $num/.. else ()"/>
-    <xsl:variable name="label" select="f:label($num)"/>
-    <xsl:variable name="eid" select="
+    <xsl:variable name="label-line" as="element()?" select="f:level-label-line(.)"/>
+    <xsl:variable name="num" as="element()?" select="f:level-num(.)"/>
+    <xsl:variable name="direct-np" as="element()?" select="if ($num/parent::NP/parent::GR.SEQ) then $num/.. else ()"/>
+    <xsl:variable name="label" as="xs:string" select="f:label($num)"/>
+    <xsl:variable name="eid" as="xs:string" select="
         if ($label != '') then f:eid(
             if ($parentLevel and (f:local-number($num) or f:label-taken(., $label, $earlier)))
             then ($labelledParent, $parentLevel)[1] else $levelBase,
@@ -682,8 +682,8 @@
             'lvl', f:label($label-line))
         else f:eid(($parentLevel, $levelBase)[1], 'lvl',
                    string(f:level-ordinal(.) + (if ($parentLevel) then 0 else ($levelOffset, 0)[1])))"/>
-    <xsl:variable name="m" select="($pending, f:covering(.)[not(f:pi-attr(., 'ID') = $levelCtx)])"/>
-    <xsl:variable name="inner" select="($ctx, f:ids($m))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:covering(.)[not(f:pi-attr(., 'ID') = $levelCtx)])"/>
+    <xsl:variable name="inner" as="xs:string*" select="($ctx, f:ids($m))"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="level" depth="{(@LEVEL, 1)[1]}">
         <xsl:if test="@BOX = 'YES'">
@@ -740,9 +740,9 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="scope" select="f:scope(.)"/>
-    <xsl:variable name="eid" select="f:eid($base, 'tbl', string(1 + (
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="scope" as="element()?" select="f:scope(.)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'tbl', string(1 + (
         if ($scope) then count($scope//TBL[f:scope(.) is $scope][. &lt;&lt; current()])
         else count(preceding::TBL[empty(f:scope(.))]))))"/>
     <xsl:variable name="table" as="element()">
@@ -777,7 +777,7 @@
   <xsl:template match="GR.TBL" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="group" as="element()">
       <tableGroup>
         <xsl:sequence select="f:provenance($m)"/>
@@ -803,7 +803,7 @@
   <xsl:template match="ROW" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <tr>
       <xsl:if test="@TYPE = 'HEADER'">
         <xsl:attribute name="header" select="true()"/>
@@ -818,7 +818,7 @@
 
   <xsl:template match="CELL" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
-    <xsl:variable name="m" select="f:new-markers(., $ctx)"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
     <td>
       <xsl:if test="@COLSPAN">
         <xsl:attribute name="colspan" select="@COLSPAN"/>
@@ -840,7 +840,7 @@
   <!-- a group of rows with a heading row (checklists in 2015/1998) -->
   <xsl:template match="BLK" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
-    <xsl:variable name="m" select="f:new-markers(., $ctx)"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
     <rowGroup>
       <!-- the title: a numbered paragraph gives num and heading, anything else the heading -->
       <xsl:for-each select="TI.BLK">
@@ -887,11 +887,11 @@
   <xsl:template match="QUOT.S" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="unit" select="ancestor::*[self::ITEM or self::ARTICLE or self::PARAG or self::ALINEA
+    <xsl:variable name="unit" as="element()?" select="ancestor::*[self::ITEM or self::ARTICLE or self::PARAG or self::ALINEA
                                                   or self::GR.SEQ or self::DLIST.ITEM or self::ANNEX or self::CONS.ANNEX
                                                   or self::OLD.CORR or self::NEW.CORR or self::DIVISION or self::LETTER
                                                   or self::CONSID or self::VISA or self::NOTE][1]"/>
-    <xsl:variable name="eid" select="f:eid($base, 'qst', string(count($unit//QUOT.S[. &lt;&lt; current()]) + 1))"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'qst', string(count($unit//QUOT.S[. &lt;&lt; current()]) + 1))"/>
     <quotedStructure eId="{$eid}">
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" select="node()"/>
@@ -908,7 +908,7 @@
   <xsl:template match="ANNOTATION | GR.ANNOTATION" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="annotation" as="element()">
       <annotation>
         <xsl:sequence select="f:provenance($m)"/>
@@ -962,7 +962,7 @@
 
   <!-- another Formex file of the same package, included here: its content, in place -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'FORMEX.DOC']" mode="block">
-    <xsl:variable name="included" select="doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
+    <xsl:variable name="included" as="element()" select="doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
     <xsl:choose>
       <xsl:when test="$included/self::ANNEX">
         <!-- its title ("ANNEX I") as paragraphs, then its content -->
@@ -999,7 +999,7 @@
 
   <!-- ============================================================ attachments -->
 
-  <xsl:mode name="attachment" on-no-match="fail"/>
+  <xsl:mode name="attachment" on-no-match="fail" on-multiple-match="fail"/>
 
   <!-- a package entry other than an annex (DOC.SUB.PUB TYPE="ASSOCIATION": the agreement a decision
        concludes, a protocol, a draft decision); its own annexes and attachments are its sub-entries -->
@@ -1067,9 +1067,9 @@
         <xsl:with-param name="levelCtx" select="()" tunnel="yes"/>
         <xsl:with-param name="parentLevel" select="()" tunnel="yes"/>
       </xsl:call-template>
-      <xsl:variable name="groups" select="f:annex-groups($annexes)"/>
+      <xsl:variable name="groups" as="array(element())*" select="f:annex-groups($annexes)"/>
       <xsl:for-each select="$groups">
-        <xsl:variable name="fragments" select="?*"/>
+        <xsl:variable name="fragments" as="element()*" select="?*"/>
         <xsl:apply-templates select="$fragments[1]" mode="block">
           <xsl:with-param name="fragments" select="$fragments"/>
           <xsl:with-param name="annexCount" select="count($groups)"/>
@@ -1093,7 +1093,7 @@
 
   <!-- one correction of a corrigendum: where, then the old and the new wording -->
   <xsl:template match="CORRECTION" mode="block">
-    <xsl:variable name="eid" select="'cor_' || (count(preceding::CORRECTION) + 1)"/>
+    <xsl:variable name="eid" as="xs:string" select="'cor_' || (count(preceding::CORRECTION) + 1)"/>
     <unit eId="{$eid}" kind="correction">
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" select="node()"/>
@@ -1112,7 +1112,7 @@
        each has its own eId segment: cor_1/old/…, cor_1/new/… -->
   <xsl:template match="OLD.CORR | NEW.CORR" mode="block">
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="side" select="if (self::OLD.CORR) then 'old' else 'new'"/>
+    <xsl:variable name="side" as="xs:string" select="if (self::OLD.CORR) then 'old' else 'new'"/>
     <xsl:element name="{$side}">
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" select="node()"/>
@@ -1126,7 +1126,7 @@
 
   <!-- a letter of an exchange of letters attached to an agreement -->
   <xsl:template match="LETTER" mode="block">
-    <xsl:variable name="eid" select="'let_' || (count(preceding-sibling::LETTER) + 1)"/>
+    <xsl:variable name="eid" as="xs:string" select="'let_' || (count(preceding-sibling::LETTER) + 1)"/>
     <unit eId="{$eid}" kind="letter">
       <!-- "A. Letter from the European Union": A. is the num -->
       <xsl:call-template name="f:title">

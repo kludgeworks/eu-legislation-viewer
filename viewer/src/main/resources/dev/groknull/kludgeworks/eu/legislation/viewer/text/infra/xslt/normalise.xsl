@@ -34,11 +34,12 @@
   <xsl:param name="celex" as="xs:string?"/>
   <xsl:param name="normaliser" as="xs:string" select="'1.0.0'"/>
 
-  <xsl:variable name="f:namespace" select="'https://kludgeworks.groknull.dev/ns/legal-text/1'"/>
-  <xsl:variable name="f:schema" select="'https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd'"/>
+  <xsl:variable name="f:namespace" as="xs:string" select="'https://kludgeworks.groknull.dev/ns/legal-text/1'"/>
+  <xsl:variable name="f:schema" as="xs:string" select="'https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd'"/>
 
-  <xsl:mode on-no-match="fail" use-accumulators="#all"/>
-  <xsl:mode name="document" on-no-match="fail"/>
+  <xsl:mode on-no-match="fail" on-multiple-match="fail" use-accumulators="#all"/>
+  <xsl:mode name="document" on-no-match="fail" on-multiple-match="fail"/>
+  <xsl:mode name="note" on-no-match="fail" on-multiple-match="fail"/>
 
   <xsl:template match="/">
     <xsl:apply-templates select="*" mode="document"/>
@@ -53,8 +54,8 @@
 
   <!-- an OJ act's package: the main document, then its annexes in the order the package lists them -->
   <xsl:template match="DOC" mode="document">
-    <xsl:variable name="main" select="doc(resolve-uri(FMX/DOC.MAIN.PUB/REF.PHYS/@FILE, base-uri(.)))/*"/>
-    <xsl:variable name="annexes" select="FMX/DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/ANNEX"/>
+    <xsl:variable name="main" as="element()" select="doc(resolve-uri(FMX/DOC.MAIN.PUB/REF.PHYS/@FILE, base-uri(.)))/*"/>
+    <xsl:variable name="annexes" as="element(ANNEX)*" select="FMX/DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/ANNEX"/>
     <!-- a package of something other than a legal act is refused like the document itself -->
     <xsl:if test="not($main/(self::ACT | self::AGR | self::CORR | self::CONS.ACT | self::CONS.OTH))">
       <xsl:apply-templates select="$main" mode="document"/>
@@ -83,12 +84,12 @@
     <xsl:param name="act" as="element()"/>
     <xsl:param name="annexes" as="element(ANNEX)*" select="()"/>
     <xsl:param name="package" as="element(DOC)?" select="()"/>
-    <xsl:variable name="consolidated" select="exists($act/(self::CONS.ACT | self::CONS.OTH))"/>
+    <xsl:variable name="consolidated" as="xs:boolean" select="exists($act/(self::CONS.ACT | self::CONS.OTH))"/>
     <!-- where the bibliographic data is, and where the text is -->
-    <xsl:variable name="doc" select="($act/CONS.DOC, $act/CONS.OTH.DOC, $act)[1]"/>
-    <xsl:variable name="content" select="($doc/CONS.DOC.GEN, $doc)[1]"/>
-    <xsl:variable name="info" select="$act/INFO.CONSLEG"/>
-    <xsl:variable name="act-celex" select="
+    <xsl:variable name="doc" as="element()" select="($act/CONS.DOC, $act/CONS.OTH.DOC, $act)[1]"/>
+    <xsl:variable name="content" as="element()" select="($doc/CONS.DOC.GEN, $doc)[1]"/>
+    <xsl:variable name="info" as="element(INFO.CONSLEG)?" select="$act/INFO.CONSLEG"/>
+    <xsl:variable name="act-celex" as="xs:string" select="
         if ($consolidated) then '3' || $info/@CONSLEG.REF
         else ($celex[normalize-space()], error(xs:QName('f:celex'), 'An OJ act needs the $celex parameter'))[1]"/>
     <legalText act="{$act-celex}" kind="{if ($consolidated) then 'consolidated' else if ($act/self::CORR) then 'corrigendum' else 'original'}">
@@ -106,7 +107,7 @@
         </xsl:if>
         <xsl:choose>
           <xsl:when test="$consolidated">
-            <xsl:variable name="bib" select="$doc/FAM.COMP/BIB.DATA/BIB.INSTANCE.CONS"/>
+            <xsl:variable name="bib" as="element(BIB.INSTANCE.CONS)?" select="$doc/FAM.COMP/BIB.DATA/BIB.INSTANCE.CONS"/>
             <xsl:sequence select="f:publication($bib/DOCUMENT.REF.CONS/COLL, $bib/DOCUMENT.REF.CONS/NO.OJ,
                                                 $bib/DATE/@ISO, $bib/DOCUMENT.REF.CONS/PAGE.FIRST, $content/TITLE/TI/NO.DOC.C)"/>
           </xsl:when>
@@ -116,7 +117,7 @@
                                                 $content/TITLE/TI/NO.DOC.C)"/>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:variable name="ref" select="$doc/BIB.INSTANCE/DOCUMENT.REF"/>
+            <xsl:variable name="ref" as="element(DOCUMENT.REF)?" select="$doc/BIB.INSTANCE/DOCUMENT.REF"/>
             <xsl:sequence select="f:publication($ref/COLL, $ref/NO.OJ, (), $ref/PAGE.FIRST, $content/TITLE/TI/NO.DOC.C)"/>
           </xsl:otherwise>
         </xsl:choose>
@@ -161,11 +162,11 @@
       <xsl:apply-templates select="$content/FINAL"/>
 
       <!-- a consolidation's annexes: CONS.ANNEX, or for a non-regular structure CONS.DOC.GEN TYPE="ANNEX" -->
-      <xsl:variable name="groups" select="f:annex-groups(($content/CONS.ANNEX, $content/CONTENTS/CONS.ANNEX,
+      <xsl:variable name="groups" as="array(element())*" select="f:annex-groups(($content/CONS.ANNEX, $content/CONTENTS/CONS.ANNEX,
                                                           $content/self::CONS.DOC.GEN/CONS.DOC.GEN[@TYPE = 'ANNEX'], $annexes))"/>
       <xsl:variable name="annex-units" as="element()*">
         <xsl:for-each select="$groups">
-          <xsl:variable name="fragments" select="?*"/>
+          <xsl:variable name="fragments" as="element()*" select="?*"/>
           <xsl:apply-templates select="$fragments[1]" mode="block">
             <xsl:with-param name="fragments" select="$fragments"/>
             <xsl:with-param name="annexCount" select="count($groups)"/>
@@ -202,11 +203,11 @@
       </xsl:if>
 
       <!-- the notes of the act, its annexes and the documents they include -->
-      <xsl:variable name="notes" select="f:with-included(($act, $annexes))//NOTE[@NOTE.ID]"/>
+      <xsl:variable name="notes" as="element(NOTE)*" select="f:with-included(($act, $annexes))//NOTE[@NOTE.ID]"/>
       <!-- and those of attached documents from other files, whose eIds carry the file: note_att0301-1 -->
       <xsl:variable name="attached-notes" as="element()*">
         <xsl:for-each select="$package/FMX//DOC.SUB.PUB[not(@TYPE = 'ANNEX')]">
-          <xsl:variable name="docs" select="(REF.PHYS, DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS)/doc(resolve-uri(@FILE, base-uri(.)))/*"/>
+          <xsl:variable name="docs" as="element()*" select="(REF.PHYS, DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS)/doc(resolve-uri(@FILE, base-uri(.)))/*"/>
           <xsl:apply-templates select="f:with-included($docs)//NOTE[@NOTE.ID]" mode="note">
             <xsl:with-param name="notePrefix" select="f:attachment-note-prefix(.)" tunnel="yes"/>
           </xsl:apply-templates>
@@ -224,7 +225,7 @@
   <!-- documents and, recursively, the Formex documents they include (INCL.ELEMENT TYPE="FORMEX.DOC") -->
   <xsl:function name="f:with-included" as="element()*">
     <xsl:param name="docs" as="element()*"/>
-    <xsl:variable name="included" select="$docs//INCL.ELEMENT[@TYPE = 'FORMEX.DOC']/doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
+    <xsl:variable name="included" as="element()*" select="$docs//INCL.ELEMENT[@TYPE = 'FORMEX.DOC']/doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
     <xsl:sequence select="$docs, if (exists($included)) then f:with-included($included) else ()"/>
   </xsl:function>
 
@@ -273,7 +274,7 @@
                     <xsl:with-param name="nodes" select="node()[1]"/>
                   </xsl:call-template>
                 </docType>
-                <xsl:variable name="rest" select="node()[position() gt 1]"/>
+                <xsl:variable name="rest" as="node()*" select="node()[position() gt 1]"/>
                 <xsl:if test="matches(string-join($rest ! string()), '^\s')">
                   <t v=" "/>
                 </xsl:if>
@@ -365,7 +366,7 @@
         </intro>
       </xsl:if>
       <xsl:for-each select="VISA">
-        <xsl:variable name="m" select="f:new-markers(., ())"/>
+        <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., ())"/>
         <xsl:variable name="unit" as="element()">
           <unit eId="pbl_1/cit_{position()}" kind="citation">
             <xsl:sequence select="f:provenance($m)"/>
@@ -391,8 +392,8 @@
         </intro>
       </xsl:if>
       <xsl:for-each select="CONSID">
-        <xsl:variable name="eid" select="'pbl_1/rct_' || (f:label(NP/NO.P)[. != ''], string(position()))[1]"/>
-        <xsl:variable name="m" select="f:new-markers(., ())"/>
+        <xsl:variable name="eid" as="xs:string" select="'pbl_1/rct_' || (f:label(NP/NO.P)[. != ''], string(position()))[1]"/>
+        <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., ())"/>
         <xsl:variable name="unit" as="element()">
         <unit eId="{$eid}" kind="recital">
           <xsl:sequence select="f:provenance($m)"/>
@@ -441,7 +442,7 @@
 
   <!-- the lines of a signature block: organisation, role(s), person -->
   <xsl:template match="SIGNATORY">
-    <xsl:variable name="lines" select="P"/>
+    <xsl:variable name="lines" as="element(P)*" select="P"/>
     <signatory>
       <xsl:if test="count($lines) ge 2">
         <organization>
@@ -470,10 +471,10 @@
   <!-- inline content without the whitespace it starts with -->
   <xsl:function name="f:trim-start" as="element()*">
     <xsl:param name="inlines" as="element()*"/>
-    <xsl:variable name="first" select="$inlines[1]"/>
+    <xsl:variable name="first" as="element()?" select="$inlines[1]"/>
     <xsl:choose>
       <xsl:when test="$first/self::*:t">
-        <xsl:variable name="v" select="replace($first/@v, '^\s+', '')"/>
+        <xsl:variable name="v" as="xs:string" select="replace($first/@v, '^\s+', '')"/>
         <xsl:if test="$v != ''"><t v="{$v}"/></xsl:if>
         <xsl:sequence select="$inlines[position() gt 1]"/>
       </xsl:when>

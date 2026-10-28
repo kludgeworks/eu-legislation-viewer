@@ -14,7 +14,7 @@
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 
-  <xsl:mode name="inline" on-no-match="fail"/>
+  <xsl:mode name="inline" on-no-match="fail" on-multiple-match="fail"/>
 
   <!-- ============================================================ entry point -->
 
@@ -30,7 +30,7 @@
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:variable name="marker" select="f:marker(current-group()[1], current-grouping-key())"/>
+          <xsl:variable name="marker" as="processing-instruction()" select="f:marker(current-group()[1], current-grouping-key())"/>
           <xsl:element name="{if (f:is-deletion($marker)) then 'deleted' else 'changed'}">
             <xsl:sequence select="f:amendment-attributes($marker)"/>
             <xsl:call-template name="f:inlines">
@@ -54,10 +54,10 @@
        stays as literal quotation marks -->
   <xsl:template name="f:quotes">
     <xsl:param name="nodes" as="node()*"/>
-    <xsl:variable name="start" select="$nodes[self::QUOT.START][let $s := . return $nodes[self::QUOT.END][@ID = $s/@REF.END]][1]"/>
+    <xsl:variable name="start" as="element(QUOT.START)?" select="$nodes[self::QUOT.START][let $s := . return $nodes[self::QUOT.END][@ID = $s/@REF.END]][1]"/>
     <xsl:choose>
       <xsl:when test="$start">
-        <xsl:variable name="end" select="$nodes[self::QUOT.END][@ID = $start/@REF.END][1]"/>
+        <xsl:variable name="end" as="element(QUOT.END)?" select="$nodes[self::QUOT.END][@ID = $start/@REF.END][1]"/>
         <xsl:call-template name="f:text-runs">
           <xsl:with-param name="nodes" select="$nodes[. &lt;&lt; $start]"/>
         </xsl:call-template>
@@ -84,7 +84,7 @@
     <xsl:for-each-group select="$nodes" group-adjacent="self::text() instance of text()">
       <xsl:choose>
         <xsl:when test="current-grouping-key()">
-          <xsl:variable name="v" select="string-join(current-group())"/>
+          <xsl:variable name="v" as="xs:string" select="string-join(current-group())"/>
           <xsl:if test="$v != ''">
             <t v="{$v}"/>
           </xsl:if>
@@ -110,7 +110,7 @@
   <!-- ============================================================ elements -->
 
   <xsl:template match="HT" mode="inline">
-    <xsl:variable name="kind" select="map{
+    <xsl:variable name="kind" as="xs:string?" select="map{
         'BOLD': 'b', 'ITALIC': 'i', 'UNDERLINE': 'u', 'SUP': 'sup', 'SUB': 'sub',
         'UC': 'uc', 'SC': 'sc', 'EXPANDED': 'expanded', 'STROKE': 'strike', 'BOX': 'box'}(string(@TYPE))"/>
     <xsl:choose>
@@ -150,7 +150,7 @@
 
   <xsl:template match="NOTE[@NOTE.REF]" mode="inline">
     <xsl:param name="notePrefix" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="target" select="root(.)//NOTE[@NOTE.ID = current()/@NOTE.REF][1]"/>
+    <xsl:variable name="target" as="element(NOTE)?" select="root(.)//NOTE[@NOTE.ID = current()/@NOTE.REF][1]"/>
     <xsl:sequence select="if ($target) then f:note-ref($target, $notePrefix) else f:unknown(., 'NOTE.REF without its note')"/>
   </xsl:template>
 
@@ -238,7 +238,7 @@
   <!-- 20151105 → 2015-11-05 -->
   <xsl:function name="f:date" as="xs:string">
     <xsl:param name="iso" as="xs:string?"/>
-    <xsl:variable name="d" select="replace(normalize-space($iso), '^(\d{4})(\d{2})(\d{2})$', '$1-$2-$3')"/>
+    <xsl:variable name="d" as="xs:string" select="replace(normalize-space($iso), '^(\d{4})(\d{2})(\d{2})$', '$1-$2-$3')"/>
     <xsl:sequence select="if ($d castable as xs:date) then $d else error(xs:QName('f:date'), 'Not a date: ' || $iso)"/>
   </xsl:function>
 
@@ -254,9 +254,9 @@
   <xsl:function name="f:note-eid" as="xs:string">
     <xsl:param name="note" as="element(NOTE)"/>
     <xsl:param name="prefix" as="xs:string?"/>
-    <xsl:variable name="root" select="root($note)/*"/>
-    <xsl:variable name="seq" select="f:file-seq(base-uri($root))"/>
-    <xsl:variable name="file" select="
+    <xsl:variable name="root" as="element()" select="root($note)/*"/>
+    <xsl:variable name="seq" as="xs:string" select="f:file-seq(base-uri($root))"/>
+    <xsl:variable name="file" as="xs:string" select="
         if ($root/self::ANNEX) then 'anx' || $seq || '-'
         else if ($root/self::GENERAL) then 'inc' || $seq || '-'
         else string($prefix)"/>
