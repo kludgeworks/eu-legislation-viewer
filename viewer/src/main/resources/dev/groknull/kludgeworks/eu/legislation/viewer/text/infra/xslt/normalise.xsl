@@ -151,8 +151,8 @@
       <body>
         <xsl:call-template name="f:blocks">
           <!-- ACT.GEN: the whole of an act consolidated with a non-regular structure (CONS.DOC.GEN TYPE="OTH.ACT") -->
-          <xsl:with-param name="nodes" select="$content/ENACTING.TERMS/node(), $content/CONTENTS/(node() except CONS.ANNEX),
-                                               $content/CONTENTS.CORR/CORRECTION, $content/ACT.GEN"/>
+          <xsl:with-param name="nodes" select="$content/ENACTING.TERMS/node() | $content/CONTENTS/(node() except CONS.ANNEX)
+                                               | $content/CONTENTS.CORR/node() | $content/ACT.GEN | f:document-rest($act, $doc, $content)"/>
           <xsl:with-param name="ctx" select="()" tunnel="yes"/>
           <xsl:with-param name="pending" select="()" tunnel="yes"/>
           <xsl:with-param name="base" select="()" tunnel="yes"/>
@@ -227,6 +227,19 @@
     <xsl:param name="docs" as="element()*"/>
     <xsl:variable name="included" as="element()*" select="$docs//INCL.ELEMENT[@TYPE = 'FORMEX.DOC']/doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
     <xsl:sequence select="$docs, if (exists($included)) then f:with-included($included) else ()"/>
+  </xsl:function>
+
+  <!-- what a document holds besides the parts the legal text takes from it elsewhere: its
+       metadata, title, preamble, enacting terms, closing, annexes, letters and attached documents.
+       It goes into the body, where anything unexpected fails. -->
+  <xsl:function name="f:document-rest" as="element()*">
+    <xsl:param name="act" as="element()"/>
+    <xsl:param name="doc" as="element()"/>
+    <xsl:param name="content" as="element()"/>
+    <xsl:sequence select="($act | $doc | $content)/* except (
+        $doc, $content, $act/(INFO.CONSLEG | INFO.PROD), ($doc | $content)/(BIB.INSTANCE | FAM.COMP),
+        $content/(TITLE | PREAMBLE | ENACTING.TERMS | CONTENTS | CONTENTS.CORR | ACT.GEN | FINAL
+                  | CONS.ANNEX | CONS.DOC.GEN | COLL.LETTERS))"/>
   </xsl:function>
 
   <xsl:function name="f:formex-version" as="xs:string">
@@ -325,6 +338,8 @@
             </xsl:call-template>
           </p>
         </xsl:for-each>
+        <!-- NO.DOC.C goes into the publication data -->
+        <xsl:apply-templates select="node() except (TI | STI), TI/(node() except (P | NO.DOC.C)), STI/(node() except P)" mode="unexpected"/>
       </longTitle>
     </preface>
   </xsl:template>
@@ -365,6 +380,7 @@
           </xsl:call-template>
         </intro>
       </xsl:if>
+      <xsl:apply-templates select="node() except (GR.VISA.INIT | VISA)" mode="unexpected"/>
       <xsl:for-each select="VISA">
         <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., ())"/>
         <xsl:variable name="unit" as="element()">
@@ -391,6 +407,7 @@
           </xsl:call-template>
         </intro>
       </xsl:if>
+      <xsl:apply-templates select="node() except (GR.CONSID.INIT | CONSID)" mode="unexpected"/>
       <xsl:for-each select="CONSID">
         <xsl:variable name="eid" as="xs:string" select="'pbl_1/rct_' || (f:label(NP/NO.P)[. != ''], string(position()))[1]"/>
         <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., ())"/>
@@ -421,7 +438,7 @@
   <xsl:template match="FINAL">
     <conclusions>
       <xsl:call-template name="f:blocks">
-        <xsl:with-param name="nodes" select="P"/>
+        <xsl:with-param name="nodes" select="node() except SIGNATURE"/>
       </xsl:call-template>
       <xsl:apply-templates select="SIGNATURE"/>
     </conclusions>
@@ -437,6 +454,7 @@
         </placeAndDate>
       </xsl:if>
       <xsl:apply-templates select="SIGNATORY"/>
+      <xsl:apply-templates select="node() except (PL.DATE | SIGNATORY), PL.DATE/(node() except P)" mode="unexpected"/>
     </signature>
   </xsl:template>
 
@@ -465,6 +483,7 @@
           </xsl:call-template>
         </person>
       </xsl:if>
+      <xsl:apply-templates select="node() except P" mode="unexpected"/>
     </signatory>
   </xsl:template>
 

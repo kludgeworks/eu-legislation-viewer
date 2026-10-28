@@ -2,6 +2,7 @@
 <!-- SPDX-License-Identifier: MIT -->
 <!-- Inputs the normaliser refuses: it fails loudly rather than produce a partial text -->
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
     stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/normalise.xsl">
 
   <!-- a blank CELEX number counts as none -->
@@ -21,5 +22,18 @@
     <x:context mode="block"><NOT.FORMEX/></x:context>
     <x:expect label="stops the transformation" test="exists($x:result?err)"/>
   </x:scenario>
+
+  <!-- push style: a template takes the children it knows and fails on the rest -->
+
+  <x:scenario label="An element a signature doesn't expect" catch="yes">
+    <x:context mode="block"><FINAL><SIGNATURE><PL.DATE><P>Brussels</P></PL.DATE><NOT.FORMEX/></SIGNATURE></FINAL></x:context>
+    <x:expect label="stops the transformation as unsupported Formex" test="$x:result?err?code = xs:QName('f:unknown')" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
+
+  <x:scenario label="An element a list doesn't expect" catch="yes">
+    <x:context mode="block"><LIST TYPE="DASH"><ITEM><P>a</P></ITEM><NOT.FORMEX/></LIST></x:context>
+    <x:expect label="stops the transformation as unsupported Formex" test="$x:result?err?code = xs:QName('f:unknown')" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
+
 
 </x:description>

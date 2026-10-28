@@ -272,4 +272,15 @@
     <x:expect label="is refused" test="exists($x:result?err)"/>
   </x:scenario>
 
+  <!-- ============================================================ push style -->
+
+  <x:scenario label="An element no rule expects at the top of an act" catch="yes">
+    <x:context xmlns=""><ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/><NOT.FORMEX/></ACT></x:context>
+    <x:expect label="stops the transformation as unsupported Formex" test="$x:result?err?code = xs:QName('f:unknown')" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
+
+  <x:scenario label="Text a citation group doesn't expect" catch="yes">
+    <x:context xmlns=""><ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><PREAMBLE><GR.VISA>stray text<VISA>Having regard</VISA></GR.VISA></PREAMBLE><ENACTING.TERMS/></ACT></x:context>
+    <x:expect label="stops the transformation as unsupported Formex" test="$x:result?err?code = xs:QName('f:unknown')" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
 </x:description>

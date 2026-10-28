@@ -25,6 +25,23 @@
 
   <xsl:mode name="block" on-no-match="fail" on-multiple-match="fail"/>
 
+  <!-- the children a template doesn't take, when its output has no place for anything else
+       (citations, signatures, list items, table titles): fail rather than drop them. Markers,
+       page breaks and whitespace are no content. -->
+  <xsl:mode name="unexpected" on-no-match="fail" on-multiple-match="fail"/>
+
+  <xsl:template match="*" mode="unexpected">
+    <xsl:sequence select="f:unknown(., 'not expected inside ' || name(..))"/>
+  </xsl:template>
+
+  <xsl:template match="text()" mode="unexpected">
+    <xsl:if test="normalize-space()">
+      <xsl:sequence select="f:unknown(., 'text not expected inside ' || name(..))"/>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="processing-instruction() | comment()" mode="unexpected"/>
+
   <!-- ============================================================ mixed content -->
 
   <xsl:function name="f:is-block" as="xs:boolean">
@@ -87,6 +104,7 @@
       <xsl:call-template name="f:inlines">
         <xsl:with-param name="nodes" select="if (self::NP) then TXT/node() else node()"/>
       </xsl:call-template>
+      <xsl:apply-templates select="self::NP/(node() except (NO.P | TXT))" mode="unexpected"/>
     </xsl:for-each>
   </xsl:template>
 
@@ -372,6 +390,7 @@
           <xsl:with-param name="pending" select="()" tunnel="yes"/>
           <xsl:with-param name="base" select="f:list-base(., $base)" tunnel="yes"/>
         </xsl:apply-templates>
+        <xsl:apply-templates select="node() except ITEM" mode="unexpected"/>
       </list>
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $list)"/>
@@ -437,6 +456,7 @@
           <xsl:with-param name="pending" select="()" tunnel="yes"/>
           <xsl:with-param name="base" select="f:list-base(., $base)" tunnel="yes"/>
         </xsl:apply-templates>
+        <xsl:apply-templates select="node() except DLIST.ITEM" mode="unexpected"/>
       </list>
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $list)"/>
@@ -533,7 +553,9 @@
           <xsl:variable name="i" as="xs:integer" select="position()"/>
           <xsl:variable name="own" as="processing-instruction()*" select="if (position() = 1) then () else f:new-markers(., ($ctx, f:ids($m)))"/>
           <xsl:call-template name="f:blocks">
-            <xsl:with-param name="nodes" select="CONTENTS/node(), CONS.ANNEX, CONS.DOC.GEN"/>
+            <!-- the content, nested annexes and related documents, and whatever else the fragment
+                 holds besides its title and (in an OJ annex file) its bibliographic data -->
+            <xsl:with-param name="nodes" select="CONTENTS/node() | (* except (TITLE | CONTENTS | BIB.INSTANCE))"/>
             <xsl:with-param name="ctx" select="($ctx, f:ids(($m, $own)))" tunnel="yes"/>
             <xsl:with-param name="pending" select="$own" tunnel="yes"/>
             <xsl:with-param name="base" select="$eid" tunnel="yes"/>
@@ -581,6 +603,7 @@
         </xsl:call-template>
       </subheading>
     </xsl:if>
+    <xsl:apply-templates select="$title/(node() except (TI | STI))" mode="unexpected"/>
   </xsl:template>
 
   <xsl:function name="f:level-num" as="element()?">
@@ -758,6 +781,7 @@
               <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
               <xsl:with-param name="pending" select="()" tunnel="yes"/>
             </xsl:call-template>
+            <xsl:apply-templates select="TITLE/(node() except (TI | STI))" mode="unexpected"/>
           </caption>
         </xsl:if>
         <xsl:apply-templates select="CORPUS/*" mode="block">
@@ -788,6 +812,7 @@
               <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
               <xsl:with-param name="pending" select="()" tunnel="yes"/>
             </xsl:call-template>
+            <xsl:apply-templates select="TITLE/(node() except (TI | STI))" mode="unexpected"/>
           </caption>
         </xsl:if>
         <xsl:call-template name="f:blocks">
@@ -813,6 +838,7 @@
         <xsl:with-param name="ctx" select="($ctx, f:ids($m))" tunnel="yes"/>
         <xsl:with-param name="pending" select="()" tunnel="yes"/>
       </xsl:apply-templates>
+      <xsl:apply-templates select="node() except CELL" mode="unexpected"/>
     </tr>
   </xsl:template>
 
@@ -856,6 +882,7 @@
                 <xsl:with-param name="nodes" select="NP/TXT/node()"/>
               </xsl:call-template>
             </heading>
+            <xsl:apply-templates select="node() except NP, NP/(node() except (NO.P | TXT))" mode="unexpected"/>
           </xsl:when>
           <xsl:otherwise>
             <heading>
@@ -949,6 +976,7 @@
           </xsl:call-template>
         </description>
       </xsl:if>
+      <xsl:apply-templates select="node() except (CAPTION | IMG.CNT)" mode="unexpected"/>
     </figure>
   </xsl:template>
 
@@ -1154,6 +1182,7 @@
     <xsl:call-template name="f:blocks">
       <xsl:with-param name="nodes" select="TI/node(), STI/node()"/>
     </xsl:call-template>
+    <xsl:apply-templates select="node() except (TI | STI)" mode="unexpected"/>
   </xsl:template>
 
   <!-- an agreement quoted whole, e.g. in a corrigendum that replaces its text; a protocol an

@@ -200,6 +200,7 @@
       <xsl:call-template name="f:inlines">
         <xsl:with-param name="nodes" select="if (TXT) then TXT/node() else node()"/>
       </xsl:call-template>
+      <xsl:apply-templates select="TXT/../(node() except TXT)" mode="unexpected"/>
     </span>
   </xsl:template>
 
