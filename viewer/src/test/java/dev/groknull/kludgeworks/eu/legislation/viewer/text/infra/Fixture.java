@@ -25,7 +25,7 @@ import javax.xml.transform.stream.StreamSource;
 record Fixture(String name, Path folder) {
 
   private static final Pattern ROOT_ELEMENT = Pattern.compile("<([A-Z][A-Z0-9.]*)[\\s>/]");
-  private static final Pattern OJ_CELEX = Pattern.compile("[1-9]\\d{4}[A-Z]{1,2}[0-9A-Z()]+");
+  private static final Pattern OJ_CELEX = Pattern.compile("[1-9E]\\d{4}[A-Z]{1,2}[0-9A-Z()]+");
 
   /**
    * The file to normalise: a consolidation's CONS.ACT or CONS.OTH file, else the package descriptor

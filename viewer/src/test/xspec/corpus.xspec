@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!-- Constructs found by normalising the whole formex-docs corpus: grouped recitals, block content
+     inside emphasis and headings, CN tables, full powers, and what the source gets wrong -->
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+    xmlns:f="https://kludgeworks.groknull.dev/ns/normalise"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/normalise.xsl">
+
+  <x:param name="celex" select="'32026R0449'"/>
+
+  <!-- ============================================================ recitals -->
+
+  <x:scenario label="Recitals grouped under headings (DIV.CONSID)">
+    <x:context xmlns="">
+      <ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <PREAMBLE><GR.CONSID><GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+          <DIV.CONSID><TITLE><TI><NP><NO.P>A.</NO.P><TXT>PROCEDURE</TXT></NP></TI></TITLE>
+            <CONSID><NP><NO.P>(1)</NO.P><TXT>a</TXT></NP></CONSID>
+            <DIV.CONSID><TITLE><TI><NP><NO.P>1.</NO.P><TXT>Initiation</TXT></NP></TI></TITLE>
+              <CONSID><NP><NO.P>(2)</NO.P><TXT>b</TXT></NP></CONSID>
+              <TBL COLS="1"><CORPUS><ROW><CELL COL="1">c</CELL></ROW></CORPUS></TBL>
+            </DIV.CONSID>
+          </DIV.CONSID>
+          <CONSID><NP><NO.P>(3)</NO.P><TXT>d</TXT></NP></CONSID>
+        </GR.CONSID></PREAMBLE>
+        <ENACTING.TERMS/>
+      </ACT>
+    </x:context>
+    <x:expect label="are division units with their heading" test="
+        $x:result//*:recitals/*:unit[@kind = 'division']/@eId = 'pbl_1/dvs_A'
+        and $x:result//*:recitals/*:unit[@kind = 'division']/*:num/*:t/@v = 'A.'
+        and $x:result//*:recitals/*:unit[@kind = 'division']/*:heading/*:t/@v = 'PROCEDURE'"/>
+    <x:expect label="nest" test="$x:result//*:unit[@eId = 'pbl_1/dvs_A']/*:unit[@kind = 'division']/@eId = 'pbl_1/dvs_A/dvs_1'"/>
+    <x:expect label="keep preamble-wide recital eIds" test="$x:result//*:unit[@kind = 'recital']/@eId = ('pbl_1/rct_1', 'pbl_1/rct_2', 'pbl_1/rct_3')"/>
+    <x:expect label="keep what a group holds besides recitals" test="exists($x:result//*:unit[@eId = 'pbl_1/dvs_A/dvs_1']/*:table)"/>
+  </x:scenario>
+
+  <x:scenario label="Recitals written as a list">
+    <x:context xmlns="">
+      <ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <PREAMBLE><GR.CONSID><GR.CONSID.INIT>Whereas:</GR.CONSID.INIT>
+          <LIST TYPE="ARAB"><ITEM><NP><NO.P>(1)</NO.P><TXT>a</TXT></NP></ITEM><ITEM><NP><NO.P>(2)</NO.P><TXT>b</TXT></NP></ITEM></LIST>
+        </GR.CONSID></PREAMBLE>
+        <ENACTING.TERMS/>
+      </ACT>
+    </x:context>
+    <x:expect label="are recitals" test="$x:result//*:recitals/*:unit[@kind = 'recital']/@eId = ('pbl_1/rct_1', 'pbl_1/rct_2')"/>
+  </x:scenario>
+
+  <x:scenario label="A recital of two numbered paragraphs (02.00)">
+    <x:context xmlns="">
+      <ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <PREAMBLE><GR.CONSID><CONSID><NP><NO.P>(1)</NO.P><TXT>a</TXT></NP><NP><NO.P>(2)</NO.P><TXT>b</TXT></NP></CONSID></GR.CONSID></PREAMBLE>
+        <ENACTING.TERMS/>
+      </ACT>
+    </x:context>
+    <x:expect label="takes the first number" test="$x:result//*:unit[@kind = 'recital']/@eId = 'pbl_1/rct_1'"/>
+    <x:expect label="keeps the second paragraph with its number" test="$x:result//*:unit[@kind = 'recital']/*:p/*:num/*:t/@v = '(2)'"/>
+  </x:scenario>
+
+  <x:scenario label="Recitals that are only their opening words">
+    <x:context xmlns="">
+      <ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <PREAMBLE><GR.CONSID><GR.CONSID.INIT>having regard to Rule 94,</GR.CONSID.INIT></GR.CONSID></PREAMBLE>
+        <ENACTING.TERMS/>
+      </ACT>
+    </x:context>
+    <x:expect label="are the preamble's text, not empty recitals" test="
+        empty($x:result//*:recitals) and $x:result//*:preamble/*:p/*:t/@v = 'having regard to Rule 94,'"/>
+  </x:scenario>
+
+  <!-- ============================================================ blocks where inline content is expected -->
+
+  <x:scenario label="A boxed passage of paragraphs and a list">
+    <x:context mode="block" xmlns="">
+      <P><HT TYPE="BOX"><P>NB</P><LIST TYPE="DASH"><ITEM><P>confirm</P></ITEM></LIST></HT></P>
+    </x:context>
+    <x:expect label="becomes those blocks" test="$x:result[1]/self::*:p/*:t/@v = 'NB' and exists($x:result[2]/self::*:list)"/>
+  </x:scenario>
+
+  <x:scenario label="A level inside a box">
+    <x:context mode="block" xmlns="">
+      <GR.SEQ><TITLE><TI><P>1. Producers</P></TI></TITLE><P><HT TYPE="BOX"><GR.SEQ LEVEL="2"><TITLE><TI><P>Producer</P></TI></TITLE><P>Arkema</P></GR.SEQ></HT></P></GR.SEQ>
+    </x:context>
+    <x:expect label="is a level" test="$x:result//*:unit[@kind = 'level'][*:heading/*:t/@v = 'Producer']/*:p/*:t/@v = 'Arkema'"/>
+  </x:scenario>
+
+  <x:scenario label="A heading whose numbered paragraph holds a second paragraph">
+    <x:context mode="block" xmlns="">
+      <GR.SEQ><TITLE><TI><NP><NO.P>1.</NO.P><TXT>Redfish</TXT><P>(<HT TYPE="ITALIC">Sebastes</HT> spp.)</P></NP></TI></TITLE><P>text</P></GR.SEQ>
+    </x:context>
+    <x:expect label="puts it on a line of its own" test="
+        $x:result/*:num/*:t/@v = '1.'
+        and $x:result/*:heading/*:t[1]/@v = 'Redfish' and exists($x:result/*:heading/*:eol)
+        and $x:result/*:heading/*:emphasis/*:t/@v = 'Sebastes'"/>
+  </x:scenario>
+
+  <x:scenario label="A row group's title of several lines">
+    <x:context mode="block" xmlns="">
+      <TBL COLS="1"><CORPUS><BLK><TI.BLK COL.START="1" COL.END="1"><P>Operating</P><P>revenue</P></TI.BLK><ROW><CELL COL="1">1</CELL></ROW></BLK></CORPUS></TBL>
+    </x:context>
+    <x:expect label="is a heading of lines" test="$x:result//*:rowGroup/*:heading/*:t/@v = ('Operating', 'revenue') and exists($x:result//*:rowGroup/*:heading/*:eol)"/>
+  </x:scenario>
+
+  <x:scenario label="A header cell split diagonally">
+    <x:context mode="block" xmlns="">
+      <TBL COLS="1"><CORPUS><ROW TYPE="HEADER"><CELL COL="1" TYPE="HEADER"><TXT.COL><P>Product</P></TXT.COL><TXT.ROW><P>Country</P></TXT.ROW></CELL></ROW></CORPUS></TBL>
+    </x:context>
+    <x:expect label="holds the column's heading, then the row's" test="$x:result//*:td/*:p/*:t/@v = ('Product', 'Country')"/>
+  </x:scenario>
+
+  <x:scenario label="A marginal heading">
+    <x:context mode="block" xmlns=""><P><MARGIN>CHAPTER 9 0 —</MARGIN>ANNUAL INCOME</P></x:context>
+    <x:expect label="is part of the paragraph's text" test="string-join($x:result//*:t/@v) = 'CHAPTER 9 0 —ANNUAL INCOME'"/>
+  </x:scenario>
+
+  <x:scenario label="An amendment that replaces an article's heading only">
+    <x:context mode="block" xmlns=""><QUOT.S LEVEL="1"><TI.ART>Article 3</TI.ART><STI.ART>Scope</STI.ART></QUOT.S></x:context>
+    <x:expect label="quotes both as paragraphs" test="$x:result/self::*:quotedStructure/*:p/*:t/@v = ('Article 3', 'Scope')"/>
+  </x:scenario>
+
+  <!-- ============================================================ CN tables -->
+
+  <x:scenario label="An extract of the Combined Nomenclature">
+    <x:context mode="block" xmlns="">
+      <P><CN>
+        <CN.HEADER><CN.CODE>CN code</CN.CODE><CN.DESC>Description</CN.DESC><CN.RATE><CN.CONV.RATE><TXT>Rate (%)</TXT></CN.CONV.RATE></CN.RATE></CN.HEADER>
+        <GR.CN.UNIT><TI.GR.CN.UNIT><TITLE><TI><NP><NO.P>I.</NO.P><TXT>CHEMICAL ELEMENTS</TXT></NP></TI></TITLE></TI.GR.CN.UNIT>
+          <CN.UNIT HS="YES" LEVEL="0"><CN.CODE>2801</CN.CODE><CN.DESC>Fluorine</CN.DESC><CN.RATE><CN.CONV.RATE>5,5</CN.CONV.RATE></CN.RATE></CN.UNIT>
+        </GR.CN.UNIT>
+      </CN></P>
+    </x:context>
+    <x:expect label="is a table with a header row" test="$x:result/self::*:table/*:tr[@header = 'true']/*:td/*:p/*:t/@v = ('CN code', 'Description', 'Rate (%)')"/>
+    <x:expect label="groups rows under their title" test="
+        $x:result/*:rowGroup/*:num/*:t/@v = 'I.' and $x:result/*:rowGroup/*:heading/*:t/@v = 'CHEMICAL ELEMENTS'
+        and $x:result/*:rowGroup/*:tr/*:td/*:p/*:t/@v = ('2801', 'Fluorine', '5,5')"/>
+  </x:scenario>
+
+  <!-- ============================================================ agreements and corrigenda -->
+
+  <x:scenario label="An agreement's full powers">
+    <x:context xmlns="">
+      <AGR><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <PREAMBLE><PREAMBLE.INIT>THE PARTIES,</PREAMBLE.INIT>
+          <FULL.POWER><FULL.POWER.INIT>HAVE DECIDED … and have designated as their plenipotentiaries:</FULL.POWER.INIT>
+            <PLENIPOTENTIARY><P>THE COUNCIL:</P></PLENIPOTENTIARY>
+            <FULL.POWER.FINAL>WHO, having exchanged their Full Powers,</FULL.POWER.FINAL></FULL.POWER>
+        </PREAMBLE>
+        <ENACTING.TERMS/>
+      </AGR>
+    </x:context>
+    <x:expect label="are the preamble's text" test="
+        $x:result//*:preamble/*:p/*:t/@v = ('HAVE DECIDED … and have designated as their plenipotentiaries:', 'THE COUNCIL:', 'WHO, having exchanged their Full Powers,')"/>
+  </x:scenario>
+
+  <x:scenario label="A plenipotentiary in the opening formula">
+    <x:context mode="block" xmlns=""><PREAMBLE.INIT>THE PARTIES<PLENIPOTENTIARY><P>THE NORWEGIAN GOVERNMENT</P></PLENIPOTENTIARY></PREAMBLE.INIT></x:context>
+    <x:expect label="is a paragraph of it" test="$x:result//*:t/@v = 'THE NORWEGIAN GOVERNMENT'"/>
+  </x:scenario>
+
+  <x:scenario label="The letters of an agreement included in another document">
+    <x:context mode="block" xmlns="">
+      <AGR><COLL.LETTERS><LETTER><TITLE><TI><NP><NO.P>A.</NO.P><TXT>Letter from the Union</TXT></NP></TI></TITLE><CONTENTS><P>Sir,</P></CONTENTS></LETTER></COLL.LETTERS></AGR>
+    </x:context>
+    <x:expect label="are letters" test="$x:result/self::*:unit[@kind = 'letter']/@eId = 'let_1' and $x:result/*:num/*:t/@v = 'A.'"/>
+  </x:scenario>
+
+  <x:scenario label="Corrections grouped under a heading">
+    <x:context xmlns="">
+      <CORR><BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <CONTENTS.CORR><GR.CORRECTION><DESCRIPTION>In Annex V:</DESCRIPTION>
+          <CORRECTION><DESCRIPTION><P>On page 56:</P></DESCRIPTION></CORRECTION>
+          <CORRECTION><DESCRIPTION><P>On page 57:</P></DESCRIPTION></CORRECTION>
+        </GR.CORRECTION></CONTENTS.CORR>
+      </CORR>
+    </x:context>
+    <x:expect label="keep the heading and number the corrections through the document" test="
+        $x:result/*:body/*:p/*:t/@v = 'In Annex V:' and $x:result/*:body/*:unit/@eId = ('cor_1', 'cor_2')"/>
+  </x:scenario>
+
+  <x:scenario label="A long title with a list">
+    <x:context xmlns="">
+      <CORR><BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <TITLE><TI><P>Corrigendum to:</P><LIST TYPE="DASH"><ITEM><P>Regulation (EU) No 1</P></ITEM><ITEM><P>Regulation (EU) No 2</P></ITEM></LIST></TI></TITLE>
+        <CONTENTS.CORR/>
+      </CORR>
+    </x:context>
+    <x:expect label="has the list as a line of its items" test="
+        $x:result//*:longTitle/*:p[2]/*:t/@v = ('Regulation (EU) No 1', 'Regulation (EU) No 2') and exists($x:result//*:longTitle/*:p[2]/*:eol)"/>
+  </x:scenario>
+
+  <x:scenario label="A corrigendum whose text is in an included file">
+    <x:context mode="block" xmlns=""><CORR><BIB.INSTANCE/><TITLE><TI><P>Corrigendum to Notice EPSO/AD/45/06</P></TI></TITLE><CONTENTS.CORR><CORRECTION><DESCRIPTION><P>On page 2:</P></DESCRIPTION></CORRECTION></CONTENTS.CORR></CORR></x:context>
+    <x:expect label="is its title and its corrections" test="$x:result[1]/self::*:p/*:t/@v = 'Corrigendum to Notice EPSO/AD/45/06' and $x:result[2]/self::*:unit[@kind = 'correction']/*:p/*:t/@v = 'On page 2:'"/>
+  </x:scenario>
+
+  <!-- ============================================================ what the source gets wrong -->
+
+  <x:scenario label="A date that is not one (ISO 19931911)">
+    <x:context mode="block" xmlns=""><P>On <DATE ISO="19931911">19 November 1993</DATE></P></x:context>
+    <x:expect label="keeps its wording without a value" test="$x:result//*:date/@asWritten = '19 November 1993' and empty($x:result//*:date/@date)"/>
+  </x:scenario>
+
+  <x:scenario label="A quotation mark with CODE 0000">
+    <x:context mode="block" xmlns=""><P><QUOT.START ID="QS1" REF.END="QE1" CODE="0000"/>a<QUOT.END ID="QE1" REF.START="QS1" CODE="0000"/></P></x:context>
+    <x:expect label="is the default quotation mark" test="$x:result//*:quote/@startQuote = '‘' and $x:result//*:quote/@endQuote = '’'"/>
+  </x:scenario>
+
+  <x:scenario label="Anonymised text">
+    <x:context mode="block" xmlns=""><P>Name: <ANONYMOUS PLACEHOLDER="██████"/></P></x:context>
+    <x:expect label="is its placeholder" test="string-join($x:result//*:t/@v) = 'Name: ██████'"/>
+  </x:scenario>
+
+  <x:scenario label="A reference to the European Court Reports">
+    <x:context mode="block" xmlns=""><P><REF.DOC.ECR EDITION="GEN" NO.CASE="C-280/00" PAGE.ECR="I-7747" YEAR="2003">C-280/00 Altmark [2003] ECR I-7747</REF.DOC.ECR></P></x:context>
+    <x:expect label="is its text" test="string-join($x:result//*:t/@v) = 'C-280/00 Altmark [2003] ECR I-7747'"/>
+  </x:scenario>
+
+  <x:scenario label="An element the preamble doesn't expect" catch="yes">
+    <x:context xmlns=""><ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><PREAMBLE><P>text</P><NOT.FORMEX/></PREAMBLE><ENACTING.TERMS/></ACT></x:context>
+    <x:expect label="stops the transformation as unsupported Formex" test="$x:result?err?code = xs:QName('f:unknown')"/>
+  </x:scenario>
+</x:description>
