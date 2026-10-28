@@ -7,7 +7,9 @@ load("@rules_java//java:defs.bzl", "java_library")
 def xjc_library(name, schema, bindings = None, xjc_args = [], srcs = [], deps = [], visibility = None):
     """Generate JAXB classes from an XSD (and its bindings) into a reproducible srcjar, and compile them.
 
-    xjc turns the schema's xs:documentation into the classes' and properties' Javadoc.
+    xjc turns the schema's xs:documentation into the classes' and properties' Javadoc. It writes
+    into a temporary directory; Bazel's zipper packs that into the srcjar with fixed timestamps,
+    sorted, so the srcjar is the same bytes on every build.
 
     Args:
       name: the java_library; the srcjar is `name`.srcjar.
@@ -19,15 +21,26 @@ def xjc_library(name, schema, bindings = None, xjc_args = [], srcs = [], deps = 
       visibility: the java_library's visibility.
     """
     inputs = [schema] + ([bindings] if bindings else [])
-    args = list(xjc_args) + ["-extension"]
+    args = ["-npa", "-no-header", "-quiet", "-extension"] + list(xjc_args)
     if bindings:
         args += ["-b", "$(location %s)" % bindings]
     native.genrule(
         name = name + "_srcjar",
         srcs = inputs,
         outs = [name + ".srcjar"],
-        cmd = "$(location //tools/build:xjc) $@ %s $(location %s)" % (" ".join(args), schema),
-        tools = ["//tools/build:xjc"],
+        cmd = " && ".join([
+            "zipper=$$PWD/$(execpath @bazel_tools//tools/zip:zipper)",
+            "srcjar=$$PWD/$@",
+            "out=$$(mktemp -d)",
+            "$(execpath //tools/build:xjc) -d $$out %s $(location %s)" % (" ".join(args), schema),
+            "cd $$out",
+            "$$zipper c $$srcjar $$(find . -name '*.java' | LC_ALL=C sort | sed 's|^[.]/||')",
+            "rm -rf $$out",
+        ]),
+        tools = [
+            "//tools/build:xjc",
+            "@bazel_tools//tools/zip:zipper",
+        ],
     )
     java_library(
         name = name,

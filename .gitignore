@@ -1,8 +1,9 @@
 # SPDX-License-Identifier: MIT
 /bazel-*
 
-# IDEs
+# IDEs (.bazelbsp/: the IntelliJ Bazel plugin's generated aspects)
 .idea/
+.bazelbsp/
 *.iml
 .vscode/
 

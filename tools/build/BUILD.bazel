@@ -30,19 +30,12 @@ java_library(
     ],
 )
 
-java_library(
-    name = "srcjars",
-    srcs = ["src/dev/groknull/kludgeworks/build/Srcjars.java"],
-)
-
-# xjc, run in-process into a srcjar
+# JAXB's code generator, through its own entry point, for xjc_library
 java_binary(
     name = "xjc",
-    srcs = ["src/dev/groknull/kludgeworks/build/XjcSrcjar.java"],
-    main_class = "dev.groknull.kludgeworks.build.XjcSrcjar",
-    runtime_deps = ["@maven//:org_glassfish_jaxb_jaxb_runtime"],
-    deps = [
-        ":srcjars",
+    main_class = "com.sun.tools.xjc.XJCFacade",
+    runtime_deps = [
+        "@maven//:org_glassfish_jaxb_jaxb_runtime",
         "@maven//:org_glassfish_jaxb_jaxb_xjc",
     ],
 )
