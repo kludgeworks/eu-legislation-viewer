@@ -1,11 +1,14 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
 
 # One test target per *Test.java; Fixture, Fixtures and TextConservation become a shared library
 java_test_suite(
     name = "infra",
     size = "medium",
-    srcs = glob(["*.java"]),
+    srcs = glob(
+        ["*.java"],
+        exclude = ["CorpusTests.java"],
+    ),
     data = ["//src/test/resources/fixtures"],
     runner = "junit5",
     runtime_deps = [
@@ -28,5 +31,32 @@ java_test_suite(
         "@maven//:org_xmlunit_xmlunit_assertj3",
         "@maven//:org_xmlunit_xmlunit_core",
         "@rules_java//java/runfiles",
+    ],
+)
+
+# The regression test on the whole corpus: one language's mirror, outside the workspace
+# (mise run corpus:fetch, then mise run corpus:test; also //:corpus; see CorpusTests)
+java_junit5_test(
+    name = "corpus",
+    size = "enormous",
+    srcs = ["CorpusTests.java"],
+    # not part of //...; cached on the converter and the mirror's manifest hash (--test_env)
+    tags = ["manual"],
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.CorpusTests",
+    visibility = ["//:__pkg__"],  # for the //:corpus suite
+    runtime_deps = [
+        "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:resources",
+        "//src/test/resources/compare:resources",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        ":infra-test-lib",
+        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra",
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_xmlunit_xmlunit_assertj3",
     ],
 )
