@@ -97,6 +97,22 @@
               test="$x:result/*:annexes/*:unit/@eId => string-join(' ') = 'anx_III app_III'"/>
   </x:scenario>
 
+  <x:scenario label="Levels whose headings hold a list">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R0001" START.DATE="20260101" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX</P></TI></TITLE><CONTENTS>
+            <GR.SEQ LEVEL="1"><TITLE><TI><NP><NO.P>1.1</NO.P><TXT>Scope:</TXT><P><LIST TYPE="DASH"><ITEM><P>aircraft</P></ITEM></LIST></P></NP></TI></TITLE><P>x</P></GR.SEQ>
+            <GR.SEQ LEVEL="1"><TITLE><TI><NP><NO.P>1.2</NO.P><TXT>Scope:</TXT><P><LIST TYPE="DASH"><ITEM><P>vessels</P></ITEM></LIST></P></NP></TI></TITLE><P>y</P></GR.SEQ>
+          </CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="number the list in each heading under its level"
+              test="$x:result//*:unit[@kind = 'indent']/@eId => string-join(' ') = 'anx/pnt_1.1/idt_1 anx/pnt_1.2/idt_1'"/>
+  </x:scenario>
+
   <x:scenario label="Annexes with labels">
     <x:context xmlns="">
       <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">

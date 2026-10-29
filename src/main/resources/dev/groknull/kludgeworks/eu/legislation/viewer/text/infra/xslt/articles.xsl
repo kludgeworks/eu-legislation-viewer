@@ -158,6 +158,7 @@
       <unit eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:title">
+          <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
@@ -186,6 +187,7 @@
       <unit eId="{$eid}" kind="subdivision">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:title">
+          <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>

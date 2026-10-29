@@ -163,6 +163,7 @@
     <unit eId="{$eid}" kind="letter">
       <!-- "A. Letter from the European Union": A. is the num -->
       <xsl:call-template name="f:title">
+        <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
         <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>
         <xsl:with-param name="num-first-line" as="xs:boolean" select="false()"/>
       </xsl:call-template>

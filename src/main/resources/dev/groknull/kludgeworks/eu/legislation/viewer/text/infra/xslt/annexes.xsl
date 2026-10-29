@@ -49,9 +49,12 @@
 
   <xsl:mode name="annex" on-no-match="fail" on-multiple-match="fail"/>
 
-  <!-- an annex met inside content: a nested annex, its own fragment -->
+  <!-- an annex met inside content: a nested annex, its own fragment, under the eId of what holds it
+       (an annex, or a level of one: anx/lvl_PART-10/anx_1) -->
   <xsl:template match="CONS.ANNEX | ANNEX | CONS.DOC.GEN[@TYPE = 'ANNEX'][parent::CONS.DOC.GEN]" mode="block">
-    <xsl:apply-templates select="." mode="annex"/>
+    <xsl:apply-templates select="." mode="annex">
+      <xsl:with-param name="inContent" as="xs:boolean" select="true()"/>
+    </xsl:apply-templates>
   </xsl:template>
 
   <!-- one annex, from one or more fragments ($fragments); an OJ act's annex file can be GENERAL -->
@@ -70,6 +73,8 @@
     <xsl:param name="quoted" as="xs:boolean" select="false()" tunnel="yes"/>
     <!-- a file another annex includes (INCL.ELEMENT): an annex of that annex, under its eId -->
     <xsl:param name="included" as="xs:boolean" select="false()"/>
+    <!-- met inside content, not one of the act's own annexes: under the eId of what holds it -->
+    <xsl:param name="inContent" as="xs:boolean" select="false()"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="nested" as="xs:boolean" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
     <xsl:variable name="position" as="xs:integer" select="($annexPosition, count(preceding-sibling::*[self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) + 1)[1]"/>
@@ -78,7 +83,7 @@
     <xsl:variable name="abbr" as="xs:string" select="if (exists(f:subdivision(string(TITLE[1]/TI/*[1]), 'APP', .))) then 'app' else 'anx'"/>
     <xsl:variable name="eid" as="xs:string" select="
         if (not($nested) and $annexCount = 1) then f:eid($annexBase, $abbr, ())
-        else f:eid(if ($nested or $quoted or $included) then $base else $annexBase, $abbr, $label)"/>
+        else f:eid(if ($nested or $inContent or $quoted or $included) then $base else $annexBase, $abbr, $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="annex">
         <!-- EUR-Lex anchors the act's own annexes, not those it quotes or an annex includes -->
@@ -88,6 +93,7 @@
         <xsl:sequence select="f:provenance($m)"/>
         <!-- the first title; a second (a consolidation's annex can have two) is text of the annex -->
         <xsl:call-template name="f:title">
+          <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <xsl:with-param name="title" as="element(TITLE)?" select="TITLE[1]"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
@@ -265,6 +271,7 @@
               </xsl:call-template>
             </num>
             <xsl:call-template name="f:title">
+              <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
               <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>
               <xsl:with-param name="num-first-line" as="xs:boolean" select="false()"/>
               <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
@@ -272,6 +279,7 @@
           </xsl:when>
           <xsl:otherwise>
             <xsl:call-template name="f:title">
+              <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
               <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>
               <xsl:with-param name="num-first-line" as="xs:boolean" select="exists($label-line)"/>
               <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
