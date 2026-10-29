@@ -201,6 +201,8 @@
               <xsl:apply-templates select="$fragments[1]" mode="annex">
                 <xsl:with-param name="fragments" as="element()*" select="$fragments"/>
                 <xsl:with-param name="annexCount" as="xs:integer?" select="count($groups)"/>
+                <!-- an act whose one unlabelled annex comes beside ANNEX 1, ANNEX 2: that one is anx -->
+                <xsl:with-param name="unlabelledCount" as="xs:integer?" select="count($groups[f:annex-label(?1) = ''])"/>
                 <xsl:with-param name="annexPosition" as="xs:integer?" select="position()"/>
                 <xsl:with-param name="anchor" as="xs:integer?" select="
                     if ($fragments[1][self::ANNEX or self::GENERAL]) then index-of(($annexes ! generate-id()), generate-id($fragments[1]))

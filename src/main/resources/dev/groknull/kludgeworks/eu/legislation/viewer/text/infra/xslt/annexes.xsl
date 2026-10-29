@@ -67,6 +67,8 @@
     <xsl:param name="fragments" as="element()*" select="."/>
     <!-- top level: how many annexes the act has, this one's position, its first EUR-Lex anchor -->
     <xsl:param name="annexCount" as="xs:integer?"/>
+    <!-- top level: how many of the act's annexes have no label -->
+    <xsl:param name="unlabelledCount" as="xs:integer?"/>
     <xsl:param name="annexPosition" as="xs:integer?"/>
     <xsl:param name="anchor" as="xs:integer?"/>
     <!-- inside a quotation: an annex the amending act inserts or substitutes, under the quotation's eId -->
@@ -82,7 +84,7 @@
     <!-- an appendix, as the EU subdivision table names it in the document's language, is app_ -->
     <xsl:variable name="abbr" as="xs:string" select="if (exists(f:subdivision(string(TITLE[1]/TI/*[1]), 'APP', .))) then 'app' else 'anx'"/>
     <xsl:variable name="eid" as="xs:string" select="
-        if (not($nested) and $annexCount = 1) then f:eid($annexBase, $abbr, ())
+        if (not($nested) and ($annexCount = 1 or $unlabelledCount = 1 and f:annex-label(.) = '')) then f:eid($annexBase, $abbr, ())
         else f:eid(if ($nested or $inContent or $quoted or $included) then $base else $annexBase, $abbr, $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="annex">
