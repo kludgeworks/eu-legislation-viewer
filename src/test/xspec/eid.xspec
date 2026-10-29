@@ -25,9 +25,13 @@
       <x:call function="f:label"><x:param select="'CAT.GEN.100'"/></x:call>
       <x:expect label="CAT.GEN.100" select="'CAT.GEN.100'"/>
     </x:scenario>
-    <x:scenario label="drops characters outside [A-Za-z0-9._-]">
+    <x:scenario label="drops what isn't a letter, digit, dot, underscore or hyphen">
       <x:call function="f:label"><x:param select="'6–D'"/></x:call>
       <x:expect label="the en dash goes" select="'6D'"/>
+    </x:scenario>
+    <x:scenario label="keeps letters of any script, so that labels differing in print differ">
+      <x:call function="f:label"><x:param select="'ΙII'"/></x:call>
+      <x:expect label="a Greek capital iota stays: ΙII is not II" select="'ΙII'"/>
     </x:scenario>
   </x:scenario>
 
@@ -43,6 +47,14 @@
     <x:scenario label="ANNEX alone">
       <x:call function="f:label-after-word"><x:param select="'ANNEX'"/></x:call>
       <x:expect label="empty" select="''"/>
+    </x:scenario>
+    <x:scenario label="Article13, printed without a space">
+      <x:call function="f:label-after-word"><x:param select="'Article13'"/></x:call>
+      <x:expect label="13" select="'13'"/>
+    </x:scenario>
+    <x:scenario label="Article1d, printed without a space">
+      <x:call function="f:label-after-word"><x:param select="'Article1d'"/></x:call>
+      <x:expect label="1d" select="'1d'"/>
     </x:scenario>
   </x:scenario>
 

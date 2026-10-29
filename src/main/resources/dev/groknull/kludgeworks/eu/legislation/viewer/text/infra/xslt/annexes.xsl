@@ -154,11 +154,12 @@
   </xsl:function>
 
   <!-- what an unnumbered level is numbered within: its parent level (also when a table or a stray
-       CONTENTS sits in between), else the annex contents or the quoted structure -->
+       CONTENTS sits in between), else the quoted structure, the contents of an annex or other
+       document (GENERAL), or the enacting terms -->
   <xsl:function name="f:level-parent" as="element()?">
     <xsl:param name="seq" as="element(GR.SEQ)"/>
-    <xsl:sequence select="$seq/ancestor::*[self::GR.SEQ or self::QUOT.S
-                                           or self::CONTENTS[parent::CONS.ANNEX or parent::ANNEX or parent::CONS.DOC.GEN[parent::CONS.DOC.GEN]]][1]"/>
+    <xsl:sequence select="$seq/ancestor::*[self::GR.SEQ or self::QUOT.S or self::ENACTING.TERMS
+                                           or self::CONTENTS[not(ancestor::GR.SEQ)]][1]"/>
   </xsl:function>
 
   <xsl:function name="f:level-ordinal" as="xs:integer">

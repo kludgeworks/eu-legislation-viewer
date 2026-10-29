@@ -4,7 +4,8 @@
   eIds, AKN4EU style: segments joined by "/", each an abbreviation plus the unit's own label,
   e.g. art_3/par_2/pnt_a, anx/pnt_1.2.2.6, pbl_1/rct_12. Labels are taken literally: brackets and
   trailing dots are dropped, whitespace becomes "-", nothing is interpreted. Units without a label
-  are numbered by position (unp_2, idt_3, lvl_1).
+  are numbered by position (unp_2, idt_3, lvl_1). Letters and digits of any script are kept, so that
+  labels that differ in print differ here: "ANNEX ΙII", with a Greek capital iota, isn't anx_II.
 -->
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -20,13 +21,18 @@
         => replace('^[\(\[]+|[\)\]]+$', '')
         => replace('\.+$', '')
         => replace('\s+', '-')
-        => replace('[^A-Za-z0-9._\-]', '')"/>
+        => replace('[^\p{L}\p{N}._\-]', '')"/>
   </xsl:function>
 
-  <!-- the label after a leading type word: "Article 3" → "3", "ANNEX II" → "II", "ANNEX" → "" -->
+  <!-- the label after a leading type word: "Article 3" → "3", "ANNEX II" → "II", "ANNEX" → "";
+       also when print left out the space: "Article13" → "13", "Article1d" → "1d" -->
   <xsl:function name="f:label-after-word" as="xs:string">
     <xsl:param name="label" as="xs:string?"/>
-    <xsl:sequence select="f:label(substring-after(f:spaces($label), ' '))"/>
+    <xsl:variable name="s" as="xs:string" select="f:spaces($label)"/>
+    <xsl:sequence select="f:label(
+        if (contains($s, ' ')) then substring-after($s, ' ')
+        else if (matches($s, '^\p{L}+\p{N}')) then replace($s, '^\p{L}+', '')
+        else '')"/>
   </xsl:function>
 
   <!-- whitespace normalised, non-breaking spaces included ("Article&#160;1") -->
