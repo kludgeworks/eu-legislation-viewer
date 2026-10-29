@@ -35,6 +35,8 @@ WHERE {
   }
   ?item cdm:item_belongs_to_manifestation ?manifestation ;
         cmr:manifestationMimeType ?mime .
+  # no images: the regression test reads the XML, and scanned forms are most of the bytes
+  FILTER (!STRSTARTS(STR(?mime), "image/"))
   OPTIONAL { ?work cdm:resource_legal_id_celex ?celexId }
   OPTIONAL { ?item tdm:stream_name ?streamName }
   OPTIONAL { ?item owl:sameAs ?same }

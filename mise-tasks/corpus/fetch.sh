@@ -12,8 +12,8 @@
 #
 # formex-corpus/{language}/ at the repository root (ignored by git and Bazel) then holds:
 #   manifest.tsv                 the complete manifestations: Cellar ID, lastModified, CELEX
-#   files/{manifestation}/       each one's files; a zip-only manifestation's unpacked
-#   zips/{manifestation}/        the zips as fetched
+#   files/{manifestation}/       each one's Formex files; a zip-only manifestation's XML, unpacked
+#   zips/{manifestation}/        each zip, emptied once unpacked: a marker that it's done
 #   index/{slice}.tsv            the query's answer (formex-items.rq), slice by slice
 #   failures.tsv, mismatches.tsv what the last run couldn't fetch, and SHA-1s that didn't match
 #
@@ -116,23 +116,27 @@ for slice in $slices; do
 			--retry-delay 10 -sS -A "$agent") || true
 	fi
 
-	# unpack each zip whose manifestation has no files yet
+	# the SHA-1s Cellar records, against the bytes fetched (before a zip is unpacked and emptied)
+	awk -F'\t' '$2 != "-" { print $2 "  " $1 }' "$work/fetched" >"$work/sums"
+	if [ -s "$work/sums" ]; then
+		(cd "$dir" && shasum -a 1 -c "$work/sums" 2>/dev/null || true) |
+			awk '/: FAILED$/ { sub(/: FAILED$/, ""); print }' >>"$dir/mismatches.tsv"
+	fi
+
+	# unpack each zip whose manifestation has no files yet, its XML only (the test reads no images),
+	# then empty it: the empty file marks it fetched and unpacked, so a rerun skips it
 	for zip in "$dir/zips/$slice"*/*; do
 		[ -e "$zip" ] || continue
 		id=$(basename "$(dirname "$zip")")
 		if [ -z "$(ls -A "$dir/files/$id" 2>/dev/null)" ]; then
 			mkdir -p "$dir/files/$id"
 			# -j keeps entries in the folder, whatever paths the zip holds
-			unzip -qq -o -j "$zip" -d "$dir/files/$id" || rm -rf "${dir:?}/files/$id"
+			unzip -qq -o -j "$zip" '*.xml' -d "$dir/files/$id" || rm -rf "${dir:?}/files/$id"
+		fi
+		if [ -s "$zip" ] && [ -n "$(ls -A "$dir/files/$id" 2>/dev/null)" ]; then
+			: >"$zip"
 		fi
 	done
-
-	# the SHA-1s Cellar records, against the bytes fetched
-	awk -F'\t' '$2 != "-" { print $2 "  " $1 }' "$work/fetched" >"$work/sums"
-	if [ -s "$work/sums" ]; then
-		(cd "$dir" && shasum -a 1 -c "$work/sums" 2>/dev/null || true) |
-			awk '/: FAILED$/ { sub(/: FAILED$/, ""); print }' >>"$dir/mismatches.tsv"
-	fi
 
 	# complete: every item on disk, and a zip unpacked
 	: >"$work/incomplete"
