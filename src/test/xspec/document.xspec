@@ -131,6 +131,32 @@
               test="$x:result//*:recitals//*:unit[@kind = 'level']/@eId => string-join(' ') = 'pbl_1/rct_1/lvl_1 pbl_1/rct_1/lvl_2'"/>
   </x:scenario>
 
+  <x:scenario label="Recitals in groups, with unnumbered CONSIDs and a number printed twice">
+    <x:context xmlns="">
+      <ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.3-20250123.xd">
+        <BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL><PAGE.FIRST>1</PAGE.FIRST></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <TITLE><TI><P>Commission Implementing Regulation (EU) 2026/4</P></TI></TITLE>
+        <PREAMBLE><PREAMBLE.INIT>THE EUROPEAN COMMISSION,</PREAMBLE.INIT>
+          <GR.CONSID>
+            <CONSID><P>Whereas:</P></CONSID>
+            <DIV.CONSID><TITLE><TI><NP><NO.P>A.</NO.P><TXT>PROCEDURE</TXT></NP></TI></TITLE><CONSID><NP><NO.P>(1)</NO.P><TXT>One.</TXT></NP></CONSID></DIV.CONSID>
+            <DIV.CONSID><TITLE><TI><NP><NO.P>B.</NO.P><TXT>SAMPLING</TXT></NP></TI></TITLE><CONSID><P>No sampling was needed.</P></CONSID></DIV.CONSID>
+            <DIV.CONSID><TITLE><TI><NP><NO.P>C.</NO.P><TXT>DUMPING</TXT></NP></TI></TITLE><CONSID><NP><NO.P>(2)</NO.P><TXT>Two.</TXT></NP></CONSID></DIV.CONSID>
+            <DIV.CONSID><TITLE><TI><NP><NO.P>D.</NO.P><TXT>INJURY</TXT></NP></TI></TITLE><CONSID><NP><NO.P>(2)</NO.P><TXT>Two again.</TXT></NP></CONSID></DIV.CONSID>
+          </GR.CONSID>
+          <PREAMBLE.FINAL>HAS ADOPTED THIS REGULATION:</PREAMBLE.FINAL></PREAMBLE>
+        <ENACTING.TERMS/>
+      </ACT>
+    </x:context>
+    <x:expect label="the unnumbered ones are no recitals: only (1) and the two (2)"
+              test="$x:result//*:unit[@kind = 'recital']/@eId => string-join(' ') = 'pbl_1/rct_1 pbl_1/rct_2 pbl_1/rct_2'"/>
+    <x:expect label="Whereas: opens the recitals" test="$x:result//*:recitals/*:intro//*:t/@v = 'Whereas:'"/>
+    <x:expect label="the lone one in group B is the group's text"
+              test="$x:result//*:unit[@eId = 'pbl_1/dvs_B']/*:p//*:t/@v = 'No sampling was needed.'"/>
+    <x:expect label="(2) in two groups is the source repeating a preamble-wide number: both marked"
+              test="count($x:result//*:unit[@eId = 'pbl_1/rct_2'][@ambiguous = 'true']) = 2"/>
+  </x:scenario>
+
   <x:scenario label="An OJ act's preamble and signature">
     <x:context xmlns="">
       <ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.3-20250123.xd">

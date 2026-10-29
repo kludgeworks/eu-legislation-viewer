@@ -284,7 +284,7 @@
     <xsl:sequence select="count($copies) gt 1 and (
         (f:printed-label($unit) != ''
          and (every $c in $copies satisfies f:printed-label($c) = f:printed-label($unit)
-              and $c/.. is $unit/..))
+              and f:sequence($c) is f:sequence($unit)))
         or (every $c in $copies satisfies f:unit-parent($c)[self::lt:unit][f:ambiguous(.)]))"/>
   </xsl:function>
 
@@ -293,6 +293,13 @@
   <xsl:function name="f:printed-label" as="xs:string">
     <xsl:param name="unit" as="element(lt:unit)"/>
     <xsl:sequence select="lower-case(replace(string-join($unit/lt:num//@v), '[^\p{L}\p{N}]', ''))"/>
+  </xsl:function>
+
+  <!-- the sequence a unit is numbered in: its parent, through divisions, which group units without
+       adding to their eIds (articles act-wide, recitals preamble-wide); a list is a sequence of its own -->
+  <xsl:function name="f:sequence" as="node()">
+    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:sequence select="$unit/ancestor::*[not(self::lt:unit[@kind = 'division'])][1]"/>
   </xsl:function>
 
   <xsl:function name="f:unit-parent" as="node()">
@@ -519,10 +526,12 @@
     </recitals>
   </xsl:template>
 
-  <!-- Among numbered recitals, an unnumbered CONSID is no recital of its own: one before the first
-       numbered recital opens them ("Whereas:"), one after a numbered recital continues it (a further
-       paragraph, a table) and is part of it. Only where all are unnumbered are they numbered by
-       position. -->
+  <!-- Among numbered recitals, an unnumbered CONSID is no recital of its own: one after a numbered
+       recital of its group continues it (a further paragraph, a table) and is part of it; one that
+       starts a group, or the recitals, before any of their numbered ones (also those in sub-groups),
+       opens it ("Whereas:", a group's own words), as is one alone in a group of a preamble whose
+       recitals are numbered elsewhere. Only where all of a preamble's recitals are unnumbered are they
+       numbered by position. -->
   <xsl:function name="f:numbered-recital" as="xs:boolean">
     <xsl:param name="consid" as="element()"/>
     <xsl:sequence select="exists($consid/NP[1]/NO.P[f:label(.) != ''])"/>
@@ -538,10 +547,19 @@
     <xsl:sequence select="f:unnumbered-consid($consid) and exists($consid/preceding-sibling::CONSID[f:numbered-recital(.)])"/>
   </xsl:function>
 
+  <!-- an unnumbered CONSID in a group, with nothing numbered before it there, in a preamble that
+       numbers its recitals: the group's text -->
+  <xsl:function name="f:group-text" as="xs:boolean">
+    <xsl:param name="consid" as="element()"/>
+    <xsl:sequence select="f:unnumbered-consid($consid) and exists($consid/parent::DIV.CONSID)
+        and empty($consid/preceding-sibling::CONSID[f:numbered-recital(.)])
+        and exists($consid/ancestor::GR.CONSID[1]//CONSID[f:numbered-recital(.)])"/>
+  </xsl:function>
+
   <xsl:function name="f:leads-recitals" as="xs:boolean">
     <xsl:param name="consid" as="element()"/>
     <xsl:sequence select="f:unnumbered-consid($consid) and empty($consid/preceding-sibling::CONSID[f:numbered-recital(.)])
-                          and exists($consid/following-sibling::CONSID[f:numbered-recital(.)])"/>
+                          and exists($consid/following-sibling::*/descendant-or-self::CONSID[f:numbered-recital(.)])"/>
   </xsl:function>
 
   <!-- a recital (CONSID; an ITEM where the recitals are a LIST). Its eId is its number, preamble-wide
@@ -550,7 +568,7 @@
     <!-- a continuation is part of the recital before it; opening words of the recitals are their
          intro, of a group's recitals the group's text -->
     <xsl:choose>
-      <xsl:when test="f:leads-recitals(.)">
+      <xsl:when test="f:leads-recitals(.) or f:group-text(.)">
         <xsl:if test="not(parent::GR.CONSID)">
           <xsl:call-template name="f:blocks">
             <xsl:with-param name="nodes" as="node()*" select="node()"/>
