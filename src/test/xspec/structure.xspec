@@ -113,6 +113,15 @@
               test="$x:result//*:unit[@kind = 'level']/@eId => string-join(' ') = 'pnt_a/pnt_1 pnt_b/pnt_1'"/>
   </x:scenario>
 
+  <x:scenario label="A level holding a list point 1. and a sub-level (1)">
+    <x:context mode="block" xmlns="">
+      <GR.SEQ LEVEL="1"><NO.GR.SEQ>2.</NO.GR.SEQ><P>Requirements:<LIST TYPE="ARAB"><ITEM><NP><NO.P>1.</NO.P><TXT>x</TXT></NP></ITEM></LIST></P>
+        <GR.SEQ LEVEL="2"><NO.GR.SEQ>(1)</NO.GR.SEQ><P>y</P></GR.SEQ></GR.SEQ>
+    </x:context>
+    <x:expect label="sets the list apart (lst_1), the sub-level keeps pnt_1"
+              test="sort($x:result/descendant-or-self::*:unit/@eId ! string(.)) => string-join(' ') = 'pnt_2 pnt_2/lst_1/pnt_1 pnt_2/pnt_1'"/>
+  </x:scenario>
+
   <x:scenario label="A table">
     <x:context mode="block" xmlns="">
       <TBL COLS="2" NO.SEQ="0001"><TITLE><TI><P>Table 1</P></TI></TITLE><CORPUS>

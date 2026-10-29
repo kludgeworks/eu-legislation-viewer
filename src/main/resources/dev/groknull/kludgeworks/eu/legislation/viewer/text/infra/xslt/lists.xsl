@@ -77,7 +77,9 @@
 
   <!-- points of a list hang off the enclosing unit; when it holds several lists (6.5.2 has two,
        each (a) to (d)), the second and later get a segment of their own: …/lst_2/pnt_a. The first
-       keeps plain eIds, so adding a list doesn't rename the points already there. -->
+       keeps plain eIds, so adding a list doesn't rename the points already there. In a level with
+       sub-levels, which number themselves under it too (point I. of a list, sub-level I.), every
+       list gets the segment: …/lvl_2/lst_1/pnt_1. -->
   <xsl:function name="f:list-base" as="xs:string?">
     <xsl:param name="list" as="element()"/>
     <xsl:param name="base" as="xs:string?"/>
@@ -85,8 +87,9 @@
     <xsl:variable name="siblings" as="element()*" select="
         if ($scope) then $scope//(LIST | DLIST)[f:scope(.) is $scope]
         else root($list)//(LIST | DLIST)[empty(f:scope(.))]"/>
+    <xsl:variable name="beside-levels" as="xs:boolean" select="exists($scope/self::GR.SEQ//GR.SEQ[f:level-parent(.) is $scope])"/>
     <xsl:sequence select="
-        if ($siblings[. &lt;&lt; $list])
+        if ($siblings[. &lt;&lt; $list] or $beside-levels)
         then f:eid($base, 'lst', string(count($siblings[. &lt;&lt; $list]) + 1))
         else $base"/>
   </xsl:function>
