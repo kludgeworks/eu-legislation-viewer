@@ -232,6 +232,7 @@
         <xsl:with-param name="levelCtx" as="xs:string*" select="$ctx" tunnel="yes"/>
         <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
         <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
+        <xsl:with-param name="quoted" as="xs:boolean" select="true()" tunnel="yes"/>
       </xsl:call-template>
     </quotedStructure>
   </xsl:template>
@@ -292,10 +293,15 @@
     </xsl:if>
   </xsl:function>
 
-  <!-- another Formex file of the same package, included here: its content, in place -->
+  <!-- another Formex file of the same package, included here: its content, in place; an annex an
+       amending act quotes stays an annex, under the quotation's eId (anx/qst_1/anx_A) -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'FORMEX.DOC']" mode="block">
+    <xsl:param name="quoted" as="xs:boolean" select="false()" tunnel="yes"/>
     <xsl:variable name="included" as="element()" select="doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
     <xsl:choose>
+      <xsl:when test="$included/self::ANNEX and $quoted">
+        <xsl:apply-templates select="$included" mode="annex"/>
+      </xsl:when>
       <xsl:when test="$included/self::ANNEX">
         <!-- its title ("ANNEX I") as paragraphs, then its content -->
         <xsl:call-template name="f:blocks">

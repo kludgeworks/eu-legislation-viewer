@@ -64,6 +64,25 @@
         test="$x:result/*:body/*:unit/@eId => string-join(' ') = 'lvl_1 lvl_2'"/>
   </x:scenario>
 
+  <x:scenario label="An annex quoted inside another annex (2020/782 quotes the former Annex I in Annex VI)">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2019R0779" START.DATE="20260101" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX I</P></TI></TITLE><CONTENTS><P>x</P></CONTENTS></CONS.ANNEX>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX VI</P></TI></TITLE><CONTENTS>
+            <QUOT.S LEVEL="1"><CONS.ANNEX><TITLE><TI><P>‘ANNEX I</P></TI></TITLE><CONTENTS><P>old text’</P></CONTENTS></CONS.ANNEX></QUOT.S>
+          </CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="is an annex under the quotation, not a second anx_I"
+        test="$x:result//*:quotedStructure/*:unit[@kind = 'annex']/@eId = 'anx_VI/qst_1/anx_I'
+              and $x:result/*:annexes/*:unit/@eId => string-join(' ') = 'anx_I anx_VI'"/>
+    <x:expect label="with no EUR-Lex anchor, which belongs to the act's own annexes"
+        test="empty($x:result//*:quotedStructure/*:unit/@eurlexAnchor)"/>
+  </x:scenario>
+
   <x:scenario label="Annexes with labels">
     <x:context xmlns="">
       <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
