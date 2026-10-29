@@ -20,10 +20,11 @@ import org.xmlunit.assertj3.XmlAssert;
 /**
  * The regression test on the whole corpus: every complete manifestation of one language's mirror,
  * made by mise-tasks/corpus/fetch.sh, checked as the fixtures are. Documents out of scope are
- * skipped. The mirror is outside the workspace:
+ * skipped. The mirror is formex-corpus/{language} at the repository root:
  *
  * <pre>
- * mise run corpus:test ../formex-corpus/eng
+ * mise run corpus:fetch [--language ENG]
+ * mise run corpus:test [--language ENG]
  * </pre>
  *
  * <p>corpus:test passes the manifest's hash as CORPUS_MANIFEST, so that Bazel caches the result

@@ -34,7 +34,7 @@ java_test_suite(
     ],
 )
 
-# The regression test on the whole corpus: one language's mirror, outside the workspace
+# The regression test on the whole corpus: one language's mirror in formex-corpus/, ignored
 # (mise run corpus:fetch, then mise run corpus:test; also //:corpus; see CorpusTests)
 java_junit5_test(
     name = "corpus",

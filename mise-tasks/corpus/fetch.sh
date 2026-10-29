@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: MIT
 #MISE description="Mirror one language's Formex corpus from Cellar for the regression test (hours; resumable)"
-#USAGE arg "<dir>" help="Where the mirrors live, outside the workspace, e.g. ../formex-corpus"
-#USAGE flag "--language <code>" default="ENG" help="An EU authority language code"
+# EUR-Lex's 24 languages, by their EU authority codes: every language Cellar has Formex in
+#USAGE flag "--language <code>" default="ENG" help="An EU authority language code" { choices "BUL" "CES" "DAN" "DEU" "ELL" "ENG" "EST" "FIN" "FRA" "GLE" "HRV" "HUN" "ITA" "LAV" "LIT" "MLT" "NLD" "POL" "POR" "RON" "SLK" "SLV" "SPA" "SWE" }
 #USAGE flag "--slices <list>" default="0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f" help="Cellar UUID prefixes"
 #USAGE flag "--parallel <n>" default="5" help="Downloads at a time"
 #
 # Mirrors Cellar's Formex 4 items in one language, for the corpus regression test (CorpusTests):
 #
-#   mise run corpus:fetch [--language ENG] [--slices 0,1,…,f] [--parallel 5] DIR
+#   mise run corpus:fetch [--language ENG] [--slices 0,1,…,f] [--parallel 5]
 #
-# DIR/{language}/ then holds:
+# formex-corpus/{language}/ at the repository root (ignored by git and Bazel) then holds:
 #   manifest.tsv                 the complete manifestations: Cellar ID, lastModified, CELEX
 #   files/{manifestation}/       each one's files; a zip-only manifestation's unpacked
 #   zips/{manifestation}/        the zips as fetched
@@ -23,6 +23,7 @@
 set -euo pipefail
 
 here=$(cd "$(dirname "$0")" && pwd)
+root=$(cd "$here/../.." && pwd)
 endpoint=https://publications.europa.eu/webapi/rdf/sparql
 agent="kludgeworks-viewer/0.0 (+https://kludgeworks.groknull.dev)"
 language=${usage_language:?}
@@ -34,13 +35,12 @@ invalid() {
 	echo "corpus:fetch: $1" >&2
 	exit 2
 }
-[[ $language =~ ^[A-Z]{3}$ ]] || invalid "not a language code: $language"
 [[ $parallel =~ ^[1-9][0-9]?$ ]] || invalid "not a number of downloads: $parallel"
 for slice in $slices; do
 	[[ $slice =~ ^[0-9a-f]{1,8}$ ]] || invalid "not a slice: $slice"
 done
 
-dir=${usage_dir:?}/$(echo "$language" | tr '[:upper:]' '[:lower:]')
+dir=$root/formex-corpus/$(echo "$language" | tr '[:upper:]' '[:lower:]')
 mkdir -p "$dir/index" "$dir/files" "$dir/zips"
 dir=$(cd "$dir" && pwd)
 touch "$dir/manifest.tsv"
