@@ -144,14 +144,11 @@
     <xsl:variable name="np" as="processing-instruction()*" select="if (count(*) = 1 and NP) then f:new-markers(NP, ($ctx, f:ids($own))) else ()"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, $own, $np)"/>
     <xsl:variable name="label" as="xs:string" select="f:label(NP/NO.P)"/>
-    <!-- a label an earlier live point of the same list already has (2025/24 nests (2), (3) of one
-         point in the outer list, next to its own (2), (3)): the repeat is numbered, pnt_2-2. A
-         deleted placeholder doesn't count, nor is it numbered: a replacement may reuse its label. -->
-    <xsl:variable name="repeat" as="xs:integer" select="
-        if ($label = '' or f:is-deleted-item(.)) then 0
-        else count(preceding-sibling::ITEM[f:label(NP/NO.P) = $label][not(f:is-deleted-item(.))])"/>
+    <!-- a label an earlier point of the same list already has (2025/24 nests (2), (3) of one point in
+         the outer list, next to its own (2), (3)) is kept as published: the points share pnt_2 and are
+         marked ambiguous -->
     <xsl:variable name="eid" as="xs:string" select="
-        if ($label != '') then f:eid($base, 'pnt', $label || (if ($repeat gt 0) then '-' || ($repeat + 1) else ''))
+        if ($label != '') then f:eid($base, 'pnt', $label)
         else f:eid($base, 'idt', string(count(preceding-sibling::ITEM) + 1))"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="{if (NP/NO.P) then 'point' else 'indent'}">

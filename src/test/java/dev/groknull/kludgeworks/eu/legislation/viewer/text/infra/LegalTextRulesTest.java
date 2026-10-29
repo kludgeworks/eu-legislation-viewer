@@ -53,6 +53,30 @@ class LegalTextRulesTest {
   }
 
   @Test
+  void letsUnitsWhoseLabelTheSourceRepeatsShareAnEId() throws SaxonApiException {
+    var text =
+        legalText(
+            """
+            <body><unit eId="art_1" kind="article" ambiguous="true"/>
+                  <unit eId="art_1" kind="article" ambiguous="true"/></body>\
+            """);
+    assertThat(RULES.violations(text)).isEmpty();
+  }
+
+  @Test
+  void rejectsASharedEIdNotAllMarkedAmbiguous() throws SaxonApiException {
+    var text =
+        legalText(
+            """
+            <body><unit eId="art_1" kind="article" ambiguous="true"/>
+                  <unit eId="art_1" kind="article"/></body>\
+            """);
+    assertThat(RULES.violations(text))
+        .extracting(Schematron.Finding::id)
+        .containsExactly("unique-live-eid", "unique-live-eid");
+  }
+
+  @Test
   void rejectsANoteReferenceToNoNote() throws SaxonApiException {
     var text = legalText("<body><p><noteRef href=\"#note_9\" marker=\"9\"/></p></body>");
     assertThat(RULES.violations(text))

@@ -73,7 +73,8 @@
     <x:context mode="block" xmlns="">
       <LIST TYPE="ARAB"><ITEM><NP><NO.P>(2)</NO.P><TXT>Annex III</TXT></NP></ITEM><ITEM><NP><NO.P>(3)</NO.P><TXT>Annex IV</TXT></NP></ITEM><ITEM><NP><NO.P>(2)</NO.P><TXT>point (b)(1)</TXT></NP></ITEM></LIST>
     </x:context>
-    <x:expect label="numbers the repeat" test="$x:result/*:unit/@eId = ('pnt_2', 'pnt_3', 'pnt_2-2')"/>
+    <x:expect label="keeps the repeat as published: two pnt_2 (the document marks them ambiguous)"
+              test="$x:result/*:unit/@eId => string-join(' ') = 'pnt_2 pnt_3 pnt_2'"/>
   </x:scenario>
 
   <x:scenario label="A deleted point and a new one with its label">

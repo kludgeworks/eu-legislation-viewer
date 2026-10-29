@@ -21,11 +21,12 @@
 
   <sch:pattern id="eids">
     <sch:title>eIds identify units</sch:title>
-    <!-- a deleted placeholder keeps its old eId, which a later insertion may reuse -->
+    <!-- a deleted placeholder keeps its old eId, which a later insertion may reuse; units whose label
+         the published text repeats under one parent share theirs, each marked ambiguous -->
     <sch:rule context="(lt:unit | lt:quotedStructure | lt:note)[not(ancestor::lt:deleted)]">
-      <sch:assert id="unique-live-eid" test="count(key('live-eid', @eId)) = 1">
+      <sch:assert id="unique-live-eid" test="count(key('live-eid', @eId)) = 1 or (every $u in key('live-eid', @eId) satisfies $u/@ambiguous = 'true')">
         The eId <sch:value-of select="@eId"/> belongs to <sch:value-of select="count(key('live-eid', @eId))"/>
-        units in force; it must belong to one.
+        units in force; it must belong to one, unless all are marked ambiguous.
       </sch:assert>
     </sch:rule>
   </sch:pattern>

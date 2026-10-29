@@ -118,137 +118,183 @@
     <xsl:variable name="act-celex" as="xs:string" select="
         if ($consolidated) then '3' || $info/@CONSLEG.REF
         else ($celex[normalize-space()], error(xs:QName('f:celex'), 'An OJ act needs the $celex parameter'))[1]"/>
-    <legalText act="{$act-celex}" kind="{if ($consolidated) then 'consolidated' else if ($act/self::CORR) then 'corrigendum' else 'original'}">
-      <xsl:attribute name="xsi:schemaLocation" select="$f:namespace || ' ' || $f:schema"/>
-      <xsl:if test="$consolidated">
-        <xsl:attribute name="version" select="f:date($info/@START.DATE)"/>
-      </xsl:if>
-      <xsl:attribute name="lang" select="lower-case(($doc/BIB.INSTANCE/LG.DOC, $content/BIB.INSTANCE/LG.DOC)[1])"/>
-      <xsl:attribute name="formexVersion" select="f:formex-version($act)"/>
-      <xsl:attribute name="converter" select="$converter"/>
-
-      <source celex="{if ($consolidated) then '0' || $info/@CONSLEG.REF || '-' || $info/@START.DATE else $act-celex}">
-        <xsl:if test="$doc/BIB.INSTANCE/NO.ELI">
-          <xsl:attribute name="eli" select="normalize-space($doc/BIB.INSTANCE/NO.ELI)"/>
-        </xsl:if>
-        <xsl:choose>
-          <xsl:when test="$consolidated">
-            <xsl:variable name="bib" as="element(BIB.INSTANCE.CONS)?" select="$doc/FAM.COMP/BIB.DATA/BIB.INSTANCE.CONS"/>
-            <xsl:sequence select="f:publication($bib/DOCUMENT.REF.CONS/COLL, $bib/DOCUMENT.REF.CONS/NO.OJ,
-                                                $bib/DATE/@ISO, $bib/DOCUMENT.REF.CONS/PAGE.FIRST, $content/TITLE/TI/NO.DOC.C)"/>
-          </xsl:when>
-          <xsl:when test="$package">
-            <xsl:sequence select="f:publication($package/PUBLICATION.REF/COLL, $package/PUBLICATION.REF/NO.OJ,
-                                                $package/PUBLICATION.REF/DATE/@ISO, $package/FMX/DOC.MAIN.PUB/PAGE.FIRST,
-                                                $content/TITLE/TI/NO.DOC.C)"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:variable name="ref" as="element(DOCUMENT.REF)?" select="$doc/BIB.INSTANCE/DOCUMENT.REF"/>
-            <xsl:sequence select="f:publication($ref/COLL, $ref/NO.OJ, (), $ref/PAGE.FIRST, $content/TITLE/TI/NO.DOC.C)"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </source>
-
-      <xsl:if test="$consolidated">
-        <lifecycle>
-          <xsl:attribute name="start" select="f:date($info/@START.DATE)"/>
-          <!-- an end or production date that is not a date (END.DATE="20062131") is left out; the start
-               date identifies the version, so it stays required -->
-          <xsl:if test="$info/@END.DATE != '99999999'">
-            <xsl:sequence select="f:date-attribute('end', $info/@END.DATE)"/>
+    <!-- a document, so that the marking pass can use a key -->
+    <xsl:variable name="text" as="document-node(element(lt:legalText))">
+      <xsl:document>
+        <legalText act="{$act-celex}" kind="{if ($consolidated) then 'consolidated' else if ($act/self::CORR) then 'corrigendum' else 'original'}">
+          <xsl:attribute name="xsi:schemaLocation" select="$f:namespace || ' ' || $f:schema"/>
+          <xsl:if test="$consolidated">
+            <xsl:attribute name="version" select="f:date($info/@START.DATE)"/>
           </xsl:if>
-          <xsl:sequence select="f:date-attribute('produced', $info/@CONSLEG.DATE)"/>
-          <xsl:if test="$info/@PROD.SEQ">
-            <xsl:attribute name="sequence" select="$info/@PROD.SEQ"/>
+          <xsl:attribute name="lang" select="lower-case(($doc/BIB.INSTANCE/LG.DOC, $content/BIB.INSTANCE/LG.DOC)[1])"/>
+          <xsl:attribute name="formexVersion" select="f:formex-version($act)"/>
+          <xsl:attribute name="converter" select="$converter"/>
+
+          <source celex="{if ($consolidated) then '0' || $info/@CONSLEG.REF || '-' || $info/@START.DATE else $act-celex}">
+            <xsl:if test="$doc/BIB.INSTANCE/NO.ELI">
+              <xsl:attribute name="eli" select="normalize-space($doc/BIB.INSTANCE/NO.ELI)"/>
+            </xsl:if>
+            <xsl:choose>
+              <xsl:when test="$consolidated">
+                <xsl:variable name="bib" as="element(BIB.INSTANCE.CONS)?" select="$doc/FAM.COMP/BIB.DATA/BIB.INSTANCE.CONS"/>
+                <xsl:sequence select="f:publication($bib/DOCUMENT.REF.CONS/COLL, $bib/DOCUMENT.REF.CONS/NO.OJ,
+                                                    $bib/DATE/@ISO, $bib/DOCUMENT.REF.CONS/PAGE.FIRST, $content/TITLE/TI/NO.DOC.C)"/>
+              </xsl:when>
+              <xsl:when test="$package">
+                <xsl:sequence select="f:publication($package/PUBLICATION.REF/COLL, $package/PUBLICATION.REF/NO.OJ,
+                                                    $package/PUBLICATION.REF/DATE/@ISO, $package/FMX/DOC.MAIN.PUB/PAGE.FIRST,
+                                                    $content/TITLE/TI/NO.DOC.C)"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:variable name="ref" as="element(DOCUMENT.REF)?" select="$doc/BIB.INSTANCE/DOCUMENT.REF"/>
+                <xsl:sequence select="f:publication($ref/COLL, $ref/NO.OJ, (), $ref/PAGE.FIRST, $content/TITLE/TI/NO.DOC.C)"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </source>
+
+          <xsl:if test="$consolidated">
+            <lifecycle>
+              <xsl:attribute name="start" select="f:date($info/@START.DATE)"/>
+              <!-- an end or production date that is not a date (END.DATE="20062131") is left out; the start
+                   date identifies the version, so it stays required -->
+              <xsl:if test="$info/@END.DATE != '99999999'">
+                <xsl:sequence select="f:date-attribute('end', $info/@END.DATE)"/>
+              </xsl:if>
+              <xsl:sequence select="f:date-attribute('produced', $info/@CONSLEG.DATE)"/>
+              <xsl:if test="$info/@PROD.SEQ">
+                <xsl:attribute name="sequence" select="$info/@PROD.SEQ"/>
+              </xsl:if>
+              <!-- an amending act whose CELEX the source writes malformed (1201994N/ACT) can't be referred to:
+                   it is left out -->
+              <xsl:for-each-group select="$doc/FAM.COMP//(MOD.ACT | CORRIG)/BIB.DATA[matches(f:celex(NO.CELEX), '^[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*$')]"
+                                  group-by="normalize-space(NO.CELEX)">
+                <eventRef type="{if (parent::CORRIG) then 'corrigendum' else 'amendment'}" act="{f:celex(current-grouping-key())}">
+                  <xsl:sequence select="f:date-attribute('date', DATE/@ISO)"/>
+                </eventRef>
+              </xsl:for-each-group>
+            </lifecycle>
           </xsl:if>
-          <!-- an amending act whose CELEX the source writes malformed (1201994N/ACT) can't be referred to:
-               it is left out -->
-          <xsl:for-each-group select="$doc/FAM.COMP//(MOD.ACT | CORRIG)/BIB.DATA[matches(f:celex(NO.CELEX), '^[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*$')]"
-                              group-by="normalize-space(NO.CELEX)">
-            <eventRef type="{if (parent::CORRIG) then 'corrigendum' else 'amendment'}" act="{f:celex(current-grouping-key())}">
-              <xsl:sequence select="f:date-attribute('date', DATE/@ISO)"/>
-            </eventRef>
-          </xsl:for-each-group>
-        </lifecycle>
-      </xsl:if>
 
-      <!-- the title; a second one (a consolidated document can have two) is text of the body -->
-      <xsl:apply-templates select="$content/TITLE[1]"/>
-      <xsl:apply-templates select="$content/PREAMBLE"/>
+          <!-- the title; a second one (a consolidated document can have two) is text of the body -->
+          <xsl:apply-templates select="$content/TITLE[1]"/>
+          <xsl:apply-templates select="$content/PREAMBLE"/>
 
-      <body>
-        <xsl:call-template name="f:blocks">
-          <!-- ACT.GEN: the whole of an act consolidated with a non-regular structure (CONS.DOC.GEN TYPE="OTH.ACT") -->
-          <xsl:with-param name="nodes" as="node()*" select="$content/ENACTING.TERMS/node() | $content/CONTENTS/(node() except CONS.ANNEX)
-                                               | $content/CONTENTS.CORR/node() | $content/ACT.GEN | f:document-rest($act, $doc, $content)"/>
-          <xsl:with-param name="ctx" as="xs:string*" select="()" tunnel="yes"/>
-          <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
-          <xsl:with-param name="base" as="xs:string?" select="()" tunnel="yes"/>
-        </xsl:call-template>
-      </body>
+          <body>
+            <xsl:call-template name="f:blocks">
+              <!-- ACT.GEN: the whole of an act consolidated with a non-regular structure (CONS.DOC.GEN TYPE="OTH.ACT") -->
+              <xsl:with-param name="nodes" as="node()*" select="$content/ENACTING.TERMS/node() | $content/CONTENTS/(node() except CONS.ANNEX)
+                                                   | $content/CONTENTS.CORR/node() | $content/ACT.GEN | f:document-rest($act, $doc, $content)"/>
+              <xsl:with-param name="ctx" as="xs:string*" select="()" tunnel="yes"/>
+              <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+              <xsl:with-param name="base" as="xs:string?" select="()" tunnel="yes"/>
+            </xsl:call-template>
+          </body>
 
-      <xsl:apply-templates select="$content/FINAL"/>
+          <xsl:apply-templates select="$content/FINAL"/>
 
-      <!-- a consolidation's annexes: CONS.ANNEX, or for a non-regular structure CONS.DOC.GEN TYPE="ANNEX" -->
-      <xsl:variable name="groups" as="array(element())*" select="f:annex-groups(($content/CONS.ANNEX, $content/CONTENTS/CONS.ANNEX,
-                                                          $content/self::CONS.DOC.GEN/CONS.DOC.GEN[@TYPE = 'ANNEX'], $annexes))"/>
-      <xsl:variable name="annex-units" as="element()*">
-        <xsl:for-each select="$groups">
-          <xsl:variable name="fragments" as="element()*" select="?*"/>
-          <xsl:apply-templates select="$fragments[1]" mode="annex">
-            <xsl:with-param name="fragments" as="element()*" select="$fragments"/>
-            <xsl:with-param name="annexCount" as="xs:integer?" select="count($groups)"/>
-            <xsl:with-param name="annexPosition" as="xs:integer?" select="position()"/>
-            <xsl:with-param name="anchor" as="xs:integer?" select="
-                if ($fragments[1][self::ANNEX or self::GENERAL]) then index-of(($annexes ! generate-id()), generate-id($fragments[1]))
-                else count($fragments[1]/preceding::CONS.ANNEX) + 1"/>
-            <xsl:with-param name="ctx" as="xs:string*" select="()" tunnel="yes"/>
-            <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
-            <xsl:with-param name="base" as="xs:string?" select="()" tunnel="yes"/>
-          </xsl:apply-templates>
-        </xsl:for-each>
-      </xsl:variable>
-      <xsl:variable name="letters" as="element()*">
-        <xsl:apply-templates select="$content/COLL.LETTERS/LETTER" mode="block">
-          <xsl:with-param name="ctx" as="xs:string*" select="()" tunnel="yes"/>
-          <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
-          <xsl:with-param name="base" as="xs:string?" select="()" tunnel="yes"/>
-        </xsl:apply-templates>
-      </xsl:variable>
-      <!-- attached documents: a consolidation's related documents, a package's entries other than annexes -->
-      <xsl:variable name="attachments" as="element()*">
-        <xsl:for-each select="$content/self::CONS.DOC.GEN/CONS.DOC.GEN[not(@TYPE = 'ANNEX')],
-                              $package/FMX/DOC.SUB.PUB[f:is-attachment(.)]">
-          <xsl:apply-templates select="." mode="attachment">
-            <xsl:with-param name="eid" as="xs:string" select="'att_' || position()"/>
-          </xsl:apply-templates>
-        </xsl:for-each>
-      </xsl:variable>
-      <xsl:if test="$annex-units or $letters or $attachments">
-        <annexes>
-          <xsl:sequence select="$annex-units, $letters, $attachments"/>
-        </annexes>
-      </xsl:if>
+          <!-- a consolidation's annexes: CONS.ANNEX, or for a non-regular structure CONS.DOC.GEN TYPE="ANNEX" -->
+          <xsl:variable name="groups" as="array(element())*" select="f:annex-groups(($content/CONS.ANNEX, $content/CONTENTS/CONS.ANNEX,
+                                                              $content/self::CONS.DOC.GEN/CONS.DOC.GEN[@TYPE = 'ANNEX'], $annexes))"/>
+          <xsl:variable name="annex-units" as="element()*">
+            <xsl:for-each select="$groups">
+              <xsl:variable name="fragments" as="element()*" select="?*"/>
+              <xsl:apply-templates select="$fragments[1]" mode="annex">
+                <xsl:with-param name="fragments" as="element()*" select="$fragments"/>
+                <xsl:with-param name="annexCount" as="xs:integer?" select="count($groups)"/>
+                <xsl:with-param name="annexPosition" as="xs:integer?" select="position()"/>
+                <xsl:with-param name="anchor" as="xs:integer?" select="
+                    if ($fragments[1][self::ANNEX or self::GENERAL]) then index-of(($annexes ! generate-id()), generate-id($fragments[1]))
+                    else count($fragments[1]/preceding::CONS.ANNEX) + 1"/>
+                <xsl:with-param name="ctx" as="xs:string*" select="()" tunnel="yes"/>
+                <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+                <xsl:with-param name="base" as="xs:string?" select="()" tunnel="yes"/>
+              </xsl:apply-templates>
+            </xsl:for-each>
+          </xsl:variable>
+          <xsl:variable name="letters" as="element()*">
+            <xsl:apply-templates select="$content/COLL.LETTERS/LETTER" mode="block">
+              <xsl:with-param name="ctx" as="xs:string*" select="()" tunnel="yes"/>
+              <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+              <xsl:with-param name="base" as="xs:string?" select="()" tunnel="yes"/>
+            </xsl:apply-templates>
+          </xsl:variable>
+          <!-- attached documents: a consolidation's related documents, a package's entries other than annexes -->
+          <xsl:variable name="attachments" as="element()*">
+            <xsl:for-each select="$content/self::CONS.DOC.GEN/CONS.DOC.GEN[not(@TYPE = 'ANNEX')],
+                                  $package/FMX/DOC.SUB.PUB[f:is-attachment(.)]">
+              <xsl:apply-templates select="." mode="attachment">
+                <xsl:with-param name="eid" as="xs:string" select="'att_' || position()"/>
+              </xsl:apply-templates>
+            </xsl:for-each>
+          </xsl:variable>
+          <xsl:if test="$annex-units or $letters or $attachments">
+            <annexes>
+              <xsl:sequence select="$annex-units, $letters, $attachments"/>
+            </annexes>
+          </xsl:if>
 
-      <!-- the notes of the act, its annexes and the documents they include -->
-      <xsl:variable name="notes" as="element(NOTE)*" select="f:with-included(($act, $annexes))//NOTE[not(@NOTE.REF)]"/>
-      <!-- and those of attached documents from other files, whose eIds carry the file: note_att0301-1 -->
-      <xsl:variable name="attached-notes" as="element()*">
-        <xsl:for-each select="$package/FMX//DOC.SUB.PUB[f:is-attachment(.)]">
-          <xsl:variable name="docs" as="element()*" select="(REF.PHYS, DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS)/doc(resolve-uri(@FILE, base-uri(.)))/*"/>
-          <xsl:apply-templates select="f:with-included($docs)//NOTE[not(@NOTE.REF)]" mode="note">
-            <xsl:with-param name="notePrefix" as="xs:string?" select="f:attachment-note-prefix(.)" tunnel="yes"/>
-          </xsl:apply-templates>
-        </xsl:for-each>
-      </xsl:variable>
-      <xsl:if test="$notes or $attached-notes">
-        <notes>
-          <xsl:apply-templates select="$notes" mode="note"/>
-          <xsl:sequence select="$attached-notes"/>
-        </notes>
-      </xsl:if>
-    </legalText>
+          <!-- the notes of the act, its annexes and the documents they include -->
+          <xsl:variable name="notes" as="element(NOTE)*" select="f:with-included(($act, $annexes))//NOTE[not(@NOTE.REF)]"/>
+          <!-- and those of attached documents from other files, whose eIds carry the file: note_att0301-1 -->
+          <xsl:variable name="attached-notes" as="element()*">
+            <xsl:for-each select="$package/FMX//DOC.SUB.PUB[f:is-attachment(.)]">
+              <xsl:variable name="docs" as="element()*" select="(REF.PHYS, DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS)/doc(resolve-uri(@FILE, base-uri(.)))/*"/>
+              <xsl:apply-templates select="f:with-included($docs)//NOTE[not(@NOTE.REF)]" mode="note">
+                <xsl:with-param name="notePrefix" as="xs:string?" select="f:attachment-note-prefix(.)" tunnel="yes"/>
+              </xsl:apply-templates>
+            </xsl:for-each>
+          </xsl:variable>
+          <xsl:if test="$notes or $attached-notes">
+            <notes>
+              <xsl:apply-templates select="$notes" mode="note"/>
+              <xsl:sequence select="$attached-notes"/>
+            </notes>
+          </xsl:if>
+        </legalText>
+      </xsl:document>
+    </xsl:variable>
+    <xsl:apply-templates select="$text/lt:legalText" mode="f:ambiguity"/>
   </xsl:template>
+
+  <!-- ============================================================ labels the source repeats -->
+
+  <!-- Where the published text gives one label twice under one parent (Annex XI points 1., 2., 2.),
+       the units keep the label, and so share their eId, as published; they are marked ambiguous, which
+       legal-text.sch allows. A shared eId without that (no label, or different labels) is a
+       converter error. -->
+  <xsl:mode name="f:ambiguity" on-no-match="shallow-copy"/>
+
+  <xsl:key name="f:live-unit" match="lt:unit[not(ancestor::lt:deleted)]" use="@eId"/>
+
+  <xsl:template match="lt:unit[not(ancestor::lt:deleted)][f:ambiguous(.)]" mode="f:ambiguity">
+    <xsl:copy>
+      <xsl:apply-templates select="@*" mode="#current"/>
+      <xsl:attribute name="ambiguous" select="true()"/>
+      <xsl:apply-templates select="node()" mode="#current"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- a unit shares its eId because the source repeats its label under one parent, or because its
+       parent's eId is shared that way: then its own (pnt_2/pnt_a under both points 2) is too -->
+  <xsl:function name="f:ambiguous" as="xs:boolean">
+    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:variable name="copies" as="element(lt:unit)+" select="key('f:live-unit', $unit/@eId, root($unit))"/>
+    <xsl:sequence select="count($copies) gt 1 and (
+        (f:printed-label($unit) != ''
+         and (every $c in $copies satisfies f:printed-label($c) = f:printed-label($unit)
+              and f:unit-parent($c) is f:unit-parent($unit)))
+        or (every $c in $copies satisfies f:unit-parent($c)[self::lt:unit][f:ambiguous(.)]))"/>
+  </xsl:function>
+
+  <xsl:function name="f:printed-label" as="xs:string">
+    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:sequence select="normalize-space(string-join($unit/lt:num//@v))"/>
+  </xsl:function>
+
+  <xsl:function name="f:unit-parent" as="node()">
+    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:sequence select="($unit/ancestor::*[@eId][1], root($unit))[1]"/>
+  </xsl:function>
 
   <!-- documents and, recursively, the Formex documents they include (INCL.ELEMENT TYPE="FORMEX.DOC") -->
   <xsl:function name="f:with-included" as="element()*">

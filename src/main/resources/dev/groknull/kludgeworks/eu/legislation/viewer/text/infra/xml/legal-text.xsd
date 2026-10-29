@@ -489,6 +489,15 @@
         <xs:attribute name="box" type="xs:boolean">
           <xs:annotation><xs:documentation>Levels only: the text is printed in a box.</xs:documentation></xs:annotation>
         </xs:attribute>
+        <xs:attribute name="ambiguous" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation>
+              The published text gives this label twice under the same parent (Annex XI points 1., 2., 2.): the
+              units keep the label and share their eId, as published, and each is marked. A reference to the
+              label can't tell them apart.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
         <xs:attribute name="eurlexAnchor" type="xs:positiveInteger">
           <xs:annotation>
             <xs:documentation>Annexes only: the position among all annexes in document order, EUR-Lex's #anx_N anchor.</xs:documentation>
