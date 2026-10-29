@@ -131,15 +131,19 @@
   </xsl:template>
 
   <!-- the wording as published (old) and as corrected (new); both quote the same structure, so
-       each has its own eId segment: cor_1/old/…, cor_1/new/… -->
+       each has its own eId segment: cor_1/old/…, cor_1/new/…. A correction with several "for … read
+       …" pairs numbers them: cor_1/old_2/…, cor_1/new_2/… -->
   <xsl:template match="OLD.CORR | NEW.CORR" mode="block">
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="side" as="xs:string" select="if (self::OLD.CORR) then 'old' else 'new'"/>
+    <xsl:variable name="sides" as="element()+" select="../*[node-name() = node-name(current())]"/>
+    <xsl:variable name="eid" as="xs:string" select="
+        f:eid($base, $side, if (count($sides) gt 1) then string(count(preceding-sibling::*[node-name() = node-name(current())]) + 1) else ())"/>
     <xsl:element name="{$side}">
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" as="node()*" select="node()"/>
-        <xsl:with-param name="base" as="xs:string?" select="f:eid($base, $side, ())" tunnel="yes"/>
-        <xsl:with-param name="levelBase" as="xs:string?" select="f:eid($base, $side, ())" tunnel="yes"/>
+        <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+        <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
         <xsl:with-param name="levelCtx" as="xs:string*" select="()" tunnel="yes"/>
         <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
       </xsl:call-template>

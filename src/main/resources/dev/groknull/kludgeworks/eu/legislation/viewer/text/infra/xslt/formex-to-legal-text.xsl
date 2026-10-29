@@ -421,14 +421,17 @@
         </intro>
       </xsl:if>
       <xsl:apply-templates select="node() except (GR.VISA.INIT | VISA)" mode="unexpected"/>
+      <!-- citations are numbered through the preamble, which can have several groups of them -->
+      <xsl:variable name="before" as="xs:integer" select="count(preceding-sibling::GR.VISA/VISA)"/>
       <xsl:for-each select="VISA">
         <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., ())"/>
+        <xsl:variable name="eid" as="xs:string" select="'pbl_1/cit_' || ($before + position())"/>
         <xsl:variable name="unit" as="element()">
-          <unit eId="pbl_1/cit_{position()}" kind="citation">
+          <unit eId="{$eid}" kind="citation">
             <xsl:sequence select="f:provenance($m)"/>
             <xsl:call-template name="f:blocks">
               <xsl:with-param name="nodes" as="node()*" select="node()"/>
-              <xsl:with-param name="base" as="xs:string?" select="'pbl_1/cit_' || position()" tunnel="yes"/>
+              <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
               <xsl:with-param name="ctx" as="xs:string*" select="f:ids($m)" tunnel="yes"/>
             </xsl:call-template>
           </unit>

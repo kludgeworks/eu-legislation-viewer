@@ -123,6 +123,19 @@
         $x:result/*:rowGroup/*:heading/*:emphasis/*:t/@v = '2' and $x:result/*:rowGroup/*:subheading/*:emphasis/*:t/@v = 'PAYMENTS'"/>
   </x:scenario>
 
+  <x:scenario label="A correction with two &quot;for … read …&quot; pairs">
+    <x:context mode="block" xmlns="">
+      <CORRECTION><DESCRIPTION><P>On page 5, in the table:</P></DESCRIPTION>
+        <OLD.CORR FOR.READ="YES"><P>for:</P><QUOT.S LEVEL="1"><P>2 April</P></QUOT.S></OLD.CORR>
+        <NEW.CORR FOR.READ="YES"><P>read:</P><QUOT.S LEVEL="1"><P>Maundy Thursday</P></QUOT.S></NEW.CORR>
+        <OLD.CORR FOR.READ="YES"><P>for:</P><QUOT.S LEVEL="1"><P>White Monday</P></QUOT.S></OLD.CORR>
+        <NEW.CORR FOR.READ="YES"><P>read:</P><QUOT.S LEVEL="1"><P>Whit Monday</P></QUOT.S></NEW.CORR>
+      </CORRECTION>
+    </x:context>
+    <x:expect label="numbers the pairs, so their quotations don't share eIds"
+              test="$x:result//*:quotedStructure/@eId => string-join(' ') = 'cor_1/old_1/qst_1 cor_1/new_1/qst_1 cor_1/old_2/qst_1 cor_1/new_2/qst_1'"/>
+  </x:scenario>
+
   <x:scenario label="A quoted structure in an amending act">
     <x:context mode="block" xmlns="">
       <ITEM><NP><NO.P>(1)</NO.P><TXT>in point 1.2.2.2, point (b) is replaced by the following:</TXT><P><QUOT.S LEVEL="1"><LIST TYPE="alpha"><ITEM><NP><NO.P>(b)</NO.P><TXT>a valid crew identification card;</TXT></NP></ITEM></LIST></QUOT.S></P></NP></ITEM>

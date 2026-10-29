@@ -316,7 +316,8 @@
 
   <!-- note_3 in the main document; note_anx2-1 in the second annex file of an OJ act; in another
        file, the file's own sequence number, unique in the package: note_inc000402-1 in an included
-       protocol, note_att0301-1 in an attached document ($prefix) -->
+       protocol, agreement or act (any file whose NO.SEQ, 0001.0001, sits below the main
+       document's, 0001), note_att0301-1 in an attached document ($prefix) -->
   <xsl:function name="f:note-eid" as="xs:string">
     <xsl:param name="note" as="element(NOTE)"/>
     <xsl:param name="prefix" as="xs:string?"/>
@@ -324,8 +325,9 @@
     <xsl:variable name="seq" as="xs:string" select="f:file-seq(base-uri($root))"/>
     <xsl:variable name="file" as="xs:string" select="
         if ($root/self::ANNEX) then 'anx' || $seq || '-'
-        else if ($root/self::GENERAL) then 'inc' || $seq || '-'
-        else string($prefix)"/>
+        else if ($prefix) then $prefix
+        else if ($root/self::GENERAL or contains($root/BIB.INSTANCE/NO.SEQ, '.')) then 'inc' || $seq || '-'
+        else ''"/>
     <!-- the value before a node includes the node's own start rule -->
     <xsl:sequence select="'note_' || $file || ($note ! accumulator-before('f:notes-started'))"/>
   </xsl:function>
