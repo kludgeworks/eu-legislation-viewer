@@ -24,15 +24,19 @@
         => replace('[^\p{L}\p{N}._\-]', '')"/>
   </xsl:function>
 
-  <!-- the label after a leading type word: "Article 3" → "3", "ANNEX II" → "II", "ANNEX" → "";
-       also when print left out the space: "Article13" → "13", "Article1d" → "1d" -->
+  <!-- the label after a leading type word: "Article 3" → "3", "ANNEX II" → "II", "PART A" → "A",
+       "ANNEX" → ""; also when print left out the space: "Article13" → "13", "Article1d" → "1d". The
+       first word is a type word only when a number follows; a heading without one is its own label,
+       whole: "Budget of the measure", "IFRIC INTERPRETATION 7" -->
   <xsl:function name="f:label-after-word" as="xs:string">
     <xsl:param name="label" as="xs:string?"/>
-    <xsl:variable name="s" as="xs:string" select="f:spaces($label)"/>
+    <!-- a quoted title opens with its quotation mark: ‘ANNEX I -->
+    <xsl:variable name="s" as="xs:string" select="replace(f:spaces($label), '^[^\p{L}\p{N}]+', '')"/>
+    <xsl:variable name="rest" as="xs:string" select="substring-after($s, ' ')"/>
     <xsl:sequence select="f:label(
-        if (contains($s, ' ')) then substring-after($s, ' ')
-        else if (matches($s, '^\p{L}+\p{N}')) then replace($s, '^\p{L}+', '')
-        else '')"/>
+        if ($rest = '') then (if (matches($s, '^\p{L}+\p{N}')) then replace($s, '^\p{L}+', '') else '')
+        else if (matches($s, '^\p{L}+ ') and matches($rest, '^(\S*\p{N}\S*|\p{Lu}{1,7}\p{Ll}?|\p{Ll})$')) then $rest
+        else $s)"/>
   </xsl:function>
 
   <!-- whitespace normalised, non-breaking spaces included ("Article&#160;1") -->

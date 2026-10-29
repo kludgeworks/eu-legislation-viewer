@@ -123,6 +123,17 @@
         $x:result/*:rowGroup/*:heading/*:emphasis/*:t/@v = '2' and $x:result/*:rowGroup/*:subheading/*:emphasis/*:t/@v = 'PAYMENTS'"/>
   </x:scenario>
 
+  <x:scenario label="A table whose rows each hold a level PART A">
+    <x:context mode="block" xmlns="">
+      <TBL COLS="2"><CORPUS>
+        <ROW><CELL COL="1">Substance 1</CELL><CELL COL="2"><GR.SEQ LEVEL="1"><TITLE><TI><P>PART A</P></TI></TITLE><P>x</P></GR.SEQ></CELL></ROW>
+        <ROW><CELL COL="1">Substance 2</CELL><CELL COL="2"><GR.SEQ LEVEL="1"><TITLE><TI><P>PART A</P></TI></TITLE><P>y</P></GR.SEQ></CELL></ROW>
+      </CORPUS></TBL>
+    </x:context>
+    <x:expect label="scopes each to its cell, by row and the source's column"
+              test="$x:result//*:unit/@eId => string-join(' ') = 'tbl_1/tr_1/td_2/lvl_PART-A tbl_1/tr_2/td_2/lvl_PART-A'"/>
+  </x:scenario>
+
   <x:scenario label="A correction with two &quot;for … read …&quot; pairs">
     <x:context mode="block" xmlns="">
       <CORRECTION><DESCRIPTION><P>On page 5, in the table:</P></DESCRIPTION>

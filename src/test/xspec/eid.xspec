@@ -56,6 +56,18 @@
       <x:call function="f:label-after-word"><x:param select="'Article1d'"/></x:call>
       <x:expect label="1d" select="'1d'"/>
     </x:scenario>
+    <x:scenario label="a quoted title: ‘ANNEX I">
+      <x:call function="f:label-after-word"><x:param select="'‘ANNEX I'"/></x:call>
+      <x:expect label="I, as for ANNEX I" select="'I'"/>
+    </x:scenario>
+    <x:scenario label="a heading with no number: Budget of the measure">
+      <x:call function="f:label-after-word"><x:param select="'Budget of the measure'"/></x:call>
+      <x:expect label="the whole heading, so that Duration of the measure differs" select="'Budget-of-the-measure'"/>
+    </x:scenario>
+    <x:scenario label="a name ending in a number: IFRIC INTERPRETATION 7">
+      <x:call function="f:label-after-word"><x:param select="'IFRIC INTERPRETATION 7'"/></x:call>
+      <x:expect label="the whole name, so that SIC INTERPRETATION 7 differs" select="'IFRIC-INTERPRETATION-7'"/>
+    </x:scenario>
   </x:scenario>
 
   <x:scenario label="Joining segments">
