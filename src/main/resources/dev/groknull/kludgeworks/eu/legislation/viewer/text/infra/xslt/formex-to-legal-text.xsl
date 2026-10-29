@@ -274,15 +274,17 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- a unit shares its eId because the source repeats its label under one parent, or because its
-       parent's eId is shared that way: then its own (pnt_2/pnt_a under both points 2) is too -->
+  <!-- a unit shares its eId because the source repeats its label in one sequence (the same list,
+       article or annex: copies in two lists are two sequences, which the eIds must tell apart), or
+       because its parent's eId is shared that way: then its own (pnt_2/pnt_a under both points 2) is
+       too -->
   <xsl:function name="f:ambiguous" as="xs:boolean">
     <xsl:param name="unit" as="element(lt:unit)"/>
     <xsl:variable name="copies" as="element(lt:unit)+" select="key('f:live-unit', $unit/@eId, root($unit))"/>
     <xsl:sequence select="count($copies) gt 1 and (
         (f:printed-label($unit) != ''
          and (every $c in $copies satisfies f:printed-label($c) = f:printed-label($unit)
-              and f:unit-parent($c) is f:unit-parent($unit)))
+              and $c/.. is $unit/..))
         or (every $c in $copies satisfies f:unit-parent($c)[self::lt:unit][f:ambiguous(.)]))"/>
   </xsl:function>
 

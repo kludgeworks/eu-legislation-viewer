@@ -143,8 +143,9 @@
     <xsl:variable name="line" as="element()?" select="TITLE/TI/*[1]"/>
     <xsl:variable name="label" as="xs:string" select="((if ($line/self::NP) then f:label($line/NO.P) else f:label-after-word($line))[. != ''],
                                         string(count(preceding-sibling::DIVISION) + 1))[1]"/>
-    <!-- in an annex or a quoted structure, articles and divisions hang off the enclosing unit -->
-    <xsl:variable name="outer" as="xs:string?" select="if ($inAttachment or ancestor::*[self::CONS.ANNEX or self::ANNEX or self::QUOT.S]) then $base else ()"/>
+    <!-- in an annex, a quoted structure or a GENERAL file (an annex file, or one an annex includes:
+         never a document of its own), articles and divisions hang off the enclosing unit -->
+    <xsl:variable name="outer" as="xs:string?" select="if ($inAttachment or ancestor::*[self::CONS.ANNEX or self::ANNEX or self::QUOT.S or self::GENERAL]) then $base else ()"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid(($division, $outer)[1], 'dvs', $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="division">
