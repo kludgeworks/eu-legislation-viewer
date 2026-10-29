@@ -21,7 +21,7 @@
         </DIVISION>
       </DIVISION>
     </x:context>
-    <x:expect label="is a division unit with its title line as num" test="
+    <x:expect label="is a division unit with its title line as num; dvs_, with no document language to name its kind in" test="
         $x:result/@eId = 'dvs_I' and $x:result/@kind = 'division'
         and $x:result/*:num/*:t/@v = 'CHAPTER I' and $x:result/*:subheading/*:t/@v = 'General provisions'"/>
     <x:expect label="nests divisions" test="$x:result/*:unit[@kind = 'division']/@eId = 'dvs_I/dvs_1'"/>
@@ -35,6 +35,38 @@
     <x:expect label="takes its label from NO.P" test="$x:result/@eId = 'dvs_A'"/>
   </x:scenario>
 
+  <x:scenario label="Divisions named by the EU subdivision table: a title and a section both numbered I">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R0001" START.DATE="20260101" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+          <ENACTING.TERMS>
+            <DIVISION><TITLE><TI><P>TITLE I</P></TI></TITLE>
+              <DIVISION><TITLE><TI><P>CHAPTER 1</P></TI></TITLE><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>a</ALINEA></ARTICLE></DIVISION>
+            </DIVISION>
+            <DIVISION><TITLE><TI><P>Section I</P></TI></TITLE><ARTICLE IDENTIFIER="002"><TI.ART>Article 2</TI.ART><ALINEA>b</ALINEA></ARTICLE></DIVISION>
+          </ENACTING.TERMS>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="tis_I, tis_I/cpt_1 and sct_I: the kinds differ, so the eIds do"
+              test="$x:result//*:unit[@kind = 'division']/@eId => string-join(' ') = 'tis_I tis_I/cpt_1 sct_I'"/>
+  </x:scenario>
+
+  <x:scenario label="A French title (TITRE II)">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R0001" START.DATE="20260101" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>FR</LG.DOC></BIB.INSTANCE>
+          <ENACTING.TERMS>
+            <DIVISION><TITLE><TI><P>TITRE II</P></TI></TITLE><ARTICLE IDENTIFIER="001"><TI.ART>Article premier</TI.ART><ALINEA>a</ALINEA></ARTICLE></DIVISION>
+          </ENACTING.TERMS>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="is tis_II, as in English" test="$x:result//*:unit[@kind = 'division']/@eId = 'tis_II'"/>
+  </x:scenario>
+
   <x:scenario label="Articles that restart their numbers in each division">
     <x:context xmlns="">
       <ACT><BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
@@ -45,8 +77,8 @@
         </ENACTING.TERMS>
       </ACT>
     </x:context>
-    <x:expect label="keep the first act-wide and the repeat under its division"
-              test="$x:result//*:unit[@kind = 'article']/@eId = ('art_1', 'dvs_TWO/art_1')"/>
+    <x:expect label="keep the first act-wide and the repeat under its division, a part (prt_, from the EU subdivision table)"
+              test="$x:result//*:unit[@kind = 'article']/@eId => string-join(' ') = 'art_1 prt_TWO/art_1'"/>
   </x:scenario>
 
   <!-- ============================================================ formulas -->

@@ -141,12 +141,19 @@
     <xsl:param name="inAttachment" as="xs:boolean" select="false()" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="line" as="element()?" select="TITLE/TI/*[1]"/>
-    <xsl:variable name="label" as="xs:string" select="((if ($line/self::NP) then f:label($line/NO.P) else f:label-after-word($line))[. != ''],
-                                        string(count(preceding-sibling::DIVISION) + 1))[1]"/>
+    <!-- a part, title, chapter, section or subsection, as the EU subdivision table names them in the
+         document's language: prt_, tis_, cpt_, sct_, sbs_ and the number after the name; else dvs_ -->
+    <xsl:variable name="type" as="xs:string*" select="if ($line/self::NP) then () else f:subdivision(string($line), ('PRT', 'TIS', 'CPT', 'SCT', 'SBS'), .)"/>
+    <!-- after a recognised name, the next word is the number, in whatever form: III, 2, TWO -->
+    <xsl:variable name="number" as="xs:string?" select="tokenize($type[2], ' ')[1]"/>
+    <xsl:variable name="label" as="xs:string" select="(
+        (if (exists($type)) then f:label($number)
+         else if ($line/self::NP) then f:label($line/NO.P) else f:label-after-word($line))[. != ''],
+        string(count(preceding-sibling::DIVISION) + 1))[1]"/>
     <!-- in an annex, a quoted structure or a GENERAL file (an annex file, or one an annex includes:
          never a document of its own), articles and divisions hang off the enclosing unit -->
     <xsl:variable name="outer" as="xs:string?" select="if ($inAttachment or ancestor::*[self::CONS.ANNEX or self::ANNEX or self::QUOT.S or self::GENERAL]) then $base else ()"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid(($division, $outer)[1], 'dvs', $label)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid(($division, $outer)[1], ($type[1] ! lower-case(.), 'dvs')[1], $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>

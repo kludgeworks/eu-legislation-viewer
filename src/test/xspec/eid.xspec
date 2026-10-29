@@ -64,6 +64,10 @@
       <x:call function="f:label-after-word"><x:param select="'Budget of the measure'"/></x:call>
       <x:expect label="the whole heading, so that Duration of the measure differs" select="'Budget-of-the-measure'"/>
     </x:scenario>
+    <x:scenario label="a heading of two words in capitals: FEDERAL SCHEMES">
+      <x:call function="f:label-after-word"><x:param select="'FEDERAL SCHEMES'"/></x:call>
+      <x:expect label="the whole heading: SCHEMES is no numeral, so STATE SCHEMES differs" select="'FEDERAL-SCHEMES'"/>
+    </x:scenario>
     <x:scenario label="a name ending in a number: IFRIC INTERPRETATION 7">
       <x:call function="f:label-after-word"><x:param select="'IFRIC INTERPRETATION 7'"/></x:call>
       <x:expect label="the whole name, so that SIC INTERPRETATION 7 differs" select="'IFRIC-INTERPRETATION-7'"/>

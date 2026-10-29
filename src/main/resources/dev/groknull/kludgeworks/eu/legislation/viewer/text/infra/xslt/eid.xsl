@@ -11,6 +11,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
+    xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     exclude-result-prefixes="#all">
 
   <!-- a visible label as an eId value: "(a)" → "a", "1.0.6." → "1.0.6", "10 a" → "10-a" -->
@@ -35,8 +36,49 @@
     <xsl:variable name="rest" as="xs:string" select="substring-after($s, ' ')"/>
     <xsl:sequence select="f:label(
         if ($rest = '') then (if (matches($s, '^\p{L}+\p{N}')) then replace($s, '^\p{L}+', '') else '')
-        else if (matches($s, '^\p{L}+ ') and matches($rest, '^(\S*\p{N}\S*|\p{Lu}{1,7}\p{Ll}?|\p{Ll})$')) then $rest
+        else if (matches($s, '^\p{L}+ ') and f:number-like($rest)) then $rest
         else $s)"/>
+  </xsl:function>
+
+  <!-- a number as labels print it: with a digit (3, 1d, 12.6.2), a Roman numeral (IV, IIa), or a
+       single letter (A, a); not a word in capitals (SCHEMES, CF) -->
+  <xsl:function name="f:number-like" as="xs:boolean">
+    <xsl:param name="s" as="xs:string?"/>
+    <xsl:sequence select="matches(string($s), '^(\S*\p{N}\S*|[IVXLCDM]+\p{Ll}?|\p{L})$')"/>
+  </xsl:function>
+
+  <!-- The kinds of division and annex, from the EU subdivision authority table (subdivision.rdf):
+       their codes name the eIds (TITLE I → tis_I, CHAPTER 2 → cpt_2, Appendix III → app_III), the
+       same in every language, as the table gives each kind's name in all 24. -->
+  <xsl:variable name="f:subdivisions" as="document-node()" select="doc('subdivision.rdf')"/>
+
+  <!-- the kind of subdivision a heading names, of those in $codes, in the document's language, and
+       the rest of the heading: ("CPT", "III") for "CHAPTER III"; empty where its first words name
+       none (a number printed first, I. FEJEZET, or no type word at all) -->
+  <xsl:function name="f:subdivision" as="xs:string*">
+    <xsl:param name="heading" as="xs:string?"/>
+    <xsl:param name="codes" as="xs:string+"/>
+    <xsl:param name="context" as="node()"/>
+    <xsl:variable name="lang" as="xs:string?" select="lower-case((root($context)//LG.DOC)[1])"/>
+    <xsl:variable name="words" as="xs:string*" select="tokenize(replace(f:spaces($heading), '^[^\p{L}\p{N}]+', ''), ' ')"/>
+    <xsl:sequence select="(
+        for $concept in $f:subdivisions//*[skos:notation = $codes],
+            $name in $concept/skos:prefLabel[lang($lang)]
+        return
+          let $type := tokenize(normalize-space(replace($name, '\(.*\)', '')), ' '),
+              $n := count($type)
+          return
+            if (count($words) ge $n and (every $i in 1 to $n satisfies f:type-word($words[$i]) = f:type-word($type[$i])))
+            then array { string($concept/skos:notation), string-join(subsequence($words, $n + 1), ' ') }
+            else ()
+      )[1] ! array:flatten(.)"
+        xmlns:skos="http://www.w3.org/2004/02/skos/core#"/>
+  </xsl:function>
+
+  <!-- a type word as compared: case and hyphens aside (SUB-SECTION, subsection) -->
+  <xsl:function name="f:type-word" as="xs:string">
+    <xsl:param name="word" as="xs:string"/>
+    <xsl:sequence select="lower-case(replace($word, '[\-‐‑]', ''))"/>
   </xsl:function>
 
   <!-- whitespace normalised, non-breaking spaces included ("Article&#160;1") -->

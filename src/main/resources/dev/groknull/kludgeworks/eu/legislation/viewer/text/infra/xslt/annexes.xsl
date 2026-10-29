@@ -74,9 +74,11 @@
     <xsl:variable name="nested" as="xs:boolean" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
     <xsl:variable name="position" as="xs:integer" select="($annexPosition, count(preceding-sibling::*[self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) + 1)[1]"/>
     <xsl:variable name="label" as="xs:string" select="(f:annex-label(.)[. != ''], string($position))[1]"/>
+    <!-- an appendix, as the EU subdivision table names it in the document's language, is app_ -->
+    <xsl:variable name="abbr" as="xs:string" select="if (exists(f:subdivision(string(TITLE[1]/TI/*[1]), 'APP', .))) then 'app' else 'anx'"/>
     <xsl:variable name="eid" as="xs:string" select="
-        if (not($nested) and $annexCount = 1) then f:eid($annexBase, 'anx', ())
-        else f:eid(if ($nested or $quoted or $included) then $base else $annexBase, 'anx', $label)"/>
+        if (not($nested) and $annexCount = 1) then f:eid($annexBase, $abbr, ())
+        else f:eid(if ($nested or $quoted or $included) then $base else $annexBase, $abbr, $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="annex">
         <!-- EUR-Lex anchors the act's own annexes, not those it quotes or an annex includes -->

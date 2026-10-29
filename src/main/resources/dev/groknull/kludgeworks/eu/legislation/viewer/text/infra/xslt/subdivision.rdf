@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The EU subdivision authority table (http://publications.europa.eu/resource/authority/subdivision),
+  release 20260923-0, as published by the Publications Office: the kinds of division and annex the
+  converter names eIds after (PRT, TIS, CPT, SCT, SBS, ANX, APP), with their labels in the 24 EU
+  languages. © European Union, reuse authorised (Commission Decision 2011/833/EU). Taken from the
+  Cellar SPARQL endpoint with:
+
+  CONSTRUCT { ?c a skos:Concept ; skos:inScheme <…/authority/subdivision> ; skos:notation ?code ;
+                 skos:prefLabel ?pref ; skos:altLabel ?alt }
+  WHERE { VALUES ?c { <…/subdivision/PRT> … <…/subdivision/APP> }
+          BIND(STRAFTER(STR(?c), "/subdivision/") AS ?code)
+          ?c skos:prefLabel ?pref . OPTIONAL { ?c skos:altLabel ?alt } }
+-->
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#" >
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/subdivision/ANX">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:prefLabel xml:lang="en">annex</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">παράρτημα</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">anness</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">anexă</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">prilog</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">bilag</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">bijlage</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">anexo</skos:prefLabel>
+    <skos:prefLabel xml:lang="fi">liite</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">příloha</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">allegato</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">melléklet</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">annexe</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">pielikums</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">приложение</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">anexo</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Anhang</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">príloha</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">priloga</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">bilaga</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">iarscríbhinn</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">załącznik</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">lisa</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">priedas</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/subdivision" />
+    <skos:notation>ANX</skos:notation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/subdivision/APP">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:prefLabel xml:lang="fi">lisäys</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">liide</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">appendice</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">допълнение</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">appendice</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">προσάρτημα</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">függelék</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">tillägg</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">apéndice</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">apendice</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">tillæg</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">dodatek</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">appendix</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">aanhangsel</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">papildinājums</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">dodatak</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">dodatek</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">dodatok</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">appendiċi</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">foscríbhinn</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">dodatek</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">priedėlis</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Anlage</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">apêndice</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/subdivision" />
+    <skos:notation>APP</skos:notation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/subdivision/CPT">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:prefLabel xml:lang="mt">kapitolu</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">kapitola</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">caibidil</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">fejezet</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">kapitel</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">hoofdstuk</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">глава</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">nodaļa</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">capitol</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Kapitel</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">skyrius</skos:prefLabel>
+    <skos:prefLabel xml:lang="fi">luku</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">chapter</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">capítulo</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">kapitel</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">poglavlje</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">capítulo</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">kapitola</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">κεφάλαιο</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">poglavje</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">rozdział</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">peatükk</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">chapitre</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">capo</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/subdivision" />
+    <skos:notation>CPT</skos:notation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/subdivision/PRT">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:prefLabel xml:lang="lt">dalis</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">rész</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">parte</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">μέρος</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">parte</skos:prefLabel>
+    <skos:prefLabel xml:lang="fi">osa</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">del</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Teil</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">part</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">dio</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">parte</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">partie</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">časť</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">част</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">parte</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">osa</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">část</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">cuid</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">del</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">del</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">część</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">parti</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">daļa</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">deel</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/subdivision" />
+    <skos:notation>PRT</skos:notation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/subdivision/SBS">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:prefLabel xml:lang="de">Unterabschnitt</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">subsection</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">υποτμήμα</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">hovedafdeling</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">alajagu</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">apakšiedaļa</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">onderafdeling</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">podsekcja</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">pododdíl</skos:prefLabel>
+    <skos:prefLabel xml:lang="fi">alajakso</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">pododdelek</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">poskirsnis</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">subsecțiune</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">underavsnitt</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">sous-section</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">subsecção</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">подраздел</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">foroinn</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">pododjeljak</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">sottotaqsima</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">alszakasz</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">subsección</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">pododdiel</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">sottosezione</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/subdivision" />
+    <skos:notation>SBS</skos:notation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/subdivision/SCT">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:prefLabel xml:lang="es">sección</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">taqsima</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">section</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">oddiel</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">roinn</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">sezione</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">oddelek</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">раздел</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">section</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">afdeling</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">iedaļa</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">avsnitt</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">sekcja</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">odjeljak</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">τμήμα</skos:prefLabel>
+    <skos:prefLabel xml:lang="fi">jakso</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">oddíl</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">secção</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">skirsnis</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">szakasz</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">afdeling</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Abschnitt</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">jagu</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">secțiune</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/subdivision" />
+    <skos:notation>SCT</skos:notation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/subdivision/TIS">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:prefLabel xml:lang="fr">titre (sous-division)</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">hlava (jednotlivý prvok)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fi">osasto (jaottelu)</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">tytuł (podział)</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">τίτλος (υποδιαίρεση)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">titlu (subdiviziune)</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">cím (szerkezeti egység)</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">дял (структурен елемент)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">teideal (forannán)</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">afsnit (underopdeling)</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">antraštinė dalis (sudedamoji dalis)</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">naslov (členitev)</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">hlava (členění textu)</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">title (subdivision)</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">título (subdivisión)</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">avdelning (del)</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">titolu (suddiviżjoni)</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">glava (potpodjela)</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">titel (onderverdeling)</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">sadaļa (pamatiedalījums)</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">titolo (suddivisione)</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">jaotis (alajaotis)</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Titel (Gliederungsteil)</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">título (subdivisão)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/subdivision" />
+    <skos:notation>TIS</skos:notation>
+  </rdf:Description>
+</rdf:RDF>
