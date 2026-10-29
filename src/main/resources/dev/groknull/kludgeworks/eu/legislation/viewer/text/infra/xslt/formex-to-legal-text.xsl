@@ -288,9 +288,11 @@
         or (every $c in $copies satisfies f:unit-parent($c)[self::lt:unit][f:ambiguous(.)]))"/>
   </xsl:function>
 
+  <!-- the label's letters and digits: print that differs only in spacing, punctuation or case is
+       the same label (Article 2 and Article2, 1) and 1.) -->
   <xsl:function name="f:printed-label" as="xs:string">
     <xsl:param name="unit" as="element(lt:unit)"/>
-    <xsl:sequence select="normalize-space(string-join($unit/lt:num//@v))"/>
+    <xsl:sequence select="lower-case(replace(string-join($unit/lt:num//@v), '[^\p{L}\p{N}]', ''))"/>
   </xsl:function>
 
   <xsl:function name="f:unit-parent" as="node()">
