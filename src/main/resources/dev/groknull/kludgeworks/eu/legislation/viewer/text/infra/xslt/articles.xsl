@@ -36,6 +36,10 @@
           <xsl:with-param name="heading" as="element()?" select="STI.ART"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+          <!-- levels it holds are numbered within it, under its eId (art_3/pnt_a, anx_I/pnt_a/pnt_1) -->
+          <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+          <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>
@@ -55,6 +59,10 @@
           <xsl:with-param name="num" as="element()?" select="NO.PARAG"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+          <!-- levels it holds are numbered within it, under its eId (art_3/pnt_a, anx_I/pnt_a/pnt_1) -->
+          <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+          <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>

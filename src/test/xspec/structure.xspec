@@ -102,6 +102,17 @@
               test="$x:result//*:unit/@eId => string-join(' ') = 'def_1 def_2'"/>
   </x:scenario>
 
+  <x:scenario label="List points each holding a level 1.">
+    <x:context mode="block" xmlns="">
+      <LIST TYPE="alpha">
+        <ITEM><NP><NO.P>(a)</NO.P><TXT>for aircraft:</TXT></NP><GR.SEQ LEVEL="1"><NO.GR.SEQ>1.</NO.GR.SEQ><P>x</P></GR.SEQ></ITEM>
+        <ITEM><NP><NO.P>(b)</NO.P><TXT>for vessels:</TXT></NP><GR.SEQ LEVEL="1"><NO.GR.SEQ>1.</NO.GR.SEQ><P>y</P></GR.SEQ></ITEM>
+      </LIST>
+    </x:context>
+    <x:expect label="number each level under its point: pnt_a/pnt_1, pnt_b/pnt_1"
+              test="$x:result//*:unit[@kind = 'level']/@eId => string-join(' ') = 'pnt_a/pnt_1 pnt_b/pnt_1'"/>
+  </x:scenario>
+
   <x:scenario label="A table">
     <x:context mode="block" xmlns="">
       <TBL COLS="2" NO.SEQ="0001"><TITLE><TI><P>Table 1</P></TI></TITLE><CORPUS>
