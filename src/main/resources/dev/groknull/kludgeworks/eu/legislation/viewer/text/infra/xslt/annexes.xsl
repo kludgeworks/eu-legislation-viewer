@@ -171,12 +171,12 @@
 
   <!-- what an unnumbered level is numbered within: its parent level (also when a table or a stray
        CONTENTS sits in between), else the unit that holds it (a list point, an article, a paragraph,
-       a definition, a recital), the quoted structure, the contents of an annex or other document
+       a definition, a subdivision, a recital), the quoted structure, the contents of an annex or other document
        (GENERAL), or the enacting terms -->
   <xsl:function name="f:level-parent" as="element()?">
     <xsl:param name="seq" as="element(GR.SEQ)"/>
     <xsl:sequence select="$seq/ancestor::*[self::GR.SEQ or self::QUOT.S or self::CONSID or self::ITEM or self::ARTICLE
-                                           or self::PARAG or self::DLIST.ITEM or self::ENACTING.TERMS
+                                           or self::PARAG or self::DLIST.ITEM or self::SUBDIV or self::ENACTING.TERMS
                                            or self::CONTENTS[not(ancestor::GR.SEQ)]][1]"/>
   </xsl:function>
 

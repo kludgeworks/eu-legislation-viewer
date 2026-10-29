@@ -206,6 +206,9 @@
               <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m), f:ids($own))" tunnel="yes"/>
               <xsl:with-param name="pending" as="processing-instruction()*" select="$own" tunnel="yes"/>
               <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+              <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
+              <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+              <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:otherwise>
@@ -213,6 +216,9 @@
               <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
               <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
               <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+              <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
+              <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+              <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
             </xsl:apply-templates>
           </xsl:otherwise>
         </xsl:choose>
