@@ -4,11 +4,11 @@
 #USAGE arg "<dir>" help="Where the mirrors live, outside the workspace, e.g. ../formex-corpus"
 #USAGE flag "--language <code>" default="ENG" help="An EU authority language code"
 #USAGE flag "--slices <list>" default="0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f" help="Cellar UUID prefixes"
-#USAGE flag "--parallel <n>" default="2" help="Downloads at a time"
+#USAGE flag "--parallel <n>" default="5" help="Downloads at a time"
 #
 # Mirrors Cellar's Formex 4 items in one language, for the corpus regression test (CorpusTests):
 #
-#   mise run corpus:fetch [--language ENG] [--slices 0,1,…,f] [--parallel 2] DIR
+#   mise run corpus:fetch [--language ENG] [--slices 0,1,…,f] [--parallel 5] DIR
 #
 # DIR/{language}/ then holds:
 #   manifest.tsv                 the complete manifestations: Cellar ID, lastModified, CELEX

@@ -1,6 +1,12 @@
 # SPDX-License-Identifier: MIT
-# Every Formex 4 item in one language of the manifestations whose Cellar UUID starts with a prefix:
+# The Formex 4 items in one language of the manifestations whose Cellar UUID starts with a prefix:
 # fetch.sh fills in {{language}} (an EU authority code: ENG) and {{prefix}} (hex: one of 0-f).
+#
+# Only the target set: works whose resource type (the EU authority table resource-type) is a
+# consolidated text, a regulation, directive, decision or recommendation of any kind, a corrigendum,
+# or an agreement, convention, protocol or treaty. Measured on slice 8 against the converter: 36% of
+# the items, and 91% of the documents it accepts; left out are whole OJ issues (TOC_OJ, OJ: their
+# acts are fetched one by one), case law, court information, notices and opinions.
 #
 # One slice at a time, with no ORDER BY: Virtuoso answers 1/16 of the English corpus (43,000 items)
 # in about 2.5 minutes, where paging the sorted whole costs about that again for every page.
@@ -22,6 +28,11 @@ WHERE {
   FILTER (STRSTARTS(STR(?manifestation), "http://publications.europa.eu/resource/cellar/{{prefix}}"))
   ?expr cdm:expression_uses_language <http://publications.europa.eu/resource/authority/language/{{language}}> ;
         cdm:expression_belongs_to_work ?work .
+  FILTER EXISTS {
+    ?work cdm:work_has_resource-type ?type .
+    FILTER (REGEX(STRAFTER(STR(?type), "/resource-type/"),
+        "^((REG|DIR|DEC|RECO)(_[A-Z_]+)?|CONS_TEXT|CORRIGENDUM|AGREE_[A-Z_]+|CONVENTION|PROT|TREATY)$"))
+  }
   ?item cdm:item_belongs_to_manifestation ?manifestation ;
         cmr:manifestationMimeType ?mime .
   OPTIONAL { ?work cdm:resource_legal_id_celex ?celexId }
