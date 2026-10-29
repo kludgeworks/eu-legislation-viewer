@@ -585,6 +585,10 @@
         <xsl:call-template name="f:blocks">
           <xsl:with-param name="nodes" as="node()*" select="NP[1]/TXT/node(), NP[1]/(node() except ($number, TXT)), node() except NP[1], $continued/node()"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+          <!-- levels a recital holds (a list of headed sections) hang off it: pbl_1/rct_12/lvl_1 -->
+          <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+          <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
       </unit>

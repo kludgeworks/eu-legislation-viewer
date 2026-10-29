@@ -51,8 +51,10 @@
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $table)"/>
     <!-- what follows the rows: text blocks (GR.SEQ), the table's notes group (its notes are collected,
-         its annotations stay here); anything else fails -->
-    <xsl:apply-templates select="* except (TITLE, CORPUS)" mode="block"/>
+         its annotations stay here, their lists under the table: anx/tbl_1/def_1); anything else fails -->
+    <xsl:apply-templates select="* except (TITLE, CORPUS)" mode="block">
+      <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+    </xsl:apply-templates>
   </xsl:template>
 
   <!-- tables that belong together under one title -->

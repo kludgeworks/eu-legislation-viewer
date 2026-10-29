@@ -57,13 +57,22 @@
       'ARAB': 'arabic', 'alpha': 'alpha', 'ALPHA': 'alpha-upper', 'roman': 'roman', 'ROMAN': 'roman-upper',
       'DASH': 'dash', 'NDASH': 'ndash', 'BULLET': 'bullet', 'NONE': 'none', 'OTHER': 'other'}"/>
 
-  <!-- the element whose eId a list's points hang off -->
+  <!-- the element whose eId a list's points hang off. Citations and recitals are units only in the
+       main document's preamble: in an act inside another document (an attached act, a letter's, a
+       consolidation's related document) its preamble is text, and its lists hang off that document -->
   <xsl:function name="f:scope" as="element()?">
     <xsl:param name="e" as="element()"/>
     <xsl:sequence select="$e/ancestor::*[self::ITEM or self::ARTICLE or self::PARAG or self::ALINEA or self::GR.SEQ
-        or self::DLIST.ITEM or self::CONS.ANNEX or self::ANNEX or self::QUOT.S or self::TBL or self::CONSID
-        or self::VISA or self::NOTE or self::DIVISION or self::CORRECTION or self::OLD.CORR or self::NEW.CORR
+        or self::DLIST.ITEM or self::CONS.ANNEX or self::ANNEX or self::QUOT.S or self::TBL
+        or self::CONSID[f:preamble-unit(.)] or self::VISA[f:preamble-unit(.)] or self::NOTE or self::DIVISION
+        or self::CORRECTION or self::OLD.CORR or self::NEW.CORR
         or self::CONS.DOC.GEN[parent::CONS.DOC.GEN] or self::LETTER or self::SUBDIV][1]"/>
+  </xsl:function>
+
+  <xsl:function name="f:preamble-unit" as="xs:boolean">
+    <xsl:param name="e" as="element()"/>
+    <xsl:sequence select="empty($e/ancestor::*[self::CONS.DOC.GEN or self::LETTER])
+        and not(contains(root($e)/*/BIB.INSTANCE/NO.SEQ, '.'))"/>
   </xsl:function>
 
   <!-- points of a list hang off the enclosing unit; when it holds several lists (6.5.2 has two,

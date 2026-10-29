@@ -112,6 +112,25 @@
     <x:expect label="the paragraph numbered once isn't" test="empty($x:result//*:unit[@eId = 'art_1/par_1']/@ambiguous)"/>
   </x:scenario>
 
+  <x:scenario label="A recital holding headed sections">
+    <x:context xmlns="">
+      <ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.3-20250123.xd">
+        <BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL><PAGE.FIRST>1</PAGE.FIRST></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <TITLE><TI><P>Commission Decision (EU) 2026/3</P></TI></TITLE>
+        <PREAMBLE><PREAMBLE.INIT>THE EUROPEAN COMMISSION,</PREAMBLE.INIT>
+          <GR.CONSID>
+            <CONSID><NP><NO.P>(1)</NO.P><TXT>The measure covers:</TXT></NP>
+              <GR.SEQ LEVEL="1"><TITLE><TI><P>Scope</P></TI></TITLE><P>a</P></GR.SEQ>
+              <GR.SEQ LEVEL="1"><TITLE><TI><P>Budget</P></TI></TITLE><P>b</P></GR.SEQ></CONSID>
+          </GR.CONSID>
+          <PREAMBLE.FINAL>HAS ADOPTED THIS DECISION:</PREAMBLE.FINAL></PREAMBLE>
+        <ENACTING.TERMS/>
+      </ACT>
+    </x:context>
+    <x:expect label="numbers them within the recital: rct_1/lvl_1, rct_1/lvl_2"
+              test="$x:result//*:recitals//*:unit[@kind = 'level']/@eId => string-join(' ') = 'pbl_1/rct_1/lvl_1 pbl_1/rct_1/lvl_2'"/>
+  </x:scenario>
+
   <x:scenario label="An OJ act's preamble and signature">
     <x:context xmlns="">
       <ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.3-20250123.xd">
