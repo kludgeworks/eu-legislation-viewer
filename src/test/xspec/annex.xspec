@@ -144,6 +144,35 @@
               test="$x:result/*:annexes/*:unit/@eId => string-join(' ') = 'anx anx_1 anx_2'"/>
   </x:scenario>
 
+  <x:scenario label="Forms that repeat a labelled level under one part (a vehicle certificate of conformity)">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2007L0046" START.DATE="20260101" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX IX</P></TI></TITLE><CONTENTS>
+            <GR.SEQ LEVEL="1"><TITLE><TI><P>PART I</P></TI></TITLE>
+              <GR.SEQ LEVEL="2"><TITLE><TI><P>MODEL A1 — SIDE 1</P></TI></TITLE>
+                <GR.SEQ LEVEL="3"><TITLE><TI><P>Side 1</P></TI></TITLE><P>a</P></GR.SEQ></GR.SEQ>
+              <GR.SEQ LEVEL="2"><TITLE><TI><P>MODEL A2 — SIDE 1</P></TI></TITLE>
+                <GR.SEQ LEVEL="3"><TITLE><TI><P>Side 1</P></TI></TITLE><P>b</P></GR.SEQ></GR.SEQ>
+              <GR.SEQ LEVEL="2"><TITLE><TI><P>SIDE 2</P></TI></TITLE>
+                <GR.SEQ LEVEL="3"><TITLE><TI><P>VEHICLE CATEGORY M2</P></TI></TITLE><P>c</P></GR.SEQ></GR.SEQ>
+              <GR.SEQ LEVEL="2"><TITLE><TI><P>SIDE 2</P></TI></TITLE>
+                <GR.SEQ LEVEL="3"><TITLE><TI><P>VEHICLE CATEGORY M3</P></TI></TITLE><P>d</P></GR.SEQ></GR.SEQ>
+              <GR.SEQ LEVEL="2"><TITLE><TI><P>SIDE 2</P></TI></TITLE>
+                <GR.SEQ LEVEL="3"><TITLE><TI><P>VEHICLE CATEGORY N1</P></TI></TITLE><P>e</P></GR.SEQ></GR.SEQ>
+            </GR.SEQ>
+          </CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="the first Side 1 is annex-wide, the repeat hangs off its own model, not off PART I"
+              test="$x:result//*:unit[*:num//@v = 'Side 1']/@eId => string-join(' ') = 'anx/lvl_Side-1 anx/lvl_PART-I/lvl_2/lvl_Side-1'"/>
+    <x:expect label="SIDE 2, repeated as one sequence under PART I, is marked ambiguous, and so is what each repeat holds"
+              test="count($x:result//*:unit[@eId = 'anx/lvl_PART-I/lvl_SIDE-2'][@ambiguous = 'true']) = 2
+                    and count($x:result//*:unit[@eId = 'anx/lvl_PART-I/lvl_SIDE-2/lvl_1'][@ambiguous = 'true']) = 2"/>
+  </x:scenario>
+
   <x:scenario label="Annexes with labels">
     <x:context xmlns="">
       <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">

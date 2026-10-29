@@ -231,6 +231,23 @@
            else $s is $scope])"/>
   </xsl:function>
 
+  <!-- the nearest enclosing level with a number or a label line -->
+  <xsl:function name="f:labelled-ancestor" as="element(GR.SEQ)?">
+    <xsl:param name="seq" as="element(GR.SEQ)"/>
+    <xsl:sequence select="$seq/ancestor::GR.SEQ[f:label((f:level-num(.), f:level-label-line(.))[1]) != ''][1]"/>
+  </xsl:function>
+
+  <!-- a label an earlier level already has under the same labelled level (each model's "Side 1" in
+       PART I of a vehicle annex): hanging it off that level wouldn't tell them apart -->
+  <xsl:function name="f:label-taken-under" as="xs:boolean">
+    <xsl:param name="seq" as="element(GR.SEQ)"/>
+    <xsl:param name="label" as="xs:string"/>
+    <xsl:variable name="under" as="element(GR.SEQ)?" select="f:labelled-ancestor($seq)"/>
+    <xsl:sequence select="exists(key('f:level-by-label', $label, root($seq))[. &lt;&lt; $seq]
+        [not(f:covering(.)[f:is-deletion(.)])]
+        [let $u := f:labelled-ancestor(.) return if (empty($under)) then empty($u) else $u is $under])"/>
+  </xsl:function>
+
   <!-- annex sections and points: flat levels, as in AKN4EU (1.2.2.6 is a sibling of 1.2.2) -->
   <xsl:template match="GR.SEQ" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
@@ -247,14 +264,18 @@
     <xsl:variable name="num" as="element()?" select="f:level-num(.)"/>
     <xsl:variable name="direct-np" as="element()?" select="if ($num/parent::NP/parent::GR.SEQ) then $num/.. else ()"/>
     <xsl:variable name="label" as="xs:string" select="f:label($num)"/>
+    <!-- a label taken again under the same labelled level hangs off the immediate parent level -->
+    <xsl:variable name="near" as="xs:string?" select="
+        if ($parentLevel and f:label-taken-under(., f:label(($num, $label-line)[1]))) then $parentLevel
+        else ($labelledParent, $parentLevel)[1]"/>
     <xsl:variable name="eid" as="xs:string" select="
         if ($label != '') then f:eid(
             if ($parentLevel and (f:local-number($num) or f:label-taken(., $label, $earlier)))
-            then ($labelledParent, $parentLevel)[1] else $levelBase,
+            then $near else $levelBase,
             'pnt', $label)
         else if ($label-line) then f:eid(
             if ($parentLevel and f:label-taken(., f:label($label-line), $earlier))
-            then ($labelledParent, $parentLevel)[1] else $levelBase,
+            then $near else $levelBase,
             'lvl', f:label($label-line))
         else f:eid(($parentLevel, $levelBase)[1], 'lvl',
                    string(f:level-ordinal(.) + (if ($parentLevel) then 0 else ($levelOffset, 0)[1])))"/>

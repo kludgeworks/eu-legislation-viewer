@@ -287,7 +287,17 @@
         (f:printed-label($unit) != ''
          and (every $c in $copies satisfies f:printed-label($c) = f:printed-label($unit)
               and f:sequence($c) is f:sequence($unit)))
-        or (every $c in $copies satisfies f:unit-parent($c)[self::lt:unit][f:ambiguous(.)]))"/>
+        or (every $c in $copies satisfies f:unit-parent($c)[self::lt:unit][f:ambiguous(.)])
+        or f:eid-parents-ambiguous($unit))"/>
+  </xsl:function>
+
+  <!-- the units whose eId this one's extends (a flat annex level's parent level isn't its XML
+       parent): shared, all marked ambiguous, so this one's eId is shared through them -->
+  <xsl:function name="f:eid-parents-ambiguous" as="xs:boolean">
+    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:variable name="parent-eid" as="xs:string?" select="replace($unit/@eId, '/[^/]+$', '')[. != $unit/@eId]"/>
+    <xsl:variable name="parents" as="element(lt:unit)*" select="$parent-eid ! key('f:live-unit', ., root($unit))"/>
+    <xsl:sequence select="count($parents) gt 1 and (every $p in $parents satisfies f:ambiguous($p))"/>
   </xsl:function>
 
   <!-- the label's letters and digits: print that differs only in spacing, punctuation or case is
