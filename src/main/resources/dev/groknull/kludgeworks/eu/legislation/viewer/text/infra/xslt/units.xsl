@@ -18,9 +18,9 @@
                  the nearest labelled level, the count of unnumbered top levels in earlier annex
                  fragments, and earlier annex files: how a level's number is placed (annexes.xsl)
     $division    the eId of the enclosing division (articles.xsl)
-    $annexBase, $inAttachment, $notePrefix
-                 an attached document's eId for its annexes, whether we are in one, and the
-                 prefix of its notes' eIds (documents.xsl)
+    $annexBase, $notePrefix
+                 an attached document's eId for its annexes, and the prefix of its notes' eIds
+                 (documents.xsl)
 
   The blocks themselves are in modules by concern: articles.xsl (enacting terms), lists.xsl,
   annexes.xsl (annexes and levels), tables.xsl, documents.xsl (attachments, corrigenda, letters,

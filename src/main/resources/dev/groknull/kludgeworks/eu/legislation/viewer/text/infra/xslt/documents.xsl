@@ -84,7 +84,6 @@
         <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
         <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
         <xsl:with-param name="division" as="xs:string?" select="()" tunnel="yes"/>
-        <xsl:with-param name="inAttachment" as="xs:boolean" select="true()" tunnel="yes"/>
         <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
         <xsl:with-param name="levelCtx" as="xs:string*" select="()" tunnel="yes"/>
         <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
