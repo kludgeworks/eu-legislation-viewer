@@ -200,7 +200,11 @@
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
     <xsl:variable name="label" as="xs:string" select="f:label(PREFIX)"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'pnt', ($label[. != ''], string(count(preceding-sibling::DLIST.ITEM) + 1))[1])"/>
+    <!-- an unlabelled definition is numbered by position as def_N, which a labelled point (pnt_1) can't
+         collide with, as an unlabelled list item is idt_N -->
+    <xsl:variable name="eid" as="xs:string" select="
+        if ($label != '') then f:eid($base, 'pnt', $label)
+        else f:eid($base, 'def', string(count(preceding-sibling::DLIST.ITEM) + 1))"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="definition">
         <xsl:sequence select="f:provenance($m)"/>

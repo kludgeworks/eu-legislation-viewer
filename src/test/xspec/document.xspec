@@ -68,6 +68,30 @@
               test="$x:result/*:preamble/*:citations/*:unit/@eId => string-join(' ') = 'pbl_1/cit_1 pbl_1/cit_2 pbl_1/cit_3'"/>
   </x:scenario>
 
+  <x:scenario label="Unnumbered CONSIDs among numbered recitals">
+    <x:context xmlns="">
+      <ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.3-20250123.xd">
+        <BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL><PAGE.FIRST>1</PAGE.FIRST></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <TITLE><TI><P>Commission Regulation (EU) 2026/2</P></TI></TITLE>
+        <PREAMBLE><PREAMBLE.INIT>THE EUROPEAN COMMISSION,</PREAMBLE.INIT>
+          <GR.CONSID>
+            <CONSID><P>Whereas:</P></CONSID>
+            <CONSID><NP><NO.P>(1)</NO.P><TXT>The investigation found dumping.</TXT></NP></CONSID>
+            <CONSID><P>All interested parties were informed.</P></CONSID>
+            <CONSID><NP><NO.P>(2)</NO.P><TXT>Measures should be imposed.</TXT></NP></CONSID>
+          </GR.CONSID>
+          <PREAMBLE.FINAL>HAS ADOPTED THIS REGULATION:</PREAMBLE.FINAL></PREAMBLE>
+        <ENACTING.TERMS/>
+      </ACT>
+    </x:context>
+    <x:expect label="are no recitals of their own: rct_1 and rct_2, not a third by position"
+              test="$x:result//*:recitals/*:unit/@eId => string-join(' ') = 'pbl_1/rct_1 pbl_1/rct_2'"/>
+    <x:expect label="one before the first numbered recital opens them"
+              test="$x:result//*:recitals/*:intro//*:t/@v = 'Whereas:'"/>
+    <x:expect label="one after a numbered recital continues it"
+              test="$x:result//*:recitals/*:unit[1]//*:t/@v = 'All interested parties were informed.'"/>
+  </x:scenario>
+
   <x:scenario label="An OJ act's preamble and signature">
     <x:context xmlns="">
       <ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.3-20250123.xd">

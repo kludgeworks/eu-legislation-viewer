@@ -454,10 +454,12 @@
     <recitals>
       <!-- the opening words; 01.01 can put them inside the first CONSID, before its group -->
       <xsl:variable name="init" as="element(GR.CONSID.INIT)?" select="(GR.CONSID.INIT, CONSID[1][not(NP)]/GR.CONSID.INIT)[1]"/>
-      <xsl:if test="$init">
+      <!-- unnumbered CONSIDs before the first numbered recital: "Whereas:" written as a recital -->
+      <xsl:variable name="leading" as="element(CONSID)*" select="CONSID[f:leads-recitals(.)]"/>
+      <xsl:if test="$init or $leading">
         <intro>
           <xsl:call-template name="f:blocks">
-            <xsl:with-param name="nodes" as="node()*" select="$init/node()"/>
+            <xsl:with-param name="nodes" as="node()*" select="$init/node(), $leading/node()"/>
           </xsl:call-template>
         </intro>
       </xsl:if>
@@ -467,11 +469,56 @@
     </recitals>
   </xsl:template>
 
+  <!-- Among numbered recitals, an unnumbered CONSID is no recital of its own: one before the first
+       numbered recital opens them ("Whereas:"), one after a numbered recital continues it (a further
+       paragraph, a table) and is part of it. Only where all are unnumbered are they numbered by
+       position. -->
+  <xsl:function name="f:numbered-recital" as="xs:boolean">
+    <xsl:param name="consid" as="element()"/>
+    <xsl:sequence select="exists($consid/NP[1]/NO.P[f:label(.) != ''])"/>
+  </xsl:function>
+
+  <xsl:function name="f:unnumbered-consid" as="xs:boolean">
+    <xsl:param name="consid" as="element()"/>
+    <xsl:sequence select="exists($consid/self::CONSID[not(f:numbered-recital(.))][not(DIV.CONSID | GR.CONSID.INIT)])"/>
+  </xsl:function>
+
+  <xsl:function name="f:continues-recital" as="xs:boolean">
+    <xsl:param name="consid" as="element()"/>
+    <xsl:sequence select="f:unnumbered-consid($consid) and exists($consid/preceding-sibling::CONSID[f:numbered-recital(.)])"/>
+  </xsl:function>
+
+  <xsl:function name="f:leads-recitals" as="xs:boolean">
+    <xsl:param name="consid" as="element()"/>
+    <xsl:sequence select="f:unnumbered-consid($consid) and empty($consid/preceding-sibling::CONSID[f:numbered-recital(.)])
+                          and exists($consid/following-sibling::CONSID[f:numbered-recital(.)])"/>
+  </xsl:function>
+
   <!-- a recital (CONSID; an ITEM where the recitals are a LIST). Its eId is its number, preamble-wide
        also inside groups: pbl_1/rct_12. A recital of two numbered NP takes the first number. -->
   <xsl:template match="CONSID | GR.CONSID/LIST/ITEM" mode="recital">
+    <!-- a continuation is part of the recital before it; opening words of the recitals are their
+         intro, of a group's recitals the group's text -->
+    <xsl:choose>
+      <xsl:when test="f:leads-recitals(.)">
+        <xsl:if test="not(parent::GR.CONSID)">
+          <xsl:call-template name="f:blocks">
+            <xsl:with-param name="nodes" as="node()*" select="node()"/>
+          </xsl:call-template>
+        </xsl:if>
+      </xsl:when>
+      <xsl:when test="not(f:continues-recital(.))">
+        <xsl:call-template name="f:recital"/>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="f:recital">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:variable name="number" as="element(NO.P)?" select="NP[1]/NO.P"/>
+    <xsl:variable name="next" as="element(CONSID)?" select="following-sibling::CONSID[f:numbered-recital(.)][1]"/>
+    <xsl:variable name="continued" as="element(CONSID)*" select="
+        if (f:numbered-recital(.)) then following-sibling::CONSID[f:continues-recital(.)][empty($next) or . &lt;&lt; $next] else ()"/>
     <xsl:variable name="eid" as="xs:string" select="'pbl_1/rct_' || (f:label($number)[. != ''], string(f:recital-position(.)))[1]"/>
     <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
     <xsl:variable name="unit" as="element()">
@@ -486,7 +533,7 @@
           </num>
         </xsl:if>
         <xsl:call-template name="f:blocks">
-          <xsl:with-param name="nodes" as="node()*" select="NP[1]/TXT/node(), NP[1]/(node() except ($number, TXT)), node() except NP[1]"/>
+          <xsl:with-param name="nodes" as="node()*" select="NP[1]/TXT/node(), NP[1]/(node() except ($number, TXT)), node() except NP[1], $continued/node()"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>

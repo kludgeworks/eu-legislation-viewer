@@ -68,17 +68,19 @@
     <xsl:param name="anchor" as="xs:integer?"/>
     <!-- inside a quotation: an annex the amending act inserts or substitutes, under the quotation's eId -->
     <xsl:param name="quoted" as="xs:boolean" select="false()" tunnel="yes"/>
+    <!-- a file another annex includes (INCL.ELEMENT): an annex of that annex, under its eId -->
+    <xsl:param name="included" as="xs:boolean" select="false()"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="nested" as="xs:boolean" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
     <xsl:variable name="position" as="xs:integer" select="($annexPosition, count(preceding-sibling::*[self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) + 1)[1]"/>
     <xsl:variable name="label" as="xs:string" select="(f:annex-label(.)[. != ''], string($position))[1]"/>
     <xsl:variable name="eid" as="xs:string" select="
         if (not($nested) and $annexCount = 1) then f:eid($annexBase, 'anx', ())
-        else f:eid(if ($nested or $quoted) then $base else $annexBase, 'anx', $label)"/>
+        else f:eid(if ($nested or $quoted or $included) then $base else $annexBase, 'anx', $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="annex">
-        <!-- EUR-Lex anchors the act's own annexes, not those it quotes -->
-        <xsl:if test="not($quoted)">
+        <!-- EUR-Lex anchors the act's own annexes, not those it quotes or an annex includes -->
+        <xsl:if test="not($quoted or $included)">
           <xsl:attribute name="eurlexAnchor" select="($anchor, count(preceding::CONS.ANNEX | ancestor::CONS.ANNEX) + 1)[1]"/>
         </xsl:if>
         <xsl:sequence select="f:provenance($m)"/>

@@ -92,6 +92,15 @@
     </x:expect>
   </x:scenario>
 
+  <x:scenario label="A definition list without prefixes">
+    <x:context mode="block" xmlns="">
+      <DLIST><DLIST.ITEM><TERM>'cargo'</TERM><DEFINITION>means any property</DEFINITION></DLIST.ITEM>
+        <DLIST.ITEM><TERM>'mail'</TERM><DEFINITION>means dispatches of correspondence</DEFINITION></DLIST.ITEM></DLIST>
+    </x:context>
+    <x:expect label="numbers the definitions by position as def_N, apart from points labelled 1, 2"
+              test="$x:result//*:unit/@eId => string-join(' ') = 'def_1 def_2'"/>
+  </x:scenario>
+
   <x:scenario label="A table">
     <x:context mode="block" xmlns="">
       <TBL COLS="2" NO.SEQ="0001"><TITLE><TI><P>Table 1</P></TI></TITLE><CORPUS>
