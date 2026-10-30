@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Annotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Block;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.BlockContainer;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.BlockLines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Changed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Citations;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.DateRef;
@@ -19,6 +20,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.text.Figure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Formula;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Inline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.InlineImage;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.InlineLines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Lines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.ListBlock;
@@ -165,9 +167,10 @@ final class RecordContents {
   }
 
   private void lines(@Nullable Lines lines) {
-    if (lines != null) {
-      inlines(lines.content());
-      blocks(lines.blocks());
+    switch (lines) {
+      case null -> {}
+      case InlineLines inline -> inlines(inline.content());
+      case BlockLines blocks -> blocks(blocks.blocks());
     }
   }
 

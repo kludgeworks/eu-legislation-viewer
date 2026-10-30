@@ -1,16 +1,9 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
-import java.util.List;
-
 /**
- * A heading, subheading or signatory line: inline content, several lines joined by {@link Eol}; or,
- * where the source's lines hold blocks, those blocks instead.
+ * A heading, subheading or signatory line: inline content, several lines joined by {@link Eol}
+ * ({@link InlineLines}); or, where the source's lines hold blocks, those blocks ({@link
+ * BlockLines}).
  */
-public record Lines(List<Inline> content, List<Block> blocks) {
-
-  public Lines {
-    content = List.copyOf(content);
-    blocks = List.copyOf(blocks);
-  }
-}
+public sealed interface Lines permits InlineLines, BlockLines {}

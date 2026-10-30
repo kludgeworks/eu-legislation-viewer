@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Annotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Block;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.BlockContainer;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.BlockLines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Cell;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Changed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Citations;
@@ -24,6 +25,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.text.Formula;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.ImageContent;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Inline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.InlineImage;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.InlineLines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Lifecycle;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Lines;
@@ -204,8 +206,16 @@ interface LegalTextMapper {
   @Mapping(target = "eId", source = "EId")
   Note note(XmlNote source);
 
-  @Mapping(target = "blocks", defaultExpression = EMPTY)
-  @Nullable Lines lines(@Nullable XmlLines source);
+  /** Lines hold inline content, or else blocks: the schema's choice. */
+  default @Nullable Lines lines(@Nullable XmlLines source) {
+    if (source == null) {
+      return null;
+    }
+    var blocks = source.getBlocks();
+    return blocks != null
+        ? new BlockLines(blocks(blocks.getContent()))
+        : new InlineLines(inlines(source.getContent()));
+  }
 
   Provenance provenance(XmlProvenance source);
 
