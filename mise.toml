@@ -47,8 +47,14 @@ description = "Run every test"
 run = "bazel test //..."
 
 [tasks.app]
-description = "Run the viewer"
+description = "Run the viewer, on the Valkey at spring.data.redis.* (localhost:6379 by default)"
 run = "bazel run //viewer:app"
+
+[tasks."app:dev"]
+description = "Run the viewer with its Valkey in a container (Docker), kept across runs"
+# Testcontainers' reuse: the running Valkey, and the texts converted into it, outlive the app
+env = { TESTCONTAINERS_REUSE_ENABLE = "true" }
+run = "bazel run //viewer:dev"
 
 [tasks."test:xspec"]
 description = "Run the XSpec suites"

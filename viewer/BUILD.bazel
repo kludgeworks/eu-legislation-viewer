@@ -9,6 +9,12 @@ alias(
     actual = "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:app",
 )
 
+# bazel run //viewer:dev (mise run app:dev): the viewer with its Valkey in a container (Docker)
+alias(
+    name = "dev",
+    actual = "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:dev",
+)
+
 # bazel build //viewer:jar: Spring Boot's executable jar, for java -jar
 alias(
     name = "jar",

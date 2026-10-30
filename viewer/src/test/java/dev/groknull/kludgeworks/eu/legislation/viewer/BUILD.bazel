@@ -1,12 +1,16 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
-load("@rules_java//java:defs.bzl", "java_library")
+load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 
-# Valkey in a container (Testcontainers), for the tests that need one
+# Valkey in a container (Testcontainers), for the tests that need one, and the viewer on it for
+# running locally (TestViewerApplication)
 java_library(
     name = "testing",
     testonly = True,
-    srcs = ["TestcontainersConfiguration.java"],
+    srcs = [
+        "TestViewerApplication.java",
+        "TestcontainersConfiguration.java",
+    ],
     visibility = ["//viewer:__subpackages__"],
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
@@ -18,6 +22,15 @@ java_library(
     ],
 )
 
+# bazel run //viewer:dev (mise run app:dev): the viewer with its Valkey in a container; needs Docker
+java_binary(
+    name = "dev",
+    testonly = True,
+    main_class = "dev.groknull.kludgeworks.eu.legislation.viewer.TestViewerApplication",
+    visibility = ["//viewer:__pkg__"],
+    runtime_deps = [":testing"],
+)
+
 # Whole-application checks: the module structure (Spring Modulith), and that the app starts,
 # on Bazel's classpath and as Spring Boot's jar, on Valkey in a container (Docker)
 java_test_suite(
@@ -27,6 +40,7 @@ java_test_suite(
         ["*.java"],
         exclude = [
             "CellarLiveTests.java",
+            "TestViewerApplication.java",
             "TestcontainersConfiguration.java",
         ],
     ),
