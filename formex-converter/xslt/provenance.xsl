@@ -83,9 +83,9 @@
   <xsl:function name="f:action" as="xs:string">
     <xsl:param name="marker" as="processing-instruction()"/>
     <xsl:variable name="action" as="xs:string?" select="f:pi-attr($marker, 'ACTION')"/>
-    <xsl:sequence select="(map{'REPLACED': 'replaced', 'INSERTED': 'inserted', 'ADDED': 'inserted',
-                               'DELETED': 'deleted', 'REPEALED': 'deleted'}($action),
-                           error(xs:QName('f:unknown'), 'Unsupported Formex: amendment marker ACTION=' || $action))[1]"/>
+    <xsl:variable name="known" as="xs:string?" select="map{'REPLACED': 'replaced', 'INSERTED': 'inserted', 'ADDED': 'inserted',
+                                                         'DELETED': 'deleted', 'REPEALED': 'deleted'}($action)"/>
+    <xsl:sequence select="if (exists($known)) then $known else f:unknown($marker, 'amendment marker ACTION=' || $action)"/>
   </xsl:function>
 
   <!-- a CELEX number; consolidations made with Formex 01.02 to 04.00 write the year with two

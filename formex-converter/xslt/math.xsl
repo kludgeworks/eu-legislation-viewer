@@ -211,7 +211,7 @@
 
   <!-- a footnote reference inside a formula: kept as text, the note itself is collected as usual -->
   <xsl:template match="NOTE" mode="math">
-    <m:msup><m:mrow/><m:mtext>({f:note-marker(if (@NOTE.REF) then key('f:note-by-id', @NOTE.REF, root(.))[1] else .)})</m:mtext></m:msup>
+    <m:msup><m:mrow/><m:mtext>({f:note-marker(if (@NOTE.REF) then f:note-target(.) else .)})</m:mtext></m:msup>
   </xsl:template>
 
   <!-- ============================================================ structures -->
@@ -233,6 +233,7 @@
       <m:mrow><xsl:sequence select="f:math(DIVIDEND/node())"/></m:mrow>
       <m:mrow><xsl:sequence select="f:math(DIVISOR/node())"/></m:mrow>
     </m:mfrac>
+    <xsl:apply-templates select="node() except (DIVIDEND | DIVISOR)" mode="unexpected"/>
   </xsl:template>
 
   <!-- a single vertical bar (absolute values are EXPR TYPE="BAR") -->
@@ -248,6 +249,7 @@
     </xsl:choose></xsl:variable>
     <xsl:variable name="under" as="element()"><m:mrow><xsl:sequence select="f:math(UNDER/node())"/></m:mrow></xsl:variable>
     <xsl:variable name="over" as="element()"><m:mrow><xsl:sequence select="f:math(OVER/node())"/></m:mrow></xsl:variable>
+    <xsl:apply-templates select="node() except (UNDER | OVER)" mode="unexpected"/>
     <xsl:choose>
       <xsl:when test="UNDER and OVER"><m:munderover><xsl:sequence select="$sign, $under, $over"/></m:munderover></xsl:when>
       <xsl:when test="UNDER"><m:munder><xsl:sequence select="$sign, $under"/></m:munder></xsl:when>

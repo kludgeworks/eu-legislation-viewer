@@ -38,7 +38,7 @@
             <xsl:apply-templates select="TITLE/(node() except (TI | STI))" mode="unexpected"/>
           </caption>
         </xsl:if>
-        <xsl:apply-templates select="CORPUS/*" mode="block">
+        <xsl:apply-templates select="CORPUS/node()" mode="block">
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
@@ -52,7 +52,7 @@
     <xsl:sequence select="f:wrap-deleted($m, $table)"/>
     <!-- what follows the rows: text blocks (GR.SEQ), the table's notes group (its notes are collected,
          its annotations stay here, their lists under the table: anx/tab_1/def_1); anything else fails -->
-    <xsl:apply-templates select="* except (TITLE, CORPUS)" mode="block">
+    <xsl:apply-templates select="node() except (TITLE, CORPUS)" mode="block">
       <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
     </xsl:apply-templates>
   </xsl:template>

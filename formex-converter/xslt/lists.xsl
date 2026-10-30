@@ -103,12 +103,8 @@
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="kind" as="xs:string" select="($f:list-kinds(string(@TYPE)), 'none'[not(current()/@TYPE)])[1]"/>
-    <xsl:if test="empty($kind)">
-      <xsl:sequence select="f:unknown(., 'LIST TYPE=' || @TYPE)"/>
-    </xsl:if>
     <xsl:variable name="list" as="element()">
-      <list kind="{$kind}">
+      <list kind="{f:list-kind(.)}">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:apply-templates select="ITEM" mode="block">
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
@@ -122,28 +118,49 @@
   </xsl:template>
 
   <!-- a list whose items an amending act quotes (LIST › QUOT.S › ITEM): each quotation is a quoted
-       structure of its items; items of the list itself stay a list -->
-  <xsl:template match="LIST[QUOT.S]" mode="block" priority="1">
-    <xsl:variable name="kind" as="xs:string" select="($f:list-kinds(string(@TYPE)), 'none')[1]"/>
-    <xsl:for-each-group select="node()" group-adjacent="exists(self::QUOT.S)">
-      <xsl:choose>
-        <xsl:when test="current-grouping-key()">
-          <xsl:apply-templates select="current-group()" mode="block"/>
-        </xsl:when>
-        <xsl:when test="current-group()[self::ITEM]">
-          <list kind="{$kind}">
-            <xsl:apply-templates select="current-group()[self::ITEM]" mode="block">
+       structure of its items; items of the list itself stay a list, which carries what amended the
+       list as a whole -->
+  <xsl:template match="LIST[QUOT.S]" mode="block">
+    <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
+    <xsl:param name="base" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="kind" as="xs:string" select="f:list-kind(.)"/>
+    <xsl:variable name="content" as="element()*">
+      <xsl:for-each-group select="node()" group-adjacent="exists(self::QUOT.S)">
+        <xsl:choose>
+          <xsl:when test="current-grouping-key()">
+            <xsl:apply-templates select="current-group()" mode="block">
+              <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
               <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
             </xsl:apply-templates>
-          </list>
-          <xsl:apply-templates select="current-group()[not(self::ITEM)]" mode="unexpected"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates select="current-group()" mode="unexpected"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:for-each-group>
+          </xsl:when>
+          <xsl:when test="current-group()[self::ITEM]">
+            <list kind="{$kind}">
+              <xsl:sequence select="f:provenance($m)"/>
+              <xsl:apply-templates select="current-group()[self::ITEM]" mode="block">
+                <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+                <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+                <xsl:with-param name="base" as="xs:string?" select="f:list-base(current(), $base)" tunnel="yes"/>
+              </xsl:apply-templates>
+            </list>
+            <xsl:apply-templates select="current-group()[not(self::ITEM)]" mode="unexpected"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select="current-group()" mode="unexpected"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each-group>
+    </xsl:variable>
+    <xsl:sequence select="f:wrap-deleted($m, $content)"/>
   </xsl:template>
+
+  <!-- a list's kind from its TYPE; a TYPE the converter doesn't know stops it (f:unknown) -->
+  <xsl:function name="f:list-kind" as="xs:string">
+    <xsl:param name="list" as="element(LIST)"/>
+    <xsl:variable name="kind" as="xs:string?" select="($f:list-kinds(string($list/@TYPE)), 'none'[not($list/@TYPE)])[1]"/>
+    <xsl:sequence select="if (exists($kind)) then $kind else f:unknown($list, 'LIST TYPE=' || $list/@TYPE)"/>
+  </xsl:function>
 
   <!-- an item a deletion marker covers, itself or its NP -->
   <xsl:function name="f:is-deleted-item" as="xs:boolean">

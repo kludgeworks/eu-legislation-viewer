@@ -167,12 +167,16 @@
 
   <xsl:template match="NOTE[@NOTE.REF]" mode="inline">
     <xsl:param name="notePrefix" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="ref" as="xs:string" select="@NOTE.REF"/>
-    <!-- in the same file, else in another file of the package (a table in an included file refers to
-         a note of the act) -->
-    <xsl:variable name="target" as="element(NOTE)?" select="(key('f:note-by-id', $ref, root(.)), $f:documents ! key('f:note-by-id', $ref, root(.)))[1]"/>
-    <xsl:sequence select="if ($target) then f:note-ref($target, $notePrefix) else f:unknown(., 'NOTE.REF without its note')"/>
+    <xsl:sequence select="f:note-ref(f:note-target(.), $notePrefix)"/>
   </xsl:template>
+
+  <!-- the note a NOTE.REF repeats: in the same file, else in another file of the package (a table in
+       an included file refers to a note of the act); one that refers to no note stops the converter -->
+  <xsl:function name="f:note-target" as="element(NOTE)">
+    <xsl:param name="ref" as="element(NOTE)"/>
+    <xsl:variable name="target" as="element(NOTE)?" select="(key('f:note-by-id', $ref/@NOTE.REF, root($ref)), $f:documents ! key('f:note-by-id', $ref/@NOTE.REF, root(.)))[1]"/>
+    <xsl:sequence select="if ($target) then $target else f:unknown($ref, 'NOTE.REF without its note')"/>
+  </xsl:function>
 
   <xsl:template match="REF.DOC.OJ" mode="inline">
     <ref kind="oj" series="{@COLL}">
@@ -353,8 +357,9 @@
         else string(($note ! accumulator-before('f:footnotes-ended')) + 1)"/>
   </xsl:function>
 
-  <!-- an element the converter doesn't know: fails in strict mode, so new Formex shows up in tests -->
-  <xsl:function name="f:unknown" as="empty-sequence()">
+  <!-- an element the converter doesn't know: fails in strict mode, so new Formex shows up in tests.
+       It never returns: item()*, so that it can stand where a value is expected (f:list-kind) -->
+  <xsl:function name="f:unknown" as="item()*">
     <xsl:param name="e" as="node()"/>
     <xsl:param name="detail" as="xs:string?"/>
     <xsl:message terminate="yes" error-code="f:unknown">Unsupported Formex: {path($e)}{$detail ! (' (' || . || ')')}</xsl:message>

@@ -267,7 +267,7 @@
        the units keep the label, and so share their eId, as published; they are marked ambiguous, which
        legal-text.sch allows. A shared eId without that (no label, or different labels) is a
        converter error. -->
-  <xsl:mode name="f:ambiguity" on-no-match="shallow-copy"/>
+  <xsl:mode name="f:ambiguity" on-no-match="shallow-copy" on-multiple-match="fail"/>
 
   <!-- units and quoted structures: a quotation in a unit the source repeats shares its eId too -->
   <xsl:key name="f:live-unit" match="(lt:unit | lt:quotedStructure)[not(ancestor::lt:deleted)]" use="@eId"/>
