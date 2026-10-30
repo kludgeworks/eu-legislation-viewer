@@ -24,7 +24,13 @@
     <xsl:param name="division" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="label" as="xs:string" select="f:label-after-word(TI.ART)"/>
-    <xsl:variable name="value" as="xs:string" select="($label[. != ''], string(count(preceding-sibling::ARTICLE) + 1))[1]"/>
+    <!-- an article printed without a number, where the act numbers its others, is art_unnumbered-1:
+         a number by position would be one an article prints -->
+    <xsl:variable name="value" as="xs:string" select="
+        if ($label != '') then $label
+        else if (exists(root(.)//ARTICLE[f:label-after-word(TI.ART) != '']))
+        then 'unnumbered-' || (count(preceding::ARTICLE[f:label-after-word(TI.ART) = '']) + 1)
+        else string(count(preceding-sibling::ARTICLE) + 1)"/>
     <xsl:variable name="taken" as="xs:boolean" select="$label != '' and exists(key('f:article-by-label', $label, root(.))[. &lt;&lt; current()]
         [not(f:covering(.)[f:is-deletion(.)])][deep-equal(ancestor::QUOT.S, current()/ancestor::QUOT.S)])"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid(if ($taken and $division) then $division else $base, 'art', $value)"/>
