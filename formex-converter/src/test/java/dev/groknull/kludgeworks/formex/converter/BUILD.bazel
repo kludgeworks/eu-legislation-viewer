@@ -3,8 +3,8 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
 load("@rules_java//java:defs.bzl", "java_binary")
 
 # The converter's tests through its Java API: every fixture against the schema, legal-text.sch,
-# MathML 3, its expected output and its source text; refusals and error codes; legal-text.sch's
-# rules. One test target per *Test.java; the other classes become a shared library.
+# MathML 3, its expected output, its source text and the source metadata the viewer relies on;
+# refusals and error codes; legal-text.sch's rules. One test target per *Test.java; the other classes become a shared library.
 java_test_suite(
     name = "converter",
     size = "medium",

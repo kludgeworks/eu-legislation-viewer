@@ -35,6 +35,7 @@ class CorpusTests {
   static final Processor SAXON = new Processor(false);
   static final FormexConverter CONVERTER = new FormexConverter(SAXON);
   static final TextConservation TEXT = new TextConservation(SAXON);
+  static final MetadataConservation METADATA = new MetadataConservation(SAXON);
   static final LegalTextRules RULES = new LegalTextRules(SAXON);
 
   @TestFactory
@@ -82,6 +83,9 @@ class CorpusTests {
         .isEmpty();
     assertThat(TEXT.missing(manifestation.source(), legalText))
         .as("%s: source text missing from the output", manifestation)
+        .isEmpty();
+    assertThat(METADATA.missing(manifestation.source(), legalText))
+        .as("%s: source metadata missing from the output", manifestation)
         .isEmpty();
   }
 

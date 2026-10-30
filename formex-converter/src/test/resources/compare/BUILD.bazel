@@ -3,11 +3,14 @@ load("@rules_java//java:defs.bzl", "java_library")
 
 package(default_visibility = ["//visibility:public"])
 
-# The text-conservation check: Formex and legal text reduced to the same list of values
+# The conservation checks: Formex and legal text reduced to the same values, the text
+# (formex-values, legal-text-values) and the metadata the viewer relies on (*-metadata)
 filegroup(
     name = "compare",
     srcs = [
+        "formex-metadata.xsl",
         "formex-values.xsl",
+        "legal-text-metadata.xsl",
         "legal-text-values.xsl",
     ],
 )

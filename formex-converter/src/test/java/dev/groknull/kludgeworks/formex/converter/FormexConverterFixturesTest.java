@@ -44,6 +44,7 @@ class FormexConverterFixturesTest {
   static final Processor SAXON = new Processor(false);
   static final FormexConverter CONVERTER = new FormexConverter(SAXON);
   static final TextConservation TEXT = new TextConservation(SAXON);
+  static final MetadataConservation METADATA = new MetadataConservation(SAXON);
   static final LegalTextRules RULES = new LegalTextRules(SAXON);
   static final Schema MATHML = mathml();
   static final URL SCHEMA = resource("schema/legal-text.xsd");
@@ -117,6 +118,13 @@ class FormexConverterFixturesTest {
   void keepsAllSourceText() {
     assertThat(TEXT.missing(fixture.source(), legalText))
         .as("%s: source text missing from the output", fixture)
+        .isEmpty();
+  }
+
+  @Test
+  void keepsTheMetadataTheViewerReliesOn() {
+    assertThat(METADATA.missing(fixture.source(), legalText))
+        .as("%s: source metadata missing from the output", fixture)
         .isEmpty();
   }
 
