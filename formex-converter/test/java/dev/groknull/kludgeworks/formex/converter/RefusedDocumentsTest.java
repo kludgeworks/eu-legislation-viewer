@@ -9,15 +9,15 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 /**
  * Documents that aren't legal acts are refused, not half-converted (see {@link
- * Fixtures#refused()}).
+ * Manifestations#refused()}).
  */
 class RefusedDocumentsTest {
 
   static final FormexConverter CONVERTER = new FormexConverter(new Processor(false));
 
   @ParameterizedTest(name = "{0}")
-  @MethodSource("dev.groknull.kludgeworks.formex.converter.Fixtures#refused")
-  void isRefusedAsOutOfScope(Fixture fixture) {
+  @MethodSource("dev.groknull.kludgeworks.formex.converter.Manifestations#refused")
+  void isRefusedAsOutOfScope(Manifestation fixture) {
     assertThatExceptionOfType(OutOfScopeException.class)
         .isThrownBy(() -> CONVERTER.convert(fixture.source(), fixture.celex()));
   }

@@ -33,12 +33,12 @@ import org.xmlunit.assertj3.XmlAssert;
 
 /**
  * Converts every fixture in scope (one document per Formex version and document type, see {@link
- * Fixtures#inScope()}) once, then checks what every legal text must be. Assertions name the
+ * Manifestations#fixtures()}) once, then checks what every legal text must be. Assertions name the
  * fixture, because Bazel's XML report names a test only by its method.
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ParameterizedClass(name = "{0}")
-@MethodSource("dev.groknull.kludgeworks.formex.converter.Fixtures#inScope")
+@MethodSource("dev.groknull.kludgeworks.formex.converter.Manifestations#fixtures")
 class FormexConverterFixturesTest {
 
   static final Processor SAXON = new Processor(false);
@@ -51,13 +51,13 @@ class FormexConverterFixturesTest {
       CatalogManager.catalogResolver(
           CatalogFeatures.builder().with(CatalogFeatures.Feature.RESOLVE, "strict").build(),
           uri(resource("/formex-converter/schema/catalog.xml")));
-  @Parameter Fixture fixture;
+  @Parameter Manifestation fixture;
 
   XdmNode legalText;
   String xml;
 
   @BeforeParameterizedClassInvocation
-  void convert(Fixture fixture) throws SaxonApiException {
+  void convert(Manifestation fixture) throws SaxonApiException {
     legalText = CONVERTER.convert(fixture.source(), fixture.celex());
     xml = SAXON.newSerializer().serializeNodeToString(legalText);
   }

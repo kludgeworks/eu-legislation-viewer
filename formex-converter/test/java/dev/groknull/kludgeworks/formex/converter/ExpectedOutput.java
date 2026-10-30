@@ -24,7 +24,7 @@ final class ExpectedOutput {
   private ExpectedOutput() {}
 
   /** The file a fixture's expected output is in, among the test's runfiles. */
-  static Path of(Fixture fixture) {
+  static Path of(Manifestation fixture) {
     try {
       return Path.of(
           Runfiles.preload()

@@ -16,13 +16,16 @@ import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 
 /**
- * One Formex document as Cellar serves it: the files of one folder, fixtures/formex/&lt;Formex
- * version&gt;/&lt;CELEX&gt;/ or fixtures/refused/&lt;root element&gt;/.
+ * One Formex manifestation as Cellar serves it (Cellar's FRBR levels: work, expression,
+ * manifestation, items): its items, the files of one folder. A fixture is one,
+ * fixtures/formex/&lt;Formex version&gt;/&lt;CELEX&gt;/ or fixtures/refused/&lt;root element&gt;/;
+ * so is each manifestation of the corpus mirror, files/&lt;Cellar ID&gt;/.
  *
- * @param name the folder relative to fixtures/, e.g. formex/06.02.1/02015R1998-20260322
+ * @param name how tests name it: its folder relative to fixtures/
+ *     (formex/06.02.1/02015R1998-20260322) or its Cellar ID
  * @param folder the folder
  */
-record Fixture(String name, Path folder) {
+record Manifestation(String name, Path folder) {
 
   private static final Pattern ROOT_ELEMENT = Pattern.compile("<([A-Z][A-Z0-9.]*)[\\s>/]");
   private static final Pattern OJ_CELEX = Pattern.compile("[1-9E]\\d{4}[A-Z]{1,2}[0-9A-Z()]+");
@@ -35,7 +38,8 @@ record Fixture(String name, Path folder) {
     var files = xmlFiles();
     return first(files, root -> root.startsWith("CONS."))
         .or(() -> first(files, "DOC"::equals))
-        .orElseGet(() -> files.stream().max(Comparator.comparingLong(Fixture::size)).orElseThrow());
+        .orElseGet(
+            () -> files.stream().max(Comparator.comparingLong(Manifestation::size)).orElseThrow());
   }
 
   /** The input with its system id set, so the files it refers to resolve. */

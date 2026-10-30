@@ -28,7 +28,7 @@ public final class UpdateExpected {
     var saxon = new Processor(false);
     var converter = new FormexConverter(saxon);
     var written = new HashSet<Path>();
-    for (var fixture : Fixtures.inScope().toList()) {
+    for (var fixture : Manifestations.fixtures().toList()) {
       var file = out.resolve(fixture.name() + ".xml");
       Files.createDirectories(file.getParent());
       var legalText = converter.convert(fixture.source(), fixture.celex());

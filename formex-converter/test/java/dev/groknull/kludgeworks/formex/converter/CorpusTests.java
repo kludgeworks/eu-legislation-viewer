@@ -56,14 +56,14 @@ class CorpusTests {
                     item.getKey(),
                     () ->
                         check(
-                            new Fixture(
+                            new Manifestation(
                                 item.getKey(), corpus.resolve("files").resolve(item.getKey())),
                             item.getValue())));
   }
 
-  private static void check(Fixture fixture, Optional<String> celex) throws Exception {
+  private static void check(Manifestation manifestation, Optional<String> celex) throws Exception {
     var legalText =
-        Optional.of(fixture.source())
+        Optional.of(manifestation.source())
             .map(
                 source -> {
                   try {
@@ -75,11 +75,13 @@ class CorpusTests {
             .orElseThrow();
     var xml = SAXON.newSerializer().serializeNodeToString(legalText);
     XmlAssert.assertThat(xml)
-        .as("%s", fixture)
+        .as("%s", manifestation)
         .isValidAgainst(CorpusTests.class.getResource("/formex-converter/schema/legal-text.xsd"));
-    assertThat(RULES.violations(legalText)).as("%s: breaks legal-text.sch", fixture).isEmpty();
-    assertThat(TEXT.missing(fixture.source(), legalText))
-        .as("%s: source text missing from the output", fixture)
+    assertThat(RULES.violations(legalText))
+        .as("%s: breaks legal-text.sch", manifestation)
+        .isEmpty();
+    assertThat(TEXT.missing(manifestation.source(), legalText))
+        .as("%s: source text missing from the output", manifestation)
         .isEmpty();
   }
 
