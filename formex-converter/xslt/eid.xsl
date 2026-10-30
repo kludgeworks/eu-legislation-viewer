@@ -14,8 +14,9 @@
     xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     exclude-result-prefixes="#all">
 
-  <!-- a visible label as an eId value: "(a)" → "a", "1.0.6." → "1.0.6", "10 a" → "10-a"; marks with no
-       letter or digit ("–", "-", ".") are no label -->
+  <!-- a visible label as an eId value: "(a)" → "a", "1.0.6." → "1.0.6", "10 a" → "10-a", "Criterion 1 –"
+       → "Criterion-1"; marks with no letter or digit ("–", "-", ".") are no label. A leading "-" is
+       part of the number: Article -1 is art_-1, as ELI writes it -->
   <xsl:function name="f:label" as="xs:string">
     <xsl:param name="label" as="xs:string?"/>
     <xsl:variable name="value" as="xs:string" select="
@@ -23,7 +24,10 @@
         => replace('^[\(\[]+|[\)\]]+$', '')
         => replace('\.+$', '')
         => replace('\s+', '-')
-        => replace('[^\p{L}\p{N}._\-]', '')"/>
+        => replace('[^\p{L}\p{N}._\-]', '')
+        => replace('-{2,}', '-')
+        => replace('[._\-]+$', '')
+        => replace('^[._]+', '')"/>
     <xsl:sequence select="if (matches($value, '[\p{L}\p{N}]')) then $value else ''"/>
   </xsl:function>
 

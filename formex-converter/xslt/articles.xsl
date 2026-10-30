@@ -22,6 +22,7 @@
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="division" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="divisionBase" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="label" as="xs:string" select="f:label-after-word(TI.ART)"/>
     <!-- an article printed without a number, where the act numbers its others, is art_unnumbered-1:
@@ -32,8 +33,9 @@
         then 'unnumbered-' || (count(preceding::ARTICLE[f:label-after-word(TI.ART) = '']) + 1)
         else string(count(preceding-sibling::ARTICLE) + 1)"/>
     <xsl:variable name="taken" as="xs:boolean" select="$label != '' and exists(key('f:article-by-label', $label, root(.))[. &lt;&lt; current()]
-        [not(f:covering(.)[f:is-deletion(.)])][deep-equal(ancestor::QUOT.S, current()/ancestor::QUOT.S)])"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid(if ($taken and $division) then $division else $base, 'art', $value)"/>
+        [not(f:covering(.)[f:is-deletion(.)])][f:same-quotation(., current())])"/>
+    <xsl:variable name="enclosing" as="xs:string?" select="f:enclosing-division($division, $divisionBase, $base)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid(if ($taken and $enclosing) then $enclosing else $base, 'art', $value)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="article">
         <xsl:sequence select="f:provenance($m)"/>
@@ -143,20 +145,40 @@
     <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
   </xsl:template>
 
+  <!-- the division a division or an article is in, while it is: one that encloses what holds them
+       now (a quotation or an annex in an article in CHAPTER I starts afresh) is no longer theirs -->
+  <xsl:function name="f:enclosing-division" as="xs:string?">
+    <xsl:param name="division" as="xs:string?"/>
+    <xsl:param name="divisionBase" as="xs:string?"/>
+    <xsl:param name="base" as="xs:string?"/>
+    <xsl:sequence select="$division[string($divisionBase) = string($base)]"/>
+  </xsl:function>
+
+  <!-- whether two elements are in the same quotation, or both in none -->
+  <xsl:function name="f:same-quotation" as="xs:boolean">
+    <xsl:param name="a" as="element()"/>
+    <xsl:param name="b" as="element()"/>
+    <xsl:variable name="qa" as="element(QUOT.S)?" select="$a/ancestor::QUOT.S[1]"/>
+    <xsl:variable name="qb" as="element(QUOT.S)?" select="$b/ancestor::QUOT.S[1]"/>
+    <xsl:sequence select="if (empty($qa) or empty($qb)) then empty($qa) and empty($qb) else $qa is $qb"/>
+  </xsl:function>
+
   <!-- Parts, titles, chapters and sections (Formex DIVISION): unit kind="division", its title line as
-       num (CHAPTER III). The eId is division_ and the label after the type word, nested under the enclosing
-       division; the kind of grouping isn't classified, since that would mean reading each language's
-       wording. Articles inside keep act-wide eIds (art_14), as in AKN4EU and ELI. -->
+       num (CHAPTER III). The eId names the kind by the EU subdivision table's code (prt_, tis_, cpt_,
+       sct_, sbs_), else division_, then the label after the type word, nested under the enclosing
+       division. Articles inside keep act-wide eIds (art_14), as in AKN4EU and ELI. -->
   <xsl:template match="DIVISION" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="division" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="divisionBase" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="line" as="element()?" select="TITLE/TI/*[1]"/>
     <!-- a part, title, chapter, section or subsection, as the EU subdivision table names them in the
          document's language: prt_, tis_, cpt_, sct_, sbs_ and the number after the name; else division_ -->
-    <xsl:variable name="type" as="xs:string*" select="if ($line/self::NP) then () else f:subdivision(string($line), ('PRT', 'TIS', 'CPT', 'SCT', 'SBS'), .)"/>
+    <!-- a title line that is a numbered paragraph names its kind in the number: NO.P "TITLE I" -->
+    <xsl:variable name="type" as="xs:string*" select="f:subdivision(string(($line/self::NP/NO.P, $line)[1]), ('PRT', 'TIS', 'CPT', 'SCT', 'SBS'), .)"/>
     <!-- after a recognised name, the next word is the number, in whatever form: III, 2, TWO -->
     <xsl:variable name="number" as="xs:string?" select="tokenize($type[2], ' ')[1]"/>
     <xsl:variable name="label" as="xs:string" select="(
@@ -166,7 +188,7 @@
     <!-- divisions hang off what holds them: nothing in the act's own enacting terms (cpt_1), else
          the annex, quoted structure, attachment or level (anx_II/cpt_1) -->
     <xsl:variable name="outer" as="xs:string?" select="$base"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid(($division, $outer)[1], ($type[1] ! lower-case(.), 'division')[1], $label)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid((f:enclosing-division($division, $divisionBase, $outer), $outer)[1], ($type[1] ! lower-case(.), 'division')[1], $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>
@@ -181,6 +203,7 @@
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$outer" tunnel="yes"/>
           <xsl:with-param name="division" as="xs:string?" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="divisionBase" as="xs:string?" select="$outer" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>

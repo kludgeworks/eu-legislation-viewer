@@ -162,7 +162,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="division_TITLE-I" kind="division">
+      <unit eId="tis_I" kind="division">
          <num>
             <t v="TITLE I"/>
          </num>
@@ -224,7 +224,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="division_TITLE-II" kind="division">
+      <unit eId="tis_II" kind="division">
          <num>
             <t v="TITLE II"/>
          </num>
@@ -298,7 +298,7 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="division_TITLE-III" kind="division">
+      <unit eId="tis_III" kind="division">
          <num>
             <t v="TITLE III"/>
          </num>
@@ -314,7 +314,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="division_TITLE-IV" kind="division">
+      <unit eId="tis_IV" kind="division">
          <num>
             <t v="TITLE IV"/>
          </num>

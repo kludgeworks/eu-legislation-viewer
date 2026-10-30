@@ -615,7 +615,8 @@
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:pattern value="[a-z]+(_[\p{L}\p{N}._\-]+)?(/[a-z]+(_[\p{L}\p{N}._\-]+)?)*"/>
+      <!-- a label starts with a letter or digit, or the "-" of a negative number (art_-1), and ends with one -->
+      <xs:pattern value="[a-z]+(_-?[\p{L}\p{N}]([\p{L}\p{N}._\-]*[\p{L}\p{N}])?)?(/[a-z]+(_-?[\p{L}\p{N}]([\p{L}\p{N}._\-]*[\p{L}\p{N}])?)?)*"/>
     </xs:restriction>
   </xs:simpleType>
 

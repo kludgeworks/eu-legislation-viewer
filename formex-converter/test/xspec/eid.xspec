@@ -29,6 +29,14 @@
       <x:call function="f:label"><x:param select="'6–D'"/></x:call>
       <x:expect label="the en dash goes" select="'6D'"/>
     </x:scenario>
+    <x:scenario label="leaves no separator where a mark at the end was dropped">
+      <x:call function="f:label"><x:param select="'Criterion 3.1. –'"/></x:call>
+      <x:expect label="Criterion-3.1, not Criterion-3.1.-" select="'Criterion-3.1'"/>
+    </x:scenario>
+    <x:scenario label="keeps the minus of a negative number">
+      <x:call function="f:label"><x:param select="'-1'"/></x:call>
+      <x:expect label="Article -1 is art_-1, as ELI writes it" select="'-1'"/>
+    </x:scenario>
     <x:scenario label="a mark with no letter or digit is no label">
       <x:call function="f:label"><x:param select="'–'"/></x:call>
       <x:expect label="empty: the item is numbered as an indent" select="''"/>

@@ -81,6 +81,40 @@
               test="$x:result//*:unit[@kind = 'article']/@eId => string-join(' ') = 'art_1 prt_TWO/art_1'"/>
   </x:scenario>
 
+  <x:scenario label="A chapter an article of CHAPTER I quotes">
+    <x:context xmlns="">
+      <ACT><BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <TITLE><TI><P>Regulation</P></TI></TITLE>
+        <ENACTING.TERMS>
+          <DIVISION><TITLE><TI><P>CHAPTER I</P></TI></TITLE>
+            <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART>
+              <ALINEA><P>The following chapter is inserted:</P>
+                <QUOT.S><DIVISION><TITLE><TI><P>CHAPTER IIa</P></TI></TITLE>
+                  <ARTICLE IDENTIFIER="005a"><TI.ART>Article 5a</TI.ART><ALINEA>x</ALINEA></ARTICLE></DIVISION></QUOT.S>
+              </ALINEA>
+            </ARTICLE>
+          </DIVISION>
+        </ENACTING.TERMS>
+      </ACT>
+    </x:context>
+    <x:expect label="hangs off the quotation, not off CHAPTER I: art_1/qstr_1/cpt_IIa"
+              test="$x:result//*:quotedStructure/*:unit[@kind = 'division']/@eId = 'art_1/qstr_1/cpt_IIa'"/>
+    <x:expect label="and so does its article" test="$x:result//*:quotedStructure//*:unit[@kind = 'article']/@eId = 'art_1/qstr_1/art_5a'"/>
+  </x:scenario>
+
+  <x:scenario label="A division whose title is a numbered paragraph, NO.P TITLE I (2002/2370)">
+    <x:context xmlns="">
+      <ACT><BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <TITLE><TI><P>Regulation</P></TI></TITLE>
+        <ENACTING.TERMS>
+          <DIVISION><TITLE><TI><NP><NO.P>TITLE I</NO.P><TXT>GENERAL PROVISIONS</TXT></NP></TI></TITLE>
+            <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>a</ALINEA></ARTICLE></DIVISION>
+        </ENACTING.TERMS>
+      </ACT>
+    </x:context>
+    <x:expect label="is named by the subdivision table from its number: tis_I" test="$x:result//*:unit[@kind = 'division']/@eId = 'tis_I'"/>
+  </x:scenario>
+
   <!-- ============================================================ formulas -->
 
   <x:scenario label="A formula in running text">

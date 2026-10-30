@@ -1409,7 +1409,7 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03-" kind="level" depth="4">
+         <unit eId="att_1/pnt_CHAPTER-14-03" kind="level" depth="4">
             <num>
                <emphasis kind="b">
                   <t v="CHAPTER 14 03 —"/>
@@ -1421,7 +1421,7 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03-/level_1" kind="level" depth="5">
+         <unit eId="att_1/pnt_CHAPTER-14-03/level_1" kind="level" depth="5">
             <table cols="9">
                <tr header="true">
                   <td rowspan="2" header="true">
@@ -1651,7 +1651,7 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03-/level_2" kind="level" depth="5">
+         <unit eId="att_1/pnt_CHAPTER-14-03/level_2" kind="level" depth="5">
             <heading>
                <emphasis kind="i">
                   <t v="Remarks"/>
@@ -1670,7 +1670,7 @@
                <t v="The related estimated amounts as well as the corresponding article or item of the statement of revenue are indicated, wherever possible, in the relevant budget lines."/>
             </p>
          </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03-/level_3" kind="level" depth="5">
+         <unit eId="att_1/pnt_CHAPTER-14-03/level_3" kind="level" depth="5">
             <heading>
                <emphasis kind="i">
                   <t v="Legal basis"/>
@@ -1690,7 +1690,7 @@
                <t v=")."/>
             </p>
          </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03-/level_4" kind="level" depth="5">
+         <unit eId="att_1/pnt_CHAPTER-14-03/level_4" kind="level" depth="5">
             <heading>
                <emphasis kind="b">
                   <emphasis kind="i">
@@ -1700,7 +1700,7 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03-/level_4/level_1"
+         <unit eId="att_1/pnt_CHAPTER-14-03/level_4/level_1"
                kind="level"
                depth="6">
             <heading>
@@ -1788,7 +1788,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03-/level_4/level_2"
+         <unit eId="att_1/pnt_CHAPTER-14-03/level_4/level_2"
                kind="level"
                depth="6">
             <heading>
