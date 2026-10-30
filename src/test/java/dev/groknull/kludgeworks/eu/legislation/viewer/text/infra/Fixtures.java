@@ -28,6 +28,15 @@ final class Fixtures {
     return folders("formex", 2);
   }
 
+  /** One fixture by its folder: formex/06.02.1/02015R1998-20260322. */
+  static Fixture named(String name) {
+    var folder = ROOT.resolve(name);
+    if (!Files.isDirectory(folder)) {
+      throw new IllegalArgumentException("no fixture " + name);
+    }
+    return new Fixture(name, folder);
+  }
+
   /** Documents out of scope: one folder per root element, refused/&lt;root&gt;. */
   static Stream<Fixture> refused() {
     return folders("refused", 1);

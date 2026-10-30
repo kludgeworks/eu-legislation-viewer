@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
-<!-- JAXB bindings for legal-text.xsd: the package, java.time dates, and readable names for the choices -->
+<!-- JAXB bindings for legal-text.xsd: the package, Xml-prefixed class names, java.time dates, and readable names for the choices -->
 <jaxb:bindings version="3.0"
     xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
     xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
@@ -15,6 +15,8 @@
   <jaxb:bindings schemaLocation="legal-text.xsd">
     <jaxb:schemaBindings>
       <jaxb:package name="dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml"/>
+      <!-- XmlUnit, XmlBlock …: apart from the domain records of the same names, which they map onto -->
+      <jaxb:nameXmlTransform><jaxb:typeName prefix="Xml"/></jaxb:nameXmlTransform>
     </jaxb:schemaBindings>
     <jaxb:bindings node="//xs:group[@name='inline']/xs:sequence/xs:choice"><jaxb:property name="content"/></jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='blocks']/xs:sequence/xs:choice"><jaxb:property name="content"/></jaxb:bindings>

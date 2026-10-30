@@ -3,14 +3,11 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.LegalText;
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBElement;
-import jakarta.xml.bind.JAXBException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
@@ -18,7 +15,9 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
+import net.sf.saxon.s9api.XdmItem;
 import net.sf.saxon.s9api.XdmNode;
+import net.sf.saxon.s9api.XdmValue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.BeforeParameterizedClassInvocation;
@@ -44,7 +43,7 @@ class FormexConverterFixturesTest {
   static final LegalTextRules RULES = new LegalTextRules(SAXON);
   static final Schema MATHML = mathml();
   static final URL SCHEMA = resource("/formex-converter/schema/legal-text.xsd");
-  static final JAXBContext JAXB = jaxb();
+  static final LegalTextReader READER = new LegalTextReader(SAXON);
   @Parameter Fixture fixture;
 
   XdmNode legalText;
@@ -61,10 +60,20 @@ class FormexConverterFixturesTest {
     XmlAssert.assertThat(xml).as("%s", fixture).isValidAgainst(SCHEMA);
   }
 
+  /**
+   * The records hold every text value and every eId of the XML, in order: the mapping lost nothing.
+   */
   @Test
-  void unmarshalsIntoTheGeneratedClasses() throws JAXBException {
-    var unmarshalled = (JAXBElement<?>) JAXB.createUnmarshaller().unmarshal(new StringReader(xml));
-    assertThat(unmarshalled.getValue()).as("%s", fixture).isInstanceOf(LegalText.class);
+  void readsIntoTheRecords() throws SaxonApiException {
+    var records = RecordContents.of(READER.read(legalText));
+    var xpath = SAXON.newXPathCompiler();
+    xpath.declareNamespace("lt", "https://kludgeworks.groknull.dev/ns/legal-text/1");
+    assertThat(records.texts)
+        .as("%s: text values of the records", fixture)
+        .containsExactlyElementsOf(strings(xpath.evaluate("//lt:t/@v", legalText)));
+    assertThat(records.eIds)
+        .as("%s: eIds of the records", fixture)
+        .containsExactlyElementsOf(strings(xpath.evaluate("//@eId", legalText)));
   }
 
   /** Unique live eIds, resolved note references, consistent amendment markers (legal-text.sch). */
@@ -105,13 +114,8 @@ class FormexConverterFixturesTest {
     }
   }
 
-  private static JAXBContext jaxb() {
-    try {
-      return JAXBContext.newInstance(
-          LegalText.class.getPackageName(), LegalText.class.getClassLoader());
-    } catch (JAXBException e) {
-      throw new IllegalStateException(e);
-    }
+  private static List<String> strings(XdmValue values) {
+    return values.stream().map(XdmItem::getStringValue).toList();
   }
 
   private static URL resource(String name) {
