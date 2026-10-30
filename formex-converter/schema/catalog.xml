@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!--
+  legal-text.xsd by the URL documents name in xsi:schemaLocation, resolved to the copy beside this
+  catalog (OASIS XML Catalogs 1.1, read by javax.xml.catalog): nothing fetches the schema.
+-->
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <system systemId="https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd" uri="legal-text.xsd"/>
+  <uri name="https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd" uri="legal-text.xsd"/>
+</catalog>

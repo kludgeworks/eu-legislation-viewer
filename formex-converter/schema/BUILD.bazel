@@ -4,15 +4,17 @@ load("@rules_java//java:defs.bzl", "java_library")
 package(default_visibility = ["//visibility:public"])
 
 exports_files([
+    "catalog.xml",
     "legal-text.xsd",
     "legal-text.sch",
 ])
 
-# legal-text.xsd and the rules it can't express (legal-text.sch), on the classpath at
-# /formex-converter/schema/
+# legal-text.xsd, the rules it can't express (legal-text.sch) and the catalog that resolves its URL
+# to it (catalog.xml), on the classpath at /formex-converter/schema/
 java_library(
     name = "resources",
     resources = [
+        "catalog.xml",
         "legal-text.sch",
         "legal-text.xsd",
     ],

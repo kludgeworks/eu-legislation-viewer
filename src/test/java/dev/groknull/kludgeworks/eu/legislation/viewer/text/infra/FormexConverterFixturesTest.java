@@ -5,11 +5,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.xml.XMLConstants;
+import javax.xml.catalog.CatalogFeatures;
+import javax.xml.catalog.CatalogManager;
+import javax.xml.catalog.CatalogResolver;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -43,6 +48,10 @@ class FormexConverterFixturesTest {
   static final LegalTextRules RULES = new LegalTextRules(SAXON);
   static final Schema MATHML = mathml();
   static final URL SCHEMA = resource("/formex-converter/schema/legal-text.xsd");
+  static final CatalogResolver CATALOG =
+      CatalogManager.catalogResolver(
+          CatalogFeatures.builder().with(CatalogFeatures.Feature.RESOLVE, "strict").build(),
+          uri(resource("/formex-converter/schema/catalog.xml")));
   static final LegalTextReader READER = new LegalTextReader(SAXON);
   @Parameter Fixture fixture;
 
@@ -58,6 +67,19 @@ class FormexConverterFixturesTest {
   @Test
   void isValidAgainstTheSchema() {
     XmlAssert.assertThat(xml).as("%s", fixture).isValidAgainst(SCHEMA);
+  }
+
+  /**
+   * The schema the document names (xsi:schemaLocation) resolves through catalog.xml to the copy on
+   * the classpath; strictly, so a URL the catalog doesn't know fails instead of being fetched.
+   */
+  @Test
+  void isValidAgainstTheSchemaItNames() throws SAXException, IOException {
+    var factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+    factory.setResourceResolver(CATALOG);
+    var validator = factory.newSchema().newValidator();
+    validator.setResourceResolver(CATALOG);
+    validator.validate(new StreamSource(new StringReader(xml)));
   }
 
   /**
@@ -119,6 +141,14 @@ class FormexConverterFixturesTest {
 
   private static List<String> strings(XdmValue values) {
     return values.stream().map(XdmItem::getStringValue).toList();
+  }
+
+  private static URI uri(URL url) {
+    try {
+      return url.toURI();
+    } catch (URISyntaxException e) {
+      throw new IllegalStateException(e);
+    }
   }
 
   private static URL resource(String name) {
