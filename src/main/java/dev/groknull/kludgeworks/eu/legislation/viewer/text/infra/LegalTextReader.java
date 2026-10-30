@@ -17,11 +17,11 @@ import net.sf.saxon.s9api.XdmNode;
 import org.xml.sax.SAXException;
 
 /**
- * Reads legal-text XML, as {@link FormexConverter} writes it, into the domain records: Saxon hands
- * the tree to JAXB as SAX events, with no serialisation in between, and {@link LegalTextMapper}
- * maps the generated classes onto the records. The document is validated against legal-text.xsd as
- * it is read, so a value the schema doesn't know (a newer document's unit kind) fails here instead
- * of becoming null: adding a value to the schema is a major version. One instance serves concurrent
+ * Reads legal-text XML, as the Formex converter writes it, into the domain records: Saxon hands the
+ * tree to JAXB as SAX events, with no serialisation in between, and {@link LegalTextMapper} maps
+ * the generated classes onto the records. The document is validated against legal-text.xsd as it is
+ * read, so a value the schema doesn't know (a newer document's unit kind) fails here instead of
+ * becoming null: adding a value to the schema is a major version. One instance serves concurrent
  * calls.
  */
 public final class LegalTextReader {
@@ -39,7 +39,7 @@ public final class LegalTextReader {
   /**
    * @param legalText a legal-text document, valid against legal-text.xsd
    * @return its records
-   * @throws ConversionException if it can't be read as legal text
+   * @throws InvalidLegalTextException if it can't be read as legal text
    */
   public LegalText read(XdmNode legalText) {
     try {
@@ -50,7 +50,7 @@ public final class LegalTextReader {
       var element = (JAXBElement<?>) handler.getResult();
       return mapper.legalText((XmlLegalText) element.getValue());
     } catch (JAXBException | SaxonApiException | ClassCastException e) {
-      throw new ConversionException("not legal text: " + e.getMessage(), e);
+      throw new InvalidLegalTextException("not legal text: " + e.getMessage(), e);
     }
   }
 

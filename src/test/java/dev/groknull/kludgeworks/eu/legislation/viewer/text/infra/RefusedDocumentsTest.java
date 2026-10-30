@@ -3,6 +3,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import dev.groknull.kludgeworks.formex.converter.FormexConverter;
+import dev.groknull.kludgeworks.formex.converter.OutOfScopeException;
 import net.sf.saxon.s9api.Processor;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

@@ -15,6 +15,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.text.Paragraph;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Provenance;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Unit;
+import dev.groknull.kludgeworks.formex.converter.FormexConverter;
 import java.io.StringReader;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -155,7 +156,7 @@ class LegalTextReaderTest {
                     Optional.empty()))
             .replaceFirst("kind=\"level\"", "kind=\"clause\"");
     var newer = SAXON.newDocumentBuilder().build(new StreamSource(new StringReader(xml)));
-    assertThatExceptionOfType(ConversionException.class)
+    assertThatExceptionOfType(InvalidLegalTextException.class)
         .isThrownBy(() -> READER.read(newer))
         .withMessageContaining("clause");
   }
@@ -164,7 +165,7 @@ class LegalTextReaderTest {
   void refusesWhatIsNotLegalText() throws SaxonApiException {
     var notLegalText =
         SAXON.newDocumentBuilder().build(new StreamSource(new StringReader("<legalText/>")));
-    assertThatExceptionOfType(ConversionException.class)
+    assertThatExceptionOfType(InvalidLegalTextException.class)
         .isThrownBy(() -> READER.read(notLegalText));
   }
 

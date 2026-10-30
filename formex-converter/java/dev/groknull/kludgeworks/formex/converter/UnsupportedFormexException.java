@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
+package dev.groknull.kludgeworks.formex.converter;
 
 /** The document uses Formex the converter doesn't handle yet; the message names the element. */
 public final class UnsupportedFormexException extends ConversionException {

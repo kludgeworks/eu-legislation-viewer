@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
+package dev.groknull.kludgeworks.formex.converter;
 
 import java.util.Map;
 import java.util.Objects;

@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import dev.groknull.kludgeworks.formex.converter.FormexConverter;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URI;

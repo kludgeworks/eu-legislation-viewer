@@ -24,6 +24,7 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        "//formex-converter/java/dev/groknull/kludgeworks/formex/converter",
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text",
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra",
         "//tools/build:schematron",
@@ -73,6 +74,7 @@ java_junit5_test(
     ],
     deps = [
         ":infra-test-lib",
+        "//formex-converter/java/dev/groknull/kludgeworks/formex/converter",
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",

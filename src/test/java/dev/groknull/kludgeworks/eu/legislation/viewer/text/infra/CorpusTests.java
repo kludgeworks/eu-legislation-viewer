@@ -4,6 +4,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assumptions.abort;
 
+import dev.groknull.kludgeworks.formex.converter.FormexConverter;
+import dev.groknull.kludgeworks.formex.converter.OutOfScopeException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

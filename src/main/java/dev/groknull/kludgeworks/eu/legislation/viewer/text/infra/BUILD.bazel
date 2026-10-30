@@ -1,16 +1,13 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
 
-# The converter (Formex 4 → legal-text XML) and the reader (legal-text XML → the domain records)
+# The reader: legal-text XML → the domain records
 java_library(
     name = "infra",
     srcs = glob(["*.java"]),
     plugins = ["//tools/build:mapstruct"],
     visibility = ["//src:__subpackages__"],  # the viewer only: //formex-converter never depends on it
-    runtime_deps = [
-        "//formex-converter/schema:resources",
-        "//formex-converter/xslt:resources",
-    ],
+    runtime_deps = ["//formex-converter/schema:resources"],
     deps = [
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text",
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml",
