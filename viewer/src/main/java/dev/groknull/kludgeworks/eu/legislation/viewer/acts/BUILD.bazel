@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
 
-# The module's API and domain: Act, its identifiers, versions and timeline; Acts, the service
+# The module's API and domain: Act, its identifiers, versions and timeline; Acts, the repository
 java_library(
     name = "acts",
     srcs = glob(["*.java"]),
@@ -11,6 +11,5 @@ java_library(
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_springframework_modulith_spring_modulith_api",
-        "@maven//:org_springframework_spring_context",
     ],
 )

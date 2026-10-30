@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.acts;
 
 import java.time.LocalDate;
+import java.util.Optional;
 import org.jmolecules.ddd.annotation.AggregateRoot;
 import org.jmolecules.ddd.annotation.Identity;
 import org.jspecify.annotations.Nullable;
@@ -25,4 +26,10 @@ public record Act(
     @Nullable LocalDate dateOfDocument,
     boolean inForce,
     @Nullable LocalDate endOfValidity,
-    Timeline timeline) {}
+    Timeline timeline) {
+
+  /** The version that applies on {@code date}; none before the act's text first applies. */
+  public Optional<Version> versionOn(LocalDate date) {
+    return timeline.applicableOn(date);
+  }
+}

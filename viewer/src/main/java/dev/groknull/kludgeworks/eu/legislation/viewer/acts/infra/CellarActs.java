@@ -2,8 +2,8 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.acts.infra;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActCatalogue;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
@@ -21,16 +21,15 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Component;
 
 /**
- * Acts from Cellar's RDF (the CDM ontology): the act's work by its CELEX, and the consolidations
- * based on it (Research: CDM ontology). Three queries, beside this class: act.rq, act-by-eli.rq and
- * versions.rq.
+ * All acts, from Cellar's RDF (the CDM ontology): an act's work by its CELEX, found from its ELI if
+ * need be, and the consolidations based on it (Research: CDM ontology). Three queries, beside this
+ * class: act.rq, act-by-eli.rq and versions.rq.
  */
 @Component
-class CellarActCatalogue implements ActCatalogue {
-  private static final String ACT = Sparql.template(CellarActCatalogue.class, "act.rq");
-  private static final String ACT_BY_ELI =
-      Sparql.template(CellarActCatalogue.class, "act-by-eli.rq");
-  private static final String VERSIONS = Sparql.template(CellarActCatalogue.class, "versions.rq");
+class CellarActs implements Acts {
+  private static final String ACT = Sparql.template(CellarActs.class, "act.rq");
+  private static final String ACT_BY_ELI = Sparql.template(CellarActs.class, "act-by-eli.rq");
+  private static final String VERSIONS = Sparql.template(CellarActs.class, "versions.rq");
 
   /** Cellar's date for one it doesn't know (seen as an entry into force). */
   private static final LocalDate UNKNOWN = LocalDate.of(1001, 1, 1);
@@ -43,7 +42,7 @@ class CellarActCatalogue implements ActCatalogue {
 
   private final Sparql sparql;
 
-  CellarActCatalogue(Sparql sparql) {
+  CellarActs(Sparql sparql) {
     this.sparql = sparql;
   }
 
@@ -55,8 +54,9 @@ class CellarActCatalogue implements ActCatalogue {
   }
 
   @Override
-  public Optional<ActIdentifier> identify(Eli eli) {
-    return identity(eli, sparql.select(Sparql.fill(ACT_BY_ELI, Map.of("eli", eli.path()))));
+  public Optional<Act> find(Eli eli) {
+    return identity(eli, sparql.select(Sparql.fill(ACT_BY_ELI, Map.of("eli", eli.path()))))
+        .flatMap(this::find);
   }
 
   /** The act from the answer to act-by-eli.rq; none if no work has the ELI. */
@@ -106,7 +106,7 @@ class CellarActCatalogue implements ActCatalogue {
             elis.isEmpty() ? null : Eli.of(elis.getFirst()),
             types.getFirst().substring(RESOURCE_TYPE.length()),
             dateOfDocument,
-            row.find("inForce").map(CellarActCatalogue::isTrue).orElse(false),
+            row.find("inForce").map(CellarActs::isTrue).orElse(false),
             endOfValidity.orElse(null),
             timeline(id, originalFrom, consolidations)));
   }

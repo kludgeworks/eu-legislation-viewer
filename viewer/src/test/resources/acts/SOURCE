@@ -1,5 +1,5 @@
 Responses recorded from Cellar's SPARQL endpoint on 2026-10-30, byte for byte, for the acts module's
-tests: CellarActCatalogue's queries (viewer/src/main/resources/…/acts/infra/*.rq) with these values.
+tests: CellarActs's queries (viewer/src/main/resources/…/acts/infra/*.rq) with these values.
 
 act-32015R1998.json                 act.rq, celex 32015R1998 (in force; entry into force and application)
 act-32010R0185.json                 act.rq, celex 32010R0185 (repealed by 32015R1998)

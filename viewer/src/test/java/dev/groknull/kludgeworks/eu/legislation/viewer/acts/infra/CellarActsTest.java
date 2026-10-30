@@ -16,7 +16,7 @@ import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
 /** Cellar's answers, recorded (viewer/src/test/resources/acts), folded into acts. */
-class CellarActCatalogueTest {
+class CellarActsTest {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
   static final ActIdentifier REPEALED = new ActIdentifier("32010R0185");
 
@@ -74,7 +74,7 @@ class CellarActCatalogueTest {
     assertThat(act.endOfValidity()).isEqualTo(LocalDate.of(2015, 11, 14));
     assertThat(act.timeline().versions()).hasSize(17);
     assertThat(act.timeline().versions().getFirst().date()).isEqualTo(LocalDate.of(2010, 3, 25));
-    assertThat(act.timeline().applicableOn(LocalDate.of(2020, 1, 1)).orElseThrow().celex())
+    assertThat(act.versionOn(LocalDate.of(2020, 1, 1)).orElseThrow().celex())
         .isEqualTo("02010R0185-20160201");
   }
 
@@ -82,19 +82,19 @@ class CellarActCatalogueTest {
   void anActCellarDoesNotKnowIsNone() {
     var none = new SparqlResult(List.of("eli"), List.of());
 
-    assertThat(CellarActCatalogue.act(AVSEC, none, none)).isEmpty();
+    assertThat(CellarActs.act(AVSEC, none, none)).isEmpty();
   }
 
   @Test
   void identifiesAnActByItsEli() {
     var eli = new Eli("reg_impl", 2015, "1998");
 
-    assertThat(CellarActCatalogue.identity(eli, recorded("act-by-eli-reg_impl-2015-1998.json")))
+    assertThat(CellarActs.identity(eli, recorded("act-by-eli-reg_impl-2015-1998.json")))
         .contains(AVSEC);
   }
 
   private static Act act(ActIdentifier id) {
-    return CellarActCatalogue.act(
+    return CellarActs.act(
             id,
             recorded("act-" + id.celex() + ".json"),
             recorded("versions-" + id.celex() + ".json"))
@@ -108,8 +108,7 @@ class CellarActCatalogueTest {
   private static SparqlResult recorded(String name) {
     var resource = "/acts/" + name;
     try (var in =
-        Objects.requireNonNull(
-            CellarActCatalogueTest.class.getResourceAsStream(resource), resource)) {
+        Objects.requireNonNull(CellarActsTest.class.getResourceAsStream(resource), resource)) {
       return SparqlResult.parse(in.readAllBytes());
     } catch (IOException e) {
       throw new UncheckedIOException(e);

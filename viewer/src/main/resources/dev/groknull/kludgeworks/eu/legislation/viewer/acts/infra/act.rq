@@ -1,8 +1,8 @@
 # SPDX-License-Identifier: MIT
-# An act's work by its CELEX (CellarActCatalogue): its ELI, its resource type, its date of document,
+# An act's work by its CELEX (CellarActs): its ELI, its resource type, its date of document,
 # whether it is in force, its dates of entry into force (several: Cellar types them with annotations,
 # not read here; the earliest is the entry into force proper) and of end of validity (9999-12-31 while
-# open-ended). One row per combination of values; CellarActCatalogue folds them.
+# open-ended). One row per combination of values; CellarActs folds them.
 # {{celex}}: a base act's CELEX (32015R1998), checked against its pattern first.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
