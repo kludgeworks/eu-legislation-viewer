@@ -32,6 +32,11 @@ maven.install(
         "org.springframework:spring-web",
         "org.springframework.boot:spring-boot",
         "org.springframework.boot:spring-boot-autoconfigure",
+        # the app: Spring MVC on Tomcat, and Actuator
+        "org.springframework.boot:spring-boot-starter-webmvc",
+        "org.springframework.boot:spring-boot-starter-actuator",
+        # the app as Spring Boot's executable jar, by the Repackager its Maven and Gradle plugins use
+        "org.springframework.boot:spring-boot-loader-tools:4.1.1",  # not in the BOM: keep it at Boot's version
         "org.springframework.modulith:spring-modulith-api",
         "tools.jackson.core:jackson-databind",
         "org.jspecify:jspecify",
@@ -46,6 +51,7 @@ maven.install(
         # the records' Javadoc from legal-text.xsd (mise run docs): Java sources read and edited
         "com.github.javaparser:javaparser-core:3.28.2",
         "org.springframework:spring-test",
+        "org.springframework.boot:spring-boot-test",
         "org.hamcrest:hamcrest",
         "org.springframework.modulith:spring-modulith-core",
     ],
