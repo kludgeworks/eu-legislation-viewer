@@ -139,8 +139,9 @@
           <xsl:attribute name="converter" select="$converter"/>
 
           <source celex="{$document-celex}">
-            <xsl:if test="$doc/BIB.INSTANCE/NO.ELI">
-              <xsl:attribute name="eli" select="normalize-space($doc/BIB.INSTANCE/NO.ELI)"/>
+            <!-- 06.x: the package descriptor's ELI, as a URI in @ID (the text has an "ELI:" prefix) -->
+            <xsl:if test="$package/BIB.DOC/NO.ELI">
+              <xsl:attribute name="eli" select="normalize-space($package/BIB.DOC/NO.ELI/@ID)"/>
             </xsl:if>
             <xsl:choose>
               <xsl:when test="$consolidated">

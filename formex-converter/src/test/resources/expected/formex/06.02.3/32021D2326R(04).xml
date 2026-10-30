@@ -7,7 +7,8 @@
            xml:lang="en"
            formexVersion="06.02.3"
            converter="1.0.0">
-   <source celex="32021D2326R(04)">
+   <source celex="32021D2326R(04)"
+           eli="http://data.europa.eu/eli/dec_impl/2021/2326/corrigendum/2025-07-08/oj">
       <publication series="L" date="2025-07-10" page="1"/>
    </source>
    <preface>

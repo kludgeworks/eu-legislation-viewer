@@ -7,7 +7,7 @@
            xml:lang="en"
            formexVersion="06.02.1"
            converter="1.0.0">
-   <source celex="22024A02601">
+   <source celex="22024A02601" eli="http://data.europa.eu/eli/prot/2024/2601/oj">
       <publication series="L" date="2024-10-08" page="1"/>
    </source>
    <preface>

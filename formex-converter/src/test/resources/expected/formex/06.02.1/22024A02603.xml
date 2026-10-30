@@ -7,7 +7,8 @@
            xml:lang="en"
            formexVersion="06.02.1"
            converter="1.0.0">
-   <source celex="22024A02603">
+   <source celex="22024A02603"
+           eli="http://data.europa.eu/eli/agree_internation/2024/2603/oj">
       <publication series="L" date="2024-10-08" page="1"/>
    </source>
    <preface>

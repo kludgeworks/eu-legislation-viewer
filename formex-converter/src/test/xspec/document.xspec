@@ -221,6 +221,12 @@
   </x:scenario>
 
 
+  <x:scenario label="An OJ act's package (Formex 06.x): the ELI its descriptor gives">
+    <x:context href="../resources/fixtures/formex/06.02.3/32026R0449/L_202600449EN.doc.fmx.xml"/>
+    <x:expect label="takes the URI from NO.ELI/@ID, not the text with its ELI: prefix"
+              test="$x:result/*:source/@eli = 'http://data.europa.eu/eli/reg_impl/2026/449/oj'"/>
+  </x:scenario>
+
   <x:scenario label="Footnotes">
     <x:context xmlns="">
       <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
