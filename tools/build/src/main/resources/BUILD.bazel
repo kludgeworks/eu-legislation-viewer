@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: MIT
+
+# the service file that registers -Xjspecify with xjc
+exports_files(
+    ["META-INF/services/com.sun.tools.xjc.Plugin"],
+    visibility = ["//tools/build/src/main/java/dev/groknull/kludgeworks/build:__pkg__"],
+)

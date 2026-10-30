@@ -1,23 +1,15 @@
 # SPDX-License-Identifier: MIT
-load("@rules_java//java:defs.bzl", "java_binary", "java_import", "java_library", "java_plugin")
+load("@rules_java//java:defs.bzl", "java_import", "java_plugin")
 
 package(default_visibility = ["//visibility:public"])
+
+# Build tooling: the macros and rules in defs.bzl, the compiler plugins, and xslt-quality's
+# validator. The Java tools are in src/main/java, laid out as Maven lays out a Java project.
 
 exports_files([
     "defs.bzl",
     "xslt-quality.conf.xml",
 ])
-
-java_library(
-    name = "xspec_runner",
-    testonly = True,
-    srcs = ["src/dev/groknull/kludgeworks/build/XSpecTests.java"],
-    runtime_deps = ["@maven//:io_xspec_xspec"],
-    deps = [
-        "@maven//:net_sf_saxon_Saxon_HE",
-        "@maven//:org_junit_jupiter_junit_jupiter_api",
-    ],
-)
 
 # MapStruct's annotation processor: a library with it in plugins gets its mappers generated
 java_plugin(
@@ -33,50 +25,8 @@ java_plugin(
     deps = ["@maven//:com_uber_nullaway_nullaway"],
 )
 
-# Records' Javadoc from an XML Schema's documentation (the macro schema_javadoc): the tool that
-# writes it, and the check
-java_library(
-    name = "schema_javadoc",
-    srcs = [
-        "src/dev/groknull/kludgeworks/build/SchemaJavadoc.java",
-        "src/dev/groknull/kludgeworks/build/UpdateSchemaJavadoc.java",
-    ],
-    deps = [
-        "@maven//:com_github_javaparser_javaparser_core",
-        "@maven//:net_sf_saxon_Saxon_HE",
-    ],
-)
-
-java_library(
-    name = "schema_javadoc_runner",
-    testonly = True,
-    srcs = ["src/dev/groknull/kludgeworks/build/SchemaJavadocTests.java"],
-    deps = [
-        ":schema_javadoc",
-        "@maven//:org_junit_jupiter_junit_jupiter_api",
-    ],
-)
-
-# a Schematron schema compiled with SchXslt 2, and its findings
-java_library(
-    name = "schematron",
-    srcs = ["src/dev/groknull/kludgeworks/build/Schematron.java"],
-    runtime_deps = ["@maven//:name_dmaus_schxslt_schxslt2"],
-    deps = ["@maven//:net_sf_saxon_Saxon_HE"],
-)
-
 # xslt-quality's validator, built once: the way its pom builds it, then transpiled with SchXslt 2,
 # with the rules xslt-quality.conf.xml rejects switched off. A jar, so it is on the test classpath.
-java_binary(
-    name = "xslt_quality_build",
-    srcs = ["src/dev/groknull/kludgeworks/build/XsltQualityBuild.java"],
-    main_class = "dev.groknull.kludgeworks.build.XsltQualityBuild",
-    deps = [
-        ":schematron",
-        "@maven//:net_sf_saxon_Saxon_HE",
-    ],
-)
-
 genrule(
     name = "xslt_quality_validator",
     srcs = [
@@ -91,13 +41,13 @@ genrule(
         # the repository root, from its main schema: src/main/sch/xslt-quality.sch
         "sources=$$(dirname $(execpath @xslt_quality//:src/main/sch/xslt-quality.sch))/../../..",
         "out=$$(mktemp -d)",
-        "$(execpath :xslt_quality_build) $$out/xslt-quality $$sources $(execpath xslt-quality.conf.xml)",
+        "$(execpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:xslt_quality_build) $$out/xslt-quality $$sources $(execpath xslt-quality.conf.xml)",
         "cd $$out",
         "$$zipper c $$jar $$(find xslt-quality -type f | LC_ALL=C sort)",
         "rm -rf $$out",
     ]),
     tools = [
-        ":xslt_quality_build",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build:xslt_quality_build",
         "@bazel_tools//tools/zip:zipper",
     ],
 )
@@ -105,50 +55,4 @@ genrule(
 java_import(
     name = "xslt_quality_validator_jar",
     jars = [":xslt_quality_validator"],
-)
-
-java_library(
-    name = "xslt_quality_runner",
-    testonly = True,
-    srcs = [
-        "src/dev/groknull/kludgeworks/build/XsltQuality.java",
-        "src/dev/groknull/kludgeworks/build/XsltQualityTests.java",
-    ],
-    runtime_deps = [":xslt_quality_validator_jar"],
-    deps = [
-        ":schematron",
-        "@maven//:net_sf_saxon_Saxon_HE",
-        "@maven//:org_junit_jupiter_junit_jupiter_api",
-    ],
-)
-
-# Spring Boot's executable jar from Bazel's jars (the rule spring_boot_jar)
-java_binary(
-    name = "spring_boot_jar",
-    srcs = ["src/dev/groknull/kludgeworks/build/SpringBootJar.java"],
-    main_class = "dev.groknull.kludgeworks.build.SpringBootJar",
-    deps = ["@maven//:org_springframework_boot_spring_boot_loader_tools"],
-)
-
-# JAXB's code generator, through its own entry point, for xjc_library, with our plugin (-Xjspecify)
-java_binary(
-    name = "xjc",
-    main_class = "com.sun.tools.xjc.XJCFacade",
-    runtime_deps = [
-        ":xjc_plugins",
-        "@maven//:org_glassfish_jaxb_jaxb_runtime",
-        "@maven//:org_glassfish_jaxb_jaxb_xjc",
-    ],
-)
-
-# -Xjspecify: the schema's optionality as JSpecify annotations on the generated getters
-java_library(
-    name = "xjc_plugins",
-    srcs = ["src/dev/groknull/kludgeworks/build/JSpecifyPlugin.java"],
-    resource_strip_prefix = "tools/build/src",
-    resources = ["src/META-INF/services/com.sun.tools.xjc.Plugin"],
-    deps = [
-        "@maven//:org_glassfish_jaxb_codemodel",
-        "@maven//:org_glassfish_jaxb_jaxb_xjc",
-    ],
 )

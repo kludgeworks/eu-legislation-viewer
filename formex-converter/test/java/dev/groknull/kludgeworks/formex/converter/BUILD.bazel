@@ -27,7 +27,7 @@ java_test_suite(
     ],
     deps = [
         "//formex-converter/java/dev/groknull/kludgeworks/formex/converter",
-        "//tools/build:schematron",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build:schematron",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jspecify_jspecify",

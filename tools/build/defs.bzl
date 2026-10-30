@@ -38,13 +38,13 @@ def xjc_library(name, schema, bindings = None, imports = [], xjc_args = [], srcs
             "in=$$(mktemp -d)",
             "out=$$(mktemp -d)",
             "cp %s $$in/" % " ".join(["$(location %s)" % i for i in inputs]),
-            "$(execpath //tools/build:xjc) -d $$out %s $$in/$$(basename $(location %s))" % (" ".join(args), schema),
+            "$(execpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:xjc) -d $$out %s $$in/$$(basename $(location %s))" % (" ".join(args), schema),
             "cd $$out",
             "$$zipper c $$srcjar $$(find . -name '*.java' | LC_ALL=C sort | sed 's|^[.]/||')",
             "rm -rf $$in $$out",
         ]),
         tools = [
-            "//tools/build:xjc",
+            "//tools/build/src/main/java/dev/groknull/kludgeworks/build:xjc",
             "@bazel_tools//tools/zip:zipper",
         ],
     )
@@ -74,7 +74,7 @@ def xspec_test(name, specs, data = [], **kwargs):
             jvm_flags = ["-Dxspec.files=$(rootpath %s)" % spec],
             data = [spec] + data,
             runtime_deps = [
-                "//tools/build:xspec_runner",
+                "//tools/build/src/main/java/dev/groknull/kludgeworks/build:xspec_runner",
                 "@maven//:org_junit_jupiter_junit_jupiter_engine",
                 "@maven//:org_junit_platform_junit_platform_launcher",
                 "@maven//:org_junit_platform_junit_platform_reporting",
@@ -117,7 +117,7 @@ def schema_javadoc(name, schema, srcs, types = {}, components = {}, **kwargs):
         jvm_flags = flags,
         data = [schema] + srcs,
         runtime_deps = [
-            "//tools/build:schema_javadoc_runner",
+            "//tools/build/src/main/java/dev/groknull/kludgeworks/build:schema_javadoc_runner",
             "@maven//:org_junit_jupiter_junit_jupiter_engine",
             "@maven//:org_junit_platform_junit_platform_launcher",
             "@maven//:org_junit_platform_junit_platform_reporting",
@@ -129,7 +129,7 @@ def schema_javadoc(name, schema, srcs, types = {}, components = {}, **kwargs):
         main_class = "dev.groknull.kludgeworks.build.UpdateSchemaJavadoc",
         jvm_flags = flags,
         data = [schema] + srcs,
-        runtime_deps = ["//tools/build:schema_javadoc"],
+        runtime_deps = ["//tools/build/src/main/java/dev/groknull/kludgeworks/build:schema_javadoc"],
     )
 
 def xslt_quality_test(name, srcs, **kwargs):
@@ -150,7 +150,7 @@ def xslt_quality_test(name, srcs, **kwargs):
         jvm_flags = ["-Dxslt-quality.files='%s'" % " ".join(["$(rootpaths %s)" % s for s in srcs])],
         data = srcs,
         runtime_deps = [
-            "//tools/build:xslt_quality_runner",
+            "//tools/build/src/main/java/dev/groknull/kludgeworks/build:xslt_quality_runner",
             "@maven//:org_junit_jupiter_junit_jupiter_engine",
             "@maven//:org_junit_platform_junit_platform_launcher",
             "@maven//:org_junit_platform_junit_platform_reporting",
@@ -199,7 +199,7 @@ spring_boot_jar = rule(
         ),
         "main_class": attr.string(doc = "The @SpringBootApplication class.", mandatory = True),
         "_tool": attr.label(
-            default = "//tools/build:spring_boot_jar",
+            default = "//tools/build/src/main/java/dev/groknull/kludgeworks/build:spring_boot_jar",
             executable = True,
             cfg = "exec",
         ),
