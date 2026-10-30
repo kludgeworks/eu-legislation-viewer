@@ -17,10 +17,20 @@
     $labelledParent, $levelOffset, $earlier
                  the nearest labelled level, the count of unnumbered top levels in earlier annex
                  fragments, and earlier annex files: how a level's number is placed (annexes.xsl)
-    $division    the eId of the enclosing division (articles.xsl)
+    $division, $divisionBase
+                 the eId of the enclosing division, and the base it applies to: a division and an
+                 article use it only while their base is that one (articles.xsl)
     $annexBase, $notePrefix
                  an attached document's eId for its annexes, and the prefix of its notes' eIds
                  (documents.xsl)
+    $annexFragments
+                 the fragments (files) of the annex being converted: what is numbered through them
+                 (quotations, letters) counts the earlier ones
+    $quoted      inside a quoted structure: an annex there is numbered among the quotation's
+    $table, $rows
+                 the eId of the enclosing table, and each of its rows' numbers: units in cells hang
+                 off tab_N/tr_N/td_N (tables.xsl)
+    $init        the recitals' opening words, where 01.01 puts them inside the first CONSID
 
   The blocks themselves are in modules by concern: articles.xsl (enacting terms), lists.xsl,
   annexes.xsl (annexes and levels), tables.xsl, documents.xsl (attachments, corrigenda, letters,

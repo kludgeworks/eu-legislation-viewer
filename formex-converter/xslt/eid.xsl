@@ -6,6 +6,25 @@
   trailing dots are dropped, whitespace becomes "-", nothing is interpreted. Units without a label
   are numbered by position (unp_2, idt_3, level_1). Letters and digits of any script are kept, so that
   labels that differ in print differ here: "ANNEX ΙII", with a Greek capital iota, isn't anx_II.
+
+  The segments are AKN4EU's, which are ELI's subdivision codes (art, par, unp, sub, pnt, idt, rct,
+  cit, pbl, anx, app, tab, fgr, and prt, tis, cpt, sct, sbs from the EU subdivision table), and
+  where ELI has none the Akoma Ntoso naming convention's (list, level, qstr, division,
+  subdivision, att, note, tr, td, old, new); cor, ann, def and let are ours.
+
+  An eId hangs off its context: wherever numbering restarts (the AKN rule). A unit's prefix is the
+  eId of the unit that holds it ($base and its kin, units.xsl); its number, when it has no label,
+  counts the units of its kind in the same context. What is a context differs by kind, on purpose,
+  each in one function:
+    lists, list items outside a list   f:scope (lists.xsl): items, articles, paragraphs, alineas,
+                                       levels, annexes, quotations, tables, notes, divisions,
+                                       corrections, letters, subdivisions and more
+    quotations                         f:quotation-scope (units.xsl): the unit the eId hangs off
+    annexes in content                 f:annex-scope (annexes.xsl)
+    annex levels                       f:level-parent and f:level-scope (annexes.xsl): levels are
+                                       flat, so their parent is a level or what holds the annex
+    letters                            the annex, attached document, quotation or correction side
+    articles                           act-wide; a number taken again hangs off its division
 -->
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
