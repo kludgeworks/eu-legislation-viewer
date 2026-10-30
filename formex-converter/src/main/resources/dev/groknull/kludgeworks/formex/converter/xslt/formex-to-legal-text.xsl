@@ -12,6 +12,20 @@
 
   The output validates against legal-text.xsd. An element the converter doesn't know stops the
   transformation (f:unknown), so a new Formex construct shows up as a failing test, not as lost text.
+
+  How to run it, with any XSLT 3 processor (Saxon's command line: -s:<input> -xsl:<this file>):
+  - the input document is the initial match selection and the global context item; its system id
+    must be set, as the package descriptor's files and the annexes resolve against it;
+  - parameter celex: the CELEX number of an OJ act, which Formex doesn't carry; required for an OJ
+    act, ignored for a consolidation, which carries its own;
+  - parameter converter: the converter's version, stamped on every document (legalText/@converter);
+    read from ../version.txt, so the stylesheets and version.txt stay side by side;
+  - a refusal is a terminating xsl:message whose text is the reason, with an error code in the
+    namespace https://kludgeworks.groknull.dev/ns/formex-converter: f:out-of-scope (not a legal act)
+    or f:unknown (Formex the converter doesn't handle yet). Errors in the same namespace, raised with
+    error(): f:celex (an OJ act without the celex parameter), f:date (a date that isn't one).
+  Large documents may need the processor's XML entity limits lifted: Formex has no DTD, but a 104 MB
+  annex has over 100,000 entity references (&amp;), above the JDK's default limit.
 -->
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"

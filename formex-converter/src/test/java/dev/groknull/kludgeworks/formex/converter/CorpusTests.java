@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 import net.sf.saxon.s9api.Processor;
+import net.sf.saxon.s9api.XdmNode;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.xmlunit.assertj3.XmlAssert;
@@ -33,7 +34,7 @@ import org.xmlunit.assertj3.XmlAssert;
 class CorpusTests {
 
   static final Processor SAXON = new Processor(false);
-  static final FormexConverter CONVERTER = new FormexConverter(SAXON);
+  static final Stylesheet STYLESHEET = new Stylesheet(SAXON);
   static final TextConservation TEXT = new TextConservation(SAXON);
   static final MetadataConservation METADATA = new MetadataConservation(SAXON);
   static final LegalTextRules RULES = new LegalTextRules(SAXON);
@@ -63,17 +64,15 @@ class CorpusTests {
   }
 
   private static void check(Manifestation manifestation, Optional<String> celex) throws Exception {
-    var legalText =
-        Optional.of(manifestation.source())
-            .map(
-                source -> {
-                  try {
-                    return CONVERTER.convert(source, celex);
-                  } catch (OutOfScopeException e) {
-                    return abort(String.valueOf(e.getMessage()));
-                  }
-                })
-            .orElseThrow();
+    XdmNode legalText;
+    try {
+      legalText = STYLESHEET.transform(manifestation.source(), celex);
+    } catch (Stylesheet.Failure e) {
+      if (Stylesheet.OUT_OF_SCOPE.equals(e.code())) {
+        abort(String.valueOf(e.getMessage()));
+      }
+      throw e;
+    }
     var xml = SAXON.newSerializer().serializeNodeToString(legalText);
     XmlAssert.assertThat(xml)
         .as("%s", manifestation)

@@ -20,19 +20,19 @@ public final class UpdateExpected {
 
   private UpdateExpected() {}
 
-  public static void main(String[] args) throws IOException, SaxonApiException {
+  public static void main(String[] args) throws IOException, SaxonApiException, Stylesheet.Failure {
     var workspace = System.getenv("BUILD_WORKSPACE_DIRECTORY");
     if (workspace == null) {
       throw new IllegalStateException("run with bazel run (mise run expected)");
     }
     var out = Path.of(workspace, "formex-converter", "src", "test", "resources", "expected");
     var saxon = new Processor(false);
-    var converter = new FormexConverter(saxon);
+    var stylesheet = new Stylesheet(saxon);
     var written = new HashSet<Path>();
     for (var fixture : Manifestations.fixtures().toList()) {
       var file = out.resolve(fixture.name() + ".xml");
       Files.createDirectories(file.getParent());
-      var legalText = converter.convert(fixture.source(), fixture.celex());
+      var legalText = stylesheet.transform(fixture.source(), fixture.celex());
       Files.writeString(file, ExpectedOutput.serialize(saxon, legalText), StandardCharsets.UTF_8);
       written.add(file);
     }

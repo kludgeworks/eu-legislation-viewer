@@ -2,7 +2,7 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
 load("@rules_java//java:defs.bzl", "java_binary")
 
-# The converter's tests through its Java API: every fixture against the schema, legal-text.sch,
+# The stylesheets' tests, run as any XSLT client runs them (Stylesheet): every fixture against the schema, legal-text.sch,
 # MathML 3, its expected output, its source text and the source metadata the viewer relies on;
 # refusals and error codes; legal-text.sch's rules. One test target per *Test.java; the other classes become a shared library.
 java_test_suite(
@@ -19,6 +19,7 @@ java_test_suite(
     runner = "junit5",
     runtime_deps = [
         "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
+        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
         "//formex-converter/src/test/resources/compare:resources",
         "//formex-converter/src/test/resources/mathml3:resources",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
@@ -46,7 +47,10 @@ java_binary(
     testonly = True,
     data = ["//formex-converter/src/test/resources/fixtures"],
     main_class = "dev.groknull.kludgeworks.formex.converter.UpdateExpected",
-    runtime_deps = [":converter-test-lib"],
+    runtime_deps = [
+        ":converter-test-lib",
+        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
+    ],
 )
 
 # The regression test on the whole corpus: one language's mirror in formex-corpus/, ignored
@@ -67,6 +71,7 @@ java_junit5_test(
     visibility = ["//:__pkg__"],  # for the //:corpus suite
     runtime_deps = [
         "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
+        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
         "//formex-converter/src/test/resources/compare:resources",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
@@ -74,7 +79,7 @@ java_junit5_test(
     ],
     deps = [
         ":converter-test-lib",
-        "//formex-converter/src/main/java/dev/groknull/kludgeworks/formex/converter",
+        "//formex-converter/src/main/java/dev/groknull/kludgeworks/formex/converter",  # the same Java package, until the API moves
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",

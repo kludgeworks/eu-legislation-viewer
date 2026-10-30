@@ -42,7 +42,7 @@ import org.xmlunit.assertj3.XmlAssert;
 class FormexConverterFixturesTest {
 
   static final Processor SAXON = new Processor(false);
-  static final FormexConverter CONVERTER = new FormexConverter(SAXON);
+  static final Stylesheet STYLESHEET = new Stylesheet(SAXON);
   static final TextConservation TEXT = new TextConservation(SAXON);
   static final MetadataConservation METADATA = new MetadataConservation(SAXON);
   static final LegalTextRules RULES = new LegalTextRules(SAXON);
@@ -58,8 +58,8 @@ class FormexConverterFixturesTest {
   String xml;
 
   @BeforeParameterizedClassInvocation
-  void convert(Manifestation fixture) throws SaxonApiException {
-    legalText = CONVERTER.convert(fixture.source(), fixture.celex());
+  void convert(Manifestation fixture) throws SaxonApiException, Stylesheet.Failure {
+    legalText = STYLESHEET.transform(fixture.source(), fixture.celex());
     xml = SAXON.newSerializer().serializeNodeToString(legalText);
   }
 
