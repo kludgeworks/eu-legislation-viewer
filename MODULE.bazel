@@ -83,3 +83,20 @@ http_archive(
     strip_prefix = "xslt-quality-9faf4484318c6e02b5a88a27b121b731c7fc3aaf",
     urls = ["https://github.com/mricaud/xslt-quality/archive/9faf4484318c6e02b5a88a27b121b731c7fc3aaf.tar.gz"],
 )
+
+# CDM, the ontology behind Cellar's RDF (Publications Office, CC BY 4.0): what every cdm:, cmr: and
+# annotation: term our SPARQL queries use means, and the list sparql_terms_test checks them against.
+# 4.17.0 is the latest published release; Cellar's endpoint already runs 5.0.0, which isn't
+# published yet (it adds terms and removes none): move up when it is. One zip, from its versioned
+# distribution URI, the Cellar item that resolves to, or the EU Vocabularies download.
+http_archive(
+    name = "cdm",
+    build_file = "//tools/build:cdm.BUILD",
+    sha256 = "95b001c2cba352a1a1c9c3be3423e187f97ae9773133413040c138f2c285cb8b",
+    type = "zip",
+    urls = [
+        "http://publications.europa.eu/resource/distribution/cdm/20260625-0/zip/zip/cdm-4.17.0.zip",
+        "http://publications.europa.eu/resource/cellar/063f8b56-709d-11f1-9800-01aa75ed71a1.0001.02/DOC_1",
+        "https://op.europa.eu/o/opportal-service/euvoc-download-handler?cellarURI=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fdistribution%2Fcdm%2F20260625-0%2Fzip%2Fzip%2Fcdm-4.17.0.zip&fileName=cdm-4.17.0.zip",
+    ],
+)
