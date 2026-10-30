@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import java.time.LocalDate;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
@@ -27,7 +28,7 @@ import org.jspecify.annotations.Nullable;
  * @param notes The footnotes, collected from wherever they occur in the text.
  */
 public record LegalText(
-    String act,
+    ActIdentifier act,
     Kind kind,
     @Nullable LocalDate version,
     String lang,

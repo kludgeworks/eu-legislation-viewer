@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.tuple;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Block;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Changed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.DateRef;
@@ -48,7 +49,7 @@ class LegalTextReaderTest {
 
   @Test
   void readsTheHeader() {
-    assertThat(consolidated.act()).isEqualTo("32015R1998");
+    assertThat(consolidated.act()).isEqualTo(new ActIdentifier("32015R1998"));
     assertThat(consolidated.kind()).isEqualTo(LegalText.Kind.CONSOLIDATED);
     assertThat(consolidated.version()).isEqualTo(LocalDate.of(2026, 3, 22));
     assertThat(consolidated.formexVersion()).isEqualTo("06.02.1");
@@ -59,7 +60,7 @@ class LegalTextReaderTest {
         .last()
         .satisfies(
             e -> {
-              assertThat(e.act()).isEqualTo("32026R0449");
+              assertThat(e.act()).isEqualTo(new ActIdentifier("32026R0449"));
               assertThat(e.date()).isEqualTo(LocalDate.of(2026, 2, 27));
             });
   }

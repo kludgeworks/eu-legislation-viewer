@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Annotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Block;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.BlockContainer;
@@ -377,6 +378,10 @@ interface LegalTextMapper {
   @Nullable ImageContent content(@Nullable XmlImageContent source);
 
   // identifiers and optional wrappers
+
+  default ActIdentifier actIdentifier(String celex) {
+    return new ActIdentifier(celex);
+  }
 
   default EId eId(String value) {
     return new EId(value);
