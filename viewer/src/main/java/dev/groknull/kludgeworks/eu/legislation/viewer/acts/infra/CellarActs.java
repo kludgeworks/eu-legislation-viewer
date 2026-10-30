@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
@@ -38,9 +39,6 @@ class CellarActs implements Acts {
 
   /** Cellar's end of validity for an act that is open-ended. */
   private static final LocalDate OPEN = LocalDate.of(9999, 12, 31);
-
-  private static final String RESOURCE_TYPE =
-      "http://publications.europa.eu/resource/authority/resource-type/";
 
   private final Sparql sparql;
 
@@ -102,7 +100,7 @@ class CellarActs implements Acts {
   private static Act read(ActIdentifier id, SparqlResult work, SparqlResult consolidations) {
     var row = work.rows().getFirst();
     var types = distinct(work, "type");
-    if (types.size() != 1 || !types.getFirst().startsWith(RESOURCE_TYPE)) {
+    if (types.size() != 1) {
       throw new IllegalArgumentException("resource types " + types);
     }
     var elis = distinct(work, "eli");
@@ -125,7 +123,7 @@ class CellarActs implements Acts {
     return new Act(
         id,
         elis.isEmpty() ? null : Eli.of(elis.getFirst()),
-        types.getFirst().substring(RESOURCE_TYPE.length()),
+        ResourceType.of(types.getFirst()),
         dateOfDocument,
         row.find("inForce").map(CellarActs::isTrue).orElse(false),
         endOfValidity.orElse(null),

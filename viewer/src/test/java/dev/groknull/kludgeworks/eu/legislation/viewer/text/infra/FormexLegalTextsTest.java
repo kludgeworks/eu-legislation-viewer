@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalText;
@@ -95,7 +96,7 @@ class FormexLegalTextsTest {
           new Act(
               AVSEC,
               new Eli("reg_impl", 2015, "1998"),
-              "REG_IMPL",
+              new ResourceType("REG_IMPL"),
               LocalDate.of(2015, 11, 5),
               true,
               null,

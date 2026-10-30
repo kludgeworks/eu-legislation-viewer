@@ -12,7 +12,7 @@ import org.jspecify.annotations.Nullable;
  *
  * @param id the act's CELEX
  * @param eli its ELI; older acts may have none
- * @param type its resource type, the code of the EU authority table (REG_IMPL, DIR, DEC)
+ * @param type its resource type (REG_IMPL, DIR, DEC)
  * @param dateOfDocument the date it was adopted or signed
  * @param inForce whether it is in force, as Cellar says
  * @param endOfValidity the day it ceases to apply; none while it is open-ended
@@ -22,7 +22,7 @@ import org.jspecify.annotations.Nullable;
 public record Act(
     @Identity ActIdentifier id,
     @Nullable Eli eli,
-    String type,
+    ResourceType type,
     @Nullable LocalDate dateOfDocument,
     boolean inForce,
     @Nullable LocalDate endOfValidity,

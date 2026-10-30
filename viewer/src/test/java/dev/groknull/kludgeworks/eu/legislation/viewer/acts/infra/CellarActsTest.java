@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
@@ -29,7 +30,7 @@ class CellarActsTest {
     var act = act(AVSEC);
 
     assertThat(act.eli()).isEqualTo(new Eli("reg_impl", 2015, "1998"));
-    assertThat(act.type()).isEqualTo("REG_IMPL");
+    assertThat(act.type()).isEqualTo(new ResourceType("REG_IMPL"));
     assertThat(act.dateOfDocument()).isEqualTo(LocalDate.of(2015, 11, 5));
     assertThat(act.inForce()).isTrue();
     assertThat(act.endOfValidity()).isNull();
