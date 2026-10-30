@@ -23,7 +23,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * The point-in-time view: the version acts chooses for the date, and that version's text; on
- * 2015/1998 with its original text and one consolidated version, of 22 March 2026.
+ * 2015/1998 with its original text and one consolidated version, of 22 March 2026. The work runs on
+ * the calling thread here, so each future is complete when returned.
  */
 class PointInTimeTest {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
@@ -37,14 +38,14 @@ class PointInTimeTest {
           List.of(new ActIdentifier("32026R0449")));
 
   final Texts texts = new Texts();
-  final PointInTime pointInTime = new PointInTime(new OneAct(), texts);
+  final PointInTime pointInTime = new PointInTime(new OneAct(), texts, Runnable::run);
 
   @Test
   void givesTheTextOfTheVersionThatAppliesOnTheDate() {
-    assertThat(pointInTime.text(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG))
+    assertThat(pointInTime.text(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).join())
         .hasValueSatisfying(
             text -> assertThat(text.source().celex()).isEqualTo("02015R1998-20260322"));
-    assertThat(pointInTime.text(AVSEC, LocalDate.of(2026, 3, 21), Language.ENG))
+    assertThat(pointInTime.text(AVSEC, LocalDate.of(2026, 3, 21), Language.ENG).join())
         .hasValueSatisfying(text -> assertThat(text.source().celex()).isEqualTo("32015R1998"));
     assertThat(texts.asked)
         .containsExactly(
@@ -54,17 +55,18 @@ class PointInTimeTest {
 
   @Test
   void hasNoTextBeforeTheActsTextAppliesOrForAnotherAct() {
-    assertThat(pointInTime.text(AVSEC, LocalDate.of(2015, 1, 1), Language.ENG)).isEmpty();
+    assertThat(pointInTime.text(AVSEC, LocalDate.of(2015, 1, 1), Language.ENG).join()).isEmpty();
     assertThat(
-            pointInTime.text(
-                new ActIdentifier("32010R0185"), LocalDate.of(2026, 4, 1), Language.ENG))
+            pointInTime
+                .text(new ActIdentifier("32010R0185"), LocalDate.of(2026, 4, 1), Language.ENG)
+                .join())
         .isEmpty();
     assertThat(texts.asked).isEmpty();
   }
 
   @Test
   void hasNoTextInALanguageTheVersionHasNone() {
-    assertThat(pointInTime.text(AVSEC, LocalDate.of(2026, 4, 1), Language.GLE)).isEmpty();
+    assertThat(pointInTime.text(AVSEC, LocalDate.of(2026, 4, 1), Language.GLE).join()).isEmpty();
   }
 
   /** 2015/1998 and its two versions; no other act. */

@@ -36,7 +36,7 @@ class CellarLiveTests {
 
   @Test
   void readsTheTextOfTheVersionThatAppliesOnADate() {
-    var text = pointInTime.text(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).orElseThrow();
+    var text = pointInTime.text(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).join().orElseThrow();
 
     assertThat(text.act()).isEqualTo(AVSEC);
     assertThat(text.kind()).isEqualTo(LegalText.Kind.CONSOLIDATED);
