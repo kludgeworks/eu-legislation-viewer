@@ -1,10 +1,8 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
+package dev.groknull.kludgeworks.formex.converter;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import dev.groknull.kludgeworks.formex.converter.FormexConverter;
-import dev.groknull.kludgeworks.formex.converter.OutOfScopeException;
 import net.sf.saxon.s9api.Processor;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -18,7 +16,7 @@ class RefusedDocumentsTest {
   static final FormexConverter CONVERTER = new FormexConverter(new Processor(false));
 
   @ParameterizedTest(name = "{0}")
-  @MethodSource("dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.Fixtures#refused")
+  @MethodSource("dev.groknull.kludgeworks.formex.converter.Fixtures#refused")
   void isRefusedAsOutOfScope(Fixture fixture) {
     assertThatExceptionOfType(OutOfScopeException.class)
         .isThrownBy(() -> CONVERTER.convert(fixture.source(), fixture.celex()));

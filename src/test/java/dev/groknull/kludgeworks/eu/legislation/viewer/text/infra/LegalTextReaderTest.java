@@ -15,10 +15,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.text.Paragraph;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Provenance;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Unit;
-import dev.groknull.kludgeworks.formex.converter.FormexConverter;
 import java.io.StringReader;
 import java.time.LocalDate;
-import java.util.Optional;
 import java.util.stream.Stream;
 import javax.xml.transform.stream.StreamSource;
 import net.sf.saxon.s9api.Processor;
@@ -27,9 +25,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 /**
- * {@link LegalTextReader} on the consolidated 2015/1998 of 22 March 2026, the excerpts of the
- * worked example (Notion: Worked example: 2015/1998 source to target), which XSpec checks on the
- * XML side.
+ * {@link LegalTextReader} on the consolidated 2015/1998 of 22 March 2026 (a {@link SampleLegalTexts
+ * sample}), the excerpts of the worked example (Notion: Worked example: 2015/1998 source to
+ * target), which XSpec checks on the XML side.
  */
 class LegalTextReaderTest {
 
@@ -37,15 +35,15 @@ class LegalTextReaderTest {
   static final char NBSP = '\u00a0';
 
   static final Processor SAXON = new Processor(false);
-  static final FormexConverter CONVERTER = new FormexConverter(SAXON);
   static final LegalTextReader READER = new LegalTextReader(SAXON);
+
+  static final String CONSOLIDATED = "06.02.1/02015R1998-20260322";
 
   static LegalText consolidated;
 
   @BeforeAll
   static void read() {
-    var fixture = Fixtures.named("formex/06.02.1/02015R1998-20260322");
-    consolidated = READER.read(CONVERTER.convert(fixture.source(), fixture.celex()));
+    consolidated = READER.read(SampleLegalTexts.read(SAXON, CONSOLIDATED));
   }
 
   @Test
@@ -147,13 +145,10 @@ class LegalTextReaderTest {
   /** A value the schema doesn't know, such as a unit kind from a newer converter, fails loudly. */
   @Test
   void refusesAValueTheSchemaDoesNotKnow() throws SaxonApiException {
-    var serializer = SAXON.newSerializer();
     var xml =
-        serializer
-            .serializeNodeToString(
-                CONVERTER.convert(
-                    Fixtures.named("formex/06.02.1/02015R1998-20260322").source(),
-                    Optional.empty()))
+        SAXON
+            .newSerializer()
+            .serializeNodeToString(SampleLegalTexts.read(SAXON, CONSOLIDATED))
             .replaceFirst("kind=\"level\"", "kind=\"clause\"");
     var newer = SAXON.newDocumentBuilder().build(new StreamSource(new StringReader(xml)));
     assertThatExceptionOfType(InvalidLegalTextException.class)

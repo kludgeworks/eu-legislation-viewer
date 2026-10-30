@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
+package dev.groknull.kludgeworks.formex.converter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import dev.groknull.kludgeworks.formex.converter.FormexConverter;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URI;
@@ -12,7 +11,6 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import javax.xml.XMLConstants;
 import javax.xml.catalog.CatalogFeatures;
@@ -23,9 +21,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
-import net.sf.saxon.s9api.XdmItem;
 import net.sf.saxon.s9api.XdmNode;
-import net.sf.saxon.s9api.XdmValue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.BeforeParameterizedClassInvocation;
@@ -42,7 +38,7 @@ import org.xmlunit.assertj3.XmlAssert;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ParameterizedClass(name = "{0}")
-@MethodSource("dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.Fixtures#inScope")
+@MethodSource("dev.groknull.kludgeworks.formex.converter.Fixtures#inScope")
 class FormexConverterFixturesTest {
 
   static final Processor SAXON = new Processor(false);
@@ -55,7 +51,6 @@ class FormexConverterFixturesTest {
       CatalogManager.catalogResolver(
           CatalogFeatures.builder().with(CatalogFeatures.Feature.RESOLVE, "strict").build(),
           uri(resource("/formex-converter/schema/catalog.xml")));
-  static final LegalTextReader READER = new LegalTextReader(SAXON);
   @Parameter Fixture fixture;
 
   XdmNode legalText;
@@ -96,25 +91,6 @@ class FormexConverterFixturesTest {
         .areIdentical();
   }
 
-  /**
-   * The records hold every text value and every eId of the XML, in order: the mapping lost nothing.
-   */
-  @Test
-  void readsIntoTheRecords() throws SaxonApiException {
-    var records = RecordContents.of(READER.read(legalText));
-    var xpath = SAXON.newXPathCompiler();
-    xpath.declareNamespace("lt", "https://kludgeworks.groknull.dev/ns/legal-text/1");
-    assertThat(records.texts)
-        .as("%s: text values of the records", fixture)
-        .containsExactlyElementsOf(strings(xpath.evaluate("//lt:t/@v", legalText)));
-    assertThat(records.eIds)
-        .as("%s: eIds of the records", fixture)
-        .containsExactlyElementsOf(strings(xpath.evaluate("//@eId", legalText)));
-    assertThat(records.eIds)
-        .as("%s: the notes the records refer to", fixture)
-        .containsAll(records.noteRefs);
-  }
-
   /** Unique live eIds, resolved note references, consistent amendment markers (legal-text.sch). */
   @Test
   void followsTheSchematronRules() {
@@ -151,10 +127,6 @@ class FormexConverterFixturesTest {
     } catch (SAXException e) {
       throw new IllegalStateException(e);
     }
-  }
-
-  private static List<String> strings(XdmValue values) {
-    return values.stream().map(XdmItem::getStringValue).toList();
   }
 
   private static URI uri(URL url) {

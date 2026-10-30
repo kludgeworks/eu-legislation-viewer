@@ -1,13 +1,9 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
+package dev.groknull.kludgeworks.formex.converter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import dev.groknull.kludgeworks.formex.converter.ConversionException;
-import dev.groknull.kludgeworks.formex.converter.FormexConverter;
-import dev.groknull.kludgeworks.formex.converter.OutOfScopeException;
-import dev.groknull.kludgeworks.formex.converter.UnsupportedFormexException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;

@@ -4,5 +4,5 @@
 test_suite(
     name = "corpus",
     tags = ["manual"],  # not part of //...
-    tests = ["//src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra:corpus"],
+    tests = ["//formex-converter/test/java/dev/groknull/kludgeworks/formex/converter:corpus"],
 )

@@ -1,84 +1,28 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
-load("@rules_java//java:defs.bzl", "java_binary")
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 
-# One test target per *Test.java; Fixture, Fixtures and TextConservation become a shared library
+# The reader on the converter's expected output: every sample read into the records without loss,
+# and the worked example's excerpts. One test target per *Test.java; SampleLegalTexts and
+# RecordContents become a shared library.
 java_test_suite(
     name = "infra",
     size = "medium",
-    srcs = glob(
-        ["*.java"],
-        exclude = ["CorpusTests.java"],
-    ),
-    data = [
-        "//formex-converter/test/expected",
-        "//formex-converter/test/fixtures",
-    ],
+    srcs = glob(["*.java"]),
+    data = ["//formex-converter/test/expected"],
     runner = "junit5",
     runtime_deps = [
-        "//formex-converter/schema:resources",
-        "//formex-converter/test/compare:resources",
-        "//formex-converter/test/mathml3:resources",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
-        "//formex-converter/java/dev/groknull/kludgeworks/formex/converter",
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text",
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra",
-        "//tools/build:schematron",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_junit_jupiter_junit_jupiter_params",
-        "@maven//:org_xmlunit_xmlunit_assertj3",
-        "@maven//:org_xmlunit_xmlunit_core",
         "@rules_java//java/runfiles",
-    ],
-)
-
-# Rewrites the converter's expected output from the fixtures (mise run expected): after a deliberate
-# change to the converter, then review the diff
-java_binary(
-    name = "update_expected",
-    testonly = True,
-    data = ["//formex-converter/test/fixtures"],
-    main_class = "dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.UpdateExpected",
-    runtime_deps = [":infra-test-lib"],
-)
-
-# The regression test on the whole corpus: one language's mirror in formex-corpus/, ignored
-# (mise run corpus:fetch, then mise run corpus:test; also //:corpus; see CorpusTests)
-java_junit5_test(
-    name = "corpus",
-    size = "enormous",
-    srcs = ["CorpusTests.java"],
-    # the JDK's XML limits, which the converter lifts for its own parsing, also stop the validation
-    # of a large document's output (a 55 MB consolidation, an annex with 100,000 entity references)
-    jvm_flags = [
-        "-Djdk.xml.maxGeneralEntitySizeLimit=0",
-        "-Djdk.xml.totalEntitySizeLimit=0",
-    ],
-    # not part of //...; cached on the converter and the mirror's manifest hash (--test_env)
-    tags = ["manual"],
-    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.CorpusTests",
-    visibility = ["//:__pkg__"],  # for the //:corpus suite
-    runtime_deps = [
-        "//formex-converter/schema:resources",
-        "//formex-converter/test/compare:resources",
-        "@maven//:org_junit_jupiter_junit_jupiter_engine",
-        "@maven//:org_junit_platform_junit_platform_launcher",
-        "@maven//:org_junit_platform_junit_platform_reporting",
-    ],
-    deps = [
-        ":infra-test-lib",
-        "//formex-converter/java/dev/groknull/kludgeworks/formex/converter",
-        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra",
-        "@maven//:net_sf_saxon_Saxon_HE",
-        "@maven//:org_assertj_assertj_core",
-        "@maven//:org_junit_jupiter_junit_jupiter_api",
-        "@maven//:org_xmlunit_xmlunit_assertj3",
     ],
 )
