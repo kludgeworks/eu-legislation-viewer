@@ -6,3 +6,9 @@ test_suite(
     tags = ["manual"],  # not part of //...
     tests = ["//formex-converter/test/java/dev/groknull/kludgeworks/formex/converter:corpus"],
 )
+
+# The viewer by a short name: bazel run //:app (mise run app)
+alias(
+    name = "app",
+    actual = "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:app",
+)

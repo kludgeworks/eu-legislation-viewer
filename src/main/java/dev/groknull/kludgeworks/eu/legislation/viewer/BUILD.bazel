@@ -1,13 +1,29 @@
 # SPDX-License-Identifier: MIT
-load("@rules_java//java:defs.bzl", "java_library")
+load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 
+# The application: ViewerApplication and, at run time, its modules and Spring Boot's starters
 java_library(
     name = "viewer",
     srcs = glob(["*.java"]),
     visibility = ["//src:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    runtime_deps = [
+        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
+        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text",
+        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra",
+        "@maven//:org_springframework_boot_spring_boot_starter_actuator",
+        "@maven//:org_springframework_boot_spring_boot_starter_webmvc",
+    ],
     deps = [
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",
     ],
+)
+
+# bazel run //:app: on Bazel's classpath, for development
+java_binary(
+    name = "app",
+    main_class = "dev.groknull.kludgeworks.eu.legislation.viewer.ViewerApplication",
+    visibility = ["//:__pkg__"],
+    runtime_deps = [":viewer"],
 )

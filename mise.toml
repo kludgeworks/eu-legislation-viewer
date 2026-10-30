@@ -46,6 +46,10 @@ run = "bazel build //..."
 description = "Run every test"
 run = "bazel test //..."
 
+[tasks.app]
+description = "Run the viewer"
+run = "bazel run //:app"
+
 [tasks."test:xspec"]
 description = "Run the XSpec suites"
 run = "bazel test //formex-converter/test/xspec/..."

@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 
-# Spring Modulith's verification of the module structure
+# Whole-application checks: the module structure (Spring Modulith), and that the app starts
 java_test_suite(
     name = "viewer",
     size = "small",
@@ -10,16 +10,16 @@ java_test_suite(
     # Spring's naming for whole-application checks
     test_suffixes = ["Tests.java"],
     runtime_deps = [
-        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
-        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text",
-        "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
+        "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_modulith_spring_modulith_core",
+        "@maven//:org_springframework_spring_beans",
     ],
 )
