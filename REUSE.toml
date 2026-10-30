@@ -1,0 +1,68 @@
+# SPDX-License-Identifier: MIT
+# The copyright and licence of every file, after the REUSE specification (reuse.software); `reuse lint`
+# (an hk step) checks that every file has both. Our files name their licence in a header
+# (SPDX-License-Identifier, which addlicense writes); the holder is given here once. Files that can't
+# carry a header, and files that aren't ours, are annotated below. Where several annotations match a
+# file, the last one counts. The licence texts are in LICENSES/.
+version = 1
+
+# Ours: the copyright of every file, beside the licence its header names
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "The Project Contributors"
+
+# Ours, without room for a header: versions, lock files, the source notes of the recorded files
+[[annotations]]
+path = [
+  ".bazelversion",
+  "MODULE.bazel.lock",
+  "maven_install.json",
+  "mise.lock",
+  "formex-converter/version.txt",
+  "**/SOURCE",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "The Project Contributors"
+SPDX-License-Identifier = "MIT"
+
+# EU legal documents in Formex as Cellar serves them: the fixtures, and a package recorded from Cellar
+[[annotations]]
+path = [
+  "formex-converter/test/fixtures/**/*.xml",
+  "src/test/resources/cellar/*.xml",
+]
+precedence = "override"
+SPDX-FileCopyrightText = "European Union, https://eur-lex.europa.eu"
+SPDX-License-Identifier = "LicenseRef-EUR-Lex-reuse"
+
+# Cellar's metadata as recorded (SPARQL results, a manifestation's file list): EUR-Lex metadata is CC0
+[[annotations]]
+path = ["src/test/resources/cellar/*.json", "src/test/resources/cellar/*.xhtml"]
+precedence = "override"
+SPDX-FileCopyrightText = "European Union, https://eur-lex.europa.eu"
+SPDX-License-Identifier = "CC0-1.0"
+
+# The EU subdivision authority table (EU Vocabularies), the one third-party file the converter ships
+[[annotations]]
+path = "formex-converter/xslt/subdivision.rdf"
+precedence = "override"
+SPDX-FileCopyrightText = "European Union, Publications Office of the European Union (EU Vocabularies)"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# W3C's MathML 3 schema, unchanged (see its SOURCE)
+[[annotations]]
+path = "formex-converter/test/mathml3/*.xsd"
+precedence = "override"
+SPDX-FileCopyrightText = "World Wide Web Consortium"
+SPDX-License-Identifier = "W3C-20150513"
+
+# Our patch to xslt-quality (github.com/mricaud/xslt-quality), which carries its context lines
+[[annotations]]
+path = "tools/build/xslt-quality.patch"
+precedence = "override"
+SPDX-FileCopyrightText = [
+  "The xslt-quality contributors",
+  "The Project Contributors",
+]
+SPDX-License-Identifier = "Apache-2.0"

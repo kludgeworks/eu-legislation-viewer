@@ -348,6 +348,14 @@ url = "https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25.0
 checksum = "sha256:636bdc13dc649ddc7d5921c5c7d23cca6e44fd19d662b45cc9c02135a6c96c42"
 url = "https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25.0.5%2B8/OpenJDK25U-jdk_x64_windows_hotspot_25.0.5_8.zip"
 
+[[tools."pipx:reuse"]]
+version = "6.2.0"
+backend = "pipx:reuse"
+specifiers = ["6.2.0"]
+
+[tools."pipx:reuse".options]
+extras = "charset-normalizer"
+
 [[tools.pkl]]
 version = "0.32.2"
 backend = "aqua:apple/pkl"

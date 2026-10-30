@@ -1,0 +1,19 @@
+Reuse of the legal documents published in EUR-Lex
+
+The Formex documents in this repository are EU legal documents as the Publications Office of the
+European Union serves them from Cellar, the repository behind EUR-Lex. They are committed unchanged,
+as test fixtures.
+
+Source: EUR-Lex, https://eur-lex.europa.eu
+Copyright: © European Union, https://eur-lex.europa.eu
+
+Terms (a summary; the EUR-Lex legal notice is authoritative):
+https://eur-lex.europa.eu/content/legal-notice/legal-notice.html
+
+- The legal documents published in EUR-Lex may be reused for commercial or non-commercial
+  purposes, unless specified otherwise, under Commission Decision 2011/833/EU of 12 December 2011
+  on the reuse of Commission documents (OJ L 330, 14.12.2011, p. 39,
+  http://data.europa.eu/eli/dec/2011/833/oj), provided the source is acknowledged.
+- Only the Official Journal of the European Union in its electronic edition is authentic.
+- Elements owned by third parties (text, photographs, graphics) need the authorisation of their
+  rightholders.
