@@ -650,9 +650,9 @@
         <xs:element name="figure" type="Figure"/>
         <xs:element name="math" type="MathBlock"/>
         <xs:element name="deleted" type="DeletedBlock"/>
-        <xs:element name="old" type="CorrectionText"/>
+        <xs:element name="old" type="OldText"/>
         <xs:element name="blockContainer" type="BlockContainer"/>
-        <xs:element name="new" type="CorrectionText"/>
+        <xs:element name="new" type="NewText"/>
       </xs:choice>
     </xs:sequence>
   </xs:group>
@@ -950,17 +950,32 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="CorrectionText">
+  <xs:complexType name="CorrectionText" abstract="true">
     <xs:annotation>
       <xs:documentation>
         In a correction: the wording as published (old, "for:") or as corrected (new, "read:"), from Formex OLD.CORR and
-        NEW.CORR. The names are AKN's, from the old and new of a textual modification.
+        NEW.CORR. The names are AKN's, from the old and new of a textual modification. Each side has a type of its own,
+        so that a block's type tells which it is.
       </xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:group ref="blocks"/>
       </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="OldText">
+    <xs:annotation><xs:documentation>The wording as published: "for:".</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="CorrectionText"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="NewText">
+    <xs:annotation><xs:documentation>The wording as corrected: "read:".</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="CorrectionText"/>
     </xs:complexContent>
   </xs:complexType>
 

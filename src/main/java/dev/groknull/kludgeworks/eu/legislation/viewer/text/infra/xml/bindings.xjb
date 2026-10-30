@@ -22,5 +22,6 @@
     <jaxb:bindings node="//xs:complexType[@name='ListBlock']//xs:choice"><jaxb:property name="items"/></jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='Table']//xs:choice"><jaxb:property name="rows"/></jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RowGroup']//xs:choice"><jaxb:property name="rows"/></jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='Lines']/xs:choice/xs:element[@name='content']"><jaxb:property name="blocks"/></jaxb:bindings>
   </jaxb:bindings>
 </jaxb:bindings>
