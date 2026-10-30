@@ -1,8 +1,12 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import java.net.URI;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.validation.annotation.Validated;
 
 /**
  * Where Cellar is and who we are to it ({@code viewer.cellar.*}, set in application.yaml); timeouts
@@ -14,4 +18,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @param maxRows a SPARQL result with this many rows may have been cut off by the endpoint
  */
 @ConfigurationProperties("viewer.cellar")
-record CellarProperties(URI sparqlEndpoint, URI resources, String userAgent, int maxRows) {}
+@Validated
+record CellarProperties(
+    @NotNull URI sparqlEndpoint,
+    @NotNull URI resources,
+    @NotBlank String userAgent,
+    @Positive int maxRows) {}

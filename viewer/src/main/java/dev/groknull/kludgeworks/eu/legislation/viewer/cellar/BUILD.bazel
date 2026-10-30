@@ -7,6 +7,7 @@ java_library(
     srcs = glob(["*.java"]),
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     deps = [
+        "@maven//:jakarta_validation_jakarta_validation_api",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_modulith_spring_modulith_api",
