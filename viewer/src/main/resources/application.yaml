@@ -28,3 +28,6 @@ viewer:
       poll-interval: 250ms
       # how long a document without Formex in a language is remembered as such
       absent-for: 1d
+    pre-conversion:
+      # the languages an act's versions are converted in when they change, ahead of being asked for
+      languages: [ENG]
