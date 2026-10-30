@@ -85,9 +85,13 @@
     <xsl:param name="base" as="xs:string?"/>
     <xsl:variable name="scope" as="element()?" select="f:scope($list)"/>
     <xsl:variable name="siblings" as="element()*" select="
-        if ($scope) then $scope//(LIST | DLIST)[f:scope(.) is $scope]
-        else root($list)//(LIST | DLIST)[empty(f:scope(.))]"/>
-    <xsl:variable name="beside-levels" as="xs:boolean" select="exists($scope/self::GR.SEQ//GR.SEQ[f:level-parent(.) is $scope])"/>
+        if ($scope) then $scope//(LIST | DLIST | ITEM[f:stray-start(.)] | DLIST.ITEM[f:stray-start(.)])[f:scope(.) is $scope]
+        else root($list)//(LIST | DLIST | ITEM[f:stray-start(.)] | DLIST.ITEM[f:stray-start(.)])[empty(f:scope(.))]"/>
+    <!-- also directly in an annex, beside its own points, where an item's label is one of theirs
+         (point 1. of a list, annex point (1)) -->
+    <xsl:variable name="beside-levels" as="xs:boolean" select="exists($scope/self::GR.SEQ//GR.SEQ[f:level-parent(.) is $scope])
+        or exists($scope[self::CONS.ANNEX or self::ANNEX]) and exists($list/(ITEM/NP/NO.P | DLIST.ITEM/PREFIX)[f:label(.) != '']
+             [f:label(.) = $scope//GR.SEQ/f:label(f:level-num(.))])"/>
     <xsl:sequence select="
         if ($siblings[. &lt;&lt; $list] or $beside-levels)
         then f:eid($base, 'lst', string(count($siblings[. &lt;&lt; $list]) + 1))
@@ -147,6 +151,22 @@
     <xsl:sequence select="exists(($item, $item/NP) ! f:covering(.)[f:is-deletion(.)])"/>
   </xsl:function>
 
+  <!-- An ITEM or DLIST.ITEM outside its list (an amendment adds "in Bulgarian:" after the list's end):
+       a run of them is a list of its own, numbered among the lists around it (pnt_a/lst_2/idt_1) -->
+  <xsl:function name="f:stray-start" as="xs:boolean">
+    <xsl:param name="item" as="element()"/>
+    <xsl:sequence select="empty($item/parent::LIST | $item/parent::DLIST)
+        and not($item/preceding-sibling::*[1][node-name() = node-name($item)])"/>
+  </xsl:function>
+
+  <xsl:function name="f:item-base" as="xs:string?">
+    <xsl:param name="item" as="element()"/>
+    <xsl:param name="base" as="xs:string?"/>
+    <xsl:sequence select="
+        if ($item/parent::LIST or $item/parent::DLIST) then $base
+        else f:list-base(($item[f:stray-start(.)], $item/preceding-sibling::*[node-name() = node-name($item)][f:stray-start(.)][1])[1], $base)"/>
+  </xsl:function>
+
   <xsl:template match="ITEM" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
@@ -160,8 +180,8 @@
          the outer list, next to its own (2), (3)) is kept as published: the points share pnt_2 and are
          marked ambiguous -->
     <xsl:variable name="eid" as="xs:string" select="
-        if ($label != '') then f:eid($base, 'pnt', $label)
-        else f:eid($base, 'idt', string(count(preceding-sibling::ITEM) + 1))"/>
+        if ($label != '') then f:eid(f:item-base(., $base), 'pnt', $label)
+        else f:eid(f:item-base(., $base), 'idt', string(count(preceding-sibling::ITEM) + 1))"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="{if (NP/NO.P) then 'point' else 'indent'}">
         <xsl:sequence select="f:provenance($m)"/>
@@ -216,8 +236,8 @@
     <!-- an unlabelled definition is numbered by position as def_N, which a labelled point (pnt_1) can't
          collide with, as an unlabelled list item is idt_N -->
     <xsl:variable name="eid" as="xs:string" select="
-        if ($label != '') then f:eid($base, 'pnt', $label)
-        else f:eid($base, 'def', string(count(preceding-sibling::DLIST.ITEM) + 1))"/>
+        if ($label != '') then f:eid(f:item-base(., $base), 'pnt', $label)
+        else f:eid(f:item-base(., $base), 'def', string(count(preceding-sibling::DLIST.ITEM) + 1))"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="definition">
         <xsl:sequence select="f:provenance($m)"/>

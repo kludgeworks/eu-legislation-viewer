@@ -122,6 +122,14 @@
               test="sort($x:result/descendant-or-self::*:unit/@eId ! string(.)) => string-join(' ') = 'pnt_2 pnt_2/lst_1/pnt_1 pnt_2/pnt_1'"/>
   </x:scenario>
 
+  <x:scenario label="An item an amendment put after its list's end (in Bulgarian:)">
+    <x:context mode="block" xmlns="">
+      <P>one of the following:<LIST TYPE="NONE"><ITEM><P>in Danish: dybfrossen,</P></ITEM><ITEM><P>in Slovak: hlbokozmrazené,</P></ITEM></LIST><ITEM><P>in Bulgarian: бързо замразена</P></ITEM></P>
+    </x:context>
+    <x:expect label="is a list of its own, numbered after the list: lst_2/idt_1"
+              test="$x:result/descendant-or-self::*:unit/@eId => string-join(' ') = 'idt_1 idt_2 lst_2/idt_1'"/>
+  </x:scenario>
+
   <x:scenario label="An article with quotations in two ALINEAs">
     <x:context mode="block" xmlns="">
       <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART>
