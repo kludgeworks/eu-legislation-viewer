@@ -8,7 +8,6 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withBadRequest;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withServiceUnavailable;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
@@ -18,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 
 class SparqlTest {
   static final MediaType RESULTS = MediaType.parseMediaType("application/sparql-results+json");
@@ -35,7 +34,7 @@ class SparqlTest {
         .andExpect(header("Accept", RESULTS.toString()))
         .andRespond(withSuccess(RECORDED, RESULTS));
 
-    var result = new Sparql(mock.http()).select("SELECT * WHERE {}");
+    var result = mock.sparql().select("SELECT * WHERE {}");
 
     assertThat(result.variables())
         .containsExactly("manifestation", "item", "mime", "file", "sha1", "modified");
@@ -52,29 +51,17 @@ class SparqlTest {
     mock.server().expect(requestTo(Recorded.SPARQL)).andRespond(withSuccess(RECORDED, RESULTS));
 
     assertThatExceptionOfType(CellarException.class)
-        .isThrownBy(() -> new Sparql(mock.http()).select("SELECT * WHERE {}"))
+        .isThrownBy(() -> mock.sparql().select("SELECT * WHERE {}"))
         .withMessageContaining("cut off");
   }
 
   @Test
-  void retriesWhenCellarIsUnavailable() {
+  void failsAtOnceWhenCellarIsUnavailable() {
     var mock = Recorded.Mock.of();
     mock.server().expect(once(), requestTo(Recorded.SPARQL)).andRespond(withServiceUnavailable());
-    mock.server()
-        .expect(once(), requestTo(Recorded.SPARQL))
-        .andRespond(withSuccess(RECORDED, RESULTS));
 
-    assertThat(new Sparql(mock.http()).select("SELECT * WHERE {}").rows()).hasSize(4);
-    mock.server().verify();
-  }
-
-  @Test
-  void doesNotRetryABadRequest() {
-    var mock = Recorded.Mock.of();
-    mock.server().expect(once(), requestTo(Recorded.SPARQL)).andRespond(withBadRequest());
-
-    assertThatExceptionOfType(HttpClientErrorException.BadRequest.class)
-        .isThrownBy(() -> new Sparql(mock.http()).select("SELECT * WHERE {"));
+    assertThatExceptionOfType(HttpServerErrorException.ServiceUnavailable.class)
+        .isThrownBy(() -> mock.sparql().select("SELECT * WHERE {}"));
     mock.server().verify();
   }
 
@@ -95,7 +82,7 @@ class SparqlTest {
               }
               return withSuccess(RECORDED, RESULTS).createResponse(request);
             });
-    var sparql = new Sparql(mock.http());
+    var sparql = mock.sparql();
 
     var first = CompletableFuture.supplyAsync(() -> sparql.select("SELECT * WHERE {}"));
     asked.await(5, TimeUnit.SECONDS);

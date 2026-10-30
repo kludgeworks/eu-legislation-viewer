@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: MIT
+spring:
+  http:
+    clients:
+      # every RestClient Boot builds, so Cellar's: to open a connection, and for a response, since
+      # large SPARQL results take minutes; redirects followed (Cellar's 303s)
+      connect-timeout: 10s
+      read-timeout: 5m
+
+viewer:
+  cellar:
+    sparql-endpoint: https://publications.europa.eu/webapi/rdf/sparql
+    # where Cellar's resource URIs start (…/resource/celex/32015R1998)
+    resources: http://publications.europa.eu/resource/
+    # sent with every request: who we are and where to reach us
+    user-agent: kludgeworks-viewer/0.0 (+https://kludgeworks.groknull.dev)
+    # a SPARQL result with this many rows may have been cut off by the endpoint
+    max-rows: 1000000

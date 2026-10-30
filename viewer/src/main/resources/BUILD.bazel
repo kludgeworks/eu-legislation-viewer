@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_library")
+
+# the application's configuration (application.yaml), on the classpath root
+java_library(
+    name = "resources",
+    resources = glob(
+        ["**"],
+        exclude = ["BUILD.bazel"],
+    ),
+    visibility = ["//viewer:__subpackages__"],
+)

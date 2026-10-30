@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URI;
-import java.time.Duration;
 import java.util.Objects;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestClient;
@@ -27,32 +26,37 @@ final class Recorded {
     }
   }
 
-  /** Cellar's defaults without the waiting: no spacing, retries after 1 ms. */
+  /** Cellar as application.yaml has it, with a given row limit. */
   static CellarProperties properties(int maxRows) {
-    var defaults = CellarProperties.defaults();
     return new CellarProperties(
-        defaults.sparqlEndpoint(),
-        defaults.resources(),
-        defaults.userAgent(),
-        4,
-        Duration.ZERO,
-        defaults.connectTimeout(),
-        defaults.readTimeout(),
-        2,
-        Duration.ofMillis(1),
+        SPARQL,
+        URI.create("http://publications.europa.eu/resource/"),
+        "kludgeworks-viewer/0.0 (+https://kludgeworks.groknull.dev)",
         maxRows);
   }
 
   /** A client of a mock Cellar: what it answers is set up on {@link #server}. */
-  record Mock(MockRestServiceServer server, CellarHttp http) {
+  record Mock(MockRestServiceServer server, RestClient client, CellarProperties properties) {
     static Mock of(CellarProperties properties) {
       var builder = RestClient.builder();
       var server = MockRestServiceServer.bindTo(builder).build();
-      return new Mock(server, new CellarHttp(builder.build(), properties));
+      return new Mock(server, builder.build(), properties);
+    }
+
+    Sparql sparql() {
+      return new Sparql(client, properties);
+    }
+
+    ContentStreams contentStreams() {
+      return new ContentStreams(client);
+    }
+
+    FormexFiles formexFiles() {
+      return new FormexFiles(sparql(), client, properties);
     }
 
     static Mock of() {
-      return of(properties(1_000_000));
+      return of(Recorded.properties(1_000_000));
     }
   }
 }

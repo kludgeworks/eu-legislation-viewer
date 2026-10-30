@@ -41,7 +41,7 @@ class ContentStreamsTest {
                 .header("Last-Modified", "Fri, 19 Jul 2019 03:45:58 GMT"));
     var target = dir.resolve("L_2009330EN.01008001.doc.xml");
 
-    var download = new ContentStreams(mock.http()).download(ITEM, null, target);
+    var download = mock.contentStreams().download(ITEM, null, target);
 
     assertThat(Files.readAllBytes(target)).isEqualTo(RECORDED);
     assertThat(download)
@@ -64,7 +64,7 @@ class ContentStreamsTest {
         .andRespond(withStatus(HttpStatus.NOT_MODIFIED));
     var target = Files.write(dir.resolve("copy.xml"), RECORDED);
 
-    var download = new ContentStreams(mock.http()).download(ITEM, ETAG, target);
+    var download = mock.contentStreams().download(ITEM, ETAG, target);
 
     assertThat(download).isInstanceOf(Download.NotModified.class);
     assertThat(Files.readAllBytes(target)).isEqualTo(RECORDED);
@@ -77,7 +77,7 @@ class ContentStreamsTest {
     var target = dir.resolve("missing.xml");
 
     assertThatExceptionOfType(HttpClientErrorException.NotFound.class)
-        .isThrownBy(() -> new ContentStreams(mock.http()).download(ITEM, null, target));
+        .isThrownBy(() -> mock.contentStreams().download(ITEM, null, target));
     try (var files = Files.list(dir)) {
       assertThat(files).isEmpty();
     }

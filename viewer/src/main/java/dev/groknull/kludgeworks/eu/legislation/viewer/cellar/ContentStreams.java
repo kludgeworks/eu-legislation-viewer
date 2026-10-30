@@ -13,10 +13,12 @@ import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
 import java.util.HexFormat;
 import org.jspecify.annotations.Nullable;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.RestClient;
 
 /**
  * Cellar's files (content streams: an item, or one entry of a zip item), fetched one at a time as
@@ -25,10 +27,10 @@ import org.springframework.web.client.HttpServerErrorException;
  */
 @Component
 public class ContentStreams {
-  private final CellarHttp http;
+  private final RestClient client;
 
-  ContentStreams(CellarHttp http) {
-    this.http = http;
+  ContentStreams(@Qualifier(CellarConfiguration.CLIENT) RestClient client) {
+    this.client = client;
   }
 
   /**
@@ -38,11 +40,7 @@ public class ContentStreams {
    * @param etag the ETag of the copy we have, or null to fetch unconditionally
    */
   public Download download(URI uri, @Nullable String etag, Path target) {
-    return http.call(() -> fetch(uri, etag, target));
-  }
-
-  private Download fetch(URI uri, @Nullable String etag, Path target) {
-    return http.client()
+    return client
         .get()
         .uri(uri)
         .headers(

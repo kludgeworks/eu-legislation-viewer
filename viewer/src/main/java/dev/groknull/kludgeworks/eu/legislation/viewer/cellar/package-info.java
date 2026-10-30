@@ -4,10 +4,12 @@
  * RDF ({@link Sparql}), files fetched one at a time as raw bytes with conditional GETs ({@link
  * ContentStreams}), and the Formex files of one version found from the RDF ({@link FormexFiles}).
  *
- * <p>Upstream etiquette is enforced here, for every caller: a descriptive User-Agent, requests
- * serialised and spaced ({@code viewer.cellar.*}), retries with backoff on network errors, 5xx and
- * 429, identical concurrent SPARQL queries coalesced, and results that hit the row limit refused as
- * possibly truncated. Never a whole zip: a zip-only version's entries are fetched one by one.
+ * <p>Upstream etiquette is enforced here, for every caller: a descriptive User-Agent ({@code
+ * viewer.cellar.*}, in application.yaml), identical concurrent SPARQL queries coalesced, and
+ * results that hit the row limit refused as possibly truncated. No throttling and no retries: a
+ * page waits on the answer, so a failure surfaces at once, as Spring's {@code RestClientException}
+ * or a {@link CellarException}. Never a whole zip: a zip-only version's entries are fetched one by
+ * one.
  *
  * <p>The module holds no state and caches nothing; the modules that own the data cache it.
  */

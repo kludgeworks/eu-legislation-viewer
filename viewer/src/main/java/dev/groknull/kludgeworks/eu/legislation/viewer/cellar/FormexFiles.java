@@ -15,8 +15,10 @@ import java.util.regex.Pattern;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClient;
 
 /**
  * The Formex files of a version, found from Cellar's RDF: work (CELEX) → expression (language) →
@@ -65,11 +67,16 @@ public class FormexFiles {
       """;
 
   private final Sparql sparql;
-  private final CellarHttp http;
+  private final RestClient client;
+  private final CellarProperties properties;
 
-  FormexFiles(Sparql sparql, CellarHttp http) {
+  FormexFiles(
+      Sparql sparql,
+      @Qualifier(CellarConfiguration.CLIENT) RestClient client,
+      CellarProperties properties) {
     this.sparql = sparql;
-    this.http = http;
+    this.client = client;
+    this.properties = properties;
   }
 
   /**
@@ -116,15 +123,13 @@ public class FormexFiles {
    */
   private List<FormexManifestation.File> entries(String celex, String language, URI zip) {
     var page =
-        http.call(
-            () ->
-                http.client()
-                    .get()
-                    .uri(http.properties().resources().resolve("celex/" + celex))
-                    .accept(MediaType.parseMediaType("application/list;mtype=fmx4"))
-                    .header("Accept-Language", language.toLowerCase(Locale.ROOT))
-                    .retrieve()
-                    .body(byte[].class));
+        client
+            .get()
+            .uri(properties.resources().resolve("celex/" + celex))
+            .accept(MediaType.parseMediaType("application/list;mtype=fmx4"))
+            .header("Accept-Language", language.toLowerCase(Locale.ROOT))
+            .retrieve()
+            .body(byte[].class);
     if (page == null) {
       throw new CellarException("Empty content-stream list for " + celex);
     }

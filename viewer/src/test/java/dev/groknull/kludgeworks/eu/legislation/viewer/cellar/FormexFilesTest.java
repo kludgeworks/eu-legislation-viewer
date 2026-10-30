@@ -87,6 +87,6 @@ class FormexFilesTest {
   }
 
   private static FormexFiles files(Recorded.Mock mock) {
-    return new FormexFiles(new Sparql(mock.http()), mock.http());
+    return mock.formexFiles();
   }
 }

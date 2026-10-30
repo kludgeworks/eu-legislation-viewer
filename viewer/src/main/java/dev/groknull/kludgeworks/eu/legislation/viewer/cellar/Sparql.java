@@ -8,8 +8,10 @@ import java.util.LinkedHashMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClient;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 
@@ -22,20 +24,22 @@ public class Sparql {
   private static final MediaType RESULTS =
       MediaType.parseMediaType("application/sparql-results+json");
 
-  private final CellarHttp http;
+  private final RestClient client;
+  private final CellarProperties properties;
   private final JsonMapper json = JsonMapper.builder().build();
   private final ConcurrentHashMap<String, CompletableFuture<SparqlResult>> running =
       new ConcurrentHashMap<>();
 
-  Sparql(CellarHttp http) {
-    this.http = http;
+  Sparql(@Qualifier(CellarConfiguration.CLIENT) RestClient client, CellarProperties properties) {
+    this.client = client;
+    this.properties = properties;
   }
 
   /**
    * Runs a SELECT query.
    *
-   * @throws CellarException if Cellar fails, or the result has as many rows as the endpoint returns
-   *     at most ({@code viewer.cellar.max-rows}) and so may be cut off
+   * @throws CellarException if the result has as many rows as the endpoint returns at most ({@code
+   *     viewer.cellar.max-rows}) and so may be cut off
    */
   public SparqlResult select(String query) {
     var mine = new CompletableFuture<SparqlResult>();
@@ -61,21 +65,19 @@ public class Sparql {
 
   private SparqlResult ask(String query) {
     var body =
-        http.call(
-            () ->
-                http.client()
-                    .post()
-                    .uri(http.properties().sparqlEndpoint())
-                    .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                    .accept(RESULTS)
-                    .body("query=" + URLEncoder.encode(query, StandardCharsets.UTF_8))
-                    .retrieve()
-                    .body(byte[].class));
+        client
+            .post()
+            .uri(properties.sparqlEndpoint())
+            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+            .accept(RESULTS)
+            .body("query=" + URLEncoder.encode(query, StandardCharsets.UTF_8))
+            .retrieve()
+            .body(byte[].class);
     if (body == null) {
       throw new CellarException("SPARQL endpoint returned no body");
     }
     var result = parse(json.readTree(body));
-    if (result.rows().size() >= http.properties().maxRows()) {
+    if (result.rows().size() >= properties.maxRows()) {
       throw new CellarException(
           "SPARQL result has "
               + result.rows().size()
