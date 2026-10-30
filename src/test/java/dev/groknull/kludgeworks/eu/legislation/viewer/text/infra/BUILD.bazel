@@ -40,6 +40,12 @@ java_junit5_test(
     name = "corpus",
     size = "enormous",
     srcs = ["CorpusTests.java"],
+    # the JDK's XML limits, which the converter lifts for its own parsing, also stop the validation
+    # of a large document's output (a 55 MB consolidation, an annex with 100,000 entity references)
+    jvm_flags = [
+        "-Djdk.xml.maxGeneralEntitySizeLimit=0",
+        "-Djdk.xml.totalEntitySizeLimit=0",
+    ],
     # not part of //...; cached on the converter and the mirror's manifest hash (--test_env)
     tags = ["manual"],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.CorpusTests",
