@@ -8,6 +8,11 @@
 [settings]
 lockfile = true # mise.lock adds the checksums; versions are pinned below, upgraded on purpose
 
+[task_config]
+# file tasks live beside the Bazel tooling, under tools/, in a folder of their own: mise would take
+# any executable file below an included folder for a task
+includes = ["tools/tasks"]
+
 [env]
 HK_MISE = 1
 LICENSE_TYPE = "mit"

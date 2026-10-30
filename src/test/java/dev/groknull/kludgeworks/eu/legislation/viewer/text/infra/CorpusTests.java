@@ -19,7 +19,7 @@ import org.xmlunit.assertj3.XmlAssert;
 
 /**
  * The regression test on the whole corpus: every complete manifestation of one language's mirror,
- * made by mise-tasks/corpus/fetch.sh, checked as the fixtures are. Documents out of scope are
+ * made by tools/tasks/corpus/fetch.sh, checked as the fixtures are. Documents out of scope are
  * skipped. The mirror is formex-corpus/{language} at the repository root:
  *
  * <pre>

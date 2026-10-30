@@ -10,7 +10,7 @@
 # part of the test's cache key. Unchanged both, the test isn't run again.
 set -euo pipefail
 
-root=$(cd "$(dirname "$0")/../.." && pwd)
+root=$(cd "$(dirname "$0")/../../.." && pwd)
 language=$(echo "${usage_language:?}" | tr '[:upper:]' '[:lower:]')
 mirror=$root/formex-corpus/$language
 if [ ! -s "$mirror/manifest.tsv" ]; then

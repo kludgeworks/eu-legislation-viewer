@@ -23,7 +23,7 @@
 set -euo pipefail
 
 here=$(cd "$(dirname "$0")" && pwd)
-root=$(cd "$here/../.." && pwd)
+root=$(cd "$here/../../.." && pwd)
 endpoint=https://publications.europa.eu/webapi/rdf/sparql
 agent="kludgeworks-viewer/0.0 (+https://kludgeworks.groknull.dev)"
 language=${usage_language:?}
