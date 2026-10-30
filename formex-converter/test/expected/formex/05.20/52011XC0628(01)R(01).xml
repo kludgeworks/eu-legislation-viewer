@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="52011XC0628(01)R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.20"
+           converter="1.0.0">
+   <source celex="52011XC0628(01)R(01)">
+      <publication series="C"
+                   number="190"
+                   date="2011-06-30"
+                   page="39"
+                   document="2011/C 190/11"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to authorisation for State aid pursuant to Articles 107 and 108 of the TFEU — Cases where the Commission raises no objections"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="C" number="187" date="2011-06-28">
+               <t v="Official Journal of the European Union C 187 of 28 June 2011"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 8:"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <quotedStructure eId="cor_1/old/qst_1">
+               <list kind="definition">
+                  <unit eId="cor_1/old/qst_1/def_1" kind="definition">
+                     <heading>
+                        <t v="‘"/>
+                        <t v="Reference number of State Aid"/>
+                     </heading>
+                     <p>
+                        <t v="SA.322266 (11/N)"/>
+                        <t v="’"/>
+                        <t v=","/>
+                     </p>
+                  </unit>
+               </list>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <list kind="definition">
+                  <unit eId="cor_1/new/qst_1/def_1" kind="definition">
+                     <heading>
+                        <t v="‘"/>
+                        <t v="Reference number of State Aid"/>
+                     </heading>
+                     <p>
+                        <t v="SA.32266 (11/N)"/>
+                        <t v="’"/>
+                        <t v="."/>
+                     </p>
+                  </unit>
+               </list>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

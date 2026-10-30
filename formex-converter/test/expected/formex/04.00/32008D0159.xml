@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32008D0159"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="04.00"
+           converter="1.0.0">
+   <source celex="32008D0159">
+      <publication series="L" number="51" date="2008-02-26" page="21"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="22 February 2008" date="2008-02-22"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Decision 2007/683/EC approving the plan for the eradication of classical swine fever in feral pigs in certain areas of Hungary"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(notified under document number C(2008) 675)"/>
+         </p>
+         <p>
+            <t v="(Only the Hungarian text is authentic)"/>
+         </p>
+         <p>
+            <t v="(2008/159/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Directive 2001/89/EC of "/>
+               <date asWritten="23 October 2001" date="2001-10-23"/>
+               <t v=" on Community measures for the control of classical swine fever"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 16(1) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Commission Decision 2007/683/EC"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" was adopted as one of a number of measures to combat classical swine fever."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Slovakia has informed the Commission about the recent evolution of that disease in feral pigs in certain areas bordering Hungary."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Hungary has informed the Commission that in the light of the epidemiological situation, the measures set out in the plan for the eradication of classical swine fever in feral pigs need to be extended to certain areas of the Pest County in Hungary."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="Decision 2007/683/EC should therefore be amended accordingly."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Decision are in accordance with the opinion of the Standing Committee on the Food Chain and Animal Health,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The Annex to Decision 2007/683/EC is replaced by the text in the Annex to this Decision."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Decision is addressed to the Republic of Hungary."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="22 February 2008" date="2008-02-22"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Markos "/>
+               <emphasis kind="uc">
+                  <t v="Kyprianou"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <quotedStructure eId="anx/qst_1">
+            <unit eId="anx/qst_1/anx" kind="annex">
+               <num>
+                  <t v="‘"/>
+                  <t v="ANNEX"/>
+               </num>
+               <unit eId="anx/qst_1/anx/lvl_1" kind="level" depth="1">
+                  <heading>
+                     <t v="Areas where the plan for the eradication of classical swine fever in feral pigs is to be implemented"/>
+                  </heading>
+                  <p>
+                     <t v="The territory of the county of Nógrád and the territory of the county of Pest located north and east of the Danube, south of the border with Slovakia, west of the border with the county Nógrád and north of the motorway E 71."/>
+                     <t v="’"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+            </unit>
+         </quotedStructure>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="316"
+                 date="2001-12-01"
+                 page="5">
+               <t v="OJ L 316, 1.12.2001, p. 5"/>
+            </ref>
+            <t v=". Directive as last amended by Commission Decision 2007/729/EC ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="294"
+                 date="2007-11-13"
+                 page="26">
+               <t v="OJ L 294, 13.11.2007, p. 26"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="281"
+                 date="2007-10-25"
+                 page="27">
+               <t v="OJ L 281, 25.10.2007, p. 27"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

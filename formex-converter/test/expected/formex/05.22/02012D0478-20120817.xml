@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32012D0478"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2012-08-17"
+           lang="en"
+           formexVersion="05.22"
+           converter="1.0.0">
+   <source celex="02012D0478-20120817">
+      <publication series="L" number="219" date="2012-08-17" page="21"/>
+   </source>
+   <lifecycle start="2012-08-17" produced="2012-08-29" sequence="000.001.0">
+      <eventRef type="corrigendum" act="32012D0478R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Implementing Decision"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="2012/478/CFSP"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="16 August 2012" date="2012-08-16"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="implementing Decision 2011/782/CFSP concerning restrictive measures against Syria"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Decision 2011/782/CFSP"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 21(1) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="On "/>
+               <date asWritten="1 December 2011" date="2011-12-01"/>
+               <t v=", the Council adopted Decision 2011/782/CFSP."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="An additional entity should be included in the list of persons and entities subject to restrictive measures set out in Annex I to Decision 2011/782/CFSP,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The entity listed in the Annex to this Decision shall be added to the list set out in Annex I to Decision 2011/782/CFSP."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Decision shall enter into force on the date of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <unit eId="anx/lvl_1" kind="level" depth="1">
+            <heading>
+               <emphasis kind="b">
+                  <t v="ENTITY REFERRED TO IN ARTICLE 1"/>
+               </emphasis>
+            </heading>
+            <table cols="5">
+               <caption>
+                  <p>
+                     <emphasis kind="b">
+                        <t v="Entity"/>
+                     </emphasis>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td header="true"/>
+                  <td header="true">
+                     <p>
+                        <t v="Name"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Identifying information"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Reasons"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Date of listing"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="1."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Drex Technologies Holding S.A."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Registered in Luxembourg under number B77616, formerly established at the following address: "/>
+                        <t v="17, rue Beaumont L-1219 Luxembourg"/>
+                        <t v="."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="The beneficial owner of Drex Technologies Holding S.A. is Rami Makhlouf, who is listed under EU sanctions for providing financial support to the Syrian regime."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <provenance amendingAct="32012D0478R(01)"
+                                    action="replaced"
+                                    location="TO"
+                                    marker="O000001M001000"/>
+                        <date asWritten="17.8.2012" date="2012-08-17"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="319"
+                 date="2011-12-02"
+                 page="56">
+               <t v="OJ L 319, 2.12.2011, p. 56"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

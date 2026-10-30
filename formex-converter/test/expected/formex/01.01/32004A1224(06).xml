@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32004A1224(06)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="01.01"
+           converter="1.0.0">
+   <source celex="32004A1224(06)">
+      <publication series="C"
+                   number="320"
+                   date="2004-12-24"
+                   page="11"
+                   document="2004/C 320/06"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Opinion"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="5 July 2004" date="2004-07-05"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the Convergence Programme of Hungary, 2004-2008"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 1466/97 of "/>
+               <date asWritten="7 July 1997" date="1997-07-07"/>
+               <t v=" on the strengthening of the surveillance of budgetary positions and the surveillance and coordination of economic policies"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 9(2) thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to the recommendation of the Commission,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_4" kind="citation">
+            <p>
+               <t v="After consulting the Economic and Financial Committee,"/>
+            </p>
+         </unit>
+      </citations>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS DELIVERED THIS OPINION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <p>
+         <t v="On "/>
+         <date asWritten="5 July 2004" date="2004-07-05"/>
+         <t v=", the Council examined the convergence programme of Hungary, which covers the period 2004 to 2008. The programme largely complies with the data requirements of the revised "/>
+         <quote startQuote="‘" endQuote="’">
+            <t v="code of conduct on the content and format of stability and convergence programmes"/>
+         </quote>
+         <t v="."/>
+      </p>
+      <p>
+         <t v="The budgetary strategy underlying the programme aims at reducing the general government deficit to below 3 % of GDP by 2008, while at the same time reducing the weight of the public sector in the economy. To this end, the programme envisages a frontloaded consolidation with the government deficit decreasing from 5,9 % of GDP in 2003 to 4,6 % of GDP in 2004, followed by a yearly adjustment of some "/>
+         <math>
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
+               <m:mrow>
+                  <m:mfrac>
+                     <m:mn>1</m:mn>
+                     <m:mn>2</m:mn>
+                  </m:mfrac>
+               </m:mrow>
+            </m:math>
+         </math>
+         <t v=" percentage point of GDP (4,1 % of GDP in 2005, 3,6 % in 2006, 3,1 % in 2007 and 2,7 % of GDP in 2008). These targets include the impact of the pension reform which rises from 0,7 % of GDP in 2003 to 0,9 % in 2008. The consolidation is expenditure-based, underpinned by structural reforms, predominantly in the areas of public administration, health and education. However, these reforms still have to be specified and implemented. The decline of the overall expenditure ratio would allow for a rise in the GDP share of public investment, supported by EU funding. At the same time, a reduction of the overall tax burden is planned from 39 % of GDP to 37 % of GDP."/>
+      </p>
+      <p>
+         <t v="The programme contains two different scenarios for the macroeconomic and budgetary projections: a "/>
+         <quote startQuote="‘" endQuote="’">
+            <t v="baseline"/>
+         </quote>
+         <t v=" scenario and a "/>
+         <quote startQuote="‘" endQuote="’">
+            <t v="more optimistic"/>
+         </quote>
+         <t v=" scenario. The baseline scenario should be considered as the reference scenario for assessing budgetary projections as reflecting the more plausible growth assumptions of real GDP growth about 3"/>
+         <math>
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
+               <m:mrow>
+                  <m:mfrac>
+                     <m:mn>1</m:mn>
+                     <m:mn>2</m:mn>
+                  </m:mfrac>
+               </m:mrow>
+            </m:math>
+         </math>
+         <t v="-4 % in 2004 and 2005, followed by a somewhat optimistic projection of the rise in the growth rate by about "/>
+         <math>
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
+               <m:mrow>
+                  <m:mfrac>
+                     <m:mn>1</m:mn>
+                     <m:mn>2</m:mn>
+                  </m:mfrac>
+               </m:mrow>
+            </m:math>
+         </math>
+         <t v=" percentage point each year until 2008. The projection of rapid disinflation after 2004, when indirect tax hikes taper off, appears broadly realistic, provided that real wage growth is moderating significantly to be in line with productivity."/>
+      </p>
+      <p>
+         <t v="The programme foresees the general government deficit to be reduced to below the 3 % of GDP reference value only in 2008. The deficit reduction foreseen in the programme seems within reach. Nevertheless, the fact that the planned deficit should be reduced below 3 % of GDP only in 2008, then only by a small margin, and that a substantial share of the adjustment comes from a reduction in the interest rate burden, is a source of concern. Risks to the budgetary outcome stem from possibility that growth could turn out lower than forecast, from the experience with expenditure overruns in the past, and the lack of information on the envisaged expenditure-reducing measures in the outer years of the programme. The achievement of the frontloaded adjustment in the first year of the programme is crucial for the credibility of the adjustment strategy; missing it, might put the whole adjustment path at a risk. Therefore, the budgetary stance in the programme may not be sufficient to reduce the deficit to the below 3 % of GDP deficit threshold by the end of the programme period and all opportunities should be seized to accelerate a sustainable fiscal adjustment. At the same time, the projected balances reflect to a significant extent the implementation of an intensive programme of public investment, bringing the government investment-to-GDP ratio up from 4,0 % of GDP in 2004 to 5,5 % of GDP in 2008."/>
+      </p>
+      <p>
+         <t v="After peaking at nearly 60 % of GDP in 2004, the debt ratio is projected in the programme to fall to 54 % of GDP by 2008. This would be in line with the planned budgetary adjustment but also benefiting from a projected falling interest burden and negative stock-flow adjustment. While this seems plausible, the positive development might be put in danger by a slower-than-forecast decline in interest rates."/>
+      </p>
+      <p>
+         <t v="Regarding long-term sustainability, Hungary faces some risk of budgetary imbalances in meeting the projected costs of an aging population. While the pension reform dating back to 1998 and establishing a progressive three-tier pension system — including parametric changes to the pay-as-you-go pillar e.g. increase in the retirement age and pension indexation — has mitigated the risks of long-term budgetary imbalances, it has not entirely removed them. Securing an adequate primary surplus in the medium-term together with the implementation of measures to further stem the rise of age-related expenditure, particularly concerning health care is essential to place public finances on a sustainable basis."/>
+      </p>
+      <p>
+         <t v="On "/>
+         <date asWritten="5 July 2004" date="2004-07-05"/>
+         <t v=", on the basis of recommendations from the Commission, the Council decided that an excessive deficit existed in Hungary in accordance with Article 104(6) of the Treaty and made recommendations under Article 104(7) to Hungary with a view to bringing that situation to an end, in which the Council expresses its policy advice."/>
+      </p>
+      <table cols="7">
+         <caption>
+            <p>
+               <t v="Key projections from the convergence programme of Hungary"/>
+            </p>
+         </caption>
+         <tr header="true">
+            <td header="true"/>
+            <td header="true">
+               <p>
+                  <t v="2003"/>
+               </p>
+            </td>
+            <td header="true">
+               <p>
+                  <t v="2004"/>
+               </p>
+            </td>
+            <td header="true">
+               <p>
+                  <t v="2005"/>
+               </p>
+            </td>
+            <td header="true">
+               <p>
+                  <t v="2006"/>
+               </p>
+            </td>
+            <td header="true">
+               <p>
+                  <t v="2007"/>
+               </p>
+            </td>
+            <td header="true">
+               <p>
+                  <t v="2008"/>
+               </p>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <p>
+                  <t v="Real GDP growth (%)"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="2,9"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="3,3—3,5"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="3,5—4"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="ca. 4"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="4—4,5"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="4,5—5"/>
+               </p>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <p>
+                  <t v="Employment growth (%)"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="1,0"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="0—0,5"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="0,5—1"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="ca. 1"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="ca. 1"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="ca. 1,5"/>
+               </p>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <p>
+                  <t v="HICP inflation (%)"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="4,7"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="ca. 6,5"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="ca. 4,5"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="ca. 4"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="ca. 3,5"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="ca. 3"/>
+               </p>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <p>
+                  <t v="General government balance (% of GDP)"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="– 5,9"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="– 4,6"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="– 4,1"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="– 3,6"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="– 3,1"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="– 2,7"/>
+               </p>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <p>
+                  <t v="Government gross debt (% of GDP)"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="59,1"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="59,4"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="57,9"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="56,8"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="55,6"/>
+               </p>
+            </td>
+            <td>
+               <p>
+                  <t v="53,7"/>
+               </p>
+            </td>
+         </tr>
+      </table>
+   </body>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="209"
+                 date="1997-08-02"
+                 page="1">
+               <t v="OJ L 209, 2.8.1997, p. 1"/>
+            </ref>
+            <t v=". The documents referred to in this text can be found at the following website"/>
+         </p>
+         <p>
+            <t v="http://europa.eu.int/comm/economy_finance/about/activities/sgp/main_en.htm"/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

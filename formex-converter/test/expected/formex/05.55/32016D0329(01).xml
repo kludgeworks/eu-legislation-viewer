@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32016D0329(01)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.55"
+           converter="1.0.0">
+   <source celex="32016D0329(01)">
+      <publication series="C"
+                   number="111"
+                   date="2016-03-29"
+                   page="2"
+                   document="2016/C 111/02"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Decision of the General Court"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="27 January 2016" date="2016-01-27"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on judicial vacations"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE GENERAL COURT"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to Article 41(2) of the Rules of Procedure,"/>
+            </p>
+         </unit>
+      </citations>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <emphasis kind="i">
+               <t v="Article 1"/>
+            </emphasis>
+         </num>
+         <p>
+            <t v="For the judicial year beginning on "/>
+            <date asWritten="1 September 2016" date="2016-09-01"/>
+            <t v=", the dates of the judicial vacations within the meaning of Article 41(2) and (6) of the Rules of Procedure are as follows:"/>
+         </p>
+         <list kind="dash">
+            <unit eId="art_1/idt_1" kind="indent">
+               <p>
+                  <t v="Christmas 2016: from Monday "/>
+                  <date asWritten="19 December 2016" date="2016-12-19"/>
+                  <t v=" to Sunday "/>
+                  <date asWritten="8 January 2017" date="2017-01-08"/>
+                  <t v=" inclusive,"/>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_2" kind="indent">
+               <p>
+                  <t v="Easter 2017: from Monday "/>
+                  <date asWritten="10 April 2017" date="2017-04-10"/>
+                  <t v=" to Sunday "/>
+                  <date asWritten="23 April 2017" date="2017-04-23"/>
+                  <t v=" inclusive,"/>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_3" kind="indent">
+               <p>
+                  <t v="Summer 2017: from Friday "/>
+                  <date asWritten="21 July 2017" date="2017-07-21"/>
+                  <t v=" to Sunday "/>
+                  <date asWritten="3 September 2017" date="2017-09-03"/>
+                  <t v=" inclusive."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <emphasis kind="i">
+               <t v="Article 2"/>
+            </emphasis>
+         </num>
+         <p>
+            <t v="This Decision shall enter into force on the day of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Luxembourg, "/>
+            <date asWritten="27 January 2016" date="2016-01-27"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="Registrar"/>
+               </emphasis>
+            </organization>
+            <person>
+               <t v="E. "/>
+               <emphasis kind="uc">
+                  <t v="Coulon"/>
+               </emphasis>
+            </person>
+         </signatory>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="President"/>
+               </emphasis>
+            </organization>
+            <person>
+               <t v="M. "/>
+               <emphasis kind="uc">
+                  <t v="Jaeger"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+</legalText>
+

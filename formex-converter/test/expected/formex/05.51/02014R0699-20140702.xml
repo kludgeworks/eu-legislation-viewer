@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32014R0699"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2014-07-02"
+           lang="en"
+           formexVersion="05.51"
+           converter="1.0.0">
+   <source celex="02014R0699-20140702">
+      <publication series="L" number="184" date="2014-06-25" page="5"/>
+   </source>
+   <lifecycle start="2014-07-02" produced="2014-10-17" sequence="000.001.0">
+      <eventRef type="corrigendum" act="32014R0699R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Implementing Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) No 699/2014"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="24 June 2014" date="2014-06-24"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the design of the common logo to identify persons offering medicinal products for sale at a distance to the public and the technical, electronic and cryptographic requirements for verification of its authenticity"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Directive 2001/83/EC of the European Parliament and of the Council of "/>
+               <date asWritten="6 November 2001" date="2001-11-06"/>
+               <t v=" on the Community Code relating to medicinal products for human use"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 85c(3) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Article 85c(3) of Directive 2001/83/EC provides that a common logo recognisable throughout the Union should be established, which will enable the identification of the Member State where the person offering medicinal products for sale at a distance to the public by means of information society services is established."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Pursuant to Article 85c(3)(a) of Directive 2001/83/EC, the Commission should adopt implementing acts in order to harmonise the functioning of common logo regarding the technical, electronic and cryptographic requirements for verification of the authenticity of the common logo. These requirements should provide for a high level of security and prevent any fraudulent use of the logo."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="In line with Article 85c(1)(d)(iii) the verification of the authenticity of the common logo is done via a hyperlink between the logo and the entry of the person authorised or entitled to offer medicinal products for sale at a distance to the public by means of information society services on the list referred to in Article 85c(4)(c). Therefore, these hyperlinks should be permanent and secured."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="In order to prevent a fraudulent use of the logo, the national websites referred to Article 85c(4) should be secured, updated and hosted on trusted domains."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Standing Committee on Medicinal Products for Human Use,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The design of the common logo referred to in Article 85c(3)(b) of Directive 2001/83/EC shall follow the model set out in the Annex to this Regulation."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The website, mentioned in Article 85c(4) shall be accessible in such a way that the public can be easily assured that it is the trusted site for the purpose."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <unit eId="art_3/unp_1" kind="paragraph">
+            <p>
+               <t v="The hyperlink, mentioned in Article 85c(1)(d)(iii) of Directive 2001/83/EC between the website of the person authorised or entitled to supply medicinal products at a distance to the public by means of information society services and the website hosting the national list mentioned in Article 85c(4)(c) of the Directive, shall be fixed and reciprocal."/>
+            </p>
+         </unit>
+         <unit eId="art_3/unp_2" kind="paragraph">
+            <provenance amendingAct="32014R0699R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001000"/>
+            <p>
+               <t v="The information transit between the websites of the persons authorised or entitled to supply medicinal products at a distance to the public by means of information society services and the websites hosting the national lists shall be secured through appropriate means."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <p>
+            <t v="In order for the hyperlink mentioned in the first paragraph of Article 3 to work reliably the websites hosting the national lists set up in accordance with Article 85c(4)(c) of Directive 2001/83/EC shall be secured and updated, with an indication of the latest update moment."/>
+         </p>
+      </unit>
+      <unit eId="art_5" kind="article">
+         <num>
+            <t v="Article 5"/>
+         </num>
+         <unit eId="art_5/unp_1" kind="paragraph">
+            <p>
+               <t v="This Regulation shall enter into force on the seventh day following that of its publication in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_5/unp_2" kind="paragraph">
+            <p>
+               <t v="It shall apply as from "/>
+               <date asWritten="1 July 2015" date="2015-07-01"/>
+               <t v="."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <num>
+               <t v="1."/>
+            </num>
+            <t v="The model referred to in Article 1 for the common logo is the following:"/>
+         </p>
+         <figure src="L_2014184EN.01000702.tif" content="other"/>
+         <p>
+            <num>
+               <t v="2."/>
+            </num>
+            <t v="The reference colours are: PANTONE 421 CMYK 13/11/8/26 RGB 204/204/204; PANTONE 7731 CMYK 79/0/89/22 RGB 0/153/51; PANTONE 376 CMYK 54/0/100/0 RGB 153/204/51; PANTONE 7480 CMYK 75/0/71/0."/>
+         </p>
+         <p>
+            <num>
+               <t v="3."/>
+            </num>
+            <t v="The national flag of the Member State where the natural or legal person supplying medicinal products to the public at a distance by means of information society services is established shall be inserted in the white rectangle in the middle (left side) of the common logo."/>
+         </p>
+         <p>
+            <num>
+               <t v="4."/>
+            </num>
+            <t v="The language of the text in the common logo shall be established by the Member State referred to in point 3."/>
+         </p>
+         <p>
+            <num>
+               <t v="5."/>
+            </num>
+            <t v="The common logo shall have a minimum width size of 90 pixel."/>
+         </p>
+         <p>
+            <num>
+               <t v="6."/>
+            </num>
+            <t v="The common logo shall be static."/>
+         </p>
+         <p>
+            <num>
+               <t v="7."/>
+            </num>
+            <t v="If the logo is used on a coloured background which makes it difficult to see, a delimiting outer line around the logo can be used to improve contrast with the background colour."/>
+         </p>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="311"
+                 date="2001-11-28"
+                 page="67">
+               <t v="OJ L 311, 28.11.2001, p. 67"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

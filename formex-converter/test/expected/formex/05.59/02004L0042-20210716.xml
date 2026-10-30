@@ -1,0 +1,2063 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32004L0042"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2021-07-16"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="02004L0042-20210716">
+      <publication series="L" number="143" date="2004-04-30" page="87"/>
+   </source>
+   <lifecycle start="2021-07-16" produced="2019-07-26" sequence="005.001.0">
+      <eventRef type="corrigendum" act="32004L0042R(02)"/>
+      <eventRef type="amendment" act="32008R1137" date="2008-10-22"/>
+      <eventRef type="amendment" act="32008L0112" date="2008-12-16"/>
+      <eventRef type="amendment" act="32010L0079" date="2010-11-19"/>
+      <eventRef type="amendment" act="32019R1020" date="2019-06-20"/>
+      <eventRef type="amendment" act="32019R1243" date="2019-06-20"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <changed amendingAct="32004L0042R(02)"
+                     action="replaced"
+                     location="TO"
+                     marker="O003004M001002">
+               <emphasis kind="uc">
+                  <t v="Directive"/>
+               </emphasis>
+               <t v=" 2004/42/EC"/>
+            </changed>
+            <t v=" "/>
+            <emphasis kind="uc">
+               <t v="of the European Parliament and of the Council"/>
+            </emphasis>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="21 April 2004" date="2004-04-21"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the limitation of emissions of volatile organic compounds due to the use of organic solvents in certain paints and varnishes and vehicle refinishing products and amending Directive 1999/13/EC"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <heading>
+            <t v="Purpose and scope"/>
+         </heading>
+         <unit eId="art_1/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="The purpose of this Directive is to limit the total content of VOCs in certain paints and varnishes and vehicle refinishing products in order to prevent or reduce air pollution resulting from the contribution of VOCs to the formation of tropospheric ozone."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="To achieve the objective set out in paragraph 1, this Directive approximates the technical specifications for certain paints and varnishes and vehicle refinishing products."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="This Directive shall apply to the products set out in Annex I."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="This Directive does not prejudice or affect measures, including labelling requirements, taken at Community or national level to protect the health of consumers and of workers and their working environment."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <heading>
+            <t v="Definitions"/>
+         </heading>
+         <p>
+            <t v="For the purposes of this Directive, the following definitions shall apply:"/>
+         </p>
+         <list kind="definition">
+            <unit eId="art_2/pnt_1" kind="definition">
+               <num>
+                  <t v="1."/>
+               </num>
+               <heading>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Competent authority"/>
+                  </quote>
+               </heading>
+               <p>
+                  <t v="means the authority or authorities or bodies responsible under the legal provisions of the Member States for carrying out the obligations arising from this Directive;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_2" kind="definition">
+               <num>
+                  <t v="2."/>
+               </num>
+               <heading>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Substances"/>
+                  </quote>
+               </heading>
+               <p>
+                  <t v="means any chemical element and its compounds, as they occur in the natural state or as produced by industry, whether in solid or liquid or gaseous form;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_3" kind="definition">
+               <num>
+                  <t v="3."/>
+               </num>
+               <heading>
+                  <changed amendingAct="32008L0112"
+                           action="replaced"
+                           location="AR:6;PT:a"
+                           marker="O002001M001000">
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="Mixture"/>
+                     </quote>
+                  </changed>
+               </heading>
+               <p>
+                  <t v="means mixtures or solutions composed of two or more substances;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_4" kind="definition">
+               <num>
+                  <t v="4."/>
+               </num>
+               <heading>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Organic compound"/>
+                  </quote>
+               </heading>
+               <p>
+                  <t v="means any compound containing at least the element carbon and one or more of hydrogen, oxygen, sulphur, phosphorus, silicon, nitrogen, or a halogen, with the exception of carbon oxides and inorganic carbonates and bicarbonates;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_5" kind="definition">
+               <num>
+                  <t v="5."/>
+               </num>
+               <heading>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Volatile organic compound (VOC)"/>
+                  </quote>
+               </heading>
+               <p>
+                  <t v="means any organic compound having an initial boiling point less than or equal to 250°C measured at a standard pressure of 101,3 kPa;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_6" kind="definition">
+               <num>
+                  <t v="6."/>
+               </num>
+               <heading>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="VOC content"/>
+                  </quote>
+               </heading>
+               <p>
+                  <t v="means the mass of volatile organic compounds, expressed in grams/litre (g/l), in the formulation of the product in its ready to use condition. The mass of volatile organic compounds in a given product which react chemically during drying to form part of the coating shall not be considered part of the VOC content;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_7" kind="definition">
+               <num>
+                  <t v="7."/>
+               </num>
+               <heading>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Organic solvent"/>
+                  </quote>
+               </heading>
+               <p>
+                  <t v="means any VOC which is used alone or in combination with other agents to dissolve or dilute raw materials, products, or waste materials, or is used as a cleaning agent to dissolve contaminants, or as a dispersion medium, or as a viscosity adjuster, or as a surface tension adjuster, or as a plasticiser, or as a preservative;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_8" kind="definition">
+               <num>
+                  <t v="8."/>
+               </num>
+               <heading>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Coating"/>
+                  </quote>
+               </heading>
+               <p>
+                  <t v="means any "/>
+                  <changed amendingAct="32008L0112"
+                           action="replaced"
+                           location="AR:6;PT:b"
+                           marker="O002001M002001">
+                     <t v="mixture"/>
+                  </changed>
+                  <t v=", including all the organic solvents or "/>
+                  <changed amendingAct="32008L0112"
+                           action="replaced"
+                           location="AR:6;PT:b"
+                           marker="O002001M002002">
+                     <t v="mixture"/>
+                  </changed>
+                  <t v=" containing organic solvents necessary for its proper application, which is used to provide a film with decorative, protective or other functional effect on a surface;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_9" kind="definition">
+               <num>
+                  <t v="9."/>
+               </num>
+               <heading>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Film"/>
+                  </quote>
+               </heading>
+               <p>
+                  <t v="means a continuous layer resulting from the application of one or more coats to a substrate;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_10" kind="definition">
+               <num>
+                  <t v="10."/>
+               </num>
+               <heading>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Water-borne coatings (WB)"/>
+                  </quote>
+               </heading>
+               <p>
+                  <t v="means coatings the viscosity of which is adjusted by the use of water;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_11" kind="definition">
+               <num>
+                  <t v="11."/>
+               </num>
+               <heading>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Solvent-borne coatings (SB)"/>
+                  </quote>
+               </heading>
+               <p>
+                  <t v="means coatings the viscosity of which is adjusted by the use of organic solvent;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_12" kind="definition">
+               <num>
+                  <t v="12."/>
+               </num>
+               <heading>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Placing on the market"/>
+                  </quote>
+               </heading>
+               <p>
+                  <t v="means making available to third parties, whether in exchange for payment or not. Importation into the Community customs territory shall be deemed to be placing on the market for the purposes of this Directive."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <heading>
+            <t v="Requirements"/>
+         </heading>
+         <unit eId="art_3/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <unit eId="art_3/par_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="Member States shall ensure that the products set out in Annex I are placed on the market within their territory after the dates laid down in Annex II only if they have a VOC content not exceeding the limit values set out in Annex II and comply with Article 4."/>
+               </p>
+            </unit>
+            <unit eId="art_3/par_1/sub_2" kind="subparagraph">
+               <p>
+                  <t v="For determining compliance with the VOC content limit values set out in Annex II, the analytical methods referred to in Annex III shall be used."/>
+               </p>
+            </unit>
+            <unit eId="art_3/par_1/sub_3" kind="subparagraph">
+               <p>
+                  <t v="For products set out in Annex I to which solvents or other components containing solvents have to be added in order for the product to be ready for use, the limit values in Annex II shall apply to the VOC content of the product in its ready for use condition."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_3/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="By way of derogation from paragraph 1, Member States shall exempt from compliance with the above requirements products sold for exclusive use in an activity covered by Directive 1999/13/EC and carried out in a registered or authorised installation according to Articles 3 and 4 of that Directive."/>
+            </p>
+         </unit>
+         <unit eId="art_3/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="For the purposes of restoration and maintenance of buildings and vintage vehicles designated by competent authorities as being of particular historical and cultural value, Member States may grant individual licences for the sale and purchase in strictly limited quantities of products which do not meet the VOC limit values laid down in Annex II."/>
+            </p>
+         </unit>
+         <unit eId="art_3/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="Products falling under the scope of this Directive which are shown to be produced before the dates laid down in Annex II and do not fulfil the requirements of paragraph 1 may be placed on the market for a period of 12 months following the date on which the requirement applying to the product in question comes into force."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <heading>
+            <t v="Labelling"/>
+         </heading>
+         <p>
+            <t v="Member States shall ensure that the products set out in Annex I carry a label when they are placed on the market. The label shall indicate:"/>
+         </p>
+         <list kind="alpha">
+            <unit eId="art_4/pnt_a" kind="point">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <p>
+                  <t v="the subcategory of the product and the relevant VOC limit values in g/l as referred to in Annex II;"/>
+               </p>
+            </unit>
+            <unit eId="art_4/pnt_b" kind="point">
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <p>
+                  <t v="the maximum content of VOC in g/l of the product in a ready to use condition."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_5" kind="article">
+         <num>
+            <t v="Article 5"/>
+         </num>
+         <heading>
+            <t v="Competent authority"/>
+         </heading>
+         <p>
+            <t v="Member States shall designate a competent authority responsible for fulfilling the obligations laid down in this Directive, and shall inform the Commission thereof not later than 30 April 2005."/>
+         </p>
+      </unit>
+      <deleted>
+         <provenance amendingAct="32019R1020"
+                     action="deleted"
+                     location="CH:X;AR:38"
+                     marker="O005001M001000"/>
+         <unit eId="art_6" kind="article">
+            <num>
+               <t v="Article 6"/>
+            </num>
+            <heading>
+               <t v="Monitoring"/>
+            </heading>
+            <p>
+               <t v="Member States shall set up a monitoring programme for the purpose of verifying compliance with this Directive."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32019R1020"
+                     action="deleted"
+                     location="CH:X;AR:38"
+                     marker="O005001M001000"/>
+         <unit eId="art_7" kind="article">
+            <num>
+               <t v="Article 7"/>
+            </num>
+            <heading>
+               <t v="Reporting"/>
+            </heading>
+            <p>
+               <t v="Member States shall report the results of the monitoring programme to demonstrate compliance with the Directive and the categories and quantities of products licensed according to Article 3(3). The first two reports shall be submitted to the Commission 18 months after the dates for compliance with the VOC content limit values laid down in Annex II; subsequently a report shall be submitted every five years. The Commission shall develop in advance a common format for the submission of monitoring data in accordance with the procedure referred to in Article 12(2). Annual data shall be made available to the Commission upon request."/>
+            </p>
+         </unit>
+      </deleted>
+      <unit eId="art_8" kind="article">
+         <num>
+            <t v="Article 8"/>
+         </num>
+         <heading>
+            <t v="Free circulation"/>
+         </heading>
+         <p>
+            <t v="Member States shall not, on the grounds dealt with in this Directive, prohibit, restrict or prevent the placing on the market of products falling under the scope of this Directive which, in their ready for use condition, comply with the requirements of this Directive."/>
+         </p>
+      </unit>
+      <unit eId="art_9" kind="article">
+         <num>
+            <t v="Article 9"/>
+         </num>
+         <heading>
+            <t v="Review"/>
+         </heading>
+         <unit eId="art_9/unp_1" kind="paragraph">
+            <p>
+               <t v="The Commission is invited to submit to the European Parliament and the Council:"/>
+            </p>
+            <list kind="arabic">
+               <unit eId="art_9/unp_1/pnt_1" kind="point">
+                  <num>
+                     <t v="1."/>
+                  </num>
+                  <p>
+                     <t v="by 2008 at the latest, a report based on the results of the review referred to in Article 10 of Directive 2001/81/EC. This report shall examine:"/>
+                  </p>
+                  <list kind="alpha">
+                     <unit eId="art_9/unp_1/pnt_1/pnt_a" kind="point">
+                        <num>
+                           <t v="(a)"/>
+                        </num>
+                        <p>
+                           <t v="the broad scope and potential for making reductions in the VOC content of products outside the scope of this Directive including aerosols for paints and varnishes;"/>
+                        </p>
+                     </unit>
+                     <unit eId="art_9/unp_1/pnt_1/pnt_b" kind="point">
+                        <num>
+                           <t v="(b)"/>
+                        </num>
+                        <p>
+                           <t v="the possible introduction of a further (phase II) reduction in the VOC content of vehicle refinishing products;"/>
+                        </p>
+                     </unit>
+                     <unit eId="art_9/unp_1/pnt_1/pnt_c" kind="point">
+                        <num>
+                           <t v="(c)"/>
+                        </num>
+                        <p>
+                           <t v="any new element relating to the socio-economic impact of the application of phase II as foreseen for paints and varnishes;"/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="art_9/unp_1/pnt_2" kind="point">
+                  <num>
+                     <t v="2."/>
+                  </num>
+                  <p>
+                     <t v="at the latest 30 months after the date of implementation of the VOC content limit values of Annex II phase II, a report taking account, in particular, of the reports referred to in Article 7 and of any technological developments in the manufacture of paints, varnishes and vehicle refinishing products. This report shall examine the broad scope and potential for making further reductions in VOC content of products inside the scope of this Directive, including the possible distinction between paints used for interiors and exteriors in subcategories (d) and (e) of Annex I, point 1.1. and Annex II, section A."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_9/unp_2" kind="paragraph">
+            <p>
+               <t v="These reports shall be accompanied, if appropriate, by proposals to amend this Directive."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_10" kind="article">
+         <num>
+            <t v="Article 10"/>
+         </num>
+         <heading>
+            <t v="Penalties"/>
+         </heading>
+         <p>
+            <t v="Member States shall lay down the rules on penalties applicable to infringements of the national provisions adopted pursuant to this Directive and shall take the necessary measures to ensure that they are implemented. The penalties provided for must be effective, proportionate and dissuasive. Member States shall notify those rules and measures to the Commission by 30 October 2005 at the latest, and shall notify it without delay of any subsequent amendment affecting them."/>
+         </p>
+      </unit>
+      <unit eId="art_11" kind="article">
+         <provenance amendingAct="32019R1243"
+                     action="replaced"
+                     location="AR:1 .AND. AX:0;PT:V;PT:3;PT:1"
+                     marker="O004001M001000"/>
+         <num>
+            <t v="Article 11"/>
+         </num>
+         <heading>
+            <t v="Adaptation to technical progress"/>
+         </heading>
+         <p>
+            <t v="The Commission is empowered to adopt delegated acts in accordance with Article 11a amending Annex III to adapt it to technical progress."/>
+         </p>
+      </unit>
+      <unit eId="art_11a" kind="article">
+         <provenance amendingAct="32019R1243"
+                     action="inserted"
+                     location="AR:1 .AND. AX:0;PT:V;PT:3;PT:2"
+                     marker="O004001M002000"/>
+         <num>
+            <t v="Article 11a"/>
+         </num>
+         <heading>
+            <t v="Exercise of the delegation"/>
+         </heading>
+         <unit eId="art_11a/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="The power to adopt delegated acts is conferred on the Commission subject to the conditions laid down in this Article."/>
+            </p>
+         </unit>
+         <unit eId="art_11a/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="The power to adopt delegated acts referred to in Article 11 shall be conferred on the Commission for a period of five years from "/>
+               <date asWritten="26 July 2019" date="2019-07-26"/>
+               <t v=". The Commission shall draw up a report in respect of the delegation of power not later than nine months before the end of the five-year period. The delegation of power shall be tacitly extended for periods of an identical duration, unless the European Parliament or the Council opposes such extension not later than three months before the end of each period."/>
+            </p>
+         </unit>
+         <unit eId="art_11a/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="The delegation of power referred to in Article 11 may be revoked at any time by the European Parliament or by the Council. A decision to revoke shall put an end to the delegation of the power specified in that decision. It shall take effect the day following the publication of the decision in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <t v=" or at a later date specified therein. It shall not affect the validity of any delegated acts already in force."/>
+            </p>
+         </unit>
+         <unit eId="art_11a/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="Before adopting a delegated act, the Commission shall consult experts designated by each Member State in accordance with the principles laid down in the Interinstitutional Agreement of "/>
+               <date asWritten="13 April 2016" date="2016-04-13"/>
+               <t v=" on Better Law-Making"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_11a/par_5" kind="paragraph">
+            <num>
+               <t v="5."/>
+            </num>
+            <p>
+               <t v="As soon as it adopts a delegated act, the Commission shall notify it simultaneously to the European Parliament and to the Council."/>
+            </p>
+         </unit>
+         <unit eId="art_11a/par_6" kind="paragraph">
+            <num>
+               <t v="6."/>
+            </num>
+            <p>
+               <t v="A delegated act adopted pursuant to Article 11 shall enter into force only if no objection has been expressed either by the European Parliament or the Council within a period of two months of notification of that act to the European Parliament and the Council or if, before the expiry of that period, the European Parliament and the Council have both informed the Commission that they will not object. That period shall be extended by two months at the initiative of the European Parliament or of the Council."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_12" kind="article">
+         <num>
+            <t v="Article 12"/>
+         </num>
+         <heading>
+            <t v="Committee"/>
+         </heading>
+         <unit eId="art_12/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="The Commission shall be assisted by the committee established by Article 13 of Council Directive 1999/13/EC, hereinafter referred to as "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the Committee"/>
+               </quote>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_12/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <unit eId="art_12/par_2/sub_1" kind="subparagraph">
+               <p>
+                  <t v="Where reference is made to this paragraph Articles 5 and 7 of Decision 1999/468/EC shall apply, having regard to the provisions of Article 8 thereof."/>
+               </p>
+            </unit>
+            <unit eId="art_12/par_2/sub_2" kind="subparagraph">
+               <p>
+                  <t v="The period laid down in Article 5(6) of Decision 1999/468/EC shall be set at three months."/>
+               </p>
+            </unit>
+         </unit>
+         <deleted>
+            <provenance amendingAct="32019R1243"
+                        action="deleted"
+                        location="AR:1 .AND. AX:0;PT:V;PT:3;PT:3"
+                        marker="O004001M003000"/>
+            <unit eId="art_12/par_3" kind="paragraph">
+               <provenance amendingAct="32008R1137"
+                           action="replaced"
+                           location="AR:1 .AND. AX:0;PT:4;PT:11;PT:2"
+                           marker="O001001M002000"/>
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="Where reference is made to this paragraph, Article 5a(1) to (4) and Article 7 of Decision 1999/468/EC shall apply, having regard to the provisions of Article 8 thereof."/>
+               </p>
+            </unit>
+         </deleted>
+      </unit>
+      <unit eId="art_13" kind="article">
+         <num>
+            <t v="Article 13"/>
+         </num>
+         <heading>
+            <t v="Amendment of Directive 1999/13/EC"/>
+         </heading>
+         <unit eId="art_13/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <unit eId="art_13/par_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="Directive 1999/13/EC is hereby amended as follows:"/>
+               </p>
+            </unit>
+            <unit eId="art_13/par_1/sub_2" kind="subparagraph">
+               <p>
+                  <t v="in Annex I, in the section entitled "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Vehicle refinishing"/>
+                  </quote>
+                  <t v=", the following indent shall be deleted:"/>
+               </p>
+               <quotedStructure eId="art_13/par_1/sub_2/qst_1">
+                  <list kind="dash">
+                     <unit eId="art_13/par_1/sub_2/qst_1/idt_1" kind="point">
+                        <num>
+                           <t v="‘"/>
+                           <t v="—"/>
+                        </num>
+                        <p>
+                           <t v="the coating of road vehicles as defined in Directive 70/156/EEC, or part of them, carried out as part of vehicle repair, conservation or decoration outside of manufacturing installations, or"/>
+                           <t v="’"/>
+                           <t v="."/>
+                        </p>
+                     </unit>
+                  </list>
+               </quotedStructure>
+            </unit>
+         </unit>
+         <unit eId="art_13/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="Notwithstanding paragraph 1, Member States may maintain or introduce national measures for the control of emissions from vehicle-refinishing activities deleted from the scope of Directive 1999/13/EC."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_14" kind="article">
+         <num>
+            <t v="Article 14"/>
+         </num>
+         <heading>
+            <t v="Transposition"/>
+         </heading>
+         <unit eId="art_14/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <unit eId="art_14/par_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with this Directive by 30 October 2005 at the latest, and shall immediately inform the Commission thereof."/>
+               </p>
+            </unit>
+            <unit eId="art_14/par_1/sub_2" kind="subparagraph">
+               <p>
+                  <t v="When Member States adopt those provisions, they shall contain a reference to this Directive or be accompanied by such a reference on the occasion of their official publication. Member States shall determine how such reference is to be made."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_14/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="Member States shall communicate to the Commission the text of the provisions of national law which they adopt in the field covered by this Directive, together with a table showing how the provisions of this Directive correspond to the national provisions adopted."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_15" kind="article">
+         <num>
+            <t v="Article 15"/>
+         </num>
+         <heading>
+            <t v="Entry into force of the Directive"/>
+         </heading>
+         <p>
+            <t v="This Directive shall enter into force on the day of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+      <unit eId="art_16" kind="article">
+         <num>
+            <t v="Article 16"/>
+         </num>
+         <heading>
+            <t v="Addressees"/>
+         </heading>
+         <p>
+            <t v="This Directive is addressed to the Member States."/>
+         </p>
+      </unit>
+   </body>
+   <annexes>
+      <unit eId="anx_I" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX I"/>
+         </num>
+         <subheading>
+            <t v="SCOPE"/>
+         </subheading>
+         <unit eId="anx_I/pnt_1" kind="level" depth="1">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="For the purposes of this Directive, paints and varnishes means products listed in the subcategories below, excluding aerosols. They are coatings applied to buildings, their trim and fittings, and associated structures for decorative, functional and protective purpose."/>
+            </p>
+         </unit>
+         <unit eId="anx_I/pnt_1.1" kind="level" depth="2">
+            <num>
+               <t v="1.1."/>
+            </num>
+            <p>
+               <t v="Subcategories:"/>
+            </p>
+            <list kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_a" kind="definition">
+                  <num>
+                     <t v="a)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="matt coatings for interior walls and ceilings"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means coatings designed for application to indoor walls and ceilings with a degree of gloss ≤ 25@60°."/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_1.1/pnt_b" kind="definition">
+                  <num>
+                     <t v="b)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="glossy coatings for interior walls and ceilings"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means coatings designed for application to indoor walls and ceilings with a degree of gloss &gt; 25@60°."/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_1.1/pnt_c" kind="definition">
+                  <num>
+                     <t v="c)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="coatings for exterior walls of mineral substrate"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means coatings designed for application to outdoor walls of masonry, brick or stucco;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_1.1/pnt_d" kind="definition">
+                  <num>
+                     <t v="d)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="interior/exterior trim and cladding paints for wood, metal or plastic"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means coatings designed for application to trim and cladding which produce an opaque film. These coatings are designed for either a wood, metal or a plastic substrate. This subcategory includes undercoats and intermediate coatings;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_1.1/pnt_e" kind="definition">
+                  <num>
+                     <t v="e)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="interior/exterior trim varnishes and woodstains"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means coatings designed for application to trim which produce a transparent or semi-transparent film for decoration and protection of wood, metal and plastics. This subcategory includes opaque woodstains. Opaque woodstains means coatings producing an opaque film for the decoration and protection of wood, against weathering, as defined in EN 927-1, within the semi-stable category;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_1.1/pnt_f" kind="definition">
+                  <num>
+                     <t v="f)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="minimal build woodstains"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means woodstains which, in accordance with EN 927-1:1996, have a mean thickness of less than 5μm when tested according to ISO 2808: 1997, method 5A;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_1.1/pnt_g" kind="definition">
+                  <num>
+                     <t v="g)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="primers"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means coatings with sealing and/or blocking properties designed for use on wood or walls and ceilings;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_1.1/pnt_h" kind="definition">
+                  <num>
+                     <t v="h)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="binding primers"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means coatings designed to stabilise loose substrate particles or impart hydrophobic properties and/or to protect wood against blue stain;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_1.1/pnt_i" kind="definition">
+                  <num>
+                     <t v="i)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="one-pack performance coatings"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means performance coatings based on film-forming material. They are designed for applications requiring a special performance, such as primer and topcoats for plastics, primer coat for ferrous substrates, primer coat for reactive metals such as zinc and aluminium, anticorrosion finishes, floor coatings, including for wood and cement floors, graffiti resistance, flame retardant, and hygiene standards in the food or drink industry or health services;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_1.1/pnt_j" kind="definition">
+                  <num>
+                     <t v="j)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="two-pack performance coatings"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means coatings with the same use as one-performance coatings, but with a second component (e.g. tertiary amines) added prior to application;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_1.1/pnt_k" kind="definition">
+                  <num>
+                     <t v="k)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="multicoloured coatings"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means coatings designed to give a two-tone or multiple-colour effect, directly from the primary application;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_1.1/pnt_l" kind="definition">
+                  <num>
+                     <t v="l)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="decorative effect coatings"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means coatings designed to give special aesthetic effects over specially prepared pre-painted substrates or base coats and subsequently treated with various tools during the drying period."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="anx_I/pnt_2" kind="level" depth="1">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="For the purposes of this Directive, "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="vehicle refinishing products"/>
+               </quote>
+               <t v=" means products listed in the subcategories below. They are used for the coating of road vehicles as defined in Directive 70/156/EEC, or part of them, carried out as part of vehicle repair, conservation or decoration outside of manufacturing installations."/>
+            </p>
+         </unit>
+         <unit eId="anx_I/pnt_2.1" kind="level" depth="2">
+            <num>
+               <t v="2.1."/>
+            </num>
+            <p>
+               <t v="Subcategories:"/>
+            </p>
+            <list kind="definition">
+               <unit eId="anx_I/pnt_2.1/pnt_a" kind="definition">
+                  <num>
+                     <t v="a)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="preparatory and cleaning"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means products designed to remove old coatings and rust, either mechanically or chemically, or to provide a key for new coatings:"/>
+                  </p>
+                  <list kind="roman">
+                     <unit eId="anx_I/pnt_2.1/pnt_a/pnt_i" kind="point">
+                        <num>
+                           <t v="(i)"/>
+                        </num>
+                        <p>
+                           <t v="preparatory products include gunwash (a product designed for cleaning spray-guns and other equipment), paint strippers, degreasers (including anti-static types for plastic) and silicone removers;"/>
+                        </p>
+                     </unit>
+                     <unit eId="anx_I/pnt_2.1/pnt_a/pnt_ii" kind="point">
+                        <num>
+                           <t v="(ii)"/>
+                        </num>
+                        <p>
+                           <quote startQuote="‘" endQuote="’">
+                              <t v="precleaner"/>
+                           </quote>
+                           <t v=" means a cleaning product designed for the removal of surface contamination during preparation for and prior to the application of coating materials;"/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="anx_I/pnt_2.1/pnt_b" kind="definition">
+                  <num>
+                     <t v="b)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="Bodyfiller/stopper"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means heavy-bodied compounds designed to be applied to fill deep surface imperfections prior to the application of the surfacer/filler;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_I/pnt_2.1/pnt_c" kind="definition">
+                  <num>
+                     <t v="c)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="primer"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means any coating that is designed for application to bare metal or existing finishes to provide corrosion protection prior to application of a primer surfacer:"/>
+                  </p>
+                  <list kind="roman">
+                     <unit eId="anx_I/pnt_2.1/pnt_c/pnt_i" kind="point">
+                        <num>
+                           <t v="(i)"/>
+                        </num>
+                        <p>
+                           <quote startQuote="‘" endQuote="’">
+                              <t v="surfacer/filler"/>
+                           </quote>
+                           <t v=" means a coating designed for application immediately prior to the application of topcoat for the purpose of corrosion resistance, to ensure adhesion of the topcoat, and to promote the formation of a uniform surface finish by filling in minor surface imperfections;"/>
+                        </p>
+                     </unit>
+                     <unit eId="anx_I/pnt_2.1/pnt_c/pnt_ii" kind="point">
+                        <num>
+                           <t v="(ii)"/>
+                        </num>
+                        <p>
+                           <quote startQuote="‘" endQuote="’">
+                              <t v="general metal primer"/>
+                           </quote>
+                           <t v=" means a coating designed for application as primers, such as adhesion promoters, sealers, surfacers, undercoats, plastic primers, wet-on-wet, non-sand fillers and spray fillers;"/>
+                        </p>
+                     </unit>
+                     <unit eId="anx_I/pnt_2.1/pnt_c/pnt_iii" kind="point">
+                        <num>
+                           <t v="(iii)"/>
+                        </num>
+                        <p>
+                           <quote startQuote="‘" endQuote="’">
+                              <t v="wash primer"/>
+                           </quote>
+                           <t v=" means coatings containing at least 0,5 % by weight of phosphoric acid designed to be applied directly to bare metal surfaces to provide corrosion resistance and adhesion; coatings used as weldable primers; and mordant solutions for galvanised and zinc surfaces;"/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="anx_I/pnt_2.1/pnt_d" kind="definition">
+                  <num>
+                     <t v="d)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="topcoat"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means any pigmented coating that is designed to be applied either as a single-layer or as a multiple-layer base to provide gloss and durability. It includes all products involved such as base coatings and clear coatings:"/>
+                  </p>
+                  <list kind="roman">
+                     <unit eId="anx_I/pnt_2.1/pnt_d/pnt_i" kind="point">
+                        <num>
+                           <t v="(i)"/>
+                        </num>
+                        <p>
+                           <quote startQuote="‘" endQuote="’">
+                              <t v="base coatings"/>
+                           </quote>
+                           <t v=" means pigmented coatings designed to provide colour and any desired optical effects, but not the gloss or surface resistance of the coating system;"/>
+                        </p>
+                     </unit>
+                     <unit eId="anx_I/pnt_2.1/pnt_d/pnt_ii" kind="point">
+                        <num>
+                           <t v="(ii)"/>
+                        </num>
+                        <p>
+                           <quote startQuote="‘" endQuote="’">
+                              <t v="clear coating"/>
+                           </quote>
+                           <t v=" means a transparent coating designed to provide the final gloss and resistance properties of the coating system;"/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="anx_I/pnt_2.1/pnt_e" kind="definition">
+                  <num>
+                     <t v="e)"/>
+                  </num>
+                  <heading>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="special finishes"/>
+                     </quote>
+                  </heading>
+                  <p>
+                     <t v="means coatings designed for application as topcoats requiring special properties, such as metallic or pearl effect, in a single layer, high-performance solid-colour and clear coats, (e.g. anti-scratch and fluorinated clear- coat), reflective base coat, texture finishes (e.g. hammer), anti-slip, under-body sealers, anti-chip coatings, interior finishes; and aerosols."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </unit>
+      <unit eId="anx_II" kind="annex" eurlexAnchor="2">
+         <num>
+            <t v="ANNEX II"/>
+         </num>
+         <tableGroup>
+            <table cols="5">
+               <caption>
+                  <p>
+                     <num>
+                        <t v="A."/>
+                     </num>
+                     <t v="MAXIMUM VOC CONTENT LIMIT VALUES FOR PAINTS AND VARNISHES"/>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td header="true"/>
+                  <td header="true">
+                     <p>
+                        <t v="Product Subcategory"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Type"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Phase I (g/l"/>
+                        <noteRef href="#note_2" marker="*"/>
+                        <t v=")"/>
+                     </p>
+                     <p>
+                        <t v="(from "/>
+                        <date asWritten="1.1.2007" date="2007-01-01"/>
+                        <t v=")"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Phase II (g/l"/>
+                        <noteRef href="#note_2" marker="*"/>
+                        <t v=")"/>
+                     </p>
+                     <p>
+                        <t v="(from 1.1.2010)"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="a"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Interior matt walls and ceilings (Gloss &lt; 25@60°)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="75"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="30"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="400"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="30"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="b"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Interior glossy walls and ceilings (Gloss &gt; 25@60°)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="150"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="100"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="400"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="100"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="c"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Exterior walls of mineral substrate"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="75"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="40"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="450"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="430"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="d"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Interior/exterior trim and cladding paints for wood and metal"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="150"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="130"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="400"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="300"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="e"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Interior/exterior trim varnishes and woodstains, including opaque woodstains"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="150"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="130"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="500"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="400"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="f"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Interior and exterior minimal build woodstains"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="150"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="130"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="700"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="700"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="g"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Primers"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="50"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="30"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="450"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="350"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="h"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Binding primers"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="50"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="30"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="750"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="750"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="i"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="One-pack performance coatings"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="140"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="140"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="600"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="500"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="j"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Two-pack reactive performance coatings for specific end use such as floors"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="140"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="140"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="550"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="500"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="k"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Multi-coloured coatings"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="150"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="100"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="400"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="100"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="l"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Decorative effect coatings"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="WB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="300"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="200"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SB"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="500"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="200"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <table cols="4">
+               <caption>
+                  <p>
+                     <num>
+                        <t v="B."/>
+                     </num>
+                     <t v="MAXIMUM VOC CONTENT LIMIT VALUES FOR VEHICLE REFINISHING PRODUCTS"/>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td header="true"/>
+                  <td header="true">
+                     <p>
+                        <t v="Product Subcategory"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Coatings"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="VOC g/l"/>
+                        <noteRef href="#note_3" marker="*"/>
+                     </p>
+                     <p>
+                        <t v="(1.1.2007)"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="a"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Preparatory and cleaning"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Preparatory"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="850"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Pre-cleaner"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="200"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="b"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Bodyfiller/stopper"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="All types"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="250"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="c"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Primer"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Surfacer/filler and general (metal) primer"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="540"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Wash primer"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="780"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="d"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Topcoat"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="All types"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="420"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="e"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Special finishes"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="All types"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="840"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </tableGroup>
+      </unit>
+      <unit eId="anx_III" kind="annex" eurlexAnchor="3">
+         <provenance amendingAct="32010L0079"
+                     action="replaced"
+                     location="AR:1 .AND. AX:0"
+                     marker="O003001M001000"/>
+         <num>
+            <t v="ANNEX III"/>
+         </num>
+         <unit eId="anx_III/lvl_1" kind="level" depth="1">
+            <heading>
+               <emphasis kind="b">
+                  <t v="METHODS REFERRED TO IN ARTICLE 3(1)"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="Permitted method for products with VOC content below 15 % by mass where reactive diluents are not present:"/>
+            </p>
+            <table cols="4">
+               <tr header="true">
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Parameter"/>
+                     </p>
+                  </td>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Unit"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Test"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Method"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Date of publication"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="VOC content"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="g/l"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="ISO 11890-2"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2006"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <p>
+               <t v="Permitted methods for products with VOC content equal to or greater than 15 % by mass where reactive diluents are not present:"/>
+            </p>
+            <table cols="4">
+               <tr header="true">
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Parameter"/>
+                     </p>
+                  </td>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Unit"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Test"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Method"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Date of publication"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="VOC content"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="g/l"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="ISO 11890-1"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2007"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="VOC content"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="g/l"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="ISO 11890-2"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2006"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <p>
+               <t v="Permitted method for products with VOC content where reactive diluents are present:"/>
+            </p>
+            <table cols="4">
+               <tr header="true">
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Parameter"/>
+                     </p>
+                  </td>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Unit"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Test"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Method"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Date of publication"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="VOC content"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="g/l"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="ASTMD 2369"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2003"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="123"
+                 date="2016-05-12"
+                 page="1">
+               <t v="OJ L 123, 12.5.2016, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="*" kind="table">
+         <p>
+            <t v="g/l ready to use"/>
+         </p>
+      </note>
+      <note eId="note_3" marker="*" kind="table">
+         <p>
+            <t v="g/l of ready for use product. Except for subcategory (a) any water content of the product ready for use should be discounted."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

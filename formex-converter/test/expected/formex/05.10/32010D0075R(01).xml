@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32010D0075R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.10"
+           converter="1.0.0">
+   <source celex="32010D0075R(01)">
+      <publication series="L" number="41" date="2010-02-16" page="75"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Commission Decision 2010/75/EU of "/>
+            <date asWritten="5 February 2010" date="2010-02-05"/>
+            <t v=" concerning a financial contribution from the Union towards a coordinated monitoring programme on the prevalence of "/>
+            <emphasis kind="i">
+               <t v="Listeria monocytogenes"/>
+            </emphasis>
+            <t v=" in certain ready-to-eat foods to be carried out in the Member States"/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="("/>
+               <ref kind="oj" series="L" number="37" date="2010-02-10">
+                  <t v="Official Journal of the European Union L 37 of 10 February 2010"/>
+               </ref>
+               <t v=")"/>
+            </emphasis>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="The publication of Decision 2010/75/EU should be considered as null and void."/>
+         </p>
+      </unit>
+   </body>
+</legalText>
+

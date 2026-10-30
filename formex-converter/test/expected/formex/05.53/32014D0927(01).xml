@@ -1,0 +1,1767 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32014D0927(01)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.53"
+           converter="1.0.0">
+   <source celex="32014D0927(01)">
+      <publication series="C"
+                   number="338"
+                   date="2014-09-27"
+                   page="21"
+                   document="2014/C 338/03"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="25 September 2014" date="2014-09-25"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="appointing the members and alternate members of the Advisory Committee on Freedom of Movement for Workers"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Regulation (EU) No 492/2011 of the European Parliament and of the Council of "/>
+               <date asWritten="5 April 2011" date="2011-04-05"/>
+               <t v=" on freedom of movement for workers within the Union"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Articles 23 and 24 thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to the lists of candidates submitted to the Council by the Governments of the Member States,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="By its Decisions of "/>
+               <date asWritten="4 October 2012" date="2012-10-04"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" and "/>
+               <date asWritten="20 November 2012" date="2012-11-20"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=", the Council appointed the members and alternate members of the Advisory Committee on Freedom of Movement for Workers (the "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Committee"/>
+               </quote>
+               <t v=") for the period from "/>
+               <date asWritten="25 September 2012" date="2012-09-25"/>
+               <t v=" to "/>
+               <date asWritten="24 September 2014" date="2014-09-24"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The members remain in office until they are replaced or reappointed."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Members and alternate members of the Committee should be appointed for a period of two years,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The following are hereby appointed as members and alternate members of the Advisory Committee on Freedom of Movement for Workers for the period from "/>
+            <date asWritten="25 September 2014" date="2014-09-25"/>
+            <t v=" to "/>
+            <date asWritten="24 September 2016" date="2016-09-24"/>
+            <t v=":"/>
+         </p>
+         <tableGroup>
+            <table cols="3">
+               <caption>
+                  <p>
+                     <num>
+                        <t v="I."/>
+                     </num>
+                     <t v="GOVERNMENT REPRESENTATIVES"/>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Country"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Members"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Alternates"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Belgium"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Gylvie GUELLUY"/>
+                     </p>
+                     <p>
+                        <t v="Mr Jacques OUZIEL"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Thierry LHOIR"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Bulgaria"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Hristo SIMEONOV"/>
+                     </p>
+                     <p>
+                        <t v="Ms Tatiana GUEORGUIEVA"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Dimitrina KOSTADINOVA"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Czech Republic"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Kateřina ŠTĚPÁNKOVÁ"/>
+                     </p>
+                     <p>
+                        <t v="Ms Eva DIANIŠKOVÁ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Eva NOVÁKOVÁ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Denmark"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Stig Hansen NØRGAARD"/>
+                     </p>
+                     <p>
+                        <t v="Ms Rikke Mark SEERUP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Simone HEINECKE"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Germany"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Vera BADE"/>
+                     </p>
+                     <p>
+                        <t v="Mr Johannes RASCHKA"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Anne Katrin LUTZ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Estonia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Marit RAIST"/>
+                     </p>
+                     <p>
+                        <t v="Ms Liis REITER"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Kristi SUUR"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Ireland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Mary Joan KEHOE"/>
+                     </p>
+                     <p>
+                        <t v="Mr Anthony MORRISSEY"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Aedin DOYLE"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Greece"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Croatia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Marija KNEŽEVIĆ KAJARI"/>
+                     </p>
+                     <p>
+                        <t v="Ms Ivana GUBEROVIĆ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Aleksandra GAVRILOVIĆ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Spain"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Paloma MARTÍNEZ GAMO"/>
+                     </p>
+                     <p>
+                        <t v="Mr Miguel COLINA ROBLEDO"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Rosalía SERRANO VELASCO"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="France"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Magali MARTIN"/>
+                     </p>
+                     <p>
+                        <t v="Mr Albert MARTINO"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Laurent FRIBOULET"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Italy"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Cyprus"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Latvia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Ilze ZVĪDRIŅA"/>
+                     </p>
+                     <p>
+                        <t v="Mr Kristaps ZIEDIŅŠ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Linda PAUGA"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Lithuania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Rasa MALAIŠKIENĖ"/>
+                     </p>
+                     <p>
+                        <t v="Ms Agnė PECIUKEVIČIENĖ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Inga LIUBERTĖ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Luxembourg"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Hungary"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Malta"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Mario SCHEMBRI"/>
+                     </p>
+                     <p>
+                        <t v="Mr Nicola CINI"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr George CAMILLERI"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Netherlands"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Onno BRINKMAN"/>
+                     </p>
+                     <p>
+                        <t v="Ms Cristel van TILBURG"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Mark JACOBS"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Austria"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Heinz KUTROWATZ"/>
+                     </p>
+                     <p>
+                        <t v="Ms Martha ROJAS-PINEDA"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Günter STICKLER"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Poland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Magdalena SWEKLEJ"/>
+                     </p>
+                     <p>
+                        <t v="Mr Marcin WIATRÓW"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Agnieszka ZDAK"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Portugal"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Romania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Auraş MARINESCU"/>
+                     </p>
+                     <p>
+                        <t v="Ms Simona ŞTEFAN"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Bogdan-Tiberius PAŞCA"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Slovenia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Sonja MALEC"/>
+                     </p>
+                     <p>
+                        <t v="Mr Grega MALEC"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Mateja GOLJA"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Slovakia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Zuzana KRCHŇAVÁ"/>
+                     </p>
+                     <p>
+                        <t v="Mr Jaroslav KOVÁČ"/>
+                     </p>
+                  </td>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Finland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Katri NISKANEN"/>
+                     </p>
+                     <p>
+                        <t v="Mr Olli SORAINEN"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Elina HIRTTIÖ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Sweden"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Maria NORDIN SKULT"/>
+                     </p>
+                     <p>
+                        <t v="Ms Madeleine ÖHBERG"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Kristina EKBERG"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="United Kingdom"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Janina CIECIORA"/>
+                     </p>
+                     <p>
+                        <t v="Ms Deborah MORRISON"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Jonathan PIGGINS"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <table cols="3">
+               <caption>
+                  <p>
+                     <num>
+                        <t v="II."/>
+                     </num>
+                     <t v="TRADE UNION REPRESENTATIVES"/>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Country"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Members"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Alternates"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Belgium"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Koen MEESTERS"/>
+                     </p>
+                     <p>
+                        <t v="Ms Hanne SANDERS"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Jean-François MACOURS"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Bulgaria"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Atanaska TODOROVA"/>
+                     </p>
+                     <p>
+                        <t v="Mr Daniel YANEV"/>
+                     </p>
+                  </td>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Czech Republic"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Vít SAMEK"/>
+                     </p>
+                     <p>
+                        <t v="Mr Pavel JANÍČKO"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Petr ŠULC"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Denmark"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Jørgen Rønnow BRUUN"/>
+                     </p>
+                     <p>
+                        <t v="Ms Helle Hjort BENTZ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Käthe Munk RYOM"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Germany"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Alexandra KRAMER"/>
+                     </p>
+                     <p>
+                        <t v="Ms Ina HINZER"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Thomas BEMMANN"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Estonia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Mare VIIES"/>
+                     </p>
+                     <p>
+                        <t v="Ms Liina CARR"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Aija MAASIKAS"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Ireland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Esther LYNCH"/>
+                     </p>
+                     <p>
+                        <t v="Mr John DOUGLAS"/>
+                     </p>
+                  </td>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Greece"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Croatia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Ana KRANJAC JULARIĆ"/>
+                     </p>
+                     <p>
+                        <t v="Mr David Jakov BABIĆ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Ana MILIĆEVIĆ PEZELJ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Spain"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Ana María CORRAL JUAN"/>
+                     </p>
+                     <p>
+                        <t v="Mr Francisco GONZÁLEZ MORENO"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Jose Antonio MORENO DÍAZ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="France"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Francine BLANCHE"/>
+                     </p>
+                     <p>
+                        <t v="Ms Corinne MARES"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Ommar BENFAID"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Italy"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Cyprus"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Latvia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Natalja MICKEVIČA"/>
+                     </p>
+                     <p>
+                        <t v="Mr Kaspars RĀCENĀJS"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Mārtiņš SVIRSKIS"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Lithuania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Janina ŠVEDIENĖ"/>
+                     </p>
+                     <p>
+                        <t v="Ms Janina MATUIZIENĖ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Ričardas GARUOLIS"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Luxembourg"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Hungary"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Malta"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Ian Mark ZAMMIT"/>
+                     </p>
+                     <p>
+                        <t v="Mr Jeremy J CAMILLERI"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Paul PACE"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Netherlands"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Caroline RIETBERGEN"/>
+                     </p>
+                     <p>
+                        <t v="Mr Martijn HORDIJK"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Henk BOSSCHER"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Austria"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Johannes PEYRL"/>
+                     </p>
+                     <p>
+                        <t v="Mr Oliver RÖPKE"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Lena KARASZ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Poland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Jakub KUS"/>
+                     </p>
+                     <p>
+                        <t v="Ms Krystyna CIEMNIAK"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Bogdan OLSZEWSKI"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Portugal"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Romania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Corneliu CONSTANTINOAIA"/>
+                     </p>
+                     <p>
+                        <t v="Mr Liviu APOSTOIU"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Dragos FRUMOSU"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Slovenia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Marko TANASIČ"/>
+                     </p>
+                     <p>
+                        <t v="Mr Jakob POČIVAVŠEK"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Nadja GÖTZ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Slovakia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Vlasta SZABOVÁ"/>
+                     </p>
+                     <p>
+                        <t v="Ms Zdena DVORANOVÁ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Mária SVOREŇOVÁ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Finland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Eve KYNTÄJÄ"/>
+                     </p>
+                     <p>
+                        <t v="Mr Heikki TAULU"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Ralf SUND"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Sweden"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Thord INGESSON"/>
+                     </p>
+                     <p>
+                        <t v="Ms Josefin EDSTRÖM"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Sofia RÅSMAR"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="United Kingdom"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Rosa CRAWFORD"/>
+                     </p>
+                     <p>
+                        <t v="Mr Mohammed TAJ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Wilf SULLIVAN"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <table cols="3">
+               <caption>
+                  <p>
+                     <num>
+                        <t v="III."/>
+                     </num>
+                     <t v="EMPLOYERS' ASSOCIATIONS REPRESENTATIVES"/>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Country"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Members"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Alternates"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Belgium"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Michèle CLAUS"/>
+                     </p>
+                     <p>
+                        <t v="Ms Hilde THYS"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Monica DE JONGHE"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Bulgaria"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Ivan ZAHARIEV"/>
+                     </p>
+                     <p>
+                        <t v="Mr Martin STOYANOV"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Daniela SIMIDCHIEVA"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Czech Republic"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Vladimíra DRBALOVÁ"/>
+                     </p>
+                     <p>
+                        <t v="Ms Marie ZVOLSKÁ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Jitka HLAVÁČKOVÁ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Denmark"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Henning GADE"/>
+                     </p>
+                     <p>
+                        <t v="Mr Flemming DREESEN"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Karen ROIY"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Germany"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Alexander WILHELM"/>
+                     </p>
+                     <p>
+                        <t v="Ms Christina BREIT"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Carmen Eugenia BÂRSAN"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Estonia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Piia SIMMERMANN"/>
+                     </p>
+                     <p>
+                        <t v="Ms Katrin TRUVE"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Mare HIIESALU"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Ireland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Tony DONOHOE"/>
+                     </p>
+                     <p>
+                        <t v="Ms Kara McGANN"/>
+                     </p>
+                  </td>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Greece"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Croatia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Milica JOVANOVIĆ"/>
+                     </p>
+                     <p>
+                        <t v="Ms Milka KOSANOVIĆ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Nataša NOVAKOVIĆ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Spain"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Helena MORALES DE LABRA"/>
+                     </p>
+                     <p>
+                        <t v="Ms Patricia CIREZ MIQUELEIZ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Luis MÉNDEZ LÓPEZ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="France"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Garance PINEAU"/>
+                     </p>
+                     <p>
+                        <t v="Ms Natacha MARQUET"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Pascale DESSEN"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Italy"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Cyprus"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Latvia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Anita LĪCE"/>
+                     </p>
+                     <p>
+                        <t v="Ms Ilona KIUKUCĀNE"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Jolanta VJAKSE"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Lithuania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Justinas USONIS"/>
+                     </p>
+                     <p>
+                        <t v="Mr Aidas VAIČIULIS"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Dovilė BAŠKYTĖ"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Luxembourg"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Hungary"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Malta"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Lawrence MIZZI"/>
+                     </p>
+                     <p>
+                        <t v="Mr Michael GALEA"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr John HUBER"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Netherlands"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Rob SLAGMOLEN"/>
+                     </p>
+                     <p>
+                        <t v="Mr A.P.M.G. SCHOENMAECKERS"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr G.A.M. Gerard VAN DER GRIND"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Austria"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Margit KREUZHUBER"/>
+                     </p>
+                     <p>
+                        <t v="Ms Julia ENZELSBERGER"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Kornelia LIENHART"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Poland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Monika GŁADOCH"/>
+                     </p>
+                     <p>
+                        <t v="Mr Grzegorz BACZEWSKI"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Andrzej STĘPNIKOWSKI"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Portugal"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Romania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Roxana PRODAN"/>
+                     </p>
+                     <p>
+                        <t v="Mr Florian STAMATE"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Liviu ROGOJINARU"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Slovenia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Igor ANTAUER"/>
+                     </p>
+                     <p>
+                        <t v="Ms Polona FINK RUŽIČ"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Maja SKORUPAN"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Slovakia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Radovan MAXIN"/>
+                     </p>
+                     <p>
+                        <t v="Mr Peter MOLNÁR"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Martin HOŠTÁK"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Finland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Mikko RÄSÄNEN"/>
+                     </p>
+                     <p>
+                        <t v="Ms Jenni RUOKONEN"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Simopekka KOIVU"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Sweden"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Karin EKENGER"/>
+                     </p>
+                     <p>
+                        <t v="Ms Carin RENGER"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Patrik KARLSSON"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="United Kingdom"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Sinead LAWRENCE"/>
+                     </p>
+                     <p>
+                        <t v="Mr Rob WALL"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mr Tom SALLIS"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </tableGroup>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The members not yet nominated will be appointed by the Council at a later date."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Decision shall enter into force on the date of its adoption."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="25 September 2014" date="2014-09-25"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Council"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="F. "/>
+               <emphasis kind="uc">
+                  <t v="Guidi"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="141"
+                 date="2011-05-27"
+                 page="1">
+               <t v="OJ L 141, 27.5.2011, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Council Decision of "/>
+            <date asWritten="4 October 2012" date="2012-10-04"/>
+            <t v=" appointing the members and alternate members of the Advisory Committee on freedom of movement for workers ("/>
+            <ref kind="oj"
+                 series="C"
+                 number="302"
+                 date="2012-10-06"
+                 page="1">
+               <t v="OJ C 302, 6.10.2012, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Council Decision of "/>
+            <date asWritten="20 November 2012" date="2012-11-20"/>
+            <t v=" appointing the members and alternate members of the Advisory Committee on Freedom of Movement for Workers for Italy ("/>
+            <ref kind="oj"
+                 series="C"
+                 number="360"
+                 date="2012-11-22"
+                 page="4">
+               <t v="OJ C 360, 22.11.2012, p. 4"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

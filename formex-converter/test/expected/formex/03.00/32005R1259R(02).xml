@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32005R1259R(02)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="03.00"
+           converter="1.0.0">
+   <source celex="32005R1259R(02)">
+      <publication series="L" number="282" date="2005-10-26" page="29"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Commission Regulation EC (No) 1259/2005 of "/>
+            <date asWritten="27 July 2005" date="2005-07-27"/>
+            <t v=" imposing a provisional anti-dumping duty on imports of tartaric acid originating in the People's Republic of China"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="L" number="200" date="2005-07-30">
+               <t v="Official Journal of the European Union L 200 of 30 July 2005"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 90, in Article 1(2):"/>
+         </p>
+         <list kind="definition">
+            <unit eId="cor_1/def_1" kind="definition">
+               <heading>
+                  <t v="for"/>
+               </heading>
+               <quotedStructure eId="cor_1/def_1/qst_1">
+                  <table cols="3">
+                     <tr header="true">
+                        <td header="true">
+                           <p>
+                              <t v="‘"/>
+                              <t v="Company"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="Anti-Dumping Duty"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="TARIC Additional Code"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="Hangzou Bioking Biochemical Engineering Co., Ltd, Hangzou, People’s Republic of China."/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,4"/>
+                              <t v=" %"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="A687"/>
+                              <t v="’"/>
+                           </p>
+                        </td>
+                     </tr>
+                  </table>
+               </quotedStructure>
+            </unit>
+            <unit eId="cor_1/def_2" kind="definition">
+               <heading>
+                  <t v="read"/>
+               </heading>
+               <quotedStructure eId="cor_1/def_2/qst_1">
+                  <table cols="3">
+                     <tr header="true">
+                        <td header="true">
+                           <p>
+                              <t v="‘"/>
+                              <t v="Company"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="Anti-Dumping Duty"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="TARIC Additional Code"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="Hangzhou Bioking Biochemical Engineering Co., Ltd, Hangzhou, People’s Republic of China."/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,4"/>
+                              <t v=" %"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="A687"/>
+                              <t v="’"/>
+                           </p>
+                        </td>
+                     </tr>
+                  </table>
+               </quotedStructure>
+            </unit>
+         </list>
+         <p>
+            <t v="Where applicable, the correct spelling of the company names and seat, as set out above, should also apply throughout the text of Regulation (EC) No 1259/2005 wherever they appear, and namely under recitals (8)(b), (17), (39) and (122)."/>
+         </p>
+      </unit>
+   </body>
+</legalText>
+

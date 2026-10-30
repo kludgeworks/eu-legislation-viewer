@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32009D1023"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.01"
+           converter="1.0.0">
+   <source celex="32009D1023">
+      <publication series="L" number="353" date="2009-12-31" page="1"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="21 September 2009" date="2009-09-21"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the signing, on behalf of the European Union, and on the provisional application of certain provisions of the Agreement between the European Union and Iceland and Norway on the application of certain provisions of Council Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime and Council Decision 2008/616/JHA on the implementation of Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime, and the Annex thereto"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(2009/1023/JHA)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on European Union, and in particular Articles 24 and 38 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Iceland, in a letter to the President of the Council dated "/>
+               <date asWritten="24 September 2008" date="2008-09-24"/>
+               <t v=", and Norway, in a letter to the President of the Council dated "/>
+               <date asWritten="7 July 2008" date="2008-07-07"/>
+               <t v=", have asked to be associated with the mechanisms for police and judicial cooperation between the Member States of the Union established by Council Decision 2008/615/JHA of "/>
+               <date asWritten="23 June 2008" date="2008-06-23"/>
+               <t v=" on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=" and Council Decision 2008/616/JHA of "/>
+               <date asWritten="23 June 2008" date="2008-06-23"/>
+               <t v=" on the implementation of Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", and the Annex thereto."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Following the authorisation given on "/>
+               <date asWritten="24 October 2008" date="2008-10-24"/>
+               <t v=" to the Presidency, assisted by the Commission and by the delegation representing the Member State which is to take on the forthcoming Presidency, negotiations with Iceland and Norway were finalised on an agreement on the application of certain provisions of Council Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime and Council Decision 2008/616/JHA on the implementation of Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime, and the Annex thereto ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the Agreement"/>
+               </quote>
+               <t v=")."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Subject to its conclusion at a later date, the Agreement that was initialled in Brussels on "/>
+               <date asWritten="28 November 2008" date="2008-11-28"/>
+               <t v=" should be signed and the attached declaration be approved."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The Agreement caters for the provisional application of certain of its provisions. These provisions should be applied on a provisional basis pending the completion of the procedures for the formal conclusion of the Agreement and entry into force,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS DECIDED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <unit eId="art_1/unp_1" kind="paragraph">
+            <p>
+               <t v="The signing of the Agreement is hereby approved on behalf of the European Union, subject to its conclusion."/>
+            </p>
+         </unit>
+         <unit eId="art_1/unp_2" kind="paragraph">
+            <p>
+               <t v="The text of the Agreement is attached to this Decision."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The declaration attached to this Decision shall be approved on behalf of the European Union."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="The President of the Council is hereby authorised to designate the person(s) empowered to sign the Agreement on behalf of the European Union subject to its conclusion."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="21 September 2009" date="2009-09-21"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Council"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="T. "/>
+               <emphasis kind="uc">
+                  <t v="Billström"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="att_1" kind="attachment">
+         <heading>
+            <emphasis kind="uc">
+               <t v="Agreement"/>
+            </emphasis>
+            <eol/>
+            <t v="between the European Union and Iceland and Norway on the application of certain provisions of Council Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime and Council Decision 2008/616/JHA on the implementation of Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime, and the Annex thereto"/>
+         </heading>
+         <p>
+            <t v="THE EUROPEAN UNION,"/>
+         </p>
+         <p>
+            <t v="on the one hand, and"/>
+         </p>
+         <p>
+            <t v="ICELAND,"/>
+         </p>
+         <p>
+            <t v="and"/>
+         </p>
+         <p>
+            <t v="NORWAY,"/>
+         </p>
+         <p>
+            <t v="on the other hand,"/>
+         </p>
+         <p>
+            <t v="hereinafter referred to as "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="the Contracting Parties"/>
+            </quote>
+            <t v=","/>
+         </p>
+         <p>
+            <t v="WISHING to improve police and judicial cooperation between the Member States of the European Union and Iceland and Norway, without prejudice to the rules protecting individual freedom,"/>
+         </p>
+         <p>
+            <t v="CONSIDERING that current relationships between the Contracting Parties, in particular the Agreement concluded by the Council of the European Union and the Republic of Iceland and the Kingdom of Norway concerning the latters' association with the implementation, application and development of the Schengen acquis, demonstrate close cooperation in the fight against crime,"/>
+         </p>
+         <p>
+            <t v="POINTING OUT the Contracting Parties' common interest in ensuring that police cooperation between the Member States of the European Union and Iceland and Norway is carried out in a fast and efficient manner compatible with the basic principles of their national legal systems, and in compliance with the individual rights and principles of the European Convention for the Protection of Human Rights and Fundamental Freedoms, signed at Rome on "/>
+            <date asWritten="4 November 1950" date="1950-11-04"/>
+            <t v=","/>
+         </p>
+         <p>
+            <t v="RECOGNISING that Council Framework Decision 2006/960/JHA of "/>
+            <date asWritten="18 December 2006" date="2006-12-18"/>
+            <t v=" on simplifying the exchange of information and intelligence between law enforcement authorities of the Member States of the European Union"/>
+            <noteRef href="#note_att01000301-1" marker="1"/>
+            <t v=" already lays down rules whereby the law enforcement authorities of the Member States of the European Union and Iceland and Norway may exchange existing information and intelligence expeditiously and effectively for the purpose of carrying out criminal investigations or criminal intelligence operations,"/>
+         </p>
+         <p>
+            <t v="RECOGNISING that, in order to stimulate international cooperation in this area, it is of fundamental importance that precise information can be exchanged swiftly and efficiently. The aim is to introduce procedures for promoting fast, efficient and inexpensive means of data exchange. For the joint use of data these procedures should be subject to accountability and incorporate appropriate guarantees as to the accuracy and security of the data during transmission and storage as well as procedures for recording data exchange and restrictions on the use of information exchanged,"/>
+         </p>
+         <p>
+            <t v="CONSIDERING that Iceland and Norway have expressed their wish to enter into an agreement enabling them to apply certain provisions of Council Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime, and Council Decision 2008/616/JHA on the implementation of Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime, and the Annex thereto, in relations with each other and with the Member States of the European Union,"/>
+         </p>
+         <p>
+            <t v="CONSIDERING that the European Union also considers it necessary to enter into such an agreement,"/>
+         </p>
+         <p>
+            <t v="POINTING OUT that this Agreement therefore contains provisions which are based on the main provisions of Decision 2008/615/JHA and Decision 2008/616/JHA, and the Annex thereto, and are designed to improve the exchange of information whereby Member States of the European Union and Iceland and Norway grant one another access rights to their automated DNA analysis files, automated dactyloscopic identification systems and vehicle registration data. In the case of data from national DNA analysis files and automated dactyloscopic identification systems, a hit/no hit system should enable the searching State, in a second step, to request specific related personal data from the State administering the file and, where necessary, to request further information through mutual assistance procedures, including those adopted pursuant to Framework Decision 2006/960/JHA,"/>
+         </p>
+         <p>
+            <t v="CONSIDERING that these provisions would considerably speed up existing procedures enabling Member States, Iceland and Norway to find out whether another State, and if so, which, has the information it needs,"/>
+         </p>
+         <p>
+            <t v="CONSIDERING that cross-border data comparison will open up a new dimension in crime fighting. The information obtained by comparing data will open up new investigative approaches and thus play a crucial role in assisting States' law enforcement and judicial authorities,"/>
+         </p>
+         <p>
+            <t v="CONSIDERING that the rules are based on networking States' national databases,"/>
+         </p>
+         <p>
+            <t v="CONSIDERING that subject to certain conditions, States should be able to supply personal and non-personal data in order to improve the exchange of information with a view to preventing criminal offences and maintaining public order and security in connection with major events with a cross-border dimension,"/>
+         </p>
+         <p>
+            <t v="RECOGNISING that in addition to improving the exchange of information, there is a need to regulate other forms of closer cooperation between police authorities, in particular by means of joint security operations (e.g. joint patrols),"/>
+         </p>
+         <p>
+            <t v="CONSIDERING that closer police and judicial cooperation in criminal matters must go hand in hand with respect for fundamental rights, in particular the right to respect for privacy and to protection of personal data, to be guaranteed by special data protection arrangements, which should be tailored to the specific nature of different forms of data exchange. Such data protection provisions should take particular account of the specific nature of cross-border on-line access to databases. Since, with on-line access, it is not possible for the State administering the file to make any prior checks, a system ensuring post hoc monitoring should be in place,"/>
+         </p>
+         <p>
+            <t v="CONSIDERING that the hit/no hit system provides for a structure of comparing anonymous profiles, where additional personal data is exchanged only after a hit, the supply and receipt of which is governed by national law, including the legal assistance rules. This set-up guarantees an adequate system of data protection, it being understood that the supply of personal data to another State requires an adequate level of data protection on the part of the receiving State,"/>
+         </p>
+         <p>
+            <t v="AWARE OF the comprehensive exchange of information and data resulting from closer police and judicial cooperation, this Agreement seeks to warrant an appropriate level of data protection. It observes the level of protection designed for the processing of personal data in the Council of Europe Convention of "/>
+            <date asWritten="28 January 1981" date="1981-01-28"/>
+            <t v=" for the Protection of Individuals with regard to Automatic Processing of Personal Data, the Additional Protocol of "/>
+            <date asWritten="8 November 2001" date="2001-11-08"/>
+            <t v=" to the Convention and the principles of Recommendation No R (87) 15 of the Council of Europe Regulating the Use of Personal Data in the Police Sector,"/>
+         </p>
+         <p>
+            <t v="TAKING AS A BASIS the mutual confidence of the Member States of the European Union and Iceland and Norway in the structure and operation of their legal systems,"/>
+         </p>
+         <p>
+            <t v="RECOGNISING that the provisions of bilateral and multilateral agreements remain applicable for all matters not covered by this Agreement,"/>
+         </p>
+         <p>
+            <t v="HAVE DECIDED TO CONCLUDE THIS AGREEMENT:"/>
+         </p>
+         <unit eId="att_1/art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <heading>
+               <t v="Object and purpose"/>
+            </heading>
+            <unit eId="att_1/art_1/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Subject to the provisions of this Agreement, the content of Articles 1-24, 25(1), 26-32 and 34 of Council Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime, shall be applicable in bilateral relations between Iceland or Norway and each of the Member States of the European Union and in relations between Iceland and Norway."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_1/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Subject to the provisions of this Agreement, the content of Articles 1-19 and 21 of Council Decision 2008/616/JHA on the implementation of Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime, and the Annex thereto except its chapter 4, point 1, shall be applicable in the relations referred to in paragraph 1."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_1/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="The declarations made by Member States in accordance with Decisions 2008/616/JHA and 2008/615/JHA shall also be applicable in their relations with Iceland and Norway."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="att_1/art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <heading>
+               <t v="Definitions"/>
+            </heading>
+            <unit eId="att_1/art_2/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Contracting Parties"/>
+                  </quote>
+                  <t v=" shall mean the European Union and Iceland and Norway."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_2/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Member State"/>
+                  </quote>
+                  <t v=" shall mean a Member State of the European Union."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_2/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="State"/>
+                  </quote>
+                  <t v=" shall mean a Member State, Iceland or Norway."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="att_1/art_3" kind="article">
+            <num>
+               <t v="Article 3"/>
+            </num>
+            <heading>
+               <t v="Uniform application and interpretation"/>
+            </heading>
+            <unit eId="att_1/art_3/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="The Contracting Parties, in order to achieve the objective of arriving at as uniform an application and interpretation as possible of the provisions referred to in Article 1, shall keep under constant review the development of the case-law of the Court of Justice of the European Communities, as well as the development of the case-law of the competent courts of Iceland and Norway relating to such provisions. To this end a mechanism shall be set up to ensure regular mutual exchange of such case-law."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_3/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Iceland and Norway shall be entitled to submit statements of case or written observations to the Court of Justice in cases where a question has been referred to it by a court or tribunal of a Member State for a preliminary ruling concerning the interpretation of any provisions referred to in Article 1."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="att_1/art_4" kind="article">
+            <num>
+               <t v="Article 4"/>
+            </num>
+            <heading>
+               <t v="Dispute settlement"/>
+            </heading>
+            <p>
+               <t v="Any dispute between either Iceland or Norway and a Member State regarding the interpretation or the application of this Agreement or of any of the provisions referred to in Article 1 and amendments thereto may be referred by a Party to the dispute to a meeting of representatives of the governments of the Member States and of Iceland and Norway, with a view to its speedy settlement."/>
+            </p>
+         </unit>
+         <unit eId="att_1/art_5" kind="article">
+            <num>
+               <t v="Article 5"/>
+            </num>
+            <heading>
+               <t v="Amendments"/>
+            </heading>
+            <unit eId="att_1/art_5/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Where it is necessary to amend the provisions of Decision 2008/615/JHA referred to in Article 1(1), and/or the provisions of Decision 2008/616/JHA including the Annex thereto, referred to in Article 1(2), the European Union shall inform Iceland and Norway at the earliest possible occasion and collect any comments they may have."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_5/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <unit eId="att_1/art_5/par_2/sub_1" kind="subparagraph">
+                  <p>
+                     <t v="Iceland and Norway shall be notified of any amendment of the provisions of Decision 2008/615/JHA referred to in Article 1(1), and any amendment of the provisions of Decision 2008/616/JHA including the Annex thereto, referred to in Article 1(2) by the depository as soon as the amendment is adopted."/>
+                  </p>
+               </unit>
+               <unit eId="att_1/art_5/par_2/sub_2" kind="subparagraph">
+                  <p>
+                     <t v="Iceland and Norway shall decide independently whether to accept the content of the amendment and to implement it into their internal legal order. These decisions shall be notified to the depository within three months of the date of notification."/>
+                  </p>
+               </unit>
+            </unit>
+            <unit eId="att_1/art_5/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="If the content of the amendment can be binding on Iceland or Norway only after fulfilment of constitutional requirements, Iceland or Norway shall inform the depository of this at the time of its notification. Iceland or Norway shall promptly, and at the latest six months from the notification by the depository, inform the depository in writing upon fulfilment of all constitutional requirements. From the date laid down for the entry into force of the amendment for Iceland or Norway and until the information upon fulfilment of constitutional requirements, Iceland or Norway shall provisionally apply, where possible, the content of such act or measure."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_5/par_4" kind="paragraph">
+               <num>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="If either Iceland or Norway, or both, do not accept the amendment, this Agreement shall be suspended from the date on which the amendment is to be implemented in relation to the State or States which have not accepted the amendment. A meeting of the Contracting Parties shall be convened to examine all further possibilities with a view to continue the good functioning of this Agreement, including the possibility to take notice of equivalence of legislation. Suspension shall be terminated as soon as the State or States concerned notifies its/their acceptance of the amendment or if the Contracting Parties agree to reinstate the Agreement with respect to the State or States concerned."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_5/par_5" kind="paragraph">
+               <num>
+                  <t v="5."/>
+               </num>
+               <p>
+                  <t v="If, after a period of six months of suspension, the Contracting Parties have not agreed to reinstate the Agreement, it shall cease to apply to the State which has not accepted the amendment."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_5/par_6" kind="paragraph">
+               <num>
+                  <t v="6."/>
+               </num>
+               <p>
+                  <t v="Paragraphs 4 and 5 do not apply to amendments relating to Chapters 3, 4 or 5 of Decision 2008/615/JHA or Article 17 of Decision 2008/616/JHA, in respect of which Iceland or Norway, or both, have notified the depositary that they do not accept the amendment stating the reasons thereof. In that case, and without prejudice to Article 10, the content of the relevant provisions in their version prior to amendment shall continue to be applicable in the relations with the State or States having made the notification."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="att_1/art_6" kind="article">
+            <num>
+               <t v="Article 6"/>
+            </num>
+            <heading>
+               <t v="Review"/>
+            </heading>
+            <p>
+               <t v="The Contracting Parties agree to carry out a common review of this Agreement no later than five years after its entry into force. The review shall in particular address the practical implementation, interpretation and development of the Agreement and shall also include issues such as the consequences of development of the European Union relating to the subject-matter of this Agreement."/>
+            </p>
+         </unit>
+         <unit eId="att_1/art_7" kind="article">
+            <num>
+               <t v="Article 7"/>
+            </num>
+            <heading>
+               <t v="Relationship with other instruments"/>
+            </heading>
+            <unit eId="att_1/art_7/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Iceland and Norway may continue to apply bilateral or multilateral agreements or arrangements on cross-border cooperation with Member States that are in force on the date this Agreement is adopted in so far as such agreements or arrangements are not incompatible with the objectives of this Agreement. Iceland and Norway shall notify the depository of any such agreements or arrangements which will continue to apply."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_7/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Iceland and Norway may conclude or bring into force additional bilateral or multilateral agreements or arrangements on cross-border cooperation with Member States after this Agreement has entered into force insofar as such agreements or arrangements provide for the objectives of this Agreement to be extended or enlarged. Iceland and Norway shall notify the depository of any such new agreement or arrangement within three months of signing or, in the case of instruments that were signed before the entry into force of the Agreement, within three months of their entry into force."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_7/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="The agreements and arrangements referred to in paragraphs 1 and 2 may not affect relations with States that are not parties thereto."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_7/par_4" kind="paragraph">
+               <num>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="This Agreement shall be without prejudice to existing agreements on legal assistance or mutual recognition of court decisions."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="att_1/art_8" kind="article">
+            <num>
+               <t v="Article 8"/>
+            </num>
+            <heading>
+               <t v="Notifications, declarations and entry into force"/>
+            </heading>
+            <unit eId="att_1/art_8/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="The Contracting Parties shall notify each other of the completion of the procedures required to express their consent to be bound by this Agreement."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_8/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The European Union may express its consent to be bound by this Agreement even if the decisions referred to in Article 25(2) of Decision 2008/615/JHA have not yet been taken in respect of all the Member States to which that provision applies."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_8/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="Article 5(1) and (2) shall apply provisionally as from the time of signature of this Agreement."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_8/par_4" kind="paragraph">
+               <num>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="With respect to amendments adopted after the signature of this Agreement but before its entry into force, the period of three months referred to in the last sentence of Article 5(2) shall start to run from the day of entry into force of this Agreement."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_8/par_5" kind="paragraph">
+               <num>
+                  <t v="5."/>
+               </num>
+               <p>
+                  <t v="When giving their notification under paragraph 1 or, if so provided, at any time thereafter, Iceland and Norway shall make the declarations provided for in this Agreement."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_8/par_6" kind="paragraph">
+               <num>
+                  <t v="6."/>
+               </num>
+               <p>
+                  <t v="This Agreement shall enter into force between the European Union and Iceland on the first day of the third month following the day on which the Secretary-General of the Council of the European Union establishes that all formal requirements concerning the expression of consent by or on behalf of the European Union and Iceland to be bound by the Agreement have been fulfilled."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_8/par_7" kind="paragraph">
+               <num>
+                  <t v="7."/>
+               </num>
+               <p>
+                  <t v="This Agreement shall enter into force between the European Union and Norway on the first day of the third month following the day on which the Secretary-General of the Council of the European Union establishes that all formal requirements concerning the expression of consent by or on behalf of the European Union and Norway to be bound by the Agreement have been fulfilled."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_8/par_8" kind="paragraph">
+               <num>
+                  <t v="8."/>
+               </num>
+               <p>
+                  <t v="As soon as this Agreement is in force between the European Union and Iceland and the European Union and Norway, it shall also be in force between Iceland and Norway."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_8/par_9" kind="paragraph">
+               <num>
+                  <t v="9."/>
+               </num>
+               <p>
+                  <t v="The supply by Member States of personal data under this Agreement may not take place until the provisions of Chapter 6 of Decision 2008/615/JHA have been implemented in the national law of the States involved in such supply."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_8/par_10" kind="paragraph">
+               <num>
+                  <t v="10."/>
+               </num>
+               <unit eId="att_1/art_8/par_10/sub_1" kind="subparagraph">
+                  <p>
+                     <t v="In order to verify whether this is the case for Iceland and Norway, an evaluation visit and a pilot run shall be carried out in respect of and under conditions and arrangements acceptable to those States, similar to those concluded in respect of Member States pursuant to Chapter 4 of the Annex to Decision 2008/616/JHA."/>
+                  </p>
+               </unit>
+               <unit eId="att_1/art_8/par_10/sub_2" kind="subparagraph">
+                  <p>
+                     <t v="On the basis of an overall evaluation report the Council, acting unanimously, shall determine the date or dates as from which personal data may be supplied by Member States to Iceland and Norway pursuant to this Agreement."/>
+                  </p>
+               </unit>
+            </unit>
+         </unit>
+         <unit eId="att_1/art_9" kind="article">
+            <num>
+               <t v="Article 9"/>
+            </num>
+            <heading>
+               <t v="Accession"/>
+            </heading>
+            <p>
+               <t v="Accession by new Member States to the European Union shall create rights and obligations under this Agreement between those new Member States and Iceland and Norway."/>
+            </p>
+         </unit>
+         <unit eId="att_1/art_10" kind="article">
+            <num>
+               <t v="Article 10"/>
+            </num>
+            <heading>
+               <t v="Termination"/>
+            </heading>
+            <unit eId="att_1/art_10/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="This Agreement may be terminated at any time by one of the Contracting Parties. In the event of termination by either Iceland or Norway, this Agreement shall remain in force between the European Union and the State for which it has not been terminated. In the event of termination by the European Union, the Agreement shall lapse."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_10/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Termination of this Agreement pursuant to paragraph 1 shall take effect six months after the deposit of the notification of termination."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="att_1/art_11" kind="article">
+            <num>
+               <t v="Article 11"/>
+            </num>
+            <heading>
+               <t v="Depository"/>
+            </heading>
+            <unit eId="att_1/art_11/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="The Secretary-General of the Council of the European Union shall act as the depository of this Agreement."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_11/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The depository shall make public information on any notification made concerning this Agreement."/>
+               </p>
+            </unit>
+         </unit>
+         <p>
+            <t v="Done at Stockholm on "/>
+            <date asWritten="26 November 2009" date="2009-11-26"/>
+            <t v=" and at Brussels on "/>
+            <date asWritten="30 November 2009" date="2009-11-30"/>
+            <t v=" in a single original in the Bulgarian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Maltese, Polish, Portuguese, Romanian, Slovak, Slovenian, Spanish, Swedish, Icelandic and Norwegian languages, each text being equally authentic."/>
+         </p>
+         <p>
+            <t v="За Европейския съюз"/>
+         </p>
+         <p>
+            <t v="Por la Unión Europea"/>
+         </p>
+         <p>
+            <t v="Za Evropskou unii"/>
+         </p>
+         <p>
+            <t v="For den Europæiske Union"/>
+         </p>
+         <p>
+            <t v="Für die Europäische Union"/>
+         </p>
+         <p>
+            <t v="Euroopa Liidu nimel"/>
+         </p>
+         <p>
+            <t v="Για την Ευρωπαϊκή Ένωση"/>
+         </p>
+         <p>
+            <t v="For the European Union"/>
+         </p>
+         <p>
+            <t v="Pour l'Union européenne"/>
+         </p>
+         <p>
+            <t v="Thar ceann an Aontais Eorpaigh"/>
+         </p>
+         <p>
+            <t v="Per l'Unione europea"/>
+         </p>
+         <p>
+            <t v="Eiropas Savienības vārdā"/>
+         </p>
+         <p>
+            <t v="Europos Sajungos vardu"/>
+         </p>
+         <p>
+            <t v="Az Európai Unió részéről"/>
+         </p>
+         <p>
+            <t v="Għall-Unjoni Ewropea"/>
+         </p>
+         <p>
+            <t v="Voor de Europese Unie"/>
+         </p>
+         <p>
+            <t v="W imieniu Unii Europejskiej"/>
+         </p>
+         <p>
+            <t v="Pela União Europeia"/>
+         </p>
+         <p>
+            <t v="Pentru Uniunea Europeană"/>
+         </p>
+         <p>
+            <t v="Za Európsku úniu"/>
+         </p>
+         <p>
+            <t v="Za Evropsko unijo"/>
+         </p>
+         <p>
+            <t v="Euroopan unionin puolesta"/>
+         </p>
+         <p>
+            <t v="På Europeiska unionens vägnar"/>
+         </p>
+         <p>
+            <t v="Fyrir hönd Evrópusambandsins"/>
+         </p>
+         <p>
+            <t v="For Den europeiske union"/>
+         </p>
+         <figure src="L_2009353EN.01000701.tif" content="signature"/>
+         <p>
+            <t v="За Република Исландия"/>
+         </p>
+         <p>
+            <t v="Por la República de Islandia"/>
+         </p>
+         <p>
+            <t v="Za Islandskou republiku"/>
+         </p>
+         <p>
+            <t v="For Republikken Island"/>
+         </p>
+         <p>
+            <t v="Für die Republik Island"/>
+         </p>
+         <p>
+            <t v="Islandi Vabariigi nimel"/>
+         </p>
+         <p>
+            <t v="Για την Δημοκρατία της Ισλανδίας"/>
+         </p>
+         <p>
+            <t v="For the Republic of Iceland"/>
+         </p>
+         <p>
+            <t v="Pour la République d'Islande"/>
+         </p>
+         <p>
+            <t v="Thar ceann Phoblacht na hĺoslainne"/>
+         </p>
+         <p>
+            <t v="Per la Repubblica d'Islanda"/>
+         </p>
+         <p>
+            <t v="Islandes Republikas vārdā"/>
+         </p>
+         <p>
+            <t v="Islandijos Respublikos vardu"/>
+         </p>
+         <p>
+            <t v="Az Izlandi Köztársaság részéről"/>
+         </p>
+         <p>
+            <t v="Għar-Repubblika ta' l-Islanda"/>
+         </p>
+         <p>
+            <t v="Voor de Republiek Ijsland"/>
+         </p>
+         <p>
+            <t v="W imieniu Republiki Islandii"/>
+         </p>
+         <p>
+            <t v="Pela República da Islândia"/>
+         </p>
+         <p>
+            <t v="Pentru Republica Islanda"/>
+         </p>
+         <p>
+            <t v="za Islandskú republiku"/>
+         </p>
+         <p>
+            <t v="Za Republiko Islandijo"/>
+         </p>
+         <p>
+            <t v="Islannin tasavallan puolesta"/>
+         </p>
+         <p>
+            <t v="På Republiken Islands vägnar"/>
+         </p>
+         <p>
+            <t v="Fyrir hönd lýðveldisins Íslands"/>
+         </p>
+         <p>
+            <t v="For Republikken Island"/>
+         </p>
+         <figure src="L_2009353EN.01000702.tif" content="signature"/>
+         <p>
+            <t v="За Кралство Норвегия"/>
+         </p>
+         <p>
+            <t v="Por el Reino de Noruega"/>
+         </p>
+         <p>
+            <t v="Za Norské království"/>
+         </p>
+         <p>
+            <t v="For Kongeriget Norge"/>
+         </p>
+         <p>
+            <t v="Für das Königreich Norwegen"/>
+         </p>
+         <p>
+            <t v="Norra Kuningriigi nimel"/>
+         </p>
+         <p>
+            <t v="Για το Βασίλειο της Νορβηγίας"/>
+         </p>
+         <p>
+            <t v="For the Kingdom of Norway"/>
+         </p>
+         <p>
+            <t v="Pour le Royaume de Norvège"/>
+         </p>
+         <p>
+            <t v="Thar ceann Ríocht na hIorua"/>
+         </p>
+         <p>
+            <t v="Per il Regno di Norvegia"/>
+         </p>
+         <p>
+            <t v="Norvēģijas Karalistes vārdā"/>
+         </p>
+         <p>
+            <t v="Norvegijos Karalystės vardu"/>
+         </p>
+         <p>
+            <t v="A Norvég Királyság részéről"/>
+         </p>
+         <p>
+            <t v="Għar-Renju tan-Norvegia"/>
+         </p>
+         <p>
+            <t v="Voor het Koninkrijk Noorwegen"/>
+         </p>
+         <p>
+            <t v="W imieniu Królestwa Norwegii"/>
+         </p>
+         <p>
+            <t v="Pelo Reino da Noruega"/>
+         </p>
+         <p>
+            <t v="Pentru Regatul Novegiei"/>
+         </p>
+         <p>
+            <t v="Za Nórske kráľovstvo"/>
+         </p>
+         <p>
+            <t v="Za Kraljevino Norveško"/>
+         </p>
+         <p>
+            <t v="Norjan kuningaskunnan puolesta"/>
+         </p>
+         <p>
+            <t v="På Konungariket Norges vägnar"/>
+         </p>
+         <p>
+            <t v="Fyrir hönd Konungsríkisins Noregs"/>
+         </p>
+         <p>
+            <t v="For Kongeriket Norge"/>
+         </p>
+         <figure src="L_2009353EN.01000703.tif" content="signature"/>
+         <unit eId="att_1/att_1" kind="attachment">
+            <heading>
+               <t v="DECLARATION TO BE ADOPTED AT THE OCCASION OF THE SIGNATURE OF THE AGREEMENT"/>
+            </heading>
+            <p>
+               <t v="The European Union and Iceland and Norway, signatories to the Agreement on the application of certain provisions of Council Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime and Council Decision 2008/616/JHA on the implementation of Council Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime, and the Annex thereto, ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the Agreement"/>
+               </quote>
+               <t v="),"/>
+            </p>
+            <p>
+               <t v="declare:"/>
+            </p>
+            <list kind="none">
+               <unit eId="att_1/att_1/idt_1" kind="indent">
+                  <p>
+                     <t v="The implementation of the DNA, dactyloscopic and vehicle registration data exchange pursuant to the Agreement will require that Iceland and Norway set up bilateral connections for each of these data categories with each of the Member States."/>
+                  </p>
+               </unit>
+               <unit eId="att_1/att_1/idt_2" kind="indent">
+                  <p>
+                     <t v="To enable and facilitate this work, Iceland and Norway will be provided with all the available documentation, software products and contact lists."/>
+                  </p>
+               </unit>
+               <unit eId="att_1/att_1/idt_3" kind="indent">
+                  <p>
+                     <t v="Iceland and Norway will have the opportunity to set up an informal partnership with Member States that have already implemented such data exchange, with a view to sharing experiences and getting practical and technical support. The details of such partnerships are to be arranged in direct contacts with the Member States concerned."/>
+                  </p>
+               </unit>
+               <unit eId="att_1/att_1/idt_4" kind="indent">
+                  <p>
+                     <t v="The Icelandic and Norwegian experts can contact at any time the Presidency of the Council, the Commission and/or leading experts in these matters to obtain information, clarification or any other support. Similarly the Commission will, whenever in preparation of proposals or communications it contacts representatives of the Member States, avail itself of the opportunity to contact also representatives of Iceland and Norway."/>
+                  </p>
+               </unit>
+               <unit eId="att_1/att_1/idt_5" kind="indent">
+                  <p>
+                     <t v="Icelandic and Norwegian experts may be invited to attend on an ad hoc basis meetings where Member States’ experts discuss within the Council technical aspects of the DNA, dactyloscopic or vehicle registration data exchange which are directly relevant to the proper application of the content of the aforementioned Council Decisions by Iceland and/or Norway."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="210"
+                 date="2008-08-06"
+                 page="1">
+               <t v="OJ L 210, 6.8.2008, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="210"
+                 date="2008-08-06"
+                 page="12">
+               <t v="OJ L 210, 6.8.2008, p. 12"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_att01000301-1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="386"
+                 date="2006-12-29"
+                 page="89">
+               <t v="OJ L 386, 29.12.2006, p. 89"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

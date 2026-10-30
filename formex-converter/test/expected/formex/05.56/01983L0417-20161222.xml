@@ -1,0 +1,1626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31983L0417"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2016-12-22"
+           lang="en"
+           formexVersion="05.56"
+           converter="1.0.0">
+   <source celex="01983L0417-20161222">
+      <publication series="L" number="237" date="1983-08-26" page="25"/>
+   </source>
+   <lifecycle start="2016-12-22" produced="2015-12-02" sequence="004.001.0">
+      <eventRef type="amendment" act="11985I" date="1985-06-12"/>
+      <eventRef type="amendment" act="32003R0807" date="2003-04-14"/>
+      <eventRef type="amendment" act="32008R1332" date="2008-12-16"/>
+      <eventRef type="amendment" act="32015L2203" date="2015-11-25"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <deleted amendingAct="32015L2203"
+                        action="deleted"
+                        location="AR:8;AL:1"
+                        marker="O004001M001000">
+                  <emphasis kind="uc">
+                     <t v="Council Directive"/>
+                  </emphasis>
+               </deleted>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <deleted amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000">
+               <t v="of 25 July 1983"/>
+            </deleted>
+         </p>
+         <p>
+            <docPurpose>
+               <deleted amendingAct="32015L2203"
+                        action="deleted"
+                        location="AR:8;AL:1"
+                        marker="O004001M001000">
+                  <t v="on the approximation of the laws of the Member States relating to certain lactoproteins (caseins and caseinates) intended for human consumption"/>
+               </deleted>
+            </docPurpose>
+         </p>
+         <p>
+            <deleted amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000">
+               <t v="(83/417/EEC)"/>
+            </deleted>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <unit eId="art_1/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="This Directive concerns lactoproteins, as defined in the Annexes, which are intended for human consumption and mixtures thereof."/>
+               </p>
+            </unit>
+            <unit eId="art_1/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="For the purposes of this Directive:"/>
+               </p>
+               <list kind="dash">
+                  <unit eId="art_1/par_2/idt_1" kind="indent">
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="caseins"/>
+                        </quote>
+                        <t v=" means the principal protein constituent of milk, washed and dried, insoluble in water and obtained from skimmed milk by precipitation:"/>
+                     </p>
+                     <list kind="dash">
+                        <unit eId="art_1/par_2/idt_1/idt_1" kind="indent">
+                           <p>
+                              <t v="by the addition of acid, or"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/par_2/idt_1/idt_2" kind="indent">
+                           <p>
+                              <t v="by microbial acidification, or"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/par_2/idt_1/idt_3" kind="indent">
+                           <p>
+                              <t v="by using rennet, or"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/par_2/idt_1/idt_4" kind="indent">
+                           <p>
+                              <t v="by using other milk-coagulating enzymes,"/>
+                           </p>
+                        </unit>
+                     </list>
+                     <p>
+                        <t v="without prejudice to the possibility of prior use of ion exchange processes and concentration processes,"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_1/par_2/idt_2" kind="indent">
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="caseinates"/>
+                        </quote>
+                        <t v=" means products obtained by drying caseins treated with neutralizing agents,"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_1/par_2/idt_3" kind="indent">
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="skimmed milk"/>
+                        </quote>
+                        <t v=" means the milk of one or more cows to which nothing has been added and of which only the fat content has been reduced."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <p>
+               <t v="The Member States shall take all the necessary steps to ensure that:"/>
+            </p>
+            <list kind="dash">
+               <unit eId="art_2/idt_1" kind="indent">
+                  <p>
+                     <t v="the products defined in the Annexes may be marketed only if they conform to the definitions and rules laid down in this Directive and the Annexes thereto, and"/>
+                  </p>
+               </unit>
+               <unit eId="art_2/idt_2" kind="indent">
+                  <p>
+                     <t v="products which do not satisfy the criteria laid down in the Annexes are named and labelled in such a way that the buyer is not misled as to their nature, quality or use."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_3" kind="article">
+            <num>
+               <t v="Article 3"/>
+            </num>
+            <p>
+               <t v="The names referred to in the Annexes shall be reserved for the products defined and must be used commercially to designate those products."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_4" kind="article">
+            <num>
+               <t v="Article 4"/>
+            </num>
+            <unit eId="art_4/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Without prejudice to Directive 79/112/EEC and without prejudice to the provisions to be adopted by the Community concerning the labelling of foodstuffs not intended for the ultimate consumer, the only mandatory particulars to be marked on the packages, containers or labels of the products defined in the Annexes, particulars which must be clearly visible, easily legible and in indelible characters, shall be as follows:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_4/par_1/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="the name reserved for these products in accordance with Article 3 with, in the case of caseinates, an indication of the cation or cations;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_4/par_1/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="in the case of products marketed as mixtures,"/>
+                     </p>
+                     <list kind="dash">
+                        <unit eId="art_4/par_1/pnt_b/idt_1" kind="indent">
+                           <p>
+                              <t v="the words "/>
+                              <quote startQuote="‘" endQuote="’">
+                                 <t v="mixture of …"/>
+                              </quote>
+                              <t v=" followed by the names of the different products which make up the mixture, in decreasing order of weight,"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_4/par_1/pnt_b/idt_2" kind="indent">
+                           <p>
+                              <t v="an indication of the cation or cations in the case of caseinate or caseinates,"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_4/par_1/pnt_b/idt_3" kind="indent">
+                           <p>
+                              <t v="the protein content in the case of mixtures containing caseinates;"/>
+                           </p>
+                        </unit>
+                     </list>
+                  </unit>
+                  <unit eId="art_4/par_1/pnt_c" kind="point">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="the net quantity expressed in the following units of mass: kilograms or grams. Until the end of the transitional period during which use of the imperial units of measurement contained in Chapter D of the Annex to Council Directive 71/354/EEC of 18 October 1971 on the approximation of the laws of the Member States relating to units of measurement"/>
+                        <noteRef href="#note_1" marker="1"/>
+                        <t v=" , as last amended by Directive 76/770/EEC"/>
+                        <noteRef href="#note_2" marker="2"/>
+                        <t v=" , is authorized in the Community, Ireland and the United Kingdom may permit the quantity to be expressed only in imperial units of measurement calculated on the basis of the following conversion rates:"/>
+                     </p>
+                     <table cols="2">
+                        <tr>
+                           <td>
+                              <p>
+                                 <num>
+                                    <t v="—"/>
+                                 </num>
+                                 <t v="1 ml"/>
+                              </p>
+                           </td>
+                           <td>
+                              <p>
+                                 <t v="= 0,0352 fluid ounces,"/>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <p>
+                                 <num>
+                                    <t v="—"/>
+                                 </num>
+                                 <t v="1 l"/>
+                              </p>
+                           </td>
+                           <td>
+                              <p>
+                                 <t v="= 1,760 pints 0,220 gallons,"/>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <p>
+                                 <num>
+                                    <t v="—"/>
+                                 </num>
+                                 <t v="1 g"/>
+                              </p>
+                           </td>
+                           <td>
+                              <p>
+                                 <t v="= 0,0353 ounces (avoirdupois),"/>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <p>
+                                 <num>
+                                    <t v="—"/>
+                                 </num>
+                                 <t v="1 kg"/>
+                              </p>
+                           </td>
+                           <td>
+                              <p>
+                                 <t v="= 2,205 pounds;"/>
+                              </p>
+                           </td>
+                        </tr>
+                     </table>
+                  </unit>
+                  <unit eId="art_4/par_1/pnt_d" kind="point">
+                     <num>
+                        <t v="(d)"/>
+                     </num>
+                     <p>
+                        <t v="the name or business name and the address of the manufacturer or packager or of a seller established within the Community;"/>
+                     </p>
+                     <p>
+                        <t v="however, in the case of their national production, Member States may maintain in force national provisions requiring details of the manufacturing or packaging establishment to be mentioned;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_4/par_1/pnt_e" kind="point">
+                     <num>
+                        <t v="(e)"/>
+                     </num>
+                     <p>
+                        <t v="in the case of products imported from third countries, the name of the country of origin;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_4/par_1/pnt_f" kind="point">
+                     <num>
+                        <t v="(f)"/>
+                     </num>
+                     <p>
+                        <t v="the date of manufacture or some marking by which the batch can be identified."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_4/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <unit eId="art_4/par_2/sub_1" kind="subparagraph">
+                  <p>
+                     <t v="Member States shall prohibit the marketing of edible caseins and caseinates in their territory if the particulars referred to in paragraphs 1 (a), (b), (e) and (f) do not appear in a language easily understood by the purchaser, unless the latter is given such information by other means; this provision shall not preclude the appearance of the said particulars in several languages."/>
+                  </p>
+               </unit>
+               <unit eId="art_4/par_2/sub_2" kind="subparagraph">
+                  <p>
+                     <t v="The particulars specified in paragraph 1 (b), third indent, (c), (d) and (e), need appear only in an accompanying document. For transport in bulk, this derogation may be extended to (b), second indent, and (f)."/>
+                  </p>
+               </unit>
+            </unit>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_5" kind="article">
+            <num>
+               <t v="Article 5"/>
+            </num>
+            <p>
+               <t v="Without prejudice to Community provisions to be adopted in the field of health and hygiene in connection with the basic materials referred to in Annexes I and II, such products must be subjected to heat treatment which will render the phosphatase negative."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_6" kind="article">
+            <num>
+               <t v="Article 6"/>
+            </num>
+            <unit eId="art_6/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Member States shall take all the necessary steps to ensure that trade in products referred to in Article 1 which comply with the definitions and rules laid down in this Directive and the Annexes thereto cannot be impeded by the application of non-harmonized national provisions governing the composition, manufacturing specifications, packaging or labelling of these products or of foodstuffs in general."/>
+               </p>
+            </unit>
+            <unit eId="art_6/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Paragraph 1 shall not apply to non-harmonized provisions which are justified on the grounds of:"/>
+               </p>
+               <list kind="dash">
+                  <unit eId="art_6/par_2/idt_1" kind="indent">
+                     <p>
+                        <t v="protection of public health,"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_6/par_2/idt_2" kind="indent">
+                     <p>
+                        <t v="prevention of fraud unless such provisions are liable to impede the application of the definitions and rules laid down by this Directive,"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_6/par_2/idt_3" kind="indent">
+                     <p>
+                        <t v="protection of industrial and commercial property, indications of source, registered designation of origin and prevention of unfair competition."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_7" kind="article">
+            <num>
+               <t v="Article 7"/>
+            </num>
+            <unit eId="art_7/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Where, as a result of new information or of a reassessment of existing information made since the Directive was adopted, a Member State finds there is detailed evidence that the use in the products defined in Annexes I and II hereto of one of the substances referred to therein or the maximum quantity of such substance that may be used constitutes a danger to human health, even though it complies with the provisions of this Directive, that Member State may temporarily suspend or restrict application of the provisions in question in its territory. It shall immediately inform the other Member States and the Commission thereof and give reasons for its decision."/>
+               </p>
+            </unit>
+            <unit eId="art_7/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The Commission shall examine, as soon as possible, the reasons given by the Member State concerned and shall consult the Member States within the Standing Committee for Foodstuffs; it shall then deliver its opinion forthwith and take the appropriate measures."/>
+               </p>
+            </unit>
+            <unit eId="art_7/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="If the Commission considers that amendments to the Directive are necessary in order to remedy the difficulties referred to in paragraph 1 and to protect human health, it shall initiate the procedure provided for in Article 10 for the purpose of adopting such amendments. In that case, the Member State which has adopted safeguard measures may maintain them until the amendments enter into force."/>
+               </p>
+            </unit>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_8" kind="article">
+            <num>
+               <t v="Article 8"/>
+            </num>
+            <p>
+               <t v="The Council, acting on a proposal from the Commission, shall adopt where necessary purity criteria for the technological adjuvants referred to in the Annexes."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_9" kind="article">
+            <num>
+               <t v="Article 9"/>
+            </num>
+            <p>
+               <t v="The following shall be determined in accordance with the procedure laid down in Article 10:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_9/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the methods of analysis necessary for checking the purity criteria referred to in Article 8;"/>
+                  </p>
+               </unit>
+               <unit eId="art_9/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="the sampling procedures and methods of analysis necessary for checking the composition and manufacturing specifications at the time of manufacture of the products defined in the Annexes."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_10" kind="article">
+            <provenance amendingAct="32003R0807"
+                        action="replaced"
+                        location="AR:3 .AND. AX:III;PT:36"
+                        marker="O002001M001000"/>
+            <num>
+               <t v="Article 10"/>
+            </num>
+            <unit eId="art_10/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="The Commission shall be assisted by the Standing Committee on the Food Chain and Animal Health set up by Article 58 of Regulation (EC) No 178/2002"/>
+                  <noteRef href="#note_3" marker="3"/>
+                  <t v="."/>
+               </p>
+            </unit>
+            <unit eId="art_10/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <unit eId="art_10/par_2/sub_1" kind="subparagraph">
+                  <p>
+                     <t v="Where reference is made to this Article, Articles 5 and 7 of Decision 1999/468/EC"/>
+                     <noteRef href="#note_4" marker="4"/>
+                     <t v=" shall apply."/>
+                  </p>
+               </unit>
+               <unit eId="art_10/par_2/sub_2" kind="subparagraph">
+                  <p>
+                     <t v="The period laid down in Article 5(6) of Decision 1999/468/EC shall be set at three months."/>
+                  </p>
+               </unit>
+            </unit>
+            <unit eId="art_10/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="The committee shall adopt its rules of procedure."/>
+               </p>
+            </unit>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_11" kind="article">
+            <num>
+               <t v="Article 11"/>
+            </num>
+            <p>
+               <t v="This Directive shall not apply to products referred to in Article 1 intended for export to third countries."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_12" kind="article">
+            <num>
+               <t v="Article 12"/>
+            </num>
+            <p>
+               <t v="Member States shall make such amendments to their laws as may be necessary to comply with this Directive and shall forthwith inform the Commission thereof; the laws thus amended shall be applied in such a way as to:"/>
+            </p>
+            <list kind="dash">
+               <unit eId="art_12/idt_1" kind="indent">
+                  <p>
+                     <t v="permit trade in products complying with this Directive not later than two years after its notification"/>
+                     <noteRef href="#note_5" marker="5"/>
+                     <t v=","/>
+                  </p>
+               </unit>
+               <unit eId="art_12/idt_2" kind="indent">
+                  <p>
+                     <t v="prohibit trade in products not complying with this Directive three years after its notification."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="art_13" kind="article">
+            <num>
+               <t v="Article 13"/>
+            </num>
+            <p>
+               <t v="This Directive is addressed to the Member States."/>
+            </p>
+         </unit>
+      </deleted>
+   </body>
+   <annexes>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="anx_I" kind="annex" eurlexAnchor="1">
+            <num>
+               <t v="ANNEX I"/>
+            </num>
+            <subheading>
+               <t v="EDIBLE CASEINS"/>
+            </subheading>
+            <unit eId="anx_I/pnt_I" kind="level" depth="1">
+               <num>
+                  <t v="I."/>
+               </num>
+               <heading>
+                  <t v="NAMES AND DEFINITIONS"/>
+               </heading>
+               <list kind="alpha">
+                  <unit eId="anx_I/pnt_I/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="edible acid casein"/>
+                        </quote>
+                        <t v=" means edible casein obtained by precipitation using the technological adjuvants and bacterial cultures listed in Section II (d) which comply with the standards laid down in Section II."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx_I/pnt_I/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="edible rennet casein"/>
+                        </quote>
+                        <t v=" means edible casein obtained by precipitation using the technological adjuvants listed in Section III (d) which comply with the standards laid down in Section III."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="anx_I/pnt_II" kind="level" depth="1">
+               <num>
+                  <t v="II."/>
+               </num>
+               <heading>
+                  <t v="STANDARDS APPLICABLE TO "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="EDIBLE ACID CASEIN"/>
+                  </quote>
+               </heading>
+            </unit>
+            <unit eId="anx_I/pnt_II/pnt_a" kind="level" depth="2">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <heading>
+                  <t v="Essential factors of composition"/>
+               </heading>
+               <table cols="3">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="1."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum moisture content"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="10,0 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td rowspan="2">
+                        <p>
+                           <t v="2."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Minimum milk protein content calculated on the dried extract"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="90 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="of which minimum casein content"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="95 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="3."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum milk fat content calculated on the dried extract"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="2,25 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="4."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum titratable acidity, expressed in ml of decinormal sodium hydroxide solution per g"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,27"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="5."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum ash content (P"/>
+                           <emphasis kind="sub">
+                              <t v="2"/>
+                           </emphasis>
+                           <t v="O"/>
+                           <emphasis kind="sub">
+                              <t v="5"/>
+                           </emphasis>
+                           <t v=" included)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="2,5 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="6."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum anhydrous lactose content"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="7."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum sediment content (burnt particles)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="22,5 mg in 25 g"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_I/pnt_II/pnt_b" kind="level" depth="2">
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <heading>
+                  <t v="Contaminants"/>
+               </heading>
+               <table cols="2">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="Maximum lead content"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1 mg/kg"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_I/pnt_II/pnt_c" kind="level" depth="2">
+               <num>
+                  <t v="(c)"/>
+               </num>
+               <heading>
+                  <t v="Impurities"/>
+               </heading>
+               <table cols="2">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="Extraneous matter (such as wood or metal particles, hairs or insect fragments)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="nil in 25 g"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_I/pnt_II/pnt_d" kind="level" depth="2">
+               <num>
+                  <t v="(d)"/>
+               </num>
+               <heading>
+                  <t v="Harmless technological adjuvants and bacterial cultures suitable for human consumption"/>
+               </heading>
+               <list kind="roman">
+                  <unit eId="anx_I/pnt_II/pnt_d/pnt_i" kind="point">
+                     <num>
+                        <t v="(i)"/>
+                     </num>
+                     <list kind="dash">
+                        <unit eId="anx_I/pnt_II/pnt_d/pnt_i/idt_1" kind="indent">
+                           <p>
+                              <t v="lactic acid (E 270)"/>
+                           </p>
+                        </unit>
+                        <unit eId="anx_I/pnt_II/pnt_d/pnt_i/idt_2" kind="indent">
+                           <p>
+                              <t v="hydrochloric acid"/>
+                           </p>
+                        </unit>
+                        <unit eId="anx_I/pnt_II/pnt_d/pnt_i/idt_3" kind="indent">
+                           <p>
+                              <t v="sulphuric acid"/>
+                           </p>
+                        </unit>
+                        <unit eId="anx_I/pnt_II/pnt_d/pnt_i/idt_4" kind="indent">
+                           <p>
+                              <t v="citric acid (E 330)"/>
+                           </p>
+                        </unit>
+                        <unit eId="anx_I/pnt_II/pnt_d/pnt_i/idt_5" kind="indent">
+                           <p>
+                              <t v="acetic acid (E 260)"/>
+                           </p>
+                        </unit>
+                        <unit eId="anx_I/pnt_II/pnt_d/pnt_i/idt_6" kind="indent">
+                           <p>
+                              <t v="orthophosphoric acid"/>
+                           </p>
+                        </unit>
+                     </list>
+                  </unit>
+                  <unit eId="anx_I/pnt_II/pnt_d/pnt_ii" kind="point">
+                     <num>
+                        <t v="(ii)"/>
+                     </num>
+                     <list kind="dash">
+                        <unit eId="anx_I/pnt_II/pnt_d/pnt_ii/idt_1" kind="indent">
+                           <p>
+                              <t v="whey"/>
+                           </p>
+                        </unit>
+                        <unit eId="anx_I/pnt_II/pnt_d/pnt_ii/idt_2" kind="indent">
+                           <p>
+                              <t v="bacterial cultures producing lactic acid"/>
+                           </p>
+                        </unit>
+                     </list>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="anx_I/pnt_II/pnt_e" kind="level" depth="2">
+               <num>
+                  <t v="(e)"/>
+               </num>
+               <heading>
+                  <t v="Organoleptic characteristics"/>
+               </heading>
+               <table cols="3">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="1."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Odour:"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="No foreign odours"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="2."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Appearance:"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Colour ranging from white to creamy white; the product must not contain any lumps that would not break up under slight pressure."/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_I/pnt_III" kind="level" depth="1">
+               <num>
+                  <t v="III."/>
+               </num>
+               <heading>
+                  <t v="STANDARDS APPLICABLE TO "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="EDIBLE RENNET CASEIN"/>
+                  </quote>
+               </heading>
+            </unit>
+            <unit eId="anx_I/pnt_III/pnt_a" kind="level" depth="2">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <heading>
+                  <t v="Essential factors of composition"/>
+               </heading>
+               <table cols="3">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="1."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum moisture content"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="10 % m/m"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td rowspan="2">
+                        <p>
+                           <t v="2."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Minimum milk protein content calculated on the dried extract"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="84 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="of which minimum casein content"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="95 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="3."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum milk fat content calculated on the dried extract"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="2 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="4."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Minimum ash content (P"/>
+                           <emphasis kind="sub">
+                              <t v="2"/>
+                           </emphasis>
+                           <t v="O"/>
+                           <emphasis kind="sub">
+                              <t v="5"/>
+                           </emphasis>
+                           <t v=" included)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="7,50 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="5."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum anhydrous lactose content"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="6."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum sediment content (burnt particles)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="22,5 mg in 25 g"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_I/pnt_III/pnt_b" kind="level" depth="2">
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <heading>
+                  <t v="Contaminants"/>
+               </heading>
+               <table cols="2">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="Maximum lead content"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1 mg/kg"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_I/pnt_III/pnt_c" kind="level" depth="2">
+               <num>
+                  <t v="(c)"/>
+               </num>
+               <heading>
+                  <t v="Impurities"/>
+               </heading>
+               <table cols="2">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="Extraneous matter (such as wood or metal particles, hairs or insect fragments)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="nil in 25 g"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_I/pnt_III/pnt_d" kind="level" depth="2">
+               <num>
+                  <t v="(d)"/>
+               </num>
+               <heading>
+                  <t v="Harmless technological adjuvants suitable for human consumption"/>
+               </heading>
+               <list kind="dash">
+                  <unit eId="anx_I/pnt_III/pnt_d/idt_1" kind="indent">
+                     <provenance amendingAct="32008R1332"
+                                 action="replaced"
+                                 location="AR:19"
+                                 marker="O003001M001000"/>
+                     <p>
+                        <t v="rennet meeting the requirements of Regulation (EC) No 1332/2008 of the European Parliament and of the Council of "/>
+                        <date asWritten="16 December 2008" date="2008-12-16"/>
+                        <t v=" on food enzymes"/>
+                        <noteRef href="#note_6" marker="6"/>
+                        <t v=";"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx_I/pnt_III/pnt_d/idt_2" kind="indent">
+                     <provenance amendingAct="32008R1332"
+                                 action="replaced"
+                                 location="AR:19"
+                                 marker="O003001M001000"/>
+                     <p>
+                        <t v="other milk-coagulating enzymes meeting the requirements of Regulation (EC) No 1332/2008."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="anx_I/pnt_III/pnt_e" kind="level" depth="2">
+               <num>
+                  <t v="(e)"/>
+               </num>
+               <heading>
+                  <t v="Organoleptic characteristics"/>
+               </heading>
+               <table cols="3">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="1."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Odour:"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="No foreign odours"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="2."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Appearance:"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Colour ranging from white to creamy white; the product must not contain any lumps that would not break up under slight pressure."/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <unit eId="anx_II" kind="annex" eurlexAnchor="2">
+            <num>
+               <t v="ANNEX II"/>
+            </num>
+            <subheading>
+               <t v="EDIBLE CASEINATES"/>
+            </subheading>
+            <unit eId="anx_II/pnt_I" kind="level" depth="1">
+               <num>
+                  <t v="I."/>
+               </num>
+               <heading>
+                  <t v="DENOMINATIONS AND DEFINITIONS"/>
+               </heading>
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="edible caseinates"/>
+                  </quote>
+                  <t v=" means caseinates obtained from edible caseins using neutralizing agents of edible quality listed under Section II (d) and complying with the standards set out in Section II."/>
+               </p>
+            </unit>
+            <unit eId="anx_II/pnt_II" kind="level" depth="1">
+               <num>
+                  <t v="II."/>
+               </num>
+               <heading>
+                  <t v="STANDARDS APPLICABLE TO EDIBLE CASEINATES"/>
+               </heading>
+            </unit>
+            <unit eId="anx_II/pnt_II/pnt_a" kind="level" depth="2">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <heading>
+                  <t v="Essential factors of composition"/>
+               </heading>
+               <table cols="3">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="1."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum moisture content"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="8 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="2."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Minimum content of milk protein casein, calculated on the dried extract"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="88 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="3."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum content of milk fat, calculated on the dried extract"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="2,0 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="4."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum anhydrous lactose content"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1,0 % by weight"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="5."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="pH value"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="6,0 to 8,0"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="6."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Maximum sediment content (burnt particles)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="22,5 mg in 25 g"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_II/pnt_II/pnt_b" kind="level" depth="2">
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <heading>
+                  <t v="Contaminants"/>
+               </heading>
+               <table cols="2">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="Maximum lead content"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1 mg/kg"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_II/pnt_II/pnt_c" kind="level" depth="2">
+               <num>
+                  <t v="(c)"/>
+               </num>
+               <heading>
+                  <t v="Impurities"/>
+               </heading>
+               <table cols="2">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="Extraneous matter (such as wood or metal particles, hairs or insect fragments)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="nil in 25 g"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_II/pnt_II/pnt_d" kind="level" depth="2">
+               <num>
+                  <t v="(d)"/>
+               </num>
+               <heading>
+                  <content>
+                     <p>
+                        <t v="Technological adjuvants of edible quality"/>
+                     </p>
+                     <p>
+                        <t v="(optlonal neutralizing and buffering agents)"/>
+                     </p>
+                  </content>
+               </heading>
+               <table cols="3">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="hydroxides"/>
+                        </p>
+                     </td>
+                     <td rowspan="4">
+                        <p>
+                           <t v="of"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="sodium"/>
+                        </p>
+                        <p>
+                           <t v="potassium"/>
+                        </p>
+                        <p>
+                           <t v="calcium"/>
+                        </p>
+                        <p>
+                           <t v="ammonium"/>
+                        </p>
+                        <p>
+                           <t v="magnesium"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="carbonates"/>
+                        </p>
+                     </td>
+                     <td/>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="phosphates"/>
+                        </p>
+                     </td>
+                     <td/>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="citrates"/>
+                        </p>
+                     </td>
+                     <td/>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_II/pnt_II/pnt_e" kind="level" depth="2">
+               <num>
+                  <t v="(e)"/>
+               </num>
+               <heading>
+                  <t v="Characteristics"/>
+               </heading>
+               <table cols="3">
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="1."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Odour:"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Very slight foreign flavours and odours."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="2."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Appearance:"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Colour ranging from white to creamy white; the product must not contain any lumps that do not break under slight pressure."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="3."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Solubility:"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Almost entirely soluble in distilled water, except for the calcium caseinate."/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+         </unit>
+      </deleted>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="243"
+                 date="1971-10-29"
+                 page="29">
+               <t v="OJ No L 243, 29.10.1971, p. 29"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="262"
+                 date="1976-09-27"
+                 page="204">
+               <t v="OJ No L 262, 27.9.1976, p. 204"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="31" date="2002-02-01" page="1">
+               <t v="OJ L 31, 1.2.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="184"
+                 date="1999-07-17"
+                 page="23">
+               <t v="OJ L 184, 17.7.1999, p. 23"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <t v="This Directive was notified to the Member States on 2 August 1983."/>
+         </p>
+      </note>
+      <note eId="note_6" marker="6" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="354"
+                 date="2008-12-31"
+                 page="7">
+               <t v="OJ L 354, 31.12.2008, p. 7"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

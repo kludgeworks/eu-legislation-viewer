@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31991R0441"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.10"
+           converter="1.0.0">
+   <source celex="31991R0441">
+      <publication series="L" number="52" date="1991-02-27" page="9"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EEC) No 441/91"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="25 February 1991" date="1991-02-25"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="concerning the classification of certain goods in the codes "/>
+               <t v="17041019"/>
+               <t v=", "/>
+               <t v="17041099"/>
+               <t v=", and "/>
+               <t v="95021010"/>
+               <t v=" of the combined nomenclature and repealing Regulation (EEC) No 1287/83"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Economic Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EEC) No 2658/87 of "/>
+               <date asWritten="23 July 1987" date="1987-07-23"/>
+               <t v=" on the tariff and statistical nomenclature and on the Common Customs Tariff"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", as last amended by Regulation (EEC) No 53/91"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", and in particular Article 9 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <p>
+               <t v="Whereas in order to ensure uniform application of the combined nomenclature annexed to that Regulation, it is necessary to adopt measures concerning the classification of the goods referred to in the annex to the present Regulation;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <p>
+               <t v="Whereas Regulation (EEC) No 2658/87 has set down the general rules for the interpretation of the combined nomenclature and these rules also apply to any other nomenclature which is wholly or partly based on it or which adds any additional subdivisions to it and which is established by specific Community provisions, with a view to the application of tariff or other measures relating to trade in goods;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <p>
+               <t v="Whereas, pursuant to the said general rules, the goods described in column 1 of the table annexed to this Regulation must be classified under the appropriate CN codes indicated in column 2, by virtue of the reasons set out in column 3;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <p>
+               <t v="Whereas this Regulation concerns also the products referred to in Commission Regulations (EEC) No 1278/83"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v="; whereas, therefore, the latter Regulation should be repealed;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <p>
+               <t v="Whereas the measures provided for in this Regulation are in accordance with the opinion of the Nomenclature Committee,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The goods described in column 1 of the annexed table are now classified within the combined nomenclature under the appropriate CN codes indicated in column 2 of the table."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="Regulation (EEC) No 1287/83 is hereby repealed."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the 21st day following its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Communities"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="25 February 1991" date="1991-02-25"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Christiane "/>
+               <emphasis kind="uc">
+                  <t v="Scrivener"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <table cols="4">
+            <tr header="true">
+               <td header="true">
+                  <p>
+                     <t v="Description of the goods"/>
+                  </p>
+               </td>
+               <td colspan="2" header="true">
+                  <p>
+                     <t v="Classification"/>
+                  </p>
+                  <p>
+                     <t v="CN code"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Reasons"/>
+                  </p>
+               </td>
+            </tr>
+            <tr header="true">
+               <td header="true">
+                  <p>
+                     <t v="(1)"/>
+                  </p>
+               </td>
+               <td colspan="2" header="true">
+                  <p>
+                     <t v="(2)"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="(3)"/>
+                  </p>
+               </td>
+            </tr>
+            <rowGroup>
+               <tr>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Plastic dolls with movable limbs, 140 mm tall, with transparent plastic chests filled with about 10 grams of small sweets (chewing-gum) containing sucrose, which can be removed through an aperture under the belt-buckle of the doll."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="17041019"/>
+                     </p>
+                     <p>
+                        <t v="17041099"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Chewing gum"/>
+                     </p>
+                  </td>
+                  <td rowspan="2">
+                     <p>
+                        <t v="Classification is determined by the provisions of general rules 1,5 b and 6 for the interpretation of the combined nomenclature and the texts of CN codes 1704, "/>
+                        <t v="170410"/>
+                        <t v=", "/>
+                        <t v="17041019"/>
+                        <t v=", "/>
+                        <t v="17041099"/>
+                        <t v=" (depending on the sucrose content), 9502, "/>
+                        <t v="950210"/>
+                        <t v=" and "/>
+                        <t v="95021010"/>
+                        <t v="."/>
+                     </p>
+                     <p>
+                        <t v="These dolls are not the normal method of packaging for chewing gum, hence they should be classified separately."/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="95021010"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="dolls"/>
+                     </p>
+                  </td>
+               </tr>
+            </rowGroup>
+         </table>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="256"
+                 date="1987-09-07"
+                 page="1">
+               <t v="OJ No L 256, 7. 9. 1987, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="7" date="1991-01-10" page="14">
+               <t v="OJ No L 7, 10. 1. 1991, p. 14"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="137"
+                 date="1983-05-26"
+                 page="11">
+               <t v="OJ No L 137, 26, 5. 1983, p. 11"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

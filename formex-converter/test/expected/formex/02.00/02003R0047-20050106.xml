@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32003R0047"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2005-01-06"
+           lang="en"
+           formexVersion="02.00"
+           converter="1.0.0">
+   <source celex="02003R0047-20050106">
+      <publication series="L" number="7" date="2003-01-11" page="64"/>
+   </source>
+   <lifecycle start="2005-01-06" sequence="001.001.0">
+      <eventRef type="amendment" act="32005R0006" date="2005-01-04"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 47/2003"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="10 January 2003" date="2003-01-10"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Annex I to Council Regulation (EC) No 2200/96"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 2200/96 of "/>
+               <date asWritten="28 October 1996" date="1996-10-28"/>
+               <t v=" on the common organisation of the market in fruit and vegetables"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", as last amended by Regulation (EC) No 545/2002"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", and in particular Article 2(3) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Annex I to Regulation (EC) No 2200/96 lists the products which are to be supplied fresh to the consumer and are subject to standards."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Consumer packaging containing different species of fruit and vegetables are becoming more common on the market and enable demand from certain consumers to be met."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Fair trading requires fresh fruit and vegetables sold in the same package to be of uniform quality. This makes it necessary to extend the list of products subject to marketing standards to include other products when combined in sales packages with products already on that list."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="Annex I to Regulation (EC) No 2200/96 should therefore be amended."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Fresh Fruit and Vegetables,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The following is added to Annex I to Regulation (EC) No 2200/96:"/>
+         </p>
+         <quotedStructure eId="art_1/qst_1">
+            <p>
+               <t v="‘"/>
+               <t v="Other products referred to in Article 1, when combined in a sales package "/>
+               <changed amendingAct="32005R0006"
+                        action="replaced"
+                        location="AR:2"
+                        marker="O001001M001000">
+                  <t v="of a net weight of three kilograms or less"/>
+               </changed>
+               <t v=" with at least one of the products in this Annex."/>
+               <t v="’"/>
+            </p>
+         </quotedStructure>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the 20th day following its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Communities"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="297"
+                 date="1996-11-21"
+                 page="1">
+               <t v="OJ L 297, 21.11.1996, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="84" date="2002-03-28" page="1">
+               <t v="OJ L 84, 28.3.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

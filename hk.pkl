@@ -16,8 +16,9 @@ local raw =
 // vendored W3C schemas, under the W3C licence; patches, whose context lines must match exactly; the
 // licence texts, as SPDX publishes them
 local vendored = List("formex-converter/test/mathml3/**", "**/*.patch", "LICENSES/**")
-// written by tools: the Maven lock file (bazel run @maven//:pin), never edited by hand
-local generated = List("maven_install.json")
+// written by tools, never edited by hand: the Maven lock file (bazel run @maven//:pin), the
+// converter's expected output (mise run expected)
+local generated = List("maven_install.json", "formex-converter/test/expected/**/*.xml")
 local xml = List("**/*.xml", "**/*.xsl", "**/*.xsd", "**/*.xspec", "**/*.xjb", "**/*.sch")
 
 local linters = new Mapping<String, Step> {
@@ -57,7 +58,7 @@ local linters = new Mapping<String, Step> {
   ["mixed_line_ending"] = (Builtins.mixed_line_ending) { exclude = raw + vendored + generated }
   ["check_merge_conflict"] = Builtins.check_merge_conflict
   ["check_case_conflict"] = Builtins.check_case_conflict
-  ["check_added_large_files"] = (Builtins.check_added_large_files) { exclude = raw }
+  ["check_added_large_files"] = (Builtins.check_added_large_files) { exclude = raw + generated }
   ["detect_private_key"] = Builtins.detect_private_key
 }
 

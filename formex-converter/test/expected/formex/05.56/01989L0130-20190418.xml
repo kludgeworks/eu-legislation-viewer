@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31989L0130"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2019-04-18"
+           lang="en"
+           formexVersion="05.56"
+           converter="1.0.0">
+   <source celex="01989L0130-20190418">
+      <publication series="L" number="49" date="1989-02-21" page="26"/>
+   </source>
+   <lifecycle start="2019-04-18" produced="2019-04-01" sequence="002.001.0">
+      <eventRef type="amendment" act="32019R0516" date="2019-03-19"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <deleted amendingAct="32019R0516"
+                        action="deleted"
+                        location="AR:10;AL:1"
+                        marker="O002001M001000">
+                  <emphasis kind="uc">
+                     <t v="COUNCIL DIRECTIVE"/>
+                  </emphasis>
+               </deleted>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <deleted amendingAct="32019R0516"
+                     action="deleted"
+                     location="AR:10;AL:1"
+                     marker="O002001M001000">
+               <t v="of "/>
+            </deleted>
+            <docDate asWritten="13 February 1989" date="1989-02-13"/>
+         </p>
+         <p>
+            <docPurpose>
+               <deleted amendingAct="32019R0516"
+                        action="deleted"
+                        location="AR:10;AL:1"
+                        marker="O002001M001000">
+                  <t v="on the harmonization of the compilation of gross national product at market prices"/>
+               </deleted>
+            </docPurpose>
+         </p>
+         <p>
+            <deleted amendingAct="32019R0516"
+                     action="deleted"
+                     location="AR:10;AL:1"
+                     marker="O002001M001000">
+               <t v="(89/130/EEC, Euratom)"/>
+            </deleted>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <deleted>
+         <provenance amendingAct="32019R0516"
+                     action="deleted"
+                     location="AR:10;AL:1"
+                     marker="O002001M001000"/>
+         <unit eId="tis_PREMIER" kind="division">
+            <num>
+               <t v="TITRE PREMIER"/>
+            </num>
+            <subheading>
+               <t v="Définition du produit national brut aux prix du marché"/>
+            </subheading>
+            <unit eId="art_Article-premier" kind="article">
+               <num>
+                  <t v="Article premier"/>
+               </num>
+               <p>
+                  <t v="Le PNBpm est défini conformément au système européen de comptes économiques intégrés (SEC) en vigueur."/>
+               </p>
+            </unit>
+         </unit>
+      </deleted>
+   </body>
+</legalText>
+

@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32005R0356"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="01.01"
+           converter="1.0.0">
+   <source celex="32005R0356">
+      <publication series="L" number="56" date="2005-03-02" page="8"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 356/2005"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="1 March 2005" date="2005-03-01"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="laying down detailed rules for the marking and identification of passive fishing gear and beam trawls"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EEC) No 2847/93 of "/>
+               <date asWritten="12 October 1993" date="1993-10-12"/>
+               <t v=" establishing a control system applicable to the common fisheries policy"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Articles 5(c) and 20a(3) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="The monitoring and inspection of fishing activities, in particular of certain technical conservation measures, specifying "/>
+               <emphasis kind="i">
+                  <t v="inter alia"/>
+               </emphasis>
+               <t v=", mesh sizes, limitations of fishing times and other characteristics of passive fishing gear is necessary. For this purpose, the fishing gear used by fishing vessels should be easy to identify and to check. In order to ensure compliance with those requirements, detailed rules should be laid down for the marking and identification of certain fishing gear utilised in Community waters."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="It is appropriate, for a proper implementation of the present regulation, that the use of fishing gears which does not comply with the requirements it lays down is prohibited, as well as the carrying on board of gears which do not comply with certain provisions of the Regulation."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Fishery and Aquaculture,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="cpt_I" kind="division">
+         <num>
+            <t v="CHAPTER I"/>
+         </num>
+         <subheading>
+            <t v="GENERAL PROVISIONS"/>
+         </subheading>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <heading>
+               <t v="Subject matter"/>
+            </heading>
+            <p>
+               <t v="This Regulation lays down detailed rules for the marking and identification of passive fishing gear and beam trawls."/>
+            </p>
+         </unit>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <heading>
+               <t v="Scope"/>
+            </heading>
+            <unit eId="art_2/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="This Regulation shall apply to vessels fishing in Community waters."/>
+               </p>
+            </unit>
+            <unit eId="art_2/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="This Regulation shall not apply within the 12 nautical miles measured from the base lines of the Coastal Member State."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_3" kind="article">
+            <num>
+               <t v="Article 3"/>
+            </num>
+            <heading>
+               <t v="Definitions"/>
+            </heading>
+            <p>
+               <t v="For the purposes of this Regulation, the following definitions shall apply:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="passive gear"/>
+                     </quote>
+                     <t v=" means:"/>
+                  </p>
+                  <list kind="roman">
+                     <unit eId="art_3/pnt_a/pnt_i" kind="point">
+                        <num>
+                           <t v="(i)"/>
+                        </num>
+                        <p>
+                           <t v="longlines;"/>
+                        </p>
+                     </unit>
+                     <unit eId="art_3/pnt_a/pnt_ii" kind="point">
+                        <num>
+                           <t v="(ii)"/>
+                        </num>
+                        <p>
+                           <t v="gillnets, entangling nets, trammel nets, drifting gillnets which may consist of one or more separate nets which are rigged with top, bottom and connecting ropes, and may be equipped with anchoring, floating and navigational gear;"/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="art_3/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="beam trawls"/>
+                     </quote>
+                     <t v=" mean trawls which are towed from outrigger booms."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_4" kind="article">
+            <num>
+               <t v="Article 4"/>
+            </num>
+            <heading>
+               <t v="Prohibition"/>
+            </heading>
+            <unit eId="art_4/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="It shall be prohibited to use for fishing passive gear, buoys and beam trawls which are not marked and identifiable in accordance with the provisions of this Regulation."/>
+               </p>
+            </unit>
+            <unit eId="art_4/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="It shall be prohibited to carry on board:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_4/par_2/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="beams of a beam trawl which do not display the external registration letters and numbers in accordance with Article 5;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_4/par_2/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="passive gear which is not labelled in accordance with Article 7;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_4/par_2/pnt_c" kind="point">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="buoys which are not marked in accordance with Article 10."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+         </unit>
+      </unit>
+      <unit eId="cpt_II" kind="division">
+         <num>
+            <t v="CHAPTER II"/>
+         </num>
+         <subheading>
+            <t v="BEAM TRAWLS"/>
+         </subheading>
+         <unit eId="art_5" kind="article">
+            <num>
+               <t v="Article 5"/>
+            </num>
+            <heading>
+               <t v="Responsibilities concerning beam trawls"/>
+            </heading>
+            <p>
+               <t v="The master of a fishing vessel or his representative shall ensure that each assembled beam of a beam trawl carried on board or used for fishing shall clearly display the external registration letters and numbers of the vessel to which they belong on the beam or shoes of each beam."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="cpt_III" kind="division">
+         <num>
+            <t v="CHAPTER III"/>
+         </num>
+         <subheading>
+            <t v="PASSIVE GEAR"/>
+         </subheading>
+         <unit eId="art_6" kind="article">
+            <num>
+               <t v="Article 6"/>
+            </num>
+            <heading>
+               <t v="Responsibilities concerning passive gear"/>
+            </heading>
+            <p>
+               <t v="The master of a fishing vessel or his representative shall ensure that each passive gear — carried on board or used for fishing is clearly marked and identifiable, in accordance with the provisions of this Chapter."/>
+            </p>
+         </unit>
+         <unit eId="art_7" kind="article">
+            <num>
+               <t v="Article 7"/>
+            </num>
+            <heading>
+               <t v="Display of identification"/>
+            </heading>
+            <p>
+               <t v="Each passive gear used for fishing shall permanently display the external registration letters and numbers displayed on the hull of the vessel to which they belong:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_7/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="on a label attached to the upper first row at both ends of each passive gear;"/>
+                  </p>
+               </unit>
+               <unit eId="art_7/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="for passive gear extending more than one nautical mile, on labels attached to the upper first row of the passive gear at regular intervals not exceeding one nautical mile so that no part of the passive gear extending more than one nautical mile shall be left unmarked."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_8" kind="article">
+            <num>
+               <t v="Article 8"/>
+            </num>
+            <heading>
+               <t v="Labels"/>
+            </heading>
+            <unit eId="art_8/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Each label shall be:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_8/par_1/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="made of durable material;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_8/par_1/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="securely fitted to the gear;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_8/par_1/pnt_c" kind="point">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="at least 65 millimetres broad;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_8/par_1/pnt_d" kind="point">
+                     <num>
+                        <t v="(d)"/>
+                     </num>
+                     <p>
+                        <t v="at least 75 millimetres long."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_8/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The letters and numbers displayed on each label shall not be effaced, altered or allowed to become illegible."/>
+               </p>
+            </unit>
+         </unit>
+      </unit>
+      <unit eId="cpt_IV" kind="division">
+         <num>
+            <t v="CHAPTER IV"/>
+         </num>
+         <subheading>
+            <t v="BUOYS"/>
+         </subheading>
+         <unit eId="art_9" kind="article">
+            <num>
+               <t v="Article 9"/>
+            </num>
+            <heading>
+               <t v="Responsibilities concerning buoys"/>
+            </heading>
+            <p>
+               <t v="The master of a fishing vessel or his representative shall ensure that two end marker buoys and intermediary marker buoys, rigged in accordance with the Annex, are fixed to each passive gear used for fishing and are deployed in accordance with the provisions of this Chapter."/>
+            </p>
+         </unit>
+         <unit eId="art_10" kind="article">
+            <num>
+               <t v="Article 10"/>
+            </num>
+            <heading>
+               <t v="Display of identification"/>
+            </heading>
+            <unit eId="art_10/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Each end marker buoy and intermediary buoy shall display the external registration letters and numbers displayed on the hull of the vessel to which they belong as follows:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_10/par_1/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="letters and numbers shall be displayed as high above the water as possible so as to be clearly visible;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_10/par_1/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="in a colour contrasting with the surface on which they are displayed."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_10/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The letters and numbers displayed on the marker buoy shall not be effaced, altered or allowed to become illegible."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_11" kind="article">
+            <num>
+               <t v="Article 11"/>
+            </num>
+            <heading>
+               <t v="Cords"/>
+            </heading>
+            <unit eId="art_11/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="The cords linking the buoys to the passive gear shall be of submersible material, or shall be weighted down."/>
+               </p>
+            </unit>
+            <unit eId="art_11/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The cords linking the end marker buoys to each gear shall be fixed at the ends of that gear."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_12" kind="article">
+            <num>
+               <t v="Article 12"/>
+            </num>
+            <heading>
+               <t v="End marker buoys"/>
+            </heading>
+            <unit eId="art_12/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="End marker buoys shall be deployed so that each end of the gear may be determined at any time."/>
+               </p>
+            </unit>
+            <unit eId="art_12/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The mast of each end marker buoy shall have a height of at least 1,5 metres above the sea level measured from the top of the float."/>
+               </p>
+            </unit>
+            <unit eId="art_12/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="End marker buoys shall be coloured, but may not be red or green."/>
+               </p>
+            </unit>
+            <unit eId="art_12/par_4" kind="paragraph">
+               <num>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="Each end marker buoy shall include:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_12/par_4/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="one or two rectangular flag(s) whose side measures at least 40 centimetres; where two flags are required on the same buoy, the distance between them shall be at least 20 centimetres; the distance between the water and the first flag shall be at least 80 centimetres; flags indicating the extremities of the same net shall be of the same colour, which may not be white, and of the same size;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_12/par_4/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="one or two lights, which shall be yellow and give one flash each five-second (F1 Y5s) and be visible from a distance of at least two nautical miles;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_12/par_4/pnt_c" kind="point">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="a top sign on the top of the buoy which shall be a sphere of a diameter of at least 25 centimetres topped with one or two luminous band which shall be neither red nor green and shall be at least 6 centimetres broad. A spherical radar reflector may be used as the mark on top of the buoy;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_12/par_4/pnt_d" kind="point">
+                     <num>
+                        <t v="(d)"/>
+                     </num>
+                     <p>
+                        <t v="radar reflectors giving an echo of at least two nautical miles."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+         </unit>
+         <unit eId="art_13" kind="article">
+            <num>
+               <t v="Article 13"/>
+            </num>
+            <heading>
+               <t v="Fixing of end marker buoys"/>
+            </heading>
+            <unit eId="art_13/unp_1" kind="paragraph">
+               <p>
+                  <t v="End marker buoys shall be fixed to passive gear in the following way:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_13/unp_1/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="the buoy in the western sector (meaning the half compass circle from south through west to and including north) shall be rigged with two flags, two striped luminous bands, two lights and a label in accordance with Article 8;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_13/unp_1/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="the buoy in the eastern sector (meaning the half compass circle from north through east to and including the south) shall be rigged with one flag one striped luminous band, one light and a label in accordance with Article 8."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_13/unp_2" kind="paragraph">
+               <p>
+                  <t v="The label shall contain the information contained in Article 10."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_14" kind="article">
+            <num>
+               <t v="Article 14"/>
+            </num>
+            <heading>
+               <t v="Intermediary marker buoys"/>
+            </heading>
+            <unit eId="art_14/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Intermediary marker buoys shall be fixed to passive gear extending more than 1 nautical mile."/>
+               </p>
+            </unit>
+            <unit eId="art_14/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Intermediary marker buoys shall be deployed at distances of not more than 1 nautical mile so that no part of the gear extending 1 nautical mile or more shall be left unmarked."/>
+               </p>
+            </unit>
+            <unit eId="art_14/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="Intermediary marker buoys shall have the same characteristics as those of the end marker buoy in the eastern sector except for the following:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_14/par_3/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="the flags shall be white;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_14/par_3/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="every fifth intermediary marker buoys shall be fitted with a radar reflector giving an echo at least two nautical miles."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+         </unit>
+      </unit>
+      <unit eId="cpt_V" kind="division">
+         <num>
+            <t v="CHAPTER V"/>
+         </num>
+         <subheading>
+            <t v="FINAL PROVISION"/>
+         </subheading>
+         <unit eId="art_15" kind="article">
+            <num>
+               <t v="Article 15"/>
+            </num>
+            <unit eId="art_15/unp_1" kind="paragraph">
+               <p>
+                  <t v="This Regulation shall enter into force on the seventh day following its publication in the "/>
+                  <emphasis kind="i">
+                     <t v="Official Journal of the European Union"/>
+                  </emphasis>
+                  <t v="."/>
+               </p>
+            </unit>
+            <unit eId="art_15/unp_2" kind="paragraph">
+               <p>
+                  <t v="It shall apply from "/>
+                  <date asWritten="1 October 2005" date="2005-10-01"/>
+                  <t v="."/>
+               </p>
+            </unit>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="1 March 2005" date="2005-03-01"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Joe "/>
+               <emphasis kind="uc">
+                  <t v="Borg"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <unit eId="anx/lvl_1" kind="level" depth="1">
+            <heading>
+               <t v="CHARACTERISTICS OF END MARKER AND INTERMEDIARY MARKER BUOYS"/>
+            </heading>
+            <figure src="L_2005056EN.01001102.tif" content="tech-design">
+               <description>
+                  <p>
+                     <t v="TOP SIGN"/>
+                     <t v="SPHERE"/>
+                     <t v="RADAR REFLECTOR"/>
+                     <t v="LUMINOUS BAND"/>
+                     <t v="YELLOW LIGHT"/>
+                     <t v="RECTANGULAR"/>
+                     <t v="FLAGS"/>
+                     <t v="FLOAT"/>
+                     <t v="SURFACE"/>
+                     <t v="STABILISING WEIGHT"/>
+                     <t v="MAST"/>
+                     <t v="HEIGHT AT"/>
+                     <t v="LEAST 1,5"/>
+                     <t v="METERS ABOVE"/>
+                     <t v="THE TOP OF"/>
+                     <t v="THE FLOAT"/>
+                     <t v="WEST"/>
+                     <t v="INTERMEDIARY"/>
+                     <t v="EAST"/>
+                  </p>
+               </description>
+            </figure>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="261"
+                 date="1993-10-20"
+                 page="1">
+               <t v="OJ L 261, 20.10.1993, p. 1"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 1954/2003 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="289"
+                 date="2003-11-07"
+                 page="1">
+               <t v="OJ L 289, 7.11.2003, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

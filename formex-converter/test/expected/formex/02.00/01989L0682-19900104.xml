@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31989L0682"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="1990-01-04"
+           lang="en"
+           formexVersion="02.00"
+           converter="1.0.0">
+   <source celex="01989L0682-19900104">
+      <publication series="L" number="398" date="1989-12-30" page="29"/>
+   </source>
+   <lifecycle start="1990-01-04" sequence="000.001.0">
+      <eventRef type="corrigendum" act="31989L0682R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Directive"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="21 December 1989" date="1989-12-21"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Directive 86/298/EEC on rear-mounted roll-over protection structures of narrow-track wheeled agricultural and forestry tractors"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(89/682/EEC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Economic Community, and in particular Article 100a thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the proposal from the Commission"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="In cooperation with the European Parliament"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_4" kind="citation">
+            <p>
+               <t v="Having regard to the opinion of the Economic and Social Committee"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=","/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <p>
+               <t v="Whereas it is necessary to adopt measures with the aim of progressively establishing the internal market over a period expiring on "/>
+               <date asWritten="31 December 1992" date="1992-12-31"/>
+               <t v="; whereas the internal market comprises an area without internal frontiers in which the free movement of goods, persons, services and capital is ensured;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <p>
+               <t v="Whereas Article 13 of Directive 86/298/EEC"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v=" lays down that the provisions at present in force shall be supplemented by provisions introducing additional impact tests into the dynamic test procedure;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <p>
+               <t v="Whereas, since provision is already made for an additional test in the case of the static test procedure, it is necessary also in that of the dynamic test procedure to provide for an additional test which more accurately reflects the situation in the event of tractor roll-over in order that these two test procedures may be rendered equivalent and the present imbalance between them eliminated;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <p>
+               <t v="Whereas the purely theoretical parameters and calculations on which the additional dynamic impact test was initially based have been the subject of practical experiments that leave no doubt as to their reliability;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <p>
+               <t v="Whereas it is also necessary to amend the scope of Directive 86/298/EEC so as to clarify the wording of the second indent of Article 1 concerning the tyres fitted to the front and rear axles, and thus eliminate any possibility of differing interpretations,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DIRECTIVE:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Directive 86/298/EEC is hereby amended as follows:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="art_1/pnt_1" kind="point">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="the second indent of Article 1 is replaced by the following:"/>
+               </p>
+               <quotedStructure eId="art_1/pnt_1/qst_1">
+                  <unit eId="art_1/pnt_1/qst_1/idt_1" kind="point">
+                     <num>
+                        <t v="‘"/>
+                        <t v="—"/>
+                     </num>
+                     <p>
+                        <t v="fixed or adjustable minimum track width of less than "/>
+                        <t v="1150"/>
+                        <t v=" mm for the axles fitted with the widest tyres; since the axle fitted with the widest tyres is assumed to be adjusted to a maximum track width of "/>
+                        <t v="1150"/>
+                        <t v=" mm, the other axle must be capable of being adjusted in such a way that the outer edges of the narrowest tyres do not project beyond the outer edges of the tyres on the axle with the widest tyres. Where both axles are equipped with wheels and tyres of the same size, the fixed or adjustable track width of both axles must be less than "/>
+                        <t v="1150"/>
+                        <t v=" mm;"/>
+                        <t v="’"/>
+                     </p>
+                  </unit>
+               </quotedStructure>
+            </unit>
+            <unit eId="art_1/pnt_2" kind="point">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="in Annex II, point 3.1.1 is replaced by the following:"/>
+               </p>
+               <quotedStructure eId="art_1/pnt_2/qst_1">
+                  <unit eId="art_1/pnt_2/qst_1/pnt_3.1.1" kind="level" depth="1">
+                     <num>
+                        <t v="‘"/>
+                        <t v="3.1.1."/>
+                     </num>
+                     <p>
+                        <t v="After each partial test in the dynamic test procedure, it shall be free from tears or cracks as described in point 3.1 of Annex III (A)."/>
+                     </p>
+                     <p>
+                        <t v="If, during the dynamic test, significant tears or cracks appear, an additional impact test or crushing test as defined in point 1.6 of Annex III (A) must be performed immediately after the test which caused these tears or cracks to appear."/>
+                        <t v="’"/>
+                     </p>
+                  </unit>
+               </quotedStructure>
+               <p>
+                  <t v=";"/>
+               </p>
+            </unit>
+            <unit eId="art_1/pnt_3" kind="point">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="in Annex III (A), point 1.6 is replaced by the following:"/>
+               </p>
+               <quotedStructure eId="art_1/pnt_3/qst_1">
+                  <unit eId="art_1/pnt_3/qst_1/pnt_1.6" kind="level" depth="1">
+                     <num>
+                        <t v="‘"/>
+                        <t v="1.6."/>
+                     </num>
+                     <heading>
+                        <t v="Additional tests"/>
+                     </heading>
+                  </unit>
+                  <unit eId="art_1/pnt_3/qst_1/pnt_1.6.1" kind="level" depth="2">
+                     <num>
+                        <t v="1.6.1."/>
+                     </num>
+                     <p>
+                        <t v="If cracks or tears which cannot be considered negligible appear during an impact test, a second, similar test, but with a height of fall of:"/>
+                     </p>
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
+                           <m:mrow>
+                              <m:mi>H</m:mi>
+                              <m:mo>′</m:mo>
+                              <m:mo>=</m:mo>
+                              <m:mrow>
+                                 <m:mfrac>
+                                    <m:mi>H</m:mi>
+                                    <m:mn>10</m:mn>
+                                 </m:mfrac>
+                              </m:mrow>
+                              <m:mo>×</m:mo>
+                              <m:mrow>
+                                 <m:mfrac>
+                                    <m:mrow>
+                                       <m:mn>12</m:mn>
+                                       <m:mo>+</m:mo>
+                                       <m:mn>4</m:mn>
+                                       <m:mi>a</m:mi>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mn>1</m:mn>
+                                       <m:mo>+</m:mo>
+                                       <m:mn>2</m:mn>
+                                       <m:mi>a</m:mi>
+                                    </m:mrow>
+                                 </m:mfrac>
+                              </m:mrow>
+                           </m:mrow>
+                        </m:math>
+                     </math>
+                     <p>
+                        <t v="shall be performed immediately after the impact test causing these tears or cracks to appear, "/>
+                        <quote startQuote="“" endQuote="”">
+                           <t v="a"/>
+                        </quote>
+                        <t v=" being the ratio of the permanent deformation to the elastic deformation (a = D"/>
+                        <emphasis kind="sub">
+                           <t v="p"/>
+                        </emphasis>
+                        <t v="/D"/>
+                        <emphasis kind="sub">
+                           <t v="e"/>
+                        </emphasis>
+                        <t v=") as measured at the point of impact."/>
+                     </p>
+                     <p>
+                        <t v="The additional permanent deformation due to the second impact must not exceed 30 % of the permanent deformation due to the first impact."/>
+                     </p>
+                     <p>
+                        <t v="In order to be able to carry out the additional test, it is necessary to measure the elastic deformation during all of the impact tests."/>
+                     </p>
+                  </unit>
+                  <unit eId="art_1/pnt_3/qst_1/pnt_1.6.2" kind="level" depth="2">
+                     <num>
+                        <t v="1.6.2."/>
+                     </num>
+                     <p>
+                        <t v="If, during a crushing test, significant tears or cracks appear, a second, similar crushing test, but with a force equal to 1,2 F"/>
+                        <emphasis kind="sub">
+                           <t v="v"/>
+                        </emphasis>
+                        <t v=", shall be performed immediately after the crushing test which caused these tears and cracks to appear."/>
+                        <t v="’"/>
+                     </p>
+                  </unit>
+               </quotedStructure>
+               <p>
+                  <t v=";"/>
+               </p>
+            </unit>
+            <unit eId="art_1/pnt_4" kind="point">
+               <provenance amendingAct="31989L0682R(01)"
+                           action="replaced"
+                           location="TO"
+                           marker="O000001M001000"/>
+               <num>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="in Annex V, the following point is inserted:"/>
+               </p>
+               <quotedStructure eId="art_1/pnt_4/qst_1">
+                  <unit eId="art_1/pnt_4/qst_1/pnt_7.3" kind="level" depth="1">
+                     <num>
+                        <t v="‘"/>
+                        <t v="7.3."/>
+                     </num>
+                     <p>
+                        <t v="Indication and results of any additional dynamic test"/>
+                        <t v="’"/>
+                     </p>
+                  </unit>
+               </quotedStructure>
+               <p>
+                  <t v="."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with this Directive not later than 12 months from"/>
+            <date asWritten="3 January 1990" date="1990-01-03"/>
+            <t v=". They shall forthwith inform the Commission thereof."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Directive is addressed to the Member States."/>
+         </p>
+      </unit>
+   </body>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="311"
+                 date="1988-12-06"
+                 page="9">
+               <t v="OJ No C 311, 6. 12. 1988, p. 9"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="120"
+                 date="1989-05-16"
+                 page="70">
+               <t v="OJ No C 120, 16. 5. 1989, p. 70"/>
+            </ref>
+            <t v=", and"/>
+         </p>
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="256"
+                 date="1989-10-09"
+                 page="77">
+               <t v="OJ No C 256, 9. 10. 1989, p. 77"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="102"
+                 date="1989-04-24"
+                 page="5">
+               <t v="OJ No C 102, 24. 4. 1989, p. 5"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="186"
+                 date="1986-07-08"
+                 page="26">
+               <t v="OJ No L 186, 8. 7. 1986, p. 26"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

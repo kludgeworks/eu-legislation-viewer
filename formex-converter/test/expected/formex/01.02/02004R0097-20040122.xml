@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32004R0097"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2004-01-22"
+           lang="en"
+           formexVersion="01.02"
+           converter="1.0.0">
+   <source celex="02004R0097-20040122">
+      <publication series="L" number="15" date="2004-01-22" page="12"/>
+   </source>
+   <lifecycle start="2004-01-22" sequence="001.001.0">
+      <eventRef type="amendment" act="32004R1476" date="2004-08-18"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 97/2004"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="21 January 2004" date="2004-01-21"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="correcting Regulations (EC) No 2281/2003 and (EC) No 2299/2003 determining the world market price for unginned cotton"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Protocol 4 on cotton"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", annexed to the Act of Accession of Greece,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 1051/2001 of "/>
+               <date asWritten="22 May 2001" date="2001-05-22"/>
+               <t v=" on production aid for cotton"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", and in particular Article 4 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="The average dollar rates on which Commission Regulations (EC) No 2281/2003"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=" and (EC) No 2299/2003"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v=" are based are wrong. The said Regulations should therefore be corrected."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="It should be possible at the request of the interested party for the corrections to apply from the date of entry into force of the corrected Regulations,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Article 1 of Regulation (EC) No 2281/2003 is hereby replaced by the following:"/>
+         </p>
+         <quotedStructure eId="art_1/qst_1">
+            <unit eId="art_1/qst_1/art_1" kind="article">
+               <num>
+                  <t v="‘"/>
+                  <t v="Article 1"/>
+               </num>
+               <p>
+                  <t v="The world price for unginned cotton as referred to in Article 4 of Regulation (EC) No 1051/2001 is hereby determined as equalling EUR 32,077/100 kg."/>
+                  <t v="’"/>
+               </p>
+            </unit>
+         </quotedStructure>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="Article 1 of Regulation (EC) No 2299/2003 is hereby replaced by the following:"/>
+         </p>
+         <quotedStructure eId="art_2/qst_1">
+            <unit eId="art_2/qst_1/art_1" kind="article">
+               <num>
+                  <t v="‘"/>
+                  <t v="Article 1"/>
+               </num>
+               <p>
+                  <t v="The world price for unginned cotton as referred to in Article 4 of Regulation (EC) No 1051/2001 is hereby determined as equalling EUR 31,820/100 kg."/>
+                  <t v="’"/>
+               </p>
+            </unit>
+         </quotedStructure>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <unit eId="art_3/unp_1" kind="paragraph">
+            <p>
+               <t v="This Regulation shall enter into force on the day of its publication in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_3/unp_2" kind="paragraph">
+            <p>
+               <deleted amendingAct="32004R1476"
+                        action="deleted"
+                        location="AR:1"
+                        marker="O001001M001000">
+                  <t v="At the request of the interested party, "/>
+               </deleted>
+               <t v="Article 1 shall apply from "/>
+               <date asWritten="23 December 2003" date="2003-12-23"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_3/unp_3" kind="paragraph">
+            <p>
+               <deleted amendingAct="32004R1476"
+                        action="deleted"
+                        location="AR:1"
+                        marker="O001001M002000">
+                  <t v="At the request of the interested party, "/>
+               </deleted>
+               <t v="Article 2 shall apply from "/>
+               <date asWritten="24 December 2003" date="2003-12-24"/>
+               <t v="."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="Protocol as last amended by Council Regulation (EC) No 1050/2001 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="148"
+                 date="2001-06-01"
+                 page="1">
+               <t v="OJ L 148, 1.6.2001, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="148"
+                 date="2001-06-01"
+                 page="3">
+               <t v="OJ L 148, 1.6.2001, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="336"
+                 date="2003-12-23"
+                 page="93">
+               <t v="OJ L 336, 23.12.2003, p. 93"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="340"
+                 date="2003-12-24"
+                 page="53">
+               <t v="OJ L 340, 24.12.2003, p. 53"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32024D0766"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="06.00"
+           converter="1.0.0">
+   <source celex="32024D0766">
+      <publication series="L" date="2024-03-05" page="1"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Implementing Decision"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) 2024/766"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="1 March 2024" date="2024-03-01"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Implementing Decision (EU) 2019/1119 as regards the calculation of the CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" savings and of the statistical margin for certain not off-vehicle charging hybrid electric passenger cars"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Regulation (EU) 2019/631 of the European Parliament and of the Council of "/>
+               <date asWritten="17 April 2019" date="2019-04-17"/>
+               <t v=" setting CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" emission performance standards for new passenger cars and for new light commercial vehicles, and repealing Regulations (EC) No 443/2009 and (EU) No 510/2011"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 11(4) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="On "/>
+               <date asWritten="25 July 2023" date="2023-07-25"/>
+               <t v=", the manufacturer BMW AG ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the applicant"/>
+               </quote>
+               <t v=") submitted a request in accordance with Article 12a of Commission Implementing Regulation (EU) No 725/2011"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" applicable on that date for Commission Implementing Decision (EU) 2019/1119"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=" to be amended to adapt the calculation of the CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" savings and of the statistical margin for certain not off-vehicle charging hybrid electric vehicles to the methodology laid out in Commission Regulation (EU) 2017/1151"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Regulation (EU) 2017/1151, as amended by Commission Regulation (EU) 2023/443"/>
+               <noteRef href="#note_5" marker="5"/>
+               <t v=", provides for an alternative approach to correct the battery charge imbalance of certain non-externally chargeable hybrid electrified vehicles, which relies on a generic emission factor depending on the type of engine. The applicant requested to be allowed to use that approach for the calculation of the CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" savings and of the statistical margin for the innovative technology approved by Implementing Decision (EU) 2019/1119."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Taking into account the arguments presented by the applicant, it is appropriate for the testing methodology set out in the Annex to Implementing Decision (EU) 2019/1119 to be modified to ensure that vehicle manufacturers applying the alternative approach introduced by Regulation (EU) 2023/443 do not face unnecessary testing burden when applying for the certification of CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" savings in accordance with Implementing Decision (EU) 2019/1119."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="Whereas the applicant requested to use the alternative approach based on an alternator efficiency of 0,67, it is appropriate to consistently follow the approach set out in Regulation (EU) 2017/1151 and to apply an alternator efficiency of 1 for determining the CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" savings and the statistical margin, and to adapt the testing methodology set out in the Annex to Implementing Decision (EU) 2019/1119 accordingly."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="Implementing Decision (EU) 2019/1119 should therefore be amended accordingly,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The Annex to Implementing Decision (EU) 2019/1119 is amended as set out in the Annex to this Decision."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Decision shall enter into force on the twentieth day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="1 March 2024" date="2024-03-01"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="Ursula "/>
+               <emphasis kind="uc">
+                  <t v="von der Leyen"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <t v="The Annex to Implementing Decision (EU) 2019/1119 is amended as follows:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="anx/pnt_1" kind="point">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="in point 4.1.2, the following paragraph is added:"/>
+               </p>
+               <quotedStructure eId="anx/pnt_1/qst_1">
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="Alternatively, at the request of the manufacturer, the total CO"/>
+                        <emphasis kind="sub">
+                           <t v="2"/>
+                        </emphasis>
+                        <t v=" savings of the lighting package shall be calculated in accordance with the methodology set out in point 4.1.1, with the coefficient η"/>
+                        <emphasis kind="sub">
+                           <t v="Α"/>
+                        </emphasis>
+                        <t v=" set to 1."/>
+                     </quote>
+                     <t v=";"/>
+                  </p>
+               </quotedStructure>
+            </unit>
+            <unit eId="anx/pnt_2" kind="point">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="in point 4.2.2, the following paragraph is added after Formula 9:"/>
+               </p>
+               <quotedStructure eId="anx/pnt_2/qst_1">
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="If the methodology referred to in point 4.1.2, last paragraph, is applied, the statistical margin of the lighting package shall be calculated in accordance with point 4.2.1, with the coefficient η"/>
+                        <emphasis kind="sub">
+                           <t v="Α"/>
+                        </emphasis>
+                        <t v=" set to 1."/>
+                     </quote>
+                     <t v="."/>
+                  </p>
+               </quotedStructure>
+            </unit>
+         </list>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="111"
+                 date="2019-04-25"
+                 page="13">
+               <t v="OJ L 111, 25.4.2019, p. 13"/>
+            </ref>
+            <t v=", ELI: http://data.europa.eu/eli/reg/2019/631/oj"/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Commission Implementing Regulation (EU) No 725/2011 of "/>
+            <date asWritten="25 July 2011" date="2011-07-25"/>
+            <t v=" establishing a procedure for the approval and certification of innovative technologies for reducing CO"/>
+            <emphasis kind="sub">
+               <t v="2"/>
+            </emphasis>
+            <t v=" emissions from passenger cars pursuant to Regulation (EC) No 443/2009 of the European Parliament and of the Council ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="194"
+                 date="2011-07-26"
+                 page="19">
+               <t v="OJ L 194, 26.7.2011, p. 19"/>
+            </ref>
+            <t v=", ELI: http://data.europa.eu/eli/reg_impl/2011/725/oj)."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Commission Implementing Decision (EU) 2019/1119 of "/>
+            <date asWritten="28 June 2019" date="2019-06-28"/>
+            <t v=" on the approval of efficient vehicle exterior lighting using light emitting diodes for use in internal combustion engine vehicles and non-externally chargeable hybrid electrified vehicles as an innovative technology for reducing CO"/>
+            <emphasis kind="sub">
+               <t v="2"/>
+            </emphasis>
+            <t v=" emissions from passenger cars pursuant to Regulation (EC) No 443/2009 of the European Parliament and of the Council ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="176"
+                 date="2019-07-01"
+                 page="67">
+               <t v="OJ L 176, 1.7.2019, p. 67"/>
+            </ref>
+            <t v=", ELI: http://data.europa.eu/eli/dec_impl/2019/1119/oj)."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <t v="Commission Regulation (EU) 2017/1151 of "/>
+            <date asWritten="1 June 2017" date="2017-06-01"/>
+            <t v=" supplementing Regulation (EC) No 715/2007 of the European Parliament and of the Council on type-approval of motor vehicles with respect to emissions from light passenger and commercial vehicles (Euro 5 and Euro 6) and on access to vehicle repair and maintenance information, amending Directive 2007/46/EC of the European Parliament and of the Council, Commission Regulation (EC) No 692/2008 and Commission Regulation (EU) No 1230/2012 and repealing Commission Regulation (EC) No 692/2008 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="175"
+                 date="2017-07-07"
+                 page="1">
+               <t v="OJ L 175, 7.7.2017, p. 1"/>
+            </ref>
+            <t v=", ELI: http://data.europa.eu/eli/reg/2017/1151/oj)."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <t v="Commission Regulation (EU) 2023/443 of "/>
+            <date asWritten="8 February 2023" date="2023-02-08"/>
+            <t v=" amending Regulation (EU) 2017/1151 as regards the emission type approval procedures for light passenger and commercial vehicles ("/>
+            <ref kind="oj" series="L" number="66" date="2023-03-02" page="1">
+               <t v="OJ L 66, 2.3.2023, p. 1"/>
+            </ref>
+            <t v=", ELI: http://data.europa.eu/eli/reg/2023/443/oj)."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

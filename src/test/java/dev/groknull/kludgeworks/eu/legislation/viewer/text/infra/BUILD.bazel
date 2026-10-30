@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
+load("@rules_java//java:defs.bzl", "java_binary")
 
 # One test target per *Test.java; Fixture, Fixtures and TextConservation become a shared library
 java_test_suite(
@@ -9,7 +10,10 @@ java_test_suite(
         ["*.java"],
         exclude = ["CorpusTests.java"],
     ),
-    data = ["//formex-converter/test/fixtures"],
+    data = [
+        "//formex-converter/test/expected",
+        "//formex-converter/test/fixtures",
+    ],
     runner = "junit5",
     runtime_deps = [
         "//formex-converter/schema:resources",
@@ -32,6 +36,16 @@ java_test_suite(
         "@maven//:org_xmlunit_xmlunit_core",
         "@rules_java//java/runfiles",
     ],
+)
+
+# Rewrites the converter's expected output from the fixtures (mise run expected): after a deliberate
+# change to the converter, then review the diff
+java_binary(
+    name = "update_expected",
+    testonly = True,
+    data = ["//formex-converter/test/fixtures"],
+    main_class = "dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.UpdateExpected",
+    runtime_deps = [":infra-test-lib"],
 )
 
 # The regression test on the whole corpus: one language's mirror in formex-corpus/, ignored

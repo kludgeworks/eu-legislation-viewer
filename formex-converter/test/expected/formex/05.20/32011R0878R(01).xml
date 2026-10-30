@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32011R0878R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.20"
+           converter="1.0.0">
+   <source celex="32011R0878R(01)">
+      <publication series="L" number="245" date="2011-09-22" page="22"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Council Regulation (EU) No 878/2011 of "/>
+            <date asWritten="2 September 2011" date="2011-09-02"/>
+            <t v=" amending Regulation (EU) No 442/2011 concerning restrictive measures in view of the situation in Syria"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="L" number="228" date="2011-09-03">
+               <t v="Official Journal of the European Union L 228 of 3 September 2011"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 4, Annex I, the following introductory text shall be added after the title:"/>
+         </p>
+         <new>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="The following shall be added to the list of natural and legal persons, entities or bodies in Annex II to Regulation (EU) No 442/2011:"/>
+                  </quote>
+                  <t v="."/>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

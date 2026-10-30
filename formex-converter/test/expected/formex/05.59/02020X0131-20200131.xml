@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32020X0131"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2020-01-31"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="02020X0131-20200131">
+      <publication series="L" number="29" date="2020-01-31" page="189"/>
+   </source>
+   <lifecycle start="2020-01-31" produced="2020-02-12" sequence="000.001.0">
+      <eventRef type="corrigendum" act="52020XG0131(01)R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Notice concerning the entry into force of the Agreement on the Withdrawal of the United Kingdom of Great Britain and Northern Ireland from the European Union and the European Atomic Energy Community"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <p>
+         <t v="The Agreement on the Withdrawal of the United Kingdom of Great Britain and Northern Ireland from the European Union and the European Atomic Energy Community"/>
+         <noteRef href="#note_1" marker="1"/>
+         <t v=", signed at Brussels and London on "/>
+         <date asWritten="24 January 2020" date="2020-01-24"/>
+         <t v=", will enter into force on "/>
+         <date asWritten="1 February 2020" date="2020-02-01"/>
+         <t v=" in accordance with the first paragraph of Article 185 thereof."/>
+      </p>
+   </body>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <provenance amendingAct="52020XG0131(01)R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001000"/>
+            <t v="See page 7 of this Official Journal."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32004D0536"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="01.01"
+           converter="1.0.0">
+   <source celex="32004D0536">
+      <publication series="L" number="236" date="2004-07-07" page="15"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Decision of the Council, meeting in the composition of Heads of State or Government"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="29 June 2004" date="2004-06-29"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="nominating the person it intends to appoint as President of the Commission"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(2004/536/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Meeting in the composition of Heads of State or Government,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community, and in particular Article 214(2), first subparagraph, thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS DECIDED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Mr José Manuel DURÃO BARROSO is hereby nominated as the person the Council intends to appoint as President of the Commission for the period from "/>
+            <date asWritten="1 November 2004" date="2004-11-01"/>
+            <t v=" to "/>
+            <date asWritten="31 October 2009" date="2009-10-31"/>
+            <t v="."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Decision shall be forwarded to the European Parliament."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Decision shall be published in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="29 June 2004" date="2004-06-29"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </organization>
+            <person>
+               <t v="B. "/>
+               <emphasis kind="uc">
+                  <t v="Ahern"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+</legalText>
+

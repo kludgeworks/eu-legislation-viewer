@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32014R0012"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2014-01-29"
+           lang="en"
+           formexVersion="05.51"
+           converter="1.0.0">
+   <source celex="02014R0012-20140129">
+      <publication series="L" number="4" date="2014-01-09" page="40"/>
+   </source>
+   <lifecycle start="2014-01-29" produced="2014-07-02" sequence="000.001.0">
+      <eventRef type="corrigendum" act="32014R0012R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Implementing Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) No 12/2014"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="8 January 2014" date="2014-01-08"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="entering a name in the register of traditional specialities guaranteed [Salinātā rudzu rupjmaize (TSG)]"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Regulation (EU) No 1151/2012 of the European Parliament and of the Council of "/>
+               <date asWritten="21 November 2012" date="2012-11-21"/>
+               <t v=" on quality schemes for agricultural products and foodstuffs"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 52(2) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Pursuant to Article 50(2)(b) of Regulation (EU) No 1151/2012, Latvia’s application to register the name "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Salinātā rudzu rupjmaize"/>
+               </quote>
+               <t v=" was published in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <noteRef href="#note_2" marker="2"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="As no statement of opposition under Article 51 of Regulation (EU) No 1151/2012 has been received by the Commission, the name "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Salinātā rudzu rupjmaize"/>
+               </quote>
+               <t v=" should therefore be entered in the register,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The name contained in the Annex to this Regulation is hereby entered in the register."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the twentieth day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union."/>
+            </emphasis>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <t v="Agricultural products and foodstuffs listed in Annex I(I) to Regulation (EU) No 1151/2012:"/>
+         </p>
+         <unit eId="anx/pnt_Class-2.3" kind="level" depth="1">
+            <num>
+               <changed amendingAct="32014R0012R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001000">
+                  <emphasis kind="b">
+                     <t v="Class 2.3."/>
+                  </emphasis>
+               </changed>
+            </num>
+            <heading>
+               <changed amendingAct="32014R0012R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001000">
+                  <emphasis kind="b">
+                     <t v="Confectionery, bread, pastry, cakes, biscuits and other baker's wares"/>
+                  </emphasis>
+               </changed>
+            </heading>
+         </unit>
+         <unit eId="anx/pnt_Class-2.3/lvl_1" kind="level" depth="2">
+            <heading>
+               <t v="LATVIA"/>
+            </heading>
+            <p>
+               <t v="Salinātā rudzu rupjmaize (TSG)"/>
+            </p>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="343"
+                 date="2012-12-14"
+                 page="1">
+               <t v="OJ L 343, 14.12.2012, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="177"
+                 date="2013-06-22"
+                 page="12">
+               <t v="OJ C 177, 22.6.2013, p. 12"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

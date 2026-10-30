@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32003D0251"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2004-06-01"
+           lang="en"
+           formexVersion="02.00"
+           converter="1.0.0">
+   <source celex="02003D0251-20040601">
+      <publication series="L" number="93" date="2003-04-10" page="40"/>
+   </source>
+   <lifecycle start="2004-06-01" end="2005-12-31" sequence="001.001.0">
+      <eventRef type="amendment" act="32004D0562" date="2004-03-23"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Decision"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="No 187"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="27 June 2002" date="2002-06-27"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on model forms necessary for the application of Council Regulations (EEC) No 1408/71 and (EEC) No 574/72 (E 111 and E 111B)"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+         <p>
+            <t v="(2003/251/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE ADMINISTRATIVE COMMISSION OF THE EUROPEAN COMMUNITIES ON SOCIAL SECURITY FOR MIGRANT WORKERS,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to Article 81(a) of Council Regulation (EEC) No 1408/71 of "/>
+               <date asWritten="14 June 1971" date="1971-06-14"/>
+               <t v=" on the application of social security schemes to employed persons, to self-employed persons and to members of their family moving within the Community"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", under which it is the duty of the Administrative Commission to deal with all administrative matters arising from Regulation (EEC) No 1408/71 and subsequent regulations,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Article 2(1) of Council Regulation (EEC) No 574/72"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" under which it is the duty of the Administrative Commission to draw up models of certificates, certified statements, declarations, applications and other documents necessary for the application of the Regulations,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to Decision No 179 of "/>
+               <date asWritten="18 April 2000" date="2000-04-18"/>
+               <t v=" on the model forms necessary for the application of Council Regulations (EEC) No 1408/71 and (EEC) No 574/72 (E 111, E 111B, E 113 to E 118 and E 125 to E 127)"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=","/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="It is necessary to amend form E 111 and E 111B in order to make things clearer for insured persons and the members of their family with regard to benefits in the event of pre-existing illnesses."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The Agreement on the European Economic Area of "/>
+               <date asWritten="2 May 1992" date="1992-05-02"/>
+               <t v=", supplemented by the Protocol of "/>
+               <date asWritten="17 March 1993" date="1993-03-17"/>
+               <t v=", Annex VI, implements Regulations (EEC) No 1408/71 and (EEC) No 574/72 within the European Economic Area."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="By Decision of the EEA Joint Committee, the model forms necessary for the application of Regulations (EEC) No 1408/71 and (EEC) No 574/72 will be adapted and used within the European Economic Area."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="For practical reasons, identical forms should be used within the Community and within the European Economic Area."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The language in which the forms should be issued is the subject of Recommendation No 15 of the Administrative Commission,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS DECIDED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <p>
+         <num>
+            <t v="1."/>
+         </num>
+         <t v="The model forms E 111 and E 111B reproduced in Decision No 179 shall be replaced by the models appended hereto."/>
+      </p>
+      <p>
+         <num>
+            <t v="2."/>
+         </num>
+         <t v="The competent authorities of the Member States shall make available to the parties concerned (rightful claimants, institutions, employers, etc.) the forms according to the models appended hereto."/>
+      </p>
+      <p>
+         <num>
+            <t v="3."/>
+         </num>
+         <t v="These forms shall be available in the official languages of the Community and laid out in such manner that the different versions are perfectly superposable, thereby making it possible for all addressees (rightful claimants, institutions, employers, etc.) to receive the form printed in their own language."/>
+      </p>
+      <p>
+         <num>
+            <t v="4."/>
+         </num>
+         <t v="This Decision shall be applicable from the first day of the month following its publication in the "/>
+         <emphasis kind="i">
+            <t v="Official Journal of the European Union"/>
+         </emphasis>
+         <t v="."/>
+      </p>
+   </body>
+   <annexes>
+      <unit eId="att_1" kind="attachment">
+         <figure src="L_2004259EN.01000302.tif" content="form"/>
+         <figure src="L_2004259EN.01000401.tif" content="form"/>
+         <figure src="L_2003093EN.01004701.tif" content="form"/>
+         <figure src="L_2003093EN.01004801.tif" content="form"/>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="149"
+                 date="1971-07-05"
+                 page="2">
+               <t v="OJ L 149, 5.7.1971, p. 2"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="74" date="1972-03-27" page="1">
+               <t v="OJ L 74, 27.3.1972, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="54" date="2002-02-25" page="1">
+               <t v="OJ L 54, 25.2.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

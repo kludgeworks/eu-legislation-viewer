@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="52006XC0228(05)R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="03.00"
+           converter="1.0.0">
+   <source celex="52006XC0228(05)R(01)">
+      <publication series="C"
+                   number="260"
+                   date="2006-10-28"
+                   page="18"
+                   document="2006/C 260/08"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to the Explanatory notes to the Combined Nomenclature of the European Communities"/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="("/>
+               <ref kind="oj" series="C" number="50" date="2006-02-28">
+                  <t v="Official Journal of the European Union C 50 of 28 February 2006"/>
+               </ref>
+               <t v=")"/>
+            </emphasis>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 238, Figure 1 is replaced by the following Figure 1:"/>
+         </p>
+         <new>
+            <figure src="C_2006260EN.01001802.tif" content="tech-design"/>
+         </new>
+      </unit>
+      <unit eId="cor_2" kind="correction">
+         <p>
+            <t v="On page 253, the illustration at the bottom of the page is replaced by the following illustration:"/>
+         </p>
+         <new>
+            <figure src="C_2006260EN.01001803.tif" content="tech-design"/>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

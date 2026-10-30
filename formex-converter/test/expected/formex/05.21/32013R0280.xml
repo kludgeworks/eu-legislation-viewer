@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32013R0280"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.21"
+           converter="1.0.0">
+   <source celex="32013R0280">
+      <publication series="L" number="84" date="2013-03-23" page="17"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) No 280/2013"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="22 March 2013" date="2013-03-22"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Regulation (EC) No 62/2006 concerning the technical specification for interoperability relating to the telematic applications for freight subsystem of the trans-European conventional rail system"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Directive 2008/57/EC of the European Parliament and of the Council of "/>
+               <date asWritten="17 June 2008" date="2008-06-17"/>
+               <t v=" on the interoperability of the rail system within the Community"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 6(1) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Article 4b of Commission Regulation (EC) No 62/2006 of "/>
+               <date asWritten="23 December 2005" date="2005-12-23"/>
+               <t v=" concerning the technical specification for interoperability relating to the telematic applications for freight subsystem of the trans-European conventional rail system"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" provides that the European Railway Agency has to update the documents referred to in Annex A to Regulation (EC) No 62/2006 on the basis of change requests that are validated before "/>
+               <date asWritten="13 May 2012" date="2012-05-13"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The Commission has received European Railway Agency recommendation ERA/REC/06a-2012/INT of "/>
+               <date asWritten="24 July 2012" date="2012-07-24"/>
+               <t v=" to update Annex A to Regulation (EC) No 62/2006 in order to refer to the technical documents which have been amended in accordance with the change management process ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Final Baseline 5.2"/>
+               </quote>
+               <t v=")."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Regulation (EC) No 62/2006 should therefore be amended accordingly."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Committee established in accordance with Article 29(1) of Directive 2008/57/EC,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Annex A to Regulation (EC) No 62/2006 is replaced by the text set out in the Annex to this Regulation."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="22 March 2013" date="2013-03-22"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="José Manuel "/>
+               <emphasis kind="uc">
+                  <t v="Barroso"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <quotedStructure eId="anx/qst_1">
+            <unit eId="anx/qst_1/anx_A" kind="annex">
+               <num>
+                  <t v="‘"/>
+                  <t v="ANNEX A"/>
+               </num>
+               <tableGroup>
+                  <caption>
+                     <p>
+                        <emphasis kind="b">
+                           <t v="LIST OF ACCOMPANYING DOCUMENTS"/>
+                        </emphasis>
+                     </p>
+                     <p>
+                        <emphasis kind="b">
+                           <t v="List of mandatory specifications"/>
+                        </emphasis>
+                     </p>
+                  </caption>
+                  <table cols="4">
+                     <tr header="true">
+                        <td header="true">
+                           <p>
+                              <t v="Index No"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="Reference"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="Document Name"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="Version"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="5"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="ERA_FRS_TAF_A_Index_ 5.doc"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="TAF TSI — ANNEX A.5: Figures and Sequence Diagrams of the TAF TSI Messages"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1.0"/>
+                           </p>
+                        </td>
+                     </tr>
+                  </table>
+                  <table cols="4">
+                     <tr header="true">
+                        <td header="true">
+                           <p>
+                              <t v="Appendix"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="Reference"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="Document Name"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="Version"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="A"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="ERA_FRS_TAF_D_2_ Appendix_A.doc"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="TAF TSI — ANNEX D.2: APPENDIX A (WAGON/ILU TRIP PLANNING)"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1.0"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="B"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="ERA_FRS_TAF_D_2_ Appendix_B.doc"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="TAF TSI — ANNEX D.2: APPENDIX B — WAGON AND INTERMODAL UNIT OPERATING DATABASE (WIMO)"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1.1"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="C"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="ERA_FRS_TAF_D_2_ Appendix_C.doc"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="TAF TSI — ANNEX D.2: APPENDIX C — REFERENCE FILES"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1.1"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="D"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="ERA_FRS_TAF_D_2_ Appendix_D.doc"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="TAF TSI — ANNEX D.2: APPENDIX D — INFRASTRUCTURE RESTRICTION NOTICE DATA"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1.1"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="E"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="ERA_FRS_TAF_D_2_ Appendix_E.doc"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="TAF TSI — ANNEX D.2: APPENDIX E — COMMON INTERFACE"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1.0"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="F"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="ERA_FRS_TAF_D_2_ Appendix_F.doc"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="TAF TSI — ANNEX D.2: APPENDIX F — TAF TSI DATA AND MESSAGE MODEL"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1.1"/>
+                              <t v="’"/>
+                           </p>
+                        </td>
+                     </tr>
+                  </table>
+               </tableGroup>
+            </unit>
+         </quotedStructure>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="191"
+                 date="2008-07-18"
+                 page="1">
+               <t v="OJ L 191, 18.7.2008, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="13" date="2006-01-18" page="1">
+               <t v="OJ L 13, 18.1.2006, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

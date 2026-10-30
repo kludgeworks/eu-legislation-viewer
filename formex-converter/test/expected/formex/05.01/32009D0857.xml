@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32009D0857"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.01"
+           converter="1.0.0">
+   <source celex="32009D0857">
+      <publication series="L" number="314" date="2009-12-01" page="73"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="13 December 2007" date="2007-12-13"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="relating to the implementation of Article 9C(4) of the Treaty on European Union and Article 205(2) of the Treaty on the Functioning of the European Union between "/>
+               <date asWritten="1 November 2014" date="2014-11-01"/>
+               <t v=" and "/>
+               <date asWritten="31 March 2017" date="2017-03-31"/>
+               <t v=" on the one hand, and as from "/>
+               <date asWritten="1 April 2017" date="2017-04-01"/>
+               <t v=" on the other"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(2009/857/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Provisions should be adopted allowing for a smooth transition from the system for decision-making in the Council by a qualified majority as defined in Article 3(3) of the Protocol on the transitional provisions, which will continue to apply until "/>
+               <date asWritten="31 October 2014" date="2014-10-31"/>
+               <t v=", to the voting system provided for in Article 9C(4) of the Treaty on European Union and Article 205(2) of the Treaty on the Functioning of the European Union, which will apply with effect from "/>
+               <date asWritten="1 November 2014" date="2014-11-01"/>
+               <t v=", including, during a transitional period until "/>
+               <date asWritten="31 March 2017" date="2017-03-31"/>
+               <t v=", specific provisions laid down in Article 3(2) of that Protocol."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="It is recalled that it is the practice of the Council to devote every effort to strengthening the democratic legitimacy of decisions taken by a qualified majority,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS DECIDED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="sct_1" kind="division">
+         <num>
+            <t v="SECTION 1"/>
+         </num>
+         <subheading>
+            <emphasis kind="b">
+               <t v="PROVISIONS TO BE APPLIED FROM "/>
+               <date asWritten="1 NOVEMBER 2014" date="2014-11-01"/>
+               <t v=" TO "/>
+               <date asWritten="31 MARCH 2017" date="2017-03-31"/>
+            </emphasis>
+         </subheading>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <p>
+               <t v="From "/>
+               <date asWritten="1 November 2014" date="2014-11-01"/>
+               <t v=" to "/>
+               <date asWritten="31 March 2017" date="2017-03-31"/>
+               <t v=", if members of the Council, representing:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_1/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="at least three quarters of the population; or"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="at least three quarters of the number of Member States;"/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="necessary to constitute a blocking minority resulting from the application of Article 9C(4), first subparagraph, of the Treaty on European Union or Article 205(2) of the Treaty on the Functioning of the European Union, indicate their opposition to the Council adopting an act by a qualified majority, the Council shall discuss the issue."/>
+            </p>
+         </unit>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <p>
+               <t v="The Council shall, in the course of these discussions, do all in its power to reach, within a reasonable time and without prejudicing obligatory time limits laid down by Union law, a satisfactory solution to address concerns raised by the members of the Council referred to in Article 1."/>
+            </p>
+         </unit>
+         <unit eId="art_3" kind="article">
+            <num>
+               <t v="Article 3"/>
+            </num>
+            <p>
+               <t v="To this end, the President of the Council, with the assistance of the Commission and in compliance with the Rules of Procedure of the Council, shall undertake any initiative necessary to facilitate a wider basis of agreement in the Council. The members of the Council shall lend him or her their assistance."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="sct_2" kind="division">
+         <num>
+            <t v="SECTION 2"/>
+         </num>
+         <subheading>
+            <emphasis kind="b">
+               <t v="PROVISIONS TO BE APPLIED AS FROM "/>
+               <date asWritten="1 APRIL 2017" date="2017-04-01"/>
+            </emphasis>
+         </subheading>
+         <unit eId="art_4" kind="article">
+            <num>
+               <t v="Article 4"/>
+            </num>
+            <p>
+               <t v="As from "/>
+               <date asWritten="1 April 2017" date="2017-04-01"/>
+               <t v=", if members of the Council, representing:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_4/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="at least 55 % of the population; or"/>
+                  </p>
+               </unit>
+               <unit eId="art_4/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="at least 55 % of the number of Member States;"/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="necessary to constitute a blocking minority resulting from the application of Article 9C(4), first subparagraph, of the Treaty on European Union or Article 205(2) of the Treaty on the Functioning of the European Union, indicate their opposition to the Council adopting an act by a qualified majority, the Council shall discuss the issue."/>
+            </p>
+         </unit>
+         <unit eId="art_5" kind="article">
+            <num>
+               <t v="Article 5"/>
+            </num>
+            <p>
+               <t v="The Council shall, in the course of these discussions, do all in its power to reach, within a reasonable time and without prejudicing obligatory time limits laid down by Union law, a satisfactory solution to address concerns raised by the members of the Council referred to in Article 4."/>
+            </p>
+         </unit>
+         <unit eId="art_6" kind="article">
+            <num>
+               <t v="Article 6"/>
+            </num>
+            <p>
+               <t v="To this end, the President of the Council, with the assistance of the Commission and in compliance with the Rules of Procedure of the Council, shall undertake any initiative necessary to facilitate a wider basis of agreement in the Council. The members of the Council shall lend him or her their assistance."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="sct_3" kind="division">
+         <num>
+            <t v="SECTION 3"/>
+         </num>
+         <subheading>
+            <emphasis kind="b">
+               <t v="ENTRY INTO FORCE"/>
+            </emphasis>
+         </subheading>
+         <unit eId="art_7" kind="article">
+            <num>
+               <t v="Article 7"/>
+            </num>
+            <p>
+               <t v="This Decision shall enter into force on the date of the entry into force of the Treaty of Lisbon."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="13 December 2007" date="2007-12-13"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Council"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="L. "/>
+               <emphasis kind="uc">
+                  <t v="Amado"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+</legalText>
+

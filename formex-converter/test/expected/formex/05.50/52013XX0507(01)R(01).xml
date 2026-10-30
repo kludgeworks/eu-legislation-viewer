@@ -1,0 +1,1748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="52013XX0507(01)R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.50"
+           converter="1.0.0">
+   <source celex="52013XX0507(01)R(01)">
+      <publication series="C"
+                   number="300"
+                   date="2013-10-16"
+                   page="25"
+                   document="2013/C 300/07"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to the conversion rates of currencies pursuant to Council Regulation (EEC) No 574/72 — Reference period: April 2013 — Application period: July, August, September 2013"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="C" number="130" date="2013-05-07">
+               <t v="Official Journal of the European Union C 130 of 7 May 2013"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On pages 6 and 7, the applicable exchange rates should read as follows:"/>
+         </p>
+         <new>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <tableGroup>
+                  <table cols="9">
+                     <tr header="true">
+                        <td header="true">
+                           <p>
+                              <t v="‘"/>
+                              <t v="04-2013"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="EUR"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="BGN"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="CZK"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="DKK"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="LVL"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="LTL"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="HRK"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="HUF"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 EUR ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,95580"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="25,8410"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="7,45533"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,700557"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3,45280"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="7,60760"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="298,669"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 BGN ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,511300"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="13,2125"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3,81191"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,358195"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,76542"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3,88976"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="152,709"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 CZK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0386982"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0756859"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,288508"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0271103"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,133617"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,294400"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="11,5580"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 DKK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,134132"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,262336"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3,46611"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0939673"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,463132"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,02042"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="40,0612"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 LVL ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,42744"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,79178"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="36,8864"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="10,6420"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="4,92865"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="10,8594"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="426,331"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 LTL ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,289620"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,566439"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="7,48407"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,15921"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,202895"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,20331"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="86,5005"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 HRK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,131448"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,257085"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3,39674"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,97998"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0920865"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,453862"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="39,2593"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 HUF ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,00334819"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,00654839"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0865205"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0249618"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,00234560"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0115606"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0254717"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 PLN ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,241786"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,472885"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="6,24800"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,80260"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,169385"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,834839"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,83941"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="72,2140"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 RON ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,228416"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,446736"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="5,90250"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,70292"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,160018"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,788675"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,73770"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="68,2208"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 SEK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,118415"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,231596"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3,05997"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,882824"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0829566"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,408864"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,900855"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="35,3670"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 GBP ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,17542"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,29889"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="30,3741"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="8,76317"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,823451"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="4,05850"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="8,94215"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="351,063"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 NOK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,132549"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,259239"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3,42520"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,988196"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0928581"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,457665"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,008379"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="39,5883"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 ISK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,00646287"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0126401"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,167007"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0481828"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,00452761"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,022315"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0491669"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,93026"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 CHF ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,819749"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,60326"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="21,1831"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="6,11150"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,574281"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,83043"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="6,23632"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="244,834"/>
+                           </p>
+                        </td>
+                     </tr>
+                  </table>
+                  <table cols="8">
+                     <tr header="true">
+                        <td header="true">
+                           <p>
+                              <t v="04-2013"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="PLN"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="RON"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="SEK"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="GBP"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="NOK"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="ISK"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="CHF"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 EUR ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="4,13589"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="4,37798"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="8,44486"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,850757"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="7,54438"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="154,730"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,21989"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 BGN ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,11468"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,23846"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="4,31786"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,434992"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3,85744"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="79,1134"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,623727"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 CZK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,160051"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,169420"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,326801"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0329228"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,291954"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="5,98777"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0472074"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 DKK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,554756"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,587228"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,13273"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,114114"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,011940"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="20,7543"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,163626"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 LVL ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="5,90371"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="6,24928"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="12,0545"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,21440"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="10,7691"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="220,867"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,74131"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 LTL ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,19784"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,26795"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,44580"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,246396"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,18500"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="44,8129"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,353303"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 HRK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,543652"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,575474"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,11006"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,111830"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,991691"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="20,3389"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,160351"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 HUF ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0138477"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0146583"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0282750"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,00284849"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0252600"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,518065"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0040844"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 PLN ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,05853"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2,04185"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,205701"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,82413"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="37,4116"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,294952"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 RON ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,944703"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,92894"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,194327"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,72326"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="35,3428"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,278641"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 SEK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,489752"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,518419"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,1007430"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,893369"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="18,3224"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,144453"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 GBP ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="4,86142"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="5,14598"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="9,92629"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="8,86784"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="181,873"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,43388"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 NOK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,548207"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,580296"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,11936"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,112767"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="20,5093"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,161695"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 ISK ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0267297"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0282943"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0545781"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,00549833"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,0487584"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,00788396"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1 CHF ="/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3,39039"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3,58884"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="6,92267"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,697407"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="6,18450"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="126,840"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1"/>
+                           </p>
+                        </td>
+                     </tr>
+                  </table>
+               </tableGroup>
+               <annotation>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Note"/>
+                     </emphasis>
+                     <t v=": all cross rates involving ISK are calculated using ISK/EUR rate data from the Central Bank of Iceland"/>
+                  </p>
+               </annotation>
+               <table cols="3">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="reference: Apr-13"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="1 EUR in national currency"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="1 unit of N.C. in EUR"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="BGN"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1,95580"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,511300"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="CZK"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="25,8410"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,0386982"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="DKK"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="7,45533"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,134132"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="LVL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,700557"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1,42744"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="LTL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="3,45280"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,289620"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="HRK"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="7,60760"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,131448"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="HUF"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="298,669"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,00334819"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PLN"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="4,13589"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,241786"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="RON"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="4,37798"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,228416"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="SEK"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="8,44486"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,118415"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="GBP"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,850757"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1,17542"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="NOK"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="7,54438"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,132549"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ISK"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="154,730"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,00646287"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="CHF"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1,21989"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,819749"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+               <annotation>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Note"/>
+                     </emphasis>
+                     <t v=": ISK/EUR rates based on data from the Central Bank of Iceland"/>
+                     <t v="’"/>
+                  </p>
+               </annotation>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

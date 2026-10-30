@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31978R3181"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2006-05-18"
+           lang="en"
+           formexVersion="05.22"
+           converter="1.0.0">
+   <source celex="01978R3181-20060518">
+      <publication series="L" number="379" date="1978-12-30" page="2"/>
+   </source>
+   <lifecycle start="2006-05-18" produced="2012-10-18" sequence="002.001.0">
+      <eventRef type="amendment" act="31985R3066" date="1985-10-28"/>
+      <eventRef type="amendment" act="31997R1103" date="1997-06-17"/>
+      <eventRef type="amendment" act="32006R0640" date="2006-04-10"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <deleted amendingAct="32006R0640"
+                        action="deleted"
+                        location="AR:1"
+                        marker="O002001M001000">
+                  <emphasis kind="uc">
+                     <t v="Council Regulation"/>
+                  </emphasis>
+               </deleted>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <deleted amendingAct="32006R0640"
+                        action="deleted"
+                        location="AR:1"
+                        marker="O002001M001000">
+                  <t v=" (EEC) No 3181/78"/>
+               </deleted>
+            </docNumber>
+         </p>
+         <p>
+            <deleted amendingAct="32006R0640"
+                     action="deleted"
+                     location="AR:1"
+                     marker="O002001M001000">
+               <t v="of 18 December 1978"/>
+            </deleted>
+         </p>
+         <p>
+            <docPurpose>
+               <deleted amendingAct="32006R0640"
+                        action="deleted"
+                        location="AR:1"
+                        marker="O002001M001000">
+                  <t v="relating to the European monetary system"/>
+               </deleted>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <deleted>
+            <provenance amendingAct="32006R0640"
+                        action="deleted"
+                        location="AR:1"
+                        marker="O002001M001000"/>
+            <p>
+               <t v="XXX"/>
+            </p>
+         </deleted>
+      </formula>
+      <deleted>
+         <provenance amendingAct="32006R0640"
+                     action="deleted"
+                     location="AR:1"
+                     marker="O002001M001000"/>
+         <p>
+            <t v="This act has been trimmed due to parser errors since it has been repealed."/>
+         </p>
+      </deleted>
+      <formula name="enactingFormula">
+         <deleted>
+            <provenance amendingAct="32006R0640"
+                        action="deleted"
+                        location="AR:1"
+                        marker="O002001M001000"/>
+            <p>
+               <t v="XXX"/>
+            </p>
+         </deleted>
+      </formula>
+   </preamble>
+   <body>
+      <deleted>
+         <provenance amendingAct="32006R0640"
+                     action="deleted"
+                     location="AR:1"
+                     marker="O002001M001000"/>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <heading>
+               <t v="XXXX"/>
+            </heading>
+            <unit eId="art_1/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="XXXX"/>
+               </p>
+            </unit>
+         </unit>
+      </deleted>
+   </body>
+</legalText>
+

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32004R0879"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2004-05-03"
+           lang="en"
+           formexVersion="01.02"
+           converter="1.0.0">
+   <source celex="02004R0879-20040503">
+      <publication series="L" number="162" date="2004-04-30" page="65"/>
+   </source>
+   <lifecycle start="2004-05-03" sequence="000.001.0">
+      <eventRef type="corrigendum" act="32004R0879R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 879/2004"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="29 April 2004" date="2004-04-29"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="concerning the provisional authorization of a new use of an additive already authorized in feedingstuffs (Saccharomyces cerevisiae)"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Directive 70/524/EEC of "/>
+               <date asWritten="23 November 1970" date="1970-11-23"/>
+               <t v=" concerning additives in feedingstuffs"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", as last amended by Regulation (EC) No 1756/2002"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", and in particular Articles 3 and 9e(1) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Directive 70/524/EEC provides that no additive may be put into circulation unless a Community authorisation has been granted."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="In the case of additives referred to in Part II of Annex C to Directive 70/524, which includes micro-organisms, provisional authorisation of a new use of an additive already authorised may be given if the conditions laid down in that Directive are satisfied, and if it is reasonable to assume, in view of the available results, that when used in animal nutrition it has one of the effects referred to in Article 2(a) of that Directive. Such provisional authorisation may be given for a period not exceeding four years in the case of additives referred to in Part II of Annex C to that Directive."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The use of the micro-organism preparation of Saccharomyces cerevisiae (MUCL 39885) has been provisionally authorised, for the first time, for piglets and cattle for fattening by Commission Regulation (EC) No 1411/1999"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="New data were submitted in support of an application to extend the authorisation of this additive to dairy cows."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The assessment of the application for authorisation submitted in respect of the new use of this additive, shows that the conditions provided for in Directive 70/524/EEC for provisional authorisation are satisfied."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="The European Food Safety Authority (Scientific Panel on Additives and Products or Substances Used in Animal Feed) delivered a favourable opinion on "/>
+               <date asWritten="27 January 2004" date="2004-01-27"/>
+               <t v=" on the safety of the additive when used in the animal category dairy cows, under the conditions of use set out in the annex to this Regulation."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_7" kind="recital">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <p>
+               <t v="The use of this additive for dairy cows should therefore be provisionally authorised for a period of four years."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_8" kind="recital">
+            <num>
+               <t v="(8)"/>
+            </num>
+            <p>
+               <t v="The assessment of the application shows that certain procedures should be required to protect workers from exposure to the additive set out in the Annex. Such protection should be assured by the application of Council Directive 89/391/EEC of "/>
+               <date asWritten="12 June 1989" date="1989-06-12"/>
+               <t v=" on the introduction of measures to encourage improvements in the safety and health of workers at work"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_9" kind="recital">
+            <num>
+               <t v="(9)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Standing Committee on the Food Chain and Animal Health,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The preparation belonging to the group "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="Micro-organisms"/>
+            </quote>
+            <t v=" as set out in the Annex is provisionally authorised for use as additive in animal nutrition under the conditions laid down in that Annex."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the third day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Communities"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <table cols="9">
+            <tr header="true">
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="No."/>
+                  </p>
+                  <p>
+                     <t v="(or EC No.)"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Additive"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Chemical formula, description"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Species or category of animal"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Maximum age"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Minimum content"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Maximum content"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Other provisions"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="End of period of authorisation"/>
+                  </p>
+               </td>
+            </tr>
+            <tr header="true">
+               <td colspan="2" header="true">
+                  <p>
+                     <t v="CFU/kg of complete feedingstuff"/>
+                  </p>
+               </td>
+            </tr>
+            <rowGroup>
+               <heading>
+                  <t v="Micro-organisms"/>
+               </heading>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="14"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Saccharomyces cerevisiae"/>
+                     </p>
+                     <p>
+                        <t v="MUCL 39885"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Preparation of Saccharomyces cerevisiae containing a minimum of:"/>
+                     </p>
+                     <p>
+                        <t v="Powder, spheric and oval granulated forms:"/>
+                     </p>
+                     <p>
+                        <t v="1 × 10"/>
+                        <emphasis kind="sup">
+                           <t v="9"/>
+                        </emphasis>
+                        <t v=" CFU/g additive"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Dairy cows"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="—"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,23 × 10"/>
+                        <emphasis kind="sup">
+                           <t v="9"/>
+                        </emphasis>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2,33 × 10"/>
+                        <emphasis kind="sup">
+                           <t v="9"/>
+                        </emphasis>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="In the directions for use of the additive and premixture, indicate the storage temperature, storage life and stability to pelleting."/>
+                     </p>
+                     <p>
+                        <t v="The quantity of Saccharomyces cerevisiae in the daily ration must not exceed 8,4 × 10"/>
+                        <emphasis kind="sup">
+                           <t v="9"/>
+                        </emphasis>
+                        <t v=" CFU per 100 kg body weight till 600 kg. Over 600 kg add 0,9 × 10"/>
+                        <emphasis kind="sup">
+                           <t v="9"/>
+                        </emphasis>
+                        <t v=" CFU for each additional 100 kg body weight."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <provenance amendingAct="32004R0879R(01)"
+                                    action="replaced"
+                                    location="TO"
+                                    marker="O000001M001000"/>
+                        <date asWritten="3.5.2008" date="2008-05-03"/>
+                     </p>
+                  </td>
+               </tr>
+            </rowGroup>
+         </table>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="270"
+                 date="1970-12-14"
+                 page="1">
+               <t v="OJ L 270, 14.12.1970, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="265"
+                 date="2002-10-03"
+                 page="1">
+               <t v="OJ L 265, 3.10.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="164"
+                 date="1999-06-30"
+                 page="56">
+               <t v="OJ L 164, 30.6.1999, p. 56"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="183"
+                 date="1989-06-29"
+                 page="1">
+               <t v="OJ L 183, 29.6.1989, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

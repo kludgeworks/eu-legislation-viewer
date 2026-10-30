@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="22019D0751"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="22019D0751">
+      <publication series="L" number="128" date="2019-05-16" page="44"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Decision of the"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="EEA "/>
+               <emphasis kind="uc">
+                  <t v="Joint Committee"/>
+               </emphasis>
+            </docNumber>
+         </p>
+         <p>
+            <t v="No 144/2017"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="of "/>
+               <date asWritten="7 July 2017" date="2017-07-07"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="amending Annex XI (Electronic communication, audiovisual services and information society) to the EEA Agreement [2019/751]"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EEA JOINT COMMITTEE,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Agreement on the European Economic Area ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the EEA Agreement"/>
+               </quote>
+               <t v="), and in particular Article 98 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Commission Implementing Decision (EU) 2016/1250 of "/>
+               <date asWritten="12 July 2016" date="2016-07-12"/>
+               <t v=" pursuant to Directive 95/46/EC of the European Parliament and of the Council on the adequacy of the protection provided by the EU-U.S. Privacy Shield"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=" is to be incorporated into the EEA Agreement."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Annex XI to the EEA Agreement should therefore be amended accordingly,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The following point is inserted after point 5ep (Commission Implementing Decision 2013/65/EU) of Annex XI to the EEA Agreement:"/>
+         </p>
+         <quotedStructure eId="art_1/qst_1">
+            <list kind="other">
+               <unit eId="art_1/qst_1/pnt_5eq" kind="point">
+                  <num>
+                     <t v="‘"/>
+                     <t v="5eq."/>
+                  </num>
+                  <p>
+                     <emphasis kind="b">
+                        <t v="32016 D 12 50"/>
+                     </emphasis>
+                     <t v=": Commission Implementing Decision (EU) 2016/1250 of "/>
+                     <date asWritten="12 July 2016" date="2016-07-12"/>
+                     <t v=" pursuant to Directive 95/46/EC of the European Parliament and of the Council on the adequacy of the protection provided by the EU-U.S. Privacy Shield ("/>
+                     <ref kind="oj"
+                          series="L"
+                          number="207"
+                          date="2016-08-01"
+                          page="1">
+                        <t v="OJ L 207, 1.8.2016, p. 1"/>
+                     </ref>
+                     <t v=")."/>
+                     <t v="’"/>
+                  </p>
+               </unit>
+            </list>
+         </quotedStructure>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The text of Implementing Decision (EU) 2016/1250 in the Icelandic and Norwegian languages, to be published in the EEA Supplement to the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v=", shall be authentic."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Decision shall enter into force on "/>
+            <date asWritten="8 July 2017" date="2017-07-08"/>
+            <t v=", provided that all the notifications under Article 103(1) of the EEA Agreement have been made"/>
+            <noteRef href="#note_2" marker="*"/>
+            <t v="."/>
+         </p>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <p>
+            <t v="This Decision shall be published in the EEA Section of, and in the EEA Supplement to, the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="7 July 2017" date="2017-07-07"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the EEA Joint Committee"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="Sabine "/>
+               <emphasis kind="uc">
+                  <t v="Monauni"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <heading>
+            <t v="Joint Declaration by the Contracting Parties to Decision No 144/2017 incorporating Commission Implementing Decision (EU) 2016/1250 pursuant to Directive 95/46/EC of the European Parliament and of the Council on the adequacy of the protection provided by the EU-U.S. Privacy Shield into the Agreement"/>
+         </heading>
+         <p>
+            <t v="Implementing Decision (EU) 2016/1250 provides that, as regards the processing of human resources data collected in the context of an employment relationship or when an organisation has voluntarily submitted to oversight by Data Protection Authorities (DPAs), organisations certified under the EU-U.S. Privacy Shield will comply with advice given by the European DPAs. This advice will be given through an informal panel of DPAs established at Union level by the DPAs based on their competence to organise their work and cooperate among each other."/>
+         </p>
+         <p>
+            <t v="As regards cases that would fall under the competence of the United States’ Privacy Shield Ombudsperson, individual complaints and further communications will be channelled through a centralised EU individual complaint handling body which will be composed of Union DPAs."/>
+         </p>
+         <p>
+            <t v="The Contracting Parties understand that the participation of DPAs in such bodies is necessary to respect these authorities’ competence to hear claims lodged by any person concerning the protection of their rights and freedoms with regard to the processing of personal data and to exercise the investigative and intervention powers endowed to them by Directive 95/46/EC."/>
+         </p>
+         <p>
+            <t v="Directive 95/46/EC has been incorporated into the EEA Agreement, and therefore the EFTA States are under an obligation to guarantee the full exercise of supervisory powers by their DPA, including as regards transfers of personal data to third countries. The Contracting Parties understand that the EFTA States’ DPAs should be able to participate in the informal panel of DPAs and the EU individual complaint handling body as referred to in the EU-U.S. Privacy Shield to ensure the convergence of supervisory practices and the homogeneous protection of individuals’ rights and freedoms throughout the EEA."/>
+         </p>
+         <p>
+            <t v="Under the terms of Implementing Decision (EU) 2016/1250, EU data subjects will have access to a recourse mechanism of last resort, the Privacy Shield Panel, as regards residual claims that have not been resolved through consultation with the concerned organisation or through involvement of their DPA or of the United States’ Department of Commerce. The Privacy Shield Panel will be composed of arbitrators selected by the parties from a list developed by the European Commission and the U.S. Department of Commerce."/>
+         </p>
+         <p>
+            <t v="The Contracting Parties understand that the Commission will consult the EFTA States as regards the composition of the list of arbitrators, and take the EFTA States’ opinion into account, prior to the designation of these arbitrators."/>
+         </p>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="207"
+                 date="2016-08-01"
+                 page="1">
+               <t v="OJ L 207, 1.8.2016, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="*" kind="footnote">
+         <p>
+            <t v="No constitutional requirements indicated."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

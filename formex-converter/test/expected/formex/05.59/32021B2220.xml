@@ -1,0 +1,1909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32021B2220"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="32021B2220">
+      <publication series="L" number="460" date="2021-12-22" page="1"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Definitive adoption"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU, Euratom) 2021/2220"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of Amending budget No 5 of the European Union for the financial year 2021"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE PRESIDENT OF THE EUROPEAN PARLIAMENT,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="having regard to the Treaty on the Functioning of the European Union, and in particular Article 314(4)(a) and Article 314(9) thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="having regard to the Treaty establishing the European Atomic Energy Community, and in particular Article 106a thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="having regard to Council Decision (EU, Euratom) 2020/2053 of "/>
+               <date asWritten="14 December 2020" date="2020-12-14"/>
+               <t v=" on the system of own resources of the European Union and repealing Decision 2014/335/EU, Euratom"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_4" kind="citation">
+            <p>
+               <t v="having regard to Regulation (EU, Euratom) 2018/1046 of the European Parliament and of the Council of "/>
+               <date asWritten="18 July 2018" date="2018-07-18"/>
+               <t v=" on the financial rules applicable to the general budget of the Union, amending Regulations (EU) No 1296/2013, (EU) No 1301/2013, (EU) No 1303/2013, (EU) No 1304/2013, (EU) No 1309/2013, (EU) No 1316/2013, (EU) No 223/2014, (EU) No 283/2014, and Decision No 541/2014/EU, and repealing Regulation (EU, Euratom) No 966/2012"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_5" kind="citation">
+            <p>
+               <t v="having regard to Council Regulation (EU, Euratom) 2020/2093 of "/>
+               <date asWritten="17 December 2020" date="2020-12-17"/>
+               <t v=" laying down the multiannual financial framework for the years 2021 to 2027"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_6" kind="citation">
+            <p>
+               <t v="having regard to the Interinstitutional Agreement of "/>
+               <date asWritten="16 December 2020" date="2020-12-16"/>
+               <t v=" between the European Parliament, the Council of the European Union and the European Commission on budgetary discipline, on cooperation in budgetary matters and on sound financial management, as well as on new own resources, including a roadmap towards the introduction of new own resources"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_7" kind="citation">
+            <p>
+               <t v="having regard to the general budget of the European Union for the financial year 2021, as definitively adopted on "/>
+               <date asWritten="18 December 2020" date="2020-12-18"/>
+               <noteRef href="#note_5" marker="5"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_8" kind="citation">
+            <p>
+               <t v="having regard to Draft amending budget No 5 of the European Union for the financial year 2021, which the Commission adopted on "/>
+               <date asWritten="9 July 2021" date="2021-07-09"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_9" kind="citation">
+            <p>
+               <t v="having regard to the position on Draft amending budget No 5/2021, which the Council adopted on "/>
+               <date asWritten="5 October 2021" date="2021-10-05"/>
+               <t v=" and forwarded to Parliament on "/>
+               <date asWritten="14 October 2021" date="2021-10-14"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_10" kind="citation">
+            <p>
+               <t v="having regard to Parliament’s approval of "/>
+               <date asWritten="24 November 2021" date="2021-11-24"/>
+               <t v=" of the Council position,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_11" kind="citation">
+            <p>
+               <t v="having regard to Rules 94 and 96 of Parliament’s Rules of Procedure,"/>
+            </p>
+         </unit>
+      </citations>
+      <formula name="enactingFormula">
+         <p>
+            <t v="DECLARES:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_Sole-Article" kind="article">
+         <num>
+            <t v="Sole Article"/>
+         </num>
+         <p>
+            <t v="The procedure under Article 314 of the Treaty on the Functioning of the European Union is complete and Amending budget No 5 of the European Union for the financial year 2021 has been definitively adopted."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Strasburg, "/>
+            <date asWritten="24 November 2021" date="2021-11-24"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </organization>
+            <person>
+               <t v="D. M. "/>
+               <emphasis kind="uc">
+                  <t v="Sassoli"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="att_1" kind="attachment">
+         <unit eId="att_1/lvl_SECTION-III" kind="level" depth="1">
+            <num>
+               <emphasis kind="i">
+                  <t v="SECTION III"/>
+               </emphasis>
+            </num>
+            <subheading>
+               <emphasis kind="b">
+                  <t v="COMMISSION"/>
+               </emphasis>
+            </subheading>
+         </unit>
+         <unit eId="att_1/lvl_SECTION-III/lvl_1" kind="level" depth="2">
+            <heading>
+               <emphasis kind="b">
+                  <t v="EXPENDITURE"/>
+               </emphasis>
+            </heading>
+         </unit>
+         <unit eId="att_1/lvl_SECTION-III/lvl_1/lvl_1" kind="level" depth="3">
+            <table cols="8">
+               <tr header="true">
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Title"/>
+                     </p>
+                  </td>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Heading"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Budget 2021"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Amending budget No 5/2021"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="New amount"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+               </tr>
+               <rowGroup>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="01"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="RESEARCH AND INNOVATION"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="12646069534"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="10716492949"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="12646069534"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="10716492949"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="02"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="EUROPEAN STRATEGIC INVESTMENTS"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="5236934445"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="3954691493"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="5236934445"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="3954691493"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="03"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="SINGLE MARKET"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="899252697"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="833005699"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="899252697"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="833005699"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="04"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="SPACE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="2034303091"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1687697091"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="2034303091"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1687697091"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="05"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="REGIONAL DEVELOPMENT AND COHESION"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="35410370000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="45755416812"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="35410370000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="45755416812"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="06"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="RECOVERY AND RESILIENCE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1059937421"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1028986793"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="1059937421"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1028986793"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="07"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="INVESTING IN PEOPLE, SOCIAL COHESION AND VALUES"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="16607631113"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="19577122299"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="16607631113"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="19577122299"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="08"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="AGRICULTURE AND MARITIME POLICY"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="56565951003"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="56302994194"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="56565951003"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="56302994194"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Reserves (30 02 02)"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="74600000"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="71600000"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="74600000"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="71600000"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="09"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ENVIRONMENT AND CLIMATE ACTION"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1930015905"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="431609258"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="1930015905"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="431609258"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="10"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="MIGRATION"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1011065714"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1439158714"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="1011065714"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1439158714"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="11"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="BORDER MANAGEMENT"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1267764045"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1247087264"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="1267764045"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1247087264"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="12"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="SECURITY"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="536501243"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="527390243"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="536501243"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="527390243"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="13"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="DEFENCE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1172760198"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="143238000"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="1172760198"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="143238000"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="14"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="EXTERNAL ACTION"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="14195917731"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="8928643283"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="149643796"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="14345561527"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="8928643283"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="15"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PRE-ACCESSION ASSISTANCE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1901438473"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1882396073"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="1901438473"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1882396073"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="16"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="EXPENDITURE OUTSIDE THE ANNUAL CEILINGS SET OUT IN THE MULTIANNUAL FINANCIAL FRAMEWORK"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="97981598"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="117981598"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="97981598"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="117981598"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="20"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ADMINISTRATIVE EXPENDITURE OF THE EUROPEAN COMMISSION"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="3724183236"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="3725458325"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="3724183236"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="3725458325"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="21"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="EUROPEAN SCHOOLS AND PENSIONS"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="2411594399"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="2411594399"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="2411594399"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="2411594399"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="30"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="RESERVES"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="3193368000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="2992983000"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="3193368000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="2992983000"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="Total"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="161903039846"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="163703947487"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="149643796"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="162052683642"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="163703947487"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <emphasis kind="i">
+                                 <t v="Of which Reserves (30 02 02)"/>
+                              </emphasis>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <emphasis kind="i">
+                                 <t v="74600000"/>
+                              </emphasis>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <emphasis kind="i">
+                                 <t v="71600000"/>
+                              </emphasis>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <emphasis kind="i">
+                                 <t v="74600000"/>
+                              </emphasis>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <emphasis kind="i">
+                                 <t v="71600000"/>
+                              </emphasis>
+                           </emphasis>
+                        </p>
+                     </td>
+                  </tr>
+               </rowGroup>
+            </table>
+         </unit>
+         <unit eId="att_1/lvl_TITLE-14" kind="level" depth="3">
+            <num>
+               <emphasis kind="i">
+                  <t v="TITLE 14"/>
+               </emphasis>
+            </num>
+            <subheading>
+               <emphasis kind="b">
+                  <t v="EXTERNAL ACTION"/>
+               </emphasis>
+            </subheading>
+         </unit>
+         <unit eId="att_1/lvl_TITLE-14/lvl_1" kind="level" depth="4">
+            <table cols="8">
+               <caption>
+                  <p>
+                     <emphasis kind="b">
+                        <t v="General summary of appropriations (2021 and 2020) and outturn (2019)"/>
+                     </emphasis>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Title"/>
+                     </p>
+                     <p>
+                        <t v="Chapter"/>
+                     </p>
+                  </td>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Heading"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Budget 2021"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Amending budget No 5/2021"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="New amount"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+               </tr>
+               <rowGroup>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="14 01"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="SUPPORT ADMINISTRATIVE EXPENDITURE OF THE"/>
+                           <quote startQuote="‘" endQuote="’">
+                              <t v="EXTERNAL ACTION"/>
+                           </quote>
+                           <t v=" CLUSTER"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="341754224"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="341754224"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="341754224"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="341754224"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="14 02"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="NEIGHBOURHOOD, DEVELOPMENT AND INTERNATIONAL COOPERATION INSTRUMENT (NDICI)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="11744285623"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="6187464534"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="11744285623"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="6187464534"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="14 03"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="HUMANITARIAN AID"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1491512450"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1888615000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="149643796"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="1641156246"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1888615000"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="14 04"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="COMMON FOREIGN AND SECURITY POLICY"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="351327000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="328068070"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="351327000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="328068070"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="14 05"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="OVERSEAS COUNTRIES AND TERRITORIES"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="65670651"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="32098369"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="65670651"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="32098369"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="14 06"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="EUROPEAN INSTRUMENT FOR NUCLEAR SAFETY (EINS)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="36115200"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="31000000"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="36115200"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="31000000"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="14 20"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PILOT PROJECTS, PREPARATORY ACTIONS, PREROGATIVES AND OTHER ACTIONS"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="165252583"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="119643086"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="165252583"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="119643086"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="Title 14 — Total"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="14195917731"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="8928643283"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="149643796"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="14345561527"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="8928643283"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                  </tr>
+               </rowGroup>
+            </table>
+         </unit>
+         <unit eId="att_1/pnt_CHAPTER-14-03-" kind="level" depth="4">
+            <num>
+               <emphasis kind="b">
+                  <t v="CHAPTER 14 03 —"/>
+               </emphasis>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="HUMANITARIAN AID"/>
+               </emphasis>
+            </heading>
+         </unit>
+         <unit eId="att_1/pnt_CHAPTER-14-03-/lvl_1" kind="level" depth="5">
+            <table cols="9">
+               <tr header="true">
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Title"/>
+                     </p>
+                     <p>
+                        <t v="Chapter"/>
+                     </p>
+                     <p>
+                        <t v="Article"/>
+                     </p>
+                     <p>
+                        <t v="Item"/>
+                     </p>
+                  </td>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Heading"/>
+                     </p>
+                  </td>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="FF"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Budget 2021"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Amending budget No 5/2021"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="New amount"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+               </tr>
+               <rowGroup>
+                  <heading>
+                     <t v="14 03"/>
+                  </heading>
+                  <subheading>
+                     <t v="HUMANITARIAN AID"/>
+                  </subheading>
+                  <tr>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <emphasis kind="i">
+                                 <t v="14 03 01"/>
+                              </emphasis>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <emphasis kind="i">
+                                 <t v="Humanitarian aid"/>
+                              </emphasis>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="6"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1416512450"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1820000000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="149643796"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="1566156246"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1820000000"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <emphasis kind="i">
+                                 <t v="14 03 02"/>
+                              </emphasis>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <emphasis kind="i">
+                                 <t v="Disaster prevention, disaster risk reduction and preparedness"/>
+                              </emphasis>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="6"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="75000000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="68615000"/>
+                        </p>
+                     </td>
+                     <td/>
+                     <td/>
+                     <td>
+                        <p>
+                           <t v="75000000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="68615000"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="Chapter 14 03 — Total"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="1491512450"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="1888615000"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="149643796"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="1641156246"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="1888615000"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                  </tr>
+               </rowGroup>
+            </table>
+         </unit>
+         <unit eId="att_1/pnt_CHAPTER-14-03-/lvl_2" kind="level" depth="5">
+            <heading>
+               <emphasis kind="i">
+                  <t v="Remarks"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="Appropriations under this chapter are intended to cover operational expenditure concerning humanitarian aid, disaster prevention, disaster risk reduction, and preparedness in third countries."/>
+            </p>
+            <p>
+               <t v="The aid is granted to victims without discrimination or adverse distinction on the grounds of race, ethnic origin, religion, disability, sex, age, nationality or political affiliation. That aid is provided in accordance with international humanitarian law and should not be subject to restrictions imposed by other partner donors, as long as it is necessary to meet the humanitarian needs to which such situations give rise."/>
+            </p>
+            <p>
+               <t v="In accordance with Articles 21, 22 and 24 of the Financial Regulation, contributions received from third countries (EFTA States pursuant to the Agreement on the European Economic Area, candidate countries and, if applicable, the Western Balkan potential candidates, or other countries) for participating in Union programmes, and any other assigned revenue, entered in the statement of revenue give rise to the provision of corresponding appropriations and to implementation under this chapter."/>
+            </p>
+            <p>
+               <t v="The related estimated amounts as well as the corresponding article or item of the statement of revenue are indicated, wherever possible, in the relevant budget lines."/>
+            </p>
+         </unit>
+         <unit eId="att_1/pnt_CHAPTER-14-03-/lvl_3" kind="level" depth="5">
+            <heading>
+               <emphasis kind="i">
+                  <t v="Legal basis"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="Council Regulation (EC) No 1257/96 of "/>
+               <date asWritten="20 June 1996" date="1996-06-20"/>
+               <t v=" concerning humanitarian aid ("/>
+               <ref kind="oj"
+                    series="L"
+                    number="163"
+                    date="1996-07-02"
+                    page="1">
+                  <t v="OJ L 163, 2.07.1996, p. 1"/>
+               </ref>
+               <t v=")."/>
+            </p>
+         </unit>
+         <unit eId="att_1/pnt_CHAPTER-14-03-/lvl_4" kind="level" depth="5">
+            <heading>
+               <emphasis kind="b">
+                  <emphasis kind="i">
+                     <t v="14 03 01"/>
+                     <t v="Humanitarian aid"/>
+                  </emphasis>
+               </emphasis>
+            </heading>
+         </unit>
+         <unit eId="att_1/pnt_CHAPTER-14-03-/lvl_4/lvl_1" kind="level" depth="6">
+            <heading>
+               <emphasis kind="i">
+                  <t v="Figures (Differentiated appropriations)"/>
+               </emphasis>
+            </heading>
+            <table cols="6">
+               <tr header="true">
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Budget 2021"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Amending budget No 5/2021"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="New amount"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Commitments"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Payments"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="1416512450"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1820000000"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="149643796"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td>
+                     <p>
+                        <t v="1566156246"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1820000000"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </unit>
+         <unit eId="att_1/pnt_CHAPTER-14-03-/lvl_4/lvl_2" kind="level" depth="6">
+            <heading>
+               <emphasis kind="i">
+                  <t v="Remarks"/>
+               </emphasis>
+            </heading>
+            <p>
+               <emphasis kind="i">
+                  <t v="Former article"/>
+               </emphasis>
+            </p>
+            <table cols="8">
+               <tr>
+                  <td>
+                     <p>
+                        <emphasis kind="i">
+                           <t v="23 02 01"/>
+                        </emphasis>
+                     </p>
+                  </td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+               </tr>
+            </table>
+            <p>
+               <t v="This appropriation is intended to cover the financing of humanitarian and food assistance operations of a humanitarian nature to help people in third countries who are the victims of conflicts or disasters, both natural and man-made (wars, outbreaks of fighting, etc.), or comparable emergencies, for as long as is necessary to meet the humanitarian needs that such situations give rise to."/>
+            </p>
+            <p>
+               <t v="This appropriation is also intended to cover the purchase and delivery of any product or equipment needed for the implementation of humanitarian aid operations, including the building of homes or shelters for affected groups of people, short-term rehabilitation and reconstruction work, particularly of infrastructure and facilities, the costs associated with external, expatriate or local staff, storage, international or national shipment, logistic support and distribution of relief and any other action aimed at facilitating freedom of access to the recipients of the aid."/>
+            </p>
+            <p>
+               <t v="This appropriation may also cover any other costs directly linked to the implementation of humanitarian aid operations, such as technical assistance within the requisite timescale and in a way which meets the needs of the recipients, satisfies the requirement to achieve the greatest possible degree of cost-effectiveness and provides greater transparency."/>
+            </p>
+            <p>
+               <t v="Assigned revenue (origin, estimated amounts and corresponding article or item of the statement of revenue)."/>
+            </p>
+            <table cols="3">
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Other assigned revenue"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4000000"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3 3 0, 3 3 8, 3 3 9, 6 5 0 1"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="424"
+                 date="2020-12-15"
+                 page="1">
+               <t v="OJ L 424, 15.12.2020, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="193"
+                 date="2018-07-30"
+                 page="1">
+               <t v="OJ L 193, 30.7.2018, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="433I"
+                 date="2020-12-22"
+                 page="11">
+               <t v="OJ L 433 I, 22.12.2020, p. 11"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="433I"
+                 date="2020-12-22"
+                 page="28">
+               <t v="OJ L 433 I, 22.12.2020, p. 28"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="93" date="2021-03-17" page="1">
+               <t v="OJ L 93, 17.3.2021, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

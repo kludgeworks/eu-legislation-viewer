@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32004D0111"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="01.02"
+           converter="1.0.0">
+   <source celex="32004D0111">
+      <publication series="L" number="32" date="2004-02-05" page="20"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="29 January 2004" date="2004-01-29"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the implementation of surveys for avian influenza in poultry and wild birds in Member States, to be carried out during 2004"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(notified under document number C(2004) 134)"/>
+         </p>
+         <p>
+            <t v="(2004/111/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Decision 90/424/EEC of "/>
+               <date asWritten="26 June 1990" date="1990-06-26"/>
+               <t v=" on expenditure in the veterinary field"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 20 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Pursuant to Council Directive 92/40/EEC of "/>
+               <date asWritten="19 May 1992" date="1992-05-19"/>
+               <t v=" introducing Community measures for the control of avian influenza"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" regular monitoring of poultry flocks and wild birds in order to assess the possible presence of disease in these populations is not foreseen."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Experience has shown that certain strains of the avian influenza virus, which are currently not covered by the control measures of the Directive, have the ability to mutate to highly pathogenic strains after having circulated in the poultry population for some time."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="This situation is liable to cause high mortality in poultry and severe economic losses to the poultry industry, which could be decreased by implementing a screening system in the Member States to allow an earlier detection and control of such precursor strains."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The Scientific Committee on Animal Health and Animal Welfare has issued an opinion on the definition of avian influenza and the use of vaccination against avian influenza. In this report it was recommended to change the definition for avian influenza in order to include more avian influenza strains for which eradication measures are appropriate. Furthermore, surveys should be carried out to determine the prevalence of such strains in different poultry populations. This should allow an estimate of the costs for the modified disease control measures."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="In November 2001 the Commission organised a symposium on the preparedness for influenza pandemics in humans. It was stressed that surveys in various animal populations should be carried out to better assess the zoonotic impact of such infections."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="Both the zoonotic aspect and the animal health implications underline the need of surveys for influenza in animal populations."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_7" kind="recital">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <p>
+               <t v="In 2002 and 2003 all Member States have implemented surveys for avian influenza in poultry and most countries have also carried out a screening in wild birds according to Commission Decision 2002/649/EC"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_8" kind="recital">
+            <num>
+               <t v="(8)"/>
+            </num>
+            <p>
+               <t v="The individual programmes and the Community's financial contribution to each of these programmes have been approved by Decision 2002/673/EC"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_9" kind="recital">
+            <num>
+               <t v="(9)"/>
+            </num>
+            <p>
+               <t v="During these surveys the presence of different subtypes of H5 and H7 avian influenza viruses has been detected in poultry in several Member States. Although the current prevalence of avian influenza viruses can be considered rather low, it can be concluded that it is important to follow up these positive findings and to continue the surveillance in the year 2004 to better understand the epidemiology of the avian influenza viruses."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_10" kind="recital">
+            <num>
+               <t v="(10)"/>
+            </num>
+            <p>
+               <t v="Member States should submit their programmes for approval by the Commission so that financial assistance by the Community may be granted."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_11" kind="recital">
+            <num>
+               <t v="(11)"/>
+            </num>
+            <p>
+               <t v="Article 32 of the Act of Accession of 2003 lays down that the new Member States are to receive the same treatment as the present Member States as regards expenditure under veterinary funds."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_12" kind="recital">
+            <num>
+               <t v="(12)"/>
+            </num>
+            <p>
+               <t v="However, no financial commitment may be made for any programme before the accession of the concerned acceding Member State has taken place. Furthermore, the monitoring of certain diseases in acceding Member States can also be co-financed by other Community instruments."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_13" kind="recital">
+            <num>
+               <t v="(13)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Decision are in accordance with the opinion of the Standing Committee of the Food Chain and Animal Health,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Member States shall submit for approval to the Commission by "/>
+            <date asWritten="15 March 2004" date="2004-03-15"/>
+            <t v=" plans for the implementation of surveys for avian influenza in poultry and wild birds."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The Community's financial contribution towards the measures referred to in Article 1 shall be at the rate of 50 % of the costs incurred in Member States for sampling and analysing of samples up to a maximum of EUR "/>
+            <t v="600000"/>
+            <t v=" for all Member States in total."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Decision is addressed to the Member States."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="29 January 2004" date="2004-01-29"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="David "/>
+               <emphasis kind="uc">
+                  <t v="Byrne"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="224"
+                 date="1990-08-18"
+                 page="19">
+               <t v="OJ L 224, 18.8.1990, p. 19"/>
+            </ref>
+            <t v=". Decision as last amended by Regulation (EC) No 806/2003 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="122"
+                 date="2003-05-16"
+                 page="1">
+               <t v="OJ L 122, 16.5.2003, p. 1"/>
+            </ref>
+            <t v=".)."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="167"
+                 date="1992-06-22"
+                 page="1">
+               <t v="OJ L 167, 22.6.1992, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="213"
+                 date="2002-08-09"
+                 page="38">
+               <t v="OJ L 213, 9.8.2002, p. 38"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="228"
+                 date="2002-08-24"
+                 page="27">
+               <t v="OJ L 228, 24.8.2002, p. 27"/>
+            </ref>
+            <t v=". Decision as amended by Decision 2003/21/EC ("/>
+            <ref kind="oj" series="L" number="8" date="2003-01-14" page="37">
+               <t v="OJ L 8, 14.1.2003, p. 37"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

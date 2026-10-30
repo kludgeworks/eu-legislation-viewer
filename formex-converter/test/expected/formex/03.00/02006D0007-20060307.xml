@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32006D0007"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2006-03-07"
+           lang="en"
+           formexVersion="03.00"
+           converter="1.0.0">
+   <source celex="02006D0007-20060307">
+      <publication series="L" number="5" date="2006-01-10" page="17"/>
+   </source>
+   <lifecycle start="2006-03-07" end="2006-07-31" sequence="001.001.0">
+      <eventRef type="amendment" act="32006D0183" date="2006-02-28"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="9 January 2006" date="2006-01-09"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="concerning certain protection measures in relation to the import of feathers from certain third countries"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(notified under document number C(2006) 33)"/>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+         <p>
+            <t v="(2006/7/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Directive 97/78/EC of "/>
+               <date asWritten="18 December 1997" date="1997-12-18"/>
+               <t v=" laying down the principles governing the organisation of veterinary checks on products entering the Community from third countries"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 22 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Avian influenza is an infectious viral disease in poultry and birds, causing mortality and disturbances which can quickly take epizootic proportions liable to present a serious threat to animal and public health and to reduce sharply the profitability of poultry farming. There is a risk that the disease agent might be introduced via international trade in live poultry and poultry products, including untreated feathers."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Several outbreaks of avian influenza have been notified by the Turkish authorities in backyard flocks in eastern Anatolia. As the disease is likely to have been spread to Turkey by migratory birds, the presence of the disease in Armenia, Azerbaijan, Georgia, Iran, Iraq and Syria cannot be excluded."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Currently no poultry products other than untreated feathers and parts thereof are authorised for imports from the countries neighbouring Turkey."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="In accordance with Commission Decision 2005/733/EC"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", imports from Turkey of untreated feathers are already suspended."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="As no further information is available on surveillance for avian influenza in the countries neighbouring the eastern part of Turkey, and in view of the animal health risk of disease introduction into the Community, it is appropriate to suspend imports of untreated feathers and parts thereof from Armenia, Azerbaijan, Georgia, Iran, Iraq and Syria."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="Consequently it is appropriate to require proof of treatment for imports of commercial consignments of processed feathers from the third countries concerned."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_7" kind="recital">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Decision are in accordance with the opinion of the Standing Committee on the Food Chain and Animal Health,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Member States shall suspend the importation from the territory of the countries listed in the Annex to this Decision of untreated feathers and parts of untreated feathers."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The Member States shall ensure that when imported from the territory of the countries listed in the Annex, consignments of treated feathers or parts of treated feathers (excluding treated decorative feathers, treated feathers carried by travelers for their private use or consignments of treated feathers sent to private individuals for non industrial purposes) are accompanied by a commercial document stating that the treated feathers or parts of treated feathers have been treated with a steam current or by some other method ensuring the inactivation of the pathogen."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="The Member States shall immediately take the necessary measures to comply with this Decision and publish those measures. They shall immediately inform the Commission thereof."/>
+         </p>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <p>
+            <t v="This Decision shall apply until "/>
+            <changed amendingAct="32006D0183"
+                     action="replaced"
+                     location="AR:1;PT:1"
+                     marker="O001001M001000">
+               <date asWritten="31 July 2006" date="2006-07-31"/>
+            </changed>
+            <t v="."/>
+         </p>
+      </unit>
+      <unit eId="art_5" kind="article">
+         <num>
+            <t v="Article 5"/>
+         </num>
+         <p>
+            <t v="This Decision is addressed to the Member States."/>
+         </p>
+      </unit>
+   </body>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <provenance amendingAct="32006D0183"
+                     action="replaced"
+                     location="AR:1;PT:2 .AND. AX:0"
+                     marker="O001001M002000"/>
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <t v="Countries as referred to in Articles 1 and 2 of this Decision:"/>
+         </p>
+         <list kind="none">
+            <unit eId="anx/idt_1" kind="indent">
+               <p>
+                  <t v="All third countries"/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="24" date="1998-01-30" page="9">
+               <t v="OJ L 24, 30.1.1998, p. 9"/>
+            </ref>
+            <t v=". Directive as last amended by Regulation (EC) No 882/2004 of the European Parliament and of the Council ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="165"
+                 date="2004-04-30"
+                 page="1">
+               <t v="OJ L 165, 30.4.2004, p. 1"/>
+            </ref>
+            <t v="; corrected in "/>
+            <ref kind="oj"
+                 series="L"
+                 number="191"
+                 date="2004-05-28"
+                 page="1">
+               <t v="OJ L 191, 28.5.2004, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="274"
+                 date="2005-10-20"
+                 page="102">
+               <t v="OJ L 274, 20.10.2005, p. 102"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

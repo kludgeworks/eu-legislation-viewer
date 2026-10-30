@@ -1,0 +1,1847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32022D1668"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2025-02-02"
+           lang="en"
+           formexVersion="06.02.1"
+           converter="1.0.0">
+   <source celex="02022D1668-20250202">
+      <publication series="L" number="251" date="2022-09-29" page="6"/>
+   </source>
+   <lifecycle start="2025-02-02" produced="2024-08-19" sequence="004.001.0">
+      <eventRef type="amendment" act="32023D0601" date="2023-03-13"/>
+      <eventRef type="amendment" act="32023D1587" date="2023-08-01"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Implementing Decision"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) 2022/1668"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="28 September 2022" date="2022-09-28"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on harmonised standards for equipment and protective systems intended for use in potentially explosive atmospheres drafted in support of Directive 2014/34/EU of the European Parliament and of the Council"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The references of harmonised standards for equipment and protective systems intended for use in potentially explosive atmospheres in support of Directive 2014/34/EU, listed in Annex I to this Decision, are hereby published in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="Implementing Decision (EU) 2019/1202 is repealed."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="Communication 2018/C 371/01 is repealed. However, it shall continue to apply in respect of the references of harmonised standards listed in Annex II to this Decision until the dates of withdrawal of those references."/>
+         </p>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <p>
+            <t v="This Decision shall enter into force on the day of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <annexes>
+      <unit eId="anx_I" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX I"/>
+         </num>
+         <table cols="2">
+            <tr header="true">
+               <td header="true">
+                  <p>
+                     <t v="No"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Reference of the standard"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="1."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 1010-1:2004+A1:2010"/>
+                  </p>
+                  <p>
+                     <t v="Safety of machinery – Safety requirements for the design and construction of printing and paper converting machines – Part 1: Common requirements"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="2."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 1010-2:2006+A1:2010"/>
+                  </p>
+                  <p>
+                     <t v="Safety of machinery – Safety requirements for the design and construction of printing and paper converting machines – Part 2: Printing and varnishing machines including pre-press machinery"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="3."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 1127-1:2019"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Explosion prevention and protection – Part 1: Basic concepts and methodology"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="4."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 1127-2:2014"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Explosion prevention and protection – Part 2: Basic concepts and methodology for mining"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="5."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 1755:2015"/>
+                  </p>
+                  <p>
+                     <t v="Industrial Trucks – Safety requirements and verification – Supplementary requirements for operation in potentially explosive atmospheres"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="6."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 1834-1:2000"/>
+                  </p>
+                  <p>
+                     <t v="Reciprocating internal combustion engines – Safety requirements for design and construction of engines for use in potentially explosive atmospheres – Part 1: Group II engines for use in flammable gas and vapour atmospheres"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="7."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 1834-2:2000"/>
+                  </p>
+                  <p>
+                     <t v="Reciprocating internal combustion engines – Safety requirements for design and construction of engines for use in potentially explosive atmospheres – Part 2: Group I engines for use in underground workings susceptible to firedamp and/or combustible dust"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="8."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 1834-3:2000"/>
+                  </p>
+                  <p>
+                     <t v="Reciprocating internal combustion engines – Safety requirements for design and construction of engines for use in potentially explosive atmospheres – Part 3: Group II engines for use in flammable dust atmospheres"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="9."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 1839:2017"/>
+                  </p>
+                  <p>
+                     <t v="Determination of the explosion limits and the limiting oxygen concentration (LOC) for flammable gases and vapours"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="10."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 1953:2013"/>
+                  </p>
+                  <p>
+                     <t v="Atomising and spraying equipment for coating materials – Safety requirements"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="11."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 12581:2005+A1:2010"/>
+                  </p>
+                  <p>
+                     <t v="Coating plants – Machinery for dip coating and electrodeposition of organic liquid coating material – Safety requirements"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="12."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 12621:2006+A1:2010"/>
+                  </p>
+                  <p>
+                     <t v="Machinery for the supply and circulation of coating materials under pressure – Safety requirements"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="13."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 12757-1:2005+A1:2010"/>
+                  </p>
+                  <p>
+                     <t v="Mixing machinery for coating materials – Safety requirements – Part 1: Mixing machinery for use in vehicle refinishing"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="14."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13012:2021"/>
+                  </p>
+                  <p>
+                     <t v="Petrol filling stations – Construction and performance of automatic nozzles for use on fuel dispensers"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="15."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13237:2012"/>
+                  </p>
+                  <p>
+                     <t v="Potentially explosive atmospheres – Terms and definitions for equipment and protective systems intended for use in potentially explosive atmospheres"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="16."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13616-1:2016"/>
+                  </p>
+                  <p>
+                     <t v="Overfill prevention devices for static tanks for liquid fuels – Part 1: Overfill prevention devices with closure device"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="17."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13617-1:2021"/>
+                  </p>
+                  <p>
+                     <t v="Petrol filling stations – Part 1: Safety requirements for construction and performance of metering pumps, dispensers and remote pumping units"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="18."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13617-2:2021"/>
+                  </p>
+                  <p>
+                     <t v="Petrol filling stations – Part 2: Safety requirements for construction and performance of safe breaks for use on metering pumps and dispensers"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="19."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13617-3:2021"/>
+                  </p>
+                  <p>
+                     <t v="Petrol filling stations – Part 3: Safety requirements for construction and performance of shear valves"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="20."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13617-4:2021"/>
+                  </p>
+                  <p>
+                     <t v="Petrol filling stations – Part 4: Safety requirements for construction and performance of swivels for use on metering pumps and dispensers"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="21."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13760:2021"/>
+                  </p>
+                  <p>
+                     <t v="LPG equipment and accessories – Automotive LPG filling system for light and heavy duty vehicles – Nozzle, test requirements and dimensions"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="22."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13852-1:2013"/>
+                  </p>
+                  <p>
+                     <t v="Cranes – Offshore cranes – Part 1: General-purpose offshore cranes"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="23."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13852-3:2021"/>
+                  </p>
+                  <p>
+                     <t v="Cranes – Offshore cranes – Part 3: Light offshore cranes"/>
+                  </p>
+                  <p>
+                     <t v="Notice 1: The normative references referred to in clause 2 of harmonised standard EN IEC 60079-0:2018 shall be read as EN IEC 60079-0:2018 corrected by EN IEC 60079-0:2018/AC:2020-02"/>
+                  </p>
+                  <p>
+                     <t v="Notice 2: The normative references referred to in clause 2 of harmonised standard EN ISO 80079-36:2016 shall be read as EN ISO 80079-36:2016 corrected by EN ISO 80079-36:2016/AC:2019 Restriction: this publication does not cover the following part of the standard: column "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="Remarks/Notes"/>
+                     </quote>
+                     <t v=" of Table ZB.1"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="24."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14034-1:2004+A1:2011"/>
+                  </p>
+                  <p>
+                     <t v="Determination of explosion characteristics of dust clouds – Part 1: Determination of the maximum explosion pressure pmax of dust clouds"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="25."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14034-2:2006+A1:2011"/>
+                  </p>
+                  <p>
+                     <t v="Determination of explosion characteristics of dust clouds – Part 2: Determination of the maximum rate of explosion pressure rise (dp/dt) max of dust clouds"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="26."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14034-3:2006+A1:2011"/>
+                  </p>
+                  <p>
+                     <t v="Determination of explosion characteristics of dust clouds – Part 3: Determination of the lower explosion limit LEL of dust clouds"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="27."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14034-4:2004+A1:2011"/>
+                  </p>
+                  <p>
+                     <t v="Determination of explosion characteristics of dust clouds – Part 4: Determination of the limiting oxygen concentration LOC of dust clouds"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="28."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14373:2021"/>
+                  </p>
+                  <p>
+                     <t v="Explosion suppression systems"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="29."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14460:2018"/>
+                  </p>
+                  <p>
+                     <t v="Explosion resistant equipment"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="30."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14491:2012"/>
+                  </p>
+                  <p>
+                     <t v="Dust explosion venting protective systems"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="31."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14492-1:2006+A1:2009"/>
+                  </p>
+                  <p>
+                     <t v="Cranes – Power driven winches and hoists – Part 1: Power driven winches"/>
+                  </p>
+                  <p>
+                     <t v="EN 14492-1:2006+A1:2009/AC:2010"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="32."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14492-2:2006+A1:2009"/>
+                  </p>
+                  <p>
+                     <t v="Cranes – Power driven winches and hoists – Part 2: Power driven hoists"/>
+                  </p>
+                  <p>
+                     <t v="EN 14492-2:2006+A1:2009/AC:2010"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="33."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14522:2005"/>
+                  </p>
+                  <p>
+                     <t v="Determination of the auto ignition temperature of gases and vapours"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="34."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14591-1:2004"/>
+                  </p>
+                  <p>
+                     <t v="Explosion prevention and protection in underground mines – Protective systems – Part 1: 2-bar explosion proof ventilation structure"/>
+                  </p>
+                  <p>
+                     <t v="EN 14591-1:2004/AC:2006"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="35."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14591-2:2007"/>
+                  </p>
+                  <p>
+                     <t v="Explosion prevention and protection in underground mines – Protective systems – Part 2: Passive water trough barriers"/>
+                  </p>
+                  <p>
+                     <t v="EN 14591-2:2007/AC:2008"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="36."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14591-4:2007"/>
+                  </p>
+                  <p>
+                     <t v="Explosion prevention and protection in underground mines – Protective systems – Part 4: Automatic extinguishing systems for road headers"/>
+                  </p>
+                  <p>
+                     <t v="EN 14591-4:2007/AC:2008"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="37."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14677:2008"/>
+                  </p>
+                  <p>
+                     <t v="Safety of machinery – Secondary steelmaking – Machinery and equipment for treatment of liquid steel"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="38."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14678-1:2013"/>
+                  </p>
+                  <p>
+                     <t v="LPG equipment and accessories – Construction and performance of LPG equipment for automotive filling stations – Part 1: Dispensers"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="39."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14681:2006+A1:2010"/>
+                  </p>
+                  <p>
+                     <t v="Safety of machinery – Safety requirements for machinery and equipment for production of steel by electric arc furnaces"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="40."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14797:2006"/>
+                  </p>
+                  <p>
+                     <t v="Explosion venting devices"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="41."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14973:2015"/>
+                  </p>
+                  <p>
+                     <t v="Conveyor belts for use in underground installations – Electrical and flammability safety requirements"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="42."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14983:2007"/>
+                  </p>
+                  <p>
+                     <t v="Explosion prevention and protection in underground mines – Equipment and protective systems for firedamp drainage"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="43."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14986:2017"/>
+                  </p>
+                  <p>
+                     <t v="Design of fans working in potentially explosive atmospheres"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="44."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14994:2007"/>
+                  </p>
+                  <p>
+                     <t v="Gas explosion venting protective systems"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="45."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 15089:2009"/>
+                  </p>
+                  <p>
+                     <t v="Explosion isolation systems"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="46."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 15188:2020"/>
+                  </p>
+                  <p>
+                     <t v="Determination of the spontaneous ignition behaviour of dust accumulations"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="47."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 15198:2007"/>
+                  </p>
+                  <p>
+                     <t v="Methodology for the risk assessment of non-electrical equipment and components for intended use in potentially explosive atmospheres"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="48."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 15233:2007"/>
+                  </p>
+                  <p>
+                     <t v="Methodology for functional safety assessment of protective systems for potentially explosive atmospheres"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="49."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 15268:2008"/>
+                  </p>
+                  <p>
+                     <t v="Petrol filling stations – Safety requirements for the construction of submersible pump assemblies"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="50."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 15794:2009"/>
+                  </p>
+                  <p>
+                     <t v="Determination of explosion points of flammable liquids"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="51."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 15967:2022"/>
+                  </p>
+                  <p>
+                     <t v="Determination of maximum explosion pressure and the maximum rate of pressure rise of gases and vapours"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="52."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 16009:2011"/>
+                  </p>
+                  <p>
+                     <t v="Flameless explosion venting devices"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="53."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 16020:2011"/>
+                  </p>
+                  <p>
+                     <t v="Explosion diverters"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="54."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 16447:2014"/>
+                  </p>
+                  <p>
+                     <t v="Explosion isolation flap valves"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="55."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN ISO 16852:2016"/>
+                  </p>
+                  <p>
+                     <t v="Flame arresters – Performance requirements, test methods and limits for use (ISO 16852:2016)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="56."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 17077:2018"/>
+                  </p>
+                  <p>
+                     <t v="Determination of burning behaviour of dust layers"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="57."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50050-1:2013"/>
+                  </p>
+                  <p>
+                     <t v="Electrostatic hand-held spraying equipment – Safety requirements – Part 1: Hand-held spraying equipment for ignitable liquid coating materials"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="58."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50050-2:2013"/>
+                  </p>
+                  <p>
+                     <t v="Electrostatic hand-held spraying equipment – Safety requirements – Part 2: Hand-held spraying equipment for ignitable coating powder"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="59."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50050-3:2013"/>
+                  </p>
+                  <p>
+                     <t v="Electrostatic hand-held spraying equipment – Safety requirements – Part 3: Hand-held spraying equipment for ignitable flock"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="60."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50104:2010"/>
+                  </p>
+                  <p>
+                     <t v="Electrical apparatus for the detection and measurement of oxygen – Performance requirements and test methods"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <provenance amendingAct="32023D1587"
+                           action="inserted"
+                           location="AR:1 .AND. AX:0;PT:2"
+                           marker="O002001M001000"/>
+               <td>
+                  <p>
+                     <t v="60a."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50104:2019"/>
+                  </p>
+                  <p>
+                     <t v="Electrical equipment for the detection and measurement of oxygen – Performance requirements and test methods"/>
+                  </p>
+                  <p>
+                     <t v="EN 50104:2019/A1:2023"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="61."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50176:2009"/>
+                  </p>
+                  <p>
+                     <t v="Stationary electrostatic application equipment for ignitable liquid coating material – Safety requirements"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="62."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50177:2009"/>
+                  </p>
+                  <p>
+                     <t v="Stationary electrostatic application equipment for ignitable coating powders – Safety requirements"/>
+                  </p>
+                  <p>
+                     <t v="EN 50177:2009/A1:2012"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="63."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50223:2015"/>
+                  </p>
+                  <p>
+                     <t v="Stationary electrostatic application equipment for ignitable flock material – Safety requirements"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="64."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50271:2018"/>
+                  </p>
+                  <p>
+                     <t v="Electrical apparatus for the detection and measurement of combustible gases, toxic gases or oxygen – Requirements and tests for apparatus using software and/or digital technologies"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="65."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50281-2-1:1998"/>
+                  </p>
+                  <p>
+                     <t v="Electrical apparatus for use in the presence of combustible dust – Part 2-1: Test methods – Methods for determining the minimum ignition temperatures of dust"/>
+                  </p>
+                  <p>
+                     <t v="EN 50281-2-1:1998/AC:1999"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="66."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50303:2000"/>
+                  </p>
+                  <p>
+                     <t v="Group I, Category M1 equipment intended to remain functional in atmospheres endangered by firedamp and/or coal dust"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="67."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50381:2004"/>
+                  </p>
+                  <p>
+                     <t v="Transportable ventilated rooms with or without an internal source of release"/>
+                  </p>
+                  <p>
+                     <t v="EN 50381:2004/AC:2005"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="68."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 50495:2010"/>
+                  </p>
+                  <p>
+                     <t v="Safety devices required for the safe functioning of equipment with respect to explosion risks"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="69."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN IEC 60079-0:2018"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 0: Equipment – General requirements (IEC 60079-0:2017)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="70."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-1:2014"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 1: Equipment protection by flameproof enclosures "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="d"/>
+                     </quote>
+                     <t v=" (IEC 60079-1:2014)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="71."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-2:2014"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 2: Equipment protection by pressurized enclosure "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="p"/>
+                     </quote>
+                     <t v=" (IEC 60079-2:2014)"/>
+                  </p>
+                  <p>
+                     <t v="EN 60079-2:2014/AC:2015"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="72."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-5:2015"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 5: Equipment protection by powder filling "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="q"/>
+                     </quote>
+                     <t v=" (IEC 60079-5:2015)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="73."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-6:2015"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 6: Equipment protection by liquid immersion "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="o"/>
+                     </quote>
+                     <t v=" (IEC 60079-6:2015)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="74."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-7:2015"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 7: Equipment protection by increased safety "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="e"/>
+                     </quote>
+                     <t v=" (IEC 60079-7:2015)"/>
+                  </p>
+                  <p>
+                     <t v="EN IEC 60079-7:2015/A1:2018"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="75."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-11:2012"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 11: Equipment protection by intrinsic safety "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="i"/>
+                     </quote>
+                     <t v=" (IEC 60079-11:2011)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="76."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-15:2010"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 15: Equipment protection by type of protection "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="n"/>
+                     </quote>
+                     <t v=" (IEC 60079-15:2010)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="77."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-18:2015"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 18: Equipment protection by encapsulation "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="m"/>
+                     </quote>
+                     <t v=" (IEC 60079-18:2014)"/>
+                  </p>
+                  <p>
+                     <t v="EN 60079-18:2015/A1:2017"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="78."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-20-1:2010"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 20-1: Material characteristics for gas and vapour classification – Test methods and data (IEC 60079-20-1:2010)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="79."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-25:2010"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 25: Intrinsically safe electrical systems (IEC 60079-25:2010)"/>
+                  </p>
+                  <p>
+                     <t v="EN 60079-25:2010/AC:2013"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="80."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-26:2015"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 26: Equipment with Equipment Protection Level (EPL) Ga (IEC 60079-26:2014)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="81."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-28:2015"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 28: Protection of equipment and transmission systems using optical radiation (IEC 60079-28:2015)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="82."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-29-1:2016"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 29-1: Gas detectors – Performance requirements of detectors for flammable gases (IEC 60079-29-1:2016, (Modified))"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <provenance amendingAct="32023D0601"
+                           action="inserted"
+                           location="AR:1 .AND. AX:0;PT:2"
+                           marker="O001001M001000"/>
+               <td>
+                  <p>
+                     <t v="82a."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-29-1:2016"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 29-1: Gas detectors – Performance requirements of detectors for flammable gases"/>
+                  </p>
+                  <p>
+                     <t v="EN 60079-29-1:2016/A1:2022"/>
+                  </p>
+                  <p>
+                     <t v="EN 60079-29-1:2016/A11:2022"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="83."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-29-4:2010"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 29-4: Gas detectors – Performance requirements of open path detectors for flammable gases (IEC 60079-29-4:2009, (Modified))"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="84."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-30-1:2017"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 30-1: Electrical resistance trace heating – General and testing requirements (IEC/IEEE 60079-30-1:2015, (Modified))"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="85."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-31:2014"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 31: Equipment dust ignition protection by enclosure "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="t"/>
+                     </quote>
+                     <t v=" (IEC 60079-31:2013)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="86."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 60079-35-1:2011"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 35-1: Caplights for use in mines susceptible to firedamp – General requirements – Construction and testing in relation to the risk of explosion (IEC 60079-35-1:2011)"/>
+                  </p>
+                  <p>
+                     <t v="EN 60079-35-1:2011/AC:2011"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="87."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN ISO/IEC 80079-20-2:2016"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 20-2: Material characteristics – Combustible dusts test methods (ISO/IEC 80079-20-2:2016)"/>
+                  </p>
+                  <p>
+                     <t v="EN ISO/IEC 80079-20-2:2016/AC:2017"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="88."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN ISO/IEC 80079-34:2011"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 34: Application of quality systems for equipment manufacture (ISO/IEC 80079-34:2011)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="89."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN ISO 80079-36:2016"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 36: Non-electrical equipment for explosive atmospheres – Basic method and requirements (ISO 80079-36:2016)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="90."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN ISO 80079-37:2016"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 37: Non-electrical equipment for explosive atmospheres – Non-electrical type of protection constructional safety "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="c"/>
+                     </quote>
+                     <t v=", control of ignition sources "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="b"/>
+                     </quote>
+                     <t v=", liquid immersion "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="k"/>
+                     </quote>
+                     <t v=" (ISO 80079-37:2016)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="91."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN ISO/IEC 80079-38:2016"/>
+                  </p>
+                  <p>
+                     <t v="Explosive atmospheres – Part 38: Equipment and components in explosive atmospheres in underground mines (ISO/IEC 80079-38:2016)"/>
+                  </p>
+                  <p>
+                     <t v="EN ISO/IEC 80079-38:2016/A1:2018"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <provenance amendingAct="32023D0601"
+                           action="inserted"
+                           location="AR:1 .AND. AX:0;PT:3"
+                           marker="O001001M002000"/>
+               <td>
+                  <p>
+                     <t v="92."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 17348:2022"/>
+                  </p>
+                  <p>
+                     <t v="Requirements for design and testing of vacuum cleaners for use in potentially explosive atmospheres"/>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </unit>
+      <unit eId="anx_II" kind="annex" eurlexAnchor="2">
+         <num>
+            <t v="ANNEX II"/>
+         </num>
+         <table cols="3">
+            <tr header="true">
+               <td header="true">
+                  <p>
+                     <t v="No"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Reference of the standard"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Date of withdrawal"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="1."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13012:2012"/>
+                  </p>
+                  <p>
+                     <t v="Petrol filling stations – Construction and performance of automatic nozzles for use on fuel dispensers"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <date asWritten="3.9.2023" date="2023-09-03"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="2."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13617-1:2012"/>
+                  </p>
+                  <p>
+                     <t v="Petrol filling stations – Part 1: Safety requirements for construction and performance of metering pumps, dispensers and remote pumping units"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <date asWritten="3.9.2023" date="2023-09-03"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="3."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13617-2:2012"/>
+                  </p>
+                  <p>
+                     <t v="Petrol filling stations – Part 2: Safety requirements for construction and performance of safe breaks for use on metering pumps and dispensers"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <date asWritten="3.9.2023" date="2023-09-03"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="4."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13617-3:2012"/>
+                  </p>
+                  <p>
+                     <t v="Petrol filling stations – Part 3: Safety requirements for construction and performance of shear valves"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <date asWritten="3.9.2023" date="2023-09-03"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="5."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13617-4:2012"/>
+                  </p>
+                  <p>
+                     <t v="Petrol filling stations – Part 4: Safety requirements for construction and performance of swivels for use on metering pumps and dispensers"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <date asWritten="3.9.2023" date="2023-09-03"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="6."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 13760:2003"/>
+                  </p>
+                  <p>
+                     <t v="Automotive LPG filling system for light and heavy duty vehicles – Nozzle, test requirements and dimensions"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <date asWritten="19.11.2023" date="2023-11-19"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="7."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 14373:2005"/>
+                  </p>
+                  <p>
+                     <t v="Explosion suppression systems"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <date asWritten="19.11.2023" date="2023-11-19"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="8."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 15188:2007"/>
+                  </p>
+                  <p>
+                     <t v="Determination of the spontaneous ignition behaviour of dust accumulations"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <date asWritten="27.11.2022" date="2022-11-27"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="9."/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="EN 15967:2011"/>
+                  </p>
+                  <p>
+                     <t v="Determination of maximum explosion pressure and the maximum rate of pressure rise of gases and vapours"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <date asWritten="29.3.2024" date="2024-03-29"/>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </unit>
+   </annexes>
+</legalText>
+

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32017R0693R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.56"
+           converter="1.0.0">
+   <source celex="32017R0693R(01)">
+      <publication series="L" number="131" date="2017-05-20" page="23"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Commission Regulation (EU) 2017/693 of "/>
+            <date asWritten="7 April 2017" date="2017-04-07"/>
+            <t v=" amending Annexes II, III and V to Regulation (EC) No 396/2005 of the European Parliament and of the Council as regards maximum residue levels for bitertanol, chlormequat and tebufenpyrad in or on certain products"/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="("/>
+               <ref kind="oj" series="L" number="101" date="2017-04-13">
+                  <t v="Official Journal of the European Union L 101 of 13 April 2017"/>
+               </ref>
+               <t v=")"/>
+            </emphasis>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 12, point 1(b) of the Annex, in the table replacing the column for chlormequat in Annex II of Regulation (EC) No 396/2005:"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <quotedStructure eId="cor_1/old/qst_1">
+               <table cols="3">
+                  <rowGroup>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="‘"/>
+                              <t v="1030000"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="Birds eggs"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="0,01"/>
+                              </emphasis>
+                              <t v=" (*)"/>
+                              <t v="’"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1030010"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="Chicken"/>
+                           </p>
+                        </td>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1030020"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="Duck"/>
+                           </p>
+                        </td>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1030030"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="Geese"/>
+                           </p>
+                        </td>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1030040"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="Quail"/>
+                           </p>
+                        </td>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1030990"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="Others"/>
+                           </p>
+                        </td>
+                        <td/>
+                     </tr>
+                  </rowGroup>
+               </table>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <table cols="3">
+                  <rowGroup>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="‘"/>
+                              <t v="1030000"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="Birds eggs"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="0,1"/>
+                              </emphasis>
+                              <t v="’"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1030010"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="Chicken"/>
+                           </p>
+                        </td>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1030020"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="Duck"/>
+                           </p>
+                        </td>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1030030"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="Geese"/>
+                           </p>
+                        </td>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1030040"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="Quail"/>
+                           </p>
+                        </td>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="1030990"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="Others"/>
+                           </p>
+                        </td>
+                        <td/>
+                     </tr>
+                  </rowGroup>
+               </table>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

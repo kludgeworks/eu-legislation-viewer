@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31970A1123"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="1986-03-01"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="01970A1123-19860301">
+      <publication series="L" number="293" date="1972-12-29" page="63"/>
+   </source>
+   <lifecycle start="1986-03-01" produced="2021-11-19" sequence="001.001.0">
+      <eventRef type="amendment" act="21973A0630(02)" date="1973-06-30"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Agreement"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="on products within the province of the European Coal and Steel Community"/>
+         </p>
+         <p>
+            <docPurpose>
+               <emphasis kind="i">
+                  <t v="(signed in Brussels, "/>
+                  <date asWritten="23 November 1970" date="1970-11-23"/>
+                  <t v=")"/>
+               </emphasis>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="HIS MAJESTY THE KING OF THE BELGIANS,"/>
+         </p>
+         <p>
+            <t v="THE PRESIDENT OF THE FEDERAL REPUBLIC OF GERMANY,"/>
+         </p>
+         <p>
+            <t v="THE PRESIDENT OF THE FRENCH REPUBLIC,"/>
+         </p>
+         <p>
+            <t v="THE PRESIDENT OF THE ITALIAN REPUBLIC,"/>
+         </p>
+         <p>
+            <t v="HIS ROYAL HIGHNESS THE GRAND DUKE OF LUXEMBOURG,"/>
+         </p>
+         <p>
+            <t v="HER MAJESTY THE QUEEN OF THE NETHERLANDS,"/>
+         </p>
+         <p>
+            <t v="Contracting Parties to the Treaty establishing the European Coal and Steel Community, signed in Paris on "/>
+            <date asWritten="17 April 1951" date="1951-04-17"/>
+            <t v=", whose States are hereinafter referred to as "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="the Member States"/>
+            </quote>
+            <t v=","/>
+         </p>
+         <p>
+            <t v="of the one part, and"/>
+         </p>
+         <p>
+            <t v="THE PRESIDENT OF THE TURKISH REPUBLIC,"/>
+         </p>
+         <p>
+            <t v="of the other part,"/>
+         </p>
+      </formula>
+      <p>
+         <t v="CONSIDERING that the abovementioned Member States have concluded among themselves the Treaty establishing the European Coal and Steel Community;"/>
+      </p>
+      <p>
+         <t v="CONSIDERING that they have also concluded the Treaty establishing the European Economic Community, Article 232 of which lays down that the provisions of that Treaty shall not affect the provisions of the Treaty establishing the European Coal and Steel Community, in particular as regards the rights and obligations of Member States;"/>
+      </p>
+      <p>
+         <t v="CONSIDERING that the Agreement establishing an Association between the European Economic Community and Turkey does not apply to products within the province of the European Coal and Steel Community;"/>
+      </p>
+      <p>
+         <t v="DESIRING nevertheless to maintain and increase trade in those products between the Member States and Turkey;"/>
+      </p>
+      <p>
+         <t v="HAVE DESIGNATED as their Plenipotentiaries:"/>
+      </p>
+      <p>
+         <t v="HIS MAJESTY THE KING OF THE BELGIANS:"/>
+      </p>
+      <p>
+         <t v="Mr Pierre "/>
+         <emphasis kind="uc">
+            <t v="Harmel"/>
+         </emphasis>
+         <t v=","/>
+      </p>
+      <p>
+         <t v="Minister for Foreign Affairs;"/>
+      </p>
+      <p>
+         <t v="THE PRESIDENT OF THE FEDERAL REPUBLIC OF GERMANY:"/>
+      </p>
+      <p>
+         <t v="Mr Walter "/>
+         <emphasis kind="uc">
+            <t v="Scheel"/>
+         </emphasis>
+         <t v=","/>
+      </p>
+      <p>
+         <t v="Minister for Foreign Affairs;"/>
+      </p>
+      <p>
+         <t v="THE PRESIDENT OF THE FRENCH REPUBLIC:"/>
+      </p>
+      <p>
+         <t v="Mr Maurice "/>
+         <emphasis kind="uc">
+            <t v="Schumann"/>
+         </emphasis>
+         <t v=","/>
+      </p>
+      <p>
+         <t v="Minister for Foreign Affairs;"/>
+      </p>
+      <p>
+         <t v="THE PRESIDENT OF THE ITALIAN REPUBLIC:"/>
+      </p>
+      <p>
+         <t v="Mr Mario "/>
+         <emphasis kind="uc">
+            <t v="Pedini"/>
+         </emphasis>
+         <t v=","/>
+      </p>
+      <p>
+         <t v="Under-Secretary of State for Foreign Affairs;"/>
+      </p>
+      <p>
+         <t v="HIS ROYAL HIGHNESS THE GRAND DUKE OF LUXEMBOURG:"/>
+      </p>
+      <p>
+         <t v="Mr Gaston "/>
+         <emphasis kind="uc">
+            <t v="Thorn"/>
+         </emphasis>
+         <t v=","/>
+      </p>
+      <p>
+         <t v="Minister for Foreign Affairs;"/>
+      </p>
+      <p>
+         <t v="HER MAJESTY THE QUEEN OF THE NETHERLANDS:"/>
+      </p>
+      <p>
+         <t v="Mr J. M. A. H. "/>
+         <emphasis kind="uc">
+            <t v="Luns"/>
+         </emphasis>
+         <t v=","/>
+      </p>
+      <p>
+         <t v="Minister for Foreign Affairs;"/>
+      </p>
+      <p>
+         <t v="THE PRESIDENT OF THE TURKISH REPUBLIC:"/>
+      </p>
+      <p>
+         <t v="Mr Ihsan Sabri "/>
+         <emphasis kind="uc">
+            <t v="Çaĝlayangíl"/>
+         </emphasis>
+         <t v=","/>
+      </p>
+      <p>
+         <t v="Minister for Foreign Affairs;"/>
+      </p>
+      <p>
+         <t v="WHO, having exchanged their Full Powers, found in good and due form,"/>
+      </p>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAVE AGREED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="In respect of products which come from Member States or Turkey which are within the province of the European Coal and Steel Community, customs duties and charges having equivalent effect and also quantitative restrictions and measures having equivalent effect in force between Member States and Turkey shall, save where measures are taken pursuant to Chapter X of the Treaty establishing the European Coal and Steel Community, be progressively abolished in accordance with the conditions laid down in Article 2 of this Agreement."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="Trade barriers shall be abolished by Member States and by Turkey in accordance with a timetable adopted by mutual agreement of the Contracting Parties."/>
+            </p>
+         </unit>
+         <unit eId="art_2/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="The Contracting Parties shall also determine the terms on which the products referred to in this Agreement shall be eligible for preferential treatment."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="Turkey shall not, in the fields covered by this Agreement, receive treatment more favourable than that which Member States extend to each other pursuant to the Treaty establishing the European Coal and Steel Community."/>
+         </p>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <p>
+            <t v="Consultations shall take place between the Parties concerned in all cases where, in the opinion of one of them, the implementation of the above provisions calls for such consultations."/>
+         </p>
+      </unit>
+      <unit eId="art_5" kind="article">
+         <provenance amendingAct="21973A0630(02)"
+                     action="inserted"
+                     location="AR:3;AL:1"
+                     marker="O001001M001000"/>
+         <num>
+            <t v="Article 5"/>
+         </num>
+         <p>
+            <t v="The Agreement shall apply to the European territories of the Kingdom of Belgium, of the Kingdom of Denmark, of the Federal Republic of Germany, of Ireland, of the French Republic, of the Italian Republic, of the Grand Duchy of Luxembourg, of the Kingdom of the Netherlands and of the United Kingdom of Great Britain and Northern Ireland and to the other European territories in respect of which a Member State assumes responsibility for external affairs, in accordance with the conditions laid down by the Treaty establishing the European Economic Community, on the one hand, and to the territory of the Republic of Turkey, on the other."/>
+         </p>
+      </unit>
+      <unit eId="art_6" kind="article">
+         <num>
+            <changed amendingAct="21973A0630(02)"
+                     action="replaced"
+                     location="AR:3;AL:2"
+                     marker="O001001M002000">
+               <t v="Article 6"/>
+            </changed>
+         </num>
+         <p>
+            <t v="This Agreement shall not affect the provisions of the Treaty establishing the European Coal and Steel Community, or the powers or jurisdiction conferred by that Treaty."/>
+         </p>
+      </unit>
+      <unit eId="art_7" kind="article">
+         <num>
+            <changed amendingAct="21973A0630(02)"
+                     action="replaced"
+                     location="AR:3;AL:2"
+                     marker="O001001M003000">
+               <t v="Article 7"/>
+            </changed>
+         </num>
+         <p>
+            <t v="The Annex on German internal trade and connected problems shall form an integral part of this Agreement."/>
+         </p>
+      </unit>
+      <unit eId="art_8" kind="article">
+         <num>
+            <changed amendingAct="21973A0630(02)"
+                     action="replaced"
+                     location="AR:3;AL:2"
+                     marker="O001001M004000">
+               <t v="Article 8"/>
+            </changed>
+         </num>
+         <unit eId="art_8/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <unit eId="art_8/par_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="This Agreement shall be ratified by the Signatory States in accordance with their respective constitutional requirements."/>
+               </p>
+            </unit>
+            <unit eId="art_8/par_1/sub_2" kind="subparagraph">
+               <p>
+                  <t v="The instruments of ratification shall be exchanged at Brussels."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_8/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="This Agreement shall enter into force on the first day of the month following the date on which the instruments of ratification have been exchanged."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_9" kind="article">
+         <num>
+            <changed amendingAct="21973A0630(02)"
+                     action="replaced"
+                     location="AR:3;AL:2"
+                     marker="O001001M005000">
+               <t v="Article 9"/>
+            </changed>
+         </num>
+         <p>
+            <t v="This Agreement is drawn up in two copies in the Dutch, French, German, Italian and Turkish languages, each of these texts being equally authentic."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="In witness whereof, the undersigned Plenipotentiaries have signed this Agreement."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels this twenty-third day of November in the year one thousand nine hundred and seventy."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <t v="For His Majesty the King of the Belgians,"/>
+            </organization>
+            <person>
+               <t v="Pierre "/>
+               <emphasis kind="uc">
+                  <t v="Harmel"/>
+               </emphasis>
+            </person>
+         </signatory>
+         <signatory>
+            <organization>
+               <t v="For the President of the Federal Republic of Germany,"/>
+            </organization>
+            <person>
+               <t v="Walter "/>
+               <emphasis kind="uc">
+                  <t v="Scheel"/>
+               </emphasis>
+            </person>
+         </signatory>
+         <signatory>
+            <organization>
+               <t v="For the President of the French Republic,"/>
+            </organization>
+            <person>
+               <t v="Maurice "/>
+               <emphasis kind="uc">
+                  <t v="Schumann"/>
+               </emphasis>
+            </person>
+         </signatory>
+         <signatory>
+            <organization>
+               <t v="For the President of the Italian Republic,"/>
+            </organization>
+            <person>
+               <t v="Mario "/>
+               <emphasis kind="uc">
+                  <t v="Pedini"/>
+               </emphasis>
+            </person>
+         </signatory>
+         <signatory>
+            <organization>
+               <t v="For His Royal Highness.the Grand Duke of Luxembourg,"/>
+            </organization>
+            <person>
+               <t v="Gaston "/>
+               <emphasis kind="uc">
+                  <t v="Thorn"/>
+               </emphasis>
+            </person>
+         </signatory>
+         <signatory>
+            <organization>
+               <t v="For Her Majesty the Queen of the Netherlands,"/>
+            </organization>
+            <person>
+               <t v="J. M. A. H. "/>
+               <emphasis kind="uc">
+                  <t v="Luns"/>
+               </emphasis>
+            </person>
+         </signatory>
+         <signatory>
+            <organization>
+               <t v="For the President of the Republic of Turkey,"/>
+            </organization>
+            <person>
+               <t v="Ihsan Sabri "/>
+               <emphasis kind="uc">
+                  <t v="Çaĝlayangíl"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx_1" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <subheading>
+            <t v="on German internal trade and connected problems"/>
+         </subheading>
+         <p>
+            <t v="THE HIGH CONTRACTING PARTIES,"/>
+         </p>
+         <p>
+            <t v="Taking into consideration the conditions at present existing by reason of the division of Germany,"/>
+         </p>
+         <p>
+            <t v="HAVE AGREED AS FOLLOWS:"/>
+         </p>
+         <p>
+            <num>
+               <t v="1."/>
+            </num>
+            <t v="Since trade between the German territories subject to the Basic Law for the Federal Republic of Germany and the German territories in which the Basic Law does not apply is a part of German internal trade, the application of the Agreement on products within the province of the European Coal and Steel Community requires no change in the treatment currently accorded to this trade."/>
+         </p>
+         <p>
+            <num>
+               <t v="2."/>
+            </num>
+            <t v="Each Contracting Party shall inform the other Contracting Party of any agreements relating to trade with the German territories in which the Basic Law for the Federal Republic of Germany does not apply, and of any implementing provisions. Each Contracting Party shall ensure that the implementation of such agreements does not conflict with the principles of the Agreement on products within the province of the European Coal and Steel Community, and shall in particular take appropriate measures to avoid harming the economy of the other Contracting Party."/>
+         </p>
+         <p>
+            <num>
+               <t v="3."/>
+            </num>
+            <t v="Each Contracting Party may take appropriate measures to prevent any difficulties arising for it from trade between the other Contracting Party and the German territories in which the Basic Law for the Federal Republic of Germany does, not apply."/>
+         </p>
+      </unit>
+      <unit eId="anx_2" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <unit eId="anx_2/lvl_1" kind="level" depth="1">
+            <heading>
+               <emphasis kind="b">
+                  <t v="JOINT DECLARATION BY THE CONTRACTING PARTIES ON THE ADDITIONAL PROTOCOL"/>
+               </emphasis>
+            </heading>
+         </unit>
+         <unit eId="anx_2/pnt_1" kind="level" depth="2">
+            <num>
+               <t v="1."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Joint Declaration on the calculation of duties and charges"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The Contracting Parties agree that customs duties and charges having equivalent effect which are calculated in accordance with the rules of the Additional Protocol shall be rounded off to the first decimal point."/>
+            </p>
+         </unit>
+         <unit eId="anx_2/pnt_2" kind="level" depth="2">
+            <num>
+               <t v="2."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Joint Declaration on Article 12 (2)"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The Contracting Parties agree that goods which are already in a bonded warehouse, or are being transported for export, or for which there was a firm contract of sale at the time Turkey notified the Council of Association in accordance with Article 12 (2) of the Additional Protocol, shall be liable to the customs duties applicable before the adoption of measures by Turkey in accordance with that Article."/>
+            </p>
+         </unit>
+         <unit eId="anx_2/pnt_3" kind="level" depth="2">
+            <num>
+               <t v="3."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Joint Declaration on Articles 17 (1) and 18 (1)"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The duties in the Common Customs Tariff referred to in Articles 17 (1) and 18 (1) of the Additional Protocol are the duties in the Common Customs Tariff which are actually applied at the time of alignment of the Turkish Customs Tariff with the Common Customs Tariff."/>
+            </p>
+         </unit>
+         <unit eId="anx_2/pnt_4" kind="level" depth="2">
+            <num>
+               <t v="4."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Joint Declaration on Article 25 (4)"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The Contracting Parties declare that in calculating the aggregate value of all the quotas which are to be increased by 10 % at regular intervals in accordance with Article 25 (4) of the Additional Protocol, no account shall be taken of the value of imports liberalized by Turkey during the periods referred to in that paragraph."/>
+            </p>
+         </unit>
+         <unit eId="anx_2/pnt_5" kind="level" depth="2">
+            <num>
+               <t v="5."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Joint Declaration on Article 27 (2)"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The Contracting Parties declare that the provisions of Article 27 (2) of the Additional Protocol shall also apply to non-ferrous metals."/>
+            </p>
+         </unit>
+         <unit eId="anx_2/pnt_6" kind="level" depth="2">
+            <num>
+               <t v="6."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Joint Declaration on Article 34"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The Contracting Parties agree that preparatory work in respect of the findings to be recorded by the Council of Association, pursuant to Article 34 of the Additional Protocol, may begin one year before expiry of the period of twenty-two years."/>
+            </p>
+         </unit>
+         <unit eId="anx_2/pnt_7" kind="level" depth="2">
+            <num>
+               <t v="7."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Joint Declaration on the duties in the Common Customs Tariff referred to in Annexes 2 and 6"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The duties in the Common Customs Tariff referred to in Annexes 2 and 6 are the duties in the Common Customs Tariff which are actually applied at the time in relation to the Contracting Parties to GATT."/>
+            </p>
+         </unit>
+         <unit eId="anx_2/att_1" kind="attachment">
+            <heading>
+               <t v="INTERPRETATIVE DECLARATIONS"/>
+            </heading>
+            <unit eId="anx_2/att_1/lvl_1" kind="level" depth="1">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Interpretative Declaration on Article 25 of the Additional Protocol"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="It is understood that importations financed:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="anx_2/att_1/lvl_1/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="with special aid resources connected with specific investment projects;"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx_2/att_1/lvl_1/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="without allocation of foreign currency;"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx_2/att_1/lvl_1/pnt_c" kind="point">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="under the law on the promotion of foreign capital investment;"/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="shall not be considered to be made under quotas opened in favour of the Community in accordance with Article 25 of the Additional Protocol, and in particular paragraphs 4 and 5 thereof."/>
+               </p>
+            </unit>
+            <unit eId="anx_2/att_1/att_1" kind="attachment">
+               <heading>
+                  <t v="Interpretative Declaration on the value of the unit of account in the context of Article 3 of the Financial Protocol"/>
+               </heading>
+               <p>
+                  <t v="The Contracting Parties declare that:"/>
+               </p>
+               <list kind="arabic">
+                  <unit eId="anx_2/att_1/att_1/pnt_1" kind="point">
+                     <num>
+                        <t v="1."/>
+                     </num>
+                     <p>
+                        <t v="The value of the unit of account used to express the amount mentioned in Article 3 of the Financial Protocol shall be 0,88867088 gram of fine gold."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx_2/att_1/att_1/pnt_2" kind="point">
+                     <num>
+                        <t v="2."/>
+                     </num>
+                     <p>
+                        <t v="The parity of the currency of a Member State of the Community in relation to the unit of account defined in paragraph 1 shall be the relation between the weight of fine gold contained in the unit of account and the weight of fine gold corresponding to the par value of that currency communicated to the International Monetary Fund. If no par value has been communicated, or if exchange rates differing from the par value by a margin exceeding that authorized by the International Monetary Fund are applied to current payments, the weight of fine gold corresponding to the parity of the currency shall be calculated on the basis of the exchange rate for a currency directly or indirectly expressed in and convertible into gold which is applied in the Member State to current payments, on the day of the calculation, and on the basis of the par value communicated to the International Monetary Fund for that convertible currency."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx_2/att_1/att_1/pnt_3" kind="point">
+                     <num>
+                        <t v="3."/>
+                     </num>
+                     <p>
+                        <t v="The unit of account defined in paragraph 1 shall remain unchanged throughout the period in which the Financial Protocol is in force. If, however, before the end of that period a uniform proportionate change in the par values of all currencies in relation to gold should be decided by the International Monetary Fund under Article IV, Section 7, of its Articles of Agreement, the weight of fine gold contained in the unit of account shall alter in inverse ratio to that change."/>
+                     </p>
+                     <p>
+                        <t v="If one or more Member States do not apply the decision taken by the International Monetary Fund as referred to in the preceding subparagraph, the weight of fine gold contained in the unit of account shall alter in inverse ratio to the change decided by the International Monetary Fund. The Council of the European Communities shall, however, examine the situation thus created and shall take the necessary measures, acting by a qualified majority, after receiving a proposal from the Commission and the opinion of the Monetary Committee."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+         </unit>
+         <unit eId="anx_2/att_2" kind="attachment">
+            <heading>
+               <t v="DECLARATIONS BY THE GOVERNMENT OF THE FEDERAL REPUBLIC OF GERMANY ON THE AGREEMENT RELATING TO PRODUCTS WITHIN THE PROVINCE OF THE EUROPEAN COAL AND STEEL COMMUNITY"/>
+            </heading>
+            <unit eId="anx_2/att_2/pnt_1" kind="level" depth="1">
+               <num>
+                  <t v="1."/>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Declaration on the definition of the expression "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="German national"/>
+                     </quote>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="All Germans as defined in the Basic Law for the Federal Republic of Germany shall be considered nationals of the Federal Republic of Germany."/>
+               </p>
+            </unit>
+            <unit eId="anx_2/att_2/pnt_2" kind="level" depth="1">
+               <num>
+                  <t v="2."/>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Declaration on the application to Berlin of the Agreement in respect of products within the province of the European Coal and Steel Community"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="The Agreement on products within the province of the European Coal and Steel Community shall apply equally to Land Berlin unless the Government of the Federal Republic of Germany makes a declaration to the contrary to the other Contracting Parties within three months."/>
+               </p>
+            </unit>
+         </unit>
+      </unit>
+      <unit eId="att_1" kind="attachment">
+         <heading>
+            <t v="FINAL ACT"/>
+         </heading>
+         <p>
+            <t v="The Plenipotentiaries of:"/>
+         </p>
+         <p>
+            <t v="HIS MAJESTY THE KING OF THE BELGIANS,"/>
+         </p>
+         <p>
+            <t v="THE PRESIDENT OF THE FEDERAL REPUBLIC OF GERMANY,"/>
+         </p>
+         <p>
+            <t v="THE PRESIDENT OF THE FRENCH REPUBLIC,"/>
+         </p>
+         <p>
+            <t v="THE PRESIDENT OF THE ITALIAN REPUBLIC,"/>
+         </p>
+         <p>
+            <t v="HIS ROYAL HIGHNESS THE GRAND DUKE OF LUXEMBOURG,"/>
+         </p>
+         <p>
+            <t v="HER MAJESTY THE QUEEN OF THE NETHERLANDS,"/>
+         </p>
+         <p>
+            <t v="and of"/>
+         </p>
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+         <p>
+            <t v="of the one part, and of"/>
+         </p>
+         <p>
+            <t v="THE PRESIDENT OF THE REPUBLIC OF TURKEY"/>
+         </p>
+         <p>
+            <t v="of the other part,"/>
+         </p>
+         <p>
+            <t v="Meeting at Brussels on the twenty-third day of November in the year one thousand nine hundred and seventy for the signature of:"/>
+         </p>
+         <list kind="dash">
+            <unit eId="att_1/idt_1" kind="indent">
+               <p>
+                  <t v="the Additional Protocol, to which are appended six Annexes,"/>
+               </p>
+            </unit>
+            <unit eId="att_1/idt_2" kind="indent">
+               <p>
+                  <t v="the Financial Protocol,"/>
+               </p>
+               <p>
+                  <t v="and"/>
+               </p>
+            </unit>
+            <unit eId="att_1/idt_3" kind="indent">
+               <p>
+                  <t v="the Agreement on products within the province of the European Coal and Steel Community, to which is appended an Annex,"/>
+               </p>
+            </unit>
+         </list>
+         <p>
+            <t v="Have adopted the following Joint Declarations by the Contracting Parties relating to the Additional Protocol:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="att_1/lst_2/pnt_1" kind="point">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Joint Declaration on the calculation of duties and charges,"/>
+               </p>
+            </unit>
+            <unit eId="att_1/lst_2/pnt_2" kind="point">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Joint Declaration on Article 12 (2),"/>
+               </p>
+            </unit>
+            <unit eId="att_1/lst_2/pnt_3" kind="point">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="Joint Declaration on Articles 17 (1) and 18 (1),"/>
+               </p>
+            </unit>
+            <unit eId="att_1/lst_2/pnt_4" kind="point">
+               <num>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="Joint Declaration on Article 25 (4),"/>
+               </p>
+            </unit>
+            <unit eId="att_1/lst_2/pnt_5" kind="point">
+               <num>
+                  <t v="5."/>
+               </num>
+               <p>
+                  <t v="Joint Declaration on Article 27 (2),"/>
+               </p>
+            </unit>
+            <unit eId="att_1/lst_2/pnt_6" kind="point">
+               <num>
+                  <t v="6."/>
+               </num>
+               <p>
+                  <t v="Joint Declaration on Article 34,"/>
+               </p>
+            </unit>
+            <unit eId="att_1/lst_2/pnt_7" kind="point">
+               <num>
+                  <t v="7."/>
+               </num>
+               <p>
+                  <t v="Joint Declaration on the duties in the Common Customs Tariff which are listed in Annexes 2 and 6."/>
+               </p>
+            </unit>
+         </list>
+         <p>
+            <t v="They have also adopted the following Interpretative Declarations:"/>
+         </p>
+         <list kind="dash">
+            <unit eId="att_1/lst_3/idt_1" kind="indent">
+               <p>
+                  <t v="Interpretative Declaration on Article 25 of the Additional Protocol,"/>
+               </p>
+            </unit>
+            <unit eId="att_1/lst_3/idt_2" kind="indent">
+               <p>
+                  <t v="Interpretative Declaration on the value of the unit of account mentioned in Article 3 of the Financial Protocol."/>
+               </p>
+            </unit>
+         </list>
+         <p>
+            <t v="They have, in addition, taken note of the following Declarations by the Government of the Federal Republic of Germany on the Agreement in respect of products within the province of the European Coal and Steel Community:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="att_1/lst_4/pnt_1" kind="point">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Declaration on the definition of the expression "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="German national"/>
+                  </quote>
+                  <t v=";"/>
+               </p>
+            </unit>
+            <unit eId="att_1/lst_4/pnt_2" kind="point">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Declaration on the application to Berlin of the Agreement on products within the province of the European Coal and Steel Community."/>
+               </p>
+            </unit>
+         </list>
+         <p>
+            <t v="These Declarations are annexed to this Final Act."/>
+         </p>
+         <p>
+            <t v="The Plenipotentiaries have agreed that the Declarations annexed to this Final Act shall be subjected to any internal procedures that may be necessary to ensure their validity."/>
+         </p>
+         <p>
+            <t v="In witness whereof, the Plenipotentiaries of the Contracting Parties have signed this Final Act."/>
+         </p>
+         <p>
+            <t v="Done at Brussels, this twenty-third day of November in the year one thousand nine hundred and seventy."/>
+         </p>
+         <p>
+            <t v="For His Majesty the King of the Belgians:"/>
+         </p>
+         <p>
+            <t v="Pierre "/>
+            <emphasis kind="uc">
+               <t v="Harmel"/>
+            </emphasis>
+         </p>
+         <p>
+            <t v="For the President of the Federal Republic of Germany:"/>
+         </p>
+         <p>
+            <t v="Walter "/>
+            <emphasis kind="uc">
+               <t v="Sgheel"/>
+            </emphasis>
+         </p>
+         <p>
+            <t v="For the President of the French Republic:"/>
+         </p>
+         <p>
+            <t v="Maurice "/>
+            <emphasis kind="uc">
+               <t v="Schumann"/>
+            </emphasis>
+         </p>
+         <p>
+            <t v="For the President of the Italian Republic:"/>
+         </p>
+         <p>
+            <t v="Mario "/>
+            <emphasis kind="uc">
+               <t v="Pedini"/>
+            </emphasis>
+         </p>
+         <p>
+            <t v="For His Royal Highness the Grand Duke of Luxembourg:"/>
+         </p>
+         <p>
+            <t v="Gaston "/>
+            <emphasis kind="uc">
+               <t v="Thorn"/>
+            </emphasis>
+         </p>
+         <p>
+            <t v="For Her Majesty the Queen of the Netherlands:"/>
+         </p>
+         <p>
+            <t v="J. M. A. H. "/>
+            <emphasis kind="uc">
+               <t v="Luns"/>
+            </emphasis>
+         </p>
+         <p>
+            <t v="For the Council of the European Communities:"/>
+         </p>
+         <p>
+            <t v="Walter "/>
+            <emphasis kind="uc">
+               <t v="Scheel"/>
+            </emphasis>
+         </p>
+         <p>
+            <t v="Franco Maria "/>
+            <emphasis kind="uc">
+               <t v="Malfatti"/>
+            </emphasis>
+         </p>
+         <p>
+            <t v="For the President of the Turkish Republic:"/>
+         </p>
+         <p>
+            <t v="Ihsan Sabri "/>
+            <emphasis kind="uc">
+               <t v="Çağlayangíl"/>
+            </emphasis>
+         </p>
+      </unit>
+   </annexes>
+</legalText>
+

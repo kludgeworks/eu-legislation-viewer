@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31994D0273"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2004-10-12"
+           lang="en"
+           formexVersion="05.22"
+           converter="1.0.0">
+   <source celex="01994D0273-20041012">
+      <publication series="L" number="117" date="1994-05-07" page="37"/>
+   </source>
+   <lifecycle start="2004-10-12" produced="2012-06-26" sequence="002.001.0">
+      <eventRef type="amendment" act="32001D0298" date="2001-03-30"/>
+      <eventRef type="amendment" act="32004D0595" date="2004-07-29"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <deleted amendingAct="32004D0595"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000">
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </deleted>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <deleted amendingAct="32004D0595"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000">
+               <t v="of 18 April 1994"/>
+            </deleted>
+         </p>
+         <p>
+            <docPurpose>
+               <deleted amendingAct="32004D0595"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000">
+                  <t v="concerning veterinary certification for placing on the market in the United Kingdom and Ireland of dogs and cats not originating in those countries"/>
+               </deleted>
+            </docPurpose>
+         </p>
+         <p>
+            <deleted amendingAct="32004D0595"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000">
+               <t v="(94/273/EC)"/>
+            </deleted>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <deleted>
+            <provenance amendingAct="32004D0595"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <p>
+               <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+            </p>
+         </deleted>
+      </formula>
+      <citations>
+         <deleted>
+            <provenance amendingAct="32004D0595"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/cit_1" kind="citation">
+               <p>
+                  <t v="Having regard to the Treaty establishing the European Community,"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32004D0595"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/cit_2" kind="citation">
+               <p>
+                  <t v="Having regard to Council Directive 92/65/EEC of 13 July 1992 concerning laying down animal health requirements governing trade in and imports into the Community of animals, semen, ova and embryos not subject to animal health requirements laid down in specific Community rules referred to in Annex A (I) to Directive 90/425/EEC"/>
+                  <noteRef href="#note_1" marker="1"/>
+                  <t v=", and in particular Article 10 (3) (a) (vii) thereof,"/>
+               </p>
+            </unit>
+         </deleted>
+      </citations>
+      <recitals>
+         <deleted>
+            <provenance amendingAct="32004D0595"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_1" kind="recital">
+               <p>
+                  <t v="Whereas it is necessary to establish a veterinary certificate for dogs and cats that are placed on the market in the United Kingdom and Ireland and not originating in those countries;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32004D0595"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_2" kind="recital">
+               <p>
+                  <t v="Whereas the animals concerned must fulfil the relevant necessary health conditions, as reflected in the certificate and duly attested to by an authorized veterinarian;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32004D0595"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_3" kind="recital">
+               <p>
+                  <t v="Whereas conforming to Article 10 (3) (a) (vii) dogs and cats must be accompanied by an individual vaccination record;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32004D0595"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_4" kind="recital">
+               <p>
+                  <t v="Whereas the measures provided for in this Decision are in accordance with the opinion of the Standing Veterinary Committee,"/>
+               </p>
+            </unit>
+         </deleted>
+      </recitals>
+      <formula name="enactingFormula">
+         <deleted>
+            <provenance amendingAct="32004D0595"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <p>
+               <t v="HAS ADOPTED THIS DECISION:"/>
+            </p>
+         </deleted>
+      </formula>
+   </preamble>
+   <body>
+      <deleted>
+         <provenance amendingAct="32004D0595"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000"/>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <p>
+               <t v="The model of the certificate provided for in Article 10 (3) (a) (vii) of Directive 92/65/EEC is established in the Annex."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32004D0595"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000"/>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <p>
+               <t v="This Decision is addressed to the Member States."/>
+            </p>
+         </unit>
+      </deleted>
+   </body>
+   <annexes>
+      <deleted>
+         <provenance amendingAct="32004D0595"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000"/>
+         <unit eId="anx" kind="annex" eurlexAnchor="1">
+            <provenance amendingAct="32001D0298"
+                        action="replaced"
+                        location="AR:1;PA:3 .AND. AX:III"
+                        marker="O001001M001000"/>
+            <num>
+               <t v="ANNEX"/>
+            </num>
+            <figure src="L_2001102EN.01006703.tif" content="other"/>
+            <figure src="L_2001102EN.01006801.tif" content="other"/>
+         </unit>
+      </deleted>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="268"
+                 date="1992-09-01"
+                 page="54">
+               <t v="OJ No L 268, 14. 9. 1992, p. 54"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

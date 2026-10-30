@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32014R0528R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.53"
+           converter="1.0.0">
+   <source celex="32014R0528R(01)">
+      <publication series="L" number="265" date="2014-09-05" page="32"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Commission Delegated Regulation (EU) No 528/2014 of "/>
+            <date asWritten="12 March 2014" date="2014-03-12"/>
+            <t v=" supplementing Regulation (EU) No 575/2013 of the European Parliament and of the Council with regard to regulatory technical standards for non-delta risk of options in the standardised market risk approach"/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="("/>
+               <ref kind="oj" series="L" number="148" date="2014-05-20">
+                  <t v="Official Journal of the European Union L 148 of 20 May 2014"/>
+               </ref>
+               <t v=")"/>
+            </emphasis>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 31, Article 3(1)(b)(i):"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="… according to of Part Three, …"/>
+               </quote>
+               <t v=","/>
+            </p>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="… according to Part Three, …"/>
+               </quote>
+               <t v=";"/>
+            </p>
+         </new>
+      </unit>
+      <unit eId="cor_2" kind="correction">
+         <p>
+            <t v="on page 33, Article 7, second paragraph:"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="For the purposes of point (c), …"/>
+               </quote>
+               <t v=","/>
+            </p>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="For the purposes of point (b), …"/>
+               </quote>
+               <t v=";"/>
+            </p>
+         </new>
+      </unit>
+      <unit eId="cor_3" kind="correction">
+         <p>
+            <t v="on page 35, Annex I:"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <quotedStructure eId="cor_3/old/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Gamma impact = ^ × Gamma × VU"/>
+                     <emphasis kind="sup">
+                        <t v="2"/>
+                     </emphasis>
+                  </quote>
+                  <t v=","/>
+               </p>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <quotedStructure eId="cor_3/new/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Gamma impact = "/>
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
+                           <m:mrow>
+                              <m:mrow>
+                                 <m:mfrac>
+                                    <m:mrow>
+                                       <m:mn>1</m:mn>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mn>2</m:mn>
+                                    </m:mrow>
+                                 </m:mfrac>
+                              </m:mrow>
+                           </m:mrow>
+                        </m:math>
+                     </math>
+                     <t v=" × Gamma × VU"/>
+                     <emphasis kind="sup">
+                        <t v="2"/>
+                     </emphasis>
+                  </quote>
+                  <t v=";"/>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+      <unit eId="cor_4" kind="correction">
+         <p>
+            <t v="on page 35, Annex II, point (a):"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="… relevant scenario determined in step (c) of Article 8.2;"/>
+               </quote>
+               <t v=","/>
+            </p>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="… relevant scenario determined in step (c) of Article 9;"/>
+               </quote>
+               <t v=";"/>
+            </p>
+         </new>
+      </unit>
+      <unit eId="cor_5" kind="correction">
+         <p>
+            <t v="on page 35, Annex II, point (b)(ii):"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="… relevant scenario determined in step (c) of Article 8.2."/>
+               </quote>
+               <t v=","/>
+            </p>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="… relevant scenario determined in step (c) of Article 9."/>
+               </quote>
+               <t v="."/>
+            </p>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32024R2867"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="06.02.1"
+           converter="1.0.0">
+   <source celex="32024R2867">
+      <publication series="L" date="2024-11-11" page="1"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Delegated Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) 2024/2867"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="2 September 2024" date="2024-09-02"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Regulation (EU) 2018/848 of the European Parliament and of the Council as regards the presentation of the organic production logo of the European Union"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Regulation (EU) 2018/848 of the European Parliament and of the Council of "/>
+               <date asWritten="30 May 2018" date="2018-05-30"/>
+               <t v=" on organic production and labelling of organic products and repealing Council Regulation (EC) No 834/2007"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 33(6) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Annex V to Regulation (EU) 2018/848 sets out the models of the organic production logo of the European Union that may be used, including a black and white model. However, a totally inverted white and black (negative) model with or without a delimiting outer line around the logo is not explicitly authorised. Annex V to Regulation (EU) 2018/848 should provide explicitly that such a model is also authorised given that it replies to a technical need on the ground."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Annex V to Regulation (EU) 2018/848 provides the colour for the green organic production logo of the European Union with the reference colour in the Pantone colour chart and in the CMYK colour model, where four ink plates – cyan, magenta, yellow and key (black) – are used. The equivalent reference in the RGB colour model, where three additive primary colours, red, green and blue are used, should also be provided for digital purposes."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Annex V to Regulation (EU) 2018/848 provides that a delimiting outer line around the logo can be used when the logo is on a background which makes it difficult to see. To ensure that the proportions of the height/width ratio are respected, a delimiting outer line should always be used when the logo is on a background which makes it difficult to see."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="Regulation (EU) 2018/848 should therefore be amended accordingly,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Annex V to Regulation (EU) 2018/848 is amended in accordance with the Annex to this Regulation."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the twentieth day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="2 September 2024" date="2024-09-02"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="Ursula "/>
+               <emphasis kind="uc">
+                  <t v="von der Leyen"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <t v="Annex V to Regulation (EU) 2018/848 is amended as follows:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="anx/pnt_1" kind="point">
+               <num>
+                  <t v="(1)"/>
+               </num>
+               <p>
+                  <t v="points 1.2 and 1.3 are replaced by the following:"/>
+               </p>
+               <quotedStructure eId="anx/pnt_1/qst_1">
+                  <list kind="other">
+                     <unit eId="anx/pnt_1/qst_1/pnt_1.2" kind="point">
+                        <num>
+                           <t v="‘"/>
+                           <t v="1.2."/>
+                        </num>
+                        <p>
+                           <t v="The reference colour is green 50/0/100/0 in the CMYK process, No 376 in the Pantone colour chart and 169/201/56 in the RGB colour model."/>
+                        </p>
+                     </unit>
+                     <unit eId="anx/pnt_1/qst_1/pnt_1.3" kind="point">
+                        <num>
+                           <t v="1.3."/>
+                        </num>
+                        <p>
+                           <t v="The organic production logo of the European Union may also be used in black and white as shown below, or in a totally inverted white and black (negative format), but only where it is not practicable to use the colour model:"/>
+                        </p>
+                     </unit>
+                  </list>
+                  <figure src="L_202402867EN.000202.fmx.tif" content="other"/>
+                  <p>
+                     <t v="’"/>
+                     <t v=";"/>
+                  </p>
+               </quotedStructure>
+            </unit>
+            <unit eId="anx/pnt_2" kind="point">
+               <num>
+                  <t v="(2)"/>
+               </num>
+               <p>
+                  <t v="point 1.5 is replaced by the following:"/>
+               </p>
+               <quotedStructure eId="anx/pnt_2/qst_1">
+                  <list kind="other">
+                     <unit eId="anx/pnt_2/qst_1/pnt_1.5" kind="point">
+                        <num>
+                           <t v="‘"/>
+                           <t v="1.5."/>
+                        </num>
+                        <p>
+                           <t v="If a logo is used on a background which makes it difficult to see it, a delimiting outer line around the logo shall be used to improve the contrast with the background."/>
+                           <t v="’"/>
+                           <t v="."/>
+                        </p>
+                     </unit>
+                  </list>
+               </quotedStructure>
+            </unit>
+         </list>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="150"
+                 date="2018-06-14"
+                 page="1">
+               <t v="OJ L 150, 14.6.2018, p. 1"/>
+            </ref>
+            <t v=", ELI: "/>
+            <ref kind="uri" href="http://data.europa.eu/eli/reg/2018/848/oj">
+               <t v="http://data.europa.eu/eli/reg/2018/848/oj"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

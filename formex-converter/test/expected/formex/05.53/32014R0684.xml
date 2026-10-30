@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32014R0684"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.53"
+           converter="1.0.0">
+   <source celex="32014R0684">
+      <publication series="L" number="182" date="2014-06-21" page="20"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Implementing Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) No 684/2014"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="20 June 2014" date="2014-06-20"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="concerning the authorisation of canthaxanthin as a feed additive for breeder hens (holder of the authorisation DSM Nutritional products Ltd)"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Regulation (EC) No 1831/2003 of the European Parliament and of the Council of "/>
+               <date asWritten="22 September 2003" date="2003-09-22"/>
+               <t v=" on additives for use in animal nutrition"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 9(2) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Regulation (EC) No 1831/2003 provides for the authorisation of additives for use in animal nutrition and for the grounds and procedures for granting such authorisation."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="In accordance with Article 7 of Regulation (EC) No 1831/2003 an application was submitted for the authorisation of a canthaxanthin. That application was accompanied by the particulars and documents required under Article 7(3) of Regulation (EC) No 1831/2003."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="That application concerns the authorisation of a preparation of canthaxanthin as a feed additive for breeder hens to be classified in the additive category "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="zootechnical additives"/>
+               </quote>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The European Food Safety Authority ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the Authority"/>
+               </quote>
+               <t v=") concluded in its opinion of "/>
+               <date asWritten="12 December 2012" date="2012-12-12"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" that, under the proposed conditions of use, the preparation of canthaxanthin does not have an adverse effect on animal health, human health or the environment, and that it has a potential to stabilise the reproductive performance of breeder hens. The Authority does not consider that there is a need for specific requirements of post-market monitoring. It also verified the report on the method of analysis of the feed additive in feed submitted by the Reference Laboratory set up by Regulation (EC) No 1831/2003."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The assessment of the preparation of canthaxanthin shows that the conditions for authorisation, as provided for in Article 5 of Regulation (EC) No 1831/2003, are satisfied. Accordingly, the use of that preparation should be authorised as specified in the Annex to this Regulation."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Standing Committee on the Food Chain and Animal Health,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <heading>
+            <t v="Authorisation"/>
+         </heading>
+         <p>
+            <t v="The preparation specified in the Annex, belonging to the additive category "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="zootechnical additives"/>
+            </quote>
+            <t v=" and to the functional group "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="other zootechnical additives"/>
+            </quote>
+            <t v=", is authorised as an additive in animal nutrition, subject to the conditions laid down in that Annex."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the twentieth day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="20 June 2014" date="2014-06-20"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="José Manuel "/>
+               <emphasis kind="uc">
+                  <t v="Barroso"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <table cols="11">
+            <tr header="true">
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Identification number of the additive"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Name of the holder of authorisation"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Additive"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Composition, chemical formula, description, analytical method"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Species or category of animal"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Maximum age"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Minimum content"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Maximum content"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Other provisions"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="End of period of authorisation"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Maximum residues limits in the relevant foodstuffs of animal origin"/>
+                  </p>
+               </td>
+            </tr>
+            <tr header="true">
+               <td colspan="2" header="true">
+                  <p>
+                     <t v="mg of active substance/kg of complete feedingstuff with a moisture content of 12 %"/>
+                  </p>
+               </td>
+            </tr>
+            <rowGroup>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Category of zootechnical additives. Functional group: other zootechnical additives (stabilisation of reproductive performance)"/>
+                  </emphasis>
+               </heading>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="4d161g"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="DSM Nutritional products Ltd, represented by DSM Nutritional Products Sp. z o.o."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Canthaxanthin"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <emphasis kind="i">
+                           <t v="Additive composition"/>
+                        </emphasis>
+                     </p>
+                     <p>
+                        <t v="Preparation containing minimum:"/>
+                     </p>
+                     <list kind="none">
+                        <unit eId="anx/tbl_1/tr_3/td_4/idt_1" kind="indent">
+                           <p>
+                              <t v="10 % of canthaxanthin;"/>
+                           </p>
+                        </unit>
+                        <unit eId="anx/tbl_1/tr_3/td_4/idt_2" kind="indent">
+                           <p>
+                              <t v="≤ 2,2 % ethoxyquin;"/>
+                           </p>
+                        </unit>
+                        <unit eId="anx/tbl_1/tr_3/td_4/idt_3" kind="indent">
+                           <p>
+                              <t v="dichloromethane: ≤ 10 mg/kg additive."/>
+                           </p>
+                        </unit>
+                     </list>
+                     <p>
+                        <emphasis kind="i">
+                           <t v="Characterisation of the active substance"/>
+                        </emphasis>
+                     </p>
+                     <p>
+                        <t v="canthaxanthin"/>
+                     </p>
+                     <p>
+                        <t v="C"/>
+                        <emphasis kind="sub">
+                           <t v="40"/>
+                        </emphasis>
+                        <t v="H"/>
+                        <emphasis kind="sub">
+                           <t v="52"/>
+                        </emphasis>
+                        <t v="O"/>
+                        <emphasis kind="sub">
+                           <t v="2"/>
+                        </emphasis>
+                     </p>
+                     <p>
+                        <t v="CAS No: 514-78-3"/>
+                     </p>
+                     <p>
+                        <t v="Assay: Minimum 96 %"/>
+                     </p>
+                     <p>
+                        <t v="Produced by chemical synthesis"/>
+                     </p>
+                     <p>
+                        <emphasis kind="i">
+                           <t v="Analytical method"/>
+                        </emphasis>
+                        <noteRef href="#note_anx01002201-1" marker="1"/>
+                     </p>
+                     <list kind="dash">
+                        <unit eId="anx/tbl_1/tr_3/td_4/lst_2/idt_1" kind="indent">
+                           <p>
+                              <t v="For the determination of canthaxanthin in the feed additive: spectrophotometry (426 nm)"/>
+                           </p>
+                        </unit>
+                        <unit eId="anx/tbl_1/tr_3/td_4/lst_2/idt_2" kind="indent">
+                           <p>
+                              <t v="For the determination of canthaxanthin in premixtures and feedingtuffs: Normal Phase High Performance Liquid Chromatography coupled to VIS detection (NP-HPLC-VIS, 466 nm)"/>
+                           </p>
+                        </unit>
+                     </list>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Breeder hens"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="—"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="1."/>
+                        </num>
+                        <t v="In the directions for use of the additive and premixture, indicate the storage conditions and stability to heat processing."/>
+                     </p>
+                     <p>
+                        <num>
+                           <t v="2."/>
+                        </num>
+                        <t v="The mixture of different sources of canthaxanthin shall not exceeded 6 mg canthaxanthin/kg of complete feedingstuff."/>
+                     </p>
+                     <p>
+                        <num>
+                           <t v="3."/>
+                        </num>
+                        <t v="The mixture of this preparation with canthaxanthin and other carotenoids is allowed provided that the total concentration of the mixture does not exceed 80 mg/kg of complete feedingstuff."/>
+                     </p>
+                     <p>
+                        <num>
+                           <t v="4."/>
+                        </num>
+                        <t v="For user safety: breathing protection, safety glasses and gloves should be worn during handling."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <date asWritten="10 July 2024" date="2024-07-10"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="15 mg canthaxanthin/kg liver (wet tissue) and 2,5 mg canthaxanthin/kg skin/fat (wet tissue)"/>
+                     </p>
+                  </td>
+               </tr>
+            </rowGroup>
+         </table>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="268"
+                 date="2003-10-18"
+                 page="29">
+               <t v="OJ L 268, 18.10.2003, p. 29"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <emphasis kind="i">
+               <t v="EFSA Journal"/>
+            </emphasis>
+            <t v=" 2013; 11(1):3047."/>
+         </p>
+      </note>
+      <note eId="note_anx01002201-1" marker="1" kind="table">
+         <p>
+            <t v="Details of the analytical methods are available at the following address of the European Union Reference Laboratory for Feed Additives: www.irmm.jrc.be/eurl-feed-additives"/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

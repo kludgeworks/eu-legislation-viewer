@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32004R0746"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2004-05-01"
+           lang="en"
+           formexVersion="01.02"
+           converter="1.0.0">
+   <source celex="02004R0746-20040501">
+      <publication series="L" number="122" date="2004-04-26" page="10"/>
+   </source>
+   <lifecycle start="2004-05-01" sequence="000.001.0">
+      <eventRef type="corrigendum" act="32004R0746R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 746/2004"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="22 April 2004" date="2004-04-22"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="adapting certain regulations concerning organic production of agricultural products and indications referring thereto on agricultural products and foodstuffs by reason of the accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia to the European Union"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty of Accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia, and in particular Article 2(3) thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to the Act of Accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia, and in particular Article 57(2) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Certain technical amendments are necessary in several Commission Regulations concerning organic production of agricultural products and indications referring thereto on agricultural products and foodstuffs in order to carry out the necessary adaptations by reason of accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia (hereinafter referred to as the new Member States) to the Union."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Annex V, Part B, to Council Regulation (EEC) No 2092/91 of "/>
+               <date asWritten="24 June 1991" date="1991-06-24"/>
+               <t v=" on organic production of agricultural products and indications referring thereto on agricultural products and foodstuffs"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=" establishes the models of the Community logo as well as the indications to be inserted in that logo. Annex V, Part B.2 and B.3, should be completed in order to include the language versions of the new Member States."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The Annex to Commission Regulation (EEC) No 94/92 of "/>
+               <date asWritten="14 January 1992" date="1992-01-14"/>
+               <t v=" laying down detailed rules for implementing the arrangements for imports from third countries provided for in Regulation (EEC) No 2092/91 on organic production of agricultural products and indications referring thereto on agricultural products and foodstuffs"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" lays down the list of third countries referred to in Article 11(1)(a) of Regulation (EEC) No 2092/91. The references in that Annex to the Czech Republic and to Hungary should be deleted."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="According to the second paragraph of Article 7 of Commission Regulation (EC) No 1788/2001 of "/>
+               <date asWritten="7 September 2001" date="2001-09-07"/>
+               <t v=" laying down detailed rules for implementing the provisions concerning the certificate of inspection for imports from third countries under Article 11 of Council Regulation (EEC) No 2092/91 on organic production of agricultural products and indications"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=", Member States shall, before "/>
+               <date asWritten="1 April 2002" date="2002-04-01"/>
+               <t v=", inform each other and the Commission on the measures they have taken for the purpose of implementing the system of certificates, in particular as concerns the competent authorities. That date should be adapted with regard to the new Member States, taking into account the necessity of ensuring that information concerning the competent bodies in the new Member States is available throughout the Community at the date of accession."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="According to Article 2 of Commission Regulation (EC) No 473/2002 of "/>
+               <date asWritten="15 March 2002" date="2002-03-15"/>
+               <t v=" amending Annexes I, II and VI to Council Regulation (EEC) No 2092/91 on organic production of agricultural products and indications referring thereto on agricultural products and foodstuffs, and laying down detailed rules as regards the transmission of information on the use of copper compounds"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v=", Member States applying the derogation provided for the maximum levels of copper compounds shall, before "/>
+               <date asWritten="30 June 2002" date="2002-06-30"/>
+               <t v=", inform the Commission and the other Member States about the measures taken to implement the derogation and shall, before "/>
+               <date asWritten="31 December 2004" date="2004-12-31"/>
+               <t v=", provide a report on the implementation and the results of these measures. It is necessary to adapt these dates with regard to the new Member States, in order to give them sufficient time to provide the required information."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="Article 6 of Commission Regulation (EC) No 223/2003 of "/>
+               <date asWritten="5 February 2003" date="2003-02-05"/>
+               <t v=" on labelling requirements related to the organic production method for feedingstuffs, compound feedingstuffs and feed materials and amending Council Regulation (EEC) No 2092/91"/>
+               <noteRef href="#note_5" marker="5"/>
+               <t v=" lays down the conditions under which trade marks bearing an indication referring to the organic production method may still be used during a transitional period in the labelling and advertising of feed products which do not comply with that Regulation. According to these conditions, the registration of the trade mark should have been applied for before "/>
+               <date asWritten="24 August 1999" date="1999-08-24"/>
+               <t v=". It is necessary to adapt that date with regard to the new Member States."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_7" kind="recital">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <p>
+               <t v="Regulations (EEC) No 2092/91, (EEC) No 94/92, (EC) No 1788/2001, (EC) No 473/2002 and (EC) No 223/2003 should therefore be amended accordingly,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="In Annex V to Regulation (EEC) No 2092/91, Part B is amended as follows:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="art_1/pnt_1" kind="point">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Part B.2 is replaced by the following:"/>
+               </p>
+               <unit eId="art_1/pnt_1/pnt_B.2" kind="level" depth="1">
+                  <num>
+                     <t v="B.2"/>
+                  </num>
+                  <heading>
+                     <t v="Models"/>
+                  </heading>
+                  <figure src="L_2004122EN.01001201.tif"/>
+                  <figure src="L_2004122EN.01001301.tif"/>
+               </unit>
+            </unit>
+            <unit eId="art_1/pnt_2" kind="point">
+               <provenance amendingAct="32004R0746R(01)"
+                           action="replaced"
+                           location="TO"
+                           marker="O000001M001000"/>
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Part B.3.1 is replaced as follows:"/>
+               </p>
+               <quotedStructure eId="art_1/pnt_2/qst_1">
+                  <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1" kind="level" depth="1">
+                     <num>
+                        <t v="‘"/>
+                        <t v="B.3.1."/>
+                     </num>
+                     <heading>
+                        <t v="Single indications:"/>
+                     </heading>
+                     <list kind="definition">
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_1" kind="definition">
+                           <heading>
+                              <t v="ES"/>
+                           </heading>
+                           <p>
+                              <t v="AGRICULTURA ECOLÓGICA"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_2" kind="definition">
+                           <heading>
+                              <t v="CS"/>
+                           </heading>
+                           <p>
+                              <t v="EKOLOGICKÉ ZEMĚDĚLSTVÍ"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_3" kind="definition">
+                           <heading>
+                              <t v="DA"/>
+                           </heading>
+                           <p>
+                              <t v="ØKOLOGISK JORDBRUG"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_4" kind="definition">
+                           <heading>
+                              <t v="DE"/>
+                           </heading>
+                           <p>
+                              <t v="BIOLOGISCHE LANDWIRTSCHAFT, ÖKOLOGISCHER LANDBAU"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_5" kind="definition">
+                           <heading>
+                              <t v="ET"/>
+                           </heading>
+                           <p>
+                              <t v="MAHEPÕLLUMAJANDUS, ÖKOLOOGILINE PÕLLUMAJANDUS"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_6" kind="definition">
+                           <heading>
+                              <t v="EL"/>
+                           </heading>
+                           <p>
+                              <t v="ΒΙΟΛΟΓΙΚΗ ΓΕΩΡΓΙΑ"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_7" kind="definition">
+                           <heading>
+                              <t v="EN"/>
+                           </heading>
+                           <p>
+                              <t v="ORGANIC FARMING"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_8" kind="definition">
+                           <heading>
+                              <t v="FR"/>
+                           </heading>
+                           <p>
+                              <t v="AGRICULTURE BIOLOGIQUE"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_9" kind="definition">
+                           <heading>
+                              <t v="IT"/>
+                           </heading>
+                           <p>
+                              <t v="AGRICOLTURA BIOLOGICA"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_10" kind="definition">
+                           <heading>
+                              <t v="LV"/>
+                           </heading>
+                           <p>
+                              <t v="BIOLOĞISKĀ LAUKSAIMNIECĪBA"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_11" kind="definition">
+                           <heading>
+                              <t v="LT"/>
+                           </heading>
+                           <p>
+                              <t v="EKOLOGINIS ŽEMĖS ŪKIS"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_12" kind="definition">
+                           <heading>
+                              <t v="HU"/>
+                           </heading>
+                           <p>
+                              <t v="ÖKOLÓGIAI GAZDÁLKODÁS"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_13" kind="definition">
+                           <heading>
+                              <t v="MT"/>
+                           </heading>
+                           <p>
+                              <t v="AGRIKULTURA ORGANIKA"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_14" kind="definition">
+                           <heading>
+                              <t v="NL"/>
+                           </heading>
+                           <p>
+                              <t v="BIOLOGISCHE LANDBOUW"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_15" kind="definition">
+                           <heading>
+                              <t v="PL"/>
+                           </heading>
+                           <p>
+                              <t v="ROLNICTWO EKOLOGICZNE"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_16" kind="definition">
+                           <heading>
+                              <t v="PT"/>
+                           </heading>
+                           <p>
+                              <t v="AGRICULTURA BIOLÓGICA"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_17" kind="definition">
+                           <heading>
+                              <t v="SK"/>
+                           </heading>
+                           <p>
+                              <t v="EKOLOGICKÉ POĽNOHOSPODÁRSTVO"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_18" kind="definition">
+                           <heading>
+                              <t v="SL"/>
+                           </heading>
+                           <p>
+                              <t v="EKOLOŠKO KMETIJSTVO"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_19" kind="definition">
+                           <heading>
+                              <t v="FI"/>
+                           </heading>
+                           <p>
+                              <t v="LUONNONMUKAINEN MAATALOUSTUOTANTO"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_20" kind="definition">
+                           <heading>
+                              <t v="SV"/>
+                           </heading>
+                           <p>
+                              <t v="EKOLOGISKT JORDBRUK"/>
+                              <t v="’"/>
+                           </p>
+                        </unit>
+                     </list>
+                  </unit>
+               </quotedStructure>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="In the Annex to Regulation (EEC) No 94/1992, the entries on the Czech Republic and Hungary are deleted."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="In Article 7 of Regulation (EC) No 1788/2001, the following paragraph is added:"/>
+         </p>
+         <quotedStructure eId="art_3/qst_1">
+            <unit eId="art_3/qst_1/sub_1" kind="subparagraph">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="For the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia, the date of information referred to in the second paragraph shall be "/>
+                     <date asWritten="1 May 2004" date="2004-05-01"/>
+                     <t v="."/>
+                  </quote>
+               </p>
+            </unit>
+         </quotedStructure>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <p>
+            <t v="In Article 2 of Regulation (EC) No 473/2002, the following paragraph is inserted after the first paragraph:"/>
+         </p>
+         <quotedStructure eId="art_4/qst_1">
+            <unit eId="art_4/qst_1/sub_1" kind="subparagraph">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="For the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia, the date referred to in the first indent of the first paragraph shall be "/>
+                     <date asWritten="1 August 2004" date="2004-08-01"/>
+                     <t v=" and the date referred to in the second indent of the first paragraph shall be "/>
+                     <date asWritten="31 December 2005" date="2005-12-31"/>
+                     <t v="."/>
+                  </quote>
+               </p>
+            </unit>
+         </quotedStructure>
+      </unit>
+      <unit eId="art_5" kind="article">
+         <num>
+            <t v="Article 5"/>
+         </num>
+         <p>
+            <t v="In Article 6 of Regulation (EC) No 223/2003, the following paragraph is added:"/>
+         </p>
+         <quotedStructure eId="art_5/qst_1">
+            <unit eId="art_5/qst_1/sub_1" kind="subparagraph">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="For the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia, the date of application referred to in point (a) of the first paragraph shall be "/>
+                     <date asWritten="1 May 2004" date="2004-05-01"/>
+                     <t v=" at the latest."/>
+                  </quote>
+               </p>
+            </unit>
+         </quotedStructure>
+      </unit>
+      <unit eId="art_6" kind="article">
+         <num>
+            <t v="Article 6"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force subject to and on the date of the entry into force of the Treaty of Accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="198"
+                 date="1991-07-22"
+                 page="1">
+               <t v="OJ L 198, 22.7.1991, p. 1"/>
+            </ref>
+            <t v=". Regulation as last amended by Commission Regulation (EC) No 2277/2003 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="336"
+                 date="2003-12-23"
+                 page="68">
+               <t v="OJ L 336, 23.12.2003, p. 68"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="11"
+                 date="1992-01-17"
+                 page="14">
+               <t v="OJ L 11, 17.1.1992, p. 14"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 2144/2003 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="322"
+                 date="2003-12-09"
+                 page="3">
+               <t v="OJ L 322, 9.12.2003, p. 3"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="243"
+                 date="2001-09-13"
+                 page="3">
+               <t v="OJ L 243, 13.9.2001, p. 3"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 1918/2002 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="289"
+                 date="2002-10-26"
+                 page="15">
+               <t v="OJ L 289, 26.10.2002, p. 15"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="75"
+                 date="2002-03-16"
+                 page="21">
+               <t v="OJ L 75, 16.3.2002, p. 21"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="31" date="2003-02-06" page="3">
+               <t v="OJ L 31, 6.2.2003, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

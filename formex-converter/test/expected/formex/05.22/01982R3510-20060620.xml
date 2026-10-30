@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31982R3510"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2006-06-20"
+           lang="en"
+           formexVersion="05.22"
+           converter="1.0.0">
+   <source celex="01982R3510-20060620">
+      <publication series="L" number="368" date="1982-12-28" page="27"/>
+   </source>
+   <lifecycle start="2006-06-20" produced="2012-07-25" sequence="004.001.0">
+      <eventRef type="amendment" act="31987R3940" date="1987-12-21"/>
+      <eventRef type="amendment" act="31989R3971" date="1989-12-20"/>
+      <eventRef type="amendment" act="31992R3899" date="1992-12-23"/>
+      <eventRef type="amendment" act="32006R0802" date="2006-05-30"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <deleted amendingAct="32006R0802"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O004001M001000">
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </deleted>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <deleted amendingAct="32006R0802"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O004001M001000">
+                  <t v=" (EEC) No 3510/82"/>
+               </deleted>
+            </docNumber>
+         </p>
+         <p>
+            <deleted amendingAct="32006R0802"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O004001M001000">
+               <t v="of 23 December 1982"/>
+            </deleted>
+         </p>
+         <p>
+            <docPurpose>
+               <deleted amendingAct="32006R0802"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O004001M001000">
+                  <t v="fixing the conversion factors applicable to "/>
+                  <changed amendingAct="31987R3940"
+                           action="replaced"
+                           location="AR:1 .AND. AX:0;PT:VII;PT:1"
+                           marker="O001001M001002">
+                     <t v="fish of the genera "/>
+                     <emphasis kind="i">
+                        <t v="Thunnus"/>
+                     </emphasis>
+                     <t v=" and "/>
+                     <emphasis kind="i">
+                        <t v="Euthynnus"/>
+                     </emphasis>
+                  </changed>
+               </deleted>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <deleted>
+            <provenance amendingAct="32006R0802"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O004001M001000"/>
+            <p>
+               <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+            </p>
+         </deleted>
+      </formula>
+      <citations>
+         <deleted>
+            <provenance amendingAct="32006R0802"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O004001M001000"/>
+            <unit eId="pbl_1/cit_1" kind="citation">
+               <p>
+                  <t v="Having regard to the Treaty establishing the European Economic Community,"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32006R0802"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O004001M001000"/>
+            <unit eId="pbl_1/cit_2" kind="citation">
+               <p>
+                  <t v="Having regard to Council Regulation (EEC) No 3796/81 of 29 December 1981 on the common organization of the market in fishery products"/>
+                  <noteRef href="#note_1" marker="1"/>
+                  <t v=", and in particular Article 17 (6) thereof,"/>
+               </p>
+            </unit>
+         </deleted>
+      </citations>
+      <recitals>
+         <deleted>
+            <provenance amendingAct="32006R0802"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O004001M001000"/>
+            <unit eId="pbl_1/rct_1" kind="recital">
+               <p>
+                  <t v="Whereas a Community producer price is fixed every year for "/>
+                  <changed amendingAct="31987R3940"
+                           action="replaced"
+                           location="AR:1 .AND. AX:0;PT:VII;PT:1"
+                           marker="O001001M002001">
+                     <t v="fish of the genera "/>
+                     <emphasis kind="i">
+                        <t v="Thunnus"/>
+                     </emphasis>
+                     <t v=" and "/>
+                     <emphasis kind="i">
+                        <t v="Euthynnus"/>
+                     </emphasis>
+                  </changed>
+                  <t v=" intended for the canning industry;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32006R0802"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O004001M001000"/>
+            <unit eId="pbl_1/rct_2" kind="recital">
+               <p>
+                  <t v="Whereas the conversion factors applicable to the different species, sizes and presentations of "/>
+                  <changed amendingAct="31987R3940"
+                           action="replaced"
+                           location="AR:1 .AND. AX:0;PT:VII;PT:1"
+                           marker="O001001M002002">
+                     <t v="fish of the genera "/>
+                     <emphasis kind="i">
+                        <t v="Thunnus"/>
+                     </emphasis>
+                     <t v=" and "/>
+                     <emphasis kind="i">
+                        <t v="Euthynnus"/>
+                     </emphasis>
+                  </changed>
+                  <t v=" should also be fixed;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32006R0802"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O004001M001000"/>
+            <unit eId="pbl_1/rct_3" kind="recital">
+               <p>
+                  <t v="Whereas the measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Fishery Products,"/>
+               </p>
+            </unit>
+         </deleted>
+      </recitals>
+      <formula name="enactingFormula">
+         <deleted>
+            <provenance amendingAct="32006R0802"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O004001M001000"/>
+            <p>
+               <t v="HAS ADOPTED THIS REGULATION:"/>
+            </p>
+         </deleted>
+      </formula>
+   </preamble>
+   <body>
+      <deleted>
+         <provenance amendingAct="32006R0802"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O004001M001000"/>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <p>
+               <t v="The conversion factors applicable to the different species, sizes and presentations of "/>
+               <changed amendingAct="31987R3940"
+                        action="replaced"
+                        location="AR:1 .AND. AX:0;PT:VII;PT:1"
+                        marker="O001001M003000">
+                  <t v="fish of the genera "/>
+                  <emphasis kind="i">
+                     <t v="Thunnus"/>
+                  </emphasis>
+                  <t v=" and "/>
+                  <emphasis kind="i">
+                     <t v="Euthynnus"/>
+                  </emphasis>
+               </changed>
+               <t v=" shall be as listed in the Annex hereto."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32006R0802"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O004001M001000"/>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <p>
+               <t v="This Regulation shall enter into force on 1 January 1983."/>
+            </p>
+         </unit>
+      </deleted>
+   </body>
+   <conclusions>
+      <deleted>
+         <provenance amendingAct="32006R0802"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O004001M001000"/>
+         <p>
+            <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+         </p>
+      </deleted>
+   </conclusions>
+   <annexes>
+      <deleted>
+         <provenance amendingAct="32006R0802"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O004001M001000"/>
+         <unit eId="anx" kind="annex" eurlexAnchor="1">
+            <provenance amendingAct="31992R3899"
+                        action="replaced"
+                        location="AR:1 .AND. AX:0"
+                        marker="O003001M001000"/>
+            <num>
+               <t v="ANNEX"/>
+            </num>
+            <table cols="2">
+               <caption>
+                  <p>
+                     <num>
+                        <t v="I."/>
+                     </num>
+                     <t v="Conversion factors applicable to the different species of tuna"/>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Species"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Conversion factor"/>
+                     </p>
+                  </td>
+               </tr>
+               <rowGroup>
+                  <num>
+                     <t v="A."/>
+                  </num>
+                  <heading>
+                     <t v="Yellowfin tuna "/>
+                     <emphasis kind="i">
+                        <t v="(Thunnus albacares)"/>
+                     </emphasis>
+                     <t v=":"/>
+                  </heading>
+                  <rowGroup>
+                     <tr>
+                        <td>
+                           <p>
+                              <num>
+                                 <t v="—"/>
+                              </num>
+                              <t v="weighing more than 10 kg each"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1,0"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <num>
+                                 <t v="—"/>
+                              </num>
+                              <t v="weighing not more than 10 kg each"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="0,78"/>
+                           </p>
+                        </td>
+                     </tr>
+                  </rowGroup>
+               </rowGroup>
+               <tr>
+                  <td>
+                     <unit eId="anx/tbl_1/tr_4/td_1/pnt_B" kind="level" depth="1">
+                        <num>
+                           <t v="B."/>
+                        </num>
+                        <p>
+                           <t v="Albacore "/>
+                           <emphasis kind="i">
+                              <t v="(Thunnus alalunga)"/>
+                           </emphasis>
+                        </p>
+                     </unit>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,40"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <unit eId="anx/tbl_1/tr_5/td_1/pnt_C" kind="level" depth="1">
+                        <num>
+                           <t v="C."/>
+                        </num>
+                        <p>
+                           <t v="Skipjack "/>
+                           <emphasis kind="i">
+                              <t v="[Euthynnus (Katsuwonus) pelamis]"/>
+                           </emphasis>
+                        </p>
+                     </unit>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,62"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <unit eId="anx/tbl_1/tr_6/td_1/pnt_D" kind="level" depth="1">
+                        <num>
+                           <t v="D."/>
+                        </num>
+                        <p>
+                           <t v="Other species"/>
+                        </p>
+                     </unit>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,75"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <table cols="2">
+               <caption>
+                  <p>
+                     <num>
+                        <t v="II."/>
+                     </num>
+                     <t v="Conversion factors applicable to each of the species referred to in section I depending on the presentation"/>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Presentation"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Conversion factor"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <unit eId="anx/tbl_2/tr_2/td_1/pnt_A" kind="level" depth="1">
+                        <num>
+                           <t v="A."/>
+                        </num>
+                        <p>
+                           <t v="Whole"/>
+                        </p>
+                     </unit>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <unit eId="anx/tbl_2/tr_3/td_1/pnt_B" kind="level" depth="1">
+                        <num>
+                           <t v="B."/>
+                        </num>
+                        <p>
+                           <t v="Gutted and without gills"/>
+                        </p>
+                     </unit>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,14"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <unit eId="anx/tbl_2/tr_4/td_1/pnt_C" kind="level" depth="1">
+                        <num>
+                           <t v="C."/>
+                        </num>
+                        <p>
+                           <t v="Other"/>
+                        </p>
+                     </unit>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,24"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </unit>
+      </deleted>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="379"
+                 date="1981-09-01"
+                 page="1">
+               <t v="OJ No L 379, 31. 12. 1981, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

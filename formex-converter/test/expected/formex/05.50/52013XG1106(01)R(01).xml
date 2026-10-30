@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="52013XG1106(01)R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.50"
+           converter="1.0.0">
+   <source celex="52013XG1106(01)R(01)">
+      <publication series="C"
+                   number="324"
+                   date="2013-11-09"
+                   page="10"
+                   document="2013/C 324/09"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to United Kingdom Government notice concerning Directive 94/22/EC of the European Parliament and of the Council on the conditions for granting and using authorisations for the prospection, exploration and production of hydrocarbons"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="C" number="320" date="2013-11-06">
+               <t v="Official Journal of the European Union C 320 of 6 November 2013"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="The publication of United Kingdom Government notice 2013/C 320/02 is to be considered null and void."/>
+         </p>
+      </unit>
+   </body>
+</legalText>
+

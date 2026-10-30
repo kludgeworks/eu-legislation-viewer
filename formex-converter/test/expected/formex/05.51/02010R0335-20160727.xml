@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32010R0335"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2016-07-27"
+           lang="en"
+           formexVersion="05.51"
+           converter="1.0.0">
+   <source celex="02010R0335-20160727">
+      <publication series="L" number="102" date="2010-04-23" page="22"/>
+   </source>
+   <lifecycle start="2016-07-27" produced="2016-07-07" sequence="001.001.0">
+      <eventRef type="amendment" act="32016R1095" date="2016-07-06"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) No 335/2010"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="22 April 2010" date="2010-04-22"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="concerning the authorisation of zinc chelate of hydroxy analogue of methionine as a feed additive for all animal species"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The preparation specified in the Annex, belonging to the additive category "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="nutritional additives"/>
+            </quote>
+            <t v=" and to the functional group "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="compounds of trace elements"/>
+            </quote>
+            <t v=", is authorised as an additive in animal nutrition subject to the conditions laid down in that Annex."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="Regulation (EC) No 888/2009 is repealed."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the 20th day following its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <table cols="10">
+            <tr header="true">
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Identification number of the additive"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Name of the holder of authorisation"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Additive"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Composition, chemical formula, description, analytical method"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Species or category of animal"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Maximum age"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Minimum content"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Maximum content"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="Other provisions"/>
+                  </p>
+               </td>
+               <td rowspan="2" header="true">
+                  <p>
+                     <t v="End of period of authorisation"/>
+                  </p>
+               </td>
+            </tr>
+            <tr header="true">
+               <td colspan="2" header="true">
+                  <p>
+                     <t v="Content of element (Zn) in mg/kg of complete feedingstuff with a moisture content of 12 %"/>
+                  </p>
+               </td>
+            </tr>
+            <rowGroup>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Category of nutritional additives. Functional group: compounds of trace elements"/>
+                  </emphasis>
+               </heading>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="3b6.10"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="—"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Zinc chelate of hydroxy analogue of methionine"/>
+                     </p>
+                  </td>
+                  <td>
+                     <list kind="none">
+                        <unit eId="anx/tbl_1/tr_3/td_4/idt_1" kind="indent">
+                           <p>
+                              <t v="Characterisation of the additive:"/>
+                           </p>
+                           <list kind="none">
+                              <unit eId="anx/tbl_1/tr_3/td_4/idt_1/idt_1" kind="indent">
+                                 <p>
+                                    <t v="Zinc chelate of hydroxy analogue of methionine containing 17,5 %-18 % zinc and 81 % (2-hydroxy-4-methylthio) butanoic acid"/>
+                                 </p>
+                              </unit>
+                              <unit eId="anx/tbl_1/tr_3/td_4/idt_1/idt_2" kind="indent">
+                                 <p>
+                                    <t v="Mineral oil: ≤ 1 %"/>
+                                 </p>
+                              </unit>
+                           </list>
+                        </unit>
+                        <unit eId="anx/tbl_1/tr_3/td_4/idt_2" kind="indent">
+                           <p>
+                              <t v="Analytical method"/>
+                              <noteRef href="#note_1" marker="1"/>
+                              <t v=":"/>
+                           </p>
+                           <p>
+                              <t v="Inductively coupled plasma atomic emission spectrometry (ICP-AES) according to EN 15510:2007"/>
+                           </p>
+                        </unit>
+                     </list>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="All species"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="—"/>
+                     </p>
+                  </td>
+                  <td/>
+                  <td>
+                     <p>
+                        <provenance amendingAct="32016R1095"
+                                    action="replaced"
+                                    location="AR:4"
+                                    marker="O001001M001000"/>
+                        <t v="Dogs and cats: 200 (total)"/>
+                     </p>
+                     <p>
+                        <provenance amendingAct="32016R1095"
+                                    action="replaced"
+                                    location="AR:4"
+                                    marker="O001001M001000"/>
+                        <t v="Salmonids and milk replacers for calves: 180 (total)"/>
+                     </p>
+                     <p>
+                        <provenance amendingAct="32016R1095"
+                                    action="replaced"
+                                    location="AR:4"
+                                    marker="O001001M001000"/>
+                        <t v="Piglets, sows, rabbits and all fish species other than salmonids: 150 (total)"/>
+                     </p>
+                     <p>
+                        <provenance amendingAct="32016R1095"
+                                    action="replaced"
+                                    location="AR:4"
+                                    marker="O001001M001000"/>
+                        <t v="Other species and categories: 120 (total)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="1."/>
+                        </num>
+                        <t v="The additive shall be incorporated into feed in the form of a premixture."/>
+                     </p>
+                     <p>
+                        <num>
+                           <t v="2."/>
+                        </num>
+                        <t v="For user safety: breathing protection, safety glasses and gloves shall be worn during handling."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <date asWritten="13 May 2020" date="2020-05-13"/>
+                     </p>
+                  </td>
+               </tr>
+            </rowGroup>
+         </table>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="table">
+         <p>
+            <t v="Details of the analytical methods are available at the following address of the Community Reference Laboratory: http://irmm.jrc.ec.europa.eu/crl-feed-additives"/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

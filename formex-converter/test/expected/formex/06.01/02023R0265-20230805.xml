@@ -1,0 +1,3100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32023R0265"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2023-08-05"
+           lang="en"
+           formexVersion="06.01"
+           converter="1.0.0">
+   <source celex="02023R0265-20230805">
+      <publication series="L" number="41" date="2023-02-10" page="1"/>
+   </source>
+   <lifecycle start="2023-08-05" produced="2023-08-07" sequence="001.001.0">
+      <eventRef type="corrigendum" act="32023R0265R(01)"/>
+      <eventRef type="corrigendum" act="32023R0265R(02)"/>
+      <eventRef type="amendment" act="32023R1597" date="2023-08-03"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Implementing Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) 2023/265"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="9 February 2023" date="2023-02-09"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="imposing a definitive anti-dumping duty on imports of ceramic tiles originating in India and Türkiye"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <unit eId="art_1/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="A definitive anti-dumping duty is imposed on imports of ceramic flags and paving, hearth or wall tiles; ceramic mosaic cubes and the like, whether or not on a backing; finishing ceramics, currently falling under CN codes "/>
+               <t v="69072100"/>
+               <t v=", "/>
+               <t v="69072200"/>
+               <t v=", "/>
+               <t v="69072300"/>
+               <t v=", "/>
+               <t v="69073000"/>
+               <t v=" and "/>
+               <t v="69074000"/>
+               <t v=" and originating in India or Türkiye."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="The rates of the definitive anti-dumping duty applicable to the net, free-at-Union-frontier price, before duty, of the product described in paragraph 1 and produced by the companies listed below shall be as follows:"/>
+            </p>
+            <table cols="4">
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Country"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Company"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Definitive anti-dumping duty"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="TARIC additional code"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Conor Granito Pvt Ltd.; Corial Ceramic Pvt Ltd."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8,7"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C898"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <provenance amendingAct="32023R0265R(01)"
+                                    action="replaced"
+                                    location="CR:1;NT:0"
+                                    marker="O000001M001000"/>
+                        <t v="Acecon Vitrified Pvt Ltd; Avlon Ceramic Pvt Ltd; Duracon Vitrified Pvt Ltd; Eracon Vitrified Pvt Ltd; Evershine Cera Pvt Ltd; Icon Granito Pvt Ltd; Venice Ceramics"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6,7"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C899"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Other cooperating companies listed in Annex I"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,3"/>
+                        <t v="%"/>
+                     </p>
+                  </td>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="All other companies"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8,7"/>
+                        <t v="%"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C999"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Hitit Seramik Sanayi ve Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="20,9"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C900"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Qua Granite ve Hayal Yapi Ürünleri San. Tic. A.Ș.;"/>
+                     </p>
+                     <p>
+                        <t v="Bien Yapi Ürünleri San. Tic. A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4,8"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C901"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Other cooperating companies listed in Annex II"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="9,2"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="All other companies"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="20,9"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C999"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </unit>
+         <unit eId="art_1/par_3" kind="paragraph">
+            <provenance amendingAct="32023R0265R(01)"
+                        action="replaced"
+                        location="CR:2;NT:0"
+                        marker="O000001M002000"/>
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="Anti-dumping duties are not applicable to the Indian exporting producer the Lavish Group, consisting of Lavish Granito Pvt Ltd, Lavish Ceramics, Lakme Vitrified LLP. and Liva Ceramics (TARIC additional code C903), and are not applicable to the Turkish exporting producer Vitra Karo Sanayi ve Ticaret A.Ș. (TARIC additional code C902)."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="The application of the individual duty rates specified for the companies mentioned in paragraph 2, as well as the non-application of any anti-dumping duty rate for the companies mentioned in paragraph 3, shall be conditional upon presentation to the Member States’ customs authorities of a valid commercial invoice, on which shall appear a declaration dated and signed by an official of the entity issuing such invoice, identified by his/her name and function, drafted as follows: "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="I, the undersigned, certify that the [volume] of [product concerned] sold for export to the European Union covered by this invoice was manufactured by [company name and address] (TARIC additional code) in [country concerned]. I declare that the information provided in this invoice is complete and correct."/>
+                  </quote>
+               </emphasis>
+               <t v=" If no such invoice is presented, the duty applicable to all other companies shall apply."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_5" kind="paragraph">
+            <num>
+               <t v="5."/>
+            </num>
+            <p>
+               <t v="Unless otherwise specified, the provisions in force concerning customs duties shall apply."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="Article 1(2) may be amended to add new exporting producers from India or Türkiye and make them subject to the appropriate weighted average anti-dumping duty rate for cooperating companies not included in the sample. A new exporting producer shall provide evidence that:"/>
+         </p>
+         <list kind="alpha">
+            <unit eId="art_2/pnt_a" kind="point">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <p>
+                  <t v="it did not export the goods described in Article 1(1) originating in India or Türkiye during the period of investigation ("/>
+                  <date asWritten="1 July 2020" date="2020-07-01"/>
+                  <t v=" to "/>
+                  <date asWritten="30 June 2021" date="2021-06-30"/>
+                  <t v=");"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_b" kind="point">
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <p>
+                  <t v="it is not related to an exporter or producer subject to the measures imposed by this Regulation, and which could have cooperated in the original investigation; and"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_c" kind="point">
+               <num>
+                  <t v="(c)"/>
+               </num>
+               <p>
+                  <t v="it has either actually exported the product concerned or has entered into an irrevocable contractual obligation to export a significant quantity to the Union after the end of the period of investigation."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx_I" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX I"/>
+         </num>
+         <unit eId="anx_I/lvl_1" kind="level" depth="1">
+            <heading>
+               <emphasis kind="b">
+                  <t v="Indian cooperating exporting producers not sampled"/>
+               </emphasis>
+            </heading>
+            <table cols="3">
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Country"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Name"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="TARIC additional code"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Arkiton Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Ncraze Ceramic LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C919"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Asian Granito India Limited"/>
+                     </p>
+                     <p>
+                        <t v="Crystal Ceramic Industries Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Affil Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Amazoone Ceramics Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C920"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Color Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Color Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Subway Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Senis Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C921"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Comet Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Corus Vitrified Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C922"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Granoland Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Landgrace Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Landdecor Tiles LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C923"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Sunshine Tiles Company Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Sunshine Vitrious Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Sunshine Ceramic"/>
+                     </p>
+                     <p>
+                        <t v="Jaysun Ceramics"/>
+                     </p>
+                     <p>
+                        <t v="Sunray Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Sologres Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Leesun Ceramic Tiles Co"/>
+                     </p>
+                     <p>
+                        <t v="Grenic Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Antonova Tiles (India)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C924"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Aajveto Manufacturing Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="The President Group"/>
+                     </p>
+                     <p>
+                        <t v="Artos International LLP"/>
+                     </p>
+                     <p>
+                        <t v="Spolo Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Veritaas Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Pioneer Ceramic Industries"/>
+                     </p>
+                     <p>
+                        <t v="Zed Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Indesign Ceramics LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C925"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Accord Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Accord Plus Ceramics Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C927"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Alinta Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Avalta Granito Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C928"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Alpas Cera LLP"/>
+                     </p>
+                     <p>
+                        <t v="Cosa Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C929"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ambani Vitrified Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C930"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Solizo Vitrified Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C931"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Axison Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Axiom Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Swellco Ceramic"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C935"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Blizzard Vitrified LLP"/>
+                     </p>
+                     <p>
+                        <t v="Blizzard Ceramica LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C937"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Blueart Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Iyota Tiles LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C938"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Bluetone Impex LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C939"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Bluezone Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Bluezone Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Bluegrass Porcelano LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C940"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Bonza Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Boffo Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Big Tiles"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C941"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Cadillac Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Captiva Ceramic Industries"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C942"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Capron Vitrified Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C943"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Classy Tiles LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C944"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Claystone Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Favourite Plus Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Clayart Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Torino Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Astila Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C945"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Commander Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Creanza Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Commander Ceramic Industries"/>
+                     </p>
+                     <p>
+                        <t v="Amora Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Amora Ceramics Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C946"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Cruso Granito Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C947"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Cyber Ceramics"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C948"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Delta Ceramic"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C949"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Dureza Granito Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C950"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Emcer Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Emcer Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Sanford Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Parker Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Ascent Ceramica Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Lenswood Ceramic"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C951"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Exotica Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C952"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Exxaro Tiles Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C953"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Face Ceramics Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Fea Ceramics"/>
+                     </p>
+                     <p>
+                        <t v="Cygen Ceramic LLP"/>
+                     </p>
+                     <p>
+                        <t v="Sorento Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Soriso Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Soriso Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Angel Ceramic Pct Limited"/>
+                     </p>
+                     <p>
+                        <t v="Blue Art Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Face Impex Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C954"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Favourite Plus Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C956"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Flavour Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Rex Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C957"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Fusion Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Vivanta Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C958"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Gold Cera International"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C959"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <provenance amendingAct="32023R0265R(02)"
+                              action="replaced"
+                              location="TO"
+                              marker="O000002M001000"/>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Gryphon Ceramics Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Cosa Ceramics Pct Limited"/>
+                     </p>
+                     <p>
+                        <t v="RAK Ceramics India Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Gris Ceramic LLP"/>
+                     </p>
+                     <p>
+                        <t v="Grupo Griffin Ceramica LLP"/>
+                     </p>
+                     <p>
+                        <t v="Alpas Cera LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C960"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Handmada International"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C961"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Hilltop Ceramic"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C962"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ibis Smart Marble Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Silverpearl Tile Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C963"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Italica Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Italica Floor Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Soriso Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C964"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ita Lake Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Itaca Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Sperita Granito LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C966"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td/>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Itacon Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="U-Con Ceramica LLP"/>
+                     </p>
+                     <p>
+                        <t v="Tecon Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Valencia Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Livolla Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Velloza Granito LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C968"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Italia Ceramics Limited"/>
+                     </p>
+                     <p>
+                        <t v="Piccolo Mosaic Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C969"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Italus Vitrified LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C971"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Itcos Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Icera Tiles LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C972"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Itoli Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Imlis Ceramica LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C973"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="K2D Exim"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C974"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Kag Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Rollza Granito LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C975"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Kajaria Ceramics Limited"/>
+                     </p>
+                     <p>
+                        <t v="Jaxx Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Cosa Ceramics Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Kajaria Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Vennar Ceramics Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C976"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Keezia Tiles LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C977"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Kitco Ceramic"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C978"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Kripton Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Kripton Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="La Berry Ceramics Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Nice Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Gresart Ceramica Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C979"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Latto Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Spinora Tiles Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C980"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Laxveer Ceramic LLP"/>
+                     </p>
+                     <p>
+                        <t v="Lovato Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C981"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Leopard Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Livon Ceramic"/>
+                     </p>
+                     <p>
+                        <t v="Letoza Granito LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C982"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Lexus Granito India Limited"/>
+                     </p>
+                     <p>
+                        <t v="Lioli Ceramica Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C983"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Lezora Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Lemzon Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Lezwin Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Sisam Granito LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C984"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Livenza Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Livanto Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Lizzart Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Linia Ceramic LLP"/>
+                     </p>
+                     <p>
+                        <t v="L Tile Granito LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C986"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Lorence Vitrified LLP"/>
+                     </p>
+                     <p>
+                        <t v="Lepono Porcelano LLP"/>
+                     </p>
+                     <p>
+                        <t v="Lanford Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C987"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Lycos Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Livolla Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Crevita Granito Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C988"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Maps Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Perth Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C989"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Marbilano Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Marbilano Surface LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C990"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Max Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Epos Tiles LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C119"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Metropole Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Metro City Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Metro Ceramics"/>
+                     </p>
+                     <p>
+                        <t v="Mactile India Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C120"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <provenance amendingAct="32023R0265R(01)"
+                              action="replaced"
+                              location="CR:3;NT:0"
+                              marker="O000001M003000"/>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Millennium Granito India Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Lorenzo Vitrified Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Millennium Vitrified Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Millennium Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Clan Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Millennium Ceramic LLP"/>
+                     </p>
+                     <p>
+                        <t v="Millennia Ceramica Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Millennium Cera Tiles Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C121"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <provenance amendingAct="32023R0265R(01)"
+                              action="replaced"
+                              location="CR:4;NT:0"
+                              marker="O000001M004000"/>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Montana Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Plazma Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Raykas Ceramic LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C122"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Motto Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Motto Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Slimtile Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Monza Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Rossa Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Motto Stone Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C123"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Mox tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Itile LLP"/>
+                     </p>
+                     <p>
+                        <t v="Swell Granito LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C124"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Neelson Ceramic LLP"/>
+                     </p>
+                     <p>
+                        <t v="Neelson Porselano LLP"/>
+                     </p>
+                     <p>
+                        <t v="Win Tel Ceramics Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Theos Tiles LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C125"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <provenance amendingAct="32023R1597"
+                              action="replaced"
+                              location="AR:1;PA:1"
+                              marker="O001001M001000"/>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Nehani Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Neha Ceramic Industries"/>
+                     </p>
+                     <p>
+                        <t v="Orinda Granito LLP"/>
+                     </p>
+                     <p>
+                        <t v="Orinda Industries LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C126"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Nessa Vitrified LLP"/>
+                     </p>
+                     <p>
+                        <t v="LGF Vitrified Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C127"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Nexion International Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Simpolo Vitrified Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C130"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Nitco Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C131"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Oasis Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Oasis Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Max Ceramics Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Revenza Ceramics"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C132"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Olwin Tiles (India) Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C133"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Onery Tiles LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C134"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Oscar Ceramics"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C136"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Pavit Ceramics Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Victory Ceratech Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C138"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Prism Johnson Limited"/>
+                     </p>
+                     <p>
+                        <t v="Antique Marbonite Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Coral Gold Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Sanskar Ceramics Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Spectrum Johnson Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Small Johnson Floor Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Sparten Granito Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C142"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Q-BO (Savion Ceramic)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C308"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Qutone Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C631"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Range Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C633"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Rey Cera Creation Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Simbel Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Adoration Ceramica Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C636"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Scientifica Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Saiwin Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Saimax Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Siscon Tiles LLP"/>
+                     </p>
+                     <p>
+                        <t v="Aland Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C639"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Seron Granito Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C640"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Sez Vitrified Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C641"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Silon Granito LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C642"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Simero Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Simero International LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C643"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Simola Tiles LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C644"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Skajen Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Spice Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Legend Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C646"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Skytouch Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Icolux Porcelano LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C648"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Sober Plus Ceramics"/>
+                     </p>
+                     <p>
+                        <t v="Sober Ceramics"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C649"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Solizo Vitrified Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C650"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Somany Ceramics Limited"/>
+                     </p>
+                     <p>
+                        <t v="Vintage Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Vicon Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Amora Tiles Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Amora Ceramics Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Acer Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Somany Fine Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Sudha Somany Ceramics Private Limited and"/>
+                     </p>
+                     <p>
+                        <t v="Somany Piastrelle Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C651"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Sparron Vitrified LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C652"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Square Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Casva Tiles Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A004"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Starco Ceramic"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A005"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Sunland Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A006"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Sunworld Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Shagun Ceramics"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A007"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Swellco Ceramic"/>
+                     </p>
+                     <p>
+                        <t v="Axison Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Axiom Ceramic Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A008"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Titanium Vitrified Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Moral Ceramic Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Onery Tiles LLP"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A010"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Varmora Granito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Tocco Ceramics Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Solaris Ceramics Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Nextile Marbosys Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Fiorenza GRanito Private Limited"/>
+                     </p>
+                     <p>
+                        <t v="Sentosa Granito Private Limited,"/>
+                     </p>
+                     <p>
+                        <t v="Renite Vitrified LLP"/>
+                     </p>
+                     <p>
+                        <t v="Avalta Granito Private Limited and"/>
+                     </p>
+                     <p>
+                        <t v="Covertek Ceramica Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A013"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Velsaa Vitrified LLP"/>
+                     </p>
+                     <p>
+                        <t v="Velsaa Enterprises LLP"/>
+                     </p>
+                     <p>
+                        <t v="Boss Ceramics"/>
+                     </p>
+                     <p>
+                        <t v="Magnum Ceramics"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A014"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Verona Granito Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A016"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Wallmark Ceramic Industry"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A017"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Zarko Granito Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A019"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Zealtop Granito Private Limited"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="A020"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="India"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Vita Granito"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C926"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </unit>
+      </unit>
+      <unit eId="anx_II" kind="annex" eurlexAnchor="2">
+         <num>
+            <t v="ANNEX II"/>
+         </num>
+         <unit eId="anx_II/lvl_1" kind="level" depth="1">
+            <heading>
+               <emphasis kind="b">
+                  <t v="Turkish cooperating exporting producers not sampled"/>
+               </emphasis>
+            </heading>
+            <table cols="3">
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Country"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Name"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="TARIC additional code"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Akgün Seramik Sanayi ve Ticaret A.Ș."/>
+                        <noteRef href="#note_1" marker="1"/>
+                     </p>
+                     <p>
+                        <t v="Akgün Toprak Sanayi İnșaat ve Ticaret A.Ș."/>
+                     </p>
+                     <p>
+                        <t v="Veli Akgün Seramik İnșaat Sanayi ve Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C904"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Anka Toprak Ürünleri Sanayi ve Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C905"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Decovita Yapi Ürünleri Sanayi ve Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C906"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ege Seramik Sanayi ve Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C907"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Etili Seramik İnșaat Sanayi ve Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C908"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Graniser Granit Seramik Sanayi ve Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C909"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Kaleseramik Çanakkale Kalebodur Seramik Sanayi A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C910"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Karo Metro Seramik Sanayi ve Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C911"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="NG Kütahya Seramik Porselen Turizm A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C912"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Seramiksan Turgutlu Seramik Sanayi ve Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C913"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Seranit Granit Seramik Sanayi Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C914"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Söğütsen Seramik Sanayi İnșaat Madencilik İthalat İhracat A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C915"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Termal Seramik Sanayi ve Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C916"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ușak Seramik Sanayi A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C917"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Türkiye"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Yurtbay Seramik Sanayi Ticaret A.Ș."/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="C918"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="table">
+         <p>
+            <t v="A.Ș. stands for Anonim Șirketi"/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="52022AS36628R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="52022AS36628R(01)">
+      <publication series="C"
+                   number="155"
+                   date="2022-04-08"
+                   page="18"
+                   document="2022/C 155/03"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to State aid – Spain – State aid SA.36228 (2020/C) (ex 2015/NN-2) – Alleged State aid to Fred Olsen at Puerto de las Nieves – Invitation to submit comments pursuant to Article 108(2) of the Treaty on the Functioning of the European Union"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="C" number="135" date="2022-03-25">
+               <t v="Official Journal of the European Union C 135 of 25 March 2022"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On the cover and on page 20, the title:"/>
+         </p>
+         <old>
+            <list kind="definition">
+               <unit eId="cor_1/old/def_1" kind="definition">
+                  <heading>
+                     <emphasis kind="i">
+                        <t v="for:"/>
+                     </emphasis>
+                  </heading>
+                  <quotedStructure eId="cor_1/old/def_1/qst_1">
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="State Aid — Spain — State aid SA.36228 (2020/C) (ex 2015/NN-2) — Alleged State aid to Fred Olsen at Puerto de las Nieves — Invitation to submit comments pursuant to Article 108(2) of the Treaty on the Functioning of the European Union"/>
+                        </quote>
+                        <t v=","/>
+                     </p>
+                  </quotedStructure>
+               </unit>
+            </list>
+         </old>
+         <new>
+            <list kind="definition">
+               <unit eId="cor_1/new/def_1" kind="definition">
+                  <heading>
+                     <emphasis kind="i">
+                        <t v="read:"/>
+                     </emphasis>
+                  </heading>
+                  <quotedStructure eId="cor_1/new/def_1/qst_1">
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="State aid — Spain — State aid SA.36628 (2020/C) (ex 2015/NN-2) — Alleged State aid to Fred Olsen at Puerto de las Nieves — Invitation to submit comments pursuant to Article 108(2) of the Treaty on the Functioning of the European Union"/>
+                        </quote>
+                        <t v="."/>
+                     </p>
+                  </quotedStructure>
+               </unit>
+            </list>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

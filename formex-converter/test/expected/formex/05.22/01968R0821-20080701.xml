@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31968R0821"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2008-07-01"
+           lang="en"
+           formexVersion="05.22"
+           converter="1.0.0">
+   <source celex="01968R0821-20080701">
+      <publication series="L" number="149" date="1968-06-29" page="46"/>
+   </source>
+   <lifecycle start="2008-07-01" produced="2012-05-30" sequence="002.001.0">
+      <eventRef type="amendment" act="31971R1634" date="1971-07-27"/>
+      <eventRef type="amendment" act="32008R0508" date="2008-06-06"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <deleted amendingAct="32008R0508"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000">
+                  <emphasis kind="uc">
+                     <t v="Regulation"/>
+                  </emphasis>
+               </deleted>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <deleted amendingAct="32008R0508"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000">
+                  <t v=" (EEC) No 821/68 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Commission"/>
+                  </emphasis>
+               </deleted>
+            </docNumber>
+         </p>
+         <p>
+            <deleted amendingAct="32008R0508"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000">
+               <t v="of 28 June 1968"/>
+            </deleted>
+         </p>
+         <p>
+            <docPurpose>
+               <deleted amendingAct="32008R0508"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000">
+                  <t v="on the definition, applicable to the granting of export refunds, of hulled grains and pearled grains of cereals"/>
+               </deleted>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <deleted>
+            <provenance amendingAct="32008R0508"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <p>
+               <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+            </p>
+         </deleted>
+      </formula>
+      <citations>
+         <deleted>
+            <provenance amendingAct="32008R0508"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/cit_1" kind="citation">
+               <p>
+                  <t v="Having regard to the Treaty establishing the European Economic Community;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32008R0508"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/cit_2" kind="citation">
+               <p>
+                  <t v="Having regard to Council Regulation No 120/67/EEC"/>
+                  <noteRef href="#note_1" marker="1"/>
+                  <t v=". of 13 June 1967 on the common organisation of the market in cereals, and in particular Article 16 (4) thereof:"/>
+               </p>
+            </unit>
+         </deleted>
+      </citations>
+      <recitals>
+         <deleted>
+            <provenance amendingAct="32008R0508"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_1" kind="recital">
+               <p>
+                  <t v="Whereas the export refund should take into account the quality of the product processed from cereals which qualifies for it lest public funds contribute to the export of goods of inferior quality; whereas it is therefore necessary to establish a precise definition, applicable in each Member State, of cereal grains qualifying for the refund on "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="hulled grains"/>
+                  </quote>
+                  <t v=" and "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="pearled grains"/>
+                  </quote>
+                  <t v=";"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32008R0508"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_2" kind="recital">
+               <p>
+                  <t v="Whereas the measures provided for in this Regulation are in accordance with the Opinion of the Management Committee for Cereals;"/>
+               </p>
+            </unit>
+         </deleted>
+      </recitals>
+      <formula name="enactingFormula">
+         <deleted>
+            <provenance amendingAct="32008R0508"
+                        action="deleted"
+                        location="AR:2"
+                        marker="O002001M001000"/>
+            <p>
+               <t v="HAS ADOPTED THIS REGULATION:"/>
+            </p>
+         </deleted>
+      </formula>
+   </preamble>
+   <body>
+      <deleted>
+         <provenance amendingAct="32008R0508"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000"/>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <p>
+               <t v="For the granting of export refunds pearled grains and hulled grains of cereals shall be those which possess the characteristics listed in the Annex."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32008R0508"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000"/>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <p>
+               <t v="This Regulation shall enter into force on 1 July 1968."/>
+            </p>
+         </unit>
+      </deleted>
+   </body>
+   <conclusions>
+      <deleted>
+         <provenance amendingAct="32008R0508"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000"/>
+         <p>
+            <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+         </p>
+      </deleted>
+   </conclusions>
+   <annexes>
+      <deleted>
+         <provenance amendingAct="32008R0508"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000"/>
+         <unit eId="anx" kind="annex" eurlexAnchor="1">
+            <num>
+               <t v="ANNEX"/>
+            </num>
+            <subheading>
+               <t v="DEFINITION OF "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="HULLED GRAINS"/>
+               </quote>
+               <t v=" (SHELLED OR HUSKED) AND "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="PEARLED GRAINS"/>
+               </quote>
+            </subheading>
+            <unit eId="anx/pnt_A" kind="level" depth="1">
+               <num>
+                  <t v="A."/>
+               </num>
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Hulled grains"/>
+                  </quote>
+                  <t v=" includes shelled and husked grains:"/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_1" kind="level" depth="2">
+               <num>
+                  <t v="1."/>
+               </num>
+               <heading>
+                  <t v="Shelled grains:&#xA;"/>
+               </heading>
+               <p>
+                  <t v="are cereal grains with the pericarp removed or bracted cereal grains (see explanatory notes to tariff heading No 10.03: grains) with the bracts removed with cling to the pericarp (as for example with bearded barley) or which enclose the grains so firmly that the bracts cannot be detached by threshing etc. (as with oats)."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_2" kind="level" depth="2">
+               <num>
+                  <t v="2."/>
+               </num>
+               <heading>
+                  <t v="Husked grains:&#xA;"/>
+               </heading>
+               <p>
+                  <t v="are grains (in the case of barley, with the bracts removed) which have the major part of the pericarp and tegument testa) removed."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_B" kind="level" depth="1">
+               <num>
+                  <changed amendingAct="31971R1634"
+                           action="replaced"
+                           location="AR:1 .AND. AX:0"
+                           marker="O001001M008000">
+                     <t v="B."/>
+                  </changed>
+               </num>
+               <p>
+                  <provenance amendingAct="31971R1634"
+                              action="replaced"
+                              location="AR:1 .AND. AX:0"
+                              marker="O001001M008000"/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Pearled grains"/>
+                  </quote>
+                  <t v=" include:"/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_I" kind="level" depth="2">
+               <provenance amendingAct="31971R1634"
+                           action="replaced"
+                           location="AR:1 .AND. AX:0"
+                           marker="O001001M008000"/>
+               <num>
+                  <t v="I."/>
+               </num>
+               <heading>
+                  <t v="First class grains:&#xA;"/>
+               </heading>
+            </unit>
+            <unit eId="anx/pnt_1" kind="level" depth="3">
+               <provenance amendingAct="31971R1634"
+                           action="replaced"
+                           location="AR:1 .AND. AX:0"
+                           marker="O001001M008000"/>
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="grains which correspond to the following definition:"/>
+               </p>
+               <p>
+                  <t v="pearled cereal grains, principally barley, which have the whole of the tegument, pericarp, germ and the major part of the outer layer and aleuronic layer removed, and which are of uniform size and rounded form;"/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_2" kind="level" depth="3">
+               <provenance amendingAct="31971R1634"
+                           action="replaced"
+                           location="AR:1 .AND. AX:0"
+                           marker="O001001M008000"/>
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="and which in addition meet the following requirements:"/>
+               </p>
+               <p>
+                  <t v="regularity of the grains:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="anx/pnt_2/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="75 % of the grains must not exceed 20 % of the dm;&#xA;"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_2/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="94 % of the grains added progressively between 3 % and 97 % must not exceed 30 % of the dm;&#xA;"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_2/pnt_c" kind="point">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="100 % of the grains must not exceed 50 % of the dm;&#xA;"/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="Determination of regularity by sieve analysis using sieves with round holes."/>
+               </p>
+               <list kind="definition">
+                  <unit eId="anx/pnt_2/lst_2/def_1" kind="definition">
+                     <heading>
+                        <t v="dm"/>
+                     </heading>
+                     <p>
+                        <t v="the median value obtained from the graph of the results of sieve analysis at the point at which 50 % of the product has passed through the sieve."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="anx/pnt_II" kind="level" depth="2">
+               <provenance amendingAct="31971R1634"
+                           action="replaced"
+                           location="AR:1 .AND. AX:0"
+                           marker="O001001M008000"/>
+               <num>
+                  <t v="II."/>
+               </num>
+               <heading>
+                  <t v="Second class grains:&#xA;"/>
+               </heading>
+               <p>
+                  <t v="grains which correspond to the definition under B I (1)."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_B/lvl_1" kind="level" depth="2">
+               <heading>
+                  <t v="Sieve analysis"/>
+               </heading>
+            </unit>
+            <unit eId="anx/pnt_B/lvl_1/lvl_1" kind="level" depth="3">
+               <heading>
+                  <t v="Apparatus:"/>
+               </heading>
+               <list kind="dash">
+                  <unit eId="anx/pnt_B/lvl_1/lvl_1/idt_1" kind="indent">
+                     <p>
+                        <t v="Set of sieves with round hole (diameter 200 mm, diameter of holes 4·0 to 1·0 mm, at 0·25 mm intervals);"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_B/lvl_1/lvl_1/idt_2" kind="indent">
+                     <p>
+                        <t v="Sieving apparatus — sieving should be done by hand; sieving aids (rubber cubes of 20 mm side);"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_B/lvl_1/lvl_1/idt_3" kind="indent">
+                     <p>
+                        <t v="Precision scales."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="anx/pnt_B/lvl_1/lvl_2" kind="level" depth="3">
+               <heading>
+                  <t v="Method:"/>
+               </heading>
+               <p>
+                  <t v="Normally the pearled barley is passed through six different sieves; the set of sieves is closed at the top and bottom with the sieve with the largest holes placed at the top; the top and bottom sieves should be empty after sieving."/>
+               </p>
+               <p>
+                  <t v="Two samples of pearled barley of a checked weight of between 50 and 100 grammes are sifted by hand for at least five minutes, with the aid of the rubber cubes."/>
+               </p>
+               <p>
+                  <t v="Sieving consists of taking hold of the set of sieves with the hand and shaking it, more or less horizontally, 120 times per minute, each shake travelling about 70 mm. This to-and-fro movement is interrupted every minute by a triple circular movement. The sieved residues are weighed to the nearest 0·1 g and expressed as a percentage of the sieved product which shall be weighed to the nearest whole number, and the average calculated."/>
+               </p>
+               <p>
+                  <t v="The average of the percentages of the sieved residues should be added progressively, starting with the value 0 % in respect of the residue from the empty sieve with the largest holes. The added percentages ∈ (%) and the sizes of the holes in the corresponding sieves are plotted in co-ordinated axes on millimetric paper, the ∈ (%) in ordinates and the diameters of the holes, in mm, in abscissae."/>
+               </p>
+               <p>
+                  <t v="The median value (dm) is the hole width expressed in hundreths of mm for ∈ (%) = 50, and is read off the graph obtained by joining the points by straight lines."/>
+               </p>
+            </unit>
+         </unit>
+      </deleted>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="OJ No 117, "/>
+            <date asWritten="13.6.1967" date="1967-06-13"/>
+            <t v=", p. 2269/67."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

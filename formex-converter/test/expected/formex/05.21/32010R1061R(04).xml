@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32010R1061R(04)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.21"
+           converter="1.0.0">
+   <source celex="32010R1061R(04)">
+      <publication series="L" number="297" date="2011-11-16" page="72"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Commission Delegated Regulation (EU) No 1061/2010 of "/>
+            <date asWritten="28 September 2010" date="2010-09-28"/>
+            <t v=" supplementing Directive 2010/30/EU of the European Parliament and of the Council with regard to energy labelling of household washing machines"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="L" number="314" date="2010-11-30">
+               <t v="Official Journal of the European Union L 314 of 30 November 2010"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 62, Annex VII, the mathematical formula in point 1(c)(ii) should read as follows:"/>
+         </p>
+         <new>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <math>
+                  <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
+                     <m:mrow>
+                        <m:mo>‘</m:mo>
+                        <m:mo> </m:mo>
+                        <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                           <m:mi mathvariant="italic">AE</m:mi>
+                           <m:mrow>
+                              <m:mi mathvariant="italic">C</m:mi>
+                           </m:mrow>
+                        </msub>
+                        <m:mo>=</m:mo>
+                        <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                           <m:mi mathvariant="italic">E</m:mi>
+                           <m:mrow>
+                              <m:mi mathvariant="italic">t</m:mi>
+                           </m:mrow>
+                        </msub>
+                        <m:mo>×</m:mo>
+                        <m:mn>220</m:mn>
+                        <m:mo>+</m:mo>
+                        <m:mrow>
+                           <m:mfrac>
+                              <m:mrow>
+                                 <m:mo fence="true">{</m:mo>
+                                 <m:mrow>
+                                    <m:mo fence="true">(</m:mo>
+                                    <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi mathvariant="italic">P</m:mi>
+                                       <m:mrow>
+                                          <m:mi mathvariant="italic">l</m:mi>
+                                       </m:mrow>
+                                    </msub>
+                                    <m:mo>×</m:mo>
+                                    <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi mathvariant="italic">T</m:mi>
+                                       <m:mrow>
+                                          <m:mi mathvariant="italic">l</m:mi>
+                                       </m:mrow>
+                                    </msub>
+                                    <m:mo>×</m:mo>
+                                    <m:mn>220</m:mn>
+                                    <m:mo fence="true">)</m:mo>
+                                 </m:mrow>
+                                 <m:mo>+</m:mo>
+                                 <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <m:mi mathvariant="italic">P</m:mi>
+                                    <m:mrow>
+                                       <m:mi mathvariant="italic">o</m:mi>
+                                    </m:mrow>
+                                 </msub>
+                                 <m:mo>×</m:mo>
+                                 <m:mrow>
+                                    <m:mo fence="true">[</m:mo>
+                                    <m:mn>525600</m:mn>
+                                    <m:mo>–</m:mo>
+                                    <m:mrow>
+                                       <m:mo fence="true">(</m:mo>
+                                       <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                          <m:mi mathvariant="italic">T</m:mi>
+                                          <m:mrow>
+                                             <m:mi mathvariant="italic">t</m:mi>
+                                          </m:mrow>
+                                       </msub>
+                                       <m:mo>×</m:mo>
+                                       <m:mn>220</m:mn>
+                                       <m:mo fence="true">)</m:mo>
+                                    </m:mrow>
+                                    <m:mo>–</m:mo>
+                                    <m:mrow>
+                                       <m:mo fence="true">(</m:mo>
+                                       <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                          <m:mi mathvariant="italic">T</m:mi>
+                                          <m:mrow>
+                                             <m:mi mathvariant="italic">l</m:mi>
+                                          </m:mrow>
+                                       </msub>
+                                       <m:mo>×</m:mo>
+                                       <m:mn>220</m:mn>
+                                       <m:mo fence="true">)</m:mo>
+                                    </m:mrow>
+                                    <m:mo fence="true">]</m:mo>
+                                 </m:mrow>
+                                 <m:mo fence="true">}</m:mo>
+                              </m:mrow>
+                              <m:mrow>
+                                 <m:mn>60</m:mn>
+                                 <m:mo>×</m:mo>
+                                 <m:mn>1000</m:mn>
+                              </m:mrow>
+                           </m:mfrac>
+                        </m:mrow>
+                        <m:mo> </m:mo>
+                        <m:mo>’</m:mo>
+                        <m:mo>.</m:mo>
+                     </m:mrow>
+                  </m:math>
+               </math>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

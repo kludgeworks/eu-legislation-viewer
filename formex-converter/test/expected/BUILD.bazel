@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: MIT
+package(default_visibility = ["//visibility:public"])
+
+# The converter's output for each fixture in scope, formex/<Formex version>/<CELEX>.xml, written by
+# mise run expected and checked by the fixture test: a change to the output is a diff to review
+filegroup(
+    name = "expected",
+    srcs = glob(["**/*.xml"]),
+)

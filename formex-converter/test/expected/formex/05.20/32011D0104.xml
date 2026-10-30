@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32011D0104"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.20"
+           converter="1.0.0">
+   <source celex="32011D0104">
+      <publication series="L" number="42" date="2011-02-16" page="29"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="15 February 2011" date="2011-02-15"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the clearance of the accounts of a paying agency in Italy concerning expenditure financed by the European Agricultural Guarantee Fund (EAGF) for the 2008 financial year"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(notified under document C(2011) 757)"/>
+         </p>
+         <p>
+            <t v="(Only the Italian text is authentic)"/>
+         </p>
+         <p>
+            <t v="(2011/104/EU)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 1290/2005 of "/>
+               <date asWritten="21 June 2005" date="2005-06-21"/>
+               <t v=" on the financing of the common agricultural policy"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 30 and Article 32(8) thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="After consulting the Committee on the Agricultural Funds,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Commission Decisions 2009/367/EC"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" and 2010/56/EU"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=" cleared, for the 2008 financial year, the accounts of all the paying agencies except for the Italian paying agency "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="ARBEA"/>
+               </quote>
+               <t v=" and the Greek paying agency "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="OPEKEPE"/>
+               </quote>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Following the transmission of new information and after additional checks, the Commission can now take a decision on the integrality, accuracy and veracity of the accounts submitted by the Italian paying agency "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="ARBEA"/>
+               </quote>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The first subparagraph of Article 10(2) of Commission Regulation (EC) No 885/2006 of "/>
+               <date asWritten="21 June 2006" date="2006-06-21"/>
+               <t v=" laying down detailed rules for the application of Council Regulation (EC) No 1290/2005 as regards the accreditation of paying agencies and other bodies and the clearance of the accounts of the EAGF and of the EAFRD"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v=" lays down that the amounts that are recoverable from, or payable to, each Member State, in accordance with the accounts clearance decision referred to in the first subparagraph of Article 10(1) of the said Regulation, shall be determined by deducting the monthly payments in respect of the financial year in question, i.e. 2008, from expenditure recognised for that year in accordance with paragraph 1. The Commission shall deduct that amount from, or add it to, the monthly payment relating to the expenditure effected in the second month following that in which the accounts clearance decision is taken."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="Pursuant to Article 32(5) of Regulation (EC) No 1290/2005, 50 % of the financial consequences of non-recovery of irregularities shall be borne by the Member State concerned and 50 % by the EU budget if the recovery of those irregularities has not taken place within 4 years of the primary administrative or judicial finding, or within 8 years if the recovery is taken to the national courts. Article 32(3) of the said Regulation obliges Member States to submit to the Commission, together with the annual accounts, a summary report on the recovery procedures undertaken in response to irregularities. Detailed rules on the application of the Member States’ reporting obligation of the amounts to be recovered are laid down in Regulation (EC) No 885/2006. Annex III to the said Regulation provides the model table that had to be provided in 2009 by the Member States. On the basis of the tables completed by the Member States, the Commission should decide on the financial consequences of non-recovery of irregularities older than 4 or 8 years respectively. This decision is without prejudice to future conformity decisions pursuant to Article 32(8) of Regulation (EC) No 1290/2005."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="Pursuant to Article 32(6) of Regulation (EC) No 1290/2005, Member States may decide not to pursue recovery. Such a decision may only be taken if the costs already and likely to be incurred total more than the amount to be recovered or if the recovery proves impossible owing to the insolvency, recorded and recognised under national law, of the debtor or the persons legally responsible for the irregularity. If that decision has been taken within 4 years of the primary administrative or judicial finding or within 8 years if the recovery is taken to the national courts, 100 % of the financial consequences of the non-recovery should be borne by the EU budget. In the summary report referred to in Article 32(3) of Regulation (EC) No 1290/2005 the amounts for which the Member State decided not to pursue recovery and the grounds for the decision are shown. These amounts are not charged to the Member States concerned and are consequently to be borne by the EU budget. This decision is without prejudice to future conformity decisions pursuant to Article 32(8) of the said Regulation."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="In clearing the accounts of the paying agencies concerned, the Commission must take account of the amounts already withheld from the Member States concerned on the basis of Decisions 2009/367/EC and 2010/56/EU."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_7" kind="recital">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <p>
+               <t v="In accordance with Article 30(2) of Regulation (EC) No 1290/2005, this Decision does not prejudice decisions taken subsequently by the Commission excluding from EU financing expenditure not effected in accordance with EU rules,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <unit eId="art_1/unp_1" kind="paragraph">
+            <p>
+               <t v="The accounts of the Italian paying agency "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="ARBEA"/>
+               </quote>
+               <t v=" concerning expenditure financed by the European Agricultural Guarantee Fund (EAGF), in respect of the 2008 financial year, are hereby cleared."/>
+            </p>
+         </unit>
+         <unit eId="art_1/unp_2" kind="paragraph">
+            <p>
+               <t v="The amounts which are recoverable from, or payable to, each Member State concerned pursuant to this Decision, including those resulting from the application of Article 32(5) of Regulation (EC) No 1290/2005, are set out in Annex."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Decision is addressed to the Italian Republic."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="15 February 2011" date="2011-02-15"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Dacian "/>
+               <emphasis kind="uc">
+                  <t v="Cioloş"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <tableGroup>
+            <caption>
+               <p>
+                  <emphasis kind="b">
+                     <t v="CLEARANCE OF THE PAYING AGENCIES’ ACCOUNTS"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="FINANCIAL YEAR 2008"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Amount to be recovered from or paid to the Member State"/>
+                  </emphasis>
+               </p>
+            </caption>
+            <annotation>
+               <annotation>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="NB"/>
+                     </emphasis>
+                     <t v=": Nomenclature 2011: 05 07 01 06, 05 02 16 02, 6701, 6702, 6803."/>
+                  </p>
+               </annotation>
+            </annotation>
+            <table cols="13">
+               <tr header="true">
+                  <td rowspan="3" header="true">
+                     <p>
+                        <t v="MS"/>
+                     </p>
+                  </td>
+                  <td rowspan="3" header="true"/>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="2008 — Expenditure/Assigned Revenue for the Paying Agencies for which the accounts are"/>
+                     </p>
+                  </td>
+                  <td rowspan="3" header="true">
+                     <p>
+                        <t v="Total a + b"/>
+                     </p>
+                  </td>
+                  <td rowspan="3" header="true">
+                     <p>
+                        <t v="Reductions and suspensions for the whole financial year"/>
+                        <noteRef href="#note_anx01003101-1" marker="1"/>
+                     </p>
+                  </td>
+                  <td rowspan="3" header="true">
+                     <p>
+                        <t v="Reductions according to Article 32 of Regulation 1290/2005"/>
+                     </p>
+                  </td>
+                  <td rowspan="3" header="true">
+                     <p>
+                        <t v="Total including reductions and suspensions"/>
+                     </p>
+                  </td>
+                  <td rowspan="3" header="true">
+                     <p>
+                        <t v="Payments made to the Member State for the financial year"/>
+                     </p>
+                  </td>
+                  <td rowspan="3" header="true">
+                     <p>
+                        <t v="Amount to be recovered from (–) or paid to (+) the Member State"/>
+                        <noteRef href="#note_anx01003101-2" marker="1"/>
+                     </p>
+                  </td>
+                  <td rowspan="3" header="true">
+                     <p>
+                        <t v="Amount recovered from (–) or paid to (+) the Member State under Decision 2009/367/EC"/>
+                     </p>
+                  </td>
+                  <td rowspan="3" header="true">
+                     <p>
+                        <t v="Amount recovered from (–) or paid to (+) the Member State under Decision 2010/56/EU"/>
+                     </p>
+                  </td>
+                  <td rowspan="3" header="true">
+                     <p>
+                        <t v="Amount to be recovered from (–) or paid to (+) the Member State"/>
+                        <noteRef href="#note_anx01003101-2" marker="1"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="cleared"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="disjoined"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="= expenditure/assigned revenue declared in the annual declaration"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="= total of the expenditure/assigned revenue in the monthly declarations"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true"/>
+                  <td header="true"/>
+                  <td header="true">
+                     <p>
+                        <t v="a"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="b"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="c = a + b"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="d"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="e"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="f = c + d + e"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="g"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="h = f – g"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="i"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="i′"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="j = h – i – i′"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="IT"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="EUR"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4270684692,35"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,00"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4270684692,35"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="–1887157,65"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="–4363298,08"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4264434236,62"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4264132179,52"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="302057,10"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="256775,28"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,00"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="45281,82"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <table cols="8">
+               <tr header="true">
+                  <td rowspan="4" header="true">
+                     <p>
+                        <t v="MS"/>
+                     </p>
+                  </td>
+                  <td rowspan="4" header="true"/>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Expenditure"/>
+                        <noteRef href="#note_anx01003101-3" marker="1"/>
+                     </p>
+                  </td>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Assigned revenue"/>
+                        <noteRef href="#note_anx01003101-3" marker="1"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Sugar Fund"/>
+                     </p>
+                  </td>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Article 32 (= e)"/>
+                     </p>
+                  </td>
+                  <td rowspan="3" header="true">
+                     <p>
+                        <t v="Total (= h)"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Expenditure"/>
+                        <noteRef href="#note_anx01003101-4" marker="1"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Assigned revenue"/>
+                        <noteRef href="#note_anx01003101-4" marker="1"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="05 07 01 06"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="6701"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="05 02 16 02"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="6803"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="6702"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="k"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="l"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="m"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="n"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="o"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="p = k + l + m + n + o"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="IT"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="EUR"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="45281,82"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,00"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,00"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,00"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,00"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="45281,82"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </tableGroup>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="209"
+                 date="2005-08-11"
+                 page="1">
+               <t v="OJ L 209, 11.8.2005, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="111"
+                 date="2009-05-05"
+                 page="44">
+               <t v="OJ L 111, 5.5.2009, p. 44"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="32" date="2010-02-04" page="6">
+               <t v="OJ L 32, 4.2.2010, p. 6"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="171"
+                 date="2006-06-23"
+                 page="90">
+               <t v="OJ L 171, 23.6.2006, p. 90"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_anx01003101-1" marker="1" kind="table">
+         <p>
+            <t v="The reductions and suspensions are those taken into account in the payment system, to which are added in particular the corrections for the non respect of payment deadlines established in August, September and October 2008."/>
+         </p>
+      </note>
+      <note eId="note_anx01003101-2" marker="1" kind="table">
+         <p>
+            <t v="For the calculation of the amount to be recovered from or paid to the Member State the amount taken into account is, the total of the annual declaration for the expenditure cleared (column a) or, the total of the monthly declarations for the expenditure disjoined (column b)."/>
+         </p>
+         <p>
+            <t v="Applicable exchange rate: Article 7(2) of the Commission Regulation (EC) No 883/2006."/>
+         </p>
+      </note>
+      <note eId="note_anx01003101-3" marker="1" kind="table">
+         <p>
+            <t v="If the Assigned revenue part would be in advantage of Member State, it has to be declared under 05 07 01 06."/>
+         </p>
+      </note>
+      <note eId="note_anx01003101-4" marker="1" kind="table">
+         <p>
+            <t v="If the Assigned revenue part of the Sugar Fund, would be in the advantage of the Member State, it has to be declared under 05 02 16 02."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

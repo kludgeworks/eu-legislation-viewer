@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="22014A0401(01)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.53"
+           converter="1.0.0">
+   <source celex="22014A0401(01)">
+      <publication series="L" number="98" date="2014-04-01" page="3"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="&#xA;                "/>
+            <emphasis kind="uc">
+               <t v="Agreement"/>
+            </emphasis>
+            <t v="&#xA;            "/>
+         </p>
+         <p>
+            <t v="in the form of an exchange of letters between the European Union and the Central African Republic on the status in the Central African Republic of the European Union military operation in the Central African republic (EUFOR RCA)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body/>
+   <annexes>
+      <unit eId="let_1" kind="letter">
+         <num>
+            <t v="A."/>
+         </num>
+         <heading>
+            <t v="Letter from the European Union&#xA;                        &#xA;                        &#xA;                    "/>
+         </heading>
+         <p>
+            <t v="Brussels, "/>
+            <date asWritten="10 March 2014" date="2014-03-10"/>
+            <t v="&#xA;                "/>
+         </p>
+         <p>
+            <t v="H.E. Ms Catherine Samba-Panza"/>
+         </p>
+         <p>
+            <t v="Chef d'État de la transition"/>
+         </p>
+         <p>
+            <t v="Central African Republic"/>
+         </p>
+         <p>
+            <t v="Your Excellency,"/>
+         </p>
+         <p>
+            <t v="Following the adoption of United Nations Security Council Resolution 2134 (2014), the European Union will very soon deploy a military operation in the Central African Republic (EUFOR RCA) in order to help establish a secure environment in your country."/>
+         </p>
+         <p>
+            <t v="As you will recall, on "/>
+            <date asWritten="16 April 2008" date="2008-04-16"/>
+            <t v=" the Central African Republic entered into an Agreement on the status of the European Union military operation in Chad and the Central African Republic (EUFOR Tchad/RCA) in accordance with United Nations Security Council Resolution 1778 (2007)."/>
+         </p>
+         <p>
+            <t v="The terms of that Agreement, which ceased to be in force when the last EUFOR Tchad/RCA troops left, are nevertheless ideally suited to the needs of the European Union military operation which will be deployed in the Central African Republic."/>
+         </p>
+         <p>
+            <t v="I therefore suggest that all provisions of that Agreement (Articles 1 to 19) be made to apply to EUFOR RCA, on the understanding that:"/>
+         </p>
+         <list kind="dash">
+            <unit eId="let_1/idt_1" kind="indent">
+               <p>
+                  <t v="each mention of EUFOR in the above-mentioned articles will be considered to refer to EUFOR RCA;"/>
+               </p>
+            </unit>
+            <unit eId="let_1/idt_2" kind="indent">
+               <p>
+                  <t v="the means of transport referred to in Articles 1(3)(a), 3(2) and 4(3) will be considered to include the means of transport belonging to the national contingents making up EUFOR RCA, but also those hired or chartered by EUFOR RCA;"/>
+               </p>
+            </unit>
+            <unit eId="let_1/idt_3" kind="indent">
+               <p>
+                  <t v="the reference to United Nations Security Council Resolution 1778 (2007) of "/>
+                  <date asWritten="25 September 2007" date="2007-09-25"/>
+                  <t v=" in Article 1(3)(b) will be understood as a reference to United Nations Security Council Resolution 2134 (2014) of "/>
+                  <date asWritten="28 January 2014" date="2014-01-28"/>
+                  <t v="."/>
+               </p>
+            </unit>
+         </list>
+         <p>
+            <t v="I should be grateful if you would let me know whether you accept these suggestions. If you do accept, this letter, together with your reply, will constitute a legally-binding international agreement between the Central African Republic and the European Union on the status of EUFOR RCA, which will enter into force on the date on which your letter of reply is received."/>
+         </p>
+         <p>
+            <t v="Please accept, Madam, the assurance of my highest consideration."/>
+         </p>
+         <p>
+            <t v="&#xA;                    "/>
+            <emphasis kind="i">
+               <t v="For the European Union"/>
+            </emphasis>
+            <t v="&#xA;                "/>
+         </p>
+         <p>
+            <t v="C. "/>
+            <emphasis kind="uc">
+               <t v="Ashton"/>
+            </emphasis>
+            <t v="&#xA;                "/>
+         </p>
+         <figure src="L_2014098EN.01000302.tif" content="signature"/>
+      </unit>
+      <unit eId="let_2" kind="letter">
+         <num>
+            <t v="B."/>
+         </num>
+         <heading>
+            <t v="Letter from the Central African Republic&#xA;                        &#xA;                        &#xA;                    "/>
+         </heading>
+         <p>
+            <t v="Catherine Ashton"/>
+         </p>
+         <p>
+            <t v="High Representative of the Union for Foreign Affairs and Security Policy"/>
+         </p>
+         <p>
+            <t v="Madam the High Representative,"/>
+         </p>
+         <p>
+            <t v="Thank you for your letter of "/>
+            <date asWritten="10 March 2014" date="2014-03-10"/>
+            <t v=" 2014 regarding the deployment of a European Union military operation in the Central African Republic, which reads as follows:"/>
+         </p>
+         <quotedStructure eId="let_2/qst_1">
+            <p>
+               <t v="&#xA;                        "/>
+               <t v="‘"/>
+               <t v="Following the adoption of United Nations Security Council Resolution 2134 (2014), the European Union will very soon deploy an operation in the Central African Republic (EUFOR RCA) in order to help establish a secure environment in your country."/>
+            </p>
+            <p>
+               <t v="As you will recall, on "/>
+               <date asWritten="16 April 2008" date="2008-04-16"/>
+               <t v=" the Central African Republic entered into an Agreement on the status of the European Union military operation in Chad and the Central African Republic (EUFOR Tchad/RCA) in accordance with United Nations Security Council Resolution 1778 (2007)."/>
+            </p>
+            <p>
+               <t v="The terms of that Agreement, which ceased to be in force when the last EUFOR Tchad/RCA troops left, are nevertheless ideally suited to the needs of the European Union military operation which will be deployed in the Central African Republic."/>
+            </p>
+            <p>
+               <t v="I therefore suggest that all provisions of that Agreement (Articles 1 to 19) be made to apply to EUFOR RCA, on the understanding that:"/>
+            </p>
+            <list kind="dash">
+               <unit eId="let_2/qst_1/idt_1" kind="indent">
+                  <p>
+                     <t v="each mention of EUFOR in the above-mentioned articles will be considered to refer to EUFOR RCA;"/>
+                  </p>
+               </unit>
+               <unit eId="let_2/qst_1/idt_2" kind="indent">
+                  <p>
+                     <t v="the means of transport referred to in Articles 1(3)(a), 3(2) and 4(3) will be considered to include the means of transport belonging to the national contingents making up EUFOR RCA, but also those hired or chartered by EUFOR RCA;"/>
+                  </p>
+               </unit>
+               <unit eId="let_2/qst_1/idt_3" kind="indent">
+                  <p>
+                     <t v="the reference to United Nations Security Council Resolution 1778 (2007) of "/>
+                     <date asWritten="25 September 2007" date="2007-09-25"/>
+                     <t v=" in Article 1(3)(b) will be understood as a reference to United Nations Security Council Resolution 2134 (2014) of "/>
+                     <date asWritten="28 January 2014" date="2014-01-28"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="I should be grateful if you would let me know whether you accept these suggestions. If you do accept, this letter, together with your reply, will constitute a legally-binding international agreement between the Central African Republic and the European Union on the status of EUFOR RCA, which will enter into force on the date on which your letter of reply is received."/>
+               <t v="’"/>
+               <t v="."/>
+            </p>
+         </quotedStructure>
+         <p>
+            <t v="I am pleased to inform you that I accept the terms suggested in your letter."/>
+         </p>
+         <p>
+            <t v="Please accept, Madam, the assurance of my highest consideration."/>
+         </p>
+         <p>
+            <t v="&#xA;                    "/>
+            <emphasis kind="i">
+               <t v="For the Central African Republic"/>
+            </emphasis>
+            <t v="&#xA;                "/>
+         </p>
+         <p>
+            <t v="Catherine "/>
+            <emphasis kind="uc">
+               <t v="Samba-Panza"/>
+            </emphasis>
+            <t v="&#xA;                "/>
+         </p>
+         <figure src="L_2014098EN.01000401.tif" content="signature"/>
+      </unit>
+   </annexes>
+</legalText>
+

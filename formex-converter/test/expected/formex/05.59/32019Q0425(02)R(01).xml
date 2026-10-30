@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32019Q0425(02)R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="32019Q0425(02)R(01)">
+      <publication series="L" number="224" date="2019-08-28" page="12"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Rules of Procedure of the European Economic and Social Committee March 2019"/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="("/>
+               <ref kind="oj" series="L" number="110" date="2019-04-25">
+                  <t v="Official Journal of the European Union L 110 of 25 April 2019"/>
+               </ref>
+               <t v=")"/>
+            </emphasis>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 43, the publication of "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="Rules of Procedure of the European Economic and Social Committee March 2019"/>
+            </quote>
+            <t v=" is to be considered null and void."/>
+         </p>
+      </unit>
+   </body>
+</legalText>
+

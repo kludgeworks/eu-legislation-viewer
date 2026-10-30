@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32013R1051R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.55"
+           converter="1.0.0">
+   <source celex="32013R1051R(01)">
+      <publication series="L" number="191" date="2015-07-17" page="8"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Regulation (EU) No 1051/2013 of the European Parliament and of the Council of "/>
+            <date asWritten="22 October 2013" date="2013-10-22"/>
+            <t v=" amending Regulation (EC) No 562/2006 in order to provide for common rules on the temporary reintroduction of border control at internal borders in exceptional circumstances"/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="("/>
+               <ref kind="oj" series="L" number="295" date="2013-11-06">
+                  <t v="Official Journal of the European Union L 295 of 6 November 2013"/>
+               </ref>
+               <t v=")"/>
+            </emphasis>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 4, Article 1(1):"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <quotedStructure eId="cor_1/old/qst_1">
+               <list kind="arabic">
+                  <unit eId="cor_1/old/qst_1/pnt_1" kind="point">
+                     <num>
+                        <t v="‘"/>
+                        <t v="(1)"/>
+                     </num>
+                     <p>
+                        <t v="in Title II, the following Chapter is added:"/>
+                     </p>
+                     <unit eId="cor_1/old/qst_1/pnt_1/cpt_IVa" kind="division">
+                        <num>
+                           <emphasis kind="i">
+                              <t v="“CHAPTER IVa"/>
+                           </emphasis>
+                        </num>
+                        <subheading>
+                           <emphasis kind="b">
+                              <emphasis kind="i">
+                                 <t v="Specific measures in the case of serious deficiencies relating to external border control"/>
+                              </emphasis>
+                           </emphasis>
+                        </subheading>
+                        <unit eId="cor_1/old/qst_1/pnt_1/art_19a" kind="article">
+                           <num>
+                              <t v="Article 19a"/>
+                           </num>
+                           <heading>
+                              <t v="Measures at external borders and support by the Agency"/>
+                           </heading>
+                           <unit eId="cor_1/old/qst_1/pnt_1/art_19a/par_1" kind="paragraph">
+                              <num>
+                                 <t v="1."/>
+                              </num>
+                              <p>
+                                 <t v="(…)"/>
+                                 <t v="’"/>
+                                 <t v=","/>
+                              </p>
+                           </unit>
+                        </unit>
+                     </unit>
+                  </unit>
+               </list>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <list kind="arabic">
+                  <unit eId="cor_1/new/qst_1/pnt_1" kind="point">
+                     <num>
+                        <t v="‘"/>
+                        <t v="(1)"/>
+                     </num>
+                     <p>
+                        <t v="in Title II, the following Chapter is added:"/>
+                     </p>
+                     <unit eId="cor_1/new/qst_1/pnt_1/cpt_IVa" kind="division">
+                        <num>
+                           <emphasis kind="i">
+                              <t v="“CHAPTER IVa"/>
+                           </emphasis>
+                        </num>
+                        <subheading>
+                           <emphasis kind="b">
+                              <emphasis kind="i">
+                                 <t v="Specific measures in the case of serious deficiencies relating to external border control"/>
+                              </emphasis>
+                           </emphasis>
+                        </subheading>
+                        <unit eId="cor_1/new/qst_1/pnt_1/art_19b" kind="article">
+                           <num>
+                              <t v="Article 19b"/>
+                           </num>
+                           <heading>
+                              <t v="Measures at external borders and support by the Agency"/>
+                           </heading>
+                           <unit eId="cor_1/new/qst_1/pnt_1/art_19b/par_1" kind="paragraph">
+                              <num>
+                                 <t v="1."/>
+                              </num>
+                              <p>
+                                 <t v="(…)"/>
+                                 <t v="’"/>
+                                 <t v="."/>
+                              </p>
+                           </unit>
+                        </unit>
+                     </unit>
+                  </unit>
+               </list>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

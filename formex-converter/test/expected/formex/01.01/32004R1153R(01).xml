@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32004R1153R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="01.01"
+           converter="1.0.0">
+   <source celex="32004R1153R(01)">
+      <publication series="L" number="233" date="2004-07-02" page="20"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Commission Regulation (EC) No 1153/2004 of "/>
+            <date asWritten="23 June 2004" date="2004-06-23"/>
+            <t v=" fixing the "/>
+            <t v="A1"/>
+            <t v=" and "/>
+            <t v="B"/>
+            <t v=" export refunds for fruit and vegetables (tomatoes, oranges, table grapes, apples and peaches)"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="L" number="223" date="2004-06-24">
+               <t v="Official Journal of the European Union L 223 of 24 June 2004"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 8, footnote 2, destination "/>
+            <t v="F09"/>
+            <t v=", first indent: "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="Slovenia"/>
+            </quote>
+            <t v=" is deleted."/>
+         </p>
+      </unit>
+   </body>
+</legalText>
+

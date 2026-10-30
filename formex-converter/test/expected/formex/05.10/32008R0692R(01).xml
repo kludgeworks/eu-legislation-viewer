@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32008R0692R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.10"
+           converter="1.0.0">
+   <source celex="32008R0692R(01)">
+      <publication series="L" number="336" date="2010-12-21" page="68"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Commission Regulation (EC) No 692/2008 of "/>
+            <date asWritten="18 July 2008" date="2008-07-18"/>
+            <t v=" implementing and amending Regulation (EC) No 715/2007 of the European Parliament and of the Council on type approval of motor vehicles with respect to emissions from light passenger and commercial vehicles (Euro 5 and Euro 6) and on access to vehicle repair and maintenance information"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="L" number="199" date="2008-07-28">
+               <t v="Official Journal of the European Union L 199 of 28 July 2008"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 68, Annex III, in point 3.8:"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <quotedStructure eId="cor_1/old/qst_1">
+               <p>
+                  <t v="‘"/>
+                  <t v="For a fuel of composition CxHyOz the general formula is:"/>
+               </p>
+               <math>
+                  <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
+                     <m:mrow>
+                        <m:mi mathvariant="italic">X</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>100</m:mn>
+                        <m:mfrac>
+                           <m:mrow>
+                              <m:mi mathvariant="italic">x</m:mi>
+                           </m:mrow>
+                           <m:mrow>
+                              <m:mi mathvariant="italic">x</m:mi>
+                              <m:mo>+</m:mo>
+                              <m:mfrac>
+                                 <m:mrow>
+                                    <m:mi mathvariant="italic">y</m:mi>
+                                 </m:mrow>
+                                 <m:mrow>
+                                    <m:mn>2</m:mn>
+                                 </m:mrow>
+                              </m:mfrac>
+                              <m:mo>+</m:mo>
+                              <m:mn>3,76</m:mn>
+                              <m:mrow>
+                                 <m:mo fence="true">(</m:mo>
+                                 <m:mi mathvariant="italic">x</m:mi>
+                                 <m:mo>+</m:mo>
+                                 <m:mfrac>
+                                    <m:mrow>
+                                       <m:mi mathvariant="italic">y</m:mi>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mn>2</m:mn>
+                                    </m:mrow>
+                                 </m:mfrac>
+                                 <m:mo>–</m:mo>
+                                 <m:mfrac>
+                                    <m:mrow>
+                                       <m:mi mathvariant="italic">z</m:mi>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mn>2</m:mn>
+                                    </m:mrow>
+                                 </m:mfrac>
+                                 <m:mo fence="true">)</m:mo>
+                              </m:mrow>
+                           </m:mrow>
+                        </m:mfrac>
+                     </m:mrow>
+                  </m:math>
+               </math>
+               <p>
+                  <t v="’"/>
+               </p>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <p>
+                  <t v="‘"/>
+                  <t v="For a fuel of composition CxHyOz the general formula is:"/>
+               </p>
+               <math>
+                  <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
+                     <m:mrow>
+                        <m:mi mathvariant="italic">X</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>100</m:mn>
+                        <m:mfrac>
+                           <m:mrow>
+                              <m:mi mathvariant="italic">x</m:mi>
+                           </m:mrow>
+                           <m:mrow>
+                              <m:mi mathvariant="italic">x</m:mi>
+                              <m:mo>+</m:mo>
+                              <m:mfrac>
+                                 <m:mrow>
+                                    <m:mi mathvariant="italic">y</m:mi>
+                                 </m:mrow>
+                                 <m:mrow>
+                                    <m:mn>2</m:mn>
+                                 </m:mrow>
+                              </m:mfrac>
+                              <m:mo>+</m:mo>
+                              <m:mn>3,76</m:mn>
+                              <m:mrow>
+                                 <m:mo fence="true">(</m:mo>
+                                 <m:mi mathvariant="italic">x</m:mi>
+                                 <m:mo>+</m:mo>
+                                 <m:mfrac>
+                                    <m:mrow>
+                                       <m:mi mathvariant="italic">y</m:mi>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mn>4</m:mn>
+                                    </m:mrow>
+                                 </m:mfrac>
+                                 <m:mo>–</m:mo>
+                                 <m:mfrac>
+                                    <m:mrow>
+                                       <m:mi mathvariant="italic">z</m:mi>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mn>2</m:mn>
+                                    </m:mrow>
+                                 </m:mfrac>
+                                 <m:mo fence="true">)</m:mo>
+                              </m:mrow>
+                           </m:mrow>
+                        </m:mfrac>
+                     </m:mrow>
+                  </m:math>
+               </math>
+               <p>
+                  <t v="’"/>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32005R0830"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2005-06-08"
+           lang="en"
+           formexVersion="02.00"
+           converter="1.0.0">
+   <source celex="02005R0830-20050608">
+      <publication series="L" number="137" date="2005-05-31" page="24"/>
+   </source>
+   <lifecycle start="2005-06-08" sequence="000.001.0">
+      <eventRef type="corrigendum" act="32005R0830R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation (EC)"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="No 830/2005"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="30 May 2005" date="2005-05-30"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending, for the fifth time, Council Regulation (EC) No 1763/2004 imposing certain restrictive measures in support of effective implementation of the mandate of the International Criminal Tribunal for the former Yugoslavia (ICTY)"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 1763/2004 of "/>
+               <date asWritten="11 October 2004" date="2004-10-11"/>
+               <t v=" imposing certain restrictive measures in support of effective implementation of the mandate of the International Criminal Tribunal for the former Yugoslavia (ICTY)"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 10(a) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Annex I to Regulation (EC) No 1763/2004 lists the persons covered by the freezing of funds and economic resources under that Regulation."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The Commission is empowered to amend that Annex, taking into account Council Decisions implementing Council Common Position 2004/694/CFSP of "/>
+               <date asWritten="11 October 2004" date="2004-10-11"/>
+               <t v=" on further measures in support of the effective implementation of the mandate of the International Criminal Tribunal for the former Yugoslavia (ICTY)"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=". Council Decision 2005/…/CFSP"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=" of "/>
+               <date asWritten="6 June 2005" date="2005-06-06"/>
+               <t v=" implements that Common Position. Annex I to Regulation (EC) No 1763/2004 should, therefore, be amended accordingly,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Annex I to Regulation (EC) No 1763/2004 is hereby amended as set out in the Annex to this Regulation."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <provenance amendingAct="32005R0830R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001000"/>
+            <t v="This Regulation shall enter into force on "/>
+            <date asWritten="8 June 2005" date="2005-06-08"/>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <t v="The following persons shall be removed from Annex I to Regulation (EC) No 1763/2004:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="anx/pnt_1" kind="point">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Borovnica, Goran. Date of birth: "/>
+                  <date asWritten="15.8.1965" date="1965-08-15"/>
+                  <t v=". Place of birth: Kozarac, Municipality of Prijedor, Bosnia and Herzegovina. Nationality: Bosnia and Herzegovina."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_2" kind="point">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Pavkovic, Nebojsa. Date of birth: "/>
+                  <date asWritten="10.4.1946" date="1946-04-10"/>
+                  <t v=". Place of birth: Senjski Rudnik, Serbia and Montenegro. Nationality: Serbia and Montenegro."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_3" kind="point">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="Popovic, Vujadin. Date of birth: "/>
+                  <date asWritten="14.3.1957" date="1957-03-14"/>
+                  <t v=". Place of birth: Sekovici, Bosnia and Herzegovina. Nationality: Serbia and Montenegro."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="315"
+                 date="2004-10-14"
+                 page="14">
+               <t v="OJ L 315, 14.10.2004, p. 14"/>
+            </ref>
+            <t v=". Regulation as last amended by Commission Regulation (EC) No 607/2005 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="100"
+                 date="2005-04-20"
+                 page="17">
+               <t v="OJ L 100, 20.4.2005, p. 17"/>
+            </ref>
+            <t v=". Corrigendum published in "/>
+            <ref kind="oj"
+                 series="L"
+                 number="104"
+                 date="2005-04-23"
+                 page="46">
+               <t v="OJ L 104, 23.4.2005, p. 46"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="315"
+                 date="2004-10-14"
+                 page="52">
+               <t v="OJ L 315, 14.10.2004, p. 52"/>
+            </ref>
+            <t v=". Common position as last amended by Decision 2005/316/CFSP ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="100"
+                 date="2005-04-20"
+                 page="54">
+               <t v="OJ L 100, 20.4.2005, p. 54"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Not yet published In the Official Journal."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

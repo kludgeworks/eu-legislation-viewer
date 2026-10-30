@@ -1,0 +1,2090 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32015O0035"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2019-08-05"
+           lang="en"
+           formexVersion="05.56"
+           converter="1.0.0">
+   <source celex="02015O0035-20190805">
+      <publication series="L" number="14" date="2016-01-21" page="30"/>
+   </source>
+   <lifecycle start="2019-08-05" produced="2019-06-26" sequence="004.001.0">
+      <eventRef type="amendment" act="32016O0032" date="2016-11-02"/>
+      <eventRef type="amendment" act="32018O0004" date="2018-02-07"/>
+      <eventRef type="amendment" act="32019O0012" date="2019-05-10"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Guideline"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) 2016/65 "/>
+               <emphasis kind="uc">
+                  <t v="of the European Central Bank"/>
+               </emphasis>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="18 November 2015" date="2015-11-18"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the valuation haircuts applied in the implementation of the Eurosystem monetary policy framework (ECB/2015/35)"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="art_1" kind="article">
+         <provenance amendingAct="32016O0032"
+                     action="replaced"
+                     location="AR:1;PT:1"
+                     marker="O001001M001000"/>
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <heading>
+            <t v="Valuation haircuts applied to eligible marketable assets"/>
+         </heading>
+         <unit eId="art_1/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="In accordance with Title VI of Part Four of Guideline (EU) 2015/510 (ECB/2014/60), marketable assets shall be subject to valuation haircuts, as defined in point 97 of Article 2 of Guideline (EU) 2015/510 (ECB/2014/60), at the levels set forth in Tables 2 and 2a in the Annex to this Guideline."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="The valuation haircut for a specific asset depends on the following factors:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_1/par_2/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the haircut category to which the asset is allocated, as defined in Article 2;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/par_2/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="the residual maturity or the weighted average life of the asset, as defined in Article 3;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/par_2/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="the coupon structure of the asset; and"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/par_2/pnt_d" kind="point">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="the credit quality step to which the asset is allocated."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <heading>
+            <t v="Determination of haircut categories for marketable assets"/>
+         </heading>
+         <p>
+            <t v="Eligible marketable assets shall be allocated to one of the five haircut categories, based on the type of issuer and/or the type of asset, as reflected in Table 1 in the Annex to this Guideline:"/>
+         </p>
+         <list kind="alpha">
+            <unit eId="art_2/pnt_a" kind="point">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <p>
+                  <t v="debt instruments issued by central governments, ECB debt certificates and debt certificates issued by NCBs prior to the date of adoption of the euro in their respective Member State whose currency is the euro are included in haircut category I;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_b" kind="point">
+               <provenance amendingAct="32019O0012"
+                           action="replaced"
+                           location="AR:1;PT:1"
+                           marker="O004001M001000"/>
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <p>
+                  <t v="debt instruments issued by: (i) local and regional governments; (ii) entities which are credit institutions or non-credit institutions classified by the Eurosystem as agencies and which meet the quantitative criteria set out in Annex XIIa to Guideline (EU) 2015/510 (ECB/2014/60); (iii) multilateral development banks and international organisations; as well as UCITS compliant jumbo covered bonds, are included in haircut category II;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_c" kind="point">
+               <provenance amendingAct="32019O0012"
+                           action="replaced"
+                           location="AR:1;PT:2"
+                           marker="O004001M002000"/>
+               <num>
+                  <t v="(c)"/>
+               </num>
+               <p>
+                  <t v="UCITS compliant covered bonds other than UCITS compliant jumbo covered bonds; other covered bonds; and debt instruments issued by (i) non-financial corporations, (ii) corporations in the government sector, and (iii) agencies which are non-credit institutions that do not meet the quantitative criteria set out in Annex XIIa to Guideline (EU) 2015/510 (ECB/2014/60), are included in haircut category III;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_d" kind="point">
+               <provenance amendingAct="32019O0012"
+                           action="replaced"
+                           location="AR:1;PT:3"
+                           marker="O004001M003000"/>
+               <num>
+                  <t v="(d)"/>
+               </num>
+               <p>
+                  <t v="unsecured debt instruments issued by: (i) credit institutions; (ii) agencies which are credit institutions that do not meet the quantitative criteria set out in Annex XIIa to Guideline (EU) 2015/510 (ECB/2014/60); and (iii) financial corporations other than credit institutions, are included in haircut category category IV;"/>
+               </p>
+            </unit>
+            <unit eId="art_2/pnt_e" kind="point">
+               <num>
+                  <t v="(e)"/>
+               </num>
+               <p>
+                  <t v="asset-backed securities are included in haircut category V, regardless of the classification of the issuer."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <provenance amendingAct="32016O0032"
+                     action="replaced"
+                     location="AR:1;PT:3"
+                     marker="O001001M003000"/>
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <heading>
+            <t v="Valuation haircuts for marketable assets"/>
+         </heading>
+         <unit eId="art_3/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="The valuation haircuts for marketable assets allocated to haircut categories I to IV shall be determined based on:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3/par_1/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the allocation of the specific asset to credit quality step 1, 2 or 3;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_1/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="the residual maturity of the asset as detailed in paragraph 2;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_1/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="the coupon structure of the asset as detailed in paragraph 2."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_3/par_2" kind="paragraph">
+            <provenance amendingAct="32018O0004"
+                        action="replaced"
+                        location="AR:1;PT:1;PT:a"
+                        marker="O002001M001000"/>
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="For marketable assets allocated to haircut categories I to IV, the applicable valuation haircut shall depend on the residual maturity and coupon structure of the asset (fixed, zero, floating) as determined based on Table 2 in the Annex to this Guideline. The relevant maturity for determining the valuation haircut to be applied shall be the residual maturity of the asset, irrespective of the type of coupon structure. The following provisions shall apply with respect to the coupon structure:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3/par_2/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="floating coupons with a resetting period longer than 1 year shall be treated as fixed rate coupons;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_2/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="floating coupons that have a euro area inflation index as a reference rate shall be treated as fixed rate coupons;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_2/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="floating coupons with a floor that does not equal zero and/or floating coupons with a ceiling shall be treated as fixed rate coupons;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_2/pnt_d" kind="point">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="the valuation haircut applied to assets that have more than one type of coupon structure shall solely depend on the coupon structure in place during the remaining life of the asset and shall equal the highest haircut applicable to a marketable asset with the same residual maturity and credit quality step. Any type of coupon structure in place during the remaining life of the asset may be considered for this purpose."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_3/par_2a" kind="paragraph">
+            <provenance amendingAct="32018O0004"
+                        action="inserted"
+                        location="AR:1;PT:1;PT:b"
+                        marker="O002001M002000"/>
+            <num>
+               <t v="2a."/>
+            </num>
+            <p>
+               <t v="The residual maturity for own-use covered bonds shall be defined as the maximum legal maturity, taking into account any extension rights for principal repayments contained in their terms and conditions. For the purposes of this paragraph, "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="own-use"/>
+               </quote>
+               <t v=" shall mean the submission or use by a counterparty of covered bonds that are issued or guaranteed by the counterparty itself or by any other entity with which that counterparty has close links as determined in accordance with Article 138 of Guideline (EU) 2015/510 (ECB/2014/60)."/>
+            </p>
+         </unit>
+         <unit eId="art_3/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="For marketable assets allocated to haircut category V, regardless of their coupon structure, the valuation haircuts shall be determined based on the weighted average life of the asset as detailed in paragraphs 4 and 5. The valuation haircuts applicable to marketable assets in category V are laid down in Table 2a in the Annex to this Guideline."/>
+            </p>
+         </unit>
+         <unit eId="art_3/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="The weighted average life of the senior tranche of an asset-backed security shall be estimated as the expected weighted average time remaining until repayment has been made for that tranche. For retained mobilised asset-backed securities, the calculation of the weighted average life shall assume that issuer call options will not be exercised."/>
+            </p>
+         </unit>
+         <unit eId="art_3/par_5" kind="paragraph">
+            <num>
+               <t v="5."/>
+            </num>
+            <p>
+               <t v="For the purposes of paragraph 4, "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="retained mobilised asset-backed securities"/>
+               </quote>
+               <t v=" shall mean asset-backed securities used in a percentage greater than 75 % of the outstanding nominal amount by a counterparty that originated the asset-backed security or by entities closely linked to the originator. Such close links shall be determined in accordance with Article 138 of Guideline (EU) 2015/510 (ECB/2014/60)."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <heading>
+            <t v="Additional valuation haircuts applied to specific types of marketable assets"/>
+         </heading>
+         <p>
+            <t v="In addition to the valuation haircuts laid down in Article 3 of this Guideline, the following additional valuation haircuts shall apply for specific types of marketable assets:"/>
+         </p>
+         <list kind="alpha">
+            <unit eId="art_4/pnt_a" kind="point">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <p>
+                  <t v="asset-backed securities, covered bonds and unsecured debt instruments issued by credit institutions that are theoretically valued in accordance with the rules contained in Article 134 of Guideline (EU) 2015/510 (ECB/2014/60) shall be subject to an additional valuation haircut in the form of a valuation markdown of 5 %;"/>
+               </p>
+            </unit>
+            <unit eId="art_4/pnt_b" kind="point">
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <p>
+                  <t v="own-use covered bonds shall be subject to an additional valuation haircut of (i) 8 % applied to the value of the debt instruments allocated to credit quality steps 1 and 2, and (ii) 12 % applied to the value of the debt instruments allocated to credit quality step 3;"/>
+               </p>
+            </unit>
+            <unit eId="art_4/pnt_c" kind="point">
+               <provenance amendingAct="32018O0004"
+                           action="replaced"
+                           location="AR:1;PT:2"
+                           marker="O002001M003000"/>
+               <num>
+                  <t v="(c)"/>
+               </num>
+               <p>
+                  <t v="for the purposes of paragraph (b), "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="own-use"/>
+                  </quote>
+                  <t v=" shall have the same meaning as defined in Article 3(2a);"/>
+               </p>
+            </unit>
+            <unit eId="art_4/pnt_d" kind="point">
+               <num>
+                  <t v="(d)"/>
+               </num>
+               <p>
+                  <t v="if the additional valuation haircut referred to in paragraph (b) cannot be applied with respect to a collateral management system of an NCB, triparty agent, or TARGET2-Securities for auto-collateralisation, the additional valuation haircut shall be applied in such systems or platform to the entire issuance value of the covered bonds that can be own used."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_5" kind="article">
+         <num>
+            <t v="Article 5"/>
+         </num>
+         <heading>
+            <t v="Valuation haircuts applied to eligible non-marketable assets"/>
+         </heading>
+         <unit eId="art_5/par_1" kind="paragraph">
+            <provenance amendingAct="32019O0012"
+                        action="replaced"
+                        location="AR:1;PT:4;PT:a"
+                        marker="O004001M004000"/>
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="Individual credit claims shall be subject to specific valuation haircuts determined according to the residual maturity, the credit quality step and the interest rate structure as laid down in Table 3 in the Annex to this Guideline."/>
+            </p>
+         </unit>
+         <unit eId="art_5/par_2" kind="paragraph">
+            <provenance amendingAct="32019O0012"
+                        action="replaced"
+                        location="AR:1;PT:4;PT:b"
+                        marker="O004001M005000"/>
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="The following provisions shall apply with respect to the interest rate structure of credit claims:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_5/par_2/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="zero coupon"/>
+                     </quote>
+                     <t v=" credit claims shall be treated as fixed rate credit claims;"/>
+                  </p>
+               </unit>
+               <unit eId="art_5/par_2/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="floating rate credit claims with a resetting period longer than one year shall be treated as fixed rate credit claims;"/>
+                  </p>
+               </unit>
+               <unit eId="art_5/par_2/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="floating rate credit claims with a ceiling shall be treated as fixed rate credit claims;"/>
+                  </p>
+               </unit>
+               <unit eId="art_5/par_2/pnt_d" kind="point">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="floating rate credit claims with a resetting period of one year or less and with a floor, but without a ceiling, shall be treated as floating rate credit claims;"/>
+                  </p>
+               </unit>
+               <unit eId="art_5/par_2/pnt_e" kind="point">
+                  <num>
+                     <t v="(e)"/>
+                  </num>
+                  <p>
+                     <t v="the valuation haircut applied to a credit claim with more than one type of interest payment shall depend only on the interest payments during the remaining life of the credit claim. If there is more than one type of interest payment during the remaining life of the credit claim, the remaining interest payments shall be treated as fixed-rate payments, with the relevant maturity for the haircut being the residual maturity of the credit claim."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <deleted>
+            <provenance amendingAct="32019O0012"
+                        action="deleted"
+                        location="AR:1;PT:4;PT:c"
+                        marker="O004001M006000"/>
+            <unit eId="art_5/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="The valuation haircut applied to a credit claim with more than one type of interest payment shall depend only on the interest payments during the remaining life of the credit claim. If there is more than one type of interest payment during the remaining life of the credit claim, the remaining interest payments shall be treated as fixed-rate payments, with the relevant maturity for the haircut being the residual maturity of the credit claim."/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32019O0012"
+                        action="deleted"
+                        location="AR:1;PT:4;PT:d"
+                        marker="O004001M007000"/>
+            <unit eId="art_5/par_4" kind="paragraph">
+               <num>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="For zero coupon credit claims the corresponding fixed interest credit claim valuation haircut shall apply."/>
+               </p>
+            </unit>
+         </deleted>
+         <unit eId="art_5/par_5" kind="paragraph">
+            <provenance amendingAct="32018O0004"
+                        action="replaced"
+                        location="AR:1;PT:3;PT:d"
+                        marker="O002001M006000"/>
+            <num>
+               <t v="5."/>
+            </num>
+            <p>
+               <t v="Non-marketable retail mortgage-backed debt instruments shall be subject to a valuation haircut of 31,5 %."/>
+            </p>
+         </unit>
+         <unit eId="art_5/par_6" kind="paragraph">
+            <num>
+               <t v="6."/>
+            </num>
+            <p>
+               <t v="Fixed-term deposits shall not be subject to valuation haircuts."/>
+            </p>
+         </unit>
+         <unit eId="art_5/par_7" kind="paragraph">
+            <provenance amendingAct="32016O0032"
+                        action="replaced"
+                        location="AR:1;PT:5"
+                        marker="O001001M005000"/>
+            <num>
+               <t v="7."/>
+            </num>
+            <p>
+               <t v="Each underlying credit claim included in the cover pool of a non-marketable debt instrument backed by eligible credit claims (hereinafter "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="DECC"/>
+               </quote>
+               <t v=") shall be subject to a valuation haircut applied at an individual level following the rules set out in "/>
+               <changed amendingAct="32019O0012"
+                        action="replaced"
+                        location="AR:1;PT:4;PT:e"
+                        marker="O004001M008000">
+                  <t v="paragraphs 1 to 2"/>
+               </changed>
+               <t v=". The aggregate value of the underlying credit claims included in the cover pool after the application of valuation haircuts shall, at all times, remain equal to or above the value of the principal amount of the DECC that is outstanding. If the aggregate value falls below the threshold referred to in the previous sentence, the DECC shall be deemed ineligible."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_6" kind="article">
+         <num>
+            <t v="Article 6"/>
+         </num>
+         <heading>
+            <t v="Taking effect and implementation"/>
+         </heading>
+         <unit eId="art_6/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="This Guideline shall take effect on the day of its notification to the national central banks of the Member States whose currency is the euro."/>
+            </p>
+         </unit>
+         <unit eId="art_6/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="The national central banks of the Member States whose currency is the euro shall take the necessary measures to comply with this Guideline and apply them from "/>
+               <date asWritten="25 January 2016" date="2016-01-25"/>
+               <t v=".They shall notify the ECB of the texts and means relating to those measures by "/>
+               <date asWritten="5 January 2016" date="2016-01-05"/>
+               <t v=" at the latest."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_7" kind="article">
+         <num>
+            <t v="Article 7"/>
+         </num>
+         <heading>
+            <t v="Addressees"/>
+         </heading>
+         <p>
+            <t v="This Guideline is addressed to the national central banks of the Member States whose currency is the euro."/>
+         </p>
+      </unit>
+   </body>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <provenance amendingAct="32016O0032"
+                     action="replaced"
+                     location="AR:1;PT:6 .AND. AX:0"
+                     marker="O001001M006000"/>
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <table cols="5">
+            <provenance amendingAct="32019O0012"
+                        action="replaced"
+                        location="AR:1;PT:5 .AND. AX:0;PT:1"
+                        marker="O004001M009000"/>
+            <caption>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Table 1"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Haircut categories for eligible marketable assets based on the type of issuer and/or type of asset"/>
+                  </emphasis>
+               </p>
+            </caption>
+            <tr header="true">
+               <td header="true">
+                  <p>
+                     <t v="Category I"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Category II"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Category III"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Category IV"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Category V"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="debt instruments issued by central governments"/>
+                  </p>
+                  <p>
+                     <t v="ECB debt certificates"/>
+                  </p>
+                  <p>
+                     <t v="debt certificates issued by national central banks (NCBs) prior to the date of adoption of the euro in their respective Member State"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="debt instruments issued by local and regional governments"/>
+                  </p>
+                  <p>
+                     <t v="debt instruments issued by entities (credit institutions or non-credit institutions) classified by the Eurosystem as agencies and which meet the quantitative criteria set out in Annex XIIa to Guideline (EU) 2015/510 (ECB/2014/60)"/>
+                  </p>
+                  <p>
+                     <t v="debt instruments issued by multilateral development banks and international organisations"/>
+                  </p>
+                  <p>
+                     <t v="UCITS compliant jumbo covered bonds"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="UCITS compliant covered bonds other than UCITS compliant jumbo covered bonds"/>
+                  </p>
+                  <p>
+                     <t v="other covered bonds"/>
+                  </p>
+                  <p>
+                     <t v="debt instruments issued by non-financial corporations, corporations in the government sector and agencies which are non-credit institutions that do not meet the quantitative criteria set out in Annex XIIa to Guideline (EU) 2015/510 (ECB/2014/60)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="unsecured debt instruments issued by credit institutions and agencies which are credit institutions that do not meet the quantitative criteria set out in Annex XIIa to Guideline (EU) 2015/510 (ECB/2014/60)"/>
+                  </p>
+                  <p>
+                     <t v="unsecured debt instruments issued by financial corporations other than credit institutions"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="asset-backed securities"/>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <tableGroup>
+            <provenance amendingAct="32019O0012"
+                        action="replaced"
+                        location="AR:1;PT:5 .AND. AX:0;PT:2"
+                        marker="O004001M010000"/>
+            <caption>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Table 2"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Valuation haircut levels applied to eligible marketable assets in haircut categories I to IV"/>
+                  </emphasis>
+               </p>
+            </caption>
+            <table cols="14">
+               <tr header="true">
+                  <td colspan="2" header="true"/>
+                  <td colspan="12" header="true">
+                     <p>
+                        <t v="Haircut categories"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Credit quality"/>
+                     </p>
+                  </td>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Residual maturity (years) (*)"/>
+                     </p>
+                  </td>
+                  <td colspan="3" header="true">
+                     <p>
+                        <t v="Category I"/>
+                     </p>
+                  </td>
+                  <td colspan="3" header="true">
+                     <p>
+                        <t v="Category II"/>
+                     </p>
+                  </td>
+                  <td colspan="3" header="true">
+                     <p>
+                        <t v="Category III"/>
+                     </p>
+                  </td>
+                  <td colspan="3" header="true">
+                     <p>
+                        <t v="Category IV"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="fixed coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="zero coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="floating coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="fixed coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="zero coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="floating coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="fixed coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="zero coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="floating coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="fixed coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="zero coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="floating coupon"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="6">
+                     <p>
+                        <t v="Steps 1 and 2"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="[0-1)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,5"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="[1-3)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="10,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="10,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,5"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="[3-5)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,5"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="[5-7)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="14,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="15,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="10,0"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="[7-10)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="16,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="18,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,0"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="[10,∞)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="5,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="10,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="9,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="20,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="25,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="14,5"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <table cols="14">
+               <tr header="true">
+                  <td colspan="2" header="true"/>
+                  <td colspan="12" header="true">
+                     <p>
+                        <t v="Haircut categories"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Credit quality"/>
+                     </p>
+                  </td>
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Residual maturity (years)"/>
+                        <noteRef href="#note_1" marker="1"/>
+                     </p>
+                  </td>
+                  <td colspan="3" header="true">
+                     <p>
+                        <t v="Category I"/>
+                     </p>
+                  </td>
+                  <td colspan="3" header="true">
+                     <p>
+                        <t v="Category II"/>
+                     </p>
+                  </td>
+                  <td colspan="3" header="true">
+                     <p>
+                        <t v="Category III"/>
+                     </p>
+                  </td>
+                  <td colspan="3" header="true">
+                     <p>
+                        <t v="Category IV"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="fixed coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="zero coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="floating coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="fixed coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="zero coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="floating coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="fixed coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="zero coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="floating coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="fixed coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="zero coupon"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="floating coupon"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="6">
+                     <p>
+                        <t v="Step 3"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="[0-1)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,0"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="[1-3)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="9,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="12,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="15,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="22,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="25,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,0"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="[3-5)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="9,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="10,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="18,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="16,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="22,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="28,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="32,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,0"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="[5-7)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="10,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="11,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="7,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="14,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="20,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="9,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="18,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="26,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="12,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="30,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="35,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="22,5"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="[7-10)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="11,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="9,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="16,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="24,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="19,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="28,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="16,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="31,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="37,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="28,0"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="[10,∞)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="13,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="16,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="10,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="19,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="29,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="14,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="19,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="30,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="18,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="31,5"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="38,0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="30,5"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </tableGroup>
+         <table cols="3">
+            <caption>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Table 2a"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Valuation haircut levels applied to eligible marketable assets in haircut category V"/>
+                  </emphasis>
+               </p>
+            </caption>
+            <tr header="true">
+               <td header="true"/>
+               <td header="true"/>
+               <td header="true">
+                  <p>
+                     <t v="Category V"/>
+                  </p>
+               </td>
+            </tr>
+            <tr header="true">
+               <td header="true">
+                  <p>
+                     <t v="Credit quality"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Weighted Average Life (WAL)"/>
+                     <noteRef href="#note_2" marker="*"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Valuation haircut"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td rowspan="6">
+                  <p>
+                     <t v="Steps 1 and 2 (AAA to A-)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="[0-1)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="4,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[1-3)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="4,5"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[3-5)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="5,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[5-7)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="9,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[7-10)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="13,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[10,∞)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="20,0"/>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table cols="4">
+            <provenance amendingAct="32019O0012"
+                        action="replaced"
+                        location="AR:1;PT:5 .AND. AX:0;PT:3"
+                        marker="O004001M011000"/>
+            <caption>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Table 3"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Valuation haircut levels applied to eligible credit claims with fixed or floating interest payments"/>
+                  </emphasis>
+               </p>
+            </caption>
+            <tr header="true">
+               <td header="true">
+                  <p>
+                     <t v="Credit quality"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Residual maturity (years)"/>
+                     <noteRef href="#note_3" marker="*"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Fixed interest payment"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Floating interest payment"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td rowspan="6">
+                  <p>
+                     <t v="Steps 1 and 2 (AAA to A-)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="[0-1)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="12,0"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="12,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[1-3)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="16,0"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="12,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[3-5)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="21,0"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="12,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[5-7)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="27,0"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="16,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[7-10)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="35,0"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="21,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[10, ∞)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="45,0"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="27,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td rowspan="6">
+                  <p>
+                     <t v="Step 3 (BBB+ to BBB-)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="[0-1)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="19,0"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="19,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[1-3)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="33,5"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="19,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[3-5)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="45,0"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="19,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[5-7)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="50,5"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="33,5"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[7-10)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="56,5"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="45,0"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="[10, ∞)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="63,0"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="50,5"/>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="table">
+         <p>
+            <t v="i.e. [0-1) residual maturity less than one year, [1-3) residual maturity equal to or greater than one year and less than three years, etc."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="*" kind="table">
+         <p>
+            <t v="i.e. [0-1) WAL less than one year, [1-3) WAL equal to or greater than one year and less than three years, etc."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="*" kind="table">
+         <p>
+            <t v="i.e. [0-1) residual maturity less than one year, [1-3) residual maturity equal to or greater than one year and less than three years, etc."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

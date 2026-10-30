@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="22006X0324(01)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="03.00"
+           converter="1.0.0">
+   <source celex="22006X0324(01)">
+      <publication series="L" number="86" date="2006-03-24" page="19"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Agreement between the European Community and the Government of Canada on the processing of Advance Passenger Information and Passenger Name Record Data"/>
+            <noteRef href="#note_1" marker="1"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <p>
+         <t v="The procedures necessary for the entry into force of the Agreement between the European Community and the Government of Canada on the processing of Advance Passenger Information and Passenger Name Record Data, signed in Luxembourg on "/>
+         <date asWritten="3 October 2005" date="2005-10-03"/>
+         <t v=", have been completed on "/>
+         <date asWritten="22 March 2006" date="2006-03-22"/>
+         <t v=". According to Art. 9 of the Agreement, it entered into force on that same day."/>
+      </p>
+   </body>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="82"
+                 date="2006-03-21"
+                 page="15">
+               <t v="OJ L 82, 21.3.2006, p. 15"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

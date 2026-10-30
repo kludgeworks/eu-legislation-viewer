@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="42009D0532"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.00"
+           converter="1.0.0">
+   <source celex="42009D0532">
+      <publication series="L" number="179" date="2009-07-10" page="61"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Decision, meeting in the composition of Heads of State or Government"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="9 July 2009" date="2009-07-09"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="nominating the person it intends to appoint as President of the Commission for the period 2009-2014"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(2009/532/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION, MEETING IN THE COMPOSITION OF HEADS OF STATE OR GOVERNMENT,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community, and in particular Article 213(1), second and third subparagraphs, and Article 214(2), first subparagraph thereof, as well as to the Protocol on the enlargement of the European Union, and in particular Article 4(3) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS DECIDED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Mr José Manuel DURÃO BARROSO is hereby nominated as the person the Council intends to appoint as President of the Commission for the period from "/>
+            <date asWritten="1 November 2009" date="2009-11-01"/>
+            <t v=" to "/>
+            <date asWritten="31 October 2014" date="2014-10-31"/>
+            <t v="."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Decision shall be forwarded to the European Parliament."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Decision shall be published in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="9 July 2009" date="2009-07-09"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Council"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="F. "/>
+               <emphasis kind="uc">
+                  <t v="Reinfeldt"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+</legalText>
+

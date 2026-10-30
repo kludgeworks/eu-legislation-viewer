@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="22007D0050R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="04.00"
+           converter="1.0.0">
+   <source celex="22007D0050R(01)">
+      <publication series="L" number="328" date="2007-12-13" page="50"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to the Decision of the EEA Joint Committee No 50/2007 of "/>
+            <date asWritten="8 June 2007" date="2007-06-08"/>
+            <t v=" amending Annex IX (Financial services) to the EEA Agreement"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="L" number="266" date="2007-10-11">
+               <t v="Official Journal of the European Union L 266 of 11 October 2007"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 8, in the first recital of Decision of the EEA Joint Committee No 50/2007, the text of the footnote 1 shall become: "/>
+            <quote startQuote="‘" endQuote="’">
+               <ref kind="oj"
+                    series="L"
+                    number="209"
+                    date="2007-08-09"
+                    page="38">
+                  <t v="OJ L 209, 9.8.2007, p. 38"/>
+               </ref>
+               <t v="."/>
+            </quote>
+         </p>
+      </unit>
+   </body>
+</legalText>
+

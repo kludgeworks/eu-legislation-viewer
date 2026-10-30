@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32026R0758"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="06.02.3"
+           converter="1.0.0">
+   <source celex="32026R0758">
+      <publication series="L" date="2026-04-07" page="1"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Implementing Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) 2026/758"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="1 April 2026" date="2026-04-01"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Implementing Regulation (EU) 2021/17 as regards the inclusion of a variation amending the contact details of the distributor in the list of variations not requiring assessment"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Regulation (EU) 2019/6 of the European Parliament and of the Council of "/>
+               <date asWritten="11 December 2018" date="2018-12-11"/>
+               <t v=" on veterinary medicinal products and repealing Directive 2001/82/EC"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 60(1) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Commission Implementing Regulation (EU) 2021/17"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" establishes a list of variations not requiring assessment in accordance with Regulation (EU) 2019/6."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Based upon experience gained, the Coordination Group on Veterinary Medicinal Products advised the Commission to amend one of the entries in the Annex to Regulation (EU) 2021/17 in order to include in the list of variations not requiring assessment a variation amending the contact details of the distributor(s)."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The Commission agrees that this type of variation does not require an assessment, as such change is of an administrative nature and does not require a scientific assessment."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="Implementing Regulation (EU) 2021/17 should therefore be amended accordingly."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Standing Committee on Veterinary Medicinal Products,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The Annex to Implementing Regulation (EU) 2021/17 is amended in accordance with the Annex to this Regulation."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/unp_1" kind="paragraph">
+            <p>
+               <t v="This Regulation shall enter into force on the twentieth day following that of its publication in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_2/unp_2" kind="paragraph">
+            <p>
+               <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="1 April 2026" date="2026-04-01"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="Ursula "/>
+               <emphasis kind="uc">
+                  <t v="von der Leyen"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <t v="In the Annex to Implementing Regulation (EU) 2021/17, in part C, point (a) of entry 10 "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="Changes to the labelling or the package leaflet which shall not be connected with the SPC:"/>
+            </quote>
+            <t v=" is replaced by the following:"/>
+         </p>
+         <quotedStructure eId="anx/qst_1">
+            <table cols="4">
+               <tr>
+                  <td>
+                     <p>
+                        <t v="‘"/>
+                        <t v="a)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <list kind="dash">
+                        <unit eId="anx/qst_1/tbl_1/tr_1/td_2/idt_1" kind="indent">
+                           <p>
+                              <t v="administrative information concerning the holder’s representative or the distributor(s)"/>
+                              <noteRef href="#note_anx000201-1" marker="*"/>
+                           </p>
+                        </unit>
+                     </list>
+                  </td>
+                  <td/>
+                  <td/>
+               </tr>
+            </table>
+         </quotedStructure>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="4" date="2019-01-07" page="43">
+               <t v="OJ L 4, 7.1.2019, p. 43"/>
+            </ref>
+            <t v=", ELI: "/>
+            <ref kind="uri" href="http://data.europa.eu/eli/reg/2019/6/oj">
+               <t v="http://data.europa.eu/eli/reg/2019/6/oj"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Commission Implementing Regulation (EU) 2021/17 of "/>
+            <date asWritten="8 January 2021" date="2021-01-08"/>
+            <t v=" establishing a list of variations not requiring assessment in accordance with Regulation (EU) 2019/6 of the European Parliament and of the Council ("/>
+            <ref kind="oj" series="L" number="7" date="2021-01-11" page="22">
+               <t v="OJ L 7, 11.1.2021, p. 22"/>
+            </ref>
+            <t v=", ELI: "/>
+            <ref kind="uri" href="http://data.europa.eu/eli/reg_impl/2021/17/oj">
+               <t v="http://data.europa.eu/eli/reg_impl/2021/17/oj"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_anx000201-1" marker="*" kind="table">
+         <p>
+            <t v="The reference to a change in the administrative information of the distributor(s) applies only in those cases where the competent authority has allowed, in accordance with Regulation (EU) 2019/6, the inclusion of the information on the distributor(s)."/>
+            <t v="’"/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

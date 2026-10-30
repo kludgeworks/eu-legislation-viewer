@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31998R2090"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2004-09-01"
+           lang="en"
+           formexVersion="05.22"
+           converter="1.0.0">
+   <source celex="01998R2090-20040901">
+      <publication series="L" number="266" date="1998-10-01" page="27"/>
+   </source>
+   <lifecycle start="2004-09-01" produced="2012-10-12" sequence="002.001.0">
+      <eventRef type="amendment" act="32002R0839" date="2002-05-21"/>
+      <eventRef type="amendment" act="32004R0026" date="2003-12-30"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <deleted amendingAct="32004R0026"
+                        action="deleted"
+                        location="AR:12"
+                        marker="O002001M001000">
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </deleted>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <deleted amendingAct="32004R0026"
+                        action="deleted"
+                        location="AR:12"
+                        marker="O002001M001000">
+                  <t v=" (EC) No 2090/98"/>
+               </deleted>
+            </docNumber>
+         </p>
+         <p>
+            <deleted amendingAct="32004R0026"
+                     action="deleted"
+                     location="AR:12"
+                     marker="O002001M001000">
+               <t v="of 30 September 1998"/>
+            </deleted>
+         </p>
+         <p>
+            <docPurpose>
+               <deleted amendingAct="32004R0026"
+                        action="deleted"
+                        location="AR:12"
+                        marker="O002001M001000">
+                  <t v="concerning the fishing vessel register of the Community"/>
+               </deleted>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <deleted>
+            <provenance amendingAct="32004R0026"
+                        action="deleted"
+                        location="AR:12"
+                        marker="O002001M001000"/>
+            <p>
+               <t v="XXX"/>
+            </p>
+         </deleted>
+      </formula>
+      <deleted>
+         <provenance amendingAct="32004R0026"
+                     action="deleted"
+                     location="AR:12"
+                     marker="O002001M001000"/>
+         <p>
+            <t v="This act has been trimmed due to parser errors since it has been repealed."/>
+         </p>
+      </deleted>
+      <formula name="enactingFormula">
+         <deleted>
+            <provenance amendingAct="32004R0026"
+                        action="deleted"
+                        location="AR:12"
+                        marker="O002001M001000"/>
+            <p>
+               <t v="XXX"/>
+            </p>
+         </deleted>
+      </formula>
+   </preamble>
+   <body>
+      <deleted>
+         <provenance amendingAct="32004R0026"
+                     action="deleted"
+                     location="AR:12"
+                     marker="O002001M001000"/>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <heading>
+               <t v="XXXX"/>
+            </heading>
+            <unit eId="art_1/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="XXXX"/>
+               </p>
+            </unit>
+         </unit>
+      </deleted>
+   </body>
+</legalText>
+

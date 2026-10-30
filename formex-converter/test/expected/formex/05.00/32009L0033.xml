@@ -1,0 +1,1523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32009L0033"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.00"
+           converter="1.0.0">
+   <source celex="32009L0033">
+      <publication series="L" number="120" date="2009-05-15" page="5"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Directive"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="2009/33/EC "/>
+               <emphasis kind="uc">
+                  <t v="of the European Parliament and of the Council"/>
+               </emphasis>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="23 April 2009" date="2009-04-23"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the promotion of clean and energy-efficient road transport vehicles"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN PARLIAMENT AND THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community, and in particular Article 175(1) thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the proposal from the Commission,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to the opinion of the European Economic and Social Committee"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_4" kind="citation">
+            <p>
+               <t v="Having regard to the opinion of the Committee of the Regions"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_5" kind="citation">
+            <p>
+               <t v="Acting in accordance with the procedure laid down in Article 251 of the Treaty"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=","/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Natural resources, the pursuit of prudent and rational utilisation of which Article 174(1) of the Treaty requires, include oil, which is the principal energy source in the European Union but is also a major source of pollutant emissions."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The Commission Communication of "/>
+               <date asWritten="15 May 2001" date="2001-05-15"/>
+               <t v=" entitled "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="A Sustainable Europe for a Better World: A European Union Strategy for Sustainable Development"/>
+               </quote>
+               <t v=", presented to the Gothenburg European Council of "/>
+               <date asWritten="15" date="2001-06-15"/>
+               <t v=" and "/>
+               <date asWritten="16 June 2001" date="2001-06-16"/>
+               <t v=", identified greenhouse gas emissions and pollution caused by transport among the main obstacles to sustainable development."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Decision No 1600/2002/EC of the European Parliament and of the Council of "/>
+               <date asWritten="22 July 2002" date="2002-07-22"/>
+               <t v=" laying down the Sixth Community Environment Action Programme"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v=" acknowledged the need for specific measures to enhance energy efficiency and energy saving and for the integration of climate change objectives into transport and energy policies as well as the need for specific measures in the transport sector to address energy use and greenhouse gas emissions."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The Commission Communication of "/>
+               <date asWritten="10 January 2007" date="2007-01-10"/>
+               <t v=" entitled "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="An energy policy for Europe"/>
+               </quote>
+               <t v=" proposed a commitment on the part of the European Union to achieve at least a 20 % reduction of greenhouse gases by 2020 compared to 1990. In addition, binding targets for further improvement of energy efficiency by 20 %, a level of 20 % of renewable energy and a 10 % share of renewable energy in transport in the Community by 2020 have been proposed, inter alia, to improve security of energy supply by diversifying the fuel mix."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The Commission Communication of "/>
+               <date asWritten="19 October 2006" date="2006-10-19"/>
+               <t v=" entitled "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Action Plan for Energy Efficiency: Realising the Potential"/>
+               </quote>
+               <t v=" announced that the Commission will continue its efforts to develop markets for cleaner, smarter, safer and energy-efficient vehicles through public procurement and awareness-raising."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="The mid-term review of the Commission’s 2001 Transport White Paper entitled "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Keep Europe moving – Sustainable mobility for our continent"/>
+               </quote>
+               <t v=", of "/>
+               <date asWritten="22 June 2006" date="2006-06-22"/>
+               <t v=", announced that the Union will stimulate environmentally-friendly innovation in particular by successive European emission standards (Euro Norms) and by the promotion of clean vehicles on the basis of public procurement."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_7" kind="recital">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <p>
+               <t v="In its Communication of "/>
+               <date asWritten="7 February 2007" date="2007-02-07"/>
+               <t v=" entitled "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Results of the review of the Community Strategy to reduce CO"/>
+                  <emphasis kind="sub">
+                     <t v="2"/>
+                  </emphasis>
+                  <t v=" emissions from passenger cars and light-commercial vehicles"/>
+               </quote>
+               <t v=", the Commission presented a comprehensive new strategy to enable the Union to reach its 120 g/km objective for CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" emissions from new passenger cars by 2012. A legislative framework was proposed to ensure vehicle technology improvements. Complementary measures should promote the procurement of fuel-efficient vehicles."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_8" kind="recital">
+            <num>
+               <t v="(8)"/>
+            </num>
+            <p>
+               <t v="The Commission Green Paper on Urban Transport of "/>
+               <date asWritten="25 September 2007" date="2007-09-25"/>
+               <t v=" entitled "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Towards a new culture for urban mobility"/>
+               </quote>
+               <t v=" notes the support of stakeholders for promoting the market introduction of clean and energy-efficient vehicles through green public procurement. It proposes that a possible approach could be based on the internalisation of external costs by using lifetime costs for energy consumption, CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" emissions, and pollutant emissions linked to the operation of the vehicles to be procured as award criteria, in addition to the vehicle price. In addition, public procurement could give preference to new Euro standards. The earlier use of cleaner vehicles could then improve air quality in urban areas."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_9" kind="recital">
+            <num>
+               <t v="(9)"/>
+            </num>
+            <p>
+               <t v="The CARS 21 High Level Group report of "/>
+               <date asWritten="12 December 2005" date="2005-12-12"/>
+               <t v=" supported the Commission’s initiative on the promotion of clean and energy-efficient vehicles, on condition that a technology-neutral and performance-based integrated approach involving vehicle manufacturers, oil or fuel suppliers, repairers, customers or drivers and public authorities is taken."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_10" kind="recital">
+            <num>
+               <t v="(10)"/>
+            </num>
+            <p>
+               <t v="The High Level Group on competitiveness, energy and the environment, in its report of "/>
+               <date asWritten="27 February 2007" date="2007-02-27"/>
+               <t v=", recommended that private and public procurement should take account of full lifetime costs with emphasis on energy efficiency. Member States and the Community should develop and publish public purchasing guidance on how to move beyond lowest price tendering to procurement of more sustainable intermediate goods in line with Directive 2004/17/EC of the European Parliament and of the Council of "/>
+               <date asWritten="31 March 2004" date="2004-03-31"/>
+               <t v=" coordinating the procurement procedures of entities operating in the water, energy, transport and postal services sectors"/>
+               <noteRef href="#note_5" marker="5"/>
+               <t v=" and Directive 2004/18/EC of the European Parliament and of the Council of "/>
+               <date asWritten="31 March 2004" date="2004-03-31"/>
+               <t v=" on the coordination of procedures for the award of public works contracts, public supply contracts and public service contracts"/>
+               <noteRef href="#note_6" marker="6"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_11" kind="recital">
+            <num>
+               <t v="(11)"/>
+            </num>
+            <p>
+               <t v="This Directive aims to stimulate the market for clean and energy-efficient road transport vehicles, and especially – since this would have a substantial environmental impact – to influence the market for standardised vehicles produced in larger quantities such as passenger cars, buses, coaches and trucks, by ensuring a level of demand for clean and energy-efficient road transport vehicles which is sufficiently substantial to encourage manufacturers and the industry to invest in and further develop vehicles with low energy consumption, CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" emissions, and pollutant emissions."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_12" kind="recital">
+            <num>
+               <t v="(12)"/>
+            </num>
+            <p>
+               <t v="Member States should inform national, regional or local contracting authorities and contracting entities and operators which provide public passenger transport services of the provisions relating to the purchase of clean and energy-efficient road transport vehicles."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_13" kind="recital">
+            <num>
+               <t v="(13)"/>
+            </num>
+            <p>
+               <t v="Clean and energy-efficient vehicles initially have a higher price than conventional ones. Creating sufficient demand for such vehicles could ensure that economies of scale lead to cost reductions."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_14" kind="recital">
+            <num>
+               <t v="(14)"/>
+            </num>
+            <p>
+               <t v="This Directive addresses the need to provide support for Member States through facilitating and structuring the exchange of knowledge and best practices for promoting the purchase of clean and energy-efficient vehicles."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_15" kind="recital">
+            <num>
+               <t v="(15)"/>
+            </num>
+            <p>
+               <t v="Procurement of vehicles for public transport services can make a significant impact on the market if harmonised criteria are applied at Community level."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_16" kind="recital">
+            <num>
+               <t v="(16)"/>
+            </num>
+            <p>
+               <t v="The biggest impact on the market, together with the best cost/benefit result, is obtained through mandatory inclusion of lifetime costs for energy consumption, CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" emissions, and pollutant emissions as award criteria in the procurement of vehicles for public transport services."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_17" kind="recital">
+            <num>
+               <t v="(17)"/>
+            </num>
+            <p>
+               <t v="In line with the scope of Directive 2004/17/EC and Directive 2004/18/EC and whilst fully respecting the implementation in national law of those directives, this Directive should cover road transport vehicles purchased by contracting authorities and contracting entities, irrespective of whether such authorities and entities are public or private. Furthermore, this Directive should cover the purchase of road transport vehicles used for performing public passenger transport services under a public service contract, leaving to Member States the freedom to exclude minor purchases with a view to avoiding an unnecessary administrative burden."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_18" kind="recital">
+            <num>
+               <t v="(18)"/>
+            </num>
+            <p>
+               <t v="In line with Directive 2007/46/EC of the European Parliament and of the Council of "/>
+               <date asWritten="5 September 2007" date="2007-09-05"/>
+               <t v=" establishing a framework for the approval of motor vehicles and their trailers, and of systems, components and separate technical units intended for such vehicles (Framework Directive)"/>
+               <noteRef href="#note_7" marker="7"/>
+               <t v=" and with a view to avoiding an undue administrative burden, Member States should be able to exempt authorities and operators from the requirements laid down in this Directive when purchasing vehicles designed and constructed for special use."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_19" kind="recital">
+            <num>
+               <t v="(19)"/>
+            </num>
+            <p>
+               <t v="This Directive should provide for a set of options for taking into account energy and environmental impacts. This would enable authorities and operators that have already developed methods tailored to meeting local needs and conditions to continue applying these methods."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_20" kind="recital">
+            <num>
+               <t v="(20)"/>
+            </num>
+            <p>
+               <t v="Including energy consumption, CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" emissions, and pollutant emissions in the award criteria does not impose higher total costs but rather anticipates operational lifetime costs in the procurement decision. Complementary to the legislation on Euro Norms, which sets maximum emission limits, this approach monetises the actual pollutant emission and does not require any additional standard setting."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_21" kind="recital">
+            <num>
+               <t v="(21)"/>
+            </num>
+            <p>
+               <t v="When fulfilling the requirement to take energy and environmental impacts into account by setting technical specifications, contracting authorities, contracting entities and operators are encouraged to set specifications of a higher level of energy and environmental performance than laid down in Community legislation, taking into account, for example, Euro Norms which are already adopted but have not yet become obligatory."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_22" kind="recital">
+            <num>
+               <t v="(22)"/>
+            </num>
+            <p>
+               <t v="The ExternE Study"/>
+               <noteRef href="#note_8" marker="8"/>
+               <t v=", the Commission Clean Air for Europe (CAFE)"/>
+               <noteRef href="#note_9" marker="9"/>
+               <t v=" Programme and the HEATCO Study"/>
+               <noteRef href="#note_10" marker="10"/>
+               <t v=" have provided information on the costs of CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=", oxides of nitrogen (NO"/>
+               <emphasis kind="sub">
+                  <t v="x"/>
+               </emphasis>
+               <t v="), non-methane hydrocarbons (NMHC) and particulate matter emissions. Costs are taken at present value to keep the award procedure simple."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_23" kind="recital">
+            <num>
+               <t v="(23)"/>
+            </num>
+            <p>
+               <t v="This Directive should define a range for the costs of CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" and pollutant emissions which, on the one hand, enables flexibility for contracting authorities, contracting entities and operators to take account of their local situation, and, on the other hand, ensures an appropriate degree of harmonisation."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_24" kind="recital">
+            <num>
+               <t v="(24)"/>
+            </num>
+            <p>
+               <t v="Mandatory application of criteria for the procurement of clean and energy-efficient vehicles does not preclude the inclusion of other relevant award criteria. It also does not prevent the choice of retro-fitted vehicles upgraded for higher environmental performance. Such other relevant award criteria may also be included in procurements subject to Directives 2004/17/EC or 2004/18/EC, provided they are linked to the subject-matter of the contract, do not confer an unrestricted freedom of choice on the contracting authority or contracting entity, are expressly mentioned and comply with the fundamental principles of the Treaty."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_25" kind="recital">
+            <num>
+               <t v="(25)"/>
+            </num>
+            <p>
+               <t v="The method of calculating operational lifetime costs for pollutant emissions for the purpose of vehicle procurement decisions, including the numerical values defined in this Directive, does not prejudge other Community legislation addressing external costs."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_26" kind="recital">
+            <num>
+               <t v="(26)"/>
+            </num>
+            <p>
+               <t v="Reviews and revisions of the calculation method defined in this Directive should consider relevant related Community legislative measures and should aim for consistency with them."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_27" kind="recital">
+            <num>
+               <t v="(27)"/>
+            </num>
+            <p>
+               <t v="The energy and environmental award criteria should be among the various award criteria taken into consideration by contracting authorities or contracting entities when they are called upon to take a decision on the procurement of clean and energy-efficient road transport vehicles."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_28" kind="recital">
+            <num>
+               <t v="(28)"/>
+            </num>
+            <p>
+               <t v="This Directive should not prevent contracting authorities and contracting entities from giving preference to the latest Euro Norms in the purchase of vehicles for public transport services before those standards become obligatory. It should also not prevent contracting authorities and contracting entities from giving preference to alternative fuels, for example hydrogen, Liquefied Petroleum Gas (LPG), Compressed Natural Gas (CNG) and biofuels, provided the lifetime energy and environmental impacts are taken into account."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_29" kind="recital">
+            <num>
+               <t v="(29)"/>
+            </num>
+            <p>
+               <t v="Standardised Community test procedures should be developed for additional vehicle categories in order to improve comparability and transparency of manufacturer data. Manufacturers should be encouraged to provide data for total lifetime energy consumption, CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" emissions and pollutant emissions."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_30" kind="recital">
+            <num>
+               <t v="(30)"/>
+            </num>
+            <p>
+               <t v="The possibility of public support for the purchase of clean and energy-efficient road transport vehicles, including the retrofitting of vehicles with engines and replacement parts, which go beyond the mandatory environmental requirements, is recognised in the Community guidelines for State aid for environmental protection"/>
+               <noteRef href="#note_11" marker="11"/>
+               <t v=" and Commission Regulation (EC) No 800/2008 of "/>
+               <date asWritten="6 August 2008" date="2008-08-06"/>
+               <t v=" declaring certain categories of aid compatible with the common market in application of Articles 87 and 88 of the Treaty (General block exemption Regulation)"/>
+               <noteRef href="#note_12" marker="12"/>
+               <t v=". In this context, the guidelines included in the Commission Communication entitled "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Community guidelines on State aid for railway undertakings"/>
+               </quote>
+               <noteRef href="#note_13" marker="13"/>
+               <t v=", in particular footnote 1 to point 34 and footnote 3 to point 36, are also relevant. However, the rules of the Treaty, and in particular Articles 87 and 88 thereof, will continue to apply to such public support."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_31" kind="recital">
+            <num>
+               <t v="(31)"/>
+            </num>
+            <p>
+               <t v="The possibility of public support in favour of the promotion of development of infrastructures necessary for the distribution of alternative fuels is recognised in the Community guidelines for State aid for environmental protection. However, the rules of the Treaty, and in particular Articles 87 and 88 thereof, will continue to apply to such public support."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_32" kind="recital">
+            <num>
+               <t v="(32)"/>
+            </num>
+            <p>
+               <t v="The purchase of clean and energy-efficient road transport vehicles offers an opportunity to cities wishing to brand themselves as environmentally conscious. In this context, disclosure on the Internet of information on public procurement pursuant to this Directive is important."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_33" kind="recital">
+            <num>
+               <t v="(33)"/>
+            </num>
+            <p>
+               <t v="The publication on the Internet of relevant information related to the financial instruments available in the Member States for urban mobility and for the promotion of clean and energy-efficient road transport vehicles should be encouraged."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_34" kind="recital">
+            <num>
+               <t v="(34)"/>
+            </num>
+            <p>
+               <t v="The measures necessary for the implementation of this Directive should be adopted in accordance with Council Decision 1999/468/EC of "/>
+               <date asWritten="28 June 1999" date="1999-06-28"/>
+               <t v=" laying down the procedures for the exercise of implementing powers conferred on the Commission"/>
+               <noteRef href="#note_14" marker="14"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_35" kind="recital">
+            <num>
+               <t v="(35)"/>
+            </num>
+            <p>
+               <t v="In particular the Commission should be empowered to adapt to inflation and to technical progress the data for the calculation of the operational lifetime costs of road transport vehicles. Since those measures are of general scope and are designed to amend non-essential elements of this Directive, they must be adopted in accordance with the regulatory procedure with scrutiny provided for in Article 5a of Decision 1999/468/EC."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_36" kind="recital">
+            <num>
+               <t v="(36)"/>
+            </num>
+            <p>
+               <t v="Since the objectives of this Directive, namely to promote and stimulate the market for clean and energy-efficient vehicles and to improve the contribution of the transport sector to the environment, climate and energy policies of the Community, cannot be sufficiently achieved by the Member States and can therefore, in order to provide a critical mass of vehicles for cost-efficient developments by European industry, be better achieved at Community level, the Community may adopt measures, in accordance with the principle of subsidiarity as set out in Article 5 of the Treaty. In accordance with the principle of proportionality, as set out in that Article, this Directive does not go beyond what is necessary in order to achieve those objectives."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_37" kind="recital">
+            <num>
+               <t v="(37)"/>
+            </num>
+            <p>
+               <t v="The Member States and the Commission should continue to promote clean and energy-efficient road transport vehicles. In this context, national and regional operational programmes, as defined by Council Regulation (EC) No 1083/2006 of "/>
+               <date asWritten="11 July 2006" date="2006-07-11"/>
+               <t v=" laying down general provisions on the European Regional Development Fund, the European Social Fund and the Cohesion Fund"/>
+               <noteRef href="#note_15" marker="15"/>
+               <t v=" could play an important role. Furthermore, Community programmes such as Civitas and Intelligent Energy Europe could contribute to improving urban mobility while reducing its adverse effects."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_38" kind="recital">
+            <num>
+               <t v="(38)"/>
+            </num>
+            <p>
+               <t v="In accordance with point 34 of the Interinstitutional Agreement on better law-making"/>
+               <noteRef href="#note_16" marker="16"/>
+               <t v=", Member States are encouraged to draw up, for themselves and in the interests of the Community, their own tables illustrating, as far as possible, the correlation between this Directive and the transposition measures, and to make them public,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAVE ADOPTED THIS DIRECTIVE:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <heading>
+            <t v="Subject matter and objectives"/>
+         </heading>
+         <p>
+            <t v="This Directive requires contracting authorities, contracting entities as well as certain operators to take into account lifetime energy and environmental impacts, including energy consumption and emissions of CO"/>
+            <emphasis kind="sub">
+               <t v="2"/>
+            </emphasis>
+            <t v=" and of certain pollutants, when purchasing road transport vehicles with the objectives of promoting and stimulating the market for clean and energy-efficient vehicles and improving the contribution of the transport sector to the environment, climate and energy policies of the Community."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <heading>
+            <t v="Exemptions"/>
+         </heading>
+         <p>
+            <t v="Member States may exempt from the requirements laid down in this Directive contracts for the purchase of vehicles referred to in Article 2(3) of Directive 2007/46/EC, which are not subject to type approval or individual approval on their territory."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <heading>
+            <t v="Scope"/>
+         </heading>
+         <p>
+            <t v="This Directive shall apply to contracts for the purchase of road transport vehicles by:"/>
+         </p>
+         <list kind="alpha">
+            <unit eId="art_3/pnt_a" kind="point">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <p>
+                  <t v="contracting authorities or contracting entities in so far as they are under an obligation to apply the procurement procedures set out in Directives 2004/17/EC and 2004/18/EC;"/>
+               </p>
+            </unit>
+            <unit eId="art_3/pnt_b" kind="point">
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <p>
+                  <t v="operators for the discharge of public service obligations under a public service contract within the meaning of Regulation (EC) No 1370/2007 of the European Parliament and of the Council of "/>
+                  <date asWritten="23 October 2007" date="2007-10-23"/>
+                  <t v=" on public passenger transport services by rail and by road"/>
+                  <noteRef href="#note_17" marker="17"/>
+                  <t v=" in excess of a threshold which shall be defined by Member States not exceeding the threshold values as set out in Directives 2004/17/EC and 2004/18/EC."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <heading>
+            <t v="Definitions"/>
+         </heading>
+         <p>
+            <t v="For the purpose of this Directive:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="art_4/pnt_1" kind="point">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="contracting authorities"/>
+                  </quote>
+                  <t v=" means contracting authorities as defined in Article 2(1)(a) of Directive 2004/17/EC and in Article 1(9) of Directive 2004/18/EC;"/>
+               </p>
+            </unit>
+            <unit eId="art_4/pnt_2" kind="point">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="contracting entities"/>
+                  </quote>
+                  <t v=" means contracting entities as referred to in Article 2(2) of Directive 2004/17/EC;"/>
+               </p>
+            </unit>
+            <unit eId="art_4/pnt_3" kind="point">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="road transport vehicle"/>
+                  </quote>
+                  <t v=" means a vehicle covered by the vehicle categories listed in Table 3 of the Annex."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_5" kind="article">
+         <num>
+            <t v="Article 5"/>
+         </num>
+         <heading>
+            <t v="Purchase of clean and energy-efficient road transport vehicles"/>
+         </heading>
+         <unit eId="art_5/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="Member States shall ensure that, from "/>
+               <date asWritten="4 December 2010" date="2010-12-04"/>
+               <t v=", all contracting authorities, contracting entities and operators referred to in Article 3, when purchasing road transport vehicles, take into account the operational lifetime energy and environmental impacts as set out in paragraph 2 and apply at least one of the options set out in paragraph 3."/>
+            </p>
+         </unit>
+         <unit eId="art_5/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <unit eId="art_5/par_2/sub_1" kind="subparagraph">
+               <p>
+                  <t v="The operational energy and environmental impacts to be taken into account shall include at least the following:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_5/par_2/sub_1/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="energy consumption;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_5/par_2/sub_1/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="emissions of CO"/>
+                        <emphasis kind="sub">
+                           <t v="2"/>
+                        </emphasis>
+                        <t v="; and"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_5/par_2/sub_1/pnt_c" kind="point">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="emissions of NO"/>
+                        <emphasis kind="sub">
+                           <t v="x"/>
+                        </emphasis>
+                        <t v=", NMHC and particulate matter."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_5/par_2/sub_2" kind="subparagraph">
+               <p>
+                  <t v="In addition to the operational energy and environmental impacts mentioned in the first subparagraph, contracting authorities, contracting entities and operators may also consider other environmental impacts."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_5/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="The requirements of paragraphs 1 and 2 shall be fulfilled in accordance with the following options:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_5/par_3/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="by setting technical specifications for energy and environmental performance in the documentation for the purchase of road transport vehicles on each of the impacts considered, as well as any additional environmental impacts; or"/>
+                  </p>
+               </unit>
+               <unit eId="art_5/par_3/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="by including energy and environmental impacts in the purchasing decision, whereby:"/>
+                  </p>
+                  <list kind="dash">
+                     <unit eId="art_5/par_3/pnt_b/idt_1" kind="indent">
+                        <p>
+                           <t v="in cases where a procurement procedure is applied, this shall be done by using these impacts as award criteria, and"/>
+                        </p>
+                     </unit>
+                     <unit eId="art_5/par_3/pnt_b/idt_2" kind="indent">
+                        <p>
+                           <t v="in cases where these impacts are monetised for inclusion in the purchasing decision, the methodology set out in Article 6 shall be used."/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+            </list>
+         </unit>
+      </unit>
+      <unit eId="art_6" kind="article">
+         <num>
+            <t v="Article 6"/>
+         </num>
+         <heading>
+            <t v="Methodology for the calculation of operational lifetime costs"/>
+         </heading>
+         <unit eId="art_6/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="For the purposes of Article 5(3)(b), second indent, operational lifetime costs for energy consumption, as well as for CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" emissions and pollutant emissions as set out in Table 2 of the Annex, which are linked to the operation of the vehicles under purchase, shall be monetised and calculated using the methodology set out in the following points:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_6/par_1/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="The operational lifetime cost of the energy consumption of a vehicle shall be calculated using the following methodology:"/>
+                  </p>
+                  <list kind="dash">
+                     <unit eId="art_6/par_1/pnt_a/idt_1" kind="indent">
+                        <p>
+                           <t v="the fuel consumption per kilometre of a vehicle according to paragraph 2 shall be counted in units of energy consumption per kilometre whether this is given directly, which is the case for instance for electrical cars, or not. Where the fuel consumption is given in different units, it shall be converted into energy consumption per kilometre, using the conversion factors as set out in Table 1 of the Annex for the energy content of the different fuels,"/>
+                        </p>
+                     </unit>
+                     <unit eId="art_6/par_1/pnt_a/idt_2" kind="indent">
+                        <p>
+                           <t v="a single monetary value per unit of energy shall be used. This single value shall be the lower of the cost per unit of energy of petrol or diesel before tax when used as a transport fuel,"/>
+                        </p>
+                     </unit>
+                     <unit eId="art_6/par_1/pnt_a/idt_3" kind="indent">
+                        <p>
+                           <t v="operational lifetime cost of the energy consumption of a vehicle shall be calculated by multiplying the lifetime mileage, where needed, taking into account the mileage already performed, according to paragraph 3, by the energy consumption per kilometre according to the first indent of this point, and by the cost per unit of energy according to the second indent of this point."/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="art_6/par_1/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="The operational lifetime cost for the CO"/>
+                     <emphasis kind="sub">
+                        <t v="2"/>
+                     </emphasis>
+                     <t v=" emissions of a vehicle shall be calculated by multiplying the lifetime mileage, where needed, taking into account the mileage already performed, according to paragraph 3, by the CO"/>
+                     <emphasis kind="sub">
+                        <t v="2"/>
+                     </emphasis>
+                     <t v=" emissions in kilograms per kilometre according to paragraph 2, and by the cost per kilogram taken from the range as set out in Table 2 of the Annex."/>
+                  </p>
+               </unit>
+               <unit eId="art_6/par_1/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="The operational lifetime cost for the pollutant emissions, as listed in Table 2 of the Annex, of a vehicle shall be calculated by adding up the operational lifetime costs for emissions of NO"/>
+                     <emphasis kind="sub">
+                        <t v="x"/>
+                     </emphasis>
+                     <t v=", NMHC and particulate matter. The operational lifetime cost for each pollutant shall be calculated by multiplying the lifetime mileage, where needed, taking into account the mileage already performed, according to paragraph 3, by the emissions in grams per kilometre according to paragraph 2, and by the respective cost per gram. The cost shall be taken from the Community-averaged values set out in Table 2 of the Annex."/>
+                  </p>
+                  <p>
+                     <t v="Contracting authorities, contracting entities and operators referred to in Article 3 may apply higher costs provided these costs do not exceed the relevant values set out in Table 2 of the Annex multiplied by a factor of 2."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_6/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="Fuel consumption, as well as CO"/>
+               <emphasis kind="sub">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" emissions and pollutant emissions as set out in Table 2 of the Annex per kilometre for vehicle operation, shall be based on standardised Community test procedures for the vehicles for which such test procedures are defined in Community type approval legislation. For vehicles not covered by standardised Community test procedures, comparability between different offers shall be ensured by using widely recognised test procedures, or the results of tests for the authority, or information supplied by the manufacturer."/>
+            </p>
+         </unit>
+         <unit eId="art_6/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="Lifetime mileage of a vehicle, if not otherwise specified, shall be taken from Table 3 of the Annex."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_7" kind="article">
+         <num>
+            <t v="Article 7"/>
+         </num>
+         <heading>
+            <t v="Adaptations to technical progress"/>
+         </heading>
+         <p>
+            <t v="The Commission shall adapt to inflation and to technical progress the data for the calculation of the operational lifetime costs of road transport vehicles as set out in the Annex. Those measures, designed to amend non-essential elements of this Directive, shall be adopted in accordance with the regulatory procedure with scrutiny referred to in Article 9(2)."/>
+         </p>
+      </unit>
+      <unit eId="art_8" kind="article">
+         <num>
+            <t v="Article 8"/>
+         </num>
+         <heading>
+            <t v="Best practice exchange"/>
+         </heading>
+         <p>
+            <t v="The Commission shall facilitate and structure the exchange of knowledge and best practices between Member States on practices for promoting the purchase of clean and energy-efficient road transport vehicles by contracting authorities, contracting entities and operators referred to in Article 3."/>
+         </p>
+      </unit>
+      <unit eId="art_9" kind="article">
+         <num>
+            <t v="Article 9"/>
+         </num>
+         <heading>
+            <t v="Committee procedure"/>
+         </heading>
+         <unit eId="art_9/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="The Commission shall be assisted by a Committee."/>
+            </p>
+         </unit>
+         <unit eId="art_9/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="Where reference is made to this paragraph, Articles 5a(1) to (4) and 7 of Decision 1999/468/EC shall apply, having regard to the provisions of Article 8 thereof."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_10" kind="article">
+         <num>
+            <t v="Article 10"/>
+         </num>
+         <heading>
+            <t v="Reporting and review"/>
+         </heading>
+         <unit eId="art_10/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="Every two years, with effect from "/>
+               <date asWritten="4 December 2010" date="2010-12-04"/>
+               <t v=", the Commission shall prepare a report on the application of this Directive and on the actions taken by individual Member States to promote the purchase of clean and energy-efficient road transport vehicles."/>
+            </p>
+         </unit>
+         <unit eId="art_10/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <unit eId="art_10/par_2/sub_1" kind="subparagraph">
+               <p>
+                  <t v="Those reports shall assess the effects of this Directive, especially of the options referred to in Article 5(3), and the need for further action, and include proposals, as appropriate."/>
+               </p>
+            </unit>
+            <unit eId="art_10/par_2/sub_2" kind="subparagraph">
+               <p>
+                  <t v="In those reports, the Commission shall compare the nominal and relative numbers of vehicles purchased corresponding to the best market alternative in terms of lifetime energy and environmental impacts, within each of the categories of vehicles listed in Table 3 of the Annex, to the overall market for these vehicles and estimate how the options referred to in Article 5(3) have affected the market. The Commission shall assess the need for further action and include proposals, as appropriate."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_10/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="No later than the date of the first report, the Commission shall examine the options referred to in Article 5(3), present an evaluation of the methodology set out in Article 6 and propose appropriate adjustments, if necessary."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_11" kind="article">
+         <num>
+            <t v="Article 11"/>
+         </num>
+         <heading>
+            <t v="Transposition"/>
+         </heading>
+         <unit eId="art_11/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <unit eId="art_11/par_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with this Directive by "/>
+                  <date asWritten="4 December 2010" date="2010-12-04"/>
+                  <t v=". They shall forthwith inform the Commission thereof."/>
+               </p>
+            </unit>
+            <unit eId="art_11/par_1/sub_2" kind="subparagraph">
+               <p>
+                  <t v="When Member States adopt these measures, they shall contain a reference to this Directive, or be accompanied by such a reference on the occasion of their official publication. The methods of making such reference shall be laid down by Member States."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_11/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="Member States shall communicate to the Commission the text of the main provisions of national law which they adopt in the field covered by this Directive."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_12" kind="article">
+         <num>
+            <t v="Article 12"/>
+         </num>
+         <heading>
+            <t v="Entry into force"/>
+         </heading>
+         <p>
+            <t v="This Directive shall enter into force on the 20th day following its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+      <unit eId="art_13" kind="article">
+         <num>
+            <t v="Article 13"/>
+         </num>
+         <heading>
+            <t v="Addressees"/>
+         </heading>
+         <p>
+            <t v="This Directive is addressed to the Member States."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Strasbourg, "/>
+            <date asWritten="23 April 2009" date="2009-04-23"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the European Parliament"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="H.-G. "/>
+               <emphasis kind="uc">
+                  <t v="Pöttering"/>
+               </emphasis>
+            </person>
+         </signatory>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Council"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="P. "/>
+               <emphasis kind="uc">
+                  <t v="Nečas"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <tableGroup>
+            <caption>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Data for the calculation of operational lifetime costs of road transport vehicles"/>
+                  </emphasis>
+               </p>
+            </caption>
+            <table cols="2">
+               <caption>
+                  <p>
+                     <num>
+                        <emphasis kind="i">
+                           <t v="Table 1:"/>
+                        </emphasis>
+                     </num>
+                     <emphasis kind="i">
+                        <t v="Energy content of motor fuels"/>
+                     </emphasis>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Fuel"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Energy content"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Diesel"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="36 MJ/litre"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Petrol"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="32 MJ/litre"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Natural Gas/Biogas"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="33-38 MJ/Nm"/>
+                        <emphasis kind="sup">
+                           <t v="3"/>
+                        </emphasis>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Liquefied Petroleum Gas (LPG)"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="24 MJ/litre"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Ethanol"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="21 MJ/litre"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Biodiesel"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="33 MJ/litre"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Emulsion fuel"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="32 MJ/litre"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Hydrogen"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="11"/>
+                        <t v=" MJ/Nm"/>
+                        <emphasis kind="sup">
+                           <t v="3"/>
+                        </emphasis>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <table cols="4">
+               <caption>
+                  <p>
+                     <num>
+                        <emphasis kind="i">
+                           <t v="Table 2:"/>
+                        </emphasis>
+                     </num>
+                     <emphasis kind="i">
+                        <t v="Cost for emissions in road transport (in 2007 prices)"/>
+                     </emphasis>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="CO"/>
+                        <emphasis kind="sub">
+                           <t v="2"/>
+                        </emphasis>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="NO"/>
+                        <emphasis kind="sub">
+                           <t v="x"/>
+                        </emphasis>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="NMHC"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Particulate matter"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="0,03-0,04 EUR/kg"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,0044"/>
+                        <t v=" EUR/g"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,001"/>
+                        <t v=" EUR/g"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,087"/>
+                        <t v=" EUR/g"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <table cols="2">
+               <caption>
+                  <p>
+                     <num>
+                        <emphasis kind="i">
+                           <t v="Table 3:"/>
+                        </emphasis>
+                     </num>
+                     <emphasis kind="i">
+                        <t v="Lifetime mileage of road transport vehicles"/>
+                     </emphasis>
+                  </p>
+               </caption>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Vehicle category"/>
+                     </p>
+                     <p>
+                        <t v="(M and N categories as defined in Directive 2007/46/EC)"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Lifetime mileage"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Passenger cars (M"/>
+                        <emphasis kind="sub">
+                           <t v="1"/>
+                        </emphasis>
+                        <t v=")"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="200000"/>
+                        <t v=" km"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Light commercial vehicles (N"/>
+                        <emphasis kind="sub">
+                           <t v="1"/>
+                        </emphasis>
+                        <t v=")"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="250000"/>
+                        <t v=" km"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Heavy goods vehicles (N"/>
+                        <emphasis kind="sub">
+                           <t v="2"/>
+                        </emphasis>
+                        <t v=", N"/>
+                        <emphasis kind="sub">
+                           <t v="3"/>
+                        </emphasis>
+                        <t v=")"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1000000"/>
+                        <t v=" km"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Buses (M"/>
+                        <emphasis kind="sub">
+                           <t v="2"/>
+                        </emphasis>
+                        <t v=", M"/>
+                        <emphasis kind="sub">
+                           <t v="3"/>
+                        </emphasis>
+                        <t v=")"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="800000"/>
+                        <t v=" km"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </tableGroup>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="195"
+                 date="2006-08-18"
+                 page="26">
+               <t v="OJ C 195, 18.8.2006, p. 26"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="229"
+                 date="2006-09-22"
+                 page="18">
+               <t v="OJ C 229, 22.9.2006, p. 18"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Opinion of the European Parliament of "/>
+            <date asWritten="22 October 2008" date="2008-10-22"/>
+            <t v=" (not yet published in the Official Journal) and Council Decision of "/>
+            <date asWritten="30 March 2009" date="2009-03-30"/>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="242"
+                 date="2002-09-10"
+                 page="1">
+               <t v="OJ L 242, 10.9.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="134"
+                 date="2004-04-30"
+                 page="1">
+               <t v="OJ L 134, 30.4.2004, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_6" marker="6" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="134"
+                 date="2004-04-30"
+                 page="114">
+               <t v="OJ L 134, 30.4.2004, p. 114"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_7" marker="7" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="263"
+                 date="2007-10-09"
+                 page="1">
+               <t v="OJ L 263, 9.10.2007, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_8" marker="8" kind="footnote">
+         <p>
+            <t v="Bickel, P., Friedrich, R., ExternE. Externalities of Energy. Methodology 2005, update, European Commission, Publications Office, Luxembourg, 2005."/>
+         </p>
+      </note>
+      <note eId="note_9" marker="9" kind="footnote">
+         <p>
+            <t v="Holland, M., et al., (2005a). Methodology for the Cost-Benefit Analysis for CAFE: Volume 1: Overview of Methodology. AEA Technology Environment, Didcot, 2005."/>
+         </p>
+      </note>
+      <note eId="note_10" marker="10" kind="footnote">
+         <p>
+            <t v="Bickel, P., et al., HEATCO Deliverable 5. Proposal for Harmonised Guidelines, Stuttgart, 2006."/>
+         </p>
+      </note>
+      <note eId="note_11" marker="11" kind="footnote">
+         <p>
+            <ref kind="oj" series="C" number="82" date="2008-04-01" page="1">
+               <t v="OJ C 82, 1.4.2008, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_12" marker="12" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="214"
+                 date="2008-08-09"
+                 page="3">
+               <t v="OJ L 214, 9.8.2008, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_13" marker="13" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="184"
+                 date="2008-07-22"
+                 page="13">
+               <t v="OJ C 184, 22.7.2008, p. 13"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_14" marker="14" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="184"
+                 date="1999-07-17"
+                 page="23">
+               <t v="OJ L 184, 17.7.1999, p. 23"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_15" marker="15" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="210"
+                 date="2006-07-31"
+                 page="25">
+               <t v="OJ L 210, 31.7.2006, p. 25"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_16" marker="16" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="321"
+                 date="2003-12-31"
+                 page="1">
+               <t v="OJ C 321, 31.12.2003, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_17" marker="17" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="315"
+                 date="2007-12-03"
+                 page="1">
+               <t v="OJ L 315, 3.12.2007, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

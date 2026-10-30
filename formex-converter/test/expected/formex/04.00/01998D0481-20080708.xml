@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31998D0481"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2008-07-08"
+           lang="en"
+           formexVersion="04.00"
+           converter="1.0.0">
+   <source celex="01998D0481-20080708">
+      <publication series="L" number="216" date="1998-08-04" page="7"/>
+   </source>
+   <lifecycle start="2008-07-08" produced="2008-08-21" sequence="001.001.0">
+      <eventRef type="amendment" act="32008D0571" date="2008-07-08"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of 20 July 1998"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="approving the external auditors of the European Central Bank"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(98/481/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Protocol on the Statute of the European System of Central Banks and of the European Central Bank and in particular to Article 27.1 thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the Recommendation of the Governing Council of the European Central Bank (hereinafter referred to as the "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="ECB"/>
+               </quote>
+               <t v=") of 19 June 1998,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <p>
+               <t v="Whereas the accounts of the ECB and national central banks are to be audited by independent external auditors recommended by the Governing Council and approved by the Council of the European Union;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <p>
+               <t v="Whereas the Governing Council of the ECB has recommended Coopers and Lybrand as the external auditors of the ECB,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS DECIDED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <provenance amendingAct="32008D0571"
+                     action="replaced"
+                     location="AR:1"
+                     marker="O001001M001000"/>
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="PricewaterhouseCoopers Aktiengesellschaft Wirtschaftsprüfungsgesellschaft is hereby approved as the external auditors of the ECB for the financial years 2008 to 2012."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Decision shall be notified to the ECB."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Decision shall be published in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Communities"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+</legalText>
+

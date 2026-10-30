@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32021R0251"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2021-02-19"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="02021R0251-20210219">
+      <publication series="L" number="58" date="2021-02-19" page="9"/>
+   </source>
+   <lifecycle start="2021-02-19" produced="2021-02-26" sequence="000.001.0">
+      <eventRef type="corrigendum" act="32021R0251R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <changed amendingAct="32021R0251R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001002">
+                  <emphasis kind="uc">
+                     <t v="Council Regulation"/>
+                  </emphasis>
+               </changed>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <changed amendingAct="32021R0251R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001002">
+                  <t v=" (EU) 2021/251"/>
+               </changed>
+            </docNumber>
+         </p>
+         <p>
+            <changed amendingAct="32021R0251R(01)"
+                     action="replaced"
+                     location="TO"
+                     marker="O000001M001002">
+               <t v="of "/>
+            </changed>
+            <docDate asWritten="18 February 2021" date="2021-02-18"/>
+         </p>
+         <p>
+            <docPurpose>
+               <changed amendingAct="32021R0251R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001002">
+                  <t v="amending Regulation (EC) No 314/2004 concerning restrictive measures in view of the situation in Zimbabwe"/>
+               </changed>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Annex IV to Regulation (EC) No 314/2004 is amended as set out in the Annex to this Regulation."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <t v="In Annex IV to Regulation (EC) No 314/2004, the following entry is deleted:"/>
+         </p>
+         <quotedStructure eId="anx/qst_1">
+            <list kind="arabic">
+               <unit eId="anx/qst_1/pnt_4" kind="point">
+                  <num>
+                     <t v="‘"/>
+                     <t v="4."/>
+                  </num>
+                  <p>
+                     <t v="Shiri, Perence (a.k.a Bigboy) Samson Chikerema"/>
+                     <t v="’"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+            </list>
+         </quotedStructure>
+      </unit>
+   </annexes>
+</legalText>
+

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32018B0322(29)R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.56"
+           converter="1.0.0">
+   <source celex="32018B0322(29)R(01)">
+      <publication series="C"
+                   number="111"
+                   date="2019-03-25"
+                   page="60"
+                   document="2019/C 111/16"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to the Statement of revenue and expenditure of the European Insurance and Occupational Pensions Authority (EIOPA) for the financial year 2018"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="C" number="108" date="2018-03-22">
+               <t v="Official Journal of the European Union C 108 of 22.3.2018"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <p>
+         <t v="On page 149, in column "/>
+         <quote startQuote="‘" endQuote="’">
+            <t v="Appropriations 2017"/>
+         </quote>
+         <t v=":"/>
+      </p>
+      <unit eId="cor_1" kind="correction">
+         <list kind="dash">
+            <unit eId="cor_1/idt_1" kind="indent">
+               <p>
+                  <t v="row "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Chapter 2 0"/>
+                  </quote>
+                  <t v=":"/>
+               </p>
+            </unit>
+         </list>
+         <old>
+            <p>
+               <emphasis kind="i">
+                  <t v="for:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_1/old/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="2379181"/>
+                  </quote>
+                  <t v=","/>
+               </p>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <emphasis kind="i">
+                  <t v="read:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="2369181"/>
+                  </quote>
+                  <t v="."/>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+      <unit eId="cor_2" kind="correction">
+         <list kind="dash">
+            <unit eId="cor_2/idt_1" kind="indent">
+               <p>
+                  <t v="row "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Title 2 — Total"/>
+                  </quote>
+                  <t v=":"/>
+               </p>
+            </unit>
+         </list>
+         <old>
+            <p>
+               <emphasis kind="i">
+                  <t v="for:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_2/old/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="3362666"/>
+                  </quote>
+                  <t v=","/>
+               </p>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <emphasis kind="i">
+                  <t v="read:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_2/new/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="3352666"/>
+                  </quote>
+                  <t v="."/>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+      <unit eId="cor_3" kind="correction">
+         <list kind="dash">
+            <unit eId="cor_3/idt_1" kind="indent">
+               <p>
+                  <t v="row "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Chapter 3 2"/>
+                  </quote>
+                  <t v=":"/>
+               </p>
+            </unit>
+         </list>
+         <old>
+            <p>
+               <emphasis kind="i">
+                  <t v="for:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_3/old/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="3771381"/>
+                  </quote>
+                  <t v=","/>
+               </p>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <emphasis kind="i">
+                  <t v="read:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_3/new/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="3771380"/>
+                  </quote>
+                  <t v="."/>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+      <unit eId="cor_4" kind="correction">
+         <list kind="dash">
+            <unit eId="cor_4/idt_1" kind="indent">
+               <p>
+                  <t v="row "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Title 3 — Total"/>
+                  </quote>
+                  <t v=":"/>
+               </p>
+            </unit>
+         </list>
+         <old>
+            <p>
+               <emphasis kind="i">
+                  <t v="for:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_4/old/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="4774144"/>
+                  </quote>
+                  <t v=","/>
+               </p>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <emphasis kind="i">
+                  <t v="read:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_4/new/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="4774143"/>
+                  </quote>
+                  <t v="."/>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+      <unit eId="cor_5" kind="correction">
+         <list kind="dash">
+            <unit eId="cor_5/idt_1" kind="indent">
+               <p>
+                  <t v="row "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="GRAND TOTAL"/>
+                  </quote>
+                  <t v=":"/>
+               </p>
+            </unit>
+         </list>
+         <old>
+            <p>
+               <emphasis kind="i">
+                  <t v="for:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_5/old/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="24009257"/>
+                  </quote>
+                  <t v=","/>
+               </p>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <emphasis kind="i">
+                  <t v="read:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_5/new/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="23999256"/>
+                  </quote>
+                  <t v="."/>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

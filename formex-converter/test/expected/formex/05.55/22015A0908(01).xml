@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="22015A0908(01)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.55"
+           converter="1.0.0">
+   <source celex="22015A0908(01)">
+      <publication series="L" number="234" date="2015-09-08" page="3"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Agreement"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="in the form of an Exchange of Letters between the European Union and the Commission for the Conservation of Southern Bluefin Tuna (CCSBT) concerning the membership of the Union in the Extended Commission of the Convention for the Conservation of Southern Bluefin Tuna"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body/>
+   <annexes>
+      <unit eId="let_1" kind="letter">
+         <num>
+            <t v="A."/>
+         </num>
+         <heading>
+            <t v="Letter from the European Union"/>
+         </heading>
+         <p>
+            <t v="Sir/Madam,"/>
+         </p>
+         <p>
+            <t v="I have the honour to refer to the Resolution to establish an Extended Commission and an Extended Scientific Committee (hereafter "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="the Resolution"/>
+            </quote>
+            <t v="), as amended by the 20th Meeting of the CCSBT in October 2013."/>
+         </p>
+         <p>
+            <t v="Paragraph 6 of the Resolution establishes that any regional economic integration organisation, entity or fishing entity, vessels flagged to which have caught SBT at any time in the previous three calendar years, may express its willingness to the Executive Secretary of the Commission to become a member of the Extended Commission and Extended Scientific Committee. To this end, the Executive Secretary of the CCSBT, on behalf of the Commission, will conduct an Exchange of Letters with the representative of such regional economic integration organisation, entity or fishing entity to this effect."/>
+         </p>
+         <p>
+            <t v="Regarding Paragraph 8 of the Resolution there are no changes to the EU entitlement of 10 tonnes for the years 2015-2017."/>
+         </p>
+         <p>
+            <t v="I should be obliged if you would acknowledge receipt of this letter and confirm that this letter and your reply constitute an Agreement between the CCSBT and the European Union to become Member of the CCSBT Extended Commission and Extended Scientific Committee in accordance with the provisions contained in the Resolution mentioned above."/>
+         </p>
+         <p>
+            <t v="The EU would like to indicate its firm commitment to continue to respect the terms of the CCSBT Convention and comply with decisions of the Extended Commission."/>
+         </p>
+         <p>
+            <t v="This Agreement shall apply provisionally from the day following the day of your reply pending the notification by the Union of the completion of the procedures for its conclusion."/>
+         </p>
+         <p>
+            <t v="Please accept, Sir/Madam, the assurance of my highest consideration."/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="For the European Union"/>
+            </emphasis>
+         </p>
+      </unit>
+      <unit eId="let_2" kind="letter">
+         <num>
+            <t v="B."/>
+         </num>
+         <heading>
+            <t v="Letter from the CCSBT"/>
+         </heading>
+         <p>
+            <t v="Sir/Madam,"/>
+         </p>
+         <p>
+            <t v="I have the honour to acknowledge receipt of your letter of today's date, which reads as follows:"/>
+         </p>
+         <quotedStructure eId="let_2/qst_1">
+            <p>
+               <t v="‘"/>
+               <t v="I have the honour to refer to the Resolution to establish an Extended Commission and an Extended Scientific Committee (hereafter "/>
+               <quote startQuote="“" endQuote="”">
+                  <t v="the Resolution"/>
+               </quote>
+               <t v="), as amended by the 20th Meeting of the CCSBT in October 2013."/>
+            </p>
+            <p>
+               <t v="Paragraph 6 of the Resolution establishes that any regional economic integration organisation, entity or fishing entity, vessels flagged to which have caught SBT at any time in the previous three calendar years, may express its willingness to the Executive Secretary of the Commission to become a member of the Extended Commission and Extended Scientific Committee. To this end, the Executive Secretary of the CCSBT, on behalf of the Commission, will conduct an Exchange of Letters with the representative of such regional economic integration organisation, entity or fishing entity to this effect."/>
+            </p>
+            <p>
+               <t v="Regarding Paragraph 8 of the Resolution there are no changes to the EU entitlement of 10 tonnes for the years 2015-2017."/>
+            </p>
+            <p>
+               <t v="I should be obliged if you would acknowledge receipt of this letter and confirm that this letter and your reply constitute an Agreement between the CCSBT and the European Union to become Member of the CCSBT Extended Commission and Extended Scientific Committee in accordance with the provisions contained in the Resolution mentioned above."/>
+            </p>
+            <p>
+               <t v="The EU would like to indicate its firm commitment to continue to respect the terms of the CCSBT Convention and comply with decisions of the Extended Commission."/>
+            </p>
+            <p>
+               <t v="This Agreement shall apply provisionally from the day following the day of your reply pending the notification by the Union of the completion of the procedures for its conclusion."/>
+               <t v="’"/>
+               <t v="."/>
+            </p>
+         </quotedStructure>
+         <p>
+            <t v="I have the honour to confirm that your letter and this reply constitute an Agreement between the CCSBT and the European Union to become Member of the CCSBT Extended Commission and Extended Scientific Committee."/>
+         </p>
+         <p>
+            <t v="Please accept, Sir/Madam, the assurance of my highest consideration."/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="For the CCSBT,"/>
+            </emphasis>
+         </p>
+      </unit>
+   </annexes>
+</legalText>
+

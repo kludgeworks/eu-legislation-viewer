@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32014R0024"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.50"
+           converter="1.0.0">
+   <source celex="32014R0024">
+      <publication series="L" number="9" date="2014-01-14" page="1"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) No 24/2014"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="10 January 2014" date="2014-01-10"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="fixing for 2014 the fishing opportunities for certain fish stocks and groups of fish stocks in the Black Sea"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union, and in particular Article 43(3) thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the proposal from the European Commission,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Article 43(3) of the Treaty provides that the Council, on a proposal from the Commission, is to adopt measures on the fixing and allocation of fishing opportunities."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Regulation (EU) No 1380/2013 of the European Parliament and of the Council"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=" requires that conservation measures be adopted taking into account available scientific, technical and economic advice, including, where relevant, reports drawn up by the Scientific, Technical and Economic Committee for Fisheries (STECF)."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="It is incumbent upon the Council to adopt measures on the fixing and allocation of fishing opportunities by fishery or group of fisheries in the Black Sea, including certain conditions functionally linked thereto, as appropriate. Fishing opportunities should be allocated to Member States in such a way as to ensure relative stability of fishing activities of each Member State for each fish stock or fishery and having due regard to the objectives of the Common Fisheries Policy established in Regulation (EU) No 1380/2013."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="TACs should be established on the basis of the available scientific advice, taking into account biological and socioeconomic aspects whilst ensuring fair treatment between fishing sectors, as well as in the light of the opinions expressed during the consultation of stakeholders."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The use of fishing opportunities set out in this Regulation is subject to Council Regulation (EC) No 1224/2009"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" and in particular to Articles 33 and 34 thereof concerning, respectively, the recording of catches and fishing effort and the notification of data on the exhaustion of fishing opportunities. It is therefore necessary to specify the codes to be used by the Member States when sending data to the Commission relating to landings of stocks subject to this Regulation."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="In accordance with Article 2 of Council Regulation (EC) No 847/96"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=", the stocks that are subject to the various measures referred to therein must be identified."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_7" kind="recital">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <p>
+               <t v="In order to avoid interruption of fishing activities and to ensure the livelihood of Union fishermen, it is important to open the fisheries concerned in the Black Sea on "/>
+               <date asWritten="1 January 2014" date="2014-01-01"/>
+               <t v=". For reasons of urgency, this Regulation should enter into force immediately after its publication,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="cpt_I" kind="division">
+         <num>
+            <t v="CHAPTER I"/>
+         </num>
+         <subheading>
+            <emphasis kind="b">
+               <t v="SCOPE AND DEFINITIONS"/>
+            </emphasis>
+         </subheading>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <heading>
+               <t v="Subject matter"/>
+            </heading>
+            <p>
+               <t v="This Regulation fixes the fishing opportunities for 2014 for certain fish stocks and groups of fish stocks in the Black Sea."/>
+            </p>
+         </unit>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <heading>
+               <t v="Scope"/>
+            </heading>
+            <p>
+               <t v="This Regulation shall apply to EU vessels operating in the Black Sea."/>
+            </p>
+         </unit>
+         <unit eId="art_3" kind="article">
+            <num>
+               <t v="Article 3"/>
+            </num>
+            <heading>
+               <t v="Definitions"/>
+            </heading>
+            <p>
+               <t v="For the purposes of this Regulation, the following definitions shall apply:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="GFCM"/>
+                     </quote>
+                     <t v=" means General Fisheries Commission for the Mediterranean;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="Black Sea"/>
+                     </quote>
+                     <t v=" means the geographical subarea 29 as defined in Annex I to Regulation (EU) No 1343/2011 of the European Parliament and the Council"/>
+                     <noteRef href="#note_4" marker="4"/>
+                     <t v=" and in Resolution GFCM/33/2009/2;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="EU vessel"/>
+                     </quote>
+                     <t v=" means a fishing vessel flying the flag of a Member State and registered in the Union;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_d" kind="point">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="total allowable catch (TAC)"/>
+                     </quote>
+                     <t v=" means the quantity that can be taken from each stock each year;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_e" kind="point">
+                  <num>
+                     <t v="(e)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="quota"/>
+                     </quote>
+                     <t v=" means a proportion of the TAC allocated to the Union, a Member State or a third country."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </unit>
+      <unit eId="cpt_II" kind="division">
+         <num>
+            <t v="CHAPTER II"/>
+         </num>
+         <subheading>
+            <emphasis kind="b">
+               <t v="FISHING OPPORTUNITIES"/>
+            </emphasis>
+         </subheading>
+         <unit eId="art_4" kind="article">
+            <num>
+               <t v="Article 4"/>
+            </num>
+            <heading>
+               <t v="TACs and allocation"/>
+            </heading>
+            <p>
+               <t v="The TACs for EU vessels, the allocation of such TACs among Member States, and the conditions functionally linked thereto, where appropriate, are set out in the Annex."/>
+            </p>
+         </unit>
+         <unit eId="art_5" kind="article">
+            <num>
+               <t v="Article 5"/>
+            </num>
+            <heading>
+               <t v="Special provisions on allocations"/>
+            </heading>
+            <p>
+               <t v="The allocation of fishing opportunities among Member States as set out in in this Regulation shall be without prejudice to:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_5/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="exchanges made pursuant to Article 16(8) of Regulation (EU) No 1380/2013;"/>
+                  </p>
+               </unit>
+               <unit eId="art_5/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="deductions and reallocations made pursuant to Article 37 of Regulation (EC) No 1224/2009;"/>
+                  </p>
+               </unit>
+               <unit eId="art_5/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="additional landings allowed under Article 3 of Regulation (EC) No 847/96;"/>
+                  </p>
+               </unit>
+               <unit eId="art_5/pnt_d" kind="point">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="quantities withheld in accordance with Article 4 of Regulation (EC) No 847/96;"/>
+                  </p>
+               </unit>
+               <unit eId="art_5/pnt_e" kind="point">
+                  <num>
+                     <t v="(e)"/>
+                  </num>
+                  <p>
+                     <t v="deductions made pursuant to Articles 105 and 107 of Regulation (EC) No 1224/2009."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_6" kind="article">
+            <num>
+               <t v="Article 6"/>
+            </num>
+            <heading>
+               <t v="Conditions for landing catches and by-catches"/>
+            </heading>
+            <p>
+               <t v="Fish from stocks for which fishing opportunities are fixed by this Regulation shall be retained on board or landed only if:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_6/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the catches have been taken by vessels of a Member State having a quota and that quota is not exhausted; or"/>
+                  </p>
+               </unit>
+               <unit eId="art_6/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="the catches consist of a share in a Union quota which has not been allocated by quota among Member States, and that Union quota has not been exhausted."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </unit>
+      <unit eId="cpt_III" kind="division">
+         <num>
+            <t v="CHAPTER III"/>
+         </num>
+         <subheading>
+            <emphasis kind="b">
+               <t v="FINAL PROVISIONS"/>
+            </emphasis>
+         </subheading>
+         <unit eId="art_7" kind="article">
+            <num>
+               <t v="Article 7"/>
+            </num>
+            <heading>
+               <t v="Data transmission"/>
+            </heading>
+            <p>
+               <t v="When, pursuant to Articles 33 and 34 of Regulation (EC) No 1224/2009, Member States send the Commission data relating to landings of quantities of stocks caught, they shall use the stock codes set out in the Annex to this Regulation."/>
+            </p>
+         </unit>
+         <unit eId="art_8" kind="article">
+            <num>
+               <t v="Article 8"/>
+            </num>
+            <heading>
+               <t v="Entry into force"/>
+            </heading>
+            <unit eId="art_8/unp_1" kind="paragraph">
+               <p>
+                  <t v="This Regulation shall enter into force on the day following that of its publication in the "/>
+                  <emphasis kind="i">
+                     <t v="Official Journal of the European Union"/>
+                  </emphasis>
+                  <t v="."/>
+               </p>
+            </unit>
+            <unit eId="art_8/unp_2" kind="paragraph">
+               <p>
+                  <t v="It shall apply from "/>
+                  <date asWritten="1 January 2014" date="2014-01-01"/>
+                  <t v="."/>
+               </p>
+            </unit>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="10 January 2014" date="2014-01-10"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Council"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="D. "/>
+               <emphasis kind="uc">
+                  <t v="Kourkoulas"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <unit eId="anx/lvl_1" kind="level" depth="1">
+            <heading>
+               <emphasis kind="b">
+                  <t v="TACs APPLICABLE TO EU VESSELS IN AREAS WHERE TACs EXIST BY SPECIES AND BY AREA"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The following tables set out the TACs and quotas (in tonnes live weight, except where otherwise specified) by stock, and conditions functionally linked thereto, where appropriate."/>
+            </p>
+            <p>
+               <t v="Fish stocks are referred to following the alphabetical order of the Latin names of the species. For the purposes of this Regulation, the following comparative table of Latin names and common names is provided:"/>
+            </p>
+            <table cols="3">
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Scientific name"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Alpha-3 code"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Common name"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <emphasis kind="i">
+                           <t v="Psetta maxima"/>
+                        </emphasis>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="TUR"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Turbot"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <emphasis kind="i">
+                           <t v="Sprattus sprattus"/>
+                        </emphasis>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="SPR"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Sprat"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <table cols="3">
+               <tr header="true">
+                  <td colspan="2" header="true">
+                     <list kind="definition">
+                        <unit eId="anx/lvl_1/tbl_2/tr_1/td_1/def_1" kind="definition">
+                           <heading>
+                              <t v="Species"/>
+                           </heading>
+                           <p>
+                              <t v="Turbot"/>
+                           </p>
+                           <p>
+                              <emphasis kind="i">
+                                 <t v="Psetta maxima"/>
+                              </emphasis>
+                           </p>
+                        </unit>
+                     </list>
+                  </td>
+                  <td header="true">
+                     <list kind="definition">
+                        <unit eId="anx/lvl_1/tbl_2/tr_1/td_3/lst_2/def_1" kind="definition">
+                           <heading>
+                              <t v="Zone"/>
+                           </heading>
+                           <p>
+                              <t v="EU waters in the Black Sea"/>
+                           </p>
+                           <p>
+                              <t v="TUR/F37.4.2.C"/>
+                           </p>
+                        </unit>
+                     </list>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Bulgaria"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="43,2"/>
+                     </p>
+                  </td>
+                  <td rowspan="3"/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Romania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="43,2"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Union"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="86,4"/>
+                        <noteRef href="#note_anx01000401-1" marker="1"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="TAC"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Not relevant"/>
+                     </p>
+                  </td>
+                  <td>
+                     <unit eId="anx/lvl_1/tbl_2/tr_5/td_3/lvl_1"
+                           kind="level"
+                           depth="2"
+                           box="true">
+                        <p>
+                           <t v="Analytical TAC"/>
+                        </p>
+                        <p>
+                           <t v="Article 3 of Regulation (EC) No 847/96 shall not apply."/>
+                        </p>
+                        <p>
+                           <t v="Article 4 of Regulation (EC) No 847/96 shall not apply."/>
+                        </p>
+                     </unit>
+                  </td>
+               </tr>
+            </table>
+            <table cols="3">
+               <tr header="true">
+                  <td colspan="2" header="true">
+                     <list kind="definition">
+                        <unit eId="anx/lvl_1/tbl_3/tr_1/td_1/def_1" kind="definition">
+                           <heading>
+                              <t v="Species"/>
+                           </heading>
+                           <p>
+                              <t v="Sprat"/>
+                           </p>
+                           <p>
+                              <emphasis kind="i">
+                                 <t v="Sprattus sprattus"/>
+                              </emphasis>
+                           </p>
+                        </unit>
+                     </list>
+                  </td>
+                  <td header="true">
+                     <list kind="definition">
+                        <unit eId="anx/lvl_1/tbl_3/tr_1/td_3/lst_2/def_1" kind="definition">
+                           <heading>
+                              <t v="Zone"/>
+                           </heading>
+                           <p>
+                              <t v="EU waters in the Black Sea"/>
+                           </p>
+                           <p>
+                              <t v="SPR/F37.4.2.C"/>
+                           </p>
+                        </unit>
+                     </list>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Bulgaria"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8032,5"/>
+                     </p>
+                  </td>
+                  <td rowspan="3"/>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Romania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3442,5"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Union"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="11475"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="TAC"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Not relevant"/>
+                     </p>
+                  </td>
+                  <td>
+                     <unit eId="anx/lvl_1/tbl_3/tr_5/td_3/lvl_2"
+                           kind="level"
+                           depth="2"
+                           box="true">
+                        <p>
+                           <t v="Analytical TAC"/>
+                        </p>
+                        <p>
+                           <t v="Article 3 of Regulation (EC) No 847/96 shall not apply."/>
+                        </p>
+                        <p>
+                           <t v="Article 4 of Regulation (EC) No 847/96 shall not apply."/>
+                        </p>
+                     </unit>
+                  </td>
+               </tr>
+            </table>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="Regulation (EU) No 1380/2013 of the European Parliament and of the Council of "/>
+            <date asWritten="11 December 2013" date="2013-12-11"/>
+            <t v=" on the Common Fisheries Policy, amending Council Regulations (EC) No 1954/2003 and (EC) No 1224/2009 and repealing Council Regulations (EC) No 2371/2002 and (EC) No 639/2004 and Council Decision 2004/585/EC ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="354"
+                 date="2013-12-28"
+                 page="22">
+               <t v="OJ L 354, 28.12.2013, p. 22"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Council Regulation (EC) No 1224/2009 of "/>
+            <date asWritten="20 November 2009" date="2009-11-20"/>
+            <t v=" establishing a Community control system for ensuring compliance with the rules of the common fisheries policy, amending Regulations (EC) No 847/96, (EC) No 2371/2002, (EC) No 811/2004, (EC) No 768/2005, (EC) No 2115/2005, (EC) No 2166/2005, (EC) No 388/2006, (EC) No 509/2007, (EC) No 676/2007, (EC) No 1098/2007, (EC) No 1300/2008, (EC) No 1342/2008 and repealing Regulations (EEC) No 2847/93, (EC) No 1627/94 and (EC) No 1966/2006 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="343"
+                 date="2009-12-22"
+                 page="1">
+               <t v="OJ L 343, 22.12.2009, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Council Regulation (EC) No 847/96 of "/>
+            <date asWritten="6 May 1996" date="1996-05-06"/>
+            <t v=" introducing additional conditions for year-to-year management of TACs and quotas ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="115"
+                 date="1996-05-09"
+                 page="3">
+               <t v="OJ L 115, 9.5.1996, p. 3"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <t v="Regulation (EU) No 1343/2011 of the European Parliament and of the Council of "/>
+            <date asWritten="13 December 2011" date="2011-12-13"/>
+            <t v=" on certain provisions for fishing in the GFCM (General Fisheries Commission for the Mediterranean) Agreement area and amending Council Regulation (EC) No 1967/2006 concerning management measures for the sustainable exploitation of fishery resources in the Mediterranean Sea ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="347"
+                 date="2011-12-30"
+                 page="44">
+               <t v="OJ L 347, 30.12.2011, p. 44"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_anx01000401-1" marker="1" kind="table">
+         <p>
+            <t v="No fishing activity, including transhipment, taking on board, landing and first sale shall be permitted from "/>
+            <date asWritten="15 April" date="2014-04-15"/>
+            <t v=" to "/>
+            <date asWritten="15 June 2014" date="2014-06-15"/>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

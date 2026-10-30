@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32006D0477"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2006-06-30"
+           lang="en"
+           formexVersion="03.00"
+           converter="1.0.0">
+   <source celex="02006D0477-20060630">
+      <publication series="L" number="188" date="2006-07-11" page="9"/>
+   </source>
+   <lifecycle start="2006-06-30" produced="2006-11-08" sequence="000.001.0">
+      <eventRef type="corrigendum" act="32006D0477R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <changed amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001002">
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </changed>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <changed amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001002">
+                  <t v=" 2006/477/CFSP"/>
+               </changed>
+            </docNumber>
+         </p>
+         <p>
+            <changed amendingAct="32006D0477R(01)"
+                     action="replaced"
+                     location="TO"
+                     marker="O000001M001002">
+               <t v="of "/>
+            </changed>
+            <docDate asWritten="30 June 2006" date="2006-06-30"/>
+         </p>
+         <p>
+            <docPurpose>
+               <changed amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001002">
+                  <t v="concerning the conclusion of the Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA)"/>
+               </changed>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <provenance amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M002000"/>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <provenance amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M002000"/>
+            <p>
+               <t v="Having regard to the Treaty on European Union, and in particular Article 24 thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <provenance amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M002000"/>
+            <p>
+               <t v="Having regard to the recommendation from the Presidency,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <provenance amendingAct="32006D0477R(01)"
+                           action="replaced"
+                           location="TO"
+                           marker="O000001M002000"/>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <provenance amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M002000"/>
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="On "/>
+               <date asWritten="12 July 2004" date="2004-07-12"/>
+               <t v=", the Council adopted Joint Action 2004/570/CFSP on the European Union military operation in Bosnia and Herzegovina"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=".&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <provenance amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M002000"/>
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Article 11(3) of that Joint Action provides that detailed arrangements regarding the participation of third States are to be the subject of an agreement, in accordance with Article 24 of the Treaty.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <provenance amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M002000"/>
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Following authorisation by the Council on "/>
+               <date asWritten="13 September 2004" date="2004-09-13"/>
+               <t v=", the Presidency, assisted by the Secretary-General/High Representative, negotiated an Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA).&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <provenance amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M002000"/>
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The Agreement should be approved,&#xA;"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <provenance amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M002000"/>
+            <t v="HAS DECIDED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <provenance amendingAct="32006D0477R(01)"
+                     action="replaced"
+                     location="TO"
+                     marker="O000001M002000"/>
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <unit eId="art_1/unp_1" kind="paragraph">
+            <p>
+               <t v="The Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA) is hereby approved on behalf of the European Union."/>
+            </p>
+         </unit>
+         <unit eId="art_1/unp_2" kind="paragraph">
+            <p>
+               <t v="The text of the Agreement is attached to this Decision."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <provenance amendingAct="32006D0477R(01)"
+                     action="replaced"
+                     location="TO"
+                     marker="O000001M002000"/>
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The President of the Council is hereby authorised to designate the person(s) empowered to sign the Agreement in order to bind the European Union."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <provenance amendingAct="32006D0477R(01)"
+                     action="replaced"
+                     location="TO"
+                     marker="O000001M002000"/>
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Decision shall take effect on the day of its adoption."/>
+         </p>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <provenance amendingAct="32006D0477R(01)"
+                     action="replaced"
+                     location="TO"
+                     marker="O000001M002000"/>
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <p>
+            <t v="This Decision shall be published in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="252"
+                 date="2004-07-28"
+                 page="10">
+               <t v="OJ L 252, 28.7.2004, p. 10"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

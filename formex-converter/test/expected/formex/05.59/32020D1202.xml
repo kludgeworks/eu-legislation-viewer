@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32020D1202"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="32020D1202">
+      <publication series="L" number="269" date="2020-08-17" page="40"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Implementing Decision"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) 2020/1202"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="14 August 2020" date="2020-08-14"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="terminating the anti-dumping proceeding concerning imports of pins and staples originating in the People’s Republic of China and subjecting imports of pins and staples originating in the People’s Republic of China to surveillance"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Regulation (EU) 2016/1036 of the European Parliament and of the Council of "/>
+               <date asWritten="8 June 2016" date="2016-06-08"/>
+               <t v=" on protection against dumped imports from countries not members of the European Union"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 9(1) thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to Regulation (EU) No 952/2013 of the European Parliament and of the Council of "/>
+               <date asWritten="9 October 2013" date="2013-10-09"/>
+               <t v=" laying down the Union Customs Code"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", and in particular Article 56(5) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/dvs_1" kind="division">
+            <num>
+               <t v="1."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="PROCEDURE"/>
+               </emphasis>
+            </heading>
+            <unit eId="pbl_1/rct_1" kind="recital">
+               <num>
+                  <t v="(1)"/>
+               </num>
+               <p>
+                  <t v="On "/>
+                  <date asWritten="18 December 2019" date="2019-12-18"/>
+                  <t v=", the European Commission initiated an anti-dumping proceeding concerning imports of pins and staples originating in the People’s Republic of China by publishing a notice of initiation in the "/>
+                  <emphasis kind="i">
+                     <t v="Official Journal of the European Union"/>
+                  </emphasis>
+                  <noteRef href="#note_3" marker="3"/>
+                  <t v="."/>
+               </p>
+            </unit>
+            <unit eId="pbl_1/rct_2" kind="recital">
+               <num>
+                  <t v="(2)"/>
+               </num>
+               <p>
+                  <t v="The investigation was initiated following a complaint lodged by six EU producers: Atrom Impex srl (Romania), Bizon Int. Sp. z.o.o. (Poland), Ergo Staples (Croatia), Grupodesa (Spain), Omer SpA (Italy) and Velo srl (Italy), ("/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="the complainants"/>
+                  </quote>
+                  <t v="), representing more than 50 % of the total Union production of pins and staples. The complaint contained evidence of dumping and of resulting material injury that was considered sufficient to justify the initiation of the investigation."/>
+               </p>
+            </unit>
+            <unit eId="pbl_1/rct_3" kind="recital">
+               <num>
+                  <t v="(3)"/>
+               </num>
+               <p>
+                  <t v="In the notice of initiation, the Commission invited interested parties to contact it in order to participate in the investigation. In addition, the Commission specifically informed the complainants, other known Union producers, the known exporting producers and the Chinese authorities, known importers, suppliers and users, traders, as well as associations known to be concerned about the initiation of the investigation and invited them to participate."/>
+               </p>
+            </unit>
+            <unit eId="pbl_1/rct_4" kind="recital">
+               <num>
+                  <t v="(4)"/>
+               </num>
+               <p>
+                  <t v="All interested parties had an opportunity to comment on the initiation of the investigation and to request a hearing with the Commission and/or the Hearing Officer in trade proceedings within the time limit set in the notice of initiation."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="pbl_1/dvs_2" kind="division">
+            <num>
+               <t v="2."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="WITHDRAWAL OF THE COMPLAINT AND TERMINATION OF THE PROCEEDING"/>
+               </emphasis>
+            </heading>
+            <unit eId="pbl_1/rct_5" kind="recital">
+               <num>
+                  <t v="(5)"/>
+               </num>
+               <p>
+                  <t v="On "/>
+                  <date asWritten="24 June 2020" date="2020-06-24"/>
+                  <t v=", the complainants informed the Commission that they withdrew the complaint."/>
+               </p>
+            </unit>
+            <unit eId="pbl_1/rct_6" kind="recital">
+               <num>
+                  <t v="(6)"/>
+               </num>
+               <p>
+                  <t v="Under Article 9(1) of Regulation (EU) 2016/1036, proceedings may be terminated where the complaint is withdrawn, unless such termination would not be in the Union interest."/>
+               </p>
+            </unit>
+            <unit eId="pbl_1/rct_7" kind="recital">
+               <num>
+                  <t v="(7)"/>
+               </num>
+               <p>
+                  <t v="The investigation had not brought to light any considerations showing that a continuation of the case would be in the Union interest. However, the Commission also took note of a determination of "/>
+                  <date asWritten="26 May 2020" date="2020-05-26"/>
+                  <t v=" by the U.S. Department of Commerce in an anti-dumping and anti-subsidy investigation on imports of certain collated steel staples from the People’s Republic of China, which are product types of the product concerned. Given the potential risk of future trade diversions, the Commission will consider the statistical trends of Chinese imports of the product concerned for a period of 24 months as from the publication of this Decision. This will enable the Commission to assess the potential need to initiate a new investigation in accordance with the requirements of the basic Regulation."/>
+               </p>
+            </unit>
+            <unit eId="pbl_1/rct_8" kind="recital">
+               <num>
+                  <t v="(8)"/>
+               </num>
+               <p>
+                  <t v="The Commission therefore concluded that the anti-dumping proceeding concerning imports into the Union of pins and staples originating in the People’s Republic of China should be terminated without the imposition of measures."/>
+               </p>
+            </unit>
+            <unit eId="pbl_1/rct_9" kind="recital">
+               <num>
+                  <t v="(9)"/>
+               </num>
+               <p>
+                  <t v="Interested parties were informed accordingly and were given an opportunity to comment. No interested party objected to the termination."/>
+               </p>
+            </unit>
+            <unit eId="pbl_1/rct_10" kind="recital">
+               <num>
+                  <t v="(10)"/>
+               </num>
+               <p>
+                  <t v="The Decision is in accordance with the opinion of the Committee established by Article 15(1) of Regulation (EU) 2016/1036 and the Customs Code Committee established by Article 285 of Regulation (EU) No 952/2013,"/>
+               </p>
+            </unit>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The anti-dumping proceeding concerning imports of pins and staples currently falling under CN codes "/>
+            <t v="ex73170020"/>
+            <t v=", "/>
+            <t v="ex73170060"/>
+            <t v=", "/>
+            <t v="ex73170080"/>
+            <t v=", "/>
+            <t v="ex73262000"/>
+            <t v=", "/>
+            <t v="ex76161000"/>
+            <t v=", "/>
+            <t v="83052000"/>
+            <t v=" and "/>
+            <t v="ex83081000"/>
+            <t v=" (TARIC codes "/>
+            <t v="7317002040"/>
+            <t v=", "/>
+            <t v="7317006040"/>
+            <t v=", "/>
+            <t v="7317008040"/>
+            <t v=", "/>
+            <t v="7326200040"/>
+            <t v=", "/>
+            <t v="7616100040"/>
+            <t v=" and "/>
+            <t v="8308100040"/>
+            <t v="), originating in the People’s Republic of China, is terminated."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The TARIC codes mentioned in Article 1 or any corresponding future codes shall remain open for a period of 24 months as from the publication of this Decision to allow the Commission to follow the statistical trends of imports of pins and staples in accordance with Article 56(5) of Regulation (EU) No 952/2013."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Decision shall enter into force on the day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="14 August 2020" date="2020-08-14"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="Ursula "/>
+               <emphasis kind="uc">
+                  <t v="von der Leyen"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="176"
+                 date="2016-06-30"
+                 page="21">
+               <t v="OJ L 176, 30.6.2016, p. 21"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="269"
+                 date="2013-10-10"
+                 page="1">
+               <t v="OJ L 269, 10.10.2013, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="425"
+                 date="2019-12-18"
+                 page="21">
+               <t v="OJ C 425, 18.12.2019, p. 21"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

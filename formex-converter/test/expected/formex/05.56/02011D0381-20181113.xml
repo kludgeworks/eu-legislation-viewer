@@ -1,0 +1,2829 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32011D0381"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2018-11-13"
+           lang="en"
+           formexVersion="05.56"
+           converter="1.0.0">
+   <source celex="02011D0381-20181113">
+      <publication series="L" number="169" date="2011-06-29" page="28"/>
+   </source>
+   <lifecycle start="2018-11-13" produced="2018-11-13" sequence="002.001.0">
+      <eventRef type="amendment" act="32015D0877" date="2015-06-04"/>
+      <eventRef type="amendment" act="32018D1702" date="2018-11-08"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <deleted amendingAct="32018D1702"
+                        action="deleted"
+                        location="AR:6"
+                        marker="O002001M001000">
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </deleted>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <deleted amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000">
+               <t v="of "/>
+            </deleted>
+            <docDate asWritten="24 June 2011" date="2011-06-24"/>
+         </p>
+         <p>
+            <docPurpose>
+               <deleted amendingAct="32018D1702"
+                        action="deleted"
+                        location="AR:6"
+                        marker="O002001M001000">
+                  <t v="on establishing the ecological criteria for the award of the EU Ecolabel to lubricants"/>
+               </deleted>
+            </docPurpose>
+         </p>
+         <p>
+            <deleted amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000">
+               <t v="(notified under document C(2011) 4447)"/>
+            </deleted>
+         </p>
+         <p>
+            <deleted amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000">
+               <t v="(Text with EEA relevance)"/>
+            </deleted>
+         </p>
+         <p>
+            <deleted amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000">
+               <t v="(2011/381/EU)"/>
+            </deleted>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <deleted>
+         <provenance amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000"/>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <p>
+               <t v="The product group "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="lubricants"/>
+               </quote>
+               <t v=" shall comprise the following categories:"/>
+            </p>
+            <list kind="definition">
+               <unit eId="art_1/def_1" kind="definition">
+                  <heading>
+                     <t v="Category 1"/>
+                  </heading>
+                  <p>
+                     <t v="hydraulic fluids and tractor transmission oils"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/def_2" kind="definition">
+                  <heading>
+                     <t v="Category 2"/>
+                  </heading>
+                  <p>
+                     <t v="greases and stern tube greases"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/def_3" kind="definition">
+                  <heading>
+                     <t v="Category 3"/>
+                  </heading>
+                  <p>
+                     <t v="chainsaw oils, concrete release agents, wire rope lubricants, stern tube oils and other total loss lubricants"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/def_4" kind="definition">
+                  <heading>
+                     <t v="Category 4"/>
+                  </heading>
+                  <p>
+                     <t v="two-stroke oils"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/def_5" kind="definition">
+                  <heading>
+                     <t v="Category 5"/>
+                  </heading>
+                  <p>
+                     <t v="industrial and marine gear oils."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000"/>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <p>
+               <t v="For the purpose of this Decision, the following definitions shall apply:"/>
+            </p>
+            <list kind="arabic">
+               <unit eId="art_2/pnt_1" kind="point">
+                  <num>
+                     <t v="(1)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="lubricant"/>
+                     </quote>
+                     <t v=" means a preparation consisting of base fluids and additives;"/>
+                  </p>
+               </unit>
+               <unit eId="art_2/pnt_2" kind="point">
+                  <num>
+                     <t v="(2)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="basefluid"/>
+                     </quote>
+                     <t v=" means a lubricating fluid whose flow, ageing, lubricity and anti-wear properties, as well as its properties regarding contaminant suspension, have not been improved by the inclusion of additive(s);"/>
+                  </p>
+               </unit>
+               <unit eId="art_2/pnt_3" kind="point">
+                  <num>
+                     <t v="(3)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="substance"/>
+                     </quote>
+                     <t v=" means a chemical element and its compounds in the natural state or obtained by any production process, including any additive necessary to preserve the stability of the products and any impurity deriving from the process used, but excluding any solvent which may be separated without affecting the stability of the substance or changing its composition;"/>
+                  </p>
+               </unit>
+               <unit eId="art_2/pnt_4" kind="point">
+                  <num>
+                     <t v="(4)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="thickener"/>
+                     </quote>
+                     <t v=" means one or more substances in the base fluid used to thicken or modify the rheology of a lubricating fluid or grease;"/>
+                  </p>
+               </unit>
+               <unit eId="art_2/pnt_5" kind="point">
+                  <num>
+                     <t v="(5)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="main component"/>
+                     </quote>
+                     <t v=" means any substance accounting for more than 5 % by weight of the lubricant;"/>
+                  </p>
+               </unit>
+               <unit eId="art_2/pnt_6" kind="point">
+                  <num>
+                     <t v="(6)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="additive"/>
+                     </quote>
+                     <t v=" means a substance or mixture whose primary functions are the improvement of the flow, ageing, lubricity, anti-wear properties or of contaminant suspension;"/>
+                  </p>
+               </unit>
+               <unit eId="art_2/pnt_7" kind="point">
+                  <num>
+                     <t v="(7)"/>
+                  </num>
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="grease"/>
+                     </quote>
+                     <t v=" means a solid to semi-solid mixture which consists of a "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="thickener"/>
+                     </quote>
+                     <t v=" and may include other ingredients imparting special properties in a liquid lubricant."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000"/>
+         <unit eId="art_3" kind="article">
+            <num>
+               <t v="Article 3"/>
+            </num>
+            <p>
+               <t v="In order to be awarded the EU Ecolabel under Regulation (EC) No 66/2010 a product shall fall within the product group "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="lubricants"/>
+               </quote>
+               <t v=" as defined in Article 1 of this Decision and shall comply with the criteria as well as the related assessment and verification requirements set out in the Annex to this Decision."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000"/>
+         <unit eId="art_4" kind="article">
+            <provenance amendingAct="32015D0877"
+                        action="replaced"
+                        location="AR:3"
+                        marker="O001001M001000"/>
+            <num>
+               <t v="Article 4"/>
+            </num>
+            <p>
+               <t v="The ecological criteria for the product group "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="llubricants"/>
+               </quote>
+               <t v=" and the related assessment and verification requirements, shall be valid until "/>
+               <date asWritten="31 December 2018" date="2018-12-31"/>
+               <t v="."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000"/>
+         <unit eId="art_5" kind="article">
+            <num>
+               <t v="Article 5"/>
+            </num>
+            <p>
+               <t v="For administrative purposes, the code number assigned to the product group "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="lubricants"/>
+               </quote>
+               <t v=" shall be "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="027"/>
+               </quote>
+               <t v="."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000"/>
+         <unit eId="art_6" kind="article">
+            <num>
+               <t v="Article 6"/>
+            </num>
+            <p>
+               <t v="Decision 2005/360/EC is repealed."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000"/>
+         <unit eId="art_7" kind="article">
+            <num>
+               <t v="Article 7"/>
+            </num>
+            <unit eId="art_7/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="By derogation from Article 6, applications for the EU Ecolabel for products falling within the product group "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="lubricants"/>
+                  </quote>
+                  <t v=" submitted before the date of adoption of this Decision shall be evaluated in accordance with the conditions laid down in Decision 2005/360/EC."/>
+               </p>
+            </unit>
+            <unit eId="art_7/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Applications for the EU Ecolabel for products falling within the product group "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="lubricants"/>
+                  </quote>
+                  <t v=" submitted from the date of adoption of this Decision but by "/>
+                  <date asWritten="30 June 2011" date="2011-06-30"/>
+                  <t v=" at the latest may be based either on the criteria set out in Decision 2005/360/EC or on the criteria set out in this Decision. Those applications shall be evaluated in accordance with the criteria on which they are based."/>
+               </p>
+            </unit>
+            <unit eId="art_7/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="Where the EU Ecolabel is awarded on the basis of an application evaluated according to the criteria set out in Decision 2005/360/EC, that EU Ecolabel may be used for 12 months from the date of adoption of this Decision."/>
+               </p>
+            </unit>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000"/>
+         <unit eId="art_8" kind="article">
+            <num>
+               <t v="Article 8"/>
+            </num>
+            <p>
+               <t v="This Decision is addressed to the Member States."/>
+            </p>
+         </unit>
+      </deleted>
+   </body>
+   <annexes>
+      <deleted>
+         <provenance amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000"/>
+         <unit eId="anx" kind="annex" eurlexAnchor="1">
+            <num>
+               <t v="ANNEX"/>
+            </num>
+            <unit eId="anx/lvl_1" kind="level" depth="1">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="FRAMEWORK"/>
+                  </emphasis>
+               </heading>
+            </unit>
+            <unit eId="anx/lvl_1/lvl_1" kind="level" depth="2">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="The aims of the criteria"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="These criteria aim in particular at promoting products that have a reduced impact on the water and soil during its use and contain a large fraction of biobased material."/>
+               </p>
+            </unit>
+            <unit eId="anx/lvl_2" kind="level" depth="1">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="CRITERIA"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <num>
+                     <t v="1."/>
+                  </num>
+                  <t v="Excluded or limited substances and mixtures"/>
+               </p>
+               <p>
+                  <num>
+                     <t v="2."/>
+                  </num>
+                  <t v="Exclusion of specific substances"/>
+               </p>
+               <p>
+                  <num>
+                     <t v="3."/>
+                  </num>
+                  <t v="Additional aquatic toxicity requirements"/>
+               </p>
+               <p>
+                  <num>
+                     <t v="4."/>
+                  </num>
+                  <t v="Biodegradability and bioaccumulative potential"/>
+               </p>
+               <p>
+                  <num>
+                     <t v="5."/>
+                  </num>
+                  <t v="Renewable raw materials"/>
+               </p>
+               <p>
+                  <num>
+                     <t v="6."/>
+                  </num>
+                  <t v="Minimum technical performance"/>
+               </p>
+               <p>
+                  <num>
+                     <t v="7."/>
+                  </num>
+                  <t v="Information appearing on the EU Ecolabel"/>
+               </p>
+            </unit>
+            <unit eId="anx/lvl_2/lvl_1" kind="level" depth="2">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Assessment and verification requirements"/>
+                  </emphasis>
+               </heading>
+            </unit>
+            <unit eId="anx/lvl_2/lvl_1/pnt_a" kind="level" depth="3">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <heading>
+                  <t v="Requirements"/>
+               </heading>
+               <p>
+                  <t v="The specific assessment and verification requirements are indicated within each criterion."/>
+               </p>
+               <p>
+                  <t v="Where the applicant is required to provide declarations, documentation, analyses, test reports, or other evidence to show compliance with the criteria to the competent body, it is understood that these may originate from the applicant and/or his supplier(s) and/or their supplier(s), etc. as appropriate."/>
+               </p>
+               <p>
+                  <t v="The supplier of the additive, thickener or base fluid may provide the relevant information directly to the competent body."/>
+               </p>
+               <p>
+                  <t v="Where possible, the testing should be performed by laboratories that meet the general requirements of EN ISO 17025 or equivalent."/>
+               </p>
+               <p>
+                  <t v="Where appropriate, test methods other than those indicated for each criterion may be used if the competent body assessing the application accepts their equivalence."/>
+               </p>
+               <p>
+                  <t v="Where appropriate, competent bodies may require supporting documentation and may carry out independent verifications."/>
+               </p>
+               <p>
+                  <t v="The general scheme for the assessment of any constituent substance in a lubricant product is given in Table 1."/>
+               </p>
+            </unit>
+            <unit eId="anx/lvl_2/lvl_1/pnt_b" kind="level" depth="3">
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <heading>
+                  <t v="Measurement thresholds"/>
+               </heading>
+               <p>
+                  <t v="All constituent substances that are present above 0,010 % (w/w) and which are intentionally added and/or are formed intentionally after any chemical reaction in the applied lubricant shall be unambiguously stated giving their names and the mass concentrations in which they are present and where applicable, their CAS Registry and EC registry number."/>
+               </p>
+               <p>
+                  <t v="The criteria shall apply as follows:"/>
+               </p>
+               <list kind="dash">
+                  <unit eId="anx/lvl_2/lvl_1/pnt_b/idt_1" kind="indent">
+                     <p>
+                        <t v="to the applied lubricant for criteria 1(a), 6 and 7,"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/lvl_2/lvl_1/pnt_b/idt_2" kind="indent">
+                     <p>
+                        <t v="to each stated substance intentionally added or formed above 0,010 % (w/w) for criterion 1(b) and 2,"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/lvl_2/lvl_1/pnt_b/idt_3" kind="indent">
+                     <p>
+                        <t v="to each stated substance intentionally added or formed above 0,10 % (w/w) for criteria 3, 4 and 5."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="In addition the total fraction of the stated substances where the formulated criteria 3 and 4 do not apply shall remain below 0,5 % (w/w)."/>
+               </p>
+            </unit>
+            <unit eId="anx/lvl_3" kind="level" depth="1">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="EU ECOLABEL CRITERIA"/>
+                  </emphasis>
+               </heading>
+            </unit>
+            <unit eId="anx/pnt_Criterion-1-" kind="level" depth="2">
+               <num>
+                  <emphasis kind="b">
+                     <t v="Criterion 1 –"/>
+                  </emphasis>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Excluded or limited substances and mixtures"/>
+                  </emphasis>
+               </heading>
+            </unit>
+            <unit eId="anx/pnt_Criterion-1-/pnt_a" kind="level" depth="3">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <heading>
+                  <t v="Hazardous substances and mixtures"/>
+               </heading>
+               <p>
+                  <t v="According to the Article 6(6) of Regulation (EC) No 66/2010 on the EU Ecolabel, the product or any part of it shall not contain substances (in any forms, including nanoforms) meeting the criteria for classification with the hazard statements or risk phrases specified below in accordance with Regulation (EC) No 1272/2008 of the European Parliament and of the Council"/>
+                  <noteRef href="#note_1" marker="1"/>
+                  <t v=" or Council Directive 67/548/EEC"/>
+                  <noteRef href="#note_2" marker="2"/>
+                  <t v=" nor shall it contain substances referred to in Article 57 of Regulation (EC) No 1907/2006 of the European Parliament and of the Council"/>
+                  <noteRef href="#note_3" marker="3"/>
+                  <t v=". The risk phrases below generally refer to substances. Nanoforms intentionally added to the product shall prove compliance with this criterion for any concentration."/>
+               </p>
+               <p>
+                  <t v="List of hazard statements and risk phrases:"/>
+               </p>
+               <table cols="2">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Hazard Statement"/>
+                           <noteRef href="#note_4" marker="1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Risk Phrase"/>
+                           <noteRef href="#note_5" marker="2"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H300 Fatal if swallowed"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R28"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H301 Toxic if swallowed"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R25"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H304 May be fatal if swallowed and enters airways"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R65"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H310 Fatal in contact with skin"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R27"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H311 Toxic in contact with skin"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R24"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H330 Fatal if inhaled"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R26"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H331 Toxic if inhaled"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R23"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H340 May cause genetic defects"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R46"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H341 Suspected of causing genetic defects"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R68"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H350 May cause cancer"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R45"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H350i May cause cancer by inhalation"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R49"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H351 Suspected of causing cancer"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R40"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H360F May damage fertility"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R60"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H360D May damage the unborn child"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R61"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H360FD May damage fertility. May damage the unborn child"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R60; R61; R60-61"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H360Fd May damage fertility. Suspected of damaging the unborn child"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R60-R63"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H360Df May damage the unborn child. Suspected of damaging fertility"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R61-R62"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H361f Suspected of damaging fertility"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R62"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H361d Suspected of damaging the unborn child"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R63"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H361fd Suspected of damaging fertility. Suspected of damaging the unborn child"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R62-63"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H362 May cause harm to breast fed children"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R64"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H370 Causes damage to organs"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R39/23; R39/24; R39/25; R39/26; R39/27; R39/28"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H371 May cause damage to organs"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R68/20; R68/21; R68/22"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H372 Causes damage to organs through prolonged or repeated exposure"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R48/25; R48/24; R48/23"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H373 May cause damage to organs through prolonged or repeated exposure"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R48/20; R48/21; R48/22"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H400 Very toxic to aquatic life"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R50"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H410 Very toxic to aquatic life with long-lasting effects"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R50-53"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H411 Toxic to aquatic life with long-lasting effects"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R51-53"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H412 Harmful to aquatic life with long-lasting effects"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R52-53"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H413 May cause long-lasting harmful effects to aquatic life"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R53"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="EUH059 Hazardous to the ozone layer"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R59"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="EUH029 Contact with water liberates toxic gas"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R29"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="EUH031 Contact with acids liberates toxic gas"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R31"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="EUH032 Contact with acids liberates very toxic gas"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R32"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="EUH070 Toxic by eye contact"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R39-41"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+               <p>
+                  <t v="This criterion shall also apply to the following hazard statements and risk phrases:"/>
+               </p>
+               <table cols="2">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Hazard Statement"/>
+                           <noteRef href="#note_6" marker="1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Risk Phrase"/>
+                           <noteRef href="#note_7" marker="2"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H334: May cause allergy or asthma symptoms or breathing difficulties if inhaled"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R42"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H317: May cause allergic skin reaction"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R43"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H314 Causes severe skin burns and eye damage"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R34; R35"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H319 Causes serious eye irritation"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R36"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H315 Causes skin irritation"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R38"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="EUH066 Repeated exposure may cause skin dryness or cracking"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R66"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="H336 May cause drowsiness and dizziness"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="R67"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+               <p>
+                  <t v="Substances or mixtures which change their properties upon processing (e.g. become no longer bioavailable, undergo chemical modification) so that the identified hazard no longer applies are exempted from the above requirement."/>
+               </p>
+               <p>
+                  <t v="Concentration limits for substances meeting criteria of Article 57(a), (b) or (c) of Regulation (EC) No 1907/2006 shall not exceed 0,010 % (w/w). If specific concentration limits are referred to for substances meeting criteria of Article 57(a), (b) or (c) they should remain below one tenth (1/10) of the lowest specific concentration value indicated unless this value falls below 0,010 % (w/w)."/>
+               </p>
+               <p>
+                  <t v="Derogations from Criterion 1(a) are listed in Table 1."/>
+               </p>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Assessment and verification of criterion:"/>
+                  </emphasis>
+                  <t v=" the applicant shall provide the exact formulation of the product to the competent body. The applicant shall demonstrate compliance with this criterion for substances in the product on the basis of information consisting as a minimum of that specified in Annex VII to the Regulation (EC) No 1907/2006. Such information shall be specific to the particular form of the substance, including nanoforms, used in the product. For that purpose, the applicant shall provide a declaration of compliance with this criterion, together with a list of ingredients and related Safety Data Sheets in accordance with Annex II to Regulation (EC) No 1907/2006 for the product as well as for all substances listed in the formulation(s). Concentration limits shall be specified in the Safety Data Sheets in accordance with Article 31 of Regulation (EC) No 1907/2006."/>
+               </p>
+               <p>
+                  <t v="Sufficient data shall be available to allow for the evaluation of the environmental hazards (indicated by the hazard statements H400 – H413 or R-phrases: R 50, R 50/53, R 51/53, R 52, R 52/53, R 53), of the product in accordance with Regulation (EC) No 1272/2008 or Directive 67/548/EEC and Directive 1999/45/EC of the European Parliament and of the Council"/>
+                  <noteRef href="#note_8" marker="4"/>
+                  <t v="."/>
+               </p>
+               <p>
+                  <t v="The evaluation of a product for hazards to the environment shall be performed by the conventional method as indicated in Annex III to Directive 1999/45/EC or by the summation method in Section 4.1.3.5.2 of Regulation (EC) No 1272/2008. However, as defined by Part C of Annex III to Directive 1999/45/EC or by Section 4.1.3.3 of Regulation (EC) No 1272/2008, the results of testing the preparation (either the product preparation or the additive package) as such can be used to modify the classification concerning the aquatic toxicity that would have been obtained using the conventional or summation method."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_Criterion-1-/pnt_b" kind="level" depth="3">
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <heading>
+                  <t v="Substances listed in accordance with Article 59(1) of Regulation (EC) No 1907/2006"/>
+               </heading>
+               <p>
+                  <t v="No derogation from the exclusion in Article 6(6) of Regulation (EC) No 66/2010 may be given concerning substances identified as substances of very high concern and included in the list foreseen in Article 59 of Regulation (EC) No 1907/2006, when present in mixtures, in concentrations higher than 0,010 % (w/w)."/>
+               </p>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Assessment and verification:"/>
+                  </emphasis>
+                  <t v=" the list of substances identified as substances of very high concern and included in the candidate list in accordance with Article 59 of Regulation (EC) No 1907/2006 can be found here:"/>
+               </p>
+               <p>
+                  <t v="http://echa.europa.eu/chem_data/authorisation_process/candidate_list_table_en.asp"/>
+               </p>
+               <p>
+                  <t v="Reference to the list shall be made on the date of application."/>
+               </p>
+               <p>
+                  <t v="Concentration limits shall be specified in the Safety Data Sheets according to Annex II, paragraph 3.2.1(c) of Commission Regulation (EU) No 453/2010"/>
+                  <noteRef href="#note_9" marker="5"/>
+                  <t v="."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_Criterion-2-" kind="level" depth="2">
+               <num>
+                  <emphasis kind="b">
+                     <t v="Criterion 2 –"/>
+                  </emphasis>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Exclusion of specific substances"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="The following stated substances are not allowed in quantities exceeding 0,010 % (w/w) of the final product:"/>
+               </p>
+               <list kind="dash">
+                  <unit eId="anx/pnt_Criterion-2-/idt_1" kind="indent">
+                     <p>
+                        <t v="substances appearing in the Union List of priority substances in the field of water policy in Annex X to Directive 2000/60/EC of the European Parliament and of the Council"/>
+                        <noteRef href="#note_10" marker="6"/>
+                        <t v=" as amended by laid in Decision No 2455/2001/EC of the European Parliament and of the Council"/>
+                        <noteRef href="#note_11" marker="7"/>
+                        <t v=" and the OSPAR List of Chemicals for Priority Action (http://www.ospar.org/content/content.asp?menu=00950304450000_000000_000000),"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-2-/idt_2" kind="indent">
+                     <p>
+                        <t v="organic halogen compounds and nitrite compounds,"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-2-/idt_3" kind="indent">
+                     <p>
+                        <t v="metals or metallic compounds with the exception of sodium, potassium, magnesium and calcium. In the case of thickeners, also lithium and/or aluminium compounds may be used up to concentrations limited by the other criteria included in the Annex to this Decision."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Assessment and verification:"/>
+                  </emphasis>
+                  <t v=" conformance with these requirements shall be stated in writing and signed by the applicant."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_Criterion-3-" kind="level" depth="2">
+               <num>
+                  <emphasis kind="b">
+                     <t v="Criterion 3 –"/>
+                  </emphasis>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Additional aquatic toxicity requirements"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="The applicant shall demonstrate compliance by meeting the requirements of either criterion 3.1 or criterion 3.2."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_Criterion-3.1.-" kind="level" depth="3">
+               <num>
+                  <emphasis kind="b">
+                     <t v="Criterion 3.1. –"/>
+                  </emphasis>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Requirements for the lubricant and its main components"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="Acute aquatic toxicity data of the main components and the mixture shall be provided."/>
+               </p>
+               <p>
+                  <t v="Acute aquatic toxicity data for each main component shall be stated on each of the following two trophic levels: algae and daphnia"/>
+                  <noteRef href="#note_12" marker="8"/>
+                  <t v=". The critical concentration for the acute aquatic toxicity for each main component shall be at least 100 mg/L."/>
+               </p>
+               <p>
+                  <t v="Acute aquatic toxicity data for the applied lubricant shall be stated on each of the following three trophic levels: algae, daphnia and fish. The critical concentration for the acute aquatic toxicity for a lubricant in Category 1 and 5 shall be at least 100 mg/L and for a lubricant in Category 2, 3 and 4 at least "/>
+                  <t v="1000"/>
+                  <t v=" mg/L."/>
+               </p>
+               <p>
+                  <t v="Table 2 summarises the requirements for the different lubricant categories according to criterion 3.1."/>
+               </p>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Assessment and verification:"/>
+                  </emphasis>
+                  <t v=" either marine or freshwater toxicity data are accepted. The tests are carried out according to and using relevant test species mentioned in the following guidelines: ISO/DIS 10253 or OECD 201 or Part C.3 of the Annex to Council Regulation (EC) No 440/2008"/>
+                  <noteRef href="#note_13" marker="9"/>
+                  <t v=" for algae, ISO TC 147/SC5/WG2 or OECD 202 or Part C.2 of the Annex to Regulation (EC) No 440/2008 for daphnia and OECD 203 or Part C.1 of the Annex to Regulation (EC) No 440/2008 for fish. Equivalent test methods as agreed with a competent body are also permitted. Only (72hr)E"/>
+                  <emphasis kind="sub">
+                     <t v="r"/>
+                  </emphasis>
+                  <t v="C50 for algae, (48hr)EC50 for daphnia and (96hr)LC50 for fish are accepted."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_Criterion-3.2.-" kind="level" depth="3">
+               <num>
+                  <emphasis kind="b">
+                     <t v="Criterion 3.2. –"/>
+                  </emphasis>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Requirements for each stated substance present above 0,10 % (w/w)"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="Chronic toxicity test results in the form of No Observed Effect Concentration (NOEC) data shall be stated on each of the following two aquatic trophic levels: daphnia and fish."/>
+               </p>
+               <p>
+                  <t v="In case chronic toxicity test results are missing, acute aquatic toxicity tests results shall be provided for each of the following two trophic levels; algae and daphnia. One or more substances exhibiting a certain degree of aquatic toxicity are allowed in each of the five lubricant categories for a cumulative mass concentration as indicated in Table 1."/>
+               </p>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Assessment and verification:"/>
+                  </emphasis>
+                  <t v=" No Observed Effect Concentration (NOEC) data on the two trophic levels, daphnia and fish, are established by the following test methods: Part C.20 and Part C.14 of the Annex to Regulation (EC) No 440/2008 for daphnia and fish respectively, or equivalent test methods as agreed with a competent body."/>
+               </p>
+               <p>
+                  <t v="Either marine or freshwater acute toxicity data are accepted on algae and daphnia. The tests in marine water are carried out according to and using relevant test species mentioned in the following guidelines: ISO/DIS 10253 or OECD 201 or Part C.3 of the Annex to Regulation (EC) No 440/2008 for algae, ISO TC 147/SC5/WG2 or OECD 202 or Part C.2 of the Annex to Regulation (EC) No 440/2008 for daphnia and OECD 203 or Part C.1 of the Annex to Regulation (EC) No 440/2008 for fish. Equivalent test methods as agreed with a competent body are also permitted. Only (72hr)E"/>
+                  <emphasis kind="sub">
+                     <t v="r"/>
+                  </emphasis>
+                  <t v="C50 for algae and (48hr)EC50 for daphnia are accepted."/>
+               </p>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Assessment and verification for Criteria 3.1 and 3.2:"/>
+                  </emphasis>
+                  <t v=" high quality test reports or literature data (testing according to acceptable protocols and GLP) including the references shall be submitted to the competent body demonstrating compliance with the requirements set out for the aquatic toxicity in Table 1."/>
+               </p>
+               <p>
+                  <t v="In the case of slightly soluble substances or preparations (&lt; 10 mg/L) the method of the water-accommodated fraction (WAF) can be used in the aquatic toxicity determination. The established loading level, sometimes referred to as LL50 and related to the lethal loading, may be used directly in the classification criteria. The preparation of a water-accommodated fraction shall follow the recommendations set out according to one of the following guidelines: ECETOC Technical Report No 20 (1986), Annex III to OECD 1992 301 or the ISO Guidance document ISO 10634, or ASTM D6081-98 (Standard practice for Aquatic Toxicity Testing for Lubricants: Sample Preparation and Results Interpretation or equivalent methods). In addition, demonstration of the absence of toxicity for a substance at its limit of water solubility shall be deemed to have met the requirements of this criterion."/>
+               </p>
+               <p>
+                  <t v="An aquatic toxicity study does not need to be conducted when:"/>
+               </p>
+               <list kind="dash">
+                  <unit eId="anx/pnt_Criterion-3.2.-/idt_1" kind="indent">
+                     <p>
+                        <t v="the classification of the substance, base fluid or additive is already stated on the Lubricant Substance Classification list, or"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-3.2.-/idt_2" kind="indent">
+                     <p>
+                        <t v="a valid letter of compliance from a competent body can be submitted, or"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-3.2.-/idt_3" kind="indent">
+                     <p>
+                        <t v="the substance is unlikely to cross biological membranes MM &gt; 800 g/mol or molecular diameter &gt; 1,5 nm (&gt; 15 Å), or"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-3.2.-/idt_4" kind="indent">
+                     <p>
+                        <t v="the substance is a polymer and its molecular weight fraction below "/>
+                        <t v="1000"/>
+                        <t v=" g/mol is less than 1 %, or"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-3.2.-/idt_5" kind="indent">
+                     <p>
+                        <t v="the substance is highly insoluble in water (water solubility &lt; 10 μg/l),"/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="as such substances are not regarded as toxic for algae and daphnia in the aquatic system."/>
+               </p>
+               <p>
+                  <t v="The water solubility of substances shall be determined where appropriate according to OECD 105 or equivalent test methods."/>
+               </p>
+               <p>
+                  <t v="The molecular weight fraction below "/>
+                  <t v="1000"/>
+                  <t v=" g/mol of a polymer shall be determined according to Part A.19 of the Annex to Regulation (EC) No 440/2008 or equivalent test methods."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_Criterion-4-" kind="level" depth="2">
+               <num>
+                  <emphasis kind="b">
+                     <t v="Criterion 4 –"/>
+                  </emphasis>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Biodegradability and bioaccumulative potential"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="Requirements for the biodegradability and bioaccumulative potential shall be fulfilled for each stated substance present above 0,10 % (w/w)."/>
+               </p>
+               <p>
+                  <t v="The lubricant shall not contain substances that are both: non-biodegradable and (potentially) bioaccumulative."/>
+               </p>
+               <p>
+                  <t v="However, the lubricant may contain one or more substances with a certain degree of degradability and potential or actual bioaccumulation up to a cumulative mass concentration as indicated in Table 1."/>
+               </p>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Assessment and verification:"/>
+                  </emphasis>
+                  <t v=" conformity shall be demonstrated by providing the following information:"/>
+               </p>
+               <p>
+                  <t v="High quality test reports or literature data (testing according to acceptable protocols and GLP) including the references on the biodegradability and when required on the (potential) bioaccumulation of each constituent substance."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_4.1" kind="level" depth="3">
+               <num>
+                  <t v="4.1."/>
+               </num>
+               <heading>
+                  <emphasis kind="i">
+                     <t v="Biodegradation"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="A substance is considered "/>
+                  <emphasis kind="i">
+                     <t v="ultimately biodegradable"/>
+                  </emphasis>
+                  <t v=" (aerobic) if:"/>
+               </p>
+               <list kind="arabic">
+                  <unit eId="anx/pnt_4.1/pnt_1" kind="point">
+                     <num>
+                        <t v="1."/>
+                     </num>
+                     <p>
+                        <t v="In a 28-day biodegradation study according Part C.4 of the Annex to Regulation (EC) No 440/2008, OECD 306, OECD 310 the following levels of biodegradation are achieved:"/>
+                     </p>
+                     <list kind="dash">
+                        <unit eId="anx/pnt_4.1/pnt_1/idt_1" kind="indent">
+                           <p>
+                              <t v="in the ultimately biodegradable tests based upon dissolved organic carbon ≥ 70 %,"/>
+                           </p>
+                        </unit>
+                        <unit eId="anx/pnt_4.1/pnt_1/idt_2" kind="indent">
+                           <p>
+                              <t v="in the ultimately biodegradable tests based upon oxygen depletion or carbon dioxide generation ≥ 60 % of the theoretical maxima."/>
+                           </p>
+                        </unit>
+                     </list>
+                     <p>
+                        <t v="In these ultimately biodegradable tests the 10-day window principle will not necessarily apply. If the substance reaches the biodegradation pass level within 28 days but not within the 10-day time-window, a slower degradation rate is assumed."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_4.1/pnt_2" kind="point">
+                     <num>
+                        <t v="2."/>
+                     </num>
+                     <p>
+                        <t v="The BOD5/ThOD or BOD5/COD ratio ≥ 0,5. The BOD5/(ThOD or COD) ratio can only be used if no data based on Part C.4 of the Annex to Regulation (EC) No 440/2008, OECD 306 or OECD 310 or any other equivalent test methods are available. The BOD5 shall be assessed according to Part C.5 of the Annex to Regulation (EC) No 440/2008 or equivalent methods while the COD shall be assessed according to Part C.6 of the Annex to Regulation (EC) No 440/2008 or equivalent methods."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="A substance is considered "/>
+                  <emphasis kind="i">
+                     <t v="inherently biodegradable"/>
+                  </emphasis>
+                  <t v=" if it shows:"/>
+               </p>
+               <list kind="dash">
+                  <unit eId="anx/pnt_4.1/lst_2/idt_1" kind="indent">
+                     <p>
+                        <t v="a biodegradation &gt; 70 % in the Part C.9 of the Annex to Regulation (EC) No 440/2008 or OECD 302 C test for inherent biodegradation or equivalent methods, or"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_4.1/lst_2/idt_2" kind="indent">
+                     <p>
+                        <t v="a biodegradation &gt; 20 % but &lt; 60 % after 28 days in Part C.4 of the Annex to Regulation (EC) No 440/2008, OECD 306, OECD 310 tests based on oxygen depletion or carbon dioxide generation or equivalent methods."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="The biodegradation test does not need to be conducted when:"/>
+               </p>
+               <list kind="dash">
+                  <unit eId="anx/pnt_4.1/lst_3/idt_1" kind="indent">
+                     <p>
+                        <t v="the classification of the substance, base fluid or additive is already stated on the Lubricant Substance Classification list or a valid letter of compliance from a competent body can be submitted,"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_4.1/lst_3/idt_2" kind="indent">
+                     <p>
+                        <t v="a substance is non-biodegradable if it fails the criteria for ultimate and inherent biodegradability."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="The applicant may also use read-across data to estimate the biodegradability of a substance. "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Read-across"/>
+                  </quote>
+                  <t v=" for the assessment of the biodegradability of a substance shall be acceptable if the reference substance differs by only one functional group or fragment from the substance applied in the product. If the reference substance is readily or inherently biodegradable and the functional group has a positive effect on the aerobic biodegradation then the applied substance may also be regarded as readily or inherently biodegradable. Functional groups or fragments with a positive effect on the biodegradation are: aliphatic and aromatic alcohol [-OH], aliphatic and aromatic acid [-C(=O)-OH], aldehyde [-CHO], Ester [-C(=O)-O-C], amide [-C(=O)–N or -C(=S)–N]. Adequate and reliable documentation of the study on the reference substance should be provided. In case of a comparison with a fragment, not included here above, adequate and reliable documentation of the studies should be provided on the positive effect of the functional group on the biodegradation of structurally similar substances."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_4.2" kind="level" depth="3">
+               <num>
+                  <t v="4.2."/>
+               </num>
+               <heading>
+                  <emphasis kind="i">
+                     <t v="Bioaccumulation"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="The (potential) bioaccumulation does not need to be established when the substance:"/>
+               </p>
+               <list kind="dash">
+                  <unit eId="anx/pnt_4.2/idt_1" kind="indent">
+                     <p>
+                        <t v="has a MM &gt; 800 g/mol, or"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_4.2/idt_2" kind="indent">
+                     <p>
+                        <t v="has a molecular diameter &gt; 1,5 nm (&gt; 15 Å), or"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_4.2/idt_3" kind="indent">
+                     <p>
+                        <t v="has an octanol-water partition coefficient, log K"/>
+                        <emphasis kind="sub">
+                           <t v="ow"/>
+                        </emphasis>
+                        <t v=", value of &lt; 3 or &gt; 7, or"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_4.2/idt_4" kind="indent">
+                     <p>
+                        <t v="has a measured BCF of ≤ 100 L/kg, or"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_4.2/idt_5" kind="indent">
+                     <p>
+                        <t v="is a polymer and its molecular weight fraction below "/>
+                        <t v="1000"/>
+                        <t v=" g/mol is less than 1 %."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="Since most substances used in lubricants are quite hydrophobic the BCF-value should be based on the lipid weight content and care must be shown to ensure a sufficient exposure time."/>
+               </p>
+               <p>
+                  <t v="The bioconcentration factor (BCF) shall be assessed according to Part C.13 of the Annex to Regulation (EC) No 440/2008 or equivalent test methods."/>
+               </p>
+               <p>
+                  <t v="The log octanol/water partition coefficient (log K"/>
+                  <emphasis kind="sub">
+                     <t v="ow"/>
+                  </emphasis>
+                  <t v=") shall be assessed according to Part A.8 of the Annex to Regulation (EC) No 440/2008 or OECD 123 or equivalent test methods. In case of an organic substance other than a surfactant where no experimental value is available, a calculation method can be used. The following calculation methods are allowed: CLOGP, LOGKOW, (KOWWIN) and SPARC. Estimated log K"/>
+                  <emphasis kind="sub">
+                     <t v="ow"/>
+                  </emphasis>
+                  <t v=" values by any of these calculation methods &lt; 3 or &gt; 7 indicates that the substance is not expected to bioaccumulate."/>
+               </p>
+               <p>
+                  <t v="Log K"/>
+                  <emphasis kind="sub">
+                     <t v="ow"/>
+                  </emphasis>
+                  <t v=" values are applicable to organic chemicals only. To assess the bioaccumulation potential of non-organic compounds, surfactants, and some organo-metallic compounds, BCF measurements shall be carried out."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_Criterion-5-" kind="level" depth="2">
+               <num>
+                  <emphasis kind="b">
+                     <t v="Criterion 5 –"/>
+                  </emphasis>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Renewable raw materials"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="The formulated product shall have a carbon content derived from renewable raw materials that shall be:"/>
+               </p>
+               <list kind="dash">
+                  <unit eId="anx/pnt_Criterion-5-/idt_1" kind="indent">
+                     <p>
+                        <t v="≥ 50 % (m/m) for Category 1,"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-5-/idt_2" kind="indent">
+                     <p>
+                        <t v="≥ 45 % (m/m) for Category 2,"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-5-/idt_3" kind="indent">
+                     <p>
+                        <t v="≥ 70 % (m/m) for Category 3,"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-5-/idt_4" kind="indent">
+                     <p>
+                        <t v="≥ 50 % (m/m) for Category 4,"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-5-/idt_5" kind="indent">
+                     <p>
+                        <t v="≥ 50 % (m/m) for Category 5."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="Carbon content derived from renewable raw material means the mass percentage of component A × [number of C-atoms in component A, which are derived from (vegetable) oils or (animal) fats divided by the total number of C-atoms in component A] plus mass percentage of component B × [number of C-atoms in component B, which are derived from (vegetable) oils or (animal) fats divided by the total number of C-atoms in component B] plus the mass percentage of component C × [number of C-atoms in component C, which are derived from (vegetable) oils or (animal) fats divided by the total number of C-atoms in component C], and so on."/>
+               </p>
+               <p>
+                  <t v="The applicant shall indicate on the application form the type (s), source(s) and origin of the renewable material(s) of the main components."/>
+               </p>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Assessment and verification:"/>
+                  </emphasis>
+                  <t v=" the applicant shall provide the competent body with a declaration of compliance with this criterion."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_Criterion-6-" kind="level" depth="2">
+               <num>
+                  <emphasis kind="b">
+                     <t v="Criterion 6 –"/>
+                  </emphasis>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Minimum technical performance"/>
+                  </emphasis>
+               </heading>
+               <list kind="alpha">
+                  <unit eId="anx/pnt_Criterion-6-/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="For Hydraulic fluids: at least the technical performance criteria as laid down in the current ISO 15380, Tables 2 to 5. The supplier shall list on his product information sheet which 2 elastomers have been tested."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-6-/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="For Industrial and marine gear oils: at least the technical performance requirements as in the DIN 51517. The supplier shall list on his product information sheet which Section (I, II or III) was selected."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-6-/pnt_c" kind="point">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="For chainsaw oils: at least the technical performance criteria as laid down in the RAL UZ 48 of the Blue Angel."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-6-/pnt_d" kind="point">
+                     <num>
+                        <t v="(d)"/>
+                     </num>
+                     <p>
+                        <t v="For two-stroke oils for marine applications: at least the technical performance criteria laid down in "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="NMMA Certification for Two-Stroke Cycle Gasoline Engine Lubricants"/>
+                        </quote>
+                        <t v=" of NMMA TC-W3."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-6-/pnt_e" kind="point">
+                     <num>
+                        <t v="(e)"/>
+                     </num>
+                     <p>
+                        <t v="For two-stroke oils for terrestrial applications: at least meet the EGD level of technical performance criteria laid down in ISO 13738:2000."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_Criterion-6-/pnt_f" kind="point">
+                     <num>
+                        <t v="(f)"/>
+                     </num>
+                     <p>
+                        <t v="For all other lubricants: fit for purpose."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Assessment and verification:"/>
+                  </emphasis>
+                  <t v=" the applicant shall provide the competent body with a declaration of compliance with this criterion, together with related documentation."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_Criterion-7-" kind="level" depth="2">
+               <num>
+                  <emphasis kind="b">
+                     <t v="Criterion 7 –"/>
+                  </emphasis>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Information appearing on the eco-label"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="Optional label with text box shall contain the following text:"/>
+               </p>
+               <quotedStructure eId="anx/pnt_Criterion-7-/qst_1">
+                  <list kind="dash">
+                     <unit eId="anx/pnt_Criterion-7-/qst_1/idt_1" kind="point">
+                        <num>
+                           <t v="‘"/>
+                           <t v="—"/>
+                        </num>
+                        <p>
+                           <t v="Reduced harm for water and soil during use"/>
+                        </p>
+                     </unit>
+                     <unit eId="anx/pnt_Criterion-7-/qst_1/idt_2" kind="point">
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <p>
+                           <t v="Contain a large fraction of biobased material"/>
+                           <t v="’"/>
+                           <t v="."/>
+                        </p>
+                     </unit>
+                  </list>
+               </quotedStructure>
+               <p>
+                  <t v="The guidelines for the use of the optional label with text box can be found in the "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Guidelines for the use of the EU Ecolabel logo"/>
+                  </quote>
+                  <t v=" on the website: http://ec.europa.eu/environment/ecolabel/promo/logos_en.htm"/>
+               </p>
+               <p>
+                  <emphasis kind="i">
+                     <t v="Assessment and verification:"/>
+                  </emphasis>
+                  <t v=" the applicant shall provide the competent body with a sample of the product packaging showing the label, together with a declaration of compliance with this criterion."/>
+               </p>
+               <table cols="7">
+                  <caption>
+                     <p>
+                        <emphasis kind="i">
+                           <t v="Table 1"/>
+                        </emphasis>
+                     </p>
+                     <p>
+                        <emphasis kind="b">
+                           <t v="Criteria for the lubricant and each stated substance"/>
+                        </emphasis>
+                     </p>
+                  </caption>
+                  <tr header="true">
+                     <td colspan="2" header="true"/>
+                     <td header="true">
+                        <p>
+                           <t v="Category 1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 2"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 3"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 4"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td colspan="2" header="true">
+                        <p>
+                           <t v="Category"/>
+                        </p>
+                        <p>
+                           <t v="Criteria"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Hydraulic fluids, tractor transmission oils"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Greases, stern tube greases"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Chain saw oils, concrete release agents, wire rope lubricants and other total loss lubricants"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Terrestrial and marine two-stroke oils"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Industrial and marine gear oils"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td colspan="2" header="true">
+                        <p>
+                           <t v="Hazard statements and R-phrases indicating environmental and human health hazards"/>
+                        </p>
+                        <p>
+                           <t v="(Derogation for Criterion 1(a))"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 2"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 3"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 4"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" header="true">
+                        <p>
+                           <t v="Health or Environmental Hazard statement or R-phrase of the lubricant at the time of application"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="None"/>
+                        </p>
+                        <p>
+                           <t v="(Lowest classification limit in Regulation (EC) No 1272/2008 or Directive 1999/45/EC)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="None"/>
+                        </p>
+                        <p>
+                           <t v="(Lowest classification limit in Regulation (EC) No 1272/2008 or Directive 1999/45/EC)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="None"/>
+                        </p>
+                        <p>
+                           <t v="(Lowest classification limit in Regulation (EC) No 1272/2008 or Directive 1999/45/EC)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="None"/>
+                        </p>
+                        <p>
+                           <t v="(Lowest classification limit in Regulation (EC) No 1272/2008 or Directive 1999/45/EC)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="None"/>
+                        </p>
+                        <p>
+                           <t v="(Lowest classification limit in Regulation (EC) No 1272/2008 or Directive 1999/45/EC)"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td colspan="2" header="true">
+                        <p>
+                           <t v="Exclusion of specific substances"/>
+                        </p>
+                        <p>
+                           <t v="(Criterion 1(b) and 2)"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 2"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 3"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 4"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" header="true">
+                        <p>
+                           <t v="OSPAR-listed; the Union list of priority substances in the field of water policy; organic halogens; nitrites; metals and metallic compounds except Na, K, Mg, Ca and for thickeners Li, Al; CMR cat 1,2 (R45, R46, R49, R60 or R61); the candidate list for Annex XIV to Regulation (EC) No 1907/2006"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&lt; 0,010 %"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&lt; 0,010 %"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&lt; 0,010 %"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&lt; 0,010 %"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&lt; 0,010 %"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td colspan="2" rowspan="2" header="true">
+                        <p>
+                           <t v="Aquatic toxicity"/>
+                        </p>
+                        <p>
+                           <t v="(Criterion 3.2 only)"/>
+                        </p>
+                     </td>
+                     <td colspan="5" header="true">
+                        <p>
+                           <t v="Cumulative mass percentages (% w/w) of substances present in"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Category 1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 2"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 3"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 4"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td header="true">
+                        <p>
+                           <t v="Not toxic (D)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Acute toxicity &gt; 100 mg/L"/>
+                        </p>
+                        <p>
+                           <t v="or"/>
+                        </p>
+                        <p>
+                           <t v="NOEC &gt; 10 mg/L"/>
+                        </p>
+                     </td>
+                     <td colspan="5">
+                        <p>
+                           <t v="Not limited"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td header="true">
+                        <p>
+                           <t v="Harmful (E)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="10 mg/L &lt; Acute toxicity ≤ 100 mg/L"/>
+                        </p>
+                        <p>
+                           <t v="or"/>
+                        </p>
+                        <p>
+                           <t v="1 mg/L &lt; NOEC ≤ 10 mg/L"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 20"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 25"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 5"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 25"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 20"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td header="true">
+                        <p>
+                           <t v="Toxic (F)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1 mg/L &lt; Acute toxicity ≤ 10 mg/L"/>
+                        </p>
+                        <p>
+                           <t v="or"/>
+                        </p>
+                        <p>
+                           <t v="0,1 mg/L &lt; NOEC ≤ 1 mg/L"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 5"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 0,5"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td header="true">
+                        <p>
+                           <t v="Very toxic (G)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Acute toxicity ≤ 1 mg/L"/>
+                        </p>
+                        <p>
+                           <t v="or"/>
+                        </p>
+                        <p>
+                           <t v="NOEC ≤ 0,1 mg/L"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 0,1/M"/>
+                           <noteRef href="#note_14" marker="*"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 0,1/M"/>
+                           <noteRef href="#note_14" marker="*"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 0,1/M"/>
+                           <noteRef href="#note_14" marker="*"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 0,1/M"/>
+                           <noteRef href="#note_14" marker="*"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 1/M"/>
+                           <noteRef href="#note_14" marker="*"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td colspan="2" rowspan="2" header="true">
+                        <p>
+                           <t v="Biodegradation and Bioaccumulation"/>
+                        </p>
+                        <p>
+                           <t v="(Criterion 4)"/>
+                        </p>
+                     </td>
+                     <td colspan="5" header="true">
+                        <p>
+                           <t v="Cumulative mass percentages (%w/w) of substances present in"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Category 1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 2"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 3"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 4"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" header="true">
+                        <p>
+                           <t v="Ultimately aerobically biodegradable (A)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 90"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 75"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 90"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 75"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 90"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" header="true">
+                        <p>
+                           <t v="Inherently aerobically biodegradable (B)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 5"/>
+                        </p>
+                     </td>
+                     <td rowspan="2">
+                        <p>
+                           <t v="≤ 25"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 5"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 20"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" header="true">
+                        <p>
+                           <t v="Non-biodegradable AND non-bioaccumulative (C)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 5"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 5"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 10"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" header="true">
+                        <p>
+                           <t v="Non-biodegradable AND bioaccumulative (X)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 0,1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 0,1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 0,1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 0,1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≤ 0,1"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td colspan="2" rowspan="2" header="true">
+                        <p>
+                           <t v="Fraction not assessed on aquatic toxicity (Criterion 3.2) or biodegradation/bioaccumulation (Criterion 4)"/>
+                        </p>
+                     </td>
+                     <td colspan="5" header="true">
+                        <p>
+                           <t v="Cumulative mass percentages (%w/w) of substances present in"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Category 1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 2"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 3"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 4"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" header="true"/>
+                     <td>
+                        <p>
+                           <t v="&lt; 0,5"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&lt; 0,5"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&lt; 0,5"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&lt; 0,5"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&lt; 0,5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td colspan="2" rowspan="2" header="true">
+                        <p>
+                           <t v="Renewability"/>
+                        </p>
+                        <p>
+                           <t v="(Criterion 5)"/>
+                        </p>
+                     </td>
+                     <td colspan="5" header="true">
+                        <p>
+                           <t v="Cumulative mass percentages (%w/w) of substances present in"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Category 1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 2"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 3"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 4"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" header="true">
+                        <p>
+                           <t v="Based on carbon"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≥ 50 %"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≥ 45 %"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≥ 70 %"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≥ 50 %"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="≥ 50 %"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr header="true">
+                     <td colspan="2" header="true"/>
+                     <td header="true">
+                        <p>
+                           <t v="Category 1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 2"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 3"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 4"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" header="true">
+                        <p>
+                           <t v="Minimal Technical performance"/>
+                        </p>
+                        <p>
+                           <t v="(Criterion 6)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Hydraulic fluids: ISO 15380 Tables 2 to 5"/>
+                        </p>
+                        <p>
+                           <t v="Tractor transmission oils: fit for purpose"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Fit for purpose"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Chain saw oils: as in RAL UZ 48"/>
+                        </p>
+                        <p>
+                           <t v="Others: fit for purpose"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Marine 2T-oils: as in NMMA TC-W3."/>
+                        </p>
+                        <p>
+                           <t v="Terrestrial 2T-oils: as the EGD level in ISO 13738:2000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Industrial and marine gear oils DIN 51517"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+               <table cols="2">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="multiplication factor (M)"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="LC50 or EC50 value ("/>
+                           <quote startQuote="‘" endQuote="’">
+                              <t v="L(E)C50"/>
+                           </quote>
+                           <t v=") of substance"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,1 &lt; L(E)C50 ≤ 1"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="10"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,01 &lt; L(E)C50 ≤ 0,1"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="100"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,001 &lt; L(E)C50 ≤ 0,01"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="1000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="0,0001 &lt; L(E)C50 ≤ 0,001"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">
+                        <p>
+                           <t v="For substances with a lower LC50 or EC50 value than 0,0001 mg/L, the corresponding concentration limits are calculated accordingly (in factor 10 intervals)."/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+               <table cols="6">
+                  <caption>
+                     <p>
+                        <emphasis kind="i">
+                           <t v="Table 2"/>
+                        </emphasis>
+                     </p>
+                     <p>
+                        <emphasis kind="b">
+                           <t v="Aquatic toxicity requirements for the different lubricant categories — Data requirements for the lubricant and its main components"/>
+                        </emphasis>
+                     </p>
+                  </caption>
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Criterion 3.1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 2"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 3"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 4"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Category 5"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="Acute aquatic toxicity for the freshly prepared lubricant on three trophic levels, algae, daphnia and fish"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 100 mg/L"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; "/>
+                           <t v="1000"/>
+                           <t v=" mg/L"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; "/>
+                           <t v="1000"/>
+                           <t v=" mg/L"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; "/>
+                           <t v="1000"/>
+                           <t v=" mg/L"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 100 mg/L"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="Acute aquatic toxicity for each main component on each of two trophic levels, algae and daphnia"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 100 mg/L"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 100 mg/L"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 100 mg/L"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 100 mg/L"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="&gt; 100 mg/L"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+         </unit>
+      </deleted>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="353"
+                 date="2008-12-31"
+                 page="1">
+               <t v="OJ L 353, 31.12.2008, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="P"
+                 number="196"
+                 date="1967-08-16"
+                 page="1">
+               <t v="OJ 196, 16.8.1967, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="396"
+                 date="2006-12-30"
+                 page="1">
+               <t v="OJ L 396, 30.12.2006, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="1" kind="table">
+         <p>
+            <t v="As provided for in Regulation (EC) No 1272/2008."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="2" kind="table">
+         <p>
+            <t v="As provided for in Directive 67/548/EEC."/>
+         </p>
+      </note>
+      <note eId="note_6" marker="1" kind="table">
+         <p>
+            <t v="As provided for in Regulation (EC) No 1272/2008."/>
+         </p>
+      </note>
+      <note eId="note_7" marker="2" kind="table">
+         <p>
+            <t v="As provided for in Directive 67/548/EEC."/>
+         </p>
+      </note>
+      <note eId="note_8" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="200"
+                 date="1999-07-30"
+                 page="1">
+               <t v="OJ L 200, 30.7.1999, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_9" marker="5" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="133"
+                 date="2010-05-31"
+                 page="1">
+               <t v="OJ L 133, 31.5.2010, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_10" marker="6" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="327"
+                 date="2000-12-22"
+                 page="1">
+               <t v="OJ L 327, 22.12.2000, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_11" marker="7" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="331"
+                 date="2001-12-15"
+                 page="1">
+               <t v="OJ L 331, 15.12.2001, p 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_12" marker="8" kind="footnote">
+         <p>
+            <t v="Crustacean can substitute for daphnia throughout this Decision where marine data is submitted."/>
+         </p>
+      </note>
+      <note eId="note_13" marker="9" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="142"
+                 date="2008-05-31"
+                 page="1">
+               <t v="OJ L 142, 31.5.2008, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_14" marker="*" kind="table">
+         <p>
+            <t v="M is the multiplication factor of 10 for substances that are very toxic to the aquatic environment as from Table 1b in Commission Directive 2006/8/EC ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="19"
+                 date="2006-01-24"
+                 page="12">
+               <t v="OJ L 19, 24.1.2006, p. 12"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

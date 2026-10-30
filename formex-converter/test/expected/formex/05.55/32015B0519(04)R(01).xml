@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32015B0519(04)R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.55"
+           converter="1.0.0">
+   <source celex="32015B0519(04)R(01)">
+      <publication series="C"
+                   number="230"
+                   date="2016-06-24"
+                   page="24"
+                   document="2016/C 230/07"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to the statement of revenue and expenditure of the European GNSS Agency for the financial year 2015 — amending budget No 1"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="C" number="164" date="2015-05-19">
+               <t v="Official Journal of the European Union C 164 of 19 May 2015"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 15, the table is replaced by the following:"/>
+         </p>
+         <new>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <table cols="5">
+                  <caption>
+                     <p>
+                        <t v="‘"/>
+                        <emphasis kind="b">
+                           <t v="REVENUE"/>
+                        </emphasis>
+                     </p>
+                  </caption>
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Title"/>
+                        </p>
+                        <p>
+                           <t v="Chapter"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Heading"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Budget 2015"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Amending budget No 1"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="New amount"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <rowGroup>
+                     <heading>
+                        <emphasis kind="b">
+                           <t v="2"/>
+                        </emphasis>
+                     </heading>
+                     <subheading>
+                        <emphasis kind="b">
+                           <t v="PAYMENTS FROM THE INSTITUTIONS AND BODIES"/>
+                        </emphasis>
+                     </subheading>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="2 0"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="PAYMENTS FROM THE INSTITUTIONS AND BODIES"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="26840000"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="766414"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="27606414"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td/>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="Title 2 — Total"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="26840000"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="766414"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="27606414"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                     </tr>
+                  </rowGroup>
+                  <rowGroup>
+                     <heading>
+                        <emphasis kind="b">
+                           <t v="9"/>
+                        </emphasis>
+                     </heading>
+                     <subheading>
+                        <emphasis kind="b">
+                           <t v="MISCELLANEOUS REVENUE"/>
+                        </emphasis>
+                     </subheading>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="9 0"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="MISCELLANEOUS REVENUE"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="p.m."/>
+                           </p>
+                        </td>
+                        <td/>
+                        <td>
+                           <p>
+                              <t v="p.m."/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td/>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="Title 9 — Total"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="p.m."/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td/>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="p.m."/>
+                              </emphasis>
+                           </p>
+                        </td>
+                     </tr>
+                  </rowGroup>
+                  <tr>
+                     <td/>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="GRAND TOTAL"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="26840000"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="766414"/>
+                           </emphasis>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="b">
+                              <t v="27606414"/>
+                           </emphasis>
+                           <t v="’"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

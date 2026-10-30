@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32012R0874R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.55"
+           converter="1.0.0">
+   <source celex="32012R0874R(01)">
+      <publication series="L" number="198" date="2015-07-28" page="31"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Commission Delegated Regulation (EU) No 874/2012 of "/>
+            <date asWritten="12 July 2012" date="2012-07-12"/>
+            <t v=" supplementing Directive 2010/30/EU of the European Parliament and of the Council with regard to energy labelling of electrical lamps and luminaires"/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="("/>
+               <ref kind="oj" series="L" number="258" date="2012-09-26">
+                  <t v="Official Journal of the European Union L 258 of 26 September 2012"/>
+               </ref>
+               <t v=")"/>
+            </emphasis>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <num>
+               <t v="1."/>
+            </num>
+            <t v="On page 2, Article 1(2)(g):"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="listed in points (a) to (c)."/>
+               </quote>
+               <t v=","/>
+            </p>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="listed in points (a), (b), (c) and (e)."/>
+               </quote>
+               <t v="."/>
+            </p>
+         </new>
+      </unit>
+      <unit eId="cor_2" kind="correction">
+         <p>
+            <num>
+               <t v="2."/>
+            </num>
+            <t v="On page 4, Article 3(2)(b)(ii):"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="lamp"/>
+               </quote>
+               <t v=","/>
+            </p>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="luminaire"/>
+               </quote>
+               <t v="."/>
+            </p>
+         </new>
+      </unit>
+      <unit eId="cor_3" kind="correction">
+         <p>
+            <num>
+               <t v="3."/>
+            </num>
+            <t v="On page 20, Annex VII, point 2:"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <quotedStructure eId="cor_3/old/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
+                           <m:mrow>
+                              <m:mrow>
+                                 <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <m:mi mathvariant="italic">E</m:mi>
+                                    <m:mrow>
+                                       <m:mi mathvariant="italic">c</m:mi>
+                                    </m:mrow>
+                                 </msub>
+                              </m:mrow>
+                              <m:mo>=</m:mo>
+                              <m:mrow>
+                                 <m:mfrac>
+                                    <m:mrow>
+                                       <m:mrow>
+                                          <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                             <m:mi>P</m:mi>
+                                             <m:mrow>
+                                                <m:mi>cor</m:mi>
+                                             </m:mrow>
+                                          </msub>
+                                          <m:mo>×</m:mo>
+                                          <m:mn>1000</m:mn>
+                                          <m:mi mathvariant="italic">h</m:mi>
+                                       </m:mrow>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mn>1000</m:mn>
+                                    </m:mrow>
+                                 </m:mfrac>
+                              </m:mrow>
+                           </m:mrow>
+                        </m:math>
+                     </math>
+                  </quote>
+               </p>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <quotedStructure eId="cor_3/new/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
+                           <m:mrow>
+                              <m:mrow>
+                                 <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <m:mi mathvariant="italic">E</m:mi>
+                                    <m:mrow>
+                                       <m:mi>c</m:mi>
+                                    </m:mrow>
+                                 </msub>
+                              </m:mrow>
+                              <m:mo>=</m:mo>
+                              <m:mrow>
+                                 <m:mfrac>
+                                    <m:mrow>
+                                       <m:mrow>
+                                          <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                             <m:mi>P</m:mi>
+                                             <m:mrow>
+                                                <m:mi>cor</m:mi>
+                                             </m:mrow>
+                                          </msub>
+                                          <m:mo>×</m:mo>
+                                          <m:mn>1000</m:mn>
+                                       </m:mrow>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mn>1000</m:mn>
+                                    </m:mrow>
+                                 </m:mfrac>
+                              </m:mrow>
+                           </m:mrow>
+                        </m:math>
+                     </math>
+                  </quote>
+               </p>
+            </quotedStructure>
+            <p>
+               <t v="."/>
+            </p>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

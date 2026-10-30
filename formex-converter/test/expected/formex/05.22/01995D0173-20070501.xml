@@ -1,0 +1,1737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31995D0173"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2007-05-01"
+           lang="en"
+           formexVersion="05.22"
+           converter="1.0.0">
+   <source celex="01995D0173-20070501">
+      <publication series="L" number="116" date="1995-05-23" page="41"/>
+   </source>
+   <lifecycle start="2007-05-01" produced="2012-01-19" sequence="002.001.0">
+      <eventRef type="amendment" act="31995D0311" date="1995-07-24"/>
+      <eventRef type="amendment" act="32006R1664" date="2006-11-06"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <deleted amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000">
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </deleted>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <deleted amendingAct="32006R1664"
+                     action="deleted"
+                     location="AR:2 .AND. AX:IV;PG:40"
+                     marker="O002001M001000">
+               <t v="of 7 March 1995"/>
+            </deleted>
+         </p>
+         <p>
+            <docPurpose>
+               <deleted amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000">
+                  <t v="laying down special conditions governing imports of fishery and aquaculture products originating in Peru"/>
+               </deleted>
+            </docPurpose>
+         </p>
+         <p>
+            <deleted amendingAct="32006R1664"
+                     action="deleted"
+                     location="AR:2 .AND. AX:IV;PG:40"
+                     marker="O002001M001000">
+               <t v="(Text with EEA relevance)"/>
+            </deleted>
+         </p>
+         <p>
+            <deleted amendingAct="32006R1664"
+                     action="deleted"
+                     location="AR:2 .AND. AX:IV;PG:40"
+                     marker="O002001M001000">
+               <t v="(95/173/EC)"/>
+            </deleted>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <p>
+               <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+            </p>
+         </deleted>
+      </formula>
+      <citations>
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/cit_1" kind="citation">
+               <p>
+                  <t v="Having regard to the Treaty establishing the European Community,"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/cit_2" kind="citation">
+               <p>
+                  <t v="Having regard to Council Directive 91/493/EEC of 22 July 1991 laying down the health conditions for the production and the placing on the market of fishery products"/>
+                  <noteRef href="#note_1" marker="1"/>
+                  <t v=", as last amended by the Act of Accession of Austria, Finland and Sweden, and in particular Article 11 thereof,"/>
+               </p>
+            </unit>
+         </deleted>
+      </citations>
+      <recitals>
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_1" kind="recital">
+               <p>
+                  <t v="Whereas a group of Commission experts has conducted an inspection visit to Peru to verify the conditions under which fishery products are produced, stored and dispatched to the Community;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_2" kind="recital">
+               <p>
+                  <t v="Whereas the provisions of Peruvian legislation on health inspection and monitoring of fishery products may be considered equivalent to those laid down in Directive 91/493/EEC;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_3" kind="recital">
+               <p>
+                  <t v="Whereas, in Peru the "/>
+                  <emphasis kind="i">
+                     <t v="Ministerio de Salud, Dirección General de Salud Ambiental"/>
+                  </emphasis>
+                  <t v=" ("/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Digesa"/>
+                  </quote>
+                  <t v=") is capable of effectively verifying the application of the laws in force;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_4" kind="recital">
+               <p>
+                  <t v="Whereas the procedure for obtaining the health certificate referred to in Article 11 (4) (a) of Directive 91/493/EEC must also cover the definition of a model certificate, the minimum requirements regarding the language(s) in which it must be drafted and the grade of the person empowered to sign it;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_5" kind="recital">
+               <p>
+                  <t v="Whereas, pursuant to Article 11 (4) (b) of Directive 91/493/EEC, a mark should be affixed to packages of fishery products giving the name of the third country and the approval number of the establishment of origin;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_6" kind="recital">
+               <p>
+                  <t v="Whereas, pursuant to Article 11 (4) (c) of Directive 91/493/EEC, a list of approved establishments must be drawn up; whereas that list must be drawn up on the basis of a communication from the Digesa to the Commission; whereas it is therefore for the Digesa to ensure compliance with the provisions laid down to that end in Article 11 (4) of Directive 91/493/EEC;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_7" kind="recital">
+               <p>
+                  <t v="Whereas the Digesa has provided official assurances regarding compliance with the rules set out in Chapter V of the Annex to Directive 91/493/EEC and regarding the fulfilment of requirements equivalent to those laid down by that Directive for the approval of establishments;"/>
+               </p>
+            </unit>
+         </deleted>
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <unit eId="pbl_1/rct_8" kind="recital">
+               <p>
+                  <t v="Whereas the measures provided for in this Decision are in accordance with the opinion of the Standing Veterinary Committee,"/>
+               </p>
+            </unit>
+         </deleted>
+      </recitals>
+      <formula name="enactingFormula">
+         <deleted>
+            <provenance amendingAct="32006R1664"
+                        action="deleted"
+                        location="AR:2 .AND. AX:IV;PG:40"
+                        marker="O002001M001000"/>
+            <p>
+               <t v="HAS ADOPTED THIS DECISION:"/>
+            </p>
+         </deleted>
+      </formula>
+   </preamble>
+   <body>
+      <deleted>
+         <provenance amendingAct="32006R1664"
+                     action="deleted"
+                     location="AR:2 .AND. AX:IV;PG:40"
+                     marker="O002001M001000"/>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <p>
+               <t v="The "/>
+               <emphasis kind="i">
+                  <t v="Ministerio de Salud, Dirección General de Salud Ambiental"/>
+               </emphasis>
+               <t v=" (Digesa) shall be the competent authority in Peru for verifying and certifying compliance of fishery and aquaculture products with the requirements of Directive 91/493/EEC."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32006R1664"
+                     action="deleted"
+                     location="AR:2 .AND. AX:IV;PG:40"
+                     marker="O002001M001000"/>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <p>
+               <t v="Fishery and aquaculture products originating in Peru, must meet the following conditions:"/>
+            </p>
+            <list kind="arabic">
+               <unit eId="art_2/pnt_1" kind="point">
+                  <num>
+                     <t v="1."/>
+                  </num>
+                  <p>
+                     <t v="Each consignment must be accompanied by a numbered original health certificate, duly completed, signed, dated and comprising a single sheet in accordance with the model in Annex A hereto."/>
+                  </p>
+               </unit>
+               <unit eId="art_2/pnt_2" kind="point">
+                  <num>
+                     <t v="2."/>
+                  </num>
+                  <p>
+                     <t v="The products must come from approved establishments listed in Annex B hereto."/>
+                  </p>
+               </unit>
+               <unit eId="art_2/pnt_3" kind="point">
+                  <num>
+                     <t v="3."/>
+                  </num>
+                  <p>
+                     <t v="Except in the case of frozen fishery products in bulk and intended for the manufacture of preserved foods, all packages must bear the word "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="PERU"/>
+                     </quote>
+                     <t v=" and the approval number of the establishment of origin in indelible letters."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32006R1664"
+                     action="deleted"
+                     location="AR:2 .AND. AX:IV;PG:40"
+                     marker="O002001M001000"/>
+         <unit eId="art_3" kind="article">
+            <num>
+               <t v="Article 3"/>
+            </num>
+            <unit eId="art_3/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Certificates as referred to in Article 2 (1) must be drawn up in at least one official language of the Member State where the checks are carried out."/>
+               </p>
+            </unit>
+            <unit eId="art_3/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Certificates must bear the name, capacity and signature of the representative of the Digesa and the latter's official stamp in a colour different from that of other endorsements."/>
+               </p>
+            </unit>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32006R1664"
+                     action="deleted"
+                     location="AR:2 .AND. AX:IV;PG:40"
+                     marker="O002001M001000"/>
+         <unit eId="art_4" kind="article">
+            <num>
+               <t v="Article 4"/>
+            </num>
+            <p>
+               <t v="This Decision shall apply from 1 February 1995."/>
+            </p>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32006R1664"
+                     action="deleted"
+                     location="AR:2 .AND. AX:IV;PG:40"
+                     marker="O002001M001000"/>
+         <unit eId="art_5" kind="article">
+            <num>
+               <t v="Article 5"/>
+            </num>
+            <p>
+               <t v="This Decision is addressed to the Member States."/>
+            </p>
+         </unit>
+      </deleted>
+   </body>
+   <annexes>
+      <deleted>
+         <provenance amendingAct="32006R1664"
+                     action="deleted"
+                     location="AR:2 .AND. AX:IV;PG:40"
+                     marker="O002001M001000"/>
+         <unit eId="anx_A" kind="annex" eurlexAnchor="1">
+            <num>
+               <t v="ANNEX A"/>
+            </num>
+            <figure src="L_1995116EN.01004301.tif" content="other"/>
+            <figure src="L_1995116EN.01004401.tif" content="other"/>
+         </unit>
+      </deleted>
+      <deleted>
+         <provenance amendingAct="32006R1664"
+                     action="deleted"
+                     location="AR:2 .AND. AX:IV;PG:40"
+                     marker="O002001M001000"/>
+         <unit eId="anx_B" kind="annex" eurlexAnchor="2">
+            <num>
+               <changed amendingAct="31995D0311"
+                        action="replaced"
+                        location="AR:1 .AND. AX:0"
+                        marker="O001001M009000">
+                  <t v="ANNEX B"/>
+               </changed>
+            </num>
+            <tableGroup>
+               <provenance amendingAct="31995D0311"
+                           action="replaced"
+                           location="AR:1 .AND. AX:0"
+                           marker="O001001M009000"/>
+               <caption>
+                  <p>
+                     <t v="LIST OF APPROVED ESTABLISHMENTS AND FACTORY VESSELS"/>
+                  </p>
+               </caption>
+               <table cols="4">
+                  <caption>
+                     <p>
+                        <num>
+                           <t v="I."/>
+                        </num>
+                        <t v="Establishments"/>
+                     </p>
+                  </caption>
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Approval No"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Establishment"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Address"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Approved until"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PR-0449-001-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PRODUCTOS MARINOS REFRIGERADOS SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="TUMBES"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PC-1816-002-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PERUANA DE CONGELADOS SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CALLAO"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="RI-4018-003-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="REFRIGERADOS YNY SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="TUMBES"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="CX-3531-004-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="COMERCIAL EXPORTADORA SA COEX"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="TUMBES"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="FR-2560-005-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="FRIGORÍFICO RANSA SA FRIORANSA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CALLAO"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="RT-3340-006-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="REFRIGERADOS TUMBES SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="TUMBES"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PO-3609-007-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PRISCO SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PISCO"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PA-1795-008-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PISCIFACTORIA DE LOS ANDES SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="JUNIN"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PM-3012-009-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PESQUERA MALLA SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PISCO"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="AP-1951-001-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="AGROPESCA SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="DM-1522-002-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="DEL MAR SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="UI-3910-003-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="UNICSA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="IS-0759-004-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="INDUSTRIAS SAN MIGUEL SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="IB-3599-005-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="IBC CORP. DE NEGOCIOS SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="MX-0938-006-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="MAREX SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="AE-1162-007-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ARIES EXPORT SRL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="DX-0134-008-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="DEXIM SRL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="AG-1236-009-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ARCOPA SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="MP-0889-010-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="MAR &amp; PESCA EIRL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PC-0048-011-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PESCONSA SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="TL-38-2220-012-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="TUNA LATÍN SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="DH-3087-013-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="DELPHOS SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="CP-4028-014-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CONSORCIO PACÍFICO SUR SRL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PP-3614-015-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PROPES EIRL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="CV-0716-016-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CONSORCIO VICTORIA SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="TF-1493-017-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="TAYTA FISHING SRL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PM-3496-003-2"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PRODUCTOS MARINOS DEL PACÍFICO SUR SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PA-2447-001-2"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PESQUERA ANDREA SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="IC-0307-001-2"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CONSORCIO PESQUERO CAROLINA SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="FG-1888-005-2"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="FRIGOMAR SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="AL-2135-006-2"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ALIMENTOS AMERICANOS SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PP-1928-004-2"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PRODUCTOS PESQUEROS PERUANOS SA (PRODUPESA)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="UF-0506-007-2"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="UNIÓN FISHING SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="CE-3160-008-2"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ENVASADORA CHIMBOTE EXPORT"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="CP-1002-010-2"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CÍA PESQUERA ESTRELLA DEL PERÚ SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="CP-1767-009-2"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CORPORACIÓN DE PESCA SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHICLAYO"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="IA-0619-010-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ITALIA ABRUZZO SRL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHINCHA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PS-1718-019-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PACIFIC SEAFOODS SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="OR-1676-018-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="OCEAN REEF SEAFOOD SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PIURA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PR-0781-011-2"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="EMPRESA PESQUERA EL ROCÍO SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="TRUJILLO"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="MS-0922-020-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="MAI SHI SRL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="SN-3324-021-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="EMPRESA DE SERVICIOS Y REPRESENTACIONES PESQUERAS "/>
+                           <quote startQuote="‘" endQuote="’">
+                              <t v="NAUTILUS"/>
+                           </quote>
+                           <t v=" SRL (SERPESNA)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="MN-1592-011-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PROCESADORA DE PRODUCTOS MARINOS DEL NORTE SA (PROMANORSA)"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ZORRITOS"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ME-0392-012-3"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="MARIEXPORT SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PUCUSANA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="45A-IR-PA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="INVERSIONES Y REPRESENTACIONES PAITA SRL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="46A-PM-PA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PROMEX SRL EN ESTACIÓN NAVAL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="47A-PN-PA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PESCA ANDINA SA EN FRÍO PAITA SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PO48 BF-PSKI"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PESQUERA MARÍA DEL MAR SCRL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PO49 LIM-ROMR"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="RÍO MAR PROUCTOS SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="LIMA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PO51 PAI-PSSN"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PESQUERA SANTA NATALIA SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PO52 HUR-AGMR"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ANGEL MAR SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="HUARMEY"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PO53 CHI-EVMN"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ENVASADORA MONTEMAR SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PO54 COI-GRRP"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="GERENCIA Y REPRESENTACIONES PESQUERAS SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="COISHCO"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PO55 TUM-CLTC"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="CULTIVOS TECNIFICADOS DEL MAR SA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="TUMBES"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+               <table cols="4">
+                  <caption>
+                     <p>
+                        <num>
+                           <t v="II."/>
+                        </num>
+                        <t v="Factory vessels"/>
+                     </p>
+                  </caption>
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Approval No"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Name"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Name and address of owner"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Approval granted until"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="AI-1236-023-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="B.A.F. ISABEL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ARCOPA SA, PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="AM-1236-022-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="B.A.F. ANA MARIA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ARCOPA SA, PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="TL-38-2220-012-1"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="ZENKO MARU"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="TUNA LATÍN SA, PAITA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="PO48 BF-PSKI"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="K-INCA"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="PESQUERA MARÍA DEL MAR SCRL, CHIMBOTE"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="30. 6. 1996"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </tableGroup>
+         </unit>
+      </deleted>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="268"
+                 date="1991-09-01"
+                 page="15">
+               <t v="OJ No L 268, 24. 9. 1991, p. 15"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

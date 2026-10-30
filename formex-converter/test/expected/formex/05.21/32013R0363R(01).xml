@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32013R0363R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.21"
+           converter="1.0.0">
+   <source celex="32013R0363R(01)">
+      <publication series="L" number="123" date="2013-05-04" page="28"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Council Implementing Regulation (EU) No 363/2013 of "/>
+            <date asWritten="22 April 2013" date="2013-04-22"/>
+            <t v=" implementing Regulation (EU) No 36/2012 concerning restrictive measures in view of the situation in Syria"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="L" number="111" date="2013-04-23">
+               <t v="Official Journal of the European Union L 111 of 23 April 2013"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 5, Annex, entry 36, column "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="Name"/>
+            </quote>
+            <t v=":"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <p>
+               <t v="‘"/>
+               <t v="Nizar ("/>
+            </p>
+            <figure src="L_2013123EN.01002806.tif" content="character"/>
+            <p>
+               <t v=") Al-Assad ("/>
+            </p>
+            <figure src="L_2013123EN.01002807.tif" content="character"/>
+            <p>
+               <t v=") (a.k.a. Al-Assaad, Al-Assad, Al-Asaad)"/>
+               <t v="’"/>
+               <t v=","/>
+            </p>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <p>
+               <t v="‘"/>
+               <t v="Nizar Al-Assad ("/>
+            </p>
+            <figure src="L_2013123EN.01002808.tif" content="character"/>
+            <p>
+               <t v=")"/>
+               <t v="’"/>
+               <t v=";"/>
+            </p>
+         </new>
+      </unit>
+      <unit eId="cor_2" kind="correction">
+         <p>
+            <t v="on page 5, Annex, entry 36, column "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="Identifying information"/>
+            </quote>
+            <t v=":"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Previously head of the "/>
+                  <quote startQuote="“" endQuote="”">
+                     <t v="Nizar Oilfield Supplies"/>
+                  </quote>
+                  <t v=" company"/>
+               </quote>
+               <t v=","/>
+            </p>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Cousin of Bashar Al-Assad; previously head of the "/>
+                  <quote startQuote="“" endQuote="”">
+                     <t v="Nizar Oilfield Supplies"/>
+                  </quote>
+                  <t v=" company"/>
+               </quote>
+               <t v="."/>
+            </p>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

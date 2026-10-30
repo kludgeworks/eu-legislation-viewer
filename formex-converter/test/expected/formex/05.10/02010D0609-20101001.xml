@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32010D0609"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2010-10-01"
+           lang="en"
+           formexVersion="05.10"
+           converter="1.0.0">
+   <source celex="02010D0609-20101001">
+      <publication series="L" number="266" date="2010-10-09" page="60"/>
+   </source>
+   <lifecycle start="2010-10-01" produced="2010-10-27" sequence="000.001.0">
+      <eventRef type="corrigendum" act="32010D0609R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Political and Security Committee Decision"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="EUPOL RD "/>
+               <emphasis kind="uc">
+                  <t v="Congo"/>
+               </emphasis>
+               <t v="/1/2010"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="8 October 2010" date="2010-10-08"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="concerning the appointment of the Head of Mission of EUPOL RD Congo"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(2010/609/CFSP)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE POLITICAL AND SECURITY COMMITTEE,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on European Union, and in particular the third paragraph of Article 38 thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Decision 2010/576/CFSP of "/>
+               <date asWritten="23 September 2010" date="2010-09-23"/>
+               <t v=" on the European Union police mission undertaken in the framework of reform of the security sector (SSR) and its interface with the system of justice in the Democratic Republic of the Congo (EUPOL RD Congo)"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 10(1) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Pursuant to Article 10(1) of Decision 2010/576/CFSP, the Political and Security Committee is authorised, in accordance with Article 38 of the Treaty, to take the relevant decisions for the purpose of exercising the political control and strategic direction of EUPOL RD Congo, including in particular the decision to appoint a Head of Mission.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The High Representative of the Union for Foreign Affairs and Security Policy has proposed the appointment of Chief Superintendent Jean-Paul RIKIR as Head of Mission with effect from "/>
+               <date asWritten="1 October 2010" date="2010-10-01"/>
+               <t v=",&#xA;"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Chief Superintendent Jean-Paul RIKIR is hereby appointed Head of the European Union police mission undertaken in the framework of reform of the security sector (SSR) and its interface with the system of justice in the Democratic Republic of the Congo (EUPOL RD Congo) with effect from "/>
+            <date asWritten="1 October 2010" date="2010-10-01"/>
+            <t v="."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/unp_1" kind="paragraph">
+            <provenance amendingAct="32010D0609R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001000"/>
+            <p>
+               <t v="This Decision shall enter into force on "/>
+               <date asWritten="1 October 2010" date="2010-10-01"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_2/unp_2" kind="paragraph">
+            <p>
+               <t v="It shall apply until the end of EUPOL RD Congo mandate."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="254"
+                 date="2010-09-29"
+                 page="33">
+               <t v="OJ L 254, 29.9.2010, p. 33"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

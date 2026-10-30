@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31995R2943"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.10"
+           converter="1.0.0">
+   <source celex="31995R2943">
+      <publication series="L" number="308" date="1995-12-21" page="15"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation (EC) no 2943/95"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="20 December 1995" date="1995-12-20"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="setting out detailed rules for applying Council Regulation (EC) No 1627/94 laying down general provisions concerning special fishing permits"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 1627/94 of "/>
+               <date asWritten="27 June 1994" date="1994-06-27"/>
+               <t v=" laying down general provisions concerning special fishing permits"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Articles 13 (2) and 16 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <p>
+               <t v="Whereas detailed rules should be laid down for the transmission to the Commission of relevant information concerning Community fishing vessels with a view to the issue of special fishing permits, as well as criteria for the Commission to use in considering permit applications;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <p>
+               <t v="Whereas, where an infringement is committed by a fishing vessel flying the flag of a third country, the owner of that vessel should be given an opportunity to express his views on the measures taken;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <p>
+               <t v="Whereas a cooperation procedure among the competent authorities of the Member States needs to be established to facilitate the exchange of information in cases where Community rules have not been complied with;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <p>
+               <t v="Whereas the measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Fisheries and Aquaculture,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="This Regulation lays down detailed rules for applying Articles 7, 8, 10 and 13 of Regulation (EC) No 1627/94."/>
+         </p>
+      </unit>
+      <unit eId="cpt_1" kind="division">
+         <num>
+            <emphasis kind="b">
+               <t v="CHAPTER 1"/>
+            </emphasis>
+         </num>
+         <subheading>
+            <emphasis kind="b">
+               <t v="Authorization to fish in Community fishing waters and on the high seas"/>
+            </emphasis>
+         </subheading>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <unit eId="art_2/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Member States shall transmit to the Commission, at least one month before the start of fishing operations, a draft list of the Community fishing vessels likely to be exercising a fishing activity subject to the terms and conditions set out in Article 7 of Regulation (EC) No 1627/94 as well as the information which will make it possible to check that the list complies with the relevant provisions of Community law, including data for evaluating fishing effort."/>
+               </p>
+            </unit>
+            <unit eId="art_2/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The list of vessels shall include in particular the information referred to in Annex I to Regulation (EC) No 1627/94."/>
+               </p>
+            </unit>
+            <unit eId="art_2/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="The list of vessels and the supplementary information shall be supplied to the Commission preferably by computerized data transmission or by electronic mail."/>
+               </p>
+            </unit>
+            <unit eId="art_2/par_4" kind="paragraph">
+               <num>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="The deadline period referred to in Article 7 (2) of Regulation (EC) No 1627/94 shall commence on the date of receipt of all the relevant information."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_3" kind="article">
+            <num>
+               <t v="Article 3"/>
+            </num>
+            <unit eId="art_3/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <unit eId="art_3/par_1/sub_1" kind="subparagraph">
+                  <p>
+                     <t v="Member States shall provide the Commission with the final list of vessels which have received a special permit within 30 days at the latest of the permits being issued."/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_1/sub_2" kind="subparagraph">
+                  <p>
+                     <t v="The definitive list shall remain valid until expressly or implicitly revoked by the Member State."/>
+                  </p>
+               </unit>
+            </unit>
+            <unit eId="art_3/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="In case of modifications to the definitive list, the information required under Article 2 (1) must be received by the Commission at least 12 working days before the start of fishing operations."/>
+               </p>
+            </unit>
+            <unit eId="art_3/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="Member States shall immediately notify the Commission of any special permits withdrawn or suspended, in whole or in part, giving the reasons for such action."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_4" kind="article">
+            <num>
+               <t v="Article 4"/>
+            </num>
+            <p>
+               <t v="By 15 November each year at the latest, the Member States shall send the Commission information about specific national permit schemes as referred to in Article 8 of Regulation (EC) No 1627/94 where they have established such schemes."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="cpt_2" kind="division">
+         <num>
+            <emphasis kind="b">
+               <t v="CHAPTER 2"/>
+            </emphasis>
+         </num>
+         <subheading>
+            <emphasis kind="b">
+               <t v="Withdrawal and suspension of permits issued to third-country vessels"/>
+            </emphasis>
+         </subheading>
+         <unit eId="art_5" kind="article">
+            <num>
+               <t v="Article 5"/>
+            </num>
+            <p>
+               <t v="Member States shall notify any infringements detected as referred to in Article 10 (1) of Regulation (EC) No 1627/94, indicating as a minimum the name of the vessel involved, its external marking, its international radio call sign, the third country of the flag flown, the names and addresses of the master and the owner, a detailed statement of the facts of the case, details of any judicial, administrative or other action undertaken and any final decision in law concerning the infringement."/>
+            </p>
+         </unit>
+         <unit eId="art_6" kind="article">
+            <num>
+               <t v="Article 6"/>
+            </num>
+            <unit eId="art_6/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <unit eId="art_6/par_1/sub_1" kind="subparagraph">
+                  <p>
+                     <t v="The Commission shall consider all notified infringements committed by third-country vessels, assessing the seriousness of each case in the light of judicial and administrative decisions by the competent authorities in the Member States and in particular of the commercial benefits which the vessel owner may have enjoyed and the impact of the infringement on fishery resources."/>
+                  </p>
+               </unit>
+               <unit eId="art_6/par_1/sub_2" kind="subparagraph">
+                  <p>
+                     <t v="In respect of the vessel concerned, and without prejudice to the provisions of any fishery agreement with the third-country flag state, the Commission may — after giving the vessel owner the opportunity to express his views on the alleged infringement — decide on the basis of the seriousness of the case to:"/>
+                  </p>
+                  <list kind="dash">
+                     <unit eId="art_6/par_1/sub_2/idt_1" kind="indent">
+                        <p>
+                           <t v="suspend the special fishing permit,"/>
+                        </p>
+                     </unit>
+                     <unit eId="art_6/par_1/sub_2/idt_2" kind="indent">
+                        <p>
+                           <t v="withdraw the special fishing permit,"/>
+                        </p>
+                     </unit>
+                     <unit eId="art_6/par_1/sub_2/idt_3" kind="indent">
+                        <p>
+                           <t v="remove the vessel concerned from the list of vessels eligible for a special fishing permit in the following calendar year."/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+            </unit>
+            <unit eId="art_6/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The Commission's decision may not be taken within the 14-day period following receipt by the owner of notification of the alleged infringement."/>
+               </p>
+            </unit>
+         </unit>
+      </unit>
+      <unit eId="cpt_3" kind="division">
+         <num>
+            <emphasis kind="b">
+               <t v="CHAPTER 3"/>
+            </emphasis>
+         </num>
+         <subheading>
+            <emphasis kind="b">
+               <t v="General and final provisions"/>
+            </emphasis>
+         </subheading>
+         <unit eId="art_7" kind="article">
+            <num>
+               <t v="Article 7"/>
+            </num>
+            <unit eId="art_7/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="The competent authorities detecting an infringement shall provide all necessary assistance to the authorities of the flag Member State to enable them to start the procedure referred to in Article 13 (1) of Regulation (EC) No 1627/94."/>
+               </p>
+            </unit>
+            <unit eId="art_7/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Such assistance may consist, in particular, in transmitting documentary evidence, providing access to proof of the infringement and facilitating the appearance of their officers as witnesses in court proceedings in the flag Member State."/>
+               </p>
+            </unit>
+            <unit eId="art_7/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="The competent authorities detecting an infringement shall inform the authorities of the flag Member State about any vessel not complying with requirements imposed on it under penalties resulting from an infringement."/>
+               </p>
+            </unit>
+            <unit eId="art_7/par_4" kind="paragraph">
+               <num>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="Member States shall inform the Commission and the flag Member State of any judicial, administrative or other action undertaken and any final decision in law in respect of vessels flying that flag which are found to have committed an infringement."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_8" kind="article">
+            <num>
+               <t v="Article 8"/>
+            </num>
+            <p>
+               <t v="This Regulation shall enter into force on the seventh day following its publication in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Communities."/>
+               </emphasis>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="20 December 1995" date="1995-12-20"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Emma "/>
+               <emphasis kind="uc">
+                  <t v="Bonino"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="171"
+                 date="1994-07-06"
+                 page="7">
+               <t v="OJ No L 171, 6. 7. 1994, p. 7"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

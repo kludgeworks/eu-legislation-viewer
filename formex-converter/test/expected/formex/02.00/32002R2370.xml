@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32002R2370"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="02.00"
+           converter="1.0.0">
+   <source celex="32002R2370">
+      <publication series="L" number="358" date="2002-12-31" page="57"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Regulation (EC) N"/>
+               </emphasis>
+            </docType>
+            <docNumber>
+               <t v="o 2370/2002"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="20 December 2002" date="2002-12-20"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="establishing an emergency Community measure for scrapping fishing vessels"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community, and in particular Articles 36 and 37 thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the proposal from the Commission"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to the opinion of the European Parliament"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=","/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Council Regulation (EC) No 2792/1999 of "/>
+               <date asWritten="17 December 1999" date="1999-12-17"/>
+               <t v=" laying down the detailed rules and arrangements regarding Community structural assistance in the fisheries sector"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=" has afforded decommissioning incentives as a way of bringing about a balanced ratio of fleet capacity to available resources in the long term."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Several stocks of major importance to Community fisheries are now seriously depleted. The owners of fishing vessels whose fishing opportunities have been severely reduced as a result of a recovery plan adopted by the Council should therefore be offered additional decommissioning incentives on top of those already provided for in Regulation (EC) No 2792/1999. Sufficient additional funds should be made available to Member States for this purpose."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Only those vessel owners who are severely affected by a recovery plan should be afforded access to additional decommissioning incentives for the scrapping of fishing vessels defined by this Regulation. A reduction of 25 % or more in the fishing opportunities of the vessel concerned should be regarded as an objective indicator of severe impact."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The maximum amounts for the scrapping premiums laid down in Article 7 of Regulation (EC) No 2792/1999 are insufficient to enable the higher premiums to be paid."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="For conservation reasons the Community measure should be established as soon as possible and should be limited in time to ensure that suitable restructuring of the fleet can proceed without delay."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="It is necessary to ensure adequate flexibility of the distribution of the additional scrapping funds to allow them to be directed to those Member States most in need."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_7" kind="recital">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <p>
+               <t v="The roles of all parties involved in the implementation of the financial measure should be clearly defined and steps taken to guarantee the transparency and equity of the procedures for the management and monitoring of the measure."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_8" kind="recital">
+            <num>
+               <t v="(8)"/>
+            </num>
+            <p>
+               <t v="Rules on the financial contributions made under this Regulation should be defined by reference to those laid down in Regulation (EC) No 2792/1999."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_9" kind="recital">
+            <num>
+               <t v="(9)"/>
+            </num>
+            <p>
+               <t v="The measures necessary for the implementation of this Regulation should be adopted in accordance with Council Decision 1999/468/EC of "/>
+               <date asWritten="28 June 1999" date="1999-06-28"/>
+               <t v=" laying down the procedures for the exercise of implementing powers conferred on the Commission"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_10" kind="recital">
+            <num>
+               <t v="(10)"/>
+            </num>
+            <p>
+               <t v="It is necessary and appropriate for the achievement of the basic objective of this Regulation, namely the conservation and sustainable exploitation of fisheries resources, to lay down rules on the scrapping of fishing vessels. In accordance with the principle of proportionality as set out in Article 5 of the Treaty, this Regulation does not go beyond what is necessary in order to achieve that objective,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="dvs_TITLE-I" kind="division">
+         <num>
+            <t v="TITLE I"/>
+         </num>
+         <heading>
+            <t v="SUBJECT MATTER AND ELIGIBILITY"/>
+         </heading>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <heading>
+               <t v="Subject matter"/>
+            </heading>
+            <p>
+               <t v="An emergency Community measure to assist Member States to achieve additional reductions in fishing effort resulting from recovery plans adopted by the Council is hereby instituted for the period from 2003 to 2006. The measure shall consist of a special incentive to provide Member States with funds to co-finance their additional needs to scrap fishing vessels affected by recovery plans."/>
+            </p>
+         </unit>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <heading>
+               <t v="Eligibility"/>
+            </heading>
+            <p>
+               <t v="Any fishing vessel covered by a recovery plan adopted by the Council shall be eligible for an increased scrapping premium in accordance with Article 3 provided that:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_2/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the fishing vessel is also eligible for scrapping premiums under Regulation (EC) No 2792/1999,"/>
+                  </p>
+                  <p>
+                     <t v="and"/>
+                  </p>
+               </unit>
+               <unit eId="art_2/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="its fishing effort has had to be reduced by 25 % or more as a consequence of a recovery plan."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_3" kind="article">
+            <num>
+               <t v="Article 3"/>
+            </num>
+            <heading>
+               <t v="Maximum amount of increased scrapping premium"/>
+            </heading>
+            <p>
+               <t v="Owners of fishing vessels may be granted public aid in respect of eligible fishing vessels within the meaning of Article 2 on the basis of the scales referred to in point (a) of Article 7(5) of Regulation (EC) No 2792/1999, increased by 20 %."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="dvs_TITLE-II" kind="division">
+         <num>
+            <t v="TITLE II"/>
+         </num>
+         <heading>
+            <t v="YEAR 2003"/>
+         </heading>
+         <unit eId="art_4" kind="article">
+            <num>
+               <t v="Article 4"/>
+            </num>
+            <heading>
+               <t v="Financial contribution from the Community"/>
+            </heading>
+            <p>
+               <t v="The Community may grant Member States, for the year 2003, a financial contribution (hereinafter "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="financial contribution"/>
+               </quote>
+               <t v=") for their expenditure incurred under Article 3. The financial contribution shall be calculated in accordance with the rates set out in Table 3, Group 1 of Annex IV to Regulation (EC) No 2792/1999."/>
+            </p>
+         </unit>
+         <unit eId="art_5" kind="article">
+            <num>
+               <t v="Article 5"/>
+            </num>
+            <heading>
+               <t v="Forecast programmes of annual expenditure"/>
+            </heading>
+            <p>
+               <t v="Member States wishing to receive a financial contribution shall present to the Commission by "/>
+               <date asWritten="30 June 2003" date="2003-06-30"/>
+               <t v=" a plan of their proposed decommissioning expenditure for the year 2003, under this emergency Community measure. The Commission shall proceed with the commitment of the global annual amount available in the budget for this emergency Community measure."/>
+            </p>
+         </unit>
+         <unit eId="art_6" kind="article">
+            <num>
+               <t v="Article 6"/>
+            </num>
+            <heading>
+               <t v="Procedure"/>
+            </heading>
+            <unit eId="art_6/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="Member States shall submit their applications for the payment of the expenditure by "/>
+                  <date asWritten="30 June 2004" date="2004-06-30"/>
+                  <t v=". On the basis of the applications, and the situation of each Member State in respect of the impact of recovery plans, the Commission shall decide on the financial contribution to be paid to each Member State. The Commission shall pay up to 50 % of the assistance on receipt of the application and the balance after certification by the authorities referred to in paragraph 2."/>
+               </p>
+            </unit>
+            <unit eId="art_6/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The authorities responsible for the implementation of this emergency Community measure shall be the managing and paying authorities involved in structural fund measures concerning fisheries in the relevant Member State. They shall perform the functions assigned to them by Council Regulation (EC) No 1260/1999 of "/>
+                  <date asWritten="21 June 1999" date="1999-06-21"/>
+                  <t v=" laying down general provisions on the structural funds"/>
+                  <noteRef href="#note_5" marker="5"/>
+                  <t v="."/>
+               </p>
+            </unit>
+            <unit eId="art_6/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="Except in the case of contrary provisions arising form this Regulation, the relevant provisions of Regulation (EC) No 1260/1999, in particular Articles 33 to 39, as well as derived legislation, shall apply."/>
+               </p>
+            </unit>
+         </unit>
+      </unit>
+      <unit eId="dvs_TITLE-III" kind="division">
+         <num>
+            <t v="TITLE III"/>
+         </num>
+         <heading>
+            <t v="PERIOD 2004-2006"/>
+         </heading>
+         <unit eId="art_7" kind="article">
+            <num>
+               <t v="Article 7"/>
+            </num>
+            <p>
+               <t v="For the period 2004-2006 the necessary funds for financing the emergency Community measure for scrapping fishing vessels shall be made available by reprogramming of the Structural Funds provided for in Articles 41 and 44 of Regulation (EC) No 1260/1999 and be programmed within the existing Financial Instrument for Fisheries Guidance programmes."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="dvs_TITLE-IV" kind="division">
+         <num>
+            <t v="TITLE IV"/>
+         </num>
+         <heading>
+            <t v="IMPLEMENTATION AND ENTRY INTO FORCE"/>
+         </heading>
+         <unit eId="art_8" kind="article">
+            <num>
+               <t v="Article 8"/>
+            </num>
+            <heading>
+               <t v="Implementation"/>
+            </heading>
+            <p>
+               <t v="The detailed rules for the implementation of this Regulation shall be adopted by the Commission in accordance with the procedure laid down in Article 30(2) of Council Regulation (EC) No 2371/2002 of "/>
+               <date asWritten="20 December 2002" date="2002-12-20"/>
+               <t v=" on the conservation and sustainable exploitation of fisheries resources under the Common Fisheries Policy"/>
+               <noteRef href="#note_6" marker="6"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_9" kind="article">
+            <num>
+               <t v="Article 9"/>
+            </num>
+            <heading>
+               <t v="Entry into force"/>
+            </heading>
+            <p>
+               <t v="This Regulation shall enter into force on "/>
+               <date asWritten="1 January 2003" date="2003-01-01"/>
+               <t v="."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="20 December 2002" date="2002-12-20"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Council"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="M. "/>
+               <emphasis kind="uc">
+                  <t v="Fischer Boel"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="227E"
+                 date="2002-09-24"
+                 page="333">
+               <t v="OJ C 227 E, 24.9.2002, p. 333"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Opinion delivered on "/>
+            <date asWritten="5 December 2002" date="2002-12-05"/>
+            <t v=" (not yet published in the Official Journal)."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="337"
+                 date="1999-12-30"
+                 page="10">
+               <t v="OJ L 337, 30.12.1999, p. 10"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 179/2002 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="31"
+                 date="2002-02-01"
+                 page="25">
+               <t v="OJ L 31, 1.2.2002, p. 25"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="184"
+                 date="1999-07-17"
+                 page="23">
+               <t v="OJ L 184, 17.7.1999, p. 23"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="161"
+                 date="1999-06-26"
+                 page="1">
+               <t v="OJ L 161, 26.6.1999, p. 1"/>
+            </ref>
+            <t v=". Regulation as amended by Regulation (EC) No 1447/2001 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="198"
+                 date="2001-07-21"
+                 page="1">
+               <t v="OJ L 198, 21.7.2001, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_6" marker="6" kind="footnote">
+         <p>
+            <t v="See page 59 of this Official Journal."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

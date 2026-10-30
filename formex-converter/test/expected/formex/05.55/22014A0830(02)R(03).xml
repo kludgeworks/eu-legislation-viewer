@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="22014A0830(02)R(03)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.55"
+           converter="1.0.0">
+   <source celex="22014A0830(02)R(03)">
+      <publication series="L" number="80" date="2015-03-25" page="128"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Association Agreement between the European Union and the European Atomic Energy Community and their Member States, of the one part, and Georgia, of the other part"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="L" number="261" date="2014-08-30">
+               <t v="Official Journal of the European Union L 261 of 30 August 2014"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="Page 145 should be replaced by this page:"/>
+         </p>
+         <new>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <p>
+                  <t v="‘"/>
+                  <t v="Suomen tasavallan puolesta"/>
+               </p>
+               <p>
+                  <t v="För Republiken Finland"/>
+               </p>
+               <figure src="L_2015080EN.01012802.tif" content="signature"/>
+               <p>
+                  <t v="För Konungariket Sverige"/>
+               </p>
+               <figure src="L_2015080EN.01012803.tif" content="signature"/>
+               <p>
+                  <t v="For the United Kingdom of Great Britain and Northern Ireland"/>
+               </p>
+               <figure src="L_2015080EN.01012804.tif" content="signature"/>
+               <p>
+                  <t v="За Европейския съюз"/>
+               </p>
+               <p>
+                  <t v="Por la Unión Europea"/>
+               </p>
+               <p>
+                  <t v="Za Evropskou unii"/>
+               </p>
+               <p>
+                  <t v="For Den Europæiske Union"/>
+               </p>
+               <p>
+                  <t v="Für die Europäische Union"/>
+               </p>
+               <p>
+                  <t v="Euroopa Liidu nimel"/>
+               </p>
+               <p>
+                  <t v="Για την Ευρωπαϊκή Ένωση"/>
+               </p>
+               <figure src="L_2015080EN.01012805.tif" content="signature"/>
+               <p>
+                  <t v="For the European Union"/>
+               </p>
+               <p>
+                  <t v="Pour l'Union européenne"/>
+               </p>
+               <p>
+                  <t v="Za Europsku uniju"/>
+               </p>
+               <p>
+                  <t v="Per l'Unione europea"/>
+               </p>
+               <p>
+                  <t v="Eiropas Savienības vārdā –"/>
+               </p>
+               <p>
+                  <t v="Europos Sąjungos vardu"/>
+               </p>
+               <p>
+                  <t v="Az Európai Unió részéről"/>
+               </p>
+               <p>
+                  <t v="Għall-Unjoni Ewropea"/>
+               </p>
+               <p>
+                  <t v="Voor de Europese Unie"/>
+               </p>
+               <p>
+                  <t v="W imieniu Unii Europejskiej"/>
+               </p>
+               <p>
+                  <t v="Pela União Europeia"/>
+               </p>
+               <p>
+                  <t v="Pentru Uniunea Europeană"/>
+               </p>
+               <p>
+                  <t v="Za Európsku úniu"/>
+               </p>
+               <p>
+                  <t v="Za Evropsko unijo"/>
+               </p>
+               <p>
+                  <t v="Euroopan unionin puolesta"/>
+               </p>
+               <p>
+                  <t v="För Europeiska unionen"/>
+                  <t v="’"/>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

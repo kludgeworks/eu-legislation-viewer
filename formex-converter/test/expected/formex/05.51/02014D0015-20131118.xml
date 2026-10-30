@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32014D0015"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2013-11-18"
+           lang="en"
+           formexVersion="05.51"
+           converter="1.0.0">
+   <source celex="02014D0015-20131118">
+      <publication series="L" number="14" date="2014-01-18" page="1"/>
+   </source>
+   <lifecycle start="2013-11-18" produced="2014-02-24" sequence="000.001.0">
+      <eventRef type="corrigendum" act="32014D0015R(01)"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <changed amendingAct="32014D0015R(01)"
+                     action="replaced"
+                     location="LI:0;EL:2"
+                     marker="O000001M002000">
+               <emphasis kind="uc">
+                  <t v="Council Decision"/>
+               </emphasis>
+               <t v=" 2014/15/CFSP"/>
+            </changed>
+         </p>
+         <p>
+            <changed amendingAct="32014D0015R(01)"
+                     action="replaced"
+                     location="LI:0;EL:2"
+                     marker="O000001M002000">
+               <t v="of "/>
+            </changed>
+            <docDate asWritten="18 November 2013" date="2013-11-18"/>
+         </p>
+         <p>
+            <docPurpose>
+               <changed amendingAct="32014D0015R(01)"
+                        action="replaced"
+                        location="LI:0;EL:2"
+                        marker="O000001M002000">
+                  <t v="on the signing and conclusion of the Agreement between the European Union and Georgia establishing a framework for the participation of Georgia in European Union crisis management operations"/>
+               </changed>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on European Union, and in particular Article 37 thereof, in conjunction with Article 218(5) and (6) of the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the proposal from the High Representative of the Union for Foreign Affairs and Security Policy,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Conditions regarding the participation of third States in European Union crisis management operations should be laid down in an agreement establishing a framework for such possible future participation, rather than being defined on a case-by-case basis for each operation concerned."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Following the adoption of a Decision by the Council on "/>
+               <date asWritten="13 November 2012" date="2012-11-13"/>
+               <t v=" authorising the opening of negotiations, the High Representative of the Union for Foreign Affairs and Security Policy negotiated an agreement between the European Union and Georgia establishing a framework for the participation of Georgia in European Union crisis management operations ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the Agreement"/>
+               </quote>
+               <t v=")."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The Agreement should be approved,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <unit eId="art_1/unp_1" kind="paragraph">
+            <p>
+               <t v="The Agreement between the European Union and Georgia establishing a framework for the participation of Georgia in the European Union crisis management operations is hereby approved on behalf of the Union."/>
+            </p>
+         </unit>
+         <unit eId="art_1/unp_2" kind="paragraph">
+            <p>
+               <t v="The text of the Agreement is attached to this Decision."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The President of the Council is hereby authorised to designate the person(s) empowered to sign the Agreement in order to bind the Union."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="The President of the Council shall, on behalf of the Union, give the notification provided for in Article 16(1) of the Agreement"/>
+            <noteRef href="#note_1" marker="1"/>
+            <t v="."/>
+         </p>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <p>
+            <t v="This Decision shall enter into force on the date of its adoption."/>
+         </p>
+      </unit>
+   </body>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="The date of entry into force of the Agreement will be published in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v=" by the General Secretariat of the Council."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

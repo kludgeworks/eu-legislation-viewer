@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31994D0604"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2004-06-01"
+           lang="en"
+           formexVersion="01.02"
+           converter="1.0.0">
+   <source celex="01994D0604-20040601">
+      <publication series="L" number="244" date="1994-09-19" page="22"/>
+   </source>
+   <lifecycle start="2004-06-01" sequence="005.001.0">
+      <eventRef type="amendment" act="31998D0441" date="1997-10-02"/>
+      <eventRef type="amendment" act="31998D0443" date="1998-06-11"/>
+      <eventRef type="amendment" act="32002D0154" date="2000-04-18"/>
+      <eventRef type="amendment" act="32003D0251" date="2002-06-27"/>
+      <eventRef type="amendment" act="32003D0148" date="2002-06-27"/>
+      <eventRef type="amendment" act="32004D0562" date="2004-03-23"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Decision"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="No 153"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="7 October 1993" date="1993-10-07"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the model forms necessary for the application of Council Regulation No (EEC) 1408/71 and (EEC) No 574/72 (E 001, E 103 to E 127)"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+         <p>
+            <t v="(94/604/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <p>
+         <t v="THE ADMINISTRATIVE COMMISSION OF THE EUROPEAN COMMUNITIES ON SOCIAL SECURITY FOR MIGRANT WORKERS,"/>
+      </p>
+      <p>
+         <t v="Having regard to Article 81 (a) of Council Regulation (EEC) No 1408/71 of "/>
+         <date asWritten="14 June 1971" date="1971-06-14"/>
+         <t v=" on the application of social security schemes to employed persons, to self-employed persons and to members of their family moving within the Community, under which it is the duty of the Administrative Commission to deal with all administrative matters arising from Regulation (EEC) No 1408/71 and subsequent Regulations,"/>
+      </p>
+      <p>
+         <t v="Having regard to Article 2 (1) of Council Regulation (EEC) No 574/72 of "/>
+         <date asWritten="21 of March 1972" date="1972-03-21"/>
+         <t v=", under which it is the duty of the Administrative Commission to draw up models of certificates, certifieds statements, declarations, applications and other documents necessary for the application of the Regulations,"/>
+      </p>
+      <p>
+         <t v="Having regard to Decision No 130 of "/>
+         <date asWritten="17 October 1985" date="1985-10-17"/>
+         <t v=" laying down and adapting the model forms necessary for the application of the Regulations,"/>
+      </p>
+      <p>
+         <t v="Whereas these model forms should be adapted for the purpose of taking account of the amendments which have been introduced into the national legislation of Member States;"/>
+      </p>
+      <p>
+         <t v="Whereas the Agreement on the European Economic Area of "/>
+         <date asWritten="2 May 1992" date="1992-05-02"/>
+         <t v=", as adjusted by the Protocol of "/>
+         <date asWritten="17 March 1993" date="1993-03-17"/>
+         <t v=", Annex VI, implements Council Regulations (EEC) No 1408/71 and (EEC) No 574/72 within the European Economic Area;"/>
+      </p>
+      <p>
+         <t v="Whereas by Decision of the EEA Joint Committee the model forms necessary for the application of Council Regulations (EEC) No 1408/71 and (EEC) No 574/72 will be adapted and (EEC) No implemented within the European Economic Area;"/>
+      </p>
+      <p>
+         <t v="Whereas for practical reasons identical forms should be used within the Community and within the European Economic Area;"/>
+      </p>
+      <p>
+         <t v="Whereas with a view to the envisaged participation of Liechtenstein in the EEA at a later stage, these forms should also be adapted as regards Liechtenstein;"/>
+      </p>
+      <p>
+         <t v="Whereas the language in which the forms should be drawn up has been decided by recommendation No 15 of the Administrative Commission,"/>
+      </p>
+      <p>
+         <t v="HAS DECIDED AS FOLLOWS:"/>
+      </p>
+      <p>
+         <num>
+            <t v="1."/>
+         </num>
+         <t v="The model forms E 001, E 103 to E 127 printed in Decision No 130 shall be replaced by the models appended hereto."/>
+      </p>
+      <p>
+         <num>
+            <t v="2."/>
+         </num>
+         <t v="The competent authorities of the Member States shall make available to the person concerned (rightful claimants, institutions, employers, etc.) the forms according to the attached models."/>
+      </p>
+      <p>
+         <num>
+            <t v="3."/>
+         </num>
+         <t v="Each form shall be available in the official languages of the Community and laid out in such manner that the different versions are perfectly superposable, thereby making it possible for each person or body to which a form is addressed (rightful claimant, institution, employer, etc.) to receive the form printed in their own language."/>
+      </p>
+      <p>
+         <num>
+            <t v="4."/>
+         </num>
+         <t v="This Decision shall be applicable from the first day of the month following its publication in the "/>
+         <emphasis kind="i">
+            <t v="Official Journal of the European Communities"/>
+         </emphasis>
+         <t v="."/>
+      </p>
+      <p>
+         <emphasis kind="i">
+            <t v="The Chairman of the Administrative Commission"/>
+         </emphasis>
+      </p>
+      <p>
+         <t v="Gabrielle "/>
+         <emphasis kind="uc">
+            <t v="Clotuche"/>
+         </emphasis>
+      </p>
+   </body>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <unit eId="anx/lvl_1" kind="level" depth="1">
+            <heading>
+               <t v="List of forms"/>
+            </heading>
+            <table cols="2">
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 001"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Request for information, communication of information, request for forms, reminder on an employed person a self-employed person, a frontier worker, a pensioner, an unemployed person, a dependant"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 103"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Exercising the right of option"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 104"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate concerning the aggregation of periods of insurance, employment or residence"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 105"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate concerning the members of the family of an employed person or self-employed person to be taken into consideration for the calculation of cash benefits in the case of incapacity for work"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 106"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate of entitlement to sickness and maternity insurance benefits in kind for persons residing in a country other than the competent country"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 107"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Application for a certificate of entitlement to benefits in kind"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 108"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Notification of suspension or withdrawal of the right to sickness and maternity insurance benefits in kind"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 109"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate for the registration of members of the employed or self-employed person's family and the updating of lists"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 110"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate concerning employed persons in international transport"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 111"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate of entitlement to benefits in kind during a stay in a Member State"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 112"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate concerning the retention of the right to sickness or maternity benefits currently being provided"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 113"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Hospitalization: notification of entering and leaving hospital"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 114"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Granting of major benefits in kind"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 115"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Claim for cash benefits for incapacity for work"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 116"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Medical report relating to incapacity for work (sickness, maternity, accident at work, occupational disease)"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 117"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Granting of cash benefits in the case of maternity and incapacity for work"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 118"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Notification of non-recognition or of end of incapacity for work"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 119"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate concerning the entitlement of unemployed persons and the members of their family to sickness and maternity insurance benefits"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 120"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate of entitlement to benefits in kind for pension claimants and members of their family"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 121"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate for the registration of pensioners and the updating of lists"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 122"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate for the granting of benefits in kind to members of the family of pensioners"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 123"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Certificate of entitlement to benefits in kind under insurance against accidents at work and occupational diseases"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 124"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Claim for death grant"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 125"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Individual record of actual expenditure"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 126"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Rates for refund of benefits in kind"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="E 127"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Individual record of monthly lump-sum payments"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </unit>
+         <figure src="L_1994244EN.01002501.tif" content="form"/>
+         <figure src="L_1994244EN.01002601.tif" content="form"/>
+         <figure src="L_1994244EN.01002701.tif" content="form"/>
+         <figure src="L_1994244EN.01002801.tif" content="form"/>
+         <figure src="L_1994244EN.01002901.tif" content="form"/>
+         <figure src="L_1994244EN.01003001.tif" content="form"/>
+         <figure src="L_1994244EN.01003101.tif" content="form"/>
+         <figure src="L_1994244EN.01003301.tif" content="form"/>
+         <figure src="L_1994244EN.01003401.tif" content="form"/>
+         <figure src="L_1994244EN.01003501.tif" content="form"/>
+         <figure src="L_1994244EN.01003701.tif" content="form"/>
+         <figure src="L_1994244EN.01003801.tif" content="form"/>
+         <figure src="L_1998195EN.01002702.tif" content="form"/>
+         <figure src="L_1998195EN.01002801.tif" content="form"/>
+         <figure src="L_1998195EN.01002901.tif" content="form"/>
+         <figure src="L_1998195EN.01003001.tif" content="form"/>
+         <figure src="L_1994244EN.01004301.tif" content="form"/>
+         <figure src="L_1994244EN.01004401.tif" content="form"/>
+         <figure src="L_1994244EN.01004501.tif" content="form"/>
+         <unit eId="anx/lvl_2" kind="level" depth="1">
+            <provenance amendingAct="32003D0148"
+                        action="replaced"
+                        location="LI:0;PT:1"
+                        marker="O003001M001000"/>
+            <figure src="L_2003055EN.01007702.tif" content="form"/>
+            <figure src="L_2003055EN.01007801.tif" content="form"/>
+            <figure src="L_2003055EN.01007901.tif" content="form"/>
+         </unit>
+         <figure src="L_1998195EN.01003101.tif" content="form"/>
+         <figure src="L_1998195EN.01003201.tif" content="form"/>
+         <figure src="L_1998195EN.01003301.tif" content="form"/>
+         <figure src="L_1998195EN.01003401.tif" content="form"/>
+         <figure src="L_1994244EN.01005301.tif" content="form"/>
+         <figure src="L_1994244EN.01005401.tif" content="form"/>
+         <figure src="L_1994244EN.01005501.tif" content="form"/>
+         <figure src="L_1994244EN.01005601.tif" content="form"/>
+         <figure src="L_2003093EN.01004302.tif" content="form"/>
+         <figure src="L_2003093EN.01004401.tif" content="form"/>
+         <figure src="L_2003093EN.01004501.tif" content="form"/>
+         <figure src="L_2003093EN.01004601.tif" content="form"/>
+         <figure src="L_2003093EN.01004701.tif" content="form"/>
+         <figure src="L_1994244EN.01006301.tif" content="form"/>
+         <figure src="L_1994244EN.01006401.tif" content="form"/>
+         <figure src="L_1994244EN.01006501.tif" content="form"/>
+         <unit eId="anx/lvl_3" kind="level" depth="1">
+            <provenance amendingAct="32002D0154"
+                        action="replaced"
+                        location="LI:0;PT:1"
+                        marker="O002001M002000"/>
+            <figure src="L_2002054EN.01000901.tif" content="form"/>
+            <figure src="L_2002054EN.01001001.tif" content="form"/>
+         </unit>
+         <unit eId="anx/lvl_4" kind="level" depth="1">
+            <provenance amendingAct="32002D0154"
+                        action="replaced"
+                        location="LI:0;PT:1"
+                        marker="O002001M003000"/>
+            <figure src="L_2002054EN.01001101.tif" content="form"/>
+            <figure src="L_2002054EN.01001201.tif" content="form"/>
+         </unit>
+         <unit eId="anx/lvl_5" kind="level" depth="1">
+            <provenance amendingAct="32002D0154"
+                        action="replaced"
+                        location="LI:0;PT:1"
+                        marker="O002001M004000"/>
+            <figure src="L_2002054EN.01001301.tif" content="form"/>
+            <figure src="L_2002054EN.01001401.tif" content="form"/>
+            <figure src="L_2002054EN.01001501.tif" content="form"/>
+         </unit>
+         <unit eId="anx/lvl_6" kind="level" depth="1">
+            <provenance amendingAct="32002D0154"
+                        action="replaced"
+                        location="LI:0;PT:1"
+                        marker="O002001M005000"/>
+            <figure src="L_2002054EN.01001701.tif" content="form"/>
+            <figure src="L_2002054EN.01001801.tif" content="form"/>
+            <figure src="L_2002054EN.01001901.tif" content="form"/>
+         </unit>
+         <unit eId="anx/lvl_7" kind="level" depth="1">
+            <provenance amendingAct="32002D0154"
+                        action="replaced"
+                        location="LI:0;PT:1"
+                        marker="O002001M006000"/>
+            <figure src="L_2002054EN.01002101.tif" content="form"/>
+            <figure src="L_2002054EN.01002201.tif" content="form"/>
+         </unit>
+         <unit eId="anx/lvl_8" kind="level" depth="1">
+            <provenance amendingAct="32002D0154"
+                        action="replaced"
+                        location="LI:0;PT:1"
+                        marker="O002001M007000"/>
+         </unit>
+         <unit eId="anx/lvl_8/lvl_1" kind="level" depth="2">
+            <provenance amendingAct="32002D0154"
+                        action="replaced"
+                        location="LI:0;PT:1"
+                        marker="O002001M007000"/>
+            <figure src="L_2002054EN.01002301.tif" content="form"/>
+            <figure src="L_2002054EN.01002401.tif" content="form"/>
+         </unit>
+         <unit eId="anx/lvl_8/lvl_2" kind="level" depth="2">
+            <provenance amendingAct="32002D0154"
+                        action="replaced"
+                        location="LI:0;PT:1"
+                        marker="O002001M007000"/>
+            <figure src="L_2002054EN.01002501.tif" content="form"/>
+            <figure src="L_2002054EN.01002601.tif" content="form"/>
+            <figure src="L_2002054EN.01002701.tif" content="form"/>
+         </unit>
+         <figure src="L_2004259EN.01000501.tif" content="form"/>
+         <figure src="L_2004259EN.01000601.tif" content="form"/>
+         <figure src="L_2004259EN.01000701.tif" content="form"/>
+         <figure src="L_2004259EN.01000801.tif" content="form"/>
+         <figure src="L_1994244EN.01009101.tif" content="form"/>
+         <figure src="L_1994244EN.01009201.tif" content="form"/>
+         <figure src="L_1994244EN.01009301.tif" content="form"/>
+         <figure src="L_1994244EN.01009401.tif" content="form"/>
+         <figure src="L_1998195EN.01003902.tif" content="form"/>
+         <figure src="L_1998195EN.01004001.tif" content="form"/>
+         <figure src="L_1998195EN.01004101.tif" content="form"/>
+         <figure src="L_1998195EN.01004201.tif" content="form"/>
+         <figure src="L_1994244EN.01009901.tif" content="form"/>
+         <figure src="L_1994244EN.01010001.tif" content="form"/>
+         <figure src="L_1994244EN.01010101.tif" content="form"/>
+         <figure src="L_1994244EN.01010301.tif" content="form"/>
+         <figure src="L_1994244EN.01010401.tif" content="form"/>
+         <figure src="L_1994244EN.01010501.tif" content="form"/>
+         <figure src="L_1994244EN.01010701.tif" content="form"/>
+         <figure src="L_1994244EN.01010801.tif" content="form"/>
+         <figure src="L_1994244EN.01010901.tif" content="form"/>
+         <figure src="L_1994244EN.01011101.tif" content="form"/>
+         <unit eId="anx/lvl_9" kind="level" depth="1">
+            <provenance amendingAct="32002D0154"
+                        action="replaced"
+                        location="LI:0;PT:1"
+                        marker="O002001M008000"/>
+            <figure src="L_2002054EN.01002901.tif" content="form"/>
+            <figure src="L_2002054EN.01003001.tif" content="form"/>
+            <figure src="L_2002054EN.01003101.tif" content="form"/>
+         </unit>
+         <unit eId="anx/lvl_10" kind="level" depth="1">
+            <provenance amendingAct="32002D0154"
+                        action="replaced"
+                        location="LI:0;PT:1"
+                        marker="O002001M009000"/>
+            <figure src="L_2002054EN.01003301.tif" content="form"/>
+            <figure src="L_2002054EN.01003401.tif" content="form"/>
+            <figure src="L_2002054EN.01003501.tif" content="form"/>
+         </unit>
+         <figure src="L_1998195EN.01004301.tif" content="form"/>
+         <figure src="L_1998195EN.01004401.tif" content="form"/>
+      </unit>
+   </annexes>
+</legalText>
+

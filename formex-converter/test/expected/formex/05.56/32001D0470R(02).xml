@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32001D0470R(02)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.56"
+           converter="1.0.0">
+   <source celex="32001D0470R(02)">
+      <publication series="L" number="297" date="2016-11-04" page="25"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Council Decision 2001/470/EC of "/>
+            <date asWritten="28 May 2001" date="2001-05-28"/>
+            <t v=" establishing a European Judicial Network in civil and commercial matters"/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="("/>
+               <ref kind="oj" series="L" number="174" date="2001-06-27">
+                  <t v="Official Journal of the European Union L 174 of 27 June 2001"/>
+               </ref>
+               <t v=")"/>
+            </emphasis>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 30, Article 15, paragraphs 4 and 5 are renumbered as paragraphs 3 and 4 respectively."/>
+         </p>
+      </unit>
+   </body>
+</legalText>
+

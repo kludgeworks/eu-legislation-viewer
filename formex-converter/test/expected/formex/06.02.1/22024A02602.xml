@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="22024A02602"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="06.02.1"
+           converter="1.0.0">
+   <source celex="22024A02602">
+      <publication series="L" date="2024-10-08" page="1"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Agreement between the Kingdom of Norway and the European Union on a Norwegian Financial Mechanism for the period May 2021–April 2028"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <unit eId="art_1/subdvs_1" kind="subdivision">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <heading>
+               <t v="Objectives"/>
+            </heading>
+            <p>
+               <t v="The Kingdom of Norway undertakes to contribute to the reduction of economic and social disparities in the European Economic Area and to the strengthening of its relations with the Beneficiary States, through a separate Norwegian Financial Mechanism within the thematic priorities listed in Article 3"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_1/subdvs_2" kind="subdivision">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <heading>
+               <t v="Common Values and Principles"/>
+            </heading>
+            <unit eId="art_1/subdvs_2/sub_1" kind="subparagraph">
+               <p>
+                  <t v="The Norwegian Financial Mechanism (2021–2028) is based on the common values and principles of respect for human dignity, freedom, democracy, equality, the rule of law and the respect for human rights including the rights of persons belonging to minorities."/>
+               </p>
+            </unit>
+            <unit eId="art_1/subdvs_2/sub_2" kind="subparagraph">
+               <p>
+                  <t v="All programmes and activities funded by the Norwegian Financial Mechanism shall be consistent with respect for these values and principles and abstain from supporting operations that may fail to do so. Their implementation shall comply with the fundamental rights and obligations enshrined in relevant instruments and standards."/>
+               </p>
+            </unit>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <heading>
+            <t v="Commitments"/>
+         </heading>
+         <unit eId="art_2/unp_1" kind="paragraph">
+            <p>
+               <t v="The amount of the financial contribution provided for in Article 1 shall be EUR "/>
+               <t v="1380000000"/>
+               <t v=". An additional financial contribution of EUR "/>
+               <t v="83000000"/>
+               <t v=" shall also be made available for projects related to challenges experienced as a result of the invasion of Ukraine. These contributions shall be made available for commitment in annual tranches of EUR "/>
+               <t v="209000000"/>
+               <t v=" over the period running from "/>
+               <date asWritten="1 May 2021" date="2021-05-01"/>
+               <t v=" to "/>
+               <date asWritten="30 April 2028" date="2028-04-30"/>
+               <t v=" inclusive."/>
+            </p>
+         </unit>
+         <unit eId="art_2/unp_2" kind="paragraph">
+            <p>
+               <t v="The total amount shall consist of country specific allocations as specified in Article 6, together with the funds specified in Article 7."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <unit eId="art_3/subdvs_1" kind="subdivision">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <heading>
+               <t v="Thematic priorities"/>
+            </heading>
+            <unit eId="art_3/subdvs_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="The country specific allocations shall be made available to promote the following overall thematic priorities:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_3/subdvs_1/sub_1/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="European green transition;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_3/subdvs_1/sub_1/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="democracy, rule of law and human rights;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_3/subdvs_1/sub_1/pnt_c" kind="point">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="social inclusion and resilience."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_3/subdvs_1/sub_2" kind="subparagraph">
+               <p>
+                  <t v="Within these thematic priorities, programme areas are set out in the Annex to this Agreement. The content of these programme areas will be determined after consultation with the Beneficiary States."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_3/subdvs_2" kind="subdivision">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <heading>
+               <t v="Needs of Beneficiary States"/>
+            </heading>
+            <p>
+               <t v="The programme areas shall be chosen, concentrated and adapted, to respond to the different needs in each Beneficiary State, taking into account its size and the amount of the contribution. To this end, the procedure to be followed is set out in Article 9, paragraph 5."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <unit eId="art_4/subdvs_1" kind="subdivision">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <heading>
+               <t v="Memoranda of Understanding"/>
+            </heading>
+            <p>
+               <t v="In order to achieve concentration and to ensure efficient implementation, in line with the overall objectives referred to in Article 1, and taking into account EU policies and country specific recommendations, as well as Partnership Agreements concluded between the Member States and the European Commission, the Kingdom of Norway shall negotiate with each Beneficiary State a Memorandum of Understanding in accordance with Article 9, paragraph 5."/>
+            </p>
+         </unit>
+         <unit eId="art_4/subdvs_2" kind="subdivision">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <heading>
+               <t v="Consultations with the European Commission"/>
+            </heading>
+            <p>
+               <t v="Consultations with the European Commission shall take place at strategic level and shall be held during the negotiations of the Memoranda of Understanding with a view to promoting complementarity and synergies with EU cohesion policy."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_5" kind="article">
+         <num>
+            <t v="Article 5"/>
+         </num>
+         <unit eId="art_5/subdvs_1" kind="subdivision">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <heading>
+               <t v="Co-financing"/>
+            </heading>
+            <p>
+               <t v="With respect to programmes under country specific allocations for which the Beneficiary States shall have implementation responsibility, the contribution from the Kingdom of Norway shall not exceed 85 % of programme cost, unless otherwise decided by the Kingdom of Norway."/>
+            </p>
+         </unit>
+         <unit eId="art_5/subdvs_2" kind="subdivision">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <heading>
+               <t v="State aid"/>
+            </heading>
+            <p>
+               <t v="The applicable rules on State aid shall be complied with."/>
+            </p>
+         </unit>
+         <unit eId="art_5/subdvs_3" kind="subdivision">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <heading>
+               <t v="Liability"/>
+            </heading>
+            <p>
+               <t v="The responsibility of the Kingdom of Norway for the projects is limited to providing funds according to the agreed plan. Accordingly, the Kingdom of Norway will not assume any liability to third parties."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_6" kind="article">
+         <num>
+            <t v="Article 6"/>
+         </num>
+         <heading>
+            <t v="Country specific allocations"/>
+         </heading>
+         <unit eId="art_6/unp_1" kind="paragraph">
+            <p>
+               <t v="The country specific allocations shall be made available to the following Beneficiary States: Bulgaria, Czech Republic, Estonia, Croatia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Romania, Slovenia and Slovakia, in accordance with the following distribution:"/>
+            </p>
+            <table cols="2">
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Beneficiary State"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Funds (EUR)"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Bulgaria"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="127197491"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Croatia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="65092127"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Cyprus"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="8613472"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Czech Republic"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="110034588"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Estonia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="35081761"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Hungary"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="124271436"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Latvia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="53529539"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Lithuania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="57575226"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Malta"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="5462877"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Poland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="452283429"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Romania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="291616358"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Slovakia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="63904256"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Slovenia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="24437440"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </unit>
+         <unit eId="art_6/unp_2" kind="paragraph">
+            <p>
+               <t v="The amounts presented include the country specific allocations to be made available to each Beneficiary State in accordance with Article 9 paragraph 5, and the share of the fund for civil society referred to in Article 7 that shall benefit each Beneficiary State."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_7" kind="article">
+         <num>
+            <t v="Article 7"/>
+         </num>
+         <unit eId="art_7/unp_1" kind="paragraph">
+            <p>
+               <t v="Within the Norwegian Financial Mechanism, three funds shall be made available. They shall contribute to achieving the objectives of the Norwegian Financial Mechanism (2021–2028) as defined in Article 1, and to the thematic priorities referred to in Article 3. Norwegian entities can participate as partners in the funds."/>
+            </p>
+         </unit>
+         <unit eId="art_7/subdvs_1" kind="subdivision">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <heading>
+               <t v="Fund for civil society"/>
+            </heading>
+            <unit eId="art_7/subdvs_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="10 % of the total amount shall be set aside for a fund for civil society. The distribution key for the Beneficiary States is set out in Article 6."/>
+               </p>
+            </unit>
+            <unit eId="art_7/subdvs_1/sub_2" kind="subparagraph">
+               <p>
+                  <t v="5 % of the fund shall be allocated to transnational initiatives."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_7/subdvs_2" kind="subdivision">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <heading>
+               <t v="Fund for capacity building and cooperation with international organisations and institutions"/>
+            </heading>
+            <p>
+               <t v="2 % of the total amount shall be set aside for a fund for capacity building and cooperation with international organisations and institutions, inter alia, the Council of Europe, the OECD and the European Union Agency for Fundamental Rights (FRA). This fund will promote the thematic priorities in the Beneficiary States."/>
+            </p>
+         </unit>
+         <unit eId="art_7/subdvs_3" kind="subdivision">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <heading>
+               <t v="Fund for social dialogue and decent work"/>
+            </heading>
+            <p>
+               <t v="1 % of the total amount shall be set aside for a fund for social dialogue and decent work."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_8" kind="article">
+         <num>
+            <t v="Article 8"/>
+         </num>
+         <unit eId="art_8/subdvs_1" kind="subdivision">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <heading>
+               <t v="Coordination with the EEA Financial Mechanism"/>
+            </heading>
+            <p>
+               <t v="The financial contribution provided for in Article 1 shall be closely coordinated with the contribution from the EFTA States provided for by the EEA Financial Mechanism. In particular, the Kingdom of Norway shall ensure that the procedures and implementation modalities are essentially the same for both financial mechanisms."/>
+            </p>
+         </unit>
+         <unit eId="art_8/subdvs_2" kind="subdivision">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <heading>
+               <t v="Coordination with EU cohesion policy"/>
+            </heading>
+            <p>
+               <t v="Any relevant changes in the EU cohesion policy shall be taken into account, as appropriate."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_9" kind="article">
+         <num>
+            <t v="Article 9"/>
+         </num>
+         <p>
+            <t v="The following shall apply to the implementation of the Norwegian Financial Mechanism:"/>
+         </p>
+         <unit eId="art_9/pnt_1" kind="level" depth="1">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <heading>
+               <t v="Cooperation"/>
+            </heading>
+            <p>
+               <t v="The objectives of the Norwegian Financial Mechanism referred to in Article 1 shall be pursued in a framework of close cooperation between the Beneficiary States and the Kingdom of Norway, respecting the values and principles and complying with the rights and obligations referred to in Article 1 paragraph 2."/>
+            </p>
+         </unit>
+         <unit eId="art_9/pnt_2" kind="level" depth="1">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <heading>
+               <t v="Implementation principles"/>
+            </heading>
+            <p>
+               <t v="The highest degree of transparency, accountability and cost efficiency shall be applied in all implementation phases, together with respect for principles of good governance, partnership and multi-level governance, sustainable development, gender equality and non-discrimination."/>
+            </p>
+         </unit>
+         <unit eId="art_9/pnt_3" kind="level" depth="1">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <heading>
+               <t v="Management of the funds"/>
+            </heading>
+            <p>
+               <t v="The Kingdom of Norway shall operate and be responsible for the implementation, including management and control, of the three funds set out in Article 7."/>
+            </p>
+         </unit>
+         <unit eId="art_9/pnt_4" kind="level" depth="1">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <heading>
+               <t v="Management by the Kingdom of Norway"/>
+            </heading>
+            <p>
+               <t v="The Kingdom of Norway, or an entity appointed by it, shall be responsible for the overall management of the Norwegian Financial Mechanism. Further provisions for the implementation of the Norwegian Financial Mechanism, including simplification measures aimed at securing efficiency and effectiveness in implementation, will be issued by the Kingdom of Norway after consultations with the Beneficiary States which may be assisted by the European Commission. The Kingdom of Norway shall endeavour to issue these provisions before the signing of the Memoranda of Understanding."/>
+            </p>
+         </unit>
+         <unit eId="art_9/pnt_5" kind="level" depth="1">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <heading>
+               <t v="Negotiations of Memoranda of Understanding"/>
+            </heading>
+            <p>
+               <t v="The Kingdom of Norway shall negotiate with each Beneficiary State a Memorandum of Understanding concerning the respective country specific allocation, excluding the funds referred to in Article 7 and paragraph 3 of this article. The Memorandum of Understanding shall set out the programmes, the distribution of funds between programme areas, the structures for management and control and applicable conditions."/>
+            </p>
+         </unit>
+         <unit eId="art_9/pnt_6" kind="level" depth="1">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <heading>
+               <t v="Implementation"/>
+            </heading>
+            <list kind="alpha">
+               <unit eId="art_9/pnt_6/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="On the basis of the Memoranda of Understanding, the Beneficiary States shall submit proposals for specific programmes to the Kingdom of Norway which shall appraise and approve the proposals and conclude grant agreements, with relevant conditions, risk assessment and mitigation, with the Beneficiary States for each programme."/>
+                  </p>
+               </unit>
+               <unit eId="art_9/pnt_6/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="The implementation of the agreed programmes shall be the responsibility of the Beneficiary States which shall provide for an appropriate management and control system in order to ensure sound implementation and management."/>
+                  </p>
+               </unit>
+               <unit eId="art_9/pnt_6/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="The Kingdom of Norway may carry out controls according to its internal requirements. The Beneficiary States shall provide all necessary assistance, information and documentation to this effect."/>
+                  </p>
+               </unit>
+               <unit eId="art_9/pnt_6/pnt_d" kind="point">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="To ensure compliance with obligations, the Kingdom of Norway may, following an assessment, after having heard the Beneficiary State, take appropriate and proportionate measures, including the suspension of payments and the recovery of funds."/>
+                  </p>
+               </unit>
+               <unit eId="art_9/pnt_6/pnt_e" kind="point">
+                  <num>
+                     <t v="(e)"/>
+                  </num>
+                  <p>
+                     <t v="Partnerships shall, where appropriate, be applied in the preparation, implementation, monitoring and evaluation of the financial contribution in order to ensure broad participation. Partners may include, inter alia, local, regional and national levels, as well as the private sector, civil society and social partners in the Beneficiary States and in the Kingdom of Norway."/>
+                  </p>
+               </unit>
+               <unit eId="art_9/pnt_6/pnt_f" kind="point">
+                  <num>
+                     <t v="(f)"/>
+                  </num>
+                  <p>
+                     <t v="Any project under the programmes in the Beneficiary States may be implemented in cooperation between, inter alia, entities based in the Beneficiary States and in the Kingdom of Norway, in accordance with the applicable rules on public procurement."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_9/pnt_7" kind="level" depth="1">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <heading>
+               <t v="Management costs"/>
+            </heading>
+            <p>
+               <t v="The management costs of the Kingdom of Norway shall be covered by the total amount referred to in Article 2, and shall be specified in the provisions for the implementation referred to in paragraph 4 of this Article. Management costs for the Funds referred to in Article 7 will be covered by the amount allocated to the Funds."/>
+            </p>
+         </unit>
+         <unit eId="art_9/pnt_8" kind="level" depth="1">
+            <num>
+               <t v="(8)"/>
+            </num>
+            <heading>
+               <t v="Reporting"/>
+            </heading>
+            <p>
+               <t v="The Kingdom of Norway shall report on its contribution to the objectives of the Norwegian Financial Mechanism."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_10" kind="article">
+         <num>
+            <t v="Article 10"/>
+         </num>
+         <list kind="arabic">
+            <unit eId="art_10/pnt_1" kind="point">
+               <num>
+                  <t v="(1)"/>
+               </num>
+               <p>
+                  <t v="This Agreement shall be ratified or approved by the Parties in accordance with their own procedures. The instruments of ratification or approval shall be deposited with the General Secretariat of the Council of the European Union."/>
+               </p>
+            </unit>
+            <unit eId="art_10/pnt_2" kind="point">
+               <num>
+                  <t v="(2)"/>
+               </num>
+               <p>
+                  <t v="It shall enter into force on the first day of the second month after the last instrument of ratification or approval has been deposited."/>
+               </p>
+            </unit>
+            <unit eId="art_10/pnt_3" kind="point">
+               <num>
+                  <t v="(3)"/>
+               </num>
+               <p>
+                  <t v="Pending the completion of the procedures referred to in paragraphs 1 and 2, this Agreement shall be applied on a provisional basis as from the first day of the first month following the deposit of the last notification to this effect."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_11" kind="article">
+         <num>
+            <t v="Article 11"/>
+         </num>
+         <p>
+            <t v="This Agreement, drawn up in a single original in the Bulgarian, Czech, Croatian, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Irish, Italian, Latvian, Lithuanian, Hungarian, Maltese, Polish, Portuguese, Romanian, Slovak, Slovenian, Spanish, Swedish and Norwegian languages, the text in each of these languages being equally authentic, shall be deposited with the General Secretariat of the Council of the European Union, which will remit a certified copy to each of the Parties to this Agreement."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <img src="L_202402602EN.000102.fmx.tif" content="signature"/>
+         </placeAndDate>
+         <signatory>
+            <person>
+               <img src="L_202402602EN.000103.fmx.tif" content="signature"/>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <t v="Green transition"/>
+         </p>
+         <p>
+            <t v="Green business and innovation"/>
+         </p>
+         <p>
+            <t v="Research and innovation"/>
+         </p>
+         <p>
+            <t v="Education, training and youth employment"/>
+         </p>
+         <p>
+            <t v="Culture"/>
+         </p>
+         <p>
+            <t v="Local development, good governance and inclusion"/>
+         </p>
+         <p>
+            <t v="Roma inclusion and empowerment"/>
+         </p>
+         <p>
+            <t v="Public health"/>
+         </p>
+         <p>
+            <t v="Disaster prevention and preparedness"/>
+         </p>
+         <p>
+            <t v="Justice sector including domestic and gender-based violence, access to justice, correctional services, serious and organised crime"/>
+         </p>
+         <p>
+            <t v="Asylum, migration and integration"/>
+         </p>
+         <p>
+            <t v="Institutional cooperation and capacity building"/>
+         </p>
+         <p>
+            <t v="Beneficiary states will also benefit from projects funded by:"/>
+         </p>
+         <list kind="none">
+            <unit eId="anx/idt_1" kind="indent">
+               <p>
+                  <t v="Fund for civil society"/>
+               </p>
+            </unit>
+            <unit eId="anx/idt_2" kind="indent">
+               <p>
+                  <t v="Fund for capacity building and cooperation with international partner organisations and institutions"/>
+               </p>
+            </unit>
+            <unit eId="anx/idt_3" kind="indent">
+               <p>
+                  <t v="Fund for social dialogue and decent work"/>
+               </p>
+            </unit>
+         </list>
+         <p>
+            <emphasis kind="i">
+               <t v="Gender equality and digitalisation will be mainstreamed and form part of all relevant programme areas."/>
+            </emphasis>
+         </p>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="In this Agreement, references to articles are, unless otherwise specified, to be understood as references to articles in this Agreement."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

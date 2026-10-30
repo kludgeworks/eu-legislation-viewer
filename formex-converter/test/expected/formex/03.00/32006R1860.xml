@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32006R1860"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="03.00"
+           converter="1.0.0">
+   <source celex="32006R1860">
+      <publication series="L" number="358" date="2006-12-16" page="31"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 1860/2006"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="15 December 2006" date="2006-12-15"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Regulation (EEC) No 1859/82 concerning the selection of returning holdings for the purpose of determining incomes of agricultural holdings"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EEC) No 79/65/EEC of "/>
+               <date asWritten="15 June 1965" date="1965-06-15"/>
+               <t v=" setting up a network for the collection of accountancy data on the incomes and business operation of agricultural holdings in the European Economic Community"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Articles 4(4) and 6(2) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Annex I to Commission Regulation (EEC) No 1859/82"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" fixes the number of returning holdings per division."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The number of returning holdings per division in Sweden should be adjusted so that the sample may better represent all the types of farm that are present in the field of observation."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Regulation (EEC) No 1859/82 should therefore be amended accordingly."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Community Committee for the Farm Accountancy Data Network,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Annex I to Regulation (EEC) No 1859/82 is amended in accordance with the Annex to this Regulation."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/unp_1" kind="paragraph">
+            <p>
+               <t v="This Regulation shall enter into force on the seventh day following its publication in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_2/unp_2" kind="paragraph">
+            <p>
+               <t v="It shall apply from the 2007 accounting year."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="15 December 2006" date="2006-12-15"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Mariann "/>
+               <emphasis kind="uc">
+                  <t v="Fischer Boel"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <t v="In Annex I to Regulation (EEC) No 1859/82, the part concerning Sweden is replaced by the following:"/>
+         </p>
+         <quotedStructure eId="anx/qst_1">
+            <table cols="3">
+               <rowGroup>
+                  <heading>
+                     <t v="‘"/>
+                     <t v="SWEDEN"/>
+                  </heading>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="710"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Plains of southern and central Sweden"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="702"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="720"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Forest and mixed agricultural and forest areas of southern and central Sweden"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="217"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="730"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Areas of northern Sweden"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="106"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">
+                        <p>
+                           <t v="Total Sweden"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="1025"/>
+                           <t v="’"/>
+                        </p>
+                     </td>
+                  </tr>
+               </rowGroup>
+            </table>
+         </quotedStructure>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="P"
+                 number="109"
+                 date="1965-06-23"
+                 page="1859">
+               <t v="OJ 109, 23.6.1965, p. 1859/65"/>
+            </ref>
+            <t v=". Regulation as last amended by Commission Regulation (EC) No 660/2204 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="104"
+                 date="2004-04-08"
+                 page="97">
+               <t v="OJ L 104, 8.4.2004, p. 97"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="205"
+                 date="1982-07-13"
+                 page="5">
+               <t v="OJ L 205, 13.7.1982, p. 5"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 1187/2005 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="193"
+                 date="2005-07-23"
+                 page="20">
+               <t v="OJ L 193, 23.7.2005, p 20"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

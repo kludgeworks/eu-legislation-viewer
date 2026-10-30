@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31978R0850"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.10"
+           converter="1.0.0">
+   <source celex="31978R0850">
+      <publication series="L" number="116" date="1978-04-28" page="1"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EEC) No 850/78"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="24 April 1978" date="1978-04-24"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="concerning the conclusion of the Agreement in the form of an exchange of letters amending Annex A to Protocol 1 to the Agreement between the European Economic Community and the Swiss Confederation"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Economic Community, and in particular Article 113 thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the recommendation from the Commission,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <p>
+               <t v="Whereas the Agreement in the form of an exchange of letters amending Annex A to Protocol 1 to the Agreement between the European Economic Community and the Swiss Confederation"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=" should be concluded,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <unit eId="art_1/unp_1" kind="paragraph">
+            <p>
+               <t v="The Agreement in the form of an exchange of letters amending Annex A to Protocol 1 to the Agreement between the European Economic Community and the Swiss Confederation is hereby approved on behalf of the Community."/>
+            </p>
+         </unit>
+         <unit eId="art_1/unp_2" kind="paragraph">
+            <p>
+               <t v="The text of the Agreement is annexed to this Regulation."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The President of the Council is hereby authorized to designate the person empowered to sign the Agreement so that it shall be binding on the Community."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the day following its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Communities"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Luxembourg, "/>
+            <date asWritten="24 April 1978" date="1978-04-24"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Council"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="P. "/>
+               <emphasis kind="uc">
+                  <t v="Dalsager"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="att_1" kind="attachment">
+         <heading>
+            <t v="AGREEMENT"/>
+            <eol/>
+            <t v="in the form of an exchange of letters amending Annex A to Protocol 1 to the Agreement between the European Economic Community and the Swiss Confederation"/>
+         </heading>
+         <unit eId="att_1/let_1" kind="letter">
+            <heading>
+               <emphasis kind="i">
+                  <t v="Letter No 1"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="Brussels, ..."/>
+            </p>
+            <p>
+               <t v="Your Excellency,"/>
+            </p>
+            <p>
+               <t v="Under the transitional arrangements provided for in Protocol 1 to the Free Trade Agreement between the European Economic Community and the Swiss Confederation signed on "/>
+               <date asWritten="22 July 1972" date="1972-07-22"/>
+               <t v=", the United Kingdom is authorized to open zero-duty tariff quotas each year for certain products falling within Chapter 48 listed in Annex A to Protocol 1."/>
+            </p>
+            <p>
+               <t v="Switzerland has requested that those quotas be replaced by a single quota."/>
+            </p>
+            <p>
+               <t v="The United Kingdom and Swiss authorities concluded from their technical discussions that Swiss exports of Chapter 48 products could be covered by a single tariff quota, which would be an amalgam of the levels of the quotas for the present nine headings."/>
+            </p>
+            <p>
+               <t v="The rule concerning the permitted annual increase of 5 % remains applicable to the single quota."/>
+            </p>
+            <p>
+               <t v="The Community therefore considers that, pursuant to Article 1 (4) of Protocol 1 to the Agreement between the European Economic Community and the Swiss Confederation, the nine initial zero-duty quotas which the United Kingdom was entitled to open in respect of Switzerland in 1974 for certain products falling within Chapter 48 listed in the United Kingdom column of Annex A to the said Protocol 1 should be replaced by a single quota. Consequently, in accordance with the provisions of Article 1 (4) of Protocol 1, the quota which the United Kingdom is entitled to open for 1978 is one of "/>
+               <t v="2834"/>
+               <t v=" tonnes."/>
+            </p>
+            <p>
+               <t v="I should be grateful if you would confirm the agreement of your Government with the contents of this letter."/>
+            </p>
+            <p>
+               <t v="Please accept, Your Excellency, the assurance of my highest consideration."/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="For the Council of the European Communities"/>
+               </emphasis>
+            </p>
+         </unit>
+         <unit eId="att_1/let_2" kind="letter">
+            <heading>
+               <emphasis kind="i">
+                  <t v="Letter No 2"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="Brussels, ..."/>
+            </p>
+            <p>
+               <t v="Sir,"/>
+            </p>
+            <p>
+               <t v="I have the honour to acknowledge receipt of your letter of today, worded as follows:"/>
+            </p>
+            <quotedStructure eId="att_1/let_2/qst_1">
+               <p>
+                  <t v="‘"/>
+                  <t v="Under the transitional arrangements provided for in Protocol 1 to the Free Trade Agreement between the European Economic Community and the Swiss Confederation signed on "/>
+                  <date asWritten="22 July 1972" date="1972-07-22"/>
+                  <t v=", the United Kingdom is authorized to open zero-duty tariff quotas each year for certain products falling within Chapter 48 listed in Annex A to Protocol 1."/>
+               </p>
+               <p>
+                  <t v="Switzerland has requested that those quotas be replaced by a single quota."/>
+               </p>
+               <p>
+                  <t v="The United Kingdom and Swiss authorities concluded from their technical discussions that Swiss exports of Chapter 48 products could be covered by a single tariff quota, which would be an amalgam of the levels of the quotas for the present nine headings."/>
+               </p>
+               <p>
+                  <t v="The rule concerning the permitted annual increase of 5 % remains applicable to the single quota."/>
+               </p>
+               <p>
+                  <t v="The Community therefore considers that, pursuant to Article 1 (4) of Protocol 1 to the Agreement between the European Economic Community and the Swiss Confederation, the nine initial zero-duty quotas which the United Kingdom was entitled to open in respect of Switzerland in 1974 for certain products falling within Chapter 48 listed in the United Kingdom column of Annex A to the said Protocol 1 should be replaced by a single quota. Consequently, in accordance with the provisions of Article 1 (4) of Protocol 1, the quota which the United Kingdom is entitled to open for 1978 is one of "/>
+                  <t v="2834"/>
+                  <t v=" tonnes."/>
+               </p>
+               <p>
+                  <t v="I should be grateful if you would confirm the agreement of your Government with the contents of this letter."/>
+                  <t v="’"/>
+               </p>
+            </quotedStructure>
+            <p>
+               <t v="I have the honour to confirm that my Government agrees to the contents of your letter."/>
+            </p>
+            <p>
+               <t v="Please accept, Sir, the assurance of my highest consideration."/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="On behalf of the Government of the Swiss Confederation"/>
+               </emphasis>
+            </p>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="300"
+                 date="1972-12-31"
+                 page="189">
+               <t v="OJ No L 300, 31. 12. 1972, p. 189"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

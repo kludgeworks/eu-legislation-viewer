@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32021D0215(02)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="32021D0215(02)">
+      <publication series="C"
+                   number="52I"
+                   date="2021-02-15"
+                   page="3"
+                   document="2021/C 52 I/02"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="2 December 2020" date="2020-12-02"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Decision 2011/C 253/04 setting up a Payment Systems Market Expert Group as regards its period of validity"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="By Decision 2011/C 253/04 of "/>
+               <date asWritten="29 August 2011" date="2011-08-29"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=" the Commission set up the Payment Systems Market Expert Group. That Decision is to apply until "/>
+               <date asWritten="31 December 2020" date="2020-12-31"/>
+               <t v=". The expert group aims to provide the Commission with a formal platform which allows for a structural exchange of views with market players on issues regarding the implementation and interpretation of the Directive (EU) 2015/2366 of the European Parliament and of the Council"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="On "/>
+               <date asWritten="24 September 2020" date="2020-09-24"/>
+               <t v=", the Commission adopted a Communication to the European Parliament, the Council, the European Economic and Social Committee and the Committee of the Regions on a Retail Payments Strategy for the EU"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Various initiatives across Europe are taken in order to encourage and drive the market towards more standardisation and innovation under the auspices of, among others, the Cards Stakeholders Group, the Euro Retail Payments Board and the European Payments Council. Having regard to those initiatives, the need for a formal forum for stakeholders which allows for a structural exchange of views on issues related to those developments still remains. It is therefore appropriate that the Payment Systems Market Expert Group continues its work for another 5 years."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The Decision 2011/C 253/04 of "/>
+               <date asWritten="29 August 2011" date="2011-08-29"/>
+               <t v=" should therefore be amended accordingly,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS DECIDED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_Sole-Article" kind="article">
+         <num>
+            <t v="Sole Article"/>
+         </num>
+         <p>
+            <t v="In Article 8 of Decision 2011/C 253/04 of "/>
+            <date asWritten="29 August 2011" date="2011-08-29"/>
+            <t v=", the date "/>
+            <quote startQuote="‘" endQuote="’">
+               <date asWritten="31 December 2020" date="2020-12-31"/>
+            </quote>
+            <t v=" is replaced by the date "/>
+            <quote startQuote="‘" endQuote="’">
+               <date asWritten="31 December 2025" date="2025-12-31"/>
+            </quote>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="2 December 2020" date="2020-12-02"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Mairead Mc"/>
+               <emphasis kind="uc">
+                  <t v="Guinness"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="Commission Decision of "/>
+            <date asWritten="29 August 2011" date="2011-08-29"/>
+            <t v=" setting up a Payment Systems Market Expert Group ("/>
+            <ref kind="oj"
+                 series="C"
+                 number="253"
+                 date="2011-08-30"
+                 page="3">
+               <t v="OJ C 253, 30.8.2011, p. 3"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Directive (EU) 2015/2366 of the European Parliament and of the Council of "/>
+            <date asWritten="25 November 2015" date="2015-11-25"/>
+            <t v=" on payment services in the internal market, amending Directives 2002/65/EC, 2009/110/EC and 2013/36/EU and Regulation (EU) No 1093/2010, and repealing Directive 2007/64/EC ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="337"
+                 date="2015-12-23"
+                 page="35">
+               <t v="OJ L 337, 23.12.2015, p. 35"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="COM(2020) 592 final."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

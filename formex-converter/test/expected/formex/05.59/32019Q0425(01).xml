@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32019Q0425(01)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="32019Q0425(01)">
+      <publication series="L" number="111" date="2019-04-25" page="73"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Amendments of the Rules of Procedure of the Court of Justice"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COURT OF JUSTICE,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union, and in particular the sixth paragraph of Article 253 thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Atomic Energy Community, and in particular Article 106a(1) thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to the Protocol on the Statute of the Court of Justice of the European Union, and in particular Article 63 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <p>
+               <t v="Whereas it is appropriate to set out, in the Rules of Procedure, the detailed rules implementing the procedure whereby the Court first decides whether an appeal should be allowed to proceed referred to in Article 58a of the Protocol on the Statute of the Court of Justice of the European Union, and to determine both the procedure for submission and examination of requests that an appeal be allowed to proceed and the specific conduct of the proceedings following such examination,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <p>
+               <t v="With the approval of the Council given on "/>
+               <date asWritten="9 April 2019" date="2019-04-09"/>
+               <t v=","/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THE FOLLOWING AMENDMENTS TO ITS RULES OF PROCEDURE:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The following chapter is inserted in Title V of the Rules of Procedure of the Court of Justice of "/>
+            <date asWritten="25 September 2012" date="2012-09-25"/>
+            <noteRef href="#note_1" marker="1"/>
+            <t v=":"/>
+         </p>
+         <quotedStructure eId="art_1/qst_1">
+            <unit eId="art_1/qst_1/cpt_1a" kind="division">
+               <num>
+                  <t v="‘"/>
+                  <t v="Chapter 1a"/>
+               </num>
+               <subheading>
+                  <t v="PRIOR DETERMINATION AS TO WHETHER APPEALS UNDER ARTICLE 58a OF THE STATUTE SHOULD BE ALLOWED TO PROCEED"/>
+               </subheading>
+               <unit eId="art_1/qst_1/art_170a" kind="article">
+                  <num>
+                     <t v="Article 170a"/>
+                  </num>
+                  <heading>
+                     <t v="Request that the appeal be allowed to proceed"/>
+                  </heading>
+                  <unit eId="art_1/qst_1/art_170a/par_1" kind="paragraph">
+                     <num>
+                        <t v="1."/>
+                     </num>
+                     <p>
+                        <t v="In the situations referred to in the first and second paragraphs of Article 58a of the Statute, the appellant shall annex to the appeal a request that the appeal be allowed to proceed, setting out the issue raised by the appeal that is significant with respect to the unity, consistency or development of European Union law and containing all the information necessary to enable the Court of Justice to rule on that request. If there is no such request, the Vice-President of the Court shall declare the appeal inadmissible."/>
+                     </p>
+                  </unit>
+                  <unit eId="art_1/qst_1/art_170a/par_2" kind="paragraph">
+                     <num>
+                        <t v="2."/>
+                     </num>
+                     <p>
+                        <t v="The request that the appeal be allowed to proceed shall not exceed seven pages and shall be drawn up taking into account all the formal requirements contained in the Practice Directions to parties concerning cases brought before the Court, adopted on the basis of these Rules."/>
+                     </p>
+                  </unit>
+                  <unit eId="art_1/qst_1/art_170a/par_3" kind="paragraph">
+                     <num>
+                        <t v="3."/>
+                     </num>
+                     <p>
+                        <t v="If the request that the appeal be allowed to proceed does not comply with the requirements set out in the preceding paragraph, the Registrar shall prescribe a reasonable time-limit within which the appellant is to put the request in order. If the appellant fails to put the request in order within the time-limit prescribed, the Vice-President of the Court shall decide, on a proposal from the Judge-Rapporteur and after hearing the Advocate General, whether the non-compliance with that formal requirement renders the appeal formally inadmissible."/>
+                     </p>
+                  </unit>
+               </unit>
+               <unit eId="art_1/qst_1/art_170b" kind="article">
+                  <num>
+                     <t v="Article 170b"/>
+                  </num>
+                  <heading>
+                     <t v="Decision on the request that the appeal be allowed to proceed"/>
+                  </heading>
+                  <unit eId="art_1/qst_1/art_170b/par_1" kind="paragraph">
+                     <num>
+                        <t v="1."/>
+                     </num>
+                     <p>
+                        <t v="The Court of Justice shall rule as soon as possible on the request that the appeal be allowed to proceed."/>
+                     </p>
+                  </unit>
+                  <unit eId="art_1/qst_1/art_170b/par_2" kind="paragraph">
+                     <num>
+                        <t v="2."/>
+                     </num>
+                     <p>
+                        <t v="The decision on that request shall be taken, on a proposal from the Judge-Rapporteur and after hearing the Advocate General, by a Chamber specially established for that purpose, presided over by the Vice-President of the Court and including also the Judge-Rapporteur and the President of the Chamber of three Judges to which the Judge-Rapporteur is attached on the date on which the request is made."/>
+                     </p>
+                  </unit>
+                  <unit eId="art_1/qst_1/art_170b/par_3" kind="paragraph">
+                     <num>
+                        <t v="3."/>
+                     </num>
+                     <p>
+                        <t v="The decision on the request that the appeal be allowed to proceed shall take the form of a reasoned order."/>
+                     </p>
+                  </unit>
+                  <unit eId="art_1/qst_1/art_170b/par_4" kind="paragraph">
+                     <num>
+                        <t v="4."/>
+                     </num>
+                     <p>
+                        <t v="Where the Court of Justice decides that the appeal should be allowed to proceed, wholly or in part, having regard to the criteria set out in the third paragraph of Article 58a of the Statute, the proceedings shall continue in accordance with Articles 171 to 190a of these Rules. The order referred to in the preceding paragraph shall be served, together with the appeal, on the parties to the relevant case before the General Court and shall specify, where the appeal is to be allowed to proceed in part, the pleas in law or parts of the appeal to which the response must relate."/>
+                     </p>
+                  </unit>
+                  <unit eId="art_1/qst_1/art_170b/par_5" kind="paragraph">
+                     <num>
+                        <t v="5."/>
+                     </num>
+                     <p>
+                        <t v="The General Court and, if they were not parties to the proceedings before it, the Member States, the European Parliament, the Council and the European Commission shall forthwith be informed by the Registrar of the decision that the appeal should be allowed to proceed."/>
+                        <t v="’"/>
+                     </p>
+                  </unit>
+               </unit>
+            </unit>
+         </quotedStructure>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="These amendments of the Rules of Procedure, authentic in the languages referred to in Article 36 of those Rules, shall be published in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v=" and shall enter into force on the first day of the month following that of their publication."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Luxembourg, "/>
+            <date asWritten="9 April 2019" date="2019-04-09"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <person/>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="265"
+                 date="2012-09-29"
+                 page="1">
+               <t v="OJ L 265, 29.9.2012, p. 1"/>
+            </ref>
+            <t v=", as amended on "/>
+            <date asWritten="18 June 2013" date="2013-06-18"/>
+            <t v=" ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="173"
+                 date="2013-06-26"
+                 page="65">
+               <t v="OJ L 173, 26.6.2013, p. 65"/>
+            </ref>
+            <t v=") and "/>
+            <date asWritten="19 July 2016" date="2016-07-19"/>
+            <t v=" ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="217"
+                 date="2016-08-12"
+                 page="69">
+               <t v="OJ L 217, 12.8.2016, p. 69"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

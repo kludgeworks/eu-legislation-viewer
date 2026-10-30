@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32006R1197"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="03.00"
+           converter="1.0.0">
+   <source celex="32006R1197">
+      <publication series="L" number="217" date="2006-08-08" page="6"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 1197/2006"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="7 August 2006" date="2006-08-07"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Regulation (EEC) No 2967/85 laying down detailed rules for the application of the Community scale for grading pig carcases"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EEC) No 2759/75 of "/>
+               <date asWritten="29 October 1975" date="1975-10-29"/>
+               <t v=" on the common organisation of the market in pigmeat"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Articles 2 and 4(6) thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EEC) No 3220/84 of "/>
+               <date asWritten="13 November 1984" date="1984-11-13"/>
+               <t v=" determining the Community scale for grading pig carcases"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", and in particular Article 5(1) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Commission Regulation (EEC) No 2967/85"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=" lays down detailed rules for the application of the Community scale for grading pig carcases, and in particular the method for assessing the lean meat content of pig carcases."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The results of recent research regarding the grading of pig carcases, in particular in the framework of the EUPIGCLASS project, have underlined the importance to improve the quality of sampling and to simplify the method for assessing the lean meat content of pig carcases."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The method for assessing the lean meat content of pig carcases and the calculation of the reference lean meat percentage laid down in Regulation (EEC) No 2967/85 should therefore be adapted."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="Regulation (EEC) No 2967/85 should therefore be amended accordingly."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Pigmeat,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Regulation (EEC) No 2967/85 is amended as follows:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="art_1/pnt_1" kind="point">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="In Article 3, paragraphs 1 and 2 are replaced by the following:"/>
+               </p>
+               <quotedStructure eId="art_1/pnt_1/qst_1">
+                  <unit eId="art_1/pnt_1/qst_1/par_1" kind="paragraph">
+                     <num>
+                        <t v="‘"/>
+                        <t v="1."/>
+                     </num>
+                     <unit eId="art_1/pnt_1/qst_1/par_1/sub_1" kind="subparagraph">
+                        <p>
+                           <t v="The standard statistical method for assessing the lean meat content of pig carcases authorised as a grading method within the meaning of Article 2(3) of Regulation (EEC) No 3220/84 shall be either ordinary least squares or rank reduced methods, but other statistically proven methods may be used."/>
+                        </p>
+                     </unit>
+                     <unit eId="art_1/pnt_1/qst_1/par_1/sub_2" kind="subparagraph">
+                        <p>
+                           <t v="The method shall be based on a representative sample of the national or regional pigmeat production concerned, consisting of at least 120 carcases whose lean meat content has been ascertained in accordance with the dissection method laid down in Annex I to this Regulation. If multiple sampling methods are used, the reference shall be measured on at least 50 carcases and the precision shall be at least equal to that obtained using the standard statistical method on 120 carcases using the method in Annex I."/>
+                        </p>
+                     </unit>
+                  </unit>
+                  <unit eId="art_1/pnt_1/qst_1/par_2" kind="paragraph">
+                     <num>
+                        <t v="2."/>
+                     </num>
+                     <p>
+                        <t v="Grading methods shall be authorised only if the root mean squared error of prediction (RMSEP), computed by a full cross-validation technique, is less than 2,5. In addition, any outliers shall be included in the calculation of RMSEP."/>
+                        <t v="’"/>
+                        <t v="."/>
+                     </p>
+                  </unit>
+               </quotedStructure>
+            </unit>
+            <unit eId="art_1/pnt_2" kind="point">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="in Annex I, point 2 is replaced by the following:"/>
+               </p>
+               <quotedStructure eId="art_1/pnt_2/qst_1">
+                  <p>
+                     <num>
+                        <t v="‘"/>
+                        <t v="2."/>
+                     </num>
+                     <t v="The reference lean meat percentage is calculated as follows:"/>
+                  </p>
+                  <math>
+                     <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
+                        <m:mrow>
+                           <m:mi>y</m:mi>
+                           <m:mo>=</m:mo>
+                           <m:mn>0,89</m:mn>
+                           <m:mo>×</m:mo>
+                           <m:mn>100</m:mn>
+                           <m:mo>×</m:mo>
+                           <m:mfrac>
+                              <m:mrow>
+                                 <m:mi>Weight</m:mi>
+                                 <m:mi>of</m:mi>
+                                 <m:mi>tender</m:mi>
+                                 <m:mi>loin</m:mi>
+                                 <m:mo>+</m:mo>
+                                 <m:mi>weight</m:mi>
+                                 <m:mi>of</m:mi>
+                                 <m:mi>lean</m:mi>
+                                 <m:mo>(</m:mo>
+                                 <m:mi>fascia</m:mi>
+                                 <m:mi>included</m:mi>
+                                 <m:mo>)</m:mo>
+                                 <m:mi>in</m:mi>
+                                 <m:mi>shoulder</m:mi>
+                                 <m:mo>,</m:mo>
+                                 <m:mi>loin</m:mi>
+                                 <m:mo>,</m:mo>
+                                 <m:mi>ham</m:mi>
+                                 <m:mi>and</m:mi>
+                                 <m:mi>belly</m:mi>
+                              </m:mrow>
+                              <m:mrow>
+                                 <m:mi>Weight</m:mi>
+                                 <m:mi>of</m:mi>
+                                 <m:mi>tender</m:mi>
+                                 <m:mi>loin</m:mi>
+                                 <m:mo>+</m:mo>
+                                 <m:mi>weight</m:mi>
+                                 <m:mi>of</m:mi>
+                                 <m:mi>dissected</m:mi>
+                                 <m:mi>cuts</m:mi>
+                              </m:mrow>
+                           </m:mfrac>
+                        </m:mrow>
+                     </m:math>
+                  </math>
+                  <p>
+                     <t v="The weight of the lean in those four cuts will be calculated by subtracting the total of the non-lean elements of the four cuts from the total weight of the cuts before dissection."/>
+                     <t v="’"/>
+                     <t v="."/>
+                  </p>
+               </quotedStructure>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/unp_1" kind="paragraph">
+            <p>
+               <t v="This Regulation shall enter into force on the seventh day following its publication in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_2/unp_2" kind="paragraph">
+            <p>
+               <t v="It shall apply to grading methods for which authorisation is requested, as provided in Article 3(3) of Regulation (EEC) No 2967/85, as from "/>
+               <date asWritten="1 July 2006" date="2006-07-01"/>
+               <t v="."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="7 August 2006" date="2006-08-07"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Mariann "/>
+               <emphasis kind="uc">
+                  <t v="Fischer Boel"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="282"
+                 date="1975-11-01"
+                 page="1">
+               <t v="OJ L 282, 1.11.1975, p. 1"/>
+            </ref>
+            <t v=". Regulation last amended by Regulation (EC) No 1913/2005 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="307"
+                 date="2005-11-25"
+                 page="2">
+               <t v="OJ L 307, 25.11.2005, p. 2"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="301"
+                 date="1984-11-20"
+                 page="1">
+               <t v="OJ L 301, 20.11.1984, p. 1"/>
+            </ref>
+            <t v=". Regulation last amended by Regulation (EC) No 3513/93 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="320"
+                 date="1993-12-22"
+                 page="5">
+               <t v="OJ L 320, 22.12.1993, p. 5"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="285"
+                 date="1985-10-25"
+                 page="39">
+               <t v="OJ L 285, 25.10.1985, p. 39"/>
+            </ref>
+            <t v=". Regulation amended by Regulation (EC) No 3127/94 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="330"
+                 date="1994-12-21"
+                 page="43">
+               <t v="OJ L 330, 21.12.1994, p. 43"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32005D0525"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="02.00"
+           converter="1.0.0">
+   <source celex="32005D0525">
+      <publication series="L" number="192" date="2005-07-22" page="80"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="2 June 2005" date="2005-06-02"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="concerning the conclusion of a Framework Agreement between the European Community and Bosnia and Herzegovina on the general principles for the participation of Bosnia and Herzegovina in Community programmes"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(2005/525/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community, and in particular Articles 13, 71, 80, 95, 127, 137, 149, 150, 151, 152, 153, 157, 166, 175, 280 and 308 in conjunction with the second sentence of the first subparagraph of Article 300(2), the second subparagraph of Article 300(3), and Article 300(4) thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the proposal from the Commission,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to the assent of the European Parliament"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=","/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="The Thessaloniki European Council of June 2003 approved the "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Thessaloniki Agenda for the Western Balkans: moving towards European integration"/>
+               </quote>
+               <t v=", which provided for Community programmes to be opened up to the Stabilisation and Association Process (SAP) countries along the lines established for the participation of candidate countries."/>
+            </p>
+            <p>
+               <num>
+                  <t v="(2)"/>
+               </num>
+               <t v="In its communication on "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Preparing for the participation of the Western Balkan countries in Community programmes and agencies"/>
+               </quote>
+               <t v=", the Commission advocated concluding with Albania, Bosnia and Herzegovina, Croatia, the Former Yugoslav Republic of Macedonia and Serbia and Montenegro framework agreements laying down the general principles governing each country’s participation in Community programmes."/>
+            </p>
+            <p>
+               <num>
+                  <t v="(3)"/>
+               </num>
+               <t v="In accordance with the negotiating directives adopted by the Council on "/>
+               <date asWritten="29 April 2004" date="2004-04-29"/>
+               <t v=", the Commission, on behalf of the Community, has negotiated a Framework Agreement with Bosnia and Herzegovina on the general principles for its participation in Community programmes."/>
+            </p>
+            <p>
+               <num>
+                  <t v="(4)"/>
+               </num>
+               <t v="This Agreement was signed, on behalf of the Community, on "/>
+               <date asWritten="22 November 2004" date="2004-11-22"/>
+               <t v=" in Brussels, subject to conclusion at a later date."/>
+            </p>
+            <p>
+               <num>
+                  <t v="(5)"/>
+               </num>
+               <t v="With regard to some of the programmes covered by the Agreement, the Treaty does not provide for powers other than those under Article 308."/>
+            </p>
+            <p>
+               <num>
+                  <t v="(6)"/>
+               </num>
+               <t v="The specific terms and conditions regarding the participation of Bosnia and Herzegovina in the Community programmes, including the financial contribution payable, should be determined by the Commission on behalf of the Community. For that purpose the Commission should be assisted by a special committee appointed by the Council."/>
+            </p>
+            <p>
+               <num>
+                  <t v="(7)"/>
+               </num>
+               <t v="Bosnia and Herzegovina may request financial assistance for participating in Community programmes under Council Regulation (EC) No 2666/2000 of "/>
+               <date asWritten="5 December 2000" date="2000-12-05"/>
+               <t v=" on assistance for Albania, Bosnia and Herzegovina, Croatia, the Federal Republic of Yugoslavia and the Former Yugoslav Republic of Macedonia"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" or under any similar Regulation providing for Community external assistance for Bosnia and Herzegovina that may be adopted in future."/>
+            </p>
+            <p>
+               <num>
+                  <t v="(8)"/>
+               </num>
+               <t v="The application of the Agreement should be reviewed periodically."/>
+            </p>
+            <p>
+               <num>
+                  <t v="(9)"/>
+               </num>
+               <t v="The Agreement should be approved,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS DECIDED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <unit eId="art_1/unp_1" kind="paragraph">
+            <p>
+               <t v="The Framework Agreement between the European Community and Bosnia and Herzegovina on the general principles for the participation of Bosnia and Herzegovina in Community programmes is hereby approved on behalf of the Community."/>
+            </p>
+         </unit>
+         <unit eId="art_1/unp_2" kind="paragraph">
+            <p>
+               <t v="The text of the Agreement is attached to this Decision"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v="."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="The Commission is authorised to determine, on behalf of the Community, the specific terms and conditions applicable to the participation of Bosnia and Herzegovina in any given programme, including the financial contribution payable. The Commission shall be assisted in this task by a special committee appointed by the Council."/>
+            </p>
+         </unit>
+         <unit eId="art_2/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="Where Bosnia and Herzegovina requests external assistance, the procedures provided for in Regulation (EC) No 2666/2000, and in similar Regulations providing for Community external assistance to Bosnia and Herzegovina that may be adopted in the future, shall apply."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="No later than three years after the date of entry into force of the Agreement, and every three years thereafter, the Commission shall review the implementation of the Agreement and report thereon to the Council. The report shall be accompanied where necessary by appropriate proposals."/>
+         </p>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <p>
+            <t v="The President of the Council shall, on behalf of the Community, give the notifications provided for in Article 10 of the Agreement."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Luxembourg, "/>
+            <date asWritten="2 June 2005" date="2005-06-02"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Council"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="L. "/>
+               <emphasis kind="uc">
+                  <t v="Frieden"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="Assent delivered on "/>
+            <date asWritten="10 May 2005" date="2005-05-10"/>
+            <t v=" (not yet published in the Official Journal)."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="306"
+                 date="2000-12-07"
+                 page="1">
+               <t v="OJ L 306, 7.12.2000, p. 1"/>
+            </ref>
+            <t v=". Regulation as amended by Regulation (EC) No 2415/2001 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="327"
+                 date="2001-12-12"
+                 page="3">
+               <t v="OJ L 327, 12.12.2001, p. 3"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="See page 5 of this Official Journal."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

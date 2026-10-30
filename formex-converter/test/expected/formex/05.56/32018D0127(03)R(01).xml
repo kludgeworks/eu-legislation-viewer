@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32018D0127(03)R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.56"
+           converter="1.0.0">
+   <source celex="32018D0127(03)R(01)">
+      <publication series="C"
+                   number="39"
+                   date="2018-02-02"
+                   page="37"
+                   document="2018/C 39/11"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Decision of the Authority for European political parties and European political foundations of "/>
+            <date asWritten="27 September 2017" date="2017-09-27"/>
+            <t v=" to register Transform Europe"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="C" number="31" date="2018-01-27">
+               <t v="Official Journal of the European Union C 31 of 27 January 2018"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 9:"/>
+         </p>
+         <old>
+            <p>
+               <emphasis kind="i">
+                  <t v="for:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_1/old/qst_1">
+               <p>
+                  <t v="‘"/>
+                  <emphasis kind="i">
+                     <t v="ANNEX"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="STATUTS"/>
+                  </emphasis>
+                  <t v="’"/>
+                  <t v=","/>
+               </p>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <emphasis kind="i">
+                  <t v="read:"/>
+               </emphasis>
+            </p>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <p>
+                  <t v="‘"/>
+                  <emphasis kind="i">
+                     <t v="ANNEX"/>
+                  </emphasis>
+               </p>
+               <figure src="C_2018039EN.01003702.tif" content="other"/>
+               <p>
+                  <emphasis kind="b">
+                     <t v="STATUTS"/>
+                  </emphasis>
+                  <t v="’"/>
+                  <t v="."/>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

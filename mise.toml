@@ -45,6 +45,10 @@ run = "bazel test //..."
 description = "Run the XSpec suites"
 run = "bazel test //formex-converter/test/xspec/..."
 
+[tasks.expected]
+description = "Rewrite the converter's expected output from the fixtures, after a deliberate change"
+run = "bazel run //src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra:update_expected"
+
 [tasks.pin]
 description = "Pin the Maven dependencies after changing them in MODULE.bazel"
 run = "REPIN=1 bazel run @maven//:pin"

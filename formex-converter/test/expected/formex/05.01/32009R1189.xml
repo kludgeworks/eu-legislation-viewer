@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32009R1189"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.01"
+           converter="1.0.0">
+   <source celex="32009R1189">
+      <publication series="L" number="318" date="2009-12-04" page="48"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) No 1189/2009"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="3 December 2009" date="2009-12-03"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the issue of licences for the import of garlic in the subperiod from "/>
+               <date asWritten="1 March 2010" date="2010-03-01"/>
+               <t v=" to "/>
+               <date asWritten="31 May 2010" date="2010-05-31"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 1234/2007 of "/>
+               <date asWritten="22 October 2007" date="2007-10-22"/>
+               <t v=" establishing a common organisation of agricultural markets and on specific provisions for certain agricultural products (Single CMO Regulation)"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to Commission Regulation (EC) No 1301/2006 of "/>
+               <date asWritten="31 August 2006" date="2006-08-31"/>
+               <t v=" laying down common rules for the administration of import tariff quotas for agricultural products managed by a system of import licences"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", and in particular Article 7(2) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Commission Regulation (EC) No 341/2007"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=" opens and provides for the administration of tariff quotas and introduces a system of import licences and certificates of origin for garlic and other agricultural products imported from third countries."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The quantities for which "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="A"/>
+               </quote>
+               <t v=" licence applications have been lodged by traditional importers and by new importers during the first five working days following the "/>
+               <date asWritten="15th day of November 2009" date="2009-11-15"/>
+               <t v=", pursuant to Article 10(1) of Regulation (EC) No 341/2007 exceed the quantities available for products originating in China and all third countries other than China."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Therefore, in accordance with Article 7(2) of Regulation (EC) No 1301/2006, it is now necessary to establish the extent to which the "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="A"/>
+               </quote>
+               <t v=" licence applications sent to the Commission by the end of November 2009 can be met in accordance with Article 12 of Regulation (EC) No 341/2007,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Applications for "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="A"/>
+            </quote>
+            <t v=" import licences lodged pursuant to Article 10(1) of Regulation (EC) No 341/2007 during the first five working days following the "/>
+            <date asWritten="15th day of November 2009" date="2009-11-15"/>
+            <t v=" and sent to the Commission by the end of November 2009 shall be met at a percentage rate of the quantities applied for as set out in the Annex to this Regulation."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the day of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="3 December 2009" date="2009-12-03"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission, On behalf of the President,"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Jean-Luc "/>
+               <emphasis kind="uc">
+                  <t v="Demarty"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Director-General for Agriculture and Rural Development"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <table cols="3">
+            <tr header="true">
+               <td header="true">
+                  <p>
+                     <t v="Origin"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Order number"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Allocation coefficient"/>
+                  </p>
+               </td>
+            </tr>
+            <rowGroup>
+               <heading>
+                  <t v="Argentina"/>
+               </heading>
+               <tr>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Traditional importers"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="09.4104"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="78,646424"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="New importers"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="09.4099"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1,408063"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+               </tr>
+            </rowGroup>
+            <rowGroup>
+               <heading>
+                  <t v="China"/>
+               </heading>
+               <tr>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Traditional importers"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="09.4105"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="19,578768"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="New importers"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="09.4100"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0,426832"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+               </tr>
+            </rowGroup>
+            <rowGroup>
+               <heading>
+                  <t v="Other third countries"/>
+               </heading>
+               <tr>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="Traditional importers"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="09.4106"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="100"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="New importers"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="09.4102"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="6,866417"/>
+                        <t v=" %"/>
+                     </p>
+                  </td>
+               </tr>
+            </rowGroup>
+         </table>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="299"
+                 date="2007-11-16"
+                 page="1">
+               <t v="OJ L 299, 16.11.2007, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="238"
+                 date="2006-09-01"
+                 page="13">
+               <t v="OJ L 238, 1.9.2006, p. 13"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="90"
+                 date="2007-03-30"
+                 page="12">
+               <t v="OJ L 90, 30.3.2007, p. 12"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

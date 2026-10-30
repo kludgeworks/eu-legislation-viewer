@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32002R2341R(02)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="01.01"
+           converter="1.0.0">
+   <source celex="32002R2341R(02)">
+      <publication series="L" number="240" date="2004-07-10" page="16"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Council Regulation (EC) No 2341/2002 of "/>
+            <date asWritten="20 December 2002" date="2002-12-20"/>
+            <t v=" fixing for 2003 the fishing opportunities and associated conditions for certain fish stocks and groups of fish stocks, applicable in Community waters and, for Community vessels, in waters where catch limitations are required"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="L" number="356" date="2002-12-31">
+               <t v="Official Journal of the European Communities L 356 of 31 December 2002"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 73, in Annex III, concerning "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="Sandeel"/>
+            </quote>
+            <t v=":"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="IIa ("/>
+                  <emphasis kind="sup">
+                     <t v="1"/>
+                  </emphasis>
+                  <t v="), North Sea ("/>
+                  <emphasis kind="sup">
+                     <t v="1"/>
+                  </emphasis>
+                  <t v=")"/>
+               </quote>
+               <t v=","/>
+            </p>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="IIa ("/>
+                  <emphasis kind="sup">
+                     <t v="1"/>
+                  </emphasis>
+                  <t v="), Skagerrak, Kattegat, North Sea ("/>
+                  <emphasis kind="sup">
+                     <t v="1"/>
+                  </emphasis>
+                  <t v=")"/>
+               </quote>
+               <t v="."/>
+            </p>
+         </new>
+      </unit>
+      <unit eId="cor_2" kind="correction">
+         <p>
+            <t v="On page 84, in Annex V, point 6(d), (e) and (f):"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="..., the by-catches should not exceed ... "/>
+               </quote>
+               <t v=","/>
+            </p>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <p>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="..., the by-catches shall not exceed ... "/>
+               </quote>
+               <t v="."/>
+            </p>
+         </new>
+      </unit>
+      <unit eId="cor_3" kind="correction">
+         <p>
+            <t v="On page 110, in Annex XVI, in the second line of the table ("/>
+            <emphasis kind="i">
+               <t v="Ammodytes"/>
+            </emphasis>
+            <t v=" spp.):"/>
+         </p>
+         <list kind="dash">
+            <unit eId="cor_3/idt_1" kind="indent">
+               <p>
+                  <t v="in the first column:"/>
+               </p>
+               <list kind="definition">
+                  <unit eId="cor_3/idt_1/def_1" kind="definition">
+                     <heading>
+                        <t v="for"/>
+                     </heading>
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="SAN/24."/>
+                        </quote>
+                        <t v=","/>
+                     </p>
+                  </unit>
+                  <unit eId="cor_3/idt_1/def_2" kind="definition">
+                     <heading>
+                        <t v="read"/>
+                     </heading>
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="SAN/23A4."/>
+                        </quote>
+                        <t v="."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="cor_3/idt_2" kind="indent">
+               <p>
+                  <t v="in the third column:"/>
+               </p>
+               <list kind="definition">
+                  <unit eId="cor_3/idt_2/def_1" kind="definition">
+                     <heading>
+                        <t v="for"/>
+                     </heading>
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="II, IV"/>
+                        </quote>
+                        <t v=","/>
+                     </p>
+                  </unit>
+                  <unit eId="cor_3/idt_2/def_2" kind="definition">
+                     <heading>
+                        <t v="read"/>
+                     </heading>
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="IIa, IIIa, IV ("/>
+                           <emphasis kind="sup">
+                              <t v="1"/>
+                           </emphasis>
+                           <t v=")"/>
+                        </quote>
+                        <t v="."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+         </list>
+      </unit>
+   </body>
+</legalText>
+

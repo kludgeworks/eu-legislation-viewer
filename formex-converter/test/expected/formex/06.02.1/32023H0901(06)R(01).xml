@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32023H0901(06)R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="06.02.1"
+           converter="1.0.0">
+   <source celex="32023H0901(06)R(01)">
+      <publication series="C" date="2025-07-07" page="1"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to the Council Recommendation of "/>
+            <date asWritten="14 July 2023" date="2023-07-14"/>
+            <t v=" on the 2023 National Reform Programme of Estonia and delivering a Council opinion on the 2023 Stability Programme of Estonia"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="C" number="312" date="2023-09-01">
+               <t v="Official Journal of the European Union C 312 of 1 September 2023"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="Page 57, recommendation 3, first sentence:"/>
+         </p>
+         <old>
+            <list kind="definition">
+               <unit eId="cor_1/old/def_1" kind="definition">
+                  <heading>
+                     <emphasis kind="i">
+                        <t v="for:"/>
+                     </emphasis>
+                  </heading>
+                  <quotedStructure eId="cor_1/old/def_1/qst_1">
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Strengthen social protection by extending the coverage of unemployment benefits, in particular for those in work for short spells and in non-standard forms of work, in order to address, inter alia, old-age poverty."/>
+                        </quote>
+                        <t v=","/>
+                     </p>
+                  </quotedStructure>
+               </unit>
+            </list>
+         </old>
+         <new>
+            <list kind="definition">
+               <unit eId="cor_1/new/def_1" kind="definition">
+                  <heading>
+                     <emphasis kind="i">
+                        <t v="read:"/>
+                     </emphasis>
+                  </heading>
+                  <quotedStructure eId="cor_1/new/def_1/qst_1">
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Strengthen social protection, including to address old-age poverty, and by extending the coverage of unemployment benefits, in particular for those with short work spells and in non-standard forms of work."/>
+                        </quote>
+                        <t v="."/>
+                     </p>
+                  </quotedStructure>
+               </unit>
+            </list>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

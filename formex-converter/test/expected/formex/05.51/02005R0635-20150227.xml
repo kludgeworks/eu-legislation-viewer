@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32005R0635"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2015-02-27"
+           lang="en"
+           formexVersion="05.51"
+           converter="1.0.0">
+   <source celex="02005R0635-20150227">
+      <publication series="L" number="106" date="2005-04-27" page="10"/>
+   </source>
+   <lifecycle start="2015-02-27" produced="2015-02-10" sequence="001.001.0">
+      <eventRef type="amendment" act="32015R0183" date="2015-02-02"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 635/2005"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="26 April 2005" date="2005-04-26"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="concerning the classification of certain goods in the Combined Nomenclature"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EEC) No 2658/87 of "/>
+               <date asWritten="23 July 1987" date="1987-07-23"/>
+               <t v=" on the tariff and statistical nomenclature and on the Common Customs Tariff"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 9(1)(a) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="In order to ensure uniform application of the Combined Nomenclature annexed to Regulation (EEC) No 2658/87, it is necessary to adopt measures concerning the classification of the goods referred to in the Annex to this Regulation."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Regulation (EEC) No 2658/87 has laid down the general rules for the interpretation of the Combined Nomenclature. Those rules also apply to any other nomenclature which is wholly or partly based on it or which adds any additional subdivision to it and which is established by specific Community provisions, with a view to the application of tariff and other measures relating to trade in goods."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Pursuant to the said general rules, the goods described in column 1 of the table, set out in the Annex to this Regulation, should be classified under the CN codes indicated in column 2, by virtue of the reasons set out in column 3."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="It is appropriate to provide that binding tariff information issued by the customs authorities of Member States in respect of the classification of goods in the Combined Nomenclature and which is not in accordance with this Regulation, can, for a period of three months, continue to be invoked by the holder, under Article 12(6) of Council Regulation (EEC) No 2913/92 of "/>
+               <date asWritten="12 October 1992" date="1992-10-12"/>
+               <t v=" establishing the Community Customs Code"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Customs Code Committee,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The goods described in column 1 of the table set out in the Annex shall be classified within the Combined Nomenclature under the CN codes indicated in column 2 of that table."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="Binding tariff information issued by the customs authorities of Member States which is not in accordance with this Regulation can continue to be invoked for a period of three months under Article 12(6) of Regulation (EEC) No 2913/92."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the 20th day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <table cols="3">
+            <tr header="true">
+               <td header="true">
+                  <p>
+                     <t v="Description of the goods"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Classification"/>
+                  </p>
+                  <p>
+                     <t v="(CN code)"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Reasons"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="(1)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="(2)"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="(3)"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <num>
+                        <t v="1."/>
+                     </num>
+                     <t v="A product comprised of dried, pre-cooked wheat flour noodles (approximately 80 g) and spices (approximately 11 g)."/>
+                  </p>
+                  <p>
+                     <t v="The product is put up for retail sale in a 250 ml expanded polystyrene bowl, which contains noodles and a small sachet of spices."/>
+                  </p>
+                  <p>
+                     <t v="According to the instructions printed on the packaging, the spices and boiling water (max 200 ml) have to be added to the bowl of noodles. After three minutes, the pasta is ready for consumption."/>
+                  </p>
+                  <p>
+                     <t v="(See photograph)"/>
+                     <noteRef href="#note_3" marker="*"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="19023010"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Classification is determined by General Rules 1, 3 (b) and 6 for the interpretation of the Combined Nomenclature, and by the wording of CN codes "/>
+                     <t v="1902"/>
+                     <t v=", "/>
+                     <t v="190230"/>
+                     <t v=" and "/>
+                     <t v="19023010"/>
+                     <t v="."/>
+                  </p>
+                  <p>
+                     <t v="The product is presented as a set, the components of which are put up for retail sale. The essential character of the product is given by noodles considering their large proportion."/>
+                  </p>
+                  <p>
+                     <t v="The product cannot be classified in heading "/>
+                     <t v="2104"/>
+                     <t v=" as the addition of the quantity of water into the bowl is not sufficient to prepare a soup or a broth but gives it the characteristics of a noodle dish."/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <num>
+                        <t v="2."/>
+                     </num>
+                     <t v="Diuretic/renal tea put up in bags for retail sale."/>
+                  </p>
+                  <p>
+                     <t v="The label contains the following information:"/>
+                  </p>
+                  <list kind="arabic">
+                     <unit eId="anx/tbl_1/tr_4/td_1/pnt_1" kind="point">
+                        <num>
+                           <t v="1)"/>
+                        </num>
+                        <p>
+                           <t v="Composition of each bag (1,8 g):"/>
+                        </p>
+                        <p>
+                           <t v="Medicinally active ingredients:"/>
+                        </p>
+                        <list kind="definition">
+                           <unit eId="anx/tbl_1/tr_4/td_1/pnt_1/def_1" kind="definition">
+                              <num>
+                                 <t v="—"/>
+                              </num>
+                              <heading>
+                                 <t v="horsetail"/>
+                              </heading>
+                              <p>
+                                 <t v="0,47"/>
+                                 <t v=" g"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/tbl_1/tr_4/td_1/pnt_1/def_2" kind="definition">
+                              <num>
+                                 <t v="—"/>
+                              </num>
+                              <heading>
+                                 <t v="birch leaves"/>
+                              </heading>
+                              <p>
+                                 <t v="0,45"/>
+                                 <t v=" g"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/tbl_1/tr_4/td_1/pnt_1/def_3" kind="definition">
+                              <num>
+                                 <t v="—"/>
+                              </num>
+                              <heading>
+                                 <t v="golden rod"/>
+                              </heading>
+                              <p>
+                                 <t v="0,38"/>
+                                 <t v=" g"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/tbl_1/tr_4/td_1/pnt_1/def_4" kind="definition">
+                              <num>
+                                 <t v="—"/>
+                              </num>
+                              <heading>
+                                 <t v="spiny restharrow root"/>
+                              </heading>
+                              <p>
+                                 <t v="0,20"/>
+                                 <t v=" g"/>
+                              </p>
+                           </unit>
+                        </list>
+                        <p>
+                           <t v="Other ingredients:"/>
+                        </p>
+                        <p>
+                           <t v="Rose hip husks, cornflower leaves, peppermint leaves, marigold blossom, liquorice root."/>
+                        </p>
+                     </unit>
+                     <unit eId="anx/tbl_1/tr_4/td_1/pnt_2" kind="point">
+                        <num>
+                           <t v="2)"/>
+                        </num>
+                        <p>
+                           <t v="Dosage and mode of application:"/>
+                        </p>
+                        <p>
+                           <t v="Pour one cup (approximately 150 ml) of boiling water onto one tea bag, cover and leave to brew for approximately 15 minutes and then remove the tea bag. Unless otherwise prescribed, one cup of freshly brewed tea 3 to 4 times a day between meals."/>
+                        </p>
+                     </unit>
+                     <unit eId="anx/tbl_1/tr_4/td_1/pnt_3" kind="point">
+                        <num>
+                           <t v="3)"/>
+                        </num>
+                        <p>
+                           <t v="Applications:"/>
+                        </p>
+                        <p>
+                           <t v="To increase the volume of urine in the case of kidney or bladder catarrh and to prevent urinary gravel or stones."/>
+                        </p>
+                     </unit>
+                  </list>
+               </td>
+               <td>
+                  <p>
+                     <t v="21069092"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Classification in accordance with General Rules 1 and 6 for the interpretation of the Combined Nomenclature, Additional Note 1 to Chapter 30, the description for CN codes "/>
+                     <t v="2106"/>
+                     <t v=", "/>
+                     <t v="210690"/>
+                     <t v=" and "/>
+                     <t v="21069092"/>
+                     <t v="."/>
+                  </p>
+                  <p>
+                     <t v="See also the HS Explanatory Notes to heading "/>
+                     <t v="2106"/>
+                     <t v=", paragraph 14 and the Combined Nomenclature Explanatory Notes to Chapter 30."/>
+                  </p>
+                  <p>
+                     <t v="Neither the user directions nor packaging contain any details of the type and concentration of the active substance(s). They mention only the amount and type of plants or parts of plants used. The conditions of Additional Note 1(b) to Chapter 30 are not therefore met."/>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <figure src="L_2005106EN.01001201.tif" content="other"/>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="256"
+                 date="1987-09-07"
+                 page="1">
+               <t v="OJ L 256, 7.9.1987, p. 1"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 493/2005 ("/>
+            <ref kind="oj" series="L" number="82" date="2005-03-31" page="1">
+               <t v="OJ L 82, 31.3.2005, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="302"
+                 date="1992-10-19"
+                 page="1">
+               <t v="OJ L 302, 19.10.1992, p. 1"/>
+            </ref>
+            <t v=". Regulation as last amended by the 2003 Act of Accession."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="*" kind="table">
+         <p>
+            <t v="The photograph is purely for information."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

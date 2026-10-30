@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32011D0409"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.20"
+           converter="1.0.0">
+   <source celex="32011D0409">
+      <publication series="L" number="182" date="2011-07-12" page="28"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="11 July 2011" date="2011-07-11"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the position to be taken by the European Union, within the EU-Switzerland Joint Committee, on the rules of procedure to be adopted by it in accordance with Article 19(4) of the Agreement between the European Community and the Swiss Confederation on the simplification of inspections and formalities in respect of the carriage of goods and on customs security measures"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(2011/409/EU)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the Agreement of "/>
+               <date asWritten="25 June 2009" date="2009-06-25"/>
+               <t v=" between the European Community and the Swiss Confederation on the simplification of inspections and formalities in respect of the carriage of goods and on customs security measures"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=" (hereinafter "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the Agreement"/>
+               </quote>
+               <t v="),"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to Council Decision 2009/556/EC of "/>
+               <date asWritten="25 June 2009" date="2009-06-25"/>
+               <t v=" concerning the provisional application and conclusion of the Agreement between the European Community and the Swiss Confederation on the simplification of inspections and formalities in respect of the carriage of goods and on customs security measures"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", and in particular the second paragraph of Article 5 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <p>
+               <t v="Article 19(4) of the Agreement states that the joint committee set up by that Agreement (hereinafter "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the EU-Switzerland Joint Committee"/>
+               </quote>
+               <t v=") must adopt its rules of procedure,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_Sole-Article" kind="article">
+         <num>
+            <t v="Sole Article"/>
+         </num>
+         <p>
+            <t v="The position to be taken by the European Union within the EU-Switzerland Joint Committee on the rules of procedure to be adopted in accordance with Article 19(4) of the Agreement shall be laid down in the attached draft decision of the EU-Switzerland Joint Committee."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="11 July 2011" date="2011-07-11"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="José Manuel "/>
+               <emphasis kind="uc">
+                  <t v="Barroso"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="att_1" kind="attachment">
+         <heading>
+            <t v="Draft"/>
+            <eol/>
+            <t v="DECISION No 1/2011 OF THE EU-SWITZERLAND JOINT COMMITTEE"/>
+            <eol/>
+            <t v="of …"/>
+            <eol/>
+            <t v="adopting the rules of procedure of the Joint Committee and setting up a working group"/>
+         </heading>
+         <p>
+            <t v="THE JOINT COMMITTEE,"/>
+         </p>
+         <p>
+            <t v="Having regard to the Agreement of "/>
+            <date asWritten="25 June 2009" date="2009-06-25"/>
+            <t v=" between the European Community and the Swiss Confederation on the simplification of inspections and formalities in respect of the carriage of goods and on customs security measures"/>
+            <noteRef href="#note_att01002901-1" marker="1"/>
+            <t v=", and in particular Article 19(4) and (5),"/>
+         </p>
+         <p>
+            <t v="HAS AGREED AS FOLLOWS:"/>
+         </p>
+         <unit eId="att_1/cpt_I" kind="division">
+            <num>
+               <t v="CHAPTER I"/>
+            </num>
+            <subheading>
+               <emphasis kind="b">
+                  <t v="RULES OF PROCEDURE"/>
+               </emphasis>
+            </subheading>
+            <unit eId="att_1/art_1" kind="article">
+               <num>
+                  <t v="Article 1"/>
+               </num>
+               <heading>
+                  <t v="Composition and chair"/>
+               </heading>
+               <unit eId="att_1/art_1/unp_1" kind="paragraph">
+                  <p>
+                     <t v="The Joint Committee shall be composed of representatives of the European Union and representatives of the Swiss Confederation. The committee shall be chaired alternately by the parties for one calendar year."/>
+                  </p>
+               </unit>
+               <unit eId="att_1/art_1/unp_2" kind="paragraph">
+                  <p>
+                     <t v="Before each meeting, the chair shall be informed of the intended composition of the delegation of each party."/>
+                  </p>
+               </unit>
+               <unit eId="att_1/art_1/unp_3" kind="paragraph">
+                  <p>
+                     <t v="If both parties agree, the Joint Committee may invite experts to its meetings to provide the specific information requested."/>
+                  </p>
+               </unit>
+            </unit>
+            <unit eId="att_1/art_2" kind="article">
+               <num>
+                  <t v="Article 2"/>
+               </num>
+               <heading>
+                  <t v="Secretariat"/>
+               </heading>
+               <p>
+                  <t v="The chair shall carry out the tasks of secretary of the Joint Committee. All correspondence to the Joint Committee, including requests for items to be included in agendas, must be addressed to the chair."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_3" kind="article">
+               <num>
+                  <t v="Article 3"/>
+               </num>
+               <heading>
+                  <t v="Meetings"/>
+               </heading>
+               <p>
+                  <t v="Once he has obtained the Agreement of the parties, the chair of the Joint Committee shall fix the date and place of meetings. Meetings shall be held alternately in Brussels and Switzerland."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_4" kind="article">
+               <num>
+                  <t v="Article 4"/>
+               </num>
+               <heading>
+                  <t v="Agendas for meetings"/>
+               </heading>
+               <unit eId="att_1/art_4/unp_1" kind="paragraph">
+                  <p>
+                     <t v="The chair shall draw up a provisional agenda for each meeting. It shall be forwarded to the parties not later than 10 days before the beginning of the meeting."/>
+                  </p>
+               </unit>
+               <unit eId="att_1/art_4/unp_2" kind="paragraph">
+                  <p>
+                     <t v="The provisional agenda shall consist of those items in respect of which the request for inclusion has reached the chair at least 15 days before the beginning of the meeting. Supporting documentation must be received by both parties at least seven days ahead of the meeting. In cases of special urgency, these time limits may be shortened provided both parties agree."/>
+                  </p>
+               </unit>
+               <unit eId="att_1/art_4/unp_3" kind="paragraph">
+                  <p>
+                     <t v="The agenda shall be adopted by the Joint Committee at the beginning of each meeting."/>
+                  </p>
+               </unit>
+            </unit>
+            <unit eId="att_1/art_5" kind="article">
+               <num>
+                  <t v="Article 5"/>
+               </num>
+               <heading>
+                  <t v="Advertising"/>
+               </heading>
+               <unit eId="att_1/art_5/unp_1" kind="paragraph">
+                  <p>
+                     <t v="Unless otherwise agreed, the meetings of the Joint Committee shall not be made public."/>
+                  </p>
+               </unit>
+               <unit eId="att_1/art_5/unp_2" kind="paragraph">
+                  <p>
+                     <t v="The Joint Committee’s deliberations shall be confidential."/>
+                  </p>
+               </unit>
+            </unit>
+            <unit eId="att_1/art_6" kind="article">
+               <num>
+                  <t v="Article 6"/>
+               </num>
+               <heading>
+                  <t v="Minutes of meeting"/>
+               </heading>
+               <p>
+                  <t v="After each meeting, the chair shall draw up the minutes. The draft minutes shall be submitted to the Joint Committee for approval. Once the minutes have been approved, they shall be signed by the chair and a copy sent to the parties."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_7" kind="article">
+               <num>
+                  <t v="Article 7"/>
+               </num>
+               <heading>
+                  <t v="Adoption of instruments"/>
+               </heading>
+               <p>
+                  <t v="Recommendations and decisions within the meaning of Article 21 of the Agreement shall be entitled "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="recommendation"/>
+                  </quote>
+                  <t v=" and "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="decision"/>
+                  </quote>
+                  <t v=" respectively, followed by a serial number, the date of their adoption and a description of their subject. They shall be signed by the chair and sent to the parties."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_8" kind="article">
+               <num>
+                  <t v="Article 8"/>
+               </num>
+               <heading>
+                  <t v="Written procedure"/>
+               </heading>
+               <p>
+                  <t v="In cases of special urgency, decisions and recommendations may be adopted by the written procedure provided both parties agree."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_9" kind="article">
+               <num>
+                  <t v="Article 9"/>
+               </num>
+               <heading>
+                  <t v="Expenses"/>
+               </heading>
+               <p>
+                  <t v="Each party shall bear the expenses it incurs in taking part in the meetings of the Joint Committee."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_10" kind="article">
+               <num>
+                  <t v="Article 10"/>
+               </num>
+               <heading>
+                  <t v="List of umpires"/>
+               </heading>
+               <p>
+                  <t v="The Joint Committee shall draw up a list of umpires as required in Annex III to the Agreement within two months of its decision to submit a dispute to arbitration as provided for in Article 29(3) of the Agreement."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="att_1/cpt_II" kind="division">
+            <num>
+               <t v="CHAPTER II"/>
+            </num>
+            <subheading>
+               <emphasis kind="b">
+                  <t v="WORKING PARTY"/>
+               </emphasis>
+            </subheading>
+            <unit eId="att_1/art_11" kind="article">
+               <num>
+                  <t v="Article 11"/>
+               </num>
+               <heading>
+                  <t v="Working group on customs security procedures and measures"/>
+               </heading>
+               <p>
+                  <t v="A working group shall be set up to assist the Joint Committee in carrying out its tasks in the areas referred to in Chapters II (procedures) and III (customs security measures) of the Agreement."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_12" kind="article">
+               <num>
+                  <t v="Article 12"/>
+               </num>
+               <heading>
+                  <t v="Rules of procedure of the working group"/>
+               </heading>
+               <p>
+                  <t v="Articles 1 to 6 and 9 of this Decision shall apply, "/>
+                  <emphasis kind="i">
+                     <t v="mutatis mutandis"/>
+                  </emphasis>
+                  <t v=", to the meetings of the working group."/>
+               </p>
+            </unit>
+            <unit eId="att_1/art_13" kind="article">
+               <num>
+                  <t v="Article 13"/>
+               </num>
+               <heading>
+                  <t v="Entry into force"/>
+               </heading>
+               <p>
+                  <t v="This Decision shall take effect on the day following its adoption."/>
+               </p>
+            </unit>
+         </unit>
+         <p>
+            <t v="Done at Brussels, …"/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="For the Joint Committee"/>
+            </emphasis>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="The President"/>
+            </emphasis>
+         </p>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="199"
+                 date="2009-07-31"
+                 page="24">
+               <t v="OJ L 199, 31.7.2009, p. 24"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="199"
+                 date="2009-07-31"
+                 page="22">
+               <t v="OJ L 199, 31.7.2009, p. 22"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_att01002901-1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="199"
+                 date="2009-07-31"
+                 page="24">
+               <t v="OJ L 199, 31.7.2009, p. 24"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

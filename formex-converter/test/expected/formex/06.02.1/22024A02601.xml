@@ -1,0 +1,1088 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="22024A02601"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="06.02.1"
+           converter="1.0.0">
+   <source celex="22024A02601">
+      <publication series="L" date="2024-10-08" page="1"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Additional Protocol to the Agreement between the European Economic Community and the Republic of Iceland"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN UNION"/>
+         </p>
+         <p>
+            <t v="and"/>
+         </p>
+         <p>
+            <t v="ICELAND"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="HAVING REGARD to the Agreement between the European Economic Community and the Republic of Iceland signed on "/>
+               <date asWritten="22 July 1972" date="1972-07-22"/>
+               <t v=", and to the existing arrangements for trade in fish and fishery products between Iceland and the Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="HAVING REGARD to the Additional Protocol to the Agreement between the European Economic Community and Iceland concerning special provisions applicable for the period 2014–2021 to imports into the Union of certain fish and fishery products, and in particular Article 1 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAVE DECIDED TO CONCLUDE THIS PROTOCOL:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <emphasis kind="i">
+               <t v="Article 1"/>
+            </emphasis>
+         </num>
+         <unit eId="art_1/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="The special provisions applicable to imports into the European Union of certain fish and fishery products originating in Iceland are laid down in this Protocol and the Annex hereto. The annual duty free tariff quotas are set out in the Annex to this Protocol. These tariff quotas shall be applicable from the day on which the provisional application of this Protocol becomes effective, according to procedures laid down in paragraph 3 of Article 4, until "/>
+               <date asWritten="30 April 2028" date="2028-04-30"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="At the end of this period, the Contracting Parties will assess the need to maintain the special provisions referred to in paragraph 1 and, if necessary, review the quota levels while taking into account all relevant interests."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <emphasis kind="i">
+               <t v="Article 2"/>
+            </emphasis>
+         </num>
+         <unit eId="art_2/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="The tariff quotas shall be opened on the day on which the provisional application of this Protocol becomes effective, according to procedures laid down in paragraph 3 of Article 4."/>
+            </p>
+         </unit>
+         <unit eId="art_2/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="The volumes of the tariff quotas are set out in the Annex to this Protocol. The first tariff quota shall be available from the date of provisional application of this Protocol until "/>
+               <date asWritten="30 April 2024" date="2024-04-30"/>
+               <t v=". From "/>
+               <date asWritten="1 May 2024" date="2024-05-01"/>
+               <t v=" onwards, subsequent tariff quotas shall be allocated annually from 1 May to 30 April until the end of the period referred to in Article 1 of this Protocol."/>
+            </p>
+         </unit>
+         <unit eId="art_2/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="The tariff quota volumes covering the period from "/>
+               <date asWritten="1 May 2021" date="2021-05-01"/>
+               <t v=" until the provisional application this Protocol shall be proportionally allocated and made available for the rest of the period referred to in Article 1 of this Protocol."/>
+            </p>
+         </unit>
+         <unit eId="art_2/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="In case tariff quotas referred to in Article 1 are not exhausted during the period referred to in Article 1, and in case a subsequent protocol establishing duty-free tariff quotas for the same products is not provisionally applied, imports from Iceland can be made for the remaining accumulated quota volume of those tariff quotas for up to two years following the end of the period referred to in Article 1, but not longer than provisional application of a subsequent protocol establishing duty-free tariff quotas for the same products."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <emphasis kind="i">
+               <t v="Article 3"/>
+            </emphasis>
+         </num>
+         <p>
+            <t v="The rules of origin applicable for the tariff quotas listed in the Annex to this Protocol shall be those set out in Protocol 3 to the Agreement between the European Economic Community and Iceland signed on "/>
+            <date asWritten="22 July 1972" date="1972-07-22"/>
+            <t v="."/>
+         </p>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <emphasis kind="i">
+               <t v="Article 4"/>
+            </emphasis>
+         </num>
+         <unit eId="art_4/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="This Protocol shall be ratified or approved by the Parties in accordance with their own procedures. The instruments of ratification or approval shall be deposited with the General Secretariat of the Council of the European Union."/>
+            </p>
+         </unit>
+         <unit eId="art_4/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="It shall enter into force on the first day of the second month after the last instrument of ratification or approval has been deposited."/>
+            </p>
+         </unit>
+         <unit eId="art_4/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="Pending the completion of the procedures referred to in paragraphs 1 and 2, this Protocol shall be applied on a provisional basis from the first day of the third month following the deposit of the last notification to this effect."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_5" kind="article">
+         <num>
+            <emphasis kind="i">
+               <t v="Article 5"/>
+            </emphasis>
+         </num>
+         <p>
+            <t v="This Protocol, drawn up in a single original, in the Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Irish, Latvian, Lithuanian, Maltese, Polish, Portuguese, Romanian, Slovak, Slovenian, Spanish, Swedish and Icelandic languages, the text in each of these texts being equally authentic, shall be deposited with the General Secretariat of the Council of the European Union, which will remit a certified copy to each of the Parties."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <img src="L_202402601EN.000201.fmx.tif" content="signature"/>
+         </placeAndDate>
+         <signatory>
+            <person>
+               <img src="L_202402601EN.000301.fmx.tif" content="signature"/>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <subheading>
+            <t v="SPECIAL PROVISIONS REFERRED TO IN ARTICLE 1 OF THE PROTOCOL"/>
+         </subheading>
+         <p>
+            <t v="In addition to the existing permanent duty free tariff quotas, the European Union shall open the following annual duty free tariff quotas for products originating in Iceland:"/>
+         </p>
+         <table cols="3">
+            <tr header="true">
+               <td header="true">
+                  <p>
+                     <t v="CN code"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Description of products"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Annual (1.5-30.4) tariff quota volume in net weight unless otherwise specified"/>
+                     <noteRef href="#note_anx000401-1" marker="1"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03035100"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen herrings "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Clupea harengus"/>
+                        </emphasis>
+                        <t v=", "/>
+                        <emphasis kind="i">
+                           <t v="Clupea pallasii"/>
+                        </emphasis>
+                     </quote>
+                     <noteRef href="#note_anx000401-2" marker="2"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="400 tonnes"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03061500"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen Norway lobsters "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Nephrops norvegicus"/>
+                        </emphasis>
+                     </quote>
+                     <t v=", even smoked, whether in shell or not, incl. lobsters in shell, cooked by steaming or by boiling in water"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="100 tonnes"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03044950"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled fillets of redfish "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Sebastes"/>
+                        </emphasis>
+                        <t v=" spp."/>
+                     </quote>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="2500"/>
+                     <t v=" tonnes"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="16041992"/>
+                  </p>
+                  <p>
+                     <t v="16042090"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Preparations of cod and other fish"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="2000"/>
+                     <t v=" tonnes"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td/>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="5500"/>
+                     <t v=" tonnes"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03022300"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Sole ("/>
+                     <emphasis kind="i">
+                        <t v="Solea"/>
+                     </emphasis>
+                     <t v=" spp.)"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03022400"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Turbots (Psetta maxima)"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="030229"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Megrim ("/>
+                     <emphasis kind="i">
+                        <t v="Lepidorhombus"/>
+                     </emphasis>
+                     <t v=" spp.) and other flat fish, excluding fish fillets and other fish meat"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="Ex03025990"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fish of the families Bregmacerotidae, Euchlichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae and Muraenolepididae"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03028200"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Rays and skates (Rajidae)"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03028950"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Monkfish ("/>
+                     <emphasis kind="i">
+                        <t v="Lophius"/>
+                     </emphasis>
+                     <t v=" spp.)"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03028990"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Other fresh or chilled fish, n.e.s."/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03033200"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen plaice ("/>
+                     <emphasis kind="i">
+                        <t v="Pleuronectes platessa"/>
+                     </emphasis>
+                     <t v=")"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03033985"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen flatfish"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="Ex03035990"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen Indian mackerels, "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Rastrelliger"/>
+                        </emphasis>
+                        <t v=" spp."/>
+                     </quote>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="Ex03036990"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen fish of the families Bregmacerotidae, Euchlichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae and Muraenolepididae"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03038200"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen rays and skates (Rajidae)"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03038990"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen fish, n.e.s."/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03039900"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen fish fins, heads, tails, maws and other edible fish offal"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03044300"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled fillets of flat fish (Pleuronectidae, Bothidae, Cynoglossidae, Soleidae, Scophthalmidae and Citharidae)"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="Ex03044490"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled fillets of fish of the families Bregmacerotdae, Euchlichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae and Muraenolepididae"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="030446"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled fillets of toothfish"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03044910"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled fillets of freshwater fish"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03044990"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled fillets of other fish, n.e.s."/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03049510"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen surimi"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03053910"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fillets of salmon salted or in brine, but not smoked"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="50 tonnes"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03054200"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Smoked herring"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03056950"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Salmon only salted or in brine"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03054100"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Smoked salmon, including fillets"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03057200"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fish heads, tails and maws, smoked, dried, salted or in brine"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="1950"/>
+                     <t v=" tonnes"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03057900"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fish fins and other edible fish offal, smoked, dried, salted or in brine"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03054300"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Smoked trout ("/>
+                     <emphasis kind="i">
+                        <t v="Salmo trutta"/>
+                     </emphasis>
+                     <t v=", "/>
+                     <emphasis kind="i">
+                        <t v="Oncorhynchus mykiss"/>
+                     </emphasis>
+                     <t v=", "/>
+                     <emphasis kind="i">
+                        <t v="Oncorhynchus clarki"/>
+                     </emphasis>
+                     <t v=", "/>
+                     <emphasis kind="i">
+                        <t v="Oncorhynchus aguabonita"/>
+                     </emphasis>
+                     <t v=", "/>
+                     <emphasis kind="i">
+                        <t v="Oncorhynchus gilae"/>
+                     </emphasis>
+                     <t v=", "/>
+                     <emphasis kind="i">
+                        <t v="Oncorhynchus apache"/>
+                     </emphasis>
+                     <t v=" and "/>
+                     <emphasis kind="i">
+                        <t v="Oncorhynchus chrysogaster"/>
+                     </emphasis>
+                     <t v=")"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03054980"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Other smoked fish"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="16041100"/>
+                  </p>
+                  <p>
+                     <t v="16042010"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Prepared or preserved salmon, whole or in pieces (excl. minced)"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="16056100"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Prepared or preserved sea cucumbers"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="16056200"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Prepared or preserved sea urchins"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03022200"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled plaice ("/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Pleuronectes platessa"/>
+                        </emphasis>
+                     </quote>
+                     <t v=")"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="2500"/>
+                     <t v=" tonnes"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03025920"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled whiting ("/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Merlangius merlangus"/>
+                        </emphasis>
+                     </quote>
+                     <t v=")"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03044910"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled fillets of freshwater fish, n.e.s."/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03045200"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled meat, whether or not minced, of Salmonidae"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03048910"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen fillets of freshwater fish, n.e.s."/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03056980"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Other fish, only salted or in brine"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03048210"/>
+                  </p>
+                  <p>
+                     <t v="03048290"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen fillets of trout "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Salmo trutta, Oncorhynchus mykiss, Oncorhynchus aguabonita, Oncorhynchus gilae"/>
+                        </emphasis>
+                     </quote>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03025940"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled ling "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Molva"/>
+                        </emphasis>
+                        <t v=" spp."/>
+                     </quote>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03055390"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Dried fish of the families Bregmacerotidae, Euclichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae and Muraenolepididae, other than cod"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03031420"/>
+                  </p>
+                  <p>
+                     <t v="03031490"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen trout "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Oncorhynchus mykiss"/>
+                        </emphasis>
+                     </quote>
+                     <t v=", with heads and gills on, gutted"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03048210"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen trout "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Salmo trutta, Oncorhynchus mykiss, Oncorhynchus"/>
+                        </emphasis>
+                     </quote>
+                     <t v=", frozen fillets of trout "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Oncorhynchus mykiss"/>
+                        </emphasis>
+                     </quote>
+                     <t v=", weighing &gt; 400 grammes each"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03021400"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled Atlantic salmon "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Salmo salar"/>
+                        </emphasis>
+                     </quote>
+                     <t v=" and Danube salmon"/>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03031300"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen Atlantic salmon "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Salmo salar"/>
+                        </emphasis>
+                     </quote>
+                     <t v=" and Danube salmon "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Hucho hucho"/>
+                        </emphasis>
+                     </quote>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03044100"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Fresh or chilled fillets of Pacific salmon "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Oncorhynchus nerka, Oncorhynchus gorbuscha, Oncorhynchus keta, Oncorhynchus tschawytscha, Oncorhynchus kisutch, Oncorhynchus masou and Oncorhynchus rhodurus), Atlantic salmon (Salmo salar) and Danube salmon (Hucho hucho)"/>
+                        </emphasis>
+                     </quote>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="03048100"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Frozen fillets of Pacific salmon "/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="i">
+                           <t v="Oncorhynchus nerka, Oncorhynchus gorbuscha, Oncorhynchus keta, Oncorhynchus tschawytscha, Oncorhynchus kisutch, Oncorhynchus masou and Oncorhynchus rhodurus), Atlantic salmon (Salmo salar) and Danube salmon (Hucho hucho)"/>
+                        </emphasis>
+                     </quote>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+         </table>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_anx000401-1" marker="1" kind="footnote">
+         <p>
+            <t v="Quantities shall be added in accordance with Article 2 paragraph 3 of this Protocol."/>
+         </p>
+      </note>
+      <note eId="note_anx000401-2" marker="2" kind="footnote">
+         <p>
+            <t v="The benefit of the tariff quota shall not be granted to goods declared for release for free circulation during the period 15 February to 15 June."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

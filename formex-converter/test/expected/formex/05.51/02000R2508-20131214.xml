@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32000R2508"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2013-12-14"
+           lang="en"
+           formexVersion="05.51"
+           converter="1.0.0">
+   <source celex="02000R2508-20131214">
+      <publication series="L" number="289" date="2000-11-16" page="8"/>
+   </source>
+   <lifecycle start="2013-12-14" produced="2014-01-08" sequence="001.001.0">
+      <eventRef type="amendment" act="32013R1282" date="2013-12-10"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 2508/2000"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of 15 November 2000"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="laying down the detailed rules for the application of Council Regulation (EC) No 104/2000 as regards operational programmes in the fisheries sector"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 104/2000 of 17 December 1999 on the common organisation of the markets in fishery and aquaculture products"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 9(5) and Article 10(4) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Regulation (EC) No 104/2000 requires producer organisations to submit an operational programme for planning supply and regulate in advance the deliveries from their members at the beginning of each fishing year.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The content of the operational programme needs to be defined for producer organisations to meet their obligations. It is therefore necessary to stipulate what is required in the marketing strategy, the catch plan, and the production plan for both fishing and aquaculture producer organisations.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Producer organisations need to ensure internal discipline in order to ensure that the operational programme can be enforced. The penalties must be in proportion to the infringement and must be made known to the members in advance.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The timetable for submission by the producer organisations and approval by the competent national authorities of the operational programmes should be established to ensure an effective operation of the arrangements.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="An advance should be granted to producer organisations in order to cover some of the financial costs incurred in establishing operational programmes.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="It is appropriate to provide for a report to be submitted on the implementation of the operational programme at the end of the fishing year to enable the producer organisation to assess the effectiveness of its programme and to enable the national authorities to establish whether the financial compensation should be granted.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_7" kind="recital">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Fishery Products,&#xA;"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="cpt_I" kind="division">
+         <num>
+            <t v="CHAPTER I"/>
+         </num>
+         <subheading>
+            <t v="Marketing strategy and catch plan for fishing producer organisations"/>
+         </subheading>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <p>
+               <t v="For the species in Annexes I and IV to Regulation (EC) No 104/2000, the marketing strategy referred to in Article 9(1)(a) of that Regulation shall include the following:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_1/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the number of registered members of the producer organisation on the first day of the fishing year as defined in Article 9(1) of this Regulation;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="the number and type of fishing vessels that are members of the producer organisation on the first day of the fishing year;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="the volume of production and intervention operations by species in the previous fishing year;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/pnt_d" kind="point">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="the aggregate turnover of the producer organisation in the previous fishing year;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/pnt_e" kind="point">
+                  <num>
+                     <t v="(e)"/>
+                  </num>
+                  <p>
+                     <t v="the quota allocated to the producer organisation by species;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/pnt_f" kind="point">
+                  <num>
+                     <t v="(f)"/>
+                  </num>
+                  <p>
+                     <t v="the percentage of fish sold through auctions or by other means in the previous fishing year;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/pnt_g" kind="point">
+                  <num>
+                     <t v="(g)"/>
+                  </num>
+                  <p>
+                     <t v="the strategy to improve or maintain the quality of the products disposed of through the producer organisation or its members;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/pnt_h" kind="point">
+                  <num>
+                     <t v="(h)"/>
+                  </num>
+                  <p>
+                     <t v="voluntary product labelling or other promotional activities;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/pnt_i" kind="point">
+                  <num>
+                     <t v="(i)"/>
+                  </num>
+                  <p>
+                     <t v="proposed new outlets or other commercial opportunities.&#xA;"/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_2" kind="article">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <unit eId="art_2/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="The species that represent a significant share of the landings of a producer organisation shall be taken as those species which contribute:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_2/par_1/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="at least 5 % of the total production of the producer organisation during the previous fishing year by volume or by value for species which are covered by catch quotas as set in accordance with Article 8(4) of Council Regulation (EEC) No 3760/92"/>
+                        <noteRef href="#note_2" marker="2"/>
+                        <t v="; or&#xA;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_2/par_1/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="at least 10 % of the total production of the producer organisation during the previous fishing year by volume or by value for species not covered by catch quotas referred to in (a).&#xA;"/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_2/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="For the species referred to in Article 9(1)(b) of Regulation (EC) No 104/2000 that meet the requirements of paragraph 1 of this Article, the catch plan shall include an indicative supply schedule set out across the fishing year and based on seasonal trends (price, production and demand) in the market."/>
+               </p>
+            </unit>
+            <unit eId="art_2/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="The catch plan may be simplified where there are no market difficulties, particularly withdrawals."/>
+               </p>
+            </unit>
+            <unit eId="art_2/par_4" kind="paragraph">
+               <num>
+                  <t v="4."/>
+               </num>
+               <unit eId="art_2/par_4/sub_1" kind="subparagraph">
+                  <p>
+                     <t v="Where there are catch plans set up within a Member State at a different level to the producer organisations, the producer organisation may make reference to those plans."/>
+                  </p>
+               </unit>
+               <unit eId="art_2/par_4/sub_2" kind="subparagraph">
+                  <p>
+                     <t v="However, the existence of such plans does not exonerate the producer organisation from setting out further measures to regulate the supply of its members, as indicated in Article 5."/>
+                  </p>
+               </unit>
+            </unit>
+         </unit>
+      </unit>
+      <unit eId="cpt_II" kind="division">
+         <num>
+            <t v="CHAPTER II"/>
+         </num>
+         <subheading>
+            <t v="Marketing strategy and production plan for aquaculture producer organisations"/>
+         </subheading>
+         <unit eId="art_3" kind="article">
+            <num>
+               <t v="Article 3"/>
+            </num>
+            <p>
+               <t v="For the species referred to in Annex V to Regulation (EC) No 104/2000, the marketing strategy referred to in Article 9(1)(a) of that Regulation shall include:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the number of registered members of the producer organisation on the first day of the fishing year, as defined in Article 9(1) of this Regulation;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="the volume of species harvested in the previous fishing year;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="the average sale price of the species concerned in the previous fishing year;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_d" kind="point">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="the aggregate turnover of the producer organisation in the previous fishing year;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_e" kind="point">
+                  <num>
+                     <t v="(e)"/>
+                  </num>
+                  <p>
+                     <t v="the rearing method used;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_f" kind="point">
+                  <num>
+                     <t v="(f)"/>
+                  </num>
+                  <p>
+                     <t v="the peak seasons for production and for sales;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_g" kind="point">
+                  <num>
+                     <t v="(g)"/>
+                  </num>
+                  <p>
+                     <t v="the strategy to improve or maintain the quality of the products disposed of through the producer organisation or its members;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_h" kind="point">
+                  <num>
+                     <t v="(h)"/>
+                  </num>
+                  <p>
+                     <t v="voluntary product labelling or other promotional activities;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/pnt_i" kind="point">
+                  <num>
+                     <t v="(i)"/>
+                  </num>
+                  <p>
+                     <t v="market assessment including proposed new outlets or other commercial opportunities.&#xA;"/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_4" kind="article">
+            <num>
+               <t v="Article 4"/>
+            </num>
+            <p>
+               <t v="The production plan referred to in the second indent of Article 9(1)(b) of Regulation (EC) No 104/2000 shall comprise an indicative supply schedule for the fishing year based on seasonal production factors and anticipated trends in the market."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="cpt_III" kind="division">
+         <num>
+            <t v="CHAPTER III"/>
+         </num>
+         <subheading>
+            <t v="Measures applicable to species in Annexes I, IV and V to Regulation (EC) No 104/2000"/>
+         </subheading>
+         <unit eId="art_5" kind="article">
+            <num>
+               <t v="Article 5"/>
+            </num>
+            <p>
+               <t v="The operational programme referred to in Article 9(1) of Regulation (EC) No 104/2000 shall state the reasons for any habitual market difficulties experienced in recent fishing years and shall specify the anticipatory measures taken to adjust the supply."/>
+            </p>
+         </unit>
+         <unit eId="art_6" kind="article">
+            <num>
+               <t v="Article 6"/>
+            </num>
+            <unit eId="art_6/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <unit eId="art_6/par_1/sub_1" kind="subparagraph">
+                  <p>
+                     <t v="The producer organisation shall take all the necessary steps to try to remedy the situation where the market conditions change so that:"/>
+                  </p>
+                  <list kind="alpha">
+                     <unit eId="art_6/par_1/sub_1/pnt_a" kind="point">
+                        <num>
+                           <t v="(a)"/>
+                        </num>
+                        <p>
+                           <t v="withdrawals as a percentage of the quantities put up for sale in any month increase by 5 percentage points compared to the average percentage of withdrawals of the previous three months; or&#xA;"/>
+                        </p>
+                     </unit>
+                     <unit eId="art_6/par_1/sub_1/pnt_b" kind="point">
+                        <num>
+                           <t v="(b)"/>
+                        </num>
+                        <p>
+                           <t v="any other serious market difficulties arise.&#xA;"/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="art_6/par_1/sub_2" kind="subparagraph">
+                  <p>
+                     <t v="Products withdrawn for carryover aid as referred to in Articles 23 and 24(4) of Regulation (EC) No 104/2000 shall not be taken into account as withdrawals for the purposes of this paragraph."/>
+                  </p>
+               </unit>
+            </unit>
+            <unit eId="art_6/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The producer organisation shall inform the competent authorities of the Member State of any steps taken in accordance with paragraph 1. A revision to the operational programme shall not be necessary unless so required by the competent authorities of the Member State."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_7" kind="article">
+            <num>
+               <t v="Article 7"/>
+            </num>
+            <unit eId="art_7/unp_1" kind="paragraph">
+               <p>
+                  <t v="A list of the penalties referred to in Article 9(1)(d) of Regulation (EC) No 104/2000 shall be established by the producer organisation and shall be made available to all its members."/>
+               </p>
+            </unit>
+            <unit eId="art_7/unp_2" kind="paragraph">
+               <p>
+                  <t v="The penalties shall be proportionate to the infringement."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_8" kind="article">
+            <num>
+               <t v="Article 8"/>
+            </num>
+            <p>
+               <t v="The unforeseen circumstances referred to in the second subparagraph of Article 9(1) of Regulation (EC) No 104/2000 shall be events which are independent of the actions of the producer organisation and affect the market for the species concerned."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="cpt_IV" kind="division">
+         <num>
+            <t v="CHAPTER IV"/>
+         </num>
+         <subheading>
+            <t v="Procedural aspects"/>
+         </subheading>
+         <unit eId="art_9" kind="article">
+            <num>
+               <t v="Article 9"/>
+            </num>
+            <unit eId="art_9/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="The fishing year shall run for 12 months and shall normally start on 1 January, unless an alternative period or starting date is justified and is agreed with the competent authorities of the Member State."/>
+               </p>
+            </unit>
+            <unit eId="art_9/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The producer organisation shall submit its operational programme within seven weeks of the beginning of the fishing year. The producer organisation shall immediately implement the programme."/>
+               </p>
+            </unit>
+            <unit eId="art_9/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <unit eId="art_9/par_3/sub_1" kind="subparagraph">
+                  <p>
+                     <t v="The Member State concerned shall approve the operational programme within 12 weeks of the beginning of the fishing year."/>
+                  </p>
+               </unit>
+               <unit eId="art_9/par_3/sub_2" kind="subparagraph">
+                  <p>
+                     <t v="If the Member State has significant amendments for the producer organisation to make to the programme, the timetable for approval may be extended by a further two weeks."/>
+                  </p>
+               </unit>
+            </unit>
+         </unit>
+         <unit eId="art_10" kind="article">
+            <num>
+               <t v="Article 10"/>
+            </num>
+            <p>
+               <t v="After the Member State concerned has approved the operational programme and at the latest four months after the fishing year has started, it may grant an advance of 50 % of the value of the compensation granted to the producer organisation under Article 10(1) of Regulation (EC) No 104/2000 on condition that the producers organisation has lodged a security of not less than 105 % of the amount of the advance."/>
+            </p>
+         </unit>
+         <unit eId="art_11" kind="article">
+            <num>
+               <t v="Article 11"/>
+            </num>
+            <unit eId="art_11/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="The number of vessels used to calculate the aid referred to in Article 10(2)(a) of Regulation (EC) No 104/2000 shall be the total number of member vessels in the producer organisation on the first day of the fishing year."/>
+               </p>
+            </unit>
+            <unit eId="art_11/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The representativeness of a producer organisation used to calculate the aid referred to in Article 10(2)(b) of Regulation (EC) No 104/2000 shall be established on the basis of data from the fishing year preceding the fishing year for which the operational programme is established."/>
+               </p>
+            </unit>
+            <unit eId="art_11/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="The five-year period referred to in the second and third subparagraphs of Article 10(1) of Regulation (EC) No 104/2000 and in Annex VII thereto shall be equal to five of the fishing years defined in Article 9(1) of this Regulation."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_12" kind="article">
+            <num>
+               <t v="Article 12"/>
+            </num>
+            <p>
+               <t v="The producer organisation shall establish a report of its activities and shall send it to the competent authorities of the Member State within seven weeks of the end of the fishing year. The report shall include the following information:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_12/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="a market report on the species covered by the operational programme, which shall focus on any marketing difficulties experienced during the year, the measures taken to react to those difficulties such as those required by Article 6, including penalties applied and, if appropriate, the reason for which the producer organisation has been unable to remedy those difficulties;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_12/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="a copy of the producer organisation's rules in the first fishing year of implementation of the programme and thereafter any modification to those rules;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_12/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="the list of penalties established by the producer organisation in accordance with Article 7.&#xA;"/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_13" kind="article">
+            <num>
+               <t v="Article 13"/>
+            </num>
+            <unit eId="art_13/unp_1" kind="paragraph">
+               <p>
+                  <t v="This Regulation shall enter into force on the seventh day following that of its publication in the "/>
+                  <emphasis kind="i">
+                     <t v="Official Journal of the European Communities"/>
+                  </emphasis>
+                  <t v="."/>
+               </p>
+            </unit>
+            <unit eId="art_13/unp_2" kind="paragraph">
+               <p>
+                  <t v="It shall apply from 1 January 2001."/>
+               </p>
+            </unit>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="17"
+                 date="2000-01-21"
+                 page="22">
+               <t v="OJ L 17, 21.1.2000, p. 22"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="389"
+                 date="1992-12-31"
+                 page="1">
+               <t v="OJ L 389, 31.12.1992, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

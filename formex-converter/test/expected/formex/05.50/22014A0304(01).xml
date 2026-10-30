@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="22014A0304(01)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.50"
+           converter="1.0.0">
+   <source celex="22014A0304(01)">
+      <publication series="L" number="64" date="2014-03-04" page="2"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Agreement"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="in the form of an Exchange of Letters between the European Union and the People’s Republic of China pursuant to Article XXIV:6 and Article XXVIII of the General Agreement on Tariffs and Trade (GATT) 1994 relating to the modification of concessions in the schedules of the Republic of Bulgaria and Romania in the course of their accession to the European Union"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body/>
+   <annexes>
+      <unit eId="let_1" kind="letter">
+         <num>
+            <t v="A."/>
+         </num>
+         <heading>
+            <emphasis kind="i">
+               <t v="Letter from the Union"/>
+            </emphasis>
+         </heading>
+         <p>
+            <t v="Brussels, "/>
+            <date asWritten="9 September 2013" date="2013-09-09"/>
+         </p>
+         <p>
+            <t v="Sir,"/>
+         </p>
+         <p>
+            <t v="Following negotiations under Article XXIV:6 and Article XXVIII of the General Agreement on Tariffs and Trade 1994 (GATT) relating to the modification of the Schedules of the Republic of Bulgaria and Romania in the course of their accession to the European Union, I have the honour to propose the following:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="let_1/pnt_1" kind="point">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="The European Union shall incorporate in its schedule, for the customs territory of the EU 27, the concessions contained in the schedule of the EU 25 with the following modifications:"/>
+               </p>
+               <list kind="none">
+                  <unit eId="let_1/pnt_1/idt_1" kind="indent">
+                     <p>
+                        <t v="On tariff line "/>
+                        <t v="0703 20 00"/>
+                        <t v=" add "/>
+                        <t v="12375"/>
+                        <t v=" tonnes to the allocation for People’s Republic of China under the EU tariff rate quota for garlic, maintaining the present in quota rate of 9,6 %."/>
+                     </p>
+                  </unit>
+                  <unit eId="let_1/pnt_1/idt_2" kind="indent">
+                     <p>
+                        <t v="Add 800 tonnes (drained net weight) to the allocation for People's Republic of China under the EU tariff rate quota for mushroom of species "/>
+                        <emphasis kind="i">
+                           <t v="agaricus"/>
+                        </emphasis>
+                        <t v=", prepared or preserved otherwise than by vinegar (tariff item number "/>
+                        <t v="2003 10 30"/>
+                        <t v=", out of quota rate 18,4 + 222,0 EUR/100 kg/net eda) and mushroom of species "/>
+                        <emphasis kind="i">
+                           <t v="agaricus"/>
+                        </emphasis>
+                        <t v=", provisionally preserved or preserved otherwise than by vinegar (tariff item number "/>
+                        <t v="2003 10 20"/>
+                        <t v=", out of quota rate 18,4 + 191,0 EUR/100 kg/net eda), in quota rate 23 %; inclusion of tariff line "/>
+                        <t v="0711 51 00"/>
+                        <t v=" (out of quota rate 9,6 + 191,0 EUR/100 kg/net eda) in the quota."/>
+                     </p>
+                  </unit>
+                  <unit eId="let_1/pnt_1/idt_3" kind="indent">
+                     <p>
+                        <t v="Create a tariff rate quota of "/>
+                        <t v="2026"/>
+                        <t v=" tonnes ("/>
+                        <emphasis kind="i">
+                           <t v="erga omnes"/>
+                        </emphasis>
+                        <t v=") for chocolate with an in-quota rate of 38 % (tariff items numbers "/>
+                        <t v="1806 20"/>
+                        <t v=", "/>
+                        <t v="1806 31"/>
+                        <t v=", "/>
+                        <t v="1806 32"/>
+                        <t v=" and "/>
+                        <t v="1806 90"/>
+                        <t v=")."/>
+                     </p>
+                  </unit>
+                  <unit eId="let_1/pnt_1/idt_4" kind="indent">
+                     <p>
+                        <t v="Create a tariff rate quota of "/>
+                        <t v="2289"/>
+                        <t v=" tonnes ("/>
+                        <emphasis kind="i">
+                           <t v="erga omnes"/>
+                        </emphasis>
+                        <t v=") for confectionary with an in-quota rate of 35 % (tariff item number "/>
+                        <t v="1704"/>
+                        <t v=")."/>
+                     </p>
+                  </unit>
+                  <unit eId="let_1/pnt_1/idt_5" kind="indent">
+                     <p>
+                        <t v="Create a tariff rate quota of 409 tonnes ("/>
+                        <emphasis kind="i">
+                           <t v="erga omnes"/>
+                        </emphasis>
+                        <t v=") for biscuits with an in-quota rate of 40 % (tariff item number "/>
+                        <t v="1905 90"/>
+                        <t v=")."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="let_1/pnt_2" kind="point">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="The People’s Republic of China accepts the European Union’s approach to netting-out of tariff rate quotas as a way of adjusting the GATT obligations of the EU 25 and those of the Republic of Bulgaria and Romania following the recent enlargement of the European Union."/>
+               </p>
+            </unit>
+         </list>
+         <p>
+            <t v="The European Union and the People’s Republic of China shall notify each other the completion of their internal procedures for the entry into force of the agreement. The agreement shall enter into force 14 days after the date of receipt of the latest notification."/>
+         </p>
+         <p>
+            <t v="I should be obliged if you would confirm that your Government is in agreement with the content of this letter. Should this be the case, this letter and your confirmation shall together constitute an Agreement in the form of an Exchange of Letters between the European Union and the People’s Republic of China."/>
+         </p>
+         <p>
+            <t v="Please accept, Sir, the assurance of my highest consideration."/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="For the European Union"/>
+            </emphasis>
+         </p>
+         <figure src="L_2014064EN.01000202.tif" content="signature"/>
+      </unit>
+      <unit eId="let_2" kind="letter">
+         <num>
+            <t v="B."/>
+         </num>
+         <heading>
+            <emphasis kind="i">
+               <t v="Letter from the People’s Republic of China"/>
+            </emphasis>
+         </heading>
+         <p>
+            <t v="Brussels, "/>
+            <date asWritten="9 September 2013" date="2013-09-09"/>
+         </p>
+         <p>
+            <t v="Sir,"/>
+         </p>
+         <p>
+            <t v="I have the honour to acknowledge the receipt of your letter of today’s date, which reads as follows:"/>
+         </p>
+         <quotedStructure eId="let_2/qst_1">
+            <p>
+               <t v="‘"/>
+               <t v="Following negotiations under Article XXIV:6 and Article XXVIII of the General Agreement on Tariffs and Trade 1994 (GATT) relating to the modification of the Schedules of the Republic of Bulgaria and Romania in the course of their accession to the European Union, I have the honour to propose the following:"/>
+            </p>
+            <list kind="arabic">
+               <unit eId="let_2/qst_1/pnt_1" kind="point">
+                  <num>
+                     <t v="1."/>
+                  </num>
+                  <p>
+                     <t v="The European Union shall incorporate in its schedule, for the customs territory of the EU 27, the concessions contained in the schedule of the EU 25 with the following modifications:"/>
+                  </p>
+                  <list kind="none">
+                     <unit eId="let_2/qst_1/pnt_1/idt_1" kind="indent">
+                        <p>
+                           <t v="On tariff line "/>
+                           <t v="0703 20 00"/>
+                           <t v=" add "/>
+                           <t v="12375"/>
+                           <t v=" tonnes to the allocation for People's Republic of China under the EU tariff rate quota for garlic, maintaining the present in quota rate of 9,6 %."/>
+                        </p>
+                     </unit>
+                     <unit eId="let_2/qst_1/pnt_1/idt_2" kind="indent">
+                        <p>
+                           <t v="Add 800 tonnes (drained net weight) to the allocation for People’s Republic of China under the EU tariff rate quota for mushroom of species "/>
+                           <emphasis kind="i">
+                              <t v="agaricus"/>
+                           </emphasis>
+                           <t v=", prepared or preserved otherwise than by vinegar (tariff item number "/>
+                           <t v="2003 10 30"/>
+                           <t v=", out of quota rate 18,4 + 222,0 EUR/100kg/net eda) and mushroom of species "/>
+                           <emphasis kind="i">
+                              <t v="agaricus"/>
+                           </emphasis>
+                           <t v=", provisionally preserved or preserved otherwise than by vinegar (tariff item number "/>
+                           <t v="2003 10 20"/>
+                           <t v=", out of quota rate 18,4 + 191,0 EUR/100kg/net eda), in quota rate 23 %; inclusion of tariff line "/>
+                           <t v="0711 51 00"/>
+                           <t v=" (out of quota rate 9,6 + 191,0 EUR/100 kg/net eda) in the quota."/>
+                        </p>
+                     </unit>
+                     <unit eId="let_2/qst_1/pnt_1/idt_3" kind="indent">
+                        <p>
+                           <t v="Create a tariff rate quota of "/>
+                           <t v="2026"/>
+                           <t v=" tonnes ("/>
+                           <emphasis kind="i">
+                              <t v="erga omnes"/>
+                           </emphasis>
+                           <t v=") for chocolate with an in-quota rate of 38 % (tariff items numbers "/>
+                           <t v="1806 20"/>
+                           <t v=", "/>
+                           <t v="1806 31"/>
+                           <t v=", "/>
+                           <t v="1806 32"/>
+                           <t v=" and "/>
+                           <t v="1806 90"/>
+                           <t v=")."/>
+                        </p>
+                     </unit>
+                     <unit eId="let_2/qst_1/pnt_1/idt_4" kind="indent">
+                        <p>
+                           <t v="Create a tariff rate quota of "/>
+                           <t v="2289"/>
+                           <t v=" tonnes ("/>
+                           <emphasis kind="i">
+                              <t v="erga omnes"/>
+                           </emphasis>
+                           <t v=") for confectionary with an in-quota rate of 35 % (tariff item number "/>
+                           <t v="1704"/>
+                           <t v=")."/>
+                        </p>
+                     </unit>
+                     <unit eId="let_2/qst_1/pnt_1/idt_5" kind="indent">
+                        <p>
+                           <t v="Create a tariff rate quota of 409 tonnes ("/>
+                           <emphasis kind="i">
+                              <t v="erga omnes"/>
+                           </emphasis>
+                           <t v=") for biscuits with an in-quota rate of 40 % (tariff item number "/>
+                           <t v="1905 90"/>
+                           <t v=")."/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="let_2/qst_1/pnt_2" kind="point">
+                  <num>
+                     <t v="2."/>
+                  </num>
+                  <p>
+                     <t v="The People’s Republic of China accepts the European Union’s approach to netting-out of tariff rate quotas as a way of adjusting the GATT obligations of the EU 25 and those of the Republic of Bulgaria and Romania following the recent enlargement of the European Union."/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="The European Union and the People’s Republic of China shall notify each other the completion of their internal procedures for the entry into force of the agreement. The agreement shall enter into force 14 days after the date of receipt of the latest notification."/>
+            </p>
+            <p>
+               <t v="I should be obliged if you would confirm that your Government is in agreement with the content of this letter. Should this be the case, this letter and your confirmation shall together constitute an Agreement in the form of an Exchange of Letters between the European Union and the People’s Republic of China."/>
+               <t v="’"/>
+            </p>
+         </quotedStructure>
+         <p>
+            <t v="I hereby have the honour to express my Government's agreement with the above letter."/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="For the People’s Republic of China"/>
+            </emphasis>
+         </p>
+         <figure src="L_2014064EN.01000301.tif" content="signature"/>
+      </unit>
+   </annexes>
+</legalText>
+

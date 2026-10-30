@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="92003E002323R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="03.00"
+           converter="1.0.0">
+   <source celex="92003E002323R(01)">
+      <publication series="C"
+                   number="88E"
+                   date="2004-04-08"
+                   page="728"
+                   document="2004/C 88 E/0748"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="CORRIGENDA"/>
+         </p>
+         <p>
+            <t v="Corrigendum to the answer to Written Question P-2323/03 by Mrs Schreyer on behalf of the Commission"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="("/>
+               <ref kind="oj" series="C" number="65E" date="2004-03-13">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Official Journal of the European Union"/>
+                  </quote>
+                  <t v=" C 65 E of 13 March 2004"/>
+               </ref>
+               <t v=")"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 131, point 2. (b) should read as follows:"/>
+         </p>
+         <new>
+            <p>
+               <num>
+                  <t v="2. (b)"/>
+               </num>
+               <t v="What positions have they held since?"/>
+            </p>
+            <p>
+               <t v="One of the two management level officials was appointed Head of Unit in DG PRESS. The other, after spending a short period of time in DG ADMIN as Adviser, was appointed Head of Unit in DG ADMIN."/>
+            </p>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

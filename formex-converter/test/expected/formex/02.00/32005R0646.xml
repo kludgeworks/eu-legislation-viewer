@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32005R0646"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="02.00"
+           converter="1.0.0">
+   <source celex="32005R0646">
+      <publication series="L" number="107" date="2005-04-28" page="22"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 646/2005"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="27 April 2005" date="2005-04-27"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Regulation (EC) No 94/2005 on the issue of import licences for rice originating in the ACP States and the overseas countries and territories against applications submitted in the first five working days of January 2005 pursuant to Regulation (EC) No 638/2003"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Commission Regulation (EC) No 638/2003 of "/>
+               <date asWritten="9 April 2003" date="2003-04-09"/>
+               <t v=" laying down detailed rules for applying Council Regulation (EC) No 2286/2002 and to Council Decision 2001/822/EC as regards the arrangements applicable to imports of rice originating in the African, Caribbean and Pacific States (ACP States) and the overseas countries and territories (OCT)"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 17(2) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <p>
+               <t v="Having checked the quantities booked by product category for the January 2005 tranche, a Member State was found to have made a booking error. As a result of this error, the quantities available for the May 2005 tranche in the Annex to Commission Regulation (EC) No 94/2005"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" were less than they should have been. The Regulation in question should therefore be amended to take account of the applications actually lodged for the January tranche and to make them available for the May tranche,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The Annex to Regulation (EC) No 94/2005 is replaced by the Annex hereto."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the day of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="27 April 2005" date="2005-04-27"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="J. M. "/>
+               <emphasis kind="uc">
+                  <t v="Silva Rodríguez"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Director-General for Agriculture and Rural Development"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <tableGroup>
+            <caption>
+               <p>
+                  <t v="Reduction percentages to be applied to quantities applied for under the tranche for January 2005 and quantities carried over to the subsequent tranche"/>
+               </p>
+            </caption>
+            <table cols="5">
+               <tr header="true">
+                  <td rowspan="2" header="true">
+                     <p>
+                        <t v="Origin/product"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Reduction percentage"/>
+                     </p>
+                  </td>
+                  <td colspan="2" header="true">
+                     <p>
+                        <t v="Quantity carried over to the tranche for May 2005 (t)"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Netherlands Antilles and Aruba"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Least-developed OCTs"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Netherlands Antilles and Aruba"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Least-developed OCTs"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="OCT (Article 10(1)(a) and (b) of Regulation (EC) No 638/2003)"/>
+                     </p>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="CN code "/>
+                        <t v="1006"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3327,727"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3334"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <table cols="3">
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Origin/product"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Reduction percentage"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Quantity carried over to the tranche for May 2005 (t)"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="ACP (Article 3(1) of Regulation (EC) No 638/2003)"/>
+                     </p>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="CN codes "/>
+                        <t v="10061021"/>
+                        <t v=" to "/>
+                        <t v="10061098"/>
+                        <t v=", "/>
+                        <t v="100620"/>
+                        <t v=" and "/>
+                        <t v="100630"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="71,4487"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="—"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="ACP (Article 5(1) of Regulation (EC) No 638/2003)"/>
+                     </p>
+                     <p>
+                        <num>
+                           <t v="—"/>
+                        </num>
+                        <t v="CN codes "/>
+                        <t v="10064000"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="0"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="9810"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </tableGroup>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="93" date="2003-04-10" page="3">
+               <t v="OJ L 93, 10.4.2003, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="19"
+                 date="2005-01-21"
+                 page="40">
+               <t v="OJ L 19, 21.1.2005, p. 40"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

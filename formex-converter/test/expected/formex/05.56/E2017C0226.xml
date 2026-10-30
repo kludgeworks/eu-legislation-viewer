@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="E2017C0226"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.56"
+           converter="1.0.0">
+   <source celex="E2017C0226">
+      <publication series="L" number="94" date="2018-04-12" page="30"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="EFTA "/>
+            <emphasis kind="uc">
+               <t v="Surveillance Authority Decision"/>
+            </emphasis>
+         </p>
+         <p>
+            <t v="No 226/17/COL"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="of "/>
+               <date asWritten="19 December 2017" date="2017-12-19"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="releasing Norway from the obligation to apply to certain species the Act referred to at point 2 of Part 1 of Chapter III of Annex I to the Agreement on the European Economic Area, Council Directive 66/401/EEC on the marketing of fodder plant seed [2018/564]"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EFTA SURVEILLANCE AUTHORITY,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Act referred to at point 2 of Part 1 of Chapter III of Annex I to the Agreement on the European Economic Area ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the EEA Agreement"/>
+               </quote>
+               <t v="),"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="Council Directive 66/401/EEC of "/>
+                  <date asWritten="14 June 1966" date="1966-06-14"/>
+                  <t v=" on the marketing of fodder plant seed"/>
+               </emphasis>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=" ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Directive 66/401/EEC"/>
+               </quote>
+               <t v="), and in particular Article 23a thereof,"/>
+            </p>
+            <p>
+               <t v="as adapted to the EEA Agreement by point 4(d) of Protocol 1 to the EEA Agreement, Article 5(2)(d) of the Agreement between the EFTA States on the establishment of a Surveillance Authority and a Court of Justice and Articles 1(1)(c), 1(2) and 3 of Protocol 1 to the Agreement between the EFTA States on the establishment of a Surveillance Authority and a Court of Justice,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the application submitted by Norway on "/>
+               <date asWritten="3 July 2017" date="2017-07-03"/>
+               <t v=","/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Directive 66/401/EEC sets out certain provisions for the marketing of fodder plant seed, and provides in its Article 23a that an EEA State may be wholly or partially released from the obligation to apply this Directive in respect of certain species if seed of those species is not normally reproduced or marketed in its territory."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Norway submitted on "/>
+               <date asWritten="3 July 2017" date="2017-07-03"/>
+               <t v=" (Doc No 864007) an application to be released from the obligation to apply Directive 66/401/EEC for the 22 new species included in that directive by "/>
+               <emphasis kind="i">
+                  <t v="Commission Implementing Directive (EU) 2016/2109 of "/>
+                  <date asWritten="1 December 2016" date="2016-12-01"/>
+                  <t v=" amending Council Directive 66/401/EEC as regards the inclusion of new species and the botanical name of the species Lolium x boucheanum Kunth"/>
+               </emphasis>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", referred to at point 2 of Part 1 of Chapter III of Annex I to the EEA Agreement, as these species are not normally reproduced or marketed in Norway."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Accordingly, and as long as those conditions remain, Norway should be released from the obligation to apply Directive 66/401/EEC in respect of these species."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="Such release should be without prejudice to the marketing in Norway of seeds produced, in accordance with Directive 66/401/EEC, in another Contracting Party to the EEA Agreement."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Decision are in accordance with the opinion of the EFTA Veterinary and Phytosanitary Committee,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Norway is hereby released from the obligation to apply the Act referred to at point 2 of Part 1 of Chapter III of Annex I to the Agreement on the European Economic Area, Council Directive 66/401/EEC on the marketing of fodder plant seed, with the exception of Article 14(1), to the following species:"/>
+         </p>
+         <list kind="dash">
+            <unit eId="art_1/idt_1" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Biserrula pelecinus"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_2" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Lathyrus cicera"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_3" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Medicago doliata"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_4" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Medicago italica"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_5" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Medicago littoralis"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_6" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Medicago murex"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_7" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Medicago polymorpha"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_8" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Medicago rugosa"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_9" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Medicago scutellata"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_10" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Medicago truncatula"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_11" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Ornithopus compressus"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_12" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Ornithopus sativus"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_13" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Plantago lanceolata"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_14" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Trifolium fragiferum"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_15" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Trifolium glanduliferum"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_16" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Trifolium hirtum"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_17" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Trifolium isthmocarpum"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_18" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Trifolium michelianum"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_19" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Trifolium squarrosum"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_20" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Trifolium subterraneum"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_21" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Trifolium vesiculosum"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_22" kind="indent">
+               <p>
+                  <emphasis kind="i">
+                     <t v="Vicia benghalensis"/>
+                  </emphasis>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Decision is addressed to Norway."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Decision shall be authentic in the English language."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="19 December 2017" date="2017-12-19"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the EFTA Surveillance Authority"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Sven Erik "/>
+               <emphasis kind="uc">
+                  <t v="Svedman"/>
+               </emphasis>
+               <eol/>
+               <emphasis kind="i">
+                  <t v="President"/>
+               </emphasis>
+               <eol/>
+               <t v="Helga "/>
+               <emphasis kind="uc">
+                  <t v="Jónsdóttir"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="College Member"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="P"
+                 number="125"
+                 date="1966-07-11"
+                 page="2298/66">
+               <t v="OJ 125, 11.7.1966, p. 2298/66"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="327"
+                 date="2016-12-02"
+                 page="59">
+               <t v="OJ L 327, 2.12.2016, p. 59"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

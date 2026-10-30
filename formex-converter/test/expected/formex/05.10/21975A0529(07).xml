@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="21975A0529(07)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.10"
+           converter="1.0.0">
+   <source celex="21975A0529(07)">
+      <publication series="L" number="106" date="1975-04-26" page="20"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Supplementary Protocol"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="to the additional Agreement concerning the validity, for the Principality of Liechtenstein, of the Agreement between the European Economic Community and the Swiss Confederation"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN ECONOMIC COMMUNITY,"/>
+         </p>
+         <p>
+            <t v="THE SWISS CONFEDERATION,"/>
+         </p>
+         <p>
+            <t v="THE PRINCIPALITY OF LIECHTENSTEIN,"/>
+         </p>
+      </formula>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAVE AGREED to make the following amendment to their Additional Agreement of "/>
+            <date asWritten="22 July 1972" date="1972-07-22"/>
+            <t v=":"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The following shall be deleted:"/>
+         </p>
+         <list kind="dash">
+            <unit eId="art_1/idt_1" kind="indent">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Utferdiget i Brussel, tjueandre juli nitten hundre og syttito"/>
+                  </quote>
+                  <t v=","/>
+               </p>
+            </unit>
+            <unit eId="art_1/idt_2" kind="indent">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="For Rådet for De Europeiske Fellesskap"/>
+                  </quote>
+                  <t v="."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Supplementary Protocol is drawn up in duplicate in the Danish, Dutch, English, French, German and Italian languages, each of these texts being equally authentic."/>
+         </p>
+      </unit>
+   </body>
+</legalText>
+

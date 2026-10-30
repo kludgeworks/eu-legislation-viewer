@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="21994A0103(03)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.20"
+           converter="1.0.0">
+   <source celex="21994A0103(03)">
+      <publication series="L" number="1" date="1994-01-03" page="39"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="PROTOCOL 2"/>
+         </p>
+         <p>
+            <t v="on products excluded from the scope of the Agreement in accordance with Article 8(3)(a)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="lvl_1" kind="level" depth="1">
+         <p>
+            <t v="The following products falling within HS, Chapters 25 to 97, are excluded from the scope of the Agreement:"/>
+         </p>
+         <table cols="2">
+            <tr header="true">
+               <td header="true">
+                  <p>
+                     <t v="HS heading No"/>
+                  </p>
+               </td>
+               <td header="true">
+                  <p>
+                     <t v="Product description"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="35.01"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Casein, casemates and other casein derivatives;"/>
+                  </p>
+                  <p>
+                     <t v="Casein glues"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="35.02"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Albumins, albuminates and other albumin derivatives:"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="10"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="– Egg albumin:"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="ex 10"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="– – Other than unfit, or to be rendered unfit, for human consumption"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="90"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="– Other:"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="ex 90"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="– – Milk albumin (lactalbumin), other than unfit, or to be rendered unfit, for human consumption"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="35.05"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="Dextrins and other modified starches (for example, pregelatinized or esterified starches); glues based on starches, or on dextrins or other modified starches:"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="10"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="– Dextrins and other modified starches:"/>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p>
+                     <t v="ex 10"/>
+                  </p>
+               </td>
+               <td>
+                  <p>
+                     <t v="– – Starches, esterified or etherified"/>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </unit>
+   </body>
+</legalText>
+

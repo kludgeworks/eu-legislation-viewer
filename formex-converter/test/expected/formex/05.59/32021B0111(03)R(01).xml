@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32021B0111(03)R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.59"
+           converter="1.0.0">
+   <source celex="32021B0111(03)R(01)">
+      <publication series="C"
+                   number="70"
+                   date="2021-02-26"
+                   page="23"
+                   document="2021/C 70/07"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to the statement of revenue and expenditure of the European Union Agency for Law Enforcement Cooperation for the financial year 2020 – amending budget No 2"/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="("/>
+               <ref kind="oj" series="C" number="11" date="2021-01-11">
+                  <t v="Official Journal of the European Union C 11 of 11 January 2021"/>
+               </ref>
+               <t v=")"/>
+            </emphasis>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 11, chapters 3 6, 3 7, Title 3 — Total, Grand total:"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <quotedStructure eId="cor_1/old/qst_1">
+               <table cols="5">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="‘"/>
+                           <t v="Title"/>
+                        </p>
+                        <p>
+                           <t v="Chapter"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Heading"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Appropriations 2020"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Amending Budget No 2"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="New amount"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <rowGroup>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="[…]"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="[…]"/>
+                           </p>
+                        </td>
+                        <td/>
+                        <td/>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="3 6"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="OPERATIONAL EXPENDITURE RELATED TO SUBSIDIES AND GRANTS"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="p.m."/>
+                           </p>
+                        </td>
+                        <td/>
+                        <td>
+                           <p>
+                              <t v="p.m."/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="3 7"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="OPERATIONAL EXPENDITURE RELATED TO RESERARCH AND DEVELOMENT PROJECT"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1030000"/>
+                           </p>
+                        </td>
+                        <td/>
+                        <td>
+                           <p>
+                              <t v="1030000"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="[…]"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="[…]"/>
+                           </p>
+                        </td>
+                        <td/>
+                        <td/>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td/>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="Title 3 — Total"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="53054500"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="-3195000"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="49859500"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                     </tr>
+                  </rowGroup>
+                  <rowGroup>
+                     <tr>
+                        <td/>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="GRAND TOTAL"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="158067123"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="-5000000"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="153067123"/>
+                              </emphasis>
+                              <t v="’"/>
+                           </p>
+                        </td>
+                     </tr>
+                  </rowGroup>
+               </table>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <table cols="5">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="‘"/>
+                           <t v="Title"/>
+                        </p>
+                        <p>
+                           <t v="Chapter"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Heading"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Appropriations 2020"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Amending Budget No 2"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="New amount"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <rowGroup>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="[…]"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="[…]"/>
+                           </p>
+                        </td>
+                        <td/>
+                        <td/>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="3 6"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="OPERATIONAL EXPENDITURE RELATED TO SUBSIDIES AND GRANTS"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="p.m."/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3380000"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3380000"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="3 7"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="OPERATIONAL EXPENDITURE RELATED TO RESERARCH AND DEVELOMENT PROJECT"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="1030000"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="2171950"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="3201950"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="[…]"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <t v="[…]"/>
+                           </p>
+                        </td>
+                        <td/>
+                        <td/>
+                        <td/>
+                     </tr>
+                     <tr>
+                        <td/>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="Title 3 — Total"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="53054500"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="2356950"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="55411450"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                     </tr>
+                  </rowGroup>
+                  <rowGroup>
+                     <tr>
+                        <td/>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="GRAND TOTAL"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="158067123"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="551950"/>
+                              </emphasis>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="b">
+                                 <t v="158619073"/>
+                              </emphasis>
+                              <t v="’"/>
+                           </p>
+                        </td>
+                     </tr>
+                  </rowGroup>
+               </table>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

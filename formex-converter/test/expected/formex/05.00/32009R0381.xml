@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32009R0381"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.00"
+           converter="1.0.0">
+   <source celex="32009R0381">
+      <publication series="L" number="116" date="2009-05-09" page="16"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 381/2009"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="8 May 2009" date="2009-05-08"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Regulation (EC) No 2092/2004 laying down detailed rules of application for an import tariff quota of dried boneless beef originating in Switzerland"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 1234/2007 of "/>
+               <date asWritten="22 October 2007" date="2007-10-22"/>
+               <t v=" establishing a common organisation of agricultural markets and on specific provisions for certain agricultural products (Single CMO Regulation)"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 144(1), in conjunction with Article 4 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="In accordance with Commission Regulation (EC) No 2092/2004"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" certificates of authenticity attesting that the products originate in Switzerland are to be issued before certain products are imported. The name of the issuing authority for those certificates is given in Annex III to that Regulation. Article 4(2) of that Regulation provides that Annex III may be revised in case a new issuing authority is appointed."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Switzerland has notified the Commission that it has appointed a new body that will be authorised to issue certificates of authenticity."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Regulation (EC) No 2092/2004 should therefore be amended accordingly."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Management Committee for the Common Organisation of Agricultural Markets,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Annex III to Regulation (EC) No 2092/2004 is replaced by the text set out in the Annex to this Regulation."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the third day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="8 May 2009" date="2009-05-08"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Mariann "/>
+               <emphasis kind="uc">
+                  <t v="Fischer Boel"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <quotedStructure eId="anx/qst_1">
+            <unit eId="anx/qst_1/anx_III" kind="annex">
+               <num>
+                  <t v="‘"/>
+                  <t v="ANNEX III"/>
+               </num>
+               <unit eId="anx/qst_1/anx_III/lvl_1" kind="level" depth="1">
+                  <heading>
+                     <emphasis kind="b">
+                        <t v="List of authorities in exporting countries empowered to issue certificates of authenticity"/>
+                     </emphasis>
+                  </heading>
+               </unit>
+               <unit eId="anx/qst_1/anx_III/lvl_1/lvl_1" kind="level" depth="2">
+                  <heading>
+                     <t v="SWITZERLAND"/>
+                  </heading>
+                  <list kind="dash">
+                     <unit eId="anx/qst_1/anx_III/lvl_1/lvl_1/idt_1" kind="indent">
+                        <p>
+                           <t v="Office fédéral de l'agriculture/Bundesamt für Landwirtschaft/Ufficio federale dell'agricoltura."/>
+                           <t v="’"/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+            </unit>
+         </quotedStructure>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="299"
+                 date="2007-11-16"
+                 page="1">
+               <t v="OJ L 299, 16.11.2007, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="362"
+                 date="2004-12-09"
+                 page="4">
+               <t v="OJ L 362, 9.12.2004, p. 4"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

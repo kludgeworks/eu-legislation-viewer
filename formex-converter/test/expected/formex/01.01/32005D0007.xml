@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32005D0007"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="01.01"
+           converter="1.0.0">
+   <source celex="32005D0007">
+      <publication series="L" number="2" date="2005-01-05" page="19"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="27 December 2004" date="2004-12-27"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="authorising a method for grading pig carcases in Cyprus"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(notified under document number C(2004) 5296)"/>
+         </p>
+         <p>
+            <t v="(Only the Greek text is authentic)"/>
+         </p>
+         <p>
+            <t v="(2005/7/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EEC) No 3220/84 of "/>
+               <date asWritten="13 November 1984" date="1984-11-13"/>
+               <t v=" determining the Community scale for grading pig carcases"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 5(2) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Article 2(3) of Regulation (EEC) No 3220/84 provides that the grading of pig carcases must be determined by estimating the content of lean meat in accordance with statistically proven assessment methods based on the physical measurement of one or more anatomical parts of the pig carcase; the authorisation of grading methods is subject to compliance with a maximum tolerance for statistical error in assessment; this tolerance was defined in Article 3 of Commission Regulation (EEC) No 2967/85 of "/>
+               <date asWritten="24 October 1985" date="1985-10-24"/>
+               <t v=" laying down detailed rules for the application of the Community scale for grading pig carcases"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The Government of Cyprus has requested the Commission to authorise one method for grading pig carcases and has submitted the results of its dissection trial which was executed before the day of accession, by presenting part two of the protocol provided for in Article 3 of Regulation (EEC) No 2967/85."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The evaluation of this request has revealed that the conditions for authorising this grading method are fulfilled."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="In Cyprus, commercial practice does not require that the tongue and the kidneys are removed from the pig carcase; this should be taken into account in adjusting the weight for standard presentation."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="No modification of the apparatus or the grading method may be authorised except by means of a new Commission Decision adopted in the light of experience gained; for this reason, the present authorisation may be revoked."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Decision are in accordance with the opinion of the Management Committee for Pigmeat,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The use of the following method is hereby authorised for grading pig carcases pursuant to Regulation (EEC) No 3220/84 in Cyprus:"/>
+         </p>
+         <list kind="dash">
+            <unit eId="art_1/idt_1" kind="indent">
+               <p>
+                  <t v="the apparatus termed "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Hennessy Grading Probe (HGP 4)"/>
+                  </quote>
+                  <t v=" and assessment methods related thereto, details of which are given in the Annex."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="Notwithstanding the standard presentation referred to in Article 2 of Regulation (EEC) No 3220/84, pig carcases may be presented in Cyprus with the tongue and kidneys attached before being weighted and graded. In order to establish quotations for pig carcases on a comparable basis, the recorded hot weight shall be reduced by 0,8 kg."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="Modifications of the apparatus or the assessment method shall not be authorised."/>
+         </p>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <p>
+            <t v="This Decision is addressed to the Republic of Cyprus."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="27 December 2004" date="2004-12-27"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Mariann "/>
+               <emphasis kind="uc">
+                  <t v="Fischer Boel"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <unit eId="anx/lvl_1" kind="level" depth="1">
+            <heading>
+               <t v="Methods for grading pig carcases in Cyprus"/>
+               <eol/>
+               <t v="Hennessy Grading Probe (HGP 4)"/>
+            </heading>
+            <p>
+               <num>
+                  <t v="1."/>
+               </num>
+               <t v="Grading of pig carcases is carried out by means of the apparatus called "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Hennessy Grading Probe (HGP 4)"/>
+               </quote>
+               <t v="."/>
+            </p>
+            <p>
+               <num>
+                  <t v="2."/>
+               </num>
+               <t v="The apparatus shall be equipped with a probe of 5,95 millimetres diameter (and of 6,3 mm at the blade of the top of the probe) containing a photodiode (Siemens LED of the type LYU 260-EO) and photodetector of the type 58 MR and having an operating distance of between 0 and 120 millimetres. The results of the measurements shall be converted into estimated lean meat content by means of the HGP 4 itself or a computer linked to it."/>
+            </p>
+            <p>
+               <num>
+                  <t v="3."/>
+               </num>
+               <t v="The lean meat content of the carcase shall be calculated according to the following formula:"/>
+            </p>
+            <math>
+               <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
+                  <m:mrow>
+                     <m:mi>ý</m:mi>
+                     <m:mo>=</m:mo>
+                     <m:mn>62,965</m:mn>
+                     <m:mo>–</m:mo>
+                     <m:mn>0,368</m:mn>
+                     <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                        <m:mi>X</m:mi>
+                        <m:mrow>
+                           <m:mn>1</m:mn>
+                        </m:mrow>
+                     </msub>
+                     <m:mo>–</m:mo>
+                     <m:mn>0,517</m:mn>
+                     <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                        <m:mi>X</m:mi>
+                        <m:mrow>
+                           <m:mn>2</m:mn>
+                        </m:mrow>
+                     </msub>
+                     <m:mo>+</m:mo>
+                     <m:mn>0,132</m:mn>
+                     <m:mi>W</m:mi>
+                  </m:mrow>
+               </m:math>
+            </math>
+            <p>
+               <t v="where:"/>
+            </p>
+            <list kind="definition">
+               <unit eId="anx/lvl_1/def_1" kind="definition">
+                  <heading>
+                     <t v="ý"/>
+                  </heading>
+                  <p>
+                     <t v="the estimated percentage of lean meat in the carcase,"/>
+                  </p>
+               </unit>
+               <unit eId="anx/lvl_1/def_2" kind="definition">
+                  <heading>
+                     <t v="X"/>
+                     <emphasis kind="sub">
+                        <t v="1"/>
+                     </emphasis>
+                  </heading>
+                  <p>
+                     <t v="the thickness of back-fat (including rind) in millimetres, measured at 8 cm off the midline of the carcase behind the last rib,"/>
+                  </p>
+               </unit>
+               <unit eId="anx/lvl_1/def_3" kind="definition">
+                  <heading>
+                     <t v="X"/>
+                     <emphasis kind="sub">
+                        <t v="2"/>
+                     </emphasis>
+                  </heading>
+                  <p>
+                     <t v="the thickness of back-fat (including rind) in millimetres, measured at 6 cm off the midline of the carcase between the third and fourth last rib,"/>
+                  </p>
+               </unit>
+               <unit eId="anx/lvl_1/def_4" kind="definition">
+                  <heading>
+                     <t v="W"/>
+                  </heading>
+                  <p>
+                     <t v="the thickness of muscle in millimetres, measured at the same time and in the same place as X"/>
+                     <emphasis kind="sub">
+                        <t v="2"/>
+                     </emphasis>
+                     <t v="."/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="The formula shall be valid for carcases weighing between 55 and 120 kilograms."/>
+            </p>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="301"
+                 date="1984-11-20"
+                 page="1">
+               <t v="OJ L 301, 20.11.1984, p. 1"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 3513/93 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="320"
+                 date="1993-12-22"
+                 page="5">
+               <t v="OJ L 320, 22.12.1993, p. 5"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="285"
+                 date="1985-10-25"
+                 page="39">
+               <t v="OJ L 285, 25.10.1985, p. 39"/>
+            </ref>
+            <t v=". Regulation amended by Regulation (EC) No 3127/94 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="330"
+                 date="1994-12-21"
+                 page="43">
+               <t v="OJ L 330, 21.12.1994, p. 43"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

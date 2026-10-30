@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32006D0944"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2013-11-12"
+           lang="en"
+           formexVersion="05.51"
+           converter="1.0.0">
+   <source celex="02006D0944-20131112">
+      <publication series="L" number="358" date="2006-12-16" page="87"/>
+   </source>
+   <lifecycle start="2013-11-12" produced="2013-11-19" sequence="002.001.0">
+      <eventRef type="corrigendum" act="32006D0944R(01)"/>
+      <eventRef type="amendment" act="32010D0778" date="2010-12-15"/>
+      <eventRef type="amendment" act="32013D0644" date="2013-11-08"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="14 December 2006" date="2006-12-14"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="determining the respective emission levels allocated to the Community and each of its Member States under the Kyoto Protocol pursuant to Council Decision 2002/358/EC"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(notified under document number C(2006) 6468)"/>
+         </p>
+         <p>
+            <t v="(2006/944/EC)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Decision 2002/358/EC of "/>
+               <date asWritten="25 April 2002" date="2002-04-25"/>
+               <t v=" concerning the approval, on behalf of the European Community, of the Kyoto Protocol to the United Nations Framework Convention on Climate Change and the joint fulfilment of commitments thereunder"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 3 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Annex II to Decision 2002/358/EC sets quantified emission limitation or reduction commitments for the purpose of determining the "/>
+               <changed amendingAct="32006D0944R(01)"
+                        action="replaced"
+                        location="LI:0;EL:1"
+                        marker="O000001M001000">
+                  <t v="respective emission levels"/>
+               </changed>
+               <t v=" allocated to the Community and its Member States subject to Article 4 of the Kyoto Protocol. Annex B to the Kyoto Protocol sets quantified emission limitation or reduction commitments for the purpose of determining the emission levels allocated to the Member States that acceded to the Community after "/>
+               <date asWritten="25 April 2002" date="2002-04-25"/>
+               <t v=", except Cyprus and Malta which do not yet have quantified emission limitation or reduction commitments under the Kyoto Protocol.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The "/>
+               <changed amendingAct="32006D0944R(01)"
+                        action="replaced"
+                        location="LI:0;EL:1"
+                        marker="O000001M002000">
+                  <t v="respective emission levels"/>
+               </changed>
+               <t v=" allocated to the Community and its Member States, expressed in tonnes of carbon dioxide equivalent, are determined in the Annex to this Decision. These emission levels are calculated on the basis of the revised base-year emissions data submitted by Member States pursuant to Article 23 of Commission Decision 2005/166/EC of "/>
+               <date asWritten="10 February 2005" date="2005-02-10"/>
+               <t v=" laying down rules implementing Decision 280/2004/EC of the European Parliament and of the Council concerning a mechanism for monitoring Community greenhouse gas emissions and for implementing the Kyoto Protocol"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", multiplied by the quantified emission limitation or reduction commitments set out in Annex II to Decision 2002/358/EC and Annex B to the Kyoto Protocol, multiplied by five, to represent the five years of the Protocol's first commitment period.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="In accordance with Article 3 of Decision 2002/358/EC, the assigned amounts of the Community and of each Member State have to be equal to their respective emission level determined in the Annex to this Decision.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The revision of emissions data for the base-year under the Kyoto Protocol, submitted by Member States pursuant to Article 23 of Decision 2005/166/EC, required a recalculation resulting in an arithmetic difference of "/>
+               <changed amendingAct="32006D0944R(01)"
+                        action="replaced"
+                        location="LI:0;EL:2"
+                        marker="O000001M005000">
+                  <t v="11403608"/>
+                  <t v=" tonnes"/>
+               </changed>
+               <t v=" of carbon dioxide equivalent between the assigned amount for the European Community and the sum of the assigned amounts of the Member States listed in Annex II to Decision 2002/358/EC. This difference should be issued as assigned amount units by the Community.&#xA;"/>
+            </p>
+         </unit>
+         <deleted>
+            <provenance amendingAct="32006D0944R(01)"
+                        action="deleted"
+                        location="LI:0;EL:3"
+                        marker="O000001M006000"/>
+            <unit eId="pbl_1/rct_5" kind="recital">
+               <num>
+                  <t v="(5)"/>
+               </num>
+               <p>
+                  <t v="Denmark has consistently expressed assumptions concerning its base-year emissions. These assumptions are supported by the information on its exceptionally low base year emissions provided in its report submitted pursuant to Article 23 of Decision 2005/166/EC. In recognition of Denmark’s special situation, resulting from its unusually low base-year emissions and having one of the highest quantified emission reduction obligations pursuant to Annex II to Decision 2002/358/EC, the Community should forward 5 million assigned amount units to Denmark.&#xA;"/>
+               </p>
+            </unit>
+         </deleted>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <changed amendingAct="32006D0944R(01)"
+                        action="replaced"
+                        location="LI:0;EL:3"
+                        marker="O000001M007000">
+                  <t v="(5)"/>
+               </changed>
+            </num>
+            <p>
+               <t v="Any changes in the final emission levels of the Community and its Member States resulting from the review of the emission levels pursuant to Article 8 of the Kyoto Protocol should be specified through an amendment to this Decision.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <changed amendingAct="32006D0944R(01)"
+                        action="replaced"
+                        location="LI:0;EL:3"
+                        marker="O000001M008000">
+                  <t v="(6)"/>
+               </changed>
+            </num>
+            <p>
+               <t v="The measures provided for in this Decision are in accordance with the opinion of the Climate Change Committee,&#xA;"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The "/>
+            <changed amendingAct="32006D0944R(01)"
+                     action="replaced"
+                     location="LI:0;EL:1"
+                     marker="O000001M003000">
+               <t v="respective emission levels"/>
+            </changed>
+            <t v=" in terms of tonnes of carbon dioxide equivalent allocated to the Community and to Member States for the first quantified emission limitation and reduction commitment period under the Kyoto Protocol are set out in the Annex."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <provenance amendingAct="32010D0778"
+                     action="replaced"
+                     location="AR:1;PT:1"
+                     marker="O001001M001000"/>
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The difference of "/>
+            <t v="19357532"/>
+            <t v=" tonnes of carbon dioxide equivalent between the emission levels of the Union and the sum of the emission levels of the Member States listed in Annex II to Decision 2002/358/EC shall be issued as assigned amount units by the Union."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Decision is addressed to the Member States."/>
+         </p>
+      </unit>
+   </body>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <provenance amendingAct="32010D0778"
+                     action="replaced"
+                     location="AR:1;PT:2 .AND. AX:0"
+                     marker="O001001M002000"/>
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <tableGroup>
+            <caption>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Respective emission levels allocated to the Union and Member States in terms of tonnes of carbon dioxide equivalent for the first quantified emission limitation and reduction commitment period under the Kyoto Protocol"/>
+                  </emphasis>
+               </p>
+            </caption>
+            <table cols="2">
+               <tr>
+                  <td>
+                     <p>
+                        <t v="European Union"/>
+                        <noteRef href="#note_3" marker="*"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="19621381509"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Belgium"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="673995528"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Denmark"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="273827177"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Germany"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="4868096694"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Ireland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="314184272"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Greece"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="668669806"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Spain"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1666195929"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="France"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2819626640"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Italy"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2416277898"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Luxembourg"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="47402996"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Netherlands"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1001262141"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Austria"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="343866009"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Portugal"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="381937527"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Finland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="355017545"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Sweden"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="375188561"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="United Kingdom"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="3396475254"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+            <table cols="2">
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Bulgaria"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="610045827"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Czech Republic"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="893541801"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Estonia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="196062637"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <provenance amendingAct="32013D0644"
+                              action="inserted"
+                              location="AR:1"
+                              marker="O002001M001000"/>
+                  <td>
+                     <p>
+                        <t v="Croatia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="148778503"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Cyprus"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Not applicable"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Latvia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="119182130"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Lithuania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="227306177"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Hungary"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="542366600"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Malta"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Not applicable"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Poland"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="2648181038"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Romania"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="1279835099"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Slovenia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="93628593"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="Slovakia"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="331433516"/>
+                     </p>
+                  </td>
+               </tr>
+            </table>
+         </tableGroup>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="130"
+                 date="2002-05-15"
+                 page="1">
+               <t v="OJ L 130, 15.5.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="55"
+                 date="2005-03-01"
+                 page="57">
+               <t v="OJ L 55, 1.3.2005, p. 57"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="*" kind="table">
+         <p>
+            <t v="For the purpose of the joint fulfilment of the commitments pursuant to Article 3(1) of the Kyoto Protocol in accordance with the provisions of Article 4 thereof, pursuant to Decision 2002/358/EC and applying to the Member States listed in Annex II to that Decision."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32004R2168R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="02.00"
+           converter="1.0.0">
+   <source celex="32004R2168R(01)">
+      <publication series="L" number="88" date="2005-04-07" page="38"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Commission Regulation (EC) No 2168/2004 of "/>
+            <date asWritten="17 December 2004" date="2004-12-17"/>
+            <t v=" adapting Regulation (EEC) No 2037/93 by reason of the accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="L" number="371" date="2004-12-18">
+               <t v="Official Journal of the European Union L 371 of 18 December 2004"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 14, in the Annex, Part A.1, the logo for Protected Designation of Origin in Dutch is replaced by the following:"/>
+         </p>
+         <new>
+            <figure src="L_2005088EN.01003802.tif"/>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

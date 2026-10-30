@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32005R0632"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="02.00"
+           converter="1.0.0">
+   <source celex="32005R0632">
+      <publication series="L" number="106" date="2005-04-27" page="3"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 632/2005"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="26 April 2005" date="2005-04-26"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Regulation (EC) No 1185/2004 opening a standing invitation to tender for the export of rye held by the German intervention agency"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 1784/2003 of "/>
+               <date asWritten="29 September 2003" date="2003-09-29"/>
+               <t v=" on the common organisation of the market in cereals"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 6 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Regulation (EC) No 1185/2004"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" has opened a standing invitation to tender for the export of rye held by the German intervention agency."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Article 5(4) thereof states the address where the tenders must be lodged with the German intervention agency. As a result of an internal reorganisation within the German administrative authorities, this address must be amended."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Cereals,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Article 5(4) of Regulation (EC) No 1185/2004 is hereby replaced by the following:"/>
+         </p>
+         <quotedStructure eId="art_1/qst_1">
+            <unit eId="art_1/qst_1/par_4" kind="paragraph">
+               <num>
+                  <t v="‘"/>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="Tenders must be lodged with the German intervention agency:"/>
+               </p>
+               <p>
+                  <t v="Bundesanstalt für Landwirtschaft und Ernährung (BLE)"/>
+               </p>
+               <p>
+                  <t v="Deichmannsaue 29"/>
+               </p>
+               <p>
+                  <t v="D-53179 Bonn"/>
+               </p>
+               <list kind="definition">
+                  <unit eId="art_1/qst_1/par_4/def_1" kind="definition">
+                     <heading>
+                        <t v="Fax"/>
+                     </heading>
+                     <p>
+                        <t v="(49) 228 6845 3985"/>
+                     </p>
+                     <p>
+                        <t v="(49) 228 6845 3276"/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="."/>
+                  <t v="’"/>
+               </p>
+            </unit>
+         </quotedStructure>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/unp_1" kind="paragraph">
+            <p>
+               <t v="This Regulation shall enter into force on the day of its publication in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_2/unp_2" kind="paragraph">
+            <p>
+               <t v="This Regulation shall apply from 9.00 (Brussels time) on "/>
+               <date asWritten="28 April 2005" date="2005-04-28"/>
+               <t v="."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="26 April 2005" date="2005-04-26"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Mariann "/>
+               <emphasis kind="uc">
+                  <t v="Fischer Boel"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="270"
+                 date="2003-10-21"
+                 page="78">
+               <t v="OJ L 270, 21.10.2003, p. 78"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="227"
+                 date="2004-06-26"
+                 page="11">
+               <t v="OJ L 227, 26.6.2004, p. 11"/>
+            </ref>
+            <t v=". Regulation last amended by Regulation (EC) No 1730/2004 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="307"
+                 date="2004-10-05"
+                 page="3">
+               <t v="OJ L 307, 5.10.2004, p. 3"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

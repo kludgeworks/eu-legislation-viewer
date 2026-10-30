@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32009R1278"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.01"
+           converter="1.0.0">
+   <source celex="32009R1278">
+      <publication series="L" number="344" date="2009-12-23" page="22"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) No 1278/2009"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="22 December 2009" date="2009-12-22"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="fixing the amount of private storage aid for certain fishery products in the 2010 fishing year"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 104/2000 of "/>
+               <date asWritten="17 December 1999" date="1999-12-17"/>
+               <t v=" on the common organisation of the markets in fishery and aquaculture products"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to Commission Regulation (EC) No 2813/2000 of "/>
+               <date asWritten="21 December 2000" date="2000-12-21"/>
+               <t v=" laying down detailed rules for the application of Council Regulation (EC) No 104/2000 as regards the grant of private storage aid for certain fishery products"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", and in particular Article 1 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="The aid should not exceed the sum of technical and financial costs recorded in the EU during the fishing year preceding the year in question."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="To discourage long-term storage, to shorten payment times and to reduce the burden of controls, private storage aid should be paid in one single instalment."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the Management Committee for Fishery Products,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="For the 2010 fishing year the amount of private storage aid, referred to in Article 25 of Regulation (EC) No 104/2000, for the products listed in Annex II to that Regulation shall be as follows:"/>
+         </p>
+         <list kind="definition">
+            <unit eId="art_1/def_1" kind="definition">
+               <num>
+                  <t v="—"/>
+               </num>
+               <heading>
+                  <t v="first month"/>
+               </heading>
+               <p>
+                  <t v="EUR 219 per tonne"/>
+               </p>
+            </unit>
+            <unit eId="art_1/def_2" kind="definition">
+               <num>
+                  <t v="—"/>
+               </num>
+               <heading>
+                  <t v="second month"/>
+               </heading>
+               <p>
+                  <t v="EUR 0 per tonne"/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/unp_1" kind="paragraph">
+            <p>
+               <t v="This Regulation shall enter into force on the day following that of its publication in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_2/unp_2" kind="paragraph">
+            <p>
+               <t v="It shall apply from "/>
+               <date asWritten="1 January 2010" date="2010-01-01"/>
+               <t v="."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="22 December 2009" date="2009-12-22"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="José Manuel "/>
+               <emphasis kind="uc">
+                  <t v="Barroso"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="17"
+                 date="2000-01-21"
+                 page="22">
+               <t v="OJ L 17, 21.1.2000, p. 22"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="326"
+                 date="2000-12-22"
+                 page="30">
+               <t v="OJ L 326, 22.12.2000, p. 30"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

@@ -8,6 +8,8 @@ import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -80,6 +82,17 @@ class FormexConverterFixturesTest {
     var validator = factory.newSchema().newValidator();
     validator.setResourceResolver(CATALOG);
     validator.validate(new StreamSource(new StringReader(xml)));
+  }
+
+  /** The output is what formex-converter/test/expected holds for the fixture. */
+  @Test
+  void matchesTheExpectedOutput() throws IOException, SaxonApiException {
+    var expected = ExpectedOutput.of(fixture);
+    assertThat(expected).as("%s: no expected output; run mise run expected", fixture).exists();
+    XmlAssert.assertThat(ExpectedOutput.serialize(SAXON, legalText))
+        .and(Files.readString(expected, StandardCharsets.UTF_8))
+        .ignoreWhitespace()
+        .areIdentical();
   }
 
   /**

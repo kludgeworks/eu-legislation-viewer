@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32013B0102R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.21"
+           converter="1.0.0">
+   <source celex="32013B0102R(01)">
+      <publication series="L" number="134" date="2013-05-18" page="21"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to the definitive adoption of the European Union’s general budget for the financial year 2013"/>
+         </p>
+         <p>
+            <t v="("/>
+            <ref kind="oj" series="L" number="66" date="2013-03-08">
+               <t v="Official Journal of the European Union L 66 of 8 March 2013"/>
+            </ref>
+            <t v=")"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="From page I/502 to page I/509, II/514 and II/515, II/519, II/1000 to II/1006 and II/1057, all the differentiated appropriations must be read as non-differentiated appropriations."/>
+         </p>
+      </unit>
+   </body>
+</legalText>
+

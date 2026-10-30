@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="22005X0415(01)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="02.00"
+           converter="1.0.0">
+   <source celex="22005X0415(01)">
+      <publication series="L" number="97" date="2005-04-15" page="37"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Information relating to the entry into force of the Agreement between the European Community and the Swiss Confederation amending the Agreement between the European Economic Community and the Swiss Confederation of "/>
+            <date asWritten="22 July 1972" date="1972-07-22"/>
+            <t v=" as regards the provisions applicable to processed agricultural products"/>
+            <noteRef href="#note_1" marker="1"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <p>
+         <t v="The procedures necessary for the entry into force of the Agreement between the European Community and the Swiss Confederation amending the Agreement between the European Economic Community and the Swiss Confederation of "/>
+         <date asWritten="22 July 1972" date="1972-07-22"/>
+         <t v=" as regards the provisions applicable to processed agricultural products, signed in Luxembourg on "/>
+         <date asWritten="26 October 2004" date="2004-10-26"/>
+         <t v=", having been completed on "/>
+         <date asWritten="29 March 2005" date="2005-03-29"/>
+         <t v=", this Agreement entered into force, in conformity with its Article 5(1), on "/>
+         <date asWritten="30 March 2005" date="2005-03-30"/>
+         <t v="."/>
+      </p>
+   </body>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="23"
+                 date="2005-01-26"
+                 page="19">
+               <t v="OJ L 23, 26.1.2005, p. 19"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

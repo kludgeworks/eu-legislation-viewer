@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32014D0215(01)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.50"
+           converter="1.0.0">
+   <source celex="32014D0215(01)">
+      <publication series="C"
+                   number="44"
+                   date="2014-02-15"
+                   page="2"
+                   document="2014/C 44/03"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="28 January 2014" date="2014-01-28"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="appointing and replacing members of the Governing Board of the European Centre for the Development of Vocational Training"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EEC) No 337/75 of "/>
+               <date asWritten="10 February 1975" date="1975-02-10"/>
+               <t v=" establishing the European Centre for the Development of Vocational Training, and in particular Article 4 thereof"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the nomination submitted to the Council by the Commission in the category of employees' representatives,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="By its Decision of "/>
+               <date asWritten="16 July 2012" date="2012-07-16"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=", the Council appointed the members of the Governing Board of the European Centre for the Development of Vocational Training for the period from "/>
+               <date asWritten="18 September 2012" date="2012-09-18"/>
+               <t v=" to "/>
+               <date asWritten="17 September 2015" date="2015-09-17"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="A member's seat is available for Spain on the Governing Board of the Centre in the category of employees' representatives,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS DECIDED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_Sole-Article" kind="article">
+         <num>
+            <t v="Sole Article"/>
+         </num>
+         <p>
+            <t v="The following person is hereby appointed as a member of the Governing Board of the European Centre for the Development of Vocational Training for the remainder of the term of office, which runs until "/>
+            <date asWritten="17 September 2015" date="2015-09-17"/>
+            <t v=":"/>
+         </p>
+         <table cols="2">
+            <rowGroup>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="REPRESENTATIVES OF EMPLOYEES' ORGANISATIONS:"/>
+                  </emphasis>
+               </heading>
+               <tr>
+                  <td>
+                     <p>
+                        <t v="SPAIN"/>
+                     </p>
+                  </td>
+                  <td>
+                     <p>
+                        <t v="Ms Gema TORRES"/>
+                     </p>
+                  </td>
+               </tr>
+            </rowGroup>
+         </table>
+      </unit>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="28 January 2014" date="2014-01-28"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Council"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="G. "/>
+               <emphasis kind="uc">
+                  <t v="Stournaras"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="39" date="1975-02-13" page="1">
+               <t v="OJ L 39, 13.2.1975, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="228"
+                 date="2012-07-31"
+                 page="3">
+               <t v="OJ C 228, 31.7.2012, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

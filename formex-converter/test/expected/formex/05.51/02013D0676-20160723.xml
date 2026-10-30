@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32013D0676"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2016-07-23"
+           lang="en"
+           formexVersion="05.51"
+           converter="1.0.0">
+   <source celex="02013D0676-20160723">
+      <publication series="L" number="316" date="2013-11-27" page="31"/>
+   </source>
+   <lifecycle start="2016-07-23" produced="2016-07-25" sequence="001.001.0">
+      <eventRef type="amendment" act="32016D1206" date="2016-07-18"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Implementing Decision"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="15 November 2013" date="2013-11-15"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="authorising Romania to continue to apply a special measure derogating from Article 193 of Directive 2006/112/EC on the common system of value added tax"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(2013/676/EU)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="By way of derogation from Article 193 of Directive 2006/112/EC, Romania is hereby authorised until "/>
+            <changed amendingAct="32016D1206"
+                     action="replaced"
+                     location="AR:1;PT:1"
+                     marker="O001001M001000">
+               <date asWritten="31 December 2019" date="2019-12-31"/>
+            </changed>
+            <t v=" to designate the taxable person to whom the supplies of goods or services referred to in Article 2 of this Decision are made as the person liable for the payment of the tax."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="The derogation provided for in Article 1 shall apply to supplies of wood products by taxable persons including standing timber, round or cleft working wood, fuel wood, timber products, as well as square edged or chipped wood and wood in the rough, processed or semi-manufactured wood."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="Any request for the extension of the measure provided for in this Decision shall be submitted to the Commission no later than "/>
+            <changed amendingAct="32016D1206"
+                     action="replaced"
+                     location="AR:1;PT:2"
+                     marker="O001001M002000">
+               <date asWritten="1 April 2019" date="2019-04-01"/>
+            </changed>
+            <t v=", and shall be accompanied by a report which includes an assessment of the efficiency of the measure and an evaluation of the risk of fraud in the wood sector."/>
+         </p>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <p>
+            <t v="This Decision is addressed to Romania."/>
+         </p>
+      </unit>
+   </body>
+</legalText>
+

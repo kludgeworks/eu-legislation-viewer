@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="31996E0184"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2006-01-23"
+           lang="en"
+           formexVersion="05.22"
+           converter="1.0.0">
+   <source celex="01996E0184-20060123">
+      <publication series="L" number="58" date="1996-03-07" page="1"/>
+   </source>
+   <lifecycle start="2006-01-23" produced="2012-06-29" sequence="005.001.0">
+      <eventRef type="amendment" act="31998D0498" date="1998-08-10"/>
+      <eventRef type="amendment" act="31999D0481" date="1999-07-19"/>
+      <eventRef type="amendment" act="32000E0722" date="2000-11-20"/>
+      <eventRef type="amendment" act="32001E0719" date="2001-10-08"/>
+      <eventRef type="amendment" act="32006E0029" date="2006-01-23"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <deleted amendingAct="32006E0029"
+                        action="deleted"
+                        location="AR:1"
+                        marker="O005001M001000">
+                  <emphasis kind="uc">
+                     <t v="Common position"/>
+                  </emphasis>
+               </deleted>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <deleted amendingAct="32006E0029"
+                     action="deleted"
+                     location="AR:1"
+                     marker="O005001M001000">
+               <t v="of 26 February 1996"/>
+            </deleted>
+         </p>
+         <p>
+            <docPurpose>
+               <deleted amendingAct="32006E0029"
+                        action="deleted"
+                        location="AR:1"
+                        marker="O005001M001000">
+                  <t v="defined by the Council on the basis of Article J.2 of the Treaty on European Union concerning arms exports to the former Yugoslavia"/>
+               </deleted>
+            </docPurpose>
+         </p>
+         <p>
+            <deleted amendingAct="32006E0029"
+                     action="deleted"
+                     location="AR:1"
+                     marker="O005001M001000">
+               <t v="(96/184/CFSP)"/>
+            </deleted>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <deleted>
+            <provenance amendingAct="32006E0029"
+                        action="deleted"
+                        location="AR:1"
+                        marker="O005001M001000"/>
+            <p>
+               <t v="XXX"/>
+            </p>
+         </deleted>
+      </formula>
+      <deleted>
+         <provenance amendingAct="32006E0029"
+                     action="deleted"
+                     location="AR:1"
+                     marker="O005001M001000"/>
+         <p>
+            <t v="This act has been trimmed due to parser errors since it has been repealed."/>
+         </p>
+      </deleted>
+      <formula name="enactingFormula">
+         <deleted>
+            <provenance amendingAct="32006E0029"
+                        action="deleted"
+                        location="AR:1"
+                        marker="O005001M001000"/>
+            <p>
+               <t v="XXX"/>
+            </p>
+         </deleted>
+      </formula>
+   </preamble>
+   <body>
+      <deleted>
+         <provenance amendingAct="32006E0029"
+                     action="deleted"
+                     location="AR:1"
+                     marker="O005001M001000"/>
+         <unit eId="art_1" kind="article">
+            <num>
+               <t v="Article 1"/>
+            </num>
+            <heading>
+               <t v="XXXX"/>
+            </heading>
+            <unit eId="art_1/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="XXXX"/>
+               </p>
+            </unit>
+         </unit>
+      </deleted>
+   </body>
+</legalText>
+

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32009D0878"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2010-09-16"
+           lang="en"
+           formexVersion="05.20"
+           converter="1.0.0">
+   <source celex="02009D0878-20100916">
+      <publication series="L" number="315" date="2009-12-02" page="46"/>
+   </source>
+   <lifecycle start="2010-09-16" produced="2010-10-15" sequence="001.001.0">
+      <eventRef type="amendment" act="32010D0594" date="2010-09-16"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Decision of the Council"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="("/>
+               <emphasis kind="uc">
+                  <t v="General Affairs"/>
+               </emphasis>
+               <t v=")"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="1 December 2009" date="2009-12-01"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="establishing the list of Council configurations in addition to those referred to in the second and third subparagraphs of Article 16(6) of the Treaty on European Union"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(2009/878/EU)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Protocol on transitional provisions, and in particular Article 4 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Article 4 of the Protocol on transitional provisions provides that until the entry into force of the European Council Decision referred to in the first subparagraph of Article 16(6) of the Treaty on European Union regarding the list of Council configurations, the list of Council configurations, in addition to the General Affairs and the Foreign Affairs ones, should be established by the General Affairs Council, acting by a simple majority."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The list of Council configurations was established by the Council (General Affairs) on "/>
+               <date asWritten="22 July 2002" date="2002-07-22"/>
+               <t v=", as part of Annex I to the Council's Rules of Procedure and following the list agreed upon at the European Council meeting in Seville on "/>
+               <date asWritten="21" date="2002-06-21"/>
+               <t v=" and "/>
+               <date asWritten="22 June 2002" date="2002-06-22"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="In order to comply with the provisions of the Treaties, it is appropriate to adapt this list, which is to be inserted in the Council's Rules of Procedure,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS DECISION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The list of Council configurations referred to in Article 4 of the Protocol on transitional provisions is set out in Annex."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/unp_1" kind="paragraph">
+            <p>
+               <t v="This Decision shall enter into force on the day of its adoption."/>
+            </p>
+         </unit>
+         <unit eId="art_2/unp_2" kind="paragraph">
+            <p>
+               <t v="It shall be published in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <unit eId="anx/lvl_1" kind="level" depth="1">
+            <heading>
+               <emphasis kind="b">
+                  <t v="LIST OF COUNCIL CONFIGURATIONS"/>
+               </emphasis>
+            </heading>
+            <p>
+               <num>
+                  <t v="1."/>
+               </num>
+               <t v="General affairs"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=";"/>
+            </p>
+            <p>
+               <num>
+                  <t v="2."/>
+               </num>
+               <t v="Foreign affairs"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=";"/>
+            </p>
+            <p>
+               <num>
+                  <t v="3."/>
+               </num>
+               <t v="Economic and financial affairs"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=";"/>
+            </p>
+            <p>
+               <num>
+                  <t v="4."/>
+               </num>
+               <t v="Justice and home affairs"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v=";"/>
+            </p>
+            <p>
+               <num>
+                  <t v="5."/>
+               </num>
+               <t v="Employment, social policy, health and consumer affairs;"/>
+            </p>
+            <p>
+               <num>
+                  <changed amendingAct="32010D0594"
+                           action="replaced"
+                           location="AR:1;PT:1"
+                           marker="O001001M001000">
+                     <t v="6."/>
+                  </changed>
+               </num>
+               <changed amendingAct="32010D0594"
+                        action="replaced"
+                        location="AR:1;PT:1"
+                        marker="O001001M001000">
+                  <t v="Competitiveness (internal market, industry, research and space)"/>
+               </changed>
+               <noteRef href="#note_5" marker="5"/>
+               <t v=";"/>
+            </p>
+            <p>
+               <num>
+                  <t v="7."/>
+               </num>
+               <t v="Transport, telecommunications and energy;"/>
+            </p>
+            <p>
+               <num>
+                  <t v="8."/>
+               </num>
+               <t v="Agriculture and fisheries;"/>
+            </p>
+            <p>
+               <num>
+                  <t v="9."/>
+               </num>
+               <t v="Environment;"/>
+            </p>
+            <p>
+               <num>
+                  <changed amendingAct="32010D0594"
+                           action="replaced"
+                           location="AR:1;PT:2"
+                           marker="O001001M002000">
+                     <t v="10."/>
+                  </changed>
+               </num>
+               <changed amendingAct="32010D0594"
+                        action="replaced"
+                        location="AR:1;PT:2"
+                        marker="O001001M002000">
+                  <t v="Education, youth, culture and sport"/>
+               </changed>
+               <noteRef href="#note_6" marker="6"/>
+               <t v="."/>
+            </p>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="This configuration is established by Article 16(6), second subparagraph, of the Treaty on European Union."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="This configuration is established by Article 16(6), third subparagraph, of the Treaty on European Union."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Including budget."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <t v="Including civil protection."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <t v="Including tourism."/>
+         </p>
+      </note>
+      <note eId="note_6" marker="6" kind="footnote">
+         <p>
+            <t v="Including audiovisual affairs."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

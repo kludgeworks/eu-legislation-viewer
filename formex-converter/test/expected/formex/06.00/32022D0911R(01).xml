@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32022D0911R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="06.00"
+           converter="1.0.0">
+   <source celex="32022D0911R(01)">
+      <publication series="L" number="195" date="2023-08-03" page="52"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Decision (EU) 2022/911 of the European Central Bank of "/>
+            <date asWritten="19 April 2022" date="2022-04-19"/>
+            <t v=" concerning the terms and conditions of TARGET-ECB and repealing Decision 2007/610/EC (ECB/2007/7) "/>
+            <emphasis kind="i">
+               <t v="(ECB/2022/22)"/>
+            </emphasis>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="("/>
+               <ref kind="oj" series="L" number="163" date="2022-06-17">
+                  <t v="Official Journal of the European Union L 163, 17 June 2022"/>
+               </ref>
+               <t v=")"/>
+            </emphasis>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On the cover page, in the title:"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <quotedStructure eId="cor_1/old/qst_1">
+               <p>
+                  <emphasis kind="b">
+                     <t v="‘"/>
+                     <t v="Decision (EU) 2022/911 of the European Central Bank of "/>
+                     <date asWritten="19 April 2022" date="2022-04-19"/>
+                     <t v=" concerning the terms and conditions of TARGET-ECB and repealing Decision 2007/610/EC (ECB/2007/7) "/>
+                     <emphasis kind="i">
+                        <t v="(ECB/2022/22)"/>
+                        <t v="’"/>
+                        <t v=","/>
+                     </emphasis>
+                  </emphasis>
+               </p>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <p>
+                  <emphasis kind="b">
+                     <t v="‘"/>
+                     <t v="Decision (EU) 2022/911 of the European Central Bank of "/>
+                     <date asWritten="19 April 2022" date="2022-04-19"/>
+                     <t v=" concerning the terms and conditions of TARGET-ECB and repealing Decision ECB/2007/7 "/>
+                     <emphasis kind="i">
+                        <t v="(ECB/2022/22)"/>
+                        <t v="’"/>
+                        <t v="."/>
+                     </emphasis>
+                  </emphasis>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+      <unit eId="cor_2" kind="correction">
+         <p>
+            <t v="On page 1, in the title:"/>
+         </p>
+         <old>
+            <p>
+               <t v="for:"/>
+            </p>
+            <quotedStructure eId="cor_2/old/qst_1">
+               <p>
+                  <emphasis kind="b">
+                     <t v="‘"/>
+                     <t v="DECISION (EU) 2022/911 OF THE EUROPEAN CENTRAL BANK"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="of "/>
+                     <date asWritten="19 April 2022" date="2022-04-19"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="concerning the terms and conditions of TARGET-ECB and repealing Decision 2007/610/EC (ECB/2007/7) "/>
+                     <emphasis kind="i">
+                        <t v="(ECB/2022/22)"/>
+                     </emphasis>
+                     <t v="’"/>
+                     <t v=","/>
+                  </emphasis>
+               </p>
+            </quotedStructure>
+         </old>
+         <new>
+            <p>
+               <t v="read:"/>
+            </p>
+            <quotedStructure eId="cor_2/new/qst_1">
+               <p>
+                  <emphasis kind="b">
+                     <t v="‘"/>
+                     <t v="DECISION (EU) 2022/911 OF THE EUROPEAN CENTRAL BANK"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="of "/>
+                     <date asWritten="19 April 2022" date="2022-04-19"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="concerning the terms and conditions of TARGET-ECB and repealing Decision ECB/2007/7 "/>
+                     <emphasis kind="i">
+                        <t v="(ECB/2022/22)"/>
+                     </emphasis>
+                     <t v="’"/>
+                     <t v="."/>
+                  </emphasis>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

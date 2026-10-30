@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32005D0621(01)"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="02.00"
+           converter="1.0.0">
+   <source celex="32005D0621(01)">
+      <publication series="L" number="157" date="2005-06-21" page="9"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Decision of the Council of the European Union"/>
+               </emphasis>
+            </docType>
+            <docNumber/>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="25 April 2005" date="2005-04-25"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="on the admission of the Republic of Bulgaria and Romania to the European Union"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on European Union, and in particular Article 49 thereof,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to the opinion of the Commission"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=","/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_3" kind="citation">
+            <p>
+               <t v="Having regard to the assent of the European Parliament"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=","/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <p>
+               <t v="Whereas the Republic of Bulgaria and Romania have applied to become members of the European Union,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS DECIDED:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <p>
+         <t v="to accept these applications for admission; the conditions of admission and the adjustments to the Treaties on which the European Union is founded, entailed by such admission, are to be the subject of an agreement between the Member States, the Republic of Bulgaria and Romania."/>
+      </p>
+   </body>
+   <conclusions>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Luxembourg, "/>
+            <date asWritten="25 April 2005" date="2005-04-25"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Council"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="J. "/>
+               <emphasis kind="uc">
+                  <t v="Asselborn"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="Opinion delivered on "/>
+            <date asWritten="22 February 2005" date="2005-02-22"/>
+            <t v=" (not yet published in the Official Journal)."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Assent given on "/>
+            <date asWritten="13 April 2005" date="2005-04-13"/>
+            <t v=" (not yet published in the Official Journal)."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

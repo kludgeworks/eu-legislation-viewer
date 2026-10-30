@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32003R2314"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2004-05-14"
+           lang="en"
+           formexVersion="01.02"
+           converter="1.0.0">
+   <source celex="02003R2314-20040514">
+      <publication series="L" number="342" date="2003-12-30" page="32"/>
+   </source>
+   <lifecycle start="2004-05-14" sequence="001.001.0">
+      <eventRef type="amendment" act="32004R0965" date="2004-05-13"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 2314/2003"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="29 December 2003" date="2003-12-29"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="opening a standing invitation to tender for the resale on the Community market of rye held by the German intervention agency"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EEC) No 1766/92 of "/>
+               <date asWritten="30 June 1992" date="1992-06-30"/>
+               <t v=" on the common organisation of the market in cereals"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 5 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Commission Regulation (EEC) No 2131/93 of "/>
+               <date asWritten="28 July 1993" date="1993-07-28"/>
+               <t v=" laying down the procedure and conditions for the sale of cereals held by intervention agencies"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" provides in particular that cereals held by intervention agencies are to be sold by tendering procedure at prices preventing market disturbance."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="Germany still has intervention stocks of rye."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Because of the difficult weather conditions in much of the Community, cereal production has been significantly reduced in the 2003/04 marketing year. This situation has resulted in high prices locally, causing particular difficulties for livestock holdings and the feedingstuffs industry, which are finding it hard to obtain supplies at competitive prices."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="It is therefore appropriate to make stocks of rye held by the German intervention agency available on the internal market. The period of presentation of the offers for the last partial invitation to tender under Regulation (EC) No 1510/2003"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=" having expired on "/>
+               <date asWritten="18 December 2003" date="2003-12-18"/>
+               <t v=", it is advisable to open a new standing invitation to tender."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="To take account of the situation on the Community market, provision should be made for the Commission to manage this invitation to tender. In addition, provision must be made for an award coefficient for tenders offering the minimum selling price."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="When the German intervention agency notifies the Commission, the tenderers should remain anonymous."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_7" kind="recital">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <p>
+               <t v="With a view to modernising management, the information required by the Commission should be sent by electronic mail."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_8" kind="recital">
+            <num>
+               <t v="(8)"/>
+            </num>
+            <p>
+               <t v="The Management Committee for Cereals has not issued an opinion by the time limit laid down by its Chairman,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="The German intervention agency shall open a standing invitation to tender for the sale on the Community market of "/>
+            <t v="1139000"/>
+            <t v=" tonnes of rye held by it."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/unp_1" kind="paragraph">
+            <p>
+               <t v="The sale provided for in Article 1 shall take place in accordance with Regulation (EEC) No 2131/93."/>
+            </p>
+         </unit>
+         <unit eId="art_2/unp_2" kind="paragraph">
+            <p>
+               <t v="However, notwithstanding that Regulation:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_2/unp_2/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="tenders shall be drawn up on the basis of the actual quality of the lot to which they apply;"/>
+                  </p>
+               </unit>
+               <unit eId="art_2/unp_2/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="the minimum selling price shall be set at a level which does not disturb the cereals market."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="Notwithstanding Article 13(4) of Regulation (EEC) No 2131/93 the tender security is set at EUR 10 per tonne."/>
+         </p>
+      </unit>
+      <unit eId="art_4" kind="article">
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <unit eId="art_4/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <unit eId="art_4/par_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="The closing date for the submission of tenders for the first partial invitation to tender shall be "/>
+                  <date asWritten="8 January 2004" date="2004-01-08"/>
+                  <t v=" at 09.00 (Brussels time)."/>
+               </p>
+            </unit>
+            <unit eId="art_4/par_1/sub_2" kind="subparagraph">
+               <provenance amendingAct="32004R0965"
+                           action="replaced"
+                           location="AR:1"
+                           marker="O001001M001000"/>
+               <p>
+                  <t v="The closing dates for the submission of tenders for subsequent partial invitations to tender shall be each Thursday at 09.00 (Brussels time), with the exception of "/>
+                  <date asWritten="20 May" date="2004-05-20"/>
+                  <t v=" and "/>
+                  <date asWritten="10 june 2004" date="2004-06-10"/>
+                  <t v="."/>
+               </p>
+            </unit>
+            <unit eId="art_4/par_1/sub_3" kind="subparagraph">
+               <p>
+                  <t v="The closing date for the submission of tenders for the last partial tendering procedure shall be "/>
+                  <date asWritten="27 May 2004" date="2004-05-27"/>
+                  <t v=" at 09.00 (Brussels time)."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_4/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="Tenders shall be lodged with the German intervention agency:"/>
+            </p>
+            <p>
+               <t v="Bundesanstalt für Landwirtschaft und Ernährung (BLE)"/>
+            </p>
+            <p>
+               <t v="Adickesallee 40"/>
+            </p>
+            <p>
+               <t v="D-60322 Frankfurt am Main"/>
+            </p>
+            <p>
+               <t v="Fax: (49-691) 56 49 62"/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_5" kind="article">
+         <num>
+            <t v="Article 5"/>
+         </num>
+         <p>
+            <t v="Within two hours of the expiry of the time limit for the submission of tenders, the German intervention agency shall notify the Commission of tenders received. They must be sent by electronic mail in accordance with the form set out in the Annex."/>
+         </p>
+      </unit>
+      <unit eId="art_6" kind="article">
+         <num>
+            <t v="Article 6"/>
+         </num>
+         <unit eId="art_6/unp_1" kind="paragraph">
+            <p>
+               <t v="In accordance with the procedure laid down in Article 23 of Regulation (EEC) No 1766/92, the Commission shall set the minimum sale price or decide not to accept the tenders. If tenders are submitted for the same lot and for a total quantity larger than that available, a separate price may be fixed for each lot."/>
+            </p>
+         </unit>
+         <unit eId="art_6/unp_2" kind="paragraph">
+            <p>
+               <t v="Where tenders offer the minimum selling price, the Commission may fix an award coefficient for the quantities offered at the same time as it sets the minimum selling price."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_7" kind="article">
+         <num>
+            <t v="Article 7"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the third day following its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <subheading>
+            <t v="Standing invitation to tender for the resale of "/>
+            <t v="1139000"/>
+            <t v=" tonnes of rye held by the German intervention agency"/>
+            <eol/>
+            <t v="Regulation (EC) No 2314/2003"/>
+         </subheading>
+         <figure src="L_2003342EN.01003302.tif"/>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="181"
+                 date="1992-07-01"
+                 page="21">
+               <t v="OJ L 181, 1.7.1992, p. 21"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 1104/2003 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="158"
+                 date="2003-06-27"
+                 page="1">
+               <t v="OJ L 158, 27.6.2003, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="191"
+                 date="1993-07-31"
+                 page="76">
+               <t v="OJ L 191, 31.7.1993, p. 76"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 1630/2000 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="187"
+                 date="2000-07-26"
+                 page="24">
+               <t v="OJ L 187, 26.7.2000, p. 24"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="217"
+                 date="2003-08-29"
+                 page="11">
+               <t v="OJ L 217, 29.8.2003, p. 11"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 2110/2003 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="317"
+                 date="2003-12-02"
+                 page="3">
+               <t v="OJ L 317, 2.12.2003, p. 3"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

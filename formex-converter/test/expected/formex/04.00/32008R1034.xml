@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32008R1034"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="04.00"
+           converter="1.0.0">
+   <source celex="32008R1034">
+      <publication series="L" number="279" date="2008-10-22" page="13"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 1034/2008"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="21 October 2008" date="2008-10-21"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Regulation (EC) No 885/2006 laying down detailed rules for the application of Council Regulation (EC) No 1290/2005 as regards the accreditation of paying agencies and other bodies and the clearance of the accounts of the EAGF and the EAFRD"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 1290/2005 of "/>
+               <date asWritten="21 June 2005" date="2005-06-21"/>
+               <t v=" on the financing of the common agricultural policy"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 42 thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Pursuant to Article 9(1)(a)(iii) of Regulation (EC) No 1290/2005, Member States are obliged to recover sums lost as a result of irregularities and negligence. However, Article 32(6) and Article 33(7) of the same Regulation allow Member States not to pursue recovery if the costs already and likely to be incurred total more that the amount to be recovered. In order to ensure an effective and proper application of these provisions, it is appropriate to lay down a certain threshold below which Member States are not required to pursue recovery. This threshold should be set at EUR 100, not including interests, since the recovery cases involving amounts below this threshold represent significantly less than 0,1 % of the total amount of undue payments reported to the Commission by the Member States pursuant to Article 6(h) of Commission Regulation (EC) No 885/2006"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=". The setting of this threshold should not prevent Member States from applying the provisions referred to above to cases exceeding EUR 100, if properly justified."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The "/>
+               <emphasis kind="i">
+                  <t v="de minimis"/>
+               </emphasis>
+               <t v=" rule laid down in this Regulation should not apply to reductions and exclusions imposed on beneficiaries by the Member States in the area of cross-compliance on the basis of Article 6(1) of Council Regulation (EC) No 1782/2003 of "/>
+               <date asWritten="29 September 2003" date="2003-09-29"/>
+               <t v=" establishing common rules for direct support schemes under the common agricultural policy and establishing certain support schemes for farmers"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=" because Article 6(3) of that Regulation provides for a specific regime for the non-application of reductions and exclusions amounting to EUR 100 or less."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The obligation for the Member States to recover undue amounts above EUR 100 can be executed in different ways. Without prejudice to any other enforcement action provided for in national law, an effective and cost-efficient way to do so is to deduct any outstanding amounts from future payments to the debtor, once the debt has been established in conformity with national legislation. This method should therefore be made compulsory for Member States to apply."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="Regulation (EC) No 885/2006 should therefore be amended accordingly."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Committee on the Agricultural Funds,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="In Regulation (EC) No 885/2006 the following Chapter 1a is inserted:"/>
+         </p>
+         <quotedStructure eId="art_1/qst_1">
+            <unit eId="art_1/qst_1/cpt_1a" kind="division">
+               <num>
+                  <t v="‘"/>
+                  <t v="CHAPTER 1a"/>
+               </num>
+               <subheading>
+                  <t v="RECOVERY OF DEBTS"/>
+               </subheading>
+               <unit eId="art_1/qst_1/art_5a" kind="article">
+                  <num>
+                     <t v="Article 5a"/>
+                  </num>
+                  <heading>
+                     <t v="De minimis"/>
+                  </heading>
+                  <p>
+                     <t v="Without prejudice to the first subparagraph of Article 6(3) of Council Regulation (EC) No 1782/2003"/>
+                     <noteRef href="#note_4" marker="*"/>
+                     <t v=", the conditions of Articles 32(6)(a) and 33(7) of Regulation (EC) No 1290/2005 are considered to be fulfilled if the amount to be recovered from the beneficiary in relation to an individual payment for an aid scheme, not including interests, does not exceed EUR 100."/>
+                  </p>
+               </unit>
+               <unit eId="art_1/qst_1/art_5b" kind="article">
+                  <num>
+                     <t v="Article 5b"/>
+                  </num>
+                  <heading>
+                     <t v="Method of recovery"/>
+                  </heading>
+                  <p>
+                     <t v="Without prejudice to any other enforcement action provided for in national law, Member States shall off-set any still outstanding debt of a beneficiary which has been established in accordance with national law against any future payment to be made by the paying agency responsible for the recovery of the debt to the same beneficiary."/>
+                  </p>
+               </unit>
+            </unit>
+         </quotedStructure>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the seventh day following its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="21 October 2008" date="2008-10-21"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <t v="Mariann "/>
+               <emphasis kind="uc">
+                  <t v="Fischer Boel"/>
+               </emphasis>
+            </role>
+            <person>
+               <emphasis kind="i">
+                  <t v="Member of the Commission"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="209"
+                 date="2005-08-11"
+                 page="1">
+               <t v="OJ L 209, 11.8.2005, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="171"
+                 date="2006-06-23"
+                 page="90">
+               <t v="OJ L 171, 23.6.2006, p. 90"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="270"
+                 date="2003-10-21"
+                 page="1">
+               <t v="OJ L 270, 21.10.2003, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="*" kind="quotation">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="270"
+                 date="2003-10-21"
+                 page="1">
+               <t v="OJ L 270, 21.10.2003, p. 1"/>
+            </ref>
+            <t v="."/>
+            <t v="’"/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

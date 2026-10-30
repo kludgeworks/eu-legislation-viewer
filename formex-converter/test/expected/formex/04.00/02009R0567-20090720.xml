@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32009R0567"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2009-07-20"
+           lang="en"
+           formexVersion="04.00"
+           converter="1.0.0">
+   <source celex="02009R0567-20090720">
+      <publication series="L" number="168" date="2009-06-30" page="22"/>
+   </source>
+   <lifecycle start="2009-07-20" produced="2009-11-09" sequence="000.001.0">
+      <eventRef type="amendment" act="32009R1026" date="2009-10-29"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 567/2009"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="29 June 2009" date="2009-06-29"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="entering a name in the register of traditional specialities guaranteed (Pierekaczewnik (TSG))"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Council Regulation (EC) No 509/2006 of "/>
+               <date asWritten="20 March 2006" date="2006-03-20"/>
+               <t v=" on agricultural products and foodstuffs as traditional specialities guaranteed"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular the first subparagraph of Article 9(4) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="In accordance with the first subparagraph of Article 8(2) of Regulation (EC) No 509/2006, and pursuant to Article 19(3) of the same Regulation, the application submitted by Poland to enter the name &#xA;"/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Pierekaczewnik"/>
+               </quote>
+               <t v=" in the register was published in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <noteRef href="#note_2" marker="2"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="As no objection under Article 9 of Regulation (EC) No 509/2006 has been received by the Commission, this name should be entered in the register.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <provenance amendingAct="32009R1026"
+                        action="replaced"
+                        location="AR:1;PT:1"
+                        marker="O000001M001000"/>
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="When the application for registration was submitted, the protection provided for in Article 13(2) of Regulation (EC) No 509/2006 was also requested. That protection should be granted to the name &#xA;"/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Pierekaczewnik"/>
+               </quote>
+               <t v=" in so far as, in the absence of objections, it could not be demonstrated that the use of the name is lawful, renowned and economically significant for similar agricultural products or foodstuffs."/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <unit eId="art_1/unp_1" kind="paragraph">
+            <p>
+               <t v="The name contained in the Annex to this Regulation is hereby entered in the register."/>
+            </p>
+         </unit>
+         <unit eId="art_1/unp_2" kind="paragraph">
+            <provenance amendingAct="32009R1026"
+                        action="inserted"
+                        location="AR:1;PT:2"
+                        marker="O000001M002000"/>
+            <p>
+               <t v="The protection provided for in Article 13(2) of Regulation (EC) No 509/2006 shall apply."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the 20th day following its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <t v="Foodstuffs referred to in Annex I to Regulation (EC) No 509/2006:"/>
+         </p>
+         <unit eId="anx/pnt_Class-2.3" kind="level" depth="1">
+            <num>
+               <emphasis kind="b">
+                  <t v="Class 2.3."/>
+               </emphasis>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Confectionery, bread, pastry, cakes, biscuits and other baker’s wares"/>
+               </emphasis>
+               <t v="&#xA;"/>
+            </heading>
+         </unit>
+         <unit eId="anx/pnt_Class-2.3/lvl_1" kind="level" depth="2">
+            <heading>
+               <t v="POLAND"/>
+            </heading>
+            <p>
+               <t v="Pierekaczewnik (TSG)"/>
+            </p>
+            <p>
+               <provenance amendingAct="32009R1026"
+                           action="inserted"
+                           location="AR:1;PT:3"
+                           marker="O000001M003000"/>
+               <t v="The use of the name is reserved."/>
+            </p>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="93" date="2006-03-31" page="1">
+               <t v="OJ L 93, 31.3.2006, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="269"
+                 date="2008-10-24"
+                 page="11">
+               <t v="OJ C 269, 24.10.2008, p. 11"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

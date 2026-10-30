@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32017R0653R(01)"
+           kind="corrigendum"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.56"
+           converter="1.0.0">
+   <source celex="32017R0653R(01)">
+      <publication series="L" number="120" date="2017-05-11" page="31"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <t v="Corrigendum to Commission Delegated Regulation (EU) 2017/653 of "/>
+            <date asWritten="8 March 2017" date="2017-03-08"/>
+            <t v=" supplementing Regulation (EU) No 1286/2014 of the European Parliament and of the Council on key information documents for packaged retail and insurance-based investment products (PRIIPs) by laying down regulatory technical standards with regard to the presentation, content, review and revision of key information documents and the conditions for fulfilling the requirement to provide such documents"/>
+         </p>
+         <p>
+            <emphasis kind="i">
+               <t v="("/>
+               <ref kind="oj" series="L" number="100" date="2017-04-12">
+                  <t v="Official Journal of the European Union L 100 of 12 April 2017"/>
+               </ref>
+               <t v=")"/>
+            </emphasis>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="cor_1" kind="correction">
+         <p>
+            <t v="On page 17, Annex II, point 13, the formula is replaced by the following:"/>
+         </p>
+         <new>
+            <quotedStructure eId="cor_1/new/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
+                           <m:mrow>
+                              <m:mrow>
+                                 <m:mi mathvariant="italic">VEV</m:mi>
+                              </m:mrow>
+                              <m:mo>=</m:mo>
+                              <m:mrow>
+                                 <m:mrow>
+                                    <m:mo fence="true">{</m:mo>
+                                    <m:msqrt>
+                                       <m:mrow>
+                                          <m:mo fence="true">(</m:mo>
+                                          <m:mn>3,842</m:mn>
+                                          <m:mo>−</m:mo>
+                                          <m:mn>2</m:mn>
+                                          <m:mo>*</m:mo>
+                                          <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                             <m:mi mathvariant="italic">VaR</m:mi>
+                                             <m:mrow>
+                                                <m:mi mathvariant="italic">RETURN</m:mi>
+                                                <m:mi mathvariant="italic">SPACE</m:mi>
+                                             </m:mrow>
+                                          </msub>
+                                          <m:mo fence="true">)</m:mo>
+                                       </m:mrow>
+                                    </m:msqrt>
+                                    <m:mo>−</m:mo>
+                                    <m:mn>1,96</m:mn>
+                                    <m:mo fence="true">}</m:mo>
+                                 </m:mrow>
+                                 <m:mo>/</m:mo>
+                                 <m:msqrt>
+                                    <m:mrow>
+                                       <m:mi>T</m:mi>
+                                    </m:mrow>
+                                 </m:msqrt>
+                              </m:mrow>
+                           </m:mrow>
+                        </m:math>
+                     </math>
+                  </quote>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+      <unit eId="cor_2" kind="correction">
+         <p>
+            <t v="on page 17, Annex II, point 17, the formula is replaced by the following:"/>
+         </p>
+         <new>
+            <quotedStructure eId="cor_2/new/qst_1">
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
+                           <m:mrow>
+                              <m:mrow>
+                                 <m:mi mathvariant="italic">VEV</m:mi>
+                              </m:mrow>
+                              <m:mo>=</m:mo>
+                              <m:mrow>
+                                 <m:mrow>
+                                    <m:mo fence="true">{</m:mo>
+                                    <m:msqrt>
+                                       <m:mrow>
+                                          <m:mo fence="true">(</m:mo>
+                                          <m:mn>3,842</m:mn>
+                                          <m:mo>−</m:mo>
+                                          <m:mn>2</m:mn>
+                                          <m:mo>*</m:mo>
+                                          <m:mi mathvariant="italic">ln</m:mi>
+                                          <m:mrow>
+                                             <m:mo fence="true">(</m:mo>
+                                             <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                                <m:mi mathvariant="italic">VaR</m:mi>
+                                                <m:mrow>
+                                                   <m:mi mathvariant="italic">PRICE</m:mi>
+                                                   <m:mi mathvariant="italic">SPACE</m:mi>
+                                                </m:mrow>
+                                             </msub>
+                                             <m:mo fence="true">)</m:mo>
+                                          </m:mrow>
+                                          <m:mo fence="true">)</m:mo>
+                                       </m:mrow>
+                                    </m:msqrt>
+                                    <m:mo>−</m:mo>
+                                    <m:mn>1,96</m:mn>
+                                    <m:mo fence="true">}</m:mo>
+                                 </m:mrow>
+                                 <m:mo>/</m:mo>
+                                 <m:msqrt>
+                                    <m:mrow>
+                                       <m:mi>T</m:mi>
+                                    </m:mrow>
+                                 </m:msqrt>
+                              </m:mrow>
+                           </m:mrow>
+                        </m:math>
+                     </math>
+                  </quote>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+      <unit eId="cor_3" kind="correction">
+         <p>
+            <t v="on page 28, Annex IV, point 13(d) is replaced by the following:"/>
+         </p>
+         <new>
+            <quotedStructure eId="cor_3/new/qst_1">
+               <p>
+                  <num>
+                     <t v="‘"/>
+                     <t v="(d)"/>
+                  </num>
+                  <t v="Calculate the return for each contract by summing returns from selected periods and correcting these returns to ensure that the expected return measured from the simulated return's distribution is as below"/>
+               </p>
+               <p>
+                  <math>
+                     <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
+                        <m:mrow>
+                           <m:mrow>
+                              <m:mi mathvariant="italic">E</m:mi>
+                              <m:mo>*</m:mo>
+                              <m:mrow>
+                                 <m:mo fence="true">[</m:mo>
+                                 <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <m:mi mathvariant="italic">r</m:mi>
+                                    <m:mrow>
+                                       <m:mi mathvariant="italic">bootstrapped</m:mi>
+                                    </m:mrow>
+                                 </msub>
+                                 <m:mo fence="true">]</m:mo>
+                              </m:mrow>
+                           </m:mrow>
+                           <m:mo>=</m:mo>
+                           <m:mrow>
+                              <m:mo>−</m:mo>
+                              <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                                 <m:mn>0,5</m:mn>
+                                 <m:mrow>
+                                    <m:mi mathvariant="italic">w</m:mi>
+                                 </m:mrow>
+                              </msup>
+                              <m:msubsup>
+                                 <m:mi xmlns="http://www.w3.org/1998/Math/MathML" mathvariant="italic">σ</m:mi>
+                                 <m:mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <m:mi mathvariant="italic">s</m:mi>
+                                 </m:mrow>
+                                 <m:mrow>
+                                    <m:mn>2</m:mn>
+                                 </m:mrow>
+                              </m:msubsup>
+                              <m:mi mathvariant="italic">N</m:mi>
+                           </m:mrow>
+                        </m:mrow>
+                     </m:math>
+                  </math>
+               </p>
+               <p>
+                  <t v="where E*[r"/>
+                  <emphasis kind="i">
+                     <emphasis kind="sub">
+                        <t v="bootstrapped"/>
+                     </emphasis>
+                  </emphasis>
+                  <t v="] is the new simulated mean."/>
+                  <t v="’"/>
+                  <t v="."/>
+               </p>
+            </quotedStructure>
+         </new>
+      </unit>
+   </body>
+</legalText>
+

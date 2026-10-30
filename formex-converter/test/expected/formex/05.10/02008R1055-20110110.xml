@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32008R1055"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2011-01-10"
+           lang="en"
+           formexVersion="05.10"
+           converter="1.0.0">
+   <source celex="02008R1055-20110110">
+      <publication series="L" number="283" date="2008-10-28" page="3"/>
+   </source>
+   <lifecycle start="2011-01-10" produced="2010-12-29" sequence="001.001.0">
+      <eventRef type="amendment" act="32010R1227" date="2010-12-20"/>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EC) No 1055/2008"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="27 October 2008" date="2008-10-27"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="implementing Regulation (EC) No 184/2005 of the European Parliament and of the Council, as regards quality criteria and quality reporting for balance of payments statistics"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty establishing the European Community,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Regulation (EC) No 184/2005 of the European Parliament and of the Council of "/>
+               <date asWritten="12 January 2005" date="2005-01-12"/>
+               <t v=" on Community statistics concerning balance of payments, international trade in services and foreign direct investment"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 4(3) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Regulation (EC) No 184/2005 establishes a common framework for the systematic production of Community statistics concerning balance of payments, international trade in services and foreign direct investment."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="It is necessary to specify the common quality standards, as well as the content and periodicity of the quality reports, in accordance with Article 4(3) of Regulation (EC) No 184/2005."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Balance of Payments Committee set up by Regulation (EC) No 184/2005,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Member States shall supply on an annual basis a quality report drawn up in accordance with the rules laid down in the Annex."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <provenance amendingAct="32010R1227"
+                        action="replaced"
+                        location="AR:1;PT:1"
+                        marker="O001001M001000"/>
+            <t v="Member States shall supply their quality report not later than 31 May every year."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the 20th day following its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <provenance amendingAct="32010R1227"
+                     action="replaced"
+                     location="AR:1;PT:2 .AND. AX:0"
+                     marker="O001001M002000"/>
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <unit eId="anx/pnt_1" kind="level" depth="1">
+            <num>
+               <t v="1."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Introduction"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The quality report shall contain both quantitative and qualitative indicators of quality. The Commission (Eurostat) shall provide the results of the quantitative indicators for each Member State, calculated on the basis of data provided. Member States shall interpret and comment on them, in the light of their collection methodology."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_2" kind="level" depth="1">
+            <num>
+               <t v="2."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Timeline"/>
+               </emphasis>
+            </heading>
+            <list kind="dash">
+               <unit eId="anx/pnt_2/idt_1" kind="indent">
+                  <p>
+                     <t v="Every year, by the end of the first quarter, the Commission (Eurostat) shall supply the Member States with draft documents for quality reports, based on data sent the previous year, partially pre-filled with most of the quantitative indicators and other information available to the Commission (Eurostat)."/>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_2/idt_2" kind="indent">
+                  <p>
+                     <t v="Every year, within two months of receiving the pre-filled quality report and not later than 31 May, Member States shall supply the Commission (Eurostat) with the completed quality report."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="anx/pnt_3" kind="level" depth="1">
+            <num>
+               <t v="3."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Quality criteria"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The quality report shall contain quantitative and qualitative indicators covering all the quality criteria defined in Article 12(1) of Regulation (EC) No 223/2009."/>
+            </p>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="35"
+                 date="2005-02-08"
+                 page="23">
+               <t v="OJ L 35, 8.2.2005, p. 23"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

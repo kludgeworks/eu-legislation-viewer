@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32014R1097"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           lang="en"
+           formexVersion="05.53"
+           converter="1.0.0">
+   <source celex="32014R1097">
+      <publication series="L" number="300" date="2014-10-18" page="39"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Implementing Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) No 1097/2014"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="17 October 2014" date="2014-10-17"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Regulation (EU) No 479/2010 concerning Member States' notifications in the milk and milk product sector"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Regulation (EU) No 1308/2013 of the European Parliament and of the Council of "/>
+               <date asWritten="17 December 2013" date="2013-12-17"/>
+               <t v=" establishing a common organisation of the markets in agricultural products and repealing Council Regulations (EEC) No 922/72, (EEC) No 234/79, (EC) No 1037/2001 and (EC) No 1234/2007"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular the third subparagraph of Article 151 and Article 223(3) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="Article 151 of Regulation (EU) No 1308/2013 establishes the obligation for first purchasers of raw milk to declare to the competent national authority, from "/>
+               <date asWritten="1 April 2015" date="2015-04-01"/>
+               <t v=", the total quantity of raw milk that has been delivered to them each month, and for Member States to notify the Commission of this quantity. Rules on the timing of such declarations and notifications should therefore be established in Commission Regulation (EU) No 479/2010"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="The notifications referred to in Article 1 of Regulation (EU) No 479/2010 relate to aid schemes that are no longer applicable and should therefore be deleted."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="Pursuant to Commission Regulation (EC) No 792/2009"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=" the obligation to use the information systems in accordance with that Regulationwas introduced in Regulation (EU) No 479/2010 by Commission Implementing Regulation (EU) No 1333/2013"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v=", except for the notifications referred to in Articles 2, 4 and 6 of Regulation (EU) No 479/2010. The information system adaptations necessary for treating these notifications will be accomplished by the end of 2014. Regulation (EU) No 479/2010 should therefore be amended accordingly."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Committee for the Common Organisation of the Agricultural Markets,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="Regulation (EU) No 479/2010 is amended as follows:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="art_1/pnt_1" kind="point">
+               <num>
+                  <t v="(1)"/>
+               </num>
+               <p>
+                  <t v="Chapter I is deleted."/>
+               </p>
+            </unit>
+            <unit eId="art_1/pnt_2" kind="point">
+               <num>
+                  <t v="(2)"/>
+               </num>
+               <p>
+                  <t v="The following Chapter Ia is inserted:"/>
+               </p>
+               <quotedStructure eId="art_1/pnt_2/qst_1">
+                  <unit eId="art_1/pnt_2/qst_1/cpt_Ia" kind="division">
+                     <num>
+                        <t v="‘"/>
+                        <t v="CHAPTER Ia"/>
+                     </num>
+                     <subheading>
+                        <emphasis kind="b">
+                           <t v="DELIVERIES OF RAW MILK TO FIRST PURCHASERS"/>
+                        </emphasis>
+                     </subheading>
+                     <unit eId="art_1/pnt_2/qst_1/art_1a" kind="article">
+                        <num>
+                           <t v="Article 1a"/>
+                        </num>
+                        <unit eId="art_1/pnt_2/qst_1/art_1a/par_1" kind="paragraph">
+                           <num>
+                              <t v="1."/>
+                           </num>
+                           <p>
+                              <t v="From "/>
+                              <date asWritten="1 May 2015" date="2015-05-01"/>
+                              <t v=", Member States shall notify the Commission, no later than the 25th of each month, of the total quantity of raw cow's milk delivered in the preceding month to first purchasers established in their territory, pursuant to Article 151 of Regulation (EU) No 1308/2013. The total quantity of cow's raw milk delivered shall be expressed in kilograms and refer to milk at real fat content."/>
+                           </p>
+                        </unit>
+                        <unit eId="art_1/pnt_2/qst_1/art_1a/par_2" kind="paragraph">
+                           <num>
+                              <t v="2."/>
+                           </num>
+                           <p>
+                              <t v="Member States shall take appropriate measures to ensure that all the first purchasers established in their territory declare to the competent national authority the quantity of raw cow's milk that has been delivered to them each month in a timely and accurate manner, so as to comply with the deadline set in paragraph 1."/>
+                              <t v="’"/>
+                           </p>
+                        </unit>
+                     </unit>
+                  </unit>
+               </quotedStructure>
+            </unit>
+            <unit eId="art_1/pnt_3" kind="point">
+               <num>
+                  <t v="(3)"/>
+               </num>
+               <p>
+                  <t v="In point (b) of Article 2(3), the words "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="if available"/>
+                  </quote>
+                  <t v=" are deleted."/>
+               </p>
+            </unit>
+            <unit eId="art_1/pnt_4" kind="point">
+               <num>
+                  <t v="(4)"/>
+               </num>
+               <p>
+                  <t v="In Article 4, the reference to part K is replaced by a reference to part J."/>
+               </p>
+            </unit>
+            <unit eId="art_1/pnt_5" kind="point">
+               <num>
+                  <t v="(5)"/>
+               </num>
+               <p>
+                  <t v="Article 8 is replaced by the following:"/>
+               </p>
+               <quotedStructure eId="art_1/pnt_5/qst_1">
+                  <unit eId="art_1/pnt_5/qst_1/art_8" kind="article">
+                     <num>
+                        <t v="‘"/>
+                        <t v="Article 8"/>
+                     </num>
+                     <unit eId="art_1/pnt_5/qst_1/art_8/par_1" kind="paragraph">
+                        <num>
+                           <t v="1."/>
+                        </num>
+                        <p>
+                           <t v="The notifications referred to in this Regulation shall be made in accordance with Commission Regulation (EC) No 792/2009"/>
+                           <noteRef href="#note_5" marker="*"/>
+                           <t v="."/>
+                        </p>
+                     </unit>
+                     <unit eId="art_1/pnt_5/qst_1/art_8/par_2" kind="paragraph">
+                        <num>
+                           <t v="2."/>
+                        </num>
+                        <p>
+                           <t v="By way of derogation from paragraph 1, until "/>
+                           <date asWritten="31 December 2014" date="2014-12-31"/>
+                           <t v=", the notifications referred to in Articles 2, 4 and 6 shall be made by the Member States by electronic means using the methods made available to them by the Commission. The form and content of the notifications shall be defined on the basis of models or methods made available to the competent authorities by the Commission. Those models and methods shall be adapted and updated after the Committee referred to in Article 229 of Regulation (EU) No 1308/2013 and the competent authorities concerned, as appropriate, have been informed."/>
+                        </p>
+                     </unit>
+                  </unit>
+               </quotedStructure>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_2" kind="article">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/unp_1" kind="paragraph">
+            <p>
+               <t v="This Regulation shall enter into force on the seventh day following that of its publication in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_2/unp_2" kind="paragraph">
+            <p>
+               <t v="It shall apply from "/>
+               <date asWritten="1 November 2014" date="2014-11-01"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_2/unp_3" kind="paragraph">
+            <p>
+               <t v="However, Article 1(2) shall apply from "/>
+               <date asWritten="1 May 2015" date="2015-05-01"/>
+               <t v="."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="17 October 2014" date="2014-10-17"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="José Manuel "/>
+               <emphasis kind="uc">
+                  <t v="Barroso"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="347"
+                 date="2013-12-20"
+                 page="671">
+               <t v="OJ L 347, 20.12.2013, p. 671"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Commission Regulation (EU) No 479/2010 of "/>
+            <date asWritten="1 June 2010" date="2010-06-01"/>
+            <t v=" laying down rules for the implementation of Council Regulation (EC) No 1234/2007 as regards Member States' notifications to the Commission in the milk and milk products sector ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="135"
+                 date="2010-06-02"
+                 page="26">
+               <t v="OJ L 135, 2.6.2010, p. 26"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Commission Regulation (EC) No 792/2009 of "/>
+            <date asWritten="31 August 2009" date="2009-08-31"/>
+            <t v=" laying down detailed rules for the Member States' notification to the Commission of information and documents in implementation of the common organisation of the markets, the direct payments' regime, the promotion of agricultural products and the regimes applicable to the outermost regions and the smaller Aegean islands ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="228"
+                 date="2009-09-01"
+                 page="3">
+               <t v="OJ L 228, 1.9.2009, p. 3"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <t v="Commission Implementing Regulation (EU) No 1333/2013 of "/>
+            <date asWritten="13 December 2013" date="2013-12-13"/>
+            <t v=" amending Regulations (EC) No 1709/2003, (EC) No 1345/2005, (EC) No 972/2006, (EC) No 341/2007, (EC) No 1454/2007, (EC) No 826/2008, (EC) No 1296/2008, (EC) No 1130/2009, (EU) No 1272/2009 and (EU) No 479/2010 as regards the notification obligations within the common organisation of agricultural markets ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="335"
+                 date="2013-12-14"
+                 page="8">
+               <t v="OJ L 335, 14.12.2013, p. 8"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="*" kind="quotation">
+         <p>
+            <t v="Commission Regulation (EC) No 792/2009 of "/>
+            <date asWritten="31 August 2009" date="2009-08-31"/>
+            <t v=" laying down detailed rules for the Member States' notification to the Commission of information and documents in implementation of the common organisation of the markets, the direct payments' regime, the promotion of agricultural products and the regimes applicable to the outermost regions and the smaller Aegean islands ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="228"
+                 date="2009-09-01"
+                 page="3">
+               <t v="OJ L 228, 1.9.2009, p. 3"/>
+            </ref>
+            <t v=")."/>
+            <t v="’"/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+
