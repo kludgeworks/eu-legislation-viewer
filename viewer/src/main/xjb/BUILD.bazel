@@ -3,5 +3,5 @@
 # JAXB bindings, where the JAXB Maven plugins look for them: build inputs of xjc, not resources
 exports_files(
     ["bindings.xjb"],
-    visibility = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:__pkg__"],
+    visibility = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/infra/xml:__pkg__"],
 )

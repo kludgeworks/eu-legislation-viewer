@@ -1,0 +1,77 @@
+// SPDX-License-Identifier: MIT
+package dev.groknull.kludgeworks.eu.legislation.viewer.expressions;
+
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import java.time.LocalDate;
+import java.util.List;
+import org.jmolecules.ddd.annotation.AggregateRoot;
+import org.jmolecules.ddd.annotation.Identity;
+import org.jspecify.annotations.Nullable;
+
+/**
+ * One language version of an act: its original text, or one consolidated version.
+ *
+ * @param act The CELEX number of the act this text belongs to: the act itself for its original text
+ *     and its consolidated versions (32015R1998), the act it corrects for a corrigendum (32009R0631
+ *     for corrigendum 32009R0631R(01)). The document's own number is source/@celex.
+ * @param kind Original OJ text, corrigendum or consolidated version.
+ * @param version A consolidated version's date, the first day it applies to, as its CELEX number
+ *     has it (02015R1998-20260322); absent for an original text or a corrigendum.
+ * @param lang The language of this text, e.g. en.
+ * @param formexVersion The Formex schema version of the source, e.g. 06.02.1.
+ * @param converter The version of the converter that produced this document (its version.txt).
+ * @param source Which document this is, and where it was published.
+ * @param lifecycle For a consolidated version: its period and the acts it integrates.
+ * @param preface The long title.
+ * @param preamble Citations and recitals, between the title and the enacting terms.
+ * @param body The enacting terms: the articles.
+ * @param conclusions The closing formula and the signature.
+ * @param annexes The annexes, in order.
+ * @param notes The footnotes, collected from wherever they occur in the text.
+ */
+@AggregateRoot
+public record LegalText(
+    ActIdentifier act,
+    Kind kind,
+    @Nullable LocalDate version,
+    String lang,
+    String formexVersion,
+    String converter,
+    Source source,
+    @Nullable Lifecycle lifecycle,
+    @Nullable Preface preface,
+    @Nullable Preamble preamble,
+    List<Block> body,
+    @Nullable Conclusions conclusions,
+    List<Block> annexes,
+    List<Note> notes) {
+
+  public LegalText {
+    body = List.copyOf(body);
+    annexes = List.copyOf(annexes);
+    notes = List.copyOf(notes);
+  }
+
+  /** Its identity: its document (source/@celex) and its language. */
+  @Identity
+  public LegalTextIdentifier id() {
+    return new LegalTextIdentifier(source.celex(), Language.ofIso(lang));
+  }
+
+  /**
+   * Whether a document is an act's original text, a corrigendum to it or one of its consolidated
+   * versions.
+   */
+  public enum Kind {
+    /** The text as published in the Official Journal. */
+    ORIGINAL,
+    /** A consolidated version: the act with its amendments integrated, valid from a date. */
+    CONSOLIDATED,
+    /**
+     * A corrigendum: corrections to a published text, each a unit of kind correction with its old
+     * and new wording.
+     */
+    CORRIGENDUM
+  }
+}

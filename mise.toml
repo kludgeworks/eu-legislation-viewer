@@ -67,8 +67,8 @@ run = "bazel run //formex-converter/src/test/java/dev/groknull/kludgeworks/forme
 [tasks.docs]
 description = "Write legal-text.xsd's documentation into the text records' Javadoc"
 run = [
-  "bazel run //viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text:schema_javadoc_update",
-  "google-java-format --replace viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/*.java",
+  "bazel run //viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions:schema_javadoc_update",
+  "google-java-format --replace viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/*.java",
 ]
 
 [tasks.pin]

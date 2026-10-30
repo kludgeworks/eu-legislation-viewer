@@ -9,12 +9,12 @@
 
   <jaxb:globalBindings>
     <xjc:javaType name="java.time.LocalDate" xmlType="xs:date"
-                  adapter="dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.LocalDateAdapter"/>
+                  adapter="dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra.xml.LocalDateAdapter"/>
   </jaxb:globalBindings>
 
   <jaxb:bindings schemaLocation="legal-text.xsd">
     <jaxb:schemaBindings>
-      <jaxb:package name="dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml"/>
+      <jaxb:package name="dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra.xml"/>
       <!-- XmlUnit, XmlBlock …: apart from the domain records of the same names, which they map onto -->
       <jaxb:nameXmlTransform><jaxb:typeName prefix="Xml"/></jaxb:nameXmlTransform>
     </jaxb:schemaBindings>
