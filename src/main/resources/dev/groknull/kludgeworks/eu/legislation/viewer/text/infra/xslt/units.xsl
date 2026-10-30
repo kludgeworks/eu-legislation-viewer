@@ -327,13 +327,14 @@
 
   <!-- another Formex file of the same package, included here: its content, in place. An included
        annex stays an annex, under the eId of what includes it: anx/anx_A, or anx/qst_1/anx_A where an
-       amending act quotes it -->
+       amending act quotes it; so does a GENERAL file, an annex whose title is a heading -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'FORMEX.DOC']" mode="block">
     <xsl:variable name="included" as="element()" select="doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
     <xsl:choose>
-      <xsl:when test="$included/self::ANNEX">
+      <xsl:when test="$included[self::ANNEX or self::GENERAL]">
         <xsl:apply-templates select="$included" mode="annex">
           <xsl:with-param name="included" as="xs:boolean" select="true()"/>
+          <xsl:with-param name="holder" as="element()" select=".."/>
         </xsl:apply-templates>
       </xsl:when>
       <xsl:otherwise>

@@ -54,8 +54,38 @@
   <xsl:template match="CONS.ANNEX | ANNEX | CONS.DOC.GEN[@TYPE = 'ANNEX'][parent::CONS.DOC.GEN]" mode="block">
     <xsl:apply-templates select="." mode="annex">
       <xsl:with-param name="inContent" as="xs:boolean" select="true()"/>
+      <xsl:with-param name="holder" as="element()" select=".."/>
     </xsl:apply-templates>
   </xsl:template>
+
+  <!-- an appendix, as the EU subdivision table names it, is app_; any other annex anx_ -->
+  <xsl:function name="f:annex-abbr" as="xs:string">
+    <xsl:param name="annex" as="element()"/>
+    <xsl:sequence select="if (exists(f:subdivision(string($annex/TITLE[1]/TI/*[1]), 'APP', $annex))) then 'app' else 'anx'"/>
+  </xsl:function>
+
+  <!-- the unit whose eId the annexes in an element hang off: the nearest that has one, else the file -->
+  <xsl:function name="f:annex-scope" as="element()">
+    <xsl:param name="e" as="element()"/>
+    <xsl:sequence select="($e/ancestor-or-self::*[self::ITEM or self::ARTICLE or self::PARAG or self::GR.SEQ
+        or self::DLIST.ITEM or self::ANNEX or self::CONS.ANNEX or self::CONS.DOC.GEN or self::QUOT.S
+        or self::OLD.CORR or self::NEW.CORR or self::DIVISION or self::LETTER][1], root($e)/*)[1]"/>
+  </xsl:function>
+
+  <!-- the annexes that hang off the same unit as those an element holds, in order, those in files
+       it includes too: two GENERAL files included in two paragraphs of one annex are siblings -->
+  <xsl:function name="f:annex-siblings" as="element()*">
+    <xsl:param name="holder" as="element()"/>
+    <xsl:variable name="scope" as="element()" select="f:annex-scope($holder)"/>
+    <xsl:variable name="all" as="element()*" select="
+        for $c in $scope//(CONS.ANNEX | ANNEX | CONS.DOC.GEN[@TYPE = 'ANNEX'] | INCL.ELEMENT[@TYPE = 'FORMEX.DOC'])
+                          [f:annex-scope(..) is $scope]
+        return
+          if ($c/self::INCL.ELEMENT) then doc(resolve-uri($c/@FILEREF, base-uri($c)))/(ANNEX | GENERAL)
+          else $c"/>
+    <!-- a file included twice (a party's statutes, listed again) is one annex -->
+    <xsl:sequence select="for $i in 1 to count($all) return $all[$i][not(some $j in 1 to $i - 1 satisfies $all[$j] is $all[$i])]"/>
+  </xsl:function>
 
   <!-- one annex, from one or more fragments ($fragments); an OJ act's annex file can be GENERAL -->
   <xsl:template match="CONS.ANNEX | ANNEX | CONS.DOC.GEN[@TYPE = 'ANNEX'][parent::CONS.DOC.GEN] | GENERAL" mode="annex">
@@ -77,15 +107,21 @@
     <xsl:param name="included" as="xs:boolean" select="false()"/>
     <!-- met inside content, not one of the act's own annexes: under the eId of what holds it -->
     <xsl:param name="inContent" as="xs:boolean" select="false()"/>
+    <!-- what holds it there, whose other annexes number it: its position among them, and plain
+         anx (app) where it is their one unlabelled annex (ANNEX beside ANNEX 1) -->
+    <xsl:param name="holder" as="element()?"/>
+    <xsl:variable name="siblings" as="element()*" select="$holder ! f:annex-siblings(.)"/>
+    <xsl:variable name="at" as="xs:integer?" select="(for $i in 1 to count($siblings) return $i[$siblings[$i] is current()])[1]"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="nested" as="xs:boolean" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
-    <xsl:variable name="position" as="xs:integer" select="($annexPosition, count(preceding-sibling::*[self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) + 1)[1]"/>
+    <xsl:variable name="position" as="xs:integer" select="($annexPosition, $at, count(preceding-sibling::*[self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) + 1)[1]"/>
+    <xsl:variable name="lone-unlabelled" as="xs:boolean" select="exists($at) and f:annex-label(.) = ''
+        and count($siblings[f:annex-label(.) = ''][f:annex-abbr(.) = f:annex-abbr(current())]) = 1"/>
     <xsl:variable name="label" as="xs:string" select="(f:annex-label(.)[. != ''], string($position))[1]"/>
-    <!-- an appendix, as the EU subdivision table names it in the document's language, is app_ -->
-    <xsl:variable name="abbr" as="xs:string" select="if (exists(f:subdivision(string(TITLE[1]/TI/*[1]), 'APP', .))) then 'app' else 'anx'"/>
+    <xsl:variable name="abbr" as="xs:string" select="f:annex-abbr(.)"/>
     <xsl:variable name="eid" as="xs:string" select="
         if (not($nested) and ($annexCount = 1 or $unlabelledCount = 1 and f:annex-label(.) = '')) then f:eid($annexBase, $abbr, ())
-        else f:eid(if ($nested or $inContent or $quoted or $included) then $base else $annexBase, $abbr, $label)"/>
+        else f:eid(if ($nested or $inContent or $quoted or $included) then $base else $annexBase, $abbr, if ($lone-unlabelled) then () else $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="annex">
         <!-- EUR-Lex anchors the act's own annexes, not those it quotes or an annex includes -->
@@ -93,10 +129,12 @@
           <xsl:attribute name="eurlexAnchor" select="($anchor, count(preceding::CONS.ANNEX | ancestor::CONS.ANNEX) + 1)[1]"/>
         </xsl:if>
         <xsl:sequence select="f:provenance($m)"/>
-        <!-- the first title; a second (a consolidation's annex can have two) is text of the annex -->
+        <!-- the first title; a second (a consolidation's annex can have two) is text of the annex. A
+             GENERAL file's title is a heading, with no label line -->
         <xsl:call-template name="f:title">
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <xsl:with-param name="title" as="element(TITLE)?" select="TITLE[1]"/>
+          <xsl:with-param name="num-first-line" as="xs:boolean" select="not(self::GENERAL)"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
         <xsl:for-each select="$fragments">
@@ -219,8 +257,12 @@
     <!-- earlier fragments of the same annex that are separate files (an OJ act's annex files) -->
     <xsl:param name="earlier" as="document-node()*"/>
     <xsl:variable name="scope" as="element()?" select="f:level-scope($seq)"/>
+    <!-- a top-level level later in the annex has nowhere else to hang: its label isn't free for a
+         nested one before it (Appendix A inside one standard, Appendix A of the next) -->
     <xsl:sequence select="exists($earlier ! key('f:level-by-label', $label, .)[not(ancestor::QUOT.S)][not(f:covering(.)[f:is-deletion(.)])])
-        or f:label-taken-here($seq, $label, $scope)"/>
+        or f:label-taken-here($seq, $label, $scope)
+        or exists($seq/ancestor::GR.SEQ) and exists(key('f:level-by-label', $label, root($seq))[. &gt;&gt; $seq][empty(ancestor::GR.SEQ)]
+             [not(f:covering(.)[f:is-deletion(.)])][let $s := f:level-scope(.) return if (empty($scope)) then empty($s) else $s is $scope])"/>
   </xsl:function>
 
   <xsl:function name="f:label-taken-here" as="xs:boolean">

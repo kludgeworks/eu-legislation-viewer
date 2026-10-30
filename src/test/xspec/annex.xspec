@@ -219,6 +219,23 @@
               test="sort($x:result//*:unit[@kind = ('point', 'level')]/@eId ! string(.)) => string-join(' ') = 'anx/lst_1/pnt_1 anx/pnt_1'"/>
   </x:scenario>
 
+  <x:scenario label="A nested Appendix A before a top-level one">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R0001" START.DATE="20260101" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX</P></TI></TITLE><CONTENTS>
+            <GR.SEQ LEVEL="1"><TITLE><TI><P>IAS 1</P></TI></TITLE>
+              <GR.SEQ LEVEL="2"><TITLE><TI><P>Appendix A</P></TI></TITLE><P>x</P></GR.SEQ></GR.SEQ>
+            <GR.SEQ LEVEL="1"><TITLE><TI><P>Appendix A</P></TI></TITLE><P>y</P></GR.SEQ>
+          </CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="leaves the annex-wide eId to the top-level one, which has nowhere else to hang"
+              test="$x:result//*:unit[*:num//@v = 'Appendix A']/@eId => string-join(' ') = 'anx/lvl_IAS-1/lvl_Appendix-A anx/lvl_Appendix-A'"/>
+  </x:scenario>
+
   <x:scenario label="Annexes with labels">
     <x:context xmlns="">
       <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
