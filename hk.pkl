@@ -15,6 +15,8 @@ local raw =
   )
 // vendored W3C schemas, under the W3C licence; patches, whose context lines must match exactly
 local vendored = List("formex-converter/test/mathml3/**", "**/*.patch")
+// written by tools: the Maven lock file (bazel run @maven//:pin), never edited by hand
+local generated = List("maven_install.json")
 local xml = List("**/*.xml", "**/*.xsl", "**/*.xsd", "**/*.xspec", "**/*.xjb", "**/*.sch")
 
 local linters = new Mapping<String, Step> {
@@ -53,10 +55,10 @@ local linters = new Mapping<String, Step> {
   ["shellcheck"] = Builtins.shellcheck
   ["shfmt"] = (Builtins.shfmt) { batch = true }
   ["actionlint"] = Builtins.actionlint
-  ["typos"] = (Builtins.typos) { exclude = raw + vendored }
-  ["trailing_whitespace"] = (Builtins.trailing_whitespace) { exclude = raw + vendored }
-  ["newlines"] = (Builtins.newlines) { exclude = raw + vendored }
-  ["mixed_line_ending"] = (Builtins.mixed_line_ending) { exclude = raw + vendored }
+  ["typos"] = (Builtins.typos) { exclude = raw + vendored + generated }
+  ["trailing_whitespace"] = (Builtins.trailing_whitespace) { exclude = raw + vendored + generated }
+  ["newlines"] = (Builtins.newlines) { exclude = raw + vendored + generated }
+  ["mixed_line_ending"] = (Builtins.mixed_line_ending) { exclude = raw + vendored + generated }
   ["check_merge_conflict"] = Builtins.check_merge_conflict
   ["check_case_conflict"] = Builtins.check_case_conflict
   ["check_added_large_files"] = (Builtins.check_added_large_files) { exclude = raw }

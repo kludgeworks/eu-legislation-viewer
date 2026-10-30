@@ -46,6 +46,8 @@ maven.install(
         "org.springframework.boot:spring-boot-dependencies:4.1.1",
         "org.springframework.modulith:spring-modulith-bom:2.1.1",
     ],
+    # the resolved versions and their SHA-256s; after changing the artifacts: mise run pin
+    lock_file = "//:maven_install.json",
     repositories = ["https://repo1.maven.org/maven2"],
 )
 use_repo(maven, "maven")
