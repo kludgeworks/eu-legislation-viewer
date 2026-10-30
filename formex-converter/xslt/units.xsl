@@ -33,8 +33,8 @@
     $init        the recitals' opening words, where 01.01 puts them inside the first CONSID
 
   The blocks themselves are in modules by concern: articles.xsl (enacting terms), lists.xsl,
-  annexes.xsl (annexes and levels), tables.xsl, documents.xsl (attachments, corrigenda, letters,
-  included documents); this module has the modes, mixed content and the other blocks.
+  annexes.xsl (annexes and levels), tables.xsl, documents.xsl (attachments, corrigenda, letters);
+  this module has the modes, mixed content, included documents and the other blocks.
 -->
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -224,7 +224,6 @@
 
   <!-- ============================================================ other blocks -->
 
-  <!-- what an amending act inserts or substitutes; its units get eIds under …/qstr_N -->
   <!-- the unit a quotation is numbered within: the one its eId hangs off (an ALINEA's text is its
        article's or paragraph's); outside any (the body, an attachment's file), the file -->
   <xsl:function name="f:quotation-scope" as="element()">
@@ -235,13 +234,14 @@
                                              or self::CONSID or self::VISA or self::NOTE][1], root($quote)/*)[1]"/>
   </xsl:function>
 
+  <!-- what an amending act inserts or substitutes; its units get eIds under …/qstr_N -->
   <xsl:template match="QUOT.S" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <!-- an annex's fragments, which may be files of their own: its quotations are numbered through them -->
     <xsl:param name="annexFragments" as="element()*" select="()" tunnel="yes"/>
     <xsl:variable name="scope" as="element()" select="f:quotation-scope(.)"/>
-    <xsl:variable name="at" as="xs:integer?" select="(for $i in 1 to count($annexFragments) return $i[$annexFragments[$i] is $scope])[1]"/>
+    <xsl:variable name="at" as="xs:integer?" select="f:node-index($annexFragments, $scope)"/>
     <xsl:variable name="earlier" as="xs:integer" select="
         if (exists($at)) then count(subsequence($annexFragments, 1, $at - 1)//QUOT.S[f:quotation-scope(.) intersect $annexFragments])
         else 0"/>

@@ -41,6 +41,10 @@
   <!-- the converter's version, from ../version.txt -->
   <xsl:param name="converter" as="xs:string" select="normalize-space(unparsed-text('../version.txt', 'UTF-8'))"/>
 
+  <!-- the kinds of division the EU subdivision table names (eid.xsl), as their eIds' codes: part,
+       title, chapter, section, subsection; here, where xslt-quality sees every module use it -->
+  <xsl:variable name="f:division-codes" as="xs:string+" select="('PRT', 'TIS', 'CPT', 'SCT', 'SBS')"/>
+
   <xsl:variable name="f:namespace" as="xs:string" select="'https://kludgeworks.groknull.dev/ns/legal-text/1'"/>
   <xsl:variable name="f:schema" as="xs:string" select="'https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd'"/>
 
@@ -59,7 +63,7 @@
   </xsl:template>
 
   <!-- the same, when the root element itself is the input -->
-  <xsl:template match="/DOC | /ACT | /AGR | /CORR | /CONS.ACT | /CONS.OTH | /*">
+  <xsl:template match="/*">
     <xsl:apply-templates select="." mode="document"/>
   </xsl:template>
 
@@ -208,7 +212,7 @@
                 <xsl:with-param name="unlabelledCount" as="xs:integer?" select="count($groups[f:annex-label(?1) = ''])"/>
                 <xsl:with-param name="annexPosition" as="xs:integer?" select="position()"/>
                 <xsl:with-param name="anchor" as="xs:integer?" select="
-                    if ($fragments[1][self::ANNEX or self::GENERAL]) then index-of(($annexes ! generate-id()), generate-id($fragments[1]))
+                    if ($fragments[1][self::ANNEX or self::GENERAL]) then f:node-index($annexes, $fragments[1])
                     else count($fragments[1]/preceding::CONS.ANNEX) + 1"/>
                 <xsl:with-param name="ctx" as="xs:string*" select="()" tunnel="yes"/>
                 <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
@@ -312,7 +316,7 @@
     <xsl:param name="unit" as="element()"/>
     <xsl:variable name="segment" as="xs:string" select="tokenize($unit/@eId, '/')[last()]"/>
     <xsl:sequence select="
-        if (($unit/@kind = 'division' and matches($segment, '^(prt|tis|cpt|sct|sbs)_') or $unit/@kind = ('article', 'annex'))
+        if (($unit/@kind = 'division' and substring-before($segment, '_') = ($f:division-codes ! lower-case(.)) or $unit/@kind = ('article', 'annex'))
             and exists($unit/lt:num) and not(starts-with($segment, 'art_unnumbered'))) then $segment
         else lower-case(replace(string-join($unit/lt:num//@v), '[^\p{L}\p{N}]', ''))"/>
   </xsl:function>
@@ -393,58 +397,58 @@
               </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
-          <p>
-            <xsl:choose>
-              <xsl:when test="position() = 1 and node()[1][self::HT]">
-                <docType>
-                  <xsl:call-template name="f:inlines">
-                    <xsl:with-param name="nodes" as="node()*" select="node()[1]"/>
-                  </xsl:call-template>
-                </docType>
-                <xsl:variable name="rest" as="node()*" select="node()[position() gt 1]"/>
-                <xsl:if test="matches(string-join($rest ! string()), '^\s')">
-                  <t v=" "/>
-                </xsl:if>
-                <!-- the number and what follows on the line, with its emphasis -->
-                <xsl:variable name="number" as="element()*">
-                  <xsl:call-template name="f:inlines">
-                    <xsl:with-param name="nodes" as="node()*" select="$rest"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <docNumber>
-                  <xsl:sequence select="f:trim-start($number)"/>
-                </docNumber>
-              </xsl:when>
-              <xsl:when test="position() = 2 and count(DATE) = 1">
-                <xsl:for-each-group select="node()" group-adjacent="exists(self::DATE)">
-                  <xsl:choose>
-                    <xsl:when test="current-grouping-key()">
-                      <docDate asWritten="{string(.)}">
-                        <xsl:sequence select="f:date-attribute('date', @ISO)"/>
-                      </docDate>
-                    </xsl:when>
-                    <xsl:otherwise>
+              <p>
+                <xsl:choose>
+                  <xsl:when test="position() = 1 and node()[1][self::HT]">
+                    <docType>
                       <xsl:call-template name="f:inlines">
-                        <xsl:with-param name="nodes" as="node()*" select="current-group()"/>
+                        <xsl:with-param name="nodes" as="node()*" select="node()[1]"/>
                       </xsl:call-template>
-                    </xsl:otherwise>
-                  </xsl:choose>
-                </xsl:for-each-group>
-              </xsl:when>
-              <xsl:when test="position() = 3">
-                <docPurpose>
-                  <xsl:call-template name="f:inlines">
-                    <xsl:with-param name="nodes" as="node()*" select="node()"/>
-                  </xsl:call-template>
-                </docPurpose>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:call-template name="f:inlines">
-                  <xsl:with-param name="nodes" as="node()*" select="node()"/>
-                </xsl:call-template>
-              </xsl:otherwise>
-            </xsl:choose>
-          </p>
+                    </docType>
+                    <xsl:variable name="rest" as="node()*" select="node()[position() gt 1]"/>
+                    <xsl:if test="matches(string-join($rest ! string()), '^\s')">
+                      <t v=" "/>
+                    </xsl:if>
+                    <!-- the number and what follows on the line, with its emphasis -->
+                    <xsl:variable name="number" as="element()*">
+                      <xsl:call-template name="f:inlines">
+                        <xsl:with-param name="nodes" as="node()*" select="$rest"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <docNumber>
+                      <xsl:sequence select="f:trim-start($number)"/>
+                    </docNumber>
+                  </xsl:when>
+                  <xsl:when test="position() = 2 and count(DATE) = 1">
+                    <xsl:for-each-group select="node()" group-adjacent="exists(self::DATE)">
+                      <xsl:choose>
+                        <xsl:when test="current-grouping-key()">
+                          <docDate asWritten="{string(.)}">
+                            <xsl:sequence select="f:date-attribute('date', @ISO)"/>
+                          </docDate>
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <xsl:call-template name="f:inlines">
+                            <xsl:with-param name="nodes" as="node()*" select="current-group()"/>
+                          </xsl:call-template>
+                        </xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:for-each-group>
+                  </xsl:when>
+                  <xsl:when test="position() = 3">
+                    <docPurpose>
+                      <xsl:call-template name="f:inlines">
+                        <xsl:with-param name="nodes" as="node()*" select="node()"/>
+                      </xsl:call-template>
+                    </docPurpose>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:call-template name="f:inlines">
+                      <xsl:with-param name="nodes" as="node()*" select="node()"/>
+                    </xsl:call-template>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </p>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each>
@@ -645,7 +649,7 @@
     <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
     <xsl:variable name="line" as="element()?" select="TITLE/TI/*[1]"/>
     <xsl:variable name="label" as="xs:string" select="((if ($line/self::NP) then f:label($line/NO.P)
-                                         else f:typed-label(string($line), ('PRT', 'TIS', 'CPT', 'SCT', 'SBS'), .))[. != ''],
+                                         else f:typed-label(string($line), $f:division-codes, .))[. != ''],
                                         string(count(preceding-sibling::DIV.CONSID) + 1))[1]"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid(($division, 'pbl_1')[1], 'division', $label)"/>
     <xsl:variable name="unit" as="element()">

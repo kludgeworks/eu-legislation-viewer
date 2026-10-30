@@ -2,7 +2,8 @@
 <!-- SPDX-License-Identifier: MIT -->
 <!--
   Documents within documents: attachments (related documents), corrigenda (CORRECTION, OLD.CORR,
-  NEW.CORR), letters of an exchange of letters, and included Formex files. Part of formex-to-legal-text.xsl.
+  NEW.CORR) and letters of an exchange of letters. Included Formex files (INCL.ELEMENT) are in
+  units.xsl. Part of formex-to-legal-text.xsl.
 -->
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -164,7 +165,7 @@
     <xsl:param name="annexFragments" as="element()*" select="()" tunnel="yes"/>
     <xsl:variable name="scope" as="element()" select="(ancestor::*[self::ANNEX or self::CONS.ANNEX or self::CONS.DOC.GEN or self::QUOT.S
                                                        or self::OLD.CORR or self::NEW.CORR][1], root(.)/*)[1]"/>
-    <xsl:variable name="at" as="xs:integer?" select="(for $i in 1 to count($annexFragments) return $i[$annexFragments[$i] is $scope])[1]"/>
+    <xsl:variable name="at" as="xs:integer?" select="f:node-index($annexFragments, $scope)"/>
     <xsl:variable name="earlier" as="xs:integer" select="if (exists($at)) then count(subsequence($annexFragments, 1, $at - 1)//LETTER) else 0"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'let', string($earlier + count($scope//LETTER[. &lt;&lt; current()]) + 1))"/>
     <unit eId="{$eid}" kind="letter">

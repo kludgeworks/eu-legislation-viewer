@@ -129,6 +129,13 @@
     <xsl:sequence select="normalize-space(replace($s, '\p{Zs}', ' '))"/>
   </xsl:function>
 
+  <!-- the position of a node in a sequence of nodes, by identity; empty if it isn't there -->
+  <xsl:function name="f:node-index" as="xs:integer?">
+    <xsl:param name="nodes" as="node()*"/>
+    <xsl:param name="node" as="node()"/>
+    <xsl:sequence select="(for $i in 1 to count($nodes) return $i[$nodes[$i] is $node])[1]"/>
+  </xsl:function>
+
   <!-- base/abbr_value; without a base the segment stands alone -->
   <xsl:function name="f:eid" as="xs:string">
     <xsl:param name="base" as="xs:string?"/>

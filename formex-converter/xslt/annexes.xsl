@@ -111,7 +111,7 @@
          anx (app) where it is their one unlabelled annex (ANNEX beside ANNEX 1) -->
     <xsl:param name="holder" as="element()?"/>
     <xsl:variable name="siblings" as="element()*" select="$holder ! f:annex-siblings(.)"/>
-    <xsl:variable name="at" as="xs:integer?" select="(for $i in 1 to count($siblings) return $i[$siblings[$i] is current()])[1]"/>
+    <xsl:variable name="at" as="xs:integer?" select="f:node-index($siblings, current())"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="nested" as="xs:boolean" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
     <xsl:variable name="position" as="xs:integer" select="($annexPosition, $at, count(preceding-sibling::*[self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) + 1)[1]"/>
@@ -154,7 +154,7 @@
             <xsl:with-param name="annexFragments" as="element()*" select="$fragments" tunnel="yes"/>
             <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
             <!-- unnumbered top levels are numbered through all fragments -->
-            <xsl:with-param name="levelOffset" as="xs:integer?" select="count($fragments[position() lt $i]/CONTENTS/GR.SEQ[f:label((f:level-num(.), f:level-label-line(.))[1]) = ''])" tunnel="yes"/>
+            <xsl:with-param name="levelOffset" as="xs:integer?" select="count($fragments[position() lt $i]/CONTENTS/GR.SEQ[f:level-label(.) = ''])" tunnel="yes"/>
           </xsl:call-template>
         </xsl:for-each>
       </unit>
@@ -228,11 +228,17 @@
   <xsl:function name="f:level-ordinal" as="xs:integer">
     <xsl:param name="seq" as="element(GR.SEQ)"/>
     <xsl:variable name="parent" as="element()?" select="f:level-parent($seq)"/>
-    <xsl:sequence select="count($parent//GR.SEQ[. &lt;&lt; $seq][f:label((f:level-num(.), f:level-label-line(.))[1]) = '']
+    <xsl:sequence select="count($parent//GR.SEQ[. &lt;&lt; $seq][f:level-label(.) = '']
                                 [f:level-parent(.) is $parent]) + 1"/>
   </xsl:function>
 
-  <xsl:key name="f:level-by-label" match="GR.SEQ" use="f:label((f:level-num(.), f:level-label-line(.))[1])"/>
+  <!-- a level's label as an eId value: its number, else its label line (ATTACHMENT 6-A); '' if neither -->
+  <xsl:function name="f:level-label" as="xs:string">
+    <xsl:param name="seq" as="element(GR.SEQ)"/>
+    <xsl:sequence select="f:label((f:level-num($seq), f:level-label-line($seq))[1])"/>
+  </xsl:function>
+
+  <xsl:key name="f:level-by-label" match="GR.SEQ" use="f:level-label(.)"/>
 
   <!-- the annex (group of fragments) or quoted structure a level's number belongs to -->
   <xsl:function name="f:level-scope" as="element()?">
@@ -281,7 +287,7 @@
   <!-- the nearest enclosing level with a number or a label line -->
   <xsl:function name="f:labelled-ancestor" as="element(GR.SEQ)?">
     <xsl:param name="seq" as="element(GR.SEQ)"/>
-    <xsl:sequence select="$seq/ancestor::GR.SEQ[f:label((f:level-num(.), f:level-label-line(.))[1]) != ''][1]"/>
+    <xsl:sequence select="$seq/ancestor::GR.SEQ[f:level-label(.) != ''][1]"/>
   </xsl:function>
 
   <!-- a label an earlier level already has under the same labelled level (each model's "Side 1" in

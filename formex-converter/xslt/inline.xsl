@@ -282,10 +282,16 @@
 
   <!-- ============================================================ helpers -->
 
+  <!-- 20151105 → "2015-11-05", whether it is a date or not (19931911 → "1993-19-11") -->
+  <xsl:function name="f:iso-date" as="xs:string">
+    <xsl:param name="iso" as="xs:string?"/>
+    <xsl:sequence select="replace(normalize-space($iso), '^(\d{4})(\d{2})(\d{2})$', '$1-$2-$3')"/>
+  </xsl:function>
+
   <!-- 20151105 → 2015-11-05 -->
   <xsl:function name="f:date" as="xs:string">
     <xsl:param name="iso" as="xs:string?"/>
-    <xsl:variable name="d" as="xs:string" select="replace(normalize-space($iso), '^(\d{4})(\d{2})(\d{2})$', '$1-$2-$3')"/>
+    <xsl:variable name="d" as="xs:string" select="f:iso-date($iso)"/>
     <xsl:sequence select="if ($d castable as xs:date) then $d else error(xs:QName('f:date'), 'Not a date: ' || $iso)"/>
   </xsl:function>
 
@@ -294,7 +300,7 @@
   <xsl:function name="f:date-attribute" as="attribute()?">
     <xsl:param name="name" as="xs:string"/>
     <xsl:param name="iso" as="xs:string?"/>
-    <xsl:variable name="d" as="xs:string" select="replace(normalize-space($iso), '^(\d{4})(\d{2})(\d{2})$', '$1-$2-$3')"/>
+    <xsl:variable name="d" as="xs:string" select="f:iso-date($iso)"/>
     <xsl:if test="$d castable as xs:date">
       <xsl:attribute name="{$name}" select="$d"/>
     </xsl:if>

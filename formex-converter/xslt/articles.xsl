@@ -178,7 +178,7 @@
     <!-- a part, title, chapter, section or subsection, as the EU subdivision table names them in the
          document's language: prt_, tis_, cpt_, sct_, sbs_ and the number after the name; else division_ -->
     <!-- a title line that is a numbered paragraph names its kind in the number: NO.P "TITLE I" -->
-    <xsl:variable name="type" as="xs:string*" select="f:subdivision(string(($line/self::NP/NO.P, $line)[1]), ('PRT', 'TIS', 'CPT', 'SCT', 'SBS'), .)"/>
+    <xsl:variable name="type" as="xs:string*" select="f:subdivision(string(($line/self::NP/NO.P, $line)[1]), $f:division-codes, .)"/>
     <!-- after a recognised name, the next word is the number, in whatever form: III, 2, TWO -->
     <xsl:variable name="number" as="xs:string?" select="tokenize($type[2], ' ')[1]"/>
     <xsl:variable name="label" as="xs:string" select="(
@@ -187,8 +187,7 @@
         string(count(preceding-sibling::DIVISION) + 1))[1]"/>
     <!-- divisions hang off what holds them: nothing in the act's own enacting terms (cpt_1), else
          the annex, quoted structure, attachment or level (anx_II/cpt_1) -->
-    <xsl:variable name="outer" as="xs:string?" select="$base"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid((f:enclosing-division($division, $divisionBase, $outer), $outer)[1], ($type[1] ! lower-case(.), 'division')[1], $label)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid((f:enclosing-division($division, $divisionBase, $base), $base)[1], ($type[1] ! lower-case(.), 'division')[1], $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>
@@ -201,9 +200,9 @@
           <xsl:with-param name="nodes" as="node()*" select="node() except TITLE"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
-          <xsl:with-param name="base" as="xs:string?" select="$outer" tunnel="yes"/>
+          <xsl:with-param name="base" as="xs:string?" select="$base" tunnel="yes"/>
           <xsl:with-param name="division" as="xs:string?" select="$eid" tunnel="yes"/>
-          <xsl:with-param name="divisionBase" as="xs:string?" select="$outer" tunnel="yes"/>
+          <xsl:with-param name="divisionBase" as="xs:string?" select="$base" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>

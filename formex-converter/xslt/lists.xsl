@@ -177,12 +177,6 @@
     <xsl:sequence select="if (exists($kind)) then $kind else f:unknown($list, 'LIST TYPE=' || $list/@TYPE)"/>
   </xsl:function>
 
-  <!-- an item a deletion marker covers, itself or its NP -->
-  <xsl:function name="f:is-deleted-item" as="xs:boolean">
-    <xsl:param name="item" as="element(ITEM)"/>
-    <xsl:sequence select="exists(($item, $item/NP) ! f:covering(.)[f:is-deletion(.)])"/>
-  </xsl:function>
-
   <!-- An ITEM or DLIST.ITEM outside its list (an amendment adds "in Bulgarian:" after the list's end):
        a run of them is a list of its own, numbered among the lists around it (pnt_a/list_2/idt_1) -->
   <xsl:function name="f:stray-start" as="xs:boolean">
