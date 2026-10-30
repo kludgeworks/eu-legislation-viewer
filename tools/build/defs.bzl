@@ -168,10 +168,15 @@ def _spring_boot_jar_impl(ctx):
     args.add(ctx.attr.main_class)
     args.add_all(own)
     for jar in java.transitive_runtime_jars.to_list():
-        if jar not in own:
-            # ours (this repository's) or a dependency's
-            args.add("--local" if jar.owner.workspace_name == "" else "--library")
-            args.add(jar)
+        if jar in own:
+            continue
+        if jar.owner.workspace_name == "":
+            # ours, by its Java package: Bazel's own names (libsparql.jar) repeat across packages
+            args.add("--local")
+            args.add(_local_jar_name(jar))
+        else:
+            args.add("--library")
+        args.add(jar)
     ctx.actions.run(
         executable = ctx.executable._tool,
         arguments = [args],
@@ -181,6 +186,20 @@ def _spring_boot_jar_impl(ctx):
         progress_message = "Packaging %{label} as a Spring Boot jar",
     )
     return [DefaultInfo(files = depset([out]))]
+
+def _local_jar_name(jar):
+    """A target of ours by its Java package, or its component at a source root.
+
+    dev.groknull.kludgeworks.eu.legislation.viewer.acts.infra-sparql.jar for a package below
+    src/main/java or src/main/resources, viewer-resources.jar for viewer/src/main/resources itself.
+    """
+    package = jar.owner.package
+    for root in ["src/main/java", "src/main/resources"]:
+        if root + "/" in package:
+            package = package.split(root + "/")[1]
+        elif package.endswith(root):
+            package = package[:-len(root)].rstrip("/")
+    return package.replace("/", ".") + "-" + jar.owner.name + ".jar"
 
 spring_boot_jar = rule(
     implementation = _spring_boot_jar_impl,

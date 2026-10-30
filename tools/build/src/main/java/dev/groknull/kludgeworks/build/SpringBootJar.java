@@ -19,9 +19,10 @@ import org.springframework.boot.loader.tools.Repackager;
  * plugins use: the application's jar with its launcher, the other jars nested in BOOT-INF/lib, each
  * keeping its own META-INF (which a merged jar can't: its auto-configuration lists would collide).
  *
- * <p>Arguments: the jar to write, the main class, the application's jar, then {@code --local} or
- * {@code --library} before each other jar: ours, or a dependency's (Boot's layers keep them apart).
- * An argument {@code @file} stands for the file's lines.
+ * <p>Arguments: the jar to write, the main class, the application's jar, then each other jar:
+ * {@code --local <name> <jar>} for ours, named by the rule, or {@code --library <jar>} for a
+ * dependency's (Boot's layers keep them apart). An argument {@code @file} stands for the file's
+ * lines.
  */
 public final class SpringBootJar {
 
@@ -39,7 +40,8 @@ public final class SpringBootJar {
     repackager.setIncludeRelevantJarModeJars(false); // no jar mode tools on the classpath
     var libraries = new ArrayList<Library>();
     var names = new HashSet<String>();
-    for (int i = 3; i < arguments.size(); i += 2) {
+    var i = 3;
+    while (i < arguments.size()) {
       var local =
           switch (arguments.get(i)) {
             case "--local" -> true;
@@ -47,9 +49,10 @@ public final class SpringBootJar {
             default ->
                 throw new IllegalArgumentException("not --local or --library: " + arguments.get(i));
           };
-      var file = new File(arguments.get(i + 1));
       // rules_jvm_external's copies are processed_<artifact>-<version>.jar
-      var name = file.getName().replaceFirst("^processed_", "");
+      var file = new File(arguments.get(local ? i + 2 : i + 1));
+      var name = local ? arguments.get(i + 1) : file.getName().replaceFirst("^processed_", "");
+      i += local ? 3 : 2;
       if (!names.add(name)) {
         throw new IllegalArgumentException("two jars named " + name + " in BOOT-INF/lib");
       }
