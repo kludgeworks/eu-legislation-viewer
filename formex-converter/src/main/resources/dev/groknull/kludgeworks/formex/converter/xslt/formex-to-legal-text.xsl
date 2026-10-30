@@ -124,8 +124,10 @@
     <xsl:variable name="document-celex" as="xs:string" select="
         if ($consolidated) then '0' || $info/@CONSLEG.REF || '-' || $info/@START.DATE
         else ($celex[normalize-space()], error(xs:QName('f:celex'), 'An OJ act needs the $celex parameter'))[1]"/>
+    <!-- a consolidation's act is its base act, whatever its sector (an agreement, 22002A0430(02)):
+         CONSLEG.REF only names the consolidation (2002A2430) -->
     <xsl:variable name="act-celex" as="xs:string" select="
-        if ($consolidated) then '3' || $info/@CONSLEG.REF else replace($document-celex, 'R\([0-9]+\)$', '')"/>
+        if ($consolidated) then f:celex($doc/FAM.COMP/BIB.DATA/NO.CELEX) else replace($document-celex, 'R\([0-9]+\)$', '')"/>
     <!-- a document, so that the marking pass can use a key -->
     <xsl:variable name="text" as="document-node(element(lt:legalText))">
       <xsl:document>
