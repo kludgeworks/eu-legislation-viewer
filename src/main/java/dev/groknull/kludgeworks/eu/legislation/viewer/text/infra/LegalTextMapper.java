@@ -132,6 +132,7 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.ClassAccessibility;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.SubclassExhaustiveStrategy;
 import org.mapstruct.SubclassMapping;
@@ -141,12 +142,13 @@ import org.w3c.dom.Element;
  * Legal-text XML, as unmarshalled into the classes xjc generates from legal-text.xsd, onto the
  * domain records. MapStruct writes the implementation at compile time, and a property either side
  * leaves unmapped fails the build: a schema change the records don't follow can't go unnoticed.
- * Where the two agree on names it maps by name; below are only the renames, the optional wrappers
- * that become empty lists, the two lists of mixed types, and formulas. The generated classes'
- * getters carry the schema's optionality as JSpecify annotations (-Xjspecify), so MapStruct checks
- * each optional value has a default here, and the methods that take an optional value say so
- * (@Nullable), so that they keep their null check. The booleans' defaults restate the schema's:
- * MapStruct 1.7.0.Beta2 counts a primitive getter as possibly null.
+ * Where the two agree on names it maps by name; below are only the renames (a note reference's href
+ * becomes the note's eId), the optional wrappers that become empty lists, the two lists of mixed
+ * types, and formulas. The generated classes' getters carry the schema's optionality as JSpecify
+ * annotations (-Xjspecify), so MapStruct checks each optional value has a default here, and the
+ * methods that take an optional value say so (@Nullable), so that they keep their null check. The
+ * booleans' defaults restate the schema's: MapStruct 1.7.0.Beta2 counts a primitive getter as
+ * possibly null.
  */
 @Mapper(
     accessibility = ClassAccessibility.PACKAGE_PRIVATE,
@@ -302,6 +304,7 @@ interface LegalTextMapper {
 
   Quote quote(XmlQuote source);
 
+  @Mapping(target = "note", source = "href", qualifiedByName = "fragment")
   NoteRef noteRef(XmlNoteRef source);
 
   Ref ref(XmlRef source);
@@ -364,6 +367,15 @@ interface LegalTextMapper {
 
   default EId eId(String value) {
     return new EId(value);
+  }
+
+  /** A reference within the document, #note_2, as the eId it refers to. */
+  @Named("fragment")
+  default EId fragment(String href) {
+    if (!href.startsWith("#")) {
+      throw new IllegalArgumentException("not a reference within the document: " + href);
+    }
+    return new EId(href.substring(1));
   }
 
   default List<Block> blocks(@Nullable XmlCaption source) {

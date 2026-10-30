@@ -1117,7 +1117,12 @@
   </xs:simpleType>
 
   <xs:attributeGroup name="date">
-    <xs:annotation><xs:documentation>A date's value, its wording, and what it means.</xs:documentation></xs:annotation>
+    <xs:annotation>
+      <xs:documentation>
+        A date's value and its wording. What a date means (adoption, entry into force, application) isn't in the
+        Formex markup: it comes from the act's dates in Cellar, joined by the application, not by the converter.
+      </xs:documentation>
+    </xs:annotation>
     <xs:attribute name="date" type="xs:date">
       <xs:annotation>
         <xs:documentation>
@@ -1128,14 +1133,6 @@
     </xs:attribute>
     <xs:attribute name="asWritten" type="xs:string" use="required">
       <xs:annotation><xs:documentation>The date as printed: "5 November 2015".</xs:documentation></xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="role" type="xs:string">
-      <xs:annotation>
-        <xs:documentation>
-          What the date means (adoption, entry into force, application), set only when its value matches one of
-          the act's dates in Cellar, never from the wording.
-        </xs:documentation>
-      </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
 

@@ -46,14 +46,15 @@ import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Every text value and every eId a legal text's records hold, in document order: what the XML holds
- * as t/@v and @eId, if the mapping lost nothing. The switches are exhaustive over the sealed types,
- * so a new record type doesn't compile here until it is walked.
+ * Every text value, eId and note reference a legal text's records hold, in document order: what the
+ * XML holds as t/@v and @eId, if the mapping lost nothing. The switches are exhaustive over the
+ * sealed types, so a new record type doesn't compile here until it is walked.
  */
 final class RecordContents {
 
   final List<String> texts = new ArrayList<>();
   final List<String> eIds = new ArrayList<>();
+  final List<String> noteRefs = new ArrayList<>();
 
   static RecordContents of(LegalText legalText) {
     var contents = new RecordContents();
@@ -185,7 +186,7 @@ final class RecordContents {
         case DocPurpose purpose -> inlines(purpose.content());
         case DateRef date -> {}
         case DocDate date -> {}
-        case NoteRef ref -> {}
+        case NoteRef ref -> noteRefs.add(ref.note().value());
         case Eol eol -> {}
         case MathInline math -> {}
         case InlineImage image -> {}

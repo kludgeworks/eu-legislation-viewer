@@ -93,7 +93,7 @@ class LegalTextReaderTest {
               assertThat(c.content())
                   .singleElement()
                   .isEqualTo(
-                      new DateRef(LocalDate.of(2026, 12, 31), "31" + NBSP + "December 2026", null));
+                      new DateRef(LocalDate.of(2026, 12, 31), "31" + NBSP + "December 2026"));
             });
   }
 

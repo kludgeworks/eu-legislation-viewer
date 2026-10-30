@@ -74,6 +74,9 @@ class FormexConverterFixturesTest {
     assertThat(records.eIds)
         .as("%s: eIds of the records", fixture)
         .containsExactlyElementsOf(strings(xpath.evaluate("//@eId", legalText)));
+    assertThat(records.eIds)
+        .as("%s: the notes the records refer to", fixture)
+        .containsAll(records.noteRefs);
   }
 
   /** Unique live eIds, resolved note references, consistent amendment markers (legal-text.sch). */

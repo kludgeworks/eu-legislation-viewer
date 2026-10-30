@@ -5,5 +5,4 @@ import java.time.LocalDate;
 import org.jspecify.annotations.Nullable;
 
 /** In the long title: the act's date. */
-public record DocDate(@Nullable LocalDate date, String asWritten, @Nullable String role)
-    implements Inline {}
+public record DocDate(@Nullable LocalDate date, String asWritten) implements Inline {}
