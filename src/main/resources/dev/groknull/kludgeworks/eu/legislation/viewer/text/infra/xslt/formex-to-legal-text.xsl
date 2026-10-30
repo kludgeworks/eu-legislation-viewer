@@ -634,7 +634,8 @@
     <xsl:param name="division" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
     <xsl:variable name="line" as="element()?" select="TITLE/TI/*[1]"/>
-    <xsl:variable name="label" as="xs:string" select="((if ($line/self::NP) then f:label($line/NO.P) else f:label-after-word($line))[. != ''],
+    <xsl:variable name="label" as="xs:string" select="((if ($line/self::NP) then f:label($line/NO.P)
+                                         else f:typed-label(string($line), ('PRT', 'TIS', 'CPT', 'SCT', 'SBS'), .))[. != ''],
                                         string(count(preceding-sibling::DIV.CONSID) + 1))[1]"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid(($division, 'pbl_1')[1], 'dvs', $label)"/>
     <xsl:variable name="unit" as="element()">

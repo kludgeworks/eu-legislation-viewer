@@ -17,7 +17,7 @@
        file written as GENERAL, whose title is a heading, not a label -->
   <xsl:function name="f:annex-label" as="xs:string">
     <xsl:param name="annex" as="element()"/>
-    <xsl:sequence select="if ($annex/self::GENERAL) then '' else f:label-after-word(string($annex/TITLE[1]/TI/*[1]))"/>
+    <xsl:sequence select="if ($annex/self::GENERAL) then '' else f:typed-label(string($annex/TITLE[1]/TI/*[1]), ('ANX', 'APP'), $annex)"/>
   </xsl:function>
 
   <!-- Top-level annexes, grouped into the annexes of the act. Formex splits a single annex into

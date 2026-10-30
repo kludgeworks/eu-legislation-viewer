@@ -21,10 +21,10 @@
         </DIVISION>
       </DIVISION>
     </x:context>
-    <x:expect label="is a division unit with its title line as num; dvs_, with no document language to name its kind in" test="
-        $x:result/@eId = 'dvs_I' and $x:result/@kind = 'division'
+    <x:expect label="is a division unit with its title line as num, named by its kind even with no document language: cpt_I" test="
+        $x:result/@eId = 'cpt_I' and $x:result/@kind = 'division'
         and $x:result/*:num/*:t/@v = 'CHAPTER I' and $x:result/*:subheading/*:t/@v = 'General provisions'"/>
-    <x:expect label="nests divisions" test="$x:result/*:unit[@kind = 'division']/@eId = 'dvs_I/dvs_1'"/>
+    <x:expect label="nests divisions" test="$x:result/*:unit[@kind = 'division']/@eId = 'cpt_I/sct_1'"/>
     <x:expect label="keeps act-wide article eIds" test="$x:result//*:unit[@kind = 'article']/@eId = ('art_1', 'art_2')"/>
   </x:scenario>
 

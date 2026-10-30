@@ -14,15 +14,17 @@
     xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     exclude-result-prefixes="#all">
 
-  <!-- a visible label as an eId value: "(a)" → "a", "1.0.6." → "1.0.6", "10 a" → "10-a" -->
+  <!-- a visible label as an eId value: "(a)" → "a", "1.0.6." → "1.0.6", "10 a" → "10-a"; marks with no
+       letter or digit ("–", "-", ".") are no label -->
   <xsl:function name="f:label" as="xs:string">
     <xsl:param name="label" as="xs:string?"/>
-    <xsl:sequence select="
+    <xsl:variable name="value" as="xs:string" select="
         f:spaces($label)
         => replace('^[\(\[]+|[\)\]]+$', '')
         => replace('\.+$', '')
         => replace('\s+', '-')
         => replace('[^\p{L}\p{N}._\-]', '')"/>
+    <xsl:sequence select="if (matches($value, '[\p{L}\p{N}]')) then $value else ''"/>
   </xsl:function>
 
   <!-- the label after a leading type word: "Article 3" → "3", "ANNEX II" → "II", "PART A" → "A",
@@ -52,9 +54,10 @@
        same in every language, as the table gives each kind's name in all 24. -->
   <xsl:variable name="f:subdivisions" as="document-node()" select="doc('subdivision.rdf')"/>
 
-  <!-- the kind of subdivision a heading names, of those in $codes, in the document's language, and
-       the rest of the heading: ("CPT", "III") for "CHAPTER III"; empty where its first words name
-       none (a number printed first, I. FEJEZET, or no type word at all) -->
+  <!-- the kind of subdivision a heading names, of those in $codes, in the document's language, else
+       in another (a text printed in two: TITRE II in an English document), and the rest of the
+       heading: ("CPT", "III") for "CHAPTER III"; empty where its first words name none (a number
+       printed first, I. FEJEZET, or no type word at all) -->
   <xsl:function name="f:subdivision" as="xs:string*">
     <xsl:param name="heading" as="xs:string?"/>
     <xsl:param name="codes" as="xs:string+"/>
@@ -63,7 +66,7 @@
     <xsl:variable name="words" as="xs:string*" select="tokenize(replace(f:spaces($heading), '^[^\p{L}\p{N}]+', ''), ' ')"/>
     <xsl:sequence select="(
         for $concept in $f:subdivisions//*[skos:notation = $codes],
-            $name in $concept/skos:prefLabel[lang($lang)]
+            $name in ($concept/skos:prefLabel[lang($lang)], $concept/skos:prefLabel[not(lang($lang))])
         return
           let $type := tokenize(normalize-space(replace($name, '\(.*\)', '')), ' '),
               $n := count($type)
@@ -73,6 +76,22 @@
             else ()
       )[1] ! array:flatten(.)"
         xmlns:skos="http://www.w3.org/2004/02/skos/core#"/>
+  </xsl:function>
+
+  <!-- the label of a heading whose first words may name its kind: the number after the name, where
+       they name one of $codes in the document's language ("Appendix 1" → 1, "ANNEX II A" → II-A); else the whole heading
+       ("Attachment 1", "BY 3": a first word that names no such kind is part of the label), or none for
+       a single word. Without a document language, the word before a number is taken as the name. -->
+  <xsl:function name="f:typed-label" as="xs:string">
+    <xsl:param name="heading" as="xs:string?"/>
+    <xsl:param name="codes" as="xs:string+"/>
+    <xsl:param name="context" as="node()"/>
+    <xsl:variable name="type" as="xs:string*" select="f:subdivision($heading, $codes, $context)"/>
+    <xsl:sequence select="
+        if (empty((root($context)//LG.DOC)[1])) then f:label-after-word($heading)
+        else if (exists($type)) then f:label($type[2])
+        else if (contains(f:spaces($heading), ' ')) then f:label($heading)
+        else ''"/>
   </xsl:function>
 
   <!-- a type word as compared: case and hyphens aside (SUB-SECTION, subsection) -->

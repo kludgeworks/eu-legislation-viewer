@@ -173,6 +173,20 @@
                     and count($x:result//*:unit[@eId = 'anx/lvl_PART-I/lvl_SIDE-2/lvl_1'][@ambiguous = 'true']) = 2"/>
   </x:scenario>
 
+  <x:scenario label="An annex whose title names no annex kind (Attachment 1), beside ANNEX 1">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R0001" START.DATE="20260101" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX 1</P></TI></TITLE><CONTENTS><P>x</P></CONTENTS></CONS.ANNEX>
+          <CONS.ANNEX><TITLE><TI><P>Attachment 1</P></TI></TITLE><CONTENTS><P>y</P></CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="keeps its whole title as label: anx_1, anx_Attachment-1"
+              test="$x:result/*:annexes/*:unit/@eId => string-join(' ') = 'anx_1 anx_Attachment-1'"/>
+  </x:scenario>
+
   <x:scenario label="Annexes with labels">
     <x:context xmlns="">
       <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">

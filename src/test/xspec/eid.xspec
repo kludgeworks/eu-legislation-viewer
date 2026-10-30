@@ -29,6 +29,10 @@
       <x:call function="f:label"><x:param select="'6–D'"/></x:call>
       <x:expect label="the en dash goes" select="'6D'"/>
     </x:scenario>
+    <x:scenario label="a mark with no letter or digit is no label">
+      <x:call function="f:label"><x:param select="'–'"/></x:call>
+      <x:expect label="empty: the item is numbered as an indent" select="''"/>
+    </x:scenario>
     <x:scenario label="keeps letters of any script, so that labels differing in print differ">
       <x:call function="f:label"><x:param select="'ΙII'"/></x:call>
       <x:expect label="a Greek capital iota stays: ΙII is not II" select="'ΙII'"/>
