@@ -6,6 +6,7 @@
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
@@ -84,19 +85,33 @@
     <xsl:param name="list" as="element()"/>
     <xsl:param name="base" as="xs:string?"/>
     <xsl:variable name="scope" as="element()?" select="f:scope($list)"/>
-    <xsl:variable name="siblings" as="element()*" select="
-        if ($scope) then $scope//(LIST | DLIST | ITEM[f:stray-start(.)] | DLIST.ITEM[f:stray-start(.)])[f:scope(.) is $scope]
-        else root($list)//(LIST | DLIST | ITEM[f:stray-start(.)] | DLIST.ITEM[f:stray-start(.)])[empty(f:scope(.))]"/>
+    <!-- its place among the lists of its scope, itself included (f:lists counts them in document order) -->
+    <xsl:variable name="ordinal" as="xs:integer" select="($list ! accumulator-before('f:lists'))(f:scope-key($list))"/>
     <!-- also directly in an annex, beside its own points, where an item's label is one of theirs
          (point 1. of a list, annex point (1)) -->
     <xsl:variable name="beside-levels" as="xs:boolean" select="exists($scope/self::GR.SEQ//GR.SEQ[f:level-parent(.) is $scope])
-        or exists($scope[self::CONS.ANNEX or self::ANNEX]) and exists($list/(ITEM/NP/NO.P | DLIST.ITEM/PREFIX)[f:label(.) != '']
-             [f:label(.) = $scope//GR.SEQ/f:label(f:level-num(.))])"/>
+        or exists($scope[self::CONS.ANNEX or self::ANNEX]) and (some $label in $list/(ITEM/NP/NO.P | DLIST.ITEM/PREFIX)/f:label(.)[. != '']
+             satisfies exists(key('f:level-label-in-annex', generate-id($scope) || ' ' || $label, root($scope))))"/>
     <xsl:sequence select="
-        if ($siblings[. &lt;&lt; $list] or $beside-levels)
-        then f:eid($base, 'list', string(count($siblings[. &lt;&lt; $list]) + 1))
+        if ($ordinal gt 1 or $beside-levels)
+        then f:eid($base, 'list', string($ordinal))
         else $base"/>
   </xsl:function>
+
+  <!-- the lists of each scope, counted in document order: what each list's number is -->
+  <xsl:accumulator name="f:lists" as="map(xs:string, xs:integer)" initial-value="map{}">
+    <xsl:accumulator-rule match="LIST | DLIST | ITEM[f:stray-start(.)] | DLIST.ITEM[f:stray-start(.)]"
+                          select="let $k := f:scope-key(.) return map:put($value, $k, ($value($k), 0)[1] + 1)"/>
+  </xsl:accumulator>
+
+  <xsl:function name="f:scope-key" as="xs:string">
+    <xsl:param name="e" as="element()"/>
+    <xsl:sequence select="(f:scope($e) ! generate-id(.), '')[1]"/>
+  </xsl:function>
+
+  <!-- an annex's levels by their labels, for every annex they are in -->
+  <xsl:key name="f:level-label-in-annex" match="GR.SEQ"
+           use="let $label := f:label(f:level-num(.)) return ancestor::*[self::CONS.ANNEX or self::ANNEX] ! (generate-id(.) || ' ' || $label)"/>
 
   <xsl:template match="LIST" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>

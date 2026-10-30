@@ -28,12 +28,26 @@
                           select="map:remove($value, f:pi-attr(., 'IDREF'))"/>
   </xsl:accumulator>
 
-  <!-- the value of one pseudo-attribute in a processing instruction: ID="O1" or NO='4' -->
+  <!-- the value of one pseudo-attribute in a processing instruction: ID="O1" or NO='4'. A large
+       consolidation asks its markers millions of times, so each marker is parsed once: its
+       attributes are the value f:marker-attributes takes at it, which Saxon keeps per node -->
   <xsl:function name="f:pi-attr" as="xs:string?">
     <xsl:param name="pi" as="processing-instruction()"/>
     <xsl:param name="name" as="xs:string"/>
-    <xsl:variable name="m" as="element()" select="analyze-string(string($pi), '(^|\s)' || replace($name, '\.', '\\.') || '=([&quot;''])([^&quot;'']*)\2')"/>
-    <xsl:sequence select="($m//fn:group[@nr = 3])[1] ! string()"/>
+    <xsl:sequence select="(if (name($pi) = ('CLG.MDFO', 'CLG.MDFC')) then $pi ! accumulator-before('f:marker-attributes')
+                           else f:pi-attributes($pi))($name)"/>
+  </xsl:function>
+
+  <xsl:accumulator name="f:marker-attributes" as="map(xs:string, xs:string)" initial-value="map{}">
+    <xsl:accumulator-rule match="processing-instruction('CLG.MDFO') | processing-instruction('CLG.MDFC')"
+                          select="f:pi-attributes(.)"/>
+  </xsl:accumulator>
+
+  <!-- all the pseudo-attributes of a processing instruction, the first of each name -->
+  <xsl:function name="f:pi-attributes" as="map(xs:string, xs:string)">
+    <xsl:param name="pi" as="processing-instruction()"/>
+    <xsl:variable name="m" as="element()" select="analyze-string(string($pi), '(^|\s)([^\s=]+)=([&quot;''])([^&quot;'']*)\3')"/>
+    <xsl:sequence select="map:merge($m/fn:match ! map{string(fn:group[@nr = 2]): string(fn:group[@nr = 4])}, map{'duplicates': 'use-first'})"/>
   </xsl:function>
 
   <!-- markers covering $e (open before it starts, still open after it ends), outermost first -->
@@ -52,10 +66,13 @@
     <xsl:sequence select="(map:keys($before)[map:contains($after, .)] ! $before(.))/self::node()"/>
   </xsl:function>
 
+  <!-- markers covering $e that aren't attributed yet: by the ids f:open keys them by -->
   <xsl:function name="f:new-markers" as="processing-instruction()*">
     <xsl:param name="e" as="node()"/>
     <xsl:param name="ctx" as="xs:string*"/>
-    <xsl:sequence select="f:covering($e)[not(f:pi-attr(., 'ID') = $ctx)]"/>
+    <xsl:variable name="before" as="map(xs:string, processing-instruction())" select="$e ! accumulator-before('f:open')"/>
+    <xsl:variable name="after" as="map(xs:string, processing-instruction())" select="$e ! accumulator-after('f:open')"/>
+    <xsl:sequence select="(map:keys($before)[map:contains($after, .)][not(. = $ctx)] ! $before(.))/self::node()"/>
   </xsl:function>
 
   <xsl:function name="f:ids" as="xs:string*">
@@ -69,9 +86,9 @@
     <xsl:param name="ctx" as="xs:string*"/>
     <xsl:variable name="open" as="processing-instruction()*" select="
         if ($n instance of text())
-        then (let $v := $n ! accumulator-before('f:open') return (map:keys($v) ! $v(.))/self::node())
-        else f:covering($n)"/>
-    <xsl:sequence select="(f:ids($open[not(f:pi-attr(., 'ID') = $ctx)]), '')[1]"/>
+        then (let $v := $n ! accumulator-before('f:open') return (map:keys($v)[not(. = $ctx)] ! $v(.))/self::node())
+        else f:new-markers($n, $ctx)"/>
+    <xsl:sequence select="(f:ids($open), '')[1]"/>
   </xsl:function>
 
   <xsl:function name="f:is-deletion" as="xs:boolean">

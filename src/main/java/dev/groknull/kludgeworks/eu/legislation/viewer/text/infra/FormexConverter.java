@@ -33,9 +33,11 @@ public final class FormexConverter {
   static final String ERRORS = "https://kludgeworks.groknull.dev/ns/formex-converter";
   private static final QName CELEX = new QName("celex");
 
+  private final Processor processor;
   private final XsltExecutable stylesheet;
 
   public FormexConverter(Processor processor) {
+    this.processor = processor;
     processor.setConfigurationProperty(
         FeatureKeys.XML_PARSER_PROPERTY + "jdk.xml.maxGeneralEntitySizeLimit", "0");
     processor.setConfigurationProperty(
@@ -74,7 +76,11 @@ public final class FormexConverter {
       if (celex.isPresent()) {
         transformer.setStylesheetParameters(Map.of(CELEX, new XdmAtomicValue(celex.get())));
       }
-      transformer.applyTemplates(formex, result);
+      // the document is the global context item too, as Saxon's command line has it: the
+      // stylesheet's global variables read it (the package's files, its amendment markers)
+      var document = processor.newDocumentBuilder().build(formex);
+      transformer.setGlobalContextItem(document);
+      transformer.applyTemplates(document, result);
     } catch (SaxonApiException e) {
       var refusal = reason.get();
       throw translate(e, refusal != null ? refusal : String.valueOf(e.getMessage()));
