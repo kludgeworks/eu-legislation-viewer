@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalText;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalTextIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalTexts;
 import dev.groknull.kludgeworks.formex.converter.FormexConverter;
 import java.io.IOException;
@@ -16,9 +15,9 @@ import javax.xml.transform.stream.StreamSource;
 import org.springframework.stereotype.Component;
 
 /**
- * Legal texts converted from Formex when asked for: the version's Formex in the language is fetched
- * into a folder of its own, converted and read into the records, and the folder deleted. Nothing is
- * kept yet; the store comes next (Design: Caching, Converting off the request path).
+ * Legal texts converted from Formex when asked for: the document's Formex in the language is
+ * fetched into a folder of its own, converted and read into the records, and the folder deleted.
+ * Nothing is kept yet; the store comes next (Design: Caching, Converting off the request path).
  */
 @Component
 class FormexLegalTexts implements LegalTexts {
@@ -33,14 +32,14 @@ class FormexLegalTexts implements LegalTexts {
   }
 
   @Override
-  public Optional<LegalText> find(Version version, Language language) {
+  public Optional<LegalText> find(LegalTextIdentifier id) {
     var folder = folder();
     try {
-      if (!source.fetch(version.celex(), language, folder)) {
+      if (!source.fetch(id.document(), id.language(), folder)) {
         return Optional.empty();
       }
       var formex = new StreamSource(FormexConverter.input(folder).toFile());
-      return Optional.of(reader.read(converter.convert(formex, Optional.of(version.celex()))));
+      return Optional.of(reader.read(converter.convert(formex, Optional.of(id.document()))));
     } finally {
       delete(folder);
     }

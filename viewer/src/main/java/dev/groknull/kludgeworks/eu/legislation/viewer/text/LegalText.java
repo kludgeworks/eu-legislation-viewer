@@ -2,8 +2,11 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import java.time.LocalDate;
 import java.util.List;
+import org.jmolecules.ddd.annotation.AggregateRoot;
+import org.jmolecules.ddd.annotation.Identity;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -27,6 +30,7 @@ import org.jspecify.annotations.Nullable;
  * @param annexes The annexes, in order.
  * @param notes The footnotes, collected from wherever they occur in the text.
  */
+@AggregateRoot
 public record LegalText(
     ActIdentifier act,
     Kind kind,
@@ -47,6 +51,12 @@ public record LegalText(
     body = List.copyOf(body);
     annexes = List.copyOf(annexes);
     notes = List.copyOf(notes);
+  }
+
+  /** Its identity: its document (source/@celex) and its language. */
+  @Identity
+  public LegalTextIdentifier id() {
+    return new LegalTextIdentifier(source.celex(), Language.ofIso(lang));
   }
 
   /**

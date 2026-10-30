@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalText;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalTextIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalTexts;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -33,6 +34,6 @@ public class PointInTime {
   public Optional<LegalText> text(ActIdentifier act, LocalDate date, Language language) {
     return acts.find(act)
         .flatMap(a -> a.versionOn(date))
-        .flatMap(version -> texts.find(version, language));
+        .flatMap(version -> texts.find(LegalTextIdentifier.of(version, language)));
   }
 }

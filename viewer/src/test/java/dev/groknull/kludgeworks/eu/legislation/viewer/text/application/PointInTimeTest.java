@@ -12,6 +12,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalText;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalTextIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Source;
 import java.time.LocalDate;
@@ -45,7 +46,10 @@ class PointInTimeTest {
             text -> assertThat(text.source().celex()).isEqualTo("02015R1998-20260322"));
     assertThat(pointInTime.text(AVSEC, LocalDate.of(2026, 3, 21), Language.ENG))
         .hasValueSatisfying(text -> assertThat(text.source().celex()).isEqualTo("32015R1998"));
-    assertThat(texts.asked).containsExactly(CONSOLIDATED, ORIGINAL);
+    assertThat(texts.asked)
+        .containsExactly(
+            LegalTextIdentifier.of(CONSOLIDATED, Language.ENG),
+            LegalTextIdentifier.of(ORIGINAL, Language.ENG));
   }
 
   @Test
@@ -85,14 +89,14 @@ class PointInTimeTest {
     }
   }
 
-  /** A text in English for every version, carrying only the version's CELEX. */
+  /** A text in English for every document, carrying only its identity. */
   static final class Texts implements LegalTexts {
-    final List<Version> asked = new ArrayList<>();
+    final List<LegalTextIdentifier> asked = new ArrayList<>();
 
     @Override
-    public Optional<LegalText> find(Version version, Language language) {
-      asked.add(version);
-      if (language != Language.ENG) {
+    public Optional<LegalText> find(LegalTextIdentifier id) {
+      asked.add(id);
+      if (id.language() != Language.ENG) {
         return Optional.empty();
       }
       return Optional.of(
@@ -103,7 +107,7 @@ class PointInTimeTest {
               "en",
               "06.02.1",
               "test",
-              new Source(version.celex(), null, null),
+              new Source(id.document(), null, null),
               null,
               null,
               null,
