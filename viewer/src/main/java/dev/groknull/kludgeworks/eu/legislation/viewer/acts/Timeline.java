@@ -2,65 +2,94 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.acts;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.TreeMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import org.jmolecules.ddd.annotation.ValueObject;
+import org.jspecify.annotations.Nullable;
 
 /**
- * An act's versions in date order, each applying from its date until the next one's. Which applies
- * on a date: the last that starts on or before it (Design: Choosing the version to show), interim
- * ones included once their date has passed; after a repeal, the last.
+ * An act's versions by the day each applies from, until the next one's. Which applies on a date:
+ * the last that starts on or before it (Design: Choosing the version to show), interim ones
+ * included once their date has passed; after a repeal, the last.
  */
 @ValueObject
-public record Timeline(List<Version> versions) {
+public final class Timeline {
+  private final NavigableMap<LocalDate, Version> byDate;
 
-  public Timeline {
-    versions = List.copyOf(versions);
+  /** The versions, in any order; at most one a day. */
+  public Timeline(List<Version> versions) {
     if (versions.isEmpty()) {
       throw new IllegalArgumentException("A timeline has at least the original text");
     }
-    for (var i = 1; i < versions.size(); i++) {
-      if (!versions.get(i).date().isAfter(versions.get(i - 1).date())) {
-        throw new IllegalArgumentException(
-            "Versions out of order: " + versions.get(i - 1) + ", then " + versions.get(i));
-      }
-    }
+    TreeMap<LocalDate, Version> byDate =
+        versions.stream()
+            .collect(
+                Collectors.toMap(
+                    Version::date,
+                    Function.identity(),
+                    (one, other) -> {
+                      throw new IllegalArgumentException(
+                          "Two versions on one day: " + one + ", " + other);
+                    },
+                    TreeMap::new));
+    this.byDate = Collections.unmodifiableNavigableMap(byDate);
+  }
+
+  /** The versions in date order. */
+  public List<Version> versions() {
+    return List.copyOf(byDate.values());
   }
 
   /** The version that applies on {@code date}; none before the first applies. */
   public Optional<Version> applicableOn(LocalDate date) {
-    Version applicable = null;
-    for (var version : versions) {
-      if (version.date().isAfter(date)) {
-        break;
-      }
-      applicable = version;
-    }
-    return Optional.ofNullable(applicable);
+    return value(byDate.floorEntry(date));
   }
 
   /** The latest version, which may apply only in the future. */
   public Version latest() {
-    return versions.getLast();
+    return byDate.lastEntry().getValue();
   }
 
   /** The version before {@code version}, none for the first. */
   public Optional<Version> predecessor(Version version) {
-    var i = indexOf(version);
-    return i == 0 ? Optional.empty() : Optional.of(versions.get(i - 1));
+    return value(byDate.lowerEntry(dateOf(version)));
   }
 
   /** The version after {@code version}, none for the latest. */
   public Optional<Version> successor(Version version) {
-    var i = indexOf(version);
-    return i == versions.size() - 1 ? Optional.empty() : Optional.of(versions.get(i + 1));
+    return value(byDate.higherEntry(dateOf(version)));
   }
 
-  private int indexOf(Version version) {
-    var i = versions.indexOf(version);
-    if (i < 0) {
+  private LocalDate dateOf(Version version) {
+    if (!version.equals(byDate.get(version.date()))) {
       throw new IllegalArgumentException("Not a version of this act: " + version);
     }
-    return i;
+    return version.date();
+  }
+
+  private static Optional<Version> value(Map.@Nullable Entry<LocalDate, Version> entry) {
+    return Optional.ofNullable(entry).map(Map.Entry::getValue);
+  }
+
+  @Override
+  public boolean equals(@Nullable Object other) {
+    return other instanceof Timeline timeline && Objects.equals(byDate, timeline.byDate);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(byDate);
+  }
+
+  @Override
+  public String toString() {
+    return "Timeline" + byDate.values();
   }
 }

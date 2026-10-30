@@ -45,10 +45,27 @@ class TimelineTest {
   }
 
   @Test
-  void refusesVersionsOutOfOrderOrOnTheSameDay() {
-    assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of(FIRST, ORIGINAL)));
-    assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of(FIRST, FIRST)));
+  void ordersTheVersionsByDate() {
+    var timeline = new Timeline(List.of(INTERIM, ORIGINAL, FIRST));
+
+    assertThat(timeline.versions()).containsExactly(ORIGINAL, FIRST, INTERIM);
+    assertThat(timeline).isEqualTo(TIMELINE).hasSameHashCodeAs(TIMELINE);
+  }
+
+  @Test
+  void refusesTwoVersionsOnOneDayOrNone() {
+    var sameDay =
+        new Version(Version.Kind.CONSOLIDATED, FIRST.date(), "02015R1998-X", false, List.of());
+
+    assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of(FIRST, sameDay)));
     assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of()));
+  }
+
+  @Test
+  void refusesTheNeighboursOfAnotherActsVersion() {
+    var other = consolidated("2020-01-01", false);
+
+    assertThatIllegalArgumentException().isThrownBy(() -> TIMELINE.successor(other));
   }
 
   private static Version consolidated(String date, boolean interim) {
