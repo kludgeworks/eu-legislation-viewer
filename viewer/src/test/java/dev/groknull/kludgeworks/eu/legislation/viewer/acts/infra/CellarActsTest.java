@@ -2,16 +2,20 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.acts.infra;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
@@ -91,6 +95,75 @@ class CellarActsTest {
 
     assertThat(CellarActs.identity(eli, recorded("act-by-eli-reg_impl-2015-1998.json")))
         .contains(AVSEC);
+  }
+
+  @Test
+  void reportsVersionsTheTimelineRefusesAsCellarsData() {
+    var twoOnOneDay =
+        result(
+            consolidation("02015R1998-20260322", "2026-03-22"),
+            consolidation("02015R1998-20260322-BIS", "2026-03-22"));
+
+    assertThatExceptionOfType(CellarException.class)
+        .isThrownBy(() -> CellarActs.act(AVSEC, work(Map.of()), twoOnOneDay))
+        .withMessageStartingWith("Cellar's data for 32015R1998: Two versions on one day")
+        .withCauseInstanceOf(IllegalArgumentException.class);
+  }
+
+  @Test
+  void reportsAnActWithTwoElisAsCellarsData() {
+    var twoElis =
+        new SparqlResult(
+            List.of("eli", "type", "entryIntoForce"),
+            List.of(
+                workRow("http://data.europa.eu/eli/reg_impl/2015/1998/oj"),
+                workRow("http://data.europa.eu/eli/reg_impl/2015/1999/oj")));
+
+    assertThatExceptionOfType(CellarException.class)
+        .isThrownBy(() -> CellarActs.act(AVSEC, twoElis, result()))
+        .withMessageStartingWith("Cellar's data for 32015R1998: several ELIs");
+  }
+
+  @Test
+  void reportsAnEliOfTwoActsAsCellarsData() {
+    var eli = new Eli("reg_impl", 2015, "1998");
+    var twoActs =
+        new SparqlResult(
+            List.of("celex"),
+            List.of(
+                new SparqlResult.Row(Map.of("celex", "32015R1998")),
+                new SparqlResult.Row(Map.of("celex", "32015R1999"))));
+
+    assertThatExceptionOfType(CellarException.class)
+        .isThrownBy(() -> CellarActs.identity(eli, twoActs))
+        .withMessageStartingWith("Cellar's data for the ELI reg_impl/2015/1998: several acts");
+  }
+
+  /** act.rq's answer: one row for 2015/1998, with {@code more} values. */
+  private static SparqlResult work(Map<String, String> more) {
+    var values = new HashMap<>(more);
+    values.putAll(workRow("http://data.europa.eu/eli/reg_impl/2015/1998/oj").values());
+    return new SparqlResult(List.copyOf(values.keySet()), List.of(new SparqlResult.Row(values)));
+  }
+
+  private static SparqlResult.Row workRow(String eli) {
+    return new SparqlResult.Row(
+        Map.of(
+            "eli",
+            eli,
+            "type",
+            "http://publications.europa.eu/resource/authority/resource-type/REG_IMPL",
+            "entryIntoForce",
+            "2015-11-15"));
+  }
+
+  /** versions.rq's answer: one row per consolidation. */
+  private static SparqlResult result(SparqlResult.Row... rows) {
+    return new SparqlResult(List.of("version", "date", "pdf", "listed"), List.of(rows));
+  }
+
+  private static SparqlResult.Row consolidation(String celex, String date) {
+    return new SparqlResult.Row(Map.of("version", celex, "date", date, "pdf", "1"));
   }
 
   private static Act act(ActIdentifier id) {

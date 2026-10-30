@@ -7,8 +7,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -59,32 +61,53 @@ class CellarActs implements Acts {
         .flatMap(this::find);
   }
 
-  /** The act from the answer to act-by-eli.rq; none if no work has the ELI. */
+  /**
+   * The act from the answer to act-by-eli.rq; none if no work has the ELI.
+   *
+   * @throws CellarException if Cellar's answer makes no act
+   */
   static Optional<ActIdentifier> identity(Eli eli, SparqlResult works) {
-    var celexes = new TreeSet<String>();
-    for (var row : works.rows()) {
-      celexes.add(row.get("celex"));
+    try {
+      var celexes = new TreeSet<String>();
+      for (var row : works.rows()) {
+        celexes.add(row.get("celex"));
+      }
+      if (celexes.size() > 1) {
+        throw new IllegalArgumentException("several acts have it: " + celexes);
+      }
+      return celexes.stream().findFirst().map(ActIdentifier::new);
+    } catch (IllegalArgumentException e) {
+      throw new CellarException("Cellar's data for the ELI " + eli + ": " + e.getMessage(), e);
     }
-    if (celexes.size() > 1) {
-      throw new IllegalStateException(
-          "Cellar has several acts with the ELI " + eli + ": " + celexes);
-    }
-    return celexes.stream().findFirst().map(ActIdentifier::new);
   }
 
-  /** The act from the answers to act.rq and versions.rq; none if act.rq found no work. */
+  /**
+   * The act from the answers to act.rq and versions.rq; none if act.rq found no work.
+   *
+   * @throws CellarException if Cellar's answers make no act: a value missing, repeated or not of
+   *     its kind, or versions the timeline refuses
+   */
   static Optional<Act> act(ActIdentifier id, SparqlResult work, SparqlResult consolidations) {
     if (work.rows().isEmpty()) {
       return Optional.empty();
     }
+    try {
+      return Optional.of(read(id, work, consolidations));
+    } catch (IllegalArgumentException | DateTimeException e) {
+      throw new CellarException("Cellar's data for " + id + ": " + e.getMessage(), e);
+    }
+  }
+
+  /** The act; an IllegalArgumentException (or a DateTimeException) for what Cellar got wrong. */
+  private static Act read(ActIdentifier id, SparqlResult work, SparqlResult consolidations) {
     var row = work.rows().getFirst();
     var types = distinct(work, "type");
     if (types.size() != 1 || !types.getFirst().startsWith(RESOURCE_TYPE)) {
-      throw new IllegalStateException(id + " has resource types " + types);
+      throw new IllegalArgumentException("resource types " + types);
     }
     var elis = distinct(work, "eli");
     if (elis.size() > 1) {
-      throw new IllegalStateException(id + " has several ELIs: " + elis);
+      throw new IllegalArgumentException("several ELIs: " + elis);
     }
     var entryIntoForce =
         dates(work, "entryIntoForce").stream()
@@ -97,18 +120,16 @@ class CellarActs implements Acts {
     var dateOfDocument = row.find("dateOfDocument").map(LocalDate::parse).orElse(null);
     var originalFrom = entryIntoForce.orElse(dateOfDocument);
     if (originalFrom == null) {
-      throw new IllegalStateException(
-          id + " has neither an entry into force nor a date of document");
+      throw new IllegalArgumentException("neither an entry into force nor a date of document");
     }
-    return Optional.of(
-        new Act(
-            id,
-            elis.isEmpty() ? null : Eli.of(elis.getFirst()),
-            types.getFirst().substring(RESOURCE_TYPE.length()),
-            dateOfDocument,
-            row.find("inForce").map(CellarActs::isTrue).orElse(false),
-            endOfValidity.orElse(null),
-            timeline(id, originalFrom, consolidations)));
+    return new Act(
+        id,
+        elis.isEmpty() ? null : Eli.of(elis.getFirst()),
+        types.getFirst().substring(RESOURCE_TYPE.length()),
+        dateOfDocument,
+        row.find("inForce").map(CellarActs::isTrue).orElse(false),
+        endOfValidity.orElse(null),
+        timeline(id, originalFrom, consolidations));
   }
 
   /**
