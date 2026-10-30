@@ -1,5 +1,9 @@
 # SPDX-License-Identifier: MIT
 spring:
+  # requests, @Async and scheduled tasks on virtual threads: a page mostly waits on Cellar
+  threads:
+    virtual:
+      enabled: true
   http:
     clients:
       # every RestClient Boot builds, so Cellar's: to open a connection, and for a response, since
