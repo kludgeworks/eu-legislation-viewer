@@ -514,10 +514,12 @@
         <xs:annotation>
           <xs:documentation>
             A grouping of articles: part, title, chapter or section (Formex DIVISION). Its num is the label line
-            ("CHAPTER III"); its eId is dvs_ and the label after the type word, nested under the enclosing division.
-            The kind of grouping is not classified, because that would mean reading the wording of each language.
-            Recitals are grouped the same way (Formex DIV.CONSID, "A. PROCEDURE"): eId pbl_1/dvs_A; the recitals inside
-            keep preamble-wide eIds (pbl_1/rct_12), as articles keep act-wide ones.
+            ("CHAPTER III"). Its eId names the kind its heading gives, by the code of the EU subdivision authority
+            table, in any of the 24 languages, then the label after the type word: TITLE I is tis_I, CHAPTER 2 cpt_2,
+            SECTION 1 sct_1, PART TWO prt_TWO; a heading that names no kind the table has gives dvs_. A division is
+            nested under the one that encloses it. Recitals are grouped the same way (Formex DIV.CONSID, "A.
+            PROCEDURE"): eId pbl_1/dvs_A; the recitals inside keep preamble-wide eIds (pbl_1/rct_12), as articles keep
+            act-wide ones.
           </xs:documentation>
         </xs:annotation>
       </xs:enumeration>
