@@ -41,7 +41,7 @@ run = "bazel test //..."
 
 [tasks."test:xspec"]
 description = "Run the XSpec suites"
-run = "bazel test //src/test/xspec/..."
+run = "bazel test //formex-converter/test/xspec/..."
 
 [tasks.pin]
 description = "Pin the Maven dependencies after changing them in MODULE.bazel"

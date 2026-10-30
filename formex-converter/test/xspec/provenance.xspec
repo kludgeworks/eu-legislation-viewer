@@ -3,7 +3,7 @@
 <!-- Amendment markers (<?CLG.MDFO?> … <?CLG.MDFC?>) → provenance, changed and deleted -->
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
-    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/formex-to-legal-text.xsl">
+    stylesheet="../../xslt/formex-to-legal-text.xsl">
 
   <x:scenario label="A marker around a paragraph">
     <x:context mode="block" xmlns="">

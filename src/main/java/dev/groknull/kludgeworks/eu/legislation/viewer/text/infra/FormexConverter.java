@@ -28,8 +28,7 @@ import net.sf.saxon.s9api.XsltExecutable;
  */
 public final class FormexConverter {
 
-  static final String STYLESHEET =
-      "/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/formex-to-legal-text.xsl";
+  static final String STYLESHEET = "/formex-converter/xslt/formex-to-legal-text.xsl";
   static final String ERRORS = "https://kludgeworks.groknull.dev/ns/formex-converter";
   private static final QName CELEX = new QName("celex");
 

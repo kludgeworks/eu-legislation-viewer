@@ -3,7 +3,7 @@
 <!-- Inputs the converter refuses: it fails loudly rather than produce a partial text -->
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
-    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/formex-to-legal-text.xsl">
+    stylesheet="../../xslt/formex-to-legal-text.xsl">
 
   <!-- a blank CELEX number counts as none -->
   <x:param name="celex" select="' '"/>

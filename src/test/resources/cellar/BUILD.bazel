@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
 
-package(default_visibility = ["//visibility:public"])
+package(default_visibility = ["//src:__subpackages__"])
 
 # Cellar's responses, recorded byte for byte (see SOURCE), on the classpath at /cellar/
 java_library(

@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 /**
  * The fixtures, as argument sources for parameterized tests: raw Formex as Cellar serves it, under
- * src/test/resources/fixtures (the test target's data).
+ * formex-converter/test/fixtures (the test target's data).
  */
 @AutoBazelRepository
 final class Fixtures {
@@ -56,7 +56,7 @@ final class Fixtures {
       return Path.of(
           Runfiles.preload()
               .withSourceRepository(AutoBazelRepository_Fixtures.NAME)
-              .rlocation("kludgeworks_viewer/src/test/resources/fixtures"));
+              .rlocation("kludgeworks_viewer/formex-converter/test/fixtures"));
     } catch (IOException e) {
       throw new UncheckedIOException(e);
     }

@@ -23,19 +23,23 @@ def xjc_library(name, schema, bindings = None, xjc_args = [], srcs = [], deps = 
     inputs = [schema] + ([bindings] if bindings else [])
     args = ["-npa", "-no-header", "-quiet", "-extension"] + list(xjc_args)
     if bindings:
-        args += ["-b", "$(location %s)" % bindings]
+        args += ["-b", "$$in/$$(basename $(location %s))" % bindings]
     native.genrule(
         name = name + "_srcjar",
         srcs = inputs,
         outs = [name + ".srcjar"],
+        # the bindings name the schema by its file name (schemaLocation), so the two are copied side
+        # by side, wherever their packages are
         cmd = " && ".join([
             "zipper=$$PWD/$(execpath @bazel_tools//tools/zip:zipper)",
             "srcjar=$$PWD/$@",
+            "in=$$(mktemp -d)",
             "out=$$(mktemp -d)",
-            "$(execpath //tools/build:xjc) -d $$out %s $(location %s)" % (" ".join(args), schema),
+            "cp %s $$in/" % " ".join(["$(location %s)" % i for i in inputs]),
+            "$(execpath //tools/build:xjc) -d $$out %s $$in/$$(basename $(location %s))" % (" ".join(args), schema),
             "cd $$out",
             "$$zipper c $$srcjar $$(find . -name '*.java' | LC_ALL=C sort | sed 's|^[.]/||')",
-            "rm -rf $$out",
+            "rm -rf $$in $$out",
         ]),
         tools = [
             "//tools/build:xjc",

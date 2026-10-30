@@ -11,8 +11,7 @@ import net.sf.saxon.s9api.XdmNode;
 /** legal-text.sch, the rules legal-text.xsd can't express. */
 final class LegalTextRules {
 
-  static final String SCHEMATRON =
-      "/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml/legal-text.sch";
+  static final String SCHEMATRON = "/formex-converter/schema/legal-text.sch";
 
   private final Schematron schema;
 

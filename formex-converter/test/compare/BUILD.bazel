@@ -15,6 +15,6 @@ filegroup(
 # the same, on the classpath at /compare/
 java_library(
     name = "resources",
-    resource_strip_prefix = "src/test/resources",
+    resource_strip_prefix = "formex-converter/test",
     resources = [":compare"],
 )

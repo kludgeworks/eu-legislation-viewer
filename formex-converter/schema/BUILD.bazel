@@ -6,14 +6,12 @@ package(default_visibility = ["//visibility:public"])
 exports_files([
     "legal-text.xsd",
     "legal-text.sch",
-    "bindings.xjb",
 ])
 
 # legal-text.xsd and the rules it can't express (legal-text.sch), on the classpath at
-# /dev/groknull/…/text/infra/xml/
+# /formex-converter/schema/
 java_library(
     name = "resources",
-    resource_strip_prefix = "src/main/resources",
     resources = [
         "legal-text.sch",
         "legal-text.xsd",

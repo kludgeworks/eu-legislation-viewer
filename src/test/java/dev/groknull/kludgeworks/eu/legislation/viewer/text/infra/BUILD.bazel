@@ -9,12 +9,12 @@ java_test_suite(
         ["*.java"],
         exclude = ["CorpusTests.java"],
     ),
-    data = ["//src/test/resources/fixtures"],
+    data = ["//formex-converter/test/fixtures"],
     runner = "junit5",
     runtime_deps = [
-        "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:resources",
-        "//src/test/resources/compare:resources",
-        "//src/test/resources/mathml3:resources",
+        "//formex-converter/schema:resources",
+        "//formex-converter/test/compare:resources",
+        "//formex-converter/test/mathml3:resources",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",
@@ -51,8 +51,8 @@ java_junit5_test(
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.CorpusTests",
     visibility = ["//:__pkg__"],  # for the //:corpus suite
     runtime_deps = [
-        "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml:resources",
-        "//src/test/resources/compare:resources",
+        "//formex-converter/schema:resources",
+        "//formex-converter/test/compare:resources",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",

@@ -4,7 +4,7 @@
      annex rules look across the document. -->
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
-    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/formex-to-legal-text.xsl">
+    stylesheet="../../xslt/formex-to-legal-text.xsl">
 
   <x:scenario label="A single annex with numbered points">
     <x:context xmlns="">

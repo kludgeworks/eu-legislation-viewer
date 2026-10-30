@@ -43,8 +43,7 @@ class FormexConverterFixturesTest {
   static final TextConservation TEXT = new TextConservation(SAXON);
   static final LegalTextRules RULES = new LegalTextRules(SAXON);
   static final Schema MATHML = mathml();
-  static final URL SCHEMA =
-      resource("/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml/legal-text.xsd");
+  static final URL SCHEMA = resource("/formex-converter/schema/legal-text.xsd");
   static final JAXBContext JAXB = jaxb();
   @Parameter Fixture fixture;
 

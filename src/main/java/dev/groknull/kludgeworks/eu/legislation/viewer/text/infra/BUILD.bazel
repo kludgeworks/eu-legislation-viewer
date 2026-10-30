@@ -5,8 +5,8 @@ load("@rules_java//java:defs.bzl", "java_library")
 java_library(
     name = "infra",
     srcs = glob(["*.java"]),
-    visibility = ["//visibility:public"],
-    runtime_deps = ["//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt:resources"],
+    visibility = ["//src:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    runtime_deps = ["//formex-converter/xslt:resources"],
     deps = [
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_jspecify_jspecify",

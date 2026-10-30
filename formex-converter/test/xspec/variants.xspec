@@ -6,7 +6,7 @@
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     xmlns:m="http://www.w3.org/1998/Math/MathML"
     xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
-    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/formex-to-legal-text.xsl">
+    stylesheet="../../xslt/formex-to-legal-text.xsl">
 
   <x:param name="celex" select="'32026R0449'"/>
 
@@ -221,7 +221,7 @@
   <!-- ============================================================ attachments -->
 
   <x:scenario label="A decision concluding an agreement (2009/1023, a package)">
-    <x:context href="../resources/fixtures/formex/05.01/32009D1023/L_2009353EN.01000101.doc.xml"/>
+    <x:context href="../fixtures/formex/05.01/32009D1023/L_2009353EN.01000101.doc.xml"/>
     <x:expect label="attaches the agreement, and the document attached to it, under it"
               test="$x:result//*:unit[@kind = 'attachment']/@eId = ('att_1', 'att_1/att_1')"/>
     <x:expect label="numbers the agreement's articles under it" test="$x:result//*:unit[@eId = 'att_1/art_1']/*:num/*:t/@v = 'Article 1'"/>
@@ -229,7 +229,7 @@
   </x:scenario>
 
   <x:scenario label="A consolidated agreement with annexes and related documents (1994/604, CONS.OTH)">
-    <x:context href="../resources/fixtures/formex/01.02/01994D0604-20040601/CL1994D0604EN0050010.0001.xml"/>
+    <x:context href="../fixtures/formex/01.02/01994D0604-20040601/CL1994D0604EN0050010.0001.xml"/>
     <x:expect label="keeps the act's own text (ACT.GEN)" test="exists($x:result/*:body/*:p)"/>
     <x:expect label="makes the annex (CONS.DOC.GEN TYPE=ANNEX) an annex" test="$x:result/*:annexes/*:unit[@kind = 'annex']/@eId = 'anx'"/>
   </x:scenario>

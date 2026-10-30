@@ -8,9 +8,13 @@ import "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Builtins.
 // Cellar's responses as it serves them (Formex, recorded replies, the EU subdivision table): byte-identical,
 // excluded from every fixer
 local raw =
-  List("src/test/resources/fixtures/**", "src/test/resources/cellar/**", "**/xslt/subdivision.rdf")
+  List(
+    "formex-converter/test/fixtures/**",
+    "src/test/resources/cellar/**",
+    "**/xslt/subdivision.rdf",
+  )
 // vendored W3C schemas, under the W3C licence; patches, whose context lines must match exactly
-local vendored = List("src/test/resources/mathml3/**", "**/*.patch")
+local vendored = List("formex-converter/test/mathml3/**", "**/*.patch")
 local xml = List("**/*.xml", "**/*.xsl", "**/*.xsd", "**/*.xspec", "**/*.xjb", "**/*.sch")
 
 local linters = new Mapping<String, Step> {

@@ -6,7 +6,7 @@
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    stylesheet="../../main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt/formex-to-legal-text.xsl">
+    stylesheet="../../xslt/formex-to-legal-text.xsl">
 
   <x:param name="celex" select="'32026R0449'"/>
 

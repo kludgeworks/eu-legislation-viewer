@@ -12,9 +12,8 @@ filegroup(
     ]),
 )
 
-# the same, on the classpath at /dev/groknull/…/text/infra/xslt/
+# the same, on the classpath at /formex-converter/xslt/
 java_library(
     name = "resources",
-    resource_strip_prefix = "src/main/resources",
     resources = [":xslt"],
 )

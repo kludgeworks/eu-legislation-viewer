@@ -4,8 +4,8 @@ load("//tools/build:defs.bzl", "xspec_test")
 xspec_test(
     name = "xspec",
     data = [
-        "//src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xslt",
-        "//src/test/resources/fixtures:formex",
+        "//formex-converter/test/fixtures:formex",
+        "//formex-converter/xslt",
     ],
     specs = glob(["*.xspec"]),
 )

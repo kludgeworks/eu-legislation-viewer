@@ -72,9 +72,7 @@ class CorpusTests {
     var xml = SAXON.newSerializer().serializeNodeToString(legalText);
     XmlAssert.assertThat(xml)
         .as("%s", fixture)
-        .isValidAgainst(
-            CorpusTests.class.getResource(
-                "/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml/legal-text.xsd"));
+        .isValidAgainst(CorpusTests.class.getResource("/formex-converter/schema/legal-text.xsd"));
     assertThat(RULES.violations(legalText)).as("%s: breaks legal-text.sch", fixture).isEmpty();
     assertThat(TEXT.missing(fixture.source(), legalText))
         .as("%s: source text missing from the output", fixture)
