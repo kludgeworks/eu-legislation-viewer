@@ -12,10 +12,15 @@
  * one.
  *
  * <p>The module holds no state and caches nothing; the modules that own the data cache it.
+ *
+ * <p>All of it is infrastructure (the onion's outer ring): only other modules' {@code infra}
+ * packages may use it, never their domain.
  */
 @ApplicationModule(displayName = "Cellar")
+@InfrastructureRing
 @NullMarked
 package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
 
+import org.jmolecules.architecture.onion.simplified.InfrastructureRing;
 import org.jspecify.annotations.NullMarked;
 import org.springframework.modulith.ApplicationModule;

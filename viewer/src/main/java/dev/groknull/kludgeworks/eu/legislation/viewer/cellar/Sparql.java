@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
@@ -16,8 +14,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.json.JsonMapper;
 
 /**
  * SELECT queries against Cellar's SPARQL endpoint. The same query asked again while it runs waits
@@ -30,7 +26,6 @@ public class Sparql {
 
   private final RestClient client;
   private final CellarProperties properties;
-  private final JsonMapper json = JsonMapper.builder().build();
   private final ConcurrentHashMap<String, CompletableFuture<SparqlResult>> running =
       new ConcurrentHashMap<>();
 
@@ -80,7 +75,7 @@ public class Sparql {
     if (body == null) {
       throw new CellarException("SPARQL endpoint returned no body");
     }
-    var result = parse(json.readTree(body));
+    var result = SparqlResult.parse(body);
     if (result.rows().size() >= properties.maxRows()) {
       throw new CellarException(
           "SPARQL result has "
@@ -94,7 +89,7 @@ public class Sparql {
    * A query kept beside the class that runs it: {@code name} in its package on the classpath, with
    * {@code {{placeholders}}} for {@link #fill} (the corpus script's queries use the same).
    */
-  static String template(Class<?> owner, String name) {
+  public static String template(Class<?> owner, String name) {
     try (var in = Objects.requireNonNull(owner.getResourceAsStream(name), name)) {
       return new String(in.readAllBytes(), StandardCharsets.UTF_8);
     } catch (IOException e) {
@@ -103,7 +98,7 @@ public class Sparql {
   }
 
   /** The query with each {@code {{name}}} replaced by its value; the caller checks the values. */
-  static String fill(String template, Map<String, String> values) {
+  public static String fill(String template, Map<String, String> values) {
     var query = template;
     for (var value : values.entrySet()) {
       query = query.replace("{{" + value.getKey() + "}}", value.getValue());
@@ -112,23 +107,5 @@ public class Sparql {
       throw new IllegalArgumentException("A placeholder left unfilled: " + query);
     }
     return query;
-  }
-
-  /** SPARQL 1.1 Query Results JSON: head.vars, results.bindings[{var: {type, value}}]. */
-  static SparqlResult parse(JsonNode results) {
-    var variables = new ArrayList<String>();
-    results.path("head").path("vars").forEach(v -> variables.add(v.asString()));
-    var rows = new ArrayList<SparqlResult.Row>();
-    for (var binding : results.path("results").path("bindings")) {
-      var values = new LinkedHashMap<String, String>();
-      for (var variable : variables) {
-        var value = binding.path(variable).path("value");
-        if (!value.isMissingNode()) {
-          values.put(variable, value.asString());
-        }
-      }
-      rows.add(new SparqlResult.Row(values));
-    }
-    return new SparqlResult(variables, rows);
   }
 }
