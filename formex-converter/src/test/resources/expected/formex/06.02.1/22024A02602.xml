@@ -9,7 +9,7 @@
            converter="1.0.0">
    <source celex="22024A02602"
            eli="http://data.europa.eu/eli/agree_internation/2024/2602/oj">
-      <publication series="L" date="2024-10-08" page="1"/>
+      <publication series="L" date="2024-10-08" page="1" document="2024/2602"/>
    </source>
    <preface>
       <longTitle>

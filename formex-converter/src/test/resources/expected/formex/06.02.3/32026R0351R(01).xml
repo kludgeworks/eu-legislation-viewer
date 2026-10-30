@@ -9,7 +9,7 @@
            converter="1.0.0">
    <source celex="32026R0351R(01)"
            eli="http://data.europa.eu/eli/reg_impl/2026/351/corrigendum/2026-04-17/oj">
-      <publication series="L" date="2026-04-17" page="1"/>
+      <publication series="L" date="2026-04-17" page="1" document="2026/90291"/>
    </source>
    <preface>
       <longTitle>

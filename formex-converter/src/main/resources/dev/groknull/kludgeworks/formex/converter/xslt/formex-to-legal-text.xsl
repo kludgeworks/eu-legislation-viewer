@@ -149,16 +149,18 @@
               <xsl:when test="$consolidated">
                 <xsl:variable name="bib" as="element(BIB.INSTANCE.CONS)?" select="$doc/FAM.COMP/BIB.DATA/BIB.INSTANCE.CONS"/>
                 <xsl:sequence select="f:publication($bib/DOCUMENT.REF.CONS/COLL, $bib/DOCUMENT.REF.CONS/NO.OJ,
-                                                    $bib/DATE/@ISO, $bib/DOCUMENT.REF.CONS/PAGE.FIRST, $content/TITLE/TI/NO.DOC.C)"/>
+                                                    $bib/DATE/@ISO, $bib/DOCUMENT.REF.CONS/PAGE.FIRST,
+                                                    (f:oj-document($bib/DOCUMENT.REF.CONS), $content/TITLE/TI/NO.DOC.C)[1])"/>
               </xsl:when>
               <xsl:when test="$package">
                 <xsl:sequence select="f:publication($package/PUBLICATION.REF/COLL, $package/PUBLICATION.REF/NO.OJ,
                                                     $package/PUBLICATION.REF/DATE/@ISO, $package/FMX/DOC.MAIN.PUB/PAGE.FIRST,
-                                                    $content/TITLE/TI/NO.DOC.C)"/>
+                                                    (f:oj-document($doc/BIB.INSTANCE/DOCUMENT.REF), $content/TITLE/TI/NO.DOC.C)[1])"/>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:variable name="ref" as="element(DOCUMENT.REF)?" select="$doc/BIB.INSTANCE/DOCUMENT.REF"/>
-                <xsl:sequence select="f:publication($ref/COLL, $ref/NO.OJ, (), $ref/PAGE.FIRST, $content/TITLE/TI/NO.DOC.C)"/>
+                <xsl:sequence select="f:publication($ref/COLL, $ref/NO.OJ, (), $ref/PAGE.FIRST,
+                                                    (f:oj-document($ref), $content/TITLE/TI/NO.DOC.C)[1])"/>
               </xsl:otherwise>
             </xsl:choose>
           </source>
@@ -362,6 +364,15 @@
   <xsl:function name="f:formex-version" as="xs:string">
     <xsl:param name="e" as="element()"/>
     <xsl:sequence select="replace($e/@xsi:noNamespaceSchemaLocation, '^.*formex-([^-/]+)-\d+\.xd$', '$1')"/>
+  </xsl:function>
+
+  <!-- the number in the series of a document the OJ published on its own (from October 2023): the
+       OJ reference's NO.DOC, 2026/449 for OJ L, 2026/449. Not the NO.DOC beside it in BIB.INSTANCE,
+       the act's own number. -->
+  <xsl:function name="f:oj-document" as="xs:string?">
+    <xsl:param name="ref" as="element()?"/>
+    <xsl:sequence select="$ref/NO.DOC[@TYPE = 'OJ'][normalize-space(YEAR) and normalize-space(NO.CURRENT)]
+                          ! (normalize-space(YEAR) || '/' || normalize-space(NO.CURRENT))"/>
   </xsl:function>
 
   <xsl:function name="f:publication" as="element()?">

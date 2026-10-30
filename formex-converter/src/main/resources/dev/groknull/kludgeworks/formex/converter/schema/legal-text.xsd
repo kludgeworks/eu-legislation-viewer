@@ -182,7 +182,7 @@
       <xs:annotation><xs:documentation>The OJ series: L or C.</xs:documentation></xs:annotation>
     </xs:attribute>
     <xs:attribute name="number" type="xs:string">
-      <xs:annotation><xs:documentation>The issue number, without leading zeros; absent for acts published individually (from October 2023).</xs:documentation></xs:annotation>
+      <xs:annotation><xs:documentation>The issue number, without leading zeros; absent for documents published on their own (from October 2023), which have a document number instead.</xs:documentation></xs:annotation>
     </xs:attribute>
     <xs:attribute name="date" type="xs:date">
       <xs:annotation><xs:documentation>The publication date.</xs:documentation></xs:annotation>
@@ -191,7 +191,7 @@
       <xs:annotation><xs:documentation>The first page.</xs:documentation></xs:annotation>
     </xs:attribute>
     <xs:attribute name="document" type="xs:string">
-      <xs:annotation><xs:documentation>A C-series document's number, as printed above its title, without brackets: 2022/C 155/03 (Formex NO.DOC.C).</xs:documentation></xs:annotation>
+      <xs:annotation><xs:documentation>The document's number in the Official Journal: for a document published on its own (from October 2023), its number in the series, 2026/449 (cited OJ L, 2026/449); before, for a C-series document, the number printed above its title, without brackets, 2022/C 155/03 (Formex NO.DOC.C).</xs:documentation></xs:annotation>
     </xs:attribute>
   </xs:complexType>
 

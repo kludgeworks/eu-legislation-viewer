@@ -8,7 +8,7 @@
            formexVersion="06.02.3"
            converter="1.0.0">
    <source celex="32026R0758" eli="http://data.europa.eu/eli/reg_impl/2026/758/oj">
-      <publication series="L" date="2026-04-07" page="1"/>
+      <publication series="L" date="2026-04-07" page="1" document="2026/758"/>
    </source>
    <preface>
       <longTitle>
