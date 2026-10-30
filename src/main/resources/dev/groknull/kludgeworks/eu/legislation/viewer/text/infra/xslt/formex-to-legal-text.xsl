@@ -266,9 +266,10 @@
        converter error. -->
   <xsl:mode name="f:ambiguity" on-no-match="shallow-copy"/>
 
-  <xsl:key name="f:live-unit" match="lt:unit[not(ancestor::lt:deleted)]" use="@eId"/>
+  <!-- units and quoted structures: a quotation in a unit the source repeats shares its eId too -->
+  <xsl:key name="f:live-unit" match="(lt:unit | lt:quotedStructure)[not(ancestor::lt:deleted)]" use="@eId"/>
 
-  <xsl:template match="lt:unit[not(ancestor::lt:deleted)][f:ambiguous(.)]" mode="f:ambiguity">
+  <xsl:template match="(lt:unit | lt:quotedStructure)[not(ancestor::lt:deleted)][f:ambiguous(.)]" mode="f:ambiguity">
     <xsl:copy>
       <xsl:apply-templates select="@*" mode="#current"/>
       <xsl:attribute name="ambiguous" select="true()"/>
@@ -281,41 +282,47 @@
        because its parent's eId is shared that way: then its own (pnt_2/pnt_a under both points 2) is
        too -->
   <xsl:function name="f:ambiguous" as="xs:boolean">
-    <xsl:param name="unit" as="element(lt:unit)"/>
-    <xsl:variable name="copies" as="element(lt:unit)+" select="key('f:live-unit', $unit/@eId, root($unit))"/>
+    <xsl:param name="unit" as="element()"/>
+    <xsl:variable name="copies" as="element()+" select="key('f:live-unit', $unit/@eId, root($unit))"/>
     <xsl:sequence select="count($copies) gt 1 and (
         (f:printed-label($unit) != ''
          and (every $c in $copies satisfies f:printed-label($c) = f:printed-label($unit)
               and f:sequence($c) is f:sequence($unit)))
-        or (every $c in $copies satisfies f:unit-parent($c)[self::lt:unit][f:ambiguous(.)])
+        or (every $c in $copies satisfies f:unit-parent($c)[self::lt:unit or self::lt:quotedStructure][f:ambiguous(.)])
         or f:eid-parents-ambiguous($unit))"/>
   </xsl:function>
 
   <!-- the units whose eId this one's extends (a flat annex level's parent level isn't its XML
        parent): shared, all marked ambiguous, so this one's eId is shared through them -->
   <xsl:function name="f:eid-parents-ambiguous" as="xs:boolean">
-    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:param name="unit" as="element()"/>
     <xsl:variable name="parent-eid" as="xs:string?" select="replace($unit/@eId, '/[^/]+$', '')[. != $unit/@eId]"/>
-    <xsl:variable name="parents" as="element(lt:unit)*" select="$parent-eid ! key('f:live-unit', ., root($unit))"/>
+    <xsl:variable name="parents" as="element()*" select="$parent-eid ! key('f:live-unit', ., root($unit))"/>
     <xsl:sequence select="count($parents) gt 1 and (every $p in $parents satisfies f:ambiguous($p))"/>
   </xsl:function>
 
   <!-- the label's letters and digits: print that differs only in spacing, punctuation or case is
-       the same label (Article 2 and Article2, 1) and 1.) -->
+       the same label (Article 2 and Article2, 1) and 1.); for an article, an annex, or a division whose kind
+       the EU subdivision table named, its kind and number, in any language (CHAPTER I and CAPÍTULO I,
+       Article 2 and Artículo 2 of a text printed in two) -->
   <xsl:function name="f:printed-label" as="xs:string">
-    <xsl:param name="unit" as="element(lt:unit)"/>
-    <xsl:sequence select="lower-case(replace(string-join($unit/lt:num//@v), '[^\p{L}\p{N}]', ''))"/>
+    <xsl:param name="unit" as="element()"/>
+    <xsl:variable name="segment" as="xs:string" select="tokenize($unit/@eId, '/')[last()]"/>
+    <xsl:sequence select="
+        if (($unit/@kind = 'division' and matches($segment, '^(prt|tis|cpt|sct|sbs)_') or $unit/@kind = ('article', 'annex'))
+            and exists($unit/lt:num) and not(starts-with($segment, 'art_unnumbered'))) then $segment
+        else lower-case(replace(string-join($unit/lt:num//@v), '[^\p{L}\p{N}]', ''))"/>
   </xsl:function>
 
   <!-- the sequence a unit is numbered in: its parent, through divisions, which group units without
        adding to their eIds (articles act-wide, recitals preamble-wide); a list is a sequence of its own -->
   <xsl:function name="f:sequence" as="node()">
-    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:param name="unit" as="element()"/>
     <xsl:sequence select="$unit/ancestor::*[not(self::lt:unit[@kind = 'division'])][1]"/>
   </xsl:function>
 
   <xsl:function name="f:unit-parent" as="node()">
-    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:param name="unit" as="element()"/>
     <xsl:sequence select="($unit/ancestor::*[@eId][1], root($unit))[1]"/>
   </xsl:function>
 

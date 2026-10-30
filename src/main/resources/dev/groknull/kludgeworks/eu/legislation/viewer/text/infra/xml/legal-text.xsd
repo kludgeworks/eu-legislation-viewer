@@ -868,6 +868,9 @@
         <xs:attribute name="eId" type="EId" use="required">
           <xs:annotation><xs:documentation>The enclosing unit's eId plus qst_N; the quoted units' eIds hang off it.</xs:documentation></xs:annotation>
         </xs:attribute>
+        <xs:attribute name="ambiguous" type="xs:boolean">
+          <xs:annotation><xs:documentation>Inside a unit marked ambiguous, whose eId this one shares through it.</xs:documentation></xs:annotation>
+        </xs:attribute>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
