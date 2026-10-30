@@ -29,6 +29,7 @@
     "org.springframework.boot:spring-boot-dependencies": 98615043,
     "org.springframework.boot:spring-boot-loader-tools": -1122518281,
     "org.springframework.boot:spring-boot-starter-actuator": -1082017891,
+    "org.springframework.boot:spring-boot-starter-restclient": 888455491,
     "org.springframework.boot:spring-boot-starter-webmvc": 338400426,
     "org.springframework.boot:spring-boot-test": 1189299640,
     "org.springframework.modulith:spring-modulith-api": -1267837964,
@@ -114,17 +115,20 @@
     "org.springframework.boot:spring-boot-actuator-autoconfigure": -115833215,
     "org.springframework.boot:spring-boot-autoconfigure": 1472557455,
     "org.springframework.boot:spring-boot-health": -1642279449,
+    "org.springframework.boot:spring-boot-http-client": 227691599,
     "org.springframework.boot:spring-boot-http-converter": 745525851,
     "org.springframework.boot:spring-boot-jackson": -1628625085,
     "org.springframework.boot:spring-boot-loader-tools": -312570975,
     "org.springframework.boot:spring-boot-micrometer-metrics": 1310591253,
     "org.springframework.boot:spring-boot-micrometer-observation": 1009262964,
+    "org.springframework.boot:spring-boot-restclient": 1077409218,
     "org.springframework.boot:spring-boot-servlet": 639711912,
     "org.springframework.boot:spring-boot-starter": -1905590456,
     "org.springframework.boot:spring-boot-starter-actuator": -1286390891,
     "org.springframework.boot:spring-boot-starter-jackson": 369527275,
     "org.springframework.boot:spring-boot-starter-logging": -1965325172,
     "org.springframework.boot:spring-boot-starter-micrometer-metrics": -242434938,
+    "org.springframework.boot:spring-boot-starter-restclient": 1134993850,
     "org.springframework.boot:spring-boot-starter-tomcat": 1898694526,
     "org.springframework.boot:spring-boot-starter-tomcat-runtime": 1798393534,
     "org.springframework.boot:spring-boot-starter-webmvc": -1923582309,
@@ -163,6 +167,7 @@
     "org.springframework.boot:spring-boot": "org.springframework.boot:spring-boot:4.1.1",
     "org.springframework.boot:spring-boot-autoconfigure": "org.springframework.boot:spring-boot-autoconfigure:4.1.1",
     "org.springframework.boot:spring-boot-starter-actuator": "org.springframework.boot:spring-boot-starter-actuator:4.1.1",
+    "org.springframework.boot:spring-boot-starter-restclient": "org.springframework.boot:spring-boot-starter-restclient:4.1.1",
     "org.springframework.boot:spring-boot-starter-webmvc": "org.springframework.boot:spring-boot-starter-webmvc:4.1.1",
     "org.springframework.boot:spring-boot-test": "org.springframework.boot:spring-boot-test:4.1.1",
     "org.springframework.modulith:spring-modulith-api": "org.springframework.modulith:spring-modulith-api:2.1.1",
@@ -600,6 +605,12 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-http-client": {
+      "shasums": {
+        "jar": "a7bae90c3d39eb318fee764d8a18dfa4009d62a9b0d6843c3ce987f4c0ad606e"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-http-converter": {
       "shasums": {
         "jar": "52a167430a918c223b2ccd2eb62aff91a8e43e6daebe5a07caa37b9a04c61cb9"
@@ -627,6 +638,12 @@
     "org.springframework.boot:spring-boot-micrometer-observation": {
       "shasums": {
         "jar": "09ebd9ff7de21d10b1f11c70ca0ea8766a8a727affd19642584bee5a314ea11a"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-restclient": {
+      "shasums": {
+        "jar": "e613f02dafc91120634aff26272e77fe1e56d6a644967bd74ed7beb7f199b17e"
       },
       "version": "4.1.1"
     },
@@ -663,6 +680,12 @@
     "org.springframework.boot:spring-boot-starter-micrometer-metrics": {
       "shasums": {
         "jar": "ad34ce3535a82b3920efea7f9c5d6322de484969f3ab5fa6da05030edd7c14d4"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-starter-restclient": {
+      "shasums": {
+        "jar": "453502f3b357b98257d38220f1a89768e75a157d305499b1425b0620956e72e1"
       },
       "version": "4.1.1"
     },
@@ -962,6 +985,11 @@
     "org.springframework.boot:spring-boot-health": [
       "org.springframework.boot:spring-boot"
     ],
+    "org.springframework.boot:spring-boot-http-client": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-http-converter",
+      "org.springframework:spring-web"
+    ],
     "org.springframework.boot:spring-boot-http-converter": [
       "org.springframework.boot:spring-boot",
       "org.springframework:spring-web"
@@ -982,6 +1010,11 @@
     "org.springframework.boot:spring-boot-micrometer-observation": [
       "io.micrometer:micrometer-observation",
       "org.springframework.boot:spring-boot"
+    ],
+    "org.springframework.boot:spring-boot-restclient": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-http-client",
+      "org.springframework.boot:spring-boot-http-converter"
     ],
     "org.springframework.boot:spring-boot-servlet": [
       "org.springframework.boot:spring-boot",
@@ -1013,6 +1046,11 @@
     "org.springframework.boot:spring-boot-starter-micrometer-metrics": [
       "org.springframework.boot:spring-boot-micrometer-metrics",
       "org.springframework.boot:spring-boot-starter"
+    ],
+    "org.springframework.boot:spring-boot-starter-restclient": [
+      "org.springframework.boot:spring-boot-restclient",
+      "org.springframework.boot:spring-boot-starter",
+      "org.springframework.boot:spring-boot-starter-jackson"
     ],
     "org.springframework.boot:spring-boot-starter-tomcat": [
       "org.springframework.boot:spring-boot-starter",
@@ -2260,6 +2298,15 @@
       "org.springframework.boot.health.contributor",
       "org.springframework.boot.health.registry"
     ],
+    "org.springframework.boot:spring-boot-http-client": [
+      "org.springframework.boot.http.client",
+      "org.springframework.boot.http.client.autoconfigure",
+      "org.springframework.boot.http.client.autoconfigure.imperative",
+      "org.springframework.boot.http.client.autoconfigure.metrics",
+      "org.springframework.boot.http.client.autoconfigure.reactive",
+      "org.springframework.boot.http.client.autoconfigure.service",
+      "org.springframework.boot.http.client.reactive"
+    ],
     "org.springframework.boot:spring-boot-http-converter": [
       "org.springframework.boot.http.converter.autoconfigure"
     ],
@@ -2309,6 +2356,12 @@
     ],
     "org.springframework.boot:spring-boot-micrometer-observation": [
       "org.springframework.boot.micrometer.observation.autoconfigure"
+    ],
+    "org.springframework.boot:spring-boot-restclient": [
+      "org.springframework.boot.restclient",
+      "org.springframework.boot.restclient.autoconfigure",
+      "org.springframework.boot.restclient.autoconfigure.service",
+      "org.springframework.boot.restclient.observation"
     ],
     "org.springframework.boot:spring-boot-servlet": [
       "org.springframework.boot.servlet",
@@ -2865,17 +2918,20 @@
       "org.springframework.boot:spring-boot-actuator-autoconfigure",
       "org.springframework.boot:spring-boot-autoconfigure",
       "org.springframework.boot:spring-boot-health",
+      "org.springframework.boot:spring-boot-http-client",
       "org.springframework.boot:spring-boot-http-converter",
       "org.springframework.boot:spring-boot-jackson",
       "org.springframework.boot:spring-boot-loader-tools",
       "org.springframework.boot:spring-boot-micrometer-metrics",
       "org.springframework.boot:spring-boot-micrometer-observation",
+      "org.springframework.boot:spring-boot-restclient",
       "org.springframework.boot:spring-boot-servlet",
       "org.springframework.boot:spring-boot-starter",
       "org.springframework.boot:spring-boot-starter-actuator",
       "org.springframework.boot:spring-boot-starter-jackson",
       "org.springframework.boot:spring-boot-starter-logging",
       "org.springframework.boot:spring-boot-starter-micrometer-metrics",
+      "org.springframework.boot:spring-boot-starter-restclient",
       "org.springframework.boot:spring-boot-starter-tomcat",
       "org.springframework.boot:spring-boot-starter-tomcat-runtime",
       "org.springframework.boot:spring-boot-starter-webmvc",
