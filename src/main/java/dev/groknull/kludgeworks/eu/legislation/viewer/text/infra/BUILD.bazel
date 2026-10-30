@@ -7,7 +7,7 @@ java_library(
     srcs = glob(["*.java"]),
     plugins = ["//tools/build:mapstruct"],
     visibility = ["//src:__subpackages__"],  # the viewer only: //formex-converter never depends on it
-    runtime_deps = ["//formex-converter/schema:resources"],
+    runtime_deps = ["//formex-converter:schema"],
     deps = [
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text",
         "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml",

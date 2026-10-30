@@ -55,7 +55,7 @@ public final class LegalTextReader {
   }
 
   private static Schema schema() {
-    var resource = "/formex-converter/schema/legal-text.xsd";
+    var resource = "/dev/groknull/kludgeworks/formex/converter/schema/legal-text.xsd";
     var url = Objects.requireNonNull(LegalTextReader.class.getResource(resource), resource);
     try {
       return SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema(url);

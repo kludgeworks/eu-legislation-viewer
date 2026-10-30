@@ -15,9 +15,9 @@ import net.sf.saxon.s9api.XdmNode;
 
 /**
  * Legal texts converted from real Formex: the converter's expected output for its fixtures,
- * formex-converter/test/expected/formex/&lt;Formex version&gt;/&lt;CELEX&gt;.xml (the test target's
- * data). Reading them, not converting again, keeps the viewer's tests to the reader: they change
- * only when the converter's output does.
+ * formex-converter/src/test/resources/expected/formex/&lt;Formex version&gt;/&lt;CELEX&gt;.xml (the
+ * test target's data). Reading them, not converting again, keeps the viewer's tests to the reader:
+ * they change only when the converter's output does.
  */
 @AutoBazelRepository
 final class SampleLegalTexts {
@@ -58,7 +58,7 @@ final class SampleLegalTexts {
       return Path.of(
           Runfiles.preload()
               .withSourceRepository(AutoBazelRepository_SampleLegalTexts.NAME)
-              .rlocation("kludgeworks_viewer/formex-converter/test/expected/formex"));
+              .rlocation("kludgeworks_viewer/formex-converter/src/test/resources/expected/formex"));
     } catch (IOException e) {
       throw new UncheckedIOException(e);
     }

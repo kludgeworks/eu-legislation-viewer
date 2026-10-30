@@ -1,0 +1,39 @@
+# SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_library")
+
+package(default_visibility = ["//formex-converter:__subpackages__"])
+
+# The converter's classpath resources, under its Java package (dev/groknull/kludgeworks/formex/converter/)
+
+exports_files([
+    "schema/legal-text.sch",
+    "schema/legal-text.xsd",
+    "schema/xml.xsd",
+    "version.txt",
+])
+
+# formex-to-legal-text.xsl, the modules it includes and the vocabularies they read: Formex → legal-text
+filegroup(
+    name = "xslt",
+    srcs = glob([
+        "xslt/*.xsl",
+        "xslt/*.rdf",
+    ]),
+)
+
+# the stylesheets and version.txt, the converter's version, released independently of the viewer:
+# the stylesheet reads it as ../version.txt and stamps it on every document (legalText/@converter)
+java_library(
+    name = "stylesheets",
+    resources = [
+        "version.txt",
+        ":xslt",
+    ],
+)
+
+# legal-text.xsd, the schema of the xml: namespace it imports (xml.xsd, W3C's), the rules it can't
+# express (legal-text.sch) and the catalog that resolves their URLs (catalog.xml)
+java_library(
+    name = "schema",
+    resources = glob(["schema/*"]),
+)

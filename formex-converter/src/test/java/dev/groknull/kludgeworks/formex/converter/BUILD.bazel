@@ -1,0 +1,83 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
+load("@rules_java//java:defs.bzl", "java_binary")
+
+# The converter's tests through its Java API: every fixture against the schema, legal-text.sch,
+# MathML 3, its expected output and its source text; refusals and error codes; legal-text.sch's
+# rules. One test target per *Test.java; the other classes become a shared library.
+java_test_suite(
+    name = "converter",
+    size = "medium",
+    srcs = glob(
+        ["*.java"],
+        exclude = ["CorpusTests.java"],
+    ),
+    data = [
+        "//formex-converter/src/test/resources/expected",
+        "//formex-converter/src/test/resources/fixtures",
+    ],
+    runner = "junit5",
+    runtime_deps = [
+        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
+        "//formex-converter/src/test/resources/compare:resources",
+        "//formex-converter/src/test/resources/mathml3:resources",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//formex-converter/src/main/java/dev/groknull/kludgeworks/formex/converter",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build:schematron",
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_params",
+        "@maven//:org_xmlunit_xmlunit_assertj3",
+        "@maven//:org_xmlunit_xmlunit_core",
+        "@rules_java//java/runfiles",
+    ],
+)
+
+# Rewrites the converter's expected output from the fixtures (mise run expected): after a deliberate
+# change to the converter, then review the diff
+java_binary(
+    name = "update_expected",
+    testonly = True,
+    data = ["//formex-converter/src/test/resources/fixtures"],
+    main_class = "dev.groknull.kludgeworks.formex.converter.UpdateExpected",
+    runtime_deps = [":converter-test-lib"],
+)
+
+# The regression test on the whole corpus: one language's mirror in formex-corpus/, ignored
+# (mise run corpus:fetch, then mise run corpus:test; also //:corpus; see CorpusTests)
+java_junit5_test(
+    name = "corpus",
+    size = "enormous",
+    srcs = ["CorpusTests.java"],
+    # the JDK's XML limits, which the converter lifts for its own parsing, also stop the validation
+    # of a large document's output (a 55 MB consolidation, an annex with 100,000 entity references)
+    jvm_flags = [
+        "-Djdk.xml.maxGeneralEntitySizeLimit=0",
+        "-Djdk.xml.totalEntitySizeLimit=0",
+    ],
+    # not part of //...; cached on the converter and the mirror's manifest hash (--test_env)
+    tags = ["manual"],
+    test_class = "dev.groknull.kludgeworks.formex.converter.CorpusTests",
+    visibility = ["//:__pkg__"],  # for the //:corpus suite
+    runtime_deps = [
+        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
+        "//formex-converter/src/test/resources/compare:resources",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        ":converter-test-lib",
+        "//formex-converter/src/main/java/dev/groknull/kludgeworks/formex/converter",
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_xmlunit_xmlunit_assertj3",
+    ],
+)

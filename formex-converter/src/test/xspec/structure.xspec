@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!-- Enacting terms, lists, tables and other blocks -->
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/formex/converter/xslt/formex-to-legal-text.xsl">
+
+  <x:scenario label="An article with one ALINEA">
+    <x:context mode="block" xmlns="">
+      <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>The measures are set out in the Annex.</ALINEA></ARTICLE>
+    </x:context>
+    <x:expect label="has the text as its content, as in AKN (no unp_1)">
+      <unit eId="art_1" kind="article"><num><t v="Article 1"/></num><p><t v="The measures are set out in the Annex."/></p></unit>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="An article with two ALINEA (Article 3)">
+    <x:context mode="block" xmlns="">
+      <ARTICLE IDENTIFIER="003"><TI.ART>Article 3</TI.ART><ALINEA>This Regulation shall enter into force.</ALINEA><ALINEA>It shall apply from <DATE ISO="20160201">1 February 2016</DATE>.</ALINEA></ARTICLE>
+    </x:context>
+    <x:expect label="has two unnumbered paragraphs">
+      <unit eId="art_3" kind="article"><num><t v="Article 3"/></num>
+        <unit eId="art_3/unp_1" kind="paragraph"><p><t v="This Regulation shall enter into force."/></p></unit>
+        <unit eId="art_3/unp_2" kind="paragraph"><p><t v="It shall apply from "/><date date="2016-02-01" asWritten="1 February 2016"/><t v="."/></p></unit>
+      </unit>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="An article with a heading and numbered paragraphs (Air Ops)">
+    <x:context mode="block" xmlns="">
+      <ARTICLE IDENTIFIER="006"><TI.ART>Article 6</TI.ART><STI.ART>Derogations</STI.ART>
+        <PARAG IDENTIFIER="006.001"><NO.PARAG>1.</NO.PARAG><ALINEA>first paragraph</ALINEA></PARAG>
+        <PARAG IDENTIFIER="006.002"><NO.PARAG>2.</NO.PARAG><ALINEA>first subparagraph</ALINEA><ALINEA>second subparagraph</ALINEA></PARAG>
+      </ARTICLE>
+    </x:context>
+    <x:expect label="the heading" test="$x:result/*:heading/*:t/@v = 'Derogations'"/>
+    <x:expect label="paragraph 1 holds its text directly" test="$x:result/*:unit[1]/@eId = 'art_6/par_1' and $x:result/*:unit[1]/*:p"/>
+    <x:expect label="paragraph 2 has subparagraphs"
+              test="$x:result/*:unit[2]/*:unit/@eId = ('art_6/par_2/sub_1', 'art_6/par_2/sub_2') and $x:result/*:unit[2]/*:unit/@kind = 'subparagraph'"/>
+  </x:scenario>
+
+  <x:scenario label="A paragraph that contains a list">
+    <x:context mode="block" xmlns="">
+      <P>The following personnel:<LIST TYPE="alpha"><ITEM><NP><NO.P>(a)</NO.P><TXT>crew;</TXT></NP></ITEM></LIST></P>
+    </x:context>
+    <x:expect label="becomes a p and a list, side by side">
+      <p><t v="The following personnel:"/></p>
+      <list kind="alpha"><unit eId="pnt_a" kind="point"><num><t v="(a)"/></num><p><t v="crew;"/></p></unit></list>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="List types">
+    <x:context mode="block" xmlns="">
+      <P><LIST TYPE="ARAB"><ITEM><P>x</P></ITEM></LIST><LIST TYPE="ALPHA"><ITEM><P>x</P></ITEM></LIST><LIST TYPE="roman"><ITEM><P>x</P></ITEM></LIST><LIST TYPE="DASH"><ITEM><P>x</P></ITEM></LIST><LIST TYPE="NONE"><ITEM><P>x</P></ITEM></LIST><LIST TYPE="OTHER"><ITEM><P>x</P></ITEM></LIST></P>
+    </x:context>
+    <x:expect label="keep their case and kind" test="$x:result/@kind = ('arabic', 'alphaUpper', 'roman', 'dash', 'none', 'other') and count($x:result) = 6"/>
+  </x:scenario>
+
+  <x:scenario label="Items without a number">
+    <x:context mode="block" xmlns=""><LIST TYPE="DASH"><ITEM><P>first</P></ITEM><ITEM><P>second</P></ITEM></LIST></x:context>
+    <x:expect label="are indents numbered by position" test="$x:result/*:unit/@eId = ('idt_1', 'idt_2') and $x:result/*:unit/@kind = 'indent'"/>
+  </x:scenario>
+
+  <x:scenario label="Two lists in one point (6.5.2)">
+    <x:context mode="block" xmlns="">
+      <GR.SEQ LEVEL="3"><NO.GR.SEQ>6.5.2</NO.GR.SEQ><P>first:<LIST TYPE="alpha"><ITEM><NP><NO.P>(a)</NO.P><TXT>x</TXT></NP></ITEM></LIST></P><P>second:<LIST TYPE="alpha"><ITEM><NP><NO.P>(a)</NO.P><TXT>y</TXT></NP></ITEM></LIST></P></GR.SEQ>
+    </x:context>
+    <x:expect label="the first list keeps plain eIds, the second gets list_2"
+              test="$x:result//*:list/*:unit/@eId = ('pnt_6.5.2/pnt_a', 'pnt_6.5.2/list_2/pnt_a')"/>
+  </x:scenario>
+
+  <x:scenario label="A label repeated in one list (2025/24)">
+    <x:context mode="block" xmlns="">
+      <LIST TYPE="ARAB"><ITEM><NP><NO.P>(2)</NO.P><TXT>Annex III</TXT></NP></ITEM><ITEM><NP><NO.P>(3)</NO.P><TXT>Annex IV</TXT></NP></ITEM><ITEM><NP><NO.P>(2)</NO.P><TXT>point (b)(1)</TXT></NP></ITEM></LIST>
+    </x:context>
+    <x:expect label="keeps the repeat as published: two pnt_2 (the document marks them ambiguous)"
+              test="$x:result/*:unit/@eId => string-join(' ') = 'pnt_2 pnt_3 pnt_2'"/>
+  </x:scenario>
+
+  <x:scenario label="A deleted point and a new one with its label">
+    <x:context mode="block" xmlns="">
+      <LIST TYPE="ARAB"><?CLG.MDFO ID="O1" ACTION="DELETED" ACTIVE.DOC="32026R0449"?><ITEM><NP><NO.P>(2)</NO.P><TXT>old</TXT></NP></ITEM><?CLG.MDFC IDREF="O1"?><ITEM><NP><NO.P>(2)</NO.P><TXT>new</TXT></NP></ITEM></LIST>
+    </x:context>
+    <x:expect label="keep the plain label" test="$x:result//*:unit/@eId = ('pnt_2', 'pnt_2')"/>
+  </x:scenario>
+
+  <x:scenario label="A definition list">
+    <x:context mode="block" xmlns="">
+      <DLIST><DLIST.ITEM><PREFIX>(1)</PREFIX><TERM>'cargo'</TERM><DEFINITION>means any property</DEFINITION></DLIST.ITEM></DLIST>
+    </x:context>
+    <x:expect label="has the prefix as num and the term as heading">
+      <list kind="definition"><unit eId="pnt_1" kind="definition"><num><t v="(1)"/></num><heading><t v="'cargo'"/></heading><p><t v="means any property"/></p></unit></list>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A definition list without prefixes">
+    <x:context mode="block" xmlns="">
+      <DLIST><DLIST.ITEM><TERM>'cargo'</TERM><DEFINITION>means any property</DEFINITION></DLIST.ITEM>
+        <DLIST.ITEM><TERM>'mail'</TERM><DEFINITION>means dispatches of correspondence</DEFINITION></DLIST.ITEM></DLIST>
+    </x:context>
+    <x:expect label="numbers the definitions by position as def_N, apart from points labelled 1, 2"
+              test="$x:result//*:unit/@eId => string-join(' ') = 'def_1 def_2'"/>
+  </x:scenario>
+
+  <x:scenario label="List points each holding a level 1.">
+    <x:context mode="block" xmlns="">
+      <LIST TYPE="alpha">
+        <ITEM><NP><NO.P>(a)</NO.P><TXT>for aircraft:</TXT></NP><GR.SEQ LEVEL="1"><NO.GR.SEQ>1.</NO.GR.SEQ><P>x</P></GR.SEQ></ITEM>
+        <ITEM><NP><NO.P>(b)</NO.P><TXT>for vessels:</TXT></NP><GR.SEQ LEVEL="1"><NO.GR.SEQ>1.</NO.GR.SEQ><P>y</P></GR.SEQ></ITEM>
+      </LIST>
+    </x:context>
+    <x:expect label="number each level under its point: pnt_a/pnt_1, pnt_b/pnt_1"
+              test="$x:result//*:unit[@kind = 'level']/@eId => string-join(' ') = 'pnt_a/pnt_1 pnt_b/pnt_1'"/>
+  </x:scenario>
+
+  <x:scenario label="A level holding a list point 1. and a sub-level (1)">
+    <x:context mode="block" xmlns="">
+      <GR.SEQ LEVEL="1"><NO.GR.SEQ>2.</NO.GR.SEQ><P>Requirements:<LIST TYPE="ARAB"><ITEM><NP><NO.P>1.</NO.P><TXT>x</TXT></NP></ITEM></LIST></P>
+        <GR.SEQ LEVEL="2"><NO.GR.SEQ>(1)</NO.GR.SEQ><P>y</P></GR.SEQ></GR.SEQ>
+    </x:context>
+    <x:expect label="sets the list apart (list_1), the sub-level keeps pnt_1"
+              test="sort($x:result/descendant-or-self::*:unit/@eId ! string(.)) => string-join(' ') = 'pnt_2 pnt_2/list_1/pnt_1 pnt_2/pnt_1'"/>
+  </x:scenario>
+
+  <x:scenario label="An item an amendment put after its list's end (in Bulgarian:)">
+    <x:context mode="block" xmlns="">
+      <P>one of the following:<LIST TYPE="NONE"><ITEM><P>in Danish: dybfrossen,</P></ITEM><ITEM><P>in Slovak: hlbokozmrazené,</P></ITEM></LIST><ITEM><P>in Bulgarian: бързо замразена</P></ITEM></P>
+    </x:context>
+    <x:expect label="is a list of its own, numbered after the list: list_2/idt_1"
+              test="$x:result/descendant-or-self::*:unit/@eId => string-join(' ') = 'idt_1 idt_2 list_2/idt_1'"/>
+  </x:scenario>
+
+  <x:scenario label="An article with quotations in two ALINEAs">
+    <x:context mode="block" xmlns="">
+      <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART>
+        <ALINEA>Point 1 is replaced by:<QUOT.S LEVEL="1"><P>‘one’</P></QUOT.S></ALINEA>
+        <ALINEA>Point 2 is replaced by:<QUOT.S LEVEL="1"><P>‘two’</P></QUOT.S></ALINEA></ARTICLE>
+    </x:context>
+    <x:expect label="numbers them through the article, as their eIds hang off it"
+              test="$x:result//*:quotedStructure/@eId => string-join(' ') = 'art_1/unp_1/qstr_1 art_1/unp_2/qstr_2'"/>
+  </x:scenario>
+
+  <x:scenario label="A table">
+    <x:context mode="block" xmlns="">
+      <TBL COLS="2" NO.SEQ="0001"><TITLE><TI><P>Table 1</P></TI></TITLE><CORPUS>
+        <ROW TYPE="HEADER"><CELL COL="1" TYPE="HEADER">Item</CELL><CELL COL="2" TYPE="HEADER">Value</CELL></ROW>
+        <ROW><CELL COL="1" COLSPAN="2"><NP><NO.P>1.</NO.P><TXT>whole row</TXT></NP></CELL></ROW>
+        <ROW><CELL COL="1">dd/mm/yyyy</CELL><CELL COL="2"><IE/></CELL></ROW>
+      </CORPUS></TBL>
+    </x:context>
+    <x:expect label="has a caption" test="$x:result/*:caption/*:p/*:t/@v = 'Table 1'"/>
+    <x:expect label="marks header rows and cells" test="$x:result/*:tr[1]/@header = 'true' and $x:result/*:tr[1]/*:td/@header = 'true'"/>
+    <x:expect label="keeps colspan" test="$x:result/*:tr[2]/*:td/@colspan = '2'"/>
+    <x:expect label="a numbered paragraph in a cell keeps its num" test="$x:result/*:tr[2]/*:td/*:p/*:num/*:t/@v = '1.'"/>
+    <x:expect label="an empty cell is empty" test="empty($x:result/*:tr[3]/*:td[2]/node())"/>
+  </x:scenario>
+
+  <x:scenario label="A group of rows with a heading (BLK)">
+    <x:context mode="block" xmlns="">
+      <TBL COLS="2"><CORPUS><BLK><TI.BLK COL.END="2" COL.START="1"><NP><NO.P>1.1.</NO.P><TXT>Date(s) of validation</TXT></NP></TI.BLK><ROW><CELL COL="1">a</CELL><CELL COL="2">b</CELL></ROW></BLK></CORPUS></TBL>
+    </x:context>
+    <x:expect label="becomes a rowGroup with num and heading"
+              test="$x:result/*:rowGroup/*:num/*:t/@v = '1.1.' and $x:result/*:rowGroup/*:heading/*:t/@v = 'Date(s) of validation' and $x:result/*:rowGroup/*:tr"/>
+  </x:scenario>
+
+  <x:scenario label="A group of rows with a plain title and a subtitle (budget)">
+    <x:context mode="block" xmlns="">
+      <TBL COLS="2"><CORPUS><BLK><TI.BLK COL.END="1" COL.START="1"><HT TYPE="BOLD">2</HT></TI.BLK><STI.BLK COL.END="2" COL.START="2"><HT TYPE="BOLD">PAYMENTS</HT></STI.BLK><ROW><CELL COL="1">2 0</CELL><CELL COL="2">PAYMENTS</CELL></ROW></BLK></CORPUS></TBL>
+    </x:context>
+    <x:expect label="keeps both" test="
+        $x:result/*:rowGroup/*:heading/*:emphasis/*:t/@v = '2' and $x:result/*:rowGroup/*:subheading/*:emphasis/*:t/@v = 'PAYMENTS'"/>
+  </x:scenario>
+
+  <x:scenario label="A table whose rows each hold a level PART A">
+    <x:context mode="block" xmlns="">
+      <TBL COLS="2"><CORPUS>
+        <ROW><CELL COL="1">Substance 1</CELL><CELL COL="2"><GR.SEQ LEVEL="1"><TITLE><TI><P>PART A</P></TI></TITLE><P>x</P></GR.SEQ></CELL></ROW>
+        <ROW><CELL COL="1">Substance 2</CELL><CELL COL="2"><GR.SEQ LEVEL="1"><TITLE><TI><P>PART A</P></TI></TITLE><P>y</P></GR.SEQ></CELL></ROW>
+      </CORPUS></TBL>
+    </x:context>
+    <x:expect label="scopes each to its cell, by row and the source's column"
+              test="$x:result//*:unit/@eId => string-join(' ') = 'tab_1/tr_1/td_2/level_PART-A tab_1/tr_2/td_2/level_PART-A'"/>
+  </x:scenario>
+
+  <x:scenario label="A correction with two &quot;for … read …&quot; pairs">
+    <x:context mode="block" xmlns="">
+      <CORRECTION><DESCRIPTION><P>On page 5, in the table:</P></DESCRIPTION>
+        <OLD.CORR FOR.READ="YES"><P>for:</P><QUOT.S LEVEL="1"><P>2 April</P></QUOT.S></OLD.CORR>
+        <NEW.CORR FOR.READ="YES"><P>read:</P><QUOT.S LEVEL="1"><P>Maundy Thursday</P></QUOT.S></NEW.CORR>
+        <OLD.CORR FOR.READ="YES"><P>for:</P><QUOT.S LEVEL="1"><P>White Monday</P></QUOT.S></OLD.CORR>
+        <NEW.CORR FOR.READ="YES"><P>read:</P><QUOT.S LEVEL="1"><P>Whit Monday</P></QUOT.S></NEW.CORR>
+      </CORRECTION>
+    </x:context>
+    <x:expect label="numbers the pairs, so their quotations don't share eIds"
+              test="$x:result//*:quotedStructure/@eId => string-join(' ') = 'cor_1/old_1/qstr_1 cor_1/new_1/qstr_1 cor_1/old_2/qstr_1 cor_1/new_2/qstr_1'"/>
+  </x:scenario>
+
+  <x:scenario label="A quoted structure in an amending act">
+    <x:context mode="block" xmlns="">
+      <ITEM><NP><NO.P>(1)</NO.P><TXT>in point 1.2.2.2, point (b) is replaced by the following:</TXT><P><QUOT.S LEVEL="1"><LIST TYPE="alpha"><ITEM><NP><NO.P>(b)</NO.P><TXT>a valid crew identification card;</TXT></NP></ITEM></LIST></QUOT.S></P></NP></ITEM>
+    </x:context>
+    <x:expect label="holds the quoted units, with eIds under qstr_1"
+              test="$x:result/*:quotedStructure/@eId = 'pnt_1/qstr_1' and $x:result/*:quotedStructure/*:list/*:unit/@eId = 'pnt_1/qstr_1/pnt_b'"/>
+    <x:expect label="follows the instruction" test="$x:result/*:p/*:t/@v = 'in point 1.2.2.2, point (b) is replaced by the following:'"/>
+  </x:scenario>
+
+  <x:scenario label="An annotation">
+    <x:context mode="block" xmlns=""><ANNOTATION><TITLE><TI><P>NOTES:</P></TI></TITLE><P>a note</P></ANNOTATION></x:context>
+    <x:expect label="becomes an annotation with a heading">
+      <annotation><heading><t v="NOTES:"/></heading><p><t v="a note"/></p></annotation>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="An image">
+    <x:context mode="block" xmlns=""><INCL.ELEMENT TYPE="TIFF" FILEREF="L_2013227EN.01003401.tif" CONTENT="TECH.DESIGN"/></x:context>
+    <x:expect label="becomes a figure that says what it shows"><figure src="L_2013227EN.01003401.tif" content="techDesign"/></x:expect>
+  </x:scenario>
+
+  <x:scenario label="Transclusion of another Formex file (06.02.3)" catch="yes">
+    <x:context mode="block" xmlns=""><INCL.ELEMENT TYPE="FORMEX.DOC" FILEREF="L_202600781EN.003101.fmx.xml"/></x:context>
+    <x:expect label="is not supported yet, and fails loudly" test="exists($x:result?err)"/>
+  </x:scenario>
+
+</x:description>

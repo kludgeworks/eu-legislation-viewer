@@ -8,7 +8,7 @@ java_test_suite(
     name = "infra",
     size = "medium",
     srcs = glob(["*.java"]),
-    data = ["//formex-converter/test/expected"],
+    data = ["//formex-converter:expected"],
     runner = "junit5",
     runtime_deps = [
         "@maven//:org_junit_jupiter_junit_jupiter_engine",

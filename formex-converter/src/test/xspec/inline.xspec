@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/formex/converter/xslt/formex-to-legal-text.xsl">
+
+  <!-- inline content is tested through the P that holds it: a P becomes a <p> -->
+
+  <x:scenario label="Text">
+    <x:context mode="block" xmlns=""><P>Done at Brussels,</P></x:context>
+    <x:expect label="becomes a t element"><p><t v="Done at Brussels,"/></p></x:expect>
+  </x:scenario>
+
+  <x:scenario label="Text split by a page break">
+    <x:context mode="block" xmlns=""><P>shall be <?PAGE NO="12"?>screened</P></x:context>
+    <x:expect label="is one t element"><p><t v="shall be screened"/></p></x:expect>
+  </x:scenario>
+
+  <x:scenario label="Emphasis">
+    <x:context mode="block" xmlns="">
+      <P><HT TYPE="BOLD">b</HT><HT TYPE="ITALIC">i</HT><HT TYPE="UNDERLINE">u</HT><HT TYPE="SUP">sup</HT><HT TYPE="SUB">sub</HT><HT TYPE="UC">uc</HT><HT TYPE="SC">sc</HT><HT TYPE="EXPANDED">x</HT><HT TYPE="STROKE">s</HT><HT TYPE="BOX">bx</HT></P>
+    </x:context>
+    <x:expect label="maps each HT type to a kind">
+      <p><emphasis kind="b"><t v="b"/></emphasis><emphasis kind="i"><t v="i"/></emphasis><emphasis kind="u"><t v="u"/></emphasis><emphasis kind="sup"><t v="sup"/></emphasis><emphasis kind="sub"><t v="sub"/></emphasis><emphasis kind="uc"><t v="uc"/></emphasis><emphasis kind="sc"><t v="sc"/></emphasis><emphasis kind="expanded"><t v="x"/></emphasis><emphasis kind="strike"><t v="s"/></emphasis><emphasis kind="box"><t v="bx"/></emphasis></p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="Nested emphasis">
+    <x:context mode="block" xmlns=""><P><HT TYPE="BOLD"><HT TYPE="ITALIC">both</HT></HT></P></x:context>
+    <x:expect label="nests"><p><emphasis kind="b"><emphasis kind="i"><t v="both"/></emphasis></emphasis></p></x:expect>
+  </x:scenario>
+
+  <x:scenario label="HT TYPE=NORMAL and FT">
+    <x:context mode="block" xmlns=""><P>a <HT TYPE="NORMAL">plain</HT><x:text> </x:text><FT TYPE="NUMBER">42</FT></P></x:context>
+    <x:expect label="become plain text"><p><t v="a "/><t v="plain"/><t v=" "/><t v="42"/></p></x:expect>
+  </x:scenario>
+
+  <x:scenario label="A date">
+    <x:context mode="block" xmlns=""><P>from <DATE ISO="20160201">1 February 2016</DATE>.</P></x:context>
+    <x:expect label="keeps the value and the wording">
+      <p><t v="from "/><date date="2016-02-01" asWritten="1 February 2016"/><t v="."/></p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="Quotation marks in the same element">
+    <x:context mode="block" xmlns="">
+      <P>the term <QUOT.START CODE="2018" ID="QS1" REF.END="QE1"/>secured baggage<QUOT.END CODE="2019" ID="QE1" REF.START="QS1"/> means</P>
+    </x:context>
+    <x:expect label="become a quote with the characters from CODE">
+      <p><t v="the term "/><quote startQuote="‘" endQuote="’"><t v="secured baggage"/></quote><t v=" means"/></p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="Double quotation marks (CODE 201C / 201D)">
+    <x:context mode="block" xmlns=""><P><QUOT.START CODE="201C" ID="QS1" REF.END="QE1"/>x<QUOT.END CODE="201D" ID="QE1" REF.START="QS1"/></P></x:context>
+    <x:expect label="are “ and ”"><p><quote startQuote="“" endQuote="”"><t v="x"/></quote></p></x:expect>
+  </x:scenario>
+
+  <x:scenario label="Quotation marks across elements">
+    <x:context mode="block" xmlns="">
+      <ITEM><NP><NO.P><QUOT.START CODE="201C" ID="QS1" REF.END="QE1"/>(b)</NO.P><TXT>a valid card<QUOT.END CODE="201D" ID="QE1" REF.START="QS1"/>;</TXT></NP></ITEM>
+    </x:context>
+    <x:expect label="stay as literal characters" test="$x:result//*:num/*:t[1]/@v = '“' and $x:result//*:p/*:t[2]/@v = '”'"/>
+  </x:scenario>
+
+  <x:scenario label="A line break (05.59+)">
+    <x:context mode="block" xmlns=""><P>first<BR/>second</P></x:context>
+    <x:expect label="becomes eol"><p><t v="first"/><eol/><t v="second"/></p></x:expect>
+  </x:scenario>
+
+  <x:scenario label="An OJ reference">
+    <x:context mode="block" xmlns=""><P>(<REF.DOC.OJ COLL="L" DATE.PUB="20150317" NO.OJ="072" PAGE.FIRST="53">OJ L 72, 17.3.2015, p. 53</REF.DOC.OJ>)</P></x:context>
+    <x:expect label="keeps series, number, date and page as data">
+      <p><t v="("/><ref kind="oj" series="L" number="72" date="2015-03-17" page="53"><t v="OJ L 72, 17.3.2015, p. 53"/></ref><t v=")"/></p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A link with its ELI (06.x)">
+    <x:context mode="block" xmlns=""><P>ELI: <LINK URI="http://data.europa.eu/eli/reg/2008/300/oj">http://data.europa.eu/eli/reg/2008/300/oj</LINK></P></x:context>
+    <x:expect label="becomes a uri reference">
+      <p><t v="ELI: "/><ref kind="uri" href="http://data.europa.eu/eli/reg/2008/300/oj"><t v="http://data.europa.eu/eli/reg/2008/300/oj"/></ref></p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A footnote">
+    <x:context mode="block" xmlns="">
+      <P>first<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>one</P></NOTE> then<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>two</P></NOTE></P>
+    </x:context>
+    <x:expect label="leaves a numbered reference in the text">
+      <p><t v="first"/><noteRef href="#note_1" marker="1"/><t v=" then"/><noteRef href="#note_2" marker="2"/></p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A second reference to a footnote (NOTE.REF)">
+    <x:context mode="block" xmlns="">
+      <P>a<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE> b<NOTE NOTE.REF="E0003"/></P>
+    </x:context>
+    <x:expect label="points at the same note" test="$x:result/*:noteRef[2]/@href = $x:result/*:noteRef[1]/@href"/>
+  </x:scenario>
+
+  <x:scenario label="A footnote with its printed number (NUMBER.ORG)">
+    <x:context mode="block" xmlns=""><P>a<NOTE NOTE.ID="E0001" NUMBER.ORG="*" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE></P></x:context>
+    <x:expect label="keeps it" test="$x:result/*:noteRef/@marker = '*'"/>
+  </x:scenario>
+
+  <x:scenario label="An unknown inline element" catch="yes">
+    <x:context mode="block" xmlns=""><P>a <NOT.FORMEX>x</NOT.FORMEX></P></x:context>
+    <x:expect label="stops the transformation" test="$x:result?err?code = xs:QName('f:unknown')"
+              xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
+
+</x:description>

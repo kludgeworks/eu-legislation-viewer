@@ -1,0 +1,1403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           targetNamespace="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           elementFormDefault="qualified" version="1.0">
+
+  <!-- xml:lang, beside this schema (W3C's own, unchanged; the catalog resolves its URL to it) -->
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+
+  <xs:annotation>
+    <xs:documentation>
+      legal-text 1.0: an EU legal text in one structure, whichever Formex version it was published in,
+      converted from Formex 4 by formex-to-legal-text.xsl.
+
+      One document is one language version of an act: its original text as published in the Official
+      Journal, a corrigendum to it, or one consolidated version. It keeps the structure of the text (articles,
+      paragraphs, points, annexes), its inline meaning (dates, references, quotations, footnotes) and
+      where each part comes from (the amending act that inserted, replaced or deleted it).
+
+      This schema checks the structure. The rules it can't express (eIds unique among the units in
+      force, note references that resolve, consistent amendment markers) are in legal-text.sch, an
+      ISO Schematron file with the XSLT 3.0 binding: a legal text is valid against both.
+
+      Design rules, so that code generation gives clean classes:
+      one named type per element; families of elements share an abstract base type (Block, InlineNode);
+      a choice only offers elements of one family, each with its own type; character data is never mixed
+      with elements, so text is always a t element. Names follow AKN4EU, the EU institutions' profile of
+      Akoma Ntoso, but this format is not Akoma Ntoso.
+
+      An attribute with a default (box, ambiguous, header: false) means the same when it is absent:
+      the default restates that, and no reader needs to validate to see it.
+    </xs:documentation>
+  </xs:annotation>
+
+  <!-- ============================================================ document -->
+
+  <xs:element name="legalText" type="LegalText">
+    <xs:annotation>
+      <xs:documentation>
+        The root element. eIds are unique among live units; a deleted placeholder keeps the eId it had,
+        which a later insertion may reuse, so uniqueness is not expressed in the schema.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="LegalText">
+    <xs:annotation>
+      <xs:documentation>One language version of an act: its original text, or one consolidated version.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="source" type="Source">
+        <xs:annotation><xs:documentation>Which document this is, and where it was published.</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="lifecycle" type="Lifecycle" minOccurs="0">
+        <xs:annotation><xs:documentation>For a consolidated version: its period and the acts it integrates.</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="preface" type="Preface" minOccurs="0">
+        <xs:annotation><xs:documentation>The long title.</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="preamble" type="Preamble" minOccurs="0">
+        <xs:annotation><xs:documentation>Citations and recitals, between the title and the enacting terms.</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="body" type="Body">
+        <xs:annotation><xs:documentation>The enacting terms: the articles.</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="conclusions" type="Conclusions" minOccurs="0">
+        <xs:annotation><xs:documentation>The closing formula and the signature.</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="annexes" type="Annexes" minOccurs="0">
+        <xs:annotation><xs:documentation>The annexes, in order.</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="notes" type="Notes" minOccurs="0">
+        <xs:annotation><xs:documentation>The footnotes, collected from wherever they occur in the text.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="act" type="Celex" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          The CELEX number of the act this text belongs to: the act itself for its original text and its consolidated
+          versions (32015R1998), the act it corrects for a corrigendum (32009R0631 for corrigendum 32009R0631R(01)).
+          The document's own number is source/@celex.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="kind" type="DocumentKind" use="required">
+      <xs:annotation><xs:documentation>Original OJ text, corrigendum or consolidated version.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="version" type="xs:date">
+      <xs:annotation>
+        <xs:documentation>
+          A consolidated version's date, the first day it applies to, as its CELEX number has it
+          (02015R1998-20260322); absent for an original text or a corrigendum.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute ref="xml:lang" use="required">
+      <xs:annotation><xs:documentation>The language of this text, e.g. en.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="formexVersion" use="required">
+      <xs:annotation><xs:documentation>The Formex schema version of the source, e.g. 06.02.1.</xs:documentation></xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string"><xs:pattern value="[0-9]{2}\.[0-9]{2}(\.[0-9]+)?"/></xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="converter" use="required">
+      <xs:annotation>
+        <xs:documentation>The version of the converter that produced this document (its version.txt).</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string"><xs:pattern value="[0-9]+\.[0-9]+\.[0-9]+"/></xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:simpleType name="DocumentKind">
+    <xs:annotation><xs:documentation>Whether a document is an act's original text, a corrigendum to it or one of its consolidated versions.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="original">
+        <xs:annotation><xs:documentation>The text as published in the Official Journal.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="consolidated">
+        <xs:annotation><xs:documentation>A consolidated version: the act with its amendments integrated, valid from a date.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="corrigendum">
+        <xs:annotation>
+          <xs:documentation>A corrigendum: corrections to a published text, each a unit of kind correction with its old and new wording.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Celex">
+    <xs:annotation>
+      <xs:documentation>
+        A CELEX number: an act (32015R1998), a consolidated version (02015R1998-20260322), a corrigendum
+        (32015R1998R(01)), or a treaty or a part of one, written with slashes (12003T/ACT, the 2003 Act of
+        Accession; 12010A/PRO/06, a protocol).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*(-[0-9]{8})?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================================ metadata -->
+
+  <xs:complexType name="Source">
+    <xs:annotation><xs:documentation>Which document this is, and where it was published.</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element name="publication" type="Publication" minOccurs="0">
+        <xs:annotation><xs:documentation>Where the act was published in the Official Journal.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="celex" type="Celex" use="required">
+      <xs:annotation>
+        <xs:documentation>The CELEX number of this document: 02015R1998-20260322 for a consolidated version, 32015R1998 for the original.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="eli" type="xs:anyURI">
+      <xs:annotation><xs:documentation>The act's ELI, when the source carries it (Formex 06.x).</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="Publication">
+    <xs:annotation><xs:documentation>An Official Journal publication.</xs:documentation></xs:annotation>
+    <xs:attribute name="series" type="xs:string" use="required">
+      <xs:annotation><xs:documentation>The OJ series: L or C.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="number" type="xs:string">
+      <xs:annotation><xs:documentation>The issue number, without leading zeros; absent for acts published individually (from October 2023).</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="date" type="xs:date">
+      <xs:annotation><xs:documentation>The publication date.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="page" type="xs:string">
+      <xs:annotation><xs:documentation>The first page.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="document" type="xs:string">
+      <xs:annotation><xs:documentation>A C-series document's number, as printed above its title, without brackets: 2022/C 155/03 (Formex NO.DOC.C).</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="Lifecycle">
+    <xs:annotation>
+      <xs:documentation>
+        A consolidated version's period and the acts it integrates (Formex INFO.CONSLEG, GR.MOD.ACT, GR.CORRIG).
+        What its dates mean in law (entry into force, application) comes from Cellar, not from here.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="eventRef" type="EventRef" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation><xs:documentation>An act this version integrates, in the order the source lists them.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="end" type="xs:date">
+      <xs:annotation><xs:documentation>The last day this version applies to; absent while it is the latest.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="produced" type="xs:date">
+      <xs:annotation><xs:documentation>When the Publications Office produced the consolidation.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="sequence">
+      <xs:annotation><xs:documentation>The production sequence number of the consolidation, e.g. 023.001.0.</xs:documentation></xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string"><xs:pattern value="[0-9]{3}\.[0-9]{3}\.[0-9]"/></xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="EventRef">
+    <xs:annotation><xs:documentation>An act a consolidated version integrates.</xs:documentation></xs:annotation>
+    <xs:attribute name="type" type="EventType" use="required">
+      <xs:annotation><xs:documentation>Amendment or corrigendum.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="act" type="Celex" use="required">
+      <xs:annotation><xs:documentation>The CELEX number of the amending act or corrigendum.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="date" type="xs:date">
+      <xs:annotation><xs:documentation>The date of that act.</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:simpleType name="EventType">
+    <xs:annotation><xs:documentation>What kind of act a consolidated version integrates.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="amendment">
+        <xs:annotation><xs:documentation>An amending act.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="corrigendum">
+        <xs:annotation><xs:documentation>A corrigendum, correcting an error in the published text.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================================ preface, preamble, conclusions -->
+
+  <xs:complexType name="Preface">
+    <xs:annotation><xs:documentation>What comes before the preamble: the long title.</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element name="longTitle" type="LongTitle">
+        <xs:annotation><xs:documentation>The long title.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LongTitle">
+    <xs:annotation>
+      <xs:documentation>
+        The long title, one paragraph per line as published: type and number (docType, docNumber), date (docDate),
+        purpose (docPurpose), then any further lines such as "(Text with EEA relevance)".
+      </xs:documentation>
+    </xs:annotation>
+    <xs:group ref="blocks"/>
+  </xs:complexType>
+
+  <xs:complexType name="Preamble">
+    <xs:annotation>
+      <xs:documentation>The preamble: the acting entity, citations, recitals and the enacting formula, in source order.</xs:documentation>
+    </xs:annotation>
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="formula" type="Formula">
+        <xs:annotation><xs:documentation>A formula: "THE EUROPEAN COMMISSION," or "HAS ADOPTED THIS REGULATION:".</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="citations" type="Citations">
+        <xs:annotation><xs:documentation>The citations ("Having regard to …").</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="recitals" type="Recitals">
+        <xs:annotation><xs:documentation>The recitals ("Whereas: (1) …").</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:group ref="blocks">
+        <xs:annotation>
+          <xs:documentation>
+            Other text of the preamble: in documents that are not structured as acts, an agreement's full powers, a
+            list or a table between the citations; and parts an amendment deleted.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:group>
+    </xs:choice>
+    <xs:attribute name="eId" type="EId" use="required" fixed="pbl_1">
+      <xs:annotation><xs:documentation>Always pbl_1.</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="Formula">
+    <xs:annotation><xs:documentation>A fixed formula of the preamble.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="PreambleContent">
+        <xs:group ref="blocks"/>
+        <xs:attribute name="name" type="FormulaName" use="required">
+          <xs:annotation><xs:documentation>Which formula this is.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="FormulaName">
+    <xs:annotation><xs:documentation>The formulas of a preamble (AKN names).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="actingEntity">
+        <xs:annotation><xs:documentation>Who adopts the act: "THE EUROPEAN COMMISSION,".</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="enactingFormula">
+        <xs:annotation><xs:documentation>The formula before the articles: "HAS ADOPTED THIS REGULATION:".</xs:documentation></xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Citations">
+    <xs:annotation><xs:documentation>The citations of the preamble.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="PreambleContent">
+        <xs:sequence>
+        <xs:element name="intro" type="Intro" minOccurs="0">
+          <xs:annotation><xs:documentation>Words before the first citation (Formex GR.VISA.INIT).</xs:documentation></xs:annotation>
+        </xs:element>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element name="unit" type="Unit">
+            <xs:annotation><xs:documentation>One citation (kind citation, eId pbl_1/cit_N by position).</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="deleted" type="DeletedBlock">
+            <xs:annotation><xs:documentation>A citation an amendment deleted.</xs:documentation></xs:annotation>
+          </xs:element>
+        </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Recitals">
+    <xs:annotation><xs:documentation>The recitals of the preamble.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="PreambleContent">
+        <xs:sequence>
+          <xs:element name="intro" type="Intro" minOccurs="0">
+            <xs:annotation><xs:documentation>The words before the first recital: "Whereas:".</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element name="unit" type="Unit">
+              <xs:annotation>
+                <xs:documentation>
+                  One recital (kind recital, eId pbl_1/rct_N by its number), or a group of recitals under a heading (kind
+                  division, Formex DIV.CONSID: "A. PROCEDURE"), which holds recitals and further groups.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="deleted" type="DeletedBlock">
+              <xs:annotation><xs:documentation>A recital an amendment deleted.</xs:documentation></xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Intro">
+    <xs:annotation><xs:documentation>Introductory words.</xs:documentation></xs:annotation>
+    <xs:group ref="blocks"/>
+  </xs:complexType>
+
+  <xs:complexType name="Body">
+    <xs:annotation>
+      <xs:documentation>
+        The enacting terms: articles and groupings of articles; for agreements, corrigenda and other documents
+        also paragraphs, sections and corrections.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:group ref="blocks"/>
+  </xs:complexType>
+
+  <xs:complexType name="Annexes">
+    <xs:annotation>
+      <xs:documentation>
+        The annexes, then the letters of an exchange of letters, then the attached documents (AKN's attachments,
+        of which annexes are one kind). Fragments of one annex that Formex splits across files or around embedded
+        annexes, each titled just ANNEX, are joined into one.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="unit" type="Unit">
+        <xs:annotation>
+          <xs:documentation>One annex (kind annex; eId anx for a single annex, else anx_ and its label), a letter of an exchange of letters (kind letter), or an attached document (kind attachment, eId att_N).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="deleted" type="DeletedBlock">
+        <xs:annotation><xs:documentation>An annex an amendment deleted, kept as a placeholder.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="Conclusions">
+    <xs:annotation><xs:documentation>The closing block: final formula and signature.</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:group ref="blocks">
+        <xs:annotation><xs:documentation>The final formula: "This Regulation shall be binding in its entirety …".</xs:documentation></xs:annotation>
+      </xs:group>
+      <xs:element name="signature" type="Signature" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation><xs:documentation>The signatures: one, one per party to an agreement, or none (consolidated versions).</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Signature">
+    <xs:annotation><xs:documentation>Place, date and signatories.</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element name="placeAndDate" type="InlineContent" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            "Done at Brussels, 5 November 2015.": the date is typed, the place stays text (Formex does not mark it,
+            and recognising it would mean parsing the wording of 24 languages).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="signatory" type="Signatory" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation><xs:documentation>One signatory; acts of Parliament and Council have two.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Signatory">
+    <xs:annotation><xs:documentation>A signatory, its lines split by position.</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element name="organization" type="Lines" minOccurs="0">
+        <xs:annotation><xs:documentation>The first line: "For the Commission".</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="role" type="Lines" minOccurs="0">
+        <xs:annotation><xs:documentation>The lines in between: "The President".</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="person" type="Lines" minOccurs="0">
+        <xs:annotation><xs:documentation>The last line: the name.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Notes">
+    <xs:annotation><xs:documentation>The footnotes of the document.</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element name="note" type="Note" maxOccurs="unbounded">
+        <xs:annotation><xs:documentation>One footnote.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Note">
+    <xs:annotation><xs:documentation>A footnote, referred to from the text by noteRef.</xs:documentation></xs:annotation>
+    <xs:group ref="blocks"/>
+    <xs:attribute name="eId" type="EId" use="required">
+      <xs:annotation>
+        <xs:documentation>note_N by position in the document; in another file of an OJ act's package, that file's sequence number: note_anx01000301-1 in an annex, note_inc000402-1 in an included document, note_att01000301-1 in an attached document.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="marker" type="NoteMarker" use="required">
+      <xs:annotation>
+        <xs:documentation>The marker as printed: the source's own number if it gives one, * for star numbering, else the running number.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="kind" type="NoteKind" use="required">
+      <xs:annotation><xs:documentation>Where the note belongs.</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:simpleType name="NoteKind">
+    <xs:annotation><xs:documentation>Kinds of footnote.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="footnote">
+        <xs:annotation><xs:documentation>A footnote to the text; numbered through the document.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="table">
+        <xs:annotation><xs:documentation>A note to a table; numbered within the table.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="quotation">
+        <xs:annotation><xs:documentation>A note inside quoted text, belonging to the quoted act.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="endnote">
+        <xs:annotation><xs:documentation>A note printed at the end of the document.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="manual">
+        <xs:annotation><xs:documentation>A note whose marker the source sets by hand.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="title">
+        <xs:annotation><xs:documentation>A note to a title (Formex TYPE TITLE).</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="chapter">
+        <xs:annotation><xs:documentation>A note that belongs to a chapter of the document (Formex TYPE CHAPTER, 05.00 and later).</xs:documentation></xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================================ units -->
+
+  <xs:complexType name="Unit">
+    <xs:annotation>
+      <xs:documentation>
+        A part of the hierarchy of the text: article, paragraph, point, annex, annex level and so on. One element
+        for every level; what it is comes from kind. Annex levels are flat: point 1.2.2.6 is a sibling of 1.2.2,
+        as in AKN4EU.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation><xs:documentation>The amending acts that put this unit in its current form, outermost first.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="num" type="InlineContent" minOccurs="0">
+            <xs:annotation><xs:documentation>The label as printed: "Article 3", "(a)", "1.2.2.6", "ANNEX II".</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="heading" type="Lines" minOccurs="0">
+            <xs:annotation><xs:documentation>The heading; several lines are joined by eol.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="subheading" type="Lines" minOccurs="0">
+            <xs:annotation><xs:documentation>A second heading under the first.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:group ref="blocks"/>
+        </xs:sequence>
+        <xs:attribute name="eId" type="EId" use="required">
+          <xs:annotation><xs:documentation>The unit's identifier, e.g. art_3/par_2/pnt_a or anx/pnt_1.2.2.6.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="kind" type="UnitKind" use="required">
+          <xs:annotation><xs:documentation>What the unit is.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="depth" type="xs:positiveInteger">
+          <xs:annotation><xs:documentation>Levels only: the nesting depth in the source (Formex LEVEL), for indentation.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="box" type="xs:boolean" default="false">
+          <xs:annotation><xs:documentation>Levels only: the text is printed in a box.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ambiguous" type="xs:boolean" default="false">
+          <xs:annotation>
+            <xs:documentation>
+              The published text gives this label twice under the same parent (Annex XI points 1., 2., 2.): the
+              units keep the label and share their eId, as published, and each is marked. A reference to the
+              label can't tell them apart.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="eurlexAnchor" type="xs:positiveInteger">
+          <xs:annotation>
+            <xs:documentation>
+              Annexes only: the number EUR-Lex's HTML gives the annex in its anchor, #anx_N, so that a reader can link to
+              it there (https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1998#anx_1). EUR-Lex counts
+              the files an annex is split into, where this text joins them, so it can't be worked out from the units.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="UnitKind">
+    <xs:annotation><xs:documentation>The kinds of unit (AKN4EU names).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="division">
+        <xs:annotation>
+          <xs:documentation>
+            A grouping of articles: part, title, chapter or section (Formex DIVISION). Its num is the label line
+            ("CHAPTER III"). Its eId names the kind its heading gives, by the code of the EU subdivision authority
+            table, in any of the 24 languages, then the label after the type word: TITLE I is tis_I, CHAPTER 2 cpt_2,
+            SECTION 1 sct_1, PART TWO prt_TWO; a heading that names no kind the table has gives division_. A division is
+            nested under the one that encloses it. Recitals are grouped the same way (Formex DIV.CONSID, "A.
+            PROCEDURE"): eId pbl_1/division_A; the recitals inside keep preamble-wide eIds (pbl_1/rct_12), as articles keep
+            act-wide ones.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="subdivision">
+        <xs:annotation>
+          <xs:documentation>
+            A titled part of an article, found in agreements (Formex SUBDIV, "(1) Objectives"). Its num and heading come
+            from its title; its eId is subdivision_ and its number, under the article.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="article">
+        <xs:annotation><xs:documentation>An article; eId art_N, act-wide even inside divisions, as in AKN4EU and ELI.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="paragraph">
+        <xs:annotation><xs:documentation>A paragraph of an article: numbered (par_N), or unnumbered (unp_N).</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="subparagraph">
+        <xs:annotation><xs:documentation>A subparagraph of a numbered paragraph; sub_N by position.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="point">
+        <xs:annotation><xs:documentation>A numbered item of a list; pnt_ and its label, or idt_N by position where the label is only a mark (a dash written as its number).</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="indent">
+        <xs:annotation><xs:documentation>An unnumbered item of a list, such as a dash; idt_N by position.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="definition">
+        <xs:annotation><xs:documentation>An entry of a definition list: its prefix as num, its term as heading.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="level">
+        <xs:annotation>
+          <xs:documentation>
+            A section or point of an annex: numbered (pnt_ and its number), labelled (level_ and a label line such as
+            ATTACHMENT-6-A) or unnumbered (level_N by position).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="annex">
+        <xs:annotation><xs:documentation>An annex; anx, or anx_ and its label. An appendix (an annex inside an annex, Appendix III) is app_ and its label, or app.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="correction">
+        <xs:annotation>
+          <xs:documentation>
+            One correction of a corrigendum: where (a paragraph: "On page 5, Article 3(2):"), then the old and the new
+            wording; eId cor_N by position.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="attachment">
+        <xs:annotation>
+          <xs:documentation>
+            A document attached to the act that is not one of its annexes: the agreement a decision concludes, a
+            protocol, a draft decision (Formex package entries DOC.SUB.PUB other than ANNEX), or a related document of a
+            consolidation (nested CONS.DOC.GEN of TYPE ACT, GENERAL or OTH.ACT). As AKN's attachment: eId att_N by
+            position, its title as heading, its own text, articles (att_1/art_1), annexes (att_1/anx) and attachments
+            under it.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="letter">
+        <xs:annotation><xs:documentation>A letter of an exchange of letters attached to an agreement; eId let_N by position.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="citation">
+        <xs:annotation><xs:documentation>A citation of the preamble.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="recital">
+        <xs:annotation><xs:documentation>A recital of the preamble.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="EId">
+    <xs:annotation>
+      <xs:documentation>
+        An AKN4EU-style identifier: segments joined by "/", each an abbreviation plus the unit's own label taken
+        literally (brackets and trailing dots dropped, whitespace as "-", letters and digits of any script kept), e.g. art_3/par_2/pnt_a, anx/pnt_1.2.2.6,
+        pbl_1/rct_12. Units without a label are numbered by position. The codes are AKN4EU's, which are ELI's
+        subdivision codes, and where ELI has none Akoma Ntoso's. Besides the units' own, segments name where
+        numbering restarts: tab_N/tr_N/td_N (units in a table cell), list_N (a unit's second and later lists),
+        qstr_N (quoted text), old and new (the sides of a correction), ann_N (an annotation), fgr_N (a figure's
+        description), def_N (an unlabelled definition).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <!-- a label starts with a letter or digit, or the "-" of a negative number (art_-1), and ends with one -->
+      <xs:pattern value="[a-z]+(_-?[\p{L}\p{N}]([\p{L}\p{N}._\-]*[\p{L}\p{N}])?)?(/[a-z]+(_-?[\p{L}\p{N}]([\p{L}\p{N}._\-]*[\p{L}\p{N}])?)?)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="EIdRef">
+    <xs:annotation><xs:documentation>A reference to a unit or note of the same document: # and its eId, e.g. #note_3.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="#[a-z]+(_-?[\p{L}\p{N}]([\p{L}\p{N}._\-]*[\p{L}\p{N}])?)?(/[a-z]+(_-?[\p{L}\p{N}]([\p{L}\p{N}._\-]*[\p{L}\p{N}])?)?)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="NoteMarker">
+    <xs:annotation><xs:documentation>A note's marker as printed: 1, *, ** or the source's own (Formex NUMBER.ORG).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\S+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AmendmentMarker">
+    <xs:annotation><xs:documentation>The id of a consolidation's amendment marker (Formex CLG.MDFO ID), e.g. O000001M001002.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="FileName">
+    <xs:annotation><xs:documentation>A file of the act's Formex manifestation, by name, without a path: L_2023214EN.01002102.tif.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9_\-]+(\.[A-Za-z0-9_\-]+)+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================================ blocks -->
+
+  <xs:complexType name="Block" abstract="true">
+    <xs:annotation><xs:documentation>Anything that stands on its own line: a unit, a paragraph, a list, a table.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="PreambleContent"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PreambleContent" abstract="true">
+    <xs:annotation><xs:documentation>What a preamble holds, in order: its formulas, citations, recitals and other blocks.</xs:documentation></xs:annotation>
+  </xs:complexType>
+
+  <xs:complexType name="TableRow" abstract="true">
+    <xs:annotation><xs:documentation>A row of a table, or a group of rows under a heading.</xs:documentation></xs:annotation>
+  </xs:complexType>
+
+  <xs:complexType name="Blocks">
+    <xs:annotation><xs:documentation>Blocks that stand together: a heading's lines that hold blocks, a figure's description.</xs:documentation></xs:annotation>
+    <xs:group ref="blocks"/>
+  </xs:complexType>
+
+  <xs:group name="blocks">
+    <xs:annotation><xs:documentation>The content of a unit, cell, note or annotation: blocks in reading order.</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="p" type="Paragraph"><xs:annotation><xs:documentation>A paragraph of running text.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="list" type="ListBlock"><xs:annotation><xs:documentation>A list of points, indents or definitions.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="table" type="Table"><xs:annotation><xs:documentation>A table.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="tableGroup" type="TableGroup"><xs:annotation><xs:documentation>Tables that share one caption.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="unit" type="Unit"><xs:annotation><xs:documentation>A level of the hierarchy: an article, a point, an annex and so on.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="quotedStructure" type="QuotedStructure"><xs:annotation><xs:documentation>Text an amending act quotes.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="annotation" type="Annotation"><xs:annotation><xs:documentation>A notes box or a caption of a form.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="figure" type="Figure"><xs:annotation><xs:documentation>An image as a block.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="math" type="MathBlock"><xs:annotation><xs:documentation>A displayed formula.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="deleted" type="DeletedBlock"><xs:annotation><xs:documentation>Blocks an amendment deleted but the consolidation keeps.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="old" type="OldText"><xs:annotation><xs:documentation>In a correction, the wording as published.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="blockContainer" type="BlockContainer"><xs:annotation><xs:documentation>Blocks set together in a typeface, a box or another language.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="new" type="NewText"><xs:annotation><xs:documentation>In a correction, the wording as corrected.</xs:documentation></xs:annotation></xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="BlockContainer">
+    <xs:annotation>
+      <xs:documentation>
+        Blocks set together in a typeface or a box, or in another language (Formex HT or LV around whole
+        paragraphs, lists or levels: a boxed notice, a level inside a box), as AKN's blockContainer. Inline emphasis
+        stays emphasis; this is for what wraps blocks.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:group ref="blocks"/>
+        <xs:attribute name="emphasis" type="EmphasisKind">
+          <xs:annotation><xs:documentation>The typeface or the box (Formex HT/@TYPE), as for inline emphasis.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute ref="xml:lang">
+          <xs:annotation><xs:documentation>The language of the blocks, when not the document's (Formex LV/@LG).</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Lines">
+    <xs:annotation>
+      <xs:documentation>
+        A heading, a subheading or a signatory's line: inline content, several lines joined by eol. Where the
+        source's lines hold blocks (a numbered paragraph with a second paragraph, a list, a table, an image with
+        its caption, a signature in each language), the blocks instead, in content.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="inline"/>
+      <xs:element name="content" type="Blocks">
+        <xs:annotation><xs:documentation>The blocks, as the source has them.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="Paragraph">
+    <xs:annotation><xs:documentation>A paragraph of running text.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation><xs:documentation>The amending acts that put this paragraph in its current form, when they differ from its unit's.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="num" type="InlineContent" minOccurs="0">
+            <xs:annotation><xs:documentation>The label of a numbered paragraph outside the hierarchy, e.g. in a table cell.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:group ref="inline"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ListBlock">
+    <xs:annotation><xs:documentation>A list of points or indents.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation><xs:documentation>The amending acts that put this list in its current form, when they differ from its unit's.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element name="unit" type="Unit">
+              <xs:annotation><xs:documentation>An item: kind point, indent or definition.</xs:documentation></xs:annotation>
+            </xs:element>
+            <xs:element name="deleted" type="DeletedBlock">
+              <xs:annotation><xs:documentation>An item an amendment deleted, kept as a placeholder.</xs:documentation></xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="kind" type="ListKind" use="required">
+          <xs:annotation><xs:documentation>How the items are numbered.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="ListKind">
+    <xs:annotation><xs:documentation>How the items of a list are numbered (Formex LIST/@TYPE).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="arabic"><xs:annotation><xs:documentation>1, 2, 3 (ARAB).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="alpha"><xs:annotation><xs:documentation>a, b, c (alpha).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="alphaUpper"><xs:annotation><xs:documentation>A, B, C (ALPHA).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="roman"><xs:annotation><xs:documentation>i, ii, iii (roman).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="romanUpper"><xs:annotation><xs:documentation>I, II, III (ROMAN).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="dash"><xs:annotation><xs:documentation>Em dashes (DASH).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="ndash"><xs:annotation><xs:documentation>En dashes (NDASH, Formex 05.59 and later).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="bullet"><xs:annotation><xs:documentation>Bullets (BULLET).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="none"><xs:annotation><xs:documentation>No marks (NONE).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="other"><xs:annotation><xs:documentation>Marks the source writes out in each item (OTHER).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="definition"><xs:annotation><xs:documentation>A definition list (Formex DLIST).</xs:documentation></xs:annotation></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Table">
+    <xs:annotation><xs:documentation>A table.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation><xs:documentation>The amending acts that put this table in its current form, when they differ from its unit's.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="caption" type="Caption" minOccurs="0">
+            <xs:annotation><xs:documentation>The table's title.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element name="tr" type="Row">
+              <xs:annotation><xs:documentation>A row.</xs:documentation></xs:annotation>
+            </xs:element>
+            <xs:element name="rowGroup" type="RowGroup">
+              <xs:annotation><xs:documentation>A group of rows under a heading row.</xs:documentation></xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="cols" type="xs:positiveInteger">
+          <xs:annotation><xs:documentation>The number of columns.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TableGroup">
+    <xs:annotation><xs:documentation>Tables that belong together under one title (Formex GR.TBL).</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation><xs:documentation>The amending acts that put this group in its current form.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="caption" type="Caption" minOccurs="0">
+            <xs:annotation><xs:documentation>The group's title.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:group ref="blocks"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Caption">
+    <xs:annotation><xs:documentation>The title of a table, or the caption of a figure.</xs:documentation></xs:annotation>
+    <xs:group ref="blocks"/>
+  </xs:complexType>
+
+  <xs:complexType name="RowGroup">
+    <xs:annotation>
+      <xs:documentation>A group of rows with a heading row (Formex BLK with TI.BLK and STI.BLK, used in checklists and budgets). No AKN equivalent.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="TableRow">
+        <xs:sequence>
+          <xs:element name="num" type="InlineContent" minOccurs="0">
+            <xs:annotation><xs:documentation>The heading row's number, e.g. "1.1.".</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="heading" type="Lines" minOccurs="0">
+            <xs:annotation><xs:documentation>The heading row's text.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="subheading" type="Lines" minOccurs="0">
+            <xs:annotation><xs:documentation>The heading row's subtitle (Formex STI.BLK).</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="tr" type="Row">
+              <xs:annotation><xs:documentation>A row of the group.</xs:documentation></xs:annotation>
+            </xs:element>
+            <xs:element name="rowGroup" type="RowGroup">
+              <xs:annotation><xs:documentation>A nested group.</xs:documentation></xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Row">
+    <xs:annotation><xs:documentation>A table row.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="TableRow">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation><xs:documentation>The amending acts that put this row in its current form.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="td" type="Cell" maxOccurs="unbounded">
+            <xs:annotation><xs:documentation>A cell.</xs:documentation></xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="header" type="xs:boolean" default="false">
+          <xs:annotation><xs:documentation>A heading row.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Cell">
+    <xs:annotation><xs:documentation>A table cell, holding blocks; empty for an empty cell.</xs:documentation></xs:annotation>
+    <xs:group ref="blocks"/>
+    <xs:attribute name="colspan" type="xs:positiveInteger">
+      <xs:annotation><xs:documentation>The number of columns the cell spans.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="rowspan" type="xs:positiveInteger">
+      <xs:annotation><xs:documentation>The number of rows the cell spans.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="header" type="xs:boolean" default="false">
+      <xs:annotation><xs:documentation>A heading cell.</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="QuotedStructure">
+    <xs:annotation>
+      <xs:documentation>
+        The units an amending act inserts or substitutes (Formex QUOT.S). The instruction ("point 1.2.2.3 is
+        replaced by the following:") is the paragraph before it in the same unit.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:group ref="blocks"/>
+        <xs:attribute name="eId" type="EId" use="required">
+          <xs:annotation><xs:documentation>The enclosing unit's eId plus qstr_N; the quoted units' eIds hang off it.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ambiguous" type="xs:boolean" default="false">
+          <xs:annotation><xs:documentation>Inside a unit marked ambiguous, whose eId this one shares through it.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Annotation">
+    <xs:annotation><xs:documentation>A box of notes or a caption set apart from the text (Formex ANNOTATION, GR.ANNOTATION).</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation><xs:documentation>The amending acts that put this annotation in its current form.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="heading" type="Lines" minOccurs="0">
+            <xs:annotation><xs:documentation>Its heading, e.g. "NOTES:".</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:group ref="blocks"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Figure">
+    <xs:annotation><xs:documentation>An image (Formex INCL.ELEMENT TYPE="TIFF").</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="caption" type="Caption" minOccurs="0">
+            <xs:annotation><xs:documentation>The text printed with the image, usually under it (Formex CAPTION).</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:element name="description" type="Blocks" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+                A transcription of the text inside the image, such as the fields of a form (Formex IMG.CNT): the
+                image's alternative text, and what makes a form searchable.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="content" type="ImageContent">
+          <xs:annotation><xs:documentation>What the image shows (Formex INCL.ELEMENT CONTENT).</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="src" type="FileName" use="required">
+          <xs:annotation><xs:documentation>The image file in the act's Cellar manifestation.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="ImageContent">
+    <xs:annotation><xs:documentation>What an image shows, as Formex classifies it.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="character"><xs:annotation><xs:documentation>Text.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="form"><xs:annotation><xs:documentation>A scanned form.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="formula"><xs:annotation><xs:documentation>A mathematical or chemical expression Formex can't mark up.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="signature"><xs:annotation><xs:documentation>A handwritten signature.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="techDesign"><xs:annotation><xs:documentation>A technical drawing.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="other"><xs:annotation><xs:documentation>Anything else.</xs:documentation></xs:annotation></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="MathBlock">
+    <xs:annotation>
+      <xs:documentation>
+        A displayed formula (Formex FORMULA.S), as Presentation MathML: delimited groups (EXPR) become mrow with
+        mo fences, fractions mfrac, sums, products and integrals munderover, indices msub, exponents msup, roots
+        msqrt, operators mo.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:any namespace="http://www.w3.org/1998/Math/MathML" processContents="skip">
+            <xs:annotation><xs:documentation>The MathML math element.</xs:documentation></xs:annotation>
+          </xs:any>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CorrectionText" abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        In a correction: the wording as published (old, "for:") or as corrected (new, "read:"), from Formex OLD.CORR and
+        NEW.CORR. The names are AKN's, from the old and new of a textual modification. Each side has a type of its own,
+        so that a block's type tells which it is.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:group ref="blocks"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="OldText">
+    <xs:annotation><xs:documentation>The wording as published: "for:".</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="CorrectionText"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="NewText">
+    <xs:annotation><xs:documentation>The wording as corrected: "read:".</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="CorrectionText"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DeletedBlock">
+    <xs:annotation>
+      <xs:documentation>
+        Content an amendment deleted but the consolidation keeps. Never live text: it is in force no longer,
+        and its provenance names the act that deleted it.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Block">
+        <xs:sequence>
+          <xs:element name="provenance" type="Provenance" maxOccurs="unbounded">
+            <xs:annotation><xs:documentation>The deleting act.</xs:documentation></xs:annotation>
+          </xs:element>
+          <xs:group ref="blocks"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- ============================================================ provenance -->
+
+  <xs:complexType name="Provenance">
+    <xs:annotation>
+      <xs:documentation>
+        Which amending act put a unit or block in its current form, from the consolidation's amendment markers
+        (Formex CLG.MDFO and CLG.MDFC processing instructions).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="amendment"/>
+  </xs:complexType>
+
+  <xs:attributeGroup name="amendment">
+    <xs:annotation><xs:documentation>Who amended something, how, and where in the amending act.</xs:documentation></xs:annotation>
+    <xs:attribute name="amendingAct" type="Celex" use="required">
+      <xs:annotation><xs:documentation>The CELEX number of the amending act.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="action" type="Action" use="required">
+      <xs:annotation><xs:documentation>What the amending act did.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="location" type="xs:string">
+      <xs:annotation><xs:documentation>Where in the amending act, as Formex writes it: "AR:1 .AND. AX:0;PT:27".</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="marker" type="AmendmentMarker" use="required">
+      <xs:annotation><xs:documentation>The Formex marker id; pieces of one marker split at element boundaries share it.</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:simpleType name="Action">
+    <xs:annotation>
+      <xs:documentation>
+        What an amending act did (Formex ACTION). They match the EU authority table "modification type":
+        replaced is REPLACEMENT, inserted is INSERTION, deleted is DELETION.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="replaced"><xs:annotation><xs:documentation>Replaced: new text instead of the old.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="inserted"><xs:annotation><xs:documentation>Inserted: new text added.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="deleted"><xs:annotation><xs:documentation>Deleted: the text is gone.</xs:documentation></xs:annotation></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================================ inline -->
+
+  <xs:complexType name="InlineContent">
+    <xs:annotation><xs:documentation>A run of inline content: a num, heading or signature line.</xs:documentation></xs:annotation>
+    <xs:group ref="inline"/>
+  </xs:complexType>
+
+  <xs:group name="inline">
+    <xs:annotation><xs:documentation>Running text: text and typed inline elements in reading order.</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="t" type="Text"><xs:annotation><xs:documentation>Text.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="emphasis" type="Emphasis"><xs:annotation><xs:documentation>Text in a typeface.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="date" type="DateRef"><xs:annotation><xs:documentation>A date.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="quote" type="Quote"><xs:annotation><xs:documentation>Quoted text with its quotation marks.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="noteRef" type="NoteRef"><xs:annotation><xs:documentation>A reference to a note.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="ref" type="Ref"><xs:annotation><xs:documentation>A reference to an Official Journal publication or a URI.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="eol" type="Eol"><xs:annotation><xs:documentation>A line break.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="math" type="MathInline"><xs:annotation><xs:documentation>A formula in running text.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="span" type="Span"><xs:annotation><xs:documentation>Text in another language.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="img" type="InlineImage"><xs:annotation><xs:documentation>An image in running text.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="changed" type="Changed"><xs:annotation><xs:documentation>Text an amending act changed.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="deleted" type="DeletedInline"><xs:annotation><xs:documentation>Text an amendment deleted but the consolidation keeps.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="docType" type="DocType"><xs:annotation><xs:documentation>In the long title, the type of act.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="docNumber" type="DocNumber"><xs:annotation><xs:documentation>In the long title, the act's number.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="docDate" type="DocDate"><xs:annotation><xs:documentation>In the long title, the act's date.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="docPurpose" type="DocPurpose"><xs:annotation><xs:documentation>In the long title, what the act is about.</xs:documentation></xs:annotation></xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="InlineNode" abstract="true">
+    <xs:annotation><xs:documentation>Anything inside running text.</xs:documentation></xs:annotation>
+  </xs:complexType>
+
+  <xs:complexType name="Text">
+    <xs:annotation>
+      <xs:documentation>Plain text, with its characters exactly as in the source, including non-breaking spaces.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:attribute name="v" type="xs:string" use="required">
+          <xs:annotation><xs:documentation>The text.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Emphasis">
+    <xs:annotation><xs:documentation>Text set in a typeface (Formex HT).</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+        <xs:attribute name="kind" type="EmphasisKind" use="required">
+          <xs:annotation><xs:documentation>Which typeface.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="EmphasisKind">
+    <xs:annotation><xs:documentation>Typefaces (Formex HT/@TYPE).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="b"><xs:annotation><xs:documentation>Bold.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="i"><xs:annotation><xs:documentation>Italic.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="u"><xs:annotation><xs:documentation>Underlined.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="sup"><xs:annotation><xs:documentation>Superscript: m².</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="sub"><xs:annotation><xs:documentation>Subscript.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="uc"><xs:annotation><xs:documentation>Upper case; surnames in signatures.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="sc"><xs:annotation><xs:documentation>Small capitals (Formex 05.59 and later).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="expanded"><xs:annotation><xs:documentation>Letter-spaced.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="strike"><xs:annotation><xs:documentation>Struck through.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="box"><xs:annotation><xs:documentation>Enclosed in a box.</xs:documentation></xs:annotation></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:attributeGroup name="date">
+    <xs:annotation>
+      <xs:documentation>
+        A date's value and its wording. What a date means (adoption, entry into force, application) isn't in the
+        Formex markup: it comes from the act's dates in Cellar, joined by the application, not by the converter.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="date" type="xs:date">
+      <xs:annotation>
+        <xs:documentation>
+          The date; absent when the source's value is not a date (Formex DATE ISO="19931911"): the wording is all
+          there is.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="asWritten" type="xs:string" use="required">
+      <xs:annotation><xs:documentation>The date as printed: "5 November 2015".</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:complexType name="DateRef">
+    <xs:annotation><xs:documentation>A date in the text (Formex DATE).</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:attributeGroup ref="date"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Quote">
+    <xs:annotation>
+      <xs:documentation>
+        Quoted text (Formex QUOT.START and QUOT.END in the same element). A pair that crosses elements stays as
+        plain quotation marks.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+        <xs:attribute name="startQuote" type="xs:string" use="required">
+          <xs:annotation><xs:documentation>The opening mark, e.g. ‘.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="endQuote" type="xs:string" use="required">
+          <xs:annotation><xs:documentation>The closing mark, e.g. ’.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="NoteRef">
+    <xs:annotation><xs:documentation>Where a footnote is referred to; the note itself is in notes.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:attribute name="href" type="EIdRef" use="required">
+          <xs:annotation><xs:documentation>#note_N: the eId of the note.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="marker" type="NoteMarker" use="required">
+          <xs:annotation><xs:documentation>The marker as printed.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Ref">
+    <xs:annotation><xs:documentation>A reference to another document.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+        <xs:attribute name="kind" type="RefKind" use="required">
+          <xs:annotation><xs:documentation>How the target is given.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="href" type="xs:anyURI">
+          <xs:annotation><xs:documentation>The target's URI, for kind uri.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="series" type="xs:string">
+          <xs:annotation><xs:documentation>For kind oj: the OJ series.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="number" type="xs:string">
+          <xs:annotation><xs:documentation>For kind oj: the issue or document number.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="date" type="xs:date">
+          <xs:annotation><xs:documentation>For kind oj: the publication date.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="page" type="xs:string">
+          <xs:annotation><xs:documentation>For kind oj: the first page.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="RefKind">
+    <xs:annotation><xs:documentation>How a reference gives its target.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="oj">
+        <xs:annotation><xs:documentation>An Official Journal reference, as data (Formex REF.DOC.OJ); the renderer builds the link.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="uri">
+        <xs:annotation><xs:documentation>A URI, usually the ELI (Formex REF.DOC@URI, LINK; 06.x).</xs:documentation></xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Eol">
+    <xs:annotation><xs:documentation>A line break (Formex BR, 05.59 and later; joins the lines of a heading).</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MathInline">
+    <xs:annotation><xs:documentation>A formula in running text (Formex FORMULA), as MathML.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:sequence>
+          <xs:any namespace="http://www.w3.org/1998/Math/MathML" processContents="skip">
+            <xs:annotation><xs:documentation>The MathML math element.</xs:documentation></xs:annotation>
+          </xs:any>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="InlineImage">
+    <xs:annotation><xs:documentation>An image inside running text or a heading (Formex INCL.ELEMENT TYPE="TIFF" there).</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:attribute name="src" type="FileName" use="required">
+          <xs:annotation><xs:documentation>The image file in the act's Cellar manifestation.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="content" type="ImageContent">
+          <xs:annotation><xs:documentation>What the image shows (Formex INCL.ELEMENT CONTENT).</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Span">
+    <xs:annotation>
+      <xs:documentation>
+        Text in another language than the document's (Formex LV): a term quoted in its original language, or the
+        multilingual closing formulas of an agreement.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+        <xs:attribute ref="xml:lang" use="required">
+          <xs:annotation><xs:documentation>The language of the text, e.g. fr.</xs:documentation></xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Changed">
+    <xs:annotation>
+      <xs:documentation>
+        A text-level amendment: the words an amending act inserted or replaced inside a paragraph (an amendment
+        marker that opens or closes inside text). Inside a num, it shows a renumbering.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+        <xs:attributeGroup ref="amendment"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DeletedInline">
+    <xs:annotation><xs:documentation>Words an amendment deleted but the consolidation keeps. Never live text.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+        <xs:attributeGroup ref="amendment"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DocType">
+    <xs:annotation><xs:documentation>In the long title: the type of act, "Commission Implementing Regulation".</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DocNumber">
+    <xs:annotation><xs:documentation>In the long title: the number, "(EU) 2015/1998".</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DocDate">
+    <xs:annotation><xs:documentation>In the long title: the date of the act.</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:attributeGroup ref="date"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DocPurpose">
+    <xs:annotation><xs:documentation>In the long title: what the act is about, "laying down detailed measures …".</xs:documentation></xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:schema>

@@ -9,7 +9,7 @@ import "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Builtins.
 // excluded from every fixer
 local raw =
   List(
-    "formex-converter/test/fixtures/**",
+    "formex-converter/src/test/resources/fixtures/**",
     "src/test/resources/cellar/**",
     "**/xslt/subdivision.rdf",
   )
@@ -17,14 +17,15 @@ local raw =
 // licence texts, as SPDX publishes them
 local vendored =
   List(
-    "formex-converter/test/mathml3/**",
-    "formex-converter/schema/xml.xsd",
+    "formex-converter/src/test/resources/mathml3/**",
+    "formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter/schema/xml.xsd",
     "**/*.patch",
     "LICENSES/**",
   )
 // written by tools, never edited by hand: the Maven lock file (bazel run @maven//:pin), the
 // converter's expected output (mise run expected)
-local generated = List("maven_install.json", "formex-converter/test/expected/**/*.xml")
+local generated =
+  List("maven_install.json", "formex-converter/src/test/resources/expected/**/*.xml")
 local xml = List("**/*.xml", "**/*.xsl", "**/*.xsd", "**/*.xspec", "**/*.xjb", "**/*.sch")
 
 local linters = new Mapping<String, Step> {

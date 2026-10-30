@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!-- Inputs the converter refuses: it fails loudly rather than produce a partial text -->
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/formex/converter/xslt/formex-to-legal-text.xsl">
+
+  <!-- a blank CELEX number counts as none -->
+  <x:param name="celex" select="' '"/>
+
+  <x:scenario label="An OJ act without its CELEX number" catch="yes">
+    <x:context><ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/></ACT></x:context>
+    <x:expect label="is refused for want of it" test="$x:result?err?code = xs:QName('f:celex')" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
+
+  <x:scenario label="A document that is not a Formex act" catch="yes">
+    <x:context><NOTICE/></x:context>
+    <x:expect label="is refused as out of scope" test="$x:result?err?code = xs:QName('f:out-of-scope')" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
+
+  <x:scenario label="An element the converter doesn't know" catch="yes">
+    <x:context mode="block"><NOT.FORMEX/></x:context>
+    <x:expect label="stops the transformation as unsupported Formex" test="$x:result?err?code = xs:QName('f:unknown')" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
+
+  <x:scenario label="A list TYPE the converter doesn't know" catch="yes">
+    <x:context mode="block"><LIST TYPE="WEIRD"><ITEM><P>a</P></ITEM></LIST></x:context>
+    <x:expect label="stops the transformation as unsupported Formex, not a type error" test="$x:result?err?code = xs:QName('f:unknown')" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
+
+  <!-- push style: a template takes the children it knows and fails on the rest -->
+
+  <x:scenario label="An element a signature doesn't expect" catch="yes">
+    <x:context mode="block"><FINAL><SIGNATURE><PL.DATE><P>Brussels</P></PL.DATE><NOT.FORMEX/></SIGNATURE></FINAL></x:context>
+    <x:expect label="stops the transformation as unsupported Formex" test="$x:result?err?code = xs:QName('f:unknown')" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
+
+  <x:scenario label="An element a list doesn't expect" catch="yes">
+    <x:context mode="block"><LIST TYPE="DASH"><ITEM><P>a</P></ITEM><NOT.FORMEX/></LIST></x:context>
+    <x:expect label="stops the transformation as unsupported Formex" test="$x:result?err?code = xs:QName('f:unknown')" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </x:scenario>
+
+
+</x:description>

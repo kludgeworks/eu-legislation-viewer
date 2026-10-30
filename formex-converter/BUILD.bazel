@@ -1,8 +1,49 @@
 # SPDX-License-Identifier: MIT
+load("//tools/build:defs.bzl", "xslt_quality_test")
 
-# The converter's version, released independently of the viewer: the stylesheet stamps it on every
-# document it writes (legalText/@converter)
-exports_files(
-    ["version.txt"],
-    visibility = ["//formex-converter:__subpackages__"],
+# The Formex converter, laid out as Maven lays out a Java project: the Java API in src/main/java,
+# the stylesheets and the schema in src/main/resources under the API's package, the tests in
+# src/test/java and src/test/xspec, their data in src/test/resources. What others use, by short
+# names:
+
+# the Java API: FormexConverter
+alias(
+    name = "converter",
+    actual = "//formex-converter/src/main/java/dev/groknull/kludgeworks/formex/converter",
+    visibility = ["//visibility:public"],
+)
+
+# legal-text.xsd and what it needs, on the classpath at /dev/groknull/kludgeworks/formex/converter/schema/
+alias(
+    name = "schema",
+    actual = "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "legal-text.xsd",
+    actual = "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema/legal-text.xsd",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "xml.xsd",
+    actual = "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema/xml.xsd",
+    visibility = ["//visibility:public"],
+)
+
+# the converter's output for each fixture: samples of legal text for the viewer's tests
+alias(
+    name = "expected",
+    actual = "//formex-converter/src/test/resources/expected",
+    visibility = ["//visibility:public"],
+)
+
+# every stylesheet of the project, production and test
+xslt_quality_test(
+    name = "xslt_quality",
+    srcs = [
+        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:xslt",
+        "//formex-converter/src/test/resources/compare",
+    ],
 )

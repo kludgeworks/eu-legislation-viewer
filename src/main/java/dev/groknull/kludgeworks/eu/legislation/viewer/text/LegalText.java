@@ -16,8 +16,7 @@ import org.jspecify.annotations.Nullable;
  *     has it (02015R1998-20260322); absent for an original text or a corrigendum.
  * @param lang The language of this text, e.g. en.
  * @param formexVersion The Formex schema version of the source, e.g. 06.02.1.
- * @param converter The version of the converter that produced this document
- *     (formex-converter/version.txt).
+ * @param converter The version of the converter that produced this document (its version.txt).
  * @param source Which document this is, and where it was published.
  * @param lifecycle For a consolidated version: its period and the acts it integrates.
  * @param preface The long title.

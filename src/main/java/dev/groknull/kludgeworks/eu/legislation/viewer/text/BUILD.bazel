@@ -30,7 +30,7 @@ schema_javadoc(
         "Row.cells": "td",
         "Text.value": "v",
     },
-    schema = "//formex-converter/schema:legal-text.xsd",
+    schema = "//formex-converter:legal-text.xsd",
     types = {
         "Inline": "InlineNode",
         "LegalText.Kind": "DocumentKind",

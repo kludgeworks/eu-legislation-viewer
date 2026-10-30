@@ -4,7 +4,7 @@
 test_suite(
     name = "corpus",
     tags = ["manual"],  # not part of //...
-    tests = ["//formex-converter/test/java/dev/groknull/kludgeworks/formex/converter:corpus"],
+    tests = ["//formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:corpus"],
 )
 
 # The viewer by a short name: bazel run //:app (mise run app)

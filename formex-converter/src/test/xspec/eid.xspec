@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/formex/converter/xslt/formex-to-legal-text.xsl">
+
+  <x:scenario label="A label as an eId value">
+    <x:scenario label="drops brackets">
+      <x:call function="f:label"><x:param select="'(a)'"/></x:call>
+      <x:expect label="(a) → a" select="'a'"/>
+    </x:scenario>
+    <x:scenario label="drops a closing bracket alone">
+      <x:call function="f:label"><x:param select="'iii)'"/></x:call>
+      <x:expect label="iii) → iii" select="'iii'"/>
+    </x:scenario>
+    <x:scenario label="drops trailing dots">
+      <x:call function="f:label"><x:param select="'1.0.6.'"/></x:call>
+      <x:expect label="1.0.6. → 1.0.6" select="'1.0.6'"/>
+    </x:scenario>
+    <x:scenario label="turns whitespace into hyphens">
+      <x:call function="f:label"><x:param select="' ATTACHMENT  6-A '"/></x:call>
+      <x:expect label="ATTACHMENT-6-A" select="'ATTACHMENT-6-A'"/>
+    </x:scenario>
+    <x:scenario label="keeps rule identifiers">
+      <x:call function="f:label"><x:param select="'CAT.GEN.100'"/></x:call>
+      <x:expect label="CAT.GEN.100" select="'CAT.GEN.100'"/>
+    </x:scenario>
+    <x:scenario label="drops what isn't a letter, digit, dot, underscore or hyphen">
+      <x:call function="f:label"><x:param select="'6–D'"/></x:call>
+      <x:expect label="the en dash goes" select="'6D'"/>
+    </x:scenario>
+    <x:scenario label="leaves no separator where a mark at the end was dropped">
+      <x:call function="f:label"><x:param select="'Criterion 3.1. –'"/></x:call>
+      <x:expect label="Criterion-3.1, not Criterion-3.1.-" select="'Criterion-3.1'"/>
+    </x:scenario>
+    <x:scenario label="keeps the minus of a negative number">
+      <x:call function="f:label"><x:param select="'-1'"/></x:call>
+      <x:expect label="Article -1 is art_-1, as ELI writes it" select="'-1'"/>
+    </x:scenario>
+    <x:scenario label="a mark with no letter or digit is no label">
+      <x:call function="f:label"><x:param select="'–'"/></x:call>
+      <x:expect label="empty: the item is numbered as an indent" select="''"/>
+    </x:scenario>
+    <x:scenario label="keeps letters of any script, so that labels differing in print differ">
+      <x:call function="f:label"><x:param select="'ΙII'"/></x:call>
+      <x:expect label="a Greek capital iota stays: ΙII is not II" select="'ΙII'"/>
+    </x:scenario>
+  </x:scenario>
+
+  <x:scenario label="The label after a type word">
+    <x:scenario label="Article 3">
+      <x:call function="f:label-after-word"><x:param select="'Article 3'"/></x:call>
+      <x:expect label="3" select="'3'"/>
+    </x:scenario>
+    <x:scenario label="ANNEX II">
+      <x:call function="f:label-after-word"><x:param select="'ANNEX II'"/></x:call>
+      <x:expect label="II" select="'II'"/>
+    </x:scenario>
+    <x:scenario label="ANNEX alone">
+      <x:call function="f:label-after-word"><x:param select="'ANNEX'"/></x:call>
+      <x:expect label="empty" select="''"/>
+    </x:scenario>
+    <x:scenario label="Article13, printed without a space">
+      <x:call function="f:label-after-word"><x:param select="'Article13'"/></x:call>
+      <x:expect label="13" select="'13'"/>
+    </x:scenario>
+    <x:scenario label="Article1d, printed without a space">
+      <x:call function="f:label-after-word"><x:param select="'Article1d'"/></x:call>
+      <x:expect label="1d" select="'1d'"/>
+    </x:scenario>
+    <x:scenario label="a quoted title: ‘ANNEX I">
+      <x:call function="f:label-after-word"><x:param select="'‘ANNEX I'"/></x:call>
+      <x:expect label="I, as for ANNEX I" select="'I'"/>
+    </x:scenario>
+    <x:scenario label="a heading with no number: Budget of the measure">
+      <x:call function="f:label-after-word"><x:param select="'Budget of the measure'"/></x:call>
+      <x:expect label="the whole heading, so that Duration of the measure differs" select="'Budget-of-the-measure'"/>
+    </x:scenario>
+    <x:scenario label="a heading of two words in capitals: FEDERAL SCHEMES">
+      <x:call function="f:label-after-word"><x:param select="'FEDERAL SCHEMES'"/></x:call>
+      <x:expect label="the whole heading: SCHEMES is no numeral, so STATE SCHEMES differs" select="'FEDERAL-SCHEMES'"/>
+    </x:scenario>
+    <x:scenario label="a name ending in a number: IFRIC INTERPRETATION 7">
+      <x:call function="f:label-after-word"><x:param select="'IFRIC INTERPRETATION 7'"/></x:call>
+      <x:expect label="the whole name, so that SIC INTERPRETATION 7 differs" select="'IFRIC-INTERPRETATION-7'"/>
+    </x:scenario>
+  </x:scenario>
+
+  <x:scenario label="Joining segments">
+    <x:scenario label="with a base">
+      <x:call function="f:eid"><x:param select="'art_3'"/><x:param select="'par'"/><x:param select="'2'"/></x:call>
+      <x:expect label="art_3/par_2" select="'art_3/par_2'"/>
+    </x:scenario>
+    <x:scenario label="without a base">
+      <x:call function="f:eid"><x:param select="()"/><x:param select="'art'"/><x:param select="'3'"/></x:call>
+      <x:expect label="art_3" select="'art_3'"/>
+    </x:scenario>
+    <x:scenario label="without a value">
+      <x:call function="f:eid"><x:param select="()"/><x:param select="'anx'"/><x:param select="()"/></x:call>
+      <x:expect label="anx" select="'anx'"/>
+    </x:scenario>
+  </x:scenario>
+
+</x:description>
