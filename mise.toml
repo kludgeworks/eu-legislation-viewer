@@ -48,7 +48,7 @@ run = "bazel test //..."
 
 [tasks.app]
 description = "Run the viewer"
-run = "bazel run //:app"
+run = "bazel run //viewer:app"
 
 [tasks."test:xspec"]
 description = "Run the XSpec suites"
@@ -61,8 +61,8 @@ run = "bazel run //formex-converter/src/test/java/dev/groknull/kludgeworks/forme
 [tasks.docs]
 description = "Write legal-text.xsd's documentation into the text records' Javadoc"
 run = [
-  "bazel run //src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text:schema_javadoc_update",
-  "google-java-format --replace src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/*.java",
+  "bazel run //viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text:schema_javadoc_update",
+  "google-java-format --replace viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/*.java",
 ]
 
 [tasks.pin]

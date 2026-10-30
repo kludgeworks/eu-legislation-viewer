@@ -30,7 +30,7 @@ SPDX-License-Identifier = "MIT"
 [[annotations]]
 path = [
   "formex-converter/src/test/resources/fixtures/**/*.xml",
-  "src/test/resources/cellar/*.xml",
+  "viewer/src/test/resources/cellar/*.xml",
 ]
 precedence = "override"
 SPDX-FileCopyrightText = "European Union, https://eur-lex.europa.eu"
@@ -45,7 +45,10 @@ SPDX-License-Identifier = "LicenseRef-EUR-Lex-reuse"
 
 # Cellar's metadata as recorded (SPARQL results, a manifestation's file list): EUR-Lex metadata is CC0
 [[annotations]]
-path = ["src/test/resources/cellar/*.json", "src/test/resources/cellar/*.xhtml"]
+path = [
+  "viewer/src/test/resources/cellar/*.json",
+  "viewer/src/test/resources/cellar/*.xhtml",
+]
 precedence = "override"
 SPDX-FileCopyrightText = "European Union, https://eur-lex.europa.eu"
 SPDX-License-Identifier = "CC0-1.0"

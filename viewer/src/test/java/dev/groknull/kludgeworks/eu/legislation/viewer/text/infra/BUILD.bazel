@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+
+# The reader on the converter's expected output: every sample read into the records without loss,
+# and the worked example's excerpts. One test target per *Test.java; SampleLegalTexts and
+# RecordContents become a shared library.
+java_test_suite(
+    name = "infra",
+    size = "medium",
+    srcs = glob(["*.java"]),
+    data = ["//formex-converter:expected"],
+    runner = "junit5",
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra",
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_params",
+        "@rules_java//java/runfiles",
+    ],
+)

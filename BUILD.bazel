@@ -6,15 +6,3 @@ test_suite(
     tags = ["manual"],  # not part of //...
     tests = ["//formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:corpus"],
 )
-
-# The viewer by a short name: bazel run //:app (mise run app)
-alias(
-    name = "app",
-    actual = "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:app",
-)
-
-# The viewer as Spring Boot's executable jar: bazel build //:jar
-alias(
-    name = "jar",
-    actual = "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:viewer-app",
-)

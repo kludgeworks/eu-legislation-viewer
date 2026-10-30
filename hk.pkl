@@ -10,7 +10,7 @@ import "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Builtins.
 local raw =
   List(
     "formex-converter/src/test/resources/fixtures/**",
-    "src/test/resources/cellar/**",
+    "viewer/src/test/resources/cellar/**",
     "**/xslt/subdivision.rdf",
   )
 // vendored W3C schemas, under the W3C licence; patches, whose context lines must match exactly; the

@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: MIT
+
+# The amendment viewer: a Spring Boot application, laid out as Maven lays out a Java project
+# (src/main/java, src/test/java, src/test/resources), one Bazel package per Java package.
+
+# bazel run //viewer:app (mise run app): on Bazel's classpath, for development
+alias(
+    name = "app",
+    actual = "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:app",
+)
+
+# bazel build //viewer:jar: Spring Boot's executable jar, for java -jar
+alias(
+    name = "jar",
+    actual = "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:viewer-app",
+)
