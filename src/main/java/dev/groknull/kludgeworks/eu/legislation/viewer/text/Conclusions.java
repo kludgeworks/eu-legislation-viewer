@@ -3,7 +3,12 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
 import java.util.List;
 
-/** The closing block: its paragraphs and the signatures. */
+/**
+ * The closing block: final formula and signature.
+ *
+ * @param signatures The signatures: one, one per party to an agreement, or none (consolidated
+ *     versions).
+ */
 public record Conclusions(List<Block> content, List<Signature> signatures) {
 
   public Conclusions {

@@ -3,7 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
 import java.util.List;
 
-/** In the long title: the act's number. */
+/** In the long title: the number, "(EU) 2015/1998". */
 public record DocNumber(List<Inline> content) implements Inline {
 
   public DocNumber {

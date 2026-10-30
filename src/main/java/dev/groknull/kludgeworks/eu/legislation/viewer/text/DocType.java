@@ -3,7 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
 import java.util.List;
 
-/** In the long title: the type of act. */
+/** In the long title: the type of act, "Commission Implementing Regulation". */
 public record DocType(List<Inline> content) implements Inline {
 
   public DocType {

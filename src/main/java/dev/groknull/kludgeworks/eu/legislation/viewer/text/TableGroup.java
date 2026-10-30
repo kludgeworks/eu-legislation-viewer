@@ -3,7 +3,12 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
 import java.util.List;
 
-/** Tables that share one caption. */
+/**
+ * Tables that belong together under one title (Formex GR.TBL).
+ *
+ * @param provenance The amending acts that put this group in its current form.
+ * @param caption The group's title.
+ */
 public record TableGroup(List<Provenance> provenance, List<Block> caption, List<Block> content)
     implements Block {
 

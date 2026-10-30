@@ -43,6 +43,8 @@ maven.install(
         "org.junit.platform:junit-platform-reporting",
         "org.assertj:assertj-core",
         "org.xmlunit:xmlunit-assertj3:2.14.0",
+        # the records' Javadoc from legal-text.xsd (mise run docs): Java sources read and edited
+        "com.github.javaparser:javaparser-core:3.28.2",
         "org.springframework:spring-test",
         "org.hamcrest:hamcrest",
         "org.springframework.modulith:spring-modulith-core",

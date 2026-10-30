@@ -3,7 +3,11 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
 import java.util.List;
 
-/** What precedes the preamble: the long title, in blocks. */
+/**
+ * What comes before the preamble: the long title.
+ *
+ * @param longTitle The long title.
+ */
 public record Preface(List<Block> longTitle) {
 
   public Preface {

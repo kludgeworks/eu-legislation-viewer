@@ -3,7 +3,13 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
 import java.util.List;
 
-/** A paragraph of running text, with the number of a numbered paragraph outside the hierarchy. */
+/**
+ * A paragraph of running text.
+ *
+ * @param provenance The amending acts that put this paragraph in its current form, when they differ
+ *     from its unit's.
+ * @param num The label of a numbered paragraph outside the hierarchy, e.g. in a table cell.
+ */
 public record Paragraph(List<Provenance> provenance, List<Inline> num, List<Inline> content)
     implements Block {
 

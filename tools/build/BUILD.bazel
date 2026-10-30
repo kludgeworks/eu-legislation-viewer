@@ -33,6 +33,30 @@ java_plugin(
     deps = ["@maven//:com_uber_nullaway_nullaway"],
 )
 
+# Records' Javadoc from an XML Schema's documentation (the macro schema_javadoc): the tool that
+# writes it, and the check
+java_library(
+    name = "schema_javadoc",
+    srcs = [
+        "src/dev/groknull/kludgeworks/build/SchemaJavadoc.java",
+        "src/dev/groknull/kludgeworks/build/UpdateSchemaJavadoc.java",
+    ],
+    deps = [
+        "@maven//:com_github_javaparser_javaparser_core",
+        "@maven//:net_sf_saxon_Saxon_HE",
+    ],
+)
+
+java_library(
+    name = "schema_javadoc_runner",
+    testonly = True,
+    srcs = ["src/dev/groknull/kludgeworks/build/SchemaJavadocTests.java"],
+    deps = [
+        ":schema_javadoc",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+)
+
 # a Schematron schema compiled with SchXslt 2, and its findings
 java_library(
     name = "schematron",

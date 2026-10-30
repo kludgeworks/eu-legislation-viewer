@@ -49,6 +49,13 @@ run = "bazel test //formex-converter/test/xspec/..."
 description = "Rewrite the converter's expected output from the fixtures, after a deliberate change"
 run = "bazel run //src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra:update_expected"
 
+[tasks.docs]
+description = "Write legal-text.xsd's documentation into the text records' Javadoc"
+run = [
+  "bazel run //src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text:schema_javadoc_update",
+  "google-java-format --replace src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/*.java",
+]
+
 [tasks.pin]
 description = "Pin the Maven dependencies after changing them in MODULE.bazel"
 run = "REPIN=1 bazel run @maven//:pin"

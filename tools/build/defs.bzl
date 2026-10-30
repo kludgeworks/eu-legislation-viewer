@@ -2,7 +2,7 @@
 """Build macros for the amendment viewer."""
 
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
-load("@rules_java//java:defs.bzl", "java_library")
+load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 
 def xjc_library(name, schema, bindings = None, xjc_args = [], srcs = [], deps = [], visibility = None):
     """Generate JAXB classes from an XSD (and its bindings) into a reproducible srcjar, and compile them.
@@ -81,6 +81,54 @@ def xspec_test(name, specs, data = [], **kwargs):
         )
         tests.append(":" + test_name)
     native.test_suite(name = name, tests = tests)
+
+def schema_javadoc(name, schema, srcs, types = {}, components = {}, **kwargs):
+    """Records' Javadoc from an XML Schema's documentation, checked and written.
+
+    `name`_test checks the sources say it; `name`_update (bazel run) writes it into them.
+
+    A record says what its schema type's documentation says, each component (@param) what the
+    element or attribute it maps from says, each enum constant what its enumeration value says.
+    Records and schema types share their names but for those the tables rename.
+
+    Args:
+      name: the prefix of the two targets.
+      schema: the XML Schema.
+      srcs: the records' sources.
+      types: record types whose schema type has another name, {"Inline": "InlineNode"}; nested
+        enums by their outer type, {"Unit.Kind": "UnitKind"}.
+      components: components mapped from an element or attribute of another name,
+        {"Row.cells": "td"}.
+      **kwargs: passed to the java_junit5_test.
+    """
+    update = "bazel run //%s:%s_update" % (native.package_name(), name)
+    flags = [
+        "-Dschema-javadoc.schema=$(rootpath %s)" % schema,
+        "-Dschema-javadoc.srcs='%s'" % " ".join(["$(rootpath %s)" % s for s in srcs]),
+        "-Dschema-javadoc.types=" + ",".join(["%s=%s" % (k, v) for k, v in types.items()]),
+        "-Dschema-javadoc.components=" + ",".join(["%s=%s" % (k, v) for k, v in components.items()]),
+        "-Dschema-javadoc.update='%s'" % update,
+    ]
+    java_junit5_test(
+        name = name + "_test",
+        test_class = "dev.groknull.kludgeworks.build.SchemaJavadocTests",
+        jvm_flags = flags,
+        data = [schema] + srcs,
+        runtime_deps = [
+            "//tools/build:schema_javadoc_runner",
+            "@maven//:org_junit_jupiter_junit_jupiter_engine",
+            "@maven//:org_junit_platform_junit_platform_launcher",
+            "@maven//:org_junit_platform_junit_platform_reporting",
+        ],
+        **kwargs
+    )
+    java_binary(
+        name = name + "_update",
+        main_class = "dev.groknull.kludgeworks.build.UpdateSchemaJavadoc",
+        jvm_flags = flags,
+        data = [schema] + srcs,
+        runtime_deps = ["//tools/build:schema_javadoc"],
+    )
 
 def xslt_quality_test(name, srcs, **kwargs):
     """Check stylesheets with xslt-quality: one JUnit 5 test with a dynamic test per stylesheet.

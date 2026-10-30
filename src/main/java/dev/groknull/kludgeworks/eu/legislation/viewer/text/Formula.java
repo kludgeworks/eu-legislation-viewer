@@ -3,16 +3,22 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
 import java.util.List;
 
-/** A formula of the preamble: the acting entity, or the enacting formula. */
+/**
+ * A fixed formula of the preamble.
+ *
+ * @param name Which formula this is.
+ */
 public record Formula(Name name, List<Block> content) implements PreambleContent {
 
   public Formula {
     content = List.copyOf(content);
   }
 
-  /** Which formula. */
+  /** The formulas of a preamble (AKN names). */
   public enum Name {
+    /** Who adopts the act: "THE EUROPEAN COMMISSION,". */
     ACTING_ENTITY,
+    /** The formula before the articles: "HAS ADOPTED THIS REGULATION:". */
     ENACTING_FORMULA
   }
 }

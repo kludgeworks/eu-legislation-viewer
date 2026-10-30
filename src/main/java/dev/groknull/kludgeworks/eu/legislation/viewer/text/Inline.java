@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
-/** A piece of running text. */
+/** Anything inside running text. */
 public sealed interface Inline
     permits Text,
         Emphasis,

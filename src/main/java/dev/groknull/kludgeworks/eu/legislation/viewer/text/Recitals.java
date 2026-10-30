@@ -3,7 +3,11 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text;
 
 import java.util.List;
 
-/** The recitals ("Whereas:"): an introduction, then the recital units and groups. */
+/**
+ * The recitals of the preamble.
+ *
+ * @param intro The words before the first recital: "Whereas:".
+ */
 public record Recitals(List<Block> intro, List<Block> units) implements PreambleContent {
 
   public Recitals {
