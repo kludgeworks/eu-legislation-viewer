@@ -160,7 +160,13 @@
   <!-- a letter of an exchange of letters attached to an agreement: let_N, under an attachment's eId -->
   <xsl:template match="LETTER" mode="block">
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'let', string(count(preceding-sibling::LETTER) + 1))"/>
+    <!-- an annex's fragments, which may be files of their own: its letters are numbered through them -->
+    <xsl:param name="annexFragments" as="element()*" select="()" tunnel="yes"/>
+    <xsl:variable name="scope" as="element()" select="(ancestor::*[self::ANNEX or self::CONS.ANNEX or self::CONS.DOC.GEN or self::QUOT.S
+                                                       or self::OLD.CORR or self::NEW.CORR][1], root(.)/*)[1]"/>
+    <xsl:variable name="at" as="xs:integer?" select="(for $i in 1 to count($annexFragments) return $i[$annexFragments[$i] is $scope])[1]"/>
+    <xsl:variable name="earlier" as="xs:integer" select="if (exists($at)) then count(subsequence($annexFragments, 1, $at - 1)//LETTER) else 0"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'let', string($earlier + count($scope//LETTER[. &lt;&lt; current()]) + 1))"/>
     <unit eId="{$eid}" kind="letter">
       <!-- "A. Letter from the European Union": A. is the num -->
       <xsl:call-template name="f:title">

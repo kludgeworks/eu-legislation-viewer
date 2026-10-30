@@ -122,6 +122,16 @@
               test="sort($x:result/descendant-or-self::*:unit/@eId ! string(.)) => string-join(' ') = 'pnt_2 pnt_2/lst_1/pnt_1 pnt_2/pnt_1'"/>
   </x:scenario>
 
+  <x:scenario label="An article with quotations in two ALINEAs">
+    <x:context mode="block" xmlns="">
+      <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART>
+        <ALINEA>Point 1 is replaced by:<QUOT.S LEVEL="1"><P>‘one’</P></QUOT.S></ALINEA>
+        <ALINEA>Point 2 is replaced by:<QUOT.S LEVEL="1"><P>‘two’</P></QUOT.S></ALINEA></ARTICLE>
+    </x:context>
+    <x:expect label="numbers them through the article, as their eIds hang off it"
+              test="$x:result//*:quotedStructure/@eId => string-join(' ') = 'art_1/unp_1/qst_1 art_1/unp_2/qst_2'"/>
+  </x:scenario>
+
   <x:scenario label="A table">
     <x:context mode="block" xmlns="">
       <TBL COLS="2" NO.SEQ="0001"><TITLE><TI><P>Table 1</P></TI></TITLE><CORPUS>

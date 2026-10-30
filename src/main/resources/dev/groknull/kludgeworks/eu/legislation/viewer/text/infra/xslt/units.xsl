@@ -215,14 +215,27 @@
   <!-- ============================================================ other blocks -->
 
   <!-- what an amending act inserts or substitutes; its units get eIds under …/qst_N -->
+  <!-- the unit a quotation is numbered within: the one its eId hangs off (an ALINEA's text is its
+       article's or paragraph's); outside any (the body, an attachment's file), the file -->
+  <xsl:function name="f:quotation-scope" as="element()">
+    <xsl:param name="quote" as="element(QUOT.S)"/>
+    <xsl:sequence select="($quote/ancestor::*[self::ITEM or self::ARTICLE or self::PARAG
+                                             or self::GR.SEQ or self::DLIST.ITEM or self::ANNEX or self::CONS.ANNEX
+                                             or self::OLD.CORR or self::NEW.CORR or self::DIVISION or self::LETTER
+                                             or self::CONSID or self::VISA or self::NOTE][1], root($quote)/*)[1]"/>
+  </xsl:function>
+
   <xsl:template match="QUOT.S" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="unit" as="element()?" select="ancestor::*[self::ITEM or self::ARTICLE or self::PARAG or self::ALINEA
-                                                  or self::GR.SEQ or self::DLIST.ITEM or self::ANNEX or self::CONS.ANNEX
-                                                  or self::OLD.CORR or self::NEW.CORR or self::DIVISION or self::LETTER
-                                                  or self::CONSID or self::VISA or self::NOTE][1]"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'qst', string(count($unit//QUOT.S[. &lt;&lt; current()]) + 1))"/>
+    <!-- an annex's fragments, which may be files of their own: its quotations are numbered through them -->
+    <xsl:param name="annexFragments" as="element()*" select="()" tunnel="yes"/>
+    <xsl:variable name="scope" as="element()" select="f:quotation-scope(.)"/>
+    <xsl:variable name="at" as="xs:integer?" select="(for $i in 1 to count($annexFragments) return $i[$annexFragments[$i] is $scope])[1]"/>
+    <xsl:variable name="earlier" as="xs:integer" select="
+        if (exists($at)) then count(subsequence($annexFragments, 1, $at - 1)//QUOT.S[f:quotation-scope(.) intersect $annexFragments])
+        else 0"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'qst', string($earlier + count($scope//QUOT.S[. &lt;&lt; current()][f:quotation-scope(.) is $scope]) + 1))"/>
     <quotedStructure eId="{$eid}">
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" as="node()*" select="node()"/>

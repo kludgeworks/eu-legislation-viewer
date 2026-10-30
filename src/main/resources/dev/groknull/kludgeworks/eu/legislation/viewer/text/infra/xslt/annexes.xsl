@@ -113,6 +113,7 @@
             <xsl:with-param name="levelCtx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
             <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
             <xsl:with-param name="earlier" as="document-node()*" select="($fragments[position() lt $i] ! root(.)) except root(.)" tunnel="yes"/>
+            <xsl:with-param name="annexFragments" as="element()*" select="$fragments" tunnel="yes"/>
             <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
             <!-- unnumbered top levels are numbered through all fragments -->
             <xsl:with-param name="levelOffset" as="xs:integer?" select="count($fragments[position() lt $i]/CONTENTS/GR.SEQ[f:label((f:level-num(.), f:level-label-line(.))[1]) = ''])" tunnel="yes"/>
