@@ -2,3 +2,18 @@
 common --java_language_version=25 --tool_java_language_version=25
 common --java_runtime_version=remotejdk_25 --tool_java_runtime_version=remotejdk_25
 test --test_output=errors
+
+# NullAway on every Java target: the @NullMarked packages are checked against their JSpecify
+# annotations, and @Nullable is honoured where unmarked code has it (the JAXB classes' getters).
+# Generated code (@Generated: MapStruct's mappers) isn't checked, the interfaces it implements are;
+# AssertJ's isNotNull() counts as a null check in tests, and JUnit's parameterized classes
+# initialise their fields (@Parameter, @BeforeParameterizedClassInvocation).
+build --plugin=//tools/build:nullaway
+build --javacopt=-Xep:NullAway:ERROR
+build --javacopt=-XepOpt:NullAway:OnlyNullMarked=true
+build --javacopt=-XepOpt:NullAway:JSpecifyMode=true
+build --javacopt=-XepOpt:NullAway:AcknowledgeRestrictiveAnnotations=true
+build --javacopt=-XepOpt:NullAway:TreatGeneratedAsUnannotated=true
+build --javacopt=-XepOpt:NullAway:HandleTestAssertionLibraries=true
+build --javacopt=-XepOpt:NullAway:ExcludedFieldAnnotations=org.junit.jupiter.params.Parameter
+build --javacopt=-XepOpt:NullAway:CustomInitializerAnnotations=org.junit.jupiter.params.BeforeParameterizedClassInvocation

@@ -15,6 +15,7 @@ import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.XdmDestination;
 import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XsltExecutable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Turns Formex 4 into legal-text XML with {@code formex-to-legal-text.xsl}. The stylesheet is
@@ -65,7 +66,7 @@ public final class FormexConverter {
     var transformer = stylesheet.load30();
     // a refusal is an xsl:message that terminates: its text is the reason, Saxon's own message
     // isn't
-    var reason = new AtomicReference<String>();
+    var reason = new AtomicReference<@Nullable String>();
     transformer.setMessageHandler(
         m -> reason.set(m.isTerminate() ? m.getStringValue() : reason.get()));
     var result = new XdmDestination();
@@ -75,7 +76,8 @@ public final class FormexConverter {
       }
       transformer.applyTemplates(formex, result);
     } catch (SaxonApiException e) {
-      throw translate(e, Optional.ofNullable(reason.get()).orElse(e.getMessage()));
+      var refusal = reason.get();
+      throw translate(e, refusal != null ? refusal : String.valueOf(e.getMessage()));
     }
     return result.getXdmNode();
   }

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@rules_java//java:defs.bzl", "java_binary", "java_import", "java_library")
+load("@rules_java//java:defs.bzl", "java_binary", "java_import", "java_library", "java_plugin")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -17,6 +17,20 @@ java_library(
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
     ],
+)
+
+# MapStruct's annotation processor: a library with it in plugins gets its mappers generated
+java_plugin(
+    name = "mapstruct",
+    processor_class = "org.mapstruct.ap.MappingProcessor",
+    deps = ["@maven//:org_mapstruct_mapstruct_processor"],
+)
+
+# NullAway, an Error Prone check, for every Java target (see .bazelrc): it checks the @NullMarked
+# packages, so generated and third-party code is left alone
+java_plugin(
+    name = "nullaway",
+    deps = ["@maven//:com_uber_nullaway_nullaway"],
 )
 
 # a Schematron schema compiled with SchXslt 2, and its findings

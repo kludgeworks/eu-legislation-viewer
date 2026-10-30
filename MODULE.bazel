@@ -21,6 +21,11 @@ maven.install(
         "org.glassfish.jaxb:jaxb-xjc:4.0.9",
         "org.glassfish.jaxb:jaxb-runtime:4.0.9",
         "jakarta.xml.bind:jakarta.xml.bind-api:4.0.5",
+        # MapStruct: the JAXB classes onto the domain records, generated at compile time
+        "org.mapstruct:mapstruct:1.7.0.Beta2",
+        "org.mapstruct:mapstruct-processor:1.7.0.Beta2",
+        # NullAway: JSpecify nullness checked at compile time, as an Error Prone plugin
+        "com.uber.nullaway:nullaway:0.14.3",
         # Spring: versions from the Spring Boot and Spring Modulith BOMs below
         "org.springframework:spring-core",
         "org.springframework:spring-context",

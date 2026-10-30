@@ -48,13 +48,17 @@ class CorpusTests {
           "No corpus at " + corpus + ": run mise run corpus:fetch, then mise run corpus:test");
     }
     var celex = manifest(corpus.resolve("manifest.tsv"));
-    return celex.keySet().stream()
-        .sorted()
-        .map(id -> new Fixture(id, corpus.resolve("files").resolve(id)))
+    return celex.entrySet().stream()
+        .sorted(Map.Entry.comparingByKey())
         .map(
-            fixture ->
+            item ->
                 DynamicTest.dynamicTest(
-                    fixture.name(), () -> check(fixture, celex.get(fixture.name()))));
+                    item.getKey(),
+                    () ->
+                        check(
+                            new Fixture(
+                                item.getKey(), corpus.resolve("files").resolve(item.getKey())),
+                            item.getValue())));
   }
 
   private static void check(Fixture fixture, Optional<String> celex) throws Exception {
@@ -65,7 +69,7 @@ class CorpusTests {
                   try {
                     return CONVERTER.convert(source, celex);
                   } catch (OutOfScopeException e) {
-                    return abort(e.getMessage());
+                    return abort(String.valueOf(e.getMessage()));
                   }
                 })
             .orElseThrow();

@@ -6,6 +6,7 @@
     "com.google.errorprone:error_prone_annotations": -1035138750,
     "com.google.guava:guava": 1943808618,
     "com.google.j2objc:j2objc-annotations": 2003271689,
+    "com.uber.nullaway:nullaway": -1216571949,
     "io.xspec:xspec": -1230917719,
     "jakarta.xml.bind:jakarta.xml.bind-api": 2142069040,
     "name.dmaus.schxslt:schxslt2": 601299804,
@@ -20,6 +21,8 @@
     "org.junit.jupiter:junit-jupiter-params": 1082310006,
     "org.junit.platform:junit-platform-launcher": -354104948,
     "org.junit.platform:junit-platform-reporting": 1896713402,
+    "org.mapstruct:mapstruct": -1232945864,
+    "org.mapstruct:mapstruct-processor": 312854205,
     "org.springframework.boot:spring-boot": 1220394855,
     "org.springframework.boot:spring-boot-autoconfigure": -919298511,
     "org.springframework.boot:spring-boot-dependencies": 98615043,
@@ -40,7 +43,7 @@
     "com.google.code.gson:gson": -1575757252,
     "com.google.errorprone:error_prone_annotations": 833623751,
     "com.google.guava:failureaccess": -1890754729,
-    "com.google.guava:guava": -163533230,
+    "com.google.guava:guava": 1983207288,
     "com.google.guava:listenablefuture": 1079558157,
     "com.google.j2objc:j2objc-annotations": 248818742,
     "com.sun.istack:istack-commons-runtime": -1984285786,
@@ -49,6 +52,7 @@
     "com.sun.xml.bind.external:rngom": 1649820321,
     "com.sun.xml.dtd-parser:dtd-parser": -655490870,
     "com.tngtech.archunit:archunit": -1723949349,
+    "com.uber.nullaway:nullaway": -1383348,
     "commons-logging:commons-logging": -102005530,
     "io.micrometer:micrometer-commons": 440746097,
     "io.micrometer:micrometer-observation": 161929031,
@@ -60,7 +64,8 @@
     "net.sf.saxon:Saxon-HE": -1112923966,
     "org.apiguardian:apiguardian-api": 1279798469,
     "org.assertj:assertj-core": -59722598,
-    "org.checkerframework:checker-qual": -1533199059,
+    "org.checkerframework:checker-qual": -1543380368,
+    "org.checkerframework:dataflow-nullaway": 1153433772,
     "org.eclipse.angus:angus-activation": 620999366,
     "org.glassfish.jaxb:codemodel": 551186893,
     "org.glassfish.jaxb:jaxb-core": -884066091,
@@ -77,6 +82,8 @@
     "org.junit.platform:junit-platform-engine": 389656162,
     "org.junit.platform:junit-platform-launcher": 2084826755,
     "org.junit.platform:junit-platform-reporting": 2140994334,
+    "org.mapstruct:mapstruct": -1054507741,
+    "org.mapstruct:mapstruct-processor": -644699307,
     "org.opentest4j.reporting:open-test-reporting-tooling-spi": 1212162497,
     "org.opentest4j:opentest4j": -1711174392,
     "org.slf4j:slf4j-api": 500377983,
@@ -203,6 +210,12 @@
       },
       "version": "1.4.2"
     },
+    "com.uber.nullaway:nullaway": {
+      "shasums": {
+        "jar": "440d3217f6a74d3b8dab766b0c63dbfbb87bea36d798879865218249dc3f1604"
+      },
+      "version": "0.14.3"
+    },
     "commons-logging:commons-logging": {
       "shasums": {
         "jar": "f8ead8943401081dea0aa824b5b1ba40a0e4ed297a572a0f02258150a0b62357"
@@ -271,9 +284,15 @@
     },
     "org.checkerframework:checker-qual": {
       "shasums": {
-        "jar": "e316255bbfcd9fe50d165314b85abb2b33cb2a66a93c491db648e498a82c2de1"
+        "jar": "66c061a19e20fb005c173169534aba7bf78e904a8a6da6fe8c6e97d277f6d347"
       },
-      "version": "3.33.0"
+      "version": "4.3.1"
+    },
+    "org.checkerframework:dataflow-nullaway": {
+      "shasums": {
+        "jar": "dc7b9ceddc9a68a1ffa9d66b5d62967ca3843712a671127c5a6c184f23a4f940"
+      },
+      "version": "4.3.1"
     },
     "org.eclipse.angus:angus-activation": {
       "shasums": {
@@ -370,6 +389,18 @@
         "jar": "f19c5be871c37ebed493f3152b67a909f89a44dff67c2db8016dfe34167d5730"
       },
       "version": "6.0.3"
+    },
+    "org.mapstruct:mapstruct": {
+      "shasums": {
+        "jar": "c03c68912f6a606cf9e8e964c562b3199c13297f345c06dcb049e428f82287b3"
+      },
+      "version": "1.7.0.Beta2"
+    },
+    "org.mapstruct:mapstruct-processor": {
+      "shasums": {
+        "jar": "a1a5f8fc4ed96cb2b6efdb1fff031553959680a585f70d246844c110d27229ad"
+      },
+      "version": "1.7.0.Beta2"
     },
     "org.opentest4j.reporting:open-test-reporting-tooling-spi": {
       "shasums": {
@@ -502,6 +533,11 @@
     "com.tngtech.archunit:archunit": [
       "org.slf4j:slf4j-api"
     ],
+    "com.uber.nullaway:nullaway": [
+      "com.google.guava:guava",
+      "org.checkerframework:dataflow-nullaway",
+      "org.jspecify:jspecify"
+    ],
     "io.micrometer:micrometer-commons": [
       "org.jspecify:jspecify"
     ],
@@ -521,6 +557,9 @@
     ],
     "org.assertj:assertj-core": [
       "net.bytebuddy:byte-buddy"
+    ],
+    "org.checkerframework:dataflow-nullaway": [
+      "org.checkerframework:checker-qual"
     ],
     "org.eclipse.angus:angus-activation": [
       "jakarta.activation:jakarta.activation-api"
@@ -773,6 +812,26 @@
       "com.tngtech.archunit.thirdparty.org.objectweb.asm",
       "com.tngtech.archunit.thirdparty.org.objectweb.asm.signature"
     ],
+    "com.uber.nullaway:nullaway": [
+      "com.uber.nullaway",
+      "com.uber.nullaway.annotations",
+      "com.uber.nullaway.dataflow",
+      "com.uber.nullaway.dataflow.cfg",
+      "com.uber.nullaway.fixserialization",
+      "com.uber.nullaway.fixserialization.adapters",
+      "com.uber.nullaway.fixserialization.location",
+      "com.uber.nullaway.fixserialization.out",
+      "com.uber.nullaway.fixserialization.scanners",
+      "com.uber.nullaway.generics",
+      "com.uber.nullaway.handlers",
+      "com.uber.nullaway.handlers.contract",
+      "com.uber.nullaway.handlers.contract.fieldcontract",
+      "com.uber.nullaway.handlers.stream",
+      "com.uber.nullaway.handlers.temporary",
+      "com.uber.nullaway.jarinfer",
+      "com.uber.nullaway.libmodel",
+      "com.uber.nullaway.librarymodel"
+    ],
     "commons-logging:commons-logging": [
       "org.apache.commons.logging",
       "org.apache.commons.logging.impl"
@@ -967,13 +1026,16 @@
       "org.checkerframework.checker.initialization.qual",
       "org.checkerframework.checker.interning.qual",
       "org.checkerframework.checker.lock.qual",
+      "org.checkerframework.checker.modifiability.qual",
       "org.checkerframework.checker.mustcall.qual",
+      "org.checkerframework.checker.nonempty.qual",
       "org.checkerframework.checker.nullness.qual",
       "org.checkerframework.checker.optional.qual",
       "org.checkerframework.checker.propkey.qual",
       "org.checkerframework.checker.regex.qual",
       "org.checkerframework.checker.signature.qual",
       "org.checkerframework.checker.signedness.qual",
+      "org.checkerframework.checker.sqlquotes.qual",
       "org.checkerframework.checker.tainting.qual",
       "org.checkerframework.checker.units.qual",
       "org.checkerframework.common.aliasing.qual",
@@ -981,10 +1043,55 @@
       "org.checkerframework.common.reflection.qual",
       "org.checkerframework.common.returnsreceiver.qual",
       "org.checkerframework.common.subtyping.qual",
-      "org.checkerframework.common.util.report.qual",
+      "org.checkerframework.common.util.count.report.qual",
       "org.checkerframework.common.value.qual",
       "org.checkerframework.dataflow.qual",
       "org.checkerframework.framework.qual"
+    ],
+    "org.checkerframework:dataflow-nullaway": [
+      "javax.annotation",
+      "javax.annotation.concurrent",
+      "javax.annotation.meta",
+      "org.checkerframework.nullaway.com.google.common.annotations",
+      "org.checkerframework.nullaway.com.google.common.base",
+      "org.checkerframework.nullaway.com.google.common.base.internal",
+      "org.checkerframework.nullaway.com.google.common.cache",
+      "org.checkerframework.nullaway.com.google.common.collect",
+      "org.checkerframework.nullaway.com.google.common.escape",
+      "org.checkerframework.nullaway.com.google.common.eventbus",
+      "org.checkerframework.nullaway.com.google.common.graph",
+      "org.checkerframework.nullaway.com.google.common.hash",
+      "org.checkerframework.nullaway.com.google.common.html",
+      "org.checkerframework.nullaway.com.google.common.io",
+      "org.checkerframework.nullaway.com.google.common.math",
+      "org.checkerframework.nullaway.com.google.common.net",
+      "org.checkerframework.nullaway.com.google.common.primitives",
+      "org.checkerframework.nullaway.com.google.common.reflect",
+      "org.checkerframework.nullaway.com.google.common.util.concurrent",
+      "org.checkerframework.nullaway.com.google.common.util.concurrent.internal",
+      "org.checkerframework.nullaway.com.google.common.xml",
+      "org.checkerframework.nullaway.com.google.errorprone.annotations",
+      "org.checkerframework.nullaway.com.google.errorprone.annotations.concurrent",
+      "org.checkerframework.nullaway.com.google.j2objc.annotations",
+      "org.checkerframework.nullaway.com.google.thirdparty.publicsuffix",
+      "org.checkerframework.nullaway.dataflow.analysis",
+      "org.checkerframework.nullaway.dataflow.busyexpr",
+      "org.checkerframework.nullaway.dataflow.cfg",
+      "org.checkerframework.nullaway.dataflow.cfg.block",
+      "org.checkerframework.nullaway.dataflow.cfg.builder",
+      "org.checkerframework.nullaway.dataflow.cfg.node",
+      "org.checkerframework.nullaway.dataflow.cfg.playground",
+      "org.checkerframework.nullaway.dataflow.cfg.visualize",
+      "org.checkerframework.nullaway.dataflow.constantpropagation",
+      "org.checkerframework.nullaway.dataflow.expression",
+      "org.checkerframework.nullaway.dataflow.livevariable",
+      "org.checkerframework.nullaway.dataflow.reachingdef",
+      "org.checkerframework.nullaway.dataflow.util",
+      "org.checkerframework.nullaway.javacutil",
+      "org.checkerframework.nullaway.javacutil.trees",
+      "org.checkerframework.nullaway.org.plumelib.javacparse",
+      "org.checkerframework.nullaway.org.plumelib.reflection",
+      "org.checkerframework.nullaway.org.plumelib.util"
     ],
     "org.eclipse.angus:angus-activation": [
       "org.eclipse.angus.activation",
@@ -1169,6 +1276,50 @@
       "org.junit.platform.reporting.shadow.org.opentest4j.reporting.events.java",
       "org.junit.platform.reporting.shadow.org.opentest4j.reporting.events.root",
       "org.junit.platform.reporting.shadow.org.opentest4j.reporting.schema"
+    ],
+    "org.mapstruct:mapstruct": [
+      "org.mapstruct",
+      "org.mapstruct.control",
+      "org.mapstruct.factory",
+      "org.mapstruct.util"
+    ],
+    "org.mapstruct:mapstruct-processor": [
+      "freemarker.core",
+      "org.mapstruct.ap",
+      "org.mapstruct.ap.internal.conversion",
+      "org.mapstruct.ap.internal.gem",
+      "org.mapstruct.ap.internal.gem.jakarta",
+      "org.mapstruct.ap.internal.model",
+      "org.mapstruct.ap.internal.model.annotation",
+      "org.mapstruct.ap.internal.model.assignment",
+      "org.mapstruct.ap.internal.model.beanmapping",
+      "org.mapstruct.ap.internal.model.common",
+      "org.mapstruct.ap.internal.model.dependency",
+      "org.mapstruct.ap.internal.model.presence",
+      "org.mapstruct.ap.internal.model.source",
+      "org.mapstruct.ap.internal.model.source.builtin",
+      "org.mapstruct.ap.internal.model.source.selector",
+      "org.mapstruct.ap.internal.option",
+      "org.mapstruct.ap.internal.processor",
+      "org.mapstruct.ap.internal.processor.creation",
+      "org.mapstruct.ap.internal.util",
+      "org.mapstruct.ap.internal.util.accessor",
+      "org.mapstruct.ap.internal.util.kotlin",
+      "org.mapstruct.ap.internal.version",
+      "org.mapstruct.ap.internal.writer",
+      "org.mapstruct.ap.shaded.freemarker.cache",
+      "org.mapstruct.ap.shaded.freemarker.core",
+      "org.mapstruct.ap.shaded.freemarker.debug",
+      "org.mapstruct.ap.shaded.freemarker.debug.impl",
+      "org.mapstruct.ap.shaded.freemarker.ext.beans",
+      "org.mapstruct.ap.shaded.freemarker.ext.dom",
+      "org.mapstruct.ap.shaded.freemarker.ext.util",
+      "org.mapstruct.ap.shaded.freemarker.log",
+      "org.mapstruct.ap.shaded.freemarker.template",
+      "org.mapstruct.ap.shaded.freemarker.template.utility",
+      "org.mapstruct.ap.shaded.org.mapstruct.tools.gem",
+      "org.mapstruct.ap.spi",
+      "org.mapstruct.ap.spi.util"
     ],
     "org.opentest4j.reporting:open-test-reporting-tooling-spi": [
       "org.opentest4j.reporting.tooling.spi.htmlreport"
@@ -1641,6 +1792,7 @@
       "com.sun.xml.bind.external:rngom",
       "com.sun.xml.dtd-parser:dtd-parser",
       "com.tngtech.archunit:archunit",
+      "com.uber.nullaway:nullaway",
       "commons-logging:commons-logging",
       "io.micrometer:micrometer-commons",
       "io.micrometer:micrometer-observation",
@@ -1653,6 +1805,7 @@
       "org.apiguardian:apiguardian-api",
       "org.assertj:assertj-core",
       "org.checkerframework:checker-qual",
+      "org.checkerframework:dataflow-nullaway",
       "org.eclipse.angus:angus-activation",
       "org.glassfish.jaxb:codemodel",
       "org.glassfish.jaxb:jaxb-core",
@@ -1669,6 +1822,8 @@
       "org.junit.platform:junit-platform-engine",
       "org.junit.platform:junit-platform-launcher",
       "org.junit.platform:junit-platform-reporting",
+      "org.mapstruct:mapstruct",
+      "org.mapstruct:mapstruct-processor",
       "org.opentest4j.reporting:open-test-reporting-tooling-spi",
       "org.opentest4j:opentest4j",
       "org.slf4j:slf4j-api",
@@ -1695,6 +1850,13 @@
     "com.sun.xml.bind.external:relaxng-datatype": {
       "com.sun.tools.rngdatatype.DatatypeLibraryFactory": [
         "com.sun.tools.rngdatatype.helpers.ProxyDatatypeLibraryFactory"
+      ]
+    },
+    "com.uber.nullaway:nullaway": {
+      "com.google.errorprone.bugpatterns.BugChecker": [
+        "com.uber.nullaway.JSpecifyUnrecognizedAnnotationLocation",
+        "com.uber.nullaway.NullAway",
+        "com.uber.nullaway.RequireExplicitNullMarking"
       ]
     },
     "io.micrometer:micrometer-observation": {
@@ -1763,6 +1925,29 @@
       ],
       "org.opentest4j.reporting.tooling.spi.htmlreport.Contributor": [
         "org.junit.platform.reporting.open.xml.JUnitContributor"
+      ]
+    },
+    "org.mapstruct:mapstruct-processor": {
+      "javax.annotation.processing.Processor": [
+        "org.mapstruct.ap.MappingProcessor"
+      ],
+      "org.mapstruct.ap.internal.processor.ModelElementProcessor": [
+        "org.mapstruct.ap.internal.processor.CdiComponentProcessor",
+        "org.mapstruct.ap.internal.processor.JakartaCdiComponentProcessor",
+        "org.mapstruct.ap.internal.processor.JakartaComponentProcessor",
+        "org.mapstruct.ap.internal.processor.Jsr330ComponentProcessor",
+        "org.mapstruct.ap.internal.processor.MapperCreationProcessor",
+        "org.mapstruct.ap.internal.processor.MapperRenderingProcessor",
+        "org.mapstruct.ap.internal.processor.MapperServiceProcessor",
+        "org.mapstruct.ap.internal.processor.MethodRetrievalProcessor",
+        "org.mapstruct.ap.internal.processor.SpringComponentProcessor"
+      ],
+      "org.mapstruct.ap.spi.EnumTransformationStrategy": [
+        "org.mapstruct.ap.spi.CaseEnumTransformationStrategy",
+        "org.mapstruct.ap.spi.PrefixEnumTransformationStrategy",
+        "org.mapstruct.ap.spi.StripPrefixEnumTransformationStrategy",
+        "org.mapstruct.ap.spi.StripSuffixEnumTransformationStrategy",
+        "org.mapstruct.ap.spi.SuffixEnumTransformationStrategy"
       ]
     },
     "org.springframework.boot:spring-boot": {

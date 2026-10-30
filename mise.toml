@@ -47,7 +47,7 @@ run = "bazel test //formex-converter/test/xspec/..."
 
 [tasks.pin]
 description = "Pin the Maven dependencies after changing them in MODULE.bazel"
-run = "bazel run @maven//:pin"
+run = "REPIN=1 bazel run @maven//:pin"
 
 [tasks.check]
 description = "Run every hk check on every file"
