@@ -143,6 +143,20 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="Eli">
+    <xs:annotation>
+      <xs:documentation>
+        A European Legislation Identifier: http://data.europa.eu/eli/, the document type, the year and
+        the number, then the segments of its version or form: an act's original text
+        (http://data.europa.eu/eli/reg_impl/2015/1998/oj), a corrigendum
+        (http://data.europa.eu/eli/dec_impl/2021/2326/corrigendum/2025-07-08/oj).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:anyURI">
+      <xs:pattern value="http://data\.europa\.eu/eli/[a-z][a-z_]*/[0-9]{4}/[0-9]+(/[a-z0-9_.\-]+)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <!-- ============================================================ metadata -->
 
   <xs:complexType name="Source">
@@ -157,8 +171,8 @@
         <xs:documentation>The CELEX number of this document: 02015R1998-20260322 for a consolidated version, 32015R1998 for the original.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="eli" type="xs:anyURI">
-      <xs:annotation><xs:documentation>The act's ELI, when the source carries it (Formex 06.x).</xs:documentation></xs:annotation>
+    <xs:attribute name="eli" type="Eli">
+      <xs:annotation><xs:documentation>This document's ELI, when its source carries it (from Formex 06.x): the act's original text's, or the corrigendum's own.</xs:documentation></xs:annotation>
     </xs:attribute>
   </xs:complexType>
 

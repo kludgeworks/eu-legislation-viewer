@@ -8,7 +8,8 @@ import org.jspecify.annotations.Nullable;
  *
  * @param celex The CELEX number of this document: 02015R1998-20260322 for a consolidated version,
  *     32015R1998 for the original.
- * @param eli The act's ELI, when the source carries it (Formex 06.x).
+ * @param eli This document's ELI, when its source carries it (from Formex 06.x): the act's original
+ *     text's, or the corrigendum's own.
  * @param publication Where the act was published in the Official Journal.
  */
 public record Source(String celex, @Nullable String eli, @Nullable Publication publication) {}
