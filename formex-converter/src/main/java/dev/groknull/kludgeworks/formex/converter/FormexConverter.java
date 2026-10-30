@@ -1,10 +1,20 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.formex.converter;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import net.sf.saxon.lib.FeatureKeys;
@@ -31,6 +41,7 @@ public final class FormexConverter {
 
   static final String STYLESHEET = "xslt/formex-to-legal-text.xsl";
   static final String ERRORS = "https://kludgeworks.groknull.dev/ns/formex-converter";
+  private static final Pattern ROOT_ELEMENT = Pattern.compile("<([A-Z][A-Z0-9.]*)[\\s>/]");
   private static final QName CELEX = new QName("celex");
 
   private final Processor processor;
@@ -98,5 +109,54 @@ public final class FormexConverter {
       };
     }
     return new ConversionException(message, e);
+  }
+
+  /**
+   * The file of a manifestation to convert, from the folder holding its files (each named as the
+   * package refers to it): a consolidation's CONS.ACT or CONS.OTH file, else the package descriptor
+   * (DOC), else the largest XML file.
+   *
+   * @throws IllegalArgumentException if the folder holds no XML file
+   */
+  public static Path input(Path folder) {
+    var files = xmlFiles(folder);
+    if (files.isEmpty()) {
+      throw new IllegalArgumentException("No Formex file in " + folder);
+    }
+    return first(files, root -> root.startsWith("CONS."))
+        .or(() -> first(files, "DOC"::equals))
+        .orElseGet(
+            () ->
+                files.stream().max(Comparator.comparingLong(FormexConverter::size)).orElseThrow());
+  }
+
+  private static List<Path> xmlFiles(Path folder) {
+    try (var files = Files.list(folder)) {
+      return files.filter(p -> p.getFileName().toString().endsWith(".xml")).sorted().toList();
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
+  }
+
+  private static Optional<Path> first(List<Path> files, Predicate<String> root) {
+    return files.stream().filter(f -> root.test(rootElement(f))).findFirst();
+  }
+
+  /** The root element's name, read from the start of the file. */
+  private static String rootElement(Path file) {
+    try (InputStream in = Files.newInputStream(file)) {
+      var matcher = ROOT_ELEMENT.matcher(new String(in.readNBytes(4096), StandardCharsets.UTF_8));
+      return matcher.find() ? matcher.group(1) : "";
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
+  }
+
+  private static long size(Path file) {
+    try {
+      return Files.size(file);
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
   }
 }
