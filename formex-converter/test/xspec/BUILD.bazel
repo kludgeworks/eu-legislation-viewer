@@ -4,6 +4,7 @@ load("//tools/build:defs.bzl", "xspec_test")
 xspec_test(
     name = "xspec",
     data = [
+        "//formex-converter:version.txt",  # read by the stylesheet
         "//formex-converter/test/fixtures:formex",
         "//formex-converter/xslt",
     ],

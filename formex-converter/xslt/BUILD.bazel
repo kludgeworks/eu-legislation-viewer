@@ -12,8 +12,11 @@ filegroup(
     ]),
 )
 
-# the same, on the classpath at /formex-converter/xslt/
+# the same, on the classpath at /formex-converter/xslt/ and /formex-converter/version.txt
 java_library(
     name = "resources",
-    resources = [":xslt"],
+    resources = [
+        ":xslt",
+        "//formex-converter:version.txt",
+    ],
 )

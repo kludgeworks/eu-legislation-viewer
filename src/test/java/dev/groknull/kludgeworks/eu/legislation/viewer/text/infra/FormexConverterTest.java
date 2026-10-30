@@ -4,7 +4,9 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import java.io.IOException;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import javax.xml.transform.stream.StreamSource;
 import net.sf.saxon.s9api.Processor;
@@ -19,6 +21,16 @@ class FormexConverterTest {
   void convertsAnOjActWithItsCelex() {
     var legalText = CONVERTER.convert(formex(act("<ENACTING.TERMS/>")), Optional.of("32026R0449"));
     assertThat(legalText.toString()).contains("act=\"32026R0449\"");
+  }
+
+  @Test
+  void stampsTheConvertersVersion() throws IOException {
+    String version;
+    try (var in = FormexConverter.class.getResourceAsStream("/formex-converter/version.txt")) {
+      version = new String(in.readAllBytes(), StandardCharsets.UTF_8).strip();
+    }
+    var legalText = CONVERTER.convert(formex(act("<ENACTING.TERMS/>")), Optional.of("32026R0449"));
+    assertThat(legalText.toString()).contains("converter=\"" + version + "\"");
   }
 
   @Test

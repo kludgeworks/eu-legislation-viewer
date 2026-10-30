@@ -38,7 +38,8 @@
 
   <!-- the CELEX number of an OJ act; Formex doesn't carry it (consolidations do) -->
   <xsl:param name="celex" as="xs:string?"/>
-  <xsl:param name="converter" as="xs:string" select="'1.0.0'"/>
+  <!-- the converter's version, from ../version.txt -->
+  <xsl:param name="converter" as="xs:string" select="normalize-space(unparsed-text('../version.txt', 'UTF-8'))"/>
 
   <xsl:variable name="f:namespace" as="xs:string" select="'https://kludgeworks.groknull.dev/ns/legal-text/1'"/>
   <xsl:variable name="f:schema" as="xs:string" select="'https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd'"/>

@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: MIT
+
+# The converter's version, released independently of the viewer: the stylesheet stamps it on every
+# document it writes (legalText/@converter)
+exports_files(
+    ["version.txt"],
+    visibility = ["//formex-converter:__subpackages__"],
+)

@@ -31,7 +31,7 @@
     </x:context>
     <x:expect label="names the act, the version and its Formex" test="
         $x:result/@act = '32015R1998' and $x:result/@kind = 'consolidated' and $x:result/@version = '2026-03-22'
-        and $x:result/@lang = 'en' and $x:result/@formexVersion = '06.02.1' and $x:result/@converter = '1.0.0'"/>
+        and $x:result/@lang = 'en' and $x:result/@formexVersion = '06.02.1' and matches($x:result/@converter, '^\d+\.\d+\.\d+$')"/>
     <x:expect label="points at its schema" test="
         $x:result/@xsi:schemaLocation = 'https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd'"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
