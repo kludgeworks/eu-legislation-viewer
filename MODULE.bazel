@@ -44,6 +44,11 @@ maven.install(
         "org.springframework.boot:spring-boot-loader-tools:4.1.1",  # not in the BOM: keep it at Boot's version
         "org.springframework.modulith:spring-modulith-api",
         "tools.jackson.core:jackson-databind",
+        # jMolecules: the DDD building blocks and the sliced onion's rings, as annotations, and
+        # their ArchUnit rules (tests); versions from the jMolecules BOM below
+        "org.jmolecules:jmolecules-ddd",
+        "org.jmolecules:jmolecules-onion-architecture",
+        "org.jmolecules.integrations:jmolecules-archunit",
         "org.jspecify:jspecify",
         # tests
         "org.junit.jupiter:junit-jupiter-api",
@@ -63,6 +68,7 @@ maven.install(
     boms = [
         "org.springframework.boot:spring-boot-dependencies:4.1.1",
         "org.springframework.modulith:spring-modulith-bom:2.1.1",
+        "org.jmolecules:jmolecules-bom:2025.0.2",
     ],
     # the resolved versions and their SHA-256s; after changing the artifacts: mise run pin
     lock_file = "//:maven_install.json",

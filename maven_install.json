@@ -17,6 +17,10 @@
     "org.glassfish.jaxb:jaxb-runtime": -203133062,
     "org.glassfish.jaxb:jaxb-xjc": -1416257791,
     "org.hamcrest:hamcrest": -29695334,
+    "org.jmolecules.integrations:jmolecules-archunit": -1728251600,
+    "org.jmolecules:jmolecules-bom": -1738962242,
+    "org.jmolecules:jmolecules-ddd": 1569514801,
+    "org.jmolecules:jmolecules-onion-architecture": 1660079362,
     "org.jspecify:jspecify": 1062581018,
     "org.junit.jupiter:junit-jupiter-api": 194920406,
     "org.junit.jupiter:junit-jupiter-engine": -1886863302,
@@ -102,6 +106,10 @@
     "org.hdrhistogram:HdrHistogram": 310945399,
     "org.hibernate.validator:hibernate-validator": 1341086113,
     "org.jboss.logging:jboss-logging": 670094878,
+    "org.jmolecules.integrations:jmolecules-archunit": -296919357,
+    "org.jmolecules:jmolecules-ddd": -1358615692,
+    "org.jmolecules:jmolecules-onion-architecture": 940530457,
+    "org.jmolecules:jstereotype": 1595728065,
     "org.jspecify:jspecify": -109882726,
     "org.junit.jupiter:junit-jupiter-api": 972758922,
     "org.junit.jupiter:junit-jupiter-engine": 1731586075,
@@ -167,6 +175,9 @@
     "jakarta.validation:jakarta.validation-api": "jakarta.validation:jakarta.validation-api:3.1.1",
     "org.assertj:assertj-core": "org.assertj:assertj-core:3.27.7",
     "org.hamcrest:hamcrest": "org.hamcrest:hamcrest:3.0",
+    "org.jmolecules.integrations:jmolecules-archunit": "org.jmolecules.integrations:jmolecules-archunit:0.33.0",
+    "org.jmolecules:jmolecules-ddd": "org.jmolecules:jmolecules-ddd:2.0.1",
+    "org.jmolecules:jmolecules-onion-architecture": "org.jmolecules:jmolecules-onion-architecture:2.0.1",
     "org.jspecify:jspecify": "org.jspecify:jspecify:1.0.1",
     "org.junit.jupiter:junit-jupiter-api": "org.junit.jupiter:junit-jupiter-api:6.0.3",
     "org.junit.jupiter:junit-jupiter-engine": "org.junit.jupiter:junit-jupiter-engine:6.0.3",
@@ -524,6 +535,30 @@
         "jar": "7c12ee575508f81e22b1db9334b969d0ec54ef0fd1dcba24eeab1a44235fc366"
       },
       "version": "3.6.3.Final"
+    },
+    "org.jmolecules.integrations:jmolecules-archunit": {
+      "shasums": {
+        "jar": "5291177ba1d1c9c430a7630fa64c0bcfc3d74b432ccd4362d12bf227d96cb99a"
+      },
+      "version": "0.33.0"
+    },
+    "org.jmolecules:jmolecules-ddd": {
+      "shasums": {
+        "jar": "29c9013e9110ef169a9564bc13fdf3f77e6bcece19fa2938cb11b9f29d497d78"
+      },
+      "version": "2.0.1"
+    },
+    "org.jmolecules:jmolecules-onion-architecture": {
+      "shasums": {
+        "jar": "c877958d02ce09fe6be9e817d07428f7f21cc73b2e8fe6f6feda0a63c53386bc"
+      },
+      "version": "2.0.1"
+    },
+    "org.jmolecules:jstereotype": {
+      "shasums": {
+        "jar": "8ee2277ede551ba969c381b2f90fb697a0fad610d1d1d2e432947c9bdcf19e7e"
+      },
+      "version": "2.0.1"
     },
     "org.jspecify:jspecify": {
       "shasums": {
@@ -974,6 +1009,16 @@
       "com.fasterxml:classmate",
       "jakarta.validation:jakarta.validation-api",
       "org.jboss.logging:jboss-logging"
+    ],
+    "org.jmolecules.integrations:jmolecules-archunit": [
+      "com.tngtech.archunit:archunit",
+      "org.slf4j:slf4j-api"
+    ],
+    "org.jmolecules:jmolecules-ddd": [
+      "org.jmolecules:jstereotype"
+    ],
+    "org.jmolecules:jmolecules-onion-architecture": [
+      "org.jmolecules:jstereotype"
     ],
     "org.junit.jupiter:junit-jupiter-api": [
       "org.apiguardian:apiguardian-api",
@@ -2203,6 +2248,25 @@
     "org.jboss.logging:jboss-logging": [
       "org.jboss.logging"
     ],
+    "org.jmolecules.integrations:jmolecules-archunit": [
+      "org.jmolecules.archunit",
+      "org.jmolecules.spring.core",
+      "org.jmolecules.spring.lang",
+      "org.jmolecules.spring.logging",
+      "org.jmolecules.spring.logging.impl",
+      "org.jmolecules.spring.util"
+    ],
+    "org.jmolecules:jmolecules-ddd": [
+      "org.jmolecules.ddd.annotation",
+      "org.jmolecules.ddd.types"
+    ],
+    "org.jmolecules:jmolecules-onion-architecture": [
+      "org.jmolecules.architecture.onion.classical",
+      "org.jmolecules.architecture.onion.simplified"
+    ],
+    "org.jmolecules:jstereotype": [
+      "org.jmolecules.stereotype"
+    ],
     "org.jspecify:jspecify": [
       "org.jspecify.annotations"
     ],
@@ -3078,6 +3142,10 @@
       "org.hdrhistogram:HdrHistogram",
       "org.hibernate.validator:hibernate-validator",
       "org.jboss.logging:jboss-logging",
+      "org.jmolecules.integrations:jmolecules-archunit",
+      "org.jmolecules:jmolecules-ddd",
+      "org.jmolecules:jmolecules-onion-architecture",
+      "org.jmolecules:jstereotype",
       "org.jspecify:jspecify",
       "org.junit.jupiter:junit-jupiter-api",
       "org.junit.jupiter:junit-jupiter-engine",
@@ -3223,6 +3291,11 @@
     "org.hibernate.validator:hibernate-validator": {
       "jakarta.validation.spi.ValidationProvider": [
         "org.hibernate.validator.HibernateValidator"
+      ]
+    },
+    "org.jmolecules.integrations:jmolecules-archunit": {
+      "org.apache.commons.logging.LogFactory": [
+        "org.apache.commons.logging.LogFactoryService"
       ]
     },
     "org.junit.jupiter:junit-jupiter-engine": {
