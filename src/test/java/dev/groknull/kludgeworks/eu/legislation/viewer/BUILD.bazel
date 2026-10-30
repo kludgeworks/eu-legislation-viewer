@@ -1,11 +1,13 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 
-# Whole-application checks: the module structure (Spring Modulith), and that the app starts
+# Whole-application checks: the module structure (Spring Modulith), and that the app starts,
+# on Bazel's classpath and as Spring Boot's jar
 java_test_suite(
     name = "viewer",
     size = "small",
     srcs = glob(["*.java"]),
+    data = ["//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:viewer-app"],
     runner = "junit5",
     # Spring's naming for whole-application checks
     test_suffixes = ["Tests.java"],
@@ -21,5 +23,6 @@ java_test_suite(
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_modulith_spring_modulith_core",
         "@maven//:org_springframework_spring_beans",
+        "@rules_java//java/runfiles",
     ],
 )

@@ -3,6 +3,7 @@
 
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
 load("@rules_java//java:defs.bzl", "java_binary", "java_library")
+load("@rules_java//java/common:java_info.bzl", "JavaInfo")
 
 def xjc_library(name, schema, bindings = None, imports = [], xjc_args = [], srcs = [], deps = [], visibility = None):
     """Generate JAXB classes from an XSD (and its bindings) into a reproducible srcjar, and compile them.
@@ -156,3 +157,51 @@ def xslt_quality_test(name, srcs, **kwargs):
         ],
         **kwargs
     )
+
+def _spring_boot_jar_impl(ctx):
+    java = ctx.attr.app[JavaInfo]
+    own = java.runtime_output_jars
+    out = ctx.actions.declare_file(ctx.label.name + ".jar")
+    args = ctx.actions.args()
+    args.use_param_file("@%s", use_always = True)
+    args.add(out)
+    args.add(ctx.attr.main_class)
+    args.add_all(own)
+    for jar in java.transitive_runtime_jars.to_list():
+        if jar not in own:
+            # ours (this repository's) or a dependency's
+            args.add("--local" if jar.owner.workspace_name == "" else "--library")
+            args.add(jar)
+    ctx.actions.run(
+        executable = ctx.executable._tool,
+        arguments = [args],
+        inputs = java.transitive_runtime_jars,
+        outputs = [out],
+        mnemonic = "SpringBootJar",
+        progress_message = "Packaging %{label} as a Spring Boot jar",
+    )
+    return [DefaultInfo(files = depset([out]))]
+
+spring_boot_jar = rule(
+    implementation = _spring_boot_jar_impl,
+    doc = """A Spring Boot executable jar, <name>.jar: java -jar runs it.
+
+    Not a java_binary's _deploy.jar: merging the jars keeps one META-INF/spring/*.imports of many,
+    so the app would start without most of its auto-configuration. This is the layout Spring Boot's
+    Maven and Gradle plugins write, by their Repackager: app's own jar with the launcher, every
+    other runtime jar nested in BOOT-INF/lib.
+    """,
+    attrs = {
+        "app": attr.label(
+            doc = "The java_library with the main class; its runtime classpath is the app's.",
+            mandatory = True,
+            providers = [JavaInfo],
+        ),
+        "main_class": attr.string(doc = "The @SpringBootApplication class.", mandatory = True),
+        "_tool": attr.label(
+            default = "//tools/build:spring_boot_jar",
+            executable = True,
+            cfg = "exec",
+        ),
+    },
+)

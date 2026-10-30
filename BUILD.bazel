@@ -12,3 +12,9 @@ alias(
     name = "app",
     actual = "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:app",
 )
+
+# The viewer as Spring Boot's executable jar: bazel build //:jar
+alias(
+    name = "jar",
+    actual = "//src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:viewer-app",
+)

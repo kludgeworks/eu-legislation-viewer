@@ -122,6 +122,14 @@ java_library(
     ],
 )
 
+# Spring Boot's executable jar from Bazel's jars (the rule spring_boot_jar)
+java_binary(
+    name = "spring_boot_jar",
+    srcs = ["src/dev/groknull/kludgeworks/build/SpringBootJar.java"],
+    main_class = "dev.groknull.kludgeworks.build.SpringBootJar",
+    deps = ["@maven//:org_springframework_boot_spring_boot_loader_tools"],
+)
+
 # JAXB's code generator, through its own entry point, for xjc_library, with our plugin (-Xjspecify)
 java_binary(
     name = "xjc",
