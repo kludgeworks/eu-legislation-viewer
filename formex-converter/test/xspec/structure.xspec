@@ -65,8 +65,8 @@
     <x:context mode="block" xmlns="">
       <GR.SEQ LEVEL="3"><NO.GR.SEQ>6.5.2</NO.GR.SEQ><P>first:<LIST TYPE="alpha"><ITEM><NP><NO.P>(a)</NO.P><TXT>x</TXT></NP></ITEM></LIST></P><P>second:<LIST TYPE="alpha"><ITEM><NP><NO.P>(a)</NO.P><TXT>y</TXT></NP></ITEM></LIST></P></GR.SEQ>
     </x:context>
-    <x:expect label="the first list keeps plain eIds, the second gets lst_2"
-              test="$x:result//*:list/*:unit/@eId = ('pnt_6.5.2/pnt_a', 'pnt_6.5.2/lst_2/pnt_a')"/>
+    <x:expect label="the first list keeps plain eIds, the second gets list_2"
+              test="$x:result//*:list/*:unit/@eId = ('pnt_6.5.2/pnt_a', 'pnt_6.5.2/list_2/pnt_a')"/>
   </x:scenario>
 
   <x:scenario label="A label repeated in one list (2025/24)">
@@ -118,16 +118,16 @@
       <GR.SEQ LEVEL="1"><NO.GR.SEQ>2.</NO.GR.SEQ><P>Requirements:<LIST TYPE="ARAB"><ITEM><NP><NO.P>1.</NO.P><TXT>x</TXT></NP></ITEM></LIST></P>
         <GR.SEQ LEVEL="2"><NO.GR.SEQ>(1)</NO.GR.SEQ><P>y</P></GR.SEQ></GR.SEQ>
     </x:context>
-    <x:expect label="sets the list apart (lst_1), the sub-level keeps pnt_1"
-              test="sort($x:result/descendant-or-self::*:unit/@eId ! string(.)) => string-join(' ') = 'pnt_2 pnt_2/lst_1/pnt_1 pnt_2/pnt_1'"/>
+    <x:expect label="sets the list apart (list_1), the sub-level keeps pnt_1"
+              test="sort($x:result/descendant-or-self::*:unit/@eId ! string(.)) => string-join(' ') = 'pnt_2 pnt_2/list_1/pnt_1 pnt_2/pnt_1'"/>
   </x:scenario>
 
   <x:scenario label="An item an amendment put after its list's end (in Bulgarian:)">
     <x:context mode="block" xmlns="">
       <P>one of the following:<LIST TYPE="NONE"><ITEM><P>in Danish: dybfrossen,</P></ITEM><ITEM><P>in Slovak: hlbokozmrazené,</P></ITEM></LIST><ITEM><P>in Bulgarian: бързо замразена</P></ITEM></P>
     </x:context>
-    <x:expect label="is a list of its own, numbered after the list: lst_2/idt_1"
-              test="$x:result/descendant-or-self::*:unit/@eId => string-join(' ') = 'idt_1 idt_2 lst_2/idt_1'"/>
+    <x:expect label="is a list of its own, numbered after the list: list_2/idt_1"
+              test="$x:result/descendant-or-self::*:unit/@eId => string-join(' ') = 'idt_1 idt_2 list_2/idt_1'"/>
   </x:scenario>
 
   <x:scenario label="An article with quotations in two ALINEAs">
@@ -137,7 +137,7 @@
         <ALINEA>Point 2 is replaced by:<QUOT.S LEVEL="1"><P>‘two’</P></QUOT.S></ALINEA></ARTICLE>
     </x:context>
     <x:expect label="numbers them through the article, as their eIds hang off it"
-              test="$x:result//*:quotedStructure/@eId => string-join(' ') = 'art_1/unp_1/qst_1 art_1/unp_2/qst_2'"/>
+              test="$x:result//*:quotedStructure/@eId => string-join(' ') = 'art_1/unp_1/qstr_1 art_1/unp_2/qstr_2'"/>
   </x:scenario>
 
   <x:scenario label="A table">
@@ -179,7 +179,7 @@
       </CORPUS></TBL>
     </x:context>
     <x:expect label="scopes each to its cell, by row and the source's column"
-              test="$x:result//*:unit/@eId => string-join(' ') = 'tbl_1/tr_1/td_2/lvl_PART-A tbl_1/tr_2/td_2/lvl_PART-A'"/>
+              test="$x:result//*:unit/@eId => string-join(' ') = 'tab_1/tr_1/td_2/level_PART-A tab_1/tr_2/td_2/level_PART-A'"/>
   </x:scenario>
 
   <x:scenario label="A correction with two &quot;for … read …&quot; pairs">
@@ -192,15 +192,15 @@
       </CORRECTION>
     </x:context>
     <x:expect label="numbers the pairs, so their quotations don't share eIds"
-              test="$x:result//*:quotedStructure/@eId => string-join(' ') = 'cor_1/old_1/qst_1 cor_1/new_1/qst_1 cor_1/old_2/qst_1 cor_1/new_2/qst_1'"/>
+              test="$x:result//*:quotedStructure/@eId => string-join(' ') = 'cor_1/old_1/qstr_1 cor_1/new_1/qstr_1 cor_1/old_2/qstr_1 cor_1/new_2/qstr_1'"/>
   </x:scenario>
 
   <x:scenario label="A quoted structure in an amending act">
     <x:context mode="block" xmlns="">
       <ITEM><NP><NO.P>(1)</NO.P><TXT>in point 1.2.2.2, point (b) is replaced by the following:</TXT><P><QUOT.S LEVEL="1"><LIST TYPE="alpha"><ITEM><NP><NO.P>(b)</NO.P><TXT>a valid crew identification card;</TXT></NP></ITEM></LIST></QUOT.S></P></NP></ITEM>
     </x:context>
-    <x:expect label="holds the quoted units, with eIds under qst_1"
-              test="$x:result/*:quotedStructure/@eId = 'pnt_1/qst_1' and $x:result/*:quotedStructure/*:list/*:unit/@eId = 'pnt_1/qst_1/pnt_b'"/>
+    <x:expect label="holds the quoted units, with eIds under qstr_1"
+              test="$x:result/*:quotedStructure/@eId = 'pnt_1/qstr_1' and $x:result/*:quotedStructure/*:list/*:unit/@eId = 'pnt_1/qstr_1/pnt_b'"/>
     <x:expect label="follows the instruction" test="$x:result/*:p/*:t/@v = 'in point 1.2.2.2, point (b) is replaced by the following:'"/>
   </x:scenario>
 

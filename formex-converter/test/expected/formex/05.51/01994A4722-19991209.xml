@@ -895,7 +895,7 @@
             <num>
                <t v="Appendix"/>
             </num>
-            <unit eId="anx/app/lvl_1" kind="level" depth="1">
+            <unit eId="anx/app/level_1" kind="level" depth="1">
                <heading>
                   <emphasis kind="b">
                      <t v="Indicative features of a Technology Management Plan (TMP)"/>
@@ -905,7 +905,7 @@
                   <t v="The TMP is a specific agreement to be concluded between the participants about the implementation of joint research and the respective rights and obligations of the participants. With respect to IP, the TMP will normally address, among other things, ownership, protection, user rights for research and development purposes, exploitation and dissemination, including arrangements for joint publication, the rights and obligations of visiting researchers and dispute settlement procedures. The TMP may also address foreground and background information, licensing and deliverables."/>
                </p>
             </unit>
-            <unit eId="anx/app/lvl_2" kind="level" depth="1">
+            <unit eId="anx/app/level_2" kind="level" depth="1">
                <heading>
                   <emphasis kind="b">
                      <t v="Declaration by the Council and the Commission"/>

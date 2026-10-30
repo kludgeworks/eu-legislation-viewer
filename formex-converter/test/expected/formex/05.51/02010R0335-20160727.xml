@@ -173,24 +173,24 @@
                   </td>
                   <td>
                      <list kind="none">
-                        <unit eId="anx/tbl_1/tr_3/td_4/idt_1" kind="indent">
+                        <unit eId="anx/tab_1/tr_3/td_4/idt_1" kind="indent">
                            <p>
                               <t v="Characterisation of the additive:"/>
                            </p>
                            <list kind="none">
-                              <unit eId="anx/tbl_1/tr_3/td_4/idt_1/idt_1" kind="indent">
+                              <unit eId="anx/tab_1/tr_3/td_4/idt_1/idt_1" kind="indent">
                                  <p>
                                     <t v="Zinc chelate of hydroxy analogue of methionine containing 17,5 %-18 % zinc and 81 % (2-hydroxy-4-methylthio) butanoic acid"/>
                                  </p>
                               </unit>
-                              <unit eId="anx/tbl_1/tr_3/td_4/idt_1/idt_2" kind="indent">
+                              <unit eId="anx/tab_1/tr_3/td_4/idt_1/idt_2" kind="indent">
                                  <p>
                                     <t v="Mineral oil: ≤ 1 %"/>
                                  </p>
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="anx/tbl_1/tr_3/td_4/idt_2" kind="indent">
+                        <unit eId="anx/tab_1/tr_3/td_4/idt_2" kind="indent">
                            <p>
                               <t v="Analytical method"/>
                               <noteRef href="#note_1" marker="1"/>

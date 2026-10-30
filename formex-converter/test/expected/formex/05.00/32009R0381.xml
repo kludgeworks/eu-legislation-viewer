@@ -160,25 +160,25 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <quotedStructure eId="anx/qst_1">
-            <unit eId="anx/qst_1/anx_III" kind="annex">
+         <quotedStructure eId="anx/qstr_1">
+            <unit eId="anx/qstr_1/anx_III" kind="annex">
                <num>
                   <t v="‘"/>
                   <t v="ANNEX III"/>
                </num>
-               <unit eId="anx/qst_1/anx_III/lvl_1" kind="level" depth="1">
+               <unit eId="anx/qstr_1/anx_III/level_1" kind="level" depth="1">
                   <heading>
                      <emphasis kind="b">
                         <t v="List of authorities in exporting countries empowered to issue certificates of authenticity"/>
                      </emphasis>
                   </heading>
                </unit>
-               <unit eId="anx/qst_1/anx_III/lvl_1/lvl_1" kind="level" depth="2">
+               <unit eId="anx/qstr_1/anx_III/level_1/level_1" kind="level" depth="2">
                   <heading>
                      <t v="SWITZERLAND"/>
                   </heading>
                   <list kind="dash">
-                     <unit eId="anx/qst_1/anx_III/lvl_1/lvl_1/idt_1" kind="indent">
+                     <unit eId="anx/qstr_1/anx_III/level_1/level_1/idt_1" kind="indent">
                         <p>
                            <t v="Office fédéral de l'agriculture/Bundesamt für Landwirtschaft/Ufficio federale dell'agricoltura."/>
                            <t v="’"/>

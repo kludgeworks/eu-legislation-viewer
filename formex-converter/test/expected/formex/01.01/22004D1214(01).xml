@@ -64,8 +64,8 @@
             <p>
                <t v="In Article 1 the following sentence is added after the last sentence:"/>
             </p>
-            <quotedStructure eId="art_1/unp_2/qst_1">
-               <unit eId="art_1/unp_2/qst_1/sub_1" kind="subparagraph">
+            <quotedStructure eId="art_1/unp_2/qstr_1">
+               <unit eId="art_1/unp_2/qstr_1/sub_1" kind="subparagraph">
                   <p>
                      <quote startQuote="‘" endQuote="’">
                         <t v="The delegations representing the Governments of Iceland and Norway may cede the chair of the Mixed Committee meeting at the level of senior officials and Ministers to another delegation prepared to perform that function"/>
@@ -79,8 +79,8 @@
             <p>
                <t v="Subparagraph 2 of Article 5 is modified as follows:"/>
             </p>
-            <quotedStructure eId="art_1/unp_3/qst_2">
-               <unit eId="art_1/unp_3/qst_2/sub_1" kind="subparagraph">
+            <quotedStructure eId="art_1/unp_3/qstr_2">
+               <unit eId="art_1/unp_3/qstr_2/sub_1" kind="subparagraph">
                   <p>
                      <quote startQuote="‘" endQuote="’">
                         <t v="The presence of at least half of the members of the Council, of the delegation of Iceland and of the delegation of Norway at ministerial level and of the member of Commission is required to enable the Mixed Committee to take decisions"/>

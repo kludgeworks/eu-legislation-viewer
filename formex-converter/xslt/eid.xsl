@@ -4,7 +4,7 @@
   eIds, AKN4EU style: segments joined by "/", each an abbreviation plus the unit's own label,
   e.g. art_3/par_2/pnt_a, anx/pnt_1.2.2.6, pbl_1/rct_12. Labels are taken literally: brackets and
   trailing dots are dropped, whitespace becomes "-", nothing is interpreted. Units without a label
-  are numbered by position (unp_2, idt_3, lvl_1). Letters and digits of any script are kept, so that
+  are numbered by position (unp_2, idt_3, level_1). Letters and digits of any script are kept, so that
   labels that differ in print differ here: "ANNEX ΙII", with a Greek capital iota, isn't anx_II.
 -->
 <xsl:stylesheet version="3.0"

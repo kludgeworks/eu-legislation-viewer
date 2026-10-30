@@ -193,8 +193,8 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <quotedStructure eId="anx/qst_1">
-            <unit eId="anx/qst_1/anx_I" kind="annex">
+         <quotedStructure eId="anx/qstr_1">
+            <unit eId="anx/qstr_1/anx_I" kind="annex">
                <num>
                   <t v="‘"/>
                   <t v="ANNEX I"/>

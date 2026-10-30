@@ -296,17 +296,17 @@
                         <t v="Preparation containing minimum:"/>
                      </p>
                      <list kind="none">
-                        <unit eId="anx/tbl_1/tr_3/td_4/idt_1" kind="indent">
+                        <unit eId="anx/tab_1/tr_3/td_4/idt_1" kind="indent">
                            <p>
                               <t v="10 % of canthaxanthin;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/tbl_1/tr_3/td_4/idt_2" kind="indent">
+                        <unit eId="anx/tab_1/tr_3/td_4/idt_2" kind="indent">
                            <p>
                               <t v="≤ 2,2 % ethoxyquin;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/tbl_1/tr_3/td_4/idt_3" kind="indent">
+                        <unit eId="anx/tab_1/tr_3/td_4/idt_3" kind="indent">
                            <p>
                               <t v="dichloromethane: ≤ 10 mg/kg additive."/>
                            </p>
@@ -350,12 +350,12 @@
                         <noteRef href="#note_anx01002201-1" marker="1"/>
                      </p>
                      <list kind="dash">
-                        <unit eId="anx/tbl_1/tr_3/td_4/lst_2/idt_1" kind="indent">
+                        <unit eId="anx/tab_1/tr_3/td_4/list_2/idt_1" kind="indent">
                            <p>
                               <t v="For the determination of canthaxanthin in the feed additive: spectrophotometry (426 nm)"/>
                            </p>
                         </unit>
-                        <unit eId="anx/tbl_1/tr_3/td_4/lst_2/idt_2" kind="indent">
+                        <unit eId="anx/tab_1/tr_3/td_4/list_2/idt_2" kind="indent">
                            <p>
                               <t v="For the determination of canthaxanthin in premixtures and feedingtuffs: Normal Phase High Performance Liquid Chromatography coupled to VIS detection (NP-HPLC-VIS, 466 nm)"/>
                            </p>

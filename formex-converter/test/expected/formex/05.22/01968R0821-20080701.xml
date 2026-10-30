@@ -328,7 +328,7 @@
                   <t v="Determination of regularity by sieve analysis using sieves with round holes."/>
                </p>
                <list kind="definition">
-                  <unit eId="anx/pnt_2/lst_2/def_1" kind="definition">
+                  <unit eId="anx/pnt_2/list_2/def_1" kind="definition">
                      <heading>
                         <t v="dm"/>
                      </heading>
@@ -353,34 +353,34 @@
                   <t v="grains which correspond to the definition under B I (1)."/>
                </p>
             </unit>
-            <unit eId="anx/pnt_B/lvl_1" kind="level" depth="2">
+            <unit eId="anx/pnt_B/level_1" kind="level" depth="2">
                <heading>
                   <t v="Sieve analysis"/>
                </heading>
             </unit>
-            <unit eId="anx/pnt_B/lvl_1/lvl_1" kind="level" depth="3">
+            <unit eId="anx/pnt_B/level_1/level_1" kind="level" depth="3">
                <heading>
                   <t v="Apparatus:"/>
                </heading>
                <list kind="dash">
-                  <unit eId="anx/pnt_B/lvl_1/lvl_1/idt_1" kind="indent">
+                  <unit eId="anx/pnt_B/level_1/level_1/idt_1" kind="indent">
                      <p>
                         <t v="Set of sieves with round hole (diameter 200 mm, diameter of holes 4·0 to 1·0 mm, at 0·25 mm intervals);"/>
                      </p>
                   </unit>
-                  <unit eId="anx/pnt_B/lvl_1/lvl_1/idt_2" kind="indent">
+                  <unit eId="anx/pnt_B/level_1/level_1/idt_2" kind="indent">
                      <p>
                         <t v="Sieving apparatus — sieving should be done by hand; sieving aids (rubber cubes of 20 mm side);"/>
                      </p>
                   </unit>
-                  <unit eId="anx/pnt_B/lvl_1/lvl_1/idt_3" kind="indent">
+                  <unit eId="anx/pnt_B/level_1/level_1/idt_3" kind="indent">
                      <p>
                         <t v="Precision scales."/>
                      </p>
                   </unit>
                </list>
             </unit>
-            <unit eId="anx/pnt_B/lvl_1/lvl_2" kind="level" depth="3">
+            <unit eId="anx/pnt_B/level_1/level_2" kind="level" depth="3">
                <heading>
                   <t v="Method:"/>
                </heading>

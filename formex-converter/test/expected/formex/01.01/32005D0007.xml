@@ -204,7 +204,7 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/lvl_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1">
             <heading>
                <t v="Methods for grading pig carcases in Cyprus"/>
                <eol/>
@@ -264,7 +264,7 @@
                <t v="where:"/>
             </p>
             <list kind="definition">
-               <unit eId="anx/lvl_1/def_1" kind="definition">
+               <unit eId="anx/level_1/def_1" kind="definition">
                   <heading>
                      <t v="ý"/>
                   </heading>
@@ -272,7 +272,7 @@
                      <t v="the estimated percentage of lean meat in the carcase,"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/def_2" kind="definition">
+               <unit eId="anx/level_1/def_2" kind="definition">
                   <heading>
                      <t v="X"/>
                      <emphasis kind="sub">
@@ -283,7 +283,7 @@
                      <t v="the thickness of back-fat (including rind) in millimetres, measured at 8 cm off the midline of the carcase behind the last rib,"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/def_3" kind="definition">
+               <unit eId="anx/level_1/def_3" kind="definition">
                   <heading>
                      <t v="X"/>
                      <emphasis kind="sub">
@@ -294,7 +294,7 @@
                      <t v="the thickness of back-fat (including rind) in millimetres, measured at 6 cm off the midline of the carcase between the third and fourth last rib,"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/def_4" kind="definition">
+               <unit eId="anx/level_1/def_4" kind="definition">
                   <heading>
                      <t v="W"/>
                   </heading>

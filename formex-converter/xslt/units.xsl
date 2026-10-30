@@ -214,7 +214,7 @@
 
   <!-- ============================================================ other blocks -->
 
-  <!-- what an amending act inserts or substitutes; its units get eIds under …/qst_N -->
+  <!-- what an amending act inserts or substitutes; its units get eIds under …/qstr_N -->
   <!-- the unit a quotation is numbered within: the one its eId hangs off (an ALINEA's text is its
        article's or paragraph's); outside any (the body, an attachment's file), the file -->
   <xsl:function name="f:quotation-scope" as="element()">
@@ -235,7 +235,7 @@
     <xsl:variable name="earlier" as="xs:integer" select="
         if (exists($at)) then count(subsequence($annexFragments, 1, $at - 1)//QUOT.S[f:quotation-scope(.) intersect $annexFragments])
         else 0"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'qst', string($earlier + count($scope//QUOT.S[. &lt;&lt; current()][f:quotation-scope(.) is $scope]) + 1))"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'qstr', string($earlier + count($scope//QUOT.S[. &lt;&lt; current()][f:quotation-scope(.) is $scope]) + 1))"/>
     <quotedStructure eId="{$eid}">
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" as="node()*" select="node()"/>
@@ -251,7 +251,7 @@
   </xsl:template>
 
   <!-- an annotation (the notes printed with a form) numbers what it holds apart from the text around
-       it: an outermost one is a context, ann_N through the file (anx_II/ann_1/lvl_PART-I) -->
+       it: an outermost one is a context, ann_N through the file (anx_II/ann_1/level_PART-I) -->
   <xsl:template match="ANNOTATION | GR.ANNOTATION" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
@@ -289,10 +289,10 @@
   </xsl:template>
 
   <!-- an image with its caption, and the transcription of its text (IMG.CNT) as its description,
-       whose units hang off fig_N, numbered through the file -->
+       whose units hang off fgr_N, numbered through the file -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'TIFF']" mode="block">
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="figure" as="xs:string" select="f:eid($base, 'fig', string(count(preceding::INCL.ELEMENT[@TYPE = 'TIFF']) + 1))"/>
+    <xsl:variable name="figure" as="xs:string" select="f:eid($base, 'fgr', string(count(preceding::INCL.ELEMENT[@TYPE = 'TIFF']) + 1))"/>
     <figure src="{@FILEREF}">
       <xsl:sequence select="f:image-content(.)"/>
       <xsl:if test="CAPTION">
@@ -327,7 +327,7 @@
   </xsl:function>
 
   <!-- another Formex file of the same package, included here: its content, in place. An included
-       annex stays an annex, under the eId of what includes it: anx/anx_A, or anx/qst_1/anx_A where an
+       annex stays an annex, under the eId of what includes it: anx/anx_A, or anx/qstr_1/anx_A where an
        amending act quotes it; so does a GENERAL file, an annex whose title is a heading -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'FORMEX.DOC']" mode="block">
     <xsl:variable name="included" as="element()" select="doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>

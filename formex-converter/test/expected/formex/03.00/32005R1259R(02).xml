@@ -36,7 +36,7 @@
                <heading>
                   <t v="for"/>
                </heading>
-               <quotedStructure eId="cor_1/def_1/qst_1">
+               <quotedStructure eId="cor_1/def_1/qstr_1">
                   <table cols="3">
                      <tr header="true">
                         <td header="true">
@@ -82,7 +82,7 @@
                <heading>
                   <t v="read"/>
                </heading>
-               <quotedStructure eId="cor_1/def_2/qst_1">
+               <quotedStructure eId="cor_1/def_2/qstr_1">
                   <table cols="3">
                      <tr header="true">
                         <td header="true">

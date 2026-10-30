@@ -133,8 +133,8 @@
                <p>
                   <t v="The following Chapter Ia is inserted:"/>
                </p>
-               <quotedStructure eId="art_1/pnt_2/qst_1">
-                  <unit eId="art_1/pnt_2/qst_1/cpt_Ia" kind="division">
+               <quotedStructure eId="art_1/pnt_2/qstr_1">
+                  <unit eId="art_1/pnt_2/qstr_1/cpt_Ia" kind="division">
                      <num>
                         <t v="‘"/>
                         <t v="CHAPTER Ia"/>
@@ -144,11 +144,11 @@
                            <t v="DELIVERIES OF RAW MILK TO FIRST PURCHASERS"/>
                         </emphasis>
                      </subheading>
-                     <unit eId="art_1/pnt_2/qst_1/art_1a" kind="article">
+                     <unit eId="art_1/pnt_2/qstr_1/art_1a" kind="article">
                         <num>
                            <t v="Article 1a"/>
                         </num>
-                        <unit eId="art_1/pnt_2/qst_1/art_1a/par_1" kind="paragraph">
+                        <unit eId="art_1/pnt_2/qstr_1/art_1a/par_1" kind="paragraph">
                            <num>
                               <t v="1."/>
                            </num>
@@ -158,7 +158,7 @@
                               <t v=", Member States shall notify the Commission, no later than the 25th of each month, of the total quantity of raw cow's milk delivered in the preceding month to first purchasers established in their territory, pursuant to Article 151 of Regulation (EU) No 1308/2013. The total quantity of cow's raw milk delivered shall be expressed in kilograms and refer to milk at real fat content."/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/art_1a/par_2" kind="paragraph">
+                        <unit eId="art_1/pnt_2/qstr_1/art_1a/par_2" kind="paragraph">
                            <num>
                               <t v="2."/>
                            </num>
@@ -198,13 +198,13 @@
                <p>
                   <t v="Article 8 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="art_1/pnt_5/qst_1">
-                  <unit eId="art_1/pnt_5/qst_1/art_8" kind="article">
+               <quotedStructure eId="art_1/pnt_5/qstr_1">
+                  <unit eId="art_1/pnt_5/qstr_1/art_8" kind="article">
                      <num>
                         <t v="‘"/>
                         <t v="Article 8"/>
                      </num>
-                     <unit eId="art_1/pnt_5/qst_1/art_8/par_1" kind="paragraph">
+                     <unit eId="art_1/pnt_5/qstr_1/art_8/par_1" kind="paragraph">
                         <num>
                            <t v="1."/>
                         </num>
@@ -214,7 +214,7 @@
                            <t v="."/>
                         </p>
                      </unit>
-                     <unit eId="art_1/pnt_5/qst_1/art_8/par_2" kind="paragraph">
+                     <unit eId="art_1/pnt_5/qstr_1/art_8/par_2" kind="paragraph">
                         <num>
                            <t v="2."/>
                         </num>

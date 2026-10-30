@@ -135,7 +135,7 @@
    </body>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
-         <unit eId="anx/lvl_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1">
             <heading>
                <t v="List of forms"/>
             </heading>
@@ -551,7 +551,7 @@
          <figure src="L_1994244EN.01004301.tif" content="form"/>
          <figure src="L_1994244EN.01004401.tif" content="form"/>
          <figure src="L_1994244EN.01004501.tif" content="form"/>
-         <unit eId="anx/lvl_2" kind="level" depth="1">
+         <unit eId="anx/level_2" kind="level" depth="1">
             <provenance amendingAct="32003D0148"
                         action="replaced"
                         location="LI:0;PT:1"
@@ -576,7 +576,7 @@
          <figure src="L_1994244EN.01006301.tif" content="form"/>
          <figure src="L_1994244EN.01006401.tif" content="form"/>
          <figure src="L_1994244EN.01006501.tif" content="form"/>
-         <unit eId="anx/lvl_3" kind="level" depth="1">
+         <unit eId="anx/level_3" kind="level" depth="1">
             <provenance amendingAct="32002D0154"
                         action="replaced"
                         location="LI:0;PT:1"
@@ -584,7 +584,7 @@
             <figure src="L_2002054EN.01000901.tif" content="form"/>
             <figure src="L_2002054EN.01001001.tif" content="form"/>
          </unit>
-         <unit eId="anx/lvl_4" kind="level" depth="1">
+         <unit eId="anx/level_4" kind="level" depth="1">
             <provenance amendingAct="32002D0154"
                         action="replaced"
                         location="LI:0;PT:1"
@@ -592,7 +592,7 @@
             <figure src="L_2002054EN.01001101.tif" content="form"/>
             <figure src="L_2002054EN.01001201.tif" content="form"/>
          </unit>
-         <unit eId="anx/lvl_5" kind="level" depth="1">
+         <unit eId="anx/level_5" kind="level" depth="1">
             <provenance amendingAct="32002D0154"
                         action="replaced"
                         location="LI:0;PT:1"
@@ -601,7 +601,7 @@
             <figure src="L_2002054EN.01001401.tif" content="form"/>
             <figure src="L_2002054EN.01001501.tif" content="form"/>
          </unit>
-         <unit eId="anx/lvl_6" kind="level" depth="1">
+         <unit eId="anx/level_6" kind="level" depth="1">
             <provenance amendingAct="32002D0154"
                         action="replaced"
                         location="LI:0;PT:1"
@@ -610,7 +610,7 @@
             <figure src="L_2002054EN.01001801.tif" content="form"/>
             <figure src="L_2002054EN.01001901.tif" content="form"/>
          </unit>
-         <unit eId="anx/lvl_7" kind="level" depth="1">
+         <unit eId="anx/level_7" kind="level" depth="1">
             <provenance amendingAct="32002D0154"
                         action="replaced"
                         location="LI:0;PT:1"
@@ -618,13 +618,13 @@
             <figure src="L_2002054EN.01002101.tif" content="form"/>
             <figure src="L_2002054EN.01002201.tif" content="form"/>
          </unit>
-         <unit eId="anx/lvl_8" kind="level" depth="1">
+         <unit eId="anx/level_8" kind="level" depth="1">
             <provenance amendingAct="32002D0154"
                         action="replaced"
                         location="LI:0;PT:1"
                         marker="O002001M007000"/>
          </unit>
-         <unit eId="anx/lvl_8/lvl_1" kind="level" depth="2">
+         <unit eId="anx/level_8/level_1" kind="level" depth="2">
             <provenance amendingAct="32002D0154"
                         action="replaced"
                         location="LI:0;PT:1"
@@ -632,7 +632,7 @@
             <figure src="L_2002054EN.01002301.tif" content="form"/>
             <figure src="L_2002054EN.01002401.tif" content="form"/>
          </unit>
-         <unit eId="anx/lvl_8/lvl_2" kind="level" depth="2">
+         <unit eId="anx/level_8/level_2" kind="level" depth="2">
             <provenance amendingAct="32002D0154"
                         action="replaced"
                         location="LI:0;PT:1"
@@ -663,7 +663,7 @@
          <figure src="L_1994244EN.01010801.tif" content="form"/>
          <figure src="L_1994244EN.01010901.tif" content="form"/>
          <figure src="L_1994244EN.01011101.tif" content="form"/>
-         <unit eId="anx/lvl_9" kind="level" depth="1">
+         <unit eId="anx/level_9" kind="level" depth="1">
             <provenance amendingAct="32002D0154"
                         action="replaced"
                         location="LI:0;PT:1"
@@ -672,7 +672,7 @@
             <figure src="L_2002054EN.01003001.tif" content="form"/>
             <figure src="L_2002054EN.01003101.tif" content="form"/>
          </unit>
-         <unit eId="anx/lvl_10" kind="level" depth="1">
+         <unit eId="anx/level_10" kind="level" depth="1">
             <provenance amendingAct="32002D0154"
                         action="replaced"
                         location="LI:0;PT:1"

@@ -280,9 +280,9 @@
                <p>
                   <t v="in Annex I the following points 130 and 131 are added:"/>
                </p>
-               <quotedStructure eId="anx/pnt_1/qst_1">
+               <quotedStructure eId="anx/pnt_1/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_1/qst_1/pnt_130" kind="point">
+                     <unit eId="anx/pnt_1/qstr_1/pnt_130" kind="point">
                         <num>
                            <t v="‘"/>
                            <t v="(130)"/>
@@ -294,7 +294,7 @@
                            <t v=" means a ground handling service consisting of activities related to the supervision of all ground handling services to an operator at an aerodrome. This service may be contracted to a ground handling organisation or performed by the aircraft operator itself, as self-handling;"/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_1/qst_1/pnt_131" kind="point">
+                     <unit eId="anx/pnt_1/qstr_1/pnt_131" kind="point">
                         <num>
                            <t v="(131)"/>
                         </num>
@@ -325,9 +325,9 @@
                      <p>
                         <t v="in point ORO.GEN.150, the following point (d) is added:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_2/pnt_1/qst_1">
+                     <quotedStructure eId="anx/pnt_2/pnt_1/qstr_1">
                         <list kind="alpha">
-                           <unit eId="anx/pnt_2/pnt_1/qst_1/pnt_d" kind="point">
+                           <unit eId="anx/pnt_2/pnt_1/qstr_1/pnt_d" kind="point">
                               <num>
                                  <t v="‘"/>
                                  <t v="(d)"/>
@@ -352,8 +352,8 @@
                         </quote>
                         <t v=":"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_2/pnt_2/qst_1">
-                        <unit eId="anx/pnt_2/pnt_2/qst_1/pnt_ORO.GEN.315" kind="level" depth="1">
+                     <quotedStructure eId="anx/pnt_2/pnt_2/qstr_1">
+                        <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315" kind="level" depth="1">
                            <num>
                               <t v="‘"/>
                               <emphasis kind="b">
@@ -366,7 +366,7 @@
                               </emphasis>
                            </heading>
                            <list kind="alpha">
-                              <unit eId="anx/pnt_2/pnt_2/qst_1/pnt_ORO.GEN.315/pnt_a" kind="point">
+                              <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315/pnt_a" kind="point">
                                  <num>
                                     <t v="(a)"/>
                                  </num>
@@ -374,7 +374,7 @@
                                     <t v="The operator shall ensure that the ground handling services for its aircraft, passengers, mail and cargo are provided either as self-handling performed by its own personnel or as contracted services to a third-party ground handling organisation, or a combination of both."/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_2/pnt_2/qst_1/pnt_ORO.GEN.315/pnt_b" kind="point">
+                              <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315/pnt_b" kind="point">
                                  <num>
                                     <t v="(b)"/>
                                  </num>
@@ -382,7 +382,7 @@
                                     <t v="The operator shall ensure that the third-party ground handling organisation provides services in accordance with the operator’s instructions and procedures."/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_2/pnt_2/qst_1/pnt_ORO.GEN.315/pnt_c" kind="point">
+                              <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315/pnt_c" kind="point">
                                  <num>
                                     <t v="(c)"/>
                                  </num>
@@ -390,7 +390,7 @@
                                     <t v="When contracting ground handling services listed in Article 2(2) of Delegated Regulation (EU) 2025/20 to an organisation operating under the terms of a declaration in accordance with that Regulation, the operator may use the operational procedures of the contracted organisation in any of the following cases:"/>
                                  </p>
                                  <list kind="arabic">
-                                    <unit eId="anx/pnt_2/pnt_2/qst_1/pnt_ORO.GEN.315/pnt_c/pnt_1" kind="point">
+                                    <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315/pnt_c/pnt_1" kind="point">
                                        <num>
                                           <t v="(1)"/>
                                        </num>
@@ -398,7 +398,7 @@
                                           <t v="the operator agrees that the ground handling organisation applies its own operational procedures for the provision of ground handling services, in accordance with point GH.OPS.005(b) of Delegated Regulation (EU) 2025/20. This shall be documented;"/>
                                        </p>
                                     </unit>
-                                    <unit eId="anx/pnt_2/pnt_2/qst_1/pnt_ORO.GEN.315/pnt_c/pnt_2" kind="point">
+                                    <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315/pnt_c/pnt_2" kind="point">
                                        <num>
                                           <t v="(2)"/>
                                        </num>
@@ -406,7 +406,7 @@
                                           <t v="the ground handling organisation providing the services has declared its capability to discharge the responsibilities associated with the services provided and that declaration is valid;"/>
                                        </p>
                                     </unit>
-                                    <unit eId="anx/pnt_2/pnt_2/qst_1/pnt_ORO.GEN.315/pnt_c/pnt_3" kind="point">
+                                    <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315/pnt_c/pnt_3" kind="point">
                                        <num>
                                           <t v="(3)"/>
                                        </num>
@@ -416,7 +416,7 @@
                                     </unit>
                                  </list>
                               </unit>
-                              <unit eId="anx/pnt_2/pnt_2/qst_1/pnt_ORO.GEN.315/pnt_d" kind="point">
+                              <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315/pnt_d" kind="point">
                                  <num>
                                     <t v="(d)"/>
                                  </num>
@@ -424,7 +424,7 @@
                                     <t v="When the operator ensures ground supervision with its own personnel as self-handling or contracts this activity to a third-party service provider, it shall ensure that the ground supervision function complies with point ORO.GEN.110 and that the operator includes the following elements in its operations manual:"/>
                                  </p>
                                  <list kind="arabic">
-                                    <unit eId="anx/pnt_2/pnt_2/qst_1/pnt_ORO.GEN.315/pnt_d/pnt_1" kind="point">
+                                    <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315/pnt_d/pnt_1" kind="point">
                                        <num>
                                           <t v="(1)"/>
                                        </num>
@@ -432,7 +432,7 @@
                                           <t v="a description of the activities included within the scope of ground supervision and any necessary procedures;"/>
                                        </p>
                                     </unit>
-                                    <unit eId="anx/pnt_2/pnt_2/qst_1/pnt_ORO.GEN.315/pnt_d/pnt_2" kind="point">
+                                    <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315/pnt_d/pnt_2" kind="point">
                                        <num>
                                           <t v="(2)"/>
                                        </num>
@@ -440,7 +440,7 @@
                                           <t v="the responsibilities associated with this function;"/>
                                        </p>
                                     </unit>
-                                    <unit eId="anx/pnt_2/pnt_2/qst_1/pnt_ORO.GEN.315/pnt_d/pnt_3" kind="point">
+                                    <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315/pnt_d/pnt_3" kind="point">
                                        <num>
                                           <t v="(3)"/>
                                        </num>
@@ -477,8 +477,8 @@
                         </quote>
                         <t v=":"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_3/pnt_1/qst_1">
-                        <unit eId="anx/pnt_3/pnt_1/qst_1/pnt_CAT.GEN.MPA.220"
+                     <quotedStructure eId="anx/pnt_3/pnt_1/qstr_1">
+                        <unit eId="anx/pnt_3/pnt_1/qstr_1/pnt_CAT.GEN.MPA.220"
                               kind="level"
                               depth="1">
                            <num>
@@ -493,7 +493,7 @@
                               </emphasis>
                            </heading>
                            <list kind="alpha">
-                              <unit eId="anx/pnt_3/pnt_1/qst_1/pnt_CAT.GEN.MPA.220/pnt_a" kind="point">
+                              <unit eId="anx/pnt_3/pnt_1/qstr_1/pnt_CAT.GEN.MPA.220/pnt_a" kind="point">
                                  <num>
                                     <t v="(a)"/>
                                  </num>
@@ -501,7 +501,7 @@
                                     <t v="The operator providing any of the ground handling activities listed in Article 2(2) of Delegated Regulation (EU) 2025/20 to itself or within a single air carrier business grouping (self-handling) shall comply with the applicable requirements of Annex I and Annex II to that Regulation, except for the requirements applicable to the ground supervision function, which shall comply with point ORO.GEN.315."/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_3/pnt_1/qst_1/pnt_CAT.GEN.MPA.220/pnt_b" kind="point">
+                              <unit eId="anx/pnt_3/pnt_1/qstr_1/pnt_CAT.GEN.MPA.220/pnt_b" kind="point">
                                  <num>
                                     <t v="(b)"/>
                                  </num>
@@ -524,9 +524,9 @@
                <p>
                   <t v="point (b)(1) of CAT.POL.MAB.105 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_2/qst_1">
+               <quotedStructure eId="anx/pnt_2/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_2/qst_1/pnt_1" kind="point">
+                     <unit eId="anx/pnt_2/qstr_1/pnt_1" kind="point">
                         <num>
                            <t v="‘"/>
                            <t v="(1)"/>
@@ -547,8 +547,8 @@
                <p>
                   <t v="the following point CAT.POL.MAB.110 is added:"/>
                </p>
-               <quotedStructure eId="anx/pnt_3/qst_1">
-                  <unit eId="anx/pnt_3/qst_1/pnt_CAT.POL.MAB.110" kind="level" depth="1">
+               <quotedStructure eId="anx/pnt_3/qstr_1">
+                  <unit eId="anx/pnt_3/qstr_1/pnt_CAT.POL.MAB.110" kind="level" depth="1">
                      <num>
                         <t v="‘"/>
                         <emphasis kind="b">

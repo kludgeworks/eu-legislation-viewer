@@ -32,7 +32,7 @@
             <t v="On page 61, Annex VII, the mathematical formula in point 1(c)(i) should read as follows:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <math>
                   <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
                      <m:mrow>
@@ -137,7 +137,7 @@
             <t v="On page 62, Annex VII, the mathematical formula in point 1(c)(ii) should read as follows:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_2/new/qst_1">
+            <quotedStructure eId="cor_2/new/qstr_1">
                <math>
                   <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
                      <m:mrow>

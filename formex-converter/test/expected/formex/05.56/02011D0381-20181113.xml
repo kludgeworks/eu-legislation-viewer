@@ -381,14 +381,14 @@
             <num>
                <t v="ANNEX"/>
             </num>
-            <unit eId="anx/lvl_1" kind="level" depth="1">
+            <unit eId="anx/level_1" kind="level" depth="1">
                <heading>
                   <emphasis kind="b">
                      <t v="FRAMEWORK"/>
                   </emphasis>
                </heading>
             </unit>
-            <unit eId="anx/lvl_1/lvl_1" kind="level" depth="2">
+            <unit eId="anx/level_1/level_1" kind="level" depth="2">
                <heading>
                   <emphasis kind="b">
                      <t v="The aims of the criteria"/>
@@ -398,7 +398,7 @@
                   <t v="These criteria aim in particular at promoting products that have a reduced impact on the water and soil during its use and contain a large fraction of biobased material."/>
                </p>
             </unit>
-            <unit eId="anx/lvl_2" kind="level" depth="1">
+            <unit eId="anx/level_2" kind="level" depth="1">
                <heading>
                   <emphasis kind="b">
                      <t v="CRITERIA"/>
@@ -447,14 +447,14 @@
                   <t v="Information appearing on the EU Ecolabel"/>
                </p>
             </unit>
-            <unit eId="anx/lvl_2/lvl_1" kind="level" depth="2">
+            <unit eId="anx/level_2/level_1" kind="level" depth="2">
                <heading>
                   <emphasis kind="b">
                      <t v="Assessment and verification requirements"/>
                   </emphasis>
                </heading>
             </unit>
-            <unit eId="anx/lvl_2/lvl_1/pnt_a" kind="level" depth="3">
+            <unit eId="anx/level_2/level_1/pnt_a" kind="level" depth="3">
                <num>
                   <t v="(a)"/>
                </num>
@@ -483,7 +483,7 @@
                   <t v="The general scheme for the assessment of any constituent substance in a lubricant product is given in Table 1."/>
                </p>
             </unit>
-            <unit eId="anx/lvl_2/lvl_1/pnt_b" kind="level" depth="3">
+            <unit eId="anx/level_2/level_1/pnt_b" kind="level" depth="3">
                <num>
                   <t v="(b)"/>
                </num>
@@ -497,17 +497,17 @@
                   <t v="The criteria shall apply as follows:"/>
                </p>
                <list kind="dash">
-                  <unit eId="anx/lvl_2/lvl_1/pnt_b/idt_1" kind="indent">
+                  <unit eId="anx/level_2/level_1/pnt_b/idt_1" kind="indent">
                      <p>
                         <t v="to the applied lubricant for criteria 1(a), 6 and 7,"/>
                      </p>
                   </unit>
-                  <unit eId="anx/lvl_2/lvl_1/pnt_b/idt_2" kind="indent">
+                  <unit eId="anx/level_2/level_1/pnt_b/idt_2" kind="indent">
                      <p>
                         <t v="to each stated substance intentionally added or formed above 0,010 % (w/w) for criterion 1(b) and 2,"/>
                      </p>
                   </unit>
-                  <unit eId="anx/lvl_2/lvl_1/pnt_b/idt_3" kind="indent">
+                  <unit eId="anx/level_2/level_1/pnt_b/idt_3" kind="indent">
                      <p>
                         <t v="to each stated substance intentionally added or formed above 0,10 % (w/w) for criteria 3, 4 and 5."/>
                      </p>
@@ -517,7 +517,7 @@
                   <t v="In addition the total fraction of the stated substances where the formulated criteria 3 and 4 do not apply shall remain below 0,5 % (w/w)."/>
                </p>
             </unit>
-            <unit eId="anx/lvl_3" kind="level" depth="1">
+            <unit eId="anx/level_3" kind="level" depth="1">
                <heading>
                   <emphasis kind="b">
                      <t v="EU ECOLABEL CRITERIA"/>
@@ -1413,12 +1413,12 @@
                   <t v=" if it shows:"/>
                </p>
                <list kind="dash">
-                  <unit eId="anx/pnt_4.1/lst_2/idt_1" kind="indent">
+                  <unit eId="anx/pnt_4.1/list_2/idt_1" kind="indent">
                      <p>
                         <t v="a biodegradation &gt; 70 % in the Part C.9 of the Annex to Regulation (EC) No 440/2008 or OECD 302 C test for inherent biodegradation or equivalent methods, or"/>
                      </p>
                   </unit>
-                  <unit eId="anx/pnt_4.1/lst_2/idt_2" kind="indent">
+                  <unit eId="anx/pnt_4.1/list_2/idt_2" kind="indent">
                      <p>
                         <t v="a biodegradation &gt; 20 % but &lt; 60 % after 28 days in Part C.4 of the Annex to Regulation (EC) No 440/2008, OECD 306, OECD 310 tests based on oxygen depletion or carbon dioxide generation or equivalent methods."/>
                      </p>
@@ -1428,12 +1428,12 @@
                   <t v="The biodegradation test does not need to be conducted when:"/>
                </p>
                <list kind="dash">
-                  <unit eId="anx/pnt_4.1/lst_3/idt_1" kind="indent">
+                  <unit eId="anx/pnt_4.1/list_3/idt_1" kind="indent">
                      <p>
                         <t v="the classification of the substance, base fluid or additive is already stated on the Lubricant Substance Classification list or a valid letter of compliance from a competent body can be submitted,"/>
                      </p>
                   </unit>
-                  <unit eId="anx/pnt_4.1/lst_3/idt_2" kind="indent">
+                  <unit eId="anx/pnt_4.1/list_3/idt_2" kind="indent">
                      <p>
                         <t v="a substance is non-biodegradable if it fails the criteria for ultimate and inherent biodegradability."/>
                      </p>
@@ -1657,9 +1657,9 @@
                <p>
                   <t v="Optional label with text box shall contain the following text:"/>
                </p>
-               <quotedStructure eId="anx/pnt_Criterion-7-/qst_1">
+               <quotedStructure eId="anx/pnt_Criterion-7-/qstr_1">
                   <list kind="dash">
-                     <unit eId="anx/pnt_Criterion-7-/qst_1/idt_1" kind="point">
+                     <unit eId="anx/pnt_Criterion-7-/qstr_1/idt_1" kind="point">
                         <num>
                            <t v="‘"/>
                            <t v="—"/>
@@ -1668,7 +1668,7 @@
                            <t v="Reduced harm for water and soil during use"/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_Criterion-7-/qst_1/idt_2" kind="point">
+                     <unit eId="anx/pnt_Criterion-7-/qstr_1/idt_2" kind="point">
                         <num>
                            <t v="—"/>
                         </num>

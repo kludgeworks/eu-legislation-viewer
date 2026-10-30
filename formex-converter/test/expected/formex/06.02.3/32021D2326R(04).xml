@@ -40,7 +40,7 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_1/old/qst_1">
+            <quotedStructure eId="cor_1/old/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="(see BAT 5)"/>
@@ -53,7 +53,7 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="(see BAT 9)"/>

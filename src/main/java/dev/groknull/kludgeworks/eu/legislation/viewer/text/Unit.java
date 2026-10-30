@@ -53,14 +53,14 @@ public record Unit(
      * label line ("CHAPTER III"). Its eId names the kind its heading gives, by the code of the EU
      * subdivision authority table, in any of the 24 languages, then the label after the type word:
      * TITLE I is tis_I, CHAPTER 2 cpt_2, SECTION 1 sct_1, PART TWO prt_TWO; a heading that names no
-     * kind the table has gives dvs_. A division is nested under the one that encloses it. Recitals
-     * are grouped the same way (Formex DIV.CONSID, "A. PROCEDURE"): eId pbl_1/dvs_A; the recitals
-     * inside keep preamble-wide eIds (pbl_1/rct_12), as articles keep act-wide ones.
+     * kind the table has gives division_. A division is nested under the one that encloses it.
+     * Recitals are grouped the same way (Formex DIV.CONSID, "A. PROCEDURE"): eId pbl_1/division_A;
+     * the recitals inside keep preamble-wide eIds (pbl_1/rct_12), as articles keep act-wide ones.
      */
     DIVISION,
     /**
      * A titled part of an article, found in agreements (Formex SUBDIV, "(1) Objectives"). Its num
-     * and heading come from its title; its eId is subdvs_ and its number, under the article.
+     * and heading come from its title; its eId is subdivision_ and its number, under the article.
      */
     SUBDIVISION,
     /** An article; eId art_N, act-wide even inside divisions, as in AKN4EU and ELI. */
@@ -76,8 +76,8 @@ public record Unit(
     /** An entry of a definition list: its prefix as num, its term as heading. */
     DEFINITION,
     /**
-     * A section or point of an annex: numbered (pnt_ and its number), labelled (lvl_ and a label
-     * line such as ATTACHMENT-6-A) or unnumbered (lvl_N by position).
+     * A section or point of an annex: numbered (pnt_ and its number), labelled (level_ and a label
+     * line such as ATTACHMENT-6-A) or unnumbered (level_N by position).
      */
     LEVEL,
     /** An annex; anx, or anx_ and its label. */

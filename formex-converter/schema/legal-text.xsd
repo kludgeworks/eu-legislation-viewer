@@ -531,9 +531,9 @@
             A grouping of articles: part, title, chapter or section (Formex DIVISION). Its num is the label line
             ("CHAPTER III"). Its eId names the kind its heading gives, by the code of the EU subdivision authority
             table, in any of the 24 languages, then the label after the type word: TITLE I is tis_I, CHAPTER 2 cpt_2,
-            SECTION 1 sct_1, PART TWO prt_TWO; a heading that names no kind the table has gives dvs_. A division is
+            SECTION 1 sct_1, PART TWO prt_TWO; a heading that names no kind the table has gives division_. A division is
             nested under the one that encloses it. Recitals are grouped the same way (Formex DIV.CONSID, "A.
-            PROCEDURE"): eId pbl_1/dvs_A; the recitals inside keep preamble-wide eIds (pbl_1/rct_12), as articles keep
+            PROCEDURE"): eId pbl_1/division_A; the recitals inside keep preamble-wide eIds (pbl_1/rct_12), as articles keep
             act-wide ones.
           </xs:documentation>
         </xs:annotation>
@@ -542,7 +542,7 @@
         <xs:annotation>
           <xs:documentation>
             A titled part of an article, found in agreements (Formex SUBDIV, "(1) Objectives"). Its num and heading come
-            from its title; its eId is subdvs_ and its number, under the article.
+            from its title; its eId is subdivision_ and its number, under the article.
           </xs:documentation>
         </xs:annotation>
       </xs:enumeration>
@@ -567,8 +567,8 @@
       <xs:enumeration value="level">
         <xs:annotation>
           <xs:documentation>
-            A section or point of an annex: numbered (pnt_ and its number), labelled (lvl_ and a label line such as
-            ATTACHMENT-6-A) or unnumbered (lvl_N by position).
+            A section or point of an annex: numbered (pnt_ and its number), labelled (level_ and a label line such as
+            ATTACHMENT-6-A) or unnumbered (level_N by position).
           </xs:documentation>
         </xs:annotation>
       </xs:enumeration>
@@ -883,7 +883,7 @@
       <xs:extension base="Block">
         <xs:group ref="blocks"/>
         <xs:attribute name="eId" type="EId" use="required">
-          <xs:annotation><xs:documentation>The enclosing unit's eId plus qst_N; the quoted units' eIds hang off it.</xs:documentation></xs:annotation>
+          <xs:annotation><xs:documentation>The enclosing unit's eId plus qstr_N; the quoted units' eIds hang off it.</xs:documentation></xs:annotation>
         </xs:attribute>
         <xs:attribute name="ambiguous" type="xs:boolean" default="false">
           <xs:annotation><xs:documentation>Inside a unit marked ambiguous, whose eId this one shares through it.</xs:documentation></xs:annotation>

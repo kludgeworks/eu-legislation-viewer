@@ -251,7 +251,7 @@
                      <t v="The label contains the following information:"/>
                   </p>
                   <list kind="arabic">
-                     <unit eId="anx/tbl_1/tr_4/td_1/pnt_1" kind="point">
+                     <unit eId="anx/tab_1/tr_4/td_1/pnt_1" kind="point">
                         <num>
                            <t v="1)"/>
                         </num>
@@ -262,7 +262,7 @@
                            <t v="Medicinally active ingredients:"/>
                         </p>
                         <list kind="definition">
-                           <unit eId="anx/tbl_1/tr_4/td_1/pnt_1/def_1" kind="definition">
+                           <unit eId="anx/tab_1/tr_4/td_1/pnt_1/def_1" kind="definition">
                               <num>
                                  <t v="—"/>
                               </num>
@@ -274,7 +274,7 @@
                                  <t v=" g"/>
                               </p>
                            </unit>
-                           <unit eId="anx/tbl_1/tr_4/td_1/pnt_1/def_2" kind="definition">
+                           <unit eId="anx/tab_1/tr_4/td_1/pnt_1/def_2" kind="definition">
                               <num>
                                  <t v="—"/>
                               </num>
@@ -286,7 +286,7 @@
                                  <t v=" g"/>
                               </p>
                            </unit>
-                           <unit eId="anx/tbl_1/tr_4/td_1/pnt_1/def_3" kind="definition">
+                           <unit eId="anx/tab_1/tr_4/td_1/pnt_1/def_3" kind="definition">
                               <num>
                                  <t v="—"/>
                               </num>
@@ -298,7 +298,7 @@
                                  <t v=" g"/>
                               </p>
                            </unit>
-                           <unit eId="anx/tbl_1/tr_4/td_1/pnt_1/def_4" kind="definition">
+                           <unit eId="anx/tab_1/tr_4/td_1/pnt_1/def_4" kind="definition">
                               <num>
                                  <t v="—"/>
                               </num>
@@ -318,7 +318,7 @@
                            <t v="Rose hip husks, cornflower leaves, peppermint leaves, marigold blossom, liquorice root."/>
                         </p>
                      </unit>
-                     <unit eId="anx/tbl_1/tr_4/td_1/pnt_2" kind="point">
+                     <unit eId="anx/tab_1/tr_4/td_1/pnt_2" kind="point">
                         <num>
                            <t v="2)"/>
                         </num>
@@ -329,7 +329,7 @@
                            <t v="Pour one cup (approximately 150 ml) of boiling water onto one tea bag, cover and leave to brew for approximately 15 minutes and then remove the tea bag. Unless otherwise prescribed, one cup of freshly brewed tea 3 to 4 times a day between meals."/>
                         </p>
                      </unit>
-                     <unit eId="anx/tbl_1/tr_4/td_1/pnt_3" kind="point">
+                     <unit eId="anx/tab_1/tr_4/td_1/pnt_3" kind="point">
                         <num>
                            <t v="3)"/>
                         </num>

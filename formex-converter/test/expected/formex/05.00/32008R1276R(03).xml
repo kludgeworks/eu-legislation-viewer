@@ -32,9 +32,9 @@
             <t v="On page 67, Annex IV, the fourth indent should read as follows:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <list kind="definition">
-                  <unit eId="cor_1/new/qst_1/def_1" kind="definition">
+                  <unit eId="cor_1/new/qstr_1/def_1" kind="definition">
                      <num>
                         <t v="‘"/>
                         <t v="—"/>

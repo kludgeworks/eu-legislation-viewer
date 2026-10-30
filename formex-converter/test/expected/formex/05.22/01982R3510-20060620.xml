@@ -322,7 +322,7 @@
                </rowGroup>
                <tr>
                   <td>
-                     <unit eId="anx/tbl_1/tr_4/td_1/pnt_B" kind="level" depth="1">
+                     <unit eId="anx/tab_1/tr_4/td_1/pnt_B" kind="level" depth="1">
                         <num>
                            <t v="B."/>
                         </num>
@@ -342,7 +342,7 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tbl_1/tr_5/td_1/pnt_C" kind="level" depth="1">
+                     <unit eId="anx/tab_1/tr_5/td_1/pnt_C" kind="level" depth="1">
                         <num>
                            <t v="C."/>
                         </num>
@@ -362,7 +362,7 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tbl_1/tr_6/td_1/pnt_D" kind="level" depth="1">
+                     <unit eId="anx/tab_1/tr_6/td_1/pnt_D" kind="level" depth="1">
                         <num>
                            <t v="D."/>
                         </num>
@@ -401,7 +401,7 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tbl_2/tr_2/td_1/pnt_A" kind="level" depth="1">
+                     <unit eId="anx/tab_2/tr_2/td_1/pnt_A" kind="level" depth="1">
                         <num>
                            <t v="A."/>
                         </num>
@@ -418,7 +418,7 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tbl_2/tr_3/td_1/pnt_B" kind="level" depth="1">
+                     <unit eId="anx/tab_2/tr_3/td_1/pnt_B" kind="level" depth="1">
                         <num>
                            <t v="B."/>
                         </num>
@@ -435,7 +435,7 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tbl_2/tr_4/td_1/pnt_C" kind="level" depth="1">
+                     <unit eId="anx/tab_2/tr_4/td_1/pnt_C" kind="level" depth="1">
                         <num>
                            <t v="C."/>
                         </num>

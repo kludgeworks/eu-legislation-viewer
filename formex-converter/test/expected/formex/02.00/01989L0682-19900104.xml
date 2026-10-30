@@ -125,8 +125,8 @@
                <p>
                   <t v="the second indent of Article 1 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="art_1/pnt_1/qst_1">
-                  <unit eId="art_1/pnt_1/qst_1/idt_1" kind="point">
+               <quotedStructure eId="art_1/pnt_1/qstr_1">
+                  <unit eId="art_1/pnt_1/qstr_1/idt_1" kind="point">
                      <num>
                         <t v="‘"/>
                         <t v="—"/>
@@ -151,8 +151,8 @@
                <p>
                   <t v="in Annex II, point 3.1.1 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="art_1/pnt_2/qst_1">
-                  <unit eId="art_1/pnt_2/qst_1/pnt_3.1.1" kind="level" depth="1">
+               <quotedStructure eId="art_1/pnt_2/qstr_1">
+                  <unit eId="art_1/pnt_2/qstr_1/pnt_3.1.1" kind="level" depth="1">
                      <num>
                         <t v="‘"/>
                         <t v="3.1.1."/>
@@ -177,8 +177,8 @@
                <p>
                   <t v="in Annex III (A), point 1.6 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="art_1/pnt_3/qst_1">
-                  <unit eId="art_1/pnt_3/qst_1/pnt_1.6" kind="level" depth="1">
+               <quotedStructure eId="art_1/pnt_3/qstr_1">
+                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6" kind="level" depth="1">
                      <num>
                         <t v="‘"/>
                         <t v="1.6."/>
@@ -187,7 +187,7 @@
                         <t v="Additional tests"/>
                      </heading>
                   </unit>
-                  <unit eId="art_1/pnt_3/qst_1/pnt_1.6.1" kind="level" depth="2">
+                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6.1" kind="level" depth="2">
                      <num>
                         <t v="1.6.1."/>
                      </num>
@@ -248,7 +248,7 @@
                         <t v="In order to be able to carry out the additional test, it is necessary to measure the elastic deformation during all of the impact tests."/>
                      </p>
                   </unit>
-                  <unit eId="art_1/pnt_3/qst_1/pnt_1.6.2" kind="level" depth="2">
+                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6.2" kind="level" depth="2">
                      <num>
                         <t v="1.6.2."/>
                      </num>
@@ -277,8 +277,8 @@
                <p>
                   <t v="in Annex V, the following point is inserted:"/>
                </p>
-               <quotedStructure eId="art_1/pnt_4/qst_1">
-                  <unit eId="art_1/pnt_4/qst_1/pnt_7.3" kind="level" depth="1">
+               <quotedStructure eId="art_1/pnt_4/qstr_1">
+                  <unit eId="art_1/pnt_4/qstr_1/pnt_7.3" kind="level" depth="1">
                      <num>
                         <t v="‘"/>
                         <t v="7.3."/>

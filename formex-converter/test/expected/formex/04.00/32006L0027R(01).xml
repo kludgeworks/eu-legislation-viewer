@@ -35,7 +35,7 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_1/old/qst_1">
+            <quotedStructure eId="cor_1/old/qstr_1">
                <math>
                   <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
                      <m:mrow>
@@ -109,7 +109,7 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <math>
                   <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
                      <m:mrow>

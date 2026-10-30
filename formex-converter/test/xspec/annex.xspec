@@ -45,7 +45,7 @@
     </x:context>
     <x:expect label="is one annex" test="count($x:result/*:annexes/*:unit) = 1 and $x:result/*:annexes/*:unit/@eId = 'anx'"/>
     <x:expect label="whose points keep annex-wide eIds" test="$x:result//*:unit/@eId = ('anx/pnt_6.1', 'anx/pnt_12.6.2')"/>
-    <x:expect label="unnumbered levels are numbered through all fragments" test="$x:result//*:unit/@eId = ('anx/lvl_1', 'anx/lvl_2')"/>
+    <x:expect label="unnumbered levels are numbered through all fragments" test="$x:result//*:unit/@eId = ('anx/level_1', 'anx/level_2')"/>
   </x:scenario>
 
   <x:scenario label="Unnumbered levels in the enacting terms">
@@ -60,8 +60,8 @@
         </CONS.DOC>
       </CONS.ACT>
     </x:context>
-    <x:expect label="are numbered through the enacting terms: lvl_1, lvl_2, not lvl_1 twice"
-        test="$x:result/*:body/*:unit/@eId => string-join(' ') = 'lvl_1 lvl_2'"/>
+    <x:expect label="are numbered through the enacting terms: level_1, level_2, not level_1 twice"
+        test="$x:result/*:body/*:unit/@eId => string-join(' ') = 'level_1 level_2'"/>
   </x:scenario>
 
   <x:scenario label="An annex quoted inside another annex (2020/782 quotes the former Annex I in Annex VI)">
@@ -77,7 +77,7 @@
       </CONS.ACT>
     </x:context>
     <x:expect label="is an annex under the quotation, not a second anx_I"
-        test="$x:result//*:quotedStructure/*:unit[@kind = 'annex']/@eId = 'anx_VI/qst_1/anx_I'
+        test="$x:result//*:quotedStructure/*:unit[@kind = 'annex']/@eId = 'anx_VI/qstr_1/anx_I'
               and $x:result/*:annexes/*:unit/@eId => string-join(' ') = 'anx_I anx_VI'"/>
     <x:expect label="with no EUR-Lex anchor, which belongs to the act's own annexes"
         test="empty($x:result//*:quotedStructure/*:unit/@eurlexAnchor)"/>
@@ -125,8 +125,8 @@
         </CONS.DOC>
       </CONS.ACT>
     </x:context>
-    <x:expect label="number the notes' definitions under the table, in their annotation: anx/def_1, anx/tbl_1/ann_1/def_1"
-              test="$x:result//*:unit[@kind = 'definition']/@eId => string-join(' ') = 'anx/def_1 anx/tbl_1/ann_1/def_1'"/>
+    <x:expect label="number the notes' definitions under the table, in their annotation: anx/def_1, anx/tab_1/ann_1/def_1"
+              test="$x:result//*:unit[@kind = 'definition']/@eId => string-join(' ') = 'anx/def_1 anx/tab_1/ann_1/def_1'"/>
   </x:scenario>
 
   <x:scenario label="An unlabelled ANNEX beside ANNEX 1 and ANNEX 2">
@@ -167,10 +167,10 @@
       </CONS.ACT>
     </x:context>
     <x:expect label="the first Side 1 is annex-wide, the repeat hangs off its own model, not off PART I"
-              test="$x:result//*:unit[*:num//@v = 'Side 1']/@eId => string-join(' ') = 'anx/lvl_Side-1 anx/lvl_PART-I/lvl_2/lvl_Side-1'"/>
+              test="$x:result//*:unit[*:num//@v = 'Side 1']/@eId => string-join(' ') = 'anx/level_Side-1 anx/level_PART-I/level_2/level_Side-1'"/>
     <x:expect label="SIDE 2, repeated as one sequence under PART I, is marked ambiguous, and so is what each repeat holds"
-              test="count($x:result//*:unit[@eId = 'anx/lvl_PART-I/lvl_SIDE-2'][@ambiguous = 'true']) = 2
-                    and count($x:result//*:unit[@eId = 'anx/lvl_PART-I/lvl_SIDE-2/lvl_1'][@ambiguous = 'true']) = 2"/>
+              test="count($x:result//*:unit[@eId = 'anx/level_PART-I/level_SIDE-2'][@ambiguous = 'true']) = 2
+                    and count($x:result//*:unit[@eId = 'anx/level_PART-I/level_SIDE-2/level_1'][@ambiguous = 'true']) = 2"/>
   </x:scenario>
 
   <x:scenario label="An annex whose title names no annex kind (Attachment 1), beside ANNEX 1">
@@ -199,8 +199,8 @@
         </CONS.DOC>
       </CONS.ACT>
     </x:context>
-    <x:expect label="hangs off the annotation: anx/lvl_PART-I, anx/ann_1/lvl_PART-I"
-              test="$x:result//*:unit[@kind = 'level']/@eId => string-join(' ') = 'anx/lvl_PART-I anx/ann_1/lvl_PART-I'"/>
+    <x:expect label="hangs off the annotation: anx/level_PART-I, anx/ann_1/level_PART-I"
+              test="$x:result//*:unit[@kind = 'level']/@eId => string-join(' ') = 'anx/level_PART-I anx/ann_1/level_PART-I'"/>
   </x:scenario>
 
   <x:scenario label="A list point 1. directly in an annex, beside its point (1)">
@@ -215,8 +215,8 @@
         </CONS.DOC>
       </CONS.ACT>
     </x:context>
-    <x:expect label="sets the list apart: anx/lst_1/pnt_1, anx/pnt_1"
-              test="sort($x:result//*:unit[@kind = ('point', 'level')]/@eId ! string(.)) => string-join(' ') = 'anx/lst_1/pnt_1 anx/pnt_1'"/>
+    <x:expect label="sets the list apart: anx/list_1/pnt_1, anx/pnt_1"
+              test="sort($x:result//*:unit[@kind = ('point', 'level')]/@eId ! string(.)) => string-join(' ') = 'anx/list_1/pnt_1 anx/pnt_1'"/>
   </x:scenario>
 
   <x:scenario label="A nested Appendix A before a top-level one">
@@ -233,7 +233,7 @@
       </CONS.ACT>
     </x:context>
     <x:expect label="leaves the annex-wide eId to the top-level one, which has nowhere else to hang"
-              test="$x:result//*:unit[*:num//@v = 'Appendix A']/@eId => string-join(' ') = 'anx/lvl_IAS-1/lvl_Appendix-A anx/lvl_Appendix-A'"/>
+              test="$x:result//*:unit[*:num//@v = 'Appendix A']/@eId => string-join(' ') = 'anx/level_IAS-1/level_Appendix-A anx/level_Appendix-A'"/>
   </x:scenario>
 
   <x:scenario label="Annexes with labels">
@@ -268,10 +268,10 @@
       </CONS.ACT>
     </x:context>
     <x:expect label="a title line that reads as a label is the num, and names the eId"
-              test="$x:result//*:unit[@eId = 'anx/lvl_ATTACHMENT-6-A']/*:num/*:t/@v = 'ATTACHMENT 6-A' and $x:result//*:unit[@eId = 'anx/lvl_ATTACHMENT-6-A']/*:heading/*:t/@v = 'DECLARATION'"/>
-    <x:expect label="labelled sections inside are annex-wide while their label is free" test="$x:result//*:unit/@eId = 'anx/lvl_PART-2'"/>
-    <x:expect label="a number the annex already has hangs off its section" test="$x:result//*:unit/@eId = ('anx/pnt_2.1', 'anx/lvl_PART-2/pnt_2.1')"/>
-    <x:expect label="a heading that is no label gets a position" test="$x:result//*:unit/@eId = 'anx/lvl_ATTACHMENT-6-A/lvl_1'"/>
+              test="$x:result//*:unit[@eId = 'anx/level_ATTACHMENT-6-A']/*:num/*:t/@v = 'ATTACHMENT 6-A' and $x:result//*:unit[@eId = 'anx/level_ATTACHMENT-6-A']/*:heading/*:t/@v = 'DECLARATION'"/>
+    <x:expect label="labelled sections inside are annex-wide while their label is free" test="$x:result//*:unit/@eId = 'anx/level_PART-2'"/>
+    <x:expect label="a number the annex already has hangs off its section" test="$x:result//*:unit/@eId = ('anx/pnt_2.1', 'anx/level_PART-2/pnt_2.1')"/>
+    <x:expect label="a heading that is no label gets a position" test="$x:result//*:unit/@eId = 'anx/level_ATTACHMENT-6-A/level_1'"/>
   </x:scenario>
 
   <x:scenario label="Points written as levels (Air Ops rules)">

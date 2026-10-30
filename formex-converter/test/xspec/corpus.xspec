@@ -29,12 +29,12 @@
       </ACT>
     </x:context>
     <x:expect label="are division units with their heading" test="
-        $x:result//*:recitals/*:unit[@kind = 'division']/@eId = 'pbl_1/dvs_A'
+        $x:result//*:recitals/*:unit[@kind = 'division']/@eId = 'pbl_1/division_A'
         and $x:result//*:recitals/*:unit[@kind = 'division']/*:num/*:t/@v = 'A.'
         and $x:result//*:recitals/*:unit[@kind = 'division']/*:heading/*:t/@v = 'PROCEDURE'"/>
-    <x:expect label="nest" test="$x:result//*:unit[@eId = 'pbl_1/dvs_A']/*:unit[@kind = 'division']/@eId = 'pbl_1/dvs_A/dvs_1'"/>
+    <x:expect label="nest" test="$x:result//*:unit[@eId = 'pbl_1/division_A']/*:unit[@kind = 'division']/@eId = 'pbl_1/division_A/division_1'"/>
     <x:expect label="keep preamble-wide recital eIds" test="$x:result//*:unit[@kind = 'recital']/@eId = ('pbl_1/rct_1', 'pbl_1/rct_2', 'pbl_1/rct_3')"/>
-    <x:expect label="keep what a group holds besides recitals" test="exists($x:result//*:unit[@eId = 'pbl_1/dvs_A/dvs_1']/*:table)"/>
+    <x:expect label="keep what a group holds besides recitals" test="exists($x:result//*:unit[@eId = 'pbl_1/division_A/division_1']/*:table)"/>
   </x:scenario>
 
   <x:scenario label="Recitals written as a list">

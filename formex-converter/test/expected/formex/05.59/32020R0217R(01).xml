@@ -31,7 +31,7 @@
          <p>
             <t v="On page 4, Article 3 is replaced as follows:"/>
          </p>
-         <quotedStructure eId="cor_1/qst_1">
+         <quotedStructure eId="cor_1/qstr_1">
             <p>
                <t v="‘"/>
                <t v="Article 3"/>
@@ -39,7 +39,7 @@
             <p>
                <t v="Entry into force and application"/>
             </p>
-            <unit eId="cor_1/qst_1/sub_1" kind="subparagraph">
+            <unit eId="cor_1/qstr_1/sub_1" kind="subparagraph">
                <p>
                   <t v="This Regulation shall enter into force on the twentieth day following that of its publication in the "/>
                   <emphasis kind="i">
@@ -48,21 +48,21 @@
                   <t v="."/>
                </p>
             </unit>
-            <unit eId="cor_1/qst_1/sub_2" kind="subparagraph">
+            <unit eId="cor_1/qstr_1/sub_2" kind="subparagraph">
                <p>
                   <t v="It shall apply from "/>
                   <date asWritten="1 October 2021" date="2021-10-01"/>
                   <t v="."/>
                </p>
             </unit>
-            <unit eId="cor_1/qst_1/sub_3" kind="subparagraph">
+            <unit eId="cor_1/qstr_1/sub_3" kind="subparagraph">
                <p>
                   <t v="However, Article 2 shall apply from "/>
                   <date asWritten="1 December 2019" date="2019-12-01"/>
                   <t v="."/>
                </p>
             </unit>
-            <unit eId="cor_1/qst_1/sub_4" kind="subparagraph">
+            <unit eId="cor_1/qstr_1/sub_4" kind="subparagraph">
                <p>
                   <t v="Substances and mixtures may, before "/>
                   <date asWritten="1 October 2021" date="2021-10-01"/>

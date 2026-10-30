@@ -32,7 +32,7 @@
     <x:context mode="block" xmlns="">
       <DIVISION><TITLE><TI><NP><NO.P>A.</NO.P><TXT>Scope</TXT></NP></TI></TITLE><P>text</P></DIVISION>
     </x:context>
-    <x:expect label="takes its label from NO.P" test="$x:result/@eId = 'dvs_A'"/>
+    <x:expect label="takes its label from NO.P" test="$x:result/@eId = 'division_A'"/>
   </x:scenario>
 
   <x:scenario label="Divisions named by the EU subdivision table: a title and a section both numbered I">
@@ -157,7 +157,7 @@
     <x:expect label="is a corrigendum" test="$x:result/@kind = 'corrigendum'"/>
     <x:expect label="has one unit per correction" test="$x:result/*:body/*:unit/@eId = ('cor_1', 'cor_2') and $x:result/*:body/*:unit/@kind = 'correction'"/>
     <x:expect label="keeps the old and the new wording apart" test="
-        $x:result//*:old//*:unit/@eId = 'cor_1/old/qst_1/pnt_b' and $x:result//*:new//*:unit/@eId = 'cor_1/new/qst_1/pnt_b'"/>
+        $x:result//*:old//*:unit/@eId = 'cor_1/old/qstr_1/pnt_b' and $x:result//*:new//*:unit/@eId = 'cor_1/new/qstr_1/pnt_b'"/>
   </x:scenario>
 
   <!-- ============================================================ agreements -->
@@ -184,10 +184,10 @@
       </ARTICLE>
     </x:context>
     <x:expect label="are subdivisions numbered by their title" test="
-        $x:result/*:unit/@eId = ('art_1/subdvs_1', 'art_1/subdvs_2') and $x:result/*:unit/@kind = 'subdivision'
+        $x:result/*:unit/@eId = ('art_1/subdivision_1', 'art_1/subdivision_2') and $x:result/*:unit/@kind = 'subdivision'
         and $x:result/*:unit[1]/*:num/*:t/@v = '(1)' and $x:result/*:unit[1]/*:heading/*:t/@v = 'Objectives'"/>
     <x:expect label="hold one ALINEA as their content, several as subparagraphs" test="
-        $x:result/*:unit[1]/*:p/*:t/@v = 'one' and $x:result/*:unit[2]/*:unit/@eId = ('art_1/subdvs_2/sub_1', 'art_1/subdvs_2/sub_2')"/>
+        $x:result/*:unit[1]/*:p/*:t/@v = 'one' and $x:result/*:unit[2]/*:unit/@eId = ('art_1/subdivision_2/sub_1', 'art_1/subdivision_2/sub_2')"/>
   </x:scenario>
 
   <x:scenario label="A protocol an agreement's annex includes (GENERAL)">

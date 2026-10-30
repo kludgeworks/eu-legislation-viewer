@@ -150,7 +150,7 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/lvl_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1">
             <heading>
                <emphasis kind="b">
                   <t v="List of experts willing and able to serve as panellists with regard to matters arising under chapter 13 (trade and sustainable development) of the agreement"/>
@@ -162,32 +162,32 @@
                </emphasis>
             </p>
             <list kind="none">
-               <unit eId="anx/lvl_1/idt_1" kind="indent">
+               <unit eId="anx/level_1/idt_1" kind="indent">
                   <p>
                      <t v="Sung Wook LEE"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/idt_2" kind="indent">
+               <unit eId="anx/level_1/idt_2" kind="indent">
                   <p>
                      <t v="Jaemin LEE"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/idt_3" kind="indent">
+               <unit eId="anx/level_1/idt_3" kind="indent">
                   <p>
                      <t v="Chang Young KWON"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/idt_4" kind="indent">
+               <unit eId="anx/level_1/idt_4" kind="indent">
                   <p>
                      <t v="Suh-Yong CHUNG"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/idt_5" kind="indent">
+               <unit eId="anx/level_1/idt_5" kind="indent">
                   <p>
                      <t v="Taek-Whan HAN"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/idt_6" kind="indent">
+               <unit eId="anx/level_1/idt_6" kind="indent">
                   <p>
                      <t v="Won-Mog CHOI"/>
                   </p>
@@ -199,32 +199,32 @@
                </emphasis>
             </p>
             <list kind="none">
-               <unit eId="anx/lvl_1/lst_2/idt_1" kind="indent">
+               <unit eId="anx/level_1/list_2/idt_1" kind="indent">
                   <p>
                      <t v="Eddy LAURIJSSEN"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/lst_2/idt_2" kind="indent">
+               <unit eId="anx/level_1/list_2/idt_2" kind="indent">
                   <p>
                      <t v="Jorge CARDONA"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/lst_2/idt_3" kind="indent">
+               <unit eId="anx/level_1/list_2/idt_3" kind="indent">
                   <p>
                      <t v="Karin LUKAS"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/lst_2/idt_4" kind="indent">
+               <unit eId="anx/level_1/list_2/idt_4" kind="indent">
                   <p>
                      <t v="Hélène RUIZ FABRI"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/lst_2/idt_5" kind="indent">
+               <unit eId="anx/level_1/list_2/idt_5" kind="indent">
                   <p>
                      <t v="Laurence BOISSON DE CHAZOURNES"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/lst_2/idt_6" kind="indent">
+               <unit eId="anx/level_1/list_2/idt_6" kind="indent">
                   <p>
                      <t v="Geert VAN CALSTER"/>
                   </p>
@@ -236,32 +236,32 @@
                </emphasis>
             </p>
             <list kind="none">
-               <unit eId="anx/lvl_1/lst_3/idt_1" kind="indent">
+               <unit eId="anx/level_1/list_3/idt_1" kind="indent">
                   <p>
                      <t v="Thomas P. PINANSKY"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/lst_3/idt_2" kind="indent">
+               <unit eId="anx/level_1/list_3/idt_2" kind="indent">
                   <p>
                      <t v="Nguyen Van TAI"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/lst_3/idt_3" kind="indent">
+               <unit eId="anx/level_1/list_3/idt_3" kind="indent">
                   <p>
                      <t v="Le HA THANH"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/lst_3/idt_4" kind="indent">
+               <unit eId="anx/level_1/list_3/idt_4" kind="indent">
                   <p>
                      <t v="Jill MURRAY"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/lst_3/idt_5" kind="indent">
+               <unit eId="anx/level_1/list_3/idt_5" kind="indent">
                   <p>
                      <t v="Ricardo MELÉNDEZ-ORTIZ"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_1/lst_3/idt_6" kind="indent">
+               <unit eId="anx/level_1/list_3/idt_6" kind="indent">
                   <p>
                      <t v="Nathalie BERNASCONI-OSTERWALDER"/>
                   </p>

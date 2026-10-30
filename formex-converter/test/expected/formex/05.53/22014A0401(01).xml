@@ -128,7 +128,7 @@
             <date asWritten="10 March 2014" date="2014-03-10"/>
             <t v=" 2014 regarding the deployment of a European Union military operation in the Central African Republic, which reads as follows:"/>
          </p>
-         <quotedStructure eId="let_2/qst_1">
+         <quotedStructure eId="let_2/qstr_1">
             <p>
                <t v="&#xA;                        "/>
                <t v="‘"/>
@@ -146,17 +146,17 @@
                <t v="I therefore suggest that all provisions of that Agreement (Articles 1 to 19) be made to apply to EUFOR RCA, on the understanding that:"/>
             </p>
             <list kind="dash">
-               <unit eId="let_2/qst_1/idt_1" kind="indent">
+               <unit eId="let_2/qstr_1/idt_1" kind="indent">
                   <p>
                      <t v="each mention of EUFOR in the above-mentioned articles will be considered to refer to EUFOR RCA;"/>
                   </p>
                </unit>
-               <unit eId="let_2/qst_1/idt_2" kind="indent">
+               <unit eId="let_2/qstr_1/idt_2" kind="indent">
                   <p>
                      <t v="the means of transport referred to in Articles 1(3)(a), 3(2) and 4(3) will be considered to include the means of transport belonging to the national contingents making up EUFOR RCA, but also those hired or chartered by EUFOR RCA;"/>
                   </p>
                </unit>
-               <unit eId="let_2/qst_1/idt_3" kind="indent">
+               <unit eId="let_2/qstr_1/idt_3" kind="indent">
                   <p>
                      <t v="the reference to United Nations Security Council Resolution 1778 (2007) of "/>
                      <date asWritten="25 September 2007" date="2007-09-25"/>

@@ -103,8 +103,8 @@
          <p>
             <t v="Article 5(4) of Regulation (EC) No 1185/2004 is hereby replaced by the following:"/>
          </p>
-         <quotedStructure eId="art_1/qst_1">
-            <unit eId="art_1/qst_1/par_4" kind="paragraph">
+         <quotedStructure eId="art_1/qstr_1">
+            <unit eId="art_1/qstr_1/par_4" kind="paragraph">
                <num>
                   <t v="‘"/>
                   <t v="4."/>
@@ -122,7 +122,7 @@
                   <t v="D-53179 Bonn"/>
                </p>
                <list kind="definition">
-                  <unit eId="art_1/qst_1/par_4/def_1" kind="definition">
+                  <unit eId="art_1/qstr_1/par_4/def_1" kind="definition">
                      <heading>
                         <t v="Fax"/>
                      </heading>

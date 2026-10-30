@@ -54,7 +54,7 @@
                   <t v="for:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_1/old/qst_1">
+            <quotedStructure eId="cor_1/old/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="2379181"/>
@@ -69,7 +69,7 @@
                   <t v="read:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="2369181"/>
@@ -97,7 +97,7 @@
                   <t v="for:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_2/old/qst_1">
+            <quotedStructure eId="cor_2/old/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="3362666"/>
@@ -112,7 +112,7 @@
                   <t v="read:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_2/new/qst_1">
+            <quotedStructure eId="cor_2/new/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="3352666"/>
@@ -140,7 +140,7 @@
                   <t v="for:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_3/old/qst_1">
+            <quotedStructure eId="cor_3/old/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="3771381"/>
@@ -155,7 +155,7 @@
                   <t v="read:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_3/new/qst_1">
+            <quotedStructure eId="cor_3/new/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="3771380"/>
@@ -183,7 +183,7 @@
                   <t v="for:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_4/old/qst_1">
+            <quotedStructure eId="cor_4/old/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="4774144"/>
@@ -198,7 +198,7 @@
                   <t v="read:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_4/new/qst_1">
+            <quotedStructure eId="cor_4/new/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="4774143"/>
@@ -226,7 +226,7 @@
                   <t v="for:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_5/old/qst_1">
+            <quotedStructure eId="cor_5/old/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="24009257"/>
@@ -241,7 +241,7 @@
                   <t v="read:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_5/new/qst_1">
+            <quotedStructure eId="cor_5/new/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="23999256"/>

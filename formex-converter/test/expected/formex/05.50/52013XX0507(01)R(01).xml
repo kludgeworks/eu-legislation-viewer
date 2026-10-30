@@ -34,7 +34,7 @@
             <t v="On pages 6 and 7, the applicable exchange rates should read as follows:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <tableGroup>
                   <table cols="9">
                      <tr header="true">

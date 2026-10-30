@@ -450,7 +450,7 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx_2/lvl_1" kind="level" depth="1">
+         <unit eId="anx_2/level_1" kind="level" depth="1">
             <heading>
                <emphasis kind="b">
                   <t v="JOINT DECLARATION BY THE CONTRACTING PARTIES ON THE ADDITIONAL PROTOCOL"/>
@@ -552,7 +552,7 @@
             <heading>
                <t v="INTERPRETATIVE DECLARATIONS"/>
             </heading>
-            <unit eId="anx_2/att_1/lvl_1" kind="level" depth="1">
+            <unit eId="anx_2/att_1/level_1" kind="level" depth="1">
                <heading>
                   <emphasis kind="b">
                      <t v="Interpretative Declaration on Article 25 of the Additional Protocol"/>
@@ -562,7 +562,7 @@
                   <t v="It is understood that importations financed:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx_2/att_1/lvl_1/pnt_a" kind="point">
+                  <unit eId="anx_2/att_1/level_1/pnt_a" kind="point">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -570,7 +570,7 @@
                         <t v="with special aid resources connected with specific investment projects;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_2/att_1/lvl_1/pnt_b" kind="point">
+                  <unit eId="anx_2/att_1/level_1/pnt_b" kind="point">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -578,7 +578,7 @@
                         <t v="without allocation of foreign currency;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_2/att_1/lvl_1/pnt_c" kind="point">
+                  <unit eId="anx_2/att_1/level_1/pnt_c" kind="point">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -731,7 +731,7 @@
             <t v="Have adopted the following Joint Declarations by the Contracting Parties relating to the Additional Protocol:"/>
          </p>
          <list kind="arabic">
-            <unit eId="att_1/lst_2/pnt_1" kind="point">
+            <unit eId="att_1/list_2/pnt_1" kind="point">
                <num>
                   <t v="1."/>
                </num>
@@ -739,7 +739,7 @@
                   <t v="Joint Declaration on the calculation of duties and charges,"/>
                </p>
             </unit>
-            <unit eId="att_1/lst_2/pnt_2" kind="point">
+            <unit eId="att_1/list_2/pnt_2" kind="point">
                <num>
                   <t v="2."/>
                </num>
@@ -747,7 +747,7 @@
                   <t v="Joint Declaration on Article 12 (2),"/>
                </p>
             </unit>
-            <unit eId="att_1/lst_2/pnt_3" kind="point">
+            <unit eId="att_1/list_2/pnt_3" kind="point">
                <num>
                   <t v="3."/>
                </num>
@@ -755,7 +755,7 @@
                   <t v="Joint Declaration on Articles 17 (1) and 18 (1),"/>
                </p>
             </unit>
-            <unit eId="att_1/lst_2/pnt_4" kind="point">
+            <unit eId="att_1/list_2/pnt_4" kind="point">
                <num>
                   <t v="4."/>
                </num>
@@ -763,7 +763,7 @@
                   <t v="Joint Declaration on Article 25 (4),"/>
                </p>
             </unit>
-            <unit eId="att_1/lst_2/pnt_5" kind="point">
+            <unit eId="att_1/list_2/pnt_5" kind="point">
                <num>
                   <t v="5."/>
                </num>
@@ -771,7 +771,7 @@
                   <t v="Joint Declaration on Article 27 (2),"/>
                </p>
             </unit>
-            <unit eId="att_1/lst_2/pnt_6" kind="point">
+            <unit eId="att_1/list_2/pnt_6" kind="point">
                <num>
                   <t v="6."/>
                </num>
@@ -779,7 +779,7 @@
                   <t v="Joint Declaration on Article 34,"/>
                </p>
             </unit>
-            <unit eId="att_1/lst_2/pnt_7" kind="point">
+            <unit eId="att_1/list_2/pnt_7" kind="point">
                <num>
                   <t v="7."/>
                </num>
@@ -792,12 +792,12 @@
             <t v="They have also adopted the following Interpretative Declarations:"/>
          </p>
          <list kind="dash">
-            <unit eId="att_1/lst_3/idt_1" kind="indent">
+            <unit eId="att_1/list_3/idt_1" kind="indent">
                <p>
                   <t v="Interpretative Declaration on Article 25 of the Additional Protocol,"/>
                </p>
             </unit>
-            <unit eId="att_1/lst_3/idt_2" kind="indent">
+            <unit eId="att_1/list_3/idt_2" kind="indent">
                <p>
                   <t v="Interpretative Declaration on the value of the unit of account mentioned in Article 3 of the Financial Protocol."/>
                </p>
@@ -807,7 +807,7 @@
             <t v="They have, in addition, taken note of the following Declarations by the Government of the Federal Republic of Germany on the Agreement in respect of products within the province of the European Coal and Steel Community:"/>
          </p>
          <list kind="arabic">
-            <unit eId="att_1/lst_4/pnt_1" kind="point">
+            <unit eId="att_1/list_4/pnt_1" kind="point">
                <num>
                   <t v="1."/>
                </num>
@@ -819,7 +819,7 @@
                   <t v=";"/>
                </p>
             </unit>
-            <unit eId="att_1/lst_4/pnt_2" kind="point">
+            <unit eId="att_1/list_4/pnt_2" kind="point">
                <num>
                   <t v="2."/>
                </num>

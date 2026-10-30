@@ -300,7 +300,7 @@
                            <p>
                               <t v="in the entry for Chile, the row for the zone CL-2.12 is after the row for the zone CL-2.11:"/>
                            </p>
-                           <quotedStructure eId="anx/pnt_1/pnt_a/pnt_i/qst_1">
+                           <quotedStructure eId="anx/pnt_1/pnt_a/pnt_i/qstr_1">
                               <table cols="7">
                                  <tr>
                                     <td>
@@ -348,7 +348,7 @@
                            <p>
                               <t v="in the entry for the United Kingdom, the row for the zone GB-2.401 and GB-2.402 are replaced by the following:"/>
                            </p>
-                           <quotedStructure eId="anx/pnt_1/pnt_a/pnt_ii/qst_1">
+                           <quotedStructure eId="anx/pnt_1/pnt_a/pnt_ii/qstr_1">
                               <table cols="7">
                                  <tr>
                                     <td rowspan="2">
@@ -423,7 +423,7 @@
                            <p>
                               <t v="in the entry for the United Kingdom, the row for the zone GB-2.413 is replaced by the following:"/>
                            </p>
-                           <quotedStructure eId="anx/pnt_1/pnt_a/pnt_iii/qst_1">
+                           <quotedStructure eId="anx/pnt_1/pnt_a/pnt_iii/qstr_1">
                               <table cols="7">
                                  <tr>
                                     <td>
@@ -475,7 +475,7 @@
                            <p>
                               <t v="in the entry for the United Kingdom, the row for the zone GB-2.426 is replaced by the following:"/>
                            </p>
-                           <quotedStructure eId="anx/pnt_1/pnt_a/pnt_iv/qst_1">
+                           <quotedStructure eId="anx/pnt_1/pnt_a/pnt_iv/qstr_1">
                               <table cols="7">
                                  <tr>
                                     <td>
@@ -527,7 +527,7 @@
                            <p>
                               <t v="in the entry for the United States, the following rows for the zones US-2.1336 to US-2.1348 are added after the row for the zone US-2.1335:"/>
                            </p>
-                           <quotedStructure eId="anx/pnt_1/pnt_a/pnt_v/qst_1">
+                           <quotedStructure eId="anx/pnt_1/pnt_a/pnt_v/qstr_1">
                               <table cols="7">
                                  <tr>
                                     <td rowspan="13">
@@ -813,7 +813,7 @@
                            <p>
                               <t v="in the entry for Chile, the following description of the zone CL-2.12 is added after the description of the zone CL-2.11:"/>
                            </p>
-                           <quotedStructure eId="anx/pnt_1/pnt_b/pnt_i/qst_1">
+                           <quotedStructure eId="anx/pnt_1/pnt_b/pnt_i/qstr_1">
                               <table cols="3">
                                  <tr>
                                     <td>
@@ -853,7 +853,7 @@
                            <p>
                               <t v="in the entry for the United States, the following descriptions of the zones US-2.1336 to US-2.1348 are added after the description of the zone US-2.1335:"/>
                            </p>
-                           <quotedStructure eId="anx/pnt_1/pnt_b/pnt_ii/qst_1">
+                           <quotedStructure eId="anx/pnt_1/pnt_b/pnt_ii/qstr_1">
                               <table cols="3">
                                  <tr>
                                     <td rowspan="13">
@@ -1127,7 +1127,7 @@
                      <p>
                         <t v="in the entry for Chile, the following row for the zone CL-2.12 is added after the row for the zone CL-2.11:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_2/pnt_a/qst_1">
+                     <quotedStructure eId="anx/pnt_2/pnt_a/qstr_1">
                         <table cols="7">
                            <tr>
                               <td rowspan="2">
@@ -1194,7 +1194,7 @@
                      <p>
                         <t v="in the entry for the United Kingdom, the row for the zones GB-2.401 and GB-2.402 are replaced by the following:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_2/pnt_b/qst_1">
+                     <quotedStructure eId="anx/pnt_2/pnt_b/qstr_1">
                         <table cols="7">
                            <tr>
                               <td rowspan="4">
@@ -1320,7 +1320,7 @@
                      <p>
                         <t v="in the entry for the United Kingdom, the row for the zone GB-2.413 is replaced by the following:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_2/pnt_c/qst_1">
+                     <quotedStructure eId="anx/pnt_2/pnt_c/qstr_1">
                         <table cols="7">
                            <tr>
                               <td rowspan="2">
@@ -1395,7 +1395,7 @@
                      <p>
                         <t v="in the entry for the United Kingdom, the row for the zone GB-2.426 is replaced by the following:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_2/pnt_d/qst_1">
+                     <quotedStructure eId="anx/pnt_2/pnt_d/qstr_1">
                         <table cols="7">
                            <tr>
                               <td rowspan="2">
@@ -1470,7 +1470,7 @@
                      <p>
                         <t v="in the entry for the United States, the following rows for the zones US-2.1336 to US-2.1348 are added after the row for the zone US-2.1335:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_2/pnt_e/qst_1">
+                     <quotedStructure eId="anx/pnt_2/pnt_e/qstr_1">
                         <table cols="7">
                            <tr>
                               <td rowspan="26">

@@ -196,8 +196,8 @@
                <p>
                   <t v="Part B.3.1 is replaced as follows:"/>
                </p>
-               <quotedStructure eId="art_1/pnt_2/qst_1">
-                  <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1" kind="level" depth="1">
+               <quotedStructure eId="art_1/pnt_2/qstr_1">
+                  <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1" kind="level" depth="1">
                      <num>
                         <t v="‘"/>
                         <t v="B.3.1."/>
@@ -206,7 +206,7 @@
                         <t v="Single indications:"/>
                      </heading>
                      <list kind="definition">
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_1" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_1" kind="definition">
                            <heading>
                               <t v="ES"/>
                            </heading>
@@ -214,7 +214,7 @@
                               <t v="AGRICULTURA ECOLÓGICA"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_2" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_2" kind="definition">
                            <heading>
                               <t v="CS"/>
                            </heading>
@@ -222,7 +222,7 @@
                               <t v="EKOLOGICKÉ ZEMĚDĚLSTVÍ"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_3" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_3" kind="definition">
                            <heading>
                               <t v="DA"/>
                            </heading>
@@ -230,7 +230,7 @@
                               <t v="ØKOLOGISK JORDBRUG"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_4" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_4" kind="definition">
                            <heading>
                               <t v="DE"/>
                            </heading>
@@ -238,7 +238,7 @@
                               <t v="BIOLOGISCHE LANDWIRTSCHAFT, ÖKOLOGISCHER LANDBAU"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_5" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_5" kind="definition">
                            <heading>
                               <t v="ET"/>
                            </heading>
@@ -246,7 +246,7 @@
                               <t v="MAHEPÕLLUMAJANDUS, ÖKOLOOGILINE PÕLLUMAJANDUS"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_6" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_6" kind="definition">
                            <heading>
                               <t v="EL"/>
                            </heading>
@@ -254,7 +254,7 @@
                               <t v="ΒΙΟΛΟΓΙΚΗ ΓΕΩΡΓΙΑ"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_7" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_7" kind="definition">
                            <heading>
                               <t v="EN"/>
                            </heading>
@@ -262,7 +262,7 @@
                               <t v="ORGANIC FARMING"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_8" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_8" kind="definition">
                            <heading>
                               <t v="FR"/>
                            </heading>
@@ -270,7 +270,7 @@
                               <t v="AGRICULTURE BIOLOGIQUE"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_9" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_9" kind="definition">
                            <heading>
                               <t v="IT"/>
                            </heading>
@@ -278,7 +278,7 @@
                               <t v="AGRICOLTURA BIOLOGICA"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_10" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_10" kind="definition">
                            <heading>
                               <t v="LV"/>
                            </heading>
@@ -286,7 +286,7 @@
                               <t v="BIOLOĞISKĀ LAUKSAIMNIECĪBA"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_11" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_11" kind="definition">
                            <heading>
                               <t v="LT"/>
                            </heading>
@@ -294,7 +294,7 @@
                               <t v="EKOLOGINIS ŽEMĖS ŪKIS"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_12" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_12" kind="definition">
                            <heading>
                               <t v="HU"/>
                            </heading>
@@ -302,7 +302,7 @@
                               <t v="ÖKOLÓGIAI GAZDÁLKODÁS"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_13" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_13" kind="definition">
                            <heading>
                               <t v="MT"/>
                            </heading>
@@ -310,7 +310,7 @@
                               <t v="AGRIKULTURA ORGANIKA"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_14" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_14" kind="definition">
                            <heading>
                               <t v="NL"/>
                            </heading>
@@ -318,7 +318,7 @@
                               <t v="BIOLOGISCHE LANDBOUW"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_15" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_15" kind="definition">
                            <heading>
                               <t v="PL"/>
                            </heading>
@@ -326,7 +326,7 @@
                               <t v="ROLNICTWO EKOLOGICZNE"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_16" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_16" kind="definition">
                            <heading>
                               <t v="PT"/>
                            </heading>
@@ -334,7 +334,7 @@
                               <t v="AGRICULTURA BIOLÓGICA"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_17" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_17" kind="definition">
                            <heading>
                               <t v="SK"/>
                            </heading>
@@ -342,7 +342,7 @@
                               <t v="EKOLOGICKÉ POĽNOHOSPODÁRSTVO"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_18" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_18" kind="definition">
                            <heading>
                               <t v="SL"/>
                            </heading>
@@ -350,7 +350,7 @@
                               <t v="EKOLOŠKO KMETIJSTVO"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_19" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_19" kind="definition">
                            <heading>
                               <t v="FI"/>
                            </heading>
@@ -358,7 +358,7 @@
                               <t v="LUONNONMUKAINEN MAATALOUSTUOTANTO"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/pnt_2/qst_1/pnt_B.3.1/def_20" kind="definition">
+                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_20" kind="definition">
                            <heading>
                               <t v="SV"/>
                            </heading>
@@ -388,8 +388,8 @@
          <p>
             <t v="In Article 7 of Regulation (EC) No 1788/2001, the following paragraph is added:"/>
          </p>
-         <quotedStructure eId="art_3/qst_1">
-            <unit eId="art_3/qst_1/sub_1" kind="subparagraph">
+         <quotedStructure eId="art_3/qstr_1">
+            <unit eId="art_3/qstr_1/sub_1" kind="subparagraph">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia, the date of information referred to in the second paragraph shall be "/>
@@ -407,8 +407,8 @@
          <p>
             <t v="In Article 2 of Regulation (EC) No 473/2002, the following paragraph is inserted after the first paragraph:"/>
          </p>
-         <quotedStructure eId="art_4/qst_1">
-            <unit eId="art_4/qst_1/sub_1" kind="subparagraph">
+         <quotedStructure eId="art_4/qstr_1">
+            <unit eId="art_4/qstr_1/sub_1" kind="subparagraph">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia, the date referred to in the first indent of the first paragraph shall be "/>
@@ -428,8 +428,8 @@
          <p>
             <t v="In Article 6 of Regulation (EC) No 223/2003, the following paragraph is added:"/>
          </p>
-         <quotedStructure eId="art_5/qst_1">
-            <unit eId="art_5/qst_1/sub_1" kind="subparagraph">
+         <quotedStructure eId="art_5/qstr_1">
+            <unit eId="art_5/qstr_1/sub_1" kind="subparagraph">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia, the date of application referred to in point (a) of the first paragraph shall be "/>

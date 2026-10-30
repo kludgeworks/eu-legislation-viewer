@@ -93,9 +93,9 @@
          <p>
             <t v="In Annex IV to Regulation (EC) No 314/2004, the following entry is deleted:"/>
          </p>
-         <quotedStructure eId="anx/qst_1">
+         <quotedStructure eId="anx/qstr_1">
             <list kind="arabic">
-               <unit eId="anx/qst_1/pnt_4" kind="point">
+               <unit eId="anx/qstr_1/pnt_4" kind="point">
                   <num>
                      <t v="‘"/>
                      <t v="4."/>

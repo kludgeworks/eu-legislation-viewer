@@ -3055,7 +3055,7 @@
             <t v="Where samples show defects:"/>
          </p>
          <list kind="alpha">
-            <unit eId="anx_III/lst_2/pnt_a" kind="point">
+            <unit eId="anx_III/list_2/pnt_a" kind="point">
                <num>
                   <t v="(a)"/>
                </num>
@@ -3063,7 +3063,7 @@
                   <t v="where a composite sample shows a defect with regard to one parameter, the quantity from which the sample came is rejected;"/>
                </p>
             </unit>
-            <unit eId="anx_III/lst_2/pnt_b" kind="point">
+            <unit eId="anx_III/list_2/pnt_b" kind="point">
                <num>
                   <t v="(b)"/>
                </num>
@@ -3071,12 +3071,12 @@
                   <t v="where a composite sample shows a defect with regard to more than one parameter, the quantity from which the sample came is rejected and samples are taken from the remaining quantities from the same plant; the analysis of those samples shall be decisive. In that case:"/>
                </p>
                <list kind="dash">
-                  <unit eId="anx_III/lst_2/pnt_b/idt_1" kind="indent">
+                  <unit eId="anx_III/list_2/pnt_b/idt_1" kind="indent">
                      <p>
                         <t v="the number of samples laid down in point 2 is doubled,"/>
                      </p>
                   </unit>
-                  <unit eId="anx_III/lst_2/pnt_b/idt_2" kind="indent">
+                  <unit eId="anx_III/list_2/pnt_b/idt_2" kind="indent">
                      <p>
                         <t v="where a composite sample shows a defect with regard to one or more parameteres, the quantity from which the sample came is rejected."/>
                      </p>

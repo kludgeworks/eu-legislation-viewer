@@ -19,7 +19,7 @@
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="scope" as="element()?" select="f:scope(.)"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'tbl', string(1 + (
+    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'tab', string(1 + (
         if ($scope) then count($scope//TBL[f:scope(.) is $scope][. &lt;&lt; current()])
         else count(preceding::TBL[empty(f:scope(.))]))))"/>
     <xsl:variable name="table" as="element()">
@@ -51,7 +51,7 @@
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $table)"/>
     <!-- what follows the rows: text blocks (GR.SEQ), the table's notes group (its notes are collected,
-         its annotations stay here, their lists under the table: anx/tbl_1/def_1); anything else fails -->
+         its annotations stay here, their lists under the table: anx/tab_1/def_1); anything else fails -->
     <xsl:apply-templates select="* except (TITLE, CORPUS)" mode="block">
       <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
     </xsl:apply-templates>
@@ -103,7 +103,7 @@
   </xsl:template>
 
   <!-- a cell is a context: what it numbers restarts in the next row (a level "PART A" in every row
-       of a list of substances), so its units hang off tbl_1/tr_103/td_7, by the source's column -->
+       of a list of substances), so its units hang off tab_1/tr_103/td_7, by the source's column -->
   <xsl:template match="CELL" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="table" as="xs:string?" tunnel="yes"/>

@@ -37,7 +37,7 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_1/old/qst_1">
+            <quotedStructure eId="cor_1/old/qstr_1">
                <table cols="3">
                   <rowGroup>
                      <tr>
@@ -137,7 +137,7 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <table cols="3">
                   <rowGroup>
                      <tr>

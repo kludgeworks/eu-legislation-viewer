@@ -27,7 +27,7 @@
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/subdvs_1" kind="subdivision">
+         <unit eId="art_1/subdivision_1" kind="subdivision">
             <num>
                <t v="(1)"/>
             </num>
@@ -40,19 +40,19 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="art_1/subdvs_2" kind="subdivision">
+         <unit eId="art_1/subdivision_2" kind="subdivision">
             <num>
                <t v="(2)"/>
             </num>
             <heading>
                <t v="Common Values and Principles"/>
             </heading>
-            <unit eId="art_1/subdvs_2/sub_1" kind="subparagraph">
+            <unit eId="art_1/subdivision_2/sub_1" kind="subparagraph">
                <p>
                   <t v="The Norwegian Financial Mechanism (2021–2028) is based on the common values and principles of respect for human dignity, freedom, democracy, equality, the rule of law and the respect for human rights including the rights of persons belonging to minorities."/>
                </p>
             </unit>
-            <unit eId="art_1/subdvs_2/sub_2" kind="subparagraph">
+            <unit eId="art_1/subdivision_2/sub_2" kind="subparagraph">
                <p>
                   <t v="All programmes and activities funded by the Norwegian Financial Mechanism shall be consistent with respect for these values and principles and abstain from supporting operations that may fail to do so. Their implementation shall comply with the fundamental rights and obligations enshrined in relevant instruments and standards."/>
                </p>
@@ -91,19 +91,19 @@
          <num>
             <t v="Article 3"/>
          </num>
-         <unit eId="art_3/subdvs_1" kind="subdivision">
+         <unit eId="art_3/subdivision_1" kind="subdivision">
             <num>
                <t v="(1)"/>
             </num>
             <heading>
                <t v="Thematic priorities"/>
             </heading>
-            <unit eId="art_3/subdvs_1/sub_1" kind="subparagraph">
+            <unit eId="art_3/subdivision_1/sub_1" kind="subparagraph">
                <p>
                   <t v="The country specific allocations shall be made available to promote the following overall thematic priorities:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_3/subdvs_1/sub_1/pnt_a" kind="point">
+                  <unit eId="art_3/subdivision_1/sub_1/pnt_a" kind="point">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -111,7 +111,7 @@
                         <t v="European green transition;"/>
                      </p>
                   </unit>
-                  <unit eId="art_3/subdvs_1/sub_1/pnt_b" kind="point">
+                  <unit eId="art_3/subdivision_1/sub_1/pnt_b" kind="point">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -119,7 +119,7 @@
                         <t v="democracy, rule of law and human rights;"/>
                      </p>
                   </unit>
-                  <unit eId="art_3/subdvs_1/sub_1/pnt_c" kind="point">
+                  <unit eId="art_3/subdivision_1/sub_1/pnt_c" kind="point">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -129,13 +129,13 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="art_3/subdvs_1/sub_2" kind="subparagraph">
+            <unit eId="art_3/subdivision_1/sub_2" kind="subparagraph">
                <p>
                   <t v="Within these thematic priorities, programme areas are set out in the Annex to this Agreement. The content of these programme areas will be determined after consultation with the Beneficiary States."/>
                </p>
             </unit>
          </unit>
-         <unit eId="art_3/subdvs_2" kind="subdivision">
+         <unit eId="art_3/subdivision_2" kind="subdivision">
             <num>
                <t v="(2)"/>
             </num>
@@ -151,7 +151,7 @@
          <num>
             <t v="Article 4"/>
          </num>
-         <unit eId="art_4/subdvs_1" kind="subdivision">
+         <unit eId="art_4/subdivision_1" kind="subdivision">
             <num>
                <t v="(1)"/>
             </num>
@@ -162,7 +162,7 @@
                <t v="In order to achieve concentration and to ensure efficient implementation, in line with the overall objectives referred to in Article 1, and taking into account EU policies and country specific recommendations, as well as Partnership Agreements concluded between the Member States and the European Commission, the Kingdom of Norway shall negotiate with each Beneficiary State a Memorandum of Understanding in accordance with Article 9, paragraph 5."/>
             </p>
          </unit>
-         <unit eId="art_4/subdvs_2" kind="subdivision">
+         <unit eId="art_4/subdivision_2" kind="subdivision">
             <num>
                <t v="(2)"/>
             </num>
@@ -178,7 +178,7 @@
          <num>
             <t v="Article 5"/>
          </num>
-         <unit eId="art_5/subdvs_1" kind="subdivision">
+         <unit eId="art_5/subdivision_1" kind="subdivision">
             <num>
                <t v="(1)"/>
             </num>
@@ -189,7 +189,7 @@
                <t v="With respect to programmes under country specific allocations for which the Beneficiary States shall have implementation responsibility, the contribution from the Kingdom of Norway shall not exceed 85 % of programme cost, unless otherwise decided by the Kingdom of Norway."/>
             </p>
          </unit>
-         <unit eId="art_5/subdvs_2" kind="subdivision">
+         <unit eId="art_5/subdivision_2" kind="subdivision">
             <num>
                <t v="(2)"/>
             </num>
@@ -200,7 +200,7 @@
                <t v="The applicable rules on State aid shall be complied with."/>
             </p>
          </unit>
-         <unit eId="art_5/subdvs_3" kind="subdivision">
+         <unit eId="art_5/subdivision_3" kind="subdivision">
             <num>
                <t v="(3)"/>
             </num>
@@ -409,25 +409,25 @@
                <t v="Within the Norwegian Financial Mechanism, three funds shall be made available. They shall contribute to achieving the objectives of the Norwegian Financial Mechanism (2021–2028) as defined in Article 1, and to the thematic priorities referred to in Article 3. Norwegian entities can participate as partners in the funds."/>
             </p>
          </unit>
-         <unit eId="art_7/subdvs_1" kind="subdivision">
+         <unit eId="art_7/subdivision_1" kind="subdivision">
             <num>
                <t v="(1)"/>
             </num>
             <heading>
                <t v="Fund for civil society"/>
             </heading>
-            <unit eId="art_7/subdvs_1/sub_1" kind="subparagraph">
+            <unit eId="art_7/subdivision_1/sub_1" kind="subparagraph">
                <p>
                   <t v="10 % of the total amount shall be set aside for a fund for civil society. The distribution key for the Beneficiary States is set out in Article 6."/>
                </p>
             </unit>
-            <unit eId="art_7/subdvs_1/sub_2" kind="subparagraph">
+            <unit eId="art_7/subdivision_1/sub_2" kind="subparagraph">
                <p>
                   <t v="5 % of the fund shall be allocated to transnational initiatives."/>
                </p>
             </unit>
          </unit>
-         <unit eId="art_7/subdvs_2" kind="subdivision">
+         <unit eId="art_7/subdivision_2" kind="subdivision">
             <num>
                <t v="(2)"/>
             </num>
@@ -438,7 +438,7 @@
                <t v="2 % of the total amount shall be set aside for a fund for capacity building and cooperation with international organisations and institutions, inter alia, the Council of Europe, the OECD and the European Union Agency for Fundamental Rights (FRA). This fund will promote the thematic priorities in the Beneficiary States."/>
             </p>
          </unit>
-         <unit eId="art_7/subdvs_3" kind="subdivision">
+         <unit eId="art_7/subdivision_3" kind="subdivision">
             <num>
                <t v="(3)"/>
             </num>
@@ -454,7 +454,7 @@
          <num>
             <t v="Article 8"/>
          </num>
-         <unit eId="art_8/subdvs_1" kind="subdivision">
+         <unit eId="art_8/subdivision_1" kind="subdivision">
             <num>
                <t v="(1)"/>
             </num>
@@ -465,7 +465,7 @@
                <t v="The financial contribution provided for in Article 1 shall be closely coordinated with the contribution from the EFTA States provided for by the EEA Financial Mechanism. In particular, the Kingdom of Norway shall ensure that the procedures and implementation modalities are essentially the same for both financial mechanisms."/>
             </p>
          </unit>
-         <unit eId="art_8/subdvs_2" kind="subdivision">
+         <unit eId="art_8/subdivision_2" kind="subdivision">
             <num>
                <t v="(2)"/>
             </num>

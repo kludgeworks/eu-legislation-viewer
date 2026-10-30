@@ -215,7 +215,7 @@
                <p>
                   <t v="in point 4.1.2, the following paragraph is added:"/>
                </p>
-               <quotedStructure eId="anx/pnt_1/qst_1">
+               <quotedStructure eId="anx/pnt_1/qstr_1">
                   <p>
                      <quote startQuote="‘" endQuote="’">
                         <t v="Alternatively, at the request of the manufacturer, the total CO"/>
@@ -239,7 +239,7 @@
                <p>
                   <t v="in point 4.2.2, the following paragraph is added after Formula 9:"/>
                </p>
-               <quotedStructure eId="anx/pnt_2/qst_1">
+               <quotedStructure eId="anx/pnt_2/qstr_1">
                   <p>
                      <quote startQuote="‘" endQuote="’">
                         <t v="If the methodology referred to in point 4.1.2, last paragraph, is applied, the statistical margin of the lighting package shall be calculated in accordance with point 4.2.1, with the coefficient η"/>

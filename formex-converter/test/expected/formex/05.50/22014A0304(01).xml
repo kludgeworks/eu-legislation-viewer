@@ -172,13 +172,13 @@
          <p>
             <t v="I have the honour to acknowledge the receipt of your letter of today’s date, which reads as follows:"/>
          </p>
-         <quotedStructure eId="let_2/qst_1">
+         <quotedStructure eId="let_2/qstr_1">
             <p>
                <t v="‘"/>
                <t v="Following negotiations under Article XXIV:6 and Article XXVIII of the General Agreement on Tariffs and Trade 1994 (GATT) relating to the modification of the Schedules of the Republic of Bulgaria and Romania in the course of their accession to the European Union, I have the honour to propose the following:"/>
             </p>
             <list kind="arabic">
-               <unit eId="let_2/qst_1/pnt_1" kind="point">
+               <unit eId="let_2/qstr_1/pnt_1" kind="point">
                   <num>
                      <t v="1."/>
                   </num>
@@ -186,7 +186,7 @@
                      <t v="The European Union shall incorporate in its schedule, for the customs territory of the EU 27, the concessions contained in the schedule of the EU 25 with the following modifications:"/>
                   </p>
                   <list kind="none">
-                     <unit eId="let_2/qst_1/pnt_1/idt_1" kind="indent">
+                     <unit eId="let_2/qstr_1/pnt_1/idt_1" kind="indent">
                         <p>
                            <t v="On tariff line "/>
                            <t v="0703 20 00"/>
@@ -195,7 +195,7 @@
                            <t v=" tonnes to the allocation for People's Republic of China under the EU tariff rate quota for garlic, maintaining the present in quota rate of 9,6 %."/>
                         </p>
                      </unit>
-                     <unit eId="let_2/qst_1/pnt_1/idt_2" kind="indent">
+                     <unit eId="let_2/qstr_1/pnt_1/idt_2" kind="indent">
                         <p>
                            <t v="Add 800 tonnes (drained net weight) to the allocation for People’s Republic of China under the EU tariff rate quota for mushroom of species "/>
                            <emphasis kind="i">
@@ -214,7 +214,7 @@
                            <t v=" (out of quota rate 9,6 + 191,0 EUR/100 kg/net eda) in the quota."/>
                         </p>
                      </unit>
-                     <unit eId="let_2/qst_1/pnt_1/idt_3" kind="indent">
+                     <unit eId="let_2/qstr_1/pnt_1/idt_3" kind="indent">
                         <p>
                            <t v="Create a tariff rate quota of "/>
                            <t v="2026"/>
@@ -233,7 +233,7 @@
                            <t v=")."/>
                         </p>
                      </unit>
-                     <unit eId="let_2/qst_1/pnt_1/idt_4" kind="indent">
+                     <unit eId="let_2/qstr_1/pnt_1/idt_4" kind="indent">
                         <p>
                            <t v="Create a tariff rate quota of "/>
                            <t v="2289"/>
@@ -246,7 +246,7 @@
                            <t v=")."/>
                         </p>
                      </unit>
-                     <unit eId="let_2/qst_1/pnt_1/idt_5" kind="indent">
+                     <unit eId="let_2/qstr_1/pnt_1/idt_5" kind="indent">
                         <p>
                            <t v="Create a tariff rate quota of 409 tonnes ("/>
                            <emphasis kind="i">
@@ -259,7 +259,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="let_2/qst_1/pnt_2" kind="point">
+               <unit eId="let_2/qstr_1/pnt_2" kind="point">
                   <num>
                      <t v="2."/>
                   </num>

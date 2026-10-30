@@ -34,9 +34,9 @@
             <t v="On page 74, Annex IV, the following text is inserted after the entry for Bulgaria:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <list kind="definition">
-                  <unit eId="cor_1/new/qst_1/def_1" kind="definition">
+                  <unit eId="cor_1/new/qstr_1/def_1" kind="definition">
                      <heading>
                         <t v="‘"/>
                         <emphasis kind="b">

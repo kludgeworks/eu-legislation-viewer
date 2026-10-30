@@ -202,9 +202,9 @@
                <p>
                   <t v="in point 1.2.2.2, point (b) is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_1/qst_1">
+               <quotedStructure eId="anx/pnt_1/qstr_1">
                   <list kind="alpha">
-                     <unit eId="anx/pnt_1/qst_1/pnt_b" kind="point">
+                     <unit eId="anx/pnt_1/qstr_1/pnt_b" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="(b)"/>
@@ -225,9 +225,9 @@
                <p>
                   <t v="point 1.2.2.3 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_2/qst_1">
+               <quotedStructure eId="anx/pnt_2/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_2/qst_1/pnt_1.2.2.3" kind="point">
+                     <unit eId="anx/pnt_2/qstr_1/pnt_1.2.2.3" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="1.2.2.3."/>
@@ -236,7 +236,7 @@
                            <t v="Access to security restricted areas may be granted to private pilots, and where applicable accompanying crew, performing non-commercial flights operated with an aircraft that has previously landed at the airport, in order to access it for the purposes of departing, or for the time strictly necessary to undertake operational maintenance of the aircraft. In order to be granted access:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_2/qst_1/pnt_1.2.2.3/pnt_a" kind="point">
+                           <unit eId="anx/pnt_2/qstr_1/pnt_1.2.2.3/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -244,7 +244,7 @@
                                  <t v="their pilot licence shall be checked prior to entry;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_2/qst_1/pnt_1.2.2.3/pnt_b" kind="point">
+                           <unit eId="anx/pnt_2/qstr_1/pnt_1.2.2.3/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -252,7 +252,7 @@
                                  <t v="their access is limited to the area where their aircraft is parked and the distances between the terminal or access point and the aircraft;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_2/qst_1/pnt_1.2.2.3/pnt_c" kind="point">
+                           <unit eId="anx/pnt_2/qstr_1/pnt_1.2.2.3/pnt_c" kind="point">
                               <num>
                                  <t v="(c)"/>
                               </num>
@@ -277,9 +277,9 @@
                <p>
                   <t v="point 1.2.2.6 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_3/qst_1">
+               <quotedStructure eId="anx/pnt_3/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_3/qst_1/pnt_1.2.2.6" kind="point">
+                     <unit eId="anx/pnt_3/qstr_1/pnt_1.2.2.6" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="1.2.2.6."/>
@@ -300,9 +300,9 @@
                <p>
                   <t v="in point 1.4.3.2, point (a) is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_4/qst_1">
+               <quotedStructure eId="anx/pnt_4/qstr_1">
                   <list kind="alpha">
-                     <unit eId="anx/pnt_4/qst_1/pnt_a" kind="point">
+                     <unit eId="anx/pnt_4/qstr_1/pnt_a" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="(a)"/>
@@ -323,9 +323,9 @@
                <p>
                   <t v="the following points are inserted:"/>
                </p>
-               <quotedStructure eId="anx/pnt_5/qst_1">
+               <quotedStructure eId="anx/pnt_5/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_5/qst_1/pnt_3.0.9" kind="point">
+                     <unit eId="anx/pnt_5/qstr_1/pnt_3.0.9" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="3.0.9."/>
@@ -338,7 +338,7 @@
                            <t v=" means a document established by a foreign air carrier in order to meet the requirements of the national civil aviation security programme of the Member State from or to where it operates commercial flights."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_5/qst_1/pnt_3.0.10" kind="point">
+                     <unit eId="anx/pnt_5/qstr_1/pnt_3.0.10" kind="point">
                         <num>
                            <t v="3.0.10."/>
                         </num>
@@ -358,9 +358,9 @@
                <p>
                   <t v="the following point is inserted:"/>
                </p>
-               <quotedStructure eId="anx/pnt_6/qst_1">
+               <quotedStructure eId="anx/pnt_6/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_6/qst_1/pnt_6.0.9" kind="point">
+                     <unit eId="anx/pnt_6/qstr_1/pnt_6.0.9" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="6.0.9."/>
@@ -385,9 +385,9 @@
                <p>
                   <t v="point 6.2.1.3 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_7/qst_1">
+               <quotedStructure eId="anx/pnt_7/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_7/qst_1/pnt_6.2.1.3" kind="point">
+                     <unit eId="anx/pnt_7/qstr_1/pnt_6.2.1.3" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="6.2.1.3."/>
@@ -396,7 +396,7 @@
                            <t v="Consignments consisting of items as defined in point 6.0.9 whose nature, packaging or container would significantly impair or prevent either the detection of prohibited articles or to analyse the material, substance or items contained therein during the application of Attachments 6-J and 12-H to the Annex to Implementing Decision C(2015) 8005, shall be accepted as air cargo or mail by the receiving regulated agent or air carrier, as applicable, only under one of the following conditions:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_7/qst_1/pnt_6.2.1.3/pnt_a" kind="point">
+                           <unit eId="anx/pnt_7/qstr_1/pnt_6.2.1.3/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -404,7 +404,7 @@
                                  <t v="they are originated and delivered by a known consignor in accordance with point 6.4;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_7/qst_1/pnt_6.2.1.3/pnt_b" kind="point">
+                           <unit eId="anx/pnt_7/qstr_1/pnt_6.2.1.3/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -412,7 +412,7 @@
                                  <t v="they are processed through an entity acting as retailing shipper of such consignments that has not originated them;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_7/qst_1/pnt_6.2.1.3/pnt_c" kind="point">
+                           <unit eId="anx/pnt_7/qstr_1/pnt_6.2.1.3/pnt_c" kind="point">
                               <num>
                                  <t v="(c)"/>
                               </num>
@@ -420,7 +420,7 @@
                                  <t v="they are selected by a regulated agent, in accordance with point 6.3.2.3 (b);"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_7/qst_1/pnt_6.2.1.3/pnt_d" kind="point">
+                           <unit eId="anx/pnt_7/qstr_1/pnt_6.2.1.3/pnt_d" kind="point">
                               <num>
                                  <t v="(d)"/>
                               </num>
@@ -449,9 +449,9 @@
                <p>
                   <t v="the following point is inserted:"/>
                </p>
-               <quotedStructure eId="anx/pnt_8/qst_1">
+               <quotedStructure eId="anx/pnt_8/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_8/qst_1/pnt_6.2.1.7" kind="point">
+                     <unit eId="anx/pnt_8/qstr_1/pnt_6.2.1.7" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="6.2.1.7."/>
@@ -496,9 +496,9 @@
                      <p>
                         <t v="point (c) is replaced by the following:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_11/pnt_a/qst_1">
+                     <quotedStructure eId="anx/pnt_11/pnt_a/qstr_1">
                         <list kind="alpha">
-                           <unit eId="anx/pnt_11/pnt_a/qst_1/pnt_c" kind="point">
+                           <unit eId="anx/pnt_11/pnt_a/qstr_1/pnt_c" kind="point">
                               <num>
                                  <t v="“"/>
                                  <t v="(c)"/>
@@ -518,9 +518,9 @@
                      <p>
                         <t v="point (e) is replaced by the following:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_11/pnt_b/qst_1">
+                     <quotedStructure eId="anx/pnt_11/pnt_b/qstr_1">
                         <list kind="alpha">
-                           <unit eId="anx/pnt_11/pnt_b/qst_1/pnt_e" kind="point">
+                           <unit eId="anx/pnt_11/pnt_b/qstr_1/pnt_e" kind="point">
                               <num>
                                  <t v="“"/>
                                  <t v="(e)"/>
@@ -540,9 +540,9 @@
                      <p>
                         <t v="point (g) is replaced by the following:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_11/pnt_c/qst_1">
+                     <quotedStructure eId="anx/pnt_11/pnt_c/qstr_1">
                         <list kind="alpha">
-                           <unit eId="anx/pnt_11/pnt_c/qst_1/pnt_g" kind="point">
+                           <unit eId="anx/pnt_11/pnt_c/qstr_1/pnt_g" kind="point">
                               <num>
                                  <t v="“"/>
                                  <t v="(g)"/>
@@ -564,9 +564,9 @@
                <p>
                   <t v="the following point is inserted:"/>
                </p>
-               <quotedStructure eId="anx/pnt_12/qst_1">
+               <quotedStructure eId="anx/pnt_12/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_12/qst_1/pnt_8.1.2.4" kind="point">
+                     <unit eId="anx/pnt_12/qstr_1/pnt_8.1.2.4" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="8.1.2.4."/>
@@ -575,7 +575,7 @@
                            <t v="Supplies consisting of items as defined in point 6.0.9 whose nature, packaging or container would significantly impair or prevent either the detection of prohibited articles or to analyse the material, substance or items contained therein during the application of Attachments 6-J and 12-H to the Annex to Implementing Decision C(2015) 8005, shall be accepted as in-flight supplies by the receiving regulated supplier or air carrier, as applicable, only under one of the following conditions:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_12/qst_1/pnt_8.1.2.4/pnt_a" kind="point">
+                           <unit eId="anx/pnt_12/qstr_1/pnt_8.1.2.4/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -583,7 +583,7 @@
                                  <t v="they are originated by a known supplier;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_12/qst_1/pnt_8.1.2.4/pnt_b" kind="point">
+                           <unit eId="anx/pnt_12/qstr_1/pnt_8.1.2.4/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -609,7 +609,7 @@
                <p>
                   <t v="in point 8.1.4.4, the second paragraph is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_13/qst_1">
+               <quotedStructure eId="anx/pnt_13/qstr_1">
                   <p>
                      <quote startQuote="“" endQuote="”">
                         <t v="Validations must be recorded and, where not otherwise stated in this Regulation, must take place before designation and repeated every 3 years thereafter."/>
@@ -625,9 +625,9 @@
                <p>
                   <t v="in point 8.1.4.5, point (a) is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_14/qst_1">
+               <quotedStructure eId="anx/pnt_14/qstr_1">
                   <list kind="alpha">
-                     <unit eId="anx/pnt_14/qst_1/pnt_a" kind="point">
+                     <unit eId="anx/pnt_14/qstr_1/pnt_a" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="(a)"/>
@@ -648,9 +648,9 @@
                <p>
                   <t v="the following point is inserted:"/>
                </p>
-               <quotedStructure eId="anx/pnt_15/qst_1">
+               <quotedStructure eId="anx/pnt_15/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_15/qst_1/pnt_8.1.4.8" kind="point">
+                     <unit eId="anx/pnt_15/qstr_1/pnt_8.1.4.8" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="8.1.4.8."/>
@@ -671,9 +671,9 @@
                <p>
                   <t v="point 9.0.2 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_16/qst_1">
+               <quotedStructure eId="anx/pnt_16/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_16/qst_1/pnt_9.0.2" kind="point">
+                     <unit eId="anx/pnt_16/qstr_1/pnt_9.0.2" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="9.0.2"/>
@@ -682,7 +682,7 @@
                            <t v="For the purposes of this Chapter:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_16/qst_1/pnt_9.0.2/pnt_a" kind="point">
+                           <unit eId="anx/pnt_16/qstr_1/pnt_9.0.2/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -697,7 +697,7 @@
                                  <t v=";"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_16/qst_1/pnt_9.0.2/pnt_b" kind="point">
+                           <unit eId="anx/pnt_16/qstr_1/pnt_9.0.2/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -708,7 +708,7 @@
                                  <t v=" means a supplier whose procedures meet common security rules and standards sufficient to allow delivery of airport supplies to security restricted area as well as to perform screening of airport supplies;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_16/qst_1/pnt_9.0.2/pnt_c" kind="point">
+                           <unit eId="anx/pnt_16/qstr_1/pnt_9.0.2/pnt_c" kind="point">
                               <num>
                                  <t v="(c)"/>
                               </num>
@@ -741,9 +741,9 @@
                      <p>
                         <t v="point (c) is replaced by the following:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_17/pnt_a/qst_1">
+                     <quotedStructure eId="anx/pnt_17/pnt_a/qstr_1">
                         <list kind="alpha">
-                           <unit eId="anx/pnt_17/pnt_a/qst_1/pnt_c" kind="point">
+                           <unit eId="anx/pnt_17/pnt_a/qstr_1/pnt_c" kind="point">
                               <num>
                                  <t v="“"/>
                                  <t v="(c)"/>
@@ -763,9 +763,9 @@
                      <p>
                         <t v="point (e) is replaced by the following:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_17/pnt_b/qst_1">
+                     <quotedStructure eId="anx/pnt_17/pnt_b/qstr_1">
                         <list kind="alpha">
-                           <unit eId="anx/pnt_17/pnt_b/qst_1/pnt_e" kind="point">
+                           <unit eId="anx/pnt_17/pnt_b/qstr_1/pnt_e" kind="point">
                               <num>
                                  <t v="“"/>
                                  <t v="(e)"/>
@@ -785,9 +785,9 @@
                      <p>
                         <t v="point (g) is replaced by the following:"/>
                      </p>
-                     <quotedStructure eId="anx/pnt_17/pnt_c/qst_1">
+                     <quotedStructure eId="anx/pnt_17/pnt_c/qstr_1">
                         <list kind="alpha">
-                           <unit eId="anx/pnt_17/pnt_c/qst_1/pnt_g" kind="point">
+                           <unit eId="anx/pnt_17/pnt_c/qstr_1/pnt_g" kind="point">
                               <num>
                                  <t v="“"/>
                                  <t v="(g)"/>
@@ -810,9 +810,9 @@
                <p>
                   <t v="the following point is inserted:"/>
                </p>
-               <quotedStructure eId="anx/pnt_18/qst_1">
+               <quotedStructure eId="anx/pnt_18/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_18/qst_1/pnt_9.1.2.4" kind="point">
+                     <unit eId="anx/pnt_18/qstr_1/pnt_9.1.2.4" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="9.1.2.4."/>
@@ -821,7 +821,7 @@
                            <t v="Supplies consisting of items as defined in point 6.0.9 whose nature, packaging or container would significantly impair or prevent either the detection of prohibited articles or to analyse the material, substance or items contained therein during the application of Attachments 6-J and 12-H to the Annex to Implementing Decision C(2015) 8005, shall be accepted as airport supplies by the receiving airport operator or by the regulated supplier, as applicable, only under one of the following conditions:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_18/qst_1/pnt_9.1.2.4/pnt_a" kind="point">
+                           <unit eId="anx/pnt_18/qstr_1/pnt_9.1.2.4/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -829,7 +829,7 @@
                                  <t v="they are originated by a known supplier;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_18/qst_1/pnt_9.1.2.4/pnt_b" kind="point">
+                           <unit eId="anx/pnt_18/qstr_1/pnt_9.1.2.4/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -856,9 +856,9 @@
                <p>
                   <t v="points 9.1.3 and 9.1.4 are replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_19/qst_1">
+               <quotedStructure eId="anx/pnt_19/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.3" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.3" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="9.1.3."/>
@@ -869,7 +869,7 @@
                            </emphasis>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.3.1" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.3.1" kind="point">
                         <num>
                            <t v="9.1.3.1."/>
                         </num>
@@ -883,7 +883,7 @@
                            <t v="Any entity that ensures the security controls as referred to in point 9.1.5 and performs screening of airport supplies shall be approved as a regulated supplier."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.3.2" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.3.2" kind="point">
                         <num>
                            <t v="9.1.3.2."/>
                         </num>
@@ -891,7 +891,7 @@
                            <t v="The following procedure shall apply for the approval of regulated suppliers:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.3.2/pnt_a" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.3.2/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -912,7 +912,7 @@
                                  <t v="The signed declaration shall clearly state the location of the site or sites to which it refers and be retained by the appropriate authority concerned;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.3.2/pnt_b" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.3.2/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -920,7 +920,7 @@
                                  <t v="the appropriate authority, or an EU aviation security validator acting on its behalf, shall examine the security programme and then make an on-site verification of the sites specified in order to assess whether the applicant complies with point 9.1.5;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.3.2/pnt_c" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.3.2/pnt_c" kind="point">
                               <num>
                                  <t v="(c)"/>
                               </num>
@@ -928,7 +928,7 @@
                                  <t v="where the appropriate authority is satisfied with the information provided in accordance with points (a) and (b), it shall ensure that the necessary details of the regulated supplier are entered into the Union database on supply chain security not later than the next working day. When making the database entry, the appropriate authority shall give each approved site a unique alphanumeric identifier in the standard format. Where the appropriate authority is not satisfied, the reasons shall promptly be notified to the entity seeking approval as a regulated supplier;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.3.2/pnt_d" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.3.2/pnt_d" kind="point">
                               <num>
                                  <t v="(d)"/>
                               </num>
@@ -938,7 +938,7 @@
                            </unit>
                         </list>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.3.3" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.3.3" kind="point">
                         <num>
                            <t v="9.1.3.3."/>
                         </num>
@@ -949,7 +949,7 @@
                            <t v="An inspection at the premises of the regulated supplier by the appropriate authority in accordance with its national quality control programme may be considered as an on-site verification, provided that it covers all the requirements of point 9.1.5."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.3.4" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.3.4" kind="point">
                         <num>
                            <t v="9.1.3.4."/>
                         </num>
@@ -957,7 +957,7 @@
                            <t v="Where the appropriate authority is no longer satisfied that the regulated supplier complies with point 9.1.5, it shall withdraw the status of regulated supplier for the specified sites."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.3.5" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.3.5" kind="point">
                         <num>
                            <t v="9.1.3.5."/>
                         </num>
@@ -965,7 +965,7 @@
                            <t v="Without prejudice to the right of each Member State to apply more stringent measures in accordance with Article 6 of Regulation (EC) No 300/2008, a regulated supplier approved in accordance with point 9.1.3 shall be recognised in all Member States."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.4" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4" kind="point">
                         <num>
                            <t v="9.1.4."/>
                         </num>
@@ -975,7 +975,7 @@
                            </emphasis>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.1" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.1" kind="point">
                         <num>
                            <t v="9.1.4.1."/>
                         </num>
@@ -987,7 +987,7 @@
                            <t v=") that ensures the security controls as referred to in point 9.1.5 but does not perform any screening of airport supplies shall be designated as a known supplier by the airport operator."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.2" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.2" kind="point">
                         <num>
                            <t v="9.1.4.2."/>
                         </num>
@@ -995,7 +995,7 @@
                            <t v="In order to be designated as a known supplier, the supplier must provide the airport operator with:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.2/pnt_a" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.2/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -1007,7 +1007,7 @@
                                  <t v=" as contained in Attachment 9-B. This declaration shall clearly state the location of the site or sites to which it refers and be signed by the legal representative;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.2/pnt_b" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.2/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -1017,7 +1017,7 @@
                            </unit>
                         </list>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.3" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.3" kind="point">
                         <num>
                            <t v="9.1.4.3."/>
                         </num>
@@ -1025,7 +1025,7 @@
                            <t v="All known suppliers must be designated on the basis of validations of:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.3/pnt_a" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.3/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -1033,7 +1033,7 @@
                                  <t v="the relevance and completeness of the security programme in respect of point 9.1.5;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.3/pnt_b" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.3/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -1060,7 +1060,7 @@
                            <t v="Where the appropriate authority or the airport operator is no longer satisfied that the known supplier complies with point 9.1.5, the airport operator shall withdraw the status of known supplier without delay."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.4" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.4" kind="point">
                         <num>
                            <t v="9.1.4.4."/>
                         </num>
@@ -1074,7 +1074,7 @@
                            <t v="If the validation is not done on behalf of the airport operator any record thereof must be made available to it."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.5" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.5" kind="point">
                         <num>
                            <t v="9.1.4.5."/>
                         </num>
@@ -1082,7 +1082,7 @@
                            <t v="The validation of the implementation of the security programme confirming the absence of deficiencies shall consist of either:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.5/pnt_a" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.5/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -1090,7 +1090,7 @@
                                  <t v="an on-site visit of the supplier every 3 years; or"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.5/pnt_b" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.5/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -1098,17 +1098,17 @@
                                  <t v="regular checks upon access to the security restricted area of supplies delivered by that known supplier, starting after the designation, including:"/>
                               </p>
                               <list kind="dash">
-                                 <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.5/pnt_b/idt_1" kind="indent">
+                                 <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.5/pnt_b/idt_1" kind="indent">
                                     <p>
                                        <t v="a verification that the person delivering supplies on behalf of the known supplier was properly trained;"/>
                                     </p>
                                  </unit>
-                                 <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.5/pnt_b/idt_2" kind="indent">
+                                 <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.5/pnt_b/idt_2" kind="indent">
                                     <p>
                                        <t v="a verification that the supplies are properly secured;"/>
                                     </p>
                                  </unit>
-                                 <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.5/pnt_b/idt_3" kind="indent">
+                                 <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.5/pnt_b/idt_3" kind="indent">
                                     <p>
                                        <t v="screening of the supplies in the same way as supplies coming from an unknown supplier."/>
                                     </p>
@@ -1123,7 +1123,7 @@
                            <t v="Option (b) may only be used where the appropriate authority defined in its national civil aviation security programme that the validation is to be performed by a person acting on behalf of the airport operator."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.6" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.6" kind="point">
                         <num>
                            <t v="9.1.4.6."/>
                         </num>
@@ -1131,7 +1131,7 @@
                            <t v="The methods applied and procedures to be followed during and after designation shall be laid down in the security programme of the airport operator."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.7" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.7" kind="point">
                         <num>
                            <t v="9.1.4.7."/>
                         </num>
@@ -1139,7 +1139,7 @@
                            <t v="The airport operator shall keep:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.7/pnt_a" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.7/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -1147,7 +1147,7 @@
                                  <t v="a list of all known suppliers it has designated indicating the expiry date of their designation;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.7/pnt_b" kind="point">
+                           <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.7/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -1160,7 +1160,7 @@
                            <t v="Upon request, those documents shall be made available to the appropriate authority for compliance monitoring purposes."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_19/qst_1/pnt_9.1.4.8" kind="point">
+                     <unit eId="anx/pnt_19/qstr_1/pnt_9.1.4.8" kind="point">
                         <num>
                            <t v="9.1.4.8."/>
                         </num>
@@ -1180,9 +1180,9 @@
                <p>
                   <t v="the following point is inserted:"/>
                </p>
-               <quotedStructure eId="anx/pnt_20/qst_1">
+               <quotedStructure eId="anx/pnt_20/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_20/qst_1/pnt_9.1.5" kind="point">
+                     <unit eId="anx/pnt_20/qstr_1/pnt_9.1.5" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="9.1.5."/>
@@ -1193,7 +1193,7 @@
                            </emphasis>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_20/qst_1/pnt_9.1.5.1" kind="point">
+                     <unit eId="anx/pnt_20/qstr_1/pnt_9.1.5.1" kind="point">
                         <num>
                            <t v="9.1.5.1."/>
                         </num>
@@ -1201,7 +1201,7 @@
                            <t v="A regulated supplier or known supplier of airport supplies or an airport operator delivering airport supplies to the security restricted area shall:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_20/qst_1/pnt_9.1.5.1/pnt_a" kind="point">
+                           <unit eId="anx/pnt_20/qstr_1/pnt_9.1.5.1/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -1209,7 +1209,7 @@
                                  <t v="appoint a person responsible for security in the company;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_20/qst_1/pnt_9.1.5.1/pnt_b" kind="point">
+                           <unit eId="anx/pnt_20/qstr_1/pnt_9.1.5.1/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -1217,7 +1217,7 @@
                                  <t v="ensure that persons with access to airport supplies receive general security awareness training in accordance with point 11.2.7 before being given access to those supplies;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_20/qst_1/pnt_9.1.5.1/pnt_c" kind="point">
+                           <unit eId="anx/pnt_20/qstr_1/pnt_9.1.5.1/pnt_c" kind="point">
                               <num>
                                  <t v="(c)"/>
                               </num>
@@ -1225,7 +1225,7 @@
                                  <t v="ensure that persons implementing screening of airport supplies receive training in accordance with point 11.2.3.3 and persons implementing other security controls in respect of airport supplies receive training in accordance with point 11.2.3.10;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_20/qst_1/pnt_9.1.5.1/pnt_d" kind="point">
+                           <unit eId="anx/pnt_20/qstr_1/pnt_9.1.5.1/pnt_d" kind="point">
                               <num>
                                  <t v="(d)"/>
                               </num>
@@ -1233,7 +1233,7 @@
                                  <t v="prevent unauthorised access to its premises and airport supplies;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_20/qst_1/pnt_9.1.5.1/pnt_e" kind="point">
+                           <unit eId="anx/pnt_20/qstr_1/pnt_9.1.5.1/pnt_e" kind="point">
                               <num>
                                  <t v="(e)"/>
                               </num>
@@ -1241,7 +1241,7 @@
                                  <t v="reasonably ensure that no prohibited articles are concealed in airport supplies;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_20/qst_1/pnt_9.1.5.1/pnt_f" kind="point">
+                           <unit eId="anx/pnt_20/qstr_1/pnt_9.1.5.1/pnt_f" kind="point">
                               <num>
                                  <t v="(f)"/>
                               </num>
@@ -1254,7 +1254,7 @@
                            <t v="The first paragraph, point (f), shall not apply during airside transportation."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_20/qst_1/pnt_9.1.5.2" kind="point">
+                     <unit eId="anx/pnt_20/qstr_1/pnt_9.1.5.2" kind="point">
                         <num>
                            <t v="9.1.5.2."/>
                         </num>
@@ -1274,8 +1274,8 @@
                <p>
                   <t v="Attachment 9-A is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_21/qst_1">
-                  <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A" kind="level" depth="1">
+               <quotedStructure eId="anx/pnt_21/qstr_1">
+                  <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A" kind="level" depth="1">
                      <num>
                         <t v="“"/>
                         <emphasis kind="b">
@@ -1298,27 +1298,27 @@
                         <t v="I declare that:"/>
                      </p>
                      <list kind="dash">
-                        <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_1" kind="indent">
+                        <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_1" kind="indent">
                            <p>
                               <t v="to the best of my knowledge, the information contained in the company’s security programme is true and accurate;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_2" kind="indent">
+                        <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_2" kind="indent">
                            <p>
                               <t v="the practices and procedures set out in this security programme will be implemented and maintained at all sites covered by the programme;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_3" kind="indent">
+                        <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_3" kind="indent">
                            <p>
                               <t v="this security programme will be adjusted and adapted to comply with all future relevant changes to Union legislation, unless [name of company] informs [name of appropriate authority] that it no longer wishes to screen and deliver airport supplies (and thus no longer wishes to trade as a regulated supplier);"/>
                            </p>
                         </unit>
-                        <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_4" kind="indent">
+                        <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_4" kind="indent">
                            <p>
                               <t v="[name of company] will inform [name of appropriate authority] in writing of:"/>
                            </p>
                            <list kind="alpha">
-                              <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_4/pnt_a" kind="point">
+                              <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_4/pnt_a" kind="point">
                                  <num>
                                     <t v="(a)"/>
                                  </num>
@@ -1326,7 +1326,7 @@
                                     <t v="minor changes to its security programme, such as company name, person responsible for security or contact details, promptly but at least within 10 working days;"/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_4/pnt_b" kind="point">
+                              <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_4/pnt_b" kind="point">
                                  <num>
                                     <t v="(b)"/>
                                  </num>
@@ -1336,27 +1336,27 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_5" kind="indent">
+                        <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_5" kind="indent">
                            <p>
                               <t v="in order to ensure compliance with relevant Union legislation, [name of company] will cooperate fully with all inspections, as required, and provide access to all documents, as requested by inspectors;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_6" kind="indent">
+                        <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_6" kind="indent">
                            <p>
                               <t v="[name of company] will inform [name of appropriate authority] of any serious security breaches and of any suspicious circumstances which may be relevant to airport supplies, in particular any attempt to conceal prohibited articles in supplies;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_7" kind="indent">
+                        <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_7" kind="indent">
                            <p>
                               <t v="[name of company] will ensure that all relevant staff receive training in accordance with Chapter 11 of the Annex to Implementing Regulation (EU) 2015/1998 and are aware of their security responsibilities under the company’s security programme;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_8" kind="indent">
+                        <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_8" kind="indent">
                            <p>
                               <t v="[name of company] will inform [name of appropriate authority] if:"/>
                            </p>
                            <list kind="alpha">
-                              <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_8/pnt_a" kind="point">
+                              <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_8/pnt_a" kind="point">
                                  <num>
                                     <t v="(a)"/>
                                  </num>
@@ -1364,7 +1364,7 @@
                                     <t v="it ceases trading;"/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_8/pnt_b" kind="point">
+                              <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_8/pnt_b" kind="point">
                                  <num>
                                     <t v="(b)"/>
                                  </num>
@@ -1372,7 +1372,7 @@
                                     <t v="it no longer screens airport supplies;"/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_21/qst_1/lvl_ATTACHMENT-9-A/idt_8/pnt_c" kind="point">
+                              <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A/idt_8/pnt_c" kind="point">
                                  <num>
                                     <t v="(c)"/>
                                  </num>
@@ -1408,8 +1408,8 @@
                <p>
                   <t v="the following Attachment is added:"/>
                </p>
-               <quotedStructure eId="anx/pnt_22/qst_1">
-                  <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B" kind="level" depth="1">
+               <quotedStructure eId="anx/pnt_22/qstr_1">
+                  <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B" kind="level" depth="1">
                      <num>
                         <t v="“"/>
                         <emphasis kind="b">
@@ -1432,12 +1432,12 @@
                         <t v="I declare that"/>
                      </p>
                      <list kind="dash">
-                        <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_1" kind="indent">
+                        <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_1" kind="indent">
                            <p>
                               <t v="[name of company] will:"/>
                            </p>
                            <list kind="alpha">
-                              <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_1/pnt_a" kind="point">
+                              <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_1/pnt_a" kind="point">
                                  <num>
                                     <t v="(a)"/>
                                  </num>
@@ -1445,7 +1445,7 @@
                                     <t v="appoint a person responsible for security in the company;"/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_1/pnt_b" kind="point">
+                              <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_1/pnt_b" kind="point">
                                  <num>
                                     <t v="(b)"/>
                                  </num>
@@ -1453,7 +1453,7 @@
                                     <t v="ensure that persons with access to airport supplies receive general security awareness training in accordance with point 11.2.7 before being given access to those supplies;"/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_1/pnt_c" kind="point">
+                              <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_1/pnt_c" kind="point">
                                  <num>
                                     <t v="(c)"/>
                                  </num>
@@ -1461,7 +1461,7 @@
                                     <t v="ensure that persons implementing security controls other than screening in respect of airport supplies receive training in accordance with point 11.2.3.10;"/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_1/pnt_d" kind="point">
+                              <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_1/pnt_d" kind="point">
                                  <num>
                                     <t v="(d)"/>
                                  </num>
@@ -1469,7 +1469,7 @@
                                     <t v="prevent unauthorised access to its premises and airport supplies;"/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_1/pnt_e" kind="point">
+                              <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_1/pnt_e" kind="point">
                                  <num>
                                     <t v="(e)"/>
                                  </num>
@@ -1477,7 +1477,7 @@
                                     <t v="reasonably ensure that no prohibited articles are concealed in airport supplies;"/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_1/pnt_f" kind="point">
+                              <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_1/pnt_f" kind="point">
                                  <num>
                                     <t v="(f)"/>
                                  </num>
@@ -1490,27 +1490,27 @@
                               <t v="When using another company that is not a known supplier to the airport operator for transporting supplies, [name of company] will ensure that all security controls listed above are adhered to,"/>
                            </p>
                         </unit>
-                        <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_2" kind="indent">
+                        <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_2" kind="indent">
                            <p>
                               <t v="in order to ensure compliance, [name of company] will cooperate fully with all inspections, as required, and provide access to all documents, as requested by inspectors;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_3" kind="indent">
+                        <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_3" kind="indent">
                            <p>
                               <t v="[name of company] will inform [the airport operator] of any serious security breaches and of any suspicious circumstances which may be relevant to airport supplies, in particular any attempt to conceal prohibited articles in supplies;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_4" kind="indent">
+                        <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_4" kind="indent">
                            <p>
                               <t v="[name of company] will ensure that all relevant staff receive training in accordance with Chapter 11 of the Annex to Implementing Regulation (EU) 2015/1998 and are aware of their security responsibilities;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_5" kind="indent">
+                        <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_5" kind="indent">
                            <p>
                               <t v="[name of company] will inform [the airport operator] if:"/>
                            </p>
                            <list kind="alpha">
-                              <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_5/pnt_a" kind="point">
+                              <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_5/pnt_a" kind="point">
                                  <num>
                                     <t v="(a)"/>
                                  </num>
@@ -1518,7 +1518,7 @@
                                     <t v="it ceases trading;"/>
                                  </p>
                               </unit>
-                              <unit eId="anx/pnt_22/qst_1/lvl_ATTACHMENT-9-B/idt_5/pnt_b" kind="point">
+                              <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B/idt_5/pnt_b" kind="point">
                                  <num>
                                     <t v="(b)"/>
                                  </num>
@@ -1562,9 +1562,9 @@
                <p>
                   <t v="point 12.0.5.4 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_24/qst_1">
+               <quotedStructure eId="anx/pnt_24/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_24/qst_1/pnt_12.0.5.4" kind="point">
+                     <unit eId="anx/pnt_24/qstr_1/pnt_12.0.5.4" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="12.0.5.4."/>
@@ -1589,9 +1589,9 @@
                <p>
                   <t v="point 12.4.2.1 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_25/qst_1">
+               <quotedStructure eId="anx/pnt_25/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_25/qst_1/pnt_12.4.2.1" kind="point">
+                     <unit eId="anx/pnt_25/qstr_1/pnt_12.4.2.1" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="12.4.2.1."/>
@@ -1600,7 +1600,7 @@
                            <t v="All EDS equipment shall fulfil the following requirements:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx/pnt_25/qst_1/pnt_12.4.2.1/pnt_a" kind="point">
+                           <unit eId="anx/pnt_25/qstr_1/pnt_12.4.2.1/pnt_a" kind="point">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -1610,7 +1610,7 @@
                                  <t v=" must at least meet standard 3;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_25/qst_1/pnt_12.4.2.1/pnt_b" kind="point">
+                           <unit eId="anx/pnt_25/qstr_1/pnt_12.4.2.1/pnt_b" kind="point">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -1622,7 +1622,7 @@
                                  <t v=" must at least meet standard 3.1;"/>
                               </p>
                            </unit>
-                           <unit eId="anx/pnt_25/qst_1/pnt_12.4.2.1/pnt_c" kind="point">
+                           <unit eId="anx/pnt_25/qstr_1/pnt_12.4.2.1/pnt_c" kind="point">
                               <num>
                                  <t v="(c)"/>
                               </num>
@@ -1670,9 +1670,9 @@
                <p>
                   <t v="point 12.9.1.1 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_28/qst_1">
+               <quotedStructure eId="anx/pnt_28/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_28/qst_1/pnt_12.9.1.1" kind="point">
+                     <unit eId="anx/pnt_28/qstr_1/pnt_12.9.1.1" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="12.9.1.1."/>
@@ -1693,9 +1693,9 @@
                <p>
                   <t v="point 12.9.1.4 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_29/qst_1">
+               <quotedStructure eId="anx/pnt_29/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_29/qst_1/pnt_12.9.1.4" kind="point">
+                     <unit eId="anx/pnt_29/qstr_1/pnt_12.9.1.4" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="12.9.1.4."/>
@@ -1716,9 +1716,9 @@
                <p>
                   <t v="point 12.9.1.8 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_30/qst_1">
+               <quotedStructure eId="anx/pnt_30/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_30/qst_1/pnt_12.9.1.8" kind="point">
+                     <unit eId="anx/pnt_30/qstr_1/pnt_12.9.1.8" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="12.9.1.8."/>
@@ -1739,9 +1739,9 @@
                <p>
                   <t v="point 12.9.2.5 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_31/qst_1">
+               <quotedStructure eId="anx/pnt_31/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_31/qst_1/pnt_12.9.2.5" kind="point">
+                     <unit eId="anx/pnt_31/qstr_1/pnt_12.9.2.5" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="12.9.2.5."/>
@@ -1762,9 +1762,9 @@
                <p>
                   <t v="points 12.9.3.3 to 12.9.3.6 are replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_32/qst_1">
+               <quotedStructure eId="anx/pnt_32/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_32/qst_1/pnt_12.9.3.3" kind="point">
+                     <unit eId="anx/pnt_32/qstr_1/pnt_12.9.3.3" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="12.9.3.3."/>
@@ -1773,7 +1773,7 @@
                            <t v="The training shall be conducted by instructors qualified in accordance with point 11.5."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_32/qst_1/pnt_12.9.3.4" kind="point">
+                     <unit eId="anx/pnt_32/qstr_1/pnt_12.9.3.4" kind="point">
                         <num>
                            <t v="12.9.3.4."/>
                         </num>
@@ -1781,7 +1781,7 @@
                            <t v="Dogs to be trained for explosive detection shall only be used for that purpose."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_32/qst_1/pnt_12.9.3.5" kind="point">
+                     <unit eId="anx/pnt_32/qstr_1/pnt_12.9.3.5" kind="point">
                         <num>
                            <t v="12.9.3.5."/>
                         </num>
@@ -1789,7 +1789,7 @@
                            <t v="During training, real explosive or training aids representing explosive materials shall be used."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_32/qst_1/pnt_12.9.3.6" kind="point">
+                     <unit eId="anx/pnt_32/qstr_1/pnt_12.9.3.6" kind="point">
                         <num>
                            <t v="12.9.3.6."/>
                         </num>
@@ -1809,9 +1809,9 @@
                <p>
                   <t v="points 12.9.3.11 and 12.9.3.12 are replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_33/qst_1">
+               <quotedStructure eId="anx/pnt_33/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_33/qst_1/pnt_12.9.3.11" kind="point">
+                     <unit eId="anx/pnt_33/qstr_1/pnt_12.9.3.11" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="12.9.3.11."/>
@@ -1820,7 +1820,7 @@
                            <t v="Recurrent training for an EDD team shall be performed at intervals of at least every 6 weeks. The minimum duration of the recurrent training shall be no less than 4 hours in any 6 weeks period. That requirement does not apply in the case where an EDD is subject to recognition training of all materials listed in Attachment 12-D to the Annex to Implementing Decision C(2015) 8005 on at least a weekly basis."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_33/qst_1/pnt_12.9.3.12" kind="point">
+                     <unit eId="anx/pnt_33/qstr_1/pnt_12.9.3.12" kind="point">
                         <num>
                            <t v="12.9.3.12."/>
                         </num>
@@ -1840,8 +1840,8 @@
                <p>
                   <t v="points 12.9.3.14 and 12.9.3.15 are replaced by the following:"/>
                </p>
-               <quotedStructure eId="anx/pnt_34/qst_1">
-                  <unit eId="anx/pnt_34/qst_1/lvl_1" kind="level" depth="1">
+               <quotedStructure eId="anx/pnt_34/qstr_1">
+                  <unit eId="anx/pnt_34/qstr_1/level_1" kind="level" depth="1">
                      <heading>
                         <t v="“"/>
                         <emphasis kind="i">
@@ -1849,7 +1849,7 @@
                         </emphasis>
                      </heading>
                      <list kind="arabic">
-                        <unit eId="anx/pnt_34/qst_1/lvl_1/pnt_12.9.3.14" kind="point">
+                        <unit eId="anx/pnt_34/qstr_1/level_1/pnt_12.9.3.14" kind="point">
                            <num>
                               <t v="12.9.3.14."/>
                            </num>
@@ -1857,7 +1857,7 @@
                               <t v="When EDD is deployed in the screening duties, the EDD shall be subject to training in each operational area, as referred to in Attachment 12-F to the Annex to Implementing Decision C(2015) 8005, where the team is deployed to ensure that it meets the performance set in Attachment 12-D to the Annex to Implementing Decision C(2015) 8005."/>
                            </p>
                         </unit>
-                        <unit eId="anx/pnt_34/qst_1/lvl_1/pnt_12.9.3.15" kind="point">
+                        <unit eId="anx/pnt_34/qstr_1/level_1/pnt_12.9.3.15" kind="point">
                            <num>
                               <t v="12.9.3.15."/>
                            </num>
@@ -1878,9 +1878,9 @@
                <p>
                   <t v="the following point is inserted:"/>
                </p>
-               <quotedStructure eId="anx/pnt_35/qst_1">
+               <quotedStructure eId="anx/pnt_35/qstr_1">
                   <list kind="arabic">
-                     <unit eId="anx/pnt_35/qst_1/pnt_12.9.3.16" kind="point">
+                     <unit eId="anx/pnt_35/qstr_1/pnt_12.9.3.16" kind="point">
                         <num>
                            <t v="“"/>
                            <t v="12.9.3.16."/>

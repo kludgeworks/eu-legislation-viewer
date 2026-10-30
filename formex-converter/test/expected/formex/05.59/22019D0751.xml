@@ -98,9 +98,9 @@
          <p>
             <t v="The following point is inserted after point 5ep (Commission Implementing Decision 2013/65/EU) of Annex XI to the EEA Agreement:"/>
          </p>
-         <quotedStructure eId="art_1/qst_1">
+         <quotedStructure eId="art_1/qstr_1">
             <list kind="other">
-               <unit eId="art_1/qst_1/pnt_5eq" kind="point">
+               <unit eId="art_1/qstr_1/pnt_5eq" kind="point">
                   <num>
                      <t v="‘"/>
                      <t v="5eq."/>

@@ -34,7 +34,7 @@
             <t v="On page 17, Annex II, point 13, the formula is replaced by the following:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <math>
@@ -88,7 +88,7 @@
             <t v="on page 17, Annex II, point 17, the formula is replaced by the following:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_2/new/qst_1">
+            <quotedStructure eId="cor_2/new/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <math>
@@ -147,7 +147,7 @@
             <t v="on page 28, Annex IV, point 13(d) is replaced by the following:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_3/new/qst_1">
+            <quotedStructure eId="cor_3/new/qstr_1">
                <p>
                   <num>
                      <t v="‘"/>

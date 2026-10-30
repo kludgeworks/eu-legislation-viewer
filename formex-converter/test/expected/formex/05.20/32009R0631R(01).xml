@@ -32,7 +32,7 @@
             <t v="On page 20, Annex, Part II, Chapter 4: Upper legform to bonnet leading edge test, Figure 4 is replaced as follows:"/>
          </p>
          <new>
-            <unit eId="cor_1/new/lvl_Figure-4" kind="level" depth="1">
+            <unit eId="cor_1/new/level_Figure-4" kind="level" depth="1">
                <num>
                   <emphasis kind="i">
                      <t v="Figure 4"/>
@@ -52,7 +52,7 @@
             <t v="On page 42, Annex, Part IV, Chapter IV: Upper legform to Frontal Protection System Leading Edge test, Figure 4 is replaced as follows:"/>
          </p>
          <new>
-            <unit eId="cor_2/new/lvl_Figure-4" kind="level" depth="1">
+            <unit eId="cor_2/new/level_Figure-4" kind="level" depth="1">
                <num>
                   <emphasis kind="i">
                      <t v="Figure 4"/>

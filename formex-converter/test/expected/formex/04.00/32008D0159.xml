@@ -167,13 +167,13 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <quotedStructure eId="anx/qst_1">
-            <unit eId="anx/qst_1/anx" kind="annex">
+         <quotedStructure eId="anx/qstr_1">
+            <unit eId="anx/qstr_1/anx" kind="annex">
                <num>
                   <t v="‘"/>
                   <t v="ANNEX"/>
                </num>
-               <unit eId="anx/qst_1/anx/lvl_1" kind="level" depth="1">
+               <unit eId="anx/qstr_1/anx/level_1" kind="level" depth="1">
                   <heading>
                      <t v="Areas where the plan for the eradication of classical swine fever in feral pigs is to be implemented"/>
                   </heading>

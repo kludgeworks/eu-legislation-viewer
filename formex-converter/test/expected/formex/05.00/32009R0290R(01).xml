@@ -32,7 +32,7 @@
             <t v="On page 77, Annex I(1), replace the footnote to paragraph 7 of Section III of Part 1 with the following:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <p>
                   <num>
                      <t v="‘"/>
@@ -246,7 +246,7 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_3/old/qst_1">
+            <quotedStructure eId="cor_3/old/qstr_1">
                <p>
                   <num>
                      <t v="‘"/>
@@ -336,7 +336,7 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_3/new/qst_1">
+            <quotedStructure eId="cor_3/new/qstr_1">
                <p>
                   <num>
                      <t v="‘"/>

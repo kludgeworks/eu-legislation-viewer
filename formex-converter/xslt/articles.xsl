@@ -144,7 +144,7 @@
   </xsl:template>
 
   <!-- Parts, titles, chapters and sections (Formex DIVISION): unit kind="division", its title line as
-       num (CHAPTER III). The eId is dvs_ and the label after the type word, nested under the enclosing
+       num (CHAPTER III). The eId is division_ and the label after the type word, nested under the enclosing
        division; the kind of grouping isn't classified, since that would mean reading each language's
        wording. Articles inside keep act-wide eIds (art_14), as in AKN4EU and ELI. -->
   <xsl:template match="DIVISION" mode="block">
@@ -155,7 +155,7 @@
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="line" as="element()?" select="TITLE/TI/*[1]"/>
     <!-- a part, title, chapter, section or subsection, as the EU subdivision table names them in the
-         document's language: prt_, tis_, cpt_, sct_, sbs_ and the number after the name; else dvs_ -->
+         document's language: prt_, tis_, cpt_, sct_, sbs_ and the number after the name; else division_ -->
     <xsl:variable name="type" as="xs:string*" select="if ($line/self::NP) then () else f:subdivision(string($line), ('PRT', 'TIS', 'CPT', 'SCT', 'SBS'), .)"/>
     <!-- after a recognised name, the next word is the number, in whatever form: III, 2, TWO -->
     <xsl:variable name="number" as="xs:string?" select="tokenize($type[2], ' ')[1]"/>
@@ -166,7 +166,7 @@
     <!-- divisions hang off what holds them: nothing in the act's own enacting terms (cpt_1), else
          the annex, quoted structure, attachment or level (anx_II/cpt_1) -->
     <xsl:variable name="outer" as="xs:string?" select="$base"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid(($division, $outer)[1], ($type[1] ! lower-case(.), 'dvs')[1], $label)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid(($division, $outer)[1], ($type[1] ! lower-case(.), 'division')[1], $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>
@@ -188,13 +188,13 @@
   </xsl:template>
 
   <!-- a titled part of an article in an agreement (SUBDIV, "(1) Objectives"): unit kind="subdivision",
-       eId subdvs_ and its number, as AKN's subdivision; its paragraphs and subparagraphs hang off it -->
+       eId subdivision_ and its number, as AKN's subdivision; its paragraphs and subparagraphs hang off it -->
   <xsl:template match="SUBDIV" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'subdvs', (f:label(TITLE/TI/NP[1]/NO.P)[. != ''], string(count(preceding-sibling::SUBDIV) + 1))[1])"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'subdivision', (f:label(TITLE/TI/NP[1]/NO.P)[. != ''], string(count(preceding-sibling::SUBDIV) + 1))[1])"/>
     <xsl:variable name="body" as="element()*" select="* except TITLE"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="subdivision">

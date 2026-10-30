@@ -71,7 +71,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/dvs_1" kind="division">
+         <unit eId="pbl_1/division_1" kind="division">
             <num>
                <t v="1."/>
             </num>
@@ -124,7 +124,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="pbl_1/dvs_2" kind="division">
+         <unit eId="pbl_1/division_2" kind="division">
             <num>
                <t v="2."/>
             </num>

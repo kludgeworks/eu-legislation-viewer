@@ -46,8 +46,8 @@
             <t v="On page 87, Annex II, heading 3 shall be replaced by the following:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_1/new/qst_1">
-               <unit eId="cor_1/new/qst_1/pnt_3" kind="level" depth="1">
+            <quotedStructure eId="cor_1/new/qstr_1">
+               <unit eId="cor_1/new/qstr_1/pnt_3" kind="level" depth="1">
                   <num>
                      <t v="‘"/>
                      <t v="3."/>
@@ -69,17 +69,17 @@
                               <t v="[ %"/>
                            </p>
                            <list kind="dash">
-                              <unit eId="cor_1/new/qst_1/pnt_3/tbl_1/tr_1/td_2/idt_1" kind="indent">
+                              <unit eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_1/td_2/idt_1" kind="indent">
                                  <p>
                                     <t v="fixed, or"/>
                                  </p>
                               </unit>
-                              <unit eId="cor_1/new/qst_1/pnt_3/tbl_1/tr_1/td_2/idt_2" kind="indent">
+                              <unit eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_1/td_2/idt_2" kind="indent">
                                  <p>
                                     <t v="variable (with the index or reference rate applicable to the initial borrowing rate),"/>
                                  </p>
                               </unit>
-                              <unit eId="cor_1/new/qst_1/pnt_3/tbl_1/tr_1/td_2/idt_3" kind="indent">
+                              <unit eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_1/td_2/idt_3" kind="indent">
                                  <p>
                                     <t v="periods]"/>
                                  </p>

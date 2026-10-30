@@ -3017,25 +3017,25 @@
                      <noteRef href="#note_21" marker="1"/>
                   </p>
                   <list kind="dash">
-                     <unit eId="anx_I/tbl_1/tr_9/td_1/idt_1" kind="indent">
+                     <unit eId="anx_I/tab_1/tr_9/td_1/idt_1" kind="indent">
                         <p>
                            <t v="sterols"/>
                            <noteRef href="#note_22" marker="2"/>
                         </p>
                      </unit>
-                     <unit eId="anx_I/tbl_1/tr_9/td_1/idt_2" kind="indent">
+                     <unit eId="anx_I/tab_1/tr_9/td_1/idt_2" kind="indent">
                         <p>
                            <t v="vanillin"/>
                            <noteRef href="#note_22" marker="2"/>
                         </p>
                      </unit>
-                     <unit eId="anx_I/tbl_1/tr_9/td_1/idt_3" kind="indent">
+                     <unit eId="anx_I/tab_1/tr_9/td_1/idt_3" kind="indent">
                         <p>
                            <t v="ethyl ester of carotenic acid"/>
                            <noteRef href="#note_22" marker="2"/>
                         </p>
                      </unit>
-                     <unit eId="anx_I/tbl_1/tr_9/td_1/idt_4" kind="indent">
+                     <unit eId="anx_I/tab_1/tr_9/td_1/idt_4" kind="indent">
                         <p>
                            <t v="triglycerides of enanthic acid"/>
                            <noteRef href="#note_22" marker="2"/>
@@ -3107,7 +3107,7 @@
                </td>
             </tr>
          </table>
-         <unit eId="anx_I/lvl_1" kind="level" depth="1">
+         <unit eId="anx_I/level_1" kind="level" depth="1">
             <p>
                <t v="Butter is a solid emulsion, mainly of the water-in-oil type, with the following compositional and quality characteristics."/>
             </p>
@@ -4513,7 +4513,7 @@
                   <t v="Calculations for the detection of any foreign fat combination in milk fat have shown that, e.g., although with the formula for lard given in Table 2 the limit for this foreign fat in low, namely 2,7 %, other fats such as coconut fat, palm oil or palm kernel fat with detection limits of 26,8, 12,5 and 19,3 %, respectively, can, with this formula, only be detected if extremely high amounts have been added to milk fat. This applies also to other formulae in Table 2."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_8/lvl_1" kind="level" depth="2">
+            <unit eId="anx_II/pnt_8/level_1" kind="level" depth="2">
                <heading>
                   <t v="Table 2: Triglyceride formulae for detecting various foreign fats in milk fat, indicating the standard deviations SD for S"/>
                </heading>
@@ -4521,7 +4521,7 @@
                   <t v="Therefore for checking an unknown fat sample all formulae given in Table 2 and the Total formula (2) must be used, if the sample is likely to be a mixture of milk fat and one of the 14 different foreign fats or a combination of these foreign fats. If, by inserting the triglyceride of a fat sample to be analysed an S-value is obtained, which falls outside the ranges of Table 3 of only one of the five formulae, then the sample is most likely a modified milk fat. Detection of a foreign fat in milk fat by means of one of the four formulae in Table 2 does not allow conclusions to be drawn on the type of the foreign fat admixture."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_8/lvl_1/lvl_1" kind="level" depth="3">
+            <unit eId="anx_II/pnt_8/level_1/level_1" kind="level" depth="3">
                <heading>
                   <t v="Formula for soybean, sunflower, olive, rape-seed, linseed, wheat germ, maize germ, cotton seed and fish oil"/>
                </heading>
@@ -4581,7 +4581,7 @@
                   </m:math>
                </math>
             </unit>
-            <unit eId="anx_II/pnt_8/lvl_1/lvl_2" kind="level" depth="3">
+            <unit eId="anx_II/pnt_8/level_1/level_2" kind="level" depth="3">
                <heading>
                   <t v="Formula for coconut and palm kernel fat"/>
                </heading>
@@ -4647,7 +4647,7 @@
                   </m:math>
                </math>
             </unit>
-            <unit eId="anx_II/pnt_8/lvl_1/lvl_3" kind="level" depth="3">
+            <unit eId="anx_II/pnt_8/level_1/level_3" kind="level" depth="3">
                <heading>
                   <t v="Formula for palm oil and beef tallow"/>
                </heading>
@@ -4708,7 +4708,7 @@
                   </m:math>
                </math>
             </unit>
-            <unit eId="anx_II/pnt_8/lvl_1/lvl_4" kind="level" depth="3">
+            <unit eId="anx_II/pnt_8/level_1/level_4" kind="level" depth="3">
                <heading>
                   <t v="Formula for lard"/>
                </heading>
@@ -4764,12 +4764,12 @@
                   </m:math>
                </math>
             </unit>
-            <unit eId="anx_II/pnt_8/lvl_2" kind="level" depth="2">
+            <unit eId="anx_II/pnt_8/level_2" kind="level" depth="2">
                <p>
                   <t v="In Table 4 the detection limits for the different foreign fats with a 99 % confidence are given. The first column shows the minimal detection limits for the best milk fat formulae in Table 2. In the second column the detection limits for the total formula are given. Although the limits are some what higher, only this formula is necessary to detect a little bit higher amounts of foreign fats. With all formulae also combinations of the different foreign fats can be detected. The ranges of variation of the triglycerides of different foreign fats of one type have no considerable influence on the detection limits."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_8/lvl_2/lvl_1" kind="level" depth="3">
+            <unit eId="anx_II/pnt_8/level_2/level_1" kind="level" depth="3">
                <table cols="2">
                   <caption>
                      <p>
@@ -4860,7 +4860,7 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_II/pnt_8/lvl_3" kind="level" depth="2">
+            <unit eId="anx_II/pnt_8/level_3" kind="level" depth="2">
                <table cols="3">
                   <caption>
                      <p>
@@ -6286,12 +6286,12 @@
                   </unit>
                </list>
                <list kind="dash">
-                  <unit eId="anx_III/pnt_8/lst_2/idt_1" kind="indent">
+                  <unit eId="anx_III/pnt_8/list_2/idt_1" kind="indent">
                      <p>
                         <t v="It is desirable that the identity of the samples are concealed during the assessment so that any possible bias is avoided."/>
                      </p>
                   </unit>
-                  <unit eId="anx_III/pnt_8/lst_2/idt_2" kind="indent">
+                  <unit eId="anx_III/pnt_8/list_2/idt_2" kind="indent">
                      <p>
                         <t v="This should be organized by the panel leader prior to the evaluation without the presence of the other panel members."/>
                      </p>
@@ -6321,7 +6321,7 @@
                   <t v="Refer to the appended table 2."/>
                </p>
             </unit>
-            <unit eId="anx_III/lvl_1" kind="level" depth="1">
+            <unit eId="anx_III/level_1" kind="level" depth="1">
                <heading>
                   <t v="Table 1: Butter scoring"/>
                </heading>
@@ -7546,7 +7546,7 @@
                   </table>
                </tableGroup>
             </unit>
-            <unit eId="anx_III/lvl_2" kind="level" depth="1">
+            <unit eId="anx_III/level_2" kind="level" depth="1">
                <heading>
                   <t v="Table 2: Table of butter defects"/>
                </heading>
@@ -7772,7 +7772,7 @@
                   </num>
                </p>
                <list kind="alpha">
-                  <unit eId="anx_III/pnt_III/lst_2/pnt_a" kind="point">
+                  <unit eId="anx_III/pnt_III/list_2/pnt_a" kind="point">
                      <num>
                         <t v="a)"/>
                      </num>
@@ -7780,7 +7780,7 @@
                         <t v="oxidized flavour"/>
                      </p>
                   </unit>
-                  <unit eId="anx_III/pnt_III/lst_2/pnt_b" kind="point">
+                  <unit eId="anx_III/pnt_III/list_2/pnt_b" kind="point">
                      <num>
                         <t v="b)"/>
                      </num>

@@ -100,7 +100,7 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_3/old/qst_1">
+            <quotedStructure eId="cor_3/old/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <math>
@@ -146,7 +146,7 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_3/new/qst_1">
+            <quotedStructure eId="cor_3/new/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <math>

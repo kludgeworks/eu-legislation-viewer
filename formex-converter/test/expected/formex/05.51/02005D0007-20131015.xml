@@ -264,14 +264,14 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/lvl_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1">
             <heading>
                <emphasis kind="b">
                   <t v="METHODS FOR GRADING PIG CARCASSES IN CYPRUS"/>
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/lvl_PART-I" kind="level" depth="2">
+         <unit eId="anx/level_PART-I" kind="level" depth="2">
             <num>
                <t v="PART I"/>
             </num>
@@ -337,7 +337,7 @@
                <t v="where:"/>
             </p>
             <list kind="definition">
-               <unit eId="anx/lvl_PART-I/def_1" kind="definition">
+               <unit eId="anx/level_PART-I/def_1" kind="definition">
                   <heading>
                      <t v="Ŷ"/>
                   </heading>
@@ -345,7 +345,7 @@
                      <t v="the estimated percentage of lean meat in the carcass,"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_PART-I/def_2" kind="definition">
+               <unit eId="anx/level_PART-I/def_2" kind="definition">
                   <heading>
                      <t v="X"/>
                      <emphasis kind="sub">
@@ -356,7 +356,7 @@
                      <t v="the thickness of back-fat (including rind) in millimetres, measured at 6 centimetres off the midline of the split carcass, between the third and fourth last ribs,"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_PART-I/def_3" kind="definition">
+               <unit eId="anx/level_PART-I/def_3" kind="definition">
                   <heading>
                      <t v="X"/>
                      <emphasis kind="sub">
@@ -376,7 +376,7 @@
                <t v="This formula shall be valid for carcasses weighing between 55 and 120 kilograms."/>
             </p>
          </unit>
-         <unit eId="anx/lvl_PART-II" kind="level" depth="2">
+         <unit eId="anx/level_PART-II" kind="level" depth="2">
             <num>
                <t v="PART II"/>
             </num>
@@ -445,7 +445,7 @@
                <t v="where:"/>
             </p>
             <list kind="definition">
-               <unit eId="anx/lvl_PART-II/def_1" kind="definition">
+               <unit eId="anx/level_PART-II/def_1" kind="definition">
                   <heading>
                      <t v="Ŷ"/>
                   </heading>
@@ -453,7 +453,7 @@
                      <t v="the estimated percentage of lean meat in the carcass,"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_PART-II/def_2" kind="definition">
+               <unit eId="anx/level_PART-II/def_2" kind="definition">
                   <heading>
                      <t v="X"/>
                      <emphasis kind="sub">
@@ -464,7 +464,7 @@
                      <t v="the thickness of back-fat (including rind) in millimetres, measured at 6 centimetres off the midline of the split carcass, between the third and fourth last ribs,"/>
                   </p>
                </unit>
-               <unit eId="anx/lvl_PART-II/def_3" kind="definition">
+               <unit eId="anx/level_PART-II/def_3" kind="definition">
                   <heading>
                      <t v="X"/>
                      <emphasis kind="sub">

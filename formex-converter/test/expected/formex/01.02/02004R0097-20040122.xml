@@ -108,8 +108,8 @@
          <p>
             <t v="Article 1 of Regulation (EC) No 2281/2003 is hereby replaced by the following:"/>
          </p>
-         <quotedStructure eId="art_1/qst_1">
-            <unit eId="art_1/qst_1/art_1" kind="article">
+         <quotedStructure eId="art_1/qstr_1">
+            <unit eId="art_1/qstr_1/art_1" kind="article">
                <num>
                   <t v="‘"/>
                   <t v="Article 1"/>
@@ -128,8 +128,8 @@
          <p>
             <t v="Article 1 of Regulation (EC) No 2299/2003 is hereby replaced by the following:"/>
          </p>
-         <quotedStructure eId="art_2/qst_1">
-            <unit eId="art_2/qst_1/art_1" kind="article">
+         <quotedStructure eId="art_2/qstr_1">
+            <unit eId="art_2/qstr_1/art_1" kind="article">
                <num>
                   <t v="‘"/>
                   <t v="Article 1"/>

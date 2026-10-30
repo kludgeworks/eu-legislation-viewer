@@ -76,10 +76,10 @@
   </xsl:function>
 
   <!-- points of a list hang off the enclosing unit; when it holds several lists (6.5.2 has two,
-       each (a) to (d)), the second and later get a segment of their own: …/lst_2/pnt_a. The first
+       each (a) to (d)), the second and later get a segment of their own: …/list_2/pnt_a. The first
        keeps plain eIds, so adding a list doesn't rename the points already there. In a level with
        sub-levels, which number themselves under it too (point I. of a list, sub-level I.), every
-       list gets the segment: …/lvl_2/lst_1/pnt_1. -->
+       list gets the segment: …/level_2/list_1/pnt_1. -->
   <xsl:function name="f:list-base" as="xs:string?">
     <xsl:param name="list" as="element()"/>
     <xsl:param name="base" as="xs:string?"/>
@@ -94,7 +94,7 @@
              [f:label(.) = $scope//GR.SEQ/f:label(f:level-num(.))])"/>
     <xsl:sequence select="
         if ($siblings[. &lt;&lt; $list] or $beside-levels)
-        then f:eid($base, 'lst', string(count($siblings[. &lt;&lt; $list]) + 1))
+        then f:eid($base, 'list', string(count($siblings[. &lt;&lt; $list]) + 1))
         else $base"/>
   </xsl:function>
 
@@ -152,7 +152,7 @@
   </xsl:function>
 
   <!-- An ITEM or DLIST.ITEM outside its list (an amendment adds "in Bulgarian:" after the list's end):
-       a run of them is a list of its own, numbered among the lists around it (pnt_a/lst_2/idt_1) -->
+       a run of them is a list of its own, numbered among the lists around it (pnt_a/list_2/idt_1) -->
   <xsl:function name="f:stray-start" as="xs:boolean">
     <xsl:param name="item" as="element()"/>
     <xsl:sequence select="empty($item/parent::LIST | $item/parent::DLIST)

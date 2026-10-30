@@ -136,9 +136,9 @@
          <p>
             <t v="In Article 1(1), points (e) and (f) are replaced by the following:"/>
          </p>
-         <quotedStructure eId="art_1/qst_1">
+         <quotedStructure eId="art_1/qstr_1">
             <list kind="alpha">
-               <unit eId="art_1/qst_1/pnt_e" kind="point">
+               <unit eId="art_1/qstr_1/pnt_e" kind="point">
                   <num>
                      <t v="‘"/>
                      <t v="(e)"/>
@@ -147,7 +147,7 @@
                      <t v="Category 5 — Tuna seiners"/>
                   </p>
                   <list kind="definition">
-                     <unit eId="art_1/qst_1/pnt_e/def_1" kind="definition">
+                     <unit eId="art_1/qstr_1/pnt_e/def_1" kind="definition">
                         <heading>
                            <t v="Spain"/>
                         </heading>
@@ -155,7 +155,7 @@
                            <t v="17 licences"/>
                         </p>
                      </unit>
-                     <unit eId="art_1/qst_1/pnt_e/def_2" kind="definition">
+                     <unit eId="art_1/qstr_1/pnt_e/def_2" kind="definition">
                         <heading>
                            <t v="France"/>
                         </heading>
@@ -165,7 +165,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="art_1/qst_1/pnt_f" kind="point">
+               <unit eId="art_1/qstr_1/pnt_f" kind="point">
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -173,7 +173,7 @@
                      <t v="Category 6 — Pole-and-line tuna vessels and surface longliners"/>
                   </p>
                   <list kind="definition">
-                     <unit eId="art_1/qst_1/pnt_f/def_1" kind="definition">
+                     <unit eId="art_1/qstr_1/pnt_f/def_1" kind="definition">
                         <heading>
                            <t v="Spain"/>
                         </heading>
@@ -181,7 +181,7 @@
                            <t v="18 licences"/>
                         </p>
                      </unit>
-                     <unit eId="art_1/qst_1/pnt_f/def_2" kind="definition">
+                     <unit eId="art_1/qstr_1/pnt_f/def_2" kind="definition">
                         <heading>
                            <t v="France"/>
                         </heading>

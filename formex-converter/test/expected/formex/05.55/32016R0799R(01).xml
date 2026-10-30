@@ -34,20 +34,20 @@
             <t v="Annex II is inserted as follows:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_1/new/qst_1">
-               <unit eId="cor_1/new/qst_1/anx_II" kind="annex">
+            <quotedStructure eId="cor_1/new/qstr_1">
+               <unit eId="cor_1/new/qstr_1/anx_II" kind="annex">
                   <num>
                      <t v="‘"/>
                      <t v="ANNEX II"/>
                   </num>
-                  <unit eId="cor_1/new/qst_1/anx_II/lvl_1" kind="level" depth="1">
+                  <unit eId="cor_1/new/qstr_1/anx_II/level_1" kind="level" depth="1">
                      <heading>
                         <emphasis kind="b">
                            <t v="APPROVAL MARK AND CERTIFICATE"/>
                         </emphasis>
                      </heading>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/anx_II/pnt_I" kind="level" depth="2">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_I" kind="level" depth="2">
                      <num>
                         <t v="I."/>
                      </num>
@@ -61,7 +61,7 @@
                         <t v="The approval mark shall be made up of:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_I/pnt_a" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_a" kind="point">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -414,7 +414,7 @@
                               <t v="and"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_I/pnt_b" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_b" kind="point">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -439,7 +439,7 @@
                      </p>
                      <figure src="L_2016146EN.01003301.tif" content="techDesign"/>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/anx_II/pnt_II" kind="level" depth="2">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_II" kind="level" depth="2">
                      <num>
                         <t v="II."/>
                      </num>
@@ -450,7 +450,7 @@
                         <t v="A Member State which has granted approval shall issue the applicant with an approval certificate, the model of which is given below. When informing other Member States of approvals issued or, if the occasion should arise, withdrawn, a Member State shall use copies of that certificate."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1" kind="level" depth="3">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1" kind="level" depth="3">
                      <heading>
                         <t v="APPROVAL CERTIFICATE"/>
                      </heading>
@@ -463,22 +463,22 @@
                         <t v=":"/>
                      </p>
                      <list kind="dash">
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/idt_1" kind="indent">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_1" kind="indent">
                            <p>
                               <t v="approval of a type of recording equipment"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/idt_2" kind="indent">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_2" kind="indent">
                            <p>
                               <t v="withdrawal of approval of a type of recording equipment"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/idt_3" kind="indent">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_3" kind="indent">
                            <p>
                               <t v="approval of a model record sheet"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/idt_4" kind="indent">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_4" kind="indent">
                            <p>
                               <t v="withdrawal of approval of a model record sheet"/>
                            </p>
@@ -491,7 +491,7 @@
                         <t v="…."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_1" kind="point">
                            <num>
                               <t v="1."/>
                            </num>
@@ -499,7 +499,7 @@
                               <t v="Trade mark or name …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_2" kind="point">
                            <num>
                               <t v="2."/>
                            </num>
@@ -507,7 +507,7 @@
                               <t v="Name of type or model …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_3" kind="point">
                            <num>
                               <t v="3."/>
                            </num>
@@ -515,7 +515,7 @@
                               <t v="Name of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_4" kind="point">
                            <num>
                               <t v="4."/>
                            </num>
@@ -523,7 +523,7 @@
                               <t v="Address of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_5" kind="point">
                            <num>
                               <t v="5."/>
                            </num>
@@ -531,7 +531,7 @@
                               <t v="Submitted for approval on …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_6" kind="point">
                            <num>
                               <t v="6."/>
                            </num>
@@ -539,7 +539,7 @@
                               <t v="Tested at …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_7" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_7" kind="point">
                            <num>
                               <t v="7."/>
                            </num>
@@ -547,7 +547,7 @@
                               <t v="Date and number of the test(s) …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_8" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_8" kind="point">
                            <num>
                               <t v="8."/>
                            </num>
@@ -555,7 +555,7 @@
                               <t v="Date of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_9" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_9" kind="point">
                            <num>
                               <t v="9."/>
                            </num>
@@ -563,7 +563,7 @@
                               <t v="Date of withdrawal of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_10" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_10" kind="point">
                            <num>
                               <t v="10."/>
                            </num>
@@ -571,7 +571,7 @@
                               <t v="Type or types of recording equipment in which sheet is designed to be used"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_11" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_11" kind="point">
                            <num>
                               <t v="11."/>
                            </num>
@@ -579,7 +579,7 @@
                               <t v="Place …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_12" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_12" kind="point">
                            <num>
                               <t v="12."/>
                            </num>
@@ -587,7 +587,7 @@
                               <t v="Date …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_13" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_13" kind="point">
                            <num>
                               <t v="13."/>
                            </num>
@@ -595,7 +595,7 @@
                               <t v="Descriptive documents annexed …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_II/lvl_1/lst_2/pnt_14" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_14" kind="point">
                            <num>
                               <t v="14."/>
                            </num>
@@ -608,7 +608,7 @@
                         <t v="(Signature)"/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/anx_II/pnt_III" kind="level" depth="2">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_III" kind="level" depth="2">
                      <num>
                         <t v="III."/>
                      </num>
@@ -619,7 +619,9 @@
                         <t v="A Member State which has granted approval shall issue the applicant with an approval certificate, the model of which is given below. When informing other Member States of approvals issued or, if the occasion should arise, withdrawn, a Member State shall use copies of that certificate."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1" kind="level" depth="3">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1"
+                        kind="level"
+                        depth="3">
                      <heading>
                         <t v="APPROVAL CERTIFICATE FOR DIGITAL TACHOGRAPHS"/>
                      </heading>
@@ -644,7 +646,7 @@
                         <t v="withdrawal of approval of:"/>
                      </p>
                      <list kind="other">
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/idt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_1" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -652,7 +654,7 @@
                               <t v="recording equipment model"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/idt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_2" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -661,7 +663,7 @@
                               <noteRef href="#note_anx01003201-4" marker="4"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/idt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_3" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -669,7 +671,7 @@
                               <t v="a driver's card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/idt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_4" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -677,7 +679,7 @@
                               <t v="a workshop card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/idt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_5" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -685,7 +687,7 @@
                               <t v="a company card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/idt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_6" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -701,7 +703,7 @@
                         <t v="…."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_1" kind="point">
                            <num>
                               <t v="1."/>
                            </num>
@@ -709,7 +711,7 @@
                               <t v="Manufacturing brand or trademark …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_2" kind="point">
                            <num>
                               <t v="2."/>
                            </num>
@@ -717,7 +719,7 @@
                               <t v="Name of model …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_3" kind="point">
                            <num>
                               <t v="3."/>
                            </num>
@@ -725,7 +727,7 @@
                               <t v="Name of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_4" kind="point">
                            <num>
                               <t v="4."/>
                            </num>
@@ -733,7 +735,7 @@
                               <t v="Address of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_5" kind="point">
                            <num>
                               <t v="5."/>
                            </num>
@@ -741,7 +743,7 @@
                               <t v="Submitted for approval for …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_6" kind="point">
                            <num>
                               <t v="6."/>
                            </num>
@@ -749,7 +751,7 @@
                               <t v="Laboratory(-ies) …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_7" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_7" kind="point">
                            <num>
                               <t v="7."/>
                            </num>
@@ -757,7 +759,7 @@
                               <t v="Date and number of test report …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_8" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_8" kind="point">
                            <num>
                               <t v="8."/>
                            </num>
@@ -765,7 +767,7 @@
                               <t v="Date of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_9" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_9" kind="point">
                            <num>
                               <t v="9."/>
                            </num>
@@ -773,7 +775,8 @@
                               <t v="Date of withdrawal of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_10" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_10"
+                              kind="point">
                            <num>
                               <t v="10."/>
                            </num>
@@ -781,7 +784,8 @@
                               <t v="Model of recording equipment(s) with which the component is designed to be used"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_11" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_11"
+                              kind="point">
                            <num>
                               <t v="11."/>
                            </num>
@@ -789,7 +793,8 @@
                               <t v="Place …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_12" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_12"
+                              kind="point">
                            <num>
                               <t v="12."/>
                            </num>
@@ -797,7 +802,8 @@
                               <t v="Date …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_13" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_13"
+                              kind="point">
                            <num>
                               <t v="13."/>
                            </num>
@@ -805,7 +811,8 @@
                               <t v="Descriptive documents annexed …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_III/lvl_1/lst_2/pnt_14" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_14"
+                              kind="point">
                            <num>
                               <t v="14."/>
                            </num>
@@ -818,7 +825,7 @@
                         <t v="(Signature)"/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/anx_II/pnt_IV" kind="level" depth="2">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV" kind="level" depth="2">
                      <num>
                         <t v="IV."/>
                      </num>
@@ -829,7 +836,7 @@
                         <t v="A Member State which has granted approval shall issue the applicant with an approval certificate, the model of which is given below. When informing other Member States of approvals issued or, if the occasion should arise, withdrawn, a Member State shall use copies of that certificate."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1" kind="level" depth="3">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1" kind="level" depth="3">
                      <heading>
                         <t v="APPROVAL CERTIFICATE FOR SMART TACHOGRAPHS"/>
                      </heading>
@@ -854,7 +861,7 @@
                         <t v="withdrawal of approval of:"/>
                      </p>
                      <list kind="other">
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/idt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_1" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -862,7 +869,7 @@
                               <t v="recording equipment model"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/idt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_2" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -871,7 +878,7 @@
                               <noteRef href="#note_anx01003201-6" marker="6"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/idt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_3" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -879,7 +886,7 @@
                               <t v="a driver's card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/idt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_4" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -887,7 +894,7 @@
                               <t v="a workshop card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/idt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_5" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -895,7 +902,7 @@
                               <t v="a company card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/idt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_6" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -911,7 +918,7 @@
                         <t v="…."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_1" kind="point">
                            <num>
                               <t v="1."/>
                            </num>
@@ -919,7 +926,7 @@
                               <t v="Manufacturing brand or trademark …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_2" kind="point">
                            <num>
                               <t v="2."/>
                            </num>
@@ -927,7 +934,7 @@
                               <t v="Name of model …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_3" kind="point">
                            <num>
                               <t v="3."/>
                            </num>
@@ -935,7 +942,7 @@
                               <t v="Name of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_4" kind="point">
                            <num>
                               <t v="4."/>
                            </num>
@@ -943,7 +950,7 @@
                               <t v="Address of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_5" kind="point">
                            <num>
                               <t v="5."/>
                            </num>
@@ -951,12 +958,12 @@
                               <t v="Submitted for approval for …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_6" kind="point">
                            <num>
                               <t v="6."/>
                            </num>
                            <list kind="alpha">
-                              <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_6/pnt_a"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_6/pnt_a"
                                     kind="point">
                                  <num>
                                     <t v="(a)"/>
@@ -965,7 +972,7 @@
                                     <t v="Test laboratory for functional certification …"/>
                                  </p>
                               </unit>
-                              <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_6/pnt_b"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_6/pnt_b"
                                     kind="point">
                                  <num>
                                     <t v="(b)"/>
@@ -974,7 +981,7 @@
                                     <t v="Test laboratory for security certification …"/>
                                  </p>
                               </unit>
-                              <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_6/pnt_c"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_6/pnt_c"
                                     kind="point">
                                  <num>
                                     <t v="(c)"/>
@@ -985,12 +992,12 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_7" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_7" kind="point">
                            <num>
                               <t v="7."/>
                            </num>
                            <list kind="alpha">
-                              <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_7/pnt_a"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_7/pnt_a"
                                     kind="point">
                                  <num>
                                     <t v="(a)"/>
@@ -999,7 +1006,7 @@
                                     <t v="Date and number of functional certificate …"/>
                                  </p>
                               </unit>
-                              <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_7/pnt_b"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_7/pnt_b"
                                     kind="point">
                                  <num>
                                     <t v="(b)"/>
@@ -1008,7 +1015,7 @@
                                     <t v="Date and number of security certificate …"/>
                                  </p>
                               </unit>
-                              <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_7/pnt_c"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_7/pnt_c"
                                     kind="point">
                                  <num>
                                     <t v="(c)"/>
@@ -1019,7 +1026,7 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_8" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_8" kind="point">
                            <num>
                               <t v="8."/>
                            </num>
@@ -1027,7 +1034,7 @@
                               <t v="Date of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_9" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_9" kind="point">
                            <num>
                               <t v="9."/>
                            </num>
@@ -1035,7 +1042,7 @@
                               <t v="Date of withdrawal of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_10" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_10" kind="point">
                            <num>
                               <t v="10."/>
                            </num>
@@ -1043,7 +1050,7 @@
                               <t v="Model of recording equipment(s) with which the component is designed to be used"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_11" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_11" kind="point">
                            <num>
                               <t v="11."/>
                            </num>
@@ -1051,7 +1058,7 @@
                               <t v="Place …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_12" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_12" kind="point">
                            <num>
                               <t v="12."/>
                            </num>
@@ -1059,7 +1066,7 @@
                               <t v="Date …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_13" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_13" kind="point">
                            <num>
                               <t v="13."/>
                            </num>
@@ -1067,7 +1074,7 @@
                               <t v="Descriptive documents annexed …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/anx_II/pnt_IV/lvl_1/lst_2/pnt_14" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_14" kind="point">
                            <num>
                               <t v="14."/>
                            </num>

@@ -648,9 +648,9 @@
                   </quote>
                   <t v=", the following indent shall be deleted:"/>
                </p>
-               <quotedStructure eId="art_13/par_1/sub_2/qst_1">
+               <quotedStructure eId="art_13/par_1/sub_2/qstr_1">
                   <list kind="dash">
-                     <unit eId="art_13/par_1/sub_2/qst_1/idt_1" kind="point">
+                     <unit eId="art_13/par_1/sub_2/qstr_1/idt_1" kind="point">
                         <num>
                            <t v="‘"/>
                            <t v="—"/>
@@ -1836,7 +1836,7 @@
          <num>
             <t v="ANNEX III"/>
          </num>
-         <unit eId="anx_III/lvl_1" kind="level" depth="1">
+         <unit eId="anx_III/level_1" kind="level" depth="1">
             <heading>
                <emphasis kind="b">
                   <t v="METHODS REFERRED TO IN ARTICLE 3(1)"/>

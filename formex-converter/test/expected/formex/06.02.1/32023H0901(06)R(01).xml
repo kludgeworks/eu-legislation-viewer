@@ -39,7 +39,7 @@
                         <t v="for:"/>
                      </emphasis>
                   </heading>
-                  <quotedStructure eId="cor_1/old/def_1/qst_1">
+                  <quotedStructure eId="cor_1/old/def_1/qstr_1">
                      <p>
                         <quote startQuote="‘" endQuote="’">
                            <t v="Strengthen social protection by extending the coverage of unemployment benefits, in particular for those in work for short spells and in non-standard forms of work, in order to address, inter alia, old-age poverty."/>
@@ -58,7 +58,7 @@
                         <t v="read:"/>
                      </emphasis>
                   </heading>
-                  <quotedStructure eId="cor_1/new/def_1/qst_1">
+                  <quotedStructure eId="cor_1/new/def_1/qstr_1">
                      <p>
                         <quote startQuote="‘" endQuote="’">
                            <t v="Strengthen social protection, including to address old-age poverty, and by extending the coverage of unemployment benefits, in particular for those with short work spells and in non-standard forms of work."/>

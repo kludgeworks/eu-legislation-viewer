@@ -127,8 +127,8 @@
         <ENACTING.TERMS/>
       </ACT>
     </x:context>
-    <x:expect label="numbers them within the recital: rct_1/lvl_1, rct_1/lvl_2"
-              test="$x:result//*:recitals//*:unit[@kind = 'level']/@eId => string-join(' ') = 'pbl_1/rct_1/lvl_1 pbl_1/rct_1/lvl_2'"/>
+    <x:expect label="numbers them within the recital: rct_1/level_1, rct_1/level_2"
+              test="$x:result//*:recitals//*:unit[@kind = 'level']/@eId => string-join(' ') = 'pbl_1/rct_1/level_1 pbl_1/rct_1/level_2'"/>
   </x:scenario>
 
   <x:scenario label="Recitals in groups, with unnumbered CONSIDs and a number printed twice">
@@ -152,7 +152,7 @@
               test="$x:result//*:unit[@kind = 'recital']/@eId => string-join(' ') = 'pbl_1/rct_1 pbl_1/rct_2 pbl_1/rct_2'"/>
     <x:expect label="Whereas: opens the recitals" test="$x:result//*:recitals/*:intro//*:t/@v = 'Whereas:'"/>
     <x:expect label="the lone one in group B is the group's text"
-              test="$x:result//*:unit[@eId = 'pbl_1/dvs_B']/*:p//*:t/@v = 'No sampling was needed.'"/>
+              test="$x:result//*:unit[@eId = 'pbl_1/division_B']/*:p//*:t/@v = 'No sampling was needed.'"/>
     <x:expect label="(2) in two groups is the source repeating a preamble-wide number: both marked"
               test="count($x:result//*:unit[@eId = 'pbl_1/rct_2'][@ambiguous = 'true']) = 2"/>
   </x:scenario>

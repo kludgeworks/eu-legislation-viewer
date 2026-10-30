@@ -35,9 +35,9 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_1/old/qst_1">
+            <quotedStructure eId="cor_1/old/qstr_1">
                <list kind="definition">
-                  <unit eId="cor_1/old/qst_1/def_1" kind="definition">
+                  <unit eId="cor_1/old/qstr_1/def_1" kind="definition">
                      <num>
                         <t v="‘"/>
                         <t v="—"/>
@@ -58,9 +58,9 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <list kind="definition">
-                  <unit eId="cor_1/new/qst_1/def_1" kind="definition">
+                  <unit eId="cor_1/new/qstr_1/def_1" kind="definition">
                      <num>
                         <t v="‘"/>
                         <t v="—"/>

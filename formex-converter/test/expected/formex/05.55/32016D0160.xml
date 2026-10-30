@@ -438,12 +438,12 @@
                <t v="Measurements are to be performed as shown in the figure. The following equipment is to be used:"/>
             </p>
             <list kind="dash">
-               <unit eId="anx/pnt_3/lst_1/idt_1" kind="indent">
+               <unit eId="anx/pnt_3/list_1/idt_1" kind="indent">
                   <p>
                      <t v="a power supply unit (i.e. variable voltage supplier),"/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_3/lst_1/idt_2" kind="indent">
+               <unit eId="anx/pnt_3/list_1/idt_2" kind="indent">
                   <p>
                      <t v="two digital multi-meters, one for measuring the DC current, and the other for measuring the DC voltage. In the figure the test set-up shows the possible case of the DC voltage meter integrated in the power supply unit."/>
                   </p>
@@ -459,7 +459,7 @@
                <t v="The exact installed voltages and the measured current are to be recorded in four decimals."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_3/lvl_1" kind="level" depth="2">
+         <unit eId="anx/pnt_3/level_1" kind="level" depth="2">
             <heading>
                <emphasis kind="b">
                   <t v="Test set-up"/>
@@ -500,12 +500,12 @@
                <t v="/km is met:"/>
             </p>
             <list kind="none">
-               <unit eId="anx/pnt_4/lst_1/idt_1" kind="indent">
+               <unit eId="anx/pnt_4/list_1/idt_1" kind="indent">
                   <p>
                      <t v="Step 1: Calculation of the power savings"/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_4/lst_1/idt_2" kind="indent">
+               <unit eId="anx/pnt_4/list_1/idt_2" kind="indent">
                   <p>
                      <t v="Step 2: Calculation of the CO"/>
                      <emphasis kind="sub">
@@ -514,7 +514,7 @@
                      <t v=" savings"/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_4/lst_1/idt_3" kind="indent">
+               <unit eId="anx/pnt_4/list_1/idt_3" kind="indent">
                   <p>
                      <t v="Step 3: Calculation of the error in the CO"/>
                      <emphasis kind="sub">
@@ -523,7 +523,7 @@
                      <t v=" savings"/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_4/lst_1/idt_4" kind="indent">
+               <unit eId="anx/pnt_4/list_1/idt_4" kind="indent">
                   <p>
                      <t v="Step 4: Verification of the threshold value."/>
                   </p>
@@ -1578,7 +1578,7 @@
                <t v="Where:"/>
             </p>
             <list kind="definition">
-               <unit eId="anx/pnt_4.3/lst_2/def_1" kind="definition">
+               <unit eId="anx/pnt_4.3/list_2/def_1" kind="definition">
                   <heading>
                      <math>
                         <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
@@ -1617,7 +1617,7 @@
                      <t v="/km]"/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_4.3/lst_2/def_2" kind="definition">
+               <unit eId="anx/pnt_4.3/list_2/def_2" kind="definition">
                   <heading>
                      <math>
                         <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
@@ -1685,7 +1685,7 @@
                      </emphasis>
                   </p>
                </unit>
-               <unit eId="anx/pnt_4.3/lst_2/def_3" kind="definition">
+               <unit eId="anx/pnt_4.3/list_2/def_3" kind="definition">
                   <heading>
                      <math>
                         <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
@@ -1736,7 +1736,7 @@
                      <t v=" [W]"/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_4.3/lst_2/def_4" kind="definition">
+               <unit eId="anx/pnt_4.3/list_2/def_4" kind="definition">
                   <heading>
                      <t v="m"/>
                   </heading>

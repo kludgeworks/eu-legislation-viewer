@@ -136,24 +136,24 @@
                <p>
                   <t v="In Article 3, paragraphs 1 and 2 are replaced by the following:"/>
                </p>
-               <quotedStructure eId="art_1/pnt_1/qst_1">
-                  <unit eId="art_1/pnt_1/qst_1/par_1" kind="paragraph">
+               <quotedStructure eId="art_1/pnt_1/qstr_1">
+                  <unit eId="art_1/pnt_1/qstr_1/par_1" kind="paragraph">
                      <num>
                         <t v="‘"/>
                         <t v="1."/>
                      </num>
-                     <unit eId="art_1/pnt_1/qst_1/par_1/sub_1" kind="subparagraph">
+                     <unit eId="art_1/pnt_1/qstr_1/par_1/sub_1" kind="subparagraph">
                         <p>
                            <t v="The standard statistical method for assessing the lean meat content of pig carcases authorised as a grading method within the meaning of Article 2(3) of Regulation (EEC) No 3220/84 shall be either ordinary least squares or rank reduced methods, but other statistically proven methods may be used."/>
                         </p>
                      </unit>
-                     <unit eId="art_1/pnt_1/qst_1/par_1/sub_2" kind="subparagraph">
+                     <unit eId="art_1/pnt_1/qstr_1/par_1/sub_2" kind="subparagraph">
                         <p>
                            <t v="The method shall be based on a representative sample of the national or regional pigmeat production concerned, consisting of at least 120 carcases whose lean meat content has been ascertained in accordance with the dissection method laid down in Annex I to this Regulation. If multiple sampling methods are used, the reference shall be measured on at least 50 carcases and the precision shall be at least equal to that obtained using the standard statistical method on 120 carcases using the method in Annex I."/>
                         </p>
                      </unit>
                   </unit>
-                  <unit eId="art_1/pnt_1/qst_1/par_2" kind="paragraph">
+                  <unit eId="art_1/pnt_1/qstr_1/par_2" kind="paragraph">
                      <num>
                         <t v="2."/>
                      </num>
@@ -172,7 +172,7 @@
                <p>
                   <t v="in Annex I, point 2 is replaced by the following:"/>
                </p>
-               <quotedStructure eId="art_1/pnt_2/qst_1">
+               <quotedStructure eId="art_1/pnt_2/qstr_1">
                   <p>
                      <num>
                         <t v="‘"/>

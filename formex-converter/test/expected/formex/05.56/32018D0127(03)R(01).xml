@@ -41,7 +41,7 @@
                   <t v="for:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_1/old/qst_1">
+            <quotedStructure eId="cor_1/old/qstr_1">
                <p>
                   <t v="‘"/>
                   <emphasis kind="i">
@@ -63,7 +63,7 @@
                   <t v="read:"/>
                </emphasis>
             </p>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <p>
                   <t v="‘"/>
                   <emphasis kind="i">

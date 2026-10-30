@@ -41,7 +41,7 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_1/old/qst_1">
+            <quotedStructure eId="cor_1/old/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the implementation of the uniform principles as referred to in Article 29(6) of Regulation (EC) No 1107/2009, the conclusions of the renewal report on spinosad of "/>
@@ -56,7 +56,7 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the implementation of the uniform principles as referred to in Article 29(6) of Regulation (EC) No 1107/2009, the conclusions of the renewal report on spinosad of "/>
@@ -80,7 +80,7 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_2/old/qst_1">
+            <quotedStructure eId="cor_2/old/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the implementation of the uniform principles as referred to in Article 29(6) of Regulation (EC) No 1107/2009, the conclusions of the renewal report on spinosad of "/>
@@ -95,7 +95,7 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_2/new/qst_1">
+            <quotedStructure eId="cor_2/new/qstr_1">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the implementation of the uniform principles as referred to in Article 29(6) of Regulation (EC) No 1107/2009, the conclusions of the renewal report on spinosad of "/>

@@ -30,7 +30,7 @@
             <t v="The text of the Agreement should read as follows:"/>
          </p>
          <new>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <p>
                   <t v="‘"/>
                   <emphasis kind="uc">
@@ -81,14 +81,14 @@
                <p>
                   <t v="HAVE AGREED AS FOLLOWS:"/>
                </p>
-               <unit eId="cor_1/new/qst_1/art_1" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_1" kind="article">
                   <num>
                      <t v="Article 1"/>
                   </num>
                   <heading>
                      <t v="Participation in the operation"/>
                   </heading>
-                  <unit eId="cor_1/new/qst_1/art_1/par_1" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_1/par_1" kind="paragraph">
                      <num>
                         <t v="1."/>
                      </num>
@@ -102,7 +102,7 @@
                         <t v="), and with any Joint Action or Decision by which the Council of the European Union decides to extend EULEX KOSOVO, in accordance with the provisions of this Agreement and any required implementing arrangements."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_1/par_2" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_1/par_2" kind="paragraph">
                      <num>
                         <t v="2."/>
                      </num>
@@ -110,7 +110,7 @@
                         <t v="The contribution of the Swiss Confederation to EULEX KOSOVO is without prejudice to the decision-making autonomy of the European Union."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_1/par_3" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_1/par_3" kind="paragraph">
                      <num>
                         <t v="3."/>
                      </num>
@@ -118,24 +118,24 @@
                         <t v="The Swiss Confederation shall ensure that its personnel participating in the EULEX KOSOVO undertake their mission in conformity with:"/>
                      </p>
                      <list kind="dash">
-                        <unit eId="cor_1/new/qst_1/art_1/par_3/idt_1" kind="indent">
+                        <unit eId="cor_1/new/qstr_1/art_1/par_3/idt_1" kind="indent">
                            <p>
                               <t v="the Joint Action 2008/124/CFSP on European Union Rule of Law Mission in Kosovo, EULEX KOSOVO and possible subsequent amendments,"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/art_1/par_3/idt_2" kind="indent">
+                        <unit eId="cor_1/new/qstr_1/art_1/par_3/idt_2" kind="indent">
                            <p>
                               <t v="the Operation Plan,"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qst_1/art_1/par_3/idt_3" kind="indent">
+                        <unit eId="cor_1/new/qstr_1/art_1/par_3/idt_3" kind="indent">
                            <p>
                               <t v="implementing measures."/>
                            </p>
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_1/par_4" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_1/par_4" kind="paragraph">
                      <num>
                         <t v="4."/>
                      </num>
@@ -143,7 +143,7 @@
                         <t v="Personnel seconded to EULEX KOSOVO by the Swiss Confederation shall carry out their duties and conduct themselves solely with the interest of EULEX KOSOVO in mind."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_1/par_5" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_1/par_5" kind="paragraph">
                      <num>
                         <t v="5."/>
                      </num>
@@ -155,7 +155,7 @@
                         <t v=") of any change to its contribution to EULEX KOSOVO."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_1/par_6" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_1/par_6" kind="paragraph">
                      <num>
                         <t v="6."/>
                      </num>
@@ -164,14 +164,14 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="cor_1/new/qst_1/art_2" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_2" kind="article">
                   <num>
                      <t v="Article 2"/>
                   </num>
                   <heading>
                      <t v="Status of personnel"/>
                   </heading>
-                  <unit eId="cor_1/new/qst_1/art_2/par_1" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_2/par_1" kind="paragraph">
                      <num>
                         <t v="1."/>
                      </num>
@@ -179,7 +179,7 @@
                         <t v="The status of the personnel contributed to EULEX KOSOVO by the Swiss Confederation shall be governed by the provisions on the status of mission, as provided by Article 10(1) of the Joint Action 2008/124/CFSP of 4 February on the European Union Rule of Law Mission in Kosovo, EULEX KOSOVO."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_2/par_2" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_2/par_2" kind="paragraph">
                      <num>
                         <t v="2."/>
                      </num>
@@ -187,7 +187,7 @@
                         <t v="The status of personnel contributed to headquarters or command elements located outside Kosovo, shall be governed by arrangements between the headquarters and command elements concerned and the Swiss Confederation."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_2/par_3" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_2/par_3" kind="paragraph">
                      <num>
                         <t v="3."/>
                      </num>
@@ -195,7 +195,7 @@
                         <t v="Without prejudice to the agreement on the status of mission referred to in paragraph 1 of this Article, if available, the Swiss Confederation shall exercise jurisdiction over its personnel participating in EULEX KOSOVO."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_2/par_4" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_2/par_4" kind="paragraph">
                      <num>
                         <t v="4."/>
                      </num>
@@ -203,7 +203,7 @@
                         <t v="The Swiss Confederation shall be responsible for answering any claims, from or concerning any of its personnel, linked to the participation in EULEX KOSOVO. The Swiss Confederation shall be responsible for bringing any action, in particular legal or disciplinary, against any of its personnel, in accordance with its laws and regulations."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_2/par_5" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_2/par_5" kind="paragraph">
                      <num>
                         <t v="5."/>
                      </num>
@@ -211,7 +211,7 @@
                         <t v="The Swiss Confederation undertakes to make a declaration as regards the waiver of claims against any State participating in EULEX KOSOVO, and to do so when signing this Agreement. A model for such a declaration is annexed to this Agreement."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_2/par_6" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_2/par_6" kind="paragraph">
                      <num>
                         <t v="6."/>
                      </num>
@@ -220,14 +220,14 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="cor_1/new/qst_1/art_3" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_3" kind="article">
                   <num>
                      <t v="Article 3"/>
                   </num>
                   <heading>
                      <t v="Classified information"/>
                   </heading>
-                  <unit eId="cor_1/new/qst_1/art_3/par_1" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_3/par_1" kind="paragraph">
                      <num>
                         <t v="1."/>
                      </num>
@@ -237,7 +237,7 @@
                         <t v=", and in accordance with further guidance issued by competent authorities, including the Head of Mission."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_3/par_2" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_3/par_2" kind="paragraph">
                      <num>
                         <t v="2."/>
                      </num>
@@ -246,14 +246,14 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="cor_1/new/qst_1/art_4" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_4" kind="article">
                   <num>
                      <t v="Article 4"/>
                   </num>
                   <heading>
                      <t v="Chain of command"/>
                   </heading>
-                  <unit eId="cor_1/new/qst_1/art_4/par_1" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_4/par_1" kind="paragraph">
                      <num>
                         <t v="1."/>
                      </num>
@@ -261,7 +261,7 @@
                         <t v="All personnel participating in EULEX KOSOVO shall remain under the full command of their national authorities."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_4/par_2" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_4/par_2" kind="paragraph">
                      <num>
                         <t v="2."/>
                      </num>
@@ -269,7 +269,7 @@
                         <t v="National authorities shall transfer operational control to the Civilian Operations Commander, who shall exercise command and control at the strategic level."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_4/par_3" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_4/par_3" kind="paragraph">
                      <num>
                         <t v="3."/>
                      </num>
@@ -277,7 +277,7 @@
                         <t v="The Head of Mission shall assume responsibility and exercise command and control of EULEX KOSOVO at theatre level."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_4/par_4" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_4/par_4" kind="paragraph">
                      <num>
                         <t v="4."/>
                      </num>
@@ -285,7 +285,7 @@
                         <t v="The Head of Mission shall exercise command and control over personnel, teams and units from contributing States as assigned by the Civilian Operation Commander together with administrative and logistic responsibility including over assets, resources and information placed at the disposal of EULEX KOSOVO."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_4/par_5" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_4/par_5" kind="paragraph">
                      <num>
                         <t v="5."/>
                      </num>
@@ -293,7 +293,7 @@
                         <t v="The Swiss Confederation shall have the same rights and obligations in terms of the day-to-day management of the operation as participating European Union Member States taking part in the operation, in accordance with the legal instruments referred to in Article 1, paragraph 1, of this Agreement."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_4/par_6" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_4/par_6" kind="paragraph">
                      <num>
                         <t v="6."/>
                      </num>
@@ -301,7 +301,7 @@
                         <t v="The Head of Mission shall be responsible for disciplinary control over the personnel of EULEX KOSOVO. Where required, disciplinary action shall be taken by the national authority concerned."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_4/par_7" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_4/par_7" kind="paragraph">
                      <num>
                         <t v="7."/>
                      </num>
@@ -309,7 +309,7 @@
                         <t v="A National Contingent Leader (NCL) shall be appointed by the Swiss Confederation to represent its national contingent in EULEX KOSOVO. The NCL shall report to the Head of Mission on national matters and shall be responsible for day-to-day contingent discipline."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_4/par_8" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_4/par_8" kind="paragraph">
                      <num>
                         <t v="8."/>
                      </num>
@@ -318,14 +318,14 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="cor_1/new/qst_1/art_5" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_5" kind="article">
                   <num>
                      <t v="Article 5"/>
                   </num>
                   <heading>
                      <t v="Financial aspects"/>
                   </heading>
-                  <unit eId="cor_1/new/qst_1/art_5/par_1" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_5/par_1" kind="paragraph">
                      <num>
                         <t v="1."/>
                      </num>
@@ -333,7 +333,7 @@
                         <t v="The Swiss Confederation shall assume all the costs associated with its participation in the operation apart from the costs which are subject to common funding, as set out in the operational budget of the operation."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_5/par_2" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_5/par_2" kind="paragraph">
                      <num>
                         <t v="2."/>
                      </num>
@@ -342,7 +342,7 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="cor_1/new/qst_1/art_6" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_6" kind="article">
                   <num>
                      <t v="Article 6"/>
                   </num>
@@ -353,7 +353,7 @@
                      <t v="Any necessary technical and administrative arrangements in pursuance of the implementation of this Agreement shall be concluded between the Secretary-General of the Council of the European Union/High Representative for the Common Foreign and Security Policy, and the appropriate authorities of the Swiss Confederation."/>
                   </p>
                </unit>
-               <unit eId="cor_1/new/qst_1/art_7" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_7" kind="article">
                   <num>
                      <t v="Article 7"/>
                   </num>
@@ -364,7 +364,7 @@
                      <t v="Should one of the Parties fail to comply with its obligations laid down in the previous Articles, the other Party shall have the right to terminate this Agreement by serving a notice of one month."/>
                   </p>
                </unit>
-               <unit eId="cor_1/new/qst_1/art_8" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_8" kind="article">
                   <num>
                      <t v="Article 8"/>
                   </num>
@@ -375,14 +375,14 @@
                      <t v="Disputes concerning the interpretation or application of this Agreement shall be settled by diplomatic means between the Parties."/>
                   </p>
                </unit>
-               <unit eId="cor_1/new/qst_1/art_9" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_9" kind="article">
                   <num>
                      <t v="Article 9"/>
                   </num>
                   <heading>
                      <t v="Entry into force"/>
                   </heading>
-                  <unit eId="cor_1/new/qst_1/art_9/par_1" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_9/par_1" kind="paragraph">
                      <num>
                         <t v="1."/>
                      </num>
@@ -390,7 +390,7 @@
                         <t v="This Agreement shall enter into force on the first day of the first month after the Parties have notified each other of the completion of the internal procedures necessary for this purpose."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_9/par_2" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_9/par_2" kind="paragraph">
                      <num>
                         <t v="2."/>
                      </num>
@@ -398,7 +398,7 @@
                         <t v="This Agreement shall be provisionally applied from the date of signature."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qst_1/art_9/par_3" kind="paragraph">
+                  <unit eId="cor_1/new/qstr_1/art_9/par_3" kind="paragraph">
                      <num>
                         <t v="3."/>
                      </num>

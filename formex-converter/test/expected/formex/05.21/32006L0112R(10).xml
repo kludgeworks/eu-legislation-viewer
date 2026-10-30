@@ -35,8 +35,8 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_1/old/qst_1">
-               <unit eId="cor_1/old/qst_1/tis_VII" kind="division">
+            <quotedStructure eId="cor_1/old/qstr_1">
+               <unit eId="cor_1/old/qstr_1/tis_VII" kind="division">
                   <num>
                      <t v="‘"/>
                      <t v="TITLE VII"/>
@@ -44,7 +44,7 @@
                   <subheading>
                      <t v="TAXABLE AMOUNT"/>
                   </subheading>
-                  <unit eId="cor_1/old/qst_1/tis_VII/cpt_4" kind="division">
+                  <unit eId="cor_1/old/qstr_1/tis_VII/cpt_4" kind="division">
                      <num>
                         <t v="CHAPTER 4"/>
                      </num>
@@ -61,8 +61,8 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_1/new/qst_1">
-               <unit eId="cor_1/new/qst_1/tis_VII" kind="division">
+            <quotedStructure eId="cor_1/new/qstr_1">
+               <unit eId="cor_1/new/qstr_1/tis_VII" kind="division">
                   <num>
                      <t v="‘"/>
                      <t v="TITLE VII"/>
@@ -70,7 +70,7 @@
                   <subheading>
                      <t v="TAXABLE AMOUNT"/>
                   </subheading>
-                  <unit eId="cor_1/new/qst_1/tis_VII/cpt_1" kind="division">
+                  <unit eId="cor_1/new/qstr_1/tis_VII/cpt_1" kind="division">
                      <num>
                         <t v="CHAPTER 1"/>
                      </num>

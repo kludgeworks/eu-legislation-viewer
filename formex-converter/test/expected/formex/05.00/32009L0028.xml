@@ -2779,12 +2779,12 @@
                <t v="Those reports shall state, both for third countries and Member States that are a significant source of raw material for biofuel consumed within the Community, whether the country has ratified and implemented:"/>
             </p>
             <list kind="dash">
-               <unit eId="art_17/par_7/lst_2/idt_1" kind="indent">
+               <unit eId="art_17/par_7/list_2/idt_1" kind="indent">
                   <p>
                      <t v="the Cartagena Protocol on Biosafety,"/>
                   </p>
                </unit>
-               <unit eId="art_17/par_7/lst_2/idt_2" kind="indent">
+               <unit eId="art_17/par_7/list_2/idt_2" kind="indent">
                   <p>
                      <t v="the Convention on International Trade in Endangered Species of Wild Fauna and Flora."/>
                   </p>
@@ -3149,7 +3149,7 @@
                <t v="Any adaptation of or addition to the list of default values in Annex V shall comply with the following:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_19/par_7/lst_2/pnt_a" kind="point">
+               <unit eId="art_19/par_7/list_2/pnt_a" kind="point">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3157,7 +3157,7 @@
                      <t v="where the contribution of a factor to overall emissions is small, or where there is limited variation, or where the cost or difficulty of establishing actual values is high, default values must be typical of normal production processes;"/>
                   </p>
                </unit>
-               <unit eId="art_19/par_7/lst_2/pnt_b" kind="point">
+               <unit eId="art_19/par_7/list_2/pnt_b" kind="point">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3639,12 +3639,12 @@
                <t v="On the basis of that report, the Commission shall submit, if appropriate, proposals to the European Parliament and the Council, addressing the above elements and in particular:"/>
             </p>
             <list kind="dash">
-               <unit eId="art_23/par_8/lst_2/idt_1" kind="indent">
+               <unit eId="art_23/par_8/list_2/idt_1" kind="indent">
                   <p>
                      <t v="for the element contained in point (a), a modification of the minimum greenhouse gas emission saving referred to in that point, and"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_8/lst_2/idt_2" kind="indent">
+               <unit eId="art_23/par_8/list_2/idt_2" kind="indent">
                   <p>
                      <t v="for the element contained in point (c), appropriate adjustments of the cooperation measures provided for in this Directive in order to improve their effectiveness for achieving the target of 20 %. Such proposals shall neither affect the 20 % target nor Member States’ control over national support schemes and cooperation measures."/>
                   </p>
@@ -4826,7 +4826,7 @@
             <t v="where:"/>
          </p>
          <list kind="definition">
-            <unit eId="anx_II/lst_2/def_1" kind="definition">
+            <unit eId="anx_II/list_2/def_1" kind="definition">
                <heading>
                   <emphasis kind="i">
                      <t v="N"/>
@@ -4836,7 +4836,7 @@
                   <t v="reference year;"/>
                </p>
             </unit>
-            <unit eId="anx_II/lst_2/def_2" kind="definition">
+            <unit eId="anx_II/list_2/def_2" kind="definition">
                <heading>
                   <emphasis kind="i">
                      <t v="Q"/>
@@ -4853,7 +4853,7 @@
                   <t v=", for accounting purposes;"/>
                </p>
             </unit>
-            <unit eId="anx_II/lst_2/def_3" kind="definition">
+            <unit eId="anx_II/list_2/def_3" kind="definition">
                <heading>
                   <emphasis kind="i">
                      <t v="Q"/>
@@ -4870,7 +4870,7 @@
                   <t v=" by all wind power plants of the Member State measured in GWh;"/>
                </p>
             </unit>
-            <unit eId="anx_II/lst_2/def_4" kind="definition">
+            <unit eId="anx_II/list_2/def_4" kind="definition">
                <heading>
                   <emphasis kind="i">
                      <t v="C"/>
@@ -4887,7 +4887,7 @@
                   <t v=", measured in MW;"/>
                </p>
             </unit>
-            <unit eId="anx_II/lst_2/def_5" kind="definition">
+            <unit eId="anx_II/list_2/def_5" kind="definition">
                <heading>
                   <emphasis kind="i">
                      <t v="n"/>
@@ -6845,7 +6845,7 @@
                <t v="Disaggregated default values for biofuels and bioliquids"/>
             </heading>
          </unit>
-         <unit eId="anx_V/pnt_D/lvl_1" kind="level" depth="2">
+         <unit eId="anx_V/pnt_D/level_1" kind="level" depth="2">
             <heading>
                <t v="Disaggregated default values for cultivation: "/>
                <quote startQuote="‘" endQuote="’">
@@ -7190,7 +7190,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_D/lvl_2" kind="level" depth="2">
+         <unit eId="anx_V/pnt_D/level_2" kind="level" depth="2">
             <heading>
                <t v="Disaggregated default values for processing (including excess electricity): "/>
                <quote startQuote="‘" endQuote="’">
@@ -7642,7 +7642,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_D/lvl_3" kind="level" depth="2">
+         <unit eId="anx_V/pnt_D/level_3" kind="level" depth="2">
             <heading>
                <t v="Disaggregated default values for transport and distribution: "/>
                <quote startQuote="‘" endQuote="’">
@@ -7985,7 +7985,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_D/lvl_4" kind="level" depth="2">
+         <unit eId="anx_V/pnt_D/level_4" kind="level" depth="2">
             <heading>
                <t v="Total for cultivation, processing, transport and distribution"/>
             </heading>
@@ -8429,7 +8429,7 @@
                <t v="Estimated disaggregated default values for future biofuels and bioliquids that were not on the market or were only on the market in negligible quantities in January 2008"/>
             </heading>
          </unit>
-         <unit eId="anx_V/pnt_E/lvl_1" kind="level" depth="2">
+         <unit eId="anx_V/pnt_E/level_1" kind="level" depth="2">
             <heading>
                <t v="Disaggregated default values for cultivation: "/>
                <quote startQuote="‘" endQuote="’">
@@ -8641,7 +8641,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_E/lvl_2" kind="level" depth="2">
+         <unit eId="anx_V/pnt_E/level_2" kind="level" depth="2">
             <heading>
                <t v="Disaggregated default values for processing (including excess electricity): "/>
                <quote startQuote="‘" endQuote="’">
@@ -8792,7 +8792,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_E/lvl_3" kind="level" depth="2">
+         <unit eId="anx_V/pnt_E/level_3" kind="level" depth="2">
             <heading>
                <t v="Disaggregated default values for transport and distribution: "/>
                <quote startQuote="‘" endQuote="’">
@@ -9004,7 +9004,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_E/lvl_4" kind="level" depth="2">
+         <unit eId="anx_V/pnt_E/level_4" kind="level" depth="2">
             <heading>
                <t v="Total for cultivation, processing, transport and distribution"/>
             </heading>

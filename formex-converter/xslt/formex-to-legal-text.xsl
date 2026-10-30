@@ -625,7 +625,7 @@
         <xsl:call-template name="f:blocks">
           <xsl:with-param name="nodes" as="node()*" select="NP[1]/TXT/node(), NP[1]/(node() except ($number, TXT)), node() except NP[1], $continued/node()"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-          <!-- levels a recital holds (a list of headed sections) hang off it: pbl_1/rct_12/lvl_1 -->
+          <!-- levels a recital holds (a list of headed sections) hang off it: pbl_1/rct_12/level_1 -->
           <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
           <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
           <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
@@ -637,7 +637,7 @@
   </xsl:template>
 
   <!-- recitals grouped under a heading (DIV.CONSID, "A. PROCEDURE"), as divisions group articles:
-       unit kind="division", eId pbl_1/dvs_A, nested under the enclosing group -->
+       unit kind="division", eId pbl_1/division_A, nested under the enclosing group -->
   <xsl:template match="DIV.CONSID" mode="recital">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="groupIntro" as="element(GR.CONSID.INIT)*" select="()"/>
@@ -647,7 +647,7 @@
     <xsl:variable name="label" as="xs:string" select="((if ($line/self::NP) then f:label($line/NO.P)
                                          else f:typed-label(string($line), ('PRT', 'TIS', 'CPT', 'SCT', 'SBS'), .))[. != ''],
                                         string(count(preceding-sibling::DIV.CONSID) + 1))[1]"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid(($division, 'pbl_1')[1], 'dvs', $label)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid(($division, 'pbl_1')[1], 'division', $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>

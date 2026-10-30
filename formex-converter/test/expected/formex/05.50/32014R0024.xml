@@ -416,7 +416,7 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/lvl_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1">
             <heading>
                <emphasis kind="b">
                   <t v="TACs APPLICABLE TO EU VESSELS IN AREAS WHERE TACs EXIST BY SPECIES AND BY AREA"/>
@@ -489,7 +489,7 @@
                <tr header="true">
                   <td colspan="2" header="true">
                      <list kind="definition">
-                        <unit eId="anx/lvl_1/tbl_2/tr_1/td_1/def_1" kind="definition">
+                        <unit eId="anx/level_1/tab_2/tr_1/td_1/def_1" kind="definition">
                            <heading>
                               <t v="Species"/>
                            </heading>
@@ -506,7 +506,7 @@
                   </td>
                   <td header="true">
                      <list kind="definition">
-                        <unit eId="anx/lvl_1/tbl_2/tr_1/td_3/lst_2/def_1" kind="definition">
+                        <unit eId="anx/level_1/tab_2/tr_1/td_3/list_2/def_1" kind="definition">
                            <heading>
                               <t v="Zone"/>
                            </heading>
@@ -570,7 +570,7 @@
                      </p>
                   </td>
                   <td>
-                     <unit eId="anx/lvl_1/tbl_2/tr_5/td_3/lvl_1"
+                     <unit eId="anx/level_1/tab_2/tr_5/td_3/level_1"
                            kind="level"
                            depth="2"
                            box="true">
@@ -591,7 +591,7 @@
                <tr header="true">
                   <td colspan="2" header="true">
                      <list kind="definition">
-                        <unit eId="anx/lvl_1/tbl_3/tr_1/td_1/def_1" kind="definition">
+                        <unit eId="anx/level_1/tab_3/tr_1/td_1/def_1" kind="definition">
                            <heading>
                               <t v="Species"/>
                            </heading>
@@ -608,7 +608,7 @@
                   </td>
                   <td header="true">
                      <list kind="definition">
-                        <unit eId="anx/lvl_1/tbl_3/tr_1/td_3/lst_2/def_1" kind="definition">
+                        <unit eId="anx/level_1/tab_3/tr_1/td_3/list_2/def_1" kind="definition">
                            <heading>
                               <t v="Zone"/>
                            </heading>
@@ -671,7 +671,7 @@
                      </p>
                   </td>
                   <td>
-                     <unit eId="anx/lvl_1/tbl_3/tr_5/td_3/lvl_2"
+                     <unit eId="anx/level_1/tab_3/tr_5/td_3/level_2"
                            kind="level"
                            depth="2"
                            box="true">

@@ -50,7 +50,7 @@
   <xsl:mode name="annex" on-no-match="fail" on-multiple-match="fail"/>
 
   <!-- an annex met inside content: a nested annex, its own fragment, under the eId of what holds it
-       (an annex, or a level of one: anx/lvl_PART-10/anx_1) -->
+       (an annex, or a level of one: anx/level_PART-10/anx_1) -->
   <xsl:template match="CONS.ANNEX | ANNEX | CONS.DOC.GEN[@TYPE = 'ANNEX'][parent::CONS.DOC.GEN]" mode="block">
     <xsl:apply-templates select="." mode="annex">
       <xsl:with-param name="inContent" as="xs:boolean" select="true()"/>
@@ -203,7 +203,7 @@
   <!-- an unnumbered level whose title starts with a label line: a word and an identifier with a
        digit, or of up to three letters ("ATTACHMENT 6-A", "PART 2", "SUBPART A", "SECTION IV").
        The line is the level's num, as "ANNEX II" is an annex's; its eId uses the whole line
-       (lvl_ATTACHMENT-6-A), which survives renesting where a position would not -->
+       (level_ATTACHMENT-6-A), which survives renesting where a position would not -->
   <xsl:function name="f:level-label-line" as="element()?">
     <xsl:param name="seq" as="element(GR.SEQ)"/>
     <xsl:variable name="first" as="element(P)?" select="$seq[empty(f:level-num($seq))]/TITLE/TI/*[1][self::P]"/>
@@ -323,8 +323,8 @@
         else if ($label-line) then f:eid(
             if ($parentLevel and f:label-taken(., f:label($label-line), $earlier))
             then $near else $levelBase,
-            'lvl', f:label($label-line))
-        else f:eid(($parentLevel, $levelBase)[1], 'lvl',
+            'level', f:label($label-line))
+        else f:eid(($parentLevel, $levelBase)[1], 'level',
                    string(f:level-ordinal(.) + (if ($parentLevel) then 0 else ($levelOffset, 0)[1])))"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:covering(.)[not(f:pi-attr(., 'ID') = $levelCtx)])"/>
     <xsl:variable name="inner" as="xs:string*" select="($ctx, f:ids($m))"/>

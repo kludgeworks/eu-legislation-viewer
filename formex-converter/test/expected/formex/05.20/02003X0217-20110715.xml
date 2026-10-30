@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="lvl_1" kind="level" depth="1">
+      <unit eId="level_1" kind="level" depth="1">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -209,7 +209,7 @@
             <t v="The Schengen Information System (SIS) shall provide access to alerts on persons and objects to the following authorities:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_1/lst_1/pnt_a" kind="point">
+            <unit eId="pnt_1/list_1/pnt_a" kind="point">
                <num>
                   <t v="(a)"/>
                </num>
@@ -217,7 +217,7 @@
                   <t v="authorities responsible for border checks;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1/lst_1/pnt_b" kind="point">
+            <unit eId="pnt_1/list_1/pnt_b" kind="point">
                <num>
                   <t v="(b)"/>
                </num>
@@ -225,7 +225,7 @@
                   <t v="authorities carrying out and coordinating other police and customs checks within the country;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1/lst_1/pnt_c" kind="point">
+            <unit eId="pnt_1/list_1/pnt_c" kind="point">
                <num>
                   <t v="(c)"/>
                </num>
@@ -233,7 +233,7 @@
                   <t v="national judicial authorities, inter alia, those responsible for the initiation of public prosecutions in criminal proceedings and judicial inquiries prior to indictment, in the performance of their tasks, as set out in national legislation;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1/lst_1/pnt_d" kind="point">
+            <unit eId="pnt_1/list_1/pnt_d" kind="point">
                <num>
                   <t v="(d)"/>
                </num>
@@ -245,7 +245,7 @@
                   <t v=" relating to the movement of persons;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1/lst_1/pnt_e" kind="point">
+            <unit eId="pnt_1/list_1/pnt_e" kind="point">
                <num>
                   <t v="(e)"/>
                </num>
@@ -378,7 +378,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_1.3.3/lvl_1" kind="level" depth="4">
+      <unit eId="pnt_1.3.3/level_1" kind="level" depth="4">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -397,49 +397,49 @@
             <t v="The specific features may differ as they shall answer to threats in the immediate surroundings and exact location of the SIRENE bureau. They may include, in particular:"/>
          </p>
          <list kind="dash">
-            <unit eId="pnt_1.3.3/lvl_1/idt_1" kind="indent">
+            <unit eId="pnt_1.3.3/level_1/idt_1" kind="indent">
                <p>
                   <t v="external windows fitted with security glass,"/>
                </p>
             </unit>
-            <unit eId="pnt_1.3.3/lvl_1/idt_2" kind="indent">
+            <unit eId="pnt_1.3.3/level_1/idt_2" kind="indent">
                <p>
                   <t v="secured and closed doors,"/>
                </p>
             </unit>
-            <unit eId="pnt_1.3.3/lvl_1/idt_3" kind="indent">
+            <unit eId="pnt_1.3.3/level_1/idt_3" kind="indent">
                <p>
                   <t v="brick/concrete walls enclosing the SIRENE bureau,"/>
                </p>
             </unit>
-            <unit eId="pnt_1.3.3/lvl_1/idt_4" kind="indent">
+            <unit eId="pnt_1.3.3/level_1/idt_4" kind="indent">
                <p>
                   <t v="closed-circuit television (CCTV), intrusion alarms, including logging of entries, exits and any unusual event,"/>
                </p>
             </unit>
-            <unit eId="pnt_1.3.3/lvl_1/idt_5" kind="indent">
+            <unit eId="pnt_1.3.3/level_1/idt_5" kind="indent">
                <p>
                   <t v="security guards on site or rapidly available,"/>
                </p>
             </unit>
-            <unit eId="pnt_1.3.3/lvl_1/idt_6" kind="indent">
+            <unit eId="pnt_1.3.3/level_1/idt_6" kind="indent">
                <p>
                   <t v="fire extinction system and/or direct link to fire brigade,"/>
                </p>
             </unit>
-            <unit eId="pnt_1.3.3/lvl_1/idt_7" kind="indent">
+            <unit eId="pnt_1.3.3/level_1/idt_7" kind="indent">
                <p>
                   <t v="dedicated premises to avoid staff who are not involved in international police cooperation measures, or who do not have requisite access to documents from having to enter or to pass the SIRENE bureau offices, and/or"/>
                </p>
             </unit>
-            <unit eId="pnt_1.3.3/lvl_1/idt_8" kind="indent">
+            <unit eId="pnt_1.3.3/level_1/idt_8" kind="indent">
                <p>
                   <t v="sufficient back-up power and communication supply."/>
                </p>
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_1.3.3/lvl_2" kind="level" depth="4">
+      <unit eId="pnt_1.3.3/level_2" kind="level" depth="4">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -489,7 +489,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_1.3.5/lvl_1" kind="level" depth="4">
+      <unit eId="pnt_1.3.5/level_1" kind="level" depth="4">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -523,7 +523,7 @@
             <t v="Priorities in daily work shall be based on the type of the alert and the importance of the case."/>
          </p>
       </unit>
-      <unit eId="pnt_1.3.5/lvl_2" kind="level" depth="4">
+      <unit eId="pnt_1.3.5/level_2" kind="level" depth="4">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -537,7 +537,7 @@
             <t v="The SIRENE bureau should use the dedicated SISNET e-mail address for the exchange of non-operational information."/>
          </p>
       </unit>
-      <unit eId="pnt_1.3.5/lvl_3" kind="level" depth="4">
+      <unit eId="pnt_1.3.5/level_3" kind="level" depth="4">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -551,7 +551,7 @@
             <t v="The contact details of the SIRENE bureaux and relevant information for mutual communication and cooperation are collected and provided in the SIRENE Address Book (SAB). Each SIRENE bureau shall ensure that:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_1.3.5/lvl_3/pnt_a" kind="point">
+            <unit eId="pnt_1.3.5/level_3/pnt_a" kind="point">
                <num>
                   <t v="(a)"/>
                </num>
@@ -559,7 +559,7 @@
                   <t v="information from the SAB is not disclosed to third parties;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1.3.5/lvl_3/pnt_b" kind="point">
+            <unit eId="pnt_1.3.5/level_3/pnt_b" kind="point">
                <num>
                   <t v="(b)"/>
                </num>
@@ -567,7 +567,7 @@
                   <t v="the SAB is known and used by the SIRENE operators;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1.3.5/lvl_3/pnt_c" kind="point">
+            <unit eId="pnt_1.3.5/level_3/pnt_c" kind="point">
                <num>
                   <t v="(c)"/>
                </num>
@@ -771,7 +771,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_1.4.2/lvl_1" kind="level" depth="4">
+      <unit eId="pnt_1.4.2/level_1" kind="level" depth="4">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -787,7 +787,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="pnt_1.4.2/lvl_2" kind="level" depth="4">
+      <unit eId="pnt_1.4.2/level_2" kind="level" depth="4">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -965,12 +965,12 @@
             <t v="This calls for:"/>
          </p>
          <list kind="dash">
-            <unit eId="pnt_2.1/lst_1/idt_1" kind="indent">
+            <unit eId="pnt_2.1/list_1/idt_1" kind="indent">
                <p>
                   <t v="checks before entering an alert in order to determine whether the subject is already in the SIS,"/>
                </p>
             </unit>
-            <unit eId="pnt_2.1/lst_1/idt_2" kind="indent">
+            <unit eId="pnt_2.1/list_1/idt_2" kind="indent">
                <p>
                   <t v="consultation with the other Member States when the entry of an alert will cause multiple alerts that are incompatible."/>
                </p>
@@ -1083,17 +1083,17 @@
             <t v="The order of priority for alerts on objects shall be as follows:"/>
          </p>
          <list kind="dash">
-            <unit eId="pnt_2.1.1/lst_2/idt_1" kind="indent">
+            <unit eId="pnt_2.1.1/list_2/idt_1" kind="indent">
                <p>
                   <t v="discreet surveillance (Article 99),"/>
                </p>
             </unit>
-            <unit eId="pnt_2.1.1/lst_2/idt_2" kind="indent">
+            <unit eId="pnt_2.1.1/list_2/idt_2" kind="indent">
                <p>
                   <t v="specific check (Article 99),"/>
                </p>
             </unit>
-            <unit eId="pnt_2.1.1/lst_2/idt_3" kind="indent">
+            <unit eId="pnt_2.1.1/list_2/idt_3" kind="indent">
                <p>
                   <t v="seizure or use as evidence (Article 100),"/>
                </p>
@@ -2535,7 +2535,7 @@
             <t v="The input mask shall have the following data:"/>
          </p>
          <list kind="arabic">
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_1" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_1" kind="point">
                <num>
                   <t v="(1)"/>
                </num>
@@ -2545,7 +2545,7 @@
                   <t v=" (see note 1 below)&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_2" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_2" kind="point">
                <num>
                   <t v="(2)"/>
                </num>
@@ -2555,7 +2555,7 @@
                   <t v=" (see note 1 below)&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_3" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_3" kind="point">
                <num>
                   <t v="(3)"/>
                </num>
@@ -2563,7 +2563,7 @@
                   <t v="Date of fingerprints&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_4" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_4" kind="point">
                <num>
                   <t v="(4)"/>
                </num>
@@ -2571,7 +2571,7 @@
                   <t v="Place where fingerprints were taken&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_5" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_5" kind="point">
                <num>
                   <t v="(5)"/>
                </num>
@@ -2579,7 +2579,7 @@
                   <t v="Date of picture&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_6" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_6" kind="point">
                <num>
                   <t v="(6)"/>
                </num>
@@ -2587,7 +2587,7 @@
                   <t v="Reason for fingerprints (reason for the alert underlying the transmission of the fingerprints)&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_7" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_7" kind="point">
                <num>
                   <t v="(7)"/>
                </num>
@@ -2597,7 +2597,7 @@
                   <t v=" (see note 2 below)&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_8" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_8" kind="point">
                <num>
                   <t v="(8)"/>
                </num>
@@ -2607,7 +2607,7 @@
                   <t v=" (see note 2 below)&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_9" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_9" kind="point">
                <num>
                   <t v="(9)"/>
                </num>
@@ -2615,7 +2615,7 @@
                   <t v="Maiden name&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_10" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_10" kind="point">
                <num>
                   <t v="(10)"/>
                </num>
@@ -2623,7 +2623,7 @@
                   <t v="Identity ascertained?&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_11" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_11" kind="point">
                <num>
                   <t v="(11)"/>
                </num>
@@ -2633,7 +2633,7 @@
                   <t v="&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_12" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_12" kind="point">
                <num>
                   <t v="(12)"/>
                </num>
@@ -2641,7 +2641,7 @@
                   <t v="Place of Birth&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_13" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_13" kind="point">
                <num>
                   <t v="(13)"/>
                </num>
@@ -2649,7 +2649,7 @@
                   <t v="Nationality&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_14" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_14" kind="point">
                <num>
                   <t v="(14)"/>
                </num>
@@ -2659,7 +2659,7 @@
                   <t v="&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/lst_1/pnt_15" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_15" kind="point">
                <num>
                   <t v="(15)"/>
                </num>
@@ -2672,7 +2672,7 @@
             <t v="When available, the place where and date on which the fingerprints were taken shall be entered."/>
          </p>
       </unit>
-      <unit eId="pnt_2.10.6.3/lvl_1" kind="level" depth="5">
+      <unit eId="pnt_2.10.6.3/level_1" kind="level" depth="5">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2683,13 +2683,13 @@
             </emphasis>
          </heading>
       </unit>
-      <unit eId="pnt_2.10.6.3/lvl_1/lvl_1" kind="level" depth="6">
+      <unit eId="pnt_2.10.6.3/level_1/level_1" kind="level" depth="6">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
                      marker="O002001M002000"/>
       </unit>
-      <unit eId="pnt_2.10.6.3/lvl_2" kind="level" depth="5">
+      <unit eId="pnt_2.10.6.3/level_2" kind="level" depth="5">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3139,42 +3139,42 @@
             <t v="The following steps shall be followed:"/>
          </p>
          <list kind="dash">
-            <unit eId="pnt_3/lst_1/idt_1" kind="indent">
+            <unit eId="pnt_3/list_1/idt_1" kind="indent">
                <p>
                   <t v="Member State checks prior to issuing the alert,"/>
                </p>
             </unit>
-            <unit eId="pnt_3/lst_1/idt_2" kind="indent">
+            <unit eId="pnt_3/list_1/idt_2" kind="indent">
                <p>
                   <t v="multiple alerts,"/>
                </p>
             </unit>
-            <unit eId="pnt_3/lst_1/idt_3" kind="indent">
+            <unit eId="pnt_3/list_1/idt_3" kind="indent">
                <p>
                   <t v="supplementary Information to be sent to Member States,"/>
                </p>
             </unit>
-            <unit eId="pnt_3/lst_1/idt_4" kind="indent">
+            <unit eId="pnt_3/list_1/idt_4" kind="indent">
                <p>
                   <t v="at the request of another Member State add a flag,"/>
                </p>
             </unit>
-            <unit eId="pnt_3/lst_1/idt_5" kind="indent">
+            <unit eId="pnt_3/list_1/idt_5" kind="indent">
                <p>
                   <t v="action by SIRENE bureau upon receipt of an Article 95 alert,"/>
                </p>
             </unit>
-            <unit eId="pnt_3/lst_1/idt_6" kind="indent">
+            <unit eId="pnt_3/list_1/idt_6" kind="indent">
                <p>
                   <t v="the exchange of information after a hit,"/>
                </p>
             </unit>
-            <unit eId="pnt_3/lst_1/idt_7" kind="indent">
+            <unit eId="pnt_3/list_1/idt_7" kind="indent">
                <p>
                   <t v="deletion of an alert,"/>
                </p>
             </unit>
-            <unit eId="pnt_3/lst_1/idt_8" kind="indent">
+            <unit eId="pnt_3/list_1/idt_8" kind="indent">
                <p>
                   <t v="misused identity."/>
                </p>
@@ -3509,7 +3509,7 @@
             <t v=":"/>
          </p>
          <list kind="dash">
-            <unit eId="pnt_3.4.1/lst_2/idt_1" kind="indent">
+            <unit eId="pnt_3.4.1/list_2/idt_1" kind="indent">
                <p>
                   <t v="where the text "/>
                   <quote startQuote="‘" endQuote="’">
@@ -3520,7 +3520,7 @@
                   <t v=" appears, it is requested, where applicable:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="pnt_3.4.1/lst_2/idt_1/pnt_a" kind="point">
+                  <unit eId="pnt_3.4.1/list_2/idt_1/pnt_a" kind="point">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -3528,7 +3528,7 @@
                         <t v="to indicate if the decision was pronounced in absentia;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="pnt_3.4.1/lst_2/idt_1/pnt_b" kind="point">
+                  <unit eId="pnt_3.4.1/list_2/idt_1/pnt_b" kind="point">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -3540,7 +3540,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="pnt_3.4.1/lst_2/idt_2" kind="indent">
+            <unit eId="pnt_3.4.1/list_2/idt_2" kind="indent">
                <p>
                   <t v="where the text "/>
                   <quote startQuote="‘" endQuote="’">
@@ -3549,7 +3549,7 @@
                   <t v=" appears, one or more of the offences punishable in the issuing Member State by a custodial sentence or detention order of a maximum of at least 3 years, as defined by the laws of the issuing Member State, according to Article 2(2) of the Framework decision (or Section [(e)I] of the EAW) has to be filled in, if applicable,"/>
                </p>
             </unit>
-            <unit eId="pnt_3.4.1/lst_2/idt_3" kind="indent">
+            <unit eId="pnt_3.4.1/list_2/idt_3" kind="indent">
                <p>
                   <t v="if the offence(s) does (do) fall within the list given in Article 2(2) of the framework decision concerning the EAW, the offence(s) shall be entered in full into the "/>
                   <emphasis kind="b">
@@ -3558,12 +3558,12 @@
                   <t v=", according to the wording used in the list,"/>
                </p>
             </unit>
-            <unit eId="pnt_3.4.1/lst_2/idt_4" kind="indent">
+            <unit eId="pnt_3.4.1/list_2/idt_4" kind="indent">
                <p>
                   <t v="if the offences do not fall within the list mentioned above, the following information is required:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="pnt_3.4.1/lst_2/idt_4/pnt_a" kind="point">
+                  <unit eId="pnt_3.4.1/list_2/idt_4/pnt_a" kind="point">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -3571,7 +3571,7 @@
                         <t v="either that the warrant has been issued for acts punishable by the law of the issuing Member State by a custodial sentence or a detention order for a maximum period of at least 12 months;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="pnt_3.4.1/lst_2/idt_4/pnt_b" kind="point">
+                  <unit eId="pnt_3.4.1/list_2/idt_4/pnt_b" kind="point">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -3581,7 +3581,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="pnt_3.4.1/lst_2/idt_5" kind="indent">
+            <unit eId="pnt_3.4.1/list_2/idt_5" kind="indent">
                <p>
                   <t v="If the information to be inserted into field 083 of the "/>
                   <emphasis kind="b">
@@ -4261,32 +4261,32 @@
             <t v="The following steps shall be followed:"/>
          </p>
          <list kind="dash">
-            <unit eId="pnt_4/lst_1/idt_1" kind="indent">
+            <unit eId="pnt_4/list_1/idt_1" kind="indent">
                <p>
                   <t v="entry of the alert,"/>
                </p>
             </unit>
-            <unit eId="pnt_4/lst_1/idt_2" kind="indent">
+            <unit eId="pnt_4/list_1/idt_2" kind="indent">
                <p>
                   <t v="check for multiple alerts, reference is made to General Procedures in Section 2.1,"/>
                </p>
             </unit>
-            <unit eId="pnt_4/lst_1/idt_3" kind="indent">
+            <unit eId="pnt_4/list_1/idt_3" kind="indent">
                <p>
                   <t v="entering an alias, reference is made to General Procedures in Section 2.9,"/>
                </p>
             </unit>
-            <unit eId="pnt_4/lst_1/idt_4" kind="indent">
+            <unit eId="pnt_4/list_1/idt_4" kind="indent">
                <p>
                   <t v="misused identity, reference is made to General Procedures in Section 2.8,"/>
                </p>
             </unit>
-            <unit eId="pnt_4/lst_1/idt_5" kind="indent">
+            <unit eId="pnt_4/list_1/idt_5" kind="indent">
                <p>
                   <t v="SIRPIT procedure, reference is made to General Procedures in Section 2.10,"/>
                </p>
             </unit>
-            <unit eId="pnt_4/lst_1/idt_6" kind="indent">
+            <unit eId="pnt_4/list_1/idt_6" kind="indent">
                <p>
                   <t v="general and special procedures to be followed."/>
                </p>
@@ -4434,7 +4434,7 @@
             <t v=" shall apply to the SIRENE bureaux to the extent that they forward supplementary information:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_4.5/lst_2/pnt_a" kind="point">
+            <unit eId="pnt_4.5/list_2/pnt_a" kind="point">
                <num>
                   <t v="(a)"/>
                </num>
@@ -4442,7 +4442,7 @@
                   <t v="special procedures as provided for in Article 25 of the Schengen Convention;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.5/lst_2/pnt_b" kind="point">
+            <unit eId="pnt_4.5/list_2/pnt_b" kind="point">
                <num>
                   <t v="(b)"/>
                </num>
@@ -4450,7 +4450,7 @@
                   <t v="special procedures as provided for Article 5(4) of the Schengen Borders Code;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.5/lst_2/pnt_c" kind="point">
+            <unit eId="pnt_4.5/list_2/pnt_c" kind="point">
                <num>
                   <t v="(c)"/>
                </num>
@@ -4458,7 +4458,7 @@
                   <t v="exchange of information on a third-country national who is a beneficiary of the right of free movement;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.5/lst_2/pnt_d" kind="point">
+            <unit eId="pnt_4.5/list_2/pnt_d" kind="point">
                <num>
                   <t v="(d)"/>
                </num>
@@ -4945,27 +4945,27 @@
             <t v="The following steps have to be considered:"/>
          </p>
          <list kind="dash">
-            <unit eId="pnt_5/lst_1/idt_1" kind="indent">
+            <unit eId="pnt_5/list_1/idt_1" kind="indent">
                <p>
                   <t v="check for multiple alerts, reference is made to General Procedures Section 2.1,"/>
                </p>
             </unit>
-            <unit eId="pnt_5/lst_1/idt_2" kind="indent">
+            <unit eId="pnt_5/list_1/idt_2" kind="indent">
                <p>
                   <t v="at the request of another Member State add a Flag,"/>
                </p>
             </unit>
-            <unit eId="pnt_5/lst_1/idt_3" kind="indent">
+            <unit eId="pnt_5/list_1/idt_3" kind="indent">
                <p>
                   <t v="the exchange of information after a hit,"/>
                </p>
             </unit>
-            <unit eId="pnt_5/lst_1/idt_4" kind="indent">
+            <unit eId="pnt_5/list_1/idt_4" kind="indent">
                <p>
                   <t v="misused identity, reference is made to General Procedures Section 2.8,"/>
                </p>
             </unit>
-            <unit eId="pnt_5/lst_1/idt_5" kind="indent">
+            <unit eId="pnt_5/list_1/idt_5" kind="indent">
                <p>
                   <t v="SIRPIT procedure, reference is made to the General Procedures Section 2.10,"/>
                </p>
@@ -5076,7 +5076,7 @@
             <t v="Once information has been received by a SIRENE bureau, it shall, in order to maximise the opportunities for locating the person in a targeted and reasoned fashion, be communicated, as far as is appropriate, to:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_5.2/lst_2/pnt_a" kind="point">
+            <unit eId="pnt_5.2/list_2/pnt_a" kind="point">
                <num>
                   <t v="(a)"/>
                </num>
@@ -5084,7 +5084,7 @@
                   <t v="relevant border posts;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_5.2/lst_2/pnt_b" kind="point">
+            <unit eId="pnt_5.2/list_2/pnt_b" kind="point">
                <num>
                   <t v="(b)"/>
                </num>
@@ -5092,7 +5092,7 @@
                   <t v="the competent administrative and police authorities for the location and protection of persons;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_5.2/lst_2/pnt_c" kind="point">
+            <unit eId="pnt_5.2/list_2/pnt_c" kind="point">
                <num>
                   <t v="(c)"/>
                </num>
@@ -5142,27 +5142,27 @@
             <t v="The following steps have to be considered:"/>
          </p>
          <list kind="dash">
-            <unit eId="pnt_6/lst_1/idt_1" kind="indent">
+            <unit eId="pnt_6/list_1/idt_1" kind="indent">
                <p>
                   <t v="Check for multiple alerts, reference is made to General Procedures Section 2.1,"/>
                </p>
             </unit>
-            <unit eId="pnt_6/lst_1/idt_2" kind="indent">
+            <unit eId="pnt_6/list_1/idt_2" kind="indent">
                <p>
                   <t v="enter the alert into the SIS,"/>
                </p>
             </unit>
-            <unit eId="pnt_6/lst_1/idt_3" kind="indent">
+            <unit eId="pnt_6/list_1/idt_3" kind="indent">
                <p>
                   <t v="the exchange of information after a hit,"/>
                </p>
             </unit>
-            <unit eId="pnt_6/lst_1/idt_4" kind="indent">
+            <unit eId="pnt_6/list_1/idt_4" kind="indent">
                <p>
                   <t v="misused identity, reference is made to General Procedures Section 2.8,"/>
                </p>
             </unit>
-            <unit eId="pnt_6/lst_1/idt_5" kind="indent">
+            <unit eId="pnt_6/list_1/idt_5" kind="indent">
                <p>
                   <t v="SIRPIT procedure, reference is made to the General Procedures Section 2.10,"/>
                </p>
@@ -5228,22 +5228,22 @@
             <t v="The following steps have to be considered:"/>
          </p>
          <list kind="dash">
-            <unit eId="pnt_7/lst_1/idt_1" kind="indent">
+            <unit eId="pnt_7/list_1/idt_1" kind="indent">
                <p>
                   <t v="check for multiple alerts, reference is made to General Procedures Section 2.1,"/>
                </p>
             </unit>
-            <unit eId="pnt_7/lst_1/idt_2" kind="indent">
+            <unit eId="pnt_7/list_1/idt_2" kind="indent">
                <p>
                   <t v="at the request of another Member State add a Flag,"/>
                </p>
             </unit>
-            <unit eId="pnt_7/lst_1/idt_3" kind="indent">
+            <unit eId="pnt_7/list_1/idt_3" kind="indent">
                <p>
                   <t v="the exchange of information after a hit,"/>
                </p>
             </unit>
-            <unit eId="pnt_7/lst_1/idt_4" kind="indent">
+            <unit eId="pnt_7/list_1/idt_4" kind="indent">
                <p>
                   <t v="SIRPIT procedure, reference is made to General Procedures Section 2.10."/>
                </p>
@@ -5390,17 +5390,17 @@
             <t v="The following steps shall be considered:"/>
          </p>
          <list kind="dash">
-            <unit eId="pnt_8/lst_1/idt_1" kind="indent">
+            <unit eId="pnt_8/list_1/idt_1" kind="indent">
                <p>
                   <t v="check for multiple alerts,"/>
                </p>
             </unit>
-            <unit eId="pnt_8/lst_1/idt_2" kind="indent">
+            <unit eId="pnt_8/list_1/idt_2" kind="indent">
                <p>
                   <t v="the exchange of information after a hit,"/>
                </p>
             </unit>
-            <unit eId="pnt_8/lst_1/idt_3" kind="indent">
+            <unit eId="pnt_8/list_1/idt_3" kind="indent">
                <p>
                   <t v="SIRPIT procedure, reference is made to General Procedures Section 2.10."/>
                </p>
@@ -6028,7 +6028,7 @@
             <t v="Details of the missing person:"/>
          </p>
          <list kind="alpha">
-            <unit eId="note_40/lst_2/pnt_c" kind="point">
+            <unit eId="note_40/list_2/pnt_c" kind="point">
                <num>
                   <t v="(c)"/>
                </num>
@@ -6036,7 +6036,7 @@
                   <t v="Apparent age.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/lst_2/pnt_d" kind="point">
+            <unit eId="note_40/list_2/pnt_d" kind="point">
                <num>
                   <t v="(d)"/>
                </num>
@@ -6044,7 +6044,7 @@
                   <t v="Height.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/lst_2/pnt_e" kind="point">
+            <unit eId="note_40/list_2/pnt_e" kind="point">
                <num>
                   <t v="(e)"/>
                </num>
@@ -6052,7 +6052,7 @@
                   <t v="Skin colour.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/lst_2/pnt_f" kind="point">
+            <unit eId="note_40/list_2/pnt_f" kind="point">
                <num>
                   <t v="(f)"/>
                </num>
@@ -6060,7 +6060,7 @@
                   <t v="Colour and shape of hair.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/lst_2/pnt_g" kind="point">
+            <unit eId="note_40/list_2/pnt_g" kind="point">
                <num>
                   <t v="(g)"/>
                </num>
@@ -6068,7 +6068,7 @@
                   <t v="Colour of eyes.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/lst_2/pnt_h" kind="point">
+            <unit eId="note_40/list_2/pnt_h" kind="point">
                <num>
                   <t v="(h)"/>
                </num>
@@ -6076,7 +6076,7 @@
                   <t v="Other physical details (i.e. piercings, deformations, amputations, tattoos, marks, scars, etc.).&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/lst_2/pnt_i" kind="point">
+            <unit eId="note_40/list_2/pnt_i" kind="point">
                <num>
                   <t v="(i)"/>
                </num>
@@ -6084,7 +6084,7 @@
                   <t v="Psychological particulars: at risk of suicide, mental illness, aggressive behaviour, etc.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/lst_2/pnt_j" kind="point">
+            <unit eId="note_40/list_2/pnt_j" kind="point">
                <num>
                   <t v="(j)"/>
                </num>
@@ -6092,7 +6092,7 @@
                   <t v="Other details: necessary medical treatment, etc.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/lst_2/pnt_k" kind="point">
+            <unit eId="note_40/list_2/pnt_k" kind="point">
                <num>
                   <t v="(k)"/>
                </num>
@@ -6100,7 +6100,7 @@
                   <t v="Clothes worn at the time of the disappearance.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/lst_2/pnt_l" kind="point">
+            <unit eId="note_40/list_2/pnt_l" kind="point">
                <num>
                   <t v="(l)"/>
                </num>
@@ -6108,7 +6108,7 @@
                   <t v="Photograph: available or not.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/lst_2/pnt_m" kind="point">
+            <unit eId="note_40/list_2/pnt_m" kind="point">
                <num>
                   <t v="(m)"/>
                </num>
@@ -6121,7 +6121,7 @@
             <t v="Related information:"/>
          </p>
          <list kind="alpha">
-            <unit eId="note_40/lst_3/pnt_n" kind="point">
+            <unit eId="note_40/list_3/pnt_n" kind="point">
                <num>
                   <t v="(n)"/>
                </num>
@@ -6129,7 +6129,7 @@
                   <t v="Person/s who could accompany him or her (and Schengen ID if available).&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/lst_3/pnt_o" kind="point">
+            <unit eId="note_40/list_3/pnt_o" kind="point">
                <num>
                   <t v="(o)"/>
                </num>

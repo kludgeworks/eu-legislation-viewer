@@ -37,9 +37,9 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_1/old/qst_1">
+            <quotedStructure eId="cor_1/old/qstr_1">
                <list kind="arabic">
-                  <unit eId="cor_1/old/qst_1/pnt_1" kind="point">
+                  <unit eId="cor_1/old/qstr_1/pnt_1" kind="point">
                      <num>
                         <t v="‘"/>
                         <t v="(1)"/>
@@ -47,7 +47,7 @@
                      <p>
                         <t v="in Title II, the following Chapter is added:"/>
                      </p>
-                     <unit eId="cor_1/old/qst_1/pnt_1/cpt_IVa" kind="division">
+                     <unit eId="cor_1/old/qstr_1/pnt_1/cpt_IVa" kind="division">
                         <num>
                            <emphasis kind="i">
                               <t v="“CHAPTER IVa"/>
@@ -60,14 +60,14 @@
                               </emphasis>
                            </emphasis>
                         </subheading>
-                        <unit eId="cor_1/old/qst_1/pnt_1/art_19a" kind="article">
+                        <unit eId="cor_1/old/qstr_1/pnt_1/art_19a" kind="article">
                            <num>
                               <t v="Article 19a"/>
                            </num>
                            <heading>
                               <t v="Measures at external borders and support by the Agency"/>
                            </heading>
-                           <unit eId="cor_1/old/qst_1/pnt_1/art_19a/par_1" kind="paragraph">
+                           <unit eId="cor_1/old/qstr_1/pnt_1/art_19a/par_1" kind="paragraph">
                               <num>
                                  <t v="1."/>
                               </num>
@@ -87,9 +87,9 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <list kind="arabic">
-                  <unit eId="cor_1/new/qst_1/pnt_1" kind="point">
+                  <unit eId="cor_1/new/qstr_1/pnt_1" kind="point">
                      <num>
                         <t v="‘"/>
                         <t v="(1)"/>
@@ -97,7 +97,7 @@
                      <p>
                         <t v="in Title II, the following Chapter is added:"/>
                      </p>
-                     <unit eId="cor_1/new/qst_1/pnt_1/cpt_IVa" kind="division">
+                     <unit eId="cor_1/new/qstr_1/pnt_1/cpt_IVa" kind="division">
                         <num>
                            <emphasis kind="i">
                               <t v="“CHAPTER IVa"/>
@@ -110,14 +110,14 @@
                               </emphasis>
                            </emphasis>
                         </subheading>
-                        <unit eId="cor_1/new/qst_1/pnt_1/art_19b" kind="article">
+                        <unit eId="cor_1/new/qstr_1/pnt_1/art_19b" kind="article">
                            <num>
                               <t v="Article 19b"/>
                            </num>
                            <heading>
                               <t v="Measures at external borders and support by the Agency"/>
                            </heading>
-                           <unit eId="cor_1/new/qst_1/pnt_1/art_19b/par_1" kind="paragraph">
+                           <unit eId="cor_1/new/qstr_1/pnt_1/art_19b/par_1" kind="paragraph">
                               <num>
                                  <t v="1."/>
                               </num>

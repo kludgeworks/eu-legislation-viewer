@@ -40,7 +40,7 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_1/old/qst_1">
+            <quotedStructure eId="cor_1/old/qstr_1">
                <p>
                   <emphasis kind="b">
                      <t v="‘"/>
@@ -60,7 +60,7 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_1/new/qst_1">
+            <quotedStructure eId="cor_1/new/qstr_1">
                <p>
                   <emphasis kind="b">
                      <t v="‘"/>
@@ -85,7 +85,7 @@
             <p>
                <t v="for:"/>
             </p>
-            <quotedStructure eId="cor_2/old/qst_1">
+            <quotedStructure eId="cor_2/old/qstr_1">
                <p>
                   <emphasis kind="b">
                      <t v="‘"/>
@@ -114,7 +114,7 @@
             <p>
                <t v="read:"/>
             </p>
-            <quotedStructure eId="cor_2/new/qst_1">
+            <quotedStructure eId="cor_2/new/qstr_1">
                <p>
                   <emphasis kind="b">
                      <t v="‘"/>
