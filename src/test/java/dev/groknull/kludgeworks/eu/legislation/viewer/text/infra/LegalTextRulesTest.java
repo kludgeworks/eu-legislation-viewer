@@ -10,6 +10,8 @@ import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.s9api.XdmNode;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 /** What legal-text.sch accepts and rejects. */
 class LegalTextRulesTest {
@@ -146,6 +148,26 @@ class LegalTextRulesTest {
     assertThat(RULES.violations(text))
         .extracting(Schematron.Finding::id)
         .containsExactly("act-of-corrigendum");
+  }
+
+  @ParameterizedTest(name = "{0}")
+  @CsvSource(
+      delimiter = '|',
+      value = {
+        "levels-only | <body><unit eId=\"art_1\" kind=\"article\" depth=\"2\"/></body>",
+        "annexes-only | <body><unit eId=\"art_1\" kind=\"article\" eurlexAnchor=\"1\"/></body>",
+        "ref-by-kind | <body><p><ref kind=\"uri\" href=\"http://x\" series=\"L\"><t"
+            + " v=\"x\"/></ref></p></body>",
+        "correction-sides | <body><unit eId=\"art_1\" kind=\"article\"><old/></unit></body>",
+        "deletion-in-deleted | <body><p><provenance amendingAct=\"32026R0449\" action=\"deleted\""
+            + " marker=\"O1\"/><t v=\"x\"/></p></body>",
+        "note-marker | <body><p><noteRef href=\"#note_1\" marker=\"2\"/></p></body><notes><note"
+            + " eId=\"note_1\" marker=\"1\" kind=\"footnote\"/></notes>"
+      })
+  void rejectsWhatItsKindDoesNotHold(String rule, String content) throws SaxonApiException {
+    assertThat(RULES.violations(legalText(content)))
+        .extracting(Schematron.Finding::id)
+        .containsExactly(rule);
   }
 
   private static XdmNode legalText(String content) throws SaxonApiException {

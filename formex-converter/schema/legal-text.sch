@@ -37,6 +37,37 @@
       <sch:assert id="note-exists" test="exists(key('note', substring-after(@href, '#')))">
         <sch:value-of select="@href"/> refers to no note.
       </sch:assert>
+      <sch:assert id="note-marker" test="empty(key('note', substring-after(@href, '#'))) or key('note', substring-after(@href, '#'))/@marker = @marker">
+        The reference to <sch:value-of select="@href"/> shows <sch:value-of select="@marker"/>, the note another marker.
+      </sch:assert>
+    </sch:rule>
+  </sch:pattern>
+
+  <sch:pattern id="kinds">
+    <sch:title>What the schema documents per kind holds</sch:title>
+    <sch:rule context="lt:unit[@depth or @box]">
+      <sch:assert id="levels-only" test="@kind = 'level'">depth and box belong to levels; <sch:value-of select="@eId"/> is a <sch:value-of select="@kind"/>.</sch:assert>
+    </sch:rule>
+    <sch:rule context="lt:unit[@eurlexAnchor]">
+      <sch:assert id="annexes-only" test="@kind = 'annex'">eurlexAnchor belongs to annexes; <sch:value-of select="@eId"/> is a <sch:value-of select="@kind"/>.</sch:assert>
+    </sch:rule>
+    <sch:rule context="lt:ref">
+      <sch:assert id="ref-by-kind" test="if (@kind = 'oj') then not(@href) else not(@series | @number | @date | @page)">
+        A reference of kind <sch:value-of select="@kind"/> has the attributes of the other kind.
+      </sch:assert>
+    </sch:rule>
+    <sch:rule context="lt:old | lt:new">
+      <sch:assert id="correction-sides" test="ancestor::lt:unit[1]/@kind = 'correction'">old and new are the sides of a correction.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+
+  <sch:pattern id="deletions">
+    <sch:title>Deleted content says so, and only it</sch:title>
+    <sch:rule context="lt:provenance">
+      <sch:assert id="deletion-in-deleted" test="(@action = 'deleted') = exists(parent::lt:deleted)">
+        A deletion is the provenance of a deleted placeholder, and a deleted placeholder's provenance is its deletion
+        (marker <sch:value-of select="@marker"/>).
+      </sch:assert>
     </sch:rule>
   </sch:pattern>
 
