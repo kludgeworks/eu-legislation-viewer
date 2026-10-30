@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: MIT
+# An act's consolidated versions (CellarActCatalogue): each consolidation based on the act, its
+# CELEX (02015R1998-20260322) and date, whether it was published as a PDF (an interim version
+# isn't, and may still be revised), and the acts it lists as consolidated in it: the base act, the
+# previous consolidation, and the amending acts and corrigenda of this step, as Cellar states them.
+# Only works with a CELEX: the others based on the act are Cellar's internal production versions.
+# One row per version and listed act; CellarActCatalogue folds them.
+# {{celex}}: the base act's CELEX (32015R1998), checked against its pattern first.
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?version ?date ?pdf ?listed
+WHERE {
+  ?act cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
+  ?consolidation cdm:act_consolidated_based_on_resource_legal ?act ;
+       cdm:resource_legal_id_celex ?version ;
+       cdm:act_consolidated_date ?date .
+  BIND (EXISTS {
+    ?expression cdm:expression_belongs_to_work ?consolidation .
+    ?manifestation cdm:manifestation_manifests_expression ?expression ;
+         cdm:manifestation_type ?format .
+    FILTER (STRSTARTS(STR(?format), "pdf"))
+  } AS ?pdf)
+  OPTIONAL {
+    ?consolidation cdm:act_consolidated_consolidates_resource_legal ?integrated .
+    ?integrated cdm:resource_legal_id_celex ?listed .
+  }
+}
+ORDER BY ?date ?listed

@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_library")
+load("//tools/build:defs.bzl", "sparql_terms_test")
+
+# The acts module's SPARQL queries, on the classpath beside CellarActCatalogue, which runs them
+java_library(
+    name = "sparql",
+    resources = glob(["*.rq"]),
+    visibility = ["//viewer:__subpackages__"],
+)
+
+# every cdm:, cmr: and annotation: term they use is in CDM, and not deprecated
+sparql_terms_test(
+    name = "sparql_terms",
+    size = "small",
+    srcs = glob(["*.rq"]),
+)

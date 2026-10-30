@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: MIT
+# An act's work by its CELEX (CellarActCatalogue): its ELI, its resource type, its date of document,
+# whether it is in force, its dates of entry into force (several: Cellar types them with annotations,
+# not read here; the earliest is the entry into force proper) and of end of validity (9999-12-31 while
+# open-ended). One row per combination of values; CellarActCatalogue folds them.
+# {{celex}}: a base act's CELEX (32015R1998), checked against its pattern first.
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?eli ?type ?dateOfDocument ?inForce ?entryIntoForce ?endOfValidity
+WHERE {
+  ?work cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
+  OPTIONAL { ?work cdm:resource_legal_eli ?eli }
+  OPTIONAL { ?work cdm:work_has_resource-type ?type }
+  OPTIONAL { ?work cdm:work_date_document ?dateOfDocument }
+  OPTIONAL { ?work cdm:resource_legal_in-force ?inForce }
+  OPTIONAL { ?work cdm:resource_legal_date_entry-into-force ?entryIntoForce }
+  OPTIONAL { ?work cdm:resource_legal_date_end-of-validity ?endOfValidity }
+}

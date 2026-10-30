@@ -10,6 +10,7 @@ import "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Builtins.
 local raw =
   List(
     "formex-converter/src/test/resources/fixtures/**",
+    "viewer/src/test/resources/acts/**",
     "viewer/src/test/resources/cellar/**",
     "**/xslt/subdivision.rdf",
   )

@@ -46,6 +46,7 @@ SPDX-License-Identifier = "LicenseRef-EUR-Lex-reuse"
 # Cellar's metadata as recorded (SPARQL results, a manifestation's file list): EUR-Lex metadata is CC0
 [[annotations]]
 path = [
+  "viewer/src/test/resources/acts/*.json",
   "viewer/src/test/resources/cellar/*.json",
   "viewer/src/test/resources/cellar/*.xhtml",
 ]
