@@ -43,12 +43,14 @@ final class FormexConverter {
 
   static final String STYLESHEET =
       "/dev/groknull/kludgeworks/formex/converter/xslt/formex-to-legal-text.xsl";
+  static final String VERSION = "/dev/groknull/kludgeworks/formex/converter/version.txt";
   static final String ERRORS = "https://kludgeworks.groknull.dev/ns/formex-converter";
   private static final Pattern ROOT_ELEMENT = Pattern.compile("<([A-Z][A-Z0-9.]*)[\\s>/]");
   private static final QName CELEX = new QName("celex");
 
   private final Processor processor;
   private final XsltExecutable stylesheet;
+  private final String version;
 
   FormexConverter(Processor processor) {
     this.processor = processor;
@@ -61,6 +63,21 @@ final class FormexConverter {
       stylesheet = processor.newXsltCompiler().compile(new StreamSource(url.toExternalForm()));
     } catch (SaxonApiException e) {
       throw new IllegalStateException("formex-to-legal-text.xsl doesn't compile", e);
+    }
+    version = readVersion();
+  }
+
+  /** The converter's version (version.txt), which the stylesheet stamps on every document. */
+  String version() {
+    return version;
+  }
+
+  private static String readVersion() {
+    try (var in = FormexConverter.class.getResourceAsStream(VERSION)) {
+      return new String(Objects.requireNonNull(in, VERSION).readAllBytes(), StandardCharsets.UTF_8)
+          .strip();
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
     }
   }
 

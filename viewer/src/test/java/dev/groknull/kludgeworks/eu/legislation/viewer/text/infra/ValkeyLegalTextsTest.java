@@ -1,0 +1,110 @@
+// SPDX-License-Identifier: MIT
+package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
+
+import static dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.FormexFixtures.CONSOLIDATION;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalTextIdentifier;
+import java.time.Duration;
+import java.util.concurrent.Executors;
+import java.util.stream.IntStream;
+import net.sf.saxon.s9api.Processor;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.testcontainers.containers.GenericContainer;
+
+/**
+ * Legal texts kept in a real Valkey, in a container (Testcontainers): converted once, then read
+ * from the store, also when several requests ask at once; documents without Formex remembered; keys
+ * that carry the converter's version.
+ */
+class ValkeyLegalTextsTest {
+  static final Processor SAXON = new Processor(false);
+  static final GenericContainer<?> VALKEY = TestcontainersConfiguration.valkey();
+  static final LettuceConnectionFactory CONNECTIONS = connections();
+  static final LegalTextIdentifier ENGLISH = new LegalTextIdentifier(CONSOLIDATION, Language.ENG);
+
+  final FormexFixtures source = new FormexFixtures();
+  final FormexConversion conversion = new FormexConversion(source, new FormexConverter(SAXON));
+  final RedisTemplate<String, byte[]> valkey = store();
+  final ValkeyLegalTexts texts =
+      new ValkeyLegalTexts(
+          valkey,
+          conversion,
+          new LegalTextReader(SAXON),
+          SAXON,
+          new StoreProperties(Duration.ofMinutes(1), Duration.ofMillis(50), Duration.ofDays(1)));
+
+  @BeforeEach
+  void emptyTheStore() {
+    try (var connection = CONNECTIONS.getConnection()) {
+      connection.serverCommands().flushAll();
+    }
+  }
+
+  @AfterAll
+  static void stopValkey() {
+    CONNECTIONS.destroy();
+    VALKEY.stop();
+  }
+
+  @Test
+  void convertsOnceThenReadsTheStoredText() {
+    var converted = texts.find(ENGLISH).orElseThrow();
+    var stored = texts.find(ENGLISH).orElseThrow();
+
+    assertThat(stored).isEqualTo(converted);
+    assertThat(source.asked).containsExactly(CONSOLIDATION + " ENG");
+  }
+
+  @Test
+  void convertsOnceForRequestsThatComeTogether() throws Exception {
+    try (var threads = Executors.newVirtualThreadPerTaskExecutor()) {
+      var requests =
+          IntStream.range(0, 8).mapToObj(i -> threads.submit(() -> texts.find(ENGLISH))).toList();
+      for (var request : requests) {
+        assertThat(request.get()).isPresent();
+      }
+    }
+
+    assertThat(source.asked).containsExactly(CONSOLIDATION + " ENG");
+  }
+
+  @Test
+  void remembersADocumentWithoutFormexInTheLanguage() {
+    var irish = new LegalTextIdentifier(CONSOLIDATION, Language.GLE);
+
+    assertThat(texts.find(irish)).isEmpty();
+    assertThat(texts.find(irish)).isEmpty();
+    assertThat(source.folders).hasSize(1);
+    assertThat(valkey.getExpire(texts.key(irish))).isPositive();
+  }
+
+  @Test
+  void keysTheTextByDocumentLanguageAndConverterVersion() {
+    texts.find(ENGLISH);
+
+    assertThat(valkey.keys("viewer:legal-text:*"))
+        .containsExactly(
+            "viewer:legal-text:" + conversion.converterVersion() + ":" + CONSOLIDATION + ":ENG");
+  }
+
+  private static RedisTemplate<String, byte[]> store() {
+    var template = new TextConfiguration().legalTextStore(CONNECTIONS);
+    template.afterPropertiesSet();
+    return template;
+  }
+
+  private static LettuceConnectionFactory connections() {
+    VALKEY.start();
+    var factory = new LettuceConnectionFactory(VALKEY.getHost(), VALKEY.getFirstMappedPort());
+    factory.afterPropertiesSet();
+    factory.start();
+    return factory;
+  }
+}

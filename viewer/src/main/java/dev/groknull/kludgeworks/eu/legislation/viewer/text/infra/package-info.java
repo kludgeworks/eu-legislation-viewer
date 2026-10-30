@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
 /**
- * The text module's adapters: legal texts converted from Cellar's Formex (FormexLegalTexts, on a
- * FormexSource), and the reader from legal-text XML into the records, with its mapper.
+ * The text module's adapters: legal texts kept in Valkey (ValkeyLegalTexts), converted once from
+ * Cellar's Formex (FormexConversion, on a FormexSource, by FormexConverter), and the reader from
+ * legal-text XML into the records, with its mapper.
  */
 @InfrastructureRing
 @NullMarked

@@ -1,17 +1,38 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
+load("@rules_java//java:defs.bzl", "java_library")
+
+# Valkey in a container (Testcontainers), for the tests that need one
+java_library(
+    name = "testing",
+    testonly = True,
+    srcs = ["TestcontainersConfiguration.java"],
+    visibility = ["//viewer:__subpackages__"],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
+        "@maven//:org_springframework_boot_spring_boot",
+        "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_boot_spring_boot_testcontainers",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_testcontainers_testcontainers",
+    ],
+)
 
 # Whole-application checks: the module structure (Spring Modulith), and that the app starts,
-# on Bazel's classpath and as Spring Boot's jar
+# on Bazel's classpath and as Spring Boot's jar, on Valkey in a container (Docker)
 java_test_suite(
     name = "viewer",
     size = "small",
     srcs = glob(
         ["*.java"],
-        exclude = ["CellarLiveTests.java"],
+        exclude = [
+            "CellarLiveTests.java",
+            "TestcontainersConfiguration.java",
+        ],
     ),
     data = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:viewer-app"],
     runner = "junit5",
+    tags = ["requires-docker"],
     # Spring's naming for whole-application checks
     test_suffixes = ["Tests.java"],
     runtime_deps = [
@@ -21,12 +42,15 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        ":testing",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_modulith_spring_modulith_core",
         "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_testcontainers_testcontainers",
         "@rules_java//java/runfiles",
     ],
 )

@@ -19,7 +19,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * The app as one file starts with all of it: java -jar on the Spring Boot jar (//viewer:jar) brings
- * up the web server and Actuator, as on Bazel's classpath (ViewerApplicationTests).
+ * up the web server and Actuator, as on Bazel's classpath (ViewerApplicationTests), on a Valkey in
+ * a container.
  */
 @AutoBazelRepository
 class ViewerJarTests {
@@ -36,19 +37,29 @@ class ViewerJarTests {
                     "kludgeworks_viewer/viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/viewer-app.jar"));
     var port = freePort();
     var java = ProcessHandle.current().info().command().orElseThrow();
-    var app =
-        new ProcessBuilder(java, "-jar", jar.toString(), "--server.port=" + port)
-            .redirectErrorStream(true)
-            .redirectOutput(ProcessBuilder.Redirect.DISCARD)
-            .start();
-    try (var client = HttpClient.newHttpClient()) {
-      var response = health(client, port);
+    try (var valkey = TestcontainersConfiguration.valkey();
+        var client = HttpClient.newHttpClient()) {
+      valkey.start();
+      var app =
+          new ProcessBuilder(
+                  java,
+                  "-jar",
+                  jar.toString(),
+                  "--server.port=" + port,
+                  "--spring.data.redis.host=" + valkey.getHost(),
+                  "--spring.data.redis.port=" + valkey.getFirstMappedPort())
+              .redirectErrorStream(true)
+              .redirectOutput(ProcessBuilder.Redirect.DISCARD)
+              .start();
+      try {
+        var response = health(client, port);
 
-      assertThat(response.statusCode()).isEqualTo(200);
-      assertThat(response.body()).contains("\"status\":\"UP\"");
-    } finally {
-      app.destroy();
-      app.waitFor();
+        assertThat(response.statusCode()).isEqualTo(200);
+        assertThat(response.body()).contains("\"status\":\"UP\"");
+      } finally {
+        app.destroy();
+        app.waitFor();
+      }
     }
   }
 

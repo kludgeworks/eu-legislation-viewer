@@ -20,6 +20,7 @@
     "org.jmolecules.integrations:jmolecules-archunit": -1728251600,
     "org.jmolecules:jmolecules-bom": -1738962242,
     "org.jmolecules:jmolecules-ddd": 1569514801,
+    "org.jmolecules:jmolecules-events": -1329545148,
     "org.jmolecules:jmolecules-onion-architecture": 1660079362,
     "org.jspecify:jspecify": 1062581018,
     "org.junit.jupiter:junit-jupiter-api": 194920406,
@@ -34,10 +35,13 @@
     "org.springframework.boot:spring-boot-dependencies": 98615043,
     "org.springframework.boot:spring-boot-loader-tools": -1122518281,
     "org.springframework.boot:spring-boot-starter-actuator": -1082017891,
+    "org.springframework.boot:spring-boot-starter-data-redis": -194155460,
     "org.springframework.boot:spring-boot-starter-restclient": 888455491,
     "org.springframework.boot:spring-boot-starter-validation": 113118493,
     "org.springframework.boot:spring-boot-starter-webmvc": 338400426,
     "org.springframework.boot:spring-boot-test": 1189299640,
+    "org.springframework.boot:spring-boot-testcontainers": 152627146,
+    "org.springframework.data:spring-data-redis": -501745515,
     "org.springframework.modulith:spring-modulith-api": -1267837964,
     "org.springframework.modulith:spring-modulith-bom": 1667680144,
     "org.springframework.modulith:spring-modulith-core": 2094793953,
@@ -45,6 +49,7 @@
     "org.springframework:spring-core": 828592846,
     "org.springframework:spring-test": -967883781,
     "org.springframework:spring-web": -1196164797,
+    "org.testcontainers:testcontainers": -258185670,
     "org.xmlunit:xmlunit-assertj3": -355876019,
     "repositories": -1949687017,
     "tools.jackson.core:jackson-databind": 1626308344
@@ -54,6 +59,9 @@
     "ch.qos.logback:logback-core": 1703218533,
     "com.fasterxml.jackson.core:jackson-annotations": 1145483352,
     "com.fasterxml:classmate": 381313761,
+    "com.github.docker-java:docker-java-api": 1073735645,
+    "com.github.docker-java:docker-java-transport": -1526601578,
+    "com.github.docker-java:docker-java-transport-zerodep": -168720568,
     "com.github.javaparser:javaparser-core": 561213315,
     "com.google.code.findbugs:jsr305": 870839855,
     "com.google.code.gson:gson": -1575757252,
@@ -70,12 +78,23 @@
     "com.tngtech.archunit:archunit": -1723949349,
     "com.uber.nullaway:nullaway": -1383348,
     "commons-codec:commons-codec": 58403102,
-    "commons-io:commons-io": -807333807,
+    "commons-io:commons-io": -515402013,
     "commons-logging:commons-logging": -102005530,
+    "io.lettuce:lettuce-core": 1593187343,
     "io.micrometer:micrometer-commons": 440746097,
     "io.micrometer:micrometer-core": -1670822843,
     "io.micrometer:micrometer-jakarta9": -1610177437,
     "io.micrometer:micrometer-observation": 161929031,
+    "io.netty:netty-buffer": -294787265,
+    "io.netty:netty-codec-base": -709159638,
+    "io.netty:netty-codec-dns": -2077878597,
+    "io.netty:netty-common": 505449648,
+    "io.netty:netty-handler": -2123705569,
+    "io.netty:netty-resolver": -501408686,
+    "io.netty:netty-resolver-dns": -907771432,
+    "io.netty:netty-transport": 38456572,
+    "io.netty:netty-transport-native-unix-common": 451886035,
+    "io.projectreactor:reactor-core": 1433497478,
     "io.xspec:xspec": -998869811,
     "jakarta.activation:jakarta.activation-api": -1623326611,
     "jakarta.annotation:jakarta.annotation-api": 196616042,
@@ -83,8 +102,9 @@
     "jakarta.xml.bind:jakarta.xml.bind-api": -1145319810,
     "name.dmaus.schxslt:schxslt2": -2110888029,
     "net.bytebuddy:byte-buddy": -2144538556,
+    "net.java.dev.jna:jna": 154162148,
     "net.sf.saxon:Saxon-HE": -1112923966,
-    "org.apache.commons:commons-compress": 1820627763,
+    "org.apache.commons:commons-compress": -1565950364,
     "org.apache.commons:commons-lang3": 1841935436,
     "org.apache.logging.log4j:log4j-api": -1710269538,
     "org.apache.logging.log4j:log4j-to-slf4j": -997962672,
@@ -106,8 +126,10 @@
     "org.hdrhistogram:HdrHistogram": 310945399,
     "org.hibernate.validator:hibernate-validator": 1341086113,
     "org.jboss.logging:jboss-logging": 670094878,
+    "org.jetbrains:annotations": -845966580,
     "org.jmolecules.integrations:jmolecules-archunit": -296919357,
     "org.jmolecules:jmolecules-ddd": -1358615692,
+    "org.jmolecules:jmolecules-events": -1249443269,
     "org.jmolecules:jmolecules-onion-architecture": 940530457,
     "org.jmolecules:jstereotype": 1595728065,
     "org.jspecify:jspecify": -109882726,
@@ -122,23 +144,30 @@
     "org.mapstruct:mapstruct-processor": -644699307,
     "org.opentest4j.reporting:open-test-reporting-tooling-spi": 1212162497,
     "org.opentest4j:opentest4j": -1711174392,
+    "org.reactivestreams:reactive-streams": 1281941191,
+    "org.rnorth.duct-tape:duct-tape": -1059401544,
     "org.slf4j:jul-to-slf4j": 1118476727,
     "org.slf4j:slf4j-api": 500377983,
     "org.springframework.boot:spring-boot": 276724413,
     "org.springframework.boot:spring-boot-actuator": 1574461963,
     "org.springframework.boot:spring-boot-actuator-autoconfigure": -115833215,
     "org.springframework.boot:spring-boot-autoconfigure": 1472557455,
+    "org.springframework.boot:spring-boot-data-commons": 1999396468,
+    "org.springframework.boot:spring-boot-data-redis": 1412747784,
     "org.springframework.boot:spring-boot-health": -1642279449,
     "org.springframework.boot:spring-boot-http-client": 227691599,
     "org.springframework.boot:spring-boot-http-converter": 745525851,
     "org.springframework.boot:spring-boot-jackson": -1628625085,
-    "org.springframework.boot:spring-boot-loader-tools": -312570975,
+    "org.springframework.boot:spring-boot-loader-tools": -773758160,
     "org.springframework.boot:spring-boot-micrometer-metrics": 1310591253,
     "org.springframework.boot:spring-boot-micrometer-observation": 1009262964,
+    "org.springframework.boot:spring-boot-netty": 211072766,
+    "org.springframework.boot:spring-boot-persistence": -1018883178,
     "org.springframework.boot:spring-boot-restclient": 1077409218,
     "org.springframework.boot:spring-boot-servlet": 639711912,
     "org.springframework.boot:spring-boot-starter": -1905590456,
     "org.springframework.boot:spring-boot-starter-actuator": -1286390891,
+    "org.springframework.boot:spring-boot-starter-data-redis": 867793389,
     "org.springframework.boot:spring-boot-starter-jackson": 369527275,
     "org.springframework.boot:spring-boot-starter-logging": -1965325172,
     "org.springframework.boot:spring-boot-starter-micrometer-metrics": -242434938,
@@ -148,25 +177,36 @@
     "org.springframework.boot:spring-boot-starter-validation": 727146254,
     "org.springframework.boot:spring-boot-starter-webmvc": -1923582309,
     "org.springframework.boot:spring-boot-test": -679692564,
+    "org.springframework.boot:spring-boot-testcontainers": -160202142,
     "org.springframework.boot:spring-boot-tomcat": 637947697,
+    "org.springframework.boot:spring-boot-transaction": 1590643052,
     "org.springframework.boot:spring-boot-validation": 75296794,
     "org.springframework.boot:spring-boot-web-server": 1791077981,
     "org.springframework.boot:spring-boot-webmvc": 1644292535,
+    "org.springframework.data:spring-data-commons": 1365953262,
+    "org.springframework.data:spring-data-keyvalue": 1294982872,
+    "org.springframework.data:spring-data-redis": 514606181,
     "org.springframework.modulith:spring-modulith-api": -1671136456,
     "org.springframework.modulith:spring-modulith-core": 424804072,
     "org.springframework:spring-aop": 2140047740,
     "org.springframework:spring-beans": -52091312,
     "org.springframework:spring-context": -1592913882,
+    "org.springframework:spring-context-support": -581712494,
     "org.springframework:spring-core": 1717580005,
     "org.springframework:spring-expression": -368645642,
+    "org.springframework:spring-messaging": -1748332337,
+    "org.springframework:spring-oxm": 1138425481,
     "org.springframework:spring-test": 439340573,
+    "org.springframework:spring-tx": 1278511811,
     "org.springframework:spring-web": -1087826926,
     "org.springframework:spring-webmvc": -1583482181,
+    "org.testcontainers:testcontainers": -984446168,
     "org.xmlresolver:xmlresolver": 602572078,
     "org.xmlresolver:xmlresolver:jar:data": 1791221573,
     "org.xmlunit:xmlunit-assertj3": -1691431030,
     "org.xmlunit:xmlunit-core": -1543079851,
     "org.yaml:snakeyaml": 1068613154,
+    "redis.clients.authentication:redis-authx-core": 1112364113,
     "tools.jackson.core:jackson-core": -435916916,
     "tools.jackson.core:jackson-databind": 1277331618
   },
@@ -177,6 +217,7 @@
     "org.hamcrest:hamcrest": "org.hamcrest:hamcrest:3.0",
     "org.jmolecules.integrations:jmolecules-archunit": "org.jmolecules.integrations:jmolecules-archunit:0.33.0",
     "org.jmolecules:jmolecules-ddd": "org.jmolecules:jmolecules-ddd:2.0.1",
+    "org.jmolecules:jmolecules-events": "org.jmolecules:jmolecules-events:2.0.1",
     "org.jmolecules:jmolecules-onion-architecture": "org.jmolecules:jmolecules-onion-architecture:2.0.1",
     "org.jspecify:jspecify": "org.jspecify:jspecify:1.0.1",
     "org.junit.jupiter:junit-jupiter-api": "org.junit.jupiter:junit-jupiter-api:6.0.3",
@@ -187,16 +228,20 @@
     "org.springframework.boot:spring-boot": "org.springframework.boot:spring-boot:4.1.1",
     "org.springframework.boot:spring-boot-autoconfigure": "org.springframework.boot:spring-boot-autoconfigure:4.1.1",
     "org.springframework.boot:spring-boot-starter-actuator": "org.springframework.boot:spring-boot-starter-actuator:4.1.1",
+    "org.springframework.boot:spring-boot-starter-data-redis": "org.springframework.boot:spring-boot-starter-data-redis:4.1.1",
     "org.springframework.boot:spring-boot-starter-restclient": "org.springframework.boot:spring-boot-starter-restclient:4.1.1",
     "org.springframework.boot:spring-boot-starter-validation": "org.springframework.boot:spring-boot-starter-validation:4.1.1",
     "org.springframework.boot:spring-boot-starter-webmvc": "org.springframework.boot:spring-boot-starter-webmvc:4.1.1",
     "org.springframework.boot:spring-boot-test": "org.springframework.boot:spring-boot-test:4.1.1",
+    "org.springframework.boot:spring-boot-testcontainers": "org.springframework.boot:spring-boot-testcontainers:4.1.1",
+    "org.springframework.data:spring-data-redis": "org.springframework.data:spring-data-redis:4.1.1",
     "org.springframework.modulith:spring-modulith-api": "org.springframework.modulith:spring-modulith-api:2.1.1",
     "org.springframework.modulith:spring-modulith-core": "org.springframework.modulith:spring-modulith-core:2.1.1",
     "org.springframework:spring-context": "org.springframework:spring-context:7.0.9",
     "org.springframework:spring-core": "org.springframework:spring-core:7.0.9",
     "org.springframework:spring-test": "org.springframework:spring-test:7.0.9",
     "org.springframework:spring-web": "org.springframework:spring-web:7.0.9",
+    "org.testcontainers:testcontainers": "org.testcontainers:testcontainers:2.0.5",
     "tools.jackson.core:jackson-databind": "tools.jackson.core:jackson-databind:3.1.5"
   },
   "artifacts": {
@@ -223,6 +268,24 @@
         "jar": "75fbda45456f123fb6e2028a6189442d8d0730b357adce4c0a6d7e789f70669b"
       },
       "version": "1.7.3"
+    },
+    "com.github.docker-java:docker-java-api": {
+      "shasums": {
+        "jar": "dad153d484b1f4ef009e2fdbad27e07aeb3191122da52b8985507ac504300081"
+      },
+      "version": "3.7.1"
+    },
+    "com.github.docker-java:docker-java-transport": {
+      "shasums": {
+        "jar": "d15eec8034bf0f92c2a48ca9172691804048115c96dc853272f9486fa2695c3c"
+      },
+      "version": "3.7.1"
+    },
+    "com.github.docker-java:docker-java-transport-zerodep": {
+      "shasums": {
+        "jar": "b89bdb1754160323597f9ea32a7fe7a4a3aa8f5b3b43b88e8d71fff3b267ab21"
+      },
+      "version": "3.7.1"
     },
     "com.github.javaparser:javaparser-core": {
       "shasums": {
@@ -322,15 +385,21 @@
     },
     "commons-io:commons-io": {
       "shasums": {
-        "jar": "f41f7baacd716896447ace9758621f62c1c6b0a91d89acee488da26fc477c84f"
+        "jar": "df90bba0fe3cb586b7f164e78fe8f8f4da3f2dd5c27fa645f888100ccc25dd72"
       },
-      "version": "2.16.1"
+      "version": "2.20.0"
     },
     "commons-logging:commons-logging": {
       "shasums": {
         "jar": "f8ead8943401081dea0aa824b5b1ba40a0e4ed297a572a0f02258150a0b62357"
       },
       "version": "1.3.6"
+    },
+    "io.lettuce:lettuce-core": {
+      "shasums": {
+        "jar": "86e245a6cfc36a40aaa1f54027e639a70cb4008d12717164041aefe9bbd072c1"
+      },
+      "version": "7.5.2.RELEASE"
     },
     "io.micrometer:micrometer-commons": {
       "shasums": {
@@ -355,6 +424,66 @@
         "jar": "eb34f0cd84a879393ae5c21160fc06385ccdc74f36a4d1e31b199f59acfdaf71"
       },
       "version": "1.17.1"
+    },
+    "io.netty:netty-buffer": {
+      "shasums": {
+        "jar": "0d249178ec0204b35a6ad3e5ac8a6c2ecb3eb496c6cdae40b8eca4fa3cb6a0c7"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-codec-base": {
+      "shasums": {
+        "jar": "3b92bc3b7d231fa6f4889b2b9281cae6b634428b8121fb1b9b5fccba1543d352"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-codec-dns": {
+      "shasums": {
+        "jar": "394f4649a824683735f28b299d0a48caff059ae30e654e2abf8b3f392af4d374"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-common": {
+      "shasums": {
+        "jar": "502aae2a6680e9bca3558a3fa098f06dc4d87340b8b714e925a6d690871c092a"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-handler": {
+      "shasums": {
+        "jar": "4df11c7520b556c5e2c84b939182699d48fcbb09e97a6bb5e1c0b6835227d126"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-resolver": {
+      "shasums": {
+        "jar": "7a4b599b9c0c29a505d3b7311f142df883fb27d0f67495a7cbaf533b0e456623"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-resolver-dns": {
+      "shasums": {
+        "jar": "d332481c22136a68c2ee9e45e86212174932587d93a5dd4d201e196828bf9f91"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-transport": {
+      "shasums": {
+        "jar": "d2409ce3a735cbab4188d0ea5d82abed823a6a07a8389f49af4a9e1243a562bc"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-transport-native-unix-common": {
+      "shasums": {
+        "jar": "e01aa467b9104de54a57c08c290f70b22e53ec97cf5583c87c112170ef5832cc"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.projectreactor:reactor-core": {
+      "shasums": {
+        "jar": "9a5f1bfc5ad0416a410ff63beaa279cc30c2da3ae9b111a678c83c99298a1551"
+      },
+      "version": "3.8.7"
     },
     "io.xspec:xspec": {
       "shasums": {
@@ -398,6 +527,12 @@
       },
       "version": "1.18.11"
     },
+    "net.java.dev.jna:jna": {
+      "shasums": {
+        "jar": "260c4b1e22b1db9e110ee441c4f13ce115f841fa48c41d78750986214b395557"
+      },
+      "version": "5.18.1"
+    },
     "net.sf.saxon:Saxon-HE": {
       "shasums": {
         "jar": "91986ee8d80c4bafce10decfff01e618c00bd6368f0103da59b2b88b19cf75d3"
@@ -406,9 +541,9 @@
     },
     "org.apache.commons:commons-compress": {
       "shasums": {
-        "jar": "293d80f54b536b74095dcd7ea3cf0a29bbfc3402519281332495f4420d370d16"
+        "jar": "e1522945218456f3649a39bc4afd70ce4bd466221519dba7d378f2141a4642ca"
       },
-      "version": "1.27.1"
+      "version": "1.28.0"
     },
     "org.apache.commons:commons-lang3": {
       "shasums": {
@@ -536,6 +671,12 @@
       },
       "version": "3.6.3.Final"
     },
+    "org.jetbrains:annotations": {
+      "shasums": {
+        "jar": "195fb0da046d55bb042e91543484cf1da68b02bb7afbfe031f229e45ac84b3f2"
+      },
+      "version": "17.0.0"
+    },
     "org.jmolecules.integrations:jmolecules-archunit": {
       "shasums": {
         "jar": "5291177ba1d1c9c430a7630fa64c0bcfc3d74b432ccd4362d12bf227d96cb99a"
@@ -545,6 +686,12 @@
     "org.jmolecules:jmolecules-ddd": {
       "shasums": {
         "jar": "29c9013e9110ef169a9564bc13fdf3f77e6bcece19fa2938cb11b9f29d497d78"
+      },
+      "version": "2.0.1"
+    },
+    "org.jmolecules:jmolecules-events": {
+      "shasums": {
+        "jar": "2dd20f02039c825de38c381d76a0f5cc912b9ab85f9fb6dabf7b10c1c3c9e983"
       },
       "version": "2.0.1"
     },
@@ -632,6 +779,18 @@
       },
       "version": "1.3.0"
     },
+    "org.reactivestreams:reactive-streams": {
+      "shasums": {
+        "jar": "f75ca597789b3dac58f61857b9ac2e1034a68fa672db35055a8fb4509e325f28"
+      },
+      "version": "1.0.4"
+    },
+    "org.rnorth.duct-tape:duct-tape": {
+      "shasums": {
+        "jar": "31cef12ddec979d1f86d7cf708c41a17da523d05c685fd6642e9d0b2addb7240"
+      },
+      "version": "1.0.8"
+    },
     "org.slf4j:jul-to-slf4j": {
       "shasums": {
         "jar": "cbb7d1aaaa9e871eb1a06594abd911bf97027152976edf1edc315be75239204e"
@@ -665,6 +824,18 @@
     "org.springframework.boot:spring-boot-autoconfigure": {
       "shasums": {
         "jar": "59228756ddd76cea050f95d86deff334789bc53b6688beaa673b1af2b9794592"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-data-commons": {
+      "shasums": {
+        "jar": "e9911b99825ea5650827ec1e2d2fc1890c7e63b6f048c1f4dba2c8e85ff6d354"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-data-redis": {
+      "shasums": {
+        "jar": "8df7709a73616c85f12fbee0476a2856a766cda70c6ad87c9a24062b8fe34c91"
       },
       "version": "4.1.1"
     },
@@ -710,6 +881,18 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-netty": {
+      "shasums": {
+        "jar": "09f218966bcdc79014269b2e79fc705761d9d15113ad7cecc5333ebf0e7ee630"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-persistence": {
+      "shasums": {
+        "jar": "0f78d2556ac3ed75f9eaf3134a1fba94ad1ec3414b52aa279c1f690217e71e3c"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-restclient": {
       "shasums": {
         "jar": "e613f02dafc91120634aff26272e77fe1e56d6a644967bd74ed7beb7f199b17e"
@@ -731,6 +914,12 @@
     "org.springframework.boot:spring-boot-starter-actuator": {
       "shasums": {
         "jar": "d26bb8461ccc417c97a869fbd2e9f0067ce8a56a9ab6058093097ca16e4cc128"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-starter-data-redis": {
+      "shasums": {
+        "jar": "98b8367cff4cc11005e43452c45dafd0ce9c7f66d20411e6f0850c99bc79575d"
       },
       "version": "4.1.1"
     },
@@ -788,9 +977,21 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-testcontainers": {
+      "shasums": {
+        "jar": "649aa8fb59153268e83e14b95b5652f8a4b26020bdf79c957eb12bc6c7807418"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-tomcat": {
       "shasums": {
         "jar": "17f65629e4eb3c979c0572b69b57d630bb12e64869e9d7520adddaa6734256b6"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-transaction": {
+      "shasums": {
+        "jar": "e7f2fad4fe65bf6aaf1b1a538a68a1cf69988adb558f4a0fc0992a8be4fddf64"
       },
       "version": "4.1.1"
     },
@@ -809,6 +1010,24 @@
     "org.springframework.boot:spring-boot-webmvc": {
       "shasums": {
         "jar": "9f08c1fb938c45a8693fec5f3065be3aca203948a7ab4d56b06444986f75a6b2"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.data:spring-data-commons": {
+      "shasums": {
+        "jar": "cf2a3f9bfabefca1a8c2c0f0a65c393d9ff83b0cb1cf7b705accac18a6ed0ee4"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.data:spring-data-keyvalue": {
+      "shasums": {
+        "jar": "e8986c8e2577d271096266335a798c8fb5df91fd2fdf85607252056884fb554d"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.data:spring-data-redis": {
+      "shasums": {
+        "jar": "ad609b5a51bb8591cd923d358125a65d9bea193f79480a37ae60a1d0d5ae55b2"
       },
       "version": "4.1.1"
     },
@@ -842,6 +1061,12 @@
       },
       "version": "7.0.9"
     },
+    "org.springframework:spring-context-support": {
+      "shasums": {
+        "jar": "3c0c35a0371539f5e7d4e9d0226b9a009a4109cd0e20e805e27132dd6ae0727d"
+      },
+      "version": "7.0.9"
+    },
     "org.springframework:spring-core": {
       "shasums": {
         "jar": "5195f4722699b39878d99a832549fe65df2890b159d063b88fff31b1ca65ae36"
@@ -854,9 +1079,27 @@
       },
       "version": "7.0.9"
     },
+    "org.springframework:spring-messaging": {
+      "shasums": {
+        "jar": "19ea7561e5d61e19bee0c94733d03bbf9384c9356eea2d4e90cce7ba3c0ab01b"
+      },
+      "version": "7.0.9"
+    },
+    "org.springframework:spring-oxm": {
+      "shasums": {
+        "jar": "213b742973516a7ae0846c79757cf905b634e2367ee0bdc0c34a067d365f922b"
+      },
+      "version": "7.0.9"
+    },
     "org.springframework:spring-test": {
       "shasums": {
         "jar": "6ce8fc116f5d309b9ac50a6738bd1b15ea4012a4a5563c0ee89b795bfc9af0dc"
+      },
+      "version": "7.0.9"
+    },
+    "org.springframework:spring-tx": {
+      "shasums": {
+        "jar": "bfb15da6e096e2c0752e9db9987d2415bf0da1d744efc988535c10c6b6c2eedd"
       },
       "version": "7.0.9"
     },
@@ -871,6 +1114,12 @@
         "jar": "8f114c1461692c5e534e82b27de23b7fb23370db8dee7ce0c92d5106906c9555"
       },
       "version": "7.0.9"
+    },
+    "org.testcontainers:testcontainers": {
+      "shasums": {
+        "jar": "0466f481343d5f350a91274cd7bf984308cbaf90d706247fd1cf4b1a8010c2e1"
+      },
+      "version": "2.0.5"
     },
     "org.xmlresolver:xmlresolver": {
       "shasums": {
@@ -897,6 +1146,12 @@
       },
       "version": "2.6"
     },
+    "redis.clients.authentication:redis-authx-core": {
+      "shasums": {
+        "jar": "cc56edb08b3df8562cddac108dca61907d21cc4ad04de05e9f5d1b01058390af"
+      },
+      "version": "0.1.1-beta2"
+    },
     "tools.jackson.core:jackson-core": {
       "shasums": {
         "jar": "9431b7fa2673bbb618c11d865fe15e13222fd182a214ff998cb7e56afd8f35d2"
@@ -913,6 +1168,15 @@
   "dependencies": {
     "ch.qos.logback:logback-classic": [
       "ch.qos.logback:logback-core",
+      "org.slf4j:slf4j-api"
+    ],
+    "com.github.docker-java:docker-java-api": [
+      "com.fasterxml.jackson.core:jackson-annotations",
+      "org.slf4j:slf4j-api"
+    ],
+    "com.github.docker-java:docker-java-transport-zerodep": [
+      "com.github.docker-java:docker-java-transport",
+      "net.java.dev.jna:jna",
       "org.slf4j:slf4j-api"
     ],
     "com.google.guava:guava": [
@@ -934,6 +1198,14 @@
       "org.checkerframework:dataflow-nullaway",
       "org.jspecify:jspecify"
     ],
+    "io.lettuce:lettuce-core": [
+      "io.netty:netty-common",
+      "io.netty:netty-handler",
+      "io.netty:netty-resolver-dns",
+      "io.netty:netty-transport",
+      "io.projectreactor:reactor-core",
+      "redis.clients.authentication:redis-authx-core"
+    ],
     "io.micrometer:micrometer-commons": [
       "org.jspecify:jspecify"
     ],
@@ -952,6 +1224,54 @@
     "io.micrometer:micrometer-observation": [
       "io.micrometer:micrometer-commons",
       "org.jspecify:jspecify"
+    ],
+    "io.netty:netty-buffer": [
+      "io.netty:netty-common"
+    ],
+    "io.netty:netty-codec-base": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-common",
+      "io.netty:netty-transport"
+    ],
+    "io.netty:netty-codec-dns": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-codec-base",
+      "io.netty:netty-common",
+      "io.netty:netty-transport"
+    ],
+    "io.netty:netty-handler": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-codec-base",
+      "io.netty:netty-common",
+      "io.netty:netty-resolver",
+      "io.netty:netty-transport",
+      "io.netty:netty-transport-native-unix-common"
+    ],
+    "io.netty:netty-resolver": [
+      "io.netty:netty-common"
+    ],
+    "io.netty:netty-resolver-dns": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-codec-base",
+      "io.netty:netty-codec-dns",
+      "io.netty:netty-common",
+      "io.netty:netty-handler",
+      "io.netty:netty-resolver",
+      "io.netty:netty-transport"
+    ],
+    "io.netty:netty-transport": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-common",
+      "io.netty:netty-resolver"
+    ],
+    "io.netty:netty-transport-native-unix-common": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-common",
+      "io.netty:netty-transport"
+    ],
+    "io.projectreactor:reactor-core": [
+      "org.jspecify:jspecify",
+      "org.reactivestreams:reactive-streams"
     ],
     "io.xspec:xspec": [
       "net.sf.saxon:Saxon-HE"
@@ -1017,6 +1337,9 @@
     "org.jmolecules:jmolecules-ddd": [
       "org.jmolecules:jstereotype"
     ],
+    "org.jmolecules:jmolecules-events": [
+      "org.jmolecules:jstereotype"
+    ],
     "org.jmolecules:jmolecules-onion-architecture": [
       "org.jmolecules:jstereotype"
     ],
@@ -1061,6 +1384,9 @@
     "org.opentest4j.reporting:open-test-reporting-tooling-spi": [
       "org.apiguardian:apiguardian-api"
     ],
+    "org.rnorth.duct-tape:duct-tape": [
+      "org.jetbrains:annotations"
+    ],
     "org.slf4j:jul-to-slf4j": [
       "org.slf4j:slf4j-api"
     ],
@@ -1077,6 +1403,19 @@
     ],
     "org.springframework.boot:spring-boot-autoconfigure": [
       "org.springframework.boot:spring-boot"
+    ],
+    "org.springframework.boot:spring-boot-data-commons": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-persistence",
+      "org.springframework.data:spring-data-commons"
+    ],
+    "org.springframework.boot:spring-boot-data-redis": [
+      "io.lettuce:lettuce-core",
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-data-commons",
+      "org.springframework.boot:spring-boot-netty",
+      "org.springframework.boot:spring-boot-transaction",
+      "org.springframework.data:spring-data-redis"
     ],
     "org.springframework.boot:spring-boot-health": [
       "org.springframework.boot:spring-boot"
@@ -1107,6 +1446,14 @@
       "io.micrometer:micrometer-observation",
       "org.springframework.boot:spring-boot"
     ],
+    "org.springframework.boot:spring-boot-netty": [
+      "io.netty:netty-common",
+      "org.springframework.boot:spring-boot"
+    ],
+    "org.springframework.boot:spring-boot-persistence": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework:spring-tx"
+    ],
     "org.springframework.boot:spring-boot-restclient": [
       "org.springframework.boot:spring-boot",
       "org.springframework.boot:spring-boot-http-client",
@@ -1129,6 +1476,11 @@
       "org.springframework.boot:spring-boot-health",
       "org.springframework.boot:spring-boot-starter",
       "org.springframework.boot:spring-boot-starter-micrometer-metrics"
+    ],
+    "org.springframework.boot:spring-boot-starter-data-redis": [
+      "org.springframework.boot:spring-boot-data-redis",
+      "org.springframework.boot:spring-boot-starter",
+      "org.springframework:spring-messaging"
     ],
     "org.springframework.boot:spring-boot-starter-jackson": [
       "org.springframework.boot:spring-boot-jackson",
@@ -1176,10 +1528,19 @@
       "org.springframework.boot:spring-boot",
       "org.springframework:spring-test"
     ],
+    "org.springframework.boot:spring-boot-testcontainers": [
+      "org.springframework.boot:spring-boot-autoconfigure",
+      "org.testcontainers:testcontainers"
+    ],
     "org.springframework.boot:spring-boot-tomcat": [
       "jakarta.annotation:jakarta.annotation-api",
       "org.apache.tomcat.embed:tomcat-embed-core",
       "org.springframework.boot:spring-boot-web-server"
+    ],
+    "org.springframework.boot:spring-boot-transaction": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-persistence",
+      "org.springframework:spring-tx"
     ],
     "org.springframework.boot:spring-boot-validation": [
       "org.apache.tomcat.embed:tomcat-embed-el",
@@ -1195,6 +1556,25 @@
       "org.springframework.boot:spring-boot-servlet",
       "org.springframework:spring-web",
       "org.springframework:spring-webmvc"
+    ],
+    "org.springframework.data:spring-data-commons": [
+      "org.slf4j:slf4j-api",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-core"
+    ],
+    "org.springframework.data:spring-data-keyvalue": [
+      "org.slf4j:slf4j-api",
+      "org.springframework.data:spring-data-commons",
+      "org.springframework:spring-context",
+      "org.springframework:spring-tx"
+    ],
+    "org.springframework.data:spring-data-redis": [
+      "org.slf4j:slf4j-api",
+      "org.springframework.data:spring-data-keyvalue",
+      "org.springframework:spring-aop",
+      "org.springframework:spring-context-support",
+      "org.springframework:spring-oxm",
+      "org.springframework:spring-tx"
     ],
     "org.springframework.modulith:spring-modulith-api": [
       "org.jspecify:jspecify"
@@ -1220,6 +1600,11 @@
       "org.springframework:spring-core",
       "org.springframework:spring-expression"
     ],
+    "org.springframework:spring-context-support": [
+      "org.springframework:spring-beans",
+      "org.springframework:spring-context",
+      "org.springframework:spring-core"
+    ],
     "org.springframework:spring-core": [
       "commons-logging:commons-logging",
       "org.jspecify:jspecify"
@@ -1227,7 +1612,20 @@
     "org.springframework:spring-expression": [
       "org.springframework:spring-core"
     ],
+    "org.springframework:spring-messaging": [
+      "org.springframework:spring-beans",
+      "org.springframework:spring-core"
+    ],
+    "org.springframework:spring-oxm": [
+      "jakarta.xml.bind:jakarta.xml.bind-api",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-core"
+    ],
     "org.springframework:spring-test": [
+      "org.springframework:spring-core"
+    ],
+    "org.springframework:spring-tx": [
+      "org.springframework:spring-beans",
       "org.springframework:spring-core"
     ],
     "org.springframework:spring-web": [
@@ -1243,12 +1641,22 @@
       "org.springframework:spring-expression",
       "org.springframework:spring-web"
     ],
+    "org.testcontainers:testcontainers": [
+      "com.github.docker-java:docker-java-api",
+      "com.github.docker-java:docker-java-transport-zerodep",
+      "org.apache.commons:commons-compress",
+      "org.rnorth.duct-tape:duct-tape",
+      "org.slf4j:slf4j-api"
+    ],
     "org.xmlunit:xmlunit-assertj3": [
       "org.assertj:assertj-core",
       "org.xmlunit:xmlunit-core"
     ],
     "org.xmlunit:xmlunit-core": [
       "jakarta.xml.bind:jakarta.xml.bind-api"
+    ],
+    "redis.clients.authentication:redis-authx-core": [
+      "org.slf4j:slf4j-api"
     ],
     "tools.jackson.core:jackson-databind": [
       "com.fasterxml.jackson.core:jackson-annotations",
@@ -1334,6 +1742,92 @@
       "com.fasterxml.classmate.members",
       "com.fasterxml.classmate.types",
       "com.fasterxml.classmate.util"
+    ],
+    "com.github.docker-java:docker-java-api": [
+      "com.github.dockerjava.api",
+      "com.github.dockerjava.api.async",
+      "com.github.dockerjava.api.command",
+      "com.github.dockerjava.api.exception",
+      "com.github.dockerjava.api.model"
+    ],
+    "com.github.docker-java:docker-java-transport": [
+      "com.github.dockerjava.transport"
+    ],
+    "com.github.docker-java:docker-java-transport-zerodep": [
+      "com.github.dockerjava.zerodep",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.async",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.async.methods",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.auth",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.classic",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.classic.methods",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.config",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.cookie",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.entity",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.entity.mime",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.impl",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.impl.async",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.impl.auth",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.impl.classic",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.impl.compat",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.impl.cookie",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.impl.io",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.impl.nio",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.impl.routing",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.io",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.nio",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.protocol",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.psl",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.routing",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.socket",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.ssl",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.utils",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.validator",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.annotation",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.concurrent",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.function",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.config",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.impl",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.impl.bootstrap",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.impl.io",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.impl.nio",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.impl.routing",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.io",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.io.entity",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.io.ssl",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.io.support",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.message",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.nio",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.nio.command",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.nio.entity",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.nio.ssl",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.nio.support",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.nio.support.classic",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.protocol",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.ssl",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.support",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.config",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.frame",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.hpack",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.impl",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.impl.io",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.impl.nio",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.impl.nio.bootstrap",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.nio",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.nio.command",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.nio.pool",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.nio.support",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.protocol",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http2.ssl",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.io",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.net",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.pool",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.reactor",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.reactor.ssl",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.ssl",
+      "com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.util"
     ],
     "com.github.javaparser:javaparser-core": [
       "com.github.javaparser",
@@ -1547,6 +2041,86 @@
       "org.apache.commons.logging",
       "org.apache.commons.logging.impl"
     ],
+    "io.lettuce:lettuce-core": [
+      "io.lettuce.authx",
+      "io.lettuce.core",
+      "io.lettuce.core.annotations",
+      "io.lettuce.core.api",
+      "io.lettuce.core.api.async",
+      "io.lettuce.core.api.coroutines",
+      "io.lettuce.core.api.push",
+      "io.lettuce.core.api.reactive",
+      "io.lettuce.core.api.sync",
+      "io.lettuce.core.cluster",
+      "io.lettuce.core.cluster.api",
+      "io.lettuce.core.cluster.api.async",
+      "io.lettuce.core.cluster.api.coroutines",
+      "io.lettuce.core.cluster.api.push",
+      "io.lettuce.core.cluster.api.reactive",
+      "io.lettuce.core.cluster.api.sync",
+      "io.lettuce.core.cluster.event",
+      "io.lettuce.core.cluster.models.partitions",
+      "io.lettuce.core.cluster.models.slots",
+      "io.lettuce.core.cluster.pubsub",
+      "io.lettuce.core.cluster.pubsub.api.async",
+      "io.lettuce.core.cluster.pubsub.api.reactive",
+      "io.lettuce.core.cluster.pubsub.api.sync",
+      "io.lettuce.core.cluster.topology",
+      "io.lettuce.core.codec",
+      "io.lettuce.core.datastructure.queue",
+      "io.lettuce.core.dynamic",
+      "io.lettuce.core.dynamic.annotation",
+      "io.lettuce.core.dynamic.batch",
+      "io.lettuce.core.dynamic.codec",
+      "io.lettuce.core.dynamic.domain",
+      "io.lettuce.core.dynamic.intercept",
+      "io.lettuce.core.dynamic.output",
+      "io.lettuce.core.dynamic.parameter",
+      "io.lettuce.core.dynamic.segment",
+      "io.lettuce.core.dynamic.support",
+      "io.lettuce.core.event",
+      "io.lettuce.core.event.cluster",
+      "io.lettuce.core.event.command",
+      "io.lettuce.core.event.connection",
+      "io.lettuce.core.event.jfr",
+      "io.lettuce.core.event.metrics",
+      "io.lettuce.core.failover",
+      "io.lettuce.core.failover.api",
+      "io.lettuce.core.failover.event",
+      "io.lettuce.core.failover.health",
+      "io.lettuce.core.failover.metrics",
+      "io.lettuce.core.internal",
+      "io.lettuce.core.json",
+      "io.lettuce.core.json.arguments",
+      "io.lettuce.core.masterreplica",
+      "io.lettuce.core.masterslave",
+      "io.lettuce.core.metrics",
+      "io.lettuce.core.models.command",
+      "io.lettuce.core.models.role",
+      "io.lettuce.core.models.stream",
+      "io.lettuce.core.output",
+      "io.lettuce.core.protocol",
+      "io.lettuce.core.pubsub",
+      "io.lettuce.core.pubsub.api.async",
+      "io.lettuce.core.pubsub.api.reactive",
+      "io.lettuce.core.pubsub.api.sync",
+      "io.lettuce.core.resource",
+      "io.lettuce.core.search",
+      "io.lettuce.core.search.aggregateutils",
+      "io.lettuce.core.search.arguments",
+      "io.lettuce.core.search.arguments.hybrid",
+      "io.lettuce.core.sentinel",
+      "io.lettuce.core.sentinel.api",
+      "io.lettuce.core.sentinel.api.async",
+      "io.lettuce.core.sentinel.api.coroutines",
+      "io.lettuce.core.sentinel.api.reactive",
+      "io.lettuce.core.sentinel.api.sync",
+      "io.lettuce.core.support",
+      "io.lettuce.core.support.caching",
+      "io.lettuce.core.support.http",
+      "io.lettuce.core.tracing",
+      "io.lettuce.core.vector"
+    ],
     "io.micrometer:micrometer-commons": [
       "io.micrometer.common",
       "io.micrometer.common.annotation",
@@ -1615,6 +2189,86 @@
       "io.micrometer.observation.contextpropagation",
       "io.micrometer.observation.docs",
       "io.micrometer.observation.transport"
+    ],
+    "io.netty:netty-buffer": [
+      "io.netty.buffer",
+      "io.netty.buffer.search"
+    ],
+    "io.netty:netty-codec-base": [
+      "io.netty.handler.codec",
+      "io.netty.handler.codec.base64",
+      "io.netty.handler.codec.bytes",
+      "io.netty.handler.codec.json",
+      "io.netty.handler.codec.serialization",
+      "io.netty.handler.codec.string"
+    ],
+    "io.netty:netty-codec-dns": [
+      "io.netty.handler.codec.dns"
+    ],
+    "io.netty:netty-common": [
+      "io.netty.util",
+      "io.netty.util.collection",
+      "io.netty.util.concurrent",
+      "io.netty.util.internal",
+      "io.netty.util.internal.logging",
+      "io.netty.util.internal.shaded.org.jctools.counters",
+      "io.netty.util.internal.shaded.org.jctools.maps",
+      "io.netty.util.internal.shaded.org.jctools.queues",
+      "io.netty.util.internal.shaded.org.jctools.queues.atomic",
+      "io.netty.util.internal.shaded.org.jctools.queues.atomic.unpadded",
+      "io.netty.util.internal.shaded.org.jctools.queues.unpadded",
+      "io.netty.util.internal.shaded.org.jctools.util",
+      "io.netty.util.internal.svm"
+    ],
+    "io.netty:netty-handler": [
+      "io.netty.handler.address",
+      "io.netty.handler.flow",
+      "io.netty.handler.flush",
+      "io.netty.handler.ipfilter",
+      "io.netty.handler.logging",
+      "io.netty.handler.pcap",
+      "io.netty.handler.ssl",
+      "io.netty.handler.ssl.util",
+      "io.netty.handler.stream",
+      "io.netty.handler.timeout",
+      "io.netty.handler.traffic"
+    ],
+    "io.netty:netty-resolver": [
+      "io.netty.resolver"
+    ],
+    "io.netty:netty-resolver-dns": [
+      "io.netty.resolver.dns"
+    ],
+    "io.netty:netty-transport": [
+      "io.netty.bootstrap",
+      "io.netty.channel",
+      "io.netty.channel.embedded",
+      "io.netty.channel.group",
+      "io.netty.channel.internal",
+      "io.netty.channel.local",
+      "io.netty.channel.nio",
+      "io.netty.channel.oio",
+      "io.netty.channel.pool",
+      "io.netty.channel.socket",
+      "io.netty.channel.socket.nio",
+      "io.netty.channel.socket.oio"
+    ],
+    "io.netty:netty-transport-native-unix-common": [
+      "io.netty.channel.unix"
+    ],
+    "io.projectreactor:reactor-core": [
+      "reactor.adapter",
+      "reactor.core",
+      "reactor.core.observability",
+      "reactor.core.publisher",
+      "reactor.core.scheduler",
+      "reactor.util",
+      "reactor.util.annotation",
+      "reactor.util.concurrent",
+      "reactor.util.context",
+      "reactor.util.function",
+      "reactor.util.repeat",
+      "reactor.util.retry"
     ],
     "io.xspec:xspec": [
       "com.jenitennison.xslt.tests",
@@ -1689,6 +2343,12 @@
       "net.bytebuddy.utility.nullability",
       "net.bytebuddy.utility.privilege",
       "net.bytebuddy.utility.visitor"
+    ],
+    "net.java.dev.jna:jna": [
+      "com.sun.jna",
+      "com.sun.jna.internal",
+      "com.sun.jna.ptr",
+      "com.sun.jna.win32"
     ],
     "net.sf.saxon:Saxon-HE": [
       "net.sf.saxon",
@@ -2248,6 +2908,10 @@
     "org.jboss.logging:jboss-logging": [
       "org.jboss.logging"
     ],
+    "org.jetbrains:annotations": [
+      "org.intellij.lang.annotations",
+      "org.jetbrains.annotations"
+    ],
     "org.jmolecules.integrations:jmolecules-archunit": [
       "org.jmolecules.archunit",
       "org.jmolecules.spring.core",
@@ -2259,6 +2923,10 @@
     "org.jmolecules:jmolecules-ddd": [
       "org.jmolecules.ddd.annotation",
       "org.jmolecules.ddd.types"
+    ],
+    "org.jmolecules:jmolecules-events": [
+      "org.jmolecules.event.annotation",
+      "org.jmolecules.event.types"
     ],
     "org.jmolecules:jmolecules-onion-architecture": [
       "org.jmolecules.architecture.onion.classical",
@@ -2390,6 +3058,17 @@
     ],
     "org.opentest4j:opentest4j": [
       "org.opentest4j"
+    ],
+    "org.reactivestreams:reactive-streams": [
+      "org.reactivestreams"
+    ],
+    "org.rnorth.duct-tape:duct-tape": [
+      "org.rnorth.ducttape",
+      "org.rnorth.ducttape.circuitbreakers",
+      "org.rnorth.ducttape.inconsistents",
+      "org.rnorth.ducttape.ratelimits",
+      "org.rnorth.ducttape.timeouts",
+      "org.rnorth.ducttape.unreliables"
     ],
     "org.slf4j:jul-to-slf4j": [
       "org.slf4j.bridge"
@@ -2524,6 +3203,19 @@
       "org.springframework.boot.autoconfigure.web",
       "org.springframework.boot.autoconfigure.web.format"
     ],
+    "org.springframework.boot:spring-boot-data-commons": [
+      "org.springframework.boot.data.autoconfigure.metrics",
+      "org.springframework.boot.data.autoconfigure.web",
+      "org.springframework.boot.data.metrics"
+    ],
+    "org.springframework.boot:spring-boot-data-redis": [
+      "org.springframework.boot.data.redis.autoconfigure",
+      "org.springframework.boot.data.redis.autoconfigure.health",
+      "org.springframework.boot.data.redis.autoconfigure.observation",
+      "org.springframework.boot.data.redis.docker.compose",
+      "org.springframework.boot.data.redis.health",
+      "org.springframework.boot.data.redis.testcontainers"
+    ],
     "org.springframework.boot:spring-boot-health": [
       "org.springframework.boot.health.actuate.endpoint",
       "org.springframework.boot.health.application",
@@ -2593,6 +3285,12 @@
     "org.springframework.boot:spring-boot-micrometer-observation": [
       "org.springframework.boot.micrometer.observation.autoconfigure"
     ],
+    "org.springframework.boot:spring-boot-netty": [
+      "org.springframework.boot.netty.autoconfigure"
+    ],
+    "org.springframework.boot:spring-boot-persistence": [
+      "org.springframework.boot.persistence.autoconfigure"
+    ],
     "org.springframework.boot:spring-boot-restclient": [
       "org.springframework.boot.restclient",
       "org.springframework.boot.restclient.autoconfigure",
@@ -2624,6 +3322,13 @@
       "org.springframework.boot.test.web.htmlunit",
       "org.springframework.boot.test.web.server"
     ],
+    "org.springframework.boot:spring-boot-testcontainers": [
+      "org.springframework.boot.testcontainers.beans",
+      "org.springframework.boot.testcontainers.context",
+      "org.springframework.boot.testcontainers.lifecycle",
+      "org.springframework.boot.testcontainers.properties",
+      "org.springframework.boot.testcontainers.service.connection"
+    ],
     "org.springframework.boot:spring-boot-tomcat": [
       "org.springframework.boot.tomcat",
       "org.springframework.boot.tomcat.autoconfigure",
@@ -2634,6 +3339,10 @@
       "org.springframework.boot.tomcat.metrics",
       "org.springframework.boot.tomcat.reactive",
       "org.springframework.boot.tomcat.servlet"
+    ],
+    "org.springframework.boot:spring-boot-transaction": [
+      "org.springframework.boot.transaction.autoconfigure",
+      "org.springframework.boot.transaction.jta.autoconfigure"
     ],
     "org.springframework.boot:spring-boot-validation": [
       "org.springframework.boot.validation.autoconfigure"
@@ -2659,6 +3368,109 @@
       "org.springframework.boot.webmvc.autoconfigure.actuate.web.mappings",
       "org.springframework.boot.webmvc.autoconfigure.error",
       "org.springframework.boot.webmvc.error"
+    ],
+    "org.springframework.data:spring-data-commons": [
+      "org.springframework.data.annotation",
+      "org.springframework.data.aot",
+      "org.springframework.data.auditing",
+      "org.springframework.data.auditing.config",
+      "org.springframework.data.config",
+      "org.springframework.data.convert",
+      "org.springframework.data.core",
+      "org.springframework.data.crossstore",
+      "org.springframework.data.domain",
+      "org.springframework.data.domain.jaxb",
+      "org.springframework.data.expression",
+      "org.springframework.data.geo",
+      "org.springframework.data.geo.format",
+      "org.springframework.data.history",
+      "org.springframework.data.javapoet",
+      "org.springframework.data.mapping",
+      "org.springframework.data.mapping.callback",
+      "org.springframework.data.mapping.context",
+      "org.springframework.data.mapping.model",
+      "org.springframework.data.projection",
+      "org.springframework.data.querydsl",
+      "org.springframework.data.querydsl.aot",
+      "org.springframework.data.querydsl.binding",
+      "org.springframework.data.repository",
+      "org.springframework.data.repository.aot.generate",
+      "org.springframework.data.repository.aot.hint",
+      "org.springframework.data.repository.cdi",
+      "org.springframework.data.repository.config",
+      "org.springframework.data.repository.core",
+      "org.springframework.data.repository.core.support",
+      "org.springframework.data.repository.history",
+      "org.springframework.data.repository.history.support",
+      "org.springframework.data.repository.init",
+      "org.springframework.data.repository.kotlin",
+      "org.springframework.data.repository.query",
+      "org.springframework.data.repository.query.parser",
+      "org.springframework.data.repository.reactive",
+      "org.springframework.data.repository.support",
+      "org.springframework.data.repository.util",
+      "org.springframework.data.spel",
+      "org.springframework.data.spel.spi",
+      "org.springframework.data.support",
+      "org.springframework.data.transaction",
+      "org.springframework.data.util",
+      "org.springframework.data.web",
+      "org.springframework.data.web.aot",
+      "org.springframework.data.web.config",
+      "org.springframework.data.web.querydsl"
+    ],
+    "org.springframework.data:spring-data-keyvalue": [
+      "org.springframework.data.keyvalue.annotation",
+      "org.springframework.data.keyvalue.aot",
+      "org.springframework.data.keyvalue.core",
+      "org.springframework.data.keyvalue.core.event",
+      "org.springframework.data.keyvalue.core.mapping",
+      "org.springframework.data.keyvalue.core.mapping.context",
+      "org.springframework.data.keyvalue.core.query",
+      "org.springframework.data.keyvalue.repository",
+      "org.springframework.data.keyvalue.repository.config",
+      "org.springframework.data.keyvalue.repository.query",
+      "org.springframework.data.keyvalue.repository.support",
+      "org.springframework.data.map",
+      "org.springframework.data.map.repository.config"
+    ],
+    "org.springframework.data:spring-data-redis": [
+      "org.springframework.data.redis",
+      "org.springframework.data.redis.annotation",
+      "org.springframework.data.redis.aot",
+      "org.springframework.data.redis.cache",
+      "org.springframework.data.redis.config",
+      "org.springframework.data.redis.connection",
+      "org.springframework.data.redis.connection.convert",
+      "org.springframework.data.redis.connection.jedis",
+      "org.springframework.data.redis.connection.lettuce",
+      "org.springframework.data.redis.connection.lettuce.aot",
+      "org.springframework.data.redis.connection.stream",
+      "org.springframework.data.redis.connection.util",
+      "org.springframework.data.redis.connection.zset",
+      "org.springframework.data.redis.core",
+      "org.springframework.data.redis.core.convert",
+      "org.springframework.data.redis.core.index",
+      "org.springframework.data.redis.core.mapping",
+      "org.springframework.data.redis.core.query",
+      "org.springframework.data.redis.core.script",
+      "org.springframework.data.redis.core.types",
+      "org.springframework.data.redis.domain.geo",
+      "org.springframework.data.redis.hash",
+      "org.springframework.data.redis.listener",
+      "org.springframework.data.redis.listener.adapter",
+      "org.springframework.data.redis.listener.support",
+      "org.springframework.data.redis.messaging",
+      "org.springframework.data.redis.repository.cdi",
+      "org.springframework.data.redis.repository.configuration",
+      "org.springframework.data.redis.repository.core",
+      "org.springframework.data.redis.repository.query",
+      "org.springframework.data.redis.repository.support",
+      "org.springframework.data.redis.serializer",
+      "org.springframework.data.redis.stream",
+      "org.springframework.data.redis.support.atomic",
+      "org.springframework.data.redis.support.collections",
+      "org.springframework.data.redis.util"
     ],
     "org.springframework.modulith:spring-modulith-api": [
       "org.springframework.modulith"
@@ -2763,6 +3575,17 @@
       "org.springframework.validation.method",
       "org.springframework.validation.support"
     ],
+    "org.springframework:spring-context-support": [
+      "org.springframework.cache.caffeine",
+      "org.springframework.cache.jcache",
+      "org.springframework.cache.jcache.config",
+      "org.springframework.cache.jcache.interceptor",
+      "org.springframework.cache.transaction",
+      "org.springframework.mail",
+      "org.springframework.mail.javamail",
+      "org.springframework.scheduling.quartz",
+      "org.springframework.ui.freemarker"
+    ],
     "org.springframework:spring-core": [
       "org.springframework.aot",
       "org.springframework.aot.generate",
@@ -2833,6 +3656,39 @@
       "org.springframework.expression.spel.standard",
       "org.springframework.expression.spel.support"
     ],
+    "org.springframework:spring-messaging": [
+      "org.springframework.messaging",
+      "org.springframework.messaging.converter",
+      "org.springframework.messaging.core",
+      "org.springframework.messaging.handler",
+      "org.springframework.messaging.handler.annotation",
+      "org.springframework.messaging.handler.annotation.reactive",
+      "org.springframework.messaging.handler.annotation.support",
+      "org.springframework.messaging.handler.invocation",
+      "org.springframework.messaging.handler.invocation.reactive",
+      "org.springframework.messaging.rsocket",
+      "org.springframework.messaging.rsocket.annotation",
+      "org.springframework.messaging.rsocket.annotation.support",
+      "org.springframework.messaging.rsocket.service",
+      "org.springframework.messaging.simp",
+      "org.springframework.messaging.simp.annotation",
+      "org.springframework.messaging.simp.annotation.support",
+      "org.springframework.messaging.simp.broker",
+      "org.springframework.messaging.simp.config",
+      "org.springframework.messaging.simp.stomp",
+      "org.springframework.messaging.simp.user",
+      "org.springframework.messaging.support",
+      "org.springframework.messaging.tcp",
+      "org.springframework.messaging.tcp.reactor"
+    ],
+    "org.springframework:spring-oxm": [
+      "org.springframework.oxm",
+      "org.springframework.oxm.config",
+      "org.springframework.oxm.jaxb",
+      "org.springframework.oxm.mime",
+      "org.springframework.oxm.support",
+      "org.springframework.oxm.xstream"
+    ],
     "org.springframework:spring-test": [
       "org.springframework.mock.env",
       "org.springframework.mock.http",
@@ -2886,6 +3742,21 @@
       "org.springframework.test.web.servlet.result",
       "org.springframework.test.web.servlet.setup",
       "org.springframework.test.web.support"
+    ],
+    "org.springframework:spring-tx": [
+      "org.springframework.dao",
+      "org.springframework.dao.annotation",
+      "org.springframework.dao.support",
+      "org.springframework.jca.endpoint",
+      "org.springframework.jca.support",
+      "org.springframework.transaction",
+      "org.springframework.transaction.annotation",
+      "org.springframework.transaction.config",
+      "org.springframework.transaction.event",
+      "org.springframework.transaction.interceptor",
+      "org.springframework.transaction.jta",
+      "org.springframework.transaction.reactive",
+      "org.springframework.transaction.support"
     ],
     "org.springframework:spring-web": [
       "org.springframework.http",
@@ -2977,6 +3848,459 @@
       "org.springframework.web.servlet.view.xml",
       "org.springframework.web.servlet.view.xslt"
     ],
+    "org.testcontainers:testcontainers": [
+      "org.testcontainers",
+      "org.testcontainers.containers",
+      "org.testcontainers.containers.output",
+      "org.testcontainers.containers.startupcheck",
+      "org.testcontainers.containers.traits",
+      "org.testcontainers.containers.wait.internal",
+      "org.testcontainers.containers.wait.strategy",
+      "org.testcontainers.core",
+      "org.testcontainers.dockerclient",
+      "org.testcontainers.images",
+      "org.testcontainers.images.builder",
+      "org.testcontainers.images.builder.dockerfile",
+      "org.testcontainers.images.builder.dockerfile.statement",
+      "org.testcontainers.images.builder.dockerfile.traits",
+      "org.testcontainers.images.builder.traits",
+      "org.testcontainers.jib",
+      "org.testcontainers.lifecycle",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.async",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.base",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.exc",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.filter",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.format",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.internal.shaded.fdp.v2_18_4",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.io",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.io.schubfach",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.json",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.json.async",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.sym",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.type",
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.util",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.annotation",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.cfg",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.deser",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.deser.impl",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.deser.std",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.exc",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.ext",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.introspect",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.jdk14",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.json",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.jsonFormatVisitors",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.jsonschema",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.jsontype",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.jsontype.impl",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.module",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.node",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.ser",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.ser.impl",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.ser.std",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.type",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.util",
+      "org.testcontainers.shaded.com.fasterxml.jackson.databind.util.internal",
+      "org.testcontainers.shaded.com.github.dockerjava.core",
+      "org.testcontainers.shaded.com.github.dockerjava.core.async",
+      "org.testcontainers.shaded.com.github.dockerjava.core.command",
+      "org.testcontainers.shaded.com.github.dockerjava.core.dockerfile",
+      "org.testcontainers.shaded.com.github.dockerjava.core.exception",
+      "org.testcontainers.shaded.com.github.dockerjava.core.exec",
+      "org.testcontainers.shaded.com.github.dockerjava.core.util",
+      "org.testcontainers.shaded.com.google.common.annotations",
+      "org.testcontainers.shaded.com.google.common.base",
+      "org.testcontainers.shaded.com.google.common.base.internal",
+      "org.testcontainers.shaded.com.google.common.cache",
+      "org.testcontainers.shaded.com.google.common.collect",
+      "org.testcontainers.shaded.com.google.common.escape",
+      "org.testcontainers.shaded.com.google.common.eventbus",
+      "org.testcontainers.shaded.com.google.common.graph",
+      "org.testcontainers.shaded.com.google.common.hash",
+      "org.testcontainers.shaded.com.google.common.html",
+      "org.testcontainers.shaded.com.google.common.io",
+      "org.testcontainers.shaded.com.google.common.math",
+      "org.testcontainers.shaded.com.google.common.net",
+      "org.testcontainers.shaded.com.google.common.primitives",
+      "org.testcontainers.shaded.com.google.common.reflect",
+      "org.testcontainers.shaded.com.google.common.util.concurrent",
+      "org.testcontainers.shaded.com.google.common.util.concurrent.internal",
+      "org.testcontainers.shaded.com.google.common.xml",
+      "org.testcontainers.shaded.com.google.errorprone.annotations",
+      "org.testcontainers.shaded.com.google.errorprone.annotations.concurrent",
+      "org.testcontainers.shaded.com.google.thirdparty.publicsuffix",
+      "org.testcontainers.shaded.com.trilead.ssh2",
+      "org.testcontainers.shaded.com.trilead.ssh2.auth",
+      "org.testcontainers.shaded.com.trilead.ssh2.channel",
+      "org.testcontainers.shaded.com.trilead.ssh2.crypto",
+      "org.testcontainers.shaded.com.trilead.ssh2.crypto.cipher",
+      "org.testcontainers.shaded.com.trilead.ssh2.crypto.dh",
+      "org.testcontainers.shaded.com.trilead.ssh2.crypto.digest",
+      "org.testcontainers.shaded.com.trilead.ssh2.log",
+      "org.testcontainers.shaded.com.trilead.ssh2.packets",
+      "org.testcontainers.shaded.com.trilead.ssh2.sftp",
+      "org.testcontainers.shaded.com.trilead.ssh2.signature",
+      "org.testcontainers.shaded.com.trilead.ssh2.transport",
+      "org.testcontainers.shaded.com.trilead.ssh2.util",
+      "org.testcontainers.shaded.org.awaitility",
+      "org.testcontainers.shaded.org.awaitility.classpath",
+      "org.testcontainers.shaded.org.awaitility.constraint",
+      "org.testcontainers.shaded.org.awaitility.core",
+      "org.testcontainers.shaded.org.awaitility.pollinterval",
+      "org.testcontainers.shaded.org.awaitility.reflect",
+      "org.testcontainers.shaded.org.awaitility.reflect.exception",
+      "org.testcontainers.shaded.org.awaitility.spi",
+      "org.testcontainers.shaded.org.bouncycastle",
+      "org.testcontainers.shaded.org.bouncycastle.asn1",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.anssi",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.bc",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.bsi",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.cmc",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.cmp",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.cms",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.cms.ecc",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.crmf",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.cryptlib",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.cryptopro",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.dvcs",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.eac",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.edec",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.esf",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.ess",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.est",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.gm",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.gnu",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.iana",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.icao",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.isara",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.isismtt",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.isismtt.ocsp",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.isismtt.x509",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.iso",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.kisa",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.microsoft",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.misc",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.mod",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.mozilla",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.nist",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.nsri",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.ntt",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.ocsp",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.oiw",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.pkcs",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.rosstandart",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.sec",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.smime",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.teletrust",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.tsp",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.ua",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.util",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.x500",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.x500.style",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.x509",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.x509.qualified",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.x509.sigi",
+      "org.testcontainers.shaded.org.bouncycastle.asn1.x9",
+      "org.testcontainers.shaded.org.bouncycastle.cert",
+      "org.testcontainers.shaded.org.bouncycastle.cert.bc",
+      "org.testcontainers.shaded.org.bouncycastle.cert.cmp",
+      "org.testcontainers.shaded.org.bouncycastle.cert.crmf",
+      "org.testcontainers.shaded.org.bouncycastle.cert.crmf.bc",
+      "org.testcontainers.shaded.org.bouncycastle.cert.crmf.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.cert.dane",
+      "org.testcontainers.shaded.org.bouncycastle.cert.dane.fetcher",
+      "org.testcontainers.shaded.org.bouncycastle.cert.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.cert.ocsp",
+      "org.testcontainers.shaded.org.bouncycastle.cert.ocsp.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.cert.path",
+      "org.testcontainers.shaded.org.bouncycastle.cert.path.validations",
+      "org.testcontainers.shaded.org.bouncycastle.cert.selector",
+      "org.testcontainers.shaded.org.bouncycastle.cert.selector.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.cmc",
+      "org.testcontainers.shaded.org.bouncycastle.cms",
+      "org.testcontainers.shaded.org.bouncycastle.cms.bc",
+      "org.testcontainers.shaded.org.bouncycastle.cms.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.crypto",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.agreement",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.agreement.ecjpake",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.agreement.jpake",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.agreement.kdf",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.agreement.srp",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.commitments",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.constraints",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.digests",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.ec",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.encodings",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.engines",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.examples",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.fpe",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.generators",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.hpke",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.io",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.kems",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.macs",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.modes",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.modes.gcm",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.modes.kgcm",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.paddings",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.params",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.parsers",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.prng",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.prng.drbg",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.signers",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.threshold",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.tls",
+      "org.testcontainers.shaded.org.bouncycastle.crypto.util",
+      "org.testcontainers.shaded.org.bouncycastle.dvcs",
+      "org.testcontainers.shaded.org.bouncycastle.eac",
+      "org.testcontainers.shaded.org.bouncycastle.eac.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.eac.operator",
+      "org.testcontainers.shaded.org.bouncycastle.eac.operator.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.est",
+      "org.testcontainers.shaded.org.bouncycastle.est.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.i18n",
+      "org.testcontainers.shaded.org.bouncycastle.i18n.filter",
+      "org.testcontainers.shaded.org.bouncycastle.iana",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.bsi",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.cms",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.cryptlib",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.eac",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.edec",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.gnu",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.iana",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.isara",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.isismtt",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.iso",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.kisa",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.microsoft",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.misc",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.nsri",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.ntt",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.oiw",
+      "org.testcontainers.shaded.org.bouncycastle.internal.asn1.rosstandart",
+      "org.testcontainers.shaded.org.bouncycastle.its",
+      "org.testcontainers.shaded.org.bouncycastle.its.bc",
+      "org.testcontainers.shaded.org.bouncycastle.its.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.its.operator",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.interfaces",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.io",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.compositesignatures",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.dh",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.dsa",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.dstu",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.ec",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.ecgost",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.ecgost12",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.edec",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.elgamal",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.gost",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.ies",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.mldsa",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.mlkem",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.rsa",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.slhdsa",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.util",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.asymmetric.x509",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.config",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.digest",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.drbg",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.keystore",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.keystore.bc",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.keystore.bcfks",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.keystore.pkcs12",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.keystore.util",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.symmetric",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.symmetric.util",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.provider.util",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.spec",
+      "org.testcontainers.shaded.org.bouncycastle.jcajce.util",
+      "org.testcontainers.shaded.org.bouncycastle.jce",
+      "org.testcontainers.shaded.org.bouncycastle.jce.exception",
+      "org.testcontainers.shaded.org.bouncycastle.jce.interfaces",
+      "org.testcontainers.shaded.org.bouncycastle.jce.netscape",
+      "org.testcontainers.shaded.org.bouncycastle.jce.provider",
+      "org.testcontainers.shaded.org.bouncycastle.jce.spec",
+      "org.testcontainers.shaded.org.bouncycastle.math",
+      "org.testcontainers.shaded.org.bouncycastle.math.ec",
+      "org.testcontainers.shaded.org.bouncycastle.math.ec.custom.djb",
+      "org.testcontainers.shaded.org.bouncycastle.math.ec.custom.gm",
+      "org.testcontainers.shaded.org.bouncycastle.math.ec.custom.sec",
+      "org.testcontainers.shaded.org.bouncycastle.math.ec.endo",
+      "org.testcontainers.shaded.org.bouncycastle.math.ec.rfc7748",
+      "org.testcontainers.shaded.org.bouncycastle.math.ec.rfc8032",
+      "org.testcontainers.shaded.org.bouncycastle.math.ec.tools",
+      "org.testcontainers.shaded.org.bouncycastle.math.field",
+      "org.testcontainers.shaded.org.bouncycastle.math.raw",
+      "org.testcontainers.shaded.org.bouncycastle.mime",
+      "org.testcontainers.shaded.org.bouncycastle.mime.encoding",
+      "org.testcontainers.shaded.org.bouncycastle.mime.smime",
+      "org.testcontainers.shaded.org.bouncycastle.mozilla",
+      "org.testcontainers.shaded.org.bouncycastle.mozilla.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.oer",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.etsi102941",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.etsi102941.basetypes",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.etsi103097",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.etsi103097.extension",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.ieee1609dot2",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.ieee1609dot2.basetypes",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.ieee1609dot2dot1",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.template.etsi102941",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.template.etsi102941.basetypes",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.template.etsi103097",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.template.etsi103097.extension",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.template.ieee1609dot2",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.template.ieee1609dot2.basetypes",
+      "org.testcontainers.shaded.org.bouncycastle.oer.its.template.ieee1609dot2dot1",
+      "org.testcontainers.shaded.org.bouncycastle.openssl",
+      "org.testcontainers.shaded.org.bouncycastle.openssl.bc",
+      "org.testcontainers.shaded.org.bouncycastle.openssl.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.operator",
+      "org.testcontainers.shaded.org.bouncycastle.operator.bc",
+      "org.testcontainers.shaded.org.bouncycastle.operator.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.pkcs",
+      "org.testcontainers.shaded.org.bouncycastle.pkcs.bc",
+      "org.testcontainers.shaded.org.bouncycastle.pkcs.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.pkix",
+      "org.testcontainers.shaded.org.bouncycastle.pkix.jcajce",
+      "org.testcontainers.shaded.org.bouncycastle.pkix.util",
+      "org.testcontainers.shaded.org.bouncycastle.pkix.util.filter",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.asn1",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.bike",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.cmce",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.crystals.dilithium",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.falcon",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.frodo",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.hqc",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.lms",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.mayo",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.mldsa",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.mlkem",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.newhope",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.ntru",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.ntruprime",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.picnic",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.rainbow",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.saber",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.slhdsa",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.snova",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.sphincs",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.sphincsplus",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.util",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.xmss",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.crypto.xwing",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.interfaces",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.bike",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.cmce",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.dilithium",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.falcon",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.frodo",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.hqc",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.kyber",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.lms",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.mayo",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.newhope",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.ntru",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.ntruprime",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.picnic",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.saber",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.snova",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.sphincs",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.sphincsplus",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.util",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.provider.xmss",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.jcajce.spec",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.math.ntru",
+      "org.testcontainers.shaded.org.bouncycastle.pqc.math.ntru.parameters",
+      "org.testcontainers.shaded.org.bouncycastle.tsp",
+      "org.testcontainers.shaded.org.bouncycastle.tsp.cms",
+      "org.testcontainers.shaded.org.bouncycastle.tsp.ers",
+      "org.testcontainers.shaded.org.bouncycastle.util",
+      "org.testcontainers.shaded.org.bouncycastle.util.encoders",
+      "org.testcontainers.shaded.org.bouncycastle.util.io",
+      "org.testcontainers.shaded.org.bouncycastle.util.io.pem",
+      "org.testcontainers.shaded.org.bouncycastle.util.test",
+      "org.testcontainers.shaded.org.bouncycastle.voms",
+      "org.testcontainers.shaded.org.bouncycastle.x509",
+      "org.testcontainers.shaded.org.bouncycastle.x509.extension",
+      "org.testcontainers.shaded.org.bouncycastle.x509.util",
+      "org.testcontainers.shaded.org.checkerframework.checker.builder.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.calledmethods.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.compilermsgs.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.fenum.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.formatter.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.guieffect.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.i18n.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.i18nformatter.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.index.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.initialization.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.interning.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.lock.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.mustcall.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.nullness.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.optional.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.propkey.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.regex.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.signature.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.signedness.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.tainting.qual",
+      "org.testcontainers.shaded.org.checkerframework.checker.units.qual",
+      "org.testcontainers.shaded.org.checkerframework.common.aliasing.qual",
+      "org.testcontainers.shaded.org.checkerframework.common.initializedfields.qual",
+      "org.testcontainers.shaded.org.checkerframework.common.reflection.qual",
+      "org.testcontainers.shaded.org.checkerframework.common.returnsreceiver.qual",
+      "org.testcontainers.shaded.org.checkerframework.common.subtyping.qual",
+      "org.testcontainers.shaded.org.checkerframework.common.util.count.report.qual",
+      "org.testcontainers.shaded.org.checkerframework.common.value.qual",
+      "org.testcontainers.shaded.org.checkerframework.dataflow.qual",
+      "org.testcontainers.shaded.org.checkerframework.framework.qual",
+      "org.testcontainers.shaded.org.hamcrest",
+      "org.testcontainers.shaded.org.hamcrest.beans",
+      "org.testcontainers.shaded.org.hamcrest.collection",
+      "org.testcontainers.shaded.org.hamcrest.comparator",
+      "org.testcontainers.shaded.org.hamcrest.core",
+      "org.testcontainers.shaded.org.hamcrest.internal",
+      "org.testcontainers.shaded.org.hamcrest.io",
+      "org.testcontainers.shaded.org.hamcrest.number",
+      "org.testcontainers.shaded.org.hamcrest.object",
+      "org.testcontainers.shaded.org.hamcrest.text",
+      "org.testcontainers.shaded.org.hamcrest.xml",
+      "org.testcontainers.shaded.org.yaml.snakeyaml",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.comments",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.composer",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.constructor",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.emitter",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.env",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.error",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.events",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.extensions.compactnotation",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.external.com.google.gdata.util.common.base",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.inspector",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.internal",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.introspector",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.nodes",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.parser",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.reader",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.representer",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.resolver",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.scanner",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.serializer",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.tokens",
+      "org.testcontainers.shaded.org.yaml.snakeyaml.util",
+      "org.testcontainers.shaded.org.zeroturnaround.exec",
+      "org.testcontainers.shaded.org.zeroturnaround.exec.close",
+      "org.testcontainers.shaded.org.zeroturnaround.exec.listener",
+      "org.testcontainers.shaded.org.zeroturnaround.exec.stop",
+      "org.testcontainers.shaded.org.zeroturnaround.exec.stream",
+      "org.testcontainers.shaded.org.zeroturnaround.exec.stream.slf4j",
+      "org.testcontainers.utility"
+    ],
     "org.xmlresolver:xmlresolver": [
       "org.xmlresolver",
       "org.xmlresolver.adapters",
@@ -3028,6 +4352,9 @@
       "org.yaml.snakeyaml.serializer",
       "org.yaml.snakeyaml.tokens",
       "org.yaml.snakeyaml.util"
+    ],
+    "redis.clients.authentication:redis-authx-core": [
+      "redis.clients.authentication.core"
     ],
     "tools.jackson.core:jackson-core": [
       "tools.jackson.core",
@@ -3090,6 +4417,9 @@
       "ch.qos.logback:logback-core",
       "com.fasterxml.jackson.core:jackson-annotations",
       "com.fasterxml:classmate",
+      "com.github.docker-java:docker-java-api",
+      "com.github.docker-java:docker-java-transport",
+      "com.github.docker-java:docker-java-transport-zerodep",
       "com.github.javaparser:javaparser-core",
       "com.google.code.findbugs:jsr305",
       "com.google.code.gson:gson",
@@ -3108,10 +4438,21 @@
       "commons-codec:commons-codec",
       "commons-io:commons-io",
       "commons-logging:commons-logging",
+      "io.lettuce:lettuce-core",
       "io.micrometer:micrometer-commons",
       "io.micrometer:micrometer-core",
       "io.micrometer:micrometer-jakarta9",
       "io.micrometer:micrometer-observation",
+      "io.netty:netty-buffer",
+      "io.netty:netty-codec-base",
+      "io.netty:netty-codec-dns",
+      "io.netty:netty-common",
+      "io.netty:netty-handler",
+      "io.netty:netty-resolver",
+      "io.netty:netty-resolver-dns",
+      "io.netty:netty-transport",
+      "io.netty:netty-transport-native-unix-common",
+      "io.projectreactor:reactor-core",
       "io.xspec:xspec",
       "jakarta.activation:jakarta.activation-api",
       "jakarta.annotation:jakarta.annotation-api",
@@ -3119,6 +4460,7 @@
       "jakarta.xml.bind:jakarta.xml.bind-api",
       "name.dmaus.schxslt:schxslt2",
       "net.bytebuddy:byte-buddy",
+      "net.java.dev.jna:jna",
       "net.sf.saxon:Saxon-HE",
       "org.apache.commons:commons-compress",
       "org.apache.commons:commons-lang3",
@@ -3142,8 +4484,10 @@
       "org.hdrhistogram:HdrHistogram",
       "org.hibernate.validator:hibernate-validator",
       "org.jboss.logging:jboss-logging",
+      "org.jetbrains:annotations",
       "org.jmolecules.integrations:jmolecules-archunit",
       "org.jmolecules:jmolecules-ddd",
+      "org.jmolecules:jmolecules-events",
       "org.jmolecules:jmolecules-onion-architecture",
       "org.jmolecules:jstereotype",
       "org.jspecify:jspecify",
@@ -3158,12 +4502,16 @@
       "org.mapstruct:mapstruct-processor",
       "org.opentest4j.reporting:open-test-reporting-tooling-spi",
       "org.opentest4j:opentest4j",
+      "org.reactivestreams:reactive-streams",
+      "org.rnorth.duct-tape:duct-tape",
       "org.slf4j:jul-to-slf4j",
       "org.slf4j:slf4j-api",
       "org.springframework.boot:spring-boot",
       "org.springframework.boot:spring-boot-actuator",
       "org.springframework.boot:spring-boot-actuator-autoconfigure",
       "org.springframework.boot:spring-boot-autoconfigure",
+      "org.springframework.boot:spring-boot-data-commons",
+      "org.springframework.boot:spring-boot-data-redis",
       "org.springframework.boot:spring-boot-health",
       "org.springframework.boot:spring-boot-http-client",
       "org.springframework.boot:spring-boot-http-converter",
@@ -3171,10 +4519,13 @@
       "org.springframework.boot:spring-boot-loader-tools",
       "org.springframework.boot:spring-boot-micrometer-metrics",
       "org.springframework.boot:spring-boot-micrometer-observation",
+      "org.springframework.boot:spring-boot-netty",
+      "org.springframework.boot:spring-boot-persistence",
       "org.springframework.boot:spring-boot-restclient",
       "org.springframework.boot:spring-boot-servlet",
       "org.springframework.boot:spring-boot-starter",
       "org.springframework.boot:spring-boot-starter-actuator",
+      "org.springframework.boot:spring-boot-starter-data-redis",
       "org.springframework.boot:spring-boot-starter-jackson",
       "org.springframework.boot:spring-boot-starter-logging",
       "org.springframework.boot:spring-boot-starter-micrometer-metrics",
@@ -3184,25 +4535,36 @@
       "org.springframework.boot:spring-boot-starter-validation",
       "org.springframework.boot:spring-boot-starter-webmvc",
       "org.springframework.boot:spring-boot-test",
+      "org.springframework.boot:spring-boot-testcontainers",
       "org.springframework.boot:spring-boot-tomcat",
+      "org.springframework.boot:spring-boot-transaction",
       "org.springframework.boot:spring-boot-validation",
       "org.springframework.boot:spring-boot-web-server",
       "org.springframework.boot:spring-boot-webmvc",
+      "org.springframework.data:spring-data-commons",
+      "org.springframework.data:spring-data-keyvalue",
+      "org.springframework.data:spring-data-redis",
       "org.springframework.modulith:spring-modulith-api",
       "org.springframework.modulith:spring-modulith-core",
       "org.springframework:spring-aop",
       "org.springframework:spring-beans",
       "org.springframework:spring-context",
+      "org.springframework:spring-context-support",
       "org.springframework:spring-core",
       "org.springframework:spring-expression",
+      "org.springframework:spring-messaging",
+      "org.springframework:spring-oxm",
       "org.springframework:spring-test",
+      "org.springframework:spring-tx",
       "org.springframework:spring-web",
       "org.springframework:spring-webmvc",
+      "org.testcontainers:testcontainers",
       "org.xmlresolver:xmlresolver",
       "org.xmlresolver:xmlresolver:jar:data",
       "org.xmlunit:xmlunit-assertj3",
       "org.xmlunit:xmlunit-core",
       "org.yaml:snakeyaml",
+      "redis.clients.authentication:redis-authx-core",
       "tools.jackson.core:jackson-core",
       "tools.jackson.core:jackson-databind"
     ]
@@ -3228,9 +4590,33 @@
         "com.uber.nullaway.RequireExplicitNullMarking"
       ]
     },
+    "io.lettuce:lettuce-core": {
+      "io.lettuce.core.json.JsonParser": [
+        "io.lettuce.core.json.DefaultJsonParser"
+      ],
+      "io.lettuce.core.support.http.HttpClientProvider": [
+        "io.lettuce.core.support.http.NettyHttpClientProvider"
+      ],
+      "javax.enterprise.inject.spi.Extension": [
+        "io.lettuce.core.support.LettuceCdiExtension"
+      ]
+    },
     "io.micrometer:micrometer-observation": {
       "io.micrometer.context.ThreadLocalAccessor": [
         "io.micrometer.observation.contextpropagation.ObservationThreadLocalAccessor"
+      ]
+    },
+    "io.netty:netty-common": {
+      "reactor.blockhound.integration.BlockHoundIntegration": [
+        "io.netty.util.internal.Hidden$NettyBlockHoundIntegration"
+      ]
+    },
+    "io.projectreactor:reactor-core": {
+      "io.micrometer.context.ContextAccessor": [
+        "reactor.util.context.ReactorContextAccessor"
+      ],
+      "reactor.blockhound.integration.BlockHoundIntegration": [
+        "reactor.core.scheduler.ReactorBlockHoundIntegration"
       ]
     },
     "net.sf.saxon:Saxon-HE": {
@@ -3364,6 +4750,11 @@
         "org.springframework.boot.logging.log4j2.SpringBootPropertySource"
       ]
     },
+    "org.springframework.data:spring-data-redis": {
+      "jakarta.enterprise.inject.spi.Extension": [
+        "org.springframework.data.redis.repository.cdi.RedisRepositoryExtension"
+      ]
+    },
     "org.springframework:spring-core": {
       "reactor.blockhound.integration.BlockHoundIntegration": [
         "org.springframework.core.ReactiveAdapterRegistry$SpringCoreBlockHoundIntegration"
@@ -3375,6 +4766,23 @@
       ],
       "reactor.blockhound.integration.BlockHoundIntegration": [
         "org.springframework.web.server.adapter.WebHttpHandlerBuilder$SpringWebBlockHoundIntegration"
+      ]
+    },
+    "org.testcontainers:testcontainers": {
+      "org.testcontainers.dockerclient.DockerClientProviderStrategy": [
+        "org.testcontainers.dockerclient.DockerDesktopClientProviderStrategy",
+        "org.testcontainers.dockerclient.DockerMachineClientProviderStrategy",
+        "org.testcontainers.dockerclient.EnvironmentAndSystemPropertyClientProviderStrategy",
+        "org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy",
+        "org.testcontainers.dockerclient.RootlessDockerClientProviderStrategy",
+        "org.testcontainers.dockerclient.TestcontainersHostPropertyClientProviderStrategy",
+        "org.testcontainers.dockerclient.UnixSocketClientProviderStrategy"
+      ],
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.JsonFactory": [
+        "org.testcontainers.shaded.com.fasterxml.jackson.core.JsonFactory"
+      ],
+      "org.testcontainers.shaded.com.fasterxml.jackson.core.ObjectCodec": [
+        "org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper"
       ]
     },
     "tools.jackson.core:jackson-core": {

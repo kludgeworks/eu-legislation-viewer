@@ -3,9 +3,9 @@
  * The text of a version: legal text converted from Formex (its unit tree, eIds, provenance). The
  * root package is the module's API and the onion's domain ring: the records, LegalText, the
  * aggregate, and LegalTexts, its repository. Its use cases are in {@code application}; in {@code
- * infra}, internal to the module, the adapter on //formex-converter's stylesheets
- * (FormexConverter), the reader and, in {@code infra.xml}, the JAXB classes generated from
- * legal-text.xsd.
+ * infra}, internal to the module, the store in Valkey, the adapter on //formex-converter's
+ * stylesheets (FormexConverter), the reader and, in {@code infra.xml}, the JAXB classes generated
+ * from legal-text.xsd.
  */
 @ApplicationModule(displayName = "Text")
 @DomainRing
