@@ -8,7 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalText;
-import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalTexts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.application.PointInTime;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ class CellarLiveTests {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
 
   @Autowired Acts acts;
-  @Autowired LegalTexts texts;
+  @Autowired PointInTime pointInTime;
 
   @Test
   void findsAnActByItsEliWithItsVersions() {
@@ -36,7 +36,7 @@ class CellarLiveTests {
 
   @Test
   void readsTheTextOfTheVersionThatAppliesOnADate() {
-    var text = texts.find(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).orElseThrow();
+    var text = pointInTime.text(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).orElseThrow();
 
     assertThat(text.act()).isEqualTo(AVSEC);
     assertThat(text.kind()).isEqualTo(LegalText.Kind.CONSOLIDATED);
