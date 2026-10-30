@@ -22,9 +22,9 @@ local linters = new Mapping<String, Step> {
         "**/*.java",
         "**/*.bzl",
         "**/BUILD.bazel",
+        "**/*.BUILD",
         "MODULE.bazel",
         "**/*.toml",
-        "**/*.pkl",
         "**/*.sh",
       )
     exclude = raw + vendored
@@ -32,9 +32,10 @@ local linters = new Mapping<String, Step> {
     check = "addlicense -s=only -c \"$LICENSE_HOLDER\" -l \"$LICENSE_TYPE\" -check {{files}}"
     fix = "addlicense -s=only -c \"$LICENSE_HOLDER\" -l \"$LICENSE_TYPE\" {{files}}"
   }
-  // the XML family, which addlicense doesn't know
+  // what addlicense skips without a word: the XML family, Pkl, SPARQL and the dotfiles
   ["spdx_header"] = new Step {
-    glob = xml
+    glob =
+      xml + List("**/*.pkl", "**/*.rq", ".bazelrc", ".bazelignore", ".gitattributes", ".gitignore")
     exclude = raw + vendored
     batch = true
     check = "! grep -L 'SPDX-License-Identifier' {{files}} | grep ."
