@@ -11,7 +11,7 @@
    <source celex="02003D0251-20040601">
       <publication series="L" number="93" date="2003-04-10" page="40"/>
    </source>
-   <lifecycle end="2005-12-31" sequence="001.001.0">
+   <lifecycle end="2005-12-31" produced="2004-10-19" sequence="001.001.0">
       <eventRef type="amendment" act="32004D0562" date="2004-03-23"/>
    </lifecycle>
    <preface>

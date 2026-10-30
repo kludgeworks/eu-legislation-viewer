@@ -170,7 +170,9 @@
               <xsl:if test="$info/@END.DATE != '99999999'">
                 <xsl:sequence select="f:date-attribute('end', $info/@END.DATE)"/>
               </xsl:if>
-              <xsl:sequence select="f:date-attribute('produced', $info/@CONSLEG.DATE)"/>
+              <!-- INFO.PROD's date: every consolidation has it; INFO.CONSLEG/@CONSLEG.DATE, the same date
+                   where both are there, is missing from older ones -->
+              <xsl:sequence select="f:date-attribute('produced', $act/INFO.PROD/@PROD.DATE)"/>
               <xsl:if test="$info/@PROD.SEQ">
                 <xsl:attribute name="sequence" select="$info/@PROD.SEQ"/>
               </xsl:if>

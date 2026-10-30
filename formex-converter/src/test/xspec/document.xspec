@@ -52,10 +52,10 @@
     <x:expect label="keeps the closing formula" test="$x:result/*:conclusions/*:p/*:t/@v = 'This Regulation shall be binding in its entirety.'"/>
   </x:scenario>
 
-  <x:scenario label="A consolidated version of an act outside sector 3 (an agreement)">
+  <x:scenario label="An older consolidated version of an act outside sector 3 (an agreement)">
     <x:context xmlns="">
       <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
-        <INFO.CONSLEG CONSLEG.DATE="20250310" CONSLEG.REF="2002A2430" END="NONE" END.DATE="99999999" PROD.SEQ="001.001.0" START.DATE="20250201"/>
+        <INFO.CONSLEG CONSLEG.REF="2002A2430" END="NONE" END.DATE="99999999" PROD.SEQ="001.001.0" START.DATE="20250201"/>
         <INFO.PROD PROD.DATE="20250310"/>
         <CONS.DOC>
           <BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
@@ -69,6 +69,8 @@
     </x:context>
     <x:expect label="is a version of its base act, not of 3 and the consolidation's reference"
               test="$x:result/@act = '22002A0430(02)' and $x:result/*:source/@celex = '02002A2430-20250201'"/>
+    <x:expect label="takes the production date from INFO.PROD, older sources having no CONSLEG.DATE"
+              test="$x:result/*:lifecycle/@produced = '2025-03-10'"/>
     <x:expect label="dates a corrigendum, which has no date of its own, by its publication"
               test="$x:result/*:lifecycle/*:eventRef[@type = 'corrigendum'][@act = '22002A0430(02)R(01)']/@date = '2003-07-11'"/>
   </x:scenario>
