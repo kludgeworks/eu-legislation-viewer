@@ -53,7 +53,7 @@
     <x:context mode="block" xmlns="">
       <P><LIST TYPE="ARAB"><ITEM><P>x</P></ITEM></LIST><LIST TYPE="ALPHA"><ITEM><P>x</P></ITEM></LIST><LIST TYPE="roman"><ITEM><P>x</P></ITEM></LIST><LIST TYPE="DASH"><ITEM><P>x</P></ITEM></LIST><LIST TYPE="NONE"><ITEM><P>x</P></ITEM></LIST><LIST TYPE="OTHER"><ITEM><P>x</P></ITEM></LIST></P>
     </x:context>
-    <x:expect label="keep their case and kind" test="$x:result/@kind = ('arabic', 'alpha-upper', 'roman', 'dash', 'none', 'other') and count($x:result) = 6"/>
+    <x:expect label="keep their case and kind" test="$x:result/@kind = ('arabic', 'alphaUpper', 'roman', 'dash', 'none', 'other') and count($x:result) = 6"/>
   </x:scenario>
 
   <x:scenario label="Items without a number">
@@ -213,7 +213,7 @@
 
   <x:scenario label="An image">
     <x:context mode="block" xmlns=""><INCL.ELEMENT TYPE="TIFF" FILEREF="L_2013227EN.01003401.tif" CONTENT="TECH.DESIGN"/></x:context>
-    <x:expect label="becomes a figure that says what it shows"><figure src="L_2013227EN.01003401.tif" content="tech-design"/></x:expect>
+    <x:expect label="becomes a figure that says what it shows"><figure src="L_2013227EN.01003401.tif" content="techDesign"/></x:expect>
   </x:scenario>
 
   <x:scenario label="Transclusion of another Formex file (06.02.3)" catch="yes">

@@ -4,7 +4,7 @@
            act="32008D0159"
            kind="original"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
-           lang="en"
+           xml:lang="en"
            formexVersion="04.00"
            converter="1.0.0">
    <source celex="32008D0159">

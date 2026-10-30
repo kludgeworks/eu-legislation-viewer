@@ -5,13 +5,13 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="1999-12-09"
-           lang="en"
+           xml:lang="en"
            formexVersion="05.51"
            converter="1.0.0">
    <source celex="01994A4722-19991209">
       <publication series="L" number="188" date="1994-07-22" page="18"/>
    </source>
-   <lifecycle start="1999-12-09" produced="2015-10-30" sequence="001.001.0">
+   <lifecycle produced="2015-10-30" sequence="001.001.0">
       <eventRef type="amendment" act="21999A0728(01)" date="1999-07-08"/>
    </lifecycle>
    <preface>
@@ -476,124 +476,124 @@
    </body>
    <conclusions>
       <p>
-         <span lang="es">
+         <span xml:lang="es">
             <t v="En fe de lo cual, los abajo firmantes suscriben el presente Acuerdo."/>
          </span>
       </p>
       <p>
-         <span lang="da">
+         <span xml:lang="da">
             <t v="Til bekræftelse heraf har undertegnede underskrevet denne aftale."/>
          </span>
       </p>
       <p>
-         <span lang="de">
+         <span xml:lang="de">
             <t v="Zu Urkund dessen haben die Unterzeichneten dieses Abkommen unterschrieben."/>
          </span>
       </p>
       <p>
-         <span lang="el">
+         <span xml:lang="el">
             <t v="Σε πίστωση των ανωτέρω, οι υπογράφοντες έθεσαν την υπογραφή τους κάτω από την παρούσα συμφωνία."/>
          </span>
       </p>
       <p>
-         <span lang="en">
+         <span xml:lang="en">
             <t v="In witness whereof the undersigned have signed this Agreement."/>
          </span>
       </p>
       <p>
-         <span lang="fr">
+         <span xml:lang="fr">
             <t v="En foi de quoi, les soussignés ont apposé leur signature au bas du présent accord."/>
          </span>
       </p>
       <p>
-         <span lang="it">
+         <span xml:lang="it">
             <t v="In fede di che, i sottoscritti hanno firmato il presente accordo."/>
          </span>
       </p>
       <p>
-         <span lang="nl">
+         <span xml:lang="nl">
             <t v="Ten blijke waarvan de ondergetekenden hun handtekening onder deze overeenkomst hebben gezet."/>
          </span>
       </p>
       <p>
-         <span lang="pt">
+         <span xml:lang="pt">
             <t v="Em fé do que, os abaixo-assinados apuseram as suas assinaturas no final do presente acordo."/>
          </span>
       </p>
       <signature>
          <placeAndDate>
-            <span lang="es">
+            <span xml:lang="es">
                <t v="Hecho en Canberra, el veintitrés de febrero de mil novecientos noventa y cuatro."/>
             </span>
             <eol/>
-            <span lang="da">
+            <span xml:lang="da">
                <t v="Udfærdiget i Canberra den treogtyvende februar nitten hundrede og fireoghalvfems."/>
             </span>
             <eol/>
-            <span lang="de">
+            <span xml:lang="de">
                <t v="Geschehen zu Canberra am dreiundzwanzigsten Februar neunzehnhundertvierundneunzig."/>
             </span>
             <eol/>
-            <span lang="el">
+            <span xml:lang="el">
                <t v="Έγινε στην Καμπέρα, στις είκοσι τρεις Φεβρουαρίου χίλια εννιακόσια ενενήντα τέσσερα."/>
             </span>
             <eol/>
-            <span lang="en">
+            <span xml:lang="en">
                <t v="Done at Canberra on the twenty-third day of February in the year one thousand nine hundred and ninety-four."/>
             </span>
             <eol/>
-            <span lang="fr">
+            <span xml:lang="fr">
                <t v="Fait à Canberra, le vingt-trois février mil neuf cent quatre-vingt-quatorze."/>
             </span>
             <eol/>
-            <span lang="it">
+            <span xml:lang="it">
                <t v="Fatto a Canberra, addì ventitré febbraio millenovecentonovantaquattro."/>
             </span>
             <eol/>
-            <span lang="nl">
+            <span xml:lang="nl">
                <t v="Gedaan te Canberra, de drieëntwintigste februari negentienhonderd vierennegentig."/>
             </span>
             <eol/>
-            <span lang="pt">
+            <span xml:lang="pt">
                <t v="Feito em Camberra, em vinte e três de Fevereiro de mil novecentos e noventa e quatro."/>
             </span>
          </placeAndDate>
          <signatory>
             <organization>
-               <span lang="es">
+               <span xml:lang="es">
                   <t v="Por la Comunidad Europea"/>
                </span>
             </organization>
             <role>
-               <span lang="da">
+               <span xml:lang="da">
                   <t v="For Det Europæiske Fællesskab"/>
                </span>
                <eol/>
-               <span lang="de">
+               <span xml:lang="de">
                   <t v="Für die Europäische Gemeinschaft"/>
                </span>
                <eol/>
-               <span lang="el">
+               <span xml:lang="el">
                   <t v="Για την Ευρωπαϊκή Κοινότητα"/>
                </span>
                <eol/>
-               <span lang="en">
+               <span xml:lang="en">
                   <t v="For the European Community"/>
                </span>
                <eol/>
-               <span lang="fr">
+               <span xml:lang="fr">
                   <t v="Pour la Communauté européenne"/>
                </span>
                <eol/>
-               <span lang="it">
+               <span xml:lang="it">
                   <t v="Per la Comunità europea"/>
                </span>
                <eol/>
-               <span lang="nl">
+               <span xml:lang="nl">
                   <t v="Voor de Europese Gemeenschap"/>
                </span>
                <eol/>
-               <span lang="pt">
+               <span xml:lang="pt">
                   <t v="Pela Comunidade Europeia"/>
                </span>
             </role>
@@ -603,40 +603,40 @@
          </signatory>
          <signatory>
             <organization>
-               <span lang="es">
+               <span xml:lang="es">
                   <t v="Por Australia"/>
                </span>
             </organization>
             <role>
-               <span lang="da">
+               <span xml:lang="da">
                   <t v="For Australien"/>
                </span>
                <eol/>
-               <span lang="de">
+               <span xml:lang="de">
                   <t v="Für Australien"/>
                </span>
                <eol/>
-               <span lang="el">
+               <span xml:lang="el">
                   <t v="Για την Αυστραλία"/>
                </span>
                <eol/>
-               <span lang="en">
+               <span xml:lang="en">
                   <t v="For Australia"/>
                </span>
                <eol/>
-               <span lang="fr">
+               <span xml:lang="fr">
                   <t v="Pour l’Australie"/>
                </span>
                <eol/>
-               <span lang="it">
+               <span xml:lang="it">
                   <t v="Per l’Australia"/>
                </span>
                <eol/>
-               <span lang="nl">
+               <span xml:lang="nl">
                   <t v="Voor Australië"/>
                </span>
                <eol/>
-               <span lang="pt">
+               <span xml:lang="pt">
                   <t v="Pela Austrália"/>
                </span>
             </role>

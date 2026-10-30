@@ -4,7 +4,7 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
 load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 
-def xjc_library(name, schema, bindings = None, xjc_args = [], srcs = [], deps = [], visibility = None):
+def xjc_library(name, schema, bindings = None, imports = [], xjc_args = [], srcs = [], deps = [], visibility = None):
     """Generate JAXB classes from an XSD (and its bindings) into a reproducible srcjar, and compile them.
 
     xjc turns the schema's xs:documentation into the classes' and properties' Javadoc. It writes
@@ -15,12 +15,13 @@ def xjc_library(name, schema, bindings = None, xjc_args = [], srcs = [], deps = 
       name: the java_library; the srcjar is `name`.srcjar.
       schema: the XSD.
       bindings: the JAXB bindings file (.xjb), if any.
+      imports: the schemas the schema imports by file name, copied beside it.
       xjc_args: further xjc arguments, such as plugin switches.
       srcs: hand-written helpers the bindings name, such as an XmlAdapter.
       deps: further dependencies of the generated code.
       visibility: the java_library's visibility.
     """
-    inputs = [schema] + ([bindings] if bindings else [])
+    inputs = [schema] + list(imports) + ([bindings] if bindings else [])
     args = ["-npa", "-no-header", "-quiet", "-extension"] + list(xjc_args)
     if bindings:
         args += ["-b", "$$in/$$(basename $(location %s))" % bindings]

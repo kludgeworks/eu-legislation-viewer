@@ -7,15 +7,18 @@ exports_files([
     "catalog.xml",
     "legal-text.xsd",
     "legal-text.sch",
+    "xml.xsd",
 ])
 
-# legal-text.xsd, the rules it can't express (legal-text.sch) and the catalog that resolves its URL
-# to it (catalog.xml), on the classpath at /formex-converter/schema/
+# legal-text.xsd, the schema of the xml: namespace it imports (xml.xsd, W3C's), the rules it can't
+# express (legal-text.sch) and the catalog that resolves their URLs (catalog.xml), on the classpath
+# at /formex-converter/schema/
 java_library(
     name = "resources",
     resources = [
         "catalog.xml",
         "legal-text.sch",
         "legal-text.xsd",
+        "xml.xsd",
     ],
 )

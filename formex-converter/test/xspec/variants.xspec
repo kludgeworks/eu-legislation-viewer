@@ -251,7 +251,7 @@
 
   <x:scenario label="Text in another language">
     <x:context mode="block" xmlns=""><P><LV LG="FR"><TXT>Fait à Bruxelles</TXT></LV></P></x:context>
-    <x:expect label="becomes a span with its language"><p><span lang="fr"><t v="Fait à Bruxelles"/></span></p></x:expect>
+    <x:expect label="becomes a span with its language"><p><span xml:lang="fr"><t v="Fait à Bruxelles"/></span></p></x:expect>
   </x:scenario>
 
   <x:scenario label="Where the source prints its notes">

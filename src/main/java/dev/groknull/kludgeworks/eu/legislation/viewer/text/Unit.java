@@ -20,8 +20,11 @@ import org.jspecify.annotations.Nullable;
  * @param ambiguous The published text gives this label twice under the same parent (Annex XI points
  *     1., 2., 2.): the units keep the label and share their eId, as published, and each is marked.
  *     A reference to the label can't tell them apart.
- * @param eurlexAnchor Annexes only: the position among all annexes in document order, EUR-Lex's
- *     #anx_N anchor.
+ * @param eurlexAnchor Annexes only: the number EUR-Lex's HTML gives the annex in its anchor,
+ *     #anx_N, so that a reader can link to it there
+ *     (https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1998#anx_1). EUR-Lex
+ *     counts the files an annex is split into, where this text joins them, so it can't be worked
+ *     out from the units.
  */
 public record Unit(
     EId eId,

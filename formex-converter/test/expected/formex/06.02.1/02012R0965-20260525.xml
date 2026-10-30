@@ -5,13 +5,13 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="2026-05-25"
-           lang="en"
+           xml:lang="en"
            formexVersion="06.02.1"
            converter="1.0.0">
    <source celex="02012R0965-20260525">
       <publication series="L" number="296" date="2012-10-25" page="1"/>
    </source>
-   <lifecycle start="2026-05-25" produced="2025-03-27" sequence="032.001.0">
+   <lifecycle produced="2025-03-27" sequence="032.001.0">
       <eventRef type="amendment" act="32013R0800" date="2013-08-14"/>
       <eventRef type="amendment" act="32014R0071" date="2014-01-27"/>
       <eventRef type="amendment" act="32014R0083" date="2014-01-29"/>
@@ -9636,7 +9636,7 @@
                         <p>
                            <t v="appropriate specific theoretical and practical training, in one or more of the following areas of inspection:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_II/pnt_ARO.RAMP.115/pnt_2/pnt_i/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -15910,7 +15910,7 @@
                         <p>
                            <t v="recurrent training and checking in accordance with point ORO.FC.230, subject to the following conditions:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_III/pnt_ORO.FC.A.201/lst_2/pnt_2/pnt_iii/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -16626,7 +16626,7 @@
                               <p>
                                  <t v="include at least six EBT modules distributed across a 3-year programme; each EBT module shall consist of an evaluation phase and a training phase. The validity period of a EBT module shall be 12 months;"/>
                               </p>
-                              <list kind="alpha-upper">
+                              <list kind="alphaUpper">
                                  <unit eId="anx_III/pnt_ORO.FC.231/pnt_a/pnt_2/pnt_iv/pnt_A" kind="point">
                                     <num>
                                        <t v="(A)"/>
@@ -16685,7 +16685,7 @@
                               <p>
                                  <t v="a minimum of two EBT modules within the validity period of the type rating, separated by a period of not less than 3 months. The EBT module is completed when:"/>
                               </p>
-                              <list kind="alpha-upper">
+                              <list kind="alphaUpper">
                                  <unit eId="anx_III/pnt_ORO.FC.231/pnt_a/pnt_3/pnt_i/pnt_A" kind="point">
                                     <num>
                                        <t v="(A)"/>
@@ -18985,7 +18985,7 @@
                         <p>
                            <t v="by each cabin crew member:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_III/pnt_ORO.CC.140/lst_2/pnt_1/pnt_i/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -19109,7 +19109,7 @@
                         <p>
                            <t v="by each cabin crew member:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_III/pnt_ORO.CC.140/lst_2/pnt_2/pnt_iv/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -23957,7 +23957,7 @@
                         <p>
                            <t v="in the event of an accident or a serious incident, or if preservation of recordings of flight recorders is directed by the investigating authority:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_IV/pnt_CAT.GEN.MPA.105/pnt_10/pnt_iii/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -27482,7 +27482,7 @@
                      <p>
                         <t v="reserve fuel, consisting of:"/>
                      </p>
-                     <list kind="alpha-upper">
+                     <list kind="alphaUpper">
                         <unit eId="anx_IV/pnt_CAT.OP.MPA.151/pnt_iii/pnt_A" kind="point">
                            <num>
                               <t v="(A)"/>
@@ -32734,7 +32734,7 @@
                         <p>
                            <t v="the following items shall be taken into consideration:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_IV/pnt_CAT.POL.A.245/pnt_2/pnt_iii/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -33062,7 +33062,7 @@
                               <p>
                                  <t v="an aerodrome landing analysis programme (ALAP) is established by the operator to ensure that the following conditions are met:"/>
                               </p>
-                              <list kind="alpha-upper">
+                              <list kind="alphaUpper">
                                  <unit eId="anx_IV/pnt_CAT.POL.A.255/pnt_b/pnt_2/pnt_v/pnt_A" kind="point">
                                     <num>
                                        <t v="(A)"/>
@@ -33822,7 +33822,7 @@
                </num>
                <t v="The steady gradient of climb after take-off shall be at least 4 % with:"/>
             </p>
-            <list kind="alpha-upper">
+            <list kind="alphaUpper">
                <unit eId="anx_IV/pnt_CAT.POL.A.340/pnt_a/pnt_1/pnt_A" kind="point">
                   <num>
                      <t v="(A)"/>
@@ -33878,7 +33878,7 @@
                </num>
                <t v="The steady gradient of climb at an altitude of 400 ft above the take-off surface shall be measurably positive with:"/>
             </p>
-            <list kind="alpha-upper">
+            <list kind="alphaUpper">
                <unit eId="anx_IV/pnt_CAT.POL.A.340/pnt_a/pnt_2/pnt_A" kind="point">
                   <num>
                      <t v="(A)"/>
@@ -33928,7 +33928,7 @@
                <t v="1500"/>
                <t v=" ft above the take-off surface with:"/>
             </p>
-            <list kind="alpha-upper">
+            <list kind="alphaUpper">
                <unit eId="anx_IV/pnt_CAT.POL.A.340/pnt_a/pnt_2/lst_2/pnt_A" kind="point">
                   <num>
                      <t v="(A)"/>
@@ -33998,7 +33998,7 @@
                </num>
                <t v="The steady gradient of climb shall be at least 2,5 % with:"/>
             </p>
-            <list kind="alpha-upper">
+            <list kind="alphaUpper">
                <unit eId="anx_IV/pnt_CAT.POL.A.340/pnt_b/pnt_1/pnt_A" kind="point">
                   <num>
                      <t v="(A)"/>
@@ -34052,7 +34052,7 @@
                <t v="1500"/>
                <t v=" ft above the landing surface with:"/>
             </p>
-            <list kind="alpha-upper">
+            <list kind="alphaUpper">
                <unit eId="anx_IV/pnt_CAT.POL.A.340/pnt_b/pnt_2/pnt_A" kind="point">
                   <num>
                      <t v="(A)"/>
@@ -34162,7 +34162,7 @@
                         <p>
                            <t v="the following items are taken into consideration:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_IV/pnt_CAT.POL.A.345/pnt_2/pnt_iii/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -35330,7 +35330,7 @@
                         <p>
                            <t v="wind:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_IV/pnt_CAT.POL.H.105/lst_2/pnt_3/pnt_ii/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -35438,7 +35438,7 @@
                         <p>
                            <t v="plus:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_IV/pnt_CAT.POL.H.110/pnt_1/pnt_iii/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -35477,7 +35477,7 @@
                            </quote>
                            <t v=" or 30 m, whichever is greater, plus:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_IV/pnt_CAT.POL.H.110/pnt_2/pnt_i/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -39373,7 +39373,7 @@
                         <p>
                            <t v="a diagonal shoulder strap and a seat belt that may be used independently for the following aeroplanes:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_IV/pnt_CAT.IDE.A.205/lst_2/pnt_3/pnt_ii/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -43241,7 +43241,7 @@
                   <t v="Marking of break-in points"/>
                </emphasis>
             </subheading>
-            <figure src="L_2012296EN.01013301.tif" content="tech-design"/>
+            <figure src="L_2012296EN.01013301.tif" content="techDesign"/>
          </unit>
          <unit eId="anx_IV/pnt_CAT.IDE.H.270" kind="level" depth="4">
             <num>
@@ -47315,7 +47315,7 @@
                </num>
                <t v="The measures referred to in (f)(2)(i) shall be assessed during:"/>
             </p>
-            <list kind="alpha-upper">
+            <list kind="alphaUpper">
                <unit eId="anx_V/pnt_SPA.NVIS.130/pnt_f/pnt_2/pnt_A" kind="point">
                   <num>
                      <t v="(A)"/>
@@ -48120,7 +48120,7 @@
                               <p>
                                  <t v="the crew composition may be reduced to only one pilot only if one of the situations below occur; once the crew composition is reduced to one pilot, the commander shall only operate to or from HEMS operating sites if they have previously conducted an in-flight reconnaissance with two crew members during the same HEMS mission:"/>
                               </p>
-                              <list kind="alpha-upper">
+                              <list kind="alphaUpper">
                                  <unit eId="anx_V/pnt_SPA.HEMS.130/pnt_e/pnt_1/pnt_ii/pnt_A" kind="point">
                                     <num>
                                        <t v="(A)"/>
@@ -48175,7 +48175,7 @@
                               <p>
                                  <t v="one pilot where the following conditions are met:"/>
                               </p>
-                              <list kind="alpha-upper">
+                              <list kind="alphaUpper">
                                  <unit eId="anx_V/pnt_SPA.HEMS.130/pnt_e/pnt_2/pnt_ii/pnt_A" kind="point">
                                     <num>
                                        <t v="(A)"/>
@@ -48245,7 +48245,7 @@
                               <p>
                                  <t v="The measures referred to in point (i) shall be assessed during both of the following:"/>
                               </p>
-                              <list kind="alpha-upper">
+                              <list kind="alphaUpper">
                                  <unit eId="anx_V/pnt_SPA.HEMS.130/pnt_f/pnt_2/pnt_ii/pnt_A" kind="point">
                                     <num>
                                        <t v="(A)"/>
@@ -50709,7 +50709,7 @@
                               <p>
                                  <t v="The measures referred to in point (i) shall be assessed during both of the following:"/>
                               </p>
-                              <list kind="alpha-upper">
+                              <list kind="alphaUpper">
                                  <unit eId="anx_V/lvl_SUBPART-O/lvl_6/pnt_e/pnt_2/pnt_ii/pnt_A" kind="point">
                                     <num>
                                        <t v="(A)"/>
@@ -51316,7 +51316,7 @@
                         <p>
                            <t v="in the event of an accident or a serious incident, or if preservation of recordings of flight recorders is directed by the investigating authority:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_VI/pnt_NCC.GEN.106/pnt_9/pnt_iii/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -57299,7 +57299,7 @@
                         <p>
                            <t v="a diagonal shoulder strap and a seat belt that may be used independently for the following aeroplanes:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_VI/pnt_NCC.IDE.A.180/lst_2/pnt_3/pnt_ii/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -57743,7 +57743,7 @@
                   <t v="Marking of break-in points"/>
                </emphasis>
             </subheading>
-            <figure src="L_2013227EN.01003401.tif" content="tech-design"/>
+            <figure src="L_2013227EN.01003401.tif" content="techDesign"/>
          </unit>
          <unit eId="anx_VI/pnt_NCC.IDE.A.215" kind="level" depth="4">
             <num>
@@ -59514,7 +59514,7 @@
                   <t v="Marking of break-in points"/>
                </emphasis>
             </subheading>
-            <figure src="L_2013227EN.01004201.tif" content="tech-design"/>
+            <figure src="L_2013227EN.01004201.tif" content="techDesign"/>
          </unit>
          <unit eId="anx_VI/pnt_NCC.IDE.H.215" kind="level" depth="4">
             <num>
@@ -62229,7 +62229,7 @@
                            <p>
                               <t v="when an alternate is required, to fly to and execute an approach and a missed approach at the aerodrome/operating site of intended landing, and thereafter:"/>
                            </p>
-                           <list kind="alpha-upper">
+                           <list kind="alphaUpper">
                               <unit eId="anx_VII/pnt_NCO.OP.126/pnt_2/pnt_ii/pnt_A" kind="point">
                                  <num>
                                     <t v="(A)"/>
@@ -64674,7 +64674,7 @@
                   <t v="Marking of break-in points"/>
                </emphasis>
             </subheading>
-            <figure src="L_2013227EN.01006201.tif" content="tech-design"/>
+            <figure src="L_2013227EN.01006201.tif" content="techDesign"/>
          </unit>
          <unit eId="anx_VII/pnt_NCO.IDE.A.170" kind="level" depth="4">
             <num>
@@ -65877,7 +65877,7 @@
                   <t v="Marking of break-in points"/>
                </emphasis>
             </subheading>
-            <figure src="L_2013227EN.01006701.tif" content="tech-design"/>
+            <figure src="L_2013227EN.01006701.tif" content="techDesign"/>
          </unit>
          <unit eId="anx_VII/pnt_NCO.IDE.H.170" kind="level" depth="4">
             <provenance amendingAct="32025R0133"
@@ -69782,7 +69782,7 @@
                         <p>
                            <t v="in the event of an accident or a serious incident, or if preservation of recordings of flight recorders is directed by the investigating authority:"/>
                         </p>
-                        <list kind="alpha-upper">
+                        <list kind="alphaUpper">
                            <unit eId="anx_VIII/pnt_SPO.GEN.107/pnt_9/pnt_iii/pnt_A" kind="point">
                               <num>
                                  <t v="(A)"/>
@@ -75787,7 +75787,7 @@
                               <p>
                                  <t v="a diagonal shoulder strap and a seat belt that may be used independently for the following aeroplanes:"/>
                               </p>
-                              <list kind="alpha-upper">
+                              <list kind="alphaUpper">
                                  <unit eId="anx_VIII/pnt_SPO.IDE.A.160/pnt_e/pnt_2/pnt_ii/pnt_A" kind="point">
                                     <num>
                                        <t v="(A)"/>
@@ -84678,7 +84678,7 @@
                               <p>
                                  <t v="wind:"/>
                               </p>
-                              <list kind="alpha-upper">
+                              <list kind="alphaUpper">
                                  <unit eId="anx_IX/lvl_SUBPART-C/lvl_4/pnt_c/pnt_3/pnt_ii/pnt_A" kind="point">
                                     <num>
                                        <t v="(A)"/>
@@ -84787,7 +84787,7 @@
                               <p>
                                  <t v="plus:"/>
                               </p>
-                              <list kind="alpha-upper">
+                              <list kind="alphaUpper">
                                  <unit eId="anx_IX/lvl_SUBPART-C/lvl_5/pnt_a/pnt_1/pnt_iii/pnt_A" kind="point">
                                     <num>
                                        <t v="(A)"/>

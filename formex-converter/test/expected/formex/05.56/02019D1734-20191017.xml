@@ -5,13 +5,13 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="2019-10-17"
-           lang="en"
+           xml:lang="en"
            formexVersion="05.56"
            converter="1.0.0">
    <source celex="02019D1734-20191017">
       <publication series="L" number="264" date="2019-10-17" page="42"/>
    </source>
-   <lifecycle start="2019-10-17" produced="2019-11-28" sequence="000.001.0">
+   <lifecycle produced="2019-11-28" sequence="000.001.0">
       <eventRef type="corrigendum" act="22019D1734R(01)"/>
    </lifecycle>
    <preface>

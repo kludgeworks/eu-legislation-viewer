@@ -187,9 +187,9 @@ public final class SchemaJavadoc {
   /** An element's or attribute's documentation, in the type or an attribute group it uses. */
   private Optional<String> member(String type, String name) {
     return documentation(
-        "let $t := /xs:schema/xs:*[@name = $type],"
-            + " $groups := /xs:schema/xs:attributeGroup[@name = $t//xs:attributeGroup/@ref]"
-            + " return ($t, $groups)//(xs:element | xs:attribute)[@name = $name]/xs:annotation",
+        "let $t := /xs:schema/xs:*[@name = $type], $groups := /xs:schema/xs:attributeGroup[@name ="
+            + " $t//xs:attributeGroup/@ref] return ($t, $groups)//(xs:element |"
+            + " xs:attribute)[(@name, substring-after(@ref, ':'))[1] = $name]/xs:annotation",
         type,
         name);
   }

@@ -7,4 +7,7 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
   <system systemId="https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd" uri="legal-text.xsd"/>
   <uri name="https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd" uri="legal-text.xsd"/>
+  <!-- the schema of the xml: namespace (xml:lang) that legal-text.xsd imports, by its W3C URL or file name -->
+  <system systemId="http://www.w3.org/2001/xml.xsd" uri="xml.xsd"/>
+  <systemSuffix systemIdSuffix="xml.xsd" uri="xml.xsd"/>
 </catalog>

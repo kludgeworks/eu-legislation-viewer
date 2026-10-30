@@ -57,6 +57,13 @@ precedence = "override"
 SPDX-FileCopyrightText = "European Union, Publications Office of the European Union (EU Vocabularies)"
 SPDX-License-Identifier = "CC-BY-4.0"
 
+# W3C's schema of the xml: namespace (xml:lang), unchanged: https://www.w3.org/2001/xml.xsd
+[[annotations]]
+path = "formex-converter/schema/xml.xsd"
+precedence = "override"
+SPDX-FileCopyrightText = "World Wide Web Consortium"
+SPDX-License-Identifier = "W3C-20150513"
+
 # W3C's MathML 3 schema, unchanged (see its SOURCE)
 [[annotations]]
 path = "formex-converter/test/mathml3/*.xsd"

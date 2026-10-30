@@ -86,7 +86,7 @@
         <xsl:attribute name="emphasis" select="$f:emphasis-kinds(string(@TYPE))"/>
       </xsl:if>
       <xsl:if test="self::LV">
-        <xsl:attribute name="lang" select="lower-case(@LG)"/>
+        <xsl:attribute name="xml:lang" select="lower-case(@LG)"/>
       </xsl:if>
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" as="node()*" select="if (self::LV and TXT) then TXT/node() else node()"/>
@@ -317,11 +317,12 @@
     </figure>
   </xsl:template>
 
-  <!-- CONTENT="TECH.DESIGN" → content="tech-design" -->
+  <!-- CONTENT="TECH.DESIGN" → content="techDesign" -->
   <xsl:function name="f:image-content" as="attribute()?">
     <xsl:param name="incl" as="element(INCL.ELEMENT)"/>
     <xsl:if test="$incl/@CONTENT">
-      <xsl:attribute name="content" select="lower-case(replace($incl/@CONTENT, '\.', '-'))"/>
+      <xsl:variable name="words" as="xs:string+" select="tokenize(lower-case($incl/@CONTENT), '\.')"/>
+      <xsl:attribute name="content" select="string-join(($words[1], $words[position() gt 1] ! (upper-case(substring(., 1, 1)) || substring(., 2))))"/>
     </xsl:if>
   </xsl:function>
 

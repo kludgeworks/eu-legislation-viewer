@@ -5,13 +5,13 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="2023-08-05"
-           lang="en"
+           xml:lang="en"
            formexVersion="06.01"
            converter="1.0.0">
    <source celex="02023R0265-20230805">
       <publication series="L" number="41" date="2023-02-10" page="1"/>
    </source>
-   <lifecycle start="2023-08-05" produced="2023-08-07" sequence="001.001.0">
+   <lifecycle produced="2023-08-07" sequence="001.001.0">
       <eventRef type="corrigendum" act="32023R0265R(01)"/>
       <eventRef type="corrigendum" act="32023R0265R(02)"/>
       <eventRef type="amendment" act="32023R1597" date="2023-08-03"/>

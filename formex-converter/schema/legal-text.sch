@@ -40,6 +40,21 @@
     </sch:rule>
   </sch:pattern>
 
+  <sch:pattern id="versions">
+    <sch:title>A document says once which version it is</sch:title>
+    <sch:rule context="lt:legalText">
+      <sch:assert id="version-of-consolidation" test="(@kind = 'consolidated') = exists(@version) and (@kind = 'consolidated') = exists(lt:lifecycle)">
+        A consolidated version has a version date and a lifecycle, and only a consolidated version has them.
+      </sch:assert>
+      <sch:assert id="version-in-celex" test="not(@kind = 'consolidated' and @version) or replace(lt:source/@celex, '^.*-([0-9]{4})([0-9]{2})([0-9]{2})$', '$1-$2-$3') = @version">
+        The version date <sch:value-of select="@version"/> isn't the date of <sch:value-of select="lt:source/@celex"/>.
+      </sch:assert>
+      <sch:assert id="act-of-corrigendum" test="not(@kind = 'corrigendum') or (starts-with(lt:source/@celex, @act) and matches(substring-after(lt:source/@celex, @act), '^R\([0-9]+\)$'))">
+        A corrigendum's act is the act it corrects: <sch:value-of select="lt:source/@celex"/> without its R(nn), not <sch:value-of select="@act"/>.
+      </sch:assert>
+    </sch:rule>
+  </sch:pattern>
+
   <sch:pattern id="amendments">
     <sch:title>An amendment marker means one amendment</sch:title>
     <!-- a marker split at element boundaries becomes several pieces that share its id -->

@@ -5,13 +5,13 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="2009-07-20"
-           lang="en"
+           xml:lang="en"
            formexVersion="04.00"
            converter="1.0.0">
    <source celex="02009R0567-20090720">
       <publication series="L" number="168" date="2009-06-30" page="22"/>
    </source>
-   <lifecycle start="2009-07-20" produced="2009-11-09" sequence="000.001.0">
+   <lifecycle produced="2009-11-09" sequence="000.001.0">
       <eventRef type="amendment" act="32009R1026" date="2009-10-29"/>
    </lifecycle>
    <preface>

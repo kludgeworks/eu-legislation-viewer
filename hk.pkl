@@ -15,7 +15,13 @@ local raw =
   )
 // vendored W3C schemas, under the W3C licence; patches, whose context lines must match exactly; the
 // licence texts, as SPDX publishes them
-local vendored = List("formex-converter/test/mathml3/**", "**/*.patch", "LICENSES/**")
+local vendored =
+  List(
+    "formex-converter/test/mathml3/**",
+    "formex-converter/schema/xml.xsd",
+    "**/*.patch",
+    "LICENSES/**",
+  )
 // written by tools, never edited by hand: the Maven lock file (bazel run @maven//:pin), the
 // converter's expected output (mise run expected)
 local generated = List("maven_install.json", "formex-converter/test/expected/**/*.xml")

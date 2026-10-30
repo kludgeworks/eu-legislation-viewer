@@ -5,13 +5,13 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="1986-03-01"
-           lang="en"
+           xml:lang="en"
            formexVersion="05.59"
            converter="1.0.0">
    <source celex="01970A1123-19860301">
       <publication series="L" number="293" date="1972-12-29" page="63"/>
    </source>
-   <lifecycle start="1986-03-01" produced="2021-11-19" sequence="001.001.0">
+   <lifecycle produced="2021-11-19" sequence="001.001.0">
       <eventRef type="amendment" act="21973A0630(02)" date="1973-06-30"/>
    </lifecycle>
    <preface>

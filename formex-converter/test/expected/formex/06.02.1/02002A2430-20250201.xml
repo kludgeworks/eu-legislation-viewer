@@ -5,13 +5,13 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="2025-02-01"
-           lang="en"
+           xml:lang="en"
            formexVersion="06.02.1"
            converter="1.0.0">
    <source celex="02002A2430-20250201">
       <publication series="L" number="114" date="2002-04-30" page="73"/>
    </source>
-   <lifecycle start="2025-02-01" produced="2025-01-29" sequence="019.001.0">
+   <lifecycle produced="2025-01-29" sequence="019.001.0">
       <eventRef type="amendment" act="22004D0404" date="2004-04-06"/>
       <eventRef type="corrigendum" act="22004D0404R(01)"/>
       <eventRef type="amendment" act="22004D0406" date="2004-04-22"/>
@@ -1145,94 +1145,94 @@
    <conclusions>
       <signature>
          <placeAndDate>
-            <span lang="es">
+            <span xml:lang="es">
                <t v="Hecho en Luxemburgo, el veintiuno de junio de mil novecientos noventa y nueve, en doble ejemplar en lenguas alemana, danesa, española, finesa, francesa, griega, inglesa, italiana, neerlandesa, portuguesa y sueca, siendo cada uno de estos textos igualmente auténtico."/>
             </span>
             <eol/>
-            <span lang="da">
+            <span xml:lang="da">
                <t v="Udfærdiget i Luxembourg, den enogtyvende juni nitten hundrede og nioghalvfems, i to eksemplarer på dansk, engelsk, finsk, fransk, græsk, italiensk, nederlandsk, portugisisk, spansk, svensk og tysk, idet hver af disse tekster har samme gyldighed."/>
             </span>
             <eol/>
-            <span lang="de">
+            <span xml:lang="de">
                <t v="Geschehen zu Luxemburg am einundzwanzigsten Juni neunzehnhundertneunundneunzig in zwei Urschriften in dänischer, deutscher, englischer, finnischer, französischer, griechischer, italienischer, niederländischer, portugiesischer, spanischer und schwedischer Sprache, wobei jeder dieser Wortlaute gleichermaßen verbindlich ist."/>
             </span>
             <eol/>
-            <span lang="el">
+            <span xml:lang="el">
                <t v="Έγινε στο Λουξεμβούργο, στις είκοσι μία Ιουνίου χίλια εννιακόσια ενενήντα εννέα, σε δύο αντίγραφα στην αγγλική, γαλλική, γερμανική, δανική, ελληνική, ισπανική, ιταλική, ολλανδική, πορτογαλική, σουηδική και φινλανδική γλώσσα· καθένα από τα κείμενα είναι εξίσου αυθεντικό."/>
             </span>
             <eol/>
-            <span lang="en">
+            <span xml:lang="en">
                <t v="Done at Luxembourg on the twenty-first day of June in the year one thousand and ninety-nine, in two copies in the Danish, Dutch, English, Finnish, French, German, Greek, Italian, Portuguese, Spanish and Swedish languages, each of those texts being equally authentic."/>
             </span>
             <eol/>
-            <span lang="fr">
+            <span xml:lang="fr">
                <t v="Fait à Luxembourg, le vingt-et-un juin mil neuf cent quatre-vingt dix-neuf, en deux exemplaires en langues allemande, anglaise, danoise, espagnole, finnoise, française, grecque, italienne, néerlandaise, portugaise et suédoise, chacun de ces textes faisant également foi."/>
             </span>
             <eol/>
-            <span lang="it">
+            <span xml:lang="it">
                <t v="Fatto a Lussemburgo, addì ventuno giugno millenovecentonovantanove, in due copie, nelle lingue danese, finlandese, francese, greca, inglese, italiana, olandese, portoghese, spagnola, svedese e tedesca, ciascun testo facente ugualmente fede."/>
             </span>
             <eol/>
-            <span lang="nl">
+            <span xml:lang="nl">
                <t v="Gedaan te Luxemburg, de eenentwintigste juni negentienhonderd negenennegentig, in tweevoud, in de Deense, de Duitse, de Engelse, de Finse, de Franse, de Griekse, de Italiaanse, de Nederlandse, de Portugese, de Spaanse en de Zweedse taal, zĳnde alle teksten gelĳkelĳk authentiek."/>
             </span>
             <eol/>
-            <span lang="pt">
+            <span xml:lang="pt">
                <t v="Feito em Luxemburgo, em vinte e um de Junho de mil novecentos e noventa e nove, em duplo exemplar nas línguas alemã, dinamarquesa, espanhola, finlandesa, francesa, grega, inglesa, italiana, neerlandesa, portuguesa e sueca, fazendo igualmente fé qualquer dos textos."/>
             </span>
             <eol/>
-            <span lang="fi">
+            <span xml:lang="fi">
                <t v="Tehty Luxemburgissa kahdentenakymmenentenäensimmäusenä päivänä kesäkuuta vuonna tuhatyhdeksänsataayhdeksänkymmentäyhdeksän kahtena kappaleena englannin, espanjan, hollannin, italian, kreikan, portugalin, ranskan, ruotsin, saksan, suomen ja tanskan kielellä, ja jokainen teksti on yhtä todistuvsvoimainen."/>
             </span>
             <eol/>
-            <span lang="sv">
+            <span xml:lang="sv">
                <t v="Utfärdat i Luxemburg den tjugoförsta juni nittonhundranittionio i två exemplar på det danska, engelska, finska, franska, grekiska, italienska, nederländska, portugisiska, spanska, svenska och tyska språket, vilka samtliga texter är lika giltiga."/>
             </span>
          </placeAndDate>
          <signatory>
             <organization>
-               <span lang="es">
+               <span xml:lang="es">
                   <t v="Por la Comunidad Europea"/>
                </span>
             </organization>
             <role>
-               <span lang="da">
+               <span xml:lang="da">
                   <t v="For Det Europæiske Fællesskab"/>
                </span>
                <eol/>
-               <span lang="de">
+               <span xml:lang="de">
                   <t v="Für die Europäische Gemeinschaft"/>
                </span>
                <eol/>
-               <span lang="el">
+               <span xml:lang="el">
                   <t v="Για την Ευρωπαϊκή Κοινότητα"/>
                </span>
                <eol/>
-               <span lang="en">
+               <span xml:lang="en">
                   <t v="For the European Community"/>
                </span>
                <eol/>
-               <span lang="fr">
+               <span xml:lang="fr">
                   <t v="Pour la Communauté européenne"/>
                </span>
                <eol/>
-               <span lang="it">
+               <span xml:lang="it">
                   <t v="Per la Comunità europea"/>
                </span>
                <eol/>
-               <span lang="nl">
+               <span xml:lang="nl">
                   <t v="Voor de Europese Gemeenschap"/>
                </span>
                <eol/>
-               <span lang="pt">
+               <span xml:lang="pt">
                   <t v="Pela Comunidade Europeia"/>
                </span>
                <eol/>
-               <span lang="fi">
+               <span xml:lang="fi">
                   <t v="Euroopan yhteisön puolesta"/>
                </span>
                <eol/>
-               <span lang="sv">
+               <span xml:lang="sv">
                   <t v="På Europeiska gemenskapens vägnar"/>
                </span>
                <eol/>
@@ -1244,48 +1244,48 @@
          </signatory>
          <signatory>
             <organization>
-               <span lang="es">
+               <span xml:lang="es">
                   <t v="Por la Confederación Suiza"/>
                </span>
             </organization>
             <role>
-               <span lang="da">
+               <span xml:lang="da">
                   <t v="For Det Schweiziske Edsforbund"/>
                </span>
                <eol/>
-               <span lang="de">
+               <span xml:lang="de">
                   <t v="Für der Schweizerischen Eidgenossenschaft"/>
                </span>
                <eol/>
-               <span lang="el">
+               <span xml:lang="el">
                   <t v="Για την Ελβετική Συνομοσπονδία"/>
                </span>
                <eol/>
-               <span lang="en">
+               <span xml:lang="en">
                   <t v="For the Swiss Confederation"/>
                </span>
                <eol/>
-               <span lang="fr">
+               <span xml:lang="fr">
                   <t v="Pour la Confédération suisse"/>
                </span>
                <eol/>
-               <span lang="it">
+               <span xml:lang="it">
                   <t v="Per la Confederazione svizzera"/>
                </span>
                <eol/>
-               <span lang="nl">
+               <span xml:lang="nl">
                   <t v="Voor de Zwitserse Bondsstaat"/>
                </span>
                <eol/>
-               <span lang="pt">
+               <span xml:lang="pt">
                   <t v="Pela Confederação Suíça"/>
                </span>
                <eol/>
-               <span lang="fi">
+               <span xml:lang="fi">
                   <t v="Sveitsin valaliiton puolesta"/>
                </span>
                <eol/>
-               <span lang="sv">
+               <span xml:lang="sv">
                   <t v="På Schweiziska Edsförbundets vägnar"/>
                </span>
                <eol/>
@@ -7020,169 +7020,169 @@
             </unit>
          </list>
          <p>
-            <span lang="es">
+            <span xml:lang="es">
                <t v="Hecho en Luxemburgo, el ventiuno de junio de mil novecientos noventa y nueve."/>
             </span>
          </p>
          <p>
-            <span lang="da">
+            <span xml:lang="da">
                <t v="Udfærdiget i Luxembourg den enogtyvende juni nitten hundrede og nioghalvfems."/>
             </span>
          </p>
          <p>
-            <span lang="de">
+            <span xml:lang="de">
                <t v="Geschehen zu Luxemburg am einundzwanzigsten Juni neunzehnhundertneunundneunzig."/>
             </span>
          </p>
          <p>
-            <span lang="el">
+            <span xml:lang="el">
                <t v="Έγινε στο Λουξεμβούργο, στις είκοσι μία Ιουνίου χίλια εννιακόσια ενενήντα εννέα."/>
             </span>
          </p>
          <p>
-            <span lang="en">
+            <span xml:lang="en">
                <t v="Done at Luxembourg on the twenty-first day of June in the year one thousand nine hundred and ninety-nine."/>
             </span>
          </p>
          <p>
-            <span lang="fr">
+            <span xml:lang="fr">
                <t v="Fait à Luxembourg, le vingt-et-un juin mil neuf cent quatre-vingt dix-neuf."/>
             </span>
          </p>
          <p>
-            <span lang="it">
+            <span xml:lang="it">
                <t v="Fatto a Lussemburgo, addì ventuno giugno millenovecentonovantanove."/>
             </span>
          </p>
          <p>
-            <span lang="nl">
+            <span xml:lang="nl">
                <t v="Gedaan te Luxemburg, de eenentwintigste juni negentienhonderd negenennegentig."/>
             </span>
          </p>
          <p>
-            <span lang="pt">
+            <span xml:lang="pt">
                <t v="Feito em Luxemburgo, em vinte e um de Junho de mil novecentos e noventa e nove."/>
             </span>
          </p>
          <p>
-            <span lang="fi">
+            <span xml:lang="fi">
                <t v="Tehty Luxemburgissa kahdentenakymmenentenäensimmäisenä päivänä kesäkuuta vuonna tuhatyhdeksänsataayhdeksänkymmentäyhdeksän."/>
             </span>
          </p>
          <p>
-            <span lang="sv">
+            <span xml:lang="sv">
                <t v="Som skedde i Luxemburg den tjugoförsta juni nittonhundranittionio."/>
             </span>
          </p>
          <p>
-            <span lang="es">
+            <span xml:lang="es">
                <t v="Por la Comunidad Europea"/>
             </span>
          </p>
          <p>
-            <span lang="da">
+            <span xml:lang="da">
                <t v="For Det Europæiske Fællesskab"/>
             </span>
          </p>
          <p>
-            <span lang="de">
+            <span xml:lang="de">
                <t v="Für die Europäische Gemeinschaft"/>
             </span>
          </p>
          <p>
-            <span lang="el">
+            <span xml:lang="el">
                <t v="Για την Ευρωπαϊκή Κοινότητα"/>
             </span>
          </p>
          <p>
-            <span lang="en">
+            <span xml:lang="en">
                <t v="For the European Community"/>
             </span>
          </p>
          <p>
-            <span lang="fr">
+            <span xml:lang="fr">
                <t v="Pour la Communauté européenne"/>
             </span>
          </p>
          <p>
-            <span lang="it">
+            <span xml:lang="it">
                <t v="Per la Comunità europea"/>
             </span>
          </p>
          <p>
-            <span lang="nl">
+            <span xml:lang="nl">
                <t v="Voor de Europese Gemeenschap"/>
             </span>
          </p>
          <p>
-            <span lang="pt">
+            <span xml:lang="pt">
                <t v="Pela Comunidade Europeia"/>
             </span>
          </p>
          <p>
-            <span lang="fi">
+            <span xml:lang="fi">
                <t v="Euroopan yhteisön puolesta"/>
             </span>
          </p>
          <p>
-            <span lang="sv">
+            <span xml:lang="sv">
                <t v="På Europeiska gemenskapens vägnar"/>
             </span>
          </p>
          <figure src="L_2002114EN.01008801.tif" content="other"/>
          <figure src="L_2002114EN.01008802.tif" content="other"/>
          <p>
-            <span lang="es">
+            <span xml:lang="es">
                <t v="Por la Confederación Suiza"/>
             </span>
          </p>
          <p>
-            <span lang="da">
+            <span xml:lang="da">
                <t v="For Det Schweiziske Edsforbund"/>
             </span>
          </p>
          <p>
-            <span lang="de">
+            <span xml:lang="de">
                <t v="Für der Schweizerischen Eidgenossenschaft"/>
             </span>
          </p>
          <p>
-            <span lang="el">
+            <span xml:lang="el">
                <t v="Για την Ελβετική Συνομοσπονδία"/>
             </span>
          </p>
          <p>
-            <span lang="en">
+            <span xml:lang="en">
                <t v="For the Swiss Confederation"/>
             </span>
          </p>
          <p>
-            <span lang="fr">
+            <span xml:lang="fr">
                <t v="Pour la Confédération suisse"/>
             </span>
          </p>
          <p>
-            <span lang="it">
+            <span xml:lang="it">
                <t v="Per la Confederazione svizzera"/>
             </span>
          </p>
          <p>
-            <span lang="nl">
+            <span xml:lang="nl">
                <t v="Voor de Zwitserse Bondsstaat"/>
             </span>
          </p>
          <p>
-            <span lang="pt">
+            <span xml:lang="pt">
                <t v="Pela Confederação Suíça"/>
             </span>
          </p>
          <p>
-            <span lang="fi">
+            <span xml:lang="fi">
                <t v="Sveitsin valaliiton puolesta"/>
             </span>
          </p>
          <p>
-            <span lang="sv">
+            <span xml:lang="sv">
                <t v="På Schweiziska Edsförbundets vägnar"/>
             </span>
          </p>

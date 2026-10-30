@@ -54,7 +54,7 @@
   </xsl:template>
 
   <xsl:variable name="f:list-kinds" as="map(xs:string, xs:string)" select="map{
-      'ARAB': 'arabic', 'alpha': 'alpha', 'ALPHA': 'alpha-upper', 'roman': 'roman', 'ROMAN': 'roman-upper',
+      'ARAB': 'arabic', 'alpha': 'alpha', 'ALPHA': 'alphaUpper', 'roman': 'roman', 'ROMAN': 'romanUpper',
       'DASH': 'dash', 'NDASH': 'ndash', 'BULLET': 'bullet', 'NONE': 'none', 'OTHER': 'other'}"/>
 
   <!-- the element whose eId a list's points hang off. Citations and recitals are units only in the

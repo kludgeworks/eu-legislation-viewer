@@ -17,6 +17,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.text.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.Unit;
 import java.io.StringReader;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.stream.Stream;
 import javax.xml.transform.stream.StreamSource;
 import net.sf.saxon.s9api.Processor;
@@ -140,6 +141,23 @@ class LegalTextReaderTest {
     var annexes = consolidated.annexes();
     assertThatExceptionOfType(UnsupportedOperationException.class)
         .isThrownBy(() -> annexes.add(annexes.getFirst()));
+  }
+
+  /** A value the schema doesn't know, such as a unit kind from a newer converter, fails loudly. */
+  @Test
+  void refusesAValueTheSchemaDoesNotKnow() throws SaxonApiException {
+    var serializer = SAXON.newSerializer();
+    var xml =
+        serializer
+            .serializeNodeToString(
+                CONVERTER.convert(
+                    Fixtures.named("formex/06.02.1/02015R1998-20260322").source(),
+                    Optional.empty()))
+            .replaceFirst("kind=\"level\"", "kind=\"clause\"");
+    var newer = SAXON.newDocumentBuilder().build(new StreamSource(new StringReader(xml)));
+    assertThatExceptionOfType(ConversionException.class)
+        .isThrownBy(() -> READER.read(newer))
+        .withMessageContaining("clause");
   }
 
   @Test

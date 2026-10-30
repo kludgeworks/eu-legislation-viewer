@@ -5,6 +5,9 @@
            targetNamespace="https://kludgeworks.groknull.dev/ns/legal-text/1"
            elementFormDefault="qualified" version="1.0">
 
+  <!-- xml:lang, beside this schema (W3C's own, unchanged; the catalog resolves its URL to it) -->
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+
   <xs:annotation>
     <xs:documentation>
       legal-text 1.0: an EU legal text in one structure, whichever Formex version it was published in,
@@ -69,15 +72,26 @@
       </xs:element>
     </xs:sequence>
     <xs:attribute name="act" type="Celex" use="required">
-      <xs:annotation><xs:documentation>The CELEX number of the act, e.g. 32015R1998.</xs:documentation></xs:annotation>
+      <xs:annotation>
+        <xs:documentation>
+          The CELEX number of the act this text belongs to: the act itself for its original text and its consolidated
+          versions (32015R1998), the act it corrects for a corrigendum (32009R0631 for corrigendum 32009R0631R(01)).
+          The document's own number is source/@celex.
+        </xs:documentation>
+      </xs:annotation>
     </xs:attribute>
     <xs:attribute name="kind" type="DocumentKind" use="required">
-      <xs:annotation><xs:documentation>Original OJ text or consolidated version.</xs:documentation></xs:annotation>
+      <xs:annotation><xs:documentation>Original OJ text, corrigendum or consolidated version.</xs:documentation></xs:annotation>
     </xs:attribute>
     <xs:attribute name="version" type="xs:date">
-      <xs:annotation><xs:documentation>A consolidated version's start date; absent for the original text.</xs:documentation></xs:annotation>
+      <xs:annotation>
+        <xs:documentation>
+          A consolidated version's date, the first day it applies to, as its CELEX number has it
+          (02015R1998-20260322); absent for an original text or a corrigendum.
+        </xs:documentation>
+      </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="lang" type="xs:language" use="required">
+    <xs:attribute ref="xml:lang" use="required">
       <xs:annotation><xs:documentation>The language of this text, e.g. en.</xs:documentation></xs:annotation>
     </xs:attribute>
     <xs:attribute name="formexVersion" type="xs:string" use="required">
@@ -85,13 +99,13 @@
     </xs:attribute>
     <xs:attribute name="converter" type="xs:string" use="required">
       <xs:annotation>
-        <xs:documentation>The version of the converter that produced this document. A new converter invalidates cached texts.</xs:documentation>
+        <xs:documentation>The version of the converter that produced this document (formex-converter/version.txt).</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
 
   <xs:simpleType name="DocumentKind">
-    <xs:annotation><xs:documentation>Whether a document is an act's original text or a consolidated version.</xs:documentation></xs:annotation>
+    <xs:annotation><xs:documentation>Whether a document is an act's original text, a corrigendum to it or one of its consolidated versions.</xs:documentation></xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="original">
         <xs:annotation><xs:documentation>The text as published in the Official Journal.</xs:documentation></xs:annotation>
@@ -170,9 +184,6 @@
         <xs:annotation><xs:documentation>An act this version integrates, in the order the source lists them.</xs:documentation></xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="start" type="xs:date">
-      <xs:annotation><xs:documentation>The first day this version applies to.</xs:documentation></xs:annotation>
-    </xs:attribute>
     <xs:attribute name="end" type="xs:date">
       <xs:annotation><xs:documentation>The last day this version applies to; absent while it is the latest.</xs:documentation></xs:annotation>
     </xs:attribute>
@@ -500,7 +511,11 @@
         </xs:attribute>
         <xs:attribute name="eurlexAnchor" type="xs:positiveInteger">
           <xs:annotation>
-            <xs:documentation>Annexes only: the position among all annexes in document order, EUR-Lex's #anx_N anchor.</xs:documentation>
+            <xs:documentation>
+              Annexes only: the number EUR-Lex's HTML gives the annex in its anchor, #anx_N, so that a reader can link to
+              it there (https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1998#anx_1). EUR-Lex counts
+              the files an annex is split into, where this text joins them, so it can't be worked out from the units.
+            </xs:documentation>
           </xs:annotation>
         </xs:attribute>
       </xs:extension>
@@ -673,7 +688,7 @@
         <xs:attribute name="emphasis" type="EmphasisKind">
           <xs:annotation><xs:documentation>The typeface or the box (Formex HT/@TYPE), as for inline emphasis.</xs:documentation></xs:annotation>
         </xs:attribute>
-        <xs:attribute name="lang" type="xs:language">
+        <xs:attribute ref="xml:lang">
           <xs:annotation><xs:documentation>The language of the blocks, when not the document's (Formex LV/@LG).</xs:documentation></xs:annotation>
         </xs:attribute>
       </xs:extension>
@@ -742,9 +757,9 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="arabic"><xs:annotation><xs:documentation>1, 2, 3 (ARAB).</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="alpha"><xs:annotation><xs:documentation>a, b, c (alpha).</xs:documentation></xs:annotation></xs:enumeration>
-      <xs:enumeration value="alpha-upper"><xs:annotation><xs:documentation>A, B, C (ALPHA).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="alphaUpper"><xs:annotation><xs:documentation>A, B, C (ALPHA).</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="roman"><xs:annotation><xs:documentation>i, ii, iii (roman).</xs:documentation></xs:annotation></xs:enumeration>
-      <xs:enumeration value="roman-upper"><xs:annotation><xs:documentation>I, II, III (ROMAN).</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="romanUpper"><xs:annotation><xs:documentation>I, II, III (ROMAN).</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="dash"><xs:annotation><xs:documentation>Em dashes (DASH).</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="ndash"><xs:annotation><xs:documentation>En dashes (NDASH, Formex 05.59 and later).</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="bullet"><xs:annotation><xs:documentation>Bullets (BULLET).</xs:documentation></xs:annotation></xs:enumeration>
@@ -928,7 +943,7 @@
       <xs:enumeration value="form"><xs:annotation><xs:documentation>A scanned form.</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="formula"><xs:annotation><xs:documentation>A mathematical or chemical expression Formex can't mark up.</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="signature"><xs:annotation><xs:documentation>A handwritten signature.</xs:documentation></xs:annotation></xs:enumeration>
-      <xs:enumeration value="tech-design"><xs:annotation><xs:documentation>A technical drawing.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="techDesign"><xs:annotation><xs:documentation>A technical drawing.</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="other"><xs:annotation><xs:documentation>Anything else.</xs:documentation></xs:annotation></xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
@@ -1264,7 +1279,7 @@
     <xs:complexContent>
       <xs:extension base="InlineNode">
         <xs:group ref="inline"/>
-        <xs:attribute name="lang" type="xs:language" use="required">
+        <xs:attribute ref="xml:lang" use="required">
           <xs:annotation><xs:documentation>The language of the text, e.g. fr.</xs:documentation></xs:annotation>
         </xs:attribute>
       </xs:extension>

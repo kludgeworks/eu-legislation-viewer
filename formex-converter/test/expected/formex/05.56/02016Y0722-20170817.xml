@@ -5,7 +5,7 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="2017-08-17"
-           lang="en"
+           xml:lang="en"
            formexVersion="05.56"
            converter="1.0.0">
    <source celex="02016Y0722-20170817">
@@ -15,7 +15,7 @@
                    page="4"
                    document="2016/C 266/05"/>
    </source>
-   <lifecycle start="2017-08-17" produced="2017-10-24" sequence="001.001.0">
+   <lifecycle produced="2017-10-24" sequence="001.001.0">
       <eventRef type="amendment" act="32017Y0728(01)" date="2017-07-18"/>
    </lifecycle>
    <preface>

@@ -116,7 +116,7 @@
 
   <x:scenario label="A passage in another language">
     <x:context mode="block" xmlns=""><P><LV LG="FR"><P>Fait à Bruxelles</P><P>le 5 novembre</P></LV></P></x:context>
-    <x:expect label="is a container in that language" test="$x:result/self::*:blockContainer/@lang = 'fr' and count($x:result/*:p) = 2"/>
+    <x:expect label="is a container in that language" test="$x:result/self::*:blockContainer/@xml:lang = 'fr' and count($x:result/*:p) = 2"/>
   </x:scenario>
 
   <x:scenario label="A signature line that is an image">
@@ -127,7 +127,7 @@
   <x:scenario label="A signatory's line in each language">
     <x:context xmlns=""><ACT><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/><FINAL><SIGNATURE><SIGNATORY><P><HT TYPE="ITALIC"><P><LV LG="EN">For the European Community</LV></P><P><LV LG="FR">Pour la Communauté européenne</LV></P></HT></P><P>J. Smith</P></SIGNATORY></SIGNATURE></FINAL></ACT></x:context>
     <x:expect label="keeps each language's line, in italics, in the organization's content" test="
-        ($x:result//*:organization)[1]/*:content/*:blockContainer[@emphasis = 'i']//@lang = ('en', 'fr')"/>
+        ($x:result//*:organization)[1]/*:content/*:blockContainer[@emphasis = 'i']//@xml:lang = ('en', 'fr')"/>
   </x:scenario>
 
   <x:scenario label="A heading with a table">

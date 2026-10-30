@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           act="32009R0275R(01)"
+           act="32009R0275"
            kind="corrigendum"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
-           lang="en"
+           xml:lang="en"
            formexVersion="05.00"
            converter="1.0.0">
    <source celex="32009R0275R(01)">

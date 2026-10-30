@@ -8,13 +8,16 @@ import org.jspecify.annotations.Nullable;
 /**
  * One language version of an act: its original text, or one consolidated version.
  *
- * @param act The CELEX number of the act, e.g. 32015R1998.
- * @param kind Original OJ text or consolidated version.
- * @param version A consolidated version's start date; absent for the original text.
+ * @param act The CELEX number of the act this text belongs to: the act itself for its original text
+ *     and its consolidated versions (32015R1998), the act it corrects for a corrigendum (32009R0631
+ *     for corrigendum 32009R0631R(01)). The document's own number is source/@celex.
+ * @param kind Original OJ text, corrigendum or consolidated version.
+ * @param version A consolidated version's date, the first day it applies to, as its CELEX number
+ *     has it (02015R1998-20260322); absent for an original text or a corrigendum.
  * @param lang The language of this text, e.g. en.
  * @param formexVersion The Formex schema version of the source, e.g. 06.02.1.
- * @param converter The version of the converter that produced this document. A new converter
- *     invalidates cached texts.
+ * @param converter The version of the converter that produced this document
+ *     (formex-converter/version.txt).
  * @param source Which document this is, and where it was published.
  * @param lifecycle For a consolidated version: its period and the acts it integrates.
  * @param preface The long title.
@@ -46,7 +49,10 @@ public record LegalText(
     notes = List.copyOf(notes);
   }
 
-  /** Whether a document is an act's original text or a consolidated version. */
+  /**
+   * Whether a document is an act's original text, a corrigendum to it or one of its consolidated
+   * versions.
+   */
   public enum Kind {
     /** The text as published in the Official Journal. */
     ORIGINAL,

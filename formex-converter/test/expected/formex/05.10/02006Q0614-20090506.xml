@@ -5,7 +5,7 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="2009-05-06"
-           lang="en"
+           xml:lang="en"
            formexVersion="05.10"
            converter="1.0.0">
    <source celex="02006Q0614-20090506">
@@ -15,7 +15,7 @@
                    page="1"
                    document="2006/C 139/01"/>
    </source>
-   <lifecycle start="2009-05-06" produced="2009-06-05" sequence="002.001.0">
+   <lifecycle produced="2009-06-05" sequence="002.001.0">
       <eventRef type="amendment" act="32008D0029" date="2007-12-18"/>
       <eventRef type="amendment" act="32008D0371" date="2008-04-29"/>
       <eventRef type="amendment" act="32009D0407" date="2009-05-06"/>

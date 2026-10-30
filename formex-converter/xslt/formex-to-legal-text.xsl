@@ -116,9 +116,12 @@
     <xsl:variable name="doc" as="element()" select="($act/CONS.DOC, $act/CONS.OTH.DOC, $act)[1]"/>
     <xsl:variable name="content" as="element()" select="($doc/CONS.DOC.GEN, $doc)[1]"/>
     <xsl:variable name="info" as="element(INFO.CONSLEG)?" select="$act/INFO.CONSLEG"/>
-    <xsl:variable name="act-celex" as="xs:string" select="
-        if ($consolidated) then '3' || $info/@CONSLEG.REF
+    <!-- the document's own CELEX number, and the act's: a corrigendum's is the act's with R(01) -->
+    <xsl:variable name="document-celex" as="xs:string" select="
+        if ($consolidated) then '0' || $info/@CONSLEG.REF || '-' || $info/@START.DATE
         else ($celex[normalize-space()], error(xs:QName('f:celex'), 'An OJ act needs the $celex parameter'))[1]"/>
+    <xsl:variable name="act-celex" as="xs:string" select="
+        if ($consolidated) then '3' || $info/@CONSLEG.REF else replace($document-celex, 'R\([0-9]+\)$', '')"/>
     <!-- a document, so that the marking pass can use a key -->
     <xsl:variable name="text" as="document-node(element(lt:legalText))">
       <xsl:document>
@@ -127,11 +130,11 @@
           <xsl:if test="$consolidated">
             <xsl:attribute name="version" select="f:date($info/@START.DATE)"/>
           </xsl:if>
-          <xsl:attribute name="lang" select="lower-case(($doc/BIB.INSTANCE/LG.DOC, $content/BIB.INSTANCE/LG.DOC)[1])"/>
+          <xsl:attribute name="xml:lang" select="lower-case(($doc/BIB.INSTANCE/LG.DOC, $content/BIB.INSTANCE/LG.DOC)[1])"/>
           <xsl:attribute name="formexVersion" select="f:formex-version($act)"/>
           <xsl:attribute name="converter" select="$converter"/>
 
-          <source celex="{if ($consolidated) then '0' || $info/@CONSLEG.REF || '-' || $info/@START.DATE else $act-celex}">
+          <source celex="{$document-celex}">
             <xsl:if test="$doc/BIB.INSTANCE/NO.ELI">
               <xsl:attribute name="eli" select="normalize-space($doc/BIB.INSTANCE/NO.ELI)"/>
             </xsl:if>
@@ -155,9 +158,8 @@
 
           <xsl:if test="$consolidated">
             <lifecycle>
-              <xsl:attribute name="start" select="f:date($info/@START.DATE)"/>
-              <!-- an end or production date that is not a date (END.DATE="20062131") is left out; the start
-                   date identifies the version, so it stays required -->
+              <!-- the start date is the version's (legalText/@version); an end or production date that is
+                   not a date (END.DATE="20062131") is left out -->
               <xsl:if test="$info/@END.DATE != '99999999'">
                 <xsl:sequence select="f:date-attribute('end', $info/@END.DATE)"/>
               </xsl:if>

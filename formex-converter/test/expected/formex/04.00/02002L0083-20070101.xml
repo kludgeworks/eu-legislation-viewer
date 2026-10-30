@@ -5,13 +5,13 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="2007-01-01"
-           lang="en"
+           xml:lang="en"
            formexVersion="04.00"
            converter="1.0.0">
    <source celex="02002L0083-20070101">
       <publication series="L" number="345" date="2002-12-19" page="1"/>
    </source>
-   <lifecycle start="2007-01-01" produced="2007-03-02" sequence="004.001.0">
+   <lifecycle produced="2007-03-02" sequence="004.001.0">
       <eventRef type="amendment" act="32004L0066" date="2004-04-26"/>
       <eventRef type="amendment" act="32005L0001" date="2005-03-09"/>
       <eventRef type="amendment" act="32005L0068" date="2005-11-16"/>
@@ -2810,7 +2810,7 @@
                      <p>
                         <t v="The amount of such technical provisions shall be determined according to the following principles."/>
                      </p>
-                     <list kind="alpha-upper">
+                     <list kind="alphaUpper">
                         <unit eId="art_20/par_1/sub_2/pnt_A" kind="point">
                            <num>
                               <t v="A."/>
@@ -3103,7 +3103,7 @@
                   <p>
                      <t v="The home Member State may not authorise assurance undertakings to cover their technical provisions with any but the following categories of assets:"/>
                   </p>
-                  <list kind="alpha-upper">
+                  <list kind="alphaUpper">
                      <unit eId="art_23/par_1/pnt_A" kind="point">
                         <num>
                            <t v="A."/>

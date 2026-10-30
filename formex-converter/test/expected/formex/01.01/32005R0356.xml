@@ -4,7 +4,7 @@
            act="32005R0356"
            kind="original"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
-           lang="en"
+           xml:lang="en"
            formexVersion="01.01"
            converter="1.0.0">
    <source celex="32005R0356">
@@ -683,7 +683,7 @@
             <heading>
                <t v="CHARACTERISTICS OF END MARKER AND INTERMEDIARY MARKER BUOYS"/>
             </heading>
-            <figure src="L_2005056EN.01001102.tif" content="tech-design">
+            <figure src="L_2005056EN.01001102.tif" content="techDesign">
                <description>
                   <p>
                      <t v="TOP SIGN"/>

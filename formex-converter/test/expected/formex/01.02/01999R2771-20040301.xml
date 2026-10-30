@@ -5,13 +5,13 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="2004-03-01"
-           lang="en"
+           xml:lang="en"
            formexVersion="01.02"
            converter="1.0.0">
    <source celex="01999R2771-20040301">
       <publication series="L" number="333" date="1999-12-24" page="11"/>
    </source>
-   <lifecycle start="2004-03-01" sequence="006.001.0">
+   <lifecycle sequence="006.001.0">
       <eventRef type="corrigendum" act="31999R2771R(02)"/>
       <eventRef type="amendment" act="32000R1560" date="2000-07-17"/>
       <eventRef type="amendment" act="32000R2099" date="2000-10-03"/>
@@ -8147,10 +8147,10 @@
                            marker="O000002M001000"/>
                <p>
                   <quote startQuote="‘" endQuote="’">
-                     <span lang="fr">
+                     <span xml:lang="fr">
                         <t v="beurre de laiterie; qualité extra;"/>
                      </span>
-                     <span lang="nl">
+                     <span xml:lang="nl">
                         <t v="melkerijboter, extra kwaliteit"/>
                      </span>
                   </quote>
@@ -8264,10 +8264,10 @@
             <unit eId="anx_V/idt_14" kind="indent">
                <p>
                   <quote startQuote="‘" endQuote="’">
-                     <span lang="fi">
+                     <span xml:lang="fi">
                         <t v="perinteinen meijerivoi"/>
                      </span>
-                     <span lang="sv">
+                     <span xml:lang="sv">
                         <t v="traditionellt mejerismör"/>
                      </span>
                   </quote>

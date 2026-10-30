@@ -212,7 +212,7 @@
 
   <!-- text in another language (LV): a quoted term, an agreement's multilingual formula -->
   <xsl:template match="LV" mode="inline">
-    <span lang="{lower-case(@LG)}">
+    <span xml:lang="{lower-case(@LG)}">
       <xsl:call-template name="f:inlines">
         <xsl:with-param name="nodes" as="node()*" select="if (TXT) then TXT/node() else node()"/>
       </xsl:call-template>

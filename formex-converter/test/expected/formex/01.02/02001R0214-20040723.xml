@@ -5,13 +5,13 @@
            kind="consolidated"
            xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
            version="2004-07-23"
-           lang="en"
+           xml:lang="en"
            formexVersion="01.02"
            converter="1.0.0">
    <source celex="02001R0214-20040723">
       <publication series="L" number="37" date="2001-02-07" page="100"/>
    </source>
-   <lifecycle start="2004-07-23" sequence="004.001.0">
+   <lifecycle sequence="004.001.0">
       <eventRef type="amendment" act="32002R1534" date="2002-08-28"/>
       <eventRef type="amendment" act="32002R1931" date="2002-10-29"/>
       <eventRef type="amendment" act="32002R2239" date="2002-12-16"/>

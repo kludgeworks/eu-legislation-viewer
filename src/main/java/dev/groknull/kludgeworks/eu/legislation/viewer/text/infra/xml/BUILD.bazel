@@ -7,6 +7,7 @@ xjc_library(
     name = "xml",
     srcs = ["LocalDateAdapter.java"],
     bindings = "//src/main/xjb:bindings.xjb",
+    imports = ["//formex-converter/schema:xml.xsd"],
     schema = "//formex-converter/schema:legal-text.xsd",
     visibility = ["//src:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     xjc_args = ["-Xjspecify"],
