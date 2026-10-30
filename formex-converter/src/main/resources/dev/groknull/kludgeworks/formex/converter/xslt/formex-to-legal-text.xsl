@@ -178,8 +178,9 @@
                    it is left out -->
               <xsl:for-each-group select="$doc/FAM.COMP//(MOD.ACT | CORRIG)/BIB.DATA[matches(f:celex(NO.CELEX), '^[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*$')]"
                                   group-by="normalize-space(NO.CELEX)">
+                <!-- an amending act's date; a corrigendum has none of its own, so the day it was published -->
                 <eventRef type="{if (parent::CORRIG) then 'corrigendum' else 'amendment'}" act="{f:celex(current-grouping-key())}">
-                  <xsl:sequence select="f:date-attribute('date', DATE/@ISO)"/>
+                  <xsl:sequence select="f:date-attribute('date', (if (parent::CORRIG) then (DATE, BIB.INSTANCE.CONS/DATE)[1] else DATE)/@ISO)"/>
                 </eventRef>
               </xsl:for-each-group>
             </lifecycle>

@@ -230,7 +230,7 @@
       <xs:annotation><xs:documentation>The CELEX number of the amending act or corrigendum.</xs:documentation></xs:annotation>
     </xs:attribute>
     <xs:attribute name="date" type="xs:date">
-      <xs:annotation><xs:documentation>The date of that act.</xs:documentation></xs:annotation>
+      <xs:annotation><xs:documentation>The date of that act; for a corrigendum, which has no date of its own, the day it was published.</xs:documentation></xs:annotation>
     </xs:attribute>
   </xs:complexType>
 

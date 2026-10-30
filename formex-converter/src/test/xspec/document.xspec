@@ -59,7 +59,9 @@
         <INFO.PROD PROD.DATE="20250310"/>
         <CONS.DOC>
           <BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
-          <FAM.COMP LEG.VAL="AGR"><BIB.DATA><NO.CELEX>22002A0430(02)</NO.CELEX></BIB.DATA></FAM.COMP>
+          <FAM.COMP LEG.VAL="AGR"><BIB.DATA><NO.CELEX>22002A0430(02)</NO.CELEX></BIB.DATA>
+            <GR.CORRIG><CORRIG><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL><NO.OJ>173</NO.OJ></DOCUMENT.REF.CONS><DATE ISO="20030711">20030711</DATE></BIB.INSTANCE.CONS><NO.CELEX>22002A0430(02)R(01)</NO.CELEX></BIB.DATA></CORRIG></GR.CORRIG>
+          </FAM.COMP>
           <TITLE><TI><P>Agreement</P></TI></TITLE>
           <ENACTING.TERMS><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>text</ALINEA></ARTICLE></ENACTING.TERMS>
         </CONS.DOC>
@@ -67,6 +69,8 @@
     </x:context>
     <x:expect label="is a version of its base act, not of 3 and the consolidation's reference"
               test="$x:result/@act = '22002A0430(02)' and $x:result/*:source/@celex = '02002A2430-20250201'"/>
+    <x:expect label="dates a corrigendum, which has no date of its own, by its publication"
+              test="$x:result/*:lifecycle/*:eventRef[@type = 'corrigendum'][@act = '22002A0430(02)R(01)']/@date = '2003-07-11'"/>
   </x:scenario>
 
   <x:scenario label="A preamble with two groups of citations">

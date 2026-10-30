@@ -9,7 +9,8 @@ import org.jspecify.annotations.Nullable;
  *
  * @param type Amendment or corrigendum.
  * @param act The CELEX number of the amending act or corrigendum.
- * @param date The date of that act.
+ * @param date The date of that act; for a corrigendum, which has no date of its own, the day it was
+ *     published.
  */
 public record EventRef(Type type, String act, @Nullable LocalDate date) {
 

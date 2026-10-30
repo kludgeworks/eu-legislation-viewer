@@ -13,9 +13,9 @@
    </source>
    <lifecycle produced="2025-01-29" sequence="019.001.0">
       <eventRef type="amendment" act="22004D0404" date="2004-04-06"/>
-      <eventRef type="corrigendum" act="22004D0404R(01)"/>
+      <eventRef type="corrigendum" act="22004D0404R(01)" date="2004-06-10"/>
       <eventRef type="amendment" act="22004D0406" date="2004-04-22"/>
-      <eventRef type="corrigendum" act="22004D0406R(01)"/>
+      <eventRef type="corrigendum" act="22004D0406R(01)" date="2004-06-10"/>
       <eventRef type="amendment" act="22005D0612" date="2005-07-12"/>
       <eventRef type="amendment" act="22005D0961" date="2005-11-25"/>
       <eventRef type="amendment" act="22006D0727" date="2006-10-18"/>

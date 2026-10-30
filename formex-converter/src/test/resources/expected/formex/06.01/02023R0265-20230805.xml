@@ -12,8 +12,8 @@
       <publication series="L" number="41" date="2023-02-10" page="1"/>
    </source>
    <lifecycle produced="2023-08-07" sequence="001.001.0">
-      <eventRef type="corrigendum" act="32023R0265R(01)"/>
-      <eventRef type="corrigendum" act="32023R0265R(02)"/>
+      <eventRef type="corrigendum" act="32023R0265R(01)" date="2023-05-04"/>
+      <eventRef type="corrigendum" act="32023R0265R(02)" date="2023-07-20"/>
       <eventRef type="amendment" act="32023R1597" date="2023-08-03"/>
    </lifecycle>
    <preface>

@@ -12,7 +12,7 @@
       <publication series="L" number="333" date="1999-12-24" page="11"/>
    </source>
    <lifecycle sequence="006.001.0">
-      <eventRef type="corrigendum" act="31999R2771R(02)"/>
+      <eventRef type="corrigendum" act="31999R2771R(02)" date="2001-02-14"/>
       <eventRef type="amendment" act="32000R1560" date="2000-07-17"/>
       <eventRef type="amendment" act="32000R2099" date="2000-10-03"/>
       <eventRef type="amendment" act="32001R0213" date="2001-01-09"/>

@@ -21,14 +21,14 @@
       <eventRef type="amendment" act="32015R1329" date="2015-07-31"/>
       <eventRef type="amendment" act="32015R2338" date="2015-12-11"/>
       <eventRef type="amendment" act="32016R1199" date="2016-07-22"/>
-      <eventRef type="corrigendum" act="32016R1199R(08)"/>
+      <eventRef type="corrigendum" act="32016R1199R(08)" date="2023-02-02"/>
       <eventRef type="amendment" act="32017R0363" date="2017-03-01"/>
       <eventRef type="amendment" act="32018R0394" date="2018-03-13"/>
       <eventRef type="amendment" act="32018R1042" date="2018-07-23"/>
       <eventRef type="amendment" act="32020R0745" date="2020-06-04"/>
       <eventRef type="amendment" act="32018R1975" date="2018-12-14"/>
       <eventRef type="amendment" act="32019R1384" date="2019-07-24"/>
-      <eventRef type="corrigendum" act="32019R1384R(01)"/>
+      <eventRef type="corrigendum" act="32019R1384R(01)" date="2019-09-06"/>
       <eventRef type="amendment" act="32019R1387" date="2019-08-01"/>
       <eventRef type="amendment" act="32020R1176" date="2020-08-07"/>
       <eventRef type="amendment" act="32020R2036" date="2020-12-09"/>
@@ -44,7 +44,7 @@
       <eventRef type="amendment" act="32023R1020" date="2023-05-24"/>
       <eventRef type="amendment" act="32023R1754" date="2023-09-11"/>
       <eventRef type="amendment" act="32024R1111" date="2024-04-10"/>
-      <eventRef type="corrigendum" act="32024R1111R(04)"/>
+      <eventRef type="corrigendum" act="32024R1111R(04)" date="2025-05-21"/>
       <eventRef type="amendment" act="32024R2076" date="2024-07-24"/>
       <eventRef type="amendment" act="32025R0133" date="2025-01-28"/>
       <eventRef type="amendment" act="32025R2293" date="2025-11-10"/>

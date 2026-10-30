@@ -12,7 +12,7 @@
       <publication series="L" number="358" date="2006-12-16" page="87"/>
    </source>
    <lifecycle produced="2013-11-19" sequence="002.001.0">
-      <eventRef type="corrigendum" act="32006D0944R(01)"/>
+      <eventRef type="corrigendum" act="32006D0944R(01)" date="2006-12-22"/>
       <eventRef type="amendment" act="32010D0778" date="2010-12-15"/>
       <eventRef type="amendment" act="32013D0644" date="2013-11-08"/>
    </lifecycle>
