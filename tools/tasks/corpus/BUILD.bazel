@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: MIT
+load("//tools/build:defs.bzl", "sparql_terms_test")
+
+# every cdm:, cmr: and annotation: term the corpus queries use is in CDM, and not deprecated
+sparql_terms_test(
+    name = "sparql_terms",
+    size = "small",
+    srcs = glob(["*.rq"]),
+)

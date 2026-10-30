@@ -205,3 +205,48 @@ spring_boot_jar = rule(
         ),
     },
 )
+
+# The tdm: terms our queries use. tdm, Cellar's ontology of technical metadata (file names,
+# checksums), isn't published, so it can't be pinned as CDM is; these are declared in Cellar's
+# graph <http://publications.europa.eu/ontology/tdm> (checked 2026-10-30).
+TDM_TERMS = [
+    "http://publications.europa.eu/ontology/tdm#fixity_message_digest",
+    "http://publications.europa.eu/ontology/tdm#stream_fixity",
+    "http://publications.europa.eu/ontology/tdm#stream_name",
+]
+
+def sparql_terms_test(
+        name,
+        srcs,
+        ontologies = ["@cdm//:cdm.rdf", "@cdm//:cdm_annotationproperties.rdf"],
+        allowed = TDM_TERMS,
+        **kwargs):
+    """Check SPARQL queries against the ontologies that declare their terms: one test per query.
+
+    A term in a namespace one of the ontologies covers (cdm:, cmr:, annotation:) fails when the
+    ontology doesn't declare it or deprecates it; other namespaces (owl:, xsd:) aren't checked.
+
+    Args:
+      name: the test's name.
+      srcs: the .rq files.
+      ontologies: RDF/XML files declaring terms (rdf:about), CDM 4.17.0's by default.
+      allowed: full IRIs of terms that exist but that no ontology here declares, tdm:'s by default.
+      **kwargs: passed to the java_junit5_test.
+    """
+    java_junit5_test(
+        name = name,
+        test_class = "dev.groknull.kludgeworks.build.SparqlTermsTests",
+        jvm_flags = [
+            "-Dsparql-terms.ontologies='%s'" % " ".join(["$(rootpath %s)" % o for o in ontologies]),
+            "-Dsparql-terms.queries='%s'" % " ".join(["$(rootpath %s)" % s for s in srcs]),
+            "-Dsparql-terms.allowed='%s'" % " ".join(allowed),
+        ],
+        data = ontologies + srcs,
+        runtime_deps = [
+            "//tools/build/src/main/java/dev/groknull/kludgeworks/build:sparql_terms_runner",
+            "@maven//:org_junit_jupiter_junit_jupiter_engine",
+            "@maven//:org_junit_platform_junit_platform_launcher",
+            "@maven//:org_junit_platform_junit_platform_reporting",
+        ],
+        **kwargs
+    )

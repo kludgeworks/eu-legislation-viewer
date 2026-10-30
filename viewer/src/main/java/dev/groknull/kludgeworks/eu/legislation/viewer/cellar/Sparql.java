@@ -1,10 +1,14 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
 
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.ConcurrentHashMap;
@@ -84,6 +88,30 @@ public class Sparql {
               + " rows, the endpoint's limit: it may be cut off");
     }
     return result;
+  }
+
+  /**
+   * A query kept beside the class that runs it: {@code name} in its package on the classpath, with
+   * {@code {{placeholders}}} for {@link #fill} (the corpus script's queries use the same).
+   */
+  static String template(Class<?> owner, String name) {
+    try (var in = Objects.requireNonNull(owner.getResourceAsStream(name), name)) {
+      return new String(in.readAllBytes(), StandardCharsets.UTF_8);
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
+  }
+
+  /** The query with each {@code {{name}}} replaced by its value; the caller checks the values. */
+  static String fill(String template, Map<String, String> values) {
+    var query = template;
+    for (var value : values.entrySet()) {
+      query = query.replace("{{" + value.getKey() + "}}", value.getValue());
+    }
+    if (query.contains("{{")) {
+      throw new IllegalArgumentException("A placeholder left unfilled: " + query);
+    }
+    return query;
   }
 
   /** SPARQL 1.1 Query Results JSON: head.vars, results.bindings[{var: {type, value}}]. */

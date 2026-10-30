@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
 import java.util.regex.Pattern;
 import javax.xml.stream.XMLInputFactory;
@@ -38,33 +39,7 @@ public class FormexFiles {
       Pattern.compile("[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*(-[0-9]{8})?");
   private static final Pattern LANGUAGE = Pattern.compile("[A-Z]{3}");
 
-  private static final String QUERY =
-      """
-      PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
-      PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
-      PREFIX tdm: <http://publications.europa.eu/ontology/tdm#>
-      PREFIX owl: <http://www.w3.org/2002/07/owl#>
-      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-      SELECT ?manifestation ?item ?mime (SAMPLE(COALESCE(?streamName, STRAFTER(STR(?same), ".fmx4."))) AS ?file)
-             (SAMPLE(?sha1) AS ?sha1) ?modified
-      WHERE {
-        VALUES (?celex ?language) { ("%s"^^xsd:string <http://publications.europa.eu/resource/authority/language/%s>) }
-        ?work cdm:resource_legal_id_celex ?celex .
-        ?expr cdm:expression_belongs_to_work ?work ;
-              cdm:expression_uses_language ?language .
-        ?manifestation cdm:manifestation_manifests_expression ?expr ;
-             cdm:manifestation_type "fmx4"^^xsd:string ;
-             cmr:lastModificationDate ?modified .
-        ?item cdm:item_belongs_to_manifestation ?manifestation ;
-              cmr:manifestationMimeType ?mime .
-        OPTIONAL { ?item tdm:stream_name ?streamName }
-        OPTIONAL { ?item owl:sameAs ?same }
-        OPTIONAL { ?item tdm:stream_fixity/tdm:fixity_message_digest ?sha1 }
-      }
-      GROUP BY ?manifestation ?item ?mime ?modified
-      ORDER BY ?item
-      """;
+  private static final String QUERY = Sparql.template(FormexFiles.class, "formex-files.rq");
 
   private final Sparql sparql;
   private final RestClient client;
@@ -89,7 +64,8 @@ public class FormexFiles {
       throw new IllegalArgumentException(
           "Not a CELEX number and language code: " + celex + ", " + language);
     }
-    var rows = sparql.select(QUERY.formatted(celex, language)).rows();
+    var rows =
+        sparql.select(Sparql.fill(QUERY, Map.of("celex", celex, "language", language))).rows();
     var latest = rows.stream().max(Comparator.comparing(r -> modified(r.get("modified"))));
     if (latest.isEmpty()) {
       return Optional.empty();

@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+
+# The build tools' own tests: one test target per *Test.java
+java_test_suite(
+    name = "build",
+    size = "small",
+    srcs = glob(["*.java"]),
+    runner = "junit5",
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build:sparql_terms",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+)

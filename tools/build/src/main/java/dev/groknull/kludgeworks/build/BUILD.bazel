@@ -74,6 +74,22 @@ java_library(
     ],
 )
 
+# SPARQL queries' terms checked against the ontologies (the macro sparql_terms_test)
+java_library(
+    name = "sparql_terms",
+    srcs = ["SparqlTerms.java"],
+)
+
+java_library(
+    name = "sparql_terms_runner",
+    testonly = True,
+    srcs = ["SparqlTermsTests.java"],
+    deps = [
+        ":sparql_terms",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+)
+
 # Spring Boot's executable jar from Bazel's jars (the rule spring_boot_jar)
 java_binary(
     name = "spring_boot_jar",
