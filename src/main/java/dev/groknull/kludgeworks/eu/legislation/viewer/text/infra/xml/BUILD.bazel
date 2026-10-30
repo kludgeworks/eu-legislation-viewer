@@ -1,11 +1,14 @@
 # SPDX-License-Identifier: MIT
 load("//tools/build:defs.bzl", "xjc_library")
 
-# JAXB classes for legal-text.xsd; their Javadoc comes from the schema's xs:documentation
+# JAXB classes for legal-text.xsd; their Javadoc comes from the schema's xs:documentation, their
+# getters' nullness from its optionality (-Xjspecify)
 xjc_library(
     name = "xml",
     srcs = ["LocalDateAdapter.java"],
-    bindings = "bindings.xjb",
+    bindings = "//src/main/xjb:bindings.xjb",
     schema = "//formex-converter/schema:legal-text.xsd",
     visibility = ["//src:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    xjc_args = ["-Xjspecify"],
+    deps = ["@maven//:org_jspecify_jspecify"],
 )

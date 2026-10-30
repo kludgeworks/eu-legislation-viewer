@@ -98,12 +98,25 @@ java_library(
     ],
 )
 
-# JAXB's code generator, through its own entry point, for xjc_library
+# JAXB's code generator, through its own entry point, for xjc_library, with our plugin (-Xjspecify)
 java_binary(
     name = "xjc",
     main_class = "com.sun.tools.xjc.XJCFacade",
     runtime_deps = [
+        ":xjc_plugins",
         "@maven//:org_glassfish_jaxb_jaxb_runtime",
+        "@maven//:org_glassfish_jaxb_jaxb_xjc",
+    ],
+)
+
+# -Xjspecify: the schema's optionality as JSpecify annotations on the generated getters
+java_library(
+    name = "xjc_plugins",
+    srcs = ["src/dev/groknull/kludgeworks/build/JSpecifyPlugin.java"],
+    resource_strip_prefix = "tools/build/src",
+    resources = ["src/META-INF/services/com.sun.tools.xjc.Plugin"],
+    deps = [
+        "@maven//:org_glassfish_jaxb_codemodel",
         "@maven//:org_glassfish_jaxb_jaxb_xjc",
     ],
 )
