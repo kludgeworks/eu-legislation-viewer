@@ -3,7 +3,8 @@ load("@rules_java//java:defs.bzl", "java_library")
 
 package(default_visibility = ["//formex-converter:__subpackages__"])
 
-# The converter's classpath resources, under its Java package (dev/groknull/kludgeworks/formex/converter/)
+# The converter's classpath resources, at /dev/groknull/kludgeworks/formex/converter/: the path the
+# viewer's adapter loads them by, and the tests' package
 
 exports_files([
     "schema/legal-text.sch",

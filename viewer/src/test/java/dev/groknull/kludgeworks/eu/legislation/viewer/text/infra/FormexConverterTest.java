@@ -1,18 +1,20 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.formex.converter;
+package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import java.io.IOException;
 import java.io.StringReader;
-import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import javax.xml.transform.stream.StreamSource;
 import net.sf.saxon.s9api.Processor;
 import org.junit.jupiter.api.Test;
 
-/** How {@link FormexConverter} reports what the stylesheet can't or won't convert. */
+/**
+ * The adapter on the stylesheet: the CELEX passed, large documents read, and what the stylesheet
+ * can't or won't convert reported as exceptions. The stylesheet's own contract is tested in
+ * //formex-converter (StylesheetTest).
+ */
 class FormexConverterTest {
 
   static final FormexConverter CONVERTER = new FormexConverter(new Processor(false));
@@ -21,16 +23,6 @@ class FormexConverterTest {
   void convertsAnOjActWithItsCelex() {
     var legalText = CONVERTER.convert(formex(act("<ENACTING.TERMS/>")), Optional.of("32026R0449"));
     assertThat(legalText.toString()).contains("act=\"32026R0449\"");
-  }
-
-  @Test
-  void stampsTheConvertersVersion() throws IOException {
-    String version;
-    try (var in = FormexConverter.class.getResourceAsStream("version.txt")) {
-      version = new String(in.readAllBytes(), StandardCharsets.UTF_8).strip();
-    }
-    var legalText = CONVERTER.convert(formex(act("<ENACTING.TERMS/>")), Optional.of("32026R0449"));
-    assertThat(legalText.toString()).contains("converter=\"" + version + "\"");
   }
 
   @Test

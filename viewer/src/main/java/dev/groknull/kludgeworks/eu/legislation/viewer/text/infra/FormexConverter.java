@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.formex.converter;
+package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,8 +28,10 @@ import net.sf.saxon.s9api.XsltExecutable;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Turns Formex 4 into legal-text XML with {@code formex-to-legal-text.xsl}. The stylesheet is
- * compiled once; each call gets its own transformer, so one instance serves concurrent calls.
+ * Turns Formex 4 into legal-text XML with {@code formex-to-legal-text.xsl}, run by its contract
+ * (the stylesheet's header), its refusals turned into exceptions: the text module's adapter on
+ * //formex-converter's stylesheets. The stylesheet is compiled once; each call gets its own
+ * transformer, so one instance serves concurrent calls.
  *
  * <p>Formex files can be large: an annex of 104 MB with over 100,000 entity references (&amp;amp;).
  * Since JDK 24 the JDK's XML parser stops at 100,000 ({@code jdk.xml.maxGeneralEntitySizeLimit}),
@@ -37,9 +39,10 @@ import org.jspecify.annotations.Nullable;
  * the input when it is a stream, and the files the stylesheet reads. Formex has no DTD, so there
  * are no entities to expand beyond the predefined ones.
  */
-public final class FormexConverter {
+final class FormexConverter {
 
-  static final String STYLESHEET = "xslt/formex-to-legal-text.xsl";
+  static final String STYLESHEET =
+      "/dev/groknull/kludgeworks/formex/converter/xslt/formex-to-legal-text.xsl";
   static final String ERRORS = "https://kludgeworks.groknull.dev/ns/formex-converter";
   private static final Pattern ROOT_ELEMENT = Pattern.compile("<([A-Z][A-Z0-9.]*)[\\s>/]");
   private static final QName CELEX = new QName("celex");
@@ -47,7 +50,7 @@ public final class FormexConverter {
   private final Processor processor;
   private final XsltExecutable stylesheet;
 
-  public FormexConverter(Processor processor) {
+  FormexConverter(Processor processor) {
     this.processor = processor;
     processor.setConfigurationProperty(
         FeatureKeys.XML_PARSER_PROPERTY + "jdk.xml.maxGeneralEntitySizeLimit", "0");
@@ -75,7 +78,7 @@ public final class FormexConverter {
    * @throws UnsupportedFormexException if it uses Formex the converter doesn't handle yet
    * @throws ConversionException if it can't be converted for another reason
    */
-  public XdmNode convert(Source formex, Optional<String> celex) {
+  XdmNode convert(Source formex, Optional<String> celex) {
     var transformer = stylesheet.load30();
     // a refusal is an xsl:message that terminates: its text is the reason, Saxon's own message
     // isn't
@@ -118,7 +121,7 @@ public final class FormexConverter {
    *
    * @throws IllegalArgumentException if the folder holds no XML file
    */
-  public static Path input(Path folder) {
+  static Path input(Path folder) {
     var files = xmlFiles(folder);
     if (files.isEmpty()) {
       throw new IllegalArgumentException("No Formex file in " + folder);

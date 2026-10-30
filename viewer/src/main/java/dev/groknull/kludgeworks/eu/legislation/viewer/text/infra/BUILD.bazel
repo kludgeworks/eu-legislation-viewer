@@ -1,16 +1,18 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
 
-# The text module's adapters: legal texts converted from Cellar's Formex (FormexLegalTexts),
-# and the reader from legal-text XML into the records
+# The text module's adapters: legal texts converted from Cellar's Formex (FormexLegalTexts), by
+# //formex-converter's stylesheets (FormexConverter), and the reader from legal-text XML into the records
 java_library(
     name = "infra",
     srcs = glob(["*.java"]),
     plugins = ["//tools/build:mapstruct"],
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
-    runtime_deps = ["//formex-converter:schema"],
+    runtime_deps = [
+        "//formex-converter:schema",
+        "//formex-converter:stylesheets",
+    ],
     deps = [
-        "//formex-converter:converter",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text",

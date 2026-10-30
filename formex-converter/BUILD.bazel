@@ -1,15 +1,17 @@
 # SPDX-License-Identifier: MIT
 load("//tools/build:defs.bzl", "xslt_quality_test")
 
-# The Formex converter, laid out as Maven lays out a Java project: the Java API in src/main/java,
-# the stylesheets and the schema in src/main/resources under the API's package, the tests in
-# src/test/java and src/test/xspec, their data in src/test/resources. What others use, by short
-# names:
+# The Formex converter: XSLT 3 stylesheets from Formex 4 to legal text, and legal text's schema,
+# versioned together by version.txt and usable with any XSLT 3 processor (the contract is in
+# formex-to-legal-text.xsl's header). Laid out as Maven lays out a project: the stylesheets and the
+# schema in src/main/resources, on the classpath at /dev/groknull/kludgeworks/formex/converter/;
+# their tests in src/test/java and src/test/xspec, their data in src/test/resources. The viewer's
+# Java adapter is its own (text.infra's FormexConverter). What others use, by short names:
 
-# the Java API: FormexConverter
+# formex-to-legal-text.xsl, the modules it includes and version.txt, on the classpath
 alias(
-    name = "converter",
-    actual = "//formex-converter/src/main/java/dev/groknull/kludgeworks/formex/converter",
+    name = "stylesheets",
+    actual = "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
     visibility = ["//visibility:public"],
 )
 

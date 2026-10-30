@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.text.infra;
 
-import dev.groknull.kludgeworks.formex.converter.FormexConverter;
 import net.sf.saxon.s9api.Processor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

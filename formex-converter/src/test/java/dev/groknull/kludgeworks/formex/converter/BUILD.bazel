@@ -27,7 +27,6 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
-        "//formex-converter/src/main/java/dev/groknull/kludgeworks/formex/converter",
         "//tools/build/src/main/java/dev/groknull/kludgeworks/build:schematron",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
@@ -79,7 +78,6 @@ java_junit5_test(
     ],
     deps = [
         ":converter-test-lib",
-        "//formex-converter/src/main/java/dev/groknull/kludgeworks/formex/converter",  # the same Java package, until the API moves
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",

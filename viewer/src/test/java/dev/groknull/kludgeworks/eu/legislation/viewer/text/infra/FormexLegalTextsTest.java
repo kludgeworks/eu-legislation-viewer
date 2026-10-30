@@ -9,7 +9,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.LegalTextIdentifier;
-import dev.groknull.kludgeworks.formex.converter.FormexConverter;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
