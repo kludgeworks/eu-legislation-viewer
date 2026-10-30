@@ -37,6 +37,9 @@ maven.install(
         "org.springframework.boot:spring-boot-starter-actuator",
         # RestClient.Builder, configured by Boot (spring.http.clients.*)
         "org.springframework.boot:spring-boot-starter-restclient",
+        # Jakarta Bean Validation (Hibernate Validator), for @Validated configuration properties
+        "org.springframework.boot:spring-boot-starter-validation",
+        "jakarta.validation:jakarta.validation-api",
         # the app as Spring Boot's executable jar, by the Repackager its Maven and Gradle plugins use
         "org.springframework.boot:spring-boot-loader-tools:4.1.1",  # not in the BOM: keep it at Boot's version
         "org.springframework.modulith:spring-modulith-api",
