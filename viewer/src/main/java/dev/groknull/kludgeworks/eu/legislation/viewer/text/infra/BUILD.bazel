@@ -1,7 +1,8 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
 
-# The reader: legal-text XML → the domain records
+# The text module's adapters: legal texts converted from Cellar's Formex (FormexLegalTexts),
+# and the reader from legal-text XML into the records
 java_library(
     name = "infra",
     srcs = glob(["*.java"]),
@@ -9,7 +10,9 @@ java_library(
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     runtime_deps = ["//formex-converter:schema"],
     deps = [
+        "//formex-converter:converter",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/text/infra/xml",
         "@maven//:jakarta_xml_bind_jakarta_xml_bind_api",
@@ -17,5 +20,6 @@ java_library(
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_mapstruct_mapstruct",
+        "@maven//:org_springframework_spring_context",
     ],
 )

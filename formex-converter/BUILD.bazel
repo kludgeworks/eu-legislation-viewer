@@ -39,6 +39,13 @@ alias(
     visibility = ["//visibility:public"],
 )
 
+# the fixtures' Formex, raw as Cellar serves it: for tests that read real documents
+alias(
+    name = "fixtures",
+    actual = "//formex-converter/src/test/resources/fixtures:formex",
+    visibility = ["//visibility:public"],
+)
+
 # every stylesheet of the project, production and test
 xslt_quality_test(
     name = "xslt_quality",
