@@ -125,8 +125,8 @@
         </CONS.DOC>
       </CONS.ACT>
     </x:context>
-    <x:expect label="number the notes' definitions under the table: anx/def_1, anx/tbl_1/def_1"
-              test="$x:result//*:unit[@kind = 'definition']/@eId => string-join(' ') = 'anx/def_1 anx/tbl_1/def_1'"/>
+    <x:expect label="number the notes' definitions under the table, in their annotation: anx/def_1, anx/tbl_1/ann_1/def_1"
+              test="$x:result//*:unit[@kind = 'definition']/@eId => string-join(' ') = 'anx/def_1 anx/tbl_1/ann_1/def_1'"/>
   </x:scenario>
 
   <x:scenario label="An unlabelled ANNEX beside ANNEX 1 and ANNEX 2">
@@ -185,6 +185,22 @@
     </x:context>
     <x:expect label="keeps its whole title as label: anx_1, anx_Attachment-1"
               test="$x:result/*:annexes/*:unit/@eId => string-join(' ') = 'anx_1 anx_Attachment-1'"/>
+  </x:scenario>
+
+  <x:scenario label="A level an annotation holds (a form's PART I, beside the annex's)">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R0001" START.DATE="20260101" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><ENACTING.TERMS/>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX</P></TI></TITLE><CONTENTS>
+            <GR.SEQ LEVEL="1"><TITLE><TI><P>PART I</P></TI></TITLE><P>x</P></GR.SEQ>
+            <GR.ANNOTATION><ANNOTATION><GR.SEQ LEVEL="1"><TITLE><TI><P>PART I</P></TI></TITLE><P>y</P></GR.SEQ></ANNOTATION></GR.ANNOTATION>
+          </CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="hangs off the annotation: anx/lvl_PART-I, anx/ann_1/lvl_PART-I"
+              test="$x:result//*:unit[@kind = 'level']/@eId => string-join(' ') = 'anx/lvl_PART-I anx/ann_1/lvl_PART-I'"/>
   </x:scenario>
 
   <x:scenario label="A list point 1. directly in an annex, beside its point (1)">

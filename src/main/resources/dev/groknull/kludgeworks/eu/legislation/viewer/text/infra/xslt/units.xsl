@@ -250,10 +250,18 @@
     </quotedStructure>
   </xsl:template>
 
+  <!-- an annotation (the notes printed with a form) numbers what it holds apart from the text around
+       it: an outermost one is a context, ann_N through the file (anx_II/ann_1/lvl_PART-I) -->
   <xsl:template match="ANNOTATION | GR.ANNOTATION" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
+    <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="outermost" as="xs:boolean" select="empty(ancestor::*[self::ANNOTATION or self::GR.ANNOTATION])"/>
+    <xsl:variable name="inner" as="xs:string?" select="
+        if ($outermost) then f:eid($base, 'ann', string(count(preceding::*[self::ANNOTATION or self::GR.ANNOTATION]
+                                                                  [empty(ancestor::*[self::ANNOTATION or self::GR.ANNOTATION])]) + 1))
+        else $base"/>
     <xsl:variable name="annotation" as="element()">
       <annotation>
         <xsl:sequence select="f:provenance($m)"/>
@@ -270,14 +278,21 @@
           <xsl:with-param name="nodes" as="node()*" select="node() except TITLE"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+          <xsl:with-param name="base" as="xs:string?" select="$inner" tunnel="yes"/>
+          <xsl:with-param name="levelBase" as="xs:string?" select="$inner" tunnel="yes"/>
+          <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+          <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
         </xsl:call-template>
       </annotation>
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $annotation)"/>
   </xsl:template>
 
-  <!-- an image with its caption, and the transcription of its text (IMG.CNT) as its description -->
+  <!-- an image with its caption, and the transcription of its text (IMG.CNT) as its description,
+       whose units hang off fig_N, numbered through the file -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'TIFF']" mode="block">
+    <xsl:param name="base" as="xs:string?" tunnel="yes"/>
+    <xsl:variable name="figure" as="xs:string" select="f:eid($base, 'fig', string(count(preceding::INCL.ELEMENT[@TYPE = 'TIFF']) + 1))"/>
     <figure src="{@FILEREF}">
       <xsl:sequence select="f:image-content(.)"/>
       <xsl:if test="CAPTION">
@@ -291,6 +306,10 @@
         <description>
           <xsl:call-template name="f:blocks">
             <xsl:with-param name="nodes" as="node()*" select="IMG.CNT/node()"/>
+            <xsl:with-param name="base" as="xs:string?" select="$figure" tunnel="yes"/>
+            <xsl:with-param name="levelBase" as="xs:string?" select="$figure" tunnel="yes"/>
+            <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+            <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
           </xsl:call-template>
         </description>
       </xsl:if>
