@@ -62,6 +62,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlAnnexes;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlAnnotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlBlock;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlBlockContainer;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlBlocks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlCaption;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlCell;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlChanged;
@@ -103,6 +104,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlNotes;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlOldText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlParagraph;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlPreamble;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlPreambleContent;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlPreface;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlProvenance;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlPublication;
@@ -119,6 +121,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlSource;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlSpan;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlTable;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlTableGroup;
+import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlTableRow;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlUnit;
 import dev.groknull.kludgeworks.eu.legislation.viewer.text.infra.xml.XmlUnitKind;
@@ -145,12 +148,12 @@ import org.w3c.dom.Element;
  * domain records. MapStruct writes the implementation at compile time, and a property either side
  * leaves unmapped fails the build: a schema change the records don't follow can't go unnoticed.
  * Where the two agree on names it maps by name; below are only the renames (a note reference's href
- * becomes the note's eId), the optional wrappers that become empty lists, the two lists of mixed
- * types, and formulas. The generated classes' getters carry the schema's optionality as JSpecify
- * annotations (-Xjspecify), so MapStruct checks each optional value has a default here, and the
- * methods that take an optional value say so (@Nullable), so that they keep their null check. The
- * booleans' defaults restate the schema's: MapStruct 1.7.0.Beta2 counts a primitive getter as
- * possibly null.
+ * becomes the note's eId), the optional wrappers that become empty lists, the families the schema
+ * gives a base type (blocks, inline content, preamble content, table rows) by subclass, and
+ * formulas. The generated classes' getters carry the schema's optionality as JSpecify annotations
+ * (-Xjspecify), so MapStruct checks each optional value has a default here, and the methods that
+ * take an optional value say so (@Nullable), so that they keep their null check. The booleans'
+ * defaults restate the schema's: MapStruct 1.7.0.Beta2 counts a primitive getter as possibly null.
  */
 @Mapper(
     accessibility = ClassAccessibility.PACKAGE_PRIVATE,
@@ -373,7 +376,7 @@ interface LegalTextMapper {
 
   @Nullable ImageContent content(@Nullable XmlImageContent source);
 
-  // identifiers, optional wrappers and the lists of mixed types
+  // identifiers and optional wrappers
 
   default EId eId(String value) {
     return new EId(value);
@@ -389,6 +392,10 @@ interface LegalTextMapper {
   }
 
   default List<Block> blocks(@Nullable XmlCaption source) {
+    return source == null ? List.of() : blocks(source.getContent());
+  }
+
+  default List<Block> blocks(@Nullable XmlBlocks source) {
     return source == null ? List.of() : blocks(source.getContent());
   }
 
@@ -409,24 +416,16 @@ interface LegalTextMapper {
   }
 
   /** A preamble holds its formulas, citations and recitals among blocks, in their order. */
-  default PreambleContent preambleContent(Object source) {
-    return switch (source) {
-      case XmlFormula formula -> formula(formula);
-      case XmlCitations citations -> citations(citations);
-      case XmlRecitals recitals -> recitals(recitals);
-      case XmlBlock block -> block(block);
-      default -> throw new IllegalArgumentException("not preamble content: " + source);
-    };
-  }
+  @SubclassMapping(source = XmlFormula.class, target = Formula.class)
+  @SubclassMapping(source = XmlCitations.class, target = Citations.class)
+  @SubclassMapping(source = XmlRecitals.class, target = Recitals.class)
+  @SubclassMapping(source = XmlBlock.class, target = Block.class)
+  PreambleContent preambleContent(XmlPreambleContent source);
 
   /** A table holds rows and groups of rows, in their order. */
-  default TableRow tableRow(Object source) {
-    return switch (source) {
-      case XmlRow row -> row(row);
-      case XmlRowGroup group -> rowGroup(group);
-      default -> throw new IllegalArgumentException("not a table row: " + source);
-    };
-  }
+  @SubclassMapping(source = XmlRow.class, target = Row.class)
+  @SubclassMapping(source = XmlRowGroup.class, target = RowGroup.class)
+  TableRow tableRow(XmlTableRow source);
 
   // formulas: their MathML as written
 

@@ -22,7 +22,7 @@ public record Emphasis(Kind kind, List<Inline> content) implements Inline {
     I,
     /** Underlined. */
     U,
-    /** Superscript: m², never noise in a diff. */
+    /** Superscript: m². */
     SUP,
     /** Subscript. */
     SUB,

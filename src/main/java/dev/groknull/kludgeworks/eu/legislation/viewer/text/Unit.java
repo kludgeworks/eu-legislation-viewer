@@ -69,7 +69,10 @@ public record Unit(
     PARAGRAPH,
     /** A subparagraph of a numbered paragraph; sub_N by position. */
     SUBPARAGRAPH,
-    /** A numbered item of a list; pnt_ and its label. */
+    /**
+     * A numbered item of a list; pnt_ and its label, or idt_N by position where the label is only a
+     * mark (a dash written as its number).
+     */
     POINT,
     /** An unnumbered item of a list, such as a dash; idt_N by position. */
     INDENT,
@@ -80,7 +83,10 @@ public record Unit(
      * line such as ATTACHMENT-6-A) or unnumbered (level_N by position).
      */
     LEVEL,
-    /** An annex; anx, or anx_ and its label. */
+    /**
+     * An annex; anx, or anx_ and its label. An appendix (an annex inside an annex, Appendix III) is
+     * app_ and its label, or app.
+     */
     ANNEX,
     /**
      * One correction of a corrigendum: where (a paragraph: "On page 5, Article 3(2):"), then the
