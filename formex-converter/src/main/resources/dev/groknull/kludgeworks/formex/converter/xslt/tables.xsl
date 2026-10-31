@@ -102,6 +102,34 @@
     </tr>
   </xsl:template>
 
+  <!-- a cell of text alone (98% of 2016/2070's 2.3 million): one p of one t, as the template below
+       makes it, without its eId, markers and blocks; unless a marker no ancestor has attributed is
+       open over it (one opened in an earlier cell), whose provenance only the template below gives -->
+  <xsl:template match="CELL[not(*)][not(processing-instruction())][not(comment())]" mode="block">
+    <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
+    <xsl:choose>
+      <xsl:when test="exists(map:keys(accumulator-before('f:open'))[not(. = $ctx)])">
+        <xsl:next-match/>
+      </xsl:when>
+      <xsl:otherwise>
+        <td>
+          <xsl:if test="@COLSPAN">
+            <xsl:attribute name="colspan" select="@COLSPAN"/>
+          </xsl:if>
+          <xsl:if test="@ROWSPAN">
+            <xsl:attribute name="rowspan" select="@ROWSPAN"/>
+          </xsl:if>
+          <xsl:if test="@TYPE = 'HEADER'">
+            <xsl:attribute name="header" select="true()"/>
+          </xsl:if>
+          <xsl:if test="normalize-space()">
+            <p><t v="{string(.)}"/></p>
+          </xsl:if>
+        </td>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <!-- a cell is a context: what it numbers restarts in the next row (a level "PART A" in every row
        of a list of substances), so its units hang off tab_1/tr_103/td_7, by the source's column -->
   <xsl:template match="CELL" mode="block">
