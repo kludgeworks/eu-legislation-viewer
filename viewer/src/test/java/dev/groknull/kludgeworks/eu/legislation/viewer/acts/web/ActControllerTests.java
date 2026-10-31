@@ -23,6 +23,7 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import org.springframework.web.client.ResourceAccessException;
 
@@ -117,6 +118,18 @@ class ActControllerTests {
     json.extractingPath("$._embedded['av:versions'][1].celex").isEqualTo("02015R1998-20260322");
     json.extractingPath("$._embedded['av:versions'][1].interim").isEqualTo(true);
     json.extractingPath("$._embedded['av:versions'][1].integrates[0]").isEqualTo("32026R0449");
+  }
+
+  @Test
+  void anActIsHalAsPlainJsonToo() {
+    var response =
+        mvc.get().uri("/eli/reg_impl/2015/1998").accept(MediaType.APPLICATION_JSON).exchange();
+
+    assertThat(response).hasStatusOk().hasContentType(MediaType.APPLICATION_JSON);
+    assertThat(response)
+        .bodyJson()
+        .extractingPath("$._links.self.href")
+        .isEqualTo("http://localhost/eli/reg_impl/2015/1998");
   }
 
   @Test

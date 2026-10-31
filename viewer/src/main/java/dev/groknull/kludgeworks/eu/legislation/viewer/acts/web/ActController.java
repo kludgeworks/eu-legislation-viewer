@@ -28,8 +28,10 @@ import org.springframework.web.server.ResponseStatusException;
 /**
  * An act at its ELI (URLs and API): its identifiers and dates, its versions embedded (date, kind,
  * what each integrates; never the text), and its counterparts on EUR-Lex and Cellar as alternates
- * (Links back to EUR-Lex). Cacheable as long as the viewer keeps an act (viewer.acts.cache-for): a
- * timeline changes only when Cellar publishes a consolidation. An ELI no act has is 404.
+ * (Links back to EUR-Lex). HAL, as application/hal+json or plain application/json, for clients (HAL
+ * Explorer among them) that ask for JSON. Cacheable as long as the viewer keeps an act
+ * (viewer.acts.cache-for): a timeline changes only when Cellar publishes a consolidation. An ELI no
+ * act has is 404.
  */
 @RestController
 class ActController {
@@ -57,7 +59,7 @@ class ActController {
 
   @GetMapping(
       path = {EliPaths.ACT, EliPaths.TREATY},
-      produces = MediaTypes.HAL_JSON_VALUE)
+      produces = {MediaTypes.HAL_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
   ResponseEntity<RepresentationModel<?>> act(@RequestAttribute(EliPaths.ELI) Eli eli) {
     var act =
         acts.find(eli)
