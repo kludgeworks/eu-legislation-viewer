@@ -4,8 +4,10 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.acts.web;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import java.net.URI;
 import java.time.Duration;
+import java.util.Locale;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.Link;
@@ -15,6 +17,7 @@ import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -30,6 +33,9 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 class ActController {
   static final LinkRelation VERSIONS = LinkRelation.of("versions");
+
+  /** The language of EUR-Lex's page an act links to, until a request says which it wants. */
+  static final Language EUR_LEX_LANGUAGE = Language.ENG;
 
   private final Acts acts;
   private final URI cellarResources;
@@ -69,12 +75,16 @@ class ActController {
 
   /** The act's document information page on EUR-Lex, by its CELEX. */
   private static Link eurLex(Act act) {
+    var language = EUR_LEX_LANGUAGE.iso();
     return Link.of(
-            "https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:" + act.id().celex(),
+            "https://eur-lex.europa.eu/legal-content/"
+                + language.toUpperCase(Locale.ROOT)
+                + "/ALL/?uri=CELEX:"
+                + act.id().celex(),
             IanaLinkRelations.ALTERNATE)
-        .withName("eur-lex")
-        .withType("text/html")
-        .withHreflang("en")
+        .withName(ActLinks.EUR_LEX)
+        .withType(MediaType.TEXT_HTML_VALUE)
+        .withHreflang(language)
         .withTitle("View on EUR-Lex");
   }
 
@@ -83,7 +93,7 @@ class ActController {
     return Link.of(
             cellarResources.resolve("celex/" + act.id().celex().replace("/", "%2F")).toString(),
             IanaLinkRelations.ALTERNATE)
-        .withName("cellar")
+        .withName(ActLinks.CELLAR)
         .withTitle("The work in Cellar");
   }
 }

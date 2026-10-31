@@ -12,6 +12,11 @@ import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
  * fills path variables only, and of a route's two patterns would take the first.
  */
 public final class ActLinks {
+  /** The name of an alternate on EUR-Lex: the official text, or its document page. */
+  public static final String EUR_LEX = "eur-lex";
+
+  /** The name of an alternate in Cellar: the work, or the expression. */
+  public static final String CELLAR = "cellar";
 
   private ActLinks() {}
 

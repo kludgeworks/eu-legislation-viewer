@@ -108,6 +108,10 @@ class ActControllerTests {
     json.extractingPath("$._links.self.href").isEqualTo("http://localhost/eli/reg_impl/2015/1998");
     json.extractingPath("$._links.alternate[0].href")
         .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32015R1998");
+    json.extractingPath("$._links.alternate[0].name").isEqualTo("eur-lex");
+    json.extractingPath("$._links.alternate[0].type").isEqualTo("text/html");
+    json.extractingPath("$._links.alternate[0].hreflang").isEqualTo("en");
+    json.extractingPath("$._links.alternate[1].name").isEqualTo("cellar");
     json.extractingPath("$._links.alternate[1].href")
         .isEqualTo("http://publications.europa.eu/resource/celex/32015R1998");
     json.extractingPath("$._embedded.versions[1].celex").isEqualTo("02015R1998-20260322");
