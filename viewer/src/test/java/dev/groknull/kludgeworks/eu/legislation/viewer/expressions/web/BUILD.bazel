@@ -2,8 +2,10 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 load("@rules_java//java:defs.bzl", "java_binary")
 
-# The legal text's JSON: the golden files, and legal-text.xsd's names. One test target per
-# *Test.java; LegalTextJson and UpdateLegalTextJson become a shared library
+# The legal text's JSON (the golden files, and legal-text.xsd's names), and the versions' resources
+# on Spring MVC's test support (MockMvc). One test target per *Test.java and *Tests.java (Spring's
+# naming for tests in a Spring context); LegalTextJson and UpdateLegalTextJson become a shared
+# library
 java_test_suite(
     name = "web",
     size = "small",
@@ -14,12 +16,21 @@ java_test_suite(
         "//viewer/src/test/resources/legal-text-json:golden",
     ],
     runner = "junit5",
+    test_suffixes = [
+        "Test.java",
+        "Tests.java",
+    ],
     runtime_deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",  # ViewerApplication: the slice's configuration
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",
+        "@maven//:org_springframework_boot_spring_boot_starter_hateoas",
+        "@maven//:org_springframework_boot_spring_boot_starter_webmvc",
     ],
     deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/api",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/web",
@@ -28,6 +39,14 @@ java_test_suite(
         "@maven//:org_jmolecules_integrations_jmolecules_jackson3",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_junit_jupiter_junit_jupiter_params",
+        "@maven//:org_springframework_boot_spring_boot_autoconfigure",
+        "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_boot_spring_boot_webmvc_test",
+        "@maven//:org_springframework_hateoas_spring_hateoas",
+        "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_test",
+        "@maven//:org_springframework_spring_web",
         "@maven//:tools_jackson_core_jackson_databind",
         "@rules_java//java/runfiles",
     ],

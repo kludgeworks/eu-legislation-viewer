@@ -4,6 +4,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.acts.web;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import java.time.LocalDate;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.LinkRelation;
 import org.springframework.hateoas.UriTemplate;
@@ -34,5 +36,15 @@ public final class ActLinks {
   /** The act's resource: /eli/reg_impl/2015/1998, /eli/treaty/tfeu_2016. */
   public static WebMvcLinkBuilder act(Eli eli) {
     return linkTo(ActController.class).slash("eli").slash(eli.path());
+  }
+
+  /** The act as it stood on {@code date}: /eli/reg_impl/2015/1998/2026-03-22. */
+  public static WebMvcLinkBuilder version(Eli eli, LocalDate date) {
+    return act(eli).slash(date);
+  }
+
+  /** That, in {@code language}: /eli/reg_impl/2015/1998/2026-03-22/eng. */
+  public static WebMvcLinkBuilder expression(Eli eli, LocalDate date, Language language) {
+    return version(eli, date).slash(language.eli());
   }
 }
