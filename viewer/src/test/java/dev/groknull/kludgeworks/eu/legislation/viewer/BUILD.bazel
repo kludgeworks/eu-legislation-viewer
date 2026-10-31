@@ -22,13 +22,18 @@ java_library(
     ],
 )
 
-# bazel run //viewer:dev (mise run app:dev): the viewer with its Valkey in a container; needs Docker
+# bazel run //viewer:dev (mise run app:dev): the viewer with its Valkey in a container, and HAL
+# Explorer; needs Docker. Not in the app's jar: the explorer is for development only
 java_binary(
     name = "dev",
     testonly = True,
     main_class = "dev.groknull.kludgeworks.eu.legislation.viewer.TestViewerApplication",
     visibility = ["//viewer:__pkg__"],
-    runtime_deps = [":testing"],
+    runtime_deps = [
+        ":testing",
+        "@maven//:org_webjars_hal_explorer",
+        "@maven//:org_webjars_webjars_locator_lite",
+    ],
 )
 
 # Whole-application checks: the module structure (Spring Modulith), that the app starts, on Bazel's

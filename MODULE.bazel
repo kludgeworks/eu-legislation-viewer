@@ -87,6 +87,10 @@ maven.install(
         # Valkey in a container, for the tests and for running the app locally (TestViewerApplication)
         "org.springframework.boot:spring-boot-testcontainers",
         "org.testcontainers:testcontainers",
+        # HAL Explorer, to browse the API when running locally (//viewer:dev only), with Boot serving
+        # webjars without their version in the path
+        "org.webjars:hal-explorer:2.3.0",
+        "org.webjars:webjars-locator-lite",
     ],
     boms = [
         "org.springframework.boot:spring-boot-dependencies:4.1.1",

@@ -61,6 +61,8 @@
     "org.springframework:spring-web": -1196164797,
     "org.springframework:spring-webmvc": 1527496007,
     "org.testcontainers:testcontainers": -258185670,
+    "org.webjars:hal-explorer": 1976241050,
+    "org.webjars:webjars-locator-lite": 1938239638,
     "org.xmlunit:xmlunit-assertj3": -355876019,
     "repositories": -1949687017,
     "tech.picnic.error-prone-support:error-prone-contrib": 1934728221,
@@ -229,6 +231,8 @@
     "org.springframework:spring-web": -1087826926,
     "org.springframework:spring-webmvc": -1583482181,
     "org.testcontainers:testcontainers": -984446168,
+    "org.webjars:hal-explorer": 1314625394,
+    "org.webjars:webjars-locator-lite": -454234071,
     "org.xmlresolver:xmlresolver": 602572078,
     "org.xmlresolver:xmlresolver:jar:data": 1791221573,
     "org.xmlunit:xmlunit-assertj3": -1691431030,
@@ -286,6 +290,7 @@
     "org.springframework:spring-web": "org.springframework:spring-web:7.0.9",
     "org.springframework:spring-webmvc": "org.springframework:spring-webmvc:7.0.9",
     "org.testcontainers:testcontainers": "org.testcontainers:testcontainers:2.0.5",
+    "org.webjars:webjars-locator-lite": "org.webjars:webjars-locator-lite:1.1.4",
     "tools.jackson.core:jackson-databind": "tools.jackson.core:jackson-databind:3.1.5"
   },
   "artifacts": {
@@ -1261,6 +1266,18 @@
       },
       "version": "2.0.5"
     },
+    "org.webjars:hal-explorer": {
+      "shasums": {
+        "jar": "eabb569fdf03d04bd70bde293c89289e91575d5233d36d6a412fb15226f5bad0"
+      },
+      "version": "2.3.0"
+    },
+    "org.webjars:webjars-locator-lite": {
+      "shasums": {
+        "jar": "9f03705a0cb6adb8ef54c881f24c9433b83b88d4af2da12db97d8c5148521ded"
+      },
+      "version": "1.1.4"
+    },
     "org.xmlresolver:xmlresolver": {
       "shasums": {
         "data": "1d6e4db99401ae8ba3c390ab7cb4d794a46084e1a36bdcafae91e2338e7c5b0d",
@@ -1875,6 +1892,9 @@
       "org.apache.commons:commons-compress",
       "org.rnorth.duct-tape:duct-tape",
       "org.slf4j:slf4j-api"
+    ],
+    "org.webjars:webjars-locator-lite": [
+      "org.jspecify:jspecify"
     ],
     "org.xmlunit:xmlunit-assertj3": [
       "org.assertj:assertj-core",
@@ -4630,6 +4650,9 @@
       "org.testcontainers.shaded.org.zeroturnaround.exec.stream.slf4j",
       "org.testcontainers.utility"
     ],
+    "org.webjars:webjars-locator-lite": [
+      "org.webjars"
+    ],
     "org.xmlresolver:xmlresolver": [
       "org.xmlresolver",
       "org.xmlresolver.adapters",
@@ -4916,6 +4939,8 @@
       "org.springframework:spring-web",
       "org.springframework:spring-webmvc",
       "org.testcontainers:testcontainers",
+      "org.webjars:hal-explorer",
+      "org.webjars:webjars-locator-lite",
       "org.xmlresolver:xmlresolver",
       "org.xmlresolver:xmlresolver:jar:data",
       "org.xmlunit:xmlunit-assertj3",
