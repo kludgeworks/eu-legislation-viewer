@@ -23,12 +23,14 @@ import java.util.TreeSet;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 /**
  * All acts, from Cellar's RDF (the CDM ontology): an act's work by its CELEX, found from its ELI if
  * need be, and the consolidations based on it (Research: CDM ontology). Three queries, beside this
- * class: act.rq, act-by-eli.rq and versions.rq.
+ * class: act.rq, act-by-eli.rq and versions.rq. Each act found is kept for a while
+ * (ActsCacheConfiguration).
  */
 @Component
 class CellarActs implements Acts {
@@ -52,6 +54,7 @@ class CellarActs implements Acts {
   }
 
   @Override
+  @Cacheable(cacheNames = ActsCacheConfiguration.BY_CELEX, unless = "#result == null")
   public Optional<Act> find(ActIdentifier id) {
     var values = Map.of("celex", id.celex());
     return act(
@@ -59,6 +62,7 @@ class CellarActs implements Acts {
   }
 
   @Override
+  @Cacheable(cacheNames = ActsCacheConfiguration.BY_ELI, unless = "#result == null")
   public Optional<Act> find(Eli eli) {
     return identity(eli, sparql.select(Sparql.fill(ACT_BY_ELI, Map.of("eli", eli.path()))))
         .flatMap(this::find);
@@ -121,7 +125,7 @@ class CellarActs implements Acts {
             .filter(d -> !d.equals(OPEN))
             .min(Comparator.naturalOrder());
     var dateOfDocument = row.find("dateOfDocument").map(LocalDate::parse).orElse(null);
-    var type = ResourceType.of(types.getFirst());
+    var type = ResourceType.ofUri(types.getFirst());
     // a treaty edition's entry into force is the treaty's (1958 for the TFEU of 2016): its text is
     // the edition's from its date, earlier editions being acts of their own
     var originalFrom =

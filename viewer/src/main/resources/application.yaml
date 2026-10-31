@@ -14,6 +14,9 @@ spring:
       # large SPARQL results take minutes; redirects followed (Cellar's 303s)
       connect-timeout: 10s
       read-timeout: 5m
+  cache:
+    # Spring's caches in Valkey, always there (acts: ActsCacheConfiguration)
+    type: redis
   mvc:
     # errors as RFC 9457 problem details (application/problem+json)
     problemdetails:

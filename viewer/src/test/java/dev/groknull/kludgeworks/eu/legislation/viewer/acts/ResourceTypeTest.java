@@ -11,7 +11,7 @@ class ResourceTypeTest {
   @Test
   void isTheCodeOfItsUriInTheAuthorityTable() {
     assertThat(
-            ResourceType.of(
+            ResourceType.ofUri(
                 "http://publications.europa.eu/resource/authority/resource-type/REG_IMPL"))
         .isEqualTo(new ResourceType("REG_IMPL"));
   }
@@ -20,7 +20,9 @@ class ResourceTypeTest {
   void refusesAnotherTablesUriOrACodeOfAnotherForm() {
     assertThatIllegalArgumentException()
         .isThrownBy(
-            () -> ResourceType.of("http://publications.europa.eu/resource/authority/language/ENG"));
+            () ->
+                ResourceType.ofUri(
+                    "http://publications.europa.eu/resource/authority/language/ENG"));
     assertThatIllegalArgumentException().isThrownBy(() -> new ResourceType("reg_impl"));
   }
 }

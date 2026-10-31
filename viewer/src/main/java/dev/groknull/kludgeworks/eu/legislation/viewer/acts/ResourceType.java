@@ -21,8 +21,11 @@ public record ResourceType(String code) {
     }
   }
 
-  /** The resource type of its URI in the authority table, …/resource-type/REG_IMPL. */
-  public static ResourceType of(String uri) {
+  /**
+   * The resource type of its URI in the authority table, …/resource-type/REG_IMPL. Not of(…), which
+   * jMolecules takes for the inverse of the code (in JSON, in a path).
+   */
+  public static ResourceType ofUri(String uri) {
     if (!uri.startsWith(AUTHORITY)) {
       throw new IllegalArgumentException("Not a resource type: " + uri);
     }

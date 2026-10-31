@@ -50,6 +50,9 @@ maven.install(
         # Valkey, the shared cache of converted texts: Spring Data Redis on Lettuce (wire-compatible)
         "org.springframework.boot:spring-boot-starter-data-redis",
         "org.springframework.data:spring-data-redis",
+        # Spring's cache abstraction, on that Valkey: acts, for a while
+        "org.springframework.boot:spring-boot-starter-cache",
+        "org.springframework.boot:spring-boot-cache",
         # the app as Spring Boot's executable jar, by the Repackager its Maven and Gradle plugins use
         "org.springframework.boot:spring-boot-loader-tools:4.1.1",  # not in the BOM: keep it at Boot's version
         "org.springframework.modulith:spring-modulith-api",
