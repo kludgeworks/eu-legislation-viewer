@@ -77,7 +77,7 @@ final class Stylesheet {
     } catch (SaxonApiException e) {
       var refusal = reason.get();
       throw new Failure(
-          e.getErrorCode(), refusal != null ? refusal : String.valueOf(e.getMessage()), e);
+          e.getErrorCode(), refusal != null ? refusal : Objects.toString(e.getMessage()), e);
     }
     return result.getXdmNode();
   }

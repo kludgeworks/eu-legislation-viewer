@@ -114,7 +114,7 @@ final class FormexConverter {
       transformer.applyTemplates(document, result);
     } catch (SaxonApiException e) {
       var refusal = reason.get();
-      throw translate(e, refusal != null ? refusal : String.valueOf(e.getMessage()));
+      throw translate(e, refusal != null ? refusal : Objects.toString(e.getMessage()));
     }
     return result.getXdmNode();
   }

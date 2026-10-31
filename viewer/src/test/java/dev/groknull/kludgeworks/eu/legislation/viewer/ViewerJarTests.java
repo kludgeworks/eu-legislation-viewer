@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.devtools.build.runfiles.AutoBazelRepository;
 import com.google.devtools.build.runfiles.Runfiles;
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -39,7 +39,7 @@ class ViewerJarTests {
                       .lines()
                       .anyMatch(line -> line.contains("Started ViewerApplication")));
 
-      assertThat(started.get(STARTUP.toSeconds(), SECONDS))
+      assertThat(started.get(STARTUP.toSeconds(), TimeUnit.SECONDS))
           .as("the app's log says it started")
           .isTrue();
     } finally {
