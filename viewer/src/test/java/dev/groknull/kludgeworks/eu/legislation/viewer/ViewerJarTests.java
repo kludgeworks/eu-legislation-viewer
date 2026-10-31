@@ -1,26 +1,20 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.devtools.build.runfiles.AutoBazelRepository;
 import com.google.devtools.build.runfiles.Runfiles;
-import java.io.IOException;
-import java.net.ConnectException;
-import java.net.ServerSocket;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.file.Path;
 import java.time.Duration;
-import java.time.Instant;
+import java.util.concurrent.CompletableFuture;
 import org.junit.jupiter.api.Test;
 
 /**
- * The app as one file starts with all of it: java -jar on the Spring Boot jar (//viewer:jar) brings
- * up the web server and Actuator, as on Bazel's classpath (ViewerApplicationTests), on a Valkey in
- * a container.
+ * The app as one file starts: java -jar on the Spring Boot jar (//viewer:jar) that SpringBootJar
+ * puts together, its own layout, names and loader, which the tests on Bazel's classpath never see.
+ * That the started app works (its web server, Valkey, Actuator) is ViewerApplicationTests'; Valkey
+ * isn't needed to start, as its client connects on first use.
  */
 @AutoBazelRepository
 class ViewerJarTests {
@@ -28,61 +22,29 @@ class ViewerJarTests {
   private static final Duration STARTUP = Duration.ofSeconds(30);
 
   @Test
-  void runsAsOneJarWithItsWebServer() throws Exception {
+  void startsAsOneJar() throws Exception {
     var jar =
-        Path.of(
-            Runfiles.preload()
-                .withSourceRepository(AutoBazelRepository_ViewerJarTests.NAME)
-                .rlocation(
-                    "kludgeworks_viewer/viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/viewer-app.jar"));
-    var port = freePort();
+        Runfiles.preload()
+            .withSourceRepository(AutoBazelRepository_ViewerJarTests.NAME)
+            .rlocation(
+                "kludgeworks_viewer/viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/viewer-app.jar");
     var java = ProcessHandle.current().info().command().orElseThrow();
-    try (var valkey = TestcontainersConfiguration.valkey();
-        var client = HttpClient.newHttpClient()) {
-      valkey.start();
-      var app =
-          new ProcessBuilder(
-                  java,
-                  "-jar",
-                  jar.toString(),
-                  "--server.port=" + port,
-                  "--spring.data.redis.host=" + valkey.getHost(),
-                  "--spring.data.redis.port=" + valkey.getFirstMappedPort())
-              .redirectErrorStream(true)
-              .redirectOutput(ProcessBuilder.Redirect.DISCARD)
-              .start();
-      try {
-        var response = health(client, port);
+    var app =
+        new ProcessBuilder(java, "-jar", jar, "--server.port=0").redirectErrorStream(true).start();
+    try {
+      var started =
+          CompletableFuture.supplyAsync(
+              () ->
+                  app.inputReader()
+                      .lines()
+                      .anyMatch(line -> line.contains("Started ViewerApplication")));
 
-        assertThat(response.statusCode()).isEqualTo(200);
-        assertThat(response.body()).contains("\"status\":\"UP\"");
-      } finally {
-        app.destroy();
-        app.waitFor();
-      }
-    }
-  }
-
-  /** The health endpoint's answer, once the app listens. */
-  private static HttpResponse<String> health(HttpClient client, int port) throws Exception {
-    var request =
-        HttpRequest.newBuilder(URI.create("http://localhost:" + port + "/actuator/health")).build();
-    var deadline = Instant.now().plus(STARTUP);
-    while (true) {
-      try {
-        return client.send(request, HttpResponse.BodyHandlers.ofString());
-      } catch (ConnectException e) {
-        if (Instant.now().isAfter(deadline)) {
-          throw e;
-        }
-        Thread.sleep(200);
-      }
-    }
-  }
-
-  private static int freePort() throws IOException {
-    try (var socket = new ServerSocket(0)) {
-      return socket.getLocalPort();
+      assertThat(started.get(STARTUP.toSeconds(), SECONDS))
+          .as("the app's log says it started")
+          .isTrue();
+    } finally {
+      app.destroy();
+      app.waitFor();
     }
   }
 }
