@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.acts.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
@@ -21,19 +22,25 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
- * An act at its ELI (URLs and API): its identifiers and dates, its versions embedded (date, kind,
- * what each integrates; never the text), and its counterparts on EUR-Lex and Cellar as alternates
- * (Links back to EUR-Lex). HAL, as application/hal+json or plain application/json, for clients (HAL
- * Explorer among them) that ask for JSON. Cacheable as long as the viewer keeps an act
- * (viewer.acts.cache-for): a timeline changes only when Cellar publishes a consolidation. An ELI no
- * act has is 404.
+ * An act at its CELEX (URLs and API: public API): its identifiers and dates, its versions embedded
+ * as summaries with their links (never the text), the versions resource (with {@code ?on} the one
+ * that applies on a date), the latest version, and its counterparts on EUR-Lex and Cellar as
+ * alternates (Links back to EUR-Lex). An act by its ELI is a lookup, answered 303 with the act's
+ * URL. HAL, as application/hal+json or plain application/json. Cacheable as long as the viewer
+ * keeps an act (viewer.acts.cache-for): a timeline changes only when Cellar publishes a
+ * consolidation, and an ELI's act never. A CELEX or an ELI no act has is 404.
  */
 @RestController
+@RequestMapping(
+    path = "/api/acts",
+    produces = {MediaTypes.HAL_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
 class ActController {
   static final HalLinkRelation VERSIONS = ApiRelations.of("versions");
 
@@ -57,23 +64,45 @@ class ActController {
     this.cacheControl = CacheControl.maxAge(cacheFor).cachePublic();
   }
 
-  @GetMapping(
-      path = {EliPaths.ACT, EliPaths.TREATY},
-      produces = {MediaTypes.HAL_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
-  ResponseEntity<RepresentationModel<?>> act(@RequestAttribute(EliPaths.ELI) Eli eli) {
+  @GetMapping("/{act}")
+  ResponseEntity<RepresentationModel<?>> act(@PathVariable("act") ActIdentifier id) {
+    var act =
+        acts.find(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No act " + id));
+    var model =
+        HalModelBuilder.halModelOf(ActRepresentation.of(act))
+            .link(ActLinks.act(id, IanaLinkRelations.SELF))
+            .link(ActLinks.versions(id, VERSIONS))
+            .link(
+                ActLinks.version(
+                    id, act.timeline().latest().date(), IanaLinkRelations.LATEST_VERSION))
+            .link(eurLex(act))
+            .link(cellar(act))
+            .embed(
+                act.timeline().versions().stream().map(v -> ActLinks.summary(id, v)).toList(),
+                VERSIONS)
+            .build();
+    return ResponseEntity.ok().cacheControl(cacheControl).body(model);
+  }
+
+  /** The act with an ELI: 303 to it. */
+  @GetMapping(params = "eli")
+  ResponseEntity<Void> byEli(@RequestParam("eli") String path) {
+    Eli eli;
+    try {
+      eli = new Eli(path);
+    } catch (IllegalArgumentException e) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not an ELI: " + path, e);
+    }
     var act =
         acts.find(eli)
             .orElseThrow(
                 () ->
                     new ResponseStatusException(HttpStatus.NOT_FOUND, "No act has the ELI " + eli));
-    var model =
-        HalModelBuilder.halModelOf(ActRepresentation.of(act))
-            .link(ActLinks.act(eli).withSelfRel())
-            .link(eurLex(act))
-            .link(cellar(act))
-            .embed(act.timeline().versions(), VERSIONS)
-            .build();
-    return ResponseEntity.ok().cacheControl(cacheControl).body(model);
+    return ResponseEntity.status(HttpStatus.SEE_OTHER)
+        .location(ActLinks.act(act.id(), IanaLinkRelations.SELF).toUri())
+        .cacheControl(cacheControl)
+        .build();
   }
 
   /** The act's document information page on EUR-Lex, by its CELEX. */

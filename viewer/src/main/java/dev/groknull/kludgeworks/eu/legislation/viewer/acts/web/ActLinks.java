@@ -1,20 +1,20 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.acts.web;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiLinks;
 import java.time.LocalDate;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.LinkRelation;
-import org.springframework.hateoas.UriTemplate;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 
 /**
- * Links to the resources under an act's ELI, at the host and path the request came by (forwarded
- * headers, server.forward-headers-strategy). Built from the ELI, not by linkTo(methodOn(…)): that
- * fills path variables only, and of a route's two patterns would take the first.
+ * Links to an act's resources (URLs and API: public API): /api/acts/{celex}, its versions by their
+ * dates and their texts by language tag; through ApiLinks, so a treaty's CELEX is one segment
+ * (/api/acts/12016E%2FTXT).
  */
 public final class ActLinks {
   /** The name of an alternate on EUR-Lex: the official text, or its document page. */
@@ -25,26 +25,31 @@ public final class ActLinks {
 
   private ActLinks() {}
 
-  /**
-   * The act resource of any ELI, as a URI template with the ELI's path as it is (RFC 6570's
-   * reserved expansion): …/eli/{+eli}, for eli reg_impl/2015/1998 or treaty/tfeu_2016.
-   */
-  public static Link byEli(LinkRelation relation) {
-    return Link.of(UriTemplate.of(linkTo(ActController.class).toUri() + "/eli/{+eli}"), relation);
+  /** The act: /api/acts/32015R1998. */
+  public static Link act(ActIdentifier act, LinkRelation relation) {
+    return ApiLinks.to(relation, "acts", act.celex());
   }
 
-  /** The act's resource: /eli/reg_impl/2015/1998, /eli/treaty/tfeu_2016. */
-  public static WebMvcLinkBuilder act(Eli eli) {
-    return linkTo(ActController.class).slash("eli").slash(eli.path());
+  /** Its versions, or with {@code on} the one that applies on a date: /api/acts/…/versions{?on}. */
+  public static Link versions(ActIdentifier act, LinkRelation relation) {
+    var href = act(act, relation).getHref() + "/versions{?on}";
+    return Link.of(href, relation);
   }
 
-  /** The act as it stood on {@code date}: /eli/reg_impl/2015/1998/2026-03-22. */
-  public static WebMvcLinkBuilder version(Eli eli, LocalDate date) {
-    return act(eli).slash(date);
+  /** One version, by the date it applies from: /api/acts/32015R1998/versions/2026-03-22. */
+  public static Link version(ActIdentifier act, LocalDate date, LinkRelation relation) {
+    return ApiLinks.to(relation, "acts", act.celex(), "versions", date.toString());
   }
 
-  /** That, in {@code language}: /eli/reg_impl/2015/1998/2026-03-22/eng. */
-  public static WebMvcLinkBuilder expression(Eli eli, LocalDate date, Language language) {
-    return version(eli, date).slash(language.eli());
+  /** A version's text in {@code language}: …/versions/2026-03-22/texts/en. */
+  public static Link text(
+      ActIdentifier act, LocalDate date, Language language, LinkRelation relation) {
+    return ApiLinks.to(
+        relation, "acts", act.celex(), "versions", date.toString(), "texts", language.iso());
+  }
+
+  /** A version as a summary in a list, with its link (never the text). */
+  public static EntityModel<Version> summary(ActIdentifier act, Version version) {
+    return EntityModel.of(version, version(act, version.date(), IanaLinkRelations.SELF));
   }
 }

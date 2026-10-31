@@ -47,12 +47,7 @@ public enum Language {
     return name();
   }
 
-  /** ELI's language segment: eng, the authority code in lower case (…/2026-03-22/eng). */
-  public String eli() {
-    return name().toLowerCase(Locale.ROOT);
-  }
-
-  /** ISO 639-1: en, as the legal text's xml:lang and HTTP's language tags have it. */
+  /** ISO 639-1: en, as the legal text's xml:lang, HTTP's and the API's language tags have it. */
   public String iso() {
     return iso;
   }

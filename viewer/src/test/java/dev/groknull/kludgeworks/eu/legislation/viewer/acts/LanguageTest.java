@@ -9,9 +9,8 @@ import org.junit.jupiter.api.Test;
 class LanguageTest {
 
   @Test
-  void hasTheEuCodeItsEliSegmentAndTheIsoCode() {
+  void hasTheEuCodeAndTheIsoCode() {
     assertThat(Language.ENG.code()).isEqualTo("ENG");
-    assertThat(Language.ENG.eli()).isEqualTo("eng");
     assertThat(Language.ENG.iso()).isEqualTo("en");
     assertThat(Language.GLE.iso()).isEqualTo("ga");
   }

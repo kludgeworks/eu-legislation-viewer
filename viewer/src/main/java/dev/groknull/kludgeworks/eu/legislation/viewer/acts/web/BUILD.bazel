@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
 
-# The acts module's web adapter: the act resource, and the ELI in a path for every module's routes
+# The acts module's web adapter: the act resource, and links to an act's resources for every module
 java_library(
     name = "web",
     srcs = glob(["*.java"]),
@@ -9,7 +9,6 @@ java_library(
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/api",
-        "@maven//:jakarta_servlet_jakarta_servlet_api",
         "@maven//:org_jmolecules_jmolecules_hexagonal_architecture",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",
