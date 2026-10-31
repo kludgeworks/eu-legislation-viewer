@@ -16,6 +16,7 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/infra",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/web",
         "//viewer/src/main/resources",
         "@maven//:org_jmolecules_integrations_jmolecules_jackson3",
         "@maven//:org_jmolecules_integrations_jmolecules_spring",

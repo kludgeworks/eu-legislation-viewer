@@ -1,0 +1,43 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+load("@rules_java//java:defs.bzl", "java_binary")
+
+# The legal text's JSON: the golden files, and legal-text.xsd's names. One test target per
+# *Test.java; LegalTextJson and UpdateLegalTextJson become a shared library
+java_test_suite(
+    name = "web",
+    size = "small",
+    srcs = glob(["*.java"]),
+    data = [
+        "//formex-converter:expected",
+        "//formex-converter:legal-text.xsd",
+        "//viewer/src/test/resources/legal-text-json:golden",
+    ],
+    runner = "junit5",
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/infra",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/web",
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jmolecules_integrations_jmolecules_jackson3",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_params",
+        "@maven//:tools_jackson_core_jackson_databind",
+        "@rules_java//java/runfiles",
+    ],
+)
+
+# Rewrites the golden JSON (mise run expected:json): after a deliberate change, then review the diff
+java_binary(
+    name = "update_json",
+    testonly = True,
+    data = ["//formex-converter:expected"],
+    main_class = "dev.groknull.kludgeworks.eu.legislation.viewer.expressions.web.UpdateLegalTextJson",
+    runtime_deps = [":web-test-lib"],
+)

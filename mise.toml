@@ -64,6 +64,10 @@ run = "bazel test //formex-converter/src/test/xspec/..."
 description = "Rewrite the converter's expected output from the fixtures, after a deliberate change"
 run = "bazel run //formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:update_expected"
 
+[tasks."expected:json"]
+description = "Rewrite the legal text's golden JSON from the converter's expected output, after a deliberate change"
+run = "bazel run //viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/web:update_json"
+
 [tasks.docs]
 description = "Write legal-text.xsd's documentation into the text records' Javadoc"
 run = [

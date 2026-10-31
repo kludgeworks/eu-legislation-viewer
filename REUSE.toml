@@ -43,6 +43,13 @@ precedence = "override"
 SPDX-FileCopyrightText = "European Union, https://eur-lex.europa.eu"
 SPDX-License-Identifier = "LicenseRef-EUR-Lex-reuse"
 
+# The legal text's golden JSON (mise run expected:json): the same EU documents, as JSON
+[[annotations]]
+path = "viewer/src/test/resources/legal-text-json/**/*.json"
+precedence = "override"
+SPDX-FileCopyrightText = "European Union, https://eur-lex.europa.eu"
+SPDX-License-Identifier = "LicenseRef-EUR-Lex-reuse"
+
 # Cellar's metadata as recorded (SPARQL results, a manifestation's file list): EUR-Lex metadata is CC0
 [[annotations]]
 path = [

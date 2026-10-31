@@ -25,9 +25,14 @@ local vendored =
     "LICENSES/**",
   )
 // written by tools, never edited by hand: the Maven lock file (bazel run @maven//:pin), the
-// converter's expected output (mise run expected)
+// converter's expected output (mise run expected) and the legal text's golden JSON (mise run
+// expected:json)
 local generated =
-  List("maven_install.json", "formex-converter/src/test/resources/expected/**/*.xml")
+  List(
+    "maven_install.json",
+    "formex-converter/src/test/resources/expected/**/*.xml",
+    "viewer/src/test/resources/legal-text-json/**/*.json",
+  )
 local xml = List("**/*.xml", "**/*.xsl", "**/*.xsd", "**/*.xspec", "**/*.xjb", "**/*.sch")
 
 local linters = new Mapping<String, Step> {

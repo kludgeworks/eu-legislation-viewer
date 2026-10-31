@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: MIT
+package(default_visibility = ["//viewer:__subpackages__"])
+
+# The legal text as JSON for three of the converter's expected outputs, rewritten by
+# mise run expected:json and checked by LegalTextJsonModuleTest: a change is a diff to review
+filegroup(
+    name = "golden",
+    srcs = glob(["**/*.json"]),
+)

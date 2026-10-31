@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions;
 
+import org.jmolecules.ddd.annotation.ValueObject;
+
 /**
  * An AKN4EU-style identifier: segments joined by "/", each an abbreviation plus the unit's own
  * label taken literally (brackets and trailing dots dropped, whitespace as "-", letters and digits
@@ -11,6 +13,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.expressions;
  * text), old and new (the sides of a correction), ann_N (an annotation), fgr_N (a figure's
  * description), def_N (an unlabelled definition).
  */
+@ValueObject
 public record EId(String value) {
 
   @Override
