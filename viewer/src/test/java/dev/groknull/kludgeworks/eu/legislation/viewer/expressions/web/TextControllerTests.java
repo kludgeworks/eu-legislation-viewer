@@ -27,7 +27,6 @@ import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -48,10 +47,10 @@ import tools.jackson.databind.node.ObjectNode;
 /**
  * A version's text, on acts and expressions held in memory: 2015/1998 with its original text and
  * two consolidated versions, the latest in German and English only, its English text the golden
- * one, its German one not converted; the version before it still converting; and the original
- * failing: in Cellar in English, the converter refusing it in French and German, and failing in
- * Italian. The point-in-time view as the application has it, on virtual threads, waiting for a text
- * a moment only.
+ * one, its German one not converted, the version before it in Irish too; the version before it
+ * still converting; and the original failing: in Cellar in English, the converter refusing it in
+ * French and German, and failing in Italian. The point-in-time view as the application has it, on
+ * virtual threads, waiting for a text a moment only.
  */
 @WebMvcTest(controllers = TextController.class, properties = "viewer.expressions.wait-for=200ms")
 @ImportAutoConfiguration(JMoleculesJacksonAutoConfiguration.class)
@@ -75,7 +74,8 @@ class TextControllerTests {
               null,
               new Timeline(
                   List.of(
-                      Version.original(LocalDate.of(2015, 11, 15), AVSEC),
+                      Version.original(
+                          LocalDate.of(2015, 11, 15), AVSEC, EnumSet.allOf(Language.class)),
                       consolidated("02015R1998-20251104", LocalDate.of(2025, 11, 4)),
                       consolidated("02015R1998-20260322", LocalDate.of(2026, 3, 22)))));
       return new Acts() {
@@ -99,7 +99,7 @@ class TextControllerTests {
         @Override
         public Optional<Expression> find(ExpressionIdentifier id) {
           return switch (id.toString()) {
-            case "02015R1998-20260322 ENG" -> Optional.of(golden);
+            case "02015R1998-20260322 ENG", "02015R1998-20251104 GLE" -> Optional.of(golden);
             case "02015R1998-20251104 ENG" -> {
               try {
                 never.await();
@@ -121,13 +121,6 @@ class TextControllerTests {
             default -> Optional.empty();
           };
         }
-
-        @Override
-        public Set<Language> languages(String document) {
-          return document.equals("02015R1998-20260322")
-              ? EnumSet.of(Language.DEU, Language.ENG)
-              : EnumSet.allOf(Language.class);
-        }
       };
     }
 
@@ -138,7 +131,15 @@ class TextControllerTests {
     }
 
     private static Version consolidated(String celex, LocalDate date) {
-      return new Version(Version.Kind.CONSOLIDATED, date, celex, false, List.of());
+      return new Version(
+          Version.Kind.CONSOLIDATED,
+          date,
+          celex,
+          false,
+          List.of(),
+          celex.equals("02015R1998-20260322")
+              ? EnumSet.of(Language.DEU, Language.ENG)
+              : EnumSet.allOf(Language.class));
     }
   }
 
@@ -211,6 +212,29 @@ class TextControllerTests {
     json.extractingPath("$._links.alternate[*].name")
         .asArray()
         .containsExactly("eur-lex", "cellar");
+  }
+
+  @Test
+  void aTextsVersionsEitherSideAndLatestAreThoseInItsLanguage() {
+    var json =
+        assertThat(
+                mvc.get()
+                    .uri("/api/acts/32015R1998/versions/2025-11-04/texts/ga")
+                    .accept(MediaTypes.HAL_JSON))
+            .hasStatusOk()
+            .bodyJson();
+
+    // 2026-03-22 has no Irish: passed over
+    json.doesNotHavePath("$._links.successor-version");
+    json.extractingPath("$._links.latest-version.href")
+        .isEqualTo("http://localhost/api/acts/32015R1998/versions/2025-11-04/texts/ga");
+    json.extractingPath("$._links.predecessor-version.href")
+        .isEqualTo("http://localhost/api/acts/32015R1998/versions/2015-11-15/texts/ga");
+    // the 23 other languages, then EUR-Lex in Irish and Cellar
+    json.extractingPath("$._links.alternate").asArray().hasSize(25);
+    json.extractingPath("$._links.alternate[22].hreflang").isEqualTo("sv");
+    json.extractingPath("$._links.alternate[23].href")
+        .isEqualTo("https://eur-lex.europa.eu/legal-content/GA/TXT/?uri=CELEX:02015R1998-20251104");
   }
 
   @Test

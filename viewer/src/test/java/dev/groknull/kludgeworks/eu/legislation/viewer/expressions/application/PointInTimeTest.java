@@ -13,6 +13,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -59,7 +60,11 @@ class PointInTimeTest {
 
   @Test
   void refusesAVersionOfAnotherAct() {
-    var other = Version.original(LocalDate.of(2010, 4, 29), new ActIdentifier("32010R0185"));
+    var other =
+        Version.original(
+            LocalDate.of(2010, 4, 29),
+            new ActIdentifier("32010R0185"),
+            EnumSet.allOf(Language.class));
 
     assertThatIllegalArgumentException()
         .isThrownBy(() -> pointInTime.expression(ACT, other, Language.ENG));

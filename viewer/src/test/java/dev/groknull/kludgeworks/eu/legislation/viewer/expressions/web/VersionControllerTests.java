@@ -12,16 +12,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.api.CurieConfiguration;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import org.jmolecules.jackson3.config.JMoleculesJacksonAutoConfiguration;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +32,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 /**
- * An act as it stood on a date, on acts and languages held in memory: 2015/1998 with its original
- * text and two consolidated versions, the latest in German and English only, and the TFEU. With the
- * API's curies, so relations are named as the application names them.
+ * An act as it stood on a date, on acts held in memory: 2015/1998 with its original text and two
+ * consolidated versions, the latest in German and English only, and the TFEU. With the API's
+ * curies, so relations are named as the application names them.
  */
 @WebMvcTest(VersionController.class)
 @ImportAutoConfiguration(JMoleculesJacksonAutoConfiguration.class)
@@ -63,7 +59,8 @@ class VersionControllerTests {
               null,
               new Timeline(
                   List.of(
-                      Version.original(LocalDate.of(2015, 11, 15), AVSEC),
+                      Version.original(
+                          LocalDate.of(2015, 11, 15), AVSEC, EnumSet.allOf(Language.class)),
                       consolidated("02015R1998-20251104", LocalDate.of(2025, 11, 4)),
                       consolidated("02015R1998-20260322", LocalDate.of(2026, 3, 22)))));
       var tfeu =
@@ -74,7 +71,10 @@ class VersionControllerTests {
               LocalDate.of(2016, 6, 7),
               true,
               null,
-              new Timeline(List.of(Version.original(LocalDate.of(2016, 6, 7), TFEU))));
+              new Timeline(
+                  List.of(
+                      Version.original(
+                          LocalDate.of(2016, 6, 7), TFEU, EnumSet.allOf(Language.class)))));
       var byEli = Map.of(AVSEC_ELI, avsec, TFEU_ELI, tfeu);
       return new Acts() {
         @Override
@@ -89,25 +89,16 @@ class VersionControllerTests {
       };
     }
 
-    @Bean
-    Expressions expressions() {
-      return new Expressions() {
-        @Override
-        public Optional<Expression> find(ExpressionIdentifier id) {
-          return Optional.empty();
-        }
-
-        @Override
-        public Set<Language> languages(String document) {
-          return document.equals("02015R1998-20260322")
-              ? EnumSet.of(Language.DEU, Language.ENG)
-              : EnumSet.allOf(Language.class);
-        }
-      };
-    }
-
     private static Version consolidated(String celex, LocalDate date) {
-      return new Version(Version.Kind.CONSOLIDATED, date, celex, false, List.of());
+      return new Version(
+          Version.Kind.CONSOLIDATED,
+          date,
+          celex,
+          false,
+          List.of(),
+          celex.equals("02015R1998-20260322")
+              ? EnumSet.of(Language.DEU, Language.ENG)
+              : EnumSet.allOf(Language.class));
     }
   }
 

@@ -50,24 +50,6 @@ class FormexFilesTest {
   }
 
   @Test
-  void findsTheLanguagesAVersionHasFormexIn() {
-    var mock = Recorded.Mock.of();
-    mock.server()
-        .expect(requestTo(Recorded.SPARQL))
-        .andExpect(content().string(containsString("%2202015R1998-20260322%22")))
-        .andRespond(
-            withSuccess(Recorded.bytes("sparql-languages-02015R1998-20260322.json"), RESULTS));
-
-    // all but Irish
-    assertThat(files(mock).languages("02015R1998-20260322"))
-        .hasSize(23)
-        .startsWith("BUL", "CES")
-        .contains("ENG")
-        .doesNotContain("GLE");
-    mock.server().verify();
-  }
-
-  @Test
   void findsTheEntriesOfAZipOnlyVersionFromTheContentStreamList() {
     var mock = Recorded.Mock.of();
     mock.server()

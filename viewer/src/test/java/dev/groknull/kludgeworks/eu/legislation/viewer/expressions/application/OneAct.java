@@ -4,23 +4,27 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.application;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import java.time.LocalDate;
+import java.util.EnumSet;
 import java.util.List;
 
 /** 2015/1998 and its two versions. */
 final class OneAct {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
-  static final Version ORIGINAL = Version.original(LocalDate.of(2015, 11, 15), AVSEC);
+  static final Version ORIGINAL =
+      Version.original(LocalDate.of(2015, 11, 15), AVSEC, EnumSet.allOf(Language.class));
   static final Version CONSOLIDATED =
       new Version(
           Version.Kind.CONSOLIDATED,
           LocalDate.of(2026, 3, 22),
           "02015R1998-20260322",
           false,
-          List.of(new ActIdentifier("32026R0449")));
+          List.of(new ActIdentifier("32026R0449")),
+          EnumSet.allOf(Language.class));
 
   static final Act ACT =
       new Act(

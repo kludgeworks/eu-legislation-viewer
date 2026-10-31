@@ -35,8 +35,6 @@ viewer:
     # a SPARQL result with this many rows may have been cut off by the endpoint
     max-rows: 1000000
   expressions:
-    # how long the languages a document has Formex in are kept, as an act is
-    languages-for: 1h
     # how long a request waits for a text being converted before answering 503 (most take well
     # under a second; the largest, minutes)
     wait-for: 30s

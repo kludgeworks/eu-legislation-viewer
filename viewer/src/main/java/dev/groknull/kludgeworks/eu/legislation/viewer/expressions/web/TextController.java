@@ -6,7 +6,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.web.ActLinks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.application.PointInTime;
 import java.net.URI;
 import java.time.Duration;
@@ -37,15 +36,16 @@ import org.springframework.web.server.ResponseStatusException;
 /**
  * A version's text in a language (URLs and API: public API), by its language tag: the legal text as
  * the resource's own state (LegalTextJsonModule), with its links: up to the version; the versions
- * either side, the first and the latest (RFC 5829, RFC 8288) in the same language, a version
- * without it answering 404; what changed since the one before (av:changes, planned: 501); and as
- * alternates the version in each other language it has (hreflang), and the text on EUR-Lex and the
- * expression in Cellar, its Formex among its manifestations. A text not converted yet is waited for
- * a while (viewer.expressions.wait-for), then 503 with Retry-After while the conversion goes on
- * (Design: Slow responses); Cellar failing is 502 (CellarProblems), a text the converter can't give
- * a problem of its own (ConversionProblems). A language that isn't an EU one, or one Cellar has no
- * Formex of the version in, is 404. HAL, as application/hal+json or plain application/json;
- * cacheable as long as the act is kept (viewer.acts.cache-for).
+ * either side, the first and the latest (RFC 5829, RFC 8288) among those in the same language
+ * (Version.languages), so a version without it is passed over; what changed since the one before
+ * (av:changes, planned: 501); and as alternates the version in each other language it is in
+ * (hreflang), and the text on EUR-Lex and the expression in Cellar, its Formex among its
+ * manifestations. A text not converted yet is waited for a while (viewer.expressions.wait-for),
+ * then 503 with Retry-After while the conversion goes on (Design: Slow responses); Cellar failing
+ * is 502 (CellarProblems), a text the converter can't give a problem of its own
+ * (ConversionProblems). A language that isn't an EU one, or one the version isn't in, is 404. HAL,
+ * as application/hal+json or plain application/json; cacheable as long as the act is kept
+ * (viewer.acts.cache-for).
  */
 @RestController
 @RequestMapping(
@@ -60,7 +60,6 @@ class TextController {
   static final Duration RETRY_AFTER = Duration.ofSeconds(5);
 
   private final Acts acts;
-  private final Expressions expressions;
   private final PointInTime pointInTime;
   private final URI cellarResources;
   private final Duration waitFor;
@@ -74,13 +73,11 @@ class TextController {
    */
   TextController(
       Acts acts,
-      Expressions expressions,
       PointInTime pointInTime,
       @Value("${viewer.cellar.resources}") URI cellarResources,
       @Value("${viewer.expressions.wait-for}") Duration waitFor,
       @Value("${viewer.acts.cache-for}") Duration cacheFor) {
     this.acts = acts;
-    this.expressions = expressions;
     this.pointInTime = pointInTime;
     this.cellarResources = cellarResources;
     this.waitFor = waitFor;
@@ -105,9 +102,8 @@ class TextController {
                 () ->
                     new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "No version of " + id + " starts on " + date));
-    var languages = expressions.languages(version.celex());
     var language =
-        languages.stream()
+        version.languages().stream()
             .filter(l -> l.iso().equals(tag))
             .findFirst()
             .orElseThrow(() -> noText(id, date, tag));
@@ -129,25 +125,26 @@ class TextController {
     var links = new ArrayList<Link>();
     links.add(ActLinks.text(id, date, language, IanaLinkRelations.SELF));
     links.add(ActLinks.version(id, date, IanaLinkRelations.UP));
-    timeline
-        .predecessor(version)
-        .ifPresent(
-            v -> {
-              links.add(
-                  ActLinks.text(id, v.date(), language, IanaLinkRelations.PREDECESSOR_VERSION));
-              links.add(
-                  ActLinks.comparisonText(id, v.date(), date, language, VersionController.CHANGES));
-            });
-    timeline
-        .successor(version)
-        .ifPresent(
-            v ->
-                links.add(
-                    ActLinks.text(id, v.date(), language, VersionController.SUCCESSOR_VERSION)));
-    links.add(ActLinks.text(id, timeline.first().date(), language, IanaLinkRelations.FIRST));
+    var inLanguage =
+        timeline.versions().stream().filter(v -> v.languages().contains(language)).toList();
+    var at = inLanguage.indexOf(version);
+    if (at > 0) {
+      var predecessor = inLanguage.get(at - 1);
+      links.add(
+          ActLinks.text(id, predecessor.date(), language, IanaLinkRelations.PREDECESSOR_VERSION));
+      links.add(
+          ActLinks.comparisonText(
+              id, predecessor.date(), date, language, VersionController.CHANGES));
+    }
+    if (at < inLanguage.size() - 1) {
+      links.add(
+          ActLinks.text(
+              id, inLanguage.get(at + 1).date(), language, VersionController.SUCCESSOR_VERSION));
+    }
+    links.add(ActLinks.text(id, inLanguage.getFirst().date(), language, IanaLinkRelations.FIRST));
     links.add(
-        ActLinks.text(id, timeline.latest().date(), language, IanaLinkRelations.LATEST_VERSION));
-    for (var other : languages) {
+        ActLinks.text(id, inLanguage.getLast().date(), language, IanaLinkRelations.LATEST_VERSION));
+    for (var other : version.languages()) {
       if (other != language) {
         links.add(
             ActLinks.text(id, date, other, IanaLinkRelations.ALTERNATE).withHreflang(other.iso()));

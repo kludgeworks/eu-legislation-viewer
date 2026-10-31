@@ -5,12 +5,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.time.LocalDate;
+import java.util.EnumSet;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class TimelineTest {
   static final ActIdentifier ACT = new ActIdentifier("32015R1998");
-  static final Version ORIGINAL = Version.original(LocalDate.of(2015, 11, 15), ACT);
+  static final Version ORIGINAL =
+      Version.original(LocalDate.of(2015, 11, 15), ACT, EnumSet.allOf(Language.class));
   static final Version FIRST = consolidated("2016-02-29", false);
   static final Version INTERIM = consolidated("2026-10-01", true);
   static final Timeline TIMELINE = new Timeline(List.of(ORIGINAL, FIRST, INTERIM));
@@ -56,7 +58,13 @@ class TimelineTest {
   @Test
   void refusesTwoVersionsOnOneDayOrNone() {
     var sameDay =
-        new Version(Version.Kind.CONSOLIDATED, FIRST.date(), "02015R1998-X", false, List.of());
+        new Version(
+            Version.Kind.CONSOLIDATED,
+            FIRST.date(),
+            "02015R1998-X",
+            false,
+            List.of(),
+            EnumSet.allOf(Language.class));
 
     assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of(FIRST, sameDay)));
     assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of()));
@@ -75,6 +83,7 @@ class TimelineTest {
         LocalDate.parse(date),
         "02015R1998-" + date.replace("-", ""),
         interim,
-        List.of());
+        List.of(),
+        EnumSet.allOf(Language.class));
   }
 }

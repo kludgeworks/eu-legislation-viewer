@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
@@ -14,11 +15,15 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.TreeSet;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
@@ -28,8 +33,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * All acts, from Cellar's RDF (the CDM ontology): an act's work by its CELEX, found from its ELI if
- * need be, and the consolidations based on it (Research: CDM ontology). Three queries, beside this
- * class: act.rq, act-by-eli.rq and versions.rq. Each act found is kept for a while
+ * need be, the consolidations based on it (Research: CDM ontology), and the languages each version
+ * has its text in (Research: which languages a version is in). Four queries, beside this class:
+ * act.rq, act-by-eli.rq, versions.rq and languages.rq. Each act found is kept for a while
  * (ActsCacheConfiguration).
  */
 @Component
@@ -38,6 +44,7 @@ class CellarActs implements Acts {
   private static final String ACT = Sparql.template(CellarActs.class, "act.rq");
   private static final String ACT_BY_ELI = Sparql.template(CellarActs.class, "act-by-eli.rq");
   private static final String VERSIONS = Sparql.template(CellarActs.class, "versions.rq");
+  private static final String LANGUAGES = Sparql.template(CellarActs.class, "languages.rq");
 
   /** Cellar's date for one it doesn't know (seen as an entry into force). */
   private static final LocalDate UNKNOWN = LocalDate.of(1001, 1, 1);
@@ -58,7 +65,10 @@ class CellarActs implements Acts {
   public Optional<Act> find(ActIdentifier id) {
     var values = Map.of("celex", id.celex());
     return act(
-        id, sparql.select(Sparql.fill(ACT, values)), sparql.select(Sparql.fill(VERSIONS, values)));
+        id,
+        sparql.select(Sparql.fill(ACT, values)),
+        sparql.select(Sparql.fill(VERSIONS, values)),
+        sparql.select(Sparql.fill(LANGUAGES, values)));
   }
 
   @Override
@@ -89,24 +99,29 @@ class CellarActs implements Acts {
   }
 
   /**
-   * The act from the answers to act.rq and versions.rq; none if act.rq found no work.
+   * The act from the answers to act.rq, versions.rq and languages.rq; none if act.rq found no work.
    *
    * @throws CellarException if Cellar's answers make no act: a value missing, repeated or not of
    *     its kind, or versions the timeline refuses
    */
-  static Optional<Act> act(ActIdentifier id, SparqlResult work, SparqlResult consolidations) {
+  static Optional<Act> act(
+      ActIdentifier id, SparqlResult work, SparqlResult consolidations, SparqlResult languages) {
     if (work.rows().isEmpty()) {
       return Optional.empty();
     }
     try {
-      return Optional.of(read(id, work, consolidations));
+      return Optional.of(read(id, work, consolidations, languages(languages)));
     } catch (IllegalArgumentException | DateTimeException e) {
       throw new CellarException("Cellar's data for " + id + ": " + e.getMessage(), e);
     }
   }
 
   /** The act; an IllegalArgumentException (or a DateTimeException) for what Cellar got wrong. */
-  private static Act read(ActIdentifier id, SparqlResult work, SparqlResult consolidations) {
+  private static Act read(
+      ActIdentifier id,
+      SparqlResult work,
+      SparqlResult consolidations,
+      Map<String, Set<Language>> languages) {
     var row = work.rows().getFirst();
     var types = distinct(work, "type");
     if (types.size() != 1) {
@@ -142,7 +157,7 @@ class CellarActs implements Acts {
         dateOfDocument,
         row.find("inForce").map(CellarActs::isTrue).orElse(false),
         endOfValidity.orElse(null),
-        timeline(id, originalFrom, consolidations));
+        timeline(id, originalFrom, consolidations, languages));
   }
 
   /**
@@ -159,9 +174,14 @@ class CellarActs implements Acts {
 
   /**
    * The original text, then the consolidated versions in date order. A consolidation that starts on
-   * the original's own date replaces it, as it's the later text of that day.
+   * the original's own date replaces it, as it's the later text of that day. Each in the languages
+   * {@code languages} has for its CELEX; in none if it has none.
    */
-  static Timeline timeline(ActIdentifier id, LocalDate originalFrom, SparqlResult consolidations) {
+  static Timeline timeline(
+      ActIdentifier id,
+      LocalDate originalFrom,
+      SparqlResult consolidations,
+      Map<String, Set<Language>> languages) {
     var byVersion = new LinkedHashMap<String, List<SparqlResult.Row>>();
     for (var row : consolidations.rows()) {
       byVersion.computeIfAbsent(row.get("version"), v -> new ArrayList<>()).add(row);
@@ -182,13 +202,32 @@ class CellarActs implements Acts {
               LocalDate.parse(first.get("date")),
               first.get("version"),
               !isTrue(first.get("pdf")),
-              integrates.stream().map(ActIdentifier::new).toList()));
+              integrates.stream().map(ActIdentifier::new).toList(),
+              languages.getOrDefault(first.get("version"), Set.of())));
     }
     versions.sort(Comparator.comparing(Version::date));
     if (versions.isEmpty() || versions.getFirst().date().isAfter(originalFrom)) {
-      versions.addFirst(Version.original(originalFrom, id));
+      versions.addFirst(
+          Version.original(originalFrom, id, languages.getOrDefault(id.celex(), Set.of())));
     }
     return new Timeline(versions);
+  }
+
+  /**
+   * The answer to languages.rq: each version's languages by its CELEX, an official language's code
+   * only (Cellar has expressions in others, as Norwegian for the EEA).
+   */
+  static Map<String, Set<Language>> languages(SparqlResult languages) {
+    var codes = new HashMap<String, Set<Language>>();
+    for (var row : languages.rows()) {
+      var listed = Set.of(row.get("languages").split(" "));
+      var official = EnumSet.noneOf(Language.class);
+      Arrays.stream(Language.values())
+          .filter(language -> listed.contains(language.code()))
+          .forEach(official::add);
+      codes.put(row.get("version"), official);
+    }
+    return codes;
   }
 
   private static List<String> distinct(SparqlResult result, String variable) {

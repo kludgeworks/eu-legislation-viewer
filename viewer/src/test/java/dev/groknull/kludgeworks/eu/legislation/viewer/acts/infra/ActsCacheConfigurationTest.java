@@ -6,10 +6,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import java.time.LocalDate;
+import java.util.EnumSet;
 import java.util.List;
 import org.jmolecules.jackson3.JMoleculesModule;
 import org.junit.jupiter.api.Test;
@@ -33,13 +35,14 @@ class ActsCacheConfigurationTest {
             null,
             new Timeline(
                 List.of(
-                    Version.original(LocalDate.of(2016, 6, 7), TFEU),
+                    Version.original(LocalDate.of(2016, 6, 7), TFEU, EnumSet.allOf(Language.class)),
                     new Version(
                         Version.Kind.CONSOLIDATED,
                         LocalDate.of(2025, 3, 15),
                         "02016E/TXT-20250315",
                         true,
-                        List.of(new ActIdentifier("32025D0001"))))));
+                        List.of(new ActIdentifier("32025D0001")),
+                        EnumSet.allOf(Language.class)))));
     var serializer = ActsCacheConfiguration.serializer(json);
 
     var kept = serializer.serialize(act);

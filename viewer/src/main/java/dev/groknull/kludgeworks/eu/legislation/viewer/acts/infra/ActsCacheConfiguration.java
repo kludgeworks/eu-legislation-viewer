@@ -21,7 +21,7 @@ import tools.jackson.databind.json.JsonMapper;
 
 /**
  * Acts kept in Valkey for viewer.acts.cache-for (an hour), by CELEX and by ELI (CellarActs): an act
- * costs Cellar two or three SPARQL queries, and its timeline changes only when Cellar publishes a
+ * costs Cellar three or four SPARQL queries, and its timeline changes only when Cellar publishes a
  * consolidation. An act Cellar doesn't know isn't kept. As JSON, by Boot's Jackson with jMolecules'
  * module, so identifiers are their values; a timeline as its versions (a mixin, kept out of the
  * domain).
@@ -29,8 +29,13 @@ import tools.jackson.databind.json.JsonMapper;
 @Configuration(proxyBeanMethods = false)
 @EnableCaching
 class ActsCacheConfiguration {
-  static final String BY_CELEX = "acts";
-  static final String BY_ELI = "acts-by-eli";
+  /**
+   * The caches by the shape of the JSON they keep: the number goes up when an act's JSON changes,
+   * so an act kept before is never read (2: each version's languages).
+   */
+  static final String BY_CELEX = "acts-2";
+
+  static final String BY_ELI = "acts-by-eli-2";
 
   @Bean
   RedisCacheManagerBuilderCustomizer actsCaches(

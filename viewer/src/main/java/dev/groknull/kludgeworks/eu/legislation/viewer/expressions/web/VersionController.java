@@ -6,7 +6,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.web.ActLinks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiRelations;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -32,13 +31,13 @@ import org.springframework.web.server.ResponseStatusException;
 
 /**
  * An act's versions (URLs and API: public API): the list, each with its link; one version at the
- * date it applies from, language-neutral, with links to its text in each language Cellar has it in
- * (by language tag), to the act (version-history), the versions either side and the latest (RFC
- * 5829) and the first (IANA's first, RFC 8288), and what changed since the one before (av:changes,
- * planned: 501); and the version that applies on any date, a lookup answered 303 with that
- * version's URL. A date that starts no version, or one before the act's text first applies, is 404.
- * HAL, as application/hal+json or plain application/json; cacheable as long as the act is kept
- * (viewer.acts.cache-for).
+ * date it applies from, language-neutral, with links to its text in each language it is in
+ * (Version.languages, by language tag), to the act (version-history), the versions either side and
+ * the latest (RFC 5829) and the first (IANA's first, RFC 8288), and what changed since the one
+ * before (av:changes, planned: 501); and the version that applies on any date, a lookup answered
+ * 303 with that version's URL. A date that starts no version, or one before the act's text first
+ * applies, is 404. HAL, as application/hal+json or plain application/json; cacheable as long as the
+ * act is kept (viewer.acts.cache-for).
  */
 @RestController
 @RequestMapping(
@@ -56,16 +55,13 @@ class VersionController {
   static final LinkRelation SUCCESSOR_VERSION = LinkRelation.of("successor-version");
 
   private final Acts acts;
-  private final Expressions expressions;
   private final CacheControl cacheControl;
 
   /**
    * @param cacheFor how long an act is kept, and so may be cached (viewer.acts.cache-for)
    */
-  VersionController(
-      Acts acts, Expressions expressions, @Value("${viewer.acts.cache-for}") Duration cacheFor) {
+  VersionController(Acts acts, @Value("${viewer.acts.cache-for}") Duration cacheFor) {
     this.acts = acts;
-    this.expressions = expressions;
     this.cacheControl = CacheControl.maxAge(cacheFor).cachePublic();
   }
 
@@ -141,7 +137,7 @@ class VersionController {
         .ifPresent(v -> links.add(ActLinks.version(id, v.date(), SUCCESSOR_VERSION)));
     links.add(ActLinks.version(id, timeline.first().date(), IanaLinkRelations.FIRST));
     links.add(ActLinks.version(id, timeline.latest().date(), IanaLinkRelations.LATEST_VERSION));
-    for (var language : expressions.languages(version.celex())) {
+    for (var language : version.languages()) {
       links.add(ActLinks.text(id, date, language, TEXT).withHreflang(language.iso()));
     }
     var model = HalModelBuilder.halModelOf(VersionRepresentation.of(version)).links(links).build();

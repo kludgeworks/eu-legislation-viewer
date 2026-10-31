@@ -9,7 +9,6 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -41,11 +40,6 @@ final class FormexFixtures implements FormexSource {
       throw new UncheckedIOException(e);
     }
     return true;
-  }
-
-  @Override
-  public Set<Language> languages(String celex) {
-    return Set.of(Language.ENG);
   }
 
   private static Path fixture(String celex) throws IOException {

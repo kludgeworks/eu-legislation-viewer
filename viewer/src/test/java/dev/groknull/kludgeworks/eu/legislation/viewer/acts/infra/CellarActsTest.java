@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
@@ -14,16 +15,19 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.time.LocalDate;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 /** Cellar's answers, recorded (viewer/src/test/resources/acts), folded into acts. */
 class CellarActsTest {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
   static final ActIdentifier REPEALED = new ActIdentifier("32010R0185");
+  static final Set<Language> ALL_BUT_IRISH = EnumSet.complementOf(EnumSet.of(Language.GLE));
 
   @Test
   void readsAnActInForceWithItsVersions() {
@@ -36,7 +40,8 @@ class CellarActsTest {
     assertThat(act.endOfValidity()).isNull();
     var versions = act.timeline().versions();
     assertThat(versions).hasSize(23);
-    assertThat(versions.getFirst()).isEqualTo(Version.original(LocalDate.of(2015, 11, 15), AVSEC));
+    assertThat(versions.getFirst())
+        .isEqualTo(Version.original(LocalDate.of(2015, 11, 15), AVSEC, ALL_BUT_IRISH));
     assertThat(versions.get(1).celex()).isEqualTo("02015R1998-20160229");
     assertThat(versions.getLast().celex()).isEqualTo("02015R1998-20261001");
   }
@@ -72,7 +77,8 @@ class CellarActsTest {
                 work,
                 result(
                     consolidation("02016E/TXT-20151225", "2015-12-25"),
-                    consolidation("02016E/TXT-20160901", "2016-09-01")))
+                    consolidation("02016E/TXT-20160901", "2016-09-01")),
+                noLanguages())
             .orElseThrow()
             .timeline();
 
@@ -114,10 +120,42 @@ class CellarActsTest {
   }
 
   @Test
+  void eachVersionIsInTheLanguagesCellarHasItsFormexIn() {
+    var versions = act(REPEALED).timeline().versions();
+    var withoutCroatian = EnumSet.copyOf(ALL_BUT_IRISH);
+    withoutCroatian.remove(Language.HRV);
+
+    // Croatian from Croatia's accession (2013), the original translated into it then
+    assertThat(versions.getFirst().languages()).isEqualTo(ALL_BUT_IRISH);
+    assertThat(version(versions, "02010R0185-20140701").languages()).isEqualTo(withoutCroatian);
+    assertThat(version(versions, "02010R0185-20150301").languages()).isEqualTo(ALL_BUT_IRISH);
+    assertThat(act(AVSEC).timeline().versions())
+        .allSatisfy(v -> assertThat(v.languages()).isEqualTo(ALL_BUT_IRISH));
+  }
+
+  @Test
+  void aVersionCellarHasNoFormexOfIsInNoLanguage() {
+    var timeline =
+        CellarActs.act(
+                AVSEC,
+                work(Map.of()),
+                result(consolidation("02015R1998-20260322", "2026-03-22")),
+                languages(
+                    new SparqlResult.Row(
+                        Map.of("version", "32015R1998", "languages", "DEU ENG NOR"))))
+            .orElseThrow()
+            .timeline();
+
+    // Norwegian, an EEA language, isn't an official one
+    assertThat(timeline.first().languages()).containsExactly(Language.DEU, Language.ENG);
+    assertThat(timeline.latest().languages()).isEmpty();
+  }
+
+  @Test
   void anActCellarDoesNotKnowIsNone() {
     var none = new SparqlResult(List.of("eli"), List.of());
 
-    assertThat(CellarActs.act(AVSEC, none, none)).isEmpty();
+    assertThat(CellarActs.act(AVSEC, none, none, none)).isEmpty();
   }
 
   @Test
@@ -136,7 +174,7 @@ class CellarActsTest {
             consolidation("02015R1998-20260322-BIS", "2026-03-22"));
 
     assertThatExceptionOfType(CellarException.class)
-        .isThrownBy(() -> CellarActs.act(AVSEC, work(Map.of()), twoOnOneDay))
+        .isThrownBy(() -> CellarActs.act(AVSEC, work(Map.of()), twoOnOneDay, noLanguages()))
         .withMessageStartingWith("Cellar's data for 32015R1998: Two versions on one day")
         .withCauseInstanceOf(IllegalArgumentException.class);
   }
@@ -151,7 +189,7 @@ class CellarActsTest {
                 workRow("http://data.europa.eu/eli/reg_impl/2015/1999/oj")));
 
     assertThatExceptionOfType(CellarException.class)
-        .isThrownBy(() -> CellarActs.act(AVSEC, twoElis, result()))
+        .isThrownBy(() -> CellarActs.act(AVSEC, twoElis, result(), noLanguages()))
         .withMessageStartingWith("Cellar's data for 32015R1998: several ELIs");
   }
 
@@ -162,7 +200,7 @@ class CellarActsTest {
             List.of("eli", "type", "entryIntoForce"),
             List.of(workRow("http://data.europa.eu/eli/treaty/tfeu_2008/art_251/oj")));
 
-    assertThat(CellarActs.act(AVSEC, treaty, result()))
+    assertThat(CellarActs.act(AVSEC, treaty, result(), noLanguages()))
         .hasValueSatisfying(act -> assertThat(act.eli()).isNull());
   }
 
@@ -204,6 +242,15 @@ class CellarActsTest {
     return new SparqlResult(List.of("version", "date", "pdf", "listed"), List.of(rows));
   }
 
+  /** languages.rq's answer: one row per version with Formex. */
+  private static SparqlResult languages(SparqlResult.Row... rows) {
+    return new SparqlResult(List.of("version", "languages"), List.of(rows));
+  }
+
+  private static SparqlResult noLanguages() {
+    return languages();
+  }
+
   private static SparqlResult.Row consolidation(String celex, String date) {
     return new SparqlResult.Row(Map.of("version", celex, "date", date, "pdf", "1"));
   }
@@ -212,7 +259,8 @@ class CellarActsTest {
     return CellarActs.act(
             id,
             recorded("act-" + id.celex() + ".json"),
-            recorded("versions-" + id.celex() + ".json"))
+            recorded("versions-" + id.celex() + ".json"),
+            recorded("languages-" + id.celex() + ".json"))
         .orElseThrow();
   }
 

@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: MIT
+# The languages each version of an act has its text in as Formex (CellarActs): the act's own work
+# (the original text) and each consolidation based on it, by its CELEX, with the authority codes of
+# its expressions that have a Formex manifestation (fmx4), space-separated (BUL CES … SWE). One query
+# for the whole timeline, apart from versions.rq, whose PDF check it would repeat on every row
+# (Research: which languages a version is in). A version without Formex has no row.
+# {{celex}}: the base act's CELEX (32015R1998), checked against its pattern first.
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?version
+       (GROUP_CONCAT(DISTINCT STRAFTER(STR(?language), "/language/"); separator=" ") AS ?languages)
+WHERE {
+  # each branch binds ?work itself: a BIND of the act would run before the act is bound
+  { ?work cdm:resource_legal_id_celex "{{celex}}"^^xsd:string . }
+  UNION
+  { ?act cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
+    ?work cdm:act_consolidated_based_on_resource_legal ?act ;
+          cdm:act_consolidated_date ?date . }
+  ?work cdm:resource_legal_id_celex ?version .
+  ?expression cdm:expression_belongs_to_work ?work ;
+              cdm:expression_uses_language ?language .
+  ?manifestation cdm:manifestation_manifests_expression ?expression ;
+                 cdm:manifestation_type "fmx4"^^xsd:string .
+}
+GROUP BY ?version
+ORDER BY ?version

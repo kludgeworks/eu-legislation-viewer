@@ -41,7 +41,6 @@ public class FormexFiles {
   private static final Pattern LANGUAGE = Pattern.compile("[A-Z]{3}");
 
   private static final String QUERY = Sparql.template(FormexFiles.class, "formex-files.rq");
-  private static final String LANGUAGES = Sparql.template(FormexFiles.class, "formex-languages.rq");
 
   private final Sparql sparql;
   private final RestClient client;
@@ -93,25 +92,6 @@ public class FormexFiles {
                         r.find("sha1").orElse(null)))
             .toList();
     return Optional.of(new FormexManifestation(URI.create(uri), modified, false, files));
-  }
-
-  /**
-   * The languages the version {@code celex} names has Formex in, by their EU authority codes (ENG),
-   * in order; none for a version Cellar has no Formex of, or doesn't know.
-   */
-  public List<String> languages(String celex) {
-    if (!CELEX.matcher(celex).matches()) {
-      throw new IllegalArgumentException("Not a CELEX number: " + celex);
-    }
-    return languages(sparql.select(Sparql.fill(LANGUAGES, Map.of("celex", celex))));
-  }
-
-  /** The authority codes in the answer to formex-languages.rq: the last segment of each URI. */
-  static List<String> languages(SparqlResult result) {
-    return result.rows().stream()
-        .map(row -> row.get("language"))
-        .map(uri -> uri.substring(uri.lastIndexOf('/') + 1))
-        .toList();
   }
 
   /**

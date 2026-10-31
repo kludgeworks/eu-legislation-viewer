@@ -2,7 +2,10 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.acts;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
@@ -16,22 +19,33 @@ import org.jmolecules.ddd.annotation.ValueObject;
  * @param interim a consolidated version published without a PDF, which may still be revised
  * @param integrates the amending acts and corrigenda Cellar lists as consolidated at this step; for
  *     display only, since Cellar's lists aren't always exact
+ * @param languages the languages its text is in, as Formex, the only text the viewer reads: its
+ *     expressions in Cellar with a Formex manifestation (Research: which languages a version is
+ *     in). Not always all 24: 2015/1998's have no Irish
  */
 @ValueObject
 public record Version(
-    Kind kind, LocalDate date, String celex, boolean interim, List<ActIdentifier> integrates) {
+    Kind kind,
+    LocalDate date,
+    String celex,
+    boolean interim,
+    List<ActIdentifier> integrates,
+    Set<Language> languages) {
 
   public Version {
     integrates = List.copyOf(integrates);
+    languages =
+        Collections.unmodifiableSet(
+            languages.isEmpty() ? EnumSet.noneOf(Language.class) : EnumSet.copyOf(languages));
     if (kind == Kind.ORIGINAL && (interim || !integrates.isEmpty())) {
       throw new IllegalArgumentException(
           "An original text is never interim and integrates nothing");
     }
   }
 
-  /** The original text, applying from {@code date}. */
-  public static Version original(LocalDate date, ActIdentifier act) {
-    return new Version(Kind.ORIGINAL, date, act.celex(), false, List.of());
+  /** The original text, applying from {@code date}, in {@code languages}. */
+  public static Version original(LocalDate date, ActIdentifier act, Set<Language> languages) {
+    return new Version(Kind.ORIGINAL, date, act.celex(), false, List.of(), languages);
   }
 
   /** Whether this version only applies after {@code today}. */

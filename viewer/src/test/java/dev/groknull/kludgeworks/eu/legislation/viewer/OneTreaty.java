@@ -16,7 +16,6 @@ import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -40,7 +39,10 @@ class OneTreaty {
             LocalDate.of(2016, 6, 7),
             true,
             null,
-            new Timeline(List.of(Version.original(LocalDate.of(2016, 6, 7), TFEU))));
+            new Timeline(
+                List.of(
+                    Version.original(
+                        LocalDate.of(2016, 6, 7), TFEU, EnumSet.of(Language.ENG, Language.FRA)))));
     return new Acts() {
       @Override
       public Optional<Act> find(ActIdentifier id) {
@@ -61,11 +63,6 @@ class OneTreaty {
       @Override
       public Optional<Expression> find(ExpressionIdentifier id) {
         return Optional.empty();
-      }
-
-      @Override
-      public Set<Language> languages(String document) {
-        return EnumSet.of(Language.ENG, Language.FRA);
       }
     };
   }

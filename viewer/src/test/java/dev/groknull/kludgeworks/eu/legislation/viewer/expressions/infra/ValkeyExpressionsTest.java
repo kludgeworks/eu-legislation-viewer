@@ -36,7 +36,6 @@ class ValkeyExpressionsTest {
       new ValkeyExpressions(
           valkey,
           conversion,
-          source,
           new LegalTextReader(SAXON),
           SAXON,
           new StoreProperties(Duration.ofMinutes(1), Duration.ofMillis(50), Duration.ofDays(1)));
