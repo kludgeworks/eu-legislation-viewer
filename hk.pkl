@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Fast file-level checks on changed files (pre-commit) and on everything (`hk check --all`, CI).
-// Checks that need the real schema are Bazel tests; doclint, which needs a compile, builds the
-// changed files' Java targets with Bazel.
+// Checks that need the real schema are Bazel tests; javac's (Error Prone, NullAway, doclint), which
+// need a compile, build the changed files' Java targets with Bazel.
 amends "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Config.pkl"
 
 import "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Builtins.pkl"
@@ -31,14 +31,15 @@ local generated =
 local xml = List("**/*.xml", "**/*.xsl", "**/*.xsd", "**/*.xspec", "**/*.xjb", "**/*.sch")
 
 local linters = new Mapping<String, Step> {
-  // javac's doclint (the Java toolchain's, tools/build/BUILD.bazel): it needs a compile, so it builds
-  // the Java targets the files belong to; a {@link} that doesn't resolve fails before formatting
-  ["doclint"] = new Step {
+  // javac's checks (the Java toolchain's, tools/build/BUILD.bazel: Error Prone, NullAway, doclint):
+  // they need a compile, so it builds the Java targets the files belong to,
+  // before formatting
+  ["javac"] = new Step {
     glob = List("**/*.java")
     check =
       #"targets=$(bazel query "kind('java_library|java_binary|java_test', same_pkg_direct_rdeps(set({{files}})))" 2>/dev/null) && { [ -z "$targets" ] || bazel build $targets; }"#
   }
-  ["google_java_format"] = (Builtins.google_java_format) { batch = true; depends = List("doclint") }
+  ["google_java_format"] = (Builtins.google_java_format) { batch = true; depends = List("javac") }
   ["addlicense"] = new Step {
     required = List("LICENSE_HOLDER", "LICENSE_TYPE")
     glob =

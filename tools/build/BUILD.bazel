@@ -26,21 +26,35 @@ java_plugin(
     deps = ["@maven//:com_uber_nullaway_nullaway"],
 )
 
-# The Java toolchain (see .bazelrc): rules_java's default for Java 25, with javac's doclint on our
-# own packages: a Javadoc {@link} that doesn't resolve, a @param for no parameter, malformed HTML
-# fail the build, down to private members. Not "missing": a comment on every member would be noise.
-# Third-party code (rules_java's runfiles among it) has links doclint can't resolve: left alone.
+# The Java toolchain (see .bazelrc): rules_java's default for Java 25, stricter on our own packages.
+# Third-party code (rules_java's runfiles among it) is left alone: doclint can't resolve its links,
+# and its warnings aren't ours to fix.
 default_java_toolchain(
     name = "java_toolchain",
     configuration = DEFAULT_TOOLCHAIN_CONFIGURATION,
-    package_configuration = [":doclint"],
+    package_configuration = [":strict"],
     source_version = "25",
     target_version = "25",
 )
 
+# Our packages, stricter than Error Prone's defaults as Bazel runs them, its errors alone: three of
+# its checks are errors too. RequireExplicitNullMarking: no class slips past NullAway unmarked;
+# ReturnMissingNullable (off in rules_java's defaults): a return of null says @Nullable;
+# SameNameButDifferent: one simple name means one type in a file. They skip generated code, which
+# Bazel compiles from its own output (_javac: MapStruct's mappers, XJC's classes). A javac warning
+# fails the build (-Werror; Error Prone's warnings don't count). javac's doclint: a Javadoc {@link}
+# that doesn't resolve, a @param for no parameter, malformed HTML, down to private members; not
+# "missing": a comment on every member would be noise.
 java_package_configuration(
-    name = "doclint",
-    javacopts = ["-Xdoclint:all/private,-missing"],
+    name = "strict",
+    javacopts = [
+        "-Werror",
+        "-XepExcludedPaths:.*/_javac/.*",
+        "-Xep:RequireExplicitNullMarking:ERROR",
+        "-Xep:ReturnMissingNullable:ERROR",
+        "-Xep:SameNameButDifferent:ERROR",
+        "-Xdoclint:all/private,-missing",
+    ],
     packages = [":ours"],
 )
 
