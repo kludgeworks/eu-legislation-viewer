@@ -1,8 +1,8 @@
 # SPDX-License-Identifier: MIT
 # The Formex items of one version in one language (FormexFiles): work (CELEX) → expression
 # (language) → manifestation (fmx4) → items, each with its file name (tdm:stream_name or, where the
-# technical metadata is missing, the suffix of its owl:sameAs after ".fmx4.") and its SHA-1.
-# FormexFiles fills in {{celex}} (32015R1998, 02015R1998-20260322) and {{language}} (an EU
+# technical metadata is missing, the suffix of its owl:sameAs after ".fmx4."), and when Cellar last
+# modified the manifestation, for the latest where there's more than one. FormexFiles fills in {{celex}} (32015R1998, 02015R1998-20260322) and {{language}} (an EU
 # authority code: ENG), both checked against their patterns first.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
@@ -11,7 +11,7 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?manifestation ?item ?mime (SAMPLE(COALESCE(?streamName, STRAFTER(STR(?same), ".fmx4."))) AS ?file)
-       (SAMPLE(?sha1) AS ?sha1) ?modified
+       ?modified
 WHERE {
   VALUES (?celex ?language) { ("{{celex}}"^^xsd:string <http://publications.europa.eu/resource/authority/language/{{language}}>) }
   ?work cdm:resource_legal_id_celex ?celex .
@@ -24,7 +24,6 @@ WHERE {
         cmr:manifestationMimeType ?mime .
   OPTIONAL { ?item tdm:stream_name ?streamName }
   OPTIONAL { ?item owl:sameAs ?same }
-  OPTIONAL { ?item tdm:stream_fixity/tdm:fixity_message_digest ?sha1 }
 }
 GROUP BY ?manifestation ?item ?mime ?modified
 ORDER BY ?item

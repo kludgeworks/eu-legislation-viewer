@@ -73,11 +73,9 @@ public class FormexFiles {
     }
     var uri = latest.get().get("manifestation");
     var items = rows.stream().filter(r -> r.get("manifestation").equals(uri)).toList();
-    var modified = modified(latest.get().get("modified"));
     if (items.size() == 1 && items.getFirst().get("mime").startsWith("application/zip")) {
       var zip = URI.create(items.getFirst().get("item"));
-      return Optional.of(
-          new FormexManifestation(URI.create(uri), modified, true, entries(celex, language, zip)));
+      return Optional.of(new FormexManifestation(URI.create(uri), entries(celex, language, zip)));
     }
     var files =
         items.stream()
@@ -88,10 +86,9 @@ public class FormexFiles {
                             .orElseThrow(
                                 () -> new CellarException("No file name for " + r.get("item"))),
                         URI.create(r.get("item")),
-                        r.get("mime"),
-                        r.find("sha1").orElse(null)))
+                        r.get("mime")))
             .toList();
-    return Optional.of(new FormexManifestation(URI.create(uri), modified, false, files));
+    return Optional.of(new FormexManifestation(URI.create(uri), files));
   }
 
   /**
@@ -127,7 +124,7 @@ public class FormexFiles {
           var href = reader.getAttributeValue(null, "href");
           if (href != null && href.startsWith(prefix)) {
             var name = URLDecoder.decode(href.substring(prefix.length()), StandardCharsets.UTF_8);
-            files.add(new FormexManifestation.File(name, URI.create(href), mediaType(name), null));
+            files.add(new FormexManifestation.File(name, URI.create(href), mediaType(name)));
           }
         }
       }

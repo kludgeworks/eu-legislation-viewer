@@ -53,6 +53,15 @@ final class SampleLegalTexts {
     }
   }
 
+  /** One sample as it is written: 06.02.1/02015R1998-20260322. */
+  static String text(String name) {
+    try {
+      return Files.readString(ROOT.resolve(name + ".xml"));
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
+  }
+
   private static Path root() {
     try {
       return Path.of(

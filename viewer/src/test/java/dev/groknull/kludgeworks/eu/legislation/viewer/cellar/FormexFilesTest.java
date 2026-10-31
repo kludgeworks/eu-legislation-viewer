@@ -11,8 +11,6 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 import java.net.URI;
-import java.time.Instant;
-import java.util.Objects;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -34,7 +32,6 @@ class FormexFilesTest {
         .isEqualTo(
             URI.create(
                 "http://publications.europa.eu/resource/cellar/8f145680-d086-4e3d-b6a0-a8b83cdc04b9.0006.01"));
-    assertThat(version.zipped()).isFalse();
     assertThat(version.files())
         .extracting(FormexManifestation.File::name)
         .containsExactly(
@@ -43,9 +40,9 @@ class FormexFilesTest {
             "L_2009330EN.01008001.xml",
             "L_2009330EN.01008102.tif");
     assertThat(version.file("L_2009330EN.01008102.tif"))
-        .map(f -> f.mediaType() + " " + Objects.requireNonNull(f.sha1()) + " " + f.uri())
+        .map(f -> f.mediaType() + " " + f.uri())
         .contains(
-            "image/tiff 0e2f1dcaa096a07478cfb6a82a4b74d4e832f621"
+            "image/tiff"
                 + " http://publications.europa.eu/resource/cellar/8f145680-d086-4e3d-b6a0-a8b83cdc04b9.0006.01/DOC_4");
   }
 
@@ -65,8 +62,6 @@ class FormexFilesTest {
 
     var version = files(mock).manifestation("32023R1669", "ENG").orElseThrow();
 
-    assertThat(version.zipped()).isTrue();
-    assertThat(version.lastModified()).isEqualTo(Instant.parse("2023-08-31T07:11:31.129Z"));
     // the package descriptor, 11 more XML files and 15 images
     assertThat(version.files()).hasSize(27);
     assertThat(version.files().stream().filter(f -> f.mediaType().equals("image/tiff")))
@@ -76,7 +71,6 @@ class FormexFilesTest {
         .contains(
             URI.create(
                 "http://publications.europa.eu/resource/cellar/80cad8d3-47c9-11ee-bbdc-01aa75ed71a1.0006.02/DOC_1/L_2023214EN.01000901.doc.xml"));
-    assertThat(version.files()).allSatisfy(f -> assertThat(f.sha1()).isNull());
     mock.server().verify();
   }
 

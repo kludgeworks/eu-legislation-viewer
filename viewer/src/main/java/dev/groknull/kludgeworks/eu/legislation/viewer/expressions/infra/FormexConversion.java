@@ -2,20 +2,14 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Comparator;
 import java.util.Optional;
-import javax.xml.transform.stream.StreamSource;
 import net.sf.saxon.s9api.XdmNode;
 import org.springframework.stereotype.Component;
 
 /**
- * A document's legal text converted from its Formex: the Formex in the language is fetched into a
- * folder of its own, converted, and the folder deleted. Every call converts; ValkeyExpressions
- * keeps the result.
+ * A document's legal text converted from its Formex: each XML file of its package in the language
+ * parsed as it is read from the source, then converted; nothing is written anywhere. Every call
+ * converts; ValkeyExpressions keeps the result.
  */
 @Component
 class FormexConversion {
@@ -33,38 +27,13 @@ class FormexConversion {
    * @return none if Cellar has no Formex of the document in the language
    */
   Optional<XdmNode> convert(ExpressionIdentifier id) {
-    var folder = folder();
-    try {
-      if (!source.fetch(id.document(), id.language(), folder)) {
-        return Optional.empty();
-      }
-      var formex = new StreamSource(FormexConverter.input(folder).toFile());
-      return Optional.of(converter.convert(formex, Optional.of(id.document())));
-    } finally {
-      delete(folder);
-    }
+    return source
+        .fetch(id.document(), id.language(), converter::parse)
+        .map(documents -> converter.convert(documents, Optional.of(id.document())));
   }
 
   /** The converter's version: what the legal text is made with, so part of its key in the store. */
   String converterVersion() {
     return converter.version();
-  }
-
-  private static Path folder() {
-    try {
-      return Files.createTempDirectory("formex-");
-    } catch (IOException e) {
-      throw new UncheckedIOException(e);
-    }
-  }
-
-  private static void delete(Path folder) {
-    try (var paths = Files.walk(folder)) {
-      for (var path : paths.sorted(Comparator.reverseOrder()).toList()) {
-        Files.delete(path);
-      }
-    } catch (IOException e) {
-      throw new UncheckedIOException(e);
-    }
   }
 }

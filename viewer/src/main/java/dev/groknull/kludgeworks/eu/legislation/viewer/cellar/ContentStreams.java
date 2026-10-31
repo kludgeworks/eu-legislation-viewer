@@ -1,30 +1,22 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
 
+import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UncheckedIOException;
 import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.security.DigestOutputStream;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.time.Instant;
-import java.util.HexFormat;
+import java.util.function.Function;
 import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
 
 /**
- * Cellar's files (content streams: an item, or one entry of a zip item), fetched one at a time as
- * raw bytes: never parsed, re-encoded or re-indented. A conditional GET with the ETag of the copy
- * we have answers 304 while it is current.
+ * Cellar's files (content streams: an item, or one entry of a zip item), read one at a time as they
+ * come: nothing is buffered or kept, so a file of any size costs only what its reader makes of it.
  */
 @Component
 public class ContentStreams {
@@ -35,27 +27,17 @@ public class ContentStreams {
   }
 
   /**
-   * Fetches {@code uri} into {@code target}: the bytes go to a temporary file next to it, which
-   * replaces the target only once complete, so a failed download leaves no partial file.
-   *
-   * @param etag the ETag of the copy we have, or null to fetch unconditionally
+   * What {@code reader} makes of {@code uri}'s bytes, read while the response is open. Reading them
+   * failing (the connection lost) is Cellar failing, a ResourceAccessException, whatever the reader
+   * made of it: a reader that turns the failure into a result of its own never hides it.
    */
-  public Download download(URI uri, @Nullable String etag, Path target) {
+  public <T> T read(URI uri, Function<InputStream, T> reader) {
     return client
         .get()
         .uri(uri)
-        .headers(
-            headers -> {
-              if (etag != null) {
-                headers.setIfNoneMatch(etag);
-              }
-            })
         .exchange(
             (request, response) -> {
               var status = response.getStatusCode();
-              if (status.value() == HttpStatus.NOT_MODIFIED.value()) {
-                return new Download.NotModified();
-              }
               if (status.is5xxServerError()) {
                 throw HttpServerErrorException.create(
                     status, response.getStatusText(), response.getHeaders(), new byte[0], null);
@@ -64,42 +46,55 @@ public class ContentStreams {
                 throw HttpClientErrorException.create(
                     status, response.getStatusText(), response.getHeaders(), new byte[0], null);
               }
-              var headers = response.getHeaders();
-              var written = write(response.getBody(), target);
-              var lastModified = headers.getLastModified();
-              return new Download.Downloaded(
-                  headers.getETag(),
-                  lastModified < 0 ? null : Instant.ofEpochMilli(lastModified),
-                  headers.getContentType() == null ? null : headers.getContentType().toString(),
-                  written.size(),
-                  written.sha1());
+              var body = new Watched(response.getBody());
+              T read;
+              try {
+                read = reader.apply(body);
+              } catch (RuntimeException e) {
+                throw body.failure == null ? e : failed(uri, body.failure);
+              }
+              if (body.failure != null) {
+                throw failed(uri, body.failure);
+              }
+              return read;
             });
   }
 
-  private record Written(long size, String sha1) {}
+  private static ResourceAccessException failed(URI uri, IOException e) {
+    return new ResourceAccessException("Reading " + uri + " failed: " + e.getMessage(), e);
+  }
 
-  private static Written write(InputStream body, Path target) {
-    try {
-      var directory = target.toAbsolutePath().getParent();
-      Files.createDirectories(directory);
-      var part = Files.createTempFile(directory, target.getFileName().toString(), ".part");
+  /** A body that remembers the first failure reading it, for the reader may swallow it. */
+  private static final class Watched extends FilterInputStream {
+    private @Nullable IOException failure;
+
+    Watched(InputStream in) {
+      super(in);
+    }
+
+    @Override
+    public int read() throws IOException {
       try {
-        var sha1 = MessageDigest.getInstance("SHA-1");
-        long size;
-        try (body;
-            var out = new DigestOutputStream(Files.newOutputStream(part), sha1)) {
-          size = body.transferTo(out);
-        }
-        Files.move(
-            part, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
-        return new Written(size, HexFormat.of().formatHex(sha1.digest()));
-      } finally {
-        Files.deleteIfExists(part);
+        return super.read();
+      } catch (IOException e) {
+        throw remembered(e);
       }
-    } catch (IOException e) {
-      throw new UncheckedIOException(e);
-    } catch (NoSuchAlgorithmException e) {
-      throw new IllegalStateException(e);
+    }
+
+    @Override
+    public int read(byte[] bytes, int offset, int length) throws IOException {
+      try {
+        return super.read(bytes, offset, length);
+      } catch (IOException e) {
+        throw remembered(e);
+      }
+    }
+
+    private IOException remembered(IOException e) {
+      if (failure == null) {
+        failure = e;
+      }
+      return e;
     }
   }
 }

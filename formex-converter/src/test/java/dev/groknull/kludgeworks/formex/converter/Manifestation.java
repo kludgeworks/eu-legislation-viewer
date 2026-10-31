@@ -33,7 +33,7 @@ record Manifestation(String name, Path folder) {
   /**
    * The file to convert, one of the stylesheet's inputs: a consolidation's CONS.ACT or CONS.OTH
    * file, else the package descriptor (DOC), else the largest file. The viewer chooses the same way
-   * (its FormexConverter.input).
+   * (its FormexConverter.convert).
    */
   Path input() {
     var files = xmlFiles();

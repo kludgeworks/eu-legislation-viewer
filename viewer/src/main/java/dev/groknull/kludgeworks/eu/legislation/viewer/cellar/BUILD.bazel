@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
 
-# Cellar: SPARQL, raw files with conditional GETs, a version's Formex files, through Boot's RestClient;
+# Cellar: SPARQL, files read as they come, a version's Formex files, through Boot's RestClient;
 # its failing as a 502 problem detail
 java_library(
     name = "cellar",

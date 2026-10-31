@@ -2,18 +2,25 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
-import java.nio.file.Path;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiFunction;
 
-/** Where a document's Formex comes from: its files, for the converter to read. */
+/**
+ * Where a document's Formex comes from: the XML files of its package, for the converter to read.
+ */
 interface FormexSource {
 
   /**
-   * Writes the Formex files of the document {@code celex} in {@code language} into {@code folder},
-   * each named as its package refers to it.
+   * What {@code read} makes of each XML file of the document {@code celex}'s Formex in {@code
+   * language}, given the name its package refers to it by and its bytes, open while read reads
+   * them.
    *
    * @param celex the act's CELEX for its original text, a consolidation's for a consolidated
    *     version
-   * @return whether there are any: false where Cellar has no Formex of it in that language
+   * @return none where Cellar has no Formex of it in that language
    */
-  boolean fetch(String celex, Language language, Path folder);
+  <T> Optional<List<T>> fetch(
+      String celex, Language language, BiFunction<String, InputStream, T> read);
 }

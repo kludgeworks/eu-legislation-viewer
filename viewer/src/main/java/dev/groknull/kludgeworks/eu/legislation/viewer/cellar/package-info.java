@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 /**
  * Cellar, the Publications Office's repository of EU law, as the viewer reads it: SPARQL over its
- * RDF ({@link Sparql}), files fetched one at a time as raw bytes with conditional GETs ({@link
- * ContentStreams}), and the Formex files of one version found from the RDF ({@link FormexFiles}).
+ * RDF ({@link Sparql}), files read one at a time as they come ({@link ContentStreams}), and the
+ * Formex files of one version found from the RDF ({@link FormexFiles}).
  *
  * <p>Upstream etiquette is enforced here, for every caller: a descriptive User-Agent ({@code
  * viewer.cellar.*}, in application.yaml), identical concurrent SPARQL queries coalesced, and

@@ -90,7 +90,7 @@ class ValkeyExpressionsTest {
 
     assertThat(expressions.find(irish, FORMEX)).isEmpty();
     assertThat(expressions.find(irish, FORMEX)).isEmpty();
-    assertThat(source.folders).hasSize(1);
+    assertThat(source.requests).hasSize(1);
     assertThat(valkey.getExpire(expressions.key(irish, FORMEX))).isPositive();
   }
 
