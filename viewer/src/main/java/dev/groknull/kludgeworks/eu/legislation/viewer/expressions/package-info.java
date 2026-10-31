@@ -6,7 +6,8 @@
  * the records, Expression, the aggregate, and Expressions, its repository. Its use cases are in
  * {@code application}; in {@code infra}, internal to the module, the store in Valkey, the adapter
  * on //formex-converter's stylesheets (FormexConverter), the reader and, in {@code infra.xml}, the
- * JAXB classes generated from legal-text.xsd.
+ * JAXB classes generated from legal-text.xsd. A lookup that may find nothing returns an Optional
+ * (Expressions.find); a value that may be absent, as a record component, is @Nullable.
  */
 @ApplicationModule(displayName = "Expressions")
 @DomainRing
