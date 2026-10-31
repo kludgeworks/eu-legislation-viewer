@@ -12,8 +12,9 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * A Formex source on the converter's fixtures, in English only: 2015/1998's consolidation of 22
- * March 2026 among them. It records what it was asked for, from any thread.
+ * A Formex source on the converter's fixtures, in English: 2015/1998's consolidation of 22 March
+ * 2026 among them; in French a document that isn't a legal act, in German Formex the converter
+ * doesn't handle, for any document. It records what it was asked for, from any thread.
  */
 @AutoBazelRepository
 final class FormexFixtures implements FormexSource {
@@ -28,10 +29,26 @@ final class FormexFixtures implements FormexSource {
   @Override
   public boolean fetch(String celex, Language language, Path folder) {
     folders.add(folder);
-    if (language != Language.ENG) {
+    var refused =
+        switch (language) {
+          case FRA -> "<JUDGMENT/>";
+          case DEU ->
+              "<ACT><BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>DE</LG.DOC>"
+                  + "</BIB.INSTANCE><ENACTING.TERMS><NOT.FORMEX/></ENACTING.TERMS></ACT>";
+          default -> null;
+        };
+    if (refused == null && language != Language.ENG) {
       return false;
     }
     asked.add(celex + " " + language.code());
+    if (refused != null) {
+      try {
+        Files.writeString(folder.resolve(celex + ".xml"), refused);
+      } catch (IOException e) {
+        throw new UncheckedIOException(e);
+      }
+      return true;
+    }
     try (var files = Files.list(fixture(celex))) {
       for (var file : files.toList()) {
         Files.copy(file, folder.resolve(file.getFileName()));

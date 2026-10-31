@@ -7,4 +7,9 @@ public final class UnsupportedFormexException extends ConversionException {
   public UnsupportedFormexException(String message, Throwable cause) {
     super(message, cause);
   }
+
+  /** As kept by ValkeyExpressions, read back: the cause stayed with the conversion. */
+  public UnsupportedFormexException(String message) {
+    super(message);
+  }
 }

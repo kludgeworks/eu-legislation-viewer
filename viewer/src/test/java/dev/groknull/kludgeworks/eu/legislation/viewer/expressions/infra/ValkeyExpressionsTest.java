@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra;
 
 import static dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra.FormexFixtures.CONSOLIDATION;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
@@ -38,7 +39,11 @@ class ValkeyExpressionsTest {
           conversion,
           new LegalTextReader(SAXON),
           SAXON,
-          new StoreProperties(Duration.ofMinutes(1), Duration.ofMillis(50), Duration.ofDays(1)));
+          new StoreProperties(
+              Duration.ofMinutes(1),
+              Duration.ofMillis(50),
+              Duration.ofDays(1),
+              Duration.ofDays(1)));
 
   @BeforeEach
   void emptyTheStore() {
@@ -85,6 +90,23 @@ class ValkeyExpressionsTest {
     assertThat(expressions.find(irish)).isEmpty();
     assertThat(source.folders).hasSize(1);
     assertThat(valkey.getExpire(expressions.key(irish))).isPositive();
+  }
+
+  @Test
+  void remembersATextTheConverterRefusedAsTheSameRefusal() {
+    var french = new ExpressionIdentifier(CONSOLIDATION, Language.FRA);
+    var german = new ExpressionIdentifier(CONSOLIDATION, Language.DEU);
+
+    for (var attempt = 0; attempt < 2; attempt++) {
+      assertThatExceptionOfType(OutOfScopeException.class)
+          .isThrownBy(() -> expressions.find(french))
+          .withMessageContaining("JUDGMENT");
+      assertThatExceptionOfType(UnsupportedFormexException.class)
+          .isThrownBy(() -> expressions.find(german))
+          .withMessageContaining("NOT.FORMEX");
+    }
+    assertThat(source.asked).containsExactly(CONSOLIDATION + " FRA", CONSOLIDATION + " DEU");
+    assertThat(valkey.getExpire(expressions.key(french))).isPositive();
   }
 
   @Test

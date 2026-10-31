@@ -9,7 +9,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.zip.GZIPInputStream;
@@ -27,14 +29,22 @@ import org.springframework.stereotype.Component;
  * path): the legal-text XML, gzipped, under a key of the document, the language and the converter's
  * version, so a new converter never reads an old one's output. A miss converts under a lock in
  * Valkey on the key, so a text is converted once across instances while other requests for it wait
- * for the result. A document without Formex in the language is remembered for a while. Everything
- * kept is derived, and Valkey may evict any of it.
+ * for the result. A document without Formex in the language is remembered for a while, as is one
+ * the converter refused or failed on (a ConversionException, read back as one of the same kind), so
+ * neither is fetched and converted for every request; Cellar failing is never kept. Everything kept
+ * is derived, and Valkey may evict any of it.
  */
 @Component
 class ValkeyExpressions implements Expressions {
 
   /** What is kept for a document without Formex in the language. */
   private static final byte[] ABSENT = new byte[0];
+
+  /**
+   * What starts what is kept for a text the converter refused or failed on, before its kind and its
+   * message, a line each: never the start of gzip (0x1f 0x8b), which a text is kept as.
+   */
+  private static final String FAILED = "failed\n";
 
   /** Releases the lock only if it is still ours: it may have expired and been taken by another. */
   private static final RedisScript<Long> UNLOCK =
@@ -100,7 +110,13 @@ class ValkeyExpressions implements Expressions {
     if (stored != null) {
       return read(stored);
     }
-    var legalText = conversion.convert(id);
+    Optional<XdmNode> legalText;
+    try {
+      legalText = conversion.convert(id);
+    } catch (ConversionException e) {
+      valkey.opsForValue().set(key, failure(e), properties.failedFor());
+      throw e;
+    }
     if (legalText.isEmpty()) {
       valkey.opsForValue().set(key, ABSENT, properties.absentFor());
       return Optional.empty();
@@ -113,6 +129,11 @@ class ValkeyExpressions implements Expressions {
     if (stored.length == 0) {
       return Optional.empty();
     }
+    var failed = FAILED.getBytes(StandardCharsets.UTF_8);
+    if (Arrays.equals(
+        stored, 0, Math.min(failed.length, stored.length), failed, 0, failed.length)) {
+      throw failed(new String(stored, StandardCharsets.UTF_8).substring(FAILED.length()));
+    }
     try (var xml = new GZIPInputStream(new ByteArrayInputStream(stored))) {
       return Optional.of(reader.read(saxon.newDocumentBuilder().build(new StreamSource(xml))));
     } catch (IOException e) {
@@ -120,6 +141,29 @@ class ValkeyExpressions implements Expressions {
     } catch (SaxonApiException e) {
       throw new InvalidLegalTextException("a stored text isn't XML: " + e.getMessage(), e);
     }
+  }
+
+  /** What is kept for {@code e}: FAILED, then its kind (failed() reads it back) and its message. */
+  private static byte[] failure(ConversionException e) {
+    var kind =
+        switch (e) {
+          case OutOfScopeException _ -> "out-of-scope";
+          case UnsupportedFormexException _ -> "unsupported";
+          default -> "failed";
+        };
+    return (FAILED + kind + "\n" + Objects.toString(e.getMessage(), ""))
+        .getBytes(StandardCharsets.UTF_8);
+  }
+
+  /** The failure kept as {@code kept}, its kind and its message, as it was thrown. */
+  private static ConversionException failed(String kept) {
+    var kind = kept.substring(0, kept.indexOf('\n'));
+    var message = kept.substring(kind.length() + 1);
+    return switch (kind) {
+      case "out-of-scope" -> new OutOfScopeException(message);
+      case "unsupported" -> new UnsupportedFormexException(message);
+      default -> new ConversionException(message);
+    };
   }
 
   private byte[] gzip(XdmNode legalText) {

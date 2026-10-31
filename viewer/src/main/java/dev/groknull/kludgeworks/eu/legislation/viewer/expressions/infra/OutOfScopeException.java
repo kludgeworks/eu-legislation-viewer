@@ -7,4 +7,9 @@ public final class OutOfScopeException extends ConversionException {
   public OutOfScopeException(String message, Throwable cause) {
     super(message, cause);
   }
+
+  /** As kept by ValkeyExpressions, read back: the cause stayed with the conversion. */
+  public OutOfScopeException(String message) {
+    super(message);
+  }
 }

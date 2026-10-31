@@ -45,3 +45,6 @@ viewer:
       poll-interval: 250ms
       # how long a document without Formex in a language is remembered as such
       absent-for: 1d
+      # how long a text the converter refused or failed on is remembered as such, so it isn't
+      # fetched and converted again for every request
+      failed-for: 1d

@@ -14,8 +14,13 @@ import org.springframework.validation.annotation.Validated;
  *     the same text; longer than the largest conversion (2005/396's 77 MB)
  * @param pollInterval how often a request waiting on another's conversion looks for its result
  * @param absentFor how long a document without Formex in a language is remembered as such
+ * @param failedFor how long a text the converter refused or failed on is remembered as such: it
+ *     stays so until the converter changes (part of the key) or Cellar publishes new Formex
  */
 @ConfigurationProperties("viewer.expressions.store")
 @Validated
 record StoreProperties(
-    @NotNull Duration lockTimeout, @NotNull Duration pollInterval, @NotNull Duration absentFor) {}
+    @NotNull Duration lockTimeout,
+    @NotNull Duration pollInterval,
+    @NotNull Duration absentFor,
+    @NotNull Duration failedFor) {}
