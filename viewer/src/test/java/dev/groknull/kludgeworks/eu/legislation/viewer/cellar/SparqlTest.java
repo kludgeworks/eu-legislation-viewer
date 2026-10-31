@@ -11,6 +11,7 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withServiceUnavailable;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
+import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -87,7 +88,7 @@ class SparqlTest {
     var first = CompletableFuture.supplyAsync(() -> sparql.select("SELECT * WHERE {}"));
     asked.await(5, TimeUnit.SECONDS);
     var second = CompletableFuture.supplyAsync(() -> sparql.select("SELECT * WHERE {}"));
-    Thread.sleep(100);
+    Thread.sleep(Duration.ofMillis(100));
     answer.countDown();
 
     assertThat(second.get(5, TimeUnit.SECONDS)).isEqualTo(first.get(5, TimeUnit.SECONDS));

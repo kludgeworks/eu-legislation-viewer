@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
@@ -24,7 +25,7 @@ class FormexFilesTest {
     var mock = Recorded.Mock.of();
     mock.server()
         .expect(requestTo(Recorded.SPARQL))
-        .andExpect(content().string(org.hamcrest.Matchers.containsString("%2232009D0959%22")))
+        .andExpect(content().string(containsString("%2232009D0959%22")))
         .andRespond(withSuccess(Recorded.bytes("sparql-32009D0959.json"), RESULTS));
 
     var version = files(mock).manifestation("32009D0959", "ENG").orElseThrow();

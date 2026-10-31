@@ -20,7 +20,7 @@ public sealed interface Inline {
    *
    * @param kind Which typeface.
    */
-  record Emphasis(Kind kind, List<Inline> content) implements Inline {
+  record Emphasis(Emphasis.Kind kind, List<Inline> content) implements Inline {
 
     public Emphasis {
       content = List.copyOf(content);
@@ -92,7 +92,7 @@ public sealed interface Inline {
    * @param page For kind oj: the first page.
    */
   record Ref(
-      Kind kind,
+      Ref.Kind kind,
       @Nullable String href,
       @Nullable String series,
       @Nullable String number,

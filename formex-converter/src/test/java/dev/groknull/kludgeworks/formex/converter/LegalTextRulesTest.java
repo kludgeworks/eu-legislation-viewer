@@ -102,7 +102,7 @@ class LegalTextRulesTest {
   @Test
   void acceptsAConsolidatedVersionDatedAsItsCelex() throws SaxonApiException {
     var text =
-        legalText(
+        legalTextWith(
             "kind=\"consolidated\" act=\"32015R1998\" version=\"2026-03-22\"",
             "<source celex=\"02015R1998-20260322\"/><lifecycle/><body/>");
     assertThat(RULES.violations(text)).isEmpty();
@@ -111,7 +111,7 @@ class LegalTextRulesTest {
   @Test
   void rejectsAVersionDateTheCelexDoesNotHave() throws SaxonApiException {
     var text =
-        legalText(
+        legalTextWith(
             "kind=\"consolidated\" act=\"32015R1998\" version=\"2026-01-01\"",
             "<source celex=\"02015R1998-20260322\"/><lifecycle/><body/>");
     assertThat(RULES.violations(text))
@@ -122,7 +122,7 @@ class LegalTextRulesTest {
   @Test
   void rejectsAVersionOnAnOriginalText() throws SaxonApiException {
     var text =
-        legalText(
+        legalTextWith(
             "kind=\"original\" act=\"32015R1998\" version=\"2015-11-05\"",
             "<source celex=\"32015R1998\"/><body/>");
     assertThat(RULES.violations(text))
@@ -133,7 +133,7 @@ class LegalTextRulesTest {
   @Test
   void acceptsACorrigendumOfTheActItCorrects() throws SaxonApiException {
     var text =
-        legalText(
+        legalTextWith(
             "kind=\"corrigendum\" act=\"52017XC1006(02)\"",
             "<source celex=\"52017XC1006(02)R(01)\"/><body/>");
     assertThat(RULES.violations(text)).isEmpty();
@@ -142,7 +142,7 @@ class LegalTextRulesTest {
   @Test
   void rejectsACorrigendumThatIsItsOwnAct() throws SaxonApiException {
     var text =
-        legalText(
+        legalTextWith(
             "kind=\"corrigendum\" act=\"32009R0631R(01)\"",
             "<source celex=\"32009R0631R(01)\"/><body/>");
     assertThat(RULES.violations(text))
@@ -171,10 +171,10 @@ class LegalTextRulesTest {
   }
 
   private static XdmNode legalText(String content) throws SaxonApiException {
-    return legalText("", content);
+    return legalTextWith("", content);
   }
 
-  private static XdmNode legalText(String attributes, String content) throws SaxonApiException {
+  private static XdmNode legalTextWith(String attributes, String content) throws SaxonApiException {
     var xml =
         "<legalText xmlns=\"https://kludgeworks.groknull.dev/ns/legal-text/1\" "
             + attributes

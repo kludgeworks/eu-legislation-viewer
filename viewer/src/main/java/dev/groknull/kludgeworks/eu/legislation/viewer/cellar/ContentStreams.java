@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.net.URI;
 import java.nio.file.Files;
@@ -77,7 +78,7 @@ public class ContentStreams {
 
   private record Written(long size, String sha1) {}
 
-  private static Written write(java.io.InputStream body, Path target) {
+  private static Written write(InputStream body, Path target) {
     try {
       var directory = target.toAbsolutePath().getParent();
       Files.createDirectories(directory);
@@ -85,9 +86,9 @@ public class ContentStreams {
       try {
         var sha1 = MessageDigest.getInstance("SHA-1");
         long size;
-        try (var in = body;
+        try (body;
             var out = new DigestOutputStream(Files.newOutputStream(part), sha1)) {
-          size = in.transferTo(out);
+          size = body.transferTo(out);
         }
         Files.move(
             part, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);

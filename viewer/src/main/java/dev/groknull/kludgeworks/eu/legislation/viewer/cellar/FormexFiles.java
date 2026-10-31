@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.net.URI;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -149,7 +150,7 @@ public class FormexFiles {
     return "application/octet-stream";
   }
 
-  private static java.time.Instant modified(String value) {
+  private static Instant modified(String value) {
     return OffsetDateTime.parse(value).toInstant();
   }
 }

@@ -220,7 +220,7 @@ public record Expression(
    *     numbering, else the running number.
    * @param kind Where the note belongs.
    */
-  public record Note(EId eId, String marker, Kind kind, List<Block> content) {
+  public record Note(EId eId, String marker, Note.Kind kind, List<Block> content) {
 
     public Note {
       content = List.copyOf(content);

@@ -37,6 +37,8 @@ public final class LegalTextReader {
   }
 
   /**
+   * Reads a legal-text document into its records.
+   *
    * @param legalText a legal-text document, valid against legal-text.xsd
    * @return its records
    * @throws InvalidLegalTextException if it can't be read as legal text

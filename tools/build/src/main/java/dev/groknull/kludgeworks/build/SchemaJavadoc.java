@@ -88,7 +88,7 @@ public final class SchemaJavadoc {
   /** A table as the macro passes it: "Inline=InlineNode,Unit.Kind=UnitKind". */
   public static Map<String, String> table(String entries) {
     var table = new LinkedHashMap<String, String>();
-    for (var entry : entries.split(",")) {
+    for (var entry : entries.split(",", -1)) {
       if (!entry.isBlank()) {
         var pair = entry.split("=", 2);
         table.put(pair[0].trim(), pair[1].trim());
