@@ -5,15 +5,16 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiRelations;
 import java.net.URI;
 import java.time.Duration;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.Link;
-import org.springframework.hateoas.LinkRelation;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.mediatype.hal.HalLinkRelation;
 import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ import org.springframework.web.server.ResponseStatusException;
  */
 @RestController
 class ActController {
-  static final LinkRelation VERSIONS = LinkRelation.of("versions");
+  static final HalLinkRelation VERSIONS = ApiRelations.of("versions");
 
   /** The language of EUR-Lex's page an act links to, until a request says which it wants. */
   static final Language EUR_LEX_LANGUAGE = Language.ENG;

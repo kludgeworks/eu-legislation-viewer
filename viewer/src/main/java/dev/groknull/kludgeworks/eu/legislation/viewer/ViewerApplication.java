@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * The amendment viewer: a Spring Boot application of Spring Modulith modules, one per top-level
- * package (acts, cellar, expressions, and later amendments, comparison).
+ * package (acts, api, cellar, expressions, and later amendments, comparison).
  */
 @SpringBootApplication
 public class ViewerApplication {

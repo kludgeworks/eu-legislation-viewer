@@ -4,6 +4,9 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.acts.web;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.LinkRelation;
+import org.springframework.hateoas.UriTemplate;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 
 /**
@@ -19,6 +22,14 @@ public final class ActLinks {
   public static final String CELLAR = "cellar";
 
   private ActLinks() {}
+
+  /**
+   * The act resource of any ELI, as a URI template with the ELI's path as it is (RFC 6570's
+   * reserved expansion): …/eli/{+eli}, for eli reg_impl/2015/1998 or treaty/tfeu_2016.
+   */
+  public static Link byEli(LinkRelation relation) {
+    return Link.of(UriTemplate.of(linkTo(ActController.class).toUri() + "/eli/{+eli}"), relation);
+  }
 
   /** The act's resource: /eli/reg_impl/2015/1998, /eli/treaty/tfeu_2016. */
   public static WebMvcLinkBuilder act(Eli eli) {

@@ -31,8 +31,8 @@ java_binary(
     runtime_deps = [":testing"],
 )
 
-# Whole-application checks: the module structure (Spring Modulith), and that the app starts,
-# on Bazel's classpath and as Spring Boot's jar, on Valkey in a container (Docker)
+# Whole-application checks: the module structure (Spring Modulith), that the app starts, on Bazel's
+# classpath and as Spring Boot's jar, and the API from its root, on Valkey in a container (Docker)
 java_test_suite(
     name = "viewer",
     size = "small",
@@ -58,14 +58,18 @@ java_test_suite(
     deps = [
         ":testing",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "@maven//:com_tngtech_archunit_archunit",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jmolecules_jmolecules_ddd",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_boot_spring_boot_webmvc_test",
+        "@maven//:org_springframework_hateoas_spring_hateoas",
         "@maven//:org_springframework_modulith_spring_modulith_core",
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_test",
         "@maven//:org_testcontainers_testcontainers",
         "@rules_java//java/runfiles",
     ],

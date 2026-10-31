@@ -114,9 +114,9 @@ class ActControllerTests {
     json.extractingPath("$._links.alternate[1].name").isEqualTo("cellar");
     json.extractingPath("$._links.alternate[1].href")
         .isEqualTo("http://publications.europa.eu/resource/celex/32015R1998");
-    json.extractingPath("$._embedded.versions[1].celex").isEqualTo("02015R1998-20260322");
-    json.extractingPath("$._embedded.versions[1].interim").isEqualTo(true);
-    json.extractingPath("$._embedded.versions[1].integrates[0]").isEqualTo("32026R0449");
+    json.extractingPath("$._embedded['av:versions'][1].celex").isEqualTo("02015R1998-20260322");
+    json.extractingPath("$._embedded['av:versions'][1].interim").isEqualTo(true);
+    json.extractingPath("$._embedded['av:versions'][1].integrates[0]").isEqualTo("32026R0449");
   }
 
   @Test
