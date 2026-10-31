@@ -26,6 +26,9 @@ maven.install(
         "org.mapstruct:mapstruct-processor:1.7.0.Beta2",
         # NullAway: JSpecify nullness checked at compile time, as an Error Prone plugin
         "com.uber.nullaway:nullaway:0.14.3",
+        # Picnic's Error Prone checks, as a plugin: built on Error Prone 2.50.0, the one in rules_java's
+        # JavaBuilder, so the two are upgraded together
+        "tech.picnic.error-prone-support:error-prone-contrib:0.30.0",
         # Spring: versions from the Spring Boot and Spring Modulith BOMs below
         "org.springframework:spring-core",
         "org.springframework:spring-context",

@@ -10,6 +10,12 @@ test --test_output=errors
 # initialise their fields (@Parameter, @BeforeParameterizedClassInvocation).
 build --extra_toolchains=//tools/build:java_toolchain_definition
 build --plugin=//tools/build:nullaway
+# Picnic's checks (error-prone-contrib) as well, configured for our packages in tools/build/BUILD.bazel.
+build --plugin=//tools/build:picnic
+# Error Prone checks our own sources only: not third-party code Bazel compiles from source
+# (external/), nor generated code, which Bazel compiles from its own output (_javac/: MapStruct's
+# mappers, XJC's classes)
+build --javacopt=-XepExcludedPaths:(.*/)?(external|_javac)/.*
 build --javacopt=-Xep:NullAway:ERROR
 build --javacopt=-XepOpt:NullAway:OnlyNullMarked=true
 build --javacopt=-XepOpt:NullAway:JSpecifyMode=true

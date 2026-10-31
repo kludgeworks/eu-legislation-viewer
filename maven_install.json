@@ -52,6 +52,7 @@
     "org.testcontainers:testcontainers": -258185670,
     "org.xmlunit:xmlunit-assertj3": -355876019,
     "repositories": -1949687017,
+    "tech.picnic.error-prone-support:error-prone-contrib": 1934728221,
     "tools.jackson.core:jackson-databind": 1626308344
   },
   "__RESOLVED_ARTIFACTS_HASH": {
@@ -65,18 +66,18 @@
     "com.github.javaparser:javaparser-core": 561213315,
     "com.google.code.findbugs:jsr305": 870839855,
     "com.google.code.gson:gson": -1575757252,
-    "com.google.errorprone:error_prone_annotations": 833623751,
-    "com.google.guava:failureaccess": -1890754729,
-    "com.google.guava:guava": 1983207288,
+    "com.google.errorprone:error_prone_annotations": 652227016,
+    "com.google.guava:failureaccess": 1715931538,
+    "com.google.guava:guava": -1710221766,
     "com.google.guava:listenablefuture": 1079558157,
-    "com.google.j2objc:j2objc-annotations": 248818742,
+    "com.google.j2objc:j2objc-annotations": -1008747351,
     "com.sun.istack:istack-commons-runtime": -1984285786,
     "com.sun.istack:istack-commons-tools": -1314362809,
     "com.sun.xml.bind.external:relaxng-datatype": -66137461,
     "com.sun.xml.bind.external:rngom": 1649820321,
     "com.sun.xml.dtd-parser:dtd-parser": -655490870,
     "com.tngtech.archunit:archunit": -1723949349,
-    "com.uber.nullaway:nullaway": -1383348,
+    "com.uber.nullaway:nullaway": 982946578,
     "commons-codec:commons-codec": 58403102,
     "commons-io:commons-io": -515402013,
     "commons-logging:commons-logging": -102005530,
@@ -207,11 +208,16 @@
     "org.xmlunit:xmlunit-core": -1543079851,
     "org.yaml:snakeyaml": 1068613154,
     "redis.clients.authentication:redis-authx-core": 1112364113,
+    "tech.picnic.error-prone-support:error-prone-contrib": 618715265,
+    "tech.picnic.error-prone-support:error-prone-utils": -1035496961,
+    "tech.picnic.error-prone-support:refaster-support": -1353830760,
     "tools.jackson.core:jackson-core": -435916916,
     "tools.jackson.core:jackson-databind": 1277331618
   },
   "conflict_resolution": {
-    "com.google.errorprone:error_prone_annotations:2.5.1": "com.google.errorprone:error_prone_annotations:2.18.0",
+    "com.google.errorprone:error_prone_annotations:2.5.1": "com.google.errorprone:error_prone_annotations:2.50.0",
+    "com.google.guava:guava:32.0.1-jre": "com.google.guava:guava:33.6.0-jre",
+    "com.google.j2objc:j2objc-annotations:2.8": "com.google.j2objc:j2objc-annotations:3.1",
     "jakarta.validation:jakarta.validation-api": "jakarta.validation:jakarta.validation-api:3.1.1",
     "org.assertj:assertj-core": "org.assertj:assertj-core:3.27.7",
     "org.hamcrest:hamcrest": "org.hamcrest:hamcrest:3.0",
@@ -307,21 +313,21 @@
     },
     "com.google.errorprone:error_prone_annotations": {
       "shasums": {
-        "jar": "9e6814cb71816988a4fd1b07a993a8f21bb7058d522c162b1de849e19bea54ae"
+        "jar": "4667724877f1d37a689202da191e23efa7657c62eef93ccdac406eccfe5cdd0a"
       },
-      "version": "2.18.0"
+      "version": "2.50.0"
     },
     "com.google.guava:failureaccess": {
       "shasums": {
-        "jar": "a171ee4c734dd2da837e4b16be9df4661afab72a41adaf31eb84dfdaf936ca26"
+        "jar": "cbfc3906b19b8f55dd7cfd6dfe0aa4532e834250d7f080bd8d211a3e246b59cb"
       },
-      "version": "1.0.1"
+      "version": "1.0.3"
     },
     "com.google.guava:guava": {
       "shasums": {
-        "jar": "bd7fa227591fb8509677d0d1122cf95158f3b8a9f45653f58281d879f6dc48c5"
+        "jar": "dc573e1fca4fd5454f4a5fd3d7da2df03002876a4175bafc14a95980dd7713b3"
       },
-      "version": "32.0.1-jre"
+      "version": "33.6.0-jre"
     },
     "com.google.guava:listenablefuture": {
       "shasums": {
@@ -331,9 +337,9 @@
     },
     "com.google.j2objc:j2objc-annotations": {
       "shasums": {
-        "jar": "f02a95fa1a5e95edb3ed859fd0fb7df709d121a35290eff8b74dce2ab7f4d6ed"
+        "jar": "84d3a150518485f8140ea99b8a985656749629f6433c92b80c75b36aba3b099b"
       },
-      "version": "2.8"
+      "version": "3.1"
     },
     "com.sun.istack:istack-commons-runtime": {
       "shasums": {
@@ -1152,6 +1158,24 @@
       },
       "version": "0.1.1-beta2"
     },
+    "tech.picnic.error-prone-support:error-prone-contrib": {
+      "shasums": {
+        "jar": "49f28f28d002e7c9382df34ac84af04779666ab175a9186dce90f1c915f9afea"
+      },
+      "version": "0.30.0"
+    },
+    "tech.picnic.error-prone-support:error-prone-utils": {
+      "shasums": {
+        "jar": "98816603aba01f8be78b5dbcd7536589ea9df4abf847b2c2ee32c98bf32f44f2"
+      },
+      "version": "0.30.0"
+    },
+    "tech.picnic.error-prone-support:refaster-support": {
+      "shasums": {
+        "jar": "7619423a2326ba8b40ab9b38f1c353c520456e6fef27d334b907a4cf15748185"
+      },
+      "version": "0.30.0"
+    },
     "tools.jackson.core:jackson-core": {
       "shasums": {
         "jar": "9431b7fa2673bbb618c11d865fe15e13222fd182a214ff998cb7e56afd8f35d2"
@@ -1180,12 +1204,11 @@
       "org.slf4j:slf4j-api"
     ],
     "com.google.guava:guava": [
-      "com.google.code.findbugs:jsr305",
       "com.google.errorprone:error_prone_annotations",
       "com.google.guava:failureaccess",
       "com.google.guava:listenablefuture",
       "com.google.j2objc:j2objc-annotations",
-      "org.checkerframework:checker-qual"
+      "org.jspecify:jspecify"
     ],
     "com.sun.xml.bind.external:rngom": [
       "com.sun.xml.bind.external:relaxng-datatype"
@@ -1657,6 +1680,14 @@
     ],
     "redis.clients.authentication:redis-authx-core": [
       "org.slf4j:slf4j-api"
+    ],
+    "tech.picnic.error-prone-support:error-prone-contrib": [
+      "tech.picnic.error-prone-support:error-prone-utils",
+      "tech.picnic.error-prone-support:refaster-support"
+    ],
+    "tech.picnic.error-prone-support:refaster-support": [
+      "com.google.guava:guava",
+      "tech.picnic.error-prone-support:error-prone-utils"
     ],
     "tools.jackson.core:jackson-databind": [
       "com.fasterxml.jackson.core:jackson-annotations",
@@ -4356,6 +4387,18 @@
     "redis.clients.authentication:redis-authx-core": [
       "redis.clients.authentication.core"
     ],
+    "tech.picnic.error-prone-support:error-prone-contrib": [
+      "tech.picnic.errorprone.bugpatterns",
+      "tech.picnic.errorprone.refasterrules"
+    ],
+    "tech.picnic.error-prone-support:error-prone-utils": [
+      "tech.picnic.errorprone.utils"
+    ],
+    "tech.picnic.error-prone-support:refaster-support": [
+      "tech.picnic.errorprone.refaster",
+      "tech.picnic.errorprone.refaster.annotation",
+      "tech.picnic.errorprone.refaster.matchers"
+    ],
     "tools.jackson.core:jackson-core": [
       "tools.jackson.core",
       "tools.jackson.core.async",
@@ -4565,6 +4608,9 @@
       "org.xmlunit:xmlunit-core",
       "org.yaml:snakeyaml",
       "redis.clients.authentication:redis-authx-core",
+      "tech.picnic.error-prone-support:error-prone-contrib",
+      "tech.picnic.error-prone-support:error-prone-utils",
+      "tech.picnic.error-prone-support:refaster-support",
       "tools.jackson.core:jackson-core",
       "tools.jackson.core:jackson-databind"
     ]
@@ -4783,6 +4829,57 @@
       ],
       "org.testcontainers.shaded.com.fasterxml.jackson.core.ObjectCodec": [
         "org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper"
+      ]
+    },
+    "tech.picnic.error-prone-support:error-prone-contrib": {
+      "com.google.errorprone.bugpatterns.BugChecker": [
+        "tech.picnic.errorprone.bugpatterns.AmbiguousJsonCreator",
+        "tech.picnic.errorprone.bugpatterns.AssertJNullnessAssertion",
+        "tech.picnic.errorprone.bugpatterns.AssertJOptionalAssertion",
+        "tech.picnic.errorprone.bugpatterns.AutowiredConstructor",
+        "tech.picnic.errorprone.bugpatterns.CanonicalAnnotationSyntax",
+        "tech.picnic.errorprone.bugpatterns.CanonicalClassNameUsage",
+        "tech.picnic.errorprone.bugpatterns.ClassCastLambdaUsage",
+        "tech.picnic.errorprone.bugpatterns.CollectorMutability",
+        "tech.picnic.errorprone.bugpatterns.ConstantNaming",
+        "tech.picnic.errorprone.bugpatterns.DirectReturn",
+        "tech.picnic.errorprone.bugpatterns.EagerStringFormatting",
+        "tech.picnic.errorprone.bugpatterns.EmptyMethod",
+        "tech.picnic.errorprone.bugpatterns.EmptyMonoZip",
+        "tech.picnic.errorprone.bugpatterns.ExplicitArgumentEnumeration",
+        "tech.picnic.errorprone.bugpatterns.ExplicitEnumOrdering",
+        "tech.picnic.errorprone.bugpatterns.FluxFlatMapUsage",
+        "tech.picnic.errorprone.bugpatterns.FluxImplicitBlock",
+        "tech.picnic.errorprone.bugpatterns.FormatStringConcatenation",
+        "tech.picnic.errorprone.bugpatterns.IdentityConversion",
+        "tech.picnic.errorprone.bugpatterns.ImmutablesSortedSetComparator",
+        "tech.picnic.errorprone.bugpatterns.IsInstanceLambdaUsage",
+        "tech.picnic.errorprone.bugpatterns.JUnitClassModifiers",
+        "tech.picnic.errorprone.bugpatterns.JUnitMethodDeclaration",
+        "tech.picnic.errorprone.bugpatterns.JUnitNullaryParameterizedTestDeclaration",
+        "tech.picnic.errorprone.bugpatterns.JUnitValueSource",
+        "tech.picnic.errorprone.bugpatterns.LexicographicalAnnotationAttributeListing",
+        "tech.picnic.errorprone.bugpatterns.LexicographicalAnnotationListing",
+        "tech.picnic.errorprone.bugpatterns.LexicographicalPermitsListing",
+        "tech.picnic.errorprone.bugpatterns.MockitoMockClassReference",
+        "tech.picnic.errorprone.bugpatterns.MockitoStubbing",
+        "tech.picnic.errorprone.bugpatterns.MongoDBTextFilterUsage",
+        "tech.picnic.errorprone.bugpatterns.NestedOptionals",
+        "tech.picnic.errorprone.bugpatterns.NestedPublishers",
+        "tech.picnic.errorprone.bugpatterns.NonEmptyMono",
+        "tech.picnic.errorprone.bugpatterns.NonStaticImport",
+        "tech.picnic.errorprone.bugpatterns.OptionalOrElseGet",
+        "tech.picnic.errorprone.bugpatterns.PrimitiveComparison",
+        "tech.picnic.errorprone.bugpatterns.RedundantStringConversion",
+        "tech.picnic.errorprone.bugpatterns.RedundantStringEscape",
+        "tech.picnic.errorprone.bugpatterns.RequestMappingAnnotation",
+        "tech.picnic.errorprone.bugpatterns.RequestParamType",
+        "tech.picnic.errorprone.bugpatterns.Slf4jLogStatement",
+        "tech.picnic.errorprone.bugpatterns.Slf4jLoggerDeclaration",
+        "tech.picnic.errorprone.bugpatterns.SpringMvcAnnotation",
+        "tech.picnic.errorprone.bugpatterns.StaticImport",
+        "tech.picnic.errorprone.bugpatterns.StringJoining",
+        "tech.picnic.errorprone.bugpatterns.TimeZoneUsage"
       ]
     },
     "tools.jackson.core:jackson-core": {
