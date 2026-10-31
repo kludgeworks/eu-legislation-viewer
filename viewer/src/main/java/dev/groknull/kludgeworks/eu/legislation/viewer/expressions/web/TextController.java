@@ -42,9 +42,10 @@ import org.springframework.web.server.ResponseStatusException;
  * alternates the version in each other language it has (hreflang), and the text on EUR-Lex and the
  * expression in Cellar, its Formex among its manifestations. A text not converted yet is waited for
  * a while (viewer.expressions.wait-for), then 503 with Retry-After while the conversion goes on
- * (Design: Slow responses); Cellar failing is 502 (CellarProblems). A language that isn't an EU
- * one, or one Cellar has no Formex of the version in, is 404. HAL, as application/hal+json or plain
- * application/json; cacheable as long as the act is kept (viewer.acts.cache-for).
+ * (Design: Slow responses); Cellar failing is 502 (CellarProblems), a text the converter can't give
+ * a problem of its own (ConversionProblems). A language that isn't an EU one, or one Cellar has no
+ * Formex of the version in, is 404. HAL, as application/hal+json or plain application/json;
+ * cacheable as long as the act is kept (viewer.acts.cache-for).
  */
 @RestController
 @RequestMapping(

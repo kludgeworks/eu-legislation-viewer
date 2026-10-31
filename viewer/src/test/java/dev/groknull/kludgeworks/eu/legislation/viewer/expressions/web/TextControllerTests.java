@@ -17,6 +17,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.application.PointInTime;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra.ConversionException;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra.OutOfScopeException;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra.UnsupportedFormexException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -45,9 +48,10 @@ import tools.jackson.databind.node.ObjectNode;
 /**
  * A version's text, on acts and expressions held in memory: 2015/1998 with its original text and
  * two consolidated versions, the latest in German and English only, its English text the golden
- * one, its German one not converted; the version before it still converting, and the original
- * failing in Cellar. The point-in-time view as the application has it, on virtual threads, waiting
- * for a text a moment only.
+ * one, its German one not converted; the version before it still converting; and the original
+ * failing: in Cellar in English, the converter refusing it in French and German, and failing in
+ * Italian. The point-in-time view as the application has it, on virtual threads, waiting for a text
+ * a moment only.
  */
 @WebMvcTest(controllers = TextController.class, properties = "viewer.expressions.wait-for=200ms")
 @ImportAutoConfiguration(JMoleculesJacksonAutoConfiguration.class)
@@ -106,6 +110,14 @@ class TextControllerTests {
             }
             case "32015R1998 ENG" ->
                 throw new CellarException("Cellar's Formex for 32015R1998: no such file");
+            case "32015R1998 FRA" ->
+                throw new UnsupportedFormexException(
+                    "an element not handled: FOO", new IllegalStateException());
+            case "32015R1998 DEU" ->
+                throw new OutOfScopeException("a notice: NOTICE", new IllegalStateException());
+            case "32015R1998 ITA" ->
+                throw new ConversionException(
+                    "Saxon: XTDE0640 a template loops", new IllegalStateException());
             default -> Optional.empty();
           };
         }
@@ -264,5 +276,41 @@ class TextControllerTests {
         .bodyJson()
         .extractingPath("$.type")
         .isEqualTo("https://kludgeworks.groknull.dev/problems/upstream-unavailable");
+  }
+
+  @Test
+  void aTextTheConverterCantGiveIsAProblemOfItsOwnType() {
+    var unsupported =
+        mvc.get()
+            .uri("/api/acts/32015R1998/versions/2015-11-15/texts/fr")
+            .accept(MediaTypes.HAL_JSON)
+            .exchange();
+    assertThat(unsupported).hasStatus(501).hasContentType("application/problem+json");
+    assertThat(unsupported).headers().hasValue("Cache-Control", "no-store");
+    var json = assertThat(unsupported).bodyJson();
+    json.extractingPath("$.type")
+        .isEqualTo("https://kludgeworks.groknull.dev/problems/unsupported-formex");
+    json.extractingPath("$.detail").asString().contains("FOO");
+
+    assertThat(
+            mvc.get()
+                .uri("/api/acts/32015R1998/versions/2015-11-15/texts/de")
+                .accept(MediaTypes.HAL_JSON))
+        .hasStatus(404)
+        .bodyJson()
+        .extractingPath("$.type")
+        .isEqualTo("https://kludgeworks.groknull.dev/problems/not-a-legal-act");
+
+    var failed =
+        assertThat(
+                mvc.get()
+                    .uri("/api/acts/32015R1998/versions/2015-11-15/texts/it")
+                    .accept(MediaTypes.HAL_JSON))
+            .hasStatus(500)
+            .bodyJson();
+    failed
+        .extractingPath("$.type")
+        .isEqualTo("https://kludgeworks.groknull.dev/problems/conversion-failed");
+    failed.extractingPath("$.detail").asString().doesNotContain("Saxon");
   }
 }

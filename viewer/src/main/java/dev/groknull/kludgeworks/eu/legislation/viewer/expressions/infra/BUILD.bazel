@@ -2,8 +2,8 @@
 load("@rules_java//java:defs.bzl", "java_library")
 
 # The expressions module's adapters: legal texts converted from Cellar's Formex (FormexConversion) by
-# //formex-converter's stylesheets (FormexConverter) and kept in Valkey (ValkeyExpressions), and the
-# reader from legal-text XML into the records
+# //formex-converter's stylesheets (FormexConverter) and kept in Valkey (ValkeyExpressions), the
+# reader from legal-text XML into the records, and the problems a failed conversion answers
 java_library(
     name = "infra",
     srcs = glob(["*.java"]),
@@ -25,11 +25,14 @@ java_library(
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_mapstruct_mapstruct",
+        "@maven//:org_slf4j_slf4j_api",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_cache",
         "@maven//:org_springframework_data_spring_data_redis",
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_core",
+        "@maven//:org_springframework_spring_web",
         "@maven//:tools_jackson_core_jackson_databind",
     ],
 )
