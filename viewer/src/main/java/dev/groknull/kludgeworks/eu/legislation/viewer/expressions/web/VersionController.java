@@ -34,10 +34,10 @@ import org.springframework.web.server.ResponseStatusException;
  * An act's versions (URLs and API: public API): the list, each with its link; one version at the
  * date it applies from, language-neutral, with links to its text in each language Cellar has it in
  * (by language tag), to the act (version-history) and to the versions either side and the latest
- * (RFC 5829); and the version that applies on any date, a lookup answered 303 with that version's
- * URL. A date that starts no version, or one before the act's text first applies, is 404. HAL, as
- * application/hal+json or plain application/json; cacheable as long as the act is kept
- * (viewer.acts.cache-for).
+ * (RFC 5829), and what changed since the one before (av:changes, planned: 501); and the version
+ * that applies on any date, a lookup answered 303 with that version's URL. A date that starts no
+ * version, or one before the act's text first applies, is 404. HAL, as application/hal+json or
+ * plain application/json; cacheable as long as the act is kept (viewer.acts.cache-for).
  */
 @RestController
 @RequestMapping(
@@ -46,6 +46,7 @@ import org.springframework.web.server.ResponseStatusException;
 class VersionController {
   static final HalLinkRelation VERSIONS = ApiRelations.of("versions");
   static final HalLinkRelation TEXT = ApiRelations.of("text");
+  static final HalLinkRelation CHANGES = ApiRelations.of("changes");
 
   /**
    * RFC 5829's successor-version. Not IanaLinkRelations.SUCCESSOR_VERSION: Spring HATEOAS (3.1.2)
@@ -129,7 +130,10 @@ class VersionController {
     timeline
         .predecessor(version)
         .ifPresent(
-            v -> links.add(ActLinks.version(id, v.date(), IanaLinkRelations.PREDECESSOR_VERSION)));
+            v -> {
+              links.add(ActLinks.version(id, v.date(), IanaLinkRelations.PREDECESSOR_VERSION));
+              links.add(ActLinks.comparison(id, v.date(), date, CHANGES));
+            });
     timeline
         .successor(version)
         .ifPresent(v -> links.add(ActLinks.version(id, v.date(), SUCCESSOR_VERSION)));

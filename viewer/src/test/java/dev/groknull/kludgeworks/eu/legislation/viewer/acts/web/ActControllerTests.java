@@ -114,6 +114,10 @@ class ActControllerTests {
     json.extractingPath("$._links['av:versions'].templated").isEqualTo(true);
     json.extractingPath("$._links.latest-version.href")
         .isEqualTo("http://localhost/api/acts/32015R1998/versions/2026-03-22");
+    json.extractingPath("$._links['av:compare'].href")
+        .isEqualTo("http://localhost/api/acts/32015R1998/comparisons{?from,to}");
+    json.extractingPath("$._links['av:amendments'].href")
+        .isEqualTo("http://localhost/api/acts/32015R1998/amendments");
     json.extractingPath("$._links.alternate[0].href")
         .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32015R1998");
     json.extractingPath("$._links.alternate[0].name").isEqualTo("eur-lex");

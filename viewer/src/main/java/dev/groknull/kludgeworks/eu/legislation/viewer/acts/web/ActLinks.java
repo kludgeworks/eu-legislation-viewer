@@ -48,6 +48,22 @@ public final class ActLinks {
         relation, "acts", act.celex(), "versions", date.toString(), "texts", language.iso());
   }
 
+  /** Comparing two of its versions, by any two dates: /api/acts/…/comparisons{?from,to}. */
+  public static Link compare(ActIdentifier act, LinkRelation relation) {
+    return Link.of(act(act, relation).getHref() + "/comparisons{?from,to}", relation);
+  }
+
+  /** Comparing two of its versions, by their dates: …/comparisons/2025-11-04..2026-03-22. */
+  public static Link comparison(
+      ActIdentifier act, LocalDate from, LocalDate to, LinkRelation relation) {
+    return ApiLinks.to(relation, "acts", act.celex(), "comparisons", from + ".." + to);
+  }
+
+  /** Its amendments: /api/acts/…/amendments. */
+  public static Link amendments(ActIdentifier act, LinkRelation relation) {
+    return ApiLinks.to(relation, "acts", act.celex(), "amendments");
+  }
+
   /** A version as a summary in a list, with its link (never the text). */
   public static EntityModel<Version> summary(ActIdentifier act, Version version) {
     return EntityModel.of(version, version(act, version.date(), IanaLinkRelations.SELF));

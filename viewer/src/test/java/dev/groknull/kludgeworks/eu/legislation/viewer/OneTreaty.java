@@ -5,17 +5,26 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
 import java.time.LocalDate;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 
-/** Acts held in memory for the whole-application tests: the TFEU, by its CELEX and its ELI. */
+/**
+ * Acts and expressions held in memory for the whole-application tests, so none asks Cellar: the
+ * TFEU, by its CELEX and its ELI, in English and French, with no text converted.
+ */
 @TestConfiguration
 class OneTreaty {
   static final ActIdentifier TFEU = new ActIdentifier("12016E/TXT");
@@ -41,6 +50,22 @@ class OneTreaty {
       @Override
       public Optional<Act> find(Eli eli) {
         return Optional.of(tfeu).filter(a -> eli.equals(a.eli()));
+      }
+    };
+  }
+
+  @Bean
+  @Primary
+  Expressions inMemoryExpressions() {
+    return new Expressions() {
+      @Override
+      public Optional<Expression> find(ExpressionIdentifier id) {
+        return Optional.empty();
+      }
+
+      @Override
+      public Set<Language> languages(String document) {
+        return EnumSet.of(Language.ENG, Language.FRA);
       }
     };
   }
