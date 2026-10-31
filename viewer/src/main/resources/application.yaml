@@ -38,6 +38,9 @@ viewer:
     # how long a request waits for a text being converted before answering 503 (most take well
     # under a second; the largest, minutes)
     wait-for: 30s
+    # how many conversions run at once, the others waiting their turn: the largest takes about 1 GB
+    # of heap (2016/2070's 87 MB file)
+    max-conversions: 2
     store:
       # longer than the largest conversion (2005/396, 77 MB of Formex)
       lock-timeout: 10m

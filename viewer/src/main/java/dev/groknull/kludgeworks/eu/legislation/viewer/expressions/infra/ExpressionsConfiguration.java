@@ -8,13 +8,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.resilience.annotation.EnableResilientMethods;
 
 /**
  * The converter and the reader, on one Saxon processor (thread-safe, and costly to make); the
- * store's access to Valkey: string keys, byte values (gzipped XML).
+ * store's access to Valkey: string keys, byte values (gzipped XML); and Spring's resilience
+ * annotations, for the limit on conversions running at once (FormexConversion).
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(StoreProperties.class)
+@EnableResilientMethods
 class ExpressionsConfiguration {
 
   @Bean
