@@ -38,6 +38,17 @@ class CellarLiveTests {
   }
 
   @Test
+  void findsActsByTheElisOfActsSharingANumberAndOfTheOjCSeries() {
+    var shared = acts.find(new Eli("dec", 2007, "44(1)")).orElseThrow();
+    var ojC = acts.find(new Eli("C", 2023, "1464")).orElseThrow();
+
+    assertThat(shared.id()).isEqualTo(new ActIdentifier("32006D0023(01)"));
+    assertThat(shared.eli()).isEqualTo(new Eli("dec", 2007, "44(1)"));
+    assertThat(ojC.id()).isEqualTo(new ActIdentifier("32023D01464"));
+    assertThat(ojC.eli()).isEqualTo(new Eli("C", 2023, "1464"));
+  }
+
+  @Test
   void readsTheTextOfTheVersionThatAppliesOnADate() {
     var text =
         pointInTime.expression(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).join().orElseThrow();

@@ -12,6 +12,7 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",
+        "@maven//:org_slf4j_slf4j_api",
         "@maven//:org_springframework_spring_context",
     ],
 )

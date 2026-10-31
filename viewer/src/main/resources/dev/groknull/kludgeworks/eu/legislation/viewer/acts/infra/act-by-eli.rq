@@ -1,7 +1,8 @@
 # SPDX-License-Identifier: MIT
 # The CELEX of the act an ELI names (CellarActs). Cellar stores the ELI of the original text,
 # …/eli/{type}/{year}/{number}/oj, as an xsd:anyURI.
-# {{eli}}: type/year/number (reg_impl/2015/1998), checked against its pattern first.
+# {{eli}}: type/year/number (reg_impl/2015/1998, dec/2007/44(1), C/2023/1464), checked against
+# its pattern first.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 

@@ -126,6 +126,17 @@ class CellarActsTest {
   }
 
   @Test
+  void readsAnActWithAnEliOfAnUnknownShapeWithoutIt() {
+    var treaty =
+        new SparqlResult(
+            List.of("eli", "type", "entryIntoForce"),
+            List.of(workRow("http://data.europa.eu/eli/treaty/tfeu_2008/art_251/oj")));
+
+    assertThat(CellarActs.act(AVSEC, treaty, result()))
+        .hasValueSatisfying(act -> assertThat(act.eli()).isNull());
+  }
+
+  @Test
   void reportsAnEliOfTwoActsAsCellarsData() {
     var eli = new Eli("reg_impl", 2015, "1998");
     var twoActs =

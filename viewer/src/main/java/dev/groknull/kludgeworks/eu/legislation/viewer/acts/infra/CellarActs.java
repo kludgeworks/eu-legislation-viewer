@@ -21,6 +21,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.TreeSet;
 import org.jspecify.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -30,6 +32,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 class CellarActs implements Acts {
+  private static final Logger LOG = LoggerFactory.getLogger(CellarActs.class);
   private static final String ACT = Sparql.template(CellarActs.class, "act.rq");
   private static final String ACT_BY_ELI = Sparql.template(CellarActs.class, "act-by-eli.rq");
   private static final String VERSIONS = Sparql.template(CellarActs.class, "versions.rq");
@@ -122,12 +125,24 @@ class CellarActs implements Acts {
     }
     return new Act(
         id,
-        elis.isEmpty() ? null : Eli.of(elis.getFirst()),
+        elis.isEmpty() ? null : eli(id, elis.getFirst()),
         ResourceType.of(types.getFirst()),
         dateOfDocument,
         row.find("inForce").map(CellarActs::isTrue).orElse(false),
         endOfValidity.orElse(null),
         timeline(id, originalFrom, consolidations));
+  }
+
+  /**
+   * The act's ELI; none, with a warning, for one of a shape Eli doesn't know: the act is still
+   * read, by its CELEX.
+   */
+  private static @Nullable Eli eli(ActIdentifier id, String uri) {
+    var eli = Eli.parse(uri);
+    if (eli.isEmpty()) {
+      LOG.warn("{}'s ELI is of a shape not known, so it is read without it: {}", id, uri);
+    }
+    return eli.orElse(null);
   }
 
   /**
