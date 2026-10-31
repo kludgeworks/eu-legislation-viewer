@@ -14,10 +14,12 @@
   <!-- ============================================================ annexes and levels -->
 
   <!-- the label of an annex: "ANNEX II" → "II"; "" for an annex titled just ANNEX, and for an annex
-       file written as GENERAL, whose title is a heading, not a label -->
+       file written as GENERAL, whose title is a heading, not a label. A protocol's is its number, as
+       in its ELI (pro_3): "PROTOCOL (No 3)" → "3" -->
   <xsl:function name="f:annex-label" as="xs:string">
     <xsl:param name="annex" as="element()"/>
-    <xsl:sequence select="if ($annex/self::GENERAL) then '' else f:typed-label(string($annex/TITLE[1]/TI/*[1]), ('ANX', 'APP'), $annex)"/>
+    <xsl:variable name="label" as="xs:string" select="if ($annex/self::GENERAL) then '' else f:typed-label(string($annex/TITLE[1]/TI/*[1]), ('ANX', 'APP', 'PRO'), $annex)"/>
+    <xsl:sequence select="if (f:annex-abbr($annex) = 'pro') then replace($label, '^\P{N}+', '') else $label"/>
   </xsl:function>
 
   <!-- Top-level annexes, grouped into the annexes of the act. Formex splits a single annex into
@@ -58,10 +60,11 @@
     </xsl:apply-templates>
   </xsl:template>
 
-  <!-- an appendix, as the EU subdivision table names it, is app_; any other annex anx_ -->
+  <!-- an appendix, as the EU subdivision table names it, is app_, a protocol pro_; any other annex anx_ -->
   <xsl:function name="f:annex-abbr" as="xs:string">
     <xsl:param name="annex" as="element()"/>
-    <xsl:sequence select="if (exists(f:subdivision(string($annex/TITLE[1]/TI/*[1]), 'APP', $annex))) then 'app' else 'anx'"/>
+    <xsl:variable name="type" as="xs:string?" select="f:subdivision(string($annex/TITLE[1]/TI/*[1]), ('APP', 'PRO'), $annex)[1]"/>
+    <xsl:sequence select="if (exists($type)) then lower-case($type) else 'anx'"/>
   </xsl:function>
 
   <!-- the unit whose eId the annexes in an element hang off: the nearest that has one, else the file -->

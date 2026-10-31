@@ -8,7 +8,7 @@
   labels that differ in print differ here: "ANNEX ΙII", with a Greek capital iota, isn't anx_II.
 
   The segments are AKN4EU's, which are ELI's subdivision codes (art, par, unp, sub, pnt, idt, rct,
-  cit, pbl, anx, app, tab, fgr, and prt, tis, cpt, sct, sbs from the EU subdivision table), and
+  cit, pbl, anx, app, tab, fgr, and prt, tis, cpt, sct, sbs, pro from the EU subdivision table), and
   where ELI has none the Akoma Ntoso naming convention's (list, level, qstr, division,
   subdivision, att, note, tr, td, old, new); cor, ann, def and let are ours.
 

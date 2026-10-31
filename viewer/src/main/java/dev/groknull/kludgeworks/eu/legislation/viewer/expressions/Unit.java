@@ -85,7 +85,8 @@ public record Unit(
     LEVEL,
     /**
      * An annex; anx, or anx_ and its label. An appendix (an annex inside an annex, Appendix III) is
-     * app_ and its label, or app.
+     * app_ and its label, or app. A protocol is pro_ and its number, as in a treaty's ELI (PROTOCOL
+     * (No 3) is pro_3), or pro.
      */
     ANNEX,
     /**

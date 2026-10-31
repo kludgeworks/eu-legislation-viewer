@@ -2,7 +2,7 @@
 <!--
   The EU subdivision authority table (http://publications.europa.eu/resource/authority/subdivision),
   release 20260923-0, as published by the Publications Office: the kinds of division and annex the
-  converter names eIds after (PRT, TIS, CPT, SCT, SBS, ANX, APP), with their labels in the 24 EU
+  converter names eIds after (PRT, TIS, CPT, SCT, SBS, ANX, APP, PRO), with their labels in the 24 EU
   languages. © European Union, reuse authorised (Commission Decision 2011/833/EU). Taken from the
   Cellar SPARQL endpoint with:
 
@@ -102,6 +102,35 @@
     <skos:prefLabel xml:lang="it">capo</skos:prefLabel>
     <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/subdivision" />
     <skos:notation>CPT</skos:notation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/subdivision/PRO">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:prefLabel xml:lang="bg">протокол</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">protokol</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">protokol</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Protokoll</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">πρωτόκολλο</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">protocol</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">protocolo</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">protokoll</skos:prefLabel>
+    <skos:prefLabel xml:lang="fi">pöytäkirja</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">protocole</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">prótacal</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">protokol</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">jegyzőkönyv</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">protocollo</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">protokolas</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">protokols</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">protokoll</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">protocol</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">protokół</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">protocolo</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">protocol</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">protokol</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">protokol</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">protokoll</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/subdivision" />
+    <skos:notation>PRO</skos:notation>
   </rdf:Description>
   <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/subdivision/PRT">
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />

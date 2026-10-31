@@ -156,17 +156,17 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/anx" kind="annex">
+         <unit eId="anx/pro" kind="annex">
             <heading>
                <t v="PROTOCOL 38d"/>
                <eol/>
                <t v="on the EEA Financial Mechanism (2021–2028)"/>
             </heading>
-            <unit eId="anx/anx/art_1" kind="article">
+            <unit eId="anx/pro/art_1" kind="article">
                <num>
                   <t v="Article 1"/>
                </num>
-               <unit eId="anx/anx/art_1/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_1/subdivision_1" kind="subdivision">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -183,33 +183,33 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_1/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_1/subdivision_2" kind="subdivision">
                   <num>
                      <t v="(2)"/>
                   </num>
                   <heading>
                      <t v="Common values and principles"/>
                   </heading>
-                  <unit eId="anx/anx/art_1/subdivision_2/sub_1" kind="subparagraph">
+                  <unit eId="anx/pro/art_1/subdivision_2/sub_1" kind="subparagraph">
                      <p>
                         <t v="The EEA Financial Mechanism (2021–2028) is based on the common values and principles of respect for human dignity, freedom, democracy, equality, the rule of law and the respect for human rights including the rights of persons belonging to minorities."/>
                      </p>
                   </unit>
-                  <unit eId="anx/anx/art_1/subdivision_2/sub_2" kind="subparagraph">
+                  <unit eId="anx/pro/art_1/subdivision_2/sub_2" kind="subparagraph">
                      <p>
                         <t v="All programmes and activities funded by the EEA Financial Mechanism shall be consistent with respect for these values and principles and abstain from supporting operations that may fail to do so. Their implementation shall comply with the fundamental rights and obligations enshrined in relevant instruments and standards."/>
                      </p>
                   </unit>
                </unit>
             </unit>
-            <unit eId="anx/anx/art_2" kind="article">
+            <unit eId="anx/pro/art_2" kind="article">
                <num>
                   <t v="Article 2"/>
                </num>
                <heading>
                   <t v="Commitments"/>
                </heading>
-               <unit eId="anx/anx/art_2/unp_1" kind="paragraph">
+               <unit eId="anx/pro/art_2/unp_1" kind="paragraph">
                   <p>
                      <t v="The amount of the financial contribution provided for in Article 1 shall be EUR "/>
                      <t v="1705000000"/>
@@ -224,29 +224,29 @@
                      <t v=" inclusive."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_2/unp_2" kind="paragraph">
+               <unit eId="anx/pro/art_2/unp_2" kind="paragraph">
                   <p>
                      <t v="The total amount shall consist of country specific allocations as specified in Article 6 together with the funds specified in Article 7."/>
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/anx/art_3" kind="article">
+            <unit eId="anx/pro/art_3" kind="article">
                <num>
                   <t v="Article 3"/>
                </num>
-               <unit eId="anx/anx/art_3/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_3/subdivision_1" kind="subdivision">
                   <num>
                      <t v="(1)"/>
                   </num>
                   <heading>
                      <t v="Thematic priorities"/>
                   </heading>
-                  <unit eId="anx/anx/art_3/subdivision_1/sub_1" kind="subparagraph">
+                  <unit eId="anx/pro/art_3/subdivision_1/sub_1" kind="subparagraph">
                      <p>
                         <t v="The country specific allocations shall be made available to promote the following overall thematic priorities:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="anx/anx/art_3/subdivision_1/sub_1/pnt_a" kind="point">
+                        <unit eId="anx/pro/art_3/subdivision_1/sub_1/pnt_a" kind="point">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -254,7 +254,7 @@
                               <t v="European green transition;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/anx/art_3/subdivision_1/sub_1/pnt_b" kind="point">
+                        <unit eId="anx/pro/art_3/subdivision_1/sub_1/pnt_b" kind="point">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -262,7 +262,7 @@
                               <t v="Democracy, rule of law and human rights;"/>
                            </p>
                         </unit>
-                        <unit eId="anx/anx/art_3/subdivision_1/sub_1/pnt_c" kind="point">
+                        <unit eId="anx/pro/art_3/subdivision_1/sub_1/pnt_c" kind="point">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -272,13 +272,13 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="anx/anx/art_3/subdivision_1/sub_2" kind="subparagraph">
+                  <unit eId="anx/pro/art_3/subdivision_1/sub_2" kind="subparagraph">
                      <p>
                         <t v="Within these thematic priorities, programme areas are set out in the Annex to this Protocol. The content of those programme areas will be determined after consultation with the Beneficiary States."/>
                      </p>
                   </unit>
                </unit>
-               <unit eId="anx/anx/art_3/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_3/subdivision_2" kind="subdivision">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -290,11 +290,11 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/anx/art_4" kind="article">
+            <unit eId="anx/pro/art_4" kind="article">
                <num>
                   <t v="Article 4"/>
                </num>
-               <unit eId="anx/anx/art_4/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_4/subdivision_1" kind="subdivision">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -305,7 +305,7 @@
                      <t v="In order to achieve concentration and to ensure efficient implementation, in line with the overall objectives referred to in Article 1, and taking into account EU policies and country specific recommendations, as well as Partnership Agreements concluded between the Member States and the European Commission, the EFTA States shall negotiate with each Beneficiary State a Memorandum of Understanding in accordance with Article 9 paragraph 5."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_4/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_4/subdivision_2" kind="subdivision">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -317,11 +317,11 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/anx/art_5" kind="article">
+            <unit eId="anx/pro/art_5" kind="article">
                <num>
                   <t v="Article 5"/>
                </num>
-               <unit eId="anx/anx/art_5/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_5/subdivision_1" kind="subdivision">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -332,7 +332,7 @@
                      <t v="With respect to programmes under country specific allocations for which the Beneficiary States shall have implementation responsibility, the EFTA contribution shall not exceed 85 % of programme cost, unless otherwise decided by the EFTA States."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_5/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_5/subdivision_2" kind="subdivision">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -343,7 +343,7 @@
                      <t v="The applicable rules on State aid shall be complied with."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_5/subdivision_3" kind="subdivision">
+               <unit eId="anx/pro/art_5/subdivision_3" kind="subdivision">
                   <num>
                      <t v="(3)"/>
                   </num>
@@ -355,14 +355,14 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/anx/art_6" kind="article">
+            <unit eId="anx/pro/art_6" kind="article">
                <num>
                   <t v="Article 6"/>
                </num>
                <heading>
                   <t v="Country specific allocations"/>
                </heading>
-               <unit eId="anx/anx/art_6/unp_1" kind="paragraph">
+               <unit eId="anx/pro/art_6/unp_1" kind="paragraph">
                   <p>
                      <t v="The country specific allocations shall be made available to the following Beneficiary States: Bulgaria, Czech Republic, Estonia, Greece, Croatia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Portugal, Romania, Slovenia and Slovakia, in accordance with the following distribution:"/>
                   </p>
@@ -561,40 +561,40 @@
                      </tr>
                   </table>
                </unit>
-               <unit eId="anx/anx/art_6/unp_2" kind="paragraph">
+               <unit eId="anx/pro/art_6/unp_2" kind="paragraph">
                   <p>
                      <t v="The amounts presented include the country specific allocations to be made available to each Beneficiary State in accordance with Article 9, paragraph 5, and the share of the fund for civil society referred to in Article 7 that shall benefit each Beneficiary State."/>
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/anx/art_7" kind="article">
+            <unit eId="anx/pro/art_7" kind="article">
                <num>
                   <t v="Article 7"/>
                </num>
-               <unit eId="anx/anx/art_7/unp_1" kind="paragraph">
+               <unit eId="anx/pro/art_7/unp_1" kind="paragraph">
                   <p>
                      <t v="Within the EEA Financial Mechanism, two funds shall be made available. They shall contribute to achieving the objectives of the EEA Financial Mechanism (2021–2028) as defined in Article 1, and to the thematic priorities referred to in Article 3. The EFTA States can participate as partners in the funds."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_7/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_7/subdivision_1" kind="subdivision">
                   <num>
                      <t v="(1)"/>
                   </num>
                   <heading>
                      <t v="Fund for civil society"/>
                   </heading>
-                  <unit eId="anx/anx/art_7/subdivision_1/sub_1" kind="subparagraph">
+                  <unit eId="anx/pro/art_7/subdivision_1/sub_1" kind="subparagraph">
                      <p>
                         <t v="10 % of the total amount shall be set aside for a fund for civil society. The distribution key for the Beneficiary States is set out in Article 6."/>
                      </p>
                   </unit>
-                  <unit eId="anx/anx/art_7/subdivision_1/sub_2" kind="subparagraph">
+                  <unit eId="anx/pro/art_7/subdivision_1/sub_2" kind="subparagraph">
                      <p>
                         <t v="5 % of the fund shall be allocated to transnational initiatives."/>
                      </p>
                   </unit>
                </unit>
-               <unit eId="anx/anx/art_7/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_7/subdivision_2" kind="subdivision">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -606,11 +606,11 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/anx/art_8" kind="article">
+            <unit eId="anx/pro/art_8" kind="article">
                <num>
                   <t v="Article 8"/>
                </num>
-               <unit eId="anx/anx/art_8/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_8/subdivision_1" kind="subdivision">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -621,7 +621,7 @@
                      <t v="The financial contribution provided for in this Protocol shall be closely coordinated with the bilateral contribution from Norway provided for by the Norwegian Financial Mechanism. In particular, the EFTA States shall ensure that the procedures and implementation modalities are essentially the same for both financial mechanisms."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_8/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_8/subdivision_2" kind="subdivision">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -633,14 +633,14 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/anx/art_9" kind="article">
+            <unit eId="anx/pro/art_9" kind="article">
                <num>
                   <t v="Article 9"/>
                </num>
                <p>
                   <t v="The following shall apply to the implementation of the EEA Financial Mechanism:"/>
                </p>
-               <unit eId="anx/anx/art_9/pnt_1" kind="level" depth="1">
+               <unit eId="anx/pro/art_9/pnt_1" kind="level" depth="1">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -651,7 +651,7 @@
                      <t v="The objectives of the EEA Financial Mechanism referred to in Article 1 shall be pursued in a framework of close cooperation between the Beneficiary States and the EFTA States, respecting the values and principles and complying with the rights and obligations referred to in Article 1 paragraph 2."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_9/pnt_2" kind="level" depth="1">
+               <unit eId="anx/pro/art_9/pnt_2" kind="level" depth="1">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -662,7 +662,7 @@
                      <t v="The highest degree of transparency, accountability and cost efficiency shall be applied in all implementation phases, together with respect for principles of good governance, partnership and multi-level governance, sustainable development, gender equality and non-discrimination."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_9/pnt_3" kind="level" depth="1">
+               <unit eId="anx/pro/art_9/pnt_3" kind="level" depth="1">
                   <num>
                      <t v="(3)"/>
                   </num>
@@ -673,7 +673,7 @@
                      <t v="The EFTA States shall operate and be responsible for the implementation, including management and control, of the two funds set out in Article 7."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_9/pnt_4" kind="level" depth="1">
+               <unit eId="anx/pro/art_9/pnt_4" kind="level" depth="1">
                   <num>
                      <t v="(4)"/>
                   </num>
@@ -684,7 +684,7 @@
                      <t v="The EFTA States shall establish a committee for the overall management of the EEA Financial Mechanism. Further provisions for the implementation of the EEA Financial Mechanism, including simplification measures aimed at securing efficiency and effectiveness in implementation, will be issued by the EFTA States after consultations with the Beneficiary States which may be assisted by the European Commission. The EFTA States shall endeavour to issue these provisions before the signing of the Memoranda of Understanding."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_9/pnt_5" kind="level" depth="1">
+               <unit eId="anx/pro/art_9/pnt_5" kind="level" depth="1">
                   <num>
                      <t v="(5)"/>
                   </num>
@@ -695,7 +695,7 @@
                      <t v="The EFTA States shall negotiate with each Beneficiary State a Memorandum of Understanding concerning the respective country specific allocation, excluding the funds referred to in Article 7 and in paragraph 3 of this Article. The Memorandum of Understanding shall set out the programmes, the distribution of funds between programme areas, the structures for management and control and applicable conditions."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_9/pnt_6" kind="level" depth="1">
+               <unit eId="anx/pro/art_9/pnt_6" kind="level" depth="1">
                   <num>
                      <t v="(6)"/>
                   </num>
@@ -703,7 +703,7 @@
                      <t v="Implementation"/>
                   </heading>
                   <list kind="alpha">
-                     <unit eId="anx/anx/art_9/pnt_6/pnt_a" kind="point">
+                     <unit eId="anx/pro/art_9/pnt_6/pnt_a" kind="point">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -711,7 +711,7 @@
                            <t v="On the basis of the Memoranda of Understanding, the Beneficiary States shall submit proposals for specific programmes to the EFTA States which shall appraise and approve the proposals and conclude grant agreements, with relevant conditions, risk assessment and mitigation, with the Beneficiary States for each programme."/>
                         </p>
                      </unit>
-                     <unit eId="anx/anx/art_9/pnt_6/pnt_b" kind="point">
+                     <unit eId="anx/pro/art_9/pnt_6/pnt_b" kind="point">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -719,7 +719,7 @@
                            <t v="The implementation of the agreed programmes shall be the responsibility of the Beneficiary States, which shall provide for an appropriate management and control system in order to ensure sound implementation and management."/>
                         </p>
                      </unit>
-                     <unit eId="anx/anx/art_9/pnt_6/pnt_c" kind="point">
+                     <unit eId="anx/pro/art_9/pnt_6/pnt_c" kind="point">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -727,7 +727,7 @@
                            <t v="The EFTA States may carry out controls according to their internal requirements. The Beneficiary States shall provide all necessary assistance, information and documentation to this effect."/>
                         </p>
                      </unit>
-                     <unit eId="anx/anx/art_9/pnt_6/pnt_d" kind="point">
+                     <unit eId="anx/pro/art_9/pnt_6/pnt_d" kind="point">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -735,7 +735,7 @@
                            <t v="To ensure compliance with obligations, the EFTA States may, following an assessment, after having heard the Beneficiary State, take appropriate and proportionate measures, including the suspension of payments and the recovery of funds."/>
                         </p>
                      </unit>
-                     <unit eId="anx/anx/art_9/pnt_6/pnt_e" kind="point">
+                     <unit eId="anx/pro/art_9/pnt_6/pnt_e" kind="point">
                         <num>
                            <t v="(e)"/>
                         </num>
@@ -743,7 +743,7 @@
                            <t v="Partnerships shall, where appropriate, be applied in the preparation, implementation, monitoring and evaluation of the financial contribution in order to ensure broad participation. Partners may include, inter alia, local, regional and national levels, as well as the private sector, civil society and social partners in the Beneficiary States and the EFTA States."/>
                         </p>
                      </unit>
-                     <unit eId="anx/anx/art_9/pnt_6/pnt_f" kind="point">
+                     <unit eId="anx/pro/art_9/pnt_6/pnt_f" kind="point">
                         <num>
                            <t v="(f)"/>
                         </num>
@@ -753,7 +753,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx/anx/art_9/pnt_7" kind="level" depth="1">
+               <unit eId="anx/pro/art_9/pnt_7" kind="level" depth="1">
                   <num>
                      <t v="(7)"/>
                   </num>
@@ -764,7 +764,7 @@
                      <t v="The management costs of the EFTA States shall be covered by the total amount referred to in Article 2, and shall be specified in the provisions for the implementation referred to in paragraph 4 of this Article. Management costs for the Funds referred to in Article 7 will be covered by the amount allocated to the Funds."/>
                   </p>
                </unit>
-               <unit eId="anx/anx/art_9/pnt_8" kind="level" depth="1">
+               <unit eId="anx/pro/art_9/pnt_8" kind="level" depth="1">
                   <num>
                      <t v="(8)"/>
                   </num>
@@ -776,7 +776,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/anx/art_10" kind="article">
+            <unit eId="anx/pro/art_10" kind="article">
                <num>
                   <t v="Article 10"/>
                </num>
