@@ -18,6 +18,7 @@ java_test_suite(
         "@maven//:com_github_javaparser_javaparser_core",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
     ],
 )
