@@ -3,11 +3,12 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
 load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 
 # Valkey in a container (Testcontainers), for the tests that need one, and the viewer on it for
-# running locally (TestViewerApplication)
+# running locally (TestViewerApplication, with DevConfiguration: /hal)
 java_library(
     name = "testing",
     testonly = True,
     srcs = [
+        "DevConfiguration.java",
         "TestViewerApplication.java",
         "TestcontainersConfiguration.java",
     ],
@@ -18,6 +19,7 @@ java_library(
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_boot_spring_boot_testcontainers",
         "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_webmvc",
         "@maven//:org_testcontainers_testcontainers",
     ],
 )
@@ -45,6 +47,7 @@ java_test_suite(
         ["*.java"],
         exclude = [
             "CellarLiveTests.java",
+            "DevConfiguration.java",
             "TestViewerApplication.java",
             "TestcontainersConfiguration.java",
         ],
