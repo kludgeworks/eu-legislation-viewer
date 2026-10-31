@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.api.HalLinksConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import java.net.URI;
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -37,6 +39,7 @@ import org.springframework.web.client.ResourceAccessException;
  */
 @WebMvcTest(ActController.class)
 @ImportAutoConfiguration(JMoleculesJacksonAutoConfiguration.class)
+@Import(HalLinksConfiguration.class)
 class ActControllerTests {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
   static final Eli AVSEC_ELI = new Eli("reg_impl", 2015, "1998");
@@ -127,11 +130,10 @@ class ActControllerTests {
         .isEqualTo("http://localhost/api/acts/32015R1998/comparisons{?from,to}");
     json.extractingPath("$._links['av:amendments'].href")
         .isEqualTo("http://localhost/api/acts/32015R1998/amendments");
+    // its work in Cellar, no EUR-Lex page: EUR-Lex's are each in a language, a text's
+    json.extractingPath("$._links.alternate").asArray().hasSize(1);
+    json.extractingPath("$._links.alternate[0].name").isEqualTo("cellar");
     json.extractingPath("$._links.alternate[0].href")
-        .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32015R1998");
-    json.extractingPath("$._links.alternate[0].name").isEqualTo("eur-lex");
-    json.extractingPath("$._links.alternate[1].name").isEqualTo("cellar");
-    json.extractingPath("$._links.alternate[1].href")
         .isEqualTo("http://publications.europa.eu/resource/celex/32015R1998");
     json.extractingPath("$._embedded['av:versions'][1].celex").isEqualTo("02015R1998-20260322");
     json.extractingPath("$._embedded['av:versions'][1].interim").isEqualTo(true);
@@ -165,7 +167,7 @@ class ActControllerTests {
         .isEqualTo("http://localhost/api/acts/12016E%2FTXT/versions{?on}");
     json.extractingPath("$._embedded['av:versions'][0]._links.self.href")
         .isEqualTo("http://localhost/api/acts/12016E%2FTXT/versions/2016-06-07");
-    json.extractingPath("$._links.alternate[1].href")
+    json.extractingPath("$._links.alternate[0].href")
         .isEqualTo("http://publications.europa.eu/resource/celex/12016E%2FTXT");
   }
 

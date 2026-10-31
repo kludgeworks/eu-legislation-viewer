@@ -150,7 +150,7 @@ class TextController {
             ActLinks.text(id, date, other, IanaLinkRelations.ALTERNATE).withHreflang(other.iso()));
       }
     }
-    links.add(ActLinks.eurLex("TXT", version.celex(), language, "Read on EUR-Lex"));
+    links.add(ActLinks.eurLex(version.celex(), language, "Read on EUR-Lex"));
     links.add(
         ActLinks.cellar(
             cellarResources,

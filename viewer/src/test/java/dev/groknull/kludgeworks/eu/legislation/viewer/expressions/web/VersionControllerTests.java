@@ -11,7 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.api.CurieConfiguration;
+import dev.groknull.kludgeworks.eu.legislation.viewer.api.HalLinksConfiguration;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.EnumSet;
@@ -38,7 +38,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
  */
 @WebMvcTest(VersionController.class)
 @ImportAutoConfiguration(JMoleculesJacksonAutoConfiguration.class)
-@Import(CurieConfiguration.class)
+@Import(HalLinksConfiguration.class)
 class VersionControllerTests {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
   static final Eli AVSEC_ELI = new Eli("reg_impl", 2015, "1998");

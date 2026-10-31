@@ -20,7 +20,7 @@ import org.springframework.http.MediaType;
  * (/api/acts/12016E%2FTXT). And their counterparts on EUR-Lex and in Cellar, as alternates.
  */
 public final class ActLinks {
-  /** The name of an alternate on EUR-Lex: the official text, or its document page. */
+  /** The name of an alternate on EUR-Lex: a text, in its language. */
   public static final String EUR_LEX = "eur-lex";
 
   /** The name of an alternate in Cellar: the work, or the expression. */
@@ -81,18 +81,13 @@ public final class ActLinks {
     return EntityModel.of(version, version(act, version.date(), IanaLinkRelations.SELF));
   }
 
-  /**
-   * A document on EUR-Lex in {@code language}, by its CELEX, as an alternate: {@code page} ALL, its
-   * document information, or TXT, its text.
-   */
-  public static Link eurLex(String page, String celex, Language language, String title) {
+  /** A document's text on EUR-Lex in {@code language}, by its CELEX, as an alternate. */
+  public static Link eurLex(String celex, Language language, String title) {
     var tag = language.iso();
     return Link.of(
             "https://eur-lex.europa.eu/legal-content/"
                 + tag.toUpperCase(Locale.ROOT)
-                + "/"
-                + page
-                + "/?uri=CELEX:"
+                + "/TXT/?uri=CELEX:"
                 + celex,
             IanaLinkRelations.ALTERNATE)
         .withName(EUR_LEX)

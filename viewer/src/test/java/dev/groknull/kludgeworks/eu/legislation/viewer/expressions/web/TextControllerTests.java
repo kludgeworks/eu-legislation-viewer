@@ -11,7 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.api.CurieConfiguration;
+import dev.groknull.kludgeworks.eu.legislation.viewer.api.HalLinksConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
@@ -54,7 +54,7 @@ import tools.jackson.databind.node.ObjectNode;
  */
 @WebMvcTest(controllers = TextController.class, properties = "viewer.expressions.wait-for=200ms")
 @ImportAutoConfiguration(JMoleculesJacksonAutoConfiguration.class)
-@Import(CurieConfiguration.class)
+@Import(HalLinksConfiguration.class)
 class TextControllerTests {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
   static final String GOLDEN = "06.02.1/02015R1998-20260322";

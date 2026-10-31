@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.acts.web;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiRelations;
 import java.net.URI;
 import java.time.Duration;
@@ -29,9 +28,10 @@ import org.springframework.web.server.ResponseStatusException;
  * An act at its CELEX (URLs and API: public API): its identifiers and dates, its versions embedded
  * as summaries with their links (never the text), the versions resource (with {@code ?on} the one
  * that applies on a date), the first version (IANA's first, RFC 8288) and the latest, comparing two
- * versions and its amendments (both planned: 501, ApiProblems), and its counterparts on EUR-Lex and
- * Cellar as alternates (Links back to EUR-Lex). An act by its ELI is a lookup, answered 303 with
- * the act's URL. HAL, as application/hal+json or plain application/json. Cacheable as long as the
+ * versions and its amendments (both planned: 501, ApiProblems), and its work in Cellar as an
+ * alternate. No EUR-Lex page: EUR-Lex's are each in a language, which an act's resource isn't, so a
+ * text links its own (Links back to EUR-Lex). An act by its ELI is a lookup, answered 303 with the
+ * act's URL. HAL, as application/hal+json or plain application/json. Cacheable as long as the
  * viewer keeps an act (viewer.acts.cache-for): a timeline changes only when Cellar publishes a
  * consolidation, and an ELI's act never. A CELEX or an ELI no act has is 404.
  */
@@ -43,9 +43,6 @@ class ActController {
   static final HalLinkRelation VERSIONS = ApiRelations.of("versions");
   static final HalLinkRelation COMPARE = ApiRelations.of("compare");
   static final HalLinkRelation AMENDMENTS = ApiRelations.of("amendments");
-
-  /** The language of EUR-Lex's page an act links to, until a request says which it wants. */
-  static final Language EUR_LEX_LANGUAGE = Language.ENG;
 
   private final Acts acts;
   private final URI cellarResources;
@@ -79,7 +76,6 @@ class ActController {
                     id, act.timeline().latest().date(), IanaLinkRelations.LATEST_VERSION))
             .link(ActLinks.compare(id, COMPARE))
             .link(ActLinks.amendments(id, AMENDMENTS))
-            .link(ActLinks.eurLex("ALL", id.celex(), EUR_LEX_LANGUAGE, "View on EUR-Lex"))
             .link(ActLinks.cellar(cellarResources, id.celex(), "The work in Cellar"))
             .embed(
                 act.timeline().versions().stream().map(v -> ActLinks.summary(id, v)).toList(),
