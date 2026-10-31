@@ -9,20 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * The text resources planned (URLs and API: public API), each 501 until built: a version's text in
- * a language and one unit of it, and comparisons of two versions, mirroring them: the
- * language-neutral comparison, its text, one unit's, and any two dates (to answer 303 with the
- * comparison of the versions that apply on them).
+ * The text resources planned (URLs and API: public API), each 501 until built: one unit of a
+ * version's text, and comparisons of two versions, mirroring them: the language-neutral comparison,
+ * its text, one unit's, and any two dates (to answer 303 with the comparison of the versions that
+ * apply on them).
  */
 @RestController
 @RequestMapping("/api/acts/{act}")
 class PlannedController {
   static final String DATE = "[0-9]{4}-[0-9]{2}-[0-9]{2}";
-
-  @GetMapping("/versions/{date:" + DATE + "}/texts/{lang}")
-  ResponseEntity<ProblemDetail> text() {
-    return ApiProblems.notImplemented("A version's text");
-  }
 
   @GetMapping("/versions/{date:" + DATE + "}/texts/{lang}/units/{*eId}")
   ResponseEntity<ProblemDetail> unit() {

@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.web;
 
 import com.google.devtools.build.runfiles.AutoBazelRepository;
 import com.google.devtools.build.runfiles.Runfiles;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra.LegalTextReader;
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -43,6 +44,11 @@ final class LegalTextJson {
 
   /** The text {@code name} (06.02.1/02015R1998-20260322) as JSON, from the converter's output. */
   static String render(String name) {
+    return JSON.writeValueAsString(read(name)) + "\n";
+  }
+
+  /** The text {@code name} (06.02.1/02015R1998-20260322), read from the converter's output. */
+  static Expression read(String name) {
     var saxon = new Processor(false);
     try {
       var xml =
@@ -55,7 +61,7 @@ final class LegalTextJson {
                                   + name
                                   + ".xml")
                           .toFile()));
-      return JSON.writeValueAsString(new LegalTextReader(saxon).read(xml)) + "\n";
+      return new LegalTextReader(saxon).read(xml);
     } catch (SaxonApiException e) {
       throw new IllegalStateException(e);
     }

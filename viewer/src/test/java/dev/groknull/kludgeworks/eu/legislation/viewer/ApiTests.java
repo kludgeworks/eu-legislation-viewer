@@ -51,12 +51,6 @@ class ApiTests {
     var act =
         assertThat(mvc.get().uri(URI.create("/api/acts/12016E%2FTXT")).accept(MediaTypes.HAL_JSON))
             .bodyJson();
-    var version =
-        assertThat(
-                mvc.get()
-                    .uri(URI.create("/api/acts/12016E%2FTXT/versions/2016-06-07"))
-                    .accept(MediaTypes.HAL_JSON))
-            .bodyJson();
     var compare = act.extractingPath("$._links['av:compare'].href").asString().actual();
 
     for (var href :
@@ -65,7 +59,6 @@ class ApiTests {
             UriTemplate.of(compare)
                 .expand(Map.of("from", "2016-06-07", "to", "2026-01-01"))
                 .toString(),
-            version.extractingPath("$._links['av:text'][0].href").asString().actual(),
             "/api/acts/12016E%2FTXT/versions/2016-06-07/texts/en/units/art_1/par_2",
             "/api/acts/12016E%2FTXT/comparisons/2016-06-07..2026-01-01/texts/en")) {
       var response = mvc.get().uri(URI.create(href)).accept(MediaTypes.HAL_JSON).exchange();

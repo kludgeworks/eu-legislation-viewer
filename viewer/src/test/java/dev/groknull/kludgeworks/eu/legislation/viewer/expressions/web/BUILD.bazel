@@ -2,7 +2,7 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 load("@rules_java//java:defs.bzl", "java_binary")
 
-# The legal text's JSON (the golden files, and legal-text.xsd's names), and the versions' resources
+# The legal text's JSON (the golden files, and legal-text.xsd's names), and the versions' and texts' resources
 # on Spring MVC's test support (MockMvc). One test target per *Test.java and *Tests.java (Spring's
 # naming for tests in a Spring context); LegalTextJson and UpdateLegalTextJson become a shared
 # library
@@ -31,7 +31,9 @@ java_test_suite(
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/api",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/web",
         "@maven//:net_sf_saxon_Saxon_HE",

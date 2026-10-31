@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 /**
- * The expressions module's web adapter: the legal text as JSON (LegalTextJsonModule), and, to come,
- * a version's resource. An adapter driving the app (jMolecules' primary adapter), apart from those
- * the app drives ({@code infra}).
+ * The expressions module's web adapter: the legal text as JSON (LegalTextJsonModule), an act's
+ * versions and their texts as HAL. An adapter driving the app (jMolecules' primary adapter), apart
+ * from those the app drives ({@code infra}).
  */
 @InfrastructureRing
 @PrimaryAdapter

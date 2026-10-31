@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
 
-# The expressions module's web adapter: the legal text as JSON, and the versions' resources
+# The expressions module's web adapter: the legal text as JSON, and the versions' and texts' resources
 java_library(
     name = "web",
     srcs = glob(["*.java"]),
@@ -11,6 +11,7 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts/web",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/api",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/application",
         "@maven//:com_fasterxml_jackson_core_jackson_annotations",
         "@maven//:org_jmolecules_jmolecules_hexagonal_architecture",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
