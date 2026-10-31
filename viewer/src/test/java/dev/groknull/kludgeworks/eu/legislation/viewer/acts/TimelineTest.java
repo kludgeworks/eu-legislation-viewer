@@ -32,6 +32,7 @@ class TimelineTest {
   void noVersionAppliesBeforeTheFirstAndTheLatestAppliesFromItsDateOn() {
     assertThat(TIMELINE.applicableOn(LocalDate.of(2015, 11, 14))).isEmpty();
     assertThat(TIMELINE.applicableOn(LocalDate.of(2099, 1, 1))).contains(INTERIM);
+    assertThat(TIMELINE.first()).isEqualTo(ORIGINAL);
     assertThat(TIMELINE.latest()).isEqualTo(INTERIM);
     assertThat(INTERIM.isFuture(LocalDate.of(2026, 9, 30))).isTrue();
   }

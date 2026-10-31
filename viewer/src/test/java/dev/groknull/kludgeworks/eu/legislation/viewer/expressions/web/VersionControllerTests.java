@@ -154,6 +154,7 @@ class VersionControllerTests {
             "version-history",
             "predecessor-version",
             "successor-version",
+            "first",
             "latest-version",
             "av:changes",
             "av:text",
@@ -164,6 +165,8 @@ class VersionControllerTests {
         .isEqualTo("http://localhost/api/acts/32015R1998/versions/2015-11-15");
     json.extractingPath("$._links.successor-version.href")
         .isEqualTo("http://localhost/api/acts/32015R1998/versions/2026-03-22");
+    json.extractingPath("$._links.first.href")
+        .isEqualTo("http://localhost/api/acts/32015R1998/versions/2015-11-15");
     json.extractingPath("$._links.latest-version.href")
         .isEqualTo("http://localhost/api/acts/32015R1998/versions/2026-03-22");
     json.extractingPath("$._links['av:changes'].href")
@@ -219,6 +222,8 @@ class VersionControllerTests {
     json.extractingPath("$._links.self.href")
         .isEqualTo("http://localhost/api/acts/32015R1998/versions");
     json.extractingPath("$._links.up.href").isEqualTo("http://localhost/api/acts/32015R1998");
+    json.extractingPath("$._links.first.href")
+        .isEqualTo("http://localhost/api/acts/32015R1998/versions/2015-11-15");
     json.extractingPath("$._embedded['av:versions'][*]._links.self.href")
         .asArray()
         .containsExactly(

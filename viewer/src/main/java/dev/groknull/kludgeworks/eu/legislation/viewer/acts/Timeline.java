@@ -52,6 +52,11 @@ public final class Timeline {
     return value(byDate.floorEntry(date));
   }
 
+  /** The first version, from which the act's text first applies. */
+  public Version first() {
+    return byDate.firstEntry().getValue();
+  }
+
   /** The latest version, which may apply only in the future. */
   public Version latest() {
     return byDate.lastEntry().getValue();

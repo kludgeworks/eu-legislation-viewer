@@ -112,6 +112,8 @@ class ActControllerTests {
     json.extractingPath("$._links['av:versions'].href")
         .isEqualTo("http://localhost/api/acts/32015R1998/versions{?on}");
     json.extractingPath("$._links['av:versions'].templated").isEqualTo(true);
+    json.extractingPath("$._links.first.href")
+        .isEqualTo("http://localhost/api/acts/32015R1998/versions/2015-11-15");
     json.extractingPath("$._links.latest-version.href")
         .isEqualTo("http://localhost/api/acts/32015R1998/versions/2026-03-22");
     json.extractingPath("$._links['av:compare'].href")

@@ -33,11 +33,12 @@ import org.springframework.web.server.ResponseStatusException;
 /**
  * An act's versions (URLs and API: public API): the list, each with its link; one version at the
  * date it applies from, language-neutral, with links to its text in each language Cellar has it in
- * (by language tag), to the act (version-history) and to the versions either side and the latest
- * (RFC 5829), and what changed since the one before (av:changes, planned: 501); and the version
- * that applies on any date, a lookup answered 303 with that version's URL. A date that starts no
- * version, or one before the act's text first applies, is 404. HAL, as application/hal+json or
- * plain application/json; cacheable as long as the act is kept (viewer.acts.cache-for).
+ * (by language tag), to the act (version-history), the versions either side and the latest (RFC
+ * 5829) and the first (IANA's first, RFC 8288), and what changed since the one before (av:changes,
+ * planned: 501); and the version that applies on any date, a lookup answered 303 with that
+ * version's URL. A date that starts no version, or one before the act's text first applies, is 404.
+ * HAL, as application/hal+json or plain application/json; cacheable as long as the act is kept
+ * (viewer.acts.cache-for).
  */
 @RestController
 @RequestMapping(
@@ -73,6 +74,7 @@ class VersionController {
     var act = act(id);
     var model =
         HalModelBuilder.emptyHalModel()
+            .link(ActLinks.version(id, act.timeline().first().date(), IanaLinkRelations.FIRST))
             .link(
                 ActLinks.version(
                     id, act.timeline().latest().date(), IanaLinkRelations.LATEST_VERSION))
@@ -137,6 +139,7 @@ class VersionController {
     timeline
         .successor(version)
         .ifPresent(v -> links.add(ActLinks.version(id, v.date(), SUCCESSOR_VERSION)));
+    links.add(ActLinks.version(id, timeline.first().date(), IanaLinkRelations.FIRST));
     links.add(ActLinks.version(id, timeline.latest().date(), IanaLinkRelations.LATEST_VERSION));
     for (var language : expressions.languages(version.celex())) {
       links.add(ActLinks.text(id, date, language, TEXT).withHreflang(language.iso()));
