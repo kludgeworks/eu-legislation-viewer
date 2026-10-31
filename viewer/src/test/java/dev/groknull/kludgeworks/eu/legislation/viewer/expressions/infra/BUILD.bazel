@@ -29,11 +29,13 @@ java_test_suite(
         "@maven//:io_lettuce_lettuce_core",  # LettuceConnectionFactory's signatures
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jmolecules_integrations_jmolecules_jackson3",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_junit_jupiter_junit_jupiter_params",
         "@maven//:org_springframework_data_spring_data_redis",
         "@maven//:org_testcontainers_testcontainers",
+        "@maven//:tools_jackson_core_jackson_databind",
         "@rules_java//java/runfiles",
     ],
 )

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
@@ -11,6 +12,7 @@ import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
@@ -28,7 +30,7 @@ import org.springframework.stereotype.Component;
  * version, so a new converter never reads an old one's output. A miss converts under a lock in
  * Valkey on the key, so a text is converted once across instances while other requests for it wait
  * for the result. A document without Formex in the language is remembered for a while. Everything
- * kept is derived, and Valkey may evict any of it.
+ * kept is derived, and Valkey may evict any of it. A document's languages are its source's.
  */
 @Component
 class ValkeyExpressions implements Expressions {
@@ -45,6 +47,7 @@ class ValkeyExpressions implements Expressions {
 
   private final RedisTemplate<String, byte[]> valkey;
   private final FormexConversion conversion;
+  private final FormexSource source;
   private final LegalTextReader reader;
   private final Processor saxon;
   private final StoreProperties properties;
@@ -52,11 +55,13 @@ class ValkeyExpressions implements Expressions {
   ValkeyExpressions(
       RedisTemplate<String, byte[]> valkey,
       FormexConversion conversion,
+      FormexSource source,
       LegalTextReader reader,
       Processor saxon,
       StoreProperties properties) {
     this.valkey = valkey;
     this.conversion = conversion;
+    this.source = source;
     this.reader = reader;
     this.saxon = saxon;
     this.properties = properties;
@@ -82,6 +87,11 @@ class ValkeyExpressions implements Expressions {
       }
       pause();
     }
+  }
+
+  @Override
+  public Set<Language> languages(String document) {
+    return source.languages(document);
   }
 
   /** The key of {@code id}'s text: viewer:legal-text:1.0.0:02015R1998-20260322:ENG. */

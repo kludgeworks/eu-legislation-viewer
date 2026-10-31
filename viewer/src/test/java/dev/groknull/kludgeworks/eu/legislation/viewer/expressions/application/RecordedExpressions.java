@@ -21,6 +21,11 @@ final class RecordedExpressions implements Expressions {
   final Set<String> failing = new HashSet<>();
 
   @Override
+  public Set<Language> languages(String document) {
+    return Set.of(Language.ENG);
+  }
+
+  @Override
   public Optional<Expression> find(ExpressionIdentifier id) {
     asked.add(id);
     if (failing.contains(id.document())) {
