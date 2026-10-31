@@ -44,11 +44,7 @@ public class Sparql {
     var mine = new CompletableFuture<SparqlResult>();
     var theirs = running.putIfAbsent(query, mine);
     if (theirs != null) {
-      try {
-        return theirs.join();
-      } catch (CompletionException e) {
-        throw e.getCause() instanceof RuntimeException cause ? cause : e;
-      }
+      return join(theirs);
     }
     try {
       var result = ask(query);
@@ -59,6 +55,19 @@ public class Sparql {
       throw e;
     } finally {
       running.remove(query, mine);
+    }
+  }
+
+  /**
+   * A query's answer once it has one, from a future of {@link #select}'s: a failure as it was
+   * thrown, not wrapped in the future's CompletionException, so it reaches CellarProblems as
+   * itself.
+   */
+  public static SparqlResult join(CompletableFuture<SparqlResult> answer) {
+    try {
+      return answer.join();
+    } catch (CompletionException e) {
+      throw e.getCause() instanceof RuntimeException cause ? cause : e;
     }
   }
 

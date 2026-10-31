@@ -26,7 +26,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 import java.util.concurrent.Executor;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
@@ -79,22 +78,13 @@ class CellarActs implements Acts {
     var work = select(ACT, values);
     var versions = select(VERSIONS, values);
     var languages = select(LANGUAGES, values);
-    return act(id, answer(work), answer(versions), answer(languages));
+    return act(id, Sparql.join(work), Sparql.join(versions), Sparql.join(languages));
   }
 
   /** The query {@code template} with {@code values}, asked of Cellar on the executor. */
   private CompletableFuture<SparqlResult> select(String template, Map<String, String> values) {
     return CompletableFuture.supplyAsync(
         () -> sparql.select(Sparql.fill(template, values)), executor);
-  }
-
-  /** The query's answer, once it has one; its failure as it was thrown, for CellarProblems. */
-  private static SparqlResult answer(CompletableFuture<SparqlResult> query) {
-    try {
-      return query.join();
-    } catch (CompletionException e) {
-      throw e.getCause() instanceof RuntimeException cause ? cause : e;
-    }
   }
 
   @Override
@@ -138,7 +128,7 @@ class CellarActs implements Acts {
       return Optional.empty();
     }
     try {
-      return Optional.of(read(id, work, consolidations, languages(languages)));
+      return Optional.of(read(id, work, consolidations, languagesByVersion(languages)));
     } catch (IllegalArgumentException | DateTimeException e) {
       throw new CellarException("Cellar's data for " + id + ": " + e.getMessage(), e);
     }
@@ -242,12 +232,13 @@ class CellarActs implements Acts {
   }
 
   /**
-   * The answer to languages.rq: each version's languages by its CELEX, an official language's code
-   * only (Cellar has expressions in others, as Norwegian for the EEA).
+   * The answer to languages.rq as the languages of each version, by its CELEX: the key versions.rq
+   * gives a version (Version.celex), to join the two answers on. Official languages only (Cellar
+   * has expressions in others, as Norwegian for the EEA).
    */
-  static Map<String, Set<Language>> languages(SparqlResult languages) {
+  private static Map<String, Set<Language>> languagesByVersion(SparqlResult answer) {
     var codes = new HashMap<String, Set<Language>>();
-    for (var row : languages.rows()) {
+    for (var row : answer.rows()) {
       var listed = Set.of(row.get("languages").split(" "));
       var official = EnumSet.noneOf(Language.class);
       Arrays.stream(Language.values())
