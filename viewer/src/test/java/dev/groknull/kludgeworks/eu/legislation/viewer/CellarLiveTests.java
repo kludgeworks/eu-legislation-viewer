@@ -8,9 +8,14 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.EId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Unit;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.application.PointInTime;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -69,5 +74,26 @@ class CellarLiveTests {
     assertThat(text.kind()).isEqualTo(Expression.Kind.CONSOLIDATED);
     assertThat(text.version()).isEqualTo(LocalDate.of(2026, 3, 22));
     assertThat(text.body()).isNotEmpty();
+  }
+
+  @Test
+  void readsTheTextOfATreatyWithItsProtocols() {
+    var tfeu = new ActIdentifier("12016E/TXT");
+    var text =
+        pointInTime.expression(tfeu, LocalDate.of(2026, 4, 1), Language.ENG).join().orElseThrow();
+
+    assertThat(text.act()).isEqualTo(tfeu);
+    assertThat(text.version()).isEqualTo(LocalDate.of(2025, 3, 15));
+    assertThat(eIds(text.body())).contains(new EId("art_1"));
+    assertThat(eIds(text.annexes())).contains(new EId("pro_3"), new EId("pro_3/art_1"));
+  }
+
+  private static Stream<EId> eIds(List<Block> blocks) {
+    return blocks.stream()
+        .flatMap(
+            b ->
+                b instanceof Unit u
+                    ? Stream.concat(Stream.of(u.eId()), eIds(u.content()))
+                    : Stream.empty());
   }
 }
