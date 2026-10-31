@@ -25,9 +25,13 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
@@ -35,8 +39,8 @@ import org.springframework.stereotype.Component;
  * All acts, from Cellar's RDF (the CDM ontology): an act's work by its CELEX, found from its ELI if
  * need be, the consolidations based on it (Research: CDM ontology), and the languages each version
  * has its text in (Research: which languages a version is in). Four queries, beside this class:
- * act.rq, act-by-eli.rq, versions.rq and languages.rq. Each act found is kept for a while
- * (ActsCacheConfiguration).
+ * act.rq, act-by-eli.rq, versions.rq and languages.rq; an act's three side by side. Each act found
+ * is kept for a while (ActsCacheConfiguration).
  */
 @Component
 class CellarActs implements Acts {
@@ -55,24 +59,48 @@ class CellarActs implements Acts {
   private static final ResourceType TREATY = new ResourceType("TREATY");
 
   private final Sparql sparql;
+  private final Executor executor;
 
-  CellarActs(Sparql sparql) {
+  /**
+   * @param executor where an act's queries run, side by side: Spring Boot's task executor, on
+   *     virtual threads, as each mostly waits on Cellar
+   */
+  CellarActs(Sparql sparql, @Qualifier("applicationTaskExecutor") Executor executor) {
     this.sparql = sparql;
+    this.executor = executor;
   }
 
   @Override
-  @Cacheable(cacheNames = ActsCacheConfiguration.BY_CELEX, unless = "#result == null")
+  @Cacheable(
+      cacheNames = ActsCacheConfiguration.BY_CELEX,
+      unless = ActsCacheConfiguration.UNLESS_ABSENT)
   public Optional<Act> find(ActIdentifier id) {
     var values = Map.of("celex", id.celex());
-    return act(
-        id,
-        sparql.select(Sparql.fill(ACT, values)),
-        sparql.select(Sparql.fill(VERSIONS, values)),
-        sparql.select(Sparql.fill(LANGUAGES, values)));
+    var work = select(ACT, values);
+    var versions = select(VERSIONS, values);
+    var languages = select(LANGUAGES, values);
+    return act(id, answer(work), answer(versions), answer(languages));
+  }
+
+  /** The query {@code template} with {@code values}, asked of Cellar on the executor. */
+  private CompletableFuture<SparqlResult> select(String template, Map<String, String> values) {
+    return CompletableFuture.supplyAsync(
+        () -> sparql.select(Sparql.fill(template, values)), executor);
+  }
+
+  /** The query's answer, once it has one; its failure as it was thrown, for CellarProblems. */
+  private static SparqlResult answer(CompletableFuture<SparqlResult> query) {
+    try {
+      return query.join();
+    } catch (CompletionException e) {
+      throw e.getCause() instanceof RuntimeException cause ? cause : e;
+    }
   }
 
   @Override
-  @Cacheable(cacheNames = ActsCacheConfiguration.BY_ELI, unless = "#result == null")
+  @Cacheable(
+      cacheNames = ActsCacheConfiguration.BY_ELI,
+      unless = ActsCacheConfiguration.UNLESS_ABSENT)
   public Optional<Act> find(Eli eli) {
     return identity(eli, sparql.select(Sparql.fill(ACT_BY_ELI, Map.of("eli", eli.path()))))
         .flatMap(this::find);

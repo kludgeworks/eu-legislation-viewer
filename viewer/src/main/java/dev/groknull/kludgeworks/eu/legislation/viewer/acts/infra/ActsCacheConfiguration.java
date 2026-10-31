@@ -37,6 +37,12 @@ class ActsCacheConfiguration {
 
   static final String BY_ELI = "acts-by-eli-2";
 
+  /**
+   * When not to keep an act: when there is none (an Optional's value, which Spring's caching
+   * unwraps), as Cellar may publish it later.
+   */
+  static final String UNLESS_ABSENT = "#result == null";
+
   @Bean
   RedisCacheManagerBuilderCustomizer actsCaches(
       JsonMapper json, @Value("${viewer.acts.cache-for}") Duration cacheFor) {
