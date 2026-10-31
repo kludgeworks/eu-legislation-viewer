@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.api;
+package dev.groknull.kludgeworks.eu.legislation.viewer.acts.web;
 
 import org.apache.tomcat.util.buf.EncodedSolidusHandling;
 import org.springframework.boot.tomcat.servlet.TomcatServletWebServerFactory;

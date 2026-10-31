@@ -5,8 +5,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiLinks;
-import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiRelations;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;

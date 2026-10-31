@@ -65,10 +65,7 @@ class ApiTests {
 
       assertThat(response).as(href).hasStatus(501).hasContentType("application/problem+json");
       assertThat(response).as(href).headers().hasValue("Cache-Control", "no-store");
-      assertThat(response)
-          .bodyJson()
-          .extractingPath("$.type")
-          .isEqualTo("https://kludgeworks.groknull.dev/problems/not-implemented");
+      assertThat(response).bodyJson().extractingPath("$.title").isEqualTo("Not Implemented");
     }
   }
 

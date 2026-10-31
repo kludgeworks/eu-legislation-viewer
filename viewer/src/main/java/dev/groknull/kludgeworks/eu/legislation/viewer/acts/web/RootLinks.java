@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.acts.web;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiLinks;
-import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiRelations;
-import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiRoot;
 import org.springframework.hateoas.server.RepresentationModelProcessor;
 import org.springframework.stereotype.Component;
 

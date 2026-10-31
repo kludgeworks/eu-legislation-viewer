@@ -20,7 +20,6 @@ java_test_suite(
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts/web",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/api",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jmolecules_integrations_jmolecules_jackson3",

@@ -11,7 +11,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.api.HalLinksConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import java.net.URI;
 import java.time.LocalDate;
