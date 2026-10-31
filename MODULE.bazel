@@ -84,6 +84,8 @@ maven.install(
         "org.springframework.boot:spring-boot-webmvc-test",
         "org.hamcrest:hamcrest",
         "org.springframework.modulith:spring-modulith-core",
+        # the modules' documentation, from the same model the boundaries are verified on (mise run modules)
+        "org.springframework.modulith:spring-modulith-docs",
         # Valkey in a container, for the tests and for running the app locally (TestViewerApplication)
         "org.springframework.boot:spring-boot-testcontainers",
         "org.testcontainers:testcontainers",

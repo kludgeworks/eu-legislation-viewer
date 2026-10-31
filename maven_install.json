@@ -55,6 +55,7 @@
     "org.springframework.modulith:spring-modulith-api": -1267837964,
     "org.springframework.modulith:spring-modulith-bom": 1667680144,
     "org.springframework.modulith:spring-modulith-core": 2094793953,
+    "org.springframework.modulith:spring-modulith-docs": -1347706499,
     "org.springframework:spring-context": -286867064,
     "org.springframework:spring-core": 828592846,
     "org.springframework:spring-test": -967883781,
@@ -85,6 +86,8 @@
     "com.google.guava:listenablefuture": 1079558157,
     "com.google.j2objc:j2objc-annotations": -1008747351,
     "com.jayway.jsonpath:json-path": -843320851,
+    "com.structurizr:structurizr-core": 2104432366,
+    "com.structurizr:structurizr-export": 499657505,
     "com.sun.istack:istack-commons-runtime": -1984285786,
     "com.sun.istack:istack-commons-tools": -1314362809,
     "com.sun.xml.bind.external:relaxng-datatype": -66137461,
@@ -217,6 +220,7 @@
     "org.springframework.hateoas:spring-hateoas": -1771365638,
     "org.springframework.modulith:spring-modulith-api": -1671136456,
     "org.springframework.modulith:spring-modulith-core": 424804072,
+    "org.springframework.modulith:spring-modulith-docs": -2119709639,
     "org.springframework.plugin:spring-plugin-core": 218341417,
     "org.springframework:spring-aop": 2140047740,
     "org.springframework:spring-beans": -52091312,
@@ -284,6 +288,7 @@
     "org.springframework.hateoas:spring-hateoas": "org.springframework.hateoas:spring-hateoas:3.1.2",
     "org.springframework.modulith:spring-modulith-api": "org.springframework.modulith:spring-modulith-api:2.1.1",
     "org.springframework.modulith:spring-modulith-core": "org.springframework.modulith:spring-modulith-core:2.1.1",
+    "org.springframework.modulith:spring-modulith-docs": "org.springframework.modulith:spring-modulith-docs:2.1.1",
     "org.springframework:spring-context": "org.springframework:spring-context:7.0.9",
     "org.springframework:spring-core": "org.springframework:spring-core:7.0.9",
     "org.springframework:spring-test": "org.springframework:spring-test:7.0.9",
@@ -389,6 +394,18 @@
         "jar": "890daa95dd3892d34d9fabc27cd5153656e6f369358625c88f4dc7b79cbd6c5a"
       },
       "version": "2.10.0"
+    },
+    "com.structurizr:structurizr-core": {
+      "shasums": {
+        "jar": "4c5035574797af60b93c1ba9005c2bfe53114dc287a475479bd98eb3e1331a62"
+      },
+      "version": "5.0.3"
+    },
+    "com.structurizr:structurizr-export": {
+      "shasums": {
+        "jar": "32075f8fb083ea37ef77b7bf44558948ffdd26fa7cea5009dc37e11d290aebad"
+      },
+      "version": "5.0.3"
     },
     "com.sun.istack:istack-commons-runtime": {
       "shasums": {
@@ -1182,6 +1199,12 @@
       },
       "version": "2.1.1"
     },
+    "org.springframework.modulith:spring-modulith-docs": {
+      "shasums": {
+        "jar": "a793cd9f56e65726031c55c9da5b75023838e2f6ed2de65d2005f743fccac176"
+      },
+      "version": "2.1.1"
+    },
     "org.springframework.plugin:spring-plugin-core": {
       "shasums": {
         "jar": "7e48dac2e47dded5e6fa2cdf37786c5ba3f09dcf44000770e4513a47e63da6fe"
@@ -1364,6 +1387,13 @@
     "com.jayway.jsonpath:json-path": [
       "net.minidev:json-smart",
       "org.slf4j:slf4j-api"
+    ],
+    "com.structurizr:structurizr-core": [
+      "com.fasterxml.jackson.core:jackson-annotations",
+      "com.google.code.findbugs:jsr305"
+    ],
+    "com.structurizr:structurizr-export": [
+      "com.structurizr:structurizr-core"
     ],
     "com.sun.xml.bind.external:rngom": [
       "com.sun.xml.bind.external:relaxng-datatype"
@@ -1824,6 +1854,14 @@
       "org.springframework:spring-context",
       "org.springframework:spring-core"
     ],
+    "org.springframework.modulith:spring-modulith-docs": [
+      "com.jayway.jsonpath:json-path",
+      "com.structurizr:structurizr-core",
+      "com.structurizr:structurizr-export",
+      "org.jspecify:jspecify",
+      "org.springframework.boot:spring-boot",
+      "org.springframework.modulith:spring-modulith-core"
+    ],
     "org.springframework.plugin:spring-plugin-core": [
       "org.jspecify:jspecify",
       "org.slf4j:slf4j-api",
@@ -2183,6 +2221,23 @@
       "com.jayway.jsonpath.spi.cache",
       "com.jayway.jsonpath.spi.json",
       "com.jayway.jsonpath.spi.mapper"
+    ],
+    "com.structurizr:structurizr-core": [
+      "com.structurizr",
+      "com.structurizr.configuration",
+      "com.structurizr.documentation",
+      "com.structurizr.model",
+      "com.structurizr.util",
+      "com.structurizr.validation",
+      "com.structurizr.view"
+    ],
+    "com.structurizr:structurizr-export": [
+      "com.structurizr.export",
+      "com.structurizr.export.dot",
+      "com.structurizr.export.ilograph",
+      "com.structurizr.export.mermaid",
+      "com.structurizr.export.plantuml",
+      "com.structurizr.export.websequencediagrams"
     ],
     "com.sun.istack:istack-commons-runtime": [
       "com.sun.istack",
@@ -3824,6 +3879,11 @@
       "org.springframework.modulith.core.config",
       "org.springframework.modulith.core.util"
     ],
+    "org.springframework.modulith:spring-modulith-docs": [
+      "org.springframework.modulith.docs",
+      "org.springframework.modulith.docs.metadata",
+      "org.springframework.modulith.docs.util"
+    ],
     "org.springframework.plugin:spring-plugin-core": [
       "org.springframework.plugin.core",
       "org.springframework.plugin.core.config",
@@ -4793,6 +4853,8 @@
       "com.google.guava:listenablefuture",
       "com.google.j2objc:j2objc-annotations",
       "com.jayway.jsonpath:json-path",
+      "com.structurizr:structurizr-core",
+      "com.structurizr:structurizr-export",
       "com.sun.istack:istack-commons-runtime",
       "com.sun.istack:istack-commons-tools",
       "com.sun.xml.bind.external:relaxng-datatype",
@@ -4925,6 +4987,7 @@
       "org.springframework.hateoas:spring-hateoas",
       "org.springframework.modulith:spring-modulith-api",
       "org.springframework.modulith:spring-modulith-core",
+      "org.springframework.modulith:spring-modulith-docs",
       "org.springframework.plugin:spring-plugin-core",
       "org.springframework:spring-aop",
       "org.springframework:spring-beans",

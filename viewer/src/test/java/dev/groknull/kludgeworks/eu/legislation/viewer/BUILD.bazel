@@ -40,6 +40,22 @@ java_binary(
     ],
 )
 
+# Writes the modules' documentation (mise run modules): Spring Modulith's Documenter, into
+# viewer/spring-modulith-docs, not committed
+java_binary(
+    name = "modules",
+    testonly = True,
+    srcs = ["ModuleDocumentation.java"],
+    main_class = "dev.groknull.kludgeworks.eu.legislation.viewer.ModuleDocumentation",
+    deps = [
+        ":testing",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
+        "@maven//:com_tngtech_archunit_archunit",
+        "@maven//:org_springframework_modulith_spring_modulith_core",
+        "@maven//:org_springframework_modulith_spring_modulith_docs",
+    ],
+)
+
 # Whole-application checks: the module structure (Spring Modulith), that the app starts, on Bazel's
 # classpath and as Spring Boot's jar, and the API from its root, on Valkey in a container (Docker)
 java_test_suite(
@@ -50,6 +66,7 @@ java_test_suite(
         exclude = [
             "CellarLiveTests.java",
             "DevConfiguration.java",
+            "ModuleDocumentation.java",
             "ProductionClasses.java",
             "TestViewerApplication.java",
             "TestcontainersConfiguration.java",

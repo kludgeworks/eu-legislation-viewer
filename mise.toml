@@ -75,6 +75,10 @@ run = [
   "google-java-format --replace viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/*.java",
 ]
 
+[tasks.modules]
+description = "Write the modules' documentation (Spring Modulith's Documenter) into viewer/spring-modulith-docs"
+run = "bazel run //viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:modules"
+
 [tasks.pin]
 description = "Pin the Maven dependencies after changing them in MODULE.bazel"
 run = "REPIN=1 bazel run @maven//:pin"

@@ -7,8 +7,10 @@
 *.iml
 .vscode/
 
-# local tool configuration and output (formex-corpus/: corpus:fetch's mirror of Cellar)
+# local tool configuration and output (formex-corpus/: corpus:fetch's mirror of Cellar;
+# viewer/spring-modulith-docs/: mise run modules)
 formex-corpus/
+viewer/spring-modulith-docs/
 mise.local.toml
 .playwright-mcp/
 .DS_Store
