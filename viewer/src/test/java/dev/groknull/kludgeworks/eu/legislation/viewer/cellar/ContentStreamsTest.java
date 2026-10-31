@@ -8,10 +8,12 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withServiceUnavailable;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.net.URI;
+import java.util.zip.GZIPOutputStream;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
@@ -30,6 +32,18 @@ class ContentStreamsTest {
   void givesTheReaderTheBytesAsSent() {
     var mock = Recorded.Mock.of();
     mock.server().expect(requestTo(ITEM)).andRespond(withSuccess(RECORDED, FORMEX));
+
+    assertThat(mock.contentStreams().read(ITEM, ContentStreamsTest::bytes)).isEqualTo(RECORDED);
+  }
+
+  @Test
+  void givesTheReaderAFileCellarKeepsGzippedUnzipped() throws IOException {
+    var gzipped = new ByteArrayOutputStream();
+    try (var out = new GZIPOutputStream(gzipped)) {
+      out.write(RECORDED);
+    }
+    var mock = Recorded.Mock.of();
+    mock.server().expect(requestTo(ITEM)).andRespond(withSuccess(gzipped.toByteArray(), FORMEX));
 
     assertThat(mock.contentStreams().read(ITEM, ContentStreamsTest::bytes)).isEqualTo(RECORDED);
   }

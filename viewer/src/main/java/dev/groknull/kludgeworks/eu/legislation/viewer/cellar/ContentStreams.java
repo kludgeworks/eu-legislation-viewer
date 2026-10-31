@@ -1,11 +1,14 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
 
+import java.io.BufferedInputStream;
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UncheckedIOException;
 import java.net.URI;
 import java.util.function.Function;
+import java.util.zip.GZIPInputStream;
 import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -17,6 +20,8 @@ import org.springframework.web.client.RestClient;
 /**
  * Cellar's files (content streams: an item, or one entry of a zip item), read one at a time as they
  * come: nothing is buffered or kept, so a file of any size costs only what its reader makes of it.
+ * Cellar keeps some files gzipped (consolidations' Formex made from 2005 to 2018), sent as they are
+ * kept: those are read unzipped, so a reader always has the file itself.
  */
 @Component
 public class ContentStreams {
@@ -49,7 +54,7 @@ public class ContentStreams {
               var body = new Watched(response.getBody());
               T read;
               try {
-                read = reader.apply(body);
+                read = reader.apply(unzipped(body));
               } catch (RuntimeException e) {
                 throw body.failure == null ? e : failed(uri, body.failure);
               }
@@ -58,6 +63,19 @@ public class ContentStreams {
               }
               return read;
             });
+  }
+
+  /** {@code body}, unzipped if it starts as gzip does (0x1f 0x8b). */
+  private static InputStream unzipped(InputStream body) {
+    var in = new BufferedInputStream(body);
+    try {
+      in.mark(2);
+      var gzip = in.read() == 0x1f && in.read() == 0x8b;
+      in.reset();
+      return gzip ? new GZIPInputStream(in) : in;
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
   }
 
   private static ResourceAccessException failed(URI uri, IOException e) {
