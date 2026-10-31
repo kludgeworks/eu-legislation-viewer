@@ -9,12 +9,14 @@ java_library(
     testonly = True,
     srcs = [
         "DevConfiguration.java",
+        "ProductionClasses.java",
         "TestViewerApplication.java",
         "TestcontainersConfiguration.java",
     ],
     visibility = ["//viewer:__subpackages__"],
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
+        "@maven//:com_tngtech_archunit_archunit",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_boot_spring_boot_testcontainers",
@@ -48,6 +50,7 @@ java_test_suite(
         exclude = [
             "CellarLiveTests.java",
             "DevConfiguration.java",
+            "ProductionClasses.java",
             "TestViewerApplication.java",
             "TestcontainersConfiguration.java",
         ],

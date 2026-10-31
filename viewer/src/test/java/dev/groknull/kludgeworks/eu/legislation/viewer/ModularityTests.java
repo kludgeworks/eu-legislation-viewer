@@ -43,7 +43,7 @@ class ModularityTests {
   @Test
   void modulesRespectTheirBoundaries() {
     // and, not with: with would replace the default verifications, jMolecules' among them
-    ApplicationModules.of(ViewerApplication.class)
+    ApplicationModules.of(ViewerApplication.class, new ProductionClasses())
         .verify(
             VerificationOptions.defaults()
                 .andAdditionalVerifications(NO_OPTIONAL_FIELDS, REPOSITORIES_FIND_OPTIONALS));
