@@ -96,13 +96,14 @@ public class FormexFiles {
 
   /**
    * A zip item's entries, from the content-stream list (Accept: application/list;mtype=fmx4 on the
-   * CELEX URI): an XHTML page linking each entry at {@code {zip item}/{entry name}}.
+   * CELEX URI): an XHTML page linking each entry at {@code {zip item}/{entry name}}. The CELEX URI
+   * writes a treaty's slash encoded, as Cellar's owl:sameAs does: celex/02016E%2FTXT-20250315.
    */
   private List<FormexManifestation.File> entries(String celex, String language, URI zip) {
     var page =
         client
             .get()
-            .uri(properties.resources().resolve("celex/" + celex))
+            .uri(properties.resources().resolve("celex/" + celex.replace("/", "%2F")))
             .accept(MediaType.parseMediaType("application/list;mtype=fmx4"))
             .header("Accept-Language", language.toLowerCase(Locale.ROOT))
             .retrieve()
