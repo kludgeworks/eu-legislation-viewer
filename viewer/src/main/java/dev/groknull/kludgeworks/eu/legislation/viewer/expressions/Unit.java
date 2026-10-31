@@ -85,8 +85,8 @@ public record Unit(
     LEVEL,
     /**
      * An annex; anx, or anx_ and its label. An appendix (an annex inside an annex, Appendix III) is
-     * app_ and its label, or app. A protocol is pro_ and its number, as in a treaty's ELI (PROTOCOL
-     * (No 3) is pro_3), or pro.
+     * app_ and its label, or app. A treaty's protocol is pro_ and its number, as in its ELI
+     * (PROTOCOL (No 3) is pro_3), with the annexes printed after it under it (pro_3/anx).
      */
     ANNEX,
     /**
@@ -99,7 +99,10 @@ public record Unit(
      * concludes, a protocol, a draft decision (Formex package entries DOC.SUB.PUB other than
      * ANNEX), or a related document of a consolidation (nested CONS.DOC.GEN of TYPE ACT, GENERAL or
      * OTH.ACT). As AKN's attachment: eId att_N by position, its title as heading, its own text,
-     * articles (att_1/art_1), annexes (att_1/anx) and attachments under it.
+     * articles (att_1/art_1), annexes (att_1/anx) and attachments under it. A consolidated treaty's
+     * documents beside the treaty are attachments too: its protocols, its annexes, the declarations
+     * and the tables of equivalences; the protocols and annexes are the treaty's own, so their eIds
+     * don't hang off the attachment (pro_3, anx_I).
      */
     ATTACHMENT,
     /** A letter of an exchange of letters attached to an agreement; eId let_N by position. */

@@ -41,6 +41,52 @@
     </xsl:call-template>
   </xsl:template>
 
+  <!-- a consolidated treaty's document of protocols or of annexes (PROTOCOLS, ANNEXES TO THE TREATY
+       ON THE FUNCTIONING OF THE EUROPEAN UNION): an attached document under its title, holding
+       them. They are the treaty's, numbered through it, so their eIds hang off the treaty, not off
+       the document: pro_3, as its ELI (eli/treaty/tfeu_2016/pro_3), and anx_I. The annexes printed
+       after a protocol are its own: pro_3/anx -->
+  <xsl:template match="CONS.DOC.GEN[f:treaty-annexes(.)]" mode="attachment" priority="1">
+    <xsl:param name="eid" as="xs:string"/>
+    <xsl:variable name="all" as="element(CONS.ANNEX)+" select="CONTENTS/CONS.ANNEX"/>
+    <xsl:variable name="own" as="element(CONS.ANNEX)*" select="$all[exists(f:protocol(.))]"/>
+    <xsl:variable name="top" as="element(CONS.ANNEX)+" select="$all except $own"/>
+    <unit eId="{$eid}" kind="attachment">
+      <heading>
+        <xsl:call-template name="f:lines">
+          <xsl:with-param name="lines" as="element()*" select="TITLE/TI/*, TITLE/STI/*"/>
+          <xsl:with-param name="numbers" as="xs:boolean" select="true()"/>
+        </xsl:call-template>
+      </heading>
+      <xsl:for-each select="$top">
+        <xsl:apply-templates select="." mode="annex">
+          <xsl:with-param name="annexCount" as="xs:integer?" select="count($top)"/>
+          <xsl:with-param name="unlabelledCount" as="xs:integer?" select="count($top[f:annex-label(.) = ''])"/>
+          <xsl:with-param name="annexPosition" as="xs:integer?" select="position()"/>
+          <xsl:with-param name="ownAnnexes" as="element()*" select="$own[f:protocol(.) is current()]"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="()" tunnel="yes"/>
+          <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+          <xsl:with-param name="base" as="xs:string?" select="()" tunnel="yes"/>
+          <xsl:with-param name="annexBase" as="xs:string?" select="()" tunnel="yes"/>
+        </xsl:apply-templates>
+      </xsl:for-each>
+    </unit>
+  </xsl:template>
+
+  <!-- one of a consolidated treaty's documents whose content is just protocols or annexes -->
+  <xsl:function name="f:treaty-annexes" as="xs:boolean">
+    <xsl:param name="document" as="element(CONS.DOC.GEN)"/>
+    <xsl:sequence select="root($document)/CONS.OTH/INFO.CONSLEG/@LEG.VAL = 'TREATY'
+        and exists($document/CONTENTS/CONS.ANNEX) and empty($document/(* except (TITLE | CONTENTS)) | $document/CONTENTS/(* except CONS.ANNEX))"/>
+  </xsl:function>
+
+  <!-- the protocol a treaty's annex belongs to: the one printed before it among the protocols
+       (ANNEX after PROTOCOL (No 22)); none for a protocol, or for one of the treaty's own annexes -->
+  <xsl:function name="f:protocol" as="element(CONS.ANNEX)?">
+    <xsl:param name="annex" as="element(CONS.ANNEX)"/>
+    <xsl:sequence select="if (f:annex-abbr($annex) = 'pro') then () else $annex/preceding-sibling::CONS.ANNEX[f:annex-abbr(.) = 'pro'][1]"/>
+  </xsl:function>
+
   <!-- a related document met inside an annex of a consolidation -->
   <xsl:template match="CONS.DOC.GEN" mode="block">
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>

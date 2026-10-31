@@ -51,7 +51,10 @@
     <xsl:sequence select="f:field('kind', 'consolidated')"/>
     <xsl:sequence select="f:field('language', lower-case($doc/BIB.INSTANCE/LG.DOC))"/>
     <xsl:sequence select="f:field('act', f:celex($base/NO.CELEX))"/>
-    <xsl:sequence select="f:field('document', '0' || INFO.CONSLEG/@CONSLEG.REF || '-' || INFO.CONSLEG/@START.DATE)"/>
+    <!-- a treaty's CONSLEG.REF is the treaty's whatever the edition (1957E9999); its consolidation is
+         named after the edition, 02016E/TXT-20250315 -->
+    <xsl:sequence select="f:field('document', '0' || (if (INFO.CONSLEG/@LEG.VAL = 'TREATY') then substring(f:celex($base/NO.CELEX), 2)
+                                                     else INFO.CONSLEG/@CONSLEG.REF) || '-' || INFO.CONSLEG/@START.DATE)"/>
     <xsl:sequence select="f:field('version', f:date(INFO.CONSLEG/@START.DATE))"/>
     <xsl:sequence select="f:field('end', f:date(INFO.CONSLEG/@END.DATE[. ne '99999999']))"/>
     <xsl:sequence select="f:field('produced', f:date(INFO.PROD/@PROD.DATE))"/>

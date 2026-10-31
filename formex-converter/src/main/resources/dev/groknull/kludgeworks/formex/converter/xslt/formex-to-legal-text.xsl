@@ -132,11 +132,19 @@
     <xsl:variable name="consolidated" as="xs:boolean" select="exists($act/(self::CONS.ACT | self::CONS.OTH))"/>
     <!-- where the bibliographic data is, and where the text is -->
     <xsl:variable name="doc" as="element()" select="($act/CONS.DOC, $act/CONS.OTH.DOC, $act)[1]"/>
-    <xsl:variable name="content" as="element()" select="($doc/CONS.DOC.GEN, $doc)[1]"/>
     <xsl:variable name="info" as="element(INFO.CONSLEG)?" select="$act/INFO.CONSLEG"/>
+    <!-- a consolidated treaty (02016E/TXT-20250315) nests its documents, each GENERAL, in one: the
+         treaty itself (the one with enacting terms), its protocols, its annexes, the declarations
+         and the tables of equivalences. The treaty is the text, the others attached documents -->
+    <xsl:variable name="treaty" as="xs:boolean" select="$info/@LEG.VAL = 'TREATY'"/>
+    <xsl:variable name="content" as="element()" select="
+        if ($treaty) then $doc/CONS.DOC.GEN/CONS.DOC.GEN[ENACTING.TERMS][1] else ($doc/CONS.DOC.GEN, $doc)[1]"/>
     <!-- the document's own CELEX number, and the act's: a corrigendum's is the act's with R(01) -->
+    <!-- a treaty's CONSLEG.REF is the treaty's, whatever the edition (1957E9999): its consolidation
+         is named after the edition, 02016E/TXT-20250315 -->
     <xsl:variable name="document-celex" as="xs:string" select="
-        if ($consolidated) then '0' || $info/@CONSLEG.REF || '-' || $info/@START.DATE
+        if ($treaty) then '0' || substring(f:celex($doc/FAM.COMP/BIB.DATA/NO.CELEX), 2) || '-' || $info/@START.DATE
+        else if ($consolidated) then '0' || $info/@CONSLEG.REF || '-' || $info/@START.DATE
         else ($celex[normalize-space()], error(xs:QName('f:celex'), 'An OJ act needs the $celex parameter'))[1]"/>
     <!-- a consolidation's act is its base act, whatever its sector (an agreement, 22002A0430(02)):
          CONSLEG.REF only names the consolidation (2002A2430) -->
@@ -252,6 +260,7 @@
           <!-- attached documents: a consolidation's related documents, a package's entries other than annexes -->
           <xsl:variable name="attachments" as="element()*">
             <xsl:for-each select="$content/self::CONS.DOC.GEN/CONS.DOC.GEN[not(@TYPE = 'ANNEX')],
+                                  if ($treaty) then $doc/CONS.DOC.GEN/CONS.DOC.GEN except $content else (),
                                   $package/FMX/DOC.SUB.PUB[f:is-attachment(.)]">
               <xsl:apply-templates select="." mode="attachment">
                 <xsl:with-param name="eid" as="xs:string" select="'att_' || position()"/>
@@ -370,7 +379,7 @@
     <xsl:param name="doc" as="element()"/>
     <xsl:param name="content" as="element()"/>
     <xsl:sequence select="($act | $doc | $content)/* except (
-        $doc, $content, $act/(INFO.CONSLEG | INFO.PROD), ($doc | $content)/(BIB.INSTANCE | FAM.COMP),
+        $doc, $content, $act/(INFO.CONSLEG | INFO.PROD), ($doc | $content)/(BIB.INSTANCE | FAM.COMP | CONS.DOC.GEN),
         $content/(TITLE[1] | PREAMBLE | ENACTING.TERMS | CONTENTS | CONTENTS.CORR | ACT.GEN | FINAL
                   | CONS.ANNEX | CONS.DOC.GEN | COLL.LETTERS))"/>
   </xsl:function>

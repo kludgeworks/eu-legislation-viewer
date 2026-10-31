@@ -113,6 +113,8 @@
     <!-- what holds it there, whose other annexes number it: its position among them, and plain
          anx (app) where it is their one unlabelled annex (ANNEX beside ANNEX 1) -->
     <xsl:param name="holder" as="element()?"/>
+    <!-- a treaty's protocol: the annexes printed after it, which are its own (pro_3/anx_I) -->
+    <xsl:param name="ownAnnexes" as="element()*" select="()"/>
     <xsl:variable name="siblings" as="element()*" select="$holder ! f:annex-siblings(.)"/>
     <xsl:variable name="at" as="xs:integer?" select="f:node-index($siblings, current())"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
@@ -159,6 +161,17 @@
             <!-- unnumbered top levels are numbered through all fragments -->
             <xsl:with-param name="levelOffset" as="xs:integer?" select="count($fragments[position() lt $i]/CONTENTS/GR.SEQ[f:level-label(.) = ''])" tunnel="yes"/>
           </xsl:call-template>
+        </xsl:for-each>
+        <xsl:for-each select="$ownAnnexes">
+          <xsl:apply-templates select="." mode="annex">
+            <xsl:with-param name="annexCount" as="xs:integer?" select="count($ownAnnexes)"/>
+            <xsl:with-param name="unlabelledCount" as="xs:integer?" select="count($ownAnnexes[f:annex-label(.) = ''])"/>
+            <xsl:with-param name="annexPosition" as="xs:integer?" select="position()"/>
+            <xsl:with-param name="annexBase" as="xs:string?" select="$eid" tunnel="yes"/>
+            <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+            <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+            <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+          </xsl:apply-templates>
         </xsl:for-each>
       </unit>
     </xsl:variable>
