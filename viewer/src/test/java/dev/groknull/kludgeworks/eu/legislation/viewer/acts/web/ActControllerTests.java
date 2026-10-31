@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +24,12 @@ import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
+import org.springframework.web.client.ResourceAccessException;
 
-/** An act as HAL at its ELI, on acts held in memory: the act's and the treaty's ELI shapes. */
+/**
+ * An act as HAL at its ELI, on acts held in memory: the act's and the treaty's ELI shapes, an ELI
+ * no act has, and Cellar failing.
+ */
 @WebMvcTest(ActController.class)
 @ImportAutoConfiguration(JMoleculesJacksonAutoConfiguration.class)
 class ActControllerTests {
@@ -32,6 +37,8 @@ class ActControllerTests {
   static final Eli AVSEC_ELI = new Eli("reg_impl", 2015, "1998");
   static final ActIdentifier TFEU = new ActIdentifier("12016E/TXT");
   static final Eli TFEU_ELI = Eli.treaty("tfeu_2016");
+  static final Eli UNUSABLE = new Eli("reg", 2099, "2");
+  static final Eli UNREACHABLE = new Eli("reg", 2099, "3");
 
   @TestConfiguration
   static class InMemory {
@@ -72,6 +79,13 @@ class ActControllerTests {
 
         @Override
         public Optional<Act> find(Eli eli) {
+          if (eli.equals(UNUSABLE)) {
+            throw new CellarException(
+                "Cellar's data for the ELI " + eli + ": several acts have it");
+          }
+          if (eli.equals(UNREACHABLE)) {
+            throw new ResourceAccessException("I/O error on POST request: Connection refused");
+          }
           return Optional.ofNullable(byEli.get(eli));
         }
       };
@@ -129,6 +143,19 @@ class ActControllerTests {
         .bodyJson()
         .extractingPath("$.detail")
         .isEqualTo("No act has the ELI reg/2099/1");
+  }
+
+  @Test
+  void cellarFailingIsABadGatewayOfItsOwnProblemType() {
+    for (var eli : List.of(UNUSABLE, UNREACHABLE)) {
+      var response = mvc.get().uri("/eli/" + eli).accept(MediaTypes.HAL_JSON).exchange();
+
+      assertThat(response).hasStatus(502).hasContentType("application/problem+json");
+      var json = assertThat(response).bodyJson();
+      json.extractingPath("$.type")
+          .isEqualTo("https://kludgeworks.groknull.dev/problems/upstream-unavailable");
+      json.extractingPath("$.detail").asString().doesNotContain("several acts", "refused");
+    }
   }
 
   @Test
