@@ -67,8 +67,7 @@ class CellarLiveTests {
 
   @Test
   void readsTheTextOfTheVersionThatAppliesOnADate() {
-    var text =
-        pointInTime.expression(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).join().orElseThrow();
+    var text = textOn(AVSEC, LocalDate.of(2026, 4, 1));
 
     assertThat(text.act()).isEqualTo(AVSEC);
     assertThat(text.kind()).isEqualTo(Expression.Kind.CONSOLIDATED);
@@ -79,13 +78,20 @@ class CellarLiveTests {
   @Test
   void readsTheTextOfATreatyWithItsProtocols() {
     var tfeu = new ActIdentifier("12016E/TXT");
-    var text =
-        pointInTime.expression(tfeu, LocalDate.of(2026, 4, 1), Language.ENG).join().orElseThrow();
+    var text = textOn(tfeu, LocalDate.of(2026, 4, 1));
 
     assertThat(text.act()).isEqualTo(tfeu);
     assertThat(text.version()).isEqualTo(LocalDate.of(2025, 3, 15));
     assertThat(eIds(text.body())).contains(new EId("art_1"));
     assertThat(eIds(text.annexes())).contains(new EId("pro_3"), new EId("pro_3/art_1"));
+  }
+
+  private Expression textOn(ActIdentifier id, LocalDate date) {
+    var act = acts.find(id).orElseThrow();
+    return pointInTime
+        .expression(act, act.versionOn(date).orElseThrow(), Language.ENG)
+        .join()
+        .orElseThrow();
   }
 
   private static Stream<EId> eIds(List<Block> blocks) {
