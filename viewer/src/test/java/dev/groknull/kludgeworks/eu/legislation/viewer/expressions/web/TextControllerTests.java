@@ -26,8 +26,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -42,6 +44,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import tools.jackson.databind.node.ObjectNode;
@@ -101,6 +104,11 @@ class TextControllerTests {
       var golden = LegalTextJson.read(GOLDEN);
       var never = new CountDownLatch(1);
       return new Expressions() {
+        @Override
+        public String converterVersion() {
+          return "1.0.0";
+        }
+
         @Override
         public Optional<Expression> find(ExpressionIdentifier id, Instant formexModified) {
           return switch (id.toString()) {
@@ -172,6 +180,59 @@ class TextControllerTests {
             GOLDEN);
     assertThat(text)
         .isEqualTo(LegalTextJson.JSON.readTree(Files.readString(golden, StandardCharsets.UTF_8)));
+  }
+
+  @Test
+  void aClientThatHasTheTextIsToldItIsNotModifiedWithoutTheTextBeingRead() {
+    var etag =
+        mvc.get()
+            .uri("/api/acts/32015R1998/versions/2026-03-22/texts/en")
+            .exchange()
+            .getResponse()
+            .getHeader("ETag");
+    assertThat(etag).startsWith("W/\"");
+    Objects.requireNonNull(etag);
+
+    // the text of 2025-11-04 in English never converts: answering it would be a 503
+    var response =
+        mvc.get()
+            .uri("/api/acts/32015R1998/versions/2025-11-04/texts/en")
+            .header("If-None-Match", etag)
+            .exchange();
+
+    assertThat(response).hasStatus(HttpStatus.NOT_MODIFIED);
+    assertThat(response).headers().hasValue("ETag", etag);
+    assertThat(response).headers().hasValue("Cache-Control", "max-age=3600, public");
+  }
+
+  @Test
+  void aTextIsTaggedAnewWhenItsFormexOrTheConverterChanges() {
+    var act = new InMemory().acts().find(AVSEC).orElseThrow();
+    var versions = new ArrayList<>(act.timeline().versions());
+    var latest = versions.removeLast();
+    versions.add(
+        new Version(
+            latest.kind(),
+            latest.date(),
+            latest.celex(),
+            latest.interim(),
+            latest.integrates(),
+            latest.languages(),
+            Instant.parse("2026-11-01T00:00:00Z")));
+    var republished =
+        new Act(
+            act.id(),
+            act.eli(),
+            act.type(),
+            act.dateOfDocument(),
+            act.inForce(),
+            act.endOfValidity(),
+            new Timeline(versions));
+
+    assertThat(TextAssembler.etag(act, "1.0.0"))
+        .isEqualTo(TextAssembler.etag(act, "1.0.0"))
+        .isNotEqualTo(TextAssembler.etag(republished, "1.0.0"))
+        .isNotEqualTo(TextAssembler.etag(act, "1.1.0"));
   }
 
   @Test

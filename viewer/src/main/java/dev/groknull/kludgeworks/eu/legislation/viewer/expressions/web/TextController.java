@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.web.ActResources;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.application.PointInTime;
 import java.net.URI;
 import java.time.Duration;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
@@ -34,7 +36,8 @@ import org.springframework.web.server.ResponseStatusException;
  * is 502 (CellarProblems), a text the converter can't give a problem of its own
  * (ConversionProblems). A language that isn't an EU one, or one the version isn't in, is 404. As
  * application/hal+json or plain application/json; cacheable as long as the act is kept
- * (ActResources).
+ * (ActResources), and tagged (TextAssembler.etag), so a client that has it is answered 304 without
+ * the text being read.
  */
 @RestController
 @RequestMapping(
@@ -50,6 +53,7 @@ class TextController {
 
   private final ActResources resources;
   private final PointInTime pointInTime;
+  private final Expressions expressions;
   private final TextAssembler assembler;
   private final Duration waitFor;
 
@@ -60,10 +64,12 @@ class TextController {
   TextController(
       ActResources resources,
       PointInTime pointInTime,
+      Expressions expressions,
       TextAssembler assembler,
       @Value("${viewer.expressions.wait-for}") Duration waitFor) {
     this.resources = resources;
     this.pointInTime = pointInTime;
+    this.expressions = expressions;
     this.assembler = assembler;
     this.waitFor = waitFor;
   }
@@ -72,7 +78,8 @@ class TextController {
   ResponseEntity<?> text(
       @PathVariable("act") ActIdentifier id,
       @PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
-      @PathVariable("lang") String tag)
+      @PathVariable("lang") String tag,
+      WebRequest request)
       throws InterruptedException {
     var act = resources.act(id);
     var version = resources.version(act, date);
@@ -81,6 +88,11 @@ class TextController {
             .filter(l -> l.iso().equals(tag))
             .findFirst()
             .orElseThrow(() -> noText(id, date, tag));
+    var etag = TextAssembler.etag(act, expressions.converterVersion());
+    var notModified = resources.notModified(request, etag);
+    if (notModified.isPresent()) {
+      return notModified.get();
+    }
     Expression expression;
     try {
       expression =
@@ -95,7 +107,7 @@ class TextController {
           ? cause
           : new IllegalStateException(e.getCause());
     }
-    return resources.ok(assembler.toModel(act, version, language, expression));
+    return resources.ok(etag, assembler.toModel(act, version, language, expression));
   }
 
   private static ResponseStatusException noText(ActIdentifier id, LocalDate date, String tag) {

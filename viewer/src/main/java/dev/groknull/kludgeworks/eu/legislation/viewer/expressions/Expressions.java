@@ -21,4 +21,10 @@ public interface Expressions {
    * @return none if Cellar has no Formex of the document in the language
    */
   Optional<Expression> find(ExpressionIdentifier id, Instant formexModified);
+
+  /**
+   * The version of the converter the texts are made with: a text changes with it, as with its
+   * Formex.
+   */
+  String converterVersion();
 }

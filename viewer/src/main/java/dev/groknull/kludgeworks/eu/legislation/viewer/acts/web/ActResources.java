@@ -7,12 +7,14 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.hateoas.Link;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
@@ -59,6 +61,27 @@ public class ActResources {
   /** 200 with {@code body}, cacheable as long as the act is kept. */
   public <T> ResponseEntity<T> ok(T body) {
     return ResponseEntity.ok().cacheControl(cacheControl).body(body);
+  }
+
+  /** 200 with {@code body}, its entity tag {@code etag}, cacheable as long as the act is kept. */
+  public <T> ResponseEntity<T> ok(String etag, T body) {
+    return ResponseEntity.ok().eTag(etag).cacheControl(cacheControl).body(body);
+  }
+
+  /**
+   * 304 if {@code request} has the representation {@code etag} tags (If-None-Match), with what a
+   * 200 would carry (RFC 9110: 304 Not Modified): checked before the representation is made, for
+   * one that costs to make; none if it hasn't.
+   */
+  public Optional<ResponseEntity<Void>> notModified(WebRequest request, String etag) {
+    if (!request.checkNotModified(etag)) {
+      return Optional.empty();
+    }
+    return Optional.of(
+        ResponseEntity.status(HttpStatus.NOT_MODIFIED)
+            .eTag(etag)
+            .cacheControl(cacheControl)
+            .build());
   }
 
   /** 303 to {@code link}'s resource, a lookup's answer, cacheable as long as the act is kept. */

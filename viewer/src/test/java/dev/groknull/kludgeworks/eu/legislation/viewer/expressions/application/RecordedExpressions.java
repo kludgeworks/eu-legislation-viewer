@@ -47,4 +47,9 @@ final class RecordedExpressions implements Expressions {
             List.of(),
             List.of()));
   }
+
+  @Override
+  public String converterVersion() {
+    return "test";
+  }
 }

@@ -96,6 +96,11 @@ class ValkeyExpressions implements Expressions {
     }
   }
 
+  @Override
+  public String converterVersion() {
+    return conversion.converterVersion();
+  }
+
   /**
    * The key of {@code id}'s text, from Formex modified on {@code formexModified}, as milliseconds
    * since the epoch: viewer:legal-text:1.0.0:02015R1998-20260322:ENG:1783645339329. A text of

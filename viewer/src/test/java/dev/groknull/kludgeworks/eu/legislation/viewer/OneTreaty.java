@@ -68,6 +68,11 @@ class OneTreaty {
       public Optional<Expression> find(ExpressionIdentifier id, Instant formexModified) {
         return Optional.empty();
       }
+
+      @Override
+      public String converterVersion() {
+        return "test";
+      }
     };
   }
 }

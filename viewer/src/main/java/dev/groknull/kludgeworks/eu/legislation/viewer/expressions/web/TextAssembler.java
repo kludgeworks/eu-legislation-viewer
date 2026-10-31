@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.web;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
@@ -8,7 +10,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.web.ActLinks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.web.TimelineLinks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import java.net.URI;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.HexFormat;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.Link;
@@ -33,6 +38,33 @@ class TextAssembler {
    */
   TextAssembler(@Value("${viewer.cellar.resources}") URI cellarResources) {
     this.cellarResources = cellarResources;
+  }
+
+  /**
+   * The entity tag of each text of {@code act}, made with the converter {@code converterVersion}: a
+   * weak one, as the HAL and the plain JSON are tagged alike, over all a text and its links are
+   * made from: the converter's version and the act's timeline, each version's document, date,
+   * languages and when its Formex was modified. So it changes whenever a text of the act might,
+   * without the text being read.
+   */
+  static String etag(Act act, String converterVersion) {
+    var made = new StringBuilder(converterVersion);
+    for (var version : act.timeline().versions()) {
+      made.append('\n')
+          .append(version.celex())
+          .append(' ')
+          .append(version.date())
+          .append(' ')
+          .append(version.formexModified())
+          .append(' ')
+          .append(version.languages());
+    }
+    try {
+      var digest = MessageDigest.getInstance("SHA-256").digest(made.toString().getBytes(UTF_8));
+      return "W/\"" + HexFormat.of().formatHex(digest, 0, 16) + "\"";
+    } catch (NoSuchAlgorithmException e) {
+      throw new IllegalStateException("every JVM has SHA-256", e);
+    }
   }
 
   /**
