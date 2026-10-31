@@ -22,8 +22,8 @@ import org.testcontainers.containers.GenericContainer;
 
 /**
  * Expressions kept in a real Valkey, in a container (Testcontainers): converted once, then read
- * from the store, also when several requests ask at once; documents without Formex remembered; keys
- * that carry the converter's version.
+ * from the store, also when several requests ask at once, and kept while read; documents without
+ * Formex remembered; keys that carry the converter's version.
  */
 class ValkeyExpressionsTest {
   static final Processor SAXON = new Processor(false);
@@ -31,6 +31,7 @@ class ValkeyExpressionsTest {
   static final LettuceConnectionFactory CONNECTIONS = connections();
   static final ExpressionIdentifier ENGLISH = new ExpressionIdentifier(CONSOLIDATION, Language.ENG);
   static final Instant FORMEX = Instant.parse("2026-07-10T01:02:19.329Z");
+  static final Duration KEEP_FOR = Duration.ofDays(30);
 
   final FormexFixtures source = new FormexFixtures();
   final FormexConversion conversion = new FormexConversion(source, new FormexConverter(SAXON));
@@ -44,6 +45,7 @@ class ValkeyExpressionsTest {
           new StoreProperties(
               Duration.ofMinutes(1),
               Duration.ofMillis(50),
+              KEEP_FOR,
               Duration.ofDays(1),
               Duration.ofDays(1)));
 
@@ -67,6 +69,18 @@ class ValkeyExpressionsTest {
 
     assertThat(stored).isEqualTo(converted);
     assertThat(source.asked).containsExactly(CONSOLIDATION + " ENG");
+  }
+
+  @Test
+  void keepsATextForAWhileAfterItWasLastRead() {
+    var key = expressions.key(ENGLISH, FORMEX);
+    expressions.find(ENGLISH, FORMEX);
+    assertThat(valkey.getExpire(key)).isPositive().isLessThanOrEqualTo(KEEP_FOR.toSeconds());
+
+    valkey.expire(key, Duration.ofMinutes(1));
+    expressions.find(ENGLISH, FORMEX);
+
+    assertThat(valkey.getExpire(key)).isGreaterThan(Duration.ofMinutes(1).toSeconds());
   }
 
   @Test

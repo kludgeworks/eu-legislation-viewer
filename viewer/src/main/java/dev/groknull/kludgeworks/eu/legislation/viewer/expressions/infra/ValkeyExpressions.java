@@ -33,8 +33,9 @@ import org.springframework.stereotype.Component;
  * the key, so a text is converted once across instances while other requests for it wait for the
  * result. A document without Formex in the language is remembered for a while, as is one the
  * converter refused or failed on (a ConversionException, read back as one of the same kind), so
- * neither is fetched and converted for every request; Cellar failing is never kept. Everything kept
- * is derived, and Valkey may evict any of it.
+ * neither is fetched and converted for every request; Cellar failing is never kept. A text is kept
+ * for a while after it was last read (keep-for), so what no one reads goes on its own, whatever
+ * Valkey's eviction policy. Everything kept is derived, and Valkey may evict any of it.
  */
 @Component
 class ValkeyExpressions implements Expressions {
@@ -81,6 +82,9 @@ class ValkeyExpressions implements Expressions {
     while (true) {
       var stored = valkey.opsForValue().get(key);
       if (stored != null) {
+        if (isText(stored)) {
+          valkey.expire(key, properties.keepFor());
+        }
         return read(stored);
       }
       var token = UUID.randomUUID().toString().getBytes(StandardCharsets.UTF_8);
@@ -104,7 +108,7 @@ class ValkeyExpressions implements Expressions {
   /**
    * The key of {@code id}'s text, from Formex modified on {@code formexModified}, as milliseconds
    * since the epoch: viewer:legal-text:1.0.0:02015R1998-20260322:ENG:1783645339329. A text of
-   * Formex Cellar has since republished is never read again, and is left for Valkey to evict.
+   * Formex Cellar has since republished is never read again, and expires (keep-for).
    */
   String key(ExpressionIdentifier id, Instant formexModified) {
     return String.join(
@@ -133,7 +137,7 @@ class ValkeyExpressions implements Expressions {
       valkey.opsForValue().set(key, ABSENT, properties.absentFor());
       return Optional.empty();
     }
-    valkey.opsForValue().set(key, gzip(legalText.get()));
+    valkey.opsForValue().set(key, gzip(legalText.get()), properties.keepFor());
     return Optional.of(reader.read(legalText.get()));
   }
 
@@ -153,6 +157,11 @@ class ValkeyExpressions implements Expressions {
     } catch (SaxonApiException e) {
       throw new InvalidLegalTextException("a stored text isn't XML: " + e.getMessage(), e);
     }
+  }
+
+  /** Whether {@code stored} is a text: gzip (0x1f 0x8b), as neither ABSENT nor a failure starts. */
+  private static boolean isText(byte[] stored) {
+    return stored.length >= 2 && stored[0] == (byte) 0x1f && stored[1] == (byte) 0x8b;
   }
 
   /** What is kept for {@code e}: FAILED, then its kind (failed() reads it back) and its message. */
