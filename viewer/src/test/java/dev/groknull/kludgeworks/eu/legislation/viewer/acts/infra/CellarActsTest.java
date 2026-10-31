@@ -53,6 +53,36 @@ class CellarActsTest {
   }
 
   @Test
+  void aTreatysTextAppliesFromItsEditionNotFromTheTreatysEntryIntoForce() {
+    var tfeu = new ActIdentifier("12016E/TXT");
+    var work =
+        new SparqlResult(
+            List.of("eli", "type", "dateOfDocument", "entryIntoForce"),
+            List.of(
+                new SparqlResult.Row(
+                    Map.of(
+                        "eli", "http://data.europa.eu/eli/treaty/tfeu_2016/oj",
+                        "type",
+                            "http://publications.europa.eu/resource/authority/resource-type/TREATY",
+                        "dateOfDocument", "2016-06-07",
+                        "entryIntoForce", "1958-01-01"))));
+    var timeline =
+        CellarActs.act(
+                tfeu,
+                work,
+                result(
+                    consolidation("02016E/TXT-20151225", "2015-12-25"),
+                    consolidation("02016E/TXT-20160901", "2016-09-01")))
+            .orElseThrow()
+            .timeline();
+
+    assertThat(timeline.versions())
+        .extracting(Version::celex)
+        .containsExactly("02016E/TXT-20151225", "02016E/TXT-20160901");
+    assertThat(timeline.applicableOn(LocalDate.of(2010, 1, 1))).isEmpty();
+  }
+
+  @Test
   void onlyAVersionPublishedWithoutAPdfIsInterim() {
     var versions = act(AVSEC).timeline().versions();
 

@@ -43,6 +43,8 @@ class CellarActs implements Acts {
   /** Cellar's end of validity for an act that is open-ended. */
   private static final LocalDate OPEN = LocalDate.of(9999, 12, 31);
 
+  private static final ResourceType TREATY = new ResourceType("TREATY");
+
   private final Sparql sparql;
 
   CellarActs(Sparql sparql) {
@@ -119,14 +121,20 @@ class CellarActs implements Acts {
             .filter(d -> !d.equals(OPEN))
             .min(Comparator.naturalOrder());
     var dateOfDocument = row.find("dateOfDocument").map(LocalDate::parse).orElse(null);
-    var originalFrom = entryIntoForce.orElse(dateOfDocument);
+    var type = ResourceType.of(types.getFirst());
+    // a treaty edition's entry into force is the treaty's (1958 for the TFEU of 2016): its text is
+    // the edition's from its date, earlier editions being acts of their own
+    var originalFrom =
+        type.equals(TREATY) && dateOfDocument != null
+            ? dateOfDocument
+            : entryIntoForce.orElse(dateOfDocument);
     if (originalFrom == null) {
       throw new IllegalArgumentException("neither an entry into force nor a date of document");
     }
     return new Act(
         id,
         elis.isEmpty() ? null : eli(id, elis.getFirst()),
-        ResourceType.of(types.getFirst()),
+        type,
         dateOfDocument,
         row.find("inForce").map(CellarActs::isTrue).orElse(false),
         endOfValidity.orElse(null),
