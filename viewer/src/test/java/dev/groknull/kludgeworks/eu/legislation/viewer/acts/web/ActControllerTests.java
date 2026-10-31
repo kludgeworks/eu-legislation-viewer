@@ -13,6 +13,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import java.net.URI;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
@@ -62,14 +63,18 @@ class ActControllerTests {
               new Timeline(
                   List.of(
                       Version.original(
-                          LocalDate.of(2015, 11, 15), AVSEC, EnumSet.allOf(Language.class)),
+                          LocalDate.of(2015, 11, 15),
+                          AVSEC,
+                          EnumSet.allOf(Language.class),
+                          Instant.parse("2026-07-10T01:02:19.329Z")),
                       new Version(
                           Version.Kind.CONSOLIDATED,
                           LocalDate.of(2026, 3, 22),
                           "02015R1998-20260322",
                           true,
                           List.of(new ActIdentifier("32026R0449")),
-                          EnumSet.allOf(Language.class)))));
+                          EnumSet.allOf(Language.class),
+                          Instant.parse("2026-07-10T01:02:19.329Z")))));
       var tfeu =
           new Act(
               TFEU,
@@ -81,7 +86,10 @@ class ActControllerTests {
               new Timeline(
                   List.of(
                       Version.original(
-                          LocalDate.of(2016, 6, 7), TFEU, EnumSet.allOf(Language.class)))));
+                          LocalDate.of(2016, 6, 7),
+                          TFEU,
+                          EnumSet.allOf(Language.class),
+                          Instant.parse("2026-07-10T01:02:19.329Z")))));
       var byEli = Map.of(AVSEC_ELI, avsec, TFEU_ELI, tfeu);
       return new Acts() {
         @Override

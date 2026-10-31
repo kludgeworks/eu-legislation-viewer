@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions;
 
+import java.time.Instant;
 import java.util.Optional;
 import org.jmolecules.ddd.annotation.Repository;
 
@@ -13,9 +14,11 @@ import org.jmolecules.ddd.annotation.Repository;
 public interface Expressions {
 
   /**
-   * The expression with this identity: its document, in its language.
+   * The expression with this identity, its document in its language, from the Formex Cellar last
+   * modified on {@code formexModified} (Version.formexModified): a text made from older Formex
+   * isn't given.
    *
    * @return none if Cellar has no Formex of the document in the language
    */
-  Optional<Expression> find(ExpressionIdentifier id);
+  Optional<Expression> find(ExpressionIdentifier id, Instant formexModified);
 }

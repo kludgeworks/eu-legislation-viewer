@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
@@ -35,14 +36,19 @@ class ActsCacheConfigurationTest {
             null,
             new Timeline(
                 List.of(
-                    Version.original(LocalDate.of(2016, 6, 7), TFEU, EnumSet.allOf(Language.class)),
+                    Version.original(
+                        LocalDate.of(2016, 6, 7),
+                        TFEU,
+                        EnumSet.allOf(Language.class),
+                        Instant.parse("2026-07-10T01:02:19.329Z")),
                     new Version(
                         Version.Kind.CONSOLIDATED,
                         LocalDate.of(2025, 3, 15),
                         "02016E/TXT-20250315",
                         true,
                         List.of(new ActIdentifier("32025D0001")),
-                        EnumSet.allOf(Language.class)))));
+                        EnumSet.allOf(Language.class),
+                        Instant.parse("2026-07-10T01:02:19.329Z")))));
     var serializer = ActsCacheConfiguration.serializer(json);
 
     var kept = serializer.serialize(act);

@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.web.ActResources;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.web.HalLinksConfiguration;
 import java.net.URI;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
@@ -61,7 +62,10 @@ class VersionControllerTests {
               new Timeline(
                   List.of(
                       Version.original(
-                          LocalDate.of(2015, 11, 15), AVSEC, EnumSet.allOf(Language.class)),
+                          LocalDate.of(2015, 11, 15),
+                          AVSEC,
+                          EnumSet.allOf(Language.class),
+                          Instant.parse("2026-07-10T01:02:19.329Z")),
                       consolidated("02015R1998-20251104", LocalDate.of(2025, 11, 4)),
                       consolidated("02015R1998-20260322", LocalDate.of(2026, 3, 22)))));
       var tfeu =
@@ -75,7 +79,10 @@ class VersionControllerTests {
               new Timeline(
                   List.of(
                       Version.original(
-                          LocalDate.of(2016, 6, 7), TFEU, EnumSet.allOf(Language.class)))));
+                          LocalDate.of(2016, 6, 7),
+                          TFEU,
+                          EnumSet.allOf(Language.class),
+                          Instant.parse("2026-07-10T01:02:19.329Z")))));
       var byEli = Map.of(AVSEC_ELI, avsec, TFEU_ELI, tfeu);
       return new Acts() {
         @Override
@@ -99,7 +106,8 @@ class VersionControllerTests {
           List.of(),
           celex.equals("02015R1998-20260322")
               ? EnumSet.of(Language.DEU, Language.ENG)
-              : EnumSet.allOf(Language.class));
+              : EnumSet.allOf(Language.class),
+          Instant.parse("2026-07-10T01:02:19.329Z"));
     }
   }
 

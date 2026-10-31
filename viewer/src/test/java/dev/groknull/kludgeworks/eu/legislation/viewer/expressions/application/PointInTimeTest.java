@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -64,7 +65,8 @@ class PointInTimeTest {
         Version.original(
             LocalDate.of(2010, 4, 29),
             new ActIdentifier("32010R0185"),
-            EnumSet.allOf(Language.class));
+            EnumSet.allOf(Language.class),
+            Instant.parse("2026-07-10T01:02:19.329Z"));
 
     assertThatIllegalArgumentException()
         .isThrownBy(() -> pointInTime.expression(ACT, other, Language.ENG));

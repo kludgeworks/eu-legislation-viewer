@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -26,11 +27,12 @@ import org.springframework.stereotype.Component;
 
 /**
  * Expressions, converted once and kept in Valkey (Design: Caching, Converting off the request
- * path): the legal-text XML, gzipped, under a key of the document, the language and the converter's
- * version, so a new converter never reads an old one's output. A miss converts under a lock in
- * Valkey on the key, so a text is converted once across instances while other requests for it wait
- * for the result. A document without Formex in the language is remembered for a while, as is one
- * the converter refused or failed on (a ConversionException, read back as one of the same kind), so
+ * path): the legal-text XML, gzipped, under a key of the document, the language, the converter's
+ * version and when Cellar last modified the Formex, so a new converter never reads an old one's
+ * output, nor a text Formex Cellar has republished since. A miss converts under a lock in Valkey on
+ * the key, so a text is converted once across instances while other requests for it wait for the
+ * result. A document without Formex in the language is remembered for a while, as is one the
+ * converter refused or failed on (a ConversionException, read back as one of the same kind), so
  * neither is fetched and converted for every request; Cellar failing is never kept. Everything kept
  * is derived, and Valkey may evict any of it.
  */
@@ -73,8 +75,8 @@ class ValkeyExpressions implements Expressions {
   }
 
   @Override
-  public Optional<Expression> find(ExpressionIdentifier id) {
-    var key = key(id);
+  public Optional<Expression> find(ExpressionIdentifier id, Instant formexModified) {
+    var key = key(id, formexModified);
     var lock = key + ":lock";
     while (true) {
       var stored = valkey.opsForValue().get(key);
@@ -94,14 +96,19 @@ class ValkeyExpressions implements Expressions {
     }
   }
 
-  /** The key of {@code id}'s text: viewer:legal-text:1.0.0:02015R1998-20260322:ENG. */
-  String key(ExpressionIdentifier id) {
+  /**
+   * The key of {@code id}'s text, from Formex modified on {@code formexModified}, as milliseconds
+   * since the epoch: viewer:legal-text:1.0.0:02015R1998-20260322:ENG:1783645339329. A text of
+   * Formex Cellar has since republished is never read again, and is left for Valkey to evict.
+   */
+  String key(ExpressionIdentifier id, Instant formexModified) {
     return String.join(
         ":",
         "viewer:legal-text",
         conversion.converterVersion(),
         id.document(),
-        id.language().code());
+        id.language().code(),
+        String.valueOf(formexModified.toEpochMilli()));
   }
 
   /** Converts and keeps the text, holding the lock; unless another kept it just before. */

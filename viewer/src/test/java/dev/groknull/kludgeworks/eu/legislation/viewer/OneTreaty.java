@@ -12,6 +12,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
@@ -42,7 +43,10 @@ class OneTreaty {
             new Timeline(
                 List.of(
                     Version.original(
-                        LocalDate.of(2016, 6, 7), TFEU, EnumSet.of(Language.ENG, Language.FRA)))));
+                        LocalDate.of(2016, 6, 7),
+                        TFEU,
+                        EnumSet.of(Language.ENG, Language.FRA),
+                        Instant.parse("2026-07-10T01:02:19.329Z")))));
     return new Acts() {
       @Override
       public Optional<Act> find(ActIdentifier id) {
@@ -61,7 +65,7 @@ class OneTreaty {
   Expressions inMemoryExpressions() {
     return new Expressions() {
       @Override
-      public Optional<Expression> find(ExpressionIdentifier id) {
+      public Optional<Expression> find(ExpressionIdentifier id, Instant formexModified) {
         return Optional.empty();
       }
     };

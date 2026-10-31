@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.acts;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
@@ -12,7 +13,11 @@ import org.junit.jupiter.api.Test;
 class TimelineTest {
   static final ActIdentifier ACT = new ActIdentifier("32015R1998");
   static final Version ORIGINAL =
-      Version.original(LocalDate.of(2015, 11, 15), ACT, EnumSet.allOf(Language.class));
+      Version.original(
+          LocalDate.of(2015, 11, 15),
+          ACT,
+          EnumSet.allOf(Language.class),
+          Instant.parse("2026-07-10T01:02:19.329Z"));
   static final Version FIRST = consolidated("2016-02-29", false);
   static final Version INTERIM = consolidated("2026-10-01", true);
   static final Timeline TIMELINE = new Timeline(List.of(ORIGINAL, FIRST, INTERIM));
@@ -64,7 +69,8 @@ class TimelineTest {
             "02015R1998-X",
             false,
             List.of(),
-            EnumSet.allOf(Language.class));
+            EnumSet.allOf(Language.class),
+            Instant.parse("2026-07-10T01:02:19.329Z"));
 
     assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of(FIRST, sameDay)));
     assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of()));
@@ -92,7 +98,8 @@ class TimelineTest {
             "02015R1998-20200101",
             false,
             List.of(),
-            EnumSet.of(Language.ENG));
+            EnumSet.of(Language.ENG),
+            Instant.parse("2026-07-10T01:02:19.329Z"));
     var timeline = new Timeline(List.of(ORIGINAL, withoutIrish, INTERIM));
 
     var irish = timeline.in(Language.GLE).orElseThrow();
@@ -110,6 +117,7 @@ class TimelineTest {
         "02015R1998-" + date.replace("-", ""),
         interim,
         List.of(),
-        EnumSet.allOf(Language.class));
+        EnumSet.allOf(Language.class),
+        Instant.parse("2026-07-10T01:02:19.329Z"));
   }
 }

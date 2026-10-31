@@ -6,6 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.Executor;
 import java.util.stream.Stream;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Component;
  * language, so comparing with the previous version or stepping through the timeline seldom waits on
  * a conversion. What readers open drives it, not what changes in Cellar: the viewer converts what
  * is read. Expressions keep what they convert and skip what they keep; a version that fails is
- * logged. Off the reader's thread.
+ * logged; one not in the reader's language is skipped. Off the reader's thread.
  */
 @Component
 class PreConversion {
@@ -42,13 +43,14 @@ class PreConversion {
     var timeline = act.timeline();
     Stream.of(timeline.predecessor(read), timeline.successor(read))
         .flatMap(Optional::stream)
-        .map(version -> ExpressionIdentifier.of(version, language))
-        .forEach(id -> executor.execute(() -> convert(id)));
+        .filter(version -> version.languages().contains(language))
+        .forEach(version -> executor.execute(() -> convert(version, language)));
   }
 
-  private void convert(ExpressionIdentifier id) {
+  private void convert(Version version, Language language) {
+    var id = ExpressionIdentifier.of(version, language);
     try {
-      expressions.find(id);
+      expressions.find(id, Objects.requireNonNull(version.formexModified()));
     } catch (RuntimeException e) {
       LOG.warn("Couldn't convert {} ahead", id, e);
     }

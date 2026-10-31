@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -41,7 +42,12 @@ class CellarActsTest {
     var versions = act.timeline().versions();
     assertThat(versions).hasSize(23);
     assertThat(versions.getFirst())
-        .isEqualTo(Version.original(LocalDate.of(2015, 11, 15), AVSEC, ALL_BUT_IRISH));
+        .isEqualTo(
+            Version.original(
+                LocalDate.of(2015, 11, 15),
+                AVSEC,
+                ALL_BUT_IRISH,
+                Instant.parse("2015-11-23T07:58:11.083Z")));
     assertThat(versions.get(1).celex()).isEqualTo("02015R1998-20160229");
     assertThat(versions.getLast().celex()).isEqualTo("02015R1998-20261001");
   }
@@ -134,6 +140,15 @@ class CellarActsTest {
   }
 
   @Test
+  void eachVersionHasWhenCellarLastModifiedItsFormex() {
+    var versions = act(AVSEC).timeline().versions();
+
+    // republished more than a year after its consolidation
+    assertThat(version(versions, "02015R1998-20230401").formexModified())
+        .isEqualTo(Instant.parse("2024-06-11T14:53:17.343Z"));
+  }
+
+  @Test
   void aVersionCellarHasNoFormexOfIsInNoLanguage() {
     var timeline =
         CellarActs.act(
@@ -142,13 +157,20 @@ class CellarActsTest {
                 result(consolidation("02015R1998-20260322", "2026-03-22")),
                 languages(
                     new SparqlResult.Row(
-                        Map.of("version", "32015R1998", "languages", "DEU ENG NOR"))))
+                        Map.of(
+                            "version",
+                            "32015R1998",
+                            "languages",
+                            "DEU ENG NOR",
+                            "formexModified",
+                            "2015-11-23T08:58:11.083+01:00"))))
             .orElseThrow()
             .timeline();
 
     // Norwegian, an EEA language, isn't an official one
     assertThat(timeline.first().languages()).containsExactly(Language.DEU, Language.ENG);
     assertThat(timeline.latest().languages()).isEmpty();
+    assertThat(timeline.latest().formexModified()).isNull();
   }
 
   @Test

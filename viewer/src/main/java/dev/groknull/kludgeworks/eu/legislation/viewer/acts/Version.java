@@ -1,12 +1,14 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.acts;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 import org.jmolecules.ddd.annotation.ValueObject;
+import org.jspecify.annotations.Nullable;
 
 /**
  * One version of an act's text: the original text as published in the Official Journal, or one of
@@ -22,6 +24,9 @@ import org.jmolecules.ddd.annotation.ValueObject;
  * @param languages the languages its text is in, as Formex, the only text the viewer reads: its
  *     expressions in Cellar with a Formex manifestation (Research: which languages a version is
  *     in). Not always all 24: 2015/1998's have no Irish
+ * @param formexModified when Cellar last modified the Formex of any of them, as it does when it
+ *     republishes it: what a text of the version is made from, so it changes with it; none for a
+ *     version without Formex
  */
 @ValueObject
 public record Version(
@@ -30,22 +35,35 @@ public record Version(
     String celex,
     boolean interim,
     List<ActIdentifier> integrates,
-    Set<Language> languages) {
+    Set<Language> languages,
+    @Nullable Instant formexModified) {
 
   public Version {
     integrates = List.copyOf(integrates);
     languages =
         Collections.unmodifiableSet(
             languages.isEmpty() ? EnumSet.noneOf(Language.class) : EnumSet.copyOf(languages));
+    if (languages.isEmpty() != (formexModified == null)) {
+      throw new IllegalArgumentException(
+          "A version with Formex has when it was modified, and only one with Formex has");
+    }
     if (kind == Kind.ORIGINAL && (interim || !integrates.isEmpty())) {
       throw new IllegalArgumentException(
           "An original text is never interim and integrates nothing");
     }
   }
 
-  /** The original text, applying from {@code date}, in {@code languages}. */
-  public static Version original(LocalDate date, ActIdentifier act, Set<Language> languages) {
-    return new Version(Kind.ORIGINAL, date, act.celex(), false, List.of(), languages);
+  /**
+   * The original text, applying from {@code date}, in {@code languages}, its Formex modified on
+   * {@code formexModified}.
+   */
+  public static Version original(
+      LocalDate date,
+      ActIdentifier act,
+      Set<Language> languages,
+      @Nullable Instant formexModified) {
+    return new Version(
+        Kind.ORIGINAL, date, act.celex(), false, List.of(), languages, formexModified);
   }
 
   /** Whether this version only applies after {@code today}. */

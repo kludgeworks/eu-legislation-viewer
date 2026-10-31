@@ -53,9 +53,14 @@ public class PointInTime {
     if (!act.timeline().versions().contains(version)) {
       throw new IllegalArgumentException("Not a version of " + act.id() + ": " + version);
     }
+    var formexModified = version.formexModified();
+    if (formexModified == null || !version.languages().contains(language)) {
+      return CompletableFuture.completedFuture(Optional.empty());
+    }
     return CompletableFuture.supplyAsync(
         () -> {
-          var expression = expressions.find(ExpressionIdentifier.of(version, language));
+          var expression =
+              expressions.find(ExpressionIdentifier.of(version, language), formexModified);
           expression.ifPresent(given -> preConversion.around(act, version, language));
           return expression;
         },

@@ -8,6 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
@@ -16,7 +17,11 @@ import java.util.List;
 final class OneAct {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
   static final Version ORIGINAL =
-      Version.original(LocalDate.of(2015, 11, 15), AVSEC, EnumSet.allOf(Language.class));
+      Version.original(
+          LocalDate.of(2015, 11, 15),
+          AVSEC,
+          EnumSet.allOf(Language.class),
+          Instant.parse("2026-07-10T01:02:19.329Z"));
   static final Version CONSOLIDATED =
       new Version(
           Version.Kind.CONSOLIDATED,
@@ -24,7 +29,8 @@ final class OneAct {
           "02015R1998-20260322",
           false,
           List.of(new ActIdentifier("32026R0449")),
-          EnumSet.allOf(Language.class));
+          EnumSet.allOf(Language.class),
+          Instant.parse("2026-07-10T01:02:19.329Z"));
 
   static final Act ACT =
       new Act(

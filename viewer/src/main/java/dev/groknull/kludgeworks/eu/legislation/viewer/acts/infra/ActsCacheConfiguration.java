@@ -33,9 +33,9 @@ class ActsCacheConfiguration {
    * The caches by the shape of the JSON they keep: the number goes up when an act's JSON changes,
    * so an act kept before is never read (2: each version's languages).
    */
-  static final String BY_CELEX = "acts-2";
+  static final String BY_CELEX = "acts-3";
 
-  static final String BY_ELI = "acts-by-eli-2";
+  static final String BY_ELI = "acts-by-eli-3";
 
   /**
    * When not to keep an act: when there is none (an Optional's value, which Spring's caching

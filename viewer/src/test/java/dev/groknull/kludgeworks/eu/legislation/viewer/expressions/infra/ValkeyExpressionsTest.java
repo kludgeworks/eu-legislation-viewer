@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguratio
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.concurrent.Executors;
 import java.util.stream.IntStream;
 import net.sf.saxon.s9api.Processor;
@@ -29,6 +30,7 @@ class ValkeyExpressionsTest {
   static final GenericContainer<?> VALKEY = TestcontainersConfiguration.valkey();
   static final LettuceConnectionFactory CONNECTIONS = connections();
   static final ExpressionIdentifier ENGLISH = new ExpressionIdentifier(CONSOLIDATION, Language.ENG);
+  static final Instant FORMEX = Instant.parse("2026-07-10T01:02:19.329Z");
 
   final FormexFixtures source = new FormexFixtures();
   final FormexConversion conversion = new FormexConversion(source, new FormexConverter(SAXON));
@@ -60,8 +62,8 @@ class ValkeyExpressionsTest {
 
   @Test
   void convertsOnceThenReadsTheStoredText() {
-    var converted = expressions.find(ENGLISH).orElseThrow();
-    var stored = expressions.find(ENGLISH).orElseThrow();
+    var converted = expressions.find(ENGLISH, FORMEX).orElseThrow();
+    var stored = expressions.find(ENGLISH, FORMEX).orElseThrow();
 
     assertThat(stored).isEqualTo(converted);
     assertThat(source.asked).containsExactly(CONSOLIDATION + " ENG");
@@ -72,7 +74,7 @@ class ValkeyExpressionsTest {
     try (var threads = Executors.newVirtualThreadPerTaskExecutor()) {
       var requests =
           IntStream.range(0, 8)
-              .mapToObj(i -> threads.submit(() -> expressions.find(ENGLISH)))
+              .mapToObj(i -> threads.submit(() -> expressions.find(ENGLISH, FORMEX)))
               .toList();
       for (var request : requests) {
         assertThat(request.get()).isPresent();
@@ -86,10 +88,10 @@ class ValkeyExpressionsTest {
   void remembersADocumentWithoutFormexInTheLanguage() {
     var irish = new ExpressionIdentifier(CONSOLIDATION, Language.GLE);
 
-    assertThat(expressions.find(irish)).isEmpty();
-    assertThat(expressions.find(irish)).isEmpty();
+    assertThat(expressions.find(irish, FORMEX)).isEmpty();
+    assertThat(expressions.find(irish, FORMEX)).isEmpty();
     assertThat(source.folders).hasSize(1);
-    assertThat(valkey.getExpire(expressions.key(irish))).isPositive();
+    assertThat(valkey.getExpire(expressions.key(irish, FORMEX))).isPositive();
   }
 
   @Test
@@ -99,23 +101,36 @@ class ValkeyExpressionsTest {
 
     for (var attempt = 0; attempt < 2; attempt++) {
       assertThatExceptionOfType(OutOfScopeException.class)
-          .isThrownBy(() -> expressions.find(french))
+          .isThrownBy(() -> expressions.find(french, FORMEX))
           .withMessageContaining("JUDGMENT");
       assertThatExceptionOfType(UnsupportedFormexException.class)
-          .isThrownBy(() -> expressions.find(german))
+          .isThrownBy(() -> expressions.find(german, FORMEX))
           .withMessageContaining("NOT.FORMEX");
     }
     assertThat(source.asked).containsExactly(CONSOLIDATION + " FRA", CONSOLIDATION + " DEU");
-    assertThat(valkey.getExpire(expressions.key(french))).isPositive();
+    assertThat(valkey.getExpire(expressions.key(french, FORMEX))).isPositive();
   }
 
   @Test
-  void keysTheTextByDocumentLanguageAndConverterVersion() {
-    expressions.find(ENGLISH);
+  void keysTheTextByDocumentLanguageConverterVersionAndFormex() {
+    expressions.find(ENGLISH, FORMEX);
 
     assertThat(valkey.keys("viewer:legal-text:*"))
         .containsExactly(
-            "viewer:legal-text:" + conversion.converterVersion() + ":" + CONSOLIDATION + ":ENG");
+            "viewer:legal-text:"
+                + conversion.converterVersion()
+                + ":"
+                + CONSOLIDATION
+                + ":ENG:"
+                + FORMEX.toEpochMilli());
+  }
+
+  @Test
+  void convertsAgainFormexCellarHasRepublished() {
+    expressions.find(ENGLISH, FORMEX);
+    expressions.find(ENGLISH, FORMEX.plusSeconds(60));
+
+    assertThat(source.asked).containsExactly(CONSOLIDATION + " ENG", CONSOLIDATION + " ENG");
   }
 
   private static RedisTemplate<String, byte[]> store() {

@@ -13,7 +13,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.time.DateTimeException;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -128,7 +130,7 @@ class CellarActs implements Acts {
       return Optional.empty();
     }
     try {
-      return Optional.of(read(id, work, consolidations, languagesByVersion(languages)));
+      return Optional.of(read(id, work, consolidations, formexByVersion(languages)));
     } catch (IllegalArgumentException | DateTimeException e) {
       throw new CellarException("Cellar's data for " + id + ": " + e.getMessage(), e);
     }
@@ -139,7 +141,7 @@ class CellarActs implements Acts {
       ActIdentifier id,
       SparqlResult work,
       SparqlResult consolidations,
-      Map<String, Set<Language>> languages) {
+      Map<String, Formex> formex) {
     var row = work.rows().getFirst();
     var types = distinct(work, "type");
     if (types.size() != 1) {
@@ -175,7 +177,7 @@ class CellarActs implements Acts {
         dateOfDocument,
         row.find("inForce").map(CellarActs::isTrue).orElse(false),
         endOfValidity.orElse(null),
-        timeline(id, originalFrom, consolidations, languages));
+        timeline(id, originalFrom, consolidations, formex));
   }
 
   /**
@@ -192,14 +194,14 @@ class CellarActs implements Acts {
 
   /**
    * The original text, then the consolidated versions in date order. A consolidation that starts on
-   * the original's own date replaces it, as it's the later text of that day. Each in the languages
-   * {@code languages} has for its CELEX; in none if it has none.
+   * the original's own date replaces it, as it's the later text of that day. Each with the Formex
+   * {@code formex} has for its CELEX; none if it has none.
    */
   static Timeline timeline(
       ActIdentifier id,
       LocalDate originalFrom,
       SparqlResult consolidations,
-      Map<String, Set<Language>> languages) {
+      Map<String, Formex> formex) {
     var byVersion = new LinkedHashMap<String, List<SparqlResult.Row>>();
     for (var row : consolidations.rows()) {
       byVersion.computeIfAbsent(row.get("version"), v -> new ArrayList<>()).add(row);
@@ -214,6 +216,7 @@ class CellarActs implements Acts {
             .filter(c -> !c.equals(id.celex()))
             .ifPresent(integrates::add);
       }
+      var texts = formex.getOrDefault(first.get("version"), Formex.NONE);
       versions.add(
           new Version(
               Version.Kind.CONSOLIDATED,
@@ -221,32 +224,42 @@ class CellarActs implements Acts {
               first.get("version"),
               !isTrue(first.get("pdf")),
               integrates.stream().map(ActIdentifier::new).toList(),
-              languages.getOrDefault(first.get("version"), Set.of())));
+              texts.languages(),
+              texts.modified()));
     }
     versions.sort(Comparator.comparing(Version::date));
     if (versions.isEmpty() || versions.getFirst().date().isAfter(originalFrom)) {
-      versions.addFirst(
-          Version.original(originalFrom, id, languages.getOrDefault(id.celex(), Set.of())));
+      var texts = formex.getOrDefault(id.celex(), Formex.NONE);
+      versions.addFirst(Version.original(originalFrom, id, texts.languages(), texts.modified()));
     }
     return new Timeline(versions);
   }
 
+  /** A version's Formex: its languages, and when Cellar last modified it; none without. */
+  record Formex(Set<Language> languages, @Nullable Instant modified) {
+    static final Formex NONE = new Formex(Set.of(), null);
+  }
+
   /**
-   * The answer to languages.rq as the languages of each version, by its CELEX: the key versions.rq
+   * The answer to languages.rq as the Formex of each version, by its CELEX: the key versions.rq
    * gives a version (Version.celex), to join the two answers on. Official languages only (Cellar
    * has expressions in others, as Norwegian for the EEA).
    */
-  private static Map<String, Set<Language>> languagesByVersion(SparqlResult answer) {
-    var codes = new HashMap<String, Set<Language>>();
+  private static Map<String, Formex> formexByVersion(SparqlResult answer) {
+    var formex = new HashMap<String, Formex>();
     for (var row : answer.rows()) {
       var listed = Set.of(row.get("languages").split(" "));
       var official = EnumSet.noneOf(Language.class);
       Arrays.stream(Language.values())
           .filter(language -> listed.contains(language.code()))
           .forEach(official::add);
-      codes.put(row.get("version"), official);
+      if (!official.isEmpty()) {
+        formex.put(
+            row.get("version"),
+            new Formex(official, OffsetDateTime.parse(row.get("formexModified")).toInstant()));
+      }
     }
-    return codes;
+    return formex;
   }
 
   private static List<String> distinct(SparqlResult result, String variable) {

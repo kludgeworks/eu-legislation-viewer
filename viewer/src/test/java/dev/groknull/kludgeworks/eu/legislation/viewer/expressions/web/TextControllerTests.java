@@ -24,6 +24,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra.Unsuppor
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
@@ -76,7 +77,10 @@ class TextControllerTests {
               new Timeline(
                   List.of(
                       Version.original(
-                          LocalDate.of(2015, 11, 15), AVSEC, EnumSet.allOf(Language.class)),
+                          LocalDate.of(2015, 11, 15),
+                          AVSEC,
+                          EnumSet.allOf(Language.class),
+                          Instant.parse("2026-07-10T01:02:19.329Z")),
                       consolidated("02015R1998-20251104", LocalDate.of(2025, 11, 4)),
                       consolidated("02015R1998-20260322", LocalDate.of(2026, 3, 22)))));
       return new Acts() {
@@ -98,7 +102,7 @@ class TextControllerTests {
       var never = new CountDownLatch(1);
       return new Expressions() {
         @Override
-        public Optional<Expression> find(ExpressionIdentifier id) {
+        public Optional<Expression> find(ExpressionIdentifier id, Instant formexModified) {
           return switch (id.toString()) {
             case "02015R1998-20260322 ENG", "02015R1998-20251104 GLE" -> Optional.of(golden);
             case "02015R1998-20251104 ENG" -> {
@@ -140,7 +144,8 @@ class TextControllerTests {
           List.of(),
           celex.equals("02015R1998-20260322")
               ? EnumSet.of(Language.DEU, Language.ENG)
-              : EnumSet.allOf(Language.class));
+              : EnumSet.allOf(Language.class),
+          Instant.parse("2026-07-10T01:02:19.329Z"));
     }
   }
 

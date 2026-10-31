@@ -6,6 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.Source;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -21,7 +22,7 @@ final class RecordedExpressions implements Expressions {
   final Set<String> failing = new HashSet<>();
 
   @Override
-  public Optional<Expression> find(ExpressionIdentifier id) {
+  public Optional<Expression> find(ExpressionIdentifier id, Instant formexModified) {
     asked.add(id);
     if (failing.contains(id.document())) {
       throw new IllegalStateException("can't convert " + id);
