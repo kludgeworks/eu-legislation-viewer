@@ -13,13 +13,16 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 
 /**
  * The whole chain against the real Cellar, for when it or our queries change: an act by its ELI,
- * its timeline, and the text of the version that applies on a date, fetched, converted and read.
- * Manual (bazel test //viewer/src/test/java/…/viewer:live): it needs the network and asks Cellar.
+ * its timeline, and the text of the version that applies on a date, fetched, converted and read. On
+ * Valkey in a container, as the other whole-application tests. Manual (bazel test
+ * //viewer/src/test/java/…/viewer:live): it needs the network and asks Cellar.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@Import(TestcontainersConfiguration.class)
 class CellarLiveTests {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
 

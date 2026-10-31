@@ -69,14 +69,15 @@ java_test_suite(
     ],
 )
 
-# The whole chain against the real Cellar (CellarLiveTests): manual, not in //..., since it needs
-# the network and asks Cellar
+# The whole chain against the real Cellar (CellarLiveTests), on Valkey in a container: manual, not
+# in //..., since it needs the network and asks Cellar
 java_junit5_test(
     name = "live",
     size = "medium",
     srcs = ["CellarLiveTests.java"],
     tags = [
         "manual",
+        "requires-docker",
         "requires-network",
     ],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.CellarLiveTests",
@@ -86,6 +87,7 @@ java_junit5_test(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        ":testing",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions",
@@ -94,5 +96,6 @@ java_junit5_test(
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
     ],
 )
