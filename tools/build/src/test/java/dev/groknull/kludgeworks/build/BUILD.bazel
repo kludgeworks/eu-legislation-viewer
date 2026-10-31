@@ -13,7 +13,10 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build:schema_javadoc",
         "//tools/build/src/main/java/dev/groknull/kludgeworks/build:sparql_terms",
+        "@maven//:com_github_javaparser_javaparser_core",
+        "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
     ],

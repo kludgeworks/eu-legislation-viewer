@@ -98,7 +98,7 @@ def schema_javadoc(name, schema, srcs, types = {}, components = {}, **kwargs):
       schema: the XML Schema.
       srcs: the records' sources.
       types: record types whose schema type has another name, {"Inline": "InlineNode"}; nested
-        enums by their outer type, {"Unit.Kind": "UnitKind"}.
+        records by their own name, nested enums by their outer type, {"Unit.Kind": "UnitKind"}.
       components: components mapped from an element or attribute of another name,
         {"Row.cells": "td"}.
       **kwargs: passed to the java_junit5_test.

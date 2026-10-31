@@ -49,8 +49,8 @@ public final class SchemaJavadoc {
 
   /**
    * @param schema the XML Schema
-   * @param types record types whose schema type has another name: Inline=InlineNode, and nested
-   *     enums by their outer type, Unit.Kind=UnitKind
+   * @param types record types whose schema type has another name: Inline=InlineNode; nested records
+   *     by their own name, nested enums by their outer type, Unit.Kind=UnitKind
    * @param components components mapped from an element or attribute of another name: Row.cells=td
    */
   public SchemaJavadoc(
@@ -99,12 +99,26 @@ public final class SchemaJavadoc {
 
   /** Writes the schema's documentation into a record file's Javadoc. */
   public void apply(CompilationUnit file) {
-    for (var type : file.getTypes()) {
-      apply(type.getNameAsString(), type);
-      for (var member : type.getMembers()) {
-        if (member instanceof EnumDeclaration nested) {
-          apply(type.getNameAsString() + "." + nested.getNameAsString(), nested);
-        }
+    types(file).forEach(this::apply);
+  }
+
+  /**
+   * A file's types by the names the tables use: a record or an interface by its own, at the top or
+   * nested in another (Inline.Emphasis is Emphasis), an enum by its outer type's (Unit.Kind).
+   */
+  private static Map<String, TypeDeclaration<?>> types(CompilationUnit file) {
+    var types = new LinkedHashMap<String, TypeDeclaration<?>>();
+    file.getTypes().forEach(type -> collect(type, types));
+    return types;
+  }
+
+  private static void collect(TypeDeclaration<?> type, Map<String, TypeDeclaration<?>> types) {
+    types.put(type.getNameAsString(), type);
+    for (var member : type.getMembers()) {
+      if (member instanceof EnumDeclaration nested) {
+        types.put(type.getNameAsString() + "." + nested.getNameAsString(), nested);
+      } else if (member instanceof TypeDeclaration<?> nested) {
+        collect(nested, types);
       }
     }
   }
@@ -122,14 +136,7 @@ public final class SchemaJavadoc {
   /** Where a record file's Javadoc says other than the schema, as "Unit.Kind.ARTICLE: …" lines. */
   public List<String> differences(CompilationUnit file) {
     var differences = new ArrayList<String>();
-    for (var type : file.getTypes()) {
-      compare(type.getNameAsString(), type, differences);
-      for (var member : type.getMembers()) {
-        if (member instanceof EnumDeclaration nested) {
-          compare(type.getNameAsString() + "." + nested.getNameAsString(), nested, differences);
-        }
-      }
-    }
+    types(file).forEach((name, type) -> compare(name, type, differences));
     return differences;
   }
 
