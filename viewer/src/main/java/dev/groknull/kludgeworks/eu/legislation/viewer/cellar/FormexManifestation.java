@@ -5,6 +5,7 @@ import java.net.URI;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
+import org.jspecify.annotations.Nullable;
 
 /**
  * The Formex files of one language version, from Cellar's RDF.
@@ -33,5 +34,5 @@ public record FormexManifestation(URI uri, Instant lastModified, boolean zipped,
    * @param mediaType the item's MIME type; for a zip entry, from its extension
    * @param sha1 the SHA-1 Cellar records (tdm:stream_fixity), where it does: not for zip entries
    */
-  public record File(String name, URI uri, String mediaType, Optional<String> sha1) {}
+  public record File(String name, URI uri, String mediaType, @Nullable String sha1) {}
 }

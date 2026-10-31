@@ -89,7 +89,7 @@ public class FormexFiles {
                                 () -> new CellarException("No file name for " + r.get("item"))),
                         URI.create(r.get("item")),
                         r.get("mime"),
-                        r.find("sha1")))
+                        r.find("sha1").orElse(null)))
             .toList();
     return Optional.of(new FormexManifestation(URI.create(uri), modified, false, files));
   }
@@ -126,9 +126,7 @@ public class FormexFiles {
           var href = reader.getAttributeValue(null, "href");
           if (href != null && href.startsWith(prefix)) {
             var name = URLDecoder.decode(href.substring(prefix.length()), StandardCharsets.UTF_8);
-            files.add(
-                new FormexManifestation.File(
-                    name, URI.create(href), mediaType(name), Optional.empty()));
+            files.add(new FormexManifestation.File(name, URI.create(href), mediaType(name), null));
           }
         }
       }
