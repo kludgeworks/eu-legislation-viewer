@@ -31,7 +31,7 @@ import org.jspecify.annotations.Nullable;
  * @param notes The footnotes, collected from wherever they occur in the text.
  */
 @AggregateRoot
-public record LegalText(
+public record Expression(
     ActIdentifier act,
     Kind kind,
     @Nullable LocalDate version,
@@ -47,7 +47,7 @@ public record LegalText(
     List<Block> annexes,
     List<Note> notes) {
 
-  public LegalText {
+  public Expression {
     body = List.copyOf(body);
     annexes = List.copyOf(annexes);
     notes = List.copyOf(notes);
@@ -55,8 +55,8 @@ public record LegalText(
 
   /** Its identity: its document (source/@celex) and its language. */
   @Identity
-  public LegalTextIdentifier id() {
-    return new LegalTextIdentifier(source.celex(), Language.ofIso(lang));
+  public ExpressionIdentifier id() {
+    return new ExpressionIdentifier(source.celex(), Language.ofIso(lang));
   }
 
   /**

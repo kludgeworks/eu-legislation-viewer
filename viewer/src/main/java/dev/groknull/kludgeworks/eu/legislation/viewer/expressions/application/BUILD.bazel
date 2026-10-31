@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
 
-# The text module's use cases (the application ring): PointInTime, PreConversion
+# The expressions module's use cases (the application ring): PointInTime, PreConversion
 java_library(
     name = "application",
     srcs = glob(["*.java"]),

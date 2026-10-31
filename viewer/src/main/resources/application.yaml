@@ -20,7 +20,7 @@ viewer:
     user-agent: kludgeworks-viewer/0.0 (+https://kludgeworks.groknull.dev)
     # a SPARQL result with this many rows may have been cut off by the endpoint
     max-rows: 1000000
-  text:
+  expressions:
     store:
       # longer than the largest conversion (2005/396, 77 MB of Formex)
       lock-timeout: 10m

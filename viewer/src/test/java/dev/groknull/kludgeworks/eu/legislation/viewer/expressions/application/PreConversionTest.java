@@ -9,42 +9,44 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActVersionsChanged;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalTextIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 /** An act's versions converted ahead when they change: on 2015/1998 and its two versions. */
 class PreConversionTest {
-  final RecordedTexts texts = new RecordedTexts();
+  final RecordedExpressions expressions = new RecordedExpressions();
   final PreConversion preConversion =
       new PreConversion(
-          new OneAct(), texts, new PreConversion.Properties(List.of(Language.ENG, Language.FRA)));
+          new OneAct(),
+          expressions,
+          new PreConversion.Properties(List.of(Language.ENG, Language.FRA)));
 
   @Test
   void convertsEveryVersionInEachLanguage() {
     preConversion.on(new ActVersionsChanged(AVSEC));
 
-    assertThat(texts.asked)
+    assertThat(expressions.asked)
         .containsExactly(
-            LegalTextIdentifier.of(ORIGINAL, Language.ENG),
-            LegalTextIdentifier.of(ORIGINAL, Language.FRA),
-            LegalTextIdentifier.of(CONSOLIDATED, Language.ENG),
-            LegalTextIdentifier.of(CONSOLIDATED, Language.FRA));
+            ExpressionIdentifier.of(ORIGINAL, Language.ENG),
+            ExpressionIdentifier.of(ORIGINAL, Language.FRA),
+            ExpressionIdentifier.of(CONSOLIDATED, Language.ENG),
+            ExpressionIdentifier.of(CONSOLIDATED, Language.FRA));
   }
 
   @Test
   void convertsTheOtherVersionsWhenOneFails() {
-    texts.failing.add(ORIGINAL.celex());
+    expressions.failing.add(ORIGINAL.celex());
 
     preConversion.on(new ActVersionsChanged(AVSEC));
 
-    assertThat(texts.asked).contains(LegalTextIdentifier.of(CONSOLIDATED, Language.ENG));
+    assertThat(expressions.asked).contains(ExpressionIdentifier.of(CONSOLIDATED, Language.ENG));
   }
 
   @Test
   void convertsNothingForAnActCellarDoesNotKnow() {
     preConversion.on(new ActVersionsChanged(new ActIdentifier("32010R0185")));
 
-    assertThat(texts.asked).isEmpty();
+    assertThat(expressions.asked).isEmpty();
   }
 }

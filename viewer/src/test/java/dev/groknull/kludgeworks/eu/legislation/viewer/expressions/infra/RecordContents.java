@@ -16,12 +16,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.DocPurpose;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.DocType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Emphasis;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Eol;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Figure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Formula;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.InlineImage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.InlineLines;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Lines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ListBlock;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.MathBlock;
@@ -58,13 +58,13 @@ final class RecordContents {
   final List<String> eIds = new ArrayList<>();
   final List<String> noteRefs = new ArrayList<>();
 
-  static RecordContents of(LegalText legalText) {
+  static RecordContents of(Expression legalText) {
     var contents = new RecordContents();
     contents.legalText(legalText);
     return contents;
   }
 
-  private void legalText(LegalText legalText) {
+  private void legalText(Expression legalText) {
     if (legalText.preface() != null) {
       blocks(legalText.preface().longTitle());
     }

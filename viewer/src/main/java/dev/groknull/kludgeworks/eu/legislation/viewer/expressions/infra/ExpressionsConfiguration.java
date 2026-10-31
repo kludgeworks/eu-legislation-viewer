@@ -15,7 +15,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(StoreProperties.class)
-class TextConfiguration {
+class ExpressionsConfiguration {
 
   @Bean
   Processor saxon() {

@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalTextIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
@@ -18,35 +18,37 @@ import org.junit.jupiter.api.Test;
  * the calling thread here, so each future is complete when returned.
  */
 class PointInTimeTest {
-  final RecordedTexts texts = new RecordedTexts();
-  final PointInTime pointInTime = new PointInTime(new OneAct(), texts, Runnable::run);
+  final RecordedExpressions expressions = new RecordedExpressions();
+  final PointInTime pointInTime = new PointInTime(new OneAct(), expressions, Runnable::run);
 
   @Test
   void givesTheTextOfTheVersionThatAppliesOnTheDate() {
-    assertThat(pointInTime.text(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).join())
+    assertThat(pointInTime.expression(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).join())
         .hasValueSatisfying(
             text -> assertThat(text.source().celex()).isEqualTo("02015R1998-20260322"));
-    assertThat(pointInTime.text(AVSEC, LocalDate.of(2026, 3, 21), Language.ENG).join())
+    assertThat(pointInTime.expression(AVSEC, LocalDate.of(2026, 3, 21), Language.ENG).join())
         .hasValueSatisfying(text -> assertThat(text.source().celex()).isEqualTo("32015R1998"));
-    assertThat(texts.asked)
+    assertThat(expressions.asked)
         .containsExactly(
-            LegalTextIdentifier.of(CONSOLIDATED, Language.ENG),
-            LegalTextIdentifier.of(ORIGINAL, Language.ENG));
+            ExpressionIdentifier.of(CONSOLIDATED, Language.ENG),
+            ExpressionIdentifier.of(ORIGINAL, Language.ENG));
   }
 
   @Test
   void hasNoTextBeforeTheActsTextAppliesOrForAnotherAct() {
-    assertThat(pointInTime.text(AVSEC, LocalDate.of(2015, 1, 1), Language.ENG).join()).isEmpty();
+    assertThat(pointInTime.expression(AVSEC, LocalDate.of(2015, 1, 1), Language.ENG).join())
+        .isEmpty();
     assertThat(
             pointInTime
-                .text(new ActIdentifier("32010R0185"), LocalDate.of(2026, 4, 1), Language.ENG)
+                .expression(new ActIdentifier("32010R0185"), LocalDate.of(2026, 4, 1), Language.ENG)
                 .join())
         .isEmpty();
-    assertThat(texts.asked).isEmpty();
+    assertThat(expressions.asked).isEmpty();
   }
 
   @Test
   void hasNoTextInALanguageTheVersionHasNone() {
-    assertThat(pointInTime.text(AVSEC, LocalDate.of(2026, 4, 1), Language.GLE).join()).isEmpty();
+    assertThat(pointInTime.expression(AVSEC, LocalDate.of(2026, 4, 1), Language.GLE).join())
+        .isEmpty();
   }
 }

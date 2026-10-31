@@ -2,7 +2,8 @@
 load("@rules_java//java:defs.bzl", "java_library")
 load("//tools/build:defs.bzl", "schema_javadoc")
 
-# The module's API and domain: the records of a legal text; LegalTexts, the repository
+# The module's API and domain: Expression, an act's version in one language, and its records;
+# Expressions, the repository
 java_library(
     name = "expressions",
     srcs = glob(["*.java"]),
@@ -36,7 +37,8 @@ schema_javadoc(
     schema = "//formex-converter:legal-text.xsd",
     types = {
         "Inline": "InlineNode",
-        "LegalText.Kind": "DocumentKind",
+        "Expression": "LegalText",
+        "Expression.Kind": "DocumentKind",
         "EventRef.Type": "EventType",
         "Formula.Name": "FormulaName",
         "Note.Kind": "NoteKind",

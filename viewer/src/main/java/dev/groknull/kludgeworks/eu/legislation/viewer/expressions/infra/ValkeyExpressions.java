@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalText;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalTextIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalTexts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -23,7 +23,7 @@ import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Component;
 
 /**
- * Legal texts, converted once and kept in Valkey (Design: Caching, Converting off the request
+ * Expressions, converted once and kept in Valkey (Design: Caching, Converting off the request
  * path): the legal-text XML, gzipped, under a key of the document, the language and the converter's
  * version, so a new converter never reads an old one's output. A miss converts under a lock in
  * Valkey on the key, so a text is converted once across instances while other requests for it wait
@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
  * kept is derived, and Valkey may evict any of it.
  */
 @Component
-class ValkeyLegalTexts implements LegalTexts {
+class ValkeyExpressions implements Expressions {
 
   /** What is kept for a document without Formex in the language. */
   private static final byte[] ABSENT = new byte[0];
@@ -49,7 +49,7 @@ class ValkeyLegalTexts implements LegalTexts {
   private final Processor saxon;
   private final StoreProperties properties;
 
-  ValkeyLegalTexts(
+  ValkeyExpressions(
       RedisTemplate<String, byte[]> valkey,
       FormexConversion conversion,
       LegalTextReader reader,
@@ -63,7 +63,7 @@ class ValkeyLegalTexts implements LegalTexts {
   }
 
   @Override
-  public Optional<LegalText> find(LegalTextIdentifier id) {
+  public Optional<Expression> find(ExpressionIdentifier id) {
     var key = key(id);
     var lock = key + ":lock";
     while (true) {
@@ -85,7 +85,7 @@ class ValkeyLegalTexts implements LegalTexts {
   }
 
   /** The key of {@code id}'s text: viewer:legal-text:1.0.0:02015R1998-20260322:ENG. */
-  String key(LegalTextIdentifier id) {
+  String key(ExpressionIdentifier id) {
     return String.join(
         ":",
         "viewer:legal-text",
@@ -95,7 +95,7 @@ class ValkeyLegalTexts implements LegalTexts {
   }
 
   /** Converts and keeps the text, holding the lock; unless another kept it just before. */
-  private Optional<LegalText> convert(LegalTextIdentifier id, String key) {
+  private Optional<Expression> convert(ExpressionIdentifier id, String key) {
     var stored = valkey.opsForValue().get(key);
     if (stored != null) {
       return read(stored);
@@ -109,7 +109,7 @@ class ValkeyLegalTexts implements LegalTexts {
     return Optional.of(reader.read(legalText.get()));
   }
 
-  private Optional<LegalText> read(byte[] stored) {
+  private Optional<Expression> read(byte[] stored) {
     if (stored.length == 0) {
       return Optional.empty();
     }

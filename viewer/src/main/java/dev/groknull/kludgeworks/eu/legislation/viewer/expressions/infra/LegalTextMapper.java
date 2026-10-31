@@ -21,13 +21,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.EId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Emphasis;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Eol;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.EventRef;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Figure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Formula;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ImageContent;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.InlineImage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.InlineLines;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Lifecycle;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Lines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ListBlock;
@@ -171,7 +171,7 @@ interface LegalTextMapper {
   @Mapping(target = "body", source = "body.content")
   @Mapping(target = "annexes", defaultExpression = EMPTY)
   @Mapping(target = "notes", defaultExpression = EMPTY)
-  LegalText legalText(XmlLegalText source);
+  Expression expression(XmlLegalText source);
 
   Source source(XmlSource source);
 
@@ -357,7 +357,7 @@ interface LegalTextMapper {
 
   // kinds: the same constants on both sides
 
-  LegalText.Kind kind(XmlDocumentKind source);
+  Expression.Kind kind(XmlDocumentKind source);
 
   EventRef.Type type(XmlEventType source);
 

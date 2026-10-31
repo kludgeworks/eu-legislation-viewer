@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalTextIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * A document's legal text converted from its Formex: the Formex in the language is fetched into a
- * folder of its own, converted, and the folder deleted. Every call converts; ValkeyLegalTexts keeps
- * the result.
+ * folder of its own, converted, and the folder deleted. Every call converts; ValkeyExpressions
+ * keeps the result.
  */
 @Component
 class FormexConversion {
@@ -32,7 +32,7 @@ class FormexConversion {
    *
    * @return none if Cellar has no Formex of the document in the language
    */
-  Optional<XdmNode> convert(LegalTextIdentifier id) {
+  Optional<XdmNode> convert(ExpressionIdentifier id) {
     var folder = folder();
     try {
       if (!source.fetch(id.document(), id.language(), folder)) {

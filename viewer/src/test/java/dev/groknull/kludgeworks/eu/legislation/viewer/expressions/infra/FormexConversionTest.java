@@ -6,8 +6,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalText;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalTextIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import java.time.LocalDate;
 import net.sf.saxon.s9api.Processor;
 import org.junit.jupiter.api.Test;
@@ -25,12 +25,12 @@ class FormexConversionTest {
   @Test
   void convertsTheDocumentsFormex() {
     var xml =
-        conversion.convert(new LegalTextIdentifier(CONSOLIDATION, Language.ENG)).orElseThrow();
+        conversion.convert(new ExpressionIdentifier(CONSOLIDATION, Language.ENG)).orElseThrow();
     var text = new LegalTextReader(SAXON).read(xml);
 
-    assertThat(text.id()).isEqualTo(new LegalTextIdentifier(CONSOLIDATION, Language.ENG));
+    assertThat(text.id()).isEqualTo(new ExpressionIdentifier(CONSOLIDATION, Language.ENG));
     assertThat(text.act()).isEqualTo(new ActIdentifier("32015R1998"));
-    assertThat(text.kind()).isEqualTo(LegalText.Kind.CONSOLIDATED);
+    assertThat(text.kind()).isEqualTo(Expression.Kind.CONSOLIDATED);
     assertThat(text.version()).isEqualTo(LocalDate.of(2026, 3, 22));
     assertThat(text.converter()).isEqualTo(conversion.converterVersion());
     assertThat(text.body()).isNotEmpty();
@@ -39,14 +39,14 @@ class FormexConversionTest {
 
   @Test
   void deletesTheFormexOnceConverted() {
-    conversion.convert(new LegalTextIdentifier(CONSOLIDATION, Language.ENG));
+    conversion.convert(new ExpressionIdentifier(CONSOLIDATION, Language.ENG));
 
     assertThat(source.folders).isNotEmpty().allSatisfy(folder -> assertThat(folder).doesNotExist());
   }
 
   @Test
   void hasNoTextInALanguageWithoutFormex() {
-    assertThat(conversion.convert(new LegalTextIdentifier(CONSOLIDATION, Language.GLE))).isEmpty();
+    assertThat(conversion.convert(new ExpressionIdentifier(CONSOLIDATION, Language.GLE))).isEmpty();
     assertThat(source.folders).allSatisfy(folder -> assertThat(folder).doesNotExist());
   }
 }

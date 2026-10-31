@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalText;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra.xml.XmlLegalText;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
@@ -41,14 +41,14 @@ public final class LegalTextReader {
    * @return its records
    * @throws InvalidLegalTextException if it can't be read as legal text
    */
-  public LegalText read(XdmNode legalText) {
+  public Expression read(XdmNode legalText) {
     try {
       var unmarshaller = JAXB.createUnmarshaller();
       unmarshaller.setSchema(SCHEMA);
       var handler = unmarshaller.getUnmarshallerHandler();
       processor.writeXdmValue(legalText, new SAXDestination(handler));
       var element = (JAXBElement<?>) handler.getResult();
-      return mapper.legalText((XmlLegalText) element.getValue());
+      return mapper.expression((XmlLegalText) element.getValue());
     } catch (JAXBException | SaxonApiException | ClassCastException e) {
       throw new InvalidLegalTextException("not legal text: " + e.getMessage(), e);
     }

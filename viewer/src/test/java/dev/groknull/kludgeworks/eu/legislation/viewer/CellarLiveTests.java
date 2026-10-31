@@ -7,7 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalText;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.application.PointInTime;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
@@ -36,10 +36,11 @@ class CellarLiveTests {
 
   @Test
   void readsTheTextOfTheVersionThatAppliesOnADate() {
-    var text = pointInTime.text(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).join().orElseThrow();
+    var text =
+        pointInTime.expression(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).join().orElseThrow();
 
     assertThat(text.act()).isEqualTo(AVSEC);
-    assertThat(text.kind()).isEqualTo(LegalText.Kind.CONSOLIDATED);
+    assertThat(text.kind()).isEqualTo(Expression.Kind.CONSOLIDATED);
     assertThat(text.version()).isEqualTo(LocalDate.of(2026, 3, 22));
     assertThat(text.body()).isNotEmpty();
   }

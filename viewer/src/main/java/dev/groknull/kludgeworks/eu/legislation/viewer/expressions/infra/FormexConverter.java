@@ -29,8 +29,8 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * Turns Formex 4 into legal-text XML with {@code formex-to-legal-text.xsl}, run by its contract
- * (the stylesheet's header), its refusals turned into exceptions: the text module's adapter on
- * //formex-converter's stylesheets. The stylesheet is compiled once; each call gets its own
+ * (the stylesheet's header), its refusals turned into exceptions: the expressions module's adapter
+ * on //formex-converter's stylesheets. The stylesheet is compiled once; each call gets its own
  * transformer, so one instance serves concurrent calls.
  *
  * <p>Formex files can be large: an annex of 104 MB with over 100,000 entity references (&amp;amp;).

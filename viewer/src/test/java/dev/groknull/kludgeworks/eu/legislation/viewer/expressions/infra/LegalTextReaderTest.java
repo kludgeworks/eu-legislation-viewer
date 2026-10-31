@@ -10,7 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Changed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.DateRef;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.DeletedBlock;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalText;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ListBlock;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Paragraph;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Provenance;
@@ -40,7 +40,7 @@ class LegalTextReaderTest {
 
   static final String CONSOLIDATED = "06.02.1/02015R1998-20260322";
 
-  static LegalText consolidated;
+  static Expression consolidated;
 
   @BeforeAll
   static void read() {
@@ -50,7 +50,7 @@ class LegalTextReaderTest {
   @Test
   void readsTheHeader() {
     assertThat(consolidated.act()).isEqualTo(new ActIdentifier("32015R1998"));
-    assertThat(consolidated.kind()).isEqualTo(LegalText.Kind.CONSOLIDATED);
+    assertThat(consolidated.kind()).isEqualTo(Expression.Kind.CONSOLIDATED);
     assertThat(consolidated.version()).isEqualTo(LocalDate.of(2026, 3, 22));
     assertThat(consolidated.formexVersion()).isEqualTo("06.02.1");
     assertThat(consolidated.source().celex()).isEqualTo("02015R1998-20260322");

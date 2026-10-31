@@ -6,17 +6,18 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
- * A legal text by the document it is the text of and its language: 02015R1998-20260322 in English.
+ * An expression by its document and its language: 02015R1998-20260322 in English (Cellar's
+ * celex/02015R1998-20260322.ENG).
  *
  * @param document the document's CELEX: a version's (Version.celex), or a corrigendum's
  * @param language its language
  */
 @ValueObject
-public record LegalTextIdentifier(String document, Language language) {
+public record ExpressionIdentifier(String document, Language language) {
 
-  /** The text of {@code version} in {@code language}. */
-  public static LegalTextIdentifier of(Version version, Language language) {
-    return new LegalTextIdentifier(version.celex(), language);
+  /** {@code version} in {@code language}. */
+  public static ExpressionIdentifier of(Version version, Language language) {
+    return new ExpressionIdentifier(version.celex(), language);
   }
 
   @Override

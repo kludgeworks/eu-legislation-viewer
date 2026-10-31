@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 
-# The text module's use cases, on an act and texts of the tests' own: one test target per *Test.java
+# The expressions module's use cases, on an act and expressions of the tests' own: one test target per *Test.java
 java_test_suite(
     name = "application",
     size = "small",

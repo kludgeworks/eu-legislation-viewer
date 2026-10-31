@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.LegalTextIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import java.time.Duration;
 import java.util.concurrent.Executors;
 import java.util.stream.IntStream;
@@ -19,21 +19,21 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.testcontainers.containers.GenericContainer;
 
 /**
- * Legal texts kept in a real Valkey, in a container (Testcontainers): converted once, then read
+ * Expressions kept in a real Valkey, in a container (Testcontainers): converted once, then read
  * from the store, also when several requests ask at once; documents without Formex remembered; keys
  * that carry the converter's version.
  */
-class ValkeyLegalTextsTest {
+class ValkeyExpressionsTest {
   static final Processor SAXON = new Processor(false);
   static final GenericContainer<?> VALKEY = TestcontainersConfiguration.valkey();
   static final LettuceConnectionFactory CONNECTIONS = connections();
-  static final LegalTextIdentifier ENGLISH = new LegalTextIdentifier(CONSOLIDATION, Language.ENG);
+  static final ExpressionIdentifier ENGLISH = new ExpressionIdentifier(CONSOLIDATION, Language.ENG);
 
   final FormexFixtures source = new FormexFixtures();
   final FormexConversion conversion = new FormexConversion(source, new FormexConverter(SAXON));
   final RedisTemplate<String, byte[]> valkey = store();
-  final ValkeyLegalTexts texts =
-      new ValkeyLegalTexts(
+  final ValkeyExpressions expressions =
+      new ValkeyExpressions(
           valkey,
           conversion,
           new LegalTextReader(SAXON),
@@ -55,8 +55,8 @@ class ValkeyLegalTextsTest {
 
   @Test
   void convertsOnceThenReadsTheStoredText() {
-    var converted = texts.find(ENGLISH).orElseThrow();
-    var stored = texts.find(ENGLISH).orElseThrow();
+    var converted = expressions.find(ENGLISH).orElseThrow();
+    var stored = expressions.find(ENGLISH).orElseThrow();
 
     assertThat(stored).isEqualTo(converted);
     assertThat(source.asked).containsExactly(CONSOLIDATION + " ENG");
@@ -66,7 +66,9 @@ class ValkeyLegalTextsTest {
   void convertsOnceForRequestsThatComeTogether() throws Exception {
     try (var threads = Executors.newVirtualThreadPerTaskExecutor()) {
       var requests =
-          IntStream.range(0, 8).mapToObj(i -> threads.submit(() -> texts.find(ENGLISH))).toList();
+          IntStream.range(0, 8)
+              .mapToObj(i -> threads.submit(() -> expressions.find(ENGLISH)))
+              .toList();
       for (var request : requests) {
         assertThat(request.get()).isPresent();
       }
@@ -77,17 +79,17 @@ class ValkeyLegalTextsTest {
 
   @Test
   void remembersADocumentWithoutFormexInTheLanguage() {
-    var irish = new LegalTextIdentifier(CONSOLIDATION, Language.GLE);
+    var irish = new ExpressionIdentifier(CONSOLIDATION, Language.GLE);
 
-    assertThat(texts.find(irish)).isEmpty();
-    assertThat(texts.find(irish)).isEmpty();
+    assertThat(expressions.find(irish)).isEmpty();
+    assertThat(expressions.find(irish)).isEmpty();
     assertThat(source.folders).hasSize(1);
-    assertThat(valkey.getExpire(texts.key(irish))).isPositive();
+    assertThat(valkey.getExpire(expressions.key(irish))).isPositive();
   }
 
   @Test
   void keysTheTextByDocumentLanguageAndConverterVersion() {
-    texts.find(ENGLISH);
+    expressions.find(ENGLISH);
 
     assertThat(valkey.keys("viewer:legal-text:*"))
         .containsExactly(
@@ -95,7 +97,7 @@ class ValkeyLegalTextsTest {
   }
 
   private static RedisTemplate<String, byte[]> store() {
-    var template = new TextConfiguration().legalTextStore(CONNECTIONS);
+    var template = new ExpressionsConfiguration().legalTextStore(CONNECTIONS);
     template.afterPropertiesSet();
     return template;
   }
