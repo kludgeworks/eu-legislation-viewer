@@ -10,7 +10,7 @@ import java.util.List;
  */
 public sealed interface Lines {
 
-  /** Lines of inline content, joined by {@link Eol}. */
+  /** Lines of inline content, joined by {@link Inline.Eol}. */
   record InlineLines(List<Inline> content) implements Lines {
 
     public InlineLines {

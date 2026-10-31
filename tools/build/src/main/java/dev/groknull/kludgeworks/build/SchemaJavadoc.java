@@ -30,8 +30,8 @@ import net.sf.saxon.s9api.XdmNode;
  * or attribute it maps from says; each enum constant what its enumeration value says, by xjc's
  * naming (ALPHA_UPPER for alpha-upper). Records and schema types share their names, but for those
  * the tables rename; types the schema doesn't have keep their own Javadoc. {@link
- * UpdateSchemaJavadoc} writes it into the sources, {@link SchemaJavadocTests} checks they say it;
- * the macro schema_javadoc sets both up.
+ * UpdateSchemaJavadoc} writes it into the sources, SchemaJavadocTests checks they say it; the macro
+ * schema_javadoc sets both up.
  */
 public final class SchemaJavadoc {
 

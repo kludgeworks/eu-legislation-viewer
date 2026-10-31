@@ -8,6 +8,7 @@ test --test_output=errors
 # Generated code (@Generated: MapStruct's mappers) isn't checked, the interfaces it implements are;
 # AssertJ's isNotNull() counts as a null check in tests, and JUnit's parameterized classes
 # initialise their fields (@Parameter, @BeforeParameterizedClassInvocation).
+build --extra_toolchains=//tools/build:java_toolchain_definition
 build --plugin=//tools/build:nullaway
 build --javacopt=-Xep:NullAway:ERROR
 build --javacopt=-XepOpt:NullAway:OnlyNullMarked=true

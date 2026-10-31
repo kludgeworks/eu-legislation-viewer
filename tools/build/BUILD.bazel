@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: MIT
-load("@rules_java//java:defs.bzl", "java_import", "java_plugin")
+load("@rules_java//java:defs.bzl", "java_import", "java_package_configuration", "java_plugin")
+load("@rules_java//toolchains:default_java_toolchain.bzl", "DEFAULT_TOOLCHAIN_CONFIGURATION", "default_java_toolchain")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -23,6 +24,33 @@ java_plugin(
 java_plugin(
     name = "nullaway",
     deps = ["@maven//:com_uber_nullaway_nullaway"],
+)
+
+# The Java toolchain (see .bazelrc): rules_java's default for Java 25, with javac's doclint on our
+# own packages: a Javadoc {@link} that doesn't resolve, a @param for no parameter, malformed HTML
+# fail the build, down to private members. Not "missing": a comment on every member would be noise.
+# Third-party code (rules_java's runfiles among it) has links doclint can't resolve: left alone.
+default_java_toolchain(
+    name = "java_toolchain",
+    configuration = DEFAULT_TOOLCHAIN_CONFIGURATION,
+    package_configuration = [":doclint"],
+    source_version = "25",
+    target_version = "25",
+)
+
+java_package_configuration(
+    name = "doclint",
+    javacopts = ["-Xdoclint:all/private,-missing"],
+    packages = [":ours"],
+)
+
+package_group(
+    name = "ours",
+    packages = [
+        "//formex-converter/...",
+        "//tools/...",
+        "//viewer/...",
+    ],
 )
 
 # xslt-quality's validator, built once: the way its pom builds it, then transpiled with SchXslt 2,
