@@ -10,16 +10,22 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 /**
  * The point-in-time view: the version acts chooses for the date, and that version's text; on
  * 2015/1998 with its original text and one consolidated version, of 22 March 2026. The work runs on
- * the calling thread here, so each future is complete when returned.
+ * the calling thread here, so each future is complete when returned; the conversions ahead are kept
+ * in {@code ahead}, to run when a test says.
  */
 class PointInTimeTest {
   final RecordedExpressions expressions = new RecordedExpressions();
-  final PointInTime pointInTime = new PointInTime(new OneAct(), expressions, Runnable::run);
+  final List<Runnable> ahead = new ArrayList<>();
+  final PointInTime pointInTime =
+      new PointInTime(
+          new OneAct(), expressions, new PreConversion(expressions, ahead::add), Runnable::run);
 
   @Test
   void givesTheTextOfTheVersionThatAppliesOnTheDate() {
@@ -32,6 +38,24 @@ class PointInTimeTest {
         .containsExactly(
             ExpressionIdentifier.of(CONSOLIDATED, Language.ENG),
             ExpressionIdentifier.of(ORIGINAL, Language.ENG));
+  }
+
+  @Test
+  void convertsTheVersionsEitherSideAheadOnceTheTextIsGiven() {
+    pointInTime.expression(AVSEC, LocalDate.of(2026, 4, 1), Language.ENG).join();
+    expressions.asked.clear();
+
+    ahead.forEach(Runnable::run);
+
+    assertThat(expressions.asked).containsExactly(ExpressionIdentifier.of(ORIGINAL, Language.ENG));
+  }
+
+  @Test
+  void convertsNothingAheadWithoutAText() {
+    pointInTime.expression(AVSEC, LocalDate.of(2026, 4, 1), Language.GLE).join();
+    pointInTime.expression(AVSEC, LocalDate.of(2015, 1, 1), Language.ENG).join();
+
+    assertThat(ahead).isEmpty();
   }
 
   @Test

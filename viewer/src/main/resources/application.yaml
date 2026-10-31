@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 spring:
-  # requests, @Async and scheduled tasks on virtual threads: a page mostly waits on Cellar
+  # requests and the conversions done ahead on virtual threads: a page mostly waits on Cellar
   threads:
     virtual:
       enabled: true
@@ -28,6 +28,3 @@ viewer:
       poll-interval: 250ms
       # how long a document without Formex in a language is remembered as such
       absent-for: 1d
-    pre-conversion:
-      # the languages an act's versions are converted in when they change, ahead of being asked for
-      languages: [ENG]

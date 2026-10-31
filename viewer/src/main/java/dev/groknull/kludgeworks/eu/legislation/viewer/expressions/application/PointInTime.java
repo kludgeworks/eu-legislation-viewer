@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.application;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
@@ -19,12 +20,14 @@ import org.springframework.stereotype.Service;
  * (Design: Choosing the version to show), expressions give its text. A text not converted yet takes
  * a while, so the answer is a future (Design: Converting off the request path): a caller bounds its
  * wait (a page answers 503 with Retry-After, or 202 when asked, Design: Slow responses), and the
- * conversion goes on regardless, so the next request finds the text kept.
+ * conversion goes on regardless, so the next request finds the text kept. Once a text is given, the
+ * versions either side of it are converted ahead (PreConversion).
  */
 @Service
 public class PointInTime {
   private final Acts acts;
   private final Expressions expressions;
+  private final PreConversion preConversion;
   private final Executor executor;
 
   /**
@@ -32,9 +35,13 @@ public class PointInTime {
    *     (spring.threads.virtual.enabled), as the work mostly waits on Cellar and on Valkey
    */
   PointInTime(
-      Acts acts, Expressions expressions, @Qualifier("applicationTaskExecutor") Executor executor) {
+      Acts acts,
+      Expressions expressions,
+      PreConversion preConversion,
+      @Qualifier("applicationTaskExecutor") Executor executor) {
     this.acts = acts;
     this.expressions = expressions;
+    this.preConversion = preConversion;
     this.executor = executor;
   }
 
@@ -48,10 +55,16 @@ public class PointInTime {
   public CompletableFuture<Optional<Expression>> expression(
       ActIdentifier act, LocalDate date, Language language) {
     return CompletableFuture.supplyAsync(
-        () ->
-            acts.find(act)
-                .flatMap(a -> a.versionOn(date))
-                .flatMap(version -> expressions.find(ExpressionIdentifier.of(version, language))),
-        executor);
+        () -> acts.find(act).flatMap(found -> expression(found, date, language)), executor);
+  }
+
+  private Optional<Expression> expression(Act act, LocalDate date, Language language) {
+    var version = act.versionOn(date);
+    if (version.isEmpty()) {
+      return Optional.empty();
+    }
+    var expression = expressions.find(ExpressionIdentifier.of(version.get(), language));
+    expression.ifPresent(given -> preConversion.around(act, version.get(), language));
+    return expression;
   }
 }

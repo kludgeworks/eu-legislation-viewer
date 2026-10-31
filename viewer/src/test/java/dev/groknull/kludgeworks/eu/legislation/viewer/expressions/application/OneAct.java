@@ -24,18 +24,19 @@ final class OneAct implements Acts {
           false,
           List.of(new ActIdentifier("32026R0449")));
 
+  static final Act ACT =
+      new Act(
+          AVSEC,
+          new Eli("reg_impl", 2015, "1998"),
+          new ResourceType("REG_IMPL"),
+          LocalDate.of(2015, 11, 5),
+          true,
+          null,
+          new Timeline(List.of(ORIGINAL, CONSOLIDATED)));
+
   @Override
   public Optional<Act> find(ActIdentifier id) {
-    return Optional.of(
-            new Act(
-                AVSEC,
-                new Eli("reg_impl", 2015, "1998"),
-                new ResourceType("REG_IMPL"),
-                LocalDate.of(2015, 11, 5),
-                true,
-                null,
-                new Timeline(List.of(ORIGINAL, CONSOLIDATED))))
-        .filter(act -> act.id().equals(id));
+    return Optional.of(ACT).filter(act -> act.id().equals(id));
   }
 
   @Override

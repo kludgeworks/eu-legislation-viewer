@@ -1,53 +1,49 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.application;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActVersionsChanged;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
-import jakarta.validation.constraints.NotEmpty;
-import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.event.EventListener;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.annotation.Validated;
 
 /**
- * Converts an act's versions ahead, when they change (Design: Converting off the request path), so
- * a page seldom waits on a conversion: every version of the act, in each language of {@code
- * viewer.expressions.pre-conversion.languages}. Expressions keep what they convert and skip what
- * they keep; a version that fails is logged, and the rest still converted. Off the publisher's
- * thread.
+ * Converts ahead the versions a reader is likely to open next (Design: Converting off the request
+ * path): once a version of an act is read, the one before it and the one after, in the reader's
+ * language, so comparing with the previous version or stepping through the timeline seldom waits on
+ * a conversion. What readers open drives it, not what changes in Cellar: the viewer converts what
+ * is read. Expressions keep what they convert and skip what they keep; a version that fails is
+ * logged. Off the reader's thread.
  */
 @Component
-@EnableConfigurationProperties(PreConversion.Properties.class)
 class PreConversion {
   private static final Logger LOG = LoggerFactory.getLogger(PreConversion.class);
 
-  private final Acts acts;
   private final Expressions expressions;
-  private final Properties properties;
+  private final Executor executor;
 
-  PreConversion(Acts acts, Expressions expressions, Properties properties) {
-    this.acts = acts;
+  /**
+   * @param executor where the conversions run: Spring Boot's task executor, on virtual threads
+   */
+  PreConversion(Expressions expressions, @Qualifier("applicationTaskExecutor") Executor executor) {
     this.expressions = expressions;
-    this.properties = properties;
+    this.executor = executor;
   }
 
-  @Async
-  @EventListener
-  void on(ActVersionsChanged changed) {
-    var versions = acts.find(changed.act()).map(act -> act.timeline().versions()).orElse(List.of());
-    for (var version : versions) {
-      for (var language : properties.languages()) {
-        convert(ExpressionIdentifier.of(version, language));
-      }
-    }
+  /** Converts, in the background, the versions of {@code act} either side of {@code read}. */
+  void around(Act act, Version read, Language language) {
+    var timeline = act.timeline();
+    Stream.of(timeline.predecessor(read), timeline.successor(read))
+        .flatMap(Optional::stream)
+        .map(version -> ExpressionIdentifier.of(version, language))
+        .forEach(id -> executor.execute(() -> convert(id)));
   }
 
   private void convert(ExpressionIdentifier id) {
@@ -57,13 +53,4 @@ class PreConversion {
       LOG.warn("Couldn't convert {} ahead", id, e);
     }
   }
-
-  /**
-   * What is converted ahead ({@code viewer.expressions.pre-conversion.*}, set in application.yaml).
-   *
-   * @param languages the languages an act's versions are converted in, ahead of being asked for
-   */
-  @ConfigurationProperties("viewer.expressions.pre-conversion")
-  @Validated
-  record Properties(@NotEmpty List<Language> languages) {}
 }
