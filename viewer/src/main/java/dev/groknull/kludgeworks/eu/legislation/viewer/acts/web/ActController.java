@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.acts.web;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
@@ -9,10 +8,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiRelations;
 import java.net.URI;
 import java.time.Duration;
-import java.util.Locale;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.hateoas.IanaLinkRelations;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.mediatype.hal.HalLinkRelation;
@@ -82,8 +79,8 @@ class ActController {
                     id, act.timeline().latest().date(), IanaLinkRelations.LATEST_VERSION))
             .link(ActLinks.compare(id, COMPARE))
             .link(ActLinks.amendments(id, AMENDMENTS))
-            .link(eurLex(act))
-            .link(cellar(act))
+            .link(ActLinks.eurLex("ALL", id.celex(), EUR_LEX_LANGUAGE, "View on EUR-Lex"))
+            .link(ActLinks.cellar(cellarResources, id.celex(), "The work in Cellar"))
             .embed(
                 act.timeline().versions().stream().map(v -> ActLinks.summary(id, v)).toList(),
                 VERSIONS)
@@ -109,29 +106,5 @@ class ActController {
         .location(ActLinks.act(act.id(), IanaLinkRelations.SELF).toUri())
         .cacheControl(cacheControl)
         .build();
-  }
-
-  /** The act's document information page on EUR-Lex, by its CELEX. */
-  private static Link eurLex(Act act) {
-    var language = EUR_LEX_LANGUAGE.iso();
-    return Link.of(
-            "https://eur-lex.europa.eu/legal-content/"
-                + language.toUpperCase(Locale.ROOT)
-                + "/ALL/?uri=CELEX:"
-                + act.id().celex(),
-            IanaLinkRelations.ALTERNATE)
-        .withName(ActLinks.EUR_LEX)
-        .withType(MediaType.TEXT_HTML_VALUE)
-        .withHreflang(language)
-        .withTitle("View on EUR-Lex");
-  }
-
-  /** The act's work in Cellar, by its CELEX; a treaty's slash encoded, as Cellar has it. */
-  private Link cellar(Act act) {
-    return Link.of(
-            cellarResources.resolve("celex/" + act.id().celex().replace("/", "%2F")).toString(),
-            IanaLinkRelations.ALTERNATE)
-        .withName(ActLinks.CELLAR)
-        .withTitle("The work in Cellar");
   }
 }
