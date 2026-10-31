@@ -2,25 +2,19 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.web.ActLinks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.web.ActResources;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.application.PointInTime;
 import java.net.URI;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.hateoas.IanaLinkRelations;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.MediaTypes;
-import org.springframework.hateoas.RepresentationModel;
-import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -34,18 +28,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
- * A version's text in a language (URLs and API: public API), by its language tag: the legal text as
- * the resource's own state (LegalTextJsonModule), with its links: up to the version; the versions
- * either side, the first and the latest (RFC 5829, RFC 8288) among those in the same language
- * (Version.languages), so a version without it is passed over; what changed since the one before
- * (av:changes, planned: 501); and as alternates the version in each other language it is in
- * (hreflang), and the text on EUR-Lex and the expression in Cellar, its Formex among its
- * manifestations. A text not converted yet is waited for a while (viewer.expressions.wait-for),
+ * A version's text in a language (URLs and API: public API), by its language tag, as HAL
+ * (TextAssembler). A text not converted yet is waited for a while (viewer.expressions.wait-for),
  * then 503 with Retry-After while the conversion goes on (Design: Slow responses); Cellar failing
  * is 502 (CellarProblems), a text the converter can't give a problem of its own
- * (ConversionProblems). A language that isn't an EU one, or one the version isn't in, is 404. HAL,
- * as application/hal+json or plain application/json; cacheable as long as the act is kept
- * (viewer.acts.cache-for).
+ * (ConversionProblems). A language that isn't an EU one, or one the version isn't in, is 404. As
+ * application/hal+json or plain application/json; cacheable as long as the act is kept
+ * (ActResources).
  */
 @RestController
 @RequestMapping(
@@ -59,29 +48,24 @@ class TextController {
   /** When to ask again for a text still being converted: most take well under a second. */
   static final Duration RETRY_AFTER = Duration.ofSeconds(5);
 
-  private final Acts acts;
+  private final ActResources resources;
   private final PointInTime pointInTime;
-  private final URI cellarResources;
+  private final TextAssembler assembler;
   private final Duration waitFor;
-  private final CacheControl cacheControl;
 
   /**
-   * @param cellarResources where Cellar's resource URIs start (viewer.cellar.resources)
    * @param waitFor how long a request waits for a text being converted
    *     (viewer.expressions.wait-for)
-   * @param cacheFor how long an act is kept, and so may be cached (viewer.acts.cache-for)
    */
   TextController(
-      Acts acts,
+      ActResources resources,
       PointInTime pointInTime,
-      @Value("${viewer.cellar.resources}") URI cellarResources,
-      @Value("${viewer.expressions.wait-for}") Duration waitFor,
-      @Value("${viewer.acts.cache-for}") Duration cacheFor) {
-    this.acts = acts;
+      TextAssembler assembler,
+      @Value("${viewer.expressions.wait-for}") Duration waitFor) {
+    this.resources = resources;
     this.pointInTime = pointInTime;
-    this.cellarResources = cellarResources;
+    this.assembler = assembler;
     this.waitFor = waitFor;
-    this.cacheControl = CacheControl.maxAge(cacheFor).cachePublic();
   }
 
   @GetMapping("/{lang:[a-z]{2}}")
@@ -90,18 +74,8 @@ class TextController {
       @PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
       @PathVariable("lang") String tag)
       throws InterruptedException {
-    var act =
-        acts.find(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No act " + id));
-    var timeline = act.timeline();
-    var version =
-        timeline.versions().stream()
-            .filter(v -> v.date().equals(date))
-            .findFirst()
-            .orElseThrow(
-                () ->
-                    new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "No version of " + id + " starts on " + date));
+    var act = resources.act(id);
+    var version = resources.version(act, date);
     var language =
         version.languages().stream()
             .filter(l -> l.iso().equals(tag))
@@ -121,43 +95,7 @@ class TextController {
           ? cause
           : new IllegalStateException(e.getCause());
     }
-
-    var links = new ArrayList<Link>();
-    links.add(ActLinks.text(id, date, language, IanaLinkRelations.SELF));
-    links.add(ActLinks.version(id, date, IanaLinkRelations.UP));
-    var inLanguage =
-        timeline.versions().stream().filter(v -> v.languages().contains(language)).toList();
-    var at = inLanguage.indexOf(version);
-    if (at > 0) {
-      var predecessor = inLanguage.get(at - 1);
-      links.add(
-          ActLinks.text(id, predecessor.date(), language, IanaLinkRelations.PREDECESSOR_VERSION));
-      links.add(
-          ActLinks.comparisonText(
-              id, predecessor.date(), date, language, VersionController.CHANGES));
-    }
-    if (at < inLanguage.size() - 1) {
-      links.add(
-          ActLinks.text(
-              id, inLanguage.get(at + 1).date(), language, VersionController.SUCCESSOR_VERSION));
-    }
-    links.add(ActLinks.text(id, inLanguage.getFirst().date(), language, IanaLinkRelations.FIRST));
-    links.add(
-        ActLinks.text(id, inLanguage.getLast().date(), language, IanaLinkRelations.LATEST_VERSION));
-    for (var other : version.languages()) {
-      if (other != language) {
-        links.add(
-            ActLinks.text(id, date, other, IanaLinkRelations.ALTERNATE).withHreflang(other.iso()));
-      }
-    }
-    links.add(ActLinks.eurLex(version.celex(), language, "Read on EUR-Lex"));
-    links.add(
-        ActLinks.cellar(
-            cellarResources,
-            version.celex() + "." + language.code(),
-            "The expression in Cellar, its Formex among its manifestations"));
-    RepresentationModel<?> model = HalModelBuilder.halModelOf(expression).links(links).build();
-    return ResponseEntity.ok().cacheControl(cacheControl).body(model);
+    return resources.ok(assembler.toModel(act, version, language, expression));
   }
 
   private static ResponseStatusException noText(ActIdentifier id, LocalDate date, String tag) {

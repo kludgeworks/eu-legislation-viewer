@@ -39,7 +39,7 @@ import org.springframework.web.client.ResourceAccessException;
  */
 @WebMvcTest(ActController.class)
 @ImportAutoConfiguration(JMoleculesJacksonAutoConfiguration.class)
-@Import(HalLinksConfiguration.class)
+@Import({HalLinksConfiguration.class, ActResources.class, ActAssembler.class})
 class ActControllerTests {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
   static final Eli AVSEC_ELI = new Eli("reg_impl", 2015, "1998");

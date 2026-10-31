@@ -1,17 +1,22 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.acts.web;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiLinks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.api.ApiRelations;
 import java.net.URI;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Locale;
+import java.util.function.BiFunction;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.LinkRelation;
+import org.springframework.hateoas.mediatype.hal.HalLinkRelation;
 import org.springframework.http.MediaType;
 
 /**
@@ -25,6 +30,9 @@ public final class ActLinks {
 
   /** The name of an alternate in Cellar: the work, or the expression. */
   public static final String CELLAR = "cellar";
+
+  /** An act's versions: the resource listing them, and each embedded as a summary. */
+  public static final HalLinkRelation VERSIONS = ApiRelations.of("versions");
 
   private ActLinks() {}
 
@@ -42,6 +50,17 @@ public final class ActLinks {
   /** One version, by the date it applies from: /api/acts/32015R1998/versions/2026-03-22. */
   public static Link version(ActIdentifier act, LocalDate date, LinkRelation relation) {
     return ApiLinks.to(relation, "acts", act.celex(), "versions", date.toString());
+  }
+
+  /** Each version as itself (TimelineLinks): its link by its date, as {@code relation}. */
+  public static BiFunction<Version, LinkRelation, Link> toVersion(ActIdentifier act) {
+    return (version, relation) -> version(act, version.date(), relation);
+  }
+
+  /** Each version as its text in {@code language} (TimelineLinks). */
+  public static BiFunction<Version, LinkRelation, Link> toText(
+      ActIdentifier act, Language language) {
+    return (version, relation) -> text(act, version.date(), language, relation);
   }
 
   /** A version's text in {@code language}: …/versions/2026-03-22/texts/en. */
@@ -76,9 +95,11 @@ public final class ActLinks {
     return ApiLinks.to(relation, "acts", act.celex(), "amendments");
   }
 
-  /** A version as a summary in a list, with its link (never the text). */
-  public static EntityModel<Version> summary(ActIdentifier act, Version version) {
-    return EntityModel.of(version, version(act, version.date(), IanaLinkRelations.SELF));
+  /** The act's versions as summaries, in date order, each with its link (never the text). */
+  public static List<EntityModel<Version>> summaries(Act act) {
+    return act.timeline().versions().stream()
+        .map(v -> EntityModel.of(v, version(act.id(), v.date(), IanaLinkRelations.SELF)))
+        .toList();
   }
 
   /** A document's text on EUR-Lex in {@code language}, by its CELEX, as an alternate. */
