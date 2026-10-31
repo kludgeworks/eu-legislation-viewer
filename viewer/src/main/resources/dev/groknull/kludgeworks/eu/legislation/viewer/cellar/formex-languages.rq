@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: MIT
+# The languages one version has Formex in (FormexFiles): work (CELEX) → expressions → those with a
+# Formex manifestation (fmx4), each by its language's authority URI (…/authority/language/ENG).
+# FormexFiles fills in {{celex}} (32015R1998, 02015R1998-20260322), checked against its pattern
+# first.
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?language
+WHERE {
+  ?work cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
+  ?expr cdm:expression_belongs_to_work ?work ;
+        cdm:expression_uses_language ?language .
+  ?manifestation cdm:manifestation_manifests_expression ?expr ;
+       cdm:manifestation_type "fmx4"^^xsd:string .
+}
+ORDER BY ?language

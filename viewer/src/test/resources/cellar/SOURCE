@@ -2,6 +2,8 @@ Responses recorded from Cellar on 2026-10-29, byte for byte, for the cellar modu
 
 sparql-32009D0959.json  FormexFiles' query for 32009D0959 in English (one item per file)
 sparql-32023R1669.json  the same for 32023R1669 (one zip item)
+sparql-languages-02015R1998-20260322.json
+                        formex-languages.rq for 02015R1998-20260322 (recorded 2026-10-31)
 list-32023R1669.xhtml   GET http://publications.europa.eu/resource/celex/32023R1669
                         Accept: application/list;mtype=fmx4, Accept-Language: eng
 L_2009330EN.01008001.doc.xml
