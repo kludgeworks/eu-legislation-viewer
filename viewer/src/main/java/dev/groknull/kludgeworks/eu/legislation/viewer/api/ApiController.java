@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.api;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-
+import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +19,6 @@ class ApiController {
 
   @GetMapping(produces = {MediaTypes.HAL_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
   ApiRoot root() {
-    return new ApiRoot().add(linkTo(ApiController.class).withSelfRel());
+    return new ApiRoot().add(ApiLinks.to(IanaLinkRelations.SELF));
   }
 }
