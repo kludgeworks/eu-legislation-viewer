@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.application.PointInTime;
 import java.time.LocalDate;
@@ -46,6 +47,17 @@ class CellarLiveTests {
     assertThat(shared.eli()).isEqualTo(new Eli("dec", 2007, "44(1)"));
     assertThat(ojC.id()).isEqualTo(new ActIdentifier("32023D01464"));
     assertThat(ojC.eli()).isEqualTo(new Eli("C", 2023, "1464"));
+  }
+
+  @Test
+  void findsATreatyByItsEliWithItsConsolidationsAsVersions() {
+    var tfeu = acts.find(Eli.treaty("tfeu_2016")).orElseThrow();
+
+    assertThat(tfeu.id()).isEqualTo(new ActIdentifier("12016E/TXT"));
+    assertThat(tfeu.timeline().versions())
+        .filteredOn(v -> v.kind() == Version.Kind.CONSOLIDATED)
+        .extracting(Version::date)
+        .startsWith(LocalDate.of(2015, 12, 25), LocalDate.of(2016, 9, 1));
   }
 
   @Test

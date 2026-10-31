@@ -34,6 +34,14 @@ class EliTest {
   }
 
   @Test
+  void readsATreatysEli() {
+    assertThat(Eli.parse("http://data.europa.eu/eli/treaty/tfeu_2016/oj"))
+        .contains(Eli.treaty("tfeu_2016"));
+    assertThat(Eli.parse("http://data.europa.eu/eli/treaty/withd_2019(2)/oj").orElseThrow().path())
+        .isEqualTo("treaty/withd_2019(2)");
+  }
+
+  @Test
   void hasNoneForAnEliOfAnotherShape() {
     assertThat(Eli.parse("http://data.europa.eu/eli/treaty/tfeu_2008/art_251/oj")).isEmpty();
     assertThat(Eli.parse("http://data.europa.eu/eli/reg/1999/1255/corrigendum/1999-10-08/oj"))
@@ -46,5 +54,6 @@ class EliTest {
     assertThatIllegalArgumentException().isThrownBy(() -> new Eli("X", 2015, "1998"));
     assertThatIllegalArgumentException().isThrownBy(() -> new Eli("dec", 2007, "44(1"));
     assertThatIllegalArgumentException().isThrownBy(() -> new Eli("dec", 2007, "44\"/oj"));
+    assertThatIllegalArgumentException().isThrownBy(() -> Eli.treaty("tfeu_2016/art_251"));
   }
 }
