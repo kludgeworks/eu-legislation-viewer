@@ -77,6 +77,32 @@ class TimelineTest {
     assertThatIllegalArgumentException().isThrownBy(() -> TIMELINE.successor(other));
   }
 
+  @Test
+  void aVersionIsFoundByTheDayItStartsOnOnly() {
+    assertThat(TIMELINE.startingOn(LocalDate.of(2016, 2, 29))).contains(FIRST);
+    assertThat(TIMELINE.startingOn(LocalDate.of(2016, 3, 1))).isEmpty();
+  }
+
+  @Test
+  void theVersionsInALanguagePassOverThoseWithoutIt() {
+    var withoutIrish =
+        new Version(
+            Version.Kind.CONSOLIDATED,
+            LocalDate.of(2020, 1, 1),
+            "02015R1998-20200101",
+            false,
+            List.of(),
+            EnumSet.of(Language.ENG));
+    var timeline = new Timeline(List.of(ORIGINAL, withoutIrish, INTERIM));
+
+    var irish = timeline.in(Language.GLE).orElseThrow();
+
+    assertThat(irish.versions()).containsExactly(ORIGINAL, INTERIM);
+    assertThat(irish.successor(ORIGINAL)).contains(INTERIM);
+    assertThat(timeline.in(Language.ENG)).hasValue(timeline);
+    assertThat(new Timeline(List.of(withoutIrish)).in(Language.GLE)).isEmpty();
+  }
+
   private static Version consolidated(String date, boolean interim) {
     return new Version(
         Version.Kind.CONSOLIDATED,

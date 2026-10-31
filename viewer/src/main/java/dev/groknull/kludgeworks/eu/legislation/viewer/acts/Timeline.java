@@ -52,6 +52,24 @@ public final class Timeline {
     return value(byDate.floorEntry(date));
   }
 
+  /**
+   * The version that starts on {@code date}; none if none does (applicableOn gives the one that
+   * applies).
+   */
+  public Optional<Version> startingOn(LocalDate date) {
+    return Optional.ofNullable(byDate.get(date));
+  }
+
+  /**
+   * The versions in {@code language} (Version.languages), as a timeline of their own: its first,
+   * latest and those either side of a version are the ones a reader of that language steps through,
+   * a version without it passed over. None if no version is in it.
+   */
+  public Optional<Timeline> in(Language language) {
+    var versions = byDate.values().stream().filter(v -> v.languages().contains(language)).toList();
+    return versions.isEmpty() ? Optional.empty() : Optional.of(new Timeline(versions));
+  }
+
   /** The first version, from which the act's text first applies. */
   public Version first() {
     return byDate.firstEntry().getValue();
