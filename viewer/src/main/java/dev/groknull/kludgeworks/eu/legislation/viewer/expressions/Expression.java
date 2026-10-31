@@ -74,4 +74,176 @@ public record Expression(
      */
     CORRIGENDUM
   }
+
+  /**
+   * What comes before the preamble: the long title.
+   *
+   * @param longTitle The long title.
+   */
+  public record Preface(List<Block> longTitle) {
+
+    public Preface {
+      longTitle = List.copyOf(longTitle);
+    }
+  }
+
+  /**
+   * The preamble: the acting entity, citations, recitals and the enacting formula, in source order.
+   *
+   * @param eId Always pbl_1.
+   */
+  public record Preamble(EId eId, List<PreambleContent> content) {
+
+    public Preamble {
+      content = List.copyOf(content);
+    }
+  }
+
+  /**
+   * The closing block: final formula and signature.
+   *
+   * @param signatures The signatures: one, one per party to an agreement, or none (consolidated
+   *     versions).
+   */
+  public record Conclusions(List<Block> content, List<Signature> signatures) {
+
+    public Conclusions {
+      content = List.copyOf(content);
+      signatures = List.copyOf(signatures);
+    }
+  }
+
+  /**
+   * Place, date and signatories.
+   *
+   * @param placeAndDate "Done at Brussels, 5 November 2015.": the date is typed, the place stays
+   *     text (Formex does not mark it, and recognising it would mean parsing the wording of 24
+   *     languages).
+   * @param signatories One signatory; acts of Parliament and Council have two.
+   */
+  public record Signature(List<Inline> placeAndDate, List<Signatory> signatories) {
+
+    public Signature {
+      placeAndDate = List.copyOf(placeAndDate);
+      signatories = List.copyOf(signatories);
+    }
+  }
+
+  /**
+   * A signatory, its lines split by position.
+   *
+   * @param organization The first line: "For the Commission".
+   * @param role The lines in between: "The President".
+   * @param person The last line: the name.
+   */
+  public record Signatory(
+      @Nullable Lines organization, @Nullable Lines role, @Nullable Lines person) {}
+
+  /**
+   * An Official Journal publication.
+   *
+   * @param series The OJ series: L or C.
+   * @param number The issue number, without leading zeros; absent for documents published on their
+   *     own (from October 2023), which have a document number instead.
+   * @param date The publication date.
+   * @param page The first page.
+   * @param document The document's number in the Official Journal: for a document published on its
+   *     own (from October 2023), its number in the series, 2026/449 (cited OJ L, 2026/449); before,
+   *     for a C-series document, the number printed above its title, without brackets, 2022/C
+   *     155/03 (Formex NO.DOC.C).
+   */
+  public record Publication(
+      String series,
+      @Nullable String number,
+      @Nullable LocalDate date,
+      @Nullable String page,
+      @Nullable String document) {}
+
+  /**
+   * A consolidated version's period and the acts it integrates (Formex INFO.CONSLEG, GR.MOD.ACT,
+   * GR.CORRIG). What its dates mean in law (entry into force, application) comes from Cellar, not
+   * from here.
+   *
+   * @param events An act this version integrates, in the order the source lists them.
+   * @param end The last day this version applies to; absent while it is the latest.
+   * @param produced When the Publications Office produced the consolidation.
+   * @param sequence The production sequence number of the consolidation, e.g. 023.001.0.
+   */
+  public record Lifecycle(
+      List<EventRef> events,
+      @Nullable LocalDate end,
+      @Nullable LocalDate produced,
+      @Nullable String sequence) {
+
+    public Lifecycle {
+      events = List.copyOf(events);
+    }
+  }
+
+  /**
+   * An act a consolidated version integrates.
+   *
+   * @param type Amendment or corrigendum.
+   * @param act The CELEX number of the amending act or corrigendum.
+   * @param date The date of that act; for a corrigendum, which has no date of its own, the day it
+   *     was published.
+   */
+  public record EventRef(Type type, ActIdentifier act, @Nullable LocalDate date) {
+
+    /** What kind of act a consolidated version integrates. */
+    public enum Type {
+      /** An amending act. */
+      AMENDMENT,
+      /** A corrigendum, correcting an error in the published text. */
+      CORRIGENDUM
+    }
+  }
+
+  /**
+   * Which document this is, and where it was published.
+   *
+   * @param celex The CELEX number of this document: 02015R1998-20260322 for a consolidated version,
+   *     32015R1998 for the original.
+   * @param eli This document's ELI, when its source carries it (from Formex 06.x): the act's
+   *     original text's, or the corrigendum's own.
+   * @param publication Where the act was published in the Official Journal.
+   */
+  public record Source(String celex, @Nullable String eli, @Nullable Publication publication) {}
+
+  /**
+   * A footnote, referred to from the text by noteRef.
+   *
+   * @param eId note_N by position in the document; in another file of an OJ act's package, that
+   *     file's sequence number: note_anx01000301-1 in an annex, note_inc000402-1 in an included
+   *     document, note_att01000301-1 in an attached document.
+   * @param marker The marker as printed: the source's own number if it gives one, * for star
+   *     numbering, else the running number.
+   * @param kind Where the note belongs.
+   */
+  public record Note(EId eId, String marker, Kind kind, List<Block> content) {
+
+    public Note {
+      content = List.copyOf(content);
+    }
+
+    /** Kinds of footnote. */
+    public enum Kind {
+      /** A footnote to the text; numbered through the document. */
+      FOOTNOTE,
+      /** A note to a table; numbered within the table. */
+      TABLE,
+      /** A note inside quoted text, belonging to the quoted act. */
+      QUOTATION,
+      /** A note printed at the end of the document. */
+      ENDNOTE,
+      /** A note whose marker the source sets by hand. */
+      MANUAL,
+      /** A note to a title (Formex TYPE TITLE). */
+      TITLE,
+      /**
+       * A note that belongs to a chapter of the document (Formex TYPE CHAPTER, 05.00 and later).
+       */
+      CHAPTER
+    }
+  }
 }

@@ -3,9 +3,9 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.Source;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ExpressionIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expressions;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Source;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

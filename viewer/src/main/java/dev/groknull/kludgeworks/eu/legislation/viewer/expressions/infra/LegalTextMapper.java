@@ -2,61 +2,61 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Annotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.BlockContainer;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.BlockLines;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Cell;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Changed;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Citations;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Conclusions;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.DateRef;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.DeletedBlock;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.DeletedInline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.DocDate;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.DocNumber;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.DocPurpose;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.DocType;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.Annotation;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.BlockContainer;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.DeletedBlock;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.Figure;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.ListBlock;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.MathBlock;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.NewText;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.OldText;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.Paragraph;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.QuotedStructure;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.Table;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Block.TableGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.EId;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Emphasis;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Eol;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.EventRef;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Figure;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Formula;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.Conclusions;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.EventRef;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.Lifecycle;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.Note;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.Preamble;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.Preface;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.Publication;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.Signatory;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.Signature;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Expression.Source;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ImageContent;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.InlineImage;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.InlineLines;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Lifecycle;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.Changed;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.DateRef;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.DeletedInline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.DocDate;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.DocNumber;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.DocPurpose;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.DocType;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.Emphasis;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.Eol;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.InlineImage;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.MathInline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.NoteRef;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.Quote;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.Ref;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.Span;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Inline.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Lines;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.ListBlock;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.MathBlock;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.MathInline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.NewText;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Note;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.NoteRef;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.OldText;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Paragraph;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Preamble;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Lines.BlockLines;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Lines.InlineLines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.PreambleContent;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Preface;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.PreambleContent.Citations;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.PreambleContent.Formula;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.PreambleContent.Recitals;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Provenance;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Publication;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Quote;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.QuotedStructure;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Recitals;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Ref;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Row;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.RowGroup;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Signatory;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Signature;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Source;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Span;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Table;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.TableGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.TableRow;
-import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Text;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.TableRow.Cell;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.TableRow.Row;
+import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.TableRow.RowGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.Unit;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra.xml.XmlAction;
 import dev.groknull.kludgeworks.eu.legislation.viewer.expressions.infra.xml.XmlAnnexes;
@@ -339,7 +339,8 @@ interface LegalTextMapper {
 
   DocPurpose docPurpose(XmlDocPurpose source);
 
-  // amendment markers on running text: the same attributes as a unit's provenance
+  // amendment markers on running text: their attributes are a provenance, as a unit's, and their
+  // content the words they mark
 
   @BeanMapping(ignoreUnmappedSourceProperties = "content")
   Provenance provenance(XmlChanged source);
@@ -347,13 +348,11 @@ interface LegalTextMapper {
   @BeanMapping(ignoreUnmappedSourceProperties = "content")
   Provenance provenance(XmlDeletedInline source);
 
-  default Changed changed(XmlChanged source) {
-    return new Changed(provenance(source), inlines(source.getContent()));
-  }
+  @Mapping(target = "provenance", source = ".")
+  Changed changed(XmlChanged source);
 
-  default DeletedInline deletedInline(XmlDeletedInline source) {
-    return new DeletedInline(provenance(source), inlines(source.getContent()));
-  }
+  @Mapping(target = "provenance", source = ".")
+  DeletedInline deletedInline(XmlDeletedInline source);
 
   // kinds: the same constants on both sides
 
