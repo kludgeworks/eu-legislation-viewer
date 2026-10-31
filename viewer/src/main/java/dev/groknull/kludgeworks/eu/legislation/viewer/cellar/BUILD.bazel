@@ -9,6 +9,7 @@ java_library(
     runtime_deps = ["//viewer/src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/cellar:sparql"],
     deps = [
         "@maven//:jakarta_validation_jakarta_validation_api",
+        "@maven//:org_jmolecules_jmolecules_hexagonal_architecture",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_springframework_boot_spring_boot",

@@ -33,11 +33,15 @@ maven.install(
         "org.springframework:spring-core",
         "org.springframework:spring-context",
         "org.springframework:spring-web",
+        "org.springframework:spring-webmvc",
         "org.springframework.boot:spring-boot",
         "org.springframework.boot:spring-boot-autoconfigure",
         # the app: Spring MVC on Tomcat, and Actuator
         "org.springframework.boot:spring-boot-starter-webmvc",
         "org.springframework.boot:spring-boot-starter-actuator",
+        # HAL: the API's representations and links (Spring HATEOAS)
+        "org.springframework.boot:spring-boot-starter-hateoas",
+        "org.springframework.hateoas:spring-hateoas",
         # RestClient.Builder, configured by Boot (spring.http.clients.*)
         "org.springframework.boot:spring-boot-starter-restclient",
         # Jakarta Bean Validation (Hibernate Validator), for @Validated configuration properties
@@ -50,12 +54,16 @@ maven.install(
         "org.springframework.boot:spring-boot-loader-tools:4.1.1",  # not in the BOM: keep it at Boot's version
         "org.springframework.modulith:spring-modulith-api",
         "tools.jackson.core:jackson-databind",
-        # jMolecules: the DDD building blocks and the sliced onion's rings, as annotations, and
+        # jMolecules: the DDD building blocks, the sliced onion's rings and the adapters' sides, as annotations, and
         # their ArchUnit rules (tests); versions from the jMolecules BOM below
         "org.jmolecules:jmolecules-ddd",
         "org.jmolecules:jmolecules-onion-architecture",
+        "org.jmolecules:jmolecules-hexagonal-architecture",
         "org.jmolecules:jmolecules-events",
         "org.jmolecules.integrations:jmolecules-archunit",
+        # identifiers from path variables, and single-value types as plain JSON values
+        "org.jmolecules.integrations:jmolecules-spring",
+        "org.jmolecules.integrations:jmolecules-jackson3",
         "org.jspecify:jspecify",
         # tests
         "org.junit.jupiter:junit-jupiter-api",
@@ -69,6 +77,8 @@ maven.install(
         "com.github.javaparser:javaparser-core:3.28.2",
         "org.springframework:spring-test",
         "org.springframework.boot:spring-boot-test",
+        "org.springframework.boot:spring-boot-test-autoconfigure",
+        "org.springframework.boot:spring-boot-webmvc-test",
         "org.hamcrest:hamcrest",
         "org.springframework.modulith:spring-modulith-core",
         # Valkey in a container, for the tests and for running the app locally (TestViewerApplication)
@@ -83,6 +93,13 @@ maven.install(
     # the resolved versions and their SHA-256s; after changing the artifacts: mise run pin
     lock_file = "//:maven_install.json",
     repositories = ["https://repo1.maven.org/maven2"],
+)
+
+# the Servlet API, to compile against only: at run time it is Tomcat's own
+maven.artifact(
+    artifact = "jakarta.servlet-api",
+    group = "jakarta.servlet",
+    neverlink = True,
 )
 use_repo(maven, "maven")
 

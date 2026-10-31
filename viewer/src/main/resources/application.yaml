@@ -1,4 +1,8 @@
 # SPDX-License-Identifier: MIT
+server:
+  # links at the host and path a proxy forwards (X-Forwarded-*, Forwarded), read by Spring itself
+  forward-headers-strategy: framework
+
 spring:
   # requests and the conversions done ahead on virtual threads: a page mostly waits on Cellar
   threads:
@@ -10,8 +14,15 @@ spring:
       # large SPARQL results take minutes; redirects followed (Cellar's 303s)
       connect-timeout: 10s
       read-timeout: 5m
+  mvc:
+    # errors as RFC 9457 problem details (application/problem+json)
+    problemdetails:
+      enabled: true
 
 viewer:
+  acts:
+    # how long an act may be cached: its timeline changes only when Cellar publishes a consolidation
+    cache-for: 1h
   cellar:
     sparql-endpoint: https://publications.europa.eu/webapi/rdf/sparql
     # where Cellar's resource URIs start (…/resource/celex/32015R1998)

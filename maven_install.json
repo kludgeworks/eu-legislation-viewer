@@ -9,6 +9,7 @@
     "com.google.j2objc:j2objc-annotations": 2003271689,
     "com.uber.nullaway:nullaway": -1216571949,
     "io.xspec:xspec": -1230917719,
+    "jakarta.servlet:jakarta.servlet-api": 712477102,
     "jakarta.validation:jakarta.validation-api": -1858198223,
     "jakarta.xml.bind:jakarta.xml.bind-api": 2142069040,
     "name.dmaus.schxslt:schxslt2": 601299804,
@@ -18,9 +19,12 @@
     "org.glassfish.jaxb:jaxb-xjc": -1416257791,
     "org.hamcrest:hamcrest": -29695334,
     "org.jmolecules.integrations:jmolecules-archunit": -1728251600,
+    "org.jmolecules.integrations:jmolecules-jackson3": -1126255350,
+    "org.jmolecules.integrations:jmolecules-spring": -1106265251,
     "org.jmolecules:jmolecules-bom": -1738962242,
     "org.jmolecules:jmolecules-ddd": 1569514801,
     "org.jmolecules:jmolecules-events": -1329545148,
+    "org.jmolecules:jmolecules-hexagonal-architecture": 1662347712,
     "org.jmolecules:jmolecules-onion-architecture": 1660079362,
     "org.jspecify:jspecify": 1062581018,
     "org.junit.jupiter:junit-jupiter-api": 194920406,
@@ -36,12 +40,16 @@
     "org.springframework.boot:spring-boot-loader-tools": -1122518281,
     "org.springframework.boot:spring-boot-starter-actuator": -1082017891,
     "org.springframework.boot:spring-boot-starter-data-redis": -194155460,
+    "org.springframework.boot:spring-boot-starter-hateoas": 1110708691,
     "org.springframework.boot:spring-boot-starter-restclient": 888455491,
     "org.springframework.boot:spring-boot-starter-validation": 113118493,
     "org.springframework.boot:spring-boot-starter-webmvc": 338400426,
     "org.springframework.boot:spring-boot-test": 1189299640,
+    "org.springframework.boot:spring-boot-test-autoconfigure": -358333758,
     "org.springframework.boot:spring-boot-testcontainers": 152627146,
+    "org.springframework.boot:spring-boot-webmvc-test": -490892141,
     "org.springframework.data:spring-data-redis": -501745515,
+    "org.springframework.hateoas:spring-hateoas": -609683625,
     "org.springframework.modulith:spring-modulith-api": -1267837964,
     "org.springframework.modulith:spring-modulith-bom": 1667680144,
     "org.springframework.modulith:spring-modulith-core": 2094793953,
@@ -49,6 +57,7 @@
     "org.springframework:spring-core": 828592846,
     "org.springframework:spring-test": -967883781,
     "org.springframework:spring-web": -1196164797,
+    "org.springframework:spring-webmvc": 1527496007,
     "org.testcontainers:testcontainers": -258185670,
     "org.xmlunit:xmlunit-assertj3": -355876019,
     "repositories": -1949687017,
@@ -71,6 +80,7 @@
     "com.google.guava:guava": -1710221766,
     "com.google.guava:listenablefuture": 1079558157,
     "com.google.j2objc:j2objc-annotations": -1008747351,
+    "com.jayway.jsonpath:json-path": -843320851,
     "com.sun.istack:istack-commons-runtime": -1984285786,
     "com.sun.istack:istack-commons-tools": -1314362809,
     "com.sun.xml.bind.external:relaxng-datatype": -66137461,
@@ -99,11 +109,14 @@
     "io.xspec:xspec": -998869811,
     "jakarta.activation:jakarta.activation-api": -1623326611,
     "jakarta.annotation:jakarta.annotation-api": 196616042,
+    "jakarta.servlet:jakarta.servlet-api": -1421863120,
     "jakarta.validation:jakarta.validation-api": -1708329466,
     "jakarta.xml.bind:jakarta.xml.bind-api": -1145319810,
     "name.dmaus.schxslt:schxslt2": -2110888029,
     "net.bytebuddy:byte-buddy": -2144538556,
     "net.java.dev.jna:jna": 154162148,
+    "net.minidev:accessors-smart": 2098330403,
+    "net.minidev:json-smart": 1407038084,
     "net.sf.saxon:Saxon-HE": -1112923966,
     "org.apache.commons:commons-compress": -1565950364,
     "org.apache.commons:commons-lang3": 1841935436,
@@ -129,8 +142,11 @@
     "org.jboss.logging:jboss-logging": 670094878,
     "org.jetbrains:annotations": -845966580,
     "org.jmolecules.integrations:jmolecules-archunit": -296919357,
+    "org.jmolecules.integrations:jmolecules-jackson3": 1192958134,
+    "org.jmolecules.integrations:jmolecules-spring": 1517973402,
     "org.jmolecules:jmolecules-ddd": -1358615692,
     "org.jmolecules:jmolecules-events": -1249443269,
+    "org.jmolecules:jmolecules-hexagonal-architecture": 542490219,
     "org.jmolecules:jmolecules-onion-architecture": 940530457,
     "org.jmolecules:jstereotype": 1595728065,
     "org.jspecify:jspecify": -109882726,
@@ -145,6 +161,7 @@
     "org.mapstruct:mapstruct-processor": -644699307,
     "org.opentest4j.reporting:open-test-reporting-tooling-spi": 1212162497,
     "org.opentest4j:opentest4j": -1711174392,
+    "org.ow2.asm:asm": -1101379267,
     "org.reactivestreams:reactive-streams": 1281941191,
     "org.rnorth.duct-tape:duct-tape": -1059401544,
     "org.slf4j:jul-to-slf4j": 1118476727,
@@ -155,6 +172,7 @@
     "org.springframework.boot:spring-boot-autoconfigure": 1472557455,
     "org.springframework.boot:spring-boot-data-commons": 1999396468,
     "org.springframework.boot:spring-boot-data-redis": 1412747784,
+    "org.springframework.boot:spring-boot-hateoas": -1075797122,
     "org.springframework.boot:spring-boot-health": -1642279449,
     "org.springframework.boot:spring-boot-http-client": 227691599,
     "org.springframework.boot:spring-boot-http-converter": 745525851,
@@ -169,6 +187,7 @@
     "org.springframework.boot:spring-boot-starter": -1905590456,
     "org.springframework.boot:spring-boot-starter-actuator": -1286390891,
     "org.springframework.boot:spring-boot-starter-data-redis": 867793389,
+    "org.springframework.boot:spring-boot-starter-hateoas": 1397262749,
     "org.springframework.boot:spring-boot-starter-jackson": 369527275,
     "org.springframework.boot:spring-boot-starter-logging": -1965325172,
     "org.springframework.boot:spring-boot-starter-micrometer-metrics": -242434938,
@@ -178,17 +197,21 @@
     "org.springframework.boot:spring-boot-starter-validation": 727146254,
     "org.springframework.boot:spring-boot-starter-webmvc": -1923582309,
     "org.springframework.boot:spring-boot-test": -679692564,
+    "org.springframework.boot:spring-boot-test-autoconfigure": 640840680,
     "org.springframework.boot:spring-boot-testcontainers": -160202142,
     "org.springframework.boot:spring-boot-tomcat": 637947697,
     "org.springframework.boot:spring-boot-transaction": 1590643052,
     "org.springframework.boot:spring-boot-validation": 75296794,
     "org.springframework.boot:spring-boot-web-server": 1791077981,
     "org.springframework.boot:spring-boot-webmvc": 1644292535,
+    "org.springframework.boot:spring-boot-webmvc-test": 479242789,
     "org.springframework.data:spring-data-commons": 1365953262,
     "org.springframework.data:spring-data-keyvalue": 1294982872,
     "org.springframework.data:spring-data-redis": 514606181,
+    "org.springframework.hateoas:spring-hateoas": -1771365638,
     "org.springframework.modulith:spring-modulith-api": -1671136456,
     "org.springframework.modulith:spring-modulith-core": 424804072,
+    "org.springframework.plugin:spring-plugin-core": 218341417,
     "org.springframework:spring-aop": 2140047740,
     "org.springframework:spring-beans": -52091312,
     "org.springframework:spring-context": -1592913882,
@@ -218,12 +241,16 @@
     "com.google.errorprone:error_prone_annotations:2.5.1": "com.google.errorprone:error_prone_annotations:2.50.0",
     "com.google.guava:guava:32.0.1-jre": "com.google.guava:guava:33.6.0-jre",
     "com.google.j2objc:j2objc-annotations:2.8": "com.google.j2objc:j2objc-annotations:3.1",
+    "jakarta.servlet:jakarta.servlet-api": "jakarta.servlet:jakarta.servlet-api:6.1.0",
     "jakarta.validation:jakarta.validation-api": "jakarta.validation:jakarta.validation-api:3.1.1",
     "org.assertj:assertj-core": "org.assertj:assertj-core:3.27.7",
     "org.hamcrest:hamcrest": "org.hamcrest:hamcrest:3.0",
     "org.jmolecules.integrations:jmolecules-archunit": "org.jmolecules.integrations:jmolecules-archunit:0.33.0",
+    "org.jmolecules.integrations:jmolecules-jackson3": "org.jmolecules.integrations:jmolecules-jackson3:0.33.0",
+    "org.jmolecules.integrations:jmolecules-spring": "org.jmolecules.integrations:jmolecules-spring:0.33.0",
     "org.jmolecules:jmolecules-ddd": "org.jmolecules:jmolecules-ddd:2.0.1",
     "org.jmolecules:jmolecules-events": "org.jmolecules:jmolecules-events:2.0.1",
+    "org.jmolecules:jmolecules-hexagonal-architecture": "org.jmolecules:jmolecules-hexagonal-architecture:2.0.1",
     "org.jmolecules:jmolecules-onion-architecture": "org.jmolecules:jmolecules-onion-architecture:2.0.1",
     "org.jspecify:jspecify": "org.jspecify:jspecify:1.0.1",
     "org.junit.jupiter:junit-jupiter-api": "org.junit.jupiter:junit-jupiter-api:6.0.3",
@@ -235,18 +262,23 @@
     "org.springframework.boot:spring-boot-autoconfigure": "org.springframework.boot:spring-boot-autoconfigure:4.1.1",
     "org.springframework.boot:spring-boot-starter-actuator": "org.springframework.boot:spring-boot-starter-actuator:4.1.1",
     "org.springframework.boot:spring-boot-starter-data-redis": "org.springframework.boot:spring-boot-starter-data-redis:4.1.1",
+    "org.springframework.boot:spring-boot-starter-hateoas": "org.springframework.boot:spring-boot-starter-hateoas:4.1.1",
     "org.springframework.boot:spring-boot-starter-restclient": "org.springframework.boot:spring-boot-starter-restclient:4.1.1",
     "org.springframework.boot:spring-boot-starter-validation": "org.springframework.boot:spring-boot-starter-validation:4.1.1",
     "org.springframework.boot:spring-boot-starter-webmvc": "org.springframework.boot:spring-boot-starter-webmvc:4.1.1",
     "org.springframework.boot:spring-boot-test": "org.springframework.boot:spring-boot-test:4.1.1",
+    "org.springframework.boot:spring-boot-test-autoconfigure": "org.springframework.boot:spring-boot-test-autoconfigure:4.1.1",
     "org.springframework.boot:spring-boot-testcontainers": "org.springframework.boot:spring-boot-testcontainers:4.1.1",
+    "org.springframework.boot:spring-boot-webmvc-test": "org.springframework.boot:spring-boot-webmvc-test:4.1.1",
     "org.springframework.data:spring-data-redis": "org.springframework.data:spring-data-redis:4.1.1",
+    "org.springframework.hateoas:spring-hateoas": "org.springframework.hateoas:spring-hateoas:3.1.2",
     "org.springframework.modulith:spring-modulith-api": "org.springframework.modulith:spring-modulith-api:2.1.1",
     "org.springframework.modulith:spring-modulith-core": "org.springframework.modulith:spring-modulith-core:2.1.1",
     "org.springframework:spring-context": "org.springframework:spring-context:7.0.9",
     "org.springframework:spring-core": "org.springframework:spring-core:7.0.9",
     "org.springframework:spring-test": "org.springframework:spring-test:7.0.9",
     "org.springframework:spring-web": "org.springframework:spring-web:7.0.9",
+    "org.springframework:spring-webmvc": "org.springframework:spring-webmvc:7.0.9",
     "org.testcontainers:testcontainers": "org.testcontainers:testcontainers:2.0.5",
     "tools.jackson.core:jackson-databind": "tools.jackson.core:jackson-databind:3.1.5"
   },
@@ -340,6 +372,12 @@
         "jar": "84d3a150518485f8140ea99b8a985656749629f6433c92b80c75b36aba3b099b"
       },
       "version": "3.1"
+    },
+    "com.jayway.jsonpath:json-path": {
+      "shasums": {
+        "jar": "890daa95dd3892d34d9fabc27cd5153656e6f369358625c88f4dc7b79cbd6c5a"
+      },
+      "version": "2.10.0"
     },
     "com.sun.istack:istack-commons-runtime": {
       "shasums": {
@@ -509,6 +547,12 @@
       },
       "version": "3.0.0"
     },
+    "jakarta.servlet:jakarta.servlet-api": {
+      "shasums": {
+        "jar": "8a31f465f3593bf2351531a5c952014eb839da96a605b5825b93dd54714c48c4"
+      },
+      "version": "6.1.0"
+    },
     "jakarta.validation:jakarta.validation-api": {
       "shasums": {
         "jar": "63ce00156388c365f3ac1be71fcfaf114682fc0c452020b5df6e7ec236e142ab"
@@ -538,6 +582,18 @@
         "jar": "260c4b1e22b1db9e110ee441c4f13ce115f841fa48c41d78750986214b395557"
       },
       "version": "5.18.1"
+    },
+    "net.minidev:accessors-smart": {
+      "shasums": {
+        "jar": "222c9f547bb20a99fc486403a398352d1306fb671b38abd7ecab6401df170e61"
+      },
+      "version": "2.6.0"
+    },
+    "net.minidev:json-smart": {
+      "shasums": {
+        "jar": "1ae4b561458afb540be8ec5c6dbb4f2e715a319a7ae64854998aaf924770d61b"
+      },
+      "version": "2.6.0"
     },
     "net.sf.saxon:Saxon-HE": {
       "shasums": {
@@ -689,6 +745,18 @@
       },
       "version": "0.33.0"
     },
+    "org.jmolecules.integrations:jmolecules-jackson3": {
+      "shasums": {
+        "jar": "ad8dbb99026e0b675b95dbbe8836b7c37fac2cde4b2034a6de541b9d8f653116"
+      },
+      "version": "0.33.0"
+    },
+    "org.jmolecules.integrations:jmolecules-spring": {
+      "shasums": {
+        "jar": "faa2e1346b3b2e4333422ff2d82c1a3cdba5c0a0f4c7907b348a4a70eab566c5"
+      },
+      "version": "0.33.0"
+    },
     "org.jmolecules:jmolecules-ddd": {
       "shasums": {
         "jar": "29c9013e9110ef169a9564bc13fdf3f77e6bcece19fa2938cb11b9f29d497d78"
@@ -698,6 +766,12 @@
     "org.jmolecules:jmolecules-events": {
       "shasums": {
         "jar": "2dd20f02039c825de38c381d76a0f5cc912b9ab85f9fb6dabf7b10c1c3c9e983"
+      },
+      "version": "2.0.1"
+    },
+    "org.jmolecules:jmolecules-hexagonal-architecture": {
+      "shasums": {
+        "jar": "60f7603e6ce8730c905e44a04fe8dd7fcf8bb17b399ec83bb9898312565f4322"
       },
       "version": "2.0.1"
     },
@@ -785,6 +859,12 @@
       },
       "version": "1.3.0"
     },
+    "org.ow2.asm:asm": {
+      "shasums": {
+        "jar": "8cadd43ac5eb6d09de05faecca38b917a040bb9139c7edeb4cc81c740b713281"
+      },
+      "version": "9.7.1"
+    },
     "org.reactivestreams:reactive-streams": {
       "shasums": {
         "jar": "f75ca597789b3dac58f61857b9ac2e1034a68fa672db35055a8fb4509e325f28"
@@ -842,6 +922,12 @@
     "org.springframework.boot:spring-boot-data-redis": {
       "shasums": {
         "jar": "8df7709a73616c85f12fbee0476a2856a766cda70c6ad87c9a24062b8fe34c91"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-hateoas": {
+      "shasums": {
+        "jar": "191dade29a858fcd8e801c90605c96744e3a10c08a37e3cbfac051d8b51a5565"
       },
       "version": "4.1.1"
     },
@@ -929,6 +1015,12 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-starter-hateoas": {
+      "shasums": {
+        "jar": "02924f44b6617d97272de07ca72d6cb283cabf67e146e4ff2a9c1926f5a28a37"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-starter-jackson": {
       "shasums": {
         "jar": "d30e594a3e0f3a090438fc22000a87ab577a3b80c674180a10544ca331207f24"
@@ -983,6 +1075,12 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-test-autoconfigure": {
+      "shasums": {
+        "jar": "fcae103bb2ca65226f225b846b210ba19fbfc42bdec1bf7009d3083baeb819b8"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-testcontainers": {
       "shasums": {
         "jar": "649aa8fb59153268e83e14b95b5652f8a4b26020bdf79c957eb12bc6c7807418"
@@ -1019,6 +1117,12 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-webmvc-test": {
+      "shasums": {
+        "jar": "46811c1d4307e9d54e9f41aaab69cea79d9785f2ba4257b92375a7621b35dfea"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.data:spring-data-commons": {
       "shasums": {
         "jar": "cf2a3f9bfabefca1a8c2c0f0a65c393d9ff83b0cb1cf7b705accac18a6ed0ee4"
@@ -1037,6 +1141,12 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.hateoas:spring-hateoas": {
+      "shasums": {
+        "jar": "7d5fb2f00f856465486e9367c2d33373f32cfac90b21a2c1151a28022705e840"
+      },
+      "version": "3.1.2"
+    },
     "org.springframework.modulith:spring-modulith-api": {
       "shasums": {
         "jar": "b8d083929e9f2078287619a81e01c9efc7bea5830fe03341608d283faffb37b2"
@@ -1048,6 +1158,12 @@
         "jar": "235b6d0a3cc43c2b5ece010df0e34a69bc0662982d4de9cc741185c73bff6c4a"
       },
       "version": "2.1.1"
+    },
+    "org.springframework.plugin:spring-plugin-core": {
+      "shasums": {
+        "jar": "7e48dac2e47dded5e6fa2cdf37786c5ba3f09dcf44000770e4513a47e63da6fe"
+      },
+      "version": "4.1.0"
     },
     "org.springframework:spring-aop": {
       "shasums": {
@@ -1210,6 +1326,10 @@
       "com.google.j2objc:j2objc-annotations",
       "org.jspecify:jspecify"
     ],
+    "com.jayway.jsonpath:json-path": [
+      "net.minidev:json-smart",
+      "org.slf4j:slf4j-api"
+    ],
     "com.sun.xml.bind.external:rngom": [
       "com.sun.xml.bind.external:relaxng-datatype"
     ],
@@ -1302,6 +1422,12 @@
     "jakarta.xml.bind:jakarta.xml.bind-api": [
       "jakarta.activation:jakarta.activation-api"
     ],
+    "net.minidev:accessors-smart": [
+      "org.ow2.asm:asm"
+    ],
+    "net.minidev:json-smart": [
+      "net.minidev:accessors-smart"
+    ],
     "net.sf.saxon:Saxon-HE": [
       "org.xmlresolver:xmlresolver",
       "org.xmlresolver:xmlresolver:jar:data"
@@ -1357,10 +1483,25 @@
       "com.tngtech.archunit:archunit",
       "org.slf4j:slf4j-api"
     ],
+    "org.jmolecules.integrations:jmolecules-jackson3": [
+      "org.jmolecules:jmolecules-ddd",
+      "org.slf4j:slf4j-api",
+      "org.springframework:spring-core",
+      "tools.jackson.core:jackson-databind"
+    ],
+    "org.jmolecules.integrations:jmolecules-spring": [
+      "org.jmolecules:jmolecules-ddd",
+      "org.slf4j:slf4j-api",
+      "org.springframework:spring-context",
+      "org.springframework:spring-core"
+    ],
     "org.jmolecules:jmolecules-ddd": [
       "org.jmolecules:jstereotype"
     ],
     "org.jmolecules:jmolecules-events": [
+      "org.jmolecules:jstereotype"
+    ],
+    "org.jmolecules:jmolecules-hexagonal-architecture": [
       "org.jmolecules:jstereotype"
     ],
     "org.jmolecules:jmolecules-onion-architecture": [
@@ -1440,6 +1581,12 @@
       "org.springframework.boot:spring-boot-transaction",
       "org.springframework.data:spring-data-redis"
     ],
+    "org.springframework.boot:spring-boot-hateoas": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-jackson",
+      "org.springframework.hateoas:spring-hateoas",
+      "org.springframework:spring-webmvc"
+    ],
     "org.springframework.boot:spring-boot-health": [
       "org.springframework.boot:spring-boot"
     ],
@@ -1505,6 +1652,11 @@
       "org.springframework.boot:spring-boot-starter",
       "org.springframework:spring-messaging"
     ],
+    "org.springframework.boot:spring-boot-starter-hateoas": [
+      "org.springframework.boot:spring-boot-hateoas",
+      "org.springframework.boot:spring-boot-starter",
+      "org.springframework.boot:spring-boot-starter-webmvc"
+    ],
     "org.springframework.boot:spring-boot-starter-jackson": [
       "org.springframework.boot:spring-boot-jackson",
       "org.springframework.boot:spring-boot-starter"
@@ -1551,6 +1703,9 @@
       "org.springframework.boot:spring-boot",
       "org.springframework:spring-test"
     ],
+    "org.springframework.boot:spring-boot-test-autoconfigure": [
+      "org.springframework.boot:spring-boot-test"
+    ],
     "org.springframework.boot:spring-boot-testcontainers": [
       "org.springframework.boot:spring-boot-autoconfigure",
       "org.testcontainers:testcontainers"
@@ -1580,6 +1735,12 @@
       "org.springframework:spring-web",
       "org.springframework:spring-webmvc"
     ],
+    "org.springframework.boot:spring-boot-webmvc-test": [
+      "org.springframework.boot:spring-boot-http-converter",
+      "org.springframework.boot:spring-boot-test-autoconfigure",
+      "org.springframework.boot:spring-boot-web-server",
+      "org.springframework.boot:spring-boot-webmvc"
+    ],
     "org.springframework.data:spring-data-commons": [
       "org.slf4j:slf4j-api",
       "org.springframework:spring-beans",
@@ -1599,6 +1760,17 @@
       "org.springframework:spring-oxm",
       "org.springframework:spring-tx"
     ],
+    "org.springframework.hateoas:spring-hateoas": [
+      "com.jayway.jsonpath:json-path",
+      "org.jspecify:jspecify",
+      "org.slf4j:slf4j-api",
+      "org.springframework.plugin:spring-plugin-core",
+      "org.springframework:spring-aop",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-context",
+      "org.springframework:spring-core",
+      "org.springframework:spring-web"
+    ],
     "org.springframework.modulith:spring-modulith-api": [
       "org.jspecify:jspecify"
     ],
@@ -1608,6 +1780,13 @@
       "org.springframework.modulith:spring-modulith-api",
       "org.springframework:spring-context",
       "org.springframework:spring-core"
+    ],
+    "org.springframework.plugin:spring-plugin-core": [
+      "org.jspecify:jspecify",
+      "org.slf4j:slf4j-api",
+      "org.springframework:spring-aop",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-context"
     ],
     "org.springframework:spring-aop": [
       "org.springframework:spring-beans",
@@ -1943,6 +2122,21 @@
     ],
     "com.google.j2objc:j2objc-annotations": [
       "com.google.j2objc.annotations"
+    ],
+    "com.jayway.jsonpath:json-path": [
+      "com.jayway.jsonpath",
+      "com.jayway.jsonpath.internal",
+      "com.jayway.jsonpath.internal.filter",
+      "com.jayway.jsonpath.internal.function",
+      "com.jayway.jsonpath.internal.function.json",
+      "com.jayway.jsonpath.internal.function.latebinding",
+      "com.jayway.jsonpath.internal.function.numeric",
+      "com.jayway.jsonpath.internal.function.sequence",
+      "com.jayway.jsonpath.internal.function.text",
+      "com.jayway.jsonpath.internal.path",
+      "com.jayway.jsonpath.spi.cache",
+      "com.jayway.jsonpath.spi.json",
+      "com.jayway.jsonpath.spi.mapper"
     ],
     "com.sun.istack:istack-commons-runtime": [
       "com.sun.istack",
@@ -2314,6 +2508,12 @@
       "jakarta.annotation.security",
       "jakarta.annotation.sql"
     ],
+    "jakarta.servlet:jakarta.servlet-api": [
+      "jakarta.servlet",
+      "jakarta.servlet.annotation",
+      "jakarta.servlet.descriptor",
+      "jakarta.servlet.http"
+    ],
     "jakarta.validation:jakarta.validation-api": [
       "jakarta.validation",
       "jakarta.validation.bootstrap",
@@ -2380,6 +2580,17 @@
       "com.sun.jna.internal",
       "com.sun.jna.ptr",
       "com.sun.jna.win32"
+    ],
+    "net.minidev:accessors-smart": [
+      "net.minidev.asm",
+      "net.minidev.asm.ex"
+    ],
+    "net.minidev:json-smart": [
+      "net.minidev.json",
+      "net.minidev.json.annotate",
+      "net.minidev.json.parser",
+      "net.minidev.json.reader",
+      "net.minidev.json.writer"
     ],
     "net.sf.saxon:Saxon-HE": [
       "net.sf.saxon",
@@ -2951,6 +3162,18 @@
       "org.jmolecules.spring.logging.impl",
       "org.jmolecules.spring.util"
     ],
+    "org.jmolecules.integrations:jmolecules-jackson3": [
+      "org.jmolecules.jackson3",
+      "org.jmolecules.jackson3.config"
+    ],
+    "org.jmolecules.integrations:jmolecules-spring": [
+      "org.jmolecules.spring",
+      "org.jmolecules.spring.config",
+      "org.jmolecules.spring.data",
+      "org.jmolecules.spring.jdbc",
+      "org.jmolecules.spring.jpa",
+      "org.jmolecules.spring.mongodb"
+    ],
     "org.jmolecules:jmolecules-ddd": [
       "org.jmolecules.ddd.annotation",
       "org.jmolecules.ddd.types"
@@ -2958,6 +3181,9 @@
     "org.jmolecules:jmolecules-events": [
       "org.jmolecules.event.annotation",
       "org.jmolecules.event.types"
+    ],
+    "org.jmolecules:jmolecules-hexagonal-architecture": [
+      "org.jmolecules.architecture.hexagonal"
     ],
     "org.jmolecules:jmolecules-onion-architecture": [
       "org.jmolecules.architecture.onion.classical",
@@ -3089,6 +3315,10 @@
     ],
     "org.opentest4j:opentest4j": [
       "org.opentest4j"
+    ],
+    "org.ow2.asm:asm": [
+      "org.objectweb.asm",
+      "org.objectweb.asm.signature"
     ],
     "org.reactivestreams:reactive-streams": [
       "org.reactivestreams"
@@ -3247,6 +3477,9 @@
       "org.springframework.boot.data.redis.health",
       "org.springframework.boot.data.redis.testcontainers"
     ],
+    "org.springframework.boot:spring-boot-hateoas": [
+      "org.springframework.boot.hateoas.autoconfigure"
+    ],
     "org.springframework.boot:spring-boot-health": [
       "org.springframework.boot.health.actuate.endpoint",
       "org.springframework.boot.health.application",
@@ -3353,6 +3586,11 @@
       "org.springframework.boot.test.web.htmlunit",
       "org.springframework.boot.test.web.server"
     ],
+    "org.springframework.boot:spring-boot-test-autoconfigure": [
+      "org.springframework.boot.test.autoconfigure",
+      "org.springframework.boot.test.autoconfigure.jdbc",
+      "org.springframework.boot.test.autoconfigure.json"
+    ],
     "org.springframework.boot:spring-boot-testcontainers": [
       "org.springframework.boot.testcontainers.beans",
       "org.springframework.boot.testcontainers.context",
@@ -3399,6 +3637,9 @@
       "org.springframework.boot.webmvc.autoconfigure.actuate.web.mappings",
       "org.springframework.boot.webmvc.autoconfigure.error",
       "org.springframework.boot.webmvc.error"
+    ],
+    "org.springframework.boot:spring-boot-webmvc-test": [
+      "org.springframework.boot.webmvc.test.autoconfigure"
     ],
     "org.springframework.data:spring-data-commons": [
       "org.springframework.data.annotation",
@@ -3503,6 +3744,26 @@
       "org.springframework.data.redis.support.collections",
       "org.springframework.data.redis.util"
     ],
+    "org.springframework.hateoas:spring-hateoas": [
+      "org.springframework.hateoas",
+      "org.springframework.hateoas.aot",
+      "org.springframework.hateoas.client",
+      "org.springframework.hateoas.config",
+      "org.springframework.hateoas.mediatype",
+      "org.springframework.hateoas.mediatype.alps",
+      "org.springframework.hateoas.mediatype.collectionjson",
+      "org.springframework.hateoas.mediatype.hal",
+      "org.springframework.hateoas.mediatype.hal.forms",
+      "org.springframework.hateoas.mediatype.html",
+      "org.springframework.hateoas.mediatype.jsonpath",
+      "org.springframework.hateoas.mediatype.problem",
+      "org.springframework.hateoas.mediatype.uber",
+      "org.springframework.hateoas.server",
+      "org.springframework.hateoas.server.core",
+      "org.springframework.hateoas.server.mvc",
+      "org.springframework.hateoas.server.reactive",
+      "org.springframework.hateoas.support"
+    ],
     "org.springframework.modulith:spring-modulith-api": [
       "org.springframework.modulith"
     ],
@@ -3510,6 +3771,11 @@
       "org.springframework.modulith.core",
       "org.springframework.modulith.core.config",
       "org.springframework.modulith.core.util"
+    ],
+    "org.springframework.plugin:spring-plugin-core": [
+      "org.springframework.plugin.core",
+      "org.springframework.plugin.core.config",
+      "org.springframework.plugin.core.support"
     ],
     "org.springframework:spring-aop": [
       "org.aopalliance.aop",
@@ -4471,6 +4737,7 @@
       "com.google.guava:guava",
       "com.google.guava:listenablefuture",
       "com.google.j2objc:j2objc-annotations",
+      "com.jayway.jsonpath:json-path",
       "com.sun.istack:istack-commons-runtime",
       "com.sun.istack:istack-commons-tools",
       "com.sun.xml.bind.external:relaxng-datatype",
@@ -4499,11 +4766,14 @@
       "io.xspec:xspec",
       "jakarta.activation:jakarta.activation-api",
       "jakarta.annotation:jakarta.annotation-api",
+      "jakarta.servlet:jakarta.servlet-api",
       "jakarta.validation:jakarta.validation-api",
       "jakarta.xml.bind:jakarta.xml.bind-api",
       "name.dmaus.schxslt:schxslt2",
       "net.bytebuddy:byte-buddy",
       "net.java.dev.jna:jna",
+      "net.minidev:accessors-smart",
+      "net.minidev:json-smart",
       "net.sf.saxon:Saxon-HE",
       "org.apache.commons:commons-compress",
       "org.apache.commons:commons-lang3",
@@ -4529,8 +4799,11 @@
       "org.jboss.logging:jboss-logging",
       "org.jetbrains:annotations",
       "org.jmolecules.integrations:jmolecules-archunit",
+      "org.jmolecules.integrations:jmolecules-jackson3",
+      "org.jmolecules.integrations:jmolecules-spring",
       "org.jmolecules:jmolecules-ddd",
       "org.jmolecules:jmolecules-events",
+      "org.jmolecules:jmolecules-hexagonal-architecture",
       "org.jmolecules:jmolecules-onion-architecture",
       "org.jmolecules:jstereotype",
       "org.jspecify:jspecify",
@@ -4545,6 +4818,7 @@
       "org.mapstruct:mapstruct-processor",
       "org.opentest4j.reporting:open-test-reporting-tooling-spi",
       "org.opentest4j:opentest4j",
+      "org.ow2.asm:asm",
       "org.reactivestreams:reactive-streams",
       "org.rnorth.duct-tape:duct-tape",
       "org.slf4j:jul-to-slf4j",
@@ -4555,6 +4829,7 @@
       "org.springframework.boot:spring-boot-autoconfigure",
       "org.springframework.boot:spring-boot-data-commons",
       "org.springframework.boot:spring-boot-data-redis",
+      "org.springframework.boot:spring-boot-hateoas",
       "org.springframework.boot:spring-boot-health",
       "org.springframework.boot:spring-boot-http-client",
       "org.springframework.boot:spring-boot-http-converter",
@@ -4569,6 +4844,7 @@
       "org.springframework.boot:spring-boot-starter",
       "org.springframework.boot:spring-boot-starter-actuator",
       "org.springframework.boot:spring-boot-starter-data-redis",
+      "org.springframework.boot:spring-boot-starter-hateoas",
       "org.springframework.boot:spring-boot-starter-jackson",
       "org.springframework.boot:spring-boot-starter-logging",
       "org.springframework.boot:spring-boot-starter-micrometer-metrics",
@@ -4578,17 +4854,21 @@
       "org.springframework.boot:spring-boot-starter-validation",
       "org.springframework.boot:spring-boot-starter-webmvc",
       "org.springframework.boot:spring-boot-test",
+      "org.springframework.boot:spring-boot-test-autoconfigure",
       "org.springframework.boot:spring-boot-testcontainers",
       "org.springframework.boot:spring-boot-tomcat",
       "org.springframework.boot:spring-boot-transaction",
       "org.springframework.boot:spring-boot-validation",
       "org.springframework.boot:spring-boot-web-server",
       "org.springframework.boot:spring-boot-webmvc",
+      "org.springframework.boot:spring-boot-webmvc-test",
       "org.springframework.data:spring-data-commons",
       "org.springframework.data:spring-data-keyvalue",
       "org.springframework.data:spring-data-redis",
+      "org.springframework.hateoas:spring-hateoas",
       "org.springframework.modulith:spring-modulith-api",
       "org.springframework.modulith:spring-modulith-core",
+      "org.springframework.plugin:spring-plugin-core",
       "org.springframework:spring-aop",
       "org.springframework:spring-beans",
       "org.springframework:spring-context",
@@ -4728,6 +5008,11 @@
     "org.jmolecules.integrations:jmolecules-archunit": {
       "org.apache.commons.logging.LogFactory": [
         "org.apache.commons.logging.LogFactoryService"
+      ]
+    },
+    "org.jmolecules.integrations:jmolecules-jackson3": {
+      "tools.jackson.databind.JacksonModule": [
+        "org.jmolecules.jackson3.JMoleculesModule"
       ]
     },
     "org.junit.jupiter:junit-jupiter-engine": {
