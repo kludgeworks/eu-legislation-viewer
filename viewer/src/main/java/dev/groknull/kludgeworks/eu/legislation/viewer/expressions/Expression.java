@@ -13,8 +13,10 @@ import org.jspecify.annotations.Nullable;
  * One language version of an act: its original text, or one consolidated version.
  *
  * @param act The CELEX number of the act this text belongs to: the act itself for its original text
- *     and its consolidated versions (32015R1998), the act it corrects for a corrigendum (32009R0631
- *     for corrigendum 32009R0631R(01)). The document's own number is source/@celex.
+ *     and its consolidated versions (32015R1998), and a corrigendum itself (32009R0631R(01)), a
+ *     work of its own: what it corrects (one document or several) is Cellar's relation,
+ *     resource_legal_corrects_resource_legal, not something its number tells. The document's own
+ *     number is source/@celex.
  * @param kind Original OJ text, corrigendum or consolidated version.
  * @param version A consolidated version's date, the first day it applies to, as its CELEX number
  *     has it (02015R1998-20260322); absent for an original text or a corrigendum.

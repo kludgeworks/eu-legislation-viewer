@@ -78,8 +78,9 @@
       <xs:annotation>
         <xs:documentation>
           The CELEX number of the act this text belongs to: the act itself for its original text and its consolidated
-          versions (32015R1998), the act it corrects for a corrigendum (32009R0631 for corrigendum 32009R0631R(01)).
-          The document's own number is source/@celex.
+          versions (32015R1998), and a corrigendum itself (32009R0631R(01)), a work of its own: what it corrects (one
+          document or several) is Cellar's relation, resource_legal_corrects_resource_legal, not something its
+          number tells. The document's own number is source/@celex.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

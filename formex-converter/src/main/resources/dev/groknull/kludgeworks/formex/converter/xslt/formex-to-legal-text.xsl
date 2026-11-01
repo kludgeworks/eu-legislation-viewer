@@ -139,7 +139,8 @@
     <xsl:variable name="treaty" as="xs:boolean" select="$info/@LEG.VAL = 'TREATY'"/>
     <xsl:variable name="content" as="element()" select="
         if ($treaty) then $doc/CONS.DOC.GEN/CONS.DOC.GEN[ENACTING.TERMS][1] else ($doc/CONS.DOC.GEN, $doc)[1]"/>
-    <!-- the document's own CELEX number, and the act's: a corrigendum's is the act's with R(01) -->
+    <!-- the document's own CELEX number, and the act's: an OJ document's (a corrigendum too: what it
+         corrects is Cellar's to say, and may be several documents) is its own -->
     <!-- a treaty's CONSLEG.REF is the treaty's, whatever the edition (1957E9999): its consolidation
          is named after the edition, 02016E/TXT-20250315 -->
     <xsl:variable name="document-celex" as="xs:string" select="
@@ -149,7 +150,7 @@
     <!-- a consolidation's act is its base act, whatever its sector (an agreement, 22002A0430(02)):
          CONSLEG.REF only names the consolidation (2002A2430) -->
     <xsl:variable name="act-celex" as="xs:string" select="
-        if ($consolidated) then f:celex($doc/FAM.COMP/BIB.DATA/NO.CELEX) else replace($document-celex, 'R\([0-9]+\)$', '')"/>
+        if ($consolidated) then f:celex($doc/FAM.COMP/BIB.DATA/NO.CELEX) else $document-celex"/>
     <!-- a document, so that the marking pass can use a key -->
     <xsl:variable name="text" as="document-node(element(lt:legalText))">
       <xsl:document>

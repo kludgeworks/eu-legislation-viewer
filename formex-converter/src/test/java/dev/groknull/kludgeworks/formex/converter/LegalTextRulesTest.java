@@ -130,26 +130,6 @@ class LegalTextRulesTest {
         .containsExactly("version-of-consolidation");
   }
 
-  @Test
-  void acceptsACorrigendumOfTheActItCorrects() throws SaxonApiException {
-    var text =
-        legalTextWith(
-            "kind=\"corrigendum\" act=\"52017XC1006(02)\"",
-            "<source celex=\"52017XC1006(02)R(01)\"/><body/>");
-    assertThat(RULES.violations(text)).isEmpty();
-  }
-
-  @Test
-  void rejectsACorrigendumThatIsItsOwnAct() throws SaxonApiException {
-    var text =
-        legalTextWith(
-            "kind=\"corrigendum\" act=\"32009R0631R(01)\"",
-            "<source celex=\"32009R0631R(01)\"/><body/>");
-    assertThat(RULES.violations(text))
-        .extracting(Schematron.Finding::id)
-        .containsExactly("act-of-corrigendum");
-  }
-
   @ParameterizedTest(name = "{0}")
   @CsvSource(
       delimiter = '|',
