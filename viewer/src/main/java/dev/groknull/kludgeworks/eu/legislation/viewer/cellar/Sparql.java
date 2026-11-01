@@ -106,15 +106,38 @@ public class Sparql {
     }
   }
 
-  /** The query with each {@code {{name}}} replaced by its value; the caller checks the values. */
+  /**
+   * The query with each {@code {{name}}} replaced by its value, escaped for a string literal
+   * (SPARQL 1.1, ECHAR), where the templates put them ("{{celex}}"^^xsd:string): a value is never
+   * read as part of the query, whatever it holds. A value put into an IRI the caller checks.
+   */
   public static String fill(String template, Map<String, String> values) {
     var query = template;
     for (var value : values.entrySet()) {
-      query = query.replace("{{" + value.getKey() + "}}", value.getValue());
+      query = query.replace("{{" + value.getKey() + "}}", escaped(value.getValue()));
     }
     if (query.contains("{{")) {
       throw new IllegalArgumentException("A placeholder left unfilled: " + query);
     }
     return query;
+  }
+
+  /**
+   * {@code value} as the inside of a SPARQL string literal: backslashes, quotes and line breaks
+   * escaped.
+   */
+  private static String escaped(String value) {
+    var escaped = new StringBuilder(value.length());
+    for (var c : value.toCharArray()) {
+      switch (c) {
+        case '\\' -> escaped.append("\\\\");
+        case '"' -> escaped.append("\\\"");
+        case '\'' -> escaped.append("\\'");
+        case '\n' -> escaped.append("\\n");
+        case '\r' -> escaped.append("\\r");
+        default -> escaped.append(c);
+      }
+    }
+    return escaped.toString();
   }
 }

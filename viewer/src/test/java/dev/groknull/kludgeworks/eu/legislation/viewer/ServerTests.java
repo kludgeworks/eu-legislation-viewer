@@ -40,7 +40,8 @@ class ServerTests {
 
   @Test
   void aSlashTraversingOutOfItsSegmentStaysInIt() throws IOException, InterruptedException {
-    assertThat(get("/api/acts/12016E%2F..%2F..%2Fapi").statusCode()).isEqualTo(400);
+    // looked up as a CELEX number, which no act has: not the API's root
+    assertThat(get("/api/acts/12016E%2F..%2F..%2Fapi").statusCode()).isEqualTo(404);
   }
 
   private HttpResponse<String> get(String path) throws IOException, InterruptedException {

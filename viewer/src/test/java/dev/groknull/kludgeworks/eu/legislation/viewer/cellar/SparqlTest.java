@@ -12,6 +12,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 import java.time.Duration;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -23,6 +24,14 @@ import org.springframework.web.client.HttpServerErrorException;
 class SparqlTest {
   static final MediaType RESULTS = MediaType.parseMediaType("application/sparql-results+json");
   static final byte[] RECORDED = Recorded.bytes("sparql-32009D0959.json");
+
+  @Test
+  void fillsAValueInAsTheInsideOfAStringLiteral() {
+    assertThat(
+            Sparql.fill(
+                "SELECT * WHERE { ?w ?p \"{{celex}}\" }", Map.of("celex", "32015R1998\"} #\\")))
+        .isEqualTo("SELECT * WHERE { ?w ?p \"32015R1998\\\"} #\\\\\" }");
+  }
 
   @Test
   void postsTheQueryAsAFormAndReadsTheBindings() {

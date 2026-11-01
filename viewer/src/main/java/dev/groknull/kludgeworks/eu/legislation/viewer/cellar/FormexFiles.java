@@ -36,8 +36,7 @@ import org.springframework.web.client.RestClient;
  */
 @Component
 public class FormexFiles {
-  private static final Pattern CELEX =
-      Pattern.compile("[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*(-[0-9]{8})?");
+  private static final Pattern CELEX = Pattern.compile("\\S+");
   private static final Pattern LANGUAGE = Pattern.compile("[A-Z]{3}");
 
   private static final String QUERY = Sparql.template(FormexFiles.class, "formex-files.rq");

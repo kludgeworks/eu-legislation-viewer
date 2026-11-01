@@ -5,15 +5,16 @@ import java.util.regex.Pattern;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
- * An act by its CELEX number: sector, year, type and number (32015R1998), with a suffix for a
- * corrigendum (32015R1998R(01)) or one of several documents under one number (32012A1221(01)), or a
- * treaty or a part of one (11985I, 12003T/ACT). The schema's Celex type, without what names a
- * version and not an act: sector 0 and the date of a consolidated version (02015R1998-20260322).
+ * An act by its CELEX number, as Cellar has it: an act (32015R1998), a corrigendum
+ * (32015R1998R(01)), a treaty or a part of one (12003T/ACT), a document of the OJ C series
+ * (C2017/413/12, C/2025/03118). The Publications Office assigns them and its forms change, so only
+ * what can't be one is refused: an empty value, whitespace, and sector 0, a consolidated version's
+ * (02015R1998-20260322), which names a version, not an act. Whether an act has it is Cellar's to
+ * say.
  */
 @ValueObject
 public record ActIdentifier(String celex) {
-  private static final Pattern CELEX =
-      Pattern.compile("[1-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*");
+  private static final Pattern CELEX = Pattern.compile("[^0\\s]\\S*");
 
   public ActIdentifier {
     if (!isCelex(celex)) {

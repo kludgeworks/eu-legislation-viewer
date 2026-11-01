@@ -216,13 +216,24 @@ class CellarActsTest {
   }
 
   @Test
-  void readsAnActWithAnEliOfAnUnknownShapeWithoutIt() {
+  void readsAnActsEliOfAnyTemplate() {
     var treaty =
         new SparqlResult(
             List.of("eli", "type", "entryIntoForce"),
             List.of(workRow("http://data.europa.eu/eli/treaty/tfeu_2008/art_251/oj")));
 
     assertThat(CellarActs.act(AVSEC, treaty, result(), noLanguages()))
+        .hasValueSatisfying(
+            act -> assertThat(act.eli()).isEqualTo(new Eli("treaty/tfeu_2008/art_251")));
+  }
+
+  @Test
+  void readsAnActWithAnEliThatIsntOneWithoutIt() {
+    var work =
+        new SparqlResult(
+            List.of("eli", "type", "entryIntoForce"), List.of(workRow("ELI:L:2023:2616:OJ")));
+
+    assertThat(CellarActs.act(AVSEC, work, result(), noLanguages()))
         .hasValueSatisfying(act -> assertThat(act.eli()).isNull());
   }
 

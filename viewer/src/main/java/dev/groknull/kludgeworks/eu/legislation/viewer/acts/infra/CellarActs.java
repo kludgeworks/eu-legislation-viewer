@@ -181,13 +181,13 @@ class CellarActs implements Acts {
   }
 
   /**
-   * The act's ELI; none, with a warning, for one of a shape Eli doesn't know: the act is still
-   * read, by its CELEX.
+   * The act's ELI; none, with a warning, for one that isn't below http://data.europa.eu/eli/: the
+   * act is still read, by its CELEX.
    */
   private static @Nullable Eli eli(ActIdentifier id, String uri) {
     var eli = Eli.parse(uri);
     if (eli.isEmpty()) {
-      LOG.warn("{}'s ELI is of a shape not known, so it is read without it: {}", id, uri);
+      LOG.warn("{}'s ELI isn't one, so it is read without it: {}", id, uri);
     }
     return eli.orElse(null);
   }

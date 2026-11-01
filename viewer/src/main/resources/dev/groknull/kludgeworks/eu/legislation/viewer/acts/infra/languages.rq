@@ -6,7 +6,7 @@
 # viewer's texts of the version are made from, so part of their key (ValkeyExpressions). One query
 # for the whole timeline, apart from versions.rq, whose PDF check it would repeat on every row
 # (Research: which languages a version is in). A version without Formex has no row.
-# {{celex}}: the base act's CELEX (32015R1998), checked against its pattern first.
+# {{celex}}: the base act's CELEX (32015R1998), escaped by Sparql.fill.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>

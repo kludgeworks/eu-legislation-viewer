@@ -42,18 +42,32 @@ class EliTest {
   }
 
   @Test
-  void hasNoneForAnEliOfAnotherShape() {
-    assertThat(Eli.parse("http://data.europa.eu/eli/treaty/tfeu_2008/art_251/oj")).isEmpty();
-    assertThat(Eli.parse("http://data.europa.eu/eli/reg/1999/1255/corrigendum/1999-10-08/oj"))
-        .isEmpty();
+  void readsAnEliOfAnyTemplate() {
+    assertThat(Eli.parse("http://data.europa.eu/eli/dec/C/2026/400/oj").orElseThrow().path())
+        .isEqualTo("dec/C/2026/400");
+    assertThat(
+            Eli.parse("http://data.europa.eu/eli/reg/1999/1255/corrigendum/1999-10-08/oj")
+                .orElseThrow()
+                .path())
+        .isEqualTo("reg/1999/1255/corrigendum/1999-10-08");
+    assertThat(
+            Eli.parse("http://data.europa.eu/eli/treaty/tfeu_2008/art_251/oj").orElseThrow().path())
+        .isEqualTo("treaty/tfeu_2008/art_251");
+  }
+
+  @Test
+  void hasNoneForWhatIsntOne() {
     assertThat(Eli.parse("https://eur-lex.europa.eu/eli/reg_impl/2015/1998/oj")).isEmpty();
+    assertThat(Eli.parse("ELI:L:2023:2616:OJ")).isEmpty();
+    assertThat(Eli.parse("http://data.europa.eu/eli/reg_impl/2024//corrigendum/2024-05-15/oj"))
+        .isEmpty();
   }
 
   @Test
   void refusesWhatCantBeAPathOfOne() {
-    assertThatIllegalArgumentException().isThrownBy(() -> new Eli("X", 2015, "1998"));
-    assertThatIllegalArgumentException().isThrownBy(() -> new Eli("dec", 2007, "44(1"));
-    assertThatIllegalArgumentException().isThrownBy(() -> new Eli("dec", 2007, "44\"/oj"));
-    assertThatIllegalArgumentException().isThrownBy(() -> Eli.treaty("tfeu_2016/art_251"));
+    assertThatIllegalArgumentException().isThrownBy(() -> new Eli(""));
+    assertThatIllegalArgumentException().isThrownBy(() -> new Eli("/reg/2015/1998"));
+    assertThatIllegalArgumentException().isThrownBy(() -> new Eli("reg//1998"));
+    assertThatIllegalArgumentException().isThrownBy(() -> new Eli("reg/2015/1998 x"));
   }
 }

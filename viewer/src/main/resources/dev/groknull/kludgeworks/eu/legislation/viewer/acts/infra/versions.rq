@@ -5,7 +5,7 @@
 # previous consolidation, and the amending acts and corrigenda of this step, as Cellar states them.
 # Only works with a CELEX: the others based on the act are Cellar's internal production versions.
 # One row per version and listed act; CellarActs folds them.
-# {{celex}}: the base act's CELEX (32015R1998), checked against its pattern first.
+# {{celex}}: the base act's CELEX (32015R1998), escaped by Sparql.fill.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 

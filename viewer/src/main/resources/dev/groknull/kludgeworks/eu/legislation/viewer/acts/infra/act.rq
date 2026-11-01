@@ -3,7 +3,7 @@
 # whether it is in force, its dates of entry into force (several: Cellar types them with annotations,
 # not read here; the earliest is the entry into force proper) and of end of validity (9999-12-31 while
 # open-ended). One row per combination of values; CellarActs folds them.
-# {{celex}}: a base act's CELEX (32015R1998), checked against its pattern first.
+# {{celex}}: a base act's CELEX (32015R1998), escaped by Sparql.fill.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 

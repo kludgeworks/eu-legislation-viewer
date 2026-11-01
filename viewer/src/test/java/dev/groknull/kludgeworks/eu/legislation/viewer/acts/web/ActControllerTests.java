@@ -202,10 +202,17 @@ class ActControllerTests {
   }
 
   @Test
-  void whatIsNoCelexOrNoEliIsABadRequest() {
-    assertThat(mvc.get().uri("/api/acts/R1998").accept(MediaTypes.HAL_JSON)).hasStatus(400);
-    assertThat(mvc.get().uri("/api/acts?eli=reg/15/1998").accept(MediaTypes.HAL_JSON))
+  void whatCantBeACelexNumberOrAnEliIsABadRequest() {
+    assertThat(mvc.get().uri("/api/acts/{act}", "32015R1998 x").accept(MediaTypes.HAL_JSON))
         .hasStatus(400);
+    assertThat(mvc.get().uri("/api/acts?eli=reg//1998").accept(MediaTypes.HAL_JSON)).hasStatus(400);
+  }
+
+  @Test
+  void aCelexNumberOrAnEliOfAnyFormNoActHasIsNotFound() {
+    assertThat(mvc.get().uri("/api/acts/R1998").accept(MediaTypes.HAL_JSON)).hasStatus(404);
+    assertThat(mvc.get().uri("/api/acts?eli=reg/15/1998").accept(MediaTypes.HAL_JSON))
+        .hasStatus(404);
   }
 
   @Test
