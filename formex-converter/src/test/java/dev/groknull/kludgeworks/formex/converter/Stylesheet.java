@@ -94,5 +94,11 @@ final class Stylesheet {
     @Nullable QName code() {
       return code;
     }
+
+    /** Why the stylesheet stopped: a Failure always says. */
+    @Override
+    public String getMessage() {
+      return Objects.requireNonNull(super.getMessage());
+    }
   }
 }

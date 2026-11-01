@@ -69,7 +69,7 @@ class CorpusTests {
       legalText = STYLESHEET.transform(manifestation.source(), celex);
     } catch (Stylesheet.Failure e) {
       if (Stylesheet.OUT_OF_SCOPE.equals(e.code())) {
-        abort(String.valueOf(e.getMessage()));
+        abort(e.getMessage());
       }
       throw e;
     }

@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
-load("@rules_java//java:defs.bzl", "java_binary")
+load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 
 # The stylesheets' tests, run as any XSLT client runs them (Stylesheet): every fixture against the schema, legal-text.sch,
 # MathML 3, its expected output, its source text and the source metadata the viewer relies on;
@@ -52,12 +52,26 @@ java_binary(
     ],
 )
 
+# The corpus test's class, on its own so that every build compiles it: the test that runs it is
+# manual, and nothing else would
+java_library(
+    name = "corpus-tests",
+    testonly = True,
+    srcs = ["CorpusTests.java"],
+    deps = [
+        ":converter-test-lib",
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_xmlunit_xmlunit_assertj3",
+    ],
+)
+
 # The regression test on the whole corpus: one language's mirror in formex-corpus/, ignored
 # (mise run corpus:fetch, then mise run corpus:test; also //:corpus; see CorpusTests)
 java_junit5_test(
     name = "corpus",
     size = "enormous",
-    srcs = ["CorpusTests.java"],
     # the JDK's XML limits, which the converter lifts for its own parsing, also stop the validation
     # of a large document's output (a 55 MB consolidation, an annex with 100,000 entity references)
     jvm_flags = [
@@ -69,18 +83,12 @@ java_junit5_test(
     test_class = "dev.groknull.kludgeworks.formex.converter.CorpusTests",
     visibility = ["//:__pkg__"],  # for the //:corpus suite
     runtime_deps = [
+        ":corpus-tests",
         "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
         "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
         "//formex-converter/src/test/resources/compare:resources",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",
-    ],
-    deps = [
-        ":converter-test-lib",
-        "@maven//:net_sf_saxon_Saxon_HE",
-        "@maven//:org_assertj_assertj_core",
-        "@maven//:org_junit_jupiter_junit_jupiter_api",
-        "@maven//:org_xmlunit_xmlunit_assertj3",
     ],
 )
