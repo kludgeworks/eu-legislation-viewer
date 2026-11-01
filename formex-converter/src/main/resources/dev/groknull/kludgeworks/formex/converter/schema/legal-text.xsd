@@ -1117,13 +1117,14 @@
     <xs:annotation>
       <xs:documentation>
         What an amending act did (Formex ACTION). They match the EU authority table "modification type":
-        replaced is REPLACEMENT, inserted is INSERTION, deleted is DELETION.
+        replaced is REPLACEMENT, inserted is INSERTION, deleted is DELETION, renumbered is RENUMBERING.
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="replaced"><xs:annotation><xs:documentation>Replaced: new text instead of the old.</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="inserted"><xs:annotation><xs:documentation>Inserted: new text added.</xs:documentation></xs:annotation></xs:enumeration>
       <xs:enumeration value="deleted"><xs:annotation><xs:documentation>Deleted: the text is gone.</xs:documentation></xs:annotation></xs:enumeration>
+      <xs:enumeration value="renumbered"><xs:annotation><xs:documentation>Renumbered: the same text under a new number.</xs:documentation></xs:annotation></xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
 

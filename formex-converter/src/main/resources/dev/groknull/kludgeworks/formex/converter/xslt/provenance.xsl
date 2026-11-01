@@ -96,12 +96,13 @@
     <xsl:sequence select="f:action($marker) = 'deleted'"/>
   </xsl:function>
 
-  <!-- REPLACED, INSERTED, DELETED; older consolidations also write REPEALED (a deletion) and ADDED -->
+  <!-- REPLACED, INSERTED, DELETED, RENUMBERED; older consolidations also write REPEALED (a deletion) and
+       ADDED -->
   <xsl:function name="f:action" as="xs:string">
     <xsl:param name="marker" as="processing-instruction()"/>
     <xsl:variable name="action" as="xs:string?" select="f:pi-attr($marker, 'ACTION')"/>
     <xsl:variable name="known" as="xs:string?" select="map{'REPLACED': 'replaced', 'INSERTED': 'inserted', 'ADDED': 'inserted',
-                                                         'DELETED': 'deleted', 'REPEALED': 'deleted'}($action)"/>
+                                                         'DELETED': 'deleted', 'REPEALED': 'deleted', 'RENUMBERED': 'renumbered'}($action)"/>
     <xsl:sequence select="if (exists($known)) then $known else f:unknown($marker, 'amendment marker ACTION=' || $action)"/>
   </xsl:function>
 

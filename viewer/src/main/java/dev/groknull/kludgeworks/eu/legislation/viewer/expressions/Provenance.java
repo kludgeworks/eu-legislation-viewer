@@ -17,7 +17,8 @@ public record Provenance(
 
   /**
    * What an amending act did (Formex ACTION). They match the EU authority table "modification
-   * type": replaced is REPLACEMENT, inserted is INSERTION, deleted is DELETION.
+   * type": replaced is REPLACEMENT, inserted is INSERTION, deleted is DELETION, renumbered is
+   * RENUMBERING.
    */
   public enum Action {
     /** Replaced: new text instead of the old. */
@@ -25,6 +26,8 @@ public record Provenance(
     /** Inserted: new text added. */
     INSERTED,
     /** Deleted: the text is gone. */
-    DELETED
+    DELETED,
+    /** Renumbered: the same text under a new number. */
+    RENUMBERED
   }
 }
