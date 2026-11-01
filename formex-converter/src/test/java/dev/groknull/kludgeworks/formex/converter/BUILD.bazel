@@ -10,7 +10,10 @@ java_test_suite(
     size = "medium",
     srcs = glob(
         ["*.java"],
-        exclude = ["CorpusTests.java"],
+        exclude = [
+            "CorpusEngine.java",
+            "CorpusTests.java",
+        ],
     ),
     data = [
         "//formex-converter/src/test/resources/expected",
@@ -52,17 +55,24 @@ java_binary(
     ],
 )
 
-# The corpus test's class, on its own so that every build compiles it: the test that runs it is
-# manual, and nothing else would
+# The corpus test's classes, on their own so that every build compiles them: the test that runs
+# them is manual, and nothing else would. CorpusEngine, a JUnit Platform engine, is registered as a
+# service: only the corpus target has it
 java_library(
     name = "corpus-tests",
     testonly = True,
-    srcs = ["CorpusTests.java"],
+    srcs = [
+        "CorpusEngine.java",
+        "CorpusTests.java",
+    ],
+    resource_strip_prefix = package_name(),
+    resources = ["META-INF/services/org.junit.platform.engine.TestEngine"],
     deps = [
         ":converter-test-lib",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_platform_junit_platform_engine",
         "@maven//:org_xmlunit_xmlunit_assertj3",
     ],
 )
@@ -72,12 +82,17 @@ java_library(
 java_junit5_test(
     name = "corpus",
     size = "enormous",
+    # CorpusTests' manifestations only, each a test (CorpusEngine), not Jupiter's
+    include_engines = ["formex-corpus"],
     # the JDK's XML limits, which the converter lifts for its own parsing, also stop the validation
     # of a large document's output (a 55 MB consolidation, an annex with 100,000 entity references)
     jvm_flags = [
         "-Djdk.xml.maxGeneralEntitySizeLimit=0",
         "-Djdk.xml.totalEntitySizeLimit=0",
     ],
+    # run side by side, each shard on its share of the manifestations (by a hash of the test's id),
+    # in a JVM of its own and in its own time
+    shard_count = 16,
     # not part of //...; cached on the converter and the mirror's manifest hash (--test_env)
     tags = ["manual"],
     test_class = "dev.groknull.kludgeworks.formex.converter.CorpusTests",

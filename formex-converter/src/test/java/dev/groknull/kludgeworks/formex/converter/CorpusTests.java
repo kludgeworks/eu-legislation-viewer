@@ -8,14 +8,11 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.TreeMap;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.XdmNode;
-import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.TestFactory;
 import org.xmlunit.assertj3.XmlAssert;
 
 /**
@@ -28,10 +25,14 @@ import org.xmlunit.assertj3.XmlAssert;
  * mise run corpus:test [--language ENG]
  * </pre>
  *
+ * <p>Each manifestation is a test of its own, named by its Cellar ID, which CorpusEngine finds when
+ * it is asked for this class: so Bazel shards the corpus, and --test_filter=&lt;Cellar ID&gt; runs
+ * one manifestation alone.
+ *
  * <p>corpus:test passes the manifest's hash as CORPUS_MANIFEST, so that Bazel caches the result
  * until the converter or the mirror changes.
  */
-class CorpusTests {
+final class CorpusTests {
 
   static final Processor SAXON = new Processor(false);
   static final Stylesheet STYLESHEET = new Stylesheet(SAXON);
@@ -39,8 +40,10 @@ class CorpusTests {
   static final MetadataConservation METADATA = new MetadataConservation(SAXON);
   static final LegalTextRules RULES = new LegalTextRules(SAXON);
 
-  @TestFactory
-  Stream<DynamicTest> convertsEveryDocument() throws IOException {
+  private CorpusTests() {}
+
+  /** The mirror: CORPUS, which corpus:test sets. */
+  static Path corpus() {
     var corpus =
         Path.of(
             Optional.ofNullable(System.getenv("CORPUS"))
@@ -49,21 +52,10 @@ class CorpusTests {
       throw new IllegalStateException(
           "No corpus at " + corpus + ": run mise run corpus:fetch, then mise run corpus:test");
     }
-    var celex = manifest(corpus.resolve("manifest.tsv"));
-    return celex.entrySet().stream()
-        .sorted(Map.Entry.comparingByKey())
-        .map(
-            item ->
-                DynamicTest.dynamicTest(
-                    item.getKey(),
-                    () ->
-                        check(
-                            new Manifestation(
-                                item.getKey(), corpus.resolve("files").resolve(item.getKey())),
-                            item.getValue())));
+    return corpus;
   }
 
-  private static void check(Manifestation manifestation, Optional<String> celex) throws Exception {
+  static void check(Manifestation manifestation, Optional<String> celex) throws Exception {
     XdmNode legalText;
     try {
       legalText = STYLESHEET.transform(manifestation.source(), celex);
@@ -89,12 +81,12 @@ class CorpusTests {
   }
 
   /**
-   * The complete manifestations, by Cellar ID, from the mirror's manifest (Cellar ID, lastModified,
-   * CELEX), with their CELEX numbers: an OJ act needs it.
+   * The complete manifestations, by Cellar ID in order, from the mirror's manifest (Cellar ID,
+   * lastModified, CELEX), with their CELEX numbers: an OJ act needs it.
    */
-  private static Map<String, Optional<String>> manifest(Path manifest) throws IOException {
-    var celex = new HashMap<String, Optional<String>>();
-    try (var lines = Files.lines(manifest, StandardCharsets.UTF_8)) {
+  static Map<String, Optional<String>> manifest(Path corpus) throws IOException {
+    var celex = new TreeMap<String, Optional<String>>();
+    try (var lines = Files.lines(corpus.resolve("manifest.tsv"), StandardCharsets.UTF_8)) {
       lines
           .map(line -> line.split("\t", -1))
           .filter(f -> f.length == 3)
