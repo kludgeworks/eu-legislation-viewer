@@ -200,9 +200,9 @@
               <xsl:if test="$info/@PROD.SEQ">
                 <xsl:attribute name="sequence" select="$info/@PROD.SEQ"/>
               </xsl:if>
-              <!-- an amending act whose CELEX the source writes malformed (1201994N/ACT) can't be referred to:
-                   it is left out -->
-              <xsl:for-each-group select="$doc/FAM.COMP//(MOD.ACT | CORRIG)/BIB.DATA[matches(f:celex(NO.CELEX), '^[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*$')]"
+              <!-- each amending act and corrigendum by its CELEX number as the source writes it (a malformed one,
+                   1201994N/ACT, too: it is the source's reference, whether or not it can be followed) -->
+              <xsl:for-each-group select="$doc/FAM.COMP//(MOD.ACT | CORRIG)/BIB.DATA[normalize-space(NO.CELEX)]"
                                   group-by="normalize-space(NO.CELEX)">
                 <!-- an amending act's date; a corrigendum has none of its own, so the day it was published -->
                 <eventRef type="{if (parent::CORRIG) then 'corrigendum' else 'amendment'}" act="{f:celex(current-grouping-key())}">

@@ -100,7 +100,7 @@
     <xs:attribute name="formexVersion" use="required">
       <xs:annotation><xs:documentation>The Formex schema version of the source, e.g. 06.02.1.</xs:documentation></xs:annotation>
       <xs:simpleType>
-        <xs:restriction base="xs:string"><xs:pattern value="[0-9]{2}\.[0-9]{2}(\.[0-9]+)?"/></xs:restriction>
+        <xs:restriction base="xs:string"><xs:pattern value="\S+"/></xs:restriction>
       </xs:simpleType>
     </xs:attribute>
     <xs:attribute name="converter" use="required">
@@ -133,28 +133,29 @@
   <xs:simpleType name="Celex">
     <xs:annotation>
       <xs:documentation>
-        A CELEX number: an act (32015R1998), a consolidated version (02015R1998-20260322), a corrigendum
-        (32015R1998R(01)), or a treaty or a part of one, written with slashes (12003T/ACT, the 2003 Act of
-        Accession; 12010A/PRO/06, a protocol).
+        A CELEX number, as the source or Cellar writes it: an act (32015R1998), a consolidated version
+        (02015R1998-20260322), a corrigendum (32015R1998R(01)), a treaty or a part of one (12003T/ACT), a
+        document of the OJ C series (C2017/413/12, C/2025/03118). The Publications Office assigns them
+        and its forms change (the act-by-act Official Journal of 1 October 2023 brought new ones), so
+        the schema doesn't check their form: it is an identifier to look up, not to read.
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:pattern value="[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*(-[0-9]{8})?"/>
+      <xs:pattern value="\S+"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="Eli">
     <xs:annotation>
       <xs:documentation>
-        A European Legislation Identifier: http://data.europa.eu/eli/, the document type, the year and
-        the number, then the segments of its version or form: an act's original text
+        A European Legislation Identifier, as the source writes it: an act's original text
         (http://data.europa.eu/eli/reg_impl/2015/1998/oj), a corrigendum
-        (http://data.europa.eu/eli/dec_impl/2021/2326/corrigendum/2025-07-08/oj).
+        (http://data.europa.eu/eli/dec_impl/2021/2326/corrigendum/2025-07-08/oj), a document of the
+        act-by-act OJ C series (http://data.europa.eu/eli/C/2023/1344/oj). ELI leaves its templates to
+        each publisher, so the schema doesn't check which one it follows.
       </xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:anyURI">
-      <xs:pattern value="http://data\.europa\.eu/eli/[a-z][a-z_]*/[0-9]{4}/[0-9]+(/[a-z0-9_.\-]+)*"/>
-    </xs:restriction>
+    <xs:restriction base="xs:anyURI"/>
   </xs:simpleType>
 
   <!-- ============================================================ metadata -->
@@ -216,7 +217,7 @@
     <xs:attribute name="sequence">
       <xs:annotation><xs:documentation>The production sequence number of the consolidation, e.g. 023.001.0.</xs:documentation></xs:annotation>
       <xs:simpleType>
-        <xs:restriction base="xs:string"><xs:pattern value="[0-9]{3}\.[0-9]{3}\.[0-9]"/></xs:restriction>
+        <xs:restriction base="xs:string"><xs:pattern value="\S+"/></xs:restriction>
       </xs:simpleType>
     </xs:attribute>
   </xs:complexType>
@@ -679,9 +680,9 @@
   </xs:simpleType>
 
   <xs:simpleType name="AmendmentMarker">
-    <xs:annotation><xs:documentation>The id of a consolidation's amendment marker (Formex CLG.MDFO ID), e.g. O000001M001002.</xs:documentation></xs:annotation>
+    <xs:annotation><xs:documentation>The id of a consolidation's amendment marker (Formex CLG.MDFO ID), as the source writes it, e.g. O000001M001002.</xs:documentation></xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:pattern value="[A-Za-z0-9]+"/>
+      <xs:pattern value="\S+"/>
     </xs:restriction>
   </xs:simpleType>
 

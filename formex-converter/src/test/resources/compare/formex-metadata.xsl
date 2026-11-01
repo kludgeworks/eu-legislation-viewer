@@ -95,7 +95,7 @@
   </xsl:function>
 
   <!-- a CELEX number with its year in four digits (old sources write 303D0148 for 32003D0148);
-       none for one that isn't a CELEX number (1201994N/ACT), which can't be referred to -->
+       otherwise as the source writes it, malformed or not (1201994N/ACT) -->
   <xsl:function name="f:celex" as="xs:string?">
     <xsl:param name="celex" as="xs:string?"/>
     <xsl:variable name="c" as="xs:string" select="normalize-space($celex)"/>
@@ -103,7 +103,7 @@
         if (matches($c, '^[0-9][0-9]{2}[A-Z]'))
         then substring($c, 1, 1) || (if (number(substring($c, 2, 2)) gt 50) then '19' else '20') || substring($c, 2)
         else $c"/>
-    <xsl:sequence select="$full[matches(., '^[0-9A-Z][0-9]{4}[A-Z]{1,2}[0-9A-Z()]*(/[0-9A-Z()]+)*$')]"/>
+    <xsl:sequence select="$full[.]"/>
   </xsl:function>
 
   <!-- Formex's YYYYMMDD as an ISO date -->
