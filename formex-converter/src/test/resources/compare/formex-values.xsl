@@ -47,6 +47,10 @@
     <v kind="once" file="{tokenize(base-uri(.), '/')[last()]}" path="{path()}">{normalize-space(.)}</v>
   </xsl:template>
 
+  <!-- a document of the act-by-act OJ C series: its number (C/2025/3971) is its OJ reference, which
+       the converter keeps as the publication's series and document number (checked as metadata) -->
+  <xsl:template match="NO.DOC.C[matches(normalize-space(.), '^C/[0-9]{4}/[0-9]+$')]" priority="2"/>
+
   <!-- a C-series document's number: the converter keeps it without its brackets -->
   <xsl:template match="NO.DOC.C" priority="1">
     <v file="{tokenize(base-uri(.), '/')[last()]}" path="{path()}">{replace(normalize-space(.), '^\((.*)\)$', '$1')}</v>
