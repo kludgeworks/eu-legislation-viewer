@@ -2,6 +2,9 @@
 common --java_language_version=25 --tool_java_language_version=25
 common --java_runtime_version=remotejdk_25 --tool_java_runtime_version=remotejdk_25
 test --test_output=errors
+# Two hours for an eternal test (size enormous), not one: only the corpus test is, whose shards
+# share the cores, a shard with the corpus's longest manifestation (43 minutes) beside its share
+test --test_timeout=-1,-1,-1,7200
 
 # NullAway on every Java target: the @NullMarked packages are checked against their JSpecify
 # annotations, and @Nullable is honoured where unmarked code has it (the JAXB classes' getters).

@@ -91,8 +91,10 @@ java_junit5_test(
         "-Djdk.xml.totalEntitySizeLimit=0",
     ],
     # run side by side, each shard on its share of the manifestations (by a hash of the test's id),
-    # in a JVM of its own and in its own time
-    shard_count = 16,
+    # in a JVM of its own and in its own time (.bazelrc's eternal timeout). Run as many at a time as
+    # there are cores, 16 shards took over an hour each (about 5,500 manifestations); the most Bazel
+    # allows, 50 take some 20 minutes each, the longest manifestation alone 43 minutes
+    shard_count = 50,
     # not part of //...; cached on the converter and the mirror's manifest hash (--test_env)
     tags = ["manual"],
     test_class = "dev.groknull.kludgeworks.formex.converter.CorpusTests",
