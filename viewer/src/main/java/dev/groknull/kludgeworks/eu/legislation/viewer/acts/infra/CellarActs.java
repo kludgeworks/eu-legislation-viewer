@@ -33,15 +33,13 @@ import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 /**
  * All acts, from Cellar's RDF (the CDM ontology): an act's work by its CELEX, found from its ELI if
  * need be, the consolidations based on it (Research: CDM ontology), and the languages each version
  * has its text in (Research: which languages a version is in). Four queries, beside this class:
- * act.rq, act-by-eli.rq, versions.rq and languages.rq; an act's three side by side. Each act found
- * is kept for a while (ActsCacheConfiguration).
+ * act.rq, act-by-eli.rq, versions.rq and languages.rq; an act's three side by side.
  */
 @Component
 class CellarActs implements Acts {
@@ -72,9 +70,6 @@ class CellarActs implements Acts {
   }
 
   @Override
-  @Cacheable(
-      cacheNames = ActsCacheConfiguration.BY_CELEX,
-      unless = ActsCacheConfiguration.UNLESS_ABSENT)
   public Optional<Act> find(ActIdentifier id) {
     var values = Map.of("celex", id.celex());
     var work = select(ACT, values);
@@ -90,9 +85,6 @@ class CellarActs implements Acts {
   }
 
   @Override
-  @Cacheable(
-      cacheNames = ActsCacheConfiguration.BY_ELI,
-      unless = ActsCacheConfiguration.UNLESS_ABSENT)
   public Optional<Act> find(Eli eli) {
     return identity(eli, sparql.select(Sparql.fill(ACT_BY_ELI, Map.of("eli", eli.path()))))
         .flatMap(this::find);

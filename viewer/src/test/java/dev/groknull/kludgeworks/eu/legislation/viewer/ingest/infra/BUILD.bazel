@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+
+# The adapter on the stylesheet (FormexConverter), and legal texts converted from a fixture's
+# Formex. One test target per *Test.java; the other classes (FormexFixtures) become a shared library.
+java_test_suite(
+    name = "infra",
+    size = "small",
+    srcs = glob(["*.java"]),
+    data = [
+        "//formex-converter:expected",
+        "//formex-converter:fixtures",
+    ],
+    runner = "junit5",
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra",
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_params",
+        "@rules_java//java/runfiles",
+    ],
+)

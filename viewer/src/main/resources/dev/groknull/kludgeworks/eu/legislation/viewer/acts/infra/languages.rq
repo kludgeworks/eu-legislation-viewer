@@ -3,7 +3,7 @@
 # (the original text) and each consolidation based on it, by its CELEX, with the authority codes of
 # its expressions that have a Formex manifestation (fmx4), space-separated (BUL CES … SWE), and when
 # Cellar last modified any of those manifestations, as it does when it republishes one: what the
-# viewer's texts of the version are made from, so part of their key (ValkeyExpressions). One query
+# viewer's texts of the version are made from. One query
 # for the whole timeline, apart from versions.rq, whose PDF check it would repeat on every row
 # (Research: which languages a version is in). A version without Formex has no row.
 # {{celex}}: the base act's CELEX (32015R1998), escaped by Sparql.fill.

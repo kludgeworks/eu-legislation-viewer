@@ -47,13 +47,11 @@ description = "Run every test"
 run = "bazel test //..."
 
 [tasks.app]
-description = "Run the viewer, on the Valkey at spring.data.redis.* (localhost:6379 by default)"
+description = "Run the viewer"
 run = "bazel run //viewer:app"
 
 [tasks."app:dev"]
-description = "Run the viewer with its Valkey in a container (Docker), kept across runs"
-# Testcontainers' reuse: the running Valkey, and the texts converted into it, outlive the app
-env = { TESTCONTAINERS_REUSE_ENABLE = "true" }
+description = "Run the viewer for development, with its containers (Docker)"
 run = "bazel run //viewer:dev"
 
 [tasks."test:xspec"]
@@ -63,17 +61,6 @@ run = "bazel test //formex-converter/src/test/xspec/..."
 [tasks.expected]
 description = "Rewrite the converter's expected output from the fixtures, after a deliberate change"
 run = "bazel run //formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:update_expected"
-
-[tasks."expected:json"]
-description = "Rewrite the legal text's golden JSON from the converter's expected output, after a deliberate change"
-run = "bazel run //viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/web:update_json"
-
-[tasks.docs]
-description = "Write legal-text.xsd's documentation into the text records' Javadoc"
-run = [
-  "bazel run //viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions:schema_javadoc_update",
-  "google-java-format --replace viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/*.java",
-]
 
 [tasks.modules]
 description = "Write the modules' documentation (Spring Modulith's Documenter) into viewer/spring-modulith-docs"

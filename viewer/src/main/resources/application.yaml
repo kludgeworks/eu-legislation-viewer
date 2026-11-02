@@ -4,7 +4,7 @@ server:
   forward-headers-strategy: framework
 
 spring:
-  # requests and the conversions done ahead on virtual threads: a page mostly waits on Cellar
+  # requests and conversions on virtual threads: they mostly wait on Cellar
   threads:
     virtual:
       enabled: true
@@ -14,18 +14,12 @@ spring:
       # large SPARQL results take minutes; redirects followed (Cellar's 303s)
       connect-timeout: 10s
       read-timeout: 5m
-  cache:
-    # Spring's caches in Valkey, always there (acts: ActsCacheConfiguration)
-    type: redis
   mvc:
     # errors as RFC 9457 problem details (application/problem+json)
     problemdetails:
       enabled: true
 
 viewer:
-  acts:
-    # how long an act may be cached: its timeline changes only when Cellar publishes a consolidation
-    cache-for: 1h
   cellar:
     sparql-endpoint: https://publications.europa.eu/webapi/rdf/sparql
     # where Cellar's resource URIs start (…/resource/celex/32015R1998)
@@ -34,22 +28,7 @@ viewer:
     user-agent: kludgeworks-viewer/0.0 (+https://kludgeworks.groknull.dev)
     # a SPARQL result with this many rows may have been cut off by the endpoint
     max-rows: 1000000
-  expressions:
-    # how long a request waits for a text being converted before answering 503 (most take well
-    # under a second; the largest, minutes)
-    wait-for: 30s
+  ingest:
     # how many conversions run at once, the others waiting their turn: the largest takes about 1 GB
     # of heap (2016/2070's 87 MB file)
     max-conversions: 2
-    store:
-      # longer than the largest conversion (2005/396, 77 MB of Formex)
-      lock-timeout: 10m
-      # how often a request waiting on another's conversion looks for its result
-      poll-interval: 250ms
-      # how long a text is kept after it was last read, so what no one reads goes on its own
-      keep-for: 30d
-      # how long a document without Formex in a language is remembered as such
-      absent-for: 1d
-      # how long a text the converter refused or failed on is remembered as such, so it isn't
-      # fetched and converted again for every request
-      failed-for: 1d

@@ -13,8 +13,7 @@ import org.junit.jupiter.api.Test;
 /**
  * The app as one file starts: java -jar on the Spring Boot jar (//viewer:jar) that SpringBootJar
  * puts together, its own layout, names and loader, which the tests on Bazel's classpath never see.
- * That the started app works (its web server, Valkey, Actuator) is ViewerApplicationTests'; Valkey
- * isn't needed to start, as its client connects on first use.
+ * That the started app works (its web server, Actuator) is ViewerApplicationTests'.
  */
 @AutoBazelRepository
 class ViewerJarTests {

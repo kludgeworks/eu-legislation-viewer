@@ -1,43 +1,30 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 
-# Valkey in a container (Testcontainers), for the tests that need one, and the viewer on it for
-# running locally (TestViewerApplication, with DevConfiguration: /hal)
+# The viewer for running locally (TestViewerApplication), and what the whole-application checks share
 java_library(
     name = "testing",
     testonly = True,
     srcs = [
-        "DevConfiguration.java",
         "ProductionClasses.java",
         "TestViewerApplication.java",
-        "TestcontainersConfiguration.java",
     ],
     visibility = ["//viewer:__subpackages__"],
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "@maven//:com_tngtech_archunit_archunit",
         "@maven//:org_springframework_boot_spring_boot",
-        "@maven//:org_springframework_boot_spring_boot_test",
-        "@maven//:org_springframework_boot_spring_boot_testcontainers",
-        "@maven//:org_springframework_spring_context",
-        "@maven//:org_springframework_spring_webmvc",
-        "@maven//:org_testcontainers_testcontainers",
     ],
 )
 
-# bazel run //viewer:dev (mise run app:dev): the viewer with its Valkey in a container, and HAL
-# Explorer; needs Docker. Not in the app's jar: the explorer is for development only
+# bazel run //viewer:dev (mise run app:dev): the viewer for running locally
 java_binary(
     name = "dev",
     testonly = True,
     main_class = "dev.groknull.kludgeworks.eu.legislation.viewer.TestViewerApplication",
     visibility = ["//viewer:__pkg__"],
-    runtime_deps = [
-        ":testing",
-        "@maven//:org_webjars_hal_explorer",
-        "@maven//:org_webjars_webjars_locator_lite",
-    ],
+    runtime_deps = [":testing"],
 )
 
 # Writes the modules' documentation (mise run modules): Spring Modulith's Documenter, into
@@ -56,25 +43,21 @@ java_binary(
     ],
 )
 
-# Whole-application checks: the module structure (Spring Modulith), that the app starts, on Bazel's
-# classpath and as Spring Boot's jar, and the API from its root, on Valkey in a container (Docker)
+# Whole-application checks: the module structure (Spring Modulith), and that the app starts, on
+# Bazel's classpath and as Spring Boot's jar
 java_test_suite(
     name = "viewer",
     size = "small",
     srcs = glob(
         ["*.java"],
         exclude = [
-            "CellarLiveTests.java",
-            "DevConfiguration.java",
             "ModuleDocumentation.java",
             "ProductionClasses.java",
             "TestViewerApplication.java",
-            "TestcontainersConfiguration.java",
         ],
     ),
     data = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:viewer-app"],
     runner = "junit5",
-    tags = ["requires-docker"],
     # Spring's naming for whole-application checks
     test_suffixes = ["Tests.java"],
     runtime_deps = [
@@ -86,52 +69,13 @@ java_test_suite(
     deps = [
         ":testing",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions",
         "@maven//:com_tngtech_archunit_archunit",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jmolecules_jmolecules_ddd",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_springframework_boot_spring_boot_test",
-        "@maven//:org_springframework_boot_spring_boot_webmvc_test",
-        "@maven//:org_springframework_hateoas_spring_hateoas",
         "@maven//:org_springframework_modulith_spring_modulith_core",
         "@maven//:org_springframework_spring_beans",
-        "@maven//:org_springframework_spring_context",
-        "@maven//:org_springframework_spring_test",
-        "@maven//:org_springframework_spring_web",
-        "@maven//:org_testcontainers_testcontainers",
         "@rules_java//java/runfiles",
-    ],
-)
-
-# The whole chain against the real Cellar (CellarLiveTests), on Valkey in a container: manual, not
-# in //..., since it needs the network and asks Cellar
-java_junit5_test(
-    name = "live",
-    size = "medium",
-    srcs = ["CellarLiveTests.java"],
-    tags = [
-        "manual",
-        "requires-docker",
-        "requires-network",
-    ],
-    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.CellarLiveTests",
-    runtime_deps = [
-        "@maven//:org_junit_jupiter_junit_jupiter_engine",
-        "@maven//:org_junit_platform_junit_platform_launcher",
-        "@maven//:org_junit_platform_junit_platform_reporting",
-    ],
-    deps = [
-        ":testing",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/expressions/application",
-        "@maven//:org_assertj_assertj_core",
-        "@maven//:org_junit_jupiter_junit_jupiter_api",
-        "@maven//:org_springframework_boot_spring_boot_test",
-        "@maven//:org_springframework_spring_beans",
-        "@maven//:org_springframework_spring_context",
     ],
 )

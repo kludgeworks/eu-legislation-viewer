@@ -11,14 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.context.annotation.Import;
 
-/**
- * The whole application starts, on a web server, with its Valkey (in a container), and Actuator
- * says it is up.
- */
+/** The whole application starts, on a web server, and Actuator says it is up. */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@Import(TestcontainersConfiguration.class)
 class ViewerApplicationTests {
 
   @Value("${local.server.port}")

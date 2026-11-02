@@ -60,8 +60,7 @@ public class Sparql {
 
   /**
    * A query's answer once it has one, from a future of {@link #select}'s: a failure as it was
-   * thrown, not wrapped in the future's CompletionException, so it reaches CellarProblems as
-   * itself.
+   * thrown, not wrapped in the future's CompletionException, so its caller sees it as itself.
    */
   public static SparqlResult join(CompletableFuture<SparqlResult> answer) {
     try {

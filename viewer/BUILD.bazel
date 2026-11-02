@@ -9,7 +9,7 @@ alias(
     actual = "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:app",
 )
 
-# bazel run //viewer:dev (mise run app:dev): the viewer with its Valkey in a container (Docker)
+# bazel run //viewer:dev (mise run app:dev): the viewer for running locally, with its containers
 alias(
     name = "dev",
     actual = "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:dev",
