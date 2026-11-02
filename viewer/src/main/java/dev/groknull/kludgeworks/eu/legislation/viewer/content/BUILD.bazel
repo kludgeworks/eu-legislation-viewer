@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_library")
+
+# The content module's API and domain: Content, the store of legal texts, and its hashes and segments
+java_library(
+    name = "content",
+    srcs = glob(["*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    deps = [
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_jmolecules_jmolecules_ddd",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_springframework_modulith_spring_modulith_api",
+    ],
+)
