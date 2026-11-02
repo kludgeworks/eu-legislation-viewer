@@ -92,3 +92,24 @@ java_binary(
         "@maven//:org_springframework_boot_spring_boot_loader_tools",
     ],
 )
+
+# jOOQ's code generator on a module's migrations, run on Postgres in a container (the macro
+# jooq_tables); needs Docker
+java_binary(
+    name = "jooq_codegen",
+    srcs = ["JooqCodegen.java"],
+    main_class = "dev.groknull.kludgeworks.build.JooqCodegen",
+    runtime_deps = [
+        "@maven//:org_flywaydb_flyway_database_postgresql",
+        "@maven//:org_postgresql_postgresql",
+        "@maven//:org_slf4j_slf4j_simple",  # Testcontainers' log, in the action's output on failure
+    ],
+    deps = [
+        ":package_info",
+        "@maven//:org_flywaydb_flyway_core",
+        "@maven//:org_jooq_jooq_codegen",
+        "@maven//:org_jooq_jooq_meta",
+        "@maven//:org_testcontainers_testcontainers",
+        "@maven//:org_testcontainers_testcontainers_postgresql",
+    ],
+)

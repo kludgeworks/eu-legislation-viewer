@@ -2,6 +2,7 @@
 """Build macros for the amendment viewer."""
 
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
+load("@rules_java//java:defs.bzl", "java_library")
 load("@rules_java//java/common:java_info.bzl", "JavaInfo")
 
 def xspec_test(name, specs, data = [], **kwargs):
@@ -167,5 +168,51 @@ def sparql_terms_test(
             "@maven//:org_junit_platform_junit_platform_launcher",
             "@maven//:org_junit_platform_junit_platform_reporting",
         ],
+        **kwargs
+    )
+
+def jooq_tables(name, migrations, package, config, deps = [], image = "postgres:18.6", **kwargs):
+    """A module's tables as jOOQ classes, generated from its Flyway migrations: a java_library.
+
+    The migrations run on Postgres in a container, and jOOQ's generator reads the schema they make
+    (JooqCodegen): so it needs Docker, when the migrations or the configuration change. The
+    generated code is jOOQ's, so it is left out of our checks.
+
+    Args:
+      name: the java_library.
+      migrations: the module's migrations (db/migration/<module>/*.sql), all in one directory.
+      package: the Java package the classes are generated into: the module's infra.jooq.
+      config: jOOQ's generator configuration: what to generate (forced types and the like).
+      deps: what the generated classes refer to: the types of forced types and their converters.
+      image: Postgres, as the tests' (TestcontainersConfiguration).
+      **kwargs: passed to the java_library.
+    """
+    native.genrule(
+        name = name + "_sources",
+        srcs = migrations + [config],
+        outs = [name + "-sources.srcjar"],
+        cmd = " && ".join([
+            "out=$$(mktemp -d)",
+            "migrations=$$(dirname $$(echo $(execpaths %s) | cut -d' ' -f1))" % migrations[0],
+            "$(execpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:jooq_codegen) $(execpath %s) $$migrations %s $$out/src %s > $$out/log 2>&1 || { cat $$out/log; exit 1; }" % (config, package, image),
+            "jar=$$PWD/$@",
+            "zipper=$$PWD/$(execpath @bazel_tools//tools/zip:zipper)",
+            "cd $$out/src",
+            "$$zipper c $$jar $$(find . -name '*.java' | sed 's|^./||' | LC_ALL=C sort)",
+            "rm -rf $$out",
+        ]),
+        # Docker, outside the sandbox
+        tags = ["no-sandbox", "requires-docker", "requires-network"],
+        tools = [
+            "//tools/build/src/main/java/dev/groknull/kludgeworks/build:jooq_codegen",
+            "@bazel_tools//tools/zip:zipper",
+        ],
+    )
+    java_library(
+        name = name,
+        srcs = [":" + name + "_sources"],
+        # jOOQ's code, not ours: no Error Prone, doclint or lint warnings
+        javacopts = ["-XepDisableAllChecks", "-Xdoclint:none", "-Xlint:none"],
+        deps = deps + ["@maven//:org_jooq_jooq"],
         **kwargs
     )

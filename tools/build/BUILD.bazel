@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@rules_java//java:defs.bzl", "java_import", "java_package_configuration", "java_plugin")
+load("@rules_java//java:defs.bzl", "java_import", "java_library", "java_package_configuration", "java_plugin")
 load("@rules_java//toolchains:default_java_toolchain.bzl", "DEFAULT_TOOLCHAIN_CONFIGURATION", "default_java_toolchain")
 
 package(default_visibility = ["//visibility:public"])
@@ -23,6 +23,21 @@ java_plugin(
 java_plugin(
     name = "picnic",
     deps = ["@maven//:tech_picnic_error_prone_support_error_prone_contrib"],
+)
+
+# RecordBuilder: builders and withers for the records annotated @RecordBuilder, generated as they
+# are compiled. A target that uses it depends on this, for the annotations and the processor.
+java_library(
+    name = "record_builder",
+    exported_plugins = [":record_builder_processor"],
+    exports = ["@maven//:io_soabase_record_builder_record_builder_core"],
+)
+
+java_plugin(
+    name = "record_builder_processor",
+    generates_api = True,
+    processor_class = "io.soabase.recordbuilder.processor.RecordBuilderProcessor",
+    deps = ["@maven//:io_soabase_record_builder_record_builder_processor"],
 )
 
 # Picnic's checks that hold in our code, errors there: SLF4J's placeholders and loggers, idioms

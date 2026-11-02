@@ -3,7 +3,7 @@ load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 load("//tools/build:defs.bzl", "spring_boot_jar")
 
 # The application: ViewerApplication and, at run time, its modules, its configuration and migrations,
-# and the starters: web, the store (Postgres, Flyway, Spring Data JDBC, Modulith's event registry) and
+# and the starters: web, the store (Postgres, Flyway, jOOQ, Modulith's event registry) and
 # observability (OpenTelemetry, Modulith's insight, JDBC spans)
 java_library(
     name = "viewer",
@@ -26,8 +26,8 @@ java_library(
         "@maven//:org_jmolecules_integrations_jmolecules_spring",
         "@maven//:org_postgresql_postgresql",
         "@maven//:org_springframework_boot_spring_boot_starter_actuator",
-        "@maven//:org_springframework_boot_spring_boot_starter_data_jdbc",
         "@maven//:org_springframework_boot_spring_boot_starter_flyway",
+        "@maven//:org_springframework_boot_spring_boot_starter_jooq",
         "@maven//:org_springframework_boot_spring_boot_starter_opentelemetry",
         "@maven//:org_springframework_boot_spring_boot_starter_restclient",
         "@maven//:org_springframework_boot_spring_boot_starter_validation",

@@ -29,6 +29,8 @@ spring:
     problemdetails:
       enabled: true
   # the store: Postgres at spring.datasource.* (locally a container: TestcontainersConfiguration)
+  jooq:
+    sql-dialect: postgres
   modulith:
     runtime:
       # each module's migrations in db/migration/<module>, with its own history table; what the whole

@@ -37,9 +37,13 @@ maven.install(
         # Jakarta Bean Validation (Hibernate Validator), for @Validated configuration properties
         "org.springframework.boot:spring-boot-starter-validation",
         "jakarta.validation:jakarta.validation-api",
-        # the store: Postgres, its schema by Flyway, aggregates by Spring Data JDBC, and Spring Modulith's
-        # event publication registry in it
-        "org.springframework.boot:spring-boot-starter-data-jdbc",
+        # the store: Postgres, its schema by Flyway, queried with jOOQ (its classes generated from the
+        # migrations: jooq_tables), and Spring Modulith's event publication registry in it
+        "org.springframework.boot:spring-boot-starter-jooq",
+        "org.jooq:jooq",
+        "org.jooq:jooq-codegen",
+        "org.jooq:jooq-meta",
+        "org.flywaydb:flyway-core",
         "org.springframework.boot:spring-boot-starter-flyway",
         "org.flywaydb:flyway-database-postgresql",
         "org.postgresql:postgresql",
@@ -63,6 +67,9 @@ maven.install(
         "org.jmolecules.integrations:jmolecules-spring",
         "org.jmolecules.integrations:jmolecules-jackson3",
         "org.jspecify:jspecify",
+        # builders and withers for records, generated (an annotation processor: //tools/build:record_builder)
+        "io.soabase.record-builder:record-builder-core:53",
+        "io.soabase.record-builder:record-builder-processor:53",
         # tests
         "org.junit.jupiter:junit-jupiter-api",
         "org.junit.jupiter:junit-jupiter-params",
@@ -75,6 +82,8 @@ maven.install(
         "org.springframework.boot:spring-boot-test",
         "org.springframework.boot:spring-boot-test-autoconfigure",
         "org.hamcrest:hamcrest",
+        # waiting on work done in the background (the ingest workers)
+        "org.awaitility:awaitility",
         "org.springframework.modulith:spring-modulith-core",
         # the modules' documentation, from the same model the boundaries are verified on (mise run modules)
         "org.springframework.modulith:spring-modulith-docs",
@@ -84,6 +93,8 @@ maven.install(
         "org.testcontainers:testcontainers",
         "org.testcontainers:testcontainers-postgresql",
         "org.testcontainers:testcontainers-grafana",
+        # the build's own log (jooq_codegen)
+        "org.slf4j:slf4j-simple",
     ],
     boms = [
         "org.springframework.boot:spring-boot-dependencies:4.1.1",
