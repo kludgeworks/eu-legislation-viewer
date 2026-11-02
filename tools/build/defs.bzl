@@ -91,7 +91,7 @@ def _spring_boot_jar_impl(ctx):
 def _local_jar_name(jar):
     """A target of ours by its Java package, or its component at a source root.
 
-    dev.groknull.kludgeworks.eu.legislation.viewer.acts.infra-sparql.jar for a package below
+    dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra-sparql.jar for a package below
     src/main/java or src/main/resources, viewer-resources.jar for viewer/src/main/resources itself.
     """
     package = jar.owner.package

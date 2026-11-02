@@ -3,7 +3,7 @@ load("@rules_java//java:defs.bzl", "java_library")
 
 # The module's API and domain: Act, its identifiers, versions and timeline; Acts, the repository
 java_library(
-    name = "acts",
+    name = "catalogue",
     srcs = glob(["*.java"]),
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     deps = [

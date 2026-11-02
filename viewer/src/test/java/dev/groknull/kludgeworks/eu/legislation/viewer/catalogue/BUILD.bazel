@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 
-# The acts module's domain rules: one test target per *Test.java
+# The catalogue module's domain rules: one test target per *Test.java
 java_test_suite(
-    name = "acts",
+    name = "catalogue",
     size = "small",
     srcs = glob(["*.java"]),
     runner = "junit5",
@@ -13,7 +13,7 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-/** The acts module's infrastructure: its catalogue on Cellar's SPARQL endpoint. */
+/** The catalogue module's infrastructure: acts read from Cellar's SPARQL endpoint. */
 @InfrastructureRing
 @NullMarked
-package dev.groknull.kludgeworks.eu.legislation.viewer.acts.infra;
+package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
 import org.jmolecules.architecture.onion.simplified.InfrastructureRing;
 import org.jspecify.annotations.NullMarked;

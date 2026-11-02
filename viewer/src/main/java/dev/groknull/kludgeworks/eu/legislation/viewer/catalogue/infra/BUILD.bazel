@@ -1,14 +1,14 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
 
-# The acts module's infrastructure: its catalogue on Cellar
+# The catalogue module's infrastructure: acts read from Cellar
 java_library(
     name = "infra",
     srcs = glob(["*.java"]),
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
-    runtime_deps = ["//viewer/src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/acts/infra:sparql"],
+    runtime_deps = ["//viewer/src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra:sparql"],
     deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:com_fasterxml_jackson_core_jackson_annotations",

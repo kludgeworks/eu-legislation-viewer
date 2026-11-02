@@ -5,10 +5,10 @@
  * module's API and the onion's domain ring; {@link Acts} is the repository of all acts, which other
  * modules use directly; its adapter on Cellar is in {@code infra}.
  */
-@ApplicationModule(displayName = "Acts")
+@ApplicationModule(displayName = "Catalogue")
 @DomainRing
 @NullMarked
-package dev.groknull.kludgeworks.eu.legislation.viewer.acts;
+package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import org.jmolecules.architecture.onion.simplified.DomainRing;
 import org.jspecify.annotations.NullMarked;

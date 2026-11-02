@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.acts.infra;
+package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Acts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.ResourceType;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Timeline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;

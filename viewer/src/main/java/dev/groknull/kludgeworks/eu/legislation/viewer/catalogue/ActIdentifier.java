@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.acts;
+package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import java.util.regex.Pattern;
 import org.jmolecules.ddd.annotation.ValueObject;
