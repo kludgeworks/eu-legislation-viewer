@@ -12,7 +12,9 @@
     "jakarta.validation:jakarta.validation-api": -1858198223,
     "name.dmaus.schxslt:schxslt2": 601299804,
     "net.sf.saxon:Saxon-HE": 211501835,
+    "net.ttddyy.observation:datasource-micrometer-spring-boot": -812390484,
     "org.assertj:assertj-core": 1863574844,
+    "org.flywaydb:flyway-database-postgresql": 751277013,
     "org.hamcrest:hamcrest": -29695334,
     "org.jmolecules.integrations:jmolecules-archunit": -1728251600,
     "org.jmolecules.integrations:jmolecules-jackson3": -1126255350,
@@ -27,11 +29,15 @@
     "org.junit.jupiter:junit-jupiter-params": 1082310006,
     "org.junit.platform:junit-platform-launcher": -354104948,
     "org.junit.platform:junit-platform-reporting": 1896713402,
+    "org.postgresql:postgresql": -253651910,
     "org.springframework.boot:spring-boot": 1220394855,
     "org.springframework.boot:spring-boot-autoconfigure": -919298511,
     "org.springframework.boot:spring-boot-dependencies": 98615043,
     "org.springframework.boot:spring-boot-loader-tools": -1122518281,
     "org.springframework.boot:spring-boot-starter-actuator": -1082017891,
+    "org.springframework.boot:spring-boot-starter-data-jdbc": 39840922,
+    "org.springframework.boot:spring-boot-starter-flyway": 432056896,
+    "org.springframework.boot:spring-boot-starter-opentelemetry": 1410419211,
     "org.springframework.boot:spring-boot-starter-restclient": 888455491,
     "org.springframework.boot:spring-boot-starter-validation": 113118493,
     "org.springframework.boot:spring-boot-starter-webmvc": 338400426,
@@ -42,18 +48,23 @@
     "org.springframework.modulith:spring-modulith-bom": 1667680144,
     "org.springframework.modulith:spring-modulith-core": 2094793953,
     "org.springframework.modulith:spring-modulith-docs": -1347706499,
+    "org.springframework.modulith:spring-modulith-starter-insight": -721434572,
+    "org.springframework.modulith:spring-modulith-starter-jdbc": 795712955,
     "org.springframework:spring-context": -286867064,
     "org.springframework:spring-core": 828592846,
     "org.springframework:spring-test": -967883781,
     "org.springframework:spring-web": -1196164797,
     "org.springframework:spring-webmvc": 1527496007,
     "org.testcontainers:testcontainers": -258185670,
+    "org.testcontainers:testcontainers-grafana": -2129771727,
+    "org.testcontainers:testcontainers-postgresql": 110741309,
     "org.xmlunit:xmlunit-assertj3": -355876019,
     "repositories": -1949687017,
     "tech.picnic.error-prone-support:error-prone-contrib": 1934728221,
     "tools.jackson.core:jackson-databind": 1626308344
   },
   "__RESOLVED_ARTIFACTS_HASH": {
+    "aopalliance:aopalliance": 1403132272,
     "ch.qos.logback:logback-classic": -974775885,
     "ch.qos.logback:logback-core": 1703218533,
     "com.fasterxml.jackson.core:jackson-annotations": 1145483352,
@@ -68,18 +79,42 @@
     "com.google.guava:guava": -1710221766,
     "com.google.guava:listenablefuture": 1079558157,
     "com.google.j2objc:j2objc-annotations": -1008747351,
+    "com.google.protobuf:protobuf-java": 911577887,
     "com.jayway.jsonpath:json-path": -843320851,
+    "com.squareup.okhttp3:okhttp-jvm": -1014142857,
+    "com.squareup.okio:okio-jvm": 501270314,
     "com.structurizr:structurizr-core": 2104432366,
     "com.structurizr:structurizr-export": 499657505,
     "com.tngtech.archunit:archunit": -1723949349,
     "com.uber.nullaway:nullaway": 982946578,
+    "com.zaxxer:HikariCP": -1650230914,
     "commons-codec:commons-codec": 58403102,
     "commons-io:commons-io": -515402013,
     "commons-logging:commons-logging": -102005530,
+    "io.micrometer:context-propagation": 1223423881,
     "io.micrometer:micrometer-commons": 440746097,
     "io.micrometer:micrometer-core": -1670822843,
     "io.micrometer:micrometer-jakarta9": -1610177437,
     "io.micrometer:micrometer-observation": 161929031,
+    "io.micrometer:micrometer-registry-otlp": -1277943056,
+    "io.micrometer:micrometer-tracing": -1442202412,
+    "io.micrometer:micrometer-tracing-bridge-otel": 65001064,
+    "io.opentelemetry.proto:opentelemetry-proto": 834225494,
+    "io.opentelemetry.semconv:opentelemetry-semconv": -646851427,
+    "io.opentelemetry:opentelemetry-api": -541719127,
+    "io.opentelemetry:opentelemetry-common": 596563631,
+    "io.opentelemetry:opentelemetry-context": 1419774145,
+    "io.opentelemetry:opentelemetry-exporter-common": 869123396,
+    "io.opentelemetry:opentelemetry-exporter-otlp": -1728564695,
+    "io.opentelemetry:opentelemetry-exporter-otlp-common": 1950053544,
+    "io.opentelemetry:opentelemetry-exporter-sender-okhttp": 2052931778,
+    "io.opentelemetry:opentelemetry-extension-trace-propagators": -787335857,
+    "io.opentelemetry:opentelemetry-sdk": -797477471,
+    "io.opentelemetry:opentelemetry-sdk-common": 970545597,
+    "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi": 1738784907,
+    "io.opentelemetry:opentelemetry-sdk-logs": -17412482,
+    "io.opentelemetry:opentelemetry-sdk-metrics": -1367295569,
+    "io.opentelemetry:opentelemetry-sdk-trace": -1401077298,
     "io.xspec:xspec": -998869811,
     "jakarta.activation:jakarta.activation-api": -1623326611,
     "jakarta.annotation:jakarta.annotation-api": 196616042,
@@ -92,6 +127,9 @@
     "net.minidev:accessors-smart": 2098330403,
     "net.minidev:json-smart": 1407038084,
     "net.sf.saxon:Saxon-HE": -1112923966,
+    "net.ttddyy.observation:datasource-micrometer": 153802445,
+    "net.ttddyy.observation:datasource-micrometer-spring-boot": 2054477898,
+    "net.ttddyy:datasource-proxy": -1018826524,
     "org.apache.commons:commons-compress": -1565950364,
     "org.apache.commons:commons-lang3": 1841935436,
     "org.apache.logging.log4j:log4j-api": -1710269538,
@@ -103,10 +141,13 @@
     "org.assertj:assertj-core": -59722598,
     "org.checkerframework:checker-qual": -1543380368,
     "org.checkerframework:dataflow-nullaway": 1153433772,
+    "org.flywaydb:flyway-core": -1801489017,
+    "org.flywaydb:flyway-database-postgresql": 180118906,
     "org.hamcrest:hamcrest": 1282317766,
     "org.hdrhistogram:HdrHistogram": 310945399,
     "org.hibernate.validator:hibernate-validator": 1341086113,
     "org.jboss.logging:jboss-logging": 670094878,
+    "org.jetbrains.kotlin:kotlin-stdlib": -1474384514,
     "org.jetbrains:annotations": -845966580,
     "org.jmolecules.integrations:jmolecules-archunit": -296919357,
     "org.jmolecules.integrations:jmolecules-jackson3": 1192958134,
@@ -126,27 +167,42 @@
     "org.opentest4j.reporting:open-test-reporting-tooling-spi": 1212162497,
     "org.opentest4j:opentest4j": -1711174392,
     "org.ow2.asm:asm": -1101379267,
+    "org.postgresql:postgresql": -1885180735,
     "org.rnorth.duct-tape:duct-tape": -1059401544,
+    "org.slf4j:jcl-over-slf4j": 1113513525,
     "org.slf4j:jul-to-slf4j": 1118476727,
     "org.slf4j:slf4j-api": 500377983,
     "org.springframework.boot:spring-boot": 276724413,
     "org.springframework.boot:spring-boot-actuator": 1574461963,
     "org.springframework.boot:spring-boot-actuator-autoconfigure": -115833215,
     "org.springframework.boot:spring-boot-autoconfigure": 1472557455,
+    "org.springframework.boot:spring-boot-data-commons": 1999396468,
+    "org.springframework.boot:spring-boot-data-jdbc": -2048577400,
+    "org.springframework.boot:spring-boot-flyway": 1122814817,
     "org.springframework.boot:spring-boot-health": -1642279449,
     "org.springframework.boot:spring-boot-http-client": 227691599,
     "org.springframework.boot:spring-boot-http-converter": 745525851,
     "org.springframework.boot:spring-boot-jackson": -1628625085,
+    "org.springframework.boot:spring-boot-jdbc": 1773139283,
     "org.springframework.boot:spring-boot-loader-tools": -773758160,
     "org.springframework.boot:spring-boot-micrometer-metrics": 1310591253,
     "org.springframework.boot:spring-boot-micrometer-observation": 1009262964,
+    "org.springframework.boot:spring-boot-micrometer-tracing": -415431154,
+    "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry": 2078903607,
+    "org.springframework.boot:spring-boot-opentelemetry": 1123131315,
+    "org.springframework.boot:spring-boot-persistence": -1018883178,
     "org.springframework.boot:spring-boot-restclient": 1077409218,
     "org.springframework.boot:spring-boot-servlet": 639711912,
+    "org.springframework.boot:spring-boot-sql": -1592924234,
     "org.springframework.boot:spring-boot-starter": -1905590456,
     "org.springframework.boot:spring-boot-starter-actuator": -1286390891,
+    "org.springframework.boot:spring-boot-starter-data-jdbc": 1714951823,
+    "org.springframework.boot:spring-boot-starter-flyway": -1250505430,
     "org.springframework.boot:spring-boot-starter-jackson": 369527275,
+    "org.springframework.boot:spring-boot-starter-jdbc": 683098650,
     "org.springframework.boot:spring-boot-starter-logging": -1965325172,
     "org.springframework.boot:spring-boot-starter-micrometer-metrics": -242434938,
+    "org.springframework.boot:spring-boot-starter-opentelemetry": -204029448,
     "org.springframework.boot:spring-boot-starter-restclient": 1134993850,
     "org.springframework.boot:spring-boot-starter-tomcat": 1898694526,
     "org.springframework.boot:spring-boot-starter-tomcat-runtime": 1798393534,
@@ -156,21 +212,44 @@
     "org.springframework.boot:spring-boot-test-autoconfigure": 640840680,
     "org.springframework.boot:spring-boot-testcontainers": -160202142,
     "org.springframework.boot:spring-boot-tomcat": 637947697,
+    "org.springframework.boot:spring-boot-transaction": 1590643052,
     "org.springframework.boot:spring-boot-validation": 75296794,
     "org.springframework.boot:spring-boot-web-server": 1791077981,
     "org.springframework.boot:spring-boot-webmvc": 1644292535,
+    "org.springframework.data:spring-data-commons": 1365953262,
+    "org.springframework.data:spring-data-jdbc": 1551681625,
+    "org.springframework.data:spring-data-relational": -1580326739,
+    "org.springframework.modulith:spring-modulith-actuator": -1685703750,
     "org.springframework.modulith:spring-modulith-api": -1671136456,
+    "org.springframework.modulith:spring-modulith-apt": -203694605,
     "org.springframework.modulith:spring-modulith-core": 424804072,
     "org.springframework.modulith:spring-modulith-docs": -2119709639,
+    "org.springframework.modulith:spring-modulith-events-api": -1951733842,
+    "org.springframework.modulith:spring-modulith-events-core": 429329674,
+    "org.springframework.modulith:spring-modulith-events-jackson": 743842480,
+    "org.springframework.modulith:spring-modulith-events-jdbc": 755930182,
+    "org.springframework.modulith:spring-modulith-moments": -767688995,
+    "org.springframework.modulith:spring-modulith-observability-api": 680969470,
+    "org.springframework.modulith:spring-modulith-observability-core": -1035402057,
+    "org.springframework.modulith:spring-modulith-runtime": 1325398580,
+    "org.springframework.modulith:spring-modulith-starter-core": -533285022,
+    "org.springframework.modulith:spring-modulith-starter-insight": -679693304,
+    "org.springframework.modulith:spring-modulith-starter-jdbc": 324956310,
     "org.springframework:spring-aop": 2140047740,
     "org.springframework:spring-beans": -52091312,
     "org.springframework:spring-context": -1592913882,
     "org.springframework:spring-core": 1717580005,
     "org.springframework:spring-expression": -368645642,
+    "org.springframework:spring-jdbc": 594161485,
     "org.springframework:spring-test": 439340573,
+    "org.springframework:spring-tx": 1278511811,
     "org.springframework:spring-web": -1087826926,
     "org.springframework:spring-webmvc": -1583482181,
     "org.testcontainers:testcontainers": -984446168,
+    "org.testcontainers:testcontainers-database-commons": 1536154967,
+    "org.testcontainers:testcontainers-grafana": 2131428577,
+    "org.testcontainers:testcontainers-jdbc": -929385480,
+    "org.testcontainers:testcontainers-postgresql": 77541278,
     "org.xmlresolver:xmlresolver": 602572078,
     "org.xmlresolver:xmlresolver:jar:data": 1791221573,
     "org.xmlunit:xmlunit-assertj3": -1691431030,
@@ -189,6 +268,7 @@
     "jakarta.servlet:jakarta.servlet-api": "jakarta.servlet:jakarta.servlet-api:6.1.0",
     "jakarta.validation:jakarta.validation-api": "jakarta.validation:jakarta.validation-api:3.1.1",
     "org.assertj:assertj-core": "org.assertj:assertj-core:3.27.7",
+    "org.flywaydb:flyway-database-postgresql": "org.flywaydb:flyway-database-postgresql:12.4.0",
     "org.hamcrest:hamcrest": "org.hamcrest:hamcrest:3.0",
     "org.jmolecules.integrations:jmolecules-archunit": "org.jmolecules.integrations:jmolecules-archunit:0.33.0",
     "org.jmolecules.integrations:jmolecules-jackson3": "org.jmolecules.integrations:jmolecules-jackson3:0.33.0",
@@ -202,9 +282,13 @@
     "org.junit.jupiter:junit-jupiter-params": "org.junit.jupiter:junit-jupiter-params:6.0.3",
     "org.junit.platform:junit-platform-launcher": "org.junit.platform:junit-platform-launcher:6.0.3",
     "org.junit.platform:junit-platform-reporting": "org.junit.platform:junit-platform-reporting:6.0.3",
+    "org.postgresql:postgresql": "org.postgresql:postgresql:42.7.13",
     "org.springframework.boot:spring-boot": "org.springframework.boot:spring-boot:4.1.1",
     "org.springframework.boot:spring-boot-autoconfigure": "org.springframework.boot:spring-boot-autoconfigure:4.1.1",
     "org.springframework.boot:spring-boot-starter-actuator": "org.springframework.boot:spring-boot-starter-actuator:4.1.1",
+    "org.springframework.boot:spring-boot-starter-data-jdbc": "org.springframework.boot:spring-boot-starter-data-jdbc:4.1.1",
+    "org.springframework.boot:spring-boot-starter-flyway": "org.springframework.boot:spring-boot-starter-flyway:4.1.1",
+    "org.springframework.boot:spring-boot-starter-opentelemetry": "org.springframework.boot:spring-boot-starter-opentelemetry:4.1.1",
     "org.springframework.boot:spring-boot-starter-restclient": "org.springframework.boot:spring-boot-starter-restclient:4.1.1",
     "org.springframework.boot:spring-boot-starter-validation": "org.springframework.boot:spring-boot-starter-validation:4.1.1",
     "org.springframework.boot:spring-boot-starter-webmvc": "org.springframework.boot:spring-boot-starter-webmvc:4.1.1",
@@ -214,15 +298,25 @@
     "org.springframework.modulith:spring-modulith-api": "org.springframework.modulith:spring-modulith-api:2.1.1",
     "org.springframework.modulith:spring-modulith-core": "org.springframework.modulith:spring-modulith-core:2.1.1",
     "org.springframework.modulith:spring-modulith-docs": "org.springframework.modulith:spring-modulith-docs:2.1.1",
+    "org.springframework.modulith:spring-modulith-starter-insight": "org.springframework.modulith:spring-modulith-starter-insight:2.1.1",
+    "org.springframework.modulith:spring-modulith-starter-jdbc": "org.springframework.modulith:spring-modulith-starter-jdbc:2.1.1",
     "org.springframework:spring-context": "org.springframework:spring-context:7.0.9",
     "org.springframework:spring-core": "org.springframework:spring-core:7.0.9",
     "org.springframework:spring-test": "org.springframework:spring-test:7.0.9",
     "org.springframework:spring-web": "org.springframework:spring-web:7.0.9",
     "org.springframework:spring-webmvc": "org.springframework:spring-webmvc:7.0.9",
     "org.testcontainers:testcontainers": "org.testcontainers:testcontainers:2.0.5",
+    "org.testcontainers:testcontainers-grafana": "org.testcontainers:testcontainers-grafana:2.0.5",
+    "org.testcontainers:testcontainers-postgresql": "org.testcontainers:testcontainers-postgresql:2.0.5",
     "tools.jackson.core:jackson-databind": "tools.jackson.core:jackson-databind:3.1.5"
   },
   "artifacts": {
+    "aopalliance:aopalliance": {
+      "shasums": {
+        "jar": "0addec670fedcd3f113c5c8091d783280d23f75e3acb841b61a9cdb079376a08"
+      },
+      "version": "1.0"
+    },
     "ch.qos.logback:logback-classic": {
       "shasums": {
         "jar": "afb439c61fa287c9e1925523b13baab03617e724406a389d48b61c2c3e46b700"
@@ -307,11 +401,29 @@
       },
       "version": "3.1"
     },
+    "com.google.protobuf:protobuf-java": {
+      "shasums": {
+        "jar": "a4345ba2aa009912ff6f90467fea2d104605256b72c50840d75f13256638a472"
+      },
+      "version": "4.35.1"
+    },
     "com.jayway.jsonpath:json-path": {
       "shasums": {
         "jar": "890daa95dd3892d34d9fabc27cd5153656e6f369358625c88f4dc7b79cbd6c5a"
       },
       "version": "2.10.0"
+    },
+    "com.squareup.okhttp3:okhttp-jvm": {
+      "shasums": {
+        "jar": "c771f48075b763f6c322055e21129a94b7de4c1faf3f8f58ace320b0c9517a30"
+      },
+      "version": "5.3.2"
+    },
+    "com.squareup.okio:okio-jvm": {
+      "shasums": {
+        "jar": "2196b993cd34dbbd919e7e01f57a4781b58bee80f86106163e287c20343a96a7"
+      },
+      "version": "3.16.4"
     },
     "com.structurizr:structurizr-core": {
       "shasums": {
@@ -337,6 +449,12 @@
       },
       "version": "0.14.3"
     },
+    "com.zaxxer:HikariCP": {
+      "shasums": {
+        "jar": "f1e612fa27345be3107a85431e8a8aeb205c15364ab2f2d411e40a9d7bb08095"
+      },
+      "version": "7.0.2"
+    },
     "commons-codec:commons-codec": {
       "shasums": {
         "jar": "4da851cb6abfb98bfe9eb77c5e5fc47f5414fa28b94e21b7fd9a646705dc167f"
@@ -354,6 +472,12 @@
         "jar": "f8ead8943401081dea0aa824b5b1ba40a0e4ed297a572a0f02258150a0b62357"
       },
       "version": "1.3.6"
+    },
+    "io.micrometer:context-propagation": {
+      "shasums": {
+        "jar": "5b69e2100640879ccf4b20673ced86de560b8e217b55542f85a53d3563b72aaa"
+      },
+      "version": "1.2.1"
     },
     "io.micrometer:micrometer-commons": {
       "shasums": {
@@ -378,6 +502,120 @@
         "jar": "eb34f0cd84a879393ae5c21160fc06385ccdc74f36a4d1e31b199f59acfdaf71"
       },
       "version": "1.17.1"
+    },
+    "io.micrometer:micrometer-registry-otlp": {
+      "shasums": {
+        "jar": "c991036f05cf1a84b02bcc95b9a686ac39a584b01e7afdab1562a5c1dc71d0c9"
+      },
+      "version": "1.17.1"
+    },
+    "io.micrometer:micrometer-tracing": {
+      "shasums": {
+        "jar": "435e97807c1e14ae66e6265a0f713b1525e51b8f3531e63b09d9697494010d89"
+      },
+      "version": "1.7.1"
+    },
+    "io.micrometer:micrometer-tracing-bridge-otel": {
+      "shasums": {
+        "jar": "3c9de2464049c10ed2f2575de51c15dab79cbe4487ec13e65687e57db9c233b6"
+      },
+      "version": "1.7.1"
+    },
+    "io.opentelemetry.proto:opentelemetry-proto": {
+      "shasums": {
+        "jar": "931e84b0802d77ae963e26c6ad6129b4ad0f2510fe907f019f5c988c2a869c3a"
+      },
+      "version": "1.10.0-alpha"
+    },
+    "io.opentelemetry.semconv:opentelemetry-semconv": {
+      "shasums": {
+        "jar": "636ad7dac093d22fb84bf8d928ef836694f2d63c92d72b3df21b86002e8becef"
+      },
+      "version": "1.41.1"
+    },
+    "io.opentelemetry:opentelemetry-api": {
+      "shasums": {
+        "jar": "d58143928c049233653e6bf1282ff8a767ebdd5e6a82b3f336158c30e40b431d"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-common": {
+      "shasums": {
+        "jar": "d6310bebde67d65c1519696728d8604005315ed08ab14071956fc0826fd71815"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-context": {
+      "shasums": {
+        "jar": "8ec86c3609222b9b6307bf40154c1f1c288d1f18ada0155409e7797adbdbe517"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-exporter-common": {
+      "shasums": {
+        "jar": "50f84b5b58048f69bd684ec874413944209995e01c177200555c151dabfe1ec9"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-exporter-otlp": {
+      "shasums": {
+        "jar": "59df47fdc4bef6866ed39eb6a04892c68e28d7938eaeaa21801ac5dd2dcb0d65"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-exporter-otlp-common": {
+      "shasums": {
+        "jar": "79eaaaf044df15209ee1461b668f7c93547734a793d6cf6ad5e57290d3f8c0ea"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-exporter-sender-okhttp": {
+      "shasums": {
+        "jar": "8c9b2c4394543c4f28e0a6c66d16259a1bfaf67a47a689fb001bd9a92dafb6ea"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-extension-trace-propagators": {
+      "shasums": {
+        "jar": "d301b26215e8f18553b62759d2c17493f321b8c74d9782841446ab8d2d716b9f"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-sdk": {
+      "shasums": {
+        "jar": "99d421ea0e5a1ca8e45cb67f1d5db7f0e8a718dd55eeb86c1323597e1f10aed3"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-sdk-common": {
+      "shasums": {
+        "jar": "bf9d13df9a50e49a5db664ba8ebfad79f73f03219d2ac6f6709d432f6896eba0"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi": {
+      "shasums": {
+        "jar": "220c22bcf420faae59b7225c789f572eaa22e7af2304d55508aaf2a3efcfecf8"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-sdk-logs": {
+      "shasums": {
+        "jar": "51c94329bc8e335ed79027d29d49c075c11b91b39e48679edf590e784a392406"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-sdk-metrics": {
+      "shasums": {
+        "jar": "50b057fbf063f6801f623212f4b51b6a3fefc77837314a1316b2f54894c8b5d4"
+      },
+      "version": "1.62.0"
+    },
+    "io.opentelemetry:opentelemetry-sdk-trace": {
+      "shasums": {
+        "jar": "fb6c0953b229a6da1db813135ae11a621bf9da56b7356c1e93049ed4b088c232"
+      },
+      "version": "1.62.0"
     },
     "io.xspec:xspec": {
       "shasums": {
@@ -451,6 +689,24 @@
       },
       "version": "13.1"
     },
+    "net.ttddyy.observation:datasource-micrometer": {
+      "shasums": {
+        "jar": "d025940ce0fd1a81114aa089c4bbf558b60271f4f66c86493d85988d2aa5a83b"
+      },
+      "version": "2.3.0"
+    },
+    "net.ttddyy.observation:datasource-micrometer-spring-boot": {
+      "shasums": {
+        "jar": "3c63d07d28ee20e769488574d1d012da99df54fda00f4633b8b0829d30fd2501"
+      },
+      "version": "2.3.0"
+    },
+    "net.ttddyy:datasource-proxy": {
+      "shasums": {
+        "jar": "eb3bb7eb6caa0896ca583ebe938452738fc7774ffec27c6bb385e9789acfdedf"
+      },
+      "version": "1.11.0"
+    },
     "org.apache.commons:commons-compress": {
       "shasums": {
         "jar": "e1522945218456f3649a39bc4afd70ce4bd466221519dba7d378f2141a4642ca"
@@ -517,6 +773,18 @@
       },
       "version": "4.3.1"
     },
+    "org.flywaydb:flyway-core": {
+      "shasums": {
+        "jar": "c3f93df1f3e0c9d14652adb5ade97401f2ede503859ac693c2af5c06e2797799"
+      },
+      "version": "12.4.0"
+    },
+    "org.flywaydb:flyway-database-postgresql": {
+      "shasums": {
+        "jar": "abc075a5c3cbf37dc64b28fec7e2398fb14f31109f7ab6271854738797407b85"
+      },
+      "version": "12.4.0"
+    },
     "org.hamcrest:hamcrest": {
       "shasums": {
         "jar": "5d66b6a4a680755cb6ed7cb104fa7835ef644667586ff0737adeb977c39ecdbc"
@@ -540,6 +808,12 @@
         "jar": "7c12ee575508f81e22b1db9334b969d0ec54ef0fd1dcba24eeab1a44235fc366"
       },
       "version": "3.6.3.Final"
+    },
+    "org.jetbrains.kotlin:kotlin-stdlib": {
+      "shasums": {
+        "jar": "6f64eac736db9434dd6925b4a518b9d1d17177652320c37916cf9ba3ce7d7d7a"
+      },
+      "version": "2.3.21"
     },
     "org.jetbrains:annotations": {
       "shasums": {
@@ -655,11 +929,23 @@
       },
       "version": "9.7.1"
     },
+    "org.postgresql:postgresql": {
+      "shasums": {
+        "jar": "6e0e4cc2d8cae902084f8a2b18728b073a6fd9d1f87c9d8bff8f298c18185b93"
+      },
+      "version": "42.7.13"
+    },
     "org.rnorth.duct-tape:duct-tape": {
       "shasums": {
         "jar": "31cef12ddec979d1f86d7cf708c41a17da523d05c685fd6642e9d0b2addb7240"
       },
       "version": "1.0.8"
+    },
+    "org.slf4j:jcl-over-slf4j": {
+      "shasums": {
+        "jar": "ec5c36d57d2dbe100f84878f944575cb7871da32c7a115b8d7e0721277045d67"
+      },
+      "version": "2.0.18"
     },
     "org.slf4j:jul-to-slf4j": {
       "shasums": {
@@ -697,6 +983,24 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-data-commons": {
+      "shasums": {
+        "jar": "e9911b99825ea5650827ec1e2d2fc1890c7e63b6f048c1f4dba2c8e85ff6d354"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-data-jdbc": {
+      "shasums": {
+        "jar": "efae601d16b1b8a7e21402173ce3cc3668469428032555dc77f97d31d002ee50"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-flyway": {
+      "shasums": {
+        "jar": "61db32d08f2b1b04cf006e916575da22ecee0a2e0bb0604aca26c04f7bd4aa0e"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-health": {
       "shasums": {
         "jar": "f60151e1f014b40761d0644be1cb04f82df7fc3e9b7bf6e946848547eec399e7"
@@ -721,6 +1025,12 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-jdbc": {
+      "shasums": {
+        "jar": "30de56a06ccedb40245fd3a69a5107c7b3c0500447bb982a54a3b5da2859ae2c"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-loader-tools": {
       "shasums": {
         "jar": "b26911978c785fcb894b398c5a781e409682309bf083b9587083fdd02be06a96"
@@ -739,6 +1049,30 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-micrometer-tracing": {
+      "shasums": {
+        "jar": "78802babfbe19ccc5c1e49782219e2540fbfe905f7a94e2aea432372e29ca60a"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry": {
+      "shasums": {
+        "jar": "d918f554b585348bbfbab29709b7e7eea77682800015616f17ccfe7625bc6cdf"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-opentelemetry": {
+      "shasums": {
+        "jar": "ad9c45771cc8ce7af0e5abdf1ebd083777335b097acbbbc260d4c604eb8ec342"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-persistence": {
+      "shasums": {
+        "jar": "0f78d2556ac3ed75f9eaf3134a1fba94ad1ec3414b52aa279c1f690217e71e3c"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-restclient": {
       "shasums": {
         "jar": "e613f02dafc91120634aff26272e77fe1e56d6a644967bd74ed7beb7f199b17e"
@@ -748,6 +1082,12 @@
     "org.springframework.boot:spring-boot-servlet": {
       "shasums": {
         "jar": "4dcb156e311a4c1ad5f1ed7eabd94a78ea74510b05c429a4fcfdcf8beb9d5882"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-sql": {
+      "shasums": {
+        "jar": "fa4f6ddded1bb3bbc496897686336d8433e34f1f22daa886872be2aa184def23"
       },
       "version": "4.1.1"
     },
@@ -763,9 +1103,27 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-starter-data-jdbc": {
+      "shasums": {
+        "jar": "079c9b220d6127644bdbe58b6dd53c53af4a309df574c0ed2f9dde22f2b5ca32"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-starter-flyway": {
+      "shasums": {
+        "jar": "d9a454f49cc844b1c2940f645f659c506322d02444912422a19ba619de60e6c7"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-starter-jackson": {
       "shasums": {
         "jar": "d30e594a3e0f3a090438fc22000a87ab577a3b80c674180a10544ca331207f24"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-starter-jdbc": {
+      "shasums": {
+        "jar": "c51b28a3793168bff837eea90b1ae641efc3a28d6cdb980dd2b0b230914e93ee"
       },
       "version": "4.1.1"
     },
@@ -778,6 +1136,12 @@
     "org.springframework.boot:spring-boot-starter-micrometer-metrics": {
       "shasums": {
         "jar": "ad34ce3535a82b3920efea7f9c5d6322de484969f3ab5fa6da05030edd7c14d4"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-starter-opentelemetry": {
+      "shasums": {
+        "jar": "f54d0caaad40304cd79e24372cc3a2499fbd2b8c954ef06d4d57abf36214e40c"
       },
       "version": "4.1.1"
     },
@@ -835,6 +1199,12 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-transaction": {
+      "shasums": {
+        "jar": "e7f2fad4fe65bf6aaf1b1a538a68a1cf69988adb558f4a0fc0992a8be4fddf64"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-validation": {
       "shasums": {
         "jar": "c2546a81b6b7a39f51d889c99047f24567e4b28d1717fb53a65e9327cfc436f1"
@@ -853,9 +1223,39 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.data:spring-data-commons": {
+      "shasums": {
+        "jar": "cf2a3f9bfabefca1a8c2c0f0a65c393d9ff83b0cb1cf7b705accac18a6ed0ee4"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.data:spring-data-jdbc": {
+      "shasums": {
+        "jar": "370f9b229cf6c355608b4af51f41e120de0cdacb6e4e183c46053561fbb9ab63"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.data:spring-data-relational": {
+      "shasums": {
+        "jar": "ff7240f4b6a7f8d411faf4ff09c7f09b4cd75661f6ca6611e0f2b8021435d5b6"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-actuator": {
+      "shasums": {
+        "jar": "49f749e1461ad8024cd3e987bbe9b3b3d5dd1cf31034b59c60dda4b9fb41c3e4"
+      },
+      "version": "2.1.1"
+    },
     "org.springframework.modulith:spring-modulith-api": {
       "shasums": {
         "jar": "b8d083929e9f2078287619a81e01c9efc7bea5830fe03341608d283faffb37b2"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-apt": {
+      "shasums": {
+        "jar": "4aa6d1ef0d932c99a648bb73665e4c89f17938574f1102e9bf27709199b9f5e2"
       },
       "version": "2.1.1"
     },
@@ -868,6 +1268,72 @@
     "org.springframework.modulith:spring-modulith-docs": {
       "shasums": {
         "jar": "a793cd9f56e65726031c55c9da5b75023838e2f6ed2de65d2005f743fccac176"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-events-api": {
+      "shasums": {
+        "jar": "63c7dd956121c01da5ce32072acf61da2c70b4fae0b510c359c61e915d5a877c"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-events-core": {
+      "shasums": {
+        "jar": "dbf64a359d94a776ffcc22bcab26fbd2a1fe4f529171ac3ec0343f472bf9daef"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-events-jackson": {
+      "shasums": {
+        "jar": "ab922d47ff15a42798d054ff2eab4e720e5bf96d1a497f1c235175c582c97f81"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-events-jdbc": {
+      "shasums": {
+        "jar": "730edbcff692d600fb93469c09f6c69394f1bd6825c1732ab1a3eac217665a15"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-moments": {
+      "shasums": {
+        "jar": "ba89cc2edefc997ddab319aa0839709ab3647108296f53e00fcb1d13e91fef42"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-observability-api": {
+      "shasums": {
+        "jar": "54ba199a8370c46b8edf664449dbace2bb8392430f9a70300b635d31dde6c75e"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-observability-core": {
+      "shasums": {
+        "jar": "3c946cd7df1b701b9b6a922f14ab9d76d47dcab0f46b9ac30e06ebf9656df18e"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-runtime": {
+      "shasums": {
+        "jar": "a70f9e6437ce9d640bdce1914857456e12333f3cede588974641da09bcc08d10"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-starter-core": {
+      "shasums": {
+        "jar": "9e22b7dc3b3e5959a081d8ce8d16c453267db86826c138e4f0cc32539b0297de"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-starter-insight": {
+      "shasums": {
+        "jar": "b27f907835a5dab336b09ec47b82db5e44b144a7d3ef378f16f42ca0862f679d"
+      },
+      "version": "2.1.1"
+    },
+    "org.springframework.modulith:spring-modulith-starter-jdbc": {
+      "shasums": {
+        "jar": "e074243cc659b3c8846515de8c20ce589e1fce7a811a7fbc140f6b1eb4f1cac9"
       },
       "version": "2.1.1"
     },
@@ -901,9 +1367,21 @@
       },
       "version": "7.0.9"
     },
+    "org.springframework:spring-jdbc": {
+      "shasums": {
+        "jar": "ca0d9af1c5721eef8cac1f94c8b9d27a753248bc33c86e3472bd3d1dbd78f450"
+      },
+      "version": "7.0.9"
+    },
     "org.springframework:spring-test": {
       "shasums": {
         "jar": "6ce8fc116f5d309b9ac50a6738bd1b15ea4012a4a5563c0ee89b795bfc9af0dc"
+      },
+      "version": "7.0.9"
+    },
+    "org.springframework:spring-tx": {
+      "shasums": {
+        "jar": "bfb15da6e096e2c0752e9db9987d2415bf0da1d744efc988535c10c6b6c2eedd"
       },
       "version": "7.0.9"
     },
@@ -922,6 +1400,30 @@
     "org.testcontainers:testcontainers": {
       "shasums": {
         "jar": "0466f481343d5f350a91274cd7bf984308cbaf90d706247fd1cf4b1a8010c2e1"
+      },
+      "version": "2.0.5"
+    },
+    "org.testcontainers:testcontainers-database-commons": {
+      "shasums": {
+        "jar": "0ebbc62bdcfb315cb840a63fbaa148b455927666d9034b5e5c00009d84c755b0"
+      },
+      "version": "2.0.5"
+    },
+    "org.testcontainers:testcontainers-grafana": {
+      "shasums": {
+        "jar": "654764a0a2eaa84d15e4df67c5b34a424d8e6093a7fd23a62e4400090f7caf19"
+      },
+      "version": "2.0.5"
+    },
+    "org.testcontainers:testcontainers-jdbc": {
+      "shasums": {
+        "jar": "0f7fe603a32692c33739cf99d638206f9060ca47615bf0141ca2eb32d33d764a"
+      },
+      "version": "2.0.5"
+    },
+    "org.testcontainers:testcontainers-postgresql": {
+      "shasums": {
+        "jar": "8dbfb2fda977eb813ed1188ce02f098b8b634910eeab220568d54d6bd5b7ce9f"
       },
       "version": "2.0.5"
     },
@@ -1006,6 +1508,13 @@
       "net.minidev:json-smart",
       "org.slf4j:slf4j-api"
     ],
+    "com.squareup.okhttp3:okhttp-jvm": [
+      "com.squareup.okio:okio-jvm",
+      "org.jetbrains.kotlin:kotlin-stdlib"
+    ],
+    "com.squareup.okio:okio-jvm": [
+      "org.jetbrains.kotlin:kotlin-stdlib"
+    ],
     "com.structurizr:structurizr-core": [
       "com.fasterxml.jackson.core:jackson-annotations",
       "com.google.code.findbugs:jsr305"
@@ -1019,6 +1528,12 @@
     "com.uber.nullaway:nullaway": [
       "com.google.guava:guava",
       "org.checkerframework:dataflow-nullaway",
+      "org.jspecify:jspecify"
+    ],
+    "com.zaxxer:HikariCP": [
+      "org.slf4j:slf4j-api"
+    ],
+    "io.micrometer:context-propagation": [
       "org.jspecify:jspecify"
     ],
     "io.micrometer:micrometer-commons": [
@@ -1040,6 +1555,85 @@
       "io.micrometer:micrometer-commons",
       "org.jspecify:jspecify"
     ],
+    "io.micrometer:micrometer-registry-otlp": [
+      "io.micrometer:micrometer-core",
+      "io.opentelemetry.proto:opentelemetry-proto",
+      "org.jspecify:jspecify"
+    ],
+    "io.micrometer:micrometer-tracing": [
+      "io.micrometer:context-propagation",
+      "io.micrometer:micrometer-observation",
+      "org.jspecify:jspecify"
+    ],
+    "io.micrometer:micrometer-tracing-bridge-otel": [
+      "io.micrometer:micrometer-observation",
+      "io.micrometer:micrometer-tracing",
+      "io.opentelemetry.semconv:opentelemetry-semconv",
+      "io.opentelemetry:opentelemetry-api",
+      "io.opentelemetry:opentelemetry-extension-trace-propagators",
+      "io.opentelemetry:opentelemetry-sdk",
+      "io.opentelemetry:opentelemetry-sdk-common",
+      "io.opentelemetry:opentelemetry-sdk-trace",
+      "org.jspecify:jspecify",
+      "org.slf4j:slf4j-api"
+    ],
+    "io.opentelemetry.proto:opentelemetry-proto": [
+      "com.google.protobuf:protobuf-java"
+    ],
+    "io.opentelemetry:opentelemetry-api": [
+      "io.opentelemetry:opentelemetry-context"
+    ],
+    "io.opentelemetry:opentelemetry-context": [
+      "io.opentelemetry:opentelemetry-common"
+    ],
+    "io.opentelemetry:opentelemetry-exporter-common": [
+      "io.opentelemetry:opentelemetry-api",
+      "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi"
+    ],
+    "io.opentelemetry:opentelemetry-exporter-otlp": [
+      "io.opentelemetry:opentelemetry-exporter-otlp-common",
+      "io.opentelemetry:opentelemetry-exporter-sender-okhttp",
+      "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi",
+      "io.opentelemetry:opentelemetry-sdk-logs",
+      "io.opentelemetry:opentelemetry-sdk-metrics",
+      "io.opentelemetry:opentelemetry-sdk-trace"
+    ],
+    "io.opentelemetry:opentelemetry-exporter-otlp-common": [
+      "io.opentelemetry:opentelemetry-exporter-common"
+    ],
+    "io.opentelemetry:opentelemetry-exporter-sender-okhttp": [
+      "com.squareup.okhttp3:okhttp-jvm",
+      "io.opentelemetry:opentelemetry-exporter-common",
+      "io.opentelemetry:opentelemetry-sdk-common"
+    ],
+    "io.opentelemetry:opentelemetry-extension-trace-propagators": [
+      "io.opentelemetry:opentelemetry-api"
+    ],
+    "io.opentelemetry:opentelemetry-sdk": [
+      "io.opentelemetry:opentelemetry-api",
+      "io.opentelemetry:opentelemetry-sdk-common",
+      "io.opentelemetry:opentelemetry-sdk-logs",
+      "io.opentelemetry:opentelemetry-sdk-metrics",
+      "io.opentelemetry:opentelemetry-sdk-trace"
+    ],
+    "io.opentelemetry:opentelemetry-sdk-common": [
+      "io.opentelemetry:opentelemetry-api"
+    ],
+    "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi": [
+      "io.opentelemetry:opentelemetry-sdk"
+    ],
+    "io.opentelemetry:opentelemetry-sdk-logs": [
+      "io.opentelemetry:opentelemetry-api",
+      "io.opentelemetry:opentelemetry-sdk-common"
+    ],
+    "io.opentelemetry:opentelemetry-sdk-metrics": [
+      "io.opentelemetry:opentelemetry-api",
+      "io.opentelemetry:opentelemetry-sdk-common"
+    ],
+    "io.opentelemetry:opentelemetry-sdk-trace": [
+      "io.opentelemetry:opentelemetry-api",
+      "io.opentelemetry:opentelemetry-sdk-common"
+    ],
     "io.xspec:xspec": [
       "net.sf.saxon:Saxon-HE"
     ],
@@ -1055,6 +1649,18 @@
     "net.sf.saxon:Saxon-HE": [
       "org.xmlresolver:xmlresolver",
       "org.xmlresolver:xmlresolver:jar:data"
+    ],
+    "net.ttddyy.observation:datasource-micrometer": [
+      "io.micrometer:micrometer-tracing",
+      "net.ttddyy:datasource-proxy"
+    ],
+    "net.ttddyy.observation:datasource-micrometer-spring-boot": [
+      "net.ttddyy.observation:datasource-micrometer",
+      "org.springframework.boot:spring-boot-autoconfigure",
+      "org.springframework.boot:spring-boot-jdbc",
+      "org.springframework.boot:spring-boot-micrometer-metrics",
+      "org.springframework.boot:spring-boot-micrometer-observation",
+      "org.springframework.boot:spring-boot-micrometer-tracing"
     ],
     "org.apache.commons:commons-compress": [
       "commons-codec:commons-codec",
@@ -1074,10 +1680,19 @@
     "org.checkerframework:dataflow-nullaway": [
       "org.checkerframework:checker-qual"
     ],
+    "org.flywaydb:flyway-core": [
+      "tools.jackson.core:jackson-databind"
+    ],
+    "org.flywaydb:flyway-database-postgresql": [
+      "org.flywaydb:flyway-core"
+    ],
     "org.hibernate.validator:hibernate-validator": [
       "com.fasterxml:classmate",
       "jakarta.validation:jakarta.validation-api",
       "org.jboss.logging:jboss-logging"
+    ],
+    "org.jetbrains.kotlin:kotlin-stdlib": [
+      "org.jetbrains:annotations"
     ],
     "org.jmolecules.integrations:jmolecules-archunit": [
       "com.tngtech.archunit:archunit",
@@ -1145,8 +1760,14 @@
     "org.opentest4j.reporting:open-test-reporting-tooling-spi": [
       "org.apiguardian:apiguardian-api"
     ],
+    "org.postgresql:postgresql": [
+      "org.checkerframework:checker-qual"
+    ],
     "org.rnorth.duct-tape:duct-tape": [
       "org.jetbrains:annotations"
+    ],
+    "org.slf4j:jcl-over-slf4j": [
+      "org.slf4j:slf4j-api"
     ],
     "org.slf4j:jul-to-slf4j": [
       "org.slf4j:slf4j-api"
@@ -1165,6 +1786,21 @@
     "org.springframework.boot:spring-boot-autoconfigure": [
       "org.springframework.boot:spring-boot"
     ],
+    "org.springframework.boot:spring-boot-data-commons": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-persistence",
+      "org.springframework.data:spring-data-commons"
+    ],
+    "org.springframework.boot:spring-boot-data-jdbc": [
+      "org.springframework.boot:spring-boot-data-commons",
+      "org.springframework.boot:spring-boot-jdbc",
+      "org.springframework.data:spring-data-jdbc"
+    ],
+    "org.springframework.boot:spring-boot-flyway": [
+      "org.flywaydb:flyway-core",
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-jdbc"
+    ],
     "org.springframework.boot:spring-boot-health": [
       "org.springframework.boot:spring-boot"
     ],
@@ -1181,6 +1817,12 @@
       "org.springframework.boot:spring-boot",
       "tools.jackson.core:jackson-databind"
     ],
+    "org.springframework.boot:spring-boot-jdbc": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-sql",
+      "org.springframework.boot:spring-boot-transaction",
+      "org.springframework:spring-jdbc"
+    ],
     "org.springframework.boot:spring-boot-loader-tools": [
       "org.apache.commons:commons-compress",
       "org.springframework:spring-core"
@@ -1194,6 +1836,27 @@
       "io.micrometer:micrometer-observation",
       "org.springframework.boot:spring-boot"
     ],
+    "org.springframework.boot:spring-boot-micrometer-tracing": [
+      "io.micrometer:micrometer-tracing",
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-micrometer-observation"
+    ],
+    "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry": [
+      "io.micrometer:micrometer-tracing",
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-micrometer-observation",
+      "org.springframework.boot:spring-boot-micrometer-tracing",
+      "org.springframework.boot:spring-boot-opentelemetry"
+    ],
+    "org.springframework.boot:spring-boot-opentelemetry": [
+      "io.opentelemetry:opentelemetry-api",
+      "io.opentelemetry:opentelemetry-sdk",
+      "org.springframework.boot:spring-boot"
+    ],
+    "org.springframework.boot:spring-boot-persistence": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework:spring-tx"
+    ],
     "org.springframework.boot:spring-boot-restclient": [
       "org.springframework.boot:spring-boot",
       "org.springframework.boot:spring-boot-http-client",
@@ -1202,6 +1865,9 @@
     "org.springframework.boot:spring-boot-servlet": [
       "org.springframework.boot:spring-boot",
       "org.springframework:spring-web"
+    ],
+    "org.springframework.boot:spring-boot-sql": [
+      "org.springframework.boot:spring-boot"
     ],
     "org.springframework.boot:spring-boot-starter": [
       "jakarta.annotation:jakarta.annotation-api",
@@ -1217,8 +1883,25 @@
       "org.springframework.boot:spring-boot-starter",
       "org.springframework.boot:spring-boot-starter-micrometer-metrics"
     ],
+    "org.springframework.boot:spring-boot-starter-data-jdbc": [
+      "org.springframework.boot:spring-boot-data-jdbc",
+      "org.springframework.boot:spring-boot-jdbc",
+      "org.springframework.boot:spring-boot-starter",
+      "org.springframework.boot:spring-boot-starter-jdbc"
+    ],
+    "org.springframework.boot:spring-boot-starter-flyway": [
+      "org.springframework.boot:spring-boot-flyway",
+      "org.springframework.boot:spring-boot-jdbc",
+      "org.springframework.boot:spring-boot-starter",
+      "org.springframework.boot:spring-boot-starter-jdbc"
+    ],
     "org.springframework.boot:spring-boot-starter-jackson": [
       "org.springframework.boot:spring-boot-jackson",
+      "org.springframework.boot:spring-boot-starter"
+    ],
+    "org.springframework.boot:spring-boot-starter-jdbc": [
+      "com.zaxxer:HikariCP",
+      "org.springframework.boot:spring-boot-jdbc",
       "org.springframework.boot:spring-boot-starter"
     ],
     "org.springframework.boot:spring-boot-starter-logging": [
@@ -1229,6 +1912,15 @@
     "org.springframework.boot:spring-boot-starter-micrometer-metrics": [
       "org.springframework.boot:spring-boot-micrometer-metrics",
       "org.springframework.boot:spring-boot-starter"
+    ],
+    "org.springframework.boot:spring-boot-starter-opentelemetry": [
+      "io.micrometer:micrometer-registry-otlp",
+      "io.micrometer:micrometer-tracing-bridge-otel",
+      "io.opentelemetry:opentelemetry-exporter-otlp",
+      "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry",
+      "org.springframework.boot:spring-boot-opentelemetry",
+      "org.springframework.boot:spring-boot-starter",
+      "org.springframework.boot:spring-boot-starter-micrometer-metrics"
     ],
     "org.springframework.boot:spring-boot-starter-restclient": [
       "org.springframework.boot:spring-boot-restclient",
@@ -1275,6 +1967,11 @@
       "org.apache.tomcat.embed:tomcat-embed-core",
       "org.springframework.boot:spring-boot-web-server"
     ],
+    "org.springframework.boot:spring-boot-transaction": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-persistence",
+      "org.springframework:spring-tx"
+    ],
     "org.springframework.boot:spring-boot-validation": [
       "org.apache.tomcat.embed:tomcat-embed-el",
       "org.hibernate.validator:hibernate-validator",
@@ -1290,8 +1987,41 @@
       "org.springframework:spring-web",
       "org.springframework:spring-webmvc"
     ],
+    "org.springframework.data:spring-data-commons": [
+      "org.slf4j:slf4j-api",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-core"
+    ],
+    "org.springframework.data:spring-data-jdbc": [
+      "org.slf4j:slf4j-api",
+      "org.springframework.data:spring-data-commons",
+      "org.springframework.data:spring-data-relational",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-context",
+      "org.springframework:spring-core",
+      "org.springframework:spring-jdbc",
+      "org.springframework:spring-tx"
+    ],
+    "org.springframework.data:spring-data-relational": [
+      "org.slf4j:slf4j-api",
+      "org.springframework.data:spring-data-commons",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-context",
+      "org.springframework:spring-core",
+      "org.springframework:spring-tx"
+    ],
+    "org.springframework.modulith:spring-modulith-actuator": [
+      "org.jspecify:jspecify",
+      "org.springframework.boot:spring-boot-actuator",
+      "org.springframework.boot:spring-boot-autoconfigure",
+      "org.springframework.modulith:spring-modulith-runtime"
+    ],
     "org.springframework.modulith:spring-modulith-api": [
       "org.jspecify:jspecify"
+    ],
+    "org.springframework.modulith:spring-modulith-apt": [
+      "org.jspecify:jspecify",
+      "org.springframework.boot:spring-boot"
     ],
     "org.springframework.modulith:spring-modulith-core": [
       "com.tngtech.archunit:archunit",
@@ -1307,6 +2037,74 @@
       "org.jspecify:jspecify",
       "org.springframework.boot:spring-boot",
       "org.springframework.modulith:spring-modulith-core"
+    ],
+    "org.springframework.modulith:spring-modulith-events-api": [
+      "org.jspecify:jspecify",
+      "org.springframework:spring-context",
+      "org.springframework:spring-tx"
+    ],
+    "org.springframework.modulith:spring-modulith-events-core": [
+      "org.jspecify:jspecify",
+      "org.slf4j:jcl-over-slf4j",
+      "org.slf4j:slf4j-api",
+      "org.springframework.boot:spring-boot-autoconfigure",
+      "org.springframework.modulith:spring-modulith-events-api",
+      "org.springframework:spring-aop",
+      "org.springframework:spring-context",
+      "org.springframework:spring-tx"
+    ],
+    "org.springframework.modulith:spring-modulith-events-jackson": [
+      "org.jspecify:jspecify",
+      "org.springframework.modulith:spring-modulith-events-core",
+      "tools.jackson.core:jackson-databind"
+    ],
+    "org.springframework.modulith:spring-modulith-events-jdbc": [
+      "org.jspecify:jspecify",
+      "org.springframework.boot:spring-boot-jdbc",
+      "org.springframework.boot:spring-boot-sql",
+      "org.springframework.modulith:spring-modulith-events-core",
+      "org.springframework:spring-jdbc"
+    ],
+    "org.springframework.modulith:spring-modulith-moments": [
+      "org.jmolecules:jmolecules-events",
+      "org.jspecify:jspecify"
+    ],
+    "org.springframework.modulith:spring-modulith-observability-api": [
+      "io.micrometer:micrometer-core",
+      "org.jspecify:jspecify"
+    ],
+    "org.springframework.modulith:spring-modulith-observability-core": [
+      "io.micrometer:micrometer-core",
+      "io.micrometer:micrometer-tracing",
+      "org.jspecify:jspecify",
+      "org.springframework.modulith:spring-modulith-core",
+      "org.springframework.modulith:spring-modulith-observability-api",
+      "org.springframework.modulith:spring-modulith-runtime"
+    ],
+    "org.springframework.modulith:spring-modulith-runtime": [
+      "com.tngtech.archunit:archunit",
+      "org.jspecify:jspecify",
+      "org.springframework.modulith:spring-modulith-core"
+    ],
+    "org.springframework.modulith:spring-modulith-starter-core": [
+      "org.springframework.boot:spring-boot-starter",
+      "org.springframework.modulith:spring-modulith-api",
+      "org.springframework.modulith:spring-modulith-apt",
+      "org.springframework.modulith:spring-modulith-core",
+      "org.springframework.modulith:spring-modulith-moments"
+    ],
+    "org.springframework.modulith:spring-modulith-starter-insight": [
+      "org.springframework.boot:spring-boot-starter-actuator",
+      "org.springframework.modulith:spring-modulith-actuator",
+      "org.springframework.modulith:spring-modulith-observability-api",
+      "org.springframework.modulith:spring-modulith-observability-core"
+    ],
+    "org.springframework.modulith:spring-modulith-starter-jdbc": [
+      "org.springframework.modulith:spring-modulith-events-api",
+      "org.springframework.modulith:spring-modulith-events-core",
+      "org.springframework.modulith:spring-modulith-events-jackson",
+      "org.springframework.modulith:spring-modulith-events-jdbc",
+      "org.springframework.modulith:spring-modulith-starter-core"
     ],
     "org.springframework:spring-aop": [
       "org.springframework:spring-beans",
@@ -1329,7 +2127,16 @@
     "org.springframework:spring-expression": [
       "org.springframework:spring-core"
     ],
+    "org.springframework:spring-jdbc": [
+      "org.springframework:spring-beans",
+      "org.springframework:spring-core",
+      "org.springframework:spring-tx"
+    ],
     "org.springframework:spring-test": [
+      "org.springframework:spring-core"
+    ],
+    "org.springframework:spring-tx": [
+      "org.springframework:spring-beans",
       "org.springframework:spring-core"
     ],
     "org.springframework:spring-web": [
@@ -1352,6 +2159,18 @@
       "org.rnorth.duct-tape:duct-tape",
       "org.slf4j:slf4j-api"
     ],
+    "org.testcontainers:testcontainers-database-commons": [
+      "org.testcontainers:testcontainers"
+    ],
+    "org.testcontainers:testcontainers-grafana": [
+      "org.testcontainers:testcontainers"
+    ],
+    "org.testcontainers:testcontainers-jdbc": [
+      "org.testcontainers:testcontainers-database-commons"
+    ],
+    "org.testcontainers:testcontainers-postgresql": [
+      "org.testcontainers:testcontainers-jdbc"
+    ],
     "org.xmlunit:xmlunit-assertj3": [
       "org.assertj:assertj-core",
       "org.xmlunit:xmlunit-core"
@@ -1373,6 +2192,10 @@
     ]
   },
   "packages": {
+    "aopalliance:aopalliance": [
+      "org.aopalliance.aop",
+      "org.aopalliance.intercept"
+    ],
     "ch.qos.logback:logback-classic": [
       "ch.qos.logback.classic",
       "ch.qos.logback.classic.boolex",
@@ -1584,6 +2407,10 @@
     "com.google.j2objc:j2objc-annotations": [
       "com.google.j2objc.annotations"
     ],
+    "com.google.protobuf:protobuf-java": [
+      "com.google.protobuf",
+      "com.google.protobuf.compiler"
+    ],
     "com.jayway.jsonpath:json-path": [
       "com.jayway.jsonpath",
       "com.jayway.jsonpath.internal",
@@ -1598,6 +2425,31 @@
       "com.jayway.jsonpath.spi.cache",
       "com.jayway.jsonpath.spi.json",
       "com.jayway.jsonpath.spi.mapper"
+    ],
+    "com.squareup.okhttp3:okhttp-jvm": [
+      "okhttp3",
+      "okhttp3.internal",
+      "okhttp3.internal.authenticator",
+      "okhttp3.internal.cache",
+      "okhttp3.internal.cache2",
+      "okhttp3.internal.concurrent",
+      "okhttp3.internal.connection",
+      "okhttp3.internal.graal",
+      "okhttp3.internal.http",
+      "okhttp3.internal.http1",
+      "okhttp3.internal.http2",
+      "okhttp3.internal.http2.flowcontrol",
+      "okhttp3.internal.idn",
+      "okhttp3.internal.platform",
+      "okhttp3.internal.proxy",
+      "okhttp3.internal.publicsuffix",
+      "okhttp3.internal.tls",
+      "okhttp3.internal.url",
+      "okhttp3.internal.ws"
+    ],
+    "com.squareup.okio:okio-jvm": [
+      "okio",
+      "okio.internal"
     ],
     "com.structurizr:structurizr-core": [
       "com.structurizr",
@@ -1681,6 +2533,16 @@
       "com.uber.nullaway.libmodel",
       "com.uber.nullaway.librarymodel"
     ],
+    "com.zaxxer:HikariCP": [
+      "com.zaxxer.hikari",
+      "com.zaxxer.hikari.hibernate",
+      "com.zaxxer.hikari.metrics",
+      "com.zaxxer.hikari.metrics.dropwizard",
+      "com.zaxxer.hikari.metrics.micrometer",
+      "com.zaxxer.hikari.metrics.prometheus",
+      "com.zaxxer.hikari.pool",
+      "com.zaxxer.hikari.util"
+    ],
     "commons-codec:commons-codec": [
       "org.apache.commons.codec",
       "org.apache.commons.codec.binary",
@@ -1710,6 +2572,10 @@
     "commons-logging:commons-logging": [
       "org.apache.commons.logging",
       "org.apache.commons.logging.impl"
+    ],
+    "io.micrometer:context-propagation": [
+      "io.micrometer.context",
+      "io.micrometer.context.integration"
     ],
     "io.micrometer:micrometer-commons": [
       "io.micrometer.common",
@@ -1779,6 +2645,151 @@
       "io.micrometer.observation.contextpropagation",
       "io.micrometer.observation.docs",
       "io.micrometer.observation.transport"
+    ],
+    "io.micrometer:micrometer-registry-otlp": [
+      "io.micrometer.registry.otlp"
+    ],
+    "io.micrometer:micrometer-tracing": [
+      "io.micrometer.tracing",
+      "io.micrometer.tracing.annotation",
+      "io.micrometer.tracing.contextpropagation",
+      "io.micrometer.tracing.contextpropagation.reactor",
+      "io.micrometer.tracing.docs",
+      "io.micrometer.tracing.exporter",
+      "io.micrometer.tracing.handler",
+      "io.micrometer.tracing.internal",
+      "io.micrometer.tracing.propagation"
+    ],
+    "io.micrometer:micrometer-tracing-bridge-otel": [
+      "io.micrometer.tracing.otel.bridge",
+      "io.micrometer.tracing.otel.propagation"
+    ],
+    "io.opentelemetry.proto:opentelemetry-proto": [
+      "io.opentelemetry.proto.collector.logs.v1",
+      "io.opentelemetry.proto.collector.metrics.v1",
+      "io.opentelemetry.proto.collector.profiles.v1development",
+      "io.opentelemetry.proto.collector.trace.v1",
+      "io.opentelemetry.proto.common.v1",
+      "io.opentelemetry.proto.logs.v1",
+      "io.opentelemetry.proto.metrics.v1",
+      "io.opentelemetry.proto.profiles.v1development",
+      "io.opentelemetry.proto.resource.v1",
+      "io.opentelemetry.proto.trace.v1"
+    ],
+    "io.opentelemetry.semconv:opentelemetry-semconv": [
+      "io.opentelemetry.semconv"
+    ],
+    "io.opentelemetry:opentelemetry-api": [
+      "io.opentelemetry.api",
+      "io.opentelemetry.api.baggage",
+      "io.opentelemetry.api.baggage.propagation",
+      "io.opentelemetry.api.common",
+      "io.opentelemetry.api.internal",
+      "io.opentelemetry.api.logs",
+      "io.opentelemetry.api.metrics",
+      "io.opentelemetry.api.trace",
+      "io.opentelemetry.api.trace.propagation",
+      "io.opentelemetry.api.trace.propagation.internal"
+    ],
+    "io.opentelemetry:opentelemetry-common": [
+      "io.opentelemetry.common",
+      "io.opentelemetry.common.impl"
+    ],
+    "io.opentelemetry:opentelemetry-context": [
+      "io.opentelemetry.context",
+      "io.opentelemetry.context.internal.shaded",
+      "io.opentelemetry.context.propagation",
+      "io.opentelemetry.context.propagation.internal"
+    ],
+    "io.opentelemetry:opentelemetry-exporter-common": [
+      "io.opentelemetry.exporter.internal",
+      "io.opentelemetry.exporter.internal.compression",
+      "io.opentelemetry.exporter.internal.grpc",
+      "io.opentelemetry.exporter.internal.http",
+      "io.opentelemetry.exporter.internal.marshal",
+      "io.opentelemetry.exporter.internal.metrics"
+    ],
+    "io.opentelemetry:opentelemetry-exporter-otlp": [
+      "io.opentelemetry.exporter.otlp.all.internal",
+      "io.opentelemetry.exporter.otlp.http.logs",
+      "io.opentelemetry.exporter.otlp.http.metrics",
+      "io.opentelemetry.exporter.otlp.http.trace",
+      "io.opentelemetry.exporter.otlp.internal",
+      "io.opentelemetry.exporter.otlp.logs",
+      "io.opentelemetry.exporter.otlp.metrics",
+      "io.opentelemetry.exporter.otlp.trace"
+    ],
+    "io.opentelemetry:opentelemetry-exporter-otlp-common": [
+      "io.opentelemetry.exporter.internal.otlp",
+      "io.opentelemetry.exporter.internal.otlp.logs",
+      "io.opentelemetry.exporter.internal.otlp.metrics",
+      "io.opentelemetry.exporter.internal.otlp.traces",
+      "io.opentelemetry.proto.collector.logs.v1.internal",
+      "io.opentelemetry.proto.collector.metrics.v1.internal",
+      "io.opentelemetry.proto.collector.profiles.v1development.internal",
+      "io.opentelemetry.proto.collector.trace.v1.internal",
+      "io.opentelemetry.proto.common.v1.internal",
+      "io.opentelemetry.proto.logs.v1.internal",
+      "io.opentelemetry.proto.metrics.v1.internal",
+      "io.opentelemetry.proto.profiles.v1development.internal",
+      "io.opentelemetry.proto.resource.v1.internal",
+      "io.opentelemetry.proto.trace.v1.internal"
+    ],
+    "io.opentelemetry:opentelemetry-exporter-sender-okhttp": [
+      "io.opentelemetry.exporter.sender.okhttp.internal"
+    ],
+    "io.opentelemetry:opentelemetry-extension-trace-propagators": [
+      "io.opentelemetry.extension.trace.propagation",
+      "io.opentelemetry.extension.trace.propagation.internal"
+    ],
+    "io.opentelemetry:opentelemetry-sdk": [
+      "io.opentelemetry.sdk",
+      "io.opentelemetry.sdk.internal"
+    ],
+    "io.opentelemetry:opentelemetry-sdk-common": [
+      "io.opentelemetry.sdk.common",
+      "io.opentelemetry.sdk.common.export",
+      "io.opentelemetry.sdk.common.internal",
+      "io.opentelemetry.sdk.resources"
+    ],
+    "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi": [
+      "io.opentelemetry.sdk.autoconfigure.spi",
+      "io.opentelemetry.sdk.autoconfigure.spi.internal",
+      "io.opentelemetry.sdk.autoconfigure.spi.logs",
+      "io.opentelemetry.sdk.autoconfigure.spi.metrics",
+      "io.opentelemetry.sdk.autoconfigure.spi.traces"
+    ],
+    "io.opentelemetry:opentelemetry-sdk-logs": [
+      "io.opentelemetry.sdk.logs",
+      "io.opentelemetry.sdk.logs.data",
+      "io.opentelemetry.sdk.logs.data.internal",
+      "io.opentelemetry.sdk.logs.export",
+      "io.opentelemetry.sdk.logs.internal"
+    ],
+    "io.opentelemetry:opentelemetry-sdk-metrics": [
+      "io.opentelemetry.sdk.metrics",
+      "io.opentelemetry.sdk.metrics.data",
+      "io.opentelemetry.sdk.metrics.export",
+      "io.opentelemetry.sdk.metrics.internal",
+      "io.opentelemetry.sdk.metrics.internal.aggregator",
+      "io.opentelemetry.sdk.metrics.internal.concurrent",
+      "io.opentelemetry.sdk.metrics.internal.data",
+      "io.opentelemetry.sdk.metrics.internal.debug",
+      "io.opentelemetry.sdk.metrics.internal.descriptor",
+      "io.opentelemetry.sdk.metrics.internal.exemplar",
+      "io.opentelemetry.sdk.metrics.internal.export",
+      "io.opentelemetry.sdk.metrics.internal.state",
+      "io.opentelemetry.sdk.metrics.internal.view"
+    ],
+    "io.opentelemetry:opentelemetry-sdk-trace": [
+      "io.opentelemetry.internal.shaded.jctools.queues",
+      "io.opentelemetry.internal.shaded.jctools.queues.atomic",
+      "io.opentelemetry.internal.shaded.jctools.util",
+      "io.opentelemetry.sdk.trace",
+      "io.opentelemetry.sdk.trace.data",
+      "io.opentelemetry.sdk.trace.export",
+      "io.opentelemetry.sdk.trace.internal",
+      "io.opentelemetry.sdk.trace.samplers"
     ],
     "io.xspec:xspec": [
       "com.jenitennison.xslt.tests",
@@ -1944,6 +2955,27 @@
       "net.sf.saxon.value",
       "net.sf.saxon.xpath",
       "net.sf.saxon.z"
+    ],
+    "net.ttddyy.observation:datasource-micrometer": [
+      "net.ttddyy.observation.tracing"
+    ],
+    "net.ttddyy.observation:datasource-micrometer-spring-boot": [
+      "net.ttddyy.observation.boot",
+      "net.ttddyy.observation.boot.autoconfigure",
+      "net.ttddyy.observation.boot.autoconfigure.opentelemetry",
+      "net.ttddyy.observation.boot.event"
+    ],
+    "net.ttddyy:datasource-proxy": [
+      "net.ttddyy.dsproxy",
+      "net.ttddyy.dsproxy.listener",
+      "net.ttddyy.dsproxy.listener.lifecycle",
+      "net.ttddyy.dsproxy.listener.logging",
+      "net.ttddyy.dsproxy.proxy",
+      "net.ttddyy.dsproxy.proxy.jdk",
+      "net.ttddyy.dsproxy.support",
+      "net.ttddyy.dsproxy.support.jndi",
+      "net.ttddyy.dsproxy.support.tags",
+      "net.ttddyy.dsproxy.transform"
     ],
     "org.apache.commons:commons-compress": [
       "org.apache.commons.compress",
@@ -2226,6 +3258,79 @@
       "org.checkerframework.nullaway.org.plumelib.reflection",
       "org.checkerframework.nullaway.org.plumelib.util"
     ],
+    "org.flywaydb:flyway-core": [
+      "org.flywaydb.core",
+      "org.flywaydb.core.api",
+      "org.flywaydb.core.api.callback",
+      "org.flywaydb.core.api.configuration",
+      "org.flywaydb.core.api.exception",
+      "org.flywaydb.core.api.executor",
+      "org.flywaydb.core.api.locations",
+      "org.flywaydb.core.api.logging",
+      "org.flywaydb.core.api.migration",
+      "org.flywaydb.core.api.migration.baseline",
+      "org.flywaydb.core.api.output",
+      "org.flywaydb.core.api.output.errors",
+      "org.flywaydb.core.api.pattern",
+      "org.flywaydb.core.api.resolver",
+      "org.flywaydb.core.api.resource",
+      "org.flywaydb.core.extensibility",
+      "org.flywaydb.core.internal",
+      "org.flywaydb.core.internal.authentication",
+      "org.flywaydb.core.internal.authentication.postgres",
+      "org.flywaydb.core.internal.callback",
+      "org.flywaydb.core.internal.clazz",
+      "org.flywaydb.core.internal.command",
+      "org.flywaydb.core.internal.command.clean",
+      "org.flywaydb.core.internal.configuration",
+      "org.flywaydb.core.internal.configuration.extensions",
+      "org.flywaydb.core.internal.configuration.models",
+      "org.flywaydb.core.internal.configuration.resolvers",
+      "org.flywaydb.core.internal.database",
+      "org.flywaydb.core.internal.database.base",
+      "org.flywaydb.core.internal.database.h2",
+      "org.flywaydb.core.internal.database.sqlite",
+      "org.flywaydb.core.internal.exception",
+      "org.flywaydb.core.internal.exception.sqlExceptions",
+      "org.flywaydb.core.internal.info",
+      "org.flywaydb.core.internal.jdbc",
+      "org.flywaydb.core.internal.license",
+      "org.flywaydb.core.internal.logging",
+      "org.flywaydb.core.internal.logging.apachecommons",
+      "org.flywaydb.core.internal.logging.buffered",
+      "org.flywaydb.core.internal.logging.javautil",
+      "org.flywaydb.core.internal.logging.log4j2",
+      "org.flywaydb.core.internal.logging.multi",
+      "org.flywaydb.core.internal.logging.slf4j",
+      "org.flywaydb.core.internal.nc",
+      "org.flywaydb.core.internal.nc.schemahistory",
+      "org.flywaydb.core.internal.parser",
+      "org.flywaydb.core.internal.plugin",
+      "org.flywaydb.core.internal.proprietaryInterfaces",
+      "org.flywaydb.core.internal.proprietaryStubs",
+      "org.flywaydb.core.internal.publishing",
+      "org.flywaydb.core.internal.reports",
+      "org.flywaydb.core.internal.resolver",
+      "org.flywaydb.core.internal.resolver.java",
+      "org.flywaydb.core.internal.resolver.script",
+      "org.flywaydb.core.internal.resolver.sql",
+      "org.flywaydb.core.internal.resource",
+      "org.flywaydb.core.internal.resource.classpath",
+      "org.flywaydb.core.internal.resource.filesystem",
+      "org.flywaydb.core.internal.scanner",
+      "org.flywaydb.core.internal.scanner.classpath",
+      "org.flywaydb.core.internal.scanner.classpath.jboss",
+      "org.flywaydb.core.internal.scanner.cloud",
+      "org.flywaydb.core.internal.scanner.filesystem",
+      "org.flywaydb.core.internal.schemahistory",
+      "org.flywaydb.core.internal.sqlscript",
+      "org.flywaydb.core.internal.strategy",
+      "org.flywaydb.core.internal.util"
+    ],
+    "org.flywaydb:flyway-database-postgresql": [
+      "org.flywaydb.database.cockroachdb",
+      "org.flywaydb.database.postgresql"
+    ],
     "org.hamcrest:hamcrest": [
       "org.hamcrest",
       "org.hamcrest.beans",
@@ -2337,6 +3442,54 @@
     ],
     "org.jboss.logging:jboss-logging": [
       "org.jboss.logging"
+    ],
+    "org.jetbrains.kotlin:kotlin-stdlib": [
+      "kotlin",
+      "kotlin.annotation",
+      "kotlin.collections",
+      "kotlin.collections.builders",
+      "kotlin.collections.jdk8",
+      "kotlin.collections.unsigned",
+      "kotlin.comparisons",
+      "kotlin.concurrent",
+      "kotlin.concurrent.atomics",
+      "kotlin.concurrent.internal",
+      "kotlin.contracts",
+      "kotlin.coroutines",
+      "kotlin.coroutines.cancellation",
+      "kotlin.coroutines.intrinsics",
+      "kotlin.coroutines.jvm.internal",
+      "kotlin.enums",
+      "kotlin.experimental",
+      "kotlin.internal",
+      "kotlin.internal.jdk7",
+      "kotlin.internal.jdk8",
+      "kotlin.io",
+      "kotlin.io.encoding",
+      "kotlin.io.path",
+      "kotlin.jdk7",
+      "kotlin.js",
+      "kotlin.jvm",
+      "kotlin.jvm.functions",
+      "kotlin.jvm.internal",
+      "kotlin.jvm.internal.markers",
+      "kotlin.jvm.internal.unsafe",
+      "kotlin.jvm.jdk8",
+      "kotlin.jvm.optionals",
+      "kotlin.math",
+      "kotlin.properties",
+      "kotlin.random",
+      "kotlin.random.jdk8",
+      "kotlin.ranges",
+      "kotlin.reflect",
+      "kotlin.sequences",
+      "kotlin.streams.jdk8",
+      "kotlin.system",
+      "kotlin.text",
+      "kotlin.text.jdk8",
+      "kotlin.time",
+      "kotlin.time.jdk8",
+      "kotlin.uuid"
     ],
     "org.jetbrains:annotations": [
       "org.intellij.lang.annotations",
@@ -2461,6 +3614,46 @@
       "org.objectweb.asm",
       "org.objectweb.asm.signature"
     ],
+    "org.postgresql:postgresql": [
+      "org.postgresql",
+      "org.postgresql.copy",
+      "org.postgresql.core",
+      "org.postgresql.core.v3",
+      "org.postgresql.core.v3.adaptivefetch",
+      "org.postgresql.core.v3.replication",
+      "org.postgresql.ds",
+      "org.postgresql.ds.common",
+      "org.postgresql.fastpath",
+      "org.postgresql.geometric",
+      "org.postgresql.gss",
+      "org.postgresql.hostchooser",
+      "org.postgresql.jdbc",
+      "org.postgresql.jdbc2",
+      "org.postgresql.jdbc2.optional",
+      "org.postgresql.jdbc3",
+      "org.postgresql.jdbcurlresolver",
+      "org.postgresql.largeobject",
+      "org.postgresql.osgi",
+      "org.postgresql.plugin",
+      "org.postgresql.replication",
+      "org.postgresql.replication.fluent",
+      "org.postgresql.replication.fluent.logical",
+      "org.postgresql.replication.fluent.physical",
+      "org.postgresql.shaded.com.ongres.saslprep",
+      "org.postgresql.shaded.com.ongres.scram.client",
+      "org.postgresql.shaded.com.ongres.scram.common",
+      "org.postgresql.shaded.com.ongres.scram.common.exception",
+      "org.postgresql.shaded.com.ongres.scram.common.util",
+      "org.postgresql.shaded.com.ongres.stringprep",
+      "org.postgresql.ssl",
+      "org.postgresql.ssl.jdbc4",
+      "org.postgresql.sspi",
+      "org.postgresql.translation",
+      "org.postgresql.util",
+      "org.postgresql.util.internal",
+      "org.postgresql.xa",
+      "org.postgresql.xml"
+    ],
     "org.rnorth.duct-tape:duct-tape": [
       "org.rnorth.ducttape",
       "org.rnorth.ducttape.circuitbreakers",
@@ -2468,6 +3661,10 @@
       "org.rnorth.ducttape.ratelimits",
       "org.rnorth.ducttape.timeouts",
       "org.rnorth.ducttape.unreliables"
+    ],
+    "org.slf4j:jcl-over-slf4j": [
+      "org.apache.commons.logging",
+      "org.apache.commons.logging.impl"
     ],
     "org.slf4j:jul-to-slf4j": [
       "org.slf4j.bridge"
@@ -2602,6 +3799,21 @@
       "org.springframework.boot.autoconfigure.web",
       "org.springframework.boot.autoconfigure.web.format"
     ],
+    "org.springframework.boot:spring-boot-data-commons": [
+      "org.springframework.boot.data.autoconfigure.metrics",
+      "org.springframework.boot.data.autoconfigure.web",
+      "org.springframework.boot.data.metrics"
+    ],
+    "org.springframework.boot:spring-boot-data-jdbc": [
+      "org.springframework.boot.data.jdbc.autoconfigure"
+    ],
+    "org.springframework.boot:spring-boot-flyway": [
+      "org.springframework.boot.flyway",
+      "org.springframework.boot.flyway.actuate.endpoint",
+      "org.springframework.boot.flyway.autoconfigure",
+      "org.springframework.boot.flyway.docker.compose",
+      "org.springframework.boot.flyway.testcontainers"
+    ],
     "org.springframework.boot:spring-boot-health": [
       "org.springframework.boot.health.actuate.endpoint",
       "org.springframework.boot.health.application",
@@ -2627,6 +3839,18 @@
     "org.springframework.boot:spring-boot-jackson": [
       "org.springframework.boot.jackson",
       "org.springframework.boot.jackson.autoconfigure"
+    ],
+    "org.springframework.boot:spring-boot-jdbc": [
+      "org.springframework.boot.jdbc",
+      "org.springframework.boot.jdbc.autoconfigure",
+      "org.springframework.boot.jdbc.autoconfigure.health",
+      "org.springframework.boot.jdbc.autoconfigure.metrics",
+      "org.springframework.boot.jdbc.docker.compose",
+      "org.springframework.boot.jdbc.health",
+      "org.springframework.boot.jdbc.init",
+      "org.springframework.boot.jdbc.metadata",
+      "org.springframework.boot.jdbc.metrics",
+      "org.springframework.boot.jdbc.testcontainers"
     ],
     "org.springframework.boot:spring-boot-loader-tools": [
       "org.springframework.boot.loader.tools",
@@ -2671,6 +3895,28 @@
     "org.springframework.boot:spring-boot-micrometer-observation": [
       "org.springframework.boot.micrometer.observation.autoconfigure"
     ],
+    "org.springframework.boot:spring-boot-micrometer-tracing": [
+      "org.springframework.boot.micrometer.tracing.autoconfigure",
+      "org.springframework.boot.micrometer.tracing.autoconfigure.otlp",
+      "org.springframework.boot.micrometer.tracing.autoconfigure.prometheus"
+    ],
+    "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry": [
+      "org.springframework.boot.micrometer.tracing.opentelemetry.autoconfigure",
+      "org.springframework.boot.micrometer.tracing.opentelemetry.autoconfigure.otlp",
+      "org.springframework.boot.micrometer.tracing.opentelemetry.autoconfigure.zipkin",
+      "org.springframework.boot.micrometer.tracing.opentelemetry.docker.compose.otlp",
+      "org.springframework.boot.micrometer.tracing.opentelemetry.testcontainers.otlp"
+    ],
+    "org.springframework.boot:spring-boot-opentelemetry": [
+      "org.springframework.boot.opentelemetry.autoconfigure",
+      "org.springframework.boot.opentelemetry.autoconfigure.logging",
+      "org.springframework.boot.opentelemetry.autoconfigure.logging.otlp",
+      "org.springframework.boot.opentelemetry.docker.compose",
+      "org.springframework.boot.opentelemetry.testcontainers"
+    ],
+    "org.springframework.boot:spring-boot-persistence": [
+      "org.springframework.boot.persistence.autoconfigure"
+    ],
     "org.springframework.boot:spring-boot-restclient": [
       "org.springframework.boot.restclient",
       "org.springframework.boot.restclient.autoconfigure",
@@ -2686,6 +3932,11 @@
       "org.springframework.boot.servlet.autoconfigure.actuate.web.exchanges",
       "org.springframework.boot.servlet.autoconfigure.actuate.web.mappings",
       "org.springframework.boot.servlet.filter"
+    ],
+    "org.springframework.boot:spring-boot-sql": [
+      "org.springframework.boot.sql.autoconfigure.init",
+      "org.springframework.boot.sql.init",
+      "org.springframework.boot.sql.init.dependency"
     ],
     "org.springframework.boot:spring-boot-test": [
       "org.springframework.boot.test.context",
@@ -2725,6 +3976,10 @@
       "org.springframework.boot.tomcat.reactive",
       "org.springframework.boot.tomcat.servlet"
     ],
+    "org.springframework.boot:spring-boot-transaction": [
+      "org.springframework.boot.transaction.autoconfigure",
+      "org.springframework.boot.transaction.jta.autoconfigure"
+    ],
     "org.springframework.boot:spring-boot-validation": [
       "org.springframework.boot.validation.autoconfigure"
     ],
@@ -2750,8 +4005,117 @@
       "org.springframework.boot.webmvc.autoconfigure.error",
       "org.springframework.boot.webmvc.error"
     ],
+    "org.springframework.data:spring-data-commons": [
+      "org.springframework.data.annotation",
+      "org.springframework.data.aot",
+      "org.springframework.data.auditing",
+      "org.springframework.data.auditing.config",
+      "org.springframework.data.config",
+      "org.springframework.data.convert",
+      "org.springframework.data.core",
+      "org.springframework.data.crossstore",
+      "org.springframework.data.domain",
+      "org.springframework.data.domain.jaxb",
+      "org.springframework.data.expression",
+      "org.springframework.data.geo",
+      "org.springframework.data.geo.format",
+      "org.springframework.data.history",
+      "org.springframework.data.javapoet",
+      "org.springframework.data.mapping",
+      "org.springframework.data.mapping.callback",
+      "org.springframework.data.mapping.context",
+      "org.springframework.data.mapping.model",
+      "org.springframework.data.projection",
+      "org.springframework.data.querydsl",
+      "org.springframework.data.querydsl.aot",
+      "org.springframework.data.querydsl.binding",
+      "org.springframework.data.repository",
+      "org.springframework.data.repository.aot.generate",
+      "org.springframework.data.repository.aot.hint",
+      "org.springframework.data.repository.cdi",
+      "org.springframework.data.repository.config",
+      "org.springframework.data.repository.core",
+      "org.springframework.data.repository.core.support",
+      "org.springframework.data.repository.history",
+      "org.springframework.data.repository.history.support",
+      "org.springframework.data.repository.init",
+      "org.springframework.data.repository.kotlin",
+      "org.springframework.data.repository.query",
+      "org.springframework.data.repository.query.parser",
+      "org.springframework.data.repository.reactive",
+      "org.springframework.data.repository.support",
+      "org.springframework.data.repository.util",
+      "org.springframework.data.spel",
+      "org.springframework.data.spel.spi",
+      "org.springframework.data.support",
+      "org.springframework.data.transaction",
+      "org.springframework.data.util",
+      "org.springframework.data.web",
+      "org.springframework.data.web.aot",
+      "org.springframework.data.web.config",
+      "org.springframework.data.web.querydsl"
+    ],
+    "org.springframework.data:spring-data-jdbc": [
+      "org.springframework.data.jdbc.aot",
+      "org.springframework.data.jdbc.core",
+      "org.springframework.data.jdbc.core.convert",
+      "org.springframework.data.jdbc.core.dialect",
+      "org.springframework.data.jdbc.core.mapping",
+      "org.springframework.data.jdbc.core.mapping.schema",
+      "org.springframework.data.jdbc.dialect",
+      "org.springframework.data.jdbc.mybatis",
+      "org.springframework.data.jdbc.repository.aot",
+      "org.springframework.data.jdbc.repository.config",
+      "org.springframework.data.jdbc.repository.query",
+      "org.springframework.data.jdbc.repository.support",
+      "org.springframework.data.jdbc.support"
+    ],
+    "org.springframework.data:spring-data-relational": [
+      "org.springframework.data.relational",
+      "org.springframework.data.relational.aot",
+      "org.springframework.data.relational.auditing",
+      "org.springframework.data.relational.core",
+      "org.springframework.data.relational.core.conversion",
+      "org.springframework.data.relational.core.dialect",
+      "org.springframework.data.relational.core.mapping",
+      "org.springframework.data.relational.core.mapping.event",
+      "org.springframework.data.relational.core.query",
+      "org.springframework.data.relational.core.sql",
+      "org.springframework.data.relational.core.sql.render",
+      "org.springframework.data.relational.core.sqlgeneration",
+      "org.springframework.data.relational.domain",
+      "org.springframework.data.relational.repository",
+      "org.springframework.data.relational.repository.query",
+      "org.springframework.data.relational.repository.support"
+    ],
+    "org.springframework.modulith:spring-modulith-actuator": [
+      "org.springframework.modulith.actuator",
+      "org.springframework.modulith.actuator.autoconfigure"
+    ],
     "org.springframework.modulith:spring-modulith-api": [
       "org.springframework.modulith"
+    ],
+    "org.springframework.modulith:spring-modulith-apt": [
+      "org.springframework.modulith.apt",
+      "org.springframework.modulith.aptk.common",
+      "org.springframework.modulith.aptk.tools",
+      "org.springframework.modulith.aptk.tools.command",
+      "org.springframework.modulith.aptk.tools.command.impl",
+      "org.springframework.modulith.aptk.tools.corematcher",
+      "org.springframework.modulith.aptk.tools.filter",
+      "org.springframework.modulith.aptk.tools.filter.impl",
+      "org.springframework.modulith.aptk.tools.fluentfilter",
+      "org.springframework.modulith.aptk.tools.fluentfilter.impl",
+      "org.springframework.modulith.aptk.tools.fluentvalidator",
+      "org.springframework.modulith.aptk.tools.fluentvalidator.impl",
+      "org.springframework.modulith.aptk.tools.generics",
+      "org.springframework.modulith.aptk.tools.matcher",
+      "org.springframework.modulith.aptk.tools.matcher.impl",
+      "org.springframework.modulith.aptk.tools.validator",
+      "org.springframework.modulith.aptk.tools.validator.impl",
+      "org.springframework.modulith.aptk.tools.wrapper",
+      "org.springframework.modulith.docs.metadata",
+      "org.springframework.modulith.docs.util"
     ],
     "org.springframework.modulith:spring-modulith-core": [
       "org.springframework.modulith.core",
@@ -2762,6 +4126,59 @@
       "org.springframework.modulith.docs",
       "org.springframework.modulith.docs.metadata",
       "org.springframework.modulith.docs.util"
+    ],
+    "org.springframework.modulith:spring-modulith-events-api": [
+      "org.springframework.modulith.events"
+    ],
+    "org.springframework.modulith:spring-modulith-events-core": [
+      "org.springframework.modulith.events.aot",
+      "org.springframework.modulith.events.config",
+      "org.springframework.modulith.events.core",
+      "org.springframework.modulith.events.support"
+    ],
+    "org.springframework.modulith:spring-modulith-events-jackson": [
+      "org.springframework.modulith.events.jackson",
+      "org.springframework.modulith.events.jackson2"
+    ],
+    "org.springframework.modulith:spring-modulith-events-jdbc": [
+      "org.springframework.modulith.events.jdbc"
+    ],
+    "org.springframework.modulith:spring-modulith-moments": [
+      "org.springframework.modulith.moments",
+      "org.springframework.modulith.moments.autoconfigure",
+      "org.springframework.modulith.moments.support"
+    ],
+    "org.springframework.modulith:spring-modulith-observability-api": [
+      "org.springframework.modulith.observability"
+    ],
+    "org.springframework.modulith:spring-modulith-observability-core": [
+      "org.springframework.modulith.observability.autoconfigure",
+      "org.springframework.modulith.observability.support"
+    ],
+    "org.springframework.modulith:spring-modulith-runtime": [
+      "org.springframework.modulith.runtime",
+      "org.springframework.modulith.runtime.autoconfigure",
+      "org.springframework.modulith.runtime.flyway",
+      "org.springframework.modulith.runtime.jsonpath",
+      "org.springframework.modulith.runtime.jsonpath.internal",
+      "org.springframework.modulith.runtime.jsonpath.internal.filter",
+      "org.springframework.modulith.runtime.jsonpath.internal.function",
+      "org.springframework.modulith.runtime.jsonpath.internal.function.json",
+      "org.springframework.modulith.runtime.jsonpath.internal.function.latebinding",
+      "org.springframework.modulith.runtime.jsonpath.internal.function.numeric",
+      "org.springframework.modulith.runtime.jsonpath.internal.function.sequence",
+      "org.springframework.modulith.runtime.jsonpath.internal.function.text",
+      "org.springframework.modulith.runtime.jsonpath.internal.path",
+      "org.springframework.modulith.runtime.jsonpath.spi.cache",
+      "org.springframework.modulith.runtime.jsonpath.spi.json",
+      "org.springframework.modulith.runtime.jsonpath.spi.mapper",
+      "org.springframework.modulith.runtime.minidev.asm",
+      "org.springframework.modulith.runtime.minidev.asm.ex",
+      "org.springframework.modulith.runtime.minidev.json",
+      "org.springframework.modulith.runtime.minidev.json.annotate",
+      "org.springframework.modulith.runtime.minidev.json.parser",
+      "org.springframework.modulith.runtime.minidev.json.reader",
+      "org.springframework.modulith.runtime.minidev.json.writer"
     ],
     "org.springframework:spring-aop": [
       "org.aopalliance.aop",
@@ -2928,6 +4345,25 @@
       "org.springframework.expression.spel.standard",
       "org.springframework.expression.spel.support"
     ],
+    "org.springframework:spring-jdbc": [
+      "org.springframework.jdbc",
+      "org.springframework.jdbc.config",
+      "org.springframework.jdbc.core",
+      "org.springframework.jdbc.core.metadata",
+      "org.springframework.jdbc.core.namedparam",
+      "org.springframework.jdbc.core.simple",
+      "org.springframework.jdbc.core.support",
+      "org.springframework.jdbc.datasource",
+      "org.springframework.jdbc.datasource.embedded",
+      "org.springframework.jdbc.datasource.init",
+      "org.springframework.jdbc.datasource.lookup",
+      "org.springframework.jdbc.object",
+      "org.springframework.jdbc.support",
+      "org.springframework.jdbc.support.incrementer",
+      "org.springframework.jdbc.support.lob",
+      "org.springframework.jdbc.support.rowset",
+      "org.springframework.jdbc.support.xml"
+    ],
     "org.springframework:spring-test": [
       "org.springframework.mock.env",
       "org.springframework.mock.http",
@@ -2981,6 +4417,21 @@
       "org.springframework.test.web.servlet.result",
       "org.springframework.test.web.servlet.setup",
       "org.springframework.test.web.support"
+    ],
+    "org.springframework:spring-tx": [
+      "org.springframework.dao",
+      "org.springframework.dao.annotation",
+      "org.springframework.dao.support",
+      "org.springframework.jca.endpoint",
+      "org.springframework.jca.support",
+      "org.springframework.transaction",
+      "org.springframework.transaction.annotation",
+      "org.springframework.transaction.config",
+      "org.springframework.transaction.event",
+      "org.springframework.transaction.interceptor",
+      "org.springframework.transaction.jta",
+      "org.springframework.transaction.reactive",
+      "org.springframework.transaction.support"
     ],
     "org.springframework:spring-web": [
       "org.springframework.http",
@@ -3525,6 +4976,23 @@
       "org.testcontainers.shaded.org.zeroturnaround.exec.stream.slf4j",
       "org.testcontainers.utility"
     ],
+    "org.testcontainers:testcontainers-database-commons": [
+      "org.testcontainers.delegate",
+      "org.testcontainers.exception",
+      "org.testcontainers.ext"
+    ],
+    "org.testcontainers:testcontainers-grafana": [
+      "org.testcontainers.grafana"
+    ],
+    "org.testcontainers:testcontainers-jdbc": [
+      "org.testcontainers.containers",
+      "org.testcontainers.jdbc",
+      "org.testcontainers.jdbc.ext"
+    ],
+    "org.testcontainers:testcontainers-postgresql": [
+      "org.testcontainers.containers",
+      "org.testcontainers.postgresql"
+    ],
     "org.xmlresolver:xmlresolver": [
       "org.xmlresolver",
       "org.xmlresolver.adapters",
@@ -3646,6 +5114,7 @@
   },
   "repositories": {
     "https://repo1.maven.org/maven2/": [
+      "aopalliance:aopalliance",
       "ch.qos.logback:logback-classic",
       "ch.qos.logback:logback-core",
       "com.fasterxml.jackson.core:jackson-annotations",
@@ -3660,18 +5129,42 @@
       "com.google.guava:guava",
       "com.google.guava:listenablefuture",
       "com.google.j2objc:j2objc-annotations",
+      "com.google.protobuf:protobuf-java",
       "com.jayway.jsonpath:json-path",
+      "com.squareup.okhttp3:okhttp-jvm",
+      "com.squareup.okio:okio-jvm",
       "com.structurizr:structurizr-core",
       "com.structurizr:structurizr-export",
       "com.tngtech.archunit:archunit",
       "com.uber.nullaway:nullaway",
+      "com.zaxxer:HikariCP",
       "commons-codec:commons-codec",
       "commons-io:commons-io",
       "commons-logging:commons-logging",
+      "io.micrometer:context-propagation",
       "io.micrometer:micrometer-commons",
       "io.micrometer:micrometer-core",
       "io.micrometer:micrometer-jakarta9",
       "io.micrometer:micrometer-observation",
+      "io.micrometer:micrometer-registry-otlp",
+      "io.micrometer:micrometer-tracing",
+      "io.micrometer:micrometer-tracing-bridge-otel",
+      "io.opentelemetry.proto:opentelemetry-proto",
+      "io.opentelemetry.semconv:opentelemetry-semconv",
+      "io.opentelemetry:opentelemetry-api",
+      "io.opentelemetry:opentelemetry-common",
+      "io.opentelemetry:opentelemetry-context",
+      "io.opentelemetry:opentelemetry-exporter-common",
+      "io.opentelemetry:opentelemetry-exporter-otlp",
+      "io.opentelemetry:opentelemetry-exporter-otlp-common",
+      "io.opentelemetry:opentelemetry-exporter-sender-okhttp",
+      "io.opentelemetry:opentelemetry-extension-trace-propagators",
+      "io.opentelemetry:opentelemetry-sdk",
+      "io.opentelemetry:opentelemetry-sdk-common",
+      "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi",
+      "io.opentelemetry:opentelemetry-sdk-logs",
+      "io.opentelemetry:opentelemetry-sdk-metrics",
+      "io.opentelemetry:opentelemetry-sdk-trace",
       "io.xspec:xspec",
       "jakarta.activation:jakarta.activation-api",
       "jakarta.annotation:jakarta.annotation-api",
@@ -3684,6 +5177,9 @@
       "net.minidev:accessors-smart",
       "net.minidev:json-smart",
       "net.sf.saxon:Saxon-HE",
+      "net.ttddyy.observation:datasource-micrometer",
+      "net.ttddyy.observation:datasource-micrometer-spring-boot",
+      "net.ttddyy:datasource-proxy",
       "org.apache.commons:commons-compress",
       "org.apache.commons:commons-lang3",
       "org.apache.logging.log4j:log4j-api",
@@ -3695,10 +5191,13 @@
       "org.assertj:assertj-core",
       "org.checkerframework:checker-qual",
       "org.checkerframework:dataflow-nullaway",
+      "org.flywaydb:flyway-core",
+      "org.flywaydb:flyway-database-postgresql",
       "org.hamcrest:hamcrest",
       "org.hdrhistogram:HdrHistogram",
       "org.hibernate.validator:hibernate-validator",
       "org.jboss.logging:jboss-logging",
+      "org.jetbrains.kotlin:kotlin-stdlib",
       "org.jetbrains:annotations",
       "org.jmolecules.integrations:jmolecules-archunit",
       "org.jmolecules.integrations:jmolecules-jackson3",
@@ -3718,27 +5217,42 @@
       "org.opentest4j.reporting:open-test-reporting-tooling-spi",
       "org.opentest4j:opentest4j",
       "org.ow2.asm:asm",
+      "org.postgresql:postgresql",
       "org.rnorth.duct-tape:duct-tape",
+      "org.slf4j:jcl-over-slf4j",
       "org.slf4j:jul-to-slf4j",
       "org.slf4j:slf4j-api",
       "org.springframework.boot:spring-boot",
       "org.springframework.boot:spring-boot-actuator",
       "org.springframework.boot:spring-boot-actuator-autoconfigure",
       "org.springframework.boot:spring-boot-autoconfigure",
+      "org.springframework.boot:spring-boot-data-commons",
+      "org.springframework.boot:spring-boot-data-jdbc",
+      "org.springframework.boot:spring-boot-flyway",
       "org.springframework.boot:spring-boot-health",
       "org.springframework.boot:spring-boot-http-client",
       "org.springframework.boot:spring-boot-http-converter",
       "org.springframework.boot:spring-boot-jackson",
+      "org.springframework.boot:spring-boot-jdbc",
       "org.springframework.boot:spring-boot-loader-tools",
       "org.springframework.boot:spring-boot-micrometer-metrics",
       "org.springframework.boot:spring-boot-micrometer-observation",
+      "org.springframework.boot:spring-boot-micrometer-tracing",
+      "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry",
+      "org.springframework.boot:spring-boot-opentelemetry",
+      "org.springframework.boot:spring-boot-persistence",
       "org.springframework.boot:spring-boot-restclient",
       "org.springframework.boot:spring-boot-servlet",
+      "org.springframework.boot:spring-boot-sql",
       "org.springframework.boot:spring-boot-starter",
       "org.springframework.boot:spring-boot-starter-actuator",
+      "org.springframework.boot:spring-boot-starter-data-jdbc",
+      "org.springframework.boot:spring-boot-starter-flyway",
       "org.springframework.boot:spring-boot-starter-jackson",
+      "org.springframework.boot:spring-boot-starter-jdbc",
       "org.springframework.boot:spring-boot-starter-logging",
       "org.springframework.boot:spring-boot-starter-micrometer-metrics",
+      "org.springframework.boot:spring-boot-starter-opentelemetry",
       "org.springframework.boot:spring-boot-starter-restclient",
       "org.springframework.boot:spring-boot-starter-tomcat",
       "org.springframework.boot:spring-boot-starter-tomcat-runtime",
@@ -3748,21 +5262,44 @@
       "org.springframework.boot:spring-boot-test-autoconfigure",
       "org.springframework.boot:spring-boot-testcontainers",
       "org.springframework.boot:spring-boot-tomcat",
+      "org.springframework.boot:spring-boot-transaction",
       "org.springframework.boot:spring-boot-validation",
       "org.springframework.boot:spring-boot-web-server",
       "org.springframework.boot:spring-boot-webmvc",
+      "org.springframework.data:spring-data-commons",
+      "org.springframework.data:spring-data-jdbc",
+      "org.springframework.data:spring-data-relational",
+      "org.springframework.modulith:spring-modulith-actuator",
       "org.springframework.modulith:spring-modulith-api",
+      "org.springframework.modulith:spring-modulith-apt",
       "org.springframework.modulith:spring-modulith-core",
       "org.springframework.modulith:spring-modulith-docs",
+      "org.springframework.modulith:spring-modulith-events-api",
+      "org.springframework.modulith:spring-modulith-events-core",
+      "org.springframework.modulith:spring-modulith-events-jackson",
+      "org.springframework.modulith:spring-modulith-events-jdbc",
+      "org.springframework.modulith:spring-modulith-moments",
+      "org.springframework.modulith:spring-modulith-observability-api",
+      "org.springframework.modulith:spring-modulith-observability-core",
+      "org.springframework.modulith:spring-modulith-runtime",
+      "org.springframework.modulith:spring-modulith-starter-core",
+      "org.springframework.modulith:spring-modulith-starter-insight",
+      "org.springframework.modulith:spring-modulith-starter-jdbc",
       "org.springframework:spring-aop",
       "org.springframework:spring-beans",
       "org.springframework:spring-context",
       "org.springframework:spring-core",
       "org.springframework:spring-expression",
+      "org.springframework:spring-jdbc",
       "org.springframework:spring-test",
+      "org.springframework:spring-tx",
       "org.springframework:spring-web",
       "org.springframework:spring-webmvc",
       "org.testcontainers:testcontainers",
+      "org.testcontainers:testcontainers-database-commons",
+      "org.testcontainers:testcontainers-grafana",
+      "org.testcontainers:testcontainers-jdbc",
+      "org.testcontainers:testcontainers-postgresql",
       "org.xmlresolver:xmlresolver",
       "org.xmlresolver:xmlresolver:jar:data",
       "org.xmlunit:xmlunit-assertj3",
@@ -3796,6 +5333,45 @@
         "io.micrometer.observation.contextpropagation.ObservationThreadLocalAccessor"
       ]
     },
+    "io.opentelemetry:opentelemetry-exporter-otlp": {
+      "io.opentelemetry.sdk.autoconfigure.spi.internal.ComponentProvider": [
+        "io.opentelemetry.exporter.otlp.internal.OtlpGrpcLogRecordExporterComponentProvider",
+        "io.opentelemetry.exporter.otlp.internal.OtlpGrpcMetricExporterComponentProvider",
+        "io.opentelemetry.exporter.otlp.internal.OtlpGrpcSpanExporterComponentProvider",
+        "io.opentelemetry.exporter.otlp.internal.OtlpHttpLogRecordExporterComponentProvider",
+        "io.opentelemetry.exporter.otlp.internal.OtlpHttpMetricExporterComponentProvider",
+        "io.opentelemetry.exporter.otlp.internal.OtlpHttpSpanExporterComponentProvider"
+      ],
+      "io.opentelemetry.sdk.autoconfigure.spi.logs.ConfigurableLogRecordExporterProvider": [
+        "io.opentelemetry.exporter.otlp.internal.OtlpLogRecordExporterProvider"
+      ],
+      "io.opentelemetry.sdk.autoconfigure.spi.metrics.ConfigurableMetricExporterProvider": [
+        "io.opentelemetry.exporter.otlp.internal.OtlpMetricExporterProvider"
+      ],
+      "io.opentelemetry.sdk.autoconfigure.spi.traces.ConfigurableSpanExporterProvider": [
+        "io.opentelemetry.exporter.otlp.internal.OtlpSpanExporterProvider"
+      ]
+    },
+    "io.opentelemetry:opentelemetry-exporter-sender-okhttp": {
+      "io.opentelemetry.sdk.common.export.GrpcSenderProvider": [
+        "io.opentelemetry.exporter.sender.okhttp.internal.OkHttpGrpcSenderProvider"
+      ],
+      "io.opentelemetry.sdk.common.export.HttpSenderProvider": [
+        "io.opentelemetry.exporter.sender.okhttp.internal.OkHttpHttpSenderProvider"
+      ]
+    },
+    "io.opentelemetry:opentelemetry-extension-trace-propagators": {
+      "io.opentelemetry.sdk.autoconfigure.spi.ConfigurablePropagatorProvider": [
+        "io.opentelemetry.extension.trace.propagation.B3ConfigurablePropagator",
+        "io.opentelemetry.extension.trace.propagation.B3MultiConfigurablePropagator",
+        "io.opentelemetry.extension.trace.propagation.JaegerConfigurablePropagator",
+        "io.opentelemetry.extension.trace.propagation.OtTraceConfigurablePropagator"
+      ],
+      "io.opentelemetry.sdk.autoconfigure.spi.internal.ComponentProvider": [
+        "io.opentelemetry.extension.trace.propagation.internal.B3ComponentProvider",
+        "io.opentelemetry.extension.trace.propagation.internal.B3MultiComponentProvider"
+      ]
+    },
     "net.sf.saxon:Saxon-HE": {
       "javax.xml.transform.TransformerFactory": [
         "net.sf.saxon.TransformerFactoryImpl"
@@ -3826,6 +5402,46 @@
       ],
       "jakarta.websocket.server.ServerEndpointConfig$Configurator": [
         "org.apache.tomcat.websocket.server.DefaultServerEndpointConfigurator"
+      ]
+    },
+    "org.flywaydb:flyway-core": {
+      "org.flywaydb.core.extensibility.Plugin": [
+        "org.flywaydb.core.api.migration.baseline.BaselineAppliedMigration",
+        "org.flywaydb.core.api.migration.baseline.BaselineMigrationConfigurationExtension",
+        "org.flywaydb.core.api.migration.baseline.BaselineMigrationResolver",
+        "org.flywaydb.core.api.migration.baseline.BaselineResourceTypeProvider",
+        "org.flywaydb.core.internal.NullFlywayTelemetryManager",
+        "org.flywaydb.core.internal.configuration.resolvers.EnvironmentProvisionerNone",
+        "org.flywaydb.core.internal.configuration.resolvers.EnvironmentVariableResolver",
+        "org.flywaydb.core.internal.configuration.resolvers.PlaceholderPropertyResolver",
+        "org.flywaydb.core.internal.database.base.TestContainersDatabaseType",
+        "org.flywaydb.core.internal.database.h2.H2DatabaseType",
+        "org.flywaydb.core.internal.database.sqlite.SQLiteDatabaseType",
+        "org.flywaydb.core.internal.jdbc.ErrorOverrideInitializerStub",
+        "org.flywaydb.core.internal.proprietaryStubs.AuthCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.CheckCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.DeployCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.DiffCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.DiffTextCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.GenerateCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.LicensingConfigurationExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.ModelCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.OfflinePermitConfigurationExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.PATTokenConfigurationExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.PrepareCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.UndoCommandExtensionStub",
+        "org.flywaydb.core.internal.publishing.PublishingConfigurationExtension",
+        "org.flywaydb.core.internal.resource.CoreResourceTypeProvider",
+        "org.flywaydb.core.internal.scanner.classpath.ClasspathLocationHandlerImpl",
+        "org.flywaydb.core.internal.scanner.filesystem.FilesystemLocationHandler",
+        "org.flywaydb.core.internal.schemahistory.BaseAppliedMigration"
+      ]
+    },
+    "org.flywaydb:flyway-database-postgresql": {
+      "org.flywaydb.core.extensibility.Plugin": [
+        "org.flywaydb.database.cockroachdb.CockroachDBDatabaseType",
+        "org.flywaydb.database.postgresql.PostgreSQLConfigurationExtension",
+        "org.flywaydb.database.postgresql.PostgreSQLDatabaseType"
       ]
     },
     "org.hibernate.validator:hibernate-validator": {
@@ -3878,12 +5494,32 @@
         "org.junit.platform.reporting.open.xml.JUnitContributor"
       ]
     },
+    "org.postgresql:postgresql": {
+      "java.sql.Driver": [
+        "org.postgresql.Driver"
+      ]
+    },
+    "org.slf4j:jcl-over-slf4j": {
+      "org.apache.commons.logging.LogFactory": [
+        "org.apache.commons.logging.impl.SLF4JLogFactory"
+      ]
+    },
     "org.springframework.boot:spring-boot": {
       "ch.qos.logback.classic.spi.Configurator": [
         "org.springframework.boot.logging.logback.RootLogLevelConfigurator"
       ],
       "org.apache.logging.log4j.util.PropertySource": [
         "org.springframework.boot.logging.log4j2.SpringBootPropertySource"
+      ]
+    },
+    "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry": {
+      "org.junit.platform.launcher.TestExecutionListener": [
+        "org.springframework.boot.micrometer.tracing.opentelemetry.autoconfigure.OpenTelemetryEventPublisherBeansTestExecutionListener"
+      ]
+    },
+    "org.springframework.modulith:spring-modulith-apt": {
+      "javax.annotation.processing.Processor": [
+        "org.springframework.modulith.apt.SpringModulithProcessor"
       ]
     },
     "org.springframework:spring-core": {
@@ -3914,6 +5550,22 @@
       ],
       "org.testcontainers.shaded.com.fasterxml.jackson.core.ObjectCodec": [
         "org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper"
+      ]
+    },
+    "org.testcontainers:testcontainers-jdbc": {
+      "java.sql.Driver": [
+        "org.testcontainers.jdbc.ContainerDatabaseDriver"
+      ]
+    },
+    "org.testcontainers:testcontainers-postgresql": {
+      "org.testcontainers.containers.JdbcDatabaseContainerProvider": [
+        "org.testcontainers.containers.PgVectorContainerProvider",
+        "org.testcontainers.containers.PostgisContainerProvider",
+        "org.testcontainers.containers.PostgreSQLContainerProvider",
+        "org.testcontainers.containers.TimescaleDBContainerProvider"
+      ],
+      "org.testcontainers.r2dbc.R2DBCDatabaseContainerProvider": [
+        "org.testcontainers.containers.PostgreSQLR2DBCDatabaseContainerProvider"
       ]
     },
     "tech.picnic.error-prone-support:error-prone-contrib": {

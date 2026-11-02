@@ -2,23 +2,33 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 
-# The viewer for running locally (TestViewerApplication), and what the whole-application checks share
+# The app's store in a container (Testcontainers), for the tests that need one, and the viewer on it
+# for running locally (TestViewerApplication, with Grafana's OpenTelemetry stack: ObservabilityContainers)
 java_library(
     name = "testing",
     testonly = True,
     srcs = [
+        "ObservabilityContainers.java",
         "ProductionClasses.java",
         "TestViewerApplication.java",
+        "TestcontainersConfiguration.java",
     ],
     visibility = ["//viewer:__subpackages__"],
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "@maven//:com_tngtech_archunit_archunit",
         "@maven//:org_springframework_boot_spring_boot",
+        "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_boot_spring_boot_testcontainers",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_testcontainers_testcontainers",
+        "@maven//:org_testcontainers_testcontainers_grafana",
+        "@maven//:org_testcontainers_testcontainers_postgresql",
     ],
 )
 
-# bazel run //viewer:dev (mise run app:dev): the viewer for running locally
+# bazel run //viewer:dev (mise run app:dev): the viewer with its store and Grafana in containers;
+# needs Docker
 java_binary(
     name = "dev",
     testonly = True,
@@ -44,7 +54,7 @@ java_binary(
 )
 
 # Whole-application checks: the module structure (Spring Modulith), and that the app starts, on
-# Bazel's classpath and as Spring Boot's jar
+# Bazel's classpath and as Spring Boot's jar, on Postgres in a container (Docker)
 java_test_suite(
     name = "viewer",
     size = "small",
@@ -52,12 +62,15 @@ java_test_suite(
         ["*.java"],
         exclude = [
             "ModuleDocumentation.java",
+            "ObservabilityContainers.java",
             "ProductionClasses.java",
             "TestViewerApplication.java",
+            "TestcontainersConfiguration.java",
         ],
     ),
     data = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:viewer-app"],
     runner = "junit5",
+    tags = ["requires-docker"],
     # Spring's naming for whole-application checks
     test_suffixes = ["Tests.java"],
     runtime_deps = [
@@ -76,6 +89,8 @@ java_test_suite(
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_modulith_spring_modulith_core",
         "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_testcontainers_testcontainers_postgresql",
         "@rules_java//java/runfiles",
     ],
 )

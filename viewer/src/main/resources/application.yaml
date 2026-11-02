@@ -4,6 +4,16 @@ server:
   forward-headers-strategy: framework
 
 spring:
+  application:
+    # the service in logs, traces and metrics
+    name: viewer
+  profiles:
+    # one profile per concern (application-<profile>.yaml), grouped by where the app runs; without a
+    # profile (tests, running locally) logs are plain text
+    group:
+      # a deployment: SPRING_PROFILES_ACTIVE=prod
+      prod:
+        - json-logs
   # requests and conversions on virtual threads: they mostly wait on Cellar
   threads:
     virtual:
@@ -18,6 +28,30 @@ spring:
     # errors as RFC 9457 problem details (application/problem+json)
     problemdetails:
       enabled: true
+  # the store: Postgres at spring.datasource.* (locally a container: TestcontainersConfiguration)
+  modulith:
+    runtime:
+      # each module's migrations in db/migration/<module>, with its own history table; what the whole
+      # app shares (the event publication registry) in db/migration/__root
+      flyway-enabled: true
+    events:
+      # a completed publication is deleted, not kept: nothing reads them, so nothing has to purge them
+      completion-mode: delete
+      jdbc:
+        # its table is a migration (db/migration/__root), not created by Modulith on startup
+        schema-initialization:
+          enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # the modules and their dependencies (Spring Modulith's insight) beside health
+        include: health,info,modulith
+  tracing:
+    sampling:
+      # every request traced: little traffic, and a first read spans request, job and root swap
+      probability: 1.0
 
 viewer:
   cellar:

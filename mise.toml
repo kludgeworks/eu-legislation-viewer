@@ -47,11 +47,13 @@ description = "Run every test"
 run = "bazel test //..."
 
 [tasks.app]
-description = "Run the viewer"
+description = "Run the viewer, on the Postgres at spring.datasource.*"
 run = "bazel run //viewer:app"
 
 [tasks."app:dev"]
-description = "Run the viewer for development, with its containers (Docker)"
+description = "Run the viewer with its store and Grafana in containers (Docker), kept across runs"
+# Testcontainers' reuse: the running Postgres, and what was ingested into it, outlive the app
+env = { TESTCONTAINERS_REUSE_ENABLE = "true" }
 run = "bazel run //viewer:dev"
 
 [tasks."test:xspec"]

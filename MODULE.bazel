@@ -37,6 +37,18 @@ maven.install(
         # Jakarta Bean Validation (Hibernate Validator), for @Validated configuration properties
         "org.springframework.boot:spring-boot-starter-validation",
         "jakarta.validation:jakarta.validation-api",
+        # the store: Postgres, its schema by Flyway, aggregates by Spring Data JDBC, and Spring Modulith's
+        # event publication registry in it
+        "org.springframework.boot:spring-boot-starter-data-jdbc",
+        "org.springframework.boot:spring-boot-starter-flyway",
+        "org.flywaydb:flyway-database-postgresql",
+        "org.postgresql:postgresql",
+        "org.springframework.modulith:spring-modulith-starter-jdbc",
+        # observability: OpenTelemetry (traces, metrics, logs over OTLP), a span per module entry and the
+        # modules' actuator (Modulith's insight starter), JDBC spans (datasource-micrometer)
+        "org.springframework.boot:spring-boot-starter-opentelemetry",
+        "org.springframework.modulith:spring-modulith-starter-insight",
+        "net.ttddyy.observation:datasource-micrometer-spring-boot:2.3.0",  # not in the BOMs
         # the app as Spring Boot's executable jar, by the Repackager its Maven and Gradle plugins use
         "org.springframework.boot:spring-boot-loader-tools:4.1.1",  # not in the BOM: keep it at Boot's version
         "org.springframework.modulith:spring-modulith-api",
@@ -66,9 +78,12 @@ maven.install(
         "org.springframework.modulith:spring-modulith-core",
         # the modules' documentation, from the same model the boundaries are verified on (mise run modules)
         "org.springframework.modulith:spring-modulith-docs",
-        # the app's containers, for the tests and for running the app locally (TestViewerApplication)
+        # the app's containers, for the tests and for running the app locally (TestViewerApplication):
+        # Postgres, and Grafana's OpenTelemetry stack (LGTM) to see the traces locally
         "org.springframework.boot:spring-boot-testcontainers",
         "org.testcontainers:testcontainers",
+        "org.testcontainers:testcontainers-postgresql",
+        "org.testcontainers:testcontainers-grafana",
     ],
     boms = [
         "org.springframework.boot:spring-boot-dependencies:4.1.1",

@@ -2,7 +2,9 @@
 load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 load("//tools/build:defs.bzl", "spring_boot_jar")
 
-# The application: ViewerApplication and, at run time, its modules and Spring Boot's starters
+# The application: ViewerApplication and, at run time, its modules, its configuration and migrations,
+# and the starters: web, the store (Postgres, Flyway, Spring Data JDBC, Modulith's event registry) and
+# observability (OpenTelemetry, Modulith's insight, JDBC spans)
 java_library(
     name = "viewer",
     srcs = glob(["*.java"]),
@@ -14,12 +16,20 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra",
         "//viewer/src/main/resources",
+        "@maven//:net_ttddyy_observation_datasource_micrometer_spring_boot",
+        "@maven//:org_flywaydb_flyway_database_postgresql",
         "@maven//:org_jmolecules_integrations_jmolecules_jackson3",
         "@maven//:org_jmolecules_integrations_jmolecules_spring",
+        "@maven//:org_postgresql_postgresql",
         "@maven//:org_springframework_boot_spring_boot_starter_actuator",
+        "@maven//:org_springframework_boot_spring_boot_starter_data_jdbc",
+        "@maven//:org_springframework_boot_spring_boot_starter_flyway",
+        "@maven//:org_springframework_boot_spring_boot_starter_opentelemetry",
         "@maven//:org_springframework_boot_spring_boot_starter_restclient",
         "@maven//:org_springframework_boot_spring_boot_starter_validation",
         "@maven//:org_springframework_boot_spring_boot_starter_webmvc",
+        "@maven//:org_springframework_modulith_spring_modulith_starter_insight",
+        "@maven//:org_springframework_modulith_spring_modulith_starter_jdbc",
     ],
     deps = [
         "@maven//:org_jspecify_jspecify",

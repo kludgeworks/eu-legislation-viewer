@@ -13,7 +13,8 @@ import org.junit.jupiter.api.Test;
 /**
  * The app as one file starts: java -jar on the Spring Boot jar (//viewer:jar) that SpringBootJar
  * puts together, its own layout, names and loader, which the tests on Bazel's classpath never see.
- * That the started app works (its web server, Actuator) is ViewerApplicationTests'.
+ * As deployed (profile prod), on its store, Postgres in a container, which it migrates as it
+ * starts. That the started app works (its web server, Actuator) is ViewerApplicationTests'.
  */
 @AutoBazelRepository
 class ViewerJarTests {
@@ -28,8 +29,25 @@ class ViewerJarTests {
             .rlocation(
                 "kludgeworks_viewer/viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/viewer-app.jar");
     var java = ProcessHandle.current().info().command().orElseThrow();
-    var app =
-        new ProcessBuilder(java, "-jar", jar, "--server.port=0").redirectErrorStream(true).start();
+    try (var postgres = TestcontainersConfiguration.postgres()) {
+      postgres.start();
+      var app =
+          new ProcessBuilder(
+                  java,
+                  "-jar",
+                  jar,
+                  "--server.port=0",
+                  "--spring.profiles.active=prod",
+                  "--spring.datasource.url=" + postgres.getJdbcUrl(),
+                  "--spring.datasource.username=" + postgres.getUsername(),
+                  "--spring.datasource.password=" + postgres.getPassword())
+              .redirectErrorStream(true)
+              .start();
+      assertStarts(app);
+    }
+  }
+
+  private static void assertStarts(Process app) throws Exception {
     try {
       var started =
           CompletableFuture.supplyAsync(
