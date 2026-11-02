@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.content.model;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -74,8 +75,23 @@ final class JsonMl {
     return at;
   }
 
+  /** A legal text's document: its element {@code el}, declaring the namespaces it uses. */
+  static void writeDocument(List<?> el, XMLStreamWriter out) throws XMLStreamException {
+    out.writeStartDocument();
+    write(el, out, true);
+    out.writeEndDocument();
+  }
+
   static void write(List<?> el, XMLStreamWriter out) throws XMLStreamException {
+    write(el, out, false);
+  }
+
+  private static void write(List<?> el, XMLStreamWriter out, boolean document)
+      throws XMLStreamException {
     startElement(name(el), out);
+    if (document) {
+      declareNamespaces(out);
+    }
     for (var a : attributes(el).entrySet()) {
       attribute(a.getKey(), (String) a.getValue(), out);
     }
@@ -99,8 +115,24 @@ final class JsonMl {
     }
   }
 
+  /** {@code el} as an Element, and its children. */
+  static Element element(List<?> el) {
+    var attributes = new LinkedHashMap<String, String>();
+    attributes(el).forEach((name, value) -> attributes.put(name, (String) value));
+    var children = new ArrayList<Element>();
+    var text = new StringBuilder();
+    for (var part : el.subList(2, el.size())) {
+      if (part instanceof List<?> child) {
+        children.add(element(child));
+      } else {
+        text.append((String) part);
+      }
+    }
+    return new Element(name(el), attributes, children, text.toString());
+  }
+
   /** On a document's element: legal-text's namespace the default, the others by their prefixes. */
-  static void declareNamespaces(XMLStreamWriter out) throws XMLStreamException {
+  private static void declareNamespaces(XMLStreamWriter out) throws XMLStreamException {
     out.writeDefaultNamespace(LegalText.NAMESPACE);
     for (var ns : LegalText.NAMESPACES.entrySet()) {
       if (!ns.getKey().equals("xml")) {

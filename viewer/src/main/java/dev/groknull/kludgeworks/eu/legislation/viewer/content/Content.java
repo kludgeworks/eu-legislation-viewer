@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.content;
 
 import java.util.List;
+import java.util.Optional;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import net.sf.saxon.s9api.XdmNode;
@@ -23,6 +24,12 @@ public interface Content {
    * or one not stored.
    */
   List<Segment> segments(ContentHash root);
+
+  /**
+   * The legal text at {@code root}, its element legalText, as it was stored; none if none is stored
+   * there.
+   */
+  Optional<Element> read(ContentHash root);
 
   /**
    * Writes the legal text at {@code root} to {@code out} as it was stored, but for the whitespace

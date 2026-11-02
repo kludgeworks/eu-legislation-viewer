@@ -31,6 +31,9 @@ local generated =
     "maven_install.json",
     "formex-converter/src/test/resources/expected/**/*.xml",
   )
+// the legal text's templates: their files end without a newline, which jte would write into running
+// text (Rendering and UI)
+local legalTemplates = List("viewer/src/main/jte/legal/**")
 local xml = List("**/*.xml", "**/*.xsl", "**/*.xsd", "**/*.xspec", "**/*.sch")
 
 local linters = new Mapping<String, Step> {
@@ -74,7 +77,7 @@ local linters = new Mapping<String, Step> {
   ["actionlint"] = Builtins.actionlint
   ["typos"] = (Builtins.typos) { exclude = raw + vendored + generated }
   ["trailing_whitespace"] = (Builtins.trailing_whitespace) { exclude = raw + vendored + generated }
-  ["newlines"] = (Builtins.newlines) { exclude = raw + vendored + generated }
+  ["newlines"] = (Builtins.newlines) { exclude = raw + vendored + generated + legalTemplates }
   ["mixed_line_ending"] = (Builtins.mixed_line_ending) { exclude = raw + vendored + generated }
   ["check_merge_conflict"] = Builtins.check_merge_conflict
   ["check_case_conflict"] = Builtins.check_case_conflict

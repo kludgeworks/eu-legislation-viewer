@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.content.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Segment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
@@ -10,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Segmentation
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
 import java.util.List;
+import java.util.Optional;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import net.sf.saxon.s9api.XdmNode;
@@ -20,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Storing a text: encoded into its tree and cut into segments (the model), then kept unless it is
- * already; rebuilding one: its tree read back and decoded. Each is one transaction, one observation
- * (content.store, content.rebuild: a span and a timer) and one log line.
+ * already; reading or rebuilding one: its tree read back and decoded. Each is one transaction, one
+ * observation (content.store, content.read, content.rebuild: a span and a timer) and one log line.
  */
 @Service
 class ContentService implements Content {
@@ -73,6 +75,30 @@ class ContentService implements Content {
   @Transactional(readOnly = true)
   public List<Segment> segments(ContentHash root) {
     return store.segments(root);
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public Optional<Element> read(ContentHash root) {
+    return Observation.createNotStarted("content.read", observations).observe(() -> doRead(root));
+  }
+
+  private Optional<Element> doRead(ContentHash root) {
+    var start = System.nanoTime();
+    var tree = store.tree(root);
+    if (tree.isEmpty()) {
+      LOG.debug("Nothing stored at {}", root);
+      return Optional.empty();
+    }
+    var read = millis(start);
+    var element = Decoder.element(tree.get());
+    LOG.debug(
+        "Read {}: {} nodes read in {} ms, decoded in {} ms",
+        root,
+        tree.get().nodes().size(),
+        read,
+        millis(start) - read);
+    return Optional.of(element);
   }
 
   @Override

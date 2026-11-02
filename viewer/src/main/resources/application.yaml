@@ -55,6 +55,11 @@ management:
       # every request traced: little traffic, and a first read spans request, job and root swap
       probability: 1.0
 
+gg:
+  jte:
+    # the templates as jte_library precompiled them (//viewer/src/main/jte): no jte compiler at run time
+    use-precompiled-templates: true
+
 viewer:
   cellar:
     sparql-endpoint: https://publications.europa.eu/webapi/rdf/sparql

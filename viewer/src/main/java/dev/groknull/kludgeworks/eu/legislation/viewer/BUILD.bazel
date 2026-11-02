@@ -3,8 +3,8 @@ load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 load("//tools/build:defs.bzl", "spring_boot_jar")
 
 # The application: ViewerApplication and, at run time, its modules, its configuration and migrations,
-# and the starters: web, the store (Postgres, Flyway, jOOQ, Modulith's event registry) and
-# observability (OpenTelemetry, Modulith's insight, JDBC spans)
+# and the starters: web (with jte), the store (Postgres, Flyway, jOOQ, Modulith's event
+# registry) and observability (OpenTelemetry, Modulith's insight, JDBC spans)
 java_library(
     name = "viewer",
     srcs = glob(["*.java"]),
@@ -18,12 +18,15 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/web",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/main/jte",
         "//viewer/src/main/resources",
+        "@maven//:gg_jte_jte_spring_boot_starter_4",
         "@maven//:net_ttddyy_observation_datasource_micrometer_spring_boot",
         "@maven//:org_flywaydb_flyway_database_postgresql",
         "@maven//:org_jmolecules_integrations_jmolecules_jackson3",

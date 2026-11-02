@@ -26,6 +26,14 @@ precedence = "aggregate"
 SPDX-FileCopyrightText = "The Project Contributors"
 SPDX-License-Identifier = "MIT"
 
+# Ours, without room for a header: the jte templates, where a header's comment would leak whitespace into
+# the page (and, in the legal text's, into running text)
+[[annotations]]
+path = "viewer/src/main/jte/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "The Project Contributors"
+SPDX-License-Identifier = "MIT"
+
 # EU legal documents in Formex as Cellar serves them: the fixtures, and a package recorded from Cellar
 [[annotations]]
 path = [
