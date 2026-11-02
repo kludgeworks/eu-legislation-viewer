@@ -113,3 +113,16 @@ java_binary(
         "@maven//:org_testcontainers_testcontainers_postgresql",
     ],
 )
+
+# jte templates as Java sources, with jte-models' typed facade (the macro jte_library)
+java_binary(
+    name = "jte_generate",
+    srcs = ["JteGenerate.java"],
+    main_class = "dev.groknull.kludgeworks.build.JteGenerate",
+    runtime_deps = ["@maven//:gg_jte_jte_models"],
+    deps = [
+        ":package_info",
+        "@maven//:gg_jte_jte",
+        "@maven//:gg_jte_jte_runtime",
+    ],
+)

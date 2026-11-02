@@ -216,3 +216,55 @@ def jooq_tables(name, migrations, package, config, deps = [], image = "postgres:
         deps = deps + ["@maven//:org_jooq_jooq"],
         **kwargs
     )
+
+def jte_library(name, srcs, root, models_exclude = None, deps = [], **kwargs):
+    """Templates, precompiled: a java_library of their classes and jte-models' typed facade.
+
+    jte generates the templates' Java (JteGenerate), as its Maven and Gradle plugins do, into the
+    package TemplateEngine.createPrecompiled loads from; so the app runs them without jte's
+    compiler (gg.jte.use-precompiled-templates). The facade (Templates, StaticTemplates,
+    DynamicTemplates) calls each template by its path: layout/page.jte is layoutPage(…). The
+    generated code is jte's, so it is left out of our checks.
+
+    Args:
+      name: the java_library.
+      srcs: the templates, all below root.
+      root: the templates' root directory, relative to this package: template names are paths below
+        it.
+      models_exclude: a pattern of the templates the facade leaves out, those only ever rendered by
+        name: of their classes' names, as jte-models matches them
+        (gg.jte.generated.precompiled.legal.JtepGenerated for legal/p.jte).
+      deps: what the templates refer to: the types of their @params and imports.
+      **kwargs: passed to the java_library.
+    """
+    native.genrule(
+        name = name + "_sources",
+        srcs = srcs,
+        outs = [name + "-sources.srcjar"],
+        cmd = " && ".join([
+            "out=$$(mktemp -d)",
+            "$(execpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:jte_generate) %s $$out/src %s" % (_path(root), "'%s'" % models_exclude if models_exclude else ""),
+            "jar=$$PWD/$@",
+            "zipper=$$PWD/$(execpath @bazel_tools//tools/zip:zipper)",
+            "cd $$out/src",
+            "$$zipper c $$jar $$(find . -name '*.java' | sed 's|^./||' | LC_ALL=C sort)",
+            "rm -rf $$out",
+        ]),
+        tools = [
+            "//tools/build/src/main/java/dev/groknull/kludgeworks/build:jte_generate",
+            "@bazel_tools//tools/zip:zipper",
+        ],
+    )
+    java_library(
+        name = name,
+        srcs = [":" + name + "_sources"],
+        # jte's code, not ours: no Error Prone, doclint or lint warnings
+        javacopts = ["-XepDisableAllChecks", "-Xdoclint:none", "-Xlint:none"],
+        deps = deps + ["@maven//:gg_jte_jte_runtime", "@maven//:gg_jte_jte_models"],
+        **kwargs
+    )
+
+def _path(directory):
+    """A directory of this package's sources, from the execution root, where source files are."""
+    package = native.package_name()
+    return package if directory == "." else package + "/" + directory

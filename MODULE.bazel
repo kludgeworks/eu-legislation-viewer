@@ -67,6 +67,16 @@ maven.install(
         "org.jmolecules.integrations:jmolecules-spring",
         "org.jmolecules.integrations:jmolecules-jackson3",
         "org.jspecify:jspecify",
+        # pages: jte templates, precompiled by jte_library (with jte-models' typed facade), and htmx from
+        # its webjar, served by Boot at /webjars/htmx.org/… (version-agnostic: webjars-locator-lite)
+        "gg.jte:jte:3.2.4",
+        "gg.jte:jte-models:3.2.4",
+        "gg.jte:jte-spring-boot-starter-4:3.2.4",
+        "org.webjars.npm:htmx.org:4.0.0",
+        # htmx's requests in Spring MVC: @HxRequest handlers for fragments, Vary: HX-Request on their
+        # responses (not on the full page's: that one sets it itself)
+        "io.github.wimdeblauwe:htmx-spring-boot:6.0.1",
+        "org.webjars:webjars-locator-lite",
         # builders and withers for records, generated (an annotation processor: //tools/build:record_builder)
         "io.soabase.record-builder:record-builder-core:53",
         "io.soabase.record-builder:record-builder-processor:53",
@@ -78,6 +88,7 @@ maven.install(
         "org.junit.platform:junit-platform-reporting",
         "org.assertj:assertj-core",
         "org.xmlunit:xmlunit-assertj3:2.14.0",
+        "org.jsoup:jsoup:1.23.2",  # the rendered pages' text, as a browser reads it
         "org.springframework:spring-test",
         "org.springframework.boot:spring-boot-test",
         "org.springframework.boot:spring-boot-test-autoconfigure",

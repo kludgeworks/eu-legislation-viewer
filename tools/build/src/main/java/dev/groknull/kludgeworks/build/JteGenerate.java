@@ -1,0 +1,35 @@
+// SPDX-License-Identifier: MIT
+package dev.groknull.kludgeworks.build;
+
+import gg.jte.ContentType;
+import gg.jte.TemplateEngine;
+import gg.jte.resolve.DirectoryCodeResolver;
+import java.nio.file.Path;
+import java.util.Map;
+
+/**
+ * Templates as Java sources (the macro jte_library), as jte's Maven and Gradle plugins generate
+ * them: HTML, in jte's package for precompiled templates (where TemplateEngine.createPrecompiled
+ * looks), with jte-models' typed facade (Templates, StaticTemplates, DynamicTemplates).
+ *
+ * <p>Arguments: the templates' root directory, the directory to write the sources in, and
+ * optionally a pattern of the templates to leave out of the facade, those only ever rendered by
+ * name (of their classes' names, as jte-models' excludePattern matches them).
+ */
+public final class JteGenerate {
+  private JteGenerate() {}
+
+  public static void main(String[] args) {
+    var engine =
+        TemplateEngine.create(
+            new DirectoryCodeResolver(Path.of(args[0])),
+            Path.of(args[1]),
+            ContentType.Html,
+            null,
+            "gg.jte.generated.precompiled");
+    engine.setTrimControlStructures(true);
+    var models = args.length > 2 ? Map.of("excludePattern", args[2]) : Map.<String, String>of();
+    engine.setExtensions(Map.of("gg.jte.models.generator.ModelExtension", models));
+    engine.generateAll();
+  }
+}
