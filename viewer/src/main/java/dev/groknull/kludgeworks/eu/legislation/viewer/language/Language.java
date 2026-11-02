@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.acts;
+package dev.groknull.kludgeworks.eu.legislation.viewer.language;
 
 import java.util.Arrays;
 import java.util.Locale;

@@ -8,10 +8,10 @@ java_library(
     srcs = glob(["*.java"]),
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:io_micrometer_micrometer_tracing",
         "@maven//:jakarta_validation_jakarta_validation_api",
         "@maven//:net_sf_saxon_Saxon_HE",

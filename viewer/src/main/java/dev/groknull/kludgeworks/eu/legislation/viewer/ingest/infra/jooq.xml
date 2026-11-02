@@ -23,7 +23,7 @@
           <includeExpression>ingest_job\.failure</includeExpression>
         </forcedType>
         <forcedType>
-          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language</userType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>
           <enumConverter>true</enumConverter>
           <includeExpression>ingest_job\.language</includeExpression>
         </forcedType>

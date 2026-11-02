@@ -3,7 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
 
 import com.google.devtools.build.runfiles.AutoBazelRepository;
 import com.google.devtools.build.runfiles.Runfiles;
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;

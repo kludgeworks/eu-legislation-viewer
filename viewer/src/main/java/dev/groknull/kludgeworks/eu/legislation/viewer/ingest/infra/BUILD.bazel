@@ -14,11 +14,11 @@ java_library(
     ],
     deps = [
         ":jooq",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jooq_jooq",
@@ -37,7 +37,7 @@ jooq_tables(
     migrations = ["//viewer/src/main/resources:db/migration/ingest/V1__ingest_job.sql"],
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.jooq",
     deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
     ],
 )

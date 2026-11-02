@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;

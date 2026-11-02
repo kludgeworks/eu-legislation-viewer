@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.application;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Ingest;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJobs;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.micrometer.tracing.Tracer;
 import io.micrometer.tracing.propagation.Propagator;
 import java.util.HashMap;

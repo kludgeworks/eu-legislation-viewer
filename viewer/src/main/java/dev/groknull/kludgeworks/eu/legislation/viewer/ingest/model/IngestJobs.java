@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.util.Optional;
 import org.jmolecules.ddd.annotation.Repository;

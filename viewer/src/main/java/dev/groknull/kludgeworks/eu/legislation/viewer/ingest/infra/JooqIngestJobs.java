@@ -6,12 +6,12 @@ import static org.jooq.impl.DSL.currentInstant;
 import static org.jooq.impl.DSL.select;
 import static org.jooq.impl.DSL.val;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.Stage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.jooq.tables.records.IngestJobRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJobs;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.util.Optional;
 import org.jooq.DSLContext;

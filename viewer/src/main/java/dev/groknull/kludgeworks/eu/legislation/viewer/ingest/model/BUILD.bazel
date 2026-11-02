@@ -9,9 +9,9 @@ java_library(
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     deps = [
         "//tools/build:record_builder",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:org_jmolecules_jmolecules_ddd",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",

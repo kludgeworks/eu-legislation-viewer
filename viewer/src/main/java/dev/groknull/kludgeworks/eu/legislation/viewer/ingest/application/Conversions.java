@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.application;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionException;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.Optional;
 import net.sf.saxon.s9api.XdmNode;
 

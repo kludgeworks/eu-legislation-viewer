@@ -17,6 +17,7 @@ java_test_suite(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts/infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
     ],

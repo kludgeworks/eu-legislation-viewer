@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.Stage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.soabase.recordbuilder.core.RecordBuilder;
 import org.jmolecules.ddd.annotation.AggregateRoot;
 import org.jmolecules.ddd.annotation.Identity;

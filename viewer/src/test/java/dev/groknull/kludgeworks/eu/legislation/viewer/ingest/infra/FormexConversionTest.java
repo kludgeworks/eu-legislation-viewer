@@ -6,7 +6,7 @@ import static net.sf.saxon.s9api.streams.Predicates.isElement;
 import static net.sf.saxon.s9api.streams.Steps.child;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.s9api.Serializer;

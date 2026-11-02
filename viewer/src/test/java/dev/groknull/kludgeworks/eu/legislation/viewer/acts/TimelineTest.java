@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.acts;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
