@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 /**
  * The build's Java tools: the runners behind defs.bzl's test macros (XSpec, xslt-quality,
- * Schematron, SPARQL terms, schema Javadoc), Spring Boot's jar, and XJC's JSpecify plugin.
+ * Schematron, SPARQL terms) and Spring Boot's jar.
  */
 @NullMarked
 package dev.groknull.kludgeworks.build;

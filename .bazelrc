@@ -7,8 +7,7 @@ test --test_output=errors
 test --test_timeout=-1,-1,-1,7200
 
 # NullAway on every Java target: the @NullMarked packages are checked against their JSpecify
-# annotations, and @Nullable is honoured where unmarked code has it (the JAXB classes' getters).
-# Generated code (@Generated: MapStruct's mappers) isn't checked, the interfaces it implements are;
+# annotations, and @Nullable is honoured where unmarked code has it.
 # AssertJ's isNotNull() counts as a null check in tests, and JUnit's parameterized classes
 # initialise their fields (@Parameter, @BeforeParameterizedClassInvocation).
 build --extra_toolchains=//tools/build:java_toolchain_definition
@@ -16,8 +15,7 @@ build --plugin=//tools/build:nullaway
 # Picnic's checks (error-prone-contrib) as well, configured for our packages in tools/build/BUILD.bazel.
 build --plugin=//tools/build:picnic
 # Error Prone checks our own sources only: not third-party code Bazel compiles from source
-# (external/), nor generated code, which Bazel compiles from its own output (_javac/: MapStruct's
-# mappers, XJC's classes)
+# (external/), nor generated code, which Bazel compiles from its own output (_javac/)
 build --javacopt=-XepExcludedPaths:(.*/)?(external|_javac)/.*
 build --javacopt=-Xep:NullAway:ERROR
 build --javacopt=-XepOpt:NullAway:OnlyNullMarked=true

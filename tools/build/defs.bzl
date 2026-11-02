@@ -2,59 +2,7 @@
 """Build macros for the amendment viewer."""
 
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
-load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 load("@rules_java//java/common:java_info.bzl", "JavaInfo")
-
-def xjc_library(name, schema, bindings = None, imports = [], xjc_args = [], srcs = [], deps = [], visibility = None):
-    """Generate JAXB classes from an XSD (and its bindings) into a reproducible srcjar, and compile them.
-
-    xjc turns the schema's xs:documentation into the classes' and properties' Javadoc. It writes
-    into a temporary directory; Bazel's zipper packs that into the srcjar with fixed timestamps,
-    sorted, so the srcjar is the same bytes on every build.
-
-    Args:
-      name: the java_library; the srcjar is `name`.srcjar.
-      schema: the XSD.
-      bindings: the JAXB bindings file (.xjb), if any.
-      imports: the schemas the schema imports by file name, copied beside it.
-      xjc_args: further xjc arguments, such as plugin switches.
-      srcs: hand-written helpers the bindings name, such as an XmlAdapter.
-      deps: further dependencies of the generated code.
-      visibility: the java_library's visibility.
-    """
-    inputs = [schema] + list(imports) + ([bindings] if bindings else [])
-    args = ["-npa", "-no-header", "-quiet", "-extension"] + list(xjc_args)
-    if bindings:
-        args += ["-b", "$$in/$$(basename $(location %s))" % bindings]
-    native.genrule(
-        name = name + "_srcjar",
-        srcs = inputs,
-        outs = [name + ".srcjar"],
-        # the bindings name the schema by its file name (schemaLocation), so the two are copied side
-        # by side, wherever their packages are
-        cmd = " && ".join([
-            "zipper=$$PWD/$(execpath @bazel_tools//tools/zip:zipper)",
-            "srcjar=$$PWD/$@",
-            "in=$$(mktemp -d)",
-            "out=$$(mktemp -d)",
-            "cp %s $$in/" % " ".join(["$(location %s)" % i for i in inputs]),
-            "$(execpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:xjc) -d $$out %s $$in/$$(basename $(location %s))" % (" ".join(args), schema),
-            "cd $$out",
-            "$$zipper c $$srcjar $$(find . -name '*.java' | LC_ALL=C sort | sed 's|^[.]/||')",
-            "rm -rf $$in $$out",
-        ]),
-        tools = [
-            "//tools/build/src/main/java/dev/groknull/kludgeworks/build:xjc",
-            "@bazel_tools//tools/zip:zipper",
-        ],
-    )
-    java_library(
-        name = name,
-        srcs = [":" + name + ".srcjar"] + srcs,
-        deps = deps + ["@maven//:jakarta_xml_bind_jakarta_xml_bind_api"],
-        runtime_deps = ["@maven//:org_glassfish_jaxb_jaxb_runtime"],
-        visibility = visibility,
-    )
 
 def xspec_test(name, specs, data = [], **kwargs):
     """One cached JUnit 5 test per .xspec file (run by XSpecTests), plus a test_suite named `name`.
@@ -83,54 +31,6 @@ def xspec_test(name, specs, data = [], **kwargs):
         )
         tests.append(":" + test_name)
     native.test_suite(name = name, tests = tests)
-
-def schema_javadoc(name, schema, srcs, types = {}, components = {}, **kwargs):
-    """Records' Javadoc from an XML Schema's documentation, checked and written.
-
-    `name`_test checks the sources say it; `name`_update (bazel run) writes it into them.
-
-    A record says what its schema type's documentation says, each component (@param) what the
-    element or attribute it maps from says, each enum constant what its enumeration value says.
-    Records and schema types share their names but for those the tables rename.
-
-    Args:
-      name: the prefix of the two targets.
-      schema: the XML Schema.
-      srcs: the records' sources.
-      types: record types whose schema type has another name, {"Inline": "InlineNode"}; nested
-        records by their own name, nested enums by their outer type, {"Unit.Kind": "UnitKind"}.
-      components: components mapped from an element or attribute of another name,
-        {"Row.cells": "td"}.
-      **kwargs: passed to the java_junit5_test.
-    """
-    update = "bazel run //%s:%s_update" % (native.package_name(), name)
-    flags = [
-        "-Dschema-javadoc.schema=$(rootpath %s)" % schema,
-        "-Dschema-javadoc.srcs='%s'" % " ".join(["$(rootpath %s)" % s for s in srcs]),
-        "-Dschema-javadoc.types=" + ",".join(["%s=%s" % (k, v) for k, v in types.items()]),
-        "-Dschema-javadoc.components=" + ",".join(["%s=%s" % (k, v) for k, v in components.items()]),
-        "-Dschema-javadoc.update='%s'" % update,
-    ]
-    java_junit5_test(
-        name = name + "_test",
-        test_class = "dev.groknull.kludgeworks.build.SchemaJavadocTests",
-        jvm_flags = flags,
-        data = [schema] + srcs,
-        runtime_deps = [
-            "//tools/build/src/main/java/dev/groknull/kludgeworks/build:schema_javadoc_runner",
-            "@maven//:org_junit_jupiter_junit_jupiter_engine",
-            "@maven//:org_junit_platform_junit_platform_launcher",
-            "@maven//:org_junit_platform_junit_platform_reporting",
-        ],
-        **kwargs
-    )
-    java_binary(
-        name = name + "_update",
-        main_class = "dev.groknull.kludgeworks.build.UpdateSchemaJavadoc",
-        jvm_flags = flags,
-        data = [schema] + srcs,
-        runtime_deps = ["//tools/build/src/main/java/dev/groknull/kludgeworks/build:schema_javadoc"],
-    )
 
 def xslt_quality_test(name, srcs, **kwargs):
     """Check stylesheets with xslt-quality: one JUnit 5 test with a dynamic test per stylesheet.

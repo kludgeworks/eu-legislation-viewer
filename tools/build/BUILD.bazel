@@ -12,13 +12,6 @@ exports_files([
     "xslt-quality.conf.xml",
 ])
 
-# MapStruct's annotation processor: a library with it in plugins gets its mappers generated
-java_plugin(
-    name = "mapstruct",
-    processor_class = "org.mapstruct.ap.MappingProcessor",
-    deps = ["@maven//:org_mapstruct_mapstruct_processor"],
-)
-
 # NullAway, an Error Prone check, for every Java target (see .bazelrc): it checks the @NullMarked
 # packages, so generated and third-party code is left alone
 java_plugin(
@@ -37,8 +30,7 @@ java_plugin(
 # hold trivially until the first controller. Not StaticImport: its list is the reverse of ours
 # (classes named, as StandardCharsets.UTF_8, but for the test DSLs); NonStaticImport is ours. Not
 # JUnitClassModifiers (final test classes), nor the lexicographical orders: a sealed interface's
-# permits and a mapper's annotations follow the domain, and MapStruct tries @SubclassMappings in
-# the order written.
+# permits and annotations follow the domain.
 PICNIC_CHECKS = [
     "AmbiguousJsonCreator",
     "AssertJNullnessAssertion",

@@ -17,13 +17,6 @@ maven.install(
         "io.xspec:xspec:4.1.2",
         # Schematron (legal-text.sch) with the XSLT 3.0 binding
         "name.dmaus.schxslt:schxslt2:1.11.2",
-        # JAXB: code generation (tool classpath) and runtime
-        "org.glassfish.jaxb:jaxb-xjc:4.0.9",
-        "org.glassfish.jaxb:jaxb-runtime:4.0.9",
-        "jakarta.xml.bind:jakarta.xml.bind-api:4.0.5",
-        # MapStruct: the JAXB classes onto the domain records, generated at compile time
-        "org.mapstruct:mapstruct:1.7.0.Beta2",
-        "org.mapstruct:mapstruct-processor:1.7.0.Beta2",
         # NullAway: JSpecify nullness checked at compile time, as an Error Prone plugin
         "com.uber.nullaway:nullaway:0.14.3",
         # Picnic's Error Prone checks, as a plugin: built on Error Prone 2.50.0, the one in rules_java's
@@ -39,29 +32,19 @@ maven.install(
         # the app: Spring MVC on Tomcat, and Actuator
         "org.springframework.boot:spring-boot-starter-webmvc",
         "org.springframework.boot:spring-boot-starter-actuator",
-        # HAL: the API's representations and links (Spring HATEOAS)
-        "org.springframework.boot:spring-boot-starter-hateoas",
-        "org.springframework.hateoas:spring-hateoas",
         # RestClient.Builder, configured by Boot (spring.http.clients.*)
         "org.springframework.boot:spring-boot-starter-restclient",
         # Jakarta Bean Validation (Hibernate Validator), for @Validated configuration properties
         "org.springframework.boot:spring-boot-starter-validation",
         "jakarta.validation:jakarta.validation-api",
-        # Valkey, the shared cache of converted texts: Spring Data Redis on Lettuce (wire-compatible)
-        "org.springframework.boot:spring-boot-starter-data-redis",
-        "org.springframework.data:spring-data-redis",
-        # Spring's cache abstraction, on that Valkey: acts, for a while
-        "org.springframework.boot:spring-boot-starter-cache",
-        "org.springframework.boot:spring-boot-cache",
         # the app as Spring Boot's executable jar, by the Repackager its Maven and Gradle plugins use
         "org.springframework.boot:spring-boot-loader-tools:4.1.1",  # not in the BOM: keep it at Boot's version
         "org.springframework.modulith:spring-modulith-api",
         "tools.jackson.core:jackson-databind",
-        # jMolecules: the DDD building blocks, the sliced onion's rings and the adapters' sides, as annotations, and
-        # their ArchUnit rules (tests); versions from the jMolecules BOM below
+        # jMolecules: the DDD building blocks and the sliced onion's rings, as annotations, and their ArchUnit
+        # rules (tests); versions from the jMolecules BOM below
         "org.jmolecules:jmolecules-ddd",
         "org.jmolecules:jmolecules-onion-architecture",
-        "org.jmolecules:jmolecules-hexagonal-architecture",
         "org.jmolecules:jmolecules-events",
         "org.jmolecules.integrations:jmolecules-archunit",
         # identifiers from path variables, and single-value types as plain JSON values
@@ -76,23 +59,16 @@ maven.install(
         "org.junit.platform:junit-platform-reporting",
         "org.assertj:assertj-core",
         "org.xmlunit:xmlunit-assertj3:2.14.0",
-        # the records' Javadoc from legal-text.xsd (mise run docs): Java sources read and edited
-        "com.github.javaparser:javaparser-core:3.28.2",
         "org.springframework:spring-test",
         "org.springframework.boot:spring-boot-test",
         "org.springframework.boot:spring-boot-test-autoconfigure",
-        "org.springframework.boot:spring-boot-webmvc-test",
         "org.hamcrest:hamcrest",
         "org.springframework.modulith:spring-modulith-core",
         # the modules' documentation, from the same model the boundaries are verified on (mise run modules)
         "org.springframework.modulith:spring-modulith-docs",
-        # Valkey in a container, for the tests and for running the app locally (TestViewerApplication)
+        # the app's containers, for the tests and for running the app locally (TestViewerApplication)
         "org.springframework.boot:spring-boot-testcontainers",
         "org.testcontainers:testcontainers",
-        # HAL Explorer, to browse the API when running locally (//viewer:dev only), with Boot serving
-        # webjars without their version in the path
-        "org.webjars:hal-explorer:2.3.0",
-        "org.webjars:webjars-locator-lite",
     ],
     boms = [
         "org.springframework.boot:spring-boot-dependencies:4.1.1",
