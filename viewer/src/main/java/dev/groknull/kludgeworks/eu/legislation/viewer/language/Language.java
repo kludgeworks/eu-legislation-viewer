@@ -52,6 +52,17 @@ public enum Language {
     return iso;
   }
 
+  /**
+   * The language with this code of the EU authority table (ENG; eng, as an ELI has it), in either
+   * case.
+   */
+  public static Language ofCode(String code) {
+    return Arrays.stream(values())
+        .filter(language -> language.name().equalsIgnoreCase(code))
+        .findFirst()
+        .orElseThrow(() -> new IllegalArgumentException("Not an official EU language: " + code));
+  }
+
   /** The language with this ISO 639-1 code (en), in either case. */
   public static Language ofIso(String iso) {
     return Arrays.stream(values())

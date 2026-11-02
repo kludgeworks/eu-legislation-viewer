@@ -1,0 +1,22 @@
+@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act
+@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version
+@import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language
+@param Act act
+@param Version version
+@param Language language
+@param String eurLex
+@param gg.jte.Content text
+@template.layout.page(title = version.celex(), content = @`
+  <header class="version">
+    <p class="version-celex">${version.celex()}</p>
+    <p class="version-kind">
+      @if(version.kind() == Version.Kind.ORIGINAL)
+        The original text, applying from <time datetime="${version.date().toString()}">${version.date().toString()}</time>
+      @else
+        Consolidated text, applying from <time datetime="${version.date().toString()}">${version.date().toString()}</time>
+      @endif
+    </p>
+    <p class="version-links"><a href="${eurLex}">On EUR-Lex</a></p>
+  </header>
+  ${text}
+`)

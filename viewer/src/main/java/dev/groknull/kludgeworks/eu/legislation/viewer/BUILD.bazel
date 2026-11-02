@@ -3,7 +3,7 @@ load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 load("//tools/build:defs.bzl", "spring_boot_jar")
 
 # The application: ViewerApplication and, at run time, its modules, its configuration and migrations,
-# and the starters: web (with jte), the store (Postgres, Flyway, jOOQ, Modulith's event
+# and the starters: web (with jte and htmx), the store (Postgres, Flyway, jOOQ, Modulith's event
 # registry) and observability (OpenTelemetry, Modulith's insight, JDBC spans)
 java_library(
     name = "viewer",
@@ -13,6 +13,7 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/application",
@@ -24,9 +25,9 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
-        "//viewer/src/main/jte",
         "//viewer/src/main/resources",
         "@maven//:gg_jte_jte_spring_boot_starter_4",
+        "@maven//:io_github_wimdeblauwe_htmx_spring_boot",
         "@maven//:net_ttddyy_observation_datasource_micrometer_spring_boot",
         "@maven//:org_flywaydb_flyway_database_postgresql",
         "@maven//:org_jmolecules_integrations_jmolecules_jackson3",
@@ -41,12 +42,16 @@ java_library(
         "@maven//:org_springframework_boot_spring_boot_starter_webmvc",
         "@maven//:org_springframework_modulith_spring_modulith_starter_insight",
         "@maven//:org_springframework_modulith_spring_modulith_starter_jdbc",
+        "@maven//:org_webjars_npm_htmx_org",
+        "@maven//:org_webjars_webjars_locator_lite",
     ],
     deps = [
+        "//viewer/src/main/jte",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",
         "@maven//:org_springframework_modulith_spring_modulith_api",
+        "@maven//:org_springframework_spring_context",
     ],
 )
 

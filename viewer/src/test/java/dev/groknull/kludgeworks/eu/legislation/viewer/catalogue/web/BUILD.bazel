@@ -1,0 +1,32 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
+
+# A version's page as a browser loads it, its text built while it polls; Postgres in a container, so
+# it needs Docker
+java_junit5_test(
+    name = "VersionPagesTests",
+    size = "small",
+    srcs = ["VersionPagesTests.java"],
+    tags = ["requires-docker"],
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.VersionPagesTests",
+    runtime_deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
+        "@maven//:ch_qos_logback_logback_classic",  # the log lines, in the test's log
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web",  # its package's @NullMarked
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:one-act-cellar",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra:fixtures",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_awaitility_awaitility",
+        "@maven//:org_jsoup_jsoup",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_web",
+    ],
+)

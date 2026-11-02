@@ -1,0 +1,259 @@
+/* SPDX-License-Identifier: MIT */
+/*
+ * The viewer's look. The legal text is set as EUR-Lex sets its consolidated texts (Research: EUR-Lex
+ * typography): Times New Roman at 16px, justified paragraphs, articles' titles centred, lists as a
+ * grid of label and text. The templates name what things are (unit-article, num, norm); how they look
+ * is here.
+ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #ffffff;
+  --frame: #eef0f2;
+  --muted: #5b6168;
+  --rule: #c9ced4;
+  --link: #0b4f9c;
+  --deleted: #9b1c1c;
+  --inserted: #1d5e2f;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e6e6e6;
+    --paper: #16181b;
+    --frame: #0e1012;
+    --muted: #9aa1a9;
+    --rule: #3a4048;
+    --link: #8bb8ff;
+    --deleted: #ff9a9a;
+    --inserted: #8fd6a2;
+    color-scheme: dark;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--frame);
+  color: var(--ink);
+  font: 15px/1.5 system-ui, sans-serif;
+}
+
+a {
+  color: var(--link);
+}
+
+header.site {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  align-items: baseline;
+  padding: 0.75rem max(16px, env(safe-area-inset-left, 0px));
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.site-name {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.notice,
+.status,
+header.version {
+  color: var(--muted);
+}
+
+.notice {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+main {
+  max-width: 52rem;
+  margin: 1.5rem auto;
+  padding: 1rem max(16px, env(safe-area-inset-right, 0px)) 2rem;
+  background: var(--paper);
+}
+
+header.version p {
+  margin: 0.25rem 0;
+}
+
+.version-celex {
+  font-family: ui-monospace, monospace;
+}
+
+/* the legal text */
+
+.legal-text {
+  font: 16px/1.43 "Times New Roman", Times, serif;
+  overflow-wrap: anywhere;
+}
+
+.legal-text p,
+.legal-text .num,
+.legal-text .heading,
+.legal-text .subheading {
+  margin: 0.5rem 0 0;
+}
+
+p.norm {
+  text-align: justify;
+}
+
+.long-title,
+.long-title p.norm {
+  font-weight: bold;
+  text-align: center;
+}
+
+.unit-article > .num,
+.unit-annex > .num {
+  margin-top: 1.5rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.unit-article > .heading,
+.unit-annex > .heading {
+  font-weight: bold;
+  text-align: center;
+}
+
+.unit-division > .num,
+.unit-division > .heading {
+  text-align: center;
+}
+
+/* lists as EUR-Lex has them: a grid of label and text */
+.list > .unit {
+  display: grid;
+  grid-template-columns: minmax(3rem, auto) 1fr;
+  column-gap: 0.5rem;
+}
+
+.list > .unit > .num {
+  grid-column: 1;
+}
+
+.list > .unit > :not(.num) {
+  grid-column: 2;
+}
+
+.table {
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  display: block;
+  overflow-x: auto;
+}
+
+.table td,
+.table th {
+  border: 1px solid var(--rule);
+  padding: 0.2rem 0.4rem;
+  vertical-align: top;
+}
+
+.table td > p:first-child {
+  margin-top: 0;
+}
+
+.emphasis-b {
+  font-weight: bold;
+}
+
+.emphasis-i {
+  font-style: italic;
+}
+
+.emphasis-u {
+  text-decoration: underline;
+}
+
+.emphasis-sup {
+  vertical-align: super;
+  font-size: 0.8em;
+}
+
+.emphasis-sub {
+  vertical-align: sub;
+  font-size: 0.8em;
+}
+
+.emphasis-uc {
+  text-transform: uppercase;
+}
+
+.emphasis-sc {
+  font-variant: small-caps;
+}
+
+.emphasis-expanded {
+  letter-spacing: 0.15em;
+}
+
+.emphasis-strike {
+  text-decoration: line-through;
+}
+
+.emphasis-box {
+  border: 1px solid currentcolor;
+}
+
+.note-ref {
+  text-decoration: none;
+}
+
+.notes {
+  margin-top: 2rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8em;
+}
+
+.note {
+  display: grid;
+  grid-template-columns: minmax(2.5rem, auto) 1fr;
+  margin-top: 0.4rem;
+}
+
+.note > :not(.note-marker) {
+  grid-column: 2;
+}
+
+.note > p:first-of-type {
+  margin-top: 0;
+}
+
+/* what amended a unit: a mark, its act in the title */
+.provenance::before {
+  content: "▼";
+  color: var(--muted);
+  font-size: 0.7em;
+  margin-right: 0.25rem;
+}
+
+del.deleted {
+  color: var(--deleted);
+}
+
+ins.changed {
+  color: var(--inserted);
+  text-decoration: none;
+}
+
+.quoted-structure {
+  margin: 0.5rem 0 0 2rem;
+}
+
+.signature {
+  margin-top: 1.5rem;
+}
+
+/* images aren't kept: a frame in their place */
+.figure::before,
+.img::before {
+  content: "[image]";
+  color: var(--muted);
+  font-style: italic;
+}

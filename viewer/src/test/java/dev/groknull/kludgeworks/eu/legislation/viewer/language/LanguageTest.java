@@ -23,6 +23,13 @@ class LanguageTest {
   }
 
   @Test
+  void isFoundByItsEuCode() {
+    assertThat(Language.ofCode("eng")).isEqualTo(Language.ENG);
+    assertThat(Language.ofCode("GLE")).isEqualTo(Language.GLE);
+    assertThatIllegalArgumentException().isThrownBy(() -> Language.ofCode("en"));
+  }
+
+  @Test
   void hasTheTwentyFourOfficialLanguages() {
     assertThat(Language.values()).hasSize(24);
   }

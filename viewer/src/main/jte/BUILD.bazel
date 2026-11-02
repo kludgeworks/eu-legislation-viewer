@@ -1,7 +1,9 @@
 # SPDX-License-Identifier: MIT
 load("//tools/build:defs.bzl", "jte_library")
 
-# The legal text's templates, precompiled: legal/ one per legal-text element (LegalRenderer)
+# The pages and the legal text's templates, precompiled, with jte-models' typed facade (Templates):
+# layout/ the page shell, catalogue/ the catalogue's pages, legal/ one per legal-text element
+# (LegalRenderer)
 jte_library(
     name = "jte",
     srcs = glob(["**/*.jte"]),
@@ -9,7 +11,10 @@ jte_library(
     root = ".",
     visibility = ["//viewer:__subpackages__"],
     deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/web",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
     ],
 )
