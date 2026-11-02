@@ -7,9 +7,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.net.URI;
+import java.time.Duration;
 import java.util.function.Function;
 import java.util.zip.GZIPInputStream;
 import org.jspecify.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -25,6 +28,8 @@ import org.springframework.web.client.RestClient;
  */
 @Component
 public class ContentStreams {
+  private static final Logger LOG = LoggerFactory.getLogger(ContentStreams.class);
+
   private final RestClient client;
 
   ContentStreams(@Qualifier(CellarConfiguration.CLIENT) RestClient client) {
@@ -37,6 +42,7 @@ public class ContentStreams {
    * made of it: a reader that turns the failure into a result of its own never hides it.
    */
   public <T> T read(URI uri, Function<InputStream, T> reader) {
+    var started = System.nanoTime();
     return client
         .get()
         .uri(uri)
@@ -61,6 +67,11 @@ public class ContentStreams {
               if (body.failure != null) {
                 throw failed(uri, body.failure);
               }
+              LOG.debug(
+                  "Read {}: {} KB in {} ms",
+                  uri,
+                  body.count / 1024,
+                  Duration.ofNanos(System.nanoTime() - started).toMillis());
               return read;
             });
   }
@@ -82,9 +93,13 @@ public class ContentStreams {
     return new ResourceAccessException("Reading " + uri + " failed: " + e.getMessage(), e);
   }
 
-  /** A body that remembers the first failure reading it, for the reader may swallow it. */
+  /**
+   * A body that remembers the first failure reading it, for the reader may swallow it, and counts
+   * the bytes read (as sent: gzipped if Cellar keeps the file so).
+   */
   private static final class Watched extends FilterInputStream {
     private @Nullable IOException failure;
+    private long count;
 
     Watched(InputStream in) {
       super(in);
@@ -93,7 +108,11 @@ public class ContentStreams {
     @Override
     public int read() throws IOException {
       try {
-        return super.read();
+        var b = super.read();
+        if (b >= 0) {
+          count++;
+        }
+        return b;
       } catch (IOException e) {
         throw remembered(e);
       }
@@ -102,7 +121,11 @@ public class ContentStreams {
     @Override
     public int read(byte[] bytes, int offset, int length) throws IOException {
       try {
-        return super.read(bytes, offset, length);
+        var n = super.read(bytes, offset, length);
+        if (n > 0) {
+          count += n;
+        }
+        return n;
       } catch (IOException e) {
         throw remembered(e);
       }

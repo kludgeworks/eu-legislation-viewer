@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -36,6 +38,7 @@ import org.springframework.web.client.RestClient;
  */
 @Component
 public class FormexFiles {
+  private static final Logger LOG = LoggerFactory.getLogger(FormexFiles.class);
   private static final Pattern CELEX = Pattern.compile("\\S+");
   private static final Pattern LANGUAGE = Pattern.compile("[A-Z]{3}");
 
@@ -68,13 +71,17 @@ public class FormexFiles {
         sparql.select(Sparql.fill(QUERY, Map.of("celex", celex, "language", language))).rows();
     var latest = rows.stream().max(Comparator.comparing(r -> modified(r.get("modified"))));
     if (latest.isEmpty()) {
+      LOG.debug("No Formex manifestation of {} in {}", celex, language);
       return Optional.empty();
     }
     var uri = latest.get().get("manifestation");
     var items = rows.stream().filter(r -> r.get("manifestation").equals(uri)).toList();
     if (items.size() == 1 && items.getFirst().get("mime").startsWith("application/zip")) {
       var zip = URI.create(items.getFirst().get("item"));
-      return Optional.of(new FormexManifestation(URI.create(uri), entries(celex, language, zip)));
+      var entries = entries(celex, language, zip);
+      LOG.debug(
+          "Formex of {} in {}: {} entries of the zip {}", celex, language, entries.size(), zip);
+      return Optional.of(new FormexManifestation(URI.create(uri), entries));
     }
     var files =
         items.stream()
@@ -87,6 +94,7 @@ public class FormexFiles {
                         URI.create(r.get("item")),
                         r.get("mime")))
             .toList();
+    LOG.debug("Formex of {} in {}: {} items of {}", celex, language, files.size(), uri);
     return Optional.of(new FormexManifestation(URI.create(uri), files));
   }
 

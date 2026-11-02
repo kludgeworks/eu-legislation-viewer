@@ -13,6 +13,7 @@ java_test_suite(
     ],
     runner = "junit5",
     runtime_deps = [
+        "@maven//:ch_qos_logback_logback_classic",  # the log lines, in the test's log
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",

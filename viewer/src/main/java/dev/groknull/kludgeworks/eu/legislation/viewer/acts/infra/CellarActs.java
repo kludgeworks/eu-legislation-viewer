@@ -13,6 +13,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.time.DateTimeException;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -71,11 +72,22 @@ class CellarActs implements Acts {
 
   @Override
   public Optional<Act> find(ActIdentifier id) {
+    var started = System.nanoTime();
     var values = Map.of("celex", id.celex());
     var work = select(ACT, values);
     var versions = select(VERSIONS, values);
     var languages = select(LANGUAGES, values);
-    return act(id, Sparql.join(work), Sparql.join(versions), Sparql.join(languages));
+    var act = act(id, Sparql.join(work), Sparql.join(versions), Sparql.join(languages));
+    var took = Duration.ofNanos(System.nanoTime() - started).toMillis();
+    act.ifPresentOrElse(
+        a ->
+            LOG.info(
+                "Read {} from Cellar: {} versions in {} ms",
+                id,
+                a.timeline().versions().size(),
+                took),
+        () -> LOG.info("{} isn't in Cellar ({} ms)", id, took));
+    return act;
   }
 
   /** The query {@code template} with {@code values}, asked of Cellar on the executor. */
@@ -86,8 +98,9 @@ class CellarActs implements Acts {
 
   @Override
   public Optional<Act> find(Eli eli) {
-    return identity(eli, sparql.select(Sparql.fill(ACT_BY_ELI, Map.of("eli", eli.path()))))
-        .flatMap(this::find);
+    var id = identity(eli, sparql.select(Sparql.fill(ACT_BY_ELI, Map.of("eli", eli.path()))));
+    LOG.debug("ELI {} is {}", eli, id.map(ActIdentifier::celex).orElse("no act in Cellar"));
+    return id.flatMap(this::find);
   }
 
   /**

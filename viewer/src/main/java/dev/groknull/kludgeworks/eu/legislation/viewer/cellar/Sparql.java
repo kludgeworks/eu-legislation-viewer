@@ -5,11 +5,14 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -21,6 +24,7 @@ import org.springframework.web.client.RestClient;
  */
 @Component
 public class Sparql {
+  private static final Logger LOG = LoggerFactory.getLogger(Sparql.class);
   private static final MediaType RESULTS =
       MediaType.parseMediaType("application/sparql-results+json");
 
@@ -44,6 +48,7 @@ public class Sparql {
     var mine = new CompletableFuture<SparqlResult>();
     var theirs = running.putIfAbsent(query, mine);
     if (theirs != null) {
+      LOG.debug("Waiting for the same SPARQL query, already asked");
       return join(theirs);
     }
     try {
@@ -71,6 +76,8 @@ public class Sparql {
   }
 
   private SparqlResult ask(String query) {
+    LOG.trace("SPARQL query: {}", query);
+    var started = System.nanoTime();
     var body =
         client
             .post()
@@ -84,6 +91,11 @@ public class Sparql {
       throw new CellarException("SPARQL endpoint returned no body");
     }
     var result = SparqlResult.parse(body);
+    LOG.debug(
+        "SPARQL answered {} rows ({} KB) in {} ms",
+        result.rows().size(),
+        body.length / 1024,
+        Duration.ofNanos(System.nanoTime() - started).toMillis());
     if (result.rows().size() >= properties.maxRows()) {
       throw new CellarException(
           "SPARQL result has "
