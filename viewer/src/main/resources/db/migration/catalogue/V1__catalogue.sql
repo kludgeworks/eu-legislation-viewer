@@ -27,3 +27,14 @@ create table version (
   formex_modified timestamptz,
   primary key (act, date)
 );
+
+-- A version's text in a language, once ingest has built it: its root in the content module, and the
+-- converter that made it (ExpressionBuilt)
+create table expression (
+  celex text not null references version (celex),
+  language text not null,
+  root text not null,
+  converter text not null,
+  built_at timestamptz not null,
+  primary key (celex, language)
+);
