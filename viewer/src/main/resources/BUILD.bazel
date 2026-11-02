@@ -10,3 +10,9 @@ java_library(
     ),
     visibility = ["//viewer:__subpackages__"],
 )
+
+# each module's migrations, for its jOOQ classes (jooq_tables)
+exports_files(
+    glob(["db/migration/**/*.sql"]),
+    visibility = ["//viewer:__subpackages__"],
+)

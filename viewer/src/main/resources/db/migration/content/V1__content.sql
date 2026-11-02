@@ -6,7 +6,7 @@
 -- A leaf's JSON, or a container's name and attributes; weight, the bytes of its leaves' JSON
 create table node (
   hash bytea primary key,
-  kind text not null check (kind in ('leaf', 'container')),
+  kind text not null check (kind in ('LEAF', 'CONTAINER')),
   content jsonb not null,
   weight bigint not null,
   child_count int not null

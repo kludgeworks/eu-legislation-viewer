@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!-- What jOOQ generates of the content module's tables (jooq_tables, in BUILD.bazel, which sets
+     the database and the target): the hashes as ContentHash, a node's kind as Tree.Kind -->
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
+  <logging>WARN</logging>
+  <generator>
+    <database>
+      <forcedTypes>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash</userType>
+          <converter>org.jooq.Converter.ofNullable(byte[].class, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash::of, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash::bytes)</converter>
+          <includeTypes>bytea</includeTypes>
+        </forcedType>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree.Kind</userType>
+          <enumConverter>true</enumConverter>
+          <includeExpression>node\.kind</includeExpression>
+        </forcedType>
+      </forcedTypes>
+    </database>
+    <generate>
+      <records>true</records>
+      <pojos>false</pojos>
+      <daos>false</daos>
+      <javaTimeTypes>true</javaTimeTypes>
+      <globalObjectReferences>true</globalObjectReferences>
+      <comments>false</comments>
+    </generate>
+  </generator>
+</configuration>
