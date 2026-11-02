@@ -1,16 +1,36 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+load("@rules_java//java:defs.bzl", "java_library")
 
-# The adapter on the stylesheet (FormexConverter), and legal texts converted from a fixture's
-# Formex. One test target per *Test.java; the other classes (FormexFixtures) become a shared library.
-java_test_suite(
-    name = "infra",
-    size = "small",
-    srcs = glob(["*.java"]),
+# Formex from the converter's fixtures, for these tests and, as the app's source (a test
+# configuration), for the module's
+java_library(
+    name = "fixtures",
+    testonly = True,
+    srcs = [
+        "FormexFixtures.java",
+        "FormexFixturesConfiguration.java",
+    ],
     data = [
         "//formex-converter:expected",
         "//formex-converter:fixtures",
     ],
+    visibility = ["//viewer:__subpackages__"],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra",
+        "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_spring_context",
+        "@rules_java//java/runfiles",
+    ],
+)
+
+# The adapter on the stylesheet (FormexConverter), and legal texts converted from a fixture's
+# Formex
+java_test_suite(
+    name = "infra",
+    size = "small",
+    srcs = glob(["*Test.java"]),
     runner = "junit5",
     runtime_deps = [
         "@maven//:ch_qos_logback_logback_classic",  # the log lines, in the test's log
@@ -19,12 +39,13 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        ":fixtures",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/model",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_junit_jupiter_junit_jupiter_params",
-        "@rules_java//java/runfiles",
     ],
 )

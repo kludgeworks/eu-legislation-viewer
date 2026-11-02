@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
+package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model;
 
 /** The document isn't a legal act: a notice, case law, the OJ's table of contents and the like. */
 public final class OutOfScopeException extends ConversionException {

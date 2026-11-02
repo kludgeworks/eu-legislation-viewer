@@ -2,7 +2,8 @@
 /**
  * The ingest module's infrastructure: a document's Formex read from Cellar (CellarFormexSource) and
  * converted by //formex-converter's stylesheets (FormexConverter), a few at a time
- * (FormexConversion).
+ * (FormexConversion); the job queue in Postgres (JooqIngestJobs), on the tables jOOQ generates from
+ * the module's migrations (jooq).
  */
 @InfrastructureRing
 @NullMarked

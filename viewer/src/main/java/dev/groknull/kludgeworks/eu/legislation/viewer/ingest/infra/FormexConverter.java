@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionException;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.OutOfScopeException;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.UnsupportedFormexException;
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;

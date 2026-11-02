@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.acts.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.application.Conversions;
 import java.time.Duration;
 import java.util.Optional;
 import net.sf.saxon.s9api.XdmNode;
@@ -24,7 +25,7 @@ import org.springframework.stereotype.Component;
  * failure is the caller's to log, where it is handled.
  */
 @Component
-class FormexConversion {
+class FormexConversion implements Conversions {
   private static final Logger LOG = LoggerFactory.getLogger(FormexConversion.class);
 
   private final FormexSource source;
@@ -35,14 +36,10 @@ class FormexConversion {
     this.converter = converter;
   }
 
-  /**
-   * The legal-text XML of a document ({@code celex}: 32015R1998, 02015R1998-20260322) in a
-   * language.
-   *
-   * @return none if Cellar has no Formex of the document in the language
-   */
+  /** The legal-text XML of a document ({@code celex}: 32015R1998, 02015R1998-20260322). */
+  @Override
   @ConcurrencyLimit(limitString = "${viewer.ingest.max-conversions}")
-  Optional<XdmNode> convert(String celex, Language language) {
+  public Optional<XdmNode> convert(String celex, Language language) {
     var started = System.nanoTime();
     var documents = source.fetch(celex, language, converter::parse);
     if (documents.isEmpty()) {
@@ -62,8 +59,8 @@ class FormexConversion {
     return Optional.of(xml);
   }
 
-  /** The converter's version: what the legal text is made with. */
-  String converterVersion() {
+  @Override
+  public String converterVersion() {
     return converter.version();
   }
 }

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
+package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model;
 
 /** A Formex document could not be converted. */
 public class ConversionException extends RuntimeException {

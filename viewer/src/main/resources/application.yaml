@@ -68,3 +68,12 @@ viewer:
     # how many conversions run at once, the others waiting their turn: the largest takes about 1 GB
     # of heap (2016/2070's 87 MB file)
     max-conversions: 2
+    # how many jobs an instance runs at once: each mostly converting, so no more than conversions
+    workers: 2
+    # how often an idle worker looks for a job queued on another instance, or given up by one
+    poll: 1s
+    # how long a job is held without its worker's heartbeat, before another worker may claim it
+    lease: 2m
+    heartbeat: 30s
+    # how often a job is tried before it fails: refusals (no Formex, not a legal act) fail at once
+    max-attempts: 3
