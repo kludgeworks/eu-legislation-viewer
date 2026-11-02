@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!-- What jOOQ generates of the catalogue module's tables (jooq_tables, in BUILD.bazel, which sets
+     the database and the target): identifiers as the module's value objects, a version's kind as
+     Version.Kind, the times as Instants -->
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
+  <logging>WARN</logging>
+  <generator>
+    <database>
+      <forcedTypes>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier</userType>
+          <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::celex)</converter>
+          <includeExpression>act\.celex|version\.act</includeExpression>
+        </forcedType>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli</userType>
+          <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli::path)</converter>
+          <includeExpression>act\.eli</includeExpression>
+        </forcedType>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType</userType>
+          <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType::code)</converter>
+          <includeExpression>act\.resource_type</includeExpression>
+        </forcedType>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version.Kind</userType>
+          <enumConverter>true</enumConverter>
+          <includeExpression>version\.kind</includeExpression>
+        </forcedType>
+        <forcedType>
+          <userType>java.time.Instant</userType>
+          <converter>org.jooq.Converter.ofNullable(java.time.OffsetDateTime.class, java.time.Instant.class, java.time.OffsetDateTime::toInstant, instant -> instant.atOffset(java.time.ZoneOffset.UTC))</converter>
+          <includeTypes>(?i:timestamptz|timestamp\ with\ time\ zone)</includeTypes>
+        </forcedType>
+      </forcedTypes>
+    </database>
+    <generate>
+      <records>true</records>
+      <pojos>false</pojos>
+      <daos>false</daos>
+      <javaTimeTypes>true</javaTimeTypes>
+      <globalObjectReferences>true</globalObjectReferences>
+      <comments>false</comments>
+    </generate>
+  </generator>
+</configuration>

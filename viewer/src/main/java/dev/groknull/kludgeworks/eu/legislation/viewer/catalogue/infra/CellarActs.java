@@ -3,11 +3,11 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ActSource;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
@@ -37,13 +37,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
- * All acts, from Cellar's RDF (the CDM ontology): an act's work by its CELEX, found from its ELI if
- * need be, the consolidations based on it (Research: CDM ontology), and the languages each version
- * has its text in (Research: which languages a version is in). Four queries, beside this class:
- * act.rq, act-by-eli.rq, versions.rq and languages.rq; an act's three side by side.
+ * Acts as Cellar has them, from its RDF (the CDM ontology): an act's work by its CELEX, found from
+ * its ELI if need be, the consolidations based on it (Research: CDM ontology), and the languages
+ * each version has its text in (Research: which languages a version is in). Four queries, beside
+ * this class: act.rq, act-by-eli.rq, versions.rq and languages.rq; an act's three side by side.
  */
 @Component
-class CellarActs implements Acts {
+class CellarActs implements ActSource {
   private static final Logger LOG = LoggerFactory.getLogger(CellarActs.class);
   private static final String ACT = Sparql.template(CellarActs.class, "act.rq");
   private static final String ACT_BY_ELI = Sparql.template(CellarActs.class, "act-by-eli.rq");

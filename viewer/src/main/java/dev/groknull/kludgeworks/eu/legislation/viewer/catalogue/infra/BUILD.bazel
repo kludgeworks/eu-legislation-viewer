@@ -1,22 +1,38 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
+load("//tools/build:defs.bzl", "jooq_tables")
 
-# The catalogue module's infrastructure: acts read from Cellar
+# The catalogue module's infrastructure: acts read from Cellar, kept in Postgres with jOOQ
 java_library(
     name = "infra",
     srcs = glob(["*.java"]),
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     runtime_deps = ["//viewer/src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra:sparql"],
     deps = [
+        ":jooq",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:com_fasterxml_jackson_core_jackson_annotations",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jooq_jooq",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_slf4j_slf4j_api",
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_tx",
         "@maven//:tools_jackson_core_jackson_databind",
+    ],
+)
+
+# The module's tables (act, version) as jOOQ classes, from its migrations
+jooq_tables(
+    name = "jooq",
+    config = "jooq.xml",
+    migrations = ["//viewer/src/main/resources:db/migration/catalogue/V1__catalogue.sql"],
+    package = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq",
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
     ],
 )

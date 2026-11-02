@@ -1,11 +1,12 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
+load("@rules_java//java:defs.bzl", "java_library")
 
-# The catalogue module's domain rules: one test target per *Test.java
+# The acts module's domain rules: one test target per *Test.java
 java_test_suite(
     name = "catalogue",
     size = "small",
-    srcs = glob(["*.java"]),
+    srcs = glob(["*Test.java"]),
     runner = "junit5",
     runtime_deps = [
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
@@ -17,5 +18,47 @@ java_test_suite(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+)
+
+# Cellar, as far as the module's tests need it: one act
+java_library(
+    name = "one-act-cellar",
+    testonly = True,
+    srcs = ["OneActCellar.java"],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/application",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_spring_context",
+    ],
+)
+
+# Acts kept in Postgres in a container, read from Cellar once; needs Docker
+java_junit5_test(
+    name = "CatalogueTests",
+    size = "small",
+    srcs = ["CatalogueTests.java"],
+    tags = ["requires-docker"],
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.CatalogueTests",
+    runtime_deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
+        "@maven//:ch_qos_logback_logback_classic",  # the log lines, in the test's log
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        ":one-act-cellar",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/application",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
     ],
 )
