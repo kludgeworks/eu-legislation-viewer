@@ -103,6 +103,14 @@
     <x:expect label="keeps it" test="$x:result/*:noteRef/@marker = '*'"/>
   </x:scenario>
 
+  <x:scenario label="A consolidation's footnotes, NUMBER.ORG or not">
+    <x:context mode="block" select="/CONS.ACT/P" xmlns="">
+      <CONS.ACT><P>a<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE> b<NOTE NOTE.ID="E0002" NUMBER.ORG="*" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE> c<NOTE NOTE.ID="E0003" NUMBER.ORG="*" NUMBERING="OTHER" TYPE="FOOTNOTE"><P>n</P></NOTE> d<NOTE NOTE.ID="E0004" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE> e<NOTE NOTE.ID="E0005" NUMBERING="STAR" TYPE="FOOTNOTE"><P>n</P></NOTE></P></CONS.ACT>
+    </x:context>
+    <x:expect label="are numbered through it, as EUR-Lex prints them; a star stays a star"
+              test="deep-equal($x:result/*:noteRef/@marker ! string(), ('1', '2', '3', '4', '*'))"/>
+  </x:scenario>
+
   <x:scenario label="An unknown inline element" catch="yes">
     <x:context mode="block" xmlns=""><P>a <NOT.FORMEX>x</NOT.FORMEX></P></x:context>
     <x:expect label="stops the transformation" test="$x:result?err?code = xs:QName('f:unknown')"

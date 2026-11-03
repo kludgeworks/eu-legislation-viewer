@@ -320,7 +320,8 @@
   </xsl:accumulator>
 
   <xsl:accumulator name="f:footnotes-ended" as="xs:integer" initial-value="0">
-    <xsl:accumulator-rule match="NOTE[not(@NOTE.REF)][not(@TYPE = ('TABLE', 'QUOTATION'))][not(@NUMBER.ORG or @NUMBERING = 'STAR')]"
+    <xsl:accumulator-rule match="NOTE[not(@NOTE.REF)][not(@TYPE = ('TABLE', 'QUOTATION'))][not(@NUMBERING = 'STAR')]
+                                     [not(@NUMBER.ORG) or f:renumbered(.)]"
                           phase="end" select="$value + 1"/>
   </xsl:accumulator>
 
@@ -349,18 +350,29 @@
     <xsl:sequence select="replace(tokenize($uri, '/')[last()], '^.*?\.(\d+)\.(fmx\.)?xml$', '$1')"/>
   </xsl:function>
 
-  <!-- the marker as printed: NUMBER.ORG if given, * for star numbering, else the running number
-       (footnotes through the document, table notes within their table) -->
+  <!-- the marker as printed: NUMBER.ORG if given (but in a consolidation's footnotes:
+       f:renumbered), * for star numbering, else the running number (footnotes through the
+       document, table notes within their table) -->
   <xsl:function name="f:note-marker" as="xs:string">
     <xsl:param name="note" as="element(NOTE)"/>
     <xsl:sequence select="
-        if ($note/@NUMBER.ORG) then string($note/@NUMBER.ORG)
+        if ($note/@NUMBER.ORG and not(f:renumbered($note))) then string($note/@NUMBER.ORG)
         else if ($note/@NUMBERING = 'STAR') then '*'
         else if ($note/@TYPE = 'TABLE')
         then string(count($note/ancestor::TBL[1]//NOTE[not(@NOTE.REF)][@TYPE = 'TABLE'][not(@NUMBERING = 'STAR')]
                      [. &lt;&lt; $note][empty(. intersect $note/ancestor::NOTE)]
                      [ancestor::TBL[1] is $note/ancestor::TBL[1]]) + 1)
         else string(($note ! accumulator-before('f:footnotes-ended')) + 1)"/>
+  </xsl:function>
+
+  <!-- a consolidation's footnote: numbered through it, as EUR-Lex prints them, NUMBER.ORG (the
+       number it had in the act it came from) left out, whatever its NUMBERING: ARAB or OTHER
+       (02015R1998-20260322, 02008R0767's seventh version). An OJ act prints NUMBER.ORG (32010R1005,
+       22022D1121); a star-numbered footnote keeps its *, which no consolidation in Cellar's xhtml
+       has shown otherwise -->
+  <xsl:function name="f:renumbered" as="xs:boolean">
+    <xsl:param name="note" as="element(NOTE)"/>
+    <xsl:sequence select="exists(root($note)/(CONS.ACT | CONS.OTH)) and ($note/@TYPE, 'FOOTNOTE')[1] = 'FOOTNOTE'"/>
   </xsl:function>
 
   <!-- an element the converter doesn't know: fails in strict mode, so new Formex shows up in tests.
