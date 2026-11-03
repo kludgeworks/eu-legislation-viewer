@@ -174,6 +174,13 @@ p.norm {
   column-gap: 0.5rem;
 }
 
+/* in an act as published, a table of two columns, the label's 4% of the width (wider if the label
+ * is), the text against it: each list nested in an item 4% further in */
+.legal-text:not(.legal-text-consolidated) :is(.list > .unit, .unit-recital) {
+  grid-template-columns: minmax(4%, auto) 1fr;
+  column-gap: 0;
+}
+
 .list > .unit > .num,
 .unit-recital > .num,
 .unit-level.numbered > .num {
