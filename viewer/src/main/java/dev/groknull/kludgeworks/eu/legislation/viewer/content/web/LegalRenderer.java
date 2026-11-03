@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * A legal text as HTML: each element by its template, chosen by convention (Rendering and UI), as
- * XSLT's templates match: legal/{parent}/{name}.jte if there is one (a num in a p, inline, against
- * one of a unit's, a block), else legal/{name}.jte; a MathML element's name by its prefix's folder
+ * XSLT's templates match: legal/{parent}/{name}.jte if there is one (the deleted notes in notes,
+ * against deleted blocks), else legal/{name}.jte; a MathML element's name by its prefix's folder
  * (m:mi is legal/m/mi.jte). A template takes its element (node) and this (html), and holds markup
  * only, recursing with {@code ${html.children(node)}}; the text it writes, jte escapes. Adding an
  * element to legal-text is adding its template, which the coverage test asks for.

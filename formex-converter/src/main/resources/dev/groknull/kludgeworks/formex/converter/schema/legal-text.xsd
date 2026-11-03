@@ -850,9 +850,6 @@
           <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The amending acts that put this paragraph in its current form, when they differ from its unit's.</xs:documentation></xs:annotation>
           </xs:element>
-          <xs:element name="num" type="InlineContent" minOccurs="0">
-            <xs:annotation><xs:documentation>The label of a numbered paragraph outside the hierarchy, e.g. in a table cell.</xs:documentation></xs:annotation>
-          </xs:element>
           <xs:group ref="inline"/>
         </xs:sequence>
       </xs:extension>

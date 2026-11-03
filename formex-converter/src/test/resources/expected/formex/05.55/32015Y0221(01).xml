@@ -39,165 +39,167 @@
    </preface>
    <preamble eId="pbl_1">
       <formula name="actingEntity">
-         <p>
+         <unit eId="pnt_1" kind="point">
             <num>
                <t v="1."/>
             </num>
-         </p>
-         <p>
-            <emphasis kind="b">
-               <t v="Българска народна банка (Bulgarian National Bank)"/>
-            </emphasis>
-         </p>
-         <p>
-            <t v="1, Knyaz Alexander I Sq."/>
-         </p>
-         <p>
-            <t v="1000 София/Sofia"/>
-         </p>
-         <p>
-            <t v="БЪЛГАРИЯ/BULGARIA"/>
-         </p>
-         <p>
-            <emphasis kind="b">
-               <t v="Česká národní banka"/>
-            </emphasis>
-         </p>
-         <p>
-            <t v="Na Příkopě 28"/>
-         </p>
-         <p>
-            <t v="115 03 Praha 1"/>
-         </p>
-         <p>
-            <t v="ČESKÁ REPUBLIKA"/>
-         </p>
-         <p>
-            <emphasis kind="b">
-               <t v="Danmarks Nationalbank"/>
-            </emphasis>
-         </p>
-         <p>
-            <t v="Havnegade 5"/>
-         </p>
-         <p>
-            <t v="1093 København K"/>
-         </p>
-         <p>
-            <t v="DANMARK"/>
-         </p>
-         <p>
-            <emphasis kind="b">
-               <t v="Hrvatska narodna banka"/>
-            </emphasis>
-         </p>
-         <p>
-            <t v="Trg hrvatskih velikana 3"/>
-         </p>
-         <p>
-            <t v="HR-10002 Zagreb"/>
-         </p>
-         <p>
-            <t v="HRVATSKA"/>
-         </p>
-         <p>
-            <emphasis kind="b">
-               <t v="Lietuvos bankas"/>
-            </emphasis>
-         </p>
-         <p>
-            <t v="Gedimino pr. 6"/>
-         </p>
-         <p>
-            <t v="LT-01103 Vilnius"/>
-         </p>
-         <p>
-            <t v="LIETUVA/LITHUANIA"/>
-         </p>
-         <p>
-            <emphasis kind="b">
-               <t v="Magyar Nemzeti Bank"/>
-            </emphasis>
-         </p>
-         <p>
-            <t v="Budapest"/>
-         </p>
-         <p>
-            <t v="Szabadság tér 8/9"/>
-         </p>
-         <p>
-            <t v="1054"/>
-         </p>
-         <p>
-            <t v="MAGYARORSZÁG/HUNGARY"/>
-         </p>
-         <p>
-            <emphasis kind="b">
-               <t v="Narodowy Bank Polski"/>
-            </emphasis>
-         </p>
-         <p>
-            <t v="ul. Świętokrzyska 11/21"/>
-         </p>
-         <p>
-            <t v="00-919 Warszawa"/>
-         </p>
-         <p>
-            <t v="POLSKA/POLAND"/>
-         </p>
-         <p>
-            <emphasis kind="b">
-               <t v="Banca Naţională a României"/>
-            </emphasis>
-         </p>
-         <p>
-            <t v="Strada Lipscani nr. 25, sector 3"/>
-         </p>
-         <p>
-            <t v="030031 București"/>
-         </p>
-         <p>
-            <t v="ROMÂNIA"/>
-         </p>
-         <p>
-            <emphasis kind="b">
-               <t v="Sveriges Riksbank"/>
-            </emphasis>
-         </p>
-         <p>
-            <t v="Brunkebergstorg 11"/>
-         </p>
-         <p>
-            <t v="SE-103 37 Stockholm"/>
-         </p>
-         <p>
-            <t v="SVERIGE"/>
-         </p>
-         <p>
-            <emphasis kind="b">
-               <t v="Bank of England"/>
-            </emphasis>
-         </p>
-         <p>
-            <t v="Threadneedle Street"/>
-         </p>
-         <p>
-            <t v="London EC2R 8AH"/>
-         </p>
-         <p>
-            <t v="UNITED KINGDOM"/>
-         </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Българска народна банка (Bulgarian National Bank)"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="1, Knyaz Alexander I Sq."/>
+            </p>
+            <p>
+               <t v="1000 София/Sofia"/>
+            </p>
+            <p>
+               <t v="БЪЛГАРИЯ/BULGARIA"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Česká národní banka"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Na Příkopě 28"/>
+            </p>
+            <p>
+               <t v="115 03 Praha 1"/>
+            </p>
+            <p>
+               <t v="ČESKÁ REPUBLIKA"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Danmarks Nationalbank"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Havnegade 5"/>
+            </p>
+            <p>
+               <t v="1093 København K"/>
+            </p>
+            <p>
+               <t v="DANMARK"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Hrvatska narodna banka"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Trg hrvatskih velikana 3"/>
+            </p>
+            <p>
+               <t v="HR-10002 Zagreb"/>
+            </p>
+            <p>
+               <t v="HRVATSKA"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Lietuvos bankas"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Gedimino pr. 6"/>
+            </p>
+            <p>
+               <t v="LT-01103 Vilnius"/>
+            </p>
+            <p>
+               <t v="LIETUVA/LITHUANIA"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Magyar Nemzeti Bank"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Budapest"/>
+            </p>
+            <p>
+               <t v="Szabadság tér 8/9"/>
+            </p>
+            <p>
+               <t v="1054"/>
+            </p>
+            <p>
+               <t v="MAGYARORSZÁG/HUNGARY"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Narodowy Bank Polski"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="ul. Świętokrzyska 11/21"/>
+            </p>
+            <p>
+               <t v="00-919 Warszawa"/>
+            </p>
+            <p>
+               <t v="POLSKA/POLAND"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Banca Naţională a României"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Strada Lipscani nr. 25, sector 3"/>
+            </p>
+            <p>
+               <t v="030031 București"/>
+            </p>
+            <p>
+               <t v="ROMÂNIA"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Sveriges Riksbank"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Brunkebergstorg 11"/>
+            </p>
+            <p>
+               <t v="SE-103 37 Stockholm"/>
+            </p>
+            <p>
+               <t v="SVERIGE"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Bank of England"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Threadneedle Street"/>
+            </p>
+            <p>
+               <t v="London EC2R 8AH"/>
+            </p>
+            <p>
+               <t v="UNITED KINGDOM"/>
+            </p>
+         </unit>
          <p>
             <t v="and"/>
          </p>
-         <p>
+         <unit eId="list_2/pnt_2" kind="point">
             <num>
                <t v="2."/>
             </num>
-            <emphasis kind="b">
-               <t v="European Central Bank (ECB)"/>
-            </emphasis>
-         </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="European Central Bank (ECB)"/>
+               </emphasis>
+            </p>
+         </unit>
          <p>
             <t v="(hereinafter the "/>
             <quote startQuote="‘" endQuote="’">

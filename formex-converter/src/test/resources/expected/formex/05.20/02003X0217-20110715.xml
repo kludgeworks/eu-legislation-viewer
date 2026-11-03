@@ -648,42 +648,54 @@
             </emphasis>
             <t v="&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_1.3.9/pnt_a" kind="point">
             <num>
                <t v="(a)"/>
             </num>
-            <t v="Each Member State shall determine the provisions for storing information."/>
-         </p>
-         <p>
+            <p>
+               <t v="Each Member State shall determine the provisions for storing information."/>
+            </p>
+         </unit>
+         <unit eId="pnt_1.3.9/pnt_b" kind="point">
             <num>
                <t v="(b)"/>
             </num>
-            <t v="The SIRENE bureau of the Member State issuing the alert shall keep all the information on its own alerts available to the other Member States."/>
-         </p>
-         <p>
+            <p>
+               <t v="The SIRENE bureau of the Member State issuing the alert shall keep all the information on its own alerts available to the other Member States."/>
+            </p>
+         </unit>
+         <unit eId="pnt_1.3.9/pnt_c" kind="point">
             <num>
                <t v="(c)"/>
             </num>
-            <t v="The archives of each SIRENE bureau shall allow swift access to the relevant information to meet the very short deadlines for transmitting information."/>
-         </p>
-         <p>
+            <p>
+               <t v="The archives of each SIRENE bureau shall allow swift access to the relevant information to meet the very short deadlines for transmitting information."/>
+            </p>
+         </unit>
+         <unit eId="pnt_1.3.9/pnt_d" kind="point">
             <num>
                <t v="(d)"/>
             </num>
-            <t v="In accordance with Article 112A of the Schengen Convention, personal data, held in files by the SIRENE Bureau as a result of exchanging information, shall be kept only for such time as may be required to achieve the purposes for which they were supplied. They shall in any event be deleted at the latest 1 year after the alert or alerts regarding the person or object concerned have been deleted from the SIS. However, data relating to a particular alert which a Member State has issued or to an alert in connection with which action has been taken on its territory may be stored for longer in accordance with national law."/>
-         </p>
-         <p>
+            <p>
+               <t v="In accordance with Article 112A of the Schengen Convention, personal data, held in files by the SIRENE Bureau as a result of exchanging information, shall be kept only for such time as may be required to achieve the purposes for which they were supplied. They shall in any event be deleted at the latest 1 year after the alert or alerts regarding the person or object concerned have been deleted from the SIS. However, data relating to a particular alert which a Member State has issued or to an alert in connection with which action has been taken on its territory may be stored for longer in accordance with national law."/>
+            </p>
+         </unit>
+         <unit eId="pnt_1.3.9/pnt_e" kind="point">
             <num>
                <t v="(e)"/>
             </num>
-            <t v="Supplementary information sent by the other Member States shall be stored according to national data protection legislation in the recipient Member State. The provisions of Title VI of the Schengen Convention, Framework Decision 2008/977/JHA and Directive 95/46/ECshall also apply, as appropriate."/>
-         </p>
-         <p>
+            <p>
+               <t v="Supplementary information sent by the other Member States shall be stored according to national data protection legislation in the recipient Member State. The provisions of Title VI of the Schengen Convention, Framework Decision 2008/977/JHA and Directive 95/46/ECshall also apply, as appropriate."/>
+            </p>
+         </unit>
+         <unit eId="pnt_1.3.9/pnt_f" kind="point">
             <num>
                <t v="(f)"/>
             </num>
-            <t v="Information on misused identity shall be deleted after the deletion of the relevant alert."/>
-         </p>
+            <p>
+               <t v="Information on misused identity shall be deleted after the deletion of the relevant alert."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_1.4" kind="level" depth="2">
          <provenance amendingAct="32011D0406"
@@ -2424,46 +2436,54 @@
          <heading>
             <t v="The discovering SIRENE bureau makes the comparison&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_2.10.6.1/pnt_a" kind="point">
             <num>
                <t v="(a)"/>
             </num>
-            <t v="The discovering SIRENE bureau sends a "/>
-            <emphasis kind="b">
-               <t v="G form"/>
-            </emphasis>
-            <t v=" through the usual electronic path and asks, in field 089, the providing SIRENE bureau to send an "/>
-            <emphasis kind="b">
-               <t v="L form"/>
-            </emphasis>
-            <t v=" as soon as possible, as well as the fingerprints and pictures, if these are available."/>
-         </p>
-         <p>
+            <p>
+               <t v="The discovering SIRENE bureau sends a "/>
+               <emphasis kind="b">
+                  <t v="G form"/>
+               </emphasis>
+               <t v=" through the usual electronic path and asks, in field 089, the providing SIRENE bureau to send an "/>
+               <emphasis kind="b">
+                  <t v="L form"/>
+               </emphasis>
+               <t v=" as soon as possible, as well as the fingerprints and pictures, if these are available."/>
+            </p>
+         </unit>
+         <unit eId="pnt_2.10.6.1/pnt_b" kind="point">
             <num>
                <t v="(b)"/>
             </num>
-            <t v="The providing SIRENE bureau replies in an "/>
-            <emphasis kind="b">
-               <t v="L form"/>
-            </emphasis>
-            <t v=". If the fingerprints and pictures are available, the providing SIRENE bureau mentions in field 083 that fingerprints and/or pictures are sent in order to make the comparison."/>
-         </p>
-         <p>
+            <p>
+               <t v="The providing SIRENE bureau replies in an "/>
+               <emphasis kind="b">
+                  <t v="L form"/>
+               </emphasis>
+               <t v=". If the fingerprints and pictures are available, the providing SIRENE bureau mentions in field 083 that fingerprints and/or pictures are sent in order to make the comparison."/>
+            </p>
+         </unit>
+         <unit eId="pnt_2.10.6.1/pnt_c" kind="point">
             <num>
                <t v="(c)"/>
             </num>
-            <t v="The discovering SIRENE bureau sends the fingerprints and pictures to its national identification service for comparison, and asks for the result through the same path."/>
-         </p>
-         <p>
+            <p>
+               <t v="The discovering SIRENE bureau sends the fingerprints and pictures to its national identification service for comparison, and asks for the result through the same path."/>
+            </p>
+         </unit>
+         <unit eId="pnt_2.10.6.1/pnt_d" kind="point">
             <num>
                <t v="(d)"/>
             </num>
-            <t v="The discovering SIRENE bureau provides the result in an "/>
-            <emphasis kind="b">
-               <t v="L form"/>
-            </emphasis>
-            <t v=" (in field 083) to the providing SIRENE bureau."/>
-         </p>
+            <p>
+               <t v="The discovering SIRENE bureau provides the result in an "/>
+               <emphasis kind="b">
+                  <t v="L form"/>
+               </emphasis>
+               <t v=" (in field 083) to the providing SIRENE bureau."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_2.10.6.2" kind="level" depth="4">
          <provenance amendingAct="32011D0406"
@@ -2476,40 +2496,46 @@
          <heading>
             <t v="The providing SIRENE bureau makes the comparison&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_2.10.6.2/pnt_a" kind="point">
             <num>
                <t v="(a)"/>
             </num>
-            <t v="The discovering SIRENE bureau sends a "/>
-            <emphasis kind="b">
-               <t v="G form"/>
-            </emphasis>
-            <t v=" and an "/>
-            <emphasis kind="b">
-               <t v="L form"/>
-            </emphasis>
-            <t v=" through the usual electronic path and mentions in field 083 of the "/>
-            <emphasis kind="b">
-               <t v="L form"/>
-            </emphasis>
-            <t v=" that the fingerprints and pictures are being sent for comparison."/>
-         </p>
-         <p>
+            <p>
+               <t v="The discovering SIRENE bureau sends a "/>
+               <emphasis kind="b">
+                  <t v="G form"/>
+               </emphasis>
+               <t v=" and an "/>
+               <emphasis kind="b">
+                  <t v="L form"/>
+               </emphasis>
+               <t v=" through the usual electronic path and mentions in field 083 of the "/>
+               <emphasis kind="b">
+                  <t v="L form"/>
+               </emphasis>
+               <t v=" that the fingerprints and pictures are being sent for comparison."/>
+            </p>
+         </unit>
+         <unit eId="pnt_2.10.6.2/pnt_b" kind="point">
             <num>
                <t v="(b)"/>
             </num>
-            <t v="The providing SIRENE bureau sends the fingerprints and pictures that it has received to its national identification service for comparison and asks for the result through the same path."/>
-         </p>
-         <p>
+            <p>
+               <t v="The providing SIRENE bureau sends the fingerprints and pictures that it has received to its national identification service for comparison and asks for the result through the same path."/>
+            </p>
+         </unit>
+         <unit eId="pnt_2.10.6.2/pnt_c" kind="point">
             <num>
                <t v="(c)"/>
             </num>
-            <t v="The providing SIRENE bureau provides the result in an "/>
-            <emphasis kind="b">
-               <t v="L form"/>
-            </emphasis>
-            <t v=" (in field 083) to the discovering SIRENE bureau."/>
-         </p>
+            <p>
+               <t v="The providing SIRENE bureau provides the result in an "/>
+               <emphasis kind="b">
+                  <t v="L form"/>
+               </emphasis>
+               <t v=" (in field 083) to the discovering SIRENE bureau."/>
+            </p>
+         </unit>
          <p>
             <t v="After comparison, the fingerprints and pictures of a reported person may be kept in the file by the discovering SIRENE bureau in case further comparisons are required, in accordance with Article 112A of the Schengen Convention."/>
          </p>
@@ -2698,34 +2724,38 @@
                </emphasis>
             </heading>
             <annotation>
-               <p>
+               <unit eId="pnt_2.10.6.3/level_2/ann_1/pnt_1" kind="point">
                   <num>
                      <t v="(1)"/>
                   </num>
-                  <t v="an entry shall be made in "/>
-                  <emphasis kind="b">
-                     <t v="either"/>
-                  </emphasis>
-                  <t v=" Field 1 "/>
-                  <emphasis kind="b">
-                     <t v="or"/>
-                  </emphasis>
-                  <t v=" Field 2"/>
-               </p>
+                  <p>
+                     <t v="an entry shall be made in "/>
+                     <emphasis kind="b">
+                        <t v="either"/>
+                     </emphasis>
+                     <t v=" Field 1 "/>
+                     <emphasis kind="b">
+                        <t v="or"/>
+                     </emphasis>
+                     <t v=" Field 2&#xA;"/>
+                  </p>
+               </unit>
             </annotation>
             <annotation>
-               <p>
+               <unit eId="pnt_2.10.6.3/level_2/ann_1/list_2/pnt_2" kind="point">
                   <num>
                      <t v="(2)"/>
                   </num>
-                  <t v="the option "/>
-                  <quote startQuote="‘" endQuote="’">
-                     <emphasis kind="b">
-                        <t v="unknown"/>
-                     </emphasis>
-                  </quote>
-                  <t v=" may be entered"/>
-               </p>
+                  <p>
+                     <t v="the option &#xA;"/>
+                     <quote startQuote="‘" endQuote="’">
+                        <emphasis kind="b">
+                           <t v="unknown"/>
+                        </emphasis>
+                     </quote>
+                     <t v=" may be entered"/>
+                  </p>
+               </unit>
             </annotation>
          </annotation>
       </unit>

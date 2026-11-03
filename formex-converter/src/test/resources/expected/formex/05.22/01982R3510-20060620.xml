@@ -233,12 +233,14 @@
             </num>
             <table cols="2">
                <caption>
-                  <p>
+                  <unit eId="anx/pnt_I" kind="point">
                      <num>
                         <t v="I."/>
                      </num>
-                     <t v="Conversion factors applicable to the different species of tuna"/>
-                  </p>
+                     <p>
+                        <t v="Conversion factors applicable to the different species of tuna"/>
+                     </p>
+                  </unit>
                </caption>
                <tr header="true">
                   <td header="true">
@@ -266,12 +268,14 @@
                   <rowGroup>
                      <tr>
                         <td>
-                           <p>
+                           <unit eId="anx/tab_1/tr_2/td_1/idt_1" kind="indent">
                               <num>
                                  <t v="—"/>
                               </num>
-                              <t v="weighing more than 10 kg each"/>
-                           </p>
+                              <p>
+                                 <t v="weighing more than 10 kg each"/>
+                              </p>
+                           </unit>
                         </td>
                         <td>
                            <p>
@@ -281,12 +285,14 @@
                      </tr>
                      <tr>
                         <td>
-                           <p>
+                           <unit eId="anx/tab_1/tr_3/td_1/list_2/idt_1" kind="indent">
                               <num>
                                  <t v="—"/>
                               </num>
-                              <t v="weighing not more than 10 kg each"/>
-                           </p>
+                              <p>
+                                 <t v="weighing not more than 10 kg each"/>
+                              </p>
+                           </unit>
                         </td>
                         <td>
                            <p>
@@ -356,12 +362,14 @@
             </table>
             <table cols="2">
                <caption>
-                  <p>
+                  <unit eId="anx/pnt_II" kind="point">
                      <num>
                         <t v="II."/>
                      </num>
-                     <t v="Conversion factors applicable to each of the species referred to in section I depending on the presentation"/>
-                  </p>
+                     <p>
+                        <t v="Conversion factors applicable to each of the species referred to in section I depending on the presentation"/>
+                     </p>
+                  </unit>
                </caption>
                <tr header="true">
                   <td header="true">

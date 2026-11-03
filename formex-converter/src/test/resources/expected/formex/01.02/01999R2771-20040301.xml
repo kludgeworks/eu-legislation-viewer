@@ -5826,184 +5826,216 @@
                <heading>
                   <t v="References"/>
                </heading>
-               <p>
+               <unit eId="anx_II/pnt_13/pnt_1" kind="point">
                   <num>
                      <t v="1."/>
                   </num>
-                  <t v="Commission of the European Communities: "/>
-                  <emphasis kind="i">
-                     <t v="Detection of foreign fats in milk fat by means of gas chromatographic triglyceride analysis"/>
-                  </emphasis>
-                  <t v=", Doc. No VI/5202/90-EN, VI/2645/91"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Commission of the European Communities: "/>
+                     <emphasis kind="i">
+                        <t v="Detection of foreign fats in milk fat by means of gas chromatographic triglyceride analysis"/>
+                     </emphasis>
+                     <t v=", Doc. No VI/5202/90-EN, VI/2645/91"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_2" kind="point">
                   <num>
                      <t v="2."/>
                   </num>
-                  <t v="Commission of the European Communities: "/>
-                  <emphasis kind="i">
-                     <t v="Control of butter fat purity of 100 different samples of different feeding periods from 11 EEC countries"/>
-                  </emphasis>
-                  <t v="; Doc. No VI/4577/93"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Commission of the European Communities: "/>
+                     <emphasis kind="i">
+                        <t v="Control of butter fat purity of 100 different samples of different feeding periods from 11 EEC countries"/>
+                     </emphasis>
+                     <t v="; Doc. No VI/4577/93"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_3" kind="point">
                   <num>
                      <t v="3."/>
                   </num>
-                  <t v="Commission of the European Communities: "/>
-                  <emphasis kind="i">
-                     <t v="Consideration of results from the first, second, third, fourth, fifth and sixth EEC collaborative trial: Determination of triglycerides in milk fat"/>
-                  </emphasis>
-                  <t v="; Doc. No VI/2644/91, VI/"/>
-                  <date asWritten="8.11.91" date="1991-11-08"/>
-                  <t v=", VI/1919/92, VI/3842/92, VI/5317/92, VI/4604/93"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Commission of the European Communities: "/>
+                     <emphasis kind="i">
+                        <t v="Consideration of results from the first, second, third, fourth, fifth and sixth EEC collaborative trial: Determination of triglycerides in milk fat"/>
+                     </emphasis>
+                     <t v="; Doc. No VI/2644/91, VI/"/>
+                     <date asWritten="8.11.91" date="1991-11-08"/>
+                     <t v=", VI/1919/92, VI/3842/92, VI/5317/92, VI/4604/93"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_4" kind="point">
                   <num>
                      <t v="4."/>
                   </num>
-                  <t v="Timms, R. E.: "/>
-                  <emphasis kind="i">
-                     <t v="Detection and quantification of non-milk fat in mixtures of milk and non-milk fats"/>
-                  </emphasis>
-                  <t v=". Dairy Research 47 295-303 (1980)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Timms, R. E.: "/>
+                     <emphasis kind="i">
+                        <t v="Detection and quantification of non-milk fat in mixtures of milk and non-milk fats"/>
+                     </emphasis>
+                     <t v=". Dairy Research 47 295-303 (1980)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_5" kind="point">
                   <num>
                      <t v="5."/>
                   </num>
-                  <t v="Precht, D., Heine, K.: "/>
-                  <emphasis kind="i">
-                     <t v="Nachweis von modifiziertem Milchfett mit der Triglyceridanalyse. 2. Fremdfettnachweis im Milchfett mit Hilfe von Triglyceridkombinationen"/>
-                  </emphasis>
-                  <t v=", 41 406-410 (1986)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Precht, D., Heine, K.: "/>
+                     <emphasis kind="i">
+                        <t v="Nachweis von modifiziertem Milchfett mit der Triglyceridanalyse. 2. Fremdfettnachweis im Milchfett mit Hilfe von Triglyceridkombinationen"/>
+                     </emphasis>
+                     <t v=", 41 406-410 (1986)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_6" kind="point">
                   <num>
                      <t v="6."/>
                   </num>
-                  <t v="Luf, W., Stock, A., Brandl, E.: "/>
-                  <emphasis kind="i">
-                     <t v="Zum Nachweis von Fremdfett in Milchfett über die Trigylceridanalyse"/>
-                  </emphasis>
-                  <t v=". Österr. Milchwirtsch. Wissensch. Beilage 5, 42 29-35 (1987)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Luf, W., Stock, A., Brandl, E.: "/>
+                     <emphasis kind="i">
+                        <t v="Zum Nachweis von Fremdfett in Milchfett über die Trigylceridanalyse"/>
+                     </emphasis>
+                     <t v=". Österr. Milchwirtsch. Wissensch. Beilage 5, 42 29-35 (1987)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_7" kind="point">
                   <num>
                      <t v="7."/>
                   </num>
-                  <t v="Precht, D.: "/>
-                  <emphasis kind="i">
-                     <t v="Bestimmung von pflanzlichen Fetten oder tierischen Depotfetten in Milchfett"/>
-                  </emphasis>
-                  <t v=". Kieler Milchwirtsch. Forschungsber. 42 143-157 (1989)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Precht, D.: "/>
+                     <emphasis kind="i">
+                        <t v="Bestimmung von pflanzlichen Fetten oder tierischen Depotfetten in Milchfett"/>
+                     </emphasis>
+                     <t v=". Kieler Milchwirtsch. Forschungsber. 42 143-157 (1989)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_8" kind="point">
                   <num>
                      <t v="8."/>
                   </num>
-                  <t v="Precht, D.: "/>
-                  <emphasis kind="i">
-                     <t v="Schnelle Extraktion von Milchfett, Kieler Milchwirtsch"/>
-                  </emphasis>
-                  <t v=". Forschungsber. 42 119-128 (1990)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Precht, D.: "/>
+                     <emphasis kind="i">
+                        <t v="Schnelle Extraktion von Milchfett, Kieler Milchwirtsch"/>
+                     </emphasis>
+                     <t v=". Forschungsber. 42 119-128 (1990)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_9" kind="point">
                   <num>
                      <t v="9."/>
                   </num>
-                  <t v="Precht, D.: "/>
-                  <emphasis kind="i">
-                     <t v="Schnelle gaschromatographische Triglyceridanalyse von Milchfett"/>
-                  </emphasis>
-                  <t v=". Kieler Milchwirtsch. Forschungsber. 42 139-154 (1900)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Precht, D.: "/>
+                     <emphasis kind="i">
+                        <t v="Schnelle gaschromatographische Triglyceridanalyse von Milchfett"/>
+                     </emphasis>
+                     <t v=". Kieler Milchwirtsch. Forschungsber. 42 139-154 (1900)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_10" kind="point">
                   <num>
                      <t v="10."/>
                   </num>
-                  <t v="Precht, D.: "/>
-                  <emphasis kind="i">
-                     <t v="Control of milk fat purity by gas chromatographic triglyceride analysis"/>
-                  </emphasis>
-                  <t v=". Kieler Milchwirtsch. Forschungsber. 43 (3) 219-242 (1991)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Precht, D.: "/>
+                     <emphasis kind="i">
+                        <t v="Control of milk fat purity by gas chromatographic triglyceride analysis"/>
+                     </emphasis>
+                     <t v=". Kieler Milchwirtsch. Forschungsber. 43 (3) 219-242 (1991)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_11" kind="point">
                   <num>
                      <t v="11."/>
                   </num>
-                  <t v="Precht, D.: "/>
-                  <emphasis kind="i">
-                     <t v="Detection of adulterated milk fat by fatty acid and triglyceride analysis"/>
-                  </emphasis>
-                  <t v=". Fat Sci. Technol. 93 538-544 (1991)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Precht, D.: "/>
+                     <emphasis kind="i">
+                        <t v="Detection of adulterated milk fat by fatty acid and triglyceride analysis"/>
+                     </emphasis>
+                     <t v=". Fat Sci. Technol. 93 538-544 (1991)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_12" kind="point">
                   <num>
                      <t v="12."/>
                   </num>
-                  <t v="Precht, D.: "/>
-                  <emphasis kind="i">
-                     <t v="Detection for foreign fat in milk fat. I. Qualitative detection by triacylglycerol formulae. II. Quantitative evaluation of foreign fat mixtures"/>
-                  </emphasis>
-                  <t v=". Z. Lebensm. Unters. Forsch. 194 1-8, 107-114 (1992)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Precht, D.: "/>
+                     <emphasis kind="i">
+                        <t v="Detection for foreign fat in milk fat. I. Qualitative detection by triacylglycerol formulae. II. Quantitative evaluation of foreign fat mixtures"/>
+                     </emphasis>
+                     <t v=". Z. Lebensm. Unters. Forsch. 194 1-8, 107-114 (1992)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_13" kind="point">
                   <num>
                      <t v="13."/>
                   </num>
-                  <t v="Precht, D.: "/>
-                  <emphasis kind="i">
-                     <t v="Gas chromatography of triacylglycerols and other lipids on packed columns"/>
-                  </emphasis>
-                  <t v=" in CRC Handbook of Chromatography: Analysis of lipids, p. 123-138, Ed. K.D. Mukherjee, N. Weber, J. Sherma, CRC Press, Boca Raton (1993)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Precht, D.: "/>
+                     <emphasis kind="i">
+                        <t v="Gas chromatography of triacylglycerols and other lipids on packed columns"/>
+                     </emphasis>
+                     <t v=" in CRC Handbook of Chromatography: Analysis of lipids, p. 123-138, Ed. K.D. Mukherjee, N. Weber, J. Sherma, CRC Press, Boca Raton (1993)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_14" kind="point">
                   <num>
                      <t v="14."/>
                   </num>
-                  <t v="Precht, D., Molkentin, J.: "/>
-                  <emphasis kind="i">
-                     <t v="Quantitative triglyceride analysis using short capillary columns"/>
-                  </emphasis>
-                  <t v=", Chrompack News 4 16-17 (1993)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Precht, D., Molkentin, J.: "/>
+                     <emphasis kind="i">
+                        <t v="Quantitative triglyceride analysis using short capillary columns"/>
+                     </emphasis>
+                     <t v=", Chrompack News 4 16-17 (1993)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_15" kind="point">
                   <num>
                      <t v="15."/>
                   </num>
-                  <t v="Molkentin, J., Precht, D.: "/>
-                  <emphasis kind="i">
-                     <t v="Comparison of packed and capillary columns for quantitative gas chromatography of triglycerides in milk fat"/>
-                  </emphasis>
-                  <t v=". Chromatographia 39 (5/6) 265-270 (1994)"/>
-                  <t v="."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Molkentin, J., Precht, D.: "/>
+                     <emphasis kind="i">
+                        <t v="Comparison of packed and capillary columns for quantitative gas chromatography of triglycerides in milk fat"/>
+                     </emphasis>
+                     <t v=". Chromatographia 39 (5/6) 265-270 (1994)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_13/pnt_16" kind="point">
                   <num>
                      <t v="16."/>
                   </num>
-                  <t v="Stange, K.: "/>
-                  <emphasis kind="i">
-                     <t v="Angewandte Statistik, Erster Teil, Eindimensionale Probleme"/>
-                  </emphasis>
-                  <t v=", Springer-Verlag, Berlin, P. 378 (1970)"/>
-                  <t v="."/>
-               </p>
+                  <p>
+                     <t v="Stange, K.: "/>
+                     <emphasis kind="i">
+                        <t v="Angewandte Statistik, Erster Teil, Eindimensionale Probleme"/>
+                     </emphasis>
+                     <t v=", Springer-Verlag, Berlin, P. 378 (1970)"/>
+                     <t v="."/>
+                  </p>
+               </unit>
             </unit>
          </unit>
          <unit eId="anx_III" kind="annex" eurlexAnchor="3">
@@ -6069,24 +6101,30 @@
                <heading>
                   <t v="Test room"/>
                </heading>
-               <p>
+               <unit eId="anx_III/pnt_3/pnt_3.1" kind="point">
                   <num>
                      <t v="3.1."/>
                   </num>
-                  <t v="Precautions must be taken in order that the assessors in the test room are not influenced by external factors."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Precautions must be taken in order that the assessors in the test room are not influenced by external factors."/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_3/pnt_3.2" kind="point">
                   <num>
                      <t v="3.2."/>
                   </num>
-                  <t v="The test room must be free from foreign odours and easy to clean. The walls must be of a light colour."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="The test room must be free from foreign odours and easy to clean. The walls must be of a light colour."/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_3/pnt_3.3" kind="point">
                   <num>
                      <t v="3.3."/>
                   </num>
-                  <t v="The test room and its lighting must be such that the properties of the products to be scored are not affected. The room must be equipped with appropriate temperature control."/>
-               </p>
+                  <p>
+                     <t v="The test room and its lighting must be such that the properties of the products to be scored are not affected. The room must be equipped with appropriate temperature control."/>
+                  </p>
+               </unit>
             </unit>
             <unit eId="anx_III/pnt_4" kind="level" depth="1">
                <num>
@@ -6117,56 +6155,62 @@
                <heading>
                   <t v="Assessment of the value of each attribute"/>
                </heading>
-               <p>
+               <unit eId="anx_III/pnt_6/pnt_6.1" kind="point">
                   <num>
                      <t v="6.1."/>
                   </num>
-                  <t v="The sensory evaluation is to be carried out in relation to the following three attributes: appearance, consistency and flavour."/>
-               </p>
-               <p>
-                  <emphasis kind="i">
-                     <t v="Appearance"/>
-                  </emphasis>
-                  <t v=" involves the following features: colour, visible purity, mould growth and water dispersion. Water dispersion is tested according to IDF-Standard 112A/1989."/>
-               </p>
-               <p>
-                  <emphasis kind="i">
-                     <t v="Consistency"/>
-                  </emphasis>
-                  <t v=" involves the following features: firmness and spreadability."/>
-               </p>
-               <p>
-                  <t v="Physcial methods may be applied for the evaluation of butter consistency. The Commission envisages the future harmonization of these methods."/>
-               </p>
-               <p>
-                  <emphasis kind="i">
-                     <t v="Flavour"/>
-                  </emphasis>
-                  <t v=" involves the following features: taste and odour."/>
-               </p>
-               <p>
-                  <t v="A significant deviation from the recommended temperature prevents a reliable evaluation of consistency and flavour. The temperature is of paramount importance."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="The sensory evaluation is to be carried out in relation to the following three attributes: appearance, consistency and flavour."/>
+                  </p>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Appearance"/>
+                     </emphasis>
+                     <t v=" involves the following features: colour, visible purity, mould growth and water dispersion. Water dispersion is tested according to IDF-Standard 112A/1989."/>
+                  </p>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Consistency"/>
+                     </emphasis>
+                     <t v=" involves the following features: firmness and spreadability."/>
+                  </p>
+                  <p>
+                     <t v="Physcial methods may be applied for the evaluation of butter consistency. The Commission envisages the future harmonization of these methods."/>
+                  </p>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Flavour"/>
+                     </emphasis>
+                     <t v=" involves the following features: taste and odour."/>
+                  </p>
+                  <p>
+                     <t v="A significant deviation from the recommended temperature prevents a reliable evaluation of consistency and flavour. The temperature is of paramount importance."/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_6/pnt_6.2" kind="point">
                   <num>
                      <t v="6.2."/>
                   </num>
-                  <t v="Each attribute has to be sensory evaluated separately. The scoring has to be done according to table 1."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Each attribute has to be sensory evaluated separately. The scoring has to be done according to table 1."/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_6/pnt_6.3" kind="point">
                   <num>
                      <t v="6.3."/>
                   </num>
-                  <t v="It may be desirable for the assessors to score together, before starting the assessment, one or more reference samples for appearance, consistency and flavour, in order to achieve uniformity."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="It may be desirable for the assessors to score together, before starting the assessment, one or more reference samples for appearance, consistency and flavour, in order to achieve uniformity."/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_6/pnt_6.4" kind="point">
                   <num>
                      <t v="6.4."/>
                   </num>
-               </p>
-               <p>
-                  <t v="Scoring for acceptance is as follows:"/>
-               </p>
+                  <p>
+                     <t v="Scoring for acceptance is as follows:"/>
+                  </p>
+               </unit>
                <table cols="3">
                   <tr header="true">
                      <td header="true"/>
@@ -6255,47 +6299,51 @@
                <heading>
                   <t v="Sampling and preparation of the sample"/>
                </heading>
-               <p>
+               <unit eId="anx_III/pnt_8/pnt_8.1" kind="point">
                   <num>
                      <t v="8.1."/>
                   </num>
-               </p>
-               <list kind="dash">
-                  <unit eId="anx_III/pnt_8/idt_1" kind="indent">
-                     <p>
-                        <t v="It is desirable that the identity of the samples are concealed during the assessment so that any possible bias is avoided."/>
-                     </p>
-                  </unit>
-                  <unit eId="anx_III/pnt_8/idt_2" kind="indent">
-                     <p>
-                        <t v="This should be organized by the panel leader prior to the evaluation without the presence of the other panel members."/>
-                     </p>
-                  </unit>
-               </list>
-               <list kind="dash">
-                  <unit eId="anx_III/pnt_8/list_2/idt_1" kind="indent">
-                     <p>
-                        <t v="It is desirable that the identity of the samples are concealed during the assessment so that any possible bias is avoided."/>
-                     </p>
-                  </unit>
-                  <unit eId="anx_III/pnt_8/list_2/idt_2" kind="indent">
-                     <p>
-                        <t v="This should be organized by the panel leader prior to the evaluation without the presence of the other panel members."/>
-                     </p>
-                  </unit>
-               </list>
-               <p>
+                  <list kind="dash">
+                     <unit eId="anx_III/pnt_8/pnt_8.1/idt_1" kind="indent">
+                        <p>
+                           <t v="It is desirable that the identity of the samples are concealed during the assessment so that any possible bias is avoided."/>
+                        </p>
+                     </unit>
+                     <unit eId="anx_III/pnt_8/pnt_8.1/idt_2" kind="indent">
+                        <p>
+                           <t v="This should be organized by the panel leader prior to the evaluation without the presence of the other panel members."/>
+                        </p>
+                     </unit>
+                  </list>
+                  <list kind="dash">
+                     <unit eId="anx_III/pnt_8/pnt_8.1/list_2/idt_1" kind="indent">
+                        <p>
+                           <t v="It is desirable that the identity of the samples are concealed during the assessment so that any possible bias is avoided."/>
+                        </p>
+                     </unit>
+                     <unit eId="anx_III/pnt_8/pnt_8.1/list_2/idt_2" kind="indent">
+                        <p>
+                           <t v="This should be organized by the panel leader prior to the evaluation without the presence of the other panel members."/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="anx_III/pnt_8/pnt_8.2" kind="point">
                   <num>
                      <t v="8.2."/>
                   </num>
-                  <t v="When the sensory evaluation is carried out at the cold store, the sample is taken using a butter trier. If the sensory evaluation is carried out at another location other than the cold store, then at least a 500 g sample should be taken."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="When the sensory evaluation is carried out at the cold store, the sample is taken using a butter trier. If the sensory evaluation is carried out at another location other than the cold store, then at least a 500 g sample should be taken."/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_8/pnt_8.3" kind="point">
                   <num>
                      <t v="8.3."/>
                   </num>
-                  <t v="During the evaluation, the butter should have the temperature 10 to 12 °C. Large deviations should be avoided at all cost."/>
-               </p>
+                  <p>
+                     <t v="During the evaluation, the butter should have the temperature 10 to 12 °C. Large deviations should be avoided at all cost."/>
+                  </p>
+               </unit>
             </unit>
             <unit eId="anx_III/pnt_9" kind="level" depth="1">
                <num>
@@ -7545,78 +7593,102 @@
                <heading>
                   <t v="Appearance"/>
                </heading>
-               <p>
+               <unit eId="anx_III/pnt_I/pnt_1" kind="point">
                   <num>
                      <t v="1."/>
                   </num>
-                  <t v="loose (free), moisture"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="loose (free), moisture"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_I/pnt_2" kind="point">
                   <num>
                      <t v="2."/>
                   </num>
-                  <t v="not uniform, two coloured"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="not uniform, two coloured"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_I/pnt_3" kind="point">
                   <num>
                      <t v="3."/>
                   </num>
-                  <t v="streaky"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="streaky"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_I/pnt_4" kind="point">
                   <num>
                      <t v="4."/>
                   </num>
-                  <t v="mottled, marbled"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="mottled, marbled"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_I/pnt_5" kind="point">
                   <num>
                      <t v="5."/>
                   </num>
-                  <t v="speckled"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="speckled"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_I/pnt_6" kind="point">
                   <num>
                      <t v="6."/>
                   </num>
-                  <t v="oil separation"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="oil separation"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_I/pnt_7" kind="point">
                   <num>
                      <t v="7."/>
                   </num>
-                  <t v="overcoloured"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="overcoloured"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_I/pnt_8" kind="point">
                   <num>
                      <t v="8."/>
                   </num>
-                  <t v="weak (open texture)"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="weak (open texture)"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_I/pnt_9" kind="point">
                   <num>
                      <t v="9."/>
                   </num>
-                  <t v="granular"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="granular"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_I/pnt_10" kind="point">
                   <num>
                      <t v="10."/>
                   </num>
-                  <t v="foreign matter"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="foreign matter"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_I/pnt_11" kind="point">
                   <num>
                      <t v="11."/>
                   </num>
-                  <t v="mouldy"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="mouldy"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_I/pnt_12" kind="point">
                   <num>
                      <t v="12."/>
                   </num>
-                  <t v="undissolved salt"/>
-               </p>
+                  <p>
+                     <t v="undissolved salt"/>
+                  </p>
+               </unit>
             </unit>
             <unit eId="anx_III/pnt_II" kind="level" depth="2">
                <num>
@@ -7625,36 +7697,46 @@
                <heading>
                   <t v="Consistency"/>
                </heading>
-               <p>
+               <unit eId="anx_III/pnt_II/pnt_14" kind="point">
                   <num>
                      <t v="14."/>
                   </num>
-                  <t v="short, brittle, crumbly"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="short, brittle, crumbly"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_II/pnt_15" kind="point">
                   <num>
                      <t v="15."/>
                   </num>
-                  <t v="pasty, doughy, greasy"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="pasty, doughy, greasy"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_II/pnt_16" kind="point">
                   <num>
                      <t v="16."/>
                   </num>
-                  <t v="sticky"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="sticky"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_II/pnt_17" kind="point">
                   <num>
                      <t v="17."/>
                   </num>
-                  <t v="hard"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="hard"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_II/pnt_18" kind="point">
                   <num>
                      <t v="18."/>
                   </num>
-                  <t v="soft"/>
-               </p>
+                  <p>
+                     <t v="soft"/>
+                  </p>
+               </unit>
             </unit>
             <unit eId="anx_III/pnt_III" kind="level" depth="2">
                <num>
@@ -7663,155 +7745,189 @@
                <heading>
                   <t v="Flavour &amp; Aroma"/>
                </heading>
-               <p>
+               <unit eId="anx_III/pnt_III/pnt_20" kind="point">
                   <num>
                      <t v="20."/>
                   </num>
-                  <t v="without flavour"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="without flavour"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_21" kind="point">
                   <num>
                      <t v="21."/>
                   </num>
-                  <t v="unclean"/>
-                  <noteRef href="#note_29" marker="21"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="unclean"/>
+                     <noteRef href="#note_29" marker="21"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_22" kind="point">
                   <num>
                      <t v="22."/>
                   </num>
-                  <t v="foreign flavour"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="foreign flavour"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_23" kind="point">
                   <num>
                      <t v="23."/>
                   </num>
-                  <t v="stale"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="stale"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_24" kind="point">
                   <num>
                      <t v="24."/>
                   </num>
-                  <t v="cheesy, lactic cheese flavour"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="cheesy, lactic cheese flavour"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_25" kind="point">
                   <num>
                      <t v="25."/>
                   </num>
-                  <t v="acid"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="acid"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_26" kind="point">
                   <num>
                      <t v="26."/>
                   </num>
-                  <t v="yeasty"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="yeasty"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_27" kind="point">
                   <num>
                      <t v="27."/>
                   </num>
-               </p>
-               <list kind="alpha">
-                  <unit eId="anx_III/pnt_III/pnt_a" kind="point">
-                     <num>
-                        <t v="a)"/>
-                     </num>
-                     <p>
-                        <t v="cooked flavour"/>
-                     </p>
-                  </unit>
-                  <unit eId="anx_III/pnt_III/pnt_b" kind="point">
-                     <num>
-                        <t v="b)"/>
-                     </num>
-                     <p>
-                        <t v="scorched flavour"/>
-                     </p>
-                  </unit>
-               </list>
-               <p>
+                  <list kind="alpha">
+                     <unit eId="anx_III/pnt_III/pnt_27/pnt_a" kind="point">
+                        <num>
+                           <t v="a)"/>
+                        </num>
+                        <p>
+                           <t v="cooked flavour"/>
+                        </p>
+                     </unit>
+                     <unit eId="anx_III/pnt_III/pnt_27/pnt_b" kind="point">
+                        <num>
+                           <t v="b)"/>
+                        </num>
+                        <p>
+                           <t v="scorched flavour"/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_28" kind="point">
                   <num>
                      <t v="28."/>
                   </num>
-                  <t v="mouldy flavour"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="mouldy flavour"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_29" kind="point">
                   <num>
                      <t v="29."/>
                   </num>
-                  <t v="rancid"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="rancid"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_30" kind="point">
                   <num>
                      <t v="30."/>
                   </num>
-                  <t v="oily, fishy"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="oily, fishy"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_31" kind="point">
                   <num>
                      <t v="31."/>
                   </num>
-                  <t v="tallowy"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="tallowy"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_32" kind="point">
                   <num>
                      <t v="32."/>
                   </num>
-               </p>
-               <list kind="alpha">
-                  <unit eId="anx_III/pnt_III/list_2/pnt_a" kind="point">
-                     <num>
-                        <t v="a)"/>
-                     </num>
-                     <p>
-                        <t v="oxidized flavour"/>
-                     </p>
-                  </unit>
-                  <unit eId="anx_III/pnt_III/list_2/pnt_b" kind="point">
-                     <num>
-                        <t v="b)"/>
-                     </num>
-                     <p>
-                        <t v="metallic flavour"/>
-                     </p>
-                  </unit>
-               </list>
-               <p>
+                  <list kind="alpha">
+                     <unit eId="anx_III/pnt_III/pnt_32/pnt_a" kind="point">
+                        <num>
+                           <t v="a)"/>
+                        </num>
+                        <p>
+                           <t v="oxidized flavour"/>
+                        </p>
+                     </unit>
+                     <unit eId="anx_III/pnt_III/pnt_32/pnt_b" kind="point">
+                        <num>
+                           <t v="b)"/>
+                        </num>
+                        <p>
+                           <t v="metallic flavour"/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_33" kind="point">
                   <num>
                      <t v="33."/>
                   </num>
-                  <t v="feed flavour"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="feed flavour"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_34" kind="point">
                   <num>
                      <t v="34."/>
                   </num>
-                  <t v="coarse, bitter"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="coarse, bitter"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_35" kind="point">
                   <num>
                      <t v="35."/>
                   </num>
-                  <t v="oversalted"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="oversalted"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_36" kind="point">
                   <num>
                      <t v="36."/>
                   </num>
-                  <t v="musty-flat, putrid"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="musty-flat, putrid"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_37" kind="point">
                   <num>
                      <t v="37."/>
                   </num>
-                  <t v="malty"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="malty"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_III/pnt_38" kind="point">
                   <num>
                      <t v="38."/>
                   </num>
-                  <t v="chemical flavour"/>
-               </p>
+                  <p>
+                     <t v="chemical flavour"/>
+                  </p>
+               </unit>
             </unit>
          </unit>
       </deleted>

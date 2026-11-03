@@ -6715,53 +6715,59 @@
          <subheading>
             <t v="PROCEDURES FOR THE APPLICATION IN SWITZERLAND OF THE PROTOCOL ON PRIVILEGES AND IMMUNITIES OF THE EUROPEAN UNION"/>
          </subheading>
-         <p>
+         <unit eId="app_3/pnt_1" kind="point">
             <num>
                <t v="1."/>
             </num>
-            <t v="Extension of application to Switzerland"/>
-         </p>
-         <p>
-            <t v="Wherever the Protocol on the privileges and immunities of the European Union (hereinafter called "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="the Protocol"/>
-            </quote>
-            <t v=") contains references to Member States, the references are to be understood to apply equally to Switzerland, unless the following provisions determine otherwise."/>
-         </p>
-         <p>
+            <p>
+               <t v="Extension of application to Switzerland"/>
+            </p>
+            <p>
+               <t v="Wherever the Protocol on the privileges and immunities of the European Union (hereinafter called "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the Protocol"/>
+               </quote>
+               <t v=") contains references to Member States, the references are to be understood to apply equally to Switzerland, unless the following provisions determine otherwise."/>
+            </p>
+         </unit>
+         <unit eId="app_3/pnt_2" kind="point">
             <num>
                <t v="2."/>
             </num>
-            <t v="Exemption of the Agency from indirect taxation (including VAT)"/>
-         </p>
-         <p>
-            <t v="Goods and services exported from Switzerland are not to be subject to Swiss value added tax (VAT). In the case of goods and services provided to the Agency in Switzerland for its official use, in accordance with the second paragraph of Article 3 of the Protocol, exemption from VAT is by way of refund. Exemption from VAT shall be granted if the actual purchase price of the goods and services mentioned in the invoice or equivalent document totals at least 100 Swiss francs (inclusive of tax)."/>
-         </p>
-         <p>
-            <t v="The VAT refund is to be granted on presentation to the Federal Tax Administration’s VAT Main Division of the Swiss forms provided for the purpose. As a rule, refund applications must be processed within the three months following the date on which they were lodged together with the necessary supporting documents."/>
-         </p>
-         <p>
+            <p>
+               <t v="Exemption of the Agency from indirect taxation (including VAT)"/>
+            </p>
+            <p>
+               <t v="Goods and services exported from Switzerland are not to be subject to Swiss value added tax (VAT). In the case of goods and services provided to the Agency in Switzerland for its official use, in accordance with the second paragraph of Article 3 of the Protocol, exemption from VAT is by way of refund. Exemption from VAT shall be granted if the actual purchase price of the goods and services mentioned in the invoice or equivalent document totals at least 100 Swiss francs (inclusive of tax)."/>
+            </p>
+            <p>
+               <t v="The VAT refund is to be granted on presentation to the Federal Tax Administration’s VAT Main Division of the Swiss forms provided for the purpose. As a rule, refund applications must be processed within the three months following the date on which they were lodged together with the necessary supporting documents."/>
+            </p>
+         </unit>
+         <unit eId="app_3/pnt_3" kind="point">
             <num>
                <t v="3."/>
             </num>
-            <t v="Procedures for the application of the rules relating to the Agency’s staff"/>
-         </p>
-         <p>
-            <t v="As regards the second paragraph of Article 12 of the Protocol, Switzerland shall exempt, according to the principles of its national law, officials and other servants of the Agency within the meaning of Article 2 of Regulation (Euratom, ECSC, EEC) No 549/69"/>
-            <noteRef href="#note_15" marker="15"/>
-            <t v=" from federal, cantonal and communal taxes on salaries, wages and emoluments paid to them by the European Union and subject to an internal tax for its own benefit."/>
-         </p>
-         <p>
-            <t v="Switzerland shall not be considered as a Member State within the meaning of point 1 above for the application of Article 13 of the Protocol."/>
-         </p>
-         <p>
-            <t v="Officials and other servants of the Agency and members of their families who are members of the social insurance system applicable to officials and other servants of the European Union are not obliged to be members of the Swiss social security system."/>
-         </p>
-         <p>
-            <t v="The Court of Justice of the European Union shall have exclusive jurisdiction in any matters concerning relations between the Agency or the Commission and its staff with regard to the application of Council Regulation (EEC, Euratom, ECSC) No 259/68"/>
-            <noteRef href="#note_16" marker="16"/>
-            <t v=" and the other provisions of the European Union law laying down working conditions."/>
-         </p>
+            <p>
+               <t v="Procedures for the application of the rules relating to the Agency’s staff"/>
+            </p>
+            <p>
+               <t v="As regards the second paragraph of Article 12 of the Protocol, Switzerland shall exempt, according to the principles of its national law, officials and other servants of the Agency within the meaning of Article 2 of Regulation (Euratom, ECSC, EEC) No 549/69"/>
+               <noteRef href="#note_15" marker="15"/>
+               <t v=" from federal, cantonal and communal taxes on salaries, wages and emoluments paid to them by the European Union and subject to an internal tax for its own benefit."/>
+            </p>
+            <p>
+               <t v="Switzerland shall not be considered as a Member State within the meaning of point 1 above for the application of Article 13 of the Protocol."/>
+            </p>
+            <p>
+               <t v="Officials and other servants of the Agency and members of their families who are members of the social insurance system applicable to officials and other servants of the European Union are not obliged to be members of the Swiss social security system."/>
+            </p>
+            <p>
+               <t v="The Court of Justice of the European Union shall have exclusive jurisdiction in any matters concerning relations between the Agency or the Commission and its staff with regard to the application of Council Regulation (EEC, Euratom, ECSC) No 259/68"/>
+               <noteRef href="#note_16" marker="16"/>
+               <t v=" and the other provisions of the European Union law laying down working conditions."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="anx_B" kind="annex" eurlexAnchor="1">
          <provenance amendingAct="22024D2762"

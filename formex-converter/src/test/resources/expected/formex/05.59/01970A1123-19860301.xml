@@ -427,24 +427,30 @@
          <p>
             <t v="HAVE AGREED AS FOLLOWS:"/>
          </p>
-         <p>
+         <unit eId="anx_1/pnt_1" kind="point">
             <num>
                <t v="1."/>
             </num>
-            <t v="Since trade between the German territories subject to the Basic Law for the Federal Republic of Germany and the German territories in which the Basic Law does not apply is a part of German internal trade, the application of the Agreement on products within the province of the European Coal and Steel Community requires no change in the treatment currently accorded to this trade."/>
-         </p>
-         <p>
+            <p>
+               <t v="Since trade between the German territories subject to the Basic Law for the Federal Republic of Germany and the German territories in which the Basic Law does not apply is a part of German internal trade, the application of the Agreement on products within the province of the European Coal and Steel Community requires no change in the treatment currently accorded to this trade."/>
+            </p>
+         </unit>
+         <unit eId="anx_1/pnt_2" kind="point">
             <num>
                <t v="2."/>
             </num>
-            <t v="Each Contracting Party shall inform the other Contracting Party of any agreements relating to trade with the German territories in which the Basic Law for the Federal Republic of Germany does not apply, and of any implementing provisions. Each Contracting Party shall ensure that the implementation of such agreements does not conflict with the principles of the Agreement on products within the province of the European Coal and Steel Community, and shall in particular take appropriate measures to avoid harming the economy of the other Contracting Party."/>
-         </p>
-         <p>
+            <p>
+               <t v="Each Contracting Party shall inform the other Contracting Party of any agreements relating to trade with the German territories in which the Basic Law for the Federal Republic of Germany does not apply, and of any implementing provisions. Each Contracting Party shall ensure that the implementation of such agreements does not conflict with the principles of the Agreement on products within the province of the European Coal and Steel Community, and shall in particular take appropriate measures to avoid harming the economy of the other Contracting Party."/>
+            </p>
+         </unit>
+         <unit eId="anx_1/pnt_3" kind="point">
             <num>
                <t v="3."/>
             </num>
-            <t v="Each Contracting Party may take appropriate measures to prevent any difficulties arising for it from trade between the other Contracting Party and the German territories in which the Basic Law for the Federal Republic of Germany does, not apply."/>
-         </p>
+            <p>
+               <t v="Each Contracting Party may take appropriate measures to prevent any difficulties arising for it from trade between the other Contracting Party and the German territories in which the Basic Law for the Federal Republic of Germany does, not apply."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="anx_2" kind="annex" eurlexAnchor="1">
          <num>

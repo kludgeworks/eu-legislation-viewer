@@ -192,49 +192,63 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <p>
+         <unit eId="anx/pnt_1" kind="point">
             <num>
                <t v="1."/>
             </num>
-            <t v="The model referred to in Article 1 for the common logo is the following:"/>
-         </p>
-         <figure src="L_2014184EN.01000702.tif" content="other"/>
-         <p>
+            <p>
+               <t v="The model referred to in Article 1 for the common logo is the following:"/>
+            </p>
+            <figure src="L_2014184EN.01000702.tif" content="other"/>
+         </unit>
+         <unit eId="anx/pnt_2" kind="point">
             <num>
                <t v="2."/>
             </num>
-            <t v="The reference colours are: PANTONE 421 CMYK 13/11/8/26 RGB 204/204/204; PANTONE 7731 CMYK 79/0/89/22 RGB 0/153/51; PANTONE 376 CMYK 54/0/100/0 RGB 153/204/51; PANTONE 7480 CMYK 75/0/71/0."/>
-         </p>
-         <p>
+            <p>
+               <t v="The reference colours are: PANTONE 421 CMYK 13/11/8/26 RGB 204/204/204; PANTONE 7731 CMYK 79/0/89/22 RGB 0/153/51; PANTONE 376 CMYK 54/0/100/0 RGB 153/204/51; PANTONE 7480 CMYK 75/0/71/0."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_3" kind="point">
             <num>
                <t v="3."/>
             </num>
-            <t v="The national flag of the Member State where the natural or legal person supplying medicinal products to the public at a distance by means of information society services is established shall be inserted in the white rectangle in the middle (left side) of the common logo."/>
-         </p>
-         <p>
+            <p>
+               <t v="The national flag of the Member State where the natural or legal person supplying medicinal products to the public at a distance by means of information society services is established shall be inserted in the white rectangle in the middle (left side) of the common logo."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_4" kind="point">
             <num>
                <t v="4."/>
             </num>
-            <t v="The language of the text in the common logo shall be established by the Member State referred to in point 3."/>
-         </p>
-         <p>
+            <p>
+               <t v="The language of the text in the common logo shall be established by the Member State referred to in point 3."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_5" kind="point">
             <num>
                <t v="5."/>
             </num>
-            <t v="The common logo shall have a minimum width size of 90 pixel."/>
-         </p>
-         <p>
+            <p>
+               <t v="The common logo shall have a minimum width size of 90 pixel."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_6" kind="point">
             <num>
                <t v="6."/>
             </num>
-            <t v="The common logo shall be static."/>
-         </p>
-         <p>
+            <p>
+               <t v="The common logo shall be static."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_7" kind="point">
             <num>
                <t v="7."/>
             </num>
-            <t v="If the logo is used on a coloured background which makes it difficult to see, a delimiting outer line around the logo can be used to improve contrast with the background colour."/>
-         </p>
+            <p>
+               <t v="If the logo is used on a coloured background which makes it difficult to see, a delimiting outer line around the logo can be used to improve contrast with the background colour."/>
+            </p>
+         </unit>
       </unit>
    </annexes>
    <notes>

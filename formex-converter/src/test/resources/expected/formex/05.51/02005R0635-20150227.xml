@@ -197,22 +197,24 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx/tab_1/tr_3/td_1/pnt_1" kind="point">
                      <num>
                         <t v="1."/>
                      </num>
-                     <t v="A product comprised of dried, pre-cooked wheat flour noodles (approximately 80 g) and spices (approximately 11 g)."/>
-                  </p>
-                  <p>
-                     <t v="The product is put up for retail sale in a 250 ml expanded polystyrene bowl, which contains noodles and a small sachet of spices."/>
-                  </p>
-                  <p>
-                     <t v="According to the instructions printed on the packaging, the spices and boiling water (max 200 ml) have to be added to the bowl of noodles. After three minutes, the pasta is ready for consumption."/>
-                  </p>
-                  <p>
-                     <t v="(See photograph)"/>
-                     <noteRef href="#note_3" marker="*"/>
-                  </p>
+                     <p>
+                        <t v="A product comprised of dried, pre-cooked wheat flour noodles (approximately 80 g) and spices (approximately 11 g)."/>
+                     </p>
+                     <p>
+                        <t v="The product is put up for retail sale in a 250 ml expanded polystyrene bowl, which contains noodles and a small sachet of spices."/>
+                     </p>
+                     <p>
+                        <t v="According to the instructions printed on the packaging, the spices and boiling water (max 200 ml) have to be added to the bowl of noodles. After three minutes, the pasta is ready for consumption."/>
+                     </p>
+                     <p>
+                        <t v="(See photograph)"/>
+                        <noteRef href="#note_3" marker="*"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -241,106 +243,108 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2" kind="point">
                      <num>
                         <t v="2."/>
                      </num>
-                     <t v="Diuretic/renal tea put up in bags for retail sale."/>
-                  </p>
-                  <p>
-                     <t v="The label contains the following information:"/>
-                  </p>
-                  <list kind="arabic">
-                     <unit eId="anx/tab_1/tr_4/td_1/pnt_1" kind="point">
-                        <num>
-                           <t v="1)"/>
-                        </num>
-                        <p>
-                           <t v="Composition of each bag (1,8 g):"/>
-                        </p>
-                        <p>
-                           <t v="Medicinally active ingredients:"/>
-                        </p>
-                        <list kind="definition">
-                           <unit eId="anx/tab_1/tr_4/td_1/pnt_1/def_1" kind="definition">
-                              <num>
-                                 <t v="—"/>
-                              </num>
-                              <heading>
-                                 <t v="horsetail"/>
-                              </heading>
-                              <p>
-                                 <t v="0,47"/>
-                                 <t v=" g"/>
-                              </p>
-                           </unit>
-                           <unit eId="anx/tab_1/tr_4/td_1/pnt_1/def_2" kind="definition">
-                              <num>
-                                 <t v="—"/>
-                              </num>
-                              <heading>
-                                 <t v="birch leaves"/>
-                              </heading>
-                              <p>
-                                 <t v="0,45"/>
-                                 <t v=" g"/>
-                              </p>
-                           </unit>
-                           <unit eId="anx/tab_1/tr_4/td_1/pnt_1/def_3" kind="definition">
-                              <num>
-                                 <t v="—"/>
-                              </num>
-                              <heading>
-                                 <t v="golden rod"/>
-                              </heading>
-                              <p>
-                                 <t v="0,38"/>
-                                 <t v=" g"/>
-                              </p>
-                           </unit>
-                           <unit eId="anx/tab_1/tr_4/td_1/pnt_1/def_4" kind="definition">
-                              <num>
-                                 <t v="—"/>
-                              </num>
-                              <heading>
-                                 <t v="spiny restharrow root"/>
-                              </heading>
-                              <p>
-                                 <t v="0,20"/>
-                                 <t v=" g"/>
-                              </p>
-                           </unit>
-                        </list>
-                        <p>
-                           <t v="Other ingredients:"/>
-                        </p>
-                        <p>
-                           <t v="Rose hip husks, cornflower leaves, peppermint leaves, marigold blossom, liquorice root."/>
-                        </p>
-                     </unit>
-                     <unit eId="anx/tab_1/tr_4/td_1/pnt_2" kind="point">
-                        <num>
-                           <t v="2)"/>
-                        </num>
-                        <p>
-                           <t v="Dosage and mode of application:"/>
-                        </p>
-                        <p>
-                           <t v="Pour one cup (approximately 150 ml) of boiling water onto one tea bag, cover and leave to brew for approximately 15 minutes and then remove the tea bag. Unless otherwise prescribed, one cup of freshly brewed tea 3 to 4 times a day between meals."/>
-                        </p>
-                     </unit>
-                     <unit eId="anx/tab_1/tr_4/td_1/pnt_3" kind="point">
-                        <num>
-                           <t v="3)"/>
-                        </num>
-                        <p>
-                           <t v="Applications:"/>
-                        </p>
-                        <p>
-                           <t v="To increase the volume of urine in the case of kidney or bladder catarrh and to prevent urinary gravel or stones."/>
-                        </p>
-                     </unit>
-                  </list>
+                     <p>
+                        <t v="Diuretic/renal tea put up in bags for retail sale."/>
+                     </p>
+                     <p>
+                        <t v="The label contains the following information:"/>
+                     </p>
+                     <list kind="arabic">
+                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1" kind="point">
+                           <num>
+                              <t v="1)"/>
+                           </num>
+                           <p>
+                              <t v="Composition of each bag (1,8 g):"/>
+                           </p>
+                           <p>
+                              <t v="Medicinally active ingredients:"/>
+                           </p>
+                           <list kind="definition">
+                              <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_1" kind="definition">
+                                 <num>
+                                    <t v="—"/>
+                                 </num>
+                                 <heading>
+                                    <t v="horsetail"/>
+                                 </heading>
+                                 <p>
+                                    <t v="0,47"/>
+                                    <t v=" g"/>
+                                 </p>
+                              </unit>
+                              <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_2" kind="definition">
+                                 <num>
+                                    <t v="—"/>
+                                 </num>
+                                 <heading>
+                                    <t v="birch leaves"/>
+                                 </heading>
+                                 <p>
+                                    <t v="0,45"/>
+                                    <t v=" g"/>
+                                 </p>
+                              </unit>
+                              <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_3" kind="definition">
+                                 <num>
+                                    <t v="—"/>
+                                 </num>
+                                 <heading>
+                                    <t v="golden rod"/>
+                                 </heading>
+                                 <p>
+                                    <t v="0,38"/>
+                                    <t v=" g"/>
+                                 </p>
+                              </unit>
+                              <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_4" kind="definition">
+                                 <num>
+                                    <t v="—"/>
+                                 </num>
+                                 <heading>
+                                    <t v="spiny restharrow root"/>
+                                 </heading>
+                                 <p>
+                                    <t v="0,20"/>
+                                    <t v=" g"/>
+                                 </p>
+                              </unit>
+                           </list>
+                           <p>
+                              <t v="Other ingredients:"/>
+                           </p>
+                           <p>
+                              <t v="Rose hip husks, cornflower leaves, peppermint leaves, marigold blossom, liquorice root."/>
+                           </p>
+                        </unit>
+                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_2" kind="point">
+                           <num>
+                              <t v="2)"/>
+                           </num>
+                           <p>
+                              <t v="Dosage and mode of application:"/>
+                           </p>
+                           <p>
+                              <t v="Pour one cup (approximately 150 ml) of boiling water onto one tea bag, cover and leave to brew for approximately 15 minutes and then remove the tea bag. Unless otherwise prescribed, one cup of freshly brewed tea 3 to 4 times a day between meals."/>
+                           </p>
+                        </unit>
+                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_3" kind="point">
+                           <num>
+                              <t v="3)"/>
+                           </num>
+                           <p>
+                              <t v="Applications:"/>
+                           </p>
+                           <p>
+                              <t v="To increase the volume of urine in the case of kidney or bladder catarrh and to prevent urinary gravel or stones."/>
+                           </p>
+                        </unit>
+                     </list>
+                  </unit>
                </td>
                <td>
                   <p>

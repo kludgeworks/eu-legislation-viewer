@@ -93,34 +93,42 @@
       <p>
          <t v="HAS DECIDED AS FOLLOWS:"/>
       </p>
-      <p>
+      <unit eId="pnt_1" kind="point">
          <num>
             <t v="1."/>
          </num>
-         <t v="The model forms E 001, E 103 to E 127 printed in Decision No 130 shall be replaced by the models appended hereto."/>
-      </p>
-      <p>
+         <p>
+            <t v="The model forms E 001, E 103 to E 127 printed in Decision No 130 shall be replaced by the models appended hereto."/>
+         </p>
+      </unit>
+      <unit eId="pnt_2" kind="point">
          <num>
             <t v="2."/>
          </num>
-         <t v="The competent authorities of the Member States shall make available to the person concerned (rightful claimants, institutions, employers, etc.) the forms according to the attached models."/>
-      </p>
-      <p>
+         <p>
+            <t v="The competent authorities of the Member States shall make available to the person concerned (rightful claimants, institutions, employers, etc.) the forms according to the attached models."/>
+         </p>
+      </unit>
+      <unit eId="pnt_3" kind="point">
          <num>
             <t v="3."/>
          </num>
-         <t v="Each form shall be available in the official languages of the Community and laid out in such manner that the different versions are perfectly superposable, thereby making it possible for each person or body to which a form is addressed (rightful claimant, institution, employer, etc.) to receive the form printed in their own language."/>
-      </p>
-      <p>
+         <p>
+            <t v="Each form shall be available in the official languages of the Community and laid out in such manner that the different versions are perfectly superposable, thereby making it possible for each person or body to which a form is addressed (rightful claimant, institution, employer, etc.) to receive the form printed in their own language."/>
+         </p>
+      </unit>
+      <unit eId="pnt_4" kind="point">
          <num>
             <t v="4."/>
          </num>
-         <t v="This Decision shall be applicable from the first day of the month following its publication in the "/>
-         <emphasis kind="i">
-            <t v="Official Journal of the European Communities"/>
-         </emphasis>
-         <t v="."/>
-      </p>
+         <p>
+            <t v="This Decision shall be applicable from the first day of the month following its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Communities"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
       <p>
          <emphasis kind="i">
             <t v="The Chairman of the Administrative Commission"/>
@@ -147,12 +155,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_1/td_2/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Request for information, communication of information, request for forms, reminder on an employed person a self-employed person, a frontier worker, a pensioner, an unemployed person, a dependant"/>
-                     </p>
+                        <p>
+                           <t v="Request for information, communication of information, request for forms, reminder on an employed person a self-employed person, a frontier worker, a pensioner, an unemployed person, a dependant"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -162,12 +172,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_2/td_2/list_2/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Exercising the right of option"/>
-                     </p>
+                        <p>
+                           <t v="Exercising the right of option"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -177,12 +189,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_3/td_2/list_3/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate concerning the aggregation of periods of insurance, employment or residence"/>
-                     </p>
+                        <p>
+                           <t v="Certificate concerning the aggregation of periods of insurance, employment or residence"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -192,12 +206,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_4/td_2/list_4/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate concerning the members of the family of an employed person or self-employed person to be taken into consideration for the calculation of cash benefits in the case of incapacity for work"/>
-                     </p>
+                        <p>
+                           <t v="Certificate concerning the members of the family of an employed person or self-employed person to be taken into consideration for the calculation of cash benefits in the case of incapacity for work"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -207,12 +223,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_5/td_2/list_5/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate of entitlement to sickness and maternity insurance benefits in kind for persons residing in a country other than the competent country"/>
-                     </p>
+                        <p>
+                           <t v="Certificate of entitlement to sickness and maternity insurance benefits in kind for persons residing in a country other than the competent country"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -222,12 +240,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_6/td_2/list_6/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Application for a certificate of entitlement to benefits in kind"/>
-                     </p>
+                        <p>
+                           <t v="Application for a certificate of entitlement to benefits in kind"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -237,12 +257,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_7/td_2/list_7/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Notification of suspension or withdrawal of the right to sickness and maternity insurance benefits in kind"/>
-                     </p>
+                        <p>
+                           <t v="Notification of suspension or withdrawal of the right to sickness and maternity insurance benefits in kind"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -252,12 +274,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_8/td_2/list_8/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate for the registration of members of the employed or self-employed person's family and the updating of lists"/>
-                     </p>
+                        <p>
+                           <t v="Certificate for the registration of members of the employed or self-employed person's family and the updating of lists"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -267,12 +291,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_9/td_2/list_9/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate concerning employed persons in international transport"/>
-                     </p>
+                        <p>
+                           <t v="Certificate concerning employed persons in international transport"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -282,12 +308,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_10/td_2/list_10/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate of entitlement to benefits in kind during a stay in a Member State"/>
-                     </p>
+                        <p>
+                           <t v="Certificate of entitlement to benefits in kind during a stay in a Member State"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -297,12 +325,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_11/td_2/list_11/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate concerning the retention of the right to sickness or maternity benefits currently being provided"/>
-                     </p>
+                        <p>
+                           <t v="Certificate concerning the retention of the right to sickness or maternity benefits currently being provided"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -312,12 +342,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_12/td_2/list_12/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Hospitalization: notification of entering and leaving hospital"/>
-                     </p>
+                        <p>
+                           <t v="Hospitalization: notification of entering and leaving hospital"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -327,12 +359,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_13/td_2/list_13/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Granting of major benefits in kind"/>
-                     </p>
+                        <p>
+                           <t v="Granting of major benefits in kind"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -342,12 +376,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_14/td_2/list_14/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Claim for cash benefits for incapacity for work"/>
-                     </p>
+                        <p>
+                           <t v="Claim for cash benefits for incapacity for work"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -357,12 +393,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_15/td_2/list_15/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Medical report relating to incapacity for work (sickness, maternity, accident at work, occupational disease)"/>
-                     </p>
+                        <p>
+                           <t v="Medical report relating to incapacity for work (sickness, maternity, accident at work, occupational disease)"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -372,12 +410,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_16/td_2/list_16/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Granting of cash benefits in the case of maternity and incapacity for work"/>
-                     </p>
+                        <p>
+                           <t v="Granting of cash benefits in the case of maternity and incapacity for work"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -387,12 +427,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_17/td_2/list_17/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Notification of non-recognition or of end of incapacity for work"/>
-                     </p>
+                        <p>
+                           <t v="Notification of non-recognition or of end of incapacity for work"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -402,12 +444,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_18/td_2/list_18/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate concerning the entitlement of unemployed persons and the members of their family to sickness and maternity insurance benefits"/>
-                     </p>
+                        <p>
+                           <t v="Certificate concerning the entitlement of unemployed persons and the members of their family to sickness and maternity insurance benefits"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -417,12 +461,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_19/td_2/list_19/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate of entitlement to benefits in kind for pension claimants and members of their family"/>
-                     </p>
+                        <p>
+                           <t v="Certificate of entitlement to benefits in kind for pension claimants and members of their family"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -432,12 +478,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_20/td_2/list_20/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate for the registration of pensioners and the updating of lists"/>
-                     </p>
+                        <p>
+                           <t v="Certificate for the registration of pensioners and the updating of lists"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -447,12 +495,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_21/td_2/list_21/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate for the granting of benefits in kind to members of the family of pensioners"/>
-                     </p>
+                        <p>
+                           <t v="Certificate for the granting of benefits in kind to members of the family of pensioners"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -462,12 +512,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_22/td_2/list_22/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Certificate of entitlement to benefits in kind under insurance against accidents at work and occupational diseases"/>
-                     </p>
+                        <p>
+                           <t v="Certificate of entitlement to benefits in kind under insurance against accidents at work and occupational diseases"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -477,12 +529,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_23/td_2/list_23/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Claim for death grant"/>
-                     </p>
+                        <p>
+                           <t v="Claim for death grant"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -492,12 +546,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_24/td_2/list_24/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Individual record of actual expenditure"/>
-                     </p>
+                        <p>
+                           <t v="Individual record of actual expenditure"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -507,12 +563,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_25/td_2/list_25/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Rates for refund of benefits in kind"/>
-                     </p>
+                        <p>
+                           <t v="Rates for refund of benefits in kind"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
                <tr>
@@ -522,12 +580,14 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/level_1/tab_1/tr_26/td_2/list_26/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Individual record of monthly lump-sum payments"/>
-                     </p>
+                        <p>
+                           <t v="Individual record of monthly lump-sum payments"/>
+                        </p>
+                     </unit>
                   </td>
                </tr>
             </table>

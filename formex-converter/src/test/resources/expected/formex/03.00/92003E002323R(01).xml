@@ -42,15 +42,17 @@
             <t v="On page 131, point 2. (b) should read as follows:"/>
          </p>
          <new>
-            <p>
+            <unit eId="cor_1/new/pnt_2.-b" kind="point">
                <num>
                   <t v="2. (b)"/>
                </num>
-               <t v="What positions have they held since?"/>
-            </p>
-            <p>
-               <t v="One of the two management level officials was appointed Head of Unit in DG PRESS. The other, after spending a short period of time in DG ADMIN as Adviser, was appointed Head of Unit in DG ADMIN."/>
-            </p>
+               <p>
+                  <t v="What positions have they held since?"/>
+               </p>
+               <p>
+                  <t v="One of the two management level officials was appointed Head of Unit in DG PRESS. The other, after spending a short period of time in DG ADMIN as Adviser, was appointed Head of Unit in DG ADMIN."/>
+               </p>
+            </unit>
          </new>
       </unit>
    </body>

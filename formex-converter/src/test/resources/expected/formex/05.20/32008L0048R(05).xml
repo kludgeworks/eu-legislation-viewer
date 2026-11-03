@@ -121,12 +121,14 @@
                      </tr>
                      <tr>
                         <td>
-                           <p>
+                           <unit eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_4/td_1/list_2/idt_1" kind="indent">
                               <num>
                                  <t v="—"/>
                               </num>
-                              <t v="an insurance policy securing the credit, or"/>
-                           </p>
+                              <p>
+                                 <t v="an insurance policy securing the credit, or"/>
+                              </p>
+                           </unit>
                         </td>
                         <td>
                            <p>
@@ -136,12 +138,14 @@
                      </tr>
                      <tr>
                         <td>
-                           <p>
+                           <unit eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_5/td_1/list_3/idt_1" kind="indent">
                               <num>
                                  <t v="—"/>
                               </num>
-                              <t v="another ancillary service contract?"/>
-                           </p>
+                              <p>
+                                 <t v="another ancillary service contract?"/>
+                              </p>
+                           </unit>
                         </td>
                         <td>
                            <p>

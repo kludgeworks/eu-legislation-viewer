@@ -128,12 +128,14 @@
          <tableGroup>
             <table cols="3">
                <caption>
-                  <p>
+                  <unit eId="art_1/pnt_I" kind="point">
                      <num>
                         <t v="I."/>
                      </num>
-                     <t v="GOVERNMENT REPRESENTATIVES"/>
-                  </p>
+                     <p>
+                        <t v="GOVERNMENT REPRESENTATIVES"/>
+                     </p>
+                  </unit>
                </caption>
                <tr header="true">
                   <td header="true">
@@ -645,12 +647,14 @@
             </table>
             <table cols="3">
                <caption>
-                  <p>
+                  <unit eId="art_1/pnt_II" kind="point">
                      <num>
                         <t v="II."/>
                      </num>
-                     <t v="TRADE UNION REPRESENTATIVES"/>
-                  </p>
+                     <p>
+                        <t v="TRADE UNION REPRESENTATIVES"/>
+                     </p>
+                  </unit>
                </caption>
                <tr header="true">
                   <td header="true">
@@ -1158,12 +1162,14 @@
             </table>
             <table cols="3">
                <caption>
-                  <p>
+                  <unit eId="art_1/pnt_III" kind="point">
                      <num>
                         <t v="III."/>
                      </num>
-                     <t v="EMPLOYERS' ASSOCIATIONS REPRESENTATIVES"/>
-                  </p>
+                     <p>
+                        <t v="EMPLOYERS' ASSOCIATIONS REPRESENTATIVES"/>
+                     </p>
+                  </unit>
                </caption>
                <tr header="true">
                   <td header="true">

@@ -1083,12 +1083,14 @@
          <tableGroup>
             <table cols="5">
                <caption>
-                  <p>
+                  <unit eId="anx_II/pnt_A" kind="point">
                      <num>
                         <t v="A."/>
                      </num>
-                     <t v="MAXIMUM VOC CONTENT LIMIT VALUES FOR PAINTS AND VARNISHES"/>
-                  </p>
+                     <p>
+                        <t v="MAXIMUM VOC CONTENT LIMIT VALUES FOR PAINTS AND VARNISHES"/>
+                     </p>
+                  </unit>
                </caption>
                <tr header="true">
                   <td header="true"/>
@@ -1656,12 +1658,14 @@
             </table>
             <table cols="4">
                <caption>
-                  <p>
+                  <unit eId="anx_II/pnt_B" kind="point">
                      <num>
                         <t v="B."/>
                      </num>
-                     <t v="MAXIMUM VOC CONTENT LIMIT VALUES FOR VEHICLE REFINISHING PRODUCTS"/>
-                  </p>
+                     <p>
+                        <t v="MAXIMUM VOC CONTENT LIMIT VALUES FOR VEHICLE REFINISHING PRODUCTS"/>
+                     </p>
+                  </unit>
                </caption>
                <tr header="true">
                   <td header="true"/>

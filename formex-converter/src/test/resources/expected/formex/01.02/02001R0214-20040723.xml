@@ -2954,44 +2954,52 @@
          <subheading>
             <t v="PACKAGING"/>
          </subheading>
-         <p>
+         <unit eId="anx_II/pnt_1" kind="point">
             <num>
                <t v="1."/>
             </num>
-            <t v="The skimmed-milk powder shall be packed in new, clean, dry and intact bags with a net weight of 25 kg."/>
-         </p>
-         <p>
+            <p>
+               <t v="The skimmed-milk powder shall be packed in new, clean, dry and intact bags with a net weight of 25 kg."/>
+            </p>
+         </unit>
+         <unit eId="anx_II/pnt_2" kind="point">
             <num>
                <t v="2."/>
             </num>
-            <t v="The bags shall have at least three layers, which together correspond to at least 420 J/m"/>
-            <emphasis kind="sup">
-               <t v="2"/>
-            </emphasis>
-            <t v=" TEA average."/>
-         </p>
-         <p>
-            <t v="The second layer shall be covered with a layer of polyethylene of at least 15 g/m"/>
-            <emphasis kind="sup">
-               <t v="2"/>
-            </emphasis>
-            <t v="."/>
-         </p>
-         <p>
-            <t v="Inside the paper layers, a polyethylene bag at least 0,08 mm thick shall be fused to the bottom."/>
-         </p>
-         <p>
+            <p>
+               <t v="The bags shall have at least three layers, which together correspond to at least 420 J/m"/>
+               <emphasis kind="sup">
+                  <t v="2"/>
+               </emphasis>
+               <t v=" TEA average."/>
+            </p>
+            <p>
+               <t v="The second layer shall be covered with a layer of polyethylene of at least 15 g/m"/>
+               <emphasis kind="sup">
+                  <t v="2"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+            <p>
+               <t v="Inside the paper layers, a polyethylene bag at least 0,08 mm thick shall be fused to the bottom."/>
+            </p>
+         </unit>
+         <unit eId="anx_II/pnt_3" kind="point">
             <num>
                <t v="3."/>
             </num>
-            <t v="Bags shall conform to standard EN 770."/>
-         </p>
-         <p>
+            <p>
+               <t v="Bags shall conform to standard EN 770."/>
+            </p>
+         </unit>
+         <unit eId="anx_II/pnt_4" kind="point">
             <num>
                <t v="4."/>
             </num>
-            <t v="When filling, the powder should be well pressed down. Loose powder must on no account be allowed to penetrate between the various layers."/>
-         </p>
+            <p>
+               <t v="When filling, the powder should be well pressed down. Loose powder must on no account be allowed to penetrate between the various layers."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="anx_III" kind="annex" eurlexAnchor="3">
          <num>
@@ -3000,90 +3008,102 @@
          <subheading>
             <t v="SAMPLING AND ANALYSIS OF SKIMMED-MILK POWDER OFFERED FOR INTERVENTION"/>
          </subheading>
-         <p>
+         <unit eId="anx_III/pnt_1" kind="point">
             <num>
                <t v="1."/>
             </num>
-            <t v="Samples shall be taken in accordance with the procedure laid down in International Standard ISO 707. However, Member States may use another method of sampling provided that it complies with the principles of the abovementioned standard."/>
-         </p>
-         <p>
+            <p>
+               <t v="Samples shall be taken in accordance with the procedure laid down in International Standard ISO 707. However, Member States may use another method of sampling provided that it complies with the principles of the abovementioned standard."/>
+            </p>
+         </unit>
+         <unit eId="anx_III/pnt_2" kind="point">
             <num>
                <t v="2."/>
             </num>
-            <t v="Number of packages to be selected for sampling checks:"/>
-         </p>
-         <list kind="alpha">
-            <unit eId="anx_III/pnt_a" kind="point">
-               <num>
-                  <t v="(a)"/>
-               </num>
-               <p>
-                  <t v="offers containing up to 800 25-kg bags: at least eight,"/>
-               </p>
-            </unit>
-            <unit eId="anx_III/pnt_b" kind="point">
-               <num>
-                  <t v="(b)"/>
-               </num>
-               <p>
-                  <t v="offers containing more than 800 25-kg bags: at least eight, plus one for each additional 800 bags or fraction thereof."/>
-               </p>
-            </unit>
-         </list>
-         <p>
+            <p>
+               <t v="Number of packages to be selected for sampling checks:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="anx_III/pnt_2/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="offers containing up to 800 25-kg bags: at least eight,"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_2/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="offers containing more than 800 25-kg bags: at least eight, plus one for each additional 800 bags or fraction thereof."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="anx_III/pnt_3" kind="point">
             <num>
                <t v="3."/>
             </num>
-            <t v="Weight of sample: samples of at least 200 g are to be taken from each package."/>
-         </p>
-         <p>
+            <p>
+               <t v="Weight of sample: samples of at least 200 g are to be taken from each package."/>
+            </p>
+         </unit>
+         <unit eId="anx_III/pnt_4" kind="point">
             <num>
                <t v="4."/>
             </num>
-            <t v="Grouping of samples: no more than nine samples are to be combined in a global sample."/>
-         </p>
-         <p>
+            <p>
+               <t v="Grouping of samples: no more than nine samples are to be combined in a global sample."/>
+            </p>
+         </unit>
+         <unit eId="anx_III/pnt_5" kind="point">
             <num>
                <t v="5."/>
             </num>
-            <t v="Analysis of samples: each global sample is to undergo an analysis to verify all the quality characteristics laid down in Annex I."/>
-         </p>
-         <p>
+            <p>
+               <t v="Analysis of samples: each global sample is to undergo an analysis to verify all the quality characteristics laid down in Annex I."/>
+            </p>
+         </unit>
+         <unit eId="anx_III/pnt_6" kind="point">
             <num>
                <t v="6."/>
             </num>
-            <t v="Where samples show defects:"/>
-         </p>
-         <list kind="alpha">
-            <unit eId="anx_III/list_2/pnt_a" kind="point">
-               <num>
-                  <t v="(a)"/>
-               </num>
-               <p>
-                  <t v="where a composite sample shows a defect with regard to one parameter, the quantity from which the sample came is rejected;"/>
-               </p>
-            </unit>
-            <unit eId="anx_III/list_2/pnt_b" kind="point">
-               <num>
-                  <t v="(b)"/>
-               </num>
-               <p>
-                  <t v="where a composite sample shows a defect with regard to more than one parameter, the quantity from which the sample came is rejected and samples are taken from the remaining quantities from the same plant; the analysis of those samples shall be decisive. In that case:"/>
-               </p>
-               <list kind="dash">
-                  <unit eId="anx_III/list_2/pnt_b/idt_1" kind="indent">
-                     <p>
-                        <t v="the number of samples laid down in point 2 is doubled,"/>
-                     </p>
-                  </unit>
-                  <unit eId="anx_III/list_2/pnt_b/idt_2" kind="indent">
-                     <p>
-                        <t v="where a composite sample shows a defect with regard to one or more parameteres, the quantity from which the sample came is rejected."/>
-                     </p>
-                  </unit>
-               </list>
-            </unit>
-         </list>
+            <p>
+               <t v="Where samples show defects:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="anx_III/pnt_6/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="where a composite sample shows a defect with regard to one parameter, the quantity from which the sample came is rejected;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_III/pnt_6/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="where a composite sample shows a defect with regard to more than one parameter, the quantity from which the sample came is rejected and samples are taken from the remaining quantities from the same plant; the analysis of those samples shall be decisive. In that case:"/>
+                  </p>
+                  <list kind="dash">
+                     <unit eId="anx_III/pnt_6/pnt_b/idt_1" kind="indent">
+                        <p>
+                           <t v="the number of samples laid down in point 2 is doubled,"/>
+                        </p>
+                     </unit>
+                     <unit eId="anx_III/pnt_6/pnt_b/idt_2" kind="indent">
+                        <p>
+                           <t v="where a composite sample shows a defect with regard to one or more parameteres, the quantity from which the sample came is rejected."/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+            </list>
+         </unit>
       </unit>
    </annexes>
    <notes>

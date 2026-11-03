@@ -54,390 +54,396 @@
                      <heading>
                         <t v="APPROVAL MARK"/>
                      </heading>
-                     <p>
+                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1" kind="point">
                         <num>
                            <t v="1."/>
                         </num>
-                        <t v="The approval mark shall be made up of:"/>
-                     </p>
-                     <list kind="alpha">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_a" kind="point">
-                           <num>
-                              <t v="(a)"/>
-                           </num>
-                           <p>
-                              <t v="a rectangle, within which shall be placed the letter "/>
-                              <quote startQuote="‘" endQuote="’">
-                                 <t v="e"/>
-                              </quote>
-                              <t v=" followed by a distinguishing number or letter for the country which has issued the approval in accordance with the following conventional signs:"/>
-                           </p>
-                           <table cols="2">
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Belgium"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="6,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Bulgaria"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="34,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Czech Republic"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="8,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Denmark"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="18,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Germany"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="1,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Estonia"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="29,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Ireland"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="24,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Greece"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="23,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Spain"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="9,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="France"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="2,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Croatia"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="25,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Italy"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="3,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Cyprus"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="CY,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Latvia"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="32,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Lithuania"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="36,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Luxembourg"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="13,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Hungary"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="7,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Malta"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="MT,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Netherlands"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="4,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Austria"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="12,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Poland"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="20,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Portugal"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="21,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Romania"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="19,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Slovenia"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="26,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Slovakia"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="27,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Finland"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="17,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="Sweden"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="5,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <p>
-                                       <t v="United Kingdom"/>
-                                    </p>
-                                 </td>
-                                 <td>
-                                    <p>
-                                       <t v="11,"/>
-                                    </p>
-                                 </td>
-                              </tr>
-                           </table>
-                           <p>
-                              <t v="and"/>
-                           </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_b" kind="point">
-                           <num>
-                              <t v="(b)"/>
-                           </num>
-                           <p>
-                              <t v="an approval number corresponding to the number of the approval certificate drawn up for the prototype of the recording equipment or the record sheet or to the number of a tachograph card, placed at any point within the immediate proximity of that rectangle."/>
-                           </p>
-                        </unit>
-                     </list>
-                     <p>
+                        <p>
+                           <t v="The approval mark shall be made up of:"/>
+                        </p>
+                        <list kind="alpha">
+                           <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1/pnt_a" kind="point">
+                              <num>
+                                 <t v="(a)"/>
+                              </num>
+                              <p>
+                                 <t v="a rectangle, within which shall be placed the letter "/>
+                                 <quote startQuote="‘" endQuote="’">
+                                    <t v="e"/>
+                                 </quote>
+                                 <t v=" followed by a distinguishing number or letter for the country which has issued the approval in accordance with the following conventional signs:"/>
+                              </p>
+                              <table cols="2">
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Belgium"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="6,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Bulgaria"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="34,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Czech Republic"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="8,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Denmark"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="18,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Germany"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="1,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Estonia"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="29,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Ireland"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="24,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Greece"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="23,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Spain"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="9,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="France"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="2,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Croatia"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="25,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Italy"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="3,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Cyprus"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="CY,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Latvia"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="32,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Lithuania"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="36,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Luxembourg"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="13,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Hungary"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="7,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Malta"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="MT,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Netherlands"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="4,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Austria"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="12,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Poland"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="20,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Portugal"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="21,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Romania"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="19,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Slovenia"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="26,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Slovakia"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="27,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Finland"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="17,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="Sweden"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="5,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <p>
+                                          <t v="United Kingdom"/>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p>
+                                          <t v="11,"/>
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </table>
+                              <p>
+                                 <t v="and"/>
+                              </p>
+                           </unit>
+                           <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1/pnt_b" kind="point">
+                              <num>
+                                 <t v="(b)"/>
+                              </num>
+                              <p>
+                                 <t v="an approval number corresponding to the number of the approval certificate drawn up for the prototype of the recording equipment or the record sheet or to the number of a tachograph card, placed at any point within the immediate proximity of that rectangle."/>
+                              </p>
+                           </unit>
+                        </list>
+                     </unit>
+                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_2" kind="point">
                         <num>
                            <t v="2."/>
                         </num>
-                        <t v="The approval mark shall be shown on the descriptive plaque of each set of equipment and on each record sheet and on each tachograph card. It must be indelible and must always remain clearly legible."/>
-                     </p>
-                     <p>
+                        <p>
+                           <t v="The approval mark shall be shown on the descriptive plaque of each set of equipment and on each record sheet and on each tachograph card. It must be indelible and must always remain clearly legible."/>
+                        </p>
+                     </unit>
+                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_3" kind="point">
                         <num>
                            <t v="3."/>
                         </num>
-                        <t v="The dimensions of the approval mark drawn below"/>
-                        <noteRef href="#note_anx01003201-1" marker="1"/>
-                        <t v=" are expressed in millimetres, these dimensions being minima. The ratios between the dimensions must be maintained."/>
-                     </p>
-                     <figure src="L_2016146EN.01003301.tif" content="techDesign"/>
+                        <p>
+                           <t v="The dimensions of the approval mark drawn below"/>
+                           <noteRef href="#note_anx01003201-1" marker="1"/>
+                           <t v=" are expressed in millimetres, these dimensions being minima. The ratios between the dimensions must be maintained."/>
+                        </p>
+                        <figure src="L_2016146EN.01003301.tif" content="techDesign"/>
+                     </unit>
                   </unit>
                   <unit eId="cor_1/new/qstr_1/anx_II/pnt_II" kind="level" depth="2">
                      <num>
@@ -633,20 +639,24 @@
                         <noteRef href="#note_anx01003201-3" marker="3"/>
                         <t v=":"/>
                      </p>
-                     <p>
+                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_1" kind="indent">
                         <num>
                            <t v="☐"/>
                         </num>
-                        <t v="approval of:"/>
-                     </p>
-                     <p>
+                        <p>
+                           <t v="approval of:"/>
+                        </p>
+                     </unit>
+                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_2" kind="indent">
                         <num>
                            <t v="☐"/>
                         </num>
-                        <t v="withdrawal of approval of:"/>
-                     </p>
+                        <p>
+                           <t v="withdrawal of approval of:"/>
+                        </p>
+                     </unit>
                      <list kind="other">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_1" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -654,7 +664,7 @@
                               <t v="recording equipment model"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_2" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -663,7 +673,7 @@
                               <noteRef href="#note_anx01003201-4" marker="4"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_3" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -671,7 +681,7 @@
                               <t v="a driver's card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_4" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -679,7 +689,7 @@
                               <t v="a workshop card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_5" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -687,7 +697,7 @@
                               <t v="a company card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_6" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -703,7 +713,7 @@
                         <t v="…."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_1" kind="point">
                            <num>
                               <t v="1."/>
                            </num>
@@ -711,7 +721,7 @@
                               <t v="Manufacturing brand or trademark …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_2" kind="point">
                            <num>
                               <t v="2."/>
                            </num>
@@ -719,7 +729,7 @@
                               <t v="Name of model …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_3" kind="point">
                            <num>
                               <t v="3."/>
                            </num>
@@ -727,7 +737,7 @@
                               <t v="Name of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_4" kind="point">
                            <num>
                               <t v="4."/>
                            </num>
@@ -735,7 +745,7 @@
                               <t v="Address of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_5" kind="point">
                            <num>
                               <t v="5."/>
                            </num>
@@ -743,7 +753,7 @@
                               <t v="Submitted for approval for …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_6" kind="point">
                            <num>
                               <t v="6."/>
                            </num>
@@ -751,7 +761,7 @@
                               <t v="Laboratory(-ies) …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_7" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_7" kind="point">
                            <num>
                               <t v="7."/>
                            </num>
@@ -759,7 +769,7 @@
                               <t v="Date and number of test report …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_8" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_8" kind="point">
                            <num>
                               <t v="8."/>
                            </num>
@@ -767,7 +777,7 @@
                               <t v="Date of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_9" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_9" kind="point">
                            <num>
                               <t v="9."/>
                            </num>
@@ -775,7 +785,7 @@
                               <t v="Date of withdrawal of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_10"
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_10"
                               kind="point">
                            <num>
                               <t v="10."/>
@@ -784,7 +794,7 @@
                               <t v="Model of recording equipment(s) with which the component is designed to be used"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_11"
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_11"
                               kind="point">
                            <num>
                               <t v="11."/>
@@ -793,7 +803,7 @@
                               <t v="Place …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_12"
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_12"
                               kind="point">
                            <num>
                               <t v="12."/>
@@ -802,7 +812,7 @@
                               <t v="Date …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_13"
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_13"
                               kind="point">
                            <num>
                               <t v="13."/>
@@ -811,7 +821,7 @@
                               <t v="Descriptive documents annexed …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/pnt_14"
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_14"
                               kind="point">
                            <num>
                               <t v="14."/>
@@ -848,20 +858,24 @@
                         <noteRef href="#note_anx01003201-5" marker="5"/>
                         <t v=":"/>
                      </p>
-                     <p>
+                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_1" kind="indent">
                         <num>
                            <t v="☐"/>
                         </num>
-                        <t v="approval of:"/>
-                     </p>
-                     <p>
+                        <p>
+                           <t v="approval of:"/>
+                        </p>
+                     </unit>
+                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_2" kind="indent">
                         <num>
                            <t v="☐"/>
                         </num>
-                        <t v="withdrawal of approval of:"/>
-                     </p>
+                        <p>
+                           <t v="withdrawal of approval of:"/>
+                        </p>
+                     </unit>
                      <list kind="other">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_1" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -869,7 +883,7 @@
                               <t v="recording equipment model"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_2" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -878,7 +892,7 @@
                               <noteRef href="#note_anx01003201-6" marker="6"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_3" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -886,7 +900,7 @@
                               <t v="a driver's card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_4" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -894,7 +908,7 @@
                               <t v="a workshop card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_5" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -902,7 +916,7 @@
                               <t v="a company card"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_6" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -918,7 +932,7 @@
                         <t v="…."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_1" kind="point">
                            <num>
                               <t v="1."/>
                            </num>
@@ -926,7 +940,7 @@
                               <t v="Manufacturing brand or trademark …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_2" kind="point">
                            <num>
                               <t v="2."/>
                            </num>
@@ -934,7 +948,7 @@
                               <t v="Name of model …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_3" kind="point">
                            <num>
                               <t v="3."/>
                            </num>
@@ -942,7 +956,7 @@
                               <t v="Name of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_4" kind="point">
                            <num>
                               <t v="4."/>
                            </num>
@@ -950,7 +964,7 @@
                               <t v="Address of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_5" kind="point">
                            <num>
                               <t v="5."/>
                            </num>
@@ -958,12 +972,12 @@
                               <t v="Submitted for approval for …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6" kind="point">
                            <num>
                               <t v="6."/>
                            </num>
                            <list kind="alpha">
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_6/pnt_a"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_a"
                                     kind="point">
                                  <num>
                                     <t v="(a)"/>
@@ -972,7 +986,7 @@
                                     <t v="Test laboratory for functional certification …"/>
                                  </p>
                               </unit>
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_6/pnt_b"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_b"
                                     kind="point">
                                  <num>
                                     <t v="(b)"/>
@@ -981,7 +995,7 @@
                                     <t v="Test laboratory for security certification …"/>
                                  </p>
                               </unit>
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_6/pnt_c"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_c"
                                     kind="point">
                                  <num>
                                     <t v="(c)"/>
@@ -992,12 +1006,12 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_7" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7" kind="point">
                            <num>
                               <t v="7."/>
                            </num>
                            <list kind="alpha">
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_7/pnt_a"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_a"
                                     kind="point">
                                  <num>
                                     <t v="(a)"/>
@@ -1006,7 +1020,7 @@
                                     <t v="Date and number of functional certificate …"/>
                                  </p>
                               </unit>
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_7/pnt_b"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_b"
                                     kind="point">
                                  <num>
                                     <t v="(b)"/>
@@ -1015,7 +1029,7 @@
                                     <t v="Date and number of security certificate …"/>
                                  </p>
                               </unit>
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_7/pnt_c"
+                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_c"
                                     kind="point">
                                  <num>
                                     <t v="(c)"/>
@@ -1026,7 +1040,7 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_8" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_8" kind="point">
                            <num>
                               <t v="8."/>
                            </num>
@@ -1034,7 +1048,7 @@
                               <t v="Date of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_9" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_9" kind="point">
                            <num>
                               <t v="9."/>
                            </num>
@@ -1042,7 +1056,7 @@
                               <t v="Date of withdrawal of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_10" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_10" kind="point">
                            <num>
                               <t v="10."/>
                            </num>
@@ -1050,7 +1064,7 @@
                               <t v="Model of recording equipment(s) with which the component is designed to be used"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_11" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_11" kind="point">
                            <num>
                               <t v="11."/>
                            </num>
@@ -1058,7 +1072,7 @@
                               <t v="Place …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_12" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_12" kind="point">
                            <num>
                               <t v="12."/>
                            </num>
@@ -1066,7 +1080,7 @@
                               <t v="Date …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_13" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_13" kind="point">
                            <num>
                               <t v="13."/>
                            </num>
@@ -1074,7 +1088,7 @@
                               <t v="Descriptive documents annexed …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/pnt_14" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_14" kind="point">
                            <num>
                               <t v="14."/>
                            </num>

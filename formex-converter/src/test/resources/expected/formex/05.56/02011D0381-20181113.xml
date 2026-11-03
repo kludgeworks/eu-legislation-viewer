@@ -362,48 +362,62 @@
                      <t v="CRITERIA"/>
                   </emphasis>
                </heading>
-               <p>
+               <unit eId="anx/level_2/list_1/pnt_1" kind="point">
                   <num>
                      <t v="1."/>
                   </num>
-                  <t v="Excluded or limited substances and mixtures"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Excluded or limited substances and mixtures"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_2/list_1/pnt_2" kind="point">
                   <num>
                      <t v="2."/>
                   </num>
-                  <t v="Exclusion of specific substances"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Exclusion of specific substances"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_2/list_1/pnt_3" kind="point">
                   <num>
                      <t v="3."/>
                   </num>
-                  <t v="Additional aquatic toxicity requirements"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Additional aquatic toxicity requirements"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_2/list_1/pnt_4" kind="point">
                   <num>
                      <t v="4."/>
                   </num>
-                  <t v="Biodegradability and bioaccumulative potential"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Biodegradability and bioaccumulative potential"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_2/list_1/pnt_5" kind="point">
                   <num>
                      <t v="5."/>
                   </num>
-                  <t v="Renewable raw materials"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Renewable raw materials"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_2/list_1/pnt_6" kind="point">
                   <num>
                      <t v="6."/>
                   </num>
-                  <t v="Minimum technical performance"/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Minimum technical performance"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_2/list_1/pnt_7" kind="point">
                   <num>
                      <t v="7."/>
                   </num>
-                  <t v="Information appearing on the EU Ecolabel"/>
-               </p>
+                  <p>
+                     <t v="Information appearing on the EU Ecolabel"/>
+                  </p>
+               </unit>
             </unit>
             <unit eId="anx/level_2/level_1" kind="level" depth="2">
                <heading>

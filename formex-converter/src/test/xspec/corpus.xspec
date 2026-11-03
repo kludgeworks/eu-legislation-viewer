@@ -57,7 +57,7 @@
       </ACT>
     </x:context>
     <x:expect label="takes the first number" test="$x:result//*:unit[@kind = 'recital']/@eId = 'pbl_1/rct_1'"/>
-    <x:expect label="keeps the second paragraph with its number" test="$x:result//*:unit[@kind = 'recital']/*:p/*:num/*:t/@v = '(2)'"/>
+    <x:expect label="keeps the second paragraph as a point of its own" test="$x:result//*:unit[@kind = 'recital']/*:unit[@kind = 'point']/*:num/*:t/@v = '(2)'"/>
   </x:scenario>
 
   <x:scenario label="Recitals that are only their opening words">

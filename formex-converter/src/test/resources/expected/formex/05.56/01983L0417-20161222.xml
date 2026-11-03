@@ -229,12 +229,14 @@
                      <table cols="2">
                         <tr>
                            <td>
-                              <p>
+                              <unit eId="art_4/par_1/pnt_c/tab_1/tr_1/td_1/idt_1" kind="indent">
                                  <num>
                                     <t v="—"/>
                                  </num>
-                                 <t v="1 ml"/>
-                              </p>
+                                 <p>
+                                    <t v="1 ml"/>
+                                 </p>
+                              </unit>
                            </td>
                            <td>
                               <p>
@@ -244,12 +246,14 @@
                         </tr>
                         <tr>
                            <td>
-                              <p>
+                              <unit eId="art_4/par_1/pnt_c/tab_1/tr_2/td_1/list_2/idt_1" kind="indent">
                                  <num>
                                     <t v="—"/>
                                  </num>
-                                 <t v="1 l"/>
-                              </p>
+                                 <p>
+                                    <t v="1 l"/>
+                                 </p>
+                              </unit>
                            </td>
                            <td>
                               <p>
@@ -259,12 +263,14 @@
                         </tr>
                         <tr>
                            <td>
-                              <p>
+                              <unit eId="art_4/par_1/pnt_c/tab_1/tr_3/td_1/list_3/idt_1" kind="indent">
                                  <num>
                                     <t v="—"/>
                                  </num>
-                                 <t v="1 g"/>
-                              </p>
+                                 <p>
+                                    <t v="1 g"/>
+                                 </p>
+                              </unit>
                            </td>
                            <td>
                               <p>
@@ -274,12 +280,14 @@
                         </tr>
                         <tr>
                            <td>
-                              <p>
+                              <unit eId="art_4/par_1/pnt_c/tab_1/tr_4/td_1/list_4/idt_1" kind="indent">
                                  <num>
                                     <t v="—"/>
                                  </num>
-                                 <t v="1 kg"/>
-                              </p>
+                                 <p>
+                                    <t v="1 kg"/>
+                                 </p>
+                              </unit>
                            </td>
                            <td>
                               <p>

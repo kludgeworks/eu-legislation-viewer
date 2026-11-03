@@ -295,12 +295,14 @@
                </caption>
                <table cols="4">
                   <caption>
-                     <p>
+                     <unit eId="anx_B/pnt_I" kind="point">
                         <num>
                            <t v="I."/>
                         </num>
-                        <t v="Establishments"/>
-                     </p>
+                        <p>
+                           <t v="Establishments"/>
+                        </p>
+                     </unit>
                   </caption>
                   <tr header="true">
                      <td header="true">
@@ -1519,12 +1521,14 @@
                </table>
                <table cols="4">
                   <caption>
-                     <p>
+                     <unit eId="anx_B/pnt_II" kind="point">
                         <num>
                            <t v="II."/>
                         </num>
-                        <t v="Factory vessels"/>
-                     </p>
+                        <p>
+                           <t v="Factory vessels"/>
+                        </p>
+                     </unit>
                   </caption>
                   <tr header="true">
                      <td header="true">

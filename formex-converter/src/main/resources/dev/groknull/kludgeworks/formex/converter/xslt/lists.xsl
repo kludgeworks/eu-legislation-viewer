@@ -25,14 +25,24 @@
     </xsl:call-template>
   </xsl:template>
 
-  <!-- a numbered paragraph outside the hierarchy: in a table cell, an annotation -->
+  <!-- a numbered paragraph outside a list (in a table cell, an annotation, a subparagraph): a point,
+       as a list's numbered item is, holding its text and what follows it (EUR-Lex sets it as one, its
+       number beside it). A run of them is a list of its own, numbered among the lists around it, as a
+       run of stray ITEMs is: its eId is its label's (tab_1/tr_8/td_1/pnt_9.2), or for a number that is
+       only a mark (a dash) an indent's, by its place in the run -->
   <xsl:template match="NP" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
+    <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
-    <xsl:variable name="first-block" as="node()?" select="TXT/node()[f:is-block(.)][1]"/>
-    <xsl:variable name="p" as="element()">
-      <p>
+    <xsl:variable name="label" as="xs:string" select="f:label(NO.P)"/>
+    <!-- a heading line's NP, set as blocks where the heading holds some (a table's title), is no run -->
+    <xsl:variable name="run-base" as="xs:string?" select="if (f:np-point(.)) then f:list-base(f:np-run-start(.), $base) else $base"/>
+    <xsl:variable name="eid" as="xs:string" select="
+        if ($label != '') then f:eid($run-base, 'pnt', $label)
+        else f:eid($run-base, 'idt', string(count(f:np-run-before(.)) + 1))"/>
+    <xsl:variable name="unit" as="element()">
+      <unit eId="{$eid}" kind="{if ($label != '') then 'point' else 'indent'}">
         <xsl:sequence select="f:provenance($m)"/>
         <num>
           <xsl:call-template name="f:inlines">
@@ -40,19 +50,49 @@
             <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           </xsl:call-template>
         </num>
-        <xsl:call-template name="f:inlines">
-          <xsl:with-param name="nodes" as="node()*" select="TXT/node()[empty($first-block) or . &lt;&lt; $first-block]"/>
+        <xsl:call-template name="f:blocks">
+          <xsl:with-param name="nodes" as="node()*" select="TXT/node(), node() except (NO.P, TXT)"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+          <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+          <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+          <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
         </xsl:call-template>
-      </p>
+      </unit>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $p)"/>
-    <xsl:call-template name="f:blocks">
-      <xsl:with-param name="nodes" as="node()*" select="TXT/node()[exists($first-block) and not(. &lt;&lt; $first-block)], node() except (NO.P, TXT)"/>
-      <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
-      <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
-    </xsl:call-template>
+    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
   </xsl:template>
+
+  <!-- the NP point just before one in its run: its sibling, or where each is a P's only element, the
+       one in the P before -->
+  <xsl:function name="f:np-previous" as="element(NP)?">
+    <xsl:param name="np" as="element(NP)"/>
+    <xsl:variable name="item" as="element()" select="if ($np/parent::P[count(*) = 1]) then $np/.. else $np"/>
+    <xsl:variable name="previous" as="element()?" select="$item/preceding-sibling::*[1]"/>
+    <xsl:sequence select="($previous/self::NP, $previous/self::P[count(*) = 1]/NP)[f:np-point(.)][1]"/>
+  </xsl:function>
+
+  <!-- the NP points before one in its run, nearest first -->
+  <xsl:function name="f:np-run-before" as="element(NP)*">
+    <xsl:param name="np" as="element(NP)"/>
+    <xsl:variable name="previous" as="element(NP)?" select="f:np-previous($np)"/>
+    <xsl:sequence select="if (exists($previous)) then ($previous, f:np-run-before($previous)) else ()"/>
+  </xsl:function>
+
+  <xsl:function name="f:np-run-start" as="element(NP)">
+    <xsl:param name="np" as="element(NP)"/>
+    <xsl:sequence select="(f:np-run-before($np)[last()], $np)[1]"/>
+  </xsl:function>
+
+  <!-- whether an NP is a point of a run (the template above): not one that numbers what holds it, a
+       list's item, a recital of the preamble, a level, a row group; nor a heading's line -->
+  <xsl:function name="f:np-point" as="xs:boolean">
+    <xsl:param name="np" as="element(NP)"/>
+    <xsl:sequence select="empty($np/parent::*[self::ITEM or self::TI or self::STI or self::TI.BLK])
+        and empty($np/parent::CONSID[f:preamble-unit(.)][NP[1] is $np])
+        and empty($np/parent::GR.SEQ[f:level-num(.)/.. is $np])"/>
+  </xsl:function>
 
   <xsl:variable name="f:list-kinds" as="map(xs:string, xs:string)" select="map{
       'ARAB': 'arabic', 'alpha': 'alpha', 'ALPHA': 'alphaUpper', 'roman': 'roman', 'ROMAN': 'romanUpper',
@@ -67,7 +107,7 @@
         or self::DLIST.ITEM or self::CONS.ANNEX or self::ANNEX or self::QUOT.S or self::TBL
         or self::CONSID[f:preamble-unit(.)] or self::VISA[f:preamble-unit(.)] or self::NOTE or self::DIVISION
         or self::CORRECTION or self::OLD.CORR or self::NEW.CORR
-        or self::CONS.DOC.GEN[parent::CONS.DOC.GEN] or self::LETTER or self::SUBDIV][1]"/>
+        or self::CONS.DOC.GEN[parent::CONS.DOC.GEN] or self::LETTER or self::SUBDIV or self::NP[f:np-point(.)]][1]"/>
   </xsl:function>
 
   <xsl:function name="f:preamble-unit" as="xs:boolean">
@@ -100,7 +140,7 @@
 
   <!-- the lists of each scope, counted in document order: what each list's number is -->
   <xsl:accumulator name="f:lists" as="map(xs:string, xs:integer)" initial-value="map{}">
-    <xsl:accumulator-rule match="LIST | DLIST | ITEM[f:stray-start(.)] | DLIST.ITEM[f:stray-start(.)]"
+    <xsl:accumulator-rule match="LIST | DLIST | ITEM[f:stray-start(.)] | DLIST.ITEM[f:stray-start(.)] | NP[f:np-point(.)][empty(f:np-previous(.))]"
                           select="let $k := f:scope-key(.) return map:put($value, $k, ($value($k), 0)[1] + 1)"/>
   </xsl:accumulator>
 

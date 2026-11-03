@@ -49,103 +49,119 @@
       <p>
          <t v="HAVE AGREED AS FOLLOWS:"/>
       </p>
-      <p>
+      <unit eId="pnt_1" kind="point">
          <num>
             <t v="1."/>
          </num>
-         <t v="The purpose of this Agreement is to implement budgetary discipline and to improve the functioning of the annual budgetary procedure and cooperation between the institutions on budgetary matters as well as to ensure sound financial management."/>
-      </p>
-      <p>
+         <p>
+            <t v="The purpose of this Agreement is to implement budgetary discipline and to improve the functioning of the annual budgetary procedure and cooperation between the institutions on budgetary matters as well as to ensure sound financial management."/>
+         </p>
+      </unit>
+      <unit eId="pnt_2" kind="point">
          <num>
             <t v="2."/>
          </num>
-         <t v="Budgetary discipline under this Agreement covers all expenditure. It is binding on all the institutions for as long as this Agreement is in force."/>
-      </p>
-      <p>
+         <p>
+            <t v="Budgetary discipline under this Agreement covers all expenditure. It is binding on all the institutions for as long as this Agreement is in force."/>
+         </p>
+      </unit>
+      <unit eId="pnt_3" kind="point">
          <num>
             <t v="3."/>
          </num>
-         <t v="This Agreement does not alter the respective budgetary powers of the institutions, as laid down in the Treaties. Where reference is made to this Point, the Council will act by a qualified majority and the European Parliament by a majority of its members and three fifths of the votes cast, in compliance with the voting rules laid down in the fifth subparagraph of Article 272(9) of the Treaty establishing the European Community (hereinafter referred to as the "/>
-         <quote startQuote="‘" endQuote="’">
-            <t v="EC Treaty"/>
-         </quote>
-         <t v=")."/>
-      </p>
-      <p>
+         <p>
+            <t v="This Agreement does not alter the respective budgetary powers of the institutions, as laid down in the Treaties. Where reference is made to this Point, the Council will act by a qualified majority and the European Parliament by a majority of its members and three fifths of the votes cast, in compliance with the voting rules laid down in the fifth subparagraph of Article 272(9) of the Treaty establishing the European Community (hereinafter referred to as the "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="EC Treaty"/>
+            </quote>
+            <t v=")."/>
+         </p>
+      </unit>
+      <unit eId="pnt_4" kind="point">
          <num>
             <t v="4."/>
          </num>
-         <t v="Should a Treaty revision with budgetary implications occur during the multiannual financial framework 2007 to 2013 (hereinafter referred to as "/>
-         <quote startQuote="‘" endQuote="’">
-            <t v="the financial framework"/>
-         </quote>
-         <t v="), the necessary adjustments will be made accordingly."/>
-      </p>
-      <p>
+         <p>
+            <t v="Should a Treaty revision with budgetary implications occur during the multiannual financial framework 2007 to 2013 (hereinafter referred to as "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="the financial framework"/>
+            </quote>
+            <t v="), the necessary adjustments will be made accordingly."/>
+         </p>
+      </unit>
+      <unit eId="pnt_5" kind="point">
          <num>
             <t v="5."/>
          </num>
-         <t v="Any amendment of this Agreement requires the consent of all the institutions. Changes to the financial framework must be made in accordance with the procedures laid down for that purpose in this Agreement."/>
-      </p>
-      <p>
+         <p>
+            <t v="Any amendment of this Agreement requires the consent of all the institutions. Changes to the financial framework must be made in accordance with the procedures laid down for that purpose in this Agreement."/>
+         </p>
+      </unit>
+      <unit eId="pnt_6" kind="point">
          <num>
             <t v="6."/>
          </num>
-         <t v="This Agreement is in three parts:"/>
-      </p>
-      <list kind="dash">
-         <unit eId="idt_1" kind="indent">
-            <p>
-               <t v="Part I contains a definition and implementing provisions for the financial framework and applies for the duration of that financial framework."/>
-            </p>
-         </unit>
-         <unit eId="idt_2" kind="indent">
-            <p>
-               <t v="Part II relates to improvement of interinstitutional collaboration during the budgetary procedure."/>
-            </p>
-         </unit>
-         <unit eId="idt_3" kind="indent">
-            <p>
-               <t v="Part III contains provisions related to sound financial management of EU funds."/>
-            </p>
-         </unit>
-      </list>
-      <p>
+         <p>
+            <t v="This Agreement is in three parts:&#xA;"/>
+         </p>
+         <list kind="dash">
+            <unit eId="pnt_6/idt_1" kind="indent">
+               <p>
+                  <t v="Part I contains a definition and implementing provisions for the financial framework and applies for the duration of that financial framework."/>
+               </p>
+            </unit>
+            <unit eId="pnt_6/idt_2" kind="indent">
+               <p>
+                  <t v="Part II relates to improvement of interinstitutional collaboration during the budgetary procedure."/>
+               </p>
+            </unit>
+            <unit eId="pnt_6/idt_3" kind="indent">
+               <p>
+                  <t v="Part III contains provisions related to sound financial management of EU funds."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="pnt_7" kind="point">
          <num>
             <t v="7."/>
          </num>
-         <t v="The Commission will, whenever it considers it necessary and in any event at the same time as it presents a proposal for a new financial framework pursuant to Point 30, submit a report on the application of this Agreement, accompanied where necessary by a proposal for amendments."/>
-      </p>
-      <p>
+         <p>
+            <t v="The Commission will, whenever it considers it necessary and in any event at the same time as it presents a proposal for a new financial framework pursuant to Point 30, submit a report on the application of this Agreement, accompanied where necessary by a proposal for amendments."/>
+         </p>
+      </unit>
+      <unit eId="pnt_8" kind="point">
          <num>
             <t v="8."/>
          </num>
-         <t v="This Agreement enters into force on "/>
-         <date asWritten="1 January 2007" date="2007-01-01"/>
-         <t v=" and replaces:"/>
-      </p>
-      <list kind="dash">
-         <unit eId="list_2/idt_1" kind="indent">
-            <p>
-               <t v="the Interinstitutional Agreement of "/>
-               <date asWritten="6 May 1999" date="1999-05-06"/>
-               <t v=" between the European Parliament, the Council and the Commission on budgetary discipline and improvement of the budgetary procedure"/>
-               <noteRef href="#note_1" marker="1"/>
-               <t v=","/>
-            </p>
-         </unit>
-         <unit eId="list_2/idt_2" kind="indent">
-            <p>
-               <t v="the Interinstitutional Agreement of "/>
-               <date asWritten="7 November 2002" date="2002-11-07"/>
-               <t v=" between the European Parliament, the Council and the Commission on the financing of the European Union Solidarity Fund supplementing the Interinstitutional Agreement of "/>
-               <date asWritten="6 May 1999" date="1999-05-06"/>
-               <t v=" on budgetary discipline and improvement of the budgetary procedure"/>
-               <noteRef href="#note_2" marker="2"/>
-               <t v="."/>
-            </p>
-         </unit>
-      </list>
+         <p>
+            <t v="This Agreement enters into force on "/>
+            <date asWritten="1 January 2007" date="2007-01-01"/>
+            <t v=" and replaces:&#xA;"/>
+         </p>
+         <list kind="dash">
+            <unit eId="pnt_8/idt_1" kind="indent">
+               <p>
+                  <t v="the Interinstitutional Agreement of "/>
+                  <date asWritten="6 May 1999" date="1999-05-06"/>
+                  <t v=" between the European Parliament, the Council and the Commission on budgetary discipline and improvement of the budgetary procedure"/>
+                  <noteRef href="#note_1" marker="1"/>
+                  <t v=","/>
+               </p>
+            </unit>
+            <unit eId="pnt_8/idt_2" kind="indent">
+               <p>
+                  <t v="the Interinstitutional Agreement of "/>
+                  <date asWritten="7 November 2002" date="2002-11-07"/>
+                  <t v=" between the European Parliament, the Council and the Commission on the financing of the European Union Solidarity Fund supplementing the Interinstitutional Agreement of "/>
+                  <date asWritten="6 May 1999" date="1999-05-06"/>
+                  <t v=" on budgetary discipline and improvement of the budgetary procedure"/>
+                  <noteRef href="#note_2" marker="2"/>
+                  <t v="."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
       <unit eId="level_1" kind="level" depth="1">
          <heading>
             <t v="PART I — FINANCIAL FRAMEWORK"/>
@@ -161,74 +177,88 @@
          <heading>
             <t v="Contents and scope of the financial framework&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_A/pnt_9" kind="point">
             <num>
                <t v="9."/>
             </num>
-            <t v="The financial framework is set out in Annex I. It constitutes the reference framework for interinstitutional budgetary discipline."/>
-         </p>
-         <p>
+            <p>
+               <t v="The financial framework is set out in Annex I. It constitutes the reference framework for interinstitutional budgetary discipline."/>
+            </p>
+         </unit>
+         <unit eId="pnt_A/pnt_10" kind="point">
             <num>
                <t v="10."/>
             </num>
-            <t v="The financial framework is intended to ensure that, in the medium term, European Union expenditure, broken down by broad category, develops in an orderly manner and within the limits of own resources."/>
-         </p>
-         <p>
+            <p>
+               <t v="The financial framework is intended to ensure that, in the medium term, European Union expenditure, broken down by broad category, develops in an orderly manner and within the limits of own resources."/>
+            </p>
+         </unit>
+         <unit eId="pnt_A/pnt_11" kind="point">
             <num>
                <t v="11."/>
             </num>
-            <t v="The financial framework establishes, for each of the years 2007 to 2013 and for each heading or subheading, amounts of expenditure in terms of appropriations for commitments. Overall annual totals of expenditure are also shown in terms of both appropriations for commitments and appropriations for payments."/>
-         </p>
-         <p>
-            <t v="All those amounts are expressed in 2004 prices."/>
-         </p>
-         <p>
-            <t v="The financial framework does not take account of budget items financed by revenue earmarked within the meaning of Article 18 of the Financial Regulation of "/>
-            <date asWritten="25 June 2002" date="2002-06-25"/>
-            <t v=" applicable to the general budget of the European Communities"/>
-            <noteRef href="#note_3" marker="3"/>
-            <t v=", hereinafter referred to as the "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Financial Regulation"/>
-            </quote>
-         </p>
-         <p>
-            <t v="Information relating to operations not included in the general budget of the European Union and the foreseeable development of the various categories of Community own resources is set out, by way of indication, in separate tables. This information will be updated annually when the technical adjustment is made to the financial framework."/>
-         </p>
-         <p>
+            <p>
+               <t v="The financial framework establishes, for each of the years 2007 to 2013 and for each heading or subheading, amounts of expenditure in terms of appropriations for commitments. Overall annual totals of expenditure are also shown in terms of both appropriations for commitments and appropriations for payments.&#xA;"/>
+            </p>
+            <p>
+               <t v="All those amounts are expressed in 2004 prices."/>
+            </p>
+            <p>
+               <t v="The financial framework does not take account of budget items financed by revenue earmarked within the meaning of Article 18 of the Financial Regulation of "/>
+               <date asWritten="25 June 2002" date="2002-06-25"/>
+               <t v=" applicable to the general budget of the European Communities"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=", hereinafter referred to as the "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Financial Regulation"/>
+               </quote>
+            </p>
+            <p>
+               <t v="Information relating to operations not included in the general budget of the European Union and the foreseeable development of the various categories of Community own resources is set out, by way of indication, in separate tables. This information will be updated annually when the technical adjustment is made to the financial framework."/>
+            </p>
+         </unit>
+         <unit eId="pnt_A/pnt_12" kind="point">
             <num>
                <t v="12."/>
             </num>
-            <t v="The institutions acknowledge that each of the absolute amounts shown in the financial framework represents an annual ceiling on expenditure under the general budget of the European Union. Without prejudice to any changes in those ceilings in accordance with the provisions of this Agreement, the institutions undertake to use their respective powers in such a way as to comply with the various annual expenditure ceilings during each budgetary procedure and when implementing the budget for the year concerned."/>
-         </p>
-         <p>
+            <p>
+               <t v="The institutions acknowledge that each of the absolute amounts shown in the financial framework represents an annual ceiling on expenditure under the general budget of the European Union. Without prejudice to any changes in those ceilings in accordance with the provisions of this Agreement, the institutions undertake to use their respective powers in such a way as to comply with the various annual expenditure ceilings during each budgetary procedure and when implementing the budget for the year concerned."/>
+            </p>
+         </unit>
+         <unit eId="pnt_A/pnt_13" kind="point">
             <num>
                <t v="13."/>
             </num>
-            <t v="By concluding this Agreement, the two arms of the budgetary authority agree to accept the rates of increase for non-compulsory expenditure deriving from the budgets established within the ceilings set by the financial framework for its entire duration."/>
-         </p>
-         <p>
-            <t v="Except in sub-heading 1B "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Cohesion for growth and employment"/>
-            </quote>
-            <t v=" of the financial framework, for the purposes of sound financial management, the institutions will ensure as far as possible during the budgetary procedure and at the time of the budget's adoption that sufficient margins are left available beneath the ceilings for the various headings."/>
-         </p>
-         <p>
+            <p>
+               <t v="By concluding this Agreement, the two arms of the budgetary authority agree to accept the rates of increase for non-compulsory expenditure deriving from the budgets established within the ceilings set by the financial framework for its entire duration.&#xA;"/>
+            </p>
+            <p>
+               <t v="Except in sub-heading 1B "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Cohesion for growth and employment"/>
+               </quote>
+               <t v=" of the financial framework, for the purposes of sound financial management, the institutions will ensure as far as possible during the budgetary procedure and at the time of the budget's adoption that sufficient margins are left available beneath the ceilings for the various headings."/>
+            </p>
+         </unit>
+         <unit eId="pnt_A/pnt_14" kind="point">
             <num>
                <t v="14."/>
             </num>
-            <t v="No act adopted under the codecision procedure by the European Parliament and the Council nor any act adopted by the Council which involves exceeding the appropriations available in the budget or the allocations available in the financial framework in accordance with Point 12 may be implemented in financial terms until the budget has been amended and, if necessary, the financial framework has been appropriately revised in accordance with the relevant procedure for each of these cases."/>
-         </p>
-         <p>
+            <p>
+               <t v="No act adopted under the codecision procedure by the European Parliament and the Council nor any act adopted by the Council which involves exceeding the appropriations available in the budget or the allocations available in the financial framework in accordance with Point 12 may be implemented in financial terms until the budget has been amended and, if necessary, the financial framework has been appropriately revised in accordance with the relevant procedure for each of these cases."/>
+            </p>
+         </unit>
+         <unit eId="pnt_A/pnt_15" kind="point">
             <num>
                <t v="15."/>
             </num>
-            <t v="For each of the years covered by the financial framework, the total appropriations for payments required, after annual adjustment and taking account of any other adjustments or revisions, must not be such as to produce a call-in rate for own resources that exceeds the own resources ceiling."/>
-         </p>
-         <p>
-            <t v="If need be, the two arms of the budgetary authority will decide, in accordance with Point 3, to lower the ceilings set in the financial framework in order to ensure compliance with the own resources ceiling."/>
-         </p>
+            <p>
+               <t v="For each of the years covered by the financial framework, the total appropriations for payments required, after annual adjustment and taking account of any other adjustments or revisions, must not be such as to produce a call-in rate for own resources that exceeds the own resources ceiling.&#xA;"/>
+            </p>
+            <p>
+               <t v="If need be, the two arms of the budgetary authority will decide, in accordance with Point 3, to lower the ceilings set in the financial framework in order to ensure compliance with the own resources ceiling."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_B" kind="level" depth="2">
          <num>
@@ -242,78 +272,88 @@
          <heading>
             <t v="Technical adjustments"/>
          </heading>
-         <p>
+         <unit eId="pnt_B/level_1/pnt_16" kind="point">
             <num>
                <t v="16."/>
             </num>
-            <t v="Each year the Commission, acting ahead of the budgetary procedure for year n+1, will make the following technical adjustments to the financial framework:"/>
-         </p>
-         <list kind="alpha">
-            <unit eId="pnt_B/level_1/pnt_a" kind="point">
-               <num>
-                  <t v="(a)"/>
-               </num>
-               <p>
-                  <t v="revaluation, at year n+1 prices, of the ceilings and of the overall figures for appropriations for commitments and appropriations for payments;&#xA;"/>
-               </p>
-            </unit>
-            <unit eId="pnt_B/level_1/pnt_b" kind="point">
-               <num>
-                  <t v="(b)"/>
-               </num>
-               <p>
-                  <t v="calculation of the margin available under the own resources ceiling.&#xA;"/>
-               </p>
-            </unit>
-         </list>
-         <p>
-            <t v="The Commission will make those technical adjustments on the basis of a fixed deflator of 2 % a year."/>
-         </p>
-         <p>
-            <t v="The results of those technical adjustments and the underlying economic forecasts will be communicated to the two arms of the budgetary authority."/>
-         </p>
-         <p>
-            <t v="No further technical adjustments will be made in respect of the year concerned, either during the year or as ex-post corrections during subsequent years."/>
-         </p>
-         <p>
+            <p>
+               <t v="Each year the Commission, acting ahead of the budgetary procedure for year n+1, will make the following technical adjustments to the financial framework:&#xA;"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="pnt_B/level_1/pnt_16/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="revaluation, at year n+1 prices, of the ceilings and of the overall figures for appropriations for commitments and appropriations for payments;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="pnt_B/level_1/pnt_16/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="calculation of the margin available under the own resources ceiling.&#xA;"/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="The Commission will make those technical adjustments on the basis of a fixed deflator of 2 % a year."/>
+            </p>
+            <p>
+               <t v="The results of those technical adjustments and the underlying economic forecasts will be communicated to the two arms of the budgetary authority."/>
+            </p>
+            <p>
+               <t v="No further technical adjustments will be made in respect of the year concerned, either during the year or as ex-post corrections during subsequent years."/>
+            </p>
+         </unit>
+         <unit eId="pnt_B/level_1/pnt_17" kind="point">
             <num>
                <t v="17."/>
             </num>
-            <t v="In its technical adjustment for the year 2011, if it is established that any Member State's cumulated GDP for the years 2007-2009 has diverged by more than +/- 5 % from the cumulated GDP estimated when drawing up this Agreement, the Commission will adjust the amounts allocated from funds supporting cohesion to the Member State concerned for that period. The total net effect, whether positive or negative, of those adjustments may not exceed EUR 3 billion. If the net effect is positive, total additional resources shall be limited to the level of under-spending against the ceilings for sub-heading 1B for the years 2007-2010. The required adjustments will be spread in equal proportions over the years 2011-2013 and the corresponding ceilings will be modified accordingly."/>
-         </p>
+            <p>
+               <t v="In its technical adjustment for the year 2011, if it is established that any Member State's cumulated GDP for the years 2007-2009 has diverged by more than +/- 5 % from the cumulated GDP estimated when drawing up this Agreement, the Commission will adjust the amounts allocated from funds supporting cohesion to the Member State concerned for that period. The total net effect, whether positive or negative, of those adjustments may not exceed EUR 3 billion. If the net effect is positive, total additional resources shall be limited to the level of under-spending against the ceilings for sub-heading 1B for the years 2007-2010. The required adjustments will be spread in equal proportions over the years 2011-2013 and the corresponding ceilings will be modified accordingly."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_B/level_2" kind="level" depth="3">
          <heading>
             <t v="Adjustments connected with implementation"/>
          </heading>
-         <p>
+         <unit eId="pnt_B/level_2/pnt_18" kind="point">
             <num>
                <t v="18."/>
             </num>
-            <t v="When notifying the two arms of the budgetary authority of the technical adjustments to the financial framework, the Commission will present any proposals for adjustments to the total appropriations for payments which it considers necessary, in the light of implementation, to ensure an orderly progression in relation to the appropriations for commitments. The European Parliament and the Council will take decisions on those proposals before 1 May of year n, in accordance with Point 3."/>
-         </p>
+            <p>
+               <t v="When notifying the two arms of the budgetary authority of the technical adjustments to the financial framework, the Commission will present any proposals for adjustments to the total appropriations for payments which it considers necessary, in the light of implementation, to ensure an orderly progression in relation to the appropriations for commitments. The European Parliament and the Council will take decisions on those proposals before 1 May of year n, in accordance with Point 3."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_B/level_3" kind="level" depth="3">
          <heading>
             <t v="Updating of forecasts for payment appropriations after 2013"/>
          </heading>
-         <p>
+         <unit eId="pnt_B/level_3/pnt_19" kind="point">
             <num>
                <t v="19."/>
             </num>
-            <t v="In 2010, the Commission will update the forecasts for payment appropriations after 2013. That update will take into account the real implementation of budget appropriations for commitments and budget appropriations for payments, as well as the implementation forecasts. It will also consider the rules defined to ensure that payment appropriations develop in an orderly manner compared to commitment appropriations and the growth forecasts of the European Union Gross National Income (GNI)."/>
-         </p>
+            <p>
+               <t v="In 2010, the Commission will update the forecasts for payment appropriations after 2013. That update will take into account the real implementation of budget appropriations for commitments and budget appropriations for payments, as well as the implementation forecasts. It will also consider the rules defined to ensure that payment appropriations develop in an orderly manner compared to commitment appropriations and the growth forecasts of the European Union Gross National Income (GNI)."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_B/level_4" kind="level" depth="3">
          <heading>
             <t v="Adjustments connected with excessive government deficit"/>
          </heading>
-         <p>
+         <unit eId="pnt_B/level_4/pnt_20" kind="point">
             <num>
                <t v="20."/>
             </num>
-            <t v="In the case of the lifting of a suspension of budgetary commitments concerning the Cohesion Fund in the context of an excessive government deficit procedure, the Council, on a proposal from the Commission and in compliance with the relevant basic act, will decide on a transfer of suspended commitments to the following years. Suspended commitments of year n cannot be re-budgeted beyond year n+2."/>
-         </p>
+            <p>
+               <t v="In the case of the lifting of a suspension of budgetary commitments concerning the Cohesion Fund in the context of an excessive government deficit procedure, the Council, on a proposal from the Commission and in compliance with the relevant basic act, will decide on a transfer of suspended commitments to the following years. Suspended commitments of year n cannot be re-budgeted beyond year n+2."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_C" kind="level" depth="2">
          <num>
@@ -322,39 +362,45 @@
          <heading>
             <t v="Revision of the financial framework&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_C/pnt_21" kind="point">
             <num>
                <t v="21."/>
             </num>
-            <t v="In addition to the regular technical adjustments and adjustments in line with the conditions of implementation, in the event of unforeseen circumstances the financial framework may, on a proposal from the Commission, be revised in compliance with the own resources ceiling."/>
-         </p>
-         <p>
+            <p>
+               <t v="In addition to the regular technical adjustments and adjustments in line with the conditions of implementation, in the event of unforeseen circumstances the financial framework may, on a proposal from the Commission, be revised in compliance with the own resources ceiling."/>
+            </p>
+         </unit>
+         <unit eId="pnt_C/pnt_22" kind="point">
             <num>
                <t v="22."/>
             </num>
-            <t v="As a general rule, any proposal for revision under Point 21 must be presented and adopted before the start of the budgetary procedure for the year or the first of the years concerned."/>
-         </p>
-         <p>
-            <t v="Any decision to revise the financial framework by up to 0,03 % of the European Union GNI within the margin for unforeseen expenditure will be taken jointly by the two arms of the budgetary authority acting in accordance with Point 3."/>
-         </p>
-         <p>
-            <t v="Any revision of the financial framework above 0,03 % of the European Union GNI within the margin for unforeseen expenditure will be taken jointly by the two arms of the budgetary authority, with the Council acting unanimously."/>
-         </p>
-         <p>
+            <p>
+               <t v="As a general rule, any proposal for revision under Point 21 must be presented and adopted before the start of the budgetary procedure for the year or the first of the years concerned.&#xA;"/>
+            </p>
+            <p>
+               <t v="Any decision to revise the financial framework by up to 0,03 % of the European Union GNI within the margin for unforeseen expenditure will be taken jointly by the two arms of the budgetary authority acting in accordance with Point 3."/>
+            </p>
+            <p>
+               <t v="Any revision of the financial framework above 0,03 % of the European Union GNI within the margin for unforeseen expenditure will be taken jointly by the two arms of the budgetary authority, with the Council acting unanimously."/>
+            </p>
+         </unit>
+         <unit eId="pnt_C/pnt_23" kind="point">
             <num>
                <t v="23."/>
             </num>
-            <t v="Without prejudice to Point 40, the institutions will examine the scope for reallocating expenditure between the programmes covered by the heading concerned by the revision, with particular reference to any expected under-utilisation of appropriations. The objective should be that a significant amount, in absolute terms and as a percentage of the new expenditure planned, should be within the existing ceiling for the heading."/>
-         </p>
-         <p>
-            <t v="The institutions will examine the scope for offsetting any raising of the ceiling for one heading by the lowering of the ceiling for another."/>
-         </p>
-         <p>
-            <t v="Any revision of the compulsory expenditure in the financial framework must not lead to a reduction in the amount available for non-compulsory expenditure."/>
-         </p>
-         <p>
-            <t v="Any revision must maintain an appropriate relationship between commitments and payments."/>
-         </p>
+            <p>
+               <t v="Without prejudice to Point 40, the institutions will examine the scope for reallocating expenditure between the programmes covered by the heading concerned by the revision, with particular reference to any expected under-utilisation of appropriations. The objective should be that a significant amount, in absolute terms and as a percentage of the new expenditure planned, should be within the existing ceiling for the heading.&#xA;"/>
+            </p>
+            <p>
+               <t v="The institutions will examine the scope for offsetting any raising of the ceiling for one heading by the lowering of the ceiling for another."/>
+            </p>
+            <p>
+               <t v="Any revision of the compulsory expenditure in the financial framework must not lead to a reduction in the amount available for non-compulsory expenditure."/>
+            </p>
+            <p>
+               <t v="Any revision must maintain an appropriate relationship between commitments and payments."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_D" kind="level" depth="2">
          <num>
@@ -363,12 +409,14 @@
          <heading>
             <t v="Consequences of the absence of a joint decision on the adjustment or revision of the financial framework&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_D/pnt_24" kind="point">
             <num>
                <t v="24."/>
             </num>
-            <t v="If the European Parliament and the Council fail to agree on any adjustment or revision of the financial framework proposed by the Commission, the amounts set previously will, after the annual technical adjustment, continue to apply as the expenditure ceilings for the year in question."/>
-         </p>
+            <p>
+               <t v="If the European Parliament and the Council fail to agree on any adjustment or revision of the financial framework proposed by the Commission, the amounts set previously will, after the annual technical adjustment, continue to apply as the expenditure ceilings for the year in question."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_E" kind="level" depth="2">
          <num>
@@ -377,24 +425,26 @@
          <heading>
             <t v="Emergency Aid Reserve&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_E/pnt_25" kind="point">
             <num>
                <t v="25."/>
             </num>
-            <t v="The Emergency Aid Reserve is intended to allow a rapid response to the specific aid requirements of third countries following events which could not be foreseen when the budget was established, first and foremost for humanitarian operations, but also for civil crisis management and protection where circumstances so require. The annual amount of the Reserve is fixed at EUR 221 million for the duration of the financial framework, in constant prices."/>
-         </p>
-         <p>
-            <t v="The Reserve is entered in the general budget of the European Union as a provision. The corresponding commitment appropriations will be entered in the budget, if necessary, over and above the ceilings laid down in Annex I."/>
-         </p>
-         <p>
-            <t v="When the Commission considers that the Reserve needs to be called on, it will present to the two arms of the budgetary authority a proposal for a transfer from the Reserve to the corresponding budgetary lines."/>
-         </p>
-         <p>
-            <t v="Any Commission proposal for a transfer to draw on the Reserve must, however, be preceded by an examination of the scope for reallocating appropriations."/>
-         </p>
-         <p>
-            <t v="At the same time as it presents its proposal for a transfer, the Commission will initiate a trilogue procedure, if necessary in a simplified form, to secure agreement of the two arms of the budgetary authority on the need to use the Reserve and on the amount required. The transfers will be made in accordance with Article 26 of the Financial Regulation."/>
-         </p>
+            <p>
+               <t v="The Emergency Aid Reserve is intended to allow a rapid response to the specific aid requirements of third countries following events which could not be foreseen when the budget was established, first and foremost for humanitarian operations, but also for civil crisis management and protection where circumstances so require. The annual amount of the Reserve is fixed at EUR 221 million for the duration of the financial framework, in constant prices.&#xA;"/>
+            </p>
+            <p>
+               <t v="The Reserve is entered in the general budget of the European Union as a provision. The corresponding commitment appropriations will be entered in the budget, if necessary, over and above the ceilings laid down in Annex I."/>
+            </p>
+            <p>
+               <t v="When the Commission considers that the Reserve needs to be called on, it will present to the two arms of the budgetary authority a proposal for a transfer from the Reserve to the corresponding budgetary lines."/>
+            </p>
+            <p>
+               <t v="Any Commission proposal for a transfer to draw on the Reserve must, however, be preceded by an examination of the scope for reallocating appropriations."/>
+            </p>
+            <p>
+               <t v="At the same time as it presents its proposal for a transfer, the Commission will initiate a trilogue procedure, if necessary in a simplified form, to secure agreement of the two arms of the budgetary authority on the need to use the Reserve and on the amount required. The transfers will be made in accordance with Article 26 of the Financial Regulation."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_F" kind="level" depth="2">
          <num>
@@ -403,24 +453,26 @@
          <heading>
             <t v="European Union Solidarity Fund&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_F/pnt_26" kind="point">
             <num>
                <t v="26."/>
             </num>
-            <t v="The European Union Solidarity Fund is intended to allow rapid financial assistance in the event of major disasters occurring on the territory of a Member State or of a candidate country, as defined in the relevant basic act. There will be a ceiling on the annual amount available for the Fund of EUR 1 billion (current prices). On 1 October each year, at least one quarter of the annual amount will remain available in order to cover needs arising until the end of the year. The portion of the annual amount not entered in the budget may not be rolled over in the following years."/>
-         </p>
-         <p>
-            <t v="In exceptional cases and if the remaining financial resources available in the Fund in the year of occurrence of the disaster, as defined in the relevant basic act, are not sufficient to cover the amount of assistance considered necessary by the budgetary authority, the Commission may propose that the difference be financed through the annual amounts available for the following year. The annual amount of the Fund to be budgeted in each year may not, under any circumstances, exceed EUR 1 billion."/>
-         </p>
-         <p>
-            <t v="When the conditions for mobilising the Fund as set out in the relevant basic act are met, the Commission will make a proposal to deploy it. Where there is scope for reallocating appropriations under the heading requiring additional expenditure, the Commission shall take this into account when making the necessary proposal, in accordance with the Financial Regulation, by means of the appropriate budgetary instrument. The decision to deploy the Fund will be taken jointly by the two arms of the budgetary authority in accordance with Point 3."/>
-         </p>
-         <p>
-            <t v="The corresponding commitment appropriations will be entered in the budget, if necessary, over and above the ceilings of the relevant headings laid down in Annex I."/>
-         </p>
-         <p>
-            <t v="At the same time as it presents its proposal for a decision to deploy the Fund, the Commission will initiate a trilogue procedure, if necessary in a simplified form, to secure agreement of the two arms of the budgetary authority on the need to use the Fund and on the amount required."/>
-         </p>
+            <p>
+               <t v="The European Union Solidarity Fund is intended to allow rapid financial assistance in the event of major disasters occurring on the territory of a Member State or of a candidate country, as defined in the relevant basic act. There will be a ceiling on the annual amount available for the Fund of EUR 1 billion (current prices). On 1 October each year, at least one quarter of the annual amount will remain available in order to cover needs arising until the end of the year. The portion of the annual amount not entered in the budget may not be rolled over in the following years.&#xA;"/>
+            </p>
+            <p>
+               <t v="In exceptional cases and if the remaining financial resources available in the Fund in the year of occurrence of the disaster, as defined in the relevant basic act, are not sufficient to cover the amount of assistance considered necessary by the budgetary authority, the Commission may propose that the difference be financed through the annual amounts available for the following year. The annual amount of the Fund to be budgeted in each year may not, under any circumstances, exceed EUR 1 billion."/>
+            </p>
+            <p>
+               <t v="When the conditions for mobilising the Fund as set out in the relevant basic act are met, the Commission will make a proposal to deploy it. Where there is scope for reallocating appropriations under the heading requiring additional expenditure, the Commission shall take this into account when making the necessary proposal, in accordance with the Financial Regulation, by means of the appropriate budgetary instrument. The decision to deploy the Fund will be taken jointly by the two arms of the budgetary authority in accordance with Point 3."/>
+            </p>
+            <p>
+               <t v="The corresponding commitment appropriations will be entered in the budget, if necessary, over and above the ceilings of the relevant headings laid down in Annex I."/>
+            </p>
+            <p>
+               <t v="At the same time as it presents its proposal for a decision to deploy the Fund, the Commission will initiate a trilogue procedure, if necessary in a simplified form, to secure agreement of the two arms of the budgetary authority on the need to use the Fund and on the amount required."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_G" kind="level" depth="2">
          <num>
@@ -429,24 +481,26 @@
          <heading>
             <t v="Flexibility Instrument&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_G/pnt_27" kind="point">
             <num>
                <t v="27."/>
             </num>
-            <t v="The Flexibility Instrument with an annual ceiling of EUR 200 million (current prices) is intended to allow the financing, for a given financial year and up to the amount indicated, of clearly identified expenditure which could not be financed within the limits of the ceilings available for one or more other headings."/>
-         </p>
-         <p>
-            <t v="The portion of the annual amount which is not used may be carried over up to year n+2. If the Flexibility Instrument is mobilised, any carryovers will be drawn on first, in order of age. The portion of the annual amount from year n which is not used in year n+2 will lapse."/>
-         </p>
-         <p>
-            <t v="The Commission will make a proposal for the Flexibility Instrument to be used after it has examined all possibilities for re-allocating appropriations under the heading requiring additional expenditure."/>
-         </p>
-         <p>
-            <t v="The proposal will concern the principle of making use of the Flexibility Instrument and will identify the needs to be covered and the amount. It may be presented, for any given financial year, during the budgetary procedure. The Commission proposal will be included in the preliminary draft budget or accompanied, in accordance with the Financial Regulation, by the appropriate budgetary instrument."/>
-         </p>
-         <p>
-            <t v="The decision to deploy the Flexibility Instrument will be taken jointly by the two arms of the budgetary authority in accordance with Point 3. Agreement will be reached by means of the conciliation procedure provided for in Annex II, Part C."/>
-         </p>
+            <p>
+               <t v="The Flexibility Instrument with an annual ceiling of EUR 200 million (current prices) is intended to allow the financing, for a given financial year and up to the amount indicated, of clearly identified expenditure which could not be financed within the limits of the ceilings available for one or more other headings.&#xA;"/>
+            </p>
+            <p>
+               <t v="The portion of the annual amount which is not used may be carried over up to year n+2. If the Flexibility Instrument is mobilised, any carryovers will be drawn on first, in order of age. The portion of the annual amount from year n which is not used in year n+2 will lapse."/>
+            </p>
+            <p>
+               <t v="The Commission will make a proposal for the Flexibility Instrument to be used after it has examined all possibilities for re-allocating appropriations under the heading requiring additional expenditure."/>
+            </p>
+            <p>
+               <t v="The proposal will concern the principle of making use of the Flexibility Instrument and will identify the needs to be covered and the amount. It may be presented, for any given financial year, during the budgetary procedure. The Commission proposal will be included in the preliminary draft budget or accompanied, in accordance with the Financial Regulation, by the appropriate budgetary instrument."/>
+            </p>
+            <p>
+               <t v="The decision to deploy the Flexibility Instrument will be taken jointly by the two arms of the budgetary authority in accordance with Point 3. Agreement will be reached by means of the conciliation procedure provided for in Annex II, Part C."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_H" kind="level" depth="2">
          <num>
@@ -455,30 +509,32 @@
          <heading>
             <t v="European Globalisation Adjustment Fund&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_H/pnt_28" kind="point">
             <num>
                <t v="28."/>
             </num>
-            <t v="The European Globalisation Adjustment Fund is intended to provide additional support for workers who suffer from the consequences of major structural changes in world trade patterns, to assist them with their reintegration into the labour market."/>
-         </p>
-         <p>
-            <t v="The Fund may not exceed a maximum annual amount of EUR 500 million (current prices) which can be drawn from any margin existing under the global expenditure ceiling of the previous year, and/or from cancelled commitment appropriations from the previous two years, excluding those related to heading 1B of the financial framework."/>
-         </p>
-         <p>
-            <t v="The appropriations will be entered in the general budget of the European Union as a provision through the normal budgetary procedure as soon as the Commission has identified the sufficient margins and/or cancelled commitments, in accordance with the second paragraph."/>
-         </p>
-         <p>
-            <t v="When the conditions for mobilising the Fund, as set out in the relevant basic act, are met, the Commission will make a proposal to deploy it. The decision to deploy the Fund will be taken jointly by the two arms of the budgetary authority in accordance with Point 3."/>
-         </p>
-         <p>
-            <t v="At the same time as it presents its proposal for a decision to deploy the Fund, the Commission will initiate a trilogue procedure, if necessary in a simplified form, to secure agreement of the two arms of the budgetary authority on the need to use the Fund and on the amount required, and will present to the two arms of the budgetary authority a proposal for a transfer to the relevant budgetary lines."/>
-         </p>
-         <p>
-            <t v="Transfers related to the Fund will be made in accordance with Article 24(4) of the Financial Regulation."/>
-         </p>
-         <p>
-            <t v="The corresponding commitment appropriations will be entered in the budget under the relevant heading, if necessary over and above the ceilings laid down in Annex I."/>
-         </p>
+            <p>
+               <t v="The European Globalisation Adjustment Fund is intended to provide additional support for workers who suffer from the consequences of major structural changes in world trade patterns, to assist them with their reintegration into the labour market.&#xA;"/>
+            </p>
+            <p>
+               <t v="The Fund may not exceed a maximum annual amount of EUR 500 million (current prices) which can be drawn from any margin existing under the global expenditure ceiling of the previous year, and/or from cancelled commitment appropriations from the previous two years, excluding those related to heading 1B of the financial framework."/>
+            </p>
+            <p>
+               <t v="The appropriations will be entered in the general budget of the European Union as a provision through the normal budgetary procedure as soon as the Commission has identified the sufficient margins and/or cancelled commitments, in accordance with the second paragraph."/>
+            </p>
+            <p>
+               <t v="When the conditions for mobilising the Fund, as set out in the relevant basic act, are met, the Commission will make a proposal to deploy it. The decision to deploy the Fund will be taken jointly by the two arms of the budgetary authority in accordance with Point 3."/>
+            </p>
+            <p>
+               <t v="At the same time as it presents its proposal for a decision to deploy the Fund, the Commission will initiate a trilogue procedure, if necessary in a simplified form, to secure agreement of the two arms of the budgetary authority on the need to use the Fund and on the amount required, and will present to the two arms of the budgetary authority a proposal for a transfer to the relevant budgetary lines."/>
+            </p>
+            <p>
+               <t v="Transfers related to the Fund will be made in accordance with Article 24(4) of the Financial Regulation."/>
+            </p>
+            <p>
+               <t v="The corresponding commitment appropriations will be entered in the budget under the relevant heading, if necessary over and above the ceilings laid down in Annex I."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_I" kind="level" depth="2">
          <num>
@@ -487,12 +543,14 @@
          <heading>
             <t v="Adjustment of the financial framework to cater for enlargement&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_I/pnt_29" kind="point">
             <num>
                <t v="29."/>
             </num>
-            <t v="If new Member States accede to the European Union during the period covered by the financial framework, the European Parliament and the Council, acting on a proposal from the Commission and in accordance with Point 3, will jointly adjust the financial framework to take account of the expenditure requirements resulting from the outcome of the accession negotiations."/>
-         </p>
+            <p>
+               <t v="If new Member States accede to the European Union during the period covered by the financial framework, the European Parliament and the Council, acting on a proposal from the Commission and in accordance with Point 3, will jointly adjust the financial framework to take account of the expenditure requirements resulting from the outcome of the accession negotiations."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_J" kind="level" depth="2">
          <num>
@@ -501,17 +559,19 @@
          <heading>
             <t v="Duration of the financial framework and consequences of the absence of a financial framework&#xA;"/>
          </heading>
-         <p>
+         <unit eId="pnt_J/pnt_30" kind="point">
             <num>
                <t v="30."/>
             </num>
-            <t v="Before "/>
-            <date asWritten="1 July 2011" date="2011-07-01"/>
-            <t v=", the Commission will present proposals for a new medium-term financial framework."/>
-         </p>
-         <p>
-            <t v="Should the two arms of the budgetary authority fail to agree on a new financial framework, and unless the existing financial framework is expressly terminated by one of the institutions, the ceilings for the last year covered by the existing financial framework will be adjusted in accordance with Point 16 so that the 2013 ceilings are maintained in constant prices. If new Member States accede to the European Union after 2013, and if deemed necessary, the extended financial framework will be adjusted in order to take into account the results of accession negotiations."/>
-         </p>
+            <p>
+               <t v="Before "/>
+               <date asWritten="1 July 2011" date="2011-07-01"/>
+               <t v=", the Commission will present proposals for a new medium-term financial framework.&#xA;"/>
+            </p>
+            <p>
+               <t v="Should the two arms of the budgetary authority fail to agree on a new financial framework, and unless the existing financial framework is expressly terminated by one of the institutions, the ceilings for the last year covered by the existing financial framework will be adjusted in accordance with Point 16 so that the 2013 ceilings are maintained in constant prices. If new Member States accede to the European Union after 2013, and if deemed necessary, the extended financial framework will be adjusted in order to take into account the results of accession negotiations."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-II" kind="level" depth="1">
          <num>
@@ -528,12 +588,14 @@
          <heading>
             <t v="The interinstitutional collaboration procedure&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-II/pnt_A/pnt_31" kind="point">
             <num>
                <t v="31."/>
             </num>
-            <t v="The institutions agree to set up a procedure for interinstitutional collaboration in budgetary matters. The details of this collaboration are set out in Annex II."/>
-         </p>
+            <p>
+               <t v="The institutions agree to set up a procedure for interinstitutional collaboration in budgetary matters. The details of this collaboration are set out in Annex II."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-II/pnt_B" kind="level" depth="2">
          <num>
@@ -542,70 +604,74 @@
          <heading>
             <t v="Establishment of the budget&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-II/pnt_B/pnt_32" kind="point">
             <num>
                <t v="32."/>
             </num>
-            <t v="The Commission will present each year a preliminary draft budget showing the Community's actual financing requirements."/>
-         </p>
-         <p>
-            <t v="It will take into account:"/>
-         </p>
-         <list kind="alpha">
-            <unit eId="level_PART-II/pnt_B/pnt_a" kind="point">
-               <num>
-                  <t v="(a)"/>
-               </num>
-               <p>
-                  <t v="forecasts in relation to the Structural Funds provided by the Member States,&#xA;"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-II/pnt_B/pnt_b" kind="point">
-               <num>
-                  <t v="(b)"/>
-               </num>
-               <p>
-                  <t v="the capacity for utilising appropriations, endeavouring to maintain a strict relationship between appropriations for commitments and appropriations for payments,&#xA;"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-II/pnt_B/pnt_c" kind="point">
-               <num>
-                  <t v="(c)"/>
-               </num>
-               <p>
-                  <t v="the possibilities for starting up new policies through pilot projects and/or new preparatory actions or continuing multiannual actions which are coming to an end, after assessing whether it will be possible to secure a basic act, within the meaning of Article 49 of the Financial Regulation (definition of a basic act, necessity of a basic act for implementation and exceptions),&#xA;"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-II/pnt_B/pnt_d" kind="point">
-               <num>
-                  <t v="(d)"/>
-               </num>
-               <p>
-                  <t v="the need to ensure that any change in expenditure in relation to the previous year is in accordance with the constraints of budgetary discipline.&#xA;"/>
-               </p>
-            </unit>
-         </list>
-         <p>
-            <t v="The preliminary draft budget will be accompanied by Activity Statements including such information as required under Article 27(3) and Article 33(2)(d) of the Financial Regulation (objectives, indicators and evaluation information)."/>
-         </p>
-         <p>
+            <p>
+               <t v="The Commission will present each year a preliminary draft budget showing the Community's actual financing requirements.&#xA;"/>
+            </p>
+            <p>
+               <t v="It will take into account:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="forecasts in relation to the Structural Funds provided by the Member States,&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="the capacity for utilising appropriations, endeavouring to maintain a strict relationship between appropriations for commitments and appropriations for payments,&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="the possibilities for starting up new policies through pilot projects and/or new preparatory actions or continuing multiannual actions which are coming to an end, after assessing whether it will be possible to secure a basic act, within the meaning of Article 49 of the Financial Regulation (definition of a basic act, necessity of a basic act for implementation and exceptions),&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_d" kind="point">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="the need to ensure that any change in expenditure in relation to the previous year is in accordance with the constraints of budgetary discipline.&#xA;"/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="The preliminary draft budget will be accompanied by Activity Statements including such information as required under Article 27(3) and Article 33(2)(d) of the Financial Regulation (objectives, indicators and evaluation information)."/>
+            </p>
+         </unit>
+         <unit eId="level_PART-II/pnt_B/pnt_33" kind="point">
             <num>
                <t v="33."/>
             </num>
-            <t v="The institutions will, as far as possible, avoid entering items in the budget involving insignificant amounts of expenditure on operations."/>
-         </p>
-         <p>
-            <t v="The two arms of the budgetary authority also undertake to bear in mind the assessment of the possibilities for implementing the budget made by the Commission in its preliminary drafts and in connection with implementation of the current budget."/>
-         </p>
-         <p>
-            <t v="Before the Council's second reading, the Commission will send a letter to the Chairman of the European Parliament's Committee on Budgets, with a copy to the other arm of the budgetary authority, containing its comments on the executability of the amendments to the draft budget adopted by the European Parliament at first reading."/>
-         </p>
-         <p>
-            <t v="The two arms of the budgetary authority will take those comments into account in the context of the conciliation procedure provided for in Annex II, Part C."/>
-         </p>
-         <p>
-            <t v="In the interest of sound financial management and owing to the effect of major changes in the budget nomenclature in the titles and chapters on the management reporting responsibilities of Commission departments, the two arms of the budgetary authority undertake to discuss any such major changes with the Commission during the conciliation procedure."/>
-         </p>
+            <p>
+               <t v="The institutions will, as far as possible, avoid entering items in the budget involving insignificant amounts of expenditure on operations.&#xA;"/>
+            </p>
+            <p>
+               <t v="The two arms of the budgetary authority also undertake to bear in mind the assessment of the possibilities for implementing the budget made by the Commission in its preliminary drafts and in connection with implementation of the current budget."/>
+            </p>
+            <p>
+               <t v="Before the Council's second reading, the Commission will send a letter to the Chairman of the European Parliament's Committee on Budgets, with a copy to the other arm of the budgetary authority, containing its comments on the executability of the amendments to the draft budget adopted by the European Parliament at first reading."/>
+            </p>
+            <p>
+               <t v="The two arms of the budgetary authority will take those comments into account in the context of the conciliation procedure provided for in Annex II, Part C."/>
+            </p>
+            <p>
+               <t v="In the interest of sound financial management and owing to the effect of major changes in the budget nomenclature in the titles and chapters on the management reporting responsibilities of Commission departments, the two arms of the budgetary authority undertake to discuss any such major changes with the Commission during the conciliation procedure."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-II/pnt_C" kind="level" depth="2">
          <num>
@@ -614,21 +680,25 @@
          <heading>
             <t v="Classification of expenditure&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-II/pnt_C/pnt_34" kind="point">
             <num>
                <t v="34."/>
             </num>
-            <t v="The institutions consider compulsory expenditure to be expenditure necessarily resulting from the Treaties or from acts adopted in accordance therewith."/>
-         </p>
-         <p>
+            <p>
+               <t v="The institutions consider compulsory expenditure to be expenditure necessarily resulting from the Treaties or from acts adopted in accordance therewith."/>
+            </p>
+         </unit>
+         <unit eId="level_PART-II/pnt_C/pnt_35" kind="point">
             <num>
                <t v="35."/>
             </num>
-            <t v="The preliminary draft budget is to contain a proposal for the classification of each new budget item and of each budget item with an amended legal base."/>
-         </p>
-         <p>
-            <t v="If they do not accept the classification proposed in the preliminary draft budget, the European Parliament and the Council will examine the classification of the budget item concerned on the basis of Annex III. Agreement will be sought by means of the conciliation procedure provided for in Annex II, Part C."/>
-         </p>
+            <p>
+               <t v="The preliminary draft budget is to contain a proposal for the classification of each new budget item and of each budget item with an amended legal base.&#xA;"/>
+            </p>
+            <p>
+               <t v="If they do not accept the classification proposed in the preliminary draft budget, the European Parliament and the Council will examine the classification of the budget item concerned on the basis of Annex III. Agreement will be sought by means of the conciliation procedure provided for in Annex II, Part C."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-II/pnt_D" kind="level" depth="2">
          <num>
@@ -637,33 +707,35 @@
          <heading>
             <t v="Maximum rate of increase of non-compulsory expenditure in the absence of a financial framework&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-II/pnt_D/pnt_36" kind="point">
             <num>
                <t v="36."/>
             </num>
-            <t v="Without prejudice to the first paragraph of Point 13, the institutions agree on the following provisions:"/>
-         </p>
-         <list kind="alpha">
-            <unit eId="level_PART-II/pnt_D/pnt_a" kind="point">
-               <num>
-                  <t v="(a)"/>
-               </num>
-               <p>
-                  <t v="the European Parliament's autonomous margin for manoeuvre for the purposes of the fourth subparagraph of Article 272(9) of the EC Treaty — which is to be half the maximum rate — applies as from the establishment of the draft budget by the Council at first reading, including any letters of amendment.&#xA;"/>
-               </p>
-               <p>
-                  <t v="The maximum rate is to be observed in respect of the annual budget, including amending budgets. Without prejudice to the setting of a new rate, any portion of the maximum rate which has not been utilised will remain available for use and may be used when draft amending budgets are considered;"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-II/pnt_D/pnt_b" kind="point">
-               <num>
-                  <t v="(b)"/>
-               </num>
-               <p>
-                  <t v="without prejudice to paragraph (a), if it appears in the course of the budgetary procedure that completion of the procedure might require agreement on the setting of a new rate of increase for non-compulsory expenditure to apply to appropriations for payments and/or a new rate to apply to appropriations for commitments (the latter rate may be at a level different from the former), the institutions will endeavour to secure agreement between the two arms of the budgetary authority by means of the conciliation procedure provided for in Annex II, Part C.&#xA;"/>
-               </p>
-            </unit>
-         </list>
+            <p>
+               <t v="Without prejudice to the first paragraph of Point 13, the institutions agree on the following provisions:&#xA;"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="level_PART-II/pnt_D/pnt_36/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the European Parliament's autonomous margin for manoeuvre for the purposes of the fourth subparagraph of Article 272(9) of the EC Treaty — which is to be half the maximum rate — applies as from the establishment of the draft budget by the Council at first reading, including any letters of amendment.&#xA;"/>
+                  </p>
+                  <p>
+                     <t v="The maximum rate is to be observed in respect of the annual budget, including amending budgets. Without prejudice to the setting of a new rate, any portion of the maximum rate which has not been utilised will remain available for use and may be used when draft amending budgets are considered;"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-II/pnt_D/pnt_36/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="without prejudice to paragraph (a), if it appears in the course of the budgetary procedure that completion of the procedure might require agreement on the setting of a new rate of increase for non-compulsory expenditure to apply to appropriations for payments and/or a new rate to apply to appropriations for commitments (the latter rate may be at a level different from the former), the institutions will endeavour to secure agreement between the two arms of the budgetary authority by means of the conciliation procedure provided for in Annex II, Part C.&#xA;"/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
       </unit>
       <unit eId="level_PART-II/pnt_E" kind="level" depth="2">
          <num>
@@ -672,52 +744,60 @@
          <heading>
             <t v="Incorporation of financial provisions in legislative acts&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-II/pnt_E/pnt_37" kind="point">
             <num>
                <t v="37."/>
             </num>
-            <t v="Each legislative act concerning a multiannual programme adopted under the codecision procedure will contain a provision in which the legislative authority lays down the financial envelope for the programme."/>
-         </p>
-         <p>
-            <t v="That amount will constitute the prime reference for the budgetary authority during the annual budgetary procedure."/>
-         </p>
-         <p>
-            <t v="The budgetary authority and the Commission, when it draws up the preliminary draft budget, undertake not to depart by more than 5 % from that amount for the entire duration of the programme concerned, unless new, objective, long-term circumstances arise for which explicit and precise reasons are given, with account being taken of the results obtained from implementing the programme, in particular on the basis of assessments. Any increase resulting from such variation must remain within the existing ceiling for the heading concerned, without prejudice to the use of instruments mentioned in this Agreement."/>
-         </p>
-         <p>
-            <t v="This Point does not apply to appropriations for cohesion adopted under the codecision procedure and pre-allocated by Member States which contain a financial envelope for the entire duration of the programme."/>
-         </p>
-         <p>
+            <p>
+               <t v="Each legislative act concerning a multiannual programme adopted under the codecision procedure will contain a provision in which the legislative authority lays down the financial envelope for the programme.&#xA;"/>
+            </p>
+            <p>
+               <t v="That amount will constitute the prime reference for the budgetary authority during the annual budgetary procedure."/>
+            </p>
+            <p>
+               <t v="The budgetary authority and the Commission, when it draws up the preliminary draft budget, undertake not to depart by more than 5 % from that amount for the entire duration of the programme concerned, unless new, objective, long-term circumstances arise for which explicit and precise reasons are given, with account being taken of the results obtained from implementing the programme, in particular on the basis of assessments. Any increase resulting from such variation must remain within the existing ceiling for the heading concerned, without prejudice to the use of instruments mentioned in this Agreement."/>
+            </p>
+            <p>
+               <t v="This Point does not apply to appropriations for cohesion adopted under the codecision procedure and pre-allocated by Member States which contain a financial envelope for the entire duration of the programme."/>
+            </p>
+         </unit>
+         <unit eId="level_PART-II/pnt_E/pnt_38" kind="point">
             <num>
                <t v="38."/>
             </num>
-            <t v="Legislative acts concerning multiannual programmes not subject to the codecision procedure will not contain an "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="amount deemed necessary"/>
-            </quote>
-            <t v="."/>
-         </p>
-         <p>
-            <t v="Should the Council wish to include a financial reference, this will be taken as illustrating the will of the legislative authority and will not affect the powers of the budgetary authority as defined by the EC Treaty. This provision will be mentioned in all legislative acts which include such a financial reference."/>
-         </p>
-         <p>
-            <t v="If the amount concerned has been the subject of an agreement pursuant to the conciliation procedure provided for in the Joint Declaration of the European Parliament, the Council and the Commission of "/>
-            <date asWritten="4 March 1975" date="1975-03-04"/>
-            <noteRef href="#note_4" marker="4"/>
-            <t v=", it will be considered a reference amount within the meaning of Point 37 of this Agreement."/>
-         </p>
-         <p>
+            <p>
+               <t v="Legislative acts concerning multiannual programmes not subject to the codecision procedure will not contain an "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="amount deemed necessary"/>
+               </quote>
+               <t v=".&#xA;"/>
+            </p>
+            <p>
+               <t v="Should the Council wish to include a financial reference, this will be taken as illustrating the will of the legislative authority and will not affect the powers of the budgetary authority as defined by the EC Treaty. This provision will be mentioned in all legislative acts which include such a financial reference."/>
+            </p>
+            <p>
+               <t v="If the amount concerned has been the subject of an agreement pursuant to the conciliation procedure provided for in the Joint Declaration of the European Parliament, the Council and the Commission of "/>
+               <date asWritten="4 March 1975" date="1975-03-04"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v=", it will be considered a reference amount within the meaning of Point 37 of this Agreement."/>
+            </p>
+         </unit>
+         <unit eId="level_PART-II/pnt_E/pnt_39" kind="point">
             <num>
                <t v="39."/>
             </num>
-            <t v="The financial statement provided for in Article 28 of the Financial Regulation will reflect in financial terms the objectives of the proposed programme and include a schedule covering the duration of the programme. It will be revised, where necessary, when the preliminary draft budget is drawn up, taking account of the extent of implementation of the programme. The revised statement will be forwarded to the budgetary authority when the preliminary draft budget is presented and after the budget is adopted."/>
-         </p>
-         <p>
+            <p>
+               <t v="The financial statement provided for in Article 28 of the Financial Regulation will reflect in financial terms the objectives of the proposed programme and include a schedule covering the duration of the programme. It will be revised, where necessary, when the preliminary draft budget is drawn up, taking account of the extent of implementation of the programme. The revised statement will be forwarded to the budgetary authority when the preliminary draft budget is presented and after the budget is adopted."/>
+            </p>
+         </unit>
+         <unit eId="level_PART-II/pnt_E/pnt_40" kind="point">
             <num>
                <t v="40."/>
             </num>
-            <t v="Within the maximum rates of increase for non-compulsory expenditure specified in the first paragraph of Point 13, the two arms of the budgetary authority undertake to respect the allocations of commitment appropriations provided for in the relevant basic acts for structural operations, rural development and the European Fund for fisheries."/>
-         </p>
+            <p>
+               <t v="Within the maximum rates of increase for non-compulsory expenditure specified in the first paragraph of Point 13, the two arms of the budgetary authority undertake to respect the allocations of commitment appropriations provided for in the relevant basic acts for structural operations, rural development and the European Fund for fisheries."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-II/pnt_F" kind="level" depth="2">
          <num>
@@ -726,12 +806,14 @@
          <heading>
             <t v="Expenditure relating to fisheries agreements&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-II/pnt_F/pnt_41" kind="point">
             <num>
                <t v="41."/>
             </num>
-            <t v="The institutions agree to finance expenditure on fisheries agreements in accordance with the arrangements set out in Annex IV."/>
-         </p>
+            <p>
+               <t v="The institutions agree to finance expenditure on fisheries agreements in accordance with the arrangements set out in Annex IV."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-II/pnt_G" kind="level" depth="2">
          <num>
@@ -740,86 +822,90 @@
          <heading>
             <t v="Financing of the common foreign and security policy (CFSP)&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-II/pnt_G/pnt_42" kind="point">
             <num>
                <t v="42."/>
             </num>
-            <t v="As regards CFSP expenditure which is charged to the general budget of the European Communities in accordance with Article 28 of the Treaty on European Union, the institutions will endeavour, in the conciliation procedure provided for in Annex II, Part C, and on the basis of the preliminary draft budget established by the Commission, to secure agreement each year on the amount of the operating expenditure to be charged to the Community budget and on the distribution of this amount between the articles of the CFSP budget chapter suggested in the fourth paragraph of this Point. In the absence of agreement, it is understood that the European Parliament and the Council will enter in the budget the amount contained in the previous budget or the amount proposed in the preliminary draft budget, whichever is the lower."/>
-         </p>
-         <p>
-            <t v="The total amount of operating CFSP expenditure will be entered entirely in one budget chapter (CFSP) and distributed between the articles of that chapter as suggested in the fourth paragraph of this Point. That amount is to cover the real predictable needs, assessed in the framework of the establishment of the preliminary draft budget, on the basis of forecasts drawn up annually by the Council, and a reasonable margin for unforeseen actions. No funds will be entered in a reserve. Each article will cover instruments already adopted, instruments which are foreseen but not yet adopted and all future — that is unforeseen — instruments to be adopted by the Council during the financial year concerned."/>
-         </p>
-         <p>
-            <t v="Since, under the Financial Regulation, the Commission has the authority to transfer appropriations autonomously between articles within the CFSP budget chapter, the flexibility deemed necessary for speedy implementation of CFSP actions will accordingly be assured. In the event of the amount of the CFSP budget chapter during the financial year being insufficient to cover the necessary expenses, the European Parliament and the Council will seek a solution as a matter of urgency, on a proposal from the Commission, taking into account Point 25."/>
-         </p>
-         <p>
-            <t v="Within the CFSP budget chapter, the articles into which the CFSP actions are to be entered could read along the following lines:"/>
-         </p>
-         <list kind="dash">
-            <unit eId="level_PART-II/pnt_G/idt_1" kind="indent">
-               <p>
-                  <t v="crisis management operations, conflict prevention, resolution and stabilisation, monitoring and implementation of peace and security processes,"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-II/pnt_G/idt_2" kind="indent">
-               <p>
-                  <t v="non-proliferation and disarmament,"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-II/pnt_G/idt_3" kind="indent">
-               <p>
-                  <t v="emergency measures,"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-II/pnt_G/idt_4" kind="indent">
-               <p>
-                  <t v="preparatory and follow-up measures,"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-II/pnt_G/idt_5" kind="indent">
-               <p>
-                  <t v="European Union Special Representatives."/>
-               </p>
-            </unit>
-         </list>
-         <p>
-            <t v="The institutions agree that at least EUR "/>
-            <t v="1 740"/>
-            <t v=" million will be available for the CFSP over the period 2007-2013 and that the amount for measures entered under the article mentioned in the third indent may not exceed 20 % of the overall amount of the CFSP budget chapter."/>
-         </p>
-         <p>
+            <p>
+               <t v="As regards CFSP expenditure which is charged to the general budget of the European Communities in accordance with Article 28 of the Treaty on European Union, the institutions will endeavour, in the conciliation procedure provided for in Annex II, Part C, and on the basis of the preliminary draft budget established by the Commission, to secure agreement each year on the amount of the operating expenditure to be charged to the Community budget and on the distribution of this amount between the articles of the CFSP budget chapter suggested in the fourth paragraph of this Point. In the absence of agreement, it is understood that the European Parliament and the Council will enter in the budget the amount contained in the previous budget or the amount proposed in the preliminary draft budget, whichever is the lower.&#xA;"/>
+            </p>
+            <p>
+               <t v="The total amount of operating CFSP expenditure will be entered entirely in one budget chapter (CFSP) and distributed between the articles of that chapter as suggested in the fourth paragraph of this Point. That amount is to cover the real predictable needs, assessed in the framework of the establishment of the preliminary draft budget, on the basis of forecasts drawn up annually by the Council, and a reasonable margin for unforeseen actions. No funds will be entered in a reserve. Each article will cover instruments already adopted, instruments which are foreseen but not yet adopted and all future — that is unforeseen — instruments to be adopted by the Council during the financial year concerned."/>
+            </p>
+            <p>
+               <t v="Since, under the Financial Regulation, the Commission has the authority to transfer appropriations autonomously between articles within the CFSP budget chapter, the flexibility deemed necessary for speedy implementation of CFSP actions will accordingly be assured. In the event of the amount of the CFSP budget chapter during the financial year being insufficient to cover the necessary expenses, the European Parliament and the Council will seek a solution as a matter of urgency, on a proposal from the Commission, taking into account Point 25."/>
+            </p>
+            <p>
+               <t v="Within the CFSP budget chapter, the articles into which the CFSP actions are to be entered could read along the following lines:"/>
+            </p>
+            <list kind="dash">
+               <unit eId="level_PART-II/pnt_G/pnt_42/idt_1" kind="indent">
+                  <p>
+                     <t v="crisis management operations, conflict prevention, resolution and stabilisation, monitoring and implementation of peace and security processes,"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-II/pnt_G/pnt_42/idt_2" kind="indent">
+                  <p>
+                     <t v="non-proliferation and disarmament,"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-II/pnt_G/pnt_42/idt_3" kind="indent">
+                  <p>
+                     <t v="emergency measures,"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-II/pnt_G/pnt_42/idt_4" kind="indent">
+                  <p>
+                     <t v="preparatory and follow-up measures,"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-II/pnt_G/pnt_42/idt_5" kind="indent">
+                  <p>
+                     <t v="European Union Special Representatives."/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="The institutions agree that at least EUR "/>
+               <t v="1 740"/>
+               <t v=" million will be available for the CFSP over the period 2007-2013 and that the amount for measures entered under the article mentioned in the third indent may not exceed 20 % of the overall amount of the CFSP budget chapter."/>
+            </p>
+         </unit>
+         <unit eId="level_PART-II/pnt_G/pnt_43" kind="point">
             <num>
                <t v="43."/>
             </num>
-            <t v="Each year, the Council Presidency will consult the European Parliament on a forward-looking Council document, which will be transmitted by June 15 for the year in question, setting out the main aspects and basic choices of the CFSP, including the financial implications for the general budget of the European Union and an evaluation of the measures launched in the year n-1. Furthermore, the Council Presidency will keep the European Parliament informed by holding joint consultation meetings at least five times a year, in the framework of the regular political dialogue on the CFSP, to be agreed at the latest at the conciliation meeting to be held before the Council's second reading. Participation in these meetings shall be as follows:"/>
-         </p>
-         <list kind="dash">
-            <unit eId="level_PART-II/pnt_G/list_2/idt_1" kind="indent">
-               <p>
-                  <t v="European Parliament: the bureaux of the two Committees concerned,"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-II/pnt_G/list_2/idt_2" kind="indent">
-               <p>
-                  <t v="Council: Ambassador (Chairman of the Political and Security Committee),"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-II/pnt_G/list_2/idt_3" kind="indent">
-               <p>
-                  <t v="The Commission will be associated and participate at these meetings."/>
-               </p>
-            </unit>
-         </list>
-         <p>
-            <t v="Whenever it adopts a decision in the field of the CFSP entailing expenditure, the Council will immediately, and in any event no later than five working days following the final decision, send the European Parliament an estimate of the costs envisaged ("/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="financial statement"/>
-            </quote>
-            <t v="), in particular those regarding time-frame, staff employed, use of premises and other infrastructure, transport facilities, training requirements and security arrangements."/>
-         </p>
-         <p>
-            <t v="Once a quarter the Commission will inform the budgetary authority about the implementation of CFSP actions and the financial forecasts for the remaining period of the year."/>
-         </p>
+            <p>
+               <t v="Each year, the Council Presidency will consult the European Parliament on a forward-looking Council document, which will be transmitted by June 15 for the year in question, setting out the main aspects and basic choices of the CFSP, including the financial implications for the general budget of the European Union and an evaluation of the measures launched in the year n-1. Furthermore, the Council Presidency will keep the European Parliament informed by holding joint consultation meetings at least five times a year, in the framework of the regular political dialogue on the CFSP, to be agreed at the latest at the conciliation meeting to be held before the Council's second reading. Participation in these meetings shall be as follows:&#xA;"/>
+            </p>
+            <list kind="dash">
+               <unit eId="level_PART-II/pnt_G/pnt_43/idt_1" kind="indent">
+                  <p>
+                     <t v="European Parliament: the bureaux of the two Committees concerned,"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-II/pnt_G/pnt_43/idt_2" kind="indent">
+                  <p>
+                     <t v="Council: Ambassador (Chairman of the Political and Security Committee),"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-II/pnt_G/pnt_43/idt_3" kind="indent">
+                  <p>
+                     <t v="The Commission will be associated and participate at these meetings."/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="Whenever it adopts a decision in the field of the CFSP entailing expenditure, the Council will immediately, and in any event no later than five working days following the final decision, send the European Parliament an estimate of the costs envisaged ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="financial statement"/>
+               </quote>
+               <t v="), in particular those regarding time-frame, staff employed, use of premises and other infrastructure, transport facilities, training requirements and security arrangements."/>
+            </p>
+            <p>
+               <t v="Once a quarter the Commission will inform the budgetary authority about the implementation of CFSP actions and the financial forecasts for the remaining period of the year."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-III" kind="level" depth="1">
          <num>
@@ -836,15 +922,17 @@
          <heading>
             <t v="Ensuring effective and integrated internal control of Community funds&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-III/pnt_A/pnt_44" kind="point">
             <num>
                <t v="44."/>
             </num>
-            <t v="The institutions agree on the importance of strengthening internal control without adding to the administrative burden for which the simplification of the underlying legislation is a prerequisite. In this context, priority will be given to sound financial management aiming at a positive Statement of Assurance, for funds under shared management. Provisions to this end could be laid down, as appropriate, in the basic legislative acts concerned. As part of their enhanced responsibilities for structural funds and in accordance with national constitutional requirements, the relevant audit authorities in Member States will produce an assessment concerning the compliance of management and control systems with the regulations of the Community."/>
-         </p>
-         <p>
-            <t v="Member States therefore undertake to produce an annual summary at the appropriate national level of the available audits and declarations."/>
-         </p>
+            <p>
+               <t v="The institutions agree on the importance of strengthening internal control without adding to the administrative burden for which the simplification of the underlying legislation is a prerequisite. In this context, priority will be given to sound financial management aiming at a positive Statement of Assurance, for funds under shared management. Provisions to this end could be laid down, as appropriate, in the basic legislative acts concerned. As part of their enhanced responsibilities for structural funds and in accordance with national constitutional requirements, the relevant audit authorities in Member States will produce an assessment concerning the compliance of management and control systems with the regulations of the Community.&#xA;"/>
+            </p>
+            <p>
+               <t v="Member States therefore undertake to produce an annual summary at the appropriate national level of the available audits and declarations."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-III/pnt_B" kind="level" depth="2">
          <num>
@@ -853,14 +941,16 @@
          <heading>
             <t v="Financial Regulation&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-III/pnt_B/pnt_45" kind="point">
             <num>
                <t v="45."/>
             </num>
-            <t v="The institutions agree that this Agreement and the budget will be implemented in a context of sound financial management based on the principles of economy, efficiency, effectiveness, protection of financial interests, proportionality of administrative costs, and user-friendly procedures. The institutions will take appropriate measures, in particular in the Financial Regulation, that should be adopted in accordance with the conciliation procedure established by the Joint Declaration of the European Parliament, the Council and the Commission of "/>
-            <date asWritten="4 March 1975" date="1975-03-04"/>
-            <t v=", in the spirit which enabled agreement in 2002."/>
-         </p>
+            <p>
+               <t v="The institutions agree that this Agreement and the budget will be implemented in a context of sound financial management based on the principles of economy, efficiency, effectiveness, protection of financial interests, proportionality of administrative costs, and user-friendly procedures. The institutions will take appropriate measures, in particular in the Financial Regulation, that should be adopted in accordance with the conciliation procedure established by the Joint Declaration of the European Parliament, the Council and the Commission of "/>
+               <date asWritten="4 March 1975" date="1975-03-04"/>
+               <t v=", in the spirit which enabled agreement in 2002."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-III/pnt_C" kind="level" depth="2">
          <num>
@@ -869,77 +959,79 @@
          <heading>
             <t v="Financial Programming&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-III/pnt_C/pnt_46" kind="point">
             <num>
                <t v="46."/>
             </num>
-            <t v="The Commission will submit twice a year, the first time in May/June (together with the documents accompanying the preliminary draft budget) and the second time in December/January (after the adoption of the budget), a complete financial programming for Headings 1A, 2 (for environment and fisheries), 3A, 3B and 4 of the financial framework. This document, structured by heading, policy area and budget line, should identify:"/>
-         </p>
-         <list kind="alpha">
-            <unit eId="level_PART-III/pnt_C/pnt_a" kind="point">
-               <num>
-                  <t v="(a)"/>
-               </num>
-               <p>
-                  <t v="the legislation in force, with a distinction being drawn between multiannual programmes and annual actions:&#xA;"/>
-               </p>
-               <list kind="dash">
-                  <unit eId="level_PART-III/pnt_C/pnt_a/idt_1" kind="indent">
-                     <p>
-                        <t v="for multiannual programmes the Commission should indicate the procedure under which they were adopted (codecision and consultation), their duration, the reference amounts, the share allocated to administrative expenditure;"/>
-                     </p>
-                  </unit>
-                  <unit eId="level_PART-III/pnt_C/pnt_a/idt_2" kind="indent">
-                     <p>
-                        <t v="for annual actions (pilot projects, preparatory actions, Agencies) and actions financed under the prerogatives of the Commission, the Commission should provide multiannual estimates and (for pilot projects and preparatory actions) the margins left under the authorised ceilings fixed in Annex II, Part D;"/>
-                     </p>
-                  </unit>
-               </list>
-            </unit>
-            <unit eId="level_PART-III/pnt_C/pnt_b" kind="point">
-               <num>
-                  <t v="(b)"/>
-               </num>
-               <p>
-                  <t v="pending legislative proposals: ongoing Commission proposals referenced by budget line (lower level), chapter and policy area. A mechanism should be found to update the tables each time a new proposal is adopted in order to evaluate the financial consequences.&#xA;"/>
-               </p>
-            </unit>
-         </list>
-         <p>
-            <t v="The Commission should consider ways of cross-referencing the financial programming with its legislative programming to provide more precise and reliable forecasts. For each legislative proposal, the Commission should indicate whether or not it is included in the May-December programme. The budgetary authority should in particular be informed of:"/>
-         </p>
-         <list kind="alpha">
-            <unit eId="level_PART-III/pnt_C/list_2/pnt_a" kind="point">
-               <num>
-                  <t v="(a)"/>
-               </num>
-               <p>
-                  <t v="all new legislative acts adopted but not included in the May-December document (with the corresponding amounts);&#xA;"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-III/pnt_C/list_2/pnt_b" kind="point">
-               <num>
-                  <t v="(b)"/>
-               </num>
-               <p>
-                  <t v="all pending legislative proposals presented but not included in the May-December document (with the corresponding amounts);&#xA;"/>
-               </p>
-            </unit>
-            <unit eId="level_PART-III/pnt_C/list_2/pnt_c" kind="point">
-               <num>
-                  <t v="(c)"/>
-               </num>
-               <p>
-                  <t v="legislation foreseen in the Commission's annual legislative work programme with an indication of actions likely to have a financial impact (yes/no).&#xA;"/>
-               </p>
-            </unit>
-         </list>
-         <p>
-            <t v="Whenever necessary, the Commission should indicate the reprogramming entailed by new legislative proposals."/>
-         </p>
-         <p>
-            <t v="On the basis of the data supplied by the Commission, stocktaking should be carried out at each trilogue as provided for in this Agreement."/>
-         </p>
+            <p>
+               <t v="The Commission will submit twice a year, the first time in May/June (together with the documents accompanying the preliminary draft budget) and the second time in December/January (after the adoption of the budget), a complete financial programming for Headings 1A, 2 (for environment and fisheries), 3A, 3B and 4 of the financial framework. This document, structured by heading, policy area and budget line, should identify:&#xA;"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="level_PART-III/pnt_C/pnt_46/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the legislation in force, with a distinction being drawn between multiannual programmes and annual actions:&#xA;"/>
+                  </p>
+                  <list kind="dash">
+                     <unit eId="level_PART-III/pnt_C/pnt_46/pnt_a/idt_1" kind="indent">
+                        <p>
+                           <t v="for multiannual programmes the Commission should indicate the procedure under which they were adopted (codecision and consultation), their duration, the reference amounts, the share allocated to administrative expenditure;"/>
+                        </p>
+                     </unit>
+                     <unit eId="level_PART-III/pnt_C/pnt_46/pnt_a/idt_2" kind="indent">
+                        <p>
+                           <t v="for annual actions (pilot projects, preparatory actions, Agencies) and actions financed under the prerogatives of the Commission, the Commission should provide multiannual estimates and (for pilot projects and preparatory actions) the margins left under the authorised ceilings fixed in Annex II, Part D;"/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="level_PART-III/pnt_C/pnt_46/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="pending legislative proposals: ongoing Commission proposals referenced by budget line (lower level), chapter and policy area. A mechanism should be found to update the tables each time a new proposal is adopted in order to evaluate the financial consequences.&#xA;"/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="The Commission should consider ways of cross-referencing the financial programming with its legislative programming to provide more precise and reliable forecasts. For each legislative proposal, the Commission should indicate whether or not it is included in the May-December programme. The budgetary authority should in particular be informed of:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="level_PART-III/pnt_C/pnt_46/list_2/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="all new legislative acts adopted but not included in the May-December document (with the corresponding amounts);&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-III/pnt_C/pnt_46/list_2/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="all pending legislative proposals presented but not included in the May-December document (with the corresponding amounts);&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="level_PART-III/pnt_C/pnt_46/list_2/pnt_c" kind="point">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="legislation foreseen in the Commission's annual legislative work programme with an indication of actions likely to have a financial impact (yes/no).&#xA;"/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="Whenever necessary, the Commission should indicate the reprogramming entailed by new legislative proposals."/>
+            </p>
+            <p>
+               <t v="On the basis of the data supplied by the Commission, stocktaking should be carried out at each trilogue as provided for in this Agreement."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-III/pnt_D" kind="level" depth="2">
          <num>
@@ -948,15 +1040,17 @@
          <heading>
             <t v="Agencies and European Schools&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-III/pnt_D/pnt_47" kind="point">
             <num>
                <t v="47."/>
             </num>
-            <t v="When drawing up its proposal for the creation of any new agency, the Commission will assess the budgetary implications for the expenditure heading concerned. On the basis of that information and without prejudice to the legislative procedures governing the setting up of the agency, the two arms of the budgetary authority commit themselves, in the framework of budgetary cooperation, to arrive at a timely agreement on the financing of the agency."/>
-         </p>
-         <p>
-            <t v="A similar procedure is to be applied when the creation of a new European school is envisaged."/>
-         </p>
+            <p>
+               <t v="When drawing up its proposal for the creation of any new agency, the Commission will assess the budgetary implications for the expenditure heading concerned. On the basis of that information and without prejudice to the legislative procedures governing the setting up of the agency, the two arms of the budgetary authority commit themselves, in the framework of budgetary cooperation, to arrive at a timely agreement on the financing of the agency.&#xA;"/>
+            </p>
+            <p>
+               <t v="A similar procedure is to be applied when the creation of a new European school is envisaged."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-III/pnt_E" kind="level" depth="2">
          <num>
@@ -965,19 +1059,21 @@
          <heading>
             <t v="Adjustment of Structural Funds, Cohesion Fund, Rural Development and the European Fund for Fisheries in the light of the circumstances of their implementation&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-III/pnt_E/pnt_48" kind="point">
             <num>
                <t v="48."/>
             </num>
-            <t v="In the event of the adoption after "/>
-            <date asWritten="1 January 2007" date="2007-01-01"/>
-            <t v=" of new rules or programmes governing the Structural Funds, the Cohesion Fund, Rural Development and the European Fund for Fisheries, the two arms of the budgetary authority undertake to authorise, on a proposal from the Commission, the transfer to subsequent years, in excess of the corresponding expenditure ceilings, of allocations not used in 2007."/>
-         </p>
-         <p>
-            <t v="The European Parliament and the Council will take decisions on Commission proposals concerning the transfer of unused allocations for the year 2007 before "/>
-            <date asWritten="1 May 2008" date="2008-05-01"/>
-            <t v=", in accordance with Point 3."/>
-         </p>
+            <p>
+               <t v="In the event of the adoption after "/>
+               <date asWritten="1 January 2007" date="2007-01-01"/>
+               <t v=" of new rules or programmes governing the Structural Funds, the Cohesion Fund, Rural Development and the European Fund for Fisheries, the two arms of the budgetary authority undertake to authorise, on a proposal from the Commission, the transfer to subsequent years, in excess of the corresponding expenditure ceilings, of allocations not used in 2007.&#xA;"/>
+            </p>
+            <p>
+               <t v="The European Parliament and the Council will take decisions on Commission proposals concerning the transfer of unused allocations for the year 2007 before "/>
+               <date asWritten="1 May 2008" date="2008-05-01"/>
+               <t v=", in accordance with Point 3."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="level_PART-III/pnt_F" kind="level" depth="2">
          <num>
@@ -986,18 +1082,20 @@
          <heading>
             <t v="New financial instruments&#xA;"/>
          </heading>
-         <p>
+         <unit eId="level_PART-III/pnt_F/pnt_49" kind="point">
             <num>
                <t v="49."/>
             </num>
-            <t v="The institutions agree that the introduction of co-financing mechanisms is necessary to reinforce the leverage effect of the European Union budget by increasing the funding incentive."/>
-         </p>
-         <p>
-            <t v="They agree to encourage the development of appropriate multiannual financial instruments acting as catalysts for public and private investors."/>
-         </p>
-         <p>
-            <t v="When presenting the preliminary draft budget, the Commission will report to the budgetary authority on the activities financed by the European Investment Bank, the European Investment Fund and the European Bank for Reconstruction and Development to support investment in research and development, trans-European networks and small and medium-sized enterprises."/>
-         </p>
+            <p>
+               <t v="The institutions agree that the introduction of co-financing mechanisms is necessary to reinforce the leverage effect of the European Union budget by increasing the funding incentive.&#xA;"/>
+            </p>
+            <p>
+               <t v="They agree to encourage the development of appropriate multiannual financial instruments acting as catalysts for public and private investors."/>
+            </p>
+            <p>
+               <t v="When presenting the preliminary draft budget, the Commission will report to the budgetary authority on the activities financed by the European Investment Bank, the European Investment Fund and the European Bank for Reconstruction and Development to support investment in research and development, trans-European networks and small and medium-sized enterprises."/>
+            </p>
+         </unit>
       </unit>
    </body>
    <annexes>
@@ -1079,14 +1177,16 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx_I/tab_1/tr_3/td_1/pnt_1" kind="point">
                      <num>
                         <t v="1."/>
                      </num>
-                     <emphasis kind="b">
-                        <t v="Sustainable growth"/>
-                     </emphasis>
-                  </p>
+                     <p>
+                        <emphasis kind="b">
+                           <t v="Sustainable growth"/>
+                        </emphasis>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -1147,12 +1247,14 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx_I/tab_1/tr_4/td_1/list_2/pnt_1a" kind="point">
                      <num>
                         <t v="1a"/>
                      </num>
-                     <t v="Competitiveness for growth and employment"/>
-                  </p>
+                     <p>
+                        <t v="Competitiveness for growth and employment"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -1197,12 +1299,14 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx_I/tab_1/tr_5/td_1/list_3/pnt_1b" kind="point">
                      <num>
                         <t v="1b"/>
                      </num>
-                     <t v="Cohesion for growth and employment"/>
-                  </p>
+                     <p>
+                        <t v="Cohesion for growth and employment"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -1247,14 +1351,16 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx_I/tab_1/tr_6/td_1/list_4/pnt_2" kind="point">
                      <num>
                         <t v="2."/>
                      </num>
-                     <emphasis kind="b">
-                        <t v="Preservation and management of natural resources"/>
-                     </emphasis>
-                  </p>
+                     <p>
+                        <emphasis kind="b">
+                           <t v="Preservation and management of natural resources"/>
+                        </emphasis>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -1362,14 +1468,16 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx_I/tab_1/tr_8/td_1/list_5/pnt_3" kind="point">
                      <num>
                         <t v="3."/>
                      </num>
-                     <emphasis kind="b">
-                        <t v="Citizenship, freedom, security and justice"/>
-                     </emphasis>
-                  </p>
+                     <p>
+                        <emphasis kind="b">
+                           <t v="Citizenship, freedom, security and justice"/>
+                        </emphasis>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -1430,12 +1538,14 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx_I/tab_1/tr_9/td_1/list_6/pnt_3a" kind="point">
                      <num>
                         <t v="3a"/>
                      </num>
-                     <t v="Freedom, Security and Justice"/>
-                  </p>
+                     <p>
+                        <t v="Freedom, Security and Justice"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -1480,12 +1590,14 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx_I/tab_1/tr_10/td_1/list_7/pnt_3b" kind="point">
                      <num>
                         <t v="3b"/>
                      </num>
-                     <t v="Citizenship"/>
-                  </p>
+                     <p>
+                        <t v="Citizenship"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -1530,14 +1642,16 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx_I/tab_1/tr_11/td_1/list_8/pnt_4" kind="point">
                      <num>
                         <t v="4."/>
                      </num>
-                     <emphasis kind="b">
-                        <t v="EU as a global player"/>
-                     </emphasis>
-                  </p>
+                     <p>
+                        <emphasis kind="b">
+                           <t v="EU as a global player"/>
+                        </emphasis>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -1598,15 +1712,17 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx_I/tab_1/tr_12/td_1/list_9/pnt_5" kind="point">
                      <num>
                         <t v="5."/>
                      </num>
-                     <emphasis kind="b">
-                        <t v="Administration"/>
-                     </emphasis>
-                     <noteRef href="#note_5" marker="1"/>
-                  </p>
+                     <p>
+                        <emphasis kind="b">
+                           <t v="Administration"/>
+                        </emphasis>
+                        <noteRef href="#note_5" marker="1"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -1667,14 +1783,16 @@
             </tr>
             <tr>
                <td>
-                  <p>
+                  <unit eId="anx_I/tab_1/tr_13/td_1/list_10/pnt_6" kind="point">
                      <num>
                         <t v="6."/>
                      </num>
-                     <emphasis kind="b">
-                        <t v="Compensation"/>
-                     </emphasis>
-                  </p>
+                     <p>
+                        <emphasis kind="b">
+                           <t v="Compensation"/>
+                        </emphasis>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -2068,173 +2186,179 @@
          <subheading>
             <t v="Interinstitutional collaboration in the budgetary sector"/>
          </subheading>
-         <p>
+         <unit eId="anx_II/pnt_A" kind="point">
             <num>
                <t v="A."/>
             </num>
-            <t v="After the technical adjustment of the financial framework for the forthcoming financial year, taking into account the Annual Policy Strategy presented by the Commission and prior to its decision on the preliminary draft budget, a meeting of the trilogue will be convened to discuss the possible priorities for the budget of that year. Due account will be taken of the institutions' powers as well as the foreseeable development of the needs for the financial year to come and for the following years covered by the financial framework. Account will also be taken of new elements which have arisen since the establishment of the initial financial framework and which are likely to have a significant and lasting financial impact on the budget of the European Union."/>
-         </p>
-         <p>
+            <p>
+               <t v="After the technical adjustment of the financial framework for the forthcoming financial year, taking into account the Annual Policy Strategy presented by the Commission and prior to its decision on the preliminary draft budget, a meeting of the trilogue will be convened to discuss the possible priorities for the budget of that year. Due account will be taken of the institutions' powers as well as the foreseeable development of the needs for the financial year to come and for the following years covered by the financial framework. Account will also be taken of new elements which have arisen since the establishment of the initial financial framework and which are likely to have a significant and lasting financial impact on the budget of the European Union.&#xA;"/>
+            </p>
+         </unit>
+         <unit eId="anx_II/pnt_B" kind="point">
             <num>
                <t v="B."/>
             </num>
-            <t v="As regards compulsory expenditure, the Commission, in presenting its preliminary draft budget, will identify:"/>
-         </p>
-         <list kind="alpha">
-            <unit eId="anx_II/pnt_a" kind="point">
-               <num>
-                  <t v="(a)"/>
-               </num>
-               <p>
-                  <t v="appropriations connected with new or planned legislation;&#xA;"/>
-               </p>
-            </unit>
-            <unit eId="anx_II/pnt_b" kind="point">
-               <num>
-                  <t v="(b)"/>
-               </num>
-               <p>
-                  <t v="appropriations arising from the application of legislation existing when the previous budget was adopted.&#xA;"/>
-               </p>
-            </unit>
-         </list>
-         <p>
-            <t v="The Commission will make a careful estimate of the financial implications of the Community's obligations based on the rules. If necessary, it will update its estimates in the course of the budgetary procedure. It will supply the budgetary authority with all the duly justified reasons it may require."/>
-         </p>
-         <p>
-            <t v="If it considers it necessary, the Commission may present to the two arms of the budgetary authority an ad hoc letter of amendment to update the figures underlying the estimate of agricultural expenditure in the preliminary draft budget and/or to correct, on the basis of the most recent information available concerning fisheries agreements in force on 1 January of the financial year concerned, the amounts and their breakdown between the appropriations entered in the operational items for international fisheries agreements and those entered in reserve."/>
-         </p>
-         <p>
-            <t v="That letter of amendment must be sent to the budgetary authority before the end of October."/>
-         </p>
-         <p>
-            <t v="If it is presented to the Council less than one month before the European Parliament's first reading, the Council will, as a rule, consider the ad hoc letter of amendment when giving the draft budget its second reading."/>
-         </p>
-         <p>
-            <t v="As a consequence, before the Council's second reading of the budget, the two arms of the budgetary authority will try to meet the conditions necessary for the letter of amendment to be adopted on a single reading by each of the institutions concerned."/>
-         </p>
-         <p>
+            <p>
+               <t v="As regards compulsory expenditure, the Commission, in presenting its preliminary draft budget, will identify:&#xA;"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="anx_II/pnt_B/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="appropriations connected with new or planned legislation;&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_B/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="appropriations arising from the application of legislation existing when the previous budget was adopted.&#xA;"/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="The Commission will make a careful estimate of the financial implications of the Community's obligations based on the rules. If necessary, it will update its estimates in the course of the budgetary procedure. It will supply the budgetary authority with all the duly justified reasons it may require."/>
+            </p>
+            <p>
+               <t v="If it considers it necessary, the Commission may present to the two arms of the budgetary authority an ad hoc letter of amendment to update the figures underlying the estimate of agricultural expenditure in the preliminary draft budget and/or to correct, on the basis of the most recent information available concerning fisheries agreements in force on 1 January of the financial year concerned, the amounts and their breakdown between the appropriations entered in the operational items for international fisheries agreements and those entered in reserve."/>
+            </p>
+            <p>
+               <t v="That letter of amendment must be sent to the budgetary authority before the end of October."/>
+            </p>
+            <p>
+               <t v="If it is presented to the Council less than one month before the European Parliament's first reading, the Council will, as a rule, consider the ad hoc letter of amendment when giving the draft budget its second reading."/>
+            </p>
+            <p>
+               <t v="As a consequence, before the Council's second reading of the budget, the two arms of the budgetary authority will try to meet the conditions necessary for the letter of amendment to be adopted on a single reading by each of the institutions concerned."/>
+            </p>
+         </unit>
+         <unit eId="anx_II/pnt_C" kind="point">
             <num>
                <t v="C."/>
             </num>
-         </p>
-         <list kind="arabic">
-            <unit eId="anx_II/list_2/pnt_1" kind="point">
-               <num>
-                  <t v="1."/>
-               </num>
-               <p>
-                  <t v="A conciliation procedure is set up for all expenditure.&#xA;"/>
-               </p>
-            </unit>
-            <unit eId="anx_II/list_2/pnt_2" kind="point">
-               <num>
-                  <t v="2."/>
-               </num>
-               <p>
-                  <t v="The purpose of the conciliation procedure is to:&#xA;&#xA;"/>
-               </p>
-               <list kind="alpha">
-                  <unit eId="anx_II/list_2/pnt_2/pnt_a" kind="point">
-                     <num>
-                        <t v="(a)"/>
-                     </num>
-                     <p>
-                        <t v="continue discussions on the general trend of expenditure and, in this framework, on the broad lines of the budget for the coming year in the light of the Commission's preliminary draft budget;&#xA;"/>
-                     </p>
-                  </unit>
-                  <unit eId="anx_II/list_2/pnt_2/pnt_b" kind="point">
-                     <num>
-                        <t v="(b)"/>
-                     </num>
-                     <p>
-                        <t v="secure agreement between the two arms of the budgetary authority on:&#xA;&#xA;"/>
-                     </p>
-                     <list kind="dash">
-                        <unit eId="anx_II/list_2/pnt_2/pnt_b/idt_1" kind="indent">
-                           <p>
-                              <t v="the appropriations referred to in Points (a) and (b) of Part B, including those proposed in the ad hoc letter of amendment referred to that Part,"/>
-                           </p>
-                        </unit>
-                        <unit eId="anx_II/list_2/pnt_2/pnt_b/idt_2" kind="indent">
-                           <p>
-                              <t v="the amounts to be entered in the budget for non-compulsory expenditure, in accordance with Point 40 of this Agreement, and"/>
-                           </p>
-                        </unit>
-                        <unit eId="anx_II/list_2/pnt_2/pnt_b/idt_3" kind="indent">
-                           <p>
-                              <t v="in particular, matters for which reference to this procedure is made in this Agreement."/>
-                           </p>
-                        </unit>
-                     </list>
-                  </unit>
-               </list>
-            </unit>
-            <unit eId="anx_II/list_2/pnt_3" kind="point">
-               <num>
-                  <t v="3."/>
-               </num>
-               <p>
-                  <t v="The procedure will begin with a trilogue meeting convened in time to allow the institutions to seek an agreement by no later than the date set by the Council for establishing its draft budget.&#xA;&#xA;"/>
-               </p>
-               <p>
-                  <t v="There will be conciliation on the results of this trilogue between the Council and a European Parliament delegation, with the Commission also taking part."/>
-               </p>
-               <p>
-                  <t v="Unless decided otherwise during the trilogue, the conciliation meeting will be held at the traditional meeting between the same participants on the date set by the Council for establishing the draft budget."/>
-               </p>
-            </unit>
-            <unit eId="anx_II/list_2/pnt_4" kind="point">
-               <num>
-                  <t v="4."/>
-               </num>
-               <p>
-                  <t v="If necessary, a new trilogue meeting could be held before the European Parliament's first reading on a written proposal by the Commission or a written request by either the chairman of the European Parliament's Committee on Budgets or the President of the Council (Budgets). The decision whether to hold this trilogue will be agreed between the institutions after the adoption of the Council draft budget and prior to the vote on the amendments at first reading by the European Parliament's Committee on Budgets.&#xA;"/>
-               </p>
-            </unit>
-            <unit eId="anx_II/list_2/pnt_5" kind="point">
-               <num>
-                  <t v="5."/>
-               </num>
-               <p>
-                  <t v="The institutions will continue the conciliation after the first reading of the budget by each of the two arms of the budgetary authority in order to secure agreement on compulsory and non-compulsory expenditure and, in particular, to discuss the ad hoc letter of amendment referred to in Part B.&#xA;&#xA;"/>
-               </p>
-               <p>
-                  <t v="A trilogue meeting will be held for this purpose after the European Parliament's first reading."/>
-               </p>
-               <p>
-                  <t v="The results of the trilogue will be discussed at a second conciliation meeting to be held on the day of the Council's second reading."/>
-               </p>
-               <p>
-                  <t v="If necessary, the institutions will continue their discussions on non-compulsory expenditure after the Council's second reading."/>
-               </p>
-            </unit>
-            <unit eId="anx_II/list_2/pnt_6" kind="point">
-               <num>
-                  <t v="6."/>
-               </num>
-               <p>
-                  <t v="At those trilogue meetings, the institutions' delegations will be led by the President of the Council (Budgets), the Chairman of the European Parliament Committee's on Budgets and the Member of the Commission responsible for the budget.&#xA;"/>
-               </p>
-            </unit>
-            <unit eId="anx_II/list_2/pnt_7" kind="point">
-               <num>
-                  <t v="7."/>
-               </num>
-               <p>
-                  <t v="Each arm of the budgetary authority will take whatever steps are required to ensure that the results which may be secured in the conciliation process are respected throughout the budgetary procedure.&#xA;"/>
-               </p>
-            </unit>
-         </list>
-         <p>
+            <list kind="arabic">
+               <unit eId="anx_II/pnt_C/pnt_1" kind="point">
+                  <num>
+                     <t v="1."/>
+                  </num>
+                  <p>
+                     <t v="A conciliation procedure is set up for all expenditure.&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_C/pnt_2" kind="point">
+                  <num>
+                     <t v="2."/>
+                  </num>
+                  <p>
+                     <t v="The purpose of the conciliation procedure is to:&#xA;&#xA;"/>
+                  </p>
+                  <list kind="alpha">
+                     <unit eId="anx_II/pnt_C/pnt_2/pnt_a" kind="point">
+                        <num>
+                           <t v="(a)"/>
+                        </num>
+                        <p>
+                           <t v="continue discussions on the general trend of expenditure and, in this framework, on the broad lines of the budget for the coming year in the light of the Commission's preliminary draft budget;&#xA;"/>
+                        </p>
+                     </unit>
+                     <unit eId="anx_II/pnt_C/pnt_2/pnt_b" kind="point">
+                        <num>
+                           <t v="(b)"/>
+                        </num>
+                        <p>
+                           <t v="secure agreement between the two arms of the budgetary authority on:&#xA;&#xA;"/>
+                        </p>
+                        <list kind="dash">
+                           <unit eId="anx_II/pnt_C/pnt_2/pnt_b/idt_1" kind="indent">
+                              <p>
+                                 <t v="the appropriations referred to in Points (a) and (b) of Part B, including those proposed in the ad hoc letter of amendment referred to that Part,"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx_II/pnt_C/pnt_2/pnt_b/idt_2" kind="indent">
+                              <p>
+                                 <t v="the amounts to be entered in the budget for non-compulsory expenditure, in accordance with Point 40 of this Agreement, and"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx_II/pnt_C/pnt_2/pnt_b/idt_3" kind="indent">
+                              <p>
+                                 <t v="in particular, matters for which reference to this procedure is made in this Agreement."/>
+                              </p>
+                           </unit>
+                        </list>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="anx_II/pnt_C/pnt_3" kind="point">
+                  <num>
+                     <t v="3."/>
+                  </num>
+                  <p>
+                     <t v="The procedure will begin with a trilogue meeting convened in time to allow the institutions to seek an agreement by no later than the date set by the Council for establishing its draft budget.&#xA;&#xA;"/>
+                  </p>
+                  <p>
+                     <t v="There will be conciliation on the results of this trilogue between the Council and a European Parliament delegation, with the Commission also taking part."/>
+                  </p>
+                  <p>
+                     <t v="Unless decided otherwise during the trilogue, the conciliation meeting will be held at the traditional meeting between the same participants on the date set by the Council for establishing the draft budget."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_C/pnt_4" kind="point">
+                  <num>
+                     <t v="4."/>
+                  </num>
+                  <p>
+                     <t v="If necessary, a new trilogue meeting could be held before the European Parliament's first reading on a written proposal by the Commission or a written request by either the chairman of the European Parliament's Committee on Budgets or the President of the Council (Budgets). The decision whether to hold this trilogue will be agreed between the institutions after the adoption of the Council draft budget and prior to the vote on the amendments at first reading by the European Parliament's Committee on Budgets.&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_C/pnt_5" kind="point">
+                  <num>
+                     <t v="5."/>
+                  </num>
+                  <p>
+                     <t v="The institutions will continue the conciliation after the first reading of the budget by each of the two arms of the budgetary authority in order to secure agreement on compulsory and non-compulsory expenditure and, in particular, to discuss the ad hoc letter of amendment referred to in Part B.&#xA;&#xA;"/>
+                  </p>
+                  <p>
+                     <t v="A trilogue meeting will be held for this purpose after the European Parliament's first reading."/>
+                  </p>
+                  <p>
+                     <t v="The results of the trilogue will be discussed at a second conciliation meeting to be held on the day of the Council's second reading."/>
+                  </p>
+                  <p>
+                     <t v="If necessary, the institutions will continue their discussions on non-compulsory expenditure after the Council's second reading."/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_C/pnt_6" kind="point">
+                  <num>
+                     <t v="6."/>
+                  </num>
+                  <p>
+                     <t v="At those trilogue meetings, the institutions' delegations will be led by the President of the Council (Budgets), the Chairman of the European Parliament Committee's on Budgets and the Member of the Commission responsible for the budget.&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_II/pnt_C/pnt_7" kind="point">
+                  <num>
+                     <t v="7."/>
+                  </num>
+                  <p>
+                     <t v="Each arm of the budgetary authority will take whatever steps are required to ensure that the results which may be secured in the conciliation process are respected throughout the budgetary procedure.&#xA;"/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="anx_II/pnt_D" kind="point">
             <num>
                <t v="D."/>
             </num>
-            <t v="In order for the Commission to be able to assess in due time the implementability of amendments envisaged by the budgetary authority which create new preparatory actions/pilot projects or prolong existing ones, both arms of the budgetary authority will inform the Commission by mid-June of their intentions in this regard, so that a first discussion may already take place at the conciliation meeting of the Council's first reading. The next steps of the conciliation procedure provided for in Part C will also apply, as well as the provisions on implementability mentioned in Point 36 of this Agreement."/>
-         </p>
-         <p>
-            <t v="Furthermore, the institutions agree to limit the total amount of appropriations for pilot schemes to EUR 40 million in any budget year. They also agree to limit to EUR 50 million the total amount of appropriations for new preparatory actions in any budget year, and to EUR 100 million the total amount of appropriations actually committed for preparatory actions."/>
-         </p>
+            <p>
+               <t v="In order for the Commission to be able to assess in due time the implementability of amendments envisaged by the budgetary authority which create new preparatory actions/pilot projects or prolong existing ones, both arms of the budgetary authority will inform the Commission by mid-June of their intentions in this regard, so that a first discussion may already take place at the conciliation meeting of the Council's first reading. The next steps of the conciliation procedure provided for in Part C will also apply, as well as the provisions on implementability mentioned in Point 36 of this Agreement.&#xA;"/>
+            </p>
+            <p>
+               <t v="Furthermore, the institutions agree to limit the total amount of appropriations for pilot schemes to EUR 40 million in any budget year. They also agree to limit to EUR 50 million the total amount of appropriations for new preparatory actions in any budget year, and to EUR 100 million the total amount of appropriations actually committed for preparatory actions."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="anx_III" kind="annex" eurlexAnchor="3">
          <num>
@@ -2320,12 +2444,14 @@
             <tr>
                <td/>
                <td>
-                  <p>
+                  <unit eId="anx_III/tab_1/tr_6/td_2/idt_1" kind="indent">
                      <num>
                         <t v="—"/>
                      </num>
-                     <t v="Expenditure of the common agricultural policy concerning market measures and direct aids, including market measures for fisheries and fisheries agreements concluded with third parties"/>
-                  </p>
+                     <p>
+                        <t v="Expenditure of the common agricultural policy concerning market measures and direct aids, including market measures for fisheries and fisheries agreements concluded with third parties"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -2413,12 +2539,14 @@
             <tr>
                <td/>
                <td>
-                  <p>
+                  <unit eId="anx_III/tab_1/tr_12/td_2/list_2/idt_1" kind="indent">
                      <num>
                         <t v="—"/>
                      </num>
-                     <t v="Expenditure resulting from international agreements which the European Union concluded with third parties"/>
-                  </p>
+                     <p>
+                        <t v="Expenditure resulting from international agreements which the European Union concluded with third parties"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -2429,12 +2557,14 @@
             <tr>
                <td/>
                <td>
-                  <p>
+                  <unit eId="anx_III/tab_1/tr_13/td_2/list_3/idt_1" kind="indent">
                      <num>
                         <t v="—"/>
                      </num>
-                     <t v="Contributions to international organisations or institutions"/>
-                  </p>
+                     <p>
+                        <t v="Contributions to international organisations or institutions"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -2445,12 +2575,14 @@
             <tr>
                <td/>
                <td>
-                  <p>
+                  <unit eId="anx_III/tab_1/tr_14/td_2/list_4/idt_1" kind="indent">
                      <num>
                         <t v="—"/>
                      </num>
-                     <t v="Contributions provisioning the loan guarantee fund"/>
-                  </p>
+                     <p>
+                        <t v="Contributions provisioning the loan guarantee fund"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -2487,12 +2619,14 @@
             <tr>
                <td/>
                <td>
-                  <p>
+                  <unit eId="anx_III/tab_1/tr_17/td_2/list_5/idt_1" kind="indent">
                      <num>
                         <t v="—"/>
                      </num>
-                     <t v="Pensions and severance grants"/>
-                  </p>
+                     <p>
+                        <t v="Pensions and severance grants"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -2503,12 +2637,14 @@
             <tr>
                <td/>
                <td>
-                  <p>
+                  <unit eId="anx_III/tab_1/tr_18/td_2/list_6/idt_1" kind="indent">
                      <num>
                         <t v="—"/>
                      </num>
-                     <t v="Allowances and miscellaneous contributions on termination of service"/>
-                  </p>
+                     <p>
+                        <t v="Allowances and miscellaneous contributions on termination of service"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -2519,12 +2655,14 @@
             <tr>
                <td/>
                <td>
-                  <p>
+                  <unit eId="anx_III/tab_1/tr_19/td_2/list_7/idt_1" kind="indent">
                      <num>
                         <t v="—"/>
                      </num>
-                     <t v="Legal expenses"/>
-                  </p>
+                     <p>
+                        <t v="Legal expenses"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -2535,12 +2673,14 @@
             <tr>
                <td/>
                <td>
-                  <p>
+                  <unit eId="anx_III/tab_1/tr_20/td_2/list_8/idt_1" kind="indent">
                      <num>
                         <t v="—"/>
                      </num>
-                     <t v="Damages"/>
-                  </p>
+                     <p>
+                        <t v="Damages"/>
+                     </p>
+                  </unit>
                </td>
                <td>
                   <p>
@@ -2574,58 +2714,64 @@
          <subheading>
             <t v="Financing of expenditure deriving from fisheries agreements"/>
          </subheading>
-         <p>
+         <unit eId="anx_IV/pnt_A" kind="point">
             <num>
                <t v="A."/>
             </num>
-            <t v="Expenditure relating to fisheries agreements is financed by two items belonging to the "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="fisheries"/>
-            </quote>
-            <t v=" policy area (by reference to the activity based budget nomenclature):"/>
-         </p>
-         <list kind="alpha">
-            <unit eId="anx_IV/pnt_a" kind="point">
-               <num>
-                  <t v="(a)"/>
-               </num>
-               <p>
-                  <t v="international fisheries agreements (11 03 01);&#xA;"/>
-               </p>
-            </unit>
-            <unit eId="anx_IV/pnt_b" kind="point">
-               <num>
-                  <t v="(b)"/>
-               </num>
-               <p>
-                  <t v="contributions to international organisations (11 03 02).&#xA;"/>
-               </p>
-            </unit>
-         </list>
-         <p>
-            <t v="All the amounts relating to agreements and protocols which are in force on 1 January of the year in question will be entered under heading 11 03 01. Amounts relating to all new or renewable agreements which come into force after 1 January of the year in question will be assigned to heading 40 02 41 02 — Reserves/Differentiated appropriations (compulsory expenditure)."/>
-         </p>
-         <p>
+            <p>
+               <t v="Expenditure relating to fisheries agreements is financed by two items belonging to the &#xA;"/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="fisheries"/>
+               </quote>
+               <t v=" policy area (by reference to the activity based budget nomenclature):&#xA;"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="anx_IV/pnt_A/pnt_a" kind="point">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="international fisheries agreements (11 03 01);&#xA;"/>
+                  </p>
+               </unit>
+               <unit eId="anx_IV/pnt_A/pnt_b" kind="point">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="contributions to international organisations (11 03 02).&#xA;"/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="All the amounts relating to agreements and protocols which are in force on 1 January of the year in question will be entered under heading 11 03 01. Amounts relating to all new or renewable agreements which come into force after 1 January of the year in question will be assigned to heading 40 02 41 02 — Reserves/Differentiated appropriations (compulsory expenditure)."/>
+            </p>
+         </unit>
+         <unit eId="anx_IV/pnt_B" kind="point">
             <num>
                <t v="B."/>
             </num>
-            <t v="In the conciliation procedure provided for in Annex II, Part C, the European Parliament and the Council will seek to agree on the amount to be entered in the budget headings and in the reserve on the basis of the proposal made by the Commission."/>
-         </p>
-         <p>
+            <p>
+               <t v="In the conciliation procedure provided for in Annex II, Part C, the European Parliament and the Council will seek to agree on the amount to be entered in the budget headings and in the reserve on the basis of the proposal made by the Commission."/>
+            </p>
+         </unit>
+         <unit eId="anx_IV/pnt_C" kind="point">
             <num>
                <t v="C."/>
             </num>
-            <t v="The Commission undertakes to keep the European Parliament regularly informed about the preparation and conduct of the negotiations, including the budgetary implications."/>
-         </p>
-         <p>
-            <t v="In the course of the legislative process relating to fisheries agreements, the institutions undertake to make every effort to ensure that all procedures are carried out as quickly as possible."/>
-         </p>
-         <p>
-            <t v="If appropriations relating to fisheries agreements (including the reserve) prove insufficient, the Commission will provide the budgetary authority with the necessary information for an exchange of views in the form of a trilogue, possibly simplified, on the causes of the situation, and on the measures which might be adopted under established procedures. Where necessary, the Commission will propose appropriate measures."/>
-         </p>
-         <p>
-            <t v="Each quarter the Commission will present to the budgetary authority detailed information about the implementation of agreements in force and financial forecasts for the remainder of the year."/>
-         </p>
+            <p>
+               <t v="The Commission undertakes to keep the European Parliament regularly informed about the preparation and conduct of the negotiations, including the budgetary implications.&#xA;"/>
+            </p>
+            <p>
+               <t v="In the course of the legislative process relating to fisheries agreements, the institutions undertake to make every effort to ensure that all procedures are carried out as quickly as possible."/>
+            </p>
+            <p>
+               <t v="If appropriations relating to fisheries agreements (including the reserve) prove insufficient, the Commission will provide the budgetary authority with the necessary information for an exchange of views in the form of a trilogue, possibly simplified, on the causes of the situation, and on the measures which might be adopted under established procedures. Where necessary, the Commission will propose appropriate measures."/>
+            </p>
+            <p>
+               <t v="Each quarter the Commission will present to the budgetary authority detailed information about the implementation of agreements in force and financial forecasts for the remainder of the year."/>
+            </p>
+         </unit>
       </unit>
    </annexes>
    <notes>

@@ -130,12 +130,14 @@
                </heading>
                <tr>
                   <td>
-                     <p>
+                     <unit eId="art_1/tab_1/tr_1/td_1/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Aggregatum Group"/>
-                     </p>
+                        <p>
+                           <t v="Aggregatum Group"/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>

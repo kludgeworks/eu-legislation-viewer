@@ -135,34 +135,42 @@
       </formula>
    </preamble>
    <body>
-      <p>
+      <unit eId="list_6/pnt_1" kind="point">
          <num>
             <t v="1."/>
          </num>
-         <t v="The model forms E 111 and E 111B reproduced in Decision No 179 shall be replaced by the models appended hereto."/>
-      </p>
-      <p>
+         <p>
+            <t v="The model forms E 111 and E 111B reproduced in Decision No 179 shall be replaced by the models appended hereto."/>
+         </p>
+      </unit>
+      <unit eId="list_6/pnt_2" kind="point">
          <num>
             <t v="2."/>
          </num>
-         <t v="The competent authorities of the Member States shall make available to the parties concerned (rightful claimants, institutions, employers, etc.) the forms according to the models appended hereto."/>
-      </p>
-      <p>
+         <p>
+            <t v="The competent authorities of the Member States shall make available to the parties concerned (rightful claimants, institutions, employers, etc.) the forms according to the models appended hereto."/>
+         </p>
+      </unit>
+      <unit eId="list_6/pnt_3" kind="point">
          <num>
             <t v="3."/>
          </num>
-         <t v="These forms shall be available in the official languages of the Community and laid out in such manner that the different versions are perfectly superposable, thereby making it possible for all addressees (rightful claimants, institutions, employers, etc.) to receive the form printed in their own language."/>
-      </p>
-      <p>
+         <p>
+            <t v="These forms shall be available in the official languages of the Community and laid out in such manner that the different versions are perfectly superposable, thereby making it possible for all addressees (rightful claimants, institutions, employers, etc.) to receive the form printed in their own language."/>
+         </p>
+      </unit>
+      <unit eId="list_6/pnt_4" kind="point">
          <num>
             <t v="4."/>
          </num>
-         <t v="This Decision shall be applicable from the first day of the month following its publication in the "/>
-         <emphasis kind="i">
-            <t v="Official Journal of the European Union"/>
-         </emphasis>
-         <t v="."/>
-      </p>
+         <p>
+            <t v="This Decision shall be applicable from the first day of the month following its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
    </body>
    <annexes>
       <unit eId="att_1" kind="attachment">

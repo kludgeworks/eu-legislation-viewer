@@ -173,65 +173,67 @@
                   <t v="in Annex I, point 2 is replaced by the following:"/>
                </p>
                <quotedStructure eId="art_1/pnt_2/qstr_1">
-                  <p>
+                  <unit eId="art_1/pnt_2/qstr_1/pnt_2" kind="point">
                      <num>
                         <t v="‘"/>
                         <t v="2."/>
                      </num>
-                     <t v="The reference lean meat percentage is calculated as follows:"/>
-                  </p>
-                  <math>
-                     <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
-                        <m:mrow>
-                           <m:mi>y</m:mi>
-                           <m:mo>=</m:mo>
-                           <m:mn>0,89</m:mn>
-                           <m:mo>×</m:mo>
-                           <m:mn>100</m:mn>
-                           <m:mo>×</m:mo>
-                           <m:mfrac>
-                              <m:mrow>
-                                 <m:mi>Weight</m:mi>
-                                 <m:mi>of</m:mi>
-                                 <m:mi>tender</m:mi>
-                                 <m:mi>loin</m:mi>
-                                 <m:mo>+</m:mo>
-                                 <m:mi>weight</m:mi>
-                                 <m:mi>of</m:mi>
-                                 <m:mi>lean</m:mi>
-                                 <m:mo>(</m:mo>
-                                 <m:mi>fascia</m:mi>
-                                 <m:mi>included</m:mi>
-                                 <m:mo>)</m:mo>
-                                 <m:mi>in</m:mi>
-                                 <m:mi>shoulder</m:mi>
-                                 <m:mo>,</m:mo>
-                                 <m:mi>loin</m:mi>
-                                 <m:mo>,</m:mo>
-                                 <m:mi>ham</m:mi>
-                                 <m:mi>and</m:mi>
-                                 <m:mi>belly</m:mi>
-                              </m:mrow>
-                              <m:mrow>
-                                 <m:mi>Weight</m:mi>
-                                 <m:mi>of</m:mi>
-                                 <m:mi>tender</m:mi>
-                                 <m:mi>loin</m:mi>
-                                 <m:mo>+</m:mo>
-                                 <m:mi>weight</m:mi>
-                                 <m:mi>of</m:mi>
-                                 <m:mi>dissected</m:mi>
-                                 <m:mi>cuts</m:mi>
-                              </m:mrow>
-                           </m:mfrac>
-                        </m:mrow>
-                     </m:math>
-                  </math>
-                  <p>
-                     <t v="The weight of the lean in those four cuts will be calculated by subtracting the total of the non-lean elements of the four cuts from the total weight of the cuts before dissection."/>
-                     <t v="’"/>
-                     <t v="."/>
-                  </p>
+                     <p>
+                        <t v="The reference lean meat percentage is calculated as follows:"/>
+                     </p>
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
+                           <m:mrow>
+                              <m:mi>y</m:mi>
+                              <m:mo>=</m:mo>
+                              <m:mn>0,89</m:mn>
+                              <m:mo>×</m:mo>
+                              <m:mn>100</m:mn>
+                              <m:mo>×</m:mo>
+                              <m:mfrac>
+                                 <m:mrow>
+                                    <m:mi>Weight</m:mi>
+                                    <m:mi>of</m:mi>
+                                    <m:mi>tender</m:mi>
+                                    <m:mi>loin</m:mi>
+                                    <m:mo>+</m:mo>
+                                    <m:mi>weight</m:mi>
+                                    <m:mi>of</m:mi>
+                                    <m:mi>lean</m:mi>
+                                    <m:mo>(</m:mo>
+                                    <m:mi>fascia</m:mi>
+                                    <m:mi>included</m:mi>
+                                    <m:mo>)</m:mo>
+                                    <m:mi>in</m:mi>
+                                    <m:mi>shoulder</m:mi>
+                                    <m:mo>,</m:mo>
+                                    <m:mi>loin</m:mi>
+                                    <m:mo>,</m:mo>
+                                    <m:mi>ham</m:mi>
+                                    <m:mi>and</m:mi>
+                                    <m:mi>belly</m:mi>
+                                 </m:mrow>
+                                 <m:mrow>
+                                    <m:mi>Weight</m:mi>
+                                    <m:mi>of</m:mi>
+                                    <m:mi>tender</m:mi>
+                                    <m:mi>loin</m:mi>
+                                    <m:mo>+</m:mo>
+                                    <m:mi>weight</m:mi>
+                                    <m:mi>of</m:mi>
+                                    <m:mi>dissected</m:mi>
+                                    <m:mi>cuts</m:mi>
+                                 </m:mrow>
+                              </m:mfrac>
+                           </m:mrow>
+                        </m:math>
+                     </math>
+                     <p>
+                        <t v="The weight of the lean in those four cuts will be calculated by subtracting the total of the non-lean elements of the four cuts from the total weight of the cuts before dissection."/>
+                        <t v="’"/>
+                        <t v="."/>
+                     </p>
+                  </unit>
                </quotedStructure>
             </unit>
          </list>

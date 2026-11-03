@@ -405,30 +405,38 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/tab_1/tr_3/td_9/list_3/pnt_1" kind="point">
                         <num>
                            <t v="1."/>
                         </num>
-                        <t v="In the directions for use of the additive and premixture, indicate the storage conditions and stability to heat processing."/>
-                     </p>
-                     <p>
+                        <p>
+                           <t v="In the directions for use of the additive and premixture, indicate the storage conditions and stability to heat processing."/>
+                        </p>
+                     </unit>
+                     <unit eId="anx/tab_1/tr_3/td_9/list_3/pnt_2" kind="point">
                         <num>
                            <t v="2."/>
                         </num>
-                        <t v="The mixture of different sources of canthaxanthin shall not exceeded 6 mg canthaxanthin/kg of complete feedingstuff."/>
-                     </p>
-                     <p>
+                        <p>
+                           <t v="The mixture of different sources of canthaxanthin shall not exceeded 6 mg canthaxanthin/kg of complete feedingstuff."/>
+                        </p>
+                     </unit>
+                     <unit eId="anx/tab_1/tr_3/td_9/list_3/pnt_3" kind="point">
                         <num>
                            <t v="3."/>
                         </num>
-                        <t v="The mixture of this preparation with canthaxanthin and other carotenoids is allowed provided that the total concentration of the mixture does not exceed 80 mg/kg of complete feedingstuff."/>
-                     </p>
-                     <p>
+                        <p>
+                           <t v="The mixture of this preparation with canthaxanthin and other carotenoids is allowed provided that the total concentration of the mixture does not exceed 80 mg/kg of complete feedingstuff."/>
+                        </p>
+                     </unit>
+                     <unit eId="anx/tab_1/tr_3/td_9/list_3/pnt_4" kind="point">
                         <num>
                            <t v="4."/>
                         </num>
-                        <t v="For user safety: breathing protection, safety glasses and gloves should be worn during handling."/>
-                     </p>
+                        <p>
+                           <t v="For user safety: breathing protection, safety glasses and gloves should be worn during handling."/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>

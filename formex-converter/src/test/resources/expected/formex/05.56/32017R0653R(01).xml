@@ -148,66 +148,68 @@
          </p>
          <new>
             <quotedStructure eId="cor_3/new/qstr_1">
-               <p>
+               <unit eId="cor_3/new/qstr_1/pnt_d" kind="point">
                   <num>
                      <t v="‘"/>
                      <t v="(d)"/>
                   </num>
-                  <t v="Calculate the return for each contract by summing returns from selected periods and correcting these returns to ensure that the expected return measured from the simulated return's distribution is as below"/>
-               </p>
-               <p>
-                  <math>
-                     <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
-                        <m:mrow>
+                  <p>
+                     <t v="Calculate the return for each contract by summing returns from selected periods and correcting these returns to ensure that the expected return measured from the simulated return's distribution is as below"/>
+                  </p>
+                  <p>
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
                            <m:mrow>
-                              <m:mi mathvariant="italic">E</m:mi>
-                              <m:mo>*</m:mo>
                               <m:mrow>
-                                 <m:mo fence="true">[</m:mo>
-                                 <msub xmlns="http://www.w3.org/1998/Math/MathML">
-                                    <m:mi mathvariant="italic">r</m:mi>
+                                 <m:mi mathvariant="italic">E</m:mi>
+                                 <m:mo>*</m:mo>
+                                 <m:mrow>
+                                    <m:mo fence="true">[</m:mo>
+                                    <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi mathvariant="italic">r</m:mi>
+                                       <m:mrow>
+                                          <m:mi mathvariant="italic">bootstrapped</m:mi>
+                                       </m:mrow>
+                                    </msub>
+                                    <m:mo fence="true">]</m:mo>
+                                 </m:mrow>
+                              </m:mrow>
+                              <m:mo>=</m:mo>
+                              <m:mrow>
+                                 <m:mo>−</m:mo>
+                                 <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <m:mn>0,5</m:mn>
                                     <m:mrow>
-                                       <m:mi mathvariant="italic">bootstrapped</m:mi>
+                                       <m:mi mathvariant="italic">w</m:mi>
                                     </m:mrow>
-                                 </msub>
-                                 <m:mo fence="true">]</m:mo>
+                                 </msup>
+                                 <m:msubsup>
+                                    <m:mi xmlns="http://www.w3.org/1998/Math/MathML" mathvariant="italic">σ</m:mi>
+                                    <m:mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi mathvariant="italic">s</m:mi>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mn>2</m:mn>
+                                    </m:mrow>
+                                 </m:msubsup>
+                                 <m:mi mathvariant="italic">N</m:mi>
                               </m:mrow>
                            </m:mrow>
-                           <m:mo>=</m:mo>
-                           <m:mrow>
-                              <m:mo>−</m:mo>
-                              <msup xmlns="http://www.w3.org/1998/Math/MathML">
-                                 <m:mn>0,5</m:mn>
-                                 <m:mrow>
-                                    <m:mi mathvariant="italic">w</m:mi>
-                                 </m:mrow>
-                              </msup>
-                              <m:msubsup>
-                                 <m:mi xmlns="http://www.w3.org/1998/Math/MathML" mathvariant="italic">σ</m:mi>
-                                 <m:mrow xmlns="http://www.w3.org/1998/Math/MathML">
-                                    <m:mi mathvariant="italic">s</m:mi>
-                                 </m:mrow>
-                                 <m:mrow>
-                                    <m:mn>2</m:mn>
-                                 </m:mrow>
-                              </m:msubsup>
-                              <m:mi mathvariant="italic">N</m:mi>
-                           </m:mrow>
-                        </m:mrow>
-                     </m:math>
-                  </math>
-               </p>
-               <p>
-                  <t v="where E*[r"/>
-                  <emphasis kind="i">
-                     <emphasis kind="sub">
-                        <t v="bootstrapped"/>
+                        </m:math>
+                     </math>
+                  </p>
+                  <p>
+                     <t v="where E*[r"/>
+                     <emphasis kind="i">
+                        <emphasis kind="sub">
+                           <t v="bootstrapped"/>
+                        </emphasis>
                      </emphasis>
-                  </emphasis>
-                  <t v="] is the new simulated mean."/>
-                  <t v="’"/>
-                  <t v="."/>
-               </p>
+                     <t v="] is the new simulated mean."/>
+                     <t v="’"/>
+                     <t v="."/>
+                  </p>
+               </unit>
             </quotedStructure>
          </new>
       </unit>

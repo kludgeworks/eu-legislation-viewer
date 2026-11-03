@@ -141,45 +141,55 @@
                   <t v="LIST OF COUNCIL CONFIGURATIONS"/>
                </emphasis>
             </heading>
-            <p>
+            <unit eId="anx/level_1/pnt_1" kind="point">
                <num>
                   <t v="1."/>
                </num>
-               <t v="General affairs"/>
-               <noteRef href="#note_1" marker="1"/>
-               <t v=";"/>
-            </p>
-            <p>
+               <p>
+                  <t v="General affairs"/>
+                  <noteRef href="#note_1" marker="1"/>
+                  <t v=";"/>
+               </p>
+            </unit>
+            <unit eId="anx/level_1/pnt_2" kind="point">
                <num>
                   <t v="2."/>
                </num>
-               <t v="Foreign affairs"/>
-               <noteRef href="#note_2" marker="2"/>
-               <t v=";"/>
-            </p>
-            <p>
+               <p>
+                  <t v="Foreign affairs"/>
+                  <noteRef href="#note_2" marker="2"/>
+                  <t v=";"/>
+               </p>
+            </unit>
+            <unit eId="anx/level_1/pnt_3" kind="point">
                <num>
                   <t v="3."/>
                </num>
-               <t v="Economic and financial affairs"/>
-               <noteRef href="#note_3" marker="3"/>
-               <t v=";"/>
-            </p>
-            <p>
+               <p>
+                  <t v="Economic and financial affairs"/>
+                  <noteRef href="#note_3" marker="3"/>
+                  <t v=";"/>
+               </p>
+            </unit>
+            <unit eId="anx/level_1/pnt_4" kind="point">
                <num>
                   <t v="4."/>
                </num>
-               <t v="Justice and home affairs"/>
-               <noteRef href="#note_4" marker="4"/>
-               <t v=";"/>
-            </p>
-            <p>
+               <p>
+                  <t v="Justice and home affairs"/>
+                  <noteRef href="#note_4" marker="4"/>
+                  <t v=";"/>
+               </p>
+            </unit>
+            <unit eId="anx/level_1/pnt_5" kind="point">
                <num>
                   <t v="5."/>
                </num>
-               <t v="Employment, social policy, health and consumer affairs;"/>
-            </p>
-            <p>
+               <p>
+                  <t v="Employment, social policy, health and consumer affairs;"/>
+               </p>
+            </unit>
+            <unit eId="anx/level_1/pnt_6" kind="point">
                <num>
                   <changed amendingAct="32010D0594"
                            action="replaced"
@@ -188,34 +198,42 @@
                      <t v="6."/>
                   </changed>
                </num>
-               <changed amendingAct="32010D0594"
-                        action="replaced"
-                        location="AR:1;PT:1"
-                        marker="O001001M001000">
-                  <t v="Competitiveness (internal market, industry, research and space)"/>
-               </changed>
-               <noteRef href="#note_5" marker="5"/>
-               <t v=";"/>
-            </p>
-            <p>
+               <p>
+                  <changed amendingAct="32010D0594"
+                           action="replaced"
+                           location="AR:1;PT:1"
+                           marker="O001001M001000">
+                     <t v="Competitiveness (internal market, industry, research and space)"/>
+                  </changed>
+                  <noteRef href="#note_5" marker="5"/>
+                  <t v=";"/>
+               </p>
+            </unit>
+            <unit eId="anx/level_1/pnt_7" kind="point">
                <num>
                   <t v="7."/>
                </num>
-               <t v="Transport, telecommunications and energy;"/>
-            </p>
-            <p>
+               <p>
+                  <t v="Transport, telecommunications and energy;"/>
+               </p>
+            </unit>
+            <unit eId="anx/level_1/pnt_8" kind="point">
                <num>
                   <t v="8."/>
                </num>
-               <t v="Agriculture and fisheries;"/>
-            </p>
-            <p>
+               <p>
+                  <t v="Agriculture and fisheries;"/>
+               </p>
+            </unit>
+            <unit eId="anx/level_1/pnt_9" kind="point">
                <num>
                   <t v="9."/>
                </num>
-               <t v="Environment;"/>
-            </p>
-            <p>
+               <p>
+                  <t v="Environment;"/>
+               </p>
+            </unit>
+            <unit eId="anx/level_1/pnt_10" kind="point">
                <num>
                   <changed amendingAct="32010D0594"
                            action="replaced"
@@ -224,15 +242,17 @@
                      <t v="10."/>
                   </changed>
                </num>
-               <changed amendingAct="32010D0594"
-                        action="replaced"
-                        location="AR:1;PT:2"
-                        marker="O001001M002000">
-                  <t v="Education, youth, culture and sport"/>
-               </changed>
-               <noteRef href="#note_6" marker="6"/>
-               <t v="."/>
-            </p>
+               <p>
+                  <changed amendingAct="32010D0594"
+                           action="replaced"
+                           location="AR:1;PT:2"
+                           marker="O001001M002000">
+                     <t v="Education, youth, culture and sport"/>
+                  </changed>
+                  <noteRef href="#note_6" marker="6"/>
+                  <t v="."/>
+               </p>
+            </unit>
          </unit>
       </unit>
    </annexes>

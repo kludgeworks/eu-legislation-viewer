@@ -81,67 +81,73 @@
                <t v="Background and purpose of the Proposal"/>
             </emphasis>
          </heading>
-         <p>
+         <unit eId="pnt_1/pnt_1" kind="point">
             <num>
                <t v="(1)"/>
             </num>
-            <t v="On "/>
-            <date asWritten="8 August 2016" date="2016-08-08"/>
-            <t v=", the European Commission ("/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Commission"/>
-            </quote>
-            <t v=") published a Proposal for a Regulation of the European Parliament and of the Council establishing a common framework for European statistics relating to persons and households, based on data at individual level collected from samples (hereafter: "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="the Proposal"/>
-            </quote>
-            <t v=")"/>
-            <noteRef href="#note_1" marker="1"/>
-            <t v=". On the same day, the Commission requested the European Data Protection Supervisor ("/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="EDPS"/>
-            </quote>
-            <t v="), as an independent advisory body, for his Opinion. The Council of the European Union ("/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Council"/>
-            </quote>
-            <t v=") also submitted a request on "/>
-            <date asWritten="25 November 2016" date="2016-11-25"/>
-            <t v="."/>
-         </p>
-         <p>
+            <p>
+               <t v="On "/>
+               <date asWritten="8 August 2016" date="2016-08-08"/>
+               <t v=", the European Commission ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Commission"/>
+               </quote>
+               <t v=") published a Proposal for a Regulation of the European Parliament and of the Council establishing a common framework for European statistics relating to persons and households, based on data at individual level collected from samples (hereafter: "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the Proposal"/>
+               </quote>
+               <t v=")"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=". On the same day, the Commission requested the European Data Protection Supervisor ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="EDPS"/>
+               </quote>
+               <t v="), as an independent advisory body, for his Opinion. The Council of the European Union ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Council"/>
+               </quote>
+               <t v=") also submitted a request on "/>
+               <date asWritten="25 November 2016" date="2016-11-25"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pnt_1/pnt_2" kind="point">
             <num>
                <t v="(2)"/>
             </num>
-            <t v="As set out in its Article 1 ("/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Subject matter"/>
-            </quote>
-            <t v="), the purpose of the Proposal is to establish a common framework for European statistics relating to persons and households, based on data at individual level collected from samples."/>
-         </p>
-         <p>
+            <p>
+               <t v="As set out in its Article 1 ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Subject matter"/>
+               </quote>
+               <t v="), the purpose of the Proposal is to establish a common framework for European statistics relating to persons and households, based on data at individual level collected from samples."/>
+            </p>
+         </unit>
+         <unit eId="pnt_1/pnt_3" kind="point">
             <num>
                <t v="(3)"/>
             </num>
-            <t v="The EDPS takes note of the policy objectives of the Proposal. He welcomes:"/>
-         </p>
-         <list kind="dash">
-            <unit eId="pnt_1/idt_1" kind="indent">
-               <p>
-                  <t v="the fact that he has been consulted and that a reference to this consultation has been made in Recital 23 of the proposed Regulation;"/>
-               </p>
-            </unit>
-            <unit eId="pnt_1/idt_2" kind="indent">
-               <p>
-                  <t v="the inclusion of Recital 20 referring to applicable data protection law (Regulation 95/46/EC and Regulation (EC) No 45/2001 of the European Parliament and of the Council); as well as"/>
-               </p>
-            </unit>
-            <unit eId="pnt_1/idt_3" kind="indent">
-               <p>
-                  <t v="the reference to data protection rules when linking different records regarding an individual (Article 11)."/>
-               </p>
-            </unit>
-         </list>
+            <p>
+               <t v="The EDPS takes note of the policy objectives of the Proposal. He welcomes:"/>
+            </p>
+            <list kind="dash">
+               <unit eId="pnt_1/pnt_3/idt_1" kind="indent">
+                  <p>
+                     <t v="the fact that he has been consulted and that a reference to this consultation has been made in Recital 23 of the proposed Regulation;"/>
+                  </p>
+               </unit>
+               <unit eId="pnt_1/pnt_3/idt_2" kind="indent">
+                  <p>
+                     <t v="the inclusion of Recital 20 referring to applicable data protection law (Regulation 95/46/EC and Regulation (EC) No 45/2001 of the European Parliament and of the Council); as well as"/>
+                  </p>
+               </unit>
+               <unit eId="pnt_1/pnt_3/idt_3" kind="indent">
+                  <p>
+                     <t v="the reference to data protection rules when linking different records regarding an individual (Article 11)."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
       </unit>
       <unit eId="pnt_2" kind="level" depth="1">
          <num>
@@ -152,84 +158,92 @@
                <t v="Overview and key concerns"/>
             </emphasis>
          </heading>
-         <p>
+         <unit eId="pnt_2/pnt_4" kind="point">
             <num>
                <t v="(4)"/>
             </num>
-            <t v="Our main concern is the ambiguity in the current draft surrounding the possibility of the use of "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="administrative"/>
-            </quote>
-            <t v=" data and "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="big data"/>
-            </quote>
-            <t v=" sources such as telephone location data, corporate and tax records, social security and medical records, records of unemployment offices and organisations managing social security. While big data may promise new possibilities and increased efficiencies for the production of official statistics, it also poses specific risks, and therefore, we suggest careful scrutiny of any relevant provisions"/>
-            <noteRef href="#note_2" marker="2"/>
-            <t v="."/>
-         </p>
-         <p>
+            <p>
+               <t v="Our main concern is the ambiguity in the current draft surrounding the possibility of the use of "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="administrative"/>
+               </quote>
+               <t v=" data and "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="big data"/>
+               </quote>
+               <t v=" sources such as telephone location data, corporate and tax records, social security and medical records, records of unemployment offices and organisations managing social security. While big data may promise new possibilities and increased efficiencies for the production of official statistics, it also poses specific risks, and therefore, we suggest careful scrutiny of any relevant provisions"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pnt_2/pnt_5" kind="point">
             <num>
                <t v="(5)"/>
             </num>
-            <t v="We would also welcome more clarity on the fact that whenever any information is directly provided by individuals, this should be done on a voluntary basis, using consent under Articles 6 and 7 of the General Data Protection Regulation ("/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="GDPR"/>
-            </quote>
-            <t v=")"/>
-            <noteRef href="#note_3" marker="3"/>
-            <t v=" as a legal basis for the processing of personal data; unless the provision of information is specifically required under Union or Member States law in accordance with applicable data protection law."/>
-         </p>
-         <p>
+            <p>
+               <t v="We would also welcome more clarity on the fact that whenever any information is directly provided by individuals, this should be done on a voluntary basis, using consent under Articles 6 and 7 of the General Data Protection Regulation ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="GDPR"/>
+               </quote>
+               <t v=")"/>
+               <noteRef href="#note_3" marker="3"/>
+               <t v=" as a legal basis for the processing of personal data; unless the provision of information is specifically required under Union or Member States law in accordance with applicable data protection law."/>
+            </p>
+         </unit>
+         <unit eId="pnt_2/pnt_6" kind="point">
             <num>
                <t v="(6)"/>
             </num>
-            <t v="In light of these concerns, we would particularly welcome if the legislators could introduce more clarity in the way Article 8 (on data sources and methods) is drafted."/>
-         </p>
-         <p>
+            <p>
+               <t v="In light of these concerns, we would particularly welcome if the legislators could introduce more clarity in the way Article 8 (on data sources and methods) is drafted."/>
+            </p>
+         </unit>
+         <unit eId="pnt_2/pnt_7" kind="point">
             <num>
                <t v="(7)"/>
             </num>
-            <t v="Other relevant provisions that the EDPS considers could be improved may include the following:"/>
-         </p>
-         <list kind="dash">
-            <unit eId="pnt_2/idt_1" kind="indent">
-               <p>
-                  <t v="Article 2(e) on the definition of "/>
-                  <emphasis kind="i">
+            <p>
+               <t v="Other relevant provisions that the EDPS considers could be improved may include the following:"/>
+            </p>
+            <list kind="dash">
+               <unit eId="pnt_2/pnt_7/idt_1" kind="indent">
+                  <p>
+                     <t v="Article 2(e) on the definition of "/>
+                     <emphasis kind="i">
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="administrative records"/>
+                        </quote>
+                     </emphasis>
+                     <t v=";"/>
+                  </p>
+               </unit>
+               <unit eId="pnt_2/pnt_7/idt_2" kind="indent">
+                  <p>
+                     <t v="Recital 4 on the use of "/>
                      <quote startQuote="‘" endQuote="’">
-                        <t v="administrative records"/>
+                        <t v="administrative sources"/>
                      </quote>
-                  </emphasis>
-                  <t v=";"/>
-               </p>
-            </unit>
-            <unit eId="pnt_2/idt_2" kind="indent">
-               <p>
-                  <t v="Recital 4 on the use of "/>
-                  <quote startQuote="‘" endQuote="’">
-                     <t v="administrative sources"/>
-                  </quote>
-                  <t v=" for statistical purposes;"/>
-               </p>
-            </unit>
-            <unit eId="pnt_2/idt_3" kind="indent">
-               <p>
-                  <t v="Recital 20 on applicable data protection law and the notion of "/>
-                  <emphasis kind="i">
-                     <quote startQuote="‘" endQuote="’">
-                        <t v="substantial public interest"/>
-                     </quote>
-                  </emphasis>
-                  <t v=";"/>
-               </p>
-            </unit>
-            <unit eId="pnt_2/idt_4" kind="indent">
-               <p>
-                  <t v="Article 11(1) on sampling frames."/>
-               </p>
-            </unit>
-         </list>
+                     <t v=" for statistical purposes;"/>
+                  </p>
+               </unit>
+               <unit eId="pnt_2/pnt_7/idt_3" kind="indent">
+                  <p>
+                     <t v="Recital 20 on applicable data protection law and the notion of "/>
+                     <emphasis kind="i">
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="substantial public interest"/>
+                        </quote>
+                     </emphasis>
+                     <t v=";"/>
+                  </p>
+               </unit>
+               <unit eId="pnt_2/pnt_7/idt_4" kind="indent">
+                  <p>
+                     <t v="Article 11(1) on sampling frames."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
       </unit>
       <unit eId="pnt_3" kind="level" depth="1">
          <num>
@@ -250,28 +264,34 @@
                <t v="References to applicable data protection law (Recital 20)"/>
             </emphasis>
          </heading>
-         <p>
+         <unit eId="pnt_3.1/pnt_8" kind="point">
             <num>
                <t v="(8)"/>
             </num>
-            <t v="Depending on the date of entry into force of the proposed Regulation, references to applicable law in Recital 20 may need to be updated. In particular, they may need to be replaced by references to the General Data Protection Regulation (GDPR), which will become applicable on "/>
-            <date asWritten="25 May 2018" date="2018-05-25"/>
-            <t v=", and by references to the new legal instrument replacing Regulation (EC) No 45/2001."/>
-         </p>
-         <p>
+            <p>
+               <t v="Depending on the date of entry into force of the proposed Regulation, references to applicable law in Recital 20 may need to be updated. In particular, they may need to be replaced by references to the General Data Protection Regulation (GDPR), which will become applicable on "/>
+               <date asWritten="25 May 2018" date="2018-05-25"/>
+               <t v=", and by references to the new legal instrument replacing Regulation (EC) No 45/2001."/>
+            </p>
+         </unit>
+         <unit eId="pnt_3.1/pnt_9" kind="point">
             <num>
                <t v="(9)"/>
             </num>
-            <t v="We would also welcome a reference, in a recital, to compliance with the safeguards relating to processing for statistical purposes under Article 89 of the GDPR."/>
-         </p>
-         <p>
+            <p>
+               <t v="We would also welcome a reference, in a recital, to compliance with the safeguards relating to processing for statistical purposes under Article 89 of the GDPR."/>
+            </p>
+         </unit>
+         <unit eId="pnt_3.1/pnt_10" kind="point">
             <num>
                <t v="(10)"/>
             </num>
-            <t v="Considering that the Proposal foresees use of data from new data sources, which might include, for example, location data obtained from mobile telephone records (see Section 3.4 discussing Article 8 below), we also recommend a specific reference to the ePrivacy Directive"/>
-            <noteRef href="#note_4" marker="4"/>
-            <t v=" currently under revision (or to the new ePrivacy Regulation if appropriate considering the timelines)."/>
-         </p>
+            <p>
+               <t v="Considering that the Proposal foresees use of data from new data sources, which might include, for example, location data obtained from mobile telephone records (see Section 3.4 discussing Article 8 below), we also recommend a specific reference to the ePrivacy Directive"/>
+               <noteRef href="#note_4" marker="4"/>
+               <t v=" currently under revision (or to the new ePrivacy Regulation if appropriate considering the timelines)."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_3.2" kind="level" depth="2">
          <num>
@@ -286,24 +306,26 @@
                <t v=" (Recital 20)"/>
             </emphasis>
          </heading>
-         <p>
+         <unit eId="pnt_3.2/pnt_11" kind="point">
             <num>
                <t v="(11)"/>
             </num>
-            <t v="To enable easier reference for non-experts, we recommend that the words "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="under Article 8(4) of Directive 95/46/EC"/>
-               </quote>
-            </emphasis>
-            <t v=" be added after the phrase "/>
-            <quote startQuote="‘" endQuote="’">
+            <p>
+               <t v="To enable easier reference for non-experts, we recommend that the words "/>
                <emphasis kind="i">
-                  <t v="substantial public interest"/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="under Article 8(4) of Directive 95/46/EC"/>
+                  </quote>
                </emphasis>
-            </quote>
-            <t v=". Should the text refer to the GDPR, the appropriate reference would be Article 9(2)(g) of the GDPR."/>
-         </p>
+               <t v=" be added after the phrase "/>
+               <quote startQuote="‘" endQuote="’">
+                  <emphasis kind="i">
+                     <t v="substantial public interest"/>
+                  </emphasis>
+               </quote>
+               <t v=". Should the text refer to the GDPR, the appropriate reference would be Article 9(2)(g) of the GDPR."/>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_3.3" kind="level" depth="2">
          <num>
@@ -314,101 +336,109 @@
                <t v="Definition of administrative records (Article 2(e) and Recital 4)"/>
             </emphasis>
          </heading>
-         <p>
+         <unit eId="pnt_3.3/pnt_12" kind="point">
             <num>
                <t v="(12)"/>
             </num>
-            <t v="Article 2(e) of the Proposal defines "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="administrative records"/>
-               </quote>
-            </emphasis>
-            <t v=" as "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="data generated by a non-statistical source, usually a public body, the aim of which is not to provide statistics, for its own purposes"/>
-               </quote>
-               <t v="."/>
-            </emphasis>
-            <t v=" The term, "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="administrative records"/>
-               </quote>
-            </emphasis>
-            <t v=" is then used in Article 8 as well as in Recital 4."/>
-         </p>
-         <p>
+            <p>
+               <t v="Article 2(e) of the Proposal defines "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="administrative records"/>
+                  </quote>
+               </emphasis>
+               <t v=" as "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="data generated by a non-statistical source, usually a public body, the aim of which is not to provide statistics, for its own purposes"/>
+                  </quote>
+                  <t v="."/>
+               </emphasis>
+               <t v=" The term, "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="administrative records"/>
+                  </quote>
+               </emphasis>
+               <t v=" is then used in Article 8 as well as in Recital 4."/>
+            </p>
+         </unit>
+         <unit eId="pnt_3.3/pnt_13" kind="point">
             <num>
                <t v="(13)"/>
             </num>
-            <t v="This definition of administrative records appears to be very broad and appear to include, in practice, "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="any other data sources"/>
-               </quote>
-            </emphasis>
-            <t v=", which is another term also used in Article 8. The term "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="administrative data"/>
-               </quote>
-            </emphasis>
-            <t v=", as defined, can thus include, for example, not only administrative records of public bodies but also sources such as mobile phone location data, which is, in the sense as the term is commonly used in everyday language, not always considered as an "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="administrative record"/>
-               </quote>
-               <t v="."/>
-            </emphasis>
-         </p>
-         <p>
+            <p>
+               <t v="This definition of administrative records appears to be very broad and appear to include, in practice, "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="any other data sources"/>
+                  </quote>
+               </emphasis>
+               <t v=", which is another term also used in Article 8. The term "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="administrative data"/>
+                  </quote>
+               </emphasis>
+               <t v=", as defined, can thus include, for example, not only administrative records of public bodies but also sources such as mobile phone location data, which is, in the sense as the term is commonly used in everyday language, not always considered as an "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="administrative record"/>
+                  </quote>
+                  <t v="."/>
+               </emphasis>
+            </p>
+         </unit>
+         <unit eId="pnt_3.3/pnt_14" kind="point">
             <num>
                <t v="(14)"/>
             </num>
-            <t v="This in itself does not appear to have a direct impact on the level of protection of personal data, considering that Article 8, in any event, includes "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="any other data sources"/>
-               </quote>
-               <t v="."/>
-            </emphasis>
-            <t v=" Nevertheless, for the sake of clarity, the legislators could consider revising Article 2(e) and more narrowly defining "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="administrative records"/>
-               </quote>
-               <t v="."/>
-            </emphasis>
-            <t v=" Alternatively, the legislators could delete Article 2(e) altogether, and instead, in Article 8, refer to "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="administrative "/>
+            <p>
+               <t v="This in itself does not appear to have a direct impact on the level of protection of personal data, considering that Article 8, in any event, includes "/>
                <emphasis kind="i">
-                  <t v="records created by an organisation, usually a public body, for other, non-statistical purposes, and any other sources, methods or innovative approaches…"/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="any other data sources"/>
+                  </quote>
+                  <t v="."/>
                </emphasis>
-            </quote>
-            <t v="."/>
-         </p>
-         <p>
+               <t v=" Nevertheless, for the sake of clarity, the legislators could consider revising Article 2(e) and more narrowly defining "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="administrative records"/>
+                  </quote>
+                  <t v="."/>
+               </emphasis>
+               <t v=" Alternatively, the legislators could delete Article 2(e) altogether, and instead, in Article 8, refer to "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="administrative "/>
+                  <emphasis kind="i">
+                     <t v="records created by an organisation, usually a public body, for other, non-statistical purposes, and any other sources, methods or innovative approaches…"/>
+                  </emphasis>
+               </quote>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pnt_3.3/pnt_15" kind="point">
             <num>
                <t v="(15)"/>
             </num>
-            <t v="Further, as we noted above, Recital 4 specifically encourages use of administrative sources for statistical purposes. We welcome the fact that the recital highlights the need to ensure "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="quality, accuracy, timeliness and comparability of those statistics"/>
-               </quote>
-               <t v="."/>
-            </emphasis>
-            <t v=" To further improve this provision, we recommend adding a reference to the protection of personal data. For example, the following text can be added at the end of the paragraph: "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="as well as safeguarding the right to the protection of personal data"/>
-               </quote>
-               <t v="."/>
-            </emphasis>
-         </p>
+            <p>
+               <t v="Further, as we noted above, Recital 4 specifically encourages use of administrative sources for statistical purposes. We welcome the fact that the recital highlights the need to ensure "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="quality, accuracy, timeliness and comparability of those statistics"/>
+                  </quote>
+                  <t v="."/>
+               </emphasis>
+               <t v=" To further improve this provision, we recommend adding a reference to the protection of personal data. For example, the following text can be added at the end of the paragraph: "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="as well as safeguarding the right to the protection of personal data"/>
+                  </quote>
+                  <t v="."/>
+               </emphasis>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_3.4" kind="level" depth="2">
          <num>
@@ -419,111 +449,123 @@
                <t v="Data sources and methods (Article 8)"/>
             </emphasis>
          </heading>
-         <p>
+         <unit eId="pnt_3.4/pnt_16" kind="point">
             <num>
                <t v="(16)"/>
             </num>
-            <t v="In addition to data directly provided by the respondents, Article 8 also refers to "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="administrative records and any other sources, methods or innovative approaches in so far as they allow for the production of data that are comparable and compliant with the applicable specific requirements laid down by this Regulation"/>
-               </quote>
-               <t v="."/>
-            </emphasis>
-         </p>
-         <p>
+            <p>
+               <t v="In addition to data directly provided by the respondents, Article 8 also refers to "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="administrative records and any other sources, methods or innovative approaches in so far as they allow for the production of data that are comparable and compliant with the applicable specific requirements laid down by this Regulation"/>
+                  </quote>
+                  <t v="."/>
+               </emphasis>
+            </p>
+         </unit>
+         <unit eId="pnt_3.4/pnt_17" kind="point">
             <num>
                <t v="(17)"/>
             </num>
-            <t v="Article 8 reflects the intention, set forth on page 13 of the Explanatory Memorandum, to allow and promote "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="the use of new forms of data collection and of alternative data sources, including administrative data and estimates obtained from modelling and big data"/>
-               </quote>
-            </emphasis>
-            <t v=". See also Recital 4 of the Proposal, already mentioned above, promoting "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="the use of administrative sources, thanks to technological advances"/>
-               </quote>
-            </emphasis>
-            <t v=" and Article 13 on feasibility and pilot studies, which also discusses the use of other data sources."/>
-         </p>
-         <p>
+            <p>
+               <t v="Article 8 reflects the intention, set forth on page 13 of the Explanatory Memorandum, to allow and promote "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="the use of new forms of data collection and of alternative data sources, including administrative data and estimates obtained from modelling and big data"/>
+                  </quote>
+               </emphasis>
+               <t v=". See also Recital 4 of the Proposal, already mentioned above, promoting "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="the use of administrative sources, thanks to technological advances"/>
+                  </quote>
+               </emphasis>
+               <t v=" and Article 13 on feasibility and pilot studies, which also discusses the use of other data sources."/>
+            </p>
+         </unit>
+         <unit eId="pnt_3.4/pnt_18" kind="point">
             <num>
                <t v="(18)"/>
             </num>
-            <t v="In the field of statistics, as in other fields, big data may bring benefits, such as increased efficiency. However, it can also create additional risks. The new data protection framework, and the adoption of the GDPR in particular, aims to address these risks in a way that provides protection but also allows flexibility for further data use, including for statistical purposes."/>
-         </p>
-         <p>
+            <p>
+               <t v="In the field of statistics, as in other fields, big data may bring benefits, such as increased efficiency. However, it can also create additional risks. The new data protection framework, and the adoption of the GDPR in particular, aims to address these risks in a way that provides protection but also allows flexibility for further data use, including for statistical purposes."/>
+            </p>
+         </unit>
+         <unit eId="pnt_3.4/pnt_19" kind="point">
             <num>
                <t v="(19)"/>
             </num>
-            <t v="Further legislative measures in the field of national or Union law governing statistics, however, will likely to be still required, in order to allow more widespread use of big data in statistics in a way compatible with applicable data protection law."/>
-         </p>
-         <p>
+            <p>
+               <t v="Further legislative measures in the field of national or Union law governing statistics, however, will likely to be still required, in order to allow more widespread use of big data in statistics in a way compatible with applicable data protection law."/>
+            </p>
+         </unit>
+         <unit eId="pnt_3.4/pnt_20" kind="point">
             <num>
                <t v="(20)"/>
             </num>
-            <t v="The current Proposal should not provide the illusion that Article 8 itself is providing a sufficient legal basis for using big data for the purposes of the Proposal. It is essential that the recitals and Article 8, combined, make it clear that any such use of big data sources is subject to applicable data protection law, including the need for an appropriate legal basis under Article 6 of the GDPR."/>
-         </p>
-         <p>
+            <p>
+               <t v="The current Proposal should not provide the illusion that Article 8 itself is providing a sufficient legal basis for using big data for the purposes of the Proposal. It is essential that the recitals and Article 8, combined, make it clear that any such use of big data sources is subject to applicable data protection law, including the need for an appropriate legal basis under Article 6 of the GDPR."/>
+            </p>
+         </unit>
+         <unit eId="pnt_3.4/pnt_21" kind="point">
             <num>
                <t v="(21)"/>
             </num>
-            <t v="To this effect, we recommend that Article 8 be revised as follows:"/>
-         </p>
-         <unit eId="pnt_3.4/art_8" kind="article">
-            <num>
-               <t v="Article 8"/>
-            </num>
-            <heading>
-               <t v="Data sources and methods"/>
-            </heading>
-            <unit eId="pnt_3.4/art_8/par_1" kind="paragraph">
+            <p>
+               <t v="To this effect, we recommend that Article 8 be revised as follows:"/>
+            </p>
+            <unit eId="pnt_3.4/pnt_21/art_8" kind="article">
                <num>
-                  <t v="1."/>
+                  <t v="Article 8"/>
                </num>
-               <p>
-                  <t v="Member States shall provide the data referred to in Article 1 by using one or a combination of the following sources, provided that they meet the quality requirements given in Article 12 "/>
-                  <emphasis kind="u">
-                     <emphasis kind="b">
-                        <t v="and are collected and further processed in accordance with and subject to safeguards provided for in applicable data protection laws:"/>
-                     </emphasis>
-                  </emphasis>
-               </p>
-               <list kind="alpha">
-                  <unit eId="pnt_3.4/art_8/par_1/pnt_a" kind="point">
-                     <num>
-                        <t v="(a)"/>
-                     </num>
-                     <p>
-                        <t v="information directly provided by the respondents "/>
-                        <emphasis kind="u">
-                           <emphasis kind="b">
-                              <t v="on a voluntary basis, on the basis of the consent of the data subjects providing the data under Article 7 of [the GDPR] (unless the provision of information is specifically required under Union or Member State law to which the controller is subject and which also lays down suitable measures to safeguard the data subjects' rights and freedoms and legitimate interest)"/>
-                           </emphasis>
+               <heading>
+                  <t v="Data sources and methods"/>
+               </heading>
+               <unit eId="pnt_3.4/pnt_21/art_8/par_1" kind="paragraph">
+                  <num>
+                     <t v="1."/>
+                  </num>
+                  <p>
+                     <t v="Member States shall provide the data referred to in Article 1 by using one or a combination of the following sources, provided that they meet the quality requirements given in Article 12 "/>
+                     <emphasis kind="u">
+                        <emphasis kind="b">
+                           <t v="and are collected and further processed in accordance with and subject to safeguards provided for in applicable data protection laws:"/>
                         </emphasis>
-                        <t v=";"/>
-                     </p>
-                  </unit>
-                  <unit eId="pnt_3.4/art_8/par_1/pnt_b" kind="point">
-                     <num>
-                        <t v="(b)"/>
-                     </num>
-                     <p>
-                        <t v="administrative records and any other sources, methods or innovative approaches in so far as they allow for the production of data that are comparable and compliant with the applicable specific requirements laid down by this Regulation."/>
-                     </p>
-                  </unit>
-               </list>
-            </unit>
-            <unit eId="pnt_3.4/art_8/par_2" kind="paragraph">
-               <num>
-                  <t v="2."/>
-               </num>
-               <p>
-                  <t v="Member States shall provide the Commission (Eurostat) with detailed information on the sources and methods used."/>
-               </p>
+                     </emphasis>
+                  </p>
+                  <list kind="alpha">
+                     <unit eId="pnt_3.4/pnt_21/art_8/par_1/pnt_a" kind="point">
+                        <num>
+                           <t v="(a)"/>
+                        </num>
+                        <p>
+                           <t v="information directly provided by the respondents "/>
+                           <emphasis kind="u">
+                              <emphasis kind="b">
+                                 <t v="on a voluntary basis, on the basis of the consent of the data subjects providing the data under Article 7 of [the GDPR] (unless the provision of information is specifically required under Union or Member State law to which the controller is subject and which also lays down suitable measures to safeguard the data subjects' rights and freedoms and legitimate interest)"/>
+                              </emphasis>
+                           </emphasis>
+                           <t v=";"/>
+                        </p>
+                     </unit>
+                     <unit eId="pnt_3.4/pnt_21/art_8/par_1/pnt_b" kind="point">
+                        <num>
+                           <t v="(b)"/>
+                        </num>
+                        <p>
+                           <t v="administrative records and any other sources, methods or innovative approaches in so far as they allow for the production of data that are comparable and compliant with the applicable specific requirements laid down by this Regulation."/>
+                        </p>
+                     </unit>
+                  </list>
+               </unit>
+               <unit eId="pnt_3.4/pnt_21/art_8/par_2" kind="paragraph">
+                  <num>
+                     <t v="2."/>
+                  </num>
+                  <p>
+                     <t v="Member States shall provide the Commission (Eurostat) with detailed information on the sources and methods used."/>
+                  </p>
+               </unit>
             </unit>
          </unit>
       </unit>
@@ -536,30 +578,34 @@
                <t v="Sampling frames (Article 11)"/>
             </emphasis>
          </heading>
-         <p>
+         <unit eId="pnt_3.5/pnt_22" kind="point">
             <num>
                <t v="(22)"/>
             </num>
-            <t v="Article 11(1) provides that the sampling frames shall also include "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="the information needed to link persons to other administrative records, in so far as is allowed under data protection rules"/>
-               </quote>
-               <t v="."/>
-            </emphasis>
-         </p>
-         <p>
+            <p>
+               <t v="Article 11(1) provides that the sampling frames shall also include "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="the information needed to link persons to other administrative records, in so far as is allowed under data protection rules"/>
+                  </quote>
+                  <t v="."/>
+               </emphasis>
+            </p>
+         </unit>
+         <unit eId="pnt_3.5/pnt_23" kind="point">
             <num>
                <t v="(23)"/>
             </num>
-            <t v="We recommend that the second part of the sentence be rephrased to read: "/>
-            <emphasis kind="i">
-               <quote startQuote="‘" endQuote="’">
-                  <t v="insofar as linking to such other records is necessary and proportionate, and specifically permitted under applicable Union or Member State law, to which the controller is subject and which also lays down suitable measures to safeguard the data subjects"/>
-               </quote>
-               <t v=" rights and freedoms and legitimate interest'."/>
-            </emphasis>
-         </p>
+            <p>
+               <t v="We recommend that the second part of the sentence be rephrased to read: "/>
+               <emphasis kind="i">
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="insofar as linking to such other records is necessary and proportionate, and specifically permitted under applicable Union or Member State law, to which the controller is subject and which also lays down suitable measures to safeguard the data subjects"/>
+                  </quote>
+                  <t v=" rights and freedoms and legitimate interest'."/>
+               </emphasis>
+            </p>
+         </unit>
       </unit>
       <unit eId="pnt_4" kind="level" depth="1">
          <num>
@@ -570,51 +616,53 @@
                <t v="Conclusions"/>
             </emphasis>
          </heading>
-         <p>
+         <unit eId="pnt_4/pnt_24" kind="point">
             <num>
                <t v="(24)"/>
             </num>
-            <t v="The EDPS recommends:"/>
-         </p>
-         <list kind="dash">
-            <unit eId="pnt_4/idt_1" kind="indent">
-               <p>
-                  <t v="including a reference to the ePrivacy Directive when referring to applicable law in Recital 20 as well as making the necessary updates to all relevant references, if needed, in light of the current review of the data protection framework;"/>
-               </p>
-            </unit>
-            <unit eId="pnt_4/idt_2" kind="indent">
-               <p>
-                  <t v="clarifying references to "/>
-                  <emphasis kind="i">
-                     <quote startQuote="‘" endQuote="’">
-                        <t v="substantial public interest"/>
-                     </quote>
-                  </emphasis>
-                  <t v=" in Recital 20;"/>
-               </p>
-            </unit>
-            <unit eId="pnt_4/idt_3" kind="indent">
-               <p>
-                  <t v="substantially revising Article 8 in order to ensure that any data processing involving administrative records and other data sources must be done in compliance with applicable data protection laws and that any direct provision of data by individuals (apart from certain exceptions as provided by law and subject to appropriate safeguards) must be made on a voluntary basis;"/>
-               </p>
-            </unit>
-            <unit eId="pnt_4/idt_4" kind="indent">
-               <p>
-                  <t v="with regard to linking administrative records, as foreseen in Article 11, ensuring that any such linking must be done in compliance with data protection law, subject to necessity, proportionality, and specific safeguards under Member State or Union law;"/>
-               </p>
-            </unit>
-            <unit eId="pnt_4/idt_5" kind="indent">
-               <p>
-                  <t v="considering a revision of the definition of "/>
-                  <emphasis kind="i">
-                     <quote startQuote="‘" endQuote="’">
-                        <t v="administrative record"/>
-                     </quote>
-                  </emphasis>
-                  <t v=" in Article 2(e) and adding a reference to the protection of the right to the protection of personal data in the related Recital 4."/>
-               </p>
-            </unit>
-         </list>
+            <p>
+               <t v="The EDPS recommends:"/>
+            </p>
+            <list kind="dash">
+               <unit eId="pnt_4/pnt_24/idt_1" kind="indent">
+                  <p>
+                     <t v="including a reference to the ePrivacy Directive when referring to applicable law in Recital 20 as well as making the necessary updates to all relevant references, if needed, in light of the current review of the data protection framework;"/>
+                  </p>
+               </unit>
+               <unit eId="pnt_4/pnt_24/idt_2" kind="indent">
+                  <p>
+                     <t v="clarifying references to "/>
+                     <emphasis kind="i">
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="substantial public interest"/>
+                        </quote>
+                     </emphasis>
+                     <t v=" in Recital 20;"/>
+                  </p>
+               </unit>
+               <unit eId="pnt_4/pnt_24/idt_3" kind="indent">
+                  <p>
+                     <t v="substantially revising Article 8 in order to ensure that any data processing involving administrative records and other data sources must be done in compliance with applicable data protection laws and that any direct provision of data by individuals (apart from certain exceptions as provided by law and subject to appropriate safeguards) must be made on a voluntary basis;"/>
+                  </p>
+               </unit>
+               <unit eId="pnt_4/pnt_24/idt_4" kind="indent">
+                  <p>
+                     <t v="with regard to linking administrative records, as foreseen in Article 11, ensuring that any such linking must be done in compliance with data protection law, subject to necessity, proportionality, and specific safeguards under Member State or Union law;"/>
+                  </p>
+               </unit>
+               <unit eId="pnt_4/pnt_24/idt_5" kind="indent">
+                  <p>
+                     <t v="considering a revision of the definition of "/>
+                     <emphasis kind="i">
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="administrative record"/>
+                        </quote>
+                     </emphasis>
+                     <t v=" in Article 2(e) and adding a reference to the protection of the right to the protection of personal data in the related Recital 4."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
       </unit>
    </body>
    <conclusions>

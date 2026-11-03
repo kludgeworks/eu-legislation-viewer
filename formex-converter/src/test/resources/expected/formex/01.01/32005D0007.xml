@@ -252,106 +252,112 @@
                <eol/>
                <t v="Hennessy Grading Probe (HGP 4)"/>
             </heading>
-            <p>
+            <unit eId="anx/level_1/pnt_1" kind="point">
                <num>
                   <t v="1."/>
                </num>
-               <t v="Grading of pig carcases is carried out by means of the apparatus called "/>
-               <quote startQuote="‘" endQuote="’">
-                  <t v="Hennessy Grading Probe (HGP 4)"/>
-               </quote>
-               <t v="."/>
-            </p>
-            <p>
+               <p>
+                  <t v="Grading of pig carcases is carried out by means of the apparatus called "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Hennessy Grading Probe (HGP 4)"/>
+                  </quote>
+                  <t v="."/>
+               </p>
+            </unit>
+            <unit eId="anx/level_1/pnt_2" kind="point">
                <num>
                   <t v="2."/>
                </num>
-               <t v="The apparatus shall be equipped with a probe of 5,95 millimetres diameter (and of 6,3 mm at the blade of the top of the probe) containing a photodiode (Siemens LED of the type LYU 260-EO) and photodetector of the type 58 MR and having an operating distance of between 0 and 120 millimetres. The results of the measurements shall be converted into estimated lean meat content by means of the HGP 4 itself or a computer linked to it."/>
-            </p>
-            <p>
+               <p>
+                  <t v="The apparatus shall be equipped with a probe of 5,95 millimetres diameter (and of 6,3 mm at the blade of the top of the probe) containing a photodiode (Siemens LED of the type LYU 260-EO) and photodetector of the type 58 MR and having an operating distance of between 0 and 120 millimetres. The results of the measurements shall be converted into estimated lean meat content by means of the HGP 4 itself or a computer linked to it."/>
+               </p>
+            </unit>
+            <unit eId="anx/level_1/pnt_3" kind="point">
                <num>
                   <t v="3."/>
                </num>
-               <t v="The lean meat content of the carcase shall be calculated according to the following formula:"/>
-            </p>
-            <math>
-               <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
-                  <m:mrow>
-                     <m:mi>ý</m:mi>
-                     <m:mo>=</m:mo>
-                     <m:mn>62,965</m:mn>
-                     <m:mo>–</m:mo>
-                     <m:mn>0,368</m:mn>
-                     <msub xmlns="http://www.w3.org/1998/Math/MathML">
-                        <m:mi>X</m:mi>
-                        <m:mrow>
-                           <m:mn>1</m:mn>
-                        </m:mrow>
-                     </msub>
-                     <m:mo>–</m:mo>
-                     <m:mn>0,517</m:mn>
-                     <msub xmlns="http://www.w3.org/1998/Math/MathML">
-                        <m:mi>X</m:mi>
-                        <m:mrow>
-                           <m:mn>2</m:mn>
-                        </m:mrow>
-                     </msub>
-                     <m:mo>+</m:mo>
-                     <m:mn>0,132</m:mn>
-                     <m:mi>W</m:mi>
-                  </m:mrow>
-               </m:math>
-            </math>
-            <p>
-               <t v="where:"/>
-            </p>
-            <list kind="definition" separator="=">
-               <unit eId="anx/level_1/def_1" kind="definition">
-                  <heading>
-                     <t v="ý"/>
-                  </heading>
-                  <p>
-                     <t v="the estimated percentage of lean meat in the carcase,"/>
-                  </p>
-               </unit>
-               <unit eId="anx/level_1/def_2" kind="definition">
-                  <heading>
-                     <t v="X"/>
-                     <emphasis kind="sub">
-                        <t v="1"/>
-                     </emphasis>
-                  </heading>
-                  <p>
-                     <t v="the thickness of back-fat (including rind) in millimetres, measured at 8 cm off the midline of the carcase behind the last rib,"/>
-                  </p>
-               </unit>
-               <unit eId="anx/level_1/def_3" kind="definition">
-                  <heading>
-                     <t v="X"/>
-                     <emphasis kind="sub">
-                        <t v="2"/>
-                     </emphasis>
-                  </heading>
-                  <p>
-                     <t v="the thickness of back-fat (including rind) in millimetres, measured at 6 cm off the midline of the carcase between the third and fourth last rib,"/>
-                  </p>
-               </unit>
-               <unit eId="anx/level_1/def_4" kind="definition">
-                  <heading>
-                     <t v="W"/>
-                  </heading>
-                  <p>
-                     <t v="the thickness of muscle in millimetres, measured at the same time and in the same place as X"/>
-                     <emphasis kind="sub">
-                        <t v="2"/>
-                     </emphasis>
-                     <t v="."/>
-                  </p>
-               </unit>
-            </list>
-            <p>
-               <t v="The formula shall be valid for carcases weighing between 55 and 120 kilograms."/>
-            </p>
+               <p>
+                  <t v="The lean meat content of the carcase shall be calculated according to the following formula:"/>
+               </p>
+               <math>
+                  <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
+                     <m:mrow>
+                        <m:mi>ý</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>62,965</m:mn>
+                        <m:mo>–</m:mo>
+                        <m:mn>0,368</m:mn>
+                        <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                           <m:mi>X</m:mi>
+                           <m:mrow>
+                              <m:mn>1</m:mn>
+                           </m:mrow>
+                        </msub>
+                        <m:mo>–</m:mo>
+                        <m:mn>0,517</m:mn>
+                        <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                           <m:mi>X</m:mi>
+                           <m:mrow>
+                              <m:mn>2</m:mn>
+                           </m:mrow>
+                        </msub>
+                        <m:mo>+</m:mo>
+                        <m:mn>0,132</m:mn>
+                        <m:mi>W</m:mi>
+                     </m:mrow>
+                  </m:math>
+               </math>
+               <p>
+                  <t v="where:"/>
+               </p>
+               <list kind="definition" separator="=">
+                  <unit eId="anx/level_1/pnt_3/def_1" kind="definition">
+                     <heading>
+                        <t v="ý"/>
+                     </heading>
+                     <p>
+                        <t v="the estimated percentage of lean meat in the carcase,"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/level_1/pnt_3/def_2" kind="definition">
+                     <heading>
+                        <t v="X"/>
+                        <emphasis kind="sub">
+                           <t v="1"/>
+                        </emphasis>
+                     </heading>
+                     <p>
+                        <t v="the thickness of back-fat (including rind) in millimetres, measured at 8 cm off the midline of the carcase behind the last rib,"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/level_1/pnt_3/def_3" kind="definition">
+                     <heading>
+                        <t v="X"/>
+                        <emphasis kind="sub">
+                           <t v="2"/>
+                        </emphasis>
+                     </heading>
+                     <p>
+                        <t v="the thickness of back-fat (including rind) in millimetres, measured at 6 cm off the midline of the carcase between the third and fourth last rib,"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/level_1/pnt_3/def_4" kind="definition">
+                     <heading>
+                        <t v="W"/>
+                     </heading>
+                     <p>
+                        <t v="the thickness of muscle in millimetres, measured at the same time and in the same place as X"/>
+                        <emphasis kind="sub">
+                           <t v="2"/>
+                        </emphasis>
+                        <t v="."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="The formula shall be valid for carcases weighing between 55 and 120 kilograms."/>
+               </p>
+            </unit>
          </unit>
       </unit>
    </annexes>

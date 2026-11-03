@@ -148,6 +148,17 @@
               test="$x:result//*:quotedStructure/@eId => string-join(' ') = 'art_1/unp_1/qstr_1 art_1/unp_2/qstr_2'"/>
   </x:scenario>
 
+  <x:scenario label="A numbered paragraph with a list, in a cell (2015/1998, 9.2)">
+    <x:context mode="block" xmlns="">
+      <TBL COLS="1" NO.SEQ="0001"><CORPUS>
+        <ROW><CELL COL="1"><NP><NO.P>9.2</NO.P><TXT>Where a contractor is used:</TXT><P><LIST TYPE="DASH"><ITEM><P>is it sealed?</P></ITEM><ITEM><P>is it signed?</P></ITEM></LIST></P></NP></CELL></ROW>
+        <ROW><CELL COL="1"><P><NP><NO.P>—</NO.P><TXT>a</TXT></NP></P><P><NP><NO.P>—</NO.P><TXT>b</TXT></NP></P></CELL></ROW>
+      </CORPUS></TBL>
+    </x:context>
+    <x:expect label="holds its list, which hangs off it" test="$x:result/*:tr[1]/*:td/*:unit[@eId = 'tab_1/tr_1/td_1/pnt_9.2']/*:list/*:unit/@eId = ('tab_1/tr_1/td_1/pnt_9.2/idt_1', 'tab_1/tr_1/td_1/pnt_9.2/idt_2')"/>
+    <x:expect label="makes paragraphs marked only by a dash a run, numbered by place, a list among the table's" test="$x:result/*:tr[2]/*:td/*:unit/@eId = ('tab_1/tr_2/td_1/list_2/idt_1', 'tab_1/tr_2/td_1/list_2/idt_2')"/>
+  </x:scenario>
+
   <x:scenario label="A table">
     <x:context mode="block" xmlns="">
       <TBL COLS="2" NO.SEQ="0001"><TITLE><TI><P>Table 1</P></TI></TITLE><CORPUS>
@@ -159,7 +170,7 @@
     <x:expect label="has a caption" test="$x:result/*:caption/*:p/*:t/@v = 'Table 1'"/>
     <x:expect label="marks header rows and cells" test="$x:result/*:tr[1]/@header = 'true' and $x:result/*:tr[1]/*:td/@header = 'true'"/>
     <x:expect label="keeps colspan" test="$x:result/*:tr[2]/*:td/@colspan = '2'"/>
-    <x:expect label="a numbered paragraph in a cell keeps its num" test="$x:result/*:tr[2]/*:td/*:p/*:num/*:t/@v = '1.'"/>
+    <x:expect label="a numbered paragraph in a cell is a point, its text in it" test="$x:result/*:tr[2]/*:td/*:unit[@kind = 'point'][@eId = 'tab_1/tr_2/td_1/pnt_1']/(*:num/*:t/@v = '1.' and *:p/*:t/@v = 'whole row')"/>
     <x:expect label="an empty cell is empty" test="empty($x:result/*:tr[3]/*:td[2]/node())"/>
   </x:scenario>
 

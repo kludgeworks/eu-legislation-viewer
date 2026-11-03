@@ -250,12 +250,14 @@
                </heading>
                <tr>
                   <td>
-                     <p>
+                     <unit eId="anx/tab_1/tr_2/td_1/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Traditional importers"/>
-                     </p>
+                        <p>
+                           <t v="Traditional importers"/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>
@@ -271,12 +273,14 @@
                </tr>
                <tr>
                   <td>
-                     <p>
+                     <unit eId="anx/tab_1/tr_3/td_1/list_2/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="New importers"/>
-                     </p>
+                        <p>
+                           <t v="New importers"/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>
@@ -297,12 +301,14 @@
                </heading>
                <tr>
                   <td>
-                     <p>
+                     <unit eId="anx/tab_1/tr_4/td_1/list_3/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Traditional importers"/>
-                     </p>
+                        <p>
+                           <t v="Traditional importers"/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>
@@ -318,12 +324,14 @@
                </tr>
                <tr>
                   <td>
-                     <p>
+                     <unit eId="anx/tab_1/tr_5/td_1/list_4/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="New importers"/>
-                     </p>
+                        <p>
+                           <t v="New importers"/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>
@@ -344,12 +352,14 @@
                </heading>
                <tr>
                   <td>
-                     <p>
+                     <unit eId="anx/tab_1/tr_6/td_1/list_5/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="Traditional importers"/>
-                     </p>
+                        <p>
+                           <t v="Traditional importers"/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>
@@ -365,12 +375,14 @@
                </tr>
                <tr>
                   <td>
-                     <p>
+                     <unit eId="anx/tab_1/tr_7/td_1/list_6/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="New importers"/>
-                     </p>
+                        <p>
+                           <t v="New importers"/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>

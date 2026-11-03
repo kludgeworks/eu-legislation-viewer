@@ -41,24 +41,30 @@
                   <p>
                      <t v="Better for the environment …"/>
                   </p>
-                  <p>
+                  <unit eId="cor_1/new/fgr_2/idt_1" kind="indent">
                      <num>
                         <t v="•"/>
                      </num>
-                     <t v="[text specified in criteria]"/>
-                  </p>
-                  <p>
+                     <p>
+                        <t v="[text specified in criteria]"/>
+                     </p>
+                  </unit>
+                  <unit eId="cor_1/new/fgr_2/idt_2" kind="indent">
                      <num>
                         <t v="•"/>
                      </num>
-                     <t v="[text specified in criteria]"/>
-                  </p>
-                  <p>
+                     <p>
+                        <t v="[text specified in criteria]"/>
+                     </p>
+                  </unit>
+                  <unit eId="cor_1/new/fgr_2/idt_3" kind="indent">
                      <num>
                         <t v="•"/>
                      </num>
-                     <t v="[text specified in criteria]"/>
-                  </p>
+                     <p>
+                        <t v="[text specified in criteria]"/>
+                     </p>
+                  </unit>
                   <p>
                      <t v="… better for you."/>
                   </p>

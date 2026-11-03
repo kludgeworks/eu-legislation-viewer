@@ -20371,137 +20371,157 @@
             <p>
                <t v="HAVE AGREED upon the following provisions, which shall be annexed to the Treaty on European Union and to the Treaty on the Functioning of the European Union:"/>
             </p>
-            <p>
+            <unit eId="pro_15/pnt_1" kind="point">
                <num>
                   <t v="1."/>
                </num>
-               <t v="Unless the United Kingdom notifies the Council that it intends to adopt the euro, it shall be under no obligation to do so."/>
-            </p>
-            <p>
+               <p>
+                  <t v="Unless the United Kingdom notifies the Council that it intends to adopt the euro, it shall be under no obligation to do so."/>
+               </p>
+            </unit>
+            <unit eId="pro_15/pnt_2" kind="point">
                <num>
                   <t v="2."/>
                </num>
-               <t v="In view of the notice given to the Council by the United Kingdom government on "/>
-               <date asWritten="16 October 1996" date="1996-10-16"/>
-               <t v=" and "/>
-               <date asWritten="30 October 1997" date="1997-10-30"/>
-               <t v=", paragraphs 3 to 8 and 10 shall apply to the United Kingdom."/>
-            </p>
-            <p>
+               <p>
+                  <t v="In view of the notice given to the Council by the United Kingdom government on "/>
+                  <date asWritten="16 October 1996" date="1996-10-16"/>
+                  <t v=" and "/>
+                  <date asWritten="30 October 1997" date="1997-10-30"/>
+                  <t v=", paragraphs 3 to 8 and 10 shall apply to the United Kingdom."/>
+               </p>
+            </unit>
+            <unit eId="pro_15/pnt_3" kind="point">
                <num>
                   <t v="3."/>
                </num>
-               <t v="The United Kingdom shall retain its powers in the field of monetary policy according to national law."/>
-            </p>
-            <p>
+               <p>
+                  <t v="The United Kingdom shall retain its powers in the field of monetary policy according to national law."/>
+               </p>
+            </unit>
+            <unit eId="pro_15/pnt_4" kind="point">
                <num>
                   <t v="4."/>
                </num>
-               <t v="Articles 119, second paragraph, 126(1), (9) and (11), 127(1) to (5), 128, 130, 131, 132, 133, 138, 140(3), 219, 282(2), with the exception of the first and last sentences thereof, 282(5), and 283 of the Treaty on the Functioning of the European Union shall not apply to the United Kingdom. The same applies to Article 121(2) of this Treaty as regards the adoption of the parts of the broad economic policy guidelines which concern the euro area generally. In these provisions references to the Union or the Member States shall not include the United Kingdom and references to national central banks shall not include the Bank of England."/>
-            </p>
-            <p>
+               <p>
+                  <t v="Articles 119, second paragraph, 126(1), (9) and (11), 127(1) to (5), 128, 130, 131, 132, 133, 138, 140(3), 219, 282(2), with the exception of the first and last sentences thereof, 282(5), and 283 of the Treaty on the Functioning of the European Union shall not apply to the United Kingdom. The same applies to Article 121(2) of this Treaty as regards the adoption of the parts of the broad economic policy guidelines which concern the euro area generally. In these provisions references to the Union or the Member States shall not include the United Kingdom and references to national central banks shall not include the Bank of England."/>
+               </p>
+            </unit>
+            <unit eId="pro_15/pnt_5" kind="point">
                <num>
                   <t v="5."/>
                </num>
-               <t v="The United Kingdom shall endeavour to avoid an excessive government deficit."/>
-            </p>
-            <p>
-               <t v="Articles 143 and 144 of the Treaty on the Functioning of the European Union shall continue to apply to the United Kingdom. Articles 134(4) and 142 shall apply to the United Kingdom as if it had a derogation."/>
-            </p>
-            <p>
+               <p>
+                  <t v="The United Kingdom shall endeavour to avoid an excessive government deficit."/>
+               </p>
+               <p>
+                  <t v="Articles 143 and 144 of the Treaty on the Functioning of the European Union shall continue to apply to the United Kingdom. Articles 134(4) and 142 shall apply to the United Kingdom as if it had a derogation."/>
+               </p>
+            </unit>
+            <unit eId="pro_15/pnt_6" kind="point">
                <num>
                   <t v="6."/>
                </num>
-               <t v="The voting rights of the United Kingdom shall be suspended in respect of acts of the Council referred to in the Articles listed in paragraph 4 and in the instances referred to in the first subparagraph of Article 139(4) of the Treaty on the Functioning of the European Union. For this purpose the second subparagraph of Article 139(4) of the Treaty shall apply."/>
-            </p>
-            <p>
-               <t v="The United Kingdom shall also have no right to participate in the appointment of the President, the Vice-President and the other members of the Executive Board of the ECB under the second subparagraph of Article 283(2) of the said Treaty."/>
-            </p>
-            <p>
+               <p>
+                  <t v="The voting rights of the United Kingdom shall be suspended in respect of acts of the Council referred to in the Articles listed in paragraph 4 and in the instances referred to in the first subparagraph of Article 139(4) of the Treaty on the Functioning of the European Union. For this purpose the second subparagraph of Article 139(4) of the Treaty shall apply."/>
+               </p>
+               <p>
+                  <t v="The United Kingdom shall also have no right to participate in the appointment of the President, the Vice-President and the other members of the Executive Board of the ECB under the second subparagraph of Article 283(2) of the said Treaty."/>
+               </p>
+            </unit>
+            <unit eId="pro_15/pnt_7" kind="point">
                <num>
                   <t v="7."/>
                </num>
-               <t v="Articles 3, 4, 6, 7, 9.2, 10.1, 10.3, 11.2, 12.1, 14, 16, 18 to 20, 22, 23, 26, 27, 30 to 34 and 49 of the Protocol on the Statute of the European System of Central Banks and of the European Central Bank (&#34;the Statute&#34;) shall not apply to the United Kingdom."/>
-            </p>
-            <p>
-               <t v="In those Articles, references to the Union or the Member States shall not include the United Kingdom and references to national central banks or shareholders shall not include the Bank of England."/>
-            </p>
-            <p>
-               <t v="References in Articles 10.3 and 30.2 of the Statute to &#34;subscribed capital of the ECB&#34; shall not include capital subscribed by the Bank of England."/>
-            </p>
-            <p>
+               <p>
+                  <t v="Articles 3, 4, 6, 7, 9.2, 10.1, 10.3, 11.2, 12.1, 14, 16, 18 to 20, 22, 23, 26, 27, 30 to 34 and 49 of the Protocol on the Statute of the European System of Central Banks and of the European Central Bank (&#34;the Statute&#34;) shall not apply to the United Kingdom."/>
+               </p>
+               <p>
+                  <t v="In those Articles, references to the Union or the Member States shall not include the United Kingdom and references to national central banks or shareholders shall not include the Bank of England."/>
+               </p>
+               <p>
+                  <t v="References in Articles 10.3 and 30.2 of the Statute to &#34;subscribed capital of the ECB&#34; shall not include capital subscribed by the Bank of England."/>
+               </p>
+            </unit>
+            <unit eId="pro_15/pnt_8" kind="point">
                <num>
                   <t v="8."/>
                </num>
-               <t v="Article 141(1) of the Treaty on the Functioning of the European Union and Articles 43 to 47 of the Statute shall have effect, whether or not there is any Member State with a derogation, subject to the following amendments:"/>
-            </p>
-            <list kind="alpha">
-               <unit eId="pro_15/pnt_a" kind="point">
-                  <num>
-                     <t v="(a)"/>
-                  </num>
-                  <p>
-                     <t v="References in Article 43 to the tasks of the ECB and the EMI shall include those tasks that still need to be performed in the third stage owing to any decision of the United Kingdom not to adopt the euro."/>
-                  </p>
-               </unit>
-               <unit eId="pro_15/pnt_b" kind="point">
-                  <num>
-                     <t v="(b)"/>
-                  </num>
-                  <p>
-                     <t v="In addition to the tasks referred to in Article 46, the ECB shall also give advice in relation to and contribute to the preparation of any decision of the Council with regard to the United Kingdom taken in accordance with paragraphs 9(a) and 9(c)."/>
-                  </p>
-               </unit>
-               <unit eId="pro_15/pnt_c" kind="point">
-                  <num>
-                     <t v="(c)"/>
-                  </num>
-                  <p>
-                     <t v="The Bank of England shall pay up its subscription to the capital of the ECB as a contribution to its operational costs on the same basis as national central banks of Member States with a derogation."/>
-                  </p>
-               </unit>
-            </list>
-            <p>
+               <p>
+                  <t v="Article 141(1) of the Treaty on the Functioning of the European Union and Articles 43 to 47 of the Statute shall have effect, whether or not there is any Member State with a derogation, subject to the following amendments:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="pro_15/pnt_8/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="References in Article 43 to the tasks of the ECB and the EMI shall include those tasks that still need to be performed in the third stage owing to any decision of the United Kingdom not to adopt the euro."/>
+                     </p>
+                  </unit>
+                  <unit eId="pro_15/pnt_8/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="In addition to the tasks referred to in Article 46, the ECB shall also give advice in relation to and contribute to the preparation of any decision of the Council with regard to the United Kingdom taken in accordance with paragraphs 9(a) and 9(c)."/>
+                     </p>
+                  </unit>
+                  <unit eId="pro_15/pnt_8/pnt_c" kind="point">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="The Bank of England shall pay up its subscription to the capital of the ECB as a contribution to its operational costs on the same basis as national central banks of Member States with a derogation."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="pro_15/pnt_9" kind="point">
                <num>
                   <t v="9."/>
                </num>
-               <t v="The United Kingdom may notify the Council at any time of its intention to adopt the euro. In that event:"/>
-            </p>
-            <list kind="alpha">
-               <unit eId="pro_15/list_2/pnt_a" kind="point">
-                  <num>
-                     <t v="(a)"/>
-                  </num>
-                  <p>
-                     <t v="The United Kingdom shall have the right to adopt the euro provided only that it satisfies the necessary conditions. The Council, acting at the request of the United Kingdom and under the conditions and in accordance with the procedure laid down in Article 140(1) and (2) of the Treaty on the Functioning of the European Union, shall decide whether it fulfils the necessary conditions."/>
-                  </p>
-               </unit>
-               <unit eId="pro_15/list_2/pnt_b" kind="point">
-                  <num>
-                     <t v="(b)"/>
-                  </num>
-                  <p>
-                     <t v="The Bank of England shall pay up its subscribed capital, transfer to the ECB foreign reserve assets and contribute to its reserves on the same basis as the national central bank of a Member State whose derogation has been abrogated."/>
-                  </p>
-               </unit>
-               <unit eId="pro_15/list_2/pnt_c" kind="point">
-                  <num>
-                     <t v="(c)"/>
-                  </num>
-                  <p>
-                     <t v="The Council, acting under the conditions and in accordance with the procedure laid down in Article 140(3) of the said Treaty, shall take all other necessary decisions to enable the United Kingdom to adopt the euro."/>
-                  </p>
-               </unit>
-            </list>
-            <p>
-               <t v="If the United Kingdom adopts the euro pursuant to the provisions of this Protocol, paragraphs 3 to 8 shall cease to have effect."/>
-            </p>
-            <p>
+               <p>
+                  <t v="The United Kingdom may notify the Council at any time of its intention to adopt the euro. In that event:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="pro_15/pnt_9/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="The United Kingdom shall have the right to adopt the euro provided only that it satisfies the necessary conditions. The Council, acting at the request of the United Kingdom and under the conditions and in accordance with the procedure laid down in Article 140(1) and (2) of the Treaty on the Functioning of the European Union, shall decide whether it fulfils the necessary conditions."/>
+                     </p>
+                  </unit>
+                  <unit eId="pro_15/pnt_9/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="The Bank of England shall pay up its subscribed capital, transfer to the ECB foreign reserve assets and contribute to its reserves on the same basis as the national central bank of a Member State whose derogation has been abrogated."/>
+                     </p>
+                  </unit>
+                  <unit eId="pro_15/pnt_9/pnt_c" kind="point">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="The Council, acting under the conditions and in accordance with the procedure laid down in Article 140(3) of the said Treaty, shall take all other necessary decisions to enable the United Kingdom to adopt the euro."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="If the United Kingdom adopts the euro pursuant to the provisions of this Protocol, paragraphs 3 to 8 shall cease to have effect."/>
+               </p>
+            </unit>
+            <unit eId="pro_15/pnt_10" kind="point">
                <num>
                   <t v="10."/>
                </num>
-               <t v="Notwithstanding Article 123 of the Treaty on the Functioning of the European Union and Article 21.1 of the Statute, the Government of the United Kingdom may maintain its &#34;ways and means&#34; facility with the Bank of England if and so long as the United Kingdom does not adopt the euro."/>
-            </p>
+               <p>
+                  <t v="Notwithstanding Article 123 of the Treaty on the Functioning of the European Union and Article 21.1 of the Statute, the Government of the United Kingdom may maintain its &#34;ways and means&#34; facility with the Bank of England if and so long as the United Kingdom does not adopt the euro."/>
+               </p>
+            </unit>
          </unit>
          <unit eId="pro_16" kind="annex" eurlexAnchor="17">
             <num>
@@ -20524,26 +20544,32 @@
             <p>
                <t v="HAVE AGREED UPON the following provisions, which shall be annexed to the Treaty on European Union and to the Treaty on the Functioning of the European Union:"/>
             </p>
-            <p>
+            <unit eId="pro_16/pnt_1" kind="point">
                <num>
                   <t v="1."/>
                </num>
-               <t v="In view of the notice given to the Council by the Danish Government on "/>
-               <date asWritten="3 November 1993" date="1993-11-03"/>
-               <t v=", Denmark shall have an exemption. The effect of the exemption shall be that all Articles and provisions of the Treaties and the Statute of the ESCB referring to a derogation shall be applicable to Denmark."/>
-            </p>
-            <p>
+               <p>
+                  <t v="In view of the notice given to the Council by the Danish Government on "/>
+                  <date asWritten="3 November 1993" date="1993-11-03"/>
+                  <t v=", Denmark shall have an exemption. The effect of the exemption shall be that all Articles and provisions of the Treaties and the Statute of the ESCB referring to a derogation shall be applicable to Denmark."/>
+               </p>
+            </unit>
+            <unit eId="pro_16/pnt_2" kind="point">
                <num>
                   <t v="2."/>
                </num>
-               <t v="As for the abrogation of the exemption, the procedure referred to in Article 140 shall only be initiated at the request of Denmark."/>
-            </p>
-            <p>
+               <p>
+                  <t v="As for the abrogation of the exemption, the procedure referred to in Article 140 shall only be initiated at the request of Denmark."/>
+               </p>
+            </unit>
+            <unit eId="pro_16/pnt_3" kind="point">
                <num>
                   <t v="3."/>
                </num>
-               <t v="In the event of abrogation of the exemption status, the provisions of this Protocol shall cease to apply."/>
-            </p>
+               <p>
+                  <t v="In the event of abrogation of the exemption status, the provisions of this Protocol shall cease to apply."/>
+               </p>
+            </unit>
          </unit>
          <unit eId="pro_17" kind="annex" eurlexAnchor="18">
             <num>
@@ -24793,24 +24819,28 @@
                <p>
                   <t v="Whereas:"/>
                </p>
-               <p>
+               <unit eId="att_3/pnt_7/qstr_1/pnt_1" kind="point">
                   <num>
                      <t v="(1)"/>
                   </num>
-                  <t v="Provisions should be adopted allowing for a smooth transition from the system for decision-making in the Council by a qualified majority as defined in Article 3(3) of the Protocol on the transitional provisions, which will continue to apply until "/>
-                  <date asWritten="31 October 2014" date="2014-10-31"/>
-                  <t v=", to the voting system provided for in Article 16(4) of the Treaty on European Union and Article 238(2) of the Treaty on the Functioning of the European Union, which will apply with effect from "/>
-                  <date asWritten="1 November 2014" date="2014-11-01"/>
-                  <t v=", including, during a transitional period until "/>
-                  <date asWritten="31 March 2017" date="2017-03-31"/>
-                  <t v=", specific provisions laid down in Article 3(2) of that Protocol."/>
-               </p>
-               <p>
+                  <p>
+                     <t v="Provisions should be adopted allowing for a smooth transition from the system for decision-making in the Council by a qualified majority as defined in Article 3(3) of the Protocol on the transitional provisions, which will continue to apply until "/>
+                     <date asWritten="31 October 2014" date="2014-10-31"/>
+                     <t v=", to the voting system provided for in Article 16(4) of the Treaty on European Union and Article 238(2) of the Treaty on the Functioning of the European Union, which will apply with effect from "/>
+                     <date asWritten="1 November 2014" date="2014-11-01"/>
+                     <t v=", including, during a transitional period until "/>
+                     <date asWritten="31 March 2017" date="2017-03-31"/>
+                     <t v=", specific provisions laid down in Article 3(2) of that Protocol."/>
+                  </p>
+               </unit>
+               <unit eId="att_3/pnt_7/qstr_1/list_2/pnt_2" kind="point">
                   <num>
                      <t v="(2)"/>
                   </num>
-                  <t v="It is recalled that it is the practice of the Council to devote every effort to strengthening the democratic legitimacy of decisions taken by a qualified majority,"/>
-               </p>
+                  <p>
+                     <t v="It is recalled that it is the practice of the Council to devote every effort to strengthening the democratic legitimacy of decisions taken by a qualified majority,"/>
+                  </p>
+               </unit>
                <p>
                   <t v="HAS DECIDED AS FOLLOWS:"/>
                </p>
@@ -25079,18 +25109,22 @@
                   <t v="Declaration on Article 18 of the Treaty on European Union"/>
                </emphasis>
             </heading>
-            <p>
+            <unit eId="att_3/pnt_12/pnt_1" kind="point">
                <num>
                   <t v="1."/>
                </num>
-               <t v="The Conference declares that, in the course of the preparatory work preceding the appointment of the High Representative of the Union for Foreign Affairs and Security Policy which is due to take place on the date of entry into force of the Treaty of Lisbon in accordance with Article 18 of the Treaty on European Union and Article 5 of the Protocol on transitional provisions and whose term of office will be from that date until the end of the term of office of the Commission in office on that date, appropriate contacts will be made with the European Parliament."/>
-            </p>
-            <p>
+               <p>
+                  <t v="The Conference declares that, in the course of the preparatory work preceding the appointment of the High Representative of the Union for Foreign Affairs and Security Policy which is due to take place on the date of entry into force of the Treaty of Lisbon in accordance with Article 18 of the Treaty on European Union and Article 5 of the Protocol on transitional provisions and whose term of office will be from that date until the end of the term of office of the Commission in office on that date, appropriate contacts will be made with the European Parliament."/>
+               </p>
+            </unit>
+            <unit eId="att_3/pnt_12/pnt_2" kind="point">
                <num>
                   <t v="2."/>
                </num>
-               <t v="Furthermore, the Conference recalls that, as regards the High Representative of the Union for Foreign Affairs and Security Policy whose term of office will start in November 2009 at the same time and for the same duration as the next Commission, he or she will be appointed in accordance with the provisions of Articles 17 and 18 of the Treaty on European Union."/>
-            </p>
+               <p>
+                  <t v="Furthermore, the Conference recalls that, as regards the High Representative of the Union for Foreign Affairs and Security Policy whose term of office will start in November 2009 at the same time and for the same duration as the next Commission, he or she will be appointed in accordance with the provisions of Articles 17 and 18 of the Treaty on European Union."/>
+               </p>
+            </unit>
          </unit>
          <unit eId="att_3/pnt_13" kind="level" depth="2">
             <num>
@@ -25792,30 +25826,38 @@
                   <t v="Declaration by the Czech Republic on the Charter of Fundamental Rights of the European Union"/>
                </emphasis>
             </heading>
-            <p>
+            <unit eId="att_3/pnt_53/pnt_1" kind="point">
                <num>
                   <t v="1."/>
                </num>
-               <t v="The Czech Republic recalls that the provisions of the Charter of Fundamental Rights of the European Union are addressed to the institutions and bodies of the European Union with due regard for the principle of subsidiarity and division of competences between the European Union and its Member States, as reaffirmed in Declaration (No 18) in relation to the delimitation of competences. The Czech Republic stresses that its provisions are addressed to the Member States only when they are implementing Union law, and not when they are adopting and implementing national law independently from Union law."/>
-            </p>
-            <p>
+               <p>
+                  <t v="The Czech Republic recalls that the provisions of the Charter of Fundamental Rights of the European Union are addressed to the institutions and bodies of the European Union with due regard for the principle of subsidiarity and division of competences between the European Union and its Member States, as reaffirmed in Declaration (No 18) in relation to the delimitation of competences. The Czech Republic stresses that its provisions are addressed to the Member States only when they are implementing Union law, and not when they are adopting and implementing national law independently from Union law."/>
+               </p>
+            </unit>
+            <unit eId="att_3/pnt_53/pnt_2" kind="point">
                <num>
                   <t v="2."/>
                </num>
-               <t v="The Czech Republic also emphasises that the Charter does not extend the field of application of Union law and does not establish any new power for the Union. It does not diminish the field of application of national law and does not restrain any current powers of the national authorities in this field."/>
-            </p>
-            <p>
+               <p>
+                  <t v="The Czech Republic also emphasises that the Charter does not extend the field of application of Union law and does not establish any new power for the Union. It does not diminish the field of application of national law and does not restrain any current powers of the national authorities in this field."/>
+               </p>
+            </unit>
+            <unit eId="att_3/pnt_53/pnt_3" kind="point">
                <num>
                   <t v="3."/>
                </num>
-               <t v="The Czech Republic stresses that, in so far as the Charter recognises fundamental rights and principles as they result from constitutional traditions common to the Member States, those rights and principles are to be interpreted in harmony with those traditions."/>
-            </p>
-            <p>
+               <p>
+                  <t v="The Czech Republic stresses that, in so far as the Charter recognises fundamental rights and principles as they result from constitutional traditions common to the Member States, those rights and principles are to be interpreted in harmony with those traditions."/>
+               </p>
+            </unit>
+            <unit eId="att_3/pnt_53/pnt_4" kind="point">
                <num>
                   <t v="4."/>
                </num>
-               <t v="The Czech Republic further stresses that nothing in the Charter may be interpreted as restricting or adversely affecting human rights and fundamental freedoms as recognised, in their respective field of application, by Union law and by international agreements to which the Union or all the Member States are party, including the European Convention for the Protection of Human Rights and Fundamental Freedoms, and by the Member States' Constitutions."/>
-            </p>
+               <p>
+                  <t v="The Czech Republic further stresses that nothing in the Charter may be interpreted as restricting or adversely affecting human rights and fundamental freedoms as recognised, in their respective field of application, by Union law and by international agreements to which the Union or all the Member States are party, including the European Convention for the Protection of Human Rights and Fundamental Freedoms, and by the Member States' Constitutions."/>
+               </p>
+            </unit>
          </unit>
          <unit eId="att_3/pnt_54" kind="level" depth="2">
             <num>

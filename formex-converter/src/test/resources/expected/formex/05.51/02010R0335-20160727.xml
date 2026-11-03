@@ -244,18 +244,22 @@
                      </p>
                   </td>
                   <td>
-                     <p>
+                     <unit eId="anx/tab_1/tr_3/td_9/list_2/pnt_1" kind="point">
                         <num>
                            <t v="1."/>
                         </num>
-                        <t v="The additive shall be incorporated into feed in the form of a premixture."/>
-                     </p>
-                     <p>
+                        <p>
+                           <t v="The additive shall be incorporated into feed in the form of a premixture."/>
+                        </p>
+                     </unit>
+                     <unit eId="anx/tab_1/tr_3/td_9/list_2/pnt_2" kind="point">
                         <num>
                            <t v="2."/>
                         </num>
-                        <t v="For user safety: breathing protection, safety glasses and gloves shall be worn during handling."/>
-                     </p>
+                        <p>
+                           <t v="For user safety: breathing protection, safety glasses and gloves shall be worn during handling."/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>

@@ -33,162 +33,164 @@
          </p>
          <new>
             <quotedStructure eId="cor_1/new/qstr_1">
-               <p>
+               <unit eId="cor_1/new/qstr_1/idt_1" kind="indent">
                   <num>
                      <t v="‘"/>
                      <t v="(*)"/>
                   </num>
-                  <t v="i.e. the sum of the intra-stratum variances defined as "/>
-                  <math>
-                     <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
-                        <m:mrow>
-                           <munder xmlns="http://www.w3.org/1998/Math/MathML">
-                              <m:mi>Σ</m:mi>
-                              <m:mrow>
-                                 <m:mi mathvariant="italic">h</m:mi>
-                              </m:mrow>
-                           </munder>
-                           <munder xmlns="http://www.w3.org/1998/Math/MathML">
-                              <m:mi>Σ</m:mi>
-                              <m:mrow>
-                                 <m:mi mathvariant="italic">i</m:mi>
-                                 <m:mo>∈</m:mo>
-                                 <m:mi mathvariant="italic">h</m:mi>
-                              </m:mrow>
-                           </munder>
+                  <p>
+                     <t v="i.e. the sum of the intra-stratum variances defined as "/>
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
                            <m:mrow>
-                              <m:mfrac>
+                              <munder xmlns="http://www.w3.org/1998/Math/MathML">
+                                 <m:mi>Σ</m:mi>
                                  <m:mrow>
-                                    <m:mn>1</m:mn>
+                                    <m:mi mathvariant="italic">h</m:mi>
                                  </m:mrow>
+                              </munder>
+                              <munder xmlns="http://www.w3.org/1998/Math/MathML">
+                                 <m:mi>Σ</m:mi>
                                  <m:mrow>
+                                    <m:mi mathvariant="italic">i</m:mi>
+                                    <m:mo>∈</m:mo>
+                                    <m:mi mathvariant="italic">h</m:mi>
+                                 </m:mrow>
+                              </munder>
+                              <m:mrow>
+                                 <m:mfrac>
+                                    <m:mrow>
+                                       <m:mn>1</m:mn>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mi mathvariant="italic">n</m:mi>
+                                    </m:mrow>
+                                 </m:mfrac>
+                              </m:mrow>
+                              <m:mrow>
+                                 <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <m:mrow>
+                                       <m:mo fence="true">(</m:mo>
+                                       <msub>
+                                          <m:mi mathvariant="italic">x</m:mi>
+                                          <m:mrow>
+                                             <m:mi mathvariant="italic">i</m:mi>
+                                          </m:mrow>
+                                       </msub>
+                                       <m:mo>–</m:mo>
+                                       <msub>
+                                          <mover>
+                                             <m:mi mathvariant="italic">x</m:mi>
+                                             <m:mrow>
+                                                <m:mo>–</m:mo>
+                                             </m:mrow>
+                                          </mover>
+                                          <m:mrow>
+                                             <m:mi mathvariant="italic">h</m:mi>
+                                          </m:mrow>
+                                       </msub>
+                                       <m:mo fence="true">)</m:mo>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mn>2</m:mn>
+                                    </m:mrow>
+                                 </msup>
+                              </m:mrow>
+                           </m:mrow>
+                        </m:math>
+                     </math>
+                     <t v=" is to be substantially lower than the total variance of the reporting population defined as "/>
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
+                           <m:mrow>
+                              <m:munderover>
+                                 <m:mi xmlns="http://www.w3.org/1998/Math/MathML">Σ</m:mi>
+                                 <m:mrow>
+                                    <m:mi mathvariant="italic">i</m:mi>
+                                    <m:mo>=</m:mo>
+                                    <m:mi>l</m:mi>
+                                 </m:mrow>
+                                 <m:mrow xmlns="http://www.w3.org/1998/Math/MathML">
                                     <m:mi mathvariant="italic">n</m:mi>
                                  </m:mrow>
-                              </m:mfrac>
-                           </m:mrow>
-                           <m:mrow>
-                              <msup xmlns="http://www.w3.org/1998/Math/MathML">
-                                 <m:mrow>
-                                    <m:mo fence="true">(</m:mo>
-                                    <msub>
-                                       <m:mi mathvariant="italic">x</m:mi>
-                                       <m:mrow>
-                                          <m:mi mathvariant="italic">i</m:mi>
-                                       </m:mrow>
-                                    </msub>
-                                    <m:mo>–</m:mo>
-                                    <msub>
+                              </m:munderover>
+                              <m:mrow>
+                                 <m:mfrac>
+                                    <m:mrow>
+                                       <m:mn>1</m:mn>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mi mathvariant="italic">n</m:mi>
+                                    </m:mrow>
+                                 </m:mfrac>
+                              </m:mrow>
+                              <m:mrow>
+                                 <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <m:mrow>
+                                       <m:mo fence="true">(</m:mo>
+                                       <msub>
+                                          <m:mi mathvariant="italic">x</m:mi>
+                                          <m:mrow>
+                                             <m:mi mathvariant="italic">i</m:mi>
+                                          </m:mrow>
+                                       </msub>
+                                       <m:mo>–</m:mo>
                                        <mover>
                                           <m:mi mathvariant="italic">x</m:mi>
                                           <m:mrow>
                                              <m:mo>–</m:mo>
                                           </m:mrow>
                                        </mover>
-                                       <m:mrow>
-                                          <m:mi mathvariant="italic">h</m:mi>
-                                       </m:mrow>
-                                    </msub>
-                                    <m:mo fence="true">)</m:mo>
-                                 </m:mrow>
-                                 <m:mrow>
-                                    <m:mn>2</m:mn>
-                                 </m:mrow>
-                              </msup>
-                           </m:mrow>
-                        </m:mrow>
-                     </m:math>
-                  </math>
-                  <t v=" is to be substantially lower than the total variance of the reporting population defined as "/>
-                  <math>
-                     <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
-                        <m:mrow>
-                           <m:munderover>
-                              <m:mi xmlns="http://www.w3.org/1998/Math/MathML">Σ</m:mi>
-                              <m:mrow>
-                                 <m:mi mathvariant="italic">i</m:mi>
-                                 <m:mo>=</m:mo>
-                                 <m:mi>l</m:mi>
+                                       <m:mo fence="true">)</m:mo>
+                                    </m:mrow>
+                                    <m:mrow>
+                                       <m:mn>2</m:mn>
+                                    </m:mrow>
+                                 </msup>
                               </m:mrow>
-                              <m:mrow xmlns="http://www.w3.org/1998/Math/MathML">
-                                 <m:mi mathvariant="italic">n</m:mi>
-                              </m:mrow>
-                           </m:munderover>
-                           <m:mrow>
-                              <m:mfrac>
-                                 <m:mrow>
-                                    <m:mn>1</m:mn>
-                                 </m:mrow>
-                                 <m:mrow>
-                                    <m:mi mathvariant="italic">n</m:mi>
-                                 </m:mrow>
-                              </m:mfrac>
                            </m:mrow>
+                        </m:math>
+                     </math>
+                     <t v=", where h indicates each stratum, x"/>
+                     <emphasis kind="sub">
+                        <t v="i"/>
+                     </emphasis>
+                     <t v=" the interest rate for institution i, "/>
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
                            <m:mrow>
-                              <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                              <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                 <mover>
+                                    <m:mi mathvariant="italic">x</m:mi>
+                                    <m:mrow>
+                                       <m:mo>–</m:mo>
+                                    </m:mrow>
+                                 </mover>
                                  <m:mrow>
-                                    <m:mo fence="true">(</m:mo>
-                                    <msub>
-                                       <m:mi mathvariant="italic">x</m:mi>
-                                       <m:mrow>
-                                          <m:mi mathvariant="italic">i</m:mi>
-                                       </m:mrow>
-                                    </msub>
-                                    <m:mo>–</m:mo>
-                                    <mover>
-                                       <m:mi mathvariant="italic">x</m:mi>
-                                       <m:mrow>
-                                          <m:mo>–</m:mo>
-                                       </m:mrow>
-                                    </mover>
-                                    <m:mo fence="true">)</m:mo>
+                                    <m:mi mathvariant="italic">h</m:mi>
                                  </m:mrow>
-                                 <m:mrow>
-                                    <m:mn>2</m:mn>
-                                 </m:mrow>
-                              </msup>
+                              </msub>
                            </m:mrow>
-                        </m:mrow>
-                     </m:math>
-                  </math>
-                  <t v=", where h indicates each stratum, x"/>
-                  <emphasis kind="sub">
-                     <t v="i"/>
-                  </emphasis>
-                  <t v=" the interest rate for institution i, "/>
-                  <math>
-                     <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
-                        <m:mrow>
-                           <msub xmlns="http://www.w3.org/1998/Math/MathML">
-                              <mover>
+                        </m:math>
+                     </math>
+                     <t v=" the simple average interest rate of stratum h, n the total number of institutions in the sample and "/>
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
+                           <m:mrow>
+                              <mover xmlns="http://www.w3.org/1998/Math/MathML">
                                  <m:mi mathvariant="italic">x</m:mi>
                                  <m:mrow>
                                     <m:mo>–</m:mo>
                                  </m:mrow>
                               </mover>
-                              <m:mrow>
-                                 <m:mi mathvariant="italic">h</m:mi>
-                              </m:mrow>
-                           </msub>
-                        </m:mrow>
-                     </m:math>
-                  </math>
-                  <t v=" the simple average interest rate of stratum h, n the total number of institutions in the sample and "/>
-                  <math>
-                     <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
-                        <m:mrow>
-                           <mover xmlns="http://www.w3.org/1998/Math/MathML">
-                              <m:mi mathvariant="italic">x</m:mi>
-                              <m:mrow>
-                                 <m:mo>–</m:mo>
-                              </m:mrow>
-                           </mover>
-                        </m:mrow>
-                     </m:math>
-                  </math>
-                  <t v=" the simple average of interest rates of all institutions in the sample."/>
-                  <t v="’"/>
-                  <t v=";"/>
-               </p>
+                           </m:mrow>
+                        </m:math>
+                     </math>
+                     <t v=" the simple average of interest rates of all institutions in the sample."/>
+                     <t v="’"/>
+                     <t v=";"/>
+                  </p>
+               </unit>
             </quotedStructure>
          </new>
       </unit>
@@ -247,7 +249,7 @@
                <t v="for:"/>
             </p>
             <quotedStructure eId="cor_3/old/qstr_1">
-               <p>
+               <unit eId="cor_3/old/qstr_1/pnt_1" kind="point">
                   <num>
                      <t v="‘"/>
                      <t v="("/>
@@ -256,80 +258,82 @@
                      </emphasis>
                      <t v=")"/>
                   </num>
-                  <math>
-                     <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
-                        <m:mrow>
-                           <m:mi>D</m:mi>
-                           <m:mo>=</m:mo>
+                  <p>
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
                            <m:mrow>
+                              <m:mi>D</m:mi>
+                              <m:mo>=</m:mo>
                               <m:mrow>
-                                 <msub xmlns="http://www.w3.org/1998/Math/MathML">
-                                    <m:mi>z</m:mi>
-                                    <m:mrow>
-                                       <m:mi>α</m:mi>
-                                       <m:mo>/</m:mo>
-                                       <m:mn>2</m:mn>
-                                    </m:mrow>
-                                 </msub>
+                                 <m:mrow>
+                                    <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi>z</m:mi>
+                                       <m:mrow>
+                                          <m:mi>α</m:mi>
+                                          <m:mo>/</m:mo>
+                                          <m:mn>2</m:mn>
+                                       </m:mrow>
+                                    </msub>
+                                 </m:mrow>
+                                 <m:mo>*</m:mo>
+                                 <m:mrow>
+                                    <m:msqrt/>
+                                    <m:mi>var</m:mi>
+                                    <m:mo>(</m:mo>
+                                    <mover xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi>θ</m:mi>
+                                       <m:mrow>
+                                          <m:mo>^</m:mo>
+                                       </m:mrow>
+                                    </mover>
+                                    <m:mo>)</m:mo>
+                                 </m:mrow>
                               </m:mrow>
-                              <m:mo>*</m:mo>
+                              <m:mo>≈</m:mo>
                               <m:mrow>
-                                 <m:msqrt/>
-                                 <m:mi>var</m:mi>
-                                 <m:mo>(</m:mo>
-                                 <mover xmlns="http://www.w3.org/1998/Math/MathML">
-                                    <m:mi>θ</m:mi>
-                                    <m:mrow>
-                                       <m:mo>^</m:mo>
-                                    </m:mrow>
-                                 </mover>
-                                 <m:mo>)</m:mo>
+                                 <m:mrow>
+                                    <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi>z</m:mi>
+                                       <m:mrow>
+                                          <m:mi>α</m:mi>
+                                          <m:mo>/</m:mo>
+                                          <m:mn>2</m:mn>
+                                       </m:mrow>
+                                    </msub>
+                                 </m:mrow>
+                                 <m:mo>*</m:mo>
+                                 <m:mrow>
+                                    <m:msqrt/>
+                                    <m:mi>vâr</m:mi>
+                                    <m:mo>(</m:mo>
+                                    <mover xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi>θ</m:mi>
+                                       <m:mrow>
+                                          <m:mo>^</m:mo>
+                                       </m:mrow>
+                                    </mover>
+                                    <m:mo>)</m:mo>
+                                 </m:mrow>
                               </m:mrow>
                            </m:mrow>
-                           <m:mo>≈</m:mo>
-                           <m:mrow>
-                              <m:mrow>
-                                 <msub xmlns="http://www.w3.org/1998/Math/MathML">
-                                    <m:mi>z</m:mi>
-                                    <m:mrow>
-                                       <m:mi>α</m:mi>
-                                       <m:mo>/</m:mo>
-                                       <m:mn>2</m:mn>
-                                    </m:mrow>
-                                 </msub>
-                              </m:mrow>
-                              <m:mo>*</m:mo>
-                              <m:mrow>
-                                 <m:msqrt/>
-                                 <m:mi>vâr</m:mi>
-                                 <m:mo>(</m:mo>
-                                 <mover xmlns="http://www.w3.org/1998/Math/MathML">
-                                    <m:mi>θ</m:mi>
-                                    <m:mrow>
-                                       <m:mo>^</m:mo>
-                                    </m:mrow>
-                                 </mover>
-                                 <m:mo>)</m:mo>
-                              </m:mrow>
-                           </m:mrow>
-                        </m:mrow>
-                     </m:math>
-                  </math>
-                  <t v=", with D as the maximum random error, z"/>
-                  <emphasis kind="sub">
-                     <t v="α/2"/>
-                  </emphasis>
-                  <t v=" as the factor computed from the normal distribution or any suitable distribution according to the structure of the data (e.g. t-distribution) assuming a confidence level of 1-α, var("/>
-               </p>
-               <figure src="L_2009273EN.01001902.tif" content="character"/>
-               <p>
-                  <t v=") as the variance of the estimator of parameter θ, and vâr("/>
-               </p>
-               <figure src="L_2009273EN.01001903.tif" content="character"/>
-               <p>
-                  <t v=") as the estimated variance of the estimator of parameter ."/>
-                  <t v="’"/>
-               </p>
+                        </m:math>
+                     </math>
+                     <t v=", with D as the maximum random error, z"/>
+                     <emphasis kind="sub">
+                        <t v="α/2"/>
+                     </emphasis>
+                     <t v=" as the factor computed from the normal distribution or any suitable distribution according to the structure of the data (e.g. t-distribution) assuming a confidence level of 1-α, var("/>
+                  </p>
+                  <figure src="L_2009273EN.01001902.tif" content="character"/>
+                  <p>
+                     <t v=") as the variance of the estimator of parameter θ, and vâr("/>
+                  </p>
+                  <figure src="L_2009273EN.01001903.tif" content="character"/>
+                  <p>
+                     <t v=") as the estimated variance of the estimator of parameter ."/>
+                     <t v="’"/>
+                  </p>
+               </unit>
             </quotedStructure>
          </old>
          <new>
@@ -337,7 +341,7 @@
                <t v="read:"/>
             </p>
             <quotedStructure eId="cor_3/new/qstr_1">
-               <p>
+               <unit eId="cor_3/new/qstr_1/pnt_1" kind="point">
                   <num>
                      <t v="‘"/>
                      <t v="("/>
@@ -346,80 +350,82 @@
                      </emphasis>
                      <t v=")"/>
                   </num>
-                  <math>
-                     <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
-                        <m:mrow>
-                           <m:mi>D</m:mi>
-                           <m:mo>=</m:mo>
+                  <p>
+                     <math>
+                        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
                            <m:mrow>
+                              <m:mi>D</m:mi>
+                              <m:mo>=</m:mo>
                               <m:mrow>
-                                 <msub xmlns="http://www.w3.org/1998/Math/MathML">
-                                    <m:mi>z</m:mi>
-                                    <m:mrow>
-                                       <m:mi>α</m:mi>
-                                       <m:mo>/</m:mo>
-                                       <m:mn>2</m:mn>
-                                    </m:mrow>
-                                 </msub>
+                                 <m:mrow>
+                                    <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi>z</m:mi>
+                                       <m:mrow>
+                                          <m:mi>α</m:mi>
+                                          <m:mo>/</m:mo>
+                                          <m:mn>2</m:mn>
+                                       </m:mrow>
+                                    </msub>
+                                 </m:mrow>
+                                 <m:mo>*</m:mo>
+                                 <m:mrow>
+                                    <m:msqrt/>
+                                    <m:mi>var</m:mi>
+                                    <m:mo>(</m:mo>
+                                    <mover xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi>θ</m:mi>
+                                       <m:mrow>
+                                          <m:mo>^</m:mo>
+                                       </m:mrow>
+                                    </mover>
+                                    <m:mo>)</m:mo>
+                                 </m:mrow>
                               </m:mrow>
-                              <m:mo>*</m:mo>
+                              <m:mo>≈</m:mo>
                               <m:mrow>
-                                 <m:msqrt/>
-                                 <m:mi>var</m:mi>
-                                 <m:mo>(</m:mo>
-                                 <mover xmlns="http://www.w3.org/1998/Math/MathML">
-                                    <m:mi>θ</m:mi>
-                                    <m:mrow>
-                                       <m:mo>^</m:mo>
-                                    </m:mrow>
-                                 </mover>
-                                 <m:mo>)</m:mo>
+                                 <m:mrow>
+                                    <msub xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi>z</m:mi>
+                                       <m:mrow>
+                                          <m:mi>α</m:mi>
+                                          <m:mo>/</m:mo>
+                                          <m:mn>2</m:mn>
+                                       </m:mrow>
+                                    </msub>
+                                 </m:mrow>
+                                 <m:mo>*</m:mo>
+                                 <m:mrow>
+                                    <m:msqrt/>
+                                    <m:mi>vâr</m:mi>
+                                    <m:mo>(</m:mo>
+                                    <mover xmlns="http://www.w3.org/1998/Math/MathML">
+                                       <m:mi>θ</m:mi>
+                                       <m:mrow>
+                                          <m:mo>^</m:mo>
+                                       </m:mrow>
+                                    </mover>
+                                    <m:mo>)</m:mo>
+                                 </m:mrow>
                               </m:mrow>
                            </m:mrow>
-                           <m:mo>≈</m:mo>
-                           <m:mrow>
-                              <m:mrow>
-                                 <msub xmlns="http://www.w3.org/1998/Math/MathML">
-                                    <m:mi>z</m:mi>
-                                    <m:mrow>
-                                       <m:mi>α</m:mi>
-                                       <m:mo>/</m:mo>
-                                       <m:mn>2</m:mn>
-                                    </m:mrow>
-                                 </msub>
-                              </m:mrow>
-                              <m:mo>*</m:mo>
-                              <m:mrow>
-                                 <m:msqrt/>
-                                 <m:mi>vâr</m:mi>
-                                 <m:mo>(</m:mo>
-                                 <mover xmlns="http://www.w3.org/1998/Math/MathML">
-                                    <m:mi>θ</m:mi>
-                                    <m:mrow>
-                                       <m:mo>^</m:mo>
-                                    </m:mrow>
-                                 </mover>
-                                 <m:mo>)</m:mo>
-                              </m:mrow>
-                           </m:mrow>
-                        </m:mrow>
-                     </m:math>
-                  </math>
-                  <t v=", with D as the maximum random error, z"/>
-                  <emphasis kind="sub">
-                     <t v="α/2"/>
-                  </emphasis>
-                  <t v=" as the factor computed from the normal distribution or any suitable distribution according to the structure of the data (e.g. t-distribution) assuming a confidence level of 1-α, var("/>
-               </p>
-               <figure src="L_2009273EN.01001904.tif" content="character"/>
-               <p>
-                  <t v=") as the variance of the estimator of parameter θ, and vâr("/>
-               </p>
-               <figure src="L_2009273EN.01001905.tif" content="character"/>
-               <p>
-                  <t v=") as the estimated variance of the estimator of parameter θ."/>
-                  <t v="’"/>
-               </p>
+                        </m:math>
+                     </math>
+                     <t v=", with D as the maximum random error, z"/>
+                     <emphasis kind="sub">
+                        <t v="α/2"/>
+                     </emphasis>
+                     <t v=" as the factor computed from the normal distribution or any suitable distribution according to the structure of the data (e.g. t-distribution) assuming a confidence level of 1-α, var("/>
+                  </p>
+                  <figure src="L_2009273EN.01001904.tif" content="character"/>
+                  <p>
+                     <t v=") as the variance of the estimator of parameter θ, and vâr("/>
+                  </p>
+                  <figure src="L_2009273EN.01001905.tif" content="character"/>
+                  <p>
+                     <t v=") as the estimated variance of the estimator of parameter θ."/>
+                     <t v="’"/>
+                  </p>
+               </unit>
             </quotedStructure>
          </new>
       </unit>

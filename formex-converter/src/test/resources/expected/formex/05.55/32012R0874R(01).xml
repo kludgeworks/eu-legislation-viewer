@@ -30,12 +30,14 @@
    </preface>
    <body>
       <unit eId="cor_1" kind="correction">
-         <p>
+         <unit eId="cor_1/pnt_1" kind="point">
             <num>
                <t v="1."/>
             </num>
-            <t v="On page 2, Article 1(2)(g):"/>
-         </p>
+            <p>
+               <t v="On page 2, Article 1(2)(g):"/>
+            </p>
+         </unit>
          <old>
             <p>
                <t v="for:"/>
@@ -60,12 +62,14 @@
          </new>
       </unit>
       <unit eId="cor_2" kind="correction">
-         <p>
+         <unit eId="cor_2/pnt_2" kind="point">
             <num>
                <t v="2."/>
             </num>
-            <t v="On page 4, Article 3(2)(b)(ii):"/>
-         </p>
+            <p>
+               <t v="On page 4, Article 3(2)(b)(ii):"/>
+            </p>
+         </unit>
          <old>
             <p>
                <t v="for:"/>
@@ -90,12 +94,14 @@
          </new>
       </unit>
       <unit eId="cor_3" kind="correction">
-         <p>
+         <unit eId="cor_3/pnt_3" kind="point">
             <num>
                <t v="3."/>
             </num>
-            <t v="On page 20, Annex VII, point 2:"/>
-         </p>
+            <p>
+               <t v="On page 20, Annex VII, point 2:"/>
+            </p>
+         </unit>
          <old>
             <p>
                <t v="for:"/>

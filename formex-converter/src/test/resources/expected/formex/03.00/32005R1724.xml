@@ -245,13 +245,15 @@
                      <p>
                         <t v="OCT (Article 10(1)(a) and (b) of Regulation (EC) No 638/2003)"/>
                      </p>
-                     <p>
+                     <unit eId="anx/tab_1/tr_3/td_1/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="CN code "/>
-                        <t v="1006"/>
-                     </p>
+                        <p>
+                           <t v="CN code "/>
+                           <t v="1006"/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>
@@ -298,19 +300,21 @@
                      <p>
                         <t v="ACP (Article 3(1) of Regulation (EC) No 638/2003)"/>
                      </p>
-                     <p>
+                     <unit eId="anx/tab_2/tr_2/td_1/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="CN codes "/>
-                        <t v="10061021"/>
-                        <t v=" to "/>
-                        <t v="10061098"/>
-                        <t v=", "/>
-                        <t v="100620"/>
-                        <t v=" and "/>
-                        <t v="100630"/>
-                     </p>
+                        <p>
+                           <t v="CN codes "/>
+                           <t v="10061021"/>
+                           <t v=" to "/>
+                           <t v="10061098"/>
+                           <t v=", "/>
+                           <t v="100620"/>
+                           <t v=" and "/>
+                           <t v="100630"/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>
@@ -328,13 +332,15 @@
                      <p>
                         <t v="ACP (Article 5(1) of Regulation (EC) No 638/2003"/>
                      </p>
-                     <p>
+                     <unit eId="anx/tab_2/tr_3/td_1/list_2/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
-                        <t v="CN codes "/>
-                        <t v="10064000"/>
-                     </p>
+                        <p>
+                           <t v="CN codes "/>
+                           <t v="10064000"/>
+                        </p>
+                     </unit>
                   </td>
                   <td>
                      <p>

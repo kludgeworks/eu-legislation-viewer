@@ -35,14 +35,16 @@
          </p>
          <new>
             <quotedStructure eId="cor_1/new/qstr_1">
-               <p>
+               <unit eId="cor_1/new/qstr_1/pnt_6" kind="point">
                   <num>
                      <t v="‘"/>
                      <t v="(6)"/>
                   </num>
-                  <t v="Annex I to the EEA Agreement should therefore be amended accordingly,"/>
-                  <t v="’"/>
-               </p>
+                  <p>
+                     <t v="Annex I to the EEA Agreement should therefore be amended accordingly,"/>
+                     <t v="’"/>
+                  </p>
+               </unit>
             </quotedStructure>
          </new>
       </unit>
