@@ -50,6 +50,18 @@ public class LegalRenderer {
             .forEach(child -> render(child, element.name(), out));
   }
 
+  /**
+   * {@code element}'s children not named {@code names}, in order: the rest, once a template has put
+   * those apart (a deletion's content, its provenance in its mark).
+   */
+  public Content others(Element element, String... names) {
+    var named = Set.of(names);
+    return out ->
+        element.children().stream()
+            .filter(child -> !named.contains(child.name()))
+            .forEach(child -> render(child, element.name(), out));
+  }
+
   /** Whether {@code element} has any child named {@code names}. */
   public boolean has(Element element, String... names) {
     var named = Set.of(names);

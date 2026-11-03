@@ -264,8 +264,47 @@ p.norm {
   margin-right: 0.25rem;
 }
 
-del.deleted {
+/* what an amendment deleted: its mark only, as EUR-Lex has it, the text shown when the mark is
+ * clicked (a checkbox in the mark's label, out of sight but focusable) */
+.deleted > del {
+  display: none;
   color: var(--deleted);
+}
+
+div.deleted:has(> .deleted-mark > input:checked) > del {
+  display: block;
+}
+
+span.deleted:has(> .deleted-mark > input:checked) > del {
+  display: inline;
+}
+
+.deleted-mark {
+  cursor: pointer;
+}
+
+.deleted-mark > input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.deleted-mark:has(> input:focus-visible) {
+  outline: 2px solid var(--link);
+}
+
+.deleted-mark .provenance::before {
+  color: var(--deleted);
+}
+
+/* the notes of deleted text: shown only when a reference in it is followed */
+.deleted-notes > .note:not(:target) {
+  display: none;
+}
+
+.deleted-notes > .note {
+  color: var(--deleted);
+  text-decoration: line-through;
 }
 
 ins.changed {
