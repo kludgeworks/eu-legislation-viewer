@@ -103,6 +103,26 @@ p.norm {
   text-align: justify;
 }
 
+/* the head of the OJ page an act as published starts on, as EUR-Lex sets it (oj-hd-*): a row of
+ * date, language, the Journal and issue/page in columns of 10%, 10%, 60% and 20%, a rule under it */
+.journal-header {
+  display: grid;
+  grid-template-columns: minmax(10%, auto) minmax(10%, auto) 1fr minmax(20%, auto);
+  align-items: baseline;
+  padding-bottom: 4px;
+  border-bottom: 1px solid currentcolor;
+}
+
+.journal-header > span {
+  margin: 8px 0;
+  text-align: right;
+}
+
+.journal-header > .journal-name {
+  margin-left: 1rem;
+  text-align: left;
+}
+
 .long-title,
 .long-title p.norm {
   font-weight: bold;

@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: MIT
+# Words typos would "correct" that are right: the Official Journal's name in Spanish, Portuguese and
+# Romanian (Diario Oficial, Jornal Oficial, Jurnalul Oficial)
+[default.extend-words]
+oficial = "oficial"
+jornal = "jornal"
