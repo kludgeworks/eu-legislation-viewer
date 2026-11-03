@@ -62,7 +62,7 @@ class LegalRendererTest {
   @MethodSource("samples")
   void rendersRunningTextAsItReads(String sample) {
     var text = Decoder.element(Encoder.encode(LegalTexts.sample(sample)));
-    assertThat(render(text)).startsWith("<article class=\"legal-text\"");
+    assertThat(render(text)).startsWith("<article class=\"legal-text legal-text-");
 
     var wrong = new ArrayList<String>();
     for (var run : runs(text, new ArrayList<>())) {

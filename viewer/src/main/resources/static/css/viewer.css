@@ -92,6 +92,7 @@ header.version p {
 }
 
 .legal-text p,
+.legal-text .title,
 .legal-text .num,
 .legal-text .heading,
 .legal-text .subheading {
@@ -126,9 +127,36 @@ p.norm {
   text-align: center;
 }
 
+/* a level's title, as EUR-Lex sets it: a numbered heading on one line (1. AIRPORT SECURITY), what
+ * follows it from the margin; a label (ATTACHMENT 1-A) and a heading each a line of its own. In an
+ * act as published, all bold (oj-ti-grseq-1); in a consolidated version, by depth
+ * (title-gr-seq-level-N): bold, italic and centred, bold, plain, a numbered heading's words bold */
+.title > .num,
+.title > .heading {
+  display: inline;
+}
+
+.title,
+.unit-level:not(.numbered) > :is(.num, .heading, .subheading) {
+  font-weight: bold;
+}
+
+.legal-text-consolidated .unit-level[data-depth="2"] > :is(.title, .num, .heading, .subheading) {
+  font-weight: normal;
+  font-style: italic;
+  text-align: center;
+}
+
+.legal-text-consolidated .unit-level[data-depth="4"] > :is(.title, .num, .heading, .subheading) {
+  font-weight: normal;
+}
+
+.legal-text-consolidated .title > .heading {
+  font-weight: bold;
+}
+
 /* numbered items as EUR-Lex has them: a grid of label and text. A list's items, the recitals, and
- * an annex's numbered points: a point's number beside its text (1.0.1), or its heading
- * (1. AIRPORT SECURITY); a labelled level's label (PART 1, ATTACHMENT 6-A) stays above its title */
+ * an annex's numbered points: a point's number beside its text (1.0.1) */
 .list > .unit,
 .unit-recital,
 .unit-level.numbered {
@@ -147,6 +175,13 @@ p.norm {
 .unit-recital > :not(.num),
 .unit-level.numbered > :not(.num) {
   grid-column: 2;
+}
+
+/* in an act as published, a point's number starts its first paragraph (1.0.1 Unless …): what
+ * follows that, its lists, from the margin (oj-normal); a consolidated version keeps them beside the
+ * number */
+.legal-text:not(.legal-text-consolidated) .unit-level.numbered > :not(.num, .num + *) {
+  grid-column: 1 / -1;
 }
 
 /* a list's mark, which its items don't write (ListKind): the label of each */
@@ -180,6 +215,12 @@ p.norm {
   border: 1px solid var(--rule);
   padding: 0.2rem 0.4rem;
   vertical-align: top;
+}
+
+/* a row group's heading: a heading cell, but set as EUR-Lex sets it, as the text of the rows */
+.row-group-heading > th {
+  font-weight: normal;
+  text-align: left;
 }
 
 .table td > p:first-child {
@@ -318,6 +359,17 @@ ins.changed {
 
 .signature {
   margin-top: 1.5rem;
+}
+
+/* the closing block as EUR-Lex sets an act's (oj-final, oj-signatory): indented both sides, the
+ * signatory's lines centred in a box towards the right */
+.legal-text:not(.legal-text-consolidated) .conclusions {
+  margin: 1.5rem 3.375rem 0;
+}
+
+.signatory {
+  margin: 0 3.375rem 0 16.6875rem;
+  text-align: center;
 }
 
 /* images aren't kept: a frame in their place */

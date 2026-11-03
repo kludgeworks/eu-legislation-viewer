@@ -2,4 +2,5 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<div class="unit unit-${node.attribute("kind")}${html.numbered(node) ? " numbered" : ""}" id="${node.attribute("eId")}" data-depth="${node.attribute("depth")}">${html.children(node)}</div>
+<%-- a numbered unit with a heading has a title, the two on one line (1.0 GENERAL PROVISIONS); one
+without, its number beside its text (numbered) --%>@if(html.numbered(node) && html.has(node, "heading"))<div class="unit unit-${node.attribute("kind")}" id="${node.attribute("eId")}" data-depth="${node.attribute("depth")}">${html.children(node, "provenance")}<div class="title">${html.children(node, "num")} ${html.children(node, "heading")}</div>${html.others(node, "provenance", "num", "heading")}</div>@else<div class="unit unit-${node.attribute("kind")}${html.numbered(node) ? " numbered" : ""}" id="${node.attribute("eId")}" data-depth="${node.attribute("depth")}">${html.children(node)}</div>@endif
