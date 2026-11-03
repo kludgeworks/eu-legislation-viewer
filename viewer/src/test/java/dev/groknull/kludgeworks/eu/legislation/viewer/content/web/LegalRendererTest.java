@@ -79,7 +79,7 @@ class LegalRendererTest {
     return out.toString();
   }
 
-  /** The runs of running text in {@code element}, outermost: a p's num is the p's. */
+  /** The runs of running text in {@code element}, outermost. */
   private static List<Element> runs(Element element, List<Element> out) {
     if (RUNNING.contains(element.name())
         && element.children().stream().noneMatch(c -> c.name().equals("content"))) {
@@ -104,15 +104,10 @@ class LegalRendererTest {
     };
   }
 
-  /** Its children's, a paragraph's num set apart from its text by a space (1.1 Date of …). */
+  /** Its children's, in order. */
   private static String children(Element element) {
     var out = new StringBuilder();
-    for (var child : element.children()) {
-      out.append(plain(child));
-      if (element.name().equals("p") && child.name().equals("num")) {
-        out.append(' ');
-      }
-    }
+    element.children().forEach(child -> out.append(plain(child)));
     return out.toString();
   }
 
