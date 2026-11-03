@@ -2,4 +2,4 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<span class="heading">${html.children(node)}</span>
+<%-- a line of the long title: a heading holds no paragraphs --%><span class="norm">${html.children(node)}</span>

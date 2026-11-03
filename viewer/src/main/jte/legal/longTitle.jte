@@ -2,4 +2,4 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<div class="long-title">${html.children(node)}</div>
+<h1 class="long-title">${html.children(node)}</h1>

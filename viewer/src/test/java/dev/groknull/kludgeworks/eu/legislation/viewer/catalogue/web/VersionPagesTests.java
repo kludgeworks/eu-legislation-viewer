@@ -58,7 +58,7 @@ class VersionPagesTests {
     var article = Jsoup.parse(Objects.requireNonNull(html)).selectFirst("article.legal-text");
     assertThat(article).isNotNull();
     assertThat(article.attr("lang")).isEqualTo("en");
-    assertThat(article.select("#art_1 > .num").text()).isEqualTo("Article 1");
+    assertThat(article.select("#art_1 > h2 > .num").text()).isEqualTo("Article 1");
   }
 
   @Test

@@ -2,4 +2,4 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<td colspan="${node.attribute("colspan")}" rowspan="${node.attribute("rowspan")}" data-header="${node.attribute("header")}">${html.children(node)}</td>
+@if("true".equals(node.attribute("header")))<th colspan="${node.attribute("colspan")}" rowspan="${node.attribute("rowspan")}">${html.children(node)}</th>@else<td colspan="${node.attribute("colspan")}" rowspan="${node.attribute("rowspan")}">${html.children(node)}</td>@endif

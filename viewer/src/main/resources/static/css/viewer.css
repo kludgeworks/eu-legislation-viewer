@@ -91,11 +91,25 @@ header.version p {
   overflow-wrap: anywhere;
 }
 
+/* titles are headings (h1 the long title, h2 to h6 by rank): set as the text around them, the rules
+ * below saying how each looks; their parts, the long title's lines and a title's num, heading and
+ * subheading, are spans that are lines of their own */
+.legal-text :where(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  font: inherit;
+}
+
+.legal-text :is(.num, .heading, .subheading),
+.long-title > .norm {
+  display: block;
+}
+
 .legal-text p,
 .legal-text .title,
 .legal-text .num,
 .legal-text .heading,
-.legal-text .subheading {
+.legal-text .subheading,
+.long-title > .norm {
   margin: 0.5rem 0 0;
 }
 
@@ -123,36 +137,34 @@ p.norm {
   text-align: left;
 }
 
-.long-title,
-.long-title p.norm {
+.long-title {
   font-weight: bold;
   text-align: center;
 }
 
-.unit-article > .num,
-.unit-annex > .num,
+.unit-article > .title > .num,
+.unit-annex > .title > .num,
 .unit-annex > .file > .num {
   margin-top: 1.5rem;
   font-style: italic;
   text-align: center;
 }
 
-.unit-article > .heading,
-.unit-annex > .heading {
+.unit-article > .title > .heading,
+.unit-annex > .title > .heading {
   font-weight: bold;
   text-align: center;
 }
 
 /* an annex's label in an act as published, and the title each of its files repeats: bold, upright
  * (oj-doc-ti) */
-.legal-text:not(.legal-text-consolidated) .unit-annex > .num,
+.legal-text:not(.legal-text-consolidated) .unit-annex > .title > .num,
 .legal-text:not(.legal-text-consolidated) .unit-annex > .file > .num {
   font-style: normal;
   font-weight: bold;
 }
 
-.unit-division > .num,
-.unit-division > .heading {
+.unit-division > .title {
   text-align: center;
 }
 
@@ -160,13 +172,12 @@ p.norm {
  * follows it from the margin; a label (ATTACHMENT 1-A) and a heading each a line of its own. In an
  * act as published, all bold (oj-ti-grseq-1); in a consolidated version, by depth
  * (title-gr-seq-level-N): bold, italic and centred, bold, plain, a numbered heading's words bold */
-.title > .num,
-.title > .heading {
+.title-run-in > :is(.num, .heading) {
   display: inline;
 }
 
-.title,
-.unit-level:not(.numbered) > :is(.num, .heading, .subheading) {
+.title-run-in,
+.unit-level:not(.numbered) > .title {
   font-weight: bold;
 }
 
@@ -180,7 +191,7 @@ p.norm {
   font-weight: normal;
 }
 
-.legal-text-consolidated .title > .heading {
+.legal-text-consolidated .title-run-in > .heading {
   font-weight: bold;
 }
 
@@ -275,11 +286,13 @@ p.norm {
   content: "•";
 }
 
+.table-frame {
+  margin-top: 0.5rem;
+  overflow-x: auto;
+}
+
 .table {
   border-collapse: collapse;
-  margin-top: 0.5rem;
-  display: block;
-  overflow-x: auto;
 }
 
 .table td,
@@ -301,11 +314,12 @@ p.norm {
 
 /* a header row's cells: bold; in an act as published, centred, and a table's text smaller
  * (oj-tbl-hdr, oj-tbl-txt) */
-.table td[data-header="true"] {
+.table th {
   font-weight: bold;
+  text-align: left;
 }
 
-.legal-text:not(.legal-text-consolidated) .table td[data-header="true"] > p {
+.legal-text:not(.legal-text-consolidated) .table th > p {
   text-align: center;
 }
 
@@ -319,7 +333,11 @@ p.norm {
   text-align: left;
 }
 
-.table td > p:first-child {
+.row-group-heading > th > :is(.num, .heading) {
+  display: inline;
+}
+
+.table :is(td, th) > p:first-child {
   margin-top: 0;
 }
 

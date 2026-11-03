@@ -2,4 +2,4 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<div class="heading">${html.children(node)}</div>
+<span class="heading">${html.children(node)}</span>

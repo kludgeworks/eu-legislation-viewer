@@ -2,4 +2,4 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<table class="table">${html.children(node)}</table>
+<%-- the frame scrolls a wide table, which stays a table to assistive technology --%><div class="table-frame"><table class="table">${html.children(node)}</table></div>
