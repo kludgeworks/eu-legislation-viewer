@@ -184,9 +184,12 @@ p.norm {
   font-weight: bold;
 }
 
-/* numbered items as EUR-Lex has them: a grid of label and text. A list's items, the recitals, and
- * an annex's numbered points: a point's number beside its text (1.0.1) */
+/* numbered items as EUR-Lex has them: a grid of label and text. A list's items, a numbered
+ * paragraph outside a list (a point in a table cell), the recitals, and an annex's numbered points:
+ * a point's number beside its text (1.0.1) */
 .list > .unit,
+.unit-point,
+.unit-indent,
 .unit-recital,
 .unit-level.numbered {
   display: grid;
@@ -196,18 +199,20 @@ p.norm {
 
 /* in an act as published, a table of two columns, the label's 4% of the width (wider if the label
  * is), the text against it: each list nested in an item 4% further in */
-.legal-text:not(.legal-text-consolidated) :is(.list > .unit, .unit-recital) {
+.legal-text:not(.legal-text-consolidated) :is(.list > .unit, .unit-point, .unit-indent, .unit-recital) {
   grid-template-columns: minmax(4%, auto) 1fr;
   column-gap: 0;
 }
 
 .list > .unit > .num,
+:is(.unit-point, .unit-indent) > .num,
 .unit-recital > .num,
 .unit-level.numbered > .num {
   grid-column: 1;
 }
 
 .list > .unit > :not(.num),
+:is(.unit-point, .unit-indent) > :not(.num),
 .unit-recital > :not(.num),
 .unit-level.numbered > :not(.num) {
   grid-column: 2;
@@ -217,6 +222,13 @@ p.norm {
  * follows that, its lists, from the margin (oj-normal); a consolidated version keeps them beside the
  * number */
 .legal-text:not(.legal-text-consolidated) .unit-level.numbered > :not(.num, .num + *) {
+  grid-column: 1 / -1;
+}
+
+/* a numbered paragraph outside a list in a consolidated version: its text beside its number, what
+ * follows from the margin (a hanging indent, then p.list); in an act as published all of it beside
+ * the number (the 96% column) */
+.legal-text-consolidated :is(.unit-point, .unit-indent):not(.list > *) > :not(.num, .num + *) {
   grid-column: 1 / -1;
 }
 
