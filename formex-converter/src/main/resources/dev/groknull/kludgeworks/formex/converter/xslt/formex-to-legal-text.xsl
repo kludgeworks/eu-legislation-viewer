@@ -305,9 +305,9 @@
     <xsl:param name="notes" as="element(NOTE)*"/>
     <xsl:if test="$notes">
       <notes>
-        <xsl:for-each-group select="$notes" group-adjacent="string-join(f:ids(f:deletions(.)), ' ')">
+        <xsl:for-each-group select="$notes" group-adjacent="f:ids(f:deletions(.))" composite="yes">
           <xsl:choose>
-            <xsl:when test="current-grouping-key() = ''">
+            <xsl:when test="empty(current-grouping-key())">
               <xsl:apply-templates select="current-group()" mode="note"/>
             </xsl:when>
             <xsl:otherwise>

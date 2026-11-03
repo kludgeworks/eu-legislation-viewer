@@ -176,7 +176,7 @@
   <xsl:template match="*[lt:deleted/lt:provenance]" mode="f:deletions">
     <xsl:copy>
       <xsl:apply-templates select="@*" mode="#current"/>
-      <xsl:for-each-group select="node()" group-adjacent="if (self::lt:deleted/lt:provenance) then string-join(lt:provenance/@marker, ' ') else generate-id()">
+      <xsl:for-each-group select="node()" group-adjacent="if (self::lt:deleted/lt:provenance) then lt:provenance/@marker else generate-id()" composite="yes">
         <xsl:choose>
           <xsl:when test="self::lt:deleted/lt:provenance">
             <xsl:copy>
