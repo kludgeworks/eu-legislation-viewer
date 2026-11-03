@@ -184,6 +184,23 @@ p.norm {
   grid-column: 1 / -1;
 }
 
+/* a definition list's entry: in a consolidated version, as a list's item (its term, separator and
+ * definition beside its prefix); in an act as published, prefix, term in bold, separator and the
+ * definition's first paragraph one paragraph, the rest from the margin (oj-normal) */
+.legal-text:not(.legal-text-consolidated) .list-definition > .unit {
+  display: block;
+  margin-top: 0.5rem;
+  text-align: justify;
+}
+
+.legal-text:not(.legal-text-consolidated) .list-definition > .unit > :is(.num, .heading, .separator, .separator + p) {
+  display: inline;
+}
+
+.legal-text:not(.legal-text-consolidated) .list-definition > .unit > .heading {
+  font-weight: bold;
+}
+
 /* a list's mark, which its items don't write (ListKind): the label of each */
 .list-dash > .unit-indent::before,
 .list-ndash > .unit-indent::before,
