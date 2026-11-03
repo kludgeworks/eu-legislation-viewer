@@ -216,7 +216,7 @@
                   <t v=") and to inject initial equity into it. In that pre-notification process, Italy asked the Commission to confirm that:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="pbl_1/rct_7/pnt_a" kind="point">
+                  <unit eId="pbl_1/rct_7/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -224,7 +224,7 @@
                         <t v="the sale of SEAH’s assets in the liquidation procedure does not involve elements of economic continuity with Airport Handling, and thus does not transfer the former’s liabilities to the latter, and in particular the requirement to recover the unlawful and incompatible State aid granted to SEAH;"/>
                      </p>
                   </unit>
-                  <unit eId="pbl_1/rct_7/pnt_b" kind="point">
+                  <unit eId="pbl_1/rct_7/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -5314,7 +5314,7 @@
                      <t v="The criteria laid down in Article 107(1) of the Treaty are cumulative. Therefore, in order to determine whether the measures constitute State aid within the meaning of Article 107(1) of the Treaty, all the above-mentioned conditions need to be fulfilled. Namely, the financial support should:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="pbl_1/rct_321/pnt_a" kind="point">
+                     <unit eId="pbl_1/rct_321/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -5322,7 +5322,7 @@
                            <t v="be granted by a Member State or through State resources;"/>
                         </p>
                      </unit>
-                     <unit eId="pbl_1/rct_321/pnt_b" kind="point">
+                     <unit eId="pbl_1/rct_321/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -5330,7 +5330,7 @@
                            <t v="favour certain undertakings or the production of certain goods;"/>
                         </p>
                      </unit>
-                     <unit eId="pbl_1/rct_321/pnt_c" kind="point">
+                     <unit eId="pbl_1/rct_321/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -5338,7 +5338,7 @@
                            <t v="distort or threaten to distort competition;"/>
                         </p>
                      </unit>
-                     <unit eId="pbl_1/rct_321/pnt_d" kind="point">
+                     <unit eId="pbl_1/rct_321/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>

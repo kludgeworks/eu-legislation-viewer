@@ -135,7 +135,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="list_6/pnt_1" kind="point">
+      <unit eId="list_6/pnt_1" kind="point" numbered="true">
          <num>
             <t v="1."/>
          </num>
@@ -143,7 +143,7 @@
             <t v="The model forms E 111 and E 111B reproduced in Decision No 179 shall be replaced by the models appended hereto."/>
          </p>
       </unit>
-      <unit eId="list_6/pnt_2" kind="point">
+      <unit eId="list_6/pnt_2" kind="point" numbered="true">
          <num>
             <t v="2."/>
          </num>
@@ -151,7 +151,7 @@
             <t v="The competent authorities of the Member States shall make available to the parties concerned (rightful claimants, institutions, employers, etc.) the forms according to the models appended hereto."/>
          </p>
       </unit>
-      <unit eId="list_6/pnt_3" kind="point">
+      <unit eId="list_6/pnt_3" kind="point" numbered="true">
          <num>
             <t v="3."/>
          </num>
@@ -159,7 +159,7 @@
             <t v="These forms shall be available in the official languages of the Community and laid out in such manner that the different versions are perfectly superposable, thereby making it possible for all addressees (rightful claimants, institutions, employers, etc.) to receive the form printed in their own language."/>
          </p>
       </unit>
-      <unit eId="list_6/pnt_4" kind="point">
+      <unit eId="list_6/pnt_4" kind="point" numbered="true">
          <num>
             <t v="4."/>
          </num>

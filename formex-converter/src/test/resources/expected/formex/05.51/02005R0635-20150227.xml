@@ -197,7 +197,7 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx/tab_1/tr_3/td_1/pnt_1" kind="point">
+                  <unit eId="anx/tab_1/tr_3/td_1/pnt_1" kind="point" numbered="true">
                      <num>
                         <t v="1."/>
                      </num>
@@ -243,7 +243,7 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2" kind="point">
+                  <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2" kind="point" numbered="true">
                      <num>
                         <t v="2."/>
                      </num>
@@ -254,7 +254,9 @@
                         <t v="The label contains the following information:"/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1" kind="point">
+                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="1)"/>
                            </num>
@@ -321,7 +323,9 @@
                               <t v="Rose hip husks, cornflower leaves, peppermint leaves, marigold blossom, liquorice root."/>
                            </p>
                         </unit>
-                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_2" kind="point">
+                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_2"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="2)"/>
                            </num>
@@ -332,7 +336,9 @@
                               <t v="Pour one cup (approximately 150 ml) of boiling water onto one tea bag, cover and leave to brew for approximately 15 minutes and then remove the tea bag. Unless otherwise prescribed, one cup of freshly brewed tea 3 to 4 times a day between meals."/>
                            </p>
                         </unit>
-                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_3" kind="point">
+                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_3"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="3)"/>
                            </num>

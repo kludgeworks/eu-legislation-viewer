@@ -151,7 +151,7 @@
                <t v="For the purposes of this Regulation, the following definitions shall apply:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3/pnt_a" kind="point">
+               <unit eId="art_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -162,7 +162,7 @@
                      <t v=" means:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="art_3/pnt_a/pnt_i" kind="point">
+                     <unit eId="art_3/pnt_a/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -170,7 +170,7 @@
                            <t v="longlines;"/>
                         </p>
                      </unit>
-                     <unit eId="art_3/pnt_a/pnt_ii" kind="point">
+                     <unit eId="art_3/pnt_a/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -180,7 +180,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="art_3/pnt_b" kind="point">
+               <unit eId="art_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -216,7 +216,7 @@
                   <t v="It shall be prohibited to carry on board:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_4/par_2/pnt_a" kind="point">
+                  <unit eId="art_4/par_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -224,7 +224,7 @@
                         <t v="beams of a beam trawl which do not display the external registration letters and numbers in accordance with Article 5;"/>
                      </p>
                   </unit>
-                  <unit eId="art_4/par_2/pnt_b" kind="point">
+                  <unit eId="art_4/par_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -232,7 +232,7 @@
                         <t v="passive gear which is not labelled in accordance with Article 7;"/>
                      </p>
                   </unit>
-                  <unit eId="art_4/par_2/pnt_c" kind="point">
+                  <unit eId="art_4/par_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -292,7 +292,7 @@
                <t v="Each passive gear used for fishing shall permanently display the external registration letters and numbers displayed on the hull of the vessel to which they belong:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_7/pnt_a" kind="point">
+               <unit eId="art_7/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -300,7 +300,7 @@
                      <t v="on a label attached to the upper first row at both ends of each passive gear;"/>
                   </p>
                </unit>
-               <unit eId="art_7/pnt_b" kind="point">
+               <unit eId="art_7/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -325,7 +325,7 @@
                   <t v="Each label shall be:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_8/par_1/pnt_a" kind="point">
+                  <unit eId="art_8/par_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -333,7 +333,7 @@
                         <t v="made of durable material;"/>
                      </p>
                   </unit>
-                  <unit eId="art_8/par_1/pnt_b" kind="point">
+                  <unit eId="art_8/par_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -341,7 +341,7 @@
                         <t v="securely fitted to the gear;"/>
                      </p>
                   </unit>
-                  <unit eId="art_8/par_1/pnt_c" kind="point">
+                  <unit eId="art_8/par_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -349,7 +349,7 @@
                         <t v="at least 65 millimetres broad;"/>
                      </p>
                   </unit>
-                  <unit eId="art_8/par_1/pnt_d" kind="point">
+                  <unit eId="art_8/par_1/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -402,7 +402,7 @@
                   <t v="Each end marker buoy and intermediary buoy shall display the external registration letters and numbers displayed on the hull of the vessel to which they belong as follows:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_10/par_1/pnt_a" kind="point">
+                  <unit eId="art_10/par_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -410,7 +410,7 @@
                         <t v="letters and numbers shall be displayed as high above the water as possible so as to be clearly visible;"/>
                      </p>
                   </unit>
-                  <unit eId="art_10/par_1/pnt_b" kind="point">
+                  <unit eId="art_10/par_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -492,7 +492,7 @@
                   <t v="Each end marker buoy shall include:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_12/par_4/pnt_a" kind="point">
+                  <unit eId="art_12/par_4/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -500,7 +500,7 @@
                         <t v="one or two rectangular flag(s) whose side measures at least 40 centimetres; where two flags are required on the same buoy, the distance between them shall be at least 20 centimetres; the distance between the water and the first flag shall be at least 80 centimetres; flags indicating the extremities of the same net shall be of the same colour, which may not be white, and of the same size;"/>
                      </p>
                   </unit>
-                  <unit eId="art_12/par_4/pnt_b" kind="point">
+                  <unit eId="art_12/par_4/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -508,7 +508,7 @@
                         <t v="one or two lights, which shall be yellow and give one flash each five-second (F1 Y5s) and be visible from a distance of at least two nautical miles;"/>
                      </p>
                   </unit>
-                  <unit eId="art_12/par_4/pnt_c" kind="point">
+                  <unit eId="art_12/par_4/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -516,7 +516,7 @@
                         <t v="a top sign on the top of the buoy which shall be a sphere of a diameter of at least 25 centimetres topped with one or two luminous band which shall be neither red nor green and shall be at least 6 centimetres broad. A spherical radar reflector may be used as the mark on top of the buoy;"/>
                      </p>
                   </unit>
-                  <unit eId="art_12/par_4/pnt_d" kind="point">
+                  <unit eId="art_12/par_4/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -539,7 +539,7 @@
                   <t v="End marker buoys shall be fixed to passive gear in the following way:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_13/unp_1/pnt_a" kind="point">
+                  <unit eId="art_13/unp_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -547,7 +547,7 @@
                         <t v="the buoy in the western sector (meaning the half compass circle from south through west to and including north) shall be rigged with two flags, two striped luminous bands, two lights and a label in accordance with Article 8;"/>
                      </p>
                   </unit>
-                  <unit eId="art_13/unp_1/pnt_b" kind="point">
+                  <unit eId="art_13/unp_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -594,7 +594,7 @@
                   <t v="Intermediary marker buoys shall have the same characteristics as those of the end marker buoy in the eastern sector except for the following:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_14/par_3/pnt_a" kind="point">
+                  <unit eId="art_14/par_3/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -602,7 +602,7 @@
                         <t v="the flags shall be white;"/>
                      </p>
                   </unit>
-                  <unit eId="art_14/par_3/pnt_b" kind="point">
+                  <unit eId="art_14/par_3/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>

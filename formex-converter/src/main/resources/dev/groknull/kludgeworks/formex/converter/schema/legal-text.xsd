@@ -584,6 +584,9 @@
         <xs:attribute name="box" type="xs:boolean" default="false">
           <xs:annotation><xs:documentation>Levels only: the text is printed in a box.</xs:documentation></xs:annotation>
         </xs:attribute>
+        <xs:attribute name="numbered" type="xs:boolean" default="false">
+          <xs:annotation><xs:documentation>Points and levels: its num is the number it is known by, its eId's (pnt_1.0.1, pnt_a), not a label line (PART 2) or a mark (—).</xs:documentation></xs:annotation>
+        </xs:attribute>
         <xs:attribute name="ambiguous" type="xs:boolean" default="false">
           <xs:annotation>
             <xs:documentation>
@@ -974,6 +977,9 @@
             </xs:element>
           </xs:choice>
         </xs:sequence>
+        <xs:attribute name="columns" type="xs:positiveInteger" use="required">
+          <xs:annotation><xs:documentation>How many columns its rows span, the widest of them (each cell its colspan), nested groups' included: what its heading row spans.</xs:documentation></xs:annotation>
+        </xs:attribute>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

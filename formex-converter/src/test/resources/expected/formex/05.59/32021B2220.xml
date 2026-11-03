@@ -298,7 +298,7 @@
                      </p>
                   </td>
                </tr>
-               <rowGroup>
+               <rowGroup columns="8">
                   <tr>
                      <td>
                         <p>
@@ -1171,7 +1171,7 @@
                      </p>
                   </td>
                </tr>
-               <rowGroup>
+               <rowGroup columns="8">
                   <tr>
                      <td>
                         <p>
@@ -1467,7 +1467,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03" kind="level" depth="4">
+         <unit eId="att_1/pnt_CHAPTER-14-03"
+               kind="level"
+               depth="4"
+               numbered="true">
             <num>
                <emphasis kind="b">
                   <t v="CHAPTER 14 03 —"/>
@@ -1554,7 +1557,7 @@
                      </p>
                   </td>
                </tr>
-               <rowGroup>
+               <rowGroup columns="9">
                   <heading>
                      <t v="14 03"/>
                   </heading>

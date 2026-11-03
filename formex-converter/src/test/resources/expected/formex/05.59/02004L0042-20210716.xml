@@ -99,7 +99,7 @@
             <t v="For the purposes of this Directive, the following definitions shall apply:"/>
          </p>
          <list kind="definition">
-            <unit eId="art_2/pnt_1" kind="definition">
+            <unit eId="art_2/pnt_1" kind="definition" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -112,7 +112,7 @@
                   <t v="means the authority or authorities or bodies responsible under the legal provisions of the Member States for carrying out the obligations arising from this Directive;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_2" kind="definition">
+            <unit eId="art_2/pnt_2" kind="definition" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -125,7 +125,7 @@
                   <t v="means any chemical element and its compounds, as they occur in the natural state or as produced by industry, whether in solid or liquid or gaseous form;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_3" kind="definition">
+            <unit eId="art_2/pnt_3" kind="definition" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -143,7 +143,7 @@
                   <t v="means mixtures or solutions composed of two or more substances;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_4" kind="definition">
+            <unit eId="art_2/pnt_4" kind="definition" numbered="true">
                <num>
                   <t v="4."/>
                </num>
@@ -156,7 +156,7 @@
                   <t v="means any compound containing at least the element carbon and one or more of hydrogen, oxygen, sulphur, phosphorus, silicon, nitrogen, or a halogen, with the exception of carbon oxides and inorganic carbonates and bicarbonates;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_5" kind="definition">
+            <unit eId="art_2/pnt_5" kind="definition" numbered="true">
                <num>
                   <t v="5."/>
                </num>
@@ -169,7 +169,7 @@
                   <t v="means any organic compound having an initial boiling point less than or equal to 250°C measured at a standard pressure of 101,3 kPa;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_6" kind="definition">
+            <unit eId="art_2/pnt_6" kind="definition" numbered="true">
                <num>
                   <t v="6."/>
                </num>
@@ -182,7 +182,7 @@
                   <t v="means the mass of volatile organic compounds, expressed in grams/litre (g/l), in the formulation of the product in its ready to use condition. The mass of volatile organic compounds in a given product which react chemically during drying to form part of the coating shall not be considered part of the VOC content;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_7" kind="definition">
+            <unit eId="art_2/pnt_7" kind="definition" numbered="true">
                <num>
                   <t v="7."/>
                </num>
@@ -195,7 +195,7 @@
                   <t v="means any VOC which is used alone or in combination with other agents to dissolve or dilute raw materials, products, or waste materials, or is used as a cleaning agent to dissolve contaminants, or as a dispersion medium, or as a viscosity adjuster, or as a surface tension adjuster, or as a plasticiser, or as a preservative;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_8" kind="definition">
+            <unit eId="art_2/pnt_8" kind="definition" numbered="true">
                <num>
                   <t v="8."/>
                </num>
@@ -222,7 +222,7 @@
                   <t v=" containing organic solvents necessary for its proper application, which is used to provide a film with decorative, protective or other functional effect on a surface;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_9" kind="definition">
+            <unit eId="art_2/pnt_9" kind="definition" numbered="true">
                <num>
                   <t v="9."/>
                </num>
@@ -235,7 +235,7 @@
                   <t v="means a continuous layer resulting from the application of one or more coats to a substrate;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_10" kind="definition">
+            <unit eId="art_2/pnt_10" kind="definition" numbered="true">
                <num>
                   <t v="10."/>
                </num>
@@ -248,7 +248,7 @@
                   <t v="means coatings the viscosity of which is adjusted by the use of water;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_11" kind="definition">
+            <unit eId="art_2/pnt_11" kind="definition" numbered="true">
                <num>
                   <t v="11."/>
                </num>
@@ -261,7 +261,7 @@
                   <t v="means coatings the viscosity of which is adjusted by the use of organic solvent;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_12" kind="definition">
+            <unit eId="art_2/pnt_12" kind="definition" numbered="true">
                <num>
                   <t v="12."/>
                </num>
@@ -339,7 +339,7 @@
             <t v="Member States shall ensure that the products set out in Annex I carry a label when they are placed on the market. The label shall indicate:"/>
          </p>
          <list kind="alpha">
-            <unit eId="art_4/pnt_a" kind="point">
+            <unit eId="art_4/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -347,7 +347,7 @@
                   <t v="the subcategory of the product and the relevant VOC limit values in g/l as referred to in Annex II;"/>
                </p>
             </unit>
-            <unit eId="art_4/pnt_b" kind="point">
+            <unit eId="art_4/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -419,7 +419,7 @@
                <t v="The Commission is invited to submit to the European Parliament and the Council:"/>
             </p>
             <list kind="arabic">
-               <unit eId="art_9/unp_1/pnt_1" kind="point">
+               <unit eId="art_9/unp_1/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -427,7 +427,7 @@
                      <t v="by 2008 at the latest, a report based on the results of the review referred to in Article 10 of Directive 2001/81/EC. This report shall examine:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_9/unp_1/pnt_1/pnt_a" kind="point">
+                     <unit eId="art_9/unp_1/pnt_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -435,7 +435,7 @@
                            <t v="the broad scope and potential for making reductions in the VOC content of products outside the scope of this Directive including aerosols for paints and varnishes;"/>
                         </p>
                      </unit>
-                     <unit eId="art_9/unp_1/pnt_1/pnt_b" kind="point">
+                     <unit eId="art_9/unp_1/pnt_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -443,7 +443,7 @@
                            <t v="the possible introduction of a further (phase II) reduction in the VOC content of vehicle refinishing products;"/>
                         </p>
                      </unit>
-                     <unit eId="art_9/unp_1/pnt_1/pnt_c" kind="point">
+                     <unit eId="art_9/unp_1/pnt_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -453,7 +453,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="art_9/unp_1/pnt_2" kind="point">
+               <unit eId="art_9/unp_1/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
@@ -734,7 +734,7 @@
          <subheading>
             <t v="SCOPE"/>
          </subheading>
-         <unit eId="anx_I/pnt_1" kind="level" depth="1">
+         <unit eId="anx_I/pnt_1" kind="level" depth="1" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -742,7 +742,7 @@
                <t v="For the purposes of this Directive, paints and varnishes means products listed in the subcategories below, excluding aerosols. They are coatings applied to buildings, their trim and fittings, and associated structures for decorative, functional and protective purpose."/>
             </p>
          </unit>
-         <unit eId="anx_I/pnt_1.1" kind="level" depth="2">
+         <unit eId="anx_I/pnt_1.1" kind="level" depth="2" numbered="true">
             <num>
                <t v="1.1."/>
             </num>
@@ -750,7 +750,7 @@
                <t v="Subcategories:"/>
             </p>
             <list kind="definition">
-               <unit eId="anx_I/pnt_1.1/pnt_a" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_a" kind="definition" numbered="true">
                   <num>
                      <t v="a)"/>
                   </num>
@@ -763,7 +763,7 @@
                      <t v="means coatings designed for application to indoor walls and ceilings with a degree of gloss ≤ 25@60°."/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_1.1/pnt_b" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_b" kind="definition" numbered="true">
                   <num>
                      <t v="b)"/>
                   </num>
@@ -776,7 +776,7 @@
                      <t v="means coatings designed for application to indoor walls and ceilings with a degree of gloss &gt; 25@60°."/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_1.1/pnt_c" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_c" kind="definition" numbered="true">
                   <num>
                      <t v="c)"/>
                   </num>
@@ -789,7 +789,7 @@
                      <t v="means coatings designed for application to outdoor walls of masonry, brick or stucco;"/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_1.1/pnt_d" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_d" kind="definition" numbered="true">
                   <num>
                      <t v="d)"/>
                   </num>
@@ -802,7 +802,7 @@
                      <t v="means coatings designed for application to trim and cladding which produce an opaque film. These coatings are designed for either a wood, metal or a plastic substrate. This subcategory includes undercoats and intermediate coatings;"/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_1.1/pnt_e" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_e" kind="definition" numbered="true">
                   <num>
                      <t v="e)"/>
                   </num>
@@ -815,7 +815,7 @@
                      <t v="means coatings designed for application to trim which produce a transparent or semi-transparent film for decoration and protection of wood, metal and plastics. This subcategory includes opaque woodstains. Opaque woodstains means coatings producing an opaque film for the decoration and protection of wood, against weathering, as defined in EN 927-1, within the semi-stable category;"/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_1.1/pnt_f" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_f" kind="definition" numbered="true">
                   <num>
                      <t v="f)"/>
                   </num>
@@ -828,7 +828,7 @@
                      <t v="means woodstains which, in accordance with EN 927-1:1996, have a mean thickness of less than 5μm when tested according to ISO 2808: 1997, method 5A;"/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_1.1/pnt_g" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_g" kind="definition" numbered="true">
                   <num>
                      <t v="g)"/>
                   </num>
@@ -841,7 +841,7 @@
                      <t v="means coatings with sealing and/or blocking properties designed for use on wood or walls and ceilings;"/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_1.1/pnt_h" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_h" kind="definition" numbered="true">
                   <num>
                      <t v="h)"/>
                   </num>
@@ -854,7 +854,7 @@
                      <t v="means coatings designed to stabilise loose substrate particles or impart hydrophobic properties and/or to protect wood against blue stain;"/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_1.1/pnt_i" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_i" kind="definition" numbered="true">
                   <num>
                      <t v="i)"/>
                   </num>
@@ -867,7 +867,7 @@
                      <t v="means performance coatings based on film-forming material. They are designed for applications requiring a special performance, such as primer and topcoats for plastics, primer coat for ferrous substrates, primer coat for reactive metals such as zinc and aluminium, anticorrosion finishes, floor coatings, including for wood and cement floors, graffiti resistance, flame retardant, and hygiene standards in the food or drink industry or health services;"/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_1.1/pnt_j" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_j" kind="definition" numbered="true">
                   <num>
                      <t v="j)"/>
                   </num>
@@ -880,7 +880,7 @@
                      <t v="means coatings with the same use as one-performance coatings, but with a second component (e.g. tertiary amines) added prior to application;"/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_1.1/pnt_k" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_k" kind="definition" numbered="true">
                   <num>
                      <t v="k)"/>
                   </num>
@@ -893,7 +893,7 @@
                      <t v="means coatings designed to give a two-tone or multiple-colour effect, directly from the primary application;"/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_1.1/pnt_l" kind="definition">
+               <unit eId="anx_I/pnt_1.1/pnt_l" kind="definition" numbered="true">
                   <num>
                      <t v="l)"/>
                   </num>
@@ -908,7 +908,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_I/pnt_2" kind="level" depth="1">
+         <unit eId="anx_I/pnt_2" kind="level" depth="1" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -920,7 +920,7 @@
                <t v=" means products listed in the subcategories below. They are used for the coating of road vehicles as defined in Directive 70/156/EEC, or part of them, carried out as part of vehicle repair, conservation or decoration outside of manufacturing installations."/>
             </p>
          </unit>
-         <unit eId="anx_I/pnt_2.1" kind="level" depth="2">
+         <unit eId="anx_I/pnt_2.1" kind="level" depth="2" numbered="true">
             <num>
                <t v="2.1."/>
             </num>
@@ -928,7 +928,7 @@
                <t v="Subcategories:"/>
             </p>
             <list kind="definition">
-               <unit eId="anx_I/pnt_2.1/pnt_a" kind="definition">
+               <unit eId="anx_I/pnt_2.1/pnt_a" kind="definition" numbered="true">
                   <num>
                      <t v="a)"/>
                   </num>
@@ -941,7 +941,7 @@
                      <t v="means products designed to remove old coatings and rust, either mechanically or chemically, or to provide a key for new coatings:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="anx_I/pnt_2.1/pnt_a/pnt_i" kind="point">
+                     <unit eId="anx_I/pnt_2.1/pnt_a/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -949,7 +949,7 @@
                            <t v="preparatory products include gunwash (a product designed for cleaning spray-guns and other equipment), paint strippers, degreasers (including anti-static types for plastic) and silicone removers;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_I/pnt_2.1/pnt_a/pnt_ii" kind="point">
+                     <unit eId="anx_I/pnt_2.1/pnt_a/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -962,7 +962,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_I/pnt_2.1/pnt_b" kind="definition">
+               <unit eId="anx_I/pnt_2.1/pnt_b" kind="definition" numbered="true">
                   <num>
                      <t v="b)"/>
                   </num>
@@ -975,7 +975,7 @@
                      <t v="means heavy-bodied compounds designed to be applied to fill deep surface imperfections prior to the application of the surfacer/filler;"/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_2.1/pnt_c" kind="definition">
+               <unit eId="anx_I/pnt_2.1/pnt_c" kind="definition" numbered="true">
                   <num>
                      <t v="c)"/>
                   </num>
@@ -988,7 +988,7 @@
                      <t v="means any coating that is designed for application to bare metal or existing finishes to provide corrosion protection prior to application of a primer surfacer:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="anx_I/pnt_2.1/pnt_c/pnt_i" kind="point">
+                     <unit eId="anx_I/pnt_2.1/pnt_c/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -999,7 +999,7 @@
                            <t v=" means a coating designed for application immediately prior to the application of topcoat for the purpose of corrosion resistance, to ensure adhesion of the topcoat, and to promote the formation of a uniform surface finish by filling in minor surface imperfections;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_I/pnt_2.1/pnt_c/pnt_ii" kind="point">
+                     <unit eId="anx_I/pnt_2.1/pnt_c/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -1010,7 +1010,7 @@
                            <t v=" means a coating designed for application as primers, such as adhesion promoters, sealers, surfacers, undercoats, plastic primers, wet-on-wet, non-sand fillers and spray fillers;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_I/pnt_2.1/pnt_c/pnt_iii" kind="point">
+                     <unit eId="anx_I/pnt_2.1/pnt_c/pnt_iii" kind="point" numbered="true">
                         <num>
                            <t v="(iii)"/>
                         </num>
@@ -1023,7 +1023,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_I/pnt_2.1/pnt_d" kind="definition">
+               <unit eId="anx_I/pnt_2.1/pnt_d" kind="definition" numbered="true">
                   <num>
                      <t v="d)"/>
                   </num>
@@ -1036,7 +1036,7 @@
                      <t v="means any pigmented coating that is designed to be applied either as a single-layer or as a multiple-layer base to provide gloss and durability. It includes all products involved such as base coatings and clear coatings:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="anx_I/pnt_2.1/pnt_d/pnt_i" kind="point">
+                     <unit eId="anx_I/pnt_2.1/pnt_d/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -1047,7 +1047,7 @@
                            <t v=" means pigmented coatings designed to provide colour and any desired optical effects, but not the gloss or surface resistance of the coating system;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_I/pnt_2.1/pnt_d/pnt_ii" kind="point">
+                     <unit eId="anx_I/pnt_2.1/pnt_d/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -1060,7 +1060,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_I/pnt_2.1/pnt_e" kind="definition">
+               <unit eId="anx_I/pnt_2.1/pnt_e" kind="definition" numbered="true">
                   <num>
                      <t v="e)"/>
                   </num>
@@ -1083,7 +1083,7 @@
          <tableGroup>
             <table cols="5">
                <caption>
-                  <unit eId="anx_II/pnt_A" kind="point">
+                  <unit eId="anx_II/pnt_A" kind="point" numbered="true">
                      <num>
                         <t v="A."/>
                      </num>
@@ -1658,7 +1658,7 @@
             </table>
             <table cols="4">
                <caption>
-                  <unit eId="anx_II/pnt_B" kind="point">
+                  <unit eId="anx_II/pnt_B" kind="point" numbered="true">
                      <num>
                         <t v="B."/>
                      </num>

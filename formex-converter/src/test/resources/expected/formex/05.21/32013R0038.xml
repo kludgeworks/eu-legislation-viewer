@@ -244,7 +244,7 @@
                   </p>
                </td>
             </tr>
-            <rowGroup>
+            <rowGroup columns="3">
                <heading>
                   <t v="Argentina"/>
                </heading>
@@ -295,7 +295,7 @@
                   </td>
                </tr>
             </rowGroup>
-            <rowGroup>
+            <rowGroup columns="3">
                <heading>
                   <t v="China"/>
                </heading>
@@ -346,7 +346,7 @@
                   </td>
                </tr>
             </rowGroup>
-            <rowGroup>
+            <rowGroup columns="3">
                <heading>
                   <t v="Other third countries"/>
                </heading>

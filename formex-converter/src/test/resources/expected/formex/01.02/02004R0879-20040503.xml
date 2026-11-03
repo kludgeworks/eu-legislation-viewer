@@ -252,7 +252,7 @@
                   </p>
                </td>
             </tr>
-            <rowGroup>
+            <rowGroup columns="9">
                <heading>
                   <t v="Micro-organisms"/>
                </heading>

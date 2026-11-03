@@ -167,14 +167,17 @@
             <t v="In Annex V to Regulation (EEC) No 2092/91, Part B is amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="art_1/pnt_1" kind="point">
+            <unit eId="art_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
                <p>
                   <t v="Part B.2 is replaced by the following:"/>
                </p>
-               <unit eId="art_1/pnt_1/pnt_B.2" kind="level" depth="1">
+               <unit eId="art_1/pnt_1/pnt_B.2"
+                     kind="level"
+                     depth="1"
+                     numbered="true">
                   <num>
                      <t v="B.2"/>
                   </num>
@@ -185,7 +188,7 @@
                   <figure src="L_2004122EN.01001301.tif"/>
                </unit>
             </unit>
-            <unit eId="art_1/pnt_2" kind="point">
+            <unit eId="art_1/pnt_2" kind="point" numbered="true">
                <provenance amendingAct="32004R0746R(01)"
                            action="replaced"
                            location="TO"
@@ -197,7 +200,10 @@
                   <t v="Part B.3.1 is replaced as follows:"/>
                </p>
                <quotedStructure eId="art_1/pnt_2/qstr_1">
-                  <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1" kind="level" depth="1">
+                  <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1"
+                        kind="level"
+                        depth="1"
+                        numbered="true">
                      <num>
                         <t v="‘"/>
                         <t v="B.3.1."/>

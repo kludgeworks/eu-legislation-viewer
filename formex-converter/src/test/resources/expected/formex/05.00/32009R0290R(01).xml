@@ -249,7 +249,7 @@
                <t v="for:"/>
             </p>
             <quotedStructure eId="cor_3/old/qstr_1">
-               <unit eId="cor_3/old/qstr_1/pnt_1" kind="point">
+               <unit eId="cor_3/old/qstr_1/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="‘"/>
                      <t v="("/>
@@ -341,7 +341,7 @@
                <t v="read:"/>
             </p>
             <quotedStructure eId="cor_3/new/qstr_1">
-               <unit eId="cor_3/new/qstr_1/pnt_1" kind="point">
+               <unit eId="cor_3/new/qstr_1/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="‘"/>
                      <t v="("/>

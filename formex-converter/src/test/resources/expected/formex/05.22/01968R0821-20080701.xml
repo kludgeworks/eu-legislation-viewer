@@ -186,7 +186,7 @@
                   <t v="PEARLED GRAINS"/>
                </quote>
             </subheading>
-            <unit eId="anx/pnt_A" kind="level" depth="1">
+            <unit eId="anx/pnt_A" kind="level" depth="1" numbered="true">
                <num>
                   <t v="A."/>
                </num>
@@ -197,7 +197,7 @@
                   <t v=" includes shelled and husked grains:"/>
                </p>
             </unit>
-            <unit eId="anx/pnt_1" kind="level" depth="2">
+            <unit eId="anx/pnt_1" kind="level" depth="2" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -208,7 +208,7 @@
                   <t v="are cereal grains with the pericarp removed or bracted cereal grains (see explanatory notes to tariff heading No 10.03: grains) with the bracts removed with cling to the pericarp (as for example with bearded barley) or which enclose the grains so firmly that the bracts cannot be detached by threshing etc. (as with oats)."/>
                </p>
             </unit>
-            <unit eId="anx/pnt_2" kind="level" depth="2">
+            <unit eId="anx/pnt_2" kind="level" depth="2" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -219,7 +219,7 @@
                   <t v="are grains (in the case of barley, with the bracts removed) which have the major part of the pericarp and tegument testa) removed."/>
                </p>
             </unit>
-            <unit eId="anx/pnt_B" kind="level" depth="1">
+            <unit eId="anx/pnt_B" kind="level" depth="1" numbered="true">
                <num>
                   <changed amendingAct="31971R1634"
                            action="replaced"
@@ -239,7 +239,7 @@
                   <t v=" include:"/>
                </p>
             </unit>
-            <unit eId="anx/pnt_I" kind="level" depth="2">
+            <unit eId="anx/pnt_I" kind="level" depth="2" numbered="true">
                <provenance amendingAct="31971R1634"
                            action="replaced"
                            location="AR:1 .AND. AX:0"
@@ -251,7 +251,7 @@
                   <t v="First class grains:&#xA;"/>
                </heading>
             </unit>
-            <unit eId="anx/pnt_1" kind="level" depth="3">
+            <unit eId="anx/pnt_1" kind="level" depth="3" numbered="true">
                <provenance amendingAct="31971R1634"
                            action="replaced"
                            location="AR:1 .AND. AX:0"
@@ -266,7 +266,7 @@
                   <t v="pearled cereal grains, principally barley, which have the whole of the tegument, pericarp, germ and the major part of the outer layer and aleuronic layer removed, and which are of uniform size and rounded form;"/>
                </p>
             </unit>
-            <unit eId="anx/pnt_2" kind="level" depth="3">
+            <unit eId="anx/pnt_2" kind="level" depth="3" numbered="true">
                <provenance amendingAct="31971R1634"
                            action="replaced"
                            location="AR:1 .AND. AX:0"
@@ -281,7 +281,7 @@
                   <t v="regularity of the grains:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx/pnt_2/pnt_a" kind="point">
+                  <unit eId="anx/pnt_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -289,7 +289,7 @@
                         <t v="75 % of the grains must not exceed 20 % of the dm;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_b" kind="point">
+                  <unit eId="anx/pnt_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -297,7 +297,7 @@
                         <t v="94 % of the grains added progressively between 3 % and 97 % must not exceed 30 % of the dm;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_c" kind="point">
+                  <unit eId="anx/pnt_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -320,7 +320,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx/pnt_II" kind="level" depth="2">
+            <unit eId="anx/pnt_II" kind="level" depth="2" numbered="true">
                <provenance amendingAct="31971R1634"
                            action="replaced"
                            location="AR:1 .AND. AX:0"

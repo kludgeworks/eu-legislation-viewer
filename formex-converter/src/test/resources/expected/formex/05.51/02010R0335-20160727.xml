@@ -149,7 +149,7 @@
                   </p>
                </td>
             </tr>
-            <rowGroup>
+            <rowGroup columns="10">
                <heading>
                   <emphasis kind="b">
                      <t v="Category of nutritional additives. Functional group: compounds of trace elements"/>
@@ -244,7 +244,7 @@
                      </p>
                   </td>
                   <td>
-                     <unit eId="anx/tab_1/tr_3/td_9/list_2/pnt_1" kind="point">
+                     <unit eId="anx/tab_1/tr_3/td_9/list_2/pnt_1" kind="point" numbered="true">
                         <num>
                            <t v="1."/>
                         </num>
@@ -252,7 +252,7 @@
                            <t v="The additive shall be incorporated into feed in the form of a premixture."/>
                         </p>
                      </unit>
-                     <unit eId="anx/tab_1/tr_3/td_9/list_2/pnt_2" kind="point">
+                     <unit eId="anx/tab_1/tr_3/td_9/list_2/pnt_2" kind="point" numbered="true">
                         <num>
                            <t v="2."/>
                         </num>

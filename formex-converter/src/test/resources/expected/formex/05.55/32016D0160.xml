@@ -422,7 +422,7 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/pnt_1" kind="level" depth="1">
+         <unit eId="anx/pnt_1" kind="level" depth="1" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -443,7 +443,7 @@
                <t v=" vehicle, it is necessary to establish the following:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx/pnt_1/pnt_a" kind="point">
+               <unit eId="anx/pnt_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -451,7 +451,7 @@
                      <t v="the testing conditions;"/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_1/pnt_b" kind="point">
+               <unit eId="anx/pnt_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -459,7 +459,7 @@
                      <t v="the test procedure;"/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_1/pnt_c" kind="point">
+               <unit eId="anx/pnt_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -471,7 +471,7 @@
                      <t v=" savings;"/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_1/pnt_d" kind="point">
+               <unit eId="anx/pnt_1/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -479,7 +479,7 @@
                      <t v="the formulae for calculating the standard deviation;"/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_1/pnt_e" kind="point">
+               <unit eId="anx/pnt_1/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -493,7 +493,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_2" kind="level" depth="1">
+         <unit eId="anx/pnt_2" kind="level" depth="1" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -508,7 +508,7 @@
                <t v=" on uniform provisions concerning the approval of motor vehicle headlamps emitting an asymmetrical passing beam or a driving beam or both and equipped with filament lamps and/or light-emitting diode (LED) modules shall apply. For determining the power consumption, the reference is to be made to point 6.1.4 of Regulation No 112, and points 3.2.1 and 3.2.2 of Annex 10 to Regulation No 112."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_3" kind="level" depth="1">
+         <unit eId="anx/pnt_3" kind="level" depth="1" numbered="true">
             <num>
                <t v="3."/>
             </num>
@@ -562,7 +562,7 @@
          <p>
             <t v="The exact installed voltages and the measured current are to be recorded in four decimals."/>
          </p>
-         <unit eId="anx/pnt_4" kind="level" depth="1">
+         <unit eId="anx/pnt_4" kind="level" depth="1" numbered="true">
             <num>
                <t v="4."/>
             </num>
@@ -613,7 +613,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_4.1" kind="level" depth="2">
+         <unit eId="anx/pnt_4.1" kind="level" depth="2" numbered="true">
             <num>
                <t v="4.1"/>
             </num>
@@ -813,7 +813,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/pnt_4.2" kind="level" depth="2">
+         <unit eId="anx/pnt_4.2" kind="level" depth="2" numbered="true">
             <num>
                <t v="4.2"/>
             </num>
@@ -1355,7 +1355,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/pnt_4.3" kind="level" depth="2">
+         <unit eId="anx/pnt_4.3" kind="level" depth="2" numbered="true">
             <num>
                <t v="4.3"/>
             </num>
@@ -2123,7 +2123,7 @@
                </math>
             </p>
          </unit>
-         <unit eId="anx/pnt_4.4" kind="level" depth="2">
+         <unit eId="anx/pnt_4.4" kind="level" depth="2" numbered="true">
             <num>
                <t v="4.4"/>
             </num>

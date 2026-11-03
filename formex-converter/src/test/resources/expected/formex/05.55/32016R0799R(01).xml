@@ -47,14 +47,19 @@
                         </emphasis>
                      </heading>
                   </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_I" kind="level" depth="2">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_I"
+                        kind="level"
+                        depth="2"
+                        numbered="true">
                      <num>
                         <t v="I."/>
                      </num>
                      <heading>
                         <t v="APPROVAL MARK"/>
                      </heading>
-                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1" kind="point">
+                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="1."/>
                         </num>
@@ -62,7 +67,9 @@
                            <t v="The approval mark shall be made up of:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1/pnt_a" kind="point">
+                           <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1/pnt_a"
+                                 kind="point"
+                                 numbered="true">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -415,7 +422,9 @@
                                  <t v="and"/>
                               </p>
                            </unit>
-                           <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1/pnt_b" kind="point">
+                           <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1/pnt_b"
+                                 kind="point"
+                                 numbered="true">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -425,7 +434,9 @@
                            </unit>
                         </list>
                      </unit>
-                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_2" kind="point">
+                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_2"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="2."/>
                         </num>
@@ -433,7 +444,9 @@
                            <t v="The approval mark shall be shown on the descriptive plaque of each set of equipment and on each record sheet and on each tachograph card. It must be indelible and must always remain clearly legible."/>
                         </p>
                      </unit>
-                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_3" kind="point">
+                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_3"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="3."/>
                         </num>
@@ -445,7 +458,10 @@
                         <figure src="L_2016146EN.01003301.tif" content="techDesign"/>
                      </unit>
                   </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_II" kind="level" depth="2">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_II"
+                        kind="level"
+                        depth="2"
+                        numbered="true">
                      <num>
                         <t v="II."/>
                      </num>
@@ -497,7 +513,9 @@
                         <t v="…."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_1"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="1."/>
                            </num>
@@ -505,7 +523,9 @@
                               <t v="Trade mark or name …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_2"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="2."/>
                            </num>
@@ -513,7 +533,9 @@
                               <t v="Name of type or model …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_3"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="3."/>
                            </num>
@@ -521,7 +543,9 @@
                               <t v="Name of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_4"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="4."/>
                            </num>
@@ -529,7 +553,9 @@
                               <t v="Address of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_5"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="5."/>
                            </num>
@@ -537,7 +563,9 @@
                               <t v="Submitted for approval on …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_6"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="6."/>
                            </num>
@@ -545,7 +573,9 @@
                               <t v="Tested at …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_7" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_7"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="7."/>
                            </num>
@@ -553,7 +583,9 @@
                               <t v="Date and number of the test(s) …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_8" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_8"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="8."/>
                            </num>
@@ -561,7 +593,9 @@
                               <t v="Date of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_9" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_9"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="9."/>
                            </num>
@@ -569,7 +603,9 @@
                               <t v="Date of withdrawal of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_10" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_10"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="10."/>
                            </num>
@@ -577,7 +613,9 @@
                               <t v="Type or types of recording equipment in which sheet is designed to be used"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_11" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_11"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="11."/>
                            </num>
@@ -585,7 +623,9 @@
                               <t v="Place …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_12" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_12"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="12."/>
                            </num>
@@ -593,7 +633,9 @@
                               <t v="Date …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_13" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_13"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="13."/>
                            </num>
@@ -601,7 +643,9 @@
                               <t v="Descriptive documents annexed …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_14" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_14"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="14."/>
                            </num>
@@ -614,7 +658,10 @@
                         <t v="(Signature)"/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_III" kind="level" depth="2">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_III"
+                        kind="level"
+                        depth="2"
+                        numbered="true">
                      <num>
                         <t v="III."/>
                      </num>
@@ -713,7 +760,9 @@
                         <t v="…."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_1"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="1."/>
                            </num>
@@ -721,7 +770,9 @@
                               <t v="Manufacturing brand or trademark …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_2"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="2."/>
                            </num>
@@ -729,7 +780,9 @@
                               <t v="Name of model …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_3"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="3."/>
                            </num>
@@ -737,7 +790,9 @@
                               <t v="Name of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_4"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="4."/>
                            </num>
@@ -745,7 +800,9 @@
                               <t v="Address of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_5"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="5."/>
                            </num>
@@ -753,7 +810,9 @@
                               <t v="Submitted for approval for …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_6"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="6."/>
                            </num>
@@ -761,7 +820,9 @@
                               <t v="Laboratory(-ies) …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_7" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_7"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="7."/>
                            </num>
@@ -769,7 +830,9 @@
                               <t v="Date and number of test report …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_8" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_8"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="8."/>
                            </num>
@@ -777,7 +840,9 @@
                               <t v="Date of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_9" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_9"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="9."/>
                            </num>
@@ -786,7 +851,8 @@
                            </p>
                         </unit>
                         <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_10"
-                              kind="point">
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="10."/>
                            </num>
@@ -795,7 +861,8 @@
                            </p>
                         </unit>
                         <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_11"
-                              kind="point">
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="11."/>
                            </num>
@@ -804,7 +871,8 @@
                            </p>
                         </unit>
                         <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_12"
-                              kind="point">
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="12."/>
                            </num>
@@ -813,7 +881,8 @@
                            </p>
                         </unit>
                         <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_13"
-                              kind="point">
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="13."/>
                            </num>
@@ -822,7 +891,8 @@
                            </p>
                         </unit>
                         <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_14"
-                              kind="point">
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="14."/>
                            </num>
@@ -835,7 +905,10 @@
                         <t v="(Signature)"/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV" kind="level" depth="2">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV"
+                        kind="level"
+                        depth="2"
+                        numbered="true">
                      <num>
                         <t v="IV."/>
                      </num>
@@ -932,7 +1005,9 @@
                         <t v="…."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_1" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_1"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="1."/>
                            </num>
@@ -940,7 +1015,9 @@
                               <t v="Manufacturing brand or trademark …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_2" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_2"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="2."/>
                            </num>
@@ -948,7 +1025,9 @@
                               <t v="Name of model …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_3" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_3"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="3."/>
                            </num>
@@ -956,7 +1035,9 @@
                               <t v="Name of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_4" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_4"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="4."/>
                            </num>
@@ -964,7 +1045,9 @@
                               <t v="Address of manufacturer …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_5" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_5"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="5."/>
                            </num>
@@ -972,13 +1055,16 @@
                               <t v="Submitted for approval for …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="6."/>
                            </num>
                            <list kind="alpha">
                               <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_a"
-                                    kind="point">
+                                    kind="point"
+                                    numbered="true">
                                  <num>
                                     <t v="(a)"/>
                                  </num>
@@ -987,7 +1073,8 @@
                                  </p>
                               </unit>
                               <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_b"
-                                    kind="point">
+                                    kind="point"
+                                    numbered="true">
                                  <num>
                                     <t v="(b)"/>
                                  </num>
@@ -996,7 +1083,8 @@
                                  </p>
                               </unit>
                               <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_c"
-                                    kind="point">
+                                    kind="point"
+                                    numbered="true">
                                  <num>
                                     <t v="(c)"/>
                                  </num>
@@ -1006,13 +1094,16 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="7."/>
                            </num>
                            <list kind="alpha">
                               <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_a"
-                                    kind="point">
+                                    kind="point"
+                                    numbered="true">
                                  <num>
                                     <t v="(a)"/>
                                  </num>
@@ -1021,7 +1112,8 @@
                                  </p>
                               </unit>
                               <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_b"
-                                    kind="point">
+                                    kind="point"
+                                    numbered="true">
                                  <num>
                                     <t v="(b)"/>
                                  </num>
@@ -1030,7 +1122,8 @@
                                  </p>
                               </unit>
                               <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_c"
-                                    kind="point">
+                                    kind="point"
+                                    numbered="true">
                                  <num>
                                     <t v="(c)"/>
                                  </num>
@@ -1040,7 +1133,9 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_8" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_8"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="8."/>
                            </num>
@@ -1048,7 +1143,9 @@
                               <t v="Date of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_9" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_9"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="9."/>
                            </num>
@@ -1056,7 +1153,9 @@
                               <t v="Date of withdrawal of approval …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_10" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_10"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="10."/>
                            </num>
@@ -1064,7 +1163,9 @@
                               <t v="Model of recording equipment(s) with which the component is designed to be used"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_11" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_11"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="11."/>
                            </num>
@@ -1072,7 +1173,9 @@
                               <t v="Place …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_12" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_12"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="12."/>
                            </num>
@@ -1080,7 +1183,9 @@
                               <t v="Date …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_13" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_13"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="13."/>
                            </num>
@@ -1088,7 +1193,9 @@
                               <t v="Descriptive documents annexed …"/>
                            </p>
                         </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_14" kind="point">
+                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_14"
+                              kind="point"
+                              numbered="true">
                            <num>
                               <t v="14."/>
                            </num>

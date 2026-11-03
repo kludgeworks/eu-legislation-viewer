@@ -39,7 +39,7 @@
    </preface>
    <preamble eId="pbl_1">
       <formula name="actingEntity">
-         <unit eId="pnt_1" kind="point">
+         <unit eId="pnt_1" kind="point" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -190,7 +190,7 @@
          <p>
             <t v="and"/>
          </p>
-         <unit eId="list_2/pnt_2" kind="point">
+         <unit eId="list_2/pnt_2" kind="point" numbered="true">
             <num>
                <t v="2."/>
             </num>

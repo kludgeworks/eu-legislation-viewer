@@ -72,7 +72,7 @@
       <p>
          <t v="With regard to linking administrative records, as foreseen in Article 11, we also highlight the need for ensuring that any such linking must be done in compliance with data protection law, subject to necessity, proportionality, and specific safeguards under Member State or Union law."/>
       </p>
-      <unit eId="pnt_1" kind="level" depth="1">
+      <unit eId="pnt_1" kind="level" depth="1" numbered="true">
          <num>
             <t v="1."/>
          </num>
@@ -81,7 +81,7 @@
                <t v="Background and purpose of the Proposal"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_1/pnt_1" kind="point">
+         <unit eId="pnt_1/pnt_1" kind="point" numbered="true">
             <num>
                <t v="(1)"/>
             </num>
@@ -111,7 +111,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="pnt_1/pnt_2" kind="point">
+         <unit eId="pnt_1/pnt_2" kind="point" numbered="true">
             <num>
                <t v="(2)"/>
             </num>
@@ -123,7 +123,7 @@
                <t v="), the purpose of the Proposal is to establish a common framework for European statistics relating to persons and households, based on data at individual level collected from samples."/>
             </p>
          </unit>
-         <unit eId="pnt_1/pnt_3" kind="point">
+         <unit eId="pnt_1/pnt_3" kind="point" numbered="true">
             <num>
                <t v="(3)"/>
             </num>
@@ -149,7 +149,7 @@
             </list>
          </unit>
       </unit>
-      <unit eId="pnt_2" kind="level" depth="1">
+      <unit eId="pnt_2" kind="level" depth="1" numbered="true">
          <num>
             <t v="2."/>
          </num>
@@ -158,7 +158,7 @@
                <t v="Overview and key concerns"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_2/pnt_4" kind="point">
+         <unit eId="pnt_2/pnt_4" kind="point" numbered="true">
             <num>
                <t v="(4)"/>
             </num>
@@ -176,7 +176,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="pnt_2/pnt_5" kind="point">
+         <unit eId="pnt_2/pnt_5" kind="point" numbered="true">
             <num>
                <t v="(5)"/>
             </num>
@@ -190,7 +190,7 @@
                <t v=" as a legal basis for the processing of personal data; unless the provision of information is specifically required under Union or Member States law in accordance with applicable data protection law."/>
             </p>
          </unit>
-         <unit eId="pnt_2/pnt_6" kind="point">
+         <unit eId="pnt_2/pnt_6" kind="point" numbered="true">
             <num>
                <t v="(6)"/>
             </num>
@@ -198,7 +198,7 @@
                <t v="In light of these concerns, we would particularly welcome if the legislators could introduce more clarity in the way Article 8 (on data sources and methods) is drafted."/>
             </p>
          </unit>
-         <unit eId="pnt_2/pnt_7" kind="point">
+         <unit eId="pnt_2/pnt_7" kind="point" numbered="true">
             <num>
                <t v="(7)"/>
             </num>
@@ -245,7 +245,7 @@
             </list>
          </unit>
       </unit>
-      <unit eId="pnt_3" kind="level" depth="1">
+      <unit eId="pnt_3" kind="level" depth="1" numbered="true">
          <num>
             <t v="3."/>
          </num>
@@ -255,7 +255,7 @@
             </emphasis>
          </heading>
       </unit>
-      <unit eId="pnt_3.1" kind="level" depth="2">
+      <unit eId="pnt_3.1" kind="level" depth="2" numbered="true">
          <num>
             <t v="3.1."/>
          </num>
@@ -264,7 +264,7 @@
                <t v="References to applicable data protection law (Recital 20)"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_3.1/pnt_8" kind="point">
+         <unit eId="pnt_3.1/pnt_8" kind="point" numbered="true">
             <num>
                <t v="(8)"/>
             </num>
@@ -274,7 +274,7 @@
                <t v=", and by references to the new legal instrument replacing Regulation (EC) No 45/2001."/>
             </p>
          </unit>
-         <unit eId="pnt_3.1/pnt_9" kind="point">
+         <unit eId="pnt_3.1/pnt_9" kind="point" numbered="true">
             <num>
                <t v="(9)"/>
             </num>
@@ -282,7 +282,7 @@
                <t v="We would also welcome a reference, in a recital, to compliance with the safeguards relating to processing for statistical purposes under Article 89 of the GDPR."/>
             </p>
          </unit>
-         <unit eId="pnt_3.1/pnt_10" kind="point">
+         <unit eId="pnt_3.1/pnt_10" kind="point" numbered="true">
             <num>
                <t v="(10)"/>
             </num>
@@ -293,7 +293,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_3.2" kind="level" depth="2">
+      <unit eId="pnt_3.2" kind="level" depth="2" numbered="true">
          <num>
             <t v="3.2."/>
          </num>
@@ -306,7 +306,7 @@
                <t v=" (Recital 20)"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_3.2/pnt_11" kind="point">
+         <unit eId="pnt_3.2/pnt_11" kind="point" numbered="true">
             <num>
                <t v="(11)"/>
             </num>
@@ -327,7 +327,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_3.3" kind="level" depth="2">
+      <unit eId="pnt_3.3" kind="level" depth="2" numbered="true">
          <num>
             <t v="3.3."/>
          </num>
@@ -336,7 +336,7 @@
                <t v="Definition of administrative records (Article 2(e) and Recital 4)"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_3.3/pnt_12" kind="point">
+         <unit eId="pnt_3.3/pnt_12" kind="point" numbered="true">
             <num>
                <t v="(12)"/>
             </num>
@@ -363,7 +363,7 @@
                <t v=" is then used in Article 8 as well as in Recital 4."/>
             </p>
          </unit>
-         <unit eId="pnt_3.3/pnt_13" kind="point">
+         <unit eId="pnt_3.3/pnt_13" kind="point" numbered="true">
             <num>
                <t v="(13)"/>
             </num>
@@ -389,7 +389,7 @@
                </emphasis>
             </p>
          </unit>
-         <unit eId="pnt_3.3/pnt_14" kind="point">
+         <unit eId="pnt_3.3/pnt_14" kind="point" numbered="true">
             <num>
                <t v="(14)"/>
             </num>
@@ -418,7 +418,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="pnt_3.3/pnt_15" kind="point">
+         <unit eId="pnt_3.3/pnt_15" kind="point" numbered="true">
             <num>
                <t v="(15)"/>
             </num>
@@ -440,7 +440,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_3.4" kind="level" depth="2">
+      <unit eId="pnt_3.4" kind="level" depth="2" numbered="true">
          <num>
             <t v="3.4."/>
          </num>
@@ -449,7 +449,7 @@
                <t v="Data sources and methods (Article 8)"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_3.4/pnt_16" kind="point">
+         <unit eId="pnt_3.4/pnt_16" kind="point" numbered="true">
             <num>
                <t v="(16)"/>
             </num>
@@ -463,7 +463,7 @@
                </emphasis>
             </p>
          </unit>
-         <unit eId="pnt_3.4/pnt_17" kind="point">
+         <unit eId="pnt_3.4/pnt_17" kind="point" numbered="true">
             <num>
                <t v="(17)"/>
             </num>
@@ -483,7 +483,7 @@
                <t v=" and Article 13 on feasibility and pilot studies, which also discusses the use of other data sources."/>
             </p>
          </unit>
-         <unit eId="pnt_3.4/pnt_18" kind="point">
+         <unit eId="pnt_3.4/pnt_18" kind="point" numbered="true">
             <num>
                <t v="(18)"/>
             </num>
@@ -491,7 +491,7 @@
                <t v="In the field of statistics, as in other fields, big data may bring benefits, such as increased efficiency. However, it can also create additional risks. The new data protection framework, and the adoption of the GDPR in particular, aims to address these risks in a way that provides protection but also allows flexibility for further data use, including for statistical purposes."/>
             </p>
          </unit>
-         <unit eId="pnt_3.4/pnt_19" kind="point">
+         <unit eId="pnt_3.4/pnt_19" kind="point" numbered="true">
             <num>
                <t v="(19)"/>
             </num>
@@ -499,7 +499,7 @@
                <t v="Further legislative measures in the field of national or Union law governing statistics, however, will likely to be still required, in order to allow more widespread use of big data in statistics in a way compatible with applicable data protection law."/>
             </p>
          </unit>
-         <unit eId="pnt_3.4/pnt_20" kind="point">
+         <unit eId="pnt_3.4/pnt_20" kind="point" numbered="true">
             <num>
                <t v="(20)"/>
             </num>
@@ -507,7 +507,7 @@
                <t v="The current Proposal should not provide the illusion that Article 8 itself is providing a sufficient legal basis for using big data for the purposes of the Proposal. It is essential that the recitals and Article 8, combined, make it clear that any such use of big data sources is subject to applicable data protection law, including the need for an appropriate legal basis under Article 6 of the GDPR."/>
             </p>
          </unit>
-         <unit eId="pnt_3.4/pnt_21" kind="point">
+         <unit eId="pnt_3.4/pnt_21" kind="point" numbered="true">
             <num>
                <t v="(21)"/>
             </num>
@@ -534,7 +534,7 @@
                      </emphasis>
                   </p>
                   <list kind="alpha">
-                     <unit eId="pnt_3.4/pnt_21/art_8/par_1/pnt_a" kind="point">
+                     <unit eId="pnt_3.4/pnt_21/art_8/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -548,7 +548,7 @@
                            <t v=";"/>
                         </p>
                      </unit>
-                     <unit eId="pnt_3.4/pnt_21/art_8/par_1/pnt_b" kind="point">
+                     <unit eId="pnt_3.4/pnt_21/art_8/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -569,7 +569,7 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="pnt_3.5" kind="level" depth="2">
+      <unit eId="pnt_3.5" kind="level" depth="2" numbered="true">
          <num>
             <t v="3.5."/>
          </num>
@@ -578,7 +578,7 @@
                <t v="Sampling frames (Article 11)"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_3.5/pnt_22" kind="point">
+         <unit eId="pnt_3.5/pnt_22" kind="point" numbered="true">
             <num>
                <t v="(22)"/>
             </num>
@@ -592,7 +592,7 @@
                </emphasis>
             </p>
          </unit>
-         <unit eId="pnt_3.5/pnt_23" kind="point">
+         <unit eId="pnt_3.5/pnt_23" kind="point" numbered="true">
             <num>
                <t v="(23)"/>
             </num>
@@ -607,7 +607,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_4" kind="level" depth="1">
+      <unit eId="pnt_4" kind="level" depth="1" numbered="true">
          <num>
             <t v="4."/>
          </num>
@@ -616,7 +616,7 @@
                <t v="Conclusions"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_4/pnt_24" kind="point">
+         <unit eId="pnt_4/pnt_24" kind="point" numbered="true">
             <num>
                <t v="(24)"/>
             </num>

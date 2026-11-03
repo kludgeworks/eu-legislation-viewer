@@ -10,7 +10,7 @@
       <GR.SEQ LEVEL="3"><NO.GR.SEQ>1.0.3</NO.GR.SEQ><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" LEVEL="STRUCTURE" ACTIVE.DOC="32017R0815" ACTIVE.LOC="AR:1 .AND. AX:0;PT:1"?><P>new text</P><?CLG.MDFC ID="C1" IDREF="O1"?><P>old text</P></GR.SEQ>
     </x:context>
     <x:expect label="becomes provenance on that paragraph only">
-      <unit eId="pnt_1.0.3" kind="level" depth="3"><num><t v="1.0.3"/></num>
+      <unit eId="pnt_1.0.3" kind="level" depth="3" numbered="true"><num><t v="1.0.3"/></num>
         <p><provenance amendingAct="32017R0815" action="replaced" location="AR:1 .AND. AX:0;PT:1" marker="O1"/><t v="new text"/></p>
         <p><t v="old text"/></p>
       </unit>
@@ -60,7 +60,7 @@
       <GR.SEQ LEVEL="4"><NO.GR.SEQ>11.1.1</NO.GR.SEQ><P>The following personnel</P><?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" LEVEL="STRUCTURE" ACTIVE.DOC="32026R0449" ACTIVE.LOC="PT:23"?><P>Point (b) shall apply from <DATE ISO="20230101">1 January 2023</DATE>.</P><?CLG.MDFC ID="C1" IDREF="O1"?></GR.SEQ>
     </x:context>
     <x:expect label="is kept inside deleted, with the deleting act">
-      <unit eId="pnt_11.1.1" kind="level" depth="4"><num><t v="11.1.1"/></num>
+      <unit eId="pnt_11.1.1" kind="level" depth="4" numbered="true"><num><t v="11.1.1"/></num>
         <p><t v="The following personnel"/></p>
         <deleted><provenance amendingAct="32026R0449" action="deleted" location="PT:23" marker="O1"/>
           <p><t v="Point (b) shall apply from "/><date date="2023-01-01" asWritten="1 January 2023"/><t v="."/></p></deleted>

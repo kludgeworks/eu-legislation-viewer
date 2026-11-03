@@ -170,7 +170,7 @@
                <t v="However, notwithstanding that Regulation:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_2/unp_2/pnt_a" kind="point">
+               <unit eId="art_2/unp_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -178,7 +178,7 @@
                      <t v="tenders shall be drawn up on the basis of the actual quality of the lot to which they apply;"/>
                   </p>
                </unit>
-               <unit eId="art_2/unp_2/pnt_b" kind="point">
+               <unit eId="art_2/unp_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>

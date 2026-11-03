@@ -64,7 +64,7 @@
                <t v="The Commission shall write off claims, even before exhausting all the said remedies, in the following cases:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_1/par_1a/pnt_a" kind="point">
+               <unit eId="art_1/par_1a/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -72,7 +72,7 @@
                      <t v="where the foreseeable cost of recovery would exceed the amount to be recovered and the write-off would not harm the image of the Union;"/>
                   </p>
                </unit>
-               <unit eId="art_1/par_1a/pnt_b" kind="point">
+               <unit eId="art_1/par_1a/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -80,7 +80,7 @@
                      <t v="where the claim cannot be recovered in view of the insolvency of the debtor, or of any other insolvency proceedings;"/>
                   </p>
                </unit>
-               <unit eId="art_1/par_1a/pnt_c" kind="point">
+               <unit eId="art_1/par_1a/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -335,7 +335,7 @@
             <subheading>
                <t v="Procedures to be followed to establish the amount of net revenue to be allocated to the Research Fund for Coal and Steel"/>
             </subheading>
-            <unit eId="anx/pnt_1" kind="level" depth="1">
+            <unit eId="anx/pnt_1" kind="level" depth="1" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -346,7 +346,7 @@
                   <t v="Net revenue which may be used to finance research projects corresponds to the annual net result of the ECSC in liquidation and subsequently, when liquidation has been completed, to the annual net result of the Assets of the Research Fund for Coal and Steel. The method employed consists of establishing the funding for coal and steel research for year n+2 when producing the balance sheet for year n, taking into account half of the increase or decrease in the net result in relation to the last level of funding adopted for coal and steel research."/>
                </p>
             </unit>
-            <unit eId="anx/pnt_2" kind="level" depth="1">
+            <unit eId="anx/pnt_2" kind="level" depth="1" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -408,7 +408,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx/pnt_3" kind="level" depth="1">
+            <unit eId="anx/pnt_3" kind="level" depth="1" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -419,7 +419,7 @@
                   <t v="The algorithms used to establish the size of the contingency provision and the allocations for research for year n+2, which will appear in the balance sheet for year n, are as follows:"/>
                </p>
                <list kind="arabic">
-                  <unit eId="anx/pnt_3/pnt_3.1" kind="point">
+                  <unit eId="anx/pnt_3/pnt_3.1" kind="point" numbered="true">
                      <num>
                         <t v="3.1."/>
                      </num>
@@ -476,7 +476,7 @@
                         </math>
                      </p>
                   </unit>
-                  <unit eId="anx/pnt_3/pnt_3.2" kind="point">
+                  <unit eId="anx/pnt_3/pnt_3.2" kind="point" numbered="true">
                      <num>
                         <t v="3.2."/>
                      </num>

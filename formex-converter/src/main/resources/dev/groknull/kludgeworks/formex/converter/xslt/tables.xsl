@@ -208,7 +208,7 @@
   </xsl:template>
 
   <xsl:template match="GR.CN.UNIT" mode="cn">
-    <rowGroup>
+    <rowGroup columns="{max((1, .//CN.UNIT ! count(*)))}">
       <!-- its title: a TITLE, or the title's content directly (a numbered paragraph, text) -->
       <xsl:call-template name="f:title">
         <xsl:with-param name="title" as="element(TITLE)?" select="TI.GR.CN.UNIT/TITLE"/>
@@ -239,7 +239,8 @@
   <xsl:template match="BLK" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
-    <rowGroup>
+    <!-- as wide as its widest row, each cell its colspan -->
+    <rowGroup columns="{max((1, .//ROW ! sum(CELL ! xs:integer((@COLSPAN, 1)[1]))))}">
       <!-- the title: a numbered paragraph gives num and heading, anything else the heading -->
       <xsl:for-each select="TI.BLK">
         <xsl:choose>

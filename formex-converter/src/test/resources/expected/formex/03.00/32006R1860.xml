@@ -214,7 +214,7 @@
          </p>
          <quotedStructure eId="anx/qstr_1">
             <table cols="3">
-               <rowGroup>
+               <rowGroup columns="3">
                   <heading>
                      <t v="‘"/>
                      <t v="SWEDEN"/>

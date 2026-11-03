@@ -257,7 +257,7 @@
             <t v="Annexes IV and XII to Implementing Regulation (EU) 2020/761 are amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="anx/pnt_1" kind="point">
+            <unit eId="anx/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="(1)"/>
                </num>
@@ -265,7 +265,7 @@
                   <t v="Annex IV is amended as follows:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx/pnt_1/pnt_a" kind="point">
+                  <unit eId="anx/pnt_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -273,7 +273,7 @@
                         <t v="the table relating to the tariff quota with order number 09.4318 is amended as follows:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="anx/pnt_1/pnt_a/pnt_i" kind="point">
+                        <unit eId="anx/pnt_1/pnt_a/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -342,7 +342,7 @@
                               </table>
                            </quotedStructure>
                         </unit>
-                        <unit eId="anx/pnt_1/pnt_a/pnt_ii" kind="point">
+                        <unit eId="anx/pnt_1/pnt_a/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -397,7 +397,7 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="anx/pnt_1/pnt_b" kind="point">
+                  <unit eId="anx/pnt_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -1048,7 +1048,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx/pnt_2" kind="point">
+            <unit eId="anx/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="(2)"/>
                </num>
@@ -1056,7 +1056,7 @@
                   <t v="Annex XII is amended as follows:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx/pnt_2/pnt_a" kind="point">
+                  <unit eId="anx/pnt_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -1101,7 +1101,7 @@
                         </table>
                      </quotedStructure>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_b" kind="point">
+                  <unit eId="anx/pnt_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -1146,7 +1146,7 @@
                         </table>
                      </quotedStructure>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_c" kind="point">
+                  <unit eId="anx/pnt_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -1191,7 +1191,7 @@
                         </table>
                      </quotedStructure>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_d" kind="point">
+                  <unit eId="anx/pnt_2/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -1236,7 +1236,7 @@
                         </table>
                      </quotedStructure>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_e" kind="point">
+                  <unit eId="anx/pnt_2/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -1281,7 +1281,7 @@
                         </table>
                      </quotedStructure>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_f" kind="point">
+                  <unit eId="anx/pnt_2/pnt_f" kind="point" numbered="true">
                      <num>
                         <t v="(f)"/>
                      </num>
@@ -1314,7 +1314,7 @@
                         </table>
                      </quotedStructure>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_g" kind="point">
+                  <unit eId="anx/pnt_2/pnt_g" kind="point" numbered="true">
                      <num>
                         <t v="(g)"/>
                      </num>
@@ -1347,7 +1347,7 @@
                         </table>
                      </quotedStructure>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_h" kind="point">
+                  <unit eId="anx/pnt_2/pnt_h" kind="point" numbered="true">
                      <num>
                         <t v="(h)"/>
                      </num>

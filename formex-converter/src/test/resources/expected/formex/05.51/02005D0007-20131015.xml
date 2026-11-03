@@ -280,7 +280,7 @@
                   <t v="Hennessy Grading Probe (HGP 4)"/>
                </emphasis>
             </subheading>
-            <unit eId="anx/level_PART-I/pnt_1" kind="point">
+            <unit eId="anx/level_PART-I/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -292,7 +292,7 @@
                   <t v="."/>
                </p>
             </unit>
-            <unit eId="anx/level_PART-I/pnt_2" kind="point">
+            <unit eId="anx/level_PART-I/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -300,7 +300,7 @@
                   <t v="The apparatus shall be equipped with a probe of 5,95 millimetres diameter (and of 6,3 millimetres at the blade of the top of the probe) containing a photodiode (Siemens LED of the type LYU 260-EO) and photodetector of the type 58 MR and having an operating distance of between 0 and 120 millimetres. The results of the measurements shall be converted into estimated lean meat content by means of the HGP 4 itself or a computer linked to it."/>
                </p>
             </unit>
-            <unit eId="anx/level_PART-I/pnt_3" kind="point">
+            <unit eId="anx/level_PART-I/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -391,7 +391,7 @@
                   <t v="Ultra FOM 300"/>
                </emphasis>
             </subheading>
-            <unit eId="anx/level_PART-II/pnt_1" kind="point">
+            <unit eId="anx/level_PART-II/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -403,7 +403,7 @@
                   <t v="."/>
                </p>
             </unit>
-            <unit eId="anx/level_PART-II/pnt_2" kind="point">
+            <unit eId="anx/level_PART-II/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -414,7 +414,7 @@
                   <t v="The results of the measurements shall be converted into estimated lean meat content by the Ultra FOM 300 apparatus itself."/>
                </p>
             </unit>
-            <unit eId="anx/level_PART-II/pnt_3" kind="point">
+            <unit eId="anx/level_PART-II/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>

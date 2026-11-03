@@ -39,7 +39,7 @@
             </p>
             <quotedStructure eId="cor_1/old/qstr_1">
                <table cols="3">
-                  <rowGroup>
+                  <rowGroup columns="3">
                      <tr>
                         <td>
                            <p>
@@ -139,7 +139,7 @@
             </p>
             <quotedStructure eId="cor_1/new/qstr_1">
                <table cols="3">
-                  <rowGroup>
+                  <rowGroup columns="3">
                      <tr>
                         <td>
                            <p>

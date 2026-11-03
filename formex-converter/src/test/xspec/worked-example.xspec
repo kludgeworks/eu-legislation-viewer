@@ -31,7 +31,7 @@
 
     <!-- the source writes dates with a non-breaking space after the day -->
     <x:expect label="5. point 12.6.2: three acts, at three levels" test="$x:result//*:unit[@eId = 'anx/pnt_12.6.2']">
-      <unit eId="anx/pnt_12.6.2" kind="level" depth="4">
+      <unit eId="anx/pnt_12.6.2" kind="level" depth="4" numbered="true">
         <provenance amendingAct="32023R0566" action="replaced" location="AR:1 .AND. AX:0;PT:19" marker="O018001M025000"/>
         <num><t v="12.6.2"/></num>
         <p><t v="The standard for ETD equipment for the detection of explosives, that uses particulate sampling, shall apply to ETD equipment deployed from "/><date date="2014-09-01" asWritten="1&#160;September 2014"/><t v="."/></p>

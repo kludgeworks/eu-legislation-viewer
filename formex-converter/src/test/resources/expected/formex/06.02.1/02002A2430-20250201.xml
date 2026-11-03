@@ -234,7 +234,7 @@
                   <t v="The following shall be prohibited as incompatible with this Agreement: all agreements between undertakings, decisions by associations of undertakings and concerted practices which may affect trade between the Contracting Parties and which have as their object or effect the prevention, restriction or distortion of competition within the territory covered by this Agreement, and in particular those which:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_8/par_1/pnt_a" kind="point">
+                  <unit eId="art_8/par_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -242,7 +242,7 @@
                         <t v="directly or indirectly fix purchase or selling prices or any other trading conditions;"/>
                      </p>
                   </unit>
-                  <unit eId="art_8/par_1/pnt_b" kind="point">
+                  <unit eId="art_8/par_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -250,7 +250,7 @@
                         <t v="limit or control production, markets, technical development, or investment;"/>
                      </p>
                   </unit>
-                  <unit eId="art_8/par_1/pnt_c" kind="point">
+                  <unit eId="art_8/par_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -258,7 +258,7 @@
                         <t v="share markets or sources of supply;"/>
                      </p>
                   </unit>
-                  <unit eId="art_8/par_1/pnt_d" kind="point">
+                  <unit eId="art_8/par_1/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -266,7 +266,7 @@
                         <t v="apply dissimilar conditions to equivalent transactions with other trading parties, thereby placing them at a competitive disadvantage;"/>
                      </p>
                   </unit>
-                  <unit eId="art_8/par_1/pnt_e" kind="point">
+                  <unit eId="art_8/par_1/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -312,7 +312,7 @@
                   <t v="which contributes to improving the production or distribution of goods or to promoting technical or economic progress, while allowing consumers a fair share of the resulting benefit, and which does not:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_8/par_3/list_2/pnt_a" kind="point">
+                  <unit eId="art_8/par_3/list_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -320,7 +320,7 @@
                         <t v="impose on the undertakings concerned restrictions which are not indispensable to the attainment of these objectives;"/>
                      </p>
                   </unit>
-                  <unit eId="art_8/par_3/list_2/pnt_b" kind="point">
+                  <unit eId="art_8/par_3/list_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -345,7 +345,7 @@
                   <t v="Such abuse may, in particular, consist in:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_9/unp_2/pnt_a" kind="point">
+                  <unit eId="art_9/unp_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -353,7 +353,7 @@
                         <t v="directly or indirectly imposing unfair purchase or selling prices or other unfair trading conditions;"/>
                      </p>
                   </unit>
-                  <unit eId="art_9/unp_2/pnt_b" kind="point">
+                  <unit eId="art_9/unp_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -361,7 +361,7 @@
                         <t v="limiting production, markets or technical development to the prejudice of consumers;"/>
                      </p>
                   </unit>
-                  <unit eId="art_9/unp_2/pnt_c" kind="point">
+                  <unit eId="art_9/unp_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -369,7 +369,7 @@
                         <t v="applying dissimilar conditions to equivalent transactions with other trading parties, thereby placing them at a competitive disadvantage;"/>
                      </p>
                   </unit>
-                  <unit eId="art_9/unp_2/pnt_d" kind="point">
+                  <unit eId="art_9/unp_2/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -450,7 +450,7 @@
                   <t v="The following shall be compatible with this Agreement:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_13/par_2/pnt_a" kind="point">
+                  <unit eId="art_13/par_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -458,7 +458,7 @@
                         <t v="aid having a social character, granted to individual consumers, provided that such aid is granted without discrimination related to the origin of the products concerned;"/>
                      </p>
                   </unit>
-                  <unit eId="art_13/par_2/pnt_b" kind="point">
+                  <unit eId="art_13/par_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -476,7 +476,7 @@
                   <t v="The following may be considered to be compatible with this Agreement:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_13/par_3/pnt_a" kind="point">
+                  <unit eId="art_13/par_3/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -484,7 +484,7 @@
                         <t v="aid to promote the economic development of areas where the standard of living is abnormally low or where there is serious under-employment;"/>
                      </p>
                   </unit>
-                  <unit eId="art_13/par_3/pnt_b" kind="point">
+                  <unit eId="art_13/par_3/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -492,7 +492,7 @@
                         <t v="aid to promote the execution of an important project of common European interest or to remedy a serious disturbance in the economy of a Contracting Party;"/>
                      </p>
                   </unit>
-                  <unit eId="art_13/par_3/pnt_c" kind="point">
+                  <unit eId="art_13/par_3/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -851,7 +851,7 @@
                   <t v="The Contracting Parties shall consult with each other in due time at the request of either Contracting Party, in accordance with the procedures laid down in Articles 25, 26 and 27:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_24/unp_1/pnt_a" kind="point">
+                  <unit eId="art_24/unp_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -859,7 +859,7 @@
                         <t v="on air transport questions dealt with in international organisations; and"/>
                      </p>
                   </unit>
-                  <unit eId="art_24/unp_1/pnt_b" kind="point">
+                  <unit eId="art_24/unp_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -887,7 +887,7 @@
                   <t v="The main aims of the consultations provided for in Article 24(a) shall be:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_25/par_1/pnt_a" kind="point">
+                  <unit eId="art_25/par_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -895,7 +895,7 @@
                         <t v="to determine jointly whether the questions raise problems of common interest; and"/>
                      </p>
                   </unit>
-                  <unit eId="art_25/par_1/pnt_b" kind="point">
+                  <unit eId="art_25/par_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -1342,7 +1342,7 @@
                </p>
             </unit>
          </list>
-         <unit eId="anx_1/pnt_1" kind="level" depth="1">
+         <unit eId="anx_1/pnt_1" kind="level" depth="1" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -1717,7 +1717,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_1/pnt_2" kind="level" depth="1">
+         <unit eId="anx_1/pnt_2" kind="level" depth="1" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -1791,7 +1791,7 @@
                <t v="With respect to Article 4(5) of the Merger Regulation the following shall apply between the European Community and Switzerland:"/>
             </p>
             <list kind="arabic">
-               <unit eId="anx_1/pnt_2/list_2/pnt_1" kind="point">
+               <unit eId="anx_1/pnt_2/list_2/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -1799,7 +1799,7 @@
                      <t v="With regard to a concentration as defined in Article 3 of Regulation (EC) No 139/2004 which does not have a Community dimension within the meaning of Article 1 of that Regulation and which is capable of being reviewed under the national competition laws of at least three EC Member States and the Swiss Confederation, the persons or undertakings referred to in Article 4(2) of that Regulation may, before any notification to the competent authorities, inform the EC Commission by means of a reasoned submission that the concentration should be examined by the Commission."/>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_2/list_2/pnt_2" kind="point">
+               <unit eId="anx_1/pnt_2/list_2/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -1807,7 +1807,7 @@
                      <t v="The European Commission shall transmit all submissions pursuant to Article 4(5) of Regulation (EC) No 139/2004 and the previous paragraph to the Swiss Confederation without delay."/>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_2/list_2/pnt_3" kind="point">
+               <unit eId="anx_1/pnt_2/list_2/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="(3)"/>
                   </num>
@@ -1820,7 +1820,7 @@
                <t v="With respect to time limits referred to in Articles 4(4) and (5), Articles 9(2) and (6), and Articles 22(2) of the Merger Regulation:"/>
             </p>
             <list kind="arabic">
-               <unit eId="anx_1/pnt_2/list_3/pnt_1" kind="point">
+               <unit eId="anx_1/pnt_2/list_3/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -1828,7 +1828,7 @@
                      <t v="The European Commission shall transmit all the relevant documents pursuant to Articles 4(4) and (5), Articles 9(2) and (6) and Article 22(2) to the competent Swiss competition authority without delay."/>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_2/list_3/pnt_2" kind="point">
+               <unit eId="anx_1/pnt_2/list_3/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -1927,7 +1927,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_3" kind="level" depth="1">
+         <unit eId="anx_1/pnt_3" kind="level" depth="1" numbered="true">
             <num>
                <t v="3."/>
             </num>
@@ -1996,7 +1996,7 @@
                <t v="The text of the Regulation shall, for the purposes of this Agreement, be read with the following adaptations:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_1/pnt_3/list_2/pnt_a" kind="point">
+               <unit eId="anx_1/pnt_3/list_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2004,7 +2004,7 @@
                      <t v="Article 68 is amended as follows:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="anx_1/pnt_3/list_2/pnt_a/pnt_i" kind="point">
+                     <unit eId="anx_1/pnt_3/list_2/pnt_a/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -2012,7 +2012,7 @@
                            <t v="in paragraph 1(a), the words &#34;or Switzerland&#34; shall be inserted after the words &#34;the Union&#34;;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_1/pnt_3/list_2/pnt_a/pnt_ii" kind="point">
+                     <unit eId="anx_1/pnt_3/list_2/pnt_a/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -2032,7 +2032,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_1/pnt_3/list_2/pnt_b" kind="point">
+               <unit eId="anx_1/pnt_3/list_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2050,7 +2050,7 @@
                      </unit>
                   </quotedStructure>
                </unit>
-               <unit eId="anx_1/pnt_3/list_2/pnt_c" kind="point">
+               <unit eId="anx_1/pnt_3/list_2/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -2063,7 +2063,7 @@
                      </p>
                   </quotedStructure>
                </unit>
-               <unit eId="anx_1/pnt_3/list_2/pnt_d" kind="point">
+               <unit eId="anx_1/pnt_3/list_2/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -2081,7 +2081,7 @@
                      </unit>
                   </quotedStructure>
                </unit>
-               <unit eId="anx_1/pnt_3/list_2/pnt_e" kind="point">
+               <unit eId="anx_1/pnt_3/list_2/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -2158,7 +2158,7 @@
                      </unit>
                   </quotedStructure>
                </unit>
-               <unit eId="anx_1/pnt_3/list_2/pnt_f" kind="point">
+               <unit eId="anx_1/pnt_3/list_2/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -2176,7 +2176,7 @@
                      </unit>
                   </quotedStructure>
                </unit>
-               <unit eId="anx_1/pnt_3/list_2/pnt_g" kind="point">
+               <unit eId="anx_1/pnt_3/list_2/pnt_g" kind="point" numbered="true">
                   <num>
                      <t v="(g)"/>
                   </num>
@@ -2200,7 +2200,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_1/pnt_3/list_2/pnt_h" kind="point">
+               <unit eId="anx_1/pnt_3/list_2/pnt_h" kind="point" numbered="true">
                   <num>
                      <t v="(h)"/>
                   </num>
@@ -2208,7 +2208,7 @@
                      <t v="In Article 132(1), the reference to Regulation (EU) 2016/679 shall be understood, regarding Switzerland, as a reference to relevant national legislation."/>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_3/list_2/pnt_i" kind="point">
+               <unit eId="anx_1/pnt_3/list_2/pnt_i" kind="point" numbered="true">
                   <num>
                      <t v="(i)"/>
                   </num>
@@ -4639,7 +4639,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_1/pnt_4" kind="level" depth="1">
+         <unit eId="anx_1/pnt_4" kind="level" depth="1" numbered="true">
             <num>
                <t v="4."/>
             </num>
@@ -5086,7 +5086,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_5" kind="level" depth="1">
+         <unit eId="anx_1/pnt_5" kind="level" depth="1" numbered="true">
             <num>
                <t v="5."/>
             </num>
@@ -5176,7 +5176,7 @@
                <t v="The provisions of the Regulation shall, for the purposes of this Agreement, be amended as follows:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_1/pnt_5/list_3/pnt_a" kind="point">
+               <unit eId="anx_1/pnt_5/list_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -5187,7 +5187,7 @@
                      <t v="In paragraph 2, the words &#34;and Switzerland&#34; shall be inserted after the words &#34;the Community&#34;."/>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_5/list_3/pnt_b" kind="point">
+               <unit eId="anx_1/pnt_5/list_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -5198,7 +5198,7 @@
                      <t v="In paragraph 1 and paragraph 6, the words &#34;and Switzerland&#34; shall be inserted after the words &#34;the Community&#34;."/>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_5/list_3/pnt_c" kind="point">
+               <unit eId="anx_1/pnt_5/list_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -5209,7 +5209,7 @@
                      <t v="In paragraph 1, the words &#34;and Switzerland&#34; shall be inserted after the words &#34;the Community&#34;."/>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_5/list_3/pnt_d" kind="point">
+               <unit eId="anx_1/pnt_5/list_3/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -5220,7 +5220,7 @@
                      <t v="In paragraph 1, the words &#34;and Switzerland&#34; shall be inserted after the words &#34;the Community&#34;."/>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_5/list_3/pnt_e" kind="point">
+               <unit eId="anx_1/pnt_5/list_3/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -5805,7 +5805,7 @@
                <t v="For the purposes of this Agreement, the Annex to the Regulation shall be read with the following adaptations:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_1/pnt_5/list_11/pnt_a" kind="point">
+               <unit eId="anx_1/pnt_5/list_11/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -5816,7 +5816,7 @@
                      </quote>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_5/list_11/pnt_b" kind="point">
+               <unit eId="anx_1/pnt_5/list_11/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -5827,7 +5827,7 @@
                      </quote>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_5/list_11/pnt_c" kind="point">
+               <unit eId="anx_1/pnt_5/list_11/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -5838,7 +5838,7 @@
                      </quote>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_5/list_11/pnt_d" kind="point">
+               <unit eId="anx_1/pnt_5/list_11/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -6011,7 +6011,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_6" kind="level" depth="1">
+         <unit eId="anx_1/pnt_6" kind="level" depth="1" numbered="true">
             <num>
                <t v="6."/>
             </num>
@@ -6056,7 +6056,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_7" kind="level" depth="1">
+         <unit eId="anx_1/pnt_7" kind="level" depth="1" numbered="true">
             <num>
                <t v="7."/>
             </num>
@@ -6175,7 +6175,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_8" kind="level" depth="1">
+         <unit eId="anx_1/pnt_8" kind="level" depth="1" numbered="true">
             <num>
                <t v="8."/>
             </num>
@@ -6204,7 +6204,7 @@
                <t v="(Article 14(1)(b), and Article 14(2)."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_9" kind="level" depth="1">
+         <unit eId="anx_1/pnt_9" kind="level" depth="1" numbered="true">
             <num>
                <t v="9."/>
             </num>
@@ -6214,7 +6214,7 @@
                </emphasis>
             </heading>
             <list kind="other">
-               <unit eId="anx_1/pnt_9/pnt_A" kind="point">
+               <unit eId="anx_1/pnt_9/pnt_A" kind="point" numbered="true">
                   <num>
                      <t v="A:"/>
                   </num>
@@ -6222,7 +6222,7 @@
                      <t v="Protocol on the Privileges and Immunities of the European Union"/>
                   </p>
                </unit>
-               <unit eId="anx_1/pnt_9/pnt_B" kind="point">
+               <unit eId="anx_1/pnt_9/pnt_B" kind="point" numbered="true">
                   <num>
                      <t v="B:"/>
                   </num>
@@ -6397,7 +6397,9 @@
                      <t v="Members of the European Parliament shall, in respect of customs and exchange control, be accorded:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="anx_A/level_CHAPTER-III/art_7/unp_2/pnt_a" kind="point">
+                     <unit eId="anx_A/level_CHAPTER-III/art_7/unp_2/pnt_a"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -6405,7 +6407,9 @@
                            <t v="by their own government, the same facilities as those accorded to senior officials travelling abroad on temporary official missions;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_A/level_CHAPTER-III/art_7/unp_2/pnt_b" kind="point">
+                     <unit eId="anx_A/level_CHAPTER-III/art_7/unp_2/pnt_b"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -6433,7 +6437,9 @@
                      <t v="During the sessions of the European Parliament, its Members shall enjoy:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="anx_A/level_CHAPTER-III/art_9/unp_1/pnt_a" kind="point">
+                     <unit eId="anx_A/level_CHAPTER-III/art_9/unp_1/pnt_a"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -6441,7 +6447,9 @@
                            <t v="in the territory of their own State, the immunities accorded to members of their parliament;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_A/level_CHAPTER-III/art_9/unp_1/pnt_b" kind="point">
+                     <unit eId="anx_A/level_CHAPTER-III/art_9/unp_1/pnt_b"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -6505,7 +6513,9 @@
                   <t v="In the territory of each Member State and whatever their nationality, officials and other servants of the Union shall:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx_A/level_CHAPTER-V/art_11/pnt_a" kind="point">
+                  <unit eId="anx_A/level_CHAPTER-V/art_11/pnt_a"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -6513,7 +6523,9 @@
                         <t v="subject to the provisions of the Treaties relating, on the one hand, to the rules on the liability of officials and other servants towards the Union and, on the other hand, to the jurisdiction of the Court of Justice of the European Union in disputes between the Union and its officials and other servants, be immune from legal proceedings in respect of acts performed by them in their official capacity, including their words spoken or written. They shall continue to enjoy this immunity after they have ceased to hold office;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_A/level_CHAPTER-V/art_11/pnt_b" kind="point">
+                  <unit eId="anx_A/level_CHAPTER-V/art_11/pnt_b"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -6521,7 +6533,9 @@
                         <t v="together with their spouses and dependent members of their families, not be subject to immigration restrictions or to formalities for the registration of aliens;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_A/level_CHAPTER-V/art_11/pnt_c" kind="point">
+                  <unit eId="anx_A/level_CHAPTER-V/art_11/pnt_c"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -6529,7 +6543,9 @@
                         <t v="in respect of currency or exchange regulations, be accorded the same facilities as are customarily accorded to officials of international organisations;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_A/level_CHAPTER-V/art_11/pnt_d" kind="point">
+                  <unit eId="anx_A/level_CHAPTER-V/art_11/pnt_d"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -6537,7 +6553,9 @@
                         <t v="enjoy the right to import free of duty their furniture and effects at the time of first taking up their post in the country concerned, and the right to re-export free of duty their furniture and effects, on termination of their duties in that country, subject in either case to the conditions considered to be necessary by the government of the country in which this right is exercised;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_A/level_CHAPTER-V/art_11/pnt_e" kind="point">
+                  <unit eId="anx_A/level_CHAPTER-V/art_11/pnt_e"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -6715,7 +6733,7 @@
          <subheading>
             <t v="PROCEDURES FOR THE APPLICATION IN SWITZERLAND OF THE PROTOCOL ON PRIVILEGES AND IMMUNITIES OF THE EUROPEAN UNION"/>
          </subheading>
-         <unit eId="app_3/pnt_1" kind="point">
+         <unit eId="app_3/pnt_1" kind="point" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -6730,7 +6748,7 @@
                <t v=") contains references to Member States, the references are to be understood to apply equally to Switzerland, unless the following provisions determine otherwise."/>
             </p>
          </unit>
-         <unit eId="app_3/pnt_2" kind="point">
+         <unit eId="app_3/pnt_2" kind="point" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -6744,7 +6762,7 @@
                <t v="The VAT refund is to be granted on presentation to the Federal Tax Administration’s VAT Main Division of the Swiss forms provided for the purpose. As a rule, refund applications must be processed within the three months following the date on which they were lodged together with the necessary supporting documents."/>
             </p>
          </unit>
-         <unit eId="app_3/pnt_3" kind="point">
+         <unit eId="app_3/pnt_3" kind="point" numbered="true">
             <num>
                <t v="3."/>
             </num>

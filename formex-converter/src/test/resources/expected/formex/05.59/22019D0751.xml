@@ -100,7 +100,7 @@
          </p>
          <quotedStructure eId="art_1/qstr_1">
             <list kind="other">
-               <unit eId="art_1/qstr_1/pnt_5eq" kind="point">
+               <unit eId="art_1/qstr_1/pnt_5eq" kind="point" numbered="true">
                   <num>
                      <t v="‘"/>
                      <t v="5eq."/>

@@ -195,7 +195,7 @@
                <t v="Any fishing vessel covered by a recovery plan adopted by the Council shall be eligible for an increased scrapping premium in accordance with Article 3 provided that:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_2/pnt_a" kind="point">
+               <unit eId="art_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -206,7 +206,7 @@
                      <t v="and"/>
                   </p>
                </unit>
-               <unit eId="art_2/pnt_b" kind="point">
+               <unit eId="art_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>

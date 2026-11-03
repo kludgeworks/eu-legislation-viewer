@@ -336,7 +336,7 @@
                <t v="ANNEX I"/>
             </num>
             <list kind="arabic">
-               <unit eId="anx_I/pnt_1" kind="point">
+               <unit eId="anx_I/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -344,7 +344,7 @@
                      <t v="The prediction of the lean meat percentage is based on the dissection of the four major cuts. The dissection is executed in accordance with the reference method.&#xA;"/>
                   </p>
                </unit>
-               <unit eId="anx_I/pnt_2" kind="point">
+               <unit eId="anx_I/pnt_2" kind="point" numbered="true">
                   <provenance amendingAct="32006R1197"
                               action="replaced"
                               location="AR:1;PT:2"
@@ -415,7 +415,7 @@
                <t v="ANNEX II"/>
             </num>
             <list kind="arabic">
-               <unit eId="anx_II/pnt_1" kind="point">
+               <unit eId="anx_II/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -455,7 +455,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_II/pnt_2" kind="point">
+               <unit eId="anx_II/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>

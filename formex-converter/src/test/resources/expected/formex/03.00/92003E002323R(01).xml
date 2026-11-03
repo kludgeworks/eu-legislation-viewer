@@ -42,7 +42,7 @@
             <t v="On page 131, point 2. (b) should read as follows:"/>
          </p>
          <new>
-            <unit eId="cor_1/new/pnt_2.-b" kind="point">
+            <unit eId="cor_1/new/pnt_2.-b" kind="point" numbered="true">
                <num>
                   <t v="2. (b)"/>
                </num>

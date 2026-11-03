@@ -561,7 +561,7 @@
             <t v="This Directive shall apply to contracts for the purchase of road transport vehicles by:"/>
          </p>
          <list kind="alpha">
-            <unit eId="art_3/pnt_a" kind="point">
+            <unit eId="art_3/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -569,7 +569,7 @@
                   <t v="contracting authorities or contracting entities in so far as they are under an obligation to apply the procurement procedures set out in Directives 2004/17/EC and 2004/18/EC;"/>
                </p>
             </unit>
-            <unit eId="art_3/pnt_b" kind="point">
+            <unit eId="art_3/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -594,7 +594,7 @@
             <t v="For the purpose of this Directive:"/>
          </p>
          <list kind="arabic">
-            <unit eId="art_4/pnt_1" kind="point">
+            <unit eId="art_4/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -605,7 +605,7 @@
                   <t v=" means contracting authorities as defined in Article 2(1)(a) of Directive 2004/17/EC and in Article 1(9) of Directive 2004/18/EC;"/>
                </p>
             </unit>
-            <unit eId="art_4/pnt_2" kind="point">
+            <unit eId="art_4/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -616,7 +616,7 @@
                   <t v=" means contracting entities as referred to in Article 2(2) of Directive 2004/17/EC;"/>
                </p>
             </unit>
-            <unit eId="art_4/pnt_3" kind="point">
+            <unit eId="art_4/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -655,7 +655,7 @@
                   <t v="The operational energy and environmental impacts to be taken into account shall include at least the following:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_5/par_2/sub_1/pnt_a" kind="point">
+                  <unit eId="art_5/par_2/sub_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -663,7 +663,7 @@
                         <t v="energy consumption;"/>
                      </p>
                   </unit>
-                  <unit eId="art_5/par_2/sub_1/pnt_b" kind="point">
+                  <unit eId="art_5/par_2/sub_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -675,7 +675,7 @@
                         <t v="; and"/>
                      </p>
                   </unit>
-                  <unit eId="art_5/par_2/sub_1/pnt_c" kind="point">
+                  <unit eId="art_5/par_2/sub_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -703,7 +703,7 @@
                <t v="The requirements of paragraphs 1 and 2 shall be fulfilled in accordance with the following options:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_5/par_3/pnt_a" kind="point">
+               <unit eId="art_5/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -711,7 +711,7 @@
                      <t v="by setting technical specifications for energy and environmental performance in the documentation for the purchase of road transport vehicles on each of the impacts considered, as well as any additional environmental impacts; or"/>
                   </p>
                </unit>
-               <unit eId="art_5/par_3/pnt_b" kind="point">
+               <unit eId="art_5/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -753,7 +753,7 @@
                <t v=" emissions and pollutant emissions as set out in Table 2 of the Annex, which are linked to the operation of the vehicles under purchase, shall be monetised and calculated using the methodology set out in the following points:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_6/par_1/pnt_a" kind="point">
+               <unit eId="art_6/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -778,7 +778,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="art_6/par_1/pnt_b" kind="point">
+               <unit eId="art_6/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -794,7 +794,7 @@
                      <t v=" emissions in kilograms per kilometre according to paragraph 2, and by the cost per kilogram taken from the range as set out in Table 2 of the Annex."/>
                   </p>
                </unit>
-               <unit eId="art_6/par_1/pnt_c" kind="point">
+               <unit eId="art_6/par_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1217,7 +1217,7 @@
             </caption>
             <table cols="2">
                <caption>
-                  <unit eId="anx/pnt_Table-1" kind="point">
+                  <unit eId="anx/pnt_Table-1" kind="point" numbered="true">
                      <num>
                         <emphasis kind="i">
                            <t v="Table 1:"/>
@@ -1348,7 +1348,7 @@
             </table>
             <table cols="4">
                <caption>
-                  <unit eId="anx/pnt_Table-2" kind="point">
+                  <unit eId="anx/pnt_Table-2" kind="point" numbered="true">
                      <num>
                         <emphasis kind="i">
                            <t v="Table 2:"/>
@@ -1417,7 +1417,7 @@
             </table>
             <table cols="2">
                <caption>
-                  <unit eId="anx/pnt_Table-3" kind="point">
+                  <unit eId="anx/pnt_Table-3" kind="point" numbered="true">
                      <num>
                         <emphasis kind="i">
                            <t v="Table 3:"/>

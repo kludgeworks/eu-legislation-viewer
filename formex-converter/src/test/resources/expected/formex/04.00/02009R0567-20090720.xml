@@ -160,7 +160,7 @@
          <p>
             <t v="Foodstuffs referred to in Annex I to Regulation (EC) No 509/2006:"/>
          </p>
-         <unit eId="anx/pnt_Class-2.3" kind="level" depth="1">
+         <unit eId="anx/pnt_Class-2.3" kind="level" depth="1" numbered="true">
             <num>
                <emphasis kind="b">
                   <t v="Class 2.3."/>

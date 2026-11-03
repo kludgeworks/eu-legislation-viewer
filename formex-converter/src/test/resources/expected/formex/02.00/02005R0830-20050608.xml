@@ -135,7 +135,7 @@
             <t v="The following persons shall be removed from Annex I to Regulation (EC) No 1763/2004:"/>
          </p>
          <list kind="arabic">
-            <unit eId="anx/pnt_1" kind="point">
+            <unit eId="anx/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -145,7 +145,7 @@
                   <t v=". Place of birth: Kozarac, Municipality of Prijedor, Bosnia and Herzegovina. Nationality: Bosnia and Herzegovina."/>
                </p>
             </unit>
-            <unit eId="anx/pnt_2" kind="point">
+            <unit eId="anx/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -155,7 +155,7 @@
                   <t v=". Place of birth: Senjski Rudnik, Serbia and Montenegro. Nationality: Serbia and Montenegro."/>
                </p>
             </unit>
-            <unit eId="anx/pnt_3" kind="point">
+            <unit eId="anx/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>

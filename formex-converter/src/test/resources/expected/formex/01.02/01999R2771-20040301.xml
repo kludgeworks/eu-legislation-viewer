@@ -378,7 +378,7 @@
                         <t v="The butter shall be packed in new, strong material in such a way as to ensure it is protected throughout transportation, storage and removal from storage. The packaging shall show at least the following particulars, where appropriate in code:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_4/par_6/sub_1/pnt_a" kind="point">
+                        <unit eId="art_4/par_6/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -386,7 +386,7 @@
                               <t v="the approval number identifying the factory and the Member State of production;"/>
                            </p>
                         </unit>
-                        <unit eId="art_4/par_6/sub_1/pnt_b" kind="point">
+                        <unit eId="art_4/par_6/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -394,7 +394,7 @@
                               <t v="the date of production;"/>
                            </p>
                         </unit>
-                        <unit eId="art_4/par_6/sub_1/pnt_c" kind="point">
+                        <unit eId="art_4/par_6/sub_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -402,7 +402,7 @@
                               <t v="the date of entry into storage;"/>
                            </p>
                         </unit>
-                        <unit eId="art_4/par_6/sub_1/pnt_d" kind="point">
+                        <unit eId="art_4/par_6/sub_1/pnt_d" kind="point" numbered="true">
                            <num>
                               <t v="(d)"/>
                            </num>
@@ -410,7 +410,7 @@
                               <t v="the production batch number and the package number; the package number may be replaced by a pallet number marked on the pallet;"/>
                            </p>
                         </unit>
-                        <unit eId="art_4/par_6/sub_1/pnt_e" kind="point">
+                        <unit eId="art_4/par_6/sub_1/pnt_e" kind="point" numbered="true">
                            <num>
                               <t v="(e)"/>
                            </num>
@@ -422,7 +422,7 @@
                               <t v=" if the aqueous phase of the butter has the corresponding pH;"/>
                            </p>
                         </unit>
-                        <unit eId="art_4/par_6/sub_1/pnt_f" kind="point">
+                        <unit eId="art_4/par_6/sub_1/pnt_f" kind="point" numbered="true">
                            <num>
                               <t v="(f)"/>
                            </num>
@@ -451,7 +451,7 @@
                      <t v="Undertakings as referred to in Article 6(2) of Regulation (EC) No 1255/1999 shall be approved only if they:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_5/par_1/pnt_a" kind="point">
+                     <unit eId="art_5/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -461,7 +461,7 @@
                            <t v=", and have the appropriate technical equipment;"/>
                         </p>
                      </unit>
-                     <unit eId="art_5/par_1/pnt_b" kind="point">
+                     <unit eId="art_5/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -469,7 +469,7 @@
                            <t v="undertake to keep permanent records in the form determined by the competent agency of each Member State, listing the origin of the raw materials, the quantities of butter obtained and the packaging, identification and exit date of each production batch intended for public intervention;"/>
                         </p>
                      </unit>
-                     <unit eId="art_5/par_1/pnt_c" kind="point">
+                     <unit eId="art_5/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -477,7 +477,7 @@
                            <t v="agree to submit their production of butter to a specific official inspection and, where applicable, to meet the requirements for the national quality class referred to in Annex V;"/>
                         </p>
                      </unit>
-                     <unit eId="art_5/par_1/pnt_d" kind="point">
+                     <unit eId="art_5/par_1/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -501,7 +501,7 @@
                         <t v="They shall carry out at least:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_5/par_2/sub_2/pnt_a" kind="point">
+                        <unit eId="art_5/par_2/sub_2/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -509,7 +509,7 @@
                               <t v="one inspection per period of 28 days of production for intervention with at least one inspection every six months, to examine the records referred to in paragraph 1(b);"/>
                            </p>
                         </unit>
-                        <unit eId="art_5/par_2/sub_2/pnt_b" kind="point">
+                        <unit eId="art_5/par_2/sub_2/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -553,7 +553,7 @@
                         <t v="A report shall be drawn up on the inspections carried out pursuant to paragraphs 2 and 3, specifying:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_5/par_4/sub_1/pnt_a" kind="point">
+                        <unit eId="art_5/par_4/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -561,7 +561,7 @@
                               <t v="the date of the inspection;"/>
                            </p>
                         </unit>
-                        <unit eId="art_5/par_4/sub_1/pnt_b" kind="point">
+                        <unit eId="art_5/par_4/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -569,7 +569,7 @@
                               <t v="its duration;"/>
                            </p>
                         </unit>
-                        <unit eId="art_5/par_4/sub_1/pnt_c" kind="point">
+                        <unit eId="art_5/par_4/sub_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -682,7 +682,7 @@
                         <t v="Member States shall determine:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_8/par_2/sub_1/pnt_a" kind="point">
+                        <unit eId="art_8/par_2/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -690,7 +690,7 @@
                               <t v="the membership of prices boards, in such a way as to ensure that buyers and sellers engaged in transactions involving a large quantity of butter are equally represented or, as the case may be, the system for recording prices on the representative markets;"/>
                            </p>
                         </unit>
-                        <unit eId="art_8/par_2/sub_1/pnt_b" kind="point">
+                        <unit eId="art_8/par_2/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -698,7 +698,7 @@
                               <t v="the provisions needed to check the data on which the price recording is based;"/>
                            </p>
                         </unit>
-                        <unit eId="art_8/par_2/sub_1/pnt_c" kind="point">
+                        <unit eId="art_8/par_2/sub_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -780,7 +780,7 @@
                      <t v="Offers shall contain:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_10/par_2/pnt_a" kind="point">
+                     <unit eId="art_10/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -788,7 +788,7 @@
                            <t v="the name and address of the seller;"/>
                         </p>
                      </unit>
-                     <unit eId="art_10/par_2/pnt_b" kind="point">
+                     <unit eId="art_10/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -796,7 +796,7 @@
                            <t v="the quantity offered;"/>
                         </p>
                      </unit>
-                     <unit eId="art_10/par_2/pnt_c" kind="point">
+                     <unit eId="art_10/par_2/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -814,7 +814,7 @@
                      <t v="Offers shall be valid only if:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_10/par_3/pnt_a" kind="point">
+                     <unit eId="art_10/par_3/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -822,7 +822,7 @@
                            <t v="they relate to a quantity of butter meeting the requirements of Article 4(4);"/>
                         </p>
                      </unit>
-                     <unit eId="art_10/par_3/pnt_b" kind="point">
+                     <unit eId="art_10/par_3/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -830,7 +830,7 @@
                            <t v="they are accompanied by a written undertaking by the seller to comply with Articles 4(3) and 14(2);"/>
                         </p>
                      </unit>
-                     <unit eId="art_10/par_3/pnt_c" kind="point">
+                     <unit eId="art_10/par_3/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -848,7 +848,7 @@
                      <t v="The undertaking provided for in paragraph 3(b), if forwarded initially to the intervention agency, shall be deemed to be tacitly renewed for subsequent offers until explicitly cancelled by the seller or by the intervention agency, provided that:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_10/par_4/pnt_a" kind="point">
+                     <unit eId="art_10/par_4/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -856,7 +856,7 @@
                            <t v="the original offer stipulates that the seller intends to avail himself/herself of the provisions of this paragraph;"/>
                         </p>
                      </unit>
-                     <unit eId="art_10/par_4/pnt_b" kind="point">
+                     <unit eId="art_10/par_4/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -905,7 +905,7 @@
                      <t v="After checking the offer, and within five working days following the day of receipt, the intervention agency shall issue a dated and numbered delivery order showing:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_12/par_1/pnt_a" kind="point">
+                     <unit eId="art_12/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -913,7 +913,7 @@
                            <t v="the quantity to be delivered;"/>
                         </p>
                      </unit>
-                     <unit eId="art_12/par_1/pnt_b" kind="point">
+                     <unit eId="art_12/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -921,7 +921,7 @@
                            <t v="the final date for delivery of the butter;"/>
                         </p>
                      </unit>
-                     <unit eId="art_12/par_1/pnt_c" kind="point">
+                     <unit eId="art_12/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1028,7 +1028,7 @@
                         <t v="By their offers, sellers shall undertake that, where the inspection on entry into the store designated by the intervention agency shows that the butter does not meet the requirements of Articles 3 and 4, or where, at the end of the trial storage period, the minimum organoleptic quality of the butter proves to be below that set in Annex I:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_14/par_2/sub_1/pnt_a" kind="point">
+                        <unit eId="art_14/par_2/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -1036,7 +1036,7 @@
                               <t v="they will take back the butter in question and"/>
                            </p>
                         </unit>
-                        <unit eId="art_14/par_2/sub_1/pnt_b" kind="point">
+                        <unit eId="art_14/par_2/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -1156,7 +1156,7 @@
                      <t v="Tenders shall contain:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_17/par_2/pnt_a" kind="point">
+                     <unit eId="art_17/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1164,7 +1164,7 @@
                            <t v="the name and address of the tenderer;"/>
                         </p>
                      </unit>
-                     <unit eId="art_17/par_2/pnt_b" kind="point">
+                     <unit eId="art_17/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1172,7 +1172,7 @@
                            <t v="the quantity offered;"/>
                         </p>
                      </unit>
-                     <unit eId="art_17/par_2/pnt_c" kind="point">
+                     <unit eId="art_17/par_2/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1180,7 +1180,7 @@
                            <t v="the proposed price per 100 kilograms of butter, exclusive of national taxes and charges, delivered to the loading bay of the cold store, expressed in euro to no more than two decimal places;"/>
                         </p>
                      </unit>
-                     <unit eId="art_17/par_2/pnt_d" kind="point">
+                     <unit eId="art_17/par_2/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -1198,7 +1198,7 @@
                      <t v="Tenders shall be valid only if:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_17/par_3/pnt_a" kind="point">
+                     <unit eId="art_17/par_3/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1206,7 +1206,7 @@
                            <t v="they relate to a quantity of butter meeting the requirements of Article 4(4);"/>
                         </p>
                      </unit>
-                     <unit eId="art_17/par_3/pnt_b" kind="point">
+                     <unit eId="art_17/par_3/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1214,7 +1214,7 @@
                            <t v="they are accompanied by the written undertaking by the tenderer to comply with Articles 4(3) and 14(2);"/>
                         </p>
                      </unit>
-                     <unit eId="art_17/par_3/pnt_c" kind="point">
+                     <unit eId="art_17/par_3/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1232,7 +1232,7 @@
                      <t v="The undertaking provided for in paragraph 3(b), if forwarded initially to the intervention agency, shall be deemed to be tacitly renewed for subsequent tenders until explicitly cancelled by the tenderer or by the intervention agency, provided that:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_17/par_4/pnt_a" kind="point">
+                     <unit eId="art_17/par_4/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1240,7 +1240,7 @@
                            <t v="the original tender stipulates that the tenderer intends to avail himself of the provisions of this paragraph;"/>
                         </p>
                      </unit>
-                     <unit eId="art_17/par_4/pnt_b" kind="point">
+                     <unit eId="art_17/par_4/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1344,7 +1344,7 @@
                      <t v="The intervention agency shall immediately issue to the successful tenderer a dated and numbered delivery order indicating:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_17d/par_2/pnt_a" kind="point">
+                     <unit eId="art_17d/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1352,7 +1352,7 @@
                            <t v="the quantity to be delivered;"/>
                         </p>
                      </unit>
-                     <unit eId="art_17d/par_2/pnt_b" kind="point">
+                     <unit eId="art_17d/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1360,7 +1360,7 @@
                            <t v="the final date for delivery of the butter;"/>
                         </p>
                      </unit>
-                     <unit eId="art_17d/par_2/pnt_c" kind="point">
+                     <unit eId="art_17d/par_2/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1572,7 +1572,7 @@
                         <t v="They shall also indicate, for the butter they hold:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_21/par_4/sub_2/pnt_a" kind="point">
+                        <unit eId="art_21/par_4/sub_2/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -1580,7 +1580,7 @@
                               <t v="the locations of the cold store where the butter to be sold is in store,"/>
                            </p>
                         </unit>
-                        <unit eId="art_21/par_4/sub_2/pnt_b" kind="point">
+                        <unit eId="art_21/par_4/sub_2/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -1607,7 +1607,7 @@
                      <t v="Intervention agencies shall make the necessary arrangements to enable interested parties:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_21/par_6/pnt_a" kind="point">
+                     <unit eId="art_21/par_6/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1615,7 +1615,7 @@
                            <t v="to examine samples of the butter put up for sale at their own expense before submitting a tender;"/>
                         </p>
                      </unit>
-                     <unit eId="art_21/par_6/pnt_b" kind="point">
+                     <unit eId="art_21/par_6/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1676,7 +1676,7 @@
                      <t v="Offers shall contain:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_23/par_2/pnt_a" kind="point">
+                     <unit eId="art_23/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1684,7 +1684,7 @@
                            <t v="the name and address of the tenderer;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_2/pnt_b" kind="point">
+                     <unit eId="art_23/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1692,7 +1692,7 @@
                            <t v="the quantity desired;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_2/pnt_c" kind="point">
+                     <unit eId="art_23/par_2/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1700,7 +1700,7 @@
                            <t v="the price in euro tendered per 100 kilograms, not including national taxes and charges, delivered to the loading-bay of the cold store;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_2/pnt_d" kind="point">
+                     <unit eId="art_23/par_2/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -1708,7 +1708,7 @@
                            <t v="if appropriate, the cold store where the butter is held and, if desired, a substitute cold store;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_2/pnt_e" kind="point">
+                     <unit eId="art_23/par_2/pnt_e" kind="point" numbered="true">
                         <num>
                            <t v="(e)"/>
                         </num>
@@ -1726,7 +1726,7 @@
                      <t v="Offers shall not be valid unless:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_23/par_3/pnt_a" kind="point">
+                     <unit eId="art_23/par_3/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1734,7 +1734,7 @@
                            <t v="they relate to at least five tonnes or, if the quantity available in a cold store is less than five tonnes, to the actual quantity available;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_3/pnt_b" kind="point">
+                     <unit eId="art_23/par_3/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1904,7 +1904,7 @@
                      <t v="Once the amount referred to in Article 24e(2) has been paid the intervention agency shall issue a removal order indicating:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_24f/par_1/pnt_a" kind="point">
+                     <unit eId="art_24f/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1912,7 +1912,7 @@
                            <t v="the quantity in respect of which the corresponding amount has been paid;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24f/par_1/pnt_b" kind="point">
+                     <unit eId="art_24f/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1920,7 +1920,7 @@
                            <t v="the cold store in which the butter is in store;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24f/par_1/pnt_c" kind="point">
+                     <unit eId="art_24f/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1974,7 +1974,7 @@
                   <t v="Member States shall inform the Commission not later than Tuesday of each week of the quantities of butter which, during the preceding week:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_24g/pnt_a" kind="point">
+                  <unit eId="art_24g/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -1982,7 +1982,7 @@
                         <t v="have been the subject of a sale contract;"/>
                      </p>
                   </unit>
-                  <unit eId="art_24g/pnt_b" kind="point">
+                  <unit eId="art_24g/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -2081,7 +2081,7 @@
                      <t v="A storage contract may not be concluded for butter or cream:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_27/par_2/pnt_a" kind="point">
+                     <unit eId="art_27/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2089,7 +2089,7 @@
                            <t v="in respect of which an application for direct consumption aid has been made under other Community provisions;"/>
                         </p>
                      </unit>
-                     <unit eId="art_27/par_2/pnt_b" kind="point">
+                     <unit eId="art_27/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2114,7 +2114,7 @@
                      <t v="Storage contracts shall be concluded in writing for one or more storage lots and shall include, in particular, provisions concerning:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_28/par_1/pnt_a" kind="point">
+                     <unit eId="art_28/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2122,7 +2122,7 @@
                            <t v="the quantity of butter or cream to which the contract applies;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28/par_1/pnt_b" kind="point">
+                     <unit eId="art_28/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2130,7 +2130,7 @@
                            <t v="the amount of the aid, without prejudice to Article 38;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28/par_1/pnt_c" kind="point">
+                     <unit eId="art_28/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -2138,7 +2138,7 @@
                            <t v="the dates relating to the execution of the contract, without prejudice to the fifth subparagraph of Article 6(3) of Regulation (EC) No 1255/1999;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28/par_1/pnt_d" kind="point">
+                     <unit eId="art_28/par_1/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -2165,7 +2165,7 @@
                         <t v="The specifications shall provide that the packaging of the butter is to show at least the following particulars, which may be encoded, where appropriate:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_28/par_3/sub_1/pnt_a" kind="point">
+                        <unit eId="art_28/par_3/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -2173,7 +2173,7 @@
                               <t v="the number identifying the factory and the Member State of production;"/>
                            </p>
                         </unit>
-                        <unit eId="art_28/par_3/sub_1/pnt_b" kind="point">
+                        <unit eId="art_28/par_3/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -2181,7 +2181,7 @@
                               <t v="the date of production;"/>
                            </p>
                         </unit>
-                        <unit eId="art_28/par_3/sub_1/pnt_c" kind="point">
+                        <unit eId="art_28/par_3/sub_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -2189,7 +2189,7 @@
                               <t v="the date of entry into storage;"/>
                            </p>
                         </unit>
-                        <unit eId="art_28/par_3/sub_1/pnt_d" kind="point">
+                        <unit eId="art_28/par_3/sub_1/pnt_d" kind="point" numbered="true">
                            <num>
                               <t v="(d)"/>
                            </num>
@@ -2197,7 +2197,7 @@
                               <t v="the number of the manufacturing batch;"/>
                            </p>
                         </unit>
-                        <unit eId="art_28/par_3/sub_1/pnt_e" kind="point">
+                        <unit eId="art_28/par_3/sub_1/pnt_e" kind="point" numbered="true">
                            <num>
                               <t v="(e)"/>
                            </num>
@@ -2209,7 +2209,7 @@
                               <t v=" in the case of butter as referred to in the third indent of the first subparagraph of Article 6(3) of Regulation (EC) No 1255/1999;"/>
                            </p>
                         </unit>
-                        <unit eId="art_28/par_3/sub_1/pnt_f" kind="point">
+                        <unit eId="art_28/par_3/sub_1/pnt_f" kind="point" numbered="true">
                            <num>
                               <t v="(f)"/>
                            </num>
@@ -2217,7 +2217,7 @@
                               <t v="the national quality class referred to in Annex V;"/>
                            </p>
                         </unit>
-                        <unit eId="art_28/par_3/sub_1/pnt_g" kind="point">
+                        <unit eId="art_28/par_3/sub_1/pnt_g" kind="point" numbered="true">
                            <num>
                               <t v="(g)"/>
                            </num>
@@ -2336,7 +2336,7 @@
                      <t v="The contractor or, at the request of the Member State or with its authorisation, the person responsible for the storage depot shall make available to the competent agency responsible for inspection any documentation permitting verification of the following particulars of products placed in private storage:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_32/par_2/pnt_a" kind="point">
+                     <unit eId="art_32/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2344,7 +2344,7 @@
                            <t v="the approval number identifying the factory and the Member State of production,"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_2/pnt_b" kind="point">
+                     <unit eId="art_32/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2352,7 +2352,7 @@
                            <t v="the date of production;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_2/pnt_c" kind="point">
+                     <unit eId="art_32/par_2/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -2360,7 +2360,7 @@
                            <t v="the date of entry into storage;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_2/pnt_d" kind="point">
+                     <unit eId="art_32/par_2/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -2368,7 +2368,7 @@
                            <t v="the storage lot number;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_2/pnt_e" kind="point">
+                     <unit eId="art_32/par_2/pnt_e" kind="point" numbered="true">
                         <num>
                            <t v="(e)"/>
                         </num>
@@ -2376,7 +2376,7 @@
                            <t v="presence in the store and the address of the store;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_2/pnt_f" kind="point">
+                     <unit eId="art_32/par_2/pnt_f" kind="point" numbered="true">
                         <num>
                            <t v="(f)"/>
                         </num>
@@ -2394,7 +2394,7 @@
                      <t v="The contractor or, where applicable, the person responsible for the store shall keep stock records available at the store for each contract, covering:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_32/par_3/pnt_a" kind="point">
+                     <unit eId="art_32/par_3/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2402,7 +2402,7 @@
                            <t v="the storage lot number of the products placed in private storage;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_3/pnt_b" kind="point">
+                     <unit eId="art_32/par_3/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2410,7 +2410,7 @@
                            <t v="the dates of entry into and removal from storage;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_3/pnt_c" kind="point">
+                     <unit eId="art_32/par_3/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -2418,7 +2418,7 @@
                            <t v="the quantity of butter or cream, indicated per storage lot;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_3/pnt_d" kind="point">
+                     <unit eId="art_32/par_3/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -2468,7 +2468,7 @@
                      <t v="The competent agency shall:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_33/par_2/pnt_a" kind="point">
+                     <unit eId="art_33/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2476,7 +2476,7 @@
                            <t v="either seal the products by contract, storage lot or smaller quantity at the time of the check provided for in paragraph 1;"/>
                         </p>
                      </unit>
-                     <unit eId="art_33/par_2/pnt_b" kind="point">
+                     <unit eId="art_33/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2504,7 +2504,7 @@
                         <t v="For the purposes of the check referred to in the first subparagraph, the contractor shall inform the competent agency, indicating the storage lots involved, at least five working days before:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="art_33/par_3/sub_2/pnt_i" kind="point">
+                        <unit eId="art_33/par_3/sub_2/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -2512,7 +2512,7 @@
                               <t v="the end of the maximum contractual storage period of 210 days, or"/>
                            </p>
                         </unit>
-                        <unit eId="art_33/par_3/sub_2/pnt_ii" kind="point">
+                        <unit eId="art_33/par_3/sub_2/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -2537,7 +2537,7 @@
                         <t v="A report shall be drawn up on the checks carried out pursuant to paragraphs 1, 2 and 3, specifying:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_33/par_4/sub_1/pnt_a" kind="point">
+                        <unit eId="art_33/par_4/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -2545,7 +2545,7 @@
                               <t v="the date of the check;"/>
                            </p>
                         </unit>
-                        <unit eId="art_33/par_4/sub_1/pnt_b" kind="point">
+                        <unit eId="art_33/par_4/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -2553,7 +2553,7 @@
                               <t v="its duration;"/>
                            </p>
                         </unit>
-                        <unit eId="art_33/par_4/sub_1/pnt_c" kind="point">
+                        <unit eId="art_33/par_4/sub_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -3119,7 +3119,7 @@
             <subheading>
                <t v="REFERENCE METHOD FOR THE DETECTION OF FOREIGN FATS IN MILK FAT BY GAS CHROMATOGRAPHIC ANALYSIS OF TRIGLYCERIDES — REVISION 1"/>
             </subheading>
-            <unit eId="anx_II/pnt_1" kind="level" depth="1">
+            <unit eId="anx_II/pnt_1" kind="level" depth="1" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -3153,7 +3153,7 @@
                   </p>
                </annotation>
             </unit>
-            <unit eId="anx_II/pnt_2" kind="level" depth="1">
+            <unit eId="anx_II/pnt_2" kind="level" depth="1" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -3164,7 +3164,7 @@
                   <t v="Foreign fats in milk fat: foreign fats as defined in this standard are all vegetable and animal fats except milk fat."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_3" kind="level" depth="1">
+            <unit eId="anx_II/pnt_3" kind="level" depth="1" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -3188,7 +3188,7 @@
                   </p>
                </annotation>
             </unit>
-            <unit eId="anx_II/pnt_4" kind="level" depth="1">
+            <unit eId="anx_II/pnt_4" kind="level" depth="1" numbered="true">
                <num>
                   <t v="4."/>
                </num>
@@ -3199,7 +3199,7 @@
                   <t v="Analysis-grade chemicals must be used."/>
                </p>
                <list kind="arabic">
-                  <unit eId="anx_II/pnt_4/pnt_4.1" kind="point">
+                  <unit eId="anx_II/pnt_4/pnt_4.1" kind="point" numbered="true">
                      <num>
                         <t v="4.1."/>
                      </num>
@@ -3207,7 +3207,7 @@
                         <t v="Carrier gas: nitrogen, purity degree ≥ 99,996 %."/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_4/pnt_4.2" kind="point">
+                  <unit eId="anx_II/pnt_4/pnt_4.2" kind="point" numbered="true">
                      <num>
                         <t v="4.2."/>
                      </num>
@@ -3217,7 +3217,7 @@
                         <t v=", saturated as well as cholesterol for standardizing a standard milk fat according to section 6.5.4."/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_4/pnt_4.3" kind="point">
+                  <unit eId="anx_II/pnt_4/pnt_4.3" kind="point" numbered="true">
                      <num>
                         <t v="4.3."/>
                      </num>
@@ -3225,7 +3225,7 @@
                         <t v="Methanol, water-free."/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_4/pnt_4.4" kind="point">
+                  <unit eId="anx_II/pnt_4/pnt_4.4" kind="point" numbered="true">
                      <num>
                         <t v="4.4."/>
                      </num>
@@ -3233,7 +3233,7 @@
                         <t v="n-Hexane"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_4/pnt_4.5" kind="point">
+                  <unit eId="anx_II/pnt_4/pnt_4.5" kind="point" numbered="true">
                      <num>
                         <t v="4.5."/>
                      </num>
@@ -3241,7 +3241,7 @@
                         <t v="n-Heptane"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_4/pnt_4.6" kind="point">
+                  <unit eId="anx_II/pnt_4/pnt_4.6" kind="point" numbered="true">
                      <num>
                         <t v="4.6."/>
                      </num>
@@ -3249,7 +3249,7 @@
                         <t v="Toluene"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_4/pnt_4.7" kind="point">
+                  <unit eId="anx_II/pnt_4/pnt_4.7" kind="point" numbered="true">
                      <num>
                         <t v="4.7."/>
                      </num>
@@ -3257,7 +3257,7 @@
                         <t v="Dimethylchlorosilane solution: 50 ml dimethylchlorosilane are dissolved in 283 ml toluene."/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_4/pnt_4.8" kind="point">
+                  <unit eId="anx_II/pnt_4/pnt_4.8" kind="point" numbered="true">
                      <num>
                         <t v="4.8."/>
                      </num>
@@ -3265,7 +3265,7 @@
                         <t v="Combustible gas: hydrogen and synthetic air"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_4/pnt_4.9" kind="point">
+                  <unit eId="anx_II/pnt_4/pnt_4.9" kind="point" numbered="true">
                      <num>
                         <t v="4.9."/>
                      </num>
@@ -3274,7 +3274,7 @@
                         <noteRef href="#note_25" marker="21"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_4/pnt_4.10" kind="point">
+                  <unit eId="anx_II/pnt_4/pnt_4.10" kind="point" numbered="true">
                      <num>
                         <t v="4.10."/>
                      </num>
@@ -3284,7 +3284,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_II/pnt_5" kind="level" depth="1">
+            <unit eId="anx_II/pnt_5" kind="level" depth="1" numbered="true">
                <num>
                   <t v="5."/>
                </num>
@@ -3295,7 +3295,7 @@
                   <t v="Normal laboratory apparatus and particularly the following:"/>
                </p>
                <list kind="arabic">
-                  <unit eId="anx_II/pnt_5/pnt_5.1" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.1" kind="point" numbered="true">
                      <num>
                         <t v="5.1."/>
                      </num>
@@ -3333,7 +3333,7 @@
                         <t v="The septa must be exchanged at regular intervals, e.g. after roughly 100 injections or as soon as the resolution deteriorates (see figure 4)."/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.2" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.2" kind="point" numbered="true">
                      <num>
                         <t v="5.2."/>
                      </num>
@@ -3352,7 +3352,7 @@
                         </p>
                      </annotation>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.3" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.3" kind="point" numbered="true">
                      <num>
                         <t v="5.3."/>
                      </num>
@@ -3367,7 +3367,7 @@
                         </caption>
                      </figure>
                      <list kind="arabic">
-                        <unit eId="anx_II/pnt_5/pnt_5.3/pnt_5.3.1" kind="point">
+                        <unit eId="anx_II/pnt_5/pnt_5.3/pnt_5.3.1" kind="point" numbered="true">
                            <num>
                               <t v="5.3.1."/>
                            </num>
@@ -3375,7 +3375,7 @@
                               <t v="Plastic column with screwed-on end caps, provided with a mark up to which the required quantity of stationary phase can be filled"/>
                            </p>
                         </unit>
-                        <unit eId="anx_II/pnt_5/pnt_5.3/pnt_5.3.2" kind="point">
+                        <unit eId="anx_II/pnt_5/pnt_5.3/pnt_5.3.2" kind="point" numbered="true">
                            <num>
                               <t v="5.3.2."/>
                            </num>
@@ -3383,7 +3383,7 @@
                               <t v="Fine sieve (mesh size approximately 100 μm) with screw cap, suited for sealing the glass column according to figure 1."/>
                            </p>
                         </unit>
-                        <unit eId="anx_II/pnt_5/pnt_5.3/pnt_5.3.3" kind="point">
+                        <unit eId="anx_II/pnt_5/pnt_5.3/pnt_5.3.3" kind="point" numbered="true">
                            <num>
                               <t v="5.3.3."/>
                            </num>
@@ -3391,7 +3391,7 @@
                               <t v="Deactivated, silanized glass wool"/>
                            </p>
                         </unit>
-                        <unit eId="anx_II/pnt_5/pnt_5.3/pnt_5.3.4" kind="point">
+                        <unit eId="anx_II/pnt_5/pnt_5.3/pnt_5.3.4" kind="point" numbered="true">
                            <num>
                               <t v="5.3.4."/>
                            </num>
@@ -3401,7 +3401,7 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.4" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.4" kind="point" numbered="true">
                      <num>
                         <t v="5.4."/>
                      </num>
@@ -3411,7 +3411,7 @@
                         <t v=" with silica gel. This column can alternatively be used for the extraction for obtaining milk fat."/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.5" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.5" kind="point" numbered="true">
                      <num>
                         <t v="5.5."/>
                      </num>
@@ -3419,7 +3419,7 @@
                         <t v="Graphite seal 6,4 mm (1/4″) with 6 mm bore"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.6" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.6" kind="point" numbered="true">
                      <num>
                         <t v="5.6."/>
                      </num>
@@ -3427,7 +3427,7 @@
                         <t v="Devices for silanizing the glass surface of the column according to section 6.1."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="anx_II/pnt_5/pnt_5.6/pnt_5.6.1" kind="point">
+                        <unit eId="anx_II/pnt_5/pnt_5.6/pnt_5.6.1" kind="point" numbered="true">
                            <num>
                               <t v="5.6.1"/>
                            </num>
@@ -3435,7 +3435,7 @@
                               <t v="Woulff bottle"/>
                            </p>
                         </unit>
-                        <unit eId="anx_II/pnt_5/pnt_5.6/pnt_5.6.2" kind="point">
+                        <unit eId="anx_II/pnt_5/pnt_5.6/pnt_5.6.2" kind="point" numbered="true">
                            <num>
                               <t v="5.6.2."/>
                            </num>
@@ -3445,7 +3445,7 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.7" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.7" kind="point" numbered="true">
                      <num>
                         <t v="5.7."/>
                      </num>
@@ -3453,7 +3453,7 @@
                         <t v="Water bath, adjustable to (50 ± 2) °C"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.8" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.8" kind="point" numbered="true">
                      <num>
                         <t v="5.8."/>
                      </num>
@@ -3461,7 +3461,7 @@
                         <t v="Drying cabinet, adjustable to (50 ± 2) °C and (100 ± 2) °C"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.9" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.9" kind="point" numbered="true">
                      <num>
                         <t v="5.9."/>
                      </num>
@@ -3469,7 +3469,7 @@
                         <t v="Microlitre pipette"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.10" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.10" kind="point" numbered="true">
                      <num>
                         <t v="5.10."/>
                      </num>
@@ -3477,7 +3477,7 @@
                         <t v="5 ml graduated pipette for dosing 1,5 ml methanol"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.11" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.11" kind="point" numbered="true">
                      <num>
                         <t v="5.11."/>
                      </num>
@@ -3485,7 +3485,7 @@
                         <t v="50 ml round-bottomed flask"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.12" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.12" kind="point" numbered="true">
                      <num>
                         <t v="5.12."/>
                      </num>
@@ -3493,7 +3493,7 @@
                         <t v="Erlenmeyer flask, nominal volume 50 ml"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.13" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.13" kind="point" numbered="true">
                      <num>
                         <t v="5.13."/>
                      </num>
@@ -3501,7 +3501,7 @@
                         <t v="Funnel"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.14" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.14" kind="point" numbered="true">
                      <num>
                         <t v="5.14."/>
                      </num>
@@ -3509,7 +3509,7 @@
                         <t v="Fine-pored filter"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.15" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.15" kind="point" numbered="true">
                      <num>
                         <t v="5.15."/>
                      </num>
@@ -3517,7 +3517,7 @@
                         <t v="Rotary evaporator"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.16" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.16" kind="point" numbered="true">
                      <num>
                         <t v="5.16."/>
                      </num>
@@ -3525,7 +3525,7 @@
                         <t v="Ampoules, nominal volume 1 ml, sealable with an aluminium cap, with a septum in the interior"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_5/pnt_5.17" kind="point">
+                  <unit eId="anx_II/pnt_5/pnt_5.17" kind="point" numbered="true">
                      <num>
                         <t v="5.17."/>
                      </num>
@@ -3546,7 +3546,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_II/pnt_6" kind="level" depth="1">
+            <unit eId="anx_II/pnt_6" kind="level" depth="1" numbered="true">
                <num>
                   <t v="6."/>
                </num>
@@ -3554,7 +3554,7 @@
                   <t v="Procedure"/>
                </heading>
             </unit>
-            <unit eId="anx_II/pnt_6.1" kind="level" depth="2">
+            <unit eId="anx_II/pnt_6.1" kind="level" depth="2" numbered="true">
                <num>
                   <t v="6.1."/>
                </num>
@@ -3578,7 +3578,7 @@
                   <t v="After 20-30 min the Woulff bottle is replaced by a filter flask and the column emptied by connecting it with the water suction pump (see figure 3)."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_6.2" kind="level" depth="2">
+            <unit eId="anx_II/pnt_6.2" kind="level" depth="2" numbered="true">
                <num>
                   <t v="6.2."/>
                </num>
@@ -3609,7 +3609,7 @@
                   <t v="After filling a solid plug of silanized glass wool is pressed into the other end of the packed column, the protruding ends are cut off and the plug pressed into the column a few millimetres with a spatula."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_6.3" kind="level" depth="2">
+            <unit eId="anx_II/pnt_6.3" kind="level" depth="2" numbered="true">
                <num>
                   <t v="6.3."/>
                </num>
@@ -3620,7 +3620,7 @@
                   <t v="For sample preparation one of the three following methods is used:"/>
                </p>
                <list kind="arabic">
-                  <unit eId="anx_II/pnt_6.3/pnt_6.3.1" kind="point">
+                  <unit eId="anx_II/pnt_6.3/pnt_6.3.1" kind="point" numbered="true">
                      <num>
                         <t v="6.3.1."/>
                      </num>
@@ -3637,7 +3637,7 @@
                         <t v="Such a milk fat is almost phospholipid-free."/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_6.3/pnt_6.3.2" kind="point">
+                  <unit eId="anx_II/pnt_6.3/pnt_6.3.2" kind="point" numbered="true">
                      <num>
                         <t v="6.3.2."/>
                      </num>
@@ -3654,7 +3654,7 @@
                         <t v="The triglyceride spectrum standardized to 100 with the cholesterol is thereby influenced only to a negligible extent."/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_6.3/pnt_6.3.3" kind="point">
+                  <unit eId="anx_II/pnt_6.3/pnt_6.3.3" kind="point" numbered="true">
                      <num>
                         <t v="6.3.3."/>
                      </num>
@@ -3687,7 +3687,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_II/pnt_6.4" kind="level" depth="2">
+            <unit eId="anx_II/pnt_6.4" kind="level" depth="2" numbered="true">
                <num>
                   <t v="6.4."/>
                </num>
@@ -3704,7 +3704,7 @@
                   <t v="Approximately 1 ml of the sample solution is filled into an ampule according to section 5.16."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_6.5" kind="level" depth="2">
+            <unit eId="anx_II/pnt_6.5" kind="level" depth="2" numbered="true">
                <num>
                   <t v="6.5."/>
                </num>
@@ -3718,7 +3718,7 @@
                   <t v="With the compensating mode or operation with single columns, as well as for the glass inserts in the injector and in the detector the graphite seals according to section 5.5 have to be used."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_6.5.1" kind="level" depth="3">
+            <unit eId="anx_II/pnt_6.5.1" kind="level" depth="3" numbered="true">
                <num>
                   <t v="6.5.1."/>
                </num>
@@ -3729,7 +3729,7 @@
                   <t v="To avoid baseline rising one of the four methods is used:"/>
                </p>
                <list kind="arabic">
-                  <unit eId="anx_II/pnt_6.5.1/pnt_6.5.1.1" kind="point">
+                  <unit eId="anx_II/pnt_6.5.1/pnt_6.5.1.1" kind="point" numbered="true">
                      <num>
                         <t v="6.5.1.1."/>
                      </num>
@@ -3740,7 +3740,7 @@
                         <t v="Two packed columns are used in compensating mode."/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_6.5.1/pnt_6.5.1.2" kind="point">
+                  <unit eId="anx_II/pnt_6.5.1/pnt_6.5.1.2" kind="point" numbered="true">
                      <num>
                         <t v="6.5.1.2."/>
                      </num>
@@ -3751,7 +3751,7 @@
                         <t v="By application of a run by the gas chromatograph without injection of a fat solution and subsequent subtraction of the stored baseline rising of the baseline can be avoided."/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_6.5.1/pnt_6.5.1.3" kind="point">
+                  <unit eId="anx_II/pnt_6.5.1/pnt_6.5.1.3" kind="point" numbered="true">
                      <num>
                         <t v="6.5.1.3."/>
                      </num>
@@ -3762,7 +3762,7 @@
                         <t v="By application of a run by the integration system without injection of a fat solution and subsequent subtraction of the stored baseline rising of the baseline can be avoided."/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_6.5.1/pnt_6.5.1.4" kind="point">
+                  <unit eId="anx_II/pnt_6.5.1/pnt_6.5.1.4" kind="point" numbered="true">
                      <num>
                         <t v="6.5.1.4."/>
                      </num>
@@ -3775,7 +3775,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_II/pnt_6.5.2" kind="level" depth="3">
+            <unit eId="anx_II/pnt_6.5.2" kind="level" depth="3" numbered="true">
                <num>
                   <t v="6.5.2."/>
                </num>
@@ -3812,7 +3812,7 @@
                   </caption>
                </figure>
             </unit>
-            <unit eId="anx_II/pnt_6.5.3" kind="level" depth="3">
+            <unit eId="anx_II/pnt_6.5.3" kind="level" depth="3" numbered="true">
                <num>
                   <t v="6.5.3."/>
                </num>
@@ -3826,7 +3826,7 @@
                   <t v="The columns filled according to section 6.2 are conditioned as follows:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx_II/pnt_6.5.3/pnt_a" kind="point">
+                  <unit eId="anx_II/pnt_6.5.3/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -3838,7 +3838,7 @@
                         <t v="-flow at 50 °C;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_6.5.3/pnt_b" kind="point">
+                  <unit eId="anx_II/pnt_6.5.3/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -3850,7 +3850,7 @@
                         <t v="/min;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_6.5.3/pnt_c" kind="point">
+                  <unit eId="anx_II/pnt_6.5.3/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -3858,7 +3858,7 @@
                         <t v="Holding for 12 to 15 h at 355 °C;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_6.5.3/pnt_d" kind="point">
+                  <unit eId="anx_II/pnt_6.5.3/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -3866,7 +3866,7 @@
                         <t v="two injections of 1 μl of the cocoa butter solution according to section 4.10 and respective temperature program;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_II/pnt_6.5.3/pnt_e" kind="point">
+                  <unit eId="anx_II/pnt_6.5.3/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -3892,7 +3892,7 @@
                   <t v="The pair with the best quantitative results (response factors almost 1) is used in the following. With response factors &gt; 1,20 the column is not used."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_6.5.4" kind="level" depth="3">
+            <unit eId="anx_II/pnt_6.5.4" kind="level" depth="3" numbered="true">
                <num>
                   <t v="6.5.4."/>
                </num>
@@ -3909,7 +3909,7 @@
                   <t v="The standardized milk fat has a stock life of several months at a storage temperature of maximally -18 °C and can, thus, be used as a standard."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_6.5.5" kind="level" depth="3">
+            <unit eId="anx_II/pnt_6.5.5" kind="level" depth="3" numbered="true">
                <num>
                   <t v="6.5.5."/>
                </num>
@@ -3975,7 +3975,7 @@
                   </p>
                </annotation>
             </unit>
-            <unit eId="anx_II/pnt_7" kind="level" depth="1">
+            <unit eId="anx_II/pnt_7" kind="level" depth="1" numbered="true">
                <num>
                   <t v="7."/>
                </num>
@@ -4318,7 +4318,7 @@
                   <t v="With SD deviating to a greater extent compared with the values in Table 1, the chromatograms are not tolerable any more and the septa or the gas flow should be checked. Further, small components of the septum may have formed deposits on the glass wool at the entrance of the column or the column has become unsuited for use as a result of ageing, temperature influences etc. (see figure 3)."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_8" kind="level" depth="1">
+            <unit eId="anx_II/pnt_8" kind="level" depth="1" numbered="true">
                <num>
                   <t v="8."/>
                </num>
@@ -5123,7 +5123,7 @@
                   </annotation>
                </annotation>
             </unit>
-            <unit eId="anx_II/pnt_9" kind="level" depth="1">
+            <unit eId="anx_II/pnt_9" kind="level" depth="1" numbered="true">
                <num>
                   <t v="9."/>
                </num>
@@ -5399,7 +5399,7 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_II/pnt_10" kind="level" depth="1">
+            <unit eId="anx_II/pnt_10" kind="level" depth="1" numbered="true">
                <num>
                   <t v="10."/>
                </num>
@@ -5434,7 +5434,7 @@
                   </p>
                </annotation>
             </unit>
-            <unit eId="anx_II/pnt_11" kind="level" depth="1">
+            <unit eId="anx_II/pnt_11" kind="level" depth="1" numbered="true">
                <num>
                   <t v="11."/>
                </num>
@@ -5445,7 +5445,7 @@
                   <t v="Determined using milk fat on the basis of the formulae from Table 2 and the S-ranges in Table 3."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_11.1" kind="level" depth="2">
+            <unit eId="anx_II/pnt_11.1" kind="level" depth="2" numbered="true">
                <num>
                   <t v="11.1."/>
                </num>
@@ -5535,7 +5535,7 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_II/pnt_11.2" kind="level" depth="2">
+            <unit eId="anx_II/pnt_11.2" kind="level" depth="2" numbered="true">
                <num>
                   <t v="11.2."/>
                </num>
@@ -5625,7 +5625,7 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_II/pnt_11.3" kind="level" depth="2">
+            <unit eId="anx_II/pnt_11.3" kind="level" depth="2" numbered="true">
                <num>
                   <t v="11.3."/>
                </num>
@@ -5725,7 +5725,7 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_II/pnt_11.4" kind="level" depth="2">
+            <unit eId="anx_II/pnt_11.4" kind="level" depth="2" numbered="true">
                <num>
                   <t v="11.4."/>
                </num>
@@ -5742,7 +5742,7 @@
                   <t v="For control of optimal gas chromatographic conditions and especially of the quality of the column it should be guaranteed that with 10 repetition runs the difference of the maximum and minimum S-values of all five triglyceride formulae do not transgress the range x · r, with x = 1,58 (for 10 runs, see literature (16)), and the repeatability limits r for the different formulae in Table 6."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_12" kind="level" depth="1">
+            <unit eId="anx_II/pnt_12" kind="level" depth="1" numbered="true">
                <num>
                   <t v="12."/>
                </num>
@@ -5819,14 +5819,14 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_II/pnt_13" kind="level" depth="1">
+            <unit eId="anx_II/pnt_13" kind="level" depth="1" numbered="true">
                <num>
                   <t v="13."/>
                </num>
                <heading>
                   <t v="References"/>
                </heading>
-               <unit eId="anx_II/pnt_13/pnt_1" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -5839,7 +5839,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_2" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
@@ -5852,7 +5852,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_3" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="3."/>
                   </num>
@@ -5867,7 +5867,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_4" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_4" kind="point" numbered="true">
                   <num>
                      <t v="4."/>
                   </num>
@@ -5880,7 +5880,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_5" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_5" kind="point" numbered="true">
                   <num>
                      <t v="5."/>
                   </num>
@@ -5893,7 +5893,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_6" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_6" kind="point" numbered="true">
                   <num>
                      <t v="6."/>
                   </num>
@@ -5906,7 +5906,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_7" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_7" kind="point" numbered="true">
                   <num>
                      <t v="7."/>
                   </num>
@@ -5919,7 +5919,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_8" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_8" kind="point" numbered="true">
                   <num>
                      <t v="8."/>
                   </num>
@@ -5932,7 +5932,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_9" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_9" kind="point" numbered="true">
                   <num>
                      <t v="9."/>
                   </num>
@@ -5945,7 +5945,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_10" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_10" kind="point" numbered="true">
                   <num>
                      <t v="10."/>
                   </num>
@@ -5958,7 +5958,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_11" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_11" kind="point" numbered="true">
                   <num>
                      <t v="11."/>
                   </num>
@@ -5971,7 +5971,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_12" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_12" kind="point" numbered="true">
                   <num>
                      <t v="12."/>
                   </num>
@@ -5984,7 +5984,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_13" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_13" kind="point" numbered="true">
                   <num>
                      <t v="13."/>
                   </num>
@@ -5997,7 +5997,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_14" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_14" kind="point" numbered="true">
                   <num>
                      <t v="14."/>
                   </num>
@@ -6010,7 +6010,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_15" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_15" kind="point" numbered="true">
                   <num>
                      <t v="15."/>
                   </num>
@@ -6023,7 +6023,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_13/pnt_16" kind="point">
+               <unit eId="anx_II/pnt_13/pnt_16" kind="point" numbered="true">
                   <num>
                      <t v="16."/>
                   </num>
@@ -6045,7 +6045,7 @@
             <subheading>
                <t v="SENSORY EVALUATION OF BUTTER"/>
             </subheading>
-            <unit eId="anx_III/pnt_1" kind="level" depth="1">
+            <unit eId="anx_III/pnt_1" kind="level" depth="1" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -6056,7 +6056,7 @@
                   <t v="The purpose of this procedure for sensory evaluation of butter is to provide a uniform method applicable in all Member States."/>
                </p>
             </unit>
-            <unit eId="anx_III/pnt_2" kind="level" depth="1">
+            <unit eId="anx_III/pnt_2" kind="level" depth="1" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -6094,14 +6094,14 @@
                   <t v=": documents used to record the individual scores for each attribute and the final grade of the product. (This document may also be used to record chemical composition.)"/>
                </p>
             </unit>
-            <unit eId="anx_III/pnt_3" kind="level" depth="1">
+            <unit eId="anx_III/pnt_3" kind="level" depth="1" numbered="true">
                <num>
                   <t v="3."/>
                </num>
                <heading>
                   <t v="Test room"/>
                </heading>
-               <unit eId="anx_III/pnt_3/pnt_3.1" kind="point">
+               <unit eId="anx_III/pnt_3/pnt_3.1" kind="point" numbered="true">
                   <num>
                      <t v="3.1."/>
                   </num>
@@ -6109,7 +6109,7 @@
                      <t v="Precautions must be taken in order that the assessors in the test room are not influenced by external factors."/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_3/pnt_3.2" kind="point">
+               <unit eId="anx_III/pnt_3/pnt_3.2" kind="point" numbered="true">
                   <num>
                      <t v="3.2."/>
                   </num>
@@ -6117,7 +6117,7 @@
                      <t v="The test room must be free from foreign odours and easy to clean. The walls must be of a light colour."/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_3/pnt_3.3" kind="point">
+               <unit eId="anx_III/pnt_3/pnt_3.3" kind="point" numbered="true">
                   <num>
                      <t v="3.3."/>
                   </num>
@@ -6126,7 +6126,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_III/pnt_4" kind="level" depth="1">
+            <unit eId="anx_III/pnt_4" kind="level" depth="1" numbered="true">
                <num>
                   <t v="4."/>
                </num>
@@ -6137,7 +6137,7 @@
                   <t v="The assessor must be familiar with butter products and be competent to carry out sensory grading. His competence should be assessed on a regular basis (at least once a year) by the competent authority."/>
                </p>
             </unit>
-            <unit eId="anx_III/pnt_5" kind="level" depth="1">
+            <unit eId="anx_III/pnt_5" kind="level" depth="1" numbered="true">
                <num>
                   <t v="5."/>
                </num>
@@ -6148,14 +6148,14 @@
                   <t v="The number of assessors in the panel should be uneven, the minimum number being three. The majority must be employees of the competent authority or authorized persons not employed by the dairy industry."/>
                </p>
             </unit>
-            <unit eId="anx_III/pnt_6" kind="level" depth="1">
+            <unit eId="anx_III/pnt_6" kind="level" depth="1" numbered="true">
                <num>
                   <t v="6."/>
                </num>
                <heading>
                   <t v="Assessment of the value of each attribute"/>
                </heading>
-               <unit eId="anx_III/pnt_6/pnt_6.1" kind="point">
+               <unit eId="anx_III/pnt_6/pnt_6.1" kind="point" numbered="true">
                   <num>
                      <t v="6.1."/>
                   </num>
@@ -6187,7 +6187,7 @@
                      <t v="A significant deviation from the recommended temperature prevents a reliable evaluation of consistency and flavour. The temperature is of paramount importance."/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_6/pnt_6.2" kind="point">
+               <unit eId="anx_III/pnt_6/pnt_6.2" kind="point" numbered="true">
                   <num>
                      <t v="6.2."/>
                   </num>
@@ -6195,7 +6195,7 @@
                      <t v="Each attribute has to be sensory evaluated separately. The scoring has to be done according to table 1."/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_6/pnt_6.3" kind="point">
+               <unit eId="anx_III/pnt_6/pnt_6.3" kind="point" numbered="true">
                   <num>
                      <t v="6.3."/>
                   </num>
@@ -6203,7 +6203,7 @@
                      <t v="It may be desirable for the assessors to score together, before starting the assessment, one or more reference samples for appearance, consistency and flavour, in order to achieve uniformity."/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_6/pnt_6.4" kind="point">
+               <unit eId="anx_III/pnt_6/pnt_6.4" kind="point" numbered="true">
                   <num>
                      <t v="6.4."/>
                   </num>
@@ -6281,7 +6281,7 @@
                   <t v="Where the required score is not obtained, a description of the defect has to be given. The score given by each assessor for each attribute must be recorded in the control document. The product is accepted or rejected on the basis of a majority decision. Cases where differences between the individual scoring for each attribute are wider than adjacent points should not occur frequently (not more than once per 20 samples). Otherwise the competence of the panel should be checked by the panel leader."/>
                </p>
             </unit>
-            <unit eId="anx_III/pnt_7" kind="level" depth="1">
+            <unit eId="anx_III/pnt_7" kind="level" depth="1" numbered="true">
                <num>
                   <t v="7."/>
                </num>
@@ -6292,14 +6292,14 @@
                   <t v="A panel leader who must be an official employee of the competent authority and may be a member of the panel must be generally responsible for the entire procedure. He must record the individual scores for each attribute in the control document and certify whether the product is accepted or rejected."/>
                </p>
             </unit>
-            <unit eId="anx_III/pnt_8" kind="level" depth="1">
+            <unit eId="anx_III/pnt_8" kind="level" depth="1" numbered="true">
                <num>
                   <t v="8."/>
                </num>
                <heading>
                   <t v="Sampling and preparation of the sample"/>
                </heading>
-               <unit eId="anx_III/pnt_8/pnt_8.1" kind="point">
+               <unit eId="anx_III/pnt_8/pnt_8.1" kind="point" numbered="true">
                   <num>
                      <t v="8.1."/>
                   </num>
@@ -6328,7 +6328,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_III/pnt_8/pnt_8.2" kind="point">
+               <unit eId="anx_III/pnt_8/pnt_8.2" kind="point" numbered="true">
                   <num>
                      <t v="8.2."/>
                   </num>
@@ -6336,7 +6336,7 @@
                      <t v="When the sensory evaluation is carried out at the cold store, the sample is taken using a butter trier. If the sensory evaluation is carried out at another location other than the cold store, then at least a 500 g sample should be taken."/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_8/pnt_8.3" kind="point">
+               <unit eId="anx_III/pnt_8/pnt_8.3" kind="point" numbered="true">
                   <num>
                      <t v="8.3."/>
                   </num>
@@ -6345,7 +6345,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_III/pnt_9" kind="level" depth="1">
+            <unit eId="anx_III/pnt_9" kind="level" depth="1" numbered="true">
                <num>
                   <t v="9."/>
                </num>
@@ -7586,14 +7586,14 @@
                   <t v="Table 2: Table of butter defects"/>
                </heading>
             </unit>
-            <unit eId="anx_III/pnt_I" kind="level" depth="2">
+            <unit eId="anx_III/pnt_I" kind="level" depth="2" numbered="true">
                <num>
                   <t v="I."/>
                </num>
                <heading>
                   <t v="Appearance"/>
                </heading>
-               <unit eId="anx_III/pnt_I/pnt_1" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -7601,7 +7601,7 @@
                      <t v="loose (free), moisture"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_I/pnt_2" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
@@ -7609,7 +7609,7 @@
                      <t v="not uniform, two coloured"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_I/pnt_3" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="3."/>
                   </num>
@@ -7617,7 +7617,7 @@
                      <t v="streaky"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_I/pnt_4" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_4" kind="point" numbered="true">
                   <num>
                      <t v="4."/>
                   </num>
@@ -7625,7 +7625,7 @@
                      <t v="mottled, marbled"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_I/pnt_5" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_5" kind="point" numbered="true">
                   <num>
                      <t v="5."/>
                   </num>
@@ -7633,7 +7633,7 @@
                      <t v="speckled"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_I/pnt_6" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_6" kind="point" numbered="true">
                   <num>
                      <t v="6."/>
                   </num>
@@ -7641,7 +7641,7 @@
                      <t v="oil separation"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_I/pnt_7" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_7" kind="point" numbered="true">
                   <num>
                      <t v="7."/>
                   </num>
@@ -7649,7 +7649,7 @@
                      <t v="overcoloured"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_I/pnt_8" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_8" kind="point" numbered="true">
                   <num>
                      <t v="8."/>
                   </num>
@@ -7657,7 +7657,7 @@
                      <t v="weak (open texture)"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_I/pnt_9" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_9" kind="point" numbered="true">
                   <num>
                      <t v="9."/>
                   </num>
@@ -7665,7 +7665,7 @@
                      <t v="granular"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_I/pnt_10" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_10" kind="point" numbered="true">
                   <num>
                      <t v="10."/>
                   </num>
@@ -7673,7 +7673,7 @@
                      <t v="foreign matter"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_I/pnt_11" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_11" kind="point" numbered="true">
                   <num>
                      <t v="11."/>
                   </num>
@@ -7681,7 +7681,7 @@
                      <t v="mouldy"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_I/pnt_12" kind="point">
+               <unit eId="anx_III/pnt_I/pnt_12" kind="point" numbered="true">
                   <num>
                      <t v="12."/>
                   </num>
@@ -7690,14 +7690,14 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_III/pnt_II" kind="level" depth="2">
+            <unit eId="anx_III/pnt_II" kind="level" depth="2" numbered="true">
                <num>
                   <t v="II."/>
                </num>
                <heading>
                   <t v="Consistency"/>
                </heading>
-               <unit eId="anx_III/pnt_II/pnt_14" kind="point">
+               <unit eId="anx_III/pnt_II/pnt_14" kind="point" numbered="true">
                   <num>
                      <t v="14."/>
                   </num>
@@ -7705,7 +7705,7 @@
                      <t v="short, brittle, crumbly"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_II/pnt_15" kind="point">
+               <unit eId="anx_III/pnt_II/pnt_15" kind="point" numbered="true">
                   <num>
                      <t v="15."/>
                   </num>
@@ -7713,7 +7713,7 @@
                      <t v="pasty, doughy, greasy"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_II/pnt_16" kind="point">
+               <unit eId="anx_III/pnt_II/pnt_16" kind="point" numbered="true">
                   <num>
                      <t v="16."/>
                   </num>
@@ -7721,7 +7721,7 @@
                      <t v="sticky"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_II/pnt_17" kind="point">
+               <unit eId="anx_III/pnt_II/pnt_17" kind="point" numbered="true">
                   <num>
                      <t v="17."/>
                   </num>
@@ -7729,7 +7729,7 @@
                      <t v="hard"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_II/pnt_18" kind="point">
+               <unit eId="anx_III/pnt_II/pnt_18" kind="point" numbered="true">
                   <num>
                      <t v="18."/>
                   </num>
@@ -7738,14 +7738,14 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_III/pnt_III" kind="level" depth="2">
+            <unit eId="anx_III/pnt_III" kind="level" depth="2" numbered="true">
                <num>
                   <t v="III."/>
                </num>
                <heading>
                   <t v="Flavour &amp; Aroma"/>
                </heading>
-               <unit eId="anx_III/pnt_III/pnt_20" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_20" kind="point" numbered="true">
                   <num>
                      <t v="20."/>
                   </num>
@@ -7753,7 +7753,7 @@
                      <t v="without flavour"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_21" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_21" kind="point" numbered="true">
                   <num>
                      <t v="21."/>
                   </num>
@@ -7762,7 +7762,7 @@
                      <noteRef href="#note_29" marker="21"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_22" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_22" kind="point" numbered="true">
                   <num>
                      <t v="22."/>
                   </num>
@@ -7770,7 +7770,7 @@
                      <t v="foreign flavour"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_23" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_23" kind="point" numbered="true">
                   <num>
                      <t v="23."/>
                   </num>
@@ -7778,7 +7778,7 @@
                      <t v="stale"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_24" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_24" kind="point" numbered="true">
                   <num>
                      <t v="24."/>
                   </num>
@@ -7786,7 +7786,7 @@
                      <t v="cheesy, lactic cheese flavour"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_25" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_25" kind="point" numbered="true">
                   <num>
                      <t v="25."/>
                   </num>
@@ -7794,7 +7794,7 @@
                      <t v="acid"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_26" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_26" kind="point" numbered="true">
                   <num>
                      <t v="26."/>
                   </num>
@@ -7802,12 +7802,12 @@
                      <t v="yeasty"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_27" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_27" kind="point" numbered="true">
                   <num>
                      <t v="27."/>
                   </num>
                   <list kind="alpha">
-                     <unit eId="anx_III/pnt_III/pnt_27/pnt_a" kind="point">
+                     <unit eId="anx_III/pnt_III/pnt_27/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="a)"/>
                         </num>
@@ -7815,7 +7815,7 @@
                            <t v="cooked flavour"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_III/pnt_27/pnt_b" kind="point">
+                     <unit eId="anx_III/pnt_III/pnt_27/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="b)"/>
                         </num>
@@ -7825,7 +7825,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_28" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_28" kind="point" numbered="true">
                   <num>
                      <t v="28."/>
                   </num>
@@ -7833,7 +7833,7 @@
                      <t v="mouldy flavour"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_29" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_29" kind="point" numbered="true">
                   <num>
                      <t v="29."/>
                   </num>
@@ -7841,7 +7841,7 @@
                      <t v="rancid"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_30" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_30" kind="point" numbered="true">
                   <num>
                      <t v="30."/>
                   </num>
@@ -7849,7 +7849,7 @@
                      <t v="oily, fishy"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_31" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_31" kind="point" numbered="true">
                   <num>
                      <t v="31."/>
                   </num>
@@ -7857,12 +7857,12 @@
                      <t v="tallowy"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_32" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_32" kind="point" numbered="true">
                   <num>
                      <t v="32."/>
                   </num>
                   <list kind="alpha">
-                     <unit eId="anx_III/pnt_III/pnt_32/pnt_a" kind="point">
+                     <unit eId="anx_III/pnt_III/pnt_32/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="a)"/>
                         </num>
@@ -7870,7 +7870,7 @@
                            <t v="oxidized flavour"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_III/pnt_32/pnt_b" kind="point">
+                     <unit eId="anx_III/pnt_III/pnt_32/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="b)"/>
                         </num>
@@ -7880,7 +7880,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_33" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_33" kind="point" numbered="true">
                   <num>
                      <t v="33."/>
                   </num>
@@ -7888,7 +7888,7 @@
                      <t v="feed flavour"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_34" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_34" kind="point" numbered="true">
                   <num>
                      <t v="34."/>
                   </num>
@@ -7896,7 +7896,7 @@
                      <t v="coarse, bitter"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_35" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_35" kind="point" numbered="true">
                   <num>
                      <t v="35."/>
                   </num>
@@ -7904,7 +7904,7 @@
                      <t v="oversalted"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_36" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_36" kind="point" numbered="true">
                   <num>
                      <t v="36."/>
                   </num>
@@ -7912,7 +7912,7 @@
                      <t v="musty-flat, putrid"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_37" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_37" kind="point" numbered="true">
                   <num>
                      <t v="37."/>
                   </num>
@@ -7920,7 +7920,7 @@
                      <t v="malty"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_III/pnt_38" kind="point">
+               <unit eId="anx_III/pnt_III/pnt_38" kind="point" numbered="true">
                   <num>
                      <t v="38."/>
                   </num>
@@ -7938,7 +7938,7 @@
          <subheading>
             <t v="SAMPLING FOR CHEMICAL AND MICROBIOLOGICAL ANALYSIS AND SENSORY EVALUATION"/>
          </subheading>
-         <unit eId="anx_IV/pnt_1" kind="level" depth="1">
+         <unit eId="anx_IV/pnt_1" kind="level" depth="1" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -8078,7 +8078,7 @@
                <t v="Preparation of composite butter sample (chemical analysis):"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_IV/pnt_1/pnt_a" kind="point">
+               <unit eId="anx_IV/pnt_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -8086,7 +8086,7 @@
                      <t v="using a clean, dry butter trier or similar suitable instrument, extract a core of butter of at least 30 g and place in a sample container. The composite sample must then be sealed and forwarded to the laboratory for analysis;"/>
                   </p>
                </unit>
-               <unit eId="anx_IV/pnt_1/pnt_b" kind="point">
+               <unit eId="anx_IV/pnt_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -8099,7 +8099,7 @@
                <t v="Two samples per year per producer offering butter for intervention must be analysed for non-milk fat and one sample for tracers."/>
             </p>
          </unit>
-         <unit eId="anx_IV/pnt_2" kind="level" depth="1">
+         <unit eId="anx_IV/pnt_2" kind="level" depth="1" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -8181,7 +8181,7 @@
                <t v=". No resampling or re-evaluation is allowed."/>
             </p>
          </unit>
-         <unit eId="anx_IV/pnt_3" kind="level" depth="1">
+         <unit eId="anx_IV/pnt_3" kind="level" depth="1" numbered="true">
             <num>
                <t v="3."/>
             </num>
@@ -8189,7 +8189,7 @@
                <t v="Guidelines to be followed where samples show defects:"/>
             </heading>
             <list kind="alpha">
-               <unit eId="anx_IV/pnt_3/pnt_a" kind="point">
+               <unit eId="anx_IV/pnt_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -8213,7 +8213,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_IV/pnt_3/pnt_b" kind="point">
+               <unit eId="anx_IV/pnt_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -8224,7 +8224,7 @@
                      <t v="where a sample fails the sensory evaluation, the quantity of butter between two neighbouring samples on either side of the sample failing is to be rejected from the quantity offered;"/>
                   </p>
                </unit>
-               <unit eId="anx_IV/pnt_3/pnt_c" kind="point">
+               <unit eId="anx_IV/pnt_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>

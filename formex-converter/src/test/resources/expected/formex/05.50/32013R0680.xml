@@ -138,7 +138,7 @@
          </p>
          <quotedStructure eId="art_1/qstr_1">
             <list kind="alpha">
-               <unit eId="art_1/qstr_1/pnt_e" kind="point">
+               <unit eId="art_1/qstr_1/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="‘"/>
                      <t v="(e)"/>
@@ -165,7 +165,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="art_1/qstr_1/pnt_f" kind="point">
+               <unit eId="art_1/qstr_1/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>

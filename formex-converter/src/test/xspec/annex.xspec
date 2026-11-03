@@ -292,6 +292,8 @@
     <x:expect label="labelled sections inside are annex-wide while their label is free" test="$x:result//*:unit/@eId = 'anx/level_PART-2'"/>
     <x:expect label="a number the annex already has hangs off its section" test="$x:result//*:unit/@eId = ('anx/pnt_2.1', 'anx/level_PART-2/pnt_2.1')"/>
     <x:expect label="a heading that is no label gets a position" test="$x:result//*:unit/@eId = 'anx/level_ATTACHMENT-6-A/level_1'"/>
+    <x:expect label="only a numbered level is numbered: not a label line, not a position"
+              test="every $u in $x:result//*:unit[@kind = 'level'] satisfies ($u/@numbered = 'true') = starts-with(tokenize($u/@eId, '/')[last()], 'pnt_')"/>
   </x:scenario>
 
   <x:scenario label="Points written as levels (Air Ops rules)">

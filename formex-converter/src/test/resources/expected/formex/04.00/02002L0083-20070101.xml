@@ -63,7 +63,7 @@
       <p>
          <t v="Whereas:"/>
       </p>
-      <unit eId="pnt_1" kind="point">
+      <unit eId="pnt_1" kind="point" numbered="true">
          <num>
             <t v="(1)"/>
          </num>
@@ -83,7 +83,7 @@
             <t v=" have been substantially amended several times. Since further amendments are to be made, the Directives should be recast in the interests of clarity.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_2/pnt_2" kind="point">
+      <unit eId="list_2/pnt_2" kind="point" numbered="true">
          <num>
             <t v="(2)"/>
          </num>
@@ -91,7 +91,7 @@
             <t v="In order to facilitate the taking-up and pursuit of the business of life assurance, it is essential to eliminate certain divergences which exist between national supervisory legislation. In order to achieve this objective and at the same time ensure adequate protection for policy holders and beneficiaries in all Member States, the provisions relating to the financial guarantees required of life assurance undertakings should be coordinated.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_3/pnt_3" kind="point">
+      <unit eId="list_3/pnt_3" kind="point" numbered="true">
          <num>
             <t v="(3)"/>
          </num>
@@ -99,7 +99,7 @@
             <t v="It is necessary to complete the internal market in direct life assurance, from the point of view both of the right of establishment and of the freedom to provide services in the Member States, to make it easier for assurance undertakings with head offices in the Community to cover commitments situated within the Community and to make it possible for policy holders to have recourse not only to assurers established in their own country, but also to assurers which have their head office in the Community and are established in other Member States.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_4/pnt_4" kind="point">
+      <unit eId="list_4/pnt_4" kind="point" numbered="true">
          <num>
             <t v="(4)"/>
          </num>
@@ -107,7 +107,7 @@
             <t v="Under the Treaty, any discrimination with regard to freedom to provide services based on the fact that an undertaking is not established in the Member State in which the services are provided is prohibited. That prohibition applies to services provided from any establishment in the Community, whether it be the head office of an undertaking or an agency or branch.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_5/pnt_5" kind="point">
+      <unit eId="list_5/pnt_5" kind="point" numbered="true">
          <num>
             <t v="(5)"/>
          </num>
@@ -115,7 +115,7 @@
             <t v="This Directive therefore represents an important step in the merging of national markets into an integrated market and that stage must be supplemented by other Community instruments with a view to enabling all policy holders to have recourse to any assurer with a head office in the Community who carries on business there, under the right of establishment or the freedom to provide services, while guaranteeing them adequate protection.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_6/pnt_6" kind="point">
+      <unit eId="list_6/pnt_6" kind="point" numbered="true">
          <num>
             <t v="(6)"/>
          </num>
@@ -127,7 +127,7 @@
             <t v=".&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_7/pnt_7" kind="point">
+      <unit eId="list_7/pnt_7" kind="point" numbered="true">
          <num>
             <t v="(7)"/>
          </num>
@@ -135,7 +135,7 @@
             <t v="The approach adopted consists in bringing about such harmonisation as is essential, necessary and sufficient to achieve the mutual recognition of authorisations and prudential control systems, thereby making it possible to grant a single authorisation valid throughout the Community and apply the principle of supervision by the home Member State.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_8/pnt_8" kind="point">
+      <unit eId="list_8/pnt_8" kind="point" numbered="true">
          <num>
             <t v="(8)"/>
          </num>
@@ -143,7 +143,7 @@
             <t v="As a result, the taking up and the pursuit of the business of assurance are subject to the grant of a single official authorisation issued by the competent authorities of the Member State in which an assurance undertaking has its head office. Such authorisation enables an undertaking to carry on business throughout the Community, under the right of establishment or the freedom to provide services. The Member State of the branch or of the provision of services may not require assurance undertakings which wish to carry on assurance business there and which have already been authorised in their home Member State to seek fresh authorisation.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_9/pnt_9" kind="point">
+      <unit eId="list_9/pnt_9" kind="point" numbered="true">
          <num>
             <t v="(9)"/>
          </num>
@@ -151,7 +151,7 @@
             <t v="The competent authorities should not authorise or continue the authorisation of an assurance undertaking where they are liable to be prevented from effectively exercising their supervisory functions by the close links between that undertaking and other natural or legal persons. Assurance undertakings already authorised must also satisfy the competent authorities in that respect.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_10/pnt_10" kind="point">
+      <unit eId="list_10/pnt_10" kind="point" numbered="true">
          <num>
             <t v="(10)"/>
          </num>
@@ -163,7 +163,7 @@
             <t v=" in this Directive lays down minimum criteria and that does not prevent Member States from applying it to situations other than those envisaged by the definition."/>
          </p>
       </unit>
-      <unit eId="list_11/pnt_11" kind="point">
+      <unit eId="list_11/pnt_11" kind="point" numbered="true">
          <num>
             <t v="(11)"/>
          </num>
@@ -175,7 +175,7 @@
             <t v=", if that holding has been acquired solely as a temporary investment which does not make it possible to exercise influence over the structure or financial policy of the undertaking."/>
          </p>
       </unit>
-      <unit eId="list_12/pnt_12" kind="point">
+      <unit eId="list_12/pnt_12" kind="point" numbered="true">
          <num>
             <t v="(12)"/>
          </num>
@@ -183,7 +183,7 @@
             <t v="The principles of mutual recognition and of home Member State supervision require that Member States' competent authorities should not grant or should withdraw authorisation where factors such as the content of programmes of operations or the geographical distribution of the activities actually carried on indicate clearly that an assurance undertaking has opted for the legal system of one Member State for the purpose of evading the stricter standards in force in another Member State within whose territory it carries on or intends to carry on the greater part of its activities. An assurance undertaking must be authorised in the Member State in which it has its registered office. In addition, Member States must require that an assurance undertaking's head office always be situated in its home Member State and that it actually carries on its business there.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_13/pnt_13" kind="point">
+      <unit eId="list_13/pnt_13" kind="point" numbered="true">
          <num>
             <t v="(13)"/>
          </num>
@@ -191,7 +191,7 @@
             <t v="For practical reasons, it is desirable to define provision of services taking into account both the assurer's establishment and the place where the commitment is to be covered. Therefore, commitment should also be defined. Moreover, it is desirable to distinguish between activities pursued by way of establishment and activities pursued by way of freedom to provide services.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_14/pnt_14" kind="point">
+      <unit eId="list_14/pnt_14" kind="point" numbered="true">
          <num>
             <t v="(14)"/>
          </num>
@@ -199,7 +199,7 @@
             <t v="A classification by class of assurance is necessary in order to determine, in particular, the activities subject to compulsory authorisation.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_15/pnt_15" kind="point">
+      <unit eId="list_15/pnt_15" kind="point" numbered="true">
          <num>
             <t v="(15)"/>
          </num>
@@ -207,7 +207,7 @@
             <t v="Certain mutual associations which, by virtue of their legal status, fulfil requirements as to security and other specific financial guarantees should be excluded from the scope of this Directive. Certain organisations whose activity covers only a very restricted sector and is limited by their articles of association should also be excluded.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_16/pnt_16" kind="point">
+      <unit eId="list_16/pnt_16" kind="point" numbered="true">
          <num>
             <t v="(16)"/>
          </num>
@@ -215,7 +215,7 @@
             <t v="Life assurance is subject to official authorisation and supervision in each Member State. The conditions for the granting or withdrawal of such authorisation should be defined. Provision must be made for the right to apply to the courts should an authorisation be refused or withdrawn.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_17/pnt_17" kind="point">
+      <unit eId="list_17/pnt_17" kind="point" numbered="true">
          <num>
             <t v="(17)"/>
          </num>
@@ -223,7 +223,7 @@
             <t v="It is desirable to clarify the powers and means of supervision vested in the competent authorities. It is also desirable to lay down specific provisions regarding the taking up, pursuit and supervision of activity by way of freedom to provide services.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_18/pnt_18" kind="point">
+      <unit eId="list_18/pnt_18" kind="point" numbered="true">
          <num>
             <t v="(18)"/>
          </num>
@@ -231,7 +231,7 @@
             <t v="The competent authorities of home Member States should be responsible for monitoring the financial health of assurance undertakings, including their state of solvency, the establishment of adequate technical provisions and the covering of those provisions by matching assets.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_19/pnt_19" kind="point">
+      <unit eId="list_19/pnt_19" kind="point" numbered="true">
          <num>
             <t v="(19)"/>
          </num>
@@ -239,7 +239,7 @@
             <t v="It is appropriate to provide for the possibility of exchanges of information between the competent authorities and authorities or bodies which, by virtue of their function, help to strengthen the stability of the financial system. In order to preserve the confidential nature of the information forwarded, the list of addressees must remain within strict limits.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_20/pnt_20" kind="point">
+      <unit eId="list_20/pnt_20" kind="point" numbered="true">
          <num>
             <t v="(20)"/>
          </num>
@@ -247,7 +247,7 @@
             <t v="Certain behaviour, such as fraud and insider offences, is liable to affect the stability, including integrity, of the financial system, even when involving undertakings other than assurance undertakings.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_21/pnt_21" kind="point">
+      <unit eId="list_21/pnt_21" kind="point" numbered="true">
          <num>
             <t v="(21)"/>
          </num>
@@ -255,7 +255,7 @@
             <t v="It is necessary to specify the conditions under which the abovementioned exchanges of information are authorised.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_22/pnt_22" kind="point">
+      <unit eId="list_22/pnt_22" kind="point" numbered="true">
          <num>
             <t v="(22)"/>
          </num>
@@ -263,7 +263,7 @@
             <t v="Where it is stipulated that information may be disclosed only with the express agreement of the competent authorities, these may, where appropriate, make their agreement subject to compliance with strict conditions.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_23/pnt_23" kind="point">
+      <unit eId="list_23/pnt_23" kind="point" numbered="true">
          <num>
             <t v="(23)"/>
          </num>
@@ -271,7 +271,7 @@
             <t v="Member States may conclude agreements on exchange of information with third countries provided that the information disclosed is subject to appropriate guarantees of professional secrecy.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_24/pnt_24" kind="point">
+      <unit eId="list_24/pnt_24" kind="point" numbered="true">
          <num>
             <t v="(24)"/>
          </num>
@@ -279,7 +279,7 @@
             <t v="For the purposes of strengthening the prudential supervision of assurance undertakings and protection of clients of assurance undertakings, it should be stipulated that an auditor must have a duty to report promptly to the competent authorities, wherever, as provided for by this Directive, he/she becomes aware, while carrying out his/her tasks, of certain facts which are liable to have a serious effect on the financial situation or the administrative and accounting organisation of an assurance undertaking.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_25/pnt_25" kind="point">
+      <unit eId="list_25/pnt_25" kind="point" numbered="true">
          <num>
             <t v="(25)"/>
          </num>
@@ -287,7 +287,7 @@
             <t v="Having regard to the aim in view, it is desirable for Member States to provide that such a duty should apply in all circumstances where such facts are discovered by an auditor during the performance of his/her tasks in an undertaking which has close links with an assurance undertaking.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_26/pnt_26" kind="point">
+      <unit eId="list_26/pnt_26" kind="point" numbered="true">
          <num>
             <t v="(26)"/>
          </num>
@@ -295,7 +295,7 @@
             <t v="The duty of auditors to communicate, where appropriate, to the competent authorities certain facts and decisions concerning an assurance undertaking which they discover during the performance of their tasks in a non-assurance undertaking does not in itself change the nature of their tasks in that undertaking nor the manner in which they must perform those tasks in that undertaking.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_27/pnt_27" kind="point">
+      <unit eId="list_27/pnt_27" kind="point" numbered="true">
          <num>
             <t v="(27)"/>
          </num>
@@ -303,7 +303,7 @@
             <t v="The performance of the operations of management of group pension funds cannot under any circumstances affect the powers conferred on the respective authorities with regard to the entities holding the assets with which that management is concerned.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_28/pnt_28" kind="point">
+      <unit eId="list_28/pnt_28" kind="point" numbered="true">
          <num>
             <t v="(28)"/>
          </num>
@@ -311,7 +311,7 @@
             <t v="Certain provisions of this Directive define minimum standards. A home Member State may lay down stricter rules for assurance undertakings authorised by its own competent authorities.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_29/pnt_29" kind="point">
+      <unit eId="list_29/pnt_29" kind="point" numbered="true">
          <num>
             <t v="(29)"/>
          </num>
@@ -319,7 +319,7 @@
             <t v="The competent authorities of the Member States must have at their disposal such means of supervision as are necessary to ensure the orderly pursuit of business by assurance undertakings throughout the Community whether carried on under the right of establishment or the freedom to provide services. In particular, they must be able to introduce appropriate safeguards or impose sanctions aimed at preventing irregularities and infringements of the provisions on assurance supervision.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_30/pnt_30" kind="point">
+      <unit eId="list_30/pnt_30" kind="point" numbered="true">
          <num>
             <t v="(30)"/>
          </num>
@@ -327,7 +327,7 @@
             <t v="The provisions on transfers of portfolios should include provisions specifically concerning the transfer to another undertaking of the portfolio of contracts concluded by way of freedom to provide services.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_31/pnt_31" kind="point">
+      <unit eId="list_31/pnt_31" kind="point" numbered="true">
          <num>
             <t v="(31)"/>
          </num>
@@ -335,7 +335,7 @@
             <t v="The provisions on transfers of portfolios must be in line with the single legal authorisation system provided for in this Directive.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_32/pnt_32" kind="point">
+      <unit eId="list_32/pnt_32" kind="point" numbered="true">
          <num>
             <t v="(32)"/>
          </num>
@@ -343,7 +343,7 @@
             <t v="Undertakings formed after the dates referred to in Article 18(3) should not be authorised to carry on life assurance and non-life insurance activities simultaneously. Member States should be allowed to permit undertakings which, on the relevant dates referred to in Article 18(3), carried on these activities simultaneously to continue to do so provided that separate management is adopted for each of their activities, in order that the respective interests of life policy holders and non-life policy holders are safeguarded and the minimum financial obligations in respect of one of the activities are not borne by the other activity. Member States should be given the option of requiring those existing undertakings established in their territory which carry on life assurance and non-life insurance simultaneously to put an end to this practice. Moreover, specialised undertakings should be subject to special supervision where a non-life undertaking belongs to the same financial group as a life undertaking.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_33/pnt_33" kind="point">
+      <unit eId="list_33/pnt_33" kind="point" numbered="true">
          <num>
             <t v="(33)"/>
          </num>
@@ -351,7 +351,7 @@
             <t v="Nothing in this Directive prevents a composite undertaking from dividing itself into two undertakings, one active in the field of life assurance, the other in non-life insurance. In order to allow such division to take place under the best possible conditions, it is desirable to permit Member States, in accordance with Community rules of competition law, to provide for appropriate tax arrangements, in particular with regard to the capital gains such division could entail.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_34/pnt_34" kind="point">
+      <unit eId="list_34/pnt_34" kind="point" numbered="true">
          <num>
             <t v="(34)"/>
          </num>
@@ -363,7 +363,7 @@
             <t v=". That possibility may, however, be subject to certain conditions as regards compliance with accounting rules and rules on winding-up.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_35/pnt_35" kind="point">
+      <unit eId="list_35/pnt_35" kind="point" numbered="true">
          <num>
             <t v="(35)"/>
          </num>
@@ -371,7 +371,7 @@
             <t v="It is necessary from the point of view of the protection of lives assured that every assurance undertaking should establish adequate technical provisions. The calculation of such provisions is based for the most part on actuarial principles. Those principles should be coordinated in order to facilitate mutual recognition of the prudential rules applicable in the various Member States.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_36/pnt_36" kind="point">
+      <unit eId="list_36/pnt_36" kind="point" numbered="true">
          <num>
             <t v="(36)"/>
          </num>
@@ -379,7 +379,7 @@
             <t v="It is desirable, in the interests of prudence, to establish a minimum of coordination of rules limiting the rate of interest used in calculating the technical provisions. For the purposes of such limitation, since existing methods are all equally correct, prudential and equivalent, it seems appropriate to leave Member States a free choice as to the method to be used.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_37/pnt_37" kind="point">
+      <unit eId="list_37/pnt_37" kind="point" numbered="true">
          <num>
             <t v="(37)"/>
          </num>
@@ -387,7 +387,7 @@
             <t v="The rules governing the calculation of technical provisions and the rules governing the spread, localisation and matching of the assets used to cover technical provisions must be coordinated in order to facilitate the mutual recognition of Member States' rules. That coordination must take account of the liberalisation of capital movements provided for in Article 56 of the Treaty and the progress made by the Community towards economic and monetary union.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_38/pnt_38" kind="point">
+      <unit eId="list_38/pnt_38" kind="point" numbered="true">
          <num>
             <t v="(38)"/>
          </num>
@@ -395,7 +395,7 @@
             <t v="The home Member State may not require assurance undertakings to invest the assets covering their technical provisions in particular categories of assets, as such a requirement would be incompatible with the liberalisation of capital movements provided for in Article 56 of the Treaty.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_39/pnt_39" kind="point">
+      <unit eId="list_39/pnt_39" kind="point" numbered="true">
          <num>
             <t v="(39)"/>
          </num>
@@ -403,7 +403,7 @@
             <t v="It is necessary that, over and above technical provisions, including mathematical provisions, of sufficient amount to meet their underwriting liabilities, assurance undertakings should possess a supplementary reserve, known as the solvency margin, represented by free assets and, with the agreement of the competent authority, by other implicit assets, which shall act as a buffer against adverse business fluctuations. This requirement is an important element of prudential supervision for the protection of insured persons and policy holders. In order to ensure that the requirements imposed for such purposes are determined according to objective criteria whereby undertakings of the same size will be placed on an equal footing as regards competition, it is desirable to provide that this margin shall be related to all the commitments of the undertaking and to the nature and gravity of the risks presented by the various activities falling within the scope of this Directive. This margin should therefore vary according to whether the risks are of investment, death or management only. It should accordingly be determined in terms of mathematical provisions and capital at risk underwritten by an undertaking, of premiums or contributions received, of provisions only or of the assets of tontines.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_40/pnt_40" kind="point">
+      <unit eId="list_40/pnt_40" kind="point" numbered="true">
          <num>
             <t v="(40)"/>
          </num>
@@ -415,7 +415,7 @@
             <t v=" provides for a definition of regulated market, although it excludes from its scope life assurance activities. It is appropriate to apply the concept of regulated market also to life assurance activities.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_41/pnt_41" kind="point">
+      <unit eId="list_41/pnt_41" kind="point" numbered="true">
          <num>
             <t v="(41)"/>
          </num>
@@ -423,7 +423,7 @@
             <t v="The list of items of which the solvency margin required by this Directive may be made up takes account of new financial instruments and of the facilities granted to other financial institutions for the constitution of their own funds. In the light of market developments in the nature of reinsurance cover purchased by primary insurers, there is a need for the competent authorities to be empowered to decrease the reduction to the solvency margin requirement in certain circumstances. In order to improve the quality of the solvency margin, the possibility of including future profits in the available solvency margin should be limited and subject to conditions and should in any case cease after 2009.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_42/pnt_42" kind="point">
+      <unit eId="list_42/pnt_42" kind="point" numbered="true">
          <num>
             <t v="(42)"/>
          </num>
@@ -431,7 +431,7 @@
             <t v="It is necessary to require a guarantee fund, the amount and composition of which are such as to provide an assurance that the undertakings possess adequate resources when they are set up and that in the subsequent course of business the solvency margin in no event falls below a minimum of security. The whole or a specified part of this guarantee fund must consist of explicit asset items.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_43/pnt_43" kind="point">
+      <unit eId="list_43/pnt_43" kind="point" numbered="true">
          <num>
             <t v="(43)"/>
          </num>
@@ -439,7 +439,7 @@
             <t v="To avoid major and sharp increases in the amount of the minimum guarantee fund in the future, a mechanism should be established providing for its increase in line with the European index of consumer prices. This Directive should lay down minimum standards for the solvency margin requirements and home Member States should be able to lay down stricter rules for insurance undertakings authorised by their own competent authorities.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_44/pnt_44" kind="point">
+      <unit eId="list_44/pnt_44" kind="point" numbered="true">
          <num>
             <t v="(44)"/>
          </num>
@@ -447,7 +447,7 @@
             <t v="The provisions in force in the Member States regarding contract law applicable to the activities referred to in this Directive differ. The harmonisation of assurance contract law is not a prior condition for the achievement of the internal market in assurance. Therefore, the opportunity afforded to the Member States of imposing the application of their law to assurance contracts covering commitments within their territories is likely to provide adequate safeguards for policy holders. The freedom to choose, as the law applicable to the contract, a law other than that of the State of the commitment may be granted in certain cases, in accordance with rules which take into account specific circumstances.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_45/pnt_45" kind="point">
+      <unit eId="list_45/pnt_45" kind="point" numbered="true">
          <num>
             <t v="(45)"/>
          </num>
@@ -455,7 +455,7 @@
             <t v="For life assurance contracts the policy holder should be given the opportunity of cancelling the contract within a period of between 14 and 30 days.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_46/pnt_46" kind="point">
+      <unit eId="list_46/pnt_46" kind="point" numbered="true">
          <num>
             <t v="(46)"/>
          </num>
@@ -463,7 +463,7 @@
             <t v="Within the framework of an internal market it is in the policy holder's interest that they should have access to the widest possible range of assurance products available in the Community so that they can choose that which is best suited to their needs. It is for the Member State of the commitment to ensure that there is nothing to prevent the marketing within its territory of all the assurance products offered for sale in the Community as long as they do not conflict with the legal provisions protecting the general good in force in the Member State of the commitment and in so far as the general good is not safeguarded by the rules of the home Member State, provided that such provisions must be applied without discrimination to all undertakings operating in that Member State and be objectively necessary and in proportion to the objective pursued.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_47/pnt_47" kind="point">
+      <unit eId="list_47/pnt_47" kind="point" numbered="true">
          <num>
             <t v="(47)"/>
          </num>
@@ -471,7 +471,7 @@
             <t v="The Member States must be able to ensure that the assurance products and contract documents used, under the right of establishment or the freedom to provide services, to cover commitments within their territories comply with such specific legal provisions protecting the general good as are applicable. The systems of supervision to be employed must meet the requirements of an internal market but their employment may not constitute a prior condition for carrying on assurance business. From this standpoint, systems for the prior approval of policy conditions do not appear to be justified. It is therefore necessary to provide for other systems better suited to the requirements of an internal market which enable every Member State to guarantee policy holders adequate protection.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_48/pnt_48" kind="point">
+      <unit eId="list_48/pnt_48" kind="point" numbered="true">
          <num>
             <t v="(48)"/>
          </num>
@@ -479,7 +479,7 @@
             <t v="It is necessary to make provision for cooperation between the competent authorities of the Member States and between those authorities and the Commission.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_49/pnt_49" kind="point">
+      <unit eId="list_49/pnt_49" kind="point" numbered="true">
          <num>
             <t v="(49)"/>
          </num>
@@ -487,7 +487,7 @@
             <t v="Provision should be made for a system of penalties to be imposed when, in the Member State in which the commitment is entered into, an assurance undertaking does not comply with those provisions protecting the general good that are applicable to it.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_50/pnt_50" kind="point">
+      <unit eId="list_50/pnt_50" kind="point" numbered="true">
          <num>
             <t v="(50)"/>
          </num>
@@ -495,7 +495,7 @@
             <t v="It is necessary to provide for measures in cases where the financial position of the undertaking becomes such that it is difficult for it to meet its underwriting liabilities. In specific situations where policy holders' rights are threatened, there is a need for the competent authorities to be empowered to intervene at a sufficiently early stage, but in the exercise of those powers, competent authorities should inform the insurance undertakings of the reasons motivating such supervisory action, in accordance with the principles of sound administration and due process. As long as such a situation exists, the competent authorities should be prevented from certifying that the insurance undertaking has a sufficient solvency margin.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_51/pnt_51" kind="point">
+      <unit eId="list_51/pnt_51" kind="point" numbered="true">
          <num>
             <t v="(51)"/>
          </num>
@@ -503,7 +503,7 @@
             <t v="For the purposes of implementing actuarial principles in conformity with this Directive, the home Member State may require systematic notification of the technical bases used for calculating scales of premiums and technical provisions, with such notification of technical bases excluding notification of the general and special policy conditions and the undertaking's commercial rates.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_52/pnt_52" kind="point">
+      <unit eId="list_52/pnt_52" kind="point" numbered="true">
          <num>
             <t v="(52)"/>
          </num>
@@ -511,7 +511,7 @@
             <t v="In an internal market for assurance the consumer will have a wider and more varied choice of contracts. If he/she is to profit fully from this diversity and from increased competition, he/she must be provided with whatever information is necessary to enable him/her to choose the contract best suited to his/her needs. This information requirement is all the more important as the duration of commitments can be very long. The minimum provisions must therefore be coordinated in order for the consumer to receive clear and accurate information on the essential characteristics of the products proposed to him/her as well as the particulars of the bodies to which any complaints of policy holders, assured persons or beneficiaries of contracts may be addressed.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_53/pnt_53" kind="point">
+      <unit eId="list_53/pnt_53" kind="point" numbered="true">
          <num>
             <t v="(53)"/>
          </num>
@@ -519,7 +519,7 @@
             <t v="Publicity for assurance products is an essential means of enabling assurance business to be carried on effectively within the Community. It is necessary to leave open to assurance undertakings the use of all normal means of advertising in the Member State of the branch or of provision of services. Member States may nevertheless require compliance with their national rules on the form and content of advertising, whether laid down pursuant to Community legislation on advertising or adopted by Member States for reasons of the general good.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_54/pnt_54" kind="point">
+      <unit eId="list_54/pnt_54" kind="point" numbered="true">
          <num>
             <t v="(54)"/>
          </num>
@@ -527,7 +527,7 @@
             <t v="Within the framework of the internal market, no Member State may continue to prohibit the simultaneous carrying on of assurance business within its territory under the right of establishment and the freedom to provide services.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_55/pnt_55" kind="point">
+      <unit eId="list_55/pnt_55" kind="point" numbered="true">
          <num>
             <t v="(55)"/>
          </num>
@@ -535,7 +535,7 @@
             <t v="Some Member States do not subject assurance transactions to any form of indirect taxation, while the majority apply special taxes and other forms of contribution. The structures and rates of such taxes and contributions vary considerably between the Member States in which they are applied. It is desirable to prevent existing differences leading to distortions of competition in assurance services between Member States. Pending subsequent harmonisation, application of the tax systems and other forms of contribution provided for by the Member States in which commitments entered into are likely to remedy that problem and it is for the Member States to make arrangements to ensure that such taxes and contributions are collected.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_56/pnt_56" kind="point">
+      <unit eId="list_56/pnt_56" kind="point" numbered="true">
          <num>
             <t v="(56)"/>
          </num>
@@ -543,7 +543,7 @@
             <t v="It is important to introduce Community coordination on the winding-up of assurance undertakings. It is henceforth essential to provide, in the event of the winding-up of an assurance undertaking, that the system of protection in place in each Member State must guarantee equality of treatment for all assurance creditors, irrespective of nationality and of the method of entering into the commitment.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_57/pnt_57" kind="point">
+      <unit eId="list_57/pnt_57" kind="point" numbered="true">
          <num>
             <t v="(57)"/>
          </num>
@@ -551,7 +551,7 @@
             <t v="The coordinated rules concerning the pursuit of the business of direct insurance within the Community should, in principle, apply to all undertakings operating on the market and, consequently, also to agencies and branches where the head office of the undertaking is situated outside the Community. As regards the methods of supervision this Directive lays down special provisions for such agencies or branches, in view of the fact that the assets of the undertakings to which they belong are situated outside the Community.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_58/pnt_58" kind="point">
+      <unit eId="list_58/pnt_58" kind="point" numbered="true">
          <num>
             <t v="(58)"/>
          </num>
@@ -559,7 +559,7 @@
             <t v="It is desirable to provide for the conclusion of reciprocal agreements with one or more third countries in order to permit the relaxation of such special conditions, while observing the principle that such agencies and branches should not obtain more favourable treatment than Community undertakings.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_59/pnt_59" kind="point">
+      <unit eId="list_59/pnt_59" kind="point" numbered="true">
          <num>
             <t v="(59)"/>
          </num>
@@ -569,7 +569,7 @@
             <t v=".&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_60/pnt_60" kind="point">
+      <unit eId="list_60/pnt_60" kind="point" numbered="true">
          <num>
             <t v="(60)"/>
          </num>
@@ -577,7 +577,7 @@
             <t v="This Directive should establish provisions concerning proof of good repute and no previous bankruptcy.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_61/pnt_61" kind="point">
+      <unit eId="list_61/pnt_61" kind="point" numbered="true">
          <num>
             <t v="(61)"/>
          </num>
@@ -587,7 +587,7 @@
             <t v=" should be amended. The content of the scheme of operation of branches of third-country undertakings to be established in the Community should also be defined.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_62/pnt_62" kind="point">
+      <unit eId="list_62/pnt_62" kind="point" numbered="true">
          <num>
             <t v="(62)"/>
          </num>
@@ -597,7 +597,7 @@
             <t v=", in the exercise of the implementing powers conferred on it by the Treaty. These measures being measures of general scope within the meaning of Article 2 of Decision 1999/468/EC, they should be adopted by the use of the regulatory procedure provided for in Article 5 of that Decision.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_63/pnt_63" kind="point">
+      <unit eId="list_63/pnt_63" kind="point" numbered="true">
          <num>
             <t v="(63)"/>
          </num>
@@ -605,7 +605,7 @@
             <t v="Pursuant to Article 15 of the Treaty, account should be taken of the extent of the effort which must be made by certain economies at different stages of development. Therefore, transitional arrangements should be adopted for the gradual application of this Directive by certain Member States.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_64/pnt_64" kind="point">
+      <unit eId="list_64/pnt_64" kind="point" numbered="true">
          <num>
             <t v="(64)"/>
          </num>
@@ -613,7 +613,7 @@
             <t v="Directives 79/267/EEC and 90/619/EEC granted special derogation with regard to some undertakings existing at the time of the adoption of these Directives. Such undertakings have thereafter modified their structure. Therefore they do not need any longer such special derogation.&#xA;"/>
          </p>
       </unit>
-      <unit eId="list_65/pnt_65" kind="point">
+      <unit eId="list_65/pnt_65" kind="point" numbered="true">
          <num>
             <t v="(65)"/>
          </num>
@@ -646,7 +646,7 @@
                   <t v="For the purposes of this Directive:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_1/par_1/pnt_a" kind="point">
+                  <unit eId="art_1/par_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -658,7 +658,7 @@
                         <t v=" shall mean an undertaking which has received official authorisation in accordance with Article 4;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_b" kind="point">
+                  <unit eId="art_1/par_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -673,7 +673,7 @@
                         <t v="Any permanent presence of an undertaking in the territory of a Member State shall be treated in the same way as an agency or branch, even if that presence does not take the form of a branch or agency, but consists merely of an office managed by the undertaking's own staff or by a person who is independent but has permanent authority to act for the undertaking as an agency would;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_c" kind="point">
+                  <unit eId="art_1/par_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -685,7 +685,7 @@
                         <t v=" shall mean the head office, an agency or a branch of an undertaking;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_d" kind="point">
+                  <unit eId="art_1/par_1/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -697,7 +697,7 @@
                         <t v=" shall mean a commitment represented by one of the kinds of insurance or operations referred to in Article 2;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_e" kind="point">
+                  <unit eId="art_1/par_1/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -709,7 +709,7 @@
                         <t v=" shall mean the Member State in which the head office of the assurance undertaking covering the commitment is situated;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_f" kind="point">
+                  <unit eId="art_1/par_1/pnt_f" kind="point" numbered="true">
                      <num>
                         <t v="(f)"/>
                      </num>
@@ -721,7 +721,7 @@
                         <t v=" shall mean the Member State in which the branch covering the commitment is situated;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_g" kind="point">
+                  <unit eId="art_1/par_1/pnt_g" kind="point" numbered="true">
                      <num>
                         <t v="(g)"/>
                      </num>
@@ -733,7 +733,7 @@
                         <t v=" shall mean the Member State where the policy holder has his/her habitual residence or, if the policy holder is a legal person, the Member State where the latter's establishment, to which the contract relates, is situated;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_h" kind="point">
+                  <unit eId="art_1/par_1/pnt_h" kind="point" numbered="true">
                      <num>
                         <t v="(h)"/>
                      </num>
@@ -745,7 +745,7 @@
                         <t v=" shall mean the Member State of the commitment, if the commitment is covered by an assurance undertaking or a branch situated in another Member State;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_i" kind="point">
+                  <unit eId="art_1/par_1/pnt_i" kind="point" numbered="true">
                      <num>
                         <t v="(i)"/>
                      </num>
@@ -759,7 +759,7 @@
                         <t v=", or a similar relationship between any natural or legal person and an undertaking;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_j" kind="point">
+                  <unit eId="art_1/par_1/pnt_j" kind="point" numbered="true">
                      <num>
                         <t v="(j)"/>
                      </num>
@@ -778,7 +778,7 @@
                         <t v=" shall be taken into consideration;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_k" kind="point">
+                  <unit eId="art_1/par_1/pnt_k" kind="point" numbered="true">
                      <num>
                         <t v="(k)"/>
                      </num>
@@ -790,7 +790,7 @@
                         <t v=" shall mean a parent undertaking as defined in Articles 1 and 2 of Directive 83/349/EEC;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_l" kind="point">
+                  <unit eId="art_1/par_1/pnt_l" kind="point" numbered="true">
                      <num>
                         <t v="(l)"/>
                      </num>
@@ -802,7 +802,7 @@
                         <t v=" shall mean a subsidiary undertaking as defined in Articles 1 and 2 of Directive 83/349/EEC; any subsidiary of a subsidiary undertaking shall also be regarded as a subsidiary of the undertaking which is those undertakings' ultimate parent undertaking;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_m" kind="point">
+                  <unit eId="art_1/par_1/pnt_m" kind="point" numbered="true">
                      <num>
                         <t v="(m)"/>
                      </num>
@@ -826,7 +826,7 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_n" kind="point">
+                  <unit eId="art_1/par_1/pnt_n" kind="point" numbered="true">
                      <num>
                         <t v="(n)"/>
                      </num>
@@ -838,7 +838,7 @@
                         <t v=" shall mean the national authorities which are empowered by law or regulation to supervise assurance undertakings;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_o" kind="point">
+                  <unit eId="art_1/par_1/pnt_o" kind="point" numbered="true">
                      <num>
                         <t v="(o)"/>
                      </num>
@@ -850,7 +850,7 @@
                         <t v=" shall mean the representation of underwriting liabilities which can be required to be met in a particular currency by assets expressed or realisable in the same currency;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_p" kind="point">
+                  <unit eId="art_1/par_1/pnt_p" kind="point" numbered="true">
                      <num>
                         <t v="(p)"/>
                      </num>
@@ -862,7 +862,7 @@
                         <t v=" shall mean the existence of assets, whether movable or immovable, within a Member State but shall not be construed as involving a requirement that movable assets be deposited or that immovable assets be subjected to restrictive measures such as the registration of mortgages; assets represented by claims against debtors shall be regarded as situated in the Member State where they are realisable;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_q" kind="point">
+                  <unit eId="art_1/par_1/pnt_q" kind="point" numbered="true">
                      <num>
                         <t v="(q)"/>
                      </num>
@@ -870,7 +870,7 @@
                         <t v="capital at risk shall mean the amount payable on death less the mathematical provision for the main risk;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_r" kind="point">
+                  <unit eId="art_1/par_1/pnt_r" kind="point" numbered="true">
                      <num>
                         <t v="(r)"/>
                      </num>
@@ -882,7 +882,7 @@
                         <t v=" links shall mean a situation in which two or more natural or legal persons are linked by:&#xA;"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="art_1/par_1/pnt_r/pnt_i" kind="point">
+                        <unit eId="art_1/par_1/pnt_r/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -890,7 +890,7 @@
                               <t v="participation, which shall mean the ownership, direct or by way of control, of 20 % or more of the voting rights or capital of an undertaking; or&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_1/par_1/pnt_r/pnt_ii" kind="point">
+                        <unit eId="art_1/par_1/pnt_r/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -909,7 +909,7 @@
                         </changed>
                      </p>
                   </unit>
-                  <unit eId="art_1/par_1/pnt_s" kind="point">
+                  <unit eId="art_1/par_1/pnt_s" kind="point" numbered="true">
                      <provenance amendingAct="32005L0068"
                                  action="inserted"
                                  location="AR:60;PT:1"
@@ -951,7 +951,7 @@
                <t v="This Directive concerns the taking-up and pursuit of the self-employed activity of direct insurance carried on by undertakings which are established in a Member State or wish to become established there in the form of the activities defined below:"/>
             </p>
             <list kind="arabic">
-               <unit eId="art_2/pnt_1" kind="point">
+               <unit eId="art_2/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -959,7 +959,7 @@
                      <t v="the following kinds of assurance where they are on a contractual basis:&#xA;"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_2/pnt_1/pnt_a" kind="point">
+                     <unit eId="art_2/pnt_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -967,7 +967,7 @@
                            <t v="life assurance, that is to say, the class of assurance which comprises, in particular, assurance on survival to a stipulated age only, assurance on death only, assurance on survival to a stipulated age or on earlier death, life assurance with return of premiums, marriage assurance, birth assurance;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_2/pnt_1/pnt_b" kind="point">
+                     <unit eId="art_2/pnt_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -975,7 +975,7 @@
                            <t v="annuities;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_2/pnt_1/pnt_c" kind="point">
+                     <unit eId="art_2/pnt_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -983,7 +983,7 @@
                            <t v="supplementary insurance carried on by life assurance undertakings, that is to say, in particular, insurance against personal injury including incapacity for employment, insurance against death resulting from an accident and insurance against disability resulting from an accident or sickness, where these various kinds of insurance are underwritten in addition to life assurance;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_2/pnt_1/pnt_d" kind="point">
+                     <unit eId="art_2/pnt_1/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -993,7 +993,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="art_2/pnt_2" kind="point">
+               <unit eId="art_2/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
@@ -1001,7 +1001,7 @@
                      <t v="the following operations, where they are on a contractual basis, in so far as they are subject to supervision by the administrative authorities responsible for the supervision of private insurance:&#xA;&#xA;"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_2/pnt_2/pnt_a" kind="point">
+                     <unit eId="art_2/pnt_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1009,7 +1009,7 @@
                            <t v="tontines whereby associations of subscribers are set up with a view to jointly capitalising their contributions and subsequently distributing the assets thus accumulated among the survivors or among the beneficiaries of the deceased;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_2/pnt_2/pnt_b" kind="point">
+                     <unit eId="art_2/pnt_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1017,7 +1017,7 @@
                            <t v="capital redemption operations based on actuarial calculation whereby, in return for single or periodic payments agreed in advance, commitments of specified duration and amount are undertaken;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_2/pnt_2/pnt_c" kind="point">
+                     <unit eId="art_2/pnt_2/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1025,7 +1025,7 @@
                            <t v="management of group pension funds, i.e. operations consisting, for the undertaking concerned, in managing the investments, and in particular the assets representing the reserves of bodies that effect payments on death or survival or in the event of discontinuance or curtailment of activity;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_2/pnt_2/pnt_d" kind="point">
+                     <unit eId="art_2/pnt_2/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -1033,7 +1033,7 @@
                            <t v="the operations referred to in (c) where they are accompanied by insurance covering either conservation of capital or payment of a minimum interest;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_2/pnt_2/pnt_e" kind="point">
+                     <unit eId="art_2/pnt_2/pnt_e" kind="point" numbered="true">
                         <num>
                            <t v="(e)"/>
                         </num>
@@ -1047,7 +1047,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="art_2/pnt_3" kind="point">
+               <unit eId="art_2/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="3."/>
                   </num>
@@ -1068,7 +1068,7 @@
                <t v="This Directive shall not concern:"/>
             </p>
             <list kind="arabic">
-               <unit eId="art_3/pnt_1" kind="point">
+               <unit eId="art_3/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -1076,7 +1076,7 @@
                      <t v="subject to the application of Article 2(1)(c), the classes designated in the Annex to Directive 73/239/EEC;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="art_3/pnt_2" kind="point">
+               <unit eId="art_3/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
@@ -1084,7 +1084,7 @@
                      <t v="operations of provident and mutual-benefit institutions whose benefits vary according to the resources available and which require each of their members to contribute at the appropriate flat rate;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="art_3/pnt_3" kind="point">
+               <unit eId="art_3/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="3."/>
                   </num>
@@ -1092,7 +1092,7 @@
                      <t v="operations carried out by organisations other than undertakings referred to in Article 2, whose object is to provide benefits for employed or self-employed persons belonging to an undertaking or group of undertakings, or a trade or group of trades, in the event of death or survival or of discontinuance or curtailment of activity, whether or not the commitments arising from such operations are fully covered at all times by mathematical provisions;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="art_3/pnt_4" kind="point">
+               <unit eId="art_3/pnt_4" kind="point" numbered="true">
                   <num>
                      <t v="4."/>
                   </num>
@@ -1100,7 +1100,7 @@
                      <t v="subject to the application of Article 2(3), insurance forming part of a statutory system of social security;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="art_3/pnt_5" kind="point">
+               <unit eId="art_3/pnt_5" kind="point" numbered="true">
                   <num>
                      <t v="5."/>
                   </num>
@@ -1108,7 +1108,7 @@
                      <t v="organisations which undertake to provide benefits solely in the event of death, where the amount of such benefits does not exceed the average funeral costs for a single death or where the benefits are provided in kind;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="art_3/pnt_6" kind="point">
+               <unit eId="art_3/pnt_6" kind="point" numbered="true">
                   <num>
                      <t v="6."/>
                   </num>
@@ -1131,7 +1131,7 @@
                      <t v="Nevertheless, the provisions of this paragraph shall not prevent a mutual assurance undertaking from applying, or continuing, to be licensed under this Directive;"/>
                   </p>
                </unit>
-               <unit eId="art_3/pnt_7" kind="point">
+               <unit eId="art_3/pnt_7" kind="point" numbered="true">
                   <num>
                      <t v="7."/>
                   </num>
@@ -1143,7 +1143,7 @@
                      <t v=" in Germany unless its statutes are amended as regards the scope of its activities;"/>
                   </p>
                </unit>
-               <unit eId="art_3/pnt_8" kind="point">
+               <unit eId="art_3/pnt_8" kind="point" numbered="true">
                   <num>
                      <t v="8."/>
                   </num>
@@ -1151,7 +1151,7 @@
                      <t v="the pension activities of pension insurance undertakings prescribed in the Employees. Pension Act (TEL) and other related Finnish legislation provided that:&#xA;&#xA;"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_3/pnt_8/pnt_a" kind="point">
+                     <unit eId="art_3/pnt_8/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1159,7 +1159,7 @@
                            <t v="pension insurance companies which already under Finnish law are obliged to have separate accounting and management systems for their pension activities will furthermore, as from the date of accession, set up separate legal entities for carrying out these activities;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_3/pnt_8/pnt_b" kind="point">
+                     <unit eId="art_3/pnt_8/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1179,7 +1179,7 @@
                            </unit>
                         </list>
                      </unit>
-                     <unit eId="art_3/pnt_8/pnt_c" kind="point">
+                     <unit eId="art_3/pnt_8/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1216,7 +1216,7 @@
                   <t v="Such authorisation shall be sought from the authorities of the home Member State by:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_4/unp_2/pnt_a" kind="point">
+                  <unit eId="art_4/unp_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -1224,7 +1224,7 @@
                         <t v="any undertaking which establishes its head office in the territory of that State;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_4/unp_2/pnt_b" kind="point">
+                  <unit eId="art_4/unp_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -1286,7 +1286,7 @@
                   <t v="The home Member State shall require every assurance undertaking for which authorisation is sought to:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_6/par_1/pnt_a" kind="point">
+                  <unit eId="art_6/par_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -1764,7 +1764,7 @@
                         <t v="Furthermore, Member States may, where appropriate, set up undertakings in any public-law form provided that such bodies have as their object insurance operations under conditions equivalent to those under which private-law undertakings operate;"/>
                      </p>
                   </unit>
-                  <unit eId="art_6/par_1/pnt_b" kind="point">
+                  <unit eId="art_6/par_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -1772,7 +1772,7 @@
                         <t v="limit its objects to the business provided for in this Directive and operations directly arising therefrom, to the exclusion of all other commercial business;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_6/par_1/pnt_c" kind="point">
+                  <unit eId="art_6/par_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -1780,7 +1780,7 @@
                         <t v="submit a scheme of operations in accordance with Article 7;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_6/par_1/pnt_d" kind="point">
+                  <unit eId="art_6/par_1/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -1788,7 +1788,7 @@
                         <t v="possess the minimum guarantee fund provided for in Article 29(2);&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_6/par_1/pnt_e" kind="point">
+                  <unit eId="art_6/par_1/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -1888,7 +1888,7 @@
                <t v="The scheme of operations referred to in Article 6(1)(c) and (4) shall include particulars or evidence of:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_7/pnt_a" kind="point">
+               <unit eId="art_7/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1896,7 +1896,7 @@
                      <t v="the nature of the commitments which the assurance undertaking proposes to cover;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="art_7/pnt_b" kind="point">
+               <unit eId="art_7/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1904,7 +1904,7 @@
                      <t v="the guiding principles as to reassurance;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="art_7/pnt_c" kind="point">
+               <unit eId="art_7/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1912,7 +1912,7 @@
                      <t v="the items constituting the minimum guarantee fund;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="art_7/pnt_d" kind="point">
+               <unit eId="art_7/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -1925,7 +1925,7 @@
                <t v="in addition, for the first three financial years:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_7/list_2/pnt_e" kind="point">
+               <unit eId="art_7/list_2/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -1933,7 +1933,7 @@
                      <t v="a plan setting out detailed estimates of income and expenditure in respect of direct business, reassurance acceptances and reassurance cessions;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="art_7/list_2/pnt_f" kind="point">
+               <unit eId="art_7/list_2/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -1941,7 +1941,7 @@
                      <t v="a forecast balance sheet;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="art_7/list_2/pnt_g" kind="point">
+               <unit eId="art_7/list_2/pnt_g" kind="point" numbered="true">
                   <num>
                      <t v="(g)"/>
                   </num>
@@ -2011,7 +2011,7 @@
                   <t v="The competent authorities of the other Member State involved shall be consulted prior to the granting of an authorisation to a life assurance undertaking, which is:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_9a/par_1/pnt_a" kind="point">
+                  <unit eId="art_9a/par_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -2019,7 +2019,7 @@
                         <t v="a subsidiary of an insurance or reinsurance undertaking authorised in another Member State; or&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_9a/par_1/pnt_b" kind="point">
+                  <unit eId="art_9a/par_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -2027,7 +2027,7 @@
                         <t v="a subsidiary of the parent undertaking of an insurance or reinsurance undertaking authorised in another Member State; or&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_9a/par_1/pnt_c" kind="point">
+                  <unit eId="art_9a/par_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -2045,7 +2045,7 @@
                   <t v="The competent authority of a Member State involved responsible for the supervision of credit institutions or investment firms shall be consulted prior to the granting of an authorisation to a life assurance undertaking which is:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_9a/par_2/pnt_a" kind="point">
+                  <unit eId="art_9a/par_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -2053,7 +2053,7 @@
                         <t v="a subsidiary of a credit institution or investment firm authorised in the Community; or&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_9a/par_2/pnt_b" kind="point">
+                  <unit eId="art_9a/par_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -2061,7 +2061,7 @@
                         <t v="a subsidiary of the parent undertaking of a credit institution or investment firm authorised in the Community; or&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_9a/par_2/pnt_c" kind="point">
+                  <unit eId="art_9a/par_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -2197,7 +2197,7 @@
                         <t v="These powers and means must, in particular, enable the competent authorities to:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_13/par_3/sub_2/pnt_a" kind="point">
+                        <unit eId="art_13/par_3/sub_2/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -2221,7 +2221,7 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="art_13/par_3/sub_2/pnt_b" kind="point">
+                        <unit eId="art_13/par_3/sub_2/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -2229,7 +2229,7 @@
                               <t v="take any measures, with regard to the assurance undertaking, its directors or managers or the persons who control it, that are appropriate and necessary to ensure that the undertaking's business continues to comply with the laws, regulations and administrative provisions with which the undertaking must comply in each Member State and in particular with the scheme of operations in so far as it remains mandatory, and to prevent or remedy any irregularities prejudicial to the interests of the assured persons;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_13/par_3/sub_2/pnt_c" kind="point">
+                        <unit eId="art_13/par_3/sub_2/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -2660,7 +2660,7 @@
                      <t v="Member States shall provide at least that:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_17/par_1/pnt_a" kind="point">
+                     <unit eId="art_17/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2691,7 +2691,7 @@
                            </unit>
                         </list>
                      </unit>
-                     <unit eId="art_17/par_1/pnt_b" kind="point">
+                     <unit eId="art_17/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2885,7 +2885,7 @@
                      <t v="2."/>
                   </num>
                   <list kind="alpha">
-                     <unit eId="art_19/par_2/pnt_a" kind="point">
+                     <unit eId="art_19/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2893,7 +2893,7 @@
                            <t v="Accounts shall be drawn up in such a manner as to show the sources of the results for each of the two activities, life assurance and non-life insurance. To this end all income (in particular premiums, payments by re-insurers and investment income) and expenditure (in particular insurance settlements, additions to technical provisions, reinsurance premiums, operating expenses in respect of insurance business) shall be broken down according to origin. Items common to both activities shall be entered in accordance with methods of apportionment to be accepted by the competent authority.&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_19/par_2/pnt_b" kind="point">
+                     <unit eId="art_19/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2941,12 +2941,12 @@
                         <t v="The amount of such technical provisions shall be determined according to the following principles."/>
                      </p>
                      <list kind="alphaUpper">
-                        <unit eId="art_20/par_1/sub_2/pnt_A" kind="point">
+                        <unit eId="art_20/par_1/sub_2/pnt_A" kind="point" numbered="true">
                            <num>
                               <t v="A."/>
                            </num>
                            <list kind="roman">
-                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_i" kind="point">
+                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_i" kind="point" numbered="true">
                                  <num>
                                     <t v="(i)"/>
                                  </num>
@@ -2979,7 +2979,7 @@
                                     <t v="taking credit for future premiums due;"/>
                                  </p>
                               </unit>
-                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_ii" kind="point">
+                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_ii" kind="point" numbered="true">
                                  <num>
                                     <t v="(ii)"/>
                                  </num>
@@ -2987,7 +2987,7 @@
                                     <t v="the use of a retrospective method is allowed, if it can be shown that the resulting technical provisions are not lower than would be required under a sufficiently prudent prospective calculation or if a prospective method cannot be used for the type of contract involved;&#xA;"/>
                                  </p>
                               </unit>
-                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_iii" kind="point">
+                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_iii" kind="point" numbered="true">
                                  <num>
                                     <t v="(iii)"/>
                                  </num>
@@ -2999,7 +2999,7 @@
                                     <t v=" valuation, but shall include an appropriate margin for adverse deviation of the relevant factors;"/>
                                  </p>
                               </unit>
-                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_iv" kind="point">
+                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_iv" kind="point" numbered="true">
                                  <num>
                                     <t v="(iv)"/>
                                  </num>
@@ -3007,7 +3007,7 @@
                                     <t v="the method of valuation for the technical provisions must not only be prudent in itself, but must also be so having regard to the method of valuation for the assets covering those provisions;&#xA;"/>
                                  </p>
                               </unit>
-                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_v" kind="point">
+                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_v" kind="point" numbered="true">
                                  <num>
                                     <t v="(v)"/>
                                  </num>
@@ -3015,7 +3015,7 @@
                                     <t v="technical provisions shall be calculated separately for each contract. The use of appropriate approximations or generalisations is allowed, however, where they are likely to give approximately the same result as individual calculations. The principle of separate calculation shall in no way prevent the establishment of additional provisions for general risks which are not individualised;&#xA;"/>
                                  </p>
                               </unit>
-                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_vi" kind="point">
+                              <unit eId="art_20/par_1/sub_2/pnt_A/pnt_vi" kind="point" numbered="true">
                                  <num>
                                     <t v="(vi)"/>
                                  </num>
@@ -3025,7 +3025,7 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="art_20/par_1/sub_2/pnt_B" kind="point">
+                        <unit eId="art_20/par_1/sub_2/pnt_B" kind="point" numbered="true">
                            <num>
                               <t v="B."/>
                            </num>
@@ -3033,7 +3033,7 @@
                               <t v="the rate of interest used shall be chosen prudently. It shall be determined in accordance with the rules of the competent authority in the home Member State, applying the following principles:&#xA;&#xA;"/>
                            </p>
                            <list kind="alpha">
-                              <unit eId="art_20/par_1/sub_2/pnt_B/pnt_a" kind="point">
+                              <unit eId="art_20/par_1/sub_2/pnt_B/pnt_a" kind="point" numbered="true">
                                  <num>
                                     <t v="(a)"/>
                                  </num>
@@ -3041,7 +3041,9 @@
                                     <t v="for all contracts, the competent authority of the assurance undertaking's home Member State shall fix one or more maximum rates of interest, in particular in accordance with the following rules:&#xA;"/>
                                  </p>
                                  <list kind="roman">
-                                    <unit eId="art_20/par_1/sub_2/pnt_B/pnt_a/pnt_i" kind="point">
+                                    <unit eId="art_20/par_1/sub_2/pnt_B/pnt_a/pnt_i"
+                                          kind="point"
+                                          numbered="true">
                                        <num>
                                           <t v="(i)"/>
                                        </num>
@@ -3052,7 +3054,9 @@
                                           <t v="If a Member State decides, pursuant to the second sentence of the first subparagraph, to set a maximum rate of interest for contracts denominated in another Member State's currency, it shall first consult the competent authority of the Member State in whose currency the contract is denominated;"/>
                                        </p>
                                     </unit>
-                                    <unit eId="art_20/par_1/sub_2/pnt_B/pnt_a/pnt_ii" kind="point">
+                                    <unit eId="art_20/par_1/sub_2/pnt_B/pnt_a/pnt_ii"
+                                          kind="point"
+                                          numbered="true">
                                        <num>
                                           <t v="(ii)"/>
                                        </num>
@@ -3062,7 +3066,7 @@
                                     </unit>
                                  </list>
                               </unit>
-                              <unit eId="art_20/par_1/sub_2/pnt_B/pnt_b" kind="point">
+                              <unit eId="art_20/par_1/sub_2/pnt_B/pnt_b" kind="point" numbered="true">
                                  <num>
                                     <t v="(b)"/>
                                  </num>
@@ -3070,7 +3074,7 @@
                                     <t v="the establishment of a maximum rate of interest shall not imply that the assurance undertaking is bound to use a rate as high as that;&#xA;"/>
                                  </p>
                               </unit>
-                              <unit eId="art_20/par_1/sub_2/pnt_B/pnt_c" kind="point">
+                              <unit eId="art_20/par_1/sub_2/pnt_B/pnt_c" kind="point" numbered="true">
                                  <num>
                                     <t v="(c)"/>
                                  </num>
@@ -3101,7 +3105,7 @@
                                     <t v="Under no circumstances may the rate of interest used be higher than the yield on assets as calculated in accordance with the accounting rules in the home Member State, less an appropriate deduction;"/>
                                  </p>
                               </unit>
-                              <unit eId="art_20/par_1/sub_2/pnt_B/pnt_d" kind="point">
+                              <unit eId="art_20/par_1/sub_2/pnt_B/pnt_d" kind="point" numbered="true">
                                  <num>
                                     <t v="(d)"/>
                                  </num>
@@ -3109,7 +3113,7 @@
                                     <t v="the Member State shall require an assurance undertaking to set aside in its accounts a provision to meet interest-rate commitments vis-à-vis policy holders if the present or foreseeable yield on the undertaking's assets is insufficient to cover those commitments;&#xA;"/>
                                  </p>
                               </unit>
-                              <unit eId="art_20/par_1/sub_2/pnt_B/pnt_e" kind="point">
+                              <unit eId="art_20/par_1/sub_2/pnt_B/pnt_e" kind="point" numbered="true">
                                  <num>
                                     <t v="(e)"/>
                                  </num>
@@ -3119,7 +3123,7 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="art_20/par_1/sub_2/pnt_C" kind="point">
+                        <unit eId="art_20/par_1/sub_2/pnt_C" kind="point" numbered="true">
                            <num>
                               <t v="C."/>
                            </num>
@@ -3127,7 +3131,7 @@
                               <t v="the statistical elements of the valuation and the allowance for expenses used shall be chosen prudently, having regard to the State of the commitment, the type of policy and the administrative costs and commissions expected to be incurred;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_20/par_1/sub_2/pnt_D" kind="point">
+                        <unit eId="art_20/par_1/sub_2/pnt_D" kind="point" numbered="true">
                            <num>
                               <t v="D."/>
                            </num>
@@ -3135,7 +3139,7 @@
                               <t v="in the case of participating contracts, the method of calculation for technical provisions may take into account, either implicitly or explicitly, future bonuses of all kinds, in a manner consistent with the other assumptions on future experience and with the current method of distribution of bonuses;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_20/par_1/sub_2/pnt_E" kind="point">
+                        <unit eId="art_20/par_1/sub_2/pnt_E" kind="point" numbered="true">
                            <num>
                               <t v="E."/>
                            </num>
@@ -3143,7 +3147,7 @@
                               <t v="allowance for future expenses may be made implicitly, for instance by the use of future premiums net of management charges. However, the overall allowance, implicit or explicit, shall be not less than a prudent estimate of the relevant future expenses;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_20/par_1/sub_2/pnt_F" kind="point">
+                        <unit eId="art_20/par_1/sub_2/pnt_F" kind="point" numbered="true">
                            <num>
                               <t v="F."/>
                            </num>
@@ -3234,7 +3238,7 @@
                      <t v="The home Member State may not authorise assurance undertakings to cover their technical provisions with any but the following categories of assets:"/>
                   </p>
                   <list kind="alphaUpper">
-                     <unit eId="art_23/par_1/pnt_A" kind="point">
+                     <unit eId="art_23/par_1/pnt_A" kind="point" numbered="true">
                         <num>
                            <t v="A."/>
                         </num>
@@ -3242,7 +3246,7 @@
                            <t v="investments&#xA;"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="art_23/par_1/pnt_A/pnt_a" kind="point">
+                           <unit eId="art_23/par_1/pnt_A/pnt_a" kind="point" numbered="true">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -3250,7 +3254,7 @@
                                  <t v="debt securities, bonds and other money- and capital-market instruments;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_A/pnt_b" kind="point">
+                           <unit eId="art_23/par_1/pnt_A/pnt_b" kind="point" numbered="true">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -3258,7 +3262,7 @@
                                  <t v="loans;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_A/pnt_c" kind="point">
+                           <unit eId="art_23/par_1/pnt_A/pnt_c" kind="point" numbered="true">
                               <num>
                                  <t v="(c)"/>
                               </num>
@@ -3266,7 +3270,7 @@
                                  <t v="shares and other variable-yield participations;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_A/pnt_d" kind="point">
+                           <unit eId="art_23/par_1/pnt_A/pnt_d" kind="point" numbered="true">
                               <num>
                                  <t v="(d)"/>
                               </num>
@@ -3274,7 +3278,7 @@
                                  <t v="units in undertakings for collective investment in transferable securities (UCITS) and other investment funds;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_A/pnt_e" kind="point">
+                           <unit eId="art_23/par_1/pnt_A/pnt_e" kind="point" numbered="true">
                               <num>
                                  <t v="(e)"/>
                               </num>
@@ -3284,7 +3288,7 @@
                            </unit>
                         </list>
                      </unit>
-                     <unit eId="art_23/par_1/pnt_B" kind="point">
+                     <unit eId="art_23/par_1/pnt_B" kind="point" numbered="true">
                         <num>
                            <t v="B."/>
                         </num>
@@ -3292,7 +3296,7 @@
                            <t v="debts and claims&#xA;&#xA;"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="art_23/par_1/pnt_B/pnt_f" kind="point">
+                           <unit eId="art_23/par_1/pnt_B/pnt_f" kind="point" numbered="true">
                               <provenance amendingAct="32005L0068"
                                           action="replaced"
                                           location="AR:60;PT:7;PT:a"
@@ -3304,7 +3308,7 @@
                                  <t v="debts owed by reinsurers, including reinsurers' shares of technical provisions, and by special purpose vehicles referred to in Article 46 of Directive 2005/68/EC;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_B/pnt_g" kind="point">
+                           <unit eId="art_23/par_1/pnt_B/pnt_g" kind="point" numbered="true">
                               <num>
                                  <t v="(g)"/>
                               </num>
@@ -3312,7 +3316,7 @@
                                  <t v="deposits with and debts owed by ceding undertakings;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_B/pnt_h" kind="point">
+                           <unit eId="art_23/par_1/pnt_B/pnt_h" kind="point" numbered="true">
                               <num>
                                  <t v="(h)"/>
                               </num>
@@ -3320,7 +3324,7 @@
                                  <t v="debts owed by policy holders and intermediaries arising out of direct and reassurance operations;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_B/pnt_i" kind="point">
+                           <unit eId="art_23/par_1/pnt_B/pnt_i" kind="point" numbered="true">
                               <num>
                                  <t v="(i)"/>
                               </num>
@@ -3328,7 +3332,7 @@
                                  <t v="advances against policies;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_B/pnt_j" kind="point">
+                           <unit eId="art_23/par_1/pnt_B/pnt_j" kind="point" numbered="true">
                               <num>
                                  <t v="(j)"/>
                               </num>
@@ -3336,7 +3340,7 @@
                                  <t v="tax recoveries;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_B/pnt_k" kind="point">
+                           <unit eId="art_23/par_1/pnt_B/pnt_k" kind="point" numbered="true">
                               <num>
                                  <t v="(k)"/>
                               </num>
@@ -3346,7 +3350,7 @@
                            </unit>
                         </list>
                      </unit>
-                     <unit eId="art_23/par_1/pnt_C" kind="point">
+                     <unit eId="art_23/par_1/pnt_C" kind="point" numbered="true">
                         <num>
                            <t v="C."/>
                         </num>
@@ -3354,7 +3358,7 @@
                            <t v="others&#xA;&#xA;"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="art_23/par_1/pnt_C/pnt_l" kind="point">
+                           <unit eId="art_23/par_1/pnt_C/pnt_l" kind="point" numbered="true">
                               <num>
                                  <t v="(l)"/>
                               </num>
@@ -3362,7 +3366,7 @@
                                  <t v="tangible fixed assets, other than land and buildings, valued on the basis of prudent amortisation;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_C/pnt_m" kind="point">
+                           <unit eId="art_23/par_1/pnt_C/pnt_m" kind="point" numbered="true">
                               <num>
                                  <t v="(m)"/>
                               </num>
@@ -3370,7 +3374,7 @@
                                  <t v="cash at bank and in hand, deposits with credit institutions and any other body authorised to receive deposits;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_C/pnt_n" kind="point">
+                           <unit eId="art_23/par_1/pnt_C/pnt_n" kind="point" numbered="true">
                               <num>
                                  <t v="(n)"/>
                               </num>
@@ -3378,7 +3382,7 @@
                                  <t v="deferred acquisition costs;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_C/pnt_o" kind="point">
+                           <unit eId="art_23/par_1/pnt_C/pnt_o" kind="point" numbered="true">
                               <num>
                                  <t v="(o)"/>
                               </num>
@@ -3386,7 +3390,7 @@
                                  <t v="accrued interest and rent, other accrued income and prepayments;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_23/par_1/pnt_C/pnt_p" kind="point">
+                           <unit eId="art_23/par_1/pnt_C/pnt_p" kind="point" numbered="true">
                               <num>
                                  <t v="(p)"/>
                               </num>
@@ -3435,7 +3439,7 @@
                         <t v="In determining and applying the rules which it lays down, the home Member State shall, in particular, ensure that the following principles are complied with:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="art_23/par_3/sub_2/pnt_i" kind="point">
+                        <unit eId="art_23/par_3/sub_2/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -3443,7 +3447,7 @@
                               <t v="assets covering technical provisions shall be valued net of any debts arising out of their acquisition;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_23/par_3/sub_2/pnt_ii" kind="point">
+                        <unit eId="art_23/par_3/sub_2/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -3451,7 +3455,7 @@
                               <t v="all assets must be valued on a prudent basis, allowing for the risk of any amounts not being realisable. In particular, tangible fixed assets other than land and buildings may be accepted as cover for technical provisions only if they are valued on the basis of prudent amortisation;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_23/par_3/sub_2/pnt_iii" kind="point">
+                        <unit eId="art_23/par_3/sub_2/pnt_iii" kind="point" numbered="true">
                            <num>
                               <t v="(iii)"/>
                            </num>
@@ -3459,7 +3463,7 @@
                               <t v="loans, whether to undertakings, to a State or international organisation, to local or regional authorities or to natural persons, may be accepted as cover for technical provisions only if there are sufficient guarantees as to their security, whether these are based on the status of the borrower, mortgages, bank guarantees or guarantees granted by assurance undertakings or other forms of security;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_23/par_3/sub_2/pnt_iv" kind="point">
+                        <unit eId="art_23/par_3/sub_2/pnt_iv" kind="point" numbered="true">
                            <num>
                               <t v="(iv)"/>
                            </num>
@@ -3467,7 +3471,7 @@
                               <t v="derivative instruments such as options, futures and swaps in connection with assets covering technical provisions may be used in so far as they contribute to a reduction of investment risks or facilitate efficient portfolio management. They must be valued on a prudent basis and may be taken into account in the valuation of the underlying assets;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_23/par_3/sub_2/pnt_v" kind="point">
+                        <unit eId="art_23/par_3/sub_2/pnt_v" kind="point" numbered="true">
                            <num>
                               <t v="(v)"/>
                            </num>
@@ -3475,7 +3479,7 @@
                               <t v="transferable securities which are not dealt in on a regulated market may be accepted as cover for technical provisions only if they can be realised in the short term or if they are holdings in credit institutions, in assurance undertakings, within the limits permitted by Article 6, or in investment undertakings established in a Member State;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_23/par_3/sub_2/pnt_vi" kind="point">
+                        <unit eId="art_23/par_3/sub_2/pnt_vi" kind="point" numbered="true">
                            <num>
                               <t v="(vi)"/>
                            </num>
@@ -3483,7 +3487,7 @@
                               <t v="debts owed by and claims against a third party may be accepted as cover for the technical provisions only after deduction of all amounts owed to the same third party;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_23/par_3/sub_2/pnt_vii" kind="point">
+                        <unit eId="art_23/par_3/sub_2/pnt_vii" kind="point" numbered="true">
                            <num>
                               <t v="(vii)"/>
                            </num>
@@ -3491,7 +3495,7 @@
                               <t v="the value of any debts and claims accepted as cover for technical provisions must be calculated on a prudent basis, with due allowance for the risk of any amounts not being realisable. In particular, debts owed by policy holders and intermediaries arising out of assurance and reassurance operations may be accepted only in so far as they have been outstanding for not more than three months;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_23/par_3/sub_2/pnt_viii" kind="point">
+                        <unit eId="art_23/par_3/sub_2/pnt_viii" kind="point" numbered="true">
                            <num>
                               <t v="(viii)"/>
                            </num>
@@ -3499,7 +3503,7 @@
                               <t v="where the assets held include an investment in a subsidiary undertaking which manages all or part of the assurance undertaking's investments on its behalf, the home Member State must, when applying the rules and principles laid down in this Article, take into account the underlying assets held by the subsidiary undertaking; the home Member State may treat the assets of other subsidiaries in the same way;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_23/par_3/sub_2/pnt_ix" kind="point">
+                        <unit eId="art_23/par_3/sub_2/pnt_ix" kind="point" numbered="true">
                            <num>
                               <t v="(ix)"/>
                            </num>
@@ -3534,7 +3538,7 @@
                      <t v="As regards the assets covering technical provisions, the home Member State shall require every assurance undertaking to invest no more than:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_24/par_1/pnt_a" kind="point">
+                     <unit eId="art_24/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -3542,7 +3546,7 @@
                            <t v="10 % of its total gross technical provisions in any one piece of land or building, or a number of pieces of land or buildings close enough to each other to be considered effectively as one investment;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24/par_1/pnt_b" kind="point">
+                     <unit eId="art_24/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -3550,7 +3554,7 @@
                            <t v="5 % of its total gross technical provisions in shares and other negotiable securities treated as shares, bonds, debt securities and other money- and capital-market instruments from the same undertaking, or in loans granted to the same borrower, taken together, the loans being loans other than those granted to a State, regional or local authority or to an international organisation of which one or more Member States are members. This limit may be raised to 10 % if an undertaking invests not more than 40 % of its gross technical provisions in the loans or securities of issuing bodies and borrowers in each of which it invests more than 5 % of its assets;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24/par_1/pnt_c" kind="point">
+                     <unit eId="art_24/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -3558,7 +3562,7 @@
                            <t v="5 % of its total gross technical provisions in unsecured loans, including 1 % for any single unsecured loan, other than loans granted to credit institutions, assurance undertakings — in so far as Article 6 allows it — and investment undertakings established in a Member State. The limits may be raised to 8 % and 2 % respectively by a decision taken on a case-by-case basis by the competent authority of the home Member State;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24/par_1/pnt_d" kind="point">
+                     <unit eId="art_24/par_1/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -3566,7 +3570,7 @@
                            <t v="3 % of its total gross technical provisions in the form of cash in hand;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24/par_1/pnt_e" kind="point">
+                     <unit eId="art_24/par_1/pnt_e" kind="point" numbered="true">
                         <num>
                            <t v="(e)"/>
                         </num>
@@ -3584,7 +3588,7 @@
                      <t v="The absence of a limit in paragraph 1 on investment in any particular category does not imply that assets in that category should be accepted as cover for technical provisions without limit. The home Member State shall lay down more detailed rules fixing the conditions for the use of acceptable assets. In particular it shall ensure, in the determination and the application of those rules, that the following principles are complied with:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="art_24/par_2/pnt_i" kind="point">
+                     <unit eId="art_24/par_2/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -3592,7 +3596,7 @@
                            <t v="assets covering technical provisions must be diversified and spread in such a way as to ensure that there is no excessive reliance on any particular category of asset, investment market or investment;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24/par_2/pnt_ii" kind="point">
+                     <unit eId="art_24/par_2/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -3600,7 +3604,7 @@
                            <t v="investment in particular types of asset which show high levels of risk, whether because of the nature of the asset or the quality of the issuer, must be restricted to prudent levels;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24/par_2/pnt_iii" kind="point">
+                     <unit eId="art_24/par_2/pnt_iii" kind="point" numbered="true">
                         <num>
                            <t v="(iii)"/>
                         </num>
@@ -3608,7 +3612,7 @@
                            <t v="limitations on particular categories of asset must take account of the treatment of reassurance in the calculation of technical provisions;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24/par_2/pnt_iv" kind="point">
+                     <unit eId="art_24/par_2/pnt_iv" kind="point" numbered="true">
                         <num>
                            <t v="(iv)"/>
                         </num>
@@ -3616,7 +3620,7 @@
                            <t v="where the assets held include an investment in a subsidiary undertaking which manages all or part of the assurance undertaking's investments on its behalf, the home Member State must, when applying the rules and principles laid down in this Article, take into account the underlying assets held by the subsidiary undertaking; the home Member State may treat the assets of other subsidiaries in the same way;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24/par_2/pnt_v" kind="point">
+                     <unit eId="art_24/par_2/pnt_v" kind="point" numbered="true">
                         <num>
                            <t v="(v)"/>
                         </num>
@@ -3624,7 +3628,7 @@
                            <t v="the percentage of assets covering technical provisions which are the subject of non-liquid investments must be kept to a prudent level;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24/par_2/pnt_vi" kind="point">
+                     <unit eId="art_24/par_2/pnt_vi" kind="point" numbered="true">
                         <num>
                            <t v="(vi)"/>
                         </num>
@@ -3785,7 +3789,7 @@
                         <t v="The available solvency margin shall consist of the assets of the assurance undertaking free of any foreseeable liabilities, less any intangible items, including:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_27/par_2/sub_1/pnt_a" kind="point">
+                        <unit eId="art_27/par_2/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -3793,7 +3797,7 @@
                               <t v="the paid-up share capital or, in the case of a mutual assurance undertaking, the effective initial fund plus any members' accounts which meet all the following criteria:&#xA;"/>
                            </p>
                            <list kind="roman">
-                              <unit eId="art_27/par_2/sub_1/pnt_a/pnt_i" kind="point">
+                              <unit eId="art_27/par_2/sub_1/pnt_a/pnt_i" kind="point" numbered="true">
                                  <num>
                                     <t v="(i)"/>
                                  </num>
@@ -3801,7 +3805,7 @@
                                     <t v="the memorandum and articles of association must stipulate that payments may be made from these accounts to members only in so far as this does not cause the available solvency margin to fall below the required level, or, after the dissolution of the undertaking, if all the undertaking's other debts have been settled;&#xA;"/>
                                  </p>
                               </unit>
-                              <unit eId="art_27/par_2/sub_1/pnt_a/pnt_ii" kind="point">
+                              <unit eId="art_27/par_2/sub_1/pnt_a/pnt_ii" kind="point" numbered="true">
                                  <num>
                                     <t v="(ii)"/>
                                  </num>
@@ -3809,7 +3813,7 @@
                                     <t v="the memorandum and articles of association must stipulate, with respect to any payments referred to in point (i) for reasons other than the individual termination of membership, that the competent authorities must be notified at least one month in advance and can prohibit the payment within that period;&#xA;"/>
                                  </p>
                               </unit>
-                              <unit eId="art_27/par_2/sub_1/pnt_a/pnt_iii" kind="point">
+                              <unit eId="art_27/par_2/sub_1/pnt_a/pnt_iii" kind="point" numbered="true">
                                  <num>
                                     <t v="(iii)"/>
                                  </num>
@@ -3819,7 +3823,7 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="art_27/par_2/sub_1/pnt_b" kind="point">
+                        <unit eId="art_27/par_2/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -3827,7 +3831,7 @@
                               <t v="reserves (statutory and free) not corresponding to underwriting liabilities;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_27/par_2/sub_1/pnt_c" kind="point">
+                        <unit eId="art_27/par_2/sub_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -3835,7 +3839,7 @@
                               <t v="the profit or loss brought forward after deduction of dividends to be paid;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_27/par_2/sub_1/pnt_d" kind="point">
+                        <unit eId="art_27/par_2/sub_1/pnt_d" kind="point" numbered="true">
                            <num>
                               <t v="(d)"/>
                            </num>
@@ -3859,7 +3863,7 @@
                         <t v="The available solvency margin shall also be reduced by the following items:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_27/par_2/sub_3/pnt_a" kind="point">
+                        <unit eId="art_27/par_2/sub_3/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -3910,7 +3914,7 @@
                               </unit>
                            </list>
                         </unit>
-                        <unit eId="art_27/par_2/sub_3/pnt_b" kind="point">
+                        <unit eId="art_27/par_2/sub_3/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -3981,7 +3985,7 @@
                      <t v="The available solvency margin may also consist of:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_27/par_3/pnt_a" kind="point">
+                     <unit eId="art_27/par_3/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -3992,7 +3996,7 @@
                            <t v="Subordinated loan capital must also fulfil the following conditions:"/>
                         </p>
                         <list kind="roman">
-                           <unit eId="art_27/par_3/pnt_a/pnt_i" kind="point">
+                           <unit eId="art_27/par_3/pnt_a/pnt_i" kind="point" numbered="true">
                               <num>
                                  <t v="(i)"/>
                               </num>
@@ -4000,7 +4004,7 @@
                                  <t v="only fully paid-up funds may be taken into account;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_27/par_3/pnt_a/pnt_ii" kind="point">
+                           <unit eId="art_27/par_3/pnt_a/pnt_ii" kind="point" numbered="true">
                               <num>
                                  <t v="(ii)"/>
                               </num>
@@ -4008,7 +4012,7 @@
                                  <t v="for loans with a fixed maturity, the original maturity must be at least five years. No later than one year before the repayment date, the assurance undertaking must submit to the competent authorities for their approval a plan showing how the available solvency margin will be kept at or brought to the required level at maturity, unless the extent to which the loan may rank as a component of the available solvency margin is gradually reduced during at least the last five years before the repayment date. The competent authorities may authorise the early repayment of such loans provided application is made by the issuing assurance undertaking and its available solvency margin will not fall below the required level;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_27/par_3/pnt_a/pnt_iii" kind="point">
+                           <unit eId="art_27/par_3/pnt_a/pnt_iii" kind="point" numbered="true">
                               <num>
                                  <t v="(iii)"/>
                               </num>
@@ -4016,7 +4020,7 @@
                                  <t v="loans the maturity of which is not fixed must be repayable only subject to five years' notice unless the loans are no longer considered as a component of the available solvency margin or unless the prior consent of the competent authorities is specifically required for early repayment. In the latter event the assurance undertaking must notify the competent authorities at least six months before the date of the proposed repayment, specifying the available solvency margin and the required solvency margin both before and after that repayment. The competent authorities shall authorise repayment only if the assurance undertaking's available solvency margin will not fall below the required level;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_27/par_3/pnt_a/pnt_iv" kind="point">
+                           <unit eId="art_27/par_3/pnt_a/pnt_iv" kind="point" numbered="true">
                               <num>
                                  <t v="(iv)"/>
                               </num>
@@ -4024,7 +4028,7 @@
                                  <t v="the loan agreement must not include any clause providing that in specified circumstances, other than the winding-up of the assurance undertaking, the debt will become repayable before the agreed repayment dates;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_27/par_3/pnt_a/pnt_v" kind="point">
+                           <unit eId="art_27/par_3/pnt_a/pnt_v" kind="point" numbered="true">
                               <num>
                                  <t v="(v)"/>
                               </num>
@@ -4034,7 +4038,7 @@
                            </unit>
                         </list>
                      </unit>
-                     <unit eId="art_27/par_3/pnt_b" kind="point">
+                     <unit eId="art_27/par_3/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -4042,7 +4046,7 @@
                            <t v="securities with no specified maturity date and other instruments, including cumulative preferential shares other than those mentioned in point (a), up to 50 % of the lesser of the available solvency margin and the required solvency margin for the total of such securities and the subordinated loan capital referred to in point (a) provided they fulfil the following:&#xA;&#xA;"/>
                         </p>
                         <list kind="roman">
-                           <unit eId="art_27/par_3/pnt_b/pnt_i" kind="point">
+                           <unit eId="art_27/par_3/pnt_b/pnt_i" kind="point" numbered="true">
                               <num>
                                  <t v="(i)"/>
                               </num>
@@ -4050,7 +4054,7 @@
                                  <t v="they may not be repaid on the initiative of the bearer or without the prior consent of the competent authority;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_27/par_3/pnt_b/pnt_ii" kind="point">
+                           <unit eId="art_27/par_3/pnt_b/pnt_ii" kind="point" numbered="true">
                               <num>
                                  <t v="(ii)"/>
                               </num>
@@ -4058,7 +4062,7 @@
                                  <t v="the contract of issue must enable the assurance undertaking to defer the payment of interest on the loan;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_27/par_3/pnt_b/pnt_iii" kind="point">
+                           <unit eId="art_27/par_3/pnt_b/pnt_iii" kind="point" numbered="true">
                               <num>
                                  <t v="(iii)"/>
                               </num>
@@ -4066,7 +4070,7 @@
                                  <t v="the lender's claims on the assurance undertaking must rank entirely after those of all non-subordinated creditors;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_27/par_3/pnt_b/pnt_iv" kind="point">
+                           <unit eId="art_27/par_3/pnt_b/pnt_iv" kind="point" numbered="true">
                               <num>
                                  <t v="(iv)"/>
                               </num>
@@ -4074,7 +4078,7 @@
                                  <t v="the documents governing the issue of the securities must provide for the loss-absorption capacity of the debt and unpaid interest, while enabling the assurance undertaking to continue its business;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_27/par_3/pnt_b/pnt_v" kind="point">
+                           <unit eId="art_27/par_3/pnt_b/pnt_v" kind="point" numbered="true">
                               <num>
                                  <t v="(v)"/>
                               </num>
@@ -4094,7 +4098,7 @@
                      <t v="Upon application, with supporting evidence, by the undertaking to the competent authority of the home Member State and with the agreement of that competent authority, the available solvency margin may also consist of:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_27/par_4/pnt_a" kind="point">
+                     <unit eId="art_27/par_4/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -4107,7 +4111,7 @@
                            <t v="Competent authorities may only agree to include such an amount for the available solvency margin:"/>
                         </p>
                         <list kind="roman">
-                           <unit eId="art_27/par_4/pnt_a/pnt_i" kind="point">
+                           <unit eId="art_27/par_4/pnt_a/pnt_i" kind="point" numbered="true">
                               <num>
                                  <t v="(i)"/>
                               </num>
@@ -4115,7 +4119,7 @@
                                  <t v="when an actuarial report is submitted to the competent authorities substantiating the likelihood of emergence of these profits in the future; and&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="art_27/par_4/pnt_a/pnt_ii" kind="point">
+                           <unit eId="art_27/par_4/pnt_a/pnt_ii" kind="point" numbered="true">
                               <num>
                                  <t v="(ii)"/>
                               </num>
@@ -4125,7 +4129,7 @@
                            </unit>
                         </list>
                      </unit>
-                     <unit eId="art_27/par_4/pnt_b" kind="point">
+                     <unit eId="art_27/par_4/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -4133,7 +4137,7 @@
                            <t v="where Zillmerising is not practised or where, if practised, it is less than the loading for acquisition costs included in the premium, the difference between a non-Zillmerised or partially Zillmerised mathematical provision and a mathematical provision Zillmerised at a rate equal to the loading for acquisition costs included in the premium. This figure may not, however, exceed 3,5 % of the sum of the differences between the relevant capital sums of life assurance activities and the mathematical provisions for all policies for which Zillmerising is possible. The difference shall be reduced by the amount of any undepreciated acquisition costs entered as an asset;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_27/par_4/pnt_c" kind="point">
+                     <unit eId="art_27/par_4/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -4141,7 +4145,7 @@
                            <t v="any hidden net reserves arising out of the valuation of assets, in so far as such hidden net reserves are not of an exceptional nature;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_27/par_4/pnt_d" kind="point">
+                     <unit eId="art_27/par_4/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -4183,7 +4187,7 @@
                      <t v="For the kinds of assurance referred to in Article 2(1)(a) and (b) other than assurances linked to investment funds and for the operations referred to in Article 2(3), the required solvency margin shall be equal to the sum of the following two results:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_28/par_2/pnt_a" kind="point">
+                     <unit eId="art_28/par_2/pnt_a" kind="point" numbered="true">
                         <provenance amendingAct="32005L0068"
                                     action="replaced"
                                     location="AR:60;PT:9;PT:a"
@@ -4198,7 +4202,7 @@
                            <t v="a 4 % fraction of the mathematical provisions relating to direct business and reinsurance acceptances gross of reinsurance cessions shall be multiplied by the ratio, for the last financial year, of the mathematical provisions net of reinsurance cessions to the gross total mathematical provisions. That ratio may in no case be less than 85 %. Upon application, with supporting evidence, by the insurance undertaking to the competent authority of the home Member State and with agreement of that authority, amounts recoverable from the special purpose vehicles referred to in Article 46 of Directive 2005/68/EC may be deducted as reassurance;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28/par_2/pnt_b" kind="point">
+                     <unit eId="art_28/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <changed amendingAct="32005L0068"
                                     action="replaced"
@@ -4251,7 +4255,7 @@
                      <t v="For permanent health insurance not subject to cancellation referred to in Article 2(1)(d), the required solvency margin shall be equal to:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_28/par_4/pnt_a" kind="point">
+                     <unit eId="art_28/par_4/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -4259,7 +4263,7 @@
                            <t v="a 4 % fraction of the mathematical provisions, calculated in compliance with paragraph 2(a) of this Article; plus&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28/par_4/pnt_b" kind="point">
+                     <unit eId="art_28/par_4/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -4293,7 +4297,7 @@
                      <t v="For assurances covered by Article 2(1)(a) and (b) linked to investment funds and for the operations referred to in Article 2(2)(c), (d) and (e), the required solvency margin shall be equal to the sum of the following:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_28/par_7/pnt_a" kind="point">
+                     <unit eId="art_28/par_7/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -4301,7 +4305,7 @@
                            <t v="in so far as the assurance undertaking bears an investment risk, a 4 % fraction of the technical provisions, calculated in compliance with paragraph 2(a) of this Article;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28/par_7/pnt_b" kind="point">
+                     <unit eId="art_28/par_7/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -4309,7 +4313,7 @@
                            <t v="in so far as the undertaking bears no investment risk but the allocation to cover management expenses is fixed for a period exceeding five years, a 1 % fraction of the technical provisions, calculated in compliance with paragraph 2(a) of this Article;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28/par_7/pnt_c" kind="point">
+                     <unit eId="art_28/par_7/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -4317,7 +4321,7 @@
                            <t v="in so far as the undertaking bears no investment risk and the allocation to cover management expenses is not fixed for a period exceeding five years, an amount equivalent to 25 % of the last financial year's net administrative expenses pertaining to such business;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28/par_7/pnt_d" kind="point">
+                     <unit eId="art_28/par_7/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -4347,7 +4351,7 @@
                      <t v="Each Member State shall apply to insurance undertakings whose head office is situated within its territory, the provisions of Articles 35 to 39 of Directive 2005/68/EC in respect of their reinsurance acceptance activities, where one of the following conditions is met:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_28a/par_1/pnt_a" kind="point">
+                     <unit eId="art_28a/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -4355,7 +4359,7 @@
                            <t v="the reinsurance premiums collected exceed 10 % of their total premium;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28a/par_1/pnt_b" kind="point">
+                     <unit eId="art_28a/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -4365,7 +4369,7 @@
                            <t v=";&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28a/par_1/pnt_c" kind="point">
+                     <unit eId="art_28a/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -4748,7 +4752,7 @@
                      <t v="Member States shall ensure that the competent authorities have the power to decrease the reduction, based on reinsurance, to the solvency margin as determined in accordance with Article 28 where:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_37/par_4/pnt_a" kind="point">
+                     <unit eId="art_37/par_4/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -4756,7 +4760,7 @@
                            <t v="the nature or quality of reinsurance contracts has changed significantly since the last financial year;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_37/par_4/pnt_b" kind="point">
+                     <unit eId="art_37/par_4/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -4790,7 +4794,7 @@
                      <t v="Member States shall ensure that the competent authorities have the power to require a financial recovery plan for those insurance undertakings where competent authorities consider that policy holders' rights are threatened. The financial recovery plan must as a minimum include particulars or proof concerning for the next three financial years:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_38/par_1/pnt_a" kind="point">
+                     <unit eId="art_38/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -4798,7 +4802,7 @@
                            <t v="estimates of management expenses, in particular current general expenses and commissions;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_38/par_1/pnt_b" kind="point">
+                     <unit eId="art_38/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -4806,7 +4810,7 @@
                            <t v="a plan setting out detailed estimates of income and expenditure in respect of direct business, reinsurance acceptances and reinsurance cessions;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_38/par_1/pnt_c" kind="point">
+                     <unit eId="art_38/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -4814,7 +4818,7 @@
                            <t v="a forecast balance sheet;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_38/par_1/pnt_d" kind="point">
+                     <unit eId="art_38/par_1/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -4822,7 +4826,7 @@
                            <t v="estimates of the financial resources intended to cover underwriting liabilities and the required solvency margin;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_38/par_1/pnt_e" kind="point">
+                     <unit eId="art_38/par_1/pnt_e" kind="point" numbered="true">
                         <num>
                            <t v="(e)"/>
                         </num>
@@ -4856,7 +4860,7 @@
                      <t v="Member States shall ensure that the competent authorities have the powers to decrease the reduction, based on reinsurance, to the solvency margin as determined in accordance with Article 28 where:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_38/par_4/pnt_a" kind="point">
+                     <unit eId="art_38/par_4/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -4864,7 +4868,7 @@
                            <t v="the nature or quality of reinsurance contracts has changed significantly since the last financial year;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_38/par_4/pnt_b" kind="point">
+                     <unit eId="art_38/par_4/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -4899,7 +4903,7 @@
                         <t v="Authorisation granted to an assurance undertaking by the competent authority of its home Member State may be withdrawn by that authority if that undertaking:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_39/par_1/sub_1/pnt_a" kind="point">
+                        <unit eId="art_39/par_1/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -4907,7 +4911,7 @@
                               <t v="does not make use of the authorisation within 12 months, expressly renounces it or ceases to carry on business for more than six months, unless the Member State concerned has made provision for authorisation to lapse in such cases;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_39/par_1/sub_1/pnt_b" kind="point">
+                        <unit eId="art_39/par_1/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -4915,7 +4919,7 @@
                               <t v="no longer fulfils the conditions for admission;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_39/par_1/sub_1/pnt_c" kind="point">
+                        <unit eId="art_39/par_1/sub_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -4923,7 +4927,7 @@
                               <t v="has been unable, within the time allowed, to take the measures specified in the restoration plan or finance scheme referred to in Article 37;&#xA;"/>
                            </p>
                         </unit>
-                        <unit eId="art_39/par_1/sub_1/pnt_d" kind="point">
+                        <unit eId="art_39/par_1/sub_1/pnt_d" kind="point" numbered="true">
                            <num>
                               <t v="(d)"/>
                            </num>
@@ -4980,7 +4984,7 @@
                   <t v="The Member States shall require every assurance undertaking that proposes to establish a branch within the territory of another Member State to provide the following information when effecting the notification provided for in paragraph 1:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_40/par_2/pnt_a" kind="point">
+                  <unit eId="art_40/par_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -4988,7 +4992,7 @@
                         <t v="the Member State within the territory of which it proposes to establish a branch;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_40/par_2/pnt_b" kind="point">
+                  <unit eId="art_40/par_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -5000,7 +5004,7 @@
                         <t v=", the types of business envisaged and the structural organisation of the branch;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_40/par_2/pnt_c" kind="point">
+                  <unit eId="art_40/par_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -5008,7 +5012,7 @@
                         <t v="the address in the Member State of the branch from which documents may be obtained and to which they may be delivered, it being understood that that address shall be the one to which all communications to the authorised agent are sent;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_40/par_2/pnt_d" kind="point">
+                  <unit eId="art_40/par_2/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -5090,7 +5094,7 @@
                      <t v="Within one month of the notification provided for in Article 41, the competent authorities of the home Member State shall communicate to the Member State or Member States within the territory of which the assurance undertaking intends to carry on business by way of the freedom to provide services:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_42/par_1/sub_1/pnt_a" kind="point">
+                     <unit eId="art_42/par_1/sub_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -5098,7 +5102,7 @@
                            <t v="a certificate attesting that the assurance undertaking has the minimum solvency margin calculated in accordance with Articles 28 and 29;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_42/par_1/sub_1/pnt_b" kind="point">
+                     <unit eId="art_42/par_1/sub_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -5106,7 +5110,7 @@
                            <t v="the classes which the assurance undertaking has been authorised to offer;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_42/par_1/sub_1/pnt_c" kind="point">
+                     <unit eId="art_42/par_1/sub_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -5366,7 +5370,7 @@
                   <t v="A Member State may grant an authorisation if the undertaking fulfils at least the following conditions:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_51/par_2/pnt_a" kind="point">
+                  <unit eId="art_51/par_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -5374,7 +5378,7 @@
                         <t v="it is entitled to undertake insurance activities covered by Article 2 under its national law;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_51/par_2/pnt_b" kind="point">
+                  <unit eId="art_51/par_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -5382,7 +5386,7 @@
                         <t v="it establishes an agency or branch in the territory of such Member State;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_51/par_2/pnt_c" kind="point">
+                  <unit eId="art_51/par_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -5390,7 +5394,7 @@
                         <t v="it undertakes to establish at the place of management of the agency or branch accounts specific to the activity which it carries on there and to keep there all the records relating to the business transacted;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_51/par_2/pnt_d" kind="point">
+                  <unit eId="art_51/par_2/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -5398,7 +5402,7 @@
                         <t v="it designates a general representative, to be approved by the competent authorities;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_51/par_2/pnt_e" kind="point">
+                  <unit eId="art_51/par_2/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -5406,7 +5410,7 @@
                         <t v="it possesses in the Member State where it carries on an activity assets of an amount equal in value to at least one half of the minimum amount prescribed in Article 29(2), first subparagraph, in respect of the guarantee fund and deposits one quarter of the minimum amount as security;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_51/par_2/pnt_f" kind="point">
+                  <unit eId="art_51/par_2/pnt_f" kind="point" numbered="true">
                      <num>
                         <t v="(f)"/>
                      </num>
@@ -5414,7 +5418,7 @@
                         <t v="it undertakes to keep a solvency margin complying with Article 55;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_51/par_2/pnt_g" kind="point">
+                  <unit eId="art_51/par_2/pnt_g" kind="point" numbered="true">
                      <num>
                         <t v="(g)"/>
                      </num>
@@ -5432,7 +5436,7 @@
                   <t v="The scheme of operations of the agency or branch referred to in paragraph 2(g) shall contain the following particulars or evidence of:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_51/par_3/pnt_a" kind="point">
+                  <unit eId="art_51/par_3/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -5440,7 +5444,7 @@
                         <t v="the nature of the commitments which the undertaking proposes to cover;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_51/par_3/pnt_b" kind="point">
+                  <unit eId="art_51/par_3/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -5448,7 +5452,7 @@
                         <t v="the guiding principles as to reinsurance;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_51/par_3/pnt_c" kind="point">
+                  <unit eId="art_51/par_3/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -5456,7 +5460,7 @@
                         <t v="the state of the undertaking's solvency margin and guarantee fund referred to in Article 55;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_51/par_3/pnt_d" kind="point">
+                  <unit eId="art_51/par_3/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -5469,7 +5473,7 @@
                   <t v="and, in addition shall include, for the first three financial years:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_51/par_3/list_2/pnt_e" kind="point">
+                  <unit eId="art_51/par_3/list_2/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -5477,7 +5481,7 @@
                         <t v="a plan setting out detailed estimates of income and expenditure in respect of direct business, reinsurance acceptances and reinsurance cessions;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_51/par_3/list_2/pnt_f" kind="point">
+                  <unit eId="art_51/par_3/list_2/pnt_f" kind="point" numbered="true">
                      <num>
                         <t v="(f)"/>
                      </num>
@@ -5485,7 +5489,7 @@
                         <t v="a forecast balance sheet;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_51/par_3/list_2/pnt_g" kind="point">
+                  <unit eId="art_51/par_3/list_2/pnt_g" kind="point" numbered="true">
                      <num>
                         <t v="(g)"/>
                      </num>
@@ -5516,7 +5520,7 @@
                   <t v="1."/>
                </num>
                <list kind="alpha">
-                  <unit eId="art_52/par_1/pnt_a" kind="point">
+                  <unit eId="art_52/par_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -5524,7 +5528,7 @@
                         <t v="Subject to point (b), agencies and branches referred to in this Title may not simultaneously carry on in a Member State the activities referred to in the Annex to Directive 73/239/EEC and those covered by this Directive.&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_52/par_1/pnt_b" kind="point">
+                  <unit eId="art_52/par_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -5532,7 +5536,7 @@
                         <t v="Subject to point (c), Member States may provide that agencies and branches referred to in this Title which on the relevant date referred to in Article 18(3) carried on both activities simultaneously in a Member State may continue to do so there provided that each activity is separately managed in accordance with Article 19.&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_52/par_1/pnt_c" kind="point">
+                  <unit eId="art_52/par_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -5540,7 +5544,7 @@
                         <t v="Any Member State which under Article 18(6) requires undertakings established in its territory to cease the simultaneous pursuit of the activities in which they were engaged on the relevant date referred to in Article 18(3) must also impose this requirement on agencies and branches referred to in this Title which are established in its territory and simultaneously carry on both activities there.&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_52/par_1/pnt_d" kind="point">
+                  <unit eId="art_52/par_1/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -5723,7 +5727,7 @@
                   <t v="Any undertaking which has requested or obtained authorisation from more than one Member State may apply for the following advantages which may be granted only jointly:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_56/par_1/pnt_a" kind="point">
+                  <unit eId="art_56/par_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -5731,7 +5735,7 @@
                         <t v="the solvency margin referred to in Article 55 shall be calculated in relation to the entire business which it carries on within the Community; in such case, account shall be taken only of the operations effected by all the agencies or branches established within the Community for the purposes of this calculation;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_56/par_1/pnt_b" kind="point">
+                  <unit eId="art_56/par_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -5739,7 +5743,7 @@
                         <t v="the deposit required under Article 51(2)(e) shall be lodged in only one of those Member States;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="art_56/par_1/pnt_c" kind="point">
+                  <unit eId="art_56/par_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -5815,7 +5819,7 @@
                <t v="The competent authorities of the Member States shall inform the Commission and the competent authorities of the other Member States:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_58/pnt_a" kind="point">
+               <unit eId="art_58/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -5823,7 +5827,7 @@
                      <t v="of any authorisation of a direct or indirect subsidiary, one or more of whose parent undertakings are governed by the laws of a third country;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="art_58/pnt_b" kind="point">
+               <unit eId="art_58/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -5918,7 +5922,7 @@
                      <t v="Whenever it appears to the Commission that one of the situations described in paragraphs 3 and 4 has arisen, the Member States shall inform it at its request:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_59/par_5/sub_1/pnt_a" kind="point">
+                     <unit eId="art_59/par_5/sub_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -5926,7 +5930,7 @@
                            <t v="of any request for the authorisation of a direct or indirect subsidiary one or more parent undertakings of which are governed by the laws of the third country in question;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="art_59/par_5/sub_1/pnt_b" kind="point">
+                     <unit eId="art_59/par_5/sub_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -6430,7 +6434,7 @@
          <subheading>
             <t v="Classes of assurance"/>
          </subheading>
-         <unit eId="anx_I/pnt_I" kind="point">
+         <unit eId="anx_I/pnt_I" kind="point" numbered="true">
             <num>
                <t v="I."/>
             </num>
@@ -6438,7 +6442,7 @@
                <t v="The assurance referred to in Article 2(1)(a), (b) and (c) excluding those referred to in II and III&#xA;"/>
             </p>
          </unit>
-         <unit eId="anx_I/pnt_II" kind="point">
+         <unit eId="anx_I/pnt_II" kind="point" numbered="true">
             <num>
                <t v="II."/>
             </num>
@@ -6446,7 +6450,7 @@
                <t v="Marriage assurance, birth assurance"/>
             </p>
          </unit>
-         <unit eId="anx_I/pnt_III" kind="point">
+         <unit eId="anx_I/pnt_III" kind="point" numbered="true">
             <num>
                <t v="III."/>
             </num>
@@ -6454,7 +6458,7 @@
                <t v="The assurance referred to in Article 2(1)(a) and (b), which are linked to investment funds"/>
             </p>
          </unit>
-         <unit eId="anx_I/pnt_IV" kind="point">
+         <unit eId="anx_I/pnt_IV" kind="point" numbered="true">
             <num>
                <t v="IV."/>
             </num>
@@ -6462,7 +6466,7 @@
                <t v="Permanent health insurance, referred to in Article 2(1)(d)"/>
             </p>
          </unit>
-         <unit eId="anx_I/pnt_V" kind="point">
+         <unit eId="anx_I/pnt_V" kind="point" numbered="true">
             <num>
                <t v="V."/>
             </num>
@@ -6470,7 +6474,7 @@
                <t v="Tontines, referred to in Article 2(2)(a)"/>
             </p>
          </unit>
-         <unit eId="anx_I/pnt_VI" kind="point">
+         <unit eId="anx_I/pnt_VI" kind="point" numbered="true">
             <num>
                <t v="VI."/>
             </num>
@@ -6478,7 +6482,7 @@
                <t v="Capital redemption operations, referred to in Article 2(2)(b)"/>
             </p>
          </unit>
-         <unit eId="anx_I/pnt_VII" kind="point">
+         <unit eId="anx_I/pnt_VII" kind="point" numbered="true">
             <num>
                <t v="VII."/>
             </num>
@@ -6486,7 +6490,7 @@
                <t v="Management of group pension funds, referred to in Article 2(2)(c) and (d)"/>
             </p>
          </unit>
-         <unit eId="anx_I/pnt_VIII" kind="point">
+         <unit eId="anx_I/pnt_VIII" kind="point" numbered="true">
             <num>
                <t v="VIII."/>
             </num>
@@ -6494,7 +6498,7 @@
                <t v="The operations referred to in Article 2(2)(e)"/>
             </p>
          </unit>
-         <unit eId="anx_I/pnt_IX" kind="point">
+         <unit eId="anx_I/pnt_IX" kind="point" numbered="true">
             <num>
                <t v="IX."/>
             </num>
@@ -6514,7 +6518,7 @@
             <t v="The currency in which the assurer's commitments are payable shall be determined in accordance with the following rules."/>
          </p>
          <list kind="arabic">
-            <unit eId="anx_II/pnt_1" kind="point">
+            <unit eId="anx_II/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -6522,7 +6526,7 @@
                   <t v="Where the cover provided by a contract is expressed in terms of a particular currency, the assurer's commitments are considered to be payable in that currency.&#xA;"/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_2" kind="point">
+            <unit eId="anx_II/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -6530,7 +6534,7 @@
                   <t v="Member States may authorise assurance undertakings not to cover their technical provisions, including their mathematical provisions, by matching assets if application of the above procedures would result in the undertaking being obliged, in order to comply with the matching principle, to hold assets in a currency amounting to not more than 7 % of the assets existing in other currencies.&#xA;"/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_3" kind="point">
+            <unit eId="anx_II/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -6538,7 +6542,7 @@
                   <t v="Member States may choose not to require assurance undertakings to apply the matching principle where commitments are payable in a currency other than the currency of one of the Member States, if investments in that currency are regulated, if the currency is subject to transfer restrictions or if, for similar reasons, it is not suitable for covering technical provisions.&#xA;"/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_4" kind="point">
+            <unit eId="anx_II/pnt_4" kind="point" numbered="true">
                <num>
                   <t v="4."/>
                </num>
@@ -6549,7 +6553,7 @@
                   <t v="However, total assets in all currencies combined must be at least equal to total commitments in all currencies combined."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_5" kind="point">
+            <unit eId="anx_II/pnt_5" kind="point" numbered="true">
                <num>
                   <t v="5."/>
                </num>
@@ -6569,7 +6573,7 @@
          <p>
             <t v="The following information, which is to be communicated to the policy holder before the contract is concluded (A) or during the term of the contract (B), must be provided in a clear and accurate manner, in writing, in an official language of the Member State of the commitment.However, such information may be in another language if the policy holder so requests and the law of the Member State so permits or the policy holder is free to choose the law applicable."/>
          </p>
-         <unit eId="anx_III/pnt_A" kind="level" depth="1">
+         <unit eId="anx_III/pnt_A" kind="level" depth="1" numbered="true">
             <num>
                <t v="A."/>
             </num>
@@ -6591,7 +6595,9 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_1/pnt_a1" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_1/pnt_a1"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)1"/>
                         </num>
@@ -6599,7 +6605,9 @@
                            <t v="The name of the undertaking and its legal form"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_1/pnt_a2" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_1/pnt_a2"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)2"/>
                         </num>
@@ -6607,7 +6615,9 @@
                            <t v="The name of the Member State in which the head office and, where appropriate, the agency or branch concluding the contract is situated"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_1/pnt_a3" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_1/pnt_a3"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)3"/>
                         </num>
@@ -6617,7 +6627,9 @@
                      </unit>
                   </td>
                   <td>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a4" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a4"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)4"/>
                         </num>
@@ -6625,7 +6637,9 @@
                            <t v="Definition of each benefit and each option"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a5" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a5"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)5"/>
                         </num>
@@ -6633,7 +6647,9 @@
                            <t v="Term of the contract"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a6" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a6"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)6"/>
                         </num>
@@ -6641,7 +6657,9 @@
                            <t v="Means of terminating the contract"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a7" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a7"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)7"/>
                         </num>
@@ -6649,7 +6667,9 @@
                            <t v="Means of payment of premiums and duration of payments"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a8" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a8"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)8"/>
                         </num>
@@ -6657,7 +6677,9 @@
                            <t v="Means of calculation and distribution of bonuses"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a9" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a9"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)9"/>
                         </num>
@@ -6665,7 +6687,9 @@
                            <t v="Indication of surrender and paid-up values and the extent to which they are guaranteed"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a10" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a10"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)10"/>
                         </num>
@@ -6673,7 +6697,9 @@
                            <t v="Information on the premiums for each benefit, both main benefits and supplementary benefits, where appropriate"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a11" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a11"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)11"/>
                         </num>
@@ -6681,7 +6707,9 @@
                            <t v="For unit-linked policies, definition of the units to which the benefits are linked"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a12" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a12"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)12"/>
                         </num>
@@ -6689,7 +6717,9 @@
                            <t v="Indication of the nature of the underlying assets for unit-linked policies"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a13" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a13"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)13"/>
                         </num>
@@ -6697,7 +6727,9 @@
                            <t v="Arrangements for application of the cooling-off period"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a14" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a14"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)14"/>
                         </num>
@@ -6705,7 +6737,9 @@
                            <t v="General information on the tax arrangements applicable to the type of policy"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a15" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a15"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)15"/>
                         </num>
@@ -6713,7 +6747,9 @@
                            <t v="The arrangements for handling complaints concerning contracts by policy holders, lives assured or beneficiaries under contracts including, where appropriate, the existence of a complaints body, without prejudice to the right to take legal proceedings"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a16" kind="point">
+                     <unit eId="anx_III/pnt_A/tab_1/tr_2/td_2/list_2/pnt_a16"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(a)16"/>
                         </num>
@@ -6725,7 +6761,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_III/pnt_B" kind="level" depth="1">
+         <unit eId="anx_III/pnt_B" kind="level" depth="1" numbered="true">
             <num>
                <t v="B."/>
             </num>
@@ -6750,7 +6786,9 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx_III/pnt_B/tab_1/tr_2/td_1/pnt_b1" kind="point">
+                     <unit eId="anx_III/pnt_B/tab_1/tr_2/td_1/pnt_b1"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(b)1"/>
                         </num>
@@ -6760,7 +6798,9 @@
                      </unit>
                   </td>
                   <td>
-                     <unit eId="anx_III/pnt_B/tab_1/tr_2/td_2/list_2/pnt_b2" kind="point">
+                     <unit eId="anx_III/pnt_B/tab_1/tr_2/td_2/list_2/pnt_b2"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(b)2"/>
                         </num>
@@ -6768,7 +6808,9 @@
                            <t v="All the information listed in points (a)(4) to (a)(12) of A in the event of a change in the policy conditions or amendment of the law applicable to the contract"/>
                         </p>
                      </unit>
-                     <unit eId="anx_III/pnt_B/tab_1/tr_2/td_2/list_2/pnt_b3" kind="point">
+                     <unit eId="anx_III/pnt_B/tab_1/tr_2/td_2/list_2/pnt_b3"
+                           kind="point"
+                           numbered="true">
                         <num>
                            <t v="(b)3"/>
                         </num>
@@ -6785,7 +6827,7 @@
          <num>
             <t v="ANNEX IV"/>
          </num>
-         <unit eId="anx_IV/pnt_1" kind="level" depth="1">
+         <unit eId="anx_IV/pnt_1" kind="level" depth="1" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -6798,7 +6840,7 @@
                <t v=", Member States may conclude cooperation agreements, providing for exchanges of information, with the competent authorities of third countries only if the information disclosed is subject to guarantees of professional secrecy at least equivalent to those referred to in Article 16 of this Directive."/>
             </p>
          </unit>
-         <unit eId="anx_IV/pnt_2" kind="level" depth="1">
+         <unit eId="anx_IV/pnt_2" kind="level" depth="1" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -6825,7 +6867,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_IV/pnt_3" kind="level" depth="1">
+         <unit eId="anx_IV/pnt_3" kind="level" depth="1" numbered="true">
             <num>
                <t v="3."/>
             </num>
@@ -6835,7 +6877,7 @@
                <t v=", Member States shall apply the following provisions:&#xA;"/>
             </heading>
          </unit>
-         <unit eId="anx_IV/pnt_A" kind="level" depth="2">
+         <unit eId="anx_IV/pnt_A" kind="level" depth="2" numbered="true">
             <num>
                <t v="A."/>
             </num>
@@ -6849,7 +6891,7 @@
                <t v="The solvency margin shall consist of:"/>
             </p>
             <list kind="arabic">
-               <unit eId="anx_IV/pnt_A/pnt_1" kind="point">
+               <unit eId="anx_IV/pnt_A/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -6862,7 +6904,7 @@
                            <t v="the paid-up share capital or, in the case of a mutual assurance undertaking, the effective initial fund plus any members' accounts which meet all the following criteria:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_1/pnt_a" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_1/pnt_a" kind="point" numbered="true">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -6870,7 +6912,7 @@
                                  <t v="the memorandum and articles of association must stipulate that payments may be made from these accounts to members only in so far as this does not cause the solvency margin to fall below the required level, or, after the dissolution of the undertaking, if all the undertaking's other debts have been settled;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_1/pnt_b" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_1/pnt_b" kind="point" numbered="true">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -6878,7 +6920,7 @@
                                  <t v="the memorandum and articles of association must stipulate, with respect to any such payments for reasons other than the individual termination of membership, that the competent authorities must be notified at least one month in advance and can prohibit the payment within that period;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_1/pnt_c" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_1/pnt_c" kind="point" numbered="true">
                               <num>
                                  <t v="(c)"/>
                               </num>
@@ -6908,7 +6950,7 @@
                            <t v="cumulative preferential share capital and subordinated loan capital may be included but, if so, only up to 50 % of the margin, no more than 25 % of which shall consist of subordinated loans with a fixed maturity, or fixed-term cumulative preferential share capital, if the following minimum criteria are met:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/pnt_a" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/pnt_a" kind="point" numbered="true">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -6921,7 +6963,9 @@
                            <t v="Subordinated loan capital must also fulfil the following conditions:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/list_2/pnt_b" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/list_2/pnt_b"
+                                 kind="point"
+                                 numbered="true">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -6929,7 +6973,9 @@
                                  <t v="only fully paid-up funds may be taken into account;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/list_2/pnt_c" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/list_2/pnt_c"
+                                 kind="point"
+                                 numbered="true">
                               <num>
                                  <t v="(c)"/>
                               </num>
@@ -6937,7 +6983,9 @@
                                  <t v="for loans with a fixed maturity, the original maturity must be at least five years. No later than one year before the repayment date, the assurance undertaking must submit to the competent authorities for their approval a plan showing how the solvency margin will be kept at or brought to the required level at maturity, unless the extent to which the loan may rank as a component of the solvency margin is gradually reduced during at least the last five years before the repayment date. The competent authorities may authorise the early repayment of such loans provided application is made by the issuing assurance undertaking and its solvency margin will not fall below the required level;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/list_2/pnt_d" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/list_2/pnt_d"
+                                 kind="point"
+                                 numbered="true">
                               <num>
                                  <t v="(d)"/>
                               </num>
@@ -6945,7 +6993,9 @@
                                  <t v="loans the maturity of which is not fixed must be repayable only subject to five years' notice unless the loans are no longer considered as a component of the solvency margin or unless the prior consent of the competent authorities is specifically required for early repayment. In the latter event the assurance undertaking must notify the competent authorities at least six months before the date of the proposed repayment, specifying the actual and required solvency margin both before and after that repayment. The competent authorities shall authorise repayment only if the assurance undertaking's solvency margin will not fall below the required level;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/list_2/pnt_e" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/list_2/pnt_e"
+                                 kind="point"
+                                 numbered="true">
                               <num>
                                  <t v="(e)"/>
                               </num>
@@ -6953,7 +7003,9 @@
                                  <t v="the loan agreement must not include any clause providing that in specified circumstances, other than the winding-up of the assurance undertaking, the debt will become repayable before the agreed repayment dates;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/list_2/pnt_f" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_5/list_2/pnt_f"
+                                 kind="point"
+                                 numbered="true">
                               <num>
                                  <t v="(f)"/>
                               </num>
@@ -6968,7 +7020,7 @@
                            <t v="securities with no specified maturity date and other instruments that fulfil the following conditions, including cumulative preferential shares other than those mentioned in the fifth indent, up to 50 % of the margin for the total of such securities and the subordinated loan capital referred to in the fifth indent:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_6/pnt_a" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_6/pnt_a" kind="point" numbered="true">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -6976,7 +7028,7 @@
                                  <t v="they may not be repaid on the initiative of the bearer or without the prior consent of the competent authority;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_6/pnt_b" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_6/pnt_b" kind="point" numbered="true">
                               <num>
                                  <t v="(b)"/>
                               </num>
@@ -6984,7 +7036,7 @@
                                  <t v="the contract of issue must enable the assurance undertaking to defer the payment of interest on the loan;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_6/pnt_c" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_6/pnt_c" kind="point" numbered="true">
                               <num>
                                  <t v="(c)"/>
                               </num>
@@ -6992,7 +7044,7 @@
                                  <t v="the lender's claims on the assurance undertaking must rank entirely after those of all non-subordinated creditors;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_6/pnt_d" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_6/pnt_d" kind="point" numbered="true">
                               <num>
                                  <t v="(d)"/>
                               </num>
@@ -7000,7 +7052,7 @@
                                  <t v="the documents governing the issue of the securities must provide for the loss-absorption capacity of the debt and unpaid interest, while enabling the assurance undertaking to continue its business;&#xA;"/>
                               </p>
                            </unit>
-                           <unit eId="anx_IV/pnt_A/pnt_1/idt_6/pnt_e" kind="point">
+                           <unit eId="anx_IV/pnt_A/pnt_1/idt_6/pnt_e" kind="point" numbered="true">
                               <num>
                                  <t v="(e)"/>
                               </num>
@@ -7012,7 +7064,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_IV/pnt_A/pnt_2" kind="point">
+               <unit eId="anx_IV/pnt_A/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
@@ -7020,7 +7072,7 @@
                      <t v="in so far as authorised under national law, profit reserves appearing in the balance sheet where they may be used to cover any losses which may arise and where they have not been made available for distribution to policy holders;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="anx_IV/pnt_A/pnt_3" kind="point">
+               <unit eId="anx_IV/pnt_A/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="3."/>
                   </num>
@@ -7028,7 +7080,7 @@
                      <t v="upon application, with supporting evidence, by the undertaking to the competent authority of the Member State in the territory of which its head office is situated and with the agreement of that authority:&#xA;&#xA;"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="anx_IV/pnt_A/pnt_3/pnt_a" kind="point">
+                     <unit eId="anx_IV/pnt_A/pnt_3/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -7042,7 +7094,7 @@
                            <t v="When the competent authorities have defined the concept of profits made, the Commission shall submit proposals for the harmonisation of this concept by means of a Directive on the harmonisation of the annual accounts of insurance undertakings and providing for the coordination set out in Article 1(2) of Directive 78/660/EEC;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_IV/pnt_A/pnt_3/pnt_b" kind="point">
+                     <unit eId="anx_IV/pnt_A/pnt_3/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -7050,7 +7102,7 @@
                            <t v="where Zillmerising is not practised or where, if practised, it is less than the loading for acquisition costs included in the premium, the difference between a non-Zillmerised or partially Zillmerised mathematical provision and a mathematical provision Zillmerised at a rate equal to the loading for acquisition costs included in the premium; this figure may not, however, exceed 3,5 % of the sum of the differences between the relevant capital sums of life assurance activities and the mathematical provisions for all policies for which Zillmerising is possible; the difference shall be reduced by the amount of any undepreciated acquisition costs entered as an asset;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_IV/pnt_A/pnt_3/pnt_c" kind="point">
+                     <unit eId="anx_IV/pnt_A/pnt_3/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -7062,7 +7114,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_IV/pnt_B" kind="level" depth="2">
+         <unit eId="anx_IV/pnt_B" kind="level" depth="2" numbered="true">
             <num>
                <t v="B."/>
             </num>
@@ -7073,7 +7125,7 @@
                <t v="Subject to section C, the minimum solvency margin shall be determined as shown below according to the classes of assurance underwritten."/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_IV/pnt_B/pnt_a" kind="point">
+               <unit eId="anx_IV/pnt_B/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -7108,7 +7160,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_IV/pnt_B/pnt_b" kind="point">
+               <unit eId="anx_IV/pnt_B/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -7142,7 +7194,7 @@
                      <t v="In the case of the association of underwriters known as Lloyd's, the calculation of the solvency margin shall be made on the basis of net premiums, which shall be multiplied by flat-rate percentage fixed annually by the competent authority of the head office Member State. This flat-rate percentage must be calculated on the basis of the most recent statistical data on commissions paid. The details together with the relevant calculations shall be sent to the competent authorities of the countries in whose territory Lloyd's is established."/>
                   </p>
                </unit>
-               <unit eId="anx_IV/pnt_B/pnt_c" kind="point">
+               <unit eId="anx_IV/pnt_B/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -7150,7 +7202,7 @@
                      <t v="For permanent health insurance not subject to cancellation referred to in Article 2(1)(d) of this Directive, and for capital redemption operations referred to in Article 2(2)(b) thereof, it shall be equal to a 4 % fraction of the mathematical provisions calculated in compliance with the conditions set out in the first result in (a) of this section.&#xA;"/>
                   </p>
                </unit>
-               <unit eId="anx_IV/pnt_B/pnt_d" kind="point">
+               <unit eId="anx_IV/pnt_B/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -7158,7 +7210,7 @@
                      <t v="For tontines, referred to in Article 2(2)(a) of this Directive, it shall be equal to 1 % of their assets.&#xA;"/>
                   </p>
                </unit>
-               <unit eId="anx_IV/pnt_B/pnt_e" kind="point">
+               <unit eId="anx_IV/pnt_B/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -7180,14 +7232,14 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_IV/pnt_C" kind="level" depth="2">
+         <unit eId="anx_IV/pnt_C" kind="level" depth="2" numbered="true">
             <num>
                <t v="C."/>
             </num>
             <heading>
                <t v="Guarantee fund&#xA;"/>
             </heading>
-            <unit eId="anx_IV/pnt_C/pnt_1" kind="point">
+            <unit eId="anx_IV/pnt_C/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -7195,12 +7247,12 @@
                   <t v="One third of the required solvency margin as specified in section B shall constitute the guarantee fund. Subject to paragraph 2 of this section, at least 50 % of this fund shall consist of the items listed in section A(1) and (2)."/>
                </p>
             </unit>
-            <unit eId="anx_IV/pnt_C/pnt_2" kind="point">
+            <unit eId="anx_IV/pnt_C/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
                <list kind="alpha">
-                  <unit eId="anx_IV/pnt_C/pnt_2/pnt_a" kind="point">
+                  <unit eId="anx_IV/pnt_C/pnt_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -7210,7 +7262,7 @@
                         <t v=".&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_IV/pnt_C/pnt_2/pnt_b" kind="point">
+                  <unit eId="anx_IV/pnt_C/pnt_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -7220,7 +7272,7 @@
                         <t v=" in the case of mutual associations and mutual-type associations and tontines.&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_IV/pnt_C/pnt_2/pnt_c" kind="point">
+                  <unit eId="anx_IV/pnt_C/pnt_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -7234,7 +7286,7 @@
                         <t v=".&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_IV/pnt_C/pnt_2/pnt_d" kind="point">
+                  <unit eId="anx_IV/pnt_C/pnt_2/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -7244,7 +7296,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_IV/pnt_C/pnt_3" kind="point">
+            <unit eId="anx_IV/pnt_C/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>

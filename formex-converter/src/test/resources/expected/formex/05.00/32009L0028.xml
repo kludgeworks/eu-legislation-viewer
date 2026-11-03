@@ -962,7 +962,7 @@
             <t v="The following definitions also apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="art_2/pnt_a" kind="point">
+            <unit eId="art_2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -973,7 +973,7 @@
                   <t v=" means energy from renewable non-fossil sources, namely wind, solar, aerothermal, geothermal, hydrothermal and ocean energy, hydropower, biomass, landfill gas, sewage treatment plant gas and biogases;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_b" kind="point">
+            <unit eId="art_2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -984,7 +984,7 @@
                   <t v=" means energy stored in the form of heat in the ambient air;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_c" kind="point">
+            <unit eId="art_2/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -995,7 +995,7 @@
                   <t v=" means energy stored in the form of heat beneath the surface of solid earth;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_d" kind="point">
+            <unit eId="art_2/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -1006,7 +1006,7 @@
                   <t v=" means energy stored in the form of heat in surface water;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_e" kind="point">
+            <unit eId="art_2/pnt_e" kind="point" numbered="true">
                <num>
                   <t v="(e)"/>
                </num>
@@ -1017,7 +1017,7 @@
                   <t v=" means the biodegradable fraction of products, waste and residues from biological origin from agriculture (including vegetal and animal substances), forestry and related industries including fisheries and aquaculture, as well as the biodegradable fraction of industrial and municipal waste;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_f" kind="point">
+            <unit eId="art_2/pnt_f" kind="point" numbered="true">
                <num>
                   <t v="(f)"/>
                </num>
@@ -1028,7 +1028,7 @@
                   <t v=" means the energy commodities delivered for energy purposes to industry, transport, households, services including public services, agriculture, forestry and fisheries, including the consumption of electricity and heat by the energy branch for electricity and heat production and including losses of electricity and heat in distribution and transmission;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_g" kind="point">
+            <unit eId="art_2/pnt_g" kind="point" numbered="true">
                <num>
                   <t v="(g)"/>
                </num>
@@ -1043,7 +1043,7 @@
                   <t v=" means the distribution of thermal energy in the form of steam, hot water or chilled liquids, from a central source of production through a network to multiple buildings or sites, for the use of space or process heating or cooling;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_h" kind="point">
+            <unit eId="art_2/pnt_h" kind="point" numbered="true">
                <num>
                   <t v="(h)"/>
                </num>
@@ -1054,7 +1054,7 @@
                   <t v=" means liquid fuel for energy purposes other than for transport, including electricity and heating and cooling, produced from biomass;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_i" kind="point">
+            <unit eId="art_2/pnt_i" kind="point" numbered="true">
                <num>
                   <t v="(i)"/>
                </num>
@@ -1065,7 +1065,7 @@
                   <t v=" means liquid or gaseous fuel for transport produced from biomass;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_j" kind="point">
+            <unit eId="art_2/pnt_j" kind="point" numbered="true">
                <num>
                   <t v="(j)"/>
                </num>
@@ -1076,7 +1076,7 @@
                   <t v=" means an electronic document which has the sole function of providing proof to a final customer that a given share or quantity of energy was produced from renewable sources as required by Article 3(6) of Directive 2003/54/EC;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_k" kind="point">
+            <unit eId="art_2/pnt_k" kind="point" numbered="true">
                <num>
                   <t v="(k)"/>
                </num>
@@ -1087,7 +1087,7 @@
                   <t v=" means any instrument, scheme or mechanism applied by a Member State or a group of Member States, that promotes the use of energy from renewable sources by reducing the cost of that energy, increasing the price at which it can be sold, or increasing, by means of a renewable energy obligation or otherwise, the volume of such energy purchased. This includes, but is not restricted to, investment aid, tax exemptions or reductions, tax refunds, renewable energy obligation support schemes including those using green certificates, and direct price support schemes including feed-in tariffs and premium payments;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_l" kind="point">
+            <unit eId="art_2/pnt_l" kind="point" numbered="true">
                <num>
                   <t v="(l)"/>
                </num>
@@ -1098,7 +1098,7 @@
                   <t v=" means a national support scheme requiring energy producers to include a given proportion of energy from renewable sources in their production, requiring energy suppliers to include a given proportion of energy from renewable sources in their supply, or requiring energy consumers to include a given proportion of energy from renewable sources in their consumption. This includes schemes under which such requirements may be fulfilled by using green certificates;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_m" kind="point">
+            <unit eId="art_2/pnt_m" kind="point" numbered="true">
                <num>
                   <t v="(m)"/>
                </num>
@@ -1109,7 +1109,7 @@
                   <t v=" means the greenhouse gas emission saving for some or all of the steps of a specific biofuel production process calculated in accordance with the methodology laid down in part C of Annex V;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_n" kind="point">
+            <unit eId="art_2/pnt_n" kind="point" numbered="true">
                <num>
                   <t v="(n)"/>
                </num>
@@ -1120,7 +1120,7 @@
                   <t v=" means an estimate of the representative greenhouse gas emission saving for a particular biofuel production pathway;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_o" kind="point">
+            <unit eId="art_2/pnt_o" kind="point" numbered="true">
                <num>
                   <t v="(o)"/>
                </num>
@@ -1164,7 +1164,7 @@
                <t v="In order to reach the targets set in paragraphs 1 and 2 of this Article Member States may, inter alia, apply the following measures:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3/par_3/pnt_a" kind="point">
+               <unit eId="art_3/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1172,7 +1172,7 @@
                      <t v="support schemes;"/>
                   </p>
                </unit>
-               <unit eId="art_3/par_3/pnt_b" kind="point">
+               <unit eId="art_3/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1196,7 +1196,7 @@
                <t v="For the purposes of this paragraph, the following provisions shall apply:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3/par_4/pnt_a" kind="point">
+               <unit eId="art_3/par_4/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1204,7 +1204,7 @@
                      <t v="for the calculation of the denominator, that is the total amount of energy consumed in transport for the purposes of the first subparagraph, only petrol, diesel, biofuels consumed in road and rail transport, and electricity shall be taken into account;"/>
                   </p>
                </unit>
-               <unit eId="art_3/par_4/pnt_b" kind="point">
+               <unit eId="art_3/par_4/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1212,7 +1212,7 @@
                      <t v="for the calculation of the numerator, that is the amount of energy from renewable sources consumed in transport for the purposes of the first subparagraph, all types of energy from renewable sources consumed in all forms of transport shall be taken into account;"/>
                   </p>
                </unit>
-               <unit eId="art_3/par_4/pnt_c" kind="point">
+               <unit eId="art_3/par_4/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1271,7 +1271,7 @@
                <t v="Each Member State shall publish and notify to the Commission, six months before its national renewable energy action plan is due, a forecast document indicating:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_4/par_3/pnt_a" kind="point">
+               <unit eId="art_4/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1279,7 +1279,7 @@
                      <t v="its estimated excess production of energy from renewable sources compared to the indicative trajectory which could be transferred to other Member States in accordance with Articles 6 to 11, as well as its estimated potential for joint projects, until 2020; and"/>
                   </p>
                </unit>
-               <unit eId="art_4/par_3/pnt_b" kind="point">
+               <unit eId="art_4/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1335,7 +1335,7 @@
                <t v="The gross final consumption of energy from renewable sources in each Member State shall be calculated as the sum of:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_5/par_1/pnt_a" kind="point">
+               <unit eId="art_5/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1343,7 +1343,7 @@
                      <t v="gross final consumption of electricity from renewable energy sources;"/>
                   </p>
                </unit>
-               <unit eId="art_5/par_1/pnt_b" kind="point">
+               <unit eId="art_5/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1351,7 +1351,7 @@
                      <t v="gross final consumption of energy from renewable sources for heating and cooling; and"/>
                   </p>
                </unit>
-               <unit eId="art_5/par_1/pnt_c" kind="point">
+               <unit eId="art_5/par_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1459,7 +1459,7 @@
                <t v="Member States may agree on and may make arrangements for the statistical transfer of a specified amount of energy from renewable sources from one Member State to another Member State. The transferred quantity shall be:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_6/par_1/pnt_a" kind="point">
+               <unit eId="art_6/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1467,7 +1467,7 @@
                      <t v="deducted from the amount of energy from renewable sources that is taken into account in measuring compliance by the Member State making the transfer with the requirements of Article 3(1) and (2); and"/>
                   </p>
                </unit>
-               <unit eId="art_6/par_1/pnt_b" kind="point">
+               <unit eId="art_6/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1530,7 +1530,7 @@
                <t v="The notification referred to in paragraph 2 shall:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_7/par_3/pnt_a" kind="point">
+               <unit eId="art_7/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1538,7 +1538,7 @@
                      <t v="describe the proposed installation or identify the refurbished installation;"/>
                   </p>
                </unit>
-               <unit eId="art_7/par_3/pnt_b" kind="point">
+               <unit eId="art_7/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1546,7 +1546,7 @@
                      <t v="specify the proportion or amount of electricity or heating or cooling produced from the installation which is to be regarded as counting towards the national overall target of another Member State;"/>
                   </p>
                </unit>
-               <unit eId="art_7/par_3/pnt_c" kind="point">
+               <unit eId="art_7/par_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1554,7 +1554,7 @@
                      <t v="identify the Member State in whose favour the notification is being made; and"/>
                   </p>
                </unit>
-               <unit eId="art_7/par_3/pnt_d" kind="point">
+               <unit eId="art_7/par_3/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -1596,7 +1596,7 @@
                <t v="Within three months of the end of each year falling within the period specified under Article 7(3)(d), the Member State that made the notification under Article 7 shall issue a letter of notification stating:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_8/par_1/pnt_a" kind="point">
+               <unit eId="art_8/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1604,7 +1604,7 @@
                      <t v="the total amount of electricity or heating or cooling produced during the year from renewable energy sources by the installation which was the subject of the notification under Article 7; and"/>
                   </p>
                </unit>
-               <unit eId="art_8/par_1/pnt_b" kind="point">
+               <unit eId="art_8/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1630,7 +1630,7 @@
                <t v="For the purposes of measuring target compliance with the requirements of this Directive concerning national overall targets, the amount of electricity or heating or cooling from renewable energy sources notified in accordance with paragraph 1(b) shall be:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_8/par_3/pnt_a" kind="point">
+               <unit eId="art_8/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1638,7 +1638,7 @@
                      <t v="deducted from the amount of electricity or heating or cooling from renewable energy sources that is taken into account, in measuring compliance by the Member State issuing the letter of notification under paragraph 1; and"/>
                   </p>
                </unit>
-               <unit eId="art_8/par_3/pnt_b" kind="point">
+               <unit eId="art_8/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1672,7 +1672,7 @@
                <t v="Electricity from renewable energy sources produced in a third country shall be taken into account only for the purposes of measuring compliance with the requirements of this Directive concerning national overall targets if the following conditions are met:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_9/par_2/pnt_a" kind="point">
+               <unit eId="art_9/par_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1680,7 +1680,7 @@
                      <t v="the electricity is consumed in the Community, a requirement that is deemed to be met where:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="art_9/par_2/pnt_a/pnt_i" kind="point">
+                     <unit eId="art_9/par_2/pnt_a/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -1688,7 +1688,7 @@
                            <t v="an equivalent amount of electricity to the electricity accounted for has been firmly nominated to the allocated interconnection capacity by all responsible transmission system operators in the country of origin, the country of destination and, if relevant, each third country of transit;"/>
                         </p>
                      </unit>
-                     <unit eId="art_9/par_2/pnt_a/pnt_ii" kind="point">
+                     <unit eId="art_9/par_2/pnt_a/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -1696,7 +1696,7 @@
                            <t v="an equivalent amount of electricity to the electricity accounted for has been firmly registered in the schedule of balance by the responsible transmission system operator on the Community side of an interconnector; and"/>
                         </p>
                      </unit>
-                     <unit eId="art_9/par_2/pnt_a/pnt_iii" kind="point">
+                     <unit eId="art_9/par_2/pnt_a/pnt_iii" kind="point" numbered="true">
                         <num>
                            <t v="(iii)"/>
                         </num>
@@ -1706,7 +1706,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="art_9/par_2/pnt_b" kind="point">
+               <unit eId="art_9/par_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1716,7 +1716,7 @@
                      <t v=" or by the increased capacity of an installation that was refurbished after that date, under a joint project as referred to in paragraph 1; and"/>
                   </p>
                </unit>
-               <unit eId="art_9/par_2/pnt_c" kind="point">
+               <unit eId="art_9/par_2/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1734,7 +1734,7 @@
                <t v="Member States may apply to the Commission, for the purposes of Article 5, for account to be taken of electricity from renewable energy sources produced and consumed in a third country, in the context of the construction of an interconnector with a very long lead-time between a Member State and a third country if the following conditions are met:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_9/par_3/pnt_a" kind="point">
+               <unit eId="art_9/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1744,7 +1744,7 @@
                      <t v=";"/>
                   </p>
                </unit>
-               <unit eId="art_9/par_3/pnt_b" kind="point">
+               <unit eId="art_9/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1754,7 +1754,7 @@
                      <t v=";"/>
                   </p>
                </unit>
-               <unit eId="art_9/par_3/pnt_c" kind="point">
+               <unit eId="art_9/par_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1764,7 +1764,7 @@
                      <t v=";"/>
                   </p>
                </unit>
-               <unit eId="art_9/par_3/pnt_d" kind="point">
+               <unit eId="art_9/par_3/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -1772,7 +1772,7 @@
                      <t v="after it becomes operational, the interconnector will be used for the export to the Community, in accordance with paragraph 2, of electricity generated from renewable energy sources;"/>
                   </p>
                </unit>
-               <unit eId="art_9/par_3/pnt_e" kind="point">
+               <unit eId="art_9/par_3/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -1798,7 +1798,7 @@
                <t v="The notification referred to in paragraph 4 shall:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_9/par_5/pnt_a" kind="point">
+               <unit eId="art_9/par_5/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1806,7 +1806,7 @@
                      <t v="describe the proposed installation or identify the refurbished installation;"/>
                   </p>
                </unit>
-               <unit eId="art_9/par_5/pnt_b" kind="point">
+               <unit eId="art_9/par_5/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1814,7 +1814,7 @@
                      <t v="specify the proportion or amount of electricity produced from the installation which is to be regarded as counting towards the national target of a Member State as well as, subject to confidentiality requirements, the corresponding financial arrangements;"/>
                   </p>
                </unit>
-               <unit eId="art_9/par_5/pnt_c" kind="point">
+               <unit eId="art_9/par_5/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1822,7 +1822,7 @@
                      <t v="specify the period, in whole calendar years, during which the electricity is to be regarded as counting towards the national overall target of the Member State; and"/>
                   </p>
                </unit>
-               <unit eId="art_9/par_5/pnt_d" kind="point">
+               <unit eId="art_9/par_5/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -1872,7 +1872,7 @@
                <t v="Within three months of the end of each year falling within the period specified under Article 9(5)(c), the Member State having made the notification under Article 9 shall issue a letter of notification stating:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_10/par_1/pnt_a" kind="point">
+               <unit eId="art_10/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1880,7 +1880,7 @@
                      <t v="the total amount of electricity produced during that year from renewable energy sources by the installation which was the subject of the notification under Article 9;"/>
                   </p>
                </unit>
-               <unit eId="art_10/par_1/pnt_b" kind="point">
+               <unit eId="art_10/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1888,7 +1888,7 @@
                      <t v="the amount of electricity produced during the year from renewable energy sources by that installation which is to count towards its national overall target in accordance with the terms of the notification under Article 9; and"/>
                   </p>
                </unit>
-               <unit eId="art_10/par_1/pnt_c" kind="point">
+               <unit eId="art_10/par_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1930,7 +1930,7 @@
                <t v="Without prejudice to the obligations of Member States under Article 3, two or more Member States may decide, on a voluntary basis, to join or partly coordinate their national support schemes. In such cases, a certain amount of energy from renewable sources produced in the territory of one participating Member State may count towards the national overall target of another participating Member State if the Member States concerned:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_11/par_1/pnt_a" kind="point">
+               <unit eId="art_11/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1938,7 +1938,7 @@
                      <t v="make a statistical transfer of specified amounts of energy from renewable sources from one Member State to another Member State in accordance with Article 6; or"/>
                   </p>
                </unit>
-               <unit eId="art_11/par_1/pnt_b" kind="point">
+               <unit eId="art_11/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1994,7 +1994,7 @@
                <t v="Member States shall, in particular, take the appropriate steps to ensure that:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_13/par_1/pnt_a" kind="point">
+               <unit eId="art_13/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2002,7 +2002,7 @@
                      <t v="subject to differences between Member States in their administrative structures and organisation, the respective responsibilities of national, regional and local administrative bodies for authorisation, certification and licensing procedures including spatial planning are clearly coordinated and defined, with transparent timetables for determining planning and building applications;"/>
                   </p>
                </unit>
-               <unit eId="art_13/par_1/pnt_b" kind="point">
+               <unit eId="art_13/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2010,7 +2010,7 @@
                      <t v="comprehensive information on the processing of authorisation, certification and licensing applications for renewable energy installations and on available assistance to applicants are made available at the appropriate level;"/>
                   </p>
                </unit>
-               <unit eId="art_13/par_1/pnt_c" kind="point">
+               <unit eId="art_13/par_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -2018,7 +2018,7 @@
                      <t v="administrative procedures are streamlined and expedited at the appropriate administrative level;"/>
                   </p>
                </unit>
-               <unit eId="art_13/par_1/pnt_d" kind="point">
+               <unit eId="art_13/par_1/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -2026,7 +2026,7 @@
                      <t v="rules governing authorisation, certification and licensing are objective, transparent, proportionate, do not discriminate between applicants and take fully into account the particularities of individual renewable energy technologies;"/>
                   </p>
                </unit>
-               <unit eId="art_13/par_1/pnt_e" kind="point">
+               <unit eId="art_13/par_1/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -2034,7 +2034,7 @@
                      <t v="administrative charges paid by consumers, planners, architects, builders and equipment and system installers and suppliers are transparent and cost-related; and"/>
                   </p>
                </unit>
-               <unit eId="art_13/par_1/pnt_f" kind="point">
+               <unit eId="art_13/par_1/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -2236,7 +2236,7 @@
                <t v="A guarantee of origin shall specify at least:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_15/par_6/pnt_a" kind="point">
+               <unit eId="art_15/par_6/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2244,7 +2244,7 @@
                      <t v="the energy source from which the energy was produced and the start and end dates of production;"/>
                   </p>
                </unit>
-               <unit eId="art_15/par_6/pnt_b" kind="point">
+               <unit eId="art_15/par_6/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2252,7 +2252,7 @@
                      <t v="whether it relates to:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="art_15/par_6/pnt_b/pnt_i" kind="point">
+                     <unit eId="art_15/par_6/pnt_b/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -2260,7 +2260,7 @@
                            <t v="electricity; or"/>
                         </p>
                      </unit>
-                     <unit eId="art_15/par_6/pnt_b/pnt_ii" kind="point">
+                     <unit eId="art_15/par_6/pnt_b/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -2270,7 +2270,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="art_15/par_6/pnt_c" kind="point">
+               <unit eId="art_15/par_6/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -2278,7 +2278,7 @@
                      <t v="the identity, location, type and capacity of the installation where the energy was produced;"/>
                   </p>
                </unit>
-               <unit eId="art_15/par_6/pnt_d" kind="point">
+               <unit eId="art_15/par_6/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -2286,7 +2286,7 @@
                      <t v="whether and to what extent the installation has benefited from investment support, whether and to what extent the unit of energy has benefited in any other way from a national support scheme, and the type of support scheme;"/>
                   </p>
                </unit>
-               <unit eId="art_15/par_6/pnt_e" kind="point">
+               <unit eId="art_15/par_6/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -2294,7 +2294,7 @@
                      <t v="the date on which the installation became operational; and"/>
                   </p>
                </unit>
-               <unit eId="art_15/par_6/pnt_f" kind="point">
+               <unit eId="art_15/par_6/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -2378,7 +2378,7 @@
                <t v="Subject to requirements relating to the maintenance of the reliability and safety of the grid, based on transparent and non-discriminatory criteria defined by the competent national authorities:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_16/par_2/pnt_a" kind="point">
+               <unit eId="art_16/par_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2386,7 +2386,7 @@
                      <t v="Member States shall ensure that transmission system operators and distribution system operators in their territory guarantee the transmission and distribution of electricity produced from renewable energy sources;"/>
                   </p>
                </unit>
-               <unit eId="art_16/par_2/pnt_b" kind="point">
+               <unit eId="art_16/par_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2394,7 +2394,7 @@
                      <t v="Member States shall also provide for either priority access or guaranteed access to the grid-system of electricity produced from renewable energy sources;"/>
                   </p>
                </unit>
-               <unit eId="art_16/par_2/pnt_c" kind="point">
+               <unit eId="art_16/par_2/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -2433,7 +2433,7 @@
                <t v="Member States shall require transmission system operators and distribution system operators to provide any new producer of energy from renewable sources wishing to be connected to the system with the comprehensive and necessary information required, including:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_16/par_5/pnt_a" kind="point">
+               <unit eId="art_16/par_5/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2441,7 +2441,7 @@
                      <t v="a comprehensive and detailed estimate of the costs associated with the connection;"/>
                   </p>
                </unit>
-               <unit eId="art_16/par_5/pnt_b" kind="point">
+               <unit eId="art_16/par_5/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2449,7 +2449,7 @@
                      <t v="a reasonable and precise timetable for receiving and processing the request for grid connection;"/>
                   </p>
                </unit>
-               <unit eId="art_16/par_5/pnt_c" kind="point">
+               <unit eId="art_16/par_5/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -2530,7 +2530,7 @@
                <t v="Irrespective of whether the raw materials were cultivated inside or outside the territory of the Community, energy from biofuels and bioliquids shall be taken into account for the purposes referred to in points (a), (b) and (c) only if they fulfil the sustainability criteria set out in paragraphs 2 to 6:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_17/par_1/pnt_a" kind="point">
+               <unit eId="art_17/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2538,7 +2538,7 @@
                      <t v="measuring compliance with the requirements of this Directive concerning national targets;"/>
                   </p>
                </unit>
-               <unit eId="art_17/par_1/pnt_b" kind="point">
+               <unit eId="art_17/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2546,7 +2546,7 @@
                      <t v="measuring compliance with renewable energy obligations;"/>
                   </p>
                </unit>
-               <unit eId="art_17/par_1/pnt_c" kind="point">
+               <unit eId="art_17/par_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -2594,7 +2594,7 @@
                <t v="Biofuels and bioliquids taken into account for the purposes referred to in points (a), (b) and (c) of paragraph 1 shall not be made from raw material obtained from land with high biodiversity value, namely land that had one of the following statuses in or after January 2008, whether or not the land continues to have that status:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_17/par_3/pnt_a" kind="point">
+               <unit eId="art_17/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2602,7 +2602,7 @@
                      <t v="primary forest and other wooded land, namely forest and other wooded land of native species, where there is no clearly visible indication of human activity and the ecological processes are not significantly disturbed;"/>
                   </p>
                </unit>
-               <unit eId="art_17/par_3/pnt_b" kind="point">
+               <unit eId="art_17/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2610,7 +2610,7 @@
                      <t v="areas designated:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="art_17/par_3/pnt_b/pnt_i" kind="point">
+                     <unit eId="art_17/par_3/pnt_b/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -2618,7 +2618,7 @@
                            <t v="by law or by the relevant competent authority for nature protection purposes; or"/>
                         </p>
                      </unit>
-                     <unit eId="art_17/par_3/pnt_b/pnt_ii" kind="point">
+                     <unit eId="art_17/par_3/pnt_b/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -2631,7 +2631,7 @@
                      <t v="unless evidence is provided that the production of that raw material did not interfere with those nature protection purposes;"/>
                   </p>
                </unit>
-               <unit eId="art_17/par_3/pnt_c" kind="point">
+               <unit eId="art_17/par_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -2639,7 +2639,7 @@
                      <t v="highly biodiverse grassland that is:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="art_17/par_3/pnt_c/pnt_i" kind="point">
+                     <unit eId="art_17/par_3/pnt_c/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -2647,7 +2647,7 @@
                            <t v="natural, namely grassland that would remain grassland in the absence of human intervention and which maintains the natural species composition and ecological characteristics and processes; or"/>
                         </p>
                      </unit>
-                     <unit eId="art_17/par_3/pnt_c/pnt_ii" kind="point">
+                     <unit eId="art_17/par_3/pnt_c/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -2670,7 +2670,7 @@
                <t v="Biofuels and bioliquids taken into account for the purposes referred to in points (a), (b) and (c) of paragraph 1 shall not be made from raw material obtained from land with high carbon stock, namely land that had one of the following statuses in January 2008 and no longer has that status:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_17/par_4/pnt_a" kind="point">
+               <unit eId="art_17/par_4/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2678,7 +2678,7 @@
                      <t v="wetlands, namely land that is covered with or saturated by water permanently or for a significant part of the year;"/>
                   </p>
                </unit>
-               <unit eId="art_17/par_4/pnt_b" kind="point">
+               <unit eId="art_17/par_4/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2686,7 +2686,7 @@
                      <t v="continuously forested areas, namely land spanning more than one hectare with trees higher than five metres and a canopy cover of more than 30 %, or trees able to reach those thresholds in situ;"/>
                   </p>
                </unit>
-               <unit eId="art_17/par_4/pnt_c" kind="point">
+               <unit eId="art_17/par_4/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -2828,7 +2828,7 @@
                <t v="Where biofuels and bioliquids are to be taken into account for the purposes referred to in points (a), (b) and (c) of Article 17(1), Member States shall require economic operators to show that the sustainability criteria set out in Article 17(2) to (5) have been fulfilled. For that purpose they shall require economic operators to use a mass balance system which:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_18/par_1/pnt_a" kind="point">
+               <unit eId="art_18/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2836,7 +2836,7 @@
                      <t v="allows consignments of raw material or biofuel with differing sustainability characteristics to be mixed;"/>
                   </p>
                </unit>
-               <unit eId="art_18/par_1/pnt_b" kind="point">
+               <unit eId="art_18/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2844,7 +2844,7 @@
                      <t v="requires information about the sustainability characteristics and sizes of the consignments referred to in point (a) to remain assigned to the mixture; and"/>
                   </p>
                </unit>
-               <unit eId="art_18/par_1/pnt_c" kind="point">
+               <unit eId="art_18/par_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -2941,7 +2941,7 @@
                <t v=", the Commission shall report to the European Parliament and to the Council on:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_18/par_9/pnt_a" kind="point">
+               <unit eId="art_18/par_9/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2949,7 +2949,7 @@
                      <t v="the effectiveness of the system in place for the provision of information on sustainability criteria; and"/>
                   </p>
                </unit>
-               <unit eId="art_18/par_9/pnt_b" kind="point">
+               <unit eId="art_18/par_9/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2978,7 +2978,7 @@
                <t v="For the purposes of Article 17(2), the greenhouse gas emission saving from the use of biofuel and bioliquids shall be calculated as follows:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_19/par_1/pnt_a" kind="point">
+               <unit eId="art_19/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2993,7 +2993,7 @@
                      <t v=" value for those biofuels or bioliquids calculated in accordance with point 7 of part C of Annex V is equal to or less than zero, by using that default value;"/>
                   </p>
                </unit>
-               <unit eId="art_19/par_1/pnt_b" kind="point">
+               <unit eId="art_19/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3001,7 +3001,7 @@
                      <t v="by using an actual value calculated in accordance with the methodology laid down in part C of Annex V; or"/>
                   </p>
                </unit>
-               <unit eId="art_19/par_1/pnt_c" kind="point">
+               <unit eId="art_19/par_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -3037,7 +3037,7 @@
                <t v="The default values in part A of Annex V for biofuels, and the disaggregated default values for cultivation in part D of Annex V for biofuels and bioliquids, may be used only when their raw materials are:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_19/par_3/pnt_a" kind="point">
+               <unit eId="art_19/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3045,7 +3045,7 @@
                      <t v="cultivated outside the Community;"/>
                   </p>
                </unit>
-               <unit eId="art_19/par_3/pnt_b" kind="point">
+               <unit eId="art_19/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3053,7 +3053,7 @@
                      <t v="cultivated in the Community in areas included in the lists referred to in paragraph 2; or"/>
                   </p>
                </unit>
-               <unit eId="art_19/par_3/pnt_c" kind="point">
+               <unit eId="art_19/par_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -3149,7 +3149,7 @@
                <t v="Any adaptation of or addition to the list of default values in Annex V shall comply with the following:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_19/par_7/list_2/pnt_a" kind="point">
+               <unit eId="art_19/par_7/list_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3157,7 +3157,7 @@
                      <t v="where the contribution of a factor to overall emissions is small, or where there is limited variation, or where the cost or difficulty of establishing actual values is high, default values must be typical of normal production processes;"/>
                   </p>
                </unit>
-               <unit eId="art_19/par_7/list_2/pnt_b" kind="point">
+               <unit eId="art_19/par_7/list_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3233,7 +3233,7 @@
                <t v="The report shall detail, in particular:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_22/par_1/pnt_a" kind="point">
+               <unit eId="art_22/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3241,7 +3241,7 @@
                      <t v="the sectoral (electricity, heating and cooling, and transport) and overall shares of energy from renewable sources in the preceding two calendar years and the measures taken or planned at national level to promote the growth of energy from renewable sources taking into account the indicative trajectory in part B of Annex I, in accordance with Article 5;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_b" kind="point">
+               <unit eId="art_22/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3249,7 +3249,7 @@
                      <t v="the introduction and functioning of support schemes and other measures to promote energy from renewable sources, and any developments in the measures used with respect to those set out in the Member State’s national renewable energy action plan, and information on how supported electricity is allocated to final customers for purposes of Article 3(6) of Directive 2003/54/EC;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_c" kind="point">
+               <unit eId="art_22/par_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -3257,7 +3257,7 @@
                      <t v="how, where applicable, the Member State has structured its support schemes to take into account renewable energy applications that give additional benefits in relation to other, comparable applications, but may also have higher costs, including biofuels made from wastes, residues, non-food cellulosic material, and ligno-cellulosic material;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_d" kind="point">
+               <unit eId="art_22/par_1/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -3265,7 +3265,7 @@
                      <t v="the functioning of the system of guarantees of origin for electricity and heating and cooling from renewable energy sources and the measures taken to ensure the reliability and protection against fraud of the system;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_e" kind="point">
+               <unit eId="art_22/par_1/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -3273,7 +3273,7 @@
                      <t v="progress made in evaluating and improving administrative procedures to remove regulatory and non-regulatory barriers to the development of energy from renewable sources;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_f" kind="point">
+               <unit eId="art_22/par_1/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -3281,7 +3281,7 @@
                      <t v="measures taken to ensure the transmission and distribution of electricity produced from renewable energy sources, and to improve the framework or rules for bearing and sharing of costs referred to in Article 16(3);"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_g" kind="point">
+               <unit eId="art_22/par_1/pnt_g" kind="point" numbered="true">
                   <num>
                      <t v="(g)"/>
                   </num>
@@ -3289,7 +3289,7 @@
                      <t v="developments in the availability and use of biomass resources for energy purposes;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_h" kind="point">
+               <unit eId="art_22/par_1/pnt_h" kind="point" numbered="true">
                   <num>
                      <t v="(h)"/>
                   </num>
@@ -3297,7 +3297,7 @@
                      <t v="changes in commodity prices and land use within the Member State associated with its increased use of biomass and other forms of energy from renewable sources;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_i" kind="point">
+               <unit eId="art_22/par_1/pnt_i" kind="point" numbered="true">
                   <num>
                      <t v="(i)"/>
                   </num>
@@ -3305,7 +3305,7 @@
                      <t v="the development and share of biofuels made from wastes, residues, non-food cellulosic material, and ligno-cellulosic material;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_j" kind="point">
+               <unit eId="art_22/par_1/pnt_j" kind="point" numbered="true">
                   <num>
                      <t v="(j)"/>
                   </num>
@@ -3313,7 +3313,7 @@
                      <t v="the estimated impact of the production of biofuels and bioliquids on biodiversity, water resources, water quality and soil quality within the Member State;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_k" kind="point">
+               <unit eId="art_22/par_1/pnt_k" kind="point" numbered="true">
                   <num>
                      <t v="(k)"/>
                   </num>
@@ -3321,7 +3321,7 @@
                      <t v="the estimated net greenhouse gas emission saving due to the use of energy from renewable sources;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_l" kind="point">
+               <unit eId="art_22/par_1/pnt_l" kind="point" numbered="true">
                   <num>
                      <t v="(l)"/>
                   </num>
@@ -3329,7 +3329,7 @@
                      <t v="the estimated excess production of energy from renewable sources compared to the indicative trajectory which could be transferred to other Member States, as well as the estimated potential for joint projects, until 2020;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_m" kind="point">
+               <unit eId="art_22/par_1/pnt_m" kind="point" numbered="true">
                   <num>
                      <t v="(m)"/>
                   </num>
@@ -3337,7 +3337,7 @@
                      <t v="the estimated demand for energy from renewable sources to be satisfied by means other than domestic production until 2020; and"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_1/pnt_n" kind="point">
+               <unit eId="art_22/par_1/pnt_n" kind="point" numbered="true">
                   <num>
                      <t v="(n)"/>
                   </num>
@@ -3363,7 +3363,7 @@
                <t v="In its first report, the Member State shall outline whether it intends to:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_22/par_3/pnt_a" kind="point">
+               <unit eId="art_22/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3371,7 +3371,7 @@
                      <t v="establish a single administrative body responsible for processing authorisation, certification and licensing applications for renewable energy installations and providing assistance to applicants;"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_3/pnt_b" kind="point">
+               <unit eId="art_22/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3379,7 +3379,7 @@
                      <t v="provide for automatic approval of planning and permit applications for renewable energy installations where the authorising body has not responded within the set time limits; or"/>
                   </p>
                </unit>
-               <unit eId="art_22/par_3/pnt_c" kind="point">
+               <unit eId="art_22/par_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -3445,7 +3445,7 @@
                <t v="In its reports, the Commission shall, in particular, analyse:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_23/par_5/pnt_a" kind="point">
+               <unit eId="art_23/par_5/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3453,7 +3453,7 @@
                      <t v="the relative environmental benefits and costs of different biofuels, the effects of the Community’s import policies thereon, the security of supply implications and the ways of achieving a balanced approach between domestic production and imports;"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_5/pnt_b" kind="point">
+               <unit eId="art_23/par_5/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3461,7 +3461,7 @@
                      <t v="the impact of increased demand for biofuel on sustainability in the Community and in third countries, considering economic and environmental impacts, including impacts on biodiversity;"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_5/pnt_c" kind="point">
+               <unit eId="art_23/par_5/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -3469,7 +3469,7 @@
                      <t v="the scope for identifying, in a scientifically objective manner, geographical areas of high biodiversity value that are not covered in Article 17(3);"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_5/pnt_d" kind="point">
+               <unit eId="art_23/par_5/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -3477,7 +3477,7 @@
                      <t v="the impact of increased demand for biomass on biomass using sectors;"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_5/pnt_e" kind="point">
+               <unit eId="art_23/par_5/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -3485,7 +3485,7 @@
                      <t v="the availability of biofuels made from waste, residues, non-food cellulosic material and ligno-cellulosic material; and"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_5/pnt_f" kind="point">
+               <unit eId="art_23/par_5/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -3516,7 +3516,7 @@
                <t v=", present an analysis and action plan on energy from renewable sources with a view, in particular, to:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_23/par_7/pnt_a" kind="point">
+               <unit eId="art_23/par_7/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3524,7 +3524,7 @@
                      <t v="the better use of structural funds and framework programmes;"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_7/pnt_b" kind="point">
+               <unit eId="art_23/par_7/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3532,7 +3532,7 @@
                      <t v="the better and increased use of funds from the European Investment Bank and other public finance institutions;"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_7/pnt_c" kind="point">
+               <unit eId="art_23/par_7/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -3540,7 +3540,7 @@
                      <t v="better access to risk capital notably by analysing the feasibility of a risk sharing facility for investments in energy from renewable sources in the Community similar to the Global Energy Efficiency and Renewable Energy Fund initiative which is aimed at third countries;"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_7/pnt_d" kind="point">
+               <unit eId="art_23/par_7/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -3548,7 +3548,7 @@
                      <t v="the better coordination of Community and national funding and other forms of support; and"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_7/pnt_e" kind="point">
+               <unit eId="art_23/par_7/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -3568,7 +3568,7 @@
                <t v=", the Commission shall present a report, addressing, in particular, the following elements:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_23/par_8/pnt_a" kind="point">
+               <unit eId="art_23/par_8/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3576,7 +3576,7 @@
                      <t v="a review of the minimum greenhouse gas emission saving thresholds to apply from the dates referred to in the second subparagraph of Article 17(2), on the basis of an impact assessment taking into account, in particular, technological developments, available technologies and the availability of first and second-generation bio-fuels with a high level of greenhouse gas emission saving;"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_8/pnt_b" kind="point">
+               <unit eId="art_23/par_8/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3584,7 +3584,7 @@
                      <t v="with respect to the target referred to in Article 3(4), a review of:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="art_23/par_8/pnt_b/pnt_i" kind="point">
+                     <unit eId="art_23/par_8/pnt_b/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -3592,7 +3592,7 @@
                            <t v="the cost-efficiency of the measures to be implemented to achieve the target;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_8/pnt_b/pnt_ii" kind="point">
+                     <unit eId="art_23/par_8/pnt_b/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -3600,7 +3600,7 @@
                            <t v="an assessment of the feasibility of reaching the target whilst ensuring the sustainability of biofuels production in the Community and in third countries, and considering economic, environmental and social impacts, including indirect effects and impacts on biodiversity, as well as the commercial availability of second-generation biofuels;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_8/pnt_b/pnt_iii" kind="point">
+                     <unit eId="art_23/par_8/pnt_b/pnt_iii" kind="point" numbered="true">
                         <num>
                            <t v="(iii)"/>
                         </num>
@@ -3608,7 +3608,7 @@
                            <t v="the impact of the implementation of the target on the availability of foodstuffs at affordable prices;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_8/pnt_b/pnt_iv" kind="point">
+                     <unit eId="art_23/par_8/pnt_b/pnt_iv" kind="point" numbered="true">
                         <num>
                            <t v="(iv)"/>
                         </num>
@@ -3616,7 +3616,7 @@
                            <t v="the commercial availability of electric, hybrid and hydrogen powered vehicles, as well as the methodology chosen to calculate the share of energy from renewable sources consumed in the transport sector;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_8/pnt_b/pnt_v" kind="point">
+                     <unit eId="art_23/par_8/pnt_b/pnt_v" kind="point" numbered="true">
                         <num>
                            <t v="(v)"/>
                         </num>
@@ -3626,7 +3626,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="art_23/par_8/pnt_c" kind="point">
+               <unit eId="art_23/par_8/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -3670,7 +3670,7 @@
                <t v="In 2021, the Commission shall present a report reviewing the application of this Directive. That report shall, in particular, address the role of the following elements in having enabled Member States to achieve the national targets defined in Annex I on the best cost-benefit basis:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_23/par_10/pnt_a" kind="point">
+               <unit eId="art_23/par_10/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3678,7 +3678,7 @@
                      <t v="the process of preparing forecasts and national renewable energy action plans;"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_10/pnt_b" kind="point">
+               <unit eId="art_23/par_10/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3686,7 +3686,7 @@
                      <t v="the effectiveness of the cooperation mechanisms;"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_10/pnt_c" kind="point">
+               <unit eId="art_23/par_10/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -3694,7 +3694,7 @@
                      <t v="technological developments in energy from renewable sources, including the development of the use of biofuels in commercial aviation;"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_10/pnt_d" kind="point">
+               <unit eId="art_23/par_10/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -3702,7 +3702,7 @@
                      <t v="the effectiveness of the national support schemes; and"/>
                   </p>
                </unit>
-               <unit eId="art_23/par_10/pnt_e" kind="point">
+               <unit eId="art_23/par_10/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -3736,7 +3736,7 @@
                <t v="The Commission shall make public on the transparency platform the following information, where appropriate in aggregated form, preserving the confidentiality of commercially sensitive information:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_24/par_2/pnt_a" kind="point">
+               <unit eId="art_24/par_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3744,7 +3744,7 @@
                      <t v="Member States’ national renewable energy action plans;"/>
                   </p>
                </unit>
-               <unit eId="art_24/par_2/pnt_b" kind="point">
+               <unit eId="art_24/par_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3752,7 +3752,7 @@
                      <t v="Member States’ forecast documents referred to in Article 4(3), complemented as soon as possible with the Commission’s summary of excess production and estimated import demand;"/>
                   </p>
                </unit>
-               <unit eId="art_24/par_2/pnt_c" kind="point">
+               <unit eId="art_24/par_2/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -3760,7 +3760,7 @@
                      <t v="Member States’ offers to cooperate on statistical transfers or joint projects, upon request of the Member State concerned;"/>
                   </p>
                </unit>
-               <unit eId="art_24/par_2/pnt_d" kind="point">
+               <unit eId="art_24/par_2/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -3768,7 +3768,7 @@
                      <t v="the information referred to in Article 6(2) on the statistical transfers between Member States;"/>
                   </p>
                </unit>
-               <unit eId="art_24/par_2/pnt_e" kind="point">
+               <unit eId="art_24/par_2/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -3776,7 +3776,7 @@
                      <t v="the information referred to in Article 7(2) and (3) and Article 9(4) and (5) on joint projects;"/>
                   </p>
                </unit>
-               <unit eId="art_24/par_2/pnt_f" kind="point">
+               <unit eId="art_24/par_2/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -3784,7 +3784,7 @@
                      <t v="Member States’ national reports referred to in Article 22;"/>
                   </p>
                </unit>
-               <unit eId="art_24/par_2/pnt_g" kind="point">
+               <unit eId="art_24/par_2/pnt_g" kind="point" numbered="true">
                   <num>
                      <t v="(g)"/>
                   </num>
@@ -4260,7 +4260,7 @@
             <t v="National overall targets for the share of energy from renewable sources in gross final consumption of energy in 2020"/>
             <noteRef href="#note_anx01004601-1" marker="1"/>
          </subheading>
-         <unit eId="anx_I/pnt_A" kind="level" depth="1">
+         <unit eId="anx_I/pnt_A" kind="level" depth="1" numbered="true">
             <num>
                <t v="A."/>
             </num>
@@ -4750,7 +4750,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_I/pnt_B" kind="level" depth="1">
+         <unit eId="anx_I/pnt_B" kind="level" depth="1" numbered="true">
             <num>
                <t v="B."/>
             </num>
@@ -5466,7 +5466,7 @@
             <t v="The certification schemes or equivalent qualification schemes referred to in Article 14(3) shall be based on the following criteria:"/>
          </p>
          <list kind="arabic">
-            <unit eId="anx_IV/pnt_1" kind="point">
+            <unit eId="anx_IV/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -5474,7 +5474,7 @@
                   <t v="The certification or qualification process shall be transparent and clearly defined by the Member State or the administrative body they appoint."/>
                </p>
             </unit>
-            <unit eId="anx_IV/pnt_2" kind="point">
+            <unit eId="anx_IV/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -5482,7 +5482,7 @@
                   <t v="Biomass, heat pump, shallow geothermal and solar photovoltaic and solar thermal installers shall be certified by an accredited training programme or training provider."/>
                </p>
             </unit>
-            <unit eId="anx_IV/pnt_3" kind="point">
+            <unit eId="anx_IV/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -5490,7 +5490,7 @@
                   <t v="The accreditation of the training programme or provider shall be effected by Member States or administrative bodies they appoint. The accrediting body shall ensure that the training programme offered by the training provider has continuity and regional or national coverage. The training provider shall have adequate technical facilities to provide practical training, including some laboratory equipment or corresponding facilities to provide practical training. The training provider shall also offer in addition to the basic training, shorter refresher courses on topical issues, including on new technologies, to enable life-long learning in installations. The training provider may be the manufacturer of the equipment or system, institutes or associations."/>
                </p>
             </unit>
-            <unit eId="anx_IV/pnt_4" kind="point">
+            <unit eId="anx_IV/pnt_4" kind="point" numbered="true">
                <num>
                   <t v="4."/>
                </num>
@@ -5498,7 +5498,7 @@
                   <t v="The training leading to installer certification or qualification shall include both theoretical and practical parts. At the end of the training, the installer must have the skills required to install the relevant equipment and systems to meet the performance and reliability needs of the customer, incorporate quality craftsmanship, and comply with all applicable codes and standards, including energy and eco-labelling."/>
                </p>
             </unit>
-            <unit eId="anx_IV/pnt_5" kind="point">
+            <unit eId="anx_IV/pnt_5" kind="point" numbered="true">
                <num>
                   <t v="5."/>
                </num>
@@ -5506,7 +5506,7 @@
                   <t v="The training course shall end with an examination leading to a certificate or qualification. The examination shall include a practical assessment of successfully installing biomass boilers or stoves, heat pumps, shallow geothermal installations, solar photovoltaic or solar thermal installations."/>
                </p>
             </unit>
-            <unit eId="anx_IV/pnt_6" kind="point">
+            <unit eId="anx_IV/pnt_6" kind="point" numbered="true">
                <num>
                   <t v="6."/>
                </num>
@@ -5514,7 +5514,7 @@
                   <t v="The certification schemes or equivalent qualification schemes referred to in Article 14(3) shall take due account of the following guidelines:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx_IV/pnt_6/pnt_a" kind="point">
+                  <unit eId="anx_IV/pnt_6/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -5522,7 +5522,7 @@
                         <t v="Accredited training programmes should be offered to installers with work experience, who have undergone, or are undergoing, the following types of training:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="anx_IV/pnt_6/pnt_a/pnt_i" kind="point">
+                        <unit eId="anx_IV/pnt_6/pnt_a/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -5530,7 +5530,7 @@
                               <t v="in the case of biomass boiler and stove installers: training as a plumber, pipe fitter, heating engineer or technician of sanitary and heating or cooling equipment as a prerequisite;"/>
                            </p>
                         </unit>
-                        <unit eId="anx_IV/pnt_6/pnt_a/pnt_ii" kind="point">
+                        <unit eId="anx_IV/pnt_6/pnt_a/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -5538,7 +5538,7 @@
                               <t v="in the case of heat pump installers: training as a plumber or refrigeration engineer and have basic electrical and plumbing skills (cutting pipe, soldering pipe joints, gluing pipe joints, lagging, sealing fittings, testing for leaks and installation of heating or cooling systems) as a prerequisite;"/>
                            </p>
                         </unit>
-                        <unit eId="anx_IV/pnt_6/pnt_a/pnt_iii" kind="point">
+                        <unit eId="anx_IV/pnt_6/pnt_a/pnt_iii" kind="point" numbered="true">
                            <num>
                               <t v="(iii)"/>
                            </num>
@@ -5546,7 +5546,7 @@
                               <t v="in the case of a solar photovoltaic or solar thermal installer: training as a plumber or electrician and have plumbing, electrical and roofing skills, including knowledge of soldering pipe joints, gluing pipe joints, sealing fittings, testing for plumbing leaks, ability to connect wiring, familiar with basic roof materials, flashing and sealing methods as a prerequisite; or"/>
                            </p>
                         </unit>
-                        <unit eId="anx_IV/pnt_6/pnt_a/pnt_iv" kind="point">
+                        <unit eId="anx_IV/pnt_6/pnt_a/pnt_iv" kind="point" numbered="true">
                            <num>
                               <t v="(iv)"/>
                            </num>
@@ -5556,7 +5556,7 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="anx_IV/pnt_6/pnt_b" kind="point">
+                  <unit eId="anx_IV/pnt_6/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -5564,7 +5564,7 @@
                         <t v="The theoretical part of the biomass stove and boiler installer training should give an overview of the market situation of biomass and cover ecological aspects, biomass fuels, logistics, fire protection, related subsidies, combustion techniques, firing systems, optimal hydraulic solutions, cost and profitability comparison as well as the design, installation, and maintenance of biomass boilers and stoves. The training should also provide good knowledge of any European standards for technology and biomass fuels, such as pellets, and biomass related national and Community law."/>
                      </p>
                   </unit>
-                  <unit eId="anx_IV/pnt_6/pnt_c" kind="point">
+                  <unit eId="anx_IV/pnt_6/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -5572,7 +5572,7 @@
                         <t v="The theoretical part of the heat pump installer training should give an overview of the market situation for heat pumps and cover geothermal resources and ground source temperatures of different regions, soil and rock identification for thermal conductivity, regulations on using geothermal resources, feasibility of using heat pumps in buildings and determining the most suitable heat pump system, and knowledge about their technical requirements, safety, air filtering, connection with the heat source and system layout. The training should also provide good knowledge of any European standards for heat pumps, and of relevant national and Community law. The installer should demonstrate the following key competences:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="anx_IV/pnt_6/pnt_c/pnt_i" kind="point">
+                        <unit eId="anx_IV/pnt_6/pnt_c/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -5580,7 +5580,7 @@
                               <t v="a basic understanding of the physical and operation principles of a heat pump, including characteristics of the heat pump circle: context between low temperatures of the heat sink, high temperatures of the heat source, and the efficiency of the system, determination of the coefficient of performance (COP) and seasonal performance factor (SPF);"/>
                            </p>
                         </unit>
-                        <unit eId="anx_IV/pnt_6/pnt_c/pnt_ii" kind="point">
+                        <unit eId="anx_IV/pnt_6/pnt_c/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -5588,7 +5588,7 @@
                               <t v="an understanding of the components and their function within a heat pump circle, including the compressor, expansion valve, evaporator, condenser, fixtures and fittings, lubricating oil, refrigerant, superheating and sub-cooling and cooling possibilities with heat pumps; and"/>
                            </p>
                         </unit>
-                        <unit eId="anx_IV/pnt_6/pnt_c/pnt_iii" kind="point">
+                        <unit eId="anx_IV/pnt_6/pnt_c/pnt_iii" kind="point" numbered="true">
                            <num>
                               <t v="(iii)"/>
                            </num>
@@ -5598,7 +5598,7 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="anx_IV/pnt_6/pnt_d" kind="point">
+                  <unit eId="anx_IV/pnt_6/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -5606,7 +5606,7 @@
                         <t v="The theoretical part of the solar photovoltaic and solar thermal installer training should give an overview of the market situation of solar products and cost and profitability comparisons, and cover ecological aspects, components, characteristics and dimensioning of solar systems, selection of accurate systems and dimensioning of components, determination of the heat demand, fire protection, related subsidies, as well as the design, installation, and maintenance of solar photovoltaic and solar thermal installations. The training should also provide good knowledge of any European standards for technology, and certification such as Solar Keymark, and related national and Community law. The installer should demonstrate the following key competences:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="anx_IV/pnt_6/pnt_d/pnt_i" kind="point">
+                        <unit eId="anx_IV/pnt_6/pnt_d/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -5614,7 +5614,7 @@
                               <t v="the ability to work safely using the required tools and equipment and implementing safety codes and standards and identify plumbing, electrical and other hazards associated with solar installations;"/>
                            </p>
                         </unit>
-                        <unit eId="anx_IV/pnt_6/pnt_d/pnt_ii" kind="point">
+                        <unit eId="anx_IV/pnt_6/pnt_d/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -5622,7 +5622,7 @@
                               <t v="the ability to identify systems and their components specific to active and passive systems, including the mechanical design, and determine the components’ location and system layout and configuration;"/>
                            </p>
                         </unit>
-                        <unit eId="anx_IV/pnt_6/pnt_d/pnt_iii" kind="point">
+                        <unit eId="anx_IV/pnt_6/pnt_d/pnt_iii" kind="point" numbered="true">
                            <num>
                               <t v="(iii)"/>
                            </num>
@@ -5630,7 +5630,7 @@
                               <t v="the ability to determine the required installation area, orientation and tilt for the solar photovoltaic and solar water heater, taking account of shading, solar access, structural integrity, the appropriateness of the installation for the building or the climate and identify different installation methods suitable for roof types and the balance of system equipment required for the installation; and"/>
                            </p>
                         </unit>
-                        <unit eId="anx_IV/pnt_6/pnt_d/pnt_iv" kind="point">
+                        <unit eId="anx_IV/pnt_6/pnt_d/pnt_iv" kind="point" numbered="true">
                            <num>
                               <t v="(iv)"/>
                            </num>
@@ -5640,7 +5640,7 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="anx_IV/pnt_6/pnt_e" kind="point">
+                  <unit eId="anx_IV/pnt_6/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -5659,7 +5659,7 @@
          <subheading>
             <t v="Rules for calculating the greenhouse gas impact of biofuels, bioliquids and their fossil fuel comparators"/>
          </subheading>
-         <unit eId="anx_V/pnt_A" kind="level" depth="1">
+         <unit eId="anx_V/pnt_A" kind="level" depth="1" numbered="true">
             <num>
                <t v="A."/>
             </num>
@@ -6086,7 +6086,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_B" kind="level" depth="1">
+         <unit eId="anx_V/pnt_B" kind="level" depth="1" numbered="true">
             <num>
                <t v="B."/>
             </num>
@@ -6278,7 +6278,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_C" kind="level" depth="1">
+         <unit eId="anx_V/pnt_C" kind="level" depth="1" numbered="true">
             <num>
                <t v="C."/>
             </num>
@@ -6286,7 +6286,7 @@
                <t v="Methodology"/>
             </heading>
          </unit>
-         <unit eId="anx_V/pnt_1" kind="level" depth="2">
+         <unit eId="anx_V/pnt_1" kind="level" depth="2" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -6498,7 +6498,7 @@
                <t v="Emissions from the manufacture of machinery and equipment shall not be taken into account."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_2" kind="level" depth="2">
+         <unit eId="anx_V/pnt_2" kind="level" depth="2" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -6514,7 +6514,7 @@
                <t v="/MJ."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_3" kind="level" depth="2">
+         <unit eId="anx_V/pnt_3" kind="level" depth="2" numbered="true">
             <num>
                <t v="3."/>
             </num>
@@ -6526,7 +6526,7 @@
                <t v="/MJ may be adjusted to take into account differences between fuels in useful work done, expressed in terms of km/MJ. Such adjustments shall be made only where evidence of the differences in useful work done is provided."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_4" kind="level" depth="2">
+         <unit eId="anx_V/pnt_4" kind="level" depth="2" numbered="true">
             <num>
                <t v="4."/>
             </num>
@@ -6592,7 +6592,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_V/pnt_5" kind="level" depth="2">
+         <unit eId="anx_V/pnt_5" kind="level" depth="2" numbered="true">
             <num>
                <t v="5."/>
             </num>
@@ -6652,7 +6652,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_V/pnt_6" kind="level" depth="2">
+         <unit eId="anx_V/pnt_6" kind="level" depth="2" numbered="true">
             <num>
                <t v="6."/>
             </num>
@@ -6668,7 +6668,7 @@
                <t v=" in the cultivation of raw materials shall be excluded. Certified reductions of greenhouse gas emissions from flaring at oil production sites anywhere in the world shall be deducted. Estimates of emissions from cultivation may be derived from the use of averages calculated for smaller geographical areas than those used in the calculation of the default values, as an alternative to using actual values."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_7" kind="level" depth="2">
+         <unit eId="anx_V/pnt_7" kind="level" depth="2" numbered="true">
             <num>
                <t v="7."/>
             </num>
@@ -6797,7 +6797,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_V/pnt_8" kind="level" depth="2">
+         <unit eId="anx_V/pnt_8" kind="level" depth="2" numbered="true">
             <num>
                <t v="8."/>
             </num>
@@ -6809,7 +6809,7 @@
                <t v="/MJ shall be attributed if evidence is provided that the land:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_V/pnt_8/pnt_a" kind="point">
+               <unit eId="anx_V/pnt_8/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -6817,7 +6817,7 @@
                      <t v="was not in use for agriculture or any other activity in January 2008; and"/>
                   </p>
                </unit>
-               <unit eId="anx_V/pnt_8/pnt_b" kind="point">
+               <unit eId="anx_V/pnt_8/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -6825,7 +6825,7 @@
                      <t v="falls into one of the following categories:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="anx_V/pnt_8/pnt_b/pnt_i" kind="point">
+                     <unit eId="anx_V/pnt_8/pnt_b/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -6833,7 +6833,7 @@
                            <t v="severely degraded land, including such land that was formerly in agricultural use;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_V/pnt_8/pnt_b/pnt_ii" kind="point">
+                     <unit eId="anx_V/pnt_8/pnt_b/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -6852,7 +6852,7 @@
                <t v="/MJ shall apply for a period of up to 10 years from the date of conversion of the land to agricultural use, provided that a steady increase in carbon stocks as well as a sizable reduction in erosion phenomena for land falling under (i) are ensured and that soil contamination for land falling under (ii) is reduced."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_9" kind="level" depth="2">
+         <unit eId="anx_V/pnt_9" kind="level" depth="2" numbered="true">
             <num>
                <t v="9."/>
             </num>
@@ -6860,7 +6860,7 @@
                <t v="The categories referred to in point 8(b) are defined as follows:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_V/pnt_9/pnt_a" kind="point">
+               <unit eId="anx_V/pnt_9/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -6871,7 +6871,7 @@
                      <t v=" means land that, for a significant period of time, has either been significantly salinated or presented significantly low organic matter content and has been severely eroded;"/>
                   </p>
                </unit>
-               <unit eId="anx_V/pnt_9/pnt_b" kind="point">
+               <unit eId="anx_V/pnt_9/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -6887,7 +6887,7 @@
                <t v="Such land shall include land that has been the subject of a Commission decision in accordance with the fourth subparagraph of Article 18(4)."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_10" kind="level" depth="2">
+         <unit eId="anx_V/pnt_10" kind="level" depth="2" numbered="true">
             <num>
                <t v="10."/>
             </num>
@@ -6897,7 +6897,7 @@
                <t v=", guidelines for the calculation of land carbon stocks drawing on the 2006 IPCC Guidelines for National Greenhouse Gas Inventories — volume 4. The Commission guidelines shall serve as the basis for the calculation of land carbon stocks for the purposes of this Directive."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_11" kind="level" depth="2">
+         <unit eId="anx_V/pnt_11" kind="level" depth="2" numbered="true">
             <num>
                <t v="11."/>
             </num>
@@ -6915,7 +6915,7 @@
                <t v="In accounting for the consumption of electricity not produced within the fuel production plant, the greenhouse gas emission intensity of the production and distribution of that electricity shall be assumed to be equal to the average emission intensity of the production and distribution of electricity in a defined region. By derogation from this rule, producers may use an average value for an individual electricity production plant for electricity produced by that plant, if that plant is not connected to the electricity grid."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_12" kind="level" depth="2">
+         <unit eId="anx_V/pnt_12" kind="level" depth="2" numbered="true">
             <num>
                <t v="12."/>
             </num>
@@ -6930,7 +6930,7 @@
                <t v=", shall include emissions from the transport and storage of raw and semi-finished materials and from the storage and distribution of finished materials. Emissions from transport and distribution to be taken into account under point 6 shall not be covered by this point."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_13" kind="level" depth="2">
+         <unit eId="anx_V/pnt_13" kind="level" depth="2" numbered="true">
             <num>
                <t v="13."/>
             </num>
@@ -6945,7 +6945,7 @@
                <t v=", shall be taken to be zero for biofuels and bioliquids."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_14" kind="level" depth="2">
+         <unit eId="anx_V/pnt_14" kind="level" depth="2" numbered="true">
             <num>
                <t v="14."/>
             </num>
@@ -6971,7 +6971,7 @@
                <t v=" directly related to the extraction, transport, processing and distribution of fuel."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_15" kind="level" depth="2">
+         <unit eId="anx_V/pnt_15" kind="level" depth="2" numbered="true">
             <num>
                <t v="15."/>
             </num>
@@ -6994,7 +6994,7 @@
                <t v=" used in commercial products and services."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_16" kind="level" depth="2">
+         <unit eId="anx_V/pnt_16" kind="level" depth="2" numbered="true">
             <num>
                <t v="16."/>
             </num>
@@ -7009,7 +7009,7 @@
                <t v=", shall be taken into account in relation to the excess electricity produced by fuel production systems that use cogeneration except where the fuel used for the cogeneration is a co-product other than an agricultural crop residue. In accounting for that excess electricity, the size of the cogeneration unit shall be assumed to be the minimum necessary for the cogeneration unit to supply the heat that is needed to produce the fuel. The greenhouse gas emission saving associated with that excess electricity shall be taken to be equal to the amount of greenhouse gas that would be emitted when an equal amount of electricity was generated in a power plant using the same fuel as the cogeneration unit."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_17" kind="level" depth="2">
+         <unit eId="anx_V/pnt_17" kind="level" depth="2" numbered="true">
             <num>
                <t v="17."/>
             </num>
@@ -7017,7 +7017,7 @@
                <t v="Where a fuel production process produces, in combination, the fuel for which emissions are being calculated and one or more other products (co-products), greenhouse gas emissions shall be divided between the fuel or its intermediate product and the co-products in proportion to their energy content (determined by lower heating value in the case of co-products other than electricity)."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_18" kind="level" depth="2">
+         <unit eId="anx_V/pnt_18" kind="level" depth="2" numbered="true">
             <num>
                <t v="18."/>
             </num>
@@ -7069,7 +7069,7 @@
                <t v="In the case of fuels produced in refineries, the unit of analysis for the purposes of the calculation referred to in point 17 shall be the refinery."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_19" kind="level" depth="2">
+         <unit eId="anx_V/pnt_19" kind="level" depth="2" numbered="true">
             <num>
                <t v="19."/>
             </num>
@@ -7118,7 +7118,7 @@
                <t v="/MJ."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_D" kind="level" depth="1">
+         <unit eId="anx_V/pnt_D" kind="level" depth="1" numbered="true">
             <num>
                <t v="D."/>
             </num>
@@ -8702,7 +8702,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_E" kind="level" depth="1">
+         <unit eId="anx_V/pnt_E" kind="level" depth="1" numbered="true">
             <num>
                <t v="E."/>
             </num>
@@ -9533,7 +9533,7 @@
          <subheading>
             <t v="Minimum requirements for the harmonised template for national renewable energy action plans"/>
          </subheading>
-         <unit eId="anx_VI/pnt_1" kind="level" depth="1">
+         <unit eId="anx_VI/pnt_1" kind="level" depth="1" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -9544,7 +9544,7 @@
                <t v="Gross final energy consumption in electricity, transport and heating and cooling for 2020 taking into account the effects of energy efficiency policy measures."/>
             </p>
          </unit>
-         <unit eId="anx_VI/pnt_2" kind="level" depth="1">
+         <unit eId="anx_VI/pnt_2" kind="level" depth="1" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -9552,7 +9552,7 @@
                <t v="National sectoral 2020 targets and estimated shares of energy from renewable sources in electricity, heating and cooling and transport:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_VI/pnt_2/pnt_a" kind="point">
+               <unit eId="anx_VI/pnt_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -9560,7 +9560,7 @@
                      <t v="target share of energy from renewable sources in electricity in 2020;"/>
                   </p>
                </unit>
-               <unit eId="anx_VI/pnt_2/pnt_b" kind="point">
+               <unit eId="anx_VI/pnt_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -9568,7 +9568,7 @@
                      <t v="estimated trajectory for the share of energy from renewable sources in electricity;"/>
                   </p>
                </unit>
-               <unit eId="anx_VI/pnt_2/pnt_c" kind="point">
+               <unit eId="anx_VI/pnt_2/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -9576,7 +9576,7 @@
                      <t v="target share of energy from renewable sources in heating and cooling in 2020;"/>
                   </p>
                </unit>
-               <unit eId="anx_VI/pnt_2/pnt_d" kind="point">
+               <unit eId="anx_VI/pnt_2/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -9584,7 +9584,7 @@
                      <t v="estimated trajectory for the share of energy from renewable sources in heating and cooling;"/>
                   </p>
                </unit>
-               <unit eId="anx_VI/pnt_2/pnt_e" kind="point">
+               <unit eId="anx_VI/pnt_2/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -9592,7 +9592,7 @@
                      <t v="estimated trajectory for the share of energy from renewable sources in transport;"/>
                   </p>
                </unit>
-               <unit eId="anx_VI/pnt_2/pnt_f" kind="point">
+               <unit eId="anx_VI/pnt_2/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -9602,7 +9602,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_VI/pnt_3" kind="level" depth="1">
+         <unit eId="anx_VI/pnt_3" kind="level" depth="1" numbered="true">
             <num>
                <t v="3."/>
             </num>
@@ -9610,7 +9610,7 @@
                <t v="Measures for achieving the targets:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_VI/pnt_3/pnt_a" kind="point">
+               <unit eId="anx_VI/pnt_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -9618,7 +9618,7 @@
                      <t v="overview of all policies and measures concerning the promotion of the use of energy from renewable sources;"/>
                   </p>
                </unit>
-               <unit eId="anx_VI/pnt_3/pnt_b" kind="point">
+               <unit eId="anx_VI/pnt_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -9626,7 +9626,7 @@
                      <t v="specific measures to fulfil the requirements of Articles 13, 14 and 16, including the need to extend or reinforce existing infrastructure to facilitate the integration of the quantities of energy from renewable sources needed to achieve the 2020 national target, measures to accelerate the authorisation procedures, measures to reduce non-technological barriers and measures concerning Articles 17 to 21;"/>
                   </p>
                </unit>
-               <unit eId="anx_VI/pnt_3/pnt_c" kind="point">
+               <unit eId="anx_VI/pnt_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -9634,7 +9634,7 @@
                      <t v="support schemes for the promotion of the use of energy from renewable sources in electricity applied by the Member State or a group of Member States;"/>
                   </p>
                </unit>
-               <unit eId="anx_VI/pnt_3/pnt_d" kind="point">
+               <unit eId="anx_VI/pnt_3/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -9642,7 +9642,7 @@
                      <t v="support schemes for the promotion of the use of energy from renewable sources in heating and cooling applied by the Member State or a group of Member States;"/>
                   </p>
                </unit>
-               <unit eId="anx_VI/pnt_3/pnt_e" kind="point">
+               <unit eId="anx_VI/pnt_3/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -9650,7 +9650,7 @@
                      <t v="support schemes for the promotion of the use of energy from renewable sources in transport applied by the Member State or a group of Member States;"/>
                   </p>
                </unit>
-               <unit eId="anx_VI/pnt_3/pnt_f" kind="point">
+               <unit eId="anx_VI/pnt_3/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -9658,7 +9658,7 @@
                      <t v="specific measures on the promotion of the use of energy from biomass, especially for new biomass mobilisation taking into account:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="anx_VI/pnt_3/pnt_f/pnt_i" kind="point">
+                     <unit eId="anx_VI/pnt_3/pnt_f/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -9666,7 +9666,7 @@
                            <t v="biomass availability: both domestic potential and imports;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_VI/pnt_3/pnt_f/pnt_ii" kind="point">
+                     <unit eId="anx_VI/pnt_3/pnt_f/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -9676,7 +9676,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_VI/pnt_3/pnt_g" kind="point">
+               <unit eId="anx_VI/pnt_3/pnt_g" kind="point" numbered="true">
                   <num>
                      <t v="(g)"/>
                   </num>
@@ -9684,7 +9684,7 @@
                      <t v="planned use of statistical transfers between Member States and planned participation in joint projects with other Member States and third countries:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="anx_VI/pnt_3/pnt_g/pnt_i" kind="point">
+                     <unit eId="anx_VI/pnt_3/pnt_g/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -9692,7 +9692,7 @@
                            <t v="the estimated excess production of energy from renewable sources compared to the indicative trajectory which could be transferred to other Member States;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_VI/pnt_3/pnt_g/pnt_ii" kind="point">
+                     <unit eId="anx_VI/pnt_3/pnt_g/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -9700,7 +9700,7 @@
                            <t v="the estimated potential for joint projects;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_VI/pnt_3/pnt_g/pnt_iii" kind="point">
+                     <unit eId="anx_VI/pnt_3/pnt_g/pnt_iii" kind="point" numbered="true">
                         <num>
                            <t v="(iii)"/>
                         </num>
@@ -9712,7 +9712,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_VI/pnt_4" kind="level" depth="1">
+         <unit eId="anx_VI/pnt_4" kind="level" depth="1" numbered="true">
             <num>
                <t v="4."/>
             </num>
@@ -9720,7 +9720,7 @@
                <t v="Assessments:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_VI/pnt_4/pnt_a" kind="point">
+               <unit eId="anx_VI/pnt_4/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -9728,7 +9728,7 @@
                      <t v="the total contribution expected of each renewable energy technology to meet the mandatory 2020 targets and the indicative trajectory for the shares of energy from renewable sources in electricity, heating and cooling and transport;"/>
                   </p>
                </unit>
-               <unit eId="anx_VI/pnt_4/pnt_b" kind="point">
+               <unit eId="anx_VI/pnt_4/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>

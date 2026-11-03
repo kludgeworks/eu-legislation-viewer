@@ -121,7 +121,7 @@
             <t v="The United Kingdom is released from the obligation to apply Directive 2002/55/EC, with the exception of Articles 2 to 20, 34(1) and 39, to the following species or sub-species."/>
          </p>
          <table cols="2">
-            <rowGroup>
+            <rowGroup columns="2">
                <heading>
                   <emphasis kind="i">
                      <t v="Allium cepa"/>

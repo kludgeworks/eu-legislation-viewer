@@ -118,7 +118,7 @@
             <t v="Regulation (EU) No 479/2010 is amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="art_1/pnt_1" kind="point">
+            <unit eId="art_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="(1)"/>
                </num>
@@ -126,7 +126,7 @@
                   <t v="Chapter I is deleted."/>
                </p>
             </unit>
-            <unit eId="art_1/pnt_2" kind="point">
+            <unit eId="art_1/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="(2)"/>
                </num>
@@ -171,7 +171,7 @@
                   </unit>
                </quotedStructure>
             </unit>
-            <unit eId="art_1/pnt_3" kind="point">
+            <unit eId="art_1/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="(3)"/>
                </num>
@@ -183,7 +183,7 @@
                   <t v=" are deleted."/>
                </p>
             </unit>
-            <unit eId="art_1/pnt_4" kind="point">
+            <unit eId="art_1/pnt_4" kind="point" numbered="true">
                <num>
                   <t v="(4)"/>
                </num>
@@ -191,7 +191,7 @@
                   <t v="In Article 4, the reference to part K is replaced by a reference to part J."/>
                </p>
             </unit>
-            <unit eId="art_1/pnt_5" kind="point">
+            <unit eId="art_1/pnt_5" kind="point" numbered="true">
                <num>
                   <t v="(5)"/>
                </num>

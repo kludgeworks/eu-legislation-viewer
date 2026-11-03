@@ -427,7 +427,7 @@
          <p>
             <t v="HAVE AGREED AS FOLLOWS:"/>
          </p>
-         <unit eId="anx_1/pnt_1" kind="point">
+         <unit eId="anx_1/pnt_1" kind="point" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -435,7 +435,7 @@
                <t v="Since trade between the German territories subject to the Basic Law for the Federal Republic of Germany and the German territories in which the Basic Law does not apply is a part of German internal trade, the application of the Agreement on products within the province of the European Coal and Steel Community requires no change in the treatment currently accorded to this trade."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_2" kind="point">
+         <unit eId="anx_1/pnt_2" kind="point" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -443,7 +443,7 @@
                <t v="Each Contracting Party shall inform the other Contracting Party of any agreements relating to trade with the German territories in which the Basic Law for the Federal Republic of Germany does not apply, and of any implementing provisions. Each Contracting Party shall ensure that the implementation of such agreements does not conflict with the principles of the Agreement on products within the province of the European Coal and Steel Community, and shall in particular take appropriate measures to avoid harming the economy of the other Contracting Party."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_3" kind="point">
+         <unit eId="anx_1/pnt_3" kind="point" numbered="true">
             <num>
                <t v="3."/>
             </num>
@@ -463,7 +463,7 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx_2/pnt_1" kind="level" depth="2">
+         <unit eId="anx_2/pnt_1" kind="level" depth="2" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -476,7 +476,7 @@
                <t v="The Contracting Parties agree that customs duties and charges having equivalent effect which are calculated in accordance with the rules of the Additional Protocol shall be rounded off to the first decimal point."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_2" kind="level" depth="2">
+         <unit eId="anx_2/pnt_2" kind="level" depth="2" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -489,7 +489,7 @@
                <t v="The Contracting Parties agree that goods which are already in a bonded warehouse, or are being transported for export, or for which there was a firm contract of sale at the time Turkey notified the Council of Association in accordance with Article 12 (2) of the Additional Protocol, shall be liable to the customs duties applicable before the adoption of measures by Turkey in accordance with that Article."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_3" kind="level" depth="2">
+         <unit eId="anx_2/pnt_3" kind="level" depth="2" numbered="true">
             <num>
                <t v="3."/>
             </num>
@@ -502,7 +502,7 @@
                <t v="The duties in the Common Customs Tariff referred to in Articles 17 (1) and 18 (1) of the Additional Protocol are the duties in the Common Customs Tariff which are actually applied at the time of alignment of the Turkish Customs Tariff with the Common Customs Tariff."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_4" kind="level" depth="2">
+         <unit eId="anx_2/pnt_4" kind="level" depth="2" numbered="true">
             <num>
                <t v="4."/>
             </num>
@@ -515,7 +515,7 @@
                <t v="The Contracting Parties declare that in calculating the aggregate value of all the quotas which are to be increased by 10 % at regular intervals in accordance with Article 25 (4) of the Additional Protocol, no account shall be taken of the value of imports liberalized by Turkey during the periods referred to in that paragraph."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_5" kind="level" depth="2">
+         <unit eId="anx_2/pnt_5" kind="level" depth="2" numbered="true">
             <num>
                <t v="5."/>
             </num>
@@ -528,7 +528,7 @@
                <t v="The Contracting Parties declare that the provisions of Article 27 (2) of the Additional Protocol shall also apply to non-ferrous metals."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_6" kind="level" depth="2">
+         <unit eId="anx_2/pnt_6" kind="level" depth="2" numbered="true">
             <num>
                <t v="6."/>
             </num>
@@ -541,7 +541,7 @@
                <t v="The Contracting Parties agree that preparatory work in respect of the findings to be recorded by the Council of Association, pursuant to Article 34 of the Additional Protocol, may begin one year before expiry of the period of twenty-two years."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_7" kind="level" depth="2">
+         <unit eId="anx_2/pnt_7" kind="level" depth="2" numbered="true">
             <num>
                <t v="7."/>
             </num>
@@ -568,7 +568,7 @@
                   <t v="It is understood that importations financed:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx_2/att_1/level_1/pnt_a" kind="point">
+                  <unit eId="anx_2/att_1/level_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -576,7 +576,7 @@
                         <t v="with special aid resources connected with specific investment projects;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_2/att_1/level_1/pnt_b" kind="point">
+                  <unit eId="anx_2/att_1/level_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -584,7 +584,7 @@
                         <t v="without allocation of foreign currency;"/>
                      </p>
                   </unit>
-                  <unit eId="anx_2/att_1/level_1/pnt_c" kind="point">
+                  <unit eId="anx_2/att_1/level_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -605,7 +605,7 @@
                   <t v="The Contracting Parties declare that:"/>
                </p>
                <list kind="arabic">
-                  <unit eId="anx_2/att_1/att_1/pnt_1" kind="point">
+                  <unit eId="anx_2/att_1/att_1/pnt_1" kind="point" numbered="true">
                      <num>
                         <t v="1."/>
                      </num>
@@ -613,7 +613,7 @@
                         <t v="The value of the unit of account used to express the amount mentioned in Article 3 of the Financial Protocol shall be 0,88867088 gram of fine gold."/>
                      </p>
                   </unit>
-                  <unit eId="anx_2/att_1/att_1/pnt_2" kind="point">
+                  <unit eId="anx_2/att_1/att_1/pnt_2" kind="point" numbered="true">
                      <num>
                         <t v="2."/>
                      </num>
@@ -621,7 +621,7 @@
                         <t v="The parity of the currency of a Member State of the Community in relation to the unit of account defined in paragraph 1 shall be the relation between the weight of fine gold contained in the unit of account and the weight of fine gold corresponding to the par value of that currency communicated to the International Monetary Fund. If no par value has been communicated, or if exchange rates differing from the par value by a margin exceeding that authorized by the International Monetary Fund are applied to current payments, the weight of fine gold corresponding to the parity of the currency shall be calculated on the basis of the exchange rate for a currency directly or indirectly expressed in and convertible into gold which is applied in the Member State to current payments, on the day of the calculation, and on the basis of the par value communicated to the International Monetary Fund for that convertible currency."/>
                      </p>
                   </unit>
-                  <unit eId="anx_2/att_1/att_1/pnt_3" kind="point">
+                  <unit eId="anx_2/att_1/att_1/pnt_3" kind="point" numbered="true">
                      <num>
                         <t v="3."/>
                      </num>
@@ -639,7 +639,7 @@
             <heading>
                <t v="DECLARATIONS BY THE GOVERNMENT OF THE FEDERAL REPUBLIC OF GERMANY ON THE AGREEMENT RELATING TO PRODUCTS WITHIN THE PROVINCE OF THE EUROPEAN COAL AND STEEL COMMUNITY"/>
             </heading>
-            <unit eId="anx_2/att_2/pnt_1" kind="level" depth="1">
+            <unit eId="anx_2/att_2/pnt_1" kind="level" depth="1" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -655,7 +655,7 @@
                   <t v="All Germans as defined in the Basic Law for the Federal Republic of Germany shall be considered nationals of the Federal Republic of Germany."/>
                </p>
             </unit>
-            <unit eId="anx_2/att_2/pnt_2" kind="level" depth="1">
+            <unit eId="anx_2/att_2/pnt_2" kind="level" depth="1" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -737,7 +737,7 @@
             <t v="Have adopted the following Joint Declarations by the Contracting Parties relating to the Additional Protocol:"/>
          </p>
          <list kind="arabic">
-            <unit eId="att_1/list_2/pnt_1" kind="point">
+            <unit eId="att_1/list_2/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -745,7 +745,7 @@
                   <t v="Joint Declaration on the calculation of duties and charges,"/>
                </p>
             </unit>
-            <unit eId="att_1/list_2/pnt_2" kind="point">
+            <unit eId="att_1/list_2/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -753,7 +753,7 @@
                   <t v="Joint Declaration on Article 12 (2),"/>
                </p>
             </unit>
-            <unit eId="att_1/list_2/pnt_3" kind="point">
+            <unit eId="att_1/list_2/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -761,7 +761,7 @@
                   <t v="Joint Declaration on Articles 17 (1) and 18 (1),"/>
                </p>
             </unit>
-            <unit eId="att_1/list_2/pnt_4" kind="point">
+            <unit eId="att_1/list_2/pnt_4" kind="point" numbered="true">
                <num>
                   <t v="4."/>
                </num>
@@ -769,7 +769,7 @@
                   <t v="Joint Declaration on Article 25 (4),"/>
                </p>
             </unit>
-            <unit eId="att_1/list_2/pnt_5" kind="point">
+            <unit eId="att_1/list_2/pnt_5" kind="point" numbered="true">
                <num>
                   <t v="5."/>
                </num>
@@ -777,7 +777,7 @@
                   <t v="Joint Declaration on Article 27 (2),"/>
                </p>
             </unit>
-            <unit eId="att_1/list_2/pnt_6" kind="point">
+            <unit eId="att_1/list_2/pnt_6" kind="point" numbered="true">
                <num>
                   <t v="6."/>
                </num>
@@ -785,7 +785,7 @@
                   <t v="Joint Declaration on Article 34,"/>
                </p>
             </unit>
-            <unit eId="att_1/list_2/pnt_7" kind="point">
+            <unit eId="att_1/list_2/pnt_7" kind="point" numbered="true">
                <num>
                   <t v="7."/>
                </num>
@@ -813,7 +813,7 @@
             <t v="They have, in addition, taken note of the following Declarations by the Government of the Federal Republic of Germany on the Agreement in respect of products within the province of the European Coal and Steel Community:"/>
          </p>
          <list kind="arabic">
-            <unit eId="att_1/list_4/pnt_1" kind="point">
+            <unit eId="att_1/list_4/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -825,7 +825,7 @@
                   <t v=";"/>
                </p>
             </unit>
-            <unit eId="att_1/list_4/pnt_2" kind="point">
+            <unit eId="att_1/list_4/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>

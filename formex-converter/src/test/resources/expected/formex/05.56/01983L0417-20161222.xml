@@ -178,7 +178,7 @@
                   <t v="Without prejudice to Directive 79/112/EEC and without prejudice to the provisions to be adopted by the Community concerning the labelling of foodstuffs not intended for the ultimate consumer, the only mandatory particulars to be marked on the packages, containers or labels of the products defined in the Annexes, particulars which must be clearly visible, easily legible and in indelible characters, shall be as follows:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_4/par_1/pnt_a" kind="point">
+                  <unit eId="art_4/par_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -186,7 +186,7 @@
                         <t v="the name reserved for these products in accordance with Article 3 with, in the case of caseinates, an indication of the cation or cations;"/>
                      </p>
                   </unit>
-                  <unit eId="art_4/par_1/pnt_b" kind="point">
+                  <unit eId="art_4/par_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -215,7 +215,7 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="art_4/par_1/pnt_c" kind="point">
+                  <unit eId="art_4/par_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -297,7 +297,7 @@
                         </tr>
                      </table>
                   </unit>
-                  <unit eId="art_4/par_1/pnt_d" kind="point">
+                  <unit eId="art_4/par_1/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -308,7 +308,7 @@
                         <t v="however, in the case of their national production, Member States may maintain in force national provisions requiring details of the manufacturing or packaging establishment to be mentioned;"/>
                      </p>
                   </unit>
-                  <unit eId="art_4/par_1/pnt_e" kind="point">
+                  <unit eId="art_4/par_1/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -316,7 +316,7 @@
                         <t v="in the case of products imported from third countries, the name of the country of origin;"/>
                      </p>
                   </unit>
-                  <unit eId="art_4/par_1/pnt_f" kind="point">
+                  <unit eId="art_4/par_1/pnt_f" kind="point" numbered="true">
                      <num>
                         <t v="(f)"/>
                      </num>
@@ -433,7 +433,7 @@
                <t v="The following shall be determined in accordance with the procedure laid down in Article 10:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_9/pnt_a" kind="point">
+               <unit eId="art_9/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -441,7 +441,7 @@
                      <t v="the methods of analysis necessary for checking the purity criteria referred to in Article 8;"/>
                   </p>
                </unit>
-               <unit eId="art_9/pnt_b" kind="point">
+               <unit eId="art_9/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -548,7 +548,7 @@
             <subheading>
                <t v="EDIBLE CASEINS"/>
             </subheading>
-            <unit eId="anx_I/pnt_I" kind="level" depth="1">
+            <unit eId="anx_I/pnt_I" kind="level" depth="1" numbered="true">
                <num>
                   <t v="I."/>
                </num>
@@ -556,7 +556,7 @@
                   <t v="NAMES AND DEFINITIONS"/>
                </heading>
                <list kind="alpha">
-                  <unit eId="anx_I/pnt_I/pnt_a" kind="point">
+                  <unit eId="anx_I/pnt_I/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -567,7 +567,7 @@
                         <t v=" means edible casein obtained by precipitation using the technological adjuvants and bacterial cultures listed in Section II (d) which comply with the standards laid down in Section II."/>
                      </p>
                   </unit>
-                  <unit eId="anx_I/pnt_I/pnt_b" kind="point">
+                  <unit eId="anx_I/pnt_I/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -580,7 +580,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_I/pnt_II" kind="level" depth="1">
+            <unit eId="anx_I/pnt_II" kind="level" depth="1" numbered="true">
                <num>
                   <t v="II."/>
                </num>
@@ -591,7 +591,7 @@
                   </quote>
                </heading>
             </unit>
-            <unit eId="anx_I/pnt_II/pnt_a" kind="level" depth="2">
+            <unit eId="anx_I/pnt_II/pnt_a" kind="level" depth="2" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -740,7 +740,7 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_I/pnt_II/pnt_b" kind="level" depth="2">
+            <unit eId="anx_I/pnt_II/pnt_b" kind="level" depth="2" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -762,7 +762,7 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_I/pnt_II/pnt_c" kind="level" depth="2">
+            <unit eId="anx_I/pnt_II/pnt_c" kind="level" depth="2" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -784,7 +784,7 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_I/pnt_II/pnt_d" kind="level" depth="2">
+            <unit eId="anx_I/pnt_II/pnt_d" kind="level" depth="2" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -792,7 +792,7 @@
                   <t v="Harmless technological adjuvants and bacterial cultures suitable for human consumption"/>
                </heading>
                <list kind="roman">
-                  <unit eId="anx_I/pnt_II/pnt_d/pnt_i" kind="point">
+                  <unit eId="anx_I/pnt_II/pnt_d/pnt_i" kind="point" numbered="true">
                      <num>
                         <t v="(i)"/>
                      </num>
@@ -829,7 +829,7 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="anx_I/pnt_II/pnt_d/pnt_ii" kind="point">
+                  <unit eId="anx_I/pnt_II/pnt_d/pnt_ii" kind="point" numbered="true">
                      <num>
                         <t v="(ii)"/>
                      </num>
@@ -848,7 +848,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_I/pnt_II/pnt_e" kind="level" depth="2">
+            <unit eId="anx_I/pnt_II/pnt_e" kind="level" depth="2" numbered="true">
                <num>
                   <t v="(e)"/>
                </num>
@@ -896,7 +896,7 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_I/pnt_III" kind="level" depth="1">
+            <unit eId="anx_I/pnt_III" kind="level" depth="1" numbered="true">
                <num>
                   <t v="III."/>
                </num>
@@ -907,7 +907,10 @@
                   </quote>
                </heading>
             </unit>
-            <unit eId="anx_I/pnt_III/pnt_a" kind="level" depth="2">
+            <unit eId="anx_I/pnt_III/pnt_a"
+                  kind="level"
+                  depth="2"
+                  numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -1039,7 +1042,10 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_I/pnt_III/pnt_b" kind="level" depth="2">
+            <unit eId="anx_I/pnt_III/pnt_b"
+                  kind="level"
+                  depth="2"
+                  numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -1061,7 +1067,10 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_I/pnt_III/pnt_c" kind="level" depth="2">
+            <unit eId="anx_I/pnt_III/pnt_c"
+                  kind="level"
+                  depth="2"
+                  numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -1083,7 +1092,10 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_I/pnt_III/pnt_d" kind="level" depth="2">
+            <unit eId="anx_I/pnt_III/pnt_d"
+                  kind="level"
+                  depth="2"
+                  numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -1115,7 +1127,10 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_I/pnt_III/pnt_e" kind="level" depth="2">
+            <unit eId="anx_I/pnt_III/pnt_e"
+                  kind="level"
+                  depth="2"
+                  numbered="true">
                <num>
                   <t v="(e)"/>
                </num>
@@ -1171,7 +1186,7 @@
             <subheading>
                <t v="EDIBLE CASEINATES"/>
             </subheading>
-            <unit eId="anx_II/pnt_I" kind="level" depth="1">
+            <unit eId="anx_II/pnt_I" kind="level" depth="1" numbered="true">
                <num>
                   <t v="I."/>
                </num>
@@ -1185,7 +1200,7 @@
                   <t v=" means caseinates obtained from edible caseins using neutralizing agents of edible quality listed under Section II (d) and complying with the standards set out in Section II."/>
                </p>
             </unit>
-            <unit eId="anx_II/pnt_II" kind="level" depth="1">
+            <unit eId="anx_II/pnt_II" kind="level" depth="1" numbered="true">
                <num>
                   <t v="II."/>
                </num>
@@ -1193,7 +1208,10 @@
                   <t v="STANDARDS APPLICABLE TO EDIBLE CASEINATES"/>
                </heading>
             </unit>
-            <unit eId="anx_II/pnt_II/pnt_a" kind="level" depth="2">
+            <unit eId="anx_II/pnt_II/pnt_a"
+                  kind="level"
+                  depth="2"
+                  numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -1305,7 +1323,10 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_II/pnt_II/pnt_b" kind="level" depth="2">
+            <unit eId="anx_II/pnt_II/pnt_b"
+                  kind="level"
+                  depth="2"
+                  numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -1327,7 +1348,10 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_II/pnt_II/pnt_c" kind="level" depth="2">
+            <unit eId="anx_II/pnt_II/pnt_c"
+                  kind="level"
+                  depth="2"
+                  numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -1349,7 +1373,10 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_II/pnt_II/pnt_d" kind="level" depth="2">
+            <unit eId="anx_II/pnt_II/pnt_d"
+                  kind="level"
+                  depth="2"
+                  numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -1419,7 +1446,10 @@
                   </tr>
                </table>
             </unit>
-            <unit eId="anx_II/pnt_II/pnt_e" kind="level" depth="2">
+            <unit eId="anx_II/pnt_II/pnt_e"
+                  kind="level"
+                  depth="2"
+                  numbered="true">
                <num>
                   <t v="(e)"/>
                </num>

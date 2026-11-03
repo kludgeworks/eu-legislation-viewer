@@ -192,7 +192,7 @@
                <t v="Fishery and aquaculture products originating in Peru, must meet the following conditions:"/>
             </p>
             <list kind="arabic">
-               <unit eId="art_2/pnt_1" kind="point">
+               <unit eId="art_2/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -200,7 +200,7 @@
                      <t v="Each consignment must be accompanied by a numbered original health certificate, duly completed, signed, dated and comprising a single sheet in accordance with the model in Annex A hereto."/>
                   </p>
                </unit>
-               <unit eId="art_2/pnt_2" kind="point">
+               <unit eId="art_2/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
@@ -208,7 +208,7 @@
                      <t v="The products must come from approved establishments listed in Annex B hereto."/>
                   </p>
                </unit>
-               <unit eId="art_2/pnt_3" kind="point">
+               <unit eId="art_2/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="3."/>
                   </num>
@@ -295,7 +295,7 @@
                </caption>
                <table cols="4">
                   <caption>
-                     <unit eId="anx_B/pnt_I" kind="point">
+                     <unit eId="anx_B/pnt_I" kind="point" numbered="true">
                         <num>
                            <t v="I."/>
                         </num>
@@ -1521,7 +1521,7 @@
                </table>
                <table cols="4">
                   <caption>
-                     <unit eId="anx_B/pnt_II" kind="point">
+                     <unit eId="anx_B/pnt_II" kind="point" numbered="true">
                         <num>
                            <t v="II."/>
                         </num>

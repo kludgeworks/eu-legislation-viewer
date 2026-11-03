@@ -36,7 +36,7 @@
          <new>
             <quotedStructure eId="cor_1/new/qstr_1">
                <table cols="5">
-                  <rowGroup>
+                  <rowGroup columns="5">
                      <heading>
                         <t v="‘"/>
                         <emphasis kind="b">

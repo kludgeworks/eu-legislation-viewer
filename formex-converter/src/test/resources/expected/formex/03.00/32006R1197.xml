@@ -129,7 +129,7 @@
             <t v="Regulation (EEC) No 2967/85 is amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="art_1/pnt_1" kind="point">
+            <unit eId="art_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -165,7 +165,7 @@
                   </unit>
                </quotedStructure>
             </unit>
-            <unit eId="art_1/pnt_2" kind="point">
+            <unit eId="art_1/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -173,7 +173,7 @@
                   <t v="in Annex I, point 2 is replaced by the following:"/>
                </p>
                <quotedStructure eId="art_1/pnt_2/qstr_1">
-                  <unit eId="art_1/pnt_2/qstr_1/pnt_2" kind="point">
+                  <unit eId="art_1/pnt_2/qstr_1/pnt_2" kind="point" numbered="true">
                      <num>
                         <t v="‘"/>
                         <t v="2."/>

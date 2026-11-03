@@ -141,7 +141,7 @@
                   <t v="LIST OF COUNCIL CONFIGURATIONS"/>
                </emphasis>
             </heading>
-            <unit eId="anx/level_1/pnt_1" kind="point">
+            <unit eId="anx/level_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -151,7 +151,7 @@
                   <t v=";"/>
                </p>
             </unit>
-            <unit eId="anx/level_1/pnt_2" kind="point">
+            <unit eId="anx/level_1/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -161,7 +161,7 @@
                   <t v=";"/>
                </p>
             </unit>
-            <unit eId="anx/level_1/pnt_3" kind="point">
+            <unit eId="anx/level_1/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -171,7 +171,7 @@
                   <t v=";"/>
                </p>
             </unit>
-            <unit eId="anx/level_1/pnt_4" kind="point">
+            <unit eId="anx/level_1/pnt_4" kind="point" numbered="true">
                <num>
                   <t v="4."/>
                </num>
@@ -181,7 +181,7 @@
                   <t v=";"/>
                </p>
             </unit>
-            <unit eId="anx/level_1/pnt_5" kind="point">
+            <unit eId="anx/level_1/pnt_5" kind="point" numbered="true">
                <num>
                   <t v="5."/>
                </num>
@@ -189,7 +189,7 @@
                   <t v="Employment, social policy, health and consumer affairs;"/>
                </p>
             </unit>
-            <unit eId="anx/level_1/pnt_6" kind="point">
+            <unit eId="anx/level_1/pnt_6" kind="point" numbered="true">
                <num>
                   <changed amendingAct="32010D0594"
                            action="replaced"
@@ -209,7 +209,7 @@
                   <t v=";"/>
                </p>
             </unit>
-            <unit eId="anx/level_1/pnt_7" kind="point">
+            <unit eId="anx/level_1/pnt_7" kind="point" numbered="true">
                <num>
                   <t v="7."/>
                </num>
@@ -217,7 +217,7 @@
                   <t v="Transport, telecommunications and energy;"/>
                </p>
             </unit>
-            <unit eId="anx/level_1/pnt_8" kind="point">
+            <unit eId="anx/level_1/pnt_8" kind="point" numbered="true">
                <num>
                   <t v="8."/>
                </num>
@@ -225,7 +225,7 @@
                   <t v="Agriculture and fisheries;"/>
                </p>
             </unit>
-            <unit eId="anx/level_1/pnt_9" kind="point">
+            <unit eId="anx/level_1/pnt_9" kind="point" numbered="true">
                <num>
                   <t v="9."/>
                </num>
@@ -233,7 +233,7 @@
                   <t v="Environment;"/>
                </p>
             </unit>
-            <unit eId="anx/level_1/pnt_10" kind="point">
+            <unit eId="anx/level_1/pnt_10" kind="point" numbered="true">
                <num>
                   <changed amendingAct="32010D0594"
                            action="replaced"

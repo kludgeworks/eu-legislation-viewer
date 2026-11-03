@@ -220,7 +220,7 @@
                <t v="This Regulation lays down the detailed rules for intervention on the market in skimmed-milk powder as provided for in Article 7 of Regulation (EC) No 1255/1999, as regards:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_1/pnt_a" kind="point">
+               <unit eId="art_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -228,7 +228,7 @@
                      <t v="buying-in at the intervention price;"/>
                   </p>
                </unit>
-               <unit eId="art_1/pnt_b" kind="point">
+               <unit eId="art_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -236,7 +236,7 @@
                      <t v="buying-in under a standing invitation to tender;"/>
                   </p>
                </unit>
-               <unit eId="art_1/pnt_c" kind="point">
+               <unit eId="art_1/pnt_c" kind="point" numbered="true">
                   <provenance amendingAct="32004R1319"
                               action="replaced"
                               location="AR:1;PT:1"
@@ -248,7 +248,7 @@
                      <t v="the sale of skimmed-milk powder from public storage in a standing invitation to tender;"/>
                   </p>
                </unit>
-               <unit eId="art_1/pnt_d" kind="point">
+               <unit eId="art_1/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -339,7 +339,7 @@
                      <t v="The skimmed-milk powder shall be put up in bags of a net weight of 25 kg meeting the requirements laid down in Annex II and showing the following particulars, where appropriate in code:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_2/par_6/pnt_a" kind="point">
+                     <unit eId="art_2/par_6/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -347,7 +347,7 @@
                            <t v="the approval number identifying the factory and the Member State of manufacture;"/>
                         </p>
                      </unit>
-                     <unit eId="art_2/par_6/pnt_b" kind="point">
+                     <unit eId="art_2/par_6/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -355,7 +355,7 @@
                            <t v="the date or, where appropriate, the week of manufacture;"/>
                         </p>
                      </unit>
-                     <unit eId="art_2/par_6/pnt_c" kind="point">
+                     <unit eId="art_2/par_6/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -363,7 +363,7 @@
                            <t v="the number of the manufacturing batch;"/>
                         </p>
                      </unit>
-                     <unit eId="art_2/par_6/pnt_d" kind="point">
+                     <unit eId="art_2/par_6/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -410,7 +410,7 @@
                      <t v="Undertakings as referred to in Article 7(1) of Regulation (EC) No 1255/1999 shall be approved only if they:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_3/par_1/pnt_a" kind="point">
+                     <unit eId="art_3/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -420,7 +420,7 @@
                            <t v=", and have the appropriate technical equipment;"/>
                         </p>
                      </unit>
-                     <unit eId="art_3/par_1/pnt_b" kind="point">
+                     <unit eId="art_3/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -428,7 +428,7 @@
                            <t v="undertake to keep permanent records in the form determined by the competent agency of each Member State, listing the origin of the raw materials, the quantities of skimmed-milk powder, buttermilk and whey obtained and the market preparation, identification and exit date of each batch of skimmed-milk powder, buttermilk and whey;"/>
                         </p>
                      </unit>
-                     <unit eId="art_3/par_1/pnt_c" kind="point">
+                     <unit eId="art_3/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -436,7 +436,7 @@
                            <t v="agree to submit their production of skimmed-milk powder liable to be offered for intervention to a specific official inspection;"/>
                         </p>
                      </unit>
-                     <unit eId="art_3/par_1/pnt_d" kind="point">
+                     <unit eId="art_3/par_1/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -460,7 +460,7 @@
                         <t v="They shall carry out at least:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_3/par_2/sub_2/pnt_a" kind="point">
+                        <unit eId="art_3/par_2/sub_2/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -468,7 +468,7 @@
                               <t v="one inspection per period of 28 days of manufacture for intervention, with at least one inspection every six months, to examine the records referred to in paragraph 1(b);"/>
                            </p>
                         </unit>
-                        <unit eId="art_3/par_2/sub_2/pnt_b" kind="point">
+                        <unit eId="art_3/par_2/sub_2/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -512,7 +512,7 @@
                         <t v="A report shall be drawn up on the inspections carried out under paragraphs 2 and 3 specifying:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_3/par_4/sub_1/pnt_a" kind="point">
+                        <unit eId="art_3/par_4/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -520,7 +520,7 @@
                               <t v="the date of the check;"/>
                            </p>
                         </unit>
-                        <unit eId="art_3/par_4/sub_1/pnt_b" kind="point">
+                        <unit eId="art_3/par_4/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -528,7 +528,7 @@
                               <t v="its duration;"/>
                            </p>
                         </unit>
-                        <unit eId="art_3/par_4/sub_1/pnt_c" kind="point">
+                        <unit eId="art_3/par_4/sub_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -601,7 +601,7 @@
                      <t v="Offers shall give:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_5/par_1/pnt_a" kind="point">
+                     <unit eId="art_5/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -609,7 +609,7 @@
                            <t v="the name and address of the seller;"/>
                         </p>
                      </unit>
-                     <unit eId="art_5/par_1/pnt_b" kind="point">
+                     <unit eId="art_5/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -617,7 +617,7 @@
                            <t v="the quantity offered;"/>
                         </p>
                      </unit>
-                     <unit eId="art_5/par_1/pnt_c" kind="point">
+                     <unit eId="art_5/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -650,7 +650,7 @@
                      <t v="Offers shall be valid only if:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_5/par_3/pnt_a" kind="point">
+                     <unit eId="art_5/par_3/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -658,7 +658,7 @@
                            <t v="they relate to a quantity of skimmed-milk powder meeting the requirements of Article 2(5);"/>
                         </p>
                      </unit>
-                     <unit eId="art_5/par_3/pnt_b" kind="point">
+                     <unit eId="art_5/par_3/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -666,7 +666,7 @@
                            <t v="they are accompanied by a written undertaking by the seller to comply with Articles 2(4) and 9;"/>
                         </p>
                      </unit>
-                     <unit eId="art_5/par_3/pnt_c" kind="point">
+                     <unit eId="art_5/par_3/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -684,7 +684,7 @@
                      <t v="The undertaking provided for in paragraph 3(b), if sent initially to the intervention agency, shall be valid by tacit renewal for subsequent offers until explicitly cancelled by the seller or the intervention agency, provided that:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_5/par_4/pnt_a" kind="point">
+                     <unit eId="art_5/par_4/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -692,7 +692,7 @@
                            <t v="the original offer stipulates that the seller intends to avail himself of this provision;"/>
                         </p>
                      </unit>
-                     <unit eId="art_5/par_4/pnt_b" kind="point">
+                     <unit eId="art_5/par_4/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -729,7 +729,7 @@
                      <t v="After checking the offer, and within five working days following the day of receipt, the intervention agency shall issue a dated and numbered delivery order showing:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_7/par_1/pnt_a" kind="point">
+                     <unit eId="art_7/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -737,7 +737,7 @@
                            <t v="the quantity of the skimmed-milk powder to be delivered;"/>
                         </p>
                      </unit>
-                     <unit eId="art_7/par_1/pnt_b" kind="point">
+                     <unit eId="art_7/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -745,7 +745,7 @@
                            <t v="the final date for delivery;"/>
                         </p>
                      </unit>
-                     <unit eId="art_7/par_1/pnt_c" kind="point">
+                     <unit eId="art_7/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -864,7 +864,7 @@
                      <t v="In making the offer the seller shall undertake, should the inspection show that the skimmed milk powder does not comply with the requirements laid down in Article 2:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_9/unp_1/pnt_a" kind="point">
+                     <unit eId="art_9/unp_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -872,7 +872,7 @@
                            <t v="to take back the goods in question;"/>
                         </p>
                      </unit>
-                     <unit eId="art_9/unp_1/pnt_b" kind="point">
+                     <unit eId="art_9/unp_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -911,7 +911,7 @@
                         <t v="The stores referred to in the fourth subparagraph of Article 7(1) of Regulation (EC) No 1255/1999 shall:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_10/par_1/sub_1/pnt_a" kind="point">
+                        <unit eId="art_10/par_1/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -919,7 +919,7 @@
                               <t v="be dry, well maintained and free of vermin;"/>
                            </p>
                         </unit>
-                        <unit eId="art_10/par_1/sub_1/pnt_b" kind="point">
+                        <unit eId="art_10/par_1/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -927,7 +927,7 @@
                               <t v="be free of extraneous odours;"/>
                            </p>
                         </unit>
-                        <unit eId="art_10/par_1/sub_1/pnt_c" kind="point">
+                        <unit eId="art_10/par_1/sub_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -935,7 +935,7 @@
                               <t v="permit good ventilation;"/>
                            </p>
                         </unit>
-                        <unit eId="art_10/par_1/sub_1/pnt_d" kind="point">
+                        <unit eId="art_10/par_1/sub_1/pnt_d" kind="point" numbered="true">
                            <num>
                               <t v="(d)"/>
                            </num>
@@ -1098,7 +1098,7 @@
                      <t v="Tenders must give:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_15/par_2/pnt_a" kind="point">
+                     <unit eId="art_15/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1106,7 +1106,7 @@
                            <t v="the name and address of the tenderer;"/>
                         </p>
                      </unit>
-                     <unit eId="art_15/par_2/pnt_b" kind="point">
+                     <unit eId="art_15/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1114,7 +1114,7 @@
                            <t v="the quantity offered;"/>
                         </p>
                      </unit>
-                     <unit eId="art_15/par_2/pnt_c" kind="point">
+                     <unit eId="art_15/par_2/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1122,7 +1122,7 @@
                            <t v="the proposed price per 100 kg of skimmed-milk powder, not including national taxes, delivered on pallets to the loading bay of the storage depot, in euro to no more than two decimal places;"/>
                         </p>
                      </unit>
-                     <unit eId="art_15/par_2/pnt_d" kind="point">
+                     <unit eId="art_15/par_2/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -1140,7 +1140,7 @@
                      <t v="Tenders shall be valid only if:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_15/par_3/pnt_a" kind="point">
+                     <unit eId="art_15/par_3/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1148,7 +1148,7 @@
                            <t v="they relate to skimmed-milk powder manufactured during the 21 days or, where applicable, three weeks preceding the closing date for submission of tenders as referred to in Article 14(2). Where the interval between two invitations to tender is longer than 21 days, the skimmed-milk powder may have been manufactured during that period;"/>
                         </p>
                      </unit>
-                     <unit eId="art_15/par_3/pnt_b" kind="point">
+                     <unit eId="art_15/par_3/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1156,7 +1156,7 @@
                            <t v="they relate to a quantity of skimmed-milk powder complying with Article 2(5);"/>
                         </p>
                      </unit>
-                     <unit eId="art_15/par_3/pnt_c" kind="point">
+                     <unit eId="art_15/par_3/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1164,7 +1164,7 @@
                            <t v="they are accompanied by a written undertaking from the tenderer to comply with point (a) of this paragraph and with Article 9;"/>
                         </p>
                      </unit>
-                     <unit eId="art_15/par_3/pnt_d" kind="point">
+                     <unit eId="art_15/par_3/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -1182,7 +1182,7 @@
                      <t v="The undertaking provided for in point (c) of paragraph 3, if forwarded initially to the intervention agency, shall be valid by tacit renewal for subsequent tenders until explicitly cancelled by the tenderer or the intervention agency, provided that:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_15/par_4/pnt_a" kind="point">
+                     <unit eId="art_15/par_4/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1190,7 +1190,7 @@
                            <t v="the original tender stipulates that the tenderer intends to avail himself of this provision,"/>
                         </p>
                      </unit>
-                     <unit eId="art_15/par_4/pnt_b" kind="point">
+                     <unit eId="art_15/par_4/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1298,7 +1298,7 @@
                      <t v="The intervention agency shall immediately issue to successful tenderers a dated and numbered delivery order indicating:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_19/par_2/pnt_a" kind="point">
+                     <unit eId="art_19/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1306,7 +1306,7 @@
                            <t v="the quantity to be delivered;"/>
                         </p>
                      </unit>
-                     <unit eId="art_19/par_2/pnt_b" kind="point">
+                     <unit eId="art_19/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1314,7 +1314,7 @@
                            <t v="the final date for delivery of the skimmed-milk powder;"/>
                         </p>
                      </unit>
-                     <unit eId="art_19/par_2/pnt_c" kind="point">
+                     <unit eId="art_19/par_2/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1457,7 +1457,7 @@
                         <t v="Intervention agencies shall issue a notice of standing invitation to tender, indicating in particular the closing date and place for the submission of tenders. They shall also indicate, for the skimmed-milk powder they hold:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_21/par_2/sub_1/pnt_a" kind="point">
+                        <unit eId="art_21/par_2/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -1465,7 +1465,7 @@
                               <t v="the locations of the warehouses where the powder to be sold is in store;"/>
                            </p>
                         </unit>
-                        <unit eId="art_21/par_2/sub_1/pnt_b" kind="point">
+                        <unit eId="art_21/par_2/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -1501,7 +1501,7 @@
                      <t v="Intervention agencies shall make the necessary arrangements to enable interested parties:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_21/par_4/pnt_a" kind="point">
+                     <unit eId="art_21/par_4/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1509,7 +1509,7 @@
                            <t v="to examine samples of the skimmed-milk powder put up for sale at their own expense before submitting a tender;"/>
                         </p>
                      </unit>
-                     <unit eId="art_21/par_4/pnt_b" kind="point">
+                     <unit eId="art_21/par_4/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1568,7 +1568,7 @@
                      <t v="Tenders shall contain:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_23/par_2/pnt_a" kind="point">
+                     <unit eId="art_23/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1576,7 +1576,7 @@
                            <t v="the name and address of the tenderer;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_2/pnt_b" kind="point">
+                     <unit eId="art_23/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1584,7 +1584,7 @@
                            <t v="the quantity desired;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_2/pnt_c" kind="point">
+                     <unit eId="art_23/par_2/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1592,7 +1592,7 @@
                            <t v="the price in euro tendered per 100 kilograms of skimmed-milk powder, not including national taxes and charges, ex-warehouse;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_2/pnt_d" kind="point">
+                     <unit eId="art_23/par_2/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -1610,7 +1610,7 @@
                      <t v="A tender shall not be valid unless:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_23/par_3/pnt_a" kind="point">
+                     <unit eId="art_23/par_3/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1618,7 +1618,7 @@
                            <t v="it relates to at least 10 tonnes, except where the quantity available in a warehouse is less than 10 tonnes;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_3/pnt_b" kind="point">
+                     <unit eId="art_23/par_3/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1626,7 +1626,7 @@
                            <t v="it is accompanied by the tenderer’s written undertaking to comply with the provisions of this Regulation;"/>
                         </p>
                      </unit>
-                     <unit eId="art_23/par_3/pnt_c" kind="point">
+                     <unit eId="art_23/par_3/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1837,7 +1837,7 @@
                      <t v="Once the amount referred to in Article 24e(2) has been paid the intervention agency shall issue a removal order indicating:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_24f/par_1/pnt_a" kind="point">
+                     <unit eId="art_24f/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -1845,7 +1845,7 @@
                            <t v="the quantity in respect of which the corresponding amount has been paid;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24f/par_1/pnt_b" kind="point">
+                     <unit eId="art_24f/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -1853,7 +1853,7 @@
                            <t v="the warehouse in which the skimmed-milk powder is in store;"/>
                         </p>
                      </unit>
-                     <unit eId="art_24f/par_1/pnt_c" kind="point">
+                     <unit eId="art_24f/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -1926,7 +1926,7 @@
                   <t v="For the purposes of this chapter:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_25/pnt_a" kind="point">
+                  <unit eId="art_25/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -1937,7 +1937,7 @@
                         <t v=" means a quantity weighing at least 10 tonnes and of homogeneous composition and quality, originating in a single factory, taken into storage in a single depot on a single day;"/>
                      </p>
                   </unit>
-                  <unit eId="art_25/pnt_b" kind="point">
+                  <unit eId="art_25/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -1948,7 +1948,7 @@
                         <t v=" means the day following that of entry into store;"/>
                      </p>
                   </unit>
-                  <unit eId="art_25/pnt_c" kind="point">
+                  <unit eId="art_25/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -1981,7 +1981,7 @@
                   <t v="Private storage contracts may be concluded only for skimmed-milk powder, as referred to in the first subparagraph of Article 7(3) of Regulation (EC) No 1255/1999, which:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_27/pnt_a" kind="point">
+                  <unit eId="art_27/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -1989,7 +1989,7 @@
                         <t v="contains not more than 11 % fat and 5 % water and has a protein content of the non-fat dry matter of at least 31,4 %;"/>
                      </p>
                   </unit>
-                  <unit eId="art_27/pnt_b" kind="point">
+                  <unit eId="art_27/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -1997,7 +1997,7 @@
                         <t v="has been manufactured during the 28 days or four weeks preceding the day of commencement of contractual storage in an undertaking approved in accordance with points (a) and (b) of Article 3(1) and which agrees to submit its production of skimmed-milk powder liable to be covered by a storage contract to a specific official inspection;"/>
                      </p>
                   </unit>
-                  <unit eId="art_27/pnt_c" kind="point">
+                  <unit eId="art_27/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -2005,7 +2005,7 @@
                         <t v="has a radioactivity level not exceeding the maximum levels referred to in Article 2(3);"/>
                      </p>
                   </unit>
-                  <unit eId="art_27/pnt_d" kind="point">
+                  <unit eId="art_27/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -2019,7 +2019,7 @@
                         <t v=" kg, bearing the following information, where appropriate in code:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="art_27/pnt_d/pnt_i" kind="point">
+                        <unit eId="art_27/pnt_d/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -2027,7 +2027,7 @@
                               <t v="the approval number identifying the factory and the Member State of manufacture,"/>
                            </p>
                         </unit>
-                        <unit eId="art_27/pnt_d/pnt_ii" kind="point">
+                        <unit eId="art_27/pnt_d/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -2035,7 +2035,7 @@
                               <t v="the date or week of manufacture,"/>
                            </p>
                         </unit>
-                        <unit eId="art_27/pnt_d/pnt_iii" kind="point">
+                        <unit eId="art_27/pnt_d/pnt_iii" kind="point" numbered="true">
                            <num>
                               <t v="(iii)"/>
                            </num>
@@ -2043,7 +2043,7 @@
                               <t v="the number of the manufacturing batch,"/>
                            </p>
                         </unit>
-                        <unit eId="art_27/pnt_d/pnt_iv" kind="point">
+                        <unit eId="art_27/pnt_d/pnt_iv" kind="point" numbered="true">
                            <num>
                               <t v="(iv)"/>
                            </num>
@@ -2053,7 +2053,7 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="art_27/pnt_e" kind="point">
+                  <unit eId="art_27/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -2077,7 +2077,7 @@
                      <t v="Storage contracts shall be concluded in writing for one or more storage lots and shall include, in particular, provisions concerning:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_28/par_1/pnt_a" kind="point">
+                     <unit eId="art_28/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2085,7 +2085,7 @@
                            <t v="the quantity of skimmed-milk powder to which the contract applies;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28/par_1/pnt_b" kind="point">
+                     <unit eId="art_28/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2093,7 +2093,7 @@
                            <t v="the amount of aid;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28/par_1/pnt_c" kind="point">
+                     <unit eId="art_28/par_1/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -2101,7 +2101,7 @@
                            <t v="the dates relating to the execution of the contract, without prejudice to a Commission decision pursuant to the second sentence of the third subparagraph of Article 7(3) of Regulation (EC) No 1255/1999 and in accordance with the procedure under Article 42 thereof;"/>
                         </p>
                      </unit>
-                     <unit eId="art_28/par_1/pnt_d" kind="point">
+                     <unit eId="art_28/par_1/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -2222,7 +2222,7 @@
                      <t v="The contractor or, at the request of the Member State or with its authorisation, the person responsible for the storage depot, shall make available to the competent authority responsible for inspection any documentation permitting verification of the following particulars of products placed in private storage:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_32/par_2/pnt_a" kind="point">
+                     <unit eId="art_32/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2230,7 +2230,7 @@
                            <t v="the approval number identifying the factory and the Member State of manufacture;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_2/pnt_b" kind="point">
+                     <unit eId="art_32/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2238,7 +2238,7 @@
                            <t v="the date of manufacture;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_2/pnt_c" kind="point">
+                     <unit eId="art_32/par_2/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -2246,7 +2246,7 @@
                            <t v="the date of entry into storage;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_2/pnt_d" kind="point">
+                     <unit eId="art_32/par_2/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -2254,7 +2254,7 @@
                            <t v="the manufacturing batch number;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_2/pnt_e" kind="point">
+                     <unit eId="art_32/par_2/pnt_e" kind="point" numbered="true">
                         <num>
                            <t v="(e)"/>
                         </num>
@@ -2262,7 +2262,7 @@
                            <t v="presence in the depot and the address of the depot;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_2/pnt_f" kind="point">
+                     <unit eId="art_32/par_2/pnt_f" kind="point" numbered="true">
                         <num>
                            <t v="(f)"/>
                         </num>
@@ -2280,7 +2280,7 @@
                      <t v="The contractor or, where applicable, the person responsible for the storage depot shall keep stock records available at the depot for each contract, covering:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_32/par_3/pnt_a" kind="point">
+                     <unit eId="art_32/par_3/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2288,7 +2288,7 @@
                            <t v="the storage lot number of the products placed in private storage;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_3/pnt_b" kind="point">
+                     <unit eId="art_32/par_3/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2296,7 +2296,7 @@
                            <t v="the dates of entry into and removal from storage;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_3/pnt_c" kind="point">
+                     <unit eId="art_32/par_3/pnt_c" kind="point" numbered="true">
                         <num>
                            <t v="(c)"/>
                         </num>
@@ -2304,7 +2304,7 @@
                            <t v="the quantity of skimmed-milk powder, indicated per storage lot;"/>
                         </p>
                      </unit>
-                     <unit eId="art_32/par_3/pnt_d" kind="point">
+                     <unit eId="art_32/par_3/pnt_d" kind="point" numbered="true">
                         <num>
                            <t v="(d)"/>
                         </num>
@@ -2350,7 +2350,7 @@
                      <t v="The competent authority shall:"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="art_33/par_2/pnt_a" kind="point">
+                     <unit eId="art_33/par_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2358,7 +2358,7 @@
                            <t v="either seal the products by contract, storage lot or smaller quantity at the time of the check provided for in paragraph 1;"/>
                         </p>
                      </unit>
-                     <unit eId="art_33/par_2/pnt_b" kind="point">
+                     <unit eId="art_33/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2382,7 +2382,7 @@
                         <t v="For the purposes of the check, the contractor shall inform the competent authority, indicating the storage lots concerned, at least five working days before:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_33/par_3/sub_2/pnt_a" kind="point">
+                        <unit eId="art_33/par_3/sub_2/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -2393,7 +2393,7 @@
                               <t v="or"/>
                            </p>
                         </unit>
-                        <unit eId="art_33/par_3/sub_2/pnt_b" kind="point">
+                        <unit eId="art_33/par_3/sub_2/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -2418,7 +2418,7 @@
                         <t v="A report shall be drawn up on the checks carried out under paragraphs 1, 2 and 3, specifying:"/>
                      </p>
                      <list kind="alpha">
-                        <unit eId="art_33/par_4/sub_1/pnt_a" kind="point">
+                        <unit eId="art_33/par_4/sub_1/pnt_a" kind="point" numbered="true">
                            <num>
                               <t v="(a)"/>
                            </num>
@@ -2426,7 +2426,7 @@
                               <t v="the date of the check;"/>
                            </p>
                         </unit>
-                        <unit eId="art_33/par_4/sub_1/pnt_b" kind="point">
+                        <unit eId="art_33/par_4/sub_1/pnt_b" kind="point" numbered="true">
                            <num>
                               <t v="(b)"/>
                            </num>
@@ -2434,7 +2434,7 @@
                               <t v="its duration;"/>
                            </p>
                         </unit>
-                        <unit eId="art_33/par_4/sub_1/pnt_c" kind="point">
+                        <unit eId="art_33/par_4/sub_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="(c)"/>
                            </num>
@@ -2550,7 +2550,7 @@
                   <t v="Not later than 15.00 (Brussels time) each Monday, the Member States shall inform the Commission of the quantities of skimmed-milk powder which, during the preceding week, have been the subject of:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_36/par_1/pnt_a" kind="point">
+                  <unit eId="art_36/par_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -2558,7 +2558,7 @@
                         <t v="an offer to sell in accordance with Article 5,"/>
                      </p>
                   </unit>
-                  <unit eId="art_36/par_1/pnt_b" kind="point">
+                  <unit eId="art_36/par_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -2954,7 +2954,7 @@
          <subheading>
             <t v="PACKAGING"/>
          </subheading>
-         <unit eId="anx_II/pnt_1" kind="point">
+         <unit eId="anx_II/pnt_1" kind="point" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -2962,7 +2962,7 @@
                <t v="The skimmed-milk powder shall be packed in new, clean, dry and intact bags with a net weight of 25 kg."/>
             </p>
          </unit>
-         <unit eId="anx_II/pnt_2" kind="point">
+         <unit eId="anx_II/pnt_2" kind="point" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -2984,7 +2984,7 @@
                <t v="Inside the paper layers, a polyethylene bag at least 0,08 mm thick shall be fused to the bottom."/>
             </p>
          </unit>
-         <unit eId="anx_II/pnt_3" kind="point">
+         <unit eId="anx_II/pnt_3" kind="point" numbered="true">
             <num>
                <t v="3."/>
             </num>
@@ -2992,7 +2992,7 @@
                <t v="Bags shall conform to standard EN 770."/>
             </p>
          </unit>
-         <unit eId="anx_II/pnt_4" kind="point">
+         <unit eId="anx_II/pnt_4" kind="point" numbered="true">
             <num>
                <t v="4."/>
             </num>
@@ -3008,7 +3008,7 @@
          <subheading>
             <t v="SAMPLING AND ANALYSIS OF SKIMMED-MILK POWDER OFFERED FOR INTERVENTION"/>
          </subheading>
-         <unit eId="anx_III/pnt_1" kind="point">
+         <unit eId="anx_III/pnt_1" kind="point" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -3016,7 +3016,7 @@
                <t v="Samples shall be taken in accordance with the procedure laid down in International Standard ISO 707. However, Member States may use another method of sampling provided that it complies with the principles of the abovementioned standard."/>
             </p>
          </unit>
-         <unit eId="anx_III/pnt_2" kind="point">
+         <unit eId="anx_III/pnt_2" kind="point" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -3024,7 +3024,7 @@
                <t v="Number of packages to be selected for sampling checks:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_III/pnt_2/pnt_a" kind="point">
+               <unit eId="anx_III/pnt_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3032,7 +3032,7 @@
                      <t v="offers containing up to 800 25-kg bags: at least eight,"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_2/pnt_b" kind="point">
+               <unit eId="anx_III/pnt_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -3042,7 +3042,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_III/pnt_3" kind="point">
+         <unit eId="anx_III/pnt_3" kind="point" numbered="true">
             <num>
                <t v="3."/>
             </num>
@@ -3050,7 +3050,7 @@
                <t v="Weight of sample: samples of at least 200 g are to be taken from each package."/>
             </p>
          </unit>
-         <unit eId="anx_III/pnt_4" kind="point">
+         <unit eId="anx_III/pnt_4" kind="point" numbered="true">
             <num>
                <t v="4."/>
             </num>
@@ -3058,7 +3058,7 @@
                <t v="Grouping of samples: no more than nine samples are to be combined in a global sample."/>
             </p>
          </unit>
-         <unit eId="anx_III/pnt_5" kind="point">
+         <unit eId="anx_III/pnt_5" kind="point" numbered="true">
             <num>
                <t v="5."/>
             </num>
@@ -3066,7 +3066,7 @@
                <t v="Analysis of samples: each global sample is to undergo an analysis to verify all the quality characteristics laid down in Annex I."/>
             </p>
          </unit>
-         <unit eId="anx_III/pnt_6" kind="point">
+         <unit eId="anx_III/pnt_6" kind="point" numbered="true">
             <num>
                <t v="6."/>
             </num>
@@ -3074,7 +3074,7 @@
                <t v="Where samples show defects:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_III/pnt_6/pnt_a" kind="point">
+               <unit eId="anx_III/pnt_6/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -3082,7 +3082,7 @@
                      <t v="where a composite sample shows a defect with regard to one parameter, the quantity from which the sample came is rejected;"/>
                   </p>
                </unit>
-               <unit eId="anx_III/pnt_6/pnt_b" kind="point">
+               <unit eId="anx_III/pnt_6/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>

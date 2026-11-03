@@ -30,7 +30,7 @@
    </preface>
    <body>
       <unit eId="cor_1" kind="correction">
-         <unit eId="cor_1/pnt_1" kind="point">
+         <unit eId="cor_1/pnt_1" kind="point" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -62,7 +62,7 @@
          </new>
       </unit>
       <unit eId="cor_2" kind="correction">
-         <unit eId="cor_2/pnt_2" kind="point">
+         <unit eId="cor_2/pnt_2" kind="point" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -94,7 +94,7 @@
          </new>
       </unit>
       <unit eId="cor_3" kind="correction">
-         <unit eId="cor_3/pnt_3" kind="point">
+         <unit eId="cor_3/pnt_3" kind="point" numbered="true">
             <num>
                <t v="3."/>
             </num>

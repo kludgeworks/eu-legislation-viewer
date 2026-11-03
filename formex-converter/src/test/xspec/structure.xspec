@@ -45,7 +45,7 @@
     </x:context>
     <x:expect label="becomes a p and a list, side by side">
       <p><t v="The following personnel:"/></p>
-      <list kind="alpha"><unit eId="pnt_a" kind="point"><num><t v="(a)"/></num><p><t v="crew;"/></p></unit></list>
+      <list kind="alpha"><unit eId="pnt_a" kind="point" numbered="true"><num><t v="(a)"/></num><p><t v="crew;"/></p></unit></list>
     </x:expect>
   </x:scenario>
 
@@ -89,7 +89,7 @@
       <DLIST><DLIST.ITEM><PREFIX>(1)</PREFIX><TERM>'cargo'</TERM><DEFINITION>means any property</DEFINITION></DLIST.ITEM></DLIST>
     </x:context>
     <x:expect label="has the prefix as num and the term as heading">
-      <list kind="definition"><unit eId="pnt_1" kind="definition"><num><t v="(1)"/></num><heading><t v="'cargo'"/></heading><p><t v="means any property"/></p></unit></list>
+      <list kind="definition"><unit eId="pnt_1" kind="definition" numbered="true"><num><t v="(1)"/></num><heading><t v="'cargo'"/></heading><p><t v="means any property"/></p></unit></list>
     </x:expect>
   </x:scenario>
 
@@ -171,6 +171,7 @@
     <x:expect label="marks header rows and cells" test="$x:result/*:tr[1]/@header = 'true' and $x:result/*:tr[1]/*:td/@header = 'true'"/>
     <x:expect label="keeps colspan" test="$x:result/*:tr[2]/*:td/@colspan = '2'"/>
     <x:expect label="a numbered paragraph in a cell is a point, its text in it" test="$x:result/*:tr[2]/*:td/*:unit[@kind = 'point'][@eId = 'tab_1/tr_2/td_1/pnt_1']/(*:num/*:t/@v = '1.' and *:p/*:t/@v = 'whole row')"/>
+    <x:expect label="numbered by its label" test="$x:result/*:tr[2]/*:td/*:unit/@numbered = 'true'"/>
     <x:expect label="an empty cell is empty" test="empty($x:result/*:tr[3]/*:td[2]/node())"/>
   </x:scenario>
 
@@ -180,6 +181,7 @@
     </x:context>
     <x:expect label="becomes a rowGroup with num and heading"
               test="$x:result/*:rowGroup/*:num/*:t/@v = '1.1.' and $x:result/*:rowGroup/*:heading/*:t/@v = 'Date(s) of validation' and $x:result/*:rowGroup/*:tr"/>
+    <x:expect label="as wide as its widest row" test="$x:result/*:rowGroup/@columns = '2'"/>
   </x:scenario>
 
   <x:scenario label="A group of rows with a plain title and a subtitle (budget)">

@@ -136,7 +136,7 @@
          <p>
             <t v="Agricultural products and foodstuffs listed in Annex I(I) to Regulation (EU) No 1151/2012:"/>
          </p>
-         <unit eId="anx/pnt_Class-2.3" kind="level" depth="1">
+         <unit eId="anx/pnt_Class-2.3" kind="level" depth="1" numbered="true">
             <num>
                <changed amendingAct="32014R0012R(01)"
                         action="replaced"

@@ -93,7 +93,7 @@
       <p>
          <t v="HAS DECIDED AS FOLLOWS:"/>
       </p>
-      <unit eId="pnt_1" kind="point">
+      <unit eId="pnt_1" kind="point" numbered="true">
          <num>
             <t v="1."/>
          </num>
@@ -101,7 +101,7 @@
             <t v="The model forms E 001, E 103 to E 127 printed in Decision No 130 shall be replaced by the models appended hereto."/>
          </p>
       </unit>
-      <unit eId="pnt_2" kind="point">
+      <unit eId="pnt_2" kind="point" numbered="true">
          <num>
             <t v="2."/>
          </num>
@@ -109,7 +109,7 @@
             <t v="The competent authorities of the Member States shall make available to the person concerned (rightful claimants, institutions, employers, etc.) the forms according to the attached models."/>
          </p>
       </unit>
-      <unit eId="pnt_3" kind="point">
+      <unit eId="pnt_3" kind="point" numbered="true">
          <num>
             <t v="3."/>
          </num>
@@ -117,7 +117,7 @@
             <t v="Each form shall be available in the official languages of the Community and laid out in such manner that the different versions are perfectly superposable, thereby making it possible for each person or body to which a form is addressed (rightful claimant, institution, employer, etc.) to receive the form printed in their own language."/>
          </p>
       </unit>
-      <unit eId="pnt_4" kind="point">
+      <unit eId="pnt_4" kind="point" numbered="true">
          <num>
             <t v="4."/>
          </num>

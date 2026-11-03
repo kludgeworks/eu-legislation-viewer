@@ -71,7 +71,7 @@
                <t v="The valuation haircut for a specific asset depends on the following factors:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_1/par_2/pnt_a" kind="point">
+               <unit eId="art_1/par_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -79,7 +79,7 @@
                      <t v="the haircut category to which the asset is allocated, as defined in Article 2;"/>
                   </p>
                </unit>
-               <unit eId="art_1/par_2/pnt_b" kind="point">
+               <unit eId="art_1/par_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -87,7 +87,7 @@
                      <t v="the residual maturity or the weighted average life of the asset, as defined in Article 3;"/>
                   </p>
                </unit>
-               <unit eId="art_1/par_2/pnt_c" kind="point">
+               <unit eId="art_1/par_2/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -95,7 +95,7 @@
                      <t v="the coupon structure of the asset; and"/>
                   </p>
                </unit>
-               <unit eId="art_1/par_2/pnt_d" kind="point">
+               <unit eId="art_1/par_2/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -117,7 +117,7 @@
             <t v="Eligible marketable assets shall be allocated to one of the five haircut categories, based on the type of issuer and/or the type of asset, as reflected in Table 1 in the Annex to this Guideline:"/>
          </p>
          <list kind="alpha">
-            <unit eId="art_2/pnt_a" kind="point">
+            <unit eId="art_2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -125,7 +125,7 @@
                   <t v="debt instruments issued by central governments, ECB debt certificates and debt certificates issued by NCBs prior to the date of adoption of the euro in their respective Member State whose currency is the euro are included in haircut category I;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_b" kind="point">
+            <unit eId="art_2/pnt_b" kind="point" numbered="true">
                <provenance amendingAct="32019O0012"
                            action="replaced"
                            location="AR:1;PT:1"
@@ -137,7 +137,7 @@
                   <t v="debt instruments issued by: (i) local and regional governments; (ii) entities which are credit institutions or non-credit institutions classified by the Eurosystem as agencies and which meet the quantitative criteria set out in Annex XIIa to Guideline (EU) 2015/510 (ECB/2014/60); (iii) multilateral development banks and international organisations; as well as UCITS compliant jumbo covered bonds, are included in haircut category II;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_c" kind="point">
+            <unit eId="art_2/pnt_c" kind="point" numbered="true">
                <provenance amendingAct="32019O0012"
                            action="replaced"
                            location="AR:1;PT:2"
@@ -149,7 +149,7 @@
                   <t v="UCITS compliant covered bonds other than UCITS compliant jumbo covered bonds; other covered bonds; and debt instruments issued by (i) non-financial corporations, (ii) corporations in the government sector, and (iii) agencies which are non-credit institutions that do not meet the quantitative criteria set out in Annex XIIa to Guideline (EU) 2015/510 (ECB/2014/60), are included in haircut category III;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_d" kind="point">
+            <unit eId="art_2/pnt_d" kind="point" numbered="true">
                <provenance amendingAct="32019O0012"
                            action="replaced"
                            location="AR:1;PT:3"
@@ -161,7 +161,7 @@
                   <t v="unsecured debt instruments issued by: (i) credit institutions; (ii) agencies which are credit institutions that do not meet the quantitative criteria set out in Annex XIIa to Guideline (EU) 2015/510 (ECB/2014/60); and (iii) financial corporations other than credit institutions, are included in haircut category category IV;"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_e" kind="point">
+            <unit eId="art_2/pnt_e" kind="point" numbered="true">
                <num>
                   <t v="(e)"/>
                </num>
@@ -190,7 +190,7 @@
                <t v="The valuation haircuts for marketable assets allocated to haircut categories I to IV shall be determined based on:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3/par_1/pnt_a" kind="point">
+               <unit eId="art_3/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -198,7 +198,7 @@
                      <t v="the allocation of the specific asset to credit quality step 1, 2 or 3;"/>
                   </p>
                </unit>
-               <unit eId="art_3/par_1/pnt_b" kind="point">
+               <unit eId="art_3/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -206,7 +206,7 @@
                      <t v="the residual maturity of the asset as detailed in paragraph 2;"/>
                   </p>
                </unit>
-               <unit eId="art_3/par_1/pnt_c" kind="point">
+               <unit eId="art_3/par_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -228,7 +228,7 @@
                <t v="For marketable assets allocated to haircut categories I to IV, the applicable valuation haircut shall depend on the residual maturity and coupon structure of the asset (fixed, zero, floating) as determined based on Table 2 in the Annex to this Guideline. The relevant maturity for determining the valuation haircut to be applied shall be the residual maturity of the asset, irrespective of the type of coupon structure. The following provisions shall apply with respect to the coupon structure:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3/par_2/pnt_a" kind="point">
+               <unit eId="art_3/par_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -236,7 +236,7 @@
                      <t v="floating coupons with a resetting period longer than 1 year shall be treated as fixed rate coupons;"/>
                   </p>
                </unit>
-               <unit eId="art_3/par_2/pnt_b" kind="point">
+               <unit eId="art_3/par_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -244,7 +244,7 @@
                      <t v="floating coupons that have a euro area inflation index as a reference rate shall be treated as fixed rate coupons;"/>
                   </p>
                </unit>
-               <unit eId="art_3/par_2/pnt_c" kind="point">
+               <unit eId="art_3/par_2/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -252,7 +252,7 @@
                      <t v="floating coupons with a floor that does not equal zero and/or floating coupons with a ceiling shall be treated as fixed rate coupons;"/>
                   </p>
                </unit>
-               <unit eId="art_3/par_2/pnt_d" kind="point">
+               <unit eId="art_3/par_2/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -318,7 +318,7 @@
             <t v="In addition to the valuation haircuts laid down in Article 3 of this Guideline, the following additional valuation haircuts shall apply for specific types of marketable assets:"/>
          </p>
          <list kind="alpha">
-            <unit eId="art_4/pnt_a" kind="point">
+            <unit eId="art_4/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -326,7 +326,7 @@
                   <t v="asset-backed securities, covered bonds and unsecured debt instruments issued by credit institutions that are theoretically valued in accordance with the rules contained in Article 134 of Guideline (EU) 2015/510 (ECB/2014/60) shall be subject to an additional valuation haircut in the form of a valuation markdown of 5 %;"/>
                </p>
             </unit>
-            <unit eId="art_4/pnt_b" kind="point">
+            <unit eId="art_4/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -334,7 +334,7 @@
                   <t v="own-use covered bonds shall be subject to an additional valuation haircut of (i) 8 % applied to the value of the debt instruments allocated to credit quality steps 1 and 2, and (ii) 12 % applied to the value of the debt instruments allocated to credit quality step 3;"/>
                </p>
             </unit>
-            <unit eId="art_4/pnt_c" kind="point">
+            <unit eId="art_4/pnt_c" kind="point" numbered="true">
                <provenance amendingAct="32018O0004"
                            action="replaced"
                            location="AR:1;PT:2"
@@ -350,7 +350,7 @@
                   <t v=" shall have the same meaning as defined in Article 3(2a);"/>
                </p>
             </unit>
-            <unit eId="art_4/pnt_d" kind="point">
+            <unit eId="art_4/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -391,7 +391,7 @@
                <t v="The following provisions shall apply with respect to the interest rate structure of credit claims:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_5/par_2/pnt_a" kind="point">
+               <unit eId="art_5/par_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -402,7 +402,7 @@
                      <t v=" credit claims shall be treated as fixed rate credit claims;"/>
                   </p>
                </unit>
-               <unit eId="art_5/par_2/pnt_b" kind="point">
+               <unit eId="art_5/par_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -410,7 +410,7 @@
                      <t v="floating rate credit claims with a resetting period longer than one year shall be treated as fixed rate credit claims;"/>
                   </p>
                </unit>
-               <unit eId="art_5/par_2/pnt_c" kind="point">
+               <unit eId="art_5/par_2/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -418,7 +418,7 @@
                      <t v="floating rate credit claims with a ceiling shall be treated as fixed rate credit claims;"/>
                   </p>
                </unit>
-               <unit eId="art_5/par_2/pnt_d" kind="point">
+               <unit eId="art_5/par_2/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -426,7 +426,7 @@
                      <t v="floating rate credit claims with a resetting period of one year or less and with a floor, but without a ceiling, shall be treated as floating rate credit claims;"/>
                   </p>
                </unit>
-               <unit eId="art_5/par_2/pnt_e" kind="point">
+               <unit eId="art_5/par_2/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>

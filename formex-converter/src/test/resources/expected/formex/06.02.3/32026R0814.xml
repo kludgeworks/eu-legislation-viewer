@@ -329,7 +329,7 @@
             <t v="Annexes V and XIV to Implementing Regulation (EU) 2021/404 are amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="anx/pnt_1" kind="point">
+            <unit eId="anx/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="(1)"/>
                </num>
@@ -337,7 +337,7 @@
                   <t v="Annex V is amended as follows:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx/pnt_1/pnt_a" kind="point">
+                  <unit eId="anx/pnt_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -345,7 +345,7 @@
                         <t v="in Part 1, Section B is amended as follows:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="anx/pnt_1/pnt_a/pnt_i" kind="point">
+                        <unit eId="anx/pnt_1/pnt_a/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -393,7 +393,7 @@
                               </table>
                            </quotedStructure>
                         </unit>
-                        <unit eId="anx/pnt_1/pnt_a/pnt_ii" kind="point">
+                        <unit eId="anx/pnt_1/pnt_a/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -468,7 +468,7 @@
                               </table>
                            </quotedStructure>
                         </unit>
-                        <unit eId="anx/pnt_1/pnt_a/pnt_iii" kind="point">
+                        <unit eId="anx/pnt_1/pnt_a/pnt_iii" kind="point" numbered="true">
                            <num>
                               <t v="(iii)"/>
                            </num>
@@ -520,7 +520,7 @@
                               </table>
                            </quotedStructure>
                         </unit>
-                        <unit eId="anx/pnt_1/pnt_a/pnt_iv" kind="point">
+                        <unit eId="anx/pnt_1/pnt_a/pnt_iv" kind="point" numbered="true">
                            <num>
                               <t v="(iv)"/>
                            </num>
@@ -572,7 +572,7 @@
                               </table>
                            </quotedStructure>
                         </unit>
-                        <unit eId="anx/pnt_1/pnt_a/pnt_v" kind="point">
+                        <unit eId="anx/pnt_1/pnt_a/pnt_v" kind="point" numbered="true">
                            <num>
                               <t v="(v)"/>
                            </num>
@@ -850,7 +850,7 @@
                         </unit>
                      </list>
                   </unit>
-                  <unit eId="anx/pnt_1/pnt_b" kind="point">
+                  <unit eId="anx/pnt_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -858,7 +858,7 @@
                         <t v="Part 2 is amended as follows:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="anx/pnt_1/pnt_b/pnt_i" kind="point">
+                        <unit eId="anx/pnt_1/pnt_b/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -898,7 +898,7 @@
                               </table>
                            </quotedStructure>
                         </unit>
-                        <unit eId="anx/pnt_1/pnt_b/pnt_ii" kind="point">
+                        <unit eId="anx/pnt_1/pnt_b/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -1164,7 +1164,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx/pnt_2" kind="point">
+            <unit eId="anx/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="(2)"/>
                </num>
@@ -1172,7 +1172,7 @@
                   <t v="in Annex XIV, in Part 1, Section B is amended as follows:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx/pnt_2/pnt_a" kind="point">
+                  <unit eId="anx/pnt_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -1239,7 +1239,7 @@
                         </table>
                      </quotedStructure>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_b" kind="point">
+                  <unit eId="anx/pnt_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -1365,7 +1365,7 @@
                         </table>
                      </quotedStructure>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_c" kind="point">
+                  <unit eId="anx/pnt_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -1440,7 +1440,7 @@
                         </table>
                      </quotedStructure>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_d" kind="point">
+                  <unit eId="anx/pnt_2/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -1515,7 +1515,7 @@
                         </table>
                      </quotedStructure>
                   </unit>
-                  <unit eId="anx/pnt_2/pnt_e" kind="point">
+                  <unit eId="anx/pnt_2/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>

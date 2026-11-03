@@ -74,7 +74,7 @@
                         </p>
                      </td>
                   </tr>
-                  <rowGroup>
+                  <rowGroup columns="5">
                      <heading>
                         <emphasis kind="b">
                            <t v="2"/>
@@ -144,7 +144,7 @@
                         </td>
                      </tr>
                   </rowGroup>
-                  <rowGroup>
+                  <rowGroup columns="5">
                      <heading>
                         <emphasis kind="b">
                            <t v="9"/>

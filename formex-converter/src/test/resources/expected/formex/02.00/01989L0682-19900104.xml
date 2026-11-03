@@ -118,7 +118,7 @@
             <t v="Directive 86/298/EEC is hereby amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="art_1/pnt_1" kind="point">
+            <unit eId="art_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -144,7 +144,7 @@
                   </unit>
                </quotedStructure>
             </unit>
-            <unit eId="art_1/pnt_2" kind="point">
+            <unit eId="art_1/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -152,7 +152,10 @@
                   <t v="in Annex II, point 3.1.1 is replaced by the following:"/>
                </p>
                <quotedStructure eId="art_1/pnt_2/qstr_1">
-                  <unit eId="art_1/pnt_2/qstr_1/pnt_3.1.1" kind="level" depth="1">
+                  <unit eId="art_1/pnt_2/qstr_1/pnt_3.1.1"
+                        kind="level"
+                        depth="1"
+                        numbered="true">
                      <num>
                         <t v="‘"/>
                         <t v="3.1.1."/>
@@ -170,7 +173,7 @@
                   <t v=";"/>
                </p>
             </unit>
-            <unit eId="art_1/pnt_3" kind="point">
+            <unit eId="art_1/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -178,7 +181,10 @@
                   <t v="in Annex III (A), point 1.6 is replaced by the following:"/>
                </p>
                <quotedStructure eId="art_1/pnt_3/qstr_1">
-                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6" kind="level" depth="1">
+                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6"
+                        kind="level"
+                        depth="1"
+                        numbered="true">
                      <num>
                         <t v="‘"/>
                         <t v="1.6."/>
@@ -187,7 +193,10 @@
                         <t v="Additional tests"/>
                      </heading>
                   </unit>
-                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6.1" kind="level" depth="2">
+                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6.1"
+                        kind="level"
+                        depth="2"
+                        numbered="true">
                      <num>
                         <t v="1.6.1."/>
                      </num>
@@ -248,7 +257,10 @@
                         <t v="In order to be able to carry out the additional test, it is necessary to measure the elastic deformation during all of the impact tests."/>
                      </p>
                   </unit>
-                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6.2" kind="level" depth="2">
+                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6.2"
+                        kind="level"
+                        depth="2"
+                        numbered="true">
                      <num>
                         <t v="1.6.2."/>
                      </num>
@@ -266,7 +278,7 @@
                   <t v=";"/>
                </p>
             </unit>
-            <unit eId="art_1/pnt_4" kind="point">
+            <unit eId="art_1/pnt_4" kind="point" numbered="true">
                <provenance amendingAct="31989L0682R(01)"
                            action="replaced"
                            location="TO"
@@ -278,7 +290,10 @@
                   <t v="in Annex V, the following point is inserted:"/>
                </p>
                <quotedStructure eId="art_1/pnt_4/qstr_1">
-                  <unit eId="art_1/pnt_4/qstr_1/pnt_7.3" kind="level" depth="1">
+                  <unit eId="art_1/pnt_4/qstr_1/pnt_7.3"
+                        kind="level"
+                        depth="1"
+                        numbered="true">
                      <num>
                         <t v="‘"/>
                         <t v="7.3."/>

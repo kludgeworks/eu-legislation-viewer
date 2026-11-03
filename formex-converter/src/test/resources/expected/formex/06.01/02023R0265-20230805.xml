@@ -321,7 +321,7 @@
             <t v="Article 1(2) may be amended to add new exporting producers from India or Türkiye and make them subject to the appropriate weighted average anti-dumping duty rate for cooperating companies not included in the sample. A new exporting producer shall provide evidence that:"/>
          </p>
          <list kind="alpha">
-            <unit eId="art_2/pnt_a" kind="point">
+            <unit eId="art_2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -333,7 +333,7 @@
                   <t v=");"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_b" kind="point">
+            <unit eId="art_2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -341,7 +341,7 @@
                   <t v="it is not related to an exporter or producer subject to the measures imposed by this Regulation, and which could have cooperated in the original investigation; and"/>
                </p>
             </unit>
-            <unit eId="art_2/pnt_c" kind="point">
+            <unit eId="art_2/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>

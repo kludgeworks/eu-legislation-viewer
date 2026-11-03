@@ -43,6 +43,7 @@
         else f:eid($run-base, 'idt', string(count(f:np-run-before(.)) + 1))"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="{if ($label != '') then 'point' else 'indent'}">
+        <xsl:sequence select="f:numbered($label)"/>
         <xsl:sequence select="f:provenance($m)"/>
         <num>
           <xsl:call-template name="f:inlines">
@@ -248,6 +249,7 @@
         else f:eid(f:item-base(., $base), 'idt', string(count(preceding-sibling::ITEM) + 1))"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="{if (NP/NO.P) then 'point' else 'indent'}">
+        <xsl:sequence select="f:numbered($label)"/>
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:if test="NP/NO.P">
           <num>
@@ -306,6 +308,7 @@
         else f:eid(f:item-base(., $base), 'def', string(count(preceding-sibling::DLIST.ITEM) + 1))"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="definition">
+        <xsl:sequence select="f:numbered($label)"/>
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:unit-content">
           <xsl:with-param name="num" as="element()?" select="PREFIX"/>

@@ -233,7 +233,7 @@
             </num>
             <table cols="2">
                <caption>
-                  <unit eId="anx/pnt_I" kind="point">
+                  <unit eId="anx/pnt_I" kind="point" numbered="true">
                      <num>
                         <t v="I."/>
                      </num>
@@ -254,7 +254,7 @@
                      </p>
                   </td>
                </tr>
-               <rowGroup>
+               <rowGroup columns="2">
                   <num>
                      <t v="A."/>
                   </num>
@@ -265,7 +265,7 @@
                      </emphasis>
                      <t v=":"/>
                   </heading>
-                  <rowGroup>
+                  <rowGroup columns="2">
                      <tr>
                         <td>
                            <unit eId="anx/tab_1/tr_2/td_1/idt_1" kind="indent">
@@ -304,7 +304,10 @@
                </rowGroup>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_4/td_1/pnt_B" kind="level" depth="1">
+                     <unit eId="anx/tab_1/tr_4/td_1/pnt_B"
+                           kind="level"
+                           depth="1"
+                           numbered="true">
                         <num>
                            <t v="B."/>
                         </num>
@@ -324,7 +327,10 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_5/td_1/pnt_C" kind="level" depth="1">
+                     <unit eId="anx/tab_1/tr_5/td_1/pnt_C"
+                           kind="level"
+                           depth="1"
+                           numbered="true">
                         <num>
                            <t v="C."/>
                         </num>
@@ -344,7 +350,10 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_6/td_1/pnt_D" kind="level" depth="1">
+                     <unit eId="anx/tab_1/tr_6/td_1/pnt_D"
+                           kind="level"
+                           depth="1"
+                           numbered="true">
                         <num>
                            <t v="D."/>
                         </num>
@@ -362,7 +371,7 @@
             </table>
             <table cols="2">
                <caption>
-                  <unit eId="anx/pnt_II" kind="point">
+                  <unit eId="anx/pnt_II" kind="point" numbered="true">
                      <num>
                         <t v="II."/>
                      </num>
@@ -385,7 +394,10 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_2/tr_2/td_1/pnt_A" kind="level" depth="1">
+                     <unit eId="anx/tab_2/tr_2/td_1/pnt_A"
+                           kind="level"
+                           depth="1"
+                           numbered="true">
                         <num>
                            <t v="A."/>
                         </num>
@@ -402,7 +414,10 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_2/tr_3/td_1/pnt_B" kind="level" depth="1">
+                     <unit eId="anx/tab_2/tr_3/td_1/pnt_B"
+                           kind="level"
+                           depth="1"
+                           numbered="true">
                         <num>
                            <t v="B."/>
                         </num>
@@ -419,7 +434,10 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_2/tr_4/td_1/pnt_C" kind="level" depth="1">
+                     <unit eId="anx/tab_2/tr_4/td_1/pnt_C"
+                           kind="level"
+                           depth="1"
+                           numbered="true">
                         <num>
                            <t v="C."/>
                         </num>

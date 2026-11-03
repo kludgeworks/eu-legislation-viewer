@@ -145,38 +145,6 @@ public class LegalRenderer {
     return element.children().stream().anyMatch(child -> named.contains(child.name()));
   }
 
-  /**
-   * How many columns {@code group}'s rows span, the widest of them (each cell its colspan), nested
-   * groups' included: what its heading row's cell spans, to be as wide as they are. At least 1.
-   */
-  public int columns(Element group) {
-    var widest = 1;
-    for (var child : group.children()) {
-      var width =
-          switch (child.name()) {
-            case "tr" ->
-                child.children().stream()
-                    .filter(cell -> cell.name().equals("td"))
-                    .mapToInt(
-                        cell -> Integer.parseInt(cell.attributes().getOrDefault("colspan", "1")))
-                    .sum();
-            case "rowGroup" -> columns(child);
-            default -> 0;
-          };
-      widest = Math.max(widest, width);
-    }
-    return widest;
-  }
-
-  /**
-   * Whether {@code unit} is numbered, its number its label (1.0.1, (a)), as its eId's last step
-   * says: pnt_ and its number, against a label's (level_PART-1) or a position's (level_2).
-   */
-  public boolean numbered(Element unit) {
-    var eId = unit.attribute("eId");
-    return eId != null && eId.substring(eId.lastIndexOf('/') + 1).startsWith("pnt_");
-  }
-
   private void render(Element element, @Nullable String parent, TemplateOutput out) {
     templates.render(template(parent, element.name()), Map.of("node", element, "html", this), out);
   }

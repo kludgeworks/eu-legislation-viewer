@@ -128,7 +128,7 @@
          <tableGroup>
             <table cols="3">
                <caption>
-                  <unit eId="art_1/pnt_I" kind="point">
+                  <unit eId="art_1/pnt_I" kind="point" numbered="true">
                      <num>
                         <t v="I."/>
                      </num>
@@ -647,7 +647,7 @@
             </table>
             <table cols="3">
                <caption>
-                  <unit eId="art_1/pnt_II" kind="point">
+                  <unit eId="art_1/pnt_II" kind="point" numbered="true">
                      <num>
                         <t v="II."/>
                      </num>
@@ -1162,7 +1162,7 @@
             </table>
             <table cols="3">
                <caption>
-                  <unit eId="art_1/pnt_III" kind="point">
+                  <unit eId="art_1/pnt_III" kind="point" numbered="true">
                      <num>
                         <t v="III."/>
                      </num>

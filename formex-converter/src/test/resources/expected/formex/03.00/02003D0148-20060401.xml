@@ -134,7 +134,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="list_5/pnt_1" kind="point">
+      <unit eId="list_5/pnt_1" kind="point" numbered="true">
          <num>
             <t v="1."/>
          </num>
@@ -142,7 +142,7 @@
             <t v="The model form E 108 as set out in Decision No 153 shall be replaced by the model appended hereto."/>
          </p>
       </unit>
-      <unit eId="list_5/pnt_2" kind="point">
+      <unit eId="list_5/pnt_2" kind="point" numbered="true">
          <num>
             <t v="2."/>
          </num>
@@ -150,7 +150,7 @@
             <t v="Decision No 170 is amended in accordance with the Annex to this Decision."/>
          </p>
       </unit>
-      <unit eId="list_5/pnt_3" kind="point">
+      <unit eId="list_5/pnt_3" kind="point" numbered="true">
          <num>
             <t v="3."/>
          </num>
@@ -172,7 +172,7 @@
             <t v="Decision No 170 is amended as follows:"/>
          </p>
          <list kind="alpha">
-            <unit eId="anx/pnt_a" kind="point">
+            <unit eId="anx/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -184,7 +184,7 @@
                   <t v=" is amended as follows:"/>
                </p>
                <list kind="roman">
-                  <unit eId="anx/pnt_a/pnt_i" kind="point">
+                  <unit eId="anx/pnt_a/pnt_i" kind="point" numbered="true">
                      <num>
                         <t v="(i)"/>
                      </num>
@@ -192,7 +192,7 @@
                         <t v="point 3 is replaced by the following:"/>
                      </p>
                      <quotedStructure eId="anx/pnt_a/pnt_i/qstr_1">
-                        <unit eId="anx/pnt_a/pnt_i/qstr_1/pnt_3" kind="point">
+                        <unit eId="anx/pnt_a/pnt_i/qstr_1/pnt_3" kind="point" numbered="true">
                            <num>
                               <t v="‘"/>
                               <t v="3."/>
@@ -207,7 +207,7 @@
                         <t v=";"/>
                      </p>
                   </unit>
-                  <unit eId="anx/pnt_a/pnt_ii" kind="point">
+                  <unit eId="anx/pnt_a/pnt_ii" kind="point" numbered="true">
                      <num>
                         <t v="(ii)"/>
                      </num>
@@ -215,7 +215,7 @@
                         <t v="in point 4 the existing paragraphs (c) and (d) are renumbered (d) and (e), and a new paragraph (c) is added as follows:"/>
                      </p>
                      <quotedStructure eId="anx/pnt_a/pnt_ii/qstr_1">
-                        <unit eId="anx/pnt_a/pnt_ii/qstr_1/pnt_c" kind="point">
+                        <unit eId="anx/pnt_a/pnt_ii/qstr_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="‘"/>
                               <t v="(c)"/>
@@ -230,7 +230,7 @@
                         <t v=";"/>
                      </p>
                   </unit>
-                  <unit eId="anx/pnt_a/pnt_iii" kind="point">
+                  <unit eId="anx/pnt_a/pnt_iii" kind="point" numbered="true">
                      <num>
                         <t v="(iii)"/>
                      </num>
@@ -238,7 +238,7 @@
                         <t v="point 5 is replaced by the following:"/>
                      </p>
                      <quotedStructure eId="anx/pnt_a/pnt_iii/qstr_1">
-                        <unit eId="anx/pnt_a/pnt_iii/qstr_1/pnt_5" kind="point">
+                        <unit eId="anx/pnt_a/pnt_iii/qstr_1/pnt_5" kind="point" numbered="true">
                            <num>
                               <t v="‘"/>
                               <t v="5."/>
@@ -255,7 +255,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx/pnt_b" kind="point">
+            <unit eId="anx/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -267,7 +267,7 @@
                   <t v=" is amended as follows:"/>
                </p>
                <list kind="roman">
-                  <unit eId="anx/pnt_b/pnt_i" kind="point">
+                  <unit eId="anx/pnt_b/pnt_i" kind="point" numbered="true">
                      <num>
                         <t v="(i)"/>
                      </num>
@@ -288,7 +288,7 @@
                         <t v=";"/>
                      </p>
                   </unit>
-                  <unit eId="anx/pnt_b/pnt_ii" kind="point">
+                  <unit eId="anx/pnt_b/pnt_ii" kind="point" numbered="true">
                      <num>
                         <t v="(ii)"/>
                      </num>
@@ -300,7 +300,7 @@
                         <t v=" in point 4 the existing paragraphs (d) and (e) becomes (e) and (f), and a new paragraph (d) is added as follows:"/>
                      </p>
                      <quotedStructure eId="anx/pnt_b/pnt_ii/qstr_1">
-                        <unit eId="anx/pnt_b/pnt_ii/qstr_1/pnt_d" kind="point">
+                        <unit eId="anx/pnt_b/pnt_ii/qstr_1/pnt_d" kind="point" numbered="true">
                            <provenance amendingAct="32003D0148R(01)"
                                        action="replaced"
                                        location="TO"
@@ -323,7 +323,7 @@
                         <t v=";"/>
                      </p>
                   </unit>
-                  <unit eId="anx/pnt_b/pnt_iii" kind="point">
+                  <unit eId="anx/pnt_b/pnt_iii" kind="point" numbered="true">
                      <num>
                         <t v="(iii)"/>
                      </num>
@@ -331,7 +331,7 @@
                         <t v="point 5 is replaced by the following:"/>
                      </p>
                      <quotedStructure eId="anx/pnt_b/pnt_iii/qstr_1">
-                        <unit eId="anx/pnt_b/pnt_iii/qstr_1/pnt_5" kind="point">
+                        <unit eId="anx/pnt_b/pnt_iii/qstr_1/pnt_5" kind="point" numbered="true">
                            <num>
                               <t v="‘"/>
                               <t v="5."/>

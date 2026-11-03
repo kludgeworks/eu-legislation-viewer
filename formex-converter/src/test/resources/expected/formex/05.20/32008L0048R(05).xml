@@ -47,7 +47,10 @@
          </p>
          <new>
             <quotedStructure eId="cor_1/new/qstr_1">
-               <unit eId="cor_1/new/qstr_1/pnt_3" kind="level" depth="1">
+               <unit eId="cor_1/new/qstr_1/pnt_3"
+                     kind="level"
+                     depth="1"
+                     numbered="true">
                   <num>
                      <t v="‘"/>
                      <t v="3."/>
@@ -163,7 +166,7 @@
                         </td>
                         <td/>
                      </tr>
-                     <rowGroup>
+                     <rowGroup columns="2">
                         <heading>
                            <emphasis kind="b">
                               <t v="Related costs"/>

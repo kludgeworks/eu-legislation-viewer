@@ -145,6 +145,15 @@
     <xsl:sequence select="if ($base) then $base || '/' || $segment else $segment"/>
   </xsl:function>
 
+  <!-- a point or level numbered by its label, as its eId is (pnt_a): numbered="true", for a renderer
+       that sets a number beside its text and a label line (PART 2) on a line of its own -->
+  <xsl:function name="f:numbered" as="attribute()?">
+    <xsl:param name="label" as="xs:string"/>
+    <xsl:if test="$label != ''">
+      <xsl:attribute name="numbered" select="true()"/>
+    </xsl:if>
+  </xsl:function>
+
   <!-- an eId taken apart again, where the output is all there is (the pass over it,
        formex-to-legal-text.xsl): what it hangs off (anx/pnt_1.2 of anx/pnt_1.2/pnt_a; none for
        art_1), which a flat level's XML parent isn't -->

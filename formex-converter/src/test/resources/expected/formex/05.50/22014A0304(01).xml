@@ -47,7 +47,7 @@
             <t v="Following negotiations under Article XXIV:6 and Article XXVIII of the General Agreement on Tariffs and Trade 1994 (GATT) relating to the modification of the Schedules of the Republic of Bulgaria and Romania in the course of their accession to the European Union, I have the honour to propose the following:"/>
          </p>
          <list kind="arabic">
-            <unit eId="let_1/pnt_1" kind="point">
+            <unit eId="let_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -128,7 +128,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="let_1/pnt_2" kind="point">
+            <unit eId="let_1/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -178,7 +178,7 @@
                <t v="Following negotiations under Article XXIV:6 and Article XXVIII of the General Agreement on Tariffs and Trade 1994 (GATT) relating to the modification of the Schedules of the Republic of Bulgaria and Romania in the course of their accession to the European Union, I have the honour to propose the following:"/>
             </p>
             <list kind="arabic">
-               <unit eId="let_2/qstr_1/pnt_1" kind="point">
+               <unit eId="let_2/qstr_1/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -259,7 +259,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="let_2/qstr_1/pnt_2" kind="point">
+               <unit eId="let_2/qstr_1/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>

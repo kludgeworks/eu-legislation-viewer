@@ -275,7 +275,7 @@
                   </p>
                </td>
             </tr>
-            <rowGroup>
+            <rowGroup columns="2">
                <heading>
                   <t v="SA"/>
                   <t v=" (flat products)"/>

@@ -106,7 +106,7 @@
                <t v=", if members of the Council, representing:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_1/pnt_a" kind="point">
+               <unit eId="art_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -114,7 +114,7 @@
                      <t v="at least three quarters of the population; or"/>
                   </p>
                </unit>
-               <unit eId="art_1/pnt_b" kind="point">
+               <unit eId="art_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -164,7 +164,7 @@
                <t v=", if members of the Council, representing:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_4/pnt_a" kind="point">
+               <unit eId="art_4/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -172,7 +172,7 @@
                      <t v="at least 55 % of the population; or"/>
                   </p>
                </unit>
-               <unit eId="art_4/pnt_b" kind="point">
+               <unit eId="art_4/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>

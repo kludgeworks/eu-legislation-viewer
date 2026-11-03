@@ -180,7 +180,7 @@
             <t v="Annex V to Regulation (EU) 2018/848 is amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="anx/pnt_1" kind="point">
+            <unit eId="anx/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="(1)"/>
                </num>
@@ -189,7 +189,7 @@
                </p>
                <quotedStructure eId="anx/pnt_1/qstr_1">
                   <list kind="other">
-                     <unit eId="anx/pnt_1/qstr_1/pnt_1.2" kind="point">
+                     <unit eId="anx/pnt_1/qstr_1/pnt_1.2" kind="point" numbered="true">
                         <num>
                            <t v="‘"/>
                            <t v="1.2."/>
@@ -198,7 +198,7 @@
                            <t v="The reference colour is green 50/0/100/0 in the CMYK process, No 376 in the Pantone colour chart and 169/201/56 in the RGB colour model."/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_1/qstr_1/pnt_1.3" kind="point">
+                     <unit eId="anx/pnt_1/qstr_1/pnt_1.3" kind="point" numbered="true">
                         <num>
                            <t v="1.3."/>
                         </num>
@@ -214,7 +214,7 @@
                   </p>
                </quotedStructure>
             </unit>
-            <unit eId="anx/pnt_2" kind="point">
+            <unit eId="anx/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="(2)"/>
                </num>
@@ -223,7 +223,7 @@
                </p>
                <quotedStructure eId="anx/pnt_2/qstr_1">
                   <list kind="other">
-                     <unit eId="anx/pnt_2/qstr_1/pnt_1.5" kind="point">
+                     <unit eId="anx/pnt_2/qstr_1/pnt_1.5" kind="point" numbered="true">
                         <num>
                            <t v="‘"/>
                            <t v="1.5."/>

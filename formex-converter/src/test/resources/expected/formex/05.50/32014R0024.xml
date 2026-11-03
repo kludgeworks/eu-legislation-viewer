@@ -172,7 +172,7 @@
                <t v="For the purposes of this Regulation, the following definitions shall apply:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3/pnt_a" kind="point">
+               <unit eId="art_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -183,7 +183,7 @@
                      <t v=" means General Fisheries Commission for the Mediterranean;"/>
                   </p>
                </unit>
-               <unit eId="art_3/pnt_b" kind="point">
+               <unit eId="art_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -196,7 +196,7 @@
                      <t v=" and in Resolution GFCM/33/2009/2;"/>
                   </p>
                </unit>
-               <unit eId="art_3/pnt_c" kind="point">
+               <unit eId="art_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -207,7 +207,7 @@
                      <t v=" means a fishing vessel flying the flag of a Member State and registered in the Union;"/>
                   </p>
                </unit>
-               <unit eId="art_3/pnt_d" kind="point">
+               <unit eId="art_3/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -218,7 +218,7 @@
                      <t v=" means the quantity that can be taken from each stock each year;"/>
                   </p>
                </unit>
-               <unit eId="art_3/pnt_e" kind="point">
+               <unit eId="art_3/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -263,7 +263,7 @@
                <t v="The allocation of fishing opportunities among Member States as set out in in this Regulation shall be without prejudice to:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_5/pnt_a" kind="point">
+               <unit eId="art_5/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -271,7 +271,7 @@
                      <t v="exchanges made pursuant to Article 16(8) of Regulation (EU) No 1380/2013;"/>
                   </p>
                </unit>
-               <unit eId="art_5/pnt_b" kind="point">
+               <unit eId="art_5/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -279,7 +279,7 @@
                      <t v="deductions and reallocations made pursuant to Article 37 of Regulation (EC) No 1224/2009;"/>
                   </p>
                </unit>
-               <unit eId="art_5/pnt_c" kind="point">
+               <unit eId="art_5/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -287,7 +287,7 @@
                      <t v="additional landings allowed under Article 3 of Regulation (EC) No 847/96;"/>
                   </p>
                </unit>
-               <unit eId="art_5/pnt_d" kind="point">
+               <unit eId="art_5/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -295,7 +295,7 @@
                      <t v="quantities withheld in accordance with Article 4 of Regulation (EC) No 847/96;"/>
                   </p>
                </unit>
-               <unit eId="art_5/pnt_e" kind="point">
+               <unit eId="art_5/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -316,7 +316,7 @@
                <t v="Fish from stocks for which fishing opportunities are fixed by this Regulation shall be retained on board or landed only if:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_6/pnt_a" kind="point">
+               <unit eId="art_6/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -324,7 +324,7 @@
                      <t v="the catches have been taken by vessels of a Member State having a quota and that quota is not exhausted; or"/>
                   </p>
                </unit>
-               <unit eId="art_6/pnt_b" kind="point">
+               <unit eId="art_6/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>

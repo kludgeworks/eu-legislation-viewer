@@ -183,7 +183,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="pnt_1" kind="level" depth="1">
+      <unit eId="pnt_1" kind="level" depth="1" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -209,7 +209,7 @@
             <t v="The Schengen Information System (SIS) shall provide access to alerts on persons and objects to the following authorities:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_1/list_1/pnt_a" kind="point">
+            <unit eId="pnt_1/list_1/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -217,7 +217,7 @@
                   <t v="authorities responsible for border checks;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1/list_1/pnt_b" kind="point">
+            <unit eId="pnt_1/list_1/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -225,7 +225,7 @@
                   <t v="authorities carrying out and coordinating other police and customs checks within the country;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1/list_1/pnt_c" kind="point">
+            <unit eId="pnt_1/list_1/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -233,7 +233,7 @@
                   <t v="national judicial authorities, inter alia, those responsible for the initiation of public prosecutions in criminal proceedings and judicial inquiries prior to indictment, in the performance of their tasks, as set out in national legislation;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1/list_1/pnt_d" kind="point">
+            <unit eId="pnt_1/list_1/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -245,7 +245,7 @@
                   <t v=" relating to the movement of persons;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1/list_1/pnt_e" kind="point">
+            <unit eId="pnt_1/list_1/pnt_e" kind="point" numbered="true">
                <num>
                   <t v="(e)"/>
                </num>
@@ -266,7 +266,7 @@
             <t v="However, it is necessary for the Member States to be able to exchange supplementary information, either on a bilateral or multilateral basis, as required for implementing certain provisions of the Schengen Convention, and to ensure full application of Title IV of the Schengen Convention for the SIS as a whole."/>
          </p>
       </unit>
-      <unit eId="pnt_1.1" kind="level" depth="2">
+      <unit eId="pnt_1.1" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -288,7 +288,7 @@
             <t v="To meet the operating constraints set out in the Schengen Convention, every Member State shall establish a central authority as a single contact point for exchanging supplementary information related to SIS data. This contact point, which is referred to as the SIRENE bureau, shall be fully operational on a 24/7 basis."/>
          </p>
       </unit>
-      <unit eId="pnt_1.2" kind="level" depth="2">
+      <unit eId="pnt_1.2" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -306,7 +306,7 @@
             <t v="The SIRENE Manual is a set of instructions for SIRENE bureaux, which describes in detail the rules and procedures governing the bilateral or multilateral exchange of the supplementary information."/>
          </p>
       </unit>
-      <unit eId="pnt_1.3" kind="level" depth="2">
+      <unit eId="pnt_1.3" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -324,7 +324,7 @@
             <t v="The following fundamental standards that underpin the cooperation via SIRENE shall be met:"/>
          </p>
       </unit>
-      <unit eId="pnt_1.3.1" kind="level" depth="3">
+      <unit eId="pnt_1.3.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -342,7 +342,7 @@
             <t v="A National SIRENE bureau shall be set up by each of the Member States to serve as a single contact point for the Member States applying the SIS-related provisions of the Schengen Convention. It shall be fully operational with sufficient capacity 24 hours a day, 7 days a week. Availability for technical analysis, support and solutions shall also be provided with sufficient capacity 24 hours a day, 7 days a week."/>
          </p>
       </unit>
-      <unit eId="pnt_1.3.2" kind="level" depth="3">
+      <unit eId="pnt_1.3.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -363,7 +363,7 @@
             <t v="The Heads of each SIRENE bureau shall meet at least twice a year to assess the quality of the cooperation between their services, to adopt necessary technical or organisational measures in the event of any difficulties and to adjust procedures where required."/>
          </p>
       </unit>
-      <unit eId="pnt_1.3.3" kind="level" depth="3">
+      <unit eId="pnt_1.3.3" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -456,7 +456,7 @@
             <t v="The SIRENE bureau system should have a back-up computer and data base system at a secondary site in case of a serious emergency at the SIRENE bureau."/>
          </p>
       </unit>
-      <unit eId="pnt_1.3.4" kind="level" depth="3">
+      <unit eId="pnt_1.3.4" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -474,7 +474,7 @@
             <t v="In order to fulfil the requirement to provide supplementary information, the SIRENE staff shall have direct or indirect access to all relevant national information and expert advice."/>
          </p>
       </unit>
-      <unit eId="pnt_1.3.5" kind="level" depth="3">
+      <unit eId="pnt_1.3.5" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -551,7 +551,7 @@
             <t v="The contact details of the SIRENE bureaux and relevant information for mutual communication and cooperation are collected and provided in the SIRENE Address Book (SAB). Each SIRENE bureau shall ensure that:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_1.3.5/level_3/pnt_a" kind="point">
+            <unit eId="pnt_1.3.5/level_3/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -559,7 +559,7 @@
                   <t v="information from the SAB is not disclosed to third parties;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1.3.5/level_3/pnt_b" kind="point">
+            <unit eId="pnt_1.3.5/level_3/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -567,7 +567,7 @@
                   <t v="the SAB is known and used by the SIRENE operators;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_1.3.5/level_3/pnt_c" kind="point">
+            <unit eId="pnt_1.3.5/level_3/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -577,7 +577,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_1.3.6" kind="level" depth="3">
+      <unit eId="pnt_1.3.6" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -595,7 +595,7 @@
             <t v="Transliteration rules, which can be found in Annex 2, shall be followed in the communication between SIRENE bureaux via SISNET."/>
          </p>
       </unit>
-      <unit eId="pnt_1.3.7" kind="level" depth="3">
+      <unit eId="pnt_1.3.7" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -616,7 +616,7 @@
             <t v="National standards for training of end-users on data quality principles and practice should be established in cooperation with the national SIRENE bureau. It is recommended that SIRENE bureaux be involved in the training of all authorities entering alerts, stressing data quality and maximisation of the use of the SIS."/>
          </p>
       </unit>
-      <unit eId="pnt_1.3.8" kind="level" depth="3">
+      <unit eId="pnt_1.3.8" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -634,7 +634,7 @@
             <t v="All national agencies, including SIRENE bureaux, responsible for international police cooperation shall be organised in a structured fashion so as to prevent conflicts of competence and duplication of work."/>
          </p>
       </unit>
-      <unit eId="pnt_1.3.9" kind="level" depth="3">
+      <unit eId="pnt_1.3.9" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -648,7 +648,7 @@
             </emphasis>
             <t v="&#xA;"/>
          </heading>
-         <unit eId="pnt_1.3.9/pnt_a" kind="point">
+         <unit eId="pnt_1.3.9/pnt_a" kind="point" numbered="true">
             <num>
                <t v="(a)"/>
             </num>
@@ -656,7 +656,7 @@
                <t v="Each Member State shall determine the provisions for storing information."/>
             </p>
          </unit>
-         <unit eId="pnt_1.3.9/pnt_b" kind="point">
+         <unit eId="pnt_1.3.9/pnt_b" kind="point" numbered="true">
             <num>
                <t v="(b)"/>
             </num>
@@ -664,7 +664,7 @@
                <t v="The SIRENE bureau of the Member State issuing the alert shall keep all the information on its own alerts available to the other Member States."/>
             </p>
          </unit>
-         <unit eId="pnt_1.3.9/pnt_c" kind="point">
+         <unit eId="pnt_1.3.9/pnt_c" kind="point" numbered="true">
             <num>
                <t v="(c)"/>
             </num>
@@ -672,7 +672,7 @@
                <t v="The archives of each SIRENE bureau shall allow swift access to the relevant information to meet the very short deadlines for transmitting information."/>
             </p>
          </unit>
-         <unit eId="pnt_1.3.9/pnt_d" kind="point">
+         <unit eId="pnt_1.3.9/pnt_d" kind="point" numbered="true">
             <num>
                <t v="(d)"/>
             </num>
@@ -680,7 +680,7 @@
                <t v="In accordance with Article 112A of the Schengen Convention, personal data, held in files by the SIRENE Bureau as a result of exchanging information, shall be kept only for such time as may be required to achieve the purposes for which they were supplied. They shall in any event be deleted at the latest 1 year after the alert or alerts regarding the person or object concerned have been deleted from the SIS. However, data relating to a particular alert which a Member State has issued or to an alert in connection with which action has been taken on its territory may be stored for longer in accordance with national law."/>
             </p>
          </unit>
-         <unit eId="pnt_1.3.9/pnt_e" kind="point">
+         <unit eId="pnt_1.3.9/pnt_e" kind="point" numbered="true">
             <num>
                <t v="(e)"/>
             </num>
@@ -688,7 +688,7 @@
                <t v="Supplementary information sent by the other Member States shall be stored according to national data protection legislation in the recipient Member State. The provisions of Title VI of the Schengen Convention, Framework Decision 2008/977/JHA and Directive 95/46/ECshall also apply, as appropriate."/>
             </p>
          </unit>
-         <unit eId="pnt_1.3.9/pnt_f" kind="point">
+         <unit eId="pnt_1.3.9/pnt_f" kind="point" numbered="true">
             <num>
                <t v="(f)"/>
             </num>
@@ -697,7 +697,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_1.4" kind="level" depth="2">
+      <unit eId="pnt_1.4" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -712,7 +712,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_1.4.1" kind="level" depth="3">
+      <unit eId="pnt_1.4.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -768,7 +768,7 @@
             <t v="A high level of experience of staff leads to a workforce able to function on their own initiative and thereby able to handle cases efficiently. A low turnover of personnel is therefore propitious, which requires the unambiguous support of management to enable this devolved responsibility."/>
          </p>
       </unit>
-      <unit eId="pnt_1.4.2" kind="level" depth="3">
+      <unit eId="pnt_1.4.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -813,7 +813,7 @@
             <t v="Common training courses shall be organised at least once a year, to enhance cooperation between SIRENE bureaux by allowing staff to meet colleagues from other SIRENE bureaux, to share information on national working methods and to create a consistent and equivalent level of knowledge. Furthermore, these will make staff aware of the importance of their work and the need for mutual solidarity in view of the common security of Member States."/>
          </p>
       </unit>
-      <unit eId="pnt_1.4.3" kind="level" depth="3">
+      <unit eId="pnt_1.4.3" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -831,7 +831,7 @@
             <t v="SIRENE bureaux may also consider the possibility of setting up staff exchanges with other SIRENE bureaux. These exchanges are intended to help improve staff knowledge of working methods, to show how other SIRENE bureaux are organised and to establish personal contacts with colleagues in other Member States."/>
          </p>
       </unit>
-      <unit eId="pnt_1.5" kind="level" depth="2">
+      <unit eId="pnt_1.5" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -846,7 +846,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_1.5.1" kind="level" depth="3">
+      <unit eId="pnt_1.5.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -864,7 +864,7 @@
             <t v="Each SIRENE bureau shall have a computerised management system (work-flow system), which allows a great deal of automation in the management of the daily work-flow."/>
          </p>
       </unit>
-      <unit eId="pnt_1.5.2" kind="level" depth="3">
+      <unit eId="pnt_1.5.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -882,7 +882,7 @@
             <t v="Automatic transfer to N.SIS of the national alerts that fulfil the criteria for introduction into the SIS shall be the preferred way to introduce SIS alerts. This automatic transfer, including data quality checks, should also be transparent and not require additional action from the authority entering the alert."/>
          </p>
       </unit>
-      <unit eId="pnt_1.5.3" kind="level" depth="3">
+      <unit eId="pnt_1.5.3" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -903,7 +903,7 @@
             <t v="Since multiple alerts are not allowed, it is recommended that wherever possible and necessary, second and subsequent alerts on the same person are kept available at national level so that they can be introduced when the first alert on this person expires."/>
          </p>
       </unit>
-      <unit eId="pnt_1.5.4" kind="level" depth="3">
+      <unit eId="pnt_1.5.4" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -923,7 +923,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="pnt_1.5.5" kind="level" depth="3">
+      <unit eId="pnt_1.5.5" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -941,7 +941,7 @@
             <t v="In order to allow each SIRENE bureau to perform its role of data quality assurance coordinator (see paragraph 1.3.7 above), the necessary IT support should be available."/>
          </p>
       </unit>
-      <unit eId="pnt_2" kind="level" depth="1">
+      <unit eId="pnt_2" kind="level" depth="1" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -956,7 +956,7 @@
             <t v="The procedures described below are applicable to alerts issued under Articles 95 to 100 and the procedures specific for each Article can be found in the relevant specific section."/>
          </p>
       </unit>
-      <unit eId="pnt_2.1" kind="level" depth="2">
+      <unit eId="pnt_2.1" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -989,7 +989,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_2.1.1" kind="level" depth="3">
+      <unit eId="pnt_2.1.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -1557,7 +1557,7 @@
             </tr>
          </table>
       </unit>
-      <unit eId="pnt_2.1.2" kind="level" depth="3">
+      <unit eId="pnt_2.1.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -1581,7 +1581,7 @@
             <t v="The following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_2.1.2/pnt_a" kind="point">
+            <unit eId="pnt_2.1.2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -1589,7 +1589,7 @@
                   <t v="if the processing of a request for entering a new alert reveals that there is already a person in the SIS with the same mandatory identity description elements (surname, given name, date of birth) a check must be run before the new alert is approved;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.1.2/pnt_b" kind="point">
+            <unit eId="pnt_2.1.2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -1601,7 +1601,7 @@
                   <t v=";&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.1.2/pnt_c" kind="point">
+            <unit eId="pnt_2.1.2/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -1611,7 +1611,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_2.1.3" kind="level" depth="3">
+      <unit eId="pnt_2.1.3" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -1635,7 +1635,7 @@
             <t v="The following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_2.1.3/pnt_a" kind="point">
+            <unit eId="pnt_2.1.3/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -1643,7 +1643,7 @@
                   <t v="if the alerts are compatible, the SIRENE bureaux do not need to consult each other; if the alerts are independent of each other, the Member State that wishes to enter a new alert shall decide whether to consult;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.1.3/pnt_b" kind="point">
+            <unit eId="pnt_2.1.3/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -1655,7 +1655,7 @@
                   <t v=" so that ultimately only one alert is entered;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.1.3/pnt_c" kind="point">
+            <unit eId="pnt_2.1.3/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -1663,7 +1663,7 @@
                   <t v="alerts for arrest shall be entered immediately without awaiting the result of any consultation with other Member States;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.1.3/pnt_d" kind="point">
+            <unit eId="pnt_2.1.3/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -1671,7 +1671,7 @@
                   <t v="if an alert that is incompatible with existing alerts is given priority as the outcome of consultation, the Member States that entered the other alerts shall withdraw them when the new alert is entered; any disputes shall be settled by negotiations between the SIRENE bureaux. If agreement cannot be reached on the basis of the list of priorities established, the oldest alert is left in the SIS;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.1.3/pnt_e" kind="point">
+            <unit eId="pnt_2.1.3/pnt_e" kind="point" numbered="true">
                <num>
                   <t v="(e)"/>
                </num>
@@ -1681,7 +1681,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_2.2" kind="level" depth="2">
+      <unit eId="pnt_2.2" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -1709,7 +1709,7 @@
             <t v="Unless stated otherwise, the issuing Member State shall be informed of the hit and its outcome."/>
          </p>
       </unit>
-      <unit eId="pnt_2.2.1" kind="level" depth="3">
+      <unit eId="pnt_2.2.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -1727,7 +1727,7 @@
             <t v="The following procedures shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_2.2.1/pnt_a" kind="point">
+            <unit eId="pnt_2.2.1/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -1743,7 +1743,7 @@
                   <t v=" to the SIRENE bureau of the issuing Member State;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.2.1/pnt_b" kind="point">
+            <unit eId="pnt_2.2.1/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -1759,7 +1759,7 @@
                   <t v=")."/>
                </p>
             </unit>
-            <unit eId="pnt_2.2.1/pnt_c" kind="point">
+            <unit eId="pnt_2.2.1/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -1771,7 +1771,7 @@
                   <t v=" shall provide as much as possible information on the hit, including on the action taken in field 088. Provision of supplementary information may be requested from the issuing Member State in field 089.&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.2.1/pnt_d" kind="point">
+            <unit eId="pnt_2.2.1/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -1779,7 +1779,7 @@
                   <t v="if necessary the SIRENE bureau of the issuing Member State shall, following the hit, send any relevant specific information;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.2.1/pnt_e" kind="point">
+            <unit eId="pnt_2.2.1/pnt_e" kind="point" numbered="true">
                <num>
                   <t v="(e)"/>
                </num>
@@ -1787,7 +1787,7 @@
                   <t v="the particular measures should be taken by the SIRENE bureau of the Member State that matched the alert to support the effective execution of the requested measures (action to be taken);&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.2.1/pnt_f" kind="point">
+            <unit eId="pnt_2.2.1/pnt_f" kind="point" numbered="true">
                <num>
                   <t v="(f)"/>
                </num>
@@ -1803,7 +1803,7 @@
                   <t v=";&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.2.1/pnt_g" kind="point">
+            <unit eId="pnt_2.2.1/pnt_g" kind="point" numbered="true">
                <num>
                   <t v="(g)"/>
                </num>
@@ -1815,7 +1815,7 @@
                   <t v=";&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.2.1/pnt_h" kind="point">
+            <unit eId="pnt_2.2.1/pnt_h" kind="point" numbered="true">
                <num>
                   <t v="(h)"/>
                </num>
@@ -1825,7 +1825,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_2.2.2" kind="level" depth="3">
+      <unit eId="pnt_2.2.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -1843,7 +1843,7 @@
             <t v="The following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_2.2.2/pnt_a" kind="point">
+            <unit eId="pnt_2.2.2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -1851,7 +1851,7 @@
                   <t v="the SIRENE bureaux may transmit further information on Article 95 to Article 100 alerts, and in doing so may act on behalf of judicial authorities if this information falls within the scope of mutual judicial assistance;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.2.2/pnt_b" kind="point">
+            <unit eId="pnt_2.2.2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -1861,7 +1861,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_2.3" kind="level" depth="2">
+      <unit eId="pnt_2.3" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -1879,7 +1879,7 @@
             <t v="If, following a hit, normal procedures cannot be executed, the exchange of data shall take place according to the following rules:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_2.3/pnt_a" kind="point">
+            <unit eId="pnt_2.3/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -1891,7 +1891,7 @@
                   <t v=";&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.3/pnt_b" kind="point">
+            <unit eId="pnt_2.3/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -1901,7 +1901,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_2.4" kind="level" depth="2">
+      <unit eId="pnt_2.4" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -1925,7 +1925,7 @@
             <t v="If the purpose of the alert is changed, the exchange of information shall take place according to the following rules:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_2.4/pnt_a" kind="point">
+            <unit eId="pnt_2.4/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -1937,7 +1937,7 @@
                   <t v=");&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.4/pnt_b" kind="point">
+            <unit eId="pnt_2.4/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -1945,7 +1945,7 @@
                   <t v="as soon as possible, the issuing Member State shall study whether this wish can be met and advise the discovering Member State, through its SIRENE bureau, of its decision;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.4/pnt_c" kind="point">
+            <unit eId="pnt_2.4/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -1958,7 +1958,7 @@
             <t v="Once the Member State that issued the alert has agreed, the discovering Member State shall use the data for the reason it sought and obtained authorisation. It shall take account of any conditions set."/>
          </p>
       </unit>
-      <unit eId="pnt_2.5" kind="level" depth="2">
+      <unit eId="pnt_2.5" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -1979,7 +1979,7 @@
             <t v="If data is found to be legally or factually incorrect or inadmissible, then the exchange of information shall take place according to the following rule:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_2.5/pnt_a" kind="point">
+            <unit eId="pnt_2.5/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -1991,7 +1991,7 @@
                   <t v=";&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.5/pnt_b" kind="point">
+            <unit eId="pnt_2.5/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -1999,7 +1999,7 @@
                   <t v="if the Member States are in agreement, the issuing Member State shall follow its national procedures for correcting the error;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.5/pnt_c" kind="point">
+            <unit eId="pnt_2.5/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -2009,7 +2009,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_2.6" kind="level" depth="2">
+      <unit eId="pnt_2.6" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2034,7 +2034,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="pnt_2.6.1" kind="level" depth="3">
+      <unit eId="pnt_2.6.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2052,7 +2052,7 @@
             <t v="If the national authorities are to be informed of a request to access or verify data, then the exchange of information will take place according to the following rules:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_2.6.1/pnt_a" kind="point">
+            <unit eId="pnt_2.6.1/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -2060,7 +2060,7 @@
                   <t v="each SIRENE bureau must apply its national legislation on the right to access to this data. Depending on the circumstances of the case, the SIRENE bureaux shall either forward the national authorities responsible any requests they receive for access or for rectifying data, or they shall adjudicate upon these requests within the limits of their remit;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.6.1/pnt_b" kind="point">
+            <unit eId="pnt_2.6.1/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -2070,7 +2070,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_2.6.2" kind="level" depth="3">
+      <unit eId="pnt_2.6.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2091,7 +2091,7 @@
             <t v="The following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_2.6.2/pnt_a" kind="point">
+            <unit eId="pnt_2.6.2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -2099,7 +2099,7 @@
                   <t v="the request for access, correction or deletion shall be forwarded to the Member State that issued the alert as soon as possible, so that it can take a position on the question;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.6.2/pnt_b" kind="point">
+            <unit eId="pnt_2.6.2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -2107,7 +2107,7 @@
                   <t v="the issuing Member State shall inform the Member State that received the request of its position by providing all the necessary information to answer the request;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.6.2/pnt_c" kind="point">
+            <unit eId="pnt_2.6.2/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -2115,7 +2115,7 @@
                   <t v="it shall take account of any legal deadlines set for processing the request;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.6.2/pnt_d" kind="point">
+            <unit eId="pnt_2.6.2/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -2128,7 +2128,7 @@
             <t v="If the Member State that issued the alert sends its position to the SIRENE bureau of the Member State that received the request for access, correction or deletion, the SIRENE bureau shall ensure that the position is forwarded to the authority responsible for adjudication on the request as soon as possible."/>
          </p>
       </unit>
-      <unit eId="pnt_2.6.3" kind="level" depth="3">
+      <unit eId="pnt_2.6.3" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2149,7 +2149,7 @@
             <t v="The SIRENE bureaux shall keep one another informed of any national legislation adopted on access and rectification procedures for personal data, as well as of any amendments made thereafter."/>
          </p>
       </unit>
-      <unit eId="pnt_2.7" kind="level" depth="2">
+      <unit eId="pnt_2.7" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2181,7 +2181,7 @@
             <t v="In both instances the C.SIS deletion message should be processed automatically by the N.SIS."/>
          </p>
       </unit>
-      <unit eId="pnt_2.8" kind="level" depth="2">
+      <unit eId="pnt_2.8" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2250,7 +2250,7 @@
             <t v="The data of the person whose identity is misused, including any fingerprints and photographs, shall only be available for the purpose of establishing the identity of the person being checked and shall in no way be used for any other purpose. Information on misused identity shall be deleted during the process of deleting the related alert."/>
          </p>
       </unit>
-      <unit eId="pnt_2.9" kind="level" depth="2">
+      <unit eId="pnt_2.9" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2268,7 +2268,7 @@
             <t v="In order to avoid incompatible alerts of any category due to an alias to be entered, or to avoid problems for innocent victims, the SIRENE bureaux shall, if this information is available to them, inform each other about aliases and transmit all relevant information about the real identity of the subject sought. The Member State that entered the original alert is responsible for adding any aliases. If another Member State discovers an alias, it shall pass the matter on to the Member State that originally entered the alert."/>
          </p>
       </unit>
-      <unit eId="pnt_2.10" kind="level" depth="2">
+      <unit eId="pnt_2.10" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2283,7 +2283,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_2.10.1" kind="level" depth="3">
+      <unit eId="pnt_2.10.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2304,7 +2304,7 @@
             <t v="The SIRPIT Procedure makes it possible, when there is some doubt about the identity of a discovered person, to exchange pictures and fingerprints quickly and electronically between SIRENE bureaux, so that a comparison can be made between the fingerprints and pictures of the discovered person and those of the person regarding whom an alert was issued."/>
          </p>
       </unit>
-      <unit eId="pnt_2.10.2" kind="level" depth="3">
+      <unit eId="pnt_2.10.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2322,7 +2322,7 @@
             <t v="Limitations on the use of data provided for in Articles 95 to 100 are set out in the Schengen Convention. Any use of pictures and fingerprints exchanged via SIRPIT, including archiving, shall comply with the relevant provisions of the Schengen Convention, applicable national provisions on data protection, in accordance with Directive 95/46/EC, Framework Decision 2008/977/JHA and the Convention 108 of the Council of Europe as appropriate."/>
          </p>
       </unit>
-      <unit eId="pnt_2.10.3" kind="level" depth="3">
+      <unit eId="pnt_2.10.3" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2346,7 +2346,7 @@
             <t v="In SIRPIT, fingerprints and pictures are sent in an attachment on an input screen specially designed for this purpose."/>
          </p>
       </unit>
-      <unit eId="pnt_2.10.4" kind="level" depth="3">
+      <unit eId="pnt_2.10.4" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2364,7 +2364,7 @@
             <t v="The national identification service only receives requests from and sends results to its own national SIRENE bureau."/>
          </p>
       </unit>
-      <unit eId="pnt_2.10.5" kind="level" depth="3">
+      <unit eId="pnt_2.10.5" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2393,7 +2393,7 @@
             <t v=" shall be sent at the same time as fingerprints and/or pictures."/>
          </p>
       </unit>
-      <unit eId="pnt_2.10.6" kind="level" depth="3">
+      <unit eId="pnt_2.10.6" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2425,7 +2425,7 @@
             <t v="The procedure allows for two possibilities:"/>
          </p>
       </unit>
-      <unit eId="pnt_2.10.6.1" kind="level" depth="4">
+      <unit eId="pnt_2.10.6.1" kind="level" depth="4" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2436,7 +2436,7 @@
          <heading>
             <t v="The discovering SIRENE bureau makes the comparison&#xA;"/>
          </heading>
-         <unit eId="pnt_2.10.6.1/pnt_a" kind="point">
+         <unit eId="pnt_2.10.6.1/pnt_a" kind="point" numbered="true">
             <num>
                <t v="(a)"/>
             </num>
@@ -2452,7 +2452,7 @@
                <t v=" as soon as possible, as well as the fingerprints and pictures, if these are available."/>
             </p>
          </unit>
-         <unit eId="pnt_2.10.6.1/pnt_b" kind="point">
+         <unit eId="pnt_2.10.6.1/pnt_b" kind="point" numbered="true">
             <num>
                <t v="(b)"/>
             </num>
@@ -2464,7 +2464,7 @@
                <t v=". If the fingerprints and pictures are available, the providing SIRENE bureau mentions in field 083 that fingerprints and/or pictures are sent in order to make the comparison."/>
             </p>
          </unit>
-         <unit eId="pnt_2.10.6.1/pnt_c" kind="point">
+         <unit eId="pnt_2.10.6.1/pnt_c" kind="point" numbered="true">
             <num>
                <t v="(c)"/>
             </num>
@@ -2472,7 +2472,7 @@
                <t v="The discovering SIRENE bureau sends the fingerprints and pictures to its national identification service for comparison, and asks for the result through the same path."/>
             </p>
          </unit>
-         <unit eId="pnt_2.10.6.1/pnt_d" kind="point">
+         <unit eId="pnt_2.10.6.1/pnt_d" kind="point" numbered="true">
             <num>
                <t v="(d)"/>
             </num>
@@ -2485,7 +2485,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_2.10.6.2" kind="level" depth="4">
+      <unit eId="pnt_2.10.6.2" kind="level" depth="4" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2496,7 +2496,7 @@
          <heading>
             <t v="The providing SIRENE bureau makes the comparison&#xA;"/>
          </heading>
-         <unit eId="pnt_2.10.6.2/pnt_a" kind="point">
+         <unit eId="pnt_2.10.6.2/pnt_a" kind="point" numbered="true">
             <num>
                <t v="(a)"/>
             </num>
@@ -2516,7 +2516,7 @@
                <t v=" that the fingerprints and pictures are being sent for comparison."/>
             </p>
          </unit>
-         <unit eId="pnt_2.10.6.2/pnt_b" kind="point">
+         <unit eId="pnt_2.10.6.2/pnt_b" kind="point" numbered="true">
             <num>
                <t v="(b)"/>
             </num>
@@ -2524,7 +2524,7 @@
                <t v="The providing SIRENE bureau sends the fingerprints and pictures that it has received to its national identification service for comparison and asks for the result through the same path."/>
             </p>
          </unit>
-         <unit eId="pnt_2.10.6.2/pnt_c" kind="point">
+         <unit eId="pnt_2.10.6.2/pnt_c" kind="point" numbered="true">
             <num>
                <t v="(c)"/>
             </num>
@@ -2543,7 +2543,7 @@
             <t v="The fingerprints and pictures of a person not matching the data of the reported person which have been exchanged via SIRPIT shall be processed in accordance with the provisions of the Schengen Convention applicable national provisions on data protection in accordance with Directive 95/46/EC, Framework Decision 2008/977/JHA and Convention 108 of the Council of Europe, as appropriate."/>
          </p>
       </unit>
-      <unit eId="pnt_2.10.6.3" kind="level" depth="4">
+      <unit eId="pnt_2.10.6.3" kind="level" depth="4" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2561,7 +2561,7 @@
             <t v="The input mask shall have the following data:"/>
          </p>
          <list kind="arabic">
-            <unit eId="pnt_2.10.6.3/list_1/pnt_1" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="(1)"/>
                </num>
@@ -2571,7 +2571,7 @@
                   <t v=" (see note 1 below)&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_2" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="(2)"/>
                </num>
@@ -2581,7 +2581,7 @@
                   <t v=" (see note 1 below)&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_3" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="(3)"/>
                </num>
@@ -2589,7 +2589,7 @@
                   <t v="Date of fingerprints&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_4" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_4" kind="point" numbered="true">
                <num>
                   <t v="(4)"/>
                </num>
@@ -2597,7 +2597,7 @@
                   <t v="Place where fingerprints were taken&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_5" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_5" kind="point" numbered="true">
                <num>
                   <t v="(5)"/>
                </num>
@@ -2605,7 +2605,7 @@
                   <t v="Date of picture&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_6" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_6" kind="point" numbered="true">
                <num>
                   <t v="(6)"/>
                </num>
@@ -2613,7 +2613,7 @@
                   <t v="Reason for fingerprints (reason for the alert underlying the transmission of the fingerprints)&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_7" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_7" kind="point" numbered="true">
                <num>
                   <t v="(7)"/>
                </num>
@@ -2623,7 +2623,7 @@
                   <t v=" (see note 2 below)&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_8" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_8" kind="point" numbered="true">
                <num>
                   <t v="(8)"/>
                </num>
@@ -2633,7 +2633,7 @@
                   <t v=" (see note 2 below)&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_9" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_9" kind="point" numbered="true">
                <num>
                   <t v="(9)"/>
                </num>
@@ -2641,7 +2641,7 @@
                   <t v="Maiden name&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_10" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_10" kind="point" numbered="true">
                <num>
                   <t v="(10)"/>
                </num>
@@ -2649,7 +2649,7 @@
                   <t v="Identity ascertained?&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_11" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_11" kind="point" numbered="true">
                <num>
                   <t v="(11)"/>
                </num>
@@ -2659,7 +2659,7 @@
                   <t v="&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_12" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_12" kind="point" numbered="true">
                <num>
                   <t v="(12)"/>
                </num>
@@ -2667,7 +2667,7 @@
                   <t v="Place of Birth&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_13" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_13" kind="point" numbered="true">
                <num>
                   <t v="(13)"/>
                </num>
@@ -2675,7 +2675,7 @@
                   <t v="Nationality&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_14" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_14" kind="point" numbered="true">
                <num>
                   <t v="(14)"/>
                </num>
@@ -2685,7 +2685,7 @@
                   <t v="&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.10.6.3/list_1/pnt_15" kind="point">
+            <unit eId="pnt_2.10.6.3/list_1/pnt_15" kind="point" numbered="true">
                <num>
                   <t v="(15)"/>
                </num>
@@ -2724,7 +2724,7 @@
                </emphasis>
             </heading>
             <annotation>
-               <unit eId="pnt_2.10.6.3/level_2/ann_1/pnt_1" kind="point">
+               <unit eId="pnt_2.10.6.3/level_2/ann_1/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -2742,7 +2742,9 @@
                </unit>
             </annotation>
             <annotation>
-               <unit eId="pnt_2.10.6.3/level_2/ann_1/list_2/pnt_2" kind="point">
+               <unit eId="pnt_2.10.6.3/level_2/ann_1/list_2/pnt_2"
+                     kind="point"
+                     numbered="true">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -2762,7 +2764,7 @@
       <p>
          <t v="When available, the place where and date on which the fingerprints were taken shall be entered."/>
       </p>
-      <unit eId="pnt_2.11" kind="level" depth="2">
+      <unit eId="pnt_2.11" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2788,7 +2790,7 @@
             <t v="If a SIRENE bureau receives a request falling outside its competence under national law, from another SIRENE bureau, it shall immediately forward it to the competent authority and inform the requesting SIRENE bureau about this action. If necessary, it shall provide support to the requesting SIRENE bureau to facilitate communication."/>
          </p>
       </unit>
-      <unit eId="pnt_2.12" kind="level" depth="2">
+      <unit eId="pnt_2.12" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2809,7 +2811,7 @@
             <t v="The following principles have been agreed:"/>
          </p>
       </unit>
-      <unit eId="pnt_2.12.1" kind="level" depth="3">
+      <unit eId="pnt_2.12.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2827,7 +2829,7 @@
             <t v="SIS alerts and the exchange of all information on these alerts shall always have priority over alerts and information exchanged via Interpol. This is of particular importance if the alerts conflict."/>
          </p>
       </unit>
-      <unit eId="pnt_2.12.2" kind="level" depth="3">
+      <unit eId="pnt_2.12.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2845,7 +2847,7 @@
             <t v="The principle of Schengen alerts taking precedence over Interpol alerts shall be respected and it shall be ensured that the NCBs of Member States also comply with this. Once the Schengen alert is created, all communication related to the alert and the purpose for its creation, shall be provided by SIRENE bureaux. If a Member State wants to change channels of communication, the other parties shall be consulted in advance. Such a change of channel is possible only in special cases."/>
          </p>
       </unit>
-      <unit eId="pnt_2.12.3" kind="level" depth="3">
+      <unit eId="pnt_2.12.3" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2869,7 +2871,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="pnt_2.12.4" kind="level" depth="3">
+      <unit eId="pnt_2.12.4" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2887,7 +2889,7 @@
             <t v="As a general rule, data entered in the SIS shall not be made available to third countries. However, where a Member State has issued an alert, only the SIRENE bureau of that issuing Member State may decide whether to make available information to third countries (authorisation, diffusion means and channel). In so doing the SIRENE bureau shall observe the personal data protection provisions laid down in the Schengen Convention, Framework Decision 2008/977/JHA and Directive 95/46/EC, as appropriate. Use of the Interpol channel will depend on national provisions or procedures."/>
          </p>
       </unit>
-      <unit eId="pnt_2.12.5" kind="level" depth="3">
+      <unit eId="pnt_2.12.5" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2908,7 +2910,7 @@
             <t v="The deletion of an alert shall be undertaken only by the authority, which issued the alert."/>
          </p>
       </unit>
-      <unit eId="pnt_2.12.6" kind="level" depth="3">
+      <unit eId="pnt_2.12.6" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2926,7 +2928,7 @@
             <t v="Each Member State shall take all appropriate measures to provide for effective exchange of information at national level between its SIRENE bureau and the NCBs."/>
          </p>
       </unit>
-      <unit eId="pnt_2.13" kind="level" depth="2">
+      <unit eId="pnt_2.13" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2944,7 +2946,7 @@
             <t v="In order to streamline cooperation between SIRENE bureaux, appropriate national procedures shall be established, in particular for cases where EUROPOL or EUROJUST accesses the SIS and achieves a hit."/>
          </p>
       </unit>
-      <unit eId="pnt_2.14" kind="level" depth="2">
+      <unit eId="pnt_2.14" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2959,7 +2961,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_2.14.1" kind="level" depth="3">
+      <unit eId="pnt_2.14.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -2987,7 +2989,7 @@
             <t v="Such an alert increases the chances of success, if the person or object moves unexpectedly from one place to another within the Schengen area. Cases where no alert is created shall be restricted to special circumstances, in particular if there is no sufficient information available to create an alert."/>
          </p>
       </unit>
-      <unit eId="pnt_2.14.2" kind="level" depth="3">
+      <unit eId="pnt_2.14.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3011,7 +3013,7 @@
             <t v="The SIRENE bureaux shall ensure fast flow of supplementary information, including information on a hit, to the national FAST if the latter is involved in the search."/>
          </p>
       </unit>
-      <unit eId="pnt_2.15" kind="level" depth="2">
+      <unit eId="pnt_2.15" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3035,7 +3037,7 @@
             <t v="When a flag is added to Articles 97 and 99 alerts the alert does not appear on the screen when the end user consults the system. An alternative procedure exists only for Article 95 alerts. Each Member State shall detect the alerts likely to require a flag as swiftly as possible."/>
          </p>
       </unit>
-      <unit eId="pnt_2.15.1" kind="level" depth="3">
+      <unit eId="pnt_2.15.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3053,7 +3055,7 @@
             <t v="The following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_2.15.1/pnt_a" kind="point">
+            <unit eId="pnt_2.15.1/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -3067,7 +3069,7 @@
                   <t v=". For more details concerning the national law field 080 and, where appropriate, for supplementary information explaining the reason for the flag and other supplementary information concerning the alert, field 083 shall be used;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.15.1/pnt_b" kind="point">
+            <unit eId="pnt_2.15.1/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -3075,7 +3077,7 @@
                   <t v="the Member State that issued the alert shall add the requested flag immediately;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.15.1/pnt_c" kind="point">
+            <unit eId="pnt_2.15.1/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -3085,7 +3087,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_2.15.2" kind="level" depth="3">
+      <unit eId="pnt_2.15.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3106,7 +3108,7 @@
             <t v="The following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_2.15.2/pnt_a" kind="point">
+            <unit eId="pnt_2.15.2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -3120,7 +3122,7 @@
                   <t v=". For more details concerning the national law field 080 shall be used and, where appropriate, for supplementary information explaining the reason for the deletion of the flag and for other supplementary information concerning the alert field, 083 shall be used;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_2.15.2/pnt_b" kind="point">
+            <unit eId="pnt_2.15.2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -3130,7 +3132,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_2.16" kind="level" depth="2">
+      <unit eId="pnt_2.16" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3152,7 +3154,7 @@
             <t v=", followed by the reason for urgency. Field 083 in the SIRENE forms shall include this information as the first piece of information, where appropriate."/>
          </p>
       </unit>
-      <unit eId="pnt_3" kind="level" depth="1">
+      <unit eId="pnt_3" kind="level" depth="1" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3211,7 +3213,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_3.1" kind="level" depth="2">
+      <unit eId="pnt_3.1" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3251,7 +3253,7 @@
             <t v=")."/>
          </p>
       </unit>
-      <unit eId="pnt_3.2" kind="level" depth="2">
+      <unit eId="pnt_3.2" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3272,7 +3274,7 @@
             <t v="The following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_3.2/pnt_a" kind="point">
+            <unit eId="pnt_3.2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -3280,7 +3282,7 @@
                   <t v="check that all Member States are able to follow up the alert;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_3.2/pnt_b" kind="point">
+            <unit eId="pnt_3.2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -3293,7 +3295,7 @@
             <t v="Each Member State shall take appropriate technical or organisational measures to ensure that alerts under Article 95(2), second sentence, are only entered into the SIS after the SIRENE bureau of the Member State in question has been informed."/>
          </p>
       </unit>
-      <unit eId="pnt_3.3" kind="level" depth="2">
+      <unit eId="pnt_3.3" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3308,7 +3310,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_3.3.1" kind="level" depth="3">
+      <unit eId="pnt_3.3.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3346,7 +3348,7 @@
             <t v=" shall be sent, in the event of a hit, in response to all requests."/>
          </p>
       </unit>
-      <unit eId="pnt_3.3.2" kind="level" depth="3">
+      <unit eId="pnt_3.3.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3364,7 +3366,7 @@
             <t v="See general procedures in Section 2.1.2 and 2.1.3."/>
          </p>
       </unit>
-      <unit eId="pnt_3.4" kind="level" depth="2">
+      <unit eId="pnt_3.4" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3379,7 +3381,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_3.4.1" kind="level" depth="3">
+      <unit eId="pnt_3.4.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3550,7 +3552,7 @@
                   <t v=" appears, it is requested, where applicable:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="pnt_3.4.1/list_2/idt_1/pnt_a" kind="point">
+                  <unit eId="pnt_3.4.1/list_2/idt_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -3558,7 +3560,7 @@
                         <t v="to indicate if the decision was pronounced in absentia;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="pnt_3.4.1/list_2/idt_1/pnt_b" kind="point">
+                  <unit eId="pnt_3.4.1/list_2/idt_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -3593,7 +3595,7 @@
                   <t v="if the offences do not fall within the list mentioned above, the following information is required:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="pnt_3.4.1/list_2/idt_4/pnt_a" kind="point">
+                  <unit eId="pnt_3.4.1/list_2/idt_4/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -3601,7 +3603,7 @@
                         <t v="either that the warrant has been issued for acts punishable by the law of the issuing Member State by a custodial sentence or a detention order for a maximum period of at least 12 months;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="pnt_3.4.1/list_2/idt_4/pnt_b" kind="point">
+                  <unit eId="pnt_3.4.1/list_2/idt_4/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -3628,7 +3630,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_3.4.2" kind="level" depth="3">
+      <unit eId="pnt_3.4.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3803,7 +3805,7 @@
             <t v=")."/>
          </p>
       </unit>
-      <unit eId="pnt_3.4.3" kind="level" depth="3">
+      <unit eId="pnt_3.4.3" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3833,7 +3835,7 @@
             <t v=", when informing the other Member States of aliases regarding an alert issued pursuant to Article 95, if this information is available to the SIRENE bureau."/>
          </p>
       </unit>
-      <unit eId="pnt_3.4.4" kind="level" depth="3">
+      <unit eId="pnt_3.4.4" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3889,7 +3891,7 @@
             <t v="The common objective is to minimise the risk of wrongly detaining a person whose details are similar to those of the person on whom an alert has been issued."/>
          </p>
       </unit>
-      <unit eId="pnt_3.4.5" kind="level" depth="3">
+      <unit eId="pnt_3.4.5" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3930,7 +3932,7 @@
             <t v=" is a replacement shall be indicated on the new form in field 030."/>
          </p>
       </unit>
-      <unit eId="pnt_3.5" kind="level" depth="2">
+      <unit eId="pnt_3.5" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3951,7 +3953,7 @@
             <t v="A flagged alert shall be regarded as being issued for the purposes of communicating the place of residence of the person concerned."/>
          </p>
       </unit>
-      <unit eId="pnt_3.5.1" kind="level" depth="3">
+      <unit eId="pnt_3.5.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -3975,7 +3977,7 @@
             <t v="The following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_3.5.1/pnt_a" kind="point">
+            <unit eId="pnt_3.5.1/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -3983,7 +3985,7 @@
                   <t v="in the case of alerts on persons wanted for arrest for extradition purposes, where Framework Decision 2002/584/JHA on the European arrest warrant and the surrender procedures between Member States does not apply, a SIRENE bureau may ask other SIRENE bureaux to add a flag systematically to Article 95 alerts issued on its nationals;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_3.5.1/pnt_b" kind="point">
+            <unit eId="pnt_3.5.1/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -3991,7 +3993,7 @@
                   <t v="any SIRENE bureau wishing to do so shall send a written request to other SIRENE bureaux;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_3.5.1/pnt_c" kind="point">
+            <unit eId="pnt_3.5.1/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -3999,7 +4001,7 @@
                   <t v="any SIRENE bureaux to whom such a request is addressed shall add a flag for the Member State in question immediately after the alert is issued;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_3.5.1/pnt_d" kind="point">
+            <unit eId="pnt_3.5.1/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -4012,7 +4014,7 @@
             <t v="If the circumstances mentioned in Article 94(4) of the Schengen Convention no longer exist, the Member State that requested the flag shall ask as soon as possible for the flag to be revoked."/>
          </p>
       </unit>
-      <unit eId="pnt_3.6" kind="level" depth="2">
+      <unit eId="pnt_3.6" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4049,7 +4051,7 @@
             <t v=" shall be forwarded to the authority of the Member State which executes the EAW. If the original EAW is requested, it shall be sent by the issuing judicial authority directly to the executing judicial authority (unless otherwise directed)."/>
          </p>
       </unit>
-      <unit eId="pnt_3.7" kind="level" depth="2">
+      <unit eId="pnt_3.7" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4064,7 +4066,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_3.7.1" kind="level" depth="3">
+      <unit eId="pnt_3.7.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4085,7 +4087,7 @@
             <t v="In addition, the following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_3.7.1/pnt_a" kind="point">
+            <unit eId="pnt_3.7.1/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -4097,7 +4099,7 @@
                   <t v=", the hit shall also be communicated, where appropriate, by telephone;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_3.7.1/pnt_b" kind="point">
+            <unit eId="pnt_3.7.1/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -4109,7 +4111,7 @@
                   <t v=";&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_3.7.1/pnt_c" kind="point">
+            <unit eId="pnt_3.7.1/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -4117,7 +4119,7 @@
                   <t v="a Member State which had previously indicated a wish to issue an alert on a person already the subject of an alert shall be informed of any hits on the original alert by the Member State that actually issued that alert;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_3.7.1/pnt_d" kind="point">
+            <unit eId="pnt_3.7.1/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -4127,7 +4129,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_3.7.2" kind="level" depth="3">
+      <unit eId="pnt_3.7.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4145,7 +4147,7 @@
             <t v="The SIRENE bureaux may transmit further information on Article 95 alerts, and in so doing may act on behalf of judicial authorities if this information falls within the scope of mutual judicial assistance."/>
          </p>
       </unit>
-      <unit eId="pnt_3.7.3" kind="level" depth="3">
+      <unit eId="pnt_3.7.3" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4169,7 +4171,7 @@
             <t v="This procedure has technical implications as the alert may need to be deleted and another alert which had previously been excluded from the SIS can now be entered."/>
          </p>
       </unit>
-      <unit eId="pnt_3.7.4" kind="level" depth="3">
+      <unit eId="pnt_3.7.4" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4207,7 +4209,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="pnt_3.8" kind="level" depth="2">
+      <unit eId="pnt_3.8" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4225,7 +4227,7 @@
             <t v="Inform the Member States who had been unable to enter their alert that a hit has been made and that the alert has been deleted."/>
          </p>
       </unit>
-      <unit eId="pnt_3.8.1" kind="level" depth="3">
+      <unit eId="pnt_3.8.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4256,7 +4258,7 @@
             <t v="The SIRENE bureau shall apply the entire procedure for entering an alert in the appropriate alert category."/>
          </p>
       </unit>
-      <unit eId="pnt_3.9" kind="level" depth="2">
+      <unit eId="pnt_3.9" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4274,7 +4276,7 @@
             <t v="See general procedure in Section 2.8."/>
          </p>
       </unit>
-      <unit eId="pnt_4" kind="level" depth="1">
+      <unit eId="pnt_4" kind="level" depth="1" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4323,7 +4325,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_4.1" kind="level" depth="2">
+      <unit eId="pnt_4.1" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4347,7 +4349,7 @@
             <t v="However, the SIRENE bureaux may also be involved in transmitting supplementary information necessary for the expulsion of, or for refusing entry to, a third-country national; and, may be involved in transmitting any supplementary information further generated by these actions."/>
          </p>
       </unit>
-      <unit eId="pnt_4.2" kind="level" depth="2">
+      <unit eId="pnt_4.2" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4374,7 +4376,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="pnt_4.3" kind="level" depth="2">
+      <unit eId="pnt_4.3" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4392,7 +4394,7 @@
             <t v="See general procedure in Section 2.9."/>
          </p>
       </unit>
-      <unit eId="pnt_4.4" kind="level" depth="2">
+      <unit eId="pnt_4.4" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4417,7 +4419,7 @@
             <t v="For gathering and communicating information on a person whose identity is misused, see general procedure in Section 2.8."/>
          </p>
       </unit>
-      <unit eId="pnt_4.5" kind="level" depth="2">
+      <unit eId="pnt_4.5" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4439,7 +4441,7 @@
             <t v=" shall apply, to the SIRENE bureaux, to the extent that they forward supplementary information:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_4.5/pnt_a" kind="point">
+            <unit eId="pnt_4.5/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -4447,7 +4449,7 @@
                   <t v="exchange of information when refusing entry or expelling from the Schengen territory;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.5/pnt_b" kind="point">
+            <unit eId="pnt_4.5/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -4464,7 +4466,7 @@
             <t v=" shall apply to the SIRENE bureaux to the extent that they forward supplementary information:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_4.5/list_2/pnt_a" kind="point">
+            <unit eId="pnt_4.5/list_2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -4472,7 +4474,7 @@
                   <t v="special procedures as provided for in Article 25 of the Schengen Convention;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.5/list_2/pnt_b" kind="point">
+            <unit eId="pnt_4.5/list_2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -4480,7 +4482,7 @@
                   <t v="special procedures as provided for Article 5(4) of the Schengen Borders Code;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.5/list_2/pnt_c" kind="point">
+            <unit eId="pnt_4.5/list_2/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -4488,7 +4490,7 @@
                   <t v="exchange of information on a third-country national who is a beneficiary of the right of free movement;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.5/list_2/pnt_d" kind="point">
+            <unit eId="pnt_4.5/list_2/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -4498,7 +4500,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_4.6" kind="level" depth="2">
+      <unit eId="pnt_4.6" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4513,7 +4515,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_4.6.1" kind="level" depth="3">
+      <unit eId="pnt_4.6.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4531,7 +4533,7 @@
             <t v="The following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_4.6.1/pnt_a" kind="point">
+            <unit eId="pnt_4.6.1/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -4539,7 +4541,7 @@
                   <t v="a Member State may ask to be informed of any hits on alerts for refusal of entry or stay that it has issued. Any Member State that wishes to take up this option shall ask the other Member States in writing;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.6.1/pnt_b" kind="point">
+            <unit eId="pnt_4.6.1/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -4547,7 +4549,7 @@
                   <t v="the executing Member State may take the initiative and inform the issuing Member State that the alert has been matched and that the third-country national has not been granted entry or has been expelled from the Schengen territory;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.6.1/pnt_c" kind="point">
+            <unit eId="pnt_4.6.1/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -4599,7 +4601,7 @@
             <t v="There might also be an urgent need for supplementary information to be exchanged via the SIRENE bureaux in specific cases in order to identify an individual with certainty."/>
          </p>
       </unit>
-      <unit eId="pnt_4.6.2" kind="level" depth="3">
+      <unit eId="pnt_4.6.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4617,7 +4619,7 @@
             <t v="The following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_4.6.2/pnt_a" kind="point">
+            <unit eId="pnt_4.6.2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -4625,7 +4627,7 @@
                   <t v="the executing Member State may inform the Member State which issued an alert for refusal of entry or stay that the alert has been matched in the course of the procedure for issuing a residence permit or a long-stay visa;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.6.2/pnt_b" kind="point">
+            <unit eId="pnt_4.6.2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -4637,7 +4639,7 @@
                   <t v=", if appropriate;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.6.2/pnt_c" kind="point">
+            <unit eId="pnt_4.6.2/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -4647,7 +4649,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_4.6.3" kind="level" depth="3">
+      <unit eId="pnt_4.6.3" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4662,7 +4664,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_4.6.3.1" kind="level" depth="4">
+      <unit eId="pnt_4.6.3.1" kind="level" depth="4" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4681,7 +4683,7 @@
             <t v=" shall be used for that purpose. The alert shall be deleted if, after consultation, the Member State maintains its decision to issue the residence permit. The person can, nevertheless, be put on a Member State’s national list of alerts for refusal of entry."/>
          </p>
       </unit>
-      <unit eId="pnt_4.6.3.2" kind="level" depth="4">
+      <unit eId="pnt_4.6.3.2" kind="level" depth="4" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4716,7 +4718,7 @@
             <t v="If the procedure foreseen under Article 25 of the Schengen Convention entails deleting an alert for refusal of entry or stay, the SIRENE bureaux shall, whilst respecting their national legislation, offer their support if so requested."/>
          </p>
       </unit>
-      <unit eId="pnt_4.6.4" kind="level" depth="3">
+      <unit eId="pnt_4.6.4" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4731,7 +4733,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_4.6.4.1" kind="level" depth="4">
+      <unit eId="pnt_4.6.4.1" kind="level" depth="4" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4775,7 +4777,7 @@
             <t v=" informing them of the contradiction and requesting that they consult each other in order to either delete the alert in the SIS or to withdraw the residence permit or long-stay visa. It may also request to be informed of the result of any consultation."/>
          </p>
       </unit>
-      <unit eId="pnt_4.6.4.2" kind="level" depth="4">
+      <unit eId="pnt_4.6.4.2" kind="level" depth="4" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4794,7 +4796,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="pnt_4.7" kind="level" depth="2">
+      <unit eId="pnt_4.7" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4816,7 +4818,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="pnt_4.7.1" kind="level" depth="3">
+      <unit eId="pnt_4.7.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4834,7 +4836,7 @@
             <t v="If there is a hit on a third-country national who is a beneficiary of the right of free movement, the following procedure shall be followed:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_4.7.1/pnt_a" kind="point">
+            <unit eId="pnt_4.7.1/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -4846,7 +4848,7 @@
                   <t v=", in order to obtain the information necessary to decide without delay on the action to be taken;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.7.1/pnt_b" kind="point">
+            <unit eId="pnt_4.7.1/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -4854,7 +4856,7 @@
                   <t v="upon receipt of a request for information, the SIRENE bureau of the issuing Member State shall immediately start gathering the required information and send it as soon as possible to the SIRENE bureau of the executing Member State;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.7.1/pnt_c" kind="point">
+            <unit eId="pnt_4.7.1/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -4866,7 +4868,7 @@
                   <t v=";&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_4.7.1/pnt_d" kind="point">
+            <unit eId="pnt_4.7.1/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -4884,7 +4886,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_4.7.2" kind="level" depth="3">
+      <unit eId="pnt_4.7.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4913,7 +4915,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="pnt_4.8" kind="level" depth="2">
+      <unit eId="pnt_4.8" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4937,7 +4939,7 @@
             <t v=", in accordance with the procedure for rectification and deletion of data found to be legally or factually inaccurate (see Section 2.5)."/>
          </p>
       </unit>
-      <unit eId="pnt_4.9" kind="level" depth="2">
+      <unit eId="pnt_4.9" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -4958,7 +4960,7 @@
             <t v="However, SIRENE bureaux shall provide statistics on those hits."/>
          </p>
       </unit>
-      <unit eId="pnt_5" kind="level" depth="1">
+      <unit eId="pnt_5" kind="level" depth="1" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5002,7 +5004,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_5.1" kind="level" depth="2">
+      <unit eId="pnt_5.1" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5020,7 +5022,7 @@
             <t v="See general procedures in Section 2.15."/>
          </p>
       </unit>
-      <unit eId="pnt_5.2" kind="level" depth="2">
+      <unit eId="pnt_5.2" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5069,7 +5071,7 @@
             <t v="As not all vulnerable missing persons will cross national borders, decisions on the provision of supplementary information (on descriptive detail) and its recipients shall be taken on a case-by-case basis, covering the entire range of circumstances. Following a decision at national level on the extent of forwarding required for such supplementary information, the SIRENE bureau shall, as far as is appropriate, take one of the following measures:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_5.2/pnt_a" kind="point">
+            <unit eId="pnt_5.2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -5077,7 +5079,7 @@
                   <t v="retain the information in order to be able to forward supplementary information upon the request of another Member State;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_5.2/pnt_b" kind="point">
+            <unit eId="pnt_5.2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -5089,7 +5091,7 @@
                   <t v=" to the competent SIRENE bureau if enquiries indicate a likely destination for the missing person;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_5.2/pnt_c" kind="point">
+            <unit eId="pnt_5.2/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -5106,7 +5108,7 @@
             <t v="Once information has been received by a SIRENE bureau, it shall, in order to maximise the opportunities for locating the person in a targeted and reasoned fashion, be communicated, as far as is appropriate, to:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_5.2/list_2/pnt_a" kind="point">
+            <unit eId="pnt_5.2/list_2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -5114,7 +5116,7 @@
                   <t v="relevant border posts;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_5.2/list_2/pnt_b" kind="point">
+            <unit eId="pnt_5.2/list_2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -5122,7 +5124,7 @@
                   <t v="the competent administrative and police authorities for the location and protection of persons;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_5.2/list_2/pnt_c" kind="point">
+            <unit eId="pnt_5.2/list_2/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -5132,7 +5134,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_5.3" kind="level" depth="2">
+      <unit eId="pnt_5.3" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5155,7 +5157,7 @@
             <t v=". The consent shall be in writing or at least a written record shall be available. In cases where consent is refused, this shall be in writing or recorded officially. For communicating further information see procedure in Section 2.2.2."/>
          </p>
       </unit>
-      <unit eId="pnt_6" kind="level" depth="1">
+      <unit eId="pnt_6" kind="level" depth="1" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5199,7 +5201,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_6.1" kind="level" depth="2">
+      <unit eId="pnt_6.1" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5220,7 +5222,7 @@
             <t v="In addition, the following rules shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_6.1/pnt_a" kind="point">
+            <unit eId="pnt_6.1/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -5228,7 +5230,7 @@
                   <t v="the place of residence or domicile shall be obtained using all measures allowed by the national legislation of the Member State where the person was located;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_6.1/pnt_b" kind="point">
+            <unit eId="pnt_6.1/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -5241,7 +5243,7 @@
             <t v="The SIRENE bureaux may transmit further information on Article 98 alerts, and in so doing may act on behalf of judicial authorities if this information falls within the scope of mutual judicial assistance."/>
          </p>
       </unit>
-      <unit eId="pnt_7" kind="level" depth="1">
+      <unit eId="pnt_7" kind="level" depth="1" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5280,7 +5282,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_7.1" kind="level" depth="2">
+      <unit eId="pnt_7.1" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5305,7 +5307,7 @@
             <t v=". Whenever needed, the SIRENE bureaux shall transmit this information to their national authorities responsible for each category of alert."/>
          </p>
       </unit>
-      <unit eId="pnt_7.2" kind="level" depth="2">
+      <unit eId="pnt_7.2" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5330,7 +5332,7 @@
             <t v="The confidentiality of certain information shall be safeguarded in accordance with national law, including keeping contact between the SIRENE bureaux separate from any contact between the services responsible for national security."/>
          </p>
       </unit>
-      <unit eId="pnt_7.3" kind="level" depth="2">
+      <unit eId="pnt_7.3" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5348,7 +5350,7 @@
             <t v="See general procedure in Section 2.15."/>
          </p>
       </unit>
-      <unit eId="pnt_7.4" kind="level" depth="2">
+      <unit eId="pnt_7.4" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5369,7 +5371,7 @@
             <t v="In addition, the following procedure shall apply:"/>
          </p>
          <list kind="alpha">
-            <unit eId="pnt_7.4/pnt_a" kind="point">
+            <unit eId="pnt_7.4/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -5381,7 +5383,7 @@
                   <t v=". At the same time the discovering SIRENE bureau shall inform its own competent service responsible for national security;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_7.4/pnt_b" kind="point">
+            <unit eId="pnt_7.4/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -5393,7 +5395,7 @@
                   <t v="). It shall not be required to explain the reasons for the flag, but the request shall be made through SIRENE channels;&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_7.4/pnt_c" kind="point">
+            <unit eId="pnt_7.4/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -5403,7 +5405,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_8" kind="level" depth="1">
+      <unit eId="pnt_8" kind="level" depth="1" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5437,7 +5439,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_8.1" kind="level" depth="2">
+      <unit eId="pnt_8.1" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5452,7 +5454,7 @@
             <t v="&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_8.1.1" kind="level" depth="3">
+      <unit eId="pnt_8.1.1" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5500,7 +5502,7 @@
             <t v="The SIRENE bureau of the Member State issuing an alert shall maintain a record of any requests to enter a further alert which, after consultation, have been rejected by virtue of the provisions given above, until the alert is deleted."/>
          </p>
       </unit>
-      <unit eId="pnt_8.1.2" kind="level" depth="3">
+      <unit eId="pnt_8.1.2" kind="level" depth="3" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5521,7 +5523,7 @@
             <t v="The following procedure shall apply:"/>
          </p>
          <list kind="arabic">
-            <unit eId="pnt_8.1.2/pnt_1" kind="point">
+            <unit eId="pnt_8.1.2/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="(1)"/>
                </num>
@@ -5529,7 +5531,7 @@
                   <t v="where the possibility of a VIN twin is established, the SIRENE bureau shall, as appropriate:&#xA;"/>
                </p>
                <list kind="alpha">
-                  <unit eId="pnt_8.1.2/pnt_1/pnt_a" kind="point">
+                  <unit eId="pnt_8.1.2/pnt_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -5537,7 +5539,7 @@
                         <t v="ensure that there is no error in the SIS alert and the alert information is as complete as possible;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="pnt_8.1.2/pnt_1/pnt_b" kind="point">
+                  <unit eId="pnt_8.1.2/pnt_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -5545,7 +5547,7 @@
                         <t v="check the circumstances of the case giving rise to an alert in the SIS;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="pnt_8.1.2/pnt_1/pnt_c" kind="point">
+                  <unit eId="pnt_8.1.2/pnt_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -5553,7 +5555,7 @@
                         <t v="find out the history of both vehicles from their production;&#xA;"/>
                      </p>
                   </unit>
-                  <unit eId="pnt_8.1.2/pnt_1/pnt_d" kind="point">
+                  <unit eId="pnt_8.1.2/pnt_1/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -5566,7 +5568,7 @@
                   <t v="The SIRENE bureaux involved shall closely cooperate in taking such measures."/>
                </p>
             </unit>
-            <unit eId="pnt_8.1.2/pnt_2" kind="point">
+            <unit eId="pnt_8.1.2/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="(2)"/>
                </num>
@@ -5580,7 +5582,7 @@
                   <t v=";&#xA;"/>
                </p>
             </unit>
-            <unit eId="pnt_8.1.2/pnt_3" kind="point">
+            <unit eId="pnt_8.1.2/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="(3)"/>
                </num>
@@ -5590,7 +5592,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_8.2" kind="level" depth="2">
+      <unit eId="pnt_8.2" kind="level" depth="2" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -5624,7 +5626,7 @@
             </p>
          </annotation>
       </unit>
-      <unit eId="pnt_9" kind="level" depth="1">
+      <unit eId="pnt_9" kind="level" depth="1" numbered="true">
          <provenance amendingAct="32011D0406"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -6037,7 +6039,7 @@
             <t v="Data of disappearance:"/>
          </p>
          <list kind="alpha">
-            <unit eId="note_40/pnt_a" kind="point">
+            <unit eId="note_40/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -6045,7 +6047,7 @@
                   <t v="Place, date and time of the disappearance.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/pnt_b" kind="point">
+            <unit eId="note_40/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -6058,7 +6060,7 @@
             <t v="Details of the missing person:"/>
          </p>
          <list kind="alpha">
-            <unit eId="note_40/list_2/pnt_c" kind="point">
+            <unit eId="note_40/list_2/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -6066,7 +6068,7 @@
                   <t v="Apparent age.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/list_2/pnt_d" kind="point">
+            <unit eId="note_40/list_2/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -6074,7 +6076,7 @@
                   <t v="Height.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/list_2/pnt_e" kind="point">
+            <unit eId="note_40/list_2/pnt_e" kind="point" numbered="true">
                <num>
                   <t v="(e)"/>
                </num>
@@ -6082,7 +6084,7 @@
                   <t v="Skin colour.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/list_2/pnt_f" kind="point">
+            <unit eId="note_40/list_2/pnt_f" kind="point" numbered="true">
                <num>
                   <t v="(f)"/>
                </num>
@@ -6090,7 +6092,7 @@
                   <t v="Colour and shape of hair.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/list_2/pnt_g" kind="point">
+            <unit eId="note_40/list_2/pnt_g" kind="point" numbered="true">
                <num>
                   <t v="(g)"/>
                </num>
@@ -6098,7 +6100,7 @@
                   <t v="Colour of eyes.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/list_2/pnt_h" kind="point">
+            <unit eId="note_40/list_2/pnt_h" kind="point" numbered="true">
                <num>
                   <t v="(h)"/>
                </num>
@@ -6106,7 +6108,7 @@
                   <t v="Other physical details (i.e. piercings, deformations, amputations, tattoos, marks, scars, etc.).&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/list_2/pnt_i" kind="point">
+            <unit eId="note_40/list_2/pnt_i" kind="point" numbered="true">
                <num>
                   <t v="(i)"/>
                </num>
@@ -6114,7 +6116,7 @@
                   <t v="Psychological particulars: at risk of suicide, mental illness, aggressive behaviour, etc.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/list_2/pnt_j" kind="point">
+            <unit eId="note_40/list_2/pnt_j" kind="point" numbered="true">
                <num>
                   <t v="(j)"/>
                </num>
@@ -6122,7 +6124,7 @@
                   <t v="Other details: necessary medical treatment, etc.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/list_2/pnt_k" kind="point">
+            <unit eId="note_40/list_2/pnt_k" kind="point" numbered="true">
                <num>
                   <t v="(k)"/>
                </num>
@@ -6130,7 +6132,7 @@
                   <t v="Clothes worn at the time of the disappearance.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/list_2/pnt_l" kind="point">
+            <unit eId="note_40/list_2/pnt_l" kind="point" numbered="true">
                <num>
                   <t v="(l)"/>
                </num>
@@ -6138,7 +6140,7 @@
                   <t v="Photograph: available or not.&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/list_2/pnt_m" kind="point">
+            <unit eId="note_40/list_2/pnt_m" kind="point" numbered="true">
                <num>
                   <t v="(m)"/>
                </num>
@@ -6151,7 +6153,7 @@
             <t v="Related information:"/>
          </p>
          <list kind="alpha">
-            <unit eId="note_40/list_3/pnt_n" kind="point">
+            <unit eId="note_40/list_3/pnt_n" kind="point" numbered="true">
                <num>
                   <t v="(n)"/>
                </num>
@@ -6159,7 +6161,7 @@
                   <t v="Person/s who could accompany him or her (and Schengen ID if available).&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_40/list_3/pnt_o" kind="point">
+            <unit eId="note_40/list_3/pnt_o" kind="point" numbered="true">
                <num>
                   <t v="(o)"/>
                </num>
@@ -6205,7 +6207,7 @@
             <t v="Such supplementary may include:"/>
          </p>
          <list kind="alpha">
-            <unit eId="note_45/pnt_a" kind="point">
+            <unit eId="note_45/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -6213,7 +6215,7 @@
                   <t v="Vehicle number plate details&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_45/pnt_b" kind="point">
+            <unit eId="note_45/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -6221,7 +6223,7 @@
                   <t v="Category of vehicle, make of vehicle, model of vehicle, colour&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_45/pnt_c" kind="point">
+            <unit eId="note_45/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -6229,7 +6231,7 @@
                   <t v="Other easily recognisable distinguishing features or details&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_45/pnt_d" kind="point">
+            <unit eId="note_45/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -6237,7 +6239,7 @@
                   <t v="Full details of the owner&#xA;"/>
                </p>
             </unit>
-            <unit eId="note_45/pnt_e" kind="point">
+            <unit eId="note_45/pnt_e" kind="point" numbered="true">
                <num>
                   <t v="(e)"/>
                </num>

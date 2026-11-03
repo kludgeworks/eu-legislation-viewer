@@ -252,7 +252,7 @@
                <eol/>
                <t v="Hennessy Grading Probe (HGP 4)"/>
             </heading>
-            <unit eId="anx/level_1/pnt_1" kind="point">
+            <unit eId="anx/level_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -264,7 +264,7 @@
                   <t v="."/>
                </p>
             </unit>
-            <unit eId="anx/level_1/pnt_2" kind="point">
+            <unit eId="anx/level_1/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -272,7 +272,7 @@
                   <t v="The apparatus shall be equipped with a probe of 5,95 millimetres diameter (and of 6,3 mm at the blade of the top of the probe) containing a photodiode (Siemens LED of the type LYU 260-EO) and photodetector of the type 58 MR and having an operating distance of between 0 and 120 millimetres. The results of the measurements shall be converted into estimated lean meat content by means of the HGP 4 itself or a computer linked to it."/>
                </p>
             </unit>
-            <unit eId="anx/level_1/pnt_3" kind="point">
+            <unit eId="anx/level_1/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>

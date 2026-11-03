@@ -385,6 +385,7 @@
         <xsl:if test="@BOX = 'YES'">
           <xsl:attribute name="box" select="true()"/>
         </xsl:if>
+        <xsl:sequence select="f:numbered($label)"/>
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:choose>
           <xsl:when test="NO.GR.SEQ or $direct-np">

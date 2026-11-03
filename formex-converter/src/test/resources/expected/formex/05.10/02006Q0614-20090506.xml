@@ -49,7 +49,7 @@
       <p>
          <t v="HAVE AGREED AS FOLLOWS:"/>
       </p>
-      <unit eId="pnt_1" kind="point">
+      <unit eId="pnt_1" kind="point" numbered="true">
          <num>
             <t v="1."/>
          </num>
@@ -57,7 +57,7 @@
             <t v="The purpose of this Agreement is to implement budgetary discipline and to improve the functioning of the annual budgetary procedure and cooperation between the institutions on budgetary matters as well as to ensure sound financial management."/>
          </p>
       </unit>
-      <unit eId="pnt_2" kind="point">
+      <unit eId="pnt_2" kind="point" numbered="true">
          <num>
             <t v="2."/>
          </num>
@@ -65,7 +65,7 @@
             <t v="Budgetary discipline under this Agreement covers all expenditure. It is binding on all the institutions for as long as this Agreement is in force."/>
          </p>
       </unit>
-      <unit eId="pnt_3" kind="point">
+      <unit eId="pnt_3" kind="point" numbered="true">
          <num>
             <t v="3."/>
          </num>
@@ -77,7 +77,7 @@
             <t v=")."/>
          </p>
       </unit>
-      <unit eId="pnt_4" kind="point">
+      <unit eId="pnt_4" kind="point" numbered="true">
          <num>
             <t v="4."/>
          </num>
@@ -89,7 +89,7 @@
             <t v="), the necessary adjustments will be made accordingly."/>
          </p>
       </unit>
-      <unit eId="pnt_5" kind="point">
+      <unit eId="pnt_5" kind="point" numbered="true">
          <num>
             <t v="5."/>
          </num>
@@ -97,7 +97,7 @@
             <t v="Any amendment of this Agreement requires the consent of all the institutions. Changes to the financial framework must be made in accordance with the procedures laid down for that purpose in this Agreement."/>
          </p>
       </unit>
-      <unit eId="pnt_6" kind="point">
+      <unit eId="pnt_6" kind="point" numbered="true">
          <num>
             <t v="6."/>
          </num>
@@ -122,7 +122,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="pnt_7" kind="point">
+      <unit eId="pnt_7" kind="point" numbered="true">
          <num>
             <t v="7."/>
          </num>
@@ -130,7 +130,7 @@
             <t v="The Commission will, whenever it considers it necessary and in any event at the same time as it presents a proposal for a new financial framework pursuant to Point 30, submit a report on the application of this Agreement, accompanied where necessary by a proposal for amendments."/>
          </p>
       </unit>
-      <unit eId="pnt_8" kind="point">
+      <unit eId="pnt_8" kind="point" numbered="true">
          <num>
             <t v="8."/>
          </num>
@@ -170,14 +170,14 @@
             <t v="DEFINITION AND IMPLEMENTING PROVISIONS"/>
          </subheading>
       </unit>
-      <unit eId="pnt_A" kind="level" depth="2">
+      <unit eId="pnt_A" kind="level" depth="2" numbered="true">
          <num>
             <t v="A."/>
          </num>
          <heading>
             <t v="Contents and scope of the financial framework&#xA;"/>
          </heading>
-         <unit eId="pnt_A/pnt_9" kind="point">
+         <unit eId="pnt_A/pnt_9" kind="point" numbered="true">
             <num>
                <t v="9."/>
             </num>
@@ -185,7 +185,7 @@
                <t v="The financial framework is set out in Annex I. It constitutes the reference framework for interinstitutional budgetary discipline."/>
             </p>
          </unit>
-         <unit eId="pnt_A/pnt_10" kind="point">
+         <unit eId="pnt_A/pnt_10" kind="point" numbered="true">
             <num>
                <t v="10."/>
             </num>
@@ -193,7 +193,7 @@
                <t v="The financial framework is intended to ensure that, in the medium term, European Union expenditure, broken down by broad category, develops in an orderly manner and within the limits of own resources."/>
             </p>
          </unit>
-         <unit eId="pnt_A/pnt_11" kind="point">
+         <unit eId="pnt_A/pnt_11" kind="point" numbered="true">
             <num>
                <t v="11."/>
             </num>
@@ -217,7 +217,7 @@
                <t v="Information relating to operations not included in the general budget of the European Union and the foreseeable development of the various categories of Community own resources is set out, by way of indication, in separate tables. This information will be updated annually when the technical adjustment is made to the financial framework."/>
             </p>
          </unit>
-         <unit eId="pnt_A/pnt_12" kind="point">
+         <unit eId="pnt_A/pnt_12" kind="point" numbered="true">
             <num>
                <t v="12."/>
             </num>
@@ -225,7 +225,7 @@
                <t v="The institutions acknowledge that each of the absolute amounts shown in the financial framework represents an annual ceiling on expenditure under the general budget of the European Union. Without prejudice to any changes in those ceilings in accordance with the provisions of this Agreement, the institutions undertake to use their respective powers in such a way as to comply with the various annual expenditure ceilings during each budgetary procedure and when implementing the budget for the year concerned."/>
             </p>
          </unit>
-         <unit eId="pnt_A/pnt_13" kind="point">
+         <unit eId="pnt_A/pnt_13" kind="point" numbered="true">
             <num>
                <t v="13."/>
             </num>
@@ -240,7 +240,7 @@
                <t v=" of the financial framework, for the purposes of sound financial management, the institutions will ensure as far as possible during the budgetary procedure and at the time of the budget's adoption that sufficient margins are left available beneath the ceilings for the various headings."/>
             </p>
          </unit>
-         <unit eId="pnt_A/pnt_14" kind="point">
+         <unit eId="pnt_A/pnt_14" kind="point" numbered="true">
             <num>
                <t v="14."/>
             </num>
@@ -248,7 +248,7 @@
                <t v="No act adopted under the codecision procedure by the European Parliament and the Council nor any act adopted by the Council which involves exceeding the appropriations available in the budget or the allocations available in the financial framework in accordance with Point 12 may be implemented in financial terms until the budget has been amended and, if necessary, the financial framework has been appropriately revised in accordance with the relevant procedure for each of these cases."/>
             </p>
          </unit>
-         <unit eId="pnt_A/pnt_15" kind="point">
+         <unit eId="pnt_A/pnt_15" kind="point" numbered="true">
             <num>
                <t v="15."/>
             </num>
@@ -260,7 +260,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_B" kind="level" depth="2">
+      <unit eId="pnt_B" kind="level" depth="2" numbered="true">
          <num>
             <t v="B."/>
          </num>
@@ -272,7 +272,7 @@
          <heading>
             <t v="Technical adjustments"/>
          </heading>
-         <unit eId="pnt_B/level_1/pnt_16" kind="point">
+         <unit eId="pnt_B/level_1/pnt_16" kind="point" numbered="true">
             <num>
                <t v="16."/>
             </num>
@@ -280,7 +280,7 @@
                <t v="Each year the Commission, acting ahead of the budgetary procedure for year n+1, will make the following technical adjustments to the financial framework:&#xA;"/>
             </p>
             <list kind="alpha">
-               <unit eId="pnt_B/level_1/pnt_16/pnt_a" kind="point">
+               <unit eId="pnt_B/level_1/pnt_16/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -288,7 +288,7 @@
                      <t v="revaluation, at year n+1 prices, of the ceilings and of the overall figures for appropriations for commitments and appropriations for payments;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="pnt_B/level_1/pnt_16/pnt_b" kind="point">
+               <unit eId="pnt_B/level_1/pnt_16/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -307,7 +307,7 @@
                <t v="No further technical adjustments will be made in respect of the year concerned, either during the year or as ex-post corrections during subsequent years."/>
             </p>
          </unit>
-         <unit eId="pnt_B/level_1/pnt_17" kind="point">
+         <unit eId="pnt_B/level_1/pnt_17" kind="point" numbered="true">
             <num>
                <t v="17."/>
             </num>
@@ -320,7 +320,7 @@
          <heading>
             <t v="Adjustments connected with implementation"/>
          </heading>
-         <unit eId="pnt_B/level_2/pnt_18" kind="point">
+         <unit eId="pnt_B/level_2/pnt_18" kind="point" numbered="true">
             <num>
                <t v="18."/>
             </num>
@@ -333,7 +333,7 @@
          <heading>
             <t v="Updating of forecasts for payment appropriations after 2013"/>
          </heading>
-         <unit eId="pnt_B/level_3/pnt_19" kind="point">
+         <unit eId="pnt_B/level_3/pnt_19" kind="point" numbered="true">
             <num>
                <t v="19."/>
             </num>
@@ -346,7 +346,7 @@
          <heading>
             <t v="Adjustments connected with excessive government deficit"/>
          </heading>
-         <unit eId="pnt_B/level_4/pnt_20" kind="point">
+         <unit eId="pnt_B/level_4/pnt_20" kind="point" numbered="true">
             <num>
                <t v="20."/>
             </num>
@@ -355,14 +355,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_C" kind="level" depth="2">
+      <unit eId="pnt_C" kind="level" depth="2" numbered="true">
          <num>
             <t v="C."/>
          </num>
          <heading>
             <t v="Revision of the financial framework&#xA;"/>
          </heading>
-         <unit eId="pnt_C/pnt_21" kind="point">
+         <unit eId="pnt_C/pnt_21" kind="point" numbered="true">
             <num>
                <t v="21."/>
             </num>
@@ -370,7 +370,7 @@
                <t v="In addition to the regular technical adjustments and adjustments in line with the conditions of implementation, in the event of unforeseen circumstances the financial framework may, on a proposal from the Commission, be revised in compliance with the own resources ceiling."/>
             </p>
          </unit>
-         <unit eId="pnt_C/pnt_22" kind="point">
+         <unit eId="pnt_C/pnt_22" kind="point" numbered="true">
             <num>
                <t v="22."/>
             </num>
@@ -384,7 +384,7 @@
                <t v="Any revision of the financial framework above 0,03 % of the European Union GNI within the margin for unforeseen expenditure will be taken jointly by the two arms of the budgetary authority, with the Council acting unanimously."/>
             </p>
          </unit>
-         <unit eId="pnt_C/pnt_23" kind="point">
+         <unit eId="pnt_C/pnt_23" kind="point" numbered="true">
             <num>
                <t v="23."/>
             </num>
@@ -402,14 +402,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_D" kind="level" depth="2">
+      <unit eId="pnt_D" kind="level" depth="2" numbered="true">
          <num>
             <t v="D."/>
          </num>
          <heading>
             <t v="Consequences of the absence of a joint decision on the adjustment or revision of the financial framework&#xA;"/>
          </heading>
-         <unit eId="pnt_D/pnt_24" kind="point">
+         <unit eId="pnt_D/pnt_24" kind="point" numbered="true">
             <num>
                <t v="24."/>
             </num>
@@ -418,14 +418,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_E" kind="level" depth="2">
+      <unit eId="pnt_E" kind="level" depth="2" numbered="true">
          <num>
             <t v="E."/>
          </num>
          <heading>
             <t v="Emergency Aid Reserve&#xA;"/>
          </heading>
-         <unit eId="pnt_E/pnt_25" kind="point">
+         <unit eId="pnt_E/pnt_25" kind="point" numbered="true">
             <num>
                <t v="25."/>
             </num>
@@ -446,14 +446,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_F" kind="level" depth="2">
+      <unit eId="pnt_F" kind="level" depth="2" numbered="true">
          <num>
             <t v="F."/>
          </num>
          <heading>
             <t v="European Union Solidarity Fund&#xA;"/>
          </heading>
-         <unit eId="pnt_F/pnt_26" kind="point">
+         <unit eId="pnt_F/pnt_26" kind="point" numbered="true">
             <num>
                <t v="26."/>
             </num>
@@ -474,14 +474,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_G" kind="level" depth="2">
+      <unit eId="pnt_G" kind="level" depth="2" numbered="true">
          <num>
             <t v="G."/>
          </num>
          <heading>
             <t v="Flexibility Instrument&#xA;"/>
          </heading>
-         <unit eId="pnt_G/pnt_27" kind="point">
+         <unit eId="pnt_G/pnt_27" kind="point" numbered="true">
             <num>
                <t v="27."/>
             </num>
@@ -502,14 +502,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_H" kind="level" depth="2">
+      <unit eId="pnt_H" kind="level" depth="2" numbered="true">
          <num>
             <t v="H."/>
          </num>
          <heading>
             <t v="European Globalisation Adjustment Fund&#xA;"/>
          </heading>
-         <unit eId="pnt_H/pnt_28" kind="point">
+         <unit eId="pnt_H/pnt_28" kind="point" numbered="true">
             <num>
                <t v="28."/>
             </num>
@@ -536,14 +536,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_I" kind="level" depth="2">
+      <unit eId="pnt_I" kind="level" depth="2" numbered="true">
          <num>
             <t v="I."/>
          </num>
          <heading>
             <t v="Adjustment of the financial framework to cater for enlargement&#xA;"/>
          </heading>
-         <unit eId="pnt_I/pnt_29" kind="point">
+         <unit eId="pnt_I/pnt_29" kind="point" numbered="true">
             <num>
                <t v="29."/>
             </num>
@@ -552,14 +552,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_J" kind="level" depth="2">
+      <unit eId="pnt_J" kind="level" depth="2" numbered="true">
          <num>
             <t v="J."/>
          </num>
          <heading>
             <t v="Duration of the financial framework and consequences of the absence of a financial framework&#xA;"/>
          </heading>
-         <unit eId="pnt_J/pnt_30" kind="point">
+         <unit eId="pnt_J/pnt_30" kind="point" numbered="true">
             <num>
                <t v="30."/>
             </num>
@@ -581,14 +581,17 @@
             <t v="IMPROVEMENT OF INTERINSTITUTIONAL COLLABORATION DURING THE BUDGETARY PROCEDURE"/>
          </subheading>
       </unit>
-      <unit eId="level_PART-II/pnt_A" kind="level" depth="2">
+      <unit eId="level_PART-II/pnt_A"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="A."/>
          </num>
          <heading>
             <t v="The interinstitutional collaboration procedure&#xA;"/>
          </heading>
-         <unit eId="level_PART-II/pnt_A/pnt_31" kind="point">
+         <unit eId="level_PART-II/pnt_A/pnt_31" kind="point" numbered="true">
             <num>
                <t v="31."/>
             </num>
@@ -597,14 +600,17 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-II/pnt_B" kind="level" depth="2">
+      <unit eId="level_PART-II/pnt_B"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="B."/>
          </num>
          <heading>
             <t v="Establishment of the budget&#xA;"/>
          </heading>
-         <unit eId="level_PART-II/pnt_B/pnt_32" kind="point">
+         <unit eId="level_PART-II/pnt_B/pnt_32" kind="point" numbered="true">
             <num>
                <t v="32."/>
             </num>
@@ -615,7 +621,7 @@
                <t v="It will take into account:"/>
             </p>
             <list kind="alpha">
-               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_a" kind="point">
+               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -623,7 +629,7 @@
                      <t v="forecasts in relation to the Structural Funds provided by the Member States,&#xA;"/>
                   </p>
                </unit>
-               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_b" kind="point">
+               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -631,7 +637,7 @@
                      <t v="the capacity for utilising appropriations, endeavouring to maintain a strict relationship between appropriations for commitments and appropriations for payments,&#xA;"/>
                   </p>
                </unit>
-               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_c" kind="point">
+               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -639,7 +645,7 @@
                      <t v="the possibilities for starting up new policies through pilot projects and/or new preparatory actions or continuing multiannual actions which are coming to an end, after assessing whether it will be possible to secure a basic act, within the meaning of Article 49 of the Financial Regulation (definition of a basic act, necessity of a basic act for implementation and exceptions),&#xA;"/>
                   </p>
                </unit>
-               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_d" kind="point">
+               <unit eId="level_PART-II/pnt_B/pnt_32/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -652,7 +658,7 @@
                <t v="The preliminary draft budget will be accompanied by Activity Statements including such information as required under Article 27(3) and Article 33(2)(d) of the Financial Regulation (objectives, indicators and evaluation information)."/>
             </p>
          </unit>
-         <unit eId="level_PART-II/pnt_B/pnt_33" kind="point">
+         <unit eId="level_PART-II/pnt_B/pnt_33" kind="point" numbered="true">
             <num>
                <t v="33."/>
             </num>
@@ -673,14 +679,17 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-II/pnt_C" kind="level" depth="2">
+      <unit eId="level_PART-II/pnt_C"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="C."/>
          </num>
          <heading>
             <t v="Classification of expenditure&#xA;"/>
          </heading>
-         <unit eId="level_PART-II/pnt_C/pnt_34" kind="point">
+         <unit eId="level_PART-II/pnt_C/pnt_34" kind="point" numbered="true">
             <num>
                <t v="34."/>
             </num>
@@ -688,7 +697,7 @@
                <t v="The institutions consider compulsory expenditure to be expenditure necessarily resulting from the Treaties or from acts adopted in accordance therewith."/>
             </p>
          </unit>
-         <unit eId="level_PART-II/pnt_C/pnt_35" kind="point">
+         <unit eId="level_PART-II/pnt_C/pnt_35" kind="point" numbered="true">
             <num>
                <t v="35."/>
             </num>
@@ -700,14 +709,17 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-II/pnt_D" kind="level" depth="2">
+      <unit eId="level_PART-II/pnt_D"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="D."/>
          </num>
          <heading>
             <t v="Maximum rate of increase of non-compulsory expenditure in the absence of a financial framework&#xA;"/>
          </heading>
-         <unit eId="level_PART-II/pnt_D/pnt_36" kind="point">
+         <unit eId="level_PART-II/pnt_D/pnt_36" kind="point" numbered="true">
             <num>
                <t v="36."/>
             </num>
@@ -715,7 +727,7 @@
                <t v="Without prejudice to the first paragraph of Point 13, the institutions agree on the following provisions:&#xA;"/>
             </p>
             <list kind="alpha">
-               <unit eId="level_PART-II/pnt_D/pnt_36/pnt_a" kind="point">
+               <unit eId="level_PART-II/pnt_D/pnt_36/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -726,7 +738,7 @@
                      <t v="The maximum rate is to be observed in respect of the annual budget, including amending budgets. Without prejudice to the setting of a new rate, any portion of the maximum rate which has not been utilised will remain available for use and may be used when draft amending budgets are considered;"/>
                   </p>
                </unit>
-               <unit eId="level_PART-II/pnt_D/pnt_36/pnt_b" kind="point">
+               <unit eId="level_PART-II/pnt_D/pnt_36/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -737,14 +749,17 @@
             </list>
          </unit>
       </unit>
-      <unit eId="level_PART-II/pnt_E" kind="level" depth="2">
+      <unit eId="level_PART-II/pnt_E"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="E."/>
          </num>
          <heading>
             <t v="Incorporation of financial provisions in legislative acts&#xA;"/>
          </heading>
-         <unit eId="level_PART-II/pnt_E/pnt_37" kind="point">
+         <unit eId="level_PART-II/pnt_E/pnt_37" kind="point" numbered="true">
             <num>
                <t v="37."/>
             </num>
@@ -761,7 +776,7 @@
                <t v="This Point does not apply to appropriations for cohesion adopted under the codecision procedure and pre-allocated by Member States which contain a financial envelope for the entire duration of the programme."/>
             </p>
          </unit>
-         <unit eId="level_PART-II/pnt_E/pnt_38" kind="point">
+         <unit eId="level_PART-II/pnt_E/pnt_38" kind="point" numbered="true">
             <num>
                <t v="38."/>
             </num>
@@ -782,7 +797,7 @@
                <t v=", it will be considered a reference amount within the meaning of Point 37 of this Agreement."/>
             </p>
          </unit>
-         <unit eId="level_PART-II/pnt_E/pnt_39" kind="point">
+         <unit eId="level_PART-II/pnt_E/pnt_39" kind="point" numbered="true">
             <num>
                <t v="39."/>
             </num>
@@ -790,7 +805,7 @@
                <t v="The financial statement provided for in Article 28 of the Financial Regulation will reflect in financial terms the objectives of the proposed programme and include a schedule covering the duration of the programme. It will be revised, where necessary, when the preliminary draft budget is drawn up, taking account of the extent of implementation of the programme. The revised statement will be forwarded to the budgetary authority when the preliminary draft budget is presented and after the budget is adopted."/>
             </p>
          </unit>
-         <unit eId="level_PART-II/pnt_E/pnt_40" kind="point">
+         <unit eId="level_PART-II/pnt_E/pnt_40" kind="point" numbered="true">
             <num>
                <t v="40."/>
             </num>
@@ -799,14 +814,17 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-II/pnt_F" kind="level" depth="2">
+      <unit eId="level_PART-II/pnt_F"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="F."/>
          </num>
          <heading>
             <t v="Expenditure relating to fisheries agreements&#xA;"/>
          </heading>
-         <unit eId="level_PART-II/pnt_F/pnt_41" kind="point">
+         <unit eId="level_PART-II/pnt_F/pnt_41" kind="point" numbered="true">
             <num>
                <t v="41."/>
             </num>
@@ -815,14 +833,17 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-II/pnt_G" kind="level" depth="2">
+      <unit eId="level_PART-II/pnt_G"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="G."/>
          </num>
          <heading>
             <t v="Financing of the common foreign and security policy (CFSP)&#xA;"/>
          </heading>
-         <unit eId="level_PART-II/pnt_G/pnt_42" kind="point">
+         <unit eId="level_PART-II/pnt_G/pnt_42" kind="point" numbered="true">
             <num>
                <t v="42."/>
             </num>
@@ -871,7 +892,7 @@
                <t v=" million will be available for the CFSP over the period 2007-2013 and that the amount for measures entered under the article mentioned in the third indent may not exceed 20 % of the overall amount of the CFSP budget chapter."/>
             </p>
          </unit>
-         <unit eId="level_PART-II/pnt_G/pnt_43" kind="point">
+         <unit eId="level_PART-II/pnt_G/pnt_43" kind="point" numbered="true">
             <num>
                <t v="43."/>
             </num>
@@ -915,14 +936,17 @@
             <t v="SOUND FINANCIAL MANAGEMENT OF EU FUNDS"/>
          </subheading>
       </unit>
-      <unit eId="level_PART-III/pnt_A" kind="level" depth="2">
+      <unit eId="level_PART-III/pnt_A"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="A."/>
          </num>
          <heading>
             <t v="Ensuring effective and integrated internal control of Community funds&#xA;"/>
          </heading>
-         <unit eId="level_PART-III/pnt_A/pnt_44" kind="point">
+         <unit eId="level_PART-III/pnt_A/pnt_44" kind="point" numbered="true">
             <num>
                <t v="44."/>
             </num>
@@ -934,14 +958,17 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-III/pnt_B" kind="level" depth="2">
+      <unit eId="level_PART-III/pnt_B"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="B."/>
          </num>
          <heading>
             <t v="Financial Regulation&#xA;"/>
          </heading>
-         <unit eId="level_PART-III/pnt_B/pnt_45" kind="point">
+         <unit eId="level_PART-III/pnt_B/pnt_45" kind="point" numbered="true">
             <num>
                <t v="45."/>
             </num>
@@ -952,14 +979,17 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-III/pnt_C" kind="level" depth="2">
+      <unit eId="level_PART-III/pnt_C"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="C."/>
          </num>
          <heading>
             <t v="Financial Programming&#xA;"/>
          </heading>
-         <unit eId="level_PART-III/pnt_C/pnt_46" kind="point">
+         <unit eId="level_PART-III/pnt_C/pnt_46" kind="point" numbered="true">
             <num>
                <t v="46."/>
             </num>
@@ -967,7 +997,9 @@
                <t v="The Commission will submit twice a year, the first time in May/June (together with the documents accompanying the preliminary draft budget) and the second time in December/January (after the adoption of the budget), a complete financial programming for Headings 1A, 2 (for environment and fisheries), 3A, 3B and 4 of the financial framework. This document, structured by heading, policy area and budget line, should identify:&#xA;"/>
             </p>
             <list kind="alpha">
-               <unit eId="level_PART-III/pnt_C/pnt_46/pnt_a" kind="point">
+               <unit eId="level_PART-III/pnt_C/pnt_46/pnt_a"
+                     kind="point"
+                     numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -987,7 +1019,9 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="level_PART-III/pnt_C/pnt_46/pnt_b" kind="point">
+               <unit eId="level_PART-III/pnt_C/pnt_46/pnt_b"
+                     kind="point"
+                     numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1000,7 +1034,9 @@
                <t v="The Commission should consider ways of cross-referencing the financial programming with its legislative programming to provide more precise and reliable forecasts. For each legislative proposal, the Commission should indicate whether or not it is included in the May-December programme. The budgetary authority should in particular be informed of:"/>
             </p>
             <list kind="alpha">
-               <unit eId="level_PART-III/pnt_C/pnt_46/list_2/pnt_a" kind="point">
+               <unit eId="level_PART-III/pnt_C/pnt_46/list_2/pnt_a"
+                     kind="point"
+                     numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -1008,7 +1044,9 @@
                      <t v="all new legislative acts adopted but not included in the May-December document (with the corresponding amounts);&#xA;"/>
                   </p>
                </unit>
-               <unit eId="level_PART-III/pnt_C/pnt_46/list_2/pnt_b" kind="point">
+               <unit eId="level_PART-III/pnt_C/pnt_46/list_2/pnt_b"
+                     kind="point"
+                     numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1016,7 +1054,9 @@
                      <t v="all pending legislative proposals presented but not included in the May-December document (with the corresponding amounts);&#xA;"/>
                   </p>
                </unit>
-               <unit eId="level_PART-III/pnt_C/pnt_46/list_2/pnt_c" kind="point">
+               <unit eId="level_PART-III/pnt_C/pnt_46/list_2/pnt_c"
+                     kind="point"
+                     numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1033,14 +1073,17 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-III/pnt_D" kind="level" depth="2">
+      <unit eId="level_PART-III/pnt_D"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="D."/>
          </num>
          <heading>
             <t v="Agencies and European Schools&#xA;"/>
          </heading>
-         <unit eId="level_PART-III/pnt_D/pnt_47" kind="point">
+         <unit eId="level_PART-III/pnt_D/pnt_47" kind="point" numbered="true">
             <num>
                <t v="47."/>
             </num>
@@ -1052,14 +1095,17 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-III/pnt_E" kind="level" depth="2">
+      <unit eId="level_PART-III/pnt_E"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="E."/>
          </num>
          <heading>
             <t v="Adjustment of Structural Funds, Cohesion Fund, Rural Development and the European Fund for Fisheries in the light of the circumstances of their implementation&#xA;"/>
          </heading>
-         <unit eId="level_PART-III/pnt_E/pnt_48" kind="point">
+         <unit eId="level_PART-III/pnt_E/pnt_48" kind="point" numbered="true">
             <num>
                <t v="48."/>
             </num>
@@ -1075,14 +1121,17 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-III/pnt_F" kind="level" depth="2">
+      <unit eId="level_PART-III/pnt_F"
+            kind="level"
+            depth="2"
+            numbered="true">
          <num>
             <t v="F."/>
          </num>
          <heading>
             <t v="New financial instruments&#xA;"/>
          </heading>
-         <unit eId="level_PART-III/pnt_F/pnt_49" kind="point">
+         <unit eId="level_PART-III/pnt_F/pnt_49" kind="point" numbered="true">
             <num>
                <t v="49."/>
             </num>
@@ -1177,7 +1226,7 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx_I/tab_1/tr_3/td_1/pnt_1" kind="point">
+                  <unit eId="anx_I/tab_1/tr_3/td_1/pnt_1" kind="point" numbered="true">
                      <num>
                         <t v="1."/>
                      </num>
@@ -1247,7 +1296,9 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx_I/tab_1/tr_4/td_1/list_2/pnt_1a" kind="point">
+                  <unit eId="anx_I/tab_1/tr_4/td_1/list_2/pnt_1a"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="1a"/>
                      </num>
@@ -1299,7 +1350,9 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx_I/tab_1/tr_5/td_1/list_3/pnt_1b" kind="point">
+                  <unit eId="anx_I/tab_1/tr_5/td_1/list_3/pnt_1b"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="1b"/>
                      </num>
@@ -1351,7 +1404,9 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx_I/tab_1/tr_6/td_1/list_4/pnt_2" kind="point">
+                  <unit eId="anx_I/tab_1/tr_6/td_1/list_4/pnt_2"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="2."/>
                      </num>
@@ -1468,7 +1523,9 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx_I/tab_1/tr_8/td_1/list_5/pnt_3" kind="point">
+                  <unit eId="anx_I/tab_1/tr_8/td_1/list_5/pnt_3"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="3."/>
                      </num>
@@ -1538,7 +1595,9 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx_I/tab_1/tr_9/td_1/list_6/pnt_3a" kind="point">
+                  <unit eId="anx_I/tab_1/tr_9/td_1/list_6/pnt_3a"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="3a"/>
                      </num>
@@ -1590,7 +1649,9 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx_I/tab_1/tr_10/td_1/list_7/pnt_3b" kind="point">
+                  <unit eId="anx_I/tab_1/tr_10/td_1/list_7/pnt_3b"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="3b"/>
                      </num>
@@ -1642,7 +1703,9 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx_I/tab_1/tr_11/td_1/list_8/pnt_4" kind="point">
+                  <unit eId="anx_I/tab_1/tr_11/td_1/list_8/pnt_4"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="4."/>
                      </num>
@@ -1712,7 +1775,9 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx_I/tab_1/tr_12/td_1/list_9/pnt_5" kind="point">
+                  <unit eId="anx_I/tab_1/tr_12/td_1/list_9/pnt_5"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="5."/>
                      </num>
@@ -1783,7 +1848,9 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx_I/tab_1/tr_13/td_1/list_10/pnt_6" kind="point">
+                  <unit eId="anx_I/tab_1/tr_13/td_1/list_10/pnt_6"
+                        kind="point"
+                        numbered="true">
                      <num>
                         <t v="6."/>
                      </num>
@@ -2186,7 +2253,7 @@
          <subheading>
             <t v="Interinstitutional collaboration in the budgetary sector"/>
          </subheading>
-         <unit eId="anx_II/pnt_A" kind="point">
+         <unit eId="anx_II/pnt_A" kind="point" numbered="true">
             <num>
                <t v="A."/>
             </num>
@@ -2194,7 +2261,7 @@
                <t v="After the technical adjustment of the financial framework for the forthcoming financial year, taking into account the Annual Policy Strategy presented by the Commission and prior to its decision on the preliminary draft budget, a meeting of the trilogue will be convened to discuss the possible priorities for the budget of that year. Due account will be taken of the institutions' powers as well as the foreseeable development of the needs for the financial year to come and for the following years covered by the financial framework. Account will also be taken of new elements which have arisen since the establishment of the initial financial framework and which are likely to have a significant and lasting financial impact on the budget of the European Union.&#xA;"/>
             </p>
          </unit>
-         <unit eId="anx_II/pnt_B" kind="point">
+         <unit eId="anx_II/pnt_B" kind="point" numbered="true">
             <num>
                <t v="B."/>
             </num>
@@ -2202,7 +2269,7 @@
                <t v="As regards compulsory expenditure, the Commission, in presenting its preliminary draft budget, will identify:&#xA;"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_II/pnt_B/pnt_a" kind="point">
+               <unit eId="anx_II/pnt_B/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2210,7 +2277,7 @@
                      <t v="appropriations connected with new or planned legislation;&#xA;"/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_B/pnt_b" kind="point">
+               <unit eId="anx_II/pnt_B/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2235,12 +2302,12 @@
                <t v="As a consequence, before the Council's second reading of the budget, the two arms of the budgetary authority will try to meet the conditions necessary for the letter of amendment to be adopted on a single reading by each of the institutions concerned."/>
             </p>
          </unit>
-         <unit eId="anx_II/pnt_C" kind="point">
+         <unit eId="anx_II/pnt_C" kind="point" numbered="true">
             <num>
                <t v="C."/>
             </num>
             <list kind="arabic">
-               <unit eId="anx_II/pnt_C/pnt_1" kind="point">
+               <unit eId="anx_II/pnt_C/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -2248,7 +2315,7 @@
                      <t v="A conciliation procedure is set up for all expenditure.&#xA;"/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_C/pnt_2" kind="point">
+               <unit eId="anx_II/pnt_C/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
@@ -2256,7 +2323,7 @@
                      <t v="The purpose of the conciliation procedure is to:&#xA;&#xA;"/>
                   </p>
                   <list kind="alpha">
-                     <unit eId="anx_II/pnt_C/pnt_2/pnt_a" kind="point">
+                     <unit eId="anx_II/pnt_C/pnt_2/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -2264,7 +2331,7 @@
                            <t v="continue discussions on the general trend of expenditure and, in this framework, on the broad lines of the budget for the coming year in the light of the Commission's preliminary draft budget;&#xA;"/>
                         </p>
                      </unit>
-                     <unit eId="anx_II/pnt_C/pnt_2/pnt_b" kind="point">
+                     <unit eId="anx_II/pnt_C/pnt_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
@@ -2291,7 +2358,7 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="anx_II/pnt_C/pnt_3" kind="point">
+               <unit eId="anx_II/pnt_C/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="3."/>
                   </num>
@@ -2305,7 +2372,7 @@
                      <t v="Unless decided otherwise during the trilogue, the conciliation meeting will be held at the traditional meeting between the same participants on the date set by the Council for establishing the draft budget."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_C/pnt_4" kind="point">
+               <unit eId="anx_II/pnt_C/pnt_4" kind="point" numbered="true">
                   <num>
                      <t v="4."/>
                   </num>
@@ -2313,7 +2380,7 @@
                      <t v="If necessary, a new trilogue meeting could be held before the European Parliament's first reading on a written proposal by the Commission or a written request by either the chairman of the European Parliament's Committee on Budgets or the President of the Council (Budgets). The decision whether to hold this trilogue will be agreed between the institutions after the adoption of the Council draft budget and prior to the vote on the amendments at first reading by the European Parliament's Committee on Budgets.&#xA;"/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_C/pnt_5" kind="point">
+               <unit eId="anx_II/pnt_C/pnt_5" kind="point" numbered="true">
                   <num>
                      <t v="5."/>
                   </num>
@@ -2330,7 +2397,7 @@
                      <t v="If necessary, the institutions will continue their discussions on non-compulsory expenditure after the Council's second reading."/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_C/pnt_6" kind="point">
+               <unit eId="anx_II/pnt_C/pnt_6" kind="point" numbered="true">
                   <num>
                      <t v="6."/>
                   </num>
@@ -2338,7 +2405,7 @@
                      <t v="At those trilogue meetings, the institutions' delegations will be led by the President of the Council (Budgets), the Chairman of the European Parliament Committee's on Budgets and the Member of the Commission responsible for the budget.&#xA;"/>
                   </p>
                </unit>
-               <unit eId="anx_II/pnt_C/pnt_7" kind="point">
+               <unit eId="anx_II/pnt_C/pnt_7" kind="point" numbered="true">
                   <num>
                      <t v="7."/>
                   </num>
@@ -2348,7 +2415,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_II/pnt_D" kind="point">
+         <unit eId="anx_II/pnt_D" kind="point" numbered="true">
             <num>
                <t v="D."/>
             </num>
@@ -2714,7 +2781,7 @@
          <subheading>
             <t v="Financing of expenditure deriving from fisheries agreements"/>
          </subheading>
-         <unit eId="anx_IV/pnt_A" kind="point">
+         <unit eId="anx_IV/pnt_A" kind="point" numbered="true">
             <num>
                <t v="A."/>
             </num>
@@ -2726,7 +2793,7 @@
                <t v=" policy area (by reference to the activity based budget nomenclature):&#xA;"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx_IV/pnt_A/pnt_a" kind="point">
+               <unit eId="anx_IV/pnt_A/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -2734,7 +2801,7 @@
                      <t v="international fisheries agreements (11 03 01);&#xA;"/>
                   </p>
                </unit>
-               <unit eId="anx_IV/pnt_A/pnt_b" kind="point">
+               <unit eId="anx_IV/pnt_A/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -2747,7 +2814,7 @@
                <t v="All the amounts relating to agreements and protocols which are in force on 1 January of the year in question will be entered under heading 11 03 01. Amounts relating to all new or renewable agreements which come into force after 1 January of the year in question will be assigned to heading 40 02 41 02 — Reserves/Differentiated appropriations (compulsory expenditure)."/>
             </p>
          </unit>
-         <unit eId="anx_IV/pnt_B" kind="point">
+         <unit eId="anx_IV/pnt_B" kind="point" numbered="true">
             <num>
                <t v="B."/>
             </num>
@@ -2755,7 +2822,7 @@
                <t v="In the conciliation procedure provided for in Annex II, Part C, the European Parliament and the Council will seek to agree on the amount to be entered in the budget headings and in the reserve on the basis of the proposal made by the Commission."/>
             </p>
          </unit>
-         <unit eId="anx_IV/pnt_C" kind="point">
+         <unit eId="anx_IV/pnt_C" kind="point" numbered="true">
             <num>
                <t v="C."/>
             </num>

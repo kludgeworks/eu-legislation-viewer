@@ -151,7 +151,7 @@
             <t v="Coperation under this Agreement shall be conducted on the basis on the following principles:"/>
          </p>
          <list kind="alpha">
-            <unit eId="art_3/pnt_a" kind="point">
+            <unit eId="art_3/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -159,7 +159,7 @@
                   <t v="mutual benefit;"/>
                </p>
             </unit>
-            <unit eId="art_3/pnt_b" kind="point">
+            <unit eId="art_3/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -167,7 +167,7 @@
                   <t v="timely exchange of information which may affect the actions of participants in cooperative activities;"/>
                </p>
             </unit>
-            <unit eId="art_3/pnt_c" kind="point">
+            <unit eId="art_3/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
@@ -175,7 +175,7 @@
                   <t v="within the framework of applicable laws and regulations relating to intellectual property, effective protection and equitable distribution of intellectual property, as set out in the Annex to this Agreement, which forms an integral part thereof; and"/>
                </p>
             </unit>
-            <unit eId="art_3/pnt_d" kind="point">
+            <unit eId="art_3/pnt_d" kind="point" numbered="true">
                <num>
                   <t v="(d)"/>
                </num>
@@ -200,7 +200,7 @@
                <t v="Cooperation may include the following activities:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_4/par_1/pnt_a" kind="point">
+               <unit eId="art_4/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -208,7 +208,7 @@
                      <t v="participation of persons and legal entities, research institutes, and other bodies, including the Parties themselves, in research projects conducted by Australia or the Community, in accordance with the procedures in force for each Party;"/>
                   </p>
                </unit>
-               <unit eId="art_4/par_1/pnt_b" kind="point">
+               <unit eId="art_4/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -216,7 +216,7 @@
                      <t v="shared use of research facilities in pursuit of cooperation on research projects;"/>
                   </p>
                </unit>
-               <unit eId="art_4/par_1/pnt_c" kind="point">
+               <unit eId="art_4/par_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -224,7 +224,7 @@
                      <t v="visits and exchanges of scientists, engineers and other appropriate personnel for the purposes of participating in seminars, symposia and workshops relevant to cooperation under this Agreement;"/>
                   </p>
                </unit>
-               <unit eId="art_4/par_1/pnt_d" kind="point">
+               <unit eId="art_4/par_1/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -232,7 +232,7 @@
                      <t v="exchange of information such as practices, laws, regulations and programmes relevant to cooperation under this Agreement; and"/>
                   </p>
                </unit>
-               <unit eId="art_4/par_1/pnt_e" kind="point">
+               <unit eId="art_4/par_1/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -306,7 +306,7 @@
                <t v="The functions of the Committee shall be to:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_5/par_2/pnt_a" kind="point">
+               <unit eId="art_5/par_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -314,7 +314,7 @@
                      <t v="promote and review the activities envisaged under this Agreement;"/>
                   </p>
                </unit>
-               <unit eId="art_5/par_2/pnt_b" kind="point">
+               <unit eId="art_5/par_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -322,7 +322,7 @@
                      <t v="authorize activities falling under Article 4 (1) (e) of this Agreement as being cooperative activities to which this Agreement applies;"/>
                   </p>
                </unit>
-               <unit eId="art_5/par_2/pnt_c" kind="point">
+               <unit eId="art_5/par_2/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -330,7 +330,7 @@
                      <t v="advise the Parties on ways to enhance cooperation consistent with the objectives and principles set out in this Agreement; and"/>
                   </p>
                </unit>
-               <unit eId="art_5/par_2/pnt_d" kind="point">
+               <unit eId="art_5/par_2/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -654,7 +654,7 @@
          <subheading>
             <t v="DISSEMINATION AND UTILIZATION OF INFORMATION AND MANAGEMENT, ALLOCATION AND EXERCISE OF INTELLECTUAL PROPERTY RIGHTS"/>
          </subheading>
-         <unit eId="anx/pnt_I" kind="level" depth="1">
+         <unit eId="anx/pnt_I" kind="level" depth="1" numbered="true">
             <num>
                <t v="I."/>
             </num>
@@ -664,7 +664,7 @@
                </emphasis>
             </heading>
             <list kind="arabic">
-               <unit eId="anx/pnt_I/pnt_1" kind="point">
+               <unit eId="anx/pnt_I/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -678,7 +678,7 @@
                      <t v=" in respect of the ownership and use, including publication, of information and intellectual property (IP) to be created in the course of joint research. Those plans shall be approved by the Parties before the conclusion of any specific research and development cooperation contracts to which they refer. The TMPs shall be developed taking into account the aims of the joint research, the relative contributions of the participants, the advantages and disadvantages of licensing by territory or for fields of use, requirements imposed by applicable laws, dispute settlement procedures, and other factors deemed appropriate by the participants. The rights and obligations concerning the research generated by visiting researchers in respect of IP shall also be addressed in the TMPs."/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_I/pnt_2" kind="point">
+               <unit eId="anx/pnt_I/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
@@ -686,7 +686,7 @@
                      <t v="Information or IP created in the course of joint research and not addressed in the TMP shall be allocated, with the approval of the Parties, according to the principles set out in the TMP, including dispute resolution. In case of disagreement which for sound reasons cannot be resolved by the agreed dispute settlement procedure, the dispute may be referred to the Joint Science and Technology Cooperation Committee which shall endeavour to mediate between the participants. If, having exhausted the procedures described above, the disagreement continues, such information or IP shall be owned jointly by all the participants involved in the joint research from which the information or IP results. Each participant to whom this provision applies shall have the right to use such information or IP for his own commercial exploitation with no geographical limitation."/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_I/pnt_3" kind="point">
+               <unit eId="anx/pnt_I/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="3."/>
                   </num>
@@ -694,7 +694,7 @@
                      <t v="Each Party shall ensure that the other Party and its participants may have the rights to IP allocated in accordance with the principles set out in Section I of this Annex."/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_I/pnt_4" kind="point">
+               <unit eId="anx/pnt_I/pnt_4" kind="point" numbered="true">
                   <num>
                      <t v="4."/>
                   </num>
@@ -702,7 +702,7 @@
                      <t v="While maintaining the conditions of competition in areas affected by the Agreement, each Party shall endeavour to ensure that rights acquired pursuant to this Agreement and arrangements made under it are exercised in such a way as to encourage in particular:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="anx/pnt_I/pnt_4/pnt_i" kind="point">
+                     <unit eId="anx/pnt_I/pnt_4/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -710,7 +710,7 @@
                            <t v="the dissemination and use of information created, disclosed, or otherwise made available, under the Agreement; and"/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_I/pnt_4/pnt_ii" kind="point">
+                     <unit eId="anx/pnt_I/pnt_4/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -722,7 +722,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_II" kind="level" depth="1">
+         <unit eId="anx/pnt_II" kind="level" depth="1" numbered="true">
             <num>
                <t v="II."/>
             </num>
@@ -735,7 +735,7 @@
                <t v="Copyright belonging to the Parties or to their participants shall be accorded treatment consistent with the Berne Convention (Paris Act 1971)."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_III" kind="level" depth="1">
+         <unit eId="anx/pnt_III" kind="level" depth="1" numbered="true">
             <num>
                <t v="III."/>
             </num>
@@ -748,7 +748,7 @@
                <t v="Subject to Section IV, unless otherwise agreed in the TMP, publication of results of research shall be made jointly by the Parties or participants to that joint research. Subject to this general rule, the following procedures shall apply:"/>
             </p>
             <list kind="arabic">
-               <unit eId="anx/pnt_III/pnt_1" kind="point">
+               <unit eId="anx/pnt_III/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -756,7 +756,7 @@
                      <t v="In the case of publication by a Party or public bodies of that Party of scientific and technical journals, articles, reports, books, including video and software, arising from joint research pursuant to this Agreement, the other Party shall be entitled to a worldwide, non-exclusive, irrevocable, royalty-free licence to translate, reproduce, adapt, transmit and publicly distribute such works."/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_III/pnt_2" kind="point">
+               <unit eId="anx/pnt_III/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -764,7 +764,7 @@
                      <t v="The Parties shall ensure that literary works of a scientific character arising from joint research pursuant to this Agreement and published by independent publishers shall be disseminated as widely as possible."/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_III/pnt_3" kind="point">
+               <unit eId="anx/pnt_III/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="(3)"/>
                   </num>
@@ -774,7 +774,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_IV" kind="level" depth="1">
+         <unit eId="anx/pnt_IV" kind="level" depth="1" numbered="true">
             <num>
                <t v="IV."/>
             </num>
@@ -784,7 +784,7 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_A" kind="level" depth="2">
+         <unit eId="anx/pnt_A" kind="level" depth="2" numbered="true">
             <num>
                <t v="A."/>
             </num>
@@ -794,7 +794,7 @@
                </emphasis>
             </heading>
             <list kind="arabic">
-               <unit eId="anx/pnt_A/pnt_1" kind="point">
+               <unit eId="anx/pnt_A/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -802,7 +802,7 @@
                      <t v="Each Party or its participants, as appropriate, shall identify at the earliest possible moment and preferably in the TMP the information that it wishes to remain undisclosed in relation to this Agreement, taking into account, among other things, the following criteria:"/>
                   </p>
                   <list kind="roman">
-                     <unit eId="anx/pnt_A/pnt_1/pnt_i" kind="point">
+                     <unit eId="anx/pnt_A/pnt_1/pnt_i" kind="point" numbered="true">
                         <num>
                            <t v="(i)"/>
                         </num>
@@ -810,7 +810,7 @@
                            <t v="secrecy of the information in the sense that the information is not, as a body or in the precise configuration or assembly of its components, generally known among or readily accessible by lawful means to experts in the field;"/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_A/pnt_1/pnt_ii" kind="point">
+                     <unit eId="anx/pnt_A/pnt_1/pnt_ii" kind="point" numbered="true">
                         <num>
                            <t v="(ii)"/>
                         </num>
@@ -818,7 +818,7 @@
                            <t v="the actual or potential commercial value of the information by virtue of its secrecy; and"/>
                         </p>
                      </unit>
-                     <unit eId="anx/pnt_A/pnt_1/pnt_iii" kind="point">
+                     <unit eId="anx/pnt_A/pnt_1/pnt_iii" kind="point" numbered="true">
                         <num>
                            <t v="(iii)"/>
                         </num>
@@ -831,7 +831,7 @@
                      <t v="The Parties and the participants may in certain cases agree that, unless otherwise indicated, parts or all of the information provided, exchanged or created in the course of joint research pursuant to this Agreement may not be disclosed."/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_A/pnt_2" kind="point">
+               <unit eId="anx/pnt_A/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
@@ -839,7 +839,7 @@
                      <t v="Each Party shall ensure that undisclosed information under this Agreement and its privileged nature is readily recognizable as such by the other Party, for example by means of an appropriate marking or restrictive legend. This also applies to any reproduction of the said information, in whole or in part."/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_A/pnt_3" kind="point">
+               <unit eId="anx/pnt_A/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="3."/>
                   </num>
@@ -847,7 +847,7 @@
                      <t v="A Party receiving undisclosed information pursuant to this Agreement shall respect its privileged nature. These limitations shall automatically terminate when this information is disclosed by the owner without restriction to experts in the field."/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_A/pnt_4" kind="point">
+               <unit eId="anx/pnt_A/pnt_4" kind="point" numbered="true">
                   <num>
                      <t v="4."/>
                   </num>
@@ -855,7 +855,7 @@
                      <t v="Undisclosed information communicated under this Agreement may be disseminated by the receiving Party to persons within or employed by the receiving Party, and other concerned departments or agencies in the receiving Party authorized for the specific purposes of the joint research under way, provided that any such undisclosed information shall be disseminated only on conditions of confidentiality and shall be readily recognizable a such, as set out above."/>
                   </p>
                </unit>
-               <unit eId="anx/pnt_A/pnt_5" kind="point">
+               <unit eId="anx/pnt_A/pnt_5" kind="point" numbered="true">
                   <num>
                      <t v="5."/>
                   </num>
@@ -865,7 +865,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_B" kind="level" depth="2">
+         <unit eId="anx/pnt_B" kind="level" depth="2" numbered="true">
             <num>
                <t v="B."/>
             </num>
@@ -878,7 +878,7 @@
                <t v="Non-documentary undisclosed or other confidential or privileged information provided in seminars and other meetings arranged under this Agreement, or information arising from the attachment of staff, use of facilities, or joint projects, shall be treated by the Parties or their participants according to the principles specified for documentary information in the Agreement, provided, however, that the recipient of such undisclosed or other confidential or privileged information has been made aware of the confidential character of the information communicated at the time such communication is made."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_C" kind="level" depth="2">
+         <unit eId="anx/pnt_C" kind="level" depth="2" numbered="true">
             <num>
                <t v="C."/>
             </num>

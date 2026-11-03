@@ -39,7 +39,7 @@
             </p>
             <quotedStructure eId="cor_1/old/qstr_1">
                <list kind="arabic">
-                  <unit eId="cor_1/old/qstr_1/pnt_1" kind="point">
+                  <unit eId="cor_1/old/qstr_1/pnt_1" kind="point" numbered="true">
                      <num>
                         <t v="‘"/>
                         <t v="(1)"/>
@@ -89,7 +89,7 @@
             </p>
             <quotedStructure eId="cor_1/new/qstr_1">
                <list kind="arabic">
-                  <unit eId="cor_1/new/qstr_1/pnt_1" kind="point">
+                  <unit eId="cor_1/new/qstr_1/pnt_1" kind="point" numbered="true">
                      <num>
                         <t v="‘"/>
                         <t v="(1)"/>

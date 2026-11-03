@@ -104,7 +104,7 @@
                   <t v="The country specific allocations shall be made available to promote the following overall thematic priorities:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_3/subdivision_1/sub_1/pnt_a" kind="point">
+                  <unit eId="art_3/subdivision_1/sub_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -112,7 +112,7 @@
                         <t v="European green transition;"/>
                      </p>
                   </unit>
-                  <unit eId="art_3/subdivision_1/sub_1/pnt_b" kind="point">
+                  <unit eId="art_3/subdivision_1/sub_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -120,7 +120,7 @@
                         <t v="democracy, rule of law and human rights;"/>
                      </p>
                   </unit>
-                  <unit eId="art_3/subdivision_1/sub_1/pnt_c" kind="point">
+                  <unit eId="art_3/subdivision_1/sub_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -485,7 +485,7 @@
          <p>
             <t v="The following shall apply to the implementation of the Norwegian Financial Mechanism:"/>
          </p>
-         <unit eId="art_9/pnt_1" kind="level" depth="1">
+         <unit eId="art_9/pnt_1" kind="level" depth="1" numbered="true">
             <num>
                <t v="(1)"/>
             </num>
@@ -496,7 +496,7 @@
                <t v="The objectives of the Norwegian Financial Mechanism referred to in Article 1 shall be pursued in a framework of close cooperation between the Beneficiary States and the Kingdom of Norway, respecting the values and principles and complying with the rights and obligations referred to in Article 1 paragraph 2."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_2" kind="level" depth="1">
+         <unit eId="art_9/pnt_2" kind="level" depth="1" numbered="true">
             <num>
                <t v="(2)"/>
             </num>
@@ -507,7 +507,7 @@
                <t v="The highest degree of transparency, accountability and cost efficiency shall be applied in all implementation phases, together with respect for principles of good governance, partnership and multi-level governance, sustainable development, gender equality and non-discrimination."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_3" kind="level" depth="1">
+         <unit eId="art_9/pnt_3" kind="level" depth="1" numbered="true">
             <num>
                <t v="(3)"/>
             </num>
@@ -518,7 +518,7 @@
                <t v="The Kingdom of Norway shall operate and be responsible for the implementation, including management and control, of the three funds set out in Article 7."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_4" kind="level" depth="1">
+         <unit eId="art_9/pnt_4" kind="level" depth="1" numbered="true">
             <num>
                <t v="(4)"/>
             </num>
@@ -529,7 +529,7 @@
                <t v="The Kingdom of Norway, or an entity appointed by it, shall be responsible for the overall management of the Norwegian Financial Mechanism. Further provisions for the implementation of the Norwegian Financial Mechanism, including simplification measures aimed at securing efficiency and effectiveness in implementation, will be issued by the Kingdom of Norway after consultations with the Beneficiary States which may be assisted by the European Commission. The Kingdom of Norway shall endeavour to issue these provisions before the signing of the Memoranda of Understanding."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_5" kind="level" depth="1">
+         <unit eId="art_9/pnt_5" kind="level" depth="1" numbered="true">
             <num>
                <t v="(5)"/>
             </num>
@@ -540,7 +540,7 @@
                <t v="The Kingdom of Norway shall negotiate with each Beneficiary State a Memorandum of Understanding concerning the respective country specific allocation, excluding the funds referred to in Article 7 and paragraph 3 of this article. The Memorandum of Understanding shall set out the programmes, the distribution of funds between programme areas, the structures for management and control and applicable conditions."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_6" kind="level" depth="1">
+         <unit eId="art_9/pnt_6" kind="level" depth="1" numbered="true">
             <num>
                <t v="(6)"/>
             </num>
@@ -548,7 +548,7 @@
                <t v="Implementation"/>
             </heading>
             <list kind="alpha">
-               <unit eId="art_9/pnt_6/pnt_a" kind="point">
+               <unit eId="art_9/pnt_6/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -556,7 +556,7 @@
                      <t v="On the basis of the Memoranda of Understanding, the Beneficiary States shall submit proposals for specific programmes to the Kingdom of Norway which shall appraise and approve the proposals and conclude grant agreements, with relevant conditions, risk assessment and mitigation, with the Beneficiary States for each programme."/>
                   </p>
                </unit>
-               <unit eId="art_9/pnt_6/pnt_b" kind="point">
+               <unit eId="art_9/pnt_6/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -564,7 +564,7 @@
                      <t v="The implementation of the agreed programmes shall be the responsibility of the Beneficiary States which shall provide for an appropriate management and control system in order to ensure sound implementation and management."/>
                   </p>
                </unit>
-               <unit eId="art_9/pnt_6/pnt_c" kind="point">
+               <unit eId="art_9/pnt_6/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -572,7 +572,7 @@
                      <t v="The Kingdom of Norway may carry out controls according to its internal requirements. The Beneficiary States shall provide all necessary assistance, information and documentation to this effect."/>
                   </p>
                </unit>
-               <unit eId="art_9/pnt_6/pnt_d" kind="point">
+               <unit eId="art_9/pnt_6/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -580,7 +580,7 @@
                      <t v="To ensure compliance with obligations, the Kingdom of Norway may, following an assessment, after having heard the Beneficiary State, take appropriate and proportionate measures, including the suspension of payments and the recovery of funds."/>
                   </p>
                </unit>
-               <unit eId="art_9/pnt_6/pnt_e" kind="point">
+               <unit eId="art_9/pnt_6/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -588,7 +588,7 @@
                      <t v="Partnerships shall, where appropriate, be applied in the preparation, implementation, monitoring and evaluation of the financial contribution in order to ensure broad participation. Partners may include, inter alia, local, regional and national levels, as well as the private sector, civil society and social partners in the Beneficiary States and in the Kingdom of Norway."/>
                   </p>
                </unit>
-               <unit eId="art_9/pnt_6/pnt_f" kind="point">
+               <unit eId="art_9/pnt_6/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -598,7 +598,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_9/pnt_7" kind="level" depth="1">
+         <unit eId="art_9/pnt_7" kind="level" depth="1" numbered="true">
             <num>
                <t v="(7)"/>
             </num>
@@ -609,7 +609,7 @@
                <t v="The management costs of the Kingdom of Norway shall be covered by the total amount referred to in Article 2, and shall be specified in the provisions for the implementation referred to in paragraph 4 of this Article. Management costs for the Funds referred to in Article 7 will be covered by the amount allocated to the Funds."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_8" kind="level" depth="1">
+         <unit eId="art_9/pnt_8" kind="level" depth="1" numbered="true">
             <num>
                <t v="(8)"/>
             </num>
@@ -626,7 +626,7 @@
             <t v="Article 10"/>
          </num>
          <list kind="arabic">
-            <unit eId="art_10/pnt_1" kind="point">
+            <unit eId="art_10/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="(1)"/>
                </num>
@@ -634,7 +634,7 @@
                   <t v="This Agreement shall be ratified or approved by the Parties in accordance with their own procedures. The instruments of ratification or approval shall be deposited with the General Secretariat of the Council of the European Union."/>
                </p>
             </unit>
-            <unit eId="art_10/pnt_2" kind="point">
+            <unit eId="art_10/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="(2)"/>
                </num>
@@ -642,7 +642,7 @@
                   <t v="It shall enter into force on the first day of the second month after the last instrument of ratification or approval has been deposited."/>
                </p>
             </unit>
-            <unit eId="art_10/pnt_3" kind="point">
+            <unit eId="art_10/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="(3)"/>
                </num>

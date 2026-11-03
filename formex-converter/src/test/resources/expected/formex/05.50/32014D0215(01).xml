@@ -104,7 +104,7 @@
             <t v=":"/>
          </p>
          <table cols="2">
-            <rowGroup>
+            <rowGroup columns="2">
                <heading>
                   <emphasis kind="b">
                      <t v="REPRESENTATIVES OF EMPLOYEES' ORGANISATIONS:"/>
