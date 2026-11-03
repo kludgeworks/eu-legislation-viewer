@@ -5650,12 +5650,6 @@
                   <t v="If the appropriate authority or the regulated agent is no longer satisfied that the account consignor complies with the instructions as contained in Attachment 6-D, the regulated agent shall immediately withdraw the status of account consignor."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32017R0815"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:22"
-                        marker="O002001M022000"/>
             <unit eId="anx/pnt_6.5.6" kind="level" depth="3">
                <num>
                   <t v="6.5.6"/>
@@ -7232,12 +7226,6 @@
                   <t v="Once it has been subjected to an EU aviation security validation, a site of the network shall be considered as a third country regulated agent in accordance with point 6.8.4.2."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32021R0255"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:20"
-                        marker="O010001M025000"/>
             <unit eId="anx/pnt_6.8.5.6" kind="level" depth="4">
                <provenance amendingAct="32017R0815"
                            action="replaced"
@@ -7250,12 +7238,6 @@
                   <t v="If the EU aviation security validation of a site of the network referred to in point (ii) of point (c) of point 6.8.5.5 concludes that the site has failed to comply with the objectives referred to in the checklist in Attachment 6-C2, cargo and mail from that site shall be screened at a site designated as third country regulated agent in accordance with point 6.8.4.2 until an EU aviation security validation confirms compliance with the objectives of the checklist."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32021R0255"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:20"
-                        marker="O010001M025000"/>
             <unit eId="anx/pnt_6.8.5.7" kind="level" depth="4">
                <provenance amendingAct="32017R0815"
                            action="replaced"

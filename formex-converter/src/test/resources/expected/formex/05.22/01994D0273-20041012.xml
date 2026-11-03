@@ -81,12 +81,6 @@
                   <t v="Having regard to the Treaty establishing the European Community,"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32004D0595"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/cit_2" kind="citation">
                <p>
                   <t v="Having regard to Council Directive 92/65/EEC of 13 July 1992 concerning laying down animal health requirements governing trade in and imports into the Community of animals, semen, ova and embryos not subject to animal health requirements laid down in specific Community rules referred to in Annex A (I) to Directive 90/425/EEC"/>
@@ -107,34 +101,16 @@
                   <t v="Whereas it is necessary to establish a veterinary certificate for dogs and cats that are placed on the market in the United Kingdom and Ireland and not originating in those countries;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32004D0595"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_2" kind="recital">
                <p>
                   <t v="Whereas the animals concerned must fulfil the relevant necessary health conditions, as reflected in the certificate and duly attested to by an authorized veterinarian;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32004D0595"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_3" kind="recital">
                <p>
                   <t v="Whereas conforming to Article 10 (3) (a) (vii) dogs and cats must be accompanied by an individual vaccination record;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32004D0595"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_4" kind="recital">
                <p>
                   <t v="Whereas the measures provided for in this Decision are in accordance with the opinion of the Standing Veterinary Committee,"/>
@@ -168,12 +144,6 @@
                <t v="The model of the certificate provided for in Article 10 (3) (a) (vii) of Directive 92/65/EEC is established in the Annex."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32004D0595"
-                     action="deleted"
-                     location="AR:2"
-                     marker="O002001M001000"/>
          <unit eId="art_2" kind="article">
             <num>
                <t v="Article 2"/>
@@ -204,18 +174,24 @@
       </deleted>
    </annexes>
    <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="268"
-                 date="1992-09-01"
-                 page="54">
-               <t v="OJ No L 268, 14. 9. 1992, p. 54"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
+      <deleted>
+         <provenance amendingAct="32004D0595"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000"/>
+         <note eId="note_1" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="268"
+                    date="1992-09-01"
+                    page="54">
+                  <t v="OJ No L 268, 14. 9. 1992, p. 54"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+      </deleted>
    </notes>
 </legalText>
 

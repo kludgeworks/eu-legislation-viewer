@@ -449,7 +449,27 @@
 
   <xs:complexType name="Notes">
     <xs:annotation><xs:documentation>The footnotes of the document.</xs:documentation></xs:annotation>
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="note" type="Note">
+        <xs:annotation><xs:documentation>One footnote.</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="deleted" type="DeletedNotes">
+        <xs:annotation><xs:documentation>The notes of text an amendment deleted.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="DeletedNotes">
+    <xs:annotation>
+      <xs:documentation>
+        The notes of text an amendment deleted but the consolidation keeps: in force no longer, and not
+        counted in the running numbers (EUR-Lex leaves them out).
+      </xs:documentation>
+    </xs:annotation>
     <xs:sequence>
+      <xs:element name="provenance" type="Provenance" maxOccurs="unbounded">
+        <xs:annotation><xs:documentation>The deleting act.</xs:documentation></xs:annotation>
+      </xs:element>
       <xs:element name="note" type="Note" maxOccurs="unbounded">
         <xs:annotation><xs:documentation>One footnote.</xs:documentation></xs:annotation>
       </xs:element>

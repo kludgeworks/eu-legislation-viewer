@@ -2551,12 +2551,6 @@
                         </emphasis>
                      </p>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32025R0920"
-                              action="deleted"
-                              location="AR:1 .AND. AX:0;PT:1"
-                              marker="O021001M001000"/>
                   <unit eId="anx/level_ATTACHMENT-3-B/level_1/idt_4" kind="indent">
                      <p>
                         <emphasis kind="b">
@@ -2564,12 +2558,6 @@
                         </emphasis>
                      </p>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32025R0920"
-                              action="deleted"
-                              location="AR:1 .AND. AX:0;PT:1"
-                              marker="O021001M001000"/>
                   <unit eId="anx/level_ATTACHMENT-3-B/level_1/idt_5" kind="indent">
                      <p>
                         <emphasis kind="b">
@@ -2577,12 +2565,6 @@
                         </emphasis>
                      </p>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32025R0920"
-                              action="deleted"
-                              location="AR:1 .AND. AX:0;PT:1"
-                              marker="O021001M001000"/>
                   <unit eId="anx/level_ATTACHMENT-3-B/level_1/idt_6" kind="indent">
                      <p>
                         <emphasis kind="b">
@@ -3577,12 +3559,6 @@
                         </emphasis>
                      </p>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32025R0920"
-                              action="deleted"
-                              location="AR:1 .AND. AX:0;PT:2"
-                              marker="O021001M003000"/>
                   <unit eId="anx/level_ATTACHMENT-4-B/level_1/idt_4" kind="indent">
                      <p>
                         <emphasis kind="b">
@@ -3590,12 +3566,6 @@
                         </emphasis>
                      </p>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32025R0920"
-                              action="deleted"
-                              location="AR:1 .AND. AX:0;PT:2"
-                              marker="O021001M003000"/>
                   <unit eId="anx/level_ATTACHMENT-4-B/level_1/idt_5" kind="indent">
                      <p>
                         <emphasis kind="b">
@@ -3603,12 +3573,6 @@
                         </emphasis>
                      </p>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32025R0920"
-                              action="deleted"
-                              location="AR:1 .AND. AX:0;PT:2"
-                              marker="O021001M003000"/>
                   <unit eId="anx/level_ATTACHMENT-4-B/level_1/idt_6" kind="indent">
                      <p>
                         <emphasis kind="b">
@@ -4493,12 +4457,6 @@
                         </emphasis>
                      </p>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32025R0920"
-                              action="deleted"
-                              location="AR:1 .AND. AX:0;PT:3"
-                              marker="O021001M005000"/>
                   <unit eId="anx/level_ATTACHMENT-5-A/level_1/idt_4" kind="indent">
                      <p>
                         <emphasis kind="b">
@@ -4506,12 +4464,6 @@
                         </emphasis>
                      </p>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32025R0920"
-                              action="deleted"
-                              location="AR:1 .AND. AX:0;PT:3"
-                              marker="O021001M005000"/>
                   <unit eId="anx/level_ATTACHMENT-5-A/level_1/idt_5" kind="indent">
                      <p>
                         <emphasis kind="b">
@@ -4519,12 +4471,6 @@
                         </emphasis>
                      </p>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32025R0920"
-                              action="deleted"
-                              location="AR:1 .AND. AX:0;PT:3"
-                              marker="O021001M005000"/>
                   <unit eId="anx/level_ATTACHMENT-5-A/level_1/idt_6" kind="indent">
                      <p>
                         <emphasis kind="b">
@@ -8209,12 +8155,6 @@
                   <t v="Once it has been subjected to an EU aviation security validation, a site of the network shall be considered as a third country regulated agent in accordance with point 6.8.4.2."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32021R0255"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:20"
-                        marker="O010001M025000"/>
             <unit eId="anx/pnt_6.8.5.6" kind="level" depth="4">
                <provenance amendingAct="32017R0815"
                            action="replaced"
@@ -8227,12 +8167,6 @@
                   <t v="If the EU aviation security validation of a site of the network referred to in point (ii) of point (c) of point 6.8.5.5 concludes that the site has failed to comply with the objectives referred to in the checklist in Attachment 6-C2, cargo and mail from that site shall be screened at a site designated as third country regulated agent in accordance with point 6.8.4.2 until an EU aviation security validation confirms compliance with the objectives of the checklist."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32021R0255"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:20"
-                        marker="O010001M025000"/>
             <unit eId="anx/pnt_6.8.5.7" kind="level" depth="4">
                <provenance amendingAct="32017R0815"
                            action="replaced"
@@ -19773,12 +19707,6 @@
                   </emphasis>
                </num>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_1" kind="level" depth="3">
                <heading>
                   <t v="AVIATION SECURITY INSTRUCTIONS FOR ACCOUNT CONSIGNORS"/>
@@ -19789,12 +19717,6 @@
                   <t v=" and its implementing acts."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_1/level_1"
                   kind="level"
                   depth="4">
@@ -19810,12 +19732,6 @@
                   <t v="Visitors shall be accompanied at all times in, or prevented access to, those areas where consignments of identifiable air cargo/air mail are prepared, packaged and/or stored."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_1/level_2"
                   kind="level"
                   depth="4">
@@ -19831,12 +19747,6 @@
                   <t v="All staff who have access to identifiable air cargo/air mail shall be made aware of their security responsibilities as set out in these instructions."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_1/level_3"
                   kind="level"
                   depth="4">
@@ -19849,12 +19759,6 @@
                   <t v="At least one person responsible for the application and control of these instructions shall be nominated (responsible nominee)."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_1/level_4"
                   kind="level"
                   depth="4">
@@ -19876,12 +19780,6 @@
                   <t v="Consignments of air cargo/air mail being shipped shall be fully described on the attached documentation together with correct addressing information."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_1/level_5"
                   kind="level"
                   depth="4">
@@ -19918,12 +19816,6 @@
                   <t v="The signed declaration or a copy of the appropriate authority equivalent shall be retained by the account consignor."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_1/level_6"
                   kind="level"
                   depth="4">
@@ -19936,12 +19828,6 @@
                   <t v="Irregularities, apparent or suspected, related to these instructions shall be reported to the responsible nominee. The responsible nominee shall take appropriate action."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_1/level_7"
                   kind="level"
                   depth="4">
@@ -19975,12 +19861,6 @@
                   <t v="All such consignments must be screened before they are loaded on to an aircraft."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_1/level_8"
                   kind="level"
                   depth="4">
@@ -19993,12 +19873,6 @@
                   <t v="Aviation security inspectors from the appropriate authority may conduct unannounced inspections to verify compliance with these instructions. The inspectors will always carry an official pass, which must be produced on demand when an inspection is being conducted on your premises. The pass includes the name and photograph of the inspector."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_1/level_9"
                   kind="level"
                   depth="4">
@@ -20011,12 +19885,6 @@
                   <t v="Assembled explosive and incendiary devices shall not be carried in consignments of cargo unless the requirements of all safety rules are met in full."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_1/level_10"
                   kind="level"
                   depth="4">
@@ -20031,25 +19899,19 @@
                      <t v="Declaration of commitments — account consignor"/>
                   </quote>
                   <t v=" does not have to be signed and submitted to the regulated agent, if your company is a holder of an AEO certificate referred to in point (b) or (c) of Article 14a(1) of Commission Regulation (EEC) No 2454/93"/>
-                  <noteRef href="#note_20" marker="20"/>
+                  <noteRef href="#note_20" marker="19"/>
                </p>
                <p>
                   <t v="However, you must inform the regulated agent immediately if your company is no longer a holder of an AEO certificate. In this case, the regulated agent will inform you of how to ensure the account consignor status."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32022R1174"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O016001M025000"/>
             <unit eId="anx/level_ATTACHMENT-6D/level_2" kind="level" depth="3">
                <heading>
                   <t v="DECLARATION OF COMMITMENTS — ACCOUNT CONSIGNOR"/>
                </heading>
                <p>
                   <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-                  <noteRef href="#note_21" marker="21"/>
+                  <noteRef href="#note_21" marker="19"/>
                   <t v=" and its implementing acts,"/>
                </p>
                <p>
@@ -20124,7 +19986,7 @@
             </heading>
             <p>
                <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_22" marker="22"/>
+               <noteRef href="#note_22" marker="19"/>
                <t v=" on common rules in the field of civil aviation security and its implementing acts,"/>
             </p>
             <p>
@@ -20182,7 +20044,7 @@
                <unit eId="anx/level_ATTACHMENT-6-D/level_1/idt_7" kind="indent">
                   <p>
                      <t v="[name of company] will ensure that all relevant staff receive training in accordance with Chapter 11 of the Annex to Commission Implementing Regulation (EU) 2015/1998"/>
-                     <noteRef href="#note_23" marker="23"/>
+                     <noteRef href="#note_23" marker="20"/>
                      <t v=" and are aware of their security responsibilities under the company’s security programme;"/>
                   </p>
                </unit>
@@ -20250,7 +20112,7 @@
             </heading>
             <p>
                <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_21" marker="21"/>
+               <noteRef href="#note_21" marker="19"/>
                <t v=" and its implementing acts,"/>
             </p>
             <p>
@@ -24581,7 +24443,7 @@
             </heading>
             <p>
                <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_24" marker="24"/>
+               <noteRef href="#note_24" marker="21"/>
                <t v=" and its implementing acts,"/>
             </p>
             <p>
@@ -24711,7 +24573,7 @@
             </heading>
             <p>
                <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_25" marker="25"/>
+               <noteRef href="#note_25" marker="22"/>
                <t v=" and its implementing acts,"/>
             </p>
             <p>
@@ -25423,7 +25285,7 @@
             </heading>
             <p>
                <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_26" marker="26"/>
+               <noteRef href="#note_26" marker="23"/>
                <t v=" and its implementing acts,"/>
             </p>
             <p>
@@ -25692,7 +25554,7 @@
                   </num>
                   <p>
                      <t v="the offences referred to in the Annex II to the Directive (EU) 2016/681 of The European Parliament and of the Council"/>
-                     <noteRef href="#note_27" marker="27"/>
+                     <noteRef href="#note_27" marker="24"/>
                      <t v=";"/>
                   </p>
                   <p>
@@ -25705,7 +25567,7 @@
                   </num>
                   <p>
                      <t v="the terrorist offences referred to in the Directive (EU) 2017/541 of the European Parliament and of the Council"/>
-                     <noteRef href="#note_28" marker="28"/>
+                     <noteRef href="#note_28" marker="25"/>
                      <t v="."/>
                   </p>
                </unit>
@@ -28477,7 +28339,7 @@
             </num>
             <p>
                <t v="The national accreditation body established pursuant to Regulation (EC) No 765/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_29" marker="29"/>
+               <noteRef href="#note_29" marker="26"/>
                <t v=" may be empowered to accredit the conformity assessment capacity of legal entities to perform EU aviation security validation, adopt administrative measures in that respect and carry out the surveillance of EU aviation security validation activities."/>
             </p>
          </unit>
@@ -29081,7 +28943,7 @@
                   </p>
                   <p>
                      <t v="The information contained in this Chapter and classified in accordance with Decision (EU, Euratom) 2015/444"/>
-                     <noteRef href="#note_30" marker="30"/>
+                     <noteRef href="#note_30" marker="27"/>
                      <t v=" shall be made available by the appropriate authority to manufacturers on a need-to-know basis."/>
                   </p>
                </unit>
@@ -31596,9 +31458,9 @@
             </list>
             <p>
                <t v="Security scanners for the screening of passengers shall be deployed and used in compliance with Council Recommendation 1999/519/EC"/>
-               <noteRef href="#note_31" marker="31"/>
+               <noteRef href="#note_31" marker="28"/>
                <t v=" and Directive 2013/35/EU of the European Parliament and of the Council"/>
-               <noteRef href="#note_32" marker="32"/>
+               <noteRef href="#note_32" marker="29"/>
                <t v="."/>
             </p>
          </unit>
@@ -32276,7 +32138,7 @@
             </p>
             <p>
                <t v="For the identification of the following roles"/>
-               <noteRef href="#note_33" marker="33"/>
+               <noteRef href="#note_33" marker="30"/>
                <t v=" to ensure that the deployment of EDD teams meets EU requirements:"/>
             </p>
             <p>
@@ -32490,52 +32352,58 @@
             <t v="EU or EEA bound air cargo or air mail or aircraft in this validation checklist is equivalent to the Union and Iceland, Norway and Switzerland bound air cargo or air mail or aircraft."/>
          </p>
       </note>
-      <note eId="note_19" marker="19" kind="footnote">
-         <p>
-            <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="11 March 2008" date="2008-03-11"/>
-            <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="97"
-                 date="2008-04-09"
-                 page="72">
-               <t v="OJ L 97, 9.4.2008, p. 72"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_20" marker="20" kind="footnote">
-         <p>
-            <t v="Commission Regulation (EEC) No 2454/93 of "/>
-            <date asWritten="2 July 1993" date="1993-07-02"/>
-            <t v=" laying down provisions for the implementation of Council Regulation (EEC) No 2913/92 establishing the Community Customs Code ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="253"
-                 date="1993-10-11"
-                 page="1">
-               <t v="OJ L 253, 11.10.1993, p. 1"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_21" marker="21" kind="footnote">
-         <p>
-            <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="11 March 2008" date="2008-03-11"/>
-            <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="97"
-                 date="2008-04-09"
-                 page="72">
-               <t v="OJ L 97, 9.4.2008, p. 72"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_22" marker="22" kind="footnote">
+      <deleted>
+         <provenance amendingAct="32022R1174"
+                     action="deleted"
+                     location="AR:1 .AND. AX:0;PT:23"
+                     marker="O016001M025000"/>
+         <note eId="note_19" marker="19" kind="footnote">
+            <p>
+               <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
+               <date asWritten="11 March 2008" date="2008-03-11"/>
+               <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
+               <ref kind="oj"
+                    series="L"
+                    number="97"
+                    date="2008-04-09"
+                    page="72">
+                  <t v="OJ L 97, 9.4.2008, p. 72"/>
+               </ref>
+               <t v=")."/>
+            </p>
+         </note>
+         <note eId="note_20" marker="19" kind="footnote">
+            <p>
+               <t v="Commission Regulation (EEC) No 2454/93 of "/>
+               <date asWritten="2 July 1993" date="1993-07-02"/>
+               <t v=" laying down provisions for the implementation of Council Regulation (EEC) No 2913/92 establishing the Community Customs Code ("/>
+               <ref kind="oj"
+                    series="L"
+                    number="253"
+                    date="1993-10-11"
+                    page="1">
+                  <t v="OJ L 253, 11.10.1993, p. 1"/>
+               </ref>
+               <t v=")."/>
+            </p>
+         </note>
+         <note eId="note_21" marker="19" kind="footnote">
+            <p>
+               <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
+               <date asWritten="11 March 2008" date="2008-03-11"/>
+               <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
+               <ref kind="oj"
+                    series="L"
+                    number="97"
+                    date="2008-04-09"
+                    page="72">
+                  <t v="OJ L 97, 9.4.2008, p. 72"/>
+               </ref>
+               <t v=")."/>
+            </p>
+         </note>
+      </deleted>
+      <note eId="note_22" marker="19" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
             <date asWritten="11 March 2008" date="2008-03-11"/>
@@ -32554,7 +32422,7 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_23" marker="23" kind="footnote">
+      <note eId="note_23" marker="20" kind="footnote">
          <p>
             <t v="Commission Implementing Regulation (EU) 2015/1998 of "/>
             <date asWritten="5 November 2015" date="2015-11-05"/>
@@ -32573,7 +32441,7 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_24" marker="24" kind="footnote">
+      <note eId="note_24" marker="21" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
             <date asWritten="11 March 2008" date="2008-03-11"/>
@@ -32588,7 +32456,7 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_25" marker="25" kind="footnote">
+      <note eId="note_25" marker="22" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
             <date asWritten="11 March 2008" date="2008-03-11"/>
@@ -32603,7 +32471,7 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_26" marker="26" kind="footnote">
+      <note eId="note_26" marker="23" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
             <date asWritten="11 March 2008" date="2008-03-11"/>
@@ -32618,7 +32486,7 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_27" marker="27" kind="footnote">
+      <note eId="note_27" marker="24" kind="footnote">
          <p>
             <t v="Directive (EU) 2016/681 of the European Parliament and of the Council of "/>
             <date asWritten="27 April 2016" date="2016-04-27"/>
@@ -32633,7 +32501,7 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_28" marker="28" kind="footnote">
+      <note eId="note_28" marker="25" kind="footnote">
          <p>
             <t v="Directive (EU) 2017/541 of the European Parliament and of the Council of "/>
             <date asWritten="15 March 2017" date="2017-03-15"/>
@@ -32644,7 +32512,7 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_29" marker="29" kind="footnote">
+      <note eId="note_29" marker="26" kind="footnote">
          <p>
             <t v="Regulation (EC) No 765/2008 of the European Parliament and of the Council of "/>
             <date asWritten="9 July 2008" date="2008-07-09"/>
@@ -32659,7 +32527,7 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_30" marker="30" kind="footnote">
+      <note eId="note_30" marker="27" kind="footnote">
          <p>
             <t v="Commission Decision (EU, Euratom) 2015/444 of "/>
             <date asWritten="13 March 2015" date="2015-03-13"/>
@@ -32674,7 +32542,7 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_31" marker="31" kind="footnote">
+      <note eId="note_31" marker="28" kind="footnote">
          <p>
             <t v="Council Recommendation 1999/519/EC of "/>
             <date asWritten="12 July 1999" date="1999-07-12"/>
@@ -32689,7 +32557,7 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_32" marker="32" kind="footnote">
+      <note eId="note_32" marker="29" kind="footnote">
          <p>
             <t v="Directive 2013/35/EU of the European Parliament and of the Council of "/>
             <date asWritten="26 June 2013" date="2013-06-26"/>
@@ -32704,7 +32572,7 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_33" marker="33" kind="footnote">
+      <note eId="note_33" marker="30" kind="footnote">
          <p>
             <t v="Should there be a need, this letter of understanding may be supplemented with additional details and amended as needed in order to specify the roles of the appropriate authorities, and to determine its scope of application."/>
          </p>

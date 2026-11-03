@@ -138,12 +138,6 @@
                </list>
             </unit>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_2" kind="article">
             <num>
                <t v="Article 2"/>
@@ -164,12 +158,6 @@
                </unit>
             </list>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_3" kind="article">
             <num>
                <t v="Article 3"/>
@@ -178,12 +166,6 @@
                <t v="The names referred to in the Annexes shall be reserved for the products defined and must be used commercially to designate those products."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_4" kind="article">
             <num>
                <t v="Article 4"/>
@@ -241,7 +223,7 @@
                         <t v="the net quantity expressed in the following units of mass: kilograms or grams. Until the end of the transitional period during which use of the imperial units of measurement contained in Chapter D of the Annex to Council Directive 71/354/EEC of 18 October 1971 on the approximation of the laws of the Member States relating to units of measurement"/>
                         <noteRef href="#note_1" marker="1"/>
                         <t v=" , as last amended by Directive 76/770/EEC"/>
-                        <noteRef href="#note_2" marker="2"/>
+                        <noteRef href="#note_2" marker="1"/>
                         <t v=" , is authorized in the Community, Ireland and the United Kingdom may permit the quantity to be expressed only in imperial units of measurement calculated on the basis of the following conversion rates:"/>
                      </p>
                      <table cols="2">
@@ -352,12 +334,6 @@
                </unit>
             </unit>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_5" kind="article">
             <num>
                <t v="Article 5"/>
@@ -366,12 +342,6 @@
                <t v="Without prejudice to Community provisions to be adopted in the field of health and hygiene in connection with the basic materials referred to in Annexes I and II, such products must be subjected to heat treatment which will render the phosphatase negative."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_6" kind="article">
             <num>
                <t v="Article 6"/>
@@ -410,12 +380,6 @@
                </list>
             </unit>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_7" kind="article">
             <num>
                <t v="Article 7"/>
@@ -445,12 +409,6 @@
                </p>
             </unit>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_8" kind="article">
             <num>
                <t v="Article 8"/>
@@ -459,12 +417,6 @@
                <t v="The Council, acting on a proposal from the Commission, shall adopt where necessary purity criteria for the technological adjuvants referred to in the Annexes."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_9" kind="article">
             <num>
                <t v="Article 9"/>
@@ -491,12 +443,6 @@
                </unit>
             </list>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_10" kind="article">
             <provenance amendingAct="32003R0807"
                         action="replaced"
@@ -511,7 +457,7 @@
                </num>
                <p>
                   <t v="The Commission shall be assisted by the Standing Committee on the Food Chain and Animal Health set up by Article 58 of Regulation (EC) No 178/2002"/>
-                  <noteRef href="#note_3" marker="3"/>
+                  <noteRef href="#note_3" marker="1"/>
                   <t v="."/>
                </p>
             </unit>
@@ -522,7 +468,7 @@
                <unit eId="art_10/par_2/sub_1" kind="subparagraph">
                   <p>
                      <t v="Where reference is made to this Article, Articles 5 and 7 of Decision 1999/468/EC"/>
-                     <noteRef href="#note_4" marker="4"/>
+                     <noteRef href="#note_4" marker="1"/>
                      <t v=" shall apply."/>
                   </p>
                </unit>
@@ -541,12 +487,6 @@
                </p>
             </unit>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_11" kind="article">
             <num>
                <t v="Article 11"/>
@@ -555,12 +495,6 @@
                <t v="This Directive shall not apply to products referred to in Article 1 intended for export to third countries."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_12" kind="article">
             <num>
                <t v="Article 12"/>
@@ -572,7 +506,7 @@
                <unit eId="art_12/idt_1" kind="indent">
                   <p>
                      <t v="permit trade in products complying with this Directive not later than two years after its notification"/>
-                     <noteRef href="#note_5" marker="5"/>
+                     <noteRef href="#note_5" marker="1"/>
                      <t v=","/>
                   </p>
                </unit>
@@ -583,12 +517,6 @@
                </unit>
             </list>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="art_13" kind="article">
             <num>
                <t v="Article 13"/>
@@ -1164,7 +1092,7 @@
                         <t v="rennet meeting the requirements of Regulation (EC) No 1332/2008 of the European Parliament and of the Council of "/>
                         <date asWritten="16 December 2008" date="2008-12-16"/>
                         <t v=" on food enzymes"/>
-                        <noteRef href="#note_6" marker="6"/>
+                        <noteRef href="#note_6" marker="1"/>
                         <t v=";"/>
                      </p>
                   </unit>
@@ -1228,12 +1156,6 @@
                </table>
             </unit>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
          <unit eId="anx_II" kind="annex" eurlexAnchor="2">
             <num>
                <t v="ANNEX II"/>
@@ -1560,67 +1482,73 @@
       </deleted>
    </annexes>
    <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="243"
-                 date="1971-10-29"
-                 page="29">
-               <t v="OJ No L 243, 29.10.1971, p. 29"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="262"
-                 date="1976-09-27"
-                 page="204">
-               <t v="OJ No L 262, 27.9.1976, p. 204"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <ref kind="oj" series="L" number="31" date="2002-02-01" page="1">
-               <t v="OJ L 31, 1.2.2002, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="184"
-                 date="1999-07-17"
-                 page="23">
-               <t v="OJ L 184, 17.7.1999, p. 23"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
-         <p>
-            <t v="This Directive was notified to the Member States on 2 August 1983."/>
-         </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="354"
-                 date="2008-12-31"
-                 page="7">
-               <t v="OJ L 354, 31.12.2008, p. 7"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
+      <deleted>
+         <provenance amendingAct="32015L2203"
+                     action="deleted"
+                     location="AR:8;AL:1"
+                     marker="O004001M001000"/>
+         <note eId="note_1" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="243"
+                    date="1971-10-29"
+                    page="29">
+                  <t v="OJ No L 243, 29.10.1971, p. 29"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_2" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="262"
+                    date="1976-09-27"
+                    page="204">
+                  <t v="OJ No L 262, 27.9.1976, p. 204"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_3" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj" series="L" number="31" date="2002-02-01" page="1">
+                  <t v="OJ L 31, 1.2.2002, p. 1"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_4" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="184"
+                    date="1999-07-17"
+                    page="23">
+                  <t v="OJ L 184, 17.7.1999, p. 23"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_5" marker="1" kind="footnote">
+            <p>
+               <t v="This Directive was notified to the Member States on 2 August 1983."/>
+            </p>
+         </note>
+         <note eId="note_6" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="354"
+                    date="2008-12-31"
+                    page="7">
+                  <t v="OJ L 354, 31.12.2008, p. 7"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+      </deleted>
    </notes>
 </legalText>
 

@@ -321,7 +321,7 @@
 
   <xsl:accumulator name="f:footnotes-ended" as="xs:integer" initial-value="0">
     <xsl:accumulator-rule match="NOTE[not(@NOTE.REF)][not(@TYPE = ('TABLE', 'QUOTATION'))][not(@NUMBERING = 'STAR')]
-                                     [not(@NUMBER.ORG) or f:renumbered(.)]"
+                                     [not(@NUMBER.ORG) or f:renumbered(.)][empty(f:deletions(.))]"
                           phase="end" select="$value + 1"/>
   </xsl:accumulator>
 

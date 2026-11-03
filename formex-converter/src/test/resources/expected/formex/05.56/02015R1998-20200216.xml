@@ -5477,12 +5477,6 @@
                   <t v="If the appropriate authority or the regulated agent is no longer satisfied that the account consignor complies with the instructions as contained in Attachment 6-D, the regulated agent shall immediately withdraw the status of account consignor."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32017R0815"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:22"
-                        marker="O002001M022000"/>
             <unit eId="anx/pnt_6.5.6" kind="level" depth="3">
                <num>
                   <t v="6.5.6"/>

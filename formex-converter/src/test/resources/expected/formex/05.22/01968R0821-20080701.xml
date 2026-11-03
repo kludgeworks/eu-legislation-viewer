@@ -84,12 +84,6 @@
                   <t v="Having regard to the Treaty establishing the European Economic Community;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32008R0508"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/cit_2" kind="citation">
                <p>
                   <t v="Having regard to Council Regulation No 120/67/EEC"/>
@@ -118,12 +112,6 @@
                   <t v=";"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32008R0508"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_2" kind="recital">
                <p>
                   <t v="Whereas the measures provided for in this Regulation are in accordance with the Opinion of the Management Committee for Cereals;"/>
@@ -157,12 +145,6 @@
                <t v="For the granting of export refunds pearled grains and hulled grains of cereals shall be those which possess the characteristics listed in the Annex."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32008R0508"
-                     action="deleted"
-                     location="AR:2"
-                     marker="O002001M001000"/>
          <unit eId="art_2" kind="article">
             <num>
                <t v="Article 2"/>
@@ -404,13 +386,19 @@
       </deleted>
    </annexes>
    <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <t v="OJ No 117, "/>
-            <date asWritten="13.6.1967" date="1967-06-13"/>
-            <t v=", p. 2269/67."/>
-         </p>
-      </note>
+      <deleted>
+         <provenance amendingAct="32008R0508"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O002001M001000"/>
+         <note eId="note_1" marker="1" kind="footnote">
+            <p>
+               <t v="OJ No 117, "/>
+               <date asWritten="13.6.1967" date="1967-06-13"/>
+               <t v=", p. 2269/67."/>
+            </p>
+         </note>
+      </deleted>
    </notes>
 </legalText>
 

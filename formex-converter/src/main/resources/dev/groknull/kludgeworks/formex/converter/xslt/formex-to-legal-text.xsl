@@ -287,14 +287,32 @@
           </xsl:variable>
           <xsl:if test="$notes or $attached-notes">
             <notes>
-              <xsl:apply-templates select="$notes" mode="note"/>
+              <!-- a note in text an amendment deleted is kept, as the text is, inside <deleted> -->
+              <xsl:for-each-group select="$notes" group-adjacent="string-join(f:ids(f:deletions(.)), ' ')">
+                <xsl:choose>
+                  <xsl:when test="current-grouping-key() = ''">
+                    <xsl:apply-templates select="current-group()" mode="note"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:variable name="notes" as="element()*">
+                      <xsl:apply-templates select="current-group()" mode="note"/>
+                    </xsl:variable>
+                    <xsl:sequence select="f:wrap-deleted(f:deletions(.), $notes)"/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:for-each-group>
               <xsl:sequence select="$attached-notes"/>
             </notes>
           </xsl:if>
         </legalText>
       </xsl:document>
     </xsl:variable>
-    <xsl:apply-templates select="$text/lt:legalText" mode="f:ambiguity"/>
+    <xsl:variable name="merged" as="document-node()">
+      <xsl:document>
+        <xsl:apply-templates select="$text/lt:legalText" mode="f:deletions"/>
+      </xsl:document>
+    </xsl:variable>
+    <xsl:apply-templates select="$merged/lt:legalText" mode="f:ambiguity"/>
   </xsl:template>
 
   <!-- ============================================================ labels the source repeats -->

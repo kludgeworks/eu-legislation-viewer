@@ -89,12 +89,6 @@
                   <t v="Having regard to the Treaty establishing the European Community,"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32006R1664"
-                        action="deleted"
-                        location="AR:2 .AND. AX:IV;PG:40"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/cit_2" kind="citation">
                <p>
                   <t v="Having regard to Council Directive 91/493/EEC of 22 July 1991 laying down the health conditions for the production and the placing on the market of fishery products"/>
@@ -115,23 +109,11 @@
                   <t v="Whereas a group of Commission experts has conducted an inspection visit to Peru to verify the conditions under which fishery products are produced, stored and dispatched to the Community;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32006R1664"
-                        action="deleted"
-                        location="AR:2 .AND. AX:IV;PG:40"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_2" kind="recital">
                <p>
                   <t v="Whereas the provisions of Peruvian legislation on health inspection and monitoring of fishery products may be considered equivalent to those laid down in Directive 91/493/EEC;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32006R1664"
-                        action="deleted"
-                        location="AR:2 .AND. AX:IV;PG:40"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_3" kind="recital">
                <p>
                   <t v="Whereas, in Peru the "/>
@@ -145,56 +127,26 @@
                   <t v=") is capable of effectively verifying the application of the laws in force;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32006R1664"
-                        action="deleted"
-                        location="AR:2 .AND. AX:IV;PG:40"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_4" kind="recital">
                <p>
                   <t v="Whereas the procedure for obtaining the health certificate referred to in Article 11 (4) (a) of Directive 91/493/EEC must also cover the definition of a model certificate, the minimum requirements regarding the language(s) in which it must be drafted and the grade of the person empowered to sign it;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32006R1664"
-                        action="deleted"
-                        location="AR:2 .AND. AX:IV;PG:40"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_5" kind="recital">
                <p>
                   <t v="Whereas, pursuant to Article 11 (4) (b) of Directive 91/493/EEC, a mark should be affixed to packages of fishery products giving the name of the third country and the approval number of the establishment of origin;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32006R1664"
-                        action="deleted"
-                        location="AR:2 .AND. AX:IV;PG:40"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_6" kind="recital">
                <p>
                   <t v="Whereas, pursuant to Article 11 (4) (c) of Directive 91/493/EEC, a list of approved establishments must be drawn up; whereas that list must be drawn up on the basis of a communication from the Digesa to the Commission; whereas it is therefore for the Digesa to ensure compliance with the provisions laid down to that end in Article 11 (4) of Directive 91/493/EEC;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32006R1664"
-                        action="deleted"
-                        location="AR:2 .AND. AX:IV;PG:40"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_7" kind="recital">
                <p>
                   <t v="Whereas the Digesa has provided official assurances regarding compliance with the rules set out in Chapter V of the Annex to Directive 91/493/EEC and regarding the fulfilment of requirements equivalent to those laid down by that Directive for the approval of establishments;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32006R1664"
-                        action="deleted"
-                        location="AR:2 .AND. AX:IV;PG:40"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_8" kind="recital">
                <p>
                   <t v="Whereas the measures provided for in this Decision are in accordance with the opinion of the Standing Veterinary Committee,"/>
@@ -232,12 +184,6 @@
                <t v=" (Digesa) shall be the competent authority in Peru for verifying and certifying compliance of fishery and aquaculture products with the requirements of Directive 91/493/EEC."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32006R1664"
-                     action="deleted"
-                     location="AR:2 .AND. AX:IV;PG:40"
-                     marker="O002001M001000"/>
          <unit eId="art_2" kind="article">
             <num>
                <t v="Article 2"/>
@@ -276,12 +222,6 @@
                </unit>
             </list>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32006R1664"
-                     action="deleted"
-                     location="AR:2 .AND. AX:IV;PG:40"
-                     marker="O002001M001000"/>
          <unit eId="art_3" kind="article">
             <num>
                <t v="Article 3"/>
@@ -303,12 +243,6 @@
                </p>
             </unit>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32006R1664"
-                     action="deleted"
-                     location="AR:2 .AND. AX:IV;PG:40"
-                     marker="O002001M001000"/>
          <unit eId="art_4" kind="article">
             <num>
                <t v="Article 4"/>
@@ -317,12 +251,6 @@
                <t v="This Decision shall apply from 1 February 1995."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32006R1664"
-                     action="deleted"
-                     location="AR:2 .AND. AX:IV;PG:40"
-                     marker="O002001M001000"/>
          <unit eId="art_5" kind="article">
             <num>
                <t v="Article 5"/>
@@ -346,12 +274,6 @@
             <figure src="L_1995116EN.01004301.tif" content="other"/>
             <figure src="L_1995116EN.01004401.tif" content="other"/>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32006R1664"
-                     action="deleted"
-                     location="AR:2 .AND. AX:IV;PG:40"
-                     marker="O002001M001000"/>
          <unit eId="anx_B" kind="annex" eurlexAnchor="2">
             <num>
                <changed amendingAct="31995D0311"
@@ -1720,18 +1642,24 @@
       </deleted>
    </annexes>
    <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="268"
-                 date="1991-09-01"
-                 page="15">
-               <t v="OJ No L 268, 24. 9. 1991, p. 15"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
+      <deleted>
+         <provenance amendingAct="32006R1664"
+                     action="deleted"
+                     location="AR:2 .AND. AX:IV;PG:40"
+                     marker="O002001M001000"/>
+         <note eId="note_1" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="268"
+                    date="1991-09-01"
+                    page="15">
+                  <t v="OJ No L 268, 24. 9. 1991, p. 15"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+      </deleted>
    </notes>
 </legalText>
 

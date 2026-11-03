@@ -2771,12 +2771,6 @@
                         </p>
                      </unit>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32003R0359"
-                              action="deleted"
-                              location="AR:1"
-                              marker="O005001M001000"/>
                   <unit eId="art_38/par_3" kind="paragraph">
                      <num>
                         <t v="3."/>
@@ -3219,7 +3213,7 @@
                      </num>
                      <p>
                         <t v="Standard triglycerides"/>
-                        <noteRef href="#note_24" marker="22"/>
+                        <noteRef href="#note_24" marker="21"/>
                         <t v=", saturated as well as cholesterol for standardizing a standard milk fat according to section 6.5.4."/>
                      </p>
                   </unit>
@@ -3277,7 +3271,7 @@
                      </num>
                      <p>
                         <t v="Stationary phase, 3-% OV-1 on 125/150 μm (100/120 mesh) Gas ChromQ."/>
-                        <noteRef href="#note_25" marker="23"/>
+                        <noteRef href="#note_25" marker="21"/>
                      </p>
                   </unit>
                   <unit eId="anx_II/pnt_4/pnt_4.10" kind="point">
@@ -3413,7 +3407,7 @@
                      </num>
                      <p>
                         <t v="1 to 3 ml Extrelut column"/>
-                        <noteRef href="#note_26" marker="24"/>
+                        <noteRef href="#note_26" marker="21"/>
                         <t v=" with silica gel. This column can alternatively be used for the extraction for obtaining milk fat."/>
                      </p>
                   </unit>
@@ -6013,12 +6007,6 @@
                </p>
             </unit>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32001R0213"
-                     action="deleted"
-                     location="AR:20;PT:3"
-                     marker="O003001M003000"/>
          <unit eId="anx_III" kind="annex" eurlexAnchor="3">
             <num>
                <t v="ANNEX III"/>
@@ -6343,7 +6331,7 @@
                         <td header="true">
                            <p>
                               <t v="No"/>
-                              <noteRef href="#note_27" marker="25"/>
+                              <noteRef href="#note_27" marker="21"/>
                            </p>
                         </td>
                         <td header="true">
@@ -6388,7 +6376,7 @@
                               <emphasis kind="i">
                                  <t v="Good"/>
                               </emphasis>
-                              <noteRef href="#note_28" marker="26"/>
+                              <noteRef href="#note_28" marker="21"/>
                            </p>
                            <p>
                               <t v="No evident defects"/>
@@ -6770,7 +6758,7 @@
                         <td header="true">
                            <p>
                               <t v="No"/>
-                              <noteRef href="#note_27" marker="25"/>
+                              <noteRef href="#note_27" marker="21"/>
                            </p>
                         </td>
                         <td header="true">
@@ -6815,7 +6803,7 @@
                               <emphasis kind="i">
                                  <t v="Good"/>
                               </emphasis>
-                              <noteRef href="#note_28" marker="26"/>
+                              <noteRef href="#note_28" marker="21"/>
                            </p>
                         </td>
                      </tr>
@@ -7086,7 +7074,7 @@
                         <td header="true">
                            <p>
                               <t v="No"/>
-                              <noteRef href="#note_27" marker="25"/>
+                              <noteRef href="#note_27" marker="21"/>
                            </p>
                         </td>
                         <td header="true">
@@ -7131,7 +7119,7 @@
                               <emphasis kind="i">
                                  <t v="Good"/>
                               </emphasis>
-                              <noteRef href="#note_28" marker="26"/>
+                              <noteRef href="#note_28" marker="21"/>
                            </p>
                            <p>
                               <t v="No evident defects"/>
@@ -7687,7 +7675,7 @@
                      <t v="21."/>
                   </num>
                   <t v="unclean"/>
-                  <noteRef href="#note_29" marker="27"/>
+                  <noteRef href="#note_29" marker="21"/>
                </p>
                <p>
                   <num>
@@ -8556,49 +8544,55 @@
             <t v="See Annex I to Regulation (EC) No 213/2001."/>
          </p>
       </note>
-      <note eId="note_23" marker="21" kind="footnote">
-         <p>
-            <t v="Suited methods have already been described, see D. Precht and J. Molkentin: Quantitative triglyceride analysis using short capillary columns, Chrompack News 4, 16-17 (1993)."/>
-         </p>
-      </note>
-      <note eId="note_24" marker="22" kind="footnote">
-         <p>
-            <t v="Suitable products are commercially available."/>
-         </p>
-      </note>
-      <note eId="note_25" marker="23" kind="footnote">
-         <p>
-            <t v="Trade names such as, e.g. Extrelut, Gas ChromQ, Chrompack are examples for suited products available in the specialised trade. This information shall serve the purpose of easy handling of the standard by the user and does not represent a request of the product. The indication of grain was transferred to the SI-unit μm according to BS 410:1988 "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="British Standard Specification for test sieves"/>
-            </quote>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_26" marker="24" kind="footnote">
-         <p>
-            <t v="See footnote 3 on page 23."/>
-         </p>
-      </note>
-      <note eId="note_27" marker="25" kind="footnote">
-         <p>
-            <t v="Table 2."/>
-         </p>
-      </note>
-      <note eId="note_28" marker="26" kind="footnote">
-         <p>
-            <t v="The defects mentioned under "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="good"/>
-            </quote>
-            <t v=" are only very small deviations from the ideal type."/>
-         </p>
-      </note>
-      <note eId="note_29" marker="27" kind="footnote">
-         <p>
-            <t v="This designation should be used as seldom as possible and only when the defect cannot be described more accurately."/>
-         </p>
-      </note>
+      <deleted>
+         <provenance amendingAct="32001R0213"
+                     action="deleted"
+                     location="AR:20;PT:3"
+                     marker="O003001M003000"/>
+         <note eId="note_23" marker="21" kind="footnote">
+            <p>
+               <t v="Suited methods have already been described, see D. Precht and J. Molkentin: Quantitative triglyceride analysis using short capillary columns, Chrompack News 4, 16-17 (1993)."/>
+            </p>
+         </note>
+         <note eId="note_24" marker="21" kind="footnote">
+            <p>
+               <t v="Suitable products are commercially available."/>
+            </p>
+         </note>
+         <note eId="note_25" marker="21" kind="footnote">
+            <p>
+               <t v="Trade names such as, e.g. Extrelut, Gas ChromQ, Chrompack are examples for suited products available in the specialised trade. This information shall serve the purpose of easy handling of the standard by the user and does not represent a request of the product. The indication of grain was transferred to the SI-unit μm according to BS 410:1988 "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="British Standard Specification for test sieves"/>
+               </quote>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_26" marker="21" kind="footnote">
+            <p>
+               <t v="See footnote 3 on page 23."/>
+            </p>
+         </note>
+         <note eId="note_27" marker="21" kind="footnote">
+            <p>
+               <t v="Table 2."/>
+            </p>
+         </note>
+         <note eId="note_28" marker="21" kind="footnote">
+            <p>
+               <t v="The defects mentioned under "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="good"/>
+               </quote>
+               <t v=" are only very small deviations from the ideal type."/>
+            </p>
+         </note>
+         <note eId="note_29" marker="21" kind="footnote">
+            <p>
+               <t v="This designation should be used as seldom as possible and only when the defect cannot be described more accurately."/>
+            </p>
+         </note>
+      </deleted>
    </notes>
 </legalText>
 

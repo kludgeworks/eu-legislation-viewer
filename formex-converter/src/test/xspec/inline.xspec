@@ -111,6 +111,14 @@
               test="deep-equal($x:result/*:noteRef/@marker ! string(), ('1', '2', '3', '4', '*'))"/>
   </x:scenario>
 
+  <x:scenario label="A note in text an amendment deleted">
+    <x:context mode="block" select="/CONS.ACT/P" xmlns="">
+      <CONS.ACT><P>a<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE> <?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" LEVEL="TEXT" ACTIVE.DOC="32022R1174" ACTIVE.LOC="PT:23"?>b<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE><?CLG.MDFC ID="C1" IDREF="O1"?> c<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE></P></CONS.ACT>
+    </x:context>
+    <x:expect label="isn't counted: the next live note takes the number, as EUR-Lex has it"
+              test="deep-equal($x:result//*:noteRef/@marker ! string(), ('1', '2', '2'))"/>
+  </x:scenario>
+
   <x:scenario label="An unknown inline element" catch="yes">
     <x:context mode="block" xmlns=""><P>a <NOT.FORMEX>x</NOT.FORMEX></P></x:context>
     <x:expect label="stops the transformation" test="$x:result?err?code = xs:QName('f:unknown')"

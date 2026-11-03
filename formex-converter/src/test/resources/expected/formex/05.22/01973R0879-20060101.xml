@@ -84,12 +84,6 @@
                   <t v="Having regard to the Treaty establishing the European Economic Community;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32005R1952"
-                        action="deleted"
-                        location="AR:18;PA:2"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/cit_2" kind="citation">
                <p>
                   <t v="Having regard to Council Regulation (EEC) No 1696/71"/>
@@ -97,12 +91,6 @@
                   <t v=" of 26 July 1971 on the common organization of the market in hops, and in particular Article 10 (1) thereof;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32005R1952"
-                        action="deleted"
-                        location="AR:18;PA:2"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/cit_3" kind="citation">
                <p>
                   <t v="Having regard to the proposal from the Commission;"/>
@@ -121,12 +109,6 @@
                   <t v="Whereas provision should be made to adopt conditions and general rules to implement the granting of aid given by the Member States to producer groups, and also the procedure for the reimbursement of this aid by the European Agricultural Guidance and Guarantee Fund, guidance section;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32005R1952"
-                        action="deleted"
-                        location="AR:18;PA:2"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_2" kind="recital">
                <p>
                   <t v="Whereas in order to ensure identical conditions for the granting and reimbursement of aid for the creation and operation of producer groups, the procedure for calculating the value of the marketed output covered by the activities of producer groups, and the management costs of such groups, should be specified; whereas this calculation must be made on the basis of authentic accounting data; whereas, however, in view of the difficulty of obtaining such data in certain cases, an alternative fixed-rate method should be adopted; whereas "/>
@@ -136,12 +118,6 @@
                   <t v=" means a period of twelve months; whereas, this period, in the case of the first year, should run from the date of recognition;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32005R1952"
-                        action="deleted"
-                        location="AR:18;PA:2"
-                        marker="O002001M001000"/>
             <unit eId="pbl_1/rct_3" kind="recital">
                <p>
                   <t v="Whereas it is necessary to specify the conditions for granting aid for changing to different varieties and for the reorganization of plantations, and in particular to define these operations; whereas to ensure structural effect provision must be made for these operations to be included in the framework of the common rules for production and to cover a minimum area; whereas it is fair that the amount of aid should be limited to the level of the actual costs entailed by the various operations;"/>
@@ -416,7 +392,7 @@
                </num>
                <p>
                   <t v="The Commission shall take a decision in regard to requests for reimbursement in one or more payments in accordance with the procedure laid down in Article 7 (1) of Council Regulation (EEC) No 729/70"/>
-                  <noteRef href="#note_2" marker="2"/>
+                  <noteRef href="#note_2" marker="1"/>
                   <t v=" of 21 April 1970 on the financing of the common agricultural policy."/>
                </p>
             </unit>
@@ -447,30 +423,36 @@
       </deleted>
    </conclusions>
    <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="175"
-                 date="1971-09-01"
-                 page="1">
-               <t v="OJ No L 175, 4. 8. 1971, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="94"
-                 date="1970-09-01"
-                 page="13">
-               <t v="OJ No L 94, 28. 4. 1970, p. 13"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
+      <deleted>
+         <provenance amendingAct="32005R1952"
+                     action="deleted"
+                     location="AR:18;PA:2"
+                     marker="O002001M001000"/>
+         <note eId="note_1" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="175"
+                    date="1971-09-01"
+                    page="1">
+                  <t v="OJ No L 175, 4. 8. 1971, p. 1"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_2" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="94"
+                    date="1970-09-01"
+                    page="13">
+                  <t v="OJ No L 94, 28. 4. 1970, p. 13"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+      </deleted>
    </notes>
 </legalText>
 

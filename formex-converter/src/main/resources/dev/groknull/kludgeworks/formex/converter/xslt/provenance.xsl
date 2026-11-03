@@ -18,6 +18,7 @@
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
+    xmlns:lt="https://kludgeworks.groknull.dev/ns/legal-text/1"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all">
 
@@ -137,6 +138,14 @@
     </xsl:for-each>
   </xsl:function>
 
+  <!-- the deletions open over $n: it is in text an amendment deleted (a note in it is in force no
+       longer, nor numbered) -->
+  <xsl:function name="f:deletions" as="processing-instruction()*">
+    <xsl:param name="n" as="node()"/>
+    <xsl:variable name="open" as="map(xs:string, processing-instruction())" select="$n ! accumulator-before('f:open')"/>
+    <xsl:sequence select="(map:keys($open) ! $open(.))[f:is-deletion(.)]/self::node()"/>
+  </xsl:function>
+
   <!-- content an amendment deleted, but the consolidation keeps, goes inside <deleted> -->
   <xsl:function name="f:wrap-deleted" as="element()*">
     <xsl:param name="markers" as="processing-instruction()*"/>
@@ -157,5 +166,29 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:function>
+
+  <!-- One deletion, one <deleted>. The units of a passage an amendment deleted are wrapped one by
+       one, as they are made; here a run of them, side by side, deleted by the same markers, becomes
+       one, as EUR-Lex shows one mark for it (Attachment 6-D of 02015R1998-20260322: 13 units, one
+       deletion by 32022R1174). Deleted words in running text are left as they are. -->
+  <xsl:mode name="f:deletions" on-no-match="shallow-copy" on-multiple-match="fail"/>
+
+  <xsl:template match="*[lt:deleted/lt:provenance]" mode="f:deletions">
+    <xsl:copy>
+      <xsl:apply-templates select="@*" mode="#current"/>
+      <xsl:for-each-group select="node()" group-adjacent="if (self::lt:deleted/lt:provenance) then string-join(lt:provenance/@marker, ' ') else generate-id()">
+        <xsl:choose>
+          <xsl:when test="self::lt:deleted/lt:provenance">
+            <xsl:copy>
+              <xsl:apply-templates select="@*, lt:provenance, current-group()/(node() except lt:provenance)" mode="#current"/>
+            </xsl:copy>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select="current-group()" mode="#current"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each-group>
+    </xsl:copy>
+  </xsl:template>
 
 </xsl:stylesheet>

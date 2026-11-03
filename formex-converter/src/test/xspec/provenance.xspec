@@ -75,6 +75,24 @@
     </x:expect>
   </x:scenario>
 
+  <x:scenario label="A deletion over several units, wrapped one by one">
+    <x:context mode="f:deletions" xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter">
+      <unit eId="anx" kind="annex">
+        <deleted><provenance amendingAct="32022R1174" action="deleted" marker="O1"/><unit eId="anx/level_1" kind="level"/></deleted>
+        <deleted><provenance amendingAct="32022R1174" action="deleted" marker="O1"/><unit eId="anx/level_2" kind="level"/></deleted>
+        <deleted><provenance amendingAct="32026R0449" action="deleted" marker="O2"/><unit eId="anx/level_3" kind="level"/></deleted>
+        <unit eId="anx/level_4" kind="level"/>
+      </unit>
+    </x:context>
+    <x:expect label="becomes one deleted for each deletion, as EUR-Lex shows one mark">
+      <unit eId="anx" kind="annex">
+        <deleted><provenance amendingAct="32022R1174" action="deleted" marker="O1"/><unit eId="anx/level_1" kind="level"/><unit eId="anx/level_2" kind="level"/></deleted>
+        <deleted><provenance amendingAct="32026R0449" action="deleted" marker="O2"/><unit eId="anx/level_3" kind="level"/></deleted>
+        <unit eId="anx/level_4" kind="level"/>
+      </unit>
+    </x:expect>
+  </x:scenario>
+
   <x:scenario label="A renumbered point">
     <x:context mode="block" xmlns="">
       <LIST TYPE="alpha"><ITEM><NP><NO.P><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" LEVEL="TEXT" ACTIVE.DOC="32026R0449" ACTIVE.LOC="PT:16"?>(c)<?CLG.MDFC ID="C1" IDREF="O1"?></NO.P><TXT>known supplier</TXT></NP></ITEM></LIST>

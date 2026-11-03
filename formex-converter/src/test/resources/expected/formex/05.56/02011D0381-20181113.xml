@@ -135,12 +135,6 @@
                </unit>
             </list>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32018D1702"
-                     action="deleted"
-                     location="AR:6"
-                     marker="O002001M001000"/>
          <unit eId="art_2" kind="article">
             <num>
                <t v="Article 2"/>
@@ -232,12 +226,6 @@
                </unit>
             </list>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32018D1702"
-                     action="deleted"
-                     location="AR:6"
-                     marker="O002001M001000"/>
          <unit eId="art_3" kind="article">
             <num>
                <t v="Article 3"/>
@@ -250,12 +238,6 @@
                <t v=" as defined in Article 1 of this Decision and shall comply with the criteria as well as the related assessment and verification requirements set out in the Annex to this Decision."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32018D1702"
-                     action="deleted"
-                     location="AR:6"
-                     marker="O002001M001000"/>
          <unit eId="art_4" kind="article">
             <provenance amendingAct="32015D0877"
                         action="replaced"
@@ -274,12 +256,6 @@
                <t v="."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32018D1702"
-                     action="deleted"
-                     location="AR:6"
-                     marker="O002001M001000"/>
          <unit eId="art_5" kind="article">
             <num>
                <t v="Article 5"/>
@@ -296,12 +272,6 @@
                <t v="."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32018D1702"
-                     action="deleted"
-                     location="AR:6"
-                     marker="O002001M001000"/>
          <unit eId="art_6" kind="article">
             <num>
                <t v="Article 6"/>
@@ -310,12 +280,6 @@
                <t v="Decision 2005/360/EC is repealed."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32018D1702"
-                     action="deleted"
-                     location="AR:6"
-                     marker="O002001M001000"/>
          <unit eId="art_7" kind="article">
             <num>
                <t v="Article 7"/>
@@ -355,12 +319,6 @@
                </p>
             </unit>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32018D1702"
-                     action="deleted"
-                     location="AR:6"
-                     marker="O002001M001000"/>
          <unit eId="art_8" kind="article">
             <num>
                <t v="Article 8"/>
@@ -547,9 +505,9 @@
                   <t v="According to the Article 6(6) of Regulation (EC) No 66/2010 on the EU Ecolabel, the product or any part of it shall not contain substances (in any forms, including nanoforms) meeting the criteria for classification with the hazard statements or risk phrases specified below in accordance with Regulation (EC) No 1272/2008 of the European Parliament and of the Council"/>
                   <noteRef href="#note_1" marker="1"/>
                   <t v=" or Council Directive 67/548/EEC"/>
-                  <noteRef href="#note_2" marker="2"/>
+                  <noteRef href="#note_2" marker="1"/>
                   <t v=" nor shall it contain substances referred to in Article 57 of Regulation (EC) No 1907/2006 of the European Parliament and of the Council"/>
-                  <noteRef href="#note_3" marker="3"/>
+                  <noteRef href="#note_3" marker="1"/>
                   <t v=". The risk phrases below generally refer to substances. Nanoforms intentionally added to the product shall prove compliance with this criterion for any concentration."/>
                </p>
                <p>
@@ -1111,7 +1069,7 @@
                </p>
                <p>
                   <t v="Sufficient data shall be available to allow for the evaluation of the environmental hazards (indicated by the hazard statements H400 – H413 or R-phrases: R 50, R 50/53, R 51/53, R 52, R 52/53, R 53), of the product in accordance with Regulation (EC) No 1272/2008 or Directive 67/548/EEC and Directive 1999/45/EC of the European Parliament and of the Council"/>
-                  <noteRef href="#note_8" marker="4"/>
+                  <noteRef href="#note_8" marker="1"/>
                   <t v="."/>
                </p>
                <p>
@@ -1142,7 +1100,7 @@
                </p>
                <p>
                   <t v="Concentration limits shall be specified in the Safety Data Sheets according to Annex II, paragraph 3.2.1(c) of Commission Regulation (EU) No 453/2010"/>
-                  <noteRef href="#note_9" marker="5"/>
+                  <noteRef href="#note_9" marker="1"/>
                   <t v="."/>
                </p>
             </unit>
@@ -1164,9 +1122,9 @@
                   <unit eId="anx/pnt_Criterion-2/idt_1" kind="indent">
                      <p>
                         <t v="substances appearing in the Union List of priority substances in the field of water policy in Annex X to Directive 2000/60/EC of the European Parliament and of the Council"/>
-                        <noteRef href="#note_10" marker="6"/>
+                        <noteRef href="#note_10" marker="1"/>
                         <t v=" as amended by laid in Decision No 2455/2001/EC of the European Parliament and of the Council"/>
-                        <noteRef href="#note_11" marker="7"/>
+                        <noteRef href="#note_11" marker="1"/>
                         <t v=" and the OSPAR List of Chemicals for Priority Action (http://www.ospar.org/content/content.asp?menu=00950304450000_000000_000000),"/>
                      </p>
                   </unit>
@@ -1219,7 +1177,7 @@
                </p>
                <p>
                   <t v="Acute aquatic toxicity data for each main component shall be stated on each of the following two trophic levels: algae and daphnia"/>
-                  <noteRef href="#note_12" marker="8"/>
+                  <noteRef href="#note_12" marker="1"/>
                   <t v=". The critical concentration for the acute aquatic toxicity for each main component shall be at least 100 mg/L."/>
                </p>
                <p>
@@ -1235,7 +1193,7 @@
                      <t v="Assessment and verification:"/>
                   </emphasis>
                   <t v=" either marine or freshwater toxicity data are accepted. The tests are carried out according to and using relevant test species mentioned in the following guidelines: ISO/DIS 10253 or OECD 201 or Part C.3 of the Annex to Council Regulation (EC) No 440/2008"/>
-                  <noteRef href="#note_13" marker="9"/>
+                  <noteRef href="#note_13" marker="1"/>
                   <t v=" for algae, ISO TC 147/SC5/WG2 or OECD 202 or Part C.2 of the Annex to Regulation (EC) No 440/2008 for daphnia and OECD 203 or Part C.1 of the Annex to Regulation (EC) No 440/2008 for fish. Equivalent test methods as agreed with a competent body are also permitted. Only (72hr)E"/>
                   <emphasis kind="sub">
                      <t v="r"/>
@@ -2690,140 +2648,146 @@
       </deleted>
    </annexes>
    <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="353"
-                 date="2008-12-31"
-                 page="1">
-               <t v="OJ L 353, 31.12.2008, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="P"
-                 number="196"
-                 date="1967-08-16"
-                 page="1">
-               <t v="OJ 196, 16.8.1967, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="396"
-                 date="2006-12-30"
-                 page="1">
-               <t v="OJ L 396, 30.12.2006, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_4" marker="1" kind="table">
-         <p>
-            <t v="As provided for in Regulation (EC) No 1272/2008."/>
-         </p>
-      </note>
-      <note eId="note_5" marker="2" kind="table">
-         <p>
-            <t v="As provided for in Directive 67/548/EEC."/>
-         </p>
-      </note>
-      <note eId="note_6" marker="1" kind="table">
-         <p>
-            <t v="As provided for in Regulation (EC) No 1272/2008."/>
-         </p>
-      </note>
-      <note eId="note_7" marker="2" kind="table">
-         <p>
-            <t v="As provided for in Directive 67/548/EEC."/>
-         </p>
-      </note>
-      <note eId="note_8" marker="4" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="200"
-                 date="1999-07-30"
-                 page="1">
-               <t v="OJ L 200, 30.7.1999, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_9" marker="5" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="133"
-                 date="2010-05-31"
-                 page="1">
-               <t v="OJ L 133, 31.5.2010, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_10" marker="6" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="327"
-                 date="2000-12-22"
-                 page="1">
-               <t v="OJ L 327, 22.12.2000, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_11" marker="7" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="331"
-                 date="2001-12-15"
-                 page="1">
-               <t v="OJ L 331, 15.12.2001, p 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_12" marker="8" kind="footnote">
-         <p>
-            <t v="Crustacean can substitute for daphnia throughout this Decision where marine data is submitted."/>
-         </p>
-      </note>
-      <note eId="note_13" marker="9" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="142"
-                 date="2008-05-31"
-                 page="1">
-               <t v="OJ L 142, 31.5.2008, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_14" marker="*" kind="table">
-         <p>
-            <t v="M is the multiplication factor of 10 for substances that are very toxic to the aquatic environment as from Table 1b in Commission Directive 2006/8/EC ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="19"
-                 date="2006-01-24"
-                 page="12">
-               <t v="OJ L 19, 24.1.2006, p. 12"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
+      <deleted>
+         <provenance amendingAct="32018D1702"
+                     action="deleted"
+                     location="AR:6"
+                     marker="O002001M001000"/>
+         <note eId="note_1" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="353"
+                    date="2008-12-31"
+                    page="1">
+                  <t v="OJ L 353, 31.12.2008, p. 1"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_2" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="P"
+                    number="196"
+                    date="1967-08-16"
+                    page="1">
+                  <t v="OJ 196, 16.8.1967, p. 1"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_3" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="396"
+                    date="2006-12-30"
+                    page="1">
+                  <t v="OJ L 396, 30.12.2006, p. 1"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_4" marker="1" kind="table">
+            <p>
+               <t v="As provided for in Regulation (EC) No 1272/2008."/>
+            </p>
+         </note>
+         <note eId="note_5" marker="2" kind="table">
+            <p>
+               <t v="As provided for in Directive 67/548/EEC."/>
+            </p>
+         </note>
+         <note eId="note_6" marker="1" kind="table">
+            <p>
+               <t v="As provided for in Regulation (EC) No 1272/2008."/>
+            </p>
+         </note>
+         <note eId="note_7" marker="2" kind="table">
+            <p>
+               <t v="As provided for in Directive 67/548/EEC."/>
+            </p>
+         </note>
+         <note eId="note_8" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="200"
+                    date="1999-07-30"
+                    page="1">
+                  <t v="OJ L 200, 30.7.1999, p. 1"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_9" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="133"
+                    date="2010-05-31"
+                    page="1">
+                  <t v="OJ L 133, 31.5.2010, p. 1"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_10" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="327"
+                    date="2000-12-22"
+                    page="1">
+                  <t v="OJ L 327, 22.12.2000, p. 1"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_11" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="331"
+                    date="2001-12-15"
+                    page="1">
+                  <t v="OJ L 331, 15.12.2001, p 1"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_12" marker="1" kind="footnote">
+            <p>
+               <t v="Crustacean can substitute for daphnia throughout this Decision where marine data is submitted."/>
+            </p>
+         </note>
+         <note eId="note_13" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="142"
+                    date="2008-05-31"
+                    page="1">
+                  <t v="OJ L 142, 31.5.2008, p. 1"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+         <note eId="note_14" marker="*" kind="table">
+            <p>
+               <t v="M is the multiplication factor of 10 for substances that are very toxic to the aquatic environment as from Table 1b in Commission Directive 2006/8/EC ("/>
+               <ref kind="oj"
+                    series="L"
+                    number="19"
+                    date="2006-01-24"
+                    page="12">
+                  <t v="OJ L 19, 24.1.2006, p. 12"/>
+               </ref>
+               <t v=")."/>
+            </p>
+         </note>
+      </deleted>
    </notes>
 </legalText>
 

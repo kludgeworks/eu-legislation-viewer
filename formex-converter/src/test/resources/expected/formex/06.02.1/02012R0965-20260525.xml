@@ -1864,12 +1864,6 @@
                   <t v=", it shall cease to apply from that date."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:5;PT:b"
-                        marker="O014001M014000"/>
             <unit eId="art_10/par_3" kind="paragraph">
                <provenance amendingAct="32018R0394"
                            action="replaced"
@@ -1888,12 +1882,6 @@
                   <t v=", it shall cease to apply from that date."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:5;PT:b"
-                        marker="O014001M014000"/>
             <unit eId="art_10/par_4" kind="paragraph">
                <num>
                   <t v="4."/>
@@ -1906,12 +1894,6 @@
                   <t v=" or from the dates indicated in their decision, as the case may be."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:5;PT:b"
-                        marker="O014001M014000"/>
             <unit eId="art_10/par_5" kind="paragraph">
                <num>
                   <t v="5."/>
@@ -1952,12 +1934,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:5;PT:b"
-                        marker="O014001M014000"/>
             <unit eId="art_10/par_6" kind="paragraph">
                <num>
                   <t v="6."/>
@@ -2411,12 +2387,6 @@
                         <t v=" means a precision instrument approach and landing using an instrument landing system (ILS), microwave landing system (MLS), GLS (ground-based augmented global navigation satellite system (GNSS/GBAS) landing system), precision approach radar (PAR) or GNSS using a satellite-based augmentation system (SBAS) with a decision height (DH) not lower than 200 ft and with a runway visual range (RVR) not less than 550 m for aeroplanes and 500 m for helicopters;"/>
                      </p>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32021R2237"
-                              action="deleted"
-                              location="AR:1;PT:2 .AND. AX:0;PT:1;PT:c"
-                              marker="O021001M068000"/>
                   <unit eId="anx_I/level_1/pnt_14" kind="point">
                      <num>
                         <changed amendingAct="32013R0800"
@@ -2451,12 +2421,6 @@
                         </unit>
                      </list>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32021R2237"
-                              action="deleted"
-                              location="AR:1;PT:2 .AND. AX:0;PT:1;PT:c"
-                              marker="O021001M068000"/>
                   <unit eId="anx_I/level_1/pnt_15" kind="point">
                      <num>
                         <changed amendingAct="32013R0800"
@@ -2491,12 +2455,6 @@
                         </unit>
                      </list>
                   </unit>
-               </deleted>
-               <deleted>
-                  <provenance amendingAct="32021R2237"
-                              action="deleted"
-                              location="AR:1;PT:2 .AND. AX:0;PT:1;PT:c"
-                              marker="O021001M068000"/>
                   <unit eId="anx_I/level_1/pnt_16" kind="point">
                      <num>
                         <changed amendingAct="32013R0800"
@@ -11500,12 +11458,6 @@
                   <t v="EASA FORM 140 Issue 1."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32019R1384"
-                        action="deleted"
-                        location="AR:1;PT:4 .AND. AX:I;PT:2;PT:n"
-                        marker="O015001M030000"/>
             <unit eId="anx_II/app_VI" kind="annex" eurlexAnchor="8">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -25687,12 +25639,6 @@
                   </emphasis>
                </subheading>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:c"
-                        marker="O014001M038000"/>
             <unit eId="anx_IV/pnt_CAT.GEN.NMPA.100" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -26043,12 +25989,6 @@
                   <t v="The operator shall take all reasonable measures to ensure that all persons carried in the aircraft obey all lawful commands given by the commander for the purpose of securing the safety of the aircraft and of persons or property carried therein."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:c"
-                        marker="O014001M038000"/>
             <unit eId="anx_IV/pnt_CAT.GEN.NMPA.115" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -26068,12 +26008,6 @@
                   <t v="The operator shall ensure that all crew members can communicate with each other in a common language."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:c"
-                        marker="O014001M038000"/>
             <unit eId="anx_IV/pnt_CAT.GEN.NMPA.120" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -26093,12 +26027,6 @@
                   <t v="The operator shall not permit any person to use a portable electronic device (PED) on board an aircraft that could adversely affect the performance of the aircraft’s systems and equipment and shall take all reasonable measures to prevent such use."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:c"
-                        marker="O014001M038000"/>
             <unit eId="anx_IV/pnt_CAT.GEN.NMPA.125" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -26118,12 +26046,6 @@
                   <t v="The operator shall at all times have available for immediate communication to rescue coordination centres (RCCs) lists containing information on the emergency and survival equipment carried on board any of their aircraft."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:c"
-                        marker="O014001M038000"/>
             <unit eId="anx_IV/pnt_CAT.GEN.NMPA.130" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -26143,12 +26065,6 @@
                   <t v="The operator shall take all reasonable measures to ensure that no person enters or is in an aircraft when under the influence of alcohol or drugs to the extent that the safety of the aircraft or its occupants is likely to be endangered."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:c"
-                        marker="O014001M038000"/>
             <unit eId="anx_IV/pnt_CAT.GEN.NMPA.135" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -26186,12 +26102,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:c"
-                        marker="O014001M038000"/>
             <unit eId="anx_IV/pnt_CAT.GEN.NMPA.140" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -26412,12 +26322,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:c"
-                        marker="O014001M038000"/>
             <unit eId="anx_IV/pnt_CAT.GEN.NMPA.145" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -26437,12 +26341,6 @@
                   <t v="The commander shall, within a reasonable time of being requested to do so by a person authorised by an authority, provide to that person the documentation required to be carried on board."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:c"
-                        marker="O014001M038000"/>
             <unit eId="anx_IV/pnt_CAT.GEN.NMPA.150" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -28696,12 +28594,6 @@
                   </emphasis>
                </heading>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32021R1296"
-                        action="deleted"
-                        location="AR:1;PT:2 .AND. AX:I;PT:4;PT:k"
-                        marker="O021001M023000"/>
             <unit eId="anx_IV/pnt_CAT.OP.MPA.186/pnt_a" kind="level" depth="5">
                <num>
                   <t v="(a)"/>
@@ -28715,12 +28607,6 @@
                   <t v="The operator shall only select an aerodrome or landing site as a take-off alternate aerodrome when the appropriate weather reports and/or forecasts indicate that, during a period commencing one hour before and ending one hour after the estimated time of arrival at the take-off alternate aerodrome, the weather conditions will be at or above the applicable landing minima specified in accordance with CAT.OP.MPA.110. The ceiling shall be taken into account when the only approach operations available are NPA operations. Any limitation related to OEI operations shall be taken into account."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32021R1296"
-                        action="deleted"
-                        location="AR:1;PT:2 .AND. AX:I;PT:4;PT:k"
-                        marker="O021001M023000"/>
             <unit eId="anx_IV/pnt_CAT.OP.MPA.186/pnt_b" kind="level" depth="5">
                <num>
                   <t v="(b)"/>
@@ -31079,12 +30965,6 @@
                   </emphasis>
                </subheading>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:d"
-                        marker="O014001M039000"/>
             <unit eId="anx_IV/pnt_CAT.OP.NMPA.100" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -31104,12 +30984,6 @@
                   <t v="The operator shall only use aerodromes and operating sites that are adequate for the type(s) of aircraft and operation(s) concerned."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:d"
-                        marker="O014001M039000"/>
             <unit eId="anx_IV/pnt_CAT.OP.NMPA.105" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -31236,12 +31110,6 @@
                   <t v="Persons requiring special conditions, assistance and/or devices when carried on a flight shall be considered as SCPs and be carried under conditions that ensure the safety of the aircraft and its occupants according to procedures established by the operator."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:d"
-                        marker="O014001M039000"/>
             <unit eId="anx_IV/pnt_CAT.OP.NMPA.120" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -31261,12 +31129,6 @@
                   <t v="The operator shall ensure that passengers are given a safety briefing before or, where appropriate, during the flight."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:d"
-                        marker="O014001M039000"/>
             <unit eId="anx_IV/pnt_CAT.OP.NMPA.125" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -31322,12 +31184,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:d"
-                        marker="O014001M039000"/>
             <unit eId="anx_IV/pnt_CAT.OP.NMPA.130" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -31432,12 +31288,6 @@
                   <t v="No person shall be allowed to smoke on board a sailplane."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:d"
-                        marker="O014001M039000"/>
             <unit eId="anx_IV/pnt_CAT.OP.NMPA.145" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -31457,12 +31307,6 @@
                   <t v="The commander shall only commence or continue a VFR flight if the latest available meteorological information indicates that the weather conditions along the route and at the intended destination at the estimated time of use will be at or above the applicable VFR operating minima."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:d"
-                        marker="O014001M039000"/>
             <unit eId="anx_IV/pnt_CAT.OP.NMPA.150" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -31482,12 +31326,6 @@
                   <t v="The commander shall only commence take-off if the aircraft is clear of any deposit that might adversely affect the performance or controllability of the aircraft, except as permitted in accordance with the AFM."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:d"
-                        marker="O014001M039000"/>
             <unit eId="anx_IV/pnt_CAT.OP.NMPA.155" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -31507,12 +31345,6 @@
                   <t v="Before commencing take-off, the commander shall be satisfied that according to the information available to him/her, the weather at the aerodrome or operating site would not prevent a safe take-off and departure."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:d"
-                        marker="O014001M039000"/>
             <unit eId="anx_IV/pnt_CAT.OP.NMPA.160" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -31590,12 +31422,6 @@
                   <t v=" ft."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:d"
-                        marker="O014001M039000"/>
             <unit eId="anx_IV/pnt_CAT.OP.NMPA.175" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -37156,12 +36982,6 @@
                   </emphasis>
                </subheading>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:g"
-                        marker="O014001M042000"/>
             <unit eId="anx_IV/pnt_CAT.POL.S.100" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -37190,12 +37010,6 @@
                   <t v="Placards, listings, instrument markings, or combinations thereof, containing those operating limitations prescribed by the AFM for visual presentation, shall be displayed in the sailplane."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:g"
-                        marker="O014001M042000"/>
             <unit eId="anx_IV/pnt_CAT.POL.S.105" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -37224,12 +37038,6 @@
                   <t v="The weighing shall be accomplished by the manufacturer of the sailplane or in accordance with Regulation (EC) No 2042/2003 as applicable."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:g"
-                        marker="O014001M042000"/>
             <unit eId="anx_IV/pnt_CAT.POL.S.110" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -37273,12 +37081,6 @@
                   </emphasis>
                </subheading>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:k"
-                        marker="O013001M035000"/>
             <unit eId="anx_IV/pnt_CAT.POL.B.100" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -37307,12 +37109,6 @@
                   <t v="Placards, listings, instrument markings, or combinations thereof, containing those operating limitations prescribed by the AFM for visual presentation, shall be displayed in the balloon."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:k"
-                        marker="O013001M035000"/>
             <unit eId="anx_IV/pnt_CAT.POL.B.105" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -37341,12 +37137,6 @@
                   <t v="The weighing shall be accomplished by the manufacturer of the balloon or in accordance with Regulation (EC) No 2042/2003 as applicable."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:k"
-                        marker="O013001M035000"/>
             <unit eId="anx_IV/pnt_CAT.POL.B.110" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -37431,12 +37221,6 @@
                   <t v="The mass documentation shall be prepared prior to each flight and documented in an operational flight plan."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:k"
-                        marker="O013001M035000"/>
             <unit eId="anx_IV/pnt_CAT.POL.B.115" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44040,12 +43824,6 @@
                   </emphasis>
                </subheading>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:h"
-                        marker="O014001M043000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.S.100" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44170,12 +43948,6 @@
                   <t v="All required emergency equipment shall be easily accessible for immediate use."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:h"
-                        marker="O014001M043000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.S.105" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44195,12 +43967,6 @@
                   <t v="A flight shall not be commenced when any of the sailplane instruments, items of equipment or functions required for the intended flight are inoperative or missing, unless the sailplane is operated in accordance with the minimum equipment list (MEL)."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:h"
-                        marker="O014001M043000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.S.110" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44289,12 +44055,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:h"
-                        marker="O014001M043000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.S.115" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44364,12 +44124,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:h"
-                        marker="O014001M043000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.S.120" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44416,12 +44170,6 @@
                   <t v="A seat belt with upper torso restraint system shall have a single point release."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:h"
-                        marker="O014001M043000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.S.125" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44467,12 +44215,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:h"
-                        marker="O014001M043000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.S.130" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44536,12 +44278,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:h"
-                        marker="O014001M043000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.S.135" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44561,12 +44297,6 @@
                   <t v="Sailplanes operated over areas in which search and rescue would be especially difficult shall be equipped with such signalling devices and life-saving equipment as appropriate to the area overflown."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:h"
-                        marker="O014001M043000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.S.140" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44595,12 +44325,6 @@
                   <t v="Radio communication equipment, if required by (a), shall provide for communication on the aeronautical emergency frequency 121,5 MHz."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:h"
-                        marker="O014001M043000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.S.145" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44638,12 +44362,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:4;PT:h"
-                        marker="O014001M043000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.S.150" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44687,12 +44405,6 @@
                   </emphasis>
                </subheading>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.100" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44849,12 +44561,6 @@
                   <t v="All required emergency equipment shall be easily accessible for immediate use."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.105" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44874,12 +44580,6 @@
                   <t v="A flight shall not be commenced when any of the balloon instruments, items of equipment or functions, required for the intended flight, are inoperative, unless the balloon is operated in accordance with the minimum equipment list (MEL)."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.110" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -44925,12 +44625,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.115" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -45002,12 +44696,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.120" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -45027,12 +44715,6 @@
                   <t v="Balloons with a separate compartment for the commander shall be equipped with a restraint system for the commander."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.125" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -45085,12 +44767,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.130" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -45136,12 +44812,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.135" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -45161,12 +44831,6 @@
                   <t v="Hot-air balloons shall be equipped with at least one hand fire extinguisher as required by the applicable airworthiness code."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.140" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -45212,12 +44876,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.145" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -45237,12 +44895,6 @@
                   <t v="Balloons operated over areas in which search and rescue would be especially difficult shall be equipped with such signalling devices and life-saving equipment as appropriate to the area overflown."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.150" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -45329,12 +44981,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.155" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -45363,12 +45009,6 @@
                   <t v="Radio communication equipment, if required by (a), shall provide for communication on the aeronautical emergency frequency 121,5 MHz."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:4;PT:l"
-                        marker="O013001M036000"/>
             <unit eId="anx_IV/pnt_CAT.IDE.B.160" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -66422,12 +66062,6 @@
                   </emphasis>
                </subheading>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:7;PT:k"
-                        marker="O014001M057000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.S.100" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -66548,12 +66182,6 @@
                   <t v="All required emergency equipment shall be easily accessible for immediate use."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:7;PT:k"
-                        marker="O014001M057000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.S.105" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -66587,12 +66215,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:7;PT:k"
-                        marker="O014001M057000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.S.115" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -66677,12 +66299,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:7;PT:k"
-                        marker="O014001M057000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.S.120" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -66748,12 +66364,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:7;PT:k"
-                        marker="O014001M057000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.S.125" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -66796,12 +66406,6 @@
                   <t v="A seat belt with upper torso restraint system shall have a single point release."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:7;PT:k"
-                        marker="O014001M057000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.S.130" kind="level" depth="4">
                <provenance amendingAct="32016R1199"
                            action="replaced"
@@ -66821,12 +66425,6 @@
                   <t v="Sailplanes operated when an oxygen supply is required in accordance with NCO.OP.190 shall be equipped with oxygen storage and dispensing apparatus capable of storing and dispensing the required oxygen supplies."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:7;PT:k"
-                        marker="O014001M057000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.S.135" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -66886,12 +66484,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:7;PT:k"
-                        marker="O014001M057000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.S.140" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -66907,12 +66499,6 @@
                   <t v="Sailplanes operated over areas in which search and rescue would be especially difficult shall be equipped with such signalling devices and life-saving equipment as appropriate to the area overflown."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:7;PT:k"
-                        marker="O014001M057000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.S.145" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -66937,12 +66523,6 @@
                   <t v="Radio communication equipment, if required by (a), shall provide for communication on the aeronautical emergency frequency 121,5 MHz."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:7;PT:k"
-                        marker="O014001M057000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.S.150" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -66976,12 +66556,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:7;PT:k"
-                        marker="O014001M057000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.S.155" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -67019,12 +66593,6 @@
                   </emphasis>
                </subheading>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.100" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -67145,12 +66713,6 @@
                   <t v="All required emergency equipment shall be easily accessible for immediate use."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.105" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -67184,12 +66746,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.110" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="replaced"
@@ -67235,12 +66791,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.115" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -67300,12 +66850,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.120" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -67348,12 +66892,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.121" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -67395,12 +66933,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.125" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="replaced"
@@ -67420,12 +66952,6 @@
                   <t v="Hot air -balloons shall be equipped with at least one hand fire extinguisher, if required by the applicable certification specifications."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.130" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -67475,12 +67001,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.135" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -67496,12 +67016,6 @@
                   <t v="Balloons operated over areas in which search and rescue would be especially difficult shall be equipped with such signalling devices and life-saving equipment as appropriate to the area overflown."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.140" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="replaced"
@@ -67588,12 +67102,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.145" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -67618,12 +67126,6 @@
                   <t v="Radio communication equipment, if required by (a), shall provide for communication on the aeronautical emergency frequency 121,5 MHz."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:5;PT:o"
-                        marker="O013001M053000"/>
             <unit eId="anx_VII/pnt_NCO.IDE.B.150" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -68087,12 +67589,6 @@
                   <t v="NCO.OP.125(a)(1)(i) does not apply to sailplane-towing, flying display, aerobatic flights or competition flights."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32021R1296"
-                        action="deleted"
-                        location="AR:1;PT:2 .AND. AX:I;PT:7;PT:g"
-                        marker="O021001M055000"/>
             <unit eId="anx_VII/pnt_NCO.SPEC.140" kind="level" depth="4">
                <provenance amendingAct="32014R0379"
                            action="inserted"
@@ -78832,12 +78328,6 @@
                   </emphasis>
                </subheading>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:8;PT:h"
-                        marker="O014001M065000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.S.100" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -78958,12 +78448,6 @@
                   <t v="All required emergency equipment shall be easily accessible for immediate use."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:8;PT:h"
-                        marker="O014001M065000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.S.105" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -78997,12 +78481,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:8;PT:h"
-                        marker="O014001M065000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.S.115" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79087,12 +78565,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:8;PT:h"
-                        marker="O014001M065000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.S.120" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79158,12 +78630,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:8;PT:h"
-                        marker="O014001M065000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.S.125" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79206,12 +78672,6 @@
                   <t v="A seat belt with upper torso restraint system shall have a single point release."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:8;PT:h"
-                        marker="O014001M065000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.S.130" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79253,12 +78713,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:8;PT:h"
-                        marker="O014001M065000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.S.135" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79318,12 +78772,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:8;PT:h"
-                        marker="O014001M065000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.S.140" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79339,12 +78787,6 @@
                   <t v="Sailplanes operated over areas in which search and rescue would be especially difficult shall be equipped with such signalling devices and life-saving equipment as appropriate to the area overflown."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:8;PT:h"
-                        marker="O014001M065000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.S.145" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79369,12 +78811,6 @@
                   <t v="Radio communication equipment, if required by (a), shall provide for communication on the aeronautical emergency frequency 121,5 MHz."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:8;PT:h"
-                        marker="O014001M065000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.S.150" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79408,12 +78844,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R1975"
-                        action="deleted"
-                        location="AR:1;PT:6 .AND. AX:0;PT:8;PT:h"
-                        marker="O014001M065000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.S.155" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79451,12 +78881,6 @@
                   </emphasis>
                </subheading>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.100" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79577,12 +79001,6 @@
                   <t v="All required emergency equipment shall be easily accessible for immediate use."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.105" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79616,12 +79034,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.110" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79663,12 +79075,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.115" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79728,12 +79134,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.120" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79776,12 +79176,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.121" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79823,12 +79217,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.125" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79844,12 +79232,6 @@
                   <t v="Hot air balloons shall be equipped with at least one hand fire extinguisher if required by the applicable certification specifications."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.130" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79891,12 +79273,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.135" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -79912,12 +79288,6 @@
                   <t v="Balloons operated over areas in which search and rescue would be especially difficult shall be equipped with such signalling devices and life-saving equipment as appropriate to the area overflown."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.140" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -80003,12 +79373,6 @@
                   </unit>
                </list>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.145" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -80033,12 +79397,6 @@
                   <t v="Radio communication equipment, if required by (a), shall provide for communication on the aeronautical emergency frequency 121,5 MHz."/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32018R0394"
-                        action="deleted"
-                        location="AR:1;PT:8 .AND. AX:0;PT:6;PT:n"
-                        marker="O013001M070000"/>
             <unit eId="anx_VIII/pnt_SPO.IDE.B.150" kind="level" depth="4">
                <num>
                   <emphasis kind="b">
@@ -87761,44 +87119,50 @@
             <t v="Title, name and signature of the competent authority representative. In addition, an official stamp may be applied on the authorisation."/>
          </p>
       </note>
-      <note eId="note_71" marker="1" kind="table">
-         <p>
-            <t v="Insertion of name and contact details."/>
-         </p>
-      </note>
-      <note eId="note_72" marker="2" kind="table">
-         <p>
-            <t v="Insertion of the associated number."/>
-         </p>
-      </note>
-      <note eId="note_73" marker="3" kind="table">
-         <p>
-            <t v="Issue date of the specific approvals (dd-mm-yyyy) and signature of the competent authority representative."/>
-         </p>
-      </note>
-      <note eId="note_74" marker="4" kind="table">
-         <p>
-            <t v="Insertion of the Commercial Aviation Safety Team (CAST)/ICAO designation of the aircraft make, model and series, or master series, if a series has been designated (e.g. Boeing-737-3K2 or Boeing-777-232). The CAST/ICAO taxonomy is available at: http://www.intlaviationstandards.org/"/>
-         </p>
-         <p>
-            <t v="The registration marks should be either listed in the List of Specific Approvals or in the operations manual. In the latter case the List of Specific Approvals shall refer to the related page in the operation manual."/>
-         </p>
-      </note>
-      <note eId="note_75" marker="5" kind="table">
-         <p>
-            <t v="Specify the type of operation, e.g., agriculture, construction, photography, surveying, observation and patrol, aerial advertisement."/>
-         </p>
-      </note>
-      <note eId="note_76" marker="6" kind="table">
-         <p>
-            <t v="List in this column any approved operations, e.g. dangerous goods, LVO, RVSM, PBN, MNPS, HOFO."/>
-         </p>
-      </note>
-      <note eId="note_77" marker="7" kind="table">
-         <p>
-            <t v="List in this column the most permissive criteria for each approval, e.g. the decision height and RVR minima for CAT II."/>
-         </p>
-      </note>
+      <deleted>
+         <provenance amendingAct="32019R1384"
+                     action="deleted"
+                     location="AR:1;PT:4 .AND. AX:I;PT:2;PT:n"
+                     marker="O015001M030000"/>
+         <note eId="note_71" marker="1" kind="table">
+            <p>
+               <t v="Insertion of name and contact details."/>
+            </p>
+         </note>
+         <note eId="note_72" marker="2" kind="table">
+            <p>
+               <t v="Insertion of the associated number."/>
+            </p>
+         </note>
+         <note eId="note_73" marker="3" kind="table">
+            <p>
+               <t v="Issue date of the specific approvals (dd-mm-yyyy) and signature of the competent authority representative."/>
+            </p>
+         </note>
+         <note eId="note_74" marker="4" kind="table">
+            <p>
+               <t v="Insertion of the Commercial Aviation Safety Team (CAST)/ICAO designation of the aircraft make, model and series, or master series, if a series has been designated (e.g. Boeing-737-3K2 or Boeing-777-232). The CAST/ICAO taxonomy is available at: http://www.intlaviationstandards.org/"/>
+            </p>
+            <p>
+               <t v="The registration marks should be either listed in the List of Specific Approvals or in the operations manual. In the latter case the List of Specific Approvals shall refer to the related page in the operation manual."/>
+            </p>
+         </note>
+         <note eId="note_75" marker="5" kind="table">
+            <p>
+               <t v="Specify the type of operation, e.g., agriculture, construction, photography, surveying, observation and patrol, aerial advertisement."/>
+            </p>
+         </note>
+         <note eId="note_76" marker="6" kind="table">
+            <p>
+               <t v="List in this column any approved operations, e.g. dangerous goods, LVO, RVSM, PBN, MNPS, HOFO."/>
+            </p>
+         </note>
+         <note eId="note_77" marker="7" kind="table">
+            <p>
+               <t v="List in this column the most permissive criteria for each approval, e.g. the decision height and RVR minima for CAT II."/>
+            </p>
+         </note>
+      </deleted>
       <note eId="note_78" marker="14" kind="footnote">
          <p>
             <t v="Regulation (EU) No 996/2010 of the European Parliament and of the Council of "/>
@@ -88038,23 +87402,29 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_93" marker="*" kind="table">
-         <p>
-            <t v="The cloud base shall be such as to allow flight at the specified height, below and clear of cloud."/>
-         </p>
-      </note>
-      <note eId="note_94" marker="*" kind="table">
-         <p>
-            <t v="Helicopters may be operated in flight visibility down to 800 m provided the destination or an intermediate structure is continuously visible."/>
-         </p>
-      </note>
-      <note eId="note_95" marker="*" kind="table">
-         <p>
-            <t v="Helicopters may be operated in flight visibility down to "/>
-            <t v="1500"/>
-            <t v=" m provided the destination or an intermediate structure is continuously visible."/>
-         </p>
-      </note>
+      <deleted>
+         <provenance amendingAct="32016R1199"
+                     action="deleted"
+                     location="AR:1;PT:4 .AND. AX:0;PT:3;PT:g"
+                     marker="O010001M011000"/>
+         <note eId="note_93" marker="*" kind="table">
+            <p>
+               <t v="The cloud base shall be such as to allow flight at the specified height, below and clear of cloud."/>
+            </p>
+         </note>
+         <note eId="note_94" marker="*" kind="table">
+            <p>
+               <t v="Helicopters may be operated in flight visibility down to 800 m provided the destination or an intermediate structure is continuously visible."/>
+            </p>
+         </note>
+         <note eId="note_95" marker="*" kind="table">
+            <p>
+               <t v="Helicopters may be operated in flight visibility down to "/>
+               <t v="1500"/>
+               <t v=" m provided the destination or an intermediate structure is continuously visible."/>
+            </p>
+         </note>
+      </deleted>
       <note eId="note_96" marker="*" kind="table">
          <p>
             <t v="Passenger numbers in Table 1 refer to passengers actually carried on board, including persons younger than 24 months."/>

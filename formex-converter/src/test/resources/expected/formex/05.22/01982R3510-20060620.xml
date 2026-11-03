@@ -96,12 +96,6 @@
                   <t v="Having regard to the Treaty establishing the European Economic Community,"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32006R0802"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O004001M001000"/>
             <unit eId="pbl_1/cit_2" kind="citation">
                <p>
                   <t v="Having regard to Council Regulation (EEC) No 3796/81 of 29 December 1981 on the common organization of the market in fishery products"/>
@@ -136,12 +130,6 @@
                   <t v=" intended for the canning industry;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32006R0802"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O004001M001000"/>
             <unit eId="pbl_1/rct_2" kind="recital">
                <p>
                   <t v="Whereas the conversion factors applicable to the different species, sizes and presentations of "/>
@@ -161,12 +149,6 @@
                   <t v=" should also be fixed;"/>
                </p>
             </unit>
-         </deleted>
-         <deleted>
-            <provenance amendingAct="32006R0802"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O004001M001000"/>
             <unit eId="pbl_1/rct_3" kind="recital">
                <p>
                   <t v="Whereas the measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Fishery Products,"/>
@@ -214,12 +196,6 @@
                <t v=" shall be as listed in the Annex hereto."/>
             </p>
          </unit>
-      </deleted>
-      <deleted>
-         <provenance amendingAct="32006R0802"
-                     action="deleted"
-                     location="AR:2"
-                     marker="O004001M001000"/>
          <unit eId="art_2" kind="article">
             <num>
                <t v="Article 2"/>
@@ -455,18 +431,24 @@
       </deleted>
    </annexes>
    <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="379"
-                 date="1981-09-01"
-                 page="1">
-               <t v="OJ No L 379, 31. 12. 1981, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
+      <deleted>
+         <provenance amendingAct="32006R0802"
+                     action="deleted"
+                     location="AR:2"
+                     marker="O004001M001000"/>
+         <note eId="note_1" marker="1" kind="footnote">
+            <p>
+               <ref kind="oj"
+                    series="L"
+                    number="379"
+                    date="1981-09-01"
+                    page="1">
+                  <t v="OJ No L 379, 31. 12. 1981, p. 1"/>
+               </ref>
+               <t v="."/>
+            </p>
+         </note>
+      </deleted>
    </notes>
 </legalText>
 
