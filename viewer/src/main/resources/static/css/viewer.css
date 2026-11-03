@@ -122,6 +122,12 @@ p.norm {
   text-align: center;
 }
 
+/* an annex's label in an act as published: bold, upright (oj-doc-ti) */
+.legal-text:not(.legal-text-consolidated) .unit-annex > .num {
+  font-style: normal;
+  font-weight: bold;
+}
+
 .unit-division > .num,
 .unit-division > .heading {
   text-align: center;
@@ -232,6 +238,30 @@ p.norm {
   border: 1px solid var(--rule);
   padding: 0.2rem 0.4rem;
   vertical-align: top;
+}
+
+/* an annotation's title (NOTES:): italic in an act as published (oj-ti-annotation), bold in a
+ * consolidated version (title-annotation) */
+.legal-text:not(.legal-text-consolidated) .annotation > .heading {
+  font-style: italic;
+}
+
+.legal-text-consolidated .annotation > .heading {
+  font-weight: bold;
+}
+
+/* a header row's cells: bold; in an act as published, centred, and a table's text smaller
+ * (oj-tbl-hdr, oj-tbl-txt) */
+.table td[data-header="true"] {
+  font-weight: bold;
+}
+
+.legal-text:not(.legal-text-consolidated) .table td[data-header="true"] > p {
+  text-align: center;
+}
+
+.legal-text:not(.legal-text-consolidated) .table {
+  font-size: 0.9em;
 }
 
 /* a row group's heading: a heading cell, but set as EUR-Lex sets it, as the text of the rows */

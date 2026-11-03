@@ -136,7 +136,7 @@ class LegalRendererTest {
       case "date", "docDate" -> Objects.requireNonNull(element.attribute("asWritten"));
       case "quote" ->
           element.attribute("startQuote") + children(element) + element.attribute("endQuote");
-      case "noteRef" -> "(" + element.attribute("marker") + ")";
+      case "noteRef" -> " (" + element.attribute("marker") + ")";
       case "eol" -> " ";
       default -> element.text() + children(element);
     };
