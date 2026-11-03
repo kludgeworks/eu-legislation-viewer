@@ -169,7 +169,7 @@
             </num>
             <p>
                <t v="Under Article 7(2) of Regulation (EC) No 1255/1999, the buying-in of skimmed-milk powder may be suspended as soon as the quantities offered for intervention in the period from 1 March to 31 August each year exceed "/>
-               <t v="109 000"/>
+               <number v="109000"/>
                <t v=" tonnes. When that occurs, buying-in may be performed under a standing invitation to tender, the detailed rules for which need to be laid down. The components of the tender, particularly the minimum quantity, the time limits for submission and the maximum buying-in price should be defined. To ensure compliance with the requirements as to the quality and presentation of the skimmed-milk powder at the time of the tender and after entry into storage, tenderers should be required to submit a written undertaking to that effect, together with their tender. A security should also accompany a tender, in order to guarantee that the tender will be maintained after the closing date for submission of tenders and that the skimmed-milk powder will be delivered within certain deadlines to be laid down. Furthermore, the method used for calculating the buying-in price by reference to the protein content of the skimmed-milk powder bought in should be defined."/>
             </p>
          </unit>
@@ -941,7 +941,7 @@
                            </num>
                            <p>
                               <t v="have a capacity of at least "/>
-                              <t v="1 000"/>
+                              <number v="1000"/>
                               <t v=" tonnes and removal facilities able to accommodate the removal each day of at least 3 % of the quantity stored in the depot, at a minimum rate of 100 tonnes per day. For the purposes of this requirement, only the quantities of skimmed-milk powder bought in from "/>
                               <date asWritten="1 September 2000" date="2000-09-01"/>
                               <t v=" shall be taken into account."/>
@@ -2015,7 +2015,7 @@
                            <t v="big bags"/>
                         </quote>
                         <t v=" weighing no more than "/>
-                        <t v="1 500"/>
+                        <number v="1500"/>
                         <t v=" kg, bearing the following information, where appropriate in code:"/>
                      </p>
                      <list kind="roman">
@@ -2574,7 +2574,7 @@
                </num>
                <p>
                   <t v="Once it is observed that the offers referred to in Article 5 have reached "/>
-                  <t v="80 000"/>
+                  <number v="80000"/>
                   <t v=" tonnes, the information referred to in paragraph 1(a) of this Article shall be communicated each day before 15.00 (Brussels time) for the quantities of skimmed-milk powder offered the preceding day."/>
                </p>
             </unit>
@@ -2811,7 +2811,7 @@
                <td>
                   <p>
                      <t v="Maximum "/>
-                     <t v="40 000"/>
+                     <number v="40000"/>
                      <t v=" per gram"/>
                   </p>
                </td>

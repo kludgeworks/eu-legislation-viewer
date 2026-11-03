@@ -538,9 +538,9 @@
                      <t v="), a social security scheme put in place by the Italian State mainly aiming to support employees of companies in difficulties during unemployment periods"/>
                      <noteRef href="#note_7" marker="7"/>
                      <t v=". At that time, SEAH had "/>
-                     <t v="2 214"/>
+                     <number v="2214"/>
                      <t v=" employees, being the equivalent of "/>
-                     <t v="1 980"/>
+                     <number v="1980"/>
                      <t v=" full time employees."/>
                   </p>
                </unit>
@@ -840,7 +840,7 @@
                      <t v="Airport Handling was incorporated on "/>
                      <date asWritten="9 September 2013" date="2013-09-09"/>
                      <t v=" as a limited liability company with a share capital of EUR "/>
-                     <t v="10 000"/>
+                     <number v="10000"/>
                      <t v="."/>
                   </p>
                </unit>
@@ -1083,7 +1083,7 @@
                      <t v="On "/>
                      <date asWritten="26 August 2014" date="2014-08-26"/>
                      <t v=" Airport Handling’s Board of Directors approved an Addendum to the Trust Deed. The Addendum laid down that Airport Handling would issue "/>
-                     <t v="20 000"/>
+                     <number v="20000"/>
                      <t v=" participating equity instruments — SFPs ("/>
                      <emphasis kind="i">
                         <t v="strumenti finanziari partecipativi"/>
@@ -1091,7 +1091,7 @@
                      <t v=") pursuant to Article 2346 paragraph 6 of the Italian Civil Code"/>
                      <noteRef href="#note_11" marker="10"/>
                      <t v=", with a nominal value of EUR "/>
-                     <t v="1 000"/>
+                     <number v="1000"/>
                      <t v=" each, to be proposed to SEA. The Addendum was signed on the following day."/>
                   </p>
                </unit>
@@ -1155,9 +1155,9 @@
                         <t v="SpA"/>
                      </emphasis>
                      <t v=") and the issuance of the "/>
-                     <t v="20 000"/>
+                     <number v="20000"/>
                      <t v=" SFPs, offered for subscription to SEA at a price of EUR "/>
-                     <t v="1 000"/>
+                     <number v="1000"/>
                      <t v=" each. The SFPs were subscribed and paid in by SEA the following day, thereby increasing Airport Handling’s capital to EUR 25 million in total (EUR 5 million share capital and EUR 20 million in the form of SFPs)."/>
                   </p>
                </unit>
@@ -3721,7 +3721,7 @@
                         <unit eId="pbl_1/rct_214/idt_2" kind="indent">
                            <p>
                               <t v="On the same date, the Trustee, as sole shareholder of Airport Handling issued "/>
-                              <t v="20 000"/>
+                              <number v="20000"/>
                               <t v=" SFPs for a total value of EUR 20 million. The SFPs were subscribed and paid in full by SEA on "/>
                               <date asWritten="28 August 2014" date="2014-08-28"/>
                               <t v="."/>
@@ -4695,7 +4695,7 @@
                            <unit eId="pbl_1/rct_273/idt_3" kind="indent">
                               <p>
                                  <t v="The Commission also notes that none of the interested parties claimed that the liquidation proceedings have infringed the rights of the creditors or reduced the value of the assets owed by SEAH, or that such assets were leased to Airport Handling below market prices. SEAH’s ground handling equipment consisted of around "/>
-                                 <t v="4 000"/>
+                                 <number v="4000"/>
                                  <t v=" assets. According to the plan initially announced by Italy, such assets were going to be leased by SEAH at market price pending their sale on the open market in the framework of the liquidation procedure."/>
                               </p>
                            </unit>

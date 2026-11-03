@@ -349,7 +349,7 @@
                         <t v="performance class B aeroplanes"/>
                      </quote>
                      <t v=" means aeroplanes powered by propeller engines with a maximum operational passenger seating configuration of nine or less and a maximum take-off mass of "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg or less;"/>
                   </p>
                </unit>
@@ -1448,7 +1448,7 @@
             </num>
             <p>
                <t v="By way of derogation from the first sentence of Article 5(3), operators of complex motor-powered aeroplanes with a maximum certificated take-off mass (MCTOM) at or below "/>
-               <t v="5 700"/>
+               <number v="5700"/>
                <t v=" kg, equipped with turboprop engines, involved in non-commercial operations, shall operate those aircraft only in accordance with Annex VII."/>
             </p>
          </unit>
@@ -1462,7 +1462,7 @@
             </num>
             <p>
                <t v="By way of derogation from Article 5(5)(a), training organisations shall, when conducting flight training on complex motor-powered aeroplanes with a maximum certificated take-off mass (MCTOM) at or below "/>
-               <t v="5 700"/>
+               <number v="5700"/>
                <t v=" kg, equipped with turboprop engines, operate those aircraft in accordance with Annex VII."/>
             </p>
          </unit>
@@ -2534,9 +2534,9 @@
                         <t v="ceiling"/>
                      </quote>
                      <t v=" means the height above the ground or water of the base of the lowest layer of cloud below "/>
-                     <t v="6 000"/>
+                     <number v="6000"/>
                      <t v=" m ("/>
-                     <t v="20 000"/>
+                     <number v="20000"/>
                      <t v=" ft) covering more than half the sky;"/>
                   </p>
                </unit>
@@ -3175,7 +3175,7 @@
                         </num>
                         <p>
                            <t v="an aeroplane with a Maximum Take-off Mass (MTOM) of "/>
-                           <t v="1 200"/>
+                           <number v="1200"/>
                            <t v=" kg or less that is not classified as complex motor-powered aircraft;"/>
                         </p>
                      </unit>
@@ -3185,7 +3185,7 @@
                         </num>
                         <p>
                            <t v="a sailplane or powered sailplane of "/>
-                           <t v="1 200"/>
+                           <number v="1200"/>
                            <t v=" kg MTOM or less;"/>
                         </p>
                      </unit>
@@ -3195,13 +3195,13 @@
                         </num>
                         <p>
                            <t v="a balloon with a maximum design lifting gas or hot air volume of not more than "/>
-                           <t v="3 400"/>
+                           <number v="3400"/>
                            <t v=" m"/>
                            <emphasis kind="sup">
                               <t v="3"/>
                            </emphasis>
                            <t v=" for hot air balloons, "/>
-                           <t v="1 050"/>
+                           <number v="1050"/>
                            <t v=" m"/>
                            <emphasis kind="sup">
                               <t v="3"/>
@@ -3236,7 +3236,7 @@
                         </num>
                         <p>
                            <t v="an aeroplane with a Maximum Take-off Mass (MTOM) of "/>
-                           <t v="2 000"/>
+                           <number v="2000"/>
                            <t v=" kg or less that is not classified as complex motor-powered aircraft;"/>
                         </p>
                      </unit>
@@ -3246,7 +3246,7 @@
                         </num>
                         <p>
                            <t v="a sailplane or powered sailplane of "/>
-                           <t v="2 000"/>
+                           <number v="2000"/>
                            <t v=" kg MTOM or less;"/>
                         </p>
                      </unit>
@@ -4579,7 +4579,7 @@
                         <t v="local helicopter operation (LHO)"/>
                      </quote>
                      <t v=" means a commercial air transport operation of helicopters with a maximum certified take-off mass (MCTOM) over "/>
-                     <t v="3 175"/>
+                     <number v="3175"/>
                      <t v=" kg and a maximum operational passenger seating configuration (MOPSC) of nine or less, by day, over routes navigated by reference to visual landmarks, conducted within a local and defined geographical area specified in the operations manual;"/>
                   </p>
                </unit>
@@ -5158,7 +5158,7 @@
                         <t v="performance class A aeroplanes"/>
                      </quote>
                      <t v=" means multi-engined aeroplanes powered by turbo-propeller engines with an MOPSC of more than nine or a maximum take-off mass exceeding "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg, and all multi-engined turbo-jet powered aeroplanes;"/>
                   </p>
                </unit>
@@ -5176,7 +5176,7 @@
                         <t v="performance class B aeroplanes"/>
                      </quote>
                      <t v=" means aeroplanes powered by propeller engines with an MOPSC of nine or less and a maximum take-off mass of "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg or less;"/>
                   </p>
                </unit>
@@ -5194,7 +5194,7 @@
                         <t v="performance class C aeroplanes"/>
                      </quote>
                      <t v=" means aeroplanes powered by reciprocating engines with an MOPSC of more than nine or a maximum take-off mass exceeding "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg;"/>
                   </p>
                </unit>
@@ -5865,9 +5865,9 @@
                         </num>
                         <p>
                            <t v="the vertical and horizontal path, with the critical engine inoperative, from a specified point in the take-off for aeroplanes to "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" ft above the surface, and for helicopters to "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft above the surface;"/>
                         </p>
                      </unit>
@@ -5877,7 +5877,7 @@
                         </num>
                         <p>
                            <t v="for VCA, the vertical and horizontal path with a critical failure for performance (CFP), which extends from the take-off point to a point at which the VCA is at a height above the take-off elevation that is compatible with the en-route profile and not higher than 305 m ("/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft);"/>
                         </p>
                      </unit>
@@ -6205,7 +6205,7 @@
                         </num>
                         <p>
                            <t v="the greatest distance at which lights in the vicinity of "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" candelas can be seen and identified against an unlit background;"/>
                         </p>
                      </unit>
@@ -6309,7 +6309,7 @@
                            <unit eId="anx_I/level_1/pnt_129/pnt_a/idt_1" kind="indent">
                               <p>
                                  <t v="with a maximum certificated take-off mass exceeding "/>
-                                 <t v="5 700"/>
+                                 <number v="5700"/>
                                  <t v=" kg, or"/>
                               </p>
                            </unit>
@@ -6344,7 +6344,7 @@
                               </num>
                               <p>
                                  <t v="for a maximum take-off mass exceeding "/>
-                                 <t v="3 175"/>
+                                 <number v="3175"/>
                                  <t v=" kg, or"/>
                               </p>
                            </unit>
@@ -12156,7 +12156,7 @@
                      </num>
                      <p>
                         <t v="a single-engined propeller-driven aeroplane having an MCTOM of "/>
-                        <t v="5 700"/>
+                        <number v="5700"/>
                         <t v=" kg or less and an MOPSC of 5 or less, operated in a flight taking off and landing at the same aerodrome or operating site, under VFR by day;"/>
                      </p>
                   </unit>
@@ -13758,7 +13758,7 @@
                   </num>
                   <p>
                      <t v="The operator shall establish and maintain a flight data monitoring programme, which shall be integrated in its management system, for aeroplanes with a maximum certificated take-off mass of more than "/>
-                     <t v="27 000"/>
+                     <number v="27000"/>
                      <t v=" kg."/>
                   </p>
                </unit>
@@ -15205,7 +15205,7 @@
                         </num>
                         <p>
                            <t v="aeroplanes with an MCTOM that exceeds "/>
-                           <t v="54 500"/>
+                           <number v="54500"/>
                            <t v=" kg;"/>
                         </p>
                      </unit>
@@ -15215,7 +15215,7 @@
                         </num>
                         <p>
                            <t v="aeroplanes with an MCTOM that exceeds "/>
-                           <t v="45 500"/>
+                           <number v="45500"/>
                            <t v=" kg and have an MOPSC of more than 19; or"/>
                         </p>
                      </unit>
@@ -15335,7 +15335,7 @@
                         </num>
                         <p>
                            <t v="single-engined propeller-driven aeroplanes that have an MCTOM of "/>
-                           <t v="5 700"/>
+                           <number v="5700"/>
                            <t v=" kg or less and an MOPSC of 5 or less; or"/>
                         </p>
                      </unit>
@@ -23310,7 +23310,7 @@
                         <t v="(3)"/>
                      </num>
                      <p>
-                        <t v="1 000"/>
+                        <number v="1000"/>
                         <t v=" hours of flight time in any 12 consecutive calendar months."/>
                      </p>
                   </unit>
@@ -25304,7 +25304,7 @@
             </heading>
             <p>
                <t v="Notwithstanding CAT.GEN.MPA.160(b), for helicopters with a maximum certified take-off mass (MCTOM) of "/>
-               <t v="3 175"/>
+               <number v="3175"/>
                <t v=" kg or less operated by day and over routes navigated by reference to visual landmarks, a sporting weapon may be carried in a place that is accessible during flight, provided that the operator has established appropriate procedures and it is impracticable to stow it in an inaccessible stowage during flight."/>
             </p>
          </unit>
@@ -26243,7 +26243,7 @@
                         </num>
                         <p>
                            <t v="aeroplanes with an MCTOM of more than "/>
-                           <t v="27 000"/>
+                           <number v="27000"/>
                            <t v=" kg, with an MOPSC of more than 19, and first issued with an individual CofA before "/>
                            <date asWritten="16 December 2018" date="2018-12-16"/>
                            <t v=", which are equipped with a capability to provide a position additional to the secondary surveillance radar transponder;"/>
@@ -26255,7 +26255,7 @@
                         </num>
                         <p>
                            <t v="all aeroplanes with an MCTOM of more than "/>
-                           <t v="27 000"/>
+                           <number v="27000"/>
                            <t v=" kg, with an MOPSC of more than 19, and first issued with an individual CofA on or after "/>
                            <date asWritten="16 December 2018" date="2018-12-16"/>
                            <t v="; and"/>
@@ -26267,7 +26267,7 @@
                         </num>
                         <p>
                            <t v="all aeroplanes with an MCTOM of more than "/>
-                           <t v="45 500"/>
+                           <number v="45500"/>
                            <t v=" kg and first issued with an individual CofA on or after "/>
                            <date asWritten="16 December 2018" date="2018-12-16"/>
                            <t v="."/>
@@ -26330,7 +26330,7 @@
                   </num>
                   <p>
                      <t v="all aeroplanes with an MCTOM of more than "/>
-                     <t v="27 000"/>
+                     <number v="27000"/>
                      <t v=" kg, with a MOPSC of more than 19, and first issued with an individual CofA on or after "/>
                      <date asWritten="1 January 2024" date="2024-01-01"/>
                      <t v="; and"/>
@@ -26342,7 +26342,7 @@
                   </num>
                   <p>
                      <t v="all aeroplanes with a MCTOM of more than "/>
-                     <t v="45 500"/>
+                     <number v="45500"/>
                      <t v=" kg and first issued with an individual CofA on or after "/>
                      <date asWritten="1 January 2024" date="2024-01-01"/>
                      <t v="."/>
@@ -27273,7 +27273,7 @@
                      </num>
                      <p>
                         <t v="helicopters with an MCTOM of "/>
-                        <t v="3 175"/>
+                        <number v="3175"/>
                         <t v=" kg or less operated by day and over routes navigated by reference to visual landmarks; or"/>
                      </p>
                   </unit>
@@ -28371,7 +28371,7 @@
                   </num>
                   <p>
                      <t v="Notwithstanding CAT.OP.MPA.150(b) to (d), for helicopters with an MCTOM of "/>
-                     <t v="3 175"/>
+                     <number v="3175"/>
                      <t v=" kg or less, by day and over routes navigated by reference to visual landmarks or local helicopter operations, the fuel policy shall ensure that, on completion of the flight, or series of flights the final reserve fuel is not less than an amount sufficient for:"/>
                   </p>
                   <list kind="arabic">
@@ -28715,7 +28715,7 @@
                      </num>
                      <p>
                         <t v="helicopters with an MCTOM of "/>
-                        <t v="3 175"/>
+                        <number v="3175"/>
                         <t v=" kg or less, by day and over routes navigated by reference to visual landmarks in a local area as specified in the operations manual."/>
                      </p>
                   </unit>
@@ -29098,7 +29098,7 @@
                               </num>
                               <p>
                                  <t v="when a flight is operated with no destination alternate aerodrome, it shall be the amount of fuel/energy required to hold at the destination aerodrome, while enabling the aeroplane to perform a safe landing, and to allow for deviations from the planned operation; as a minimum, this amount shall be 15-minute fuel/energy at holding speed at "/>
-                                 <t v="1 500"/>
+                                 <number v="1500"/>
                                  <t v=" ft (450 m) above the aerodrome elevation in standard conditions, calculated according to the estimated aeroplane mass on arrival at the destination aerodrome;"/>
                               </p>
                            </unit>
@@ -29110,7 +29110,7 @@
                         </num>
                         <p>
                            <t v="final reserve fuel/energy that shall be the amount of fuel/energy that is calculated at holding speed at "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" ft (450 m) above the aerodrome elevation in standard conditions according to the aeroplane estimated mass on arrival at the destination alternate aerodrome, or destination aerodrome when no destination alternate aerodrome is required, and shall not be less than:"/>
                         </p>
                         <list kind="roman">
@@ -29846,7 +29846,7 @@
                               </num>
                               <p>
                                  <t v="if flying under instrument flight rules (IFR), 30-minute fuel/energy at holding speed at "/>
-                                 <t v="1 500"/>
+                                 <number v="1500"/>
                                  <t v=" ft (450 m) above the aerodrome elevation in standard conditions, calculated according to the helicopter estimated mass on arrival at the destination alternate aerodrome or at the destination aerodrome when no destination alternate aerodrome is required;"/>
                               </p>
                            </unit>
@@ -29952,7 +29952,7 @@
                   </num>
                   <p>
                      <t v="As an alternative to points (b) to (d), for helicopters with a maximum certified take-off mass (MCTOM) of "/>
-                     <t v="3 175"/>
+                     <number v="3175"/>
                      <t v=" kg or less, flying by day and over routes navigated by reference to visual landmarks, or for local helicopter operations (LHO), the fuel/energy policy shall ensure that on completion of the flight, or series of flights, the final reserve fuel/energy is sufficient for:"/>
                   </p>
                   <list kind="arabic">
@@ -30352,7 +30352,7 @@
                               <t v="(ii)"/>
                            </num>
                            <p>
-                              <t v="10 000"/>
+                              <number v="10000"/>
                               <t v=" ft, whichever is higher;"/>
                            </p>
                         </unit>
@@ -30710,7 +30710,7 @@
                   </num>
                   <p>
                      <t v="On VFR flights overwater out of sight of land with helicopters, the commander shall only commence take-off when the appropriate meteorological reports and/or forecasts indicate that the ceiling will be above 600 ft by day or "/>
-                     <t v="1 200"/>
+                     <number v="1200"/>
                      <t v=" ft by night."/>
                   </p>
                </unit>
@@ -30785,25 +30785,25 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="300"/>
+                                 <number v="300"/>
                                  <t v=" ft"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="3"/>
+                                 <number v="3"/>
                                  <t v=" km"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="500"/>
+                                 <number v="500"/>
                                  <t v=" ft"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="5"/>
+                                 <number v="5"/>
                                  <t v=" km"/>
                               </p>
                            </td>
@@ -30816,26 +30816,26 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="300"/>
+                                 <number v="300"/>
                                  <t v=" ft"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="2"/>
+                                 <number v="2"/>
                                  <t v=" km"/>
                                  <noteRef href="#note_94" marker="*"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="500"/>
+                                 <number v="500"/>
                                  <t v=" ft"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="5"/>
+                                 <number v="5"/>
                                  <t v=" km"/>
                                  <noteRef href="#note_95" marker="*"/>
                               </p>
@@ -31145,9 +31145,9 @@
             </heading>
             <p>
                <t v="The commander shall ensure that flight crew members engaged in performing duties essential to the safe operation of an aircraft in flight use supplemental oxygen continuously whenever the cabin altitude exceeds "/>
-               <t v="10 000"/>
+               <number v="10000"/>
                <t v=" ft for a period of more than 30 minutes and whenever the cabin altitude exceeds "/>
-               <t v="13 000"/>
+               <number v="13000"/>
                <t v=" ft."/>
             </p>
          </unit>
@@ -31447,7 +31447,7 @@
                         </num>
                         <p>
                            <t v="past a point at which the aeroplane is "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft above the aerodrome elevation; or"/>
                         </p>
                      </unit>
@@ -31457,7 +31457,7 @@
                         </num>
                         <p>
                            <t v="into the final approach segment (FAS) if the DH or MDH is higher than "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft."/>
                         </p>
                      </unit>
@@ -31477,7 +31477,7 @@
                         </num>
                         <p>
                            <t v="past a point at which the helicopter is "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft above the aerodrome elevation; or"/>
                         </p>
                      </unit>
@@ -31487,7 +31487,7 @@
                         </num>
                         <p>
                            <t v="into the FAS if the DH or MDH is higher than "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft."/>
                         </p>
                      </unit>
@@ -32330,9 +32330,9 @@
                </heading>
                <p>
                   <t v="The commander shall ensure that flight crew members engaged in performing duties essential to the safe operation of the aircraft in flight use supplemental oxygen continuously whenever the pressure altitude exceeds "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft for a period of more than 30 minutes and whenever the pressure altitude exceeds "/>
-                  <t v="13 000"/>
+                  <number v="13000"/>
                   <t v=" ft."/>
                </p>
             </unit>
@@ -32955,7 +32955,7 @@
                </num>
                <p>
                   <t v="The OEI en-route net flight path data shown in the AFM, appropriate to the meteorological conditions expected for the flight, shall allow demonstration of compliance with (b) or (c) at all points along the route. The net flight path shall have a positive gradient at "/>
-                  <t v="1 500"/>
+                  <number v="1500"/>
                   <t v=" ft above the aerodrome where the landing is assumed to be made after engine failure. In meteorological conditions requiring the operation of ice protection systems, the effect of their use on the net flight path shall be taken into account."/>
                </p>
             </unit>
@@ -32969,7 +32969,7 @@
                </num>
                <p>
                   <t v="The gradient of the en-route net flight path shall be positive at least "/>
-                  <t v="1 000"/>
+                  <number v="1000"/>
                   <t v=" ft above all terrain and obstructions along the route within 9,3 km (5 NM) on either side of the intended track."/>
                </p>
             </unit>
@@ -32983,7 +32983,7 @@
                </num>
                <p>
                   <t v="The en-route net flight path shall permit the aeroplane to continue flight from the cruising altitude to an aerodrome where a landing can be made in accordance with point CAT.POL.A.230 or CAT.POL.A.235, as appropriate. The en-route net flight path shall clear vertically, by at least "/>
-                  <t v="2 000"/>
+                  <number v="2000"/>
                   <t v=" ft, all terrain and obstructions along the route within 9,3 km (5 NM) on either side of the intended track, taking into account the following elements:"/>
                </p>
                <list kind="arabic">
@@ -33094,7 +33094,7 @@
                   </num>
                   <p>
                      <t v="The two-engines-inoperative en-route net flight path data shall allow the aeroplane to continue the flight, in the expected meteorological conditions, from the point where two engines are assumed to fail simultaneously to an aerodrome at which it is possible to land and come to a complete stop when using the prescribed procedure for a landing with two engines inoperative. The en-route net flight path shall clear vertically, by at least "/>
-                     <t v="2 000"/>
+                     <number v="2000"/>
                      <t v=" ft, all terrain and obstructions along the route within 9,3 km (5 NM) on either side of the intended track. At altitudes and in meteorological conditions that require ice protection systems to be operable, the effect of their use on the en-route net flight path data shall be taken into account. If the navigational accuracy does not meet at least navigation specification RNAV 5, the operator shall increase the prescribed width margin provided for in the second sentence to 18,5 km (10 NM)."/>
                   </p>
                </unit>
@@ -33112,7 +33112,7 @@
                   </num>
                   <p>
                      <t v="The net flight path shall have a positive gradient at "/>
-                     <t v="1 500"/>
+                     <number v="1500"/>
                      <t v=" ft above the aerodrome where the landing is assumed to be made after the failure of two engines."/>
                   </p>
                </unit>
@@ -33134,7 +33134,7 @@
                   </num>
                   <p>
                      <t v="The expected mass of the aeroplane at the point where the two engines are assumed to fail shall not be less than that which would include sufficient fuel/energy to proceed to an aerodrome where the landing is assumed to be made, and to arrive there at an altitude of at least "/>
-                     <t v="1 500"/>
+                     <number v="1500"/>
                      <t v=" ft (450 m) directly over the landing area, and thereafter, to fly for 15 minutes at cruising power or thrust, as appropriate."/>
                   </p>
                </unit>
@@ -33737,7 +33737,7 @@
                      </num>
                      <p>
                         <t v="RVR/VIS minimum shall not be less than "/>
-                        <t v="1 500"/>
+                        <number v="1500"/>
                         <t v=" m and wind limitations are specified in the operations manual;"/>
                      </p>
                   </unit>
@@ -34241,7 +34241,7 @@
                      </num>
                      <p>
                         <t v="the take-off flight path begins at a height of 50 ft above the surface at the end of the take-off distance required by CAT.POL.A.305(b) and ends at a height of "/>
-                        <t v="1 500"/>
+                        <number v="1500"/>
                         <t v=" ft above the surface;"/>
                      </p>
                   </unit>
@@ -34403,7 +34403,7 @@
                </num>
                <p>
                   <t v="The aeroplane, in the meteorological conditions expected for the flight and in the event of the failure of one engine, with the remaining engines operating within the maximum continuous power conditions specified, shall be capable of continuing flight at or above the relevant minimum altitudes for safe flight stated in the operations manual to a point of "/>
-                  <t v="1 000"/>
+                  <number v="1000"/>
                   <t v=" ft above an aerodrome at which the performance requirements can be met."/>
                </p>
             </unit>
@@ -34841,7 +34841,7 @@
                </num>
                <p>
                   <t v="The steady gradient of climb shall be not less than 0,75 % at an altitude of "/>
-                  <t v="1 500"/>
+                  <number v="1500"/>
                   <t v=" ft above the take-off surface with:"/>
                </p>
                <list kind="alphaUpper">
@@ -34969,7 +34969,7 @@
                </num>
                <p>
                   <t v="The steady gradient of climb shall be not less than 0,75 % at an altitude of "/>
-                  <t v="1 500"/>
+                  <number v="1500"/>
                   <t v=" ft above the landing surface with:"/>
                </p>
                <list kind="alphaUpper">
@@ -35651,7 +35651,7 @@
                      <t v="CAT.POL.A.400(b) or (c)"/>
                   </changed>
                   <t v=", as applicable, and end at a height of "/>
-                  <t v="1 500"/>
+                  <number v="1500"/>
                   <t v=" ft above the surface."/>
                </p>
             </unit>
@@ -35828,7 +35828,7 @@
                         <t v="(1)"/>
                      </num>
                      <p>
-                        <t v="1 000"/>
+                        <number v="1000"/>
                         <t v=" ft, when the rate of climb is zero or greater; or"/>
                      </p>
                   </unit>
@@ -35837,7 +35837,7 @@
                         <t v="(2)"/>
                      </num>
                      <p>
-                        <t v="2 000"/>
+                        <number v="2000"/>
                         <t v=" ft, when the rate of climb is less than zero."/>
                      </p>
                   </unit>
@@ -35849,7 +35849,7 @@
                </num>
                <p>
                   <t v="The flight path shall have a positive slope at an altitude of 450 m ("/>
-                  <t v="1 500"/>
+                  <number v="1500"/>
                   <t v=" ft) above the aerodrome where the landing is assumed to be made after the failure of one engine."/>
                </p>
             </unit>
@@ -35920,7 +35920,7 @@
                   </num>
                   <p>
                      <t v="The two-engines-inoperative flight path shall permit the aeroplane to continue the flight, in the expected meteorological conditions, clearing all obstacles within 9,3 km (5 NM) on either side of the intended track by a vertical interval of at least "/>
-                     <t v="2 000"/>
+                     <number v="2000"/>
                      <t v=" ft, to an aerodrome at which the performance requirements applicable for the expected landing mass are met."/>
                   </p>
                </unit>
@@ -35942,7 +35942,7 @@
                   </num>
                   <p>
                      <t v="The expected mass of the aeroplane at the point where the two engines are assumed to fail shall not be less than that which would include sufficient fuel/energy to proceed to an aerodrome where the landing is assumed to be made, and to arrive there at an altitude of at least "/>
-                     <t v="1 500"/>
+                     <number v="1500"/>
                      <t v=" ft (450 m) directly over the landing area, and thereafter, to fly for 15 minutes at cruising power or thrust, as appropriate."/>
                   </p>
                </unit>
@@ -36811,9 +36811,9 @@
                      </num>
                      <p>
                         <t v="when it is intended that the flight will be conducted at any time out of sight of the surface, the mass of the helicopter permits a rate of climb of at least 50 ft/minute with the critical engine inoperative at an altitude of at least 300 m ("/>
-                        <t v="1 000"/>
+                        <number v="1000"/>
                         <t v=" ft), or 600 m ("/>
-                        <t v="2 000"/>
+                        <number v="2000"/>
                         <t v=" ft) in areas of mountainous terrain, above all relevant terrain and obstacles along the route;"/>
                      </p>
                   </unit>
@@ -36823,11 +36823,11 @@
                      </num>
                      <p>
                         <t v="when it is intended that the flight will be conducted without the surface in sight, the flight path permits the helicopter to continue flight from the cruising altitude to a height of 300 m ("/>
-                        <t v="1 000"/>
+                        <number v="1000"/>
                         <t v=" ft) above a landing site where a landing can be made in accordance with point CAT.POL.H.220; the flight path clears vertically, by at least 300 m ("/>
-                        <t v="1 000"/>
+                        <number v="1000"/>
                         <t v=" ft) or 600 m ("/>
-                        <t v="2 000"/>
+                        <number v="2000"/>
                         <t v=" ft) in areas of mountainous terrain, all relevant terrain and obstacles along the route; Drift-down techniques may be used;"/>
                      </p>
                   </unit>
@@ -36837,7 +36837,7 @@
                      </num>
                      <p>
                         <t v="when it is intended that the flight will be conducted in VMC with the surface in sight, the flight path permits the helicopter to continue flight from the cruising altitude to a height of 300 m ("/>
-                        <t v="1 000"/>
+                        <number v="1000"/>
                         <t v=" ft) above a landing site where a landing can be made in accordance with point CAT.POL.H.220, without flying at any time below the appropriate minimum flight altitude; Obstacles shall be considered within a distance on either side of the route as specified for the purpose of determination of the minimum flight altitude in VFR."/>
                      </p>
                   </unit>
@@ -36881,7 +36881,7 @@
                      </num>
                      <p>
                         <t v="fuel jettisoning is not planned below "/>
-                        <t v="1 000"/>
+                        <number v="1000"/>
                         <t v=" ft above terrain."/>
                      </p>
                   </unit>
@@ -37253,7 +37253,7 @@
                </num>
                <p>
                   <t v="The take-off mass shall not exceed the maximum mass specified for a rate of climb of 150 ft/min at 300 m ("/>
-                  <t v="1 000"/>
+                  <number v="1000"/>
                   <t v=" ft) above the level of the aerodrome or operating site with the critical engine inoperative and the remaining engine(s) operating at an appropriate power rating."/>
                </p>
             </unit>
@@ -37376,7 +37376,7 @@
                </num>
                <p>
                   <t v="The landing mass at the estimated time of landing shall not exceed the maximum mass specified for a rate of climb of 150 ft/min at 300 m ("/>
-                  <t v="1 000"/>
+                  <number v="1000"/>
                   <t v=" ft) above the level of the aerodrome or operating site with the critical engine inoperative and the remaining engine(s) operating at an appropriate power rating."/>
                </p>
             </unit>
@@ -37795,9 +37795,9 @@
                </num>
                <p>
                   <t v="Notwithstanding CAT.IDE.H.240, such operations may be conducted without supplemental oxygen equipment, provided the cabin altitude does not exceed "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft for a period in excess of 30 minutes and never exceeds "/>
-                  <t v="13 000"/>
+                  <number v="13000"/>
                   <t v=" ft pressure altitude."/>
                </p>
             </unit>
@@ -38847,7 +38847,7 @@
             </heading>
             <p>
                <t v="Aeroplanes with an MCTOM of more than "/>
-               <t v="5 700"/>
+               <number v="5700"/>
                <t v=" kg shall be equipped at each pilot station with a means to maintain a clear portion of the windshield during precipitation."/>
             </p>
          </unit>
@@ -39050,7 +39050,7 @@
                      </num>
                      <p>
                         <t v="aeroplanes with an MCTOM of more than "/>
-                        <t v="5 700"/>
+                        <number v="5700"/>
                         <t v=" kg or an MOPSC of more than nine; and"/>
                      </p>
                   </unit>
@@ -39228,7 +39228,7 @@
                            <t v="issued with an individual CofA before "/>
                            <date asWritten="1 April 1998" date="1998-04-01"/>
                            <t v=" with an MCTOM of more than "/>
-                           <t v="5 700"/>
+                           <number v="5700"/>
                            <t v=" kg, and with an MOPSC of more than nine."/>
                         </p>
                      </unit>
@@ -39240,7 +39240,7 @@
                   </num>
                   <p>
                      <t v="Except for propeller-driven aeroplanes with an MCTOM of "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg or less, two independent static pressure systems."/>
                   </p>
                </unit>
@@ -39250,7 +39250,7 @@
                   </num>
                   <p>
                      <t v="One static pressure system and one alternate source of static pressure for propeller-driven aeroplanes with an MCTOM of "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg or less."/>
                   </p>
                </unit>
@@ -39322,7 +39322,7 @@
                   </num>
                   <p>
                      <t v="A standby means of measuring and displaying attitude capable of being used from either pilot’s station for aeroplanes with an MCTOM of more than "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg or an MOPSC of more than nine that:"/>
                   </p>
                   <list kind="arabic">
@@ -39364,7 +39364,7 @@
                         </num>
                         <p>
                            <t v="is appropriately illuminated during all phases of operation, except for aeroplanes with an MCTOM of "/>
-                           <t v="5 700"/>
+                           <number v="5700"/>
                            <t v=" kg or less, already registered in a Member State on "/>
                            <date asWritten="1 April 1995" date="1995-04-01"/>
                            <t v=" and equipped with a standby attitude indicator in the left-hand instrument panel;"/>
@@ -39438,7 +39438,7 @@
                      </num>
                      <p>
                         <t v="turbine propeller powered aeroplanes with an MCTOM of more than "/>
-                        <t v="5 700"/>
+                        <number v="5700"/>
                         <t v=" kg or having an MOPSC of more than nine; and"/>
                      </p>
                   </unit>
@@ -39484,7 +39484,7 @@
                </num>
                <p>
                   <t v="Notwithstanding (a), aeroplanes with an MCTOM of "/>
-                  <t v="5 700"/>
+                  <number v="5700"/>
                   <t v=" kg or less, having an MOPSC of more than nine, first issued with an individual CofA before "/>
                   <date asWritten="1 April 1972" date="1972-04-01"/>
                   <t v=" and already registered in a Member State on "/>
@@ -39510,7 +39510,7 @@
                </num>
                <p>
                   <t v="Turbine-powered aeroplanes having an MCTOM of more than "/>
-                  <t v="5 700"/>
+                  <number v="5700"/>
                   <t v=" kg or an MOPSC of more than nine shall be equipped with a TAWS that meets the requirements for Class A equipment as specified in an acceptable standard."/>
                </p>
             </unit>
@@ -39520,7 +39520,7 @@
                </num>
                <p>
                   <t v="Reciprocating-engine-powered aeroplanes with an MCTOM of more than "/>
-                  <t v="5 700"/>
+                  <number v="5700"/>
                   <t v=" kg or an MOPSC of more than nine shall be equipped with a TAWS that meets the requirement for Class B equipment as specified in an acceptable standard."/>
                </p>
             </unit>
@@ -39536,7 +39536,7 @@
                   <t v="Turbine-powered aeroplanes for which the individual certificate of airworthiness (CofA) was first issued after "/>
                   <date asWritten="1 January 2019" date="2019-01-01"/>
                   <t v=" and having an MCTOM of "/>
-                  <t v="5 700"/>
+                  <number v="5700"/>
                   <t v=" kg or less and an MOPSC of six to nine shall be equipped with a TAWS that meets the requirements for Class B equipment, as specified in an acceptable standard."/>
                </p>
             </unit>
@@ -39554,7 +39554,7 @@
             </heading>
             <p>
                <t v="Unless otherwise provided for by Regulation (EU) No 1332/2011, turbine-powered aeroplanes with an MCTOM of more than "/>
-               <t v="5 700"/>
+               <number v="5700"/>
                <t v=" kg or an MOPSC of more than 19 shall be equipped with ACAS II."/>
             </p>
          </unit>
@@ -39587,7 +39587,7 @@
                   </num>
                   <p>
                      <t v="non-pressurised aeroplanes with an MCTOM of more than "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg; and"/>
                   </p>
                </unit>
@@ -39657,7 +39657,7 @@
             </heading>
             <p>
                <t v="Aeroplanes with an MCTOM of more than "/>
-               <t v="15 000"/>
+               <number v="15000"/>
                <t v=" kg, or with an MOPSC of more than 19 shall be equipped with a crew member interphone system, except for aeroplanes first issued with an individual CofA before "/>
                <date asWritten="1 April 1965" date="1965-04-01"/>
                <t v=" and already registered in a Member State on "/>
@@ -39705,7 +39705,7 @@
                      </num>
                      <p>
                         <t v="aeroplanes with an MCTOM of more than "/>
-                        <t v="5 700"/>
+                        <number v="5700"/>
                         <t v=" kg; and"/>
                      </p>
                   </unit>
@@ -39715,7 +39715,7 @@
                      </num>
                      <p>
                         <t v="multi-engined turbine-powered aeroplanes with an MCTOM of "/>
-                        <t v="5 700"/>
+                        <number v="5700"/>
                         <t v=" kg or less, with an MOPSC of more than nine and first issued with an individual CofA on or after "/>
                         <date asWritten="1 January 1990" date="1990-01-01"/>
                         <t v="."/>
@@ -39791,7 +39791,7 @@
                      </num>
                      <p>
                         <t v="the preceding 25 hours for aeroplanes with an MCTOM of more than "/>
-                        <t v="27 000"/>
+                        <number v="27000"/>
                         <t v=" kg and first issued with an individual CofA on or after "/>
                         <date asWritten="1 January 2022" date="2022-01-01"/>
                         <t v="; or"/>
@@ -39959,7 +39959,7 @@
                </num>
                <p>
                   <t v="Aeroplanes with an MCTOM of over "/>
-                  <t v="27 000"/>
+                  <number v="27000"/>
                   <t v=" kg and first issued with an individual CofA on or after "/>
                   <date asWritten="5 September 2022" date="2022-09-05"/>
                   <t v=" shall be equipped with an alternate power source to which the CVR and the cockpit-mounted area microphone are switched automatically in the event that all other power to the CVR is interrupted."/>
@@ -39991,7 +39991,7 @@
                      </num>
                      <p>
                         <t v="aeroplanes with an MCTOM of more than "/>
-                        <t v="5 700"/>
+                        <number v="5700"/>
                         <t v=" kg and first issued with an individual CofA on or after "/>
                         <date asWritten="1 June 1990" date="1990-06-01"/>
                         <t v=";"/>
@@ -40003,7 +40003,7 @@
                      </num>
                      <p>
                         <t v="turbine-engined aeroplanes with an MCTOM of more than "/>
-                        <t v="5 700"/>
+                        <number v="5700"/>
                         <t v=" kg and first issued with an individual CofA before "/>
                         <date asWritten="1 June 1990" date="1990-06-01"/>
                         <t v="; and"/>
@@ -40015,7 +40015,7 @@
                      </num>
                      <p>
                         <t v="multi-engined turbine-powered aeroplanes with an MCTOM of "/>
-                        <t v="5 700"/>
+                        <number v="5700"/>
                         <t v=" kg or less, with an MOPSC of more than nine and first issued with an individual CofA on or after "/>
                         <date asWritten="1 April 1998" date="1998-04-01"/>
                         <t v="."/>
@@ -40037,7 +40037,7 @@
                      </num>
                      <p>
                         <t v="time, altitude, airspeed, normal acceleration and heading and be capable of retaining the data recorded during at least the preceding 25 hours for aeroplanes referred to in (a)(2) with an MCTOM of less than "/>
-                        <t v="27 000"/>
+                        <number v="27000"/>
                         <t v=" kg;"/>
                      </p>
                   </unit>
@@ -40047,7 +40047,7 @@
                      </num>
                      <p>
                         <t v="the parameters required to determine accurately the aeroplane flight path, speed, attitude, engine power and configuration of lift and drag devices and be capable of retaining the data recorded during at least the preceding 25 hours, for aeroplanes referred to in (a)(1) with an MCTOM of less than "/>
-                        <t v="27 000"/>
+                        <number v="27000"/>
                         <t v=" kg and first issued with an individual CofA before "/>
                         <date asWritten="1 January 2016" date="2016-01-01"/>
                         <t v=";"/>
@@ -40059,7 +40059,7 @@
                      </num>
                      <p>
                         <t v="the parameters required to determine accurately the aeroplane flight path, speed, attitude, engine power, configuration and operation and be capable of retaining the data recorded during at least the preceding 25 hours, for aeroplanes referred to in (a)(1) and (a)(2) with an MCTOM of over "/>
-                        <t v="27 000"/>
+                        <number v="27000"/>
                         <t v=" kg and first issued with an individual CofA before "/>
                         <date asWritten="1 January 2016" date="2016-01-01"/>
                         <t v=";"/>
@@ -40142,7 +40142,7 @@
                   </num>
                   <p>
                      <t v="Turbine-engined aeroplanes with an MCTOM of "/>
-                     <t v="2 250"/>
+                     <number v="2250"/>
                      <t v=" kg or more and aeroplanes with an MOPSC of more than 9 shall be equipped with a flight recorder if all of the following conditions are met:"/>
                   </p>
                   <list kind="arabic">
@@ -40377,7 +40377,7 @@
                   </num>
                   <p>
                      <t v="one flight data and cockpit voice combination recorder in the case of aeroplanes with an MCTOM of "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg or less and required to be equipped with a CVR and an FDR; or"/>
                   </p>
                </unit>
@@ -40387,7 +40387,7 @@
                   </num>
                   <p>
                      <t v="two flight data and cockpit voice combination recorders in the case of aeroplanes with an MCTOM of more than "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg and required to be equipped with a CVR and an FDR."/>
                   </p>
                </unit>
@@ -40438,7 +40438,7 @@
                      </num>
                      <p>
                         <t v="a seat belt with upper torso restraint system on each passenger seat and restraining belts on each berth in the case of aeroplanes with an MCTOM of "/>
-                        <t v="5 700"/>
+                        <number v="5700"/>
                         <t v=" kg or less and with an MOPSC of nine or less, having an individual CofA first issued on or after "/>
                         <date asWritten="8 April 2015" date="2015-04-08"/>
                         <t v=";"/>
@@ -40550,7 +40550,7 @@
                                  </num>
                                  <p>
                                     <t v="aeroplanes with an MCTOM of "/>
-                                    <t v="5 700"/>
+                                    <number v="5700"/>
                                     <t v=" kg or less and with an MOPSC of nine or less that are compliant with the emergency landing dynamic conditions defined in the applicable certification specification;"/>
                                  </p>
                               </unit>
@@ -40560,7 +40560,7 @@
                                  </num>
                                  <p>
                                     <t v="aeroplanes with an MCTOM of "/>
-                                    <t v="5 700"/>
+                                    <number v="5700"/>
                                     <t v=" kg or less and with an MOPSC of nine or less that are not compliant with the emergency landing dynamic conditions defined in the applicable certification specification and having an individual CofA first issued before "/>
                                     <date asWritten="28 October 2014" date="2014-10-28"/>
                                     <t v=";"/>
@@ -40715,7 +40715,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="1"/>
+                           <number v="1"/>
                         </p>
                      </td>
                   </tr>
@@ -40727,7 +40727,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="2"/>
+                           <number v="2"/>
                         </p>
                      </td>
                   </tr>
@@ -40739,7 +40739,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="3"/>
+                           <number v="3"/>
                         </p>
                      </td>
                   </tr>
@@ -40751,7 +40751,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="4"/>
+                           <number v="4"/>
                         </p>
                      </td>
                   </tr>
@@ -40763,7 +40763,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="5"/>
+                           <number v="5"/>
                         </p>
                      </td>
                   </tr>
@@ -40775,7 +40775,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="6"/>
+                           <number v="6"/>
                         </p>
                      </td>
                   </tr>
@@ -40887,7 +40887,7 @@
                </num>
                <p>
                   <t v="Pressurised aeroplanes operated at pressure altitudes above "/>
-                  <t v="25 000"/>
+                  <number v="25000"/>
                   <t v=" ft, in the case of operations for which a cabin crew member is required, shall be equipped with a supply of undiluted oxygen for passengers who, for physiological reasons, might require oxygen following a cabin depressurisation."/>
                </p>
             </unit>
@@ -40901,9 +40901,9 @@
                </num>
                <p>
                   <t v="The oxygen supply referred to in (a) shall be sufficient for the remainder of the flight after cabin depressurisation when the cabin altitude exceeds "/>
-                  <t v="8 000"/>
+                  <number v="8000"/>
                   <t v=" ft but does not exceed "/>
-                  <t v="15 000"/>
+                  <number v="15000"/>
                   <t v=" ft, for at least 2 % of the passengers carried, but in no case for less than one person."/>
                </p>
             </unit>
@@ -40945,7 +40945,7 @@
                </num>
                <p>
                   <t v="Pressurised aeroplanes operated at pressure altitudes above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall be equipped with supplemental oxygen equipment that is capable of storing and dispensing the oxygen supplies in accordance with Table 1."/>
                </p>
             </unit>
@@ -40955,7 +40955,7 @@
                </num>
                <p>
                   <t v="Pressurised aeroplanes operated at pressure altitudes above "/>
-                  <t v="25 000"/>
+                  <number v="25000"/>
                   <t v=" ft shall be equipped with:"/>
                </p>
                <list kind="arabic">
@@ -41001,11 +41001,11 @@
                   <t v="In the case of pressurised aeroplanes first issued with an individual CofA after "/>
                   <date asWritten="8 November 1998" date="1998-11-08"/>
                   <t v=" and operated at pressure altitudes above "/>
-                  <t v="25 000"/>
+                  <number v="25000"/>
                   <t v=" ft, or operated at pressure altitudes at, or below "/>
-                  <t v="25 000"/>
+                  <number v="25000"/>
                   <t v=" ft under conditions that would not allow them to descend safely to "/>
-                  <t v="13 000"/>
+                  <number v="13000"/>
                   <t v=" ft within four minutes, the individual oxygen dispensing units referred to in (b)(3) shall be automatically deployable."/>
                </p>
             </unit>
@@ -41023,13 +41023,13 @@
                </num>
                <p>
                   <t v="Notwithstanding (a), the oxygen supply requirements for cabin crew member(s), additional crew member(s) and passenger(s), in the case of aeroplanes not certified to fly at altitudes above "/>
-                  <t v="25 000"/>
+                  <number v="25000"/>
                   <t v=" ft, may be reduced to the entire flying time between "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft and "/>
-                  <t v="13 000"/>
+                  <number v="13000"/>
                   <t v=" ft cabin pressure altitudes for all required cabin crew members and for at least 10 % of the passengers if, at all points along the route to be flown, the aeroplane is able to descend safely within four minutes to a cabin pressure altitude of "/>
-                  <t v="13 000"/>
+                  <number v="13000"/>
                   <t v=" ft."/>
                </p>
             </unit>
@@ -41039,9 +41039,9 @@
                </num>
                <p>
                   <t v="The required minimum supply in Table 1, row 1 item (b)(1) and row 2, shall cover the quantity of oxygen necessary for a constant rate of descent from the aeroplane’s maximum certified operating altitude to "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft in 10 minutes and followed by 20 minutes at "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft."/>
                </p>
             </unit>
@@ -41051,9 +41051,9 @@
                </num>
                <p>
                   <t v="The required minimum supply in Table 1, row 1 item 1(b)(2), shall cover the quantity of oxygen necessary for a constant rate of descent from the aeroplane’s maximum certified operating altitude to "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft in 10 minutes followed by 110 minutes at "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft."/>
                </p>
             </unit>
@@ -41063,7 +41063,7 @@
                </num>
                <p>
                   <t v="The required minimum supply in Table 1, row 3, shall cover the quantity of oxygen necessary for a constant rate of descent from the aeroplane’s maximum certified operating altitude to "/>
-                  <t v="15 000"/>
+                  <number v="15000"/>
                   <t v=" ft in 10 minutes."/>
                </p>
                <table cols="2">
@@ -41110,7 +41110,7 @@
                            </num>
                            <p>
                               <t v="The entire flying time when the cabin pressure altitude exceeds "/>
-                              <t v="13 000"/>
+                              <number v="13000"/>
                               <t v=" ft."/>
                            </p>
                         </unit>
@@ -41121,9 +41121,9 @@
                            </num>
                            <p>
                               <t v="The remainder of the flying time when the cabin pressure altitude exceeds "/>
-                              <t v="10 000"/>
+                              <number v="10000"/>
                               <t v=" ft but does not exceed "/>
-                              <t v="13 000"/>
+                              <number v="13000"/>
                               <t v=" ft, after the initial 30 minutes at these altitudes, but in no case less than:"/>
                            </p>
                            <list kind="arabic">
@@ -41134,7 +41134,7 @@
                                  </num>
                                  <p>
                                     <t v="30 minutes’ supply for aeroplanes certified to fly at altitudes not exceeding "/>
-                                    <t v="25 000"/>
+                                    <number v="25000"/>
                                     <t v=" ft; and"/>
                                  </p>
                               </unit>
@@ -41145,7 +41145,7 @@
                                  </num>
                                  <p>
                                     <t v="2 hours’ supply for aeroplanes certified to fly at altitudes of more than "/>
-                                    <t v="25 000"/>
+                                    <number v="25000"/>
                                     <t v=" ft."/>
                                  </p>
                               </unit>
@@ -41173,7 +41173,7 @@
                            </num>
                            <p>
                               <t v="The entire flying time when the cabin pressure altitude exceeds "/>
-                              <t v="13 000"/>
+                              <number v="13000"/>
                               <t v=" ft, but not less than 30 minutes’ supply."/>
                            </p>
                         </unit>
@@ -41184,9 +41184,9 @@
                            </num>
                            <p>
                               <t v="The remainder of the flying time when the cabin pressure altitude exceeds "/>
-                              <t v="10 000"/>
+                              <number v="10000"/>
                               <t v=" ft but does not exceed "/>
-                              <t v="13 000"/>
+                              <number v="13000"/>
                               <t v=" ft, after the initial 30 minutes at these altitudes."/>
                            </p>
                         </unit>
@@ -41208,7 +41208,7 @@
                      <td>
                         <p>
                            <t v="The entire flying time when the cabin pressure altitude exceeds "/>
-                           <t v="15 000"/>
+                           <number v="15000"/>
                            <t v=" ft, but in no case less than 10 minutes’ supply."/>
                         </p>
                      </td>
@@ -41229,9 +41229,9 @@
                      <td>
                         <p>
                            <t v="The entire flying time when the cabin pressure altitude exceeds "/>
-                           <t v="14 000"/>
+                           <number v="14000"/>
                            <t v=" ft but does not exceed "/>
-                           <t v="15 000"/>
+                           <number v="15000"/>
                            <t v=" ft."/>
                         </p>
                      </td>
@@ -41252,9 +41252,9 @@
                      <td>
                         <p>
                            <t v="The remainder of the flying time when the cabin pressure altitude exceeds "/>
-                           <t v="10 000"/>
+                           <number v="10000"/>
                            <t v=" ft but does not exceed "/>
-                           <t v="14 000"/>
+                           <number v="14000"/>
                            <t v=" ft, after the initial 30 minutes at these altitudes."/>
                         </p>
                      </td>
@@ -41275,7 +41275,7 @@
             </heading>
             <p>
                <t v="Non-pressurised aeroplanes operated at pressure altitudes above "/>
-               <t v="10 000"/>
+               <number v="10000"/>
                <t v=" ft shall be equipped with supplemental oxygen equipment capable of storing and dispensing the oxygen supplies in accordance with Table 1."/>
             </p>
             <table cols="2">
@@ -41317,7 +41317,7 @@
                   <td>
                      <p>
                         <t v="The entire flying time at pressure altitudes above "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -41337,11 +41337,11 @@
                   <td>
                      <p>
                         <t v="The entire flying time at pressure altitudes above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft and for any period exceeding 30 minutes at pressure altitudes above "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft but not exceeding "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -41362,7 +41362,7 @@
                   <td>
                      <p>
                         <t v="The entire flying time at pressure altitudes above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -41385,9 +41385,9 @@
                   <td>
                      <p>
                         <t v="The entire flying time after 30 minutes at pressure altitudes above "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft but not exceeding "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -41411,7 +41411,7 @@
                </num>
                <p>
                   <t v="All pressurised aeroplanes and those unpressurised aeroplanes with an MCTOM of more than "/>
-                  <t v="5 700"/>
+                  <number v="5700"/>
                   <t v=" kg or having an MOPSC of more than 19 seats shall be equipped with protective breathing equipment (PBE) to protect the eyes, nose and mouth and to provide for a period of at least 15 minutes:"/>
                </p>
                <list kind="arabic">
@@ -41561,7 +41561,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="1"/>
+                           <number v="1"/>
                         </p>
                      </td>
                   </tr>
@@ -41573,7 +41573,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="2"/>
+                           <number v="2"/>
                         </p>
                      </td>
                   </tr>
@@ -41585,7 +41585,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="3"/>
+                           <number v="3"/>
                         </p>
                      </td>
                   </tr>
@@ -41597,7 +41597,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="4"/>
+                           <number v="4"/>
                         </p>
                      </td>
                   </tr>
@@ -41609,7 +41609,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="5"/>
+                           <number v="5"/>
                         </p>
                      </td>
                   </tr>
@@ -41621,7 +41621,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="6"/>
+                           <number v="6"/>
                         </p>
                      </td>
                   </tr>
@@ -41633,7 +41633,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="7"/>
+                           <number v="7"/>
                         </p>
                      </td>
                   </tr>
@@ -41645,7 +41645,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="8"/>
+                           <number v="8"/>
                         </p>
                      </td>
                   </tr>
@@ -41669,7 +41669,7 @@
                </num>
                <p>
                   <t v="Aeroplanes with an MCTOM of more than "/>
-                  <t v="5 700"/>
+                  <number v="5700"/>
                   <t v=" kg or with an MOPSC of more than nine shall be equipped with at least one crash axe or crowbar located in the flight crew compartment."/>
                </p>
             </unit>
@@ -41836,7 +41836,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="1"/>
+                              <number v="1"/>
                            </p>
                         </td>
                      </tr>
@@ -41848,7 +41848,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="2"/>
+                              <number v="2"/>
                            </p>
                         </td>
                      </tr>
@@ -42226,9 +42226,9 @@
                   <t v="By "/>
                   <date asWritten="1 January 2019" date="2019-01-01"/>
                   <t v=" at the latest, aeroplanes with an MCTOM of more than "/>
-                  <t v="27 000"/>
+                  <number v="27000"/>
                   <t v=" kg and with an MOPSC of more than 19 and all aeroplanes with an MCTOM of more than "/>
-                  <t v="45 500"/>
+                  <number v="45500"/>
                   <t v=" kg shall be fitted with a securely attached underwater locating device that operates at a frequency of 8,8 kHz ± 1 kHz, unless:"/>
                </p>
                <list kind="arabic">
@@ -43041,9 +43041,9 @@
                </num>
                <p>
                   <t v="Helicopters with an MCTOM of more than "/>
-                  <t v="3 175"/>
+                  <number v="3175"/>
                   <t v=" kg or any helicopter operating over water when out of sight of land or when the visibility is less than "/>
-                  <t v="1 500"/>
+                  <number v="1500"/>
                   <t v=" m, shall be equipped with a means of measuring and displaying:"/>
                </p>
                <list kind="arabic">
@@ -43071,7 +43071,7 @@
                </num>
                <p>
                   <t v="A means for preventing malfunction of the airspeed indicating systems due to condensation or icing shall be available for helicopters with an MCTOM of more than "/>
-                  <t v="3 175"/>
+                  <number v="3175"/>
                   <t v=" kg or an MOPSC of more than nine."/>
                </p>
             </unit>
@@ -43219,7 +43219,7 @@
                            <t v="issued with an individual CofA before "/>
                            <date asWritten="1 August 1999" date="1999-08-01"/>
                            <t v=" with an MCTOM of more than "/>
-                           <t v="3 175"/>
+                           <number v="3175"/>
                            <t v=" kg, and with an MOPSC of more than nine."/>
                         </p>
                      </unit>
@@ -43419,7 +43419,7 @@
                      </num>
                      <p>
                         <t v="in a visibility of less than "/>
-                        <t v="1 500"/>
+                        <number v="1500"/>
                         <t v=" m;"/>
                      </p>
                   </unit>
@@ -43586,7 +43586,7 @@
                      </num>
                      <p>
                         <t v="all helicopters with an MCTOM of more than "/>
-                        <t v="7 000"/>
+                        <number v="7000"/>
                         <t v=" kg; and"/>
                      </p>
                   </unit>
@@ -43596,7 +43596,7 @@
                      </num>
                      <p>
                         <t v="helicopters with an MCTOM of more than "/>
-                        <t v="3 175"/>
+                        <number v="3175"/>
                         <t v=" kg and first issued with an individual CofA on or after "/>
                         <date asWritten="1 January 1987" date="1987-01-01"/>
                         <t v="."/>
@@ -43822,7 +43822,7 @@
                      </num>
                      <p>
                         <t v="helicopters with an MCTOM of more than "/>
-                        <t v="3 175"/>
+                        <number v="3175"/>
                         <t v=" kg and first issued with an individual CofA on or after "/>
                         <date asWritten="1 August 1999" date="1999-08-01"/>
                         <t v=";"/>
@@ -43834,7 +43834,7 @@
                      </num>
                      <p>
                         <t v="helicopters with an MCTOM of more than "/>
-                        <t v="7 000"/>
+                        <number v="7000"/>
                         <t v=" kg, or an MOPSC of more than nine, and first issued with an individual CofA on or after "/>
                         <date asWritten="1 January 1989" date="1989-01-01"/>
                         <t v=" but before "/>
@@ -43935,7 +43935,7 @@
                   </num>
                   <p>
                      <t v="Turbine-engined helicopters with an MCTOM of "/>
-                     <t v="2 250"/>
+                     <number v="2250"/>
                      <t v=" kg or more shall be equipped with a flight recorder if all of the following conditions are met:"/>
                   </p>
                   <list kind="arabic">
@@ -44324,7 +44324,7 @@
             </heading>
             <p>
                <t v="Non-pressurised helicopters operated at pressure altitudes above "/>
-               <t v="10 000"/>
+               <number v="10000"/>
                <t v=" ft shall be equipped with supplemental oxygen equipment capable of storing and dispensing the oxygen supplies in accordance with the following tables."/>
             </p>
             <table cols="2">
@@ -44366,7 +44366,7 @@
                   <td>
                      <p>
                         <t v="The entire flying time at pressure altitudes above "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -44386,11 +44386,11 @@
                   <td>
                      <p>
                         <t v="The entire flying time at pressure altitudes above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft and for any period exceeding 30 minutes at pressure altitudes above "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft but not exceeding "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -44411,7 +44411,7 @@
                   <td>
                      <p>
                         <t v="The entire flying time at pressure altitudes above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -44432,9 +44432,9 @@
                   <td>
                      <p>
                         <t v="The entire flying time after 30 minutes at pressure altitudes above "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft but not exceeding "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -44479,11 +44479,11 @@
                   <td>
                      <p>
                         <t v="The entire flying time at pressure altitudes above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft and for any period exceeding 30 minutes at pressure altitudes above "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft but not exceeding "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -44504,7 +44504,7 @@
                   <td>
                      <p>
                         <t v="The entire flying time at pressure altitudes above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -44525,9 +44525,9 @@
                   <td>
                      <p>
                         <t v="The entire flying time after 30 minutes at pressure altitudes above "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft but not exceeding "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -44618,7 +44618,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="1"/>
+                        <number v="1"/>
                      </p>
                   </td>
                </tr>
@@ -44630,7 +44630,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="2"/>
+                        <number v="2"/>
                      </p>
                   </td>
                </tr>
@@ -44642,7 +44642,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="3"/>
+                        <number v="3"/>
                      </p>
                   </td>
                </tr>
@@ -45793,7 +45793,7 @@
                </heading>
                <p>
                   <t v="Sailplanes operated at pressure altitudes above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall be equipped with oxygen storage and dispensing apparatus carrying enough breathing oxygen to supply:"/>
                </p>
                <list kind="alpha">
@@ -45803,9 +45803,9 @@
                      </num>
                      <p>
                         <t v="crew members for any period in excess of 30 minutes when the pressure altitude will be between "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft and "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft; and"/>
                      </p>
                   </unit>
@@ -45815,7 +45815,7 @@
                      </num>
                      <p>
                         <t v="all crew members and passengers for any period that the pressure altitude will be above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </unit>
@@ -46410,7 +46410,7 @@
                </heading>
                <p>
                   <t v="Balloons operated at pressure altitudes above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall be equipped with oxygen storage and dispensing apparatus carrying enough breathing oxygen to supply:"/>
                </p>
                <list kind="alpha">
@@ -46420,9 +46420,9 @@
                      </num>
                      <p>
                         <t v="crew members for any period in excess of 30 minutes when the pressure altitude will be between "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft and "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft; and"/>
                      </p>
                   </unit>
@@ -46432,7 +46432,7 @@
                      </num>
                      <p>
                         <t v="all crew members and passengers for any period that the pressure altitude will be above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </unit>
@@ -47260,7 +47260,7 @@
             </heading>
             <p>
                <t v="Aeroplanes and helicopters shall only be operated in designated airspace where a reduced vertical separation minimum of 300 m ("/>
-               <t v="1 000"/>
+               <number v="1000"/>
                <t v=" ft) applies between flight level (FL) 290 and FL 410, inclusive, if the operator has been granted an approval by the competent authority to conduct such operations."/>
             </p>
          </unit>
@@ -48069,7 +48069,7 @@
                         </p>
                         <p>
                            <t v="RVR/VIS + "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m"/>
                         </p>
                      </td>
@@ -48953,9 +48953,9 @@
                            <t v="(i)"/>
                         </num>
                         <p>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" hours as pilot-in-command/commander of helicopters, or "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" hours as co-pilot in HHO of which 200 hours is as pilot-in-command under supervision; and"/>
                         </p>
                      </unit>
@@ -50828,7 +50828,7 @@
                   </p>
                   <p>
                      <t v="Helicopters used in CAT operations with a maximum certificated take-off mass of more than "/>
-                     <t v="3 175"/>
+                     <number v="3175"/>
                      <t v=" kg or a MOPSC of more than 9 and first issued with an individual C of A after "/>
                      <date asWritten="31 December 2018" date="2018-12-31"/>
                      <t v=" shall be equipped with an HTAWS that meets the requirements for class A equipment as specified in an acceptable standard."/>
@@ -51412,7 +51412,7 @@
                   </num>
                   <p>
                      <t v="in a pressurised aeroplane, sufficient supplemental oxygen for all occupants to allow descent, following engine failure at the maximum certificated cruising altitude, at the best range gliding speed and in the best gliding configuration, assuming the maximum cabin leak rate, until sustained cabin altitudes below "/>
-                     <t v="13 000"/>
+                     <number v="13000"/>
                      <t v=" ft are reached;"/>
                   </p>
                </unit>
@@ -53962,7 +53962,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="200"/>
+                                    <number v="200"/>
                                  </p>
                               </td>
                            </tr>
@@ -53974,7 +53974,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="200"/>
+                                    <number v="200"/>
                                  </p>
                               </td>
                            </tr>
@@ -53986,7 +53986,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="250"/>
+                                    <number v="250"/>
                                  </p>
                               </td>
                            </tr>
@@ -53998,7 +53998,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="250"/>
+                                    <number v="250"/>
                                  </p>
                               </td>
                            </tr>
@@ -54010,7 +54010,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="250"/>
+                                    <number v="250"/>
                                  </p>
                               </td>
                            </tr>
@@ -54022,7 +54022,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="250"/>
+                                    <number v="250"/>
                                  </p>
                               </td>
                            </tr>
@@ -54034,7 +54034,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="300"/>
+                                    <number v="300"/>
                                  </p>
                               </td>
                            </tr>
@@ -54046,7 +54046,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="350"/>
+                                    <number v="350"/>
                                  </p>
                               </td>
                            </tr>
@@ -54058,7 +54058,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="300"/>
+                                    <number v="300"/>
                                  </p>
                               </td>
                            </tr>
@@ -54070,7 +54070,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="250"/>
+                                    <number v="250"/>
                                  </p>
                               </td>
                            </tr>
@@ -54082,7 +54082,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="350"/>
+                                    <number v="350"/>
                                  </p>
                               </td>
                            </tr>
@@ -54094,7 +54094,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="300"/>
+                                    <number v="300"/>
                                  </p>
                               </td>
                            </tr>
@@ -54106,7 +54106,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="350"/>
+                                    <number v="350"/>
                                  </p>
                               </td>
                            </tr>
@@ -54267,22 +54267,22 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="1 500"/>
+                                    <number v="1500"/>
                                  </p>
                               </td>
                               <td>
                                  <p>
-                                    <t v="1 600"/>
+                                    <number v="1600"/>
                                  </p>
                               </td>
                               <td>
                                  <p>
-                                    <t v="2 400"/>
+                                    <number v="2400"/>
                                  </p>
                               </td>
                               <td>
                                  <p>
-                                    <t v="3 600"/>
+                                    <number v="3600"/>
                                  </p>
                               </td>
                            </tr>
@@ -54685,7 +54685,7 @@
                         </num>
                         <p>
                            <t v="final reserve fuel/energy that shall be the amount of fuel/energy that is calculated at holding speed at "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" ft (450 m) above the aerodrome elevation in standard conditions according to the aircraft estimated mass on arrival at the destination alternate aerodrome, or destination aerodrome when no destination alternate aerodrome is required, and shall not be less than:"/>
                         </p>
                         <list kind="roman">
@@ -54787,7 +54787,7 @@
                               </num>
                               <p>
                                  <t v="for IFR flights, fuel/energy to fly for at least 30 minutes at holding speed at 450 m ("/>
-                                 <t v="1 500"/>
+                                 <number v="1500"/>
                                  <t v=" ft) above the aerodrome or operating site of intended landing or destination alternate in standard temperature conditions."/>
                               </p>
                            </unit>
@@ -55038,7 +55038,7 @@
                         </num>
                         <p>
                            <t v="a visibility of at least the higher of "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m and 800 m above the instrument approach operation RVR/VIS minima; or"/>
                         </p>
                      </unit>
@@ -55066,7 +55066,7 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="3 000"/>
+                           <number v="3000"/>
                            <t v=" m; or"/>
                         </p>
                      </unit>
@@ -55086,7 +55086,7 @@
                         </num>
                         <p>
                            <t v="a ceiling of at least the higher of "/>
-                           <t v="2 000"/>
+                           <number v="2000"/>
                            <t v=" ft and the minimum safe IFR height; and"/>
                         </p>
                      </unit>
@@ -55096,7 +55096,7 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="5 000"/>
+                           <number v="5000"/>
                            <t v=" m."/>
                         </p>
                      </unit>
@@ -55145,9 +55145,9 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m by day or "/>
-                           <t v="3 000"/>
+                           <number v="3000"/>
                            <t v=" m by night; or"/>
                         </p>
                      </unit>
@@ -55167,7 +55167,7 @@
                         </num>
                         <p>
                            <t v="a ceiling of at least "/>
-                           <t v="2 000"/>
+                           <number v="2000"/>
                            <t v=" ft or the minimum safe IFR height — whichever is greater; and"/>
                         </p>
                      </unit>
@@ -55177,9 +55177,9 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m by day or "/>
-                           <t v="3 000"/>
+                           <number v="3000"/>
                            <t v=" m by night."/>
                         </p>
                      </unit>
@@ -55302,7 +55302,7 @@
                               </num>
                               <p>
                                  <t v="a cloud base of at least 300 m ("/>
-                                 <t v="1 000"/>
+                                 <number v="1000"/>
                                  <t v=" ft) above the minimum associated with the instrument approach procedure; and"/>
                               </p>
                            </unit>
@@ -55357,7 +55357,7 @@
                         </num>
                         <p>
                            <t v="visibility of at least "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m more than the minimum associated with the procedure; or"/>
                         </p>
                      </unit>
@@ -55401,7 +55401,7 @@
                               </num>
                               <p>
                                  <t v="visibility is at least "/>
-                                 <t v="1 500"/>
+                                 <number v="1500"/>
                                  <t v=" m more than the minimum associated with the procedure"/>
                                  <changed amendingAct="32016R1199"
                                           action="replaced"
@@ -55654,7 +55654,7 @@
                               <t v="(ii)"/>
                            </num>
                            <p>
-                              <t v="10 000"/>
+                              <number v="10000"/>
                               <t v=" ft, whichever is higher;"/>
                            </p>
                         </unit>
@@ -56147,9 +56147,9 @@
             </heading>
             <p>
                <t v="The pilot-in-command shall ensure that he/she and flight crew members engaged in performing duties essential to the safe operation of an aircraft in flight use supplemental oxygen continuously whenever the cabin altitude exceeds "/>
-               <t v="10 000"/>
+               <number v="10000"/>
                <t v=" ft for a period of more than 30 minutes and whenever the cabin altitude exceeds "/>
-               <t v="13 000"/>
+               <number v="13000"/>
                <t v=" ft."/>
             </p>
          </unit>
@@ -56307,7 +56307,7 @@
                         </num>
                         <p>
                            <t v="past a point at which the aeroplane is "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft above the aerodrome elevation; or"/>
                         </p>
                      </unit>
@@ -56317,7 +56317,7 @@
                         </num>
                         <p>
                            <t v="into the final approach segment (FAS) if the DH or MDH is higher than "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft."/>
                         </p>
                      </unit>
@@ -56337,7 +56337,7 @@
                         </num>
                         <p>
                            <t v="past a point at which the helicopter is "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft above the aerodrome elevation; or"/>
                         </p>
                      </unit>
@@ -56347,7 +56347,7 @@
                         </num>
                         <p>
                            <t v="into the FAS if the DH or MDH is higher than "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft."/>
                         </p>
                      </unit>
@@ -56710,19 +56710,19 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="88"/>
+                                 <number v="88"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="70"/>
+                                 <number v="70"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="84"/>
+                                 <number v="84"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
@@ -56735,19 +56735,19 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="35"/>
+                                 <number v="35"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="35"/>
+                                 <number v="35"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="35"/>
+                                 <number v="35"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
@@ -56796,19 +56796,19 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="104"/>
+                                 <number v="104"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="96"/>
+                                 <number v="96"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="92"/>
+                                 <number v="92"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
@@ -56821,19 +56821,19 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="86"/>
+                                 <number v="86"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="78"/>
+                                 <number v="78"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="74"/>
+                                 <number v="74"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
@@ -56846,19 +56846,19 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="35"/>
+                                 <number v="35"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="35"/>
+                                 <number v="35"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
                            <td>
                               <p>
-                                 <t v="35"/>
+                                 <number v="35"/>
                                  <t v=" kg"/>
                               </p>
                            </td>
@@ -56913,7 +56913,7 @@
                                  </td>
                                  <td>
                                     <p>
-                                       <t v="11"/>
+                                       <number v="11"/>
                                        <t v=" kg"/>
                                     </p>
                                  </td>
@@ -56926,7 +56926,7 @@
                                  </td>
                                  <td>
                                     <p>
-                                       <t v="13"/>
+                                       <number v="13"/>
                                        <t v=" kg"/>
                                     </p>
                                  </td>
@@ -56939,7 +56939,7 @@
                                  </td>
                                  <td>
                                     <p>
-                                       <t v="15"/>
+                                       <number v="15"/>
                                        <t v=" kg"/>
                                     </p>
                                  </td>
@@ -56952,7 +56952,7 @@
                                  </td>
                                  <td>
                                     <p>
-                                       <t v="13"/>
+                                       <number v="13"/>
                                        <t v=" kg"/>
                                     </p>
                                  </td>
@@ -57395,7 +57395,7 @@
                </num>
                <p>
                   <t v="Except for an aeroplane equipped with turboprop engines and a maximum take-off mass at or below "/>
-                  <t v="5 700"/>
+                  <number v="5700"/>
                   <t v=" kg, in the event of an engine failure during take-off, the pilot-in-command shall ensure that the aeroplane is able:"/>
                </p>
                <list kind="arabic">
@@ -58268,7 +58268,7 @@
             </heading>
             <p>
                <t v="Turbine-powered aeroplanes with a maximum certified take-off mass (MCTOM) of more than "/>
-               <t v="5 700"/>
+               <number v="5700"/>
                <t v=" kg or a maximum operational passenger seating configuration (MOPSC) of more than nine shall be equipped with a TAWS that meets the requirements for:"/>
             </p>
             <list kind="alpha">
@@ -58307,7 +58307,7 @@
             </heading>
             <p>
                <t v="Unless otherwise provided for by Regulation (EU) No 1332/2011, turbine-powered aeroplanes with an MCTOM of more than "/>
-               <t v="5 700"/>
+               <number v="5700"/>
                <t v=" kg or an MOPSC of more than 19 shall be equipped with ACAS II."/>
             </p>
          </unit>
@@ -58340,7 +58340,7 @@
                   </num>
                   <p>
                      <t v="non-pressurised aeroplanes with an MCTOM of more than "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg; and"/>
                   </p>
                </unit>
@@ -58424,7 +58424,7 @@
                      </num>
                      <p>
                         <t v="aeroplanes with an MCTOM of more than "/>
-                        <t v="27 000"/>
+                        <number v="27000"/>
                         <t v=" kg and first issued with an individual CofA on or after "/>
                         <date asWritten="1 January 2016" date="2016-01-01"/>
                         <t v="; and"/>
@@ -58436,7 +58436,7 @@
                      </num>
                      <p>
                         <t v="aeroplanes with an MCTOM of more than "/>
-                        <t v="2 250"/>
+                        <number v="2250"/>
                         <t v=" kg:"/>
                      </p>
                      <list kind="roman">
@@ -58492,7 +58492,7 @@
                      </num>
                      <p>
                         <t v="the preceding 25 hours for aeroplanes with an MCTOM of more than "/>
-                        <t v="27 000"/>
+                        <number v="27000"/>
                         <t v=" kg and first issued with an individual CofA on or after "/>
                         <date asWritten="1 January 2022" date="2022-01-01"/>
                         <t v="; or"/>
@@ -58598,7 +58598,7 @@
                </num>
                <p>
                   <t v="Aeroplanes with an MCTOM of more than "/>
-                  <t v="5 700"/>
+                  <number v="5700"/>
                   <t v=" kg and first issued with an individual CofA on or after "/>
                   <date asWritten="1 January 2016" date="2016-01-01"/>
                   <t v=" shall be equipped with an FDR that uses a digital method of recording and storing data and for which a method of readily retrieving that data from the storage medium is available."/>
@@ -58962,7 +58962,7 @@
                                  </num>
                                  <p>
                                     <t v="aeroplanes with an MCTOM of "/>
-                                    <t v="5 700"/>
+                                    <number v="5700"/>
                                     <t v=" kg or less and with an MOPSC of nine or less that are compliant with the emergency landing dynamic conditions defined in the applicable certification specification;"/>
                                  </p>
                               </unit>
@@ -58972,7 +58972,7 @@
                                  </num>
                                  <p>
                                     <t v="aeroplanes with an MCTOM of "/>
-                                    <t v="5 700"/>
+                                    <number v="5700"/>
                                     <t v=" kg or less and with an MOPSC of nine or less that are not compliant with the emergency landing dynamic conditions defined in the applicable certification specification and having an individual CofA first issued before "/>
                                     <date asWritten="25 August 2016" date="2016-08-25"/>
                                     <t v="."/>
@@ -59051,7 +59051,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="1"/>
+                           <number v="1"/>
                         </p>
                      </td>
                   </tr>
@@ -59063,7 +59063,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="2"/>
+                           <number v="2"/>
                         </p>
                      </td>
                   </tr>
@@ -59075,7 +59075,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="3"/>
+                           <number v="3"/>
                         </p>
                      </td>
                   </tr>
@@ -59087,7 +59087,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="4"/>
+                           <number v="4"/>
                         </p>
                      </td>
                   </tr>
@@ -59099,7 +59099,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="5"/>
+                           <number v="5"/>
                         </p>
                      </td>
                   </tr>
@@ -59111,7 +59111,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="6"/>
+                           <number v="6"/>
                         </p>
                      </td>
                   </tr>
@@ -59169,7 +59169,7 @@
                </num>
                <p>
                   <t v="Pressurised aeroplanes operated above flight altitudes at which the pressure altitude in the passenger compartments is above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall carry enough breathing oxygen to supply:"/>
                </p>
                <list kind="arabic">
@@ -59187,7 +59187,7 @@
                            </num>
                            <p>
                               <t v="100 % of the passengers for any period when the cabin pressure altitude exceeds "/>
-                              <t v="15 000"/>
+                              <number v="15000"/>
                               <t v=" ft, but in no case less than 10 minutes’ supply;"/>
                            </p>
                         </unit>
@@ -59197,9 +59197,9 @@
                            </num>
                            <p>
                               <t v="at least 30 % of the passengers, for any period when, in the event of loss of pressurisation and taking into account the circumstances of the flight, the pressure altitude in the passenger compartment will be between "/>
-                              <t v="14 000"/>
+                              <number v="14000"/>
                               <t v=" ft and "/>
-                              <t v="15 000"/>
+                              <number v="15000"/>
                               <t v=" ft; and"/>
                            </p>
                         </unit>
@@ -59209,9 +59209,9 @@
                            </num>
                            <p>
                               <t v="at least 10 % of the passengers for any period in excess of 30 minutes when the pressure altitude in the passenger compartment will be between "/>
-                              <t v="10 000"/>
+                              <number v="10000"/>
                               <t v=" ft and "/>
-                              <t v="14 000"/>
+                              <number v="14000"/>
                               <t v=" ft;"/>
                            </p>
                         </unit>
@@ -59223,9 +59223,9 @@
                      </num>
                      <p>
                         <t v="all the occupants of the passenger compartment for no less than 10 minutes, in the case of aeroplanes operated at pressure altitudes above "/>
-                        <t v="25 000"/>
+                        <number v="25000"/>
                         <t v=" ft, or operated below that altitude, but under conditions that will not allow them to descend safely to a pressure altitude of "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft within 4 minutes."/>
                      </p>
                   </unit>
@@ -59237,7 +59237,7 @@
                </num>
                <p>
                   <t v="Pressurised aeroplanes operated at flight altitudes above "/>
-                  <t v="25 000"/>
+                  <number v="25000"/>
                   <t v=" ft shall, in addition, be equipped with:"/>
                </p>
                <list kind="arabic">
@@ -59285,7 +59285,7 @@
                </num>
                <p>
                   <t v="Non-pressurised aeroplanes operated above flight altitudes at which the pressure altitude in the passenger compartments is above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall carry enough breathing oxygen to supply:"/>
                </p>
                <list kind="arabic">
@@ -59295,9 +59295,9 @@
                      </num>
                      <p>
                         <t v="all crew members and at least 10 % of the passengers for any period in excess of 30 minutes when the pressure altitude in the passenger compartment will be between "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft and "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft; and"/>
                      </p>
                   </unit>
@@ -59307,7 +59307,7 @@
                      </num>
                      <p>
                         <t v="all crew members and passengers for any period that the pressure altitude in the passenger compartments will be above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </unit>
@@ -59377,7 +59377,7 @@
                </num>
                <p>
                   <t v="Aeroplanes with an MCTOM of more than "/>
-                  <t v="5 700"/>
+                  <number v="5700"/>
                   <t v=" kg or with an MOPSC of more than nine shall be equipped with at least one crash axe or crowbar located in the flight crew compartment."/>
                </p>
             </unit>
@@ -60292,7 +60292,7 @@
                </num>
                <p>
                   <t v="Helicopters operated under VMC over water and out of sight of the land, or under VMC at night, or when the visibility is less than "/>
-                  <t v="1 500"/>
+                  <number v="1500"/>
                   <t v=" m, or in conditions where the helicopter cannot be maintained in a desired flight path without reference to one or more additional instruments, shall be equipped, in addition to (a), with:"/>
                </p>
                <list kind="arabic">
@@ -60706,7 +60706,7 @@
                </num>
                <p>
                   <t v="Helicopters with an MCTOM of more than "/>
-                  <t v="7 000"/>
+                  <number v="7000"/>
                   <t v=" kg and first issued with an individual CofA on or after "/>
                   <date asWritten="1 January 2016" date="2016-01-01"/>
                   <t v=" shall be equipped with a CVR."/>
@@ -60810,7 +60810,7 @@
                </num>
                <p>
                   <t v="Helicopters with an MCTOM of more than "/>
-                  <t v="3 175"/>
+                  <number v="3175"/>
                   <t v=" kg and first issued with an individual CofA on or after "/>
                   <date asWritten="1 January 2016" date="2016-01-01"/>
                   <t v=" shall be equipped with an FDR that uses a digital method of recording and storing data and for which a method of readily retrieving that data from the storage medium is available."/>
@@ -61200,7 +61200,7 @@
                </num>
                <p>
                   <t v="Non-pressurised helicopters operated above flight altitudes at which the pressure altitude in the passenger compartments is above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall carry enough breathing oxygen to supply:"/>
                </p>
                <list kind="arabic">
@@ -61210,9 +61210,9 @@
                      </num>
                      <p>
                         <t v="all crew members and at least 10 % of the passengers for any period in excess of 30 minutes when the pressure altitude in the passenger compartment will be between "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft and "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft; and"/>
                      </p>
                   </unit>
@@ -61222,7 +61222,7 @@
                      </num>
                      <p>
                         <t v="all crew members and passengers for any period that the pressure altitude in the passenger compartment will be above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </unit>
@@ -63786,22 +63786,22 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="1 500"/>
+                                    <number v="1500"/>
                                  </p>
                               </td>
                               <td>
                                  <p>
-                                    <t v="1 500"/>
+                                    <number v="1500"/>
                                  </p>
                               </td>
                               <td>
                                  <p>
-                                    <t v="2 400"/>
+                                    <number v="2400"/>
                                  </p>
                               </td>
                               <td>
                                  <p>
-                                    <t v="3 600"/>
+                                    <number v="3600"/>
                                  </p>
                               </td>
                            </tr>
@@ -64094,7 +64094,7 @@
                               </num>
                               <p>
                                  <t v="when no alternate is required or no weather-permissible alternate aerodrome is available, to fly to the aerodrome/operating site of intended landing, and thereafter to fly for 30 minutes at holding speed at 450 m ("/>
-                                 <t v="1 500"/>
+                                 <number v="1500"/>
                                  <t v=" ft) above the destination aerodrome/operating site under standard temperature conditions and approach and land; or"/>
                               </p>
                            </unit>
@@ -64120,7 +64120,7 @@
                                     </num>
                                     <p>
                                        <t v="to fly for 30 minutes at holding speed at 450 m ("/>
-                                       <t v="1 500"/>
+                                       <number v="1500"/>
                                        <t v=" ft) above the alternate aerodrome/operating site under standard temperature conditions and approach and land."/>
                                     </p>
                                  </unit>
@@ -64362,9 +64362,9 @@
             </heading>
             <p>
                <t v="For IFR flights, the pilot-in-command shall specify at least one destination alternate aerodrome in the flight plan, unless the available current meteorological information for the destination indicates, for the period from 1 hour before until 1 hour after the estimated time of arrival, or from the actual time of departure to 1 hour after the estimated time of arrival, whichever is the shorter period, a ceiling of at least "/>
-               <t v="1 000"/>
+               <number v="1000"/>
                <t v=" ft above the DH/MDH for an available instrument approach procedure (IAP) and a visibility of at least "/>
-               <t v="5 000"/>
+               <number v="5000"/>
                <t v=" m."/>
             </p>
          </unit>
@@ -64385,9 +64385,9 @@
             </heading>
             <p>
                <t v="For IFR flights, the pilot-in-command shall specify at least one destination alternate aerodrome in the flight plan, unless the available current meteorological information for the destination indicates, for the period from 1 hour before until 1 hour after the estimated time of arrival, or from the actual time of departure to 1 hour after the estimated time of arrival, whichever is the shorter period, a ceiling of at least "/>
-               <t v="1 000"/>
+               <number v="1000"/>
                <t v=" ft above the DH/MDH for an available IAP and a visibility of at least "/>
-               <t v="3 000"/>
+               <number v="3000"/>
                <t v=" m."/>
             </p>
          </unit>
@@ -64511,7 +64511,7 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m; or"/>
                         </p>
                      </unit>
@@ -64539,7 +64539,7 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="3 000"/>
+                           <number v="3000"/>
                            <t v=" m; or"/>
                         </p>
                      </unit>
@@ -64559,7 +64559,7 @@
                         </num>
                         <p>
                            <t v="a ceiling of at least the higher of "/>
-                           <t v="2 000"/>
+                           <number v="2000"/>
                            <t v=" ft and the minimum safe IFR height; and"/>
                         </p>
                      </unit>
@@ -64569,7 +64569,7 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="5 000"/>
+                           <number v="5000"/>
                            <t v=" m."/>
                         </p>
                      </unit>
@@ -64618,9 +64618,9 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m by day or "/>
-                           <t v="3 000"/>
+                           <number v="3000"/>
                            <t v=" m by night; or"/>
                         </p>
                      </unit>
@@ -64640,7 +64640,7 @@
                         </num>
                         <p>
                            <t v="a ceiling of at least the higher of "/>
-                           <t v="2 000"/>
+                           <number v="2000"/>
                            <t v=" ft and the minimum safe IFR height; and"/>
                         </p>
                      </unit>
@@ -64650,9 +64650,9 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m by day or "/>
-                           <t v="3 000"/>
+                           <number v="3000"/>
                            <t v=" m by night."/>
                         </p>
                      </unit>
@@ -65243,9 +65243,9 @@
                         </num>
                         <p>
                            <t v="all crew members engaged in performing duties essential to the safe operation of an aircraft in flight use supplemental oxygen for any period in excess of 30 minutes when the pressure altitude in the the passenger compartment will be between "/>
-                           <t v="10 000"/>
+                           <number v="10000"/>
                            <t v=" ft and "/>
-                           <t v="13 000"/>
+                           <number v="13000"/>
                            <t v=" ft; and"/>
                         </p>
                      </unit>
@@ -65255,7 +65255,7 @@
                         </num>
                         <p>
                            <t v="all occupants use supplemental oxygen for any period that the pressure altitude in the the passenger compartment will be above "/>
-                           <t v="13 000"/>
+                           <number v="13000"/>
                            <t v=" ft."/>
                         </p>
                      </unit>
@@ -65484,7 +65484,7 @@
                         </num>
                         <p>
                            <t v="past a point at which the aircraft is "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft above the aerodrome elevation; or"/>
                         </p>
                      </unit>
@@ -65494,7 +65494,7 @@
                         </num>
                         <p>
                            <t v="into the final approach segment if the DH or MDH is higher than "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft."/>
                         </p>
                      </unit>
@@ -66450,7 +66450,7 @@
                </num>
                <p>
                   <t v="Pressurised aeroplanes operated above flight altitudes at which the pressure altitude in the passenger compartments is above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall carry enough breathing oxygen to supply:"/>
                </p>
                <list kind="arabic">
@@ -66468,7 +66468,7 @@
                            </num>
                            <p>
                               <t v="100 % of the passengers for any period when the cabin pressure altitude exceeds "/>
-                              <t v="15 000"/>
+                              <number v="15000"/>
                               <t v=" ft, but in no case less than 10 minutes’ supply;"/>
                            </p>
                         </unit>
@@ -66478,9 +66478,9 @@
                            </num>
                            <p>
                               <t v="at least 30 % of the passengers, for any period when, in the event of loss of pressurisation and taking into account the circumstances of the flight, the pressure altitude in the passenger compartment will be between "/>
-                              <t v="14 000"/>
+                              <number v="14000"/>
                               <t v=" ft and "/>
-                              <t v="15 000"/>
+                              <number v="15000"/>
                               <t v=" ft; and"/>
                            </p>
                         </unit>
@@ -66490,9 +66490,9 @@
                            </num>
                            <p>
                               <t v="at least 10 % of the passengers for any period in excess of 30 minutes when the pressure altitude in the passenger compartment will be between "/>
-                              <t v="10 000"/>
+                              <number v="10000"/>
                               <t v=" ft and "/>
-                              <t v="14 000"/>
+                              <number v="14000"/>
                               <t v=" ft;"/>
                            </p>
                         </unit>
@@ -66507,9 +66507,9 @@
                      </num>
                      <p>
                         <t v="all the occupants of the passenger compartment for no less than 10 minutes, in the case of aeroplanes operated at pressure altitudes above "/>
-                        <t v="25 000"/>
+                        <number v="25000"/>
                         <t v=" ft, or operated below that altitude but under conditions that will not allow them to descend safely to a pressure altitude of "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft within 4 minutes."/>
                      </p>
                   </unit>
@@ -66521,7 +66521,7 @@
                </num>
                <p>
                   <t v="Pressurised aeroplanes operated at flight altitudes above "/>
-                  <t v="25 000"/>
+                  <number v="25000"/>
                   <t v=" ft shall, in addition, be equipped with a device to provide a warning indication to the flight crew of any loss of pressurisation."/>
                </p>
             </unit>
@@ -67414,7 +67414,7 @@
                               location="AR:1;PT:5 .AND. AX:0;PT:2;PT:k;PT:ii"
                               marker="O031001M032000"/>
                   <t v="Rotorcraft operated under VMC at night, or when the visibility is less than "/>
-                  <t v="1 500"/>
+                  <number v="1500"/>
                   <t v=" m, or in conditions where the rotorcraft cannot be maintained in a desired flight path without reference to one or more additional instruments, shall be, in addition to (a), equipped with:"/>
                </p>
                <list kind="arabic">
@@ -67472,7 +67472,7 @@
                </num>
                <p>
                   <t v="Rotorcraft operated when the visibility is less than "/>
-                  <t v="1 500"/>
+                  <number v="1500"/>
                   <t v=" m, or in conditions where the rotorcraft cannot be maintained in a desired flight path without reference to one or more additional instruments, shall be, in addition to (a) and (b), equipped with a means of preventing malfunction of the airspeed indicating system required in (a)(4) due to condensation or icing."/>
                </p>
             </unit>
@@ -69209,7 +69209,7 @@
                </heading>
                <p>
                   <t v="Balloons operated at pressure altitudes above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall be equipped with an oxygen storage and dispensing apparatus carrying enough breathing oxygen to supply:"/>
                </p>
                <list kind="alpha">
@@ -69219,9 +69219,9 @@
                      </num>
                      <p>
                         <t v="crew members for any period in excess of 30 minutes when the pressure altitude will be between "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft and "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft; and"/>
                      </p>
                   </unit>
@@ -69231,7 +69231,7 @@
                      </num>
                      <p>
                         <t v="all crew members and passengers for any period that the pressure altitude will be above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </unit>
@@ -69632,9 +69632,9 @@
                   </num>
                   <p>
                      <t v="ensure that task specialists and crew members use supplemental oxygen continuously whenever he/she determines that at the altitude of the intended flight the lack of oxygen might result in impairment of the faculties of crew members or harmfully affect task specialists. If the pilot-in-command cannot determine how the lack of oxygen might affect the occupants on board, he/she shall ensure that task specialists and crew members use supplemental oxygen continuously whenever the cabin altitude exceeds "/>
-                     <t v="10 000"/>
+                     <number v="10000"/>
                      <t v=" ft for a period of more than 30 minutes and whenever the cabin altitude exceeds "/>
-                     <t v="13 000"/>
+                     <number v="13000"/>
                      <t v=" ft."/>
                   </p>
                </unit>
@@ -70679,7 +70679,7 @@
                   </num>
                   <p>
                      <t v="exceeds "/>
-                     <t v="13 000"/>
+                     <number v="13000"/>
                      <t v=" ft, for a period of not more than 6 minutes;, or"/>
                   </p>
                </unit>
@@ -70689,7 +70689,7 @@
                   </num>
                   <p>
                      <t v="exceeds "/>
-                     <t v="15 000"/>
+                     <number v="15000"/>
                      <t v=" ft, for a period of not more 3 minutes."/>
                   </p>
                </unit>
@@ -73149,7 +73149,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="200"/>
+                              <number v="200"/>
                            </p>
                         </td>
                      </tr>
@@ -73161,7 +73161,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="200"/>
+                              <number v="200"/>
                            </p>
                         </td>
                      </tr>
@@ -73173,7 +73173,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="250"/>
+                              <number v="250"/>
                            </p>
                         </td>
                      </tr>
@@ -73185,7 +73185,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="250"/>
+                              <number v="250"/>
                            </p>
                         </td>
                      </tr>
@@ -73197,7 +73197,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="250"/>
+                              <number v="250"/>
                            </p>
                         </td>
                      </tr>
@@ -73209,7 +73209,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="250"/>
+                              <number v="250"/>
                            </p>
                         </td>
                      </tr>
@@ -73221,7 +73221,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="300"/>
+                              <number v="300"/>
                            </p>
                         </td>
                      </tr>
@@ -73233,7 +73233,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="350"/>
+                              <number v="350"/>
                            </p>
                         </td>
                      </tr>
@@ -73245,7 +73245,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="300"/>
+                              <number v="300"/>
                            </p>
                         </td>
                      </tr>
@@ -73257,7 +73257,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="250"/>
+                              <number v="250"/>
                            </p>
                         </td>
                      </tr>
@@ -73269,7 +73269,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="350"/>
+                              <number v="350"/>
                            </p>
                         </td>
                      </tr>
@@ -73281,7 +73281,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="300"/>
+                              <number v="300"/>
                            </p>
                         </td>
                      </tr>
@@ -73293,7 +73293,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="350"/>
+                              <number v="350"/>
                            </p>
                         </td>
                      </tr>
@@ -73452,22 +73452,22 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="1 500"/>
+                                    <number v="1500"/>
                                  </p>
                               </td>
                               <td>
                                  <p>
-                                    <t v="1 600"/>
+                                    <number v="1600"/>
                                  </p>
                               </td>
                               <td>
                                  <p>
-                                    <t v="2 400"/>
+                                    <number v="2400"/>
                                  </p>
                               </td>
                               <td>
                                  <p>
-                                    <t v="3 600"/>
+                                    <number v="3600"/>
                                  </p>
                               </td>
                            </tr>
@@ -74234,7 +74234,7 @@
                         </num>
                         <p>
                            <t v="a visibility of at least the higher of "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m and 800 m above the instrument approach operation RVR/VIS minima; or"/>
                         </p>
                      </unit>
@@ -74262,7 +74262,7 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="3 000"/>
+                           <number v="3000"/>
                            <t v=" m; or"/>
                         </p>
                      </unit>
@@ -74282,7 +74282,7 @@
                         </num>
                         <p>
                            <t v="a ceiling of at least the higher of "/>
-                           <t v="2 000"/>
+                           <number v="2000"/>
                            <t v=" ft and the minimum safe IFR height; and"/>
                         </p>
                      </unit>
@@ -74292,7 +74292,7 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="5 000"/>
+                           <number v="5000"/>
                            <t v=" m."/>
                         </p>
                      </unit>
@@ -74341,9 +74341,9 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m by day or "/>
-                           <t v="3 000"/>
+                           <number v="3000"/>
                            <t v=" m by night; or"/>
                         </p>
                      </unit>
@@ -74363,7 +74363,7 @@
                         </num>
                         <p>
                            <t v="a ceiling of at least "/>
-                           <t v="2 000"/>
+                           <number v="2000"/>
                            <t v=" ft or the minimum safe IFR height, whichever is greater; and"/>
                         </p>
                      </unit>
@@ -74373,9 +74373,9 @@
                         </num>
                         <p>
                            <t v="a visibility of at least "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m by day or "/>
-                           <t v="3 000"/>
+                           <number v="3000"/>
                            <t v=" m by night."/>
                         </p>
                      </unit>
@@ -74498,7 +74498,7 @@
                               </num>
                               <p>
                                  <t v="a cloud base of at least 300 m ("/>
-                                 <t v="1 000"/>
+                                 <number v="1000"/>
                                  <t v=" ft) above the minimum associated with the instrument approach procedure;"/>
                               </p>
                            </unit>
@@ -74553,7 +74553,7 @@
                         </num>
                         <p>
                            <t v="visibility of at least "/>
-                           <t v="1 500"/>
+                           <number v="1500"/>
                            <t v=" m more than the minimum associated with the procedure; or"/>
                         </p>
                      </unit>
@@ -74597,7 +74597,7 @@
                               </num>
                               <p>
                                  <t v="visibility is at least "/>
-                                 <t v="1 500"/>
+                                 <number v="1500"/>
                                  <t v=" m more than the minimum associated with the procedure"/>
                                  <changed amendingAct="32016R1199"
                                           action="replaced"
@@ -75146,9 +75146,9 @@
                </num>
                <p>
                   <t v="The operator shall ensure that task specialists and crew members use supplemental oxygen continuously whenever the cabin altitude exceeds "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft for a period of more than 30 minutes and whenever the cabin altitude exceeds "/>
-                  <t v="13 000"/>
+                  <number v="13000"/>
                   <t v=" ft, unless otherwise approved by the competent authority and in accordance with SOPs."/>
                </p>
             </unit>
@@ -75158,7 +75158,7 @@
                </num>
                <p>
                   <t v="Notwithstanding (a) and except for parachute operations, short excursions of a specified duration above "/>
-                  <t v="13 000"/>
+                  <number v="13000"/>
                   <t v=" ft without using supplemental oxygen on other-than-complex aeroplanes and helicopters may be undertaken with a prior approval of the competent authority based on the consideration of the following:"/>
                </p>
                <list kind="arabic">
@@ -75168,7 +75168,7 @@
                      </num>
                      <p>
                         <t v="the duration of the excursion above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft is not more than 10 minutes or, if needed for a longer period, the time strictly necessary to the accomplishment of the specialised task;"/>
                      </p>
                   </unit>
@@ -75178,7 +75178,7 @@
                      </num>
                      <p>
                         <t v="the flight is not conducted above "/>
-                        <t v="16 000"/>
+                        <number v="16000"/>
                         <t v=" ft;"/>
                      </p>
                   </unit>
@@ -75204,7 +75204,7 @@
                      </num>
                      <p>
                         <t v="the previous experience of the operator in conducting operations above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft without using supplemental oxygen;"/>
                      </p>
                   </unit>
@@ -75407,7 +75407,7 @@
                         </num>
                         <p>
                            <t v="past a point at which the aeroplane is "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft above the aerodrome elevation; or"/>
                         </p>
                      </unit>
@@ -75417,7 +75417,7 @@
                         </num>
                         <p>
                            <t v="into the final approach segment (FAS) if the DH or MDH is higher than "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft."/>
                         </p>
                      </unit>
@@ -75437,7 +75437,7 @@
                         </num>
                         <p>
                            <t v="past a point at which the helicopter is "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft above the aerodrome elevation; or"/>
                         </p>
                      </unit>
@@ -75447,7 +75447,7 @@
                         </num>
                         <p>
                            <t v="into the FAS if the DH or MDH is higher than "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft."/>
                         </p>
                      </unit>
@@ -76174,7 +76174,7 @@
                </num>
                <p>
                   <t v="Except for an aeroplane equipped with turboprop engines and a maximum take-off mass at or below "/>
-                  <t v="5 700"/>
+                  <number v="5700"/>
                   <t v=" kg, in the event of an engine failure during take-off, the pilot-in-command shall ensure that the aeroplane is able:"/>
                </p>
                <list kind="arabic">
@@ -77211,7 +77211,7 @@
                   </num>
                   <p>
                      <t v="Turbine-powered aeroplanes with a maximum certified take-off mass (MCTOM) of more than "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg or an MOPSC of more than nine shall be equipped with a TAWS that meets the requirements for:"/>
                   </p>
                   <list kind="arabic">
@@ -77245,7 +77245,7 @@
                      <t v="When used in commercial operations, turbine-powered aeroplanes for which the individual CofA was first issued after "/>
                      <date asWritten="1 January 2019" date="2019-01-01"/>
                      <t v=" and having an MCTOM of "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg or less and an MOPSC of six to nine shall be equipped with a TAWS that meets the requirements for class B equipment, as specified in an acceptable standard."/>
                   </p>
                </unit>
@@ -77264,7 +77264,7 @@
             </heading>
             <p>
                <t v="Unless otherwise provided for by Regulation (EU) No 1332/2011, turbine-powered aeroplanes with an MCTOM of more than "/>
-               <t v="5 700"/>
+               <number v="5700"/>
                <t v=" kg shall be equipped with ACAS II."/>
             </p>
          </unit>
@@ -77297,7 +77297,7 @@
                   </num>
                   <p>
                      <t v="non-pressurised aeroplanes with an MCTOM of more than "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg."/>
                   </p>
                </unit>
@@ -77371,7 +77371,7 @@
                      </num>
                      <p>
                         <t v="aeroplanes with an MCTOM of more than "/>
-                        <t v="27 000"/>
+                        <number v="27000"/>
                         <t v=" kg and first issued with an individual CofA on or after "/>
                         <date asWritten="1 January 2016" date="2016-01-01"/>
                         <t v="; and"/>
@@ -77383,7 +77383,7 @@
                      </num>
                      <p>
                         <t v="aeroplanes with an MCTOM of more than "/>
-                        <t v="2 250"/>
+                        <number v="2250"/>
                         <t v=" kg:"/>
                      </p>
                      <list kind="roman">
@@ -77439,7 +77439,7 @@
                      </num>
                      <p>
                         <t v="the preceding 25 hours for aeroplanes with an MCTOM of more than "/>
-                        <t v="27 000"/>
+                        <number v="27000"/>
                         <t v=" kg and first issued with an individual CofA on or after "/>
                         <date asWritten="1 January 2022" date="2022-01-01"/>
                         <t v="; or"/>
@@ -77545,7 +77545,7 @@
                </num>
                <p>
                   <t v="Aeroplanes with an MCTOM of more than "/>
-                  <t v="5 700"/>
+                  <number v="5700"/>
                   <t v=" kg and first issued with an individual CofA on or after "/>
                   <date asWritten="1 January 2016" date="2016-01-01"/>
                   <t v=" shall be equipped with an FDR that uses a digital method of recording and storing data and for which a method of readily retrieving that data from the storage medium is available."/>
@@ -77612,7 +77612,7 @@
                   </num>
                   <p>
                      <t v="Turbine-engined aeroplanes with an MCTOM of "/>
-                     <t v="2 250"/>
+                     <number v="2250"/>
                      <t v=" kg or more and aeroplanes with an MOPSC of more than 9 shall be equipped with a flight recorder if all the following conditions are met:"/>
                   </p>
                   <list kind="arabic">
@@ -77980,7 +77980,7 @@
                                     </num>
                                     <p>
                                        <t v="aeroplanes with an MCTOM of "/>
-                                       <t v="5 700"/>
+                                       <number v="5700"/>
                                        <t v=" kg or less and with an MOPSC of nine or less that are compliant with the emergency landing dynamic conditions defined in the applicable certification specification;"/>
                                     </p>
                                  </unit>
@@ -77990,7 +77990,7 @@
                                     </num>
                                     <p>
                                        <t v="aeroplanes with an MCTOM of "/>
-                                       <t v="5 700"/>
+                                       <number v="5700"/>
                                        <t v=" kg or less and with an MOPSC of nine or less that are not compliant with the emergency landing dynamic conditions defined in the applicable certification specification and having an individual CofA first issued before "/>
                                        <date asWritten="25 August 2016" date="2016-08-25"/>
                                        <t v="."/>
@@ -78075,7 +78075,7 @@
                </num>
                <p>
                   <t v="Pressurised aeroplanes operated above flight altitudes at which the pressure altitude in the cabin compartments is above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall carry enough breathing oxygen to supply all crew members and task specialists at least:"/>
                </p>
                <list kind="arabic">
@@ -78085,7 +78085,7 @@
                      </num>
                      <p>
                         <t v="for any period when the cabin pressure altitude exceeds "/>
-                        <t v="15 000"/>
+                        <number v="15000"/>
                         <t v=" ft, but in no case less than 10 minutes’ supply;"/>
                      </p>
                   </unit>
@@ -78095,9 +78095,9 @@
                      </num>
                      <p>
                         <t v="for any period when, in the event of loss of pressurisation and taking into account the circumstances of the flight, the pressure altitude in the flight crew and cabin compartment will be between "/>
-                        <t v="14 000"/>
+                        <number v="14000"/>
                         <t v=" ft and "/>
-                        <t v="15 000"/>
+                        <number v="15000"/>
                         <t v=" ft;"/>
                      </p>
                   </unit>
@@ -78107,9 +78107,9 @@
                      </num>
                      <p>
                         <t v="for any period in excess of 30 minutes when the pressure altitude in the flight crew and cabin compartment will be between "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft and "/>
-                        <t v="14 000"/>
+                        <number v="14000"/>
                         <t v=" ft; and"/>
                      </p>
                   </unit>
@@ -78119,9 +78119,9 @@
                      </num>
                      <p>
                         <t v="for no less than 10 minutes, in the case of aeroplanes operated at pressure altitudes above "/>
-                        <t v="25 000"/>
+                        <number v="25000"/>
                         <t v=" ft, or operated below that altitude, but under conditions that will not allow them to descend safely to a pressure altitude of "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft within 4 minutes."/>
                      </p>
                   </unit>
@@ -78133,7 +78133,7 @@
                </num>
                <p>
                   <t v="Pressurised aeroplanes operated at flight altitudes above "/>
-                  <t v="25 000"/>
+                  <number v="25000"/>
                   <t v=" ft shall, in addition, be equipped with:"/>
                </p>
                <list kind="arabic">
@@ -78181,7 +78181,7 @@
                </num>
                <p>
                   <t v="Non-pressurised aeroplanes operated above flight altitudes at which the pressure altitude in the cabin compartments is above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall carry enough breathing oxygen to supply:"/>
                </p>
                <list kind="arabic">
@@ -78191,9 +78191,9 @@
                      </num>
                      <p>
                         <t v="all crew members for any period in excess of 30 minutes when the pressure altitude in the cabin compartment will be between "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft and "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft; and"/>
                      </p>
                   </unit>
@@ -78203,7 +78203,7 @@
                      </num>
                      <p>
                         <t v="all persons on board for any period that the pressure altitude in the cabin compartment will be above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </unit>
@@ -78215,9 +78215,9 @@
                </num>
                <p>
                   <t v="Notwithstanding (b), excursions of a specified duration between "/>
-                  <t v="13 000"/>
+                  <number v="13000"/>
                   <t v=" ft and "/>
-                  <t v="16 000"/>
+                  <number v="16000"/>
                   <t v=" ft may be undertaken without oxygen supplies, in accordance with SPO.OP.195(b)."/>
                </p>
             </unit>
@@ -78285,7 +78285,7 @@
             </heading>
             <p>
                <t v="Aeroplanes with an MCTOM of more than "/>
-               <t v="5 700"/>
+               <number v="5700"/>
                <t v=" kg shall be equipped with at least one crash axe or crowbar located in the flight crew compartment."/>
             </p>
          </unit>
@@ -79289,7 +79289,7 @@
                </num>
                <p>
                   <t v="Helicopters operated when the visibility is less than "/>
-                  <t v="1 500"/>
+                  <number v="1500"/>
                   <t v=" m, or in conditions where they cannot be maintained in a desired flight path without reference to one or more additional instruments, shall be, in addition to (a) and (b), equipped with a means of preventing malfunction of the airspeed indicating system required in (a)(4) due to condensation or icing."/>
                </p>
             </unit>
@@ -79661,7 +79661,7 @@
                </num>
                <p>
                   <t v="Helicopters with an MCTOM of more than "/>
-                  <t v="7 000"/>
+                  <number v="7000"/>
                   <t v=" kg and first issued with an individual CofA on or after "/>
                   <date asWritten="1 January 2016" date="2016-01-01"/>
                   <t v=" shall be equipped with a CVR."/>
@@ -79765,7 +79765,7 @@
                </num>
                <p>
                   <t v="Helicopters with an MCTOM of more than "/>
-                  <t v="3 175"/>
+                  <number v="3175"/>
                   <t v=" kg and first issued with an individual CofA on or after "/>
                   <date asWritten="1 January 2016" date="2016-01-01"/>
                   <t v=" shall be equipped with an FDR that uses a digital method of recording and storing data and for which a method of readily retrieving that data from the storage medium is available."/>
@@ -79832,7 +79832,7 @@
                   </num>
                   <p>
                      <t v="Turbine-engined helicopters with an MCTOM of "/>
-                     <t v="2 250"/>
+                     <number v="2250"/>
                      <t v=" kg or more shall be equipped with a flight recorder if all the following conditions are met:"/>
                   </p>
                   <list kind="arabic">
@@ -80196,7 +80196,7 @@
                </num>
                <p>
                   <t v="Non-pressurised helicopters operated above flight altitudes at which the pressure altitude in the cabin compartments is above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall carry enough breathing oxygen to supply:"/>
                </p>
                <list kind="arabic">
@@ -80206,9 +80206,9 @@
                      </num>
                      <p>
                         <t v="all crew members for any period in excess of 30 minutes when the pressure altitude in the cabin compartment will be between "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft and "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft; and"/>
                      </p>
                   </unit>
@@ -80218,7 +80218,7 @@
                      </num>
                      <p>
                         <t v="all crew members and task specialists for any period that the pressure altitude in the cabin compartment will be above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </unit>
@@ -80230,9 +80230,9 @@
                </num>
                <p>
                   <t v="Notwithstanding (b), excursions of a specified duration between "/>
-                  <t v="13 000"/>
+                  <number v="13000"/>
                   <t v=" ft and "/>
-                  <t v="16 000"/>
+                  <number v="16000"/>
                   <t v=" ft may be undertaken without oxygen supplies, -in accordance with SPO.OP.195(b)."/>
                </p>
             </unit>
@@ -81454,7 +81454,7 @@
                </heading>
                <p>
                   <t v="Sailplanes operated at pressure altitudes above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall be equipped with an oxygen storage and dispensing apparatus carrying enough breathing oxygen to supply:"/>
                </p>
                <list kind="alpha">
@@ -81464,9 +81464,9 @@
                      </num>
                      <p>
                         <t v="crew members for any period in excess of 30 minutes when the pressure altitude will be between "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft and "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft; and"/>
                      </p>
                   </unit>
@@ -81476,7 +81476,7 @@
                      </num>
                      <p>
                         <t v="all crew members and task specialists for any period that the pressure altitude will be above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </unit>
@@ -81976,7 +81976,7 @@
                </heading>
                <p>
                   <t v="Balloons operated at pressure altitudes above "/>
-                  <t v="10 000"/>
+                  <number v="10000"/>
                   <t v=" ft shall be equipped with an oxygen storage and dispensing apparatus carrying enough breathing oxygen to supply:"/>
                </p>
                <list kind="alpha">
@@ -81986,9 +81986,9 @@
                      </num>
                      <p>
                         <t v="crew members for any period in excess of 30 minutes when the pressure altitude will be between "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft and "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft; and"/>
                      </p>
                   </unit>
@@ -81998,7 +81998,7 @@
                      </num>
                      <p>
                         <t v="all crew members and task specialists for any period that the pressure altitude will be above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </unit>
@@ -82624,7 +82624,7 @@
                   </num>
                   <p>
                      <t v="exceeds "/>
-                     <t v="13 000"/>
+                     <number v="13000"/>
                      <t v=" ft, for a period of not more than 6 minutes."/>
                   </p>
                </unit>
@@ -82634,7 +82634,7 @@
                   </num>
                   <p>
                      <t v="exceeds "/>
-                     <t v="15 000"/>
+                     <number v="15000"/>
                      <t v=" ft, for a period of not more 3 minutes."/>
                   </p>
                </unit>
@@ -83061,7 +83061,7 @@
                         </num>
                         <p>
                            <t v="that the pilot-in-command has completed on aircraft of the same aircraft category as the aircraft to be flown a minimum of "/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" flight hours, of which at least 400 hours as a pilot-in-command in a complex motor-powered aircraft and at least 50 hours on the particular aircraft type."/>
                         </p>
                      </unit>
@@ -86925,9 +86925,9 @@
             </heading>
             <p>
                <t v="The PIC shall ensure that all pilots engaged in the performance of duties essential to the safe operation of the VCA during flight use supplemental oxygen continuously whenever the cabin altitude exceeds "/>
-               <t v="10 000"/>
+               <number v="10000"/>
                <t v=" ft for a period of more than 30 minutes and whenever the cabin altitude exceeds "/>
-               <t v="13 000"/>
+               <number v="13000"/>
                <t v=" ft."/>
             </p>
          </unit>
@@ -87529,7 +87529,7 @@
                         </num>
                         <p>
                            <t v="fuel jettisoning, if applicable, is not planned below 300 m ("/>
-                           <t v="1 000"/>
+                           <number v="1000"/>
                            <t v=" ft) above terrain."/>
                         </p>
                      </unit>
@@ -88279,7 +88279,7 @@
                   </num>
                   <p>
                      <t v="A VCA with an MCTOM of more than "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg shall be equipped with a CVR."/>
                   </p>
                </unit>
@@ -88378,7 +88378,7 @@
                   </num>
                   <p>
                      <t v="A VCA with an MCTOM of more than "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg shall be equipped with a FDR that uses a digital method of recording and storing data, and for which a method of readily retrieving that data from the storage medium is available."/>
                   </p>
                </unit>
@@ -88432,7 +88432,7 @@
                   </num>
                   <p>
                      <t v="A VCA with an MCTOM of "/>
-                     <t v="5 700"/>
+                     <number v="5700"/>
                      <t v=" kg or less shall be equipped with a flight recorder."/>
                   </p>
                </unit>
@@ -88681,7 +88681,7 @@
             </heading>
             <p>
                <t v="Non-pressurised VCA operated at pressure altitudes above "/>
-               <t v="10 000"/>
+               <number v="10000"/>
                <t v=" ft shall be equipped with supplemental oxygen equipment capable of storing and dispensing oxygen in accordance with the following table:"/>
             </p>
             <table cols="2">
@@ -88718,11 +88718,11 @@
                   <td>
                      <p>
                         <t v="For the entire flying time at pressure altitudes above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft and for any period that exceeds 30 minutes at pressure altitudes above "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft but not exceeding "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -88737,7 +88737,7 @@
                   <td>
                      <p>
                         <t v="For the entire flying time at pressure altitudes above "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -88752,9 +88752,9 @@
                   <td>
                      <p>
                         <t v="For the entire flying time beyond 30 minutes at pressure altitudes above "/>
-                        <t v="10 000"/>
+                        <number v="10000"/>
                         <t v=" ft but not exceeding "/>
-                        <t v="13 000"/>
+                        <number v="13000"/>
                         <t v=" ft."/>
                      </p>
                   </td>
@@ -90219,7 +90219,7 @@
          <note eId="note_95" marker="*" kind="table">
             <p>
                <t v="Helicopters may be operated in flight visibility down to "/>
-               <t v="1 500"/>
+               <number v="1500"/>
                <t v=" m provided the destination or an intermediate structure is continuously visible."/>
             </p>
          </note>
@@ -90262,7 +90262,7 @@
       <note eId="note_103" marker="3" kind="table">
          <p>
             <t v="Helicopters may be operated in flight visibility down to "/>
-            <t v="1 500"/>
+            <number v="1500"/>
             <t v=" m, provided the destination or an intermediate structure is continuously visible."/>
          </p>
       </note>

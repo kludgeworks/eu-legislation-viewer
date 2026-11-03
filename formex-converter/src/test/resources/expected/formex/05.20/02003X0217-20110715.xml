@@ -3618,7 +3618,7 @@
                      <t v="M forms"/>
                   </emphasis>
                   <t v=" exceeds "/>
-                  <t v="1 024"/>
+                  <number v="1024"/>
                   <t v=" characters, one or more supplementary "/>
                   <emphasis kind="b">
                      <t v="M forms"/>

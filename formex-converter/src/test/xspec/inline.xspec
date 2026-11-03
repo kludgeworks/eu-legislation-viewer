@@ -32,7 +32,7 @@
 
   <x:scenario label="HT TYPE=NORMAL and FT">
     <x:context mode="block" xmlns=""><P>a <HT TYPE="NORMAL">plain</HT><x:text> </x:text><FT TYPE="NUMBER">42</FT></P></x:context>
-    <x:expect label="become plain text"><p><t v="a "/><t v="plain"/><t v=" "/><t v="42"/></p></x:expect>
+    <x:expect label="become plain text, a number a number as written"><p><t v="a "/><t v="plain"/><t v=" "/><number v="42"/></p></x:expect>
   </x:scenario>
 
   <x:scenario label="A date">
@@ -121,8 +121,9 @@
 
   <x:scenario label="Numbers Formex marks as such">
     <x:context mode="block" xmlns=""><P>at least <FT TYPE="NUMBER">6000</FT> images, <FT TYPE="NUMBER">12345678</FT> tonnes, <FT TYPE="NUMBER">250</FT> articles, <FT TYPE="DECIMAL">0,47</FT> g</P></x:context>
-    <x:expect label="are printed as EUR-Lex prints them: thousands set apart by a no-break space, a decimal as written"
-              test="deep-equal($x:result//*:t/@v ! string(), ('at least ', '6&#160;000', ' images, ', '12&#160;345&#160;678', ' tonnes, ', '250', ' articles, ', '0,47', ' g'))"/>
+    <x:expect label="are numbers as written, a decimal plain text"
+              test="deep-equal($x:result/*/@v ! string(), ('at least ', '6000', ' images, ', '12345678', ' tonnes, ', '250', ' articles, ', '0,47', ' g'))
+                    and deep-equal($x:result//*:number/@v ! string(), ('6000', '12345678', '250'))"/>
   </x:scenario>
 
   <x:scenario label="An unknown inline element" catch="yes">

@@ -152,7 +152,7 @@
          </num>
          <p>
             <t v="The German intervention agency shall open a standing invitation to tender for the sale on the Community market of "/>
-            <t v="1 139 000"/>
+            <number v="1139000"/>
             <t v=" tonnes of rye held by it."/>
          </p>
       </unit>
@@ -302,7 +302,7 @@
          </num>
          <subheading>
             <t v="Standing invitation to tender for the resale of "/>
-            <t v="1 139 000"/>
+            <number v="1139000"/>
             <t v=" tonnes of rye held by the German intervention agency"/>
             <eol/>
             <t v="Regulation (EC) No 2314/2003"/>

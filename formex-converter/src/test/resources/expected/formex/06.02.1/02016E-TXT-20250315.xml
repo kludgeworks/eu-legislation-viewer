@@ -16746,7 +16746,7 @@
                      </num>
                      <p>
                         <t v="The capital of the ECB shall be euro "/>
-                        <t v="5 000"/>
+                        <number v="5000"/>
                         <t v=" million. The capital may be increased by such amounts as may be decided by the Governing Council acting by the qualified majority provided for in Article 10.3, within the limits and under the conditions set by the Council under the procedure laid down in Article 41."/>
                      </p>
                   </unit>
@@ -16855,7 +16855,7 @@
                      </num>
                      <p>
                         <t v="Without prejudice to Article 28, the ECB shall be provided by the national central banks with foreign reserve assets, other than Member States' currencies, euro, IMF reserve positions and SDRs, up to an amount equivalent to euro "/>
-                        <t v="50 000"/>
+                        <number v="50000"/>
                         <t v=" million. The Governing Council shall decide upon the proportion to be called up by the ECB following its establishment and the amounts called up at later dates. The ECB shall have the full right to hold and manage the foreign reserves that are transferred to it and to use them for the purposes set out in this Statute."/>
                      </p>
                   </unit>
@@ -17678,7 +17678,7 @@
                                     location="AR:1;PT:1;PT:a"
                                     marker="O005001M001000"/>
                         <t v="The capital of the Bank shall be EUR "/>
-                        <t v="248 795 606 881"/>
+                        <number v="248795606881"/>
                         <t v=", subscribed by the Member States as follows:"/>
                      </p>
                      <table cols="2">
@@ -17694,7 +17694,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="46 722 369 149"/>
+                                 <number v="46722369149"/>
                               </p>
                            </td>
                         </tr>
@@ -17706,7 +17706,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="46 722 369 149"/>
+                                 <number v="46722369149"/>
                               </p>
                            </td>
                         </tr>
@@ -17718,7 +17718,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="46 722 369 149"/>
+                                 <number v="46722369149"/>
                               </p>
                            </td>
                         </tr>
@@ -17730,7 +17730,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="28 033 421 847"/>
+                                 <number v="28033421847"/>
                               </p>
                            </td>
                         </tr>
@@ -17742,7 +17742,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="12 951 115 777"/>
+                                 <number v="12951115777"/>
                               </p>
                            </td>
                         </tr>
@@ -17754,7 +17754,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="12 951 115 777"/>
+                                 <number v="12951115777"/>
                               </p>
                            </td>
                         </tr>
@@ -17766,7 +17766,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="8 591 781 713"/>
+                                 <number v="8591781713"/>
                               </p>
                            </td>
                         </tr>
@@ -17778,7 +17778,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="6 557 521 657"/>
+                                 <number v="6557521657"/>
                               </p>
                            </td>
                         </tr>
@@ -17790,7 +17790,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="6 428 994 386"/>
+                                 <number v="6428994386"/>
                               </p>
                            </td>
                         </tr>
@@ -17806,7 +17806,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="11 366 679 827"/>
+                                 <number v="11366679827"/>
                               </p>
                            </td>
                         </tr>
@@ -17818,7 +17818,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="3 693 702 498"/>
+                                 <number v="3693702498"/>
                               </p>
                            </td>
                         </tr>
@@ -17830,7 +17830,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="3 512 961 713"/>
+                                 <number v="3512961713"/>
                               </p>
                            </td>
                         </tr>
@@ -17842,7 +17842,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="2 263 904 037"/>
+                                 <number v="2263904037"/>
                               </p>
                            </td>
                         </tr>
@@ -17854,7 +17854,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="2 206 922 328"/>
+                                 <number v="2206922328"/>
                               </p>
                            </td>
                         </tr>
@@ -17866,7 +17866,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="2 087 849 195"/>
+                                 <number v="2087849195"/>
                               </p>
                            </td>
                         </tr>
@@ -17878,7 +17878,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="1 639 379 073"/>
+                                 <number v="1639379073"/>
                               </p>
                            </td>
                         </tr>
@@ -17894,7 +17894,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="1 639 379 073"/>
+                                 <number v="1639379073"/>
                               </p>
                            </td>
                         </tr>
@@ -17906,7 +17906,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="1 062 312 542"/>
+                                 <number v="1062312542"/>
                               </p>
                            </td>
                         </tr>
@@ -17918,7 +17918,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="751 236 149"/>
+                                 <number v="751236149"/>
                               </p>
                            </td>
                         </tr>
@@ -17930,7 +17930,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="697 455 090"/>
+                                 <number v="697455090"/>
                               </p>
                            </td>
                         </tr>
@@ -17942,7 +17942,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="510 041 217"/>
+                                 <number v="510041217"/>
                               </p>
                            </td>
                         </tr>
@@ -17954,7 +17954,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="437 633 208"/>
+                                 <number v="437633208"/>
                               </p>
                            </td>
                         </tr>
@@ -17966,7 +17966,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="327 878 318"/>
+                                 <number v="327878318"/>
                               </p>
                            </td>
                         </tr>
@@ -17978,7 +17978,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="321 508 011"/>
+                                 <number v="321508011"/>
                               </p>
                            </td>
                         </tr>
@@ -17990,7 +17990,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="267 076 094"/>
+                                 <number v="267076094"/>
                               </p>
                            </td>
                         </tr>
@@ -18002,7 +18002,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="206 248 240"/>
+                                 <number v="206248240"/>
                               </p>
                            </td>
                         </tr>
@@ -18014,7 +18014,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="122 381 664"/>
+                                 <number v="122381664"/>
                               </p>
                            </td>
                         </tr>
@@ -22013,7 +22013,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="625 000"/>
+                           <number v="625000"/>
                            <t v=" metric tons"/>
                         </p>
                      </td>
@@ -22026,7 +22026,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="200 000"/>
+                           <number v="200000"/>
                            <t v=" metric tons"/>
                         </p>
                      </td>
@@ -22039,7 +22039,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="75 000"/>
+                           <number v="75000"/>
                            <t v=" metric tons"/>
                         </p>
                      </td>
@@ -22052,7 +22052,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="100 000"/>
+                           <number v="100000"/>
                            <t v=" metric tons"/>
                         </p>
                      </td>
@@ -22065,7 +22065,7 @@
                      </td>
                      <td>
                         <p>
-                           <t v="1 000 000"/>
+                           <number v="1000000"/>
                            <t v=" metric tons"/>
                         </p>
                      </td>
@@ -22215,7 +22215,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="1"/>
+                                 <number v="1"/>
                               </p>
                            </td>
                         </tr>
@@ -22227,7 +22227,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="4"/>
+                                 <number v="4"/>
                               </p>
                            </td>
                         </tr>
@@ -22239,7 +22239,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="2"/>
+                                 <number v="2"/>
                               </p>
                            </td>
                         </tr>
@@ -22251,7 +22251,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="1"/>
+                                 <number v="1"/>
                               </p>
                            </td>
                         </tr>
@@ -22263,7 +22263,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="1"/>
+                                 <number v="1"/>
                               </p>
                            </td>
                         </tr>
@@ -22275,7 +22275,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="1"/>
+                                 <number v="1"/>
                               </p>
                            </td>
                         </tr>
@@ -22287,7 +22287,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="1"/>
+                                 <number v="1"/>
                               </p>
                            </td>
                         </tr>
@@ -22299,7 +22299,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="2"/>
+                                 <number v="2"/>
                               </p>
                            </td>
                         </tr>
@@ -22311,7 +22311,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="1"/>
+                                 <number v="1"/>
                               </p>
                            </td>
                         </tr>
@@ -22323,7 +22323,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="1"/>
+                                 <number v="1"/>
                               </p>
                            </td>
                         </tr>
@@ -22335,7 +22335,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="2"/>
+                                 <number v="2"/>
                               </p>
                            </td>
                         </tr>
@@ -22347,7 +22347,7 @@
                            </td>
                            <td>
                               <p>
-                                 <t v="1"/>
+                                 <number v="1"/>
                               </p>
                            </td>
                         </tr>
@@ -22468,7 +22468,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="12"/>
+                                    <number v="12"/>
                                  </p>
                               </td>
                            </tr>
@@ -22480,7 +22480,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="10"/>
+                                    <number v="10"/>
                                  </p>
                               </td>
                            </tr>
@@ -22492,7 +22492,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="12"/>
+                                    <number v="12"/>
                                  </p>
                               </td>
                            </tr>
@@ -22504,7 +22504,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="7"/>
+                                    <number v="7"/>
                                  </p>
                               </td>
                            </tr>
@@ -22516,7 +22516,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="29"/>
+                                    <number v="29"/>
                                  </p>
                               </td>
                            </tr>
@@ -22528,7 +22528,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="4"/>
+                                    <number v="4"/>
                                  </p>
                               </td>
                            </tr>
@@ -22540,7 +22540,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="7"/>
+                                    <number v="7"/>
                                  </p>
                               </td>
                            </tr>
@@ -22552,7 +22552,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="12"/>
+                                    <number v="12"/>
                                  </p>
                               </td>
                            </tr>
@@ -22564,7 +22564,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="27"/>
+                                    <number v="27"/>
                                  </p>
                               </td>
                            </tr>
@@ -22576,7 +22576,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="29"/>
+                                    <number v="29"/>
                                  </p>
                               </td>
                            </tr>
@@ -22588,7 +22588,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="7"/>
+                                    <number v="7"/>
                                  </p>
                               </td>
                            </tr>
@@ -22600,7 +22600,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="29"/>
+                                    <number v="29"/>
                                  </p>
                               </td>
                            </tr>
@@ -22612,7 +22612,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="4"/>
+                                    <number v="4"/>
                                  </p>
                               </td>
                            </tr>
@@ -22624,7 +22624,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="4"/>
+                                    <number v="4"/>
                                  </p>
                               </td>
                            </tr>
@@ -22636,7 +22636,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="7"/>
+                                    <number v="7"/>
                                  </p>
                               </td>
                            </tr>
@@ -22648,7 +22648,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="4"/>
+                                    <number v="4"/>
                                  </p>
                               </td>
                            </tr>
@@ -22660,7 +22660,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="12"/>
+                                    <number v="12"/>
                                  </p>
                               </td>
                            </tr>
@@ -22672,7 +22672,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="3"/>
+                                    <number v="3"/>
                                  </p>
                               </td>
                            </tr>
@@ -22684,7 +22684,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="13"/>
+                                    <number v="13"/>
                                  </p>
                               </td>
                            </tr>
@@ -22696,7 +22696,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="10"/>
+                                    <number v="10"/>
                                  </p>
                               </td>
                            </tr>
@@ -22708,7 +22708,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="27"/>
+                                    <number v="27"/>
                                  </p>
                               </td>
                            </tr>
@@ -22720,7 +22720,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="12"/>
+                                    <number v="12"/>
                                  </p>
                               </td>
                            </tr>
@@ -22732,7 +22732,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="14"/>
+                                    <number v="14"/>
                                  </p>
                               </td>
                            </tr>
@@ -22744,7 +22744,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="4"/>
+                                    <number v="4"/>
                                  </p>
                               </td>
                            </tr>
@@ -22756,7 +22756,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="7"/>
+                                    <number v="7"/>
                                  </p>
                               </td>
                            </tr>
@@ -22768,7 +22768,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="7"/>
+                                    <number v="7"/>
                                  </p>
                               </td>
                            </tr>
@@ -22780,7 +22780,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="10"/>
+                                    <number v="10"/>
                                  </p>
                               </td>
                            </tr>
@@ -22792,7 +22792,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="29"/>
+                                    <number v="29"/>
                                  </p>
                               </td>
                            </tr>
@@ -22904,7 +22904,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -22916,7 +22916,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -22928,7 +22928,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -22940,7 +22940,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -22952,7 +22952,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="24"/>
+                              <number v="24"/>
                            </p>
                         </td>
                      </tr>
@@ -22964,7 +22964,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="7"/>
+                              <number v="7"/>
                            </p>
                         </td>
                      </tr>
@@ -22976,7 +22976,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -22988,7 +22988,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23000,7 +23000,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="21"/>
+                              <number v="21"/>
                            </p>
                         </td>
                      </tr>
@@ -23012,7 +23012,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="24"/>
+                              <number v="24"/>
                            </p>
                         </td>
                      </tr>
@@ -23024,7 +23024,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -23036,7 +23036,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="24"/>
+                              <number v="24"/>
                            </p>
                         </td>
                      </tr>
@@ -23048,7 +23048,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="6"/>
+                              <number v="6"/>
                            </p>
                         </td>
                      </tr>
@@ -23060,7 +23060,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="7"/>
+                              <number v="7"/>
                            </p>
                         </td>
                      </tr>
@@ -23072,7 +23072,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -23084,7 +23084,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="6"/>
+                              <number v="6"/>
                            </p>
                         </td>
                      </tr>
@@ -23096,7 +23096,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23108,7 +23108,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="5"/>
+                              <number v="5"/>
                            </p>
                         </td>
                      </tr>
@@ -23120,7 +23120,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23132,7 +23132,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23144,7 +23144,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="21"/>
+                              <number v="21"/>
                            </p>
                         </td>
                      </tr>
@@ -23156,7 +23156,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23168,7 +23168,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="15"/>
+                              <number v="15"/>
                            </p>
                         </td>
                      </tr>
@@ -23180,7 +23180,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="7"/>
+                              <number v="7"/>
                            </p>
                         </td>
                      </tr>
@@ -23192,7 +23192,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -23204,7 +23204,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -23216,7 +23216,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23228,7 +23228,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="24"/>
+                              <number v="24"/>
                            </p>
                         </td>
                      </tr>
@@ -23254,7 +23254,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23266,7 +23266,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23278,7 +23278,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23290,7 +23290,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -23302,7 +23302,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="24"/>
+                              <number v="24"/>
                            </p>
                         </td>
                      </tr>
@@ -23314,7 +23314,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="7"/>
+                              <number v="7"/>
                            </p>
                         </td>
                      </tr>
@@ -23326,7 +23326,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -23338,7 +23338,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23350,7 +23350,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="21"/>
+                              <number v="21"/>
                            </p>
                         </td>
                      </tr>
@@ -23362,7 +23362,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="24"/>
+                              <number v="24"/>
                            </p>
                         </td>
                      </tr>
@@ -23374,7 +23374,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -23386,7 +23386,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="24"/>
+                              <number v="24"/>
                            </p>
                         </td>
                      </tr>
@@ -23398,7 +23398,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="6"/>
+                              <number v="6"/>
                            </p>
                         </td>
                      </tr>
@@ -23410,7 +23410,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="7"/>
+                              <number v="7"/>
                            </p>
                         </td>
                      </tr>
@@ -23422,7 +23422,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -23434,7 +23434,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="6"/>
+                              <number v="6"/>
                            </p>
                         </td>
                      </tr>
@@ -23446,7 +23446,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23458,7 +23458,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="5"/>
+                              <number v="5"/>
                            </p>
                         </td>
                      </tr>
@@ -23470,7 +23470,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23482,7 +23482,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23494,7 +23494,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="21"/>
+                              <number v="21"/>
                            </p>
                         </td>
                      </tr>
@@ -23506,7 +23506,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23518,7 +23518,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="15"/>
+                              <number v="15"/>
                            </p>
                         </td>
                      </tr>
@@ -23530,7 +23530,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="7"/>
+                              <number v="7"/>
                            </p>
                         </td>
                      </tr>
@@ -23542,7 +23542,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -23554,7 +23554,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9"/>
+                              <number v="9"/>
                            </p>
                         </td>
                      </tr>
@@ -23566,7 +23566,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="12"/>
+                              <number v="12"/>
                            </p>
                         </td>
                      </tr>
@@ -23578,7 +23578,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="24"/>
+                              <number v="24"/>
                            </p>
                         </td>
                      </tr>

@@ -367,22 +367,22 @@
                                     <td>
                                        <p>
                                           <t v="TRQ period 2022/2023: "/>
-                                          <t v="308 518 000"/>
+                                          <number v="308518000"/>
                                           <t v=" kg."/>
                                        </p>
                                        <p>
                                           <t v="TRQ period 2023/2024: "/>
-                                          <t v="285 654 000"/>
+                                          <number v="285654000"/>
                                           <t v=" kg."/>
                                        </p>
                                        <p>
                                           <t v="TRQ period 2024/2025: "/>
-                                          <t v="353 219 000"/>
+                                          <number v="353219000"/>
                                           <t v=" kg."/>
                                        </p>
                                        <p>
                                           <t v="TRQ periods from 2025/2026: "/>
-                                          <t v="363 654 000"/>
+                                          <number v="363654000"/>
                                           <t v=" kg."/>
                                           <t v="’"/>
                                        </p>
@@ -551,12 +551,12 @@
                               <td>
                                  <p>
                                     <t v="TRQ period 2023/2024: "/>
-                                    <t v="5 963 000"/>
+                                    <number v="5963000"/>
                                     <t v=" kg."/>
                                  </p>
                                  <p>
                                     <t v="TRQ period 2024/2025: "/>
-                                    <t v="4 472 000"/>
+                                    <number v="4472000"/>
                                     <t v=" kg."/>
                                  </p>
                                  <p>
@@ -591,12 +591,12 @@
                               <td>
                                  <p>
                                     <t v="EUR 11 per "/>
-                                    <t v="1 000"/>
+                                    <number v="1000"/>
                                     <t v=" kg."/>
                                  </p>
                                  <p>
                                     <t v="Where the polarimetric reading of the imported raw sugar departs from 96 degrees, the rate of EUR 11 per "/>
-                                    <t v="1 000"/>
+                                    <number v="1000"/>
                                     <t v=" kg shall be increased or reduced, as appropriate, by 0,14 % per tenth of a degree difference established (in accordance with Article 34(1), point (d), of this Regulation)"/>
                                  </p>
                               </td>
@@ -626,7 +626,7 @@
                               <td>
                                  <p>
                                     <t v="EUR 20 per "/>
-                                    <t v="1 000"/>
+                                    <number v="1000"/>
                                     <t v=" kg"/>
                                  </p>
                               </td>
@@ -872,7 +872,7 @@
                               <td>
                                  <p>
                                     <t v="TRQ period 2024/2025: "/>
-                                    <t v="5 963 000"/>
+                                    <number v="5963000"/>
                                     <t v=" kg."/>
                                  </p>
                                  <p>
@@ -907,12 +907,12 @@
                               <td>
                                  <p>
                                     <t v="EUR 54 per "/>
-                                    <t v="1 000"/>
+                                    <number v="1000"/>
                                     <t v=" kg."/>
                                  </p>
                                  <p>
                                     <t v="Where the polarimetric reading of the imported raw sugar departs from 96 degrees, the rate of EUR 54 per "/>
-                                    <t v="1 000"/>
+                                    <number v="1000"/>
                                     <t v=" kg shall be increased or reduced, as appropriate, by 0,14 % per tenth of a degree difference established (in accordance with Article 34(1), point (d), of this Regulation)"/>
                                  </p>
                               </td>
@@ -942,7 +942,7 @@
                               <td>
                                  <p>
                                     <t v="EUR 20 per "/>
-                                    <t v="1 000"/>
+                                    <number v="1000"/>
                                     <t v=" kg"/>
                                  </p>
                               </td>
@@ -1080,7 +1080,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="124 497 000"/>
+                                    <number v="124497000"/>
                                     <t v=" kg, divided as follows:"/>
                                  </p>
                                  <p>
@@ -1125,7 +1125,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="37 453 000"/>
+                                    <number v="37453000"/>
                                     <t v=" kg, divided as follows:"/>
                                  </p>
                                  <p>
@@ -1170,7 +1170,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="91 767 000"/>
+                                    <number v="91767000"/>
                                     <t v=" kg, divided as follows:"/>
                                  </p>
                                  <p>
@@ -1215,7 +1215,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="13 800 000"/>
+                                    <number v="13800000"/>
                                     <t v=" kg, divided as follows:"/>
                                  </p>
                                  <p>
@@ -1260,7 +1260,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="59 343 000"/>
+                                    <number v="59343000"/>
                                     <t v=" kg, divided as follows:"/>
                                  </p>
                                  <p>
@@ -1305,7 +1305,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="295 000"/>
+                                    <number v="295000"/>
                                     <t v=" kg"/>
                                     <t v="’"/>
                                  </p>
@@ -1338,7 +1338,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="15 050 000"/>
+                                    <number v="15050000"/>
                                     <t v=" kg, divided as follows: 25 % for each sub-period"/>
                                     <t v="’"/>
                                  </p>
@@ -1371,7 +1371,7 @@
                               </td>
                               <td>
                                  <p>
-                                    <t v="4 420 000"/>
+                                    <number v="4420000"/>
                                     <t v=" kg, divided as follows: 25 % for each sub-period"/>
                                     <t v="’"/>
                                  </p>

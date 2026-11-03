@@ -1194,7 +1194,7 @@
                   </heading>
                   <p>
                      <t v="Conversion factor for petrol fuel, which is "/>
-                     <t v="2 330"/>
+                     <number v="2330"/>
                      <t v=" gCO"/>
                      <emphasis kind="sub">
                         <t v="2"/>
@@ -1211,7 +1211,7 @@
                   </heading>
                   <p>
                      <t v="Conversion factor for diesel fuel, which is "/>
-                     <t v="2 640"/>
+                     <number v="2640"/>
                      <t v=" gCO"/>
                      <emphasis kind="sub">
                         <t v="2"/>

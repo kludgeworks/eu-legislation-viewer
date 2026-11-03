@@ -482,9 +482,9 @@
                      </num>
                      <p>
                         <t v="allocations for research for year n+2 (rounded up or down to the nearest EUR "/>
-                        <t v="100 000"/>
+                        <number v="100000"/>
                         <t v=". If the calculation gives a result exactly halfway, the allocation shall be rounded up to the nearest EUR "/>
-                        <t v="100 000"/>
+                        <number v="100000"/>
                         <t v="):"/>
                      </p>
                      <p>

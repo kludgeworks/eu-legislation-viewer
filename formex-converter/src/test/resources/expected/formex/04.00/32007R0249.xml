@@ -95,7 +95,7 @@
                <t v="The Agreement in the form of an Exchange of Letters between the European Community and Brazil reached during negotiations under Article XXIV:6 and Article XXVIII of the General Agreement on Tariffs and Trade (GATT) 1994, approved by Council Decision 2006/963/EC"/>
                <noteRef href="#note_4" marker="4"/>
                <t v=", provides for an annual import tariff quota for poultrymeat of "/>
-               <t v="2 332"/>
+               <number v="2332"/>
                <t v=" tonnes for certain frozen chicken cuts (CN codes "/>
                <t v="02071410"/>
                <t v=", "/>
@@ -340,7 +340,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="9 432"/>
+                              <number v="9432"/>
                            </p>
                         </td>
                      </tr>
@@ -373,7 +373,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="5 100"/>
+                              <number v="5100"/>
                            </p>
                         </td>
                      </tr>
@@ -406,7 +406,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="3 300"/>
+                              <number v="3300"/>
                            </p>
                         </td>
                      </tr>
@@ -476,7 +476,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="1 800"/>
+                              <number v="1800"/>
                            </p>
                         </td>
                      </tr>
@@ -509,7 +509,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="700"/>
+                              <number v="700"/>
                            </p>
                         </td>
                      </tr>
@@ -542,7 +542,7 @@
                         </td>
                         <td>
                            <p>
-                              <t v="2 485"/>
+                              <number v="2485"/>
                               <t v="’"/>
                            </p>
                         </td>

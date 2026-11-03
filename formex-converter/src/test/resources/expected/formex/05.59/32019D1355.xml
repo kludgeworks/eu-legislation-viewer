@@ -2111,7 +2111,7 @@
                         </num>
                         <p>
                            <t v="by any exporter, for any consignment consisting of one or more packages containing originating products, the total value of which does not exceed EUR "/>
-                           <t v="6 000"/>
+                           <number v="6000"/>
                            <t v="."/>
                         </p>
                      </unit>
@@ -2293,7 +2293,7 @@
                   </num>
                   <p>
                      <t v="Furthermore, the total value of those products shall not exceed EUR 500 in the case of small packages or EUR "/>
-                     <t v="1 200"/>
+                     <number v="1200"/>
                      <t v=" in the case of products forming part of travellers' personal luggage."/>
                   </p>
                </unit>
@@ -3043,9 +3043,9 @@
                      <t v="Notwithstanding paragraphs 1 to 7 of this Article, the automatic derogations for canned tuna and tuna loins of HS heading "/>
                      <t v="1604"/>
                      <t v=" shall be granted only for a period of two (2) years from the date of entry into force of this Protocol, within the limits of an annual degressive quota of "/>
-                     <t v="2 000"/>
+                     <number v="2000"/>
                      <t v=" tonnes in the first year and "/>
-                     <t v="1 000"/>
+                     <number v="1000"/>
                      <t v=" in the second year for canned products and an annual quota of 200 tonnes for tuna loins."/>
                   </p>
                </unit>
@@ -3317,7 +3317,7 @@
                         </num>
                         <p>
                            <t v="the threshold of EUR "/>
-                           <t v="6 000"/>
+                           <number v="6000"/>
                            <t v=" referred to in Article 21(1)(c) of this Protocol."/>
                         </p>
                      </unit>
@@ -15114,7 +15114,7 @@
                   <td>
                      <p>
                         <t v="Electrical apparatus for switching or protecting electrical circuits, or for making connections to or in electrical circuits, for a voltage exceeding "/>
-                        <t v="1 000"/>
+                        <number v="1000"/>
                         <t v=" volts"/>
                      </p>
                   </td>
@@ -15154,7 +15154,7 @@
                   <td>
                      <p>
                         <t v="Electrical apparatus for switching or protecting electrical circuits, or for making connections to or in electrical circuits for a voltage not exceeding "/>
-                        <t v="1 000"/>
+                        <number v="1000"/>
                         <t v=" V connectors for optical fibres, optical fibre bundles or cables:"/>
                      </p>
                   </td>
@@ -15166,7 +15166,7 @@
                   <td>
                      <p>
                         <t v="Electrical apparatus for switching or protecting electrical circuits, or for making connections to or in electrical circuits for a voltage not exceeding "/>
-                        <t v="1 000"/>
+                        <number v="1000"/>
                         <t v=" volts"/>
                      </p>
                   </td>

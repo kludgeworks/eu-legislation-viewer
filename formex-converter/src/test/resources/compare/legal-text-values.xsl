@@ -25,7 +25,7 @@
   </xsl:template>
 
   <!-- a run of text; the converter splits runs where the source does (elements, amendment markers) -->
-  <xsl:template match="lt:t[normalize-space(@v)]">
+  <xsl:template match="(lt:t | lt:number)[normalize-space(@v)]">
     <v>{normalize-space(@v)}</v>
   </xsl:template>
 

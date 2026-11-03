@@ -70,11 +70,11 @@
          <unit eId="art_2/unp_1" kind="paragraph">
             <p>
                <t v="The amount of the financial contribution provided for in Article 1 shall be EUR "/>
-               <t v="1 380 000 000"/>
+               <number v="1380000000"/>
                <t v=". An additional financial contribution of EUR "/>
-               <t v="83 000 000"/>
+               <number v="83000000"/>
                <t v=" shall also be made available for projects related to challenges experienced as a result of the invasion of Ukraine. These contributions shall be made available for commitment in annual tranches of EUR "/>
-               <t v="209 000 000"/>
+               <number v="209000000"/>
                <t v=" over the period running from "/>
                <date asWritten="1 May 2021" date="2021-05-01"/>
                <t v=" to "/>
@@ -245,7 +245,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="127 197 491"/>
+                        <number v="127197491"/>
                      </p>
                   </td>
                </tr>
@@ -257,7 +257,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="65 092 127"/>
+                        <number v="65092127"/>
                      </p>
                   </td>
                </tr>
@@ -269,7 +269,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="8 613 472"/>
+                        <number v="8613472"/>
                      </p>
                   </td>
                </tr>
@@ -281,7 +281,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="110 034 588"/>
+                        <number v="110034588"/>
                      </p>
                   </td>
                </tr>
@@ -293,7 +293,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="35 081 761"/>
+                        <number v="35081761"/>
                      </p>
                   </td>
                </tr>
@@ -305,7 +305,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="124 271 436"/>
+                        <number v="124271436"/>
                      </p>
                   </td>
                </tr>
@@ -317,7 +317,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="53 529 539"/>
+                        <number v="53529539"/>
                      </p>
                   </td>
                </tr>
@@ -329,7 +329,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="57 575 226"/>
+                        <number v="57575226"/>
                      </p>
                   </td>
                </tr>
@@ -341,7 +341,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="5 462 877"/>
+                        <number v="5462877"/>
                      </p>
                   </td>
                </tr>
@@ -353,7 +353,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="452 283 429"/>
+                        <number v="452283429"/>
                      </p>
                   </td>
                </tr>
@@ -365,7 +365,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="291 616 358"/>
+                        <number v="291616358"/>
                      </p>
                   </td>
                </tr>
@@ -377,7 +377,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="63 904 256"/>
+                        <number v="63904256"/>
                      </p>
                   </td>
                </tr>
@@ -389,7 +389,7 @@
                   </td>
                   <td>
                      <p>
-                        <t v="24 437 440"/>
+                        <number v="24437440"/>
                      </p>
                   </td>
                </tr>

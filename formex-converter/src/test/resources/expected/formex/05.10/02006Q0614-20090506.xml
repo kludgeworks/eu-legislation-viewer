@@ -867,7 +867,7 @@
             </list>
             <p>
                <t v="The institutions agree that at least EUR "/>
-               <t v="1 740"/>
+               <number v="1740"/>
                <t v=" million will be available for the CFSP over the period 2007-2013 and that the amount for measures entered under the article mentioned in the third indent may not exceed 20 % of the overall amount of the CFSP budget chapter."/>
             </p>
          </unit>
@@ -1191,56 +1191,56 @@
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="50 865"/>
+                        <number v="50865"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="53 262"/>
+                        <number v="53262"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="55 883"/>
+                        <number v="55883"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="54 860"/>
+                        <number v="54860"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="55 400"/>
+                        <number v="55400"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="56 866"/>
+                        <number v="56866"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="58 256"/>
+                        <number v="58256"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="385 392"/>
+                        <number v="385392"/>
                      </emphasis>
                   </p>
                </td>
@@ -1258,42 +1258,42 @@
                </td>
                <td>
                   <p>
-                     <t v="8 404"/>
+                     <number v="8404"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="9 595"/>
+                     <number v="9595"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="12 021"/>
+                     <number v="12021"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="11 000"/>
+                     <number v="11000"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="11 306"/>
+                     <number v="11306"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="12 122"/>
+                     <number v="12122"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="12 914"/>
+                     <number v="12914"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="77 362"/>
+                     <number v="77362"/>
                   </p>
                </td>
             </tr>
@@ -1310,42 +1310,42 @@
                </td>
                <td>
                   <p>
-                     <t v="42 461"/>
+                     <number v="42461"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="43 667"/>
+                     <number v="43667"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="43 862"/>
+                     <number v="43862"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="43 860"/>
+                     <number v="43860"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="44 094"/>
+                     <number v="44094"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="44 744"/>
+                     <number v="44744"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="45 342"/>
+                     <number v="45342"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="308 030"/>
+                     <number v="308030"/>
                   </p>
                </td>
             </tr>
@@ -1365,56 +1365,56 @@
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="51 962"/>
+                        <number v="51962"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="54 685"/>
+                        <number v="54685"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="52 205"/>
+                        <number v="52205"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="53 379"/>
+                        <number v="53379"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="52 528"/>
+                        <number v="52528"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="51 901"/>
+                        <number v="51901"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="51 284"/>
+                        <number v="51284"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="367 944"/>
+                        <number v="367944"/>
                      </emphasis>
                   </p>
                </td>
@@ -1427,42 +1427,42 @@
                </td>
                <td>
                   <p>
-                     <t v="43 120"/>
+                     <number v="43120"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="42 697"/>
+                     <number v="42697"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="42 279"/>
+                     <number v="42279"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="41 864"/>
+                     <number v="41864"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="41 453"/>
+                     <number v="41453"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="41 047"/>
+                     <number v="41047"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="40 645"/>
+                     <number v="40645"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="293 105"/>
+                     <number v="293105"/>
                   </p>
                </td>
             </tr>
@@ -1482,56 +1482,56 @@
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="1 199"/>
+                        <number v="1199"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="1 258"/>
+                        <number v="1258"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="1 380"/>
+                        <number v="1380"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="1 503"/>
+                        <number v="1503"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="1 645"/>
+                        <number v="1645"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="1 797"/>
+                        <number v="1797"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="1 988"/>
+                        <number v="1988"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="10 770"/>
+                        <number v="10770"/>
                      </emphasis>
                   </p>
                </td>
@@ -1549,42 +1549,42 @@
                </td>
                <td>
                   <p>
-                     <t v="600"/>
+                     <number v="600"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="690"/>
+                     <number v="690"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="790"/>
+                     <number v="790"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="910"/>
+                     <number v="910"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="1 050"/>
+                     <number v="1050"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="1 200"/>
+                     <number v="1200"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="1 390"/>
+                     <number v="1390"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="6 630"/>
+                     <number v="6630"/>
                   </p>
                </td>
             </tr>
@@ -1601,42 +1601,42 @@
                </td>
                <td>
                   <p>
-                     <t v="599"/>
+                     <number v="599"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="568"/>
+                     <number v="568"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="590"/>
+                     <number v="590"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="593"/>
+                     <number v="593"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="595"/>
+                     <number v="595"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="597"/>
+                     <number v="597"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="598"/>
+                     <number v="598"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <t v="4 140"/>
+                     <number v="4140"/>
                   </p>
                </td>
             </tr>
@@ -1656,56 +1656,56 @@
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="6 199"/>
+                        <number v="6199"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="6 469"/>
+                        <number v="6469"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="6 739"/>
+                        <number v="6739"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="7 009"/>
+                        <number v="7009"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="7 339"/>
+                        <number v="7339"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="7 679"/>
+                        <number v="7679"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="8 029"/>
+                        <number v="8029"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="49 463"/>
+                        <number v="49463"/>
                      </emphasis>
                   </p>
                </td>
@@ -1727,56 +1727,56 @@
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="6 633"/>
+                        <number v="6633"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="6 818"/>
+                        <number v="6818"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="6 973"/>
+                        <number v="6973"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="7 111"/>
+                        <number v="7111"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="7 255"/>
+                        <number v="7255"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="7 400"/>
+                        <number v="7400"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="7 610"/>
+                        <number v="7610"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="49 800"/>
+                        <number v="49800"/>
                      </emphasis>
                   </p>
                </td>
@@ -1797,21 +1797,21 @@
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="419"/>
+                        <number v="419"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="191"/>
+                        <number v="191"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="190"/>
+                        <number v="190"/>
                      </emphasis>
                   </p>
                </td>
@@ -1822,7 +1822,7 @@
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="800"/>
+                        <number v="800"/>
                      </emphasis>
                   </p>
                </td>
@@ -1838,56 +1838,56 @@
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="117 277"/>
+                        <number v="117277"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="122 683"/>
+                        <number v="122683"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="123 370"/>
+                        <number v="123370"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="123 862"/>
+                        <number v="123862"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="124 167"/>
+                        <number v="124167"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="125 643"/>
+                        <number v="125643"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="127 167"/>
+                        <number v="127167"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="864 169"/>
+                        <number v="864169"/>
                      </emphasis>
                   </p>
                </td>
@@ -1958,56 +1958,56 @@
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="115 142"/>
+                        <number v="115142"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="119 805"/>
+                        <number v="119805"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="110 439"/>
+                        <number v="110439"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="119 126"/>
+                        <number v="119126"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="116 552"/>
+                        <number v="116552"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="120 145"/>
+                        <number v="120145"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="119 391"/>
+                        <number v="119391"/>
                      </emphasis>
                   </p>
                </td>
                <td>
                   <p>
                      <emphasis kind="b">
-                        <t v="820 600"/>
+                        <number v="820600"/>
                      </emphasis>
                   </p>
                </td>

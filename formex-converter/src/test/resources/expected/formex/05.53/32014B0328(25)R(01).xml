@@ -61,12 +61,12 @@
                         </td>
                         <td>
                            <p>
-                              <t v="548 000"/>
+                              <number v="548000"/>
                            </p>
                         </td>
                         <td>
                            <p>
-                              <t v="840 350"/>
+                              <number v="840350"/>
                            </p>
                         </td>
                         <td>
@@ -87,14 +87,14 @@
                         <td>
                            <p>
                               <emphasis kind="b">
-                                 <t v="548 000"/>
+                                 <number v="548000"/>
                               </emphasis>
                            </p>
                         </td>
                         <td>
                            <p>
                               <emphasis kind="b">
-                                 <t v="840 350"/>
+                                 <number v="840350"/>
                               </emphasis>
                            </p>
                         </td>

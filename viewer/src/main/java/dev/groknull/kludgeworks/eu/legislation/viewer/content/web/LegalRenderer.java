@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Component;
 
@@ -56,6 +57,7 @@ public class LegalRenderer {
 
   private static final LocalDate NICE = LocalDate.of(2003, 2, 1);
   private static final DateTimeFormatter HEADER_DATE = DateTimeFormatter.ofPattern("d.M.yyyy");
+  private static final Pattern WHOLE = Pattern.compile("[1-9][0-9]{3,}");
 
   private final TemplateEngine templates;
   private final Map<String, String> chosen = new ConcurrentHashMap<>();
@@ -120,6 +122,21 @@ public class LegalRenderer {
   /** A date (ISO) as the Official Journal's header prints it: 14.11.2015. */
   public String journalDate(String date) {
     return LocalDate.parse(date).format(HEADER_DATE);
+  }
+
+  /**
+   * A number (as written: 6000) as EUR-Lex prints it: a whole number of four digits or more with
+   * its thousands set apart by a no-break space (6 000); any other as written (250, 1.5).
+   */
+  public String thousands(String number) {
+    if (!WHOLE.matcher(number).matches()) {
+      return number;
+    }
+    var out = new StringBuilder(number);
+    for (var at = number.length() - 3; at > 0; at -= 3) {
+      out.insert(at, '\u00A0');
+    }
+    return out.toString();
   }
 
   /** Whether {@code element} has any child named {@code names}. */

@@ -70,7 +70,7 @@
                <t v="Article 1(2) of Regulation (EC) No 1964/2005 lays down that from 1 January each year, starting with "/>
                <date asWritten="1 January 2006" date="2006-01-01"/>
                <t v=", an autonomous tariff quota of "/>
-               <t v="775 000"/>
+               <number v="775000"/>
                <t v=" tonnes net weight subject to a zero duty rate is to be opened for imports of bananas (CN code "/>
                <t v="08030019"/>
                <t v=") originating in ACP countries."/>
@@ -108,15 +108,15 @@
             </num>
             <p>
                <t v="The allocation of the available quantities for January and February 2006 to the various groups of operators concerned should be based on data relating to the supply of ACP bananas to the Community in 2005. The supply figure was "/>
-               <t v="750 000"/>
+               <number v="750000"/>
                <t v=" tonnes under the tariff quota C reserved for the region in question. The figure for the "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="all third countries"/>
                </quote>
                <t v=" tariff quota A/B was "/>
-               <t v="15 000"/>
+               <number v="15000"/>
                <t v=" tonnes. Lastly, "/>
-               <t v="10 000"/>
+               <number v="10000"/>
                <t v=" tonnes of products of ACP origin were released into free circulation in the new Member States."/>
             </p>
          </unit>
@@ -126,7 +126,7 @@
             </num>
             <p>
                <t v="In the case of operators who obtained a reference quantity or an annual allocation for 2005 under the tariff quota C of "/>
-               <t v="750 000"/>
+               <number v="750000"/>
                <t v=" tonnes, determined by reference to imports of ACP bananas, licences may be issued on the basis of the reference quantity or annual allocation notified for 2005."/>
             </p>
          </unit>
@@ -220,14 +220,14 @@
                <unit eId="art_2/idt_1" kind="indent">
                   <p>
                      <t v="a quantity of "/>
-                     <t v="135 000"/>
+                     <number v="135000"/>
                      <t v=" tonnes shall be available for the issue of import licences to operators referred to in Title II. This tariff quota’s serial number shall be 09.4160,"/>
                   </p>
                </unit>
                <unit eId="art_2/idt_2" kind="indent">
                   <p>
                      <t v="a quantity of "/>
-                     <t v="25 000"/>
+                     <number v="25000"/>
                      <t v=" tonnes shall be available for the issue of import licences to operators referred to in Title III. This tariff quota’s serial number shall be 09.4162."/>
                   </p>
                </unit>
