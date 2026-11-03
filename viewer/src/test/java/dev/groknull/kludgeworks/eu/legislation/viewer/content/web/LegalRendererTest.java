@@ -90,6 +90,28 @@ class LegalRendererTest {
     assertThat(HTML.numbered(unit)).isEqualTo(numbered);
   }
 
+  @Test
+  void spansAGroupsHeadingAcrossItsWidestRow() {
+    var cell = new Element("td", Map.of(), List.of(), "");
+    var wide = new Element("td", Map.of("colspan", "2"), List.of(), "");
+    var heading = new Element("heading", Map.of(), List.of(), "");
+    var nested =
+        new Element(
+            "rowGroup",
+            Map.of(),
+            List.of(new Element("tr", Map.of(), List.of(cell, wide), "")),
+            "");
+    var group =
+        new Element(
+            "rowGroup",
+            Map.of(),
+            List.of(heading, new Element("tr", Map.of(), List.of(cell, cell), ""), nested),
+            "");
+
+    assertThat(HTML.columns(group)).isEqualTo(3);
+    assertThat(HTML.columns(new Element("rowGroup", Map.of(), List.of(heading), ""))).isEqualTo(1);
+  }
+
   private static String render(Element element) {
     var out = new StringOutput();
     HTML.element(element).writeTo(out);
@@ -120,9 +142,15 @@ class LegalRendererTest {
     };
   }
 
+  /** Its children's, a paragraph's num set apart from its text by a space (1.1 Date of …). */
   private static String children(Element element) {
     var out = new StringBuilder();
-    element.children().forEach(child -> out.append(plain(child)));
+    for (var child : element.children()) {
+      out.append(plain(child));
+      if (element.name().equals("p") && child.name().equals("num")) {
+        out.append(' ');
+      }
+    }
     return out.toString();
   }
 

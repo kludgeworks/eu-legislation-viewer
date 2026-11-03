@@ -6,6 +6,7 @@ import gg.jte.Content;
 import gg.jte.TemplateEngine;
 import gg.jte.TemplateOutput;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Component;
@@ -35,6 +36,47 @@ public class LegalRenderer {
   /** {@code element}'s children, each by its template, in order. */
   public Content children(Element element) {
     return out -> element.children().forEach(child -> render(child, element.name(), out));
+  }
+
+  /**
+   * {@code element}'s children named {@code names}, in order: where a template puts some apart from
+   * the rest (a row group's heading row, its num, heading and subheading, before its rows).
+   */
+  public Content children(Element element, String... names) {
+    var named = Set.of(names);
+    return out ->
+        element.children().stream()
+            .filter(child -> named.contains(child.name()))
+            .forEach(child -> render(child, element.name(), out));
+  }
+
+  /** Whether {@code element} has any child named {@code names}. */
+  public boolean has(Element element, String... names) {
+    var named = Set.of(names);
+    return element.children().stream().anyMatch(child -> named.contains(child.name()));
+  }
+
+  /**
+   * How many columns {@code group}'s rows span, the widest of them (each cell its colspan), nested
+   * groups' included: what its heading row's cell spans, to be as wide as they are. At least 1.
+   */
+  public int columns(Element group) {
+    var widest = 1;
+    for (var child : group.children()) {
+      var width =
+          switch (child.name()) {
+            case "tr" ->
+                child.children().stream()
+                    .filter(cell -> cell.name().equals("td"))
+                    .mapToInt(
+                        cell -> Integer.parseInt(cell.attributes().getOrDefault("colspan", "1")))
+                    .sum();
+            case "rowGroup" -> columns(child);
+            default -> 0;
+          };
+      widest = Math.max(widest, width);
+    }
+    return widest;
   }
 
   /**

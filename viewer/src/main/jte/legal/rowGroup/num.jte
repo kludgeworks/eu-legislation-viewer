@@ -2,4 +2,4 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<tr class="row-group-num"><th>${html.children(node)}</th></tr>
+<span class="num">${html.children(node)}</span> <%-- the space between the number and the text --%>
