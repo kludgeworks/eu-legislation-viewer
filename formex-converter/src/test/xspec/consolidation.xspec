@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<!-- A consolidated version: identity, source, lifecycle. Without the celex parameter, as tools run
+     the stylesheet on a file: the consolidation is named by its own reference (CONSLEG.REF), which
+     only approximates Cellar's CELEX number; the application passes Cellar's (worked-example.xspec) -->
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+    stylesheet="../../main/resources/dev/groknull/kludgeworks/formex/converter/xslt/formex-to-legal-text.xsl">
+
+  <x:scenario label="A consolidated version">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.DATE="20260305" CONSLEG.REF="2015R1998" END="NONE" END.DATE="99999999" PROD.SEQ="023.001.0" START.DATE="20260322"/>
+        <INFO.PROD PROD.DATE="20260305"/>
+        <CONS.DOC>
+          <BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+          <FAM.COMP LEG.VAL="REG">
+            <BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL><NO.OJ>299</NO.OJ><YEAR>2015</YEAR><PAGE.FIRST>1</PAGE.FIRST></DOCUMENT.REF.CONS><DATE ISO="20151114">20151114</DATE></BIB.INSTANCE.CONS><NO.CELEX>32015R1998</NO.CELEX></BIB.DATA>
+            <GR.MOD.ACT>
+              <MOD.ACT TYPE="MOD"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL><NO.OJ>334</NO.OJ><YEAR>2015</YEAR><PAGE.FIRST>5</PAGE.FIRST></DOCUMENT.REF.CONS><DATE ISO="20151222">20151222</DATE></BIB.INSTANCE.CONS><NO.CELEX>32015R2426</NO.CELEX><DATE ISO="20151218">20151218</DATE><TITLE><TI><P><HT TYPE="UC">Commission Implementing Regulation</HT> (EU) 2015/2426</P><P>of <DATE ISO="20151218">18 December 2015</DATE></P></TI></TITLE></BIB.DATA>
+                <GR.MOD.ACT><MOD.ACT TYPE="MOD"><BIB.DATA><NO.CELEX>32020R0910</NO.CELEX><DATE ISO="20200701">20200701</DATE></BIB.DATA></MOD.ACT></GR.MOD.ACT>
+              </MOD.ACT>
+              <MOD.ACT TYPE="ADH"><BIB.DATA><NO.CELEX>12012J</NO.CELEX><DATE ISO="20120424">20120424</DATE></BIB.DATA></MOD.ACT>
+              <MOD.ACT TYPE="MOD"><BIB.DATA><NO.CELEX>32020R0910</NO.CELEX><DATE ISO="20200701">20200701</DATE></BIB.DATA></MOD.ACT>
+              <MOD.ACT TYPE="MOD"><BIB.DATA><NO.CELEX>32026R0449</NO.CELEX><DATE ISO="20260227">20260227</DATE></BIB.DATA></MOD.ACT>
+            </GR.MOD.ACT>
+            <GR.CORRIG>
+              <CORRIG><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL><NO.OJ>32</NO.OJ><YEAR>2016</YEAR><PAGE.FIRST>9</PAGE.FIRST></DOCUMENT.REF.CONS><DATE ISO="20160209">20160209</DATE></BIB.INSTANCE.CONS><NO.CELEX>32015R1998R(01)</NO.CELEX></BIB.DATA></CORRIG>
+            </GR.CORRIG>
+          </FAM.COMP>
+          <TITLE><TI><P><HT TYPE="UC">Commission Implementing Regulation</HT> (EU) 2015/1998</P><P>of <DATE ISO="20151105">5 November 2015</DATE></P><P>laying down detailed measures</P><P>(Text with EEA relevance)</P></TI></TITLE>
+          <PREAMBLE><PREAMBLE.INIT/><PREAMBLE.FINAL/></PREAMBLE>
+          <ENACTING.TERMS><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>text</ALINEA></ARTICLE></ENACTING.TERMS>
+          <FINAL><P>This Regulation shall be binding in its entirety.</P></FINAL>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="names the act, the version and its Formex" test="
+        $x:result/@act = '32015R1998' and $x:result/@kind = 'consolidated' and $x:result/@version = '2026-03-22'
+        and $x:result/@xml:lang = 'en' and $x:result/@formexVersion = '06.02.1' and matches($x:result/@converter, '^\d+\.\d+\.\d+$')"/>
+    <x:expect label="points at its schema" test="
+        $x:result/@xsi:schemaLocation = 'https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd'"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    <x:expect label="has the source and the lifecycle, its production and the acts it integrates"
+              test="$x:result/*:lifecycle/@produced = '2026-03-05' and $x:result/*:lifecycle/@sequence = '023.001.0'"/>
+    <x:expect label="the source, and the acts after the first" test="$x:result/(*:source, *:lifecycle/*[position() gt 1])">
+      <source celex="02015R1998-20260322"><publication series="L" number="299" date="2015-11-14" page="1"/></source>
+      <eventRef type="amendment" act="32020R0910" date="2020-07-01" label="M2"/>
+      <eventRef type="amendment" act="12012J" date="2012-04-24"/>
+      <eventRef type="amendment" act="32020R0910" date="2020-07-01" label="M3"/>
+      <eventRef type="amendment" act="32026R0449" date="2026-02-27" label="M4"/>
+      <eventRef type="corrigendum" act="32015R1998R(01)" date="2016-02-09" label="C1">
+        <publication series="L" number="32" date="2016-02-09" page="9"/>
+      </eventRef>
+    </x:expect>
+    <x:expect label="lists each act the source lists, an act an amending act amended after it, labelled as the version's text marks them"
+              test="deep-equal($x:result/*:lifecycle/*:eventRef ! string(@label), ('M1', 'M2', '', 'M3', 'M4', 'C1'))"/>
+    <x:expect label="gives an amending act its publication and its long title"
+              test="$x:result/*:lifecycle/*:eventRef[1]/*:publication/(@series, @number, @page, @date) ! string() = ('L', '334', '5', '2015-12-22')
+                    and $x:result/*:lifecycle/*:eventRef[1]/*:longTitle/*:p[1]/*:docNumber/*:t/@v = '(EU) 2015/2426'
+                    and $x:result/*:lifecycle/*:eventRef[1]/*:longTitle/*:p[2]/*:docDate/@date = '2015-12-18'"/>
+    <x:expect label="splits the long title by position" test="
+        $x:result/*:preface/*:longTitle/*:p[1]/*:docType/*:emphasis[@kind = 'uc']/*:t/@v = 'Commission Implementing Regulation'
+        and $x:result/*:preface/*:longTitle/*:p[1]/*:docNumber/*:t/@v = '(EU) 2015/1998'
+        and $x:result/*:preface/*:longTitle/*:p[2]/*:docDate/@date = '2015-11-05'
+        and $x:result/*:preface/*:longTitle/*:p[3]/*:docPurpose/*:t/@v = 'laying down detailed measures'
+        and $x:result/*:preface/*:longTitle/*:p[4]/*:t/@v = '(Text with EEA relevance)'"/>
+    <x:expect label="leaves out an empty preamble" test="empty($x:result/*:preamble)"/>
+    <x:expect label="keeps the closing formula" test="$x:result/*:conclusions/*:p/*:t/@v = 'This Regulation shall be binding in its entirety.'"/>
+  </x:scenario>
+
+  <x:scenario label="An older consolidated version of an act outside sector 3 (an agreement)">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2002A2430" END="NONE" END.DATE="99999999" PROD.SEQ="001.001.0" START.DATE="20250201"/>
+        <INFO.PROD PROD.DATE="20250310"/>
+        <CONS.DOC>
+          <BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+          <FAM.COMP LEG.VAL="AGR"><BIB.DATA><NO.CELEX>22002A0430(02)</NO.CELEX></BIB.DATA>
+            <GR.CORRIG><CORRIG><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL><NO.OJ>173</NO.OJ></DOCUMENT.REF.CONS><DATE ISO="20030711">20030711</DATE></BIB.INSTANCE.CONS><NO.CELEX>22002A0430(02)R(01)</NO.CELEX></BIB.DATA></CORRIG></GR.CORRIG>
+          </FAM.COMP>
+          <TITLE><TI><P>Agreement</P></TI></TITLE>
+          <ENACTING.TERMS><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>text</ALINEA></ARTICLE></ENACTING.TERMS>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="is a version of its base act, not of 3 and the consolidation's reference, which names it without Cellar's CELEX"
+              test="$x:result/@act = '22002A0430(02)' and $x:result/*:source/@celex = '02002A2430-20250201'"/>
+    <x:expect label="takes the production date from INFO.PROD, older sources having no CONSLEG.DATE"
+              test="$x:result/*:lifecycle/@produced = '2025-03-10'"/>
+    <x:expect label="dates a corrigendum, which has no date of its own, by its publication"
+              test="$x:result/*:lifecycle/*:eventRef[@type = 'corrigendum'][@act = '22002A0430(02)R(01)']/@date = '2003-07-11'"/>
+  </x:scenario>
+
+  <x:scenario label="A consolidated agreement with annexes and related documents (1994/604, CONS.OTH)">
+    <x:context href="../resources/fixtures/formex/01.02/01994D0604-20040601/CL1994D0604EN0050010.0001.xml"/>
+    <x:expect label="keeps the act's own text (ACT.GEN)" test="exists($x:result/*:body/*:p)"/>
+    <x:expect label="makes the annex (CONS.DOC.GEN TYPE=ANNEX) an annex" test="$x:result/*:annexes/*:unit[@kind = 'annex']/@eId = 'anx'"/>
+  </x:scenario>
+
+  <x:scenario label="Titles in the outline">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R0001" START.DATE="20260101" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+          <ENACTING.TERMS>
+            <DIVISION><TITLE><TI><P>CHAPTER I</P></TI><STI><P>General provisions</P></STI></TITLE>
+              <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART>
+                <PARAG IDENTIFIER="001.001"><NO.PARAG>1.</NO.PARAG><ALINEA>first:<LIST TYPE="alpha"><ITEM><NP><NO.P>(a)</NO.P><TXT>x</TXT></NP></ITEM></LIST></ALINEA></PARAG>
+              </ARTICLE>
+            </DIVISION>
+          </ENACTING.TERMS>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX</P></TI></TITLE><CONTENTS>
+            <GR.SEQ LEVEL="1"><TITLE><TI><P>PART A</P></TI></TITLE>
+              <GR.SEQ LEVEL="2"><TITLE><TI><NP><NO.P>1.</NO.P><TXT>Scope</TXT></NP></TI></TITLE>
+                <GR.SEQ LEVEL="3"><TITLE><TI><NP><NO.P>1.1.</NO.P><TXT>Unless otherwise stated</TXT></NP></TI></TITLE></GR.SEQ></GR.SEQ></GR.SEQ>
+          </CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="rank a chapter, then its article, an annex, then its levels each under the one before it the source nests less deep"
+              test="deep-equal($x:result//*:unit[@rank] ! (@kind || ' ' || @rank), ('division 1', 'article 2', 'annex 1', 'level 2', 'level 3', 'level 4'))"/>
+    <x:expect label="a paragraph's or a point's number isn't a title"
+              test="empty($x:result//*:unit[@kind = ('paragraph', 'point')]/@rank)"/>
+  </x:scenario>
+
+</x:description>

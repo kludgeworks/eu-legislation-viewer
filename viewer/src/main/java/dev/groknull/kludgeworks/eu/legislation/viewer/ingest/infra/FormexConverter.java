@@ -120,8 +120,9 @@ final class FormexConverter {
    * descriptor (DOC), else the largest XML file; the other files are what it refers to.
    *
    * @param documents the package's XML files, parsed
-   * @param celex the CELEX number of an OJ act, which Formex doesn't carry; empty for a
-   *     consolidation, which carries its own
+   * @param celex the document's CELEX number, as Cellar has it: an OJ act's, which Formex doesn't
+   *     carry, or a consolidation's, which its Formex only approximates; the document must be the
+   *     one it names
    * @return the legal-text document
    * @throws OutOfScopeException if the document isn't a legal act (notices, case law, the OJ's
    *     tables of contents)

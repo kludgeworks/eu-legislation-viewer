@@ -16,14 +16,16 @@
   How to run it, with any XSLT 3 processor (Saxon's command line: -s:<input> -xsl:<this file>):
   - the input document is the initial match selection and the global context item; its system id
     must be set, as the package descriptor's files and the annexes resolve against it;
-  - parameter celex: the CELEX number of an OJ act, which Formex doesn't carry; required for an OJ
-    act, ignored for a consolidation, which carries its own;
+  - parameter celex: the document's CELEX number, as Cellar has it: required for an OJ act, which
+    Formex doesn't carry; for a consolidation, over the one its Formex approximates, which is used
+    without it. The document must be the one it names: a consolidation for a consolidation's
+    number (sector 0), of the version its date names;
   - parameter converter: the converter's version, stamped on every document (legalText/@converter);
     read from ../version.txt, so the stylesheets and version.txt stay side by side;
   - a refusal is a dynamic error, raised with error(), whose description is the reason and whose
     code is in the namespace https://kludgeworks.groknull.dev/ns/formex-converter: f:out-of-scope
     (not a legal act), f:unknown (Formex the converter doesn't handle yet), f:celex (an OJ act
-    without the celex parameter), f:date (a date that isn't one).
+    without the celex parameter, or a document that isn't the one it names), f:date (a date that isn't one).
   Large documents may need the processor's XML entity limits lifted: Formex has no DTD, but a 104 MB
   annex has over 100,000 entity references (&amp;), above the JDK's default limit.
 -->
@@ -147,12 +149,26 @@
         if ($treaty) then $doc/CONS.DOC.GEN/CONS.DOC.GEN[ENACTING.TERMS][1] else ($doc/CONS.DOC.GEN, $doc)[1]"/>
     <!-- the document's own CELEX number, and the act's: an OJ document's (a corrigendum too: what it
          corrects is Cellar's to say, and may be several documents) is its own -->
-    <!-- a treaty's CONSLEG.REF is the treaty's, whatever the edition (1957E9999): its consolidation
-         is named after the edition, 02016E/TXT-20250315 -->
+    <!-- a consolidation's is Cellar's when given: CONSLEG.REF only approximates it, dropping an
+         agreement's suffix (01978A1024(01) as 1978A1024) or folding it into the number
+         (02010D0017(01) as 2010D1017). A treaty's CONSLEG.REF is the treaty's, whatever the edition
+         (1957E9999): its consolidation is named after the edition, 02016E/TXT-20250315 -->
+    <!-- Cellar can hold another document's Formex under a CELEX number: a corrigendum under a
+         consolidation's (01997L0024-20131211), or another version of the consolidation
+         (02013D0255-20140723 holds the version of 2016-10-01) -->
     <xsl:variable name="document-celex" as="xs:string" select="
-        if ($treaty) then '0' || substring(f:celex($doc/FAM.COMP/BIB.DATA/NO.CELEX), 2) || '-' || $info/@START.DATE
-        else if ($consolidated) then '0' || $info/@CONSLEG.REF || '-' || $info/@START.DATE
-        else ($celex[normalize-space()], error(xs:QName('f:celex'), 'An OJ act needs the $celex parameter'))[1]"/>
+        if (not($celex[normalize-space()])) then
+          if ($treaty) then '0' || substring(f:celex($doc/FAM.COMP/BIB.DATA/NO.CELEX), 2) || '-' || $info/@START.DATE
+          else if ($consolidated) then '0' || $info/@CONSLEG.REF || '-' || $info/@START.DATE
+          else error(xs:QName('f:celex'), 'An OJ act needs the $celex parameter')
+        else if (starts-with($celex, '0') ne $consolidated) then
+          error(xs:QName('f:celex'), 'The $celex parameter is ' || (if ($consolidated) then 'an OJ act''s' else 'a consolidation''s')
+              || ' (' || $celex || '), but the document is ' || (if ($consolidated) then 'a consolidation' else 'an OJ act')
+              || ' (Formex ' || local-name($act) || ')')
+        else if ($consolidated and not(ends-with($celex, '-' || $info/@START.DATE))) then
+          error(xs:QName('f:celex'), 'The $celex parameter is a consolidation''s (' || $celex
+              || '), but the document is its version of ' || $info/@START.DATE)
+        else $celex"/>
     <!-- a consolidation's act is its base act, whatever its sector (an agreement, 22002A0430(02)):
          CONSLEG.REF only names the consolidation (2002A2430) -->
     <xsl:variable name="act-celex" as="xs:string" select="

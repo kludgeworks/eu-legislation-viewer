@@ -34,7 +34,8 @@ import javax.xml.transform.stream.StreamSource;
 record Manifestation(String name, Path folder) {
 
   private static final Pattern ROOT_ELEMENT = Pattern.compile("<([A-Z][A-Z0-9.]*)[\\s>/]");
-  private static final Pattern OJ_CELEX = Pattern.compile("[1-9E]\\d{4}[A-Z]{1,2}[0-9A-Z()]+");
+  private static final Pattern CELEX =
+      Pattern.compile("[1-9E]\\d{4}[A-Z]{1,2}[0-9A-Z()]+|0\\d{4}[A-Z]{1,2}[0-9A-Z()]+-\\d{8}");
 
   /**
    * The file to convert, one of the stylesheet's inputs: a consolidation's CONS.ACT or CONS.OTH
@@ -83,12 +84,13 @@ record Manifestation(String name, Path folder) {
   }
 
   /**
-   * The CELEX number to pass for an OJ act, which the folder is named after; consolidations (CELEX
-   * 0…) carry their own, and refused documents have none.
+   * The CELEX number to pass, as ingest passes Cellar's, which the folder is named after: an OJ
+   * act's or a consolidation's. A consolidated treaty's (02016E/TXT-20250315) can't name a folder,
+   * so its Formex's is used; refused documents have none.
    */
   Optional<String> celex() {
     var folderName = folder.getFileName().toString();
-    return OJ_CELEX.matcher(folderName).matches() ? Optional.of(folderName) : Optional.empty();
+    return CELEX.matcher(folderName).matches() ? Optional.of(folderName) : Optional.empty();
   }
 
   @Override

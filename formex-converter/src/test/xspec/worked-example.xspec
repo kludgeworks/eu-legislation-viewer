@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
 <!-- The worked example (Notion: "Worked example: 2015/1998 source to target"), on the real files:
-     the consolidated version of 22 March 2026 and the original OJ act. -->
+     the consolidated version of 22 March 2026; the original OJ act is worked-example-original.xspec,
+     each run with the CELEX number the application passes. -->
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     stylesheet="../../main/resources/dev/groknull/kludgeworks/formex/converter/xslt/formex-to-legal-text.xsl">
 
-  <!-- for the OJ act; the consolidation carries its own -->
-  <x:param name="celex" select="'32015R1998'"/>
+  <!-- the CELEX number the application passes: Cellar's; worked-example-original.xspec has the OJ act -->
+  <x:param name="celex" select="'02015R1998-20260322'"/>
 
   <x:scenario label="02015R1998-20260322 (Formex 06.02.1)">
     <x:context href="../resources/fixtures/formex/06.02.1/02015R1998-20260322/CL2015R1998EN0230010.0001.xml"/>
@@ -50,37 +51,6 @@
     <x:expect label="7. a consolidation has no signature" test="empty($x:result/*:conclusions/*:signature)"/>
 
     <x:expect label="the annex fragments are one annex" test="count($x:result/*:annexes/*:unit) = 1 and $x:result/*:annexes/*:unit/@eId = 'anx'"/>
-  </x:scenario>
-
-  <x:scenario label="32015R1998, the original OJ act (Formex 05.55, a package of six files)">
-    <x:context href="../resources/fixtures/formex/05.55/32015R1998/L_2015299EN.01000101.doc.xml"/>
-
-    <x:expect label="is the original text" test="$x:result/@kind = 'original' and $x:result/@formexVersion = '05.55'"/>
-    <x:expect label="1. publication from the package" test="
-        $x:result/*:source/*:publication/@series = 'L' and $x:result/*:source/*:publication/@number = '299'
-        and $x:result/*:source/*:publication/@date = '2015-11-14'"/>
-    <x:expect label="2. title" test="
-        $x:result/*:preface/*:longTitle/*:p[1]/*:docNumber/*:t/@v = '(EU) 2015/1998'
-        and $x:result/*:preface/*:longTitle/*:p[2]/*:docDate/@date = '2015-11-05'"/>
-    <x:expect label="2. recital (2) refers to footnote 2, as EUR-Lex prints it" test="
-        $x:result//*:unit[@eId = 'pbl_1/rct_2']//*:noteRef/@marker = '2'"/>
-    <x:expect label="2. footnote 2 keeps its OJ reference" test="
-        let $href := substring($x:result//*:unit[@eId = 'pbl_1/rct_2']//*:noteRef/@href, 2)
-        return $x:result/*:notes/*:note[@eId = $href]//*:ref[@kind = 'oj']/@date = '2015-03-17'"/>
-    <x:expect label="7. the closing block" test="$x:result/*:conclusions">
-      <conclusions>
-        <p><t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/></p>
-        <signature>
-          <placeAndDate><t v="Done at Brussels, "/><date date="2015-11-05" asWritten="5 November 2015"/><t v="."/></placeAndDate>
-          <signatory>
-            <organization><emphasis kind="i"><t v="For the Commission"/></emphasis></organization>
-            <role><emphasis kind="i"><t v="The President"/></emphasis></role>
-            <person><t v="Jean-Claude "/><emphasis kind="uc"><t v="Juncker"/></emphasis></person>
-          </signatory>
-        </signature>
-      </conclusions>
-    </x:expect>
-    <x:expect label="the four annex files are one annex" test="count($x:result/*:annexes/*:unit) = 1 and $x:result//*:unit/@eId = 'anx/pnt_12.6.2'"/>
   </x:scenario>
 
 </x:description>

@@ -41,8 +41,10 @@ final class FormexFixtures implements FormexSource {
         switch (language) {
           case FRA -> "<JUDGMENT/>";
           case DEU ->
-              "<ACT><BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>DE</LG.DOC>"
-                  + "</BIB.INSTANCE><ENACTING.TERMS><NOT.FORMEX/></ENACTING.TERMS></ACT>";
+              "<CONS.ACT><INFO.CONSLEG CONSLEG.REF=\"2015R1998\""
+                  + " START.DATE=\"20260322\"/><CONS.DOC>"
+                  + "<BIB.INSTANCE><LG.DOC>DE</LG.DOC></BIB.INSTANCE>"
+                  + "<ENACTING.TERMS><NOT.FORMEX/></ENACTING.TERMS></CONS.DOC></CONS.ACT>";
           default -> null;
         };
     if (refused == null && language != Language.ENG) {

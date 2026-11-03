@@ -18,7 +18,7 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * formex-to-legal-text.xsl run as any XSLT 3 client runs it, by its contract (the stylesheet's
- * header): the document as the global context item, the {@code celex} parameter for an OJ act,
+ * header): the document as the global context item, the {@code celex} parameter, the document's,
  * refusals as errors in the converter's namespace. The tests use it, not the viewer's Java adapter,
  * so the stylesheets are checked on their own.
  *

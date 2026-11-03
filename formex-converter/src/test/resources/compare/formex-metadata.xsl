@@ -5,7 +5,8 @@
   loses none: identity, the Official Journal reference, a consolidation's dates and what it
   integrates. Written independently of formex-to-legal-text.xsl, as formex-values.xsl is for the
   text; the rest of the metadata (page counts, production identifiers, the titles of amending acts)
-  isn't the converter's to keep.
+  isn't the converter's to keep, nor is the document's CELEX number, which is Cellar's (CONSLEG.REF
+  only approximates a consolidation's).
 
   Input: what the converter reads: a package (DOC) and the main document it lists, a consolidation
   (CONS.ACT, CONS.OTH), or an act on its own (ACT, AGR, CORR). Each field is one value, normalised
@@ -51,10 +52,6 @@
     <xsl:sequence select="f:field('kind', 'consolidated')"/>
     <xsl:sequence select="f:field('language', lower-case($doc/BIB.INSTANCE/LG.DOC))"/>
     <xsl:sequence select="f:field('act', f:celex($base/NO.CELEX))"/>
-    <!-- a treaty's CONSLEG.REF is the treaty's whatever the edition (1957E9999); its consolidation is
-         named after the edition, 02016E/TXT-20250315 -->
-    <xsl:sequence select="f:field('document', '0' || (if (INFO.CONSLEG/@LEG.VAL = 'TREATY') then substring(f:celex($base/NO.CELEX), 2)
-                                                     else INFO.CONSLEG/@CONSLEG.REF) || '-' || INFO.CONSLEG/@START.DATE)"/>
     <xsl:sequence select="f:field('version', f:date(INFO.CONSLEG/@START.DATE))"/>
     <xsl:sequence select="f:field('end', f:date(INFO.CONSLEG/@END.DATE[. ne '99999999']))"/>
     <xsl:sequence select="f:field('produced', f:date(INFO.PROD/@PROD.DATE))"/>

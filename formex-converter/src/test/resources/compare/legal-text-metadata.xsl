@@ -20,7 +20,6 @@
       <xsl:sequence select="f:field('kind', @kind)"/>
       <xsl:sequence select="f:field('language', @xml:lang)"/>
       <xsl:sequence select="f:field('act', @act)"/>
-      <xsl:sequence select="f:field('document', lt:source/@celex)"/>
       <xsl:sequence select="f:field('version', @version)"/>
       <xsl:sequence select="f:field('eli', lt:source/@eli)"/>
       <xsl:sequence select="f:field('oj.series', $publication/@series)"/>

@@ -37,17 +37,15 @@
 
   <x:scenario label="Divisions named by the EU subdivision table: a title and a section both numbered I">
     <x:context xmlns="">
-      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
-        <INFO.CONSLEG CONSLEG.REF="2015R0001" START.DATE="20260101" END.DATE="99999999"/>
-        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
-          <ENACTING.TERMS>
-            <DIVISION><TITLE><TI><P>TITLE I</P></TI></TITLE>
-              <DIVISION><TITLE><TI><P>CHAPTER 1</P></TI></TITLE><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>a</ALINEA></ARTICLE></DIVISION>
-            </DIVISION>
-            <DIVISION><TITLE><TI><P>Section I</P></TI></TITLE><ARTICLE IDENTIFIER="002"><TI.ART>Article 2</TI.ART><ALINEA>b</ALINEA></ARTICLE></DIVISION>
-          </ENACTING.TERMS>
-        </CONS.DOC>
-      </CONS.ACT>
+      <ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+        <ENACTING.TERMS>
+          <DIVISION><TITLE><TI><P>TITLE I</P></TI></TITLE>
+            <DIVISION><TITLE><TI><P>CHAPTER 1</P></TI></TITLE><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>a</ALINEA></ARTICLE></DIVISION>
+          </DIVISION>
+          <DIVISION><TITLE><TI><P>Section I</P></TI></TITLE><ARTICLE IDENTIFIER="002"><TI.ART>Article 2</TI.ART><ALINEA>b</ALINEA></ARTICLE></DIVISION>
+        </ENACTING.TERMS>
+      </ACT>
     </x:context>
     <x:expect label="tis_I, tis_I/cpt_1 and sct_I: the kinds differ, so the eIds do"
               test="$x:result//*:unit[@kind = 'division']/@eId => string-join(' ') = 'tis_I tis_I/cpt_1 sct_I'"/>
@@ -55,14 +53,12 @@
 
   <x:scenario label="A French title (TITRE II)">
     <x:context xmlns="">
-      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
-        <INFO.CONSLEG CONSLEG.REF="2015R0001" START.DATE="20260101" END.DATE="99999999"/>
-        <CONS.DOC><BIB.INSTANCE><LG.DOC>FR</LG.DOC></BIB.INSTANCE>
-          <ENACTING.TERMS>
-            <DIVISION><TITLE><TI><P>TITRE II</P></TI></TITLE><ARTICLE IDENTIFIER="001"><TI.ART>Article premier</TI.ART><ALINEA>a</ALINEA></ARTICLE></DIVISION>
-          </ENACTING.TERMS>
-        </CONS.DOC>
-      </CONS.ACT>
+      <ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <BIB.INSTANCE><DOCUMENT.REF><COLL>L</COLL></DOCUMENT.REF><LG.DOC>FR</LG.DOC></BIB.INSTANCE>
+        <ENACTING.TERMS>
+          <DIVISION><TITLE><TI><P>TITRE II</P></TI></TITLE><ARTICLE IDENTIFIER="001"><TI.ART>Article premier</TI.ART><ALINEA>a</ALINEA></ARTICLE></DIVISION>
+        </ENACTING.TERMS>
+      </ACT>
     </x:context>
     <x:expect label="is tis_II, as in English" test="$x:result//*:unit[@kind = 'division']/@eId = 'tis_II'"/>
   </x:scenario>
@@ -269,12 +265,6 @@
     <x:expect label="each but the first under the title it repeats" test="$x:result//*:file ! exists(*:num) = (false(), true(), true(), true())"/>
     <x:expect label="each with its notes after it" test="every $f in $x:result//*:file satisfies $f/*[last()]/self::*:notes/*:note[1]/@eId = 'note_anx' || substring-after($f/@name, '.') || '-1'"/>
     <x:expect label="the act's own notes before the annexes" test="$x:result/*:notes/following-sibling::*[1]/self::*:annexes and empty($x:result/*:notes/*:note[starts-with(@eId, 'note_anx')])"/>
-  </x:scenario>
-
-  <x:scenario label="A consolidated agreement with annexes and related documents (1994/604, CONS.OTH)">
-    <x:context href="../resources/fixtures/formex/01.02/01994D0604-20040601/CL1994D0604EN0050010.0001.xml"/>
-    <x:expect label="keeps the act's own text (ACT.GEN)" test="exists($x:result/*:body/*:p)"/>
-    <x:expect label="makes the annex (CONS.DOC.GEN TYPE=ANNEX) an annex" test="$x:result/*:annexes/*:unit[@kind = 'annex']/@eId = 'anx'"/>
   </x:scenario>
 
   <x:scenario label="A form as an image, with a transcription of its text">
