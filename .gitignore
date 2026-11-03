@@ -8,8 +8,10 @@
 .vscode/
 
 # local tool configuration and output (formex-corpus/: corpus:fetch's mirror of Cellar;
+# text-compare/: text:compare's references and reports;
 # viewer/spring-modulith-docs/: mise run modules)
 formex-corpus/
+text-compare/
 viewer/spring-modulith-docs/
 mise.local.toml
 .playwright-mcp/

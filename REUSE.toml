@@ -19,6 +19,7 @@ path = [
   "MODULE.bazel.lock",
   "maven_install.json",
   "mise.lock",
+  "tools/tasks/**/*.py.lock",
   "formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter/version.txt",
   "**/SOURCE",
 ]

@@ -1,3 +1,5 @@
 # SPDX-License-Identifier: MIT
 # corpus:fetch's mirror of Cellar: hundreds of thousands of files and no packages
 formex-corpus
+# text:compare's references (EUR-Lex's HTML) and reports
+text-compare

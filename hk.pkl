@@ -57,6 +57,7 @@ local linters = new Mapping<String, Step> {
         "MODULE.bazel",
         "**/*.toml",
         "**/*.sh",
+        "**/*.py",
       )
     exclude = raw + vendored
     batch = true
@@ -72,6 +73,8 @@ local linters = new Mapping<String, Step> {
   ["buildifier_lint"] = Builtins.buildifier_lint
   ["taplo_format"] = Builtins.taplo_format
   ["pkl_format"] = Builtins.pkl_format
+  ["ruff"] = Builtins.ruff
+  ["ruff_format"] = Builtins.ruff_format
   ["shellcheck"] = Builtins.shellcheck
   ["shfmt"] = (Builtins.shfmt) { batch = true }
   ["actionlint"] = Builtins.actionlint
