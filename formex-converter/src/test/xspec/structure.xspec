@@ -93,6 +93,14 @@
     </x:expect>
   </x:scenario>
 
+  <x:scenario label="A definition list with a separator">
+    <x:context mode="block" xmlns="">
+      <DLIST SEPARATOR="—"><DLIST.ITEM><PREFIX>(a)</PREFIX><TERM>guns</TERM><DEFINITION><P>devices capable</P></DEFINITION></DLIST.ITEM></DLIST>
+    </x:context>
+    <x:expect label="keeps it, as each entry prints it between term and definition"
+              test="$x:result/@separator = '—'"/>
+  </x:scenario>
+
   <x:scenario label="A definition list without prefixes">
     <x:context mode="block" xmlns="">
       <DLIST><DLIST.ITEM><TERM>'cargo'</TERM><DEFINITION>means any property</DEFINITION></DLIST.ITEM>

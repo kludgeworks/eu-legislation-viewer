@@ -831,6 +831,9 @@
         <xs:attribute name="kind" type="ListKind" use="required">
           <xs:annotation><xs:documentation>How the items are numbered.</xs:documentation></xs:annotation>
         </xs:attribute>
+        <xs:attribute name="separator" type="xs:string">
+          <xs:annotation><xs:documentation>A definition list's: what is printed between each term and its definition (Formex DLIST/@SEPARATOR: —, :, =).</xs:documentation></xs:annotation>
+        </xs:attribute>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

@@ -4647,7 +4647,7 @@
          <p>
             <t v="where:"/>
          </p>
-         <list kind="definition">
+         <list kind="definition" separator="=">
             <unit eId="anx_II/def_1" kind="definition">
                <heading>
                   <emphasis kind="i">
@@ -4825,7 +4825,7 @@
          <p>
             <t v="where:"/>
          </p>
-         <list kind="definition">
+         <list kind="definition" separator="=">
             <unit eId="anx_II/list_2/def_1" kind="definition">
                <heading>
                   <emphasis kind="i">
@@ -6084,7 +6084,7 @@
             <p>
                <t v="where"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator="=">
                <unit eId="anx_V/pnt_1/def_1" kind="definition">
                   <heading>
                      <emphasis kind="i">
@@ -6282,7 +6282,7 @@
             <p>
                <t v="where"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator="=">
                <unit eId="anx_V/pnt_4/def_1" kind="definition">
                   <heading>
                      <emphasis kind="i">
@@ -6334,7 +6334,7 @@
                </emphasis>
                <t v=" equivalence, those gases shall be valued as follows:"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator=":">
                <unit eId="anx_V/pnt_5/def_1" kind="definition">
                   <heading>
                      <t v="CO"/>
@@ -6436,7 +6436,7 @@
             <p>
                <t v="where"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator="=">
                <unit eId="anx_V/pnt_7/def_1" kind="definition">
                   <heading>
                      <emphasis kind="i">

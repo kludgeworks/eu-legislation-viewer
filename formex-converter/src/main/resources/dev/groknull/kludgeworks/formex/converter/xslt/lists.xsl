@@ -234,7 +234,8 @@
     <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
   </xsl:template>
 
-  <!-- definition lists: each entry is a unit with its prefix as num and its term as heading -->
+  <!-- definition lists: each entry is a unit with its prefix as num and its term as heading; what
+       is printed between term and definition (—), the list's separator -->
   <xsl:template match="DLIST" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
@@ -242,6 +243,9 @@
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="list" as="element()">
       <list kind="definition">
+        <xsl:if test="@SEPARATOR">
+          <xsl:attribute name="separator" select="@SEPARATOR"/>
+        </xsl:if>
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:apply-templates select="DLIST.ITEM" mode="block">
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>

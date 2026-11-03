@@ -263,7 +263,7 @@
             <p>
                <t v="where:"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator="=">
                <unit eId="anx/level_1/def_1" kind="definition">
                   <heading>
                      <t v="ý"/>

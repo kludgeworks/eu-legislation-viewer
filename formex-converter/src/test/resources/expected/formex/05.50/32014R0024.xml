@@ -488,7 +488,7 @@
             <table cols="3">
                <tr header="true">
                   <td colspan="2" header="true">
-                     <list kind="definition">
+                     <list kind="definition" separator=":">
                         <unit eId="anx/level_1/tab_2/tr_1/td_1/def_1" kind="definition">
                            <heading>
                               <t v="Species"/>
@@ -505,7 +505,7 @@
                      </list>
                   </td>
                   <td header="true">
-                     <list kind="definition">
+                     <list kind="definition" separator=":">
                         <unit eId="anx/level_1/tab_2/tr_1/td_3/list_2/def_1" kind="definition">
                            <heading>
                               <t v="Zone"/>
@@ -590,7 +590,7 @@
             <table cols="3">
                <tr header="true">
                   <td colspan="2" header="true">
-                     <list kind="definition">
+                     <list kind="definition" separator=":">
                         <unit eId="anx/level_1/tab_3/tr_1/td_1/def_1" kind="definition">
                            <heading>
                               <t v="Species"/>
@@ -607,7 +607,7 @@
                      </list>
                   </td>
                   <td header="true">
-                     <list kind="definition">
+                     <list kind="definition" separator=":">
                         <unit eId="anx/level_1/tab_3/tr_1/td_3/list_2/def_1" kind="definition">
                            <heading>
                               <t v="Zone"/>

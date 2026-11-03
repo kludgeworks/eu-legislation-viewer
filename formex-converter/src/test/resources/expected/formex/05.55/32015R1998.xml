@@ -3165,7 +3165,7 @@
             <p>
                <t v="Without prejudice to applicable safety rules, passengers are not permitted to carry the following articles into security restricted areas and on board an aircraft:"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator="—">
                <unit eId="anx/level_ATTACHMENT-4-C/level_1/level_1/pnt_a" kind="definition">
                   <num>
                      <t v="(a)"/>
@@ -3955,7 +3955,7 @@
             <p>
                <t v="Passengers are not permitted to carry the following articles in their hold baggage:"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator="—">
                <unit eId="anx/level_ATTACHMENT-5-B/level_1/level_1/def_1" kind="definition">
                   <heading>
                      <emphasis kind="i">

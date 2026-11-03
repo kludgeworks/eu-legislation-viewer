@@ -40,7 +40,7 @@
                <t v="for:"/>
             </p>
             <quotedStructure eId="cor_1/old/qstr_1">
-               <list kind="definition">
+               <list kind="definition" separator=":">
                   <unit eId="cor_1/old/qstr_1/def_1" kind="definition">
                      <heading>
                         <t v="‘"/>
@@ -63,7 +63,7 @@
                <t v="read:"/>
             </p>
             <quotedStructure eId="cor_1/new/qstr_1">
-               <list kind="definition">
+               <list kind="definition" separator=":">
                   <unit eId="cor_1/new/qstr_1/def_1" kind="definition">
                      <heading>
                         <t v="‘"/>

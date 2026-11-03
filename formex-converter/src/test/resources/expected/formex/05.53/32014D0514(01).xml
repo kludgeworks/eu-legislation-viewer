@@ -121,7 +121,7 @@
                <date asWritten="1 August 2014" date="2014-08-01"/>
                <t v=":"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator=":">
                <unit eId="art_1/par_1/def_1" kind="definition">
                   <num>
                      <t v="—"/>
@@ -199,7 +199,7 @@
                <date asWritten="1 August 2014" date="2014-08-01"/>
                <t v=":"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator=":">
                <unit eId="art_1/par_2/def_1" kind="definition">
                   <num>
                      <t v="—"/>

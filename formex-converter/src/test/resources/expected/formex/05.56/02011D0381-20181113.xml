@@ -92,7 +92,7 @@
                </quote>
                <t v=" shall comprise the following categories:"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator=":">
                <unit eId="art_1/def_1" kind="definition">
                   <heading>
                      <t v="Category 1"/>

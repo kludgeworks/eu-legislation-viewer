@@ -2107,7 +2107,7 @@
                            <p>
                               <t v="where:"/>
                            </p>
-                           <list kind="definition">
+                           <list kind="definition" separator="=">
                               <unit eId="anx_1/pnt_3/list_2/pnt_e/qstr_1/par_13/sub_3/def_1"
                                     kind="definition">
                                  <heading>

@@ -110,7 +110,7 @@
          <p>
             <t v="For the 2010 fishing year the amount of private storage aid, referred to in Article 25 of Regulation (EC) No 104/2000, for the products listed in Annex II to that Regulation shall be as follows:"/>
          </p>
-         <list kind="definition">
+         <list kind="definition" separator=":">
             <unit eId="art_1/def_1" kind="definition">
                <num>
                   <t v="—"/>

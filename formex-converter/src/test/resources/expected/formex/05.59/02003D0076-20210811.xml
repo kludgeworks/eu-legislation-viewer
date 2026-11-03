@@ -353,7 +353,7 @@
                <heading>
                   <t v="DEFINITION"/>
                </heading>
-               <list kind="definition">
+               <list kind="definition" separator=":">
                   <unit eId="anx/pnt_2/def_1" kind="definition">
                      <heading>
                         <t v="n"/>

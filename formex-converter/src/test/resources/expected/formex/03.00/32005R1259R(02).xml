@@ -31,7 +31,7 @@
          <p>
             <t v="On page 90, in Article 1(2):"/>
          </p>
-         <list kind="definition">
+         <list kind="definition" separator=":">
             <unit eId="cor_1/def_1" kind="definition">
                <heading>
                   <t v="for"/>

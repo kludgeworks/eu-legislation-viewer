@@ -19134,7 +19134,7 @@
                         <p>
                            <t v="A form shall be completed for each product covered by the request."/>
                         </p>
-                        <list kind="definition">
+                        <list kind="definition" separator=":">
                            <unit eId="anx_VII-TO-PROTOCOL-1/level_1/ann_1/pnt_3/def_1" kind="definition">
                               <heading>
                                  <t v="Boxes 3, 4, 5, 7"/>

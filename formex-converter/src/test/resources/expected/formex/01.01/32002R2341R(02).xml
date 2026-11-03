@@ -114,7 +114,7 @@
                <p>
                   <t v="in the first column:"/>
                </p>
-               <list kind="definition">
+               <list kind="definition" separator=":">
                   <unit eId="cor_3/idt_1/def_1" kind="definition">
                      <heading>
                         <t v="for"/>
@@ -143,7 +143,7 @@
                <p>
                   <t v="in the third column:"/>
                </p>
-               <list kind="definition">
+               <list kind="definition" separator=":">
                   <unit eId="cor_3/idt_2/def_1" kind="definition">
                      <heading>
                         <t v="for"/>

@@ -205,7 +205,7 @@
                      <heading>
                         <t v="Single indications:"/>
                      </heading>
-                     <list kind="definition">
+                     <list kind="definition" separator=":">
                         <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_1" kind="definition">
                            <heading>
                               <t v="ES"/>

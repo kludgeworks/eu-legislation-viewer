@@ -336,7 +336,7 @@
             <p>
                <t v="where:"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator="=">
                <unit eId="anx/level_PART-I/def_1" kind="definition">
                   <heading>
                      <t v="Ŷ"/>
@@ -444,7 +444,7 @@
             <p>
                <t v="where:"/>
             </p>
-            <list kind="definition">
+            <list kind="definition" separator="=">
                <unit eId="anx/level_PART-II/def_1" kind="definition">
                   <heading>
                      <t v="Ŷ"/>

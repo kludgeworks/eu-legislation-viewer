@@ -309,7 +309,7 @@
                <p>
                   <t v="Determination of regularity by sieve analysis using sieves with round holes."/>
                </p>
-               <list kind="definition">
+               <list kind="definition" separator=":">
                   <unit eId="anx/pnt_2/list_2/def_1" kind="definition">
                      <heading>
                         <t v="dm"/>
