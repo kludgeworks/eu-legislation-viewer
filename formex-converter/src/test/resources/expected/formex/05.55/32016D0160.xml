@@ -253,7 +253,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -294,7 +294,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -418,11 +418,15 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/pnt_1" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_1"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="1."/>
             </num>
@@ -493,7 +497,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_2" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_2"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="2."/>
             </num>
@@ -508,7 +516,11 @@
                <t v=" on uniform provisions concerning the approval of motor vehicle headlamps emitting an asymmetrical passing beam or a driving beam or both and equipped with filament lamps and/or light-emitting diode (LED) modules shall apply. For determining the power consumption, the reference is to be made to point 6.1.4 of Regulation No 112, and points 3.2.1 and 3.2.2 of Annex 10 to Regulation No 112."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_3" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_3"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="3."/>
             </num>
@@ -533,7 +545,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_3/level_1" kind="level" depth="2">
+         <unit eId="anx/pnt_3/level_1" kind="level" depth="2" rank="3">
             <heading>
                <emphasis kind="b">
                   <t v="Test set-up"/>
@@ -562,7 +574,11 @@
          <p>
             <t v="The exact installed voltages and the measured current are to be recorded in four decimals."/>
          </p>
-         <unit eId="anx/pnt_4" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_4"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="4."/>
             </num>
@@ -613,7 +629,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_4.1" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_4.1"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="4.1"/>
             </num>
@@ -813,7 +833,11 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/pnt_4.2" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_4.2"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="4.2"/>
             </num>
@@ -1355,7 +1379,11 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/pnt_4.3" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_4.3"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="4.3"/>
             </num>
@@ -2123,7 +2151,11 @@
                </math>
             </p>
          </unit>
-         <unit eId="anx/pnt_4.4" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_4.4"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="4.4"/>
             </num>

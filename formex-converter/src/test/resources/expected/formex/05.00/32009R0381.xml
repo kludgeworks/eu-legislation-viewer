@@ -104,7 +104,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -112,7 +112,7 @@
             <t v="Annex III to Regulation (EC) No 2092/2004 is replaced by the text set out in the Annex to this Regulation."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -182,24 +182,30 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <quotedStructure eId="anx/qstr_1">
-            <unit eId="anx/qstr_1/anx_III" kind="annex">
+            <unit eId="anx/qstr_1/anx_III" kind="annex" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="ANNEX III"/>
                </num>
-               <unit eId="anx/qstr_1/anx_III/level_1" kind="level" depth="1">
+               <unit eId="anx/qstr_1/anx_III/level_1"
+                     kind="level"
+                     depth="1"
+                     rank="3">
                   <heading>
                      <emphasis kind="b">
                         <t v="List of authorities in exporting countries empowered to issue certificates of authenticity"/>
                      </emphasis>
                   </heading>
                </unit>
-               <unit eId="anx/qstr_1/anx_III/level_1/level_1" kind="level" depth="2">
+               <unit eId="anx/qstr_1/anx_III/level_1/level_1"
+                     kind="level"
+                     depth="2"
+                     rank="4">
                   <heading>
                      <t v="SWITZERLAND"/>
                   </heading>

@@ -81,7 +81,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -89,7 +89,7 @@
             <t v="Article 117 of the EEA Agreement shall be replaced by the following:"/>
          </p>
          <quotedStructure eId="art_1/qstr_1">
-            <unit eId="art_1/qstr_1/art_117" kind="article">
+            <unit eId="art_1/qstr_1/art_117" kind="article" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="ARTICLE 117"/>
@@ -102,7 +102,7 @@
             </unit>
          </quotedStructure>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -110,7 +110,7 @@
             <t v="A new Protocol 38d shall be inserted after Protocol 38c to the EEA Agreement. The text of Protocol 38d is set out in the Annex to this Agreement."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -130,7 +130,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -152,21 +152,21 @@
       </signature>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/pro" kind="annex">
+         <unit eId="anx/pro" kind="annex" rank="2">
             <heading>
                <t v="PROTOCOL 38d"/>
                <eol/>
                <t v="on the EEA Financial Mechanism (2021–2028)"/>
             </heading>
-            <unit eId="anx/pro/art_1" kind="article">
+            <unit eId="anx/pro/art_1" kind="article" rank="3">
                <num>
                   <t v="Article 1"/>
                </num>
-               <unit eId="anx/pro/art_1/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_1/subdivision_1" kind="subdivision" rank="4">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -183,7 +183,7 @@
                      <t v="."/>
                   </p>
                </unit>
-               <unit eId="anx/pro/art_1/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_1/subdivision_2" kind="subdivision" rank="4">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -202,7 +202,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="anx/pro/art_2" kind="article">
+            <unit eId="anx/pro/art_2" kind="article" rank="3">
                <num>
                   <t v="Article 2"/>
                </num>
@@ -230,11 +230,11 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/pro/art_3" kind="article">
+            <unit eId="anx/pro/art_3" kind="article" rank="3">
                <num>
                   <t v="Article 3"/>
                </num>
-               <unit eId="anx/pro/art_3/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_3/subdivision_1" kind="subdivision" rank="4">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -284,7 +284,7 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="anx/pro/art_3/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_3/subdivision_2" kind="subdivision" rank="4">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -296,11 +296,11 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/pro/art_4" kind="article">
+            <unit eId="anx/pro/art_4" kind="article" rank="3">
                <num>
                   <t v="Article 4"/>
                </num>
-               <unit eId="anx/pro/art_4/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_4/subdivision_1" kind="subdivision" rank="4">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -311,7 +311,7 @@
                      <t v="In order to achieve concentration and to ensure efficient implementation, in line with the overall objectives referred to in Article 1, and taking into account EU policies and country specific recommendations, as well as Partnership Agreements concluded between the Member States and the European Commission, the EFTA States shall negotiate with each Beneficiary State a Memorandum of Understanding in accordance with Article 9 paragraph 5."/>
                   </p>
                </unit>
-               <unit eId="anx/pro/art_4/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_4/subdivision_2" kind="subdivision" rank="4">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -323,11 +323,11 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/pro/art_5" kind="article">
+            <unit eId="anx/pro/art_5" kind="article" rank="3">
                <num>
                   <t v="Article 5"/>
                </num>
-               <unit eId="anx/pro/art_5/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_5/subdivision_1" kind="subdivision" rank="4">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -338,7 +338,7 @@
                      <t v="With respect to programmes under country specific allocations for which the Beneficiary States shall have implementation responsibility, the EFTA contribution shall not exceed 85 % of programme cost, unless otherwise decided by the EFTA States."/>
                   </p>
                </unit>
-               <unit eId="anx/pro/art_5/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_5/subdivision_2" kind="subdivision" rank="4">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -349,7 +349,7 @@
                      <t v="The applicable rules on State aid shall be complied with."/>
                   </p>
                </unit>
-               <unit eId="anx/pro/art_5/subdivision_3" kind="subdivision">
+               <unit eId="anx/pro/art_5/subdivision_3" kind="subdivision" rank="4">
                   <num>
                      <t v="(3)"/>
                   </num>
@@ -361,7 +361,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/pro/art_6" kind="article">
+            <unit eId="anx/pro/art_6" kind="article" rank="3">
                <num>
                   <t v="Article 6"/>
                </num>
@@ -573,7 +573,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/pro/art_7" kind="article">
+            <unit eId="anx/pro/art_7" kind="article" rank="3">
                <num>
                   <t v="Article 7"/>
                </num>
@@ -582,7 +582,7 @@
                      <t v="Within the EEA Financial Mechanism, two funds shall be made available. They shall contribute to achieving the objectives of the EEA Financial Mechanism (2021–2028) as defined in Article 1, and to the thematic priorities referred to in Article 3. The EFTA States can participate as partners in the funds."/>
                   </p>
                </unit>
-               <unit eId="anx/pro/art_7/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_7/subdivision_1" kind="subdivision" rank="4">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -600,7 +600,7 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="anx/pro/art_7/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_7/subdivision_2" kind="subdivision" rank="4">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -612,11 +612,11 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/pro/art_8" kind="article">
+            <unit eId="anx/pro/art_8" kind="article" rank="3">
                <num>
                   <t v="Article 8"/>
                </num>
-               <unit eId="anx/pro/art_8/subdivision_1" kind="subdivision">
+               <unit eId="anx/pro/art_8/subdivision_1" kind="subdivision" rank="4">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -627,7 +627,7 @@
                      <t v="The financial contribution provided for in this Protocol shall be closely coordinated with the bilateral contribution from Norway provided for by the Norwegian Financial Mechanism. In particular, the EFTA States shall ensure that the procedures and implementation modalities are essentially the same for both financial mechanisms."/>
                   </p>
                </unit>
-               <unit eId="anx/pro/art_8/subdivision_2" kind="subdivision">
+               <unit eId="anx/pro/art_8/subdivision_2" kind="subdivision" rank="4">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -639,7 +639,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/pro/art_9" kind="article">
+            <unit eId="anx/pro/art_9" kind="article" rank="3">
                <num>
                   <t v="Article 9"/>
                </num>
@@ -649,7 +649,8 @@
                <unit eId="anx/pro/art_9/pnt_1"
                      kind="level"
                      depth="1"
-                     numbered="true">
+                     numbered="true"
+                     rank="4">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -663,7 +664,8 @@
                <unit eId="anx/pro/art_9/pnt_2"
                      kind="level"
                      depth="1"
-                     numbered="true">
+                     numbered="true"
+                     rank="4">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -677,7 +679,8 @@
                <unit eId="anx/pro/art_9/pnt_3"
                      kind="level"
                      depth="1"
-                     numbered="true">
+                     numbered="true"
+                     rank="4">
                   <num>
                      <t v="(3)"/>
                   </num>
@@ -691,7 +694,8 @@
                <unit eId="anx/pro/art_9/pnt_4"
                      kind="level"
                      depth="1"
-                     numbered="true">
+                     numbered="true"
+                     rank="4">
                   <num>
                      <t v="(4)"/>
                   </num>
@@ -705,7 +709,8 @@
                <unit eId="anx/pro/art_9/pnt_5"
                      kind="level"
                      depth="1"
-                     numbered="true">
+                     numbered="true"
+                     rank="4">
                   <num>
                      <t v="(5)"/>
                   </num>
@@ -719,7 +724,8 @@
                <unit eId="anx/pro/art_9/pnt_6"
                      kind="level"
                      depth="1"
-                     numbered="true">
+                     numbered="true"
+                     rank="4">
                   <num>
                      <t v="(6)"/>
                   </num>
@@ -780,7 +786,8 @@
                <unit eId="anx/pro/art_9/pnt_7"
                      kind="level"
                      depth="1"
-                     numbered="true">
+                     numbered="true"
+                     rank="4">
                   <num>
                      <t v="(7)"/>
                   </num>
@@ -794,7 +801,8 @@
                <unit eId="anx/pro/art_9/pnt_8"
                      kind="level"
                      depth="1"
-                     numbered="true">
+                     numbered="true"
+                     rank="4">
                   <num>
                      <t v="(8)"/>
                   </num>
@@ -806,7 +814,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/pro/art_10" kind="article">
+            <unit eId="anx/pro/art_10" kind="article" rank="3">
                <num>
                   <t v="Article 10"/>
                </num>
@@ -818,7 +826,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="anx/anx_TO-PROTOCOL-38d" kind="annex">
+         <unit eId="anx/anx_TO-PROTOCOL-38d" kind="annex" rank="2">
             <num>
                <t v="ANNEX TO PROTOCOL 38d"/>
             </num>

@@ -193,7 +193,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -201,7 +201,7 @@
             <t v="In respect of products which come from Member States or Turkey which are within the province of the European Coal and Steel Community, customs duties and charges having equivalent effect and also quantitative restrictions and measures having equivalent effect in force between Member States and Turkey shall, save where measures are taken pursuant to Chapter X of the Treaty establishing the European Coal and Steel Community, be progressively abolished in accordance with the conditions laid down in Article 2 of this Agreement."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -222,7 +222,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -230,7 +230,7 @@
             <t v="Turkey shall not, in the fields covered by this Agreement, receive treatment more favourable than that which Member States extend to each other pursuant to the Treaty establishing the European Coal and Steel Community."/>
          </p>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -238,7 +238,7 @@
             <t v="Consultations shall take place between the Parties concerned in all cases where, in the opinion of one of them, the implementation of the above provisions calls for such consultations."/>
          </p>
       </unit>
-      <unit eId="art_5" kind="article">
+      <unit eId="art_5" kind="article" rank="1">
          <provenance amendingAct="21973A0630(02)"
                      action="inserted"
                      location="AR:3;AL:1"
@@ -250,7 +250,7 @@
             <t v="The Agreement shall apply to the European territories of the Kingdom of Belgium, of the Kingdom of Denmark, of the Federal Republic of Germany, of Ireland, of the French Republic, of the Italian Republic, of the Grand Duchy of Luxembourg, of the Kingdom of the Netherlands and of the United Kingdom of Great Britain and Northern Ireland and to the other European territories in respect of which a Member State assumes responsibility for external affairs, in accordance with the conditions laid down by the Treaty establishing the European Economic Community, on the one hand, and to the territory of the Republic of Turkey, on the other."/>
          </p>
       </unit>
-      <unit eId="art_6" kind="article">
+      <unit eId="art_6" kind="article" rank="1">
          <num>
             <changed amendingAct="21973A0630(02)"
                      action="replaced"
@@ -263,7 +263,7 @@
             <t v="This Agreement shall not affect the provisions of the Treaty establishing the European Coal and Steel Community, or the powers or jurisdiction conferred by that Treaty."/>
          </p>
       </unit>
-      <unit eId="art_7" kind="article">
+      <unit eId="art_7" kind="article" rank="1">
          <num>
             <changed amendingAct="21973A0630(02)"
                      action="replaced"
@@ -276,7 +276,7 @@
             <t v="The Annex on German internal trade and connected problems shall form an integral part of this Agreement."/>
          </p>
       </unit>
-      <unit eId="art_8" kind="article">
+      <unit eId="art_8" kind="article" rank="1">
          <num>
             <changed amendingAct="21973A0630(02)"
                      action="replaced"
@@ -309,7 +309,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_9" kind="article">
+      <unit eId="art_9" kind="article" rank="1">
          <num>
             <changed amendingAct="21973A0630(02)"
                      action="replaced"
@@ -411,7 +411,7 @@
       </signature>
    </conclusions>
    <annexes>
-      <unit eId="anx_1" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_1" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -452,18 +452,22 @@
             </p>
          </unit>
       </unit>
-      <unit eId="anx_2" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_2" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx_2/level_1" kind="level" depth="1">
+         <unit eId="anx_2/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="JOINT DECLARATION BY THE CONTRACTING PARTIES ON THE ADDITIONAL PROTOCOL"/>
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx_2/pnt_1" kind="level" depth="2" numbered="true">
+         <unit eId="anx_2/pnt_1"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="1."/>
             </num>
@@ -476,7 +480,11 @@
                <t v="The Contracting Parties agree that customs duties and charges having equivalent effect which are calculated in accordance with the rules of the Additional Protocol shall be rounded off to the first decimal point."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_2" kind="level" depth="2" numbered="true">
+         <unit eId="anx_2/pnt_2"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="2."/>
             </num>
@@ -489,7 +497,11 @@
                <t v="The Contracting Parties agree that goods which are already in a bonded warehouse, or are being transported for export, or for which there was a firm contract of sale at the time Turkey notified the Council of Association in accordance with Article 12 (2) of the Additional Protocol, shall be liable to the customs duties applicable before the adoption of measures by Turkey in accordance with that Article."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_3" kind="level" depth="2" numbered="true">
+         <unit eId="anx_2/pnt_3"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="3."/>
             </num>
@@ -502,7 +514,11 @@
                <t v="The duties in the Common Customs Tariff referred to in Articles 17 (1) and 18 (1) of the Additional Protocol are the duties in the Common Customs Tariff which are actually applied at the time of alignment of the Turkish Customs Tariff with the Common Customs Tariff."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_4" kind="level" depth="2" numbered="true">
+         <unit eId="anx_2/pnt_4"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="4."/>
             </num>
@@ -515,7 +531,11 @@
                <t v="The Contracting Parties declare that in calculating the aggregate value of all the quotas which are to be increased by 10 % at regular intervals in accordance with Article 25 (4) of the Additional Protocol, no account shall be taken of the value of imports liberalized by Turkey during the periods referred to in that paragraph."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_5" kind="level" depth="2" numbered="true">
+         <unit eId="anx_2/pnt_5"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="5."/>
             </num>
@@ -528,7 +548,11 @@
                <t v="The Contracting Parties declare that the provisions of Article 27 (2) of the Additional Protocol shall also apply to non-ferrous metals."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_6" kind="level" depth="2" numbered="true">
+         <unit eId="anx_2/pnt_6"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="6."/>
             </num>
@@ -541,7 +565,11 @@
                <t v="The Contracting Parties agree that preparatory work in respect of the findings to be recorded by the Council of Association, pursuant to Article 34 of the Additional Protocol, may begin one year before expiry of the period of twenty-two years."/>
             </p>
          </unit>
-         <unit eId="anx_2/pnt_7" kind="level" depth="2" numbered="true">
+         <unit eId="anx_2/pnt_7"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="7."/>
             </num>
@@ -554,11 +582,11 @@
                <t v="The duties in the Common Customs Tariff referred to in Annexes 2 and 6 are the duties in the Common Customs Tariff which are actually applied at the time in relation to the Contracting Parties to GATT."/>
             </p>
          </unit>
-         <unit eId="anx_2/att_1" kind="attachment">
+         <unit eId="anx_2/att_1" kind="attachment" rank="2">
             <heading>
                <t v="INTERPRETATIVE DECLARATIONS"/>
             </heading>
-            <unit eId="anx_2/att_1/level_1" kind="level" depth="1">
+            <unit eId="anx_2/att_1/level_1" kind="level" depth="1" rank="3">
                <heading>
                   <emphasis kind="b">
                      <t v="Interpretative Declaration on Article 25 of the Additional Protocol"/>
@@ -597,7 +625,7 @@
                   <t v="shall not be considered to be made under quotas opened in favour of the Community in accordance with Article 25 of the Additional Protocol, and in particular paragraphs 4 and 5 thereof."/>
                </p>
             </unit>
-            <unit eId="anx_2/att_1/att_1" kind="attachment">
+            <unit eId="anx_2/att_1/att_1" kind="attachment" rank="3">
                <heading>
                   <t v="Interpretative Declaration on the value of the unit of account in the context of Article 3 of the Financial Protocol"/>
                </heading>
@@ -635,11 +663,15 @@
                </list>
             </unit>
          </unit>
-         <unit eId="anx_2/att_2" kind="attachment">
+         <unit eId="anx_2/att_2" kind="attachment" rank="2">
             <heading>
                <t v="DECLARATIONS BY THE GOVERNMENT OF THE FEDERAL REPUBLIC OF GERMANY ON THE AGREEMENT RELATING TO PRODUCTS WITHIN THE PROVINCE OF THE EUROPEAN COAL AND STEEL COMMUNITY"/>
             </heading>
-            <unit eId="anx_2/att_2/pnt_1" kind="level" depth="1" numbered="true">
+            <unit eId="anx_2/att_2/pnt_1"
+                  kind="level"
+                  depth="1"
+                  numbered="true"
+                  rank="3">
                <num>
                   <t v="1."/>
                </num>
@@ -655,7 +687,11 @@
                   <t v="All Germans as defined in the Basic Law for the Federal Republic of Germany shall be considered nationals of the Federal Republic of Germany."/>
                </p>
             </unit>
-            <unit eId="anx_2/att_2/pnt_2" kind="level" depth="1" numbered="true">
+            <unit eId="anx_2/att_2/pnt_2"
+                  kind="level"
+                  depth="1"
+                  numbered="true"
+                  rank="3">
                <num>
                   <t v="2."/>
                </num>
@@ -670,7 +706,7 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="att_1" kind="attachment">
+      <unit eId="att_1" kind="attachment" rank="1">
          <heading>
             <t v="FINAL ACT"/>
          </heading>

@@ -143,7 +143,7 @@
    </body>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
-         <unit eId="anx/level_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1" rank="1">
             <heading>
                <t v="List of forms"/>
             </heading>

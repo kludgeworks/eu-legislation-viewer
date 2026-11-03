@@ -110,7 +110,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -125,7 +125,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -133,7 +133,7 @@
             <t v="The President of the Council is hereby authorised to designate the person(s) empowered to sign the Agreement in order to bind the Union."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -143,7 +143,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>

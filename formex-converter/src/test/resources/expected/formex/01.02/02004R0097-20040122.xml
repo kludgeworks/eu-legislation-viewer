@@ -101,7 +101,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -109,7 +109,7 @@
             <t v="Article 1 of Regulation (EC) No 2281/2003 is hereby replaced by the following:"/>
          </p>
          <quotedStructure eId="art_1/qstr_1">
-            <unit eId="art_1/qstr_1/art_1" kind="article">
+            <unit eId="art_1/qstr_1/art_1" kind="article" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="Article 1"/>
@@ -121,7 +121,7 @@
             </unit>
          </quotedStructure>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -129,7 +129,7 @@
             <t v="Article 1 of Regulation (EC) No 2299/2003 is hereby replaced by the following:"/>
          </p>
          <quotedStructure eId="art_2/qstr_1">
-            <unit eId="art_2/qstr_1/art_1" kind="article">
+            <unit eId="art_2/qstr_1/art_1" kind="article" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="Article 1"/>
@@ -141,7 +141,7 @@
             </unit>
          </quotedStructure>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>

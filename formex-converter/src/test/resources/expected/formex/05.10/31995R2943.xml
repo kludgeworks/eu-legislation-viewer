@@ -82,7 +82,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -90,7 +90,7 @@
             <t v="This Regulation lays down detailed rules for applying Articles 7, 8, 10 and 13 of Regulation (EC) No 1627/94."/>
          </p>
       </unit>
-      <unit eId="cpt_1" kind="division">
+      <unit eId="cpt_1" kind="division" rank="1">
          <num>
             <emphasis kind="b">
                <t v="CHAPTER 1"/>
@@ -101,7 +101,7 @@
                <t v="Authorization to fish in Community fishing waters and on the high seas"/>
             </emphasis>
          </subheading>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -138,7 +138,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_3" kind="article">
+         <unit eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -174,7 +174,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_4" kind="article">
+         <unit eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -183,7 +183,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="cpt_2" kind="division">
+      <unit eId="cpt_2" kind="division" rank="1">
          <num>
             <emphasis kind="b">
                <t v="CHAPTER 2"/>
@@ -194,7 +194,7 @@
                <t v="Withdrawal and suspension of permits issued to third-country vessels"/>
             </emphasis>
          </subheading>
-         <unit eId="art_5" kind="article">
+         <unit eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -202,7 +202,7 @@
                <t v="Member States shall notify any infringements detected as referred to in Article 10 (1) of Regulation (EC) No 1627/94, indicating as a minimum the name of the vessel involved, its external marking, its international radio call sign, the third country of the flag flown, the names and addresses of the master and the owner, a detailed statement of the facts of the case, details of any judicial, administrative or other action undertaken and any final decision in law concerning the infringement."/>
             </p>
          </unit>
-         <unit eId="art_6" kind="article">
+         <unit eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
@@ -248,7 +248,7 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_3" kind="division">
+      <unit eId="cpt_3" kind="division" rank="1">
          <num>
             <emphasis kind="b">
                <t v="CHAPTER 3"/>
@@ -259,7 +259,7 @@
                <t v="General and final provisions"/>
             </emphasis>
          </subheading>
-         <unit eId="art_7" kind="article">
+         <unit eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
@@ -296,7 +296,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_8" kind="article">
+         <unit eId="art_8" kind="article" rank="2">
             <num>
                <t v="Article 8"/>
             </num>

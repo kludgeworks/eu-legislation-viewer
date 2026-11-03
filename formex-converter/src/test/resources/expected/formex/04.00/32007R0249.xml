@@ -137,7 +137,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -145,7 +145,7 @@
             <t v="Annex I to Regulation (EC) No 1431/94 is hereby replaced by the Annex hereto."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -259,12 +259,12 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <quotedStructure eId="anx/qstr_1">
-            <unit eId="anx/qstr_1/anx_I" kind="annex">
+            <unit eId="anx/qstr_1/anx_I" kind="annex" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="ANNEX I"/>

@@ -64,7 +64,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -129,7 +129,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -140,7 +140,7 @@
             <t v="The Parties shall encourage and, within the terms of this Agreement, facilitate cooperation between Australia and the Community in fields of common interest where the Parties are supporting research and development activities to advance science and/or technology relevant to those fields of interest."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -185,7 +185,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -279,7 +279,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_5" kind="article">
+      <unit eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
@@ -357,7 +357,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_6" kind="article">
+      <unit eId="art_6" kind="article" rank="1">
          <num>
             <t v="Article 6"/>
          </num>
@@ -368,7 +368,7 @@
             <t v="The dissemination and utilization of information, and management, allocation and exercise of intellectual property rights, resulting from joint research under this Agreement, shall be subject to the principles set out in the Annex to this Agreement."/>
          </p>
       </unit>
-      <unit eId="art_7" kind="article">
+      <unit eId="art_7" kind="article" rank="1">
          <num>
             <t v="Article 7"/>
          </num>
@@ -400,7 +400,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_8" kind="article">
+      <unit eId="art_8" kind="article" rank="1">
          <num>
             <t v="Article 8"/>
          </num>
@@ -411,7 +411,7 @@
             <t v="Each Party shall take all reasonable steps and use its best efforts to facilitate entry to and exit from its territory of personnel, material and equipment of the other Party engaged in or used in cooperative activities under this Agreement."/>
          </p>
       </unit>
-      <unit eId="art_9" kind="article">
+      <unit eId="art_9" kind="article" rank="1">
          <num>
             <t v="Article 9"/>
          </num>
@@ -422,7 +422,7 @@
             <t v="This Agreement is without prejudice to cooperation which may be undertaken pursuant to other Agreements or arrangements between the Parties."/>
          </p>
       </unit>
-      <unit eId="art_10" kind="article">
+      <unit eId="art_10" kind="article" rank="1">
          <num>
             <t v="Article 10"/>
          </num>
@@ -433,7 +433,7 @@
             <t v="This Agreement shall apply, on the one hand, to the territories in which the Treaty establishing the European Community is applied and under the conditions laid down in that Treaty and, on the other hand, to the territory of Australia."/>
          </p>
       </unit>
-      <unit eId="art_11" kind="article">
+      <unit eId="art_11" kind="article" rank="1">
          <num>
             <t v="Article 11"/>
          </num>
@@ -465,7 +465,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_12" kind="article">
+      <unit eId="art_12" kind="article" rank="1">
          <num>
             <t v="Article 12"/>
          </num>
@@ -647,14 +647,18 @@
       </signature>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <subheading>
             <t v="DISSEMINATION AND UTILIZATION OF INFORMATION AND MANAGEMENT, ALLOCATION AND EXERCISE OF INTELLECTUAL PROPERTY RIGHTS"/>
          </subheading>
-         <unit eId="anx/pnt_I" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_I"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="I."/>
             </num>
@@ -722,7 +726,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_II" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_II"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="II."/>
             </num>
@@ -735,7 +743,11 @@
                <t v="Copyright belonging to the Parties or to their participants shall be accorded treatment consistent with the Berne Convention (Paris Act 1971)."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_III" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_III"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="III."/>
             </num>
@@ -774,7 +786,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_IV" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_IV"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="IV."/>
             </num>
@@ -784,7 +800,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_A" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_A"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="A."/>
             </num>
@@ -865,7 +885,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_B" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_B"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="B."/>
             </num>
@@ -878,7 +902,11 @@
                <t v="Non-documentary undisclosed or other confidential or privileged information provided in seminars and other meetings arranged under this Agreement, or information arising from the attachment of staff, use of facilities, or joint projects, shall be treated by the Parties or their participants according to the principles specified for documentary information in the Agreement, provided, however, that the recipient of such undisclosed or other confidential or privileged information has been made aware of the confidential character of the information communicated at the time such communication is made."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_C" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_C"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="C."/>
             </num>
@@ -891,11 +919,11 @@
                <t v="Each Party shall endeavour to ensure that undisclosed information received by it under this Agreement shall be controlled as provided therein. If one of the Parties becomes aware that it will be, or may reasonably be expected to become, unable to meet the non-dissemination provisions of Subsections A or B above, it shall immediately inform the other Party. The Parties shall thereafter consult to define an appropriate course of action."/>
             </p>
          </unit>
-         <unit eId="anx/app" kind="annex" eurlexAnchor="1">
+         <unit eId="anx/app" kind="annex" eurlexAnchor="1" rank="2">
             <num>
                <t v="Appendix"/>
             </num>
-            <unit eId="anx/app/level_1" kind="level" depth="1">
+            <unit eId="anx/app/level_1" kind="level" depth="1" rank="3">
                <heading>
                   <emphasis kind="b">
                      <t v="Indicative features of a Technology Management Plan (TMP)"/>
@@ -905,7 +933,7 @@
                   <t v="The TMP is a specific agreement to be concluded between the participants about the implementation of joint research and the respective rights and obligations of the participants. With respect to IP, the TMP will normally address, among other things, ownership, protection, user rights for research and development purposes, exploitation and dissemination, including arrangements for joint publication, the rights and obligations of visiting researchers and dispute settlement procedures. The TMP may also address foreground and background information, licensing and deliverables."/>
                </p>
             </unit>
-            <unit eId="anx/app/level_2" kind="level" depth="1">
+            <unit eId="anx/app/level_2" kind="level" depth="1" rank="3">
                <heading>
                   <emphasis kind="b">
                      <t v="Declaration by the Council and the Commission"/>

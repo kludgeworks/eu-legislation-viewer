@@ -169,7 +169,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="cpt_I" kind="division">
+      <unit eId="cpt_I" kind="division" rank="1">
          <num>
             <t v="CHAPTER I"/>
          </num>
@@ -178,7 +178,7 @@
                <t v="BUTTER"/>
             </emphasis>
          </subheading>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -190,7 +190,7 @@
                <t v=", under the conditions provided for in Section 3 of Chapter II of Regulation (EC) No 105/2008 and in this Regulation."/>
             </p>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -228,7 +228,7 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_II" kind="division">
+      <unit eId="cpt_II" kind="division" rank="1">
          <num>
             <t v="CHAPTER II"/>
          </num>
@@ -237,7 +237,7 @@
                <t v="SKIMMED MILK POWDER"/>
             </emphasis>
          </subheading>
-         <unit eId="art_3" kind="article">
+         <unit eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -249,7 +249,7 @@
                <t v=", under the conditions provided for in Section 4 of Chapter II of Regulation (EC) No 214/2001 and in this Regulation."/>
             </p>
          </unit>
-         <unit eId="art_4" kind="article">
+         <unit eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -286,7 +286,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_5" kind="article">
+         <unit eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>

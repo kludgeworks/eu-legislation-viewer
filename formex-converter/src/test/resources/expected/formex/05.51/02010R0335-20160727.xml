@@ -42,7 +42,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -58,7 +58,7 @@
             <t v=", is authorised as an additive in animal nutrition subject to the conditions laid down in that Annex."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -66,7 +66,7 @@
             <t v="Regulation (EC) No 888/2009 is repealed."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -85,7 +85,7 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>

@@ -162,7 +162,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="level_1" kind="level" depth="1">
+      <unit eId="level_1" kind="level" depth="1" rank="1">
          <heading>
             <t v="PART I — FINANCIAL FRAMEWORK"/>
          </heading>
@@ -170,7 +170,7 @@
             <t v="DEFINITION AND IMPLEMENTING PROVISIONS"/>
          </subheading>
       </unit>
-      <unit eId="pnt_A" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_A" kind="level" depth="2" numbered="true" rank="2">
          <num>
             <t v="A."/>
          </num>
@@ -260,7 +260,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_B" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_B" kind="level" depth="2" numbered="true" rank="2">
          <num>
             <t v="B."/>
          </num>
@@ -268,7 +268,7 @@
             <t v="Annual adjustments of the financial framework&#xA;"/>
          </heading>
       </unit>
-      <unit eId="pnt_B/level_1" kind="level" depth="3">
+      <unit eId="pnt_B/level_1" kind="level" depth="3" rank="3">
          <heading>
             <t v="Technical adjustments"/>
          </heading>
@@ -316,7 +316,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_B/level_2" kind="level" depth="3">
+      <unit eId="pnt_B/level_2" kind="level" depth="3" rank="3">
          <heading>
             <t v="Adjustments connected with implementation"/>
          </heading>
@@ -329,7 +329,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_B/level_3" kind="level" depth="3">
+      <unit eId="pnt_B/level_3" kind="level" depth="3" rank="3">
          <heading>
             <t v="Updating of forecasts for payment appropriations after 2013"/>
          </heading>
@@ -342,7 +342,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_B/level_4" kind="level" depth="3">
+      <unit eId="pnt_B/level_4" kind="level" depth="3" rank="3">
          <heading>
             <t v="Adjustments connected with excessive government deficit"/>
          </heading>
@@ -355,7 +355,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_C" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_C" kind="level" depth="2" numbered="true" rank="2">
          <num>
             <t v="C."/>
          </num>
@@ -402,7 +402,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_D" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_D" kind="level" depth="2" numbered="true" rank="2">
          <num>
             <t v="D."/>
          </num>
@@ -418,7 +418,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_E" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_E" kind="level" depth="2" numbered="true" rank="2">
          <num>
             <t v="E."/>
          </num>
@@ -446,7 +446,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_F" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_F" kind="level" depth="2" numbered="true" rank="2">
          <num>
             <t v="F."/>
          </num>
@@ -474,7 +474,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_G" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_G" kind="level" depth="2" numbered="true" rank="2">
          <num>
             <t v="G."/>
          </num>
@@ -502,7 +502,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_H" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_H" kind="level" depth="2" numbered="true" rank="2">
          <num>
             <t v="H."/>
          </num>
@@ -536,7 +536,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_I" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_I" kind="level" depth="2" numbered="true" rank="2">
          <num>
             <t v="I."/>
          </num>
@@ -552,7 +552,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_J" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_J" kind="level" depth="2" numbered="true" rank="2">
          <num>
             <t v="J."/>
          </num>
@@ -573,7 +573,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-II" kind="level" depth="1">
+      <unit eId="level_PART-II" kind="level" depth="1" rank="1">
          <num>
             <t v="PART II"/>
          </num>
@@ -584,7 +584,8 @@
       <unit eId="level_PART-II/pnt_A"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="A."/>
          </num>
@@ -603,7 +604,8 @@
       <unit eId="level_PART-II/pnt_B"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="B."/>
          </num>
@@ -682,7 +684,8 @@
       <unit eId="level_PART-II/pnt_C"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="C."/>
          </num>
@@ -712,7 +715,8 @@
       <unit eId="level_PART-II/pnt_D"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="D."/>
          </num>
@@ -752,7 +756,8 @@
       <unit eId="level_PART-II/pnt_E"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="E."/>
          </num>
@@ -817,7 +822,8 @@
       <unit eId="level_PART-II/pnt_F"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="F."/>
          </num>
@@ -836,7 +842,8 @@
       <unit eId="level_PART-II/pnt_G"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="G."/>
          </num>
@@ -928,7 +935,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="level_PART-III" kind="level" depth="1">
+      <unit eId="level_PART-III" kind="level" depth="1" rank="1">
          <num>
             <t v="PART III"/>
          </num>
@@ -939,7 +946,8 @@
       <unit eId="level_PART-III/pnt_A"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="A."/>
          </num>
@@ -961,7 +969,8 @@
       <unit eId="level_PART-III/pnt_B"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="B."/>
          </num>
@@ -982,7 +991,8 @@
       <unit eId="level_PART-III/pnt_C"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="C."/>
          </num>
@@ -1076,7 +1086,8 @@
       <unit eId="level_PART-III/pnt_D"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="D."/>
          </num>
@@ -1098,7 +1109,8 @@
       <unit eId="level_PART-III/pnt_E"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="E."/>
          </num>
@@ -1124,7 +1136,8 @@
       <unit eId="level_PART-III/pnt_F"
             kind="level"
             depth="2"
-            numbered="true">
+            numbered="true"
+            rank="2">
          <num>
             <t v="F."/>
          </num>
@@ -1148,7 +1161,7 @@
       </unit>
    </body>
    <annexes>
-      <unit eId="anx_I" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="32009D0407"
                      action="replaced"
                      location="AR:0 .AND. AX:0"
@@ -2246,7 +2259,7 @@
             </tr>
          </table>
       </unit>
-      <unit eId="anx_II" kind="annex" eurlexAnchor="2">
+      <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
          <num>
             <t v="ANNEX II"/>
          </num>
@@ -2427,7 +2440,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="anx_III" kind="annex" eurlexAnchor="3">
+      <unit eId="anx_III" kind="annex" eurlexAnchor="3" rank="1">
          <num>
             <t v="ANNEX III"/>
          </num>
@@ -2774,7 +2787,7 @@
             </tr>
          </table>
       </unit>
-      <unit eId="anx_IV" kind="annex" eurlexAnchor="4">
+      <unit eId="anx_IV" kind="annex" eurlexAnchor="4" rank="1">
          <num>
             <t v="ANNEX IV"/>
          </num>

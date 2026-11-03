@@ -115,7 +115,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -134,7 +134,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -153,14 +153,18 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <p>
             <t v="Foodstuffs referred to in Annex I to Regulation (EC) No 509/2006:"/>
          </p>
-         <unit eId="anx/pnt_Class-2.3" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_Class-2.3"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <emphasis kind="b">
                   <t v="Class 2.3."/>
@@ -173,7 +177,7 @@
                <t v="&#xA;"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_Class-2.3/level_1" kind="level" depth="2">
+         <unit eId="anx/pnt_Class-2.3/level_1" kind="level" depth="2" rank="3">
             <heading>
                <t v="POLAND"/>
             </heading>

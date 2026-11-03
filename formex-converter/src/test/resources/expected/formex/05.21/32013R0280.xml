@@ -117,7 +117,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -125,7 +125,7 @@
             <t v="Annex A to Regulation (EC) No 62/2006 is replaced by the text set out in the Annex to this Regulation."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -191,12 +191,12 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <quotedStructure eId="anx/qstr_1">
-            <unit eId="anx/qstr_1/anx_A" kind="annex">
+            <unit eId="anx/qstr_1/anx_A" kind="annex" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="ANNEX A"/>

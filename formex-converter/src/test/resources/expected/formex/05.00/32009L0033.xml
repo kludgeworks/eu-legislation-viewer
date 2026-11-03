@@ -524,7 +524,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -539,7 +539,7 @@
             <t v=" and of certain pollutants, when purchasing road transport vehicles with the objectives of promoting and stimulating the market for clean and energy-efficient vehicles and improving the contribution of the transport sector to the environment, climate and energy policies of the Community."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -550,7 +550,7 @@
             <t v="Member States may exempt from the requirements laid down in this Directive contracts for the purchase of vehicles referred to in Article 2(3) of Directive 2007/46/EC, which are not subject to type approval or individual approval on their territory."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -583,7 +583,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -629,7 +629,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_5" kind="article">
+      <unit eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
@@ -734,7 +734,7 @@
             </list>
          </unit>
       </unit>
-      <unit eId="art_6" kind="article">
+      <unit eId="art_6" kind="article" rank="1">
          <num>
             <t v="Article 6"/>
          </num>
@@ -832,7 +832,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_7" kind="article">
+      <unit eId="art_7" kind="article" rank="1">
          <num>
             <t v="Article 7"/>
          </num>
@@ -843,7 +843,7 @@
             <t v="The Commission shall adapt to inflation and to technical progress the data for the calculation of the operational lifetime costs of road transport vehicles as set out in the Annex. Those measures, designed to amend non-essential elements of this Directive, shall be adopted in accordance with the regulatory procedure with scrutiny referred to in Article 9(2)."/>
          </p>
       </unit>
-      <unit eId="art_8" kind="article">
+      <unit eId="art_8" kind="article" rank="1">
          <num>
             <t v="Article 8"/>
          </num>
@@ -854,7 +854,7 @@
             <t v="The Commission shall facilitate and structure the exchange of knowledge and best practices between Member States on practices for promoting the purchase of clean and energy-efficient road transport vehicles by contracting authorities, contracting entities and operators referred to in Article 3."/>
          </p>
       </unit>
-      <unit eId="art_9" kind="article">
+      <unit eId="art_9" kind="article" rank="1">
          <num>
             <t v="Article 9"/>
          </num>
@@ -878,7 +878,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_10" kind="article">
+      <unit eId="art_10" kind="article" rank="1">
          <num>
             <t v="Article 10"/>
          </num>
@@ -919,7 +919,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_11" kind="article">
+      <unit eId="art_11" kind="article" rank="1">
          <num>
             <t v="Article 11"/>
          </num>
@@ -952,7 +952,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_12" kind="article">
+      <unit eId="art_12" kind="article" rank="1">
          <num>
             <t v="Article 12"/>
          </num>
@@ -967,7 +967,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="art_13" kind="article">
+      <unit eId="art_13" kind="article" rank="1">
          <num>
             <t v="Article 13"/>
          </num>
@@ -1203,7 +1203,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>

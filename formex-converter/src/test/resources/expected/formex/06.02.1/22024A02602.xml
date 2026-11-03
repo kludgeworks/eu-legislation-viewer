@@ -24,11 +24,11 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/subdivision_1" kind="subdivision">
+         <unit eId="art_1/subdivision_1" kind="subdivision" rank="2">
             <num>
                <t v="(1)"/>
             </num>
@@ -41,7 +41,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="art_1/subdivision_2" kind="subdivision">
+         <unit eId="art_1/subdivision_2" kind="subdivision" rank="2">
             <num>
                <t v="(2)"/>
             </num>
@@ -60,7 +60,7 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -88,11 +88,11 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
-         <unit eId="art_3/subdivision_1" kind="subdivision">
+         <unit eId="art_3/subdivision_1" kind="subdivision" rank="2">
             <num>
                <t v="(1)"/>
             </num>
@@ -136,7 +136,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_3/subdivision_2" kind="subdivision">
+         <unit eId="art_3/subdivision_2" kind="subdivision" rank="2">
             <num>
                <t v="(2)"/>
             </num>
@@ -148,11 +148,11 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
-         <unit eId="art_4/subdivision_1" kind="subdivision">
+         <unit eId="art_4/subdivision_1" kind="subdivision" rank="2">
             <num>
                <t v="(1)"/>
             </num>
@@ -163,7 +163,7 @@
                <t v="In order to achieve concentration and to ensure efficient implementation, in line with the overall objectives referred to in Article 1, and taking into account EU policies and country specific recommendations, as well as Partnership Agreements concluded between the Member States and the European Commission, the Kingdom of Norway shall negotiate with each Beneficiary State a Memorandum of Understanding in accordance with Article 9, paragraph 5."/>
             </p>
          </unit>
-         <unit eId="art_4/subdivision_2" kind="subdivision">
+         <unit eId="art_4/subdivision_2" kind="subdivision" rank="2">
             <num>
                <t v="(2)"/>
             </num>
@@ -175,11 +175,11 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_5" kind="article">
+      <unit eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
-         <unit eId="art_5/subdivision_1" kind="subdivision">
+         <unit eId="art_5/subdivision_1" kind="subdivision" rank="2">
             <num>
                <t v="(1)"/>
             </num>
@@ -190,7 +190,7 @@
                <t v="With respect to programmes under country specific allocations for which the Beneficiary States shall have implementation responsibility, the contribution from the Kingdom of Norway shall not exceed 85 % of programme cost, unless otherwise decided by the Kingdom of Norway."/>
             </p>
          </unit>
-         <unit eId="art_5/subdivision_2" kind="subdivision">
+         <unit eId="art_5/subdivision_2" kind="subdivision" rank="2">
             <num>
                <t v="(2)"/>
             </num>
@@ -201,7 +201,7 @@
                <t v="The applicable rules on State aid shall be complied with."/>
             </p>
          </unit>
-         <unit eId="art_5/subdivision_3" kind="subdivision">
+         <unit eId="art_5/subdivision_3" kind="subdivision" rank="2">
             <num>
                <t v="(3)"/>
             </num>
@@ -213,7 +213,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_6" kind="article">
+      <unit eId="art_6" kind="article" rank="1">
          <num>
             <t v="Article 6"/>
          </num>
@@ -401,7 +401,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_7" kind="article">
+      <unit eId="art_7" kind="article" rank="1">
          <num>
             <t v="Article 7"/>
          </num>
@@ -410,7 +410,7 @@
                <t v="Within the Norwegian Financial Mechanism, three funds shall be made available. They shall contribute to achieving the objectives of the Norwegian Financial Mechanism (2021–2028) as defined in Article 1, and to the thematic priorities referred to in Article 3. Norwegian entities can participate as partners in the funds."/>
             </p>
          </unit>
-         <unit eId="art_7/subdivision_1" kind="subdivision">
+         <unit eId="art_7/subdivision_1" kind="subdivision" rank="2">
             <num>
                <t v="(1)"/>
             </num>
@@ -428,7 +428,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_7/subdivision_2" kind="subdivision">
+         <unit eId="art_7/subdivision_2" kind="subdivision" rank="2">
             <num>
                <t v="(2)"/>
             </num>
@@ -439,7 +439,7 @@
                <t v="2 % of the total amount shall be set aside for a fund for capacity building and cooperation with international organisations and institutions, inter alia, the Council of Europe, the OECD and the European Union Agency for Fundamental Rights (FRA). This fund will promote the thematic priorities in the Beneficiary States."/>
             </p>
          </unit>
-         <unit eId="art_7/subdivision_3" kind="subdivision">
+         <unit eId="art_7/subdivision_3" kind="subdivision" rank="2">
             <num>
                <t v="(3)"/>
             </num>
@@ -451,11 +451,11 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_8" kind="article">
+      <unit eId="art_8" kind="article" rank="1">
          <num>
             <t v="Article 8"/>
          </num>
-         <unit eId="art_8/subdivision_1" kind="subdivision">
+         <unit eId="art_8/subdivision_1" kind="subdivision" rank="2">
             <num>
                <t v="(1)"/>
             </num>
@@ -466,7 +466,7 @@
                <t v="The financial contribution provided for in Article 1 shall be closely coordinated with the contribution from the EFTA States provided for by the EEA Financial Mechanism. In particular, the Kingdom of Norway shall ensure that the procedures and implementation modalities are essentially the same for both financial mechanisms."/>
             </p>
          </unit>
-         <unit eId="art_8/subdivision_2" kind="subdivision">
+         <unit eId="art_8/subdivision_2" kind="subdivision" rank="2">
             <num>
                <t v="(2)"/>
             </num>
@@ -478,14 +478,18 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_9" kind="article">
+      <unit eId="art_9" kind="article" rank="1">
          <num>
             <t v="Article 9"/>
          </num>
          <p>
             <t v="The following shall apply to the implementation of the Norwegian Financial Mechanism:"/>
          </p>
-         <unit eId="art_9/pnt_1" kind="level" depth="1" numbered="true">
+         <unit eId="art_9/pnt_1"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="(1)"/>
             </num>
@@ -496,7 +500,11 @@
                <t v="The objectives of the Norwegian Financial Mechanism referred to in Article 1 shall be pursued in a framework of close cooperation between the Beneficiary States and the Kingdom of Norway, respecting the values and principles and complying with the rights and obligations referred to in Article 1 paragraph 2."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_2" kind="level" depth="1" numbered="true">
+         <unit eId="art_9/pnt_2"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="(2)"/>
             </num>
@@ -507,7 +515,11 @@
                <t v="The highest degree of transparency, accountability and cost efficiency shall be applied in all implementation phases, together with respect for principles of good governance, partnership and multi-level governance, sustainable development, gender equality and non-discrimination."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_3" kind="level" depth="1" numbered="true">
+         <unit eId="art_9/pnt_3"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="(3)"/>
             </num>
@@ -518,7 +530,11 @@
                <t v="The Kingdom of Norway shall operate and be responsible for the implementation, including management and control, of the three funds set out in Article 7."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_4" kind="level" depth="1" numbered="true">
+         <unit eId="art_9/pnt_4"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="(4)"/>
             </num>
@@ -529,7 +545,11 @@
                <t v="The Kingdom of Norway, or an entity appointed by it, shall be responsible for the overall management of the Norwegian Financial Mechanism. Further provisions for the implementation of the Norwegian Financial Mechanism, including simplification measures aimed at securing efficiency and effectiveness in implementation, will be issued by the Kingdom of Norway after consultations with the Beneficiary States which may be assisted by the European Commission. The Kingdom of Norway shall endeavour to issue these provisions before the signing of the Memoranda of Understanding."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_5" kind="level" depth="1" numbered="true">
+         <unit eId="art_9/pnt_5"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="(5)"/>
             </num>
@@ -540,7 +560,11 @@
                <t v="The Kingdom of Norway shall negotiate with each Beneficiary State a Memorandum of Understanding concerning the respective country specific allocation, excluding the funds referred to in Article 7 and paragraph 3 of this article. The Memorandum of Understanding shall set out the programmes, the distribution of funds between programme areas, the structures for management and control and applicable conditions."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_6" kind="level" depth="1" numbered="true">
+         <unit eId="art_9/pnt_6"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="(6)"/>
             </num>
@@ -598,7 +622,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_9/pnt_7" kind="level" depth="1" numbered="true">
+         <unit eId="art_9/pnt_7"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="(7)"/>
             </num>
@@ -609,7 +637,11 @@
                <t v="The management costs of the Kingdom of Norway shall be covered by the total amount referred to in Article 2, and shall be specified in the provisions for the implementation referred to in paragraph 4 of this Article. Management costs for the Funds referred to in Article 7 will be covered by the amount allocated to the Funds."/>
             </p>
          </unit>
-         <unit eId="art_9/pnt_8" kind="level" depth="1" numbered="true">
+         <unit eId="art_9/pnt_8"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="(8)"/>
             </num>
@@ -621,7 +653,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_10" kind="article">
+      <unit eId="art_10" kind="article" rank="1">
          <num>
             <t v="Article 10"/>
          </num>
@@ -652,7 +684,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_11" kind="article">
+      <unit eId="art_11" kind="article" rank="1">
          <num>
             <t v="Article 11"/>
          </num>
@@ -681,7 +713,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>

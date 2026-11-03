@@ -122,14 +122,14 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="cpt_1" kind="division">
+      <unit eId="cpt_1" kind="division" rank="1">
          <num>
             <t v="CHAPTER 1"/>
          </num>
          <subheading>
             <t v="Objectives"/>
          </subheading>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -150,7 +150,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -159,14 +159,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="cpt_2" kind="division">
+      <unit eId="cpt_2" kind="division" rank="1">
          <num>
             <t v="CHAPTER 2"/>
          </num>
          <subheading>
             <t v="General Provisions"/>
          </subheading>
-         <unit eId="art_3" kind="article">
+         <unit eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -174,7 +174,7 @@
                <t v="Within the scope of this Agreement, and without prejudice to any special provisions contained therein, any discrimination on grounds of nationality shall be prohibited."/>
             </p>
          </unit>
-         <unit eId="art_4" kind="article">
+         <unit eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -182,7 +182,7 @@
                <t v="Within the scope of this Agreement and without prejudice to the provisions of Council Regulation (EEC) No 2407/92, as included in the Annex to this Agreement, there shall be no restrictions on the freedom of establishment of nationals of an EC Member State or Switzerland in the territory of any of these States. This shall also apply to the setting up of agencies, branches and subsidiaries by nationals of any EC Member State or Switzerland established in the territory of any of these States. Freedom of establishment shall include the right to take up and pursue activities as self-employed persons and to set up and manage undertakings, in particular companies or firms within the meaning of Article 5, paragraph 2, under the conditions laid down for its own nationals by the law of the country where such establishment is effected."/>
             </p>
          </unit>
-         <unit eId="art_5" kind="article">
+         <unit eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -206,7 +206,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_6" kind="article">
+         <unit eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
@@ -214,7 +214,7 @@
                <t v="Articles 4 and 5 shall not apply, as far as a Contracting Party is concerned, to activities which in that Contracting Party are connected, even occasionally, with the exercise of official authority."/>
             </p>
          </unit>
-         <unit eId="art_7" kind="article">
+         <unit eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
@@ -222,7 +222,7 @@
                <t v="Articles 4 and 5 and measures taken in pursuance thereof shall not prejudice the applicability of provisions laid down by law, regulation or administrative action providing for special treatment for foreign nationals on grounds of public policy, public security or public health."/>
             </p>
          </unit>
-         <unit eId="art_8" kind="article">
+         <unit eId="art_8" kind="article" rank="2">
             <num>
                <t v="Article 8"/>
             </num>
@@ -331,7 +331,7 @@
                </list>
             </unit>
          </unit>
-         <unit eId="art_9" kind="article">
+         <unit eId="art_9" kind="article" rank="2">
             <num>
                <t v="Article 9"/>
             </num>
@@ -380,7 +380,7 @@
                </list>
             </unit>
          </unit>
-         <unit eId="art_10" kind="article">
+         <unit eId="art_10" kind="article" rank="2">
             <num>
                <t v="Article 10"/>
             </num>
@@ -388,7 +388,7 @@
                <t v="All agreements, decisions and concerted practices, which have as their object or effect the prevention, restriction or distortion of competition, as well as abuses of a dominant position, which may only affect trade within Switzerland, shall be subject to Swiss law and remain under the competence of the Swiss authorities."/>
             </p>
          </unit>
-         <unit eId="art_11" kind="article">
+         <unit eId="art_11" kind="article" rank="2">
             <num>
                <t v="Article 11"/>
             </num>
@@ -409,7 +409,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_12" kind="article">
+         <unit eId="art_12" kind="article" rank="2">
             <num>
                <t v="Article 12"/>
             </num>
@@ -430,7 +430,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_13" kind="article">
+         <unit eId="art_13" kind="article" rank="2">
             <num>
                <t v="Article 13"/>
             </num>
@@ -503,7 +503,7 @@
                </list>
             </unit>
          </unit>
-         <unit eId="art_14" kind="article">
+         <unit eId="art_14" kind="article" rank="2">
             <num>
                <t v="Article 14"/>
             </num>
@@ -512,14 +512,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="cpt_3" kind="division">
+      <unit eId="cpt_3" kind="division" rank="1">
          <num>
             <t v="CHAPTER 3"/>
          </num>
          <subheading>
             <t v="Traffic Rights"/>
          </subheading>
-         <unit eId="art_15" kind="article">
+         <unit eId="art_15" kind="article" rank="2">
             <num>
                <t v="Article 15"/>
             </num>
@@ -572,7 +572,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_16" kind="article">
+         <unit eId="art_16" kind="article" rank="2">
             <num>
                <t v="Article 16"/>
             </num>
@@ -581,14 +581,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="cpt_4" kind="division">
+      <unit eId="cpt_4" kind="division" rank="1">
          <num>
             <t v="CHAPTER 4"/>
          </num>
          <subheading>
             <t v="Enforcement of the Agreement"/>
          </subheading>
-         <unit eId="art_17" kind="article">
+         <unit eId="art_17" kind="article" rank="2">
             <num>
                <t v="Article 17"/>
             </num>
@@ -596,7 +596,7 @@
                <t v="The Contracting Parties shall take all appropriate measures, whether general or particular, to ensure fulfilment of the obligations arising out of this Agreement and shall refrain from any measures which would jeopardise attainment of the objectives of this Agreement."/>
             </p>
          </unit>
-         <unit eId="art_18" kind="article">
+         <unit eId="art_18" kind="article" rank="2">
             <num>
                <t v="Article 18"/>
             </num>
@@ -625,7 +625,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_19" kind="article">
+         <unit eId="art_19" kind="article" rank="2">
             <num>
                <t v="Article 19"/>
             </num>
@@ -646,7 +646,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_20" kind="article">
+         <unit eId="art_20" kind="article" rank="2">
             <num>
                <t v="Article 20"/>
             </num>
@@ -655,14 +655,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="cpt_5" kind="division">
+      <unit eId="cpt_5" kind="division" rank="1">
          <num>
             <t v="CHAPTER 5"/>
          </num>
          <subheading>
             <t v="Joint Committee"/>
          </subheading>
-         <unit eId="art_21" kind="article">
+         <unit eId="art_21" kind="article" rank="2">
             <num>
                <t v="Article 21"/>
             </num>
@@ -711,7 +711,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_22" kind="article">
+         <unit eId="art_22" kind="article" rank="2">
             <num>
                <t v="Article 22"/>
             </num>
@@ -769,14 +769,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_6" kind="division">
+      <unit eId="cpt_6" kind="division" rank="1">
          <num>
             <t v="CHAPTER 6"/>
          </num>
          <subheading>
             <t v="New Legislation"/>
          </subheading>
-         <unit eId="art_23" kind="article">
+         <unit eId="art_23" kind="article" rank="2">
             <num>
                <t v="Article 23"/>
             </num>
@@ -835,14 +835,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_7" kind="division">
+      <unit eId="cpt_7" kind="division" rank="1">
          <num>
             <t v="CHAPTER 7"/>
          </num>
          <subheading>
             <t v="Third countries and international organisations"/>
          </subheading>
-         <unit eId="art_24" kind="article">
+         <unit eId="art_24" kind="article" rank="2">
             <num>
                <t v="Article 24"/>
             </num>
@@ -875,7 +875,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_25" kind="article">
+         <unit eId="art_25" kind="article" rank="2">
             <num>
                <t v="Article 25"/>
             </num>
@@ -926,7 +926,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_26" kind="article">
+         <unit eId="art_26" kind="article" rank="2">
             <num>
                <t v="Article 26"/>
             </num>
@@ -947,7 +947,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_27" kind="article">
+         <unit eId="art_27" kind="article" rank="2">
             <num>
                <t v="Article 27"/>
             </num>
@@ -969,14 +969,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_8" kind="division">
+      <unit eId="cpt_8" kind="division" rank="1">
          <num>
             <t v="CHAPTER 8"/>
          </num>
          <subheading>
             <t v="Final Provisions"/>
          </subheading>
-         <unit eId="art_28" kind="article">
+         <unit eId="art_28" kind="article" rank="2">
             <num>
                <t v="Article 28"/>
             </num>
@@ -984,7 +984,7 @@
                <t v="The representatives, experts and other servants of the Contracting Parties shall be required, even after their duties have ceased, not to disclose information, obtained in the framework of this Agreement, which is covered by the obligation of professional secrecy."/>
             </p>
          </unit>
-         <unit eId="art_29" kind="article">
+         <unit eId="art_29" kind="article" rank="2">
             <num>
                <t v="Article 29"/>
             </num>
@@ -992,7 +992,7 @@
                <t v="Each Contracting Party may bring a matter under dispute which concerns the interpretation or application of this Agreement before the Joint Committee. The latter shall endeavour to settle the dispute. The Joint Committee shall be provided with all information which might be of use in making possible an in-depth examination of the situation, with a view to finding an acceptable solution. To this end, the Joint Committee shall examine all possibilities of maintaining the good functioning of this Agreement. The provisions of this Article shall not apply to questions which are within the exclusive competence of the Court of Justice of the European Communities under Article 20."/>
             </p>
          </unit>
-         <unit eId="art_30" kind="article">
+         <unit eId="art_30" kind="article" rank="2">
             <num>
                <t v="Article 30"/>
             </num>
@@ -1013,7 +1013,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_31" kind="article">
+         <unit eId="art_31" kind="article" rank="2">
             <num>
                <t v="Article 31"/>
             </num>
@@ -1021,7 +1021,7 @@
                <t v="If one Contracting Party refuses to comply with any obligation under this Agreement, the other Contracting Party may, without prejudice to Article 22 and after having completed any other applicable procedure provided for in this Agreement, take appropriate temporary safeguard measures in order to maintain the balance of this Agreement."/>
             </p>
          </unit>
-         <unit eId="art_32" kind="article">
+         <unit eId="art_32" kind="article" rank="2">
             <num>
                <t v="Article 32"/>
             </num>
@@ -1029,7 +1029,7 @@
                <t v="The Annex to this Agreement shall form an integral part thereof."/>
             </p>
          </unit>
-         <unit eId="art_33" kind="article">
+         <unit eId="art_33" kind="article" rank="2">
             <num>
                <t v="Article 33"/>
             </num>
@@ -1037,7 +1037,7 @@
                <t v="Without prejudice to Article 16, this Agreement shall supersede the relevant provisions of bilateral arrangements in force between Switzerland on the one hand and EC Member States on the other hand concerning any matter covered by this Agreement and the Annex thereof."/>
             </p>
          </unit>
-         <unit eId="art_34" kind="article">
+         <unit eId="art_34" kind="article" rank="2">
             <num>
                <t v="Article 34"/>
             </num>
@@ -1045,7 +1045,7 @@
                <t v="This Agreement shall apply, on the one hand to the territories in which the Treaty establishing the European Community is applied and under the conditions laid down in that Treaty and, on the other, to the territory of Switzerland."/>
             </p>
          </unit>
-         <unit eId="art_35" kind="article">
+         <unit eId="art_35" kind="article" rank="2">
             <num>
                <t v="Article 35"/>
             </num>
@@ -1066,7 +1066,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_36" kind="article">
+         <unit eId="art_36" kind="article" rank="2">
             <num>
                <t v="Article 36"/>
             </num>
@@ -1298,7 +1298,7 @@
       </signature>
    </conclusions>
    <annexes>
-      <unit eId="anx_1" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_1" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="22024D2762"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -1342,7 +1342,11 @@
                </p>
             </unit>
          </list>
-         <unit eId="anx_1/pnt_1" kind="level" depth="1" numbered="true">
+         <unit eId="anx_1/pnt_1"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="1."/>
             </num>
@@ -1717,7 +1721,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_1/pnt_2" kind="level" depth="1" numbered="true">
+         <unit eId="anx_1/pnt_2"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="2."/>
             </num>
@@ -1927,7 +1935,11 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_3" kind="level" depth="1" numbered="true">
+         <unit eId="anx_1/pnt_3"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="3."/>
             </num>
@@ -4639,7 +4651,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_1/pnt_4" kind="level" depth="1" numbered="true">
+         <unit eId="anx_1/pnt_4"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="4."/>
             </num>
@@ -5086,7 +5102,11 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_5" kind="level" depth="1" numbered="true">
+         <unit eId="anx_1/pnt_5"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="5."/>
             </num>
@@ -6011,7 +6031,11 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_6" kind="level" depth="1" numbered="true">
+         <unit eId="anx_1/pnt_6"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="6."/>
             </num>
@@ -6056,7 +6080,11 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_7" kind="level" depth="1" numbered="true">
+         <unit eId="anx_1/pnt_7"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="7."/>
             </num>
@@ -6175,7 +6203,11 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_8" kind="level" depth="1" numbered="true">
+         <unit eId="anx_1/pnt_8"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="8."/>
             </num>
@@ -6204,7 +6236,11 @@
                <t v="(Article 14(1)(b), and Article 14(2)."/>
             </p>
          </unit>
-         <unit eId="anx_1/pnt_9" kind="level" depth="1" numbered="true">
+         <unit eId="anx_1/pnt_9"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="9."/>
             </num>
@@ -6233,7 +6269,7 @@
             </list>
          </unit>
       </unit>
-      <unit eId="anx_A" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_A" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="22024D2762"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -6244,7 +6280,7 @@
          <subheading>
             <t v="PROTOCOL ON THE PRIVILEGES AND IMMUNITIES OF THE EUROPEAN UNION"/>
          </subheading>
-         <unit eId="anx_A/level_1" kind="level" depth="1">
+         <unit eId="anx_A/level_1" kind="level" depth="1" rank="2">
             <heading>
                <t v="THE HIGH CONTRACTING PARTIES,"/>
             </heading>
@@ -6259,7 +6295,7 @@
                <t v="HAVE AGREED upon the following provisions, which shall be annexed to the Treaty on European Union, the Treaty on the Functioning of the European Union and the Treaty establishing the European Atomic Energy Community:"/>
             </p>
          </unit>
-         <unit eId="anx_A/level_CHAPTER-I" kind="level" depth="1">
+         <unit eId="anx_A/level_CHAPTER-I" kind="level" depth="1" rank="2">
             <num>
                <t v="CHAPTER I"/>
             </num>
@@ -6268,7 +6304,7 @@
                   <t v="PROPERTY, FUNDS, ASSETS AND OPERATIONS OF THE EUROPEAN UNION"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_A/level_CHAPTER-I/art_1" kind="article">
+            <unit eId="anx_A/level_CHAPTER-I/art_1" kind="article" rank="3">
                <num>
                   <t v="Article 1"/>
                </num>
@@ -6276,7 +6312,7 @@
                   <t v="The premises and buildings of the Union shall be inviolable. They shall be exempt from search, requisition, confiscation or expropriation. The property and assets of the Union shall not be the subject of any administrative or legal measure of constraint without the authorisation of the Court of Justice."/>
                </p>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-I/art_2" kind="article">
+            <unit eId="anx_A/level_CHAPTER-I/art_2" kind="article" rank="3">
                <num>
                   <t v="Article 2"/>
                </num>
@@ -6284,7 +6320,7 @@
                   <t v="The archives of the Union shall be inviolable."/>
                </p>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-I/art_3" kind="article">
+            <unit eId="anx_A/level_CHAPTER-I/art_3" kind="article" rank="3">
                <num>
                   <t v="Article 3"/>
                </num>
@@ -6304,7 +6340,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-I/art_4" kind="article">
+            <unit eId="anx_A/level_CHAPTER-I/art_4" kind="article" rank="3">
                <num>
                   <t v="Article 4"/>
                </num>
@@ -6320,7 +6356,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="anx_A/level_CHAPTER-II" kind="level" depth="1">
+         <unit eId="anx_A/level_CHAPTER-II" kind="level" depth="1" rank="2">
             <num>
                <t v="CHAPTER II"/>
             </num>
@@ -6332,7 +6368,7 @@
                   </emphasis>
                </emphasis>
             </subheading>
-            <unit eId="anx_A/level_CHAPTER-II/art_5" kind="article">
+            <unit eId="anx_A/level_CHAPTER-II/art_5" kind="article" rank="3">
                <num>
                   <t v="Article 5"/>
                </num>
@@ -6347,7 +6383,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-II/art_6" kind="article">
+            <unit eId="anx_A/level_CHAPTER-II/art_6" kind="article" rank="3">
                <num>
                   <t v="Article 6"/>
                </num>
@@ -6374,7 +6410,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="anx_A/level_CHAPTER-III" kind="level" depth="1">
+         <unit eId="anx_A/level_CHAPTER-III" kind="level" depth="1" rank="2">
             <num>
                <t v="CHAPTER III"/>
             </num>
@@ -6383,7 +6419,7 @@
                   <t v="MEMBERS OF THE EUROPEAN PARLIAMENT"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_A/level_CHAPTER-III/art_7" kind="article">
+            <unit eId="anx_A/level_CHAPTER-III/art_7" kind="article" rank="3">
                <num>
                   <t v="Article 7"/>
                </num>
@@ -6420,7 +6456,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-III/art_8" kind="article">
+            <unit eId="anx_A/level_CHAPTER-III/art_8" kind="article" rank="3">
                <num>
                   <t v="Article 8"/>
                </num>
@@ -6428,7 +6464,7 @@
                   <t v="Members of the European Parliament shall not be subject to any form of inquiry, detention or legal proceedings in respect of opinions expressed or votes cast by them in the performance of their duties."/>
                </p>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-III/art_9" kind="article">
+            <unit eId="anx_A/level_CHAPTER-III/art_9" kind="article" rank="3">
                <num>
                   <t v="Article 9"/>
                </num>
@@ -6471,7 +6507,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="anx_A/level_CHAPTER-IV" kind="level" depth="1">
+         <unit eId="anx_A/level_CHAPTER-IV" kind="level" depth="1" rank="2">
             <num>
                <t v="CHAPTER IV"/>
             </num>
@@ -6480,7 +6516,7 @@
                   <t v="REPRESENTATIVES OF MEMBER STATES TAKING PART IN THE WORK OF THE INSTITUTIONS OF THE EUROPEAN UNION"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_A/level_CHAPTER-IV/art_10" kind="article">
+            <unit eId="anx_A/level_CHAPTER-IV/art_10" kind="article" rank="3">
                <num>
                   <t v="Article 10"/>
                </num>
@@ -6496,7 +6532,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="anx_A/level_CHAPTER-V" kind="level" depth="1">
+         <unit eId="anx_A/level_CHAPTER-V" kind="level" depth="1" rank="2">
             <num>
                <t v="CHAPTER V"/>
             </num>
@@ -6505,7 +6541,7 @@
                   <t v="OFFICIALS AND OTHER SERVANTS OF THE EUROPEAN UNION"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_A/level_CHAPTER-V/art_11" kind="article">
+            <unit eId="anx_A/level_CHAPTER-V/art_11" kind="article" rank="3">
                <num>
                   <t v="Article 11"/>
                </num>
@@ -6565,7 +6601,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-V/art_12" kind="article">
+            <unit eId="anx_A/level_CHAPTER-V/art_12" kind="article" rank="3">
                <num>
                   <t v="Article 12"/>
                </num>
@@ -6580,7 +6616,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-V/art_13" kind="article">
+            <unit eId="anx_A/level_CHAPTER-V/art_13" kind="article" rank="3">
                <num>
                   <t v="Article 13"/>
                </num>
@@ -6600,7 +6636,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-V/art_14" kind="article">
+            <unit eId="anx_A/level_CHAPTER-V/art_14" kind="article" rank="3">
                <num>
                   <t v="Article 14"/>
                </num>
@@ -6608,7 +6644,7 @@
                   <t v="The European Parliament and the Council, acting by means of regulations in accordance with the ordinary legislative procedure and after consultation of the institutions concerned, shall lay down the scheme of social security benefits for officials and other servants of the Union."/>
                </p>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-V/art_15" kind="article">
+            <unit eId="anx_A/level_CHAPTER-V/art_15" kind="article" rank="3">
                <num>
                   <t v="Article 15"/>
                </num>
@@ -6624,7 +6660,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="anx_A/level_CHAPTER-VI" kind="level" depth="1">
+         <unit eId="anx_A/level_CHAPTER-VI" kind="level" depth="1" rank="2">
             <num>
                <t v="CHAPTER VI"/>
             </num>
@@ -6633,7 +6669,7 @@
                   <t v="PRIVILEGES AND IMMUNITIES OF MISSIONS OF THIRD COUNTRIES ACCREDITED TO THE EUROPEAN UNION"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_A/level_CHAPTER-VI/art_16" kind="article">
+            <unit eId="anx_A/level_CHAPTER-VI/art_16" kind="article" rank="3">
                <num>
                   <t v="Article 16"/>
                </num>
@@ -6642,7 +6678,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="anx_A/level_CHAPTER-VII" kind="level" depth="1">
+         <unit eId="anx_A/level_CHAPTER-VII" kind="level" depth="1" rank="2">
             <num>
                <t v="CHAPTER VII"/>
             </num>
@@ -6651,7 +6687,7 @@
                   <t v="GENERAL PROVISIONS"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_A/level_CHAPTER-VII/art_17" kind="article">
+            <unit eId="anx_A/level_CHAPTER-VII/art_17" kind="article" rank="3">
                <num>
                   <t v="Article 17"/>
                </num>
@@ -6666,7 +6702,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-VII/art_18" kind="article">
+            <unit eId="anx_A/level_CHAPTER-VII/art_18" kind="article" rank="3">
                <num>
                   <t v="Article 18"/>
                </num>
@@ -6674,7 +6710,7 @@
                   <t v="The institutions of the Union shall, for the purpose of applying this Protocol, cooperate with the responsible authorities of the Member States concerned."/>
                </p>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-VII/art_19" kind="article">
+            <unit eId="anx_A/level_CHAPTER-VII/art_19" kind="article" rank="3">
                <num>
                   <t v="Article 19"/>
                </num>
@@ -6682,7 +6718,7 @@
                   <t v="Articles 11 to 14 and Article 17 shall apply to Members of the Commission."/>
                </p>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-VII/art_20" kind="article">
+            <unit eId="anx_A/level_CHAPTER-VII/art_20" kind="article" rank="3">
                <num>
                   <t v="Article 20"/>
                </num>
@@ -6690,7 +6726,7 @@
                   <t v="Articles 11 to 14 and Article 17 shall apply to the Judges, the Advocates-General, the Registrars and the Assistant Rapporteurs of the Court of Justice of the European Union, without prejudice to the provisions of Article 3 of the Protocol on the Statute of the Court of Justice of the European Union relating to immunity from legal proceedings of Judges and Advocates-General."/>
                </p>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-VII/art_21" kind="article">
+            <unit eId="anx_A/level_CHAPTER-VII/art_21" kind="article" rank="3">
                <num>
                   <t v="Article 21"/>
                </num>
@@ -6705,7 +6741,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_A/level_CHAPTER-VII/art_22" kind="article">
+            <unit eId="anx_A/level_CHAPTER-VII/art_22" kind="article" rank="3">
                <num>
                   <t v="Article 22"/>
                </num>
@@ -6722,7 +6758,7 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="app_3" kind="annex" eurlexAnchor="1">
+      <unit eId="app_3" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="22024D2762"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -6787,7 +6823,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="anx_B" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_B" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="22024D2762"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -6798,7 +6834,7 @@
          <subheading>
             <t v="FINANCIAL CONTROL AS REGARDS SWISS PARTICIPANTS IN ACTIVITIES OF THE EUROPEAN AVIATION AGREEMENT"/>
          </subheading>
-         <unit eId="anx_B/art_1" kind="article">
+         <unit eId="anx_B/art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -6809,7 +6845,7 @@
                <t v="The Agency and the Commission shall communicate directly with all persons or entities established in Switzerland and participating in activities of the Agency, as contractors, participants in Agency programmes, recipients of payments from the Agency or the Community budget, or subcontractors. Such persons may send directly to the Commission and to the Agency all relevant information and documentation which they are required to submit on the basis of the instruments referred to in this Decision and of contracts or agreements concluded and any decisions taken pursuant to them."/>
             </p>
          </unit>
-         <unit eId="anx_B/art_2" kind="article">
+         <unit eId="anx_B/art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -6867,7 +6903,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="anx_B/art_3" kind="article">
+         <unit eId="anx_B/art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -6918,7 +6954,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="anx_B/art_4" kind="article">
+         <unit eId="anx_B/art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -6942,7 +6978,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="anx_B/art_5" kind="article">
+         <unit eId="anx_B/art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -6953,7 +6989,7 @@
                <t v="Information communicated or acquired in any form whatsoever pursuant to this Annex will be covered by professional confidentiality and protected in the same way as similar information is protected by the national legislation of Switzerland and by the corresponding provisions applicable to the Community institutions. Such information shall not be communicated to persons other than those within the Community institutions, in the Member States, or in Switzerland whose functions require them to know it, nor may it be used for purposes other than to ensure effective protection of the financial interests of the Contracting Parties."/>
             </p>
          </unit>
-         <unit eId="anx_B/art_6" kind="article">
+         <unit eId="anx_B/art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
@@ -6971,7 +7007,7 @@
                <noteRef href="#note_20" marker="20"/>
             </p>
          </unit>
-         <unit eId="anx_B/art_7" kind="article">
+         <unit eId="anx_B/art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
@@ -6995,7 +7031,7 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="att_1" kind="attachment">
+      <unit eId="att_1" kind="attachment" rank="1">
          <heading>
             <t v="FINAL ACT"/>
          </heading>
@@ -7212,7 +7248,7 @@
          </p>
          <figure src="L_2002114EN.01008803.tif" content="other"/>
          <figure src="L_2002114EN.01008804.tif" content="other"/>
-         <unit eId="att_1/att_1" kind="attachment">
+         <unit eId="att_1/att_1" kind="attachment" rank="2">
             <heading>
                <t v="JOINT DECLARATION"/>
                <eol/>
@@ -7222,7 +7258,7 @@
                <t v="The Contracting Parties acknowledge that it is desirable to take the steps necessary to ensure coherence between their mutual air transport relations and other wider air transport agreements based on the same principles."/>
             </p>
          </unit>
-         <unit eId="att_1/att_2" kind="attachment">
+         <unit eId="att_1/att_2" kind="attachment" rank="2">
             <heading>
                <t v="JOINT DECLARATION"/>
                <eol/>
@@ -7232,7 +7268,7 @@
                <t v="The European Community and the Swiss Confederation declare their intention of undertaking negotiations to conclude agreements in areas of common interest such as the updating of Protocol 2 to the 1972 Free Trade Agreement and Swiss participation in certain Community training, youth, media, statistical and environmental programmes. Preparatory work for these negotiations should proceed rapidly once the current bilateral negotiations have been concluded."/>
             </p>
          </unit>
-         <unit eId="att_1/att_3" kind="attachment">
+         <unit eId="att_1/att_3" kind="attachment" rank="2">
             <heading>
                <t v="DECLARATION"/>
                <eol/>
@@ -7270,7 +7306,7 @@
                <t v="In the case of other committees dealing with areas covered by these agreements in which Switzerland has adopted either the acquis communautaire or equivalent measures, the Commission will consult Swiss experts by the method specified in Article 100 of the EEA Agreement."/>
             </p>
          </unit>
-         <unit eId="att_1/att_4" kind="attachment">
+         <unit eId="att_1/att_4" kind="attachment" rank="2">
             <heading>
                <t v="DECLARATION BY SWITZERLAND"/>
                <eol/>

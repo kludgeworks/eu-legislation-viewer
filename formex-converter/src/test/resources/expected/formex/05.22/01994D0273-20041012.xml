@@ -136,7 +136,7 @@
                      action="deleted"
                      location="AR:2"
                      marker="O002001M001000"/>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
             </num>
@@ -144,7 +144,7 @@
                <t v="The model of the certificate provided for in Article 10 (3) (a) (vii) of Directive 92/65/EEC is established in the Annex."/>
             </p>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="1">
             <num>
                <t v="Article 2"/>
             </num>
@@ -160,7 +160,7 @@
                      action="deleted"
                      location="AR:2"
                      marker="O002001M001000"/>
-         <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <provenance amendingAct="32001D0298"
                         action="replaced"
                         location="AR:1;PA:3 .AND. AX:III"

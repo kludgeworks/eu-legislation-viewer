@@ -44,7 +44,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <provenance amendingAct="32016O0032"
                      action="replaced"
                      location="AR:1;PT:1"
@@ -106,7 +106,7 @@
             </list>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -171,7 +171,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <provenance amendingAct="32016O0032"
                      action="replaced"
                      location="AR:1;PT:3"
@@ -307,7 +307,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -360,7 +360,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_5" kind="article">
+      <unit eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
@@ -508,7 +508,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_6" kind="article">
+      <unit eId="art_6" kind="article" rank="1">
          <num>
             <t v="Article 6"/>
          </num>
@@ -536,7 +536,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_7" kind="article">
+      <unit eId="art_7" kind="article" rank="1">
          <num>
             <t v="Article 7"/>
          </num>
@@ -549,7 +549,7 @@
       </unit>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="32016O0032"
                      action="replaced"
                      location="AR:1;PT:6 .AND. AX:0"

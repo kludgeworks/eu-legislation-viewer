@@ -146,7 +146,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -156,7 +156,7 @@
             <t v=" tonnes of rye held by it."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -189,7 +189,7 @@
             </list>
          </unit>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -197,7 +197,7 @@
             <t v="Notwithstanding Article 13(4) of Regulation (EEC) No 2131/93 the tender security is set at EUR 10 per tonne."/>
          </p>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -254,7 +254,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_5" kind="article">
+      <unit eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
@@ -262,7 +262,7 @@
             <t v="Within two hours of the expiry of the time limit for the submission of tenders, the German intervention agency shall notify the Commission of tenders received. They must be sent by electronic mail in accordance with the form set out in the Annex."/>
          </p>
       </unit>
-      <unit eId="art_6" kind="article">
+      <unit eId="art_6" kind="article" rank="1">
          <num>
             <t v="Article 6"/>
          </num>
@@ -277,7 +277,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_7" kind="article">
+      <unit eId="art_7" kind="article" rank="1">
          <num>
             <t v="Article 7"/>
          </num>
@@ -296,7 +296,7 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>

@@ -40,7 +40,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -101,7 +101,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <provenance amendingAct="32021D1208"
                      action="replaced"
                      location="AR:1;PT:2"
@@ -126,7 +126,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <provenance amendingAct="32021D1208"
                      action="replaced"
                      location="AR:1;PT:3"
@@ -164,7 +164,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -227,7 +227,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_4a" kind="article">
+      <unit eId="art_4a" kind="article" rank="1">
          <provenance amendingAct="32018D0599"
                      action="inserted"
                      location="AR:1;PT:2"
@@ -243,7 +243,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="art_5" kind="article">
+      <unit eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
@@ -270,7 +270,7 @@
             </unit>
          </deleted>
       </unit>
-      <unit eId="art_6" kind="article">
+      <unit eId="art_6" kind="article" rank="1">
          <num>
             <t v="Article 6"/>
          </num>
@@ -282,7 +282,7 @@
             <t v=", shall be met by the Commission from the general budget of the European Union."/>
          </p>
       </unit>
-      <unit eId="art_7" kind="article">
+      <unit eId="art_7" kind="article" rank="1">
          <num>
             <t v="Article 7"/>
          </num>
@@ -292,7 +292,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="art_8" kind="article">
+      <unit eId="art_8" kind="article" rank="1">
          <num>
             <t v="Article 8"/>
          </num>
@@ -313,7 +313,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_9" kind="article">
+      <unit eId="art_9" kind="article" rank="1">
          <num>
             <t v="Article 9"/>
          </num>
@@ -328,14 +328,18 @@
                      action="deleted"
                      location="AR:1;PT:6"
                      marker="O002001M007000"/>
-         <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <num>
                <t v="ANNEX"/>
             </num>
             <subheading>
                <t v="Procedures to be followed to establish the amount of net revenue to be allocated to the Research Fund for Coal and Steel"/>
             </subheading>
-            <unit eId="anx/pnt_1" kind="level" depth="1" numbered="true">
+            <unit eId="anx/pnt_1"
+                  kind="level"
+                  depth="1"
+                  numbered="true"
+                  rank="2">
                <num>
                   <t v="1."/>
                </num>
@@ -346,7 +350,11 @@
                   <t v="Net revenue which may be used to finance research projects corresponds to the annual net result of the ECSC in liquidation and subsequently, when liquidation has been completed, to the annual net result of the Assets of the Research Fund for Coal and Steel. The method employed consists of establishing the funding for coal and steel research for year n+2 when producing the balance sheet for year n, taking into account half of the increase or decrease in the net result in relation to the last level of funding adopted for coal and steel research."/>
                </p>
             </unit>
-            <unit eId="anx/pnt_2" kind="level" depth="1" numbered="true">
+            <unit eId="anx/pnt_2"
+                  kind="level"
+                  depth="1"
+                  numbered="true"
+                  rank="2">
                <num>
                   <t v="2."/>
                </num>
@@ -408,7 +416,11 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx/pnt_3" kind="level" depth="1" numbered="true">
+            <unit eId="anx/pnt_3"
+                  kind="level"
+                  depth="1"
+                  numbered="true"
+                  rank="2">
                <num>
                   <t v="3."/>
                </num>

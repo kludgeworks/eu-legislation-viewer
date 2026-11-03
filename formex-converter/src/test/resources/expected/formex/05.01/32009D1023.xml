@@ -113,7 +113,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -128,7 +128,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -136,7 +136,7 @@
             <t v="The declaration attached to this Decision shall be approved on behalf of the European Union."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -199,7 +199,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="att_1" kind="attachment">
+      <unit eId="att_1" kind="attachment" rank="1">
          <heading>
             <emphasis kind="uc">
                <t v="Agreement"/>
@@ -299,7 +299,7 @@
          <p>
             <t v="HAVE DECIDED TO CONCLUDE THIS AGREEMENT:"/>
          </p>
-         <unit eId="att_1/art_1" kind="article">
+         <unit eId="att_1/art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -331,7 +331,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="att_1/art_2" kind="article">
+         <unit eId="att_1/art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -372,7 +372,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="att_1/art_3" kind="article">
+         <unit eId="att_1/art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -396,7 +396,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="att_1/art_4" kind="article">
+         <unit eId="att_1/art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -407,7 +407,7 @@
                <t v="Any dispute between either Iceland or Norway and a Member State regarding the interpretation or the application of this Agreement or of any of the provisions referred to in Article 1 and amendments thereto may be referred by a Party to the dispute to a meeting of representatives of the governments of the Member States and of Iceland and Norway, with a view to its speedy settlement."/>
             </p>
          </unit>
-         <unit eId="att_1/art_5" kind="article">
+         <unit eId="att_1/art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -470,7 +470,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="att_1/art_6" kind="article">
+         <unit eId="att_1/art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
@@ -481,7 +481,7 @@
                <t v="The Contracting Parties agree to carry out a common review of this Agreement no later than five years after its entry into force. The review shall in particular address the practical implementation, interpretation and development of the Agreement and shall also include issues such as the consequences of development of the European Union relating to the subject-matter of this Agreement."/>
             </p>
          </unit>
-         <unit eId="att_1/art_7" kind="article">
+         <unit eId="att_1/art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
@@ -521,7 +521,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="att_1/art_8" kind="article">
+         <unit eId="att_1/art_8" kind="article" rank="2">
             <num>
                <t v="Article 8"/>
             </num>
@@ -616,7 +616,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="att_1/art_9" kind="article">
+         <unit eId="att_1/art_9" kind="article" rank="2">
             <num>
                <t v="Article 9"/>
             </num>
@@ -627,7 +627,7 @@
                <t v="Accession by new Member States to the European Union shall create rights and obligations under this Agreement between those new Member States and Iceland and Norway."/>
             </p>
          </unit>
-         <unit eId="att_1/art_10" kind="article">
+         <unit eId="att_1/art_10" kind="article" rank="2">
             <num>
                <t v="Article 10"/>
             </num>
@@ -651,7 +651,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="att_1/art_11" kind="article">
+         <unit eId="att_1/art_11" kind="article" rank="2">
             <num>
                <t v="Article 11"/>
             </num>
@@ -924,7 +924,7 @@
                </p>
             </note>
          </notes>
-         <unit eId="att_1/att_1" kind="attachment">
+         <unit eId="att_1/att_1" kind="attachment" rank="2">
             <heading>
                <t v="DECLARATION TO BE ADOPTED AT THE OCCASION OF THE SIGNATURE OF THE AGREEMENT"/>
             </heading>

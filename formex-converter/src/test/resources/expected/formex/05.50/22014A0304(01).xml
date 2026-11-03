@@ -27,7 +27,7 @@
    </preface>
    <body/>
    <annexes>
-      <unit eId="let_1" kind="letter">
+      <unit eId="let_1" kind="letter" rank="1">
          <num>
             <t v="A."/>
          </num>
@@ -153,7 +153,7 @@
          </p>
          <figure src="L_2014064EN.01000202.tif" content="signature"/>
       </unit>
-      <unit eId="let_2" kind="letter">
+      <unit eId="let_2" kind="letter" rank="1">
          <num>
             <t v="B."/>
          </num>

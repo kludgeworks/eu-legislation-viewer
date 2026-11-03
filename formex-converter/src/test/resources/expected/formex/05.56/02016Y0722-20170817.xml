@@ -26,7 +26,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -34,7 +34,7 @@
             <t v="For the purposes of Article 138 of Regulation (EU) No 575/2013, the EBA confirms that the quality of the unsolicited credit assessments of the ECAIs set out in the Annex does not differ from the quality of the solicited credit assessments of those ECAIs."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -48,7 +48,7 @@
       </unit>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>

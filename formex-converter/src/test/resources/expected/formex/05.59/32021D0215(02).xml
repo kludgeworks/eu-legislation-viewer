@@ -107,7 +107,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_Sole-Article" kind="article">
+      <unit eId="art_Sole-Article" kind="article" rank="1">
          <num>
             <t v="Sole Article"/>
          </num>

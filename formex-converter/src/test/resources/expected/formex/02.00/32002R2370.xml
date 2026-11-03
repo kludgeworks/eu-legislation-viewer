@@ -162,14 +162,14 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="tis_I" kind="division">
+      <unit eId="tis_I" kind="division" rank="1">
          <num>
             <t v="TITLE I"/>
          </num>
          <heading>
             <t v="SUBJECT MATTER AND ELIGIBILITY"/>
          </heading>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -180,7 +180,7 @@
                <t v="An emergency Community measure to assist Member States to achieve additional reductions in fishing effort resulting from recovery plans adopted by the Council is hereby instituted for the period from 2003 to 2006. The measure shall consist of a special incentive to provide Member States with funds to co-finance their additional needs to scrap fishing vessels affected by recovery plans."/>
             </p>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -212,7 +212,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_3" kind="article">
+         <unit eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -224,14 +224,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="tis_II" kind="division">
+      <unit eId="tis_II" kind="division" rank="1">
          <num>
             <t v="TITLE II"/>
          </num>
          <heading>
             <t v="YEAR 2003"/>
          </heading>
-         <unit eId="art_4" kind="article">
+         <unit eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -246,7 +246,7 @@
                <t v=") for their expenditure incurred under Article 3. The financial contribution shall be calculated in accordance with the rates set out in Table 3, Group 1 of Annex IV to Regulation (EC) No 2792/1999."/>
             </p>
          </unit>
-         <unit eId="art_5" kind="article">
+         <unit eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -259,7 +259,7 @@
                <t v=" a plan of their proposed decommissioning expenditure for the year 2003, under this emergency Community measure. The Commission shall proceed with the commitment of the global annual amount available in the budget for this emergency Community measure."/>
             </p>
          </unit>
-         <unit eId="art_6" kind="article">
+         <unit eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
@@ -298,14 +298,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="tis_III" kind="division">
+      <unit eId="tis_III" kind="division" rank="1">
          <num>
             <t v="TITLE III"/>
          </num>
          <heading>
             <t v="PERIOD 2004-2006"/>
          </heading>
-         <unit eId="art_7" kind="article">
+         <unit eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
@@ -314,14 +314,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="tis_IV" kind="division">
+      <unit eId="tis_IV" kind="division" rank="1">
          <num>
             <t v="TITLE IV"/>
          </num>
          <heading>
             <t v="IMPLEMENTATION AND ENTRY INTO FORCE"/>
          </heading>
-         <unit eId="art_8" kind="article">
+         <unit eId="art_8" kind="article" rank="2">
             <num>
                <t v="Article 8"/>
             </num>
@@ -336,7 +336,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="art_9" kind="article">
+         <unit eId="art_9" kind="article" rank="2">
             <num>
                <t v="Article 9"/>
             </num>

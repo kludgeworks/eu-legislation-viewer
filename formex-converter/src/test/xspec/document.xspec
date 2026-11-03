@@ -280,4 +280,30 @@
     <x:expect label="keeps the subtitle" test="$x:result/*:preface/*:longTitle/*:p[3]/*:t/@v = 'on products excluded from the scope'"/>
   </x:scenario>
 
+  <x:scenario label="Titles in the outline">
+    <x:context xmlns="">
+      <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
+        <INFO.CONSLEG CONSLEG.REF="2015R0001" START.DATE="20260101" END.DATE="99999999"/>
+        <CONS.DOC><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+          <ENACTING.TERMS>
+            <DIVISION><TITLE><TI><P>CHAPTER I</P></TI><STI><P>General provisions</P></STI></TITLE>
+              <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART>
+                <PARAG IDENTIFIER="001.001"><NO.PARAG>1.</NO.PARAG><ALINEA>first:<LIST TYPE="alpha"><ITEM><NP><NO.P>(a)</NO.P><TXT>x</TXT></NP></ITEM></LIST></ALINEA></PARAG>
+              </ARTICLE>
+            </DIVISION>
+          </ENACTING.TERMS>
+          <CONS.ANNEX><TITLE><TI><P>ANNEX</P></TI></TITLE><CONTENTS>
+            <GR.SEQ LEVEL="1"><TITLE><TI><P>PART A</P></TI></TITLE>
+              <GR.SEQ LEVEL="2"><TITLE><TI><NP><NO.P>1.</NO.P><TXT>Scope</TXT></NP></TI></TITLE>
+                <GR.SEQ LEVEL="3"><TITLE><TI><NP><NO.P>1.1.</NO.P><TXT>Unless otherwise stated</TXT></NP></TI></TITLE></GR.SEQ></GR.SEQ></GR.SEQ>
+          </CONTENTS></CONS.ANNEX>
+        </CONS.DOC>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="rank a chapter, then its article, an annex, then its levels each under the one before it the source nests less deep"
+              test="deep-equal($x:result//*:unit[@rank] ! (@kind || ' ' || @rank), ('division 1', 'article 2', 'annex 1', 'level 2', 'level 3', 'level 4'))"/>
+    <x:expect label="a paragraph's or a point's number isn't a title"
+              test="empty($x:result//*:unit[@kind = ('paragraph', 'point')]/@rank)"/>
+  </x:scenario>
+
 </x:description>

@@ -90,7 +90,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -98,7 +98,7 @@
             <t v="The entity listed in the Annex to this Decision shall be added to the list set out in Annex I to Decision 2011/782/CFSP."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -112,11 +112,11 @@
       </unit>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/level_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="ENTITY REFERRED TO IN ARTICLE 1"/>

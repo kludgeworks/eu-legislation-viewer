@@ -66,7 +66,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -77,7 +77,7 @@
             <t v=":"/>
          </p>
          <quotedStructure eId="art_1/qstr_1">
-            <unit eId="art_1/qstr_1/cpt_1a" kind="division">
+            <unit eId="art_1/qstr_1/cpt_1a" kind="division" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="Chapter 1a"/>
@@ -85,7 +85,7 @@
                <subheading>
                   <t v="PRIOR DETERMINATION AS TO WHETHER APPEALS UNDER ARTICLE 58a OF THE STATUTE SHOULD BE ALLOWED TO PROCEED"/>
                </subheading>
-               <unit eId="art_1/qstr_1/art_170a" kind="article">
+               <unit eId="art_1/qstr_1/art_170a" kind="article" rank="3">
                   <num>
                      <t v="Article 170a"/>
                   </num>
@@ -117,7 +117,7 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="art_1/qstr_1/art_170b" kind="article">
+               <unit eId="art_1/qstr_1/art_170b" kind="article" rank="3">
                   <num>
                      <t v="Article 170b"/>
                   </num>
@@ -169,7 +169,7 @@
             </unit>
          </quotedStructure>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>

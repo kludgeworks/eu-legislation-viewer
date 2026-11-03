@@ -68,7 +68,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -83,7 +83,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -91,7 +91,7 @@
             <t v="The President of the Council is hereby authorized to designate the person empowered to sign the Agreement so that it shall be binding on the Community."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -149,13 +149,13 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="att_1" kind="attachment">
+      <unit eId="att_1" kind="attachment" rank="1">
          <heading>
             <t v="AGREEMENT"/>
             <eol/>
             <t v="in the form of an exchange of letters amending Annex A to Protocol 1 to the Agreement between the European Economic Community and the Swiss Confederation"/>
          </heading>
-         <unit eId="att_1/let_1" kind="letter">
+         <unit eId="att_1/let_1" kind="letter" rank="2">
             <heading>
                <emphasis kind="i">
                   <t v="Letter No 1"/>
@@ -198,7 +198,7 @@
                </emphasis>
             </p>
          </unit>
-         <unit eId="att_1/let_2" kind="letter">
+         <unit eId="att_1/let_2" kind="letter" rank="2">
             <heading>
                <emphasis kind="i">
                   <t v="Letter No 2"/>

@@ -50,7 +50,8 @@
                <unit eId="cor_1/new/qstr_1/pnt_3"
                      kind="level"
                      depth="1"
-                     numbered="true">
+                     numbered="true"
+                     rank="1">
                   <num>
                      <t v="‘"/>
                      <t v="3."/>

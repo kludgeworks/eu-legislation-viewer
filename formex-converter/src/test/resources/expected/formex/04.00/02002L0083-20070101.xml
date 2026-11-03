@@ -624,14 +624,14 @@
       <p>
          <t v="HAVE ADOPTED THIS DIRECTIVE:"/>
       </p>
-      <unit eId="tis_I" kind="division">
+      <unit eId="tis_I" kind="division" rank="1">
          <num>
             <t v="TITLE I"/>
          </num>
          <subheading>
             <t v="DEFINITIONS AND SCOPE"/>
          </subheading>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -940,7 +940,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -1057,7 +1057,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_3" kind="article">
+         <unit eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -1192,14 +1192,14 @@
             </list>
          </unit>
       </unit>
-      <unit eId="tis_II" kind="division">
+      <unit eId="tis_II" kind="division" rank="1">
          <num>
             <t v="TITLE II"/>
          </num>
          <subheading>
             <t v="THE TAKING UP OF THE BUSINESS OF LIFE ASSURANCE"/>
          </subheading>
-         <unit eId="art_4" kind="article">
+         <unit eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -1235,7 +1235,7 @@
                </list>
             </unit>
          </unit>
-         <unit eId="art_5" kind="article">
+         <unit eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -1271,7 +1271,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="art_6" kind="article">
+         <unit eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
@@ -1877,7 +1877,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_7" kind="article">
+         <unit eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
@@ -1951,7 +1951,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_8" kind="article">
+         <unit eId="art_8" kind="article" rank="2">
             <num>
                <t v="Article 8"/>
             </num>
@@ -1969,7 +1969,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_9" kind="article">
+         <unit eId="art_9" kind="article" rank="2">
             <num>
                <t v="Article 9"/>
             </num>
@@ -1992,7 +1992,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_9a" kind="article">
+         <unit eId="art_9a" kind="article" rank="2">
             <provenance amendingAct="32005L0068"
                         action="inserted"
                         location="AR:60;PT:2"
@@ -2081,21 +2081,21 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="tis_III" kind="division">
+      <unit eId="tis_III" kind="division" rank="1">
          <num>
             <t v="TITLE III"/>
          </num>
          <subheading>
             <t v="CONDITIONS GOVERNING THE BUSINESS OF ASSURANCE"/>
          </subheading>
-         <unit eId="tis_III/cpt_1" kind="division">
+         <unit eId="tis_III/cpt_1" kind="division" rank="2">
             <num>
                <t v="CHAPTER 1"/>
             </num>
             <subheading>
                <t v="PRINCIPLES AND METHODS OF FINANCIAL SUPERVISION"/>
             </subheading>
-            <unit eId="art_10" kind="article">
+            <unit eId="art_10" kind="article" rank="3">
                <num>
                   <t v="Article 10"/>
                </num>
@@ -2138,7 +2138,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_11" kind="article">
+            <unit eId="art_11" kind="article" rank="3">
                <num>
                   <t v="Article 11"/>
                </num>
@@ -2149,7 +2149,7 @@
                   <t v="The Member State of the branch shall provide that, where an assurance undertaking authorised in another Member State carries on business through a branch, the competent authorities of the home Member State may, after having first informed the competent authorities of the Member State of the branch, carry out themselves, or through the intermediary of persons they appoint for that purpose, on-the-spot verification of the information necessary to ensure the financial supervision of the undertaking. The authorities of the Member State of the branch may participate in that verification."/>
                </p>
             </unit>
-            <unit eId="art_12" kind="article">
+            <unit eId="art_12" kind="article" rank="3">
                <num>
                   <t v="Article 12"/>
                </num>
@@ -2160,7 +2160,7 @@
                   <t v="Member States may not require assurance undertakings to cede part of their underwriting of activities listed in Article 2 to an organisation or organisations designated by national regulations."/>
                </p>
             </unit>
-            <unit eId="art_13" kind="article">
+            <unit eId="art_13" kind="article" rank="3">
                <num>
                   <t v="Article 13"/>
                </num>
@@ -2246,7 +2246,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_14" kind="article">
+            <unit eId="art_14" kind="article" rank="3">
                <num>
                   <t v="Article 14"/>
                </num>
@@ -2301,7 +2301,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_15" kind="article">
+            <unit eId="art_15" kind="article" rank="3">
                <num>
                   <t v="Article 15"/>
                </num>
@@ -2374,7 +2374,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_16" kind="article">
+            <unit eId="art_16" kind="article" rank="3">
                <num>
                   <t v="Article 16"/>
                </num>
@@ -2645,7 +2645,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_17" kind="article">
+            <unit eId="art_17" kind="article" rank="3">
                <num>
                   <t v="Article 17"/>
                </num>
@@ -2710,7 +2710,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_18" kind="article">
+            <unit eId="art_18" kind="article" rank="3">
                <num>
                   <t v="Article 18"/>
                </num>
@@ -2841,7 +2841,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_19" kind="article">
+            <unit eId="art_19" kind="article" rank="3">
                <num>
                   <t v="Article 19"/>
                </num>
@@ -2913,14 +2913,14 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="tis_III/cpt_2" kind="division">
+         <unit eId="tis_III/cpt_2" kind="division" rank="2">
             <num>
                <t v="CHAPTER 2"/>
             </num>
             <subheading>
                <t v="RULES RELATING TO TECHNICAL PROVISIONS AND THEIR REPRESENTATION"/>
             </subheading>
-            <unit eId="art_20" kind="article">
+            <unit eId="art_20" kind="article" rank="3">
                <num>
                   <t v="Article 20"/>
                </num>
@@ -3194,7 +3194,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_21" kind="article">
+            <unit eId="art_21" kind="article" rank="3">
                <num>
                   <t v="Article 21"/>
                </num>
@@ -3212,7 +3212,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_22" kind="article">
+            <unit eId="art_22" kind="article" rank="3">
                <num>
                   <t v="Article 22"/>
                </num>
@@ -3223,7 +3223,7 @@
                   <t v="The assets covering the technical provisions shall take account of the type of business carried on by an assurance undertaking in such a way as to secure the safety, yield and marketability of its investments, which the undertaking shall ensure are diversified and adequately spread."/>
                </p>
             </unit>
-            <unit eId="art_23" kind="article">
+            <unit eId="art_23" kind="article" rank="3">
                <num>
                   <t v="Article 23"/>
                </num>
@@ -3523,7 +3523,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_24" kind="article">
+            <unit eId="art_24" kind="article" rank="3">
                <num>
                   <t v="Article 24"/>
                </num>
@@ -3693,7 +3693,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_25" kind="article">
+            <unit eId="art_25" kind="article" rank="3">
                <num>
                   <t v="Article 25"/>
                </num>
@@ -3733,7 +3733,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_26" kind="article">
+            <unit eId="art_26" kind="article" rank="3">
                <num>
                   <t v="Article 26"/>
                </num>
@@ -3758,14 +3758,14 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="tis_III/cpt_3" kind="division">
+         <unit eId="tis_III/cpt_3" kind="division" rank="2">
             <num>
                <t v="CHAPTER 3"/>
             </num>
             <subheading>
                <t v="RULES RELATING TO THE SOLVENCY MARGIN AND TO THE GUARANTEE FUND"/>
             </subheading>
-            <unit eId="art_27" kind="article">
+            <unit eId="art_27" kind="article" rank="3">
                <num>
                   <t v="Article 27"/>
                </num>
@@ -4164,7 +4164,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_28" kind="article">
+            <unit eId="art_28" kind="article" rank="3">
                <num>
                   <t v="Article 28"/>
                </num>
@@ -4332,7 +4332,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="art_28a" kind="article">
+            <unit eId="art_28a" kind="article" rank="3">
                <provenance amendingAct="32005L0068"
                            action="inserted"
                            location="AR:60;PT:10"
@@ -4400,7 +4400,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_29" kind="article">
+            <unit eId="art_29" kind="article" rank="3">
                <num>
                   <t v="Article 29"/>
                </num>
@@ -4431,7 +4431,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_30" kind="article">
+            <unit eId="art_30" kind="article" rank="3">
                <num>
                   <t v="Article 30"/>
                </num>
@@ -4473,7 +4473,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_31" kind="article">
+            <unit eId="art_31" kind="article" rank="3">
                <num>
                   <t v="Article 31"/>
                </num>
@@ -4506,14 +4506,14 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="tis_III/cpt_4" kind="division">
+         <unit eId="tis_III/cpt_4" kind="division" rank="2">
             <num>
                <t v="CHAPTER 4"/>
             </num>
             <subheading>
                <t v="CONTRACT LAW AND CONDITIONS OF ASSURANCE"/>
             </subheading>
-            <unit eId="art_32" kind="article">
+            <unit eId="art_32" kind="article" rank="3">
                <num>
                   <t v="Article 32"/>
                </num>
@@ -4575,7 +4575,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_33" kind="article">
+            <unit eId="art_33" kind="article" rank="3">
                <num>
                   <t v="Article 33"/>
                </num>
@@ -4586,7 +4586,7 @@
                   <t v="The Member State of the commitment shall not prevent a policy holder from concluding a contract with an assurance undertaking authorised under the conditions of Article 4 as long as that does not conflict with legal provisions protecting the general good in the Member State of the commitment."/>
                </p>
             </unit>
-            <unit eId="art_34" kind="article">
+            <unit eId="art_34" kind="article" rank="3">
                <num>
                   <t v="Article 34"/>
                </num>
@@ -4611,7 +4611,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_35" kind="article">
+            <unit eId="art_35" kind="article" rank="3">
                <num>
                   <t v="Article 35"/>
                </num>
@@ -4647,7 +4647,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_36" kind="article">
+            <unit eId="art_36" kind="article" rank="3">
                <num>
                   <t v="Article 36"/>
                </num>
@@ -4688,14 +4688,14 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="tis_III/cpt_5" kind="division">
+         <unit eId="tis_III/cpt_5" kind="division" rank="2">
             <num>
                <t v="CHAPTER 5"/>
             </num>
             <subheading>
                <t v="ASSURANCE UNDERTAKINGS IN DIFFICULTY OR IN AN IRREGULAR SITUATION"/>
             </subheading>
-            <unit eId="art_37" kind="article">
+            <unit eId="art_37" kind="article" rank="3">
                <num>
                   <t v="Article 37"/>
                </num>
@@ -4779,7 +4779,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_38" kind="article">
+            <unit eId="art_38" kind="article" rank="3">
                <num>
                   <t v="Article 38"/>
                </num>
@@ -4887,7 +4887,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_39" kind="article">
+            <unit eId="art_39" kind="article" rank="3">
                <num>
                   <t v="Article 39"/>
                </num>
@@ -4954,14 +4954,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="tis_IV" kind="division">
+      <unit eId="tis_IV" kind="division" rank="1">
          <num>
             <t v="TITLE IV"/>
          </num>
          <subheading>
             <t v="PROVISIONS RELATING TO RIGHT OF ESTABLISHMENT AND FREEDOM TO PROVIDE SERVICES"/>
          </subheading>
-         <unit eId="art_40" kind="article">
+         <unit eId="art_40" kind="article" rank="2">
             <num>
                <t v="Article 40"/>
             </num>
@@ -5067,7 +5067,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_41" kind="article">
+         <unit eId="art_41" kind="article" rank="2">
             <num>
                <t v="Article 41"/>
             </num>
@@ -5078,7 +5078,7 @@
                <t v="Any assurance undertaking that intends to carry on business for the first time in one or more Member States under the freedom to provide services shall first inform the competent authorities of the home Member State, indicating the nature of the commitments it proposes to cover."/>
             </p>
          </unit>
-         <unit eId="art_42" kind="article">
+         <unit eId="art_42" kind="article" rank="2">
             <num>
                <t v="Article 42"/>
             </num>
@@ -5143,7 +5143,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_43" kind="article">
+         <unit eId="art_43" kind="article" rank="2">
             <num>
                <t v="Article 43"/>
             </num>
@@ -5154,7 +5154,7 @@
                <t v="Any change which an assurance undertaking intends to make to the information referred to in Article 41 shall be subject to the procedure provided for in Articles 41 and 42."/>
             </p>
          </unit>
-         <unit eId="art_44" kind="article">
+         <unit eId="art_44" kind="article" rank="2">
             <num>
                <t v="Article 44"/>
             </num>
@@ -5165,7 +5165,7 @@
                <t v="The competent authorities of the Member State of the branch or the Member State of the provision of services may require that the information which they are authorised under this Directive to request with regard to the business of assurance undertakings operating in the territory of that State shall be supplied to them in the official language or languages of that State."/>
             </p>
          </unit>
-         <unit eId="art_45" kind="article">
+         <unit eId="art_45" kind="article" rank="2">
             <num>
                <t v="Article 45"/>
             </num>
@@ -5176,7 +5176,7 @@
                <t v="The Member State of the branch or of the provision of services shall not lay down provisions requiring the prior approval or systematic notification of general and special policy conditions, scales of premiums, technical bases used in particular for calculating scales of premiums and technical provisions, forms and other printed documents which an assurance undertaking intends to use in its dealings with policy holders. For the purpose of verifying compliance with national provisions concerning assurance contracts, it may require an assurance undertaking that proposes to carry on assurance business within its territory, under the right of establishment or the freedom to provide services, to effect only non-systematic notification of those policy conditions and other printed documents without that requirement constituting a prior condition for an assurance undertaking to carry on its business."/>
             </p>
          </unit>
-         <unit eId="art_46" kind="article">
+         <unit eId="art_46" kind="article" rank="2">
             <num>
                <t v="Article 46"/>
             </num>
@@ -5263,7 +5263,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_47" kind="article">
+         <unit eId="art_47" kind="article" rank="2">
             <num>
                <t v="Article 47"/>
             </num>
@@ -5274,7 +5274,7 @@
                <t v="Nothing in this Directive shall prevent assurance undertakings with head offices in other Member States from advertising their services through all available means of communication in the Member State of the branch or Member State of the provision of services, subject to any rules governing the form and content of such advertising adopted in the interest of the general good."/>
             </p>
          </unit>
-         <unit eId="art_48" kind="article">
+         <unit eId="art_48" kind="article" rank="2">
             <num>
                <t v="Article 48"/>
             </num>
@@ -5285,7 +5285,7 @@
                <t v="Should an assurance undertaking be wound up, commitments arising out of contracts underwritten through a branch or under the freedom to provide services shall be met in the same way as those arising out of that undertaking's other assurance contracts, without distinction as to nationality as far as the lives assured and the beneficiaries are concerned."/>
             </p>
          </unit>
-         <unit eId="art_49" kind="article">
+         <unit eId="art_49" kind="article" rank="2">
             <num>
                <t v="Article 49"/>
             </num>
@@ -5303,7 +5303,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_50" kind="article">
+         <unit eId="art_50" kind="article" rank="2">
             <num>
                <t v="Article 50"/>
             </num>
@@ -5340,14 +5340,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="tis_V" kind="division">
+      <unit eId="tis_V" kind="division" rank="1">
          <num>
             <t v="TITLE V"/>
          </num>
          <subheading>
             <t v="RULES APPLICABLE TO AGENCIES OR BRANCHES ESTABLISHED WITHIN THE COMMUNITY AND BELONGING TO UNDERTAKINGS WHOSE HEAD OFFICES ARE OUTSIDE THE COMMUNITY"/>
          </subheading>
-         <unit eId="art_51" kind="article">
+         <unit eId="art_51" kind="article" rank="2">
             <num>
                <t v="Article 51"/>
             </num>
@@ -5508,7 +5508,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_52" kind="article">
+         <unit eId="art_52" kind="article" rank="2">
             <num>
                <t v="Article 52"/>
             </num>
@@ -5582,7 +5582,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_53" kind="article">
+         <unit eId="art_53" kind="article" rank="2">
             <num>
                <t v="Article 53"/>
             </num>
@@ -5645,7 +5645,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="art_54" kind="article">
+         <unit eId="art_54" kind="article" rank="2">
             <num>
                <t v="Article 54"/>
             </num>
@@ -5668,7 +5668,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_55" kind="article">
+         <unit eId="art_55" kind="article" rank="2">
             <num>
                <t v="Article 55"/>
             </num>
@@ -5712,7 +5712,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_56" kind="article">
+         <unit eId="art_56" kind="article" rank="2">
             <num>
                <t v="Article 56"/>
             </num>
@@ -5785,7 +5785,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_57" kind="article">
+         <unit eId="art_57" kind="article" rank="2">
             <num>
                <t v="Article 57"/>
             </num>
@@ -5797,14 +5797,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="tis_VI" kind="division">
+      <unit eId="tis_VI" kind="division" rank="1">
          <num>
             <t v="TITLE VI"/>
          </num>
          <subheading>
             <t v="RULES APPLICABLE TO SUBSIDIARIES OF PARENT UNDERTAKINGS GOVERNED BY THE LAWS OF A THIRD COUNTRY AND TO THE ACQUISITIONS OF HOLDINGS BY SUCH PARENT UNDERTAKINGS"/>
          </subheading>
-         <unit eId="art_58" kind="article">
+         <unit eId="art_58" kind="article" rank="2">
             <provenance amendingAct="32005L0001"
                         action="replaced"
                         location="AR:8;PT:2"
@@ -5840,7 +5840,7 @@
                <t v="When the authorisation referred to in point (a) is granted to the direct or indirect subsidiary of one or more parent undertakings governed by the law of third countries, the structure of the group shall be specified in the notification which the competent authorities shall address to the Commission and to the other competent authorities."/>
             </p>
          </unit>
-         <unit eId="art_59" kind="article">
+         <unit eId="art_59" kind="article" rank="2">
             <num>
                <t v="Article 59"/>
             </num>
@@ -5956,14 +5956,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="tis_VII" kind="division">
+      <unit eId="tis_VII" kind="division" rank="1">
          <num>
             <t v="TITLE VII"/>
          </num>
          <subheading>
             <t v="TRANSITIONAL AND OTHER PROVISIONS"/>
          </subheading>
-         <unit eId="art_60" kind="article">
+         <unit eId="art_60" kind="article" rank="2">
             <num>
                <t v="Article 60"/>
             </num>
@@ -5998,7 +5998,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_61" kind="article">
+         <unit eId="art_61" kind="article" rank="2">
             <num>
                <t v="Article 61"/>
             </num>
@@ -6050,14 +6050,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="tis_VIII" kind="division">
+      <unit eId="tis_VIII" kind="division" rank="1">
          <num>
             <t v="TITLE VIII"/>
          </num>
          <subheading>
             <t v="FINAL PROVISIONS"/>
          </subheading>
-         <unit eId="art_62" kind="article">
+         <unit eId="art_62" kind="article" rank="2">
             <num>
                <t v="Article 62"/>
             </num>
@@ -6089,7 +6089,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_63" kind="article">
+         <unit eId="art_63" kind="article" rank="2">
             <num>
                <t v="Article 63"/>
             </num>
@@ -6102,7 +6102,7 @@
                <t v=", on the development of the market in assurance and operations transacted under conditions of freedom to provide services."/>
             </p>
          </unit>
-         <unit eId="art_64" kind="article">
+         <unit eId="art_64" kind="article" rank="2">
             <num>
                <t v="Article 64"/>
             </num>
@@ -6155,7 +6155,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_65" kind="article">
+         <unit eId="art_65" kind="article" rank="2">
             <num>
                <t v="Article 65"/>
             </num>
@@ -6200,7 +6200,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_66" kind="article">
+         <unit eId="art_66" kind="article" rank="2">
             <num>
                <t v="Article 66"/>
             </num>
@@ -6235,7 +6235,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_67" kind="article">
+         <unit eId="art_67" kind="article" rank="2">
             <num>
                <t v="Article 67"/>
             </num>
@@ -6246,7 +6246,7 @@
                <t v="Member States shall ensure that decisions taken in respect of an assurance undertaking under laws, regulations and administrative provisions adopted in accordance with this Directive may be subject to the right to apply to the courts."/>
             </p>
          </unit>
-         <unit eId="art_68" kind="article">
+         <unit eId="art_68" kind="article" rank="2">
             <num>
                <t v="Article 68"/>
             </num>
@@ -6272,7 +6272,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_69" kind="article">
+         <unit eId="art_69" kind="article" rank="2">
             <num>
                <t v="Article 69"/>
             </num>
@@ -6337,7 +6337,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_70" kind="article">
+         <unit eId="art_70" kind="article" rank="2">
             <num>
                <t v="Article 70"/>
             </num>
@@ -6348,7 +6348,7 @@
                <t v="The Member States shall communicate to the Commission the texts of the main provisions of national law which they adopt in the field covered by this Directive."/>
             </p>
          </unit>
-         <unit eId="art_71" kind="article">
+         <unit eId="art_71" kind="article" rank="2">
             <num>
                <t v="Article 71"/>
             </num>
@@ -6374,7 +6374,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_72" kind="article">
+         <unit eId="art_72" kind="article" rank="2">
             <num>
                <t v="Article 72"/>
             </num>
@@ -6398,7 +6398,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_73" kind="article">
+         <unit eId="art_73" kind="article" rank="2">
             <num>
                <t v="Article 73"/>
             </num>
@@ -6413,7 +6413,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="art_74" kind="article">
+         <unit eId="art_74" kind="article" rank="2">
             <num>
                <t v="Article 74"/>
             </num>
@@ -6427,7 +6427,7 @@
       </unit>
    </body>
    <annexes>
-      <unit eId="anx_I" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX I"/>
          </num>
@@ -6507,7 +6507,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="anx_II" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_II" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX II"/>
          </num>
@@ -6563,7 +6563,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="anx_III" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_III" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX III"/>
          </num>
@@ -6573,7 +6573,11 @@
          <p>
             <t v="The following information, which is to be communicated to the policy holder before the contract is concluded (A) or during the term of the contract (B), must be provided in a clear and accurate manner, in writing, in an official language of the Member State of the commitment.However, such information may be in another language if the policy holder so requests and the law of the Member State so permits or the policy holder is free to choose the law applicable."/>
          </p>
-         <unit eId="anx_III/pnt_A" kind="level" depth="1" numbered="true">
+         <unit eId="anx_III/pnt_A"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="A."/>
             </num>
@@ -6761,7 +6765,11 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_III/pnt_B" kind="level" depth="1" numbered="true">
+         <unit eId="anx_III/pnt_B"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="B."/>
             </num>
@@ -6823,11 +6831,15 @@
             </table>
          </unit>
       </unit>
-      <unit eId="anx_IV" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_IV" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX IV"/>
          </num>
-         <unit eId="anx_IV/pnt_1" kind="level" depth="1" numbered="true">
+         <unit eId="anx_IV/pnt_1"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="1."/>
             </num>
@@ -6840,7 +6852,11 @@
                <t v=", Member States may conclude cooperation agreements, providing for exchanges of information, with the competent authorities of third countries only if the information disclosed is subject to guarantees of professional secrecy at least equivalent to those referred to in Article 16 of this Directive."/>
             </p>
          </unit>
-         <unit eId="anx_IV/pnt_2" kind="level" depth="1" numbered="true">
+         <unit eId="anx_IV/pnt_2"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="2."/>
             </num>
@@ -6867,7 +6883,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_IV/pnt_3" kind="level" depth="1" numbered="true">
+         <unit eId="anx_IV/pnt_3"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="3."/>
             </num>
@@ -6877,7 +6897,11 @@
                <t v=", Member States shall apply the following provisions:&#xA;"/>
             </heading>
          </unit>
-         <unit eId="anx_IV/pnt_A" kind="level" depth="2" numbered="true">
+         <unit eId="anx_IV/pnt_A"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="A."/>
             </num>
@@ -7114,7 +7138,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_IV/pnt_B" kind="level" depth="2" numbered="true">
+         <unit eId="anx_IV/pnt_B"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="B."/>
             </num>
@@ -7232,7 +7260,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_IV/pnt_C" kind="level" depth="2" numbered="true">
+         <unit eId="anx_IV/pnt_C"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="C."/>
             </num>
@@ -7306,11 +7338,11 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="anx_V" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_V" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX V"/>
          </num>
-         <unit eId="anx_V/level_PART-A" kind="level" depth="1">
+         <unit eId="anx_V/level_PART-A" kind="level" depth="1" rank="2">
             <num>
                <t v="PART A"/>
             </num>
@@ -7318,7 +7350,10 @@
                <t v="Repealed Directives together with their successive amendments (referred to in Article 72)"/>
             </subheading>
          </unit>
-         <unit eId="anx_V/level_PART-A/level_1" kind="level" depth="2">
+         <unit eId="anx_V/level_PART-A/level_1"
+               kind="level"
+               depth="2"
+               rank="3">
             <heading>
                <t v="Council Directive 79/267/EEC"/>
             </heading>
@@ -7345,7 +7380,10 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_V/level_PART-A/level_2" kind="level" depth="2">
+         <unit eId="anx_V/level_PART-A/level_2"
+               kind="level"
+               depth="2"
+               rank="3">
             <heading>
                <t v="Second Council Directive 90/619/EEC"/>
             </heading>
@@ -7353,7 +7391,10 @@
                <t v="Third Council Directive 92/96/EEC"/>
             </p>
          </unit>
-         <unit eId="anx_V/level_PART-A/level_3" kind="level" depth="2">
+         <unit eId="anx_V/level_PART-A/level_3"
+               kind="level"
+               depth="2"
+               rank="3">
             <heading>
                <t v="Third Council Directive 92/96/EEC"/>
             </heading>
@@ -7375,7 +7416,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_V/level_PART-B" kind="level" depth="1">
+         <unit eId="anx_V/level_PART-B" kind="level" depth="1" rank="2">
             <num>
                <t v="PART B"/>
             </num>
@@ -7575,7 +7616,7 @@
             </table>
          </unit>
       </unit>
-      <unit eId="anx_VI" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_VI" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX VI"/>
          </num>

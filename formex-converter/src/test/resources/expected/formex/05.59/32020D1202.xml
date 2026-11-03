@@ -71,7 +71,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/division_1" kind="division">
+         <unit eId="pbl_1/division_1" kind="division" rank="1">
             <num>
                <t v="1."/>
             </num>
@@ -124,7 +124,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="pbl_1/division_2" kind="division">
+         <unit eId="pbl_1/division_2" kind="division" rank="1">
             <num>
                <t v="2."/>
             </num>
@@ -194,7 +194,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -228,7 +228,7 @@
             <t v="), originating in the People’s Republic of China, is terminated."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -236,7 +236,7 @@
             <t v="The TARIC codes mentioned in Article 1 or any corresponding future codes shall remain open for a period of 24 months as from the publication of this Decision to allow the Commission to follow the statistical trends of imports of pins and staples in accordance with Article 56(5) of Regulation (EU) No 952/2013."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>

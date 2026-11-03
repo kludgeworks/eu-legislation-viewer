@@ -143,14 +143,14 @@
                      action="deleted"
                      location="AR:18;PA:2"
                      marker="O002001M001000"/>
-         <unit eId="tis_I" kind="division">
+         <unit eId="tis_I" kind="division" rank="1">
             <num>
                <t v="TITLE I"/>
             </num>
             <subheading>
                <t v="Aid for setting up and functioning"/>
             </subheading>
-            <unit eId="art_1" kind="article">
+            <unit eId="art_1" kind="article" rank="2">
                <num>
                   <t v="Article 1"/>
                </num>
@@ -178,7 +178,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="art_2" kind="article">
+            <unit eId="art_2" kind="article" rank="2">
                <num>
                   <t v="Article 2"/>
                </num>
@@ -202,7 +202,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="art_3" kind="article">
+            <unit eId="art_3" kind="article" rank="2">
                <num>
                   <t v="Article 3"/>
                </num>
@@ -226,7 +226,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="art_4" kind="article">
+            <unit eId="art_4" kind="article" rank="2">
                <num>
                   <t v="Article 4"/>
                </num>
@@ -250,7 +250,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="art_5" kind="article">
+            <unit eId="art_5" kind="article" rank="2">
                <num>
                   <t v="Article 5"/>
                </num>
@@ -271,7 +271,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_6" kind="article">
+            <unit eId="art_6" kind="article" rank="2">
                <provenance amendingAct="31977R2254"
                            action="inserted"
                            location="TO"
@@ -294,7 +294,7 @@
                      action="deleted"
                      location="TO"
                      marker="O001001M002000"/>
-         <unit eId="tis_II" kind="division">
+         <unit eId="tis_II" kind="division" rank="1">
             <num>
                <t v="TITLE II"/>
             </num>
@@ -303,7 +303,7 @@
                            action="deleted"
                            location="TO"
                            marker="O001001M003000"/>
-               <unit eId="art_7" kind="article">
+               <unit eId="art_7" kind="article" rank="2">
                   <num>
                      <t v="Article 7"/>
                   </num>
@@ -314,7 +314,7 @@
                            action="deleted"
                            location="TO"
                            marker="O001001M004000"/>
-               <unit eId="art_8" kind="article">
+               <unit eId="art_8" kind="article" rank="2">
                   <num>
                      <t v="Article 8"/>
                   </num>
@@ -325,7 +325,7 @@
                            action="deleted"
                            location="TO"
                            marker="O001001M005000"/>
-               <unit eId="art_9" kind="article">
+               <unit eId="art_9" kind="article" rank="2">
                   <num>
                      <t v="Article 9"/>
                   </num>
@@ -336,7 +336,7 @@
                            action="deleted"
                            location="TO"
                            marker="O001001M006000"/>
-               <unit eId="art_10" kind="article">
+               <unit eId="art_10" kind="article" rank="2">
                   <num>
                      <t v="Article 10"/>
                   </num>
@@ -347,7 +347,7 @@
                            action="deleted"
                            location="TO"
                            marker="O001001M007000"/>
-               <unit eId="art_11" kind="article">
+               <unit eId="art_11" kind="article" rank="2">
                   <num>
                      <t v="Article 11"/>
                   </num>
@@ -358,7 +358,7 @@
                            action="deleted"
                            location="TO"
                            marker="O001001M008000"/>
-               <unit eId="art_12" kind="article">
+               <unit eId="art_12" kind="article" rank="2">
                   <num>
                      <t v="Article 12"/>
                   </num>
@@ -371,14 +371,14 @@
                      action="deleted"
                      location="AR:18;PA:2"
                      marker="O002001M001000"/>
-         <unit eId="tis_III" kind="division">
+         <unit eId="tis_III" kind="division" rank="1">
             <num>
                <t v="TITLE III"/>
             </num>
             <subheading>
                <t v="General provisions"/>
             </subheading>
-            <unit eId="art_13" kind="article">
+            <unit eId="art_13" kind="article" rank="2">
                <num>
                   <t v="Article 13"/>
                </num>
@@ -386,7 +386,7 @@
                   <t v="When the first request for reimbursement is forwarded, the Member State concerned shall communicate to the Commission a certificate stating the dates when the group was set up and recognized."/>
                </p>
             </unit>
-            <unit eId="art_14" kind="article">
+            <unit eId="art_14" kind="article" rank="2">
                <num>
                   <t v="Article 14"/>
                </num>
@@ -396,7 +396,7 @@
                   <t v=" of 21 April 1970 on the financing of the common agricultural policy."/>
                </p>
             </unit>
-            <unit eId="art_15" kind="article">
+            <unit eId="art_15" kind="article" rank="2">
                <num>
                   <t v="Article 15"/>
                </num>

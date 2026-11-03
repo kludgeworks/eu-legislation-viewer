@@ -103,7 +103,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -111,7 +111,7 @@
             <t v="The name contained in the Annex to this Regulation is hereby entered in the register."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -129,14 +129,18 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <p>
             <t v="Agricultural products and foodstuffs listed in Annex I(I) to Regulation (EU) No 1151/2012:"/>
          </p>
-         <unit eId="anx/pnt_Class-2.3" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_Class-2.3"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <changed amendingAct="32014R0012R(01)"
                         action="replaced"
@@ -158,7 +162,7 @@
                </changed>
             </heading>
          </unit>
-         <unit eId="anx/pnt_Class-2.3/level_1" kind="level" depth="2">
+         <unit eId="anx/pnt_Class-2.3/level_1" kind="level" depth="2" rank="3">
             <heading>
                <t v="LATVIA"/>
             </heading>

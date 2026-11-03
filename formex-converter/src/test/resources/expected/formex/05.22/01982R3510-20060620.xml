@@ -174,7 +174,7 @@
                      action="deleted"
                      location="AR:2"
                      marker="O004001M001000"/>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
             </num>
@@ -196,7 +196,7 @@
                <t v=" shall be as listed in the Annex hereto."/>
             </p>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="1">
             <num>
                <t v="Article 2"/>
             </num>
@@ -223,7 +223,7 @@
                      action="deleted"
                      location="AR:2"
                      marker="O004001M001000"/>
-         <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <provenance amendingAct="31992R3899"
                         action="replaced"
                         location="AR:1 .AND. AX:0"

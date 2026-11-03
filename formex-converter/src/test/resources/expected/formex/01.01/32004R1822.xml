@@ -93,7 +93,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -101,7 +101,7 @@
             <t v="Import licences for rice against applications submitted during the first five working days of October 2004 pursuant to Regulation (EC) No 638/2003 and notified to the Commission shall be issued for the quantities applied for reduced, where appropriate, by the percentages set out in the Annex hereto."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -177,7 +177,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>

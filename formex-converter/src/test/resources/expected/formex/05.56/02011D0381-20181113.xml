@@ -81,7 +81,7 @@
                      action="deleted"
                      location="AR:6"
                      marker="O002001M001000"/>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
             </num>
@@ -135,7 +135,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="1">
             <num>
                <t v="Article 2"/>
             </num>
@@ -226,7 +226,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_3" kind="article">
+         <unit eId="art_3" kind="article" rank="1">
             <num>
                <t v="Article 3"/>
             </num>
@@ -238,7 +238,7 @@
                <t v=" as defined in Article 1 of this Decision and shall comply with the criteria as well as the related assessment and verification requirements set out in the Annex to this Decision."/>
             </p>
          </unit>
-         <unit eId="art_4" kind="article">
+         <unit eId="art_4" kind="article" rank="1">
             <provenance amendingAct="32015D0877"
                         action="replaced"
                         location="AR:3"
@@ -256,7 +256,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="art_5" kind="article">
+         <unit eId="art_5" kind="article" rank="1">
             <num>
                <t v="Article 5"/>
             </num>
@@ -272,7 +272,7 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="art_6" kind="article">
+         <unit eId="art_6" kind="article" rank="1">
             <num>
                <t v="Article 6"/>
             </num>
@@ -280,7 +280,7 @@
                <t v="Decision 2005/360/EC is repealed."/>
             </p>
          </unit>
-         <unit eId="art_7" kind="article">
+         <unit eId="art_7" kind="article" rank="1">
             <num>
                <t v="Article 7"/>
             </num>
@@ -319,7 +319,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_8" kind="article">
+         <unit eId="art_8" kind="article" rank="1">
             <num>
                <t v="Article 8"/>
             </num>
@@ -335,18 +335,18 @@
                      action="deleted"
                      location="AR:6"
                      marker="O002001M001000"/>
-         <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <num>
                <t v="ANNEX"/>
             </num>
-            <unit eId="anx/level_1" kind="level" depth="1">
+            <unit eId="anx/level_1" kind="level" depth="1" rank="2">
                <heading>
                   <emphasis kind="b">
                      <t v="FRAMEWORK"/>
                   </emphasis>
                </heading>
             </unit>
-            <unit eId="anx/level_1/level_1" kind="level" depth="2">
+            <unit eId="anx/level_1/level_1" kind="level" depth="2" rank="3">
                <heading>
                   <emphasis kind="b">
                      <t v="The aims of the criteria"/>
@@ -356,7 +356,7 @@
                   <t v="These criteria aim in particular at promoting products that have a reduced impact on the water and soil during its use and contain a large fraction of biobased material."/>
                </p>
             </unit>
-            <unit eId="anx/level_2" kind="level" depth="1">
+            <unit eId="anx/level_2" kind="level" depth="1" rank="2">
                <heading>
                   <emphasis kind="b">
                      <t v="CRITERIA"/>
@@ -419,7 +419,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx/level_2/level_1" kind="level" depth="2">
+            <unit eId="anx/level_2/level_1" kind="level" depth="2" rank="3">
                <heading>
                   <emphasis kind="b">
                      <t v="Assessment and verification requirements"/>
@@ -429,7 +429,8 @@
             <unit eId="anx/level_2/level_1/pnt_a"
                   kind="level"
                   depth="3"
-                  numbered="true">
+                  numbered="true"
+                  rank="4">
                <num>
                   <t v="(a)"/>
                </num>
@@ -461,7 +462,8 @@
             <unit eId="anx/level_2/level_1/pnt_b"
                   kind="level"
                   depth="3"
-                  numbered="true">
+                  numbered="true"
+                  rank="4">
                <num>
                   <t v="(b)"/>
                </num>
@@ -495,7 +497,7 @@
                   <t v="In addition the total fraction of the stated substances where the formulated criteria 3 and 4 do not apply shall remain below 0,5 % (w/w)."/>
                </p>
             </unit>
-            <unit eId="anx/level_3" kind="level" depth="1">
+            <unit eId="anx/level_3" kind="level" depth="1" rank="2">
                <heading>
                   <emphasis kind="b">
                      <t v="EU ECOLABEL CRITERIA"/>
@@ -505,7 +507,8 @@
             <unit eId="anx/pnt_Criterion-1"
                   kind="level"
                   depth="2"
-                  numbered="true">
+                  numbered="true"
+                  rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 1 –"/>
@@ -520,7 +523,8 @@
             <unit eId="anx/pnt_Criterion-1/pnt_a"
                   kind="level"
                   depth="3"
-                  numbered="true">
+                  numbered="true"
+                  rank="4">
                <num>
                   <t v="(a)"/>
                </num>
@@ -1105,7 +1109,8 @@
             <unit eId="anx/pnt_Criterion-1/pnt_b"
                   kind="level"
                   depth="3"
-                  numbered="true">
+                  numbered="true"
+                  rank="4">
                <num>
                   <t v="(b)"/>
                </num>
@@ -1136,7 +1141,8 @@
             <unit eId="anx/pnt_Criterion-2"
                   kind="level"
                   depth="2"
-                  numbered="true">
+                  numbered="true"
+                  rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 2 –"/>
@@ -1181,7 +1187,8 @@
             <unit eId="anx/pnt_Criterion-3"
                   kind="level"
                   depth="2"
-                  numbered="true">
+                  numbered="true"
+                  rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 3 –"/>
@@ -1199,7 +1206,8 @@
             <unit eId="anx/pnt_Criterion-3.1"
                   kind="level"
                   depth="3"
-                  numbered="true">
+                  numbered="true"
+                  rank="4">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 3.1. –"/>
@@ -1242,7 +1250,8 @@
             <unit eId="anx/pnt_Criterion-3.2"
                   kind="level"
                   depth="3"
-                  numbered="true">
+                  numbered="true"
+                  rank="4">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 3.2. –"/>
@@ -1328,7 +1337,8 @@
             <unit eId="anx/pnt_Criterion-4"
                   kind="level"
                   depth="2"
-                  numbered="true">
+                  numbered="true"
+                  rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 4 –"/>
@@ -1358,7 +1368,11 @@
                   <t v="High quality test reports or literature data (testing according to acceptable protocols and GLP) including the references on the biodegradability and when required on the (potential) bioaccumulation of each constituent substance."/>
                </p>
             </unit>
-            <unit eId="anx/pnt_4.1" kind="level" depth="3" numbered="true">
+            <unit eId="anx/pnt_4.1"
+                  kind="level"
+                  depth="3"
+                  numbered="true"
+                  rank="4">
                <num>
                   <t v="4.1."/>
                </num>
@@ -1449,7 +1463,11 @@
                   <t v=" for the assessment of the biodegradability of a substance shall be acceptable if the reference substance differs by only one functional group or fragment from the substance applied in the product. If the reference substance is readily or inherently biodegradable and the functional group has a positive effect on the aerobic biodegradation then the applied substance may also be regarded as readily or inherently biodegradable. Functional groups or fragments with a positive effect on the biodegradation are: aliphatic and aromatic alcohol [-OH], aliphatic and aromatic acid [-C(=O)-OH], aldehyde [-CHO], Ester [-C(=O)-O-C], amide [-C(=O)–N or -C(=S)–N]. Adequate and reliable documentation of the study on the reference substance should be provided. In case of a comparison with a fragment, not included here above, adequate and reliable documentation of the studies should be provided on the positive effect of the functional group on the biodegradation of structurally similar substances."/>
                </p>
             </unit>
-            <unit eId="anx/pnt_4.2" kind="level" depth="3" numbered="true">
+            <unit eId="anx/pnt_4.2"
+                  kind="level"
+                  depth="3"
+                  numbered="true"
+                  rank="4">
                <num>
                   <t v="4.2."/>
                </num>
@@ -1522,7 +1540,8 @@
             <unit eId="anx/pnt_Criterion-5"
                   kind="level"
                   depth="2"
-                  numbered="true">
+                  numbered="true"
+                  rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 5 –"/>
@@ -1579,7 +1598,8 @@
             <unit eId="anx/pnt_Criterion-6"
                   kind="level"
                   depth="2"
-                  numbered="true">
+                  numbered="true"
+                  rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 6 –"/>
@@ -1654,7 +1674,8 @@
             <unit eId="anx/pnt_Criterion-7"
                   kind="level"
                   depth="2"
-                  numbered="true">
+                  numbered="true"
+                  rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 7 –"/>

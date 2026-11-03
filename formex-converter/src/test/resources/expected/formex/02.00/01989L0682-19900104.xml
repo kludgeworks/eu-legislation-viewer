@@ -110,7 +110,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -184,7 +184,8 @@
                   <unit eId="art_1/pnt_3/qstr_1/pnt_1.6"
                         kind="level"
                         depth="1"
-                        numbered="true">
+                        numbered="true"
+                        rank="2">
                      <num>
                         <t v="‘"/>
                         <t v="1.6."/>
@@ -310,7 +311,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -320,7 +321,7 @@
             <t v=". They shall forthwith inform the Commission thereof."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>

@@ -72,7 +72,7 @@
       <p>
          <t v="With regard to linking administrative records, as foreseen in Article 11, we also highlight the need for ensuring that any such linking must be done in compliance with data protection law, subject to necessity, proportionality, and specific safeguards under Member State or Union law."/>
       </p>
-      <unit eId="pnt_1" kind="level" depth="1" numbered="true">
+      <unit eId="pnt_1" kind="level" depth="1" numbered="true" rank="1">
          <num>
             <t v="1."/>
          </num>
@@ -149,7 +149,7 @@
             </list>
          </unit>
       </unit>
-      <unit eId="pnt_2" kind="level" depth="1" numbered="true">
+      <unit eId="pnt_2" kind="level" depth="1" numbered="true" rank="1">
          <num>
             <t v="2."/>
          </num>
@@ -245,7 +245,7 @@
             </list>
          </unit>
       </unit>
-      <unit eId="pnt_3" kind="level" depth="1" numbered="true">
+      <unit eId="pnt_3" kind="level" depth="1" numbered="true" rank="1">
          <num>
             <t v="3."/>
          </num>
@@ -255,7 +255,11 @@
             </emphasis>
          </heading>
       </unit>
-      <unit eId="pnt_3.1" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_3.1"
+            kind="level"
+            depth="2"
+            numbered="true"
+            rank="2">
          <num>
             <t v="3.1."/>
          </num>
@@ -293,7 +297,11 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_3.2" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_3.2"
+            kind="level"
+            depth="2"
+            numbered="true"
+            rank="2">
          <num>
             <t v="3.2."/>
          </num>
@@ -327,7 +335,11 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_3.3" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_3.3"
+            kind="level"
+            depth="2"
+            numbered="true"
+            rank="2">
          <num>
             <t v="3.3."/>
          </num>
@@ -440,7 +452,11 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_3.4" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_3.4"
+            kind="level"
+            depth="2"
+            numbered="true"
+            rank="2">
          <num>
             <t v="3.4."/>
          </num>
@@ -514,7 +530,7 @@
             <p>
                <t v="To this effect, we recommend that Article 8 be revised as follows:"/>
             </p>
-            <unit eId="pnt_3.4/pnt_21/art_8" kind="article">
+            <unit eId="pnt_3.4/pnt_21/art_8" kind="article" rank="3">
                <num>
                   <t v="Article 8"/>
                </num>
@@ -569,7 +585,11 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="pnt_3.5" kind="level" depth="2" numbered="true">
+      <unit eId="pnt_3.5"
+            kind="level"
+            depth="2"
+            numbered="true"
+            rank="2">
          <num>
             <t v="3.5."/>
          </num>
@@ -607,7 +627,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="pnt_4" kind="level" depth="1" numbered="true">
+      <unit eId="pnt_4" kind="level" depth="1" numbered="true" rank="1">
          <num>
             <t v="4."/>
          </num>

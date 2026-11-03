@@ -205,14 +205,14 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="cpt_I" kind="division">
+      <unit eId="cpt_I" kind="division" rank="1">
          <num>
             <t v="CHAPTER I"/>
          </num>
          <subheading>
             <t v="SCOPE"/>
          </subheading>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -259,21 +259,21 @@
             </list>
          </unit>
       </unit>
-      <unit eId="cpt_II" kind="division">
+      <unit eId="cpt_II" kind="division" rank="1">
          <num>
             <t v="CHAPTER II"/>
          </num>
          <subheading>
             <t v="PUBLIC STORAGE"/>
          </subheading>
-         <unit eId="cpt_II/sct_1" kind="division">
+         <unit eId="cpt_II/sct_1" kind="division" rank="2">
             <num>
                <t v="Section 1"/>
             </num>
             <subheading>
                <t v="Conditions for buying-in"/>
             </subheading>
-            <unit eId="art_2" kind="article">
+            <unit eId="art_2" kind="article" rank="3">
                <num>
                   <t v="Article 2"/>
                </num>
@@ -398,7 +398,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_3" kind="article">
+            <unit eId="art_3" kind="article" rank="3">
                <num>
                   <t v="Article 3"/>
                </num>
@@ -553,7 +553,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_4" kind="article">
+            <unit eId="art_4" kind="article" rank="3">
                <num>
                   <t v="Article 4"/>
                </num>
@@ -582,14 +582,14 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="cpt_II/sct_2" kind="division">
+         <unit eId="cpt_II/sct_2" kind="division" rank="2">
             <num>
                <t v="Section 2"/>
             </num>
             <subheading>
                <t v="Procedure for buying-in at the intervention price"/>
             </subheading>
-            <unit eId="art_5" kind="article">
+            <unit eId="art_5" kind="article" rank="3">
                <num>
                   <t v="Article 5"/>
                </num>
@@ -707,7 +707,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="art_6" kind="article">
+            <unit eId="art_6" kind="article" rank="3">
                <num>
                   <t v="Article 6"/>
                </num>
@@ -717,7 +717,7 @@
                   <t v="."/>
                </p>
             </unit>
-            <unit eId="art_7" kind="article">
+            <unit eId="art_7" kind="article" rank="3">
                <num>
                   <t v="Article 7"/>
                </num>
@@ -799,7 +799,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_8" kind="article">
+            <unit eId="art_8" kind="article" rank="3">
                <num>
                   <t v="Article 8"/>
                </num>
@@ -855,7 +855,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_9" kind="article">
+            <unit eId="art_9" kind="article" rank="3">
                <num>
                   <t v="Article 9"/>
                </num>
@@ -891,14 +891,14 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="cpt_II/sct_3" kind="division">
+         <unit eId="cpt_II/sct_3" kind="division" rank="2">
             <num>
                <t v="Section 3"/>
             </num>
             <subheading>
                <t v="Entry into and removal from storage"/>
             </subheading>
-            <unit eId="art_10" kind="article">
+            <unit eId="art_10" kind="article" rank="3">
                <num>
                   <t v="Article 10"/>
                </num>
@@ -974,7 +974,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_11" kind="article">
+            <unit eId="art_11" kind="article" rank="3">
                <num>
                   <t v="Article 11"/>
                </num>
@@ -1009,7 +1009,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_12" kind="article">
+            <unit eId="art_12" kind="article" rank="3">
                <num>
                   <t v="Article 12"/>
                </num>
@@ -1038,14 +1038,14 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="cpt_II/sct_4" kind="division">
+         <unit eId="cpt_II/sct_4" kind="division" rank="2">
             <num>
                <t v="Section 4"/>
             </num>
             <subheading>
                <t v="Special rules applicable to buying-in by tendering procedure"/>
             </subheading>
-            <unit eId="art_13" kind="article">
+            <unit eId="art_13" kind="article" rank="3">
                <num>
                   <t v="Article 13"/>
                </num>
@@ -1053,7 +1053,7 @@
                   <t v="Where the Commission decides that skimmed-milk powder is to be bought in through an open standing invitation to tender pursuant to Article 7(2) of Regulation (EC) No 1255/1999 and in accordance with the procedure under Article 42 thereof, Articles 2, 3, 4, 10, 11 and 12 of this Regulation shall apply unless otherwise provided in this section."/>
                </p>
             </unit>
-            <unit eId="art_14" kind="article">
+            <unit eId="art_14" kind="article" rank="3">
                <num>
                   <t v="Article 14"/>
                </num>
@@ -1078,7 +1078,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_15" kind="article">
+            <unit eId="art_15" kind="article" rank="3">
                <num>
                   <t v="Article 15"/>
                </num>
@@ -1213,7 +1213,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_16" kind="article">
+            <unit eId="art_16" kind="article" rank="3">
                <num>
                   <t v="Article 16"/>
                </num>
@@ -1221,7 +1221,7 @@
                   <t v="Maintenance of the tender after the closing date for submission of tenders and delivery of the skimmed-milk powder to the depot designated by the intervention agency within the time limit laid down in Article 19(3) shall constitute primary requirements within the meaning of Article 20 of Regulation (EEC) No 2220/85."/>
                </p>
             </unit>
-            <unit eId="art_17" kind="article">
+            <unit eId="art_17" kind="article" rank="3">
                <num>
                   <t v="Article 17"/>
                </num>
@@ -1250,7 +1250,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_18" kind="article">
+            <unit eId="art_18" kind="article" rank="3">
                <num>
                   <t v="Article 18"/>
                </num>
@@ -1271,7 +1271,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_19" kind="article">
+            <unit eId="art_19" kind="article" rank="3">
                <num>
                   <t v="Article 19"/>
                </num>
@@ -1353,7 +1353,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_20" kind="article">
+            <unit eId="art_20" kind="article" rank="3">
                <num>
                   <t v="Article 20"/>
                </num>
@@ -1418,7 +1418,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="cpt_II/sct_5" kind="division">
+         <unit eId="cpt_II/sct_5" kind="division" rank="2">
             <provenance amendingAct="32004R1319"
                         action="replaced"
                         location="AR:1;PT:2;PT:a"
@@ -1429,7 +1429,7 @@
             <subheading>
                <t v="Sale by invitation to tender of skimmed-milk powder from public storage"/>
             </subheading>
-            <unit eId="art_21" kind="article">
+            <unit eId="art_21" kind="article" rank="3">
                <num>
                   <t v="Article 21"/>
                </num>
@@ -1520,7 +1520,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="art_22" kind="article">
+            <unit eId="art_22" kind="article" rank="3">
                <num>
                   <t v="Article 22"/>
                </num>
@@ -1541,7 +1541,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_23" kind="article">
+            <unit eId="art_23" kind="article" rank="3">
                <num>
                   <t v="Article 23"/>
                </num>
@@ -1645,7 +1645,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_24" kind="article">
+            <unit eId="art_24" kind="article" rank="3">
                <num>
                   <t v="Article 24"/>
                </num>
@@ -1654,7 +1654,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="cpt_II/sct_6" kind="division">
+         <unit eId="cpt_II/sct_6" kind="division" rank="2">
             <provenance amendingAct="32004R1319"
                         action="inserted"
                         location="AR:1;PT:2;PT:b"
@@ -1665,7 +1665,7 @@
             <subheading>
                <t v="Implementation of the tendering procedure"/>
             </subheading>
-            <unit eId="art_24a" kind="article">
+            <unit eId="art_24a" kind="article" rank="3">
                <num>
                   <t v="Article 24a"/>
                </num>
@@ -1714,7 +1714,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_24b" kind="article">
+            <unit eId="art_24b" kind="article" rank="3">
                <num>
                   <t v="Article 24b"/>
                </num>
@@ -1722,7 +1722,7 @@
                   <t v="Tenders shall be rejected if the price offered is lower than the minimum price."/>
                </p>
             </unit>
-            <unit eId="art_24c" kind="article">
+            <unit eId="art_24c" kind="article" rank="3">
                <num>
                   <t v="Article 24c"/>
                </num>
@@ -1789,7 +1789,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_24d" kind="article">
+            <unit eId="art_24d" kind="article" rank="3">
                <num>
                   <t v="Article 24d"/>
                </num>
@@ -1797,7 +1797,7 @@
                   <t v="Rights and obligations arising in connection with the invitation to tender shall not be transferable."/>
                </p>
             </unit>
-            <unit eId="art_24e" kind="article">
+            <unit eId="art_24e" kind="article" rank="3">
                <num>
                   <t v="Article 24e"/>
                </num>
@@ -1825,7 +1825,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_24f" kind="article">
+            <unit eId="art_24f" kind="article" rank="3">
                <num>
                   <t v="Article 24f"/>
                </num>
@@ -1904,21 +1904,21 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_III" kind="division">
+      <unit eId="cpt_III" kind="division" rank="1">
          <num>
             <t v="CHAPTER III"/>
          </num>
          <subheading>
             <t v="PRIVATE STORAGE"/>
          </subheading>
-         <unit eId="cpt_III/sct_1" kind="division">
+         <unit eId="cpt_III/sct_1" kind="division" rank="2">
             <num>
                <t v="Section 1"/>
             </num>
             <subheading>
                <t v="Contract and storage conditions"/>
             </subheading>
-            <unit eId="art_25" kind="article">
+            <unit eId="art_25" kind="article" rank="3">
                <num>
                   <t v="Article 25"/>
                </num>
@@ -1961,7 +1961,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="art_26" kind="article">
+            <unit eId="art_26" kind="article" rank="3">
                <num>
                   <t v="Article 26"/>
                </num>
@@ -1973,7 +1973,7 @@
                   <t v="."/>
                </p>
             </unit>
-            <unit eId="art_27" kind="article">
+            <unit eId="art_27" kind="article" rank="3">
                <num>
                   <t v="Article 27"/>
                </num>
@@ -2065,7 +2065,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="art_28" kind="article">
+            <unit eId="art_28" kind="article" rank="3">
                <num>
                   <t v="Article 28"/>
                </num>
@@ -2120,7 +2120,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_29" kind="article">
+            <unit eId="art_29" kind="article" rank="3">
                <num>
                   <t v="Article 29"/>
                </num>
@@ -2141,7 +2141,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_30" kind="article">
+            <unit eId="art_30" kind="article" rank="3">
                <num>
                   <t v="Article 30"/>
                </num>
@@ -2174,7 +2174,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_31" kind="article">
+            <unit eId="art_31" kind="article" rank="3">
                <num>
                   <t v="Article 31"/>
                </num>
@@ -2195,14 +2195,14 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="cpt_III/sct_2" kind="division">
+         <unit eId="cpt_III/sct_2" kind="division" rank="2">
             <num>
                <t v="Section 2"/>
             </num>
             <subheading>
                <t v="Checks"/>
             </subheading>
-            <unit eId="art_32" kind="article">
+            <unit eId="art_32" kind="article" rank="3">
                <num>
                   <t v="Article 32"/>
                </num>
@@ -2323,7 +2323,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="art_33" kind="article">
+            <unit eId="art_33" kind="article" rank="3">
                <num>
                   <t v="Article 33"/>
                </num>
@@ -2467,14 +2467,14 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="cpt_III/sct_3" kind="division">
+         <unit eId="cpt_III/sct_3" kind="division" rank="2">
             <num>
                <t v="Section 3"/>
             </num>
             <subheading>
                <t v="Storage aid"/>
             </subheading>
-            <unit eId="art_34" kind="article">
+            <unit eId="art_34" kind="article" rank="3">
                <num>
                   <t v="Article 34"/>
                </num>
@@ -2517,7 +2517,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="art_35" kind="article">
+            <unit eId="art_35" kind="article" rank="3">
                <num>
                   <t v="Article 35"/>
                </num>
@@ -2527,14 +2527,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_IV" kind="division">
+      <unit eId="cpt_IV" kind="division" rank="1">
          <num>
             <t v="CHAPTER IV"/>
          </num>
          <subheading>
             <t v="NOTIFICATION"/>
          </subheading>
-         <unit eId="art_36" kind="article">
+         <unit eId="art_36" kind="article" rank="2">
             <provenance amendingAct="32004R1319"
                         action="replaced"
                         location="AR:1;PT:3"
@@ -2580,14 +2580,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_V" kind="division">
+      <unit eId="cpt_V" kind="division" rank="1">
          <num>
             <t v="CHAPTER V"/>
          </num>
          <subheading>
             <t v="FINAL PROVISIONS"/>
          </subheading>
-         <unit eId="art_37" kind="article">
+         <unit eId="art_37" kind="article" rank="2">
             <num>
                <t v="Article 37"/>
             </num>
@@ -2602,7 +2602,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_38" kind="article">
+         <unit eId="art_38" kind="article" rank="2">
             <num>
                <t v="Article 38"/>
             </num>
@@ -2622,7 +2622,7 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx_I" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX I"/>
          </num>
@@ -2947,7 +2947,7 @@
             </tr>
          </table>
       </unit>
-      <unit eId="anx_II" kind="annex" eurlexAnchor="2">
+      <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
          <num>
             <t v="ANNEX II"/>
          </num>
@@ -3001,7 +3001,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="anx_III" kind="annex" eurlexAnchor="3">
+      <unit eId="anx_III" kind="annex" eurlexAnchor="3" rank="1">
          <num>
             <t v="ANNEX III"/>
          </num>

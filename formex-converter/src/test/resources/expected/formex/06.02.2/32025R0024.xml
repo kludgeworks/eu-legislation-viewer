@@ -195,7 +195,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -203,7 +203,7 @@
             <t v="Annexes I, III and IV to Regulation (EU) No 965/2012 are amended in accordance with the Annex to this Regulation."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -322,7 +322,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -413,7 +413,8 @@
                         <unit eId="anx/pnt_2/pnt_2/qstr_1/pnt_ORO.GEN.315"
                               kind="level"
                               depth="1"
-                              numbered="true">
+                              numbered="true"
+                              rank="2">
                            <num>
                               <t v="‘"/>
                               <emphasis kind="b">
@@ -561,7 +562,8 @@
                         <unit eId="anx/pnt_3/pnt_1/qstr_1/pnt_CAT.GEN.MPA.220"
                               kind="level"
                               depth="1"
-                              numbered="true">
+                              numbered="true"
+                              rank="2">
                            <num>
                               <t v="‘"/>
                               <emphasis kind="b">
@@ -636,7 +638,8 @@
                   <unit eId="anx/pnt_3/qstr_1/pnt_CAT.POL.MAB.110"
                         kind="level"
                         depth="1"
-                        numbered="true">
+                        numbered="true"
+                        rank="2">
                      <num>
                         <t v="‘"/>
                         <emphasis kind="b">

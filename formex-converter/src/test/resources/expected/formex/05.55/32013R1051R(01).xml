@@ -47,7 +47,7 @@
                      <p>
                         <t v="in Title II, the following Chapter is added:"/>
                      </p>
-                     <unit eId="cor_1/old/qstr_1/pnt_1/cpt_IVa" kind="division">
+                     <unit eId="cor_1/old/qstr_1/pnt_1/cpt_IVa" kind="division" rank="1">
                         <num>
                            <emphasis kind="i">
                               <t v="“CHAPTER IVa"/>
@@ -60,7 +60,7 @@
                               </emphasis>
                            </emphasis>
                         </subheading>
-                        <unit eId="cor_1/old/qstr_1/pnt_1/art_19a" kind="article">
+                        <unit eId="cor_1/old/qstr_1/pnt_1/art_19a" kind="article" rank="2">
                            <num>
                               <t v="Article 19a"/>
                            </num>
@@ -97,7 +97,7 @@
                      <p>
                         <t v="in Title II, the following Chapter is added:"/>
                      </p>
-                     <unit eId="cor_1/new/qstr_1/pnt_1/cpt_IVa" kind="division">
+                     <unit eId="cor_1/new/qstr_1/pnt_1/cpt_IVa" kind="division" rank="1">
                         <num>
                            <emphasis kind="i">
                               <t v="“CHAPTER IVa"/>
@@ -110,7 +110,7 @@
                               </emphasis>
                            </emphasis>
                         </subheading>
-                        <unit eId="cor_1/new/qstr_1/pnt_1/art_19b" kind="article">
+                        <unit eId="cor_1/new/qstr_1/pnt_1/art_19b" kind="article" rank="2">
                            <num>
                               <t v="Article 19b"/>
                            </num>

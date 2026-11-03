@@ -55,7 +55,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 1"/>
@@ -80,7 +80,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 2"/>
@@ -125,7 +125,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 3"/>
@@ -137,7 +137,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 4"/>
@@ -168,7 +168,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_5" kind="article">
+      <unit eId="art_5" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 5"/>
@@ -192,7 +192,7 @@
       </signature>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>

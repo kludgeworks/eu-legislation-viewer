@@ -92,7 +92,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_Sole-Article" kind="article">
+      <unit eId="art_Sole-Article" kind="article" rank="1">
          <num>
             <t v="Sole Article"/>
          </num>
@@ -155,7 +155,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="att_1" kind="attachment">
+      <unit eId="att_1" kind="attachment" rank="1">
          <heading>
             <t v="Draft"/>
             <eol/>
@@ -178,7 +178,7 @@
          <p>
             <t v="HAS AGREED AS FOLLOWS:"/>
          </p>
-         <unit eId="att_1/cpt_I" kind="division">
+         <unit eId="att_1/cpt_I" kind="division" rank="2">
             <num>
                <t v="CHAPTER I"/>
             </num>
@@ -187,7 +187,7 @@
                   <t v="RULES OF PROCEDURE"/>
                </emphasis>
             </subheading>
-            <unit eId="att_1/art_1" kind="article">
+            <unit eId="att_1/art_1" kind="article" rank="3">
                <num>
                   <t v="Article 1"/>
                </num>
@@ -210,7 +210,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="att_1/art_2" kind="article">
+            <unit eId="att_1/art_2" kind="article" rank="3">
                <num>
                   <t v="Article 2"/>
                </num>
@@ -221,7 +221,7 @@
                   <t v="The chair shall carry out the tasks of secretary of the Joint Committee. All correspondence to the Joint Committee, including requests for items to be included in agendas, must be addressed to the chair."/>
                </p>
             </unit>
-            <unit eId="att_1/art_3" kind="article">
+            <unit eId="att_1/art_3" kind="article" rank="3">
                <num>
                   <t v="Article 3"/>
                </num>
@@ -232,7 +232,7 @@
                   <t v="Once he has obtained the Agreement of the parties, the chair of the Joint Committee shall fix the date and place of meetings. Meetings shall be held alternately in Brussels and Switzerland."/>
                </p>
             </unit>
-            <unit eId="att_1/art_4" kind="article">
+            <unit eId="att_1/art_4" kind="article" rank="3">
                <num>
                   <t v="Article 4"/>
                </num>
@@ -255,7 +255,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="att_1/art_5" kind="article">
+            <unit eId="att_1/art_5" kind="article" rank="3">
                <num>
                   <t v="Article 5"/>
                </num>
@@ -273,7 +273,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="att_1/art_6" kind="article">
+            <unit eId="att_1/art_6" kind="article" rank="3">
                <num>
                   <t v="Article 6"/>
                </num>
@@ -284,7 +284,7 @@
                   <t v="After each meeting, the chair shall draw up the minutes. The draft minutes shall be submitted to the Joint Committee for approval. Once the minutes have been approved, they shall be signed by the chair and a copy sent to the parties."/>
                </p>
             </unit>
-            <unit eId="att_1/art_7" kind="article">
+            <unit eId="att_1/art_7" kind="article" rank="3">
                <num>
                   <t v="Article 7"/>
                </num>
@@ -303,7 +303,7 @@
                   <t v=" respectively, followed by a serial number, the date of their adoption and a description of their subject. They shall be signed by the chair and sent to the parties."/>
                </p>
             </unit>
-            <unit eId="att_1/art_8" kind="article">
+            <unit eId="att_1/art_8" kind="article" rank="3">
                <num>
                   <t v="Article 8"/>
                </num>
@@ -314,7 +314,7 @@
                   <t v="In cases of special urgency, decisions and recommendations may be adopted by the written procedure provided both parties agree."/>
                </p>
             </unit>
-            <unit eId="att_1/art_9" kind="article">
+            <unit eId="att_1/art_9" kind="article" rank="3">
                <num>
                   <t v="Article 9"/>
                </num>
@@ -325,7 +325,7 @@
                   <t v="Each party shall bear the expenses it incurs in taking part in the meetings of the Joint Committee."/>
                </p>
             </unit>
-            <unit eId="att_1/art_10" kind="article">
+            <unit eId="att_1/art_10" kind="article" rank="3">
                <num>
                   <t v="Article 10"/>
                </num>
@@ -337,7 +337,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="att_1/cpt_II" kind="division">
+         <unit eId="att_1/cpt_II" kind="division" rank="2">
             <num>
                <t v="CHAPTER II"/>
             </num>
@@ -346,7 +346,7 @@
                   <t v="WORKING PARTY"/>
                </emphasis>
             </subheading>
-            <unit eId="att_1/art_11" kind="article">
+            <unit eId="att_1/art_11" kind="article" rank="3">
                <num>
                   <t v="Article 11"/>
                </num>
@@ -357,7 +357,7 @@
                   <t v="A working group shall be set up to assist the Joint Committee in carrying out its tasks in the areas referred to in Chapters II (procedures) and III (customs security measures) of the Agreement."/>
                </p>
             </unit>
-            <unit eId="att_1/art_12" kind="article">
+            <unit eId="att_1/art_12" kind="article" rank="3">
                <num>
                   <t v="Article 12"/>
                </num>
@@ -372,7 +372,7 @@
                   <t v=", to the meetings of the working group."/>
                </p>
             </unit>
-            <unit eId="att_1/art_13" kind="article">
+            <unit eId="att_1/art_13" kind="article" rank="3">
                <num>
                   <t v="Article 13"/>
                </num>

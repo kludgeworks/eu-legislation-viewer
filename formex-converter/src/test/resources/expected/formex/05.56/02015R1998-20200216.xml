@@ -47,7 +47,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -55,7 +55,7 @@
             <t v="The detailed measures for the implementation of the common basic standards for safeguarding civil aviation against acts of unlawful interference that jeopardise the security of civil aviation, referred to in Article 4(1) of Regulation (EC) No 300/2008, and the general measures supplementing those common basic standards, referred to in Article 4(2) of that Regulation, are set out in the Annex."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -63,7 +63,7 @@
             <t v="Regulation (EU) No 185/2010 is repealed. References to the repealed Regulation shall be construed as a reference to this Regulation."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -91,11 +91,15 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/pnt_1" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_1"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="1."/>
             </num>
@@ -105,7 +109,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_1.0" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_1.0"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="1.0"/>
             </num>
@@ -172,7 +180,11 @@
                <t v=" include other countries and territories to which, in accordance with Article 355 of the Treaty on the Functioning of the European Union, the Title VI of Part Three of that Treaty does not apply."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.1" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_1.1"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="1.1"/>
             </num>
@@ -180,7 +192,11 @@
                <t v="AIRPORT PLANNING REQUIREMENTS"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_1.1.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.1.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.1.1"/>
             </num>
@@ -206,7 +222,11 @@
                <t v="The boundary between landside and airside shall be a physical obstruction that is clearly visible to the general public and which denies a person unauthorised access."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.1.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.1.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.1.2"/>
             </num>
@@ -269,7 +289,11 @@
                <t v="Whenever unauthorised persons may have had access to security restricted areas, a security search of the parts that could have been contaminated shall be carried out as soon as possible in order to reasonably ensure that it does not contain prohibited articles. This provision shall be considered to be met for aircraft that are subject to an aircraft security search."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.1.3" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.1.3"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.1.3"/>
             </num>
@@ -374,7 +398,11 @@
                <t v="As far as points (b) and (c) are concerned, this provision shall only apply to those critical parts that are used by screened hold baggage and/or screened departing passengers not departing on the same aircraft as these passengers and crew members."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.2" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_1.2"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="1.2"/>
             </num>
@@ -382,7 +410,11 @@
                <t v="ACCESS CONTROL"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_1.2.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.2.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.2.1"/>
             </num>
@@ -424,7 +456,11 @@
                <t v="Persons who are airside shall, upon request, present their authorisation for control."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.2.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.2.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.2.2"/>
             </num>
@@ -562,7 +598,11 @@
                <t v="Access to security restricted areas shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.2.3" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.2.3"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.2.3"/>
             </num>
@@ -689,7 +729,11 @@
                <t v="Union crew identification cards and airport identification cards shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.2.4" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.2.4"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.2.4"/>
             </num>
@@ -745,7 +789,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_1.2.5" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.2.5"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.2.5"/>
             </num>
@@ -816,7 +864,11 @@
                <t v="In order to prevent the misuse of airport identification cards, a system shall be in place to reasonably ensure that attempted use of cards that have been lost, stolen or not returned is detected. Upon detection, appropriate action shall be taken."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.2.6" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.2.6"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.2.6"/>
             </num>
@@ -986,7 +1038,11 @@
                <t v="Vehicles that are only used airside and have no permission to drive on public roads may be exempted from application of points 1.2.6.2 to 1.2.6.8 provided that they are clearly marked externally as operational vehicles in use at that airport."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.2.7" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.2.7"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.2.7"/>
             </num>
@@ -1104,7 +1160,11 @@
                <t v="Whenever a passenger does not travel as a result of an air carriage contract resulting in the delivery of a boarding pass or equivalent, a crew member escorting this passenger may be exempted from the requirements of point 1.2.7.3(a)."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.2.8" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.2.8"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.2.8"/>
             </num>
@@ -1117,7 +1177,11 @@
                <t v="Other exemptions shall be subject to provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.3" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_1.3"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="1.3"/>
             </num>
@@ -1125,7 +1189,11 @@
                <t v="SCREENING OF PERSONS OTHER THAN PASSENGERS AND ITEMS CARRIED"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_1.3.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.3.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.3.1"/>
             </num>
@@ -1346,7 +1414,11 @@
                <t v="The screening of persons other than passengers and items carried shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.3.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.3.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.3.2"/>
             </num>
@@ -1380,7 +1452,11 @@
                <t v="Exemptions and special screening procedures shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.4" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_1.4"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="1.4"/>
             </num>
@@ -1388,7 +1464,11 @@
                <t v="EXAMINATION OF VEHICLES"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_1.4.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.4.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.4.1"/>
             </num>
@@ -1430,7 +1510,11 @@
                <t v="Vehicles entering critical parts shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.4.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.4.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.4.2"/>
             </num>
@@ -1464,7 +1548,11 @@
                <t v="Vehicles entering security restricted areas other than critical parts shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.4.3" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.4.3"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.4.3"/>
             </num>
@@ -1516,7 +1604,11 @@
                <t v="Methods of examination shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.4.4" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_1.4.4"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="1.4.4"/>
             </num>
@@ -1542,7 +1634,11 @@
                <t v="Exemptions and special examination procedures shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.5" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_1.5"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="1.5"/>
             </num>
@@ -1653,7 +1749,11 @@
                <t v="Measures shall be in place that both deter persons from breaching security checkpoints and, should such a breach occur, promptly enable the breach and its repercussions to be resolved and rectified."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_1.6" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_1.6"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="1.6"/>
             </num>
@@ -1723,21 +1823,25 @@
                <t v="Articles as listed in Attachment 1-A may be stored in security restricted areas provided they are kept in secure conditions. Articles as listed in points (c), (d) and (e) of Attachment 4-C may be stored in security restricted areas provided they are not accessible to passengers."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-1-A" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-1-A" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 1-A"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-1-A/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-1-A/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="PERSONS OTHER THAN PASSENGERS"/>
             </heading>
          </unit>
          <unit eId="anx/level_ATTACHMENT-1-A/level_1/level_1"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <t v="LIST OF PROHIBITED ARTICLES"/>
             </heading>
@@ -1917,7 +2021,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_2" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_2"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="2."/>
             </num>
@@ -1930,7 +2038,11 @@
                <t v="No provisions in this Regulation."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_3" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_3"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="3."/>
             </num>
@@ -1940,7 +2052,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_3.0" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_3.0"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="3.0"/>
             </num>
@@ -2028,7 +2144,11 @@
                <t v="References to third countries in this Chapter and in Commission Implementing Decision C(2015) 8005 include other countries and territories to which, in accordance with Article 355 of the Treaty on the Functioning of the European Union, Title VI of Part Three of that Treaty does not apply."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_3.1" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_3.1"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="3.1"/>
             </num>
@@ -2036,7 +2156,11 @@
                <t v="AIRCRAFT SECURITY SEARCH"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_3.1.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_3.1.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="3.1.1"/>
             </num>
@@ -2086,7 +2210,11 @@
                <t v="When to perform an aircraft security search shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_3.1.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_3.1.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="3.1.2"/>
             </num>
@@ -2099,7 +2227,11 @@
                <t v="How to perform an aircraft security search shall be subject to the provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_3.1.3" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_3.1.3"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="3.1.3"/>
             </num>
@@ -2158,7 +2290,11 @@
                <t v="Recording of the information as above, may be held in electronic format."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_3.2" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_3.2"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="3.2"/>
             </num>
@@ -2166,7 +2302,11 @@
                <t v="PROTECTION OF AIRCRAFT"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_3.2.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_3.2.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="3.2.1"/>
             </num>
@@ -2226,7 +2366,11 @@
                <t v="Point 3.2.1.1 shall not apply to an aircraft parked in a hangar that is locked or otherwise protected from unauthorised access."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_3.2.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_3.2.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="3.2.2"/>
             </num>
@@ -2313,14 +2457,17 @@
                <t v="The protection of aircraft with closed external doors in a part other than a critical part shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-3-A" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-3-A" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 3-A"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-3-A/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-3-A/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="AIRCRAFT SECURITY SEARCH"/>
             </heading>
@@ -2328,7 +2475,7 @@
                <t v="Detailed provisions for an aircraft security search are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-3-B" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-3-B" kind="level" depth="2" rank="3">
             <provenance amendingAct="32018R0055"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:1"
@@ -2339,7 +2486,10 @@
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-3-B/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-3-B/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32018R0055"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:1"
@@ -2350,7 +2500,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-3-B/level_1/level_1"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <provenance amendingAct="32018R0055"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:1"
@@ -2446,7 +2597,11 @@
                <t v="The appropriate authorities of the Member States shall be notified without delay when the Commission has information about actions, including compensatory measures, confirming that the equivalency of relevant security standards applied by the third country or other country or territory concerned is re-established."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_4" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_4"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="4."/>
             </num>
@@ -2456,7 +2611,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_4.0" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_4.0"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="4.0"/>
             </num>
@@ -2555,7 +2714,11 @@
                <t v="Passengers and their cabin baggage arriving from a Union airport where the relevant Member State has derogated from the common basic standards as provided for in Article 1 of Regulation (EU) No 1254/2009 shall be considered as passengers and cabin baggage arriving from a third country, unless there is confirmation that these passengers and their cabin baggage were screened in accordance with this Chapter."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_4.1" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_4.1"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="4.1"/>
             </num>
@@ -2563,7 +2726,11 @@
                <t v="SCREENING OF PASSENGERS AND CABIN BAGGAGE"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_4.1.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_4.1.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="4.1.1"/>
             </num>
@@ -2805,7 +2972,11 @@
                <t v="Explosive trace detection (ETD) equipment in combination with hand held metal detection (HHMD) equipment may only be used in cases where the screener considers a hand search of a given part of the person to be inefficient and/or undesirable."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_4.1.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_4.1.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="4.1.2"/>
             </num>
@@ -2986,7 +3157,11 @@
                <t v="The screening of cabin baggage shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_4.1.3" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_4.1.3"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="4.1.3"/>
             </num>
@@ -3076,7 +3251,11 @@
                <t v="The screening of LAGs shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_4.2" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_4.2"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="4.2"/>
             </num>
@@ -3087,7 +3266,11 @@
                <t v="The protection of passengers and cabin baggage shall be subject to the provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_4.3" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_4.3"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="4.3"/>
             </num>
@@ -3172,7 +3355,11 @@
                <t v="The competent authority shall ensure that persons in lawful custody are always escorted."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_4.4" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_4.4"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="4.4"/>
             </num>
@@ -3233,14 +3420,17 @@
                <t v="The air carrier shall ensure that passengers are informed of the prohibited articles listed in Attachment 4-C before check-in is completed."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-4-A" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-4-A" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 4-A"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-4-A/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-4-A/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="REQUIREMENTS FOR A HAND SEARCH"/>
             </heading>
@@ -3248,7 +3438,7 @@
                <t v="Detailed provisions for a hand search are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-4-B" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-4-B" kind="level" depth="2" rank="3">
             <provenance amendingAct="32018R0055"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:2"
@@ -3259,7 +3449,10 @@
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-4-B/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-4-B/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32018R0055"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:2"
@@ -3270,7 +3463,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-4-B/level_1/level_1"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <provenance amendingAct="32018R0055"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:2"
@@ -3366,21 +3560,25 @@
                <t v="The appropriate authorities of the Member States shall be notified without delay when the Commission has information about actions, including compensatory measures, confirming that the equivalency of relevant security standards applied by the third country or other country or territory concerned is re-established."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-4-C" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-4-C" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 4-C"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-4-C/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-4-C/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="PASSENGERS AND CABIN BAGGAGE"/>
             </heading>
          </unit>
          <unit eId="anx/level_ATTACHMENT-4-C/level_1/level_1"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="i">
                   <t v="LIST OF PROHIBITED ARTICLES"/>
@@ -3714,7 +3912,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_5" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_5"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="5."/>
             </num>
@@ -3724,7 +3926,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_5.0" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_5.0"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="5.0"/>
             </num>
@@ -3792,7 +3998,11 @@
                <t v="Hold baggage arriving from a Union airport where the relevant Member State has derogated from the common basic standards as provided for in Article 1 of Regulation (EU) No 1254/2009 shall be considered as hold baggage arriving from a third country, unless there is a confirmation that the hold baggage was screened in accordance with this Chapter."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_5.1" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_5.1"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="5.1"/>
             </num>
@@ -3904,7 +4114,11 @@
                <t v="There shall be a supervisor responsible for screeners of hold baggage in order to assure optimum team composition, quality of work, training, support and appraisal."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_5.2" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_5.2"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="5.2"/>
             </num>
@@ -3954,7 +4168,11 @@
                <t v="The protection of hold baggage shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_5.3" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_5.3"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="5.3"/>
             </num>
@@ -3962,7 +4180,11 @@
                <t v="BAGGAGE RECONCILIATION"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_5.3.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_5.3.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="5.3.1"/>
             </num>
@@ -4004,7 +4226,11 @@
                <t v="An air carrier shall ensure that each item of unaccompanied hold baggage is clearly identifiable as authorised for transport by air."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_5.3.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_5.3.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="5.3.2"/>
             </num>
@@ -4030,7 +4256,11 @@
                <t v="Additional detailed provisions on the factors beyond the passenger's control are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_5.3.3" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_5.3.3"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="5.3.3"/>
             </num>
@@ -4064,7 +4294,11 @@
                <t v="Additional detailed provisions for appropriate security controls for unaccompanied hold baggage are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_5.4" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_5.4"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="5.4"/>
             </num>
@@ -4118,7 +4352,7 @@
                <t v="The air carrier shall ensure that passengers are informed of the prohibited articles listed in Attachment 5-B at any time before the check-in is completed."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-5-A" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-5-A" kind="level" depth="2" rank="3">
             <provenance amendingAct="32019R0103"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:19"
@@ -4126,7 +4360,10 @@
             <num>
                <t v="ATTACHMENT 5-A"/>
             </num>
-            <unit eId="anx/level_ATTACHMENT-5-A/level_1" kind="level" depth="3">
+            <unit eId="anx/level_ATTACHMENT-5-A/level_1"
+                  kind="level"
+                  depth="3"
+                  rank="4">
                <provenance amendingAct="32019R0103"
                            action="replaced"
                            location="AR:1 .AND. AX:0;PT:19"
@@ -4137,7 +4374,8 @@
             </unit>
             <unit eId="anx/level_ATTACHMENT-5-A/level_1/level_1"
                   kind="level"
-                  depth="4">
+                  depth="4"
+                  rank="5">
                <provenance amendingAct="32019R0103"
                            action="replaced"
                            location="AR:1 .AND. AX:0;PT:19"
@@ -4241,21 +4479,25 @@
                </p>
             </unit>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-5-B" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-5-B" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 5-B"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-5-B/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-5-B/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="HOLD BAGGAGE"/>
             </heading>
          </unit>
          <unit eId="anx/level_ATTACHMENT-5-B/level_1/level_1"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="i">
                   <t v="LIST OF PROHIBITED ARTICLES"/>
@@ -4321,7 +4563,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_6" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_6"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="6."/>
             </num>
@@ -4331,7 +4577,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_6.0" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_6.0"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="6.0"/>
             </num>
@@ -4363,7 +4613,11 @@
                <t v="References to third countries in this Chapter and where applicable in Commission Implementing Decision C(2015) 8005 include other countries and territories to which, in accordance with Article 355 of the Treaty on the Functioning of the European Union, Title VI of Part Three of that Treaty does not apply."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.1" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_6.1"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="6.1"/>
             </num>
@@ -4429,7 +4683,11 @@
                <t v="A person with unescorted access to identifiable air cargo or identifiable air mail to which the required security controls have been applied shall have successfully completed either a background check or a pre-employment check in accordance with point 11.1."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.2" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_6.2"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="6.2"/>
             </num>
@@ -4437,7 +4695,11 @@
                <t v="SCREENING"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_6.2.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.2.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="6.2.1"/>
             </num>
@@ -4580,7 +4842,11 @@
                <t v="If agreed by the appropriate authority and notified to the Commission, other appropriate security controls may be applied only where it is not possible to apply any of the other means or methods specified in point 6.2.1.5 owing to the nature of the consignment."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.2.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.2.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="6.2.2"/>
             </num>
@@ -4593,7 +4859,11 @@
                <t v="Provisions for exemptions from screening are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.3" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_6.3"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="6.3"/>
             </num>
@@ -4601,7 +4871,11 @@
                <t v="REGULATED AGENTS"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_6.3.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.3.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="6.3.1"/>
             </num>
@@ -4803,7 +5077,11 @@
                <t v="Modalities for this exchange of information shall be established between the appropriate authority and the national customs authorities."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.3.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.3.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="6.3.2"/>
             </num>
@@ -5122,7 +5400,11 @@
                <t v="Security controls to be applied by a regulated agent shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.4" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_6.4"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="6.4"/>
             </num>
@@ -5130,7 +5412,11 @@
                <t v="KNOWN CONSIGNORS"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_6.4.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.4.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="6.4.1"/>
             </num>
@@ -5328,7 +5614,11 @@
                <t v="Modalities for this exchange of information shall be established between the appropriate authority and the national customs authorities."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.4.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.4.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="6.4.2"/>
             </num>
@@ -5383,7 +5673,11 @@
                <t v="The known consignor shall accept that consignments to which the appropriate security controls have not been applied are screened in accordance with point 6.2.1."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.5" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_6.5"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="6.5"/>
             </num>
@@ -5510,7 +5804,11 @@
                </p>
             </unit>
          </deleted>
-         <unit eId="anx/pnt_6.6" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_6.6"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="6.6"/>
             </num>
@@ -5518,7 +5816,11 @@
                <t v="PROTECTION OF CARGO AND MAIL"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_6.6.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.6.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="6.6.1"/>
             </num>
@@ -5579,7 +5881,11 @@
                <t v="Point 6.6.1.1(b) and (c) shall not apply during airside transportation."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.6.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.6.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="6.6.2"/>
             </num>
@@ -5632,7 +5938,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_6.7" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_6.7"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="6.7"/>
             </num>
@@ -5643,7 +5953,11 @@
                <t v="Provisions for high risk cargo and mail are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.8" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_6.8"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="6.8"/>
             </num>
@@ -5651,7 +5965,11 @@
                <t v="SECURITY PROCEDURES FOR CARGO AND MAIL BEING CARRIED INTO THE UNION FROM THIRD COUNTRIES"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_6.8.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.8.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="6.8.1"/>
             </num>
@@ -5755,7 +6073,11 @@
                <t v="An ACC3 listed on the Union database on supply chain security shall be recognised in all Member States for all operations from the third country airport into the Union."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.8.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.8.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="6.8.2"/>
             </num>
@@ -5920,7 +6242,11 @@
                </p>
             </unit>
          </deleted>
-         <unit eId="anx/pnt_6.8.3" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.8.3"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="6.8.3"/>
             </num>
@@ -6161,7 +6487,11 @@
                <t v="Transit or transfer consignments arriving from a third country not listed in Attachment 6-I whose accompanying documentation does not comply with point 6.8.3.6 shall be treated in accordance with Chapter 6.2 before the subsequent flight. Accompanying documentation of consignments arriving from a third country listed in Attachment 6-F shall at least comply with the ICAO Consignment Security Declaration scheme."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.8.4" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.8.4"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:30"
@@ -6338,7 +6668,11 @@
                <t v="Upon request by the appropriate authority of their approval, EU aviation security validators shall make available the details contained in Part 1 of the checklist set out in Attachment 6-C2 or Attachment 6-C4, as appropriate, for each entity they have designated, in order to establish a consolidated list of entities designated by EU aviation security validators."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.8.5" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.8.5"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:30"
@@ -6599,7 +6933,11 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_6.8.6" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_6.8.6"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="inserted"
                         location="AR:1 .AND. AX:0;PT:31"
@@ -6613,7 +6951,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_6.8.6.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_6.8.6.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <provenance amendingAct="32017R0815"
                         action="inserted"
                         location="AR:1 .AND. AX:0;PT:31"
@@ -6698,7 +7040,11 @@
                </p>
             </unit>
          </unit>
-         <unit eId="anx/pnt_6.8.6.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_6.8.6.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <provenance amendingAct="32017R0815"
                         action="inserted"
                         location="AR:1 .AND. AX:0;PT:31"
@@ -6750,14 +7096,17 @@
                </p>
             </unit>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-A" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-A" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-A"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-A/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-A/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="DECLARATION OF COMMITMENTS — REGULATED AGENT"/>
             </heading>
@@ -6885,14 +7234,17 @@
                <t v="Signature:"/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-B" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-B" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-B"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-B/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-B/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="GUIDANCE FOR KNOWN CONSIGNORS"/>
             </heading>
@@ -6931,7 +7283,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_1"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Introduction"/>
@@ -6952,7 +7305,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_2"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Organisation and responsibilities"/>
@@ -6964,7 +7318,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_2/level_1"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Staff recruitment procedure"/>
@@ -6982,7 +7337,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_2/level_2"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Staff security training procedure"/>
@@ -7006,7 +7362,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_2/level_3"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Physical security"/>
@@ -7022,7 +7379,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_2/level_4"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Production "/>
@@ -7039,7 +7397,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_2/level_5"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Packing "/>
@@ -7062,7 +7421,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_2/level_6"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Storage "/>
@@ -7086,7 +7446,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_2/level_7"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Despatch "/>
@@ -7103,7 +7464,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_2/level_8"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Transportation"/>
@@ -7140,7 +7502,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_2/level_9"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Consignor's responsibilities"/>
@@ -7261,14 +7624,17 @@
                </p>
             </annotation>
          </annotation>
-         <unit eId="anx/level_ATTACHMENT-6-C" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-C" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-C"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="VALIDATION CHECKLIST FOR KNOWN CONSIGNORS"/>
             </heading>
@@ -7329,7 +7695,7 @@
                </list>
             </annotation>
          </unit>
-         <unit eId="anx/level_PART-1" kind="level" depth="4">
+         <unit eId="anx/level_PART-1" kind="level" depth="4" rank="5">
             <num>
                <t v="PART 1"/>
             </num>
@@ -7729,7 +8095,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_PART-2" kind="level" depth="4">
+         <unit eId="anx/level_PART-2" kind="level" depth="4" rank="5">
             <num>
                <t v="PART 2"/>
             </num>
@@ -7777,7 +8143,7 @@
                </emphasis>
             </p>
          </annotation>
-         <unit eId="anx/level_PART-3" kind="level" depth="4">
+         <unit eId="anx/level_PART-3" kind="level" depth="4" rank="5">
             <num>
                <t v="PART 3"/>
             </num>
@@ -8022,7 +8388,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_PART-4" kind="level" depth="4">
+         <unit eId="anx/level_PART-4" kind="level" depth="4" rank="5">
             <num>
                <t v="PART 4"/>
             </num>
@@ -8295,7 +8661,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_PART-5" kind="level" depth="4">
+         <unit eId="anx/level_PART-5" kind="level" depth="4" rank="5">
             <num>
                <t v="PART 5"/>
             </num>
@@ -8456,7 +8822,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_PART-6" kind="level" depth="4">
+         <unit eId="anx/level_PART-6" kind="level" depth="4" rank="5">
             <num>
                <t v="PART 6"/>
             </num>
@@ -8724,7 +9090,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_PART-7" kind="level" depth="4">
+         <unit eId="anx/level_PART-7" kind="level" depth="4" rank="5">
             <num>
                <t v="PART 7"/>
             </num>
@@ -8805,7 +9171,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_PART-8" kind="level" depth="4">
+         <unit eId="anx/level_PART-8" kind="level" depth="4" rank="5">
             <num>
                <t v="PART 8"/>
             </num>
@@ -8974,7 +9340,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_PART-8A" kind="level" depth="4">
+         <unit eId="anx/level_PART-8A" kind="level" depth="4" rank="5">
             <num>
                <t v="PART 8A"/>
             </num>
@@ -9032,7 +9398,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_PART-9" kind="level" depth="4">
+         <unit eId="anx/level_PART-9" kind="level" depth="4" rank="5">
             <num>
                <t v="PART 9"/>
             </num>
@@ -9348,7 +9714,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_PART-9/level_1" kind="level" depth="5">
+         <unit eId="anx/level_PART-9/level_1" kind="level" depth="5" rank="6">
             <heading>
                <emphasis kind="b">
                   <emphasis kind="i">
@@ -9483,7 +9849,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C2" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-C2" kind="level" depth="2" rank="3">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -9494,7 +9860,10 @@
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C2/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C2/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -9576,7 +9945,10 @@
                </list>
             </annotation>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-1"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -10086,7 +10458,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-2" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-2"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -10317,7 +10692,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-3" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-3"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -10670,7 +11048,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-4" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-4"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -11022,7 +11403,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-5" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-5"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -11442,7 +11826,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-6" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-6"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -11616,7 +12003,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-7" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-7"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -11849,7 +12239,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-8" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-8"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -12033,7 +12426,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-9" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C2/level_PART-9"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -12284,7 +12680,7 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_PART-10" kind="level" depth="3">
+         <unit eId="anx/level_PART-10" kind="level" depth="3" rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -12365,7 +12761,7 @@
          <p>
             <t v="Signature:"/>
          </p>
-         <unit eId="anx/level_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -12461,7 +12857,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C3" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-C3" kind="level" depth="2" rank="3">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -12537,7 +12933,10 @@
                </list>
             </annotation>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-1"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -12950,7 +13349,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-2" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-2"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -13155,7 +13557,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-3" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-3"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -13418,7 +13823,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-4" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-4"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -13732,7 +14140,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-5" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-5"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -14133,7 +14544,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-6" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-6"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -14356,7 +14770,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-7" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-7"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -14799,7 +15216,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-8" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-8"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -14975,7 +15395,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-9" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-9"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -15154,7 +15577,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-10"
                kind="level"
-               depth="3">
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -15380,7 +15804,7 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_PART-11" kind="level" depth="3">
+         <unit eId="anx/level_PART-11" kind="level" depth="3" rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -15477,7 +15901,7 @@
          <p>
             <t v="Signature:"/>
          </p>
-         <unit eId="anx/level_2" kind="level" depth="1">
+         <unit eId="anx/level_2" kind="level" depth="1" rank="2">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -15555,7 +15979,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C4" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-C4" kind="level" depth="2" rank="3">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -15652,7 +16076,10 @@
                </annotation>
             </annotation>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-1"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -16055,7 +16482,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-2" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-2"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -16264,7 +16694,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-3" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-3"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -16318,7 +16751,10 @@
                <t v="Please note that detailed information should be given on the protection of identifiable air cargo or air mail from unauthorised interference or tampering in Parts 6 to 9."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-4" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-4"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -16648,7 +17084,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-5" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-5"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -16993,7 +17432,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-6" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-6"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -17132,7 +17574,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-7" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-7"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -17343,7 +17788,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-8" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-8"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -17466,7 +17914,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-9" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-9"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -17667,7 +18118,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-10"
                kind="level"
-               depth="3">
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -17756,7 +18208,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-11"
                kind="level"
-               depth="3">
+               depth="3"
+               rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -17867,7 +18320,7 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_PART-12" kind="level" depth="3">
+         <unit eId="anx/level_PART-12" kind="level" depth="3" rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -18102,7 +18555,7 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="anx/level_PART-13" kind="level" depth="3">
+         <unit eId="anx/level_PART-13" kind="level" depth="3" rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
@@ -18186,7 +18639,7 @@
          <p>
             <t v="Signature:"/>
          </p>
-         <unit eId="anx/level_3" kind="level" depth="1">
+         <unit eId="anx/level_3" kind="level" depth="1" rank="2">
             <heading>
                <changed amendingAct="32017R0815"
                         action="replaced"
@@ -18287,14 +18740,17 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6D" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6D" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6–D"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6D/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6D/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="AVIATION SECURITY INSTRUCTIONS FOR ACCOUNT CONSIGNORS"/>
             </heading>
@@ -18306,7 +18762,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6D/level_1/level_1"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Premises"/>
@@ -18321,7 +18778,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6D/level_1/level_2"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Staff"/>
@@ -18336,7 +18794,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6D/level_1/level_3"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Responsible nominee"/>
@@ -18348,7 +18807,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6D/level_1/level_4"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Consignment integrity"/>
@@ -18369,7 +18829,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6D/level_1/level_5"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Transport"/>
@@ -18409,7 +18870,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6D/level_1/level_6"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Irregularities"/>
@@ -18421,7 +18883,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6D/level_1/level_7"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Consignments from other sources"/>
@@ -18458,7 +18921,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6D/level_1/level_8"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Unannounced inspections"/>
@@ -18470,7 +18934,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6D/level_1/level_9"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Prohibited articles"/>
@@ -18482,7 +18947,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6D/level_1/level_10"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <t v="Declaration of commitments"/>
@@ -18500,7 +18966,10 @@
                <t v="However, you must inform the regulated agent immediately if your company is no longer a holder of an AEO certificate. In this case, the regulated agent will inform you of how to ensure the account consignor status."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6D/level_2" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6D/level_2"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="DECLARATION OF COMMITMENTS — ACCOUNT CONSIGNOR"/>
             </heading>
@@ -18559,14 +19028,17 @@
                <t v="Signature:"/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-E" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-E" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-E"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-E/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-E/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="HAULIER DECLARATION"/>
             </heading>
@@ -18675,7 +19147,7 @@
                <t v="Signature:"/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-F" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-F" kind="level" depth="2" rank="3">
             <provenance amendingAct="32015R2426"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:4"
@@ -18689,7 +19161,10 @@
                <t v="CARGO AND MAIL"/>
             </subheading>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-F/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-F/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32015R2426"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:4"
@@ -18708,7 +19183,8 @@
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-F/level_1/level_1"
                kind="level"
-               depth="4">
+               depth="4"
+               rank="5">
             <provenance amendingAct="32015R2426"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:4"
@@ -18740,7 +19216,10 @@
                <t v="Republic of Serbia"/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-F/level_2" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-F/level_2"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32015R2426"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:4"
@@ -18754,7 +19233,10 @@
                </emphasis>
             </subheading>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-F/level_3" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-F/level_3"
+               kind="level"
+               depth="3"
+               rank="4">
             <provenance amendingAct="32015R2426"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:4"
@@ -18771,14 +19253,17 @@
                <t v="No provisions adopted yet."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-G" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-G" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-G"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-G/level_1" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-6-G/level_1"
+               kind="level"
+               depth="3"
+               rank="4">
             <heading>
                <t v="PROVISIONS RELATING TO THIRD COUNTRY CARGO AND MAIL"/>
             </heading>
@@ -18898,7 +19383,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-H1" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-H1" kind="level" depth="2" rank="3">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:33"
@@ -19025,7 +19510,7 @@
                <t v="Signature:"/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-H2" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-H2" kind="level" depth="2" rank="3">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:33"
@@ -19152,7 +19637,7 @@
                <t v="Signature:"/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-H3" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-H3" kind="level" depth="2" rank="3">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:33"
@@ -19279,7 +19764,7 @@
                <t v="Signature:"/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-I" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-I" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-I"/>
@@ -19289,7 +19774,7 @@
                <t v="Provisions for high risk cargo are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-6-J" kind="level" depth="2">
+         <unit eId="anx/level_ATTACHMENT-6-J" kind="level" depth="2" rank="3">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-J"/>
@@ -19299,7 +19784,11 @@
                <t v="Provisions for the use of screening equipment are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_7" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_7"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="7."/>
             </num>
@@ -19309,7 +19798,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_7.0" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_7.0"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="7.0"/>
             </num>
@@ -19320,7 +19813,11 @@
                <t v="Unless otherwise stated or unless the implementation of security controls as referred to in Chapters 4, 5 and 6, respectively, are ensured by an authority, airport operator, entity or another air carrier, an air carrier shall ensure the implementation of the measures set out in this Chapter as regards its air carrier mail and air carrier materials."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_7.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_7.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="7.1"/>
             </num>
@@ -19352,7 +19849,11 @@
                <t v="Air carrier mail and air carrier materials to be loaded onto an aircraft shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_7.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_7.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="7.2"/>
             </num>
@@ -19390,7 +19891,11 @@
                <t v="Self-check-in allowed for use by passengers shall be considered as authorised access to such systems."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_8" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_8"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="8."/>
             </num>
@@ -19400,7 +19905,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_8.0" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_8.0"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="8.0"/>
             </num>
@@ -19484,7 +19993,11 @@
                <t v="The list of prohibited articles in in-flight supplies is the same as the one set out in Attachment 1-A. Prohibited articles shall be handled in accordance with point 1.6."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_8.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_8.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="8.1"/>
             </num>
@@ -19492,7 +20005,11 @@
                <t v="SECURITY CONTROLS"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_8.1.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_8.1.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="8.1.1"/>
             </num>
@@ -19552,7 +20069,11 @@
                <t v="The security controls of in-flight supplies shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_8.1.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_8.1.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="8.1.2"/>
             </num>
@@ -19639,7 +20160,11 @@
                <t v="Where the screener cannot determine whether or not the item contains any prohibited articles, it shall be rejected or rescreened to the screener's satisfaction."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_8.1.3" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_8.1.3"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="8.1.3"/>
             </num>
@@ -19753,7 +20278,11 @@
                <t v="Without prejudice to the right of each Member State to apply more stringent measures in accordance with Article 6 of Regulation (EC) No 300/2008, a regulated supplier approved in accordance with point 8.1.3 shall be recognised in all Member States."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_8.1.4" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_8.1.4"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="8.1.4"/>
             </num>
@@ -19938,7 +20467,11 @@
                <t v="Upon request, these documents shall be made available to the appropriate authority for compliance monitoring purposes."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_8.1.5" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_8.1.5"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="8.1.5"/>
             </num>
@@ -20017,7 +20550,11 @@
                <t v="The security controls to be applied by an air carrier and a regulated supplier shall also be subject to the additional provisions laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_8.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_8.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="8.2"/>
             </num>
@@ -20028,7 +20565,11 @@
                <t v="Detailed provisions for the protection of in-flight supplies are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_8.3" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_8.3"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="8.3"/>
             </num>
@@ -20060,21 +20601,25 @@
                <t v="Detailed provisions for the additional security provisions for in- flight supplies of LAGs and STEBs are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-8-A" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-8-A" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 8-A"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-8-A/level_1" kind="level" depth="4">
+         <unit eId="anx/level_ATTACHMENT-8-A/level_1"
+               kind="level"
+               depth="4"
+               rank="5">
             <heading>
                <t v="DECLARATION OF COMMITMENTS"/>
             </heading>
          </unit>
          <unit eId="anx/level_ATTACHMENT-8-A/level_1/level_1"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="REGULATED SUPPLIER OF IN-FLIGHT SUPPLIES"/>
@@ -20200,21 +20745,25 @@
                <t v="Signature:"/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-8-B" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-8-B" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 8-B"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-8-B/level_1" kind="level" depth="4">
+         <unit eId="anx/level_ATTACHMENT-8-B/level_1"
+               kind="level"
+               depth="4"
+               rank="5">
             <heading>
                <t v="DECLARATION OF COMMITMENTS"/>
             </heading>
          </unit>
          <unit eId="anx/level_ATTACHMENT-8-B/level_1/level_1"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="KNOWN SUPPLIER OF IN-FLIGHT SUPPLIES"/>
@@ -20354,7 +20903,11 @@
                <t v="Signature:"/>
             </p>
          </unit>
-         <unit eId="anx/pnt_9" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_9"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="9."/>
             </num>
@@ -20364,7 +20917,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_9.0" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_9.0"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="9.0"/>
             </num>
@@ -20432,7 +20989,11 @@
                <t v="The list of prohibited articles in airport supplies is the same as the one set out in Attachment 1-A. Prohibited articles shall be handled in accordance with point 1.6."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_9.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_9.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="9.1"/>
             </num>
@@ -20440,7 +21001,11 @@
                <t v="SECURITY CONTROLS"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_9.1.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_9.1.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="9.1.1"/>
             </num>
@@ -20492,7 +21057,11 @@
                <t v="Where there is any reason to believe that airport supplies to which security controls have been applied have been tampered with or have not been protected from unauthorised interference from the time that those controls were applied, they shall be screened before being allowed into security restricted areas."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_9.1.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_9.1.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="9.1.2"/>
             </num>
@@ -20579,7 +21148,11 @@
                <t v="Where the screener cannot determine whether or not the item contains any prohibited articles, it shall be rejected or rescreened to the screener's satisfaction."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_9.1.3" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_9.1.3"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="9.1.3"/>
             </num>
@@ -20760,7 +21333,11 @@
                <t v="Upon request, these documents shall be made available to the appropriate authority for compliance monitoring purposes."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_9.1.4" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_9.1.4"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="9.1.4"/>
             </num>
@@ -20831,7 +21408,11 @@
                <t v="If a known supplier uses another company that is not a known supplier to the airport operator for transporting supplies to the airport, the known supplier shall ensure that all security controls listed in this point are adhered to."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_9.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_9.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="9.2"/>
             </num>
@@ -20842,7 +21423,11 @@
                <t v="Detailed provisions for the protection of airport supplies are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_9.3" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_9.3"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="9.3"/>
             </num>
@@ -20874,21 +21459,25 @@
                <t v="Detailed provisions for the additional security provisions for supplies of LAGs and STEBs are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-9-A" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-9-A" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 9-A"/>
                </emphasis>
             </num>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-9-A/level_1" kind="level" depth="4">
+         <unit eId="anx/level_ATTACHMENT-9-A/level_1"
+               kind="level"
+               depth="4"
+               rank="5">
             <heading>
                <t v="DECLARATION OF COMMITMENTS"/>
             </heading>
          </unit>
          <unit eId="anx/level_ATTACHMENT-9-A/level_1/level_1"
                kind="level"
-               depth="5">
+               depth="5"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="KNOWN SUPPLIER OF AIRPORT SUPPLIES"/>
@@ -21028,7 +21617,11 @@
                <t v="Signature:"/>
             </p>
          </unit>
-         <unit eId="anx/pnt_10" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_10"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="10."/>
             </num>
@@ -21041,7 +21634,11 @@
                <t v="No provisions in this Regulation."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_11"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="11."/>
             </num>
@@ -21051,7 +21648,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_11.0" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_11.0"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="11.0"/>
             </num>
@@ -21131,7 +21732,11 @@
                <t v="Where a person has received training and acquired competencies listed in point 11.2, the training need not be repeated for another function other than for the purposes of recurrent training."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_11.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="11.1"/>
             </num>
@@ -21268,7 +21873,11 @@
                <t v="Recruitment records, including results of any assessment tests, shall be kept for all persons recruited under points 11.1.1 and 11.1.2 for at least the duration of their contract."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_11.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="11.2"/>
             </num>
@@ -21276,7 +21885,11 @@
                <t v="TRAINING"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_11.2.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_11.2.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="11.2.1"/>
             </num>
@@ -21339,7 +21952,11 @@
                <t v="Training records shall be kept for all persons trained for at least the duration of their contract."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.2.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_11.2.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="11.2.2"/>
             </num>
@@ -21446,7 +22063,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_11.2.3" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_11.2.3"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="11.2.3"/>
             </num>
@@ -22548,7 +23169,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_11.2.4" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_11.2.4"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="11.2.4"/>
             </num>
@@ -22632,7 +23257,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_11.2.5" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_11.2.5"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="11.2.5"/>
             </num>
@@ -22679,7 +23308,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_11.2.6" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_11.2.6"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="11.2.6"/>
             </num>
@@ -22782,7 +23415,11 @@
                <t v="Each person undergoing security awareness training shall be required to demonstrate understanding of all subjects referred to in point 11.2.6.2 before being issued with an authorisation granting unescorted access to security restricted areas."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.2.7" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_11.2.7"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="11.2.7"/>
             </num>
@@ -22843,7 +23480,11 @@
                <t v="This training shall not apply to instructors falling under point 11.5."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.3" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_11.3"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="11.3"/>
             </num>
@@ -22932,7 +23573,11 @@
                <t v="Certification or approval records shall be kept for all persons certified or approved, respectively, for at least the duration of their contract."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.4" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_11.4"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="11.4"/>
             </num>
@@ -23079,7 +23724,11 @@
                <t v="Records of recurrent training shall be kept for all persons trained for at least the duration of their contract."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.5" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_11.5"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="11.5"/>
             </num>
@@ -23171,7 +23820,11 @@
                <t v="Any competencies acquired by an instructor in order to meet the requirements under this Chapter in one Member State shall be recognised in another Member State."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.6" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_11.6"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="11.6"/>
             </num>
@@ -23187,7 +23840,11 @@
                <t v="EU aviation security validation is a standardised, documented, impartial and objective process for obtaining and evaluating evidence to determine the level of compliance of the validated entity with requirements set out in Regulation (EC) No 300/2008 and its implementing acts."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.6.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_11.6.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="11.6.2"/>
             </num>
@@ -23252,7 +23909,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_11.6.3" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_11.6.3"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="11.6.3"/>
             </num>
@@ -23448,7 +24109,11 @@
                <t v="The approval of an EU aviation security validator shall expire after a maximum period of five years."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.6.4" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_11.6.4"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="11.6.4"/>
             </num>
@@ -23506,7 +24171,11 @@
                <t v="The Commission may recognise validation activities undertaken by authorities or aviation security validators under the jurisdiction of and recognised by a third country or an international organisation where it can confirm their equivalency to EU aviation security validation. A list thereof shall be kept in Attachment 6-Fiii."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.6.5" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_11.6.5"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="11.6.5"/>
             </num>
@@ -23600,7 +24269,11 @@
                <t v="By default the report shall be in English and delivered to the appropriate authority, where applicable, along with the validated entity within a maximum of one month after the on-site verification."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_11.7" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_11.7"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="11.7"/>
             </num>
@@ -23616,7 +24289,7 @@
                <t v="Any competencies acquired by a person in order to meet the requirements under Regulation (EC) No 300/2008 and its implementing acts in one Member State shall be recognised in another Member State."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-11-A" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-11-A" kind="level" depth="3" rank="4">
             <provenance amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:41"
@@ -23723,7 +24396,11 @@
                <t v="Signature:"/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12" kind="level" depth="2" numbered="true">
+         <unit eId="anx/pnt_12"
+               kind="level"
+               depth="2"
+               numbered="true"
+               rank="3">
             <num>
                <t v="12."/>
             </num>
@@ -23733,7 +24410,11 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.0" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.0"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <provenance amendingAct="32020R0111"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:5"
@@ -23745,7 +24426,11 @@
                <t v="GENERAL PROVISION AND APPROVAL OF SECURITY EQUIPMENT"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.0.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.0.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <provenance amendingAct="32020R0111"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:5"
@@ -23806,7 +24491,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_12.0.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.0.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <provenance amendingAct="32020R0111"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:5"
@@ -23988,7 +24677,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_12.0.3" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.0.3"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <provenance amendingAct="32020R0111"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:5"
@@ -24278,7 +24971,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_12.0.4" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.0.4"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <provenance amendingAct="32020R0111"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:5"
@@ -24386,7 +25083,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_12.0.5" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.0.5"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <provenance amendingAct="32020R0111"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:5"
@@ -24430,7 +25131,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_12.1" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.1"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.1"/>
             </num>
@@ -24438,7 +25143,11 @@
                <t v="WALK-THROUGH METAL DETECTION (WTMD) EQUIPMENT"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.1.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.1.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.1.1"/>
             </num>
@@ -24518,7 +25227,11 @@
                </p>
             </unit>
          </deleted>
-         <unit eId="anx/pnt_12.1.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.1.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.1.2"/>
             </num>
@@ -24552,7 +25265,11 @@
                <t v="All WTMD used for screening of passengers shall meet standard 2."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.1.3" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.1.3"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.1.3"/>
             </num>
@@ -24601,7 +25318,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_12.1.4" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.1.4"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.1.4"/>
             </num>
@@ -24627,7 +25348,11 @@
                <t v="All WTMD equipment used in combination with SMD equipment shall be able to detect and indicate all alarms generated by metallic items on a person in at least two zones. The first zone shall correspond to the lower legs of a person and shall be between the floor and a maximum of 35 cm above the floor. All other zones shall be above the first zone."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.2" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.2"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.2"/>
             </num>
@@ -24675,7 +25400,11 @@
                <t v="HHMD shall have a visual indicator to show that the equipment is in operation."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.3" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.3"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.3"/>
             </num>
@@ -24686,7 +25415,11 @@
                <t v="X-ray equipment shall comply with the detailed requirements laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.4" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.4"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.4"/>
             </num>
@@ -24694,7 +25427,11 @@
                <t v="EXPLOSIVE DETECTION SYSTEMS (EDS) EQUIPMENT"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.4.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.4.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.4.1"/>
             </num>
@@ -24745,7 +25482,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_12.4.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.4.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.4.2"/>
             </num>
@@ -24843,7 +25584,11 @@
                <t v="All EDS equipment designed to screen cabin baggage containing portable computers and other large electrical items and LAGS shall meet at least standard C3."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.4.3" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.4.3"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.4.3"/>
             </num>
@@ -24856,7 +25601,11 @@
                <t v="Image quality for EDS shall comply with the detailed requirements laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.5" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.5"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.5"/>
             </num>
@@ -24864,7 +25613,11 @@
                <t v="THREAT IMAGE PROJECTION (TIP)"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.5.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.5.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.5.1"/>
             </num>
@@ -24959,7 +25712,11 @@
                <t v="The appropriate authority shall regularly monitor the correct implementation of the TIP systems and ensure that the systems are correctly configured, including realistic and relevant projection of CTI and FTI where in use, are in compliance with the requirements and have up-to-date image libraries."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.5.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.5.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.5.2"/>
             </num>
@@ -25075,7 +25832,11 @@
                <t v="The composition of TIP shall also be subject to the additional detailed requirements laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.6" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.6"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.6"/>
             </num>
@@ -25134,7 +25895,11 @@
                <t v=" at the latest."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.7" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.7"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.7"/>
             </num>
@@ -25142,7 +25907,11 @@
                <t v="EQUIPMENT FOR SCREENING LIQUIDS, AEROSOLS AND GELS (LAGs)"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.7.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.7.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.7.1"/>
             </num>
@@ -25266,7 +26035,11 @@
                </list>
             </unit>
          </deleted>
-         <unit eId="anx/pnt_12.7.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.7.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.7.2"/>
             </num>
@@ -25315,7 +26088,11 @@
                </p>
             </unit>
          </deleted>
-         <unit eId="anx/pnt_12.7.3" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.7.3"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.7.3"/>
             </num>
@@ -25328,7 +26105,11 @@
                <t v="Equipment that is approved by or on behalf of the appropriate authority of a Member State to meet the standards as laid down in Commission Implementing Decision C(2015) 8005 shall be recognised by other Member States to meet these standards. Member States shall submit to the Commission the name and, upon request, other relevant details of bodies designated to approve equipment. The Commission shall inform other Member States of the bodies."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.8" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.8"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.8"/>
             </num>
@@ -25421,7 +26202,11 @@
                <t v="No evaluation period may be longer than thirty months."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.9" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.9"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.9"/>
             </num>
@@ -25429,7 +26214,11 @@
                <t v="EXPLOSIVE DETECTION DOGS"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.9.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.9.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.9.1"/>
             </num>
@@ -25503,7 +26292,11 @@
                <t v="After approval by the appropriate authority, an EDD team may be used for security screening by use of free running or remote explosive scent tracing method."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.9.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.9.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.9.2"/>
             </num>
@@ -25581,7 +26374,11 @@
                <t v="An EDD approved for remote explosive scent tracing method shall be led by a maximum of two handlers per EDD."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.9.3" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.9.3"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.9.3"/>
             </num>
@@ -25591,7 +26388,7 @@
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.9.3/level_1" kind="level" depth="5">
+         <unit eId="anx/pnt_12.9.3/level_1" kind="level" depth="5" rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="General training obligations"/>
@@ -25646,7 +26443,7 @@
                <t v="Training shall be provided to any persons handling the training aids so as to prevent contamination."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.9.3/level_2" kind="level" depth="5">
+         <unit eId="anx/pnt_12.9.3/level_2" kind="level" depth="5" rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Initial training for EDD Teams"/>
@@ -25669,7 +26466,7 @@
                <t v="Initial training for EDD team shall include practical training in the intended work environment."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.9.3/level_3" kind="level" depth="5">
+         <unit eId="anx/pnt_12.9.3/level_3" kind="level" depth="5" rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Recurrent training for EDD Teams"/>
@@ -25708,7 +26505,7 @@
                <t v="Point 11 shall not apply in the case where an EDD is subject to recognition training of all materials listed in Attachment 12-D of Commission Implementing Decision C(2015) 8005 on at least a weekly basis."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.9.3/level_4" kind="level" depth="5">
+         <unit eId="anx/pnt_12.9.3/level_4" kind="level" depth="5" rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Training records for EDD Teams"/>
@@ -25723,7 +26520,7 @@
                <t v="The records of both initial and recurrent training shall be kept for both the EDD and its handler for at least the duration of their contract of employment and they shall be made available to the appropriate authority upon request."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.9.3/level_5" kind="level" depth="5">
+         <unit eId="anx/pnt_12.9.3/level_5" kind="level" depth="5" rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Operational Training for EDD Teams"/>
@@ -25746,7 +26543,11 @@
                <t v="Operational training shall be done on a continuous random basis during the deployment period, and shall measure EDD's detection performance by means of approved training aids."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.9.4" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.9.4"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.9.4"/>
             </num>
@@ -25830,7 +26631,11 @@
                <t v="The validity of each approval period shall not be longer than 12 months."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.9.5" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.9.5"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.9.5"/>
             </num>
@@ -25848,7 +26653,11 @@
                <t v="The EDD team shall be subject to quality control measures set out in the Attachment 12-G of Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.9.6" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.9.6"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.9.6"/>
             </num>
@@ -25861,7 +26670,11 @@
                <t v="Further, detailed requirements are contained in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.10" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.10"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.10"/>
             </num>
@@ -25872,7 +26685,11 @@
                <t v="Detailed provisions on the use of MDE are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.11" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.11"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.11"/>
             </num>
@@ -25880,7 +26697,11 @@
                <t v="SECURITY SCANNERS"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.11.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.11.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.11.1"/>
             </num>
@@ -25959,7 +26780,11 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.11.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.11.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.11.2"/>
             </num>
@@ -26016,7 +26841,11 @@
                <t v="."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.12" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.12"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <provenance amendingAct="32019R0103"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:51"
@@ -26028,7 +26857,11 @@
                <t v="SHOE SCANNER EQUIPMENT"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.12.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.12.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <provenance amendingAct="32019R0103"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:51"
@@ -26138,7 +26971,11 @@
                <t v="SED shall give at least a visual alarm and an audible alarm when it detects explosive items as refers to in point 12.12.1.2. Both types of alarm shall be noticeable at a range of 1 m."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.12.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.12.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <provenance amendingAct="32019R0103"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:51"
@@ -26200,7 +27037,11 @@
                <t v="All SMD shall be able to resolve alarms generated on a WTMD, in the area between the surface supporting the shoe and at least 35 cm above."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.12.3" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.12.3"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <provenance amendingAct="32019R0103"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:51"
@@ -26226,7 +27067,11 @@
                <t v="Detailed requirements on this standard are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.13" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.13"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <num>
                <t v="12.13"/>
             </num>
@@ -26234,7 +27079,11 @@
                <t v="AUTO CLEAR SOFTWARE (ACS)"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.13.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.13.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.13.1"/>
             </num>
@@ -26300,7 +27149,11 @@
                <t v="The means for managing the ACS shall be protected and accessible only to authorised persons."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.13.2" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.13.2"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <num>
                <t v="12.13.2"/>
             </num>
@@ -26318,7 +27171,11 @@
                <t v="Detailed provisions for performance requirements for ACS are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_12.14" kind="level" depth="3" numbered="true">
+         <unit eId="anx/pnt_12.14"
+               kind="level"
+               depth="3"
+               numbered="true"
+               rank="4">
             <provenance amendingAct="32019R0103"
                         action="inserted"
                         location="AR:1 .AND. AX:0;PT:52"
@@ -26330,7 +27187,11 @@
                <t v="EXPLOSIVE VAPOUR DETECTION (EVD) EQUIPMENT"/>
             </heading>
          </unit>
-         <unit eId="anx/pnt_12.14.1" kind="level" depth="4" numbered="true">
+         <unit eId="anx/pnt_12.14.1"
+               kind="level"
+               depth="4"
+               numbered="true"
+               rank="5">
             <provenance amendingAct="32019R0103"
                         action="inserted"
                         location="AR:1 .AND. AX:0;PT:52"
@@ -26380,7 +27241,7 @@
                <t v="Detailed requirements on these standards are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-A" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-A" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-A"/>
@@ -26390,7 +27251,7 @@
                <t v="Detailed provisions for performance requirements for WTMD and SMD are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-B" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-B" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-B"/>
@@ -26400,7 +27261,7 @@
                <t v="Detailed provisions for performance requirements for EDS are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-C" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-C" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-C"/>
@@ -26410,7 +27271,7 @@
                <t v="Detailed provisions for performance requirements for equipment for the screening of liquids, aerosols and gels (LAGS) are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-D" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-D" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-D"/>
@@ -26420,7 +27281,7 @@
                <t v="Detailed provisions for performance requirements for an EDD are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-E" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-E" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-E"/>
@@ -26430,7 +27291,7 @@
                <t v="Detailed provisions for approval procedures of an EDD are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-F" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-F" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-F"/>
@@ -26440,7 +27301,7 @@
                <t v="Detailed provisions for approval test areas and test conditions for an EDD are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-G" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-G" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-G"/>
@@ -26450,7 +27311,7 @@
                <t v="Detailed provisions for quality control requirements for an EDD are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-H" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-H" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-H"/>
@@ -26464,7 +27325,7 @@
                <t v=" are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-I" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-I" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-I"/>
@@ -26478,7 +27339,7 @@
                <t v=" are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-J" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-J" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-J"/>
@@ -26488,7 +27349,7 @@
                <t v="Detailed provisions for performance requirements for MDE are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-K" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-K" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-K"/>
@@ -26498,7 +27359,7 @@
                <t v="Detailed provisions for performance requirements for security scanners are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-L" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-L" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-L"/>
@@ -26508,7 +27369,7 @@
                <t v="Detailed provisions for performance requirements for Explosive Trace Detection (ETD) are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-M" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-M" kind="level" depth="3" rank="4">
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-M"/>
@@ -26518,7 +27379,7 @@
                <t v="Detailed provisions for performance requirements for ACS are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-N" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-N" kind="level" depth="3" rank="4">
             <provenance amendingAct="32020R0111"
                         action="inserted"
                         location="AR:1 .AND. AX:0;PT:6"
@@ -26532,7 +27393,7 @@
                <t v="Detailed provisions for performance requirements for SED are laid down in Commission Implementing Decision C(2015) 8005."/>
             </p>
          </unit>
-         <unit eId="anx/level_ATTACHMENT-12-O" kind="level" depth="3">
+         <unit eId="anx/level_ATTACHMENT-12-O" kind="level" depth="3" rank="4">
             <provenance amendingAct="32020R0111"
                         action="inserted"
                         location="AR:1 .AND. AX:0;PT:7"

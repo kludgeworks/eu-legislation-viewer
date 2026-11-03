@@ -125,7 +125,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_Sole-Article" kind="article">
+      <unit eId="art_Sole-Article" kind="article" rank="1">
          <num>
             <t v="Sole Article"/>
          </num>
@@ -216,7 +216,7 @@
    </notes>
    <annexes>
       <unit eId="att_1" kind="attachment">
-         <unit eId="att_1/level_SECTION-III" kind="level" depth="1">
+         <unit eId="att_1/level_SECTION-III" kind="level" depth="1" rank="1">
             <num>
                <emphasis kind="i">
                   <t v="SECTION III"/>
@@ -228,7 +228,10 @@
                </emphasis>
             </subheading>
          </unit>
-         <unit eId="att_1/level_SECTION-III/level_1" kind="level" depth="2">
+         <unit eId="att_1/level_SECTION-III/level_1"
+               kind="level"
+               depth="2"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="EXPENDITURE"/>
@@ -1088,7 +1091,7 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="att_1/level_TITLE-14" kind="level" depth="3">
+         <unit eId="att_1/level_TITLE-14" kind="level" depth="3" rank="3">
             <num>
                <emphasis kind="i">
                   <t v="TITLE 14"/>
@@ -1470,7 +1473,8 @@
          <unit eId="att_1/pnt_CHAPTER-14-03"
                kind="level"
                depth="4"
-               numbered="true">
+               numbered="true"
+               rank="4">
             <num>
                <emphasis kind="b">
                   <t v="CHAPTER 14 03 —"/>
@@ -1712,7 +1716,10 @@
                </rowGroup>
             </table>
          </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03/level_2" kind="level" depth="5">
+         <unit eId="att_1/pnt_CHAPTER-14-03/level_2"
+               kind="level"
+               depth="5"
+               rank="5">
             <heading>
                <emphasis kind="i">
                   <t v="Remarks"/>
@@ -1731,7 +1738,10 @@
                <t v="The related estimated amounts as well as the corresponding article or item of the statement of revenue are indicated, wherever possible, in the relevant budget lines."/>
             </p>
          </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03/level_3" kind="level" depth="5">
+         <unit eId="att_1/pnt_CHAPTER-14-03/level_3"
+               kind="level"
+               depth="5"
+               rank="5">
             <heading>
                <emphasis kind="i">
                   <t v="Legal basis"/>
@@ -1751,7 +1761,10 @@
                <t v=")."/>
             </p>
          </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03/level_4" kind="level" depth="5">
+         <unit eId="att_1/pnt_CHAPTER-14-03/level_4"
+               kind="level"
+               depth="5"
+               rank="5">
             <heading>
                <emphasis kind="b">
                   <emphasis kind="i">
@@ -1763,7 +1776,8 @@
          </unit>
          <unit eId="att_1/pnt_CHAPTER-14-03/level_4/level_1"
                kind="level"
-               depth="6">
+               depth="6"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Figures (Differentiated appropriations)"/>
@@ -1851,7 +1865,8 @@
          </unit>
          <unit eId="att_1/pnt_CHAPTER-14-03/level_4/level_2"
                kind="level"
-               depth="6">
+               depth="6"
+               rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Remarks"/>

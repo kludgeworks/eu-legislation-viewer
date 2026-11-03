@@ -110,7 +110,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -134,7 +134,7 @@
                   <t v="The following Chapter Ia is inserted:"/>
                </p>
                <quotedStructure eId="art_1/pnt_2/qstr_1">
-                  <unit eId="art_1/pnt_2/qstr_1/cpt_Ia" kind="division">
+                  <unit eId="art_1/pnt_2/qstr_1/cpt_Ia" kind="division" rank="2">
                      <num>
                         <t v="‘"/>
                         <t v="CHAPTER Ia"/>
@@ -144,7 +144,7 @@
                            <t v="DELIVERIES OF RAW MILK TO FIRST PURCHASERS"/>
                         </emphasis>
                      </subheading>
-                     <unit eId="art_1/pnt_2/qstr_1/art_1a" kind="article">
+                     <unit eId="art_1/pnt_2/qstr_1/art_1a" kind="article" rank="3">
                         <num>
                            <t v="Article 1a"/>
                         </num>
@@ -199,7 +199,7 @@
                   <t v="Article 8 is replaced by the following:"/>
                </p>
                <quotedStructure eId="art_1/pnt_5/qstr_1">
-                  <unit eId="art_1/pnt_5/qstr_1/art_8" kind="article">
+                  <unit eId="art_1/pnt_5/qstr_1/art_8" kind="article" rank="2">
                      <num>
                         <t v="‘"/>
                         <t v="Article 8"/>
@@ -229,7 +229,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>

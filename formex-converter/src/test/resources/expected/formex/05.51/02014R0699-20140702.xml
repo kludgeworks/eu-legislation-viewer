@@ -117,7 +117,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -125,7 +125,7 @@
             <t v="The design of the common logo referred to in Article 85c(3)(b) of Directive 2001/83/EC shall follow the model set out in the Annex to this Regulation."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -133,7 +133,7 @@
             <t v="The website, mentioned in Article 85c(4) shall be accessible in such a way that the public can be easily assured that it is the trusted site for the purpose."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -152,7 +152,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -160,7 +160,7 @@
             <t v="In order for the hyperlink mentioned in the first paragraph of Article 3 to work reliably the websites hosting the national lists set up in accordance with Article 85c(4)(c) of Directive 2001/83/EC shall be secured and updated, with an indication of the latest update moment."/>
          </p>
       </unit>
-      <unit eId="art_5" kind="article">
+      <unit eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
@@ -188,7 +188,7 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>

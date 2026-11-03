@@ -937,7 +937,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -948,7 +948,7 @@
             <t v="This Directive establishes a common framework for the promotion of energy from renewable sources. It sets mandatory national targets for the overall share of energy from renewable sources in gross final consumption of energy and for the share of energy from renewable sources in transport. It lays down rules relating to statistical transfers between Member States, joint projects between Member States and with third countries, guarantees of origin, administrative procedures, information and training, and access to the electricity grid for energy from renewable sources. It establishes sustainability criteria for biofuels and bioliquids."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -1133,7 +1133,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -1233,7 +1233,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -1320,7 +1320,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_5" kind="article">
+      <unit eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
@@ -1444,7 +1444,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_6" kind="article">
+      <unit eId="art_6" kind="article" rank="1">
          <num>
             <t v="Article 6"/>
          </num>
@@ -1497,7 +1497,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_7" kind="article">
+      <unit eId="art_7" kind="article" rank="1">
          <num>
             <t v="Article 7"/>
          </num>
@@ -1581,7 +1581,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_8" kind="article">
+      <unit eId="art_8" kind="article" rank="1">
          <num>
             <t v="Article 8"/>
          </num>
@@ -1649,7 +1649,7 @@
             </list>
          </unit>
       </unit>
-      <unit eId="art_9" kind="article">
+      <unit eId="art_9" kind="article" rank="1">
          <num>
             <t v="Article 9"/>
          </num>
@@ -1857,7 +1857,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_10" kind="article">
+      <unit eId="art_10" kind="article" rank="1">
          <num>
             <t v="Article 10"/>
          </num>
@@ -1915,7 +1915,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_11" kind="article">
+      <unit eId="art_11" kind="article" rank="1">
          <num>
             <t v="Article 11"/>
          </num>
@@ -1965,7 +1965,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_12" kind="article">
+      <unit eId="art_12" kind="article" rank="1">
          <num>
             <t v="Article 12"/>
          </num>
@@ -1976,7 +1976,7 @@
             <t v="For the purpose of Article 7(2) and Article 9(2)(b), units of energy from renewable sources imputable to an increase in the capacity of an installation shall be treated as if they were produced by a separate installation becoming operational at the moment at which the increase of capacity occurred."/>
          </p>
       </unit>
-      <unit eId="art_13" kind="article">
+      <unit eId="art_13" kind="article" rank="1">
          <num>
             <t v="Article 13"/>
          </num>
@@ -2114,7 +2114,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_14" kind="article">
+      <unit eId="art_14" kind="article" rank="1">
          <num>
             <t v="Article 14"/>
          </num>
@@ -2172,7 +2172,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_15" kind="article">
+      <unit eId="art_15" kind="article" rank="1">
          <num>
             <t v="Article 15"/>
          </num>
@@ -2355,7 +2355,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_16" kind="article">
+      <unit eId="art_16" kind="article" rank="1">
          <num>
             <t v="Article 16"/>
          </num>
@@ -2515,7 +2515,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_17" kind="article">
+      <unit eId="art_17" kind="article" rank="1">
          <num>
             <t v="Article 17"/>
          </num>
@@ -2813,7 +2813,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_18" kind="article">
+      <unit eId="art_18" kind="article" rank="1">
          <num>
             <t v="Article 18"/>
          </num>
@@ -2963,7 +2963,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_19" kind="article">
+      <unit eId="art_19" kind="article" rank="1">
          <num>
             <t v="Article 19"/>
          </num>
@@ -3176,7 +3176,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_20" kind="article">
+      <unit eId="art_20" kind="article" rank="1">
          <num>
             <t v="Article 20"/>
          </num>
@@ -3187,7 +3187,7 @@
             <t v="The implementing measures referred to in the second subparagraph of Article 17(3), the third subparagraph of Article 18(3), Article 18(6), Article 18(8), Article 19(5), the first subparagraph of Article 19(7), and Article 19(8) shall also take full account of the purposes of Article 7a of Directive 98/70/EC."/>
          </p>
       </unit>
-      <unit eId="art_21" kind="article">
+      <unit eId="art_21" kind="article" rank="1">
          <num>
             <t v="Article 21"/>
          </num>
@@ -3211,7 +3211,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_22" kind="article">
+      <unit eId="art_22" kind="article" rank="1">
          <num>
             <t v="Article 22"/>
          </num>
@@ -3398,7 +3398,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_23" kind="article">
+      <unit eId="art_23" kind="article" rank="1">
          <num>
             <t v="Article 23"/>
          </num>
@@ -3713,7 +3713,7 @@
             </list>
          </unit>
       </unit>
-      <unit eId="art_24" kind="article">
+      <unit eId="art_24" kind="article" rank="1">
          <num>
             <t v="Article 24"/>
          </num>
@@ -3798,7 +3798,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_25" kind="article">
+      <unit eId="art_25" kind="article" rank="1">
          <num>
             <t v="Article 25"/>
          </num>
@@ -3838,7 +3838,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_26" kind="article">
+      <unit eId="art_26" kind="article" rank="1">
          <num>
             <t v="Article 26"/>
          </num>
@@ -3876,7 +3876,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_27" kind="article">
+      <unit eId="art_27" kind="article" rank="1">
          <num>
             <t v="Article 27"/>
          </num>
@@ -3905,7 +3905,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_28" kind="article">
+      <unit eId="art_28" kind="article" rank="1">
          <num>
             <t v="Article 28"/>
          </num>
@@ -3920,7 +3920,7 @@
             <t v="."/>
          </p>
       </unit>
-      <unit eId="art_29" kind="article">
+      <unit eId="art_29" kind="article" rank="1">
          <num>
             <t v="Article 29"/>
          </num>
@@ -4252,7 +4252,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx_I" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX I"/>
          </num>
@@ -4260,7 +4260,11 @@
             <t v="National overall targets for the share of energy from renewable sources in gross final consumption of energy in 2020"/>
             <noteRef href="#note_anx01004601-1" marker="1"/>
          </subheading>
-         <unit eId="anx_I/pnt_A" kind="level" depth="1" numbered="true">
+         <unit eId="anx_I/pnt_A"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="A."/>
             </num>
@@ -4750,7 +4754,11 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_I/pnt_B" kind="level" depth="1" numbered="true">
+         <unit eId="anx_I/pnt_B"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="B."/>
             </num>
@@ -4849,7 +4857,7 @@
             </note>
          </notes>
       </unit>
-      <unit eId="anx_II" kind="annex" eurlexAnchor="2">
+      <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
          <num>
             <t v="ANNEX II"/>
          </num>
@@ -5184,7 +5192,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="anx_III" kind="annex" eurlexAnchor="3">
+      <unit eId="anx_III" kind="annex" eurlexAnchor="3" rank="1">
          <num>
             <t v="ANNEX III"/>
          </num>
@@ -5455,7 +5463,7 @@
             </tr>
          </table>
       </unit>
-      <unit eId="anx_IV" kind="annex" eurlexAnchor="4">
+      <unit eId="anx_IV" kind="annex" eurlexAnchor="4" rank="1">
          <num>
             <t v="ANNEX IV"/>
          </num>
@@ -5652,14 +5660,18 @@
             </unit>
          </list>
       </unit>
-      <unit eId="anx_V" kind="annex" eurlexAnchor="5">
+      <unit eId="anx_V" kind="annex" eurlexAnchor="5" rank="1">
          <num>
             <t v="ANNEX V"/>
          </num>
          <subheading>
             <t v="Rules for calculating the greenhouse gas impact of biofuels, bioliquids and their fossil fuel comparators"/>
          </subheading>
-         <unit eId="anx_V/pnt_A" kind="level" depth="1" numbered="true">
+         <unit eId="anx_V/pnt_A"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="A."/>
             </num>
@@ -6086,7 +6098,11 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_B" kind="level" depth="1" numbered="true">
+         <unit eId="anx_V/pnt_B"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="B."/>
             </num>
@@ -6278,7 +6294,11 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_C" kind="level" depth="1" numbered="true">
+         <unit eId="anx_V/pnt_C"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="C."/>
             </num>
@@ -7118,7 +7138,11 @@
                <t v="/MJ."/>
             </p>
          </unit>
-         <unit eId="anx_V/pnt_D" kind="level" depth="1" numbered="true">
+         <unit eId="anx_V/pnt_D"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="D."/>
             </num>
@@ -7126,7 +7150,7 @@
                <t v="Disaggregated default values for biofuels and bioliquids"/>
             </heading>
          </unit>
-         <unit eId="anx_V/pnt_D/level_1" kind="level" depth="2">
+         <unit eId="anx_V/pnt_D/level_1" kind="level" depth="2" rank="3">
             <heading>
                <t v="Disaggregated default values for cultivation: "/>
                <quote startQuote="‘" endQuote="’">
@@ -7471,7 +7495,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_D/level_2" kind="level" depth="2">
+         <unit eId="anx_V/pnt_D/level_2" kind="level" depth="2" rank="3">
             <heading>
                <t v="Disaggregated default values for processing (including excess electricity): "/>
                <quote startQuote="‘" endQuote="’">
@@ -7923,7 +7947,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_D/level_3" kind="level" depth="2">
+         <unit eId="anx_V/pnt_D/level_3" kind="level" depth="2" rank="3">
             <heading>
                <t v="Disaggregated default values for transport and distribution: "/>
                <quote startQuote="‘" endQuote="’">
@@ -8266,7 +8290,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_D/level_4" kind="level" depth="2">
+         <unit eId="anx_V/pnt_D/level_4" kind="level" depth="2" rank="3">
             <heading>
                <t v="Total for cultivation, processing, transport and distribution"/>
             </heading>
@@ -8702,7 +8726,11 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_E" kind="level" depth="1" numbered="true">
+         <unit eId="anx_V/pnt_E"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="E."/>
             </num>
@@ -8710,7 +8738,7 @@
                <t v="Estimated disaggregated default values for future biofuels and bioliquids that were not on the market or were only on the market in negligible quantities in January 2008"/>
             </heading>
          </unit>
-         <unit eId="anx_V/pnt_E/level_1" kind="level" depth="2">
+         <unit eId="anx_V/pnt_E/level_1" kind="level" depth="2" rank="3">
             <heading>
                <t v="Disaggregated default values for cultivation: "/>
                <quote startQuote="‘" endQuote="’">
@@ -8922,7 +8950,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_E/level_2" kind="level" depth="2">
+         <unit eId="anx_V/pnt_E/level_2" kind="level" depth="2" rank="3">
             <heading>
                <t v="Disaggregated default values for processing (including excess electricity): "/>
                <quote startQuote="‘" endQuote="’">
@@ -9073,7 +9101,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_E/level_3" kind="level" depth="2">
+         <unit eId="anx_V/pnt_E/level_3" kind="level" depth="2" rank="3">
             <heading>
                <t v="Disaggregated default values for transport and distribution: "/>
                <quote startQuote="‘" endQuote="’">
@@ -9285,7 +9313,7 @@
                </tr>
             </table>
          </unit>
-         <unit eId="anx_V/pnt_E/level_4" kind="level" depth="2">
+         <unit eId="anx_V/pnt_E/level_4" kind="level" depth="2" rank="3">
             <heading>
                <t v="Total for cultivation, processing, transport and distribution"/>
             </heading>
@@ -9526,7 +9554,7 @@
             </note>
          </notes>
       </unit>
-      <unit eId="anx_VI" kind="annex" eurlexAnchor="6">
+      <unit eId="anx_VI" kind="annex" eurlexAnchor="6" rank="1">
          <num>
             <t v="ANNEX VI"/>
          </num>
@@ -9739,7 +9767,7 @@
             </list>
          </unit>
       </unit>
-      <unit eId="anx_VII" kind="annex" eurlexAnchor="7">
+      <unit eId="anx_VII" kind="annex" eurlexAnchor="7" rank="1">
          <num>
             <t v="ANNEX VII"/>
          </num>

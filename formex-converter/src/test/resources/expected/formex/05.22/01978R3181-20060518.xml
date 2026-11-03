@@ -98,7 +98,7 @@
                      action="deleted"
                      location="AR:1"
                      marker="O002001M001000"/>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
             </num>

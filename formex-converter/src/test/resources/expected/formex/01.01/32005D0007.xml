@@ -128,7 +128,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -147,7 +147,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -155,7 +155,7 @@
             <t v="Notwithstanding the standard presentation referred to in Article 2 of Regulation (EEC) No 3220/84, pig carcases may be presented in Cyprus with the tongue and kidneys attached before being weighted and graded. In order to establish quotations for pig carcases on a comparable basis, the recorded hot weight shall be reduced by 0,8 kg."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -163,7 +163,7 @@
             <t v="Modifications of the apparatus or the assessment method shall not be authorised."/>
          </p>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -242,11 +242,11 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/level_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <t v="Methods for grading pig carcases in Cyprus"/>
                <eol/>

@@ -133,7 +133,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -141,7 +141,7 @@
             <t v="The Annex to Implementing Regulation (EU) 2015/1998 is amended in accordance with the Annex to this Regulation."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -224,7 +224,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -1376,7 +1376,10 @@
                   <t v="Attachment 9-A is replaced by the following:"/>
                </p>
                <quotedStructure eId="anx/pnt_21/qstr_1">
-                  <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A" kind="level" depth="1">
+                  <unit eId="anx/pnt_21/qstr_1/level_ATTACHMENT-9-A"
+                        kind="level"
+                        depth="1"
+                        rank="2">
                      <num>
                         <t v="“"/>
                         <emphasis kind="b">
@@ -1520,7 +1523,10 @@
                   <t v="the following Attachment is added:"/>
                </p>
                <quotedStructure eId="anx/pnt_22/qstr_1">
-                  <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B" kind="level" depth="1">
+                  <unit eId="anx/pnt_22/qstr_1/level_ATTACHMENT-9-B"
+                        kind="level"
+                        depth="1"
+                        rank="2">
                      <num>
                         <t v="“"/>
                         <emphasis kind="b">
@@ -1974,7 +1980,7 @@
                   <t v="points 12.9.3.14 and 12.9.3.15 are replaced by the following:"/>
                </p>
                <quotedStructure eId="anx/pnt_34/qstr_1">
-                  <unit eId="anx/pnt_34/qstr_1/level_1" kind="level" depth="1">
+                  <unit eId="anx/pnt_34/qstr_1/level_1" kind="level" depth="1" rank="2">
                      <heading>
                         <t v="“"/>
                         <emphasis kind="i">

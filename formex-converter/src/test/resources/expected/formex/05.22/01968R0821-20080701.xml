@@ -137,7 +137,7 @@
                      action="deleted"
                      location="AR:2"
                      marker="O002001M001000"/>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
             </num>
@@ -145,7 +145,7 @@
                <t v="For the granting of export refunds pearled grains and hulled grains of cereals shall be those which possess the characteristics listed in the Annex."/>
             </p>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="1">
             <num>
                <t v="Article 2"/>
             </num>
@@ -172,7 +172,7 @@
                      action="deleted"
                      location="AR:2"
                      marker="O002001M001000"/>
-         <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <num>
                <t v="ANNEX"/>
             </num>
@@ -197,7 +197,11 @@
                   <t v=" includes shelled and husked grains:"/>
                </p>
             </unit>
-            <unit eId="anx/pnt_1" kind="level" depth="2" numbered="true">
+            <unit eId="anx/pnt_1"
+                  kind="level"
+                  depth="2"
+                  numbered="true"
+                  rank="2">
                <num>
                   <t v="1."/>
                </num>
@@ -208,7 +212,11 @@
                   <t v="are cereal grains with the pericarp removed or bracted cereal grains (see explanatory notes to tariff heading No 10.03: grains) with the bracts removed with cling to the pericarp (as for example with bearded barley) or which enclose the grains so firmly that the bracts cannot be detached by threshing etc. (as with oats)."/>
                </p>
             </unit>
-            <unit eId="anx/pnt_2" kind="level" depth="2" numbered="true">
+            <unit eId="anx/pnt_2"
+                  kind="level"
+                  depth="2"
+                  numbered="true"
+                  rank="2">
                <num>
                   <t v="2."/>
                </num>
@@ -239,7 +247,11 @@
                   <t v=" include:"/>
                </p>
             </unit>
-            <unit eId="anx/pnt_I" kind="level" depth="2" numbered="true">
+            <unit eId="anx/pnt_I"
+                  kind="level"
+                  depth="2"
+                  numbered="true"
+                  rank="2">
                <provenance amendingAct="31971R1634"
                            action="replaced"
                            location="AR:1 .AND. AX:0"
@@ -320,7 +332,11 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx/pnt_II" kind="level" depth="2" numbered="true">
+            <unit eId="anx/pnt_II"
+                  kind="level"
+                  depth="2"
+                  numbered="true"
+                  rank="2">
                <provenance amendingAct="31971R1634"
                            action="replaced"
                            location="AR:1 .AND. AX:0"
@@ -335,12 +351,12 @@
                   <t v="grains which correspond to the definition under B I (1)."/>
                </p>
             </unit>
-            <unit eId="anx/pnt_B/level_1" kind="level" depth="2">
+            <unit eId="anx/pnt_B/level_1" kind="level" depth="2" rank="2">
                <heading>
                   <t v="Sieve analysis"/>
                </heading>
             </unit>
-            <unit eId="anx/pnt_B/level_1/level_1" kind="level" depth="3">
+            <unit eId="anx/pnt_B/level_1/level_1" kind="level" depth="3" rank="3">
                <heading>
                   <t v="Apparatus:"/>
                </heading>
@@ -362,7 +378,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx/pnt_B/level_1/level_2" kind="level" depth="3">
+            <unit eId="anx/pnt_B/level_1/level_2" kind="level" depth="3" rank="3">
                <heading>
                   <t v="Method:"/>
                </heading>

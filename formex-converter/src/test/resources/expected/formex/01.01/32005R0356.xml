@@ -98,14 +98,14 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="cpt_I" kind="division">
+      <unit eId="cpt_I" kind="division" rank="1">
          <num>
             <t v="CHAPTER I"/>
          </num>
          <subheading>
             <t v="GENERAL PROVISIONS"/>
          </subheading>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -116,7 +116,7 @@
                <t v="This Regulation lays down detailed rules for the marking and identification of passive fishing gear and beam trawls."/>
             </p>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -140,7 +140,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_3" kind="article">
+         <unit eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -193,7 +193,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_4" kind="article">
+         <unit eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -244,14 +244,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_II" kind="division">
+      <unit eId="cpt_II" kind="division" rank="1">
          <num>
             <t v="CHAPTER II"/>
          </num>
          <subheading>
             <t v="BEAM TRAWLS"/>
          </subheading>
-         <unit eId="art_5" kind="article">
+         <unit eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -263,14 +263,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="cpt_III" kind="division">
+      <unit eId="cpt_III" kind="division" rank="1">
          <num>
             <t v="CHAPTER III"/>
          </num>
          <subheading>
             <t v="PASSIVE GEAR"/>
          </subheading>
-         <unit eId="art_6" kind="article">
+         <unit eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
@@ -281,7 +281,7 @@
                <t v="The master of a fishing vessel or his representative shall ensure that each passive gear — carried on board or used for fishing is clearly marked and identifiable, in accordance with the provisions of this Chapter."/>
             </p>
          </unit>
-         <unit eId="art_7" kind="article">
+         <unit eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
@@ -310,7 +310,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_8" kind="article">
+         <unit eId="art_8" kind="article" rank="2">
             <num>
                <t v="Article 8"/>
             </num>
@@ -369,14 +369,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_IV" kind="division">
+      <unit eId="cpt_IV" kind="division" rank="1">
          <num>
             <t v="CHAPTER IV"/>
          </num>
          <subheading>
             <t v="BUOYS"/>
          </subheading>
-         <unit eId="art_9" kind="article">
+         <unit eId="art_9" kind="article" rank="2">
             <num>
                <t v="Article 9"/>
             </num>
@@ -387,7 +387,7 @@
                <t v="The master of a fishing vessel or his representative shall ensure that two end marker buoys and intermediary marker buoys, rigged in accordance with the Annex, are fixed to each passive gear used for fishing and are deployed in accordance with the provisions of this Chapter."/>
             </p>
          </unit>
-         <unit eId="art_10" kind="article">
+         <unit eId="art_10" kind="article" rank="2">
             <num>
                <t v="Article 10"/>
             </num>
@@ -429,7 +429,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_11" kind="article">
+         <unit eId="art_11" kind="article" rank="2">
             <num>
                <t v="Article 11"/>
             </num>
@@ -453,7 +453,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_12" kind="article">
+         <unit eId="art_12" kind="article" rank="2">
             <num>
                <t v="Article 12"/>
             </num>
@@ -527,7 +527,7 @@
                </list>
             </unit>
          </unit>
-         <unit eId="art_13" kind="article">
+         <unit eId="art_13" kind="article" rank="2">
             <num>
                <t v="Article 13"/>
             </num>
@@ -563,7 +563,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_14" kind="article">
+         <unit eId="art_14" kind="article" rank="2">
             <num>
                <t v="Article 14"/>
             </num>
@@ -614,14 +614,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_V" kind="division">
+      <unit eId="cpt_V" kind="division" rank="1">
          <num>
             <t v="CHAPTER V"/>
          </num>
          <subheading>
             <t v="FINAL PROVISION"/>
          </subheading>
-         <unit eId="art_15" kind="article">
+         <unit eId="art_15" kind="article" rank="2">
             <num>
                <t v="Article 15"/>
             </num>
@@ -697,11 +697,11 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/level_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <t v="CHARACTERISTICS OF END MARKER AND INTERMEDIARY MARKER BUOYS"/>
             </heading>

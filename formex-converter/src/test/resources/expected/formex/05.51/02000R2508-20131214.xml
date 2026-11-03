@@ -127,14 +127,14 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="cpt_I" kind="division">
+      <unit eId="cpt_I" kind="division" rank="1">
          <num>
             <t v="CHAPTER I"/>
          </num>
          <subheading>
             <t v="Marketing strategy and catch plan for fishing producer organisations"/>
          </subheading>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -216,7 +216,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -281,14 +281,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="cpt_II" kind="division">
+      <unit eId="cpt_II" kind="division" rank="1">
          <num>
             <t v="CHAPTER II"/>
          </num>
          <subheading>
             <t v="Marketing strategy and production plan for aquaculture producer organisations"/>
          </subheading>
-         <unit eId="art_3" kind="article">
+         <unit eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -370,7 +370,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_4" kind="article">
+         <unit eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -379,14 +379,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="cpt_III" kind="division">
+      <unit eId="cpt_III" kind="division" rank="1">
          <num>
             <t v="CHAPTER III"/>
          </num>
          <subheading>
             <t v="Measures applicable to species in Annexes I, IV and V to Regulation (EC) No 104/2000"/>
          </subheading>
-         <unit eId="art_5" kind="article">
+         <unit eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -394,7 +394,7 @@
                <t v="The operational programme referred to in Article 9(1) of Regulation (EC) No 104/2000 shall state the reasons for any habitual market difficulties experienced in recent fishing years and shall specify the anticipatory measures taken to adjust the supply."/>
             </p>
          </unit>
-         <unit eId="art_6" kind="article">
+         <unit eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
@@ -440,7 +440,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_7" kind="article">
+         <unit eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
@@ -455,7 +455,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_8" kind="article">
+         <unit eId="art_8" kind="article" rank="2">
             <num>
                <t v="Article 8"/>
             </num>
@@ -464,14 +464,14 @@
             </p>
          </unit>
       </unit>
-      <unit eId="cpt_IV" kind="division">
+      <unit eId="cpt_IV" kind="division" rank="1">
          <num>
             <t v="CHAPTER IV"/>
          </num>
          <subheading>
             <t v="Procedural aspects"/>
          </subheading>
-         <unit eId="art_9" kind="article">
+         <unit eId="art_9" kind="article" rank="2">
             <num>
                <t v="Article 9"/>
             </num>
@@ -507,7 +507,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="art_10" kind="article">
+         <unit eId="art_10" kind="article" rank="2">
             <num>
                <t v="Article 10"/>
             </num>
@@ -515,7 +515,7 @@
                <t v="After the Member State concerned has approved the operational programme and at the latest four months after the fishing year has started, it may grant an advance of 50 % of the value of the compensation granted to the producer organisation under Article 10(1) of Regulation (EC) No 104/2000 on condition that the producers organisation has lodged a security of not less than 105 % of the amount of the advance."/>
             </p>
          </unit>
-         <unit eId="art_11" kind="article">
+         <unit eId="art_11" kind="article" rank="2">
             <num>
                <t v="Article 11"/>
             </num>
@@ -544,7 +544,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_12" kind="article">
+         <unit eId="art_12" kind="article" rank="2">
             <num>
                <t v="Article 12"/>
             </num>
@@ -578,7 +578,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_13" kind="article">
+         <unit eId="art_13" kind="article" rank="2">
             <num>
                <t v="Article 13"/>
             </num>

@@ -178,7 +178,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -193,7 +193,7 @@
             <t v=" in terms of tonnes of carbon dioxide equivalent allocated to the Community and to Member States for the first quantified emission limitation and reduction commitment period under the Kyoto Protocol are set out in the Annex."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <provenance amendingAct="32010D0778"
                      action="replaced"
                      location="AR:1;PT:1"
@@ -207,7 +207,7 @@
             <t v=" tonnes of carbon dioxide equivalent between the emission levels of the Union and the sum of the emission levels of the Member States listed in Annex II to Decision 2002/358/EC shall be issued as assigned amount units by the Union."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -217,7 +217,7 @@
       </unit>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="32010D0778"
                      action="replaced"
                      location="AR:1;PT:2 .AND. AX:0"

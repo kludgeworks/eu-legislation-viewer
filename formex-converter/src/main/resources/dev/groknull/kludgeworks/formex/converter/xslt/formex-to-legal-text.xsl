@@ -296,7 +296,12 @@
         <xsl:apply-templates select="$text/lt:legalText" mode="f:deletions"/>
       </xsl:document>
     </xsl:variable>
-    <xsl:apply-templates select="$merged/lt:legalText" mode="f:ambiguity"/>
+    <xsl:variable name="checked" as="document-node()">
+      <xsl:document>
+        <xsl:apply-templates select="$merged/lt:legalText" mode="f:ambiguity"/>
+      </xsl:document>
+    </xsl:variable>
+    <xsl:apply-templates select="$checked/lt:legalText" mode="f:outline"/>
   </xsl:template>
 
   <!-- the notes of one file, as a block (none if it has none): a note in text an amendment deleted is
@@ -388,6 +393,46 @@
   <xsl:function name="f:unit-parent" as="node()">
     <xsl:param name="unit" as="element()"/>
     <xsl:sequence select="($unit/ancestor::*[@eId][1], root($unit))[1]"/>
+  </xsl:function>
+
+  <!-- ============================================================ the outline -->
+
+  <!-- A unit with a title has its title's rank in the text's outline: 1 the outermost, a title under
+       another one deeper. A title is an article's, an annex's, a division's, a letter's or an attached
+       document's label and heading, or an annex level's heading or label line (PART 2); not a
+       point's, a paragraph's or a recital's number, nor a definition's term. A text an amendment
+       quotes is under the unit quoting it. -->
+  <xsl:mode name="f:outline" on-no-match="shallow-copy" on-multiple-match="fail"/>
+
+  <xsl:template match="lt:unit[f:titled(.)]" mode="f:outline">
+    <xsl:copy>
+      <xsl:apply-templates select="@*" mode="#current"/>
+      <xsl:attribute name="rank" select="f:rank(.)"/>
+      <xsl:apply-templates select="node()" mode="#current"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:function name="f:titled" as="xs:boolean" cache="yes">
+    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:sequence select="
+        $unit/@kind = ('division', 'subdivision', 'article', 'annex', 'attachment', 'letter') and exists($unit/(lt:num | lt:heading))
+        or $unit/@kind = 'level' and exists($unit/lt:heading | $unit[not(xs:boolean(@numbered))]/lt:num)"/>
+  </xsl:function>
+
+  <xsl:function name="f:rank" as="xs:integer" cache="yes">
+    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:sequence select="(f:outer($unit) ! (f:rank(.) + 1), 1)[1]"/>
+  </xsl:function>
+
+  <!-- the unit with a title this one's is under: an annex level's, the nearest level before it the
+       source nests less deep (annex levels are flat), else its parent's; anything else's, its
+       nearest titled ancestor's -->
+  <xsl:function name="f:outer" as="element(lt:unit)?">
+    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:variable name="enclosing" as="element(lt:unit)?" select="
+        ($unit[@kind = 'level']/preceding-sibling::lt:unit[@kind = 'level'][xs:integer(@depth) lt xs:integer($unit/@depth)][1],
+         $unit/ancestor::lt:unit[1])[1]"/>
+    <xsl:sequence select="$enclosing[f:titled(.)], $enclosing[not(f:titled(.))] ! f:outer(.)"/>
   </xsl:function>
 
   <!-- documents and, recursively, the Formex documents they include (INCL.ELEMENT TYPE="FORMEX.DOC") -->

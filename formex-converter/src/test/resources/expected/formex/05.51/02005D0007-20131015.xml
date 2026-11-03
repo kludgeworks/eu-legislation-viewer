@@ -134,7 +134,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <provenance amendingAct="32011D0418"
                      action="replaced"
                      location="AR:1;PT:1"
@@ -187,7 +187,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <provenance amendingAct="32013D0502"
                      action="replaced"
                      location="AR:1"
@@ -238,7 +238,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -246,7 +246,7 @@
             <t v="Modifications of the apparatus or the assessment method shall not be authorised."/>
          </p>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -256,7 +256,7 @@
       </unit>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="32011D0418"
                      action="replaced"
                      location="AR:1;PT:2 .AND. AX:0"
@@ -264,14 +264,14 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/level_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="METHODS FOR GRADING PIG CARCASSES IN CYPRUS"/>
                </emphasis>
             </heading>
          </unit>
-         <unit eId="anx/level_PART-I" kind="level" depth="2">
+         <unit eId="anx/level_PART-I" kind="level" depth="2" rank="3">
             <num>
                <t v="PART I"/>
             </num>
@@ -382,7 +382,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="anx/level_PART-II" kind="level" depth="2">
+         <unit eId="anx/level_PART-II" kind="level" depth="2" rank="3">
             <num>
                <t v="PART II"/>
             </num>

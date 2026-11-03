@@ -41,7 +41,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -313,7 +313,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -351,7 +351,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -370,11 +370,11 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx_I" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX I"/>
          </num>
-         <unit eId="anx_I/level_1" kind="level" depth="1">
+         <unit eId="anx_I/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="Indian cooperating exporting producers not sampled"/>
@@ -2795,11 +2795,11 @@
             </table>
          </unit>
       </unit>
-      <unit eId="anx_II" kind="annex" eurlexAnchor="2">
+      <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
          <num>
             <t v="ANNEX II"/>
          </num>
-         <unit eId="anx_II/level_1" kind="level" depth="1">
+         <unit eId="anx_II/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="Turkish cooperating exporting producers not sampled"/>

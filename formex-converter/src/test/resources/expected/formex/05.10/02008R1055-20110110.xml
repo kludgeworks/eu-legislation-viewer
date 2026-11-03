@@ -98,7 +98,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -106,7 +106,7 @@
             <t v="Member States shall supply on an annual basis a quality report drawn up in accordance with the rules laid down in the Annex."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -118,7 +118,7 @@
             <t v="Member States shall supply their quality report not later than 31 May every year."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -137,7 +137,7 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="32010R1227"
                      action="replaced"
                      location="AR:1;PT:2 .AND. AX:0"
@@ -145,7 +145,11 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/pnt_1" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_1"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="1."/>
             </num>
@@ -158,7 +162,11 @@
                <t v="The quality report shall contain both quantitative and qualitative indicators of quality. The Commission (Eurostat) shall provide the results of the quantitative indicators for each Member State, calculated on the basis of data provided. Member States shall interpret and comment on them, in the light of their collection methodology."/>
             </p>
          </unit>
-         <unit eId="anx/pnt_2" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_2"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="2."/>
             </num>
@@ -180,7 +188,11 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx/pnt_3" kind="level" depth="1" numbered="true">
+         <unit eId="anx/pnt_3"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
             <num>
                <t v="3."/>
             </num>

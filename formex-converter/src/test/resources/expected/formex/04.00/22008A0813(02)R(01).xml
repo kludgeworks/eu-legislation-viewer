@@ -81,7 +81,7 @@
                <p>
                   <t v="HAVE AGREED AS FOLLOWS:"/>
                </p>
-               <unit eId="cor_1/new/qstr_1/art_1" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_1" kind="article" rank="1">
                   <num>
                      <t v="Article 1"/>
                   </num>
@@ -164,7 +164,7 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="cor_1/new/qstr_1/art_2" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_2" kind="article" rank="1">
                   <num>
                      <t v="Article 2"/>
                   </num>
@@ -220,7 +220,7 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="cor_1/new/qstr_1/art_3" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_3" kind="article" rank="1">
                   <num>
                      <t v="Article 3"/>
                   </num>
@@ -246,7 +246,7 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="cor_1/new/qstr_1/art_4" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_4" kind="article" rank="1">
                   <num>
                      <t v="Article 4"/>
                   </num>
@@ -318,7 +318,7 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="cor_1/new/qstr_1/art_5" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_5" kind="article" rank="1">
                   <num>
                      <t v="Article 5"/>
                   </num>
@@ -342,7 +342,7 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="cor_1/new/qstr_1/art_6" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_6" kind="article" rank="1">
                   <num>
                      <t v="Article 6"/>
                   </num>
@@ -353,7 +353,7 @@
                      <t v="Any necessary technical and administrative arrangements in pursuance of the implementation of this Agreement shall be concluded between the Secretary-General of the Council of the European Union/High Representative for the Common Foreign and Security Policy, and the appropriate authorities of the Swiss Confederation."/>
                   </p>
                </unit>
-               <unit eId="cor_1/new/qstr_1/art_7" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_7" kind="article" rank="1">
                   <num>
                      <t v="Article 7"/>
                   </num>
@@ -364,7 +364,7 @@
                      <t v="Should one of the Parties fail to comply with its obligations laid down in the previous Articles, the other Party shall have the right to terminate this Agreement by serving a notice of one month."/>
                   </p>
                </unit>
-               <unit eId="cor_1/new/qstr_1/art_8" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_8" kind="article" rank="1">
                   <num>
                      <t v="Article 8"/>
                   </num>
@@ -375,7 +375,7 @@
                      <t v="Disputes concerning the interpretation or application of this Agreement shall be settled by diplomatic means between the Parties."/>
                   </p>
                </unit>
-               <unit eId="cor_1/new/qstr_1/art_9" kind="article">
+               <unit eId="cor_1/new/qstr_1/art_9" kind="article" rank="1">
                   <num>
                      <t v="Article 9"/>
                   </num>

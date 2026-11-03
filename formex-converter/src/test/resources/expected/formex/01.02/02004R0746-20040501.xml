@@ -159,7 +159,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -177,7 +177,8 @@
                <unit eId="art_1/pnt_1/pnt_B.2"
                      kind="level"
                      depth="1"
-                     numbered="true">
+                     numbered="true"
+                     rank="2">
                   <num>
                      <t v="B.2"/>
                   </num>
@@ -203,7 +204,8 @@
                   <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1"
                         kind="level"
                         depth="1"
-                        numbered="true">
+                        numbered="true"
+                        rank="2">
                      <num>
                         <t v="‘"/>
                         <t v="B.3.1."/>
@@ -379,7 +381,7 @@
             </unit>
          </list>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -387,7 +389,7 @@
             <t v="In the Annex to Regulation (EEC) No 94/1992, the entries on the Czech Republic and Hungary are deleted."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -406,7 +408,7 @@
             </unit>
          </quotedStructure>
       </unit>
-      <unit eId="art_4" kind="article">
+      <unit eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -427,7 +429,7 @@
             </unit>
          </quotedStructure>
       </unit>
-      <unit eId="art_5" kind="article">
+      <unit eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
@@ -446,7 +448,7 @@
             </unit>
          </quotedStructure>
       </unit>
-      <unit eId="art_6" kind="article">
+      <unit eId="art_6" kind="article" rank="1">
          <num>
             <t v="Article 6"/>
          </num>

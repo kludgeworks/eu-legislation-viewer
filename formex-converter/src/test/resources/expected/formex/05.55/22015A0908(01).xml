@@ -27,7 +27,7 @@
    </preface>
    <body/>
    <annexes>
-      <unit eId="let_1" kind="letter">
+      <unit eId="let_1" kind="letter" rank="1">
          <num>
             <t v="A."/>
          </num>
@@ -68,7 +68,7 @@
             </emphasis>
          </p>
       </unit>
-      <unit eId="let_2" kind="letter">
+      <unit eId="let_2" kind="letter" rank="1">
          <num>
             <t v="B."/>
          </num>

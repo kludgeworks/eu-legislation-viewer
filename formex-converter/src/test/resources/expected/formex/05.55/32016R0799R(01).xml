@@ -35,12 +35,15 @@
          </p>
          <new>
             <quotedStructure eId="cor_1/new/qstr_1">
-               <unit eId="cor_1/new/qstr_1/anx_II" kind="annex">
+               <unit eId="cor_1/new/qstr_1/anx_II" kind="annex" rank="1">
                   <num>
                      <t v="‘"/>
                      <t v="ANNEX II"/>
                   </num>
-                  <unit eId="cor_1/new/qstr_1/anx_II/level_1" kind="level" depth="1">
+                  <unit eId="cor_1/new/qstr_1/anx_II/level_1"
+                        kind="level"
+                        depth="1"
+                        rank="2">
                      <heading>
                         <emphasis kind="b">
                            <t v="APPROVAL MARK AND CERTIFICATE"/>
@@ -50,7 +53,8 @@
                   <unit eId="cor_1/new/qstr_1/anx_II/pnt_I"
                         kind="level"
                         depth="2"
-                        numbered="true">
+                        numbered="true"
+                        rank="3">
                      <num>
                         <t v="I."/>
                      </num>
@@ -461,7 +465,8 @@
                   <unit eId="cor_1/new/qstr_1/anx_II/pnt_II"
                         kind="level"
                         depth="2"
-                        numbered="true">
+                        numbered="true"
+                        rank="3">
                      <num>
                         <t v="II."/>
                      </num>
@@ -472,7 +477,10 @@
                         <t v="A Member State which has granted approval shall issue the applicant with an approval certificate, the model of which is given below. When informing other Member States of approvals issued or, if the occasion should arise, withdrawn, a Member State shall use copies of that certificate."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1" kind="level" depth="3">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1"
+                        kind="level"
+                        depth="3"
+                        rank="4">
                      <heading>
                         <t v="APPROVAL CERTIFICATE"/>
                      </heading>
@@ -661,7 +669,8 @@
                   <unit eId="cor_1/new/qstr_1/anx_II/pnt_III"
                         kind="level"
                         depth="2"
-                        numbered="true">
+                        numbered="true"
+                        rank="3">
                      <num>
                         <t v="III."/>
                      </num>
@@ -674,7 +683,8 @@
                   </unit>
                   <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1"
                         kind="level"
-                        depth="3">
+                        depth="3"
+                        rank="4">
                      <heading>
                         <t v="APPROVAL CERTIFICATE FOR DIGITAL TACHOGRAPHS"/>
                      </heading>
@@ -908,7 +918,8 @@
                   <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV"
                         kind="level"
                         depth="2"
-                        numbered="true">
+                        numbered="true"
+                        rank="3">
                      <num>
                         <t v="IV."/>
                      </num>
@@ -919,7 +930,10 @@
                         <t v="A Member State which has granted approval shall issue the applicant with an approval certificate, the model of which is given below. When informing other Member States of approvals issued or, if the occasion should arise, withdrawn, a Member State shall use copies of that certificate."/>
                      </p>
                   </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1" kind="level" depth="3">
+                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1"
+                        kind="level"
+                        depth="3"
+                        rank="4">
                      <heading>
                         <t v="APPROVAL CERTIFICATE FOR SMART TACHOGRAPHS"/>
                      </heading>

@@ -71,7 +71,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/division_1" kind="division">
+         <unit eId="pbl_1/division_1" kind="division" rank="1">
             <num>
                <t v="1."/>
             </num>
@@ -428,7 +428,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="pbl_1/division_2" kind="division">
+         <unit eId="pbl_1/division_2" kind="division" rank="1">
             <num>
                <t v="2."/>
             </num>
@@ -445,7 +445,7 @@
                   <t v="There are two measures under investigation: First, the creation of Airport Handling combined with the liquidation of SEAH. The Commission assessed whether this measure gave rise to economic continuity between the two companies, leading to a transfer of the recovery obligation from SEAH to Airport Handling. Second, the provision of equity capital to Airport Handling, by its public mother company SEA. The Commission assessed whether this measure was implemented on market terms. In the following, a description of the circumstances surrounding these transactions is given."/>
                </p>
             </unit>
-            <unit eId="pbl_1/division_2/division_2.1" kind="division">
+            <unit eId="pbl_1/division_2/division_2.1" kind="division" rank="2">
                <num>
                   <t v="2.1."/>
                </num>
@@ -785,7 +785,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_2/division_2.2" kind="division">
+            <unit eId="pbl_1/division_2/division_2.2" kind="division" rank="2">
                <num>
                   <t v="2.2."/>
                </num>
@@ -823,7 +823,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_2/division_2.3" kind="division">
+            <unit eId="pbl_1/division_2/division_2.3" kind="division" rank="2">
                <num>
                   <t v="2.3."/>
                </num>
@@ -1162,7 +1162,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_2/division_2.4" kind="division">
+            <unit eId="pbl_1/division_2/division_2.4" kind="division" rank="2">
                <num>
                   <t v="2.4."/>
                </num>
@@ -1328,7 +1328,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_2/division_2.5" kind="division">
+            <unit eId="pbl_1/division_2/division_2.5" kind="division" rank="2">
                <num>
                   <t v="2.5."/>
                </num>
@@ -1450,7 +1450,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_2/division_2.6" kind="division">
+            <unit eId="pbl_1/division_2/division_2.6" kind="division" rank="2">
                <num>
                   <t v="2.6."/>
                </num>
@@ -1459,7 +1459,9 @@
                      <t v="The business plan 2014-2017"/>
                   </emphasis>
                </heading>
-               <unit eId="pbl_1/division_2/division_2.6/division_2.6.1" kind="division">
+               <unit eId="pbl_1/division_2/division_2.6/division_2.6.1"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="2.6.1."/>
                   </num>
@@ -1589,7 +1591,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_2/division_2.6/division_2.6.2" kind="division">
+               <unit eId="pbl_1/division_2/division_2.6/division_2.6.2"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="2.6.2."/>
                   </num>
@@ -1684,7 +1688,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_2/division_2.6/division_2.6.3" kind="division">
+               <unit eId="pbl_1/division_2/division_2.6/division_2.6.3"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="2.6.3."/>
                   </num>
@@ -1694,7 +1700,8 @@
                      </emphasis>
                   </heading>
                   <unit eId="pbl_1/division_2/division_2.6/division_2.6.3/division_2.6.3.1"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="2.6.3.1."/>
                      </num>
@@ -1869,7 +1876,8 @@
                      </unit>
                   </unit>
                   <unit eId="pbl_1/division_2/division_2.6/division_2.6.3/division_2.6.3.2"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="2.6.3.2."/>
                      </num>
@@ -1999,7 +2007,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_2/division_2.7" kind="division">
+            <unit eId="pbl_1/division_2/division_2.7" kind="division" rank="2">
                <num>
                   <t v="2.7."/>
                </num>
@@ -2052,7 +2060,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="pbl_1/division_3" kind="division">
+         <unit eId="pbl_1/division_3" kind="division" rank="1">
             <num>
                <t v="3."/>
             </num>
@@ -2061,7 +2069,7 @@
                   <t v="GROUNDS FOR INITIATING THE FORMAL INVESTIGATION PROCEDURE"/>
                </emphasis>
             </heading>
-            <unit eId="pbl_1/division_3/division_3.1" kind="division">
+            <unit eId="pbl_1/division_3/division_3.1" kind="division" rank="2">
                <num>
                   <t v="3.1."/>
                </num>
@@ -2116,7 +2124,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_3/division_3.2" kind="division">
+            <unit eId="pbl_1/division_3/division_3.2" kind="division" rank="2">
                <num>
                   <t v="3.2."/>
                </num>
@@ -2177,7 +2185,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="pbl_1/division_4" kind="division">
+         <unit eId="pbl_1/division_4" kind="division" rank="1">
             <num>
                <t v="4."/>
             </num>
@@ -2186,7 +2194,7 @@
                   <t v="COMMENTS FROM ITALY"/>
                </emphasis>
             </heading>
-            <unit eId="pbl_1/division_4/division_4.1" kind="division">
+            <unit eId="pbl_1/division_4/division_4.1" kind="division" rank="2">
                <num>
                   <t v="4.1."/>
                </num>
@@ -2406,7 +2414,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_4/division_4.2" kind="division">
+            <unit eId="pbl_1/division_4/division_4.2" kind="division" rank="2">
                <num>
                   <t v="4.2."/>
                </num>
@@ -2415,7 +2423,9 @@
                      <t v="On the capital injection"/>
                   </emphasis>
                </heading>
-               <unit eId="pbl_1/division_4/division_4.2/division_4.2.1" kind="division">
+               <unit eId="pbl_1/division_4/division_4.2/division_4.2.1"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="4.2.1."/>
                   </num>
@@ -2465,7 +2475,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_4/division_4.2/division_4.2.2" kind="division">
+               <unit eId="pbl_1/division_4/division_4.2/division_4.2.2"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="4.2.2."/>
                   </num>
@@ -2503,7 +2515,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="pbl_1/division_5" kind="division">
+         <unit eId="pbl_1/division_5" kind="division" rank="1">
             <num>
                <t v="5."/>
             </num>
@@ -2520,7 +2532,7 @@
                   <t v="The Commission received comments from SEAH (in liquidation), the Milan Airport Handling Trust and Airport Handling, SEA and an interested party which asked for anonymity."/>
                </p>
             </unit>
-            <unit eId="pbl_1/division_5/division_5.1" kind="division">
+            <unit eId="pbl_1/division_5/division_5.1" kind="division" rank="2">
                <num>
                   <t v="5.1."/>
                </num>
@@ -2533,7 +2545,9 @@
                      <t v=")"/>
                   </emphasis>
                </heading>
-               <unit eId="pbl_1/division_5/division_5.1/division_5.1.1" kind="division">
+               <unit eId="pbl_1/division_5/division_5.1/division_5.1.1"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.1.1."/>
                   </num>
@@ -2609,7 +2623,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.1/division_5.1.2" kind="division">
+               <unit eId="pbl_1/division_5/division_5.1/division_5.1.2"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.1.2."/>
                   </num>
@@ -2793,7 +2809,9 @@
                      </list>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.1/division_5.1.3" kind="division">
+               <unit eId="pbl_1/division_5/division_5.1/division_5.1.3"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.1.3."/>
                   </num>
@@ -2819,7 +2837,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.1/division_5.1.4" kind="division">
+               <unit eId="pbl_1/division_5/division_5.1/division_5.1.4"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.1.4."/>
                   </num>
@@ -2853,7 +2873,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.1/division_5.1.5" kind="division">
+               <unit eId="pbl_1/division_5/division_5.1/division_5.1.5"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.1.5."/>
                   </num>
@@ -2986,7 +3008,9 @@
                      </list>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.1/division_5.1.6" kind="division">
+               <unit eId="pbl_1/division_5/division_5.1/division_5.1.6"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.1.6."/>
                   </num>
@@ -3004,7 +3028,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.1/division_5.1.7" kind="division">
+               <unit eId="pbl_1/division_5/division_5.1/division_5.1.7"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.1.7."/>
                   </num>
@@ -3146,7 +3172,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.1/division_5.1.8" kind="division">
+               <unit eId="pbl_1/division_5/division_5.1/division_5.1.8"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.1.8."/>
                   </num>
@@ -3164,7 +3192,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.1/division_5.1.9" kind="division">
+               <unit eId="pbl_1/division_5/division_5.1/division_5.1.9"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.1.9."/>
                   </num>
@@ -3220,7 +3250,8 @@
                      </p>
                   </unit>
                   <unit eId="pbl_1/division_5/division_5.1/division_5.1.9/division_5.1.9.1"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="5.1.9.1."/>
                      </num>
@@ -3245,7 +3276,8 @@
                      </unit>
                   </unit>
                   <unit eId="pbl_1/division_5/division_5.1/division_5.1.9/division_5.1.9.2"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="5.1.9.2."/>
                      </num>
@@ -3385,7 +3417,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_5/division_5.2" kind="division">
+            <unit eId="pbl_1/division_5/division_5.2" kind="division" rank="2">
                <num>
                   <t v="5.2."/>
                </num>
@@ -3394,7 +3426,9 @@
                      <t v="Comments from SEAH (in liquidation)"/>
                   </emphasis>
                </heading>
-               <unit eId="pbl_1/division_5/division_5.2/division_5.2.1" kind="division">
+               <unit eId="pbl_1/division_5/division_5.2/division_5.2.1"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.2.1."/>
                   </num>
@@ -3438,7 +3472,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.2/division_5.2.2" kind="division">
+               <unit eId="pbl_1/division_5/division_5.2/division_5.2.2"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.2.2."/>
                   </num>
@@ -3482,7 +3518,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.2/division_5.2.3" kind="division">
+               <unit eId="pbl_1/division_5/division_5.2/division_5.2.3"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.2.3."/>
                   </num>
@@ -3518,7 +3556,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.2/division_5.2.4" kind="division">
+               <unit eId="pbl_1/division_5/division_5.2/division_5.2.4"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.2.4."/>
                   </num>
@@ -3547,7 +3587,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_5/division_5.3" kind="division">
+            <unit eId="pbl_1/division_5/division_5.3" kind="division" rank="2">
                <num>
                   <t v="5.3."/>
                </num>
@@ -3556,7 +3596,9 @@
                      <t v="Comments from SEA"/>
                   </emphasis>
                </heading>
-               <unit eId="pbl_1/division_5/division_5.3/division_5.3.1" kind="division">
+               <unit eId="pbl_1/division_5/division_5.3/division_5.3.1"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.3.1."/>
                   </num>
@@ -3684,7 +3726,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_5/division_5.3/division_5.3.2" kind="division">
+               <unit eId="pbl_1/division_5/division_5.3/division_5.3.2"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="5.3.2."/>
                   </num>
@@ -3747,7 +3791,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_5/division_5.4" kind="division">
+            <unit eId="pbl_1/division_5/division_5.4" kind="division" rank="2">
                <num>
                   <t v="5.4."/>
                </num>
@@ -3766,7 +3810,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="pbl_1/division_6" kind="division">
+         <unit eId="pbl_1/division_6" kind="division" rank="1">
             <num>
                <t v="6."/>
             </num>
@@ -3792,7 +3836,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="pbl_1/division_7" kind="division">
+         <unit eId="pbl_1/division_7" kind="division" rank="1">
             <num>
                <t v="7."/>
             </num>
@@ -3809,7 +3853,7 @@
                   <t v="In this case, the Commission had to assess two distinct matters: First, the possible transfer of the recovery obligation stemming from the recovery decision from SEA Handling to Airport Handling; second, possible aid inherent in SEA’s EUR 25 million capital injection in Airport Handling."/>
                </p>
             </unit>
-            <unit eId="pbl_1/division_7/division_7.1" kind="division">
+            <unit eId="pbl_1/division_7/division_7.1" kind="division" rank="2">
                <num>
                   <t v="7.1."/>
                </num>
@@ -3880,7 +3924,9 @@
                      <t v="In order to decide whether there is economic continuity between SEAH and Airport Handling and the latter may be held liable for the reimbursement of the incompatible aid granted to the former, the Commission applied the aforementioned indicators to the specific circumstances of the case at issue."/>
                   </p>
                </unit>
-               <unit eId="pbl_1/division_7/division_7.1/division_7.1.1" kind="division">
+               <unit eId="pbl_1/division_7/division_7.1/division_7.1.1"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="7.1.1."/>
                   </num>
@@ -3890,7 +3936,8 @@
                      </emphasis>
                   </heading>
                   <unit eId="pbl_1/division_7/division_7.1/division_7.1.1/division_7.1.1.1"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.1.1.1."/>
                      </num>
@@ -4084,7 +4131,8 @@
                      </unit>
                   </unit>
                   <unit eId="pbl_1/division_7/division_7.1/division_7.1.1/division_7.1.1.2"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.1.1.2."/>
                      </num>
@@ -4246,7 +4294,8 @@
                      </unit>
                   </unit>
                   <unit eId="pbl_1/division_7/division_7.1/division_7.1.1/division_7.1.1.3"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.1.1.3."/>
                      </num>
@@ -4554,7 +4603,8 @@
                      </unit>
                   </unit>
                   <unit eId="pbl_1/division_7/division_7.1/division_7.1.1/division_7.1.1.4"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.1.1.4."/>
                      </num>
@@ -4605,7 +4655,9 @@
                      </unit>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_7/division_7.1/division_7.1.2" kind="division">
+               <unit eId="pbl_1/division_7/division_7.1/division_7.1.2"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="7.1.2."/>
                   </num>
@@ -4623,7 +4675,8 @@
                      </p>
                   </unit>
                   <unit eId="pbl_1/division_7/division_7.1/division_7.1.2/division_7.1.2.1"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.1.2.1."/>
                      </num>
@@ -4703,7 +4756,8 @@
                      </unit>
                   </unit>
                   <unit eId="pbl_1/division_7/division_7.1/division_7.1.2/division_7.1.2.2"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.1.2.2."/>
                      </num>
@@ -4766,7 +4820,8 @@
                      </unit>
                   </unit>
                   <unit eId="pbl_1/division_7/division_7.1/division_7.1.2/division_7.1.2.3"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.1.2.3."/>
                      </num>
@@ -4893,7 +4948,8 @@
                      </unit>
                   </unit>
                   <unit eId="pbl_1/division_7/division_7.1/division_7.1.2/division_7.1.2.4"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.1.2.4."/>
                      </num>
@@ -4912,7 +4968,9 @@
                      </unit>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_7/division_7.1/division_7.1.3" kind="division">
+               <unit eId="pbl_1/division_7/division_7.1/division_7.1.3"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="7.1.3."/>
                   </num>
@@ -5078,7 +5136,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_7/division_7.1/division_7.1.4" kind="division">
+               <unit eId="pbl_1/division_7/division_7.1/division_7.1.4"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="7.1.4."/>
                   </num>
@@ -5122,7 +5182,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_7/division_7.1/division_7.1.5" kind="division">
+               <unit eId="pbl_1/division_7/division_7.1/division_7.1.5"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="7.1.5."/>
                   </num>
@@ -5218,7 +5280,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_7/division_7.1/division_7.1.6" kind="division">
+               <unit eId="pbl_1/division_7/division_7.1/division_7.1.6"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="7.1.6."/>
                   </num>
@@ -5285,7 +5349,7 @@
                   </unit>
                </unit>
             </unit>
-            <unit eId="pbl_1/division_7/division_7.2" kind="division">
+            <unit eId="pbl_1/division_7/division_7.2" kind="division" rank="2">
                <num>
                   <t v="7.2."/>
                </num>
@@ -5348,7 +5412,9 @@
                      </unit>
                   </list>
                </unit>
-               <unit eId="pbl_1/division_7/division_7.2/division_7.2.1" kind="division">
+               <unit eId="pbl_1/division_7/division_7.2/division_7.2.1"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="7.2.1."/>
                   </num>
@@ -5410,7 +5476,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_7/division_7.2/division_7.2.2" kind="division">
+               <unit eId="pbl_1/division_7/division_7.2/division_7.2.2"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="7.2.2."/>
                   </num>
@@ -5496,7 +5564,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_7/division_7.2/division_7.2.3" kind="division">
+               <unit eId="pbl_1/division_7/division_7.2/division_7.2.3"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="7.2.3."/>
                   </num>
@@ -5514,7 +5584,8 @@
                      </p>
                   </unit>
                   <unit eId="pbl_1/division_7/division_7.2/division_7.2.3/division_7.2.3.1"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.2.3.1."/>
                      </num>
@@ -5533,7 +5604,8 @@
                      </unit>
                   </unit>
                   <unit eId="pbl_1/division_7/division_7.2/division_7.2.3/division_7.2.3.2"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.2.3.2."/>
                      </num>
@@ -5599,7 +5671,8 @@
                      </unit>
                   </unit>
                   <unit eId="pbl_1/division_7/division_7.2/division_7.2.3/division_7.2.3.3"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.2.3.3."/>
                      </num>
@@ -5686,7 +5759,8 @@
                      </unit>
                   </unit>
                   <unit eId="pbl_1/division_7/division_7.2/division_7.2.3/division_7.2.3.4"
-                        kind="division">
+                        kind="division"
+                        rank="4">
                      <num>
                         <t v="7.2.3.4."/>
                      </num>
@@ -5763,7 +5837,9 @@
                      </unit>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_7/division_7.2/division_7.2.4" kind="division">
+               <unit eId="pbl_1/division_7/division_7.2/division_7.2.4"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="7.2.4."/>
                   </num>
@@ -5781,7 +5857,9 @@
                      </p>
                   </unit>
                </unit>
-               <unit eId="pbl_1/division_7/division_7.2/division_7.2.5" kind="division">
+               <unit eId="pbl_1/division_7/division_7.2/division_7.2.5"
+                     kind="division"
+                     rank="3">
                   <num>
                      <t v="7.2.5."/>
                   </num>
@@ -5809,7 +5887,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -5834,7 +5912,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -5842,7 +5920,7 @@
             <t v="The setting-up and capitalisation which Italy has implemented for Airport Handling SpA, amounting to EUR 25 million does not constitute aid within the meaning of Article 107(1) of the Treaty on the Functioning of the European Union."/>
          </p>
       </unit>
-      <unit eId="art_3" kind="article">
+      <unit eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>

@@ -132,7 +132,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -144,7 +144,7 @@
             <t v=" and methods of administrative cooperation, shall be based on the draft decision of the EPA Committee attached to this Decision."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -194,11 +194,11 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx_1" kind="annex" eurlexAnchor="1">
+      <unit eId="anx_1" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx_1/level_PROTOCOL-1" kind="level" depth="1">
+         <unit eId="anx_1/level_PROTOCOL-1" kind="level" depth="1" rank="2">
             <num>
                <t v="PROTOCOL 1"/>
             </num>
@@ -212,7 +212,7 @@
                </emphasis>
             </subheading>
          </unit>
-         <unit eId="anx_1/level_TITLE-I" kind="level" depth="2">
+         <unit eId="anx_1/level_TITLE-I" kind="level" depth="2" rank="3">
             <num>
                <t v="TITLE I"/>
             </num>
@@ -221,7 +221,7 @@
                   <t v="GENERAL PROVISIONS"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_1/level_TITLE-I/art_1" kind="article">
+            <unit eId="anx_1/level_TITLE-I/art_1" kind="article" rank="4">
                <num>
                   <t v="Article 1"/>
                </num>
@@ -420,7 +420,7 @@
                </list>
             </unit>
          </unit>
-         <unit eId="anx_1/level_TITLE-II" kind="level" depth="2">
+         <unit eId="anx_1/level_TITLE-II" kind="level" depth="2" rank="3">
             <num>
                <t v="TITLE II"/>
             </num>
@@ -432,7 +432,7 @@
                   </quote>
                </emphasis>
             </subheading>
-            <unit eId="anx_1/level_TITLE-II/art_2" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_2" kind="article" rank="4">
                <num>
                   <t v="Article 2"/>
                </num>
@@ -500,7 +500,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-II/art_3" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_3" kind="article" rank="4">
                <num>
                   <t v="Article 3"/>
                </num>
@@ -753,7 +753,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-II/art_4" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_4" kind="article" rank="4">
                <num>
                   <t v="Article 4"/>
                </num>
@@ -831,7 +831,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-II/art_5" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_5" kind="article" rank="4">
                <num>
                   <t v="Article 5"/>
                </num>
@@ -1026,7 +1026,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-II/art_6" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_6" kind="article" rank="4">
                <num>
                   <t v="Article 6"/>
                </num>
@@ -1086,7 +1086,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-II/art_7" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_7" kind="article" rank="4">
                <num>
                   <t v="Article 7"/>
                </num>
@@ -1230,7 +1230,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-II/art_8" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_8" kind="article" rank="4">
                <num>
                   <t v="Article 8"/>
                </num>
@@ -1475,7 +1475,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-II/art_9" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_9" kind="article" rank="4">
                <num>
                   <t v="Article 9"/>
                </num>
@@ -1524,7 +1524,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-II/art_10" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_10" kind="article" rank="4">
                <num>
                   <t v="Article 10"/>
                </num>
@@ -1535,7 +1535,7 @@
                   <t v="Accessories, spare parts and tools dispatched with a piece of equipment, machine, apparatus or vehicle, which are part of the normal equipment and included in the price thereof or which are not separately invoiced, shall be regarded as forming a whole with the piece of equipment, machine, apparatus or vehicle in question."/>
                </p>
             </unit>
-            <unit eId="anx_1/level_TITLE-II/art_11" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_11" kind="article" rank="4">
                <num>
                   <t v="Article 11"/>
                </num>
@@ -1546,7 +1546,7 @@
                   <t v="Sets, as defined in General Rule 3 of the Harmonised System, shall be regarded as originating when all the component products are originating. Nevertheless, when a set is composed of originating and non-originating products, the set as a whole shall be regarded as originating, provided that the value of the non-originating products does not exceed 15 % of the ex-works price of the set."/>
                </p>
             </unit>
-            <unit eId="anx_1/level_TITLE-II/art_12" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_12" kind="article" rank="4">
                <num>
                   <t v="Article 12"/>
                </num>
@@ -1599,7 +1599,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_1/level_TITLE-II/art_13" kind="article">
+            <unit eId="anx_1/level_TITLE-II/art_13" kind="article" rank="4">
                <num>
                   <t v="Article 13"/>
                </num>
@@ -1710,7 +1710,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="anx_1/level_TITLE-III" kind="level" depth="2">
+         <unit eId="anx_1/level_TITLE-III" kind="level" depth="2" rank="3">
             <num>
                <t v="TITLE III"/>
             </num>
@@ -1719,7 +1719,7 @@
                   <t v="TERRITORIAL REQUIREMENTS"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_1/level_TITLE-III/art_14" kind="article">
+            <unit eId="anx_1/level_TITLE-III/art_14" kind="article" rank="4">
                <num>
                   <t v="Article 14"/>
                </num>
@@ -1863,7 +1863,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-III/art_15" kind="article">
+            <unit eId="anx_1/level_TITLE-III/art_15" kind="article" rank="4">
                <num>
                   <t v="Article 15"/>
                </num>
@@ -1911,7 +1911,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-III/art_16" kind="article">
+            <unit eId="anx_1/level_TITLE-III/art_16" kind="article" rank="4">
                <num>
                   <t v="Article 16"/>
                </num>
@@ -1992,7 +1992,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="anx_1/level_TITLE-IV" kind="level" depth="2">
+         <unit eId="anx_1/level_TITLE-IV" kind="level" depth="2" rank="3">
             <num>
                <t v="TITLE IV"/>
             </num>
@@ -2001,7 +2001,7 @@
                   <t v="PROOF OF ORIGIN"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_1/level_TITLE-IV/art_17" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_17" kind="article" rank="4">
                <num>
                   <t v="Article 17"/>
                </num>
@@ -2085,7 +2085,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_18" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_18" kind="article" rank="4">
                <num>
                   <t v="Article 18"/>
                </num>
@@ -2163,7 +2163,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_19" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_19" kind="article" rank="4">
                <num>
                   <t v="Article 19"/>
                </num>
@@ -2253,7 +2253,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_20" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_20" kind="article" rank="4">
                <num>
                   <t v="Article 20"/>
                </num>
@@ -2310,7 +2310,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_21" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_21" kind="article" rank="4">
                <num>
                   <t v="Article 21"/>
                </num>
@@ -2424,7 +2424,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_22" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_22" kind="article" rank="4">
                <num>
                   <t v="Article 22"/>
                </num>
@@ -2482,7 +2482,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_23" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_23" kind="article" rank="4">
                <num>
                   <t v="Article 23"/>
                </num>
@@ -2520,7 +2520,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_24" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_24" kind="article" rank="4">
                <num>
                   <t v="Article 24"/>
                </num>
@@ -2531,7 +2531,7 @@
                   <t v="Proof of origin shall be submitted to the customs authorities of the importing country in accordance with the procedures applicable in that country. Those authorities may require proof of origin to be translated. They may also require that the import declaration be accompanied by a statement from the importer to the effect that the products meet the requisite conditions for implementation of the Agreement."/>
                </p>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_25" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_25" kind="article" rank="4">
                <num>
                   <t v="Article 25"/>
                </num>
@@ -2546,7 +2546,7 @@
                   <t v=" of the Harmonised System are imported by instalments, a single proof of origin for such products shall be submitted to the customs authorities upon importation of the first instalment."/>
                </p>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_26" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_26" kind="article" rank="4">
                <num>
                   <t v="Article 26"/>
                </num>
@@ -2586,7 +2586,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_27" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_27" kind="article" rank="4">
                <num>
                   <t v="Article 27"/>
                </num>
@@ -2696,7 +2696,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_28" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_28" kind="article" rank="4">
                <num>
                   <t v="Article 28"/>
                </num>
@@ -2749,7 +2749,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_29" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_29" kind="article" rank="4">
                <num>
                   <t v="Article 29"/>
                </num>
@@ -2807,7 +2807,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_30" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_30" kind="article" rank="4">
                <num>
                   <t v="Article 30"/>
                </num>
@@ -2835,7 +2835,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-IV/art_31" kind="article">
+            <unit eId="anx_1/level_TITLE-IV/art_31" kind="article" rank="4">
                <num>
                   <t v="Article 31"/>
                </num>
@@ -2894,7 +2894,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="anx_1/level_TITLE-V" kind="level" depth="2">
+         <unit eId="anx_1/level_TITLE-V" kind="level" depth="2" rank="3">
             <num>
                <t v="TITLE V"/>
             </num>
@@ -2903,7 +2903,7 @@
                   <t v="ADMINISTRATIVE COOPERATION"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_1/level_TITLE-V/art_32" kind="article">
+            <unit eId="anx_1/level_TITLE-V/art_32" kind="article" rank="4">
                <num>
                   <t v="Article 32"/>
                </num>
@@ -2921,7 +2921,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-V/art_33" kind="article">
+            <unit eId="anx_1/level_TITLE-V/art_33" kind="article" rank="4">
                <num>
                   <t v="Article 33"/>
                </num>
@@ -2956,7 +2956,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-V/art_34" kind="article">
+            <unit eId="anx_1/level_TITLE-V/art_34" kind="article" rank="4">
                <num>
                   <t v="Article 34"/>
                </num>
@@ -3002,7 +3002,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-V/art_35" kind="article">
+            <unit eId="anx_1/level_TITLE-V/art_35" kind="article" rank="4">
                <num>
                   <t v="Article 35"/>
                </num>
@@ -3066,7 +3066,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-V/art_36" kind="article">
+            <unit eId="anx_1/level_TITLE-V/art_36" kind="article" rank="4">
                <num>
                   <t v="Article 36"/>
                </num>
@@ -3117,7 +3117,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-V/art_37" kind="article">
+            <unit eId="anx_1/level_TITLE-V/art_37" kind="article" rank="4">
                <num>
                   <t v="Article 37"/>
                </num>
@@ -3141,7 +3141,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-V/art_38" kind="article">
+            <unit eId="anx_1/level_TITLE-V/art_38" kind="article" rank="4">
                <num>
                   <t v="Article 38"/>
                </num>
@@ -3152,7 +3152,7 @@
                   <t v="Penalties shall be imposed on any person who draws up, or causes to be drawn up, a document which contains inaccurate information for the purpose of obtaining preferential treatment for products."/>
                </p>
             </unit>
-            <unit eId="anx_1/level_TITLE-V/art_39" kind="article">
+            <unit eId="anx_1/level_TITLE-V/art_39" kind="article" rank="4">
                <num>
                   <t v="Article 39"/>
                </num>
@@ -3176,7 +3176,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-V/art_40" kind="article">
+            <unit eId="anx_1/level_TITLE-V/art_40" kind="article" rank="4">
                <num>
                   <t v="Article 40"/>
                </num>
@@ -3427,7 +3427,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="anx_1/level_TITLE-VI" kind="level" depth="2">
+         <unit eId="anx_1/level_TITLE-VI" kind="level" depth="2" rank="3">
             <num>
                <t v="TITLE VI"/>
             </num>
@@ -3436,7 +3436,7 @@
                   <t v="CEUTA AND MELILLA"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_1/level_TITLE-VI/art_41" kind="article">
+            <unit eId="anx_1/level_TITLE-VI/art_41" kind="article" rank="4">
                <num>
                   <t v="Article 41"/>
                </num>
@@ -3482,7 +3482,7 @@
                   </p>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-VI/art_42" kind="article">
+            <unit eId="anx_1/level_TITLE-VI/art_42" kind="article" rank="4">
                <num>
                   <t v="Article 42"/>
                </num>
@@ -3649,7 +3649,7 @@
                </unit>
             </unit>
          </unit>
-         <unit eId="anx_1/level_TITLE-VII" kind="level" depth="2">
+         <unit eId="anx_1/level_TITLE-VII" kind="level" depth="2" rank="3">
             <num>
                <t v="TITLE VII"/>
             </num>
@@ -3658,7 +3658,7 @@
                   <t v="FINAL PROVISIONS"/>
                </emphasis>
             </subheading>
-            <unit eId="anx_1/level_TITLE-VII/art_43" kind="article">
+            <unit eId="anx_1/level_TITLE-VII/art_43" kind="article" rank="4">
                <num>
                   <t v="Article 43"/>
                </num>
@@ -3750,7 +3750,7 @@
                   </list>
                </unit>
             </unit>
-            <unit eId="anx_1/level_TITLE-VII/art_44" kind="article">
+            <unit eId="anx_1/level_TITLE-VII/art_44" kind="article" rank="4">
                <num>
                   <t v="Article 44"/>
                </num>
@@ -3761,7 +3761,7 @@
                   <t v="The Annexes to this Protocol shall form an integral part of this Protocol."/>
                </p>
             </unit>
-            <unit eId="anx_1/level_TITLE-VII/art_45" kind="article">
+            <unit eId="anx_1/level_TITLE-VII/art_45" kind="article" rank="4">
                <num>
                   <t v="Article 45"/>
                </num>
@@ -3794,7 +3794,7 @@
                   </unit>
                </list>
             </unit>
-            <unit eId="anx_1/level_TITLE-VII/art_46" kind="article">
+            <unit eId="anx_1/level_TITLE-VII/art_46" kind="article" rank="4">
                <num>
                   <t v="Article 46"/>
                </num>
@@ -3859,11 +3859,17 @@
             </note>
          </notes>
       </unit>
-      <unit eId="anx_I-TO-PROTOCOL-1" kind="annex" eurlexAnchor="2">
+      <unit eId="anx_I-TO-PROTOCOL-1"
+            kind="annex"
+            eurlexAnchor="2"
+            rank="1">
          <num>
             <t v="ANNEX I TO PROTOCOL 1"/>
          </num>
-         <unit eId="anx_I-TO-PROTOCOL-1/level_1" kind="level" depth="1">
+         <unit eId="anx_I-TO-PROTOCOL-1/level_1"
+               kind="level"
+               depth="1"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="INTRODUCTORY NOTES TO THE LIST IN ANNEX II TO THE PROTOCOL"/>
@@ -4847,11 +4853,17 @@
             </note>
          </notes>
       </unit>
-      <unit eId="anx_II-TO-PROTOCOL-1" kind="annex" eurlexAnchor="3">
+      <unit eId="anx_II-TO-PROTOCOL-1"
+            kind="annex"
+            eurlexAnchor="3"
+            rank="1">
          <num>
             <t v="ANNEX II TO PROTOCOL 1"/>
          </num>
-         <unit eId="anx_II-TO-PROTOCOL-1/level_1" kind="level" depth="1">
+         <unit eId="anx_II-TO-PROTOCOL-1/level_1"
+               kind="level"
+               depth="1"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="LIST OF WORKING OR PROCESSING TO BE CARRIED OUT ON NON-ORIGINATING MATERIALS IN ORDER FOR THE PRODUCT MANUFACTURED TO ACQUIRE ORIGINATING STATUS"/>
@@ -18248,13 +18260,19 @@
             </note>
          </notes>
       </unit>
-      <unit eId="anx_ii-a-to-protocol-1" kind="annex" eurlexAnchor="4">
+      <unit eId="anx_ii-a-to-protocol-1"
+            kind="annex"
+            eurlexAnchor="4"
+            rank="1">
          <num>
             <emphasis kind="uc">
                <t v="Annex ii-a to protocol 1"/>
             </emphasis>
          </num>
-         <unit eId="anx_ii-a-to-protocol-1/level_1" kind="level" depth="1">
+         <unit eId="anx_ii-a-to-protocol-1/level_1"
+               kind="level"
+               depth="1"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="DEROGATIONS FROM THE LIST OF WORKING OR PROCESSING TO BE CARRIED OUT ON NON-ORIGINATING MATERIALS IN ORDER FOR THE PRODUCT MANUFACTURED TO ACQUIRE ORIGINATING STATUS"/>
@@ -19698,11 +19716,17 @@
             </note>
          </notes>
       </unit>
-      <unit eId="anx_III-TO-PROTOCOL-1" kind="annex" eurlexAnchor="5">
+      <unit eId="anx_III-TO-PROTOCOL-1"
+            kind="annex"
+            eurlexAnchor="5"
+            rank="1">
          <num>
             <t v="ANNEX III TO PROTOCOL 1"/>
          </num>
-         <unit eId="anx_III-TO-PROTOCOL-1/level_1" kind="level" depth="1">
+         <unit eId="anx_III-TO-PROTOCOL-1/level_1"
+               kind="level"
+               depth="1"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="FORM FOR MOVEMENT CERTIFICATE EUR.1"/>
@@ -19745,7 +19769,10 @@
                </unit>
             </list>
          </unit>
-         <unit eId="anx_III-TO-PROTOCOL-1/level_1/level_1" kind="level" depth="2">
+         <unit eId="anx_III-TO-PROTOCOL-1/level_1/level_1"
+               kind="level"
+               depth="2"
+               rank="3">
             <heading>
                <emphasis kind="b">
                   <t v="MOVEMENT CERTIFICATE"/>
@@ -19754,7 +19781,10 @@
             <figure src="L_2019222EN.01018601.tif" content="form"/>
             <figure src="L_2019222EN.01018701.tif" content="form"/>
          </unit>
-         <unit eId="anx_III-TO-PROTOCOL-1/level_1/level_2" kind="level" depth="2">
+         <unit eId="anx_III-TO-PROTOCOL-1/level_1/level_2"
+               kind="level"
+               depth="2"
+               rank="3">
             <heading>
                <emphasis kind="b">
                   <t v="APPLICATION FOR A MOVEMENT CERTIFICATE"/>
@@ -19762,7 +19792,10 @@
             </heading>
             <figure src="L_2019222EN.01018801.tif" content="form"/>
          </unit>
-         <unit eId="anx_III-TO-PROTOCOL-1/level_1/level_3" kind="level" depth="2">
+         <unit eId="anx_III-TO-PROTOCOL-1/level_1/level_3"
+               kind="level"
+               depth="2"
+               rank="3">
             <heading>
                <emphasis kind="b">
                   <t v="DECLARATION BY THE EXPORTER"/>
@@ -19771,11 +19804,17 @@
             <figure src="L_2019222EN.01018901.tif" content="form"/>
          </unit>
       </unit>
-      <unit eId="anx_IV-TO-PROTOCOL-1" kind="annex" eurlexAnchor="6">
+      <unit eId="anx_IV-TO-PROTOCOL-1"
+            kind="annex"
+            eurlexAnchor="6"
+            rank="1">
          <num>
             <t v="ANNEX IV TO PROTOCOL 1"/>
          </num>
-         <unit eId="anx_IV-TO-PROTOCOL-1/level_1" kind="level" depth="1">
+         <unit eId="anx_IV-TO-PROTOCOL-1/level_1"
+               kind="level"
+               depth="1"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="ORIGIN DECLARATION"/>
@@ -19786,11 +19825,17 @@
             <figure src="L_2019222EN.01019201.tif" content="form"/>
          </unit>
       </unit>
-      <unit eId="anx_V-A-TO-PROTOCOL-1" kind="annex" eurlexAnchor="7">
+      <unit eId="anx_V-A-TO-PROTOCOL-1"
+            kind="annex"
+            eurlexAnchor="7"
+            rank="1">
          <num>
             <t v="ANNEX V-A TO PROTOCOL 1"/>
          </num>
-         <unit eId="anx_V-A-TO-PROTOCOL-1/level_1" kind="level" depth="1">
+         <unit eId="anx_V-A-TO-PROTOCOL-1/level_1"
+               kind="level"
+               depth="1"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="SUPPLIER DECLARATION FOR PRODUCTS HAVING PREFERENTIAL ORIGIN STATUS"/>
@@ -19913,11 +19958,17 @@
             </annotation>
          </unit>
       </unit>
-      <unit eId="anx_V-B-TO-PROTOCOL-1" kind="annex" eurlexAnchor="8">
+      <unit eId="anx_V-B-TO-PROTOCOL-1"
+            kind="annex"
+            eurlexAnchor="8"
+            rank="1">
          <num>
             <t v="ANNEX V-B TO PROTOCOL 1"/>
          </num>
-         <unit eId="anx_V-B-TO-PROTOCOL-1/level_1" kind="level" depth="1">
+         <unit eId="anx_V-B-TO-PROTOCOL-1/level_1"
+               kind="level"
+               depth="1"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="SUPPLIER DECLARATION FOR PRODUCTS NOT HAVING PREFERENTIAL ORIGIN STATUS"/>
@@ -20119,11 +20170,17 @@
             </annotation>
          </unit>
       </unit>
-      <unit eId="anx_VI-TO-PROTOCOL-1" kind="annex" eurlexAnchor="9">
+      <unit eId="anx_VI-TO-PROTOCOL-1"
+            kind="annex"
+            eurlexAnchor="9"
+            rank="1">
          <num>
             <t v="ANNEX VI TO PROTOCOL 1"/>
          </num>
-         <unit eId="anx_VI-TO-PROTOCOL-1/level_1" kind="level" depth="1">
+         <unit eId="anx_VI-TO-PROTOCOL-1/level_1"
+               kind="level"
+               depth="1"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="INFORMATION CERTIFICATE"/>
@@ -20170,11 +20227,17 @@
             <figure src="L_2019222EN.01019801.tif" content="form"/>
          </unit>
       </unit>
-      <unit eId="anx_VII-TO-PROTOCOL-1" kind="annex" eurlexAnchor="10">
+      <unit eId="anx_VII-TO-PROTOCOL-1"
+            kind="annex"
+            eurlexAnchor="10"
+            rank="1">
          <num>
             <t v="ANNEX VII TO PROTOCOL 1"/>
          </num>
-         <unit eId="anx_VII-TO-PROTOCOL-1/level_1" kind="level" depth="1">
+         <unit eId="anx_VII-TO-PROTOCOL-1/level_1"
+               kind="level"
+               depth="1"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="FORM FOR APPLICATION FOR A DEROGATION"/>
@@ -20595,11 +20658,17 @@
             </annotation>
          </unit>
       </unit>
-      <unit eId="anx_VIII-TO-PROTOCOL-1" kind="annex" eurlexAnchor="11">
+      <unit eId="anx_VIII-TO-PROTOCOL-1"
+            kind="annex"
+            eurlexAnchor="11"
+            rank="1">
          <num>
             <t v="ANNEX VIII TO PROTOCOL 1"/>
          </num>
-         <unit eId="anx_VIII-TO-PROTOCOL-1/level_1" kind="level" depth="1">
+         <unit eId="anx_VIII-TO-PROTOCOL-1/level_1"
+               kind="level"
+               depth="1"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="OVERSEAS COUNTRIES AND TERRITORIES"/>
@@ -20792,11 +20861,17 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="anx_IX-TO-PROTOCOL-1" kind="annex" eurlexAnchor="12">
+      <unit eId="anx_IX-TO-PROTOCOL-1"
+            kind="annex"
+            eurlexAnchor="12"
+            rank="1">
          <num>
             <t v="ANNEX IX TO PROTOCOL 1"/>
          </num>
-         <unit eId="anx_IX-TO-PROTOCOL-1/level_1" kind="level" depth="1">
+         <unit eId="anx_IX-TO-PROTOCOL-1/level_1"
+               kind="level"
+               depth="1"
+               rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="PRODUCTS REFERRED TO IN ARTICLE 7(4) OF THE PROTOCOL"/>
@@ -21067,7 +21142,7 @@
       </unit>
       <unit eId="anx_13" kind="annex" eurlexAnchor="13">
          <file name="L_2019222EN.01020501">
-            <unit eId="anx_13/level_1" kind="level" depth="1">
+            <unit eId="anx_13/level_1" kind="level" depth="1" rank="1">
                <heading>
                   <t v="JOINT DECLARATION"/>
                </heading>
@@ -21103,7 +21178,7 @@
             </unit>
          </file>
          <file name="L_2019222EN.01020502">
-            <unit eId="anx_13/level_2" kind="level" depth="1">
+            <unit eId="anx_13/level_2" kind="level" depth="1" rank="1">
                <heading>
                   <t v="JOINT DECLARATION"/>
                </heading>
@@ -21139,7 +21214,7 @@
             </unit>
          </file>
       </unit>
-      <unit eId="att_1" kind="attachment">
+      <unit eId="att_1" kind="attachment" rank="1">
          <heading>
             <t v="DRAFT"/>
             <eol/>
@@ -21221,7 +21296,7 @@
          <p>
             <t v="HAS ADOPTED THIS DECISION:"/>
          </p>
-         <unit eId="att_1/art_1" kind="article">
+         <unit eId="att_1/art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -21233,7 +21308,7 @@
                <t v=" and methods of administrative cooperation set out in the Annex to this Decision is hereby adopted."/>
             </p>
          </unit>
-         <unit eId="att_1/art_2" kind="article">
+         <unit eId="att_1/art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>

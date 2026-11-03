@@ -172,7 +172,7 @@
                      action="deleted"
                      location="AR:2 .AND. AX:IV;PG:40"
                      marker="O002001M001000"/>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
             </num>
@@ -184,7 +184,7 @@
                <t v=" (Digesa) shall be the competent authority in Peru for verifying and certifying compliance of fishery and aquaculture products with the requirements of Directive 91/493/EEC."/>
             </p>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="1">
             <num>
                <t v="Article 2"/>
             </num>
@@ -222,7 +222,7 @@
                </unit>
             </list>
          </unit>
-         <unit eId="art_3" kind="article">
+         <unit eId="art_3" kind="article" rank="1">
             <num>
                <t v="Article 3"/>
             </num>
@@ -243,7 +243,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_4" kind="article">
+         <unit eId="art_4" kind="article" rank="1">
             <num>
                <t v="Article 4"/>
             </num>
@@ -251,7 +251,7 @@
                <t v="This Decision shall apply from 1 February 1995."/>
             </p>
          </unit>
-         <unit eId="art_5" kind="article">
+         <unit eId="art_5" kind="article" rank="1">
             <num>
                <t v="Article 5"/>
             </num>
@@ -267,14 +267,14 @@
                      action="deleted"
                      location="AR:2 .AND. AX:IV;PG:40"
                      marker="O002001M001000"/>
-         <unit eId="anx_A" kind="annex" eurlexAnchor="1">
+         <unit eId="anx_A" kind="annex" eurlexAnchor="1" rank="1">
             <num>
                <t v="ANNEX A"/>
             </num>
             <figure src="L_1995116EN.01004301.tif" content="other"/>
             <figure src="L_1995116EN.01004401.tif" content="other"/>
          </unit>
-         <unit eId="anx_B" kind="annex" eurlexAnchor="2">
+         <unit eId="anx_B" kind="annex" eurlexAnchor="2" rank="1">
             <num>
                <changed amendingAct="31995D0311"
                         action="replaced"

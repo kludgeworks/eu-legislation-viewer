@@ -587,6 +587,15 @@
         <xs:attribute name="numbered" type="xs:boolean" default="false">
           <xs:annotation><xs:documentation>Points and levels: its num is the number it is known by, its eId's (pnt_1.0.1, pnt_a), not a label line (PART 2) or a mark (—).</xs:documentation></xs:annotation>
         </xs:attribute>
+        <xs:attribute name="rank" type="xs:positiveInteger">
+          <xs:annotation>
+            <xs:documentation>
+              A unit with a title (an article's, an annex's, a division's label and heading, an annex level's heading
+              or label line): the title's rank in the text's outline, 1 the outermost. None for a point's, a
+              paragraph's or a recital's number, or a definition's term.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
         <xs:attribute name="ambiguous" type="xs:boolean" default="false">
           <xs:annotation>
             <xs:documentation>

@@ -82,7 +82,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="sct_1" kind="division">
+      <unit eId="sct_1" kind="division" rank="1">
          <num>
             <t v="SECTION 1"/>
          </num>
@@ -94,7 +94,7 @@
                <date asWritten="31 MARCH 2017" date="2017-03-31"/>
             </emphasis>
          </subheading>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -127,7 +127,7 @@
                <t v="necessary to constitute a blocking minority resulting from the application of Article 9C(4), first subparagraph, of the Treaty on European Union or Article 205(2) of the Treaty on the Functioning of the European Union, indicate their opposition to the Council adopting an act by a qualified majority, the Council shall discuss the issue."/>
             </p>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -135,7 +135,7 @@
                <t v="The Council shall, in the course of these discussions, do all in its power to reach, within a reasonable time and without prejudicing obligatory time limits laid down by Union law, a satisfactory solution to address concerns raised by the members of the Council referred to in Article 1."/>
             </p>
          </unit>
-         <unit eId="art_3" kind="article">
+         <unit eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -144,7 +144,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="sct_2" kind="division">
+      <unit eId="sct_2" kind="division" rank="1">
          <num>
             <t v="SECTION 2"/>
          </num>
@@ -154,7 +154,7 @@
                <date asWritten="1 APRIL 2017" date="2017-04-01"/>
             </emphasis>
          </subheading>
-         <unit eId="art_4" kind="article">
+         <unit eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -185,7 +185,7 @@
                <t v="necessary to constitute a blocking minority resulting from the application of Article 9C(4), first subparagraph, of the Treaty on European Union or Article 205(2) of the Treaty on the Functioning of the European Union, indicate their opposition to the Council adopting an act by a qualified majority, the Council shall discuss the issue."/>
             </p>
          </unit>
-         <unit eId="art_5" kind="article">
+         <unit eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -193,7 +193,7 @@
                <t v="The Council shall, in the course of these discussions, do all in its power to reach, within a reasonable time and without prejudicing obligatory time limits laid down by Union law, a satisfactory solution to address concerns raised by the members of the Council referred to in Article 4."/>
             </p>
          </unit>
-         <unit eId="art_6" kind="article">
+         <unit eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
@@ -202,7 +202,7 @@
             </p>
          </unit>
       </unit>
-      <unit eId="sct_3" kind="division">
+      <unit eId="sct_3" kind="division" rank="1">
          <num>
             <t v="SECTION 3"/>
          </num>
@@ -211,7 +211,7 @@
                <t v="ENTRY INTO FORCE"/>
             </emphasis>
          </subheading>
-         <unit eId="art_7" kind="article">
+         <unit eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>

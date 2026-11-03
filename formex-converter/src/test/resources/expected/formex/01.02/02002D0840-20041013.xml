@@ -112,7 +112,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -120,7 +120,7 @@
             <t v="The list of approved irradiation facilities within the meaning of Article 9(2) of Directive 1999/2/EC is as set out in the Annex to this Decision."/>
          </p>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -130,7 +130,7 @@
       </unit>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="32004D0691"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -138,7 +138,7 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/level_1" kind="level" depth="1">
+         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <t v="List of irradiation facilities in third countries approved by the Community"/>
             </heading>

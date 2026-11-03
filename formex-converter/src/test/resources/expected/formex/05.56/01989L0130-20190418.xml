@@ -64,14 +64,14 @@
                      action="deleted"
                      location="AR:10;AL:1"
                      marker="O002001M001000"/>
-         <unit eId="tis_PREMIER" kind="division">
+         <unit eId="tis_PREMIER" kind="division" rank="1">
             <num>
                <t v="TITRE PREMIER"/>
             </num>
             <subheading>
                <t v="Définition du produit national brut aux prix du marché"/>
             </subheading>
-            <unit eId="art_Article-premier" kind="article">
+            <unit eId="art_Article-premier" kind="article" rank="2">
                <num>
                   <t v="Article premier"/>
                </num>

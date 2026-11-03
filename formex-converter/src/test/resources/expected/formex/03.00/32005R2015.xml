@@ -186,14 +186,14 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="tis_I" kind="division">
+      <unit eId="tis_I" kind="division" rank="1">
          <num>
             <t v="TITLE I"/>
          </num>
          <subheading>
             <t v="General provisions"/>
          </subheading>
-         <unit eId="art_1" kind="article">
+         <unit eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -206,7 +206,7 @@
                <t v=" originating in the ACP countries under the tariff quota referred to in Article 1(2) of Regulation (EC) No 1964/2005, for January and February 2006."/>
             </p>
          </unit>
-         <unit eId="art_2" kind="article">
+         <unit eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -234,14 +234,14 @@
             </list>
          </unit>
       </unit>
-      <unit eId="tis_II" kind="division">
+      <unit eId="tis_II" kind="division" rank="1">
          <num>
             <t v="TITLE II"/>
          </num>
          <subheading>
             <t v="Operators registered under tariff quota C, referred to in Article 18(1) of Regulation (EEC) No 404/93, for 2005"/>
          </subheading>
-         <unit eId="art_3" kind="article">
+         <unit eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -278,14 +278,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="tis_III" kind="division">
+      <unit eId="tis_III" kind="division" rank="1">
          <num>
             <t v="TITLE III"/>
          </num>
          <subheading>
             <t v="Other operators"/>
          </subheading>
-         <unit eId="art_4" kind="article">
+         <unit eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -324,14 +324,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="tis_IV" kind="division">
+      <unit eId="tis_IV" kind="division" rank="1">
          <num>
             <t v="TITLE IV"/>
          </num>
          <subheading>
             <t v="Common provisions"/>
          </subheading>
-         <unit eId="art_5" kind="article">
+         <unit eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -359,7 +359,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_6" kind="article">
+         <unit eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
@@ -402,14 +402,14 @@
             </unit>
          </unit>
       </unit>
-      <unit eId="tis_V" kind="division">
+      <unit eId="tis_V" kind="division" rank="1">
          <num>
             <t v="TITLE V"/>
          </num>
          <subheading>
             <t v="Final provisions"/>
          </subheading>
-         <unit eId="art_7" kind="article">
+         <unit eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
@@ -437,7 +437,7 @@
                </p>
             </unit>
          </unit>
-         <unit eId="art_8" kind="article">
+         <unit eId="art_8" kind="article" rank="2">
             <num>
                <t v="Article 8"/>
             </num>
@@ -450,7 +450,7 @@
                <t v=" of the quantities for which licences have been issued, a clear distinction being made between quantities issued to operators referred to in Title II and operators referred to in Title III."/>
             </p>
          </unit>
-         <unit eId="art_9" kind="article">
+         <unit eId="art_9" kind="article" rank="2">
             <num>
                <t v="Article 9"/>
             </num>

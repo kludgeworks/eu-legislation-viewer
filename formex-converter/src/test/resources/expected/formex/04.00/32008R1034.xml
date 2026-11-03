@@ -120,7 +120,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article">
+      <unit eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -128,7 +128,7 @@
             <t v="In Regulation (EC) No 885/2006 the following Chapter 1a is inserted:"/>
          </p>
          <quotedStructure eId="art_1/qstr_1">
-            <unit eId="art_1/qstr_1/cpt_1a" kind="division">
+            <unit eId="art_1/qstr_1/cpt_1a" kind="division" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="CHAPTER 1a"/>
@@ -136,7 +136,7 @@
                <subheading>
                   <t v="RECOVERY OF DEBTS"/>
                </subheading>
-               <unit eId="art_1/qstr_1/art_5a" kind="article">
+               <unit eId="art_1/qstr_1/art_5a" kind="article" rank="3">
                   <num>
                      <t v="Article 5a"/>
                   </num>
@@ -149,7 +149,7 @@
                      <t v=", the conditions of Articles 32(6)(a) and 33(7) of Regulation (EC) No 1290/2005 are considered to be fulfilled if the amount to be recovered from the beneficiary in relation to an individual payment for an aid scheme, not including interests, does not exceed EUR 100."/>
                   </p>
                </unit>
-               <unit eId="art_1/qstr_1/art_5b" kind="article">
+               <unit eId="art_1/qstr_1/art_5b" kind="article" rank="3">
                   <num>
                      <t v="Article 5b"/>
                   </num>
@@ -163,7 +163,7 @@
             </unit>
          </quotedStructure>
       </unit>
-      <unit eId="art_2" kind="article">
+      <unit eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
