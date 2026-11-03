@@ -110,13 +110,14 @@ root => {
   const groups = [];
   let current = null;
   let mark = null;
+  let markFrom = Infinity; // where a grid's mark starts: drawn, it has no text to measure
   const add = (b, text) => {
     if (!current || current.block !== b) {
       const box = b.getBoundingClientRect();
       current = { block: b, text: "", top: box.top, bottom: box.bottom, left: box.left, right: box.right,
                   align: getComputedStyle(b).textAlign, from: Infinity, chars: 0, bold: 0, italic: 0 };
       groups.push(current);
-      if (mark) [current.text, mark] = [mark + " ", null];
+      if (mark) [current.text, current.from, mark] = [mark + " ", markFrom, null];
     }
     current.text += text;
   };
@@ -127,8 +128,10 @@ root => {
       const before = getComputedStyle(node, "::before").content;
       if (before.startsWith('"') && node.checkVisibility()) {
         const text = JSON.parse(before);
-        if (["grid", "inline-grid"].includes(getComputedStyle(node).display)) mark = text;
-        else add(block(node), text);
+        if (["grid", "inline-grid"].includes(getComputedStyle(node).display)) {
+          mark = text;
+          markFrom = node.getBoundingClientRect().left + parseFloat(getComputedStyle(node).paddingLeft);
+        } else add(block(node), text);
       }
       continue;
     }
