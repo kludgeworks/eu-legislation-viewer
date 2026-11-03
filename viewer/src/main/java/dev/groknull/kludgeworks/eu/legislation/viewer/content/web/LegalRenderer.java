@@ -37,6 +37,15 @@ public class LegalRenderer {
     return out -> element.children().forEach(child -> render(child, element.name(), out));
   }
 
+  /**
+   * Whether {@code unit} is numbered, its number its label (1.0.1, (a)), as its eId's last step
+   * says: pnt_ and its number, against a label's (level_PART-1) or a position's (level_2).
+   */
+  public boolean numbered(Element unit) {
+    var eId = unit.attribute("eId");
+    return eId != null && eId.substring(eId.lastIndexOf('/') + 1).startsWith("pnt_");
+  }
+
   private void render(Element element, @Nullable String parent, TemplateOutput out) {
     templates.render(template(parent, element.name()), Map.of("node", element, "html", this), out);
   }

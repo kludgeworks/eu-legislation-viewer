@@ -126,19 +126,46 @@ p.norm {
   text-align: center;
 }
 
-/* lists as EUR-Lex has them: a grid of label and text */
-.list > .unit {
+/* numbered items as EUR-Lex has them: a grid of label and text. A list's items, the recitals, and
+ * an annex's numbered points: a point's number beside its text (1.0.1), or its heading
+ * (1. AIRPORT SECURITY); a labelled level's label (PART 1, ATTACHMENT 6-A) stays above its title */
+.list > .unit,
+.unit-recital,
+.unit-level.numbered {
   display: grid;
   grid-template-columns: minmax(3rem, auto) 1fr;
   column-gap: 0.5rem;
 }
 
-.list > .unit > .num {
+.list > .unit > .num,
+.unit-recital > .num,
+.unit-level.numbered > .num {
   grid-column: 1;
 }
 
-.list > .unit > :not(.num) {
+.list > .unit > :not(.num),
+.unit-recital > :not(.num),
+.unit-level.numbered > :not(.num) {
   grid-column: 2;
+}
+
+/* a list's mark, which its items don't write (ListKind): the label of each */
+.list-dash > .unit-indent::before,
+.list-ndash > .unit-indent::before,
+.list-bullet > .unit-indent::before {
+  margin-top: 0.5rem;
+}
+
+.list-dash > .unit-indent::before {
+  content: "—";
+}
+
+.list-ndash > .unit-indent::before {
+  content: "–";
+}
+
+.list-bullet > .unit-indent::before {
+  content: "•";
 }
 
 .table {
@@ -225,7 +252,11 @@ p.norm {
   margin-top: 0;
 }
 
-/* what amended a unit: a mark, its act in the title */
+/* what amended a unit: a mark, its act in the title; in a grid, on a line of its own above */
+.legal-text .unit > .provenance {
+  grid-column: 1 / -1;
+}
+
 .provenance::before {
   content: "▼";
   color: var(--muted);

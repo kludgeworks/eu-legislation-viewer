@@ -13,12 +13,14 @@ import gg.jte.output.StringOutput;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 /**
@@ -71,6 +73,21 @@ class LegalRendererTest {
       }
     }
     assertThat(wrong).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "anx/pnt_1.0.1, true",
+    "art_1/par_2/pnt_a, true",
+    "anx/level_CHAPTER-1/pnt_1.1, true",
+    "anx/level_PART-1, false",
+    "anx/pnt_6/level_ATTACHMENT-6-A, false",
+    "anx/level_ATTACHMENT-1-A/level_1, false",
+    "art_1/par_2/pnt_a/idt_1, false"
+  })
+  void numbersUnitsByTheirEIdsLastStep(String eId, boolean numbered) {
+    var unit = new Element("unit", Map.of("eId", eId, "kind", "level"), List.of(), "");
+    assertThat(HTML.numbered(unit)).isEqualTo(numbered);
   }
 
   private static String render(Element element) {
