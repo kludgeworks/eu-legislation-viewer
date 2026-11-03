@@ -33,7 +33,7 @@ local generated =
   )
 // the legal text's templates: their files end without a newline, which jte would write into running
 // text (Rendering and UI)
-local legalTemplates = List("viewer/src/main/jte/legal/**")
+local legalTemplates = List("viewer/src/main/jte/legal/**", "viewer/src/main/jte/legalpart/**")
 local xml = List("**/*.xml", "**/*.xsl", "**/*.xsd", "**/*.xspec", "**/*.sch")
 
 local linters = new Mapping<String, Step> {
