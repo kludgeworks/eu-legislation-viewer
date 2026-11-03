@@ -217,6 +217,13 @@ p.norm {
   font-weight: bold;
 }
 
+/* a level printed in a box (Formex BOX): as EUR-Lex draws it, a frame with 10px inside */
+.unit[data-box="true"] {
+  margin-top: 0.5rem;
+  padding: 10px;
+  border: 1px solid currentcolor;
+}
+
 /* a list's mark, which its items don't write (ListKind): the label of each */
 .list-dash > .unit-indent::before,
 .list-ndash > .unit-indent::before,
