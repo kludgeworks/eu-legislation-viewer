@@ -22922,10 +22922,6 @@
                      <unit eId="anx_III/level_SUBPART-FTL/level_SECTION-2/level_2/pnt_b/pnt_3/level_1"
                            kind="level"
                            depth="5">
-                        <provenance amendingAct="32014R0083"
-                                    action="inserted"
-                                    location="AR:1;PT:5 .AND. AX:II"
-                                    marker="O007001M005000"/>
                         <p>
                            <t v="The values in the following table may apply provided the operator’s FRM continuously monitors that the required safety performance is maintained."/>
                         </p>

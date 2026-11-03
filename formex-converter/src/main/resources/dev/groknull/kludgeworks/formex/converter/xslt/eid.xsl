@@ -145,4 +145,23 @@
     <xsl:sequence select="if ($base) then $base || '/' || $segment else $segment"/>
   </xsl:function>
 
+  <!-- an eId taken apart again, where the output is all there is (the pass over it,
+       formex-to-legal-text.xsl): what it hangs off (anx/pnt_1.2 of anx/pnt_1.2/pnt_a; none for
+       art_1), which a flat level's XML parent isn't -->
+  <xsl:function name="f:eid-base" as="xs:string?">
+    <xsl:param name="eid" as="xs:string"/>
+    <xsl:sequence select="if (contains($eid, '/')) then replace($eid, '/[^/]+$', '') else ()"/>
+  </xsl:function>
+
+  <!-- its last segment (pnt_a), and that segment's abbreviation (pnt) -->
+  <xsl:function name="f:eid-segment" as="xs:string">
+    <xsl:param name="eid" as="xs:string"/>
+    <xsl:sequence select="tokenize($eid, '/')[last()]"/>
+  </xsl:function>
+
+  <xsl:function name="f:eid-abbr" as="xs:string">
+    <xsl:param name="eid" as="xs:string"/>
+    <xsl:sequence select="replace(f:eid-segment($eid), '_.*$', '')"/>
+  </xsl:function>
+
 </xsl:stylesheet>

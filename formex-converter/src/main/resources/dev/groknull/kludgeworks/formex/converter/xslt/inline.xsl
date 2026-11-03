@@ -346,7 +346,7 @@
         else if ($root/self::GENERAL or contains($root/BIB.INSTANCE/NO.SEQ, '.')) then 'inc' || $seq || '-'
         else string($prefix)"/>
     <!-- the value before a node includes the node's own start rule -->
-    <xsl:sequence select="'note_' || $file || ($note ! accumulator-before('f:notes-started'))"/>
+    <xsl:sequence select="f:eid((), 'note', $file || ($note ! accumulator-before('f:notes-started')))"/>
   </xsl:function>
 
   <!-- a package file's own sequence number: L_2009353EN.01000301.xml → 01000301 -->

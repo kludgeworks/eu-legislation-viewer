@@ -10,16 +10,19 @@
     $pending     markers covering an element that produces no block of its own (a P that becomes
                  a p and a list, a single ALINEA): attached to every block it produces
     $base        the eId of the enclosing unit
-    $levelBase   the eId annex levels hang off (the annex, or a quoted structure)
-    $levelCtx    $ctx at that annex or quoted structure: levels are flat, so a level's provenance
-                 is everything covering it from there, including what covers its parent level
-    $parentLevel the eId of the enclosing level, for unnumbered levels
-    $labelledParent, $levelOffset, $earlier
-                 the nearest labelled level, the count of unnumbered top levels in earlier annex
-                 fragments, and earlier annex files: how a level's number is placed (annexes.xsl)
-    $division, $divisionBase
-                 the eId of the enclosing division, and the base it applies to: a division and an
-                 article use it only while their base is that one (articles.xsl)
+    $levels      the levels' context (annexes.xsl), which each unit that numbers levels within it
+                 starts afresh (an annex, an article, a point, a cell, a quoted structure):
+                   base     the eId its levels hang off
+                   ctx      $ctx there: levels are flat, so a level's provenance is everything
+                            covering it from there, including what covers its parent level
+                   parent   the eId of the enclosing level, for unnumbered levels
+                   labelled the nearest labelled level
+                   offset, earlier
+                            the count of unnumbered top levels in earlier annex fragments, and
+                            earlier annex files: how a level's number is placed
+    $division    the enclosing division: its eId, and the base it applies to (a division and an
+                 article use it only while their base is that one, articles.xsl); for recitals, the
+                 enclosing group of recitals' eId
     $annexBase, $notePrefix
                  an attached document's eId for its annexes, and the prefix of its notes' eIds
                  (documents.xsl)
@@ -27,8 +30,7 @@
                  the fragments (files) of the annex being converted: what is numbered through them
                  (quotations, letters) counts the earlier ones
     $quoted      inside a quoted structure: an annex there is numbered among the quotation's
-    $table, $rows
-                 the eId of the enclosing table, and each of its rows' numbers: units in cells hang
+    $table       the enclosing table: its eId, and each of its rows' numbers: units in cells hang
                  off tab_N/tr_N/td_N (tables.xsl)
     $init        the recitals' opening words, where 01.01 puts them inside the first CONSID
 
@@ -251,10 +253,7 @@
         <xsl:with-param name="nodes" as="node()*" select="node()"/>
         <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
         <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-        <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
-        <xsl:with-param name="levelCtx" as="xs:string*" select="$ctx" tunnel="yes"/>
-        <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
-        <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
+        <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': $ctx}" tunnel="yes"/>
         <xsl:with-param name="quoted" as="xs:boolean" select="true()" tunnel="yes"/>
       </xsl:call-template>
     </quotedStructure>
@@ -289,9 +288,7 @@
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$inner" tunnel="yes"/>
-          <xsl:with-param name="levelBase" as="xs:string?" select="$inner" tunnel="yes"/>
-          <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
-          <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
+          <xsl:with-param name="levels" as="map(*)" select="map{'base': $inner, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
         </xsl:call-template>
       </annotation>
     </xsl:variable>
@@ -301,6 +298,7 @@
   <!-- an image with its caption, and the transcription of its text (IMG.CNT) as its description,
        whose units hang off fgr_N, numbered through the file -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'TIFF']" mode="block">
+    <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="figure" as="xs:string" select="f:eid($base, 'fgr', string(count(preceding::INCL.ELEMENT[@TYPE = 'TIFF']) + 1))"/>
     <figure src="{@FILEREF}">
@@ -317,9 +315,7 @@
           <xsl:call-template name="f:blocks">
             <xsl:with-param name="nodes" as="node()*" select="IMG.CNT/node()"/>
             <xsl:with-param name="base" as="xs:string?" select="$figure" tunnel="yes"/>
-            <xsl:with-param name="levelBase" as="xs:string?" select="$figure" tunnel="yes"/>
-            <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
-            <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
+            <xsl:with-param name="levels" as="map(*)" select="map{'base': $figure, 'ctx': $ctx}" tunnel="yes"/>
           </xsl:call-template>
         </description>
       </xsl:if>

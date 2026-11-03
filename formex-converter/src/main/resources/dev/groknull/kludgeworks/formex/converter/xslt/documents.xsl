@@ -130,10 +130,8 @@
         <xsl:with-param name="ctx" as="xs:string*" select="()" tunnel="yes"/>
         <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
         <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-        <xsl:with-param name="division" as="xs:string?" select="()" tunnel="yes"/>
-        <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
-        <xsl:with-param name="levelCtx" as="xs:string*" select="()" tunnel="yes"/>
-        <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+        <xsl:with-param name="division" as="map(*)?" select="()" tunnel="yes"/>
+        <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid}" tunnel="yes"/>
       </xsl:call-template>
       <!-- a document in a file of its own: the file's notes after it, before its annexes' files -->
       <xsl:if test="$doc is root($doc)/*">
@@ -169,7 +167,7 @@
 
   <!-- one correction of a corrigendum: where, then the old and the new wording -->
   <xsl:template match="CORRECTION" mode="block">
-    <xsl:variable name="eid" as="xs:string" select="'cor_' || (count(preceding::CORRECTION) + 1)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid((), 'cor', string(count(preceding::CORRECTION) + 1))"/>
     <unit eId="{$eid}" kind="correction">
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" as="node()*" select="node()"/>
@@ -197,9 +195,7 @@
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" as="node()*" select="node()"/>
         <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-        <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
-        <xsl:with-param name="levelCtx" as="xs:string*" select="()" tunnel="yes"/>
-        <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+        <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid}" tunnel="yes"/>
       </xsl:call-template>
     </xsl:element>
   </xsl:template>

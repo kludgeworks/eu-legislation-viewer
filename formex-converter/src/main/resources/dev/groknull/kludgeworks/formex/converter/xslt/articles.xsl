@@ -21,8 +21,7 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:param name="division" as="xs:string?" tunnel="yes"/>
-    <xsl:param name="divisionBase" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="division" as="map(*)?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="label" as="xs:string" select="f:label-after-word(TI.ART)"/>
     <!-- an article printed without a number, where the act numbers its others, is art_unnumbered-1:
@@ -34,7 +33,7 @@
         else string(count(preceding-sibling::ARTICLE) + 1)"/>
     <xsl:variable name="taken" as="xs:boolean" select="$label != '' and exists(key('f:article-by-label', $label, root(.))[. &lt;&lt; current()]
         [not(f:covering(.)[f:is-deletion(.)])][f:same-quotation(., current())])"/>
-    <xsl:variable name="enclosing" as="xs:string?" select="f:enclosing-division($division, $divisionBase, $base)"/>
+    <xsl:variable name="enclosing" as="xs:string?" select="f:enclosing-division($division, $base)"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid(if ($taken and $enclosing) then $enclosing else $base, 'art', $value)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="article">
@@ -45,9 +44,7 @@
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <!-- levels it holds are numbered within it, under its eId (art_3/pnt_a, anx_I/pnt_a/pnt_1) -->
-          <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
-          <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
-          <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
+          <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>
@@ -68,9 +65,7 @@
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <!-- levels it holds are numbered within it, under its eId (art_3/pnt_a, anx_I/pnt_a/pnt_1) -->
-          <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
-          <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
-          <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
+          <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>
@@ -148,10 +143,10 @@
   <!-- the division a division or an article is in, while it is: one that encloses what holds them
        now (a quotation or an annex in an article in CHAPTER I starts afresh) is no longer theirs -->
   <xsl:function name="f:enclosing-division" as="xs:string?">
-    <xsl:param name="division" as="xs:string?"/>
-    <xsl:param name="divisionBase" as="xs:string?"/>
+    <!-- the division's eId, and the base it was met under -->
+    <xsl:param name="division" as="map(*)?"/>
     <xsl:param name="base" as="xs:string?"/>
-    <xsl:sequence select="$division[string($divisionBase) = string($base)]"/>
+    <xsl:sequence select="$division[string(?base) = string($base)]?eid"/>
   </xsl:function>
 
   <!-- whether two elements are in the same quotation, or both in none -->
@@ -171,8 +166,7 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:param name="division" as="xs:string?" tunnel="yes"/>
-    <xsl:param name="divisionBase" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="division" as="map(*)?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="line" as="element()?" select="TITLE/TI/*[1]"/>
     <!-- a part, title, chapter, section or subsection, as the EU subdivision table names them in the
@@ -187,7 +181,7 @@
         string(count(preceding-sibling::DIVISION) + 1))[1]"/>
     <!-- divisions hang off what holds them: nothing in the act's own enacting terms (cpt_1), else
          the annex, quoted structure, attachment or level (anx_II/cpt_1) -->
-    <xsl:variable name="eid" as="xs:string" select="f:eid((f:enclosing-division($division, $divisionBase, $base), $base)[1], ($type[1] ! lower-case(.), 'division')[1], $label)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid((f:enclosing-division($division, $base), $base)[1], ($type[1] ! lower-case(.), 'division')[1], $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>
@@ -201,8 +195,7 @@
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$base" tunnel="yes"/>
-          <xsl:with-param name="division" as="xs:string?" select="$eid" tunnel="yes"/>
-          <xsl:with-param name="divisionBase" as="xs:string?" select="$base" tunnel="yes"/>
+          <xsl:with-param name="division" as="map(*)" select="map{'eid': $eid, 'base': $base}" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>
@@ -234,9 +227,7 @@
               <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m), f:ids($own))" tunnel="yes"/>
               <xsl:with-param name="pending" as="processing-instruction()*" select="$own" tunnel="yes"/>
               <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-              <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
-              <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
-              <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
+              <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m), f:ids($own))}" tunnel="yes"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:otherwise>
@@ -244,9 +235,7 @@
               <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
               <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
               <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-              <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
-              <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
-              <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
+              <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
             </xsl:apply-templates>
           </xsl:otherwise>
         </xsl:choose>

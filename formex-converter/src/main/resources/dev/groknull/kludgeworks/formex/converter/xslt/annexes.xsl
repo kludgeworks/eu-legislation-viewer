@@ -8,6 +8,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 
@@ -155,14 +156,9 @@
               <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids(($m, $own)))" tunnel="yes"/>
               <xsl:with-param name="pending" as="processing-instruction()*" select="$own" tunnel="yes"/>
               <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-              <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
-              <xsl:with-param name="levelCtx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
-              <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
-              <xsl:with-param name="earlier" as="document-node()*" select="($fragments[position() lt $i] ! root(.)) except root(.)" tunnel="yes"/>
+              <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'offset': count($fragments[position() lt $i]/CONTENTS/GR.SEQ[f:level-label(.) = '']), 'earlier': ($fragments[position() lt $i] ! root(.)) except root(.), 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
               <xsl:with-param name="annexFragments" as="element()*" select="$fragments" tunnel="yes"/>
-              <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
               <!-- unnumbered top levels are numbered through all fragments -->
-              <xsl:with-param name="levelOffset" as="xs:integer?" select="count($fragments[position() lt $i]/CONTENTS/GR.SEQ[f:level-label(.) = ''])" tunnel="yes"/>
             </xsl:call-template>
           </xsl:variable>
           <xsl:variable name="notes" as="element()?">
@@ -351,14 +347,15 @@
   <xsl:template match="GR.SEQ" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:param name="levelBase" as="xs:string?" tunnel="yes"/>
-    <xsl:param name="levelCtx" as="xs:string*" tunnel="yes"/>
-    <xsl:param name="parentLevel" as="xs:string?" tunnel="yes"/>
-    <xsl:param name="levelOffset" as="xs:integer?" tunnel="yes"/>
-    <xsl:param name="earlier" as="document-node()*" tunnel="yes"/>
+    <xsl:param name="levels" as="map(*)" select="map{}" tunnel="yes"/>
+    <xsl:variable name="levelBase" as="xs:string?" select="$levels?base"/>
+    <xsl:variable name="levelCtx" as="xs:string*" select="$levels?ctx"/>
+    <xsl:variable name="parentLevel" as="xs:string?" select="$levels?parent"/>
+    <xsl:variable name="levelOffset" as="xs:integer?" select="$levels?offset"/>
+    <xsl:variable name="earlier" as="document-node()*" select="$levels?earlier"/>
     <!-- the nearest enclosing level with a number or label: labelled levels hang off it, skipping
          unnumbered levels in between, whose positional eIds shift when Formex renests them -->
-    <xsl:param name="labelledParent" as="xs:string?" tunnel="yes"/>
+    <xsl:variable name="labelledParent" as="xs:string?" select="$levels?labelled"/>
     <xsl:variable name="label-line" as="element()?" select="f:level-label-line(.)"/>
     <xsl:variable name="num" as="element()?" select="f:level-num(.)"/>
     <xsl:variable name="direct-np" as="element()?" select="if ($num/parent::NP/parent::GR.SEQ) then $num/.. else ()"/>
@@ -419,9 +416,7 @@
           <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-          <xsl:with-param name="parentLevel" as="xs:string?" select="$eid" tunnel="yes"/>
-          <xsl:with-param name="levelOffset" as="xs:integer?" select="0" tunnel="yes"/>
-          <xsl:with-param name="labelledParent" as="xs:string?" select="if ($label != '' or $label-line) then $eid else $labelledParent" tunnel="yes"/>
+          <xsl:with-param name="levels" as="map(*)" select="map:merge(($levels, map{'parent': $eid, 'labelled': if ($label != '' or $label-line) then $eid else $labelledParent, 'offset': 0}), map{'duplicates': 'use-last'})" tunnel="yes"/>
         </xsl:call-template>
       </unit>
     </xsl:variable>
@@ -432,9 +427,7 @@
           <xsl:apply-templates select="current-group()" mode="block">
             <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
             <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
-            <xsl:with-param name="parentLevel" as="xs:string?" select="$eid" tunnel="yes"/>
-            <xsl:with-param name="levelOffset" as="xs:integer?" select="0" tunnel="yes"/>
-            <xsl:with-param name="labelledParent" as="xs:string?" select="if ($label != '' or $label-line) then $eid else $labelledParent" tunnel="yes"/>
+            <xsl:with-param name="levels" as="map(*)" select="map:merge(($levels, map{'parent': $eid, 'labelled': if ($label != '' or $label-line) then $eid else $labelledParent, 'offset': 0}), map{'duplicates': 'use-last'})" tunnel="yes"/>
           </xsl:apply-templates>
         </xsl:when>
         <xsl:otherwise>
@@ -444,9 +437,7 @@
               <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
               <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
               <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-              <xsl:with-param name="parentLevel" as="xs:string?" select="$eid" tunnel="yes"/>
-              <xsl:with-param name="levelOffset" as="xs:integer?" select="0" tunnel="yes"/>
-              <xsl:with-param name="labelledParent" as="xs:string?" select="if ($label != '' or $label-line) then $eid else $labelledParent" tunnel="yes"/>
+              <xsl:with-param name="levels" as="map(*)" select="map:merge(($levels, map{'parent': $eid, 'labelled': if ($label != '' or $label-line) then $eid else $labelledParent, 'offset': 0}), map{'duplicates': 'use-last'})" tunnel="yes"/>
             </xsl:call-template>
           </xsl:variable>
           <xsl:sequence select="f:wrap-deleted($m, $blocks)"/>

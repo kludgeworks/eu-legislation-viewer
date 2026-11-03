@@ -42,10 +42,10 @@
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-          <xsl:with-param name="table" as="xs:string" select="$eid" tunnel="yes"/>
-          <!-- each row's number in the table, groups of rows (BLK) included, counted once -->
-          <xsl:with-param name="rows" as="map(xs:string, xs:integer)" tunnel="yes"
-              select="map:merge(CORPUS//ROW[ancestor::TBL[1] is current()] ! map { generate-id(.): position() })"/>
+          <!-- its eId, and each row's number in it, groups of rows (BLK) included, counted once -->
+          <xsl:with-param name="table" as="map(*)" tunnel="yes" select="map{
+              'eid': $eid,
+              'rows': map:merge(CORPUS//ROW[ancestor::TBL[1] is current()] ! map { generate-id(.): position() })}"/>
         </xsl:apply-templates>
       </table>
     </xsl:variable>
@@ -134,12 +134,11 @@
        of a list of substances), so its units hang off tab_1/tr_103/td_7, by the source's column -->
   <xsl:template match="CELL" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
-    <xsl:param name="table" as="xs:string?" tunnel="yes"/>
-    <xsl:param name="rows" as="map(xs:string, xs:integer)?" tunnel="yes"/>
+    <xsl:param name="table" as="map(*)?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
     <xsl:variable name="eid" as="xs:string?" select="
-        if (exists($table) and exists($rows)) then
-          f:eid(f:eid($table, 'tr', string($rows(generate-id(..)))), 'td', string((@COL, count(preceding-sibling::CELL) + 1)[1]))
+        if (exists($table)) then
+          f:eid(f:eid($table?eid, 'tr', string($table?rows(generate-id(..)))), 'td', string((@COL, count(preceding-sibling::CELL) + 1)[1]))
         else ()"/>
     <td>
       <xsl:if test="@COLSPAN">
@@ -156,9 +155,7 @@
         <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         <xsl:with-param name="pending" as="processing-instruction()*" select="$m" tunnel="yes"/>
         <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-        <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
-        <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
-        <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
+        <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
       </xsl:call-template>
     </td>
   </xsl:template>

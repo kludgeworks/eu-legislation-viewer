@@ -268,7 +268,7 @@
                                   if ($treaty) then $doc/CONS.DOC.GEN/CONS.DOC.GEN except $content else (),
                                   $package/FMX/DOC.SUB.PUB[f:is-attachment(.)]">
               <xsl:apply-templates select="." mode="attachment">
-                <xsl:with-param name="eid" as="xs:string" select="'att_' || position()"/>
+                <xsl:with-param name="eid" as="xs:string" select="f:eid((), 'att', string(position()))"/>
               </xsl:apply-templates>
             </xsl:for-each>
           </xsl:variable>
@@ -360,7 +360,7 @@
        parent): shared, all marked ambiguous, so this one's eId is shared through them -->
   <xsl:function name="f:eid-parents-ambiguous" as="xs:boolean">
     <xsl:param name="unit" as="element()"/>
-    <xsl:variable name="parent-eid" as="xs:string?" select="replace($unit/@eId, '/[^/]+$', '')[. != $unit/@eId]"/>
+    <xsl:variable name="parent-eid" as="xs:string?" select="f:eid-base($unit/@eId)"/>
     <xsl:variable name="parents" as="element()*" select="$parent-eid ! key('f:live-unit', ., root($unit))"/>
     <xsl:sequence select="count($parents) gt 1 and (every $p in $parents satisfies f:ambiguous($p))"/>
   </xsl:function>
@@ -371,9 +371,9 @@
        Article 2 and Artículo 2 of a text printed in two) -->
   <xsl:function name="f:printed-label" as="xs:string">
     <xsl:param name="unit" as="element()"/>
-    <xsl:variable name="segment" as="xs:string" select="tokenize($unit/@eId, '/')[last()]"/>
+    <xsl:variable name="segment" as="xs:string" select="f:eid-segment($unit/@eId)"/>
     <xsl:sequence select="
-        if (($unit/@kind = 'division' and substring-before($segment, '_') = ($f:division-codes ! lower-case(.)) or $unit/@kind = ('article', 'annex'))
+        if (($unit/@kind = 'division' and f:eid-abbr($unit/@eId) = ($f:division-codes ! lower-case(.)) or $unit/@kind = ('article', 'annex'))
             and exists($unit/lt:num) and not(starts-with($segment, 'art_unnumbered'))) then $segment
         else lower-case(replace(string-join($unit/lt:num//@v), '[^\p{L}\p{N}]', ''))"/>
   </xsl:function>
@@ -574,7 +574,7 @@
       <xsl:variable name="before" as="xs:integer" select="count(preceding-sibling::GR.VISA/VISA)"/>
       <xsl:for-each select="VISA">
         <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., ())"/>
-        <xsl:variable name="eid" as="xs:string" select="'pbl_1/cit_' || ($before + position())"/>
+        <xsl:variable name="eid" as="xs:string" select="f:eid('pbl_1', 'cit', string($before + position()))"/>
         <xsl:variable name="unit" as="element()">
           <unit eId="{$eid}" kind="citation">
             <xsl:sequence select="f:provenance($m)"/>
@@ -679,7 +679,7 @@
     <xsl:variable name="next" as="element(CONSID)?" select="following-sibling::CONSID[f:numbered-recital(.)][1]"/>
     <xsl:variable name="continued" as="element(CONSID)*" select="
         if (f:numbered-recital(.)) then following-sibling::CONSID[f:continues-recital(.)][empty($next) or . &lt;&lt; $next] else ()"/>
-    <xsl:variable name="eid" as="xs:string" select="'pbl_1/rct_' || (f:label($number)[. != ''], string(f:recital-position(.)))[1]"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid('pbl_1', 'rct', (f:label($number)[. != ''], string(f:recital-position(.)))[1])"/>
     <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="recital">
@@ -696,9 +696,7 @@
           <xsl:with-param name="nodes" as="node()*" select="NP[1]/TXT/node(), NP[1]/(node() except ($number, TXT)), node() except NP[1], $continued/node()"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <!-- levels a recital holds (a list of headed sections) hang off it: pbl_1/rct_12/level_1 -->
-          <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
-          <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
-          <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
+          <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
       </unit>
@@ -711,13 +709,13 @@
   <xsl:template match="DIV.CONSID" mode="recital">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="groupIntro" as="element(GR.CONSID.INIT)*" select="()"/>
-    <xsl:param name="division" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="division" as="map(*)?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
     <xsl:variable name="line" as="element()?" select="TITLE/TI/*[1]"/>
     <xsl:variable name="label" as="xs:string" select="((if ($line/self::NP) then f:label($line/NO.P)
                                          else f:typed-label(string($line), $f:division-codes, .))[. != ''],
                                         string(count(preceding-sibling::DIV.CONSID) + 1))[1]"/>
-    <xsl:variable name="eid" as="xs:string" select="f:eid(($division, 'pbl_1')[1], 'division', $label)"/>
+    <xsl:variable name="eid" as="xs:string" select="f:eid(($division?eid, 'pbl_1')[1], 'division', $label)"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>
@@ -738,7 +736,7 @@
             <xsl:when test="current-grouping-key()">
               <xsl:apply-templates select="current-group()" mode="recital">
                 <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
-                <xsl:with-param name="division" as="xs:string?" select="$eid" tunnel="yes"/>
+                <xsl:with-param name="division" as="map(*)" select="map{'eid': $eid}" tunnel="yes"/>
               </xsl:apply-templates>
             </xsl:when>
             <xsl:otherwise>
