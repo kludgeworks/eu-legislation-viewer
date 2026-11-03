@@ -1182,7 +1182,7 @@
                </p>
                <p>
                   <t v="Acute aquatic toxicity data for the applied lubricant shall be stated on each of the following three trophic levels: algae, daphnia and fish. The critical concentration for the acute aquatic toxicity for a lubricant in Category 1 and 5 shall be at least 100 mg/L and for a lubricant in Category 2, 3 and 4 at least "/>
-                  <t v="1000"/>
+                  <t v="1 000"/>
                   <t v=" mg/L."/>
                </p>
                <p>
@@ -1262,7 +1262,7 @@
                   <unit eId="anx/pnt_Criterion-3.2/idt_4" kind="indent">
                      <p>
                         <t v="the substance is a polymer and its molecular weight fraction below "/>
-                        <t v="1000"/>
+                        <t v="1 000"/>
                         <t v=" g/mol is less than 1 %, or"/>
                      </p>
                   </unit>
@@ -1280,7 +1280,7 @@
                </p>
                <p>
                   <t v="The molecular weight fraction below "/>
-                  <t v="1000"/>
+                  <t v="1 000"/>
                   <t v=" g/mol of a polymer shall be determined according to Part A.19 of the Annex to Regulation (EC) No 440/2008 or equivalent test methods."/>
                </p>
             </unit>
@@ -1445,7 +1445,7 @@
                   <unit eId="anx/pnt_4.2/idt_5" kind="indent">
                      <p>
                         <t v="is a polymer and its molecular weight fraction below "/>
-                        <t v="1000"/>
+                        <t v="1 000"/>
                         <t v=" g/mol is less than 1 %."/>
                      </p>
                   </unit>
@@ -2510,7 +2510,7 @@
                   <tr>
                      <td>
                         <p>
-                           <t v="1000"/>
+                           <t v="1 000"/>
                         </p>
                      </td>
                      <td>
@@ -2586,21 +2586,21 @@
                      <td>
                         <p>
                            <t v="&gt; "/>
-                           <t v="1000"/>
+                           <t v="1 000"/>
                            <t v=" mg/L"/>
                         </p>
                      </td>
                      <td>
                         <p>
                            <t v="&gt; "/>
-                           <t v="1000"/>
+                           <t v="1 000"/>
                            <t v=" mg/L"/>
                         </p>
                      </td>
                      <td>
                         <p>
                            <t v="&gt; "/>
-                           <t v="1000"/>
+                           <t v="1 000"/>
                            <t v=" mg/L"/>
                         </p>
                      </td>

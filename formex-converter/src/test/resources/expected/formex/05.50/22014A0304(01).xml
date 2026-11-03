@@ -60,7 +60,7 @@
                         <t v="On tariff line "/>
                         <t v="0703 20 00"/>
                         <t v=" add "/>
-                        <t v="12375"/>
+                        <t v="12 375"/>
                         <t v=" tonnes to the allocation for People’s Republic of China under the EU tariff rate quota for garlic, maintaining the present in quota rate of 9,6 %."/>
                      </p>
                   </unit>
@@ -86,7 +86,7 @@
                   <unit eId="let_1/pnt_1/idt_3" kind="indent">
                      <p>
                         <t v="Create a tariff rate quota of "/>
-                        <t v="2026"/>
+                        <t v="2 026"/>
                         <t v=" tonnes ("/>
                         <emphasis kind="i">
                            <t v="erga omnes"/>
@@ -105,7 +105,7 @@
                   <unit eId="let_1/pnt_1/idt_4" kind="indent">
                      <p>
                         <t v="Create a tariff rate quota of "/>
-                        <t v="2289"/>
+                        <t v="2 289"/>
                         <t v=" tonnes ("/>
                         <emphasis kind="i">
                            <t v="erga omnes"/>
@@ -191,7 +191,7 @@
                            <t v="On tariff line "/>
                            <t v="0703 20 00"/>
                            <t v=" add "/>
-                           <t v="12375"/>
+                           <t v="12 375"/>
                            <t v=" tonnes to the allocation for People's Republic of China under the EU tariff rate quota for garlic, maintaining the present in quota rate of 9,6 %."/>
                         </p>
                      </unit>
@@ -217,7 +217,7 @@
                      <unit eId="let_2/qstr_1/pnt_1/idt_3" kind="indent">
                         <p>
                            <t v="Create a tariff rate quota of "/>
-                           <t v="2026"/>
+                           <t v="2 026"/>
                            <t v=" tonnes ("/>
                            <emphasis kind="i">
                               <t v="erga omnes"/>
@@ -236,7 +236,7 @@
                      <unit eId="let_2/qstr_1/pnt_1/idt_4" kind="indent">
                         <p>
                            <t v="Create a tariff rate quota of "/>
-                           <t v="2289"/>
+                           <t v="2 289"/>
                            <t v=" tonnes ("/>
                            <emphasis kind="i">
                               <t v="erga omnes"/>

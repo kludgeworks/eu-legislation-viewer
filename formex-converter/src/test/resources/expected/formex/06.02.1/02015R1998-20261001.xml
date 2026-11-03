@@ -28557,7 +28557,7 @@
                   </num>
                   <p>
                      <t v="on-the-job TIP training, on condition that a TIP library of at least "/>
-                     <t v="6000"/>
+                     <t v="6 000"/>
                      <t v=" images, as specified below, is employed on the x-ray or EDS equipment used and the person works with this equipment during at least one third of his working hours."/>
                   </p>
                </unit>
@@ -28578,7 +28578,7 @@
                <unit eId="anx/pnt_11.4.1/list_2/idt_1" kind="indent">
                   <p>
                      <t v="an image library containing at least "/>
-                     <t v="1000"/>
+                     <t v="1 000"/>
                      <t v=" images of at least 250 different threat articles, including images of component parts of threat articles, with each article captured in a variety of different orientations, and arranged to provide an unpredictable selection of images from the library during the training and testing; or"/>
                   </p>
                </unit>
@@ -28590,9 +28590,9 @@
             </list>
             <p>
                <t v="For on-the-job TIP training, the TIP library shall consist of at least "/>
-               <t v="6000"/>
+               <t v="6 000"/>
                <t v=" images of at least "/>
-               <t v="1500"/>
+               <t v="1 500"/>
                <t v=" different threat articles, including images of component parts of threat articles, with each article captured in a variety of different orientations."/>
             </p>
             <p>

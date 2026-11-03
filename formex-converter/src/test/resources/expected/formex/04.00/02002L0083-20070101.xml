@@ -4231,7 +4231,7 @@
                         </num>
                         <p>
                            <t v="the reinsurance premiums collected exceed EUR "/>
-                           <t v="50000000"/>
+                           <t v="50 000 000"/>
                            <t v=";&#xA;"/>
                         </p>
                      </unit>
@@ -4320,7 +4320,7 @@
                         <t v="The amount shall be adapted automatically, by increasing the base amount in euro by the percentage change in that index over the period between "/>
                         <date asWritten="20 March 2002" date="2002-03-20"/>
                         <t v=" and the review date and rounded up to a multiple of EUR "/>
-                        <t v="100000"/>
+                        <t v="100 000"/>
                         <t v="."/>
                      </p>
                   </unit>
@@ -6633,7 +6633,7 @@
                <unit eId="anx_IV/pnt_2/idt_2" kind="indent">
                   <p>
                      <t v="the annual contribution income for the activities covered by this Directive does not exceed EUR "/>
-                     <t v="500000"/>
+                     <t v="500 000"/>
                      <t v=" for three consecutive years. If this amount is exceeded for three consecutive years this Directive shall apply with effect from the fourth year."/>
                   </p>
                </unit>
@@ -7019,7 +7019,7 @@
                   </num>
                   <p>
                      <t v="(a) The guarantee fund may not, however, be less than a minimum of EUR "/>
-                     <t v="800000"/>
+                     <t v="800 000"/>
                      <t v=".&#xA;"/>
                   </p>
                </unit>
@@ -7029,7 +7029,7 @@
                   </num>
                   <p>
                      <t v="Any Member State may provide for the minimum of the guarantee fund to be reduced to EUR "/>
-                     <t v="600000"/>
+                     <t v="600 000"/>
                      <t v=" in the case of mutual associations and mutual-type associations and tontines.&#xA;"/>
                   </p>
                </unit>
@@ -7039,11 +7039,11 @@
                   </num>
                   <p>
                      <t v="For mutual associations referred to in the second sentence of the second indent of Article 3(6) of this Directive, as soon as they come within the scope of this Directive, and for tontines, any Member State may permit the establishment of a minimum of the guarantee fund of EUR "/>
-                     <t v="100000"/>
+                     <t v="100 000"/>
                      <t v=" to be increased progressively to the amount fixed in (b) of this section by successive tranches of EUR "/>
-                     <t v="100000"/>
+                     <t v="100 000"/>
                      <t v=" whenever the contributions increase by EUR "/>
-                     <t v="500000"/>
+                     <t v="500 000"/>
                      <t v=".&#xA;"/>
                   </p>
                </unit>

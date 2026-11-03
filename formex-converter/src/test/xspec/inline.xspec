@@ -119,6 +119,12 @@
               test="deep-equal($x:result//*:noteRef/@marker ! string(), ('1', '2', '2'))"/>
   </x:scenario>
 
+  <x:scenario label="Numbers Formex marks as such">
+    <x:context mode="block" xmlns=""><P>at least <FT TYPE="NUMBER">6000</FT> images, <FT TYPE="NUMBER">12345678</FT> tonnes, <FT TYPE="NUMBER">250</FT> articles, <FT TYPE="DECIMAL">0,47</FT> g</P></x:context>
+    <x:expect label="are printed as EUR-Lex prints them: thousands set apart by a no-break space, a decimal as written"
+              test="deep-equal($x:result//*:t/@v ! string(), ('at least ', '6&#160;000', ' images, ', '12&#160;345&#160;678', ' tonnes, ', '250', ' articles, ', '0,47', ' g'))"/>
+  </x:scenario>
+
   <x:scenario label="An unknown inline element" catch="yes">
     <x:context mode="block" xmlns=""><P>a <NOT.FORMEX>x</NOT.FORMEX></P></x:context>
     <x:expect label="stops the transformation" test="$x:result?err?code = xs:QName('f:unknown')"

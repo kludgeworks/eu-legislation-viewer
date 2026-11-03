@@ -56,6 +56,12 @@
     <v file="{tokenize(base-uri(.), '/')[last()]}" path="{path()}">{replace(normalize-space(.), '^\((.*)\)$', '$1')}</v>
   </xsl:template>
 
+  <!-- a number Formex marks as one (FT TYPE="NUMBER"): printed with its thousands set apart by a
+       no-break space, as EUR-Lex prints it (6000: 6 000) -->
+  <xsl:template match="FT[@TYPE = 'NUMBER'][matches(., '^[1-9][0-9]{3,}$')][empty(*)]" priority="1">
+    <v file="{tokenize(base-uri(.), '/')[last()]}" path="{path()}">{translate(format-number(number(.), '#,##0'), ',', '&#160;')}</v>
+  </xsl:template>
+
   <xsl:template match="/">
     <values>
       <xsl:apply-templates/>

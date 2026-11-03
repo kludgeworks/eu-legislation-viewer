@@ -137,7 +137,13 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- a number set apart typographically (FT TYPE="NUMBER"): plain text -->
+  <!-- a number set apart typographically (FT): plain text, a NUMBER as EUR-Lex prints it, its
+       thousands each set apart by a no-break space (6000 images: 6 000 images); a DECIMAL as written,
+       its comma kept in every language (0,47 g) -->
+  <xsl:template match="FT[@TYPE = 'NUMBER'][matches(., '^[1-9][0-9]{3,}$')][empty(*)]" mode="inline">
+    <t v="{format-integer(xs:integer(.), '#&#160;##0')}"/>
+  </xsl:template>
+
   <xsl:template match="FT" mode="inline">
     <xsl:call-template name="f:inlines">
       <xsl:with-param name="nodes" as="node()*" select="node()"/>
