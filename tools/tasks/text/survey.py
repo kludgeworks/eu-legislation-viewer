@@ -48,6 +48,8 @@ from dataclasses import dataclass
 from functools import partial
 from pathlib import Path
 
+# text:compare's functions, without leaving its bytecode beside it
+sys.dont_write_bytecode = True
 import compare
 from playwright.sync_api import sync_playwright
 
