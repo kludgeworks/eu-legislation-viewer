@@ -93,6 +93,13 @@ root => {
     }
     return root;
   };
+  // a text as shown: in capitals where its style sets them (Formex's HT TYPE="UC")
+  const shown = node => {
+    const transform = getComputedStyle(node.parentElement).textTransform;
+    if (transform === "uppercase") return node.data.toUpperCase();
+    if (transform === "lowercase") return node.data.toLowerCase();
+    return node.data;
+  };
   const name = el => el.tagName.toLowerCase() + [...el.classList].map(c => "." + c).join("");
   const left = root.getBoundingClientRect().left + parseFloat(getComputedStyle(root).paddingLeft);
   const measure = (g, node) => {
@@ -139,7 +146,7 @@ root => {
     const b = block(node.parentElement);
     // a space between inline elements is the line's; between blocks, nobody's
     if (node.data.trim() || (current && current.block === b)) {
-      add(b, node.data);
+      add(b, shown(node));
       measure(current, node);
     }
   }
